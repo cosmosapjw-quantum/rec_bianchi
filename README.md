@@ -4,9 +4,9 @@ This repository is the durable backup and active reconstruction workspace for th
 
 ## Current state
 
-- Durable stage: **PR-01B1-B3B3A / v0.45**.
-- Status: interior off-diagonal and same-cell regularized blocks pass; red/blue exterior deposition and exterior four-force are open.
-- Next stage: **PR-01B1-B3B3B**.
+- Durable stage: **PR-01B1-B3B3B0 / v0.46**.
+- Status: interior and near-exterior red/blue interface blocks pass through ell=24; direct far jumps beyond |x|=10.25 and nonlinear adaptive exterior action are open.
+- Next stage: **PR-01B1-B3B3B1**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
@@ -43,3 +43,7 @@ This repository contains unpublished research and a user-supplied primitive code
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific` (can require many tens of minutes).
 - Original stage bundles retain the per-stage full-test receipts.
+
+## Repository checks and patches
+
+Each bounded stage runs `python scripts/check_remote_state.py` and exports binary-safe patches with `python scripts/export_patch_series.py`. See [`docs/REPO_CHECK_PATCH_POLICY.md`](docs/REPO_CHECK_PATCH_POLICY.md).

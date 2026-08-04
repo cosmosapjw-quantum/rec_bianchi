@@ -1,40 +1,90 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, subprocess, sys, zipfile
+
+import argparse
+import hashlib
+import json
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
+import subprocess
+import sys
+import zipfile
 
-def sha(path):
-    h=hashlib.sha256()
-    with path.open('rb') as f:
-        for c in iter(lambda:f.read(1024*1024),b''): h.update(c)
-    return h.hexdigest()
+ROOT = Path(__file__).resolve().parents[1]
 
-def main():
-    ap=argparse.ArgumentParser()
-    ap.add_argument('--quick',action='store_true')
-    ap.add_argument('--all',action='store_true')
-    ap.add_argument('--scientific',action='store_true')
-    args=ap.parse_args()
-    state=json.loads((ROOT/'state/PROJECT_STATE.json').read_text())
-    assert state['current_durable_stage']['artifact'].endswith('v0_45')
-    index=json.loads((ROOT/'state/BUNDLE_INDEX.json').read_text())
-    missing=[]; bad=[]
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--quick", action="store_true")
+    parser.add_argument("--all", action="store_true")
+    parser.add_argument("--scientific", action="store_true")
+    args = parser.parse_args()
+
+    state = json.loads((ROOT / "state/PROJECT_STATE.json").read_text())
+    current_artifact = state["current_durable_stage"]["artifact"]
+    expanded = ROOT / "archive" / "expanded" / current_artifact
+    assert expanded.is_dir(), current_artifact
+    current_ledger = list(expanded.glob("*_ledger.json"))
+    assert current_ledger, f"missing current ledger in {expanded}"
+
+    index = json.loads((ROOT / "state/BUNDLE_INDEX.json").read_text())
+    missing: list[str] = []
+    bad: list[str] = []
     for row in index:
-        p=ROOT/'archive/bundles'/row['bundle']
-        if not p.exists(): missing.append(row['bundle']); continue
-        if sha(p)!=row['sha256']: bad.append(row['bundle'])
+        path = ROOT / "archive" / "bundles" / row["bundle"]
+        if not path.exists():
+            missing.append(row["bundle"])
+            continue
+        if sha256(path) != row["sha256"]:
+            bad.append(row["bundle"])
         if args.all:
-            with zipfile.ZipFile(p) as zf:
-                member=zf.testzip()
-                if member: bad.append(f"{row['bundle']}:{member}")
+            with zipfile.ZipFile(path) as archive:
+                member = archive.testzip()
+                if member:
+                    bad.append(f"{row['bundle']}:{member}")
     assert not missing, missing
     assert not bad, bad
+
+    current_bundle_name = f"{current_artifact}.zip"
+    assert any(row["bundle"] == current_bundle_name for row in index)
+    assert (ROOT / "state/PATCH_BASE.json").exists()
+    for script in ("check_remote_state.py", "export_patch_series.py"):
+        assert (ROOT / "scripts" / script).exists()
+
+    # Run the current artifact's own compact verifier when present.
+    verifiers = sorted(expanded.glob("verify_*.py"))
+    for verifier in verifiers:
+        result = subprocess.run([sys.executable, str(verifier)], cwd=expanded)
+        if result.returncode:
+            raise SystemExit(result.returncode)
+
     if args.all or args.scientific:
-        command=[sys.executable,'-m','pytest','-q']
+        command = [sys.executable, "-m", "pytest", "-q"]
         if not args.scientific:
-            command += ['-m','not slow']
-        cp=subprocess.run(command,cwd=ROOT)
-        if cp.returncode: raise SystemExit(cp.returncode)
-    print(json.dumps({'status':'PASS','bundle_count':len(index),'mode':'scientific' if args.scientific else ('all' if args.all else 'quick')}))
-if __name__=='__main__': main()
+            command += ["-m", "not slow"]
+        result = subprocess.run(command, cwd=ROOT)
+        if result.returncode:
+            raise SystemExit(result.returncode)
+
+    mode = "scientific" if args.scientific else ("all" if args.all else "quick")
+    print(
+        json.dumps(
+            {
+                "status": "PASS",
+                "bundle_count": len(index),
+                "current_artifact": current_artifact,
+                "mode": mode,
+            }
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

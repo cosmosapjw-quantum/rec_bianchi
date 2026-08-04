@@ -4,29 +4,27 @@
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-04",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 75,
-  "estimated_PR01_completion_percent": 93,
+  "estimated_overall_completion_percent": 76,
+  "estimated_PR01_completion_percent": 95,
   "current_durable_stage": {
-    "name": "PR-01B1-B3B3A same-cell coherent/angular block",
-    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3A_same_cell_regular_v0_45",
-    "status": "PASS_SAME_CELL_EXTERIOR_OPEN"
+    "name": "PR-01B1-B3B3B0 near-exterior interface",
+    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3B0_exterior_interface_v0_46",
+    "status": "PASS_NEAR_EXTERIOR_FAR_BOUNDARY_OPEN"
   },
   "next_stage": {
-    "name": "PR-01B1-B3B3B exterior deposition and full scalar release",
+    "name": "PR-01B1-B3B3B1 far-flux and adaptive scalar release",
     "tasks": [
-      "Integrate red and blue exterior conductances for every source frequency cell.",
-      "Accumulate exterior photon and hydrogen four-force from the same events.",
-      "Combine off-diagonal, regularized same-cell, and exterior blocks.",
-      "Regenerate adaptive L=12/20/24 scalar harmonic operators.",
-      "Run Bose-equilibrium, photon-number, entropy, positivity, quadrature, ell-tail, and total four-force gates.",
-      "Then execute PR-1C BackgroundSnapshot finite-tilt/large-shear frame-adapter regression."
+      "Integrate direct interior-to-far jumps beyond |x|=10.25 and preserve the far-boundary ledger.",
+      "Apply near-exterior conductances on harmonic-exact L=12/20/24 grids with nonlinear Bose edge flux.",
+      "Close red/interior/blue number, equilibrium, entropy, positivity and total four-force for anisotropic mock states.",
+      "Then execute PR-01C BackgroundSnapshot finite-tilt and nonlinear-large-shear frame-adapter regression."
     ]
   },
   "roadmap": [
     {
       "pr": 1,
       "title": "Exact recoil event and four-force",
-      "status": "IN_PROGRESS_93_PERCENT"
+      "status": "IN_PROGRESS_95_PERCENT"
     },
     {
       "pr": 2,
@@ -104,6 +102,6 @@
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
     "remote_ref_verified": false,
     "remote_tree_match": false,
-    "reason": "Current sandbox has no GitHub network route or writable GitHub connector; local Git backup and push script were created."
+    "reason": "Repository check on 2026-08-04 could not resolve github.com; patches are anchored to fresh-clone-verified local base ba1f992 until a remote fetch is available."
   }
 }

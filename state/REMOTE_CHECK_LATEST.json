@@ -1,0 +1,54 @@
+{
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "checked_at_utc": "2026-08-04T11:37:07.039655+00:00",
+  "checked_at_kst": "2026-08-04T20:37:07.039655+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_clone_work/rec_bianchi",
+  "origin": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+  "local": {
+    "branch": "work/pr01b1-b3b3b-exterior-v046",
+    "head": "d3277257a657fa0fe786c5d9b03ffab3d7b032d9",
+    "tree": "e86dfe85fb49522ed8004f1613da4da1c77688ae",
+    "dirty": true,
+    "dirty_paths": [
+      "M HANDOFF_PROMPT.md",
+      " M README.md",
+      " M docs/ARTIFACT_INDEX.md",
+      " M docs/BACKUP_POLICY.md",
+      " M docs/CURRENT_STATE.md",
+      " M docs/HANDOFF_PROMPT.md",
+      " M scripts/status.py",
+      " M scripts/update_backup.sh",
+      " M scripts/verify_repo.py",
+      " M state/BUNDLE_INDEX.json",
+      " M state/PROJECT_STATE.json",
+      "?? docs/REPO_CHECK_PATCH_POLICY.md",
+      "?? scripts/check_remote_state.py",
+      "?? scripts/export_patch_series.py",
+      "?? state/PATCH_BASE.json",
+      "?? state/REMOTE_CHECK_LATEST.json"
+    ]
+  },
+  "remote": {
+    "accessible": false,
+    "selected_transport": null,
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 0,
+    "refs": {},
+    "attempts": [
+      {
+        "transport": "configured",
+        "url": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+        "returncode": 128,
+        "stderr": "error: cannot run ssh: No such file or directory\nfatal: unable to fork"
+      },
+      {
+        "transport": "https-fallback",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi.git",
+        "returncode": 128,
+        "stderr": "fatal: unable to access 'https://github.com/cosmosapjw-quantum/rec_bianchi.git/': Could not resolve host: github.com"
+      }
+    ]
+  },
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+}
