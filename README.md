@@ -4,9 +4,9 @@ This repository is the durable backup and active reconstruction workspace for th
 
 ## Current state
 
-- Durable stage: **PR-01B1-B3B3B0 / v0.46**.
-- Status: interior and near-exterior red/blue interface blocks pass through ell=24; direct far jumps beyond |x|=10.25 and nonlinear adaptive exterior action are open.
-- Next stage: **PR-01B1-B3B3B1**.
+- Durable stage: **PR-01B1-B3B3B1 / v0.47**.
+- Status: the 35-state interior/near/far core-to-boundary scalar collision release passes through ell=24; far-tail, nonlinear Bose, number, equilibrium, entropy and four-force gates are closed. PR-01C background coupling remains open.
+- Next stage: **PR-01C BackgroundSnapshot frame-adapter closure**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
