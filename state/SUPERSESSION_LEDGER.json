@@ -1,0 +1,40 @@
+{
+  "classification": "SCIENTIFIC_SUPERSESSION_LEDGER",
+  "entries": [
+    {
+      "old": "raw Lebedev collision release",
+      "new": "continuous-mu harmonic/Nystrom reference v0.31 and finite-volume v0.32",
+      "reason": "coherent-forward angular boundary layer and nonmonotone collocation convergence"
+    },
+    {
+      "old": "incoming-frequency centre-sampled Hummer kernel v0.31",
+      "new": "two-sided finite-volume Hummer kernel v0.32",
+      "reason": "source-cell averaging changes kernels and near-null actions materially"
+    },
+    {
+      "old": "direct lifting of completed HYREC Tvv",
+      "new": "primitive-rate reconstruction",
+      "reason": "escape-compressed Tvv is nonlinear and nonadditive"
+    },
+    {
+      "old": "v0.39 missing-Jacobian diagnosis",
+      "new": "v0.40 invariant pair-measure diagnosis",
+      "reason": "high-resolution pair reruns did not reject detailed balance beyond 3 sigma; source-column estimator under-resolution is leading explanation"
+    },
+    {
+      "old": "numerical tangent quadrature for provisional 2p pole",
+      "new": "analytic Faddeeva pole average v0.42",
+      "reason": "all 1836 orbits reproduced to 2.8e-13"
+    },
+    {
+      "old": "numerical Gaussian quadrature for provisional 2p pole+crossed",
+      "new": "analytic pole+crossed Faddeeva average v0.43",
+      "reason": "direct and high-precision validation passed"
+    },
+    {
+      "old": "raw same-cell gain matrix",
+      "new": "regularized remainder D_li=K_lii-K_0ii v0.45",
+      "reason": "coherent-forward delta cancels analytically in the collision action"
+    }
+  ]
+}
