@@ -27,9 +27,25 @@ cleanup() {
 }
 trap cleanup EXIT
 
-if command -v ssh >/dev/null 2>&1; then
+export GIT_TERMINAL_PROMPT=0
+
+# Probe transports in preference order. Availability of the ssh binary is not
+# evidence that the key is authorized, so test the actual handshake.
+ssh_works() {
+  command -v ssh >/dev/null 2>&1 || return 1
+  ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -T git@github.com 2>&1 |
+    grep -q 'successfully authenticated'
+}
+
+if ssh_works; then
   REMOTE="$REMOTE_SSH"
-  export GIT_TERMINAL_PROMPT=0
+elif command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  REMOTE="$REMOTE_HTTPS"
+  # gh holds the credential; nothing is written to Git config or the remote URL.
+  GIT_CONFIG_COUNT=1
+  GIT_CONFIG_KEY_0=credential.helper
+  GIT_CONFIG_VALUE_0='!gh auth git-credential'
+  export GIT_CONFIG_COUNT GIT_CONFIG_KEY_0 GIT_CONFIG_VALUE_0
 elif [[ -n "${GITHUB_REC_BIANCHI_TOKEN:-}" ]]; then
   REMOTE="$REMOTE_HTTPS"
   ASKPASS_FILE=$(mktemp)
@@ -48,7 +64,10 @@ else
   cat >&2 <<'EOF'
 No usable GitHub authentication transport is available.
 
-Preferred: install/use OpenSSH with the existing cosmosapjw-quantum SSH key.
+Preferred: register an SSH key with the cosmosapjw-quantum account, e.g.
+  gh ssh-key add ~/.ssh/cosmo_lab_authority_ed25519.pub   # needs admin:public_key
+  (or paste the .pub contents at https://github.com/settings/keys)
+Alternative: authenticate the gh CLI with `gh auth login` (repo scope).
 Fallback: export a repository-scoped fine-grained token as
   GITHUB_REC_BIANCHI_TOKEN
 The token is read only through a temporary GIT_ASKPASS file and is never
