@@ -21,3 +21,8 @@
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific` (can require many tens of minutes).
 - Original stage bundles retain the per-stage full-test receipts.
+
+
+## GitHub authentication fallback
+
+The preferred transport is the user's existing SSH setup. A sandbox without an `ssh` binary may use an exact-repository fine-grained token via `GITHUB_REC_BIANCHI_TOKEN`; `scripts/push_backup.sh` passes it through a temporary `GIT_ASKPASS` helper and never stores it in Git configuration or a URL.
