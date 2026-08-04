@@ -1,7 +1,7 @@
 # Twelve-PR scalar completion roadmap
 
-1. **Exact recoil event and four-force** — 93%, exterior and frame-adapter closure open.
-2. **Nonlinear anisotropic Bose collision** — planned after PR-01.
+1. **Exact recoil event and four-force** — **COMPLETE in PR-01C/v0.48**.
+2. **Nonlinear anisotropic Bose collision** — **NEXT / ACTIVE**.
 3. **Full scalar COM–KHW amplitude** — higher bound, continuum, seagull, and interference.
 4. **HYREC common-measure moment projection** — Gamma and M1–M4 without fitted scale.
 5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface**.
@@ -13,4 +13,4 @@
 11. **Equation, proof, and provenance census**.
 12. **Performance, restart, deterministic manifests, and release integration**.
 
-No force-push. Each PR is a bounded review unit with a durable artifact, tests, manifest, and remote evidence.
+No force-push. Each PR is a bounded review unit with implementation, tests, durable artifact, manifest, remote-check receipt and binary-safe patch export.

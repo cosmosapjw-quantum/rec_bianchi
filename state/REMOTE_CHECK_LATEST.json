@@ -1,15 +1,17 @@
 {
   "classification": "REMOTE_REPOSITORY_CHECK",
-  "checked_at_utc": "2026-08-04T14:15:54.300880+00:00",
-  "checked_at_kst": "2026-08-04T23:15:54.300880+09:00",
-  "repository_root": "/mnt/data/rec_bianchi_work_v047",
+  "checked_at_utc": "2026-08-04T16:23:44.267946+00:00",
+  "checked_at_kst": "2026-08-05T01:23:44.267946+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_pr01c_work",
   "origin": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
   "local": {
-    "branch": "work/pr01b1-b3b3b1-far-release-v047",
-    "head": "b399cfc5f698a50e99d9a313b597fa5dae8ff0f7",
-    "tree": "8334e02cc658fd2761d0002cba31e448781b583e",
-    "dirty": false,
-    "dirty_paths": []
+    "branch": "work/pr01c-background-frame-adapter-v048",
+    "head": "cec77e9a6dcccb46358154dacc6e7627f97dbe1f",
+    "tree": "04c5170212f5c9a30043f804f5251c60a7f88223",
+    "dirty": true,
+    "dirty_paths": [
+      "M state/REMOTE_CHECK_LATEST.json"
+    ]
   },
   "remote": {
     "accessible": false,
@@ -32,6 +34,25 @@
         "stderr": "fatal: unable to access 'https://github.com/cosmosapjw-quantum/rec_bianchi.git/': Could not resolve host: github.com"
       }
     ]
+  },
+  "runtime_capabilities": {
+    "git_executable": "/usr/bin/git",
+    "ssh_executable": null,
+    "gh_executable": null,
+    "https_token_present": false,
+    "chatgpt_connector_cli_exposed": false,
+    "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
+  },
+  "user_confirmed_base": {
+    "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
+    "reported_at": "2026-08-05",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "reported_remote_content_stage": "v0.47",
+    "reported_action": "expanded and merged",
+    "exact_remote_commit_verified": false,
+    "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+    "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+    "implication": "v0.48 patch content may be based on the v0.47 scientific tree, but remote ancestry/commit identity must be checked before applying an incremental bundle."
   },
   "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
 }

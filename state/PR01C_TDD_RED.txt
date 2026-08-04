@@ -1,0 +1,38 @@
+
+==================================== ERRORS ====================================
+___________ ERROR collecting tests/background/test_branch_events.py ____________
+ImportError while importing test module '/mnt/data/rec_bianchi_pr01c_work/tests/background/test_branch_events.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/background/test_branch_events.py:3: in <module>
+    from full_bianchi_hyrec.background.branch_events import (
+E   ModuleNotFoundError: No module named 'full_bianchi_hyrec.background'
+__________ ERROR collecting tests/background/test_characteristics.py ___________
+ImportError while importing test module '/mnt/data/rec_bianchi_pr01c_work/tests/background/test_characteristics.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/background/test_characteristics.py:3: in <module>
+    from full_bianchi_hyrec.background.characteristics import (
+E   ModuleNotFoundError: No module named 'full_bianchi_hyrec.background'
+_________ ERROR collecting tests/background/test_snapshot_adapters.py __________
+ImportError while importing test module '/mnt/data/rec_bianchi_pr01c_work/tests/background/test_snapshot_adapters.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/background/test_snapshot_adapters.py:4: in <module>
+    from full_bianchi_hyrec.background.snapshot import BackgroundSnapshot
+E   ModuleNotFoundError: No module named 'full_bianchi_hyrec.background'
+=========================== short test summary info ============================
+ERROR tests/background/test_branch_events.py
+ERROR tests/background/test_characteristics.py
+ERROR tests/background/test_snapshot_adapters.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 0.10s

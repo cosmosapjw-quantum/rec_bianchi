@@ -2,34 +2,34 @@
   "classification": "DURABLE_PROJECT_STATE",
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "repository": "cosmosapjw-quantum/rec_bianchi",
-  "state_date": "2026-08-04",
+  "state_date": "2026-08-05",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 77,
-  "estimated_PR01_completion_percent": 98,
+  "estimated_overall_completion_percent": 78,
+  "estimated_PR01_completion_percent": 100,
   "current_durable_stage": {
-    "name": "PR-01B1-B3B3B1 far flux and adaptive scalar release",
-    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3B1_far_scalar_release_v0_47",
-    "status": "PASS_CORE_TO_BOUNDARY_SCALAR_RELEASE_PR01C_OPEN"
+    "name": "PR-01C BackgroundSnapshot frame-adapter closure",
+    "artifact": "Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48",
+    "status": "PASS_PR01_COMPLETE"
   },
   "next_stage": {
-    "name": "PR-01C BackgroundSnapshot frame-adapter closure",
+    "name": "PR-02 nonlinear anisotropic Bose collision production integration",
     "tasks": [
-      "Load finite-tilt, nonlinear-shear and turning/crossing snapshots from the supplied primitive Bianchi solver.",
-      "Map normal-frame characteristics to the hydrogen frame without changing local collision microphysics.",
-      "Run Bianchi II, class-B and exceptional smoke regressions for branch localization, number and total four-force.",
-      "Publish the PR-01 closure ledger, repository patch series and updated thread-independent handoff."
+      "Promote the v0.47 nonlinear Bose edge action from mock fields to the BackgroundSnapshot adaptive L=12/20/24 runtime interface.",
+      "Add positivity-preserving implicit updates and analytic/JVP Jacobian tests.",
+      "Run finite-tilt, nonlinear-shear and directional-crossing stress trajectories with BE, number, entropy and total four-force gates.",
+      "Publish a bounded PR-02 implementation, ledger, patch series and thread-independent handoff."
     ]
   },
   "roadmap": [
     {
       "pr": 1,
       "title": "Exact recoil event and four-force",
-      "status": "IN_PROGRESS_98_PERCENT_PR01C_OPEN"
+      "status": "COMPLETE"
     },
     {
       "pr": 2,
       "title": "Nonlinear anisotropic Bose collision",
-      "status": "PLANNED"
+      "status": "IN_PROGRESS_NEXT"
     },
     {
       "pr": 3,
@@ -103,5 +103,13 @@
     "remote_ref_verified": false,
     "remote_tree_match": false,
     "reason": "The owner configured private-repository access in the ChatGPT GitHub app, but this chat runtime did not expose a GitHub connector function and the CLI remote remained unavailable; remote refs therefore remain unverified."
+  },
+  "remote_repository_status": {
+    "owner_report": "v0.47 content merged into private main on 2026-08-05",
+    "runtime_verification": "UNAVAILABLE_CONNECTOR_AND_GIT_NETWORK",
+    "exact_remote_main_sha": null,
+    "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+    "local_v047_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+    "policy": "Use the exact v0.47 local commit for incremental artifacts; also export raw patch and standalone bundle for squash-merge/divergent histories."
   }
 }
