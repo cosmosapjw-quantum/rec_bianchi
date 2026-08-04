@@ -1,0 +1,109 @@
+{
+  "classification": "PR01B1A_MAXWELL_JUTTNER_2P_EVENT_CONDUCTANCE_LOCK",
+  "stage": "PR-01B1-A",
+  "status": "PASS_AS_EVENT_CONDUCTANCE_AUDIT",
+  "source_artifacts": {
+    "PR01A": "Full_Bianchi_HyRec_PR01A_exact_recoil_v0_34",
+    "PR01B0": "Full_Bianchi_HyRec_PR01B0_bridge_audit_v0_35",
+    "primitive_background": "Full_Bianchi_HyRec_primitive_context_v0_36"
+  },
+  "TDD": {
+    "red": "\n==================================== ERRORS ====================================\n______________ ERROR collecting tests/recoil/test_event_weight.py ______________\nImportError while importing test module '/mnt/data/Full_Bianchi_HyRec_PR01B1A_event_weight_v0_37/workspace/tests/recoil/test_event_weight.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/recoil/test_event_weight.py:5: in <module>\n    from full_bianchi_hyrec.recoil.event_weight import (\nE   ModuleNotFoundError: No module named 'full_bianchi_hyrec.recoil.event_weight'\n____________ ERROR collecting tests/recoil/test_maxwell_juttner.py _____________\nImportError while importing test module '/mnt/data/Full_Bianchi_HyRec_PR01B1A_event_weight_v0_37/workspace/tests/recoil/test_maxwell_juttner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/recoil/test_maxwell_juttner.py:5: in <module>\n    from full_bianchi_hyrec.recoil.event_weight import (\nE   ModuleNotFoundError: No module named 'full_bianchi_hyrec.recoil.event_weight'\n=========================== short test summary info ============================\nERROR tests/recoil/test_event_weight.py\nERROR tests/recoil/test_maxwell_juttner.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!\n2 errors in 0.43s\n",
+    "green": "..............                                                           [100%]\n14 passed in 0.43s"
+  },
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "hydrogen_mass_kg": 1.673532840653473e-27,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "thermal_beta_sigma": 1.6594510497723125e-05,
+    "A21_s^-1": 626500000.0,
+    "f12": 0.4161967179799824
+  },
+  "double_precision_diagnostics": {
+    "event_count": 5000,
+    "maximum_absolute_or_relative": {
+      "response_relative": 9.103249995364699e-09,
+      "thermal_log_residual": 3.552713678800501e-14,
+      "conductance_log_residual": 1.8206478102911205e-08,
+      "maxwell_boltzmann_log_residual": 8.114398042380344e-12,
+      "rest_frequency_in_relative": 1.0137141275790704e-15,
+      "rest_frequency_out_relative": 1.013815343408406e-15
+    },
+    "interpretation": "Near-pole response mismatch is a float64 detuning diagnostic, not the hard microreversibility gate."
+  },
+  "arbitrary_precision_PT_audit": {
+    "working_dps": 90,
+    "event_count": 60,
+    "maximum_residuals": {
+      "response_relative": "5.336363065071218747374265094798561175741e-85",
+      "thermal_log_residual": "1.976662114355723104565357634613128563946e-82",
+      "conductance_log_residual": "1.976662114355723104565357634613128563946e-82",
+      "rest_frequency_in_relative": "4.483457770917579865898918424259907442675e-91",
+      "rest_frequency_out_relative": "7.291191451570367605807042618751412915054e-91"
+    }
+  },
+  "stress_MB_vs_MJ": {
+    "beta_norm": 0.22226110770892868,
+    "float64_Maxwell_Boltzmann_log_residual": 0.09198351204395294,
+    "high_precision_MJ_conductance_log_residual": "1.917614634881924434803035919916513923037e-93"
+  },
+  "special_functions": {
+    "Precise_Special_Functions_BesselK2_z10": "0.0000215098170069327687306645644239671272492068461808732468335569381336768423538356297586746211918811222",
+    "Precise_Special_Functions_BesselK2_z50": "0.0000000000000000000000354793183885819773842434963378945909388489627816265084202153509953939932273719445938557920906837405",
+    "role": "Independent Maxwell-Juettner normalization reference."
+  },
+  "Wolfram_exact_results": {
+    "hyperbolic_identity": 0,
+    "Bessel_recurrence": 0,
+    "thermal_affinity": 0,
+    "reverse_incoming_invariant": 0,
+    "reverse_outgoing_invariant": 0,
+    "2p_amplitude_PT_residual": 0
+  },
+  "hard_gate_status": {
+    "Maxwell_Juttner_normalization": true,
+    "positive_2p_response": true,
+    "arbitrary_precision_response_PT": true,
+    "arbitrary_precision_thermal_affinity": true,
+    "arbitrary_precision_conductance": true,
+    "finite_volume_deposition": false,
+    "Maxwellian_momentum_integration": false,
+    "production_lab_rate": false
+  },
+  "decision": {
+    "PR01B1A": "PASS",
+    "shared_event_invariant_response": "APPROVED_AFTER_INDEPENDENT_HP_AUDIT",
+    "float64_independent_reverse": "AUDIT_ONLY",
+    "PR01_full": "OPEN"
+  },
+  "limitations": [
+    "No integration over the Maxwell-Juettner momentum distribution.",
+    "No red/interior/blue frequency-angle deposition.",
+    "The response uses only unresolved 2p pole+crossed terms.",
+    "The complete lab differential phase-space Jacobian is deferred to PR-1B1-B/PR-03."
+  ],
+  "next_stage": {
+    "name": "PR01B1B_Maxwellian_integration_and_positive_deposition",
+    "tasks": [
+      "Integrate the event conductance over the Maxwell-Juettner atom momentum distribution.",
+      "Use resonance-adapted constrained longitudinal momentum quadrature.",
+      "Deposit positive weights into interior/red/blue finite-volume states.",
+      "Generate photon and hydrogen four-force from the same events.",
+      "Verify pairwise detailed balance after integration, photon number, four-force and positivity."
+    ]
+  },
+  "literature_lock": [
+    {
+      "source": "Kokubo 2023/2024",
+      "role": "KHW d sigma/dOmega = r0^2(omega_out/omega_in)|M|^2 and full bound/continuum structure."
+    },
+    {
+      "source": "Hummer 1962",
+      "role": "Maxwellian moving-atom redistribution baseline."
+    },
+    {
+      "source": "Rybicki 2006",
+      "role": "Independent thermodynamic/Fokker-Planck closure comparator."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "classification": "D1C_C2_COUPLED_BOUNDARY_REGRESSION_LOCK",
+  "stage": "D1C-C2",
+  "exact_formulas": {
+    "Doppler_factor": "D_H=Gamma_H(1-beta_H.e_n)",
+    "Dlog_Doppler": "Gamma_H^2 beta_H.betaDot_H -(betaDot_H.e_n+beta_H.eDot_n)/(1-beta_H.e_n)",
+    "hydrogen_frequency": "R_H=R_n+D_char ln D_H",
+    "doppler_coordinate_speed": "A=(nu_H R_H-D0 nu_abs)/DeltaNu_D -x D0 ln DeltaNu_D-D0 x_boundary"
+  },
+  "Wolfram_exact_results": {
+    "finite_tilt_Doppler_derivative_residual": 0,
+    "hydrogen_frame_frequency_residual": 0,
+    "doppler_coordinate_residual": 0,
+    "true_partition_residual": 0,
+    "true_photon_number_residual": 0,
+    "true_four_momentum_residual": 0
+  },
+  "finite_tilt_adapter": {
+    "maximum_5point_characteristic_residual": 4.0457859284970255e-11,
+    "maximum_boost_frequency_roundtrip": 6.661338147750939e-16,
+    "maximum_boost_direction_roundtrip": 7.043575467574348e-16,
+    "maximum_boost_direction_unit_residual": 6.661338147750939e-16
+  },
+  "FLRW_regression": {
+    "red_outflow": 26,
+    "red_inflow": 0,
+    "blue_outflow": 0,
+    "blue_inflow": 26
+  },
+  "large_shear_mixed_sign": {
+    "red_outflow": 23,
+    "red_inflow": 3,
+    "blue_outflow": 3,
+    "blue_inflow": 23,
+    "mixed_sign_pass": true
+  },
+  "branch_localization": {
+    "single_turning_root": [
+      0.37
+    ],
+    "single_turning_localized_residual": 0.0,
+    "single_turning_unsplit_error": -0.027781801499999995,
+    "repeated_roots": [
+      0.15446478769628805,
+      0.3211314543629547,
+      0.48779812102962133,
+      0.6544647876962881,
+      0.8211314543629546,
+      0.9877981210296214
+    ],
+    "repeated_number_residual": 0.0,
+    "repeated_four_momentum_residual": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "true_transition": {
+    "LTE_max_residual": 3.469446951953614e-18,
+    "partition_residual": 0.0,
+    "photon_atomic_stoichiometric_residual": 0.0,
+    "four_momentum_residual": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "interior_current": -0.007998320112044323,
+    "red_exterior_current": 2.3495103462898112e-08,
+    "blue_exterior_current": -2.3035077791922623e-09,
+    "total_current": -0.007998298920448638
+  },
+  "cross_boundary_scattering": {
+    "number_residual": 0.0,
+    "four_momentum_residual": [
+      3.9048218868423246e-19,
+      8.673617379884035e-19,
+      1.0842021724855044e-18,
+      -4.336808689942018e-19
+    ]
+  },
+  "combined_step": {
+    "photon_atomic_stoichiometric_residual": 0.0,
+    "total_four_momentum_residual": [
+      3.9048218868423246e-19,
+      8.673617379884035e-19,
+      1.0842021724855044e-18,
+      -4.336808689942018e-19
+    ]
+  },
+  "hard_gate_status": {
+    "finite_tilt_frame_adapter": true,
+    "FLRW_branch": true,
+    "large_shear_mixed_sign": true,
+    "turning_branch": true,
+    "repeated_crossing_number": true,
+    "true_partition": true,
+    "true_stoichiometry": true,
+    "combined_number": true,
+    "combined_four_force": true
+  },
+  "limitations": [
+    "The Bianchi characteristics are analytic regression fields rather than the all-11-type registry.",
+    "The true-transition profile is synthetic but exactly detailed-balance consistent.",
+    "The finite-tilt direction flow is rotational; production uses the Stage-2 characteristic.",
+    "Fine structure, polarization and atomic alignment are not included."
+  ],
+  "next_stage": {
+    "name": "D1C-C3_physical_true_kernel_and_Bianchi_adapter",
+    "tasks": [
+      "Replace the synthetic true kernel by channel-resolved 1s<->2p gain-loss.",
+      "Connect R_n and direction flow to the all-11-Bianchi tetrad registry.",
+      "Run representative class-A and class-B monolithic characteristic steps.",
+      "Store red/blue exterior traces in the Lyman-series feedback radiation state.",
+      "Then promote boundary edges to the polarized coherency superoperator."
+    ]
+  }
+}

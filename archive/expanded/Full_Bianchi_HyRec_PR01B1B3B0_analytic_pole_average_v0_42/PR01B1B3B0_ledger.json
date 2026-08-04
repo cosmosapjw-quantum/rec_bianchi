@@ -1,0 +1,59 @@
+{
+  "classification": "PR01B1B3B0_ANALYTIC_TRANSVERSE_2P_POLE_LOCK",
+  "stage": "PR-01B1-B3B0",
+  "status": "PASS_ANALYTIC_POLE_INTEGRAL_FULL_PAIR_OPEN",
+  "source_artifact": "Full_Bianchi_HyRec_C2d2C2B_orbit_cache_v0_14",
+  "scope": {
+    "orbits": 1836,
+    "frequency": "17 absorption-anchored centres",
+    "angular": "12 orbit mu classes",
+    "amplitude": "scalar absorption-first unresolved 2p pole"
+  },
+  "hard_results": {
+    "max_cache_mean_amp2_relative": 2.786659791809143e-13,
+    "max_cache_pole_location_absolute": 1.9539925233402755e-14,
+    "max_cache_pole_width_relative": 1.1057821325266559e-13,
+    "max_selected_numeric_relative": 2.8199664825478976e-14,
+    "max_high_precision_faddeeva_relative": 5.5238577082432275e-15,
+    "A21_from_f_s^-1": 626164082.9328746,
+    "area_correction": 1.0005364681179925,
+    "sigmaT_CODATA_vs_derived_relative": -2.0695001268222768e-11,
+    "oscillator_area_symbolic_residual": 0.0,
+    "oscillator_area_CODATA_relative": -2.0695001268222768e-11
+  },
+  "hard_gate_status": {
+    "all_1836_orbits": true,
+    "pole_location": true,
+    "pole_width": true,
+    "direct_quadrature": true,
+    "high_precision_special_function": true,
+    "oscillator_area": true,
+    "two_sided_frequency_cells": false,
+    "crossed_term": false,
+    "full_pair_kernel": false
+  },
+  "decision": {
+    "PR01B1B3B0": "PASS",
+    "numerical_tangent_pole_quadrature": "SUPERSEDED_FOR_2P_POLE",
+    "fresh_transverse_pole_integral": "APPROVED",
+    "production_kernel": "OPEN"
+  },
+  "limitations": [
+    "Frequency endpoints are still represented by v0.14 cell centres.",
+    "Only the absorption-first 2p pole is analytically integrated; crossed and smooth background remain open.",
+    "No continuous-mu endpoint split or red/blue exterior deposition is produced.",
+    "Absolute rate matrix is not assembled in this stage."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3B1_two_sided_pair_cells",
+    "tasks": [
+      "Insert the analytic pole average into the v0.40 invariant MJ/MB pair measure.",
+      "Integrate source and target frequency cells with the v0.32 coherent-forward/backscatter split.",
+      "Add the smooth crossed 2p denominator using deterministic Gaussian quadrature and selected high-precision nodes.",
+      "Assemble the absolute ell<=6 17x17 unordered conductance and exterior fluxes."
+    ]
+  },
+  "notes": [
+    "The oscillator-area identity is exact when sigma_T=8 pi r_e^2/3 is evaluated from the same r_e. The independently rounded CODATA sigma_T differs by 2.07e-11 and sets the float64 constants floor."
+  ]
+}

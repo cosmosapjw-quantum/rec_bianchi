@@ -1,0 +1,70 @@
+{
+  "classification": "D1C_C1_BOUNDARY_STATE_CONTRACT_LOCK",
+  "stage": "D1C-C1",
+  "canonical_frame": "hydrogen-frame frequency and direction, common normal-time characteristic coefficient",
+  "sign_convention": "all red/blue interface fluxes are positive outward from the line-window interior",
+  "physical_reference": {
+    "temperature_K": 3000.0,
+    "nu_abs_Hz": 2466067545792234.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "nu_over_Doppler_width": 42610.88516492047,
+    "x_red": -10.25,
+    "x_blue": 10.25
+  },
+  "directional_sign_test": {
+    "red_outflow_directions": 24,
+    "red_inflow_directions": 2,
+    "blue_outflow_directions": 2,
+    "blue_inflow_directions": 24,
+    "zero_speed_directions": 0
+  },
+  "numeric_tests": {
+    "liouville_number_residual": 0.0,
+    "liouville_four_momentum_residual": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scattering_number_residual": 0.0,
+    "scattering_four_momentum_residual": [
+      -5.5294310796760726e-18,
+      1.951563910473908e-17,
+      -6.938893903907228e-18,
+      6.938893903907228e-18
+    ],
+    "true_partition_residual": 0.0,
+    "true_atomic_stoichiometric_residual": 0.0
+  },
+  "Wolfram_exact_results": {
+    "equivalent_coordinate_speed_residual": 0,
+    "red_outflow_sign": "+u*n_interior",
+    "red_inflow_sign": "-u*n_exterior",
+    "blue_outflow_sign": "+u*n_interior",
+    "blue_inflow_sign": "-u*n_exterior",
+    "combined_photon_number_residual": 0,
+    "scattering_four_momentum_residual": 0,
+    "liouville_four_momentum_residual": 0,
+    "true_partition_residual": 0
+  },
+  "hard_firewalls": [
+    "Exterior red/blue states are dynamic, not fixed Planck ghosts.",
+    "Inflow/outflow is classified per direction and per timestep.",
+    "The Doppler-coordinate grid-motion term is mandatory.",
+    "Scattering boundary edges use the same flux for photon and hydrogen four-force.",
+    "True-transition kernels use one forward/reverse-consistent partition of unity.",
+    "Zero diffusion flux is allowed only at an FP subdomain boundary with full-kernel cross edges handled elsewhere.",
+    "No branch may persist across a zero of the directional boundary speed."
+  ],
+  "next_stage": {
+    "name": "D1C-C2_coupled_boundary_tests",
+    "tasks": [
+      "Connect the contract to the exact Bianchi Liouville characteristics.",
+      "Run isotropic expansion, finite tilt and large-shear mixed-sign tests.",
+      "Test a direction with R_H=0 and event-localized branch reversal.",
+      "Run repeated red-to-blue-to-red crossings.",
+      "Add true Ly-alpha emission/absorption and verify the atomic photon ledger.",
+      "Use the same boundary edges for photon/hydrogen four-force."
+    ]
+  }
+}

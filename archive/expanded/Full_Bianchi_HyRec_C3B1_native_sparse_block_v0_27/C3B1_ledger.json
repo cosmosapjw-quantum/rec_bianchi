@@ -1,0 +1,125 @@
+{
+  "classification": "C3B1_NATIVE_SPARSE_BLOCK_REGRESSION",
+  "stage": "C3B1",
+  "source": {
+    "repository": "nanoomlee/HYREC-2",
+    "commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+    "virtual_table_git_blob_sha": "df04635e8fd5ed03481547a7967a14030d90a79b",
+    "virtual_table_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+    "virtual_table_bytes": 25191,
+    "virtual_table_shape": [
+      311,
+      5
+    ],
+    "raw_table_redistributed": false
+  },
+  "matrix": {
+    "full_shape": [
+      313,
+      313
+    ],
+    "virtual_shape": [
+      311,
+      311
+    ],
+    "diffusion_region_zero_based": [
+      100,
+      179
+    ],
+    "diffusion_region_size": 80,
+    "virtual_diagonal_outside_diffusion": 231,
+    "full_condition_number_2norm": 15742.367390379346,
+    "Tvv_condition_number_2norm": 9159.574867289266,
+    "minimum_Tvv_diagonal_dominance_margin": 1.4654788245943413,
+    "maximum_positive_offdiagonal": 0.0
+  },
+  "solve": {
+    "direct_relative_residual": 2.7442106410799882e-14,
+    "structured_Schur_relative_residual": 8.47577313336223e-15,
+    "direct_vs_Schur_relative_difference": 1.1146021991616335e-15,
+    "Tvv_dense_vs_structured_max_relative_difference": 4.6158712974297176e-17,
+    "real_state_solution": [
+      5.339421314185027e-10,
+      1.7081375520029119e-09
+    ],
+    "virtual_solution_min": 5.70015979689086e-16,
+    "virtual_solution_max": 4.160323120467305e-09,
+    "Schur_Teff": [
+      [
+        2476.2128311344727,
+        -768.4880329074904
+      ],
+      [
+        -2305.464098722471,
+        935.8335188019555
+      ]
+    ],
+    "Schur_seff": [
+      9.47108962765135e-09,
+      3.6754796110792745e-07
+    ]
+  },
+  "null_regression": {
+    "Dxe2": 0.0,
+    "maximum_source": 0.0,
+    "maximum_solution": 0.0
+  },
+  "normalization_and_detailed_balance": {
+    "A2s_sub_Lya_sum_before_s^-1": 8.2245807524349,
+    "A2s_renormalization_factor": 0.9995159932700859,
+    "A2s_sub_Lya_residual_s^-1": 0.0,
+    "red_adjacent_max_residual": 0.0,
+    "blue_adjacent_max_residual": 0.0,
+    "line_center_red_residual": 0.0,
+    "line_center_blue_residual": 0.0,
+    "real_virtual_2s_max_residual": 0.0,
+    "real_virtual_2p_max_residual": 2.220446049250313e-16,
+    "diffusion_second_moment_max_residual": 2.066728925847227e-16
+  },
+  "regression_inputs": {
+    "classification": "NONCOSMOLOGICAL_MATRIX_REGRESSION_INPUT",
+    "units": "HYREC cgs + eV",
+    "temperature_matter_K": 3000.0,
+    "temperature_radiation_K": 3000.0,
+    "nH_cm^-3": 250.0,
+    "H_s^-1": 5e-14,
+    "xe": 0.5,
+    "xHII": 0.5,
+    "fsR": 1.0,
+    "meR": 1.0,
+    "excitation_source": 0.0,
+    "Dfplus": "1e-8 exp[-0.5((Eb-E21)/0.03 eV)^2]",
+    "Dfplus_Ly": [
+      1e-08,
+      2e-09,
+      0.0
+    ],
+    "warning": "Chosen solely to exercise a nonzero source-exact matrix solve; not a recombination trajectory."
+  },
+  "hard_gate_status": {
+    "source_blob": true,
+    "shape": true,
+    "A2s_normalization": true,
+    "diffusion_detailed_balance": true,
+    "real_virtual_detailed_balance": true,
+    "Tvv_diagonal_dominance": true,
+    "structured_Tvv_solver": true,
+    "Schur_equivalence": true,
+    "equilibrium_null": true
+  },
+  "production_firewall": {
+    "HYREC_FULL_regression_lane": "native A1s diffusion ON; COM-KHW RII OFF",
+    "Bianchi_production_lane": "native A1s diffusion OFF; full-angle COM-KHW RII ON; retain native A2s/A3s3d/A4s4d couplings",
+    "true_source_policy": "native real-virtual block supplies aggregate true source/sink; do not add duplicate C3A source"
+  },
+  "next_stage": {
+    "name": "C3B2_native_FLRW_and_Bianchi_operator_substitution",
+    "tasks": [
+      "Run a pinned HYREC FULL FLRW history slice with the native block.",
+      "Compare the native structured solve against the original C function.",
+      "Replace only the native Ly-alpha A1s diffusion block by the full-angle COM-KHW operator.",
+      "Lift each virtual photon bin to frequency-angle states in the hydrogen frame.",
+      "Run Bianchi II, V or VII_h, and VI_-1/9 coupled characteristic regressions."
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "classification": "PR01B1B2_INVARIANT_PAIR_MEASURE_LOCK",
+  "stage": "PR-01B1-B2",
+  "status": "PASS_MEASURE_DERIVATION_PRODUCTION_KERNEL_OPEN",
+  "source_artifacts": {
+    "raw_QMC_kernel": "Full_Bianchi_HyRec_PR01B1B1_full_frequency_harmonic_v0_39",
+    "finite_volume_Hummer": "Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32",
+    "thermodynamic_completion": "Full_Bianchi_HyRec_C3B2B1D0_thermodynamic_completion_v0_33"
+  },
+  "hard_results": {
+    "maximum_invariant_pair_log_residual": 1.4210854715202004e-14,
+    "maximum_full_coordinate_Jacobian_relative": 7.950914877596915e-07,
+    "maximum_MJ_minus_MB_log_difference": 3.967608421362456e-06,
+    "Hummer_affinity_slope": 0.0008789034499938,
+    "expected_affinity_slope_alpha_minus_2b": 0.0008789035590406,
+    "v039_remaining_linear_slope": 1.866405280272285e-05,
+    "coherent_slope_cancellation_fraction": 0.9787643878256997,
+    "v039_post_linear_residual_rms": 0.0002451606631641,
+    "high_resolution_selected_pair_QMC": {
+      "direct_exact": {
+        "maximum_absolute_significance": 2.7726210525267736,
+        "rms_relative_difference": 0.0008620123180365518,
+        "maximum_absolute_relative_difference": 0.0018718130354098
+      },
+      "sampled_no_recoil": {
+        "maximum_absolute_significance": 2.3409401262742096,
+        "rms_relative_difference": 0.0011763842393041368,
+        "maximum_absolute_relative_difference": 0.0017294099394974
+      },
+      "control_variate": {
+        "maximum_absolute_significance": 1.9413697030640504,
+        "rms_relative_difference": 0.00012127038599639328,
+        "maximum_absolute_relative_difference": 0.0002688563917427
+      }
+    }
+  },
+  "hard_gate_status": {
+    "TDD": true,
+    "full_inherited_tests": true,
+    "MJ_structure_factor_reciprocity": true,
+    "nonrelativistic_MB_limit": true,
+    "full_coordinate_Jacobian_audit": true,
+    "v039_missing_Jacobian_claim": false,
+    "selected_pair_statistical_rejection": false,
+    "full_invariant_17x17_kernel": false,
+    "resonance_adapted_amplitude_integral": false
+  },
+  "decision": {
+    "PR01B1B2": "PASS",
+    "invariant_pair_measure": "APPROVED",
+    "v039_production_kernel": "REJECTED",
+    "v039_missing_Jacobian_diagnosis": "SUPERSEDED",
+    "production_strategy": "integrate one common photon-pair conductance with the analytic Maxwell-Juettner delta reduction; do not integrate independent source columns and repair them later"
+  },
+  "limitations": [
+    "The current invariant conductance audit uses an arbitrary positive PT-invariant amplitude average.",
+    "The full 2p pole transverse-momentum integral has not yet been evaluated with resonance-adapted deterministic quadrature.",
+    "The finite-volume photon endpoint cells and ell=12/20/24 harmonic blocks have not yet been regenerated from the pair measure.",
+    "The full bound+continuum KHW amplitude remains PR-03."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3_resonance_adapted_pair_conductance",
+    "tasks": [
+      "Integrate both photon frequency cells, continuous mu, Breit transverse energy and azimuth in one unordered pair integral.",
+      "Use tangent/rational splitting at every 2p resonance root.",
+      "Evaluate forward and PT-reverse amplitudes independently at selected quadrature nodes.",
+      "Generate the complete 17x17 ell<=6 conductance without matrix symmetrization.",
+      "Require deterministic pair reciprocity below 1e-10 and arbitrary-precision nodes below 1e-12.",
+      "Then extend to ell=12/20/24 and the BackgroundSnapshot exterior interface."
+    ]
+  }
+}

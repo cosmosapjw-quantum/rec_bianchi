@@ -1,0 +1,79 @@
+{
+  "classification": "HYREC2_NATIVE_DATA_CONTRACT",
+  "repository": "nanoomlee/HYREC-2",
+  "source_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+  "default_branch": "master",
+  "units": {
+    "temperatures": "eV internally",
+    "effective_recombination": "cm^3 s^-1",
+    "effective_transfer_and_virtual_rates": "s^-1 or per-bin s^-1",
+    "virtual_energies": "eV"
+  },
+  "effective_rate_tables": {
+    "Alpha_inf.dat": {
+      "shape": [
+        100,
+        40,
+        4
+      ],
+      "file_order": "iTR outer, iTmRatio middle, column l inner",
+      "Tr_grid": {
+        "minimum_eV": 0.004,
+        "maximum_eV": 0.4,
+        "count": 100,
+        "coordinate": "uniform in log(Tr)"
+      },
+      "temperature_ratio_grid": {
+        "minimum": 0.1,
+        "maximum": 1.0,
+        "count": 40,
+        "coordinate": "uniform in min(Tm/Tr,Tr/Tm)"
+      },
+      "columns": {
+        "0": "Alpha_2s for Tm/Tr <= 1",
+        "1": "Alpha_2p for Tm/Tr <= 1",
+        "2": "Alpha_2s for Tm/Tr > 1 using reciprocal ratio",
+        "3": "Alpha_2p for Tm/Tr > 1 using reciprocal ratio"
+      },
+      "interpolation": "four-point cubic interpolation of logarithms in both log(Tr) and the linear temperature-ratio coordinate"
+    },
+    "R_inf.dat": {
+      "shape": [
+        100
+      ],
+      "meaning": "effective R_{2p->2s}",
+      "interpolation": "four-point cubic interpolation of logarithms in log(Tr)"
+    },
+    "derived_rates": {
+      "Alpha_eq": "columns 0/1 evaluated at Tm/Tr=1; used for photoionization",
+      "Beta_l": "Alpha_eq[l] SAHA_FACT Tr sqrt(Tr) exp[-EI/(4Tr)]/(2l+1)",
+      "R_2s_to_2p": "3 R_2p_to_2s in the unresolved-degeneracy model"
+    }
+  },
+  "virtual_state_table": {
+    "file": "two_photon_tables.dat",
+    "shape": [
+      311,
+      5
+    ],
+    "landmarks": {
+      "NSUBLYA": 140,
+      "NSUBLYB": 271,
+      "NDIFF": 80,
+      "NVIRT": 311
+    },
+    "columns": {
+      "0": "Eb_tab: virtual-level energy",
+      "1": "A1s_tab: 3 A_2p1s phi(E) DeltaE",
+      "2": "A2s_tab: dLambda_2s/dE DeltaE below Ly-alpha; dK_2s/dE DeltaE above Ly-alpha",
+      "3": "A3s3d_tab: (dLambda_3s/dE + 5 dLambda_3d/dE) DeltaE below Ly-beta; aggregate Raman rate above Ly-beta",
+      "4": "A4s4d_tab: (dLambda_4s/dE + 5 dLambda_4d/dE) DeltaE or its aggregate continuation"
+    },
+    "normalization": "sub-Ly-alpha A2s entries are renormalized so their sum equals Lambda_2s1s=8.2206 s^-1",
+    "native_use": "2s/2p real states and 311 virtual photon states are assembled into a sparse block including two-photon/Raman and Ly-alpha diffusion"
+  },
+  "mode_policy": {
+    "FULL": "canonical source for Full Bianchi-HyRec: retains numerical radiation field, virtual states, diffusion, and two-photon/Raman",
+    "SWIFT": "not a microphysical anisotropic kernel; compresses FULL transfer into a fitted correction to the scalar Ly-alpha escape rate"
+  }
+}

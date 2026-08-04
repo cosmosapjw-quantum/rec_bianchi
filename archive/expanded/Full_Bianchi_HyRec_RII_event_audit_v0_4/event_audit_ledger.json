@@ -1,0 +1,58 @@
+{
+  "classification": "FORMAL_EVENT_AND_FACTORIZATION_AUDIT",
+  "source": "Full_Bianchi_HyRec_RII_phase_space_v0_3",
+  "frame_identity": {
+    "definitions": {
+      "D_in": "gamma (1-beta.n_in)",
+      "D_out": "gamma (1-beta.n_out)",
+      "r_H": "nu_out/nu_in",
+      "rho_star": "nu_out_star/nu_in_star = r_H D_out/D_in",
+      "outgoing_measure_jacobian": "dnu_out_star dOmega_out_star = D_out^-1 dnu_out dOmega_out"
+    },
+    "exact_cancellation": "D_in * rho_star * D_out^-1 = r_H",
+    "interpretation": "The H-frame nu_out/nu_in factor is the transformed combination of proper-density incident flux, the atom-frame Kramers-Heisenberg-Waller frequency ratio, and the outgoing frequency-solid-angle Jacobian. Do not multiply both rho_star and r_H in an event push-forward implementation."
+  },
+  "exact_vs_first_order_kinematics": {
+    "thermal_speed_parameter_b_vD_over_c": 2.3468181806822746e-05,
+    "recoil_parameter_epsilon_hnu_over_mHc2": 1.0863889814433134e-08,
+    "mean_fractional_second_order_correction": 2.753779438927857e-10,
+    "rms_fractional_second_order_correction": 6.033228780826207e-10,
+    "std_fractional_second_order_correction": 5.368104723599183e-10,
+    "mean_in_Doppler_widths": 1.1734097944167406e-05,
+    "rms_in_Doppler_widths": 2.570812187534787e-05,
+    "std_in_Doppler_widths": 2.2873969393055197e-05,
+    "exact_formulas": {
+      "mean_fractional": "b^2/2 + 7 epsilon^2/5",
+      "second_moment_fractional": "6 b^4/5 + 73 b^2 epsilon^2/10 + 128 epsilon^4/35",
+      "variance_fractional": "19 b^4/20 + 59 b^2 epsilon^2/10 + 297 epsilon^4/175"
+    }
+  },
+  "route_M_route_C": {
+    "monolithic_definition": "K_{a<-b} is the full opacity-times-redistribution rate.",
+    "conditional_definition": "Gamma_b = sum_a K_{a<-b}; P_{a|b}=K_{a<-b}/Gamma_b.",
+    "max_conditional_column_sum_residual": 4.440892098500626e-16,
+    "max_kernel_reconstruction_residual": 1.3877787807814457e-17,
+    "max_generator_reconstruction_residual": 0.0,
+    "minimum_conditional_probability": 1.0191026252063893e-39,
+    "maximum_conditional_probability": 0.3933898644501964,
+    "opacity_range": [
+      1.852236250548859e-06,
+      0.5521270448958479
+    ],
+    "fixed_Voigt_mismatch": {
+      "line_center_relative_difference": -1.0430431074404112e-08,
+      "max_relative_difference_abs_x_le_4": 5.453528288879017e-05
+    },
+    "rule": "Route C is exactly equivalent to Route M only when Gamma is the column sum of the same monolithic kernel. Using an independently frozen Voigt opacity changes the collision operator."
+  },
+  "next_gate": {
+    "name": "C2_exact_event_action_and_four_force",
+    "acceptance_tests": [
+      "Exact event push-forward versus v0.3 action on smooth and narrow spectra.",
+      "Convergence of M1, M2, M3, M4 jump moments.",
+      "Same-event photon and hydrogen four-force cancellation.",
+      "Route M versus derived Route C equality.",
+      "No duplicate use of atom-frame rho_star and H-frame r_H factors."
+    ]
+  }
+}

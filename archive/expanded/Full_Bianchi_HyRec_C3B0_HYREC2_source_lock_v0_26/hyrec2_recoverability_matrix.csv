@@ -1,0 +1,13 @@
+quantity,native_status,source,Bianchi_use,scientific_limit
+"Alpha_2s(Tm,Tr)",EXACT_NATIVE,Alpha_inf.dat columns 0 or 2,direct hydrogen-frame scalar rate,
+"Alpha_2p(Tm,Tr)",EXACT_NATIVE,Alpha_inf.dat columns 1 or 3,direct hydrogen-frame scalar rate,
+"Beta_2s, Beta_2p",EXACT_DERIVED,Alpha_eq + Saha detailed balance,direct,
+R_2p_to_2s,EXACT_NATIVE,R_inf.dat,direct,
+R_2s_to_2p,EXACT_DERIVED,3 R_2p_to_2s,direct,unresolved 2s/2p statistical-degeneracy closure
+"Eb, A1s, A2s",EXACT_NATIVE,two_photon_tables.dat,direct virtual-bin block,
+A3s + 5 A3d aggregate,EXACT_NATIVE_AGGREGATE,A3s3d_tab,direct aggregate transfer,cannot attribute 3s and 3d separately
+A4s + 5 A4d aggregate,EXACT_NATIVE_AGGREGATE,A4s4d_tab,direct aggregate transfer,cannot attribute 4s and 4d separately
+separate 3s and 3d profiles,NOT_RECOVERABLE,already combined in A3s3d_tab,requires source-amplitude regeneration,"blocker only for channel attribution, not total scalar transfer"
+"channel-specific p_d^i and R_2p^{i,+}",NOT_EXPLICITLY_STORED,compressed into aggregate real-virtual matrix elements,use native matrix or regenerate channel compiler,C3A channel template cannot be populated one-to-one from HYREC-2 alone
+311-state sparse radiative-transfer block,RECONSTRUCTABLE_EXACTLY,hydrogen.c + native tables,next implementation lane,
+SWIFT fitted escape correction,EXACT_NATIVE_COMPRESSION,fit_swift.dat,regression only,not suitable as full angle-frequency anisotropic kernel

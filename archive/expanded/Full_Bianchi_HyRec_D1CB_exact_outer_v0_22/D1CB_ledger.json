@@ -1,0 +1,176 @@
+{
+  "classification": "D1CB_EXACT_COM_KHW_NESTED_OUTER_WING_LOCK",
+  "stage": "C2d2C2-D1C-B",
+  "source": "immutable v0.20 |x|<=10.25 conductance plus 2340 newly evaluated exact cell-integrated COM-KHW outer orbits",
+  "domains": {
+    "10.25": {
+      "xmax": 10.25,
+      "cells": 29,
+      "states": 754
+    },
+    "12.75": {
+      "xmax": 12.75,
+      "cells": 31,
+      "states": 806
+    },
+    "16.25": {
+      "xmax": 16.25,
+      "cells": 33,
+      "states": 858
+    },
+    "21.25": {
+      "xmax": 21.25,
+      "cells": 35,
+      "states": 910
+    }
+  },
+  "orbit_counts": {
+    "new_frequency_pairs": 195,
+    "new_physics_orbits": 2340,
+    "10p25_to_12p75": 732,
+    "12p75_to_16p25": 780,
+    "16p25_to_21p25": 828
+  },
+  "quadrature": {
+    "group1_general": "GL8/12",
+    "group2_general": "GL12/16",
+    "group3_general": "GL16/20",
+    "backscatter": "rational pole map with v orders 32/48, 40/56, 48/64",
+    "conductance_weighted_low_high_matrix_relative": 8.430181409036425e-12,
+    "unweighted_max_orbit_low_high_relative": 0.9881422132899577,
+    "interpretation": "large unweighted discrepancies occur only in exponentially negligible tail orbits; matrix-weighted error is the acceptance quantity"
+  },
+  "reciprocity": {
+    "max_independent_double_amplitude_residual": 2.3190983779527844e-11,
+    "physical_microreciprocity": "PASS via v0.18 stable shared-invariant prescription",
+    "C_EDGE": 152.00785175077502,
+    "C_EDGE_STD": 2.912297080067495e-14
+  },
+  "background_gate": {
+    "max_fractional_detuning": 0.0004987042953399354,
+    "fifth_order_near_line_gate": 0.0005,
+    "inside_gate": true,
+    "margin": 1.2957046600645724e-06
+  },
+  "matrix_invariants": {
+    "10.25": {
+      "symmetry": 0.0,
+      "left_null": 3.9003424147194055e-14,
+      "right_null": 4.260094116285432e-14,
+      "min_positive": 5.180507139831502e-280
+    },
+    "12.75": {
+      "symmetry": 0.0,
+      "left_null": 4.069684112361023e-14,
+      "right_null": 4.263256414560601e-14,
+      "min_positive": 1.54974e-319
+    },
+    "16.25": {
+      "symmetry": 0.0,
+      "left_null": 3.9003023650078534e-14,
+      "right_null": 4.263256414560601e-14,
+      "min_positive": 1.54974e-319
+    },
+    "21.25": {
+      "symmetry": 0.0,
+      "left_null": 4.069684112353758e-14,
+      "right_null": 4.263256414560601e-14,
+      "min_positive": 5.42e-321
+    }
+  },
+  "BE_absolute_action_norms": {
+    "10.25": 2.5009536873510944e-14,
+    "12.75": 2.4075801668402222e-14,
+    "16.25": 2.2471924448501833e-14,
+    "21.25": 2.3637892171523388e-14
+  },
+  "nested_compact_decisions": [
+    {
+      "small": "10.25",
+      "large": "12.75",
+      "max_compact_domain_error": 1.7465030806351888e-05,
+      "worst_compact_state": "tapered_L8",
+      "gate": "PASS"
+    },
+    {
+      "small": "12.75",
+      "large": "16.25",
+      "max_compact_domain_error": 2.443835025667917e-06,
+      "worst_compact_state": "angular_dipole",
+      "gate": "PASS"
+    },
+    {
+      "small": "16.25",
+      "large": "21.25",
+      "max_compact_domain_error": 1.5388751482981836e-06,
+      "worst_compact_state": "angular_dipole",
+      "gate": "PASS"
+    }
+  ],
+  "domain_policy": {
+    "core_science_window_abs_x_le_4p25": {
+      "recommended_domain_abs_x_le": 10.25,
+      "validation_against": 12.75,
+      "max_compact_action_change": 1.7465030806351888e-05,
+      "M1_to_M4_rms_changes": {
+        "M1": 2.9430281803348733e-07,
+        "M2": 5.968003773165271e-07,
+        "M3": 1.136878738851196e-06,
+        "M4": 1.8096185892572138e-06
+      }
+    },
+    "extended_moment_window_abs_x_le_8p25": {
+      "recommended_domain_abs_x_le": 16.25,
+      "validation_against": 21.25,
+      "M1_to_M4_rms_changes": {
+        "M1": 1.0759592181609456e-10,
+        "M2": 3.355330236697707e-10,
+        "M3": 9.431879784244753e-10,
+        "M4": 2.244109362478802e-09
+      }
+    },
+    "nondecaying_or_wing_localized_states": {
+      "classification": "BOUNDARY_INTERFACE_NOT_DOMAIN_CONVERGENCE",
+      "required_ledgers": [
+        "L_red",
+        "L_blue",
+        "same-edge photon/H four-force"
+      ]
+    }
+  },
+  "surrogate_validation": {
+    "12.75": {
+      "matrix_relative": 6.18653549743099e-09,
+      "max_action_relative_all_nonBE": 0.00019800088408115557,
+      "max_action_relative_compact": 1.6411538420241364e-08,
+      "worst_state": "wing_localized"
+    },
+    "16.25": {
+      "matrix_relative": 3.342246781676919e-08,
+      "max_action_relative_all_nonBE": 0.0002052650871908531,
+      "max_action_relative_compact": 2.272132734801675e-08,
+      "worst_state": "wing_localized"
+    },
+    "21.25": {
+      "matrix_relative": 1.509518855221427e-07,
+      "max_action_relative_all_nonBE": 0.00020526344809554178,
+      "max_action_relative_compact": 9.613080171838645e-08,
+      "worst_state": "wing_localized"
+    }
+  },
+  "limitations": [
+    "The smooth bound+continuum background remains the v0.8 fifth-order near-Ly-alpha expansion; the outer boundary lies only marginally inside its 5e-4 detuning gate.",
+    "Independent double-precision reverse amplitudes in extreme negligible tails can exceed 1e-12; production uses the v0.18 shared-invariant event prescription after arbitrary-precision audit.",
+    "No fine structure, J-state interference, polarization or atomic alignment.",
+    "The common physical cross-section normalization remains inherited from v0.20; relative action, moments and conservation are locked."
+  ],
+  "next_stage": {
+    "name": "D1C-C_boundary_interface_and_scalar_domain_lock",
+    "tasks": [
+      "Freeze |x|<=10.25 for compact science-core action and |x|<=16.25 for moments required through |x|<=8.25.",
+      "Promote nondecaying smooth and wing-localized spectra to a boundary-interface solve with explicit red/blue flux ledgers.",
+      "At |x|=21.25 compare the fifth-order background with direct bound+continuum KHW evaluation before using that domain as a physical boundary lane.",
+      "Only after the scalar boundary closure begin 2p fine structure and polarized PRD."
+    ]
+  }
+}

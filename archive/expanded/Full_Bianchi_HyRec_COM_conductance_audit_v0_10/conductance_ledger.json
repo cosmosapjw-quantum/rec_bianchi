@@ -1,0 +1,158 @@
+{
+  "classification": "BOUNDED_SCALAR_ANGLE_AVERAGED_COM_CONDUCTANCE_AUDIT",
+  "stage": "Stage 4A-2b.2b-C2d2B-bounded",
+  "result": "The Rao-Blackwellized Hummer-Meiksin baseline nearly satisfies raw detailed balance. Replacing only the atomic pole/background by the COM amplitude while retaining the first-order frequency-angle map leaves a converged raw equilibrium-flux asymmetry of about 1.43e-5. This is a model-order mismatch, not a quadrature failure.",
+  "grid": {
+    "coordinate": "Doppler x relative to the free-atom absorption resonance",
+    "x_range": [
+      -4.25,
+      4.25
+    ],
+    "dx": 0.5,
+    "cells": 17,
+    "incoming_cell_order": 10,
+    "outgoing_cell_order": 14,
+    "scattering_angle_order": 28,
+    "conditioned_velocity_local_order": 96,
+    "conditioned_velocity_broad_order": 128
+  },
+  "physics": {
+    "baseline": "Hummer-Meiksin first-order frequency redistribution with the H-frame nu_out/nu_in phase-space factor",
+    "COM_pole": "Nonrelativistic COM absorption denominator with the causal natural-width prescription",
+    "COM_full": "COM pole plus v0.8 two-frequency smooth bound+continuum background through fifth order",
+    "not_included": [
+      "Exact atom-frame angle aberration in the smooth cell integral",
+      "Exact outgoing solid-angle Jacobian beyond the integrated first-order Hummer map",
+      "Fine structure, J-state interference, polarization, alignment"
+    ]
+  },
+  "conductance_metrics": {
+    "baseline": {
+      "raw_relative_asymmetry": 7.01493156236304e-09,
+      "raw_max_scaled_asymmetry": 4.4597955898178294e-09,
+      "pairing_relative_correction": 3.5074657811815203e-09,
+      "paired_relative_asymmetry": 0.0,
+      "raw_left_null": 4.401490243376724e-17,
+      "raw_equilibrium_right_null": 1.9014427211902792e-10,
+      "paired_left_null": 3.659428501088873e-17,
+      "paired_equilibrium_right_null": 4.676434119333434e-17
+    },
+    "COM_pole": {
+      "raw_relative_asymmetry": 1.4271527089870656e-05,
+      "raw_max_scaled_asymmetry": 6.758822399548467e-06,
+      "pairing_relative_correction": 7.135763544935328e-06,
+      "paired_relative_asymmetry": 0.0,
+      "raw_left_null": 8.389050705553543e-17,
+      "raw_equilibrium_right_null": 1.8934563670106971e-06,
+      "paired_left_null": 1.0237148879775848e-16,
+      "paired_equilibrium_right_null": 7.32347837698776e-17
+    },
+    "COM_full": {
+      "raw_relative_asymmetry": 1.4271527087704711e-05,
+      "raw_max_scaled_asymmetry": 6.758822398791512e-06,
+      "pairing_relative_correction": 7.135763543852356e-06,
+      "paired_relative_asymmetry": 0.0,
+      "raw_left_null": 1.23575489559502e-16,
+      "raw_equilibrium_right_null": 1.893456353620833e-06,
+      "paired_left_null": 6.469095682391001e-17,
+      "paired_equilibrium_right_null": 5.552275079819228e-17
+    }
+  },
+  "baseline_relative_difference_from_v03_bounded_block": 0.0006621826171255443,
+  "route_M_route_C": {
+    "conditional_column_sum_residual": 4.440892098500626e-16,
+    "kernel_reconstruction_residual": 1.3877787807814457e-17,
+    "minimum_conditional_probability": 5.497827397682481e-08
+  },
+  "action_tests": [
+    {
+      "state": "BE_equilibrium",
+      "baseline_action_norm": 4.894881782031273e-17,
+      "COM_pole_action_norm": 7.934324704795444e-17,
+      "COM_full_action_norm": 7.604484221866779e-17,
+      "pole_vs_baseline_relative": 1.659326957788312,
+      "full_vs_pole_relative": 1.8467840369441786,
+      "full_vs_baseline_relative": 0.6945597320377168,
+      "pairing_effect_on_full_action": 47888530961.21837,
+      "full_photon_number_residual": 1.4202909905944529e-16,
+      "full_frequency_energy_moment": -2.82847946373343e-17,
+      "matter_opposite_frequency_moment": 2.82847946373343e-17
+    },
+    {
+      "state": "smooth_L8",
+      "baseline_action_norm": 4.9067603770758903e-05,
+      "COM_pole_action_norm": 4.906759891807822e-05,
+      "COM_full_action_norm": 4.906759891882896e-05,
+      "pole_vs_baseline_relative": 5.574550102050834e-05,
+      "full_vs_pole_relative": 7.784549784545393e-08,
+      "full_vs_baseline_relative": 5.57411147984644e-05,
+      "pairing_effect_on_full_action": 0.07789586054259524,
+      "full_photon_number_residual": 8.326777736626468e-17,
+      "full_frequency_energy_moment": -1.725129548453382e-07,
+      "matter_opposite_frequency_moment": 1.725129548453382e-07
+    },
+    {
+      "state": "smooth_L2",
+      "baseline_action_norm": 0.0007623578589230325,
+      "COM_pole_action_norm": 0.0007623577869532396,
+      "COM_full_action_norm": 0.0007623577869741584,
+      "pole_vs_baseline_relative": 5.3360358105285955e-05,
+      "full_vs_pole_relative": 6.463019894614473e-08,
+      "full_vs_baseline_relative": 5.334626307044764e-05,
+      "pairing_effect_on_full_action": 0.004983759453111625,
+      "full_photon_number_residual": 1.1907173596961208e-16,
+      "full_frequency_energy_moment": -2.601140504455544e-06,
+      "matter_opposite_frequency_moment": 2.601140504455544e-06
+    },
+    {
+      "state": "narrow_core",
+      "baseline_action_norm": 0.016779735638590556,
+      "COM_pole_action_norm": 0.016779735461883022,
+      "COM_full_action_norm": 0.016779735462120273,
+      "pole_vs_baseline_relative": 5.472978844517471e-06,
+      "full_vs_pole_relative": 1.408603708641778e-08,
+      "full_vs_baseline_relative": 5.460292800024298e-06,
+      "pairing_effect_on_full_action": 0.00022112249849778426,
+      "full_photon_number_residual": 1.425870481076737e-16,
+      "full_frequency_energy_moment": -1.3673318276375242e-05,
+      "matter_opposite_frequency_moment": 1.3673318276375242e-05
+    },
+    {
+      "state": "odd_red_blue",
+      "baseline_action_norm": 0.013923019413247155,
+      "COM_pole_action_norm": 0.013923019390256803,
+      "COM_full_action_norm": 0.013923019390210047,
+      "pole_vs_baseline_relative": 1.6963622321743918e-05,
+      "full_vs_pole_relative": 2.334280591116433e-08,
+      "full_vs_baseline_relative": 1.6947537868676294e-05,
+      "pairing_effect_on_full_action": 0.0002617259161978702,
+      "full_photon_number_residual": 1.231467974167821e-16,
+      "full_frequency_energy_moment": -0.024595605810746712,
+      "matter_opposite_frequency_moment": 0.024595605810746712
+    }
+  ],
+  "interpretation": {
+    "raw_gate": "FAIL for COM pole/full at the 1.43e-5 level.",
+    "paired_table": "A time-reversal-paired conductance is stored for operator-impact auditing, but is not declared the production raw kernel.",
+    "cause": "Frequency, aberration, outgoing solid-angle Jacobian, and event weighting must be promoted to the same exact order as the COM amplitude. A frequency-only second-order correction does not repair the residual.",
+    "angular_scope": "This artifact is scalar and angle-averaged. The angular quadrupole and direction-dependent red/blue-crossing gates remain open."
+  },
+  "Wolfram_gates": {
+    "symmetric_conductance_left_null": 0,
+    "symmetric_conductance_equilibrium_right_null": 0,
+    "entropy_dissipation_identity": 0,
+    "common_anchor_translation_residual": 0,
+    "event_pair_equilibrium_reciprocity_residual": 0
+  },
+  "next_stage": {
+    "name": "C2d2C_full_phase_space_paired_event_kernel",
+    "tasks": [
+      "Construct the conductance directly from forward/time-reversed event pairs in full frequency-angle phase space.",
+      "Use exact Lorentz aberration, exact atom-frame recoil, and the outgoing phase-space Jacobian in one event map.",
+      "Retain the angle index instead of Rayleigh-angle averaging.",
+      "Verify raw detailed balance before any matrix-level symmetrization.",
+      "Run angular quadrupole and direction-dependent red/blue-crossing action tests.",
+      "Generate photon and hydrogen four-force from the same paired event ledger."
+    ]
+  }
+}
