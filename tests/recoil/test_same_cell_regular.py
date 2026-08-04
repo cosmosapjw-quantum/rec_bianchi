@@ -1,5 +1,6 @@
 import numpy as np
 
+from full_bianchi_hyrec.artifacts import V032_LEGENDRE_KERNEL
 from full_bianchi_hyrec.recoil.same_cell_regular import (
     assemble_from_same_cell_rates,
     integrate_hummer_same_cell_audit,
@@ -27,10 +28,7 @@ def test_same_cell_selected_quadrature_converges():
 
 
 def test_no_recoil_hummer_same_cell_matches_v032_reference():
-    data = np.load(
-        "/mnt/data/Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32/"
-        "finite_volume_legendre_kernel.npz"
-    )
+    data = np.load(V032_LEGENDRE_KERNEL)
     gain = data["physical_gain_sInv"]
     cell = 8
     calculated = integrate_hummer_same_cell_audit(
@@ -41,10 +39,7 @@ def test_no_recoil_hummer_same_cell_matches_v032_reference():
 
 
 def test_bounded_operator_algebra_preserves_scalar_number_and_equilibrium():
-    data = np.load(
-        "/mnt/data/Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32/"
-        "finite_volume_legendre_kernel.npz"
-    )
+    data = np.load(V032_LEGENDRE_KERNEL)
     gain = data["physical_gain_sInv"][:7]
     baseline = np.zeros((7, 17))
     for cell in range(17):
