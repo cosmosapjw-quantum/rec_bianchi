@@ -15,14 +15,13 @@ from numpy.polynomial.legendre import leggauss
 from scipy.integrate import quad
 from scipy.special import erf, wofz
 
-_DEFAULT_V032 = Path(
-    "/mnt/data/Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32/"
-    "finite_volume_legendre_kernel.npz"
+from full_bianchi_hyrec.artifacts import (
+    V032_LEGENDRE_KERNEL,
+    V033_COMPLETED_KERNEL,
 )
-_DEFAULT_V033 = Path(
-    "/mnt/data/Full_Bianchi_HyRec_C3B2B1D0_thermodynamic_completion_v0_33/"
-    "thermodynamic_completed_kernel.npz"
-)
+
+_DEFAULT_V032 = V032_LEGENDRE_KERNEL
+_DEFAULT_V033 = V033_COMPLETED_KERNEL
 
 
 def rayleigh_phase(mu: np.ndarray | float) -> np.ndarray | float:
