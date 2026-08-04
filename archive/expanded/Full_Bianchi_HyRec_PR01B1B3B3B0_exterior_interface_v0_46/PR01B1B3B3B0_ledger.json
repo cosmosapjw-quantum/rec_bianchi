@@ -1,0 +1,130 @@
+{
+  "classification": "PR01B1B3B3B0_NEAR_EXTERIOR_INTERFACE_LOCK",
+  "stage": "PR-01B1-B3B3B0",
+  "status": "PASS_NEAR_EXTERIOR_FAR_BOUNDARY_OPEN",
+  "domain": {
+    "interior": [
+      -4.25,
+      4.25
+    ],
+    "near_red_exterior": [
+      -10.25,
+      -4.25
+    ],
+    "near_blue_exterior": [
+      4.25,
+      10.25
+    ],
+    "red_cells": [
+      [
+        -10.25,
+        -8.25
+      ],
+      [
+        -8.25,
+        -7.0
+      ],
+      [
+        -7.0,
+        -6.0
+      ],
+      [
+        -6.0,
+        -5.25
+      ],
+      [
+        -5.25,
+        -4.75
+      ],
+      [
+        -4.75,
+        -4.25
+      ]
+    ],
+    "blue_cells": [
+      [
+        4.25,
+        4.75
+      ],
+      [
+        4.75,
+        5.25
+      ],
+      [
+        5.25,
+        6.0
+      ],
+      [
+        6.0,
+        7.0
+      ],
+      [
+        7.0,
+        8.25
+      ],
+      [
+        8.25,
+        10.25
+      ]
+    ],
+    "far_boundary": "|x|=10.25; direct jumps beyond remain a separate far-flux gate"
+  },
+  "counts": {
+    "interior_cells": 17,
+    "exterior_cells": 12,
+    "unordered_interface_pairs": 204,
+    "ell_max": 24
+  },
+  "hard_results": {
+    "minimum_scalar_conductance": 1.1405756503927503e-23,
+    "maximum_selected_quadrature_relative": 1.0066215217949013e-08,
+    "maximum_selected_orientation_relative": 6.574376687198428e-15,
+    "interface_left_null_absolute": 1.6940658945086007e-21,
+    "interface_left_null_relative": 1.7343658936112173e-16,
+    "interface_right_null": 5.3418218171544397e-17,
+    "combined_left_null_absolute": 8.6835015469485e-17,
+    "combined_left_null_relative": 1.8134250590886183e-16,
+    "combined_right_null": 1.9294970000828394e-16,
+    "random_number_residual_absolute": 2.342092255836321e-17,
+    "random_number_residual_relative": 9.645315843535073e-19,
+    "dilute_entropy_production": -0.00014693201866144135,
+    "same_event_four_force_residual": 0.0,
+    "red_outflow_min_s^-1": 1.7355002798474664e-10,
+    "red_outflow_max_s^-1": 7.608900121974382e-06,
+    "blue_outflow_min_s^-1": 1.7256214592753183e-10,
+    "blue_outflow_max_s^-1": 7.600184129531806e-06
+  },
+  "hard_gate_status": {
+    "scalar_positivity": true,
+    "selected_quadrature": true,
+    "orientation_reciprocity": true,
+    "interface_number": true,
+    "interface_equilibrium": true,
+    "combined_number": true,
+    "combined_equilibrium": true,
+    "entropy_dissipation": true,
+    "same_event_four_force": true,
+    "far_direct_jump_closure": false,
+    "full_adaptive_L12_L20_L24": false
+  },
+  "decision": {
+    "near_exterior_interface": "PASS",
+    "far_boundary": "OPEN",
+    "full_PR01_scalar_release": "OPEN"
+  },
+  "limitations": [
+    "Exterior-exterior scattering and exterior same-cell angular damping are not included.",
+    "Direct interior jumps beyond |x|=10.25 are not yet integrated.",
+    "Four-force coefficients are axisymmetric equilibrium-weighted endpoint moments; the nonlinear harmonic edge action remains the next stage.",
+    "The amplitude is still the provisional unresolved scalar 2p pole+crossed model."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3B3B1_far_flux_and_full_scalar_release",
+    "tasks": [
+      "Integrate direct interior-to-far jumps beyond |x|=10.25 and lock the far boundary ledger.",
+      "Apply the near-exterior conductance on L=12/20/24 harmonic-exact grids with nonlinear Bose edge flux.",
+      "Close red/interior/blue photon number, entropy and total four-force for anisotropic mock states.",
+      "Then execute PR-01C BackgroundSnapshot finite-tilt and large-shear frame-adapter regression."
+    ]
+  }
+}
