@@ -2,34 +2,69 @@
 
 ## Summary
 
-The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The current durable endpoint is **PR-01B1-B3B3B1 (v0.47)**.
+The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The current durable endpoint is **PR-01C / v0.48**, and **PR-01 is complete**.
 
-## Newly closed in v0.47
+## Closed in v0.48
 
-- Regenerated all 136 interior off-diagonal unordered conductance pairs through `ell=24`.
-- Added 102 direct interior/far-interface pairs over `10.25<|x|<=21.25`.
-- Combined 17 interior, 12 near-exterior and 6 far-exterior states into one 35-state core-to-boundary network.
-- Closed scalar positivity, reciprocity, photon-number and thermal-equilibrium gates.
-- Closed the far-tail gate: the outer adaptive bin contributes `9.04e-25` of the full generator norm and the continuation bound is `7.70e-29`.
-- Recast nonlinear Bose scattering in an activity-reference-subtracted harmonic form, avoiding catastrophic near-equilibrium subtraction.
-- Closed discrete BE, nonlinear number, entropy and total four-force gates.
-- Locked adaptive nonlinear policies: `L=12` for finite tilt and mixed tilt/shear, `L=20` for nonlinear even shear, and `L=24` for directional red/blue crossing.
-- Replaced the negative-weight 230-point `L=12` nonlinear grid by the positive-weight 302-point rule.
+- Added a chart-independent `BackgroundSnapshot` physical tetrad interface.
+- Added adapters for primitive Bianchi II/class A, tilted class-B VI_h, and exceptional VI_-1/9 charts.
+- Verified the exact finite-tilt normal-frame to hydrogen-frame frequency characteristic.
+- Verified the exact aberrated direction derivative.
+- Evolved three nonlinear homogeneous background trajectories from the supplied primitive solver.
+- Located one or two red/blue boundary-speed roots in every representative model.
+- Closed segment-local branch integration to `7.66e-16` relative residual.
+- Preserved photon number and boundary four-momentum exactly.
+- Demonstrated that the inherited v0.47 local collision action is unchanged across Bianchi types.
+- Closed PR-01 and advanced the active roadmap to PR-02.
 
-## Explicit scope boundary
+## Representative hard results
 
-Near/far exterior states carry resonant-scattering conductance to the interior core. Exterior–exterior collisions remain assigned to the boundary/Liouville transport module and are not silently included. The amplitude remains the provisional unresolved scalar `2p` pole+crossed model; full bound+continuum KHW physics is PR-03.
+| Quantity | Maximum / minimum result |
+|---|---:|
+| Primitive constraint residual | `3.13e-13` |
+| Finite-tilt frequency residual | `1.49e-11` |
+| Finite-tilt direction residual | `1.12e-11` |
+| Branch quadrature residual | `7.66e-16` |
+| Minimum selected root count | `1` |
+| Boundary number residual | `0` |
+| Boundary four-momentum residual | `0` |
+| Local collision-action difference across models | `0` |
+
+Representative trajectories:
+
+- Bianchi II, class A, large shear;
+- Bianchi VI_h, tilted class B, nonlinear shear and finite tilt;
+- exceptional VI_-1/9.
+
+## Architecture locked by PR-01
+
+Bianchi dependence enters local recombination only through physical tetrad characteristics:
+
+\[
+\mathcal B=
+\{H,q,\sigma_{ab},N_{ab},A_a,R_a,
+\beta_{\rm H}^a,D_0\beta_{\rm H}^a\}.
+\]
+
+The local scalar Ly-alpha collision kernel remains Bianchi-type independent. Geometry changes
+
+- normal-frame frequency drift;
+- direction flow;
+- hydrogen-frame Doppler adapter;
+- red/blue boundary speed and branch events.
+
+It does not modify atomic amplitudes or conductance tables.
 
 ## Immediate next release
 
-**PR-01C BackgroundSnapshot frame-adapter closure** must:
+**PR-02 nonlinear anisotropic Bose collision production integration** must:
 
-1. load finite-tilt, nonlinear-shear and turning/crossing snapshots from the supplied primitive Bianchi solver;
-2. convert normal-frame characteristics to hydrogen-frame `R_H`, direction flow and red/blue boundary speeds;
-3. run Bianchi II, one class-B model and exceptional `VI_-1/9` smoke regressions;
-4. close branch localization, photon number and total four-force without changing local collision microphysics;
-5. publish the PR-01 closure ledger and patch series.
+1. connect the v0.47 nonlinear Bose edge action to runtime `BackgroundSnapshot` states;
+2. use the positive-weight harmonic-exact `L=12/20/24` grids;
+3. add positivity-preserving implicit updates and analytic/JVP Jacobian tests;
+4. run finite-tilt, nonlinear-shear and directional-crossing trajectories;
+5. close BE, photon-number, entropy, positivity and total four-force gates.
 
 ## Repository synchronization
 
-The owner configured private-repository access in the ChatGPT GitHub app. This standard chat runtime still did not expose a GitHub connector function, so the live remote ref/tree was not available for verification. The local v0.46 full bundle was fresh-cloned and used as the verified parent of v0.47. Run `scripts/check_remote_state.py` again when the connector or normal Git network path is available.
+The owner reports that v0.47 was expanded and merged into the private `main`. This runtime still exposes neither a GitHub connector function nor a working SSH/HTTPS Git route, so the exact remote merge SHA was not independently verified. Incremental v0.48 artifacts are anchored to the fresh-clone-verified local v0.47 commit `ced7255…`; a raw patch and standalone full bundle are also exported for squash-merge or divergent-history cases. See `docs/GITHUB_PRIVATE_REPO_ACCESS.md`.

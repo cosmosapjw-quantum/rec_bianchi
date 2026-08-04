@@ -1,0 +1,124 @@
+{
+  "classification": "PR01C_BACKGROUND_FRAME_ADAPTER_CLOSURE",
+  "stage": "PR-01C",
+  "status": "PASS_PR01_COMPLETE",
+  "source": {
+    "primitive_archive": "archive/inputs/bianchibianchic2.tar.gz",
+    "primitive_archive_sha256": "ba10a80ca7e4cec510e935d5a75032725ae822b89cb25c6dd2599d770955ef38",
+    "collision_artifact": "PR01B1-B3B3B1/v0.47",
+    "collision_data_sha256": "c11af92d5e8ee86d6508f0a2a9404df0df2b1dff9a44e252abea35c4a0af8409"
+  },
+  "models": [
+    {
+      "model": "Bianchi_II_large_shear",
+      "bianchi_type": "II",
+      "chart": "class_a",
+      "trajectory_success": true,
+      "tau_final": 2.5,
+      "cosmic_time_final_s": 2084115658147850.8,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 2.353625263441816e-16,
+      "Omega_min": 0.4783916666666667,
+      "Sigma2_max": 0.49639999999999995,
+      "tilt_speed_max": 0.0,
+      "constraint_max": 0.0,
+      "R_H_over_H_min": -1.8385640646055101,
+      "R_H_over_H_max": 0.39999999999999997,
+      "mixed_sign_time_count": 59,
+      "selected_direction": 0,
+      "selected_root_count": 1,
+      "frame_frequency_residual": 2.220446049250313e-16,
+      "frame_direction_residual": 7.540296170514115e-12
+    },
+    {
+      "model": "Bianchi_VI_h_tilted_large_shear",
+      "bianchi_type": "VI_h",
+      "chart": "class_b_tilted",
+      "trajectory_success": true,
+      "tau_final": 1.5,
+      "cosmic_time_final_s": 132964226092616.89,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 4.243868423168e-15,
+      "Omega_min": 0.07336798896780605,
+      "Sigma2_max": 0.6049586405645009,
+      "tilt_speed_max": 0.6373478931944699,
+      "constraint_max": 3.1282094969942165e-13,
+      "R_H_over_H_min": -3.223737406233364,
+      "R_H_over_H_max": 0.37857090057833415,
+      "mixed_sign_time_count": 77,
+      "selected_direction": 20,
+      "selected_root_count": 2,
+      "frame_frequency_residual": 1.490085832500654e-11,
+      "frame_direction_residual": 1.0853890065529649e-11
+    },
+    {
+      "model": "Bianchi_VI_minus_1_over_9_exceptional",
+      "bianchi_type": "VI_-1/9",
+      "chart": "exceptional_VI",
+      "trajectory_success": true,
+      "tau_final": 2.0,
+      "cosmic_time_final_s": 396534576208170.2,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 1.4137576995261422e-15,
+      "Omega_min": 0.37382932697028404,
+      "Sigma2_max": 0.45158340297184774,
+      "tilt_speed_max": 0.0,
+      "constraint_max": 4.829211862915523e-16,
+      "R_H_over_H_min": -1.8730475485530906,
+      "R_H_over_H_max": 0.30000000000000004,
+      "mixed_sign_time_count": 50,
+      "selected_direction": 6,
+      "selected_root_count": 2,
+      "frame_frequency_residual": 4.440892098500626e-16,
+      "frame_direction_residual": 1.1193216413606647e-11
+    }
+  ],
+  "hard_results": {
+    "maximum_primitive_constraint": 3.1282094969942165e-13,
+    "maximum_frame_frequency_residual": 1.490085832500654e-11,
+    "maximum_frame_direction_residual": 1.1193216413606647e-11,
+    "minimum_selected_root_count": 1,
+    "maximum_branch_quadrature_relative": 7.65922881732011e-16,
+    "minimum_naive_fixed_branch_error": 2.5760502957832116e-06,
+    "maximum_number_residual": 0.0,
+    "maximum_boundary_four_momentum_residual": 0.0,
+    "collision_action_model_difference": 0.0,
+    "collision_left_null_relative": 1.2501710130807262e-16,
+    "collision_right_null_relative": 1.5343683284206274e-17,
+    "inherited_collision_four_force": 0.0
+  },
+  "hard_gate_status": {
+    "primitive_trajectory_success": true,
+    "representative_types": true,
+    "primitive_constraints": true,
+    "finite_tilt_frame_frequency": true,
+    "finite_tilt_frame_direction": true,
+    "turning_event_localization": true,
+    "branch_quadrature": true,
+    "boundary_number": true,
+    "boundary_four_momentum": true,
+    "local_collision_unchanged": true,
+    "inherited_scalar_collision": true,
+    "total_four_force": true
+  },
+  "decision": {
+    "PR01C": "PASS",
+    "PR01": "COMPLETE",
+    "local_collision_microphysics": "UNCHANGED",
+    "next_PR": "PR-02 nonlinear anisotropic Bose collision production integration"
+  },
+  "limitations": [
+    "The representative class-A and exceptional primitive charts are non-tilted; finite tilt is exercised by the tilted class-B trajectory.",
+    "This is a smoke/regression closure, not the all-11 end-to-end sweep assigned to PR-10.",
+    "The collision amplitude remains the provisional unresolved scalar 2p pole+crossed model; full bound+continuum KHW physics is PR-03.",
+    "Exterior-exterior collisions remain assigned to the boundary/Liouville module as locked in v0.47."
+  ],
+  "next_stage": {
+    "name": "PR-02 nonlinear anisotropic Bose collision production integration",
+    "tasks": [
+      "Promote the v0.47 nonlinear Bose edge action from mock fields to the BackgroundSnapshot adaptive L=12/20/24 runtime interface.",
+      "Add positivity-preserving implicit updates and analytic/JVP Jacobian tests.",
+      "Run finite-tilt, nonlinear-shear and crossing stress states with full BE/number/entropy/four-force gates."
+    ]
+  }
+}
