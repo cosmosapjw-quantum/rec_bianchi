@@ -12,5 +12,7 @@ jobs:
           python-version: '3.13'
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e '.[test]'
+      - name: Smoke-import every package module from the committed tree
+        run: python scripts/check_imports.py
       - run: python scripts/verify_repo.py --quick
       - run: pytest -q

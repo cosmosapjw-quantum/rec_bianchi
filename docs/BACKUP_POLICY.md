@@ -26,3 +26,8 @@
 ## GitHub authentication fallback
 
 The preferred transport is the user's existing SSH setup. A sandbox without an `ssh` binary may use an exact-repository fine-grained token via `GITHUB_REC_BIANCHI_TOKEN`; `scripts/push_backup.sh` passes it through a temporary `GIT_ASKPASS` helper and never stores it in Git configuration or a URL.
+
+
+## Repository check and patch export
+
+At the start and end of every bounded user-invoked stage run `python scripts/check_remote_state.py`. Remote inaccessibility must be recorded, not interpreted as synchronization. After committing, run `python scripts/export_patch_series.py` and deliver the mbox, binary diff and receipt. This is an explicit per-stage protocol, not an unattended background job.
