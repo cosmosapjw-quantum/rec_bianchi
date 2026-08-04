@@ -4,27 +4,27 @@
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-04",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 76,
-  "estimated_PR01_completion_percent": 95,
+  "estimated_overall_completion_percent": 77,
+  "estimated_PR01_completion_percent": 98,
   "current_durable_stage": {
-    "name": "PR-01B1-B3B3B0 near-exterior interface",
-    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3B0_exterior_interface_v0_46",
-    "status": "PASS_NEAR_EXTERIOR_FAR_BOUNDARY_OPEN"
+    "name": "PR-01B1-B3B3B1 far flux and adaptive scalar release",
+    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3B1_far_scalar_release_v0_47",
+    "status": "PASS_CORE_TO_BOUNDARY_SCALAR_RELEASE_PR01C_OPEN"
   },
   "next_stage": {
-    "name": "PR-01B1-B3B3B1 far-flux and adaptive scalar release",
+    "name": "PR-01C BackgroundSnapshot frame-adapter closure",
     "tasks": [
-      "Integrate direct interior-to-far jumps beyond |x|=10.25 and preserve the far-boundary ledger.",
-      "Apply near-exterior conductances on harmonic-exact L=12/20/24 grids with nonlinear Bose edge flux.",
-      "Close red/interior/blue number, equilibrium, entropy, positivity and total four-force for anisotropic mock states.",
-      "Then execute PR-01C BackgroundSnapshot finite-tilt and nonlinear-large-shear frame-adapter regression."
+      "Load finite-tilt, nonlinear-shear and turning/crossing snapshots from the supplied primitive Bianchi solver.",
+      "Map normal-frame characteristics to the hydrogen frame without changing local collision microphysics.",
+      "Run Bianchi II, class-B and exceptional smoke regressions for branch localization, number and total four-force.",
+      "Publish the PR-01 closure ledger, repository patch series and updated thread-independent handoff."
     ]
   },
   "roadmap": [
     {
       "pr": 1,
       "title": "Exact recoil event and four-force",
-      "status": "IN_PROGRESS_95_PERCENT"
+      "status": "IN_PROGRESS_98_PERCENT_PR01C_OPEN"
     },
     {
       "pr": 2,
@@ -102,6 +102,6 @@
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
     "remote_ref_verified": false,
     "remote_tree_match": false,
-    "reason": "Repository check on 2026-08-04 could not resolve github.com; patches are anchored to fresh-clone-verified local base ba1f992 until a remote fetch is available."
+    "reason": "The owner configured private-repository access in the ChatGPT GitHub app, but this chat runtime did not expose a GitHub connector function and the CLI remote remained unavailable; remote refs therefore remain unverified."
   }
 }

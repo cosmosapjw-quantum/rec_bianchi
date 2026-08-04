@@ -1,0 +1,123 @@
+{
+  "classification": "PR01B1B3B3B1_FAR_FLUX_AND_ADAPTIVE_SCALAR_RELEASE_LOCK",
+  "stage": "PR-01B1-B3B3B1",
+  "status": "PASS_CORE_TO_BOUNDARY_SCALAR_RELEASE_PR01C_OPEN",
+  "domain": {
+    "interior": [
+      -4.25,
+      4.25
+    ],
+    "near_exterior": [
+      [
+        -10.25,
+        -4.25
+      ],
+      [
+        4.25,
+        10.25
+      ]
+    ],
+    "far_exterior": [
+      [
+        -21.25,
+        -10.25
+      ],
+      [
+        10.25,
+        21.25
+      ]
+    ],
+    "far_cells": [
+      [
+        -21.25,
+        -16.25
+      ],
+      [
+        -16.25,
+        -12.75
+      ],
+      [
+        -12.75,
+        -10.25
+      ],
+      [
+        10.25,
+        12.75
+      ],
+      [
+        12.75,
+        16.25
+      ],
+      [
+        16.25,
+        21.25
+      ]
+    ]
+  },
+  "counts": {
+    "states": 35,
+    "interior_pairs": 136,
+    "near_interface_pairs": 204,
+    "far_interface_pairs": 102,
+    "ell_max": 24
+  },
+  "hard_results": {
+    "minimum_scalar_conductance": 3.46119906936134e-53,
+    "selected_quadrature_max": 4.453417649005739e-09,
+    "orientation_max": 1.0810135764477847e-15,
+    "scalar_left_null_relative": 1.2501710130807262e-16,
+    "scalar_right_null_relative": 1.5343683284206274e-17,
+    "outer_bin_generator_ratio": 9.04351764577795e-25,
+    "outer_bin_fraction_of_far_outflow": 1.0257565870141084e-13,
+    "asymptotic_tail_bound_relative": 7.69530988336778e-29,
+    "nonlinear_number_relative_max": 5.1655200623819524e-17,
+    "nonlinear_entropy_max": -271993225218818.25,
+    "four_force_residual_max": 0.0,
+    "harmonic_Gram_residual_max": 3.1259717037102064e-15,
+    "release_policy": {
+      "finite_tilt_beta0p3": 12,
+      "nonlinear_even_shear": 20,
+      "mixed_tilt_shear": 12,
+      "red_blue_crossing": 24,
+      "high_occupation_stress": 12
+    },
+    "BE_action_relative_to_gross_max": 3.51720020399918e-25
+  },
+  "hard_gate_status": {
+    "scalar_positivity": true,
+    "selected_quadrature": true,
+    "orientation_reciprocity": true,
+    "scalar_number": true,
+    "scalar_equilibrium": true,
+    "far_tail_convergence": true,
+    "positive_harmonic_weights": true,
+    "BE_null": true,
+    "nonlinear_number": true,
+    "entropy_dissipation": true,
+    "same_event_four_force": true,
+    "adaptive_ell_release": true,
+    "exterior_exterior_collision": false,
+    "PR01C_background_adapter": false
+  },
+  "decision": {
+    "far_direct_jump_closure": "PASS",
+    "nonlinear_adaptive_scalar_core_to_boundary": "PASS",
+    "exterior_exterior_collision": "DEFERRED_TO_BOUNDARY_TRANSPORT_MODULE",
+    "PR01C": "NEXT"
+  },
+  "limitations": [
+    "Near/far exterior states exchange resonant-scattering conductance with the interior core; exterior-exterior collision is assigned to the boundary transport module and is not present here.",
+    "Far-tail closure uses direct cells through |x|=21.25 plus a geometric continuation bound.",
+    "The amplitude remains the provisional unresolved scalar 2p pole+crossed model; full bound+continuum KHW is PR-03.",
+    "The four-force is the discrete endpoint ledger on mode-weighted cell momenta for nonlinear tests; exact pair-integrated axisymmetric moments are separately stored for far edges."
+  ],
+  "next_stage": {
+    "name": "PR01C_BackgroundSnapshot_frame_adapter",
+    "tasks": [
+      "Load finite-tilt, nonlinear-shear and turning/crossing snapshots from the supplied primitive Bianchi solver.",
+      "Map normal-frame characteristics to the hydrogen frame without changing local collision microphysics.",
+      "Run Bianchi II, class-B and exceptional smoke regressions for branch localization, number and four-force.",
+      "Publish PR-01 closure ledger and patch series."
+    ]
+  }
+}

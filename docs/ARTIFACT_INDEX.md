@@ -50,3 +50,4 @@ Exact ZIP releases are immutable canonical snapshots.
 | 44 | `Full_Bianchi_HyRec_PR01B1B3B2_offdiagonal_pair_cells_v0_44.zip` | 120114 | `4f4ce5f726426505608eff3a73544917ca1d3d31c247e67e2929f2b916ea4d34` |
 | 45 | `Full_Bianchi_HyRec_PR01B1B3B3A_same_cell_regular_v0_45.zip` | 175072 | `9f080fe72a76398a924a176b45a791af74ae1ed9ba52e497513350fad5867b3f` |
 | 46 | `Full_Bianchi_HyRec_PR01B1B3B3B0_exterior_interface_v0_46.zip` | 113221 | `7168c1b67b96fdff26e0c767b79935ff8211b5acd9b0bd6b4f4dfb45ee246070` |
+| 47 | `Full_Bianchi_HyRec_PR01B1B3B3B1_far_scalar_release_v0_47.zip` | 126818 | `41f7c103be8944b2040ca47be68fed19de845f18b707f764d329e89bdeb161aa` |

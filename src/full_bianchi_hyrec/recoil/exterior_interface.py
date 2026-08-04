@@ -360,10 +360,10 @@ def exterior_pair_conductance(
     ell_max: int = 24,
 ) -> np.ndarray:
     """Unordered equilibrium conductance for a disjoint interval pair."""
-    total, _ = exterior_pair_bundle(
-        target, source, lane=lane, ell_max=ell_max
+    total, _ = _integrate_pair(
+        target, source, lane=lane, ell_max=ell_max, include_moments=False
     )
-    return total
+    return (8.0 * math.pi * PCC.dnu / PCC.c**3) * total
 
 
 @lru_cache(maxsize=512)
