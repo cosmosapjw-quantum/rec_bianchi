@@ -1,0 +1,115 @@
+{
+  "classification": "D1C_CALIBRATED_HUMMER_ASYMPTOTIC_NESTED_WING_PILOT",
+  "stage": "C2d2C2-D1C-A",
+  "source": "v0.20 exact core+initial wing; new outer cells use Hummer-II recoil/phase-space kernel calibrated to v0.20 COM-KHW wing cache",
+  "domains": {
+    "10.25": {
+      "xmax": 10.25,
+      "cells": 29,
+      "states": 754
+    },
+    "12.75": {
+      "xmax": 12.75,
+      "cells": 31,
+      "states": 806
+    },
+    "16.25": {
+      "xmax": 16.25,
+      "cells": 33,
+      "states": 858
+    },
+    "21.25": {
+      "xmax": 21.25,
+      "cells": 35,
+      "states": 910
+    }
+  },
+  "calibration": {
+    "full_weighted_log_rms": 3.753429740983843e-05,
+    "holdout_outer_weighted_log_rms": 7.34930678259865e-05,
+    "full_unweighted_log_std": 0.01244103680682403,
+    "C_edge": 152.00785175077502,
+    "overlap_matrix_relative_Frobenius": 3.753431056569999e-05
+  },
+  "quadrature": {
+    "generic": "rotated (u,z), GL32 main/GL40 audit",
+    "backscatter": "rational u=a tan(theta), v80 theta64/80"
+  },
+  "new_orbit_evaluations": 2340,
+  "max_pair_reciprocity": 1.530030202663813e-12,
+  "max_low_high_orbit_relative": 3.504566453904634e-08,
+  "matrix_invariants": {
+    "10.25": {
+      "cells": 29,
+      "states": 754,
+      "conductance_symmetry": 0.0,
+      "left_null": 4.060171979047907e-14,
+      "right_null": 4.0824584323454067e-14,
+      "min_conductance": 5.180507139831502e-280
+    },
+    "12.75": {
+      "cells": 31,
+      "states": 806,
+      "conductance_symmetry": 0.0,
+      "left_null": 3.7600070412905965e-14,
+      "right_null": 3.907985046680551e-14,
+      "min_conductance": 2.7253e-319
+    },
+    "16.25": {
+      "cells": 33,
+      "states": 858,
+      "conductance_symmetry": 0.0,
+      "left_null": 3.697779703592999e-14,
+      "right_null": 3.907985046680551e-14,
+      "min_conductance": 2.7253e-319
+    },
+    "21.25": {
+      "cells": 35,
+      "states": 910,
+      "conductance_symmetry": 0.0,
+      "left_null": 3.760007041283295e-14,
+      "right_null": 3.907985046680551e-14,
+      "min_conductance": 6.764e-321
+    }
+  },
+  "nested_decisions": [
+    {
+      "small": "10.25",
+      "large": "12.75",
+      "max_compact_domain_error": 1.7464877319814033e-05,
+      "worst_compact_state": "tapered_L8",
+      "max_surrogate_spread": 1.553613569795712e-08,
+      "robust_gate": "CONDITIONAL"
+    },
+    {
+      "small": "12.75",
+      "large": "16.25",
+      "max_compact_domain_error": 2.443745707903776e-06,
+      "worst_compact_state": "angular_dipole",
+      "max_surrogate_spread": 1.558032313077346e-08,
+      "robust_gate": "CONDITIONAL"
+    },
+    {
+      "small": "16.25",
+      "large": "21.25",
+      "max_compact_domain_error": 1.5386361995381479e-06,
+      "worst_compact_state": "angular_dipole",
+      "max_surrogate_spread": 2.834487047610977e-08,
+      "robust_gate": "CONDITIONAL"
+    }
+  ],
+  "limitations": [
+    "This is an asymptotic outer-wing pilot, not the full COM-KHW event-integrated D1C production kernel.",
+    "The calibrated correction has 3.75e-5 overlap matrix error and about 7.35e-5 weighted outer holdout log RMS.",
+    "Cells beyond |x|=10.25 are extrapolated from a low-order COM/KHW correction fitted on v0.20.",
+    "The v0.20 block is embedded unchanged."
+  ],
+  "next_stage": {
+    "name": "D1C-B_exact_outer_orbits_or_boundary_closure",
+    "tasks": [
+      "If nested errors remain above the surrogate spread, extend exact COM-KHW orbit integration to the required outer boundary.",
+      "If errors fall to the surrogate floor, replace the calibrated model by exact outer-orbit evaluation before declaring convergence.",
+      "Keep wing-localized states in a separate boundary-interface lane coupled to Liouville and true emission/absorption."
+    ]
+  }
+}

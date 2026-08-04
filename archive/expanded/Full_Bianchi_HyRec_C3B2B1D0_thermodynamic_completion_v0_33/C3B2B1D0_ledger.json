@@ -1,0 +1,78 @@
+{
+  "classification": "C3B2B1D0_RYBICKI_THERMODYNAMIC_COMPLETION_LOCK",
+  "stage": "C3B2B1-D0",
+  "source_artifact": "Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "b_D": 2.3468181806822746e-05,
+    "recoil_parameter_g": 0.00046291996132715954,
+    "thermal_Doppler_slope_alpha": 0.0009258399226543192,
+    "alpha_minus_2g": 1.0842021724855044e-19,
+    "line_center_half_logPi_slope": -0.0004394517793892966,
+    "line_center_recoil_piece_A1": -0.00012033722194639797,
+    "line_center_phase_space_piece_A1": 6.1006135805195355e-06,
+    "line_center_net_prediction_A1": -0.00011423660836587843,
+    "line_center_actual_increment_A1": -0.00011423661229809628,
+    "line_center_prediction_relative": 3.442169635810362e-08
+  },
+  "hard_results": {
+    "pairwise_detailed_balance_relative": 7.390993645949398e-17,
+    "conductance_symmetry_relative": 7.390993645949398e-17,
+    "dilute_discrete_equilibrium_relative": 1.3257887989836578e-16,
+    "physical_Planck_cell_average_relative": 5.731053530798e-12,
+    "Planck_cell_average_occupation_difference": 1.5204019015462044e-11,
+    "maximum_Bose_edge_equilibrium_relative": 1.1638165692717216e-16,
+    "maximum_number_relative": 2.7060880705171918e-18,
+    "maximum_perturbed_entropy_production": -38116258263801.08,
+    "maximum_total_four_force_residual": 0.0,
+    "line_center_Einstein_relation_relative": 3.442169635810362e-08,
+    "Einstein_increment_RMS_interior": 0.00038839765059584316,
+    "completed_rate_factor_min": 0.9964905583082525,
+    "completed_rate_factor_max": 1.0035218012478768
+  },
+  "Wolfram_exact_results": {
+    "pair_detailed_balance": 0,
+    "Bose_Einstein_edge_flux": 0,
+    "entropy_identity": 0,
+    "thermal_slope_alpha_minus_2g": 0,
+    "Fokker_Planck_zero_current": 0
+  },
+  "hard_gate_status": {
+    "pairwise_detailed_balance": true,
+    "conductance_symmetry": true,
+    "dilute_equilibrium": true,
+    "physical_Planck_cell_average": true,
+    "Bose_equilibrium": true,
+    "photon_number": true,
+    "entropy_dissipation": true,
+    "bounded_energy_four_force": true,
+    "line_center_Einstein_relation": true,
+    "exact_COM_recoil_event": false,
+    "anisotropic_nonlinear_stimulation": false
+  },
+  "decision": {
+    "C3B2B1D0": "PASS",
+    "Rybicki_thermodynamic_completion": "APPROVED",
+    "exact_COM_recoil_event": "OPEN",
+    "full_nonlinear_anisotropic_Bose_operator": "OPEN",
+    "interpretation": "The finite-volume Hummer proposal now has exact pairwise thermal microreversibility and Bose stimulation. This is the detailed-balance/Fokker-Planck completion, not a substitute for the exact event-level recoil map."
+  },
+  "limitations": [
+    "The square-root completion fixes the thermal affinity of the two-level Hummer proposal but does not evaluate the exact COM recoil kinematics event by event.",
+    "The nonlinear Bose test is frequency-isotropic. Harmonic linear blocks are completed, but nonlinear anisotropic stimulation still requires synthesis to a harmonic-exact grid.",
+    "The bounded energy ledger uses mode-weighted cell energies; the exact spatial four-force remains an event-level task.",
+    "The full bound+continuum COM-KHW amplitude and HYREC native moment projection remain open."
+  ],
+  "next_stage": {
+    "name": "C3B2B1D1_exact_recoil_event_and_nonlinear_harmonic_Bose",
+    "tasks": [
+      "Replace the thermodynamic square-root completion by the exact COM recoil event map and independently verify that it reduces to the same detailed-balance affinity.",
+      "Deposit photon and hydrogen four-momentum from the same recoil event on the red/interior/blue boundary state.",
+      "Implement nonlinear stimulated scattering through the L=12/20/24 harmonic-exact synthesis grids.",
+      "Require Bose right-null, entropy dissipation, photon number and total four-force for anisotropic mock states.",
+      "Project the exact recoil kernel to the native HYREC measure and compare Gamma and M1-M4 without a fitted scale."
+    ]
+  }
+}

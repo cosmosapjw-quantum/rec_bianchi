@@ -1,0 +1,52 @@
+{
+  "classification": "FORMAL_RECIPROCAL_COM_RESOLVENT_LOCK",
+  "stage": "Stage 4A-2b.2b-C2d0",
+  "central_correction": "A fixed-nucleus Rayleigh Kramers-Heisenberg-Waller amplitude cannot be made genuinely two-frequency merely by inserting omega_in != omega_out. For Rayleigh A=B, fixed-nucleus energy conservation requires omega_in=omega_out. Recoil requires center-of-mass momentum states in the initial, intermediate, and final atomic energies.",
+  "COM_resolved_denominators": {
+    "momentum_conservation": "P_f = P_i + hbar (k_i - k_o)",
+    "energy_conservation": "E_A + P_i^2/(2M) + hbar omega_i = E_B + P_f^2/(2M) + hbar omega_o",
+    "absorption_first": "D_I^- = E_I-E_A + [(P_i+hbar k_i)^2-P_i^2]/(2M) - hbar omega_i",
+    "emission_first": "D_I^+ = E_I-E_A + [(P_i-hbar k_o)^2-P_i^2]/(2M) + hbar omega_o",
+    "time_reversed_process": "(-P_f,-k_o) -> (-P_i,-k_i)"
+  },
+  "Wolfram_exact_residuals": {
+    "COM_absorption_denominator_reciprocity": 0,
+    "COM_emission_first_denominator_reciprocity": 0,
+    "fixed_nucleus_internal_denominator_reciprocity": [
+      0,
+      0
+    ]
+  },
+  "initial_atom_rest_denominators": {
+    "absorption_first": "D_I^- = Delta_I - hbar omega_i + hbar^2 omega_i^2/(2 M c^2)",
+    "emission_first": "D_I^+ = Delta_I + hbar omega_o + hbar^2 omega_o^2/(2 M c^2)",
+    "moving_atom_absorption": "D_I^- = Delta_I - hbar omega_i + hbar omega_i (v.n_i)/c + hbar^2 omega_i^2/(2 M c^2)",
+    "moving_atom_emission_first": "D_I^+ = Delta_I + hbar omega_o - hbar omega_o (v.n_o)/c + hbar^2 omega_o^2/(2 M c^2)"
+  },
+  "reference_scales_at_3000K": {
+    "nu_alpha_Hz": 2466067545792234.0,
+    "omega_alpha_rad_per_s": 1.5494759370234186e+16,
+    "hydrogen_mass_kg": 1.673532840653473e-27,
+    "vD_m_per_s": 7035.583908658272,
+    "vD_over_c": 2.3468181806822746e-05,
+    "hbar_omega_alpha_over_Mc2": 1.0863889814433136e-08,
+    "absorption_recoil_fractional_shift": 5.431944907216568e-09,
+    "absorption_recoil_shift_in_Doppler_widths": 0.0002314599806635798
+  },
+  "width_firewall": [
+    "The exact proof uses the full resolvent or zero-width denominators.",
+    "Do not insert a phenomenological -i Gamma/2 only in one forward denominator and then claim exact amplitude reciprocity.",
+    "If widths/self-energies are used, derive both forward and reverse kernels from the same causal self-energy prescription and verify detailed balance at the rate-kernel level."
+  ],
+  "next_stage": {
+    "name": "C2d1_COM_resolved_scalar_two_frequency_amplitude",
+    "tasks": [
+      "Implement the p-form KHW amplitude with D_I^- and D_I^+ above.",
+      "Separate the 2p resonant pole from the smooth bound+continuum background.",
+      "Evaluate the background at both omega_i and omega_o rather than using an incoming-only Lee series.",
+      "Verify the time-reversed amplitude/rate using full COM energy conservation.",
+      "Recover the fixed-nucleus Kokubo/Lee formula as M -> infinity and omega_o -> omega_i.",
+      "Generate a positive finite-volume event kernel and extract M1-M4 and the same-event four-force."
+    ]
+  }
+}

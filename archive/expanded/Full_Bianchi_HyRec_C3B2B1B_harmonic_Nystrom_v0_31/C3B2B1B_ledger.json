@@ -1,0 +1,113 @@
+{
+  "classification": "C3B2B1B_CONTINUOUS_MU_HARMONIC_NYSTROM_LOCK",
+  "stage": "C3B2B1-B",
+  "source_reference": "Full_Bianchi_HyRec_C3B2B1A_physical_Hummer_angular_v0_30",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "n1s_cm^-3": 250.0,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "absolute_rate_scale_s^-1": 1.430465268903049
+  },
+  "hybrid_angular_split": {
+    "backscatter_mu_interval": [
+      -1.0,
+      -0.99
+    ],
+    "regular_mu_interval": [
+      -0.99,
+      0.999
+    ],
+    "coherent_forward_mu_interval": [
+      0.999,
+      1.0
+    ],
+    "ell_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "quadrature_lanes": {
+      "coarse": {
+        "back_order": 12,
+        "middle_order": 80,
+        "forward_order": 20,
+        "middle_frequency_order": 64
+      },
+      "production": {
+        "back_order": 18,
+        "middle_order": 120,
+        "forward_order": 28,
+        "middle_frequency_order": 80
+      },
+      "reference": {
+        "back_order": 24,
+        "middle_order": 180,
+        "forward_order": 36,
+        "middle_frequency_order": 96
+      },
+      "superreference": {
+        "back_order": 32,
+        "middle_order": 240,
+        "forward_order": 48,
+        "middle_frequency_order": 120
+      }
+    }
+  },
+  "hard_results": {
+    "max_reference_to_superreference_relative": 1.9182196438092556e-12,
+    "max_endpoint_transform_relative_residual": 1.2561412456500124e-13,
+    "isotropic_leakage_harmonic_reference": 0.0,
+    "harmonic_subspace_leakage_reference": 0.0,
+    "maximum_scalar_number_residual": 3.4267903727298876e-16,
+    "capture_fraction_min": 0.7251197393735294,
+    "capture_fraction_mean": 0.9528240054966159,
+    "capture_fraction_max": 0.9999999533165144
+  },
+  "Lebedev302_comparison": {
+    "smooth_L8": 0.0007651790292583118,
+    "smooth_L2": 0.0007100012367082704,
+    "narrow_core": 0.0003646975366791487,
+    "odd_red_blue": 0.00036744439178045083,
+    "P1": 8.678086499574055e-08,
+    "P2": 1.3138577095865056e-05,
+    "P3": 7.486641732116612e-08,
+    "P4": 1.7345655325579847e-05
+  },
+  "interpretation": {
+    "continuous_mu_reference": "PASS",
+    "coherent_forward_split": "PASS",
+    "backscatter_endpoint_split": "PASS",
+    "raw_Lebedev_release": "REPLACED_BY_HARMONIC_REFERENCE",
+    "finding": "The non-monotone Lebedev behavior was an endpoint-resolution problem. Continuous-mu harmonic kernels converge to about 1e-12 for ell<=6, while the 302-point collocation retains 7e-4 spectral-action errors but already resolves P1/P2 much better."
+  },
+  "hard_gate_status": {
+    "endpoint_transform": true,
+    "continuous_mu_quadrature": true,
+    "isotropy": true,
+    "harmonic_subspace": true,
+    "number_conservation": true,
+    "absolute_Hummer_rate": true
+  },
+  "limitations": [
+    "The incoming frequency remains centre sampled to match v0.30; two-sided finite-volume frequency integration is the next step.",
+    "This is the no-recoil two-level Hummer-II reference, not the full COM-resolved Kramers-Heisenberg kernel.",
+    "Stimulated scattering and the Rybicki detailed-balance completion are not yet included.",
+    "The harmonic kernel is stored only through ell=6; nonlinear large-shear release requires an ell_max convergence audit."
+  ],
+  "next_stage": {
+    "name": "C3B2B1C_finite_volume_and_ellmax_convergence",
+    "tasks": [
+      "Replace centre-sampled incoming frequencies by the exact two-cell u-v finite-volume formula.",
+      "Compute ell_max=6,8,10,12 harmonic kernels and require science-action convergence.",
+      "Implement the local collision action as a matrix-free spherical-harmonic/Nystrom operator while retaining angular collocation for the Bianchi Liouville sector.",
+      "Then add recoil, stimulated scattering, and the Rybicki detailed-balance completion.",
+      "Finally replace the two-level Hummer amplitude by the absolutely normalized full COM-KHW amplitude and repeat the native HYREC moment projection."
+    ]
+  }
+}

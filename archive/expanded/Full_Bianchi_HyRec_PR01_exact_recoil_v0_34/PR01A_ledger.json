@@ -1,0 +1,66 @@
+{
+  "classification": "PR01A_EXACT_RECOIL_KINEMATICS_LOCK",
+  "stage": "PR-01A",
+  "status": "PASS",
+  "scope": "Exact elastic photon-hydrogen kinematics, reverse-event reconstruction, and same-event four-force.",
+  "conventions": {
+    "metric": "(-,+,+,+)",
+    "four_momentum_units": "SI momentum, p=(E/c,p_vec)",
+    "photon": "k=(h nu/c)(1,n)",
+    "atom": "P=Gamma M c (1,beta)"
+  },
+  "tests": {
+    "pytest": "\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m                                                                [100%]\u001b[0m\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../opt/pyvenv/lib/python3.13/site-packages/_pytest/cacheprovider.py:475\n  /opt/pyvenv/lib/python3.13/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: cache could not write path /mnt/data/Full_Bianchi_HyRec_PR01_exact_recoil_v0_34/workspace/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/mnt/data/Full_Bianchi_HyRec_PR01_exact_recoil_v0_34/workspace/.pytest_cache/v/cache/nodeids'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n\u001b[33m\u001b[32m9 passed\u001b[0m, \u001b[33m\u001b[1m1 warning\u001b[0m\u001b[33m in 0.12s\u001b[0m\u001b[0m",
+    "random_event_count": 2000,
+    "maximum_residuals": {
+      "four_momentum_relative": 4.786346070506553e-17,
+      "initial_mass_shell_relative": 6.636374128535656e-16,
+      "final_mass_shell_relative": 9.954561192803485e-16,
+      "incoming_null_absolute": 5.563809226031132e-68,
+      "outgoing_null_absolute": 2.967364920549937e-67,
+      "reverse_photon_relative": 1.1779798405456059e-15,
+      "reverse_atom_relative": 0.0,
+      "reverse_four_momentum_relative": 4.79029016590862e-17,
+      "same_event_transfer_absolute": 0.0
+    }
+  },
+  "special_cases": {
+    "epsilon_alpha": 1.0863889814433134e-08,
+    "backscatter_exact_frequency_Hz": 2466067492210063.0,
+    "backscatter_formula_frequency_Hz": 2466067492210063.0,
+    "backscatter_atom_energy_gain_J": 3.550392238352956e-26,
+    "right_angle_frequency_Hz": 2466067519001148.5,
+    "right_angle_atom_energy_gain_J": 1.775196119176478e-26
+  },
+  "Wolfram_exact_results": {
+    "mass_shell_to_Compton": 0,
+    "covariant_outgoing_scale": 0,
+    "reverse_incoming_energy_invariant": 0,
+    "reverse_outgoing_energy_invariant": 0,
+    "same_event_transfer": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "hard_gate_status": {
+    "four_momentum": true,
+    "initial_mass_shell": true,
+    "final_mass_shell": true,
+    "reverse_reconstruction": true,
+    "same_event_four_force": true,
+    "v033_small_recoil_bridge": false
+  },
+  "decision": {
+    "PR01A": "PASS",
+    "PR01_full": "OPEN",
+    "next": "PR01B thermal Hummer-event deposition and v0.33 drift bridge"
+  },
+  "limitations": [
+    "No event probability or Kramers-Heisenberg amplitude.",
+    "No Maxwellian thermal-velocity integration.",
+    "No frequency-angle finite-volume deposition.",
+    "No spatially anisotropic nonlinear stimulation."
+  ]
+}

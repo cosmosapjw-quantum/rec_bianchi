@@ -1,0 +1,79 @@
+{
+  "classification": "D1_ADAPTIVE_CORE_WING_REGISTRY_LOCK",
+  "stage": "Stage 4A-2b.2b-C2d2C2-D1A",
+  "source_core": "Full_Bianchi_HyRec_C2d2C2C_uv_cell_v0_17",
+  "mesh": {
+    "x_domain": [
+      -10.25,
+      10.25
+    ],
+    "frequency_cells": 29,
+    "core_cells": 17,
+    "wing_cells_per_side": 6,
+    "positive_wing_widths": [
+      0.5,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      2.0
+    ],
+    "states": 754
+  },
+  "graph": {
+    "unordered_edges": 283881,
+    "active_edges": 273325,
+    "same_ray_cross_frequency_edges": 10556,
+    "core_core_edges": 97461,
+    "core_wing_edges": 137904,
+    "wing_wing_edges": 48516,
+    "physics_orbits": 5626,
+    "active_physics_orbits": 5220,
+    "weighted_orbits": 8613,
+    "active_weighted_orbits": 7395
+  },
+  "embedding": {
+    "old_core_states": 442,
+    "new_core_state_range": [
+      156,
+      597
+    ],
+    "formula": "new_state=26*(old_frequency+6)+angle",
+    "core_conductance_policy": "Embed v0.17 core-core block unchanged; compute only edges touching wings."
+  },
+  "background_switch": {
+    "series_gate": "max |(nu-nu_int)/nu_int| <= 5e-4",
+    "direct_lane": "exact n>=3 bound sum + continuum integral + crossed/seagull",
+    "series_orbits": 5626,
+    "direct_orbits": 0
+  },
+  "memory_bytes": {
+    "dense_float64_bytes": 4548128,
+    "symmetric_packed_float64_bytes": 2277080,
+    "offdiag_weights_float64_bytes": 2271048,
+    "edge_endpoints_uint16_bytes": 1135524,
+    "orbit_maps_uint16_bytes": 1135524,
+    "active_flag_uint8_bytes": 283881,
+    "active_CSR_indices_uint16_bytes": 1093300,
+    "active_CSR_edge_ids_uint32_bytes": 2186600,
+    "active_CSR_indptr_uint32_bytes": 3020,
+    "physics_orbit_float64_bytes": 45008,
+    "weighted_orbit_float64_bytes": 68904
+  },
+  "decision": {
+    "geometry_registry": "PASS",
+    "core_immutability": "PASS",
+    "amplitude_evaluation": "OPEN",
+    "production_wing_kernel": "OPEN"
+  },
+  "next_stage": {
+    "name": "D1B_wing_orbit_amplitude_and_domain_convergence",
+    "tasks": [
+      "Reuse the embedded v0.17 core-core conductance.",
+      "Evaluate only active core-wing and wing-wing physics orbits.",
+      "Use exact u-v backscatter ridge integration for mu=-1.",
+      "Compare |x|max=8.25 and 10.25 truncations for action, M1-M4 and four-force.",
+      "Activate direct bound+continuum background when the series gate fails."
+    ]
+  }
+}

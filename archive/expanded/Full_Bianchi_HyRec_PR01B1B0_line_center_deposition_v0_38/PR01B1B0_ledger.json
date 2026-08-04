@@ -1,0 +1,107 @@
+{
+  "classification": "PR01B1B0_LINE_CENTER_MJ_DEPOSITION_LOCK",
+  "stage": "PR-01B1-B0",
+  "status": "PASS_BOUNDED_SLICE",
+  "scope": "Central incoming frequency cell, angle-integrated scalar 2p event kernel with positive red/interior/blue deposition.",
+  "configuration": {
+    "temperature_K": 3000.0,
+    "n1s_cm^-3": 250.0,
+    "source_x_interval": [
+      -0.25,
+      0.25
+    ],
+    "sobol_power_per_seed": 20,
+    "seed_count": 8,
+    "event_count_total": 8388608,
+    "seeds": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  "physical_parameters": {
+    "b_D": 2.3468181806822746e-05,
+    "g_recoil": 0.00046291996132715954,
+    "analytic_Rayleigh_recoil_mean": -0.0004629199542864045,
+    "A21_from_f_s^-1": 626164082.9328746,
+    "oscillator_area_correction": 1.0005364681179925
+  },
+  "results": {
+    "total_rate_s^-1": 0.789798561508268,
+    "Hummer_reference_total_s^-1": 0.7897985700885558,
+    "total_rate_relative_residual": -1.0863893784573975e-08,
+    "total_rate_seed_std_s^-1": 3.629468813279213e-14,
+    "red_exterior_rate_s^-1": 1.965560082010728e-08,
+    "blue_exterior_rate_s^-1": 1.9613136947926392e-08,
+    "capture_fraction": 0.9999999502800588,
+    "deposition_residual_s^-1": -2.220446049250313e-16,
+    "recoil_increment_M1_x": -0.0004629201280192082,
+    "recoil_relative_residual": 3.75297720678347e-07,
+    "recoil_seed_std_x": 1.9579654371029004e-09,
+    "continuous_M2_x2": 0.30887305705168067,
+    "MJ_vs_MB_total_relative": -8.360933087760146e-07,
+    "column_seed_spread": 0.00011076547979072295,
+    "pair_balance_relative": 4.61957869258949e-18,
+    "generator_left_null": 6.384003943649916e-17,
+    "equilibrium_right_null": 3.894768823241293e-16,
+    "four_force_residual": 0.0,
+    "Q_gamma_per_photon": [
+      -4.7527122473143693e-35,
+      -3.193209576260947e-33,
+      4.5671504842781915e-33,
+      -4.304837815599249e-27
+    ],
+    "Q_H_per_photon": [
+      4.7527122473143693e-35,
+      3.193209576260947e-33,
+      -4.5671504842781915e-33,
+      4.304837815599249e-27
+    ]
+  },
+  "Wolfram_exact_results": {
+    "Rayleigh_phase_normalization": 1,
+    "mean_one_minus_mu": 1,
+    "shared_conductance_balance": 0,
+    "deposition_partition": 0
+  },
+  "hard_gate_status": {
+    "TDD": true,
+    "absolute_opacity": true,
+    "positive_deposition": true,
+    "deposition_closure": true,
+    "recoil_moment": true,
+    "pair_balance": true,
+    "number_null": true,
+    "equilibrium_null": true,
+    "same_event_four_force": true,
+    "full_17x17_kernel": false,
+    "independent_integrated_reverse_quadrature": false
+  },
+  "decision": {
+    "PR01B1B0": "PASS",
+    "PR01B1B_full": "OPEN",
+    "interpretation": "The exact-event line-centre column reproduces the absolute Hummer opacity and exact recoil mean with positive deposition. The next stage extends the control-variate construction to all source cells and angular harmonic blocks."
+  },
+  "limitations": [
+    "Only the central incoming frequency cell is integrated.",
+    "Outgoing directions are angle-integrated; no anisotropic harmonic block is deposited.",
+    "The integrated reverse kernel is obtained from a shared PT-audited conductance, not a second full QMC integral.",
+    "The scalar amplitude remains the unresolved 2p pole+crossed model.",
+    "The no-recoil Hummer column is used solely as a variance-reduction control variate."
+  ],
+  "next_stage": {
+    "name": "PR01B1B1_full_frequency_harmonic_deposition",
+    "tasks": [
+      "Extend the common-random-number exact/no-recoil correction to all 17 incoming cells.",
+      "Deposit Legendre moments through the adaptive L=12/20/24 harmonic policy.",
+      "Run independent reverse QMC on selected high-weight cell pairs.",
+      "Couple red/blue exterior event transfers to BackgroundSnapshot traces.",
+      "Require full-kernel number, equilibrium, four-force and quadrature gates."
+    ]
+  }
+}

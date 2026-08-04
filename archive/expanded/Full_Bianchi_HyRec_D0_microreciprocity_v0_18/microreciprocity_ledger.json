@@ -1,0 +1,99 @@
+{
+  "classification": "D0_STABLE_MICRORECIPROCITY_LOCK",
+  "stage": "Stage 4A-2b.2b-C2d2C2-D0",
+  "source_baseline": "Full_Bianchi_HyRec_C2d2C2C_uv_cell_v0_17",
+  "v0_17_worst_double_precision": {
+    "pair_log_orbit": {
+      "physics_orbit_id": "207",
+      "frequency_i": "0",
+      "frequency_j": "16",
+      "mu": "-1.0",
+      "branch": "uv_backscatter",
+      "log_full_production": "142.26868789732936",
+      "log_full_reference": "142.26868798789624",
+      "rel_full_prod_ref": "-9.05668814454699e-08",
+      "rel_pole_prod_ref": "-9.05668814454699e-08",
+      "pair_log_residual": "3.808509063674137e-12",
+      "pointwise_amp_reciprocity": "1.7970821099815887e-12",
+      "M1_full_reference": "-7.738414228570497",
+      "M2_full_reference": "59.92627456472399",
+      "M3_full_reference": "-464.41425444280793",
+      "M4_full_reference": "3601.857538318639",
+      "mean_nu_a_reference": "2465843625928739.0",
+      "mean_nu_b_reference": "2466291479854117.5"
+    },
+    "pointwise_amplitude_orbit": {
+      "physics_orbit_id": "91",
+      "frequency_i": "0",
+      "frequency_j": "7",
+      "mu": "-0.816496580927726",
+      "branch": "tensor_GL12",
+      "log_full_production": "143.29394762877533",
+      "log_full_reference": "143.29394762877533",
+      "rel_full_prod_ref": "0.0",
+      "rel_pole_prod_ref": "0.0",
+      "pair_log_residual": "2.842170943040401e-14",
+      "pointwise_amp_reciprocity": "9.344299351302425e-12",
+      "M1_full_reference": "-3.422424156860934",
+      "M2_full_reference": "11.752099022699731",
+      "M3_full_reference": "-40.49011744919367",
+      "M4_full_reference": "139.9703282187576",
+      "mean_nu_a_reference": "2465838840290782.5",
+      "mean_nu_b_reference": "2466036910082304.0"
+    }
+  },
+  "high_precision_audit": {
+    "working_decimal_digits": 100,
+    "reconstructed_pole_tail_t": "-7.4273828777658135",
+    "energy_conservation_residual": "3.717688238255345541905309e-119",
+    "Dminus_forward_minus_reverse": "-1.733247972829495412424442e-89",
+    "Dplus_forward_minus_reverse": "-6.43444698683503614767369e-86",
+    "full_amplitude_relative_residual": "1.737932309598649236336046e-97",
+    "DSF_direct_minus_stable_log": "-4.571949565129099928863134e-100",
+    "edge_Boltzmann_log_residual": "0.0"
+  },
+  "stable_algorithm": {
+    "dynamic_structure_factor": [
+      "Evaluate log S_MB(Q,+DeltaE) once.",
+      "Construct log S_MB(Q,-DeltaE)=log S_MB(Q,+DeltaE)-beta DeltaE.",
+      "Do not subtract two large Maxwellian exponents independently."
+    ],
+    "amplitude": [
+      "Compute the common COM invariants (Dminus,Dplus) once per unordered event.",
+      "Recompute the reverse amplitude independently only in an arbitrary-precision audit lane.",
+      "After the audit passes, use the shared invariant amplitude for both edge orientations."
+    ],
+    "edge_log": [
+      "Use one common edge log after the independent event-pair gate passes.",
+      "This is event-level pairing, not posterior matrix symmetrization."
+    ],
+    "summation": [
+      "Use log-sum-exp for orbit/cell accumulation.",
+      "Use compensated summation for generator diagonals and null-vector audits."
+    ]
+  },
+  "decision": {
+    "physical_microreciprocity": "PASS",
+    "arbitrary_precision_audit": "PASS",
+    "independent_double_precision_reverse_evaluation": "RETIRED_FROM_PRODUCTION_PATH",
+    "production_shared_invariant_edge": "APPROVED",
+    "conductance_change_expected": "NONE beyond roundoff; v0.17 remains immutable."
+  },
+  "hard_gates_for_next_kernel": {
+    "high_precision_amplitude_reciprocity": "1e-30",
+    "stable_double_edge_log_reciprocity": "exact by construction",
+    "cell_conductance_symmetry": "1e-12",
+    "photon_number": "1e-12",
+    "total_four_force": "1e-11"
+  },
+  "next_stage": {
+    "name": "D1_adaptive_core_wing_registry",
+    "tasks": [
+      "Freeze the v0.17 bounded core conductance.",
+      "Add symmetric wing cells to at least |x|=10.25.",
+      "Keep exact backscattering u-v ridge integration.",
+      "Switch the smooth KHW background from the fifth-order series to direct bound+continuum evaluation when its truncation gate fails.",
+      "Run action, M1-M4 and four-force convergence under wing extension."
+    ]
+  }
+}

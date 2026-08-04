@@ -1,0 +1,132 @@
+{
+  "classification": "C3A_PHYSICAL_TRUE_KERNEL_AND_ALL11_BIANCHI_REGISTRY_LOCK",
+  "stage": "D1C-C3A/B-bounded",
+  "true_kernel": {
+    "temperature_K": 3000.0,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "channels": [
+      "continuum_1plus1",
+      "3s_route_regression",
+      "3d_route_regression"
+    ],
+    "p_d_total": 0.4,
+    "p_em": 0.6,
+    "tests": [
+      {
+        "test": "exact_thermodynamic_factor",
+        "residual": 5.009100979353769e-15,
+        "gate": 1e-12
+      },
+      {
+        "test": "profile_normalization",
+        "residual": 1.1102230246251565e-16,
+        "gate": 1e-12
+      },
+      {
+        "test": "channel_LTE",
+        "residual": 4.608526999588981e-15,
+        "gate": 1e-12
+      },
+      {
+        "test": "bosonic_completion",
+        "residual": 0.0,
+        "gate": 1e-18
+      },
+      {
+        "test": "occupation_number_consistency",
+        "residual": 7.052966104933725e-38,
+        "gate": 1e-18
+      },
+      {
+        "test": "I_R_B_partition",
+        "residual": 0.0,
+        "gate": 1e-12
+      },
+      {
+        "test": "photon_atomic_stoichiometry",
+        "residual": 0.0,
+        "gate": 1e-12
+      },
+      {
+        "test": "implicit_positivity",
+        "residual": 0.0,
+        "gate": 0.0
+      },
+      {
+        "test": "exact_JVP",
+        "residual": 6.776263578034403e-21,
+        "gate": 1e-12
+      }
+    ],
+    "partition_currents": {
+      "interior": -13332.481574356772,
+      "red_exterior": 0.025304139816385518,
+      "blue_exterior": -0.025582300328306867,
+      "total": -13332.481852517285
+    },
+    "implicit_positivity_min_occupation": 7.256070689968091e-18,
+    "profile_status": "The compiler equation is physical; the two asymmetric channel profiles and numerical rates are regression inputs pending EMLA tables."
+  },
+  "bianchi_registry": {
+    "type_count": 11,
+    "types": [
+      "I",
+      "II",
+      "VI_0",
+      "VII_0",
+      "VIII",
+      "IX",
+      "V",
+      "IV",
+      "III=VI_-1",
+      "VI_h(rep h=-2)",
+      "VII_h(rep h=+2)"
+    ],
+    "max_Jacobi_residual": 0.0,
+    "max_metric_compatibility_residual": 0.0,
+    "max_direction_norm_residual": 1.9402972010868666e-16,
+    "exceptional_VI_minus_1_over_9": {
+      "a1": 0.3333333333333333,
+      "h": -0.1111111111111111,
+      "Jacobi_residual": 0.0,
+      "direction_norm_residual": 1.268999890664044e-16
+    }
+  },
+  "Wolfram_exact_results": {
+    "thermodynamic_factor": 0,
+    "bosonic_completion": 0,
+    "channel_LTE": 0,
+    "Jacobi_distinct": [
+      0,
+      0,
+      0
+    ],
+    "metric_compatibility_nonzero_count": 0,
+    "direction_norm": 0
+  },
+  "hard_gate_status": {
+    "true_kernel_algebra": true,
+    "Bianchi_Jacobi": true,
+    "Bianchi_metric_compatibility": true,
+    "Bianchi_direction_norm": true,
+    "exceptional_VI_minus_1_over_9": true
+  },
+  "limitations": [
+    "Physical EMLA channel rates and two-photon profile tables are not yet imported.",
+    "The registry supplies the Lie/spatial connection part; the already-locked Stage-2 kinematical characteristic remains the other input.",
+    "No 2p fine structure, J-state interference, polarization or atomic alignment.",
+    "The monolithic class-A/class-B time step is the next stage."
+  ],
+  "next_stage": {
+    "name": "C3B_physical_rate_import_and_representative_Bianchi_steps",
+    "tasks": [
+      "Import R_2p^{i,+}, p_d^i and physical phi_i from the EMLA/two-photon registry.",
+      "Run Bianchi II, V or VII_h, and exceptional VI_-1/9 characteristic steps.",
+      "Couple the physical true kernel to the v0.24 red/blue boundary states.",
+      "Verify LTE, number, total four-momentum, positivity and branch localization in one monolithic residual.",
+      "Only then promote to 2p_1/2-2p_3/2 polarized PRD."
+    ]
+  }
+}

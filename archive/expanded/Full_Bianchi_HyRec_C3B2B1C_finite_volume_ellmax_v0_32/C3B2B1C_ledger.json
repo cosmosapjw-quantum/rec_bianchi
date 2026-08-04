@@ -1,0 +1,214 @@
+{
+  "classification": "C3B2B1C_TWO_SIDED_FINITE_VOLUME_AND_ELLMAX_LOCK",
+  "stage": "C3B2B1-C",
+  "source_reference": "Full_Bianchi_HyRec_C3B2B1B_harmonic_Nystrom_v0_31",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "n1s_cm^-3": 250.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "absolute_rate_scale_s^-1": 1.430465268903049,
+    "frequency_cells": 17,
+    "cell_width_Doppler": 0.5
+  },
+  "finite_volume": {
+    "source_variable": "cell-average occupation",
+    "ell_reference": 32,
+    "production_quadrature": {
+      "back_order": 72,
+      "middle_order": 720,
+      "forward_order": 144,
+      "u_order": 160
+    },
+    "reference_quadrature": {
+      "back_order": 88,
+      "middle_order": 960,
+      "forward_order": 192,
+      "u_order": 192
+    },
+    "max_formula_validation_relative": 4.765197572558601e-14,
+    "max_production_to_reference_relative": 6.52904395355431e-11,
+    "capture_fraction_min": 0.7243791169651356,
+    "capture_fraction_mean": 0.9537158523988858,
+    "capture_fraction_max": 0.9999999502262934
+  },
+  "centre_sampling_supersession": {
+    "kernel_changes_ell0_to6": [
+      {
+        "ell": 0,
+        "relative_kernel_change": 0.04586937584583945
+      },
+      {
+        "ell": 1,
+        "relative_kernel_change": 0.10142495391365874
+      },
+      {
+        "ell": 2,
+        "relative_kernel_change": 0.18166031943897762
+      },
+      {
+        "ell": 3,
+        "relative_kernel_change": 0.19635636915355603
+      },
+      {
+        "ell": 4,
+        "relative_kernel_change": 0.35688719821874315
+      },
+      {
+        "ell": 5,
+        "relative_kernel_change": 0.29369594182786957
+      },
+      {
+        "ell": 6,
+        "relative_kernel_change": 0.3795456550950833
+      }
+    ],
+    "action_changes": [
+      {
+        "state": "smooth_L8",
+        "finite_volume_action_norm": 0.0001403529568161175,
+        "centre_sampled_action_norm": 0.022874865910071037,
+        "relative_action_difference": 161.98121983582018,
+        "finite_volume_number_residual": 5.0513656842457455e-17
+      },
+      {
+        "state": "smooth_L2",
+        "finite_volume_action_norm": 0.002175327201257248,
+        "centre_sampled_action_norm": 0.024743814585854312,
+        "relative_action_difference": 10.374767057890399,
+        "finite_volume_number_residual": 8.541819053291266e-17
+      },
+      {
+        "state": "narrow_core",
+        "finite_volume_action_norm": 0.0312104316336169,
+        "centre_sampled_action_norm": 0.0505554392052116,
+        "relative_action_difference": 0.6956121118535594,
+        "finite_volume_number_residual": 2.999242022273807e-16
+      },
+      {
+        "state": "odd_red_blue",
+        "finite_volume_action_norm": 0.03880130767117068,
+        "centre_sampled_action_norm": 0.0444364258285178,
+        "relative_action_difference": 0.5585945362969293,
+        "finite_volume_number_residual": 1.3444784565178058e-16
+      }
+    ],
+    "decision": "v0.31 centre-sampled kernels remain endpoint/algebra regressions only; v0.32 is the finite-volume physical reference."
+  },
+  "ellmax_policy": {
+    "release_tolerance": 1e-05,
+    "measured_minima": [
+      {
+        "state": "finite_tilt_beta0p3",
+        "minimum_ell_max_for_1e-5": 8,
+        "achieved_error": 5.760067495949957e-06
+      },
+      {
+        "state": "large_shear_even",
+        "minimum_ell_max_for_1e-5": 18,
+        "achieved_error": 2.225440447538803e-06
+      },
+      {
+        "state": "mixed_tilt_shear",
+        "minimum_ell_max_for_1e-5": 12,
+        "achieved_error": 3.453806145904994e-06
+      },
+      {
+        "state": "red_blue_crossing",
+        "minimum_ell_max_for_1e-5": 24,
+        "achieved_error": 5.902865134971778e-06
+      },
+      {
+        "state": "narrow_beam_stress",
+        "minimum_ell_max_for_1e-5": 12,
+        "achieved_error": 8.214896811425622e-06
+      }
+    ],
+    "safe_operating_policy": {
+      "mild_tilt": 12,
+      "mixed_tilt_shear": 12,
+      "nonlinear_large_shear": 20,
+      "directional_red_blue_crossing": 24
+    },
+    "adaptive_rule": "increase ell_max until the omitted collision-action norm is below tolerance"
+  },
+  "harmonic_transform": {
+    "policies": [
+      {
+        "policy": "mild_tilt",
+        "ell_max": 12,
+        "lebedev_order": 25,
+        "point_count": 230,
+        "mode_count": 169,
+        "maximum_gram_residual": 2.8976820942716586e-14,
+        "random_roundtrip_relative": 4.161978581987083e-15,
+        "states_for_17_frequency_cells": 3910,
+        "states_for_35_frequency_cells": 8050
+      },
+      {
+        "policy": "nonlinear_large_shear",
+        "ell_max": 20,
+        "lebedev_order": 41,
+        "point_count": 590,
+        "mode_count": 441,
+        "maximum_gram_residual": 3.1259717037102064e-15,
+        "random_roundtrip_relative": 3.981217488436916e-15,
+        "states_for_17_frequency_cells": 10030,
+        "states_for_35_frequency_cells": 20650
+      },
+      {
+        "policy": "red_blue_crossing",
+        "ell_max": 24,
+        "lebedev_order": 53,
+        "point_count": 974,
+        "mode_count": 625,
+        "maximum_gram_residual": 2.928532890672236e-15,
+        "random_roundtrip_relative": 4.000001554505296e-15,
+        "states_for_17_frequency_cells": 16558,
+        "states_for_35_frequency_cells": 34090
+      }
+    ],
+    "maximum_Gram_residual": 2.8976820942716586e-14,
+    "maximum_roundtrip_relative": 4.161978581987083e-15
+  },
+  "Wolfram_exact_results": {
+    "two_cell_Jacobian": 2,
+    "u_bounds": "[(ai+aj)/2,(bi+bj)/2]",
+    "v_bounds": "[max(ai-u,u-bj),min(bi-u,u-aj)]",
+    "integrated_Gaussian": "(erf(vmax/s)-erf(vmin/s))/(2 ct sqrt(pi))",
+    "coherent_cell_probability": "0.5[erf((xhi-xp)/(sqrt(2)t))-erf((xlo-xp)/(sqrt(2)t))]",
+    "finite_volume_loss_identity": 0
+  },
+  "hard_gate_status": {
+    "two_cell_formula": true,
+    "finite_volume_quadrature": true,
+    "number_conservation": true,
+    "harmonic_transform": true,
+    "ellmax_12_universal": false,
+    "adaptive_ellmax_policy": true,
+    "absolute_Hummer_rate": true
+  },
+  "decision": {
+    "C3B2B1C": "PASS",
+    "centre_sampled_kernel": "SUPERSEDED",
+    "fixed_ellmax_12": "REJECTED",
+    "scalar_adaptive_ellmax": "APPROVED",
+    "recoil_detailed_balance": "NEXT"
+  },
+  "limitations": [
+    "No-recoil two-level Hummer-II kernel.",
+    "Axisymmetric mock fields are used for the ell tail; the scalar kernel is m-independent, so rotations do not alter the criterion.",
+    "The frequency domain is the bounded |x|<=4.25 science core.",
+    "Stimulated scattering, recoil, Rybicki detailed balance and full COM-KHW are not included."
+  ],
+  "next_stage": {
+    "name": "C3B2B1D_recoil_stimulation_and_detailed_balance",
+    "tasks": [
+      "Add exact recoil and same-event hydrogen four-force to the finite-volume harmonic kernel.",
+      "Add Bose stimulation and Rybicki thermodynamic detailed balance.",
+      "Require Planck/Bose right-null and entropy production on adaptive ellmax grids.",
+      "Project the physical kernel to the native HYREC measure and compare Gamma and M1-M4 without a fitted scale.",
+      "Then replace the two-level Hummer amplitude by the full COM-KHW amplitude."
+    ]
+  }
+}
