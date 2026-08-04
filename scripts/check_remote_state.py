@@ -84,6 +84,15 @@ def main() -> None:
     branch = git_output(["branch", "--show-current"])
     origin = git_output(["remote", "get-url", "origin"])
     dirty_lines = git_output(["status", "--porcelain"]).splitlines()
+    try:
+        output_relative = args.output.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        output_relative = None
+    if output_relative is not None:
+        dirty_lines = [
+            line for line in dirty_lines
+            if line[3:].strip().strip('"') != output_relative
+        ]
 
     candidates: list[tuple[str, str]] = [("configured", origin)]
     https = https_from_github_ssh(origin)
