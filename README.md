@@ -4,15 +4,16 @@ This repository is the durable backup and active reconstruction workspace for th
 
 ## Current state
 
-- Durable stage: **PR-01C / v0.48**.
-- Status: the chart-independent `BackgroundSnapshot` and exact finite-tilt frame adapter pass on Bianchi II, tilted VI_h and exceptional VI_-1/9 trajectories. **PR-01 is complete.**
-- Next stage: **PR-02 nonlinear anisotropic Bose collision production integration**.
+- Durable stage: **PR-02 / v0.49**.
+- Status: the nonlinear stimulated Bose collision network is connected to runtime `BackgroundSnapshot` states on the locked positive-weight `L=12/20/24` angular lanes. Exact JVP, log-variable implicit positivity, BE, photon-number, free-energy and same-event four-force gates pass. **PR-01 and PR-02 are complete.**
+- Next stage: **PR-03 full scalar COM–KHW amplitude**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
 
 ```bash
 ./scripts/bootstrap_sandbox.sh --offline
+python scripts/check_remote_state.py
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
@@ -27,11 +28,11 @@ Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md), [`state/PROJECT_STATE.json`]
 - `archive/inputs/`: user-supplied primitive Bianchi host code.
 - `state/`: machine-readable current state, inventory, provenance, and supersessions.
 - `docs/`: handoff, setup, roadmap, GitHub access, backup, and recovery instructions.
-- `scripts/`: scientific-stage generation, verification, status, patch, bundle, and safe push helpers.
+- `scripts/`: scientific-stage generation, verification, status, patch, bundle, and safe-push helpers.
 
 ## Remote sync status
 
-The owner reports that v0.47 was expanded and merged into the private GitHub `main`. This runtime still has no exposed GitHub connector function and no working Git SSH/HTTPS route, so the exact remote ref/tree could not be re-read. v0.48 incremental artifacts are based on the fresh-clone-verified local v0.47 commit and are accompanied by raw patches and a standalone full bundle. See [`docs/GITHUB_PRIVATE_REPO_ACCESS.md`](docs/GITHUB_PRIVATE_REPO_ACCESS.md).
+The owner reports that v0.47 was expanded and merged into the private GitHub `main`. This runtime has no exposed GitHub connector function and no working Git SSH/HTTPS route, so the exact remote ref/tree could not be re-read. v0.49 is therefore delivered with cumulative v0.47-to-v0.49 and incremental v0.48-to-v0.49 binary-safe patches plus a standalone full bundle. Fetch remote `main`, apply on a feature branch, and open a PR; do not rewrite shared history. See [`docs/GITHUB_PRIVATE_REPO_ACCESS.md`](docs/GITHUB_PRIVATE_REPO_ACCESS.md).
 
 ## Publication and license
 
@@ -41,6 +42,7 @@ This repository contains unpublished research and a user-supplied primitive code
 
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific`.
+- PR-02 production receipt: `python scripts/run_pr02_nonlinear_bose_runtime_stage.py`.
 - Original stage bundles retain per-stage full-test receipts.
 
 ## Repository checks and patches

@@ -15,15 +15,17 @@ Repository: `cosmosapjw-quantum/rec_bianchi`
    ```
 
    This requests indexing for connector search. Allow another several minutes.
-6. If GitHub is available in Deep Research or Agent mode but absent in standard Chat, use the experience where the app is exposed. App availability can differ by ChatGPT experience.
+6. App availability can differ among standard Chat, Deep Research, Agent and Codex runtimes.
 
-The ChatGPT GitHub app is a **read/search connector**. It does not push commits or pull requests. Use Codex or one of the authenticated Git methods below for writes.
+The ChatGPT GitHub app may be exposed only as a read/search connector. Do not assume it supplies a Git credential or permits pushes from the current shell.
 
 ## Codex — preferred write path
 
-Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to apply the exported patch on a feature branch and open a PR. Before merge, require:
+Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to import the delivered v0.49 bundle or apply the appropriate patch on a feature branch. Before merge, require:
 
 ```bash
+./scripts/bootstrap_sandbox.sh --offline
+python scripts/check_remote_state.py --require-access
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
@@ -37,11 +39,11 @@ Use a repository-scoped fine-grained PAT in the local shell only. Do not paste i
 Minimum practical permissions:
 
 - **Contents: read** for clone/fetch;
-- **Contents: write** for branch pushes;
-- **Pull requests: write** only when automation must create/update PRs;
+- **Contents: write** for feature-branch pushes;
+- **Pull requests: write** only when automation must create or update PRs;
 - **Workflows: write** only when changing `.github/workflows/**`.
 
-This repository's scripts use an ephemeral `GIT_ASKPASS` helper:
+The repository check script supports an ephemeral `GIT_ASKPASS` helper:
 
 ```bash
 export GITHUB_REC_BIANCHI_TOKEN='REPOSITORY_SCOPED_TOKEN'
@@ -52,43 +54,43 @@ unset GITHUB_REC_BIANCHI_TOKEN
 
 ## GitHub App installation token — preferred automation credential
 
-For repeatable automation, install a dedicated GitHub App only on this repository. Grant the smallest permissions needed. HTTP Git access requires the repository **Contents** permission; workflow-file modification additionally requires **Workflows** permission. Use short-lived installation tokens rather than a long-lived personal token.
+For repeatable automation, install a dedicated GitHub App only on this repository and grant the smallest permissions needed. HTTP Git access requires **Contents** permission; workflow-file changes additionally require **Workflows** permission. Prefer short-lived installation tokens over a long-lived personal token.
 
 ## SSH or deploy key
 
-A normal user SSH key works when `ssh` and outbound port access are available. A deploy key is repository-specific and can be read-only or read/write. For finer permission control and auditable automation, prefer a GitHub App over a write-enabled deploy key.
+A normal user SSH key works when `ssh` and outbound access are available. A deploy key is repository-specific and may be read-only or read/write. For finer permission control and auditable automation, prefer a GitHub App over a write-enabled deploy key.
 
-## Offline/bundle fallback
+## Offline full-bundle fallback
 
 When the runtime has no connector, DNS, SSH executable, or token:
 
 ```bash
-git clone rec_bianchi_v048_full.bundle rec_bianchi
+git clone rec_bianchi_v049_full.bundle rec_bianchi
 cd rec_bianchi
-git switch work/pr01c-background-frame-adapter-v048
+git switch work/pr02-nonlinear-bose-production-v049
+./scripts/bootstrap_sandbox.sh --offline
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
 
-For an existing v0.47 checkout, apply the v0.48 mbox on a feature branch:
+## Patch selection
+
+Two binary-safe patch lanes are exported:
+
+- **cumulative v0.47 → v0.49** for a checkout containing the exact local v0.47 base commit `ced72558437c8d24dce0cb855259b5216549604d`;
+- **incremental v0.48 → v0.49** for a checkout containing the exact local v0.48 commit `91f772c3275d318af9cc4f2cacb9a71b0c227f48`.
+
+Apply only after fetching remote `main` and creating a feature branch:
 
 ```bash
-git switch -c apply/v048-pr01c
+git switch -c apply/v049-pr02
 git am --3way rec_bianchi_<base>_to_<head>.mbox
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
 
-If the remote used a squash merge and does not contain the exact local v0.47 commit, use the binary patch with `git apply --3way`, or compare/import the standalone v0.48 bundle on a new branch. Do not rewrite remote history merely to match local commit IDs.
+If the remote used squash merges and contains neither exact base commit, use the standalone full bundle as the comparison source or try the binary patch with `git apply --3way --index` on a feature branch. Resolve conflicts explicitly and open a PR. Do not rewrite remote history merely to match local commit IDs.
 
 ## Diagnostic interpretation
 
-`python scripts/check_remote_state.py` distinguishes:
-
-- successful remote access and exact remote `main` SHA;
-- missing `ssh` executable;
-- HTTPS/DNS failure;
-- absent token;
-- local dirty state.
-
-A user report that v0.47 was merged establishes the scientific content base, but it does not establish the remote merge commit SHA. Patch receipts therefore record both the exact local base and the remote-verification uncertainty.
+`python scripts/check_remote_state.py` distinguishes successful remote access and exact `main` SHA from missing `ssh`, HTTPS/DNS failure, absent token, and local dirty state. A user report that v0.47 was merged establishes only a scientific-content base; it does not establish the remote merge commit SHA or ancestry. Patch receipts therefore retain exact local bases and the remote-verification uncertainty.

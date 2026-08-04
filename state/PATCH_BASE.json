@@ -3,6 +3,6 @@
   "base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
   "base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
   "base_stage": "v0.47 owner-confirmed merged content; exact remote merge SHA unverified in this runtime",
-  "reason": "The owner reported v0.47 merged into private main. The current runtime still exposes neither the GitHub connector nor a working Git network path, so incremental artifacts use the exact fresh-clone-verified local v0.47 commit while full bundles remain the history-independent fallback.",
+  "reason": "The owner reported v0.47 merged into private main. This runtime still exposes neither the GitHub connector nor a working Git network path, so the cumulative v0.49 patch uses the exact fresh-clone-verified local v0.47 commit. A separate v0.48-to-v0.49 patch and standalone full bundle are exported for exact-v0.48 and history-independent recovery.",
   "update_rule": "Replace this base after a connector/API/Git fetch records the exact remote main SHA and ancestry."
 }

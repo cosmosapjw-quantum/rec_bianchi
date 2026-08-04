@@ -1,8 +1,8 @@
 # Twelve-PR scalar completion roadmap
 
 1. **Exact recoil event and four-force** — **COMPLETE in PR-01C/v0.48**.
-2. **Nonlinear anisotropic Bose collision** — **NEXT / ACTIVE**.
-3. **Full scalar COM–KHW amplitude** — higher bound, continuum, seagull, and interference.
+2. **Nonlinear anisotropic Bose collision** — **COMPLETE in PR-02/v0.49**.
+3. **Full scalar COM–KHW amplitude** — **NEXT / ACTIVE**: complete bound and continuum spectrum, seagull, interference, gauge and reciprocity audits.
 4. **HYREC common-measure moment projection** — Gamma and M1–M4 without fitted scale.
 5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface**.
 6. **FLRW monolithic parity** — native HYREC and retained Peebles baseline lanes.
