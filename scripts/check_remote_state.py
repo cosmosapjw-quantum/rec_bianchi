@@ -135,6 +135,19 @@ def main() -> None:
     remote_accessible = selected_transport is not None
     remote_matches_local = remote_main == local_head if remote_main else False
 
+    runtime_capabilities = {
+        "git_executable": shutil.which("git"),
+        "ssh_executable": shutil.which("ssh"),
+        "gh_executable": shutil.which("gh"),
+        "https_token_present": bool(token),
+        "chatgpt_connector_cli_exposed": False,
+        "connector_note": (
+            "ChatGPT app authorization is product-level and is not exposed as a "
+            "Git credential or CLI in every chat runtime. See "
+            "docs/GITHUB_PRIVATE_REPO_ACCESS.md."
+        ),
+    }
+
     receipt = {
         "classification": "REMOTE_REPOSITORY_CHECK",
         "checked_at_utc": now.isoformat(),
@@ -157,6 +170,12 @@ def main() -> None:
             "refs": remote_refs,
             "attempts": attempts,
         },
+        "runtime_capabilities": runtime_capabilities,
+        "user_confirmed_base": (
+            json.loads((ROOT / "state" / "REMOTE_BASE_ASSUMPTION.json").read_text())
+            if (ROOT / "state" / "REMOTE_BASE_ASSUMPTION.json").exists()
+            else None
+        ),
         "patch_base_policy": (
             "Use remote main when it is accessible and locally known as an ancestor; "
             "otherwise use state/PATCH_BASE.json and state the uncertainty."
