@@ -1,0 +1,113 @@
+{
+  "classification": "PR02_RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "generated_utc": "2026-08-04T18:21:33.550095+00:00",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "branch": "work/pr02-nonlinear-bose-production-v049",
+  "payload_head": "2efff5f68db286ad7021a4c11cd7a3db065dca69",
+  "payload_tree": "91965255731ce0b7aa08c0cd441917795d5aa4a7",
+  "recovery_classification": {
+    "incoming_v048_PR01C": "DURABLE_VERIFIED",
+    "PR02_v049": "RECONSTRUCTED_DURABLE_VERIFIED",
+    "owner_reported_remote_v047_merge": "TRANSCRIPT_ONLY_FOR_REMOTE_IDENTITY",
+    "exact_remote_main_sha": "MISSING_RUNTIME_EVIDENCE"
+  },
+  "uploaded_inputs": {
+    "rec_bianchi_handoff_package_v048_2026-08-05(1).zip": {
+      "bytes": 26302255,
+      "sha256": "9dd88b231c8cd2dcb5b1839eaf4b0c737a606976cb1c3330a3a08e988aae0905",
+      "integrity": "ZIP_PASS"
+    },
+    "rec_bianchi_v048_full(1).bundle": {
+      "bytes": 26287467,
+      "sha256": "87ab00c41b824f15a8ef18e751f198084c2662fdd8a1f64730a455bbeab561db",
+      "integrity": "GIT_BUNDLE_COMPLETE_AND_VERIFIED"
+    }
+  },
+  "recovered_v048": {
+    "head": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+    "tree": "b90928479994f436681d42dcff2e0fabdd0b84fa",
+    "artifact": "Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48",
+    "quick_verify": "PASS",
+    "fast_tests": "51 passed, 21 deselected"
+  },
+  "bootstrap_recovery": {
+    "first_exact_offline_attempt": "FAIL_EMPTY_ISOLATED_VENV_MISSING_NUMPY",
+    "cause": "the old script created an ordinary offline venv without access to preinstalled scientific packages",
+    "repair": "dependency-aware offline interpreter selection without network installation",
+    "final_exact_command": "PASS"
+  },
+  "artifact": "Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49",
+  "bundle": {
+    "path": "archive/bundles/Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49.zip",
+    "bytes": 1980167,
+    "sha256": "7ade69a9901a4daca0fc06cd49ba6fb0f464548f2de851a878da7c0f24c8a480",
+    "zip_integrity": "PASS"
+  },
+  "hard_results": {
+    "maximum_BE_action_relative": 8.81440878264331e-16,
+    "maximum_number_residual_relative": 8.018324121051612e-18,
+    "maximum_boundary_number_residual_relative": 8.665310902536088e-18,
+    "maximum_entropy_free_energy_production": -1548500423203887.5,
+    "minimum_boundary_to_full_action_norm": 1.5998175065217143e-05,
+    "maximum_collision_JVP_relative": 6.534851987191272e-11,
+    "maximum_collision_JVP_number_left_null_relative": 5.863089230219398e-17,
+    "maximum_implicit_residual_JVP_relative": 3.8514622984720175e-11,
+    "minimum_grid_weight": 0.0001438294190527431,
+    "maximum_harmonic_gram_residual": 3.1259717037102064e-15,
+    "maximum_frame_roundtrip_residual": 3.953955772640617e-16,
+    "maximum_implicit_residual_relative": 1.703815903819329e-14,
+    "maximum_implicit_number_relative_change": 0.0,
+    "minimum_implicit_occupation": 0.2198692513885537,
+    "maximum_explicit_trial_minimum": -0.01496156694049211,
+    "maximum_free_energy_change": -4049035120082944.0,
+    "maximum_four_force_hydrogen_residual": 0.0,
+    "maximum_four_force_normal_residual": 0.0,
+    "geometry_collision_action_difference": 0.0,
+    "maximum_mpmath_80dps_reference_residual": 2.1084395886461046e-81
+  },
+  "hard_gates": {
+    "runtime_BackgroundSnapshot_connection": true,
+    "adaptive_L12_L20_L24_policy": true,
+    "positive_weight_grids": true,
+    "harmonic_analysis_exactness": true,
+    "frame_roundtrip": true,
+    "Bose_Einstein_null": true,
+    "photon_number": true,
+    "boundary_edge_number": true,
+    "stimulated_boundary_edge_active": true,
+    "entropy_free_energy_dissipation": true,
+    "analytic_collision_JVP": true,
+    "collision_JVP_number_left_null": true,
+    "analytic_implicit_residual_JVP": true,
+    "implicit_convergence": true,
+    "implicit_positivity": true,
+    "explicit_stress_fails_positivity": true,
+    "implicit_number": true,
+    "implicit_free_energy": true,
+    "total_four_force_hydrogen": true,
+    "total_four_force_normal": true,
+    "local_microphysics_firewall": true,
+    "independent_high_precision_reference": true
+  },
+  "tests": {
+    "bootstrap_offline": "PASS",
+    "quick_verify": "PASS",
+    "fast_pytest": "65 passed, 21 deselected in 7.45s",
+    "artifact_verifier": "PASS",
+    "git_fsck_full": "PASS"
+  },
+  "remote": {
+    "verified": false,
+    "receipt_local_head": "2efff5f68db286ad7021a4c11cd7a3db065dca69",
+    "receipt_local_tree": "91965255731ce0b7aa08c0cd441917795d5aa4a7",
+    "receipt_local_dirty": false,
+    "ssh_failure": "error: cannot run ssh: No such file or directory\nfatal: unable to fork",
+    "https_failure": "fatal: unable to access 'https://github.com/cosmosapjw-quantum/rec_bianchi.git/': Could not resolve host: github.com",
+    "exact_remote_main_sha": null
+  },
+  "decision": {
+    "PR01": "COMPLETE_DURABLE_VERIFIED",
+    "PR02": "COMPLETE_DURABLE_VERIFIED",
+    "next": "PR-03 full scalar COM\u2013KHW amplitude"
+  }
+}
