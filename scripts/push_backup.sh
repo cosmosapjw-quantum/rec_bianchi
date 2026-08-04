@@ -23,7 +23,12 @@ if command -v gh >/dev/null 2>&1; then
 fi
 
 cleanup() {
-  [[ -n "${ASKPASS_FILE:-}" && -f "${ASKPASS_FILE:-}" ]] && rm -f "$ASKPASS_FILE"
+  if [[ -n "${ASKPASS_FILE:-}" && -f "${ASKPASS_FILE:-}" ]]; then
+    rm -f "$ASKPASS_FILE"
+  fi
+  # An EXIT trap's own status becomes the script's status; keep it neutral so a
+  # successful push does not report failure just because there was no temp file.
+  return 0
 }
 trap cleanup EXIT
 
