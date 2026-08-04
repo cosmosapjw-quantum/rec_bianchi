@@ -1,0 +1,77 @@
+{
+  "classification": "PR01B1B1_FULL_FREQUENCY_HARMONIC_DEPOSITION_AUDIT",
+  "stage": "PR-01B1-B1",
+  "status": "PARTIAL_PASS_MICROREVERSIBILITY_BLOCKED",
+  "configuration": {
+    "temperature_K": 3000.0,
+    "n1s_cm3": 250.0,
+    "frequency_cells": 17,
+    "ell_max": 6,
+    "sobol_power_per_seed": 17,
+    "seed_count": 8,
+    "event_count_total": 17825792,
+    "seeds": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108
+    ]
+  },
+  "results": {
+    "minimum_scalar_gain_sInv": 6.3373764436366096e-09,
+    "maximum_partition_closure_sInv": 0.0,
+    "maximum_partition_vs_independent_total_relative": 1.4057040348428562e-15,
+    "maximum_same_event_four_force_residual": 0.0,
+    "raw_pair_balance_weighted_rms": 0.00024567410288998525,
+    "raw_pair_balance_max_relative": 0.327641472442491,
+    "raw_pair_balance_max_significance": 28.839466417371003,
+    "raw_pair_count": 136,
+    "generator_left_null": 7.824742135969457e-17,
+    "raw_equilibrium_right_null": 5.48730095031316e-05,
+    "shared_conductance_equilibrium_right_null": 1.312730444679573e-16,
+    "capture_fraction_min": 0.7242281745191587,
+    "capture_fraction_mean": 0.9537149715329756,
+    "recoil_increment_min": -0.00046303899171909935,
+    "recoil_increment_max": -0.00046282393947533635
+  },
+  "hard_gate_status": {
+    "TDD_and_full_tests": true,
+    "full_17x17_frequency_kernel": true,
+    "harmonic_moments_ell0_to6": true,
+    "positive_scalar_deposition": true,
+    "red_interior_blue_partition": true,
+    "same_event_four_force": true,
+    "number_left_null": true,
+    "raw_integrated_detailed_balance": false,
+    "raw_equilibrium_right_null": false,
+    "shared_conductance_reference_null": true,
+    "independent_deterministic_reverse_pairs": false,
+    "ell12_20_24_release": false
+  },
+  "decision": {
+    "frequency_harmonic_deposition": "PASS_THROUGH_ELL6",
+    "production_release": "NOT_APPROVED",
+    "blocker": "raw independently integrated columns do not satisfy thermal microreversibility at release tolerance",
+    "interpretation": "The event corrections, positive deposition, number ledger and same-event four-force are stable. The remaining ~1e-4 raw equilibrium residual is systematic, not hidden by the exact shared-conductance null. The next stage must derive and implement the invariant forward/reverse phase-space Jacobian or a common invariant conductance parameterization."
+  },
+  "next_stage": {
+    "name": "PR01B1B2_invariant_phase_space_measure",
+    "tasks": [
+      "derive the Lorentz-invariant 2-to-2 event measure and the Jacobian between forward and PT-reverse rest-frame solid-angle parameterizations",
+      "replace the current c(1-beta.n)d3p dOmega* parameterization by a common invariant conductance measure",
+      "run deterministic reverse quadrature on selected high-weight pairs",
+      "recompute the 17x17 ell<=6 correction and require raw detailed balance below 1e-10 before event pairing",
+      "only then extend to L=12/20/24 and BackgroundSnapshot exterior coupling"
+    ]
+  },
+  "limitations": [
+    "scalar unresolved 2p pole+crossed amplitude only",
+    "harmonic correction is stored only through ell=6",
+    "red/blue baseline split uses no-recoil mirror symmetry and QMC recoil corrections",
+    "shared conductance null is an audit reference and is not used to approve the raw kernel"
+  ]
+}

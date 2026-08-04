@@ -1,0 +1,61 @@
+{
+  "classification": "PR01B1B3B1_ANALYTIC_2P_POLE_CROSSED_LOCK",
+  "stage": "PR-01B1-B3B1-A",
+  "status": "PASS_ANALYTIC_2P_TIME_ORDERINGS_PAIR_CELLS_OPEN",
+  "source_artifacts": [
+    "Full_Bianchi_HyRec_PR01B1B3B0_analytic_pole_average_v0_42",
+    "Full_Bianchi_HyRec_C2d2C2B_orbit_cache_v0_14"
+  ],
+  "scope": {
+    "orbits": 1836,
+    "amplitude": "unresolved scalar 2p absorption pole plus crossed time ordering",
+    "frequency": "17 centre-sampled endpoints",
+    "thermal_variable": "one conditional standard Gaussian"
+  },
+  "hard_results": {
+    "max_pole_cache_relative": 2.786659791809143e-13,
+    "max_slope_antisymmetry_relative": 6.000889726626939e-15,
+    "max_selected_direct_relative": 7.860379014346108e-14,
+    "max_high_precision_relative": 1.9506599191910342e-14,
+    "pole_crossed_vs_v014_full_relative_min": -7.587268023256932e-05,
+    "pole_crossed_vs_v014_full_relative_max": 7.634711421977691e-05,
+    "pole_crossed_vs_v014_full_relative_rms": 2.6680710997187502e-05,
+    "median_fraction_of_v014_pole_subtracted_background": 0.5522016848343227,
+    "mean_fraction_of_v014_pole_subtracted_background": 0.5424980689137544,
+    "max_crossed_squared_over_pole": 2.203325483286087e-09,
+    "interference_over_pole_min": -9.387918578957578e-05,
+    "interference_over_pole_max": 9.386627009825057e-05
+  },
+  "hard_gate_status": {
+    "all_1836_pole_anchors": true,
+    "crossed_slope_identity": true,
+    "direct_gaussian_quadrature": true,
+    "high_precision_Faddeeva": true,
+    "analytic_pole_crossed_average": true,
+    "two_sided_frequency_cells": false,
+    "smooth_bound_continuum_background": false,
+    "absolute_pair_kernel": false
+  },
+  "decision": {
+    "PR01B1B3B1A": "PASS",
+    "amplitude_internal_Gaussian_quadrature": "SUPERSEDED_FOR_PROVISIONAL_2P_POLE_PLUS_CROSSED",
+    "v014_full_difference": "EXPECTED_SMOOTH_BACKGROUND_REMAINDER",
+    "production_kernel": "OPEN"
+  },
+  "limitations": [
+    "Frequency endpoints remain centre sampled.",
+    "Seagull, n>=3 bound and continuum background are not included in this analytic 2p-only result.",
+    "No continuous-mu or red/blue exterior pair-cell integration is assembled.",
+    "No absolute s^-1 pair conductance is produced in this stage."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3B1B_two_sided_pair_cells",
+    "tasks": [
+      "Insert the analytic pole+crossed average into the invariant MJ pair measure.",
+      "Integrate both source and target frequency-cell interiors.",
+      "Use the coherent-forward/backscatter angular split from v0.32.",
+      "Generate the absolute ell<=6 unordered 17x17 conductance and exterior fluxes.",
+      "Retain smooth higher-bound/continuum completion for PR-03."
+    ]
+  }
+}

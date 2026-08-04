@@ -1,0 +1,107 @@
+{
+  "classification": "SCALAR_FULL_ANGLE_EVENT_PAIR_ARCHITECTURE_PROTOTYPE",
+  "stage": "Stage 4A-2b.2b-C2d2C0",
+  "central_result": "A conductance assembled from one microphysical event and its PT-reversed partner is symmetric before any matrix-level repair.  Photon number, BE equilibrium, free-energy dissipation, and photon-atom four-force cancellation then follow edge by edge.",
+  "prototype": {
+    "units": "c=hbar=k_B=1",
+    "atom_mass": 100000000.0,
+    "inverse_temperature": 1.0,
+    "photon_chemical_potential": 0.2,
+    "frequency_nodes": [
+      0.99998,
+      1.0,
+      1.00002
+    ],
+    "angular_nodes": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    ],
+    "states": 18,
+    "unordered_event_edges": 135,
+    "maximum_atom_speed": 2.8291342309568112e-05
+  },
+  "hard_residuals": {
+    "event_energy_conservation": 1.1102230246251565e-16,
+    "event_momentum_conservation": 5.051514762044462e-14,
+    "forward_reverse_equilibrium_weight": 0.0,
+    "conductance_symmetry": 0.0,
+    "generator_left_null": 3.774758283725532e-15,
+    "generator_equilibrium_right_null": 5.929230630780102e-21,
+    "BE_bosonic_action": 1.0265311688964331e-20,
+    "BE_photon_number": 3.009265538105056e-36,
+    "anisotropic_photon_number": 3.8116482626443515e-21,
+    "photon_atom_four_force": 0.0,
+    "Route_M_C_column_sum": 4.440892098500626e-16,
+    "Route_M_C_kernel": 2.220446049250313e-16
+  },
+  "anisotropic_test": {
+    "entropy_production": -2.4836675802583355e-06,
+    "action_norm": 1.599584738313932e-05,
+    "photon_four_force": [
+      1.2891868350273882e-16,
+      -3.044024654195142e-22,
+      -3.044024654195142e-22,
+      -2.8889259664642738e-05
+    ],
+    "atom_four_force": [
+      -1.2891868350273882e-16,
+      3.044024654195142e-22,
+      3.044024654195142e-22,
+      2.8889259664642738e-05
+    ]
+  },
+  "continuum_formalism": {
+    "event": "e=(P_i,k_b -> P_f,k_a), P_f=P_i+k_b-k_a",
+    "PT_partner": "bar e=(P_f,k_a -> P_i,k_b)",
+    "equilibrium_edge_weight": "dS_e proportional to |M_e|^2 exp[-beta(E_H(P_i)+E_b)] dXi_e",
+    "microreversibility": "|M_e|^2 dXi_e = |M_bar_e|^2 dXi_bar_e",
+    "energy_identity": "E_H(P_i)+E_b=E_H(P_f)+E_a",
+    "consequence": "dS_ab=dS_ba"
+  },
+  "limitations": [
+    "The prototype uses a scalar Rayleigh-like amplitude rather than the full hydrogen KHW amplitude.",
+    "The atom kinematics are nonrelativistic in the prototype, although energy and momentum are exactly enforced within that model.",
+    "Frequency cells are represented by nodes rather than event-deposited finite-volume integrals.",
+    "Polarization, J-state interference, and atomic alignment are not included.",
+    "The artifact validates architecture and invariants, not production Ly-alpha rates."
+  ],
+  "next_stage": {
+    "name": "C2d2C1_physical_frequency_angle_event_pair",
+    "tasks": [
+      "Replace the toy event graph by the COM-resolved scalar KHW event integrand.",
+      "Use Lebedev angular cells and the immutable v0.3 frequency cells shifted to the absorption anchor.",
+      "Deposit each forward event and its PT partner into the same unordered conductance edge.",
+      "Keep full angle indices and run dipole, quadrupole, and direction-dependent red/blue-crossing tests.",
+      "Generate photon and hydrogen four-force from the same edge fluxes.",
+      "Require raw event-pair conductance symmetry before adding fine structure or polarization."
+    ]
+  }
+}

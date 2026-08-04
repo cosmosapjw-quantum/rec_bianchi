@@ -1,0 +1,76 @@
+{
+  "classification": "REFERENCE_ONLY_NOT_PRODUCTION",
+  "formula": "unresolved-2p scalar observer-frame Hummer-II kernel",
+  "temperature_K": 3000.0,
+  "damping_a": 0.0008614435016156826,
+  "nu0_Hz": 2466067545792234.5,
+  "doppler_width_Hz": 57874121552.98636,
+  "grid": {
+    "x_range": [
+      -10.25,
+      10.25
+    ],
+    "dx": 0.5,
+    "frequency_cells": 41,
+    "frequency_Gauss_order_per_cell": 12,
+    "angular_Gauss_order": 12,
+    "angle_phase": "Rayleigh 3(1+mu^2)/8"
+  },
+  "normalization": {
+    "max_per_mu_relative_residual_abs_x_le_3": 6.593552364692239e-09,
+    "angle_averaged_relative_residual_abs_x_le_3": 6.613172583122004e-10,
+    "max_per_mu_relative_residual_abs_x_le_4": 1.3343935119376733e-06,
+    "angle_averaged_relative_residual_abs_x_le_4": 1.624136715606087e-07
+  },
+  "detailed_balance_projection": {
+    "equilibrium_flux_residual": 1.3552527156068805e-20,
+    "relative_flux_correction_eps_DB": 0.0002866691330371685,
+    "max_relative_total_rate_change_abs_x_le_4": 0.0010623619666499174,
+    "minimum_projected_rate": 1.8877181338624262e-45
+  },
+  "central_jump_moments_raw_orders_1_to_4": [
+    5.205484364473528e-18,
+    0.18177697958056352,
+    -6.807500249596638e-18,
+    0.21727602203078883
+  ],
+  "central_jump_moments_DB_orders_1_to_4": [
+    -7.988222944579391e-05,
+    0.1817770214806182,
+    -9.548236123090153e-05,
+    0.21727611322254378
+  ],
+  "full_vs_Kramers_Moyal": [
+    {
+      "spectral_scale_doppler_widths": 0.5,
+      "second_order_relative_error": 3.1202003138903196,
+      "fourth_order_relative_error": 4.025511439536435
+    },
+    {
+      "spectral_scale_doppler_widths": 1.0,
+      "second_order_relative_error": 1.0418913034627229,
+      "fourth_order_relative_error": 0.4689221876378083
+    },
+    {
+      "spectral_scale_doppler_widths": 2.0,
+      "second_order_relative_error": 0.2810546053980464,
+      "fourth_order_relative_error": 0.034444737973584265
+    },
+    {
+      "spectral_scale_doppler_widths": 4.0,
+      "second_order_relative_error": 0.07161479277483518,
+      "fourth_order_relative_error": 0.002240463844773705
+    },
+    {
+      "spectral_scale_doppler_widths": 8.0,
+      "second_order_relative_error": 0.017989146639877482,
+      "fourth_order_relative_error": 0.00014142825397576818
+    }
+  ],
+  "known_limitations": [
+    "No exact atomic recoil in the raw Hummer-II table; recoil enters only through the thermodynamic detailed-balance projection.",
+    "No 2p fine structure, J-state interference, atomic alignment, or polarization.",
+    "No adaptive core/wing mesh and no explicit forward/backward analytic cell branches.",
+    "The table is an audit reference, not a production opacity or redistribution table."
+  ]
+}

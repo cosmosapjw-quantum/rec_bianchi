@@ -1,0 +1,165 @@
+{
+  "classification": "PHYSICAL_SCALAR_FULL_ANGLE_NODE_EVENT_PAIR_PROTOTYPE",
+  "stage": "Stage 4A-2b.2b-C2d2C1-node",
+  "central_result": "The nonrelativistic Maxwell-Boltzmann atom integral reduces exactly to a dynamic-structure-factor prefactor times one Gaussian integral over the remaining scattering-plane momentum. A resonance-adapted tangent quadrature resolves the 2p pole, and independently evaluated forward/reverse COM-KHW amplitudes agree to about 1e-12 or better.",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "nu_internal_Hz": 2466067545792234.0,
+    "nu_absorption_Hz": 2466067559187777.0,
+    "absorption_anchor_shift_Doppler": 0.0002314599798649813,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_half_width_Hz": 49855285.92353622,
+    "thermal_speed_over_c": 2.3468181806822746e-05,
+    "recoil_fraction": 1.0863889814433134e-08
+  },
+  "grid": {
+    "frequency_x_nodes": [
+      -2.0,
+      -1.0,
+      0.0,
+      1.0,
+      2.0
+    ],
+    "angular_rule": "Lebedev 14 point: 6 axes + 8 cube corners",
+    "states": 70,
+    "frequency_width_Hz": 57874121512.55733
+  },
+  "formal_reduction": {
+    "Q": "h |nu_b n_b - nu_a n_a| / c",
+    "atom_energy_gain": "DeltaE = h(nu_b-nu_a)",
+    "fixed_parallel_momentum": "p_parallel = M DeltaE/Q - Q/2",
+    "dynamic_structure_factor": "sqrt(beta M/(2 pi))/Q * exp[-beta M (DeltaE-Q^2/(2M))^2/(2Q^2)]",
+    "remaining_integral": "Gaussian expectation of |M_COM(p_parallel,p_T)|^2 over one scattering-plane momentum p_T"
+  },
+  "hard_residuals": {
+    "pole_max_amplitude_reciprocity": 3.0414645123545814e-12,
+    "full_max_amplitude_reciprocity": 3.041464518611507e-12,
+    "pole_max_forward_reverse_log_weight": 2.5579538487363607e-13,
+    "full_max_forward_reverse_log_weight": 2.5579538487363607e-13,
+    "conductance_symmetry": 0.0,
+    "generator_left_null": 1.3458608142877249e-15,
+    "generator_equilibrium_right_null": 1.3165602505763041e-15,
+    "BE_action": 0.0,
+    "maximum_relative_photon_number_residual": 2.811088257073285e-16,
+    "Route_M_C_column_sum": 1.5543122344752192e-15,
+    "Route_M_C_kernel": 1.0842021724855044e-19
+  },
+  "operator_actions": [
+    {
+      "state": "BE_equilibrium",
+      "pole_action_norm": 0.0,
+      "full_action_norm": 0.0,
+      "full_vs_pole_relative": 0.0,
+      "full_entropy_production": 0.0,
+      "full_photon_number_absolute_residual": 0.0,
+      "full_photon_number_relative_residual": 0.0,
+      "photon_four_force_0": 0.0,
+      "photon_four_force_1": 0.0,
+      "photon_four_force_2": 0.0,
+      "photon_four_force_3": 0.0,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "smooth_L8",
+      "pole_action_norm": 4.6140193543787525e-05,
+      "full_action_norm": 4.614019354561072e-05,
+      "full_vs_pole_relative": 5.944992848248302e-08,
+      "full_entropy_production": -1.0032856772349125e-07,
+      "full_photon_number_absolute_residual": 4.828087799349512e-20,
+      "full_photon_number_relative_residual": 1.6005537890883505e-16,
+      "photon_four_force_0": -6.584059275027016e-12,
+      "photon_four_force_1": -2.6793846185916574e-21,
+      "photon_four_force_2": 1.6922087770981911e-21,
+      "photon_four_force_3": -1.2043749718772083e-21,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "smooth_L2",
+      "pole_action_norm": 0.0007300394576820936,
+      "full_action_norm": 0.0007300394577096286,
+      "full_vs_pole_relative": 5.517930781498535e-08,
+      "full_entropy_production": -2.3486992457292097e-05,
+      "full_photon_number_absolute_residual": 4.743384504624082e-20,
+      "full_photon_number_relative_residual": 9.97047240927569e-18,
+      "photon_four_force_0": -1.0115814548326857e-10,
+      "photon_four_force_1": 1.2176606557375463e-19,
+      "photon_four_force_2": 5.261103925323951e-20,
+      "photon_four_force_3": 6.564505341220828e-20,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "narrow_core",
+      "pole_action_norm": 0.011508733997161331,
+      "full_action_norm": 0.01150873399761299,
+      "full_vs_pole_relative": 2.6793981666282465e-08,
+      "full_entropy_production": -0.0032253152001298383,
+      "full_photon_number_absolute_residual": 1.991543865584311e-17,
+      "full_photon_number_relative_residual": 2.811088257073285e-16,
+      "photon_four_force_0": -1.0004324413936022e-09,
+      "photon_four_force_1": 3.602123995096038e-19,
+      "photon_four_force_2": 1.097226345295447e-18,
+      "photon_four_force_3": 5.291838337971241e-19,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "angular_dipole",
+      "pole_action_norm": 0.3739012522851305,
+      "full_action_norm": 0.37390124530069035,
+      "full_vs_pole_relative": 1.8731798506942155e-08,
+      "full_entropy_production": -0.1016834834259568,
+      "full_photon_number_absolute_residual": 6.245004513516506e-17,
+      "full_photon_number_relative_residual": 3.3724274714682393e-17,
+      "photon_four_force_0": 2.8534887699723804e-21,
+      "photon_four_force_1": -3.623596360442056e-17,
+      "photon_four_force_2": -5.315131744020735e-19,
+      "photon_four_force_3": -1.2694620661659348,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "angular_quadrupole",
+      "pole_action_norm": 0.009693495061757216,
+      "full_action_norm": 0.009693495061888546,
+      "full_vs_pole_relative": 2.99231050265083e-08,
+      "full_entropy_production": -0.0015607207930650071,
+      "full_photon_number_absolute_residual": 3.793202134984419e-18,
+      "full_photon_number_relative_residual": 1.078231542296103e-16,
+      "photon_four_force_0": 1.32310123917271e-22,
+      "photon_four_force_1": 1.4909897454043822e-18,
+      "photon_four_force_2": 1.4090393077575286e-18,
+      "photon_four_force_3": -9.078075612197964e-19,
+      "photon_plus_atom_four_force_residual": 0.0
+    },
+    {
+      "state": "red_blue_crossing",
+      "pole_action_norm": 0.002670438176984337,
+      "full_action_norm": 0.002670438177418303,
+      "full_vs_pole_relative": 1.0961947043334437e-07,
+      "full_entropy_production": -0.00038984137775201547,
+      "full_photon_number_absolute_residual": 1.5178830414797062e-18,
+      "full_photon_number_relative_residual": 1.1817355266753281e-16,
+      "photon_four_force_0": -5.048991164069714e-19,
+      "photon_four_force_1": -1.2610203002248396e-19,
+      "photon_four_force_2": -5.918642718939424e-20,
+      "photon_four_force_3": 1.0600606793955916e-05,
+      "photon_plus_atom_four_force_residual": 0.0
+    }
+  ],
+  "limitations": [
+    "Frequency cells are represented by five nodes rather than cell-integrated event deposition.",
+    "The atom center-of-mass dynamics are nonrelativistic; photon Lorentz kinematics enter through the COM denominators used previously.",
+    "The scalar amplitude uses the COM 2p pole and the v0.8 fifth-order near-line smooth background, not a fresh bound+continuum integral at every edge.",
+    "No 2p fine structure, J-state interference, polarization, or atomic alignment.",
+    "The artifact is a physical full-angle node prototype, not the production 17x26 finite-volume kernel."
+  ],
+  "next_stage": {
+    "name": "C2d2C2_finite_volume_17x26_event_pair",
+    "tasks": [
+      "Replace frequency nodes by cell-integrated positive deposition on the absorption-anchored v0.3 mesh.",
+      "Increase the angular rule from Lebedev-14 to Lebedev-26.",
+      "Use the same dynamic-structure-factor/one-dimensional pole quadrature per unordered photon cell pair.",
+      "Run dipole, quadrupole, and direction-dependent red/blue-crossing action tests.",
+      "Extract M1-M4 and photon/hydrogen four-force from the same edge fluxes.",
+      "After scalar convergence, promote the edge amplitude to the 2p_1/2-2p_3/2 polarized coherency superoperator."
+    ]
+  }
+}

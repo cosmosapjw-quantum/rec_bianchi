@@ -1,0 +1,110 @@
+{
+  "classification": "FIRST_ORDER_RECOIL_PLUS_PHASE_SPACE_REFERENCE_NOT_FULL_KH",
+  "central_result": "Meiksin recoil supplies the Boltzmann asymmetry; multiplying by nu_out/nu_in supplies the missing photon phase-space factor. When equilibrium cell flux is integrated directly, detailed balance closes at floating-point roundoff without a posterior symmetrization.",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "nu0_Hz": 2466067545792234.0,
+    "doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "vD_over_c": 2.3468181806822746e-05,
+    "kBT_over_mHc2": 2.7537777865904305e-10,
+    "recoil_fractional_hnu_over_mHc2": 1.0863889814433134e-08,
+    "recoil_in_Doppler_widths": 0.0004629199613271595
+  },
+  "grid": {
+    "x_range": [
+      -10.25,
+      10.25
+    ],
+    "dx": 0.5,
+    "frequency_cells": 41,
+    "frequency_Gauss_order_per_cell": 12,
+    "angle_Gauss_order": 12,
+    "angular_phase": "Rayleigh 3(1+mu^2)/8"
+  },
+  "detailed_balance": {
+    "relative_equilibrium_flux_asymmetry_with_phase_space": 7.856465165875515e-17,
+    "maximum_scaled_equilibrium_flux_asymmetry": 6.38937020609456e-17,
+    "relative_asymmetry_without_phase_space_factor": 2.9136253394550446e-05,
+    "left_null_residual": 1.1435144823373504e-16,
+    "right_equilibrium_null_residual": 5.646096300122385e-17,
+    "posterior_DB_projection_used": false
+  },
+  "opacity_effect": {
+    "max_relative_rate_shift_vs_equilibrium_weighted_Voigt_abs_x_le_4": 5.453528288875626e-05,
+    "line_center_relative_rate_shift": -1.0430431074404112e-08,
+    "interpretation": "The thermodynamic/phase-space correction changes the effective frequency-dependent scattering profile. It must not be counted again in a separately fixed opacity."
+  },
+  "full_vs_Kramers_Moyal": [
+    {
+      "spectral_scale_in_Doppler_widths": 0.5,
+      "second_order_relative_error": 3.1201954941276555,
+      "fourth_order_relative_error": 4.025504459626184
+    },
+    {
+      "spectral_scale_in_Doppler_widths": 1.0,
+      "second_order_relative_error": 1.0418896567277758,
+      "fourth_order_relative_error": 0.4689212094934193
+    },
+    {
+      "spectral_scale_in_Doppler_widths": 2.0,
+      "second_order_relative_error": 0.2810541615069334,
+      "fourth_order_relative_error": 0.034444664967384415
+    },
+    {
+      "spectral_scale_in_Doppler_widths": 4.0,
+      "second_order_relative_error": 0.07161467971738421,
+      "fourth_order_relative_error": 0.002240459081961476
+    },
+    {
+      "spectral_scale_in_Doppler_widths": 8.0,
+      "second_order_relative_error": 0.017989118244011892,
+      "fourth_order_relative_error": 0.00014142795313976873
+    }
+  ],
+  "convergence_checks": [
+    {
+      "x_half_width": 10.25,
+      "dx": 0.5,
+      "frequency_order": 12,
+      "angle_order": 12,
+      "relative_DB_residual": 8.401601194816579e-17,
+      "left_null_residual": 1.0199111415134296e-16,
+      "right_null_residual": 5.646096300122385e-17
+    },
+    {
+      "x_half_width": 10.25,
+      "dx": 0.25,
+      "frequency_order": 12,
+      "angle_order": 12,
+      "relative_DB_residual": 1.3383548151224376e-16,
+      "left_null_residual": 9.891997118248754e-17,
+      "right_null_residual": 6.932778981808241e-17
+    },
+    {
+      "x_half_width": 15.25,
+      "dx": 0.5,
+      "frequency_order": 12,
+      "angle_order": 12,
+      "relative_DB_residual": 8.401601198972132e-17,
+      "left_null_residual": 1.0327799951364562e-16,
+      "right_null_residual": 5.551115123125784e-17
+    },
+    {
+      "x_half_width": 10.25,
+      "dx": 0.5,
+      "frequency_order": 20,
+      "angle_order": 20,
+      "relative_DB_residual": 8.191527462800339e-17,
+      "left_null_residual": 9.249451758415853e-17,
+      "right_null_residual": 2.8705387387889985e-17
+    }
+  ],
+  "known_limitations": [
+    "The Doppler/recoil redistribution is Meiksin first order in thermal velocity and atomic recoil.",
+    "The nu_out/nu_in factor is the effective phase-space/Kramers-Heisenberg-Waller correction needed for exact discrete reciprocity; the full hydrogen Kramers-Heisenberg amplitude is not yet included.",
+    "No 2p fine structure, J-state interference, atomic alignment, or polarization.",
+    "The table uses a uniform Doppler-coordinate mesh rather than an adaptive core-wing mesh.",
+    "The conductance table is the thermodynamic finite-volume reference. A piecewise-uniform cell-rate average is not the canonical state representation."
+  ]
+}

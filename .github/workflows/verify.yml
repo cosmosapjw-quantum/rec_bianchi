@@ -1,0 +1,16 @@
+name: verify-durable-backup
+on:
+  push:
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e '.[test]'
+      - run: python scripts/verify_repo.py --quick
+      - run: pytest -q

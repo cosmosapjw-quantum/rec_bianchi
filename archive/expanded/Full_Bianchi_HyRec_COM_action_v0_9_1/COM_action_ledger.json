@@ -1,0 +1,48 @@
+{
+  "classification": "CORRECTED_COM_POLE_BACKGROUND_ACTION_AUDIT_NOT_PRODUCTION_KERNEL",
+  "supersedes": "Full_Bianchi_HyRec_COM_action_v0_9",
+  "correction_note": "The first v0.9 bundle used a stale smooth-background coefficient state for the opacity columns. Mean-jump columns were unaffected. v0.9.1 recomputes all pole/full weights and is the only valid version.",
+  "frequency_anchor_firewall": {
+    "epsilon_DeltaE_over_Mc2": 1.0863889814433134e-08,
+    "b_Doppler_over_c": 2.3468181806822746e-05,
+    "total_recoil_Doppler_widths": 0.0004629199613271595,
+    "absorption_anchor_shift_x": 0.00023145998009553302,
+    "emission_anchor_shift_x": -0.00023145998009553302,
+    "first_order": "x_abs=+g/2, x_em=-g/2"
+  },
+  "line_center_equal_detuning": {
+    "baseline_M1": -0.00043942896359010626,
+    "COM_pole_M1": -0.0004394289691763597,
+    "pole_minus_baseline_M1": -5.5862534650147344e-12,
+    "full_background_increment_M1": -2.064215343935364e-08,
+    "pole_opacity_ratio": 1.0000000480950064,
+    "full_over_pole_opacity": 0.9999999999931748
+  },
+  "wing_abs_x_le_4": {
+    "max_abs_COM_pole_minus_baseline_M1": 0.0005571375458353067,
+    "max_abs_full_background_increment_M1": 7.317672717821466e-05,
+    "max_abs_pole_opacity_ratio_minus_one": 0.0017595042000344563,
+    "max_abs_full_over_pole_opacity_minus_one": 0.00015768376138713958,
+    "max_abs_full_opacity_ratio_minus_one": 0.0017208948151861136
+  },
+  "Wolfram_gates": {
+    "causal_width_pair_identity": 0,
+    "fixed_nucleus_elastic_polarizability_residual": 0,
+    "COM_forward_reverse_denominator_residuals": [
+      0,
+      0
+    ],
+    "absorption_anchor_denominator": 0
+  },
+  "next_stage": {
+    "name": "C2d2B_event_deposited_finite_volume_conductance",
+    "tasks": [
+      "Adopt one explicit line anchor globally and transform v0.3 cells if needed.",
+      "Deposit COM pole+background events onto finite-volume cells.",
+      "Test raw detailed balance without posterior symmetrization.",
+      "Compare BE, smooth, narrow, angular-quadrupole, and red/blue-crossing actions.",
+      "Extract M1-M4 and same-event four-force.",
+      "Then split 2p_1/2 and 2p_3/2."
+    ]
+  }
+}

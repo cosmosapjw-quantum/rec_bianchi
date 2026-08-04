@@ -1,0 +1,95 @@
+{
+  "classification": "C3B2B0_ABSOLUTE_NORMALIZATION_AND_ANGULAR_PREFLIGHT",
+  "stage": "C3B2B0",
+  "physical_normalization": {
+    "temperature_K": 3000.0,
+    "lambda_alpha_m": 1.2156701e-07,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "oscillator_strength_f12": 0.4161967179799824,
+    "classical_electron_radius_m": 2.8179403205e-15,
+    "Thomson_cross_section_m2": 6.6524587051e-29,
+    "A21_input_s^-1": 626500000.0,
+    "A21_from_f_s^-1": 626164082.9328746,
+    "A21_relative_difference": -0.0005361804742624735,
+    "Doppler_speed_m_s": 7035.583908658272,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "integrated_cross_section_m2_Hz": 1.104589773128823e-06,
+    "line_center_cross_section_m2": 1.0757705166626062e-17,
+    "line_center_cross_section_cm2": 1.0757705166626061e-13,
+    "example_nH_cm^-3": 250.0,
+    "Thomson_rate_prefactor_s^-1": 4.9858923673635656e-12,
+    "line_center_rate_s^-1": 0.8062697185855316
+  },
+  "exact_formula_lock": {
+    "total_cross_section": "sigma_total(nu) = sigma_T |M_KH(nu)|^2",
+    "differential_cross_section": "d sigma/d Omega = 3 sigma_T/(16 pi) (1+mu^2)|M_KH|^2 for scalar Rayleigh",
+    "oscillator_strength_profile": "sigma_nu = pi r_e c f12 phi_nu, integral phi_nu dnu = 1",
+    "gas_rate": "d Gamma = n_1s c_rel d sigma; the moving-atom event uses the invariant incident flux factor"
+  },
+  "Wolfram_exact_results": {
+    "integrated_KH_Lorentzian": "pi r_e c f12",
+    "oscillator_strength_residual": 0,
+    "Rayleigh_phase_sphere_average": 1
+  },
+  "angular_preflight": {
+    "orders": [
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      23,
+      29
+    ],
+    "point_counts": [
+      26,
+      38,
+      50,
+      74,
+      86,
+      110,
+      146,
+      194,
+      302
+    ],
+    "surrogate_kernel": "normalized (3/4)(1+mu^2) exp(kappa mu)",
+    "Lebedev38_kappa8_leakage": 0.012406949655568747,
+    "Lebedev50_kappa8_leakage": 0.0013843599502429164,
+    "Lebedev86_kappa8_leakage": 5.850827911312469e-06,
+    "Lebedev146_kappa8_leakage": 1.1741989345648056e-08,
+    "Lebedev194_kappa8_leakage": 1.5136984248386185e-11,
+    "interpretation": "38 and 50 points are useful intermediate lanes but are not a defensible universal release reference for sharply non-polynomial angle-frequency kernels."
+  },
+  "hard_gate_status": {
+    "absolute_cross_section_convention": true,
+    "oscillator_strength_integral": true,
+    "Rayleigh_phase_normalization": true,
+    "Lebedev_rule_registry": true,
+    "Lebedev38_50_release_for_sharp_kernel": false,
+    "physical_COM_KHW_rate_table": false,
+    "common_measure_FP_regression": false,
+    "monolithic_HYREC_substitution": false
+  },
+  "decision": {
+    "C3B2B0": "PASS_AS_SOURCE_AND_PREFLIGHT_LOCK",
+    "production_release": "NOT_APPROVED",
+    "reasons": [
+      "The physical n_1s c sigma_T prefactor is now fixed, but the previous conductance must be regenerated rather than globally rescaled.",
+      "Lebedev-38/50 do not guarantee isotropy for a sharp non-polynomial angular kernel.",
+      "The native/common-measure Kramers-Moyal regression has not yet been rerun with the physically normalized kernel."
+    ]
+  },
+  "next_stage": {
+    "name": "C3B2B1_physical_rate_kernel_and_angular_order_convergence",
+    "tasks": [
+      "Regenerate the bounded core event kernel with the absolute differential-cross-section prefactor.",
+      "Run angular orders 7, 11, 15, 19, and 23 (26, 50, 86, 146, 194 points); retain 38 points only as an intermediate diagnostic.",
+      "Require isotropic leakage and dipole/quadrupole action convergence on the actual COM-KHW kernel, not the surrogate.",
+      "Project the physical kernel to the native HYREC energy measure and compare opacity plus M1-M4 without a fitted scale.",
+      "Only after those gates pass, assemble the primitive-rate Bianchi II/V/VI_-1/9 monolithic residual."
+    ]
+  }
+}

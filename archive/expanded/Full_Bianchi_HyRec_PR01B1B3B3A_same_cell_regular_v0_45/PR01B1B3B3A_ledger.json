@@ -1,0 +1,69 @@
+{
+  "classification": "PR01B1B3B3A_REGULARIZED_SAME_CELL_ANGULAR_LOCK",
+  "stage": "PR-01B1-B3B3A",
+  "status": "PASS_SAME_CELL_EXTERIOR_OPEN",
+  "source_artifacts": [
+    "Full_Bianchi_HyRec_PR01B1B3B2_offdiagonal_pair_cells_v0_44",
+    "Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32"
+  ],
+  "scope": {
+    "frequency_cells": 17,
+    "ell_values": [
+      0,
+      24
+    ],
+    "amplitude": "unresolved scalar 2p pole+crossed",
+    "coherent_forward": "analytically cancelled in K_l-K_0"
+  },
+  "hard_results": {
+    "same_cell_scalar_max_abs": 0.0,
+    "minimum_regularized_rate_sInv": -0.31095103155661635,
+    "maximum_regularized_rate_sInv": -4.597521207582115e-06,
+    "all_nonpositive": true,
+    "selected_quadrature_max_relative": 4.223805883747915e-08,
+    "independent_Hummer_cell8_relative": 5.290973458924051e-09,
+    "bounded_scalar_left_null": 6.183623741598131e-17,
+    "bounded_scalar_equilibrium_right_null": 2.1807721173374207e-16,
+    "maximum_same_cell_weighted_quadratic_form": -0.01804216889722835,
+    "maximum_full_operator_relative_to_Hummer": 0.00035252341726971394,
+    "maximum_full_operator_relative_to_v033": 0.00035322587539293455,
+    "red_blue_exterior": "OPEN"
+  },
+  "hard_gate_status": {
+    "TDD": true,
+    "all_17_same_cells": true,
+    "ell_0_to_24": true,
+    "coherent_cancellation": true,
+    "nonpositive_angular_remainder": true,
+    "quadrature_convergence": true,
+    "independent_Hummer_endpoint_audit": true,
+    "bounded_number_conservation": true,
+    "bounded_equilibrium_right_null": true,
+    "same_cell_dissipation": true,
+    "red_blue_exterior_deposition": false,
+    "full_PR01_release": false
+  },
+  "decision": {
+    "PR01B1B3B3A": "PASS",
+    "same_cell_angular_block": "APPROVED_FOR_PROVISIONAL_2P",
+    "raw_same_cell_gain": "DO_NOT_CONSTRUCT",
+    "exterior": "NEXT",
+    "production_release": "NOT_APPROVED"
+  },
+  "limitations": [
+    "The red/blue exterior scattering block and exterior four-force remain open.",
+    "The inherited off-diagonal matrix is available only through ell=6; adaptive ell=12/20/24 full-operator assembly follows after exterior closure.",
+    "The smooth higher-bound, continuum and seagull amplitude remains PR-03.",
+    "The 2p state is unresolved and scalar."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3B3B_exterior_deposition_and_full_scalar_release",
+    "tasks": [
+      "Integrate red/blue exterior rates for every source cell with the same unordered pair measure.",
+      "Store exterior photon and hydrogen four-force from the same events.",
+      "Combine off-diagonal, regularized same-cell, and exterior blocks.",
+      "Regenerate ell=12/20/24 adaptive harmonic operators and run BE, number, equilibrium, entropy and four-force gates.",
+      "Then execute PR-1C BackgroundSnapshot finite-tilt frame-adapter regression."
+    ]
+  }
+}

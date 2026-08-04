@@ -1,0 +1,121 @@
+{
+  "classification": "C3B2B1A_PHYSICAL_HUMMER_II_ANGULAR_BOUNDARY_LAYER_AUDIT",
+  "stage": "C3B2B1A-reference",
+  "physical_parameters": {
+    "temperature_K": 3000.0,
+    "n1s_cm^-3": 250.0,
+    "nu_alpha_Hz": 2466067545792234.0,
+    "Doppler_width_Hz": 57874121512.55733,
+    "damping_a": 0.0008614435022174598,
+    "integrated_cross_section_m2_Hz": 1.104589773128823e-06,
+    "rate_scale_s^-1": 1.430465268903049,
+    "line_center_opacity_s^-1": 0.8062697185855319
+  },
+  "kernel": {
+    "type": "angle-dependent Hummer RII, coherent atom frame, no recoil",
+    "phase": "Rayleigh Phi(mu)=3/4(1+mu^2) on normalized sphere measure",
+    "frequency_grid": {
+      "x_min": -4.25,
+      "x_max": 4.25,
+      "dx": 0.5,
+      "cells": 17
+    },
+    "incoming_frequency": "cell-centre sampled",
+    "outgoing_frequency": "cell integrated",
+    "absolute_rate": "n1s c (pi r_e c f12/DeltaNu_D) Phi RII dx"
+  },
+  "normalization": {
+    "max_RII_to_Voigt_relative_residual": 2.1242809577920135e-15,
+    "physical_opacity_min_s^-1": 2.7378326767244805e-05,
+    "physical_opacity_max_s^-1": 0.8062697185855319
+  },
+  "release_table": [
+    {
+      "lebedev_order": 7,
+      "point_count": 26,
+      "smooth_L8_isotropy": 0.020086376118513233,
+      "narrow_core_isotropy": 0.010338700745206581,
+      "smooth_L8_restricted_vs_302": 0.07722095971352627,
+      "P1_vs_302": 1.5543552923810163e-06,
+      "P2_vs_302": 0.0020445493627992855
+    },
+    {
+      "lebedev_order": 11,
+      "point_count": 50,
+      "smooth_L8_isotropy": 0.006238005538205625,
+      "narrow_core_isotropy": 0.002864663738276529,
+      "smooth_L8_restricted_vs_302": 0.01894044506532427,
+      "P1_vs_302": 2.091964305427648e-06,
+      "P2_vs_302": 0.0003267086412128114
+    },
+    {
+      "lebedev_order": 15,
+      "point_count": 86,
+      "smooth_L8_isotropy": 0.0006537406297010548,
+      "narrow_core_isotropy": 0.00028917068734302147,
+      "smooth_L8_restricted_vs_302": 0.004887783340893361,
+      "P1_vs_302": 3.163291941518416e-06,
+      "P2_vs_302": 0.00010527528308965425
+    },
+    {
+      "lebedev_order": 19,
+      "point_count": 146,
+      "smooth_L8_isotropy": 0.0003903396502809394,
+      "narrow_core_isotropy": 0.00022491149560636506,
+      "smooth_L8_restricted_vs_302": 0.007120466537550358,
+      "P1_vs_302": 2.037969074157369e-06,
+      "P2_vs_302": 0.00016069687253485393
+    },
+    {
+      "lebedev_order": 23,
+      "point_count": 194,
+      "smooth_L8_isotropy": 0.0010254212015588626,
+      "narrow_core_isotropy": 0.0005410056156916313,
+      "smooth_L8_restricted_vs_302": 0.004189634782393666,
+      "P1_vs_302": 1.0242100622436649e-06,
+      "P2_vs_302": 8.651549487257554e-05
+    },
+    {
+      "lebedev_order": 29,
+      "point_count": 302,
+      "smooth_L8_isotropy": 0.00038834368433652086,
+      "narrow_core_isotropy": 0.00019761138246455202,
+      "smooth_L8_restricted_vs_302": 0.0,
+      "P1_vs_302": 0.0,
+      "P2_vs_302": 0.0
+    }
+  ],
+  "hard_gate_status": {
+    "absolute_two_level_rate": true,
+    "RII_frequency_normalization": true,
+    "number_conservation_truncated_operator": true,
+    "Lebedev26_release": false,
+    "Lebedev50_release": false,
+    "Lebedev86_release": false,
+    "Lebedev146_release": false,
+    "Lebedev194_release": false,
+    "bruteforce_Lebedev_policy": false,
+    "full_COM_KHW_physical_kernel": false
+  },
+  "decision": {
+    "result": "PASS_AS_PHYSICAL_REFERENCE_AUDIT",
+    "production_release": "NOT_APPROVED",
+    "finding": "The coherent forward angular boundary layer produces non-monotone, slow Lebedev convergence. Increasing point count alone is not an efficient release strategy."
+  },
+  "next_stage": {
+    "name": "C3B2B1B_singularity_subtracted_harmonic_Nystrom_kernel",
+    "tasks": [
+      "Split the mu->1 coherent-forward contribution analytically from the regular angular kernel.",
+      "Compute Legendre/zonal frequency kernels for l=0..L_work with adaptive mu quadrature.",
+      "Use the analytic singular part plus a lower-order Lebedev residual for anisotropic action.",
+      "Re-run isotropic and P1/P2 action convergence before regenerating full COM-KHW.",
+      "Add recoil and Rybicki detailed-balance completion only after the angular reference is stable."
+    ]
+  },
+  "limitations": [
+    "This is the physically normalized two-level Hummer-II reference, not the full COM-KHW kernel.",
+    "Recoil, stimulated scattering, and exact detailed-balance completion are not included.",
+    "Incoming frequency is centre sampled; this artifact audits angular order, not final finite-volume convergence.",
+    "The bounded core operator uses within-domain loss for exact number conservation and records the omitted tail through capture fractions."
+  ]
+}

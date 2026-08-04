@@ -1,0 +1,151 @@
+{
+  "classification": "FIXED_NUCLEUS_SCALAR_OSCILLATOR_STRENGTH_COMPILER_LOCK",
+  "source_model": {
+    "bound_oscillator_strength": "f_1n = (256/3) n^5 (n-1)^(2n-4)/(n+1)^(2n+4)",
+    "continuum_distribution": "exact analytic 1s->kp oscillator-strength density",
+    "energy_units": "Rydberg above the 1s ground state"
+  },
+  "sum_rule_regressions": {
+    "bound_f_sum": 0.5650041506748518,
+    "continuum_f_sum": 0.43499584932514807,
+    "total_TRK_f_sum": 0.9999999999999998,
+    "TRK_residual": -2.220446049250313e-16,
+    "bound_static_polarizability_contribution": 3.6632578903094686,
+    "continuum_static_polarizability_contribution": 0.8367421096905286,
+    "static_polarizability_bohr3": 4.499999999999997,
+    "static_polarizability_residual_from_4p5": -2.6645352591003757e-15
+  },
+  "ly_alpha_pole_background": {
+    "Delta_2_Ry": 0.75,
+    "f_12": 0.41619671797998237,
+    "A0": 0.20809835898999118,
+    "A1_to_A5": [
+      -0.18840971889016922,
+      -2.5514437064148416,
+      -10.955622682401223,
+      -50.815205355507125,
+      -252.1419604680798
+    ],
+    "A1_to_A5_over_A0": [
+      -0.9053878166296885,
+      -12.26075841634848,
+      -52.64636749455651,
+      -244.18840014952335,
+      -1211.6479999739304
+    ],
+    "cross_section_relative_coefficients_z1_to_z5": [
+      -1.810775633259377,
+      -23.701789734195486,
+      -83.09125240350936,
+      -242.71984391622516,
+      -690.1568083343959
+    ]
+  },
+  "Lee_2003_2004_comparison": {
+    "published_A1_to_A5_over_A0": [
+      -0.8961,
+      -12.22,
+      -52.52,
+      -243.8,
+      -1210.0
+    ],
+    "modern_minus_published_amplitude_ratios": [
+      -0.009287816629688472,
+      -0.04075841634847954,
+      -0.1263674945565043,
+      -0.3884001495233349,
+      -1.6479999739303821
+    ],
+    "published_cross_section_coefficients": [
+      -1.792,
+      -23.637,
+      -83.1393,
+      -244.1453,
+      -699.473
+    ],
+    "modern_minus_published_cross_section_coefficients": [
+      -0.018775633259376923,
+      -0.06478973419548595,
+      0.04804759649064749,
+      1.425456083774833,
+      9.316191665604038
+    ],
+    "status": "OPEN_DISCREPANCY_NOT_DECLARED_AS_LITERATURE_ERROR",
+    "interpretation": "The modern exact oscillator-strength reconstruction satisfies both the TRK sum rule and alpha(0)=4.5. It yields coefficients close to, but not identical with, Lee's listed values. Independent reproduction of Lee's original radial-integral normalization is required before calling this a correction."
+  },
+  "COM_compiler": {
+    "amplitude": "M = 1 - 1/2 Sum f Delta (1/Dminus + 1/Dplus)",
+    "pole": "M_2p_pole = -f2 Delta2/[2(D2minus-Sigma2p)]",
+    "background": "seagull + crossed 2p + n>=3 bound + continuum",
+    "hard_gates": [
+      "TRK f-sum",
+      "static polarizability",
+      "fixed-nucleus dynamic polarizability",
+      "Lee-series window comparison",
+      "COM forward/reverse denominator reciprocity",
+      "continuum principal-value convergence",
+      "same-event four-force conservation"
+    ]
+  },
+  "spot_checks": [
+    {
+      "z": -0.001,
+      "full_amplitude": -208.28422817022573,
+      "pole_subtracted_background": -0.18586918023456178,
+      "A1_to_A5_polynomial": -0.18586918024337343,
+      "background_minus_polynomial": 8.811645857420558e-12
+    },
+    {
+      "z": -0.0005,
+      "full_amplitude": -416.38385470955274,
+      "pole_subtracted_background": -0.18713672957039762,
+      "A1_to_A5_polynomial": -0.18713672960649058,
+      "background_minus_polynomial": 3.609296195250522e-11
+    },
+    {
+      "z": -0.0001,
+      "full_amplitude": -2081.1717445830163,
+      "pole_subtracted_background": -0.18815468310458527,
+      "A1_to_A5_polynomial": -0.18815468402496455,
+      "background_minus_polynomial": 9.20379272795202e-10
+    },
+    {
+      "z": 0.0001,
+      "full_amplitude": 2080.7949249253425,
+      "pole_subtracted_background": -0.1886649745692921,
+      "A1_to_A5_polynomial": -0.18866497286787792,
+      "background_minus_polynomial": -1.7014141762139445e-09
+    },
+    {
+      "z": 0.0005,
+      "full_amplitude": 416.00702979397016,
+      "pole_subtracted_background": -0.18968818601217663,
+      "A1_to_A5_polynomial": -0.18968818601670678,
+      "background_minus_polynomial": 4.530154029680489e-12
+    },
+    {
+      "z": 0.001,
+      "full_amplitude": 207.9073868207362,
+      "pole_subtracted_background": -0.1909721692549624,
+      "A1_to_A5_polynomial": -0.19097216928661379,
+      "background_minus_polynomial": 3.1651375964614203e-11
+    }
+  ],
+  "limitations": [
+    "This artifact locks the scalar fixed-nucleus oscillator-strength background and the COM compiler algebra; it does not yet evaluate the full COM-resolved continuum amplitude event-by-event.",
+    "Natural widths and self-energies are not inserted in the background compiler.",
+    "No fine structure, J-state interference, polarization, or atomic alignment.",
+    "The Lee coefficient discrepancy remains an audit finding, not a claimed published error."
+  ],
+  "next_stage": {
+    "name": "C2d2_COM_pole_plus_background_numerical_action",
+    "tasks": [
+      "Insert the COM denominators into the 2p pole and crossed 2p term.",
+      "Evaluate the n>=3 bound background using the exact oscillator strengths.",
+      "Evaluate the continuum background with a principal-value-aware quadrature.",
+      "Use the same causal self-energy prescription in forward and reverse rates.",
+      "Generate a positive finite-volume event kernel and compare its action with v0.3.",
+      "Only after scalar convergence add 2p fine structure and polarization."
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "classification": "DURABLE_PROJECT_STATE",
+  "project": "Full Bianchi\u2013HyRec scalar completion",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "state_date": "2026-08-04",
+  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
+  "estimated_overall_completion_percent": 75,
+  "estimated_PR01_completion_percent": 93,
+  "current_durable_stage": {
+    "name": "PR-01B1-B3B3A same-cell coherent/angular block",
+    "artifact": "Full_Bianchi_HyRec_PR01B1B3B3A_same_cell_regular_v0_45",
+    "status": "PASS_SAME_CELL_EXTERIOR_OPEN"
+  },
+  "next_stage": {
+    "name": "PR-01B1-B3B3B exterior deposition and full scalar release",
+    "tasks": [
+      "Integrate red and blue exterior conductances for every source frequency cell.",
+      "Accumulate exterior photon and hydrogen four-force from the same events.",
+      "Combine off-diagonal, regularized same-cell, and exterior blocks.",
+      "Regenerate adaptive L=12/20/24 scalar harmonic operators.",
+      "Run Bose-equilibrium, photon-number, entropy, positivity, quadrature, ell-tail, and total four-force gates.",
+      "Then execute PR-1C BackgroundSnapshot finite-tilt/large-shear frame-adapter regression."
+    ]
+  },
+  "roadmap": [
+    {
+      "pr": 1,
+      "title": "Exact recoil event and four-force",
+      "status": "IN_PROGRESS_93_PERCENT"
+    },
+    {
+      "pr": 2,
+      "title": "Nonlinear anisotropic Bose collision",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 3,
+      "title": "Full scalar COM\u2013KHW amplitude",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 4,
+      "title": "HYREC common-measure moment projection",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 5,
+      "title": "Primitive HYREC operator and background interface",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 6,
+      "title": "FLRW monolithic parity",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 7,
+      "title": "Bianchi II class-A regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 8,
+      "title": "Class-B regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 9,
+      "title": "Exceptional VI_-1/9 regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 10,
+      "title": "All-11 automated sweep",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 11,
+      "title": "Equation, proof, and provenance census",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 12,
+      "title": "Performance, restart, and release integration",
+      "status": "PLANNED"
+    }
+  ],
+  "hard_scope": {
+    "included": [
+      "homogeneous backgrounds",
+      "all 11 Bianchi types",
+      "nonlinear large shear",
+      "finite tilt",
+      "tetrad and 1+3 formalism",
+      "scalar HYREC-grade recombination and Ly-alpha transfer"
+    ],
+    "excluded_from_12_PR_scalar_release": [
+      "fine structure",
+      "J-state interference",
+      "polarization",
+      "atomic alignment"
+    ]
+  },
+  "remote_sync": {
+    "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+    "remote_ref_verified": false,
+    "remote_tree_match": false,
+    "reason": "Current sandbox has no GitHub network route or writable GitHub connector; local Git backup and push script were created."
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "classification": "C2D2C2A_GEOMETRY_AND_MEMORY_REGISTRY_LOCK",
+  "stage": "Stage 4A-2b.2b-C2d2C2-A",
+  "physical_grid": {
+    "temperature_K": 3000.0,
+    "nu_internal_Hz": 2466067545792234.0,
+    "nu_absorption_Hz": 2466067559187777.0,
+    "absorption_anchor_shift_Doppler": 0.0002314599798649813,
+    "Doppler_width_Hz": 57874121512.55733,
+    "frequency_cells": 17,
+    "x_range": [
+      -4.25,
+      4.25
+    ],
+    "dx": 0.5,
+    "angular_nodes": 26,
+    "states": 442
+  },
+  "Lebedev26": {
+    "normalized_weight_sum": 1.0,
+    "max_degree_7_monomial_residual_python": 5.551115123125783e-17,
+    "Wolfram_degree_7_nonzero_residual_count": 0,
+    "second_moment_max_residual": 5.551115123125783e-17,
+    "angular_mu_classes": 13,
+    "offdiagonal_mu_classes": 12
+  },
+  "edge_registry": {
+    "unordered_edges": 97461,
+    "recommended_active_edges": 93925,
+    "same_ray_frequency_change_edges": 3536,
+    "physics_orbits": 1972,
+    "active_physics_orbits": 1836,
+    "weighted_orbits": 3009,
+    "active_weighted_orbits": 2601,
+    "physics_compression_factor": 49.422413793103445,
+    "weighted_compression_factor": 32.389830508474574
+  },
+  "kinematic_firewall": {
+    "orbits_requiring_speed_over_0p1c": 136,
+    "edges_requiring_speed_over_0p1c": 3536,
+    "interpretation": "These are exactly the same-direction cross-frequency edges. They remain in the complete registry but are disabled in the recommended active graph."
+  },
+  "memory_bytes": {
+    "dense_442x442_float64_bytes": 1562912,
+    "symmetric_packed_including_diagonal_float64_bytes": 783224,
+    "all_offdiagonal_edge_weights_float64_bytes": 779688,
+    "edge_endpoints_two_uint16_bytes": 389844,
+    "two_orbit_maps_uint16_bytes": 389844,
+    "active_flag_uint8_bytes": 97461,
+    "active_CSR_indices_uint16_bytes": 375700,
+    "active_CSR_edge_ids_uint32_bytes": 751400,
+    "active_CSR_indptr_uint32_bytes": 1772,
+    "physics_orbit_weight_table_float64_bytes": 15776,
+    "weighted_orbit_weight_table_float64_bytes": 24072
+  },
+  "hard_invariants": [
+    "state_index = frequency_index*26 + angle_index",
+    "edge_a < edge_b",
+    "frequency_index(edge_a) <= frequency_index(edge_b)",
+    "Lebedev degree-7 monomial exactness",
+    "active CSR contains both directions of every active unordered edge",
+    "scalar kernel values are keyed by frequency pair and angular cosine"
+  ],
+  "limitations": [
+    "This artifact contains geometry, state, edge, orbit and memory registries; it does not evaluate the COM-KHW amplitude.",
+    "The active-edge suppression assumes a nonrelativistic recombination-era hydrogen distribution.",
+    "Polarized kernels require screen-phase data beyond the scalar cosine orbit.",
+    "The bounded core mesh is uniform; adaptive wings are deferred."
+  ],
+  "next_stage": {
+    "name": "C2d2C2-B_physical_orbit_amplitude_cache",
+    "tasks": [
+      "Evaluate the COM 2p pole and v0.8 smooth background once per active physics orbit.",
+      "Use resonance-adapted one-dimensional momentum quadrature and independent forward/reverse amplitude evaluation.",
+      "Assemble edge conductance from orbit values and endpoint quadrature weights.",
+      "Require raw event-pair reciprocity below 1e-12 before constructing generators.",
+      "Run BE, smooth, narrow, dipole, quadrupole and red/blue-crossing actions.",
+      "Generate M1-M4 and photon/hydrogen four-force from the same active edge ledger."
+    ]
+  }
+}

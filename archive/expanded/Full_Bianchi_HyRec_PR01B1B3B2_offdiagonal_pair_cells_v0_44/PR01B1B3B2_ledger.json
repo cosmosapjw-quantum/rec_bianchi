@@ -1,0 +1,85 @@
+{
+  "classification": "PR01B1B3B2_OFFDIAGONAL_TWO_SIDED_PAIR_CELL_LOCK",
+  "stage": "PR-01B1-B3B2",
+  "status": "PASS_OFFDIAGONAL_PAIR_CELLS_FULL_COLLISION_OPEN",
+  "source_artifacts": [
+    "Full_Bianchi_HyRec_PR01B1B3B1_analytic_pole_crossed_v0_43",
+    "Full_Bianchi_HyRec_PR01B1B2_invariant_pair_measure_v0_40",
+    "Full_Bianchi_HyRec_C3B2B1C_finite_volume_ellmax_v0_32"
+  ],
+  "scope": {
+    "frequency_cells": 17,
+    "unordered_distinct_pairs": 136,
+    "ell_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "amplitude": "unresolved scalar 2p pole+crossed",
+    "same_cell_block": "excluded"
+  },
+  "hard_results": {
+    "offdiagonal_pair_count": 136,
+    "conductance_symmetry_relative": 0.0,
+    "generator_left_null": 6.183623741598131e-17,
+    "equilibrium_right_null": 2.1807721173374207e-16,
+    "minimum_scalar_conductance": 7.68173878105868e-09,
+    "number_residual_random_state": 2.4351604310498057e-16,
+    "entropy_production_random_state": -0.04229193692805859,
+    "maximum_selected_quadrature_relative": 2.242119207271735e-09,
+    "maximum_selected_orientation_relative": 7.043597533428895e-16,
+    "maximum_pointwise_Hummer_relative": 4.323949731599441e-08,
+    "maximum_mode_weighted_Hummer_vs_v032": 8.54201180341115e-05,
+    "same_cell_angular_block": "OPEN",
+    "red_blue_exterior": "OPEN",
+    "maximum_scalar_action_relative_to_v033": 0.0007308332283330635,
+    "maximum_scalar_action_relative_to_Hummer": 4.23778838544321,
+    "line_center_offdiagonal_M1_exact": -0.0007269159221971979,
+    "line_center_offdiagonal_M1_Hummer": 5.696460129472406e-17,
+    "line_center_offdiagonal_M1_increment": -0.0007269159221972548,
+    "line_center_offdiagonal_M2_relative": 1.7920640704716106e-07
+  },
+  "hard_gate_status": {
+    "TDD": true,
+    "all_136_unordered_offdiagonal_pairs": true,
+    "positive_scalar_conductance": true,
+    "conductance_symmetry": true,
+    "quadrature_convergence": true,
+    "independent_orientation": true,
+    "number_conservation": true,
+    "equilibrium_right_null": true,
+    "entropy_dissipation": true,
+    "pointwise_Hummer_limit": true,
+    "same_cell_coherent_angular_block": false,
+    "red_blue_exterior_deposition": false,
+    "full_ell_le_6_collision_operator": false
+  },
+  "decision": {
+    "PR01B1B3B2": "PASS",
+    "offdiagonal_two_sided_pair_cells": "APPROVED_FOR_PROVISIONAL_2P",
+    "full_collision_operator": "OPEN",
+    "production_release": "NOT_APPROVED",
+    "reason": "same-cell angular scattering and exterior event deposition remain separate non-negligible blocks"
+  },
+  "limitations": [
+    "The diagonal frequency-cell conductance is set to zero in the stored pair matrix; same-cell angular redistribution is not zero and remains open.",
+    "The closed interior scalar generator omits physical red/blue exterior loss.",
+    "No event-level spatial four-force is stored in this frequency-only pair artifact.",
+    "The smooth higher-bound, continuum and seagull amplitude remains PR-03.",
+    "The 2p state is unresolved and scalar."
+  ],
+  "next_stage": {
+    "name": "PR01B1B3B3_same_cell_coherent_angular_and_exterior",
+    "tasks": [
+      "Derive the same-frequency-cell coherent-forward angular block as an analytic delta plus regular remainder.",
+      "Compute its Legendre moments through L=24 and combine with the off-diagonal blocks.",
+      "Integrate red/blue exterior deposits and same-event photon/hydrogen four-force.",
+      "Re-run adaptive ellmax, Bose, number, equilibrium and four-force gates.",
+      "Then perform PR-1C BackgroundSnapshot finite-tilt frame-adapter regression."
+    ]
+  }
+}

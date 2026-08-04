@@ -1,0 +1,141 @@
+{
+  "classification": "C3B2A_C_RUNTIME_PARITY_AND_SUBSTITUTION_FIREWALL",
+  "stage": "C3B2A",
+  "source_artifacts": {
+    "native_block": "Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27",
+    "full_angle_kernel": "Full_Bianchi_HyRec_D1CB_exact_outer_v0_22"
+  },
+  "C_runtime_parity": {
+    "C_vs_Python_Schur_relative": 2.7657797992415428e-15,
+    "C_vs_Python_max_abs": 3.3087224502121107e-23,
+    "C_real_state_solution": [
+      5.339421314184885e-10,
+      1.708137552002868e-09
+    ]
+  },
+  "native_Lya_sector": {
+    "A2p_up_s^-1": 3740.248028270316,
+    "A2p_down_s^-1": 3759.9654428934414,
+    "R_Lya_s^-1": 1.8651596270210575,
+    "true_2p_virtual_loss_sum_s^-1": 21.77028285912699,
+    "Trr_2p_full_s^-1": 8434.407958976293,
+    "Trr_2p_without_Lya_escape_and_diffusion_s^-1": 932.3293281855144,
+    "sr_2p_full": 2.8011936054136297e-08,
+    "sr_2p_recombination": 3.45416488009176e-11,
+    "sr_2p_Lya_feedback": 2.7977394405315863e-08,
+    "source_decomposition_residual": 1.951815373380124e-20,
+    "one_minus_Pi_min": 8.376387233455553e-10,
+    "one_minus_Pi_max": 0.9995732946801128,
+    "compression_factor_min": 1.0004268874750437,
+    "compression_factor_max": 1193832104.6166165,
+    "relative_norm_diag_minus_primitive_gamma": 0.011541453076965006,
+    "diffusion_virtual_offdiagonal_nonzero": 156.0
+  },
+  "angular_lift": {
+    "frequency_cells": 35,
+    "angles": 26,
+    "states": 910,
+    "weights_sum_residual": 0.0,
+    "restricted_action_max_relative": 3.620256147415203e-15,
+    "isotropy_leakage_tests": [
+      {
+        "state": "smooth_L8",
+        "isotropy_leakage_relative": 0.0021933503941113414
+      },
+      {
+        "state": "smooth_L2",
+        "isotropy_leakage_relative": 0.0022346757551742437
+      },
+      {
+        "state": "narrow_core",
+        "isotropy_leakage_relative": 0.0074253805674454314
+      },
+      {
+        "state": "odd_red_blue",
+        "isotropy_leakage_relative": 4.312647899223288e-05
+      }
+    ],
+    "full_number_left_null": 4.069684112353758e-14,
+    "full_equilibrium_right_null": 4.263256414560601e-14,
+    "frequency_number_left_null": 4.8586234260693146e-15,
+    "frequency_equilibrium_right_null": 7.218394580498066e-14
+  },
+  "true_coupling_remap": {
+    "native_bins_overlapping": [
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144
+    ],
+    "fine_cells": 35,
+    "piece_rows": 92,
+    "Tvr_sum_max_relative": 2.084992336876217e-16,
+    "Trv_sum_max_relative": 2.047357659427263e-16,
+    "minimum_positive_split_rate": 7.002802956910014e-06,
+    "isotropic_real_row_lift_max_relative": 8.90358454681593e-16
+  },
+  "absolute_normalization": {
+    "status": "FAIL_NO_SINGLE_ABSOLUTE_SCALE",
+    "best_single_scale": 74123.19636630164,
+    "relative_fit_residual": 0.25119765920690157,
+    "required_scale_min": 74079.09643106739,
+    "required_scale_max": 230882210.5655217,
+    "required_scale_ratio": 3116.6985248040096,
+    "interpretation": "The v0.22 conductance is a relative operator audit and is not yet an s^-1 replacement for native HYREC."
+  },
+  "angular_balancing_audit": {
+    "classification": "AUDIT_ONLY_NOT_APPROVED",
+    "method": "positive frequency-pairwise balancing to Lebedev-weight marginals",
+    "conductance_relative_change": 0.02509878702173222,
+    "action_relative_changes": {
+      "smooth_L8": 0.0021926642410314175,
+      "smooth_L2": 0.0022339637657755886,
+      "narrow_core": 0.007418668249567336,
+      "angular_dipole": 0.0075848461065326726,
+      "angular_quadrupole": 0.01482415853179858,
+      "red_blue_crossing": 0.012137058670465663
+    },
+    "decision": "Rejected as a production repair; use angular-order convergence instead."
+  },
+  "Wolfram_exact_results": {
+    "A_times_J": 0,
+    "lifted_Trv_reduction": 0,
+    "lifted_Tvr_reduction": 0,
+    "optical_closure_additivity": "FAIL_NONZERO",
+    "small_tau_nonadditivity": "c g1 g2 + c^2 g1 g2(g1+g2)/4 + ..."
+  },
+  "hard_gate_status": {
+    "C_solver_parity": true,
+    "native_true_rate_remap": true,
+    "angle_restriction_identity": true,
+    "direct_Tvv_lift": false,
+    "Lebedev26_isotropy": false,
+    "absolute_rate_normalization": false,
+    "monolithic_substitution": false
+  },
+  "decision": {
+    "C3B2A": "PASS_AS_AUDIT",
+    "C3B2_PRODUCTION_SUBSTITUTION": "NOT_APPROVED",
+    "reasons": [
+      "HYREC Tvv is escape-compressed and nonadditive.",
+      "The full native Ly-alpha transport sector must be retired together.",
+      "Lebedev-26 has unresolved isotropic angular leakage.",
+      "The COM-KHW conductance lacks approved absolute s^-1 normalization."
+    ]
+  },
+  "next_stage": {
+    "name": "C3B2B_absolute_normalization_and_angular_convergence",
+    "tasks": [
+      "Restore the Kramers-Heisenberg differential-cross-section prefactor and n_1s c normalization.",
+      "Recover the Hummer/Fokker-Planck small-jump limit on a common native/fine measure without fitting a free scale.",
+      "Recompute at Lebedev-38 and at least one higher angular rule; measure isotropic leakage and anisotropic action convergence.",
+      "Assemble the primitive-rate time-dependent residual only after both gates pass."
+    ]
+  }
+}
