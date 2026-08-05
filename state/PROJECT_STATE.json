@@ -4,24 +4,24 @@
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-05",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 86,
+  "estimated_overall_completion_percent": 88,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 55,
+  "estimated_PR04_completion_percent": 75,
   "current_durable_stage": {
-    "name": "PR-04A HYREC-2 source/convention lock and 17-cell common-measure core",
-    "artifact": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51",
-    "status": "PASS_PR04A_COMMON_MEASURE_CORE_PR04B_ORIGINAL_HYREC_ARCHIVE_OPEN"
+    "name": "PR-04B1 original-HyRec source lock and native proxy map",
+    "artifact": "Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52",
+    "status": "PASS_PR04B1_ORIGINAL_HYREC_SOURCE_NATIVE_PROXY_MAP_PR04B2_OPEN"
   },
   "next_stage": {
-    "name": "PR-04B original-HyRec archive and native primitive common-measure parity",
-    "entry_gate": "EXACT_OFFICIAL_OCTOBER_2012_ARCHIVE_BYTES_AND_SHA256",
+    "name": "PR-04B2 physical native-measure and full-trajectory FLRW closure",
+    "entry_gate": "PR04B1_BYTE_SOURCE_NATIVE_PROXY_LOCK_PASS",
     "tasks": [
-      "Acquire, inventory, hash and compile the official October-2012 original-HyRec archive.",
-      "Derive its native radiation-variable, frequency-bin, time-derivative, diffusion, recoil and stimulated-factor conventions from source.",
-      "Map native primitive and Schur-reduced rates to the v0.51 common measure without a fitted normalization.",
-      "Close normalization, detailed balance, recoil energy, analytic/JVP Jacobian and one FLRW snapshot parity gate."
+      "Instrument a source-identical original-HyRec trajectory at one locked hydrogen-recombination snapshot.",
+      "Derive the redshift/escape/bin map from the native virtual-level proxy to physical photons per hydrogen atom per logarithmic frequency.",
+      "Compare v0.51 direct COM\u2013KHW, native primitive, Schur-reduced and physical finite-volume actions without a fitted normalization.",
+      "Close normalization, detailed balance, recoil energy, analytic/JVP, positivity and one full FLRW snapshot parity gate."
     ]
   },
   "roadmap": [
@@ -43,7 +43,7 @@
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "IN_PROGRESS_PR04A_PASS_PR04B_OPEN"
+      "status": "IN_PROGRESS_PR04A_PR04B1_PASS_PR04B2_OPEN"
     },
     {
       "pr": 5,
@@ -114,38 +114,51 @@
     "nonlinear_update": "log-occupation backward Euler with exact analytic JVP",
     "conservation": "photon and atom energy/four-force are accumulated from the same event with opposite sign",
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
-    "common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
-    "native_hyrec_firewall": "HYREC-2 Aup/Adn and completed Tvv are not direct COM-KHW per-source moments; no free scale fit"
+    "physical_common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
+    "native_original_hyrec_proxy": "v0.52 dimensionless reversible 80-bin-plus-2p diagnostic with exact original-C/Schur parity",
+    "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not the physical finite-volume photon measure; no free scale fit"
   },
-  "PR04A_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51.zip",
-    "artifact_bundle_sha256": "ca60bb0d2177ef50fdcf44635f58e89108b00d9ab37312c813d9e0a15086004e",
-    "artifact_bundle_size_bytes": 61151,
-    "core_states": 17,
-    "offdiagonal_pairs": 136,
-    "same_cell_active_jump_cells": 17,
-    "hyrec2_source_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
-    "hyrec2_native_representation": "(2s,2p)+311 virtual photon states; diffusion indices 100..179",
-    "original_hyrec_october_2012_archive": "OPEN_NOT_ACQUIRED",
-    "maximum_pair_conditional_moment_reference_residual": 1.1177560914896358e-06,
-    "maximum_same_cell_conditional_moment_reference_residual": 1.6041979170824565e-06,
-    "maximum_raw_C0_projection_relative": 4.010611579730039e-06,
-    "analytic_JVP_relative_residual": 5.2050230667387146e-08,
+  "PR04B1_input_lock": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "size_bytes": 726954,
+    "zip_entries": 29,
+    "zip_integrity": "PASS",
+    "classification": "USER_SUPPLIED_OFFICIAL_CANDIDATE_BYTE_LOCKED",
+    "independent_official_remote_byte_equality": "NOT_VERIFIED"
+  },
+  "PR04B1_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52.zip",
+    "artifact_bundle_sha256": "fcceb03dc0c96f574bc4e24b7426b98b083462a8ae1d70293243cb1556801ab5",
+    "artifact_bundle_size_bytes": 208538,
+    "portable_binary_sha256": "a5ebb0e67b58f5d85f3387458eb96025f93b5b53b1ce4fd76c3a160c51d4b733",
+    "baseline_output_sha256": "9fdee53a363aeb3b7c6963564543089e1b5ed91e39b0d4471efd052aa66b6485",
+    "C_python_rate_relative_residual": 1.2158213772169615e-16,
+    "original_C_vs_pinned_C3B1_max_relative_residual": 4.335460715534056e-11,
+    "direct_matrix_relative_residual": 9.991851847655775e-14,
+    "original_C_vs_direct_solution_relative_difference": 1.03389545973357e-14,
+    "Schur_vs_direct_relative_difference": 2.2864995744107797e-15,
+    "native_column_relative_residual": 1.389601710598079e-16,
+    "native_equilibrium_relative_residual": 1.0625487481896791e-15,
+    "native_moment_max_exchange_parity_residual": 2.4322169218010385e-15,
+    "analytic_JVP_relative_residual": 9.9511751205898e-17,
+    "implicit_minimum_proxy_state": 3.593077484814617e-18,
+    "implicit_proxy_number_relative_change": 0.0,
+    "physical_number_map_relative_residual": 0.005243277338650812,
     "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
     "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
     "fallbacks": [
-      "SymPy exact identities",
-      "mpmath 80-decimal references",
-      "SciPy positive quadrature and constants"
+      "original source C execution",
+      "NumPy dense and Schur linear algebra",
+      "central-difference JVP regression"
     ]
   },
   "known_limitations": [
-    "The official October-2012 original-HyRec archive bytes and SHA-256 were not acquired; PR-04 native archive parity remains open.",
-    "The v0.51 common measure covers the 17 interior cells |x|<=4.25; exterior transport remains in the Liouville/boundary module.",
-    "Native HYREC-2 Aup/Adn rates are diagnostic until the virtual-state/escape map is derived; direct substitution and fitted normalization are forbidden.",
-    "Same-cell Gamma counts active frequency-changing events and excludes the coherent zero-transfer identity.",
+    "The owner-supplied archive is byte-locked, but independent equality with a fresh official-server October-2012 download is not verified.",
+    "The v0.52 native network conserves a dimensionless virtual-level proxy, not yet the physical photon finite-volume measure.",
+    "Direct native Aup/Adn or completed Tvv substitution and fitted normalization are forbidden.",
+    "The v0.51 physical common measure covers the 17 interior cells |x|<=4.25; exterior transport remains in the Liouville/boundary module.",
     "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
-    "The geometry firewall is a common-local-state API regression, not the all-11 automated trajectory sweep.",
     "Wolfram and Precise Special Functions plugins were not exposed in this runtime."
   ],
   "remote_sync": {
@@ -159,7 +172,7 @@
     "exact_remote_main_sha": null,
     "runtime_verification": "NOT_ATTEMPTED_AS_WRITE; CONFIGURED_ORIGIN_IS_INPUT_BUNDLE",
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-    "local_v050_parent_commit": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-    "policy": "Export cumulative declared-base-to-v0.51 and incremental v0.50-to-v0.51 binary-safe patches plus a standalone full bundle. The owner must fetch remote main and apply on a feature branch without force-push."
+    "local_v051_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
+    "policy": "Export cumulative declared-base-to-v0.52 and incremental v0.51-to-v0.52 binary-safe patches plus a standalone full bundle. The owner must fetch remote main and apply on a feature branch without force-push."
   }
 }

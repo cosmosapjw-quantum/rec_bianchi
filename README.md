@@ -4,10 +4,11 @@ This repository is the durable backup and active reconstruction workspace for th
 
 ## Current state
 
-- Durable stage: **PR-04A / v0.51**.
-- Status: the exact durable HYREC-2 FULL source/convention registry is locked, and the v0.50 scalar elastic COM–KHW event measure has been projected onto a positive 17-cell ordinary-frequency common measure through `Gamma,M1,...,M4`. The scalar Bose, BE-null, number, free-energy, same-event energy, analytic-JVP, implicit-positivity, and geometry-firewall gates pass. **PR-01 through PR-03 are complete; PR-04 is in progress.**
-- Open source gate: the official October-2012 original-HyRec archive bytes and SHA-256 were not available in this runtime. Native original-HyRec primitive/stencil parity is therefore not claimed.
-- Next bounded stage: **PR-04B original-HyRec archive and native primitive common-measure parity**.
+- Durable stage: **PR-04B1 / v0.52**.
+- Status: the owner-supplied `HyRec_Oct2012.zip` is byte-locked and safety-audited; the original source builds without source edits under GNU C, reproduces a complete baseline history, and agrees with the prior pinned native sparse-block registry. The original C diffusion rates, full 313-state real/virtual solve, dense solve, and structured Schur solve pass independent parity checks.
+- Scientific boundary: the native reversible variable is a **dimensionless virtual-level proxy**, not yet the physical photon finite-volume measure of PR-04A. Direct substitution of native `Aup/Adn` or a completed `Tvv` block is therefore forbidden. **PR-01 through PR-03 are complete; PR-04 remains in progress.**
+- Provenance boundary: the archive bytes are durable owner-supplied input whose filename and package metadata correspond to the October-2012 release, but independent byte equality with a fresh official-server download was not verified in this runtime.
+- Next bounded stage: **PR-04B2 physical native-measure and full-trajectory FLRW closure**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
@@ -26,10 +27,10 @@ Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md), [`state/PROJECT_STATE.json`]
 - `src/`, `tests/`, `data/`: active implementation and regression data.
 - `archive/bundles/`: exact immutable stage ZIPs.
 - `archive/expanded/`: browseable expanded stage artifacts.
-- `archive/inputs/`: user-supplied primitive Bianchi host code.
+- `archive/inputs/`: byte-locked user-supplied primitive sources and host code.
 - `state/`: machine-readable current state, inventory, provenance, receipts, and supersessions.
 - `docs/`: handoff, setup, roadmap, GitHub access, backup, and recovery instructions.
-- `scripts/`: scientific-stage generation, verification, status, patch, bundle, and safe-push helpers.
+- `scripts/`: scientific-stage generation, C harnesses, verification, status, patch, bundle, and safe-push helpers.
 
 ## Remote sync policy
 
@@ -43,10 +44,10 @@ This repository contains unpublished research and a user-supplied primitive code
 
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full repository verifier with fast tests: `python scripts/verify_repo.py --all`.
-- Full scientific regression: `python scripts/verify_repo.py --scientific` (fast lane plus file-isolated slow quadrature lanes with deterministic BLAS thread limits).
-- PR-04A production regeneration: `python scripts/run_pr04a_hyrec_common_measure_stage.py --workers 12`.
+- Full scientific regression: `python scripts/verify_repo.py --scientific`.
+- PR-04B1 regeneration: `python scripts/run_pr04b_original_hyrec_native_stage.py`.
 - Original stage bundles retain per-stage scientific receipts.
 
 ## Repository checks and patches
 
-Each bounded stage runs `python scripts/check_remote_state.py` and exports binary-safe patches with `python scripts/export_patch_series.py`. See [`docs/REPO_CHECK_PATCH_POLICY.md`](docs/REPO_CHECK_PATCH_POLICY.md).
+Each bounded stage runs `python scripts/check_remote_state.py` and exports binary-safe patches. See [`docs/REPO_CHECK_PATCH_POLICY.md`](docs/REPO_CHECK_PATCH_POLICY.md).
