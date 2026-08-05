@@ -67,6 +67,7 @@ def main() -> None:
             raise SystemExit(result.returncode)
 
     scientific_slow_files: list[str] = []
+    scientific_slow_nodes: list[str] = []
     scientific_env = os.environ.copy()
     for variable in (
         "OPENBLAS_NUM_THREADS",
@@ -109,21 +110,25 @@ def main() -> None:
             node_id = line.strip()
             if "::" not in node_id:
                 continue
+            scientific_slow_nodes.append(node_id)
             test_file = node_id.split("::", 1)[0]
             if test_file not in scientific_slow_files:
                 scientific_slow_files.append(test_file)
-        assert scientific_slow_files, "scientific mode found no slow tests"
+        assert scientific_slow_nodes, "scientific mode found no slow tests"
 
-        for test_file in scientific_slow_files:
+        # Execute every slow node in a fresh interpreter.  Several independent
+        # SciPy/BLAS-heavy tests pass their assertions but can stall during
+        # extension-module teardown when multiple nodes share one process.
+        # Node isolation is slower but deterministic and preserves the exact
+        # collected scientific test set.
+        for node_id in scientific_slow_nodes:
             result = subprocess.run(
                 [
                     sys.executable,
                     "-m",
                     "pytest",
                     "-q",
-                    "-m",
-                    "slow",
-                    test_file,
+                    node_id,
                 ],
                 cwd=ROOT,
                 env=scientific_env,
@@ -157,6 +162,7 @@ def main() -> None:
                 "current_artifact": current_artifact,
                 "mode": mode,
                 "scientific_slow_file_count": len(scientific_slow_files),
+                "scientific_slow_test_count": len(scientific_slow_nodes),
             }
         )
     )
