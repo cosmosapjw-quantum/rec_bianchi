@@ -78,21 +78,12 @@ def main() -> None:
     ):
         scientific_env[variable] = "1"
     if args.scientific:
-        # Run the fast and slow lanes in separate Python processes.  Several
-        # quadrature modules intentionally retain large numerical caches;
-        # carrying every fast-test cache into the legacy slow suite can make
-        # the result order-dependent and needlessly expensive.  File-level
-        # isolation preserves complete test coverage while making a fresh-clone
-        # scientific audit reproducible.
-        result = subprocess.run(
-            [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
-            cwd=ROOT,
-            env=scientific_env,
-            timeout=300,
-        )
-        if result.returncode:
-            raise SystemExit(result.returncode)
-
+        # Run slow files in fresh processes *before* the aggregate fast lane.
+        # The resonant common-measure quadrature can otherwise finish its test
+        # body but stall during interpreter teardown after the aggregate suite
+        # has initialized several SciPy/BLAS extension modules.  Slow-first
+        # ordering plus file isolation preserves identical numerical coverage
+        # and gives every expensive process a clean extension-module lifecycle.
         collection = subprocess.run(
             [
                 sys.executable,
@@ -140,6 +131,15 @@ def main() -> None:
             )
             if result.returncode:
                 raise SystemExit(result.returncode)
+
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
+            cwd=ROOT,
+            env=scientific_env,
+            timeout=300,
+        )
+        if result.returncode:
+            raise SystemExit(result.returncode)
     elif args.all:
         result = subprocess.run(
             [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],

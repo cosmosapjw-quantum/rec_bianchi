@@ -5,7 +5,7 @@ from full_bianchi_hyrec.recoil.recoil_bridge import (
     exact_rayleigh_recoil_moments,
     load_v033_line_center,
     classify_v033_bridge,
-    compute_bridge_audit,
+    compute_line_bridge_audit,
 )
 
 M_H = physical_constants["atomic mass constant"][0] * 1.00782503223
@@ -36,14 +36,14 @@ def test_v033_is_not_the_microscopic_event_limit():
     ) < 2e-11
 
 
-def test_shift_only_hummer_audit_reproduces_baseline_but_fails_microreversibility():
-    audit = compute_bridge_audit(
+def test_shift_only_hummer_line_audit_reproduces_baseline_but_fails_microreversibility():
+    audit = compute_line_bridge_audit(
         back_order=12,
         middle_order=80,
         forward_order=20,
         u_order=48,
     )
 
-    assert audit["no_recoil_vs_v032_relative"] < 2e-6
+    assert audit["no_recoil_line_column_vs_v032_relative"] < 2e-6
     assert audit["shift_only_pair_balance_relative"] > 1e-7
     assert audit["shift_only_vs_v033_drift_relative"] > 0.5

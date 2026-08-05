@@ -2,125 +2,91 @@
 
 ## Summary
 
-The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The durable endpoint is **PR-04A / v0.51**. PR-01, PR-02, and PR-03 are complete; PR-04 is deliberately still in progress because exact original-HyRec archive/native-stencil parity remains open.
+The durable endpoint is **PR-04B1 / v0.52**. PR-01 through PR-03 are complete. PR-04A supplied the positive 17-cell physical common measure. PR-04B1 now byte-locks and audits the owner-supplied original-HyRec October-2012 candidate archive, compiles and executes the unmodified source bytes under GNU C, and closes exact native diffusion/full-matrix/Schur parity. PR-04 remains open because the native virtual-level proxy has not yet been mapped onto the physical finite-volume photon measure along a full FLRW trajectory.
 
-## Closed in PR-04A / v0.51
+## Input and provenance lock
 
-- Pinned the inherited byte-level HYREC-2 FULL source registry at commit `09e8243d0e08edd3603a94dfbc445ae06cafe139`, including the exact blobs for `hydrogen.c`, `hydrogen.h`, `Alpha_inf.dat`, `R_inf.dat`, and `two_photon_tables.dat`.
-- Locked the FULL representation `(2s,2p) + 311 virtual photon states`, including the 80-state Ly-alpha diffusion block at zero-based virtual indices `100..179`.
-- Kept ordinary frequency `nu` in Hz and fixed
-  `Delta nu = nu_target - nu_source`,
-  `Delta E_gamma = h Delta nu`, and
-  `Delta E_H = -h Delta nu`.
-- Projected all 136 off-diagonal pairs and 17 active same-cell jump measures of the interior core `-4.25 <= x <= 4.25` through fourth frequency order.
-- Preserved the accepted v0.50 zeroth pair mass exactly and obtained `M1`–`M4` from independently integrated conditional moment ratios. No HYREC output or free multiplicative normalization was used.
-- Enforced exact exchange parity
-  `S^(r)_ji = (-1)^r S^(r)_ij`, nonnegative zeroth/even moments, and exact conversion between dimensionless Doppler-coordinate moments and Hz moments.
-- Added source-conditioned `Gamma,M1,...,M4`, a conservative scalar Bose edge operator, exact analytic JVP, and a log-occupation backward-Euler update.
-- Closed BE, photon-number, free-energy, positivity, same-event photon-plus-atom energy, and common-local-state geometry-firewall gates.
-- Retained HYREC-2 primitive `Aup/Adn` diffusion rates as diagnostics only. Direct substitution is forbidden because those rates live inside an escape-compressed real/virtual Schur system.
-- Recorded unavailable Wolfram and Precise Special Functions plugins explicitly and used SymPy exact algebra, `mpmath` 80-decimal references, and SciPy positive numerical quadrature as fallbacks.
+The durable input is:
 
-## Common-measure definition and dimensions
+```text
+archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip
+size:   726954 bytes
+SHA256: 48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27
+entries: 29 (26 files, 3 directories)
+```
 
-For target cell `i`, source cell `j`, and ordinary-frequency jump
+ZIP integrity, path safety, duplicate-name and symlink gates pass. Internal source headers say May 2012 while ZIP metadata for `history.c` and `Makefile` is dated 2012-10-05. The owner-supplied bytes are therefore locked as an official-release candidate corresponding to the October-2012 distribution, but independent equality with a fresh official-server download is not claimed.
 
-\[
-\Delta\nu=\nu_i-\nu_j,
-\]
+The shipped Makefile selects Intel `icc`, which was unavailable. The same source bytes compile under GNU C without edits. The portable baseline exits normally and emits 8001 history rows.
 
-the oriented positive event moments are
+## Native-variable census
 
-\[
-S^{(r)}_{ij}=\int_{I_j\to I_i}(\Delta\nu)^r\,d\mathcal S,
-\qquad r=0,\ldots,4.
-\]
+Original HyRec uses cgs lengths and eV temperatures/energies. Its local virtual radiation coordinate is a dimensionless population proxy
 
-The event tensor has dimensions
+```text
+x_b = x_1s f_nu_b
+```
 
-\[
-[S^{(r)}]={\rm m}^{-3}{\rm s}^{-1}{\rm Hz}^{r}.
-\]
+or the corresponding nonthermal departure. Native `T`/`Aup`/`Adn` coefficients have dimensions `s^-1`; the time relation is `d/dt = H d/d ln a`. In FULL mode there are two real states `(2s,2p)` and 311 virtual states. The Ly-alpha diffusion subblock occupies virtual indices 100 through 179, i.e. 80 resolved virtual bins, with an unresolved 2p line-centre state.
 
-With source equilibrium measure `Pi_j`,
+The project adapter continues to use ordinary frequency `nu` in Hz,
 
-\[
-\Gamma_j={1\over\Pi_j}\sum_i S^{(0)}_{ij},
-\qquad
-M_r(j)={1\over\Pi_j}\sum_i S^{(r)}_{ij},
-\]
+```text
+Delta nu = nu_target - nu_source,
+Delta E_gamma = h Delta nu,
+Delta E_H = -h Delta nu,
+```
 
-so `[Gamma]=s^-1` and `[M_r]=Hz^r s^-1`. The atomic recoil power per source photon is `-h M1`; the photon contribution is its exact opposite on the same event.
+with `c`, `h`, and `k_B` explicit.
 
-The lower-cost production quadrature is used only for conditional ratios:
+## Closed in PR-04B1
 
-\[
-S^{(r)}_{ij}\leftarrow S^{(0),v0.50}_{ij}
-{S^{(r),raw}_{ij}\over S^{(0),raw}_{ij}}.
-\]
+- exact C/Python reconstruction of original `populate_Diffusion`;
+- original C 313-state real/virtual matrix and solution dump;
+- dense direct solve and structured Schur solve parity;
+- 81-state reversible native proxy network (80 diffusion bins plus unresolved 2p);
+- native moment exchange parity through order four;
+- steady 2p Schur elimination with positive red/blue bridge rates;
+- analytic JVP and conservative positive backward-Euler proxy update;
+- explicit firewall showing that raw native rates do not conserve the inferred physical photon finite-volume measure.
 
-This is a conservation projection to the already accepted first-principles v0.50 event mass, not a fit to HyRec.
+Key residuals are:
 
-## Representative hard results
-
-| Quantity | Result |
+| Gate | Result |
 |---|---:|
-| Interior states | `17` |
-| Off-diagonal pairs | `136` |
-| Active same-cell jump cells | `17` |
-| Maximum raw-to-durable `C0` projection | `4.0106e-06` |
-| Durable off-diagonal `C0` reproduction | `0` |
-| Exchange-parity residual | `0` |
-| Maximum pair conditional-moment refinement residual | `1.1178e-06` |
-| Maximum same-cell conditional-moment refinement residual | `1.6042e-06` |
-| Minimum source `M2` | `9.1512e+16 Hz^2 s^-1` |
-| Minimum source `M4` | `3.0742e+39 Hz^4 s^-1` |
-| BE relative null | `0` |
-| Stress photon-number relative residual | `7.4728e-17` |
-| Stress free-energy production | `-4.4656e+15 m^-3 s^-1` |
-| Photon-plus-atom energy residual | `0 W m^-3` |
-| Analytic-JVP relative residual | `5.2050e-08` |
-| Implicit residual | `2.8370e-13` |
-| Explicit stress-trial minimum | `-1.5901e-02` |
-| Implicit minimum occupation | `6.7513e-02` |
-| Implicit number relative change | `3.9475e-14` |
-| Implicit free-energy change | `-2.2815e+16 m^-3` |
-| Native source-snapshot detailed-balance residual | `2.7105e-20` |
-| Geometry-to-local-microphysics difference | `0` |
-| TRK and static-polarizability residuals | `0`, `0` |
+| C/Python diffusion-rate relative residual | `1.216e-16` |
+| Original C vs pinned C3B1 maximum residual | `4.335e-11` |
+| Direct matrix residual | `9.992e-14` |
+| Original C vs direct solution | `1.034e-14` |
+| Schur vs direct solution | `2.286e-15` |
+| Native column residual | `1.390e-16` |
+| Native equilibrium residual | `1.063e-15` |
+| Maximum native moment exchange-parity residual | `2.432e-15` |
+| Schur column residual | `1.217e-16` |
+| Schur equilibrium residual | `7.581e-16` |
+| Analytic JVP residual | `9.951e-17` |
+| Implicit minimum proxy state | `3.593e-18` |
+| Implicit proxy-number relative change | `0` |
+| Direct physical-number-map residual | `5.243e-3` |
 
-## Native HYREC source interpretation
+The last quantity is an intentional **failure of the forbidden identification**, not a failed PR-04B1 gate: native proxy conservation has left measure one, whereas physical photon cells carry frequency-dependent mode weights. It proves that direct `Aup/Adn -> physical finite-volume generator` substitution is not legitimate.
 
-The official HyRec description distinguishes two roles: original HyRec performs numerical time-dependent radiative transfer, while default HYREC-2 uses correction functions derived from that calculation. Consequently, HYREC-2 SWIFT is a production/parity target but is not by itself the native anisotropic frequency-space operator.
+## Explicit scope boundary
 
-The pinned HYREC-2 FULL arrays provide exact source and convention evidence, but the primitive adjacent `Aup/Adn` coefficients are not equal to the v0.51 source-conditioned COM–KHW moments. They enter the virtual-state matrix and its escape-compressed Schur reduction. The superseded route “copy the completed `Tvv` matrix or fit a scale” remains forbidden.
+PR-04B1 does not close physical common-measure parity, a full FLRW recombination snapshot, or the PR-04 production interface. It does not fit a scale to make native and direct COM–KHW moments agree. The full scalar release still excludes Raman production, fine structure, J-state interference, polarization and atomic alignment.
 
-## Architecture preserved
+Wolfram and Precise Special Functions were not exposed in this runtime. The independent checks used original C execution, NumPy dense/Schur linear algebra and central-difference JVP regression; no unavailable plugin is claimed to have run.
 
-- Metric signature: `(-,+,+,+)`.
-- `c`, `h`, and `k_B` remain explicit.
-- Bianchi geometry enters through `BackgroundSnapshot` tetrad characteristics, not through the local atomic amplitude or common-measure table.
-- Every red/blue boundary-speed zero remains localized within the timestep.
-- Adaptive angular policies remain `L=12` for finite/mixed tilt, `L=20` for nonlinear even shear, and `L=24` for directional crossing.
-- Photon and atom four-force contributions remain opposite parts of the same event.
+## Immediate next stage
 
-## Explicit limitations
+**PR-04B2 physical native-measure and full-trajectory FLRW closure** must:
 
-- The official October-2012 original-HyRec archive bytes and SHA-256 were not acquired in this network-isolated runtime. PR-04 native original-archive parity is therefore open, not inferred from documentation or output matching.
-- The release covers the 17 interior cells `|x|<=4.25`. Exterior transport remains assigned to the PR-01 Liouville/boundary module.
-- Same-cell `Gamma` counts active frequency-changing events only; the coherent zero-transfer identity is excluded.
-- Native `Aup/Adn` moments are diagnostic until the virtual-state/escape map is derived on one common measure.
-- The production lane remains scalar elastic. Raman channels, fine structure, J-state interference, polarization, and atomic alignment are not added here.
-- The geometry firewall tests a common local hydrogen-frame state; it is not the all-11 trajectory sweep assigned to PR-10.
-- Wolfram and Precise Special Functions plugins were unavailable in this runtime; no claim is made that they ran.
+1. instrument a source-identical original-HyRec trajectory at a locked hydrogen-recombination redshift;
+2. dump the native radiation proxy, diffusion/escape coefficients, real/virtual blocks and local thermodynamic state;
+3. derive the physical `photons per H per d ln nu` redshift-flux and escape map with explicit dimensions and signs;
+4. compare direct v0.51 COM–KHW, native primitive and Schur-reduced actions on one physical measure without free normalization;
+5. close normalization, detailed balance, photon-plus-atom recoil energy, analytic/JVP, positivity and one FLRW snapshot parity gate.
 
-## Immediate next release
+## Remote synchronization
 
-**PR-04B original-HyRec archive and native primitive common-measure parity** must:
-
-1. acquire and SHA-256 lock the official October-2012 original-HyRec archive;
-2. compile and identify its native radiation variable, bin centres/edges, integration measure, time derivative, diffusion sign, recoil term, and coefficient units;
-3. derive the virtual-state/escape map rather than fitting a normalization;
-4. compare direct v0.51 event moments, original native primitive moments, and the Schur-reduced operator on one measure;
-5. close native normalization, detailed balance, recoil energy, analytic/JVP Jacobian, and one FLRW snapshot parity gate;
-6. keep PR-04 marked incomplete until these native-source gates pass.
+The owner performs GitHub synchronization locally. This runtime provides a full Git bundle and binary-safe incremental/cumulative patches but does not claim a remote push or PR.

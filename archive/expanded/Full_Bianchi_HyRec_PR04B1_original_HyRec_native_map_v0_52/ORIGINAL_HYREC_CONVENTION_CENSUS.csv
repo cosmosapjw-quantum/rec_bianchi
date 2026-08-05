@@ -1,0 +1,7 @@
+quantity,definition,units,source
+native radiation variable,Delta x_b = x_b - x_1s exp(-h nu_b/T_r) = x_1s Delta f_nu_b,dimensionless,technical supplement Eq. (6); hydrogen.c May-2012 revision note
+virtual proxy,x_b = x_1s f_nu_b; xv/x_1s is the average distortion in bin b,dimensionless,technical supplement; hydrogen.c lines 727-799
+native matrix,T X = s; Tvv diagonal positive and transition off-diagonals negative,"T: s^-1, X: dimensionless, s: s^-1",hydrogen.c populateTS_2photon and solve_real_virt
+time variable,d/dt = H d/d ln a,H: s^-1,history.c and returned dx_e/d ln a
+frequency convention,ordinary nu=E/h; Delta nu=nu_target-nu_source,Hz,project adapter lock
+physical spectral diagnostic,(8 pi nu^3)/(c^3 n_H) Delta f_nu per log-frequency per H,dimensionless,hyrec.c PRINT_SPEC header

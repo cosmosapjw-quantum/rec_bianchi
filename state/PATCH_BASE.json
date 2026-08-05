@@ -3,10 +3,12 @@
   "base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
   "base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
   "base_stage": "v0.47 owner-confirmed merged content; exact remote merge SHA unverified in this runtime",
-  "reason": "The owner reported v0.47 content merged into private main. This runtime does not have a verified GitHub remote fetch/write path, so the cumulative v0.51 patch uses the exact fresh-clone-verified local v0.47 commit. A separate v0.50-to-v0.51 patch and standalone full bundle are exported for exact-v0.50 and history-independent recovery.",
-  "update_rule": "Replace this base after a connector/API/Git fetch records the exact remote main SHA and ancestry.",
-  "current_incremental_parent_commit": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-  "current_target_stage": "v0.51 PR-04A plus repository-relative artifact and scientific-verifier durability repairs",
-  "current_target_payload_head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
-  "current_target_payload_tree": "190eea65baed95b888349688636ab4d750b57da0"
+  "reason": "The owner reported v0.47 content merged into private main. This runtime has no live GitHub write path and the configured origin is the v0.51 input bundle. Export both a cumulative exact-local-v0.47-to-v0.52 patch and an incremental exact-v0.51-to-v0.52 patch, plus a standalone full bundle. The owner must fetch live main and verify ancestry/tree compatibility locally.",
+  "update_rule": "Replace this base after a local GitHub fetch records exact remote main SHA and ancestry.",
+  "current_incremental_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
+  "current_incremental_parent_tree": "7e7f2900455defd92d927350df8a21ec1101f768",
+  "current_target_stage": "v0.52 PR-04B1 original-HyRec byte/source lock and native proxy map",
+  "current_target_payload_head": "d1ee9e09557515e273372fd6d77d60783232a6d6",
+  "current_target_payload_tree": "544f7e22859b0fdab474c23bac67dd99ab015f8b",
+  "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH"
 }
