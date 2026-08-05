@@ -219,3 +219,8 @@ Implementation, unit/sign registry, ownership matrix, tests, formalism,
 three-snapshot CSV/NPZ evidence, JVP references, immutable ledger and manifest,
 stage ZIP, Git commits, full bundle, and binary-safe incremental,
 remote-milestone and cumulative patches.
+
+
+## External numerical-analysis basis
+
+See [`PR04C_LITERATURE_BASIS.md`](PR04C_LITERATURE_BASIS.md) for the Tchakaloff, conservative-remap, flux-mortar and original-HyRec references that motivate coupling through conserved interface fluxes rather than a global state remap.

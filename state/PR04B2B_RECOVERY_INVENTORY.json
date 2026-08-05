@@ -1,0 +1,60 @@
+{
+  "classification": "PR04B2B_RECOVERY_INVENTORY",
+  "created_at_utc": "2026-08-05T19:39:16.932956+00:00",
+  "repository": "/mnt/data/rec_bianchi_v054_work/repo",
+  "branch": "work/pr04b2b-identifiability-nogo-v054",
+  "recovery_parent": {
+    "commit": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+    "tree": "2adb08eb4a1c7889a9791ea34bd4908cb17b422d",
+    "stage": "PR-04B2A / v0.53"
+  },
+  "reconstructed_payload": {
+    "commit": "186435903d4222f89d73d3c42429ff656af89a13",
+    "tree": "799db7e2531a5ad287931ed46c82b63939cfec73",
+    "artifact": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54",
+    "status": "PASS_PR04B2B_IDENTIFIABILITY_NO_GO_PR04C_OPEN"
+  },
+  "inputs": {
+    "HyRec_Oct2012.zip": {
+      "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+      "bytes": 726954,
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    "coding_harness": {
+      "path": "archive/inputs/research_harnesses/physmath-coding-harness-gpt56.zip",
+      "bytes": 25533,
+      "sha256": "6e67e999a0c19f6ed9de7c339067cc11691d5cf5cb662a11756d8fc393c849b4"
+    },
+    "research_harness": {
+      "path": "archive/inputs/research_harnesses/physmath-research-harness-gpt56.zip",
+      "bytes": 32648,
+      "sha256": "9adde688f8020e7feb2c1c0304b3204dbe70dd01e2d87e64a5c4eb357c019934"
+    },
+    "v053_bundle": {
+      "path": "/mnt/data/rec_bianchi_v053_full.bundle",
+      "bytes": 36368984,
+      "sha256": "906a006d97557bdc723743d2f7e8a269b067fcb228c21afb1e4de80ade56fea3"
+    }
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "gcc": "gcc (Debian 14.2.0-19) 14.2.0",
+    "wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "precise_special_functions": "UNAVAILABLE_IN_RUNTIME",
+    "github_private_connector": "UNAVAILABLE_IN_CURRENT_TOOLSET",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pytest": "9.0.2"
+  },
+  "recovery_baseline": {
+    "offline_bootstrap": "PASS",
+    "quick_verifier": "PASS",
+    "v053_fast_tests": "96 passed, 24 deselected",
+    "remote_check": "CONFIGURED_ORIGIN_IS_LOCAL_V053_BUNDLE; LIVE_GITHUB_NOT_EXPOSED"
+  },
+  "evidence_policy": "Git state, exact canonical bytes, manifests, ledgers, source/table audit, exact/high-precision algebra and tests only; transcript completion claims excluded.",
+  "provenance_policy": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED; internal May/October metadata is intrinsic release metadata.",
+  "remote_policy": "OWNER_FETCHES_PUSHES_AND_CREATES_PR_LOCALLY; no live remote synchronization claim."
+}

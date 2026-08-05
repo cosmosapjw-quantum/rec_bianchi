@@ -6,9 +6,10 @@
 4. **HYREC common-measure moment projection** — **IN PROGRESS**.
    - **PR-04A/v0.51 PASS:** positive 17-cell ordinary-frequency common measure with exact v0.50 zeroth event mass and conditional moments through order four.
    - **PR-04B1/v0.52 PASS:** canonical original-HyRec byte/source lock, original-C diffusion/full-matrix/Schur parity, and explicit native-proxy/physical-cell firewall.
-   - **PR-04B2A/v0.53 PASS:** source-identical FULL-mode trajectory instrumentation and exact physical photons-per-H-per-`d ln nu` edge normalization; primitive/direct/Schur physical spectral-source parity; JVP, positivity, energy and high-precision gates.
-   - **PR-04B2B OPEN:** positive measure-preserving native-to-17-cell source/target partition, identifiability/no-go proof, conditional jump moments, and multi-snapshot trajectory parity without a fitted scale.
-5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface** — begins only after PR-04 establishes the correct common-measure exchange contract.
+   - **PR-04B2A/v0.53 PASS:** source-identical FULL-mode instrumentation and exact physical photons-per-H-per-`d ln nu` edge normalization; primitive/direct/Schur physical spectral-source parity; JVP, positivity, energy and high-precision gates.
+   - **PR-04B2B/v0.54 PASS_NO_GO:** the full positive native measure is support-incompatible with the 17-cell core, while moments through order four leave a 12-dimensional target null space. Direct equality, silent high-resolution substitution and fitted regularization are rejected.
+   - **PR-04C NEXT:** split-domain number/energy flux contract, operator ownership, and predeclared multi-snapshot closure without global remapping.
+5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface** — begins after PR-04 closes the exchange contract.
 6. **FLRW monolithic parity** — native HYREC and retained Peebles baseline lanes.
 7. **Bianchi II class-A regression**.
 8. **Class-B V or VII_h regression**.
@@ -18,6 +19,5 @@
 12. **Performance, restart, deterministic manifests, and release integration**.
 
 No force-push. Each PR is a bounded review unit with implementation, tests,
-durable artifact, manifest, local remote-check receipt, full bundle and
-binary-safe patch export. The owner performs live GitHub push/PR operations from
-the local workstation.
+durable artifact, manifest, local remote-check receipt, standalone bundle and
+binary-safe patch routes.
