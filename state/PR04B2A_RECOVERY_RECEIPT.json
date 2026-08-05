@@ -1,0 +1,74 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "stage": "PR-04B2A",
+  "version": "0.53",
+  "date": "2026-08-06",
+  "parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114",
+  "parent_tree": "576edbdabec2191cc33c60c7f65a1ed473d3bdbe",
+  "canonical_input": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "bytes": 726954,
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
+    "metadata_policy": "Internal May/October source and ZIP metadata differences are intrinsic to the canonical release."
+  },
+  "recovery_baseline": {
+    "offline_bootstrap": "PASS",
+    "remote_check": "LOCAL_V052_BUNDLE_ONLY_LIVE_GITHUB_UNAVAILABLE",
+    "quick_verifier": "PASS",
+    "fast_tests": "90 passed, 23 deselected"
+  },
+  "reconstructed_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53",
+    "status": "PASS_PR04B2A_PHYSICAL_NATIVE_EDGE_FLUX_PR04B2B_OPEN",
+    "bundle_sha256": "42a05352871a21c2d082d5cdf47e936346c3727a365292a9108b5a49ce736f87",
+    "bundle_bytes": 509805
+  },
+  "evidence_policy": "Git state, exact bytes, manifests, canonical source execution, ledgers and tests only; transcript completion claims excluded.",
+  "remote_policy": "OWNER_PUSHES_LOCALLY; no live remote read, push or PR claimed",
+  "payload": {
+    "branch": "work/pr04b2-physical-native-flux-v053",
+    "head": "6636736bcf9e834a26094c6bebfcca15a3ab8300",
+    "tree": "0074b71a85903cb1066d5b6c66bfef23fa852230"
+  },
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_96_FAST",
+    "fast_tests": "96 passed, 24 deselected",
+    "slow_scientific_tests": "24 passed across 8 files and 24 isolated interpreters",
+    "total_test_coverage": "120 passed",
+    "aggregate_scientific_wrapper": "PASS",
+    "artifact_verifier": "PASS",
+    "git_diff_check": "PASS",
+    "py_compile": "PASS_102_TRACKED_PYTHON_FILES",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES",
+    "scientific_receipt": "state/PR04B2A_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_receipt_sha256": "f2d66e4b315c40c8691fdc7a519e10dcf4ff54318b53fa1b3e8e27a58271acaf",
+    "scientific_log_sha256": "315a8578d92ac0caa67d037d33431d73ab073f32d5b006da214e8a13999b0466"
+  },
+  "validation_deviation": {
+    "predeclared_diagnostic": "nearest-grid/public-output relative residual < 1e-12",
+    "met": false,
+    "xe_relative_residual": 5.992470257152086e-11,
+    "TM_over_TR_relative_difference": 1.478488419768811e-10,
+    "classification": "DISCLOSED_NON_LOAD_BEARING_GRID_VS_INTERPOLATED_OUTPUT_DIAGNOSTIC",
+    "scientific_thresholds_relaxed": false
+  },
+  "tool_availability": {
+    "web_search": "USED_OFFICIAL_HYREC_PAGE_AND_PRIMARY_PAPERS",
+    "coding_harness": "VALIDATED_AND_USED",
+    "research_harness": "VALIDATED_AND_USED",
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "GitHub_private_repo_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "canonical original-HyRec C execution",
+      "SymPy exact algebra",
+      "mpmath 100-digit reference",
+      "NumPy dense/Schur linear algebra",
+      "central-difference JVP regression"
+    ]
+  }
+}

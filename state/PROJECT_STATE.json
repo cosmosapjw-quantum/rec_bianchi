@@ -2,26 +2,27 @@
   "classification": "DURABLE_PROJECT_STATE",
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "repository": "cosmosapjw-quantum/rec_bianchi",
-  "state_date": "2026-08-05",
+  "state_date": "2026-08-06",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 88,
+  "estimated_overall_completion_percent": 90,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 75,
+  "estimated_PR04_completion_percent": 85,
   "current_durable_stage": {
-    "name": "PR-04B1 original-HyRec source lock and native proxy map",
-    "artifact": "Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52",
-    "status": "PASS_PR04B1_ORIGINAL_HYREC_SOURCE_NATIVE_PROXY_MAP_PR04B2_OPEN"
+    "name": "PR-04B2A source-identical physical native edge-flux closure",
+    "artifact": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53",
+    "status": "PASS_PR04B2A_PHYSICAL_NATIVE_EDGE_FLUX_PR04B2B_OPEN"
   },
   "next_stage": {
-    "name": "PR-04B2 physical native-measure and full-trajectory FLRW closure",
-    "entry_gate": "PR04B1_BYTE_SOURCE_NATIVE_PROXY_LOCK_PASS",
+    "name": "PR-04B2B measure-preserving native-to-17-cell partition and trajectory parity",
+    "entry_gate": "PR04B2A_SOURCE_IDENTICAL_PHYSICAL_EDGE_NORMALIZATION_PASS",
     "tasks": [
-      "Instrument a source-identical original-HyRec trajectory at one locked hydrogen-recombination snapshot.",
-      "Derive the redshift/escape/bin map from the native virtual-level proxy to physical photons per hydrogen atom per logarithmic frequency.",
-      "Compare v0.51 direct COM\u2013KHW, native primitive, Schur-reduced and physical finite-volume actions without a fitted normalization.",
-      "Close normalization, detailed balance, recoil energy, analytic/JVP, positivity and one full FLRW snapshot parity gate."
+      "Audit the canonical high-resolution two-photon table as an immutable reference lane without changing the NVIRT=311 production source.",
+      "Construct source and target frequency-cell boundaries and test whether a positive conservative native-to-17-cell projection exists.",
+      "Establish rank/identifiability of moment matching through order four; publish a proof or no-go result rather than fitting a scale.",
+      "Compare refined native physical edge actions and v0.51 source-conditioned COM-KHW actions at multiple predeclared FLRW snapshots.",
+      "Keep PR-04 open unless normalization, conditional jump moments, conservation and trajectory parity close on one common measure."
     ]
   },
   "roadmap": [
@@ -43,7 +44,7 @@
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "IN_PROGRESS_PR04A_PR04B1_PASS_PR04B2_OPEN"
+      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_OPEN"
     },
     {
       "pr": 5,
@@ -116,7 +117,8 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
     "physical_common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
     "native_original_hyrec_proxy": "v0.52 dimensionless reversible 80-bin-plus-2p diagnostic with exact original-C/Schur parity",
-    "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not the physical finite-volume photon measure; no free scale fit"
+    "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not physical finite-volume photon cells; centre overlap and fitted normalization remain forbidden",
+    "native_physical_edge_flux": "v0.53 source-identical map N_y=8*pi*nu^3*Delta f/(c^3*n_H) and exact x_1s*Gamma*(f_eq-fbar)=H*A*(fminus-fplus) edge identity"
   },
   "PR04B1_input_lock": {
     "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
@@ -124,8 +126,9 @@
     "size_bytes": 726954,
     "zip_entries": 29,
     "zip_integrity": "PASS",
-    "classification": "USER_SUPPLIED_OFFICIAL_CANDIDATE_BYTE_LOCKED",
-    "independent_official_remote_byte_equality": "NOT_VERIFIED"
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
+    "independent_official_remote_byte_equality": "NOT_REQUIRED_FOR_PROJECT_PROVENANCE_OWNER_ATTESTED_CANONICAL_BYTES",
+    "metadata_policy": "Internal May/October source and ZIP metadata differences are intrinsic to the canonical release."
   },
   "PR04B1_evidence": {
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52.zip",
@@ -154,25 +157,74 @@
     ]
   },
   "known_limitations": [
-    "The owner-supplied archive is byte-locked, but independent equality with a fresh official-server October-2012 download is not verified.",
-    "The v0.52 native network conserves a dimensionless virtual-level proxy, not yet the physical photon finite-volume measure.",
-    "Direct native Aup/Adn or completed Tvv substitution and fitted normalization are forbidden.",
-    "The v0.51 physical common measure covers the 17 interior cells |x|<=4.25; exterior transport remains in the Liouville/boundary module.",
+    "PR-04B2A closes the physical logarithmic edge normalization at one locked FLRW trajectory snapshot, not a measure-preserving 80-native-bin to 17-COM-KHW-cell projection.",
+    "Only two native centre frequencies lie inside the v0.51 |x|<=4.25 core; centre overlap does not define cell boundaries or conditional jump moments.",
+    "The v0.51 C0 event mass and v0.53 net native trajectory edge flux have different state dependence and may not be ratio-fitted.",
+    "The initial <1e-12 nearest-grid/public-output interpolation diagnostic was not met; this is disclosed and is not used as a scientific normalization gate.",
+    "The v0.51 physical common measure covers 17 interior cells; exterior transport remains in the Liouville/boundary module.",
     "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
-    "Wolfram and Precise Special Functions plugins were not exposed in this runtime."
+    "Wolfram, Precise Special Functions and the live GitHub private-repository connector were not exposed in this runtime."
   ],
   "remote_sync": {
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
     "remote_ref_verified": false,
     "remote_tree_match": false,
     "push_policy": "OWNER_PUSHES_LOCALLY",
-    "reason": "The execution sandbox does not provide a working GitHub write path. The owner will fetch, apply, test, push and create PRs from the local Ubuntu workstation."
+    "reason": "The execution runtime has no live GitHub connector or outbound Git write path. The owner fetches, tests, pushes and opens PRs locally."
   },
   "remote_repository_status": {
     "exact_remote_main_sha": null,
-    "runtime_verification": "NOT_ATTEMPTED_AS_WRITE; CONFIGURED_ORIGIN_IS_INPUT_BUNDLE",
+    "runtime_verification": "PERIODIC_LOCAL_REMOTE_CHECK_ONLY; LIVE_GITHUB_CONNECTOR_UNAVAILABLE",
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
     "local_v051_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
-    "policy": "Export cumulative declared-base-to-v0.52 and incremental v0.51-to-v0.52 binary-safe patches plus a standalone full bundle. The owner must fetch remote main and apply on a feature branch without force-push."
+    "policy": "Export incremental v0.52-to-v0.53, remote-milestone, cumulative binary-safe patches and a standalone full bundle. The owner must fetch live main and apply on a feature branch without force-push.",
+    "local_v052_parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114"
+  },
+  "PR04B2A_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53.zip",
+    "artifact_bundle_sha256": "42a05352871a21c2d082d5cdf47e936346c3727a365292a9108b5a49ce736f87",
+    "artifact_bundle_size_bytes": 509805,
+    "canonical_archive_classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
+    "canonical_binary_sha256": "a5ebb0e67b58f5d85f3387458eb96025f93b5b53b1ce4fd76c3a160c51d4b733",
+    "canonical_history_sha256": "9fdee53a363aeb3b7c6963564543089e1b5ed91e39b0d4471efd052aa66b6485",
+    "guard_off_binary_identical": true,
+    "guard_off_history_identical": true,
+    "guard_on_history_identical": true,
+    "snapshot_z": 1099.9986525171403,
+    "snapshot_xe": 0.1449299966903522,
+    "snapshot_TM_over_TR": 0.9999895025729527,
+    "tau_relation_relative_residual": 2.25121753226488e-16,
+    "source_structural_edge_identity_relative_residual": 5.971386931969449e-12,
+    "stable_structural_edge_identity_relative_residual": 3.413781689897925e-15,
+    "dense_matrix_relative_residual": 2.1714866434858067e-14,
+    "source_vs_direct_solution_relative_residual": 3.5248307871551763e-15,
+    "Schur_vs_direct_solution_relative_residual": 1.1881452091534302e-15,
+    "direct_moment_max_relative_residual": 1.2501468500308307e-13,
+    "Schur_moment_max_relative_residual": 7.540754451874523e-14,
+    "analytic_JVP_relative_residual": 4.156564278673473e-09,
+    "implicit_minimum_occupation": 4.0420736778862856e-19,
+    "same_event_energy_absolute_residual_W_per_H": 0.0,
+    "high_precision_edge_identity_relative_residual": 2.2140026367996046e-101,
+    "native_centres_inside_v051_core": 2,
+    "direct_COM_KHW_native_parity": "OPEN_FAIL_CLOSED",
+    "validation_deviation": "The initial <1e-12 nearest-grid/public-output interpolation diagnostic was not met; observed xe and Tm/Tr residuals are 5.992e-11 and 1.478e-10. Exact history hashes and internal-snapshot physical gates remain load-bearing.",
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "canonical original-HyRec C compile and full trajectory execution",
+      "SymPy exact edge identity",
+      "mpmath 100-digit escape and flux identity",
+      "NumPy dense and structured-Schur linear algebra",
+      "central-difference JVP regression"
+    ],
+    "software_verification_pre_git_seal": {
+      "artifact_verifier": "PASS",
+      "repository_quick": "PASS",
+      "repository_all": "PASS",
+      "fast_tests": "96 passed, 24 deselected",
+      "slow_scientific_tests": "24 passed across 8 files",
+      "scientific_verifier": "PASS",
+      "slow_execution_policy": "one isolated interpreter per slow node"
+    }
   }
 }

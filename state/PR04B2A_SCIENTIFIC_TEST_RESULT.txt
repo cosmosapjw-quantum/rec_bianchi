@@ -1,0 +1,58 @@
+=== PR-04B2A v0.53 scientific verification ===
+timestamp_utc: 2026-08-05T16:27:24.609200+00:00
+payload_branch: work/pr04b2-physical-native-flux-v053
+payload_head: 6636736bcf9e834a26094c6bebfcca15a3ab8300
+payload_tree: 0074b71a85903cb1066d5b6c66bfef23fa852230
+
+Fast lane:
+  pytest -q -m "not slow": PASS — 96 passed, 24 deselected
+  verify_repo.py --all: PASS — 96 passed, 24 deselected
+
+Slow scientific lane:
+  verify_repo.py --scientific: PASS
+  24 slow tests across 8 files, one fresh interpreter per slow node
+  aggregate fast tail: 96 passed, 24 deselected
+  total fast+slow coverage: 120 passed
+  scientific log SHA-256: 315a8578d92ac0caa67d037d33431d73ab073f32d5b006da214e8a13999b0466
+
+Recovery and artifact gates:
+  offline bootstrap: PASS
+  repository quick verifier: PASS
+  immutable PR-04B2A artifact verifier: PASS
+  original-HyRec canonical archive: OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED
+  guard-off executable/history hashes: identical to canonical baseline
+  guard-on history hash: identical to canonical baseline
+
+Scientific gates:
+  physical photons-per-H-per-dlnnu normalization: PASS
+  source collision/transport edge identity: PASS
+  dense direct and structured-Schur parity: PASS
+  signed moments r=0..4: PASS
+  stable escape arithmetic and 100-digit reference: PASS
+  analytic JVP: PASS
+  implicit positivity: PASS
+  same-event photon+atom energy closure: PASS
+  raw native proxy as physical finite-volume cell: FORBIDDEN firewall preserved
+  direct COM-KHW/native parity: OPEN_FAIL_CLOSED for PR-04B2B
+
+Disclosed validation deviation:
+  The predeclared <1e-12 nearest-grid/public-output interpolation diagnostic was not met.
+  Observed xe residual: 5.992470257152086e-11.
+  Observed Tm/Tr nearest-grid difference: 1.478488419768811e-10.
+  This compares an internal source grid snapshot with the public interpolated history output and is non-load-bearing.
+  Exact binary/history hashes, internal snapshot equations, transport identities, moment/JVP/positivity/energy gates were not relaxed.
+
+Integrity:
+  git diff --check: PASS
+  py_compile: PASS — 102 tracked Python files
+  secret scan: PASS — no credential values
+  git fsck --full --no-dangling: PASS
+
+Tool availability:
+  web search: USED — official HyRec page and primary HyRec/HYREC-2 papers
+  uploaded coding harness: VALIDATED_AND_USED
+  uploaded research harness: VALIDATED_AND_USED
+  Wolfram connector: UNAVAILABLE_IN_RUNTIME
+  Precise Special Functions connector: UNAVAILABLE_IN_RUNTIME
+  live GitHub private-repository connector: UNAVAILABLE_IN_RUNTIME
+  independent fallbacks: canonical C compile/full trajectory; SymPy exact algebra; mpmath 100-digit reference; NumPy dense/Schur linear algebra; central-difference JVP
