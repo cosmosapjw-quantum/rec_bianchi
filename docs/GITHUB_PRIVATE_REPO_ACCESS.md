@@ -21,7 +21,7 @@ The ChatGPT GitHub app may be exposed only as a read/search connector. Do not as
 
 ## Codex — preferred write path
 
-Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to import the delivered v0.49 bundle or apply the appropriate patch on a feature branch. Before merge, require:
+Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to import the delivered v0.50 bundle or apply the appropriate patch on a feature branch. Before merge, require:
 
 ```bash
 ./scripts/bootstrap_sandbox.sh --offline
@@ -65,9 +65,9 @@ A normal user SSH key works when `ssh` and outbound access are available. A depl
 When the runtime has no connector, DNS, SSH executable, or token:
 
 ```bash
-git clone rec_bianchi_v049_full.bundle rec_bianchi
+git clone rec_bianchi_v050_full.bundle rec_bianchi
 cd rec_bianchi
-git switch work/pr02-nonlinear-bose-production-v049
+git switch work/pr03-full-scalar-com-khw-v050
 ./scripts/bootstrap_sandbox.sh --offline
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
@@ -77,13 +77,13 @@ pytest -q -m "not slow"
 
 Two binary-safe patch lanes are exported:
 
-- **cumulative v0.47 → v0.49** for a checkout containing the exact local v0.47 base commit `ced72558437c8d24dce0cb855259b5216549604d`;
-- **incremental v0.48 → v0.49** for a checkout containing the exact local v0.48 commit `91f772c3275d318af9cc4f2cacb9a71b0c227f48`.
+- **cumulative v0.47 → v0.50** for a checkout containing exact local v0.47 commit `ced72558437c8d24dce0cb855259b5216549604d`;
+- **incremental v0.49 → v0.50** for a checkout containing exact local v0.49 commit `721f792736eaddc7ec6951f99332c44c70b039bf`.
 
 Apply only after fetching remote `main` and creating a feature branch:
 
 ```bash
-git switch -c apply/v049-pr02
+git switch -c apply/v050-pr03
 git am --3way rec_bianchi_<base>_to_<head>.mbox
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"

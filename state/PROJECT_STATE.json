@@ -1,24 +1,26 @@
 {
   "classification": "DURABLE_PROJECT_STATE",
-  "project": "Full Bianchi\u2013HyRec scalar completion",
+  "project": "Full Bianchi–HyRec scalar completion",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-05",
-  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 81,
+  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
+  "estimated_overall_completion_percent": 84,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
+  "estimated_PR03_completion_percent": 100,
   "current_durable_stage": {
-    "name": "PR-02 nonlinear anisotropic Bose collision production integration",
-    "artifact": "Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49",
-    "status": "PASS_PR02_COMPLETE"
+    "name": "PR-03 full scalar elastic COM–KHW production amplitude",
+    "artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50",
+    "status": "PASS_PR03_COMPLETE"
   },
   "next_stage": {
-    "name": "PR-03 full scalar COM\u2013KHW amplitude",
+    "name": "PR-04 HYREC common-measure moment projection",
+    "entry_gate": "SOURCE_LOCK_AND_CONVENTION_PARITY_BEFORE_IMPLEMENTATION",
     "tasks": [
-      "Replace the provisional unresolved scalar 2p pole+crossed amplitude by the complete scalar bound+continuum COM\u2013KHW construction.",
-      "Include seagull and interference terms with explicit gauge, reciprocity and same-event four-force audits.",
-      "Regenerate pair-conductance moments and rerun the PR-01/PR-02 BE, number, entropy, positivity, Jacobian and frame regressions.",
-      "Publish a bounded PR-03 implementation, ledger, binary-safe patch series, standalone bundle and thread-independent handoff."
+      "Pin the exact native HyRec/HyRec-2 source and identify the Ly-alpha frequency-bin common measure, normalization, units and signs.",
+      "Define Gamma and M1-M4 directly from the v0.50 event kernel without a fitted normalization.",
+      "Compare direct event integration, positive continuum quadrature and the native HyRec discrete operator.",
+      "Close normalization, detailed balance, recoil-energy, moment, positivity and analytic/JVP Jacobian gates while preserving the PR-01/PR-02 APIs."
     ]
   },
   "roadmap": [
@@ -34,13 +36,13 @@
     },
     {
       "pr": 3,
-      "title": "Full scalar COM\u2013KHW amplitude",
-      "status": "IN_PROGRESS_NEXT"
+      "title": "Full scalar COM–KHW amplitude",
+      "status": "COMPLETE"
     },
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "PLANNED"
+      "status": "IN_PROGRESS_NEXT"
     },
     {
       "pr": 5,
@@ -109,12 +111,35 @@
       "directional_crossing": 24
     },
     "nonlinear_update": "log-occupation backward Euler with exact matrix-free JVP",
-    "conservation": "photon and atom four-force are accumulated from the same event with opposite sign"
+    "conservation": "photon and atom four-force are accumulated from the same event with opposite sign",
+    "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
+    "comparison_lane": "provisional_2p remains explicit but is not the production default"
+  },
+  "PR03_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50.zip",
+    "artifact_bundle_sha256": "c5b596d7b5e885c66aa673b26cdb9ad4aac30b7d6571cb0c22fde1bf34d54e6e",
+    "artifact_bundle_size_bytes": 2038554,
+    "network_states": 35,
+    "ell_max": 24,
+    "bounded_integral_blocks": 459,
+    "fixed_nucleus_gauge_audit": true,
+    "finite_recoil_PT_audit": true,
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact identities",
+      "mpmath 90-100 decimal references",
+      "SciPy positive quadrature and Faddeeva reference"
+    ]
   },
   "known_limitations": [
-    "PR-02 stress occupations are collision-substep regression fields, not coupled Liouville plus recombination solutions.",
-    "The scalar amplitude remains the provisional unresolved 2p pole+crossed model until PR-03.",
+    "The v0.50 production window is scalar elastic Ly-alpha transport for |x|<=21.25 below the Lyman limit; a global above-ionization photon-frequency branch is not claimed.",
+    "Raman production channels are not included.",
+    "Only the unresolved 2p pole carries natural width in this bounded release window.",
+    "The unresolved Rydberg tail is a positive two-moment closure after explicit bound states through n=512, not a pointwise representation of every omitted resonance.",
+    "Velocity/length gauge equivalence is audited in the fixed-nucleus, zero-width limit; finite recoil is audited by PT reciprocity rather than a full relativistic gauge proof.",
     "Exterior-exterior collisions remain assigned to the boundary/Liouville module.",
+    "PR-02 stress occupations are collision-substep regression fields, not coupled Liouville plus recombination solutions.",
     "The all-11 automated background sweep remains assigned to PR-10."
   ],
   "remote_sync": {
@@ -129,8 +154,8 @@
     "exact_remote_main_sha": null,
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
     "local_v047_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-    "local_v048_parent_commit": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
-    "local_v048_parent_tree": "b90928479994f436681d42dcff2e0fabdd0b84fa",
-    "policy": "Export both cumulative v0.47-to-v0.49 and incremental v0.48-to-v0.49 binary-safe patches, plus a standalone full bundle; apply on a feature branch after fetching remote main."
+    "local_v049_parent_commit": "721f792736eaddc7ec6951f99332c44c70b039bf",
+    "local_v049_parent_tree": "9d85bcb5a20e7b89017b0cbf4911e3b1f5c61fa5",
+    "policy": "Export cumulative v0.47-to-v0.50 and incremental v0.49-to-v0.50 binary-safe patches plus a standalone full bundle; apply on a feature branch after fetching remote main."
   }
 }
