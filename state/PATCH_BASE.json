@@ -3,12 +3,20 @@
   "base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
   "base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
   "base_stage": "v0.47 owner-confirmed merged content; exact remote merge SHA unverified in this runtime",
-  "reason": "The owner reported v0.47 content merged into private main. This runtime has no live GitHub write path and the configured origin is the v0.51 input bundle. Export both a cumulative exact-local-v0.47-to-v0.52 patch and an incremental exact-v0.51-to-v0.52 patch, plus a standalone full bundle. The owner must fetch live main and verify ancestry/tree compatibility locally.",
-  "update_rule": "Replace this base after a local GitHub fetch records exact remote main SHA and ancestry.",
-  "current_incremental_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
-  "current_incremental_parent_tree": "7e7f2900455defd92d927350df8a21ec1101f768",
-  "current_target_stage": "v0.52 PR-04B1 original-HyRec byte/source lock and native proxy map",
-  "current_target_payload_head": "d1ee9e09557515e273372fd6d77d60783232a6d6",
-  "current_target_payload_tree": "544f7e22859b0fdab474c23bac67dd99ab015f8b",
+  "remote_milestone_commit": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+  "remote_milestone_tree": "b90928479994f436681d42dcff2e0fabdd0b84fa",
+  "remote_milestone_stage": "v0.48 last connector-observed durable content milestone; current live main unverified in this runtime",
+  "reason": "The configured origin is the v0.52 input bundle and the live GitHub connector is unavailable. Export incremental exact-local-v0.52-to-v0.53, exact-local-v0.48-milestone-to-v0.53, cumulative exact-local-v0.47-to-v0.53 patches, plus a standalone full bundle. The owner must fetch live main and verify ancestry/tree compatibility locally.",
+  "update_rule": "Replace live-main assumptions after a local GitHub fetch records exact remote main SHA and ancestry.",
+  "current_incremental_parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114",
+  "current_incremental_parent_tree": "576edbdabec2191cc33c60c7f65a1ed473d3bdbe",
+  "current_target_stage": "v0.53 PR-04B2A source-identical physical native edge-flux closure",
+  "current_target_payload_head": "6636736bcf9e834a26094c6bebfcca15a3ab8300",
+  "current_target_payload_tree": "0074b71a85903cb1066d5b6c66bfef23fa852230",
+  "planned_patch_routes": [
+    "incremental_from_v052",
+    "from_v048_remote_milestone",
+    "cumulative_from_v047"
+  ],
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH"
 }
