@@ -2,9 +2,9 @@
 
 This module is the PR-02 bridge between the chart-independent
 :class:`~full_bianchi_hyrec.background.snapshot.BackgroundSnapshot` interface
-and the v0.47 scalar collision network.  Geometry selects and populates the
-angular frame adapter; it never modifies atomic amplitudes or conductance
-moments.
+and the current scalar collision network.  PR-03/v0.50 supplies the
+full bound-plus-continuum COM--KHW moments; geometry selects and populates
+the angular frame adapter and never modifies atomic amplitudes or moments.
 """
 from __future__ import annotations
 

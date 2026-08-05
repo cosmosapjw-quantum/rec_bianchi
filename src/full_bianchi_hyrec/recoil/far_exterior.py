@@ -30,12 +30,12 @@ def interval_mean_momentum_scale(left,right,*,order=96):
     return PCC.h/PCC.c*float(np.dot(w,nu**3))/float(np.dot(w,nu**2))
 
 @lru_cache(maxsize=512)
-def far_pair_bundle(target,source,*,lane='production',ell_max=24):
-    return exterior_pair_bundle(target,source,lane=lane,ell_max=ell_max)
+def far_pair_bundle(target,source,*,lane='production',ell_max=24,amplitude_lane='full'):
+    return exterior_pair_bundle(target,source,lane=lane,ell_max=ell_max,amplitude_lane=amplitude_lane)
 
 @lru_cache(maxsize=512)
-def far_pair_conductance(target,source,*,lane='production',ell_max=24):
-    return far_pair_bundle(target,source,lane=lane,ell_max=ell_max)[0]
+def far_pair_conductance(target,source,*,lane='production',ell_max=24,amplitude_lane='full'):
+    return far_pair_bundle(target,source,lane=lane,ell_max=ell_max,amplitude_lane=amplitude_lane)[0]
 
 def assemble_scalar_pair_generator(conductance,equilibrium_weight):
     conductance=np.asarray(conductance,float);pi=np.asarray(equilibrium_weight,float)

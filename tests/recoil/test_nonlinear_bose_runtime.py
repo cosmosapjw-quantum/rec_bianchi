@@ -21,7 +21,7 @@ from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import (
 
 ROOT = Path(__file__).resolve().parents[2]
 SNAPSHOT_DATA = ROOT / "data" / "pr01c_background_snapshots_v048.npz"
-COLLISION_DATA = ROOT / "data" / "far_scalar_release_v047.npz"
+COLLISION_DATA = ROOT / "data" / "full_scalar_com_khw_v050.npz"
 MODEL_META = {
     "Bianchi_II_large_shear": ("class_a", "II"),
     "Bianchi_VI_h_tilted_large_shear": ("class_b_tilted", "VI_h"),
