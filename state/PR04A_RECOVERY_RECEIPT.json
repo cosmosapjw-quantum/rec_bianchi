@@ -1,10 +1,10 @@
 {
   "classification": "PR04A_RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
-  "generated_utc": "2026-08-05T09:39:47.384712+00:00",
+  "generated_utc": "2026-08-05T10:00:33.379298+00:00",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "branch": "work/pr04-hyrec-common-measure-v051",
-  "payload_head": "ba0725e8d76ac79eeed281f4352a17a390f82a12",
-  "payload_tree": "a8a0f6a9d53db66fe380b361f71508e2d5b2f758",
+  "payload_head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+  "payload_tree": "190eea65baed95b888349688636ab4d750b57da0",
   "recovery_classification": {
     "incoming_PR03_v050": "DURABLE_VERIFIED_FROM_COMPLETE_GIT_BUNDLE",
     "PR04A_v051": "RECONSTRUCTED_DURABLE_VERIFIED",
@@ -66,7 +66,7 @@
     "hyrec2_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
     "hyrec2_native_representation": "(2s,2p)+311 virtual states; diffusion indices 100..179",
     "original_hyrec_archive": "OPEN_NOT_ACQUIRED_FAIL_CLOSED",
-    "durability_repair": "v0.32/v0.33 recoil bridge defaults resolve under repository archive/expanded, not hard-coded /mnt/data paths"
+    "durability_repair": "v0.32/v0.33 recoil bridge defaults resolve under repository archive/expanded; scientific verification runs 85 fast plus 22 slow tests in six file-isolated subprocesses with deterministic BLAS limits and explicit timeouts"
   },
   "hard_results": {
     "core_states": 17,
@@ -138,17 +138,25 @@
     "offline_bootstrap": "PASS",
     "artifact_verifier": "PASS",
     "quick_verify": "PASS",
-    "fast_pytest": "85 passed, 22 deselected in 14.16s",
+    "fast_pytest": "85 passed, 22 deselected in 11.92s",
     "PR04A_test_file": "11 passed in 15.54s with BLAS thread lock",
-    "all_verify": "PASS; 85 passed, 22 deselected in 12.57s",
+    "all_verify": "PASS; 85 passed, 22 deselected",
     "py_compile": "PASS",
     "artifact_zip_integrity": "PASS",
     "git_fsck_full": "PASS",
-    "secret_scan": "PASS",
-    "active_test_result_sha256": "b4c43815f887e6db69e4f67f25251c0543dcd97ba671dc90482876762c4aeef3",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES",
+    "active_test_result_sha256": "145226bf1d0f15006d654e1fc391c09f9a29b047bafc3be30b6fc51c1eb8c84e",
     "note": "One aggregate container tool invocation reached its wrapper timeout after launching child checks; the checks were rerun individually with explicit timeouts and the durable log records the passing results.",
     "durable_artifact_path_regression": "1 passed in 0.29s",
-    "recoil_bridge_slow_regression": "3 passed in 12.93s"
+    "recoil_bridge_slow_regression": "3 passed in 12.93s",
+    "scientific_verify": "PASS; 85 fast and 22 slow tests, 107 total, 6 file-isolated slow lanes",
+    "scientific_log_path": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_log_sha256": "40d0d1f5b13b1f5ca1af38181162da6039bb677af1a1d788488b65c32b2a422c",
+    "scientific_process_policy": "fast and slow subprocess separation; deterministic BLAS thread limits; 300 s per-lane timeout",
+    "git_fsck_full_no_dangling": "PASS",
+    "scientific_log": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_release_payload_head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+    "scientific_release_payload_tree": "190eea65baed95b888349688636ab4d750b57da0"
   },
   "tools": {
     "web_search": "USED_WITH_OFFICIAL_HYREC_PAGE_AND_PRIMARY_ARXIV_PAPERS",
@@ -183,7 +191,8 @@
     "PR04": "IN_PROGRESS",
     "original_HyRec_archive_parity": "OPEN_FAIL_CLOSED",
     "native_raw_rate_substitution": "FORBIDDEN",
-    "next_stage": "PR-04B original-HyRec archive and native primitive common-measure parity"
+    "next_stage": "PR-04B original-HyRec archive and native primitive common-measure parity",
+    "scientific_release_gate": "PASS_107_TESTS"
   },
   "next_stage": {
     "name": "PR-04B original-HyRec archive and native primitive parity",
@@ -198,19 +207,38 @@
   "commits_after_v050": [
     {
       "sha": "9cbf7de",
+      "full_sha": "9cbf7de646590e2310cc2327233cd62160f10cb8",
       "subject": "feat(recoil): close PR04A HYREC common-measure core"
     },
     {
       "sha": "aec113b",
+      "full_sha": "aec113b7c06b007a662b4b3d98539bd5b1e6158b",
       "subject": "docs(recovery): record PR04A and hand off PR04B"
     },
     {
       "sha": "b19aea4",
+      "full_sha": "b19aea423365b86397603298f0150116d4b7a91f",
       "subject": "chore(recovery): record v0.51 verification receipts"
     },
     {
       "sha": "ba0725e",
+      "full_sha": "ba0725e8d76ac79eeed281f4352a17a390f82a12",
       "subject": "fix(recovery): make recoil bridge artifacts repository-relative"
+    },
+    {
+      "sha": "2aea829",
+      "full_sha": "2aea829abb696db315ba2571b816250a933725f9",
+      "subject": "chore(recovery): refresh v0.51 final receipts"
+    },
+    {
+      "sha": "ef93af5",
+      "full_sha": "ef93af56cb60cfc810fd616d8239e7ec6b6c9a8e",
+      "subject": "test(recovery): isolate scientific slow regressions"
+    },
+    {
+      "sha": "86c1b2e",
+      "full_sha": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+      "subject": "fix(ci): isolate full scientific quadrature regressions"
     }
   ]
 }

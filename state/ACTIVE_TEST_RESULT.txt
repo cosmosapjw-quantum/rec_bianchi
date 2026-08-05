@@ -1,26 +1,28 @@
 === timestamp_utc ===
-2026-08-05T09:39:47.384712+00:00
+2026-08-05T10:00:33.379298+00:00
 === git_payload ===
 work/pr04-hyrec-common-measure-v051
-ba0725e8d76ac79eeed281f4352a17a390f82a12
-a8a0f6a9d53db66fe380b361f71508e2d5b2f758
+86c1b2e2311f7ff2363f927e682760f6595d331e
+190eea65baed95b888349688636ab4d750b57da0
 === recovery_and_artifact ===
 offline bootstrap: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
 PR-04A immutable artifact verifier: PASS; PR-04B archive parity OPEN
 repository quick verifier: PASS; bundle_count=51
 === tests ===
-fast pytest: 85 passed, 22 deselected in 14.16s
-PR-04A complete test file with BLAS thread lock: 11 passed in 15.54s
-durable repository-relative artifact path regression: 1 passed in 0.29s
-recoil bridge slow regression: 3 passed in 12.93s
-repository all verifier: PASS; 85 passed, 22 deselected in 12.57s
+fast pytest: 85 passed, 22 deselected
+repository all verifier: PASS; 85 passed, 22 deselected
+full scientific verifier: PASS; 85 fast + 22 slow = 107 tests; 6 isolated slow files
+PR-04A complete test file: 11 passed with deterministic BLAS thread lock
+durable repository-relative artifact path regression: PASS
+recoil bridge slow regression: PASS
 === integrity ===
 git diff --check: PASS
 py_compile: PASS
 artifact zip integrity: PASS
-secret scan: PASS
-git fsck --full: PASS
-=== portability_repair ===
-recoil_bridge default v0.32/v0.33 artifact paths are repository-relative; no hard-coded /mnt/data dependency remains in executable source.
-=== worktree_before_receipt_commit ===
-clean
+secret scan: PASS; credential values absent from intended release files
+git fsck --full --no-dangling: PASS
+=== portability_and_ci_repair ===
+recoil_bridge v0.32/v0.33 defaults resolve under repository archive/expanded.
+scientific verifier runs fast and slow lanes in isolated subprocesses with deterministic BLAS thread limits.
+=== remote ===
+GitHub remote SHA/tree not verified in this shell; owner performs fetch/push/PR locally; no remote write claimed.

@@ -1,14 +1,14 @@
 {
   "classification": "LOCAL_BUNDLE_ORIGIN_CHECK_AND_GITHUB_REMOTE_UNVERIFIED",
-  "checked_at_utc": "2026-08-05T09:39:47.384712+00:00",
+  "checked_at_utc": "2026-08-05T10:00:33.379298+00:00",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "repository_root": "/mnt/data/rec_bianchi_pr04_v051_work",
   "local_payload": {
     "branch": "work/pr04-hyrec-common-measure-v051",
-    "head": "ba0725e8d76ac79eeed281f4352a17a390f82a12",
-    "tree": "a8a0f6a9d53db66fe380b361f71508e2d5b2f758",
+    "head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+    "tree": "190eea65baed95b888349688636ab4d750b57da0",
     "dirty_at_receipt_generation": false,
-    "dirty_reason": "payload clean before final receipt refresh"
+    "dirty_reason": "scientific payload clean before final provenance receipt generation"
   },
   "configured_origin": {
     "url": "/mnt/data/rec_bianchi_v050_full.bundle",
@@ -45,7 +45,7 @@
     "tree_match": false,
     "push_or_pr_attempted": false,
     "policy": "OWNER_FETCHES_TESTS_PUSHES_AND_CREATES_PR_LOCALLY_WITHOUT_FORCE_PUSH",
-    "reason": "The working clone origin is the uploaded v0.50 bundle. No GitHub credential or writable network path is exposed to this shell, and the owner explicitly chose local push/PR operation."
+    "reason": "The owner explicitly chose local GitHub writes; this shell has no writable GitHub path."
   },
   "runtime_capabilities": {
     "git_executable": "/usr/bin/git",
@@ -133,5 +133,14 @@
       "implication": "v0.50 cumulative patch content may be based on the exact local v0.47 scientific tree, while the incremental v0.49-to-v0.50 patch may be used only when exact local v0.49 commit 721f792736eaddc7ec6951f99332c44c70b039bf is present. Remote ancestry/commit identity must be checked before either is applied."
     },
     "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+  },
+  "scientific_verification": {
+    "status": "PASS",
+    "total_tests": 107,
+    "fast_tests": 85,
+    "slow_tests": 22,
+    "slow_files": 6,
+    "log": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
+    "log_sha256": "40d0d1f5b13b1f5ca1af38181162da6039bb677af1a1d788488b65c32b2a422c"
   }
 }
