@@ -43,7 +43,7 @@ This repository contains unpublished research and a user-supplied primitive code
 
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full repository verifier with fast tests: `python scripts/verify_repo.py --all`.
-- Full scientific regression: `python scripts/verify_repo.py --scientific`.
+- Full scientific regression: `python scripts/verify_repo.py --scientific` (fast lane plus file-isolated slow quadrature lanes with deterministic BLAS thread limits).
 - PR-04A production regeneration: `python scripts/run_pr04a_hyrec_common_measure_stage.py --workers 12`.
 - Original stage bundles retain per-stage scientific receipts.
 

@@ -87,6 +87,8 @@ def main() -> None:
         result = subprocess.run(
             [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
             cwd=ROOT,
+            env=scientific_env,
+            timeout=300,
         )
         if result.returncode:
             raise SystemExit(result.returncode)
@@ -105,6 +107,8 @@ def main() -> None:
             check=False,
             capture_output=True,
             text=True,
+            env=scientific_env,
+            timeout=120,
         )
         if collection.returncode:
             sys.stderr.write(collection.stdout)
@@ -120,15 +124,6 @@ def main() -> None:
         assert scientific_slow_files, "scientific mode found no slow tests"
 
         for test_file in scientific_slow_files:
-            # The PR-04 direct-moment reference uses nested vectorized
-            # quadrature and is most reproducible with one BLAS thread.  The
-            # older pair-conductance reference benefits substantially from the
-            # host BLAS default, so do not impose the lock globally.
-            file_env = (
-                scientific_env
-                if test_file.endswith("test_hyrec_common_measure.py")
-                else os.environ.copy()
-            )
             result = subprocess.run(
                 [
                     sys.executable,
@@ -140,7 +135,8 @@ def main() -> None:
                     test_file,
                 ],
                 cwd=ROOT,
-                env=file_env,
+                env=scientific_env,
+                timeout=300,
             )
             if result.returncode:
                 raise SystemExit(result.returncode)
