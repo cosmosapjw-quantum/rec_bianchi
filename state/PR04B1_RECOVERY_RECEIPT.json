@@ -22,5 +22,35 @@
     "bundle_sha256": "fcceb03dc0c96f574bc4e24b7426b98b083462a8ae1d70293243cb1556801ab5"
   },
   "evidence_policy": "Git state, exact bytes, manifests, source execution, ledgers and tests only; transcript completion claims excluded.",
-  "remote_policy": "OWNER_PUSHES_LOCALLY; no remote push or PR claimed"
+  "remote_policy": "OWNER_PUSHES_LOCALLY; no remote push or PR claimed",
+  "payload": {
+    "branch": "work/pr04b-original-hyrec-native-v052",
+    "head": "d1ee9e09557515e273372fd6d77d60783232a6d6",
+    "tree": "544f7e22859b0fdab474c23bac67dd99ab015f8b"
+  },
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_90_FAST",
+    "fast_tests": "90 passed, 23 deselected",
+    "slow_scientific_tests": "23 passed across 7 file-isolated processes",
+    "total_test_coverage": "113 passed",
+    "aggregate_scientific_wrapper": "OUTER_480S_RUNTIME_LIMIT; NO_SINGLE_COMMAND_PASS_CLAIMED; ALL_COLLECTED_SLOW_FILES_PASS_INDEPENDENTLY",
+    "artifact_verifier": "PASS",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "scientific_receipt": "state/PR04B1_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_receipt_sha256": "42dc1324b8373125620e273bf8d155d2b9db9eb92aadeff9532a50f4e8fd97ea"
+  },
+  "tool_availability": {
+    "web_search": "USED_OFFICIAL_HYREC_PAGE_AND_PRIMARY_PAPERS",
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "custom_skills": "NOT_EXPOSED_IN_RUNTIME",
+    "fallbacks": [
+      "original source C execution",
+      "NumPy dense/Schur linear algebra",
+      "central-difference JVP regression"
+    ]
+  }
 }

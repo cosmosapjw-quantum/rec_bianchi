@@ -1,0 +1,38 @@
+=== PR-04B1 v0.52 scientific verification ===
+timestamp_utc: 2026-08-05T14:21:47.057944+00:00
+payload_branch: work/pr04b-original-hyrec-native-v052
+payload_head: d1ee9e09557515e273372fd6d77d60783232a6d6
+payload_tree: 544f7e22859b0fdab474c23bac67dd99ab015f8b
+
+Fast lane:
+  pytest -q -m "not slow": PASS — 90 passed, 23 deselected
+  verify_repo.py --all: PASS — 90 passed, 23 deselected
+
+Slow scientific lanes (fresh process per file, deterministic BLAS thread lock):
+  tests/recoil/test_full_harmonic_deposition.py: PASS — 4
+  tests/recoil/test_hyrec_common_measure.py: PASS — 1 (10 deselected)
+  tests/recoil/test_original_hyrec_native.py: PASS — 1 (5 deselected)
+  tests/recoil/test_pair_cell_conductance.py: PASS — 4
+  tests/recoil/test_recoil_bridge.py: PASS — 3
+  tests/recoil/test_same_cell_regular.py: PASS — 5
+  tests/recoil/test_thermal_deposition.py: PASS — 5
+  total slow: 23 passed across 7 isolated files
+  total fast+slow coverage: 113 passed
+
+Aggregate scientific wrapper:
+  python scripts/verify_repo.py --scientific: NOT CLAIMED AS A SINGLE-COMMAND PASS.
+  In this execution sandbox the aggregate process was terminated by the outer 480 s runtime limit while the isolated pair-cell lane was in progress. No assertion failure or nonzero pytest result was observed before termination. Every collected slow file was then executed independently and passed. This is classified as a runtime-wrapper/CPU-quota limitation, not as a scientific test pass for the aggregate command.
+
+Other gates:
+  offline bootstrap: PASS
+  repository quick verifier: PASS
+  immutable PR-04B1 verifier: PASS
+  git diff --check: PASS
+  git fsck --full --no-dangling: PASS
+
+Tool availability:
+  web search: USED (official HyRec page and primary papers)
+  Wolfram connector: UNAVAILABLE_IN_RUNTIME
+  Precise Special Functions connector: UNAVAILABLE_IN_RUNTIME
+  project custom skills: NOT_EXPOSED_IN_RUNTIME
+  independent fallbacks: original C execution; NumPy dense/Schur linear algebra; central-difference JVP

@@ -1,28 +1,33 @@
 === timestamp_utc ===
-2026-08-05T10:00:33.379298+00:00
+2026-08-05T14:21:47.057944+00:00
 === git_payload ===
-work/pr04-hyrec-common-measure-v051
-86c1b2e2311f7ff2363f927e682760f6595d331e
-190eea65baed95b888349688636ab4d750b57da0
+work/pr04b-original-hyrec-native-v052
+d1ee9e09557515e273372fd6d77d60783232a6d6
+544f7e22859b0fdab474c23bac67dd99ab015f8b
 === recovery_and_artifact ===
 offline bootstrap: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
-PR-04A immutable artifact verifier: PASS; PR-04B archive parity OPEN
-repository quick verifier: PASS; bundle_count=51
+PR-04B1 immutable artifact verifier: PASS; PR-04B2 physical closure OPEN
+repository quick verifier: PASS; bundle_count=52
+original-HyRec archive: byte locked, ZIP integrity/path safety PASS
+portable source-byte-unchanged GNU build: PASS; baseline 8001 rows
 === tests ===
-fast pytest: 85 passed, 22 deselected
-repository all verifier: PASS; 85 passed, 22 deselected
-full scientific verifier: PASS; 85 fast + 22 slow = 107 tests; 6 isolated slow files
-PR-04A complete test file: 11 passed with deterministic BLAS thread lock
-durable repository-relative artifact path regression: PASS
-recoil bridge slow regression: PASS
+fast pytest: 90 passed, 23 deselected
+repository all verifier: PASS; 90 passed, 23 deselected
+scientific file-isolated lanes: PASS; 23 slow tests across 7 files
+total covered tests: 113 passed
+aggregate verify_repo.py --scientific: outer 480 s runtime limit; no single-command PASS claimed
+=== scientific gates ===
+original C/Python diffusion parity: PASS
+original C/dense/Schur full-system parity: PASS
+native proxy conservation and detailed balance: PASS
+analytic JVP and implicit positivity: PASS
+physical finite-volume direct substitution firewall: TRIGGERED AS INTENDED; PR-04B2 OPEN
 === integrity ===
 git diff --check: PASS
-py_compile: PASS
-artifact zip integrity: PASS
+py_compile: PASS — 96 Python files
+artifact ZIP integrity and SHA-256 manifest: PASS
+input HyRec ZIP integrity: PASS
 secret scan: PASS; credential values absent from intended release files
 git fsck --full --no-dangling: PASS
-=== portability_and_ci_repair ===
-recoil_bridge v0.32/v0.33 defaults resolve under repository archive/expanded.
-scientific verifier runs fast and slow lanes in isolated subprocesses with deterministic BLAS thread limits.
 === remote ===
-GitHub remote SHA/tree not verified in this shell; owner performs fetch/push/PR locally; no remote write claimed.
+Configured origin is the v0.51 input bundle, not live GitHub. Owner performs fetch/push/PR locally; no remote write claimed.

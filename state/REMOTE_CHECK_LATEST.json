@@ -1,51 +1,46 @@
 {
-  "classification": "LOCAL_BUNDLE_ORIGIN_CHECK_AND_GITHUB_REMOTE_UNVERIFIED",
-  "checked_at_utc": "2026-08-05T10:00:33.379298+00:00",
-  "repository": "cosmosapjw-quantum/rec_bianchi",
-  "repository_root": "/mnt/data/rec_bianchi_pr04_v051_work",
-  "local_payload": {
-    "branch": "work/pr04-hyrec-common-measure-v051",
-    "head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
-    "tree": "190eea65baed95b888349688636ab4d750b57da0",
-    "dirty_at_receipt_generation": false,
-    "dirty_reason": "scientific payload clean before final provenance receipt generation"
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "checked_at_utc": "2026-08-05T14:14:37.475930+00:00",
+  "checked_at_kst": "2026-08-05T23:14:37.475930+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_pr04b_v052_work/repo",
+  "origin": "/mnt/data/rec_bianchi_v051_full.bundle",
+  "local": {
+    "branch": "work/pr04b-original-hyrec-native-v052",
+    "head": "d1ee9e09557515e273372fd6d77d60783232a6d6",
+    "tree": "544f7e22859b0fdab474c23bac67dd99ab015f8b",
+    "dirty": false,
+    "dirty_paths": []
   },
-  "configured_origin": {
-    "url": "/mnt/data/rec_bianchi_v050_full.bundle",
-    "kind": "LOCAL_COMPLETE_GIT_BUNDLE_NOT_GITHUB_REMOTE",
+  "remote": {
     "accessible": true,
-    "ref_count": 12,
+    "selected_transport": "configured",
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 14,
     "refs": {
+      "refs/tags/handoff-2026-08-05-v051": "7a39c303c397bfb8ff32368d23be6b8f7a62b0c7",
       "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
       "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
       "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
       "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
       "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.51": "51f0696c62a87de34ee0df3df3a680f369d5025e",
       "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
       "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
       "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
       "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
       "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
-      "refs/heads/work/pr03-full-scalar-com-khw-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-      "refs/heads/work/pr02-nonlinear-bose-production-v049": "721f792736eaddc7ec6951f99332c44c70b039bf"
+      "refs/heads/work/pr04-hyrec-common-measure-v051": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
+      "refs/heads/work/pr03-full-scalar-com-khw-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd"
     },
     "attempts": [
       {
         "transport": "configured",
-        "url": "/mnt/data/rec_bianchi_v050_full.bundle",
+        "url": "/mnt/data/rec_bianchi_v051_full.bundle",
         "returncode": 0,
         "stderr": ""
       }
     ]
-  },
-  "github_remote": {
-    "url": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
-    "verified": false,
-    "main_sha": null,
-    "tree_match": false,
-    "push_or_pr_attempted": false,
-    "policy": "OWNER_FETCHES_TESTS_PUSHES_AND_CREATES_PR_LOCALLY_WITHOUT_FORCE_PUSH",
-    "reason": "The owner explicitly chose local GitHub writes; this shell has no writable GitHub path."
   },
   "runtime_capabilities": {
     "git_executable": "/usr/bin/git",
@@ -55,7 +50,7 @@
     "chatgpt_connector_cli_exposed": false,
     "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
   },
-  "patch_base": {
+  "user_confirmed_base": {
     "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
     "reported_at": "2026-08-05",
     "repository": "cosmosapjw-quantum/rec_bianchi",
@@ -66,81 +61,17 @@
     "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
     "implication": "The cumulative v0.51 patch may be based on the exact local v0.47 scientific tree. The incremental v0.50-to-v0.51 patch may be used only when exact local v0.50 commit da892072ebabe214c54f00f6ace7ee8f2c2acccd is present. The owner must fetch private main and verify ancestry before applying either route."
   },
-  "raw_check_preserved": {
-    "classification": "REMOTE_REPOSITORY_CHECK",
-    "checked_at_utc": "2026-08-05T09:31:57.791149+00:00",
-    "checked_at_kst": "2026-08-05T18:31:57.791149+09:00",
-    "repository_root": "/mnt/data/rec_bianchi_pr04_v051_work",
-    "origin": "/mnt/data/rec_bianchi_v050_full.bundle",
-    "local": {
-      "branch": "work/pr04-hyrec-common-measure-v051",
-      "head": "aec113b7c06b007a662b4b3d98539bd5b1e6158b",
-      "tree": "4b45b4c71ed0f6f047026ff16dd9a970b06e82d6",
-      "dirty": true,
-      "dirty_paths": [
-        "M state/ACTIVE_TEST_RESULT.txt",
-        " M state/REMOTE_CHECK_LATEST.json",
-        "?? state/PR04_RECOVERY_COMMANDS_INITIAL.log",
-        "?? state/PR04_RECOVERY_REQUIRED_READ.log"
-      ]
-    },
-    "remote": {
-      "accessible": true,
-      "selected_transport": "configured",
-      "main_sha": null,
-      "matches_local_head": false,
-      "ref_count": 12,
-      "refs": {
-        "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-        "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
-        "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
-        "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
-        "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
-        "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-        "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
-        "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
-        "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
-        "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
-        "refs/heads/work/pr03-full-scalar-com-khw-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
-        "refs/heads/work/pr02-nonlinear-bose-production-v049": "721f792736eaddc7ec6951f99332c44c70b039bf"
-      },
-      "attempts": [
-        {
-          "transport": "configured",
-          "url": "/mnt/data/rec_bianchi_v050_full.bundle",
-          "returncode": 0,
-          "stderr": ""
-        }
-      ]
-    },
-    "runtime_capabilities": {
-      "git_executable": "/usr/bin/git",
-      "ssh_executable": null,
-      "gh_executable": null,
-      "https_token_present": false,
-      "chatgpt_connector_cli_exposed": false,
-      "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
-    },
-    "user_confirmed_base": {
-      "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
-      "reported_at": "2026-08-05",
-      "repository": "cosmosapjw-quantum/rec_bianchi",
-      "reported_remote_content_stage": "v0.47",
-      "reported_action": "expanded and merged",
-      "exact_remote_commit_verified": false,
-      "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-      "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-      "implication": "v0.50 cumulative patch content may be based on the exact local v0.47 scientific tree, while the incremental v0.49-to-v0.50 patch may be used only when exact local v0.49 commit 721f792736eaddc7ec6951f99332c44c70b039bf is present. Remote ancestry/commit identity must be checked before either is applied."
-    },
-    "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty.",
+  "configured_origin_classification": "LOCAL_INPUT_BUNDLE_NOT_LIVE_GITHUB",
+  "github_remote": {
+    "url": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+    "queried_by_shell": false,
+    "verified": false,
+    "main_sha": null,
+    "tree_match": false,
+    "push_or_pr_attempted": false,
+    "policy": "OWNER_FETCHES_TESTS_PUSHES_AND_CREATES_PR_LOCALLY_WITHOUT_FORCE_PUSH",
+    "reason": "Configured origin is /mnt/data/rec_bianchi_v051_full.bundle. The successful ls-remote result applies only to that local bundle and is not evidence about live GitHub."
   },
-  "scientific_verification": {
-    "status": "PASS",
-    "total_tests": 107,
-    "fast_tests": 85,
-    "slow_tests": 22,
-    "slow_files": 6,
-    "log": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
-    "log_sha256": "40d0d1f5b13b1f5ca1af38181162da6039bb677af1a1d788488b65c32b2a422c"
-  }
+  "interpretation": "remote.accessible=true means the configured local bundle is readable; it does not mean GitHub is reachable or synchronized."
 }
