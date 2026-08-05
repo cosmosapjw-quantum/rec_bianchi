@@ -20,6 +20,7 @@
 
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific` (can require many tens of minutes).
+- PR-03 stage regeneration: `python scripts/run_pr03_full_scalar_khw_stage.py`.
 - Original stage bundles retain the per-stage full-test receipts.
 
 

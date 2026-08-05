@@ -5,6 +5,12 @@ from numpy.polynomial.legendre import leggauss as _numpy_leggauss
 from scipy.constants import c,h,k,physical_constants
 from scipy.special import wofz,eval_legendre,kve
 
+from .scalar_com_khw import (
+    conditional_full_scalar_mean_amplitude_squared,
+    conditional_full_minus_provisional_mean_amplitude_squared,
+    conditional_provisional_mean_amplitude_squared,
+)
+
 M=physical_constants['atomic mass constant'][0]*1.00782503223; T=3000.; beta=1/(k*T)
 nu_int=c/(1215.6701e-10);A21=6.265e8;gamma=A21/(4*math.pi);f=.4161967179799824
 sigT=physical_constants['Thomson cross section'][0];re=physical_constants['classical electron radius'][0]
@@ -34,15 +40,41 @@ def lor_mean(A,B,g):
  xv=A[nz]/(math.sqrt(2)*B[nz]);av=g/(math.sqrt(2)*np.abs(B[nz]));out[nz]=math.sqrt(math.pi)/(math.sqrt(2)*np.abs(B[nz])*g)*H(av,xv)
  return out
 
-def exact_amp2(ns,nt,mu):
- den=np.sqrt(ns*ns+nt*nt-2*ns*nt*mu);Q=h/c*den;a_s=(ns-nt*mu)/den;b_s=np.sqrt(np.maximum(0,1-a_s*a_s));DE=h*(ns-nt);P=M*DE/Q-Q/2
- A=nu_int-ns+ns*P*a_s/(M*c)+h*ns*ns/(2*M*c*c);B=ns*math.sqrt(M*k*T)*b_s/(M*c);a_t=(ns*mu-nt)/den;C=nu_int+nt-nt*P*a_t/(M*c)+h*nt*nt/(2*M*c*c);D=-B;scale2=(.5*f*nu_int)**2
- Ip=lor_mean(A,B,gamma);Ic=lor_mean(C,D,gamma);out=scale2*(Ip+Ic);zero=np.abs(B)<1e-250
- if np.any(zero):out[zero]+=2*scale2*np.real(1/((A[zero]-1j*gamma)*(C[zero]-1j*gamma)))
- nz=~zero
- if np.any(nz):
-  o1=A[nz]-1j*gamma;o2=C[nz]-1j*gamma;b=B[nz];d=-b;p1=-o1/b;p2=-o2/d;cross=(resolvent(p1)-resolvent(p2))/(b*o2-d*o1);out[nz]+=2*scale2*np.real(cross)
- return out
+def _conditional_denominators(ns,nt,mu):
+ ns=np.asarray(ns,dtype=float);nt=np.asarray(nt,dtype=float)
+ den=np.sqrt(ns*ns+nt*nt-2*ns*nt*mu);Q=h/c*den
+ a_s=(ns-nt*mu)/den;b_s=np.sqrt(np.maximum(0,1-a_s*a_s))
+ DE=h*(ns-nt);P=M*DE/Q-Q/2
+ A=nu_int-ns+ns*P*a_s/(M*c)+h*ns*ns/(2*M*c*c)
+ B=ns*math.sqrt(M*k*T)*b_s/(M*c)
+ a_t=(ns*mu-nt)/den
+ C=nu_int+nt-nt*P*a_t/(M*c)+h*nt*nt/(2*M*c*c)
+ D=-B
+ return A,B,C,D
+
+def exact_amp2_provisional(ns,nt,mu):
+ """Inherited unresolved 2p pole+crossed conditional average."""
+ A,B,C,D=_conditional_denominators(ns,nt,mu)
+ return conditional_provisional_mean_amplitude_squared(A,B,C,D)
+
+def exact_amp2(ns,nt,mu,*,amplitude_lane='full'):
+ """Conditional scalar amplitude mean for the selected atomic lane.
+
+ ``full`` is the PR-03 bound+continuum COM--KHW production lane.
+ ``provisional_2p`` retains the inherited PR-01 reference without
+ contaminating the production default.
+ """
+ A,B,C,D=_conditional_denominators(ns,nt,mu)
+ if amplitude_lane=='full':
+  return conditional_full_scalar_mean_amplitude_squared(A,B,C,D)
+ if amplitude_lane in {'full_minus_provisional','amplitude_delta'}:
+  return conditional_full_minus_provisional_mean_amplitude_squared(A,B,C,D)
+ if amplitude_lane in {'provisional_2p','provisional'}:
+  return conditional_provisional_mean_amplitude_squared(A,B,C,D)
+ raise ValueError(
+  "amplitude_lane must be 'full', 'full_minus_provisional', or "
+  "'provisional_2p'"
+ )
 
 def logSmj(ns,nt,mu):
  ks=h*ns/(M*c*c);kt=h*nt/(M*c*c);delta=ks-kt;transfer2=2*ks*kt*(1-mu);q=np.sqrt(delta*delta+transfer2);root=np.sqrt(transfer2)/q;chi=np.sqrt(transfer2);sqrtterm=np.sqrt(1+chi*chi/4);sqrtminus=chi*chi/4/(sqrtterm+1);gminus=(1/root)*sqrtminus+(delta/q)**2/(root*(1+root))-delta/2
@@ -59,7 +91,7 @@ def cell_nodes(idx,n):
 def pi_norm(idx,n=64):
  x,w=cell_nodes(idx,n);nu=nu_abs+x*dnu;return float(np.sum(w*nu*nu*np.exp(-beta*h*nu)))
 
-def pair_freq_integral_uv(target,source,mu,kind='exact',nb=32,nl=80,nv=28,local_half=.05):
+def pair_freq_integral_uv(target,source,mu,kind='exact',nb=32,nl=80,nv=28,local_half=.05,amplitude_lane='full'):
  at,bt=xedges[target],xedges[target+1];as_,bs=xedges[source],xedges[source+1];umin=.5*(at+as_);umax=.5*(bt+bs);delta=gamma/dnu
  breaks=[umin,umax,.5*(at+bs),.5*(bt+as_)]
  if umin<0<umax:breaks += [max(umin,-local_half),0.,min(umax,local_half)]
@@ -77,25 +109,25 @@ def pair_freq_integral_uv(target,source,mu,kind='exact',nb=32,nl=80,nv=28,local_
   vmin=max(at-u,u-bs);vmax=min(bt-u,u-as_)
   if vmax<=vmin:continue
   vv=.5*(vmax-vmin)*zv+.5*(vmax+vmin);ww=.5*(vmax-vmin)*wv;xt=u+vv;xs=u-vv;ns=nu_abs+xs*dnu;nt=nu_abs+xt*dnu
-  if kind=='exact':val=np.exp(-beta*h*ns+logSmj(ns,nt,mu))*ns*nt*exact_amp2(ns,nt,mu);const=const_exact
+  if kind=='exact':val=np.exp(-beta*h*ns+logSmj(ns,nt,mu))*ns*nt*exact_amp2(ns,nt,mu,amplitude_lane=amplitude_lane);const=const_exact
   else:val=np.exp(-beta*h*ns+logSmb_hummer(xs,xt,mu))*ns*ns*baseline_amp2(xs,xt,mu);const=const_base
   result += 2*wu*np.dot(ww,val)
  return const*result
 
-def pair_conductance(target,source,lane='production',kind='exact'):
+def pair_conductance(target,source,lane='production',kind='exact',amplitude_lane='full'):
  pars={'coarse':(12,64,16,16,40,16),'production':(20,128,32,28,72,28),'reference':(28,192,48,40,112,40)}[lane]
  ob,om,of,nb,nl,nv=pars;total=np.zeros(7)
  # back c with uv adaptive
  z,w=leggauss(ob);cm=math.sqrt(.005);cc=.5*cm*(z+1);cw=.5*cm*w
  for q,ww in zip(cc,cw):
-  mu=-1+2*q*q;freq=pair_freq_integral_uv(target,source,mu,kind,nb,nl,nv);total += 2*q*ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
+  mu=-1+2*q*q;freq=pair_freq_integral_uv(target,source,mu,kind,nb,nl,nv,amplitude_lane=amplitude_lane);total += 2*q*ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
  # middle and forward use UV too for robust geometry; lower orders okay
  z,w=leggauss(om);lo=-.99;hi=.999;mus=.5*(hi-lo)*z+.5*(hi+lo);mws=.25*(hi-lo)*w
  for mu,ww in zip(mus,mws):
-  freq=pair_freq_integral_uv(target,source,float(mu),kind,nb//2,nl//2,nv//2);total += ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
+  freq=pair_freq_integral_uv(target,source,float(mu),kind,nb//2,nl//2,nv//2,amplitude_lane=amplitude_lane);total += ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
  z,w=leggauss(of);tm=math.sqrt(.001);tt=.5*tm*(z+1);tw=.5*tm*w
  for q,ww in zip(tt,tw):
-  mu=1-q*q;freq=pair_freq_integral_uv(target,source,float(mu),kind,nb//2,nl//2,nv//2);total += q*ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
+  mu=1-q*q;freq=pair_freq_integral_uv(target,source,float(mu),kind,nb//2,nl//2,nv//2,amplitude_lane=amplitude_lane);total += q*ww*.75*(1+mu*mu)*np.array([eval_legendre(l,mu) for l in range(7)])*freq
  return total
 
 PRODUCTION_LANE = {
@@ -128,6 +160,7 @@ def _pair_frequency_integral(
     nl: int,
     nv: int,
     local_half: float = 0.05,
+    amplitude_lane: str = "full",
 ) -> float:
     """Two-cell u-v integral with geometric and resonance breakpoints."""
     at, bt = xedges[target], xedges[target + 1]
@@ -214,7 +247,9 @@ def _pair_frequency_integral(
                 )
                 * nu_source
                 * nu_target
-                * exact_amp2(nu_source, nu_target, mu)
+                * exact_amp2(
+                    nu_source, nu_target, mu, amplitude_lane=amplitude_lane
+                )
             )
             normalization = const_exact
         elif kind == "hummer":
@@ -242,8 +277,13 @@ def integrate_unordered_pair(
     lane: str = "production",
     kind: str = "exact",
     ell_max: int = 6,
+    amplitude_lane: str = "full",
 ) -> np.ndarray:
-    """Return one canonical pair conductance vector through ell_max."""
+    """Return one canonical pair conductance vector through ell_max.
+
+    ``amplitude_lane='full'`` is the PR-03 production default; the
+    explicit ``'provisional_2p'`` lane is retained for transition parity.
+    """
     if target == source:
         raise ValueError(
             "same-cell coherent-forward angular block is a separate distributional lane"
@@ -268,6 +308,7 @@ def integrate_unordered_pair(
             nb=parameters["nb"],
             nl=parameters["nl"],
             nv=parameters["nv"],
+            amplitude_lane=amplitude_lane,
         )
         phase = 0.75 * (1.0 + mu**2)
         total += (
@@ -302,7 +343,12 @@ def integrate_unordered_pair(
                     )
                     * nu_source
                     * nu_target
-                    * exact_amp2(nu_source, nu_target, float(mu))
+                    * exact_amp2(
+                        nu_source,
+                        nu_target,
+                        float(mu),
+                        amplitude_lane=amplitude_lane,
+                    )
                 )
                 normalization = const_exact
             elif kind == "hummer":

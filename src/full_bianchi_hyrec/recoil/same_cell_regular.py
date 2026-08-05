@@ -40,6 +40,28 @@ REFERENCE_LANE = {
     "ymax": 10.0,
 }
 
+# The complete-minus-provisional amplitude correction is a smooth,
+# subdominant lane.  The narrow 2p pole itself is inherited from the
+# durable v0.47 same-cell block, so this correction needs fewer nodes.
+DELTA_PRODUCTION_LANE = {
+    "ob": 12,
+    "om": 64,
+    "of": 18,
+    "nu": 20,
+    "nu_pole": 56,
+    "ny": 24,
+    "ymax": 9.0,
+}
+DELTA_REFERENCE_LANE = {
+    "ob": 18,
+    "om": 96,
+    "of": 28,
+    "nu": 28,
+    "nu_pole": 80,
+    "ny": 32,
+    "ymax": 10.0,
+}
+
 
 def _data_path(name: str) -> Path:
     return Path(__file__).resolve().parents[3] / "data" / name
@@ -85,6 +107,7 @@ def _same_cell_frequency_integral(
     *,
     kind: str,
     lane_parameters: dict[str, float | int],
+    amplitude_lane: str = "full",
 ) -> float:
     """Two-cell integral using v=s*y, resolving the forward Gaussian layer."""
     s = math.sqrt(max(0.0, (1.0 - mu) / 2.0))
@@ -119,35 +142,60 @@ def _same_cell_frequency_integral(
         nu_source = PCC.nu_abs + x_source * PCC.dnu
         nu_target = PCC.nu_abs + x_target * PCC.dnu
 
-        exact_values = (
-            np.exp(
-                -PCC.beta * PCC.h * nu_source
-                + PCC.logSmj(nu_source, nu_target, mu)
-            )
-            * nu_source
-            * nu_target
-            * PCC.exact_amp2(nu_source, nu_target, mu)
-        )
-        hummer_values = (
-            np.exp(
-                -PCC.beta * PCC.h * nu_source
-                + PCC.logSmb_hummer(x_source, x_target, mu)
-            )
-            * nu_source**2
-            * PCC.baseline_amp2(x_source, x_target, mu)
-        )
+        boltzmann_exact = np.exp(
+            -PCC.beta * PCC.h * nu_source
+            + PCC.logSmj(nu_source, nu_target, mu)
+        ) * nu_source * nu_target
 
         if kind == "exact":
-            weighted = PCC.const_exact * exact_values
-        elif kind == "hummer":
-            weighted = PCC.const_base * hummer_values
-        elif kind == "correction":
             weighted = (
-                PCC.const_exact * exact_values
-                - PCC.const_base * hummer_values
+                PCC.const_exact
+                * boltzmann_exact
+                * PCC.exact_amp2(
+                    nu_source,
+                    nu_target,
+                    mu,
+                    amplitude_lane=amplitude_lane,
+                )
             )
+        elif kind == "amplitude_delta":
+            weighted = (
+                PCC.const_exact
+                * boltzmann_exact
+                * PCC.exact_amp2(
+                    nu_source,
+                    nu_target,
+                    mu,
+                    amplitude_lane="full_minus_provisional",
+                )
+            )
+        elif kind in {"hummer", "correction"}:
+            hummer_values = (
+                np.exp(
+                    -PCC.beta * PCC.h * nu_source
+                    + PCC.logSmb_hummer(x_source, x_target, mu)
+                )
+                * nu_source**2
+                * PCC.baseline_amp2(x_source, x_target, mu)
+            )
+            if kind == "hummer":
+                weighted = PCC.const_base * hummer_values
+            else:
+                exact_values = boltzmann_exact * PCC.exact_amp2(
+                    nu_source,
+                    nu_target,
+                    mu,
+                    amplitude_lane=amplitude_lane,
+                )
+                weighted = (
+                    PCC.const_exact * exact_values
+                    - PCC.const_base * hummer_values
+                )
         else:
-            raise ValueError("kind must be 'exact', 'hummer', or 'correction'")
+            raise ValueError(
+                "kind must be 'exact', 'hummer', 'correction', or "
+                "'amplitude_delta'"
+            )
 
         # dx_t dx_s = 2 du dv = 2 s du dy.
         result += 2.0 * s * wu * float(np.dot(wy, weighted))
@@ -166,6 +214,7 @@ def _integrate_same_cell_regularized_internal(
     lane: str = "production",
     kind: str = "exact",
     ell_max: int = 24,
+    amplitude_lane: str = "full",
 ) -> np.ndarray:
     """Return S_ell(i,i)-S_0(i,i) through ell_max.
 
@@ -177,7 +226,16 @@ def _integrate_same_cell_regularized_internal(
         raise ValueError("cell outside the 17-cell core")
     if ell_max < 0:
         raise ValueError("ell_max must be nonnegative")
-    parameters = PRODUCTION_LANE if lane == "production" else REFERENCE_LANE
+    if lane not in {"production", "reference"}:
+        raise ValueError("lane must be 'production' or 'reference'")
+    if kind == "amplitude_delta":
+        parameters = (
+            DELTA_PRODUCTION_LANE
+            if lane == "production"
+            else DELTA_REFERENCE_LANE
+        )
+    else:
+        parameters = PRODUCTION_LANE if lane == "production" else REFERENCE_LANE
     total = np.zeros(ell_max + 1)
 
     # Backscattering endpoint: mu=-1+2c^2, (1/2)dmu=2c dc.
@@ -188,7 +246,8 @@ def _integrate_same_cell_regularized_internal(
     for c_value, weight in zip(c_values, c_weights):
         mu = -1.0 + 2.0 * c_value**2
         frequency = _same_cell_frequency_integral(
-            cell, mu, kind=kind, lane_parameters=parameters
+            cell, mu, kind=kind, lane_parameters=parameters,
+            amplitude_lane=amplitude_lane,
         )
         phase = 0.75 * (1.0 + mu**2)
         total += 2.0 * c_value * weight * phase * _angular_vector(mu, ell_max) * frequency
@@ -200,7 +259,8 @@ def _integrate_same_cell_regularized_internal(
     mweights = 0.25 * (b - a) * weights
     for mu, weight in zip(mus, mweights):
         frequency = _same_cell_frequency_integral(
-            cell, float(mu), kind=kind, lane_parameters=parameters
+            cell, float(mu), kind=kind, lane_parameters=parameters,
+            amplitude_lane=amplitude_lane,
         )
         phase = 0.75 * (1.0 + mu**2)
         total += weight * phase * _angular_vector(float(mu), ell_max) * frequency
@@ -213,7 +273,8 @@ def _integrate_same_cell_regularized_internal(
     for t, weight in zip(t_values, t_weights):
         mu = 1.0 - t**2
         frequency = _same_cell_frequency_integral(
-            cell, mu, kind=kind, lane_parameters=parameters
+            cell, mu, kind=kind, lane_parameters=parameters,
+            amplitude_lane=amplitude_lane,
         )
         phase = 0.75 * (1.0 + mu**2)
         total += t * weight * phase * _angular_vector(mu, ell_max) * frequency
@@ -223,6 +284,18 @@ def _integrate_same_cell_regularized_internal(
     return total
 
 
+@lru_cache(maxsize=1)
+def _locked_provisional_same_cell_rates() -> np.ndarray:
+    """Durable v0.47 provisional same-cell rates through ell=24."""
+    data = np.load(_data_path("far_scalar_release_v047.npz"))
+    values = np.asarray(data["same_cell_rates_sInv"][:, : PCC.ncell], dtype=float)
+    if values.shape[0] < 25 or values.shape[1] != PCC.ncell:
+        raise ValueError("v0.47 same-cell block has an unexpected shape")
+    values = values.copy()
+    values.setflags(write=False)
+    return values
+
+
 @lru_cache(maxsize=512)
 def integrate_same_cell_regularized(
     cell: int,
@@ -230,6 +303,7 @@ def integrate_same_cell_regularized(
     lane: str = "production",
     kind: str = "exact",
     ell_max: int = 24,
+    amplitude_lane: str = "full",
 ) -> np.ndarray:
     """Return the physical same-cell collision remainder in s^-1.
 
@@ -238,6 +312,8 @@ def integrate_same_cell_regularized(
     Hummer correction.  This removes the coherent-forward distribution
     before numerical quadrature.
     """
+    if ell_max > 24:
+        raise ValueError("durable provisional same-cell block ends at ell=24")
     reference = np.load(_data_path("hummer_same_cell_reference.npz"))
     hummer_gain = np.asarray(reference["physical_gain_sInv"])
     if ell_max >= hummer_gain.shape[0]:
@@ -251,14 +327,29 @@ def integrate_same_cell_regularized(
         return baseline
     if kind != "exact":
         raise ValueError("public kind must be 'exact' or 'hummer'")
+    if amplitude_lane not in {"full", "provisional_2p", "provisional"}:
+        raise ValueError(
+            "amplitude_lane must be 'full' or 'provisional_2p'"
+        )
+
+    provisional = _locked_provisional_same_cell_rates()[
+        : ell_max + 1, cell
+    ].copy()
+    if amplitude_lane in {"provisional_2p", "provisional"}:
+        provisional[0] = 0.0
+        return provisional
 
     correction_internal = _integrate_same_cell_regularized_internal(
-        cell, lane=lane, kind="correction", ell_max=ell_max
+        cell,
+        lane=lane,
+        kind="amplitude_delta",
+        ell_max=ell_max,
+        amplitude_lane="full",
     )
     pi = PCC.physical_equilibrium_cell_weight(cell)
     common_mode_factor = 8.0 * math.pi * PCC.dnu / PCC.c**3
     correction_rate = common_mode_factor * correction_internal / pi
-    result = baseline + correction_rate
+    result = provisional + correction_rate
     result[0] = 0.0
     return result
 
@@ -303,7 +394,7 @@ def assemble_from_same_cell_rates(
 
 @lru_cache(maxsize=8)
 def assemble_bounded_harmonic_operator(
-    *, ell_max: int = 6, lane: str = "production"
+    *, ell_max: int = 6, lane: str = "production", amplitude_lane: str = "full"
 ) -> dict[str, np.ndarray]:
     """Combine v0.44 off-diagonal pairs with regularized same-cell action."""
     if ell_max > 6:
@@ -311,6 +402,7 @@ def assemble_bounded_harmonic_operator(
     same_cell = np.zeros((ell_max + 1, PCC.ncell))
     for cell in range(PCC.ncell):
         same_cell[:, cell] = integrate_same_cell_regularized(
-            cell, lane=lane, kind="exact", ell_max=ell_max
+            cell, lane=lane, kind="exact", ell_max=ell_max,
+            amplitude_lane=amplitude_lane,
         )
     return assemble_from_same_cell_rates(same_cell)
