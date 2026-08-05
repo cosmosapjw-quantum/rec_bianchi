@@ -1,26 +1,27 @@
 {
   "classification": "DURABLE_PROJECT_STATE",
-  "project": "Full Bianchi–HyRec scalar completion",
+  "project": "Full Bianchi\u2013HyRec scalar completion",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-05",
-  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
-  "estimated_overall_completion_percent": 84,
+  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
+  "estimated_overall_completion_percent": 86,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
+  "estimated_PR04_completion_percent": 55,
   "current_durable_stage": {
-    "name": "PR-03 full scalar elastic COM–KHW production amplitude",
-    "artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50",
-    "status": "PASS_PR03_COMPLETE"
+    "name": "PR-04A HYREC-2 source/convention lock and 17-cell common-measure core",
+    "artifact": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51",
+    "status": "PASS_PR04A_COMMON_MEASURE_CORE_PR04B_ORIGINAL_HYREC_ARCHIVE_OPEN"
   },
   "next_stage": {
-    "name": "PR-04 HYREC common-measure moment projection",
-    "entry_gate": "SOURCE_LOCK_AND_CONVENTION_PARITY_BEFORE_IMPLEMENTATION",
+    "name": "PR-04B original-HyRec archive and native primitive common-measure parity",
+    "entry_gate": "EXACT_OFFICIAL_OCTOBER_2012_ARCHIVE_BYTES_AND_SHA256",
     "tasks": [
-      "Pin the exact native HyRec/HyRec-2 source and identify the Ly-alpha frequency-bin common measure, normalization, units and signs.",
-      "Define Gamma and M1-M4 directly from the v0.50 event kernel without a fitted normalization.",
-      "Compare direct event integration, positive continuum quadrature and the native HyRec discrete operator.",
-      "Close normalization, detailed balance, recoil-energy, moment, positivity and analytic/JVP Jacobian gates while preserving the PR-01/PR-02 APIs."
+      "Acquire, inventory, hash and compile the official October-2012 original-HyRec archive.",
+      "Derive its native radiation-variable, frequency-bin, time-derivative, diffusion, recoil and stimulated-factor conventions from source.",
+      "Map native primitive and Schur-reduced rates to the v0.51 common measure without a fitted normalization.",
+      "Close normalization, detailed balance, recoil energy, analytic/JVP Jacobian and one FLRW snapshot parity gate."
     ]
   },
   "roadmap": [
@@ -36,18 +37,18 @@
     },
     {
       "pr": 3,
-      "title": "Full scalar COM–KHW amplitude",
+      "title": "Full scalar COM\u2013KHW amplitude",
       "status": "COMPLETE"
     },
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "IN_PROGRESS_NEXT"
+      "status": "IN_PROGRESS_PR04A_PASS_PR04B_OPEN"
     },
     {
       "pr": 5,
       "title": "Primitive HYREC operator and background interface",
-      "status": "PLANNED"
+      "status": "PLANNED_AFTER_PR04"
     },
     {
       "pr": 6,
@@ -103,59 +104,62 @@
   },
   "locked_architecture": {
     "geometry_interface": "BackgroundSnapshot physical tetrad characteristics",
-    "microphysics_firewall": "local scalar collision microphysics is Bianchi-type independent",
+    "microphysics_firewall": "local scalar collision/common-measure microphysics is Bianchi-type independent",
     "boundary_events": "all directional boundary-speed zeros are localized inside the timestep",
     "angular_policies": {
       "finite_or_mixed_tilt": 12,
       "nonlinear_even_shear": 20,
       "directional_crossing": 24
     },
-    "nonlinear_update": "log-occupation backward Euler with exact matrix-free JVP",
-    "conservation": "photon and atom four-force are accumulated from the same event with opposite sign",
+    "nonlinear_update": "log-occupation backward Euler with exact analytic JVP",
+    "conservation": "photon and atom energy/four-force are accumulated from the same event with opposite sign",
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
-    "comparison_lane": "provisional_2p remains explicit but is not the production default"
+    "common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
+    "native_hyrec_firewall": "HYREC-2 Aup/Adn and completed Tvv are not direct COM-KHW per-source moments; no free scale fit"
   },
-  "PR03_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50.zip",
-    "artifact_bundle_sha256": "c5b596d7b5e885c66aa673b26cdb9ad4aac30b7d6571cb0c22fde1bf34d54e6e",
-    "artifact_bundle_size_bytes": 2038554,
-    "network_states": 35,
-    "ell_max": 24,
-    "bounded_integral_blocks": 459,
-    "fixed_nucleus_gauge_audit": true,
-    "finite_recoil_PT_audit": true,
+  "PR04A_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51.zip",
+    "artifact_bundle_sha256": "ca60bb0d2177ef50fdcf44635f58e89108b00d9ab37312c813d9e0a15086004e",
+    "artifact_bundle_size_bytes": 61151,
+    "core_states": 17,
+    "offdiagonal_pairs": 136,
+    "same_cell_active_jump_cells": 17,
+    "hyrec2_source_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+    "hyrec2_native_representation": "(2s,2p)+311 virtual photon states; diffusion indices 100..179",
+    "original_hyrec_october_2012_archive": "OPEN_NOT_ACQUIRED",
+    "maximum_pair_conditional_moment_reference_residual": 1.1177560914896358e-06,
+    "maximum_same_cell_conditional_moment_reference_residual": 1.6041979170824565e-06,
+    "maximum_raw_C0_projection_relative": 4.010611579730039e-06,
+    "analytic_JVP_relative_residual": 5.2050230667387146e-08,
     "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
     "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
     "fallbacks": [
       "SymPy exact identities",
-      "mpmath 90-100 decimal references",
-      "SciPy positive quadrature and Faddeeva reference"
+      "mpmath 80-decimal references",
+      "SciPy positive quadrature and constants"
     ]
   },
   "known_limitations": [
-    "The v0.50 production window is scalar elastic Ly-alpha transport for |x|<=21.25 below the Lyman limit; a global above-ionization photon-frequency branch is not claimed.",
-    "Raman production channels are not included.",
-    "Only the unresolved 2p pole carries natural width in this bounded release window.",
-    "The unresolved Rydberg tail is a positive two-moment closure after explicit bound states through n=512, not a pointwise representation of every omitted resonance.",
-    "Velocity/length gauge equivalence is audited in the fixed-nucleus, zero-width limit; finite recoil is audited by PT reciprocity rather than a full relativistic gauge proof.",
-    "Exterior-exterior collisions remain assigned to the boundary/Liouville module.",
-    "PR-02 stress occupations are collision-substep regression fields, not coupled Liouville plus recombination solutions.",
-    "The all-11 automated background sweep remains assigned to PR-10."
+    "The official October-2012 original-HyRec archive bytes and SHA-256 were not acquired; PR-04 native archive parity remains open.",
+    "The v0.51 common measure covers the 17 interior cells |x|<=4.25; exterior transport remains in the Liouville/boundary module.",
+    "Native HYREC-2 Aup/Adn rates are diagnostic until the virtual-state/escape map is derived; direct substitution and fitted normalization are forbidden.",
+    "Same-cell Gamma counts active frequency-changing events and excludes the coherent zero-transfer identity.",
+    "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
+    "The geometry firewall is a common-local-state API regression, not the all-11 automated trajectory sweep.",
+    "Wolfram and Precise Special Functions plugins were not exposed in this runtime."
   ],
   "remote_sync": {
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
     "remote_ref_verified": false,
     "remote_tree_match": false,
-    "reason": "This runtime exposed neither a writable/readable GitHub connector function nor a working Git SSH/HTTPS route; remote refs remain unverified."
+    "push_policy": "OWNER_PUSHES_LOCALLY",
+    "reason": "The execution sandbox does not provide a working GitHub write path. The owner will fetch, apply, test, push and create PRs from the local Ubuntu workstation."
   },
   "remote_repository_status": {
-    "owner_report": "v0.47 content merged into private main on 2026-08-05",
-    "runtime_verification": "UNAVAILABLE_CONNECTOR_AND_GIT_NETWORK",
     "exact_remote_main_sha": null,
+    "runtime_verification": "NOT_ATTEMPTED_AS_WRITE; CONFIGURED_ORIGIN_IS_INPUT_BUNDLE",
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-    "local_v047_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-    "local_v049_parent_commit": "721f792736eaddc7ec6951f99332c44c70b039bf",
-    "local_v049_parent_tree": "9d85bcb5a20e7b89017b0cbf4911e3b1f5c61fa5",
-    "policy": "Export cumulative v0.47-to-v0.50 and incremental v0.49-to-v0.50 binary-safe patches plus a standalone full bundle; apply on a feature branch after fetching remote main."
+    "local_v050_parent_commit": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+    "policy": "Export cumulative declared-base-to-v0.51 and incremental v0.50-to-v0.51 binary-safe patches plus a standalone full bundle. The owner must fetch remote main and apply on a feature branch without force-push."
   }
 }

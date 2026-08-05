@@ -1,0 +1,148 @@
+{
+  "classification": "PR04A_HYREC_COMMON_MEASURE_CORE",
+  "stage": "PR-04A/v0.51",
+  "status": "PASS_PR04A_COMMON_MEASURE_CORE_PR04B_ORIGINAL_HYREC_ARCHIVE_OPEN",
+  "source": {
+    "v050_data": {
+      "path": "data/full_scalar_com_khw_v050.npz",
+      "sha256": "14f0810adf35221eca4861481557baa55da9ada85c3dfc503262ef356e2a615d"
+    },
+    "background_snapshots": {
+      "path": "data/pr01c_background_snapshots_v048.npz",
+      "sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c"
+    },
+    "hyrec2_source_contract": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B0_HYREC2_source_lock_v0_26/hyrec2_data_contract.json",
+      "sha256": "9625074ce3c6690d1b13904e82f15d452be1304e8d032b771ca3e01ef42057ed"
+    },
+    "hyrec2_source_evidence": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B0_HYREC2_source_lock_v0_26/hyrec2_source_evidence.csv",
+      "sha256": "e39ce06b7d9b685271cb1e0c12b7802d9b989908ca5ea13b828b6d08d385a869"
+    },
+    "native_diffusion_csv": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27/diffusion_detailed_balance.csv",
+      "sha256": "a2dabdedc2faa26f4d6588db83423c5df41db166edf8585121ed5ca2024467ac"
+    },
+    "native_sparse_snapshot": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27/native_sparse_block_snapshot.npz",
+      "sha256": "4377f05651545bbcca242f8a525fe602c38c3978262045d8acc3fc95145f5a53"
+    },
+    "substitution_firewall": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B2A_substitution_audit_v0_28/SUBSTITUTION_FIREWALL.md",
+      "sha256": "6c977fa78ed38ca6c9c136e383785d7f67c100ad5715c8567ce0f98808becc8c"
+    }
+  },
+  "conventions": {
+    "metric": "(-,+,+,+)",
+    "frequency": "ordinary nu in Hz",
+    "delta_nu": "nu_target - nu_source",
+    "constants": "c,h,k_B explicit",
+    "background_scope": "homogeneous Bianchi background; local hydrogen tetrad"
+  },
+  "common_measure": {
+    "states": 17,
+    "offdiagonal_pairs": 136,
+    "same_cell_active_jump_cells": 17,
+    "orders": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "units": "m^-3 s^-1 Hz^r",
+    "source_conditioned_units": "Hz^r s^-1",
+    "normalization": "v0.50 durable C0 plus direct conditional moment ratios; no HYREC fit"
+  },
+  "hard_results": {
+    "core_states": 17,
+    "offdiagonal_pairs": 136,
+    "same_cell_active_jump_cells": 17,
+    "maximum_raw_C0_projection_relative": 4.010611579730039e-06,
+    "durable_C0_reproduction_max_abs_m3_sInv": 0.0,
+    "maximum_exchange_parity_relative": 0.0,
+    "minimum_C0_m3_sInv": 7.681738780983075e-09,
+    "minimum_M2_common_x": 2.8534742975013766e-07,
+    "minimum_M4_common_x": 2.6345141523333563e-08,
+    "minimum_source_M2_Hz2_sInv": 9.151160666763736e+16,
+    "minimum_source_M4_Hz4_sInv": 3.074182409388243e+39,
+    "pair_conditional_moment_reference_max_relative": 1.1177560914896358e-06,
+    "same_cell_conditional_moment_reference_max_relative": 1.6041979170824565e-06,
+    "BE_relative_null": 0.0,
+    "stress_number_relative": 7.472791093598188e-17,
+    "stress_free_energy_production_m3_s": -4465589314720036.5,
+    "stress_energy_ledger_residual_W_m3": 0.0,
+    "JVP_relative_residual": 5.2050230667387146e-08,
+    "JVP_number_residual_m3_s": 0.21881866455078125,
+    "implicit_residual_relative": 2.8369754871856005e-13,
+    "implicit_minimum_occupation": 0.0675128311006439,
+    "explicit_trial_minimum": -0.015900953016155572,
+    "implicit_number_relative_change": 3.947490440390361e-14,
+    "implicit_free_energy_change_m3": -2.281505816785715e+16,
+    "native_detailed_balance_max_abs": 2.710505431213761e-20,
+    "native_core_voronoi_cell_count": 3,
+    "geometry_microphysics_max_difference": 0.0,
+    "TRK_residual": 0.0,
+    "static_polarizability_residual_a0_cubed": 0.0,
+    "minimum_oscillator_weight": 1.786149164701465e-22,
+    "mpmath_BE_pair_residual": 0.0,
+    "pair_production_elapsed_s": 0.041007041931152344,
+    "same_production_elapsed_s": 0.018244028091430664,
+    "reference_elapsed_s": 0.03588604927062988,
+    "total_stage_elapsed_s": 0.29285621643066406
+  },
+  "hard_gate_status": {
+    "HYREC2_exact_commit_and_blob_lock": true,
+    "HYREC2_native_registry_dimensions": true,
+    "ordinary_frequency_and_sign_lock": true,
+    "no_fitted_HYREC_normalization": true,
+    "v050_offdiagonal_C0_exact_reproduction": true,
+    "raw_C0_quadrature_projection_small": true,
+    "exchange_parity": true,
+    "positive_even_common_moments": true,
+    "positive_source_M2_M4": true,
+    "pair_conditional_moment_reference": true,
+    "same_cell_conditional_moment_reference": true,
+    "Bose_Einstein_null": true,
+    "photon_number": true,
+    "free_energy_dissipation": true,
+    "same_event_energy_ledger": true,
+    "analytic_JVP": true,
+    "JVP_number_and_energy": true,
+    "implicit_convergence": true,
+    "implicit_strict_positivity": true,
+    "implicit_number_and_free_energy": true,
+    "native_detailed_balance_source_snapshot": true,
+    "positive_bound_continuum_measure": true,
+    "geometry_to_microphysics_firewall": true,
+    "symbolic_exact_identities": true,
+    "high_precision_BE_reference": true,
+    "original_HyRec_archive_gate_explicitly_open": true,
+    "raw_native_rates_not_substituted": true
+  },
+  "decision": {
+    "PR04A": "PASS",
+    "PR04": "IN_PROGRESS",
+    "original_HyRec_archive_parity": "OPEN_FAIL_CLOSED",
+    "native_raw_rate_substitution": "FORBIDDEN",
+    "next_stage": "PR-04B original-HyRec archive and native primitive common-measure parity"
+  },
+  "limitations": [
+    "The October-2012 original HyRec archive bytes and SHA-256 were not acquired in this runtime; full native-archive parity is not claimed.",
+    "The 80-bin HYREC Aup/Adn arrays are diagnostic primitive rates inside an escape-compressed Schur system, not direct per-source COM-KHW rates.",
+    "The common-measure release covers the 17 interior cells |x|<=4.25; exterior transport remains in the PR-01 Liouville/boundary module.",
+    "Same-cell Gamma records active frequency-changing events only; the coherent zero-transfer identity is excluded.",
+    "This stage is scalar elastic and does not add Raman, polarization, fine structure, J-state interference or atomic alignment.",
+    "Geometry firewall tests API independence at a common local hydrogen-frame state; all-11 trajectory integration remains later roadmap work."
+  ],
+  "next_stage": {
+    "name": "PR-04B original-HyRec archive and native primitive parity",
+    "entry_gate": "OWNER_OR_NETWORK_SUPPLIED_EXACT_OCTOBER_2012_ARCHIVE",
+    "tasks": [
+      "Acquire and SHA-256 lock the official October-2012 original HyRec archive and compile its full radiative-transfer lane.",
+      "Map the original native radiation variable, bin centres/edges, time derivative and primitive diffusion stencil to the v0.51 common measure without a fitted scale.",
+      "Resolve the virtual-state/escape compression map and compare direct event, native primitive and Schur-reduced moments on one common measure.",
+      "Close native normalization, detailed-balance, recoil-energy, Jacobian and FLRW snapshot parity before promoting PR-04 to complete."
+    ]
+  }
+}

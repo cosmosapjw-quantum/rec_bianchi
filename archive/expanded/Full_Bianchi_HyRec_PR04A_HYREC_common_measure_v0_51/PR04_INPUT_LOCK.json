@@ -1,0 +1,113 @@
+{
+  "classification": "PR04_HYREC_COMMON_MEASURE_SOURCE_LOCK",
+  "common_measure": {
+    "C_r_units": "m^-3 s^-1 Hz^r",
+    "Gamma": "M_0 active redistributive rate; coherent identity excluded",
+    "normalization_policy": "PR03 durable C0 mass plus direct conditional moment ratios; no HYREC fit",
+    "source_conditioned_M_r_units": "Hz^r s^-1"
+  },
+  "created_at_utc": "2026-08-05T09:19:28.960641+00:00",
+  "evidence": {
+    "background_snapshots": {
+      "path": "data/pr01c_background_snapshots_v048.npz",
+      "sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c"
+    },
+    "hyrec2_source_contract": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B0_HYREC2_source_lock_v0_26/hyrec2_data_contract.json",
+      "sha256": "9625074ce3c6690d1b13904e82f15d452be1304e8d032b771ca3e01ef42057ed"
+    },
+    "hyrec2_source_evidence": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B0_HYREC2_source_lock_v0_26/hyrec2_source_evidence.csv",
+      "sha256": "e39ce06b7d9b685271cb1e0c12b7802d9b989908ca5ea13b828b6d08d385a869"
+    },
+    "native_diffusion_csv": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27/diffusion_detailed_balance.csv",
+      "sha256": "a2dabdedc2faa26f4d6588db83423c5df41db166edf8585121ed5ca2024467ac"
+    },
+    "native_sparse_snapshot": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27/native_sparse_block_snapshot.npz",
+      "sha256": "4377f05651545bbcca242f8a525fe602c38c3978262045d8acc3fc95145f5a53"
+    },
+    "substitution_firewall": {
+      "path": "archive/expanded/Full_Bianchi_HyRec_C3B2A_substitution_audit_v0_28/SUBSTITUTION_FIREWALL.md",
+      "sha256": "6c977fa78ed38ca6c9c136e383785d7f67c100ad5715c8567ce0f98808becc8c"
+    },
+    "v050_data": {
+      "path": "data/full_scalar_com_khw_v050.npz",
+      "sha256": "14f0810adf35221eca4861481557baa55da9ada85c3dfc503262ef356e2a615d"
+    }
+  },
+  "frequency_convention": {
+    "atomic_recoil_increment": "Delta_E_atom = -h Delta_nu",
+    "coordinate": "ordinary frequency nu",
+    "energy_increment": "Delta_E_gamma = h Delta_nu",
+    "increment": "Delta_nu = nu_target - nu_source",
+    "unit": "Hz"
+  },
+  "hyrec2": {
+    "blob_sha1": {
+      "Alpha_inf.dat": "75b551fa1059984065d1569ee9c6ce654e2f058f",
+      "R_inf.dat": "220d432db0bc763157202db8001819460d5638c3",
+      "hydrogen.c": "233f174bfb1758fa910866310340ae1bfad703db",
+      "hydrogen.h": "088b34a699efe5d6d3aefb158229e9fb83d9a586",
+      "two_photon_tables.dat": "df04635e8fd5ed03481547a7967a14030d90a79b"
+    },
+    "commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+    "landmarks": {
+      "NDIFF": 80,
+      "NSUBLYA": 140,
+      "NVIRT": 311,
+      "diffusion_zero_based": [
+        100,
+        179
+      ]
+    },
+    "native_state": "(2s,2p)+311 virtual photon states",
+    "repository": "nanoomlee/HYREC-2",
+    "role": "exact pinned FULL-mode operator/convention source and later production-parity target; SWIFT corrections are not the anisotropic kernel"
+  },
+  "hyrec_original": {
+    "archive_bytes_or_sha256": "NOT_RETRIEVED_IN_NETWORK_ISOLATED_RUNTIME",
+    "release": "October 2012 stable version listed by the official HyRec page",
+    "role": "historical full time-dependent radiative-transfer reference",
+    "status": "REFERENCE_ONLY_NOT_A_PR04_EXECUTION_DEPENDENCY"
+  },
+  "native_HYREC2_units": {
+    "effective_recombination": "cm^3 s^-1",
+    "effective_transfer_and_virtual_rates": "s^-1 or per-bin s^-1",
+    "temperature": "eV internally",
+    "virtual_energy": "eV"
+  },
+  "native_frequency_measure": {
+    "core_voronoi_cell_count_after_line_centre_split": 3,
+    "diffusion_centres": 80,
+    "diffusion_zero_based_indices": [
+      100,
+      179
+    ],
+    "status": "SOURCE_LOCKED_DIAGNOSTIC_ONLY",
+    "virtual_state_energy_coordinate": "E_b in eV, converted by nu=E_b/h"
+  },
+  "native_rate_firewall": {
+    "next_resolution": "PR05 RadiationFeedback/native virtual-state adapter",
+    "reason": "Aup/Adn populate the virtual-state T matrix and escape-compressed diagonal; they are not direct photon per-source rates",
+    "status": "RAW_RATE_DIRECT_EQUALITY_REJECTED_BY_VARIABLE_MISMATCH"
+  },
+  "original_hyrec_archive_gate": {
+    "October_2012_archive_bytes": "NOT_ACQUIRED_IN_THIS_RUNTIME",
+    "October_2012_archive_sha256": null,
+    "official_release_existence": "VERIFIED_BY_OFFICIAL_HYREC_PAGE",
+    "status": "OPEN_FAIL_CLOSED_FOR_NATIVE_ARCHIVE_PARITY"
+  },
+  "stage": "PR-04A/v0.51",
+  "tool_status": {
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact algebra",
+      "mpmath 80-decimal references",
+      "SciPy positive quadrature and constants"
+    ],
+    "web_search": "USED_FOR_OFFICIAL_HYREC_AND_PRIMARY_PAPERS"
+  }
+}

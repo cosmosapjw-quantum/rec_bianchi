@@ -4,8 +4,8 @@ Treat the session as **RUNTIME_INTERRUPTION_RECOVERY**, not as a normal conversa
 
 Repository: `git@github.com:cosmosapjw-quantum/rec_bianchi.git`
 Durable state date: `2026-08-05`
-Current stage: **PR-02 / v0.49 — nonlinear anisotropic Bose production integration PASS; PR-01 and PR-02 COMPLETE**
-Next bounded task: **PR-03 full scalar COM–KHW amplitude**.
+Current stage: **PR-04A / v0.51 — HYREC-2 source/convention lock and 17-cell common-measure core PASS; PR-04 IN PROGRESS**
+Next bounded task: **PR-04B original-HyRec archive and native primitive common-measure parity**.
 
 ## Required recovery order
 
@@ -24,26 +24,28 @@ Next bounded task: **PR-03 full scalar COM–KHW amplitude**.
    - `docs/CURRENT_STATE.md`
    - `docs/ROADMAP_12PR.md`
    - `docs/GITHUB_PRIVATE_REPO_ACCESS.md`
-   - `archive/expanded/Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49/PR02_ledger.json`
-   - `archive/expanded/Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49/PR02_NONLINEAR_BOSE_RUNTIME_FORMALISM.md`
-   - `archive/expanded/Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48/PR01C_ledger.json`
-   - `archive/expanded/Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48/PR01C_FRAME_ADAPTER_FORMALISM.md`
-3. Do not use transcript claims as evidence. Use Git state, files, hashes, ledgers and tests. The owner reports v0.47 merged remotely, but the exact remote merge SHA remains unverified in this connector-less/network-isolated runtime.
-4. Preserve conventions: metric `(-,+,+,+)`; keep `c`, `h`, and `k_B`; homogeneous background only; tetrad + 1+3; all 11 Bianchi types; finite tilt; nonlinear large shear.
-5. Do not revive superseded routes listed in `state/SUPERSESSION_LEDGER.json`.
-6. PR-01 and PR-02 are complete. Their architecture is fixed:
-   - local scalar atomic/collision microphysics is Bianchi-type independent;
-   - Bianchi geometry enters through `BackgroundSnapshot` characteristics;
-   - every boundary-speed zero is localized inside the timestep;
-   - adaptive angular policies remain `L=12` finite/mixed tilt, `L=20` nonlinear even shear, `L=24` directional crossing;
-   - the nonlinear runtime uses the activity-reference-subtracted v0.47 action, exact JVP, and a log-occupation backward-Euler update;
-   - photon and atom four-force contributions are opposite parts of the same event and close in hydrogen and normal frames.
-7. Current PR-03 task:
-   - replace the provisional unresolved scalar `2p` pole+crossed amplitude with the complete scalar bound-plus-continuum COM–KHW construction;
-   - include seagull and interference terms with explicit gauge, reciprocity, normalization, ultraviolet and infrared audits;
-   - regenerate pair-conductance moments without changing the PR-01 frame adapter or PR-02 nonlinear runtime API;
-   - rerun BE, number, entropy/free-energy, positivity, exact-JVP, branch-event and total four-force regressions;
-   - retain a clearly separated provisional/reference lane until complete-amplitude parity is demonstrated.
-8. Use web search for current/niche literature; Wolfram for symbolic identities; Precise Special Functions for independent high-precision references when those tools are exposed. Record any unavailable connector and use an explicit independent fallback rather than claiming it ran.
-9. Every bounded stage must produce implementation, tests, formalism, ledger, CSV/NPZ evidence, SHA-256 manifest, ZIP bundle, Git commit, remote-check receipt and binary-safe patch export.
-10. Never force-push shared history. If remote `main` has diverged or used a squash merge, fetch it, apply the raw patch or import the standalone bundle on a feature branch, and create a PR.
+   - `archive/expanded/Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51/PR04A_ledger.json`
+   - `archive/expanded/Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51/PR04_INPUT_LOCK.json`
+   - `archive/expanded/Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51/PR04A_COMMON_MEASURE_FORMALISM.md`
+   - `archive/expanded/Full_Bianchi_HyRec_C3B0_HYREC2_source_lock_v0_26/C3B0_SOURCE_LOCK.md`
+   - `archive/expanded/Full_Bianchi_HyRec_C3B1_native_sparse_block_v0_27/C3B1_ledger.json`
+3. Do not use transcript claims as evidence. Use Git state, files, hashes, ledgers and tests. The owner performs remote fetch/push/PR locally; this runtime must not claim remote synchronization without a durable remote receipt.
+4. Preserve conventions: metric `(-,+,+,+)`; keep `c`, `h`, and `k_B`; ordinary frequency `nu` in Hz; `Delta nu=nu_target-nu_source`; homogeneous background only; tetrad + 1+3; all 11 Bianchi types; finite tilt; nonlinear large shear.
+5. Do not revive superseded routes listed in `state/SUPERSESSION_LEDGER.json`. In particular, do not directly substitute the completed HYREC `Tvv` block or fit a free normalization to match HyRec output.
+6. PR-01 through PR-03 are complete. PR-04A is fixed:
+   - the accepted v0.50 off-diagonal `C0` pair mass is reproduced exactly;
+   - `M1`–`M4` are conditional moments of the same positive COM–KHW event measure;
+   - `S^(r)_ji=(-1)^r S^(r)_ij`;
+   - `[S^(r)]=m^-3 s^-1 Hz^r`, `[Gamma]=s^-1`, `[M_r]=Hz^r s^-1`;
+   - local common-measure microphysics has no Bianchi-type argument;
+   - native HYREC-2 `Aup/Adn` arrays remain diagnostic until the virtual-state/escape map is derived.
+7. Current PR-04B task:
+   - acquire the official October-2012 original-HyRec archive and record exact bytes, SHA-256, file inventory and build receipt;
+   - identify the native radiation variable, frequency/bin measure, coefficient dimensions, time derivative, diffusion sign, recoil term, and stimulated factors from source;
+   - derive the original native primitive-to-common-measure map with no fitted scale;
+   - compare direct v0.51 event moments, native primitive moments and Schur-reduced moments;
+   - close normalization, detailed balance, recoil energy, positivity, analytic/JVP Jacobian, and one FLRW snapshot parity gate;
+   - keep PR-04 incomplete if the archive or any native normalization identity remains unavailable.
+8. Use web search for current/niche literature. Use Wolfram and Precise Special Functions when exposed; otherwise record `UNAVAILABLE_IN_RUNTIME` and use explicit independent SymPy/mpmath/SciPy fallbacks rather than claiming a plugin ran.
+9. Every bounded stage must produce implementation, tests, formalism, ledger, CSV/NPZ evidence, SHA-256 manifest, immutable ZIP, Git commits, remote-check receipt and binary-safe patch export.
+10. Never force-push shared history. Export an incremental v0.50-to-current patch, a cumulative declared-base patch, and a standalone bundle. The owner will fetch remote `main`, apply on a feature branch, run tests, push, and open the PR locally.

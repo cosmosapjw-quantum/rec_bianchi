@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -65,11 +66,85 @@ def main() -> None:
         if result.returncode:
             raise SystemExit(result.returncode)
 
-    if args.all or args.scientific:
-        command = [sys.executable, "-m", "pytest", "-q"]
-        if not args.scientific:
-            command += ["-m", "not slow"]
-        result = subprocess.run(command, cwd=ROOT)
+    scientific_slow_files: list[str] = []
+    scientific_env = os.environ.copy()
+    for variable in (
+        "OPENBLAS_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "NUMEXPR_NUM_THREADS",
+        "VECLIB_MAXIMUM_THREADS",
+        "BLIS_NUM_THREADS",
+    ):
+        scientific_env[variable] = "1"
+    if args.scientific:
+        # Run the fast and slow lanes in separate Python processes.  Several
+        # quadrature modules intentionally retain large numerical caches;
+        # carrying every fast-test cache into the legacy slow suite can make
+        # the result order-dependent and needlessly expensive.  File-level
+        # isolation preserves complete test coverage while making a fresh-clone
+        # scientific audit reproducible.
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
+            cwd=ROOT,
+            env=scientific_env,
+            timeout=300,
+        )
+        if result.returncode:
+            raise SystemExit(result.returncode)
+
+        collection = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--collect-only",
+                "-q",
+                "-m",
+                "slow",
+            ],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+            env=scientific_env,
+            timeout=120,
+        )
+        if collection.returncode:
+            sys.stderr.write(collection.stdout)
+            sys.stderr.write(collection.stderr)
+            raise SystemExit(collection.returncode)
+        for line in collection.stdout.splitlines():
+            node_id = line.strip()
+            if "::" not in node_id:
+                continue
+            test_file = node_id.split("::", 1)[0]
+            if test_file not in scientific_slow_files:
+                scientific_slow_files.append(test_file)
+        assert scientific_slow_files, "scientific mode found no slow tests"
+
+        for test_file in scientific_slow_files:
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "pytest",
+                    "-q",
+                    "-m",
+                    "slow",
+                    test_file,
+                ],
+                cwd=ROOT,
+                env=scientific_env,
+                timeout=300,
+            )
+            if result.returncode:
+                raise SystemExit(result.returncode)
+    elif args.all:
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
+            cwd=ROOT,
+        )
         if result.returncode:
             raise SystemExit(result.returncode)
 
@@ -81,6 +156,7 @@ def main() -> None:
                 "bundle_count": len(index),
                 "current_artifact": current_artifact,
                 "mode": mode,
+                "scientific_slow_file_count": len(scientific_slow_files),
             }
         )
     )
