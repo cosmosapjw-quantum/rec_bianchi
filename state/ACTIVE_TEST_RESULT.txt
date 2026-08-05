@@ -1,40 +1,26 @@
 === timestamp_utc ===
-2026-08-05T09:30:45Z
+2026-08-05T09:39:47.384712+00:00
 === git_payload ===
 work/pr04-hyrec-common-measure-v051
-aec113b7c06b007a662b4b3d98539bd5b1e6158b
-4b45b4c71ed0f6f047026ff16dd9a970b06e82d6
- M state/ACTIVE_TEST_RESULT.txt
- M state/REMOTE_CHECK_LATEST.json
-?? state/PR04_RECOVERY_COMMANDS_INITIAL.log
-?? state/PR04_RECOVERY_REQUIRED_READ.log
-=== offline_bootstrap ===
-offline recovery: using dependency-complete base interpreter python3
-dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
-PR-04A HYREC common-measure core: PASS; PR-04B original archive parity OPEN
-{"status": "PASS", "bundle_count": 51, "current_artifact": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51", "mode": "quick"}
-
-Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
-=== pr04a_artifact ===
-PR-04A HYREC common-measure core: PASS; PR-04B original archive parity OPEN
-=== quick_verifier ===
-PR-04A HYREC common-measure core: PASS; PR-04B original archive parity OPEN
-{"status": "PASS", "bundle_count": 51, "current_artifact": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51", "mode": "quick"}
-=== pytest_fast ===
-........................................................................ [ 85%]
-............                                                             [100%]
-84 passed, 22 deselected in 11.95s
-=== pr04a_full_test_file_thread_locked ===
-...........                                                              [100%]
-11 passed in 14.40s
-=== all_verifier ===
-PR-04A HYREC common-measure core: PASS; PR-04B original archive parity OPEN
-........................................................................ [ 85%]
-............                                                             [100%]
-84 passed, 22 deselected in 14.10s
-{"status": "PASS", "bundle_count": 51, "current_artifact": "Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51", "mode": "all"}
-=== diff_compile_zip_fsck_secret ===
+ba0725e8d76ac79eeed281f4352a17a390f82a12
+a8a0f6a9d53db66fe380b361f71508e2d5b2f758
+=== recovery_and_artifact ===
+offline bootstrap: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+PR-04A immutable artifact verifier: PASS; PR-04B archive parity OPEN
+repository quick verifier: PASS; bundle_count=51
+=== tests ===
+fast pytest: 85 passed, 22 deselected in 14.16s
+PR-04A complete test file with BLAS thread lock: 11 passed in 15.54s
+durable repository-relative artifact path regression: 1 passed in 0.29s
+recoil bridge slow regression: 3 passed in 12.93s
+repository all verifier: PASS; 85 passed, 22 deselected in 12.57s
+=== integrity ===
+git diff --check: PASS
 py_compile: PASS
 artifact zip integrity: PASS
 secret scan: PASS
-git fsck: PASS
+git fsck --full: PASS
+=== portability_repair ===
+recoil_bridge default v0.32/v0.33 artifact paths are repository-relative; no hard-coded /mnt/data dependency remains in executable source.
+=== worktree_before_receipt_commit ===
+clean

@@ -1,10 +1,10 @@
 {
   "classification": "PR04A_RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
-  "generated_utc": "2026-08-05T09:33:33.575334+00:00",
+  "generated_utc": "2026-08-05T09:39:47.384712+00:00",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "branch": "work/pr04-hyrec-common-measure-v051",
-  "payload_head": "aec113b7c06b007a662b4b3d98539bd5b1e6158b",
-  "payload_tree": "4b45b4c71ed0f6f047026ff16dd9a970b06e82d6",
+  "payload_head": "ba0725e8d76ac79eeed281f4352a17a390f82a12",
+  "payload_tree": "a8a0f6a9d53db66fe380b361f71508e2d5b2f758",
   "recovery_classification": {
     "incoming_PR03_v050": "DURABLE_VERIFIED_FROM_COMPLETE_GIT_BUNDLE",
     "PR04A_v051": "RECONSTRUCTED_DURABLE_VERIFIED",
@@ -65,7 +65,8 @@
     "normalization": "exact durable v0.50 C0 and direct same-event conditional moments; no HyRec fit",
     "hyrec2_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
     "hyrec2_native_representation": "(2s,2p)+311 virtual states; diffusion indices 100..179",
-    "original_hyrec_archive": "OPEN_NOT_ACQUIRED_FAIL_CLOSED"
+    "original_hyrec_archive": "OPEN_NOT_ACQUIRED_FAIL_CLOSED",
+    "durability_repair": "v0.32/v0.33 recoil bridge defaults resolve under repository archive/expanded, not hard-coded /mnt/data paths"
   },
   "hard_results": {
     "core_states": 17,
@@ -137,15 +138,17 @@
     "offline_bootstrap": "PASS",
     "artifact_verifier": "PASS",
     "quick_verify": "PASS",
-    "fast_pytest": "84 passed, 22 deselected in 11.95s",
-    "PR04A_test_file": "11 passed in 14.40s with BLAS thread lock",
-    "all_verify": "PASS; 84 passed, 22 deselected in 14.10s",
+    "fast_pytest": "85 passed, 22 deselected in 14.16s",
+    "PR04A_test_file": "11 passed in 15.54s with BLAS thread lock",
+    "all_verify": "PASS; 85 passed, 22 deselected in 12.57s",
     "py_compile": "PASS",
     "artifact_zip_integrity": "PASS",
     "git_fsck_full": "PASS",
     "secret_scan": "PASS",
-    "active_test_result_sha256": "0b906d0c5cccefa7a6958771c03b88749526332cc459d6a3f537d405311e7986",
-    "note": "One aggregate container tool invocation reached its wrapper timeout after launching child checks; the checks were rerun individually with explicit timeouts and the durable log records the passing results."
+    "active_test_result_sha256": "b4c43815f887e6db69e4f67f25251c0543dcd97ba671dc90482876762c4aeef3",
+    "note": "One aggregate container tool invocation reached its wrapper timeout after launching child checks; the checks were rerun individually with explicit timeouts and the durable log records the passing results.",
+    "durable_artifact_path_regression": "1 passed in 0.29s",
+    "recoil_bridge_slow_regression": "3 passed in 12.93s"
   },
   "tools": {
     "web_search": "USED_WITH_OFFICIAL_HYREC_PAGE_AND_PRIMARY_ARXIV_PAPERS",
@@ -191,5 +194,23 @@
       "Resolve the virtual-state/escape compression map and compare direct event, native primitive and Schur-reduced moments on one common measure.",
       "Close native normalization, detailed-balance, recoil-energy, Jacobian and FLRW snapshot parity before promoting PR-04 to complete."
     ]
-  }
+  },
+  "commits_after_v050": [
+    {
+      "sha": "9cbf7de",
+      "subject": "feat(recoil): close PR04A HYREC common-measure core"
+    },
+    {
+      "sha": "aec113b",
+      "subject": "docs(recovery): record PR04A and hand off PR04B"
+    },
+    {
+      "sha": "b19aea4",
+      "subject": "chore(recovery): record v0.51 verification receipts"
+    },
+    {
+      "sha": "ba0725e",
+      "subject": "fix(recovery): make recoil bridge artifacts repository-relative"
+    }
+  ]
 }
