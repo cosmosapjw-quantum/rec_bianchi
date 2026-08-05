@@ -1,0 +1,127 @@
+{
+  "classification": "PR04B2B_NATIVE_COMMON_PARTITION_IDENTIFIABILITY",
+  "stage": "PR-04B2B",
+  "version": "0.54",
+  "status": "PASS_PR04B2B_IDENTIFIABILITY_NO_GO_PR04C_OPEN",
+  "scope": {
+    "closed": [
+      "canonical production/high-resolution table byte and grid census",
+      "non-nested lane proof",
+      "absence of explicit numerical source-cell boundaries in canonical runtime tables",
+      "positive-support no-go for full native measure on the 17-cell core",
+      "rank/nullity and constructive positive non-uniqueness proof",
+      "fail-closed disposition of multi-snapshot direct parity"
+    ],
+    "open": [
+      "split-domain conservative native/COM-KHW exchange contract",
+      "multi-snapshot z~1300,1100,900 exchange-ledger parity",
+      "PR-05 primitive operator/background interface",
+      "PR-06 monolithic FLRW parity"
+    ]
+  },
+  "metrics": {
+    "production_exact_highres_centre_matches": 0,
+    "nearest_centre_difference_min_eV": 1.0000000010279564e-06,
+    "nearest_centre_difference_median_eV": 0.0005179999999995744,
+    "nearest_centre_difference_max_eV": 0.044412600000000246,
+    "production_diffusion_centres_inside_core": 2,
+    "high_resolution_diffusion_centres_inside_core": 2,
+    "full_native_normalized_second_moment_x2": 134470774.9773356,
+    "diffusion_native_normalized_second_moment_x2": 21808.728753005056,
+    "full_native_normalized_second_moment_x2_mp100": "134470774.97733558930778577483743301408294274047465777719626439112101204935829835",
+    "diffusion_native_normalized_second_moment_x2_mp100": "21808.728753005056193668444752100549073821255607188092121239083045637957706635771",
+    "full_mp100_vs_float64_relative_residual": 0.0,
+    "diffusion_mp100_vs_float64_relative_residual": 0.0,
+    "target_support_second_moment_bound_x2": 18.0625,
+    "full_support_violation_factor": 7444748.78767256,
+    "diffusion_support_violation_factor": 1207.4036679864391,
+    "core_mass_fraction_of_full": 0.0017361780045445255,
+    "core_mass_fraction_of_diffusion80": 0.006550012987972702,
+    "target_moment_matrix_rank": 5,
+    "target_moment_matrix_nullity": 12,
+    "positive_witness_minimum_weight": 0.047058823529411764,
+    "positive_witness_moment_residual": 1.4210854715202004e-14,
+    "positive_witness_L1_separation": 0.0627429665766292,
+    "core_centre_basis_feasible": false,
+    "core_uniform_basis_feasible": false,
+    "snapshot_z": 1099.9986525171403,
+    "v051_temperature_K": 3000.0
+  },
+  "hard_gate_status": {
+    "canonical_archive_byte_lock": true,
+    "production_table_hash_shape": true,
+    "high_resolution_table_hash_shape": true,
+    "separate_non_nested_lanes": true,
+    "source_table_format_audited": true,
+    "source_configuration_lock": true,
+    "no_archive_table_generator_or_write_path": true,
+    "production_core_overlap_count": true,
+    "high_resolution_core_overlap_count": true,
+    "full_positive_support_no_go": true,
+    "diffusion_positive_support_no_go": true,
+    "mp100_support_reference": true,
+    "core_restriction_not_mass_conservative": true,
+    "moment_rank_exact": true,
+    "moment_nullity_exact": true,
+    "positive_nonuniqueness_witness": true,
+    "centre_closure_not_false_positive": true,
+    "uniform_closure_not_false_positive": true,
+    "no_free_normalization": true,
+    "coding_harness_validation": true,
+    "research_harness_validation": true,
+    "trajectory_claim_fail_closed": true
+  },
+  "decision": {
+    "PR04B2B": "PASS_NO_GO",
+    "PR04": "IN_PROGRESS",
+    "direct_native_to_17_cell_map": "REJECTED_BY_SUPPORT_AND_IDENTIFIABILITY",
+    "high_resolution_silent_substitution": "FORBIDDEN",
+    "arbitrary_regularized_projection": "NOT_CANONICAL",
+    "multi_snapshot_direct_parity": "BLOCKED_NOT_FABRICATED",
+    "next_stage": "PR-04C split-domain conservative exchange contract and multi-snapshot trajectory closure"
+  },
+  "tool_status": {
+    "web_search": {
+      "status": "USED",
+      "primary_sources": [
+        "Ali-Haimoud and Hirata, HyRec, arXiv:1011.3758",
+        "Curto and Fialkow, A duality proof of Tchakaloff's theorem, arXiv:math/0207065"
+      ]
+    },
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact rational rank and null-space proof",
+      "NumPy SVD independent rank and witness",
+      "mpmath 100-digit re-summation from exact binary64 inputs",
+      "SciPy HiGHS nonnegative feasibility controls",
+      "direct canonical ZIP/source/table audit",
+      "durable v0.51 and v0.53 NPZ evidence"
+    ],
+    "GitHub_private_repo_connector": "NOT_EXPOSED_IN_THIS_RUNTIME",
+    "remote_policy": "owner fetches/pushes locally; no live remote claim"
+  },
+  "harnesses": {
+    "classification": "PR04B2B_HARNESS_EXECUTION_RECEIPT",
+    "coding": {
+      "archive": "physmath-coding-harness-gpt56.zip",
+      "sha256": "6e67e999a0c19f6ed9de7c339067cc11691d5cf5cb662a11756d8fc393c849b4",
+      "validator": "tools/validate_harness.py",
+      "exit_code": 0,
+      "passed": true
+    },
+    "research": {
+      "archive": "physmath-research-harness-gpt56.zip",
+      "sha256": "9adde688f8020e7feb2c1c0304b3204dbe70dd01e2d87e64a5c4eb357c019934",
+      "validator": "tools/validate_workspace.py",
+      "exit_code": 0,
+      "passed": true
+    },
+    "research_contract": "docs/PR04B2B_RESEARCH_CONTRACT.md",
+    "evidence_ledger": "docs/PR04B2B_EVIDENCE_LEDGER.md",
+    "hypothesis_audit": "docs/PR04B2B_HYPOTHESIS_AUDIT.md",
+    "validation_matrix": "docs/PR04B2B_VALIDATION_MATRIX.md",
+    "independent_review": "PR04B2B_INDEPENDENT_ADVERSARIAL_REVIEW.md",
+    "next_stage_plan": "docs/PR04C_SPLIT_DOMAIN_EXCHANGE_PLAN.md"
+  }
+}
