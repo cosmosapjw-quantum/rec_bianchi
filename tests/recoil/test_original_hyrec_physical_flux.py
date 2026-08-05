@@ -58,6 +58,22 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+# The toolchain that produced ORIGINAL_HYREC_PORTABLE_BINARY_SHA256, as recorded
+# by the release itself in state/PR04B2A_RECOVERY_INVENTORY.json.
+_PINNED_BINARY_TOOLCHAIN = "gcc (Debian 14.2.0-19) 14.2.0"
+
+
+def _gcc_identity() -> str:
+    """First line of ``gcc --version``, or the empty string if unavailable."""
+    try:
+        result = subprocess.run(
+            ["gcc", "--version"], capture_output=True, text=True, check=True
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return ""
+    return result.stdout.splitlines()[0].strip() if result.stdout else ""
+
+
 @pytest.fixture(scope="module")
 def snapshot():
     return parse_original_hyrec_snapshot_csv(SNAPSHOT)
@@ -261,8 +277,17 @@ def test_guarded_original_hyrec_build_is_source_identical(tmp_path):
             stderr=subprocess.DEVNULL,
             check=True,
         )
-    assert _sha256(canonical) == ORIGINAL_HYREC_PORTABLE_BINARY_SHA256
+    # The numerical output is the scientific guarantee, and it is portable:
+    # identical sources and input reproduce it byte for byte on any toolchain.
     assert _sha256(canonical_output) == ORIGINAL_HYREC_BASELINE_OUTPUT_SHA256
+
+    # The binary hash pins build reproducibility, which only holds on the
+    # toolchain that produced the constant -- gcc 14.2.0, per
+    # state/PR04B2A_RECOVERY_INVENTORY.json. Another gcc emits different bytes
+    # from the same sources, so a mismatch there says nothing about the physics
+    # and must not fail the suite. Assert it only where it can mean something.
+    if _gcc_identity() == _PINNED_BINARY_TOOLCHAIN:
+        assert _sha256(canonical) == ORIGINAL_HYREC_PORTABLE_BINARY_SHA256
 
     subprocess.run(
         [sys.executable, str(INSTRUMENTER), str(source / "hydrogen.c")],
