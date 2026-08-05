@@ -4,9 +4,10 @@ This repository is the durable backup and active reconstruction workspace for th
 
 ## Current state
 
-- Durable stage: **PR-03 / v0.50**.
-- Status: the provisional unresolved scalar `2p` pole+crossed lane has been replaced in production by a scalar elastic `1s -> 1s` COM–KHW construction containing the seagull, both time orderings, the hydrogen bound spectrum, the positive continuum measure, and all scalar interference terms in the locked Ly-alpha window. The complete 35-state network was regenerated through `ell=24`; PR-01 frame adaptation and the PR-02 nonlinear/JVP/implicit APIs remain unchanged. **PR-01 through PR-03 are complete.**
-- Next stage: **PR-04 HYREC common-measure moment projection**.
+- Durable stage: **PR-04A / v0.51**.
+- Status: the exact durable HYREC-2 FULL source/convention registry is locked, and the v0.50 scalar elastic COM–KHW event measure has been projected onto a positive 17-cell ordinary-frequency common measure through `Gamma,M1,...,M4`. The scalar Bose, BE-null, number, free-energy, same-event energy, analytic-JVP, implicit-positivity, and geometry-firewall gates pass. **PR-01 through PR-03 are complete; PR-04 is in progress.**
+- Open source gate: the official October-2012 original-HyRec archive bytes and SHA-256 were not available in this runtime. Native original-HyRec primitive/stencil parity is therefore not claimed.
+- Next bounded stage: **PR-04B original-HyRec archive and native primitive common-measure parity**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
@@ -30,9 +31,9 @@ Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md), [`state/PROJECT_STATE.json`]
 - `docs/`: handoff, setup, roadmap, GitHub access, backup, and recovery instructions.
 - `scripts/`: scientific-stage generation, verification, status, patch, bundle, and safe-push helpers.
 
-## Remote sync status
+## Remote sync policy
 
-The owner reports that v0.47 was expanded and merged into the private GitHub `main`. This runtime has no exposed writable GitHub connector and no working Git SSH/HTTPS route, so the exact remote ref/tree remains unverified. v0.50 is therefore delivered with a cumulative v0.47-to-v0.50 patch, an incremental v0.49-to-v0.50 patch, and a standalone full bundle. Fetch remote `main`, apply on a feature branch, and open a PR; never rewrite shared history. See [`docs/GITHUB_PRIVATE_REPO_ACCESS.md`](docs/GITHUB_PRIVATE_REPO_ACCESS.md).
+The owner performs GitHub fetch/push/PR operations from the local Ubuntu workstation. This execution environment does not claim a remote push. Every stage therefore exports an exact Git bundle and binary-safe incremental/cumulative patches. Fetch remote `main`, create a feature branch, apply the appropriate patch or import the bundle, rerun tests, then push and open a PR. Never rewrite shared history. See [`docs/GITHUB_PRIVATE_REPO_ACCESS.md`](docs/GITHUB_PRIVATE_REPO_ACCESS.md).
 
 ## Publication and license
 
@@ -41,10 +42,10 @@ This repository contains unpublished research and a user-supplied primitive code
 ## Test tiers
 
 - Fast recovery/CI: `pytest -q -m "not slow"`.
+- Full repository verifier with fast tests: `python scripts/verify_repo.py --all`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific`.
-- PR-03 production regeneration: `python scripts/run_pr03_full_scalar_khw_stage.py`.
-- PR-03 audit-only reuse of the stored network: `python scripts/run_pr03_full_scalar_khw_stage.py --reuse-network` (still performs the expensive selected-pair and runtime audits).
-- Original stage bundles retain per-stage full-test receipts.
+- PR-04A production regeneration: `python scripts/run_pr04a_hyrec_common_measure_stage.py --workers 12`.
+- Original stage bundles retain per-stage scientific receipts.
 
 ## Repository checks and patches
 

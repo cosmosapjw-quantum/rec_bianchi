@@ -53,3 +53,5 @@ Exact ZIP releases are immutable canonical snapshots.
 | 47 | `Full_Bianchi_HyRec_PR01B1B3B3B1_far_scalar_release_v0_47.zip` | 126818 | `41f7c103be8944b2040ca47be68fed19de845f18b707f764d329e89bdeb161aa` |
 | 48 | `Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48.zip` | 592121 | `14d792b50a5132689e3e91fafeef5ddb4a87d2ad6791c920de8c777acf59b05a` |
 | 49 | `Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49.zip` | 1980167 | `7ade69a9901a4daca0fc06cd49ba6fb0f464548f2de851a878da7c0f24c8a480` |
+| 50 | `Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50.zip` | 2038554 | `c5b596d7b5e885c66aa673b26cdb9ad4aac30b7d6571cb0c22fde1bf34d54e6e` |
+| 51 | `Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51.zip` | 61151 | `ca60bb0d2177ef50fdcf44635f58e89108b00d9ab37312c813d9e0a15086004e` |
