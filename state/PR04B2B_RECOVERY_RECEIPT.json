@@ -1,0 +1,77 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "stage": "PR-04B2B",
+  "version": "0.54",
+  "date": "2026-08-06",
+  "parent_commit": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+  "parent_tree": "2adb08eb4a1c7889a9791ea34bd4908cb17b422d",
+  "canonical_input": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "bytes": 726954,
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
+    "metadata_policy": "Internal May/October source and ZIP metadata differences are intrinsic to the canonical release."
+  },
+  "recovery_baseline": {
+    "offline_bootstrap": "PASS",
+    "remote_check": "LOCAL_V053_BUNDLE_ONLY_LIVE_GITHUB_UNAVAILABLE",
+    "quick_verifier": "PASS",
+    "v053_fast_tests": "96 passed, 24 deselected"
+  },
+  "reconstructed_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54",
+    "status": "PASS_PR04B2B_IDENTIFIABILITY_NO_GO_PR04C_OPEN",
+    "bundle_sha256": "5a0d9c66d93beb742020d40b8e983f710f41ea12ff1ca8ff74d5c9427ce62bc7",
+    "bundle_bytes": 88095,
+    "runtime_data_sha256": "e91897172afa85a961630de7a9bc99304ea461b147a5fbf9d94c54afc8a610ae",
+    "runtime_data_bytes": 53642
+  },
+  "evidence_policy": "Git state, exact bytes, manifests, canonical source/table audit, exact/high-precision algebra, ledgers and tests only; transcript completion claims excluded.",
+  "remote_policy": "OWNER_PUSHES_LOCALLY; no live remote read, push or PR claimed",
+  "payload": {
+    "branch": "work/pr04b2b-identifiability-nogo-v054",
+    "implementation_commit": "186435903d4222f89d73d3c42429ff656af89a13",
+    "head": "04dd99141450d14d06b82057bbe88e5ea7885866",
+    "tree": "703d5ee0c7b76c05d2793246e5c33a5b09fc22db"
+  },
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_102_FAST",
+    "fast_tests": "102 passed, 24 deselected",
+    "slow_scientific_tests": "24 passed across 8 files and 24 isolated interpreters",
+    "total_test_coverage": "126 passed",
+    "aggregate_scientific_wrapper": "PASS_ON_CLEAN_DETACHED_RERUN",
+    "artifact_verifier": "PASS_NO_GO_PR04C_OPEN",
+    "git_diff_check": "PASS",
+    "py_compile": "PASS_106_TRACKED_PYTHON_FILES",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES",
+    "scientific_receipt": "state/PR04B2B_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_receipt_sha256": "e5890075988cc5bbd3c5914c2ba4b371b91683299d75bb246f768bc596e9c872",
+    "scientific_log_sha256": "f7fc07e01592e3edb40bea9edbe2335a616b75aff6acd5177d4129c1bf2d263a",
+    "preseal_quick_all_log_sha256": "5e3468baf74ba8304c05c014f36a02d793ddf60e8cc6efc403af456e8e61f043"
+  },
+  "scientific_decision": {
+    "positive_global_native_to_17_cell_map": "IMPOSSIBLE_FOR_M0_M2_BY_SUPPORT_BOUND",
+    "moment_only_unique_map": "NOT_IDENTIFIED_RANK_5_NULLITY_12",
+    "direct_parity": "BLOCKED_NOT_FABRICATED",
+    "next_stage": "PR-04C split-domain conservative exchange contract and multi-snapshot closure"
+  },
+  "tool_availability": {
+    "web_search": "USED_PRIMARY_AND_PEER_REVIEWED_SOURCES",
+    "coding_harness": "VALIDATED_AND_USED",
+    "research_harness": "VALIDATED_AND_USED",
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "GitHub_private_repo_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact rational rank/null-space proof",
+      "mpmath 100-digit resummation",
+      "NumPy SVD",
+      "SciPy HiGHS feasibility controls",
+      "direct canonical ZIP/source/table audit"
+    ]
+  },
+  "execution_note": "The first foreground scientific command was interrupted by the outer command runtime after partial progress. A clean detached rerun completed with exit code 0; no threshold was relaxed."
+}

@@ -1,0 +1,53 @@
+=== timestamp_utc ===
+2026-08-05T19:43:24.371517+00:00
+=== stage ===
+PR-04B2B / v0.54 — native/common partition identifiability no-go
+=== payload ===
+branch=work/pr04b2b-identifiability-nogo-v054
+implementation_commit=186435903d4222f89d73d3c42429ff656af89a13
+payload_head=04dd99141450d14d06b82057bbe88e5ea7885866
+payload_tree=703d5ee0c7b76c05d2793246e5c33a5b09fc22db
+=== repository verification ===
+offline bootstrap: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+current immutable artifact verifier: PASS_NO_GO; PR-04C OPEN
+repository quick verifier: PASS; bundle_count=54
+repository all verifier: PASS; 102 passed, 24 deselected
+scientific verifier: PASS; 24 slow tests across 8 files and 24 isolated interpreters
+scientific fast lane: 102 passed, 24 deselected
+total covered tests: 126 passed
+=== PR-04B2B hard results ===
+production/high-resolution tables: 311x5 / 1493x5 byte locks PASS
+exact common production centres in high-resolution grid: 0
+native centres inside |x|<=4.25: 2 production diffusion, 2 high-resolution diffusion
+positive target support bound M2/M0 <= 18.0625
+full native M2/M0 = 134470774.9773356; violation factor=7444748.78767256
+diffusion-80 M2/M0 = 21808.728753005056; violation factor=1207.4036679864391
+core/full native mass fraction = 0.0017361780045445255
+core/diffusion-80 mass fraction = 0.006550012987972702
+exact target moment rank/nullity = 5/12
+strict-positive nonuniqueness witness: min=0.047058823529411764; L1 separation=0.0627429665766292
+SymPy exact witness moment difference: zero
+mpmath 100-digit support resummation: PASS
+SciPy HiGHS fixed-basis feasibility controls: infeasible as expected; non-load-bearing
+=== decision ===
+direct positive native-to-17-cell equality: REJECTED_BY_SUPPORT_AND_IDENTIFIABILITY
+silent high-resolution substitution: FORBIDDEN
+arbitrary maximum-entropy/optimal-transport closure: NOT_CANONICAL
+multi-snapshot direct parity: BLOCKED_NOT_FABRICATED
+next stage: PR-04C split-domain conservative number/energy exchange
+=== integrity ===
+git diff --check: PASS
+py_compile: PASS — 106 tracked Python files
+artifact ZIP integrity and SHA-256 manifest: PASS
+secret scan: PASS — no credential values
+ git fsck --full --no-dangling: PASS
+=== tool status ===
+web search: USED primary/peer-reviewed sources
+coding harness: VALIDATED_AND_USED
+research harness: VALIDATED_AND_USED
+Wolfram: UNAVAILABLE_IN_RUNTIME
+Precise Special Functions: UNAVAILABLE_IN_RUNTIME
+GitHub private connector: UNAVAILABLE_IN_RUNTIME
+fallbacks: SymPy exact rational algebra; mpmath 100-digit sums; NumPy SVD; SciPy HiGHS; direct canonical ZIP/source/table audit
+=== execution note ===
+An initial foreground scientific-wrapper invocation was interrupted by the outer command runtime after partial progress. A clean detached rerun completed with exit code 0 and the full 126-test coverage above; no failed assertion from the interrupted invocation is used as evidence.

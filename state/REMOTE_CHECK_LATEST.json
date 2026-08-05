@@ -1,13 +1,13 @@
 {
   "classification": "REMOTE_REPOSITORY_CHECK",
-  "checked_at_utc": "2026-08-05T16:25:30.787174+00:00",
-  "checked_at_kst": "2026-08-06T01:25:30.787174+09:00",
-  "repository_root": "/mnt/data/rec_bianchi_pr04b2_v053_work",
-  "origin": "/mnt/data/rec_bianchi_v052_full.bundle",
+  "checked_at_utc": "2026-08-05T19:41:13.062681+00:00",
+  "checked_at_kst": "2026-08-06T04:41:13.062681+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_v054_work/repo",
+  "origin": "/mnt/data/rec_bianchi_v053_full.bundle",
   "local": {
-    "branch": "work/pr04b2-physical-native-flux-v053",
-    "head": "6636736bcf9e834a26094c6bebfcca15a3ab8300",
-    "tree": "0074b71a85903cb1066d5b6c66bfef23fa852230",
+    "branch": "work/pr04b2b-identifiability-nogo-v054",
+    "head": "04dd99141450d14d06b82057bbe88e5ea7885866",
+    "tree": "703d5ee0c7b76c05d2793246e5c33a5b09fc22db",
     "dirty": false,
     "dirty_paths": []
   },
@@ -16,8 +16,9 @@
     "selected_transport": "configured",
     "main_sha": null,
     "matches_local_head": false,
-    "ref_count": 16,
+    "ref_count": 18,
     "refs": {
+      "refs/tags/handoff-2026-08-06-v053": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
       "refs/tags/handoff-2026-08-05-v052": "3aacbcdf1b2f723fe62112cff94df90cfb635e35",
       "refs/tags/handoff-2026-08-05-v051": "7a39c303c397bfb8ff32368d23be6b8f7a62b0c7",
       "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
@@ -25,6 +26,7 @@
       "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
       "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
       "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.53": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
       "refs/tags/backup-v0.52": "8c06cf93b84b864803837c6d6c90d55c13cb33cf",
       "refs/tags/backup-v0.51": "51f0696c62a87de34ee0df3df3a680f369d5025e",
       "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
@@ -32,13 +34,13 @@
       "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
       "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
       "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
-      "refs/heads/work/pr04b-original-hyrec-native-v052": "63a5b1bacbee261cdb3569e2cd783f6106b9a114",
-      "refs/heads/work/pr04-hyrec-common-measure-v051": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4"
+      "refs/heads/work/pr04b2-physical-native-flux-v053": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+      "refs/heads/work/pr04b-original-hyrec-native-v052": "63a5b1bacbee261cdb3569e2cd783f6106b9a114"
     },
     "attempts": [
       {
         "transport": "configured",
-        "url": "/mnt/data/rec_bianchi_v052_full.bundle",
+        "url": "/mnt/data/rec_bianchi_v053_full.bundle",
         "returncode": 0,
         "stderr": ""
       }
@@ -61,10 +63,10 @@
     "exact_remote_commit_verified": false,
     "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
     "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-    "implication": "The cumulative v0.51 patch may be based on the exact local v0.47 scientific tree. The incremental v0.50-to-v0.51 patch may be used only when exact local v0.50 commit da892072ebabe214c54f00f6ace7ee8f2c2acccd is present. The owner must fetch private main and verify ancestry before applying either route."
+    "implication": "The cumulative exact-local-v0.47-to-v0.54 route, exact-local-v0.48-milestone-to-v0.54 route, and incremental exact-local-v0.53-to-v0.54 route are exported. The owner must fetch private main, compare ancestry and trees, and apply on a feature branch without force-push."
   },
   "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty.",
-  "configured_origin_classification": "LOCAL_V052_INPUT_BUNDLE_NOT_LIVE_GITHUB",
+  "configured_origin_classification": "LOCAL_V053_INPUT_BUNDLE_NOT_LIVE_GITHUB",
   "github_remote": {
     "url": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
     "queried_by_shell": false,
@@ -74,7 +76,7 @@
     "tree_match": false,
     "push_or_pr_attempted": false,
     "policy": "OWNER_FETCHES_TESTS_PUSHES_AND_CREATES_PR_LOCALLY_WITHOUT_FORCE_PUSH",
-    "reason": "The live GitHub connector and outbound Git write path are not exposed in this execution runtime. The successful ls-remote result applies only to the configured local v0.52 input bundle."
+    "reason": "The live GitHub connector and outbound Git write path are not exposed in this execution runtime. The successful ls-remote result applies only to the configured local v0.53 input bundle."
   },
-  "interpretation": "remote.accessible=true means the configured local v0.52 bundle is readable; it is not evidence that live GitHub was queried or synchronized."
+  "interpretation": "remote.accessible=true means the configured local v0.53 bundle is readable; it is not evidence that live GitHub was queried or synchronized."
 }
