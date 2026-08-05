@@ -1,0 +1,84 @@
+$ ./scripts/bootstrap_sandbox.sh --offline
+offline recovery: using dependency-complete base interpreter python3
+dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+PR-03 full scalar COM-KHW: PASS
+{"status": "PASS", "bundle_count": 50, "current_artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50", "mode": "quick"}
+
+Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
+[exit=0]
+$ python scripts/check_remote_state.py
+{
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "checked_at_utc": "2026-08-05T08:26:18.823839+00:00",
+  "checked_at_kst": "2026-08-05T17:26:18.823839+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_pr04_v051_work",
+  "origin": "/mnt/data/rec_bianchi_v050_full.bundle",
+  "local": {
+    "branch": "work/pr03-full-scalar-com-khw-v050",
+    "head": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+    "tree": "1d963b12705ba88cc422651e4480432346d44e7b",
+    "dirty": true,
+    "dirty_paths": [
+      "?? state/PR04_RECOVERY_COMMANDS_INITIAL.log"
+    ]
+  },
+  "remote": {
+    "accessible": true,
+    "selected_transport": "configured",
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 12,
+    "refs": {
+      "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/heads/work/pr03-full-scalar-com-khw-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/heads/work/pr02-nonlinear-bose-production-v049": "721f792736eaddc7ec6951f99332c44c70b039bf"
+    },
+    "attempts": [
+      {
+        "transport": "configured",
+        "url": "/mnt/data/rec_bianchi_v050_full.bundle",
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "runtime_capabilities": {
+    "git_executable": "/usr/bin/git",
+    "ssh_executable": null,
+    "gh_executable": null,
+    "https_token_present": false,
+    "chatgpt_connector_cli_exposed": false,
+    "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
+  },
+  "user_confirmed_base": {
+    "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
+    "reported_at": "2026-08-05",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "reported_remote_content_stage": "v0.47",
+    "reported_action": "expanded and merged",
+    "exact_remote_commit_verified": false,
+    "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+    "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+    "implication": "v0.50 cumulative patch content may be based on the exact local v0.47 scientific tree, while the incremental v0.49-to-v0.50 patch may be used only when exact local v0.49 commit 721f792736eaddc7ec6951f99332c44c70b039bf is present. Remote ancestry/commit identity must be checked before either is applied."
+  },
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+}
+[exit=0]
+$ python scripts/verify_repo.py --quick
+PR-03 full scalar COM-KHW: PASS
+{"status": "PASS", "bundle_count": 50, "current_artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50", "mode": "quick"}
+[exit=0]
+$ pytest -q -m "not slow"
+........................................................................ [ 97%]
+..                                                                       [100%]
+74 passed, 21 deselected in 13.71s
+[exit=0]

@@ -1,0 +1,244 @@
+{
+  "classification": "PR04A_RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "generated_utc": "2026-08-05T10:00:33.379298+00:00",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "branch": "work/pr04-hyrec-common-measure-v051",
+  "payload_head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+  "payload_tree": "190eea65baed95b888349688636ab4d750b57da0",
+  "recovery_classification": {
+    "incoming_PR03_v050": "DURABLE_VERIFIED_FROM_COMPLETE_GIT_BUNDLE",
+    "PR04A_v051": "RECONSTRUCTED_DURABLE_VERIFIED",
+    "PR04_full": "IN_PROGRESS_PR04B_OPEN",
+    "exact_github_main_sha": "MISSING_RUNTIME_EVIDENCE_OWNER_PUSHES_LOCALLY"
+  },
+  "inputs": {
+    "rec_bianchi_v050_full.bundle": {
+      "path": "/mnt/data/rec_bianchi_v050_full.bundle",
+      "bytes": 34212588,
+      "sha256": "bbb428f35b97ad69ce62289de199e8fb1f10bdbd9ea0111347339124b2dc4f33",
+      "integrity": "COMPLETE_GIT_BUNDLE_VERIFIED",
+      "head": "da892072ebabe214c54f00f6ace7ee8f2c2acccd"
+    },
+    "PR04_SOURCE_LOCK_AND_EXECUTION_PLAN.md": {
+      "path": "/mnt/data/PR04_SOURCE_LOCK_AND_EXECUTION_PLAN.md",
+      "bytes": 5749,
+      "sha256": "f80f4b1fe4dfad99501fec4335482c86e86f2928a6f534812bdd87c39bc623d1",
+      "role": "bounded source-lock and implementation plan"
+    }
+  },
+  "recovery_logs": {
+    "PR04_RECOVERY_COMMANDS_INITIAL.log": {
+      "sha256": "f6cacc36b5bece60442a98919dc7b277c81e90ed16fcc2cffac99cf4904d2dac",
+      "bytes": 4155
+    },
+    "PR04_RECOVERY_REQUIRED_READ.log": {
+      "sha256": "a07ff19b92d30264f6a09accb642652a068ae7570ae08d6aaa6112ec77c522e8",
+      "bytes": 50426
+    }
+  },
+  "scientific_artifact": {
+    "path": "archive/bundles/Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51.zip",
+    "bytes": 61151,
+    "sha256": "ca60bb0d2177ef50fdcf44635f58e89108b00d9ab37312c813d9e0a15086004e",
+    "standalone_verifier": "PASS",
+    "zip_integrity": "PASS"
+  },
+  "runtime_data": {
+    "path": "data/hyrec_common_measure_v051.npz",
+    "bytes": 34159,
+    "sha256": "d04da8a8fa559cbbe62057b828ba9591d103d85f78b095be4e11618e63922b99"
+  },
+  "implementation": {
+    "scope": "17-cell scalar elastic ordinary-frequency common measure",
+    "orders": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "offdiagonal_pairs": 136,
+    "active_same_cell_measures": 17,
+    "delta_nu": "nu_target - nu_source",
+    "common_measure_units": "m^-3 s^-1 Hz^r",
+    "source_conditioned_units": "Hz^r s^-1",
+    "normalization": "exact durable v0.50 C0 and direct same-event conditional moments; no HyRec fit",
+    "hyrec2_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+    "hyrec2_native_representation": "(2s,2p)+311 virtual states; diffusion indices 100..179",
+    "original_hyrec_archive": "OPEN_NOT_ACQUIRED_FAIL_CLOSED",
+    "durability_repair": "v0.32/v0.33 recoil bridge defaults resolve under repository archive/expanded; scientific verification runs 85 fast plus 22 slow tests in six file-isolated subprocesses with deterministic BLAS limits and explicit timeouts"
+  },
+  "hard_results": {
+    "core_states": 17,
+    "offdiagonal_pairs": 136,
+    "same_cell_active_jump_cells": 17,
+    "maximum_raw_C0_projection_relative": 4.010611579730039e-06,
+    "durable_C0_reproduction_max_abs_m3_sInv": 0.0,
+    "maximum_exchange_parity_relative": 0.0,
+    "minimum_C0_m3_sInv": 7.681738780983075e-09,
+    "minimum_M2_common_x": 2.8534742975013766e-07,
+    "minimum_M4_common_x": 2.6345141523333563e-08,
+    "minimum_source_M2_Hz2_sInv": 9.151160666763736e+16,
+    "minimum_source_M4_Hz4_sInv": 3.074182409388243e+39,
+    "pair_conditional_moment_reference_max_relative": 1.1177560914896358e-06,
+    "same_cell_conditional_moment_reference_max_relative": 1.6041979170824565e-06,
+    "BE_relative_null": 0.0,
+    "stress_number_relative": 7.472791093598188e-17,
+    "stress_free_energy_production_m3_s": -4465589314720036.5,
+    "stress_energy_ledger_residual_W_m3": 0.0,
+    "JVP_relative_residual": 5.2050230667387146e-08,
+    "JVP_number_residual_m3_s": 0.21881866455078125,
+    "implicit_residual_relative": 2.8369754871856005e-13,
+    "implicit_minimum_occupation": 0.0675128311006439,
+    "explicit_trial_minimum": -0.015900953016155572,
+    "implicit_number_relative_change": 3.947490440390361e-14,
+    "implicit_free_energy_change_m3": -2.281505816785715e+16,
+    "native_detailed_balance_max_abs": 2.710505431213761e-20,
+    "native_core_voronoi_cell_count": 3,
+    "geometry_microphysics_max_difference": 0.0,
+    "TRK_residual": 0.0,
+    "static_polarizability_residual_a0_cubed": 0.0,
+    "minimum_oscillator_weight": 1.786149164701465e-22,
+    "mpmath_BE_pair_residual": 0.0,
+    "pair_production_elapsed_s": 0.041007041931152344,
+    "same_production_elapsed_s": 0.018244028091430664,
+    "reference_elapsed_s": 0.03588604927062988,
+    "total_stage_elapsed_s": 0.29285621643066406
+  },
+  "hard_gates": {
+    "HYREC2_exact_commit_and_blob_lock": true,
+    "HYREC2_native_registry_dimensions": true,
+    "ordinary_frequency_and_sign_lock": true,
+    "no_fitted_HYREC_normalization": true,
+    "v050_offdiagonal_C0_exact_reproduction": true,
+    "raw_C0_quadrature_projection_small": true,
+    "exchange_parity": true,
+    "positive_even_common_moments": true,
+    "positive_source_M2_M4": true,
+    "pair_conditional_moment_reference": true,
+    "same_cell_conditional_moment_reference": true,
+    "Bose_Einstein_null": true,
+    "photon_number": true,
+    "free_energy_dissipation": true,
+    "same_event_energy_ledger": true,
+    "analytic_JVP": true,
+    "JVP_number_and_energy": true,
+    "implicit_convergence": true,
+    "implicit_strict_positivity": true,
+    "implicit_number_and_free_energy": true,
+    "native_detailed_balance_source_snapshot": true,
+    "positive_bound_continuum_measure": true,
+    "geometry_to_microphysics_firewall": true,
+    "symbolic_exact_identities": true,
+    "high_precision_BE_reference": true,
+    "original_HyRec_archive_gate_explicitly_open": true,
+    "raw_native_rates_not_substituted": true
+  },
+  "tests": {
+    "offline_bootstrap": "PASS",
+    "artifact_verifier": "PASS",
+    "quick_verify": "PASS",
+    "fast_pytest": "85 passed, 22 deselected in 11.92s",
+    "PR04A_test_file": "11 passed in 15.54s with BLAS thread lock",
+    "all_verify": "PASS; 85 passed, 22 deselected",
+    "py_compile": "PASS",
+    "artifact_zip_integrity": "PASS",
+    "git_fsck_full": "PASS",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES",
+    "active_test_result_sha256": "145226bf1d0f15006d654e1fc391c09f9a29b047bafc3be30b6fc51c1eb8c84e",
+    "note": "One aggregate container tool invocation reached its wrapper timeout after launching child checks; the checks were rerun individually with explicit timeouts and the durable log records the passing results.",
+    "durable_artifact_path_regression": "1 passed in 0.29s",
+    "recoil_bridge_slow_regression": "3 passed in 12.93s",
+    "scientific_verify": "PASS; 85 fast and 22 slow tests, 107 total, 6 file-isolated slow lanes",
+    "scientific_log_path": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_log_sha256": "40d0d1f5b13b1f5ca1af38181162da6039bb677af1a1d788488b65c32b2a422c",
+    "scientific_process_policy": "fast and slow subprocess separation; deterministic BLAS thread limits; 300 s per-lane timeout",
+    "git_fsck_full_no_dangling": "PASS",
+    "scientific_log": "state/PR04A_SCIENTIFIC_TEST_RESULT.txt",
+    "scientific_release_payload_head": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+    "scientific_release_payload_tree": "190eea65baed95b888349688636ab4d750b57da0"
+  },
+  "tools": {
+    "web_search": "USED_WITH_OFFICIAL_HYREC_PAGE_AND_PRIMARY_ARXIV_PAPERS",
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "project_custom_skills": "NOT_EXPOSED_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact identities",
+      "mpmath 80-decimal references",
+      "SciPy positive quadrature and constants"
+    ]
+  },
+  "remote": {
+    "url": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+    "verified": false,
+    "main_sha": null,
+    "tree_match": false,
+    "push_or_pr_attempted": false,
+    "policy": "OWNER_FETCHES_TESTS_PUSHES_AND_CREATES_PR_LOCALLY_WITHOUT_FORCE_PUSH",
+    "reason": "The working clone origin is the uploaded v0.50 bundle. No GitHub credential or writable network path is exposed to this shell, and the owner explicitly chose local push/PR operation."
+  },
+  "limitations": [
+    "The October-2012 original HyRec archive bytes and SHA-256 were not acquired in this runtime; full native-archive parity is not claimed.",
+    "The 80-bin HYREC Aup/Adn arrays are diagnostic primitive rates inside an escape-compressed Schur system, not direct per-source COM-KHW rates.",
+    "The common-measure release covers the 17 interior cells |x|<=4.25; exterior transport remains in the PR-01 Liouville/boundary module.",
+    "Same-cell Gamma records active frequency-changing events only; the coherent zero-transfer identity is excluded.",
+    "This stage is scalar elastic and does not add Raman, polarization, fine structure, J-state interference or atomic alignment.",
+    "Geometry firewall tests API independence at a common local hydrogen-frame state; all-11 trajectory integration remains later roadmap work."
+  ],
+  "decision": {
+    "PR04A": "PASS",
+    "PR04": "IN_PROGRESS",
+    "original_HyRec_archive_parity": "OPEN_FAIL_CLOSED",
+    "native_raw_rate_substitution": "FORBIDDEN",
+    "next_stage": "PR-04B original-HyRec archive and native primitive common-measure parity",
+    "scientific_release_gate": "PASS_107_TESTS"
+  },
+  "next_stage": {
+    "name": "PR-04B original-HyRec archive and native primitive parity",
+    "entry_gate": "OWNER_OR_NETWORK_SUPPLIED_EXACT_OCTOBER_2012_ARCHIVE",
+    "tasks": [
+      "Acquire and SHA-256 lock the official October-2012 original HyRec archive and compile its full radiative-transfer lane.",
+      "Map the original native radiation variable, bin centres/edges, time derivative and primitive diffusion stencil to the v0.51 common measure without a fitted scale.",
+      "Resolve the virtual-state/escape compression map and compare direct event, native primitive and Schur-reduced moments on one common measure.",
+      "Close native normalization, detailed-balance, recoil-energy, Jacobian and FLRW snapshot parity before promoting PR-04 to complete."
+    ]
+  },
+  "commits_after_v050": [
+    {
+      "sha": "9cbf7de",
+      "full_sha": "9cbf7de646590e2310cc2327233cd62160f10cb8",
+      "subject": "feat(recoil): close PR04A HYREC common-measure core"
+    },
+    {
+      "sha": "aec113b",
+      "full_sha": "aec113b7c06b007a662b4b3d98539bd5b1e6158b",
+      "subject": "docs(recovery): record PR04A and hand off PR04B"
+    },
+    {
+      "sha": "b19aea4",
+      "full_sha": "b19aea423365b86397603298f0150116d4b7a91f",
+      "subject": "chore(recovery): record v0.51 verification receipts"
+    },
+    {
+      "sha": "ba0725e",
+      "full_sha": "ba0725e8d76ac79eeed281f4352a17a390f82a12",
+      "subject": "fix(recovery): make recoil bridge artifacts repository-relative"
+    },
+    {
+      "sha": "2aea829",
+      "full_sha": "2aea829abb696db315ba2571b816250a933725f9",
+      "subject": "chore(recovery): refresh v0.51 final receipts"
+    },
+    {
+      "sha": "ef93af5",
+      "full_sha": "ef93af56cb60cfc810fd616d8239e7ec6b6c9a8e",
+      "subject": "test(recovery): isolate scientific slow regressions"
+    },
+    {
+      "sha": "86c1b2e",
+      "full_sha": "86c1b2e2311f7ff2363f927e682760f6595d331e",
+      "subject": "fix(ci): isolate full scientific quadrature regressions"
+    }
+  ]
+}

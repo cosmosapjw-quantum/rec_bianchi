@@ -1,29 +1,28 @@
 === timestamp_utc ===
-2026-08-05T01:01:32Z
-=== git ===
-work/pr03-full-scalar-com-khw-v050
-5433dce34d17fe619411b2104ec68d61af0c4e88
-02ca3228262350d0d72439faf0ec977cb962c875
- M state/REMOTE_CHECK_LATEST.json
-=== bootstrap ===
-offline recovery: using dependency-complete base interpreter python3
-dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
-PR-03 full scalar COM-KHW: PASS
-{"status": "PASS", "bundle_count": 50, "current_artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50", "mode": "quick"}
-
-Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
-=== pr03 artifact ===
-PR-03 full scalar COM-KHW: PASS
-=== quick verifier ===
-PR-03 full scalar COM-KHW: PASS
-{"status": "PASS", "bundle_count": 50, "current_artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50", "mode": "quick"}
-=== pytest fast ===
-........................................................................ [ 97%]
-..                                                                       [100%]
-74 passed, 21 deselected in 11.76s
-=== all verifier ===
-PR-03 full scalar COM-KHW: PASS
-........................................................................ [ 97%]
-..                                                                       [100%]
-74 passed, 21 deselected in 11.82s
-{"status": "PASS", "bundle_count": 50, "current_artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50", "mode": "all"}
+2026-08-05T10:00:33.379298+00:00
+=== git_payload ===
+work/pr04-hyrec-common-measure-v051
+86c1b2e2311f7ff2363f927e682760f6595d331e
+190eea65baed95b888349688636ab4d750b57da0
+=== recovery_and_artifact ===
+offline bootstrap: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+PR-04A immutable artifact verifier: PASS; PR-04B archive parity OPEN
+repository quick verifier: PASS; bundle_count=51
+=== tests ===
+fast pytest: 85 passed, 22 deselected
+repository all verifier: PASS; 85 passed, 22 deselected
+full scientific verifier: PASS; 85 fast + 22 slow = 107 tests; 6 isolated slow files
+PR-04A complete test file: 11 passed with deterministic BLAS thread lock
+durable repository-relative artifact path regression: PASS
+recoil bridge slow regression: PASS
+=== integrity ===
+git diff --check: PASS
+py_compile: PASS
+artifact zip integrity: PASS
+secret scan: PASS; credential values absent from intended release files
+git fsck --full --no-dangling: PASS
+=== portability_and_ci_repair ===
+recoil_bridge v0.32/v0.33 defaults resolve under repository archive/expanded.
+scientific verifier runs fast and slow lanes in isolated subprocesses with deterministic BLAS thread limits.
+=== remote ===
+GitHub remote SHA/tree not verified in this shell; owner performs fetch/push/PR locally; no remote write claimed.

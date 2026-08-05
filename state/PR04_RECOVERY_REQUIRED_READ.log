@@ -1,0 +1,1053 @@
+
+===== state/PROJECT_STATE.json =====
+{
+  "classification": "DURABLE_PROJECT_STATE",
+  "project": "Full Bianchi–HyRec scalar completion",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "state_date": "2026-08-05",
+  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
+  "estimated_overall_completion_percent": 84,
+  "estimated_PR01_completion_percent": 100,
+  "estimated_PR02_completion_percent": 100,
+  "estimated_PR03_completion_percent": 100,
+  "current_durable_stage": {
+    "name": "PR-03 full scalar elastic COM–KHW production amplitude",
+    "artifact": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50",
+    "status": "PASS_PR03_COMPLETE"
+  },
+  "next_stage": {
+    "name": "PR-04 HYREC common-measure moment projection",
+    "entry_gate": "SOURCE_LOCK_AND_CONVENTION_PARITY_BEFORE_IMPLEMENTATION",
+    "tasks": [
+      "Pin the exact native HyRec/HyRec-2 source and identify the Ly-alpha frequency-bin common measure, normalization, units and signs.",
+      "Define Gamma and M1-M4 directly from the v0.50 event kernel without a fitted normalization.",
+      "Compare direct event integration, positive continuum quadrature and the native HyRec discrete operator.",
+      "Close normalization, detailed balance, recoil-energy, moment, positivity and analytic/JVP Jacobian gates while preserving the PR-01/PR-02 APIs."
+    ]
+  },
+  "roadmap": [
+    {
+      "pr": 1,
+      "title": "Exact recoil event and four-force",
+      "status": "COMPLETE"
+    },
+    {
+      "pr": 2,
+      "title": "Nonlinear anisotropic Bose collision",
+      "status": "COMPLETE"
+    },
+    {
+      "pr": 3,
+      "title": "Full scalar COM–KHW amplitude",
+      "status": "COMPLETE"
+    },
+    {
+      "pr": 4,
+      "title": "HYREC common-measure moment projection",
+      "status": "IN_PROGRESS_NEXT"
+    },
+    {
+      "pr": 5,
+      "title": "Primitive HYREC operator and background interface",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 6,
+      "title": "FLRW monolithic parity",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 7,
+      "title": "Bianchi II class-A regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 8,
+      "title": "Class-B regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 9,
+      "title": "Exceptional VI_-1/9 regression",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 10,
+      "title": "All-11 automated sweep",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 11,
+      "title": "Equation, proof, and provenance census",
+      "status": "PLANNED"
+    },
+    {
+      "pr": 12,
+      "title": "Performance, restart, and release integration",
+      "status": "PLANNED"
+    }
+  ],
+  "hard_scope": {
+    "included": [
+      "homogeneous backgrounds",
+      "all 11 Bianchi types",
+      "nonlinear large shear",
+      "finite tilt",
+      "tetrad and 1+3 formalism",
+      "scalar HYREC-grade recombination and Ly-alpha transfer"
+    ],
+    "excluded_from_12_PR_scalar_release": [
+      "fine structure",
+      "J-state interference",
+      "polarization",
+      "atomic alignment"
+    ]
+  },
+  "locked_architecture": {
+    "geometry_interface": "BackgroundSnapshot physical tetrad characteristics",
+    "microphysics_firewall": "local scalar collision microphysics is Bianchi-type independent",
+    "boundary_events": "all directional boundary-speed zeros are localized inside the timestep",
+    "angular_policies": {
+      "finite_or_mixed_tilt": 12,
+      "nonlinear_even_shear": 20,
+      "directional_crossing": 24
+    },
+    "nonlinear_update": "log-occupation backward Euler with exact matrix-free JVP",
+    "conservation": "photon and atom four-force are accumulated from the same event with opposite sign",
+    "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
+    "comparison_lane": "provisional_2p remains explicit but is not the production default"
+  },
+  "PR03_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50.zip",
+    "artifact_bundle_sha256": "c5b596d7b5e885c66aa673b26cdb9ad4aac30b7d6571cb0c22fde1bf34d54e6e",
+    "artifact_bundle_size_bytes": 2038554,
+    "network_states": 35,
+    "ell_max": 24,
+    "bounded_integral_blocks": 459,
+    "fixed_nucleus_gauge_audit": true,
+    "finite_recoil_PT_audit": true,
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact identities",
+      "mpmath 90-100 decimal references",
+      "SciPy positive quadrature and Faddeeva reference"
+    ]
+  },
+  "known_limitations": [
+    "The v0.50 production window is scalar elastic Ly-alpha transport for |x|<=21.25 below the Lyman limit; a global above-ionization photon-frequency branch is not claimed.",
+    "Raman production channels are not included.",
+    "Only the unresolved 2p pole carries natural width in this bounded release window.",
+    "The unresolved Rydberg tail is a positive two-moment closure after explicit bound states through n=512, not a pointwise representation of every omitted resonance.",
+    "Velocity/length gauge equivalence is audited in the fixed-nucleus, zero-width limit; finite recoil is audited by PT reciprocity rather than a full relativistic gauge proof.",
+    "Exterior-exterior collisions remain assigned to the boundary/Liouville module.",
+    "PR-02 stress occupations are collision-substep regression fields, not coupled Liouville plus recombination solutions.",
+    "The all-11 automated background sweep remains assigned to PR-10."
+  ],
+  "remote_sync": {
+    "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
+    "remote_ref_verified": false,
+    "remote_tree_match": false,
+    "reason": "This runtime exposed neither a writable/readable GitHub connector function nor a working Git SSH/HTTPS route; remote refs remain unverified."
+  },
+  "remote_repository_status": {
+    "owner_report": "v0.47 content merged into private main on 2026-08-05",
+    "runtime_verification": "UNAVAILABLE_CONNECTOR_AND_GIT_NETWORK",
+    "exact_remote_main_sha": null,
+    "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+    "local_v047_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+    "local_v049_parent_commit": "721f792736eaddc7ec6951f99332c44c70b039bf",
+    "local_v049_parent_tree": "9d85bcb5a20e7b89017b0cbf4911e3b1f5c61fa5",
+    "policy": "Export cumulative v0.47-to-v0.50 and incremental v0.49-to-v0.50 binary-safe patches plus a standalone full bundle; apply on a feature branch after fetching remote main."
+  }
+}
+
+===== state/REMOTE_BASE_ASSUMPTION.json =====
+{
+  "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
+  "reported_at": "2026-08-05",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "reported_remote_content_stage": "v0.47",
+  "reported_action": "expanded and merged",
+  "exact_remote_commit_verified": false,
+  "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+  "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+  "implication": "v0.50 cumulative patch content may be based on the exact local v0.47 scientific tree, while the incremental v0.49-to-v0.50 patch may be used only when exact local v0.49 commit 721f792736eaddc7ec6951f99332c44c70b039bf is present. Remote ancestry/commit identity must be checked before either is applied."
+}
+
+===== state/REMOTE_CHECK_LATEST.json =====
+{
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "checked_at_utc": "2026-08-05T08:26:21.758974+00:00",
+  "checked_at_kst": "2026-08-05T17:26:21.758974+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_pr04_v051_work",
+  "origin": "/mnt/data/rec_bianchi_v050_full.bundle",
+  "local": {
+    "branch": "work/pr03-full-scalar-com-khw-v050",
+    "head": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+    "tree": "1d963b12705ba88cc422651e4480432346d44e7b",
+    "dirty": true,
+    "dirty_paths": [
+      "M state/REMOTE_CHECK_LATEST.json",
+      "?? state/PR04_RECOVERY_COMMANDS_INITIAL.log"
+    ]
+  },
+  "remote": {
+    "accessible": true,
+    "selected_transport": "configured",
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 12,
+    "refs": {
+      "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/heads/work/pr03-full-scalar-com-khw-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/heads/work/pr02-nonlinear-bose-production-v049": "721f792736eaddc7ec6951f99332c44c70b039bf"
+    },
+    "attempts": [
+      {
+        "transport": "configured",
+        "url": "/mnt/data/rec_bianchi_v050_full.bundle",
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "runtime_capabilities": {
+    "git_executable": "/usr/bin/git",
+    "ssh_executable": null,
+    "gh_executable": null,
+    "https_token_present": false,
+    "chatgpt_connector_cli_exposed": false,
+    "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
+  },
+  "user_confirmed_base": {
+    "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
+    "reported_at": "2026-08-05",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "reported_remote_content_stage": "v0.47",
+    "reported_action": "expanded and merged",
+    "exact_remote_commit_verified": false,
+    "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+    "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+    "implication": "v0.50 cumulative patch content may be based on the exact local v0.47 scientific tree, while the incremental v0.49-to-v0.50 patch may be used only when exact local v0.49 commit 721f792736eaddc7ec6951f99332c44c70b039bf is present. Remote ancestry/commit identity must be checked before either is applied."
+  },
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+}
+
+===== state/SUPERSESSION_LEDGER.json =====
+{
+  "classification": "SCIENTIFIC_SUPERSESSION_LEDGER",
+  "entries": [
+    {
+      "old": "raw Lebedev collision release",
+      "new": "continuous-mu harmonic/Nystrom reference v0.31 and finite-volume v0.32",
+      "reason": "coherent-forward angular boundary layer and nonmonotone collocation convergence"
+    },
+    {
+      "old": "incoming-frequency centre-sampled Hummer kernel v0.31",
+      "new": "two-sided finite-volume Hummer kernel v0.32",
+      "reason": "source-cell averaging changes kernels and near-null actions materially"
+    },
+    {
+      "old": "direct lifting of completed HYREC Tvv",
+      "new": "primitive-rate reconstruction",
+      "reason": "escape-compressed Tvv is nonlinear and nonadditive"
+    },
+    {
+      "old": "v0.39 missing-Jacobian diagnosis",
+      "new": "v0.40 invariant pair-measure diagnosis",
+      "reason": "high-resolution pair reruns did not reject detailed balance beyond 3 sigma; source-column estimator under-resolution is leading explanation"
+    },
+    {
+      "old": "numerical tangent quadrature for provisional 2p pole",
+      "new": "analytic Faddeeva pole average v0.42",
+      "reason": "all 1836 orbits reproduced to 2.8e-13"
+    },
+    {
+      "old": "numerical Gaussian quadrature for provisional 2p pole+crossed",
+      "new": "analytic pole+crossed Faddeeva average v0.43",
+      "reason": "direct and high-precision validation passed"
+    },
+    {
+      "old": "raw same-cell gain matrix",
+      "new": "regularized remainder D_li=K_lii-K_0ii v0.45",
+      "reason": "coherent-forward delta cancels analytically in the collision action"
+    },
+    {
+      "old": "v0.46 far-boundary-open near-exterior release",
+      "new": "v0.47 direct far flux through |x|=21.25 with adaptive tail bound",
+      "reason": "outer-bin generator contribution is 9.0e-25 of the full network and the continuation bound is 7.7e-29"
+    },
+    {
+      "old": "Lebedev order-25/230-point L=12 grid for nonlinear Bose ledgers",
+      "new": "positive-weight Lebedev order-29/302-point L=12 grid",
+      "reason": "the order-25 rule contains negative quadrature weights and is unsuitable for nonlinear number/entropy ledgers"
+    },
+    {
+      "old": "direct subtraction of large Bose gain/loss terms near equilibrium",
+      "new": "activity-reference-subtracted harmonic Bose formulation v0.47",
+      "reason": "removes catastrophic cancellation while preserving the exact discrete BE family and pair conductance"
+    },
+    {
+      "old": "chart-internal direct coupling of recombination microphysics",
+      "new": "chart-independent BackgroundSnapshot frame adapter v0.48",
+      "reason": "Bianchi II, tilted VI_h and exceptional VI_-1/9 trajectories reproduce finite-tilt frequency/direction characteristics and branch-localized boundary ledgers without changing the local collision action"
+    },
+    {
+      "old": "v0.47 mock-field nonlinear Bose regression without runtime integration or a production Jacobian/update",
+      "new": "v0.49 BackgroundSnapshot-coupled positive-grid nonlinear Bose runtime with exact JVP and log-variable implicit update",
+      "reason": "closes adaptive L=12/20/24 execution, analytic/JVP regression, strict positivity, photon number, free-energy dissipation and same-event four-force gates on representative runtime trajectories"
+    },
+    {
+      "old": "provisional unresolved scalar 2p pole+crossed production amplitude",
+      "new": "v0.50 scalar elastic bound-plus-continuum COM-KHW production amplitude",
+      "reason": "adds the A^2 seagull, both time orderings, explicit bound spectrum, positive continuum measure, scalar interference, fixed-nucleus gauge/IR audit and statewise finite-recoil PT reciprocity while preserving the PR-01/PR-02 APIs"
+    }
+  ]
+}
+
+===== docs/CURRENT_STATE.md =====
+# Current scientific state
+
+## Summary
+
+The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The current durable endpoint is **PR-03 / v0.50**. **PR-01, PR-02, and PR-03 are complete.**
+
+## Closed in v0.50
+
+- Replaced the production provisional unresolved scalar `2p` pole+crossed amplitude by a scalar elastic `1s -> 1s` COM–Kramers–Heisenberg–Waller construction.
+- Retained the `A^2` seagull, both time orderings, explicit hydrogen `1s -> np` bound channels, a positive continuum quadrature, a positive moment-matched unresolved Rydberg tail, and all scalar interference terms.
+- Used exact hydrogen oscillator-strength formulae through `n=512`, a 256-node positive continuum rule, and independent high-precision infinite-spectrum audits of the TRK sum and the static polarizability.
+- Put each intermediate internal state on its own relativistic mass shell, `M_s=M_H+h nu_s/c^2`, in the direct event audit. This removes a spurious reciprocity defect caused by adding an internal energy to a common-mass relativistic kinetic-energy difference.
+- Isolated the unresolved `2p` pole analytically with the Faddeeva function and compiled the smooth higher bound-plus-continuum background from source moments. No fitted cross-section normalization was introduced.
+- Regenerated all 459 bounded network blocks: 136 interior pairs, 204 near-interface pairs, 102 far-interface pairs, and 17 same-cell blocks, through `ell=24`.
+- Kept an explicit `provisional_2p` comparison lane and verified that the full lane is nonidentical while preserving the fixed PR-01 and PR-02 interfaces.
+- Reran the PR-02 BE, number, boundary-number, free-energy, positivity, exact-JVP, implicit-JVP, frame, four-force, and geometry-firewall gates on the v0.50 network.
+- Recorded the absence of Wolfram and Precise Special Functions connectors and used explicit SymPy, `mpmath`, and SciPy independent fallbacks instead.
+
+## Representative hard results
+
+| Quantity | Result |
+|---|---:|
+| Minimum positive scalar conductance | `3.4616e-53` |
+| Pair reciprocity residual | `0` |
+| Scalar number left-null residual | `3.5530e-16` |
+| Scalar equilibrium right-null residual | `2.9099e-17` |
+| Full/provisional pair-network difference | `1.6182e-08` |
+| Full/provisional same-cell difference | `1.4817e-08` |
+| Maximum selected production/reference quadrature residual | `2.2051e-09` |
+| Maximum selected orientation residual | `6.8790e-16` |
+| Fixed-nucleus velocity/length gauge residual | `6.8499e-11` |
+| Infrared amplitude power | `1.9999998220` |
+| Infrared cross-section power | `3.9999996441` |
+| Smooth-background order-4/direct residual | `1.9085e-12` |
+| Smooth-background order-8/direct residual | `2.6645e-15` |
+| High-energy continuum-tail weight (`n<10^-2`) | `2.6458e-10` |
+| Float64 PT amplitude residual | `1.2200e-11` |
+| 90-digit PT denominator residual | `2.1064e-79` |
+| Maximum independent special-function residual | `8.6694e-15` |
+| Maximum BE action residual on v0.50 network | `8.8144e-16` |
+| Maximum photon-number residual | `8.5575e-18` |
+| Maximum collision JVP residual | `6.5396e-11` |
+| Maximum implicit-residual JVP residual | `3.8239e-11` |
+| Maximum implicit solve residual | `1.1035e-14` |
+| Minimum implicit occupation | `2.1987e-01` |
+| Hydrogen- and normal-frame total four-force residuals | `0`, `0` |
+| Geometry-to-local-collision action difference | `0` |
+
+The high-precision independent spectrum audit gives the bound contribution
+
+\[
+\sum_{n=2}^{\infty} f_{1n}
+ =0.5650041506748519874\ldots,
+\]
+
+the continuum contribution
+
+\[
+\int_0^\infty \frac{df}{dn}\,dn
+ =0.4349958493251480126\ldots,
+\]
+
+and closes the TRK sum to unity and the static ground-state polarizability to `4.5 a_0^3` at roughly 76 decimal places.
+
+## Architecture locked through PR-03
+
+Bianchi geometry enters local recombination only through the physical tetrad snapshot
+
+\[
+\mathcal B=
+\{H,q,\sigma_{ab},N_{ab},A_a,R_a,
+\beta_{\rm H}^a,D_0\beta_{\rm H}^a\}.
+\]
+
+It determines normal- and hydrogen-frame characteristics, aberration, direction flow, red/blue boundary speeds, and branch events. It is not an argument of the local scalar atomic amplitude or conductance table.
+
+For the fixed-nucleus, zero-width scalar elastic audit, the velocity-gauge form is
+
+\[
+\mathcal M(\nu)=1-\frac12\int df_s\,\nu_s
+\left[\frac{1}{\nu_s-\nu}+\frac{1}{\nu_s+\nu}\right].
+\]
+
+Using the TRK sum, it rearranges to
+
+\[
+\mathcal M(\nu)=-\nu^2\int\frac{df_s}{\nu_s^2-\nu^2},
+\]
+
+so `|M|` scales as `nu^2` and the Rayleigh cross-section as `nu^4` in the infrared. This is a fixed-nucleus gauge identity. The finite-recoil production event is instead audited by statewise relativistic mass-shell construction and PT reciprocity; v0.50 does not claim a complete relativistic gauge-equivalence proof.
+
+The PR-02 nonlinear state and log-occupation backward-Euler/JVP architecture are unchanged. Photon and atom four-force contributions remain opposite parts of the same event and close separately after transformation to the hydrogen and normal tetrads.
+
+## Explicit limitations
+
+- The production release is scalar elastic Ly-alpha transport in the locked window `|x|<=21.25`, below the Lyman limit. It does not claim a global causal above-ionization photon-frequency branch.
+- Raman channels are not included in PR-03. They remain outside the current scalar elastic production lane even though the literature source lock includes general Rayleigh/Raman KHW formulae.
+- Only the unresolved `2p` pole carries the natural width in this bounded Ly-alpha window. Higher-state damping and overlap are not activated.
+- The positive one-node unresolved Rydberg tail closes the first two exact spectral moments after explicit states through `n=512`; it is not a pointwise representation of every omitted high-`n` resonance.
+- Electric-dipole scalar physics is used. Fine structure, J-state interference, polarization, and atomic alignment remain excluded from the 12-PR scalar release.
+- Exterior–exterior collisions remain assigned to the boundary/Liouville module.
+- The PR-02 stress fields remain collision-substep regressions, not solutions of the fully coupled Liouville plus recombination system.
+- The all-11 automated background sweep remains assigned to PR-10.
+- Wolfram and Precise Special Functions connectors were not exposed in this runtime; no claim is made that they ran.
+
+## Immediate next release
+
+**PR-04 HYREC common-measure moment projection** must begin with a source/convention lock rather than a fitted normalization:
+
+1. pin the exact native HyRec/HyRec-2 source and identify the frequency-bin measure, normalization, sign, and unit conventions used by the Ly-alpha transfer operator;
+2. define the event frequency increment and the common-measure rate `Gamma` and moments `M1`–`M4` directly from the v0.50 event kernel, with dimensions and recoil sign checked before discretization;
+3. compare direct event integration, common-measure quadrature, and the native HyRec discrete operator without introducing a free scale factor;
+4. close normalization, detailed balance, recoil-energy, second-through-fourth-moment, positivity, and analytic/JVP Jacobian gates;
+5. preserve the PR-01 `BackgroundSnapshot` firewall and the PR-02 nonlinear runtime API;
+6. publish implementation, tests, formalism, ledger, CSV/NPZ evidence, SHA-256 manifest, immutable ZIP, commits, remote-check receipt, binary-safe patches, and a standalone bundle.
+
+The first PR-04 gate is therefore **source-lock and convention parity**, not a numerical fit.
+
+## Repository synchronization
+
+The owner reports that v0.47 was expanded and merged into the private `main`. This runtime exposes neither a writable GitHub connector nor a working SSH/HTTPS Git route, so the exact remote merge SHA remains independently unverified. The v0.50 delivery uses the exact local v0.47 content commit as the cumulative base and the exact local v0.49 commit as the incremental base, plus a standalone full bundle. Apply only on a feature branch after fetching remote `main`; never force-push shared history.
+
+===== docs/ROADMAP_12PR.md =====
+# Twelve-PR scalar completion roadmap
+
+1. **Exact recoil event and four-force** — **COMPLETE in PR-01C/v0.48**.
+2. **Nonlinear anisotropic Bose collision** — **COMPLETE in PR-02/v0.49**.
+3. **Full scalar COM–KHW amplitude** — **COMPLETE in PR-03/v0.50**: scalar elastic bound-plus-continuum spectrum, seagull, both time orderings, interference, fixed-nucleus gauge/IR audit, COM PT reciprocity, and regenerated 35-state moments.
+4. **HYREC common-measure moment projection** — **NEXT / ACTIVE**: source-lock native HyRec measure and derive `Gamma`, `M1`–`M4` without a fitted scale.
+5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface**.
+6. **FLRW monolithic parity** — native HYREC and retained Peebles baseline lanes.
+7. **Bianchi II class-A regression**.
+8. **Class-B V or VII_h regression**.
+9. **Exceptional VI_-1/9 regression**.
+10. **All-11 automated sweep**, including IX D-normalized recollapse handling.
+11. **Equation, proof, and provenance census**.
+12. **Performance, restart, deterministic manifests, and release integration**.
+
+No force-push. Each PR is a bounded review unit with implementation, tests, durable artifact, manifest, remote-check receipt and binary-safe patch export.
+
+===== docs/GITHUB_PRIVATE_REPO_ACCESS.md =====
+# GitHub private-repository access and fallbacks
+
+Repository: `cosmosapjw-quantum/rec_bianchi`
+
+## ChatGPT GitHub app — read access
+
+1. In ChatGPT open **Settings → Apps → GitHub**.
+2. Select **Connect** or open the gear menu, then choose **Configure repositories on GitHub**.
+3. Under repository access, select `cosmosapjw-quantum/rec_bianchi` and save.
+4. Private or newly authorized repositories may take several minutes to appear.
+5. In GitHub's own search box, run:
+
+   ```text
+   repo:cosmosapjw-quantum/rec_bianchi import
+   ```
+
+   This requests indexing for connector search. Allow another several minutes.
+6. App availability can differ among standard Chat, Deep Research, Agent and Codex runtimes.
+
+The ChatGPT GitHub app may be exposed only as a read/search connector. Do not assume it supplies a Git credential or permits pushes from the current shell.
+
+## Codex — preferred write path
+
+Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to import the delivered v0.50 bundle or apply the appropriate patch on a feature branch. Before merge, require:
+
+```bash
+./scripts/bootstrap_sandbox.sh --offline
+python scripts/check_remote_state.py --require-access
+python scripts/verify_repo.py --quick
+pytest -q -m "not slow"
+```
+
+Never force-push shared `main`.
+
+## HTTPS with a fine-grained personal access token
+
+Use a repository-scoped fine-grained PAT in the local shell only. Do not paste it into chat, commit it, or put it in a remote URL.
+
+Minimum practical permissions:
+
+- **Contents: read** for clone/fetch;
+- **Contents: write** for feature-branch pushes;
+- **Pull requests: write** only when automation must create or update PRs;
+- **Workflows: write** only when changing `.github/workflows/**`.
+
+The repository check script supports an ephemeral `GIT_ASKPASS` helper:
+
+```bash
+export GITHUB_REC_BIANCHI_TOKEN='REPOSITORY_SCOPED_TOKEN'
+python scripts/check_remote_state.py --require-access
+./scripts/push_backup.sh
+unset GITHUB_REC_BIANCHI_TOKEN
+```
+
+## GitHub App installation token — preferred automation credential
+
+For repeatable automation, install a dedicated GitHub App only on this repository and grant the smallest permissions needed. HTTP Git access requires **Contents** permission; workflow-file changes additionally require **Workflows** permission. Prefer short-lived installation tokens over a long-lived personal token.
+
+## SSH or deploy key
+
+A normal user SSH key works when `ssh` and outbound access are available. A deploy key is repository-specific and may be read-only or read/write. For finer permission control and auditable automation, prefer a GitHub App over a write-enabled deploy key.
+
+## Offline full-bundle fallback
+
+When the runtime has no connector, DNS, SSH executable, or token:
+
+```bash
+git clone rec_bianchi_v050_full.bundle rec_bianchi
+cd rec_bianchi
+git switch work/pr03-full-scalar-com-khw-v050
+./scripts/bootstrap_sandbox.sh --offline
+python scripts/verify_repo.py --quick
+pytest -q -m "not slow"
+```
+
+## Patch selection
+
+Two binary-safe patch lanes are exported:
+
+- **cumulative v0.47 → v0.50** for a checkout containing exact local v0.47 commit `ced72558437c8d24dce0cb855259b5216549604d`;
+- **incremental v0.49 → v0.50** for a checkout containing exact local v0.49 commit `721f792736eaddc7ec6951f99332c44c70b039bf`.
+
+Apply only after fetching remote `main` and creating a feature branch:
+
+```bash
+git switch -c apply/v050-pr03
+git am --3way rec_bianchi_<base>_to_<head>.mbox
+python scripts/verify_repo.py --quick
+pytest -q -m "not slow"
+```
+
+If the remote used squash merges and contains neither exact base commit, use the standalone full bundle as the comparison source or try the binary patch with `git apply --3way --index` on a feature branch. Resolve conflicts explicitly and open a PR. Do not rewrite remote history merely to match local commit IDs.
+
+## Diagnostic interpretation
+
+`python scripts/check_remote_state.py` distinguishes successful remote access and exact `main` SHA from missing `ssh`, HTTPS/DNS failure, absent token, and local dirty state. A user report that v0.47 was merged establishes only a scientific-content base; it does not establish the remote merge commit SHA or ancestry. Patch receipts therefore retain exact local bases and the remote-verification uncertainty.
+
+===== archive/expanded/Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50/PR03_ledger.json =====
+{
+  "classification": "PR03_FULL_SCALAR_COM_KHW_PRODUCTION",
+  "stage": "PR-03",
+  "status": "PASS_PR03_COMPLETE",
+  "source": {
+    "parent_collision_data": "data/far_scalar_release_v047.npz",
+    "parent_collision_sha256": "c11af92d5e8ee86d6508f0a2a9404df0df2b1dff9a44e252abea35c4a0af8409",
+    "background_snapshot_data": "data/pr01c_background_snapshots_v048.npz",
+    "background_snapshot_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+    "literature_lock": [
+      "Kokubo 2024 MNRAS 529 2131 (exact KHW Rayleigh/Raman)",
+      "Lee 2005 MNRAS 358 1472 (exact low-energy expansion)",
+      "Lee and Kim 2004 MNRAS 347 802 (bound+continuum and omega^4)"
+    ],
+    "independent_tools": {
+      "web_search": "USED",
+      "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+      "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+      "fallbacks": [
+        "SymPy exact identities",
+        "mpmath 90-100 decimal references",
+        "SciPy independent positive quadrature and Faddeeva implementation"
+      ]
+    }
+  },
+  "atomic_model": {
+    "bound_n_max_explicit": 512,
+    "continuum_positive_quadrature_order": 256,
+    "positive_Rydberg_tail_weight": 2.975259421722498e-06,
+    "positive_Rydberg_tail_delta_Ry": 0.9999980962975566,
+    "background_polynomial_order": 4,
+    "seagull": true,
+    "time_orderings": 2,
+    "bound_continuum_interference": true,
+    "state_resolved_relativistic_COM_mass_shell": true
+  },
+  "network": {
+    "states": 35,
+    "ell_max": 24,
+    "interior_pairs": 136,
+    "near_interface_pairs": 204,
+    "far_interface_pairs": 102,
+    "same_cell_blocks": 17,
+    "amplitude_lane": "full_bound_continuum_seagull_interference",
+    "provisional_lane_retained": true
+  },
+  "hard_results": {
+    "network_build_elapsed_s": 133.393616437912,
+    "minimum_scalar_conductance": 3.461608832120729e-53,
+    "pair_symmetry_relative": 0.0,
+    "scalar_left_null_relative": 3.5530476158552404e-16,
+    "scalar_right_null_relative": 2.909930174933172e-17,
+    "full_vs_provisional_pair_network_relative": 1.6181893844068118e-08,
+    "full_vs_provisional_same_cell_relative": 1.4816590262730563e-08,
+    "maximum_selected_quadrature_relative": 2.205118077609675e-09,
+    "maximum_selected_orientation_relative": 6.87900428900262e-16,
+    "maximum_selected_network_reproduction_relative": 0.0,
+    "maximum_gauge_residual": 6.849945328074701e-11,
+    "infrared_amplitude_power": 1.9999998220318647,
+    "infrared_cross_section_power": 3.9999996440637293,
+    "maximum_order4_background_residual": 1.908473379330644e-12,
+    "maximum_order8_background_residual": 2.6645352591003757e-15,
+    "high_energy_continuum_tail": 2.645771519946552e-10,
+    "float_denominator_residual": 1.2200007187282337e-11,
+    "float_amplitude_residual": 1.2200017534253607e-11,
+    "high_precision_denominator_residual": 2.1063584558022768e-79,
+    "high_precision_event_shell_residual": 0.0,
+    "maximum_special_function_relative": 8.66943192710439e-15,
+    "maximum_BE_action_relative": 8.814408779234565e-16,
+    "maximum_number_residual_relative": 8.557547910579683e-18,
+    "maximum_boundary_number_residual_relative": 7.221089067241847e-18,
+    "maximum_entropy_free_energy_production": -1548500425953190.2,
+    "minimum_boundary_to_full_action_norm": 1.599818748713679e-05,
+    "maximum_collision_JVP_relative": 6.539602534446121e-11,
+    "maximum_collision_JVP_number_left_null_relative": 4.6706562558507953e-17,
+    "maximum_implicit_residual_JVP_relative": 3.8238687724771084e-11,
+    "minimum_grid_weight": 0.0001438294190527431,
+    "maximum_harmonic_gram_residual": 3.1259717037102064e-15,
+    "maximum_frame_roundtrip_residual": 3.953955772640617e-16,
+    "maximum_implicit_residual_relative": 1.103517295575749e-14,
+    "maximum_implicit_number_relative_change": 2.16664422233943e-16,
+    "minimum_implicit_occupation": 0.2198692513885537,
+    "maximum_free_energy_change": -4049035141644288.0,
+    "maximum_four_force_hydrogen_residual": 0.0,
+    "maximum_four_force_normal_residual": 0.0,
+    "geometry_collision_action_difference": 0.0
+  },
+  "hard_gate_status": {
+    "positive_complete_scalar_conductance": true,
+    "pair_reciprocity": true,
+    "scalar_number": true,
+    "scalar_equilibrium": true,
+    "complete_lane_nontrivial": true,
+    "same_cell_complete_lane_nontrivial": true,
+    "selected_quadrature": true,
+    "selected_orientation": true,
+    "stored_network_reproduction": true,
+    "TRK_normalization": true,
+    "static_polarizability": true,
+    "positive_spectrum_measure": true,
+    "infrared_amplitude_nu2": true,
+    "infrared_cross_section_nu4": true,
+    "smooth_background_compiler": true,
+    "Faddeeva_independent_reference": true,
+    "float64_PT_reciprocity": true,
+    "high_precision_PT_reciprocity": true,
+    "runtime_BackgroundSnapshot_connection": true,
+    "adaptive_L12_L20_L24_policy": true,
+    "positive_weight_grids": true,
+    "harmonic_analysis_exactness": true,
+    "frame_roundtrip": true,
+    "Bose_Einstein_null": true,
+    "photon_number": true,
+    "boundary_edge_number": true,
+    "stimulated_boundary_edge_active": true,
+    "entropy_free_energy_dissipation": true,
+    "analytic_collision_JVP": true,
+    "collision_JVP_number_left_null": true,
+    "analytic_implicit_residual_JVP": true,
+    "implicit_convergence": true,
+    "implicit_positivity": true,
+    "explicit_stress_fails_positivity": true,
+    "implicit_number": true,
+    "implicit_free_energy": true,
+    "total_four_force_hydrogen": true,
+    "total_four_force_normal": true,
+    "local_microphysics_firewall": true,
+    "fixed_nucleus_velocity_length_gauge": true
+  },
+  "decision": {
+    "PR03": "PASS",
+    "PR03_status": "COMPLETE",
+    "frame_adapter_API": "UNCHANGED",
+    "nonlinear_runtime_API": "UNCHANGED",
+    "production_amplitude": "FULL_SCALAR_COM_KHW",
+    "next_PR": "PR-04 HYREC common-measure moment projection"
+  },
+  "limitations": [
+    "The release is scalar elastic Ly-alpha transport; Raman channels are not included.",
+    "The production photon-frequency window |x|<=21.25 lies below ionization; the global above-threshold causal continuum branch is not claimed.",
+    "Only the unresolved 2p pole carries natural width in this bounded release window.",
+    "Fine structure, J-state interference, polarization, and atomic alignment remain outside the scalar roadmap.",
+    "Exterior-exterior collisions remain assigned to the boundary/Liouville module.",
+    "Velocity/length gauge equivalence is demonstrated in the fixed-nucleus, zero-width elastic limit; finite-recoil production is audited by PT reciprocity, not claimed as a complete relativistic gauge proof.",
+    "Wolfram and Precise Special Functions connectors were not exposed; explicit SymPy/mpmath/SciPy fallbacks are recorded instead."
+  ],
+  "next_stage": {
+    "name": "PR-04 HYREC common-measure moment projection",
+    "tasks": [
+      "Project the full scalar KHW event kernel onto the HYREC common measure without a fitted normalization.",
+      "Derive and implement Gamma and M1-M4 moment channels with units and sign conventions locked.",
+      "Close discrete-to-continuum normalization, recoil-energy, detailed-balance and Jacobian gates.",
+      "Preserve the PR-01 BackgroundSnapshot firewall and PR-02 nonlinear runtime API."
+    ]
+  }
+}
+
+===== archive/expanded/Full_Bianchi_HyRec_PR03_full_scalar_COM_KHW_v0_50/PR03_FULL_SCALAR_COM_KHW_FORMALISM.md =====
+# PR-03 full scalar COM–KHW amplitude
+
+## Scope and conventions
+
+The metric signature is `(-,+,+,+)`.  Frequencies are ordinary frequencies
+in Hz and every energy denominator is divided by `h`; `c`, `h`, and `k_B`
+remain explicit.  The background is homogeneous.  Bianchi geometry enters
+only through the already-locked `BackgroundSnapshot` frame adapter.
+
+For scalar elastic `1s -> 1s` scattering in the velocity gauge, the local
+atomic amplitude is
+
+\[
+ \mathcal{M}=1-\frac12\int d f_s\,\nu_s\left[
+ \frac{1}{D_s^- - i\gamma_s}+\frac{1}{D_s^+ + i\gamma_s}\right].
+\]
+
+The leading one is the `A^2` seagull.  The measure contains the complete
+hydrogen `1s -> np` bound spectrum and the positive continuum density.  Both
+time orderings and all interference terms are retained.  Only the unresolved
+`2p` pole receives the Ly-alpha natural width in this release window.
+
+Each intermediate internal state has rest mass
+`M_s=M_H+h nu_s/c^2`.  Its COM denominators are evaluated on that mass shell,
+which removes the spurious reciprocity defect produced by adding an internal
+energy to a common-mass kinetic energy after relativistic recoil.
+
+Using the TRK sum, the fixed-nucleus, zero-width elastic amplitude is exactly
+rearranged as
+
+\[
+ \mathcal{M}(\nu)=-\nu^2\int\frac{d f_s}{\nu_s^2-\nu^2},
+\]
+
+so the infrared amplitude is proportional to `nu^2` and the Rayleigh cross
+section to `nu^4`.  This velocity/length identity is audited in the fixed-nucleus,
+zero-width limit; the finite-recoil production lane is independently audited by
+statewise PT reciprocity rather than claimed as a full relativistic gauge proof.
+The production Ly-alpha conditional average isolates the
+`2p` pole with the Faddeeva function.  The seagull plus all higher
+bound/continuum channels are compiled as a source-moment polynomial; no
+cross-section fit or free normalization is introduced.
+
+The v0.50 35-state moments are regenerated through `ell=24`.  PR-01 frame
+adaptation and the PR-02 nonlinear/JVP/implicit APIs are unchanged.  The
+provisional `2p` lane remains explicit only for transition parity.
+
+## Scope boundary
+
+This PR closes the scalar elastic Ly-alpha production window
+`|x|<=21.25`, which lies below the Lyman limit.  It audits convergence of the
+high-intermediate-energy continuum tail but does not claim a global causal
+above-ionization photon-frequency branch.  Raman channels, fine structure,
+J-state interference, polarization and atomic alignment remain outside the
+12-PR scalar release.  Exterior–exterior collisions remain assigned to the
+boundary/Liouville module.
+
+===== archive/expanded/Full_Bianchi_HyRec_PR02_nonlinear_bose_runtime_v0_49/PR02_ledger.json =====
+{
+  "classification": "PR02_NONLINEAR_ANISOTROPIC_BOSE_PRODUCTION",
+  "stage": "PR-02",
+  "status": "PASS_PR02_COMPLETE",
+  "source": {
+    "collision_data": "data/far_scalar_release_v047.npz",
+    "collision_data_sha256": "c11af92d5e8ee86d6508f0a2a9404df0df2b1dff9a44e252abea35c4a0af8409",
+    "background_snapshot_data": "data/pr01c_background_snapshots_v048.npz",
+    "background_snapshot_data_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+    "inherited_collision_artifact": "PR01B1-B3B3B1/v0.47",
+    "inherited_background_artifact": "PR01C/v0.48"
+  },
+  "scenarios": [
+    {
+      "scenario": "finite_or_mixed_tilt",
+      "model": "Bianchi_VI_h_tilted_large_shear",
+      "snapshot_index": 100,
+      "bianchi_type": "VI_h",
+      "chart_id": "class_b_tilted",
+      "tau": 0.625,
+      "H_s_inv": 1.641522095809452e-14,
+      "beta_norm": 0.46014081170684445,
+      "normalized_shear_squared": 0.09492530829009119,
+      "selected_policy": "finite_or_mixed_tilt",
+      "ell_max": 12,
+      "lebedev_order": 29,
+      "angle_count": 302,
+      "minimum_weight": 0.0008545911725128148,
+      "gram_residual": 2.3219804678250725e-15,
+      "red_directional_crossing": false,
+      "blue_directional_crossing": false,
+      "characteristic_crossing": false,
+      "frame_roundtrip_residual": 3.953955772640617e-16,
+      "R_H_over_H_min": -1.9155999101230852,
+      "R_H_over_H_max": -0.10294403235846285,
+      "policy_match": true
+    },
+    {
+      "scenario": "nonlinear_even_shear",
+      "model": "Bianchi_II_large_shear",
+      "snapshot_index": 70,
+      "bianchi_type": "II",
+      "chart_id": "class_a",
+      "tau": 0.7291666666666666,
+      "H_s_inv": 9.097521142222529e-15,
+      "beta_norm": 0.0,
+      "normalized_shear_squared": 0.2121327684023875,
+      "selected_policy": "nonlinear_even_shear",
+      "ell_max": 20,
+      "lebedev_order": 41,
+      "angle_count": 590,
+      "minimum_weight": 0.0003095121295306187,
+      "gram_residual": 3.1259717037102064e-15,
+      "red_directional_crossing": false,
+      "blue_directional_crossing": false,
+      "characteristic_crossing": false,
+      "frame_roundtrip_residual": 1.9229626863835638e-16,
+      "R_H_over_H_min": -1.5433726709892754,
+      "R_H_over_H_max": -0.0841413967666401,
+      "policy_match": true
+    },
+    {
+      "scenario": "directional_crossing",
+      "model": "Bianchi_II_large_shear",
+      "snapshot_index": 0,
+      "bianchi_type": "II",
+      "chart_id": "class_a",
+      "tau": 0.0,
+      "H_s_inv": 5.000000000000008e-14,
+      "beta_norm": 0.0,
+      "normalized_shear_squared": 0.49639999999999995,
+      "selected_policy": "directional_crossing",
+      "ell_max": 24,
+      "lebedev_order": 53,
+      "angle_count": 974,
+      "minimum_weight": 0.0001438294190527431,
+      "gram_residual": 2.9352154936157325e-15,
+      "red_directional_crossing": true,
+      "blue_directional_crossing": true,
+      "characteristic_crossing": true,
+      "frame_roundtrip_residual": 1.9229626863835638e-16,
+      "R_H_over_H_min": -1.8385640646055101,
+      "R_H_over_H_max": 0.39999999999999997,
+      "policy_match": true
+    }
+  ],
+  "hard_results": {
+    "maximum_BE_action_relative": 8.81440878264331e-16,
+    "maximum_number_residual_relative": 8.018324121051612e-18,
+    "maximum_boundary_number_residual_relative": 8.665310902536088e-18,
+    "maximum_entropy_free_energy_production": -1548500423203887.5,
+    "minimum_boundary_to_full_action_norm": 1.5998175065217143e-05,
+    "maximum_collision_JVP_relative": 6.534851987191272e-11,
+    "maximum_collision_JVP_number_left_null_relative": 5.863089230219398e-17,
+    "maximum_implicit_residual_JVP_relative": 3.8514622984720175e-11,
+    "minimum_grid_weight": 0.0001438294190527431,
+    "maximum_harmonic_gram_residual": 3.1259717037102064e-15,
+    "maximum_frame_roundtrip_residual": 3.953955772640617e-16,
+    "maximum_implicit_residual_relative": 1.703815903819329e-14,
+    "maximum_implicit_number_relative_change": 0.0,
+    "minimum_implicit_occupation": 0.2198692513885537,
+    "maximum_explicit_trial_minimum": -0.01496156694049211,
+    "maximum_free_energy_change": -4049035120082944.0,
+    "maximum_four_force_hydrogen_residual": 0.0,
+    "maximum_four_force_normal_residual": 0.0,
+    "geometry_collision_action_difference": 0.0,
+    "maximum_mpmath_80dps_reference_residual": 2.1084395886461046e-81
+  },
+  "hard_gate_status": {
+    "runtime_BackgroundSnapshot_connection": true,
+    "adaptive_L12_L20_L24_policy": true,
+    "positive_weight_grids": true,
+    "harmonic_analysis_exactness": true,
+    "frame_roundtrip": true,
+    "Bose_Einstein_null": true,
+    "photon_number": true,
+    "boundary_edge_number": true,
+    "stimulated_boundary_edge_active": true,
+    "entropy_free_energy_dissipation": true,
+    "analytic_collision_JVP": true,
+    "collision_JVP_number_left_null": true,
+    "analytic_implicit_residual_JVP": true,
+    "implicit_convergence": true,
+    "implicit_positivity": true,
+    "explicit_stress_fails_positivity": true,
+    "implicit_number": true,
+    "implicit_free_energy": true,
+    "total_four_force_hydrogen": true,
+    "total_four_force_normal": true,
+    "local_microphysics_firewall": true,
+    "independent_high_precision_reference": true
+  },
+  "decision": {
+    "PR02": "PASS",
+    "PR02_status": "COMPLETE",
+    "local_collision_microphysics": "UNCHANGED",
+    "next_PR": "PR-03 full scalar COM-KHW amplitude"
+  },
+  "limitations": [
+    "The stress occupations are collision-substep regression fields, not solutions of the coupled Liouville plus recombination system.",
+    "The amplitude is still the provisional unresolved scalar 2p pole+crossed model; full bound, continuum, seagull and interference terms are PR-03.",
+    "Exterior-exterior collisions remain assigned to the boundary/Liouville module as locked in v0.47.",
+    "The total atom four-force is the same-event counterterm of the inherited scalar collision event; PR-03 upgrades the physical amplitude, not this conservation architecture.",
+    "This stage exercises three adaptive runtime lanes, not the all-11 automated sweep assigned to PR-10."
+  ],
+  "next_stage": {
+    "name": "PR-03 full scalar COM-KHW amplitude",
+    "tasks": [
+      "Replace the provisional unresolved scalar 2p pole+crossed amplitude by the complete scalar bound+continuum COM-KHW construction.",
+      "Include seagull and interference terms with explicit gauge and reciprocity audits.",
+      "Regenerate pair conductance moments and rerun PR-01/PR-02 conservation, BE, entropy and implicit-update regressions."
+    ]
+  }
+}
+
+===== archive/expanded/Full_Bianchi_HyRec_PR01C_background_frame_adapter_v0_48/PR01C_ledger.json =====
+{
+  "classification": "PR01C_BACKGROUND_FRAME_ADAPTER_CLOSURE",
+  "stage": "PR-01C",
+  "status": "PASS_PR01_COMPLETE",
+  "source": {
+    "primitive_archive": "archive/inputs/bianchibianchic2.tar.gz",
+    "primitive_archive_sha256": "ba10a80ca7e4cec510e935d5a75032725ae822b89cb25c6dd2599d770955ef38",
+    "collision_artifact": "PR01B1-B3B3B1/v0.47",
+    "collision_data_sha256": "c11af92d5e8ee86d6508f0a2a9404df0df2b1dff9a44e252abea35c4a0af8409"
+  },
+  "models": [
+    {
+      "model": "Bianchi_II_large_shear",
+      "bianchi_type": "II",
+      "chart": "class_a",
+      "trajectory_success": true,
+      "tau_final": 2.5,
+      "cosmic_time_final_s": 2084115658147850.8,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 2.353625263441816e-16,
+      "Omega_min": 0.4783916666666667,
+      "Sigma2_max": 0.49639999999999995,
+      "tilt_speed_max": 0.0,
+      "constraint_max": 0.0,
+      "R_H_over_H_min": -1.8385640646055101,
+      "R_H_over_H_max": 0.39999999999999997,
+      "mixed_sign_time_count": 59,
+      "selected_direction": 0,
+      "selected_root_count": 1,
+      "frame_frequency_residual": 2.220446049250313e-16,
+      "frame_direction_residual": 7.540296170514115e-12
+    },
+    {
+      "model": "Bianchi_VI_h_tilted_large_shear",
+      "bianchi_type": "VI_h",
+      "chart": "class_b_tilted",
+      "trajectory_success": true,
+      "tau_final": 1.5,
+      "cosmic_time_final_s": 132964226092616.89,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 4.243868423168e-15,
+      "Omega_min": 0.07336798896780605,
+      "Sigma2_max": 0.6049586405645009,
+      "tilt_speed_max": 0.6373478931944699,
+      "constraint_max": 3.1282094969942165e-13,
+      "R_H_over_H_min": -3.223737406233364,
+      "R_H_over_H_max": 0.37857090057833415,
+      "mixed_sign_time_count": 77,
+      "selected_direction": 20,
+      "selected_root_count": 2,
+      "frame_frequency_residual": 1.490085832500654e-11,
+      "frame_direction_residual": 1.0853890065529649e-11
+    },
+    {
+      "model": "Bianchi_VI_minus_1_over_9_exceptional",
+      "bianchi_type": "VI_-1/9",
+      "chart": "exceptional_VI",
+      "trajectory_success": true,
+      "tau_final": 2.0,
+      "cosmic_time_final_s": 396534576208170.2,
+      "H_initial_s^-1": 5.000000000000008e-14,
+      "H_final_s^-1": 1.4137576995261422e-15,
+      "Omega_min": 0.37382932697028404,
+      "Sigma2_max": 0.45158340297184774,
+      "tilt_speed_max": 0.0,
+      "constraint_max": 4.829211862915523e-16,
+      "R_H_over_H_min": -1.8730475485530906,
+      "R_H_over_H_max": 0.30000000000000004,
+      "mixed_sign_time_count": 50,
+      "selected_direction": 6,
+      "selected_root_count": 2,
+      "frame_frequency_residual": 4.440892098500626e-16,
+      "frame_direction_residual": 1.1193216413606647e-11
+    }
+  ],
+  "hard_results": {
+    "maximum_primitive_constraint": 3.1282094969942165e-13,
+    "maximum_frame_frequency_residual": 1.490085832500654e-11,
+    "maximum_frame_direction_residual": 1.1193216413606647e-11,
+    "minimum_selected_root_count": 1,
+    "maximum_branch_quadrature_relative": 7.65922881732011e-16,
+    "minimum_naive_fixed_branch_error": 2.5760502957832116e-06,
+    "maximum_number_residual": 0.0,
+    "maximum_boundary_four_momentum_residual": 0.0,
+    "collision_action_model_difference": 0.0,
+    "collision_left_null_relative": 1.2501710130807262e-16,
+    "collision_right_null_relative": 1.5343683284206274e-17,
+    "inherited_collision_four_force": 0.0
+  },
+  "hard_gate_status": {
+    "primitive_trajectory_success": true,
+    "representative_types": true,
+    "primitive_constraints": true,
+    "finite_tilt_frame_frequency": true,
+    "finite_tilt_frame_direction": true,
+    "turning_event_localization": true,
+    "branch_quadrature": true,
+    "boundary_number": true,
+    "boundary_four_momentum": true,
+    "local_collision_unchanged": true,
+    "inherited_scalar_collision": true,
+    "total_four_force": true
+  },
+  "decision": {
+    "PR01C": "PASS",
+    "PR01": "COMPLETE",
+    "local_collision_microphysics": "UNCHANGED",
+    "next_PR": "PR-02 nonlinear anisotropic Bose collision production integration"
+  },
+  "limitations": [
+    "The representative class-A and exceptional primitive charts are non-tilted; finite tilt is exercised by the tilted class-B trajectory.",
+    "This is a smoke/regression closure, not the all-11 end-to-end sweep assigned to PR-10.",
+    "The collision amplitude remains the provisional unresolved scalar 2p pole+crossed model; full bound+continuum KHW physics is PR-03.",
+    "Exterior-exterior collisions remain assigned to the boundary/Liouville module as locked in v0.47."
+  ],
+  "next_stage": {
+    "name": "PR-02 nonlinear anisotropic Bose collision production integration",
+    "tasks": [
+      "Promote the v0.47 nonlinear Bose edge action from mock fields to the BackgroundSnapshot adaptive L=12/20/24 runtime interface.",
+      "Add positivity-preserving implicit updates and analytic/JVP Jacobian tests.",
+      "Run finite-tilt, nonlinear-shear and crossing stress states with full BE/number/entropy/four-force gates."
+    ]
+  }
+}

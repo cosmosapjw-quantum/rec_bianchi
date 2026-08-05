@@ -2,120 +2,125 @@
 
 ## Summary
 
-The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The current durable endpoint is **PR-03 / v0.50**. **PR-01, PR-02, and PR-03 are complete.**
+The project targets a verified scalar Full Bianchi–HyRec solver on spatially homogeneous backgrounds, for all 11 Bianchi types, including finite tilt and nonlinear large shear. The durable endpoint is **PR-04A / v0.51**. PR-01, PR-02, and PR-03 are complete; PR-04 is deliberately still in progress because exact original-HyRec archive/native-stencil parity remains open.
 
-## Closed in v0.50
+## Closed in PR-04A / v0.51
 
-- Replaced the production provisional unresolved scalar `2p` pole+crossed amplitude by a scalar elastic `1s -> 1s` COM–Kramers–Heisenberg–Waller construction.
-- Retained the `A^2` seagull, both time orderings, explicit hydrogen `1s -> np` bound channels, a positive continuum quadrature, a positive moment-matched unresolved Rydberg tail, and all scalar interference terms.
-- Used exact hydrogen oscillator-strength formulae through `n=512`, a 256-node positive continuum rule, and independent high-precision infinite-spectrum audits of the TRK sum and the static polarizability.
-- Put each intermediate internal state on its own relativistic mass shell, `M_s=M_H+h nu_s/c^2`, in the direct event audit. This removes a spurious reciprocity defect caused by adding an internal energy to a common-mass relativistic kinetic-energy difference.
-- Isolated the unresolved `2p` pole analytically with the Faddeeva function and compiled the smooth higher bound-plus-continuum background from source moments. No fitted cross-section normalization was introduced.
-- Regenerated all 459 bounded network blocks: 136 interior pairs, 204 near-interface pairs, 102 far-interface pairs, and 17 same-cell blocks, through `ell=24`.
-- Kept an explicit `provisional_2p` comparison lane and verified that the full lane is nonidentical while preserving the fixed PR-01 and PR-02 interfaces.
-- Reran the PR-02 BE, number, boundary-number, free-energy, positivity, exact-JVP, implicit-JVP, frame, four-force, and geometry-firewall gates on the v0.50 network.
-- Recorded the absence of Wolfram and Precise Special Functions connectors and used explicit SymPy, `mpmath`, and SciPy independent fallbacks instead.
+- Pinned the inherited byte-level HYREC-2 FULL source registry at commit `09e8243d0e08edd3603a94dfbc445ae06cafe139`, including the exact blobs for `hydrogen.c`, `hydrogen.h`, `Alpha_inf.dat`, `R_inf.dat`, and `two_photon_tables.dat`.
+- Locked the FULL representation `(2s,2p) + 311 virtual photon states`, including the 80-state Ly-alpha diffusion block at zero-based virtual indices `100..179`.
+- Kept ordinary frequency `nu` in Hz and fixed
+  `Delta nu = nu_target - nu_source`,
+  `Delta E_gamma = h Delta nu`, and
+  `Delta E_H = -h Delta nu`.
+- Projected all 136 off-diagonal pairs and 17 active same-cell jump measures of the interior core `-4.25 <= x <= 4.25` through fourth frequency order.
+- Preserved the accepted v0.50 zeroth pair mass exactly and obtained `M1`–`M4` from independently integrated conditional moment ratios. No HYREC output or free multiplicative normalization was used.
+- Enforced exact exchange parity
+  `S^(r)_ji = (-1)^r S^(r)_ij`, nonnegative zeroth/even moments, and exact conversion between dimensionless Doppler-coordinate moments and Hz moments.
+- Added source-conditioned `Gamma,M1,...,M4`, a conservative scalar Bose edge operator, exact analytic JVP, and a log-occupation backward-Euler update.
+- Closed BE, photon-number, free-energy, positivity, same-event photon-plus-atom energy, and common-local-state geometry-firewall gates.
+- Retained HYREC-2 primitive `Aup/Adn` diffusion rates as diagnostics only. Direct substitution is forbidden because those rates live inside an escape-compressed real/virtual Schur system.
+- Recorded unavailable Wolfram and Precise Special Functions plugins explicitly and used SymPy exact algebra, `mpmath` 80-decimal references, and SciPy positive numerical quadrature as fallbacks.
+
+## Common-measure definition and dimensions
+
+For target cell `i`, source cell `j`, and ordinary-frequency jump
+
+\[
+\Delta\nu=\nu_i-\nu_j,
+\]
+
+the oriented positive event moments are
+
+\[
+S^{(r)}_{ij}=\int_{I_j\to I_i}(\Delta\nu)^r\,d\mathcal S,
+\qquad r=0,\ldots,4.
+\]
+
+The event tensor has dimensions
+
+\[
+[S^{(r)}]={\rm m}^{-3}{\rm s}^{-1}{\rm Hz}^{r}.
+\]
+
+With source equilibrium measure `Pi_j`,
+
+\[
+\Gamma_j={1\over\Pi_j}\sum_i S^{(0)}_{ij},
+\qquad
+M_r(j)={1\over\Pi_j}\sum_i S^{(r)}_{ij},
+\]
+
+so `[Gamma]=s^-1` and `[M_r]=Hz^r s^-1`. The atomic recoil power per source photon is `-h M1`; the photon contribution is its exact opposite on the same event.
+
+The lower-cost production quadrature is used only for conditional ratios:
+
+\[
+S^{(r)}_{ij}\leftarrow S^{(0),v0.50}_{ij}
+{S^{(r),raw}_{ij}\over S^{(0),raw}_{ij}}.
+\]
+
+This is a conservation projection to the already accepted first-principles v0.50 event mass, not a fit to HyRec.
 
 ## Representative hard results
 
 | Quantity | Result |
 |---|---:|
-| Minimum positive scalar conductance | `3.4616e-53` |
-| Pair reciprocity residual | `0` |
-| Scalar number left-null residual | `3.5530e-16` |
-| Scalar equilibrium right-null residual | `2.9099e-17` |
-| Full/provisional pair-network difference | `1.6182e-08` |
-| Full/provisional same-cell difference | `1.4817e-08` |
-| Maximum selected production/reference quadrature residual | `2.2051e-09` |
-| Maximum selected orientation residual | `6.8790e-16` |
-| Fixed-nucleus velocity/length gauge residual | `6.8499e-11` |
-| Infrared amplitude power | `1.9999998220` |
-| Infrared cross-section power | `3.9999996441` |
-| Smooth-background order-4/direct residual | `1.9085e-12` |
-| Smooth-background order-8/direct residual | `2.6645e-15` |
-| High-energy continuum-tail weight (`n<10^-2`) | `2.6458e-10` |
-| Float64 PT amplitude residual | `1.2200e-11` |
-| 90-digit PT denominator residual | `2.1064e-79` |
-| Maximum independent special-function residual | `8.6694e-15` |
-| Maximum BE action residual on v0.50 network | `8.8144e-16` |
-| Maximum photon-number residual | `8.5575e-18` |
-| Maximum collision JVP residual | `6.5396e-11` |
-| Maximum implicit-residual JVP residual | `3.8239e-11` |
-| Maximum implicit solve residual | `1.1035e-14` |
-| Minimum implicit occupation | `2.1987e-01` |
-| Hydrogen- and normal-frame total four-force residuals | `0`, `0` |
-| Geometry-to-local-collision action difference | `0` |
+| Interior states | `17` |
+| Off-diagonal pairs | `136` |
+| Active same-cell jump cells | `17` |
+| Maximum raw-to-durable `C0` projection | `4.0106e-06` |
+| Durable off-diagonal `C0` reproduction | `0` |
+| Exchange-parity residual | `0` |
+| Maximum pair conditional-moment refinement residual | `1.1178e-06` |
+| Maximum same-cell conditional-moment refinement residual | `1.6042e-06` |
+| Minimum source `M2` | `9.1512e+16 Hz^2 s^-1` |
+| Minimum source `M4` | `3.0742e+39 Hz^4 s^-1` |
+| BE relative null | `0` |
+| Stress photon-number relative residual | `7.4728e-17` |
+| Stress free-energy production | `-4.4656e+15 m^-3 s^-1` |
+| Photon-plus-atom energy residual | `0 W m^-3` |
+| Analytic-JVP relative residual | `5.2050e-08` |
+| Implicit residual | `2.8370e-13` |
+| Explicit stress-trial minimum | `-1.5901e-02` |
+| Implicit minimum occupation | `6.7513e-02` |
+| Implicit number relative change | `3.9475e-14` |
+| Implicit free-energy change | `-2.2815e+16 m^-3` |
+| Native source-snapshot detailed-balance residual | `2.7105e-20` |
+| Geometry-to-local-microphysics difference | `0` |
+| TRK and static-polarizability residuals | `0`, `0` |
 
-The high-precision independent spectrum audit gives the bound contribution
+## Native HYREC source interpretation
 
-\[
-\sum_{n=2}^{\infty} f_{1n}
- =0.5650041506748519874\ldots,
-\]
+The official HyRec description distinguishes two roles: original HyRec performs numerical time-dependent radiative transfer, while default HYREC-2 uses correction functions derived from that calculation. Consequently, HYREC-2 SWIFT is a production/parity target but is not by itself the native anisotropic frequency-space operator.
 
-the continuum contribution
+The pinned HYREC-2 FULL arrays provide exact source and convention evidence, but the primitive adjacent `Aup/Adn` coefficients are not equal to the v0.51 source-conditioned COM–KHW moments. They enter the virtual-state matrix and its escape-compressed Schur reduction. The superseded route “copy the completed `Tvv` matrix or fit a scale” remains forbidden.
 
-\[
-\int_0^\infty \frac{df}{dn}\,dn
- =0.4349958493251480126\ldots,
-\]
+## Architecture preserved
 
-and closes the TRK sum to unity and the static ground-state polarizability to `4.5 a_0^3` at roughly 76 decimal places.
-
-## Architecture locked through PR-03
-
-Bianchi geometry enters local recombination only through the physical tetrad snapshot
-
-\[
-\mathcal B=
-\{H,q,\sigma_{ab},N_{ab},A_a,R_a,
-\beta_{\rm H}^a,D_0\beta_{\rm H}^a\}.
-\]
-
-It determines normal- and hydrogen-frame characteristics, aberration, direction flow, red/blue boundary speeds, and branch events. It is not an argument of the local scalar atomic amplitude or conductance table.
-
-For the fixed-nucleus, zero-width scalar elastic audit, the velocity-gauge form is
-
-\[
-\mathcal M(\nu)=1-\frac12\int df_s\,\nu_s
-\left[\frac{1}{\nu_s-\nu}+\frac{1}{\nu_s+\nu}\right].
-\]
-
-Using the TRK sum, it rearranges to
-
-\[
-\mathcal M(\nu)=-\nu^2\int\frac{df_s}{\nu_s^2-\nu^2},
-\]
-
-so `|M|` scales as `nu^2` and the Rayleigh cross-section as `nu^4` in the infrared. This is a fixed-nucleus gauge identity. The finite-recoil production event is instead audited by statewise relativistic mass-shell construction and PT reciprocity; v0.50 does not claim a complete relativistic gauge-equivalence proof.
-
-The PR-02 nonlinear state and log-occupation backward-Euler/JVP architecture are unchanged. Photon and atom four-force contributions remain opposite parts of the same event and close separately after transformation to the hydrogen and normal tetrads.
+- Metric signature: `(-,+,+,+)`.
+- `c`, `h`, and `k_B` remain explicit.
+- Bianchi geometry enters through `BackgroundSnapshot` tetrad characteristics, not through the local atomic amplitude or common-measure table.
+- Every red/blue boundary-speed zero remains localized within the timestep.
+- Adaptive angular policies remain `L=12` for finite/mixed tilt, `L=20` for nonlinear even shear, and `L=24` for directional crossing.
+- Photon and atom four-force contributions remain opposite parts of the same event.
 
 ## Explicit limitations
 
-- The production release is scalar elastic Ly-alpha transport in the locked window `|x|<=21.25`, below the Lyman limit. It does not claim a global causal above-ionization photon-frequency branch.
-- Raman channels are not included in PR-03. They remain outside the current scalar elastic production lane even though the literature source lock includes general Rayleigh/Raman KHW formulae.
-- Only the unresolved `2p` pole carries the natural width in this bounded Ly-alpha window. Higher-state damping and overlap are not activated.
-- The positive one-node unresolved Rydberg tail closes the first two exact spectral moments after explicit states through `n=512`; it is not a pointwise representation of every omitted high-`n` resonance.
-- Electric-dipole scalar physics is used. Fine structure, J-state interference, polarization, and atomic alignment remain excluded from the 12-PR scalar release.
-- Exterior–exterior collisions remain assigned to the boundary/Liouville module.
-- The PR-02 stress fields remain collision-substep regressions, not solutions of the fully coupled Liouville plus recombination system.
-- The all-11 automated background sweep remains assigned to PR-10.
-- Wolfram and Precise Special Functions connectors were not exposed in this runtime; no claim is made that they ran.
+- The official October-2012 original-HyRec archive bytes and SHA-256 were not acquired in this network-isolated runtime. PR-04 native original-archive parity is therefore open, not inferred from documentation or output matching.
+- The release covers the 17 interior cells `|x|<=4.25`. Exterior transport remains assigned to the PR-01 Liouville/boundary module.
+- Same-cell `Gamma` counts active frequency-changing events only; the coherent zero-transfer identity is excluded.
+- Native `Aup/Adn` moments are diagnostic until the virtual-state/escape map is derived on one common measure.
+- The production lane remains scalar elastic. Raman channels, fine structure, J-state interference, polarization, and atomic alignment are not added here.
+- The geometry firewall tests a common local hydrogen-frame state; it is not the all-11 trajectory sweep assigned to PR-10.
+- Wolfram and Precise Special Functions plugins were unavailable in this runtime; no claim is made that they ran.
 
 ## Immediate next release
 
-**PR-04 HYREC common-measure moment projection** must begin with a source/convention lock rather than a fitted normalization:
+**PR-04B original-HyRec archive and native primitive common-measure parity** must:
 
-1. pin the exact native HyRec/HyRec-2 source and identify the frequency-bin measure, normalization, sign, and unit conventions used by the Ly-alpha transfer operator;
-2. define the event frequency increment and the common-measure rate `Gamma` and moments `M1`–`M4` directly from the v0.50 event kernel, with dimensions and recoil sign checked before discretization;
-3. compare direct event integration, common-measure quadrature, and the native HyRec discrete operator without introducing a free scale factor;
-4. close normalization, detailed balance, recoil-energy, second-through-fourth-moment, positivity, and analytic/JVP Jacobian gates;
-5. preserve the PR-01 `BackgroundSnapshot` firewall and the PR-02 nonlinear runtime API;
-6. publish implementation, tests, formalism, ledger, CSV/NPZ evidence, SHA-256 manifest, immutable ZIP, commits, remote-check receipt, binary-safe patches, and a standalone bundle.
-
-The first PR-04 gate is therefore **source-lock and convention parity**, not a numerical fit.
-
-## Repository synchronization
-
-The owner reports that v0.47 was expanded and merged into the private `main`. This runtime exposes neither a writable GitHub connector nor a working SSH/HTTPS Git route, so the exact remote merge SHA remains independently unverified. The v0.50 delivery uses the exact local v0.47 content commit as the cumulative base and the exact local v0.49 commit as the incremental base, plus a standalone full bundle. Apply only on a feature branch after fetching remote `main`; never force-push shared history.
+1. acquire and SHA-256 lock the official October-2012 original-HyRec archive;
+2. compile and identify its native radiation variable, bin centres/edges, integration measure, time derivative, diffusion sign, recoil term, and coefficient units;
+3. derive the virtual-state/escape map rather than fitting a normalization;
+4. compare direct v0.51 event moments, original native primitive moments, and the Schur-reduced operator on one measure;
+5. close native normalization, detailed balance, recoil energy, analytic/JVP Jacobian, and one FLRW snapshot parity gate;
+6. keep PR-04 marked incomplete until these native-source gates pass.
