@@ -106,6 +106,7 @@ def _uv_frequency_integral(
     nv: int,
     local_half: float = 0.08,
     include_moments: bool = False,
+    amplitude_lane: str = "full",
 ):
     """Two-interval u-v integral with a tangent split at the line pole."""
     target_left, target_right = _validate_interval(target)
@@ -186,7 +187,9 @@ def _uv_frequency_integral(
             )
             * nu_source
             * nu_target
-            * PCC.exact_amp2(nu_source, nu_target, mu)
+            * PCC.exact_amp2(
+                nu_source, nu_target, mu, amplitude_lane=amplitude_lane
+            )
         )
         scalar += 2.0 * u_weight * float(np.dot(weights, density))
         if include_moments:
@@ -208,6 +211,7 @@ def _tensor_frequency_integral(
     *,
     order: int,
     include_moments: bool = False,
+    amplitude_lane: str = "full",
 ):
     x_source_1d, source_weights = _interval_nodes(source, order)
     x_target_1d, target_weights = _interval_nodes(target, order)
@@ -224,7 +228,9 @@ def _tensor_frequency_integral(
         )
         * nu_source
         * nu_target
-        * PCC.exact_amp2(nu_source, nu_target, mu)
+        * PCC.exact_amp2(
+            nu_source, nu_target, mu, amplitude_lane=amplitude_lane
+        )
     )
     scalar = float(np.sum(weights * density))
     if not include_moments:
@@ -260,6 +266,7 @@ def _integrate_pair(
     lane: str,
     ell_max: int,
     include_moments: bool,
+    amplitude_lane: str,
 ):
     if lane not in LANES:
         raise ValueError(f"unknown lane: {lane}")
@@ -285,6 +292,7 @@ def _integrate_pair(
                 nl=int(parameters["nl"]),
                 nv=int(parameters["nv"]),
                 include_moments=include_moments,
+                amplitude_lane=amplitude_lane,
             )
         else:
             result = _tensor_frequency_integral(
@@ -293,6 +301,7 @@ def _integrate_pair(
                 mu,
                 order=int(parameters["nf"]),
                 include_moments=include_moments,
+                amplitude_lane=amplitude_lane,
             )
         if include_moments:
             scalar, moment = result
@@ -342,10 +351,12 @@ def exterior_pair_bundle(
     *,
     lane: str = "production",
     ell_max: int = 24,
+    amplitude_lane: str = "full",
 ) -> tuple[np.ndarray, np.ndarray]:
     """Conductance and axisymmetric same-event transfer for one pair."""
     conductance, transfer = _integrate_pair(
-        target, source, lane=lane, ell_max=ell_max, include_moments=True
+        target, source, lane=lane, ell_max=ell_max, include_moments=True,
+        amplitude_lane=amplitude_lane,
     )
     common_mode_factor = 8.0 * math.pi * PCC.dnu / PCC.c**3
     return common_mode_factor * conductance, common_mode_factor * transfer
@@ -358,10 +369,12 @@ def exterior_pair_conductance(
     *,
     lane: str = "production",
     ell_max: int = 24,
+    amplitude_lane: str = "full",
 ) -> np.ndarray:
     """Unordered equilibrium conductance for a disjoint interval pair."""
     total, _ = _integrate_pair(
-        target, source, lane=lane, ell_max=ell_max, include_moments=False
+        target, source, lane=lane, ell_max=ell_max, include_moments=False,
+        amplitude_lane=amplitude_lane,
     )
     return (8.0 * math.pi * PCC.dnu / PCC.c**3) * total
 
@@ -372,6 +385,7 @@ def same_event_four_force_coefficients(
     source: tuple[float, float],
     *,
     lane: str = "production",
+    amplitude_lane: str = "full",
 ) -> tuple[np.ndarray, np.ndarray]:
     """Axisymmetric conductance-weighted photon/atom transfer coefficients.
 
@@ -380,7 +394,7 @@ def same_event_four_force_coefficients(
     photon direction after azimuthal averaging.
     """
     _, photon = exterior_pair_bundle(
-        target, source, lane=lane, ell_max=0
+        target, source, lane=lane, ell_max=0, amplitude_lane=amplitude_lane
     )
     return photon, -photon
 

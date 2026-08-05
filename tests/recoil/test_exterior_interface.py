@@ -33,8 +33,12 @@ def test_scalar_exterior_conductance_is_positive():
 def test_selected_exterior_quadrature_converges():
     target = BLUE_CELLS[1]
     source = (float(PCC.xedges[12]), float(PCC.xedges[13]))
-    production = exterior_pair_conductance(target, source, lane="production", ell_max=3)
-    reference = exterior_pair_conductance(target, source, lane="reference", ell_max=3)
+    production = exterior_pair_conductance(
+        target, source, lane="production", ell_max=3, amplitude_lane="provisional_2p"
+    )
+    reference = exterior_pair_conductance(
+        target, source, lane="reference", ell_max=3, amplitude_lane="provisional_2p"
+    )
     assert np.linalg.norm(production - reference) / np.linalg.norm(reference) < 2e-7
 
 
@@ -67,9 +71,24 @@ def test_general_interval_measure_matches_locked_interior_pair():
     target_index, source_index = 7, 9
     target = (float(PCC.xedges[target_index]), float(PCC.xedges[target_index + 1]))
     source = (float(PCC.xedges[source_index]), float(PCC.xedges[source_index + 1]))
-    generalized = exterior_pair_conductance(target, source, lane="production", ell_max=4)
+    # This is a geometric/common-measure identity, so compact CI uses the
+    # analytic provisional lane. Full-amplitude parity is closed by the
+    # immutable PR-03 selected-pair audit.
+    generalized = exterior_pair_conductance(
+        target,
+        source,
+        lane="production",
+        ell_max=4,
+        amplitude_lane="provisional_2p",
+    )
     from full_bianchi_hyrec.recoil.pair_cell_conductance import integrate_unordered_pair
-    raw = integrate_unordered_pair(target_index, source_index, lane="production", ell_max=4)
+    raw = integrate_unordered_pair(
+        target_index,
+        source_index,
+        lane="production",
+        ell_max=4,
+        amplitude_lane="provisional_2p",
+    )
     factor = 8.0 * np.pi * PCC.dnu / PCC.c**3
     locked = factor * raw
     assert np.linalg.norm(generalized - locked) / np.linalg.norm(locked) < 2e-10

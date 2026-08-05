@@ -1,0 +1,69 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_INVENTORY",
+  "stage": "PR-03",
+  "generated_utc": "2026-08-05T00:55:47.908893+00:00",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "recovery_parent": {
+    "source_bundle": "/mnt/data/rec_bianchi_v049_full.bundle",
+    "source_bundle_sha256": "992f44e67af5c997f206a01b294fac47a87aab54e69cb1b85e45bc04a4836d13",
+    "handoff_package": "/mnt/data/rec_bianchi_handoff_package_v049_2026-08-05.zip",
+    "handoff_package_sha256": "6aca85e66b8b7a7e16fad3cb3ed2cee0e14200bce3a7fbad793fdc2519df15ab",
+    "branch": "work/pr03-full-scalar-com-khw-v050",
+    "parent_commit": "721f792736eaddc7ec6951f99332c44c70b039bf",
+    "parent_tree": "9d85bcb5a20e7b89017b0cbf4911e3b1f5c61fa5"
+  },
+  "stage_start_checks": {
+    "offline_bootstrap": "PASS",
+    "remote_check": "EXECUTED_BUT_ORIGIN_WAS_UPLOADED_BUNDLE_NOT_GITHUB",
+    "quick_verify": "PASS",
+    "fast_tests": "65 passed, 21 deselected",
+    "bundle_history": "COMPLETE_AND_CLONEABLE"
+  },
+  "evidence_classification": [
+    {
+      "claim": "PR-02/v0.49 incoming scientific state",
+      "status": "DURABLE_VERIFIED",
+      "evidence": "complete bundle, commit/tree, ledgers and tests"
+    },
+    {
+      "claim": "owner-reported v0.47 merge on private GitHub main",
+      "status": "TRANSCRIPT_ONLY",
+      "evidence": "owner report; exact remote commit identity unavailable"
+    },
+    {
+      "claim": "exact remote main SHA",
+      "status": "MISSING",
+      "evidence": "no writable/readable connector in shell, no ssh executable, no GitHub DNS route"
+    },
+    {
+      "claim": "PR-03/v0.50",
+      "status": "RECONSTRUCTED",
+      "evidence": "implementation and artifact are created in the bounded stage; final durable status is recorded separately after commit and fresh-clone verification"
+    }
+  ],
+  "required_read_order_completed": true,
+  "scientific_scope_lock": {
+    "metric_signature": "(-,+,+,+)",
+    "constants": "c, h and k_B explicit",
+    "background": "spatially homogeneous",
+    "formalism": "tetrad plus 1+3",
+    "bianchi_scope": "all 11 types through locked BackgroundSnapshot interface",
+    "tilt": "finite",
+    "shear": "nonlinear large shear"
+  },
+  "tool_capabilities": {
+    "web_search": "USED",
+    "Wolfram": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions": "UNAVAILABLE_IN_RUNTIME",
+    "project_custom_skills": "NOT_EXPOSED_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy",
+      "mpmath",
+      "SciPy"
+    ]
+  },
+  "notes": [
+    "No transcript-only completion statement was inherited as evidence.",
+    "The initial check_remote_state result against the uploaded bundle was not treated as a private-GitHub remote verification."
+  ]
+}
