@@ -63,7 +63,7 @@ def main() -> None:
     current_bundle_name = f"{current_artifact}.zip"
     assert any(row["bundle"] == current_bundle_name for row in index)
     assert (ROOT / "state/PATCH_BASE.json").exists()
-    for script in ("check_remote_state.py", "export_patch_series.py"):
+    for script in ("check_remote_state.py", "export_git_bundle_delivery.py"):
         assert (ROOT / "scripts" / script).exists()
 
     # Run the current artifact's own compact verifier when present.

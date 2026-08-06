@@ -1,49 +1,94 @@
-# GitHub private-repository access and fallbacks
+# GitHub private-repository access and Git-bundle fallbacks
 
 Repository: `cosmosapjw-quantum/rec_bianchi`
 
-## ChatGPT GitHub app — read access
+## Managed ChatGPT GitHub connector
 
-1. In ChatGPT open **Settings → Apps → GitHub**.
-2. Select **Connect** or open the gear menu, then choose **Configure repositories on GitHub**.
-3. Under repository access, select `cosmosapjw-quantum/rec_bianchi` and save.
-4. Private or newly authorized repositories may take several minutes to appear.
-5. In GitHub's own search box, run:
+The managed connector can inspect private repository state when the repository
+is authorized in ChatGPT Settings. Connector visibility does not imply that the
+current shell has a reusable Git credential. Treat connector read/write actions
+and shell Git authentication as separate capabilities.
 
-   ```text
-   repo:cosmosapjw-quantum/rec_bianchi import
-   ```
+Current durable remote receipt:
 
-   This requests indexing for connector search. Allow another several minutes.
-6. App availability can differ among standard Chat, Deep Research, Agent and Codex runtimes.
+```text
+main: 47106fec89c176c3f3b91ed7e4ff198dea323968
+tree: b1cc9c0959bd89418a4f24a51959c44bb163fe88
+PR:   #14 merged
+```
 
-The ChatGPT GitHub app may be exposed only as a read/search connector. Do not assume it supplies a Git credential or permits pushes from the current shell.
+See `state/PR14_REMOTE_BASE_RECEIPT.json`.
 
-## Codex — preferred write path
+## Preferred local integration path
 
-Create or open a Codex GitHub environment for this repository, authorize the repository, and ask Codex to import the delivered v0.50 bundle or apply the appropriate patch on a feature branch. Before merge, require:
+Use the self-contained feature Git bundle on a branch created from freshly
+fetched remote main:
 
 ```bash
-./scripts/bootstrap_sandbox.sh --offline
-python scripts/check_remote_state.py --require-access
+git fetch origin --prune
+git switch -c apply/v056-pr04c1b-c2 origin/main
+git bundle verify /path/to/rec_bianchi_v056_feature.bundle
+git fetch /path/to/rec_bianchi_v056_feature.bundle \
+  refs/heads/delivery/v056:refs/remotes/v056/delivery
+```
+
+Read the ordered `feature_commits` list from
+`rec_bianchi_v056_bundle_receipt.json` and cherry-pick it oldest to newest.
+This preserves GitHub-side CI/toolchain overlays while applying only the v0.56
+feature work.
+
+Then require:
+
+```bash
+python scripts/check_hyrec_binary_hash_policy.py
+python scripts/check_imports.py
+python scripts/verify_repo.py --quick
+pytest -q -m "not slow"
+python scripts/verify_repo.py --scientific
+```
+
+The local exact-author lineage does not have the same tree as the GitHub merge
+tree. Do not reset or force-push remote main merely to match an author-tree hash.
+
+## Full offline recovery
+
+The full bundle is a disaster-recovery copy of the exact author repository and
+all its refs:
+
+```bash
+git clone /path/to/rec_bianchi_v056_full.bundle rec_bianchi_v056_recovery
+cd rec_bianchi_v056_recovery
+git branch -a
+git switch work/pr04c1b-c2-v056
+python scripts/check_hyrec_binary_hash_policy.py
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
 
-Never force-push shared `main`.
+A full-bundle clone is not proof that the feature cherry-picks conflict-free
+onto current remote main; the remote-based integration branch must still be
+tested independently.
+
+## Codex or another GitHub-authorized coding environment
+
+Open the repository, create a branch from `origin/main`, fetch the delivered
+feature bundle, cherry-pick the receipt's ordered commits, run every gate, and
+open a PR. Never bypass the shared compiler-dependent binary-hash fixture and
+never force-push shared `main`.
 
 ## HTTPS with a fine-grained personal access token
 
-Use a repository-scoped fine-grained PAT in the local shell only. Do not paste it into chat, commit it, or put it in a remote URL.
+Use a repository-scoped fine-grained PAT only in the local shell. Do not paste
+it into chat, commit it, or put it in a remote URL.
 
 Minimum practical permissions:
 
 - **Contents: read** for clone/fetch;
 - **Contents: write** for feature-branch pushes;
-- **Pull requests: write** only when automation must create or update PRs;
+- **Pull requests: write** only when automation creates or updates PRs;
 - **Workflows: write** only when changing `.github/workflows/**`.
 
-The repository check script supports an ephemeral `GIT_ASKPASS` helper:
+The repository scripts support an ephemeral `GIT_ASKPASS` helper:
 
 ```bash
 export GITHUB_REC_BIANCHI_TOKEN='REPOSITORY_SCOPED_TOKEN'
@@ -52,45 +97,25 @@ python scripts/check_remote_state.py --require-access
 unset GITHUB_REC_BIANCHI_TOKEN
 ```
 
-## GitHub App installation token — preferred automation credential
+The token is never written to Git configuration or a remote URL.
 
-For repeatable automation, install a dedicated GitHub App only on this repository and grant the smallest permissions needed. HTTP Git access requires **Contents** permission; workflow-file changes additionally require **Workflows** permission. Prefer short-lived installation tokens over a long-lived personal token.
+## SSH, GitHub CLI, and GitHub App alternatives
 
-## SSH or deploy key
+A normal user SSH key is preferred when the shell can complete the actual
+GitHub handshake. `gh auth login` is a practical interactive alternative. For
+repeatable automation, a repository-scoped GitHub App installation token is
+preferable to a long-lived personal token or a write-enabled deploy key.
 
-A normal user SSH key works when `ssh` and outbound access are available. A deploy key is repository-specific and may be read-only or read/write. For finer permission control and auditable automation, prefer a GitHub App over a write-enabled deploy key.
+## Backup branch naming
 
-## Offline full-bundle fallback
-
-When the runtime has no connector, DNS, SSH executable, or token:
-
-```bash
-git clone rec_bianchi_v050_full.bundle rec_bianchi
-cd rec_bianchi
-git switch work/pr03-full-scalar-com-khw-v050
-./scripts/bootstrap_sandbox.sh --offline
-python scripts/verify_repo.py --quick
-pytest -q -m "not slow"
-```
-
-## Patch selection
-
-Two binary-safe patch lanes are exported:
-
-- **cumulative v0.47 → v0.50** for a checkout containing exact local v0.47 commit `ced72558437c8d24dce0cb855259b5216549604d`;
-- **incremental v0.49 → v0.50** for a checkout containing exact local v0.49 commit `721f792736eaddc7ec6951f99332c44c70b039bf`.
-
-Apply only after fetching remote `main` and creating a feature branch:
-
-```bash
-git switch -c apply/v050-pr03
-git am --3way rec_bianchi_<base>_to_<head>.mbox
-python scripts/verify_repo.py --quick
-pytest -q -m "not slow"
-```
-
-If the remote used squash merges and contains neither exact base commit, use the standalone full bundle as the comparison source or try the binary patch with `git apply --3way --index` on a feature branch. Resolve conflicts explicitly and open a PR. Do not rewrite remote history merely to match local commit IDs.
+`scripts/push_backup.sh` no longer contains a historical v0.45 branch name. On
+divergence it uses a UTC timestamped branch unless `BACKUP_BRANCH` is explicitly
+set, and the PR title refers to the current durable stage.
 
 ## Diagnostic interpretation
 
-`python scripts/check_remote_state.py` distinguishes successful remote access and exact `main` SHA from missing `ssh`, HTTPS/DNS failure, absent token, and local dirty state. A user report that v0.47 was merged establishes only a scientific-content base; it does not establish the remote merge commit SHA or ancestry. Patch receipts therefore retain exact local bases and the remote-verification uncertainty.
+`python scripts/check_remote_state.py` distinguishes successful remote access,
+missing SSH/HTTPS authentication, DNS/network failure and local dirty state.
+Remote inaccessibility is not evidence of synchronization. `git bundle verify`
+checks bundle format and object connectivity; it does not replace scientific
+regression after integration.

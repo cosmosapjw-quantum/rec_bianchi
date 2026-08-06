@@ -7,30 +7,39 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-04C0/C1A / v0.55**.
-- PASS: a fail-closed ten-process ownership registry and six source-identical
-  positive photon packets at `x=+-21.25` for `z~1300,1100,900`.
-- Maximum boundary reconstruction residual:
-  `1.6537648327370854e-16`.
-- Number and transported photon-energy interface ledgers cancel exactly.
-- A pure computational representation crossing has zero atomic source; recoil
-  remains owned by physical collision terms.
-- Scientific boundary: no packet has yet been deposited into the COM–KHW
-  far-boundary/Liouville state. **PR-04 remains in progress.**
-- Next stage: **PR-04C1B/C2 coupled far-boundary interface operator**.
+- Durable stage: **PR-04C1B/C2 / v0.56**.
+- PASS: the six v0.55 source-identical face packets are attached only to the
+  exact `FR00`/`FB02` far-boundary states, with no interior-cell collapse and no
+  native-to-COM state remap.
+- PASS: positive log-variable monolithic collision/interface residual, analytic
+  block JVP, exact photon-number and transported-photon-energy ledgers, zero
+  interface atom source, exact restart, and Bianchi branch-zero localization.
+- Maximum gross-term backward error: `1.3200190226745005e-17`.
+- Maximum independent number residual: `2.5609198306764287e-14`.
+- Maximum analytic/JVP relative error: `1.279553711820355e-09`.
+- The dilute-occupation-normalized net residual stalls near
+  `1.73712431307357e-10`; it is retained as a diagnostic and is not relabelled
+  as a strict `1e-11` pass. Acceptance after Newton stagnation requires both
+  gross backward error and independent number closure below `1e-11`.
+- Scientific boundary: the three runs are source-conditioned operator tests on
+  an unfitted `q_activity=1` BE reference state, not a reconstructed physical
+  native/COM trajectory. **PR-04 remains in progress.**
+- Next stage: **PR-04C3 componentwise common-ledger closure**.
 
 Start with:
 
 ```bash
 ./scripts/bootstrap_sandbox.sh --offline
 python scripts/check_remote_state.py
+python scripts/check_hyrec_binary_hash_policy.py
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
 
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
-[`state/PROJECT_STATE.json`](state/PROJECT_STATE.json), and
-[`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+[`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
+[`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
+[`docs/PR04C3_COMMON_LEDGER_PLAN.md`](docs/PR04C3_COMMON_LEDGER_PLAN.md).
 
 ## Canonical source
 
@@ -47,17 +56,23 @@ May/October metadata variations are intrinsic to that archive.
 - `archive/inputs/`: canonical sources, host code and validated harnesses.
 - `state/`: machine-readable state, provenance, recovery and receipts.
 - `docs/`: current state, roadmap, research plans and handoff material.
-- `scripts/`: stage generation, C instrumentation, verification and patch tools.
+- `scripts/`: stage generation, C instrumentation, verification and Git-bundle
+  delivery tools.
 
-## Remote policy
+## Remote and delivery policy
 
-The read-only connector can inspect GitHub, but the owner performs fetch,
-push and PR operations locally. Apply v0.55 on a feature branch, verify the
-final tree and never rewrite shared history.
+GitHub `main` contains merged PR #14 at
+`47106fec89c176c3f3b91ed7e4ff198dea323968`, including the shared
+compiler-dependent binary-hash gate. v0.56 was developed on the exact author
+v0.55 lineage, so exact remote-tree identity is not assumed. Deliveries use a
+self-contained feature Git bundle with an ordered cherry-pick list plus a full
+recovery bundle. Fetch the feature bundle onto a branch created from fresh
+`origin/main`; never rewrite shared history.
 
 ## Test tiers
 
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.55 regeneration: `python scripts/run_pr04c0c1a_split_domain_stage.py`.
+- v0.56 regeneration: `python scripts/run_pr04c1b_c2_coupled_interface_stage.py`.
+- Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
