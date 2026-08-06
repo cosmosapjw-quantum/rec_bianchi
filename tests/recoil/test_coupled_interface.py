@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 
@@ -500,3 +501,65 @@ def test_coupled_restart_payload_round_trips_exactly():
     assert restored.dt_s == result.dt_s
     assert restored.interface_enabled is result.interface_enabled
     assert restored.to_payload() == result.restart_payload()
+
+
+def test_full_network_packet_solve_accepts_verified_gross_backward_error():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        CoupledInterfaceProblem,
+        solve_coupled_interface,
+    )
+    from full_bianchi_hyrec.recoil.nonlinear_bose_release import HarmonicGrid
+
+    network = CollisionNetwork.from_npz(NETWORK_PATH)
+    background_path = ROOT / "data/pr01c_background_snapshots_v048.npz"
+    with np.load(background_path, allow_pickle=False) as background:
+        grid = HarmonicGrid.from_directions(
+            background["directions"], background["angular_weights"], ell_max=0
+        )
+    packet_path = (
+        ROOT
+        / "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55"
+        / "THREE_SNAPSHOT_INTERFACE_PACKETS.csv"
+    )
+    with packet_path.open(newline="", encoding="utf-8") as handle:
+        rows = [row for row in csv.DictReader(handle) if float(row["target_z"]) == 1300.0]
+    packets = tuple(
+        ExchangePacket(
+            side=InterfaceSide(row["side"]),
+            direction=ExchangeDirection(row["direction"]),
+            interface_x=float(row["interface_x"]),
+            interface_frequency_Hz=float(row["interface_frequency_Hz"]),
+            total_number_flux_per_H_s=float(row["total_number_flux_per_H_s"]),
+            reference_number_flux_per_H_s=float(row["reference_number_flux_per_H_s"]),
+            distortion_number_flux_per_H_s=float(row["distortion_number_flux_per_H_s"]),
+            photon_energy_flux_W_per_H=float(row["total_photon_energy_flux_W_per_H"]),
+            reference_photon_energy_flux_W_per_H=float(row["reference_photon_energy_flux_W_per_H"]),
+            distortion_photon_energy_flux_W_per_H=float(row["distortion_photon_energy_flux_W_per_H"]),
+            atom_energy_flux_W_per_H=float(row["atom_source_W_per_H"]),
+            source_snapshot_z=float(row["snapshot_z"]),
+        )
+        for row in rows
+    )
+    activity = network.equilibrium_weight / network.mode_measure
+    old = (activity / (1.0 - activity))[:, None] * np.ones((1, grid.n_angle))
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=packets,
+        n_H_m3=float(rows[0]["nH_cm3"]) * 1.0e6,
+        dt_s=1.0e5,
+    )
+
+    result = solve_coupled_interface(
+        old,
+        problem,
+        nonlinear_rtol=1.0e-11,
+        gmres_rtol=1.0e-10,
+        max_newton=20,
+        gmres_maxiter=300,
+    )
+
+    assert result.converged
+    assert result.backward_error_relative < 1.0e-11
+    assert result.number_relative_residual < 1.0e-11
+    assert result.convergence_basis in {"scaled_residual", "gross_backward_error"}

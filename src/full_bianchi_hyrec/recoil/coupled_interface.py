@@ -316,6 +316,19 @@ class BoundaryTransferAccumulator:
 
 
 @dataclass(frozen=True)
+class CoupledResidualMetrics:
+    """Net residual and normwise backward-error diagnostics."""
+
+    scaled_relative: float
+    backward_error_relative: float
+    raw_residual_inf: float
+    equation_scale: float
+    gross_collision_scale: float
+    transfer_residual_inf: float
+    number_relative_residual: float
+
+
+@dataclass(frozen=True)
 class CoupledInterfaceProblem:
     """Source-conditioned monolithic collision/interface residual.
 
@@ -491,6 +504,75 @@ class CoupledInterfaceProblem:
             self.unscaled_residual(vector, old_occupation)
         )
         return self.pack(raw_f / self._occupation_scale(old_occupation), raw_rho)
+
+    def residual_metrics(
+        self, vector: np.ndarray, old_occupation: np.ndarray
+    ) -> CoupledResidualMetrics:
+        """Return both the net residual and a gross-term backward error.
+
+        Near a dilute Bose--Einstein state, the physical collision action is a
+        difference of much larger forward and reverse terms.  The net residual
+        divided only by ``f`` can therefore reach a float64 cancellation floor
+        even when the backward error with respect to the terms actually summed
+        in the equation is at machine precision.  ``gross_action_scale`` is
+        carried by the collision operator specifically for this normalization.
+        """
+
+        old = self._validated_old(old_occupation)
+        raw_f, raw_rho = self.unpack_residual(
+            self.unscaled_residual(vector, old)
+        )
+        log_f, log_rho = self.unpack(vector)
+        occupation = np.exp(log_f)
+        action = apply_nonlinear_bose_operator(
+            occupation,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+            photon_momentum_scale=self.network.momentum_scale,
+        )
+        interface = self.interface_increment(log_rho)
+        minimum_weight = max(float(np.min(self.grid.weights)), 1.0e-300)
+        minimum_measure = max(float(np.min(self.network.mode_measure)), 1.0e-300)
+        gross_collision_scale = (
+            self.dt_s
+            * float(action.gross_action_scale)
+            / (minimum_measure * minimum_weight)
+        )
+        equation_scale = max(
+            float(np.max(np.abs(old))),
+            float(np.max(np.abs(occupation))),
+            float(np.max(np.abs(interface), initial=0.0)),
+            gross_collision_scale,
+            1.0e-300,
+        )
+        raw_inf = float(np.max(np.abs(raw_f), initial=0.0))
+        transfer_inf = float(np.max(np.abs(raw_rho), initial=0.0))
+        scaled_relative = float(
+            np.max(np.abs(raw_f / self._occupation_scale(old)), initial=0.0)
+        )
+        backward = max(raw_inf / equation_scale, transfer_inf)
+        number_before = bose_photon_number(
+            old, mode_measure=self.network.mode_measure, grid=self.grid
+        )
+        number_after = bose_photon_number(
+            occupation, mode_measure=self.network.mode_measure, grid=self.grid
+        )
+        expected_number = number_before + self.interface_number_change_m3(log_rho)
+        number_relative = abs(number_after - expected_number) / max(
+            abs(number_before), abs(expected_number), 1.0e-300
+        )
+        return CoupledResidualMetrics(
+            scaled_relative=scaled_relative,
+            backward_error_relative=float(backward),
+            raw_residual_inf=raw_inf,
+            equation_scale=float(equation_scale),
+            gross_collision_scale=float(gross_collision_scale),
+            transfer_residual_inf=transfer_inf,
+            number_relative_residual=float(number_relative),
+        )
 
     def jvp(
         self,
@@ -845,7 +927,10 @@ class CoupledInterfaceStepResult:
     total_gmres_iterations: int
     dt_s: float
     residual_relative: float
+    backward_error_relative: float
+    convergence_basis: str
     raw_residual_inf: float
+    equation_scale: float
     minimum_occupation: float
     explicit_trial_minimum: float
     number_before_m3: float
@@ -918,8 +1003,11 @@ def solve_coupled_interface(
             total_gmres_iterations=baseline.total_gmres_iterations,
             dt_s=problem.dt_s,
             residual_relative=baseline.residual_relative,
+            backward_error_relative=baseline.residual_relative,
+            convergence_basis="scaled_residual",
             raw_residual_inf=baseline.residual_relative
             * max(float(np.max(np.abs(old))), 1.0e-300),
+            equation_scale=max(float(np.max(np.abs(old))), 1.0e-300),
             minimum_occupation=baseline.minimum_occupation,
             explicit_trial_minimum=baseline.explicit_trial_minimum,
             number_before_m3=baseline.number_before,
@@ -950,14 +1038,19 @@ def solve_coupled_interface(
     total_gmres = 0
     converged = False
     final_norm = math.inf
+    final_backward = math.inf
+    convergence_basis = "none"
     completed_iterations = 0
 
     for iteration in range(max_newton + 1):
         residual = problem.scaled_residual(vector, old)
-        final_norm = float(np.max(np.abs(residual)))
+        metrics = problem.residual_metrics(vector, old)
+        final_norm = metrics.scaled_relative
+        final_backward = metrics.backward_error_relative
         completed_iterations = iteration
         if final_norm <= nonlinear_rtol:
             converged = True
+            convergence_basis = "scaled_residual"
             break
         if iteration == max_newton:
             break
@@ -1023,13 +1116,24 @@ def solve_coupled_interface(
                 break
             damping *= 0.5
         if not accepted:
+            stalled = problem.residual_metrics(vector, old)
+            if (
+                stalled.backward_error_relative <= nonlinear_rtol
+                and stalled.number_relative_residual <= nonlinear_rtol
+            ):
+                converged = True
+                convergence_basis = "gross_backward_error"
+                final_norm = stalled.scaled_relative
+                final_backward = stalled.backward_error_relative
+                break
             raise RuntimeError("coupled interface Newton line search failed")
 
     log_f, log_rho = problem.unpack(vector)
     occupation = np.exp(log_f)
     rho = np.exp(log_rho)
-    raw = problem.unscaled_residual(vector, old)
-    raw_f, _ = problem.unpack_residual(raw)
+    final_metrics = problem.residual_metrics(vector, old)
+    final_norm = final_metrics.scaled_relative
+    final_backward = final_metrics.backward_error_relative
     accumulators = tuple(
         accumulator.scaled(float(scale))
         for accumulator, scale in zip(
@@ -1080,7 +1184,10 @@ def solve_coupled_interface(
         total_gmres_iterations=total_gmres,
         dt_s=problem.dt_s,
         residual_relative=final_norm,
-        raw_residual_inf=float(np.max(np.abs(raw_f))),
+        backward_error_relative=final_backward,
+        convergence_basis=convergence_basis,
+        raw_residual_inf=final_metrics.raw_residual_inf,
+        equation_scale=final_metrics.equation_scale,
         minimum_occupation=float(np.min(occupation)),
         explicit_trial_minimum=float(np.min(explicit_trial)),
         number_before_m3=number_before,
@@ -1098,6 +1205,7 @@ __all__ = [
     "FarBoundaryCell",
     "FarBoundaryAdapter",
     "BoundaryTransferAccumulator",
+    "CoupledResidualMetrics",
     "CoupledInterfaceProblem",
     "SideTransferLedger",
     "InterfaceTransferLedger",
