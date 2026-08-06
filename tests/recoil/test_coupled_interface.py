@@ -134,3 +134,58 @@ def test_boundary_number_deposition_matches_integrated_packet_exactly():
         nonzero = np.flatnonzero(np.any(increment != 0.0, axis=1))
         expected = 29 if side is InterfaceSide.RED else 34
         assert np.array_equal(nonzero, np.asarray([expected]))
+
+
+def test_interface_transfer_ledger_closes_number_energy_and_atom_sources_exactly():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        BoundaryTransferAccumulator,
+        FarBoundaryAdapter,
+        InterfaceTransferLedger,
+    )
+
+    network = CollisionNetwork.from_npz(NETWORK_PATH)
+    adapter = FarBoundaryAdapter.from_network(network)
+    accumulators = tuple(
+        BoundaryTransferAccumulator.from_packet(_packet(side), dt_s=1.0e5)
+        for side in (InterfaceSide.RED, InterfaceSide.BLUE)
+    )
+    ledger = InterfaceTransferLedger.from_accumulators(
+        adapter,
+        accumulators,
+        n_H_m3=2.5018675437302318e8,
+    )
+
+    assert ledger.native_number_change_per_H + ledger.com_number_change_per_H == 0.0
+    assert ledger.native_energy_change_J_per_H + ledger.com_energy_change_J_per_H == 0.0
+    assert ledger.number_residual_per_H == 0.0
+    assert ledger.transported_energy_residual_J_per_H == 0.0
+    assert ledger.atom_energy_change_J_per_H == 0.0
+    ledger.validate()
+
+
+def test_face_energy_is_not_replaced_by_finite_cell_centroid():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        BoundaryTransferAccumulator,
+        FarBoundaryAdapter,
+        InterfaceTransferLedger,
+    )
+
+    network = CollisionNetwork.from_npz(NETWORK_PATH)
+    adapter = FarBoundaryAdapter.from_network(network)
+    accumulator = BoundaryTransferAccumulator.from_packet(
+        _packet(InterfaceSide.RED), dt_s=1.0e5
+    )
+    ledger = InterfaceTransferLedger.from_accumulators(
+        adapter,
+        (accumulator,),
+        n_H_m3=2.5018675437302318e8,
+    )
+    side = ledger.sides[0]
+
+    assert side.cell_centroid_energy_proxy_J_per_H != side.com_energy_change_J_per_H
+    assert side.unresolved_energy_correction_J_per_H != 0.0
+    assert side.cell_centroid_energy_proxy_J_per_H + side.unresolved_energy_correction_J_per_H == pytest.approx(
+        side.com_energy_change_J_per_H,
+        rel=3e-15,
+        abs=0.0,
+    )

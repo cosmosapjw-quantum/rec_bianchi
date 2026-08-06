@@ -285,8 +285,154 @@ class BoundaryTransferAccumulator:
         return hashlib.sha256(payload).hexdigest()
 
 
+@dataclass(frozen=True)
+class SideTransferLedger:
+    """One side of the exact number/transported-energy exchange ledger."""
+
+    side: InterfaceSide
+    direction: ExchangeDirection
+    native_number_change_per_H: float
+    com_number_change_per_H: float
+    native_energy_change_J_per_H: float
+    com_energy_change_J_per_H: float
+    atom_energy_change_J_per_H: float
+    cell_centroid_energy_proxy_J_per_H: float
+    unresolved_energy_correction_J_per_H: float
+
+    @property
+    def number_residual_per_H(self) -> float:
+        return self.native_number_change_per_H + self.com_number_change_per_H
+
+    @property
+    def transported_energy_residual_J_per_H(self) -> float:
+        return self.native_energy_change_J_per_H + self.com_energy_change_J_per_H
+
+    def validate(self) -> None:
+        if self.number_residual_per_H != 0.0:
+            raise ValueError("side number ledger does not cancel exactly")
+        if self.transported_energy_residual_J_per_H != 0.0:
+            raise ValueError("side transported-energy ledger does not cancel exactly")
+        if self.atom_energy_change_J_per_H != 0.0:
+            raise ValueError("pure representation crossing has nonzero atom source")
+        reconstructed = (
+            self.cell_centroid_energy_proxy_J_per_H
+            + self.unresolved_energy_correction_J_per_H
+        )
+        if not _close(reconstructed, self.com_energy_change_J_per_H):
+            raise ValueError("cell proxy plus unresolved correction is inconsistent")
+
+
+@dataclass(frozen=True)
+class InterfaceTransferLedger:
+    """Global exact exchange ledger for one coupled interface step."""
+
+    n_H_m3: float
+    sides: tuple[SideTransferLedger, ...]
+    native_number_change_per_H: float
+    com_number_change_per_H: float
+    native_energy_change_J_per_H: float
+    com_energy_change_J_per_H: float
+    atom_energy_change_J_per_H: float
+
+    @classmethod
+    def from_accumulators(
+        cls,
+        adapter: FarBoundaryAdapter,
+        accumulators: tuple[BoundaryTransferAccumulator, ...],
+        *,
+        n_H_m3: float,
+    ) -> "InterfaceTransferLedger":
+        if not isinstance(adapter, FarBoundaryAdapter):
+            raise TypeError("adapter must be a FarBoundaryAdapter")
+        if not math.isfinite(n_H_m3) or n_H_m3 <= 0.0:
+            raise ValueError("n_H_m3 must be positive and finite")
+        if len({accumulator.side for accumulator in accumulators}) != len(accumulators):
+            raise ValueError("at most one accumulator per interface side is allowed")
+
+        side_ledgers: list[SideTransferLedger] = []
+        for accumulator in accumulators:
+            if not isinstance(accumulator, BoundaryTransferAccumulator):
+                raise TypeError("all accumulators must be BoundaryTransferAccumulator")
+            cell = adapter.for_side(accumulator.side)
+            sign_com = -1.0 if accumulator.side is InterfaceSide.RED else 1.0
+            com_number = sign_com * accumulator.number_per_H
+            native_number = -com_number
+            com_energy = sign_com * accumulator.energy_J_per_H
+            native_energy = -com_energy
+            cell_proxy = (
+                sign_com
+                * h
+                * cell.centroid_frequency_Hz
+                * accumulator.number_per_H
+            )
+            correction = com_energy - cell_proxy
+            row = SideTransferLedger(
+                side=accumulator.side,
+                direction=accumulator.direction,
+                native_number_change_per_H=native_number,
+                com_number_change_per_H=com_number,
+                native_energy_change_J_per_H=native_energy,
+                com_energy_change_J_per_H=com_energy,
+                atom_energy_change_J_per_H=accumulator.atom_energy_J_per_H,
+                cell_centroid_energy_proxy_J_per_H=cell_proxy,
+                unresolved_energy_correction_J_per_H=correction,
+            )
+            row.validate()
+            side_ledgers.append(row)
+
+        result = cls(
+            n_H_m3=float(n_H_m3),
+            sides=tuple(side_ledgers),
+            native_number_change_per_H=float(
+                sum(row.native_number_change_per_H for row in side_ledgers)
+            ),
+            com_number_change_per_H=float(
+                sum(row.com_number_change_per_H for row in side_ledgers)
+            ),
+            native_energy_change_J_per_H=float(
+                sum(row.native_energy_change_J_per_H for row in side_ledgers)
+            ),
+            com_energy_change_J_per_H=float(
+                sum(row.com_energy_change_J_per_H for row in side_ledgers)
+            ),
+            atom_energy_change_J_per_H=float(
+                sum(row.atom_energy_change_J_per_H for row in side_ledgers)
+            ),
+        )
+        result.validate()
+        return result
+
+    @property
+    def number_residual_per_H(self) -> float:
+        return self.native_number_change_per_H + self.com_number_change_per_H
+
+    @property
+    def transported_energy_residual_J_per_H(self) -> float:
+        return self.native_energy_change_J_per_H + self.com_energy_change_J_per_H
+
+    @property
+    def number_residual_m3(self) -> float:
+        return self.n_H_m3 * self.number_residual_per_H
+
+    @property
+    def transported_energy_residual_J_m3(self) -> float:
+        return self.n_H_m3 * self.transported_energy_residual_J_per_H
+
+    def validate(self) -> None:
+        for row in self.sides:
+            row.validate()
+        if self.number_residual_per_H != 0.0:
+            raise ValueError("global interface number ledger does not cancel exactly")
+        if self.transported_energy_residual_J_per_H != 0.0:
+            raise ValueError("global transported-energy ledger does not cancel exactly")
+        if self.atom_energy_change_J_per_H != 0.0:
+            raise ValueError("global interface atom source must be zero")
+
+
 __all__ = [
     "FarBoundaryCell",
     "FarBoundaryAdapter",
     "BoundaryTransferAccumulator",
+    "SideTransferLedger",
+    "InterfaceTransferLedger",
 ]
