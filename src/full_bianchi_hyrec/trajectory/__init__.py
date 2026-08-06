@@ -20,6 +20,28 @@ from .primitive_trajectory import (
     RadiationFeedback,
     TrajectoryStepLedger,
 )
+
+from .causal_history import (
+    AcceptedRadiationHistory,
+    CharacteristicHistoryGrid,
+    CharacteristicInterpolationStencil,
+    CharacteristicQuery,
+    CharacteristicStencilSwitch,
+    FutureHistoryEndpointError,
+    HistoryAppendCandidate,
+    HistoryStepLedger,
+    OriginalHyRecIncoming,
+    build_original_hyrec_queries,
+    construct_original_hyrec_incoming,
+    original_hyrec_incoming_jvp,
+)
+from .causal_history_step import (
+    CausalHistoryAcceptedStepProblem,
+    CausalHistoryAcceptedStepResult,
+    CausalHistoryStepJVP,
+    CharacteristicConservationLedger,
+)
+
 from .time_dependent_native import (
     CausalRadiationHistoryState,
     NativeRadiationTimeMeasureAudit,
@@ -37,6 +59,23 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+
+    "AcceptedRadiationHistory",
+    "CharacteristicHistoryGrid",
+    "CharacteristicInterpolationStencil",
+    "CharacteristicQuery",
+    "CharacteristicStencilSwitch",
+    "FutureHistoryEndpointError",
+    "HistoryAppendCandidate",
+    "HistoryStepLedger",
+    "OriginalHyRecIncoming",
+    "build_original_hyrec_queries",
+    "construct_original_hyrec_incoming",
+    "original_hyrec_incoming_jvp",
+    "CausalHistoryAcceptedStepProblem",
+    "CausalHistoryAcceptedStepResult",
+    "CausalHistoryStepJVP",
+    "CharacteristicConservationLedger",
     "ALPHA_TABLE_SHA256",
     "R2P2S_TABLE_SHA256",
     "TWO_PHOTON_TABLE_SHA256",

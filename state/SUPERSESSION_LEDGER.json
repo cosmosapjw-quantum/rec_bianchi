@@ -140,6 +140,21 @@
       "old": "assigning a finite native-radiation transient mass from virtual-centre spacing or a fitted timescale",
       "new": "v0.59 constructive native local time-measure non-identifiability no-go and PR-05B2 causal characteristic-history path",
       "reason": "the archive fixes centres and integrated rates but not finite support widths, cell edges or spike shape; two equally admissible supports give mass vectors in ratio two and the same zero-width algebraic limit"
+    },
+    {
+      "old": "mutating Dfminus/Dfminus_Ly/Dfnu history while a nonlinear step is merely proposed or later rejected",
+      "new": "v0.60 immutable accepted history plus append candidate; commit only after acceptance, with byte-exact reject/rollback/restart",
+      "reason": "canonical interpolation may read only already accepted endpoints and speculative mutation makes retries and event rollback noncausal"
+    },
+    {
+      "old": "differentiating through floor-based characteristic stencil-index changes",
+      "new": "v0.60 exact fixed-stencil JVP with stencil switches classified as localized events that require solver restart",
+      "reason": "the interpolation is differentiable inside a fixed two-neighbour cell but discontinuous in its discrete source indices"
+    },
+    {
+      "old": "calling the centre-based original-HyRec point-history operator a finite-volume conservative remap",
+      "new": "v0.60 source-identical point-characteristic history with number/redshift-energy ledger; finite-volume interpretation remains a separate new closure",
+      "reason": "the canonical archive fixes point/spike histories but no cell edges or finite support measure"
     }
   ]
 }
