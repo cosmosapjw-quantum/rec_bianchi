@@ -10,7 +10,8 @@ Conventions
 * ordinary frequency in Hz;
 * positive packet magnitude follows its declared ``direction``;
 * photon number flux has units photons H^-1 s^-1;
-* photon/atom energy flux has units W H^-1;
+* transported photon-energy flux has units W H^-1;
+* a pure representation interface has no atomic source term;
 * the same packet is evaluated once and applied to the two subdomain ledgers
   with opposite signs.
 
@@ -226,8 +227,8 @@ class ExchangePacket:
             + self.distortion_photon_energy_flux_W_per_H,
         ):
             raise ValueError("photon-energy components do not add to total")
-        if not _close(self.atom_energy_flux_W_per_H, -self.photon_energy_flux_W_per_H):
-            raise ValueError("atom energy flux must be the opposite photon ledger")
+        if not _close(self.atom_energy_flux_W_per_H, 0.0):
+            raise ValueError("pure representation interface atom energy flux must be zero")
         if not _close(
             self.photon_energy_flux_W_per_H,
             h * self.interface_frequency_Hz * self.total_number_flux_per_H_s,
@@ -292,6 +293,46 @@ class ExchangePacket:
         return hashlib.sha256(payload).hexdigest()
 
 
+def packet_from_original_hyrec_boundary_sample(
+    sample: object,
+    *,
+    source_snapshot_z: float,
+) -> "ExchangePacket":
+    """Convert one source-identical original-HyRec interface sample.
+
+    The conversion preserves the positive total photon packet and its
+    reference/distortion decomposition exactly.  Crossing a computational
+    representation interface is not a new atomic event, so its atomic source
+    term is identically zero.  Atomic recoil remains owned by the local
+    collision operators in the ownership registry.
+    """
+
+    from .original_hyrec_physical_flux import OriginalHyRecBoundarySample
+
+    if not isinstance(sample, OriginalHyRecBoundarySample):
+        raise TypeError("sample must be an OriginalHyRecBoundarySample")
+    side = InterfaceSide(sample.side)
+    direction = (
+        ExchangeDirection.NATIVE_TO_COM
+        if side is InterfaceSide.BLUE
+        else ExchangeDirection.COM_TO_NATIVE
+    )
+    return ExchangePacket(
+        side=side,
+        direction=direction,
+        interface_x=sample.interface_x,
+        interface_frequency_Hz=sample.interface_frequency_Hz,
+        total_number_flux_per_H_s=sample.total_number_flux_per_H_s,
+        reference_number_flux_per_H_s=sample.reference_number_flux_per_H_s,
+        distortion_number_flux_per_H_s=sample.distortion_number_flux_per_H_s,
+        photon_energy_flux_W_per_H=sample.total_photon_energy_flux_W_per_H,
+        reference_photon_energy_flux_W_per_H=sample.reference_photon_energy_flux_W_per_H,
+        distortion_photon_energy_flux_W_per_H=sample.distortion_photon_energy_flux_W_per_H,
+        atom_energy_flux_W_per_H=0.0,
+        source_snapshot_z=source_snapshot_z,
+    )
+
+
 @dataclass(frozen=True)
 class ExchangeLedger:
     evaluation_count: int
@@ -317,11 +358,15 @@ class ExchangeLedger:
 
     @property
     def total_energy_residual_W_per_H(self) -> float:
-        return self.photon_energy_flux_W_per_H + self.atom_energy_flux_W_per_H
+        return (
+            self.native_photon_energy_flux_W_per_H
+            + self.com_photon_energy_flux_W_per_H
+            + self.atom_energy_flux_W_per_H
+        )
 
     @property
     def energy_residual_W_per_H(self) -> float:
-        """Backward-compatible scalar name for the photon/atom ledger."""
+        """Total split-domain energy residual including any atomic source."""
         return self.total_energy_residual_W_per_H
 
     def validate(self, *, enabled: bool) -> None:
@@ -338,7 +383,7 @@ class ExchangeLedger:
         if self.photon_energy_residual_W_per_H != 0.0:
             raise ValueError("interface photon-energy ledger does not cancel exactly")
         if self.total_energy_residual_W_per_H != 0.0:
-            raise ValueError("same-event photon/atom energy ledger does not cancel")
+            raise ValueError("split-domain total energy ledger does not cancel")
 
 
 @dataclass(frozen=True)
@@ -427,6 +472,7 @@ __all__ = [
     "OwnershipRegistry",
     "default_ownership_registry",
     "ExchangePacket",
+    "packet_from_original_hyrec_boundary_sample",
     "ExchangeLedger",
     "SplitDomainExchangeResult",
     "SplitDomainExchangeOperator",

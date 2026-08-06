@@ -1,0 +1,16 @@
+{
+  "code": "Assuming[{h>0,dt>0,lambda>=0,f0>=0,feq>=0,phiN>=0,nu>0},FullSimplify[{(f0+dt lambda feq)/(1+dt lambda)>=0,phiN+(-phiN),(h nu phiN)+(-h nu phiN),Integrate[x^2/(Exp[x]-1),{x,0,Infinity},GenerateConditions->False]}]]",
+  "interpretation": {
+    "backward_Euler_scalar_relaxation_positive": true,
+    "blackbody_log_frequency_number_integral": "2 Zeta[3]",
+    "interface_number_opposite_sign_cancellation": "exact",
+    "interface_photon_energy_opposite_sign_cancellation": "exact"
+  },
+  "result": [
+    "True",
+    "0",
+    "0",
+    "2*Zeta[3]"
+  ],
+  "tool": "WolframLanguageEvaluator"
+}

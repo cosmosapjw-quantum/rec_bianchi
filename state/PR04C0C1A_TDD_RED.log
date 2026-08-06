@@ -14,3 +14,176 @@ E   ModuleNotFoundError: No module named 'full_bianchi_hyrec.recoil.split_domain
 ERROR tests/recoil/test_split_domain_exchange.py
 !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
 1 error in 0.16s
+
+=== RED 2: original-HyRec boundary sample type absent ===
+Expected failure: ImportError for OriginalHyRecBoundarySample before parser implementation.
+
+=== RED 3: PR-04C boundary CSV parser absent ===
+Expected failure: ImportError for parse_original_hyrec_boundary_snapshot_csv.
+
+=== RED 4: guarded source interface at current history endpoint ===
+Command:
+  PYTHONPATH=src pytest -q tests/recoil/test_original_hyrec_boundary_instrumentation.py -m slow -vv
+Observed:
+  HyRec exited with status 89.
+Diagnostic root cause:
+  target=1300, side=blue, iz=3161, query indices=(3160,3161),
+  current_known_max=3160 under the pre-output interpretation.
+The guarded diagnostic executes after Dfminus_hist[:,iz] has been solved and
+stored.  Therefore right==iz is the current solved endpoint, not a future
+state.  The prior >=iz rejection was an instrumentation bug.  The fixed guard
+allows right==iz and still rejects right>iz.
+
+=== RED 5: pure representation interface atom source ===
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_packet_rejects_invalid_signs_and_interface_side _____________
+
+    def test_packet_rejects_invalid_signs_and_interface_side() -> None:
+>       valid = _packet().to_dict()
+                ^^^^^^^^^
+
+tests/recoil/test_split_domain_exchange.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/recoil/test_split_domain_exchange.py:31: in _packet
+    return ExchangePacket(
+<string>:15: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = ExchangePacket(side=<InterfaceSide.BLUE: 'blue'>, direction=<ExchangeDirection.NATIVE_TO_COM: 'native_to_com'>, interf..., distortion_photon_energy_flux_W_per_H=1.3072269264750908e-35, atom_energy_flux_W_per_H=0.0, source_snapshot_z=1100.0)
+
+    def __post_init__(self) -> None:
+        finite = {
+            name: float(getattr(self, name))
+            for name in (
+                "interface_x",
+                "interface_frequency_Hz",
+                "total_number_flux_per_H_s",
+                "reference_number_flux_per_H_s",
+                "distortion_number_flux_per_H_s",
+                "photon_energy_flux_W_per_H",
+                "reference_photon_energy_flux_W_per_H",
+                "distortion_photon_energy_flux_W_per_H",
+                "atom_energy_flux_W_per_H",
+                "source_snapshot_z",
+            )
+        }
+        if not all(math.isfinite(value) for value in finite.values()):
+            raise ValueError("packet fields must be finite")
+        if self.total_number_flux_per_H_s <= 0.0:
+            raise ValueError("total packet number flux must be positive")
+        if self.reference_number_flux_per_H_s < 0.0:
+            raise ValueError("reference packet number flux must be nonnegative")
+        if self.interface_frequency_Hz <= 0.0 or self.source_snapshot_z <= 0.0:
+            raise ValueError("frequency and source snapshot redshift must be positive")
+        if not _close(
+            self.total_number_flux_per_H_s,
+            self.reference_number_flux_per_H_s
+            + self.distortion_number_flux_per_H_s,
+        ):
+            raise ValueError("number components do not add to total")
+        if self.photon_energy_flux_W_per_H <= 0.0:
+            raise ValueError("photon energy flux must be positive")
+        if self.reference_photon_energy_flux_W_per_H < 0.0:
+            raise ValueError("reference photon energy flux must be nonnegative")
+        if not _close(
+            self.photon_energy_flux_W_per_H,
+            self.reference_photon_energy_flux_W_per_H
+            + self.distortion_photon_energy_flux_W_per_H,
+        ):
+            raise ValueError("photon-energy components do not add to total")
+        if not _close(self.atom_energy_flux_W_per_H, -self.photon_energy_flux_W_per_H):
+>           raise ValueError("atom energy flux must be the opposite photon ledger")
+E           ValueError: atom energy flux must be the opposite photon ledger
+
+src/full_bianchi_hyrec/recoil/split_domain_exchange.py:230: ValueError
+_________ test_pure_representation_interface_has_no_atomic_source_term _________
+
+    def test_pure_representation_interface_has_no_atomic_source_term() -> None:
+>       packet = _packet()
+                 ^^^^^^^^^
+
+tests/recoil/test_split_domain_exchange.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/recoil/test_split_domain_exchange.py:31: in _packet
+    return ExchangePacket(
+<string>:15: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = ExchangePacket(side=<InterfaceSide.BLUE: 'blue'>, direction=<ExchangeDirection.NATIVE_TO_COM: 'native_to_com'>, interf..., distortion_photon_energy_flux_W_per_H=1.3072269264750908e-35, atom_energy_flux_W_per_H=0.0, source_snapshot_z=1100.0)
+
+    def __post_init__(self) -> None:
+        finite = {
+            name: float(getattr(self, name))
+            for name in (
+                "interface_x",
+                "interface_frequency_Hz",
+                "total_number_flux_per_H_s",
+                "reference_number_flux_per_H_s",
+                "distortion_number_flux_per_H_s",
+                "photon_energy_flux_W_per_H",
+                "reference_photon_energy_flux_W_per_H",
+                "distortion_photon_energy_flux_W_per_H",
+                "atom_energy_flux_W_per_H",
+                "source_snapshot_z",
+            )
+        }
+        if not all(math.isfinite(value) for value in finite.values()):
+            raise ValueError("packet fields must be finite")
+        if self.total_number_flux_per_H_s <= 0.0:
+            raise ValueError("total packet number flux must be positive")
+        if self.reference_number_flux_per_H_s < 0.0:
+            raise ValueError("reference packet number flux must be nonnegative")
+        if self.interface_frequency_Hz <= 0.0 or self.source_snapshot_z <= 0.0:
+            raise ValueError("frequency and source snapshot redshift must be positive")
+        if not _close(
+            self.total_number_flux_per_H_s,
+            self.reference_number_flux_per_H_s
+            + self.distortion_number_flux_per_H_s,
+        ):
+            raise ValueError("number components do not add to total")
+        if self.photon_energy_flux_W_per_H <= 0.0:
+            raise ValueError("photon energy flux must be positive")
+        if self.reference_photon_energy_flux_W_per_H < 0.0:
+            raise ValueError("reference photon energy flux must be nonnegative")
+        if not _close(
+            self.photon_energy_flux_W_per_H,
+            self.reference_photon_energy_flux_W_per_H
+            + self.distortion_photon_energy_flux_W_per_H,
+        ):
+            raise ValueError("photon-energy components do not add to total")
+        if not _close(self.atom_energy_flux_W_per_H, -self.photon_energy_flux_W_per_H):
+>           raise ValueError("atom energy flux must be the opposite photon ledger")
+E           ValueError: atom energy flux must be the opposite photon ledger
+
+src/full_bianchi_hyrec/recoil/split_domain_exchange.py:230: ValueError
+=========================== short test summary info ============================
+FAILED tests/recoil/test_split_domain_exchange.py::test_packet_rejects_invalid_signs_and_interface_side - ValueError: atom energy flux must be the opposite photon ledger
+FAILED tests/recoil/test_split_domain_exchange.py::test_pure_representation_interface_has_no_atomic_source_term - ValueError: atom energy flux must be the opposite photon ledger
+2 failed, 7 deselected in 0.13s
+
+Scientific root cause: transported absolute photon energy crossing a
+computational representation boundary is already applied with opposite signs
+to the native and COM ledgers.  Pairing it again with an atom source would
+double count recoil.  The interface atom source is therefore zero; physical
+atom recoil remains owned by the collision operators.
+
+=== RED 6: packet constructor from source-identical boundary sample absent ===
+
+==================================== ERRORS ====================================
+_________ ERROR collecting tests/recoil/test_split_domain_exchange.py __________
+ImportError while importing test module '/mnt/data/rec_bianchi_pr04c_v055_work/tests/recoil/test_split_domain_exchange.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/recoil/test_split_domain_exchange.py:11: in <module>
+    from full_bianchi_hyrec.recoil.split_domain_exchange import (
+E   ImportError: cannot import name 'packet_from_original_hyrec_boundary_sample' from 'full_bianchi_hyrec.recoil.split_domain_exchange' (/mnt/data/rec_bianchi_pr04c_v055_work/src/full_bianchi_hyrec/recoil/split_domain_exchange.py)
+=========================== short test summary info ============================
+ERROR tests/recoil/test_split_domain_exchange.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.88s

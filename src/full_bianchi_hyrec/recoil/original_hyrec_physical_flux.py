@@ -65,6 +65,207 @@ def _readonly_array(value: np.ndarray | Iterable[float], shape: tuple[int, ...],
 
 
 @dataclass(frozen=True)
+class OriginalHyRecBoundarySample:
+    """Source-identical free-streaming sample at one PR-04C interface.
+
+    The sample carries both the analytic Planck reference and the signed
+    original-HyRec distortion.  Their sum is the positive total occupation
+    used for the unresolved boundary packet.  Flux magnitudes are redward
+    (toward decreasing ordinary frequency) and are positive scalars; the
+    interface direction is supplied separately by the split-domain operator.
+    """
+
+    side: str
+    interface_x: float
+    doppler_width_eV: float
+    interface_energy_eV: float
+    interface_frequency_Hz: float
+    source_index: int
+    source_energy_eV: float
+    lna_query: float
+    history_index_left: int
+    history_index_right: int
+    interpolation_fraction: float
+    history_value_left: float
+    history_value_right: float
+    distortion_occupation: float
+    blackbody_occupation: float
+    total_occupation: float
+    mode_factor_per_H: float
+    distortion_number_flux_per_H_s: float
+    reference_number_flux_per_H_s: float
+    total_number_flux_per_H_s: float
+    distortion_photon_energy_flux_W_per_H: float
+    reference_photon_energy_flux_W_per_H: float
+    total_photon_energy_flux_W_per_H: float
+
+    def __post_init__(self) -> None:
+        if self.side not in {"red", "blue"}:
+            raise ValueError("side must be 'red' or 'blue'")
+        expected_x = -21.25 if self.side == "red" else 21.25
+        if not math.isclose(self.interface_x, expected_x, rel_tol=0.0, abs_tol=1.0e-13):
+            raise ValueError("interface x is inconsistent with side")
+        scalar_names = (
+            "interface_x",
+            "doppler_width_eV",
+            "interface_energy_eV",
+            "interface_frequency_Hz",
+            "source_energy_eV",
+            "lna_query",
+            "interpolation_fraction",
+            "history_value_left",
+            "history_value_right",
+            "distortion_occupation",
+            "blackbody_occupation",
+            "total_occupation",
+            "mode_factor_per_H",
+            "distortion_number_flux_per_H_s",
+            "reference_number_flux_per_H_s",
+            "total_number_flux_per_H_s",
+            "distortion_photon_energy_flux_W_per_H",
+            "reference_photon_energy_flux_W_per_H",
+            "total_photon_energy_flux_W_per_H",
+        )
+        if not all(math.isfinite(float(getattr(self, name))) for name in scalar_names):
+            raise ValueError("boundary sample contains nonfinite values")
+        if self.doppler_width_eV <= 0.0:
+            raise ValueError("Doppler width must be positive")
+        if self.interface_energy_eV <= 0.0 or self.interface_frequency_Hz <= 0.0:
+            raise ValueError("interface energy/frequency must be positive")
+        if self.source_index < 0 or self.history_index_left < 0:
+            raise ValueError("indices must be nonnegative")
+        if self.history_index_right != self.history_index_left + 1:
+            raise ValueError("history indices must be adjacent")
+        if not 0.0 <= self.interpolation_fraction <= 1.0:
+            raise ValueError("interpolation fraction must lie in [0,1]")
+        if self.source_energy_eV <= self.interface_energy_eV:
+            raise ValueError("free-streaming source energy must exceed interface energy")
+        if self.blackbody_occupation < 0.0 or self.total_occupation <= 0.0:
+            raise ValueError("reference occupation must be nonnegative and total positive")
+        if self.mode_factor_per_H <= 0.0:
+            raise ValueError("mode factor must be positive")
+        if self.reference_number_flux_per_H_s < 0.0 or self.total_number_flux_per_H_s <= 0.0:
+            raise ValueError("reference flux must be nonnegative and total flux positive")
+        if self.reference_photon_energy_flux_W_per_H < 0.0 or self.total_photon_energy_flux_W_per_H <= 0.0:
+            raise ValueError("reference energy flux must be nonnegative and total positive")
+
+
+def _relative_scalar_residual(first: float, second: float) -> float:
+    return abs(float(first) - float(second)) / max(abs(float(first)), abs(float(second)), 1.0e-300)
+
+
+def boundary_sample_reconstruction_residuals(
+    sample: OriginalHyRecBoundarySample,
+    *,
+    H_s_inv: float,
+    nH_cm3: float,
+    TR_eV_rescaled: float,
+    fsR: float,
+    meR: float,
+    energy_grid_eV: np.ndarray | Iterable[float],
+    check_blackbody: bool = True,
+    check_mode_factor: bool = True,
+) -> dict[str, float]:
+    """Independently reconstruct one source diagnostic boundary sample.
+
+    This routine also enforces that ``source_index`` is the least canonical
+    native-table index whose energy is strictly above the physical interface.
+    """
+
+    if not math.isfinite(H_s_inv) or H_s_inv <= 0.0:
+        raise ValueError("H_s_inv must be positive")
+    if not math.isfinite(nH_cm3) or nH_cm3 <= 0.0:
+        raise ValueError("nH_cm3 must be positive")
+    if not math.isfinite(TR_eV_rescaled) or TR_eV_rescaled <= 0.0:
+        raise ValueError("TR_eV_rescaled must be positive")
+    if not math.isfinite(fsR) or fsR <= 0.0 or not math.isfinite(meR) or meR <= 0.0:
+        raise ValueError("fsR and meR must be positive")
+    energy = np.asarray(energy_grid_eV, dtype=float)
+    if energy.ndim != 1 or not np.all(np.diff(energy) > 0.0):
+        raise ValueError("energy grid must be one-dimensional and increasing")
+    above = np.flatnonzero(energy > sample.interface_energy_eV)
+    if above.size == 0:
+        raise ValueError("no native source exists above interface")
+    expected_source = int(above[0])
+    if sample.source_index != expected_source:
+        raise ValueError(
+            f"source index is not minimal: expected {expected_source}, got {sample.source_index}"
+        )
+    if not math.isclose(
+        sample.source_energy_eV,
+        float(energy[expected_source]),
+        rel_tol=3.0e-14,
+        abs_tol=1.0e-15,
+    ):
+        raise ValueError("source energy does not match native grid")
+
+    interpolation = (
+        (1.0 - sample.interpolation_fraction) * sample.history_value_left
+        + sample.interpolation_fraction * sample.history_value_right
+    )
+    frequency = sample.interface_energy_eV * fsR**2 * meR / H_PLANCK_EV_S
+    total_occupation = sample.blackbody_occupation + sample.distortion_occupation
+    distortion_number = H_s_inv * sample.mode_factor_per_H * sample.distortion_occupation
+    reference_number = H_s_inv * sample.mode_factor_per_H * sample.blackbody_occupation
+    total_number = H_s_inv * sample.mode_factor_per_H * sample.total_occupation
+    if check_blackbody:
+        blackbody = 1.0 / np.expm1(sample.interface_energy_eV / TR_eV_rescaled)
+    else:
+        blackbody = sample.blackbody_occupation
+    if check_mode_factor:
+        actual_energy_eV = sample.interface_energy_eV * fsR**2 * meR
+        wavelength_cm = SOURCE_HPC_EV_CM / actual_energy_eV
+        mode_factor = 8.0 * np.pi / (nH_cm3 * wavelength_cm**3)
+    else:
+        mode_factor = sample.mode_factor_per_H
+    distortion_energy = h * sample.interface_frequency_Hz * sample.distortion_number_flux_per_H_s
+    reference_energy = h * sample.interface_frequency_Hz * sample.reference_number_flux_per_H_s
+    total_energy = h * sample.interface_frequency_Hz * sample.total_number_flux_per_H_s
+    return {
+        "interpolation": _relative_scalar_residual(interpolation, sample.distortion_occupation),
+        "frequency": _relative_scalar_residual(frequency, sample.interface_frequency_Hz),
+        "blackbody": _relative_scalar_residual(blackbody, sample.blackbody_occupation),
+        "occupation_sum": _relative_scalar_residual(total_occupation, sample.total_occupation),
+        "mode_factor": _relative_scalar_residual(mode_factor, sample.mode_factor_per_H),
+        "distortion_number": _relative_scalar_residual(distortion_number, sample.distortion_number_flux_per_H_s),
+        "reference_number": _relative_scalar_residual(reference_number, sample.reference_number_flux_per_H_s),
+        "total_number": _relative_scalar_residual(total_number, sample.total_number_flux_per_H_s),
+        "number_sum": _relative_scalar_residual(
+            sample.reference_number_flux_per_H_s + sample.distortion_number_flux_per_H_s,
+            sample.total_number_flux_per_H_s,
+        ),
+        "distortion_energy": _relative_scalar_residual(
+            distortion_energy, sample.distortion_photon_energy_flux_W_per_H
+        ),
+        "reference_energy": _relative_scalar_residual(
+            reference_energy, sample.reference_photon_energy_flux_W_per_H
+        ),
+        "total_energy": _relative_scalar_residual(
+            total_energy, sample.total_photon_energy_flux_W_per_H
+        ),
+        "energy_sum": _relative_scalar_residual(
+            sample.reference_photon_energy_flux_W_per_H
+            + sample.distortion_photon_energy_flux_W_per_H,
+            sample.total_photon_energy_flux_W_per_H,
+        ),
+    }
+
+
+@dataclass(frozen=True)
+class OriginalHyRecBoundaryInstrumentedSnapshot:
+    """One full original-HyRec trajectory snapshot plus two interfaces."""
+
+    trajectory: "OriginalHyRecTrajectorySnapshot"
+    boundaries: tuple[OriginalHyRecBoundarySample, OriginalHyRecBoundarySample]
+
+    def __post_init__(self) -> None:
+        if len(self.boundaries) != 2:
+            raise ValueError("boundary snapshot must contain exactly two interfaces")
+        if tuple(sample.side for sample in self.boundaries) != ("red", "blue"):
+            raise ValueError("boundary interfaces must be ordered red, blue")
+
+
+@dataclass(frozen=True)
 class OriginalHyRecTrajectorySnapshot:
     """One source-identical FULL-mode original-HyRec trajectory snapshot."""
 
@@ -244,6 +445,9 @@ def parse_original_hyrec_snapshot_csv(path: str | Path) -> OriginalHyRecTrajecto
                     raise ValueError(f"duplicate virtual index {index}")
                 seen_virtual.add(index)
                 virtual[index] = np.asarray(row[2:], dtype=float)
+            elif kind == "INTERFACE":
+                # Parsed by parse_original_hyrec_boundary_snapshot_csv.
+                continue
             else:
                 raise ValueError(f"unknown snapshot row kind {kind!r}")
 
@@ -325,6 +529,90 @@ def parse_original_hyrec_snapshot_csv(path: str | Path) -> OriginalHyRecTrajecto
         Trv=trv,
         Tvr=tvr,
         Tvv=tvv,
+    )
+
+
+def parse_original_hyrec_boundary_snapshot_csv(
+    path: str | Path,
+) -> OriginalHyRecBoundaryInstrumentedSnapshot:
+    """Parse a PR-04C guarded source snapshot and its two interfaces."""
+
+    trajectory = parse_original_hyrec_snapshot_csv(path)
+    samples: list[OriginalHyRecBoundarySample] = []
+    with Path(path).open(newline="", encoding="utf-8") as handle:
+        for row in csv.reader(handle):
+            if not row or row[0] != "INTERFACE":
+                continue
+            if len(row) != 20:
+                raise ValueError(f"malformed INTERFACE row length {len(row)}")
+            (
+                _,
+                side,
+                interface_x,
+                doppler_width_eV,
+                interface_energy_eV,
+                source_index,
+                source_energy_eV,
+                lna_query,
+                history_index_left,
+                history_index_right,
+                interpolation_fraction,
+                history_value_left,
+                history_value_right,
+                distortion_occupation,
+                blackbody_occupation,
+                total_occupation,
+                mode_factor_per_H,
+                distortion_number_flux,
+                reference_number_flux,
+                total_number_flux,
+            ) = row
+            energy_eV = float(interface_energy_eV)
+            frequency_Hz = (
+                energy_eV * trajectory.fsR**2 * trajectory.meR / H_PLANCK_EV_S
+            )
+            distortion_flux = float(distortion_number_flux)
+            reference_flux = float(reference_number_flux)
+            total_flux = float(total_number_flux)
+            samples.append(
+                OriginalHyRecBoundarySample(
+                    side=side,
+                    interface_x=float(interface_x),
+                    doppler_width_eV=float(doppler_width_eV),
+                    interface_energy_eV=energy_eV,
+                    interface_frequency_Hz=frequency_Hz,
+                    source_index=int(source_index),
+                    source_energy_eV=float(source_energy_eV),
+                    lna_query=float(lna_query),
+                    history_index_left=int(history_index_left),
+                    history_index_right=int(history_index_right),
+                    interpolation_fraction=float(interpolation_fraction),
+                    history_value_left=float(history_value_left),
+                    history_value_right=float(history_value_right),
+                    distortion_occupation=float(distortion_occupation),
+                    blackbody_occupation=float(blackbody_occupation),
+                    total_occupation=float(total_occupation),
+                    mode_factor_per_H=float(mode_factor_per_H),
+                    distortion_number_flux_per_H_s=distortion_flux,
+                    reference_number_flux_per_H_s=reference_flux,
+                    total_number_flux_per_H_s=total_flux,
+                    distortion_photon_energy_flux_W_per_H=h
+                    * frequency_Hz
+                    * distortion_flux,
+                    reference_photon_energy_flux_W_per_H=h
+                    * frequency_Hz
+                    * reference_flux,
+                    total_photon_energy_flux_W_per_H=h
+                    * frequency_Hz
+                    * total_flux,
+                )
+            )
+    ordered = tuple(sorted(samples, key=lambda sample: sample.interface_x))
+    if len(ordered) != 2:
+        raise ValueError(f"expected two INTERFACE rows, found {len(ordered)}")
+    return OriginalHyRecBoundaryInstrumentedSnapshot(
+        trajectory=trajectory,
+        boundaries=(ordered[0], ordered[1]),
     )
 
 
@@ -737,7 +1025,11 @@ __all__ = [
     "SOURCE_HPC_EV_CM",
     "SOURCE_SMALL_TAU_CUTOFF",
     "MOMENT_MAX",
+    "OriginalHyRecBoundarySample",
+    "boundary_sample_reconstruction_residuals",
+    "OriginalHyRecBoundaryInstrumentedSnapshot",
     "OriginalHyRecTrajectorySnapshot",
+    "parse_original_hyrec_boundary_snapshot_csv",
     "parse_original_hyrec_snapshot_csv",
     "source_escape_factors",
     "stable_escape_factors",

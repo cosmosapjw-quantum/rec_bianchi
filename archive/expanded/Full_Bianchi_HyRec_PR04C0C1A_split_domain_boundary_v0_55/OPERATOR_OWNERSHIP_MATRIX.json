@@ -1,0 +1,67 @@
+{
+  "process_count": 10,
+  "required_processes": [
+    "native_free_streaming",
+    "native_line_escape",
+    "native_real_virtual_algebra",
+    "local_com_khw_collision",
+    "local_stimulated_bose",
+    "local_recoil_four_force",
+    "com_internal_liouville",
+    "analytic_blackbody_reference",
+    "cross_interface_red",
+    "cross_interface_blue"
+  ],
+  "rows": [
+    {
+      "owner": "native_transport",
+      "process": "native_free_streaming",
+      "support": "original-HyRec full native frequency support outside interfaces"
+    },
+    {
+      "owner": "native_transport",
+      "process": "native_line_escape",
+      "support": "original-HyRec native line/virtual-state support"
+    },
+    {
+      "owner": "native_transport",
+      "process": "native_real_virtual_algebra",
+      "support": "original-HyRec 2 real + 311 virtual states"
+    },
+    {
+      "owner": "com_collision",
+      "process": "local_com_khw_collision",
+      "support": "35-state x in [-21.25,21.25]"
+    },
+    {
+      "owner": "com_collision",
+      "process": "local_stimulated_bose",
+      "support": "35-state x in [-21.25,21.25]"
+    },
+    {
+      "owner": "com_collision",
+      "process": "local_recoil_four_force",
+      "support": "same-event 35-state collision ledger"
+    },
+    {
+      "owner": "com_liouville",
+      "process": "com_internal_liouville",
+      "support": "inside x in [-21.25,21.25] excluding cross-interface transfer"
+    },
+    {
+      "owner": "analytic_background",
+      "process": "analytic_blackbody_reference",
+      "support": "Planck reference field used by original-HyRec distortion variables"
+    },
+    {
+      "owner": "interface",
+      "process": "cross_interface_red",
+      "support": "x=-21.25"
+    },
+    {
+      "owner": "interface",
+      "process": "cross_interface_blue",
+      "support": "x=+21.25"
+    }
+  ]
+}

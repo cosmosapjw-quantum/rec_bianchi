@@ -6,6 +6,8 @@ import numpy as np
 import pytest
 from scipy.constants import h
 
+from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import OriginalHyRecBoundarySample
+
 from full_bianchi_hyrec.recoil.split_domain_exchange import (
     ExchangeDirection,
     ExchangePacket,
@@ -15,6 +17,7 @@ from full_bianchi_hyrec.recoil.split_domain_exchange import (
     ProcessOwnership,
     SplitDomainExchangeOperator,
     default_ownership_registry,
+    packet_from_original_hyrec_boundary_sample,
 )
 
 
@@ -39,7 +42,7 @@ def _packet(*, side: InterfaceSide = InterfaceSide.BLUE) -> ExchangePacket:
         photon_energy_flux_W_per_H=h * frequency * number,
         reference_photon_energy_flux_W_per_H=h * frequency * reference,
         distortion_photon_energy_flux_W_per_H=h * frequency * distortion,
-        atom_energy_flux_W_per_H=-h * frequency * number,
+        atom_energy_flux_W_per_H=0.0,
         source_snapshot_z=1100.0,
     )
 
@@ -121,7 +124,7 @@ def test_packet_rejects_invalid_signs_and_interface_side() -> None:
         ExchangePacket.from_dict(negative)
 
     wrong_atom = dict(valid)
-    wrong_atom["atom_energy_flux_W_per_H"] *= -1.0
+    wrong_atom["atom_energy_flux_W_per_H"] = -wrong_atom["photon_energy_flux_W_per_H"]
     with pytest.raises(ValueError, match="atom"):
         ExchangePacket.from_dict(wrong_atom)
 
@@ -150,3 +153,69 @@ def test_local_microphysics_firewall_ignores_bianchi_label() -> None:
     a = operator.evaluate_packet(packet, bianchi_type="II")
     b = operator.evaluate_packet(packet, bianchi_type="VI_-1/9")
     assert a == b == packet
+
+
+def test_pure_representation_interface_has_no_atomic_source_term() -> None:
+    packet = _packet()
+    assert packet.atom_energy_flux_W_per_H == 0.0
+    result = SplitDomainExchangeOperator(enabled=True).apply(
+        packet, native_state=[1.0], com_state=[2.0], dt_s=1.0
+    )
+    assert result.ledger.photon_energy_residual_W_per_H == 0.0
+    assert result.ledger.total_energy_residual_W_per_H == 0.0
+
+
+def _boundary_sample(side: str) -> OriginalHyRecBoundarySample:
+    interface_x = -21.25 if side == "red" else 21.25
+    energy_eV = 10.2 + interface_x * 1.0e-4
+    frequency = energy_eV / 4.135667696e-15
+    reference = 1.0e-16
+    distortion = -2.0e-17 if side == "red" else 3.0e-17
+    total = reference + distortion
+    mode = 3.0e13
+    H_s_inv = 5.0e-14
+    phi_reference = H_s_inv * mode * reference
+    phi_distortion = H_s_inv * mode * distortion
+    phi_total = H_s_inv * mode * total
+    return OriginalHyRecBoundarySample(
+        side=side,
+        interface_x=interface_x,
+        doppler_width_eV=1.0e-4,
+        interface_energy_eV=energy_eV,
+        interface_frequency_Hz=frequency,
+        source_index=2,
+        source_energy_eV=energy_eV + 2.0e-4,
+        lna_query=-7.0,
+        history_index_left=10,
+        history_index_right=11,
+        interpolation_fraction=0.5,
+        history_value_left=distortion,
+        history_value_right=distortion,
+        distortion_occupation=distortion,
+        blackbody_occupation=reference,
+        total_occupation=total,
+        mode_factor_per_H=mode,
+        distortion_number_flux_per_H_s=phi_distortion,
+        reference_number_flux_per_H_s=phi_reference,
+        total_number_flux_per_H_s=phi_total,
+        distortion_photon_energy_flux_W_per_H=h * frequency * phi_distortion,
+        reference_photon_energy_flux_W_per_H=h * frequency * phi_reference,
+        total_photon_energy_flux_W_per_H=h * frequency * phi_total,
+    )
+
+
+def test_boundary_sample_constructs_directional_positive_packet() -> None:
+    red = packet_from_original_hyrec_boundary_sample(
+        _boundary_sample("red"), source_snapshot_z=1100.0
+    )
+    blue = packet_from_original_hyrec_boundary_sample(
+        _boundary_sample("blue"), source_snapshot_z=1100.0
+    )
+    assert red.direction is ExchangeDirection.COM_TO_NATIVE
+    assert blue.direction is ExchangeDirection.NATIVE_TO_COM
+    assert red.total_number_flux_per_H_s > 0.0
+    assert blue.total_number_flux_per_H_s > 0.0
+    assert red.atom_energy_flux_W_per_H == 0.0
+    assert blue.atom_energy_flux_W_per_H == 0.0
+    assert red.distortion_number_flux_per_H_s < 0.0
+    assert blue.distortion_number_flux_per_H_s > 0.0
