@@ -4,25 +4,26 @@
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-06",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 90,
+  "estimated_overall_completion_percent": 91,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 85,
+  "estimated_PR04_completion_percent": 90,
   "current_durable_stage": {
-    "name": "PR-04B2A source-identical physical native edge-flux closure",
-    "artifact": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53",
-    "status": "PASS_PR04B2A_PHYSICAL_NATIVE_EDGE_FLUX_PR04B2B_OPEN"
+    "name": "PR-04B2B native/common partition identifiability no-go",
+    "artifact": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54",
+    "status": "PASS_PR04B2B_IDENTIFIABILITY_NO_GO_PR04C_OPEN"
   },
   "next_stage": {
-    "name": "PR-04B2B measure-preserving native-to-17-cell partition and trajectory parity",
-    "entry_gate": "PR04B2A_SOURCE_IDENTICAL_PHYSICAL_EDGE_NORMALIZATION_PASS",
+    "name": "PR-04C split-domain conservative exchange contract and multi-snapshot closure",
+    "entry_gate": "PR04B2B_SUPPORT_AND_IDENTIFIABILITY_NO_GO_PASS",
     "tasks": [
-      "Audit the canonical high-resolution two-photon table as an immutable reference lane without changing the NVIRT=311 production source.",
-      "Construct source and target frequency-cell boundaries and test whether a positive conservative native-to-17-cell projection exists.",
-      "Establish rank/identifiability of moment matching through order four; publish a proof or no-go result rather than fitting a scale.",
-      "Compare refined native physical edge actions and v0.51 source-conditioned COM-KHW actions at multiple predeclared FLRW snapshots.",
-      "Keep PR-04 open unless normalization, conditional jump moments, conservation and trajectory parity close on one common measure."
+      "Publish an operator-ownership matrix with exactly one owner for every collision, escape, redshift and cross-interface term.",
+      "Retain the 35-state COM-KHW collision domain on x in [-21.25,21.25] and original-HyRec on its full native support.",
+      "Exchange source-derived photon-number and photon/atom-energy flux packets at the red and blue interfaces without a global state remap.",
+      "Instrument exact nearest-grid FLRW snapshots near z=1300,1100,900 under source-identical guards.",
+      "Close number, energy, positivity, equilibrium, branch, primitive/direct/Schur, analytic/JVP and local Bianchi-firewall gates.",
+      "Complete PR-04 only if the split-domain ledger closes without a fitted scale or double counting."
     ]
   },
   "roadmap": [
@@ -44,7 +45,7 @@
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_OPEN"
+      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_PASS_NO_GO_PR04C_NEXT"
     },
     {
       "pr": 5,
@@ -118,7 +119,9 @@
     "physical_common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
     "native_original_hyrec_proxy": "v0.52 dimensionless reversible 80-bin-plus-2p diagnostic with exact original-C/Schur parity",
     "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not physical finite-volume photon cells; centre overlap and fitted normalization remain forbidden",
-    "native_physical_edge_flux": "v0.53 source-identical map N_y=8*pi*nu^3*Delta f/(c^3*n_H) and exact x_1s*Gamma*(f_eq-fbar)=H*A*(fminus-fplus) edge identity"
+    "native_physical_edge_flux": "v0.53 source-identical map N_y=8*pi*nu^3*Delta f/(c^3*n_H) and exact x_1s*Gamma*(f_eq-fbar)=H*A*(fminus-fplus) edge identity",
+    "native_common_partition_result": "v0.54 direct positive native-to-17-cell equality rejected: support M2/M0 obstruction and exact rank-5/nullity-12 identifiability no-go",
+    "next_exchange_architecture": "split-domain 35-state COM-KHW/full-support original-HyRec coupling through single-owner photon-number and photon/atom-energy interface flux packets"
   },
   "PR04B1_input_lock": {
     "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
@@ -157,11 +160,11 @@
     ]
   },
   "known_limitations": [
-    "PR-04B2A closes the physical logarithmic edge normalization at one locked FLRW trajectory snapshot, not a measure-preserving 80-native-bin to 17-COM-KHW-cell projection.",
-    "Only two native centre frequencies lie inside the v0.51 |x|<=4.25 core; centre overlap does not define cell boundaries or conditional jump moments.",
-    "The v0.51 C0 event mass and v0.53 net native trajectory edge flux have different state dependence and may not be ratio-fitted.",
-    "The initial <1e-12 nearest-grid/public-output interpolation diagnostic was not met; this is disclosed and is not used as a scientific normalization gate.",
-    "The v0.51 physical common measure covers 17 interior cells; exterior transport remains in the Liouville/boundary module.",
+    "PR-04B2B proves that the full or diffusion-only positive native measure cannot be represented on the v0.51 17-cell core while preserving M0 and M2.",
+    "After support restriction, moments M0 through M4 leave a 12-dimensional null space for seventeen target masses; a unique projection requires additional physics and cannot be called canonical by default.",
+    "The canonical runtime archive supplies centre values and width-integrated rates but no explicit numerical edge array, dedicated table-generator member or bundled-table write path.",
+    "PR-04C must couple the full-support native transport and 35-state COM-KHW collision network by an explicit conservative interface ledger rather than a global remap.",
+    "Multi-snapshot direct state-vector parity was intentionally blocked after the common-map gate failed; it was not fabricated.",
     "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
     "Wolfram, Precise Special Functions and the live GitHub private-repository connector were not exposed in this runtime."
   ],
@@ -177,8 +180,9 @@
     "runtime_verification": "PERIODIC_LOCAL_REMOTE_CHECK_ONLY; LIVE_GITHUB_CONNECTOR_UNAVAILABLE",
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
     "local_v051_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
-    "policy": "Export incremental v0.52-to-v0.53, remote-milestone, cumulative binary-safe patches and a standalone full bundle. The owner must fetch live main and apply on a feature branch without force-push.",
-    "local_v052_parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114"
+    "policy": "Export incremental v0.53-to-v0.54, remote-milestone, cumulative binary-safe patches and a standalone full bundle. The owner must fetch live main and apply on a feature branch without force-push.",
+    "local_v052_parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114",
+    "local_v053_parent_commit": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7"
   },
   "PR04B2A_evidence": {
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53.zip",
@@ -226,5 +230,47 @@
       "scientific_verifier": "PASS",
       "slow_execution_policy": "one isolated interpreter per slow node"
     }
+  },
+  "PR04B2B_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54.zip",
+    "artifact_bundle_sha256": "5a0d9c66d93beb742020d40b8e983f710f41ea12ff1ca8ff74d5c9427ce62bc7",
+    "artifact_bundle_size_bytes": 88095,
+    "runtime_data_sha256": "e91897172afa85a961630de7a9bc99304ea461b147a5fbf9d94c54afc8a610ae",
+    "runtime_data_size_bytes": 53642,
+    "production_table_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+    "production_table_shape": [
+      311,
+      5
+    ],
+    "high_resolution_table_sha256": "db201c729a38c7919172cf080c8ba44cdf8e6b131a6eaa8adcbc9e58fd4d0c93",
+    "high_resolution_table_shape": [
+      1493,
+      5
+    ],
+    "exact_common_production_centres": 0,
+    "production_diffusion_centres_inside_core": 2,
+    "high_resolution_diffusion_centres_inside_core": 2,
+    "target_support_M2_over_M0_bound": 18.0625,
+    "full_native_M2_over_M0": 134470774.9773356,
+    "diffusion80_native_M2_over_M0": 21808.728753005056,
+    "full_support_violation_factor": 7444748.78767256,
+    "diffusion_support_violation_factor": 1207.4036679864391,
+    "core_mass_fraction_of_full": 0.0017361780045445255,
+    "core_mass_fraction_of_diffusion80": 0.006550012987972702,
+    "exact_target_moment_rank": 5,
+    "exact_target_moment_nullity": 12,
+    "positive_witness_minimum_weight": 0.047058823529411764,
+    "positive_witness_moment_residual": 1.4210854715202004e-14,
+    "direct_native_to_17_cell_map": "REJECTED_BY_SUPPORT_AND_IDENTIFIABILITY",
+    "multi_snapshot_direct_parity": "BLOCKED_NOT_FABRICATED",
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "fallbacks": [
+      "SymPy exact rational rank/null-space proof",
+      "mpmath 100-digit support re-summation",
+      "NumPy SVD positive witness",
+      "SciPy HiGHS nonnegative feasibility controls",
+      "direct canonical ZIP/source/table audit"
+    ]
   }
 }

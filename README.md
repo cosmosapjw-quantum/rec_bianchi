@@ -7,11 +7,11 @@ physics, and angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-04B2A / v0.53**.
-- Status: the canonical October-2012 original-HyRec source is instrumented under a source-identical compile-time guard at one actual FULL-mode trajectory snapshot. The native algebra maps without a fitted scale to physical photon edge flux per H per `d ln nu`, and canonical-source/dense/Schur physical edge actions agree.
-- Scientific boundary: the native virtual population remains an algebraic proxy, not a literal finite-volume photon cell. Only two native centres lie in the v0.51 17-cell core, so centre overlap is not a common partition. **PR-01 through PR-03 are complete; PR-04 remains in progress.**
+- Durable stage: **PR-04B2B / v0.54**.
+- Status: a direct positive original-HyRec-to-17-cell equality is rejected by a sharp support bound and an exact identifiability audit. The full and diffusion native measures cannot preserve `M0,M2` on `|x|<=4.25`; after support restriction, five moments leave a 12-dimensional null space for seventeen target masses.
+- Scientific boundary: this is an informative no-go, not a solver failure. The native transport and COM–KHW collision representations remain distinct. **PR-01 through PR-03 are complete; PR-04 remains in progress.**
 - Provenance: `HyRec_Oct2012.zip`, SHA-256 `48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27`, is the owner-attested unique official-site October-2012 archive. Internal May/October metadata variations are intrinsic to that canonical release.
-- Next bounded stage: **PR-04B2B measure-preserving native-to-17-cell partition and trajectory parity**.
+- Next bounded stage: **PR-04C split-domain conservative number/energy exchange and multi-snapshot closure**.
 - Completion target: verified scalar solver through the 12-PR roadmap.
 
 Start with:
@@ -58,7 +58,7 @@ the owner explicitly changes that policy.
 - Fast recovery/CI: `pytest -q -m "not slow"`.
 - Full repository verifier with fast tests: `python scripts/verify_repo.py --all`.
 - Full scientific regression: `python scripts/verify_repo.py --scientific`.
-- PR-04B2A regeneration: `python scripts/run_pr04b2_physical_native_flux_stage.py`.
+- PR-04B2B regeneration: `python scripts/run_pr04b2b_partition_nogo_stage.py`.
 - Original stage bundles retain per-stage scientific receipts.
 
 ## Repository checks and patches
