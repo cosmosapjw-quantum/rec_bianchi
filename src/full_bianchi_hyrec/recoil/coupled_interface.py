@@ -17,13 +17,16 @@ from typing import Mapping
 
 import numpy as np
 from scipy.constants import c, h
+from scipy.sparse.linalg import LinearOperator, gmres
 
 from .nonlinear_bose_release import (
     HarmonicGrid,
     apply_nonlinear_bose_jvp,
     apply_nonlinear_bose_operator,
+    bose_free_energy,
+    bose_photon_number,
 )
-from .nonlinear_bose_runtime import CollisionNetwork
+from .nonlinear_bose_runtime import CollisionNetwork, implicit_bose_step
 from .split_domain_exchange import (
     ExchangeDirection,
     ExchangePacket,
@@ -254,6 +257,26 @@ class BoundaryTransferAccumulator:
             atom_energy_J_per_H=packet.atom_energy_flux_W_per_H * dt_s,
             source_snapshot_z=packet.source_snapshot_z,
             dt_s=float(dt_s),
+        )
+
+    def scaled(self, factor: float) -> "BoundaryTransferAccumulator":
+        """Return the same transfer with every extensive component scaled."""
+        if not math.isfinite(factor) or factor <= 0.0:
+            raise ValueError("accumulator scale factor must be positive and finite")
+        return BoundaryTransferAccumulator(
+            side=self.side,
+            direction=self.direction,
+            interface_x=self.interface_x,
+            interface_frequency_Hz=self.interface_frequency_Hz,
+            number_per_H=self.number_per_H * factor,
+            reference_number_per_H=self.reference_number_per_H * factor,
+            distortion_number_per_H=self.distortion_number_per_H * factor,
+            energy_J_per_H=self.energy_J_per_H * factor,
+            reference_energy_J_per_H=self.reference_energy_J_per_H * factor,
+            distortion_energy_J_per_H=self.distortion_energy_J_per_H * factor,
+            atom_energy_J_per_H=self.atom_energy_J_per_H * factor,
+            source_snapshot_z=self.source_snapshot_z,
+            dt_s=self.dt_s,
         )
 
     def to_dict(self) -> dict[str, float | str]:
@@ -646,6 +669,265 @@ class InterfaceTransferLedger:
             raise ValueError("global interface atom source must be zero")
 
 
+@dataclass(frozen=True)
+class CoupledInterfaceStepResult:
+    occupation: np.ndarray
+    accumulators: tuple[BoundaryTransferAccumulator, ...]
+    ledger: InterfaceTransferLedger
+    converged: bool
+    newton_iterations: int
+    total_gmres_iterations: int
+    dt_s: float
+    residual_relative: float
+    raw_residual_inf: float
+    minimum_occupation: float
+    explicit_trial_minimum: float
+    number_before_m3: float
+    number_after_m3: float
+    expected_number_after_m3: float
+    number_relative_residual: float
+    free_energy_before: float
+    free_energy_after: float
+    collision_entropy_production: float
+    interface_enabled: bool
+
+    def restart_payload(self) -> dict[str, object]:
+        return {
+            "occupation": self.occupation.tolist(),
+            "accumulators": [item.to_dict() for item in self.accumulators],
+            "dt_s": self.dt_s,
+            "interface_enabled": self.interface_enabled,
+        }
+
+
+def solve_coupled_interface(
+    old_occupation: np.ndarray,
+    problem: CoupledInterfaceProblem,
+    *,
+    nonlinear_rtol: float = 1.0e-11,
+    max_newton: int = 16,
+    gmres_rtol: float = 2.0e-9,
+    gmres_restart: int = 40,
+    gmres_maxiter: int = 160,
+) -> CoupledInterfaceStepResult:
+    """Solve the positive backward-Euler collision/interface residual."""
+
+    if not isinstance(problem, CoupledInterfaceProblem):
+        raise TypeError("problem must be a CoupledInterfaceProblem")
+    old = problem._validated_old(old_occupation)
+    if nonlinear_rtol <= 0.0 or gmres_rtol <= 0.0:
+        raise ValueError("solver tolerances must be positive")
+
+    if not problem.enabled:
+        baseline = implicit_bose_step(
+            old,
+            dt_s=problem.dt_s,
+            network=problem.network,
+            grid=problem.grid,
+            nonlinear_rtol=nonlinear_rtol,
+            max_newton=max_newton,
+            gmres_rtol=gmres_rtol,
+            gmres_restart=gmres_restart,
+            gmres_maxiter=gmres_maxiter,
+        )
+        final_action = apply_nonlinear_bose_operator(
+            baseline.occupation,
+            mode_measure=problem.network.mode_measure,
+            equilibrium_weight=problem.network.equilibrium_weight,
+            pair_moments=problem.network.pair_moments,
+            same_cell_rates=problem.network.same_cell_rates,
+            grid=problem.grid,
+            photon_momentum_scale=problem.network.momentum_scale,
+        )
+        adapter: FarBoundaryAdapter = problem.adapter  # type: ignore[attr-defined]
+        ledger = InterfaceTransferLedger.from_accumulators(
+            adapter, tuple(), n_H_m3=problem.n_H_m3
+        )
+        return CoupledInterfaceStepResult(
+            occupation=baseline.occupation,
+            accumulators=tuple(),
+            ledger=ledger,
+            converged=baseline.converged,
+            newton_iterations=baseline.newton_iterations,
+            total_gmres_iterations=baseline.total_gmres_iterations,
+            dt_s=problem.dt_s,
+            residual_relative=baseline.residual_relative,
+            raw_residual_inf=baseline.residual_relative
+            * max(float(np.max(np.abs(old))), 1.0e-300),
+            minimum_occupation=baseline.minimum_occupation,
+            explicit_trial_minimum=baseline.explicit_trial_minimum,
+            number_before_m3=baseline.number_before,
+            number_after_m3=baseline.number_after,
+            expected_number_after_m3=baseline.number_before,
+            number_relative_residual=baseline.number_relative_change,
+            free_energy_before=baseline.free_energy_before,
+            free_energy_after=baseline.free_energy_after,
+            collision_entropy_production=final_action.entropy_production,
+            interface_enabled=False,
+        )
+
+    old_action = apply_nonlinear_bose_operator(
+        old,
+        mode_measure=problem.network.mode_measure,
+        equilibrium_weight=problem.network.equilibrium_weight,
+        pair_moments=problem.network.pair_moments,
+        same_cell_rates=problem.network.same_cell_rates,
+        grid=problem.grid,
+        photon_momentum_scale=problem.network.momentum_scale,
+    )
+    explicit_trial = (
+        old
+        + problem.dt_s * old_action.occupation_action
+        + problem.interface_increment(np.zeros(problem.n_transfer))
+    )
+    vector = problem.pack(np.log(old), np.zeros(problem.n_transfer))
+    total_gmres = 0
+    converged = False
+    final_norm = math.inf
+    completed_iterations = 0
+
+    for iteration in range(max_newton + 1):
+        residual = problem.scaled_residual(vector, old)
+        final_norm = float(np.max(np.abs(residual)))
+        completed_iterations = iteration
+        if final_norm <= nonlinear_rtol:
+            converged = True
+            break
+        if iteration == max_newton:
+            break
+
+        log_f, log_rho = problem.unpack(vector)
+        occupation = np.exp(log_f)
+        rho = np.exp(log_rho)
+        scale_f = problem._occupation_scale(old)
+        inverse_f_diagonal = (scale_f / np.maximum(occupation, 1.0e-300)).ravel()
+        inverse_rho_diagonal = 1.0 / np.maximum(rho, 1.0e-300)
+        inverse_diagonal = np.concatenate((inverse_f_diagonal, inverse_rho_diagonal))
+
+        operator = LinearOperator(
+            (problem.vector_size, problem.vector_size),
+            matvec=lambda direction: problem.jvp(
+                vector, np.asarray(direction, dtype=float), old, scaled=True
+            ),
+            dtype=float,
+        )
+        preconditioner = LinearOperator(
+            (problem.vector_size, problem.vector_size),
+            matvec=lambda value: inverse_diagonal * np.asarray(value, dtype=float),
+            dtype=float,
+        )
+        counter = [0]
+
+        def callback(_value):
+            counter[0] += 1
+
+        step, info = gmres(
+            operator,
+            -residual,
+            M=preconditioner,
+            rtol=gmres_rtol,
+            atol=0.0,
+            restart=gmres_restart,
+            maxiter=gmres_maxiter,
+            callback=callback,
+            callback_type="pr_norm",
+        )
+        total_gmres += counter[0]
+        if info != 0 or not np.all(np.isfinite(step)):
+            raise RuntimeError(f"GMRES failed in coupled interface solve (info={info})")
+
+        accepted = False
+        damping = 1.0
+        for _ in range(24):
+            trial = vector + damping * step
+            trial_log_f, trial_log_rho = problem.unpack(trial)
+            if (
+                np.max(trial_log_f) > 700.0
+                or np.min(trial_log_f) < -745.0
+                or np.max(trial_log_rho, initial=0.0) > 700.0
+                or np.min(trial_log_rho, initial=0.0) < -745.0
+            ):
+                damping *= 0.5
+                continue
+            trial_residual = problem.scaled_residual(trial, old)
+            trial_norm = float(np.max(np.abs(trial_residual)))
+            if trial_norm < final_norm:
+                vector = trial
+                accepted = True
+                break
+            damping *= 0.5
+        if not accepted:
+            raise RuntimeError("coupled interface Newton line search failed")
+
+    log_f, log_rho = problem.unpack(vector)
+    occupation = np.exp(log_f)
+    rho = np.exp(log_rho)
+    raw = problem.unscaled_residual(vector, old)
+    raw_f, _ = problem.unpack_residual(raw)
+    accumulators = tuple(
+        accumulator.scaled(float(scale))
+        for accumulator, scale in zip(
+            problem.base_accumulators, rho  # type: ignore[attr-defined]
+        )
+    )
+    adapter = problem.adapter  # type: ignore[attr-defined]
+    ledger = InterfaceTransferLedger.from_accumulators(
+        adapter, accumulators, n_H_m3=problem.n_H_m3
+    )
+    number_before = bose_photon_number(
+        old, mode_measure=problem.network.mode_measure, grid=problem.grid
+    )
+    number_after = bose_photon_number(
+        occupation, mode_measure=problem.network.mode_measure, grid=problem.grid
+    )
+    expected_number = number_before + problem.n_H_m3 * ledger.com_number_change_per_H
+    number_relative = abs(number_after - expected_number) / max(
+        abs(number_before), abs(expected_number), 1.0e-300
+    )
+    free_before = bose_free_energy(
+        old,
+        mode_measure=problem.network.mode_measure,
+        equilibrium_weight=problem.network.equilibrium_weight,
+        grid=problem.grid,
+    )
+    free_after = bose_free_energy(
+        occupation,
+        mode_measure=problem.network.mode_measure,
+        equilibrium_weight=problem.network.equilibrium_weight,
+        grid=problem.grid,
+    )
+    final_action = apply_nonlinear_bose_operator(
+        occupation,
+        mode_measure=problem.network.mode_measure,
+        equilibrium_weight=problem.network.equilibrium_weight,
+        pair_moments=problem.network.pair_moments,
+        same_cell_rates=problem.network.same_cell_rates,
+        grid=problem.grid,
+        photon_momentum_scale=problem.network.momentum_scale,
+    )
+    return CoupledInterfaceStepResult(
+        occupation=occupation,
+        accumulators=accumulators,
+        ledger=ledger,
+        converged=converged,
+        newton_iterations=completed_iterations,
+        total_gmres_iterations=total_gmres,
+        dt_s=problem.dt_s,
+        residual_relative=final_norm,
+        raw_residual_inf=float(np.max(np.abs(raw_f))),
+        minimum_occupation=float(np.min(occupation)),
+        explicit_trial_minimum=float(np.min(explicit_trial)),
+        number_before_m3=number_before,
+        number_after_m3=number_after,
+        expected_number_after_m3=expected_number,
+        number_relative_residual=float(number_relative),
+        free_energy_before=free_before,
+        free_energy_after=free_after,
+        collision_entropy_production=final_action.entropy_production,
+        interface_enabled=True,
+    )
+
+
 __all__ = [
     "FarBoundaryCell",
     "FarBoundaryAdapter",
@@ -653,4 +935,6 @@ __all__ = [
     "CoupledInterfaceProblem",
     "SideTransferLedger",
     "InterfaceTransferLedger",
+    "CoupledInterfaceStepResult",
+    "solve_coupled_interface",
 ]

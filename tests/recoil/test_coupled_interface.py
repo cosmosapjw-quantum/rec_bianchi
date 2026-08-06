@@ -321,3 +321,99 @@ def test_unscaled_residual_preserves_exact_interface_number_identity():
         - problem.interface_number_change_m3(np.log(rho))
     )
     assert weighted_residual == pytest.approx(expected, rel=3e-14, abs=3e-16)
+
+
+def test_coupled_implicit_step_recovers_positivity_after_negative_explicit_trial():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        CoupledInterfaceProblem,
+        solve_coupled_interface,
+    )
+
+    network = _two_boundary_network()
+    grid = _octahedral_grid()
+    old = np.asarray(
+        [
+            [0.32, 0.08, 0.24, 0.11, 0.28, 0.09],
+            [0.015, 0.09, 0.025, 0.08, 0.03, 0.07],
+        ]
+    )
+    from full_bianchi_hyrec.recoil.nonlinear_bose_release import (
+        apply_nonlinear_bose_operator,
+    )
+    action = apply_nonlinear_bose_operator(
+        old,
+        mode_measure=network.mode_measure,
+        equilibrium_weight=network.equilibrium_weight,
+        pair_moments=network.pair_moments,
+        same_cell_rates=network.same_cell_rates,
+        grid=grid,
+    ).occupation_action
+    negative = action < 0.0
+    critical = float(np.min(-old[negative] / action[negative]))
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=(_packet(InterfaceSide.BLUE, flux=1.0e-6),),
+        n_H_m3=1.0,
+        dt_s=1.05 * critical,
+    )
+    result = solve_coupled_interface(
+        old,
+        problem,
+        nonlinear_rtol=5.0e-12,
+        gmres_rtol=1.0e-11,
+    )
+
+    assert result.converged
+    assert result.explicit_trial_minimum < 0.0
+    assert result.minimum_occupation > 0.0
+    assert result.residual_relative < 1.0e-11
+    assert result.number_relative_residual < 1.0e-11
+    assert result.collision_entropy_production <= 1.0e-11
+    assert len(result.accumulators) == 1
+    result.ledger.validate()
+
+
+def test_interface_guard_off_is_exact_collision_solver_parity():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        CoupledInterfaceProblem,
+        solve_coupled_interface,
+    )
+    from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import implicit_bose_step
+
+    network = _two_boundary_network()
+    grid = _octahedral_grid()
+    old = np.asarray(
+        [
+            [0.32, 0.08, 0.24, 0.11, 0.28, 0.09],
+            [0.015, 0.09, 0.025, 0.08, 0.03, 0.07],
+        ]
+    )
+    baseline = implicit_bose_step(
+        old,
+        dt_s=0.2,
+        network=network,
+        grid=grid,
+        nonlinear_rtol=2.0e-11,
+        gmres_rtol=2.0e-8,
+    )
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=(),
+        n_H_m3=1.0,
+        dt_s=0.2,
+        enabled=False,
+    )
+    result = solve_coupled_interface(
+        old,
+        problem,
+        nonlinear_rtol=2.0e-11,
+        gmres_rtol=2.0e-8,
+    )
+
+    assert np.array_equal(result.occupation, baseline.occupation)
+    assert result.accumulators == ()
+    assert result.ledger.sides == ()
+    assert result.number_relative_residual == baseline.number_relative_change
+    assert result.residual_relative == baseline.residual_relative
