@@ -189,3 +189,135 @@ def test_face_energy_is_not_replaced_by_finite_cell_centroid():
         rel=3e-15,
         abs=0.0,
     )
+
+
+def _octahedral_grid():
+    from full_bianchi_hyrec.recoil.nonlinear_bose_release import HarmonicGrid
+
+    directions = np.asarray(
+        [
+            [1.0, 0.0, 0.0],
+            [-1.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0],
+            [0.0, -1.0, 0.0],
+            [0.0, 0.0, 1.0],
+            [0.0, 0.0, -1.0],
+        ]
+    )
+    return HarmonicGrid.from_directions(
+        directions, np.full(6, 1.0 / 6.0), ell_max=1
+    )
+
+
+def _two_boundary_network() -> CollisionNetwork:
+    pair = np.zeros((2, 2, 2))
+    pair[0, 0, 1] = pair[0, 1, 0] = 0.8
+    pair[1, 0, 1] = pair[1, 1, 0] = 0.12
+    return CollisionNetwork(
+        state_intervals=np.asarray([[-21.25, -16.25], [16.25, 21.25]]),
+        state_labels=np.asarray(["FR00", "FB02"]),
+        pair_moments=pair,
+        same_cell_rates=np.zeros((2, 2)),
+        mode_measure=np.asarray([2.0, 3.0]),
+        equilibrium_weight=np.asarray([0.4, 0.9]),
+        momentum_scale=np.asarray([h * 2.4655e15 / c, h * 2.4665e15 / c]),
+        inherited_release_policy={"synthetic": 1},
+    )
+
+
+def test_coupled_residual_analytic_jvp_matches_central_difference():
+    from full_bianchi_hyrec.recoil.coupled_interface import CoupledInterfaceProblem
+
+    network = _two_boundary_network()
+    grid = _octahedral_grid()
+    packets = (
+        _packet(InterfaceSide.RED, flux=3.0e-3),
+        _packet(InterfaceSide.BLUE, flux=2.0e-3),
+    )
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=packets,
+        n_H_m3=0.8,
+        dt_s=0.2,
+    )
+    old = np.asarray(
+        [
+            [0.32, 0.08, 0.24, 0.11, 0.28, 0.09],
+            [0.015, 0.09, 0.025, 0.08, 0.03, 0.07],
+        ]
+    )
+    field = 1.03 * old
+    vector = problem.pack(np.log(field), np.log(np.asarray([0.9, 1.1])))
+    direction = np.linspace(-0.03, 0.04, vector.size)
+    exact = problem.jvp(vector, direction, old, scaled=True)
+
+    errors = []
+    for epsilon in (2.0e-5, 1.0e-5, 5.0e-6):
+        numeric = (
+            problem.scaled_residual(vector + epsilon * direction, old)
+            - problem.scaled_residual(vector - epsilon * direction, old)
+        ) / (2.0 * epsilon)
+        errors.append(
+            np.linalg.norm(exact - numeric) / max(np.linalg.norm(numeric), 1e-300)
+        )
+    assert min(errors) < 1.0e-8
+
+
+def test_unscaled_residual_preserves_exact_interface_number_identity():
+    from full_bianchi_hyrec.recoil.coupled_interface import CoupledInterfaceProblem
+    from full_bianchi_hyrec.recoil.nonlinear_bose_release import (
+        apply_nonlinear_bose_operator,
+    )
+
+    network = _two_boundary_network()
+    grid = _octahedral_grid()
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=(
+            _packet(InterfaceSide.RED, flux=3.0e-3),
+            _packet(InterfaceSide.BLUE, flux=2.0e-3),
+        ),
+        n_H_m3=0.8,
+        dt_s=0.2,
+    )
+    old = np.full((2, 6), 0.2)
+    field = np.asarray(
+        [
+            [0.21, 0.19, 0.22, 0.18, 0.205, 0.195],
+            [0.17, 0.16, 0.18, 0.15, 0.175, 0.165],
+        ]
+    )
+    rho = np.asarray([0.85, 1.15])
+    vector = problem.pack(np.log(field), np.log(rho))
+    residual = problem.unscaled_residual(vector, old)
+    residual_f, _ = problem.unpack_residual(residual)
+
+    action = apply_nonlinear_bose_operator(
+        field,
+        mode_measure=network.mode_measure,
+        equilibrium_weight=network.equilibrium_weight,
+        pair_moments=network.pair_moments,
+        same_cell_rates=network.same_cell_rates,
+        grid=grid,
+    )
+    assert abs(action.number_residual) < 1.0e-13
+    weighted_residual = float(
+        np.sum(
+            network.mode_measure[:, None]
+            * residual_f
+            * grid.weights[None, :]
+        )
+    )
+    expected = (
+        float(
+            np.sum(
+                network.mode_measure[:, None]
+                * (field - old)
+                * grid.weights[None, :]
+            )
+        )
+        - problem.interface_number_change_m3(np.log(rho))
+    )
+    assert weighted_residual == pytest.approx(expected, rel=3e-14, abs=3e-16)

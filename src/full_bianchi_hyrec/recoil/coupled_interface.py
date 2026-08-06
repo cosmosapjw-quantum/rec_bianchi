@@ -18,6 +18,11 @@ from typing import Mapping
 import numpy as np
 from scipy.constants import c, h
 
+from .nonlinear_bose_release import (
+    HarmonicGrid,
+    apply_nonlinear_bose_jvp,
+    apply_nonlinear_bose_operator,
+)
 from .nonlinear_bose_runtime import CollisionNetwork
 from .split_domain_exchange import (
     ExchangeDirection,
@@ -286,6 +291,218 @@ class BoundaryTransferAccumulator:
 
 
 @dataclass(frozen=True)
+class CoupledInterfaceProblem:
+    """Source-conditioned monolithic collision/interface residual.
+
+    Resolved occupations use ``f=exp(u)``.  Each positive integrated packet is
+    multiplied by ``rho=exp(v)`` and constrained by ``rho-1=0`` in the same
+    residual, which keeps the transfer block nonsingular while retaining the
+    packet as an explicit nonlinear unknown.
+    """
+
+    network: CollisionNetwork
+    grid: HarmonicGrid
+    packets: tuple[ExchangePacket, ...]
+    n_H_m3: float
+    dt_s: float
+    enabled: bool = True
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.network, CollisionNetwork):
+            raise TypeError("network must be a CollisionNetwork")
+        if not isinstance(self.grid, HarmonicGrid):
+            raise TypeError("grid must be a HarmonicGrid")
+        if not math.isfinite(self.n_H_m3) or self.n_H_m3 <= 0.0:
+            raise ValueError("n_H_m3 must be positive and finite")
+        if not math.isfinite(self.dt_s) or self.dt_s <= 0.0:
+            raise ValueError("dt_s must be positive and finite")
+        if not self.enabled and self.packets:
+            # Guard-off is represented by an empty transfer block.  This avoids
+            # a logarithm of an exact zero accumulator.
+            object.__setattr__(self, "packets", tuple())
+        if self.enabled and not self.packets:
+            raise ValueError("enabled interface requires at least one packet")
+        if len({packet.side for packet in self.packets}) != len(self.packets):
+            raise ValueError("at most one packet per interface side is allowed")
+        ordered = tuple(
+            sorted(
+                self.packets,
+                key=lambda packet: 0 if packet.side is InterfaceSide.RED else 1,
+            )
+        )
+        if ordered and len({packet.source_snapshot_z for packet in ordered}) != 1:
+            raise ValueError("coupled packets must come from one source snapshot")
+        object.__setattr__(self, "packets", ordered)
+        object.__setattr__(self, "adapter", FarBoundaryAdapter.from_network(self.network))
+        object.__setattr__(
+            self,
+            "base_accumulators",
+            tuple(
+                BoundaryTransferAccumulator.from_packet(packet, dt_s=self.dt_s)
+                for packet in ordered
+            ),
+        )
+
+    @property
+    def n_transfer(self) -> int:
+        return len(self.base_accumulators)  # type: ignore[attr-defined]
+
+    @property
+    def occupation_shape(self) -> tuple[int, int]:
+        return (self.network.n_state, self.grid.n_angle)
+
+    @property
+    def vector_size(self) -> int:
+        return self.network.n_state * self.grid.n_angle + self.n_transfer
+
+    def pack(self, log_occupation: np.ndarray, log_rho: np.ndarray) -> np.ndarray:
+        log_f = np.asarray(log_occupation, dtype=float)
+        log_rho = np.asarray(log_rho, dtype=float)
+        if log_f.shape != self.occupation_shape:
+            raise ValueError("log occupation shape mismatch")
+        if log_rho.shape != (self.n_transfer,):
+            raise ValueError("log transfer multiplier shape mismatch")
+        if not np.all(np.isfinite(log_f)) or not np.all(np.isfinite(log_rho)):
+            raise ValueError("log variables must be finite")
+        return np.concatenate((log_f.ravel(), log_rho))
+
+    def unpack(self, vector: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        values = np.asarray(vector, dtype=float)
+        if values.shape != (self.vector_size,):
+            raise ValueError("coupled vector size mismatch")
+        split = self.network.n_state * self.grid.n_angle
+        return values[:split].reshape(self.occupation_shape), values[split:]
+
+    def unpack_residual(self, vector: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        return self.unpack(vector)
+
+    def _base_increments(self) -> tuple[np.ndarray, ...]:
+        adapter: FarBoundaryAdapter = self.adapter  # type: ignore[attr-defined]
+        return tuple(
+            adapter.occupation_increment(
+                accumulator,
+                n_H_m3=self.n_H_m3,
+                angular_weights=self.grid.weights,
+            )
+            for accumulator in self.base_accumulators  # type: ignore[attr-defined]
+        )
+
+    def interface_increment(self, log_rho: np.ndarray) -> np.ndarray:
+        log_rho = np.asarray(log_rho, dtype=float)
+        if log_rho.shape != (self.n_transfer,):
+            raise ValueError("log transfer multiplier shape mismatch")
+        rho = np.exp(log_rho)
+        increment = np.zeros(self.occupation_shape, dtype=float)
+        for scale, base in zip(rho, self._base_increments()):
+            increment += float(scale) * base
+        return increment
+
+    def interface_number_change_m3(self, log_rho: np.ndarray) -> float:
+        log_rho = np.asarray(log_rho, dtype=float)
+        if log_rho.shape != (self.n_transfer,):
+            raise ValueError("log transfer multiplier shape mismatch")
+        rho = np.exp(log_rho)
+        total = 0.0
+        for scale, accumulator in zip(
+            rho, self.base_accumulators  # type: ignore[attr-defined]
+        ):
+            sign_com = -1.0 if accumulator.side is InterfaceSide.RED else 1.0
+            total += (
+                sign_com
+                * self.n_H_m3
+                * accumulator.number_per_H
+                * float(scale)
+            )
+        return float(total)
+
+    def _validated_old(self, old_occupation: np.ndarray) -> np.ndarray:
+        old = np.asarray(old_occupation, dtype=float)
+        if old.shape != self.occupation_shape:
+            raise ValueError("old occupation shape mismatch")
+        if np.any(old <= 0.0) or not np.all(np.isfinite(old)):
+            raise ValueError("old occupation must be finite and strictly positive")
+        return old
+
+    def _occupation_scale(self, old_occupation: np.ndarray) -> np.ndarray:
+        old = self._validated_old(old_occupation)
+        interface_scale = np.zeros_like(old)
+        for base in self._base_increments():
+            interface_scale += np.abs(base)
+        return np.maximum(np.maximum(np.abs(old), interface_scale), 1.0e-300)
+
+    def unscaled_residual(
+        self, vector: np.ndarray, old_occupation: np.ndarray
+    ) -> np.ndarray:
+        old = self._validated_old(old_occupation)
+        log_f, log_rho = self.unpack(vector)
+        if np.max(log_f) > 700.0 or np.min(log_f) < -745.0:
+            raise FloatingPointError("log occupation is outside finite exponential range")
+        if np.max(log_rho, initial=0.0) > 700.0 or np.min(log_rho, initial=0.0) < -745.0:
+            raise FloatingPointError("log transfer multiplier is outside range")
+        occupation = np.exp(log_f)
+        rho = np.exp(log_rho)
+        action = apply_nonlinear_bose_operator(
+            occupation,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+            photon_momentum_scale=self.network.momentum_scale,
+        ).occupation_action
+        residual_f = (
+            occupation
+            - old
+            - self.dt_s * action
+            - self.interface_increment(log_rho)
+        )
+        residual_rho = rho - 1.0
+        return self.pack(residual_f, residual_rho)
+
+    def scaled_residual(
+        self, vector: np.ndarray, old_occupation: np.ndarray
+    ) -> np.ndarray:
+        raw_f, raw_rho = self.unpack_residual(
+            self.unscaled_residual(vector, old_occupation)
+        )
+        return self.pack(raw_f / self._occupation_scale(old_occupation), raw_rho)
+
+    def jvp(
+        self,
+        vector: np.ndarray,
+        direction: np.ndarray,
+        old_occupation: np.ndarray,
+        *,
+        scaled: bool = True,
+    ) -> np.ndarray:
+        self._validated_old(old_occupation)
+        log_f, log_rho = self.unpack(vector)
+        du, dv = self.unpack(direction)
+        occupation = np.exp(log_f)
+        rho = np.exp(log_rho)
+        d_occupation = occupation * du
+        action_jvp = apply_nonlinear_bose_jvp(
+            occupation,
+            d_occupation,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+        ).occupation_action_jvp
+        d_interface = np.zeros_like(occupation)
+        for scale, scalar_direction, base in zip(
+            rho, dv, self._base_increments()
+        ):
+            d_interface += float(scale * scalar_direction) * base
+        result_f = d_occupation - self.dt_s * action_jvp - d_interface
+        result_rho = rho * dv
+        if scaled:
+            result_f = result_f / self._occupation_scale(old_occupation)
+        return self.pack(result_f, result_rho)
+
+
+@dataclass(frozen=True)
 class SideTransferLedger:
     """One side of the exact number/transported-energy exchange ledger."""
 
@@ -433,6 +650,7 @@ __all__ = [
     "FarBoundaryCell",
     "FarBoundaryAdapter",
     "BoundaryTransferAccumulator",
+    "CoupledInterfaceProblem",
     "SideTransferLedger",
     "InterfaceTransferLedger",
 ]
