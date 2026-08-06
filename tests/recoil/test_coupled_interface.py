@@ -464,3 +464,39 @@ def test_stored_bianchi_histories_require_branch_zero_localization(model, angle)
     assert audit.blue_total_absolute_integral > 0.0
     assert abs(audit.red_endpoint_heuristic_error) > 0.0
     assert abs(audit.blue_endpoint_heuristic_error) > 0.0
+
+
+def test_coupled_restart_payload_round_trips_exactly():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        CoupledInterfaceProblem,
+        CoupledInterfaceRestartState,
+        solve_coupled_interface,
+    )
+
+    network = _two_boundary_network()
+    grid = _octahedral_grid()
+    old = np.asarray(
+        [
+            [0.32, 0.08, 0.24, 0.11, 0.28, 0.09],
+            [0.015, 0.09, 0.025, 0.08, 0.03, 0.07],
+        ]
+    )
+    problem = CoupledInterfaceProblem(
+        network=network,
+        grid=grid,
+        packets=(
+            _packet(InterfaceSide.RED, flux=3.0e-5),
+            _packet(InterfaceSide.BLUE, flux=2.0e-5),
+        ),
+        n_H_m3=0.8,
+        dt_s=0.2,
+    )
+    result = solve_coupled_interface(old, problem)
+    encoded = json.dumps(result.restart_payload(), sort_keys=True, separators=(",", ":"))
+    restored = CoupledInterfaceRestartState.from_payload(json.loads(encoded))
+
+    assert np.array_equal(restored.occupation, result.occupation)
+    assert restored.accumulators == result.accumulators
+    assert restored.dt_s == result.dt_s
+    assert restored.interface_enabled is result.interface_enabled
+    assert restored.to_payload() == result.restart_payload()

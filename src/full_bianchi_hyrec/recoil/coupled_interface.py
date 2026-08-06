@@ -780,6 +780,62 @@ def audit_boundary_speed_history(
 
 
 @dataclass(frozen=True)
+class CoupledInterfaceRestartState:
+    """Portable restart state for one coupled interface step."""
+
+    occupation: np.ndarray
+    accumulators: tuple[BoundaryTransferAccumulator, ...]
+    dt_s: float
+    interface_enabled: bool
+
+    def __post_init__(self) -> None:
+        occupation = np.asarray(self.occupation, dtype=float)
+        if occupation.ndim != 2 or occupation.size == 0:
+            raise ValueError("restart occupation must be a nonempty two-dimensional array")
+        if not np.all(np.isfinite(occupation)) or np.any(occupation <= 0.0):
+            raise ValueError("restart occupation must be finite and strictly positive")
+        if not math.isfinite(self.dt_s) or self.dt_s <= 0.0:
+            raise ValueError("restart dt_s must be positive and finite")
+        if not isinstance(self.interface_enabled, bool):
+            raise TypeError("restart interface_enabled must be boolean")
+        accumulators = tuple(self.accumulators)
+        if not all(isinstance(item, BoundaryTransferAccumulator) for item in accumulators):
+            raise TypeError("restart accumulators must be BoundaryTransferAccumulator values")
+        occupation = occupation.copy()
+        occupation.setflags(write=False)
+        object.__setattr__(self, "occupation", occupation)
+        object.__setattr__(self, "accumulators", accumulators)
+
+    @classmethod
+    def from_payload(cls, payload: Mapping[str, object]) -> "CoupledInterfaceRestartState":
+        if not isinstance(payload, Mapping):
+            raise TypeError("restart payload must be a mapping")
+        required = {"occupation", "accumulators", "dt_s", "interface_enabled"}
+        if set(payload) != required:
+            raise ValueError("restart payload keys do not match the declared schema")
+        accumulator_payload = payload["accumulators"]
+        if not isinstance(accumulator_payload, list):
+            raise TypeError("restart accumulators must be a list")
+        return cls(
+            occupation=np.asarray(payload["occupation"], dtype=float),
+            accumulators=tuple(
+                BoundaryTransferAccumulator.from_dict(item)
+                for item in accumulator_payload
+            ),
+            dt_s=float(payload["dt_s"]),
+            interface_enabled=payload["interface_enabled"],
+        )
+
+    def to_payload(self) -> dict[str, object]:
+        return {
+            "occupation": self.occupation.tolist(),
+            "accumulators": [item.to_dict() for item in self.accumulators],
+            "dt_s": self.dt_s,
+            "interface_enabled": self.interface_enabled,
+        }
+
+
+@dataclass(frozen=True)
 class CoupledInterfaceStepResult:
     occupation: np.ndarray
     accumulators: tuple[BoundaryTransferAccumulator, ...]
@@ -802,12 +858,12 @@ class CoupledInterfaceStepResult:
     interface_enabled: bool
 
     def restart_payload(self) -> dict[str, object]:
-        return {
-            "occupation": self.occupation.tolist(),
-            "accumulators": [item.to_dict() for item in self.accumulators],
-            "dt_s": self.dt_s,
-            "interface_enabled": self.interface_enabled,
-        }
+        return CoupledInterfaceRestartState(
+            occupation=self.occupation,
+            accumulators=self.accumulators,
+            dt_s=self.dt_s,
+            interface_enabled=self.interface_enabled,
+        ).to_payload()
 
 
 def solve_coupled_interface(
@@ -1047,6 +1103,7 @@ __all__ = [
     "InterfaceTransferLedger",
     "BoundarySpeedAudit",
     "audit_boundary_speed_history",
+    "CoupledInterfaceRestartState",
     "CoupledInterfaceStepResult",
     "solve_coupled_interface",
 ]
