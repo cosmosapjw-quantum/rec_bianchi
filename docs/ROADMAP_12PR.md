@@ -11,9 +11,9 @@
    - **PR-04C0/C1A/v0.55 PASS:** ten-process single-owner registry and six source-identical positive red/blue packets at z~1300,1100,900; exact number/transported-energy ledger; zero atom source for pure representation crossing.
    - **PR-04C1B/C2/v0.56 PASS:** exact `FR00`/`FB02` deposition, positive coupled collision/interface residual, analytic JVP, exact face-energy correction, restart, high-precision reference and branch-zero localization.
    - **PR-04C3/v0.57 PASS:** typed componentwise three-snapshot ledger, complete provenance, no cross-redshift cancellation, native primitive/direct/Schur and COM interface closure, positivity/JVP/entropy/restart/branch gates. `q_activity=1` remains an operator-verification state; trajectory and history parity are not claimed.
-5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback trajectory interface** — **NEXT**.
-   - **PR-05A:** typed host/trajectory schemas; primitive-rate byte/source lock; ownership and joint-removal matrix for compressed native terms; bounded one-step source-conditioned residual.
-   - **PR-05B:** time-dependent primitive atomic/radiation block with Saha/Planck null, M-matrix/positivity, analytic JVP and exact number/energy exchange.
+5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback trajectory interface** — **IN PROGRESS**.
+   - **PR-05A/v0.58 PASS:** typed public schemas, byte/source-locked primitive rates, explicit delta-alpha semantics, analytic interpolation/full JVPs, Saha null, M-matrix evidence, fail-closed compressed-term ownership and bounded source-conditioned one-step DAE/operator closure.
+   - **PR-05B NEXT:** time-dependent primitive native radiation/real-population block with joint compressed-term replacement, positivity, analytic IJacobian/JVP and exact number/energy/four-force exchange.
    - **PR-05C:** short adaptive trajectory with event-localized interface crossings, restart and timestep refinement. No FLRW history-parity claim yet.
 6. **FLRW monolithic parity** — native HYREC and retained Peebles baseline lanes; `x_e(z)`, visibility and source/Jacobian convergence.
 7. **Bianchi II class-A regression** — nonlinear shear, finite tilt and branch crossings coupled to the PR-06 residual.

@@ -7,21 +7,19 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-04C3 / v0.57**.
-- **PR-04 COMPLETE at the source-conditioned split-domain operator-contract
-  level.**
-- Exactly three independent lanes (`z~1300,1100,900`) and six red/blue packets
-  are locked in one typed componentwise common ledger.
-- Cross-snapshot signed sums and averages are forbidden; the aggregate is the
-  maximum normalized component violation.
-- `epsilon_common=0`, exact transported face-energy cancellation, zero
-  interface atom source, strict positivity, analytic JVP, nonpositive collision
-  entropy, exact restart and Bianchi branch-zero localization all pass.
-- The `q_activity=1` COM state remains an unfitted operator-verification state.
-  A native-derived COM trajectory and full recombination history are not
-  claimed.
-- Next stage: **PR-05A BackgroundSnapshot/RadiationFeedback schema and primitive
-  original-HyRec operator source lock**.
+- Durable stage: **PR-05A / v0.58**.
+- Primitive original-HyRec rate tables and source semantics are byte locked and
+  exposed through immutable SI-adapted schemas with analytic interpolation
+  JVPs.
+- Canonical `DAlpha` is `delta_alpha=Alpha(Tm,Tr)-Alpha(Tr,Tr)`, not a
+  derivative; cancellation-amplified raw relative values remain diagnostics.
+- Three source-conditioned lanes close Saha balance, native algebraic DAE
+  projection, M-matrix positivity evidence, COM interface-off equilibrium,
+  analytic JVP, number/energy/four-force, restart, causality and Bianchi
+  firewall gates.
+- No compressed native term has been removed. A time-dependent native/atomic
+  trajectory is not yet claimed.
+- Next stage: **PR-05B time-dependent primitive native/atomic radiation block**.
 
 Start with:
 
@@ -36,7 +34,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05_PRIMITIVE_TRAJECTORY_INTERFACE_PLAN.md`](docs/PR05_PRIMITIVE_TRAJECTORY_INTERFACE_PLAN.md).
+[`docs/PR05B_TIME_DEPENDENT_NATIVE_BLOCK_PLAN.md`](docs/PR05B_TIME_DEPENDENT_NATIVE_BLOCK_PLAN.md).
 
 ## Canonical source
 
@@ -57,10 +55,10 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #15 at
-`ecd2d9e8b758dd1727c060d8cf210f08e723b9cf`, tree
-`09a718222b13f6dfd4671d2e1b62cdb2ec9a880a`; the PR-head CI completed
-successfully. v0.57 was developed on the exact author v0.56 lineage, so exact
+GitHub `main` contains merged PR #16 at
+`5fb7aec1cf1cfcd65e40ffeb097c8c1237cfe19c`, tree
+`0638ad71941c258a90375148674264de5ff14608`; the PR-head CI completed
+successfully. v0.58 was developed on the exact author v0.57 lineage, so exact
 remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
@@ -73,5 +71,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.57 regeneration: `python scripts/run_pr04c3_common_ledger_stage.py`.
+- v0.58 regeneration: `python scripts/run_pr05a_primitive_trajectory_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
