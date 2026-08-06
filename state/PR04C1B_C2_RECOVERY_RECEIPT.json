@@ -1,0 +1,181 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "stage": "PR-04C1B/C2",
+  "version": "0.56",
+  "date": "2026-08-06",
+  "feature_exclusive_base_commit": "c5f6de7baaa15e06bb05a917964b31569c5e23d2",
+  "remote_at_recovery": {
+    "main_commit": "47106fec89c176c3f3b91ed7e4ff198dea323968",
+    "main_tree": "b1cc9c0959bd89418a4f24a51959c44bb163fe88",
+    "merged_pr": 14,
+    "pr_head_commit": "2b4419939b4a07920f0548f6cc22210e643505f4",
+    "stage": "v0.55 plus shared binary-hash gate",
+    "verification": "MANAGED_GITHUB_CONNECTOR"
+  },
+  "canonical_input": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "bytes": 726954,
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED"
+  },
+  "reconstructed_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56",
+    "status": "PASS_PR04C1B_C2_PR04C3_OPEN",
+    "bundle_sha256": "bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c",
+    "bundle_bytes": 31818,
+    "runtime_data_sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6",
+    "runtime_data_bytes": 3328
+  },
+  "payload": {
+    "branch": "work/pr04c1b-c2-v056",
+    "documentation_payload_head": "8dc5ddf7d207e36d63792d9e65d306aba4d2d2ad",
+    "documentation_payload_tree": "acccdf86eb922d0d703ee4cd5151c4979c03604a",
+    "feature_commits": [
+      {
+        "sha": "5fa0e0cab4dc3b5a084044557a95d7e21a678e8f",
+        "subject": "docs(plan): specify PR04C1B/C2 coupled interface"
+      },
+      {
+        "sha": "cdd259090fe51e8c90b8a682b6f56e1478359325",
+        "subject": "test(policy): forbid unguarded HyRec binary hash assertions"
+      },
+      {
+        "sha": "6987d228ea276c77ccb63f7cb4891d2de99f8ac9",
+        "subject": "feat(interface): add exact far-boundary adapter and accumulators"
+      },
+      {
+        "sha": "c3c47f51b882d71aabf19e594d3bd13bd3e61587",
+        "subject": "feat(interface): close exact number and transported-energy ledgers"
+      },
+      {
+        "sha": "374a4dd5457748e7d7ef7be1091b687658643ecf",
+        "subject": "feat(interface): add monolithic residual and analytic JVP"
+      },
+      {
+        "sha": "4d37ac60ada2e0edbfba59253a3e2461a07d2dc7",
+        "subject": "feat(interface): solve positive coupled boundary residual"
+      },
+      {
+        "sha": "b8e7f9a2cdfa597697b5caa18798fda839165cdf",
+        "subject": "feat(interface): localize Bianchi boundary-speed branch events"
+      },
+      {
+        "sha": "e653a41ca7f920d170e5735c4eb5ae1e62c782d8",
+        "subject": "feat(interface): add exact coupled restart state"
+      },
+      {
+        "sha": "4d9ccb25ad04080cc52e3258269b85a27a14c975",
+        "subject": "fix(interface): gate convergence on gross backward error and number closure"
+      },
+      {
+        "sha": "955b3a3ff91e948f26964750166ad11656c3ea44",
+        "subject": "feat(interface): close PR04C1B/C2 coupled interface stage"
+      },
+      {
+        "sha": "0707135e00fae286874750576609e26c09871690",
+        "subject": "feat(delivery): export verified Git bundle patches"
+      },
+      {
+        "sha": "0b086aa0b2a35195d0ac22c3f91752bfd6792e7e",
+        "subject": "fix(backup): remove historical v0.45 branch pin"
+      },
+      {
+        "sha": "8dc5ddf7d207e36d63792d9e65d306aba4d2d2ad",
+        "subject": "docs(recovery): record PR04C1B/C2 and hand off PR04C3"
+      }
+    ],
+    "receipt_seal_note": "A receipt-only seal commit follows; external delivery receipt records exact final HEAD/tree."
+  },
+  "scientific_results": {
+    "boundary_adapter": {
+      "red_label": "FR00",
+      "red_index": 29,
+      "blue_label": "FB02",
+      "blue_index": 34
+    },
+    "snapshot_count": 3,
+    "packet_count": 6,
+    "dt_s": 100000.0,
+    "q_activity": 1.0,
+    "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
+    "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
+    "maximum_analytic_JVP_relative_error": 1.279553711820355e-09,
+    "maximum_dilute_net_scaled_residual_diagnostic": 1.73712431307357e-10,
+    "maximum_float_high_precision_relative_error": 3.694332974648189e-15,
+    "transported_photon_energy_ledger_residual": 0.0,
+    "interface_atom_source": 0.0,
+    "strict_positivity": true,
+    "collision_entropy_nonincrease": true,
+    "guard_off_exact": true,
+    "restart_roundtrip_exact": true
+  },
+  "resolved_blockers": [
+    "Exact FR00/FB02 state ownership, mode measures, face orientation and dimensional packet-to-occupation map are byte locked.",
+    "Broad-cell centroid energy substitution is rejected; exact face energy plus unresolved representation correction closes the ledger.",
+    "Float64 dilute net-residual stagnation is diagnosed without threshold relaxation using a conjunctive gross-backward-error plus number-closure gate.",
+    "Repeated compiler-dependent binary-hash regressions are prevented by a shared fixture and AST policy scanner.",
+    "Historical v0.45 backup branch naming is replaced by a UTC timestamped current-stage branch."
+  ],
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "artifact_verifier": "PASS_PR04C1B_C2_PR04C3_OPEN",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_137_FAST",
+    "fast_tests": "137 passed, 25 deselected",
+    "targeted_tests": "22 passed",
+    "slow_scientific_tests": "25 passed across 9 files",
+    "total_test_coverage": "162 passed",
+    "aggregate_scientific_wrapper": "PASS_EXIT_0",
+    "py_compile": "PASS_122_TRACKED_PYTHON_FILES_OUT_OF_TREE_CACHE",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES"
+  },
+  "verification_logs": {
+    "offline_bootstrap": {
+      "path": "/mnt/data/rec_bianchi_v056_offline_bootstrap.log",
+      "sha256": "7c026ae40ccf500dd1534f80859dacd26d89ca93d1e441e9fea5fcd2660d0941",
+      "bytes": 522
+    },
+    "fast": {
+      "path": "/mnt/data/rec_bianchi_v056_fast.log",
+      "sha256": "76e6c83e0a7cfbbd5bd8c32076020ca32a102294332dd67e9747acabf4a0af18",
+      "bytes": 196
+    },
+    "targeted": {
+      "path": "/mnt/data/rec_bianchi_v056_targeted.log",
+      "sha256": "561295c570d1a0ca4a5f0ebbf1fc639b625461aff100230d4e1658030528f2a1",
+      "bytes": 100
+    },
+    "scientific": {
+      "path": "/mnt/data/rec_bianchi_v056_scientific.log",
+      "sha256": "6762cff503d2c6f90df8a196d625b626f120c9d45b9bafed9c556f99e48b5915",
+      "bytes": 2975
+    },
+    "py_compile": {
+      "path": "/mnt/data/rec_bianchi_v056_pycompile.log",
+      "sha256": "b13fcd8d403db8d444796854854075df4fca46ce57376e6327713f9ae450f116",
+      "bytes": 26
+    },
+    "slow_collection": {
+      "path": "/mnt/data/rec_bianchi_v056_slow_collection.txt",
+      "sha256": "c66c43428bad1930c2ad2823ef23d22f54d1eb2d7935b77354cdc13b3bd347cf",
+      "bytes": 2495
+    }
+  },
+  "tool_usage": {
+    "web_search": "USED_PRIMARY_SOURCES",
+    "Wolfram": "USED_SYMBOLIC_CANCELLATION_JVP_MODE_MEASURE_AND_CENTROID",
+    "Precise_Special_Functions": "USED_100_DIGIT_ZETA3_ZETA4",
+    "coding_harness": "VALIDATED_AND_USED",
+    "research_harness": "VALIDATED_AND_USED_TEN_PHASES",
+    "GitHub": "READ_ONLY_REMOTE_BASE_VERIFICATION; OWNER_APPLIES_BUNDLE_AND_PUSHES_LOCALLY"
+  },
+  "scientific_decision": {
+    "PR04C1B_C2": "COMPLETE_AT_BOUNDED_SOURCE_CONDITIONED_OPERATOR_LEVEL",
+    "PR04": "IN_PROGRESS",
+    "claim_scope": "NOT_A_NATIVE_DERIVED_COM_TRAJECTORY",
+    "next_stage": "PR-04C3 componentwise common-ledger closure or bounded no-go"
+  },
+  "generated_utc": "2026-08-06T08:27:07.013924+00:00"
+}

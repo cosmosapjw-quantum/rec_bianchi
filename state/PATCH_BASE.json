@@ -1,23 +1,25 @@
 {
-  "classification": "PATCH_BASE_LOCK",
-  "base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-  "base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-  "base_stage": "v0.47 exact durable local ancestor for cumulative recovery",
-  "exact_incremental_parent_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
-  "exact_incremental_parent_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140",
-  "exact_incremental_parent_stage": "v0.54 PR04B2B author bundle",
-  "connector_verified_remote_main_commit": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
-  "connector_verified_remote_main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
-  "remote_main_stage": "v0.54 PR04B2B plus CI/toolchain overlay",
-  "reason": "The live remote tree differs from the exact author v0.54 tree because GitHub main contains a CI/toolchain overlay. Export exact-local-v0.54-to-v0.55 and cumulative-v0.47-to-v0.55 patches. The owner applies the incremental route on fetched remote main with three-way conflict checking and reruns all gates.",
-  "current_target_stage": "v0.55 PR-04C0/C1A ownership and source-identical boundary packets",
-  "current_target_payload_head": "5f438aa16cfcf477bbff09f0e6a0e720bed82e24",
-  "current_target_payload_tree": "9dfcd080daaf721c1d3b5370614a263bf0fc0d7c",
-  "planned_patch_routes": [
-    "incremental_from_exact_v054",
-    "cumulative_from_v047"
+  "classification": "PATCH_BASE_LOCK_GIT_BUNDLE",
+  "historical_cumulative_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
+  "historical_cumulative_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+  "historical_cumulative_base_stage": "v0.47 exact durable local ancestor",
+  "feature_exclusive_base_commit": "c5f6de7baaa15e06bb05a917964b31569c5e23d2",
+  "feature_exclusive_base_tree": "2446897c0fc61252ee75a84510fae335992e09dc",
+  "feature_exclusive_base_stage": "exact author v0.55 plus behaviorally equivalent shared compiler-hash gate",
+  "feature_first_commit": "5fa0e0c",
+  "connector_verified_remote_main_commit": "47106fec89c176c3f3b91ed7e4ff198dea323968",
+  "connector_verified_remote_main_tree": "b1cc9c0959bd89418a4f24a51959c44bb163fe88",
+  "remote_main_stage": "v0.55 PR04C0/C1A plus shared binary-hash toolchain gate from PR #14",
+  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
+  "reason": "The local feature base and remote PR #14 contain behaviorally equivalent shared binary-hash gates but different Git trees. The v0.56 feature bundle is self-contained; its receipt lists only commits after the local equivalent gate. The owner fetches the delivery ref and cherry-picks the ordered feature commits onto fresh origin/main.",
+  "current_target_stage": "v0.56 PR-04C1B/C2 exact far-boundary deposition and positive coupled interface operator",
+  "current_target_payload_head": "8dc5ddf7d207e36d63792d9e65d306aba4d2d2ad",
+  "current_target_payload_tree": "acccdf86eb922d0d703ee4cd5151c4979c03604a",
+  "planned_bundle_routes": [
+    "self_contained_feature_delivery_ref_v056",
+    "full_recovery_all_refs_v056"
   ],
-  "remote_main_route": "APPLY_INCREMENTAL_WITH_GIT_AM_OR_GIT_APPLY_3WAY_ON_FEATURE_BRANCH_UNVERIFIED_UNTIL_OWNER_LOCAL_FETCH",
+  "remote_main_route": "FETCH_FEATURE_BUNDLE_AND_CHERRY_PICK_ORDERED_COMMITS_ON_FRESH_REMOTE_MAIN_BRANCH",
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
-  "current_target_payload_note": "Documentation payload before final receipt-only seal commit; external delivery receipt records exact final HEAD/tree."
+  "current_target_payload_note": "Science, delivery tooling, backup-policy fix, state and PR04C3 handoff committed; receipt-only seal commit follows. External final receipt records the exact final HEAD/tree."
 }
