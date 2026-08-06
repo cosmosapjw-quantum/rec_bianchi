@@ -1,11 +1,12 @@
 {
-  "classification": "USER_CONFIRMED_REMOTE_CONTENT_BASE",
-  "reported_at": "2026-08-05",
+  "classification": "CONNECTOR_VERIFIED_REMOTE_BASE",
+  "reported_at": "2026-08-06",
   "repository": "cosmosapjw-quantum/rec_bianchi",
-  "reported_remote_content_stage": "v0.47",
-  "reported_action": "expanded and merged",
-  "exact_remote_commit_verified": false,
-  "local_reference_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-  "local_reference_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
-  "implication": "The cumulative exact-local-v0.47-to-v0.54 route, exact-local-v0.48-milestone-to-v0.54 route, and incremental exact-local-v0.53-to-v0.54 route are exported. The owner must fetch private main, compare ancestry and trees, and apply on a feature branch without force-push."
+  "remote_main_commit": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
+  "remote_main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
+  "remote_content_stage": "v0.54 PR04B2B plus CI/toolchain overlay",
+  "exact_local_v054_reference_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
+  "exact_local_v054_reference_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140",
+  "tree_relation": "REMOTE_OVERLAY_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
+  "implication": "Use the v0.55 incremental patch/mbox on a feature branch created from freshly fetched origin/main; verify conflicts and the complete scientific suite locally. Do not force-push."
 }

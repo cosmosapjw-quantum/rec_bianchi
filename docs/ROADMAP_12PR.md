@@ -8,7 +8,9 @@
    - **PR-04B1/v0.52 PASS:** canonical original-HyRec byte/source lock, original-C diffusion/full-matrix/Schur parity, and explicit native-proxy/physical-cell firewall.
    - **PR-04B2A/v0.53 PASS:** source-identical FULL-mode instrumentation and exact physical photons-per-H-per-`d ln nu` edge normalization; primitive/direct/Schur physical spectral-source parity; JVP, positivity, energy and high-precision gates.
    - **PR-04B2B/v0.54 PASS_NO_GO:** the full positive native measure is support-incompatible with the 17-cell core, while moments through order four leave a 12-dimensional target null space. Direct equality, silent high-resolution substitution and fitted regularization are rejected.
-   - **PR-04C NEXT:** split-domain number/energy flux contract, operator ownership, and predeclared multi-snapshot closure without global remapping.
+   - **PR-04C0/C1A v0.55 PASS:** ten-process single-owner registry and six source-identical positive red/blue packets at z~1300,1100,900; exact number/transported-energy ledger; zero atom source for pure representation crossing.
+   - **PR-04C1B/C2 NEXT:** connect packets to FB02/FR00 far-boundary/Liouville states and close the coupled implicit residual, block JVP, positivity and branch-zero gates.
+   - **PR-04C3 OPEN:** common three-snapshot conservation ledger and PR-04 closure.
 5. **Primitive HYREC operator and BackgroundSnapshot/RadiationFeedback interface** — begins after PR-04 closes the exchange contract.
 6. **FLRW monolithic parity** — native HYREC and retained Peebles baseline lanes.
 7. **Bianchi II class-A regression**.

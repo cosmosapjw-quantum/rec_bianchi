@@ -4,26 +4,25 @@
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-06",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 91,
+  "estimated_overall_completion_percent": 92,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 90,
+  "estimated_PR04_completion_percent": 94,
   "current_durable_stage": {
-    "name": "PR-04B2B native/common partition identifiability no-go",
-    "artifact": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54",
-    "status": "PASS_PR04B2B_IDENTIFIABILITY_NO_GO_PR04C_OPEN"
+    "name": "PR-04C0/C1A operator ownership and source-identical split-domain boundary packets",
+    "artifact": "Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55",
+    "status": "PASS_PR04C0_OWNERSHIP_PR04C1A_NATIVE_BOUNDARY_INSTRUMENTATION_PR04C1B_C2_OPEN"
   },
   "next_stage": {
-    "name": "PR-04C split-domain conservative exchange contract and multi-snapshot closure",
-    "entry_gate": "PR04B2B_SUPPORT_AND_IDENTIFIABILITY_NO_GO_PASS",
+    "name": "PR-04C1B/C2 far-boundary deposition and coupled implicit interface operator",
+    "entry_gate": "PR04C0C1A_OWNERSHIP_AND_NATIVE_BOUNDARY_PASS",
     "tasks": [
-      "Publish an operator-ownership matrix with exactly one owner for every collision, escape, redshift and cross-interface term.",
-      "Retain the 35-state COM-KHW collision domain on x in [-21.25,21.25] and original-HyRec on its full native support.",
-      "Exchange source-derived photon-number and photon/atom-energy flux packets at the red and blue interfaces without a global state remap.",
-      "Instrument exact nearest-grid FLRW snapshots near z=1300,1100,900 under source-identical guards.",
-      "Close number, energy, positivity, equilibrium, branch, primitive/direct/Schur, analytic/JVP and local Bianchi-firewall gates.",
-      "Complete PR-04 only if the split-domain ledger closes without a fitted scale or double counting."
+      "Connect blue/red packets only to the existing FB02/FR00 far-boundary and Liouville ghost state; do not collapse them into interior collision cells.",
+      "Build one monolithic number/transported-photon-energy residual containing native packet evaluation, far-boundary transport and the 35-state nonlinear Bose collision action.",
+      "Use log occupations/nonnegative packet accumulators, an analytic block JVP and matrix-free implicit update.",
+      "Localize every red/blue boundary-speed zero inside the timestep for Bianchi II, class B and exceptional VI_-1/9 snapshots.",
+      "Close positivity, number, transported energy, collision four-force, restart, free-energy and local-state geometry-firewall gates without fitted normalization."
     ]
   },
   "roadmap": [
@@ -45,7 +44,7 @@
     {
       "pr": 4,
       "title": "HYREC common-measure moment projection",
-      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_PASS_NO_GO_PR04C_NEXT"
+      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_PASS_NO_GO_PR04C0_C1A_PASS_PR04C1B_C2_NEXT"
     },
     {
       "pr": 5,
@@ -160,6 +159,10 @@
     ]
   },
   "known_limitations": [
+    "PR-04C0/C1A packets are unresolved boundary flux objects; they are not yet deposited into COM-KHW far-boundary/Liouville states.",
+    "A pure computational representation crossing has zero atomic source. Atomic recoil remains owned by physical collision terms; the preliminary interface photon-plus-atom companion wording is superseded.",
+    "Four of six source-identical packet reconstructions use the current already-solved HyRec history endpoint. Future endpoints remain forbidden.",
+    "PR-04C1B/C2 must still close the coupled implicit residual, analytic block JVP, positivity and boundary-speed zero localization.",
     "PR-04B2B proves that the full or diffusion-only positive native measure cannot be represented on the v0.51 17-cell core while preserving M0 and M2.",
     "After support restriction, moments M0 through M4 leave a 12-dimensional null space for seventeen target masses; a unique projection requires additional physics and cannot be called canonical by default.",
     "The canonical runtime archive supplies centre values and width-integrated rates but no explicit numerical edge array, dedicated table-generator member or bundled-table write path.",
@@ -170,19 +173,23 @@
   ],
   "remote_sync": {
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
-    "remote_ref_verified": false,
+    "remote_ref_verified": true,
     "remote_tree_match": false,
     "push_policy": "OWNER_PUSHES_LOCALLY",
-    "reason": "The execution runtime has no live GitHub connector or outbound Git write path. The owner fetches, tests, pushes and opens PRs locally."
+    "reason": "The read-only GitHub connector verified remote main at v0.54 plus CI/toolchain overlay. The runtime cannot push; v0.55 remains local until owner application."
   },
   "remote_repository_status": {
-    "exact_remote_main_sha": null,
-    "runtime_verification": "PERIODIC_LOCAL_REMOTE_CHECK_ONLY; LIVE_GITHUB_CONNECTOR_UNAVAILABLE",
+    "exact_remote_main_sha": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
+    "runtime_verification": "READ_ONLY_GITHUB_CONNECTOR_VERIFIED_AT_STAGE_START",
     "local_v047_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
     "local_v051_parent_commit": "cce42d733058bb8894091dc78ebe5fa1a1ed10e4",
-    "policy": "Export incremental v0.53-to-v0.54, remote-milestone, cumulative binary-safe patches and a standalone full bundle. The owner must fetch live main and apply on a feature branch without force-push.",
+    "policy": "Owner fetches live main, creates a feature branch, applies the v0.55 payload or patch route, reruns verification and opens a PR without force-push.",
     "local_v052_parent_commit": "63a5b1bacbee261cdb3569e2cd783f6106b9a114",
-    "local_v053_parent_commit": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7"
+    "local_v053_parent_commit": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+    "exact_remote_main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
+    "remote_content_stage": "v0.54 merged with CI/toolchain overlay",
+    "local_v054_parent_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
+    "local_v054_parent_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140"
   },
   "PR04B2A_evidence": {
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53.zip",
@@ -272,5 +279,36 @@
       "SciPy HiGHS nonnegative feasibility controls",
       "direct canonical ZIP/source/table audit"
     ]
+  },
+  "PR04C0C1A_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55.zip",
+    "artifact_bundle_sha256": "5c5cb9aca8ad1a90667d1c72b371d4296bb4d6186b8bce1ae4079150d1a9f586",
+    "artifact_bundle_size_bytes": 214433,
+    "runtime_data_sha256": "a263a768e7c5bd103397f596b9669ee5f6dfb2ac725f4e52ced64942d6cafb1e",
+    "runtime_data_size_bytes": 2844,
+    "snapshot_target_redshifts": [
+      1300,
+      1100,
+      900
+    ],
+    "snapshot_actual_redshifts": [
+      1299.9971824762927,
+      1099.9986525171403,
+      900.0168986313175
+    ],
+    "packet_count": 6,
+    "maximum_reconstruction_relative_residual": 1.6537648327370854e-16,
+    "current_history_endpoint_uses": 4,
+    "minimum_total_occupation": 4.579328929122558e-16,
+    "minimum_total_number_flux_per_H_s": 1.6796324053145323e-15,
+    "maximum_total_number_flux_per_H_s": 8.859343319670963e-14,
+    "number_ledger_residual_per_H_s": 0.0,
+    "photon_energy_ledger_residual_W_per_H": 0.0,
+    "interface_atom_source_W_per_H": 0.0,
+    "geometry_firewall_residual": 0.0,
+    "Wolfram": "USED_SYMBOLIC",
+    "Precise_Special_Functions": "USED_100_DIGIT_ZETA_AND_GAMMA",
+    "zeta3_PSF_vs_mpmath_relative_residual": 1.216241572349676e-100,
+    "planck_integral_vs_2zeta3_relative_residual": 0.0
   }
 }

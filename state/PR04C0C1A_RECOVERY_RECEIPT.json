@@ -1,0 +1,81 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "stage": "PR-04C0/C1A",
+  "version": "0.55",
+  "date": "2026-08-06",
+  "parent_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
+  "parent_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140",
+  "remote_at_recovery": {
+    "main_commit": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
+    "main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
+    "stage": "v0.54 plus CI/toolchain overlay",
+    "verification": "READ_ONLY_GITHUB_CONNECTOR"
+  },
+  "canonical_input": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "bytes": 726954,
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED"
+  },
+  "reconstructed_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55",
+    "status": "PASS_PR04C0_OWNERSHIP_PR04C1A_NATIVE_BOUNDARY_INSTRUMENTATION_PR04C1B_C2_OPEN",
+    "bundle_sha256": "5c5cb9aca8ad1a90667d1c72b371d4296bb4d6186b8bce1ae4079150d1a9f586",
+    "bundle_bytes": 214433,
+    "runtime_data_sha256": "a263a768e7c5bd103397f596b9669ee5f6dfb2ac725f4e52ced64942d6cafb1e",
+    "runtime_data_bytes": 2844
+  },
+  "payload": {
+    "branch": "work/pr04c-split-domain-v055",
+    "plan_commit": "db90760",
+    "ownership_commit": "2289a45",
+    "implementation_commit": "2c55c38",
+    "documentation_payload_head": "5f438aa16cfcf477bbff09f0e6a0e720bed82e24",
+    "documentation_payload_tree": "9dfcd080daaf721c1d3b5370614a263bf0fc0d7c"
+  },
+  "scientific_results": {
+    "ownership_process_count": 10,
+    "snapshot_count": 3,
+    "packet_count": 6,
+    "maximum_reconstruction_relative_residual": 1.6537648327370854e-16,
+    "current_history_endpoint_uses": 4,
+    "minimum_total_occupation": 4.579328929122558e-16,
+    "minimum_total_number_flux_per_H_s": 1.6796324053145323e-15,
+    "maximum_total_number_flux_per_H_s": 8.859343319670963e-14,
+    "number_ledger_residual_per_H_s": 0.0,
+    "transported_photon_energy_ledger_residual_W_per_H": 0.0,
+    "interface_atom_source_W_per_H": 0.0,
+    "geometry_firewall_residual": 0.0
+  },
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "artifact_verifier": "PASS_PR04C0_C1A_PR04C1B_C2_OPEN",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_115_FAST",
+    "fast_tests": "115 passed, 25 deselected",
+    "targeted_tests": "14 passed",
+    "slow_scientific_tests": "25 passed across 9 files",
+    "total_test_coverage": "140 passed",
+    "aggregate_scientific_wrapper": "INCOMPLETE_OUTER_RUNTIME_TIMEOUT_AFTER_5_NODES; EVERY_COLLECTED_SLOW_FILE_AND_FAST_LANE_VERIFIED_SEPARATELY",
+    "py_compile": "PASS_112_TRACKED_PYTHON_FILES",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES"
+  },
+  "tool_usage": {
+    "web_search": "USED_PRIMARY_AND_PEER_REVIEWED_SOURCES",
+    "Wolfram": "USED_SYMBOLIC_BE_POSITIVITY_NUMBER_ENERGY_AND_PLANCK_INTEGRAL",
+    "Precise_Special_Functions": "USED_100_DIGIT_ZETA3_AND_GAMMA3",
+    "coding_harness": "VALIDATED_AND_USED",
+    "research_harness": "VALIDATED_AND_USED",
+    "GitHub": "READ_ONLY_CHECK_AT_START_AND_SEAL; OWNER_PUSHES_LOCALLY"
+  },
+  "scientific_decision": {
+    "PR04C0": "COMPLETE",
+    "PR04C1A": "COMPLETE",
+    "PR04": "IN_PROGRESS",
+    "energy_ownership": "PURE_REPRESENTATION_CROSSING_HAS_ZERO_ATOM_SOURCE; RECOIL_STAYS_WITH_PHYSICAL_COLLISION_OWNER",
+    "next_stage": "PR-04C1B/C2 far-boundary deposition and coupled implicit interface operator"
+  },
+  "generated_utc": "2026-08-06T06:11:09.850836+00:00"
+}

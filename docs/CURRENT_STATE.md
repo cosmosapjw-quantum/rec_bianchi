@@ -2,18 +2,16 @@
 
 ## Summary
 
-The durable endpoint is **PR-04B2B / v0.54**. PR-01 through PR-03 are
+The durable endpoint is **PR-04C0/C1A / v0.55**. PR-01 through PR-03 are
 complete. PR-04A established the positive 17-cell COM–KHW common measure;
-PR-04B1 locked the canonical October-2012 original-HyRec source and native
-proxy algebra; PR-04B2A derived the source-identical physical logarithmic
-photon edge flux; PR-04B2B now proves that a direct positive
-native-to-17-cell equality is not available.
+PR-04B1 locked canonical October-2012 original HyRec; PR-04B2A derived the
+physical logarithmic-frequency edge flux; PR-04B2B rejected a direct global
+native-to-COM remap by support and identifiability no-go. v0.55 now closes the
+single-owner interface architecture and extracts six source-identical positive
+photon packets at `x=+-21.25` for the predeclared `z~1300,1100,900` snapshots.
 
-PR-04 remains open. The next bounded stage is **PR-04C split-domain
-conservative exchange contract and multi-snapshot closure**. The native
-transport and COM–KHW collision representations will retain their own supports
-and exchange only explicitly conserved number/energy fluxes through a declared
-interface.
+PR-04 remains open. The next bounded stage is **PR-04C1B/C2 far-boundary
+deposition and coupled implicit interface operator**.
 
 ## Canonical provenance and conventions
 
@@ -35,154 +33,132 @@ x:                (nu-nu_Lya)/Delta_nu_D
 y:                ln(nu)
 Delta nu:         nu_target-nu_source
 Delta E_gamma:    h Delta nu
-Delta E_H:       -h Delta nu
+Delta E_H:       -h Delta nu for a physical collision event
 ```
 
 Constants `c`, `h`, and `k_B` remain explicit. Homogeneous backgrounds only;
 all geometry enters local microphysics through the established
 `BackgroundSnapshot` adapter.
 
-## Canonical table audit
+## PR-04C0 ownership theorem
 
-The production and optional high-resolution original-HyRec table members are
-byte locked as follows.
+The registry assigns exactly one owner to ten process groups:
 
-| Lane | Member | Shape | SHA-256 |
-|---|---|---:|---|
-| production | `HyRec/two_photon_tables.dat` | `311 x 5` | `93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9` |
-| high-resolution reference | `HyRec/two_photon_tables_hires.dat` | `1493 x 5` | `db201c729a38c7919172cf080c8ba44cdf8e6b131a6eaa8adcbc9e58fd4d0c93` |
+- original-HyRec free streaming, line escape and real/virtual algebra;
+- COM–KHW local collision, stimulated Bose term and recoil four-force;
+- COM internal Liouville transport;
+- analytic Planck reference;
+- red and blue cross-interface transfers.
 
-Each row contains one energy centre and four coefficients already integrated
-over a latent spike width. The runtime reads exactly five values. The canonical
-runtime archive contains no explicit numerical edge column, no dedicated
-two-photon-table generator member, and no source statement that opens either
-bundled table for writing.
+Duplicate, missing and undeclared ownership fail closed. Each interface packet
+is evaluated once and applied once to each representation with opposite signs.
+With the replacement switch off, the state arrays are copied exactly and the
+interface ledger is zero.
 
-The two numerical centre grids are separate rather than exactly nested:
+## PR-04C1A source-identical packets
 
-```text
-exact production-centre matches in high-resolution table: 0
-nearest difference, minimum: 1.0000000010e-6 eV
-nearest difference, median:  5.1800000000e-4 eV
-nearest difference, maximum: 4.4412600000e-2 eV
-```
-
-Only two diffusion-lane centres in either table lie inside the v0.51 core
-`|x|<=4.25`. Therefore centre inclusion cannot recover source-cell boundaries
-or a conservative restriction operator.
-
-## Positive-support no-go
-
-Let a positive target measure be supported on the 17-cell union
-`[-4.25,4.25]`. Then necessarily
+At each snapshot the exact physical interface energy is
 
 ```text
-M2/M0 <= 4.25^2 = 18.0625.
+E_I = E_Lya + x_I E_Lya sqrt(2 T_m/m_H),  x_I=+-21.25.
 ```
 
-The locked v0.53 physical native edge measure gives
+The least canonical native energy strictly above `E_I` supplies the free-
+streaming characteristic. The query in `ln a` is reconstructed with the same
+positive two-point linear interpolation used by original HyRec. Diagnostics
+are emitted only after the current `Dfminus_hist[:,iz]` endpoint has been
+solved and stored; four of six packets legitimately use that current endpoint.
+No future endpoint is used.
 
-| Source measure | `M2/M0` in Doppler `x` | Violation factor |
-|---|---:|---:|
-| full 311-state measure | `1.344707749773356e8` | `7.44474878767256e6` |
-| diffusion 80-state measure | `2.1808728753005056e4` | `1.2074036679864391e3` |
+| Target | Actual source grid redshift |
+|---:|---:|
+| 1300 | `1299.9971824762927` |
+| 1100 | `1099.9986525171403` |
+| 900 | `900.0168986313175` |
 
-The same values were re-summed at 100-digit precision from the exact binary64
-inputs:
+The six independent Python reconstructions have maximum relative residual
 
 ```text
-full:       134470774.977335589307785774837433014082942740474657777...
-diffusion:  21808.7287530050561936684447521005490738212556071880921...
+1.6537648327370854e-16.
 ```
 
-Hence no nonnegative map to the 17-cell core can preserve even `M0` and `M2`
-of the full or diffusion-only native positive measure. This result is
-independent of interpolation order, optimizer, midpoint assumptions or a
-chosen regularizer.
-
-Restricting the native source to the two centres inside the core is not
-conservative:
+Total occupations and packet fluxes are strictly positive:
 
 ```text
-core mass / full 311-state mass:   0.0017361780045445255
-core mass / diffusion-80 mass:     0.006550012987972702
+minimum total occupation:          4.579328929122558e-16
+minimum total number flux /H/s:    1.6796324053145323e-15
+maximum total number flux /H/s:    8.859343319670963e-14
 ```
 
-## Identifiability no-go after support restriction
+The Planck reference is retained as a nonnegative component and the nonthermal
+distortion is retained as a signed audit component. No packet is distributed
+over COM cells in this release.
 
-Moments `M0,...,M4` give five constraints for seventeen target-cell masses.
-For the explicit uniform-within-cell finite-volume basis, exact rational SymPy
-arithmetic gives
+## Energy ownership correction
+
+A computational representation crossing is not a new atom-photon collision.
+Therefore v0.55 supersedes the preliminary interface rule that paired the
+transported absolute photon energy with an equal-and-opposite atom source.
+The correct interface ledger is
 
 ```text
-rank:    5
-nullity: 12
+Phi_N_native + Phi_N_COM = 0,
+Phi_Egamma_native + Phi_Egamma_COM = 0,
+Phi_EH_interface = 0.
 ```
 
-The durable artifact contains two distinct strictly positive 17-vectors with
-exactly equal moments through order four. The independent floating-point
-witness has
+Atomic recoil remains owned by the physical native or COM collision event. The
+six v0.55 packets close number and transported photon energy exactly and have
+zero interface atom source. This prevents a double count of recoil energy.
 
-```text
-minimum weight:       0.047058823529411764
-moment residual:      1.4210854715202004e-14
-L1 separation:        0.0627429665766292
-```
+## Independent checks
 
-Thus moment matching alone does not identify a unique positive projection.
-Tchakaloff-type existence results do not provide the missing uniqueness or
-source provenance. Maximum entropy, minimum transport cost, midpoint/Voronoi
-cells or another regularizer would be additional modelling assumptions and are
-not promoted as canonical HyRec structure.
-
-As non-load-bearing controls, the actual two-core-centre moment vector is
-nonnegative-LP infeasible under both cell-centre Dirac and uniform-within-cell
-17-cell bases. These controls are not needed for the support theorem.
+- Wolfram symbolic evaluation: backward-Euler scalar relaxation positivity,
+  exact opposite-sign number/energy cancellation, and
+  `Integral[x^2/(exp(x)-1),0,infinity]=2 Zeta(3)`.
+- Precise Special Functions: 100-digit `Zeta(3)` and `Gamma(3)=2`.
+- Independent mpmath 120-digit parity:
+  `Zeta(3)` relative residual `1.216241572349676e-100`; Planck integral identity
+  residual `0` at the retained precision.
+- Bianchi II, V and exceptional `VI_-1/9` labels give identical packet hashes
+  at fixed local hydrogen-frame state.
+- Canonical, guard-off and guard-on 8001-row histories have identical SHA-256;
+  guard-off binary is byte-identical to the canonical portable binary.
 
 ## Scientific disposition
 
 ```text
-PR-04B2B:                         PASS_NO_GO
-direct native-to-17-cell map:    REJECTED_BY_SUPPORT_AND_IDENTIFIABILITY
-silent high-resolution substitute: FORBIDDEN
-free normalization:              FORBIDDEN
-multi-snapshot direct parity:    BLOCKED_NOT_FABRICATED
-PR-04:                            IN_PROGRESS
+PR-04C0:       COMPLETE
+PR-04C1A:      COMPLETE
+PR-04C1B/C2:   OPEN
+PR-04:         IN_PROGRESS
 ```
 
-This is an informative no-go, not a solver failure. It prevents an
-unidentifiable remap from being hidden inside the production interface.
+v0.55 proves the interface representation and its source data exist without a
+fitted normalization. It does **not** yet perform far-boundary deposition,
+solve a coupled implicit residual or claim full trajectory parity.
 
 ## Immediate next stage
 
-**PR-04C split-domain conservative exchange contract** must:
+**PR-04C1B/C2** must:
 
-1. lock operator ownership so that each collision, escape and redshift term has
-   exactly one owner;
-2. retain the 35-state COM–KHW collision domain on `x in [-21.25,21.25]` and
-   original-HyRec on its full native support;
-3. use a number/energy flux packet at the two physical interfaces rather than
-   a global state-vector projection;
-4. instrument exact nearest-grid FLRW snapshots near `z=1300,1100,900`;
-5. apply every interface flux once with opposite signs to the two modules;
-6. close number, photon-plus-atom energy, positivity, equilibrium, branch,
-   primitive/direct/Schur, analytic/JVP and local Bianchi-firewall gates;
-7. keep higher moments representation-local unless an independently
-   source-derived positive interface packet measure exists.
+1. attach blue/red packets only to the existing `FB02`/`FR00` far-boundary and
+   Liouville ghost state, never directly to an interior collision cell;
+2. build one monolithic residual containing native packet evaluation,
+   far-boundary transport and the 35-state nonlinear Bose collision action;
+3. use log occupations/nonnegative packet accumulators and an analytic block
+   JVP with independent finite-difference/high-precision references;
+4. localize every red/blue boundary-speed zero within each timestep for
+   Bianchi II, a class-B representative and exceptional `VI_-1/9`;
+5. close positivity, number, transported photon energy, physical collision
+   four-force, restart and free-energy gates without fitted normalization.
 
-See `docs/PR04C_SPLIT_DOMAIN_EXCHANGE_PLAN.md`.
+See `docs/PR04C1B_C2_COUPLED_INTERFACE_PLAN.md`.
 
-## Tool and remote status
+## Remote status
 
-The pinned coding and research harnesses were byte-locked, validated and used
-to produce the research contract, evidence ledger, hypothesis audit,
-validation matrix and independent adversarial review.
-
-Web research used primary HyRec, truncated-moment and conservative-interface
-literature. Wolfram and Precise Special Functions were not exposed in this
-runtime; SymPy exact rational algebra, mpmath 100-digit arithmetic, NumPy SVD,
-SciPy HiGHS and direct canonical archive/source audits were used instead.
-
-The live private GitHub connector was not exposed. The owner performs fetch,
-push and PR creation locally. No remote synchronization is claimed without a
-durable live-remote receipt.
+The read-only GitHub connector verified remote `main` at
+`ad316eb60878ff6c92e5f2326b539ad850c62dc9`, tree
+`1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e`, containing v0.54 plus the remote
+CI/toolchain overlay. v0.55 has not been pushed by this runtime. The owner
+fetches, applies, tests, pushes and opens the PR locally without force-push.
