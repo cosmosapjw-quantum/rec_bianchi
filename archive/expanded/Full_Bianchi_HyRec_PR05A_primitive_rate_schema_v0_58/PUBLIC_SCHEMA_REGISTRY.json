@@ -1,0 +1,137 @@
+{
+  "classes": {
+    "AtomicRadiationState": {
+      "fields": [
+        "real_departure",
+        "native_departure",
+        "com_occupation",
+        "x_1s",
+        "x_2s",
+        "x_2p",
+        "x_e",
+        "x_HII",
+        "T_m_K",
+        "beta_H",
+        "interface_accumulators",
+        "classification"
+      ],
+      "units": {
+        "T_m_K": "K",
+        "beta_H": "dimensionless",
+        "com_occupation": "dimensionless and strictly positive",
+        "native_departure": "signed dimensionless source variable",
+        "real_departure": "signed dimensionless source variable",
+        "x_1s": "per H",
+        "x_2p": "per H",
+        "x_2s": "per H",
+        "x_e": "per H"
+      }
+    },
+    "BackgroundSnapshot": {
+      "fields": [
+        "tau",
+        "cosmic_time_s",
+        "H_s_inv",
+        "q",
+        "sigma_s_inv",
+        "N_s_inv",
+        "A_s_inv",
+        "frame_rotation_s_inv",
+        "beta_H",
+        "D0_beta_H_s_inv",
+        "chart_id",
+        "bianchi_type",
+        "normalization",
+        "branch_flags",
+        "constraint_residuals"
+      ],
+      "units": {
+        "A_s_inv": "s^-1",
+        "D0_beta_H_s_inv": "s^-1",
+        "H_s_inv": "s^-1",
+        "N_s_inv": "s^-1",
+        "beta_H": "dimensionless",
+        "cosmic_time_s": "s",
+        "frame_rotation_s_inv": "s^-1",
+        "q": "dimensionless",
+        "sigma_s_inv": "s^-1",
+        "tau": "dimensionless"
+      }
+    },
+    "PrimitiveRateSnapshot": {
+      "fields": [
+        "radiation_temperature_eV_rescaled",
+        "matter_to_radiation_temperature_ratio",
+        "fsR",
+        "meR",
+        "alpha_m3_s",
+        "alpha_equilibrium_m3_s",
+        "delta_alpha_m3_s",
+        "beta_s_inv",
+        "R_2p2s_s_inv",
+        "A1s_s_inv",
+        "A2s_s_inv",
+        "A3s3d_s_inv",
+        "A4s4d_s_inv",
+        "d_alpha_d_log_Tr_m3_s",
+        "d_alpha_d_Tm_over_Tr_m3_s",
+        "d_alpha_equilibrium_d_log_Tr_m3_s",
+        "d_delta_alpha_d_log_Tr_m3_s",
+        "d_delta_alpha_d_Tm_over_Tr_m3_s",
+        "d_beta_d_log_Tr_s_inv",
+        "d_R_2p2s_d_log_Tr_s_inv",
+        "source_hashes"
+      ],
+      "units": {
+        "A1s_s_inv": "s^-1 per native bin",
+        "A2s_s_inv": "s^-1 per native bin",
+        "A3s3d_s_inv": "s^-1 per native bin",
+        "A4s4d_s_inv": "s^-1 per native bin",
+        "R_2p2s_s_inv": "s^-1",
+        "alpha_m3_s": "m^3 s^-1",
+        "beta_s_inv": "s^-1",
+        "delta_alpha_m3_s": "m^3 s^-1"
+      }
+    },
+    "RadiationFeedback": {
+      "fields": [
+        "rho_gamma_J_m3",
+        "p_gamma_Pa",
+        "q_gamma_a_W_m2",
+        "pi_gamma_ab_Pa",
+        "Q_atom_mu_W_m3",
+        "boundary_red_number_flux_per_H_s",
+        "boundary_blue_number_flux_per_H_s"
+      ],
+      "units": {
+        "Q_atom_mu_W_m3": "W m^-3",
+        "boundary_blue_number_flux_per_H_s": "photons H^-1 s^-1",
+        "boundary_red_number_flux_per_H_s": "photons H^-1 s^-1",
+        "p_gamma_Pa": "Pa",
+        "pi_gamma_ab_Pa": "Pa",
+        "q_gamma_a_W_m2": "W m^-2",
+        "rho_gamma_J_m3": "J m^-3"
+      }
+    },
+    "TrajectoryStepLedger": {
+      "fields": [
+        "number_residual",
+        "photon_atom_energy_residual_W_m3",
+        "four_force_residual",
+        "minimum_physical_state",
+        "entropy_production",
+        "source_hashes",
+        "state_classification"
+      ],
+      "units": {
+        "entropy_production": "discrete collision free-energy production",
+        "four_force_residual": "dimensionless",
+        "minimum_physical_state": "mixed diagnostic with values reported separately in evidence",
+        "number_residual": "dimensionless",
+        "photon_atom_energy_residual_W_m3": "W m^-3"
+      }
+    }
+  },
+  "geometry_microphysics_boundary": "Only BackgroundSnapshot physical tetrad fields enter; chart-internal host objects are forbidden.",
+  "schema": "PR05A_PUBLIC_TRAJECTORY_SCHEMAS_V1"
+}

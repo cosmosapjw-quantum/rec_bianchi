@@ -1,0 +1,90 @@
+{
+  "audit": {
+    "duplicate_owner_count": 0,
+    "interface_application_count": 2,
+    "interface_evaluation_count": 1,
+    "pure_interface_atom_source_W_m3": 0.0,
+    "removed_without_replacement_count": 0,
+    "unowned_term_count": 0
+  },
+  "classification": "PR05A_ONE_OWNER_REMOVAL_MATRIX",
+  "terms": [
+    {
+      "application_count": 0,
+      "conservation": "photon number and energy",
+      "current_owner": "original_hyrec_native",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "remove only when the explicit replacement is present in the same residual and ledger",
+      "removed": false,
+      "replacement_owner": "primitive_lya_transport",
+      "term": "sobolev_lya_escape"
+    },
+    {
+      "application_count": 0,
+      "conservation": "photon number, recoil energy",
+      "current_owner": "original_hyrec_native",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "remove only when the explicit replacement is present in the same residual and ledger",
+      "removed": false,
+      "replacement_owner": "primitive_frequency_diffusion",
+      "term": "native_A1s_diffusion"
+    },
+    {
+      "application_count": 0,
+      "conservation": "native algebra and source parity",
+      "current_owner": "original_hyrec_native",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "remove only when the explicit replacement is present in the same residual and ledger",
+      "removed": false,
+      "replacement_owner": "primitive_virtual_state_time_derivative",
+      "term": "completed_Tvv_schur"
+    },
+    {
+      "application_count": 0,
+      "conservation": "causal history, no future endpoint",
+      "current_owner": "original_hyrec_native",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "remove only when the explicit replacement is present in the same residual and ledger",
+      "removed": false,
+      "replacement_owner": "primitive_radiation_history",
+      "term": "scalar_Dfplus_history_feedback"
+    },
+    {
+      "application_count": 0,
+      "conservation": "photon/atom four-force",
+      "current_owner": "com_khw_collision",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "not removable in PR-05A",
+      "removed": false,
+      "replacement_owner": "NONE",
+      "term": "COM_KHW_collision_recoil"
+    },
+    {
+      "application_count": 2,
+      "conservation": "opposite number/face-energy application; zero atom source",
+      "current_owner": "split_domain_interface",
+      "evaluation_count": 1,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "single owner fixed by PR-04",
+      "removed": false,
+      "replacement_owner": "NONE",
+      "term": "red_blue_interface_packets"
+    },
+    {
+      "application_count": 0,
+      "conservation": "boundary flux and event localization",
+      "current_owner": "original_hyrec_native",
+      "evaluation_count": 0,
+      "pure_interface_atom_source_W_m3": 0.0,
+      "removal_condition": "remove only when the explicit replacement is present in the same residual and ledger",
+      "removed": false,
+      "replacement_owner": "background_characteristic_transport",
+      "term": "hubble_redshift_free_streaming"
+    }
+  ]
+}

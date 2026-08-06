@@ -1,0 +1,36 @@
+# Verification results
+
+```json
+{
+  "future_endpoint_causality_all": true,
+  "geometry_firewall_com_absolute": 0.0,
+  "geometry_firewall_feedback_absolute": 0.0,
+  "geometry_firewall_native_absolute": 0.0,
+  "interface_enabled": false,
+  "maximum_100digit_delta_alpha_gross_scaled_relative": 4.5956998615116564e-15,
+  "maximum_100digit_delta_alpha_raw_relative_diagnostic": 4.4149593787604346e-10,
+  "maximum_100digit_regular_relative": 7.641385759411296e-15,
+  "maximum_C_Python_delta_alpha_gross_scaled_relative": 1.2545286849168469e-14,
+  "maximum_C_Python_delta_alpha_raw_relative_diagnostic": 2.3376731460571452e-11,
+  "maximum_C_Python_non_delta_relative": 8.810414728316925e-13,
+  "maximum_collision_entropy_production": 0.0,
+  "maximum_four_force_relative": 0.0,
+  "maximum_full_analytic_jvp_relative_error": 6.853197585828028e-16,
+  "maximum_implicit_backward_error": 3.599684962088726e-14,
+  "maximum_native_residual_relative": 3.4992746547891075e-14,
+  "maximum_number_residual": 1.336861563526437e-15,
+  "maximum_photon_atom_energy_residual_W_m3": 0.0,
+  "maximum_rate_analytic_jvp_relative_error": 2.565446070862263e-10,
+  "maximum_saha_detailed_balance_relative": 7.246823702175634e-15,
+  "maximum_source_alpha_relative": 2.8516161913135987e-14,
+  "maximum_source_beta_relative": 2.8472352204775925e-14,
+  "maximum_source_delta_alpha_raw_relative_diagnostic": 2.337667281821502e-11,
+  "minimum_m_matrix_column_dominance_margin_s_inv": 0.851097827134753,
+  "minimum_m_matrix_real_eigenvalue_s_inv": 0.8510978283898339,
+  "minimum_physical_state": 7.230543007547215e-18,
+  "ownership_pass": true,
+  "restart_exact_all": true,
+  "snapshot_count": 3,
+  "state_classification": "SOURCE_DERIVED_INPUT_OPERATOR_VERIFICATION_OUTPUT"
+}
+```
