@@ -1,0 +1,8 @@
+name,size,role,unit,source_owner,source_evidence,local_mass_value
+free_electron_fraction,1,differential,dimensionless; derivative with respect to eta=ln(a),rec_HMLA_2photon_dxHIIdlna,hydrogen.c:769-775 and technical supplement Eq. (10),1
+real_departures_2s_2p,2,algebraic,dimensionless abundance departure,solve_real_virt,hydrogen.c:565-625; HyRec steady-state excited-level approximation,0
+virtual_departures,311,algebraic,dimensionless x_1s Delta f_nu,solve_real_virt,hydrogen.c:616-619; zero-width virtual-spike steady-state equation,0
+outgoing_virtual_history,311,accepted_step_memory,dimensionless photon occupation departure,Dfminus_hist,hydrogen.c:657-718 and 777-792,OUTSIDE_LOCAL_MASS_MATRIX
+outgoing_lyman_history,3,accepted_step_memory,dimensionless photon occupation departure,Dfminus_Ly_hist,hydrogen.c:660-661 and 794-796,OUTSIDE_LOCAL_MASS_MATRIX
+average_virtual_history,311,accepted_step_memory,dimensionless photon occupation departure,Dfnu_hist,hydrogen.c:727 and 798-799,OUTSIDE_LOCAL_MASS_MATRIX
+background_snapshot,1,external,typed SI/tetrad snapshot,host_background_solver,PR-01C/PR-05A BackgroundSnapshot firewall,OUTSIDE_LOCAL_MASS_MATRIX
