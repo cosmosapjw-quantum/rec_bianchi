@@ -31,7 +31,7 @@ def _pr04c(text: str) -> str:
 
 
 OUTPUT_REPLACEMENT = r'''   /* Average radiation field in each bin */
-   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;   
+   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;
 
    #ifdef PR04C_DIAGNOSTICS
    {

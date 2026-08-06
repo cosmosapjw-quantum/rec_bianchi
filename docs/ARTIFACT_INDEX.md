@@ -57,3 +57,4 @@ Exact ZIP releases are immutable canonical snapshots.
 | 51 | `Full_Bianchi_HyRec_PR04A_HYREC_common_measure_v0_51.zip` | 61151 | `ca60bb0d2177ef50fdcf44635f58e89108b00d9ab37312c813d9e0a15086004e` |
 | 52 | `Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52.zip` | 208538 | `fcceb03dc0c96f574bc4e24b7426b98b083462a8ae1d70293243cb1556801ab5` |
 | 53 | `Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53.zip` | 509805 | `42a05352871a21c2d082d5cdf47e936346c3727a365292a9108b5a49ce736f87` |
+| 55 | `Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55.zip` | 214433 | `5c5cb9aca8ad1a90667d1c72b371d4296bb4d6186b8bce1ae4079150d1a9f586` |

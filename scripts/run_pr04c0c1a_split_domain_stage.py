@@ -225,6 +225,15 @@ def validate_harness(
     }
 
 
+def normalize_text_artifact(path: Path) -> None:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    path.write_text(
+        "\n".join(line.rstrip() for line in text.replace("\r\n", "\n").splitlines()) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
 def create_manifest(artifact: Path) -> None:
     rows = []
     for path in sorted(artifact.iterdir()):
@@ -834,6 +843,10 @@ or Liouville state.
             source_doc = ROOT / relative
             if source_doc.exists():
                 shutil.copy2(source_doc, ARTIFACT / source_doc.name)
+
+        for text_path in ARTIFACT.iterdir():
+            if text_path.is_file() and text_path.suffix in {".log", ".diff"}:
+                normalize_text_artifact(text_path)
 
         create_manifest(ARTIFACT)
         subprocess.run([sys.executable, str(verifier)], cwd=ARTIFACT, check=True)

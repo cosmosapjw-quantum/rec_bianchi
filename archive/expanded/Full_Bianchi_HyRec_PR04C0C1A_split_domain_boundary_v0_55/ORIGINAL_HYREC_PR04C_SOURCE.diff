@@ -3,7 +3,7 @@
 @@ -32,6 +32,14 @@
  #include "hyrectools.h"
  #include "hydrogen.h"
- 
+
 +#ifdef PR04C_DIAGNOSTICS
 +static double pr04c_Aup[NVIRT];
 +static double pr04c_Adn[NVIRT];
@@ -12,53 +12,53 @@
 +static double pr04c_A2p_up;
 +static double pr04c_A2p_dn;
 +#endif
- 
+
  /***********************************************************************************************************
- Some constants appropriately rescaled for different values of the fine-structure constant and electron mass 
+ Some constants appropriately rescaled for different values of the fine-structure constant and electron mass
 @@ -484,6 +492,10 @@
      /*** Added May 2012: rescale for dependence on alpha and me ***/
      A2p_up *= rescalediff;
-     A2p_dn *= rescalediff; 
+     A2p_dn *= rescalediff;
 +    #ifdef PR04C_DIAGNOSTICS
 +    pr04c_A2p_up = A2p_up;
 +    pr04c_A2p_dn = A2p_dn;
 +    #endif
      for (b = 0; b < NVIRT; b++) {
-           Aup[b] *= rescalediff;    
+           Aup[b] *= rescalediff;
            Adn[b] *= rescalediff;
 @@ -524,6 +536,12 @@
        one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
        Tvv[0][b] = Dtau[b] > 0.? Gammab/one_minus_Pib : 2./(x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H);  /* Added May 2012: proper limit Dtau->0 */
-       sv[b]  = Tvv[0][b] * x1s * Dfplus[b] * (1.-one_minus_Pib);         
+       sv[b]  = Tvv[0][b] * x1s * Dfplus[b] * (1.-one_minus_Pib);
 +      #ifdef PR04C_DIAGNOSTICS
 +      pr04c_Aup[b] = Aup[b];
 +      pr04c_Adn[b] = Adn[b];
 +      pr04c_Gammab[b] = Gammab;
 +      pr04c_one_minus_Pib[b] = one_minus_Pib;
 +      #endif
-        
+
      }
- 
+
 @@ -746,6 +764,10 @@
     double Alpha[2], DAlpha[2], Beta[2];
     double ratio;
- 
+
 +   #ifdef PR04C_DIAGNOSTICS
 +   double pr04c_Dfeq[NVIRT];
 +   #endif
 +
     ratio = TM/TR;
     rescale_T(&TR, fsR, meR);
-    TM = ratio * TR;   /* This way ensure that TM<=TR is preserved */   
+    TM = ratio * TR;   /* This way ensure that TM<=TR is preserved */
 @@ -784,11 +806,19 @@
-                    b == NVIRT-1 ?  xv[NVIRT-2]*Tvv[1][NVIRT-1]:    
-                    xv[b+1]*Tvv[2][b] + xv[b-1]*Tvv[1][b]);        
+                    b == NVIRT-1 ?  xv[NVIRT-2]*Tvv[1][NVIRT-1]:
+                    xv[b+1]*Tvv[2][b] + xv[b-1]*Tvv[1][b]);
           Dfeq /= x1s*one_minus_Pib*Tvv[0][b];
 +         #ifdef PR04C_DIAGNOSTICS
 +         pr04c_Dfeq[b] = Dfeq;
 +         #endif
-          one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;               
-                                 
+          one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;
+
           Dfminus_hist[b][iz] = Dfplus[b] + (Dfeq - Dfplus[b])*one_minus_exptau;
       }
 -     else Dfminus_hist[b][iz] = Dfplus[b];
@@ -69,12 +69,14 @@
 +         #endif
 +     }
     }
-     
-    Dfminus_Ly_hist[0][iz] = xr[1]/3./x1s;    
-@@ -797,6 +827,113 @@
-    
+
+    Dfminus_Ly_hist[0][iz] = xr[1]/3./x1s;
+@@ -796,7 +826,114 @@
+    Dfminus_Ly_hist[2][iz] = xr[0]/x1s*exp(-E42/TR);
+
     /* Average radiation field in each bin */
-    for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;   
+-   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;
++   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;
 +
 +   #ifdef PR04C_DIAGNOSTICS
 +   {
@@ -182,6 +184,6 @@
 +      }
 +   }
 +   #endif
- 
+
     for (i = 0; i < 2; i++) free(Trv[i]);
     for (i = 0; i < 2; i++) free(Tvr[i]);
