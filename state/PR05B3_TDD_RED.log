@@ -1,0 +1,227 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_public_scalar_history_owner_swap_api_exists _______________
+
+    def test_public_scalar_history_owner_swap_api_exists() -> None:
+        required = {
+            "ScalarHistoryFeedbackOwner",
+            "ScalarHistoryOwnershipRegistry",
+            "ScalarHistoryOwnerSwapProblem",
+            "AcceptedStepTransaction",
+        }
+>       assert required <= set(dir(trajectory))
+E       AssertionError: assert {'AcceptedSte...shipRegistry'} <= {'ALPHA_TABLE...StepJVP', ...}
+E         
+E         Extra items in the left set:
+E         'AcceptedStepTransaction'
+E         'ScalarHistoryFeedbackOwner'
+E         'ScalarHistoryOwnerSwapProblem'
+E         'ScalarHistoryOwnershipRegistry'
+
+tests/trajectory/test_scalar_history_owner_swap.py:13: AssertionError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_public_scalar_history_owner_swap_api_exists - AssertionError: assert {'AcceptedSte...shipRegistry'} <= {'ALPHA_TABLE...StepJVP', ...}
+  
+  Extra items in the left set:
+  'AcceptedStepTransaction'
+  'ScalarHistoryFeedbackOwner'
+  'ScalarHistoryOwnerSwapProblem'
+  'ScalarHistoryOwnershipRegistry'
+1 failed in 0.46s
+.FF                                                                      [100%]
+=================================== FAILURES ===================================
+________________ test_owner_registry_requires_exactly_one_owner ________________
+
+    def test_owner_registry_requires_exactly_one_owner() -> None:
+        history = _synthetic_history()
+        kwargs = {
+            "required_source_hashes": history.grid.source_hashes,
+            "history_schema": "PR05B2_ACCEPTED_HISTORY_V1",
+        }
+        with pytest.raises(ValueError, match="exactly one"):
+>           trajectory.ScalarHistoryOwnershipRegistry(active_owners=(), **kwargs)
+E           TypeError: ScalarHistoryOwnershipRegistry.__init__() got an unexpected keyword argument 'active_owners'
+
+tests/trajectory/test_scalar_history_owner_swap.py:72: TypeError
+___ test_owner_registry_validates_schema_hashes_candidate_and_frozen_owners ____
+
+    def test_owner_registry_validates_schema_hashes_candidate_and_frozen_owners() -> None:
+        history = _synthetic_history()
+>       registry = trajectory.ScalarHistoryOwnershipRegistry(
+            active_owners=(trajectory.ScalarHistoryFeedbackOwner.CANONICAL_CALLBACK,),
+            required_source_hashes=history.grid.source_hashes,
+            history_schema="PR05B2_ACCEPTED_HISTORY_V1",
+        )
+E       TypeError: ScalarHistoryOwnershipRegistry.__init__() got an unexpected keyword argument 'active_owners'
+
+tests/trajectory/test_scalar_history_owner_swap.py:85: TypeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_owner_registry_requires_exactly_one_owner - TypeError: ScalarHistoryOwnershipRegistry.__init__() got an unexpected keyword argument 'active_owners'
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_owner_registry_validates_schema_hashes_candidate_and_frozen_owners - TypeError: ScalarHistoryOwnershipRegistry.__init__() got an unexpected keyword argument 'active_owners'
+2 failed, 1 passed in 0.41s
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_owner_swap_requires_componentwise_parity_before_typed_promotion _____
+
+    @pytest.mark.slow
+    def test_owner_swap_requires_componentwise_parity_before_typed_promotion() -> None:
+        dae, state, history, registry = _real_problem(1100)
+>       problem = trajectory.ScalarHistoryOwnerSwapProblem(
+            dae=dae,
+            history=history,
+            registry=registry,
+            atomic_state=state,
+        )
+E       TypeError: ScalarHistoryOwnerSwapProblem.__init__() got an unexpected keyword argument 'dae'
+
+tests/trajectory/test_scalar_history_owner_swap.py:207: TypeError
+___________ test_active_owner_branch_is_live_in_the_coupled_residual ___________
+
+    @pytest.mark.slow
+    def test_active_owner_branch_is_live_in_the_coupled_residual() -> None:
+        dae, state, history, registry = _real_problem(1100)
+>       canonical_problem = trajectory.ScalarHistoryOwnerSwapProblem(
+            dae=dae,
+            history=history,
+            registry=registry,
+            atomic_state=state,
+        )
+E       TypeError: ScalarHistoryOwnerSwapProblem.__init__() got an unexpected keyword argument 'dae'
+
+tests/trajectory/test_scalar_history_owner_swap.py:248: TypeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_owner_swap_requires_componentwise_parity_before_typed_promotion - TypeError: ScalarHistoryOwnerSwapProblem.__init__() got an unexpected keyword argument 'dae'
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_active_owner_branch_is_live_in_the_coupled_residual - TypeError: ScalarHistoryOwnerSwapProblem.__init__() got an unexpected keyword argument 'dae'
+2 failed, 3 deselected in 3.01s
+..FF                                                                     [100%]
+=================================== FAILURES ===================================
+__ test_typed_owner_shifted_ijacobian_includes_fixed_history_endpoint_blocks ___
+
+    @pytest.mark.slow
+    def test_typed_owner_shifted_ijacobian_includes_fixed_history_endpoint_blocks() -> None:
+        dae, state, history, registry = _real_problem(1100)
+        canonical = trajectory.ScalarHistoryOwnerSwapProblem(
+            dae=dae,
+            history=history,
+            registry=registry,
+            atomic_state=state,
+        )
+        problem = canonical.promote_typed(canonical.parity_audit())
+        rng = np.random.default_rng(61)
+        local_direction = rng.normal(size=dae.layout.local_size) * 1.0e-12
+        history_virtual_direction = np.zeros_like(history.outgoing_virtual)
+        history_lyman_direction = np.zeros_like(history.outgoing_lyman)
+        incoming = problem.evaluate().incoming
+        for query, stencil in zip(incoming.queries[:16], incoming.stencils[:16], strict=True):
+            if stencil.thermal_zero:
+                continue
+            assert stencil.left_index is not None and stencil.right_index is not None
+            if query.source_kind == "virtual":
+                history_virtual_direction[query.source_index, stencil.left_index] += 1.0e-16
+                history_virtual_direction[query.source_index, stencil.right_index] -= 0.5e-16
+            else:
+                history_lyman_direction[query.source_index, stencil.left_index] += 1.0e-16
+                history_lyman_direction[query.source_index, stencil.right_index] -= 0.5e-16
+>       error = problem.central_difference_shifted_ijacobian_error(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            state_vector=dae.source_state_vector(state),
+            state_derivative=dae.source_derivative_vector(),
+            local_direction=local_direction,
+            outgoing_virtual_direction=history_virtual_direction,
+            outgoing_lyman_direction=history_lyman_direction,
+            shift=3.7,
+            step=0.5,
+        )
+E       AttributeError: 'ScalarHistoryOwnerSwapProblem' object has no attribute 'central_difference_shifted_ijacobian_error'
+
+tests/trajectory/test_scalar_history_owner_swap.py:324: AttributeError
+_______ test_typed_owner_backward_euler_is_positive_and_backward_stable ________
+
+    @pytest.mark.slow
+    def test_typed_owner_backward_euler_is_positive_and_backward_stable() -> None:
+        dae, state, history, registry = _real_problem(1100)
+        canonical = trajectory.ScalarHistoryOwnerSwapProblem(
+            dae=dae,
+            history=history,
+            registry=registry,
+            atomic_state=state,
+        )
+        problem = canonical.promote_typed(canonical.parity_audit())
+        old = np.array(dae.source_state_vector(state), copy=True)
+        old[0] *= 1.0001
+>       result = problem.frozen_coefficient_backward_euler_step(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            old,
+            delta_lna=1.0e-5,
+        )
+E       AttributeError: 'ScalarHistoryOwnerSwapProblem' object has no attribute 'frozen_coefficient_backward_euler_step'
+
+tests/trajectory/test_scalar_history_owner_swap.py:348: AttributeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_typed_owner_shifted_ijacobian_includes_fixed_history_endpoint_blocks - AttributeError: 'ScalarHistoryOwnerSwapProblem' object has no attribute 'central_difference_shifted_ijacobian_error'
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_typed_owner_backward_euler_is_positive_and_backward_stable - AttributeError: 'ScalarHistoryOwnerSwapProblem' object has no attribute 'frozen_coefficient_backward_euler_step'
+2 failed, 2 passed, 3 deselected in 3.49s
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+__ test_accepted_step_transaction_commits_once_and_restart_rollback_are_exact __
+
+    @pytest.mark.slow
+    def test_accepted_step_transaction_commits_once_and_restart_rollback_are_exact() -> None:
+        dae, state, history, registry = _real_problem(1100)
+        canonical = trajectory.ScalarHistoryOwnerSwapProblem(
+            dae=dae,
+            history=history,
+            registry=registry,
+            atomic_state=state,
+        )
+        problem = canonical.promote_typed(canonical.parity_audit())
+>       transaction = trajectory.AcceptedStepTransaction.from_problem(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            problem,
+            local_state=dae.source_state_vector(state),
+            local_derivative=dae.source_derivative_vector(),
+            com_restart_payload=dae.primitive_problem.restart_payload(state),
+        )
+E       AttributeError: type object 'AcceptedStepTransaction' has no attribute 'from_problem'
+
+tests/trajectory/test_scalar_history_owner_swap.py:367: AttributeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_scalar_history_owner_swap.py::test_accepted_step_transaction_commits_once_and_restart_rollback_are_exact - AttributeError: type object 'AcceptedStepTransaction' has no attribute 'from_problem'
+1 failed, 4 passed, 3 deselected in 3.38s
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_pr05b3_artifact_closes_owner_swap_and_hands_off_pr05c __________
+
+    def test_pr05b3_artifact_closes_owner_swap_and_hands_off_pr05c() -> None:
+>       hard = json.loads((ARTIFACT / "HARD_GATE_LEDGER.json").read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/trajectory/test_pr05b3_artifact.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/rec_bianchi_pr05b3_v061_work/repo/archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/HARD_GATE_LEDGER.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr05b3_v061_work/repo/archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/HARD_GATE_LEDGER.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_pr05b3_artifact.py::test_pr05b3_artifact_closes_owner_swap_and_hands_off_pr05c - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr05b3_v061_work/repo/archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/HARD_GATE_LEDGER.json'
+1 failed in 0.07s

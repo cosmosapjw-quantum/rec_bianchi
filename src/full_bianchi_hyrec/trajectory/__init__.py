@@ -42,6 +42,16 @@ from .causal_history_step import (
     CharacteristicConservationLedger,
 )
 
+
+from .history_ownership import (
+    AcceptedStepTransaction,
+    AcceptedStepTransactionStatus,
+    ScalarHistoryFeedbackOwner,
+    ScalarHistoryOwnershipRegistry,
+    ScalarHistoryOwnerSwapProblem,
+    ScalarHistoryParityAudit,
+)
+
 from .time_dependent_native import (
     CausalRadiationHistoryState,
     NativeRadiationTimeMeasureAudit,
@@ -59,6 +69,12 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "ScalarHistoryParityAudit",
+    "ScalarHistoryOwnerSwapProblem",
+    "ScalarHistoryOwnershipRegistry",
+    "ScalarHistoryFeedbackOwner",
+    "AcceptedStepTransaction",
+    "AcceptedStepTransactionStatus",
 
     "AcceptedRadiationHistory",
     "CharacteristicHistoryGrid",
