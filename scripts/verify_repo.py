@@ -28,6 +28,13 @@ def main() -> None:
     parser.add_argument("--scientific", action="store_true")
     args = parser.parse_args()
 
+    policy = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/check_hyrec_binary_hash_policy.py")],
+        cwd=ROOT,
+    )
+    if policy.returncode:
+        raise SystemExit(policy.returncode)
+
     state = json.loads((ROOT / "state/PROJECT_STATE.json").read_text())
     current_artifact = state["current_durable_stage"]["artifact"]
     expanded = ROOT / "archive" / "expanded" / current_artifact
