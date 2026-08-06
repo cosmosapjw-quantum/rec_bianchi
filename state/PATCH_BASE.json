@@ -11,12 +11,13 @@
   "remote_main_stage": "v0.54 PR04B2B plus CI/toolchain overlay",
   "reason": "The live remote tree differs from the exact author v0.54 tree because GitHub main contains a CI/toolchain overlay. Export exact-local-v0.54-to-v0.55 and cumulative-v0.47-to-v0.55 patches. The owner applies the incremental route on fetched remote main with three-way conflict checking and reruns all gates.",
   "current_target_stage": "v0.55 PR-04C0/C1A ownership and source-identical boundary packets",
-  "current_target_payload_head": "PENDING_FINAL_SEAL",
-  "current_target_payload_tree": "PENDING_FINAL_SEAL",
+  "current_target_payload_head": "5f438aa16cfcf477bbff09f0e6a0e720bed82e24",
+  "current_target_payload_tree": "9dfcd080daaf721c1d3b5370614a263bf0fc0d7c",
   "planned_patch_routes": [
     "incremental_from_exact_v054",
     "cumulative_from_v047"
   ],
   "remote_main_route": "APPLY_INCREMENTAL_WITH_GIT_AM_OR_GIT_APPLY_3WAY_ON_FEATURE_BRANCH_UNVERIFIED_UNTIL_OWNER_LOCAL_FETCH",
-  "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH"
+  "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
+  "current_target_payload_note": "Documentation payload before final receipt-only seal commit; external delivery receipt records exact final HEAD/tree."
 }
