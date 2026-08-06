@@ -60,3 +60,4 @@ Exact ZIP releases are immutable canonical snapshots.
 | 54 | `Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54.zip` | 88095 | `5a0d9c66d93beb742020d40b8e983f710f41ea12ff1ca8ff74d5c9427ce62bc7` |
 | 55 | `Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55.zip` | 214433 | `5c5cb9aca8ad1a90667d1c72b371d4296bb4d6186b8bce1ae4079150d1a9f586` |
 | 56 | `Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56.zip` | 31818 | `bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c` |
+| 57 | `Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57.zip` | 27565 | `fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890` |
