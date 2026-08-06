@@ -1,0 +1,82 @@
+{
+  "checked_at_kst": "2026-08-06T23:55:39.348228+09:00",
+  "checked_at_utc": "2026-08-06T14:55:39.348228+00:00",
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "local": {
+    "branch": "work/pr05b-time-dependent-native-v059",
+    "dirty": false,
+    "dirty_paths": [],
+    "head": "af619040a48abb011cd28d2a462cd5f8a2c92db3",
+    "tree": "8b068e3557ed07c5ff8bbd20555bd959182961e8"
+  },
+  "origin": "/mnt/data/rec_bianchi_v058_delivery/rec_bianchi_v058_full.bundle",
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty.",
+  "remote": {
+    "accessible": true,
+    "attempts": [
+      {
+        "returncode": 0,
+        "stderr": "",
+        "transport": "configured",
+        "url": "/mnt/data/rec_bianchi_v058_delivery/rec_bianchi_v058_full.bundle"
+      }
+    ],
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 28,
+    "refs": {
+      "refs/heads/work/pr04c3-common-ledger-v057": "1580f2d415bba4596cb221bc61dc152fc6960e03",
+      "refs/heads/work/pr05a-primitive-schema-v058": "ea7f5fb2c5096a2d292201c514ec42823e6c5e5f",
+      "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/backup-v0.51": "51f0696c62a87de34ee0df3df3a680f369d5025e",
+      "refs/tags/backup-v0.52": "8c06cf93b84b864803837c6d6c90d55c13cb33cf",
+      "refs/tags/backup-v0.53": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+      "refs/tags/backup-v0.54": "183e41bdc273d655c8e075f2cf4602c384a3aa9b",
+      "refs/tags/backup-v0.55": "f90a1e36ad5c6cb8c58588a54ddecace15393cd9",
+      "refs/tags/backup-v0.56": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+      "refs/tags/backup-v0.57": "1580f2d415bba4596cb221bc61dc152fc6960e03",
+      "refs/tags/backup-v0.58": "ea7f5fb2c5096a2d292201c514ec42823e6c5e5f",
+      "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/handoff-2026-08-05-v051": "7a39c303c397bfb8ff32368d23be6b8f7a62b0c7",
+      "refs/tags/handoff-2026-08-05-v052": "3aacbcdf1b2f723fe62112cff94df90cfb635e35",
+      "refs/tags/handoff-2026-08-06-v053": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+      "refs/tags/handoff-2026-08-06-v054": "b7d522a463ce9077706478b1f466723d67041c1c",
+      "refs/tags/handoff-2026-08-06-v055": "dfed7acb48192fe2f84f0a83afac6f050ad84bfe",
+      "refs/tags/handoff-2026-08-06-v056": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+      "refs/tags/handoff-2026-08-06-v057": "1580f2d415bba4596cb221bc61dc152fc6960e03",
+      "refs/tags/handoff-2026-08-06-v058": "ea7f5fb2c5096a2d292201c514ec42823e6c5e5f"
+    },
+    "selected_transport": "configured"
+  },
+  "repository_root": "/mnt/data/rec_bianchi_pr05b_v059_work",
+  "runtime_capabilities": {
+    "chatgpt_connector_cli_exposed": false,
+    "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md.",
+    "gh_executable": null,
+    "git_executable": "/usr/bin/git",
+    "https_token_present": false,
+    "ssh_executable": null
+  },
+  "user_confirmed_base": {
+    "classification": "CONNECTOR_VERIFIED_REMOTE_BASE",
+    "exact_local_author_v057_commit": "1580f2d415bba4596cb221bc61dc152fc6960e03",
+    "implication": "Export a self-contained v0.58 feature Git bundle whose ordered feature range begins after exact author v0.57. The owner creates a fresh branch from origin/main, fetches the delivery ref, cherry-picks only the receipt-listed v0.58 commits, reruns all gates, and never force-pushes shared history.",
+    "merged_pr": 16,
+    "merged_pr_head_commit": "f4665b8b97944ce11818c1a4774dbdc312d7fa60",
+    "remote_ci": "SUCCESS_RUN_52",
+    "remote_content_stage": "v0.57 PR04C3 componentwise common ledger and PR04 operator-contract closure",
+    "remote_main_commit": "5fb7aec1cf1cfcd65e40ffeb097c8c1237cfe19c",
+    "remote_main_tree": "0638ad71941c258a90375148674264de5ff14608",
+    "reported_at": "2026-08-06",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
+  }
+}

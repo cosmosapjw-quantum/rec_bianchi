@@ -1,0 +1,117 @@
+PR-05B1 / v0.59 final verification log
+generated_utc: 2026-08-06T15:02:57Z
+
+===== BOOTSTRAP =====
+offline recovery: using dependency-complete base interpreter python3
+dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr05b_v059_work/tests)
+PR-05B1 v0.59 artifact: PASS_BOUNDED_NO_GO; source-identifiable DAE complete; PR-05B2 causal history OPEN
+{"status": "PASS", "bundle_count": 59, "current_artifact": "Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
+
+===== BINARY_POLICY =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr05b_v059_work/tests)
+
+===== ARTIFACT =====
+PR-05B1 v0.59 artifact: PASS_BOUNDED_NO_GO; source-identifiable DAE complete; PR-05B2 causal history OPEN
+
+===== QUICK =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr05b_v059_work/tests)
+PR-05B1 v0.59 artifact: PASS_BOUNDED_NO_GO; source-identifiable DAE complete; PR-05B2 causal history OPEN
+{"status": "PASS", "bundle_count": 59, "current_artifact": "Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+===== ALL =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr05b_v059_work/tests)
+PR-05B1 v0.59 artifact: PASS_BOUNDED_NO_GO; source-identifiable DAE complete; PR-05B2 causal history OPEN
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+........................                                                 [100%]
+168 passed, 26 deselected in 21.82s
+{"status": "PASS", "bundle_count": 59, "current_artifact": "Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59", "mode": "all", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+===== FAST =====
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+........................                                                 [100%]
+168 passed, 26 deselected in 20.41s
+
+===== TARGETED =====
+..........                                                               [100%]
+10 passed in 0.38s
+
+===== SCIENTIFIC_BACKGROUND_EXIT0 =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr05b_v059_work/tests)
+PR-05B1 v0.59 artifact: PASS_BOUNDED_NO_GO; source-identifiable DAE complete; PR-05B2 causal history OPEN
+.                                                                        [100%]
+1 passed in 0.57s
+.                                                                        [100%]
+1 passed in 0.54s
+.                                                                        [100%]
+1 passed in 0.90s
+.                                                                        [100%]
+1 passed in 0.54s
+.                                                                        [100%]
+1 passed in 14.60s
+.                                                                        [100%]
+1 passed in 3.89s
+.                                                                        [100%]
+1 passed in 0.42s
+.                                                                        [100%]
+1 passed in 3.81s
+.                                                                        [100%]
+1 passed in 0.15s
+.                                                                        [100%]
+1 passed in 5.55s
+.                                                                        [100%]
+1 passed in 13.42s
+.                                                                        [100%]
+1 passed in 8.34s
+.                                                                        [100%]
+1 passed in 0.27s
+.                                                                        [100%]
+1 passed in 0.27s
+.                                                                        [100%]
+1 passed in 1.04s
+.                                                                        [100%]
+1 passed in 8.02s
+.                                                                        [100%]
+1 passed in 12.00s
+.                                                                        [100%]
+1 passed in 3.40s
+.                                                                        [100%]
+1 passed in 4.35s
+.                                                                        [100%]
+1 passed in 0.12s
+.                                                                        [100%]
+1 passed in 0.50s
+.                                                                        [100%]
+1 passed in 0.77s
+.                                                                        [100%]
+1 passed in 1.53s
+.                                                                        [100%]
+1 passed in 0.81s
+.                                                                        [100%]
+1 passed in 0.65s
+.                                                                        [100%]
+1 passed in 0.63s
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+........................                                                 [100%]
+168 passed, 26 deselected in 20.32s
+{"status": "PASS", "bundle_count": 59, "current_artifact": "Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59", "mode": "scientific", "scientific_slow_file_count": 10, "scientific_slow_test_count": 26}
+
+===== PY_COMPILE =====
+py_compile PASS 140 tracked Python files
+
+===== GIT_DIFF_CHECK =====
+PASS
+
+===== GIT_FSCK =====
+PASS_FULL_NO_DANGLING
+
+===== SECRET_SCAN =====
+PASS_NO_CREDENTIAL_VALUES_1004_INTENDED_FILES
+
+===== NON-PASS ATTEMPT DISCLOSURE =====
+The first foreground scientific-wrapper call was terminated by the outer tool timeout after five slow nodes. It is not used as PASS evidence. A fresh background execution of the same wrapper completed with exit 0.
