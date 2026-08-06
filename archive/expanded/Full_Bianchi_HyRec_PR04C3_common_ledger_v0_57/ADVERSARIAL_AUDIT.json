@@ -1,0 +1,25 @@
+{
+  "classification": "PR04C3_ADVERSARIAL_AUDIT",
+  "cross_snapshot_cancellation": {
+    "components": [
+      2e-10,
+      -2e-10,
+      0.0
+    ],
+    "componentwise_gate_rejects": true,
+    "componentwise_max": 2e-10,
+    "normalized_violation": 20.0,
+    "scalar_sum": 0.0,
+    "scalar_sum_would_false_pass": true,
+    "threshold": 1e-11
+  },
+  "schema_adversaries": {
+    "direct_state_remap_flag": "REJECTED",
+    "duplicate_packet_id": "REJECTED_BY_TYPED_LEDGER",
+    "fitted_normalization_flag": "REJECTED",
+    "future_history_endpoint": "REJECTED_BY_PACKET_RECORD",
+    "native_trajectory_relabel": "REJECTED_BY_STATE_CLASSIFICATION",
+    "permuted_target_order": "REJECTED_BY_TYPED_LEDGER"
+  },
+  "test_file": "tests/recoil/test_common_interface_ledger.py"
+}

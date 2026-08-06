@@ -1,0 +1,786 @@
+{
+  "aggregation_policy": "maximum_normalized_component_violation_never_sum",
+  "claim_level": "source_conditioned_operator_contract",
+  "componentwise_passed": true,
+  "direct_state_remap_used": false,
+  "epsilon_common": 0.0,
+  "failed_components": [],
+  "fitted_normalization_used": false,
+  "global_provenance": [
+    {
+      "evidence_class": "source_derived",
+      "name": "canonical_original_hyrec",
+      "relative_path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    {
+      "evidence_class": "source_derived",
+      "name": "v055_packet_table",
+      "relative_path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/THREE_SNAPSHOT_INTERFACE_PACKETS.csv",
+      "sha256": "73339c0818e24fa4de8d6d1133fb94c1f834cd7259cd3a38b0ee09be16d81a7f"
+    },
+    {
+      "evidence_class": "solver_derived",
+      "name": "v056_coupled_artifact",
+      "relative_path": "archive/bundles/Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56.zip",
+      "sha256": "bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c"
+    },
+    {
+      "evidence_class": "solver_derived",
+      "name": "v056_restart",
+      "relative_path": "archive/expanded/Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56/COUPLED_RESTART.json",
+      "sha256": "30e487c862e548fe4c11276d8fa7039009c7692d8c6bd1cb297602a8c869c04f"
+    },
+    {
+      "evidence_class": "source_derived",
+      "name": "v050_com_khw_network",
+      "relative_path": "data/full_scalar_com_khw_v050.npz",
+      "sha256": "14f0810adf35221eca4861481557baa55da9ada85c3dfc503262ef356e2a615d"
+    },
+    {
+      "evidence_class": "source_derived",
+      "name": "v048_background_registry",
+      "relative_path": "data/pr01c_background_snapshots_v048.npz",
+      "sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c"
+    },
+    {
+      "evidence_class": "source_derived",
+      "name": "coding_harness",
+      "relative_path": "archive/inputs/research_harnesses/physmath-coding-harness-gpt56.zip",
+      "sha256": "6e67e999a0c19f6ed9de7c339067cc11691d5cf5cb662a11756d8fc393c849b4"
+    },
+    {
+      "evidence_class": "source_derived",
+      "name": "research_harness",
+      "relative_path": "archive/inputs/research_harnesses/physmath-research-harness-gpt56.zip",
+      "sha256": "9adde688f8020e7feb2c1c0304b3204dbe70dd01e2d87e64a5c4eb357c019934"
+    }
+  ],
+  "schema": "PR04C3_COMMON_INTERFACE_LEDGER_V1",
+  "snapshots": [
+    {
+      "epsilon": 0.0,
+      "metrics": [
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "photon_number_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 2.5609198306764287e-14
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "transported_face_energy_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 8.035044203521756e-28,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "interface_atom_source",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "backward_error_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 1.3200190226745005e-17
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-08,
+          "name": "jvp_relative_error",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-08,
+          "unit": "1",
+          "value": 1.1797351498685002e-09
+        },
+        {
+          "criterion": "gt",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "minimum_occupation",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5.2561436793919615e-18,
+          "unit": "1",
+          "value": 5.2561436793919615e-18
+        },
+        {
+          "criterion": "le",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "collision_entropy_production",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0256363871465551e-25,
+          "unit": "arb/s",
+          "value": -1.0256363871465551e-25
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "restart_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "v056_replay_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "source_derived",
+          "limit": 1.0,
+          "name": "branch_zero_localized",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_matrix_relative_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 2.684710372049196e-15
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_direct_source_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 5.992569080592024e-16
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_schur_direct_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 7.990092107456029e-16
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 2e-11,
+          "name": "native_collision_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 2e-11,
+          "unit": "1",
+          "value": 2.2075254347349184e-12
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 3e-11,
+          "name": "native_structural_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 3e-11,
+          "unit": "1",
+          "value": 2.0517225706554158e-11
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-11,
+          "name": "native_moment_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-11,
+          "unit": "1",
+          "value": 9.509636605468367e-14
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-07,
+          "name": "native_edge_jvp_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-07,
+          "unit": "1",
+          "value": 8.097502477006924e-09
+        }
+      ],
+      "packets": [
+        {
+          "direction": "com_to_native",
+          "history_index_left": 3159,
+          "history_index_right": 3160,
+          "interface_frequency_Hz": 2464700572387794.0,
+          "interface_x": -21.25,
+          "n_H_m3": 412793660.3935455,
+          "packet_id": "z1300-red-0fded4950ce2",
+          "packet_sha256": "0fded4950ce2e6709a7b8434ed0883f60c577da570be0e222b4e5c06f52f4aa8",
+          "side": "red",
+          "snapshot_z": 1299.9971824762927,
+          "solved_history_index": 3161,
+          "target_z": 1300.0
+        },
+        {
+          "direction": "native_to_com",
+          "history_index_left": 3160,
+          "history_index_right": 3161,
+          "interface_frequency_Hz": 2467375842523212.5,
+          "interface_x": 21.25,
+          "n_H_m3": 412793660.3935455,
+          "packet_id": "z1300-blue-ab48cc8a666a",
+          "packet_sha256": "ab48cc8a666a86f4a0e004a8803234dfb3263d55fb3916a8aa83f90cc720d0db",
+          "side": "blue",
+          "snapshot_z": 1299.9971824762927,
+          "solved_history_index": 3161,
+          "target_z": 1300.0
+        }
+      ],
+      "passed": true,
+      "provenance": [
+        {
+          "evidence_class": "source_derived",
+          "name": "source_snapshot_z1300",
+          "relative_path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/pr04c_z1300.csv",
+          "sha256": "1148023608df70056385fe15aba8508f6fb5cdce5dfba547f8bb30627ad9e88a"
+        },
+        {
+          "evidence_class": "solver_derived",
+          "name": "v056_coupled_state_z1300",
+          "relative_path": "data/pr04c_coupled_interface_v056.npz",
+          "sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6"
+        }
+      ],
+      "q_activity": 1.0,
+      "snapshot_z": 1299.9971824762927,
+      "state_classification": "operator_verification",
+      "target_z": 1300.0
+    },
+    {
+      "epsilon": 0.0,
+      "metrics": [
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "photon_number_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 1.3842809895548262e-16
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "transported_face_energy_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 2.3466381075203072e-28,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "interface_atom_source",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "backward_error_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 1.3191964236269897e-17
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-08,
+          "name": "jvp_relative_error",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-08,
+          "unit": "1",
+          "value": 1.090767660314527e-09
+        },
+        {
+          "criterion": "gt",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "minimum_occupation",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 7.154911099876927e-18,
+          "unit": "1",
+          "value": 7.154911099876927e-18
+        },
+        {
+          "criterion": "le",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "collision_entropy_production",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 2.163963442910934e-27,
+          "unit": "arb/s",
+          "value": -2.163963442910934e-27
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "restart_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "v056_replay_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "source_derived",
+          "limit": 1.0,
+          "name": "branch_zero_localized",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_matrix_relative_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 2.1714866434858067e-14
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_direct_source_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 3.5248307871551763e-15
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_schur_direct_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 1.1881452091534302e-15
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 2e-11,
+          "name": "native_collision_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 2e-11,
+          "unit": "1",
+          "value": 8.57815596440939e-12
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 3e-11,
+          "name": "native_structural_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 3e-11,
+          "unit": "1",
+          "value": 5.971386931969449e-12
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-11,
+          "name": "native_moment_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-11,
+          "unit": "1",
+          "value": 1.2501468500308307e-13
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-07,
+          "name": "native_edge_jvp_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-07,
+          "unit": "1",
+          "value": 2.442201136481163e-09
+        }
+      ],
+      "packets": [
+        {
+          "direction": "com_to_native",
+          "history_index_left": 5126,
+          "history_index_right": 5127,
+          "interface_frequency_Hz": 2464807680554429.5,
+          "interface_x": -21.25,
+          "n_H_m3": 250186754.37302318,
+          "packet_id": "z1100-red-bc94ca0bf6c4",
+          "packet_sha256": "bc94ca0bf6c4eb30af38492aef5eccc80c34e4cd5aacecf8facb2041ac58adbc",
+          "side": "red",
+          "snapshot_z": 1099.9986525171403,
+          "solved_history_index": 5127,
+          "target_z": 1100.0
+        },
+        {
+          "direction": "native_to_com",
+          "history_index_left": 5126,
+          "history_index_right": 5127,
+          "interface_frequency_Hz": 2467268734356577.0,
+          "interface_x": 21.25,
+          "n_H_m3": 250186754.37302318,
+          "packet_id": "z1100-blue-8af6ff1fa54f",
+          "packet_sha256": "8af6ff1fa54f07f2c17a88119f15c1cdcaa801d73bac26ea757e47cd1025bbb5",
+          "side": "blue",
+          "snapshot_z": 1099.9986525171403,
+          "solved_history_index": 5127,
+          "target_z": 1100.0
+        }
+      ],
+      "passed": true,
+      "provenance": [
+        {
+          "evidence_class": "source_derived",
+          "name": "source_snapshot_z1100",
+          "relative_path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/pr04c_z1100.csv",
+          "sha256": "147ba6e6cfdae9c06530a0983161e769198b3bb5ad56c0c4d820b0a3f5d3e7b5"
+        },
+        {
+          "evidence_class": "solver_derived",
+          "name": "v056_coupled_state_z1100",
+          "relative_path": "data/pr04c_coupled_interface_v056.npz",
+          "sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6"
+        }
+      ],
+      "q_activity": 1.0,
+      "snapshot_z": 1099.9986525171403,
+      "state_classification": "operator_verification",
+      "target_z": 1100.0
+    },
+    {
+      "epsilon": 0.0,
+      "metrics": [
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "photon_number_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 0.0
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "transported_face_energy_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 3.148403681605411e-29,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "exact_zero",
+          "evidence_class": "algebraic",
+          "limit": 0.0,
+          "name": "interface_atom_source",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "J/H",
+          "value": 0.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-11,
+          "name": "backward_error_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-11,
+          "unit": "1",
+          "value": 1.3191911130968129e-17
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-08,
+          "name": "jvp_relative_error",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-08,
+          "unit": "1",
+          "value": 1.26832969415376e-09
+        },
+        {
+          "criterion": "gt",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "minimum_occupation",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 7.24456122449734e-18,
+          "unit": "1",
+          "value": 7.24456122449734e-18
+        },
+        {
+          "criterion": "le",
+          "evidence_class": "solver_derived",
+          "limit": 0.0,
+          "name": "collision_entropy_production",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 4.657845748059254e-30,
+          "unit": "arb/s",
+          "value": -4.657845748059254e-30
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "restart_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "solver_derived",
+          "limit": 1.0,
+          "name": "v056_replay_exact",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "exact_one",
+          "evidence_class": "source_derived",
+          "limit": 1.0,
+          "name": "branch_zero_localized",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1.0,
+          "unit": "bool",
+          "value": 1.0
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_matrix_relative_residual",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 3.599684962088726e-14
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_direct_source_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 1.4020147467118682e-15
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-13,
+          "name": "native_schur_direct_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-13,
+          "unit": "1",
+          "value": 9.692941458748719e-16
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 2e-11,
+          "name": "native_collision_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 2e-11,
+          "unit": "1",
+          "value": 1.1379181103062197e-12
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "source_derived",
+          "limit": 3e-11,
+          "name": "native_structural_flux_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 3e-11,
+          "unit": "1",
+          "value": 1.2268116485600865e-11
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 5e-11,
+          "name": "native_moment_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 5e-11,
+          "unit": "1",
+          "value": 4.164893427891412e-13
+        },
+        {
+          "criterion": "abs_le",
+          "evidence_class": "solver_derived",
+          "limit": 1e-07,
+          "name": "native_edge_jvp_relative",
+          "normalized_violation": 0.0,
+          "passed": true,
+          "scale": 1e-07,
+          "unit": "1",
+          "value": 1.3371734669881895e-09
+        }
+      ],
+      "packets": [
+        {
+          "direction": "com_to_native",
+          "history_index_left": 7487,
+          "history_index_right": 7488,
+          "interface_frequency_Hz": 2464925120684537.0,
+          "interface_x": -21.25,
+          "n_H_m3": 137120617.26437098,
+          "packet_id": "z900-red-f6cd1d1c2f6b",
+          "packet_sha256": "f6cd1d1c2f6be02b1ab34f6f11df1e671289c745e80e4027a9f13c0e088aff0c",
+          "side": "red",
+          "snapshot_z": 900.0168986313175,
+          "solved_history_index": 7488,
+          "target_z": 900.0
+        },
+        {
+          "direction": "native_to_com",
+          "history_index_left": 7486,
+          "history_index_right": 7487,
+          "interface_frequency_Hz": 2467151294226469.5,
+          "interface_x": 21.25,
+          "n_H_m3": 137120617.26437098,
+          "packet_id": "z900-blue-311580859830",
+          "packet_sha256": "311580859830e4d3611d303f2adbc143097138f2338a1740f4034b5ad3c4a5d5",
+          "side": "blue",
+          "snapshot_z": 900.0168986313175,
+          "solved_history_index": 7488,
+          "target_z": 900.0
+        }
+      ],
+      "passed": true,
+      "provenance": [
+        {
+          "evidence_class": "source_derived",
+          "name": "source_snapshot_z900",
+          "relative_path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/pr04c_z900.csv",
+          "sha256": "5108f863d9203b096b4ef638a3d685edfdd3607abce4365b10f90f7e0a4d134e"
+        },
+        {
+          "evidence_class": "solver_derived",
+          "name": "v056_coupled_state_z900",
+          "relative_path": "data/pr04c_coupled_interface_v056.npz",
+          "sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6"
+        }
+      ],
+      "q_activity": 1.0,
+      "snapshot_z": 900.0168986313175,
+      "state_classification": "operator_verification",
+      "target_z": 900.0
+    }
+  ],
+  "state_classification": "operator_verification"
+}
