@@ -1,63 +1,35 @@
 {
   "classification": "REMOTE_REPOSITORY_CHECK_READ_ONLY_CONNECTOR",
-  "checked_at_utc": "2026-08-06T06:01:41.040268+00:00",
+  "checked_at_utc": "2026-08-06T08:16:43.580279+00:00",
   "repository": "cosmosapjw-quantum/rec_bianchi",
-  "connector": "GitHub read-only managed connector",
+  "connector": "managed GitHub connector",
   "remote": {
     "accessible": true,
+    "private": true,
     "default_branch": "main",
-    "main_sha": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
-    "main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
-    "latest_merge": "PR #13 v0.54 PR04B2B native/common partition no-go",
-    "content_stage": "v0.54 plus remote CI/toolchain overlay",
-    "private": true
+    "main_sha": "47106fec89c176c3f3b91ed7e4ff198dea323968",
+    "main_tree": "b1cc9c0959bd89418a4f24a51959c44bb163fe88",
+    "latest_merge": "PR #14 v0.55 PR04C0/C1A split-domain boundary",
+    "pr_head_sha": "2b4419939b4a07920f0548f6cc22210e643505f4",
+    "content_stage": "v0.55 plus shared compiler-dependent binary-hash gate",
+    "open_pull_requests_reported_by_owner": 0,
+    "ci_reported_by_owner": "SUCCESS"
   },
-  "local_worktree_at_check": {
-    "path": "/mnt/data/rec_bianchi_pr04c_v055_work",
-    "branch": "work/pr04c-split-domain-v055",
-    "head": "2c55c38edd2f6364b620c53c2e280111a9a660af",
-    "tree": "69fa21587905ee8fad2521b721d16c1f7d4d410e",
+  "local_payload_at_check": {
+    "path": "/mnt/data/rec_bianchi_v056_work",
+    "branch": "work/pr04c1b-c2-v056",
+    "head": "8dc5ddf7d207e36d63792d9e65d306aba4d2d2ad",
+    "tree": "acccdf86eb922d0d703ee4cd5151c4979c03604a",
     "dirty": true,
-    "dirty_paths": [
-      "HANDOFF_PROMPT.md",
-      "README.md",
-      "archive/bundles/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55.zip",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/CANONICAL_STDERR.log",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/GUARD_OFF_STDERR.log",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/GUARD_ON_STDERR.log",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/MANIFEST_SHA256.txt",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/ORIGINAL_HYREC_PR04C_SOURCE.diff",
-      "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/PR04C0C1A_ledger.json",
-      "docs/ARTIFACT_INDEX.md",
-      "docs/CURRENT_STATE.md",
-      "docs/HANDOFF_PROMPT.md",
-      "docs/ROADMAP_12PR.md",
-      "scripts/c_harness/instrument_original_hyrec_pr04c.py",
-      "scripts/run_pr04c0c1a_split_domain_stage.py",
-      "state/BUNDLE_INDEX.json",
-      "state/PR04C0C1A_TDD_RED.log",
-      "state/PROJECT_STATE.json",
-      "state/REMOTE_CHECK_LATEST.json",
-      "state/SUPERSESSION_LEDGER.json"
-    ],
-    "configured_origin": "/mnt/data/rec_bianchi_v054_full.bundle"
+    "dirty_reason": "receipt and patch-base metadata prepared after payload commit"
   },
   "comparison": {
-    "remote_tree_matches_exact_local_v054_tree": false,
-    "exact_local_v054_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
-    "exact_local_v054_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140",
-    "reason": "Remote main contains the v0.54 payload plus GitHub-side CI/toolchain overlay. v0.55 was developed from the exact durable author bundle and must be applied to fetched remote main on a feature branch."
+    "remote_tree_matches_local_author_tree": false,
+    "local_equivalent_shared_gate_commit": "c5f6de7baaa15e06bb05a917964b31569c5e23d2",
+    "reason": "PR #14 preserves GitHub-side CI/toolchain overlays absent from the exact author lineage. Feature commits are delivered separately for cherry-pick onto remote main."
   },
   "write_status": {
-    "connector_write_action_exposed": false,
     "push_or_pr_claimed": false,
-    "owner_policy": "LOCAL_FETCH_APPLY_VERIFY_PUSH_PR_NO_FORCE_PUSH"
-  },
-  "local_payload_at_seal": {
-    "branch": "work/pr04c-split-domain-v055",
-    "head": "5f438aa16cfcf477bbff09f0e6a0e720bed82e24",
-    "tree": "9dfcd080daaf721c1d3b5370614a263bf0fc0d7c",
-    "dirty": false,
-    "note": "Final receipt-only seal commit follows; external receipt records exact final HEAD/tree."
+    "owner_policy": "FETCH_BUNDLE_CHERRY_PICK_VERIFY_PUSH_PR_NO_FORCE_PUSH"
   }
 }

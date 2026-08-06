@@ -1,0 +1,201 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_backup_branch_and_pr_title_are_not_pinned_to_historical_v045 _______
+
+    def test_backup_branch_and_pr_title_are_not_pinned_to_historical_v045() -> None:
+        text = SCRIPT.read_text()
+>       assert "v045" not in text.lower()
+E       assert 'v045' not in '#!/usr/bin/...ceipt.json\n'
+E         
+E         'v045' is contained here:
+E           chi-hyrec-v045-20260804"
+E         ?           ++++
+E           
+E           if [[ -n "$(git status --porcelain)" ]]; then
+E             echo "refusing to push a dirty working tree." >&2
+E             exit 2
+E           fi
+E           
+E           # this repository contains unpublished work. abort on a public target unless
+E           # the owner has made an explicit publication decision.
+E           if command -v gh >/dev/null 2>&1; then
+E             visibility=$(gh repo view "$repo_slug" --json visibility -q .visibility 2>/dev/null || true)
+E             if [[ "$visibility" == "public" && "${allow_public_push:-}" != "yes" ]]; then
+E               echo "repository is public. set allow_public_push=yes only after an explicit publication decision." >&2
+E               exit 3
+E             fi
+E           fi
+E           
+E           cleanup() {
+E             [[ -n "${askpass_file:-}" && -f "${askpass_file:-}" ]] && rm -f "$askpass_file"
+E           }
+E           trap cleanup exit
+E           
+E           if command -v ssh >/dev/null 2>&1; then
+E             remote="$remote_ssh"
+E             export git_terminal_prompt=0
+E           elif [[ -n "${github_rec_bianchi_token:-}" ]]; then
+E             remote="$remote_https"
+E             askpass_file=$(mktemp)
+E             cat > "$askpass_file" <<'askpass'
+E           #!/usr/bin/env bash
+E           case "$1" in
+E             *username*) printf '%s\n' 'x-access-token' ;;
+E             *password*) printf '%s\n' "$github_rec_bianchi_token" ;;
+E             *) printf '\n' ;;
+E           esac
+E           askpass
+E             chmod 700 "$askpass_file"
+E             export git_askpass="$askpass_file"
+E             export git_terminal_prompt=0
+E           else
+E             cat >&2 <<'eof'
+E           no usable github authentication transport is available.
+E           
+E           preferred: install/use openssh with the existing cosmosapjw-quantum ssh key.
+E           fallback: export a repository-scoped fine-grained token as
+E             github_rec_bianchi_token
+E           the token is read only through a temporary git_askpass file and is never
+E           written to git config, the remote url, or the repository.
+E           eof
+E             exit 4
+E           fi
+E           
+E           git remote get-url origin >/dev/null 2>&1 && git remote set-url origin "$remote" || git remote add origin "$remote"
+E           git ls-remote origin >/dev/null
+E           remote_main=$(git ls-remote --heads origin refs/heads/main | awk '{print $1}')
+E           
+E           if [[ -z "$remote_main" ]]; then
+E             git push -u origin main --follow-tags
+E             pushed_ref=refs/heads/main
+E           else
+E             git fetch origin main
+E             if git merge-base --is-ancestor origin/main main; then
+E               git push -u origin main --follow-tags
+E               pushed_ref=refs/heads/main
+E             else
+E               git branch -f "$backup_branch" main
+E               git push -u origin "$backup_branch" --follow-tags
+E               pushed_ref=refs/heads/$backup_branch
+E               if command -v gh >/dev/null 2>&1; then
+E                 gh pr create --repo "$repo_slug" --base main --head "$backup_branch" \
+E                   --title "backup full bianchi-hyrec artifacts through v0.45" \
+E                   --body-file docs/handoff_prompt.md || true
+E               fi
+E             fi
+E           fi
+E           
+E           remote_head=$(git ls-remote origin "$pushed_ref" | awk '{print $1}')
+E           local_head=$(git rev-parse head)
+E           python - <<py2
+E           import datetime, json, pathlib
+E           path=pathlib.path('state/remote_sync_receipt.json')
+E           path.write_text(json.dumps({
+E             'verified_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+E             'remote': '$remote',
+E             'ref': '$pushed_ref',
+E             'local_head': '$local_head',
+E             'remote_head': '$remote_head',
+E             'match': '$local_head' == '$remote_head',
+E           },indent=2)+'\n')
+E           py2
+E           cat state/remote_sync_receipt.json
+
+tests/test_push_backup_policy.py:10: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_push_backup_policy.py::test_backup_branch_and_pr_title_are_not_pinned_to_historical_v045 - assert 'v045' not in '#!/usr/bin/...ceipt.json\n'
+  
+  'v045' is contained here:
+    chi-hyrec-v045-20260804"
+  ?           ++++
+    
+    if [[ -n "$(git status --porcelain)" ]]; then
+      echo "refusing to push a dirty working tree." >&2
+      exit 2
+    fi
+    
+    # this repository contains unpublished work. abort on a public target unless
+    # the owner has made an explicit publication decision.
+    if command -v gh >/dev/null 2>&1; then
+      visibility=$(gh repo view "$repo_slug" --json visibility -q .visibility 2>/dev/null || true)
+      if [[ "$visibility" == "public" && "${allow_public_push:-}" != "yes" ]]; then
+        echo "repository is public. set allow_public_push=yes only after an explicit publication decision." >&2
+        exit 3
+      fi
+    fi
+    
+    cleanup() {
+      [[ -n "${askpass_file:-}" && -f "${askpass_file:-}" ]] && rm -f "$askpass_file"
+    }
+    trap cleanup exit
+    
+    if command -v ssh >/dev/null 2>&1; then
+      remote="$remote_ssh"
+      export git_terminal_prompt=0
+    elif [[ -n "${github_rec_bianchi_token:-}" ]]; then
+      remote="$remote_https"
+      askpass_file=$(mktemp)
+      cat > "$askpass_file" <<'askpass'
+    #!/usr/bin/env bash
+    case "$1" in
+      *username*) printf '%s\n' 'x-access-token' ;;
+      *password*) printf '%s\n' "$github_rec_bianchi_token" ;;
+      *) printf '\n' ;;
+    esac
+    askpass
+      chmod 700 "$askpass_file"
+      export git_askpass="$askpass_file"
+      export git_terminal_prompt=0
+    else
+      cat >&2 <<'eof'
+    no usable github authentication transport is available.
+    
+    preferred: install/use openssh with the existing cosmosapjw-quantum ssh key.
+    fallback: export a repository-scoped fine-grained token as
+      github_rec_bianchi_token
+    the token is read only through a temporary git_askpass file and is never
+    written to git config, the remote url, or the repository.
+    eof
+      exit 4
+    fi
+    
+    git remote get-url origin >/dev/null 2>&1 && git remote set-url origin "$remote" || git remote add origin "$remote"
+    git ls-remote origin >/dev/null
+    remote_main=$(git ls-remote --heads origin refs/heads/main | awk '{print $1}')
+    
+    if [[ -z "$remote_main" ]]; then
+      git push -u origin main --follow-tags
+      pushed_ref=refs/heads/main
+    else
+      git fetch origin main
+      if git merge-base --is-ancestor origin/main main; then
+        git push -u origin main --follow-tags
+        pushed_ref=refs/heads/main
+      else
+        git branch -f "$backup_branch" main
+        git push -u origin "$backup_branch" --follow-tags
+        pushed_ref=refs/heads/$backup_branch
+        if command -v gh >/dev/null 2>&1; then
+          gh pr create --repo "$repo_slug" --base main --head "$backup_branch" \
+            --title "backup full bianchi-hyrec artifacts through v0.45" \
+            --body-file docs/handoff_prompt.md || true
+        fi
+      fi
+    fi
+    
+    remote_head=$(git ls-remote origin "$pushed_ref" | awk '{print $1}')
+    local_head=$(git rev-parse head)
+    python - <<py2
+    import datetime, json, pathlib
+    path=pathlib.path('state/remote_sync_receipt.json')
+    path.write_text(json.dumps({
+      'verified_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'remote': '$remote',
+      'ref': '$pushed_ref',
+      'local_head': '$local_head',
+      'remote_head': '$remote_head',
+      'match': '$local_head' == '$remote_head',
+    },indent=2)+'\n')
+    py2
+    cat state/remote_sync_receipt.json
+1 failed in 0.05s

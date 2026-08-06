@@ -2,11 +2,13 @@
   "classification": "CONNECTOR_VERIFIED_REMOTE_BASE",
   "reported_at": "2026-08-06",
   "repository": "cosmosapjw-quantum/rec_bianchi",
-  "remote_main_commit": "ad316eb60878ff6c92e5f2326b539ad850c62dc9",
-  "remote_main_tree": "1ec27d34c8b8d15ac56ca6efa500ce6838a3a57e",
-  "remote_content_stage": "v0.54 PR04B2B plus CI/toolchain overlay",
-  "exact_local_v054_reference_commit": "ad23cef2f5ef0fdf6e31fa907b0b174418d5b38a",
-  "exact_local_v054_reference_tree": "987e4c768f8695676d4cb065f9c59af4e7d62140",
-  "tree_relation": "REMOTE_OVERLAY_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
-  "implication": "Use the v0.55 incremental patch/mbox on a feature branch created from freshly fetched origin/main; verify conflicts and the complete scientific suite locally. Do not force-push."
+  "remote_main_commit": "47106fec89c176c3f3b91ed7e4ff198dea323968",
+  "remote_main_tree": "b1cc9c0959bd89418a4f24a51959c44bb163fe88",
+  "remote_content_stage": "v0.55 PR04C0/C1A plus shared binary-hash toolchain gate",
+  "merged_pr": 14,
+  "merged_pr_head_commit": "2b4419939b4a07920f0548f6cc22210e643505f4",
+  "exact_local_author_v055_commit": "f1ff2c827b28fac65341572f79fd8526f78db7a8",
+  "local_equivalent_gate_commit": "c5f6de7baaa15e06bb05a917964b31569c5e23d2",
+  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
+  "implication": "Export a self-contained v0.56 feature Git bundle whose ordered feature range begins after the local equivalent gate commit. The owner fetches origin/main, fetches the delivery ref, cherry-picks the ordered feature commits, and reruns all gates. Do not reset remote history to the author tree and do not force-push."
 }

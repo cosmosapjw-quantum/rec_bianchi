@@ -5,7 +5,7 @@ cd "$ROOT"
 REPO_SLUG="cosmosapjw-quantum/rec_bianchi"
 REMOTE_SSH="git@github.com:${REPO_SLUG}.git"
 REMOTE_HTTPS="https://github.com/${REPO_SLUG}.git"
-BACKUP_BRANCH="backup/full-bianchi-hyrec-v045-20260804"
+BACKUP_BRANCH="${BACKUP_BRANCH:-backup/full-bianchi-hyrec-$(date -u +%Y%m%dT%H%M%SZ)}"
 
 if [[ -n "$(git status --porcelain)" ]]; then
   echo "Refusing to push a dirty working tree." >&2
@@ -99,7 +99,7 @@ else
     pushed_ref=refs/heads/$BACKUP_BRANCH
     if command -v gh >/dev/null 2>&1; then
       gh pr create --repo "$REPO_SLUG" --base main --head "$BACKUP_BRANCH" \
-        --title "Backup Full Bianchi-HyRec artifacts through v0.45" \
+        --title "Backup Full Bianchi-HyRec current durable stage" \
         --body-file docs/HANDOFF_PROMPT.md || true
     fi
   fi

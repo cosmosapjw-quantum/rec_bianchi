@@ -263,11 +263,7 @@ def test_guarded_original_hyrec_build_is_source_identical(
             stderr=subprocess.DEVNULL,
             check=True,
         )
-    # The numerical output is the scientific guarantee, and it is portable:
-    # identical sources and input reproduce it byte for byte on any toolchain.
     assert _sha256(canonical_output) == ORIGINAL_HYREC_BASELINE_OUTPUT_SHA256
-
-    # The binary hash only means something on the toolchain that pinned it.
     if binary_hash_is_meaningful:
         assert _sha256(canonical) == ORIGINAL_HYREC_PORTABLE_BINARY_SHA256
 

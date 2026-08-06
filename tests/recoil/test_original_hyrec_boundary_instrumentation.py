@@ -214,9 +214,7 @@ def test_guarded_pr04c_build_emits_three_source_identical_boundary_snapshots(
     canonical = compile_binary("canonical", diagnostics=False)
     canonical_output = tmp_path / "canonical.out"
     execute(canonical, canonical_output)
-    # The numerical output is the scientific guarantee and is portable.
     assert _sha256(canonical_output) == ORIGINAL_HYREC_BASELINE_OUTPUT_SHA256
-    # The binary hash only means something on the toolchain that pinned it.
     if binary_hash_is_meaningful:
         assert _sha256(canonical) == ORIGINAL_HYREC_PORTABLE_BINARY_SHA256
 

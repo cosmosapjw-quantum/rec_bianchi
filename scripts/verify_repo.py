@@ -28,6 +28,13 @@ def main() -> None:
     parser.add_argument("--scientific", action="store_true")
     args = parser.parse_args()
 
+    policy = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/check_hyrec_binary_hash_policy.py")],
+        cwd=ROOT,
+    )
+    if policy.returncode:
+        raise SystemExit(policy.returncode)
+
     state = json.loads((ROOT / "state/PROJECT_STATE.json").read_text())
     current_artifact = state["current_durable_stage"]["artifact"]
     expanded = ROOT / "archive" / "expanded" / current_artifact
@@ -56,7 +63,7 @@ def main() -> None:
     current_bundle_name = f"{current_artifact}.zip"
     assert any(row["bundle"] == current_bundle_name for row in index)
     assert (ROOT / "state/PATCH_BASE.json").exists()
-    for script in ("check_remote_state.py", "export_patch_series.py"):
+    for script in ("check_remote_state.py", "export_git_bundle_delivery.py"):
         assert (ROOT / "scripts" / script).exists()
 
     # Run the current artifact's own compact verifier when present.
