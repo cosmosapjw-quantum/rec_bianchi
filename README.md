@@ -7,19 +7,20 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05A / v0.58**.
-- Primitive original-HyRec rate tables and source semantics are byte locked and
-  exposed through immutable SI-adapted schemas with analytic interpolation
-  JVPs.
-- Canonical `DAlpha` is `delta_alpha=Alpha(Tm,Tr)-Alpha(Tr,Tr)`, not a
-  derivative; cancellation-amplified raw relative values remain diagnostics.
-- Three source-conditioned lanes close Saha balance, native algebraic DAE
-  projection, M-matrix positivity evidence, COM interface-off equilibrium,
-  analytic JVP, number/energy/four-force, restart, causality and Bianchi
-  firewall gates.
-- No compressed native term has been removed. A time-dependent native/atomic
-  trajectory is not yet claimed.
-- Next stage: **PR-05B time-dependent primitive native/atomic radiation block**.
+- Durable stage: **PR-05B1 / v0.59**.
+- The canonical original-HyRec local system is now source-locked as a rank-one
+  semi-explicit DAE in `eta=ln(a)`: `x_e` is differential and the 2s/2p plus
+  311 virtual departures are algebraic.
+- Radiation time dependence is carried by causal accepted-step
+  `Dfminus`/Lyman/average-radiation histories, not by an invented local mass for
+  every virtual spike.
+- A constructive no-go shows that finite virtual-spike masses inferred from
+  centre spacing are non-unique: two admissible support choices differ by a
+  factor of two and share the zero-width algebraic limit.
+- Source residual, shifted IJacobian, positive bounded backward Euler, restart,
+  causality and Bianchi firewall gates pass at `z~1300,1100,900`.
+- No compressed native term has been removed. PR-05 remains in progress.
+- Next stage: **PR-05B2 source-identical causal characteristic-history block**.
 
 Start with:
 
@@ -34,7 +35,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05B_TIME_DEPENDENT_NATIVE_BLOCK_PLAN.md`](docs/PR05B_TIME_DEPENDENT_NATIVE_BLOCK_PLAN.md).
+[`docs/PR05B2_CAUSAL_HISTORY_BLOCK_PLAN.md`](docs/PR05B2_CAUSAL_HISTORY_BLOCK_PLAN.md).
 
 ## Canonical source
 
@@ -55,10 +56,10 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #16 at
-`5fb7aec1cf1cfcd65e40ffeb097c8c1237cfe19c`, tree
-`0638ad71941c258a90375148674264de5ff14608`; the PR-head CI completed
-successfully. v0.58 was developed on the exact author v0.57 lineage, so exact
+GitHub `main` contains merged PR #17 at
+`29e4e8e22a5bf5efaf5d8e43c490ae16bf057440`, tree
+`4a409c18f57c25c744722d70f46a26225ecfac4a`; PR-head CI run 55 completed
+successfully. v0.59 is developed on the exact author v0.58 lineage, so exact
 remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
@@ -71,5 +72,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.58 regeneration: `python scripts/run_pr05a_primitive_trajectory_stage.py`.
+- v0.59 regeneration: `python scripts/run_pr05b1_source_identifiable_dae_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.

@@ -1,0 +1,65 @@
+[
+  {
+    "local_mass_value": 1,
+    "name": "free_electron_fraction",
+    "role": "differential",
+    "size": 1,
+    "source_evidence": "hydrogen.c:769-775 and technical supplement Eq. (10)",
+    "source_owner": "rec_HMLA_2photon_dxHIIdlna",
+    "unit": "dimensionless; derivative with respect to eta=ln(a)"
+  },
+  {
+    "local_mass_value": 0,
+    "name": "real_departures_2s_2p",
+    "role": "algebraic",
+    "size": 2,
+    "source_evidence": "hydrogen.c:565-625; HyRec steady-state excited-level approximation",
+    "source_owner": "solve_real_virt",
+    "unit": "dimensionless abundance departure"
+  },
+  {
+    "local_mass_value": 0,
+    "name": "virtual_departures",
+    "role": "algebraic",
+    "size": 311,
+    "source_evidence": "hydrogen.c:616-619; zero-width virtual-spike steady-state equation",
+    "source_owner": "solve_real_virt",
+    "unit": "dimensionless x_1s Delta f_nu"
+  },
+  {
+    "local_mass_value": "OUTSIDE_LOCAL_MASS_MATRIX",
+    "name": "outgoing_virtual_history",
+    "role": "accepted_step_memory",
+    "size": 311,
+    "source_evidence": "hydrogen.c:657-718 and 777-792",
+    "source_owner": "Dfminus_hist",
+    "unit": "dimensionless photon occupation departure"
+  },
+  {
+    "local_mass_value": "OUTSIDE_LOCAL_MASS_MATRIX",
+    "name": "outgoing_lyman_history",
+    "role": "accepted_step_memory",
+    "size": 3,
+    "source_evidence": "hydrogen.c:660-661 and 794-796",
+    "source_owner": "Dfminus_Ly_hist",
+    "unit": "dimensionless photon occupation departure"
+  },
+  {
+    "local_mass_value": "OUTSIDE_LOCAL_MASS_MATRIX",
+    "name": "average_virtual_history",
+    "role": "accepted_step_memory",
+    "size": 311,
+    "source_evidence": "hydrogen.c:727 and 798-799",
+    "source_owner": "Dfnu_hist",
+    "unit": "dimensionless photon occupation departure"
+  },
+  {
+    "local_mass_value": "OUTSIDE_LOCAL_MASS_MATRIX",
+    "name": "background_snapshot",
+    "role": "external",
+    "size": 1,
+    "source_evidence": "PR-01C/PR-05A BackgroundSnapshot firewall",
+    "source_owner": "host_background_solver",
+    "unit": "typed SI/tetrad snapshot"
+  }
+]

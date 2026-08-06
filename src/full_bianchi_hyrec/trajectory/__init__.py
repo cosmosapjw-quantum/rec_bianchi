@@ -20,6 +20,21 @@ from .primitive_trajectory import (
     RadiationFeedback,
     TrajectoryStepLedger,
 )
+from .time_dependent_native import (
+    CausalRadiationHistoryState,
+    NativeRadiationTimeMeasureAudit,
+    NativeRadiationTimeMeasureNotIdentifiable,
+    OriginalHyRecStateBlock,
+    OriginalHyRecStateLayout,
+    OriginalHyRecStateRole,
+    ReplacementAudit,
+    ReplacementRegistry,
+    ReplacementTerm,
+    SourceIdentifiableOriginalHyRecDAE,
+    audit_canonical_native_radiation_time_measure,
+    default_pr05b1_replacement_registry,
+    source_identifiable_original_hyrec_layout,
+)
 
 __all__ = [
     "ALPHA_TABLE_SHA256",
@@ -32,4 +47,17 @@ __all__ = [
     "PrimitiveTrajectoryProblem",
     "RadiationFeedback",
     "TrajectoryStepLedger",
+    "CausalRadiationHistoryState",
+    "NativeRadiationTimeMeasureAudit",
+    "NativeRadiationTimeMeasureNotIdentifiable",
+    "OriginalHyRecStateBlock",
+    "OriginalHyRecStateLayout",
+    "OriginalHyRecStateRole",
+    "ReplacementAudit",
+    "ReplacementRegistry",
+    "ReplacementTerm",
+    "SourceIdentifiableOriginalHyRecDAE",
+    "audit_canonical_native_radiation_time_measure",
+    "default_pr05b1_replacement_registry",
+    "source_identifiable_original_hyrec_layout",
 ]
