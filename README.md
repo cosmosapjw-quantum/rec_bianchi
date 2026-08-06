@@ -7,20 +7,20 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05B1 / v0.59**.
-- The canonical original-HyRec local system is now source-locked as a rank-one
-  semi-explicit DAE in `eta=ln(a)`: `x_e` is differential and the 2s/2p plus
-  311 virtual departures are algebraic.
-- Radiation time dependence is carried by causal accepted-step
-  `Dfminus`/Lyman/average-radiation histories, not by an invented local mass for
-  every virtual spike.
-- A constructive no-go shows that finite virtual-spike masses inferred from
-  centre spacing are non-unique: two admissible support choices differ by a
-  factor of two and share the zero-width algebraic limit.
-- Source residual, shifted IJacobian, positive bounded backward Euler, restart,
-  causality and Bianchi firewall gates pass at `z~1300,1100,900`.
-- No compressed native term has been removed. PR-05 remains in progress.
-- Next stage: **PR-05B2 source-identical causal characteristic-history block**.
+- Durable stage: **PR-05B2 / v0.60**.
+- The canonical October-2012 original-HyRec accepted radiation history is now
+  source-locked as an immutable `eta=ln(a)` state with 7,489 accepted slices.
+- Exactly 313 characteristic queries per snapshot reproduce
+  `hydrogen.c::fplus_from_fminus` at `z~1300,1100,900`.
+- Append/reject/rollback/restart are transaction-safe; future endpoints and
+  discrete stencil switches fail closed.
+- Analytic history JVP, source algebraic/electron/outgoing parity, photon-number
+  and redshift-energy-work ledgers, and the Bianchi local-state firewall pass.
+- The scalar history replacement contract is complete, but no owner has yet
+  been swapped and Sobolev/`A1s`/`Tvv` terms remain canonical. PR-05 remains in
+  progress.
+- Next stage: **PR-05B3 scalar history ownership swap and coupled accepted-step
+  residual**.
 
 Start with:
 
@@ -35,7 +35,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05B2_CAUSAL_HISTORY_BLOCK_PLAN.md`](docs/PR05B2_CAUSAL_HISTORY_BLOCK_PLAN.md).
+[`docs/PR05B3_ATOMIC_OWNERSHIP_SWAP_PLAN.md`](docs/PR05B3_ATOMIC_OWNERSHIP_SWAP_PLAN.md).
 
 ## Canonical source
 
@@ -56,15 +56,15 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #17 at
-`29e4e8e22a5bf5efaf5d8e43c490ae16bf057440`, tree
-`4a409c18f57c25c744722d70f46a26225ecfac4a`; PR-head CI run 55 completed
-successfully. v0.59 is developed on the exact author v0.58 lineage, so exact
+GitHub `main` contains merged PR #18 at
+`27a4e097baf83fbca2b1befd5b780edbf460f020`, tree
+`5ee5af26f21f25a7878d308acf4934f4f99598a1`; PR-head CI run 57 completed
+successfully. v0.60 is developed on the exact author v0.59 lineage, so exact
 remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
 commit receipt, plus a full recovery Git bundle. Create a branch from fresh
-`origin/main`, cherry-pick only the receipt-listed feature commits, rerun all
+`origin/main`, cherry-pick only the receipt-listed v0.60 commits, rerun all
 gates, and never rewrite shared history.
 
 ## Test tiers
@@ -72,5 +72,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.59 regeneration: `python scripts/run_pr05b1_source_identifiable_dae_stage.py`.
+- v0.60 regeneration: `python scripts/run_pr05b2_causal_history_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
