@@ -1,0 +1,184 @@
+===== interp_Dfnu: hydrogen.c:627-654 =====
+/*********************************************************************************************
+Interpolation of the photon distortion used to get f+ from f- at a higher frequency bin and earlier time. 
+Use a simple linear interpolation so the spectrum is always positive.
+Added May 2012
+*********************************************************************************************/
+
+double interp_Dfnu(double lna_start, double dlna, double *ytab, unsigned int iz, double lna){  
+   long ind;
+   double frac;
+
+   /* If iz = 0 or 1, radiation field at earlier times is still thermal. 
+      Also thermal if iz > 1 and lna < lna_start. */
+   if (iz == 0 || iz == 1 || lna < lna_start) return 0.;
+   
+   /* Check if in range */
+   if (lna >= lna_start + dlna*(iz-1)) {
+       fprintf(stderr, "Error in interp_Dfnu: lna-value out of range in interpolation routine\n"); 
+       fprintf(stderr, "The time-step used is probably too large\n");
+       exit(1);
+    }
+ 
+    /* If iz >= 2, do a linear interpolation so the spectrum is always positive */
+    ind  = (long) floor((lna-lna_start)/dlna);
+    frac = (lna-lna_start)/dlna - ind;
+    
+    return (1.-frac)*ytab[ind] + frac*ytab[ind+1];  
+
+}  
+
+===== fplus_from_fminus: hydrogen.c:656-718 =====
+/*************************************************************************************************************
+Obtain fplus at each bin, given the history of fminus (simple free-streaming). iz is the current time step.
+fminus[0..iz-1] is known.
+Assume the Lyman lines are optically thick
+Dfminus_hist is a NVIRT by nz array of previous Delta f(nu_b - epsilon)(z)
+Dfminus_Ly_hist is a 3 by nz array of previous Deltaf(nu - epsilon) redward of Ly alpha, beta and gamma lines
+
+Changed May 2012: Now using the interpolation function interp_Dfnu, which only interpolates 
+                    over 2 nearest neighbors, which ensures that the distortion is always positive
+*************************************************************************************************************/
+
+void fplus_from_fminus(double Dfplus[NVIRT], double Dfplus_Ly[], double **Dfminus_hist, double *Dfminus_Ly_hist[], 
+                       double TR, double zstart, unsigned iz, double z, double Eb_tab[NVIRT]) {
+   unsigned b;
+   double ainv, lna_start, zp1;
+  
+   zp1 = 1.+z;
+   lna_start = -log(1.+zstart);
+
+   /*** Bins below Lyman alpha ***/
+   for (b = 0; b < NSUBLYA-1; b++) {
+      ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+      Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+ 
+   /*** highest bin below Ly-alpha: feedback from optically thick Ly-alpha ***/
+   b = NSUBLYA-1; 
+   ainv = zp1*E21/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[0], iz, -log(ainv));
+      
+   /*** incoming photon occupation number at Lyman alpha ***/ 
+   b = NSUBLYA;     /* next highest bin */
+   ainv = zp1*Eb_tab[b]/E21;
+   Dfplus_Ly[0] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b], iz, -log(ainv)); 
+   
+   /*** Bins between Lyman alpha and beta ***/   
+   for (b = NSUBLYA; b < NSUBLYB-1; b++) {
+     ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+     Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+   
+   /*** highest bin below Ly-beta: feedback from Ly-beta ***/
+   b = NSUBLYB-1; 
+   ainv = zp1*E31/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[1], iz, -log(ainv));
+   
+   /*** incoming photon occupation number at Lyman beta ***/ 
+   b = NSUBLYB;     /* next highest bin */
+   ainv = zp1*Eb_tab[b]/E31;
+   Dfplus_Ly[1] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b], iz, -log(ainv)); 
+  
+   /*** Bins between Lyman beta and gamma ***/   
+   for (b = NSUBLYB; b < NVIRT-1; b++) {
+     ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+     Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+
+   /*** highest energy bin: feedback from Ly-gamma ***/
+   b = NVIRT-1;
+   ainv = zp1*E41/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[2], iz, -log(ainv));
+             
+}
+
+===== accepted_step_residual: hydrogen.c:720-776 =====
+/******************************************************************************************************************
+dxe/dlna when including two-photon processes. 
+Assume fminus[0..iz-1] is known. Update fminus[iz]
+
+Modified May 2012: 
+- now use the photon distortion instead of absolute photon occupation number
+- Accounts for explicit dependence on alpha_fs and m_e
+- Added Dfnu_hist as a variable. Will contain the *average* distortion within each bin
+******************************************************************************************************************/
+
+double rec_HMLA_2photon_dxHIIdlna(double xe, double xHII, double nH, double H, double TM, double TR, 
+                                  HRATEEFF *rate_table, TWO_PHOTON_PARAMS *twog,  
+                                  double **Dfminus_hist, double *Dfminus_Ly_hist[], double **Dfnu_hist,
+                                  double zstart, unsigned iz, double z, double fsR, double meR){
+   
+   double xr[2], xv[NVIRT], Dfplus[NVIRT], Dfplus_Ly[2]; /* Assume incoming radiation blueward of Ly-gamma is Blackbody */
+   double dxedlna, one_minus_Pib, one_minus_exptau, Dfeq, s, x1s, Dxe2;
+   unsigned b, i;
+   
+   double Trr[2][2];
+   double *Trv[2];
+   double *Tvr[2];
+   double *Tvv[3];
+   double sr[2];
+   double sv[NVIRT];
+   double Dtau[NVIRT]; 
+   double Alpha[2], DAlpha[2], Beta[2];
+   double ratio;
+
+   ratio = TM/TR;
+   rescale_T(&TR, fsR, meR);
+   TM = ratio * TR;   /* This way ensure that TM<=TR is preserved */   
+     
+   
+   for (i = 0; i < 2; i++) Trv[i] = create_1D_array(NVIRT);
+   for (i = 0; i < 2; i++) Tvr[i] = create_1D_array(NVIRT);
+   for (i = 0; i < 3; i++) Tvv[i] = create_1D_array(NVIRT); 
+
+   /* Redshift photon occupation number from previous times and higher energy bins */
+   fplus_from_fminus(Dfplus, Dfplus_Ly, Dfminus_hist, Dfminus_Ly_hist, TR, zstart, iz, z, twog->Eb_tab);
+  
+   /* Compute real-real, real-virtual and virtual-virtual transition rates */
+   populateTS_2photon(Trr, Trv, Tvr, Tvv, sr, sv, Dtau, xe, xHII, TM, TR, nH, H, rate_table, 
+                      twog, Dfplus, Dfplus_Ly, Alpha, DAlpha, Beta, fsR, meR);
+    
+   /* Solve for the population of the real and virtual states 
+      (in fact, for the difference xi - xi[eq with 1s]) */   
+   solve_real_virt(xr, xv, Trr, Trv, Tvr, Tvv, sr, sv);
+
+   /* Obtain xe_dot */
+   x1s  = 1.-xHII;
+   s    = SAHA_FACT(fsR, meR) *TR*sqrt(TR) *exp(-EI/TR)/nH;
+   Dxe2 = xe*xHII - s*x1s; 
+
+   dxedlna = -(nH *(s*x1s*DAlpha[0] + Alpha[0]*Dxe2) - xr[0]*Beta[0] 
+              +nH *(s*x1s*DAlpha[1] + Alpha[1]*Dxe2) - xr[1]*Beta[1])/H; 
+    
+
+===== accepted_step_append: hydrogen.c:777-805 =====
+   /* Update fminuses */
+ 
+   for (b = 0; b < NVIRT; b++) {
+     if (Dtau[b] > 1e-30) {
+         one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
+         Dfeq  = -xr[0]*Tvr[0][b] - xr[1]*Tvr[1][b];
+         Dfeq -=  (b == 0       ?  xv[1]*Tvv[2][0]:
+                   b == NVIRT-1 ?  xv[NVIRT-2]*Tvv[1][NVIRT-1]:    
+                   xv[b+1]*Tvv[2][b] + xv[b-1]*Tvv[1][b]);        
+         Dfeq /= x1s*one_minus_Pib*Tvv[0][b];
+         one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;               
+                                
+         Dfminus_hist[b][iz] = Dfplus[b] + (Dfeq - Dfplus[b])*one_minus_exptau;
+     }
+     else Dfminus_hist[b][iz] = Dfplus[b];
+   }
+    
+   Dfminus_Ly_hist[0][iz] = xr[1]/3./x1s;    
+   Dfminus_Ly_hist[1][iz] = xr[0]/x1s*exp(-E32/TR); 
+   Dfminus_Ly_hist[2][iz] = xr[0]/x1s*exp(-E42/TR); 
+   
+   /* Average radiation field in each bin */
+   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;   
+
+   for (i = 0; i < 2; i++) free(Trv[i]);
+   for (i = 0; i < 2; i++) free(Tvr[i]);
+   for (i = 0; i < 3; i++) free(Tvv[i]);
+
+   return dxedlna;
