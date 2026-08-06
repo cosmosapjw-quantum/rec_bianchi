@@ -1,0 +1,144 @@
+{
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_RECEIPT",
+  "stage": "PR-04C3",
+  "version": "0.57",
+  "date": "2026-08-06",
+  "feature_exclusive_base_commit": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+  "remote_at_recovery": {
+    "main_commit": "ecd2d9e8b758dd1727c060d8cf210f08e723b9cf",
+    "main_tree": "09a718222b13f6dfd4671d2e1b62cdb2ec9a880a",
+    "merged_pr": 15,
+    "pr_head_commit": "bca8873df96a086f4d9ac65033ba491043d1dade",
+    "workflow": "verify-durable-backup run 49 SUCCESS",
+    "verification": "MANAGED_GITHUB_CONNECTOR"
+  },
+  "canonical_input": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "bytes": 726954,
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED"
+  },
+  "reconstructed_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57",
+    "status": "PASS_PR04_OPERATOR_CONTRACT_COMPLETE_PR05_NEXT",
+    "bundle_sha256": "fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890",
+    "bundle_bytes": 27565,
+    "runtime_data_sha256": "a02a5105818f82c2cee51b465e3d4b5468538b7548501728f3cb46a41c898ece",
+    "runtime_data_bytes": 3886,
+    "common_ledger_sha256": "0495d07ae4db9a53369eccac793fbc15f45396b35bec5bba46af6e865e53af53"
+  },
+  "payload": {
+    "branch": "work/pr04c3-common-ledger-v057",
+    "documentation_payload_head": "85b7cedea02fdbd5ac5c4b2ebec5f9d9f91b4b33",
+    "documentation_payload_tree": "73521744687d6b942621cd73c0a949ad0a9e1d96",
+    "feature_commits": [
+      {
+        "sha": "e7d38993235b6fbe81e7c58119d0e295ecda2087",
+        "subject": "feat(interface): close PR04C3 componentwise common ledger"
+      },
+      {
+        "sha": "85b7cedea02fdbd5ac5c4b2ebec5f9d9f91b4b33",
+        "subject": "docs(recovery): close PR04 and hand off PR05A"
+      }
+    ],
+    "receipt_seal_note": "A receipt-only seal commit follows; the external bundle/final-verification receipts record exact final HEAD/tree."
+  },
+  "scientific_results": {
+    "PR04": "COMPLETE_OPERATOR_CONTRACT",
+    "snapshot_count": 3,
+    "packet_count": 6,
+    "epsilon_common": 0.0,
+    "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
+    "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
+    "maximum_analytic_JVP_relative_error": 1.26832969415376e-09,
+    "maximum_native_direct_source_relative": 3.5248307871551763e-15,
+    "maximum_native_schur_direct_relative": 1.1881452091534302e-15,
+    "maximum_native_structural_edge_relative": 2.0517225706554158e-11,
+    "transported_face_energy_residual": 0.0,
+    "interface_atom_source": 0.0,
+    "strict_positivity": true,
+    "collision_entropy_nonincrease": true,
+    "restart_roundtrip_exact": true,
+    "cross_snapshot_cancellation_adversary": "SUM_ZERO_BUT_COMPONENTWISE_FAIL",
+    "state_classification": "OPERATOR_VERIFICATION_Q_ACTIVITY_1"
+  },
+  "resolved_blockers": [
+    "Three independent snapshots are carried in one typed ordered ledger without allowing signed cross-redshift cancellation.",
+    "Packet, network, background, source, restart and adapter provenance are locked by SHA-256.",
+    "Native primitive/direct/Schur and COM collision/interface evidence are compared only through shared number and exact face-energy variables.",
+    "The q_activity=1 state is explicitly classified as operator verification, so PR-04 can close without fabricating trajectory parity.",
+    "GitHub PR #15 and its successful CI are recorded separately from the author lineage used for v0.57 bundle generation."
+  ],
+  "final_verification": {
+    "offline_bootstrap": "PASS",
+    "artifact_verifier": "PASS_PR04_OPERATOR_CONTRACT_COMPLETE_PR05_NEXT",
+    "quick_verifier": "PASS",
+    "all_verifier": "PASS_144_FAST",
+    "fast_tests": "144 passed, 25 deselected",
+    "targeted_tests": "7 passed",
+    "slow_scientific_tests": "25 passed across 9 files",
+    "total_test_coverage": "169 passed",
+    "aggregate_scientific_wrapper": "PASS_EXIT_0",
+    "py_compile": "PASS_127_TRACKED_PYTHON_FILES_OUT_OF_TREE_CACHE",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS_FULL_NO_DANGLING",
+    "secret_scan": "PASS_NO_CREDENTIAL_VALUES"
+  },
+  "verification_logs": {
+    "offline_bootstrap": {
+      "path": "/mnt/data/rec_bianchi_v057_offline_bootstrap.log",
+      "sha256": "1a365de4549325468b1a4a23633b654ca2bd069c179e976609e8bcea69c01ca9",
+      "bytes": 546
+    },
+    "fast": {
+      "path": "/mnt/data/rec_bianchi_v057_fast.log",
+      "sha256": "aa042cd5fe45a965a01d273bf77a75c69ea770acf6a30193c5974d9b62e5d29f",
+      "bytes": 196
+    },
+    "all": {
+      "path": "/mnt/data/rec_bianchi_v057_all.log",
+      "sha256": "664f8a39ebb81ec4dd51ab9c990c8cbd49c6c3fb057e776c50032710b6e53691",
+      "bytes": 537
+    },
+    "scientific": {
+      "path": "/mnt/data/rec_bianchi_v057_scientific_full.log",
+      "sha256": "93b380ff7f14b79e5feaf33da01014549524b74d6d3ee83623dc5ed244ed9480",
+      "bytes": 2998
+    },
+    "targeted": {
+      "path": "/tmp/v057_targeted_precommit.log",
+      "sha256": "35bb5df4cf1094615cd76f8580c83c732935e2d776b4e2e5ca9aa3c56ec28d10",
+      "bytes": 98
+    },
+    "py_compile": {
+      "path": "/mnt/data/rec_bianchi_v057_pycompile.log",
+      "sha256": "5365b17777b85ff8ddb17793073be30aac83827a05f2cda100335221fc51ee81",
+      "bytes": 30
+    },
+    "slow_collection": {
+      "path": "/mnt/data/rec_bianchi_v057_slow_collection.txt",
+      "sha256": "cba18053059b3566704eab4a8c94574ab150d82f3decb5729ed635c169689d97",
+      "bytes": 2495
+    }
+  },
+  "tool_usage": {
+    "web_search": "USED_PRIMARY_AND_OFFICIAL_SOURCES",
+    "Wolfram": "USED_SYMBOLIC_SCHUR_CANCELLATION_COMPONENTWISE_MAX_AND_LOG_POSITIVITY",
+    "Precise_Special_Functions": "USED_120_DIGIT_ZETA3_ZETA4_GAMMA3",
+    "coding_harness": "VALIDATED_AND_USED",
+    "research_harness": "VALIDATED_AND_USED_TEN_PHASES",
+    "GitHub": "READ_ONLY_PR15_REMOTE_AND_CI_VERIFICATION; OWNER_PUSHES_BUNDLE_LOCALLY"
+  },
+  "scientific_decision": {
+    "PR04C3": "COMPLETE",
+    "PR04": "COMPLETE_OPERATOR_CONTRACT",
+    "closed_claim": "SOURCE_CONDITIONED_SPLIT_DOMAIN_OPERATOR_CONTRACT",
+    "not_claimed": [
+      "native-derived COM trajectory",
+      "full recombination history",
+      "FLRW xe/visibility/C_l parity"
+    ],
+    "next_stage": "PR-05A BackgroundSnapshot/RadiationFeedback schema and primitive original-HyRec operator source lock"
+  },
+  "generated_utc": "2026-08-06T11:31:17.289982+00:00"
+}

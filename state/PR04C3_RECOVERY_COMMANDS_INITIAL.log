@@ -1,0 +1,109 @@
+
+===== ./scripts/bootstrap_sandbox.sh --offline =====
+offline recovery: using dependency-complete base interpreter python3
+dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr04c3_v057_work/tests)
+PR-04C1B/C2 coupled interface: PASS; PR-04C3 OPEN
+{"status": "PASS", "bundle_count": 56, "current_artifact": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
+[exit=0]
+
+===== python scripts/check_remote_state.py =====
+{
+  "classification": "REMOTE_REPOSITORY_CHECK",
+  "checked_at_utc": "2026-08-06T10:56:19.880920+00:00",
+  "checked_at_kst": "2026-08-06T19:56:19.880920+09:00",
+  "repository_root": "/mnt/data/rec_bianchi_pr04c3_v057_work",
+  "origin": "/mnt/data/rec_bianchi_v056_delivery/rec_bianchi_v056_full.bundle",
+  "local": {
+    "branch": "work/pr04c1b-c2-v056",
+    "head": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+    "tree": "3d02eb8b0b060298353660f2a733b15530d0507d",
+    "dirty": true,
+    "dirty_paths": [
+      "?? state/pr04c3_recovery_runtime/"
+    ]
+  },
+  "remote": {
+    "accessible": true,
+    "selected_transport": "configured",
+    "main_sha": null,
+    "matches_local_head": false,
+    "ref_count": 24,
+    "refs": {
+      "refs/tags/handoff-2026-08-06-v056": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+      "refs/tags/handoff-2026-08-06-v055": "dfed7acb48192fe2f84f0a83afac6f050ad84bfe",
+      "refs/tags/handoff-2026-08-06-v054": "b7d522a463ce9077706478b1f466723d67041c1c",
+      "refs/tags/handoff-2026-08-06-v053": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+      "refs/tags/handoff-2026-08-05-v052": "3aacbcdf1b2f723fe62112cff94df90cfb635e35",
+      "refs/tags/handoff-2026-08-05-v051": "7a39c303c397bfb8ff32368d23be6b8f7a62b0c7",
+      "refs/tags/handoff-2026-08-05-v050": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/handoff-2026-08-05-v049": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/handoff-2026-08-05-v048": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/handoff-2026-08-04-v047": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/handoff-2026-08-04": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/tags/backup-v0.56": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+      "refs/tags/backup-v0.55": "f90a1e36ad5c6cb8c58588a54ddecace15393cd9",
+      "refs/tags/backup-v0.54": "183e41bdc273d655c8e075f2cf4602c384a3aa9b",
+      "refs/tags/backup-v0.53": "42bcdbac99ada639a44a71bcbf7caf1fb03126c7",
+      "refs/tags/backup-v0.52": "8c06cf93b84b864803837c6d6c90d55c13cb33cf",
+      "refs/tags/backup-v0.51": "51f0696c62a87de34ee0df3df3a680f369d5025e",
+      "refs/tags/backup-v0.50": "da892072ebabe214c54f00f6ace7ee8f2c2acccd",
+      "refs/tags/backup-v0.49": "721f792736eaddc7ec6951f99332c44c70b039bf",
+      "refs/tags/backup-v0.48": "91f772c3275d318af9cc4f2cacb9a71b0c227f48",
+      "refs/tags/backup-v0.47": "ced72558437c8d24dce0cb855259b5216549604d",
+      "refs/tags/backup-v0.45": "ba1f992f10ec50435d197d0125c0c47a32fd4d38",
+      "refs/heads/work/pr04c1b-c2-v056": "ce279bfca724e2491f0083919a0dcd738ccf01c7",
+      "refs/heads/author-v055": "c5f6de7baaa15e06bb05a917964b31569c5e23d2"
+    },
+    "attempts": [
+      {
+        "transport": "configured",
+        "url": "/mnt/data/rec_bianchi_v056_delivery/rec_bianchi_v056_full.bundle",
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "runtime_capabilities": {
+    "git_executable": "/usr/bin/git",
+    "ssh_executable": null,
+    "gh_executable": null,
+    "https_token_present": false,
+    "chatgpt_connector_cli_exposed": false,
+    "connector_note": "ChatGPT app authorization is product-level and is not exposed as a Git credential or CLI in every chat runtime. See docs/GITHUB_PRIVATE_REPO_ACCESS.md."
+  },
+  "user_confirmed_base": {
+    "classification": "CONNECTOR_VERIFIED_REMOTE_BASE",
+    "reported_at": "2026-08-06",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "remote_main_commit": "47106fec89c176c3f3b91ed7e4ff198dea323968",
+    "remote_main_tree": "b1cc9c0959bd89418a4f24a51959c44bb163fe88",
+    "remote_content_stage": "v0.55 PR04C0/C1A plus shared binary-hash toolchain gate",
+    "merged_pr": 14,
+    "merged_pr_head_commit": "2b4419939b4a07920f0548f6cc22210e643505f4",
+    "exact_local_author_v055_commit": "f1ff2c827b28fac65341572f79fd8526f78db7a8",
+    "local_equivalent_gate_commit": "c5f6de7baaa15e06bb05a917964b31569c5e23d2",
+    "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
+    "implication": "Export a self-contained v0.56 feature Git bundle whose ordered feature range begins after the local equivalent gate commit. The owner fetches origin/main, fetches the delivery ref, cherry-picks the ordered feature commits, and reruns all gates. Do not reset remote history to the author tree and do not force-push."
+  },
+  "patch_base_policy": "Use remote main when it is accessible and locally known as an ancestor; otherwise use state/PATCH_BASE.json and state the uncertainty."
+}
+[exit=0]
+
+===== python scripts/check_hyrec_binary_hash_policy.py =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr04c3_v057_work/tests)
+[exit=0]
+
+===== python scripts/verify_repo.py --quick =====
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_pr04c3_v057_work/tests)
+PR-04C1B/C2 coupled interface: PASS; PR-04C3 OPEN
+{"status": "PASS", "bundle_count": 56, "current_artifact": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+[exit=0]
+
+===== pytest -q -m not slow =====
+........................................................................ [ 52%]
+.................................................................        [100%]
+137 passed, 25 deselected in 17.81s
+[exit=0]

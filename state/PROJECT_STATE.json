@@ -1,28 +1,29 @@
 {
   "classification": "DURABLE_PROJECT_STATE",
-  "project": "Full Bianchi\u2013HyRec scalar completion",
+  "project": "Full Bianchi–HyRec scalar completion",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "state_date": "2026-08-06",
-  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
-  "estimated_overall_completion_percent": 93,
+  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
+  "estimated_overall_completion_percent": 94,
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 98,
+  "estimated_PR04_completion_percent": 100,
   "current_durable_stage": {
-    "name": "PR-04C1B/C2 exact far-boundary deposition and positive coupled interface operator",
-    "artifact": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56",
-    "status": "PASS_PR04C1B_C2_PR04C3_OPEN"
+    "name": "PR-04C3 componentwise common ledger and split-domain operator-contract closure",
+    "artifact": "Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57",
+    "status": "PASS_PR04_OPERATOR_CONTRACT_COMPLETE_PR05_NEXT"
   },
   "next_stage": {
-    "name": "PR-04C3 componentwise common three-snapshot ledger and final operator-contract closure/no-go",
-    "entry_gate": "PR04C1B_C2_COUPLED_INTERFACE_PASS",
+    "name": "PR-05A BackgroundSnapshot/RadiationFeedback schema and primitive HyRec operator source lock",
+    "entry_gate": "PR04_OPERATOR_CONTRACT_COMPLETE",
     "tasks": [
-      "Lock a typed per-snapshot ledger schema, unit/sign registry and SHA-256 provenance chain for z~1300,1100,900.",
-      "Forbid cross-snapshot summation or averaging; every load-bearing conservation and solver gate must pass componentwise before taking a maximum normalized residual.",
-      "Re-evaluate source-identical native primitive/dense/Schur actions and COM collision/interface actions through shared number and exact face-energy variables only.",
-      "Retain q_activity=1 as an explicitly unfitted operator-verification state; do not call it a native-derived physical COM trajectory.",
-      "Close number, transported energy, zero interface atom source, positivity, JVP, entropy, restart, branch and binary-hash-policy gates, or publish a bounded no-go."
+      "Lock typed BackgroundSnapshot, PrimitiveRateSnapshot, AtomicRadiationState, RadiationFeedback and TrajectoryStepLedger schemas with explicit SI/cgs adapter boundaries.",
+      "Census and byte-lock primitive original-HyRec rates Alpha[2], DAlpha[2], Beta[2], R2p2s, A2s, A3s3d and A4s4d, including dimensions, degeneracies and detailed-balance conventions.",
+      "Publish an ownership/removal matrix for Sobolev escape, native A1s diffusion, escape-compressed Tvv and scalar Dfplus feedback; remove no term until its explicit split-domain replacement is present in the same residual.",
+      "Assemble the first source-conditioned primitive atomic/radiation residual and analytic block JVP without a direct native-to-COM state remap or fitted normalization.",
+      "Run bounded one-step FLRW lanes near z=1300,1100,900 with positivity, Saha/Planck null, number/energy, M-matrix, restart and event-localization gates.",
+      "Keep full trajectory integration in later PR-05 sub-stages and FLRW recombination-history parity in PR-06."
     ]
   },
   "roadmap": [
@@ -38,18 +39,18 @@
     },
     {
       "pr": 3,
-      "title": "Full scalar COM\u2013KHW amplitude",
+      "title": "Full scalar COM–KHW amplitude",
       "status": "COMPLETE"
     },
     {
       "pr": 4,
       "title": "HYREC common measure and split-domain exchange contract",
-      "status": "IN_PROGRESS_PR04A_PR04B1_PR04B2A_PASS_PR04B2B_PASS_NO_GO_PR04C0_C1A_PASS_PR04C1B_C2_PASS_PR04C3_NEXT"
+      "status": "COMPLETE_OPERATOR_CONTRACT_V057"
     },
     {
       "pr": 5,
       "title": "Primitive HYREC operator and background interface",
-      "status": "PLANNED_AFTER_PR04"
+      "status": "NEXT_PR05A"
     },
     {
       "pr": 6,
@@ -124,7 +125,10 @@
     "coupled_boundary_adapter": "FR00 index 29 and FB02 index 34 are exact byte-locked outer owners; packet number is deposited as sigma*n_H*q/g_cell and exact face energy is retained with an unresolved cell-centroid correction.",
     "coupled_interface_solver": "log-positive monolithic backward-Euler collision/interface residual with analytic matrix-free JVP and exact restart state.",
     "coupled_convergence_gate": "strict net-residual Newton first; after documented line-search stagnation only, require gross-term normwise backward error and independent photon-number closure both below 1e-11.",
-    "delivery_policy": "self-contained feature Git bundle with ordered feature commits plus full recovery Git bundle; mbox/raw binary diff delivery superseded."
+    "delivery_policy": "self-contained feature Git bundle with ordered feature commits plus full recovery Git bundle; mbox/raw binary diff delivery superseded.",
+    "common_interface_ledger": "v0.57 typed ordered z~1300/1100/900 ledger with exactly six packets, complete SHA-256 provenance and maximum componentwise violation; cross-snapshot sums and averages are forbidden.",
+    "pr04_claim_boundary": "PR-04 is complete only at the source-conditioned scalar split-domain operator-contract level; q_activity=1 remains an unfitted operator-verification state, not a native-derived trajectory.",
+    "next_trajectory_architecture": "PR-05 builds typed BackgroundSnapshot/RadiationFeedback and primitive original-HyRec atomic/radiation residuals while retaining separate native and COM representation-local states."
   },
   "PR04B1_input_lock": {
     "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
@@ -163,9 +167,11 @@
     ]
   },
   "known_limitations": [
+    "PR-04 closes at the source-conditioned operator-contract level only. The q_activity=1 COM state is not a reconstructed physical native/COM trajectory.",
+    "PR-05 must derive the primitive atomic/radiation trajectory state and ownership transition without reviving a direct native-to-COM state remap or fitted normalization.",
+    "Full trajectory integration remains PR-05 scope; FLRW x_e(z) and visibility-history parity remain PR-06 scope.",
     "The v0.56 snapshot solves use physical native face packets with an unfitted q_activity=1 COM Bose-Einstein reference state; they verify the operator but are not a reconstructed physical native/COM trajectory.",
     "The dilute-occupation-normalized net residual stalls at 1.73712431307357e-10 from float64 cancellation. It is retained as a diagnostic; acceptance requires gross backward error and independent number closure below 1e-11 after strict Newton stagnation.",
-    "PR-04C3 must still construct a componentwise common ledger. Snapshot errors may not be summed or averaged across redshift.",
     "A pure computational representation crossing has zero atomic source. Atomic recoil remains owned by physical collision terms.",
     "Four of six source-identical packet reconstructions use the current already-solved HyRec history endpoint. Future endpoints remain forbidden.",
     "PR-04B2B proves that the full or diffusion-only positive native measure cannot be represented on the v0.51 17-cell core while preserving M0 and M2.",
@@ -362,5 +368,40 @@
     "Wolfram": "USED_SYMBOLIC_CANCELLATION_JVP_MODE_MEASURE_AND_CENTROID",
     "Precise_Special_Functions": "USED_100_DIGIT_ZETA3_ZETA4",
     "claim_scope": "BOUNDED_SOURCE_CONDITIONED_OPERATOR_VERIFICATION_NOT_FULL_TRAJECTORY_PARITY"
+  },
+  "PR04C3_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57.zip",
+    "artifact_bundle_sha256": "fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890",
+    "artifact_bundle_size_bytes": 27565,
+    "runtime_data": "data/pr04c3_common_ledger_v057.npz",
+    "runtime_data_sha256": "a02a5105818f82c2cee51b465e3d4b5468538b7548501728f3cb46a41c898ece",
+    "runtime_data_size_bytes": 3886,
+    "common_ledger_sha256": "0495d07ae4db9a53369eccac793fbc15f45396b35bec5bba46af6e865e53af53",
+    "snapshot_count": 3,
+    "packet_count": 6,
+    "snapshot_target_redshifts": [
+      1300,
+      1100,
+      900
+    ],
+    "epsilon_common": 0.0,
+    "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
+    "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
+    "maximum_analytic_JVP_relative_error": 1.26832969415376e-09,
+    "maximum_native_direct_source_relative": 3.5248307871551763e-15,
+    "maximum_native_schur_direct_relative": 1.1881452091534302e-15,
+    "maximum_native_structural_edge_relative": 2.0517225706554158e-11,
+    "transported_face_energy_residual": 0.0,
+    "interface_atom_source": 0.0,
+    "strict_positivity": true,
+    "collision_entropy_nonincrease": true,
+    "restart_roundtrip_exact": true,
+    "cross_snapshot_cancellation_adversary": "SUM_ZERO_COMPONENTWISE_MAX_FAIL",
+    "state_classification": "OPERATOR_VERIFICATION_Q_ACTIVITY_1",
+    "direct_state_remap": "FORBIDDEN_NOT_USED",
+    "fitted_normalization": "FORBIDDEN_NOT_USED",
+    "Wolfram": "USED_SYMBOLIC_SCHUR_CANCELLATION_AND_LOG_POSITIVITY",
+    "Precise_Special_Functions": "USED_120_DIGIT_ZETA3_ZETA4_GAMMA3",
+    "claim_scope": "SOURCE_CONDITIONED_SPLIT_DOMAIN_OPERATOR_CONTRACT_NOT_TRAJECTORY_OR_HISTORY_PARITY"
   }
 }

@@ -1,0 +1,70 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____ test_pr04c3_artifact_closes_operator_contract_without_trajectory_claim ____
+
+    def test_pr04c3_artifact_closes_operator_contract_without_trajectory_claim() -> None:
+>       ledger = json.loads((ARTIFACT / "HARD_GATE_LEDGER.json").read_text())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/recoil/test_pr04c3_artifact.py:24:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = PosixPath('/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/HARD_GATE_LEDGER.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/HARD_GATE_LEDGER.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+_______________ test_pr04c3_common_ledger_and_manifest_are_exact _______________
+
+    def test_pr04c3_common_ledger_and_manifest_are_exact() -> None:
+>       common = json.loads((ARTIFACT / "COMMON_INTERFACE_LEDGER.json").read_text())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/recoil/test_pr04c3_artifact.py:49:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/usr/lib/python3.13/pathlib/_local.py:548: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = PosixPath('/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/COMMON_INTERFACE_LEDGER.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/COMMON_INTERFACE_LEDGER.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/recoil/test_pr04c3_artifact.py::test_pr04c3_artifact_closes_operator_contract_without_trajectory_claim - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/HARD_GATE_LEDGER.json'
+FAILED tests/recoil/test_pr04c3_artifact.py::test_pr04c3_common_ledger_and_manifest_are_exact - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/rec_bianchi_pr04c3_v057_work/archive/expanded/Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57/COMMON_INTERFACE_LEDGER.json'
+2 failed in 0.08s

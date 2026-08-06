@@ -1,45 +1,47 @@
 === timestamp_utc ===
-2026-08-06T08:27:07.013924+00:00
+2026-08-06T11:31:17.289982+00:00
 === git_payload ===
-work/pr04c1b-c2-v056
-8dc5ddf7d207e36d63792d9e65d306aba4d2d2ad
-acccdf86eb922d0d703ee4cd5151c4979c03604a
+work/pr04c3-common-ledger-v057
+85b7cedea02fdbd5ac5c4b2ebec5f9d9f91b4b33
+73521744687d6b942621cd73c0a949ad0a9e1d96
 === remote_base ===
-PR #14 merged: main 47106fec89c176c3f3b91ed7e4ff198dea323968 tree b1cc9c0959bd89418a4f24a51959c44bb163fe88
-Local author v0.56 tree is intentionally not claimed equal to the GitHub merge tree.
+PR #15 merged: main ecd2d9e8b758dd1727c060d8cf210f08e723b9cf tree 09a718222b13f6dfd4671d2e1b62cdb2ec9a880a
+PR head bca8873df96a086f4d9ac65033ba491043d1dade: verify-durable-backup run 49 SUCCESS
+No open PRs observed by the managed connector.
+Local author v0.57 tree is intentionally not claimed equal to the GitHub merge tree.
 === recovery_and_artifact ===
 offline bootstrap: PASS
-PR-04C1B/C2 immutable artifact verifier: PASS; PR-04C3 OPEN
-repository quick verifier: PASS; bundle_count=56
-artifact ZIP: 31818 bytes, SHA-256 bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c
-runtime NPZ: 3328 bytes, SHA-256 a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6
+PR-04C3 immutable artifact verifier: PASS; PR-04 operator contract COMPLETE; PR-05 OPEN
+repository quick verifier: PASS; bundle_count=57
+artifact ZIP: 27565 bytes, SHA-256 fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890
+runtime NPZ: 3886 bytes, SHA-256 a02a5105818f82c2cee51b465e3d4b5468538b7548501728f3cb46a41c898ece
+common ledger: SHA-256 0495d07ae4db9a53369eccac793fbc15f45396b35bec5bba46af6e865e53af53
 === tests ===
-fast pytest: 137 passed, 25 deselected
-targeted v0.56/policy/delivery tests: 22 passed
+fast pytest: 144 passed, 25 deselected
+targeted v0.57 tests: 7 passed
 slow scientific tests: 25 passed across 9 files
 aggregate scientific wrapper: PASS exit 0
-total covered tests: 162 passed
+total covered tests: 169 passed
 === scientific gates ===
-FR00 index 29 / FB02 index 34 exact adapter: PASS
-three source-conditioned positive coupled solves: PASS
+three ordered source-conditioned lanes and six unique packets: PASS
+epsilon_common: 0
+cross-snapshot signed cancellation: FORBIDDEN_AND_ADVERSARIALLY_TESTED
 max gross backward error: 1.3200190226745005e-17
 max independent number residual: 2.5609198306764287e-14
-max analytic/JVP relative error: 1.279553711820355e-09
-net dilute scaled residual diagnostic: 1.73712431307357e-10 (disclosed, not called a strict 1e-11 pass)
-max float/high-precision discrepancy: 3.694332974648189e-15
-number ledger: exact
-transported face-energy ledger: exact
-interface atom source: exact zero
-positivity/restart/guard-off/branch localization/collision entropy: PASS
-binary-hash AST policy scanner: PASS
+max analytic/JVP relative error: 1.26832969415376e-09
+max native direct/source relative error: 3.5248307871551763e-15
+max native Schur/direct relative error: 1.1881452091534302e-15
+max native structural edge relative error: 2.0517225706554158e-11
+number/face energy/interface atom source/positivity/entropy/restart/branch gates: PASS
 === integrity ===
 git diff --check: PASS
-py_compile: PASS — 122 tracked Python files with out-of-tree cache
+py_compile: PASS — 127 tracked Python files with out-of-tree cache
 git fsck --full --no-dangling: PASS
 secret scan: PASS; credential values absent
 === delivery ===
 Canonical patch format: self-contained feature Git bundle plus full recovery Git bundle and JSON receipt.
-Ordered feature range begins after c5f6de7baaa15e06bb05a917964b31569c5e23d2; PR #14 already contains the equivalent shared compiler-hash gate.
+Ordered v0.57 feature range begins after ce279bfca724e2491f0083919a0dcd738ccf01c7.
 === claim boundary ===
-The q_activity=1 COM state is an unfitted operator-verification state, not a native-derived physical trajectory.
-PR-04C3 must close a componentwise common ledger; cross-snapshot cancellation is forbidden.
+PR-04 is complete at the source-conditioned split-domain operator-contract level.
+The q_activity=1 COM state is not a native-derived physical trajectory.
+PR-05 owns primitive trajectory integration; PR-06 owns FLRW history parity.
