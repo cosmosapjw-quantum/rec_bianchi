@@ -417,3 +417,50 @@ def test_interface_guard_off_is_exact_collision_solver_parity():
     assert result.ledger.sides == ()
     assert result.number_relative_residual == baseline.number_relative_change
     assert result.residual_relative == baseline.residual_relative
+
+
+def test_boundary_speed_audit_localizes_internal_zeros_and_rejects_endpoint_heuristic():
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        audit_boundary_speed_history,
+    )
+
+    audit = audit_boundary_speed_history(
+        np.asarray([0.0, 1.0, 2.0]),
+        np.asarray([1.0, -1.0, 1.0]),
+        np.asarray([-1.0, 1.0, -1.0]),
+    )
+    assert np.allclose(audit.red_roots, [0.5, 1.5])
+    assert np.allclose(audit.blue_roots, [0.5, 1.5])
+    assert audit.red_positive_integral > 0.0
+    assert audit.red_negative_integral > 0.0
+    assert audit.blue_positive_integral > 0.0
+    assert audit.blue_negative_integral > 0.0
+    assert audit.red_endpoint_heuristic_error != 0.0
+    assert audit.blue_endpoint_heuristic_error != 0.0
+
+
+@pytest.mark.parametrize(
+    ("model", "angle"),
+    [
+        ("Bianchi_II_large_shear", 0),
+        ("Bianchi_VI_h_tilted_large_shear", 20),
+        ("Bianchi_VI_minus_1_over_9_exceptional", 6),
+    ],
+)
+def test_stored_bianchi_histories_require_branch_zero_localization(model, angle):
+    from full_bianchi_hyrec.recoil.coupled_interface import (
+        audit_boundary_speed_history,
+    )
+
+    with np.load(ROOT / "data/pr01c_background_snapshots_v048.npz") as data:
+        audit = audit_boundary_speed_history(
+            data[f"{model}_cosmic_time_s"],
+            data[f"{model}_red_speed_s_inv"][:, angle],
+            data[f"{model}_blue_speed_s_inv"][:, angle],
+        )
+    assert len(audit.red_roots) >= 1
+    assert len(audit.blue_roots) >= 1
+    assert audit.red_total_absolute_integral > 0.0
+    assert audit.blue_total_absolute_integral > 0.0
+    assert abs(audit.red_endpoint_heuristic_error) > 0.0
+    assert abs(audit.blue_endpoint_heuristic_error) > 0.0

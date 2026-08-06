@@ -19,6 +19,8 @@ import numpy as np
 from scipy.constants import c, h
 from scipy.sparse.linalg import LinearOperator, gmres
 
+from full_bianchi_hyrec.background.branch_events import piecewise_linear_roots
+
 from .nonlinear_bose_release import (
     HarmonicGrid,
     apply_nonlinear_bose_jvp,
@@ -670,6 +672,114 @@ class InterfaceTransferLedger:
 
 
 @dataclass(frozen=True)
+class BoundarySpeedAudit:
+    red_roots: np.ndarray
+    blue_roots: np.ndarray
+    red_positive_integral: float
+    red_negative_integral: float
+    blue_positive_integral: float
+    blue_negative_integral: float
+    red_exact_signed_integral: float
+    blue_exact_signed_integral: float
+    red_endpoint_heuristic_integral: float
+    blue_endpoint_heuristic_integral: float
+    red_endpoint_heuristic_error: float
+    blue_endpoint_heuristic_error: float
+
+    @property
+    def red_total_absolute_integral(self) -> float:
+        return self.red_positive_integral + self.red_negative_integral
+
+    @property
+    def blue_total_absolute_integral(self) -> float:
+        return self.blue_positive_integral + self.blue_negative_integral
+
+
+def _validated_speed_series(
+    times: np.ndarray, values: np.ndarray, name: str
+) -> tuple[np.ndarray, np.ndarray]:
+    time = np.asarray(times, dtype=float)
+    speed = np.asarray(values, dtype=float)
+    if time.ndim != 1 or speed.shape != time.shape or len(time) < 2:
+        raise ValueError(f"{name} must be one-dimensional and match times")
+    if not np.all(np.isfinite(time)) or not np.all(np.isfinite(speed)):
+        raise ValueError("boundary speed histories must be finite")
+    if np.any(np.diff(time) <= 0.0):
+        raise ValueError("boundary speed times must be strictly increasing")
+    return time, speed
+
+
+def _positive_linear_integral(y0: float, y1: float, duration: float) -> float:
+    if y0 >= 0.0 and y1 >= 0.0:
+        return 0.5 * duration * (y0 + y1)
+    if y0 <= 0.0 and y1 <= 0.0:
+        return 0.0
+    fraction = -y0 / (y1 - y0)
+    if y0 > 0.0:
+        return 0.5 * duration * fraction * y0
+    return 0.5 * duration * (1.0 - fraction) * y1
+
+
+def _signed_piecewise_integrals(
+    times: np.ndarray, values: np.ndarray
+) -> tuple[float, float]:
+    positive = 0.0
+    negative = 0.0
+    for left, right, y0, y1 in zip(
+        times[:-1], times[1:], values[:-1], values[1:]
+    ):
+        duration = float(right - left)
+        positive += _positive_linear_integral(float(y0), float(y1), duration)
+        negative += _positive_linear_integral(float(-y0), float(-y1), duration)
+    return float(positive), float(negative)
+
+
+def _endpoint_heuristic(values: np.ndarray, total_absolute: float) -> float:
+    # This intentionally models the forbidden shortcut: use one endpoint sign
+    # for the whole step and discard all internal branch changes.
+    sign_source = float(values[0])
+    if sign_source == 0.0:
+        sign_source = float(values[-1])
+    return math.copysign(float(total_absolute), sign_source) if sign_source else 0.0
+
+
+def audit_boundary_speed_history(
+    times: np.ndarray,
+    red_speed: np.ndarray,
+    blue_speed: np.ndarray,
+) -> BoundarySpeedAudit:
+    """Audit exact piecewise-linear red/blue branch localization.
+
+    Positive and negative portions are integrated separately after every zero.
+    The endpoint heuristic is retained only as an adversarial diagnostic and is
+    never used to apply a flux.
+    """
+
+    time, red = _validated_speed_series(times, red_speed, "red_speed")
+    _, blue = _validated_speed_series(times, blue_speed, "blue_speed")
+    red_positive, red_negative = _signed_piecewise_integrals(time, red)
+    blue_positive, blue_negative = _signed_piecewise_integrals(time, blue)
+    red_exact = red_positive - red_negative
+    blue_exact = blue_positive - blue_negative
+    red_heuristic = _endpoint_heuristic(red, red_positive + red_negative)
+    blue_heuristic = _endpoint_heuristic(blue, blue_positive + blue_negative)
+    return BoundarySpeedAudit(
+        red_roots=piecewise_linear_roots(time, red),
+        blue_roots=piecewise_linear_roots(time, blue),
+        red_positive_integral=red_positive,
+        red_negative_integral=red_negative,
+        blue_positive_integral=blue_positive,
+        blue_negative_integral=blue_negative,
+        red_exact_signed_integral=red_exact,
+        blue_exact_signed_integral=blue_exact,
+        red_endpoint_heuristic_integral=red_heuristic,
+        blue_endpoint_heuristic_integral=blue_heuristic,
+        red_endpoint_heuristic_error=red_heuristic - red_exact,
+        blue_endpoint_heuristic_error=blue_heuristic - blue_exact,
+    )
+
+
+@dataclass(frozen=True)
 class CoupledInterfaceStepResult:
     occupation: np.ndarray
     accumulators: tuple[BoundaryTransferAccumulator, ...]
@@ -935,6 +1045,8 @@ __all__ = [
     "CoupledInterfaceProblem",
     "SideTransferLedger",
     "InterfaceTransferLedger",
+    "BoundarySpeedAudit",
+    "audit_boundary_speed_history",
     "CoupledInterfaceStepResult",
     "solve_coupled_interface",
 ]
