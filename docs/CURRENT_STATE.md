@@ -1,51 +1,18 @@
-# Current scientific state — PR-05B3 / v0.61
+# Current state
 
-PR-04 is complete at the source-conditioned split-domain operator-contract
-level. PR-05A locks the primitive rate/schema layer, PR-05B1 fixes the
-source-identifiable rank-one local DAE, and PR-05B2 closes the exact accepted
-characteristic-history replacement contract. PR-05B3 now performs the first
-actual compressed-term owner transition.
+- Durable stage: **PR-05C1 / v0.62**, reconstructed under `RUNTIME_INTERRUPTION_RECOVERY` from the verified v0.61 full Git bundle.
+- Status: `PASS_PR05C1_ADAPTIVE_CANONICAL_MACRO_CONTROLLER_PR05C2_OPEN`.
+- Original-HyRec accepted history remains on the exact canonical `DLNA=8.49e-5` macro grid.
+- Adaptive backward-Euler full and both half-step trials occur only inside a canonical macro interval; every trial independently passes convergence, positivity, backward-error and algebraic-residual gates.
+- A successful macro endpoint commits exactly one history slice; rejected attempts, event rollback and restart do not mutate accepted history.
+- Source-conditioned rank-one DAE lanes near `z~1300,1100,900` pass positivity, residual, causality and restart gates.
+- The Bianchi-shaped speed profiles in v0.62 are deterministic event-controller regressions, not source-derived `BackgroundSnapshot` trajectories.
+- Full COM-KHW collision/interface/background coupling is **not** claimed and remains **PR-05C2**.
+- Artifact SHA-256: `294f390aa3094092b9c54885c0fa1b305b845e2b2e7f7d5df89d16d3f4929348`.
 
-## PASS results
+## Recovery note
 
-- Scalar `Dfplus`/`Dfplus_Ly` feedback has an XOR owner registry. Exactly one of
-  `CANONICAL_CALLBACK` and `TYPED_CHARACTERISTIC_HISTORY` may be active.
-- The typed characteristic history is the sole active Python production owner
-  after componentwise canonical parity; the canonical callback remains only as
-  an isolated audit oracle.
-- Canonical and typed incoming fields, native RHS, 313-state solution, electron
-  rate, outgoing virtual/line/average fields, append candidate and conservation
-  ledgers agree exactly at `z~1300,1100,900`.
-- Maximum analytic shifted-IJacobian discrepancy:
-  `2.12624465852112292e-16`.
-- Maximum frozen-coefficient backward-Euler backward error:
-  `4.00610954024109673e-12`.
-- Minimum physical population: `4.86080925682533631e-16`.
-- Accepted-step transactions commit exactly once. Duplicate commit/discard is
-  rejected; restart, rollback and rejected-step history are byte-exact.
-- Future endpoints, nonmonotone accepted grids and unlocalized characteristic
-  stencil switches fail closed.
-- Photon number and redshift-energy work close componentwise; pure
-  characteristic propagation has zero atom source.
-- Interface-off v0.60 feedback parity and fixed-local-state Bianchi II,
-  class-B `VI_h`, and exceptional `VI_-1/9` firewalls are exact.
+The first v0.62 delivery reached local Git/artifact generation but its conversation attachment registration failed. The generated-file registry therefore omitted v0.62 even though Git objects and bundle bytes survived in the runtime. Recovery inventoried those bytes, reproduced the stage from v0.61, found and fixed an all-trial step-doubling gate defect, regenerated the immutable artifact, and requires fresh final receipts and bundle replay before release.
 
-## Ownership boundary
-
-Only the scalar history owner has changed. Canonical Sobolev Ly-alpha escape,
-native `A1s` diffusion and completed/Schur `Tvv` remain active and owned by
-original HyRec. They may not be removed until an independently complete
-replacement closes residual, Jacobian, conservation and restart gates in the
-same bounded stage.
-
-## Claim boundary
-
-PR-05B3 proves a typed, causal, transaction-safe scalar history owner inside the
-Python production residual. It does not claim an adaptive physical trajectory,
-a native-derived COM interior trajectory, full FLRW `x_e(z)` parity,
-visibility-function parity or CMB parity.
-
-The next stage is **PR-05C canonical-output-grid adaptive short trajectory**.
-Its critical architecture is fixed canonical original-HyRec history macro
-intervals with adaptive internal DAE/collision microsteps; accepted history is
-committed only once at a successful canonical macro endpoint.
+- Committed feature-range whitespace, staged changes and unstaged changes are now checked by `scripts/check_commit_range_whitespace.py`; only verbatim `state/*.log` evidence is excluded.
+- Current remote routing baseline is merged PR #20/v0.61; v0.62 remains local delivery only.

@@ -1,0 +1,3 @@
+# PR-05C1 adaptive canonical-macro formalism
+
+Accepted original-HyRec history remains on `eta_n=eta_0+n DLNA`, `DLNA=8.49e-5`. Backward-Euler full and two-half-step trials estimate local error inside a macro interval, and every trial must independently pass positivity, backward-error and algebraic-residual gates. No trial or event rollback mutates accepted history; one canonical slice is committed only at a successful macro endpoint. Positive physical populations are represented without clipping signed departures. The source-conditioned real lanes test the rank-one DAE; deterministic Bianchi-shaped event lanes test controller rollback/restart only. Full COM/interface/background coupling remains PR-05C2.

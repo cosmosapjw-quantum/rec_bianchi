@@ -1,23 +1,25 @@
 {
   "classification": "PATCH_BASE_LOCK_GIT_BUNDLE",
-  "connector_verified_remote_main_commit": "27a4e097baf83fbca2b1befd5b780edbf460f020",
-  "connector_verified_remote_main_tree": "5ee5af26f21f25a7878d308acf4934f4f99598a1",
-  "feature_exclusive_base_commit": "0687ba35c0dc41ce6dbc112012a993eb411bf30a",
-  "feature_exclusive_base_tree": "01e63220e8dd4be05dff64d2b7c20ae57f60a52c",
-  "feature_exclusive_base_stage": "exact author v0.60 PR05B2 endpoint",
-  "current_target_payload_head": "e3b92272c751f0e994e5655d21968f360434e066",
-  "current_target_payload_tree": "a398f91fbea47932c19b26a97ca8744d82c79aef",
-  "current_target_stage": "v0.61 PR-05B3 scalar history owner swap",
-  "historical_cumulative_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-  "historical_cumulative_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
+  "connector_verified_remote_main_commit": "796eabf6339b9a13355ccc61907a5314b9cd9196",
+  "connector_verified_remote_main_tree": "f6f7ef5f36917d6722e741aed705a6b4c7273955",
+  "current_target_payload_head": "4f14725e5f89b4eb0fbe18fa9e1884e0702ead3d",
+  "current_target_payload_note": "Science, runtime recovery, all-trial gate and committed-range delivery hardening are committed; the receipt-only seal commit follows.",
+  "current_target_payload_tree": "4ab87860f206d33c76649ddbcb4f4fefe478745b",
+  "current_target_stage": "v0.62 PR-05C1 adaptive canonical-macro controller recovery reseal",
+  "feature_exclusive_base_commit": "8a3b6452042615bc8900d65250e4bce0712706c7",
+  "feature_exclusive_base_stage": "exact author v0.61 PR05B3 endpoint",
+  "feature_exclusive_base_tree": "522a6881ab35d0346b47ce52f8fcc656f152f83d",
+  "historical_cumulative_base_commit": "0687ba35c0dc41ce6dbc112012a993eb411bf30a",
+  "historical_cumulative_base_stage": "exact author v0.60 PR05B2 endpoint retained only as historical recovery convenience",
+  "historical_cumulative_base_tree": "01e63220e8dd4be05dff64d2b7c20ae57f60a52c",
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
   "planned_bundle_routes": [
-    "self_contained_feature_delivery_ref_v061",
-    "full_recovery_all_refs_v061"
+    "self_contained_feature_delivery_ref_v062_from_v061",
+    "thin_incremental_v062_with_exact_author_v061_prerequisite",
+    "full_recovery_all_refs_v062"
   ],
-  "remote_main_stage": "v0.59 PR05B1 merged through PR #18 with CI success",
-  "remote_main_route": "FETCH_FEATURE_BUNDLE_AND_CHERRY_PICK_ORDERED_V061_COMMITS_ON_FRESH_REMOTE_MAIN_BRANCH",
-  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
-  "reason": "The v0.61 feature commits descend from exact author v0.60; a self-contained bundle and ordered receipt isolate the v0.61 range without rewriting remote history.",
-  "current_target_payload_note": "PR05B3 science and PR05C handoff committed; receipt-only seal commit follows. External bundle/final-verification receipt records exact final HEAD/tree."
+  "reason": "Remote main advanced to merged v0.61 during recovery. v0.62 descends from exact author v0.61 and is delivered as self-contained and thin incremental Git bundles.",
+  "remote_main_route": "CREATE_BRANCH_FROM_FRESH_REMOTE_MAIN_AND_APPLY_ONLY_V062_FEATURE_COMMITS",
+  "remote_main_stage": "v0.61 PR05B3 scalar history owner swap merged through PR #20 with CI success",
+  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
 }

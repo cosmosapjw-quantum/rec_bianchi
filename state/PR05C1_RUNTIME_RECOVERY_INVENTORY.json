@@ -1,0 +1,62 @@
+{
+  "artifacts": [
+    {
+      "exists": true,
+      "path": "/mnt/data/rec_bianchi_v061_delivery/rec_bianchi_v061_full.bundle",
+      "sha256": "3ae3813d1d1aea7c360b017bcb86a4fb2d25cf5e6faa6445d4d80a71b7265d84",
+      "size_bytes": 73715316
+    },
+    {
+      "exists": true,
+      "path": "/mnt/data/rec_bianchi_v061_delivery/rec_bianchi_v061_feature.bundle",
+      "sha256": "529270da97a9ac5062aec139abf3f862906eb8459b35739fd06776aa410a8931",
+      "size_bytes": 73711777
+    },
+    {
+      "exists": true,
+      "path": "/mnt/data/rec_bianchi_v062_delivery/rec_bianchi_v062_feature.bundle",
+      "sha256": "72bcb95c2fe9a7a4e02d38b99a07b95db7b24609a6205805959f97a7bb0e5c06",
+      "size_bytes": 73767607
+    },
+    {
+      "exists": true,
+      "path": "/mnt/data/rec_bianchi_v062_delivery/rec_bianchi_v062_full.bundle",
+      "sha256": "c9ea8b69f3f1d4e2f5ed1fe365c30f1e4161968f577c4c8dbd51a27a9ee1f68b",
+      "size_bytes": 73771146
+    }
+  ],
+  "classification": "RUNTIME_INTERRUPTION_RECOVERY_INVENTORY",
+  "classification_by_claim": {
+    "v061_parent": "DURABLE_VERIFIED",
+    "v062_final_receipt_tags_handoff_before_this_recovery": "MISSING",
+    "v062_implementation_and_artifact_before_final_seal": "PARTIALLY_RECOVERED_DURABLE",
+    "v062_upload_registration": "FAILED"
+  },
+  "created_utc": "2026-08-07T11:10:26.354456+00:00",
+  "durable_parent": {
+    "head": "8a3b6452042615bc8900d65250e4bce0712706c7",
+    "stage": "v0.61",
+    "tree": "522a6881ab35d0346b47ce52f8fcc656f152f83d"
+  },
+  "incident": "v0.62 conversation attachment registration returned Failed to get upload status",
+  "recovered_partial_v062": {
+    "branch": "work/pr05c1-adaptive-canonical-macro-v062",
+    "clean_before_recovery_hardening": false,
+    "commits": [
+      "e72a32ea73a7513d4c3d2b1bfb0c0c96756fb4f6",
+      "6c753e0887120b46102f066bb90227294ec294c2"
+    ],
+    "head_before_recovery_hardening": "6c753e0887120b46102f066bb90227294ec294c2",
+    "repository": "/mnt/data/rec_bianchi_v062_recovery/repo",
+    "scientific_artifact": "archive/bundles/Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62.zip",
+    "tree_before_recovery_hardening": "e4be8d00cdb81c93b33f1dcc6ed33bbba271b6c5"
+  },
+  "recovery_actions": [
+    "verify v0.61 and recovered v0.62 bundles",
+    "run repository and scientific tests from recovered Git state",
+    "repair all-step step-doubling residual acceptance gate with red/green regression",
+    "regenerate artifact with harness, web, Wolfram and high-precision receipts",
+    "seal final receipts, tags, bundles, fresh replay and handoff package"
+  ],
+  "root_cause_assessment": "The v0.62 Git repositories and bundle bytes existed in /mnt/data, but the conversation generated-file registry did not contain them. The failure occurred after artifact generation, at attachment/upload-status registration. The prior conclusion that no local bytes existed was based on an incomplete registry and is superseded by this filesystem and Git-object inventory."
+}

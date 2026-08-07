@@ -35,6 +35,13 @@ def main() -> None:
     if policy.returncode:
         raise SystemExit(policy.returncode)
 
+    whitespace_policy = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/check_commit_range_whitespace.py")],
+        cwd=ROOT,
+    )
+    if whitespace_policy.returncode:
+        raise SystemExit(whitespace_policy.returncode)
+
     state = json.loads((ROOT / "state/PROJECT_STATE.json").read_text())
     current_artifact = state["current_durable_stage"]["artifact"]
     expanded = ROOT / "archive" / "expanded" / current_artifact

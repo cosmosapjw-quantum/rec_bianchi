@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # verify_repo runs the committed-range whitespace gate, which needs a
+          # base commit to bound the range. The default depth-1 checkout has no
+          # history at all, so no base resolves and the gate errors out.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'

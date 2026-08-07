@@ -52,6 +52,21 @@ from .history_ownership import (
     ScalarHistoryParityAudit,
 )
 
+
+from .adaptive_macro import (
+    AcceptedMacrostepLedger,
+    AdaptiveBackwardEulerTrial,
+    AdaptiveControllerTolerances,
+    AdaptiveEvent,
+    AdaptiveEventKind,
+    AdaptiveMicrostepAttempt,
+    AdaptiveTrajectoryContext,
+    CanonicalMacroInterval,
+    TrajectoryRestartState,
+    advance_canonical_macro_interval,
+    source_conditioned_backward_euler_trial,
+)
+
 from .time_dependent_native import (
     CausalRadiationHistoryState,
     NativeRadiationTimeMeasureAudit,
@@ -69,6 +84,17 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "AcceptedMacrostepLedger",
+    "AdaptiveBackwardEulerTrial",
+    "AdaptiveControllerTolerances",
+    "AdaptiveEvent",
+    "AdaptiveEventKind",
+    "AdaptiveMicrostepAttempt",
+    "AdaptiveTrajectoryContext",
+    "CanonicalMacroInterval",
+    "TrajectoryRestartState",
+    "advance_canonical_macro_interval",
+    "source_conditioned_backward_euler_trial",
     "ScalarHistoryParityAudit",
     "ScalarHistoryOwnerSwapProblem",
     "ScalarHistoryOwnershipRegistry",
