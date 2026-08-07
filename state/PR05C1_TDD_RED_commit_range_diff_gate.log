@@ -1,0 +1,71 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__________ test_checker_rejects_whitespace_in_committed_feature_range __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-45/test_checker_rejects_whitespac0')
+
+    def test_checker_rejects_whitespace_in_committed_feature_range(tmp_path: Path) -> None:
+        repo, _ = _init_repo(tmp_path)
+        (repo / "sample.py").write_text("x = 1\n\n")
+        _git(repo, "add", "sample.py", "state/PATCH_BASE.json")
+        _git(repo, "commit", "-q", "-m", "bad feature")
+    
+        result = _run_checker(repo)
+    
+        assert result.returncode != 0
+>       assert "sample.py" in result.stdout + result.stderr
+E       assert 'sample.py' in ('' + "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n")
+E        +  where '' = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stdout
+E        +  and   "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stderr
+
+mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py:60: AssertionError
+__________ test_checker_ignores_recorded_state_logs_but_checks_source __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-45/test_checker_ignores_recorded_0')
+
+    def test_checker_ignores_recorded_state_logs_but_checks_source(tmp_path: Path) -> None:
+        repo, _ = _init_repo(tmp_path)
+        (repo / "state/evidence.log").write_text("captured output with spaces   \n")
+        _git(repo, "add", "state/PATCH_BASE.json", "state/evidence.log")
+        _git(repo, "commit", "-q", "-m", "evidence log")
+    
+        result = _run_checker(repo)
+    
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: /opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").returncode
+
+mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py:72: AssertionError
+______________ test_checker_rejects_uncommitted_source_whitespace ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-45/test_checker_rejects_uncommitt0')
+
+    def test_checker_rejects_uncommitted_source_whitespace(tmp_path: Path) -> None:
+        repo, _ = _init_repo(tmp_path)
+        _git(repo, "add", "state/PATCH_BASE.json")
+        _git(repo, "commit", "-q", "-m", "lock base")
+        (repo / "sample.py").write_text("x = 1  \n")
+    
+        result = _run_checker(repo)
+    
+        assert result.returncode != 0
+>       assert "sample.py" in result.stdout + result.stderr
+E       assert 'sample.py' in ('' + "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n")
+E        +  where '' = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stdout
+E        +  and   "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stderr
+
+mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py:85: AssertionError
+=========================== short test summary info ============================
+FAILED mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py::test_checker_rejects_whitespace_in_committed_feature_range - assert 'sample.py' in ('' + "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n")
+ +  where '' = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stdout
+ +  and   "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stderr
+FAILED mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py::test_checker_ignores_recorded_state_logs_but_checks_source - AssertionError: /opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory
+  
+assert 2 == 0
+ +  where 2 = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").returncode
+FAILED mnt/data/rec_bianchi_v062_recovery/repo/tests/test_commit_range_whitespace_policy.py::test_checker_rejects_uncommitted_source_whitespace - assert 'sample.py' in ('' + "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n")
+ +  where '' = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stdout
+ +  and   "/opt/pyvenv/bin/python: can't open file '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/opt/pyvenv/bin/python', '/mnt/data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_.../data/rec_bianchi_v062_recovery/repo/scripts/check_commit_range_whitespace.py': [Errno 2] No such file or directory\n").stderr
+3 failed in 3.75s

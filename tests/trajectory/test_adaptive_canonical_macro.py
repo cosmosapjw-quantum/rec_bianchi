@@ -396,4 +396,3 @@ def test_real_source_conditioned_macro_uses_typed_owner_and_commits_once() -> No
         event_generation=context.event_generation,
     )
     assert trajectory.TrajectoryRestartState.from_bytes(restart.to_bytes()).to_bytes() == restart.to_bytes()
-
