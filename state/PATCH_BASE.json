@@ -2,23 +2,22 @@
   "classification": "PATCH_BASE_LOCK_GIT_BUNDLE",
   "connector_verified_remote_main_commit": "27a4e097baf83fbca2b1befd5b780edbf460f020",
   "connector_verified_remote_main_tree": "5ee5af26f21f25a7878d308acf4934f4f99598a1",
-  "current_target_payload_head": "f06686267655450c9e1bbd9ed53d6083cf31e3c6",
-  "current_target_payload_note": "PR05B2 science and PR05B3 handoff committed; receipt-only seal commit follows. External bundle/final-verification receipt records exact final HEAD/tree.",
-  "current_target_payload_tree": "92d9c471f2dc3cda42f792ea25550045e88caac7",
-  "current_target_stage": "v0.60 PR-05B2 source-identical causal characteristic-history block",
-  "feature_exclusive_base_commit": "fef2278e174475ad524519a70ae629dd40e2e51d",
-  "feature_exclusive_base_stage": "exact author v0.59 PR05B1 endpoint",
-  "feature_exclusive_base_tree": "8752e6b9217a62ea54fdca5df0e9c5814fb023af",
+  "feature_exclusive_base_commit": "0687ba35c0dc41ce6dbc112012a993eb411bf30a",
+  "feature_exclusive_base_tree": "01e63220e8dd4be05dff64d2b7c20ae57f60a52c",
+  "feature_exclusive_base_stage": "exact author v0.60 PR05B2 endpoint",
+  "current_target_payload_head": "e3b92272c751f0e994e5655d21968f360434e066",
+  "current_target_payload_tree": "a398f91fbea47932c19b26a97ca8744d82c79aef",
+  "current_target_stage": "v0.61 PR-05B3 scalar history owner swap",
   "historical_cumulative_base_commit": "ced72558437c8d24dce0cb855259b5216549604d",
-  "historical_cumulative_base_stage": "v0.47 exact durable local ancestor",
   "historical_cumulative_base_tree": "faf9abf9a915fb790f55850e0233dd790f4a72fd",
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
   "planned_bundle_routes": [
-    "self_contained_feature_delivery_ref_v060",
-    "full_recovery_all_refs_v060"
+    "self_contained_feature_delivery_ref_v061",
+    "full_recovery_all_refs_v061"
   ],
-  "reason": "The v0.60 feature commits descend from exact author v0.59. The self-contained feature bundle and receipt isolate only the v0.60 range for cherry-pick onto fresh remote main; no remote history rewrite is permitted.",
-  "remote_main_route": "FETCH_FEATURE_BUNDLE_AND_CHERRY_PICK_ORDERED_V060_COMMITS_ON_FRESH_REMOTE_MAIN_BRANCH",
   "remote_main_stage": "v0.59 PR05B1 merged through PR #18 with CI success",
-  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
+  "remote_main_route": "FETCH_FEATURE_BUNDLE_AND_CHERRY_PICK_ORDERED_V061_COMMITS_ON_FRESH_REMOTE_MAIN_BRANCH",
+  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
+  "reason": "The v0.61 feature commits descend from exact author v0.60; a self-contained bundle and ordered receipt isolate the v0.61 range without rewriting remote history.",
+  "current_target_payload_note": "PR05B3 science and PR05C handoff committed; receipt-only seal commit follows. External bundle/final-verification receipt records exact final HEAD/tree."
 }
