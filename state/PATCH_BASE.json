@@ -1,7 +1,7 @@
 {
   "classification": "PATCH_BASE_LOCK_GIT_BUNDLE",
-  "connector_verified_remote_main_commit": "c3d246ca9911b392da8c955ee0cf9a90073f7317",
-  "connector_verified_remote_main_tree": "ae34bc8f6bb6ff80c06bf0ea453744b9aa9006ec",
+  "connector_verified_remote_main_commit": "796eabf6339b9a13355ccc61907a5314b9cd9196",
+  "connector_verified_remote_main_tree": "f6f7ef5f36917d6722e741aed705a6b4c7273955",
   "current_target_payload_head": "d92c21b5d59ef82cd773cfaeb139b51a2c39188d",
   "current_target_payload_note": "Science, recovery hardening and PR05C2 handoff are committed; this receipt-only seal commit follows. External final receipt records exact final HEAD/tree.",
   "current_target_payload_tree": "bba26cd0274ea2f90127db7b64d4cd9f4b168b9f",
@@ -10,16 +10,16 @@
   "feature_exclusive_base_stage": "exact author v0.61 PR05B3 endpoint",
   "feature_exclusive_base_tree": "522a6881ab35d0346b47ce52f8fcc656f152f83d",
   "historical_cumulative_base_commit": "0687ba35c0dc41ce6dbc112012a993eb411bf30a",
-  "historical_cumulative_base_stage": "exact author v0.60 PR05B2 endpoint corresponding to current remote content stage",
+  "historical_cumulative_base_stage": "exact author v0.60 PR05B2 endpoint retained only as historical recovery convenience",
   "historical_cumulative_base_tree": "01e63220e8dd4be05dff64d2b7c20ae57f60a52c",
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
   "planned_bundle_routes": [
     "self_contained_feature_delivery_ref_v062_from_v061",
-    "self_contained_cumulative_delivery_ref_v061_v062_from_v060",
+    "thin_incremental_v062_with_exact_author_v061_prerequisite",
     "full_recovery_all_refs_v062"
   ],
-  "reason": "Remote main is at merged v0.60 while reconstructed v0.62 descends from exact author v0.61. Separate incremental and cumulative Git-bundle routes avoid rewriting integration history.",
-  "remote_main_route": "FETCH_V061_AND_V062_ORDERED_COMMITS_OR_USE_CUMULATIVE_FROM_V060_BUNDLE_ON_FRESH_REMOTE_MAIN_BRANCH",
-  "remote_main_stage": "v0.60 PR05B2 merged through PR #19 with CI success",
+  "reason": "Remote main advanced to merged v0.61 during recovery. v0.62 descends from exact author v0.61 and is delivered as self-contained and thin incremental Git bundles.",
+  "remote_main_route": "CREATE_BRANCH_FROM_FRESH_REMOTE_MAIN_AND_APPLY_ONLY_V062_FEATURE_COMMITS",
+  "remote_main_stage": "v0.61 PR05B3 scalar history owner swap merged through PR #20 with CI success",
   "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
 }

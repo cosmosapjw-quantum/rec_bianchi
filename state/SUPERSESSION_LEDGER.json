@@ -180,6 +180,16 @@
       "new": "all-trial acceptance requiring the full step and both half steps independently to satisfy convergence, positivity, backward-error and algebraic-residual gates",
       "old": "v0.62 step-doubling acceptance gated positivity and residual tolerances only on the full backward-Euler trial",
       "reason": "the two-half-step solution is the accepted high-accuracy state; accepting it after a failed half-step diagnostic would make the error estimator scientifically inconsistent"
+    },
+    {
+      "new": "feature-base-aware policy checking `feature_base...HEAD`, staged changes and unstaged changes, excluding only verbatim evidence logs under `state/*.log`",
+      "old": "v0.62 receipt field `git_diff_check: PASS` produced by `git diff --check` on a clean working tree, which did not inspect the committed feature range",
+      "reason": "PR #20 review demonstrated that a clean working-tree diff can pass while committed source still contains whitespace errors; the old receipt was not load-bearing evidence"
+    },
+    {
+      "new": "a whitespace-clean test file plus a TDD-verified repository-wide commit-range gate invoked by `verify_repo.py --quick`",
+      "old": "the extra blank line at EOF in `tests/trajectory/test_adaptive_canonical_macro.py` committed during the first v0.62 reconstruction",
+      "reason": "the defect was harmless to physics but proved the previous delivery gate did not inspect committed changes"
     }
   ]
 }

@@ -29,3 +29,17 @@ The source-conditioned rank-one DAE controller, canonical macro history transact
 - `archive/bundles/Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62.zip`
 - SHA-256 `294f390aa3094092b9c54885c0fa1b305b845e2b2e7f7d5df89d16d3f4929348`
 - size `24961` bytes
+
+## Post-recovery delivery-gate hardening
+
+GitHub PR #20 independently exposed that the first v0.62 seal had recorded
+`git diff --check: PASS` using the working-tree/index form, which is vacuous on
+a clean checkout and does not inspect committed feature changes. A direct
+`8a3b645...HEAD` range check found one extra blank line at EOF in
+`tests/trajectory/test_adaptive_canonical_macro.py`.
+
+The recovery now includes a TDD-verified policy that checks the committed
+feature range, staged changes and unstaged changes. Only `state/*.log` is
+excluded because those files preserve external command output verbatim. The
+policy is invoked by `verify_repo.py --quick`, so the same class of delivery
+receipt defect fails before the next release is sealed.

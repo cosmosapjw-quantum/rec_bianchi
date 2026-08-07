@@ -17,6 +17,7 @@ angle/frequency-resolved Ly-alpha transfer.
 - Deterministic Bianchi-shaped event inputs test rollback/restart semantics only;
   full COM-KHW/interface coupling and source-derived boundary speeds remain PR-05C2.
 - v0.62 was resealed from durable v0.61 bytes after an attachment-registration interruption; transcript-only v0.62 claims are superseded by the committed recovery receipts.
+- The recovery verifier now checks committed feature-range whitespace as well as staged and unstaged source changes; only verbatim `state/*.log` evidence is excluded.
 - Next stage: **PR-05C2 full coupled adaptive trajectory**.
 
 Start with:
@@ -25,6 +26,7 @@ Start with:
 ./scripts/bootstrap_sandbox.sh --offline
 python scripts/check_remote_state.py
 python scripts/check_hyrec_binary_hash_policy.py
+python scripts/check_commit_range_whitespace.py
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
@@ -53,9 +55,9 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #19 at
-`c3d246ca9911b392da8c955ee0cf9a90073f7317`, tree
-`ae34bc8f6bb6ff80c06bf0ea453744b9aa9006ec`; PR-head CI run 62 completed
+GitHub `main` contains merged PR #20 at
+`796eabf6339b9a13355ccc61907a5314b9cd9196`, tree
+`f6f7ef5f36917d6722e741aed705a6b4c7273955`; PR-head CI run 65 completed
 successfully. v0.62 is reconstructed on the exact author v0.61 lineage, so exact
 remote-tree identity is not assumed.
 

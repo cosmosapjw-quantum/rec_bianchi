@@ -397,8 +397,10 @@
     "canonical_dlna": 8.49e-05,
     "claim_scope": "SOURCE_CONDITIONED_RANK_ONE_DAE_ADAPTIVE_TRANSACTION_NOT_FULL_COUPLED_TRAJECTORY",
     "classification": "RUNTIME_INTERRUPTION_RECOVERY_DURABLE_VERIFIED",
+    "commit_range_whitespace_policy": "PASS_FEATURE_RANGE_STAGED_UNSTAGED_EXCLUDING_ONLY_STATE_LOGS",
     "controller_event_lane_count": 3,
     "controller_rejected_microsteps": 3,
+    "delivery_recovery_hardening": true,
     "event_count": 3,
     "event_restart_count": 3,
     "full_com_interface_coupling": false,
@@ -464,7 +466,8 @@
     "Adaptive eventful integration is PR-05C and full FLRW recombination-history parity is PR-06.",
     "PR-05B3 swaps only scalar Dfplus/Dfplus_Ly feedback. Sobolev escape, native A1s diffusion and completed/Schur Tvv remain canonical.",
     "The source-identical accepted history is fixed to the canonical uniform DLNA grid. PR-05C may adapt internal microsteps but must append history only at canonical macro endpoints unless it explicitly introduces and downgrades to a new transport discretization.",
-    "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2."
+    "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2.",
+    "Evidence logs under state/*.log may preserve upstream whitespace verbatim; committed source/test/script/docs whitespace is now checked over feature_base...HEAD, plus staged and unstaged changes, by a quick-gate policy."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -518,19 +521,19 @@
   },
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
-    "exact_remote_main_sha": "c3d246ca9911b392da8c955ee0cf9a90073f7317",
-    "exact_remote_main_tree": "ae34bc8f6bb6ff80c06bf0ea453744b9aa9006ec",
-    "latest_merged_pr": 19,
-    "latest_merged_pr_head": "91e5eb07a9df8b8bd5360c0aaf2a62a02bb72129",
-    "policy": "Fetch origin/main, fetch the self-contained v0.62 feature bundle, cherry-pick only receipt-listed commits not already present, run all gates, and never force-push.",
-    "remote_ci": "SUCCESS_RUN_62",
-    "remote_content_stage": "v0.60 PR05B2 causal characteristic history",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_DURING_V062_RECOVERY",
+    "exact_remote_main_sha": "796eabf6339b9a13355ccc61907a5314b9cd9196",
+    "exact_remote_main_tree": "f6f7ef5f36917d6722e741aed705a6b4c7273955",
+    "latest_merged_pr": 20,
+    "latest_merged_pr_head": "e7ade4277e46d455fb256060391124cfbdc1e60c",
+    "policy": "Create a branch from fresh origin/main. Apply only receipt-listed v0.62 commits. Use the self-contained feature bundle, or first import the exact author-v0.61 prerequisite object and then fetch the thin incremental bundle. Rerun every gate; never force-push.",
+    "remote_ci": "SUCCESS_RUN_65",
+    "remote_content_stage": "v0.61 PR05B3 scalar history owner swap",
+    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_AFTER_V062_RECOVERY_HARDENING",
     "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
   },
   "remote_sync": {
-    "push_policy": "OWNER_FETCHES_FEATURE_BUNDLE_CHERRY_PICKS_TO_REMOTE_MAIN_NO_FORCE_PUSH",
-    "reason": "Connector verification during v0.62 recovery found merged PR #19/v0.60 on remote main. Exact author v0.61 and reconstructed v0.62 are delivered through an ordered self-contained feature Git bundle.",
+    "push_policy": "OWNER_FETCHES_V062_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
+    "reason": "Remote main now includes merged PR #20/v0.61; only v0.62 feature commits remain to be applied.",
     "remote_ref_verified": true,
     "remote_tree_match": false,
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git"

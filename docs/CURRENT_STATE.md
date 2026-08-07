@@ -13,3 +13,6 @@
 ## Recovery note
 
 The first v0.62 delivery reached local Git/artifact generation but its conversation attachment registration failed. The generated-file registry therefore omitted v0.62 even though Git objects and bundle bytes survived in the runtime. Recovery inventoried those bytes, reproduced the stage from v0.61, found and fixed an all-trial step-doubling gate defect, regenerated the immutable artifact, and requires fresh final receipts and bundle replay before release.
+
+- Committed feature-range whitespace, staged changes and unstaged changes are now checked by `scripts/check_commit_range_whitespace.py`; only verbatim `state/*.log` evidence is excluded.
+- Current remote routing baseline is merged PR #20/v0.61; v0.62 remains local delivery only.

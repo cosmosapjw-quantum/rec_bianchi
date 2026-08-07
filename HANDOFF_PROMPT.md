@@ -14,6 +14,7 @@ Next bounded task: **PR-05C2 full coupled adaptive trajectory**.
    ./scripts/bootstrap_sandbox.sh --offline
    python scripts/check_remote_state.py
    python scripts/check_hyrec_binary_hash_policy.py
+   python scripts/check_commit_range_whitespace.py
    python scripts/verify_repo.py --quick
    pytest -q -m "not slow"
    ```
@@ -21,7 +22,8 @@ Next bounded task: **PR-05C2 full coupled adaptive trajectory**.
    - `state/PROJECT_STATE.json`
    - `state/PR05C1_RUNTIME_RECOVERY_INVENTORY.json`
    - `state/PR05C1_RECOVERY_RECEIPT.json`
-   - `state/PR19_REMOTE_BASE_RECEIPT.json` when present
+   - `state/PR20_REMOTE_BASE_RECEIPT.json` when present
+   - `state/PR19_REMOTE_BASE_RECEIPT.json` as stage-start evidence
    - `state/ORIGINAL_HYREC_CANONICAL_PROVENANCE.json`
    - `state/REMOTE_CHECK_LATEST.json`
    - `state/SUPERSESSION_LEDGER.json`
@@ -38,7 +40,7 @@ Next bounded task: **PR-05C2 full coupled adaptive trajectory**.
    - `archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/HARD_GATE_LEDGER.json`
    - `archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/PR05B3_ledger.json`
    - the v0.60 through v0.51 ledgers in reverse chronological order.
-3. Use Git state, canonical bytes, hashes, ledgers, tests and connector receipts; transcript claims are not evidence. The first v0.62 transcript completion and the later no-local-bytes conclusion are both superseded by the committed recovery inventory and fresh seal receipts.
+3. Use Git state, canonical bytes, hashes, ledgers, tests and connector receipts; transcript claims are not evidence. The committed-range whitespace gate is load-bearing; a clean working-tree-only `git diff --check` is not evidence. The first v0.62 transcript completion and the later no-local-bytes conclusion are both superseded by the committed recovery inventory and fresh seal receipts.
 4. Preserve metric `(-,+,+,+)`, ordinary frequency in Hz, explicit `c,h,k_B`, homogeneous scalar background, tetrad+1+3, all 11 Bianchi types, finite tilt and nonlinear large shear.
 5. Canonical original HyRec is `archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip`, SHA-256 `48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27`.
 6. Do not revive superseded routes: no direct native-to-COM remap, fitted normalization, inferred source cells, silent high-resolution substitution, broad-cell centroid face energy, cross-redshift summation, interpretation of `DAlpha` as a derivative, centre-derived/fitted native local transient mass, mutation of history during rejected attempts, derivatives through discrete characteristic-stencil switches, or simultaneous canonical and typed scalar-history owners.
