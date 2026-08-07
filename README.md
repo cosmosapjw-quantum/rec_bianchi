@@ -7,17 +7,17 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05B3 / v0.61**.
-- Scalar `Dfplus`/`Dfplus_Ly` feedback now has a fail-closed XOR owner registry.
-- After exact componentwise source parity, typed characteristic history is the
-  sole active Python production owner; the canonical callback remains an
-  isolated audit oracle.
-- Accepted-step commit is exactly once; reject, rollback and restart preserve
-  exact parent bytes. Shifted JVP, positivity, photon-number/redshift-energy,
-  zero atom-source and Bianchi firewall gates pass at `z~1300,1100,900`.
-- Sobolev Ly-alpha escape, native `A1s` diffusion and completed/Schur `Tvv`
-  remain canonical. PR-05 remains in progress.
-- Next stage: **PR-05C canonical-output-grid adaptive short trajectory**.
+- Durable stage: **PR-05C1 / v0.62**.
+- Original-HyRec accepted radiation history remains on its exact canonical
+  `DLNA=8.49e-5` macro grid.
+- Adaptive backward-Euler trial steps, rejection and event restart occur only
+  inside one canonical macro interval; a successful macro endpoint commits
+  exactly one history slice.
+- Source-conditioned rank-one DAE lanes near `z~1300,1100,900` pass positivity,
+  backward-error, algebraic and restart gates.
+- Deterministic Bianchi-shaped event inputs test rollback/restart semantics only;
+  full COM-KHW/interface coupling and source-derived boundary speeds remain PR-05C2.
+- Next stage: **PR-05C2 full coupled adaptive trajectory**.
 
 Start with:
 
@@ -32,7 +32,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C_ADAPTIVE_SHORT_TRAJECTORY_PLAN.md`](docs/PR05C_ADAPTIVE_SHORT_TRAJECTORY_PLAN.md).
+[`docs/PR05C2_FULL_COUPLED_ADAPTIVE_PLAN.md`](docs/PR05C2_FULL_COUPLED_ADAPTIVE_PLAN.md).
 
 ## Canonical source
 
@@ -53,15 +53,15 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #18 at
-`27a4e097baf83fbca2b1befd5b780edbf460f020`, tree
-`5ee5af26f21f25a7878d308acf4934f4f99598a1`; PR-head CI run 57 completed
-successfully. v0.61 is developed on the exact author v0.60 lineage, so exact
+GitHub `main` contains merged PR #19 at
+`c3d246ca9911b392da8c955ee0cf9a90073f7317`, tree
+`ae34bc8f6bb6ff80c06bf0ea453744b9aa9006ec`; PR-head CI run 62 completed
+successfully. v0.62 is reconstructed on the exact author v0.61 lineage, so exact
 remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
 commit receipt, plus a full recovery Git bundle. Create a branch from fresh
-`origin/main`, cherry-pick only the receipt-listed v0.61 commits, rerun all
+`origin/main`, cherry-pick only the receipt-listed v0.62 commits, rerun all
 gates, and never rewrite shared history.
 
 ## Test tiers
@@ -69,5 +69,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.61 regeneration: `python scripts/run_pr05b3_owner_swap_stage.py`.
+- v0.62 regeneration: `python scripts/run_pr05c1_adaptive_macro_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.

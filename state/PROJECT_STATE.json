@@ -1,252 +1,55 @@
 {
-  "classification": "DURABLE_PROJECT_STATE",
-  "project": "Full Bianchi–HyRec scalar completion",
-  "repository": "cosmosapjw-quantum/rec_bianchi",
-  "state_date": "2026-08-07",
-  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
-  "estimated_overall_completion_percent": 97,
-  "estimated_PR01_completion_percent": 100,
-  "estimated_PR02_completion_percent": 100,
-  "estimated_PR03_completion_percent": 100,
-  "estimated_PR04_completion_percent": 100,
-  "current_durable_stage": {
-    "name": "PR-05B3 scalar characteristic-history owner swap",
-    "artifact": "Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61",
-    "status": "PASS_PR05B3_SCALAR_HISTORY_OWNER_SWAP_PR05C_NEXT"
-  },
-  "next_stage": {
-    "name": "PR-05C canonical-output-grid adaptive short trajectory",
-    "entry_gate": "PR05B3_SCALAR_HISTORY_OWNER_SWAP_PASS",
-    "tasks": [
-      "Keep the original-HyRec accepted radiation history on its exact canonical uniform DLNA macro grid.",
-      "Advance the rank-one DAE, COM collision state and interface through adaptive internal microsteps without mutating accepted history.",
-      "Commit exactly one outgoing history slice only at each successful canonical macro endpoint; reject/rollback leaves parent bytes unchanged.",
-      "Localize boundary-speed, characteristic-stencil and coefficient discontinuities, then restart the integrator with a conservative post-event step.",
-      "Close componentwise positivity, shifted-JVP, backward-error, number/energy/four-force, refinement, restart and Bianchi firewall gates in short z~1300,1100,900 windows."
-    ]
-  },
-  "roadmap": [
-    {
-      "pr": 1,
-      "title": "Exact recoil event and four-force",
-      "status": "COMPLETE"
-    },
-    {
-      "pr": 2,
-      "title": "Nonlinear anisotropic Bose collision",
-      "status": "COMPLETE"
-    },
-    {
-      "pr": 3,
-      "title": "Full scalar COM–KHW amplitude",
-      "status": "COMPLETE"
-    },
-    {
-      "pr": 4,
-      "title": "HYREC common measure and split-domain exchange contract",
-      "status": "COMPLETE_OPERATOR_CONTRACT_V057"
-    },
-    {
-      "pr": 5,
-      "title": "Primitive HYREC operator and background interface",
-      "status": "IN_PROGRESS_PR05A_PR05B1_PR05B2_PR05B3_COMPLETE_PR05C_NEXT"
-    },
-    {
-      "pr": 6,
-      "title": "FLRW monolithic parity",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 7,
-      "title": "Bianchi II class-A regression",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 8,
-      "title": "Class-B regression",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 9,
-      "title": "Exceptional VI_-1/9 regression",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 10,
-      "title": "All-11 automated sweep",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 11,
-      "title": "Equation, proof, and provenance census",
-      "status": "PLANNED"
-    },
-    {
-      "pr": 12,
-      "title": "Performance, restart, and release integration",
-      "status": "PLANNED"
-    }
-  ],
-  "hard_scope": {
-    "included": [
-      "homogeneous backgrounds",
-      "all 11 Bianchi types",
-      "nonlinear large shear",
-      "finite tilt",
-      "tetrad and 1+3 formalism",
-      "scalar HYREC-grade recombination and Ly-alpha transfer"
-    ],
-    "excluded_from_12_PR_scalar_release": [
-      "fine structure",
-      "J-state interference",
-      "polarization",
-      "atomic alignment"
-    ]
-  },
-  "locked_architecture": {
-    "geometry_interface": "BackgroundSnapshot physical tetrad characteristics",
-    "microphysics_firewall": "local scalar collision/common-measure microphysics is Bianchi-type independent",
-    "boundary_events": "all directional boundary-speed zeros are localized inside the timestep",
-    "angular_policies": {
-      "finite_or_mixed_tilt": 12,
-      "nonlinear_even_shear": 20,
-      "directional_crossing": 24
-    },
-    "nonlinear_update": "log-occupation backward Euler with exact analytic JVP",
-    "conservation": "Physical collision events accumulate photon/atom four-force with opposite sign; pure representation crossings conserve native/COM photon number and exact face energy with zero interface atom source.",
-    "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference",
-    "physical_common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
-    "native_original_hyrec_proxy": "v0.52 dimensionless reversible 80-bin-plus-2p diagnostic with exact original-C/Schur parity",
-    "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not physical finite-volume photon cells; centre overlap and fitted normalization remain forbidden",
-    "native_physical_edge_flux": "v0.53 source-identical map N_y=8*pi*nu^3*Delta f/(c^3*n_H) and exact x_1s*Gamma*(f_eq-fbar)=H*A*(fminus-fplus) edge identity",
-    "native_common_partition_result": "v0.54 direct positive native-to-17-cell equality rejected: support M2/M0 obstruction and exact rank-5/nullity-12 identifiability no-go",
-    "next_exchange_architecture": "v0.55/v0.56 split-domain full-support original-HyRec plus 35-state COM-KHW coupling through single-owner exact-face number/energy packets.",
-    "coupled_boundary_adapter": "FR00 index 29 and FB02 index 34 are exact byte-locked outer owners; packet number is deposited as sigma*n_H*q/g_cell and exact face energy is retained with an unresolved cell-centroid correction.",
-    "coupled_interface_solver": "log-positive monolithic backward-Euler collision/interface residual with analytic matrix-free JVP and exact restart state.",
-    "coupled_convergence_gate": "strict net-residual Newton first; after documented line-search stagnation only, require gross-term normwise backward error and independent photon-number closure both below 1e-11.",
-    "delivery_policy": "self-contained feature Git bundle with ordered feature commits plus full recovery Git bundle; mbox/raw binary diff delivery superseded.",
-    "common_interface_ledger": "v0.57 typed ordered z~1300/1100/900 ledger with exactly six packets, complete SHA-256 provenance and maximum componentwise violation; cross-snapshot sums and averages are forbidden.",
-    "pr04_claim_boundary": "PR-04 is complete only at the source-conditioned scalar split-domain operator-contract level; q_activity=1 remains an unfitted operator-verification state, not a native-derived trajectory.",
-    "next_trajectory_architecture": "PR-05B2 implements source-identical causal characteristic history and accepted-step append/rollback; it does not invent a local native-radiation timescale.",
-    "primitive_rate_adapter": "v0.58 byte-locked original-HyRec Alpha/delta-alpha/Beta/R2p2s and A1s/A2s/A3s3d/A4s4d registry with source-order cubic interpolation, SI boundary and analytic JVP.",
-    "delta_alpha_semantics": "Canonical DAlpha is Alpha(Tm,Tr)-Alpha(Tr,Tr), not a derivative; cancellation-amplified raw relative error is diagnostic and hard parity uses the gross alpha scale.",
-    "pr05a_dae_boundary": "v0.58 projects the canonical native real/virtual algebraic constraint and evaluates the interface-off COM Bose equilibrium; dynamic native/atomic trajectories remain PR-05B.",
-    "pr05b1_source_identifiable_state_split": "v0.59 local eta=ln(a) mass matrix has rank one: xe differential; 2s/2p and 311 virtual departures algebraic; Dfminus/Dfminus_Ly/Dfnu are accepted-step causal memory outside the local mass matrix.",
-    "native_local_time_measure_result": "v0.59 PASS_BOUNDED_NO_GO: canonical centre frequencies and integrated rates do not identify finite dln(nu) support, cell edges or spike shape; two admissible narrow supports yield masses differing by exactly a factor of two and share the zero-width algebraic limit.",
-    "pr05b2_history_architecture": "typed accepted eta grid plus Dfminus_hist[311], Dfminus_Ly_hist[3], Dfnu_hist[311], source-order interpolation, no future endpoints, mutation only after accepted steps.",
-    "pr05b2_causal_history": "v0.60 exact 313-query fplus_from_fminus registry on immutable accepted eta history, deterministic source-history NPZ, transactional append/reject/rollback/restart and analytic fixed-stencil JVP.",
-    "pr05b2_transaction_policy": "history mutation is permitted only after a successful accepted step; future endpoints and discrete stencil switches fail closed, and switches require event localization/restart.",
-    "pr05b2_conservation": "free characteristic propagation preserves photon number per H through nu^3/n_H invariance; photon-energy change is cosmological redshift work and the atom source is exactly zero.",
-    "pr05b3_scalar_history_owner_swap": "v0.61 XOR registry with typed characteristic history as the sole active Python production owner after exact componentwise canonical parity; canonical callback retained only as an audit oracle.",
-    "pr05b3_transaction": "candidate-only nonlinear attempts, exactly-once accepted commit, byte-exact reject/rollback/restart, deterministic transaction payload carrying local state and COM restart data.",
-    "pr05b3_unchanged_owners": "Sobolev Ly-alpha escape, native A1s diffusion and completed/Schur Tvv remain canonical and active.",
-    "pr05c_next": "retain the canonical uniform DLNA accepted-history grid as macro output surfaces; allow adaptive DAE/collision microsteps only inside each macro interval, with no history mutation before a successful macro endpoint."
-  },
-  "PR04B1_input_lock": {
-    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
-    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
-    "size_bytes": 726954,
-    "zip_entries": 29,
-    "zip_integrity": "PASS",
-    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
-    "independent_official_remote_byte_equality": "NOT_REQUIRED_FOR_PROJECT_PROVENANCE_OWNER_ATTESTED_CANONICAL_BYTES",
-    "metadata_policy": "Internal May/October source and ZIP metadata differences are intrinsic to the canonical release."
-  },
   "PR04B1_evidence": {
+    "C_python_rate_relative_residual": 1.2158213772169615e-16,
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Schur_vs_direct_relative_difference": 2.2864995744107797e-15,
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "analytic_JVP_relative_residual": 9.9511751205898e-17,
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B1_original_HyRec_native_map_v0_52.zip",
     "artifact_bundle_sha256": "fcceb03dc0c96f574bc4e24b7426b98b083462a8ae1d70293243cb1556801ab5",
     "artifact_bundle_size_bytes": 208538,
-    "portable_binary_sha256": "a5ebb0e67b58f5d85f3387458eb96025f93b5b53b1ce4fd76c3a160c51d4b733",
     "baseline_output_sha256": "9fdee53a363aeb3b7c6963564543089e1b5ed91e39b0d4471efd052aa66b6485",
-    "C_python_rate_relative_residual": 1.2158213772169615e-16,
-    "original_C_vs_pinned_C3B1_max_relative_residual": 4.335460715534056e-11,
     "direct_matrix_relative_residual": 9.991851847655775e-14,
-    "original_C_vs_direct_solution_relative_difference": 1.03389545973357e-14,
-    "Schur_vs_direct_relative_difference": 2.2864995744107797e-15,
-    "native_column_relative_residual": 1.389601710598079e-16,
-    "native_equilibrium_relative_residual": 1.0625487481896791e-15,
-    "native_moment_max_exchange_parity_residual": 2.4322169218010385e-15,
-    "analytic_JVP_relative_residual": 9.9511751205898e-17,
-    "implicit_minimum_proxy_state": 3.593077484814617e-18,
-    "implicit_proxy_number_relative_change": 0.0,
-    "physical_number_map_relative_residual": 0.005243277338650812,
-    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
-    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
     "fallbacks": [
       "original source C execution",
       "NumPy dense and Schur linear algebra",
       "central-difference JVP regression"
-    ]
+    ],
+    "implicit_minimum_proxy_state": 3.593077484814617e-18,
+    "implicit_proxy_number_relative_change": 0.0,
+    "native_column_relative_residual": 1.389601710598079e-16,
+    "native_equilibrium_relative_residual": 1.0625487481896791e-15,
+    "native_moment_max_exchange_parity_residual": 2.4322169218010385e-15,
+    "original_C_vs_direct_solution_relative_difference": 1.03389545973357e-14,
+    "original_C_vs_pinned_C3B1_max_relative_residual": 4.335460715534056e-11,
+    "physical_number_map_relative_residual": 0.005243277338650812,
+    "portable_binary_sha256": "a5ebb0e67b58f5d85f3387458eb96025f93b5b53b1ce4fd76c3a160c51d4b733"
   },
-  "known_limitations": [
-    "A finite local differential mass for original-HyRec virtual spikes is not source-identifiable from the canonical archive. v0.59 therefore keeps the 311 virtual rows algebraic and treats radiation time dependence through causal accepted-step history.",
-    "PR-04 closes at the source-conditioned operator-contract level only. The q_activity=1 COM state is not a reconstructed physical native/COM trajectory.",
-    "Full trajectory integration remains PR-05 scope; FLRW x_e(z) and visibility-history parity remain PR-06 scope.",
-    "The v0.56 snapshot solves use physical native face packets with an unfitted q_activity=1 COM Bose-Einstein reference state; they verify the operator but are not a reconstructed physical native/COM trajectory.",
-    "The dilute-occupation-normalized net residual stalls at 1.73712431307357e-10 from float64 cancellation. It is retained as a diagnostic; acceptance requires gross backward error and independent number closure below 1e-11 after strict Newton stagnation.",
-    "A pure computational representation crossing has zero atomic source. Atomic recoil remains owned by physical collision terms.",
-    "Four of six source-identical packet reconstructions use the current already-solved HyRec history endpoint. Future endpoints remain forbidden.",
-    "PR-04B2B proves that the full or diffusion-only positive native measure cannot be represented on the v0.51 17-cell core while preserving M0 and M2.",
-    "After support restriction, moments M0 through M4 leave a 12-dimensional null space for seventeen target masses; a unique projection requires additional physics and cannot be called canonical by default.",
-    "The canonical runtime archive supplies centre values and width-integrated rates but no explicit numerical edge array, dedicated table-generator member or bundled-table write path.",
-    "Direct multi-snapshot native/COM state-vector parity remains blocked; PR-04C3 may close only the explicitly bounded operator contract or issue a second no-go.",
-    "Full trajectory integration is PR-05 and FLRW history parity is PR-06.",
-    "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
-    "PR-05A retains the original-HyRec native radiation block as an algebraic DAE constraint; genuine native/real-population time derivatives are PR-05B.",
-    "The q_activity=1 COM state remains an interface-off operator-verification equilibrium, not a source-derived physical COM trajectory.",
-    "Raw delta-alpha relative discrepancies near Tm=Tr are cancellation-amplified; gross-scale parity is the hard source/interpolation gate and the raw values remain disclosed.",
-    "Adaptive eventful integration is PR-05C and full FLRW recombination-history parity is PR-06.",
-    "PR-05B3 swaps only scalar Dfplus/Dfplus_Ly feedback. Sobolev escape, native A1s diffusion and completed/Schur Tvv remain canonical.",
-    "The source-identical accepted history is fixed to the canonical uniform DLNA grid. PR-05C may adapt internal microsteps but must append history only at canonical macro endpoints unless it explicitly introduces and downgrades to a new transport discretization."
-  ],
-  "remote_sync": {
-    "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git",
-    "remote_ref_verified": true,
-    "remote_tree_match": false,
-    "push_policy": "OWNER_FETCHES_FEATURE_BUNDLE_CHERRY_PICKS_TO_REMOTE_MAIN_NO_FORCE_PUSH",
-    "reason": "Connector verification at PR-05B3 start found merged PR #18/v0.59 on remote main. v0.61 descends from exact author v0.60 and is delivered as an ordered feature Git bundle rather than claiming remote-tree identity."
-  },
-  "remote_repository_status": {
-    "exact_remote_main_sha": "27a4e097baf83fbca2b1befd5b780edbf460f020",
-    "exact_remote_main_tree": "5ee5af26f21f25a7878d308acf4934f4f99598a1",
-    "latest_merged_pr": 18,
-    "latest_merged_pr_head": "ba66b99363967c5a827fd9317f735762d6dea26a",
-    "remote_content_stage": "v0.59 PR05B1 source-identifiable DAE audit",
-    "remote_ci": "SUCCESS_RUN_57",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_AT_V061_STAGE_START",
-    "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE",
-    "policy": "Fetch origin/main, fetch the self-contained v0.61 feature bundle, cherry-pick receipt-listed commits, run all gates, and never force-push."
+  "PR04B1_input_lock": {
+    "classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
+    "independent_official_remote_byte_equality": "NOT_REQUIRED_FOR_PROJECT_PROVENANCE_OWNER_ATTESTED_CANONICAL_BYTES",
+    "metadata_policy": "Internal May/October source and ZIP metadata differences are intrinsic to the canonical release.",
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "size_bytes": 726954,
+    "zip_entries": 29,
+    "zip_integrity": "PASS"
   },
   "PR04B2A_evidence": {
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Schur_moment_max_relative_residual": 7.540754451874523e-14,
+    "Schur_vs_direct_solution_relative_residual": 1.1881452091534302e-15,
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
+    "analytic_JVP_relative_residual": 4.156564278673473e-09,
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53.zip",
     "artifact_bundle_sha256": "42a05352871a21c2d082d5cdf47e936346c3727a365292a9108b5a49ce736f87",
     "artifact_bundle_size_bytes": 509805,
     "canonical_archive_classification": "OFFICIAL_SITE_CANONICAL_ARCHIVE_OWNER_ATTESTED_BYTE_LOCKED",
     "canonical_binary_sha256": "a5ebb0e67b58f5d85f3387458eb96025f93b5b53b1ce4fd76c3a160c51d4b733",
     "canonical_history_sha256": "9fdee53a363aeb3b7c6963564543089e1b5ed91e39b0d4471efd052aa66b6485",
-    "guard_off_binary_identical": true,
-    "guard_off_history_identical": true,
-    "guard_on_history_identical": true,
-    "snapshot_z": 1099.9986525171403,
-    "snapshot_xe": 0.1449299966903522,
-    "snapshot_TM_over_TR": 0.9999895025729527,
-    "tau_relation_relative_residual": 2.25121753226488e-16,
-    "source_structural_edge_identity_relative_residual": 5.971386931969449e-12,
-    "stable_structural_edge_identity_relative_residual": 3.413781689897925e-15,
     "dense_matrix_relative_residual": 2.1714866434858067e-14,
-    "source_vs_direct_solution_relative_residual": 3.5248307871551763e-15,
-    "Schur_vs_direct_solution_relative_residual": 1.1881452091534302e-15,
-    "direct_moment_max_relative_residual": 1.2501468500308307e-13,
-    "Schur_moment_max_relative_residual": 7.540754451874523e-14,
-    "analytic_JVP_relative_residual": 4.156564278673473e-09,
-    "implicit_minimum_occupation": 4.0420736778862856e-19,
-    "same_event_energy_absolute_residual_W_per_H": 0.0,
-    "high_precision_edge_identity_relative_residual": 2.2140026367996046e-101,
-    "native_centres_inside_v051_core": 2,
     "direct_COM_KHW_native_parity": "OPEN_FAIL_CLOSED",
-    "validation_deviation": "The initial <1e-12 nearest-grid/public-output interpolation diagnostic was not met; observed xe and Tm/Tr residuals are 5.992e-11 and 1.478e-10. Exact history hashes and internal-snapshot physical gates remain load-bearing.",
-    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
-    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "direct_moment_max_relative_residual": 1.2501468500308307e-13,
     "fallbacks": [
       "canonical original-HyRec C compile and full trajectory execution",
       "SymPy exact edge identity",
@@ -254,185 +57,193 @@
       "NumPy dense and structured-Schur linear algebra",
       "central-difference JVP regression"
     ],
+    "guard_off_binary_identical": true,
+    "guard_off_history_identical": true,
+    "guard_on_history_identical": true,
+    "high_precision_edge_identity_relative_residual": 2.2140026367996046e-101,
+    "implicit_minimum_occupation": 4.0420736778862856e-19,
+    "native_centres_inside_v051_core": 2,
+    "same_event_energy_absolute_residual_W_per_H": 0.0,
+    "snapshot_TM_over_TR": 0.9999895025729527,
+    "snapshot_xe": 0.1449299966903522,
+    "snapshot_z": 1099.9986525171403,
     "software_verification_pre_git_seal": {
       "artifact_verifier": "PASS",
-      "repository_quick": "PASS",
-      "repository_all": "PASS",
       "fast_tests": "96 passed, 24 deselected",
-      "slow_scientific_tests": "24 passed across 8 files",
+      "repository_all": "PASS",
+      "repository_quick": "PASS",
       "scientific_verifier": "PASS",
-      "slow_execution_policy": "one isolated interpreter per slow node"
-    }
+      "slow_execution_policy": "one isolated interpreter per slow node",
+      "slow_scientific_tests": "24 passed across 8 files"
+    },
+    "source_structural_edge_identity_relative_residual": 5.971386931969449e-12,
+    "source_vs_direct_solution_relative_residual": 3.5248307871551763e-15,
+    "stable_structural_edge_identity_relative_residual": 3.413781689897925e-15,
+    "tau_relation_relative_residual": 2.25121753226488e-16,
+    "validation_deviation": "The initial <1e-12 nearest-grid/public-output interpolation diagnostic was not met; observed xe and Tm/Tr residuals are 5.992e-11 and 1.478e-10. Exact history hashes and internal-snapshot physical gates remain load-bearing."
   },
   "PR04B2B_evidence": {
+    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
     "artifact_bundle": "Full_Bianchi_HyRec_PR04B2B_native_common_partition_no_go_v0_54.zip",
     "artifact_bundle_sha256": "5a0d9c66d93beb742020d40b8e983f710f41ea12ff1ca8ff74d5c9427ce62bc7",
     "artifact_bundle_size_bytes": 88095,
-    "runtime_data_sha256": "e91897172afa85a961630de7a9bc99304ea461b147a5fbf9d94c54afc8a610ae",
-    "runtime_data_size_bytes": 53642,
-    "production_table_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
-    "production_table_shape": [
-      311,
-      5
-    ],
-    "high_resolution_table_sha256": "db201c729a38c7919172cf080c8ba44cdf8e6b131a6eaa8adcbc9e58fd4d0c93",
-    "high_resolution_table_shape": [
-      1493,
-      5
-    ],
-    "exact_common_production_centres": 0,
-    "production_diffusion_centres_inside_core": 2,
-    "high_resolution_diffusion_centres_inside_core": 2,
-    "target_support_M2_over_M0_bound": 18.0625,
-    "full_native_M2_over_M0": 134470774.9773356,
-    "diffusion80_native_M2_over_M0": 21808.728753005056,
-    "full_support_violation_factor": 7444748.78767256,
-    "diffusion_support_violation_factor": 1207.4036679864391,
-    "core_mass_fraction_of_full": 0.0017361780045445255,
     "core_mass_fraction_of_diffusion80": 0.006550012987972702,
-    "exact_target_moment_rank": 5,
-    "exact_target_moment_nullity": 12,
-    "positive_witness_minimum_weight": 0.047058823529411764,
-    "positive_witness_moment_residual": 1.4210854715202004e-14,
+    "core_mass_fraction_of_full": 0.0017361780045445255,
+    "diffusion80_native_M2_over_M0": 21808.728753005056,
+    "diffusion_support_violation_factor": 1207.4036679864391,
     "direct_native_to_17_cell_map": "REJECTED_BY_SUPPORT_AND_IDENTIFIABILITY",
-    "multi_snapshot_direct_parity": "BLOCKED_NOT_FABRICATED",
-    "Wolfram_connector": "UNAVAILABLE_IN_RUNTIME",
-    "Precise_Special_Functions_connector": "UNAVAILABLE_IN_RUNTIME",
+    "exact_common_production_centres": 0,
+    "exact_target_moment_nullity": 12,
+    "exact_target_moment_rank": 5,
     "fallbacks": [
       "SymPy exact rational rank/null-space proof",
       "mpmath 100-digit support re-summation",
       "NumPy SVD positive witness",
       "SciPy HiGHS nonnegative feasibility controls",
       "direct canonical ZIP/source/table audit"
-    ]
+    ],
+    "full_native_M2_over_M0": 134470774.9773356,
+    "full_support_violation_factor": 7444748.78767256,
+    "high_resolution_diffusion_centres_inside_core": 2,
+    "high_resolution_table_sha256": "db201c729a38c7919172cf080c8ba44cdf8e6b131a6eaa8adcbc9e58fd4d0c93",
+    "high_resolution_table_shape": [
+      1493,
+      5
+    ],
+    "multi_snapshot_direct_parity": "BLOCKED_NOT_FABRICATED",
+    "positive_witness_minimum_weight": 0.047058823529411764,
+    "positive_witness_moment_residual": 1.4210854715202004e-14,
+    "production_diffusion_centres_inside_core": 2,
+    "production_table_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+    "production_table_shape": [
+      311,
+      5
+    ],
+    "runtime_data_sha256": "e91897172afa85a961630de7a9bc99304ea461b147a5fbf9d94c54afc8a610ae",
+    "runtime_data_size_bytes": 53642,
+    "target_support_M2_over_M0_bound": 18.0625
   },
   "PR04C0C1A_evidence": {
+    "Precise_Special_Functions": "USED_100_DIGIT_ZETA_AND_GAMMA",
+    "Wolfram": "USED_SYMBOLIC",
     "artifact_bundle": "Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55.zip",
     "artifact_bundle_sha256": "5c5cb9aca8ad1a90667d1c72b371d4296bb4d6186b8bce1ae4079150d1a9f586",
     "artifact_bundle_size_bytes": 214433,
+    "current_history_endpoint_uses": 4,
+    "geometry_firewall_residual": 0.0,
+    "interface_atom_source_W_per_H": 0.0,
+    "maximum_reconstruction_relative_residual": 1.6537648327370854e-16,
+    "maximum_total_number_flux_per_H_s": 8.859343319670963e-14,
+    "minimum_total_number_flux_per_H_s": 1.6796324053145323e-15,
+    "minimum_total_occupation": 4.579328929122558e-16,
+    "number_ledger_residual_per_H_s": 0.0,
+    "packet_count": 6,
+    "photon_energy_ledger_residual_W_per_H": 0.0,
+    "planck_integral_vs_2zeta3_relative_residual": 0.0,
     "runtime_data_sha256": "a263a768e7c5bd103397f596b9669ee5f6dfb2ac725f4e52ced64942d6cafb1e",
     "runtime_data_size_bytes": 2844,
-    "snapshot_target_redshifts": [
-      1300,
-      1100,
-      900
-    ],
     "snapshot_actual_redshifts": [
       1299.9971824762927,
       1099.9986525171403,
       900.0168986313175
     ],
-    "packet_count": 6,
-    "maximum_reconstruction_relative_residual": 1.6537648327370854e-16,
-    "current_history_endpoint_uses": 4,
-    "minimum_total_occupation": 4.579328929122558e-16,
-    "minimum_total_number_flux_per_H_s": 1.6796324053145323e-15,
-    "maximum_total_number_flux_per_H_s": 8.859343319670963e-14,
-    "number_ledger_residual_per_H_s": 0.0,
-    "photon_energy_ledger_residual_W_per_H": 0.0,
-    "interface_atom_source_W_per_H": 0.0,
-    "geometry_firewall_residual": 0.0,
-    "Wolfram": "USED_SYMBOLIC",
-    "Precise_Special_Functions": "USED_100_DIGIT_ZETA_AND_GAMMA",
-    "zeta3_PSF_vs_mpmath_relative_residual": 1.216241572349676e-100,
-    "planck_integral_vs_2zeta3_relative_residual": 0.0
-  },
-  "PR04C1B_C2_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56.zip",
-    "artifact_bundle_sha256": "bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c",
-    "artifact_bundle_size_bytes": 31818,
-    "runtime_data": "data/pr04c_coupled_interface_v056.npz",
-    "runtime_data_sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6",
-    "runtime_data_size_bytes": 3328,
-    "snapshot_count": 3,
-    "packet_count": 6,
     "snapshot_target_redshifts": [
       1300,
       1100,
       900
     ],
+    "zeta3_PSF_vs_mpmath_relative_residual": 1.216241572349676e-100
+  },
+  "PR04C1B_C2_evidence": {
+    "Precise_Special_Functions": "USED_100_DIGIT_ZETA3_ZETA4",
+    "Wolfram": "USED_SYMBOLIC_CANCELLATION_JVP_MODE_MEASURE_AND_CENTROID",
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04C1B_C2_coupled_interface_v0_56.zip",
+    "artifact_bundle_sha256": "bc67375027bf5bcaba7843c1c88881e0af751e5d809451dee504bcaa5a17fb5c",
+    "artifact_bundle_size_bytes": 31818,
+    "binary_hash_policy_scanner": "PASS_AST_DOMINANCE_GATE",
     "boundary_states": {
-      "red": {
-        "label": "FR00",
-        "index": 29
-      },
       "blue": {
-        "label": "FB02",
-        "index": 34
+        "index": 34,
+        "label": "FB02"
+      },
+      "red": {
+        "index": 29,
+        "label": "FR00"
       }
     },
-    "dt_s": 100000.0,
-    "q_activity": 1.0,
-    "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
-    "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
-    "maximum_analytic_JVP_relative_error": 1.279553711820355e-09,
-    "maximum_dilute_net_scaled_residual_diagnostic": 1.73712431307357e-10,
-    "maximum_float_high_precision_relative_error": 3.694332974648189e-15,
-    "transported_energy_residual": 0.0,
-    "interface_atom_source": 0.0,
-    "strict_positivity": true,
-    "collision_entropy_nonincrease": true,
-    "guard_off_exact": true,
-    "restart_roundtrip_exact": true,
     "branch_models": [
       "Bianchi II large shear",
       "tilted class-B VI_h large shear",
       "exceptional VI_-1/9"
     ],
-    "binary_hash_policy_scanner": "PASS_AST_DOMINANCE_GATE",
-    "research_harness": "VALIDATED_AND_USED_TEN_PHASES",
+    "claim_scope": "BOUNDED_SOURCE_CONDITIONED_OPERATOR_VERIFICATION_NOT_FULL_TRAJECTORY_PARITY",
     "coding_harness": "VALIDATED_AND_USED",
-    "Wolfram": "USED_SYMBOLIC_CANCELLATION_JVP_MODE_MEASURE_AND_CENTROID",
-    "Precise_Special_Functions": "USED_100_DIGIT_ZETA3_ZETA4",
-    "claim_scope": "BOUNDED_SOURCE_CONDITIONED_OPERATOR_VERIFICATION_NOT_FULL_TRAJECTORY_PARITY"
-  },
-  "PR04C3_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57.zip",
-    "artifact_bundle_sha256": "fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890",
-    "artifact_bundle_size_bytes": 27565,
-    "runtime_data": "data/pr04c3_common_ledger_v057.npz",
-    "runtime_data_sha256": "a02a5105818f82c2cee51b465e3d4b5468538b7548501728f3cb46a41c898ece",
-    "runtime_data_size_bytes": 3886,
-    "common_ledger_sha256": "0495d07ae4db9a53369eccac793fbc15f45396b35bec5bba46af6e865e53af53",
-    "snapshot_count": 3,
+    "collision_entropy_nonincrease": true,
+    "dt_s": 100000.0,
+    "guard_off_exact": true,
+    "interface_atom_source": 0.0,
+    "maximum_analytic_JVP_relative_error": 1.279553711820355e-09,
+    "maximum_dilute_net_scaled_residual_diagnostic": 1.73712431307357e-10,
+    "maximum_float_high_precision_relative_error": 3.694332974648189e-15,
+    "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
+    "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
     "packet_count": 6,
+    "q_activity": 1.0,
+    "research_harness": "VALIDATED_AND_USED_TEN_PHASES",
+    "restart_roundtrip_exact": true,
+    "runtime_data": "data/pr04c_coupled_interface_v056.npz",
+    "runtime_data_sha256": "a6af6216f2445ca3d8e78f65e711e019c16bea526e250597175d31de7ba575e6",
+    "runtime_data_size_bytes": 3328,
+    "snapshot_count": 3,
     "snapshot_target_redshifts": [
       1300,
       1100,
       900
     ],
+    "strict_positivity": true,
+    "transported_energy_residual": 0.0
+  },
+  "PR04C3_evidence": {
+    "Precise_Special_Functions": "USED_120_DIGIT_ZETA3_ZETA4_GAMMA3",
+    "Wolfram": "USED_SYMBOLIC_SCHUR_CANCELLATION_AND_LOG_POSITIVITY",
+    "artifact_bundle": "Full_Bianchi_HyRec_PR04C3_common_ledger_v0_57.zip",
+    "artifact_bundle_sha256": "fe8f719e82801377d8f20f0a37f41ca4767c08759ac9815c5a533d30d349c890",
+    "artifact_bundle_size_bytes": 27565,
+    "claim_scope": "SOURCE_CONDITIONED_SPLIT_DOMAIN_OPERATOR_CONTRACT_NOT_TRAJECTORY_OR_HISTORY_PARITY",
+    "collision_entropy_nonincrease": true,
+    "common_ledger_sha256": "0495d07ae4db9a53369eccac793fbc15f45396b35bec5bba46af6e865e53af53",
+    "cross_snapshot_cancellation_adversary": "SUM_ZERO_COMPONENTWISE_MAX_FAIL",
+    "direct_state_remap": "FORBIDDEN_NOT_USED",
     "epsilon_common": 0.0,
+    "fitted_normalization": "FORBIDDEN_NOT_USED",
+    "interface_atom_source": 0.0,
+    "maximum_analytic_JVP_relative_error": 1.26832969415376e-09,
     "maximum_gross_backward_error_relative": 1.3200190226745005e-17,
     "maximum_independent_number_relative_residual": 2.5609198306764287e-14,
-    "maximum_analytic_JVP_relative_error": 1.26832969415376e-09,
     "maximum_native_direct_source_relative": 3.5248307871551763e-15,
     "maximum_native_schur_direct_relative": 1.1881452091534302e-15,
     "maximum_native_structural_edge_relative": 2.0517225706554158e-11,
-    "transported_face_energy_residual": 0.0,
-    "interface_atom_source": 0.0,
-    "strict_positivity": true,
-    "collision_entropy_nonincrease": true,
+    "packet_count": 6,
     "restart_roundtrip_exact": true,
-    "cross_snapshot_cancellation_adversary": "SUM_ZERO_COMPONENTWISE_MAX_FAIL",
+    "runtime_data": "data/pr04c3_common_ledger_v057.npz",
+    "runtime_data_sha256": "a02a5105818f82c2cee51b465e3d4b5468538b7548501728f3cb46a41c898ece",
+    "runtime_data_size_bytes": 3886,
+    "snapshot_count": 3,
+    "snapshot_target_redshifts": [
+      1300,
+      1100,
+      900
+    ],
     "state_classification": "OPERATOR_VERIFICATION_Q_ACTIVITY_1",
-    "direct_state_remap": "FORBIDDEN_NOT_USED",
-    "fitted_normalization": "FORBIDDEN_NOT_USED",
-    "Wolfram": "USED_SYMBOLIC_SCHUR_CANCELLATION_AND_LOG_POSITIVITY",
-    "Precise_Special_Functions": "USED_120_DIGIT_ZETA3_ZETA4_GAMMA3",
-    "claim_scope": "SOURCE_CONDITIONED_SPLIT_DOMAIN_OPERATOR_CONTRACT_NOT_TRAJECTORY_OR_HISTORY_PARITY"
+    "strict_positivity": true,
+    "transported_face_energy_residual": 0.0
   },
-  "estimated_PR05_completion_percent": 75,
   "PR05A_evidence": {
     "artifact_bundle": "Full_Bianchi_HyRec_PR05A_primitive_rate_schema_v0_58.zip",
     "artifact_bundle_sha256": "1faf7347bce0be1f6e3728d88b76b9c5190a164ab16db3486ecca7a7b43a2b9a",
     "artifact_bundle_size_bytes": 160986,
-    "runtime_data": "data/pr05a_primitive_trajectory_v058.npz",
-    "runtime_data_sha256": "c4ff9897080ecefdfef1b47f557b10586cd4846a293e09e0e0ab3e540cefa9c6",
-    "primitive_rate_source_hashes": {
-      "Alpha_inf.dat": "c543c755d99ba8e999450dd5cb486a3ad88d26378da0ccc8363b10418e4832bd",
-      "R_inf.dat": "ce914f4b552ba55ba00f7916f36b0986f19adfdb638e5aefae91f7b2d05a8112",
-      "two_photon_tables.dat": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9"
-    },
+    "claim_scope": "SOURCE_CONDITIONED_SCHEMA_SOURCE_LOCK_AND_BOUNDED_ONE_STEP_DAE_NOT_TIME_DEPENDENT_TRAJECTORY_OR_HISTORY_PARITY",
     "future_endpoint_causality_all": true,
     "geometry_firewall_com_absolute": 0.0,
     "geometry_firewall_feedback_absolute": 0.0,
@@ -460,22 +271,29 @@
     "minimum_m_matrix_real_eigenvalue_s_inv": 0.8510978283898339,
     "minimum_physical_state": 7.230543007547215e-18,
     "ownership_pass": true,
+    "primitive_rate_source_hashes": {
+      "Alpha_inf.dat": "c543c755d99ba8e999450dd5cb486a3ad88d26378da0ccc8363b10418e4832bd",
+      "R_inf.dat": "ce914f4b552ba55ba00f7916f36b0986f19adfdb638e5aefae91f7b2d05a8112",
+      "two_photon_tables.dat": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9"
+    },
     "restart_exact_all": true,
+    "runtime_data": "data/pr05a_primitive_trajectory_v058.npz",
+    "runtime_data_sha256": "c4ff9897080ecefdfef1b47f557b10586cd4846a293e09e0e0ab3e540cefa9c6",
     "snapshot_count": 3,
-    "state_classification": "SOURCE_DERIVED_INPUT_OPERATOR_VERIFICATION_OUTPUT",
-    "claim_scope": "SOURCE_CONDITIONED_SCHEMA_SOURCE_LOCK_AND_BOUNDED_ONE_STEP_DAE_NOT_TIME_DEPENDENT_TRAJECTORY_OR_HISTORY_PARITY"
+    "state_classification": "SOURCE_DERIVED_INPUT_OPERATOR_VERIFICATION_OUTPUT"
   },
   "PR05B1_evidence": {
+    "Precise_Special_Functions": "USED_120_DIGIT_GAMMA_3_OVER_2_AND_ZETA_3",
+    "Wolfram": "USED_SOURCE_RESIDUAL_SHIFTED_JACOBIAN_MASS_RATIO_ZERO_WIDTH_AND_COMPONENTWISE_MAX",
+    "accepted_step_memory_value_count": 625,
+    "algebraic_row_count": 313,
     "artifact_bundle": "Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59.zip",
     "artifact_bundle_sha256": "d2701e540944b46687d6ed79f8e06b75c3d74e653714e0554dbcdb6b699370b2",
     "artifact_bundle_size_bytes": 104460,
-    "runtime_data": "data/pr05b1_source_identifiable_dae_v059.npz",
-    "runtime_data_sha256": "feab7de22677bbb39298621f20a2b1e4589ad65992897c224dc2553d75a407b8",
-    "accepted_step_memory_value_count": 625,
-    "algebraic_row_count": 313,
     "candidate_mass_ratio_max": 2.0,
     "candidate_mass_ratio_min": 2.0,
     "cell_edges_present": false,
+    "claim_scope": "SOURCE_IDENTIFIABLE_RANK_ONE_LOCAL_DAE_AND_CAUSAL_MEMORY_WITH_BOUNDED_NO_GO_FOR_FINITE_LOCAL_NATIVE_RADIATION_MASS",
     "classification": "PASS_BOUNDED_NO_GO_NATIVE_LOCAL_TIME_MEASURE_NOT_IDENTIFIED_PR05B2_CAUSAL_HISTORY_NEXT",
     "differential_row_count": 1,
     "finite_support_widths_present": false,
@@ -496,19 +314,17 @@
     "replacement_completed_count": 0,
     "replacement_removed_without_complete_count": 0,
     "replacement_requested_count": 4,
+    "runtime_data": "data/pr05b1_source_identifiable_dae_v059.npz",
+    "runtime_data_sha256": "feab7de22677bbb39298621f20a2b1e4589ad65992897c224dc2553d75a407b8",
     "snapshot_count": 3,
-    "spike_shape_present": false,
-    "Wolfram": "USED_SOURCE_RESIDUAL_SHIFTED_JACOBIAN_MASS_RATIO_ZERO_WIDTH_AND_COMPONENTWISE_MAX",
-    "Precise_Special_Functions": "USED_120_DIGIT_GAMMA_3_OVER_2_AND_ZETA_3",
-    "claim_scope": "SOURCE_IDENTIFIABLE_RANK_ONE_LOCAL_DAE_AND_CAUSAL_MEMORY_WITH_BOUNDED_NO_GO_FOR_FINITE_LOCAL_NATIVE_RADIATION_MASS"
+    "spike_shape_present": false
   },
   "PR05B2_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR05B2_causal_characteristic_history_v0_60.zip",
-    "artifact_bundle_sha256": "5f7860c8368ed16213dcf79087b80d4da51a4ad8bf3d10ffa5f578ead5db1c7b",
-    "runtime_history": "data/pr05b2_source_history_v060.npz",
-    "runtime_history_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
     "accepted_history_count": 7489,
     "accepted_history_values": 4680625,
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05B2_causal_characteristic_history_v0_60.zip",
+    "artifact_bundle_sha256": "5f7860c8368ed16213dcf79087b80d4da51a4ad8bf3d10ffa5f578ead5db1c7b",
+    "claim_scope": "SOURCE_IDENTICAL_CAUSAL_HISTORY_REPLACEMENT_CONTRACT_BEFORE_OWNER_SWAP",
     "classification": "PASS_PR05B2_CAUSAL_HISTORY_BLOCK_PR05B3_NEXT",
     "compressed_term_owner_swap_performed": false,
     "current_endpoint_use_count": 36,
@@ -530,21 +346,23 @@
     "maximum_outgoing_virtual_relative": 4.1516803496059265e-12,
     "minimum_absolute_reservoir_fraction": 0.012675508212855143,
     "query_count_per_snapshot": 313,
+    "runtime_history": "data/pr05b2_source_history_v060.npz",
+    "runtime_history_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
     "scalar_history_replacement_contract_complete": true,
     "snapshot_count": 3,
-    "total_query_count": 939,
-    "claim_scope": "SOURCE_IDENTICAL_CAUSAL_HISTORY_REPLACEMENT_CONTRACT_BEFORE_OWNER_SWAP"
+    "total_query_count": 939
   },
   "PR05B3_evidence": {
-    "artifact_bundle": "Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61.zip",
-    "artifact_bundle_sha256": "a2d67461ea44f76a03851a5db282a82636ce88c8be653bc5bcafe1320716edc6",
-    "artifact_bundle_size_bytes": 62770,
-    "runtime_data": "data/pr05b3_scalar_history_owner_swap_v061.npz",
-    "runtime_data_sha256": "d674c049db845e53d39a8e265075103964dae9be9827407d8b22505e955de00f",
+    "Precise_Special_Functions": "USED_120_DIGIT_GAMMA_3_OVER_2_AND_ZETA_3",
+    "Wolfram": "USED_XOR_INTERPOLATION_SHIFTED_JACOBIAN_CANCELLATION_AND_LOG_POSITIVITY",
     "accepted_history_binary_sha256": "60b716a16ccf1af3ecd761cc16b1a417ffa03b8e34cf7a032c12e9f3ef529b38",
     "accepted_history_npz_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
     "adaptive_short_trajectory": false,
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61.zip",
+    "artifact_bundle_sha256": "a2d67461ea44f76a03851a5db282a82636ce88c8be653bc5bcafe1320716edc6",
+    "artifact_bundle_size_bytes": 62770,
     "canonical_history_lane_retained_as_parity_oracle": true,
+    "claim_scope": "SCALAR_TYPED_HISTORY_PRODUCTION_OWNER_AND_TRANSACTION_CONTRACT_NOT_ADAPTIVE_OR_FULL_FLRW_TRAJECTORY",
     "classification": "PASS_PR05B3_SCALAR_HISTORY_OWNER_SWAP_PR05C_NEXT",
     "maximum_append_max_abs": 0.0,
     "maximum_average_virtual_relative": 0.0,
@@ -567,10 +385,193 @@
     "minimum_typed_branch_live_absolute_change": 5.395093252910448e-17,
     "network_npz_sha256": "14f0810adf35221eca4861481557baa55da9ada85c3dfc503262ef356e2a615d",
     "other_compressed_owners_unchanged": true,
+    "runtime_data": "data/pr05b3_scalar_history_owner_swap_v061.npz",
+    "runtime_data_sha256": "d674c049db845e53d39a8e265075103964dae9be9827407d8b22505e955de00f",
     "snapshot_count": 3,
-    "typed_history_is_sole_active_python_owner": true,
-    "Wolfram": "USED_XOR_INTERPOLATION_SHIFTED_JACOBIAN_CANCELLATION_AND_LOG_POSITIVITY",
-    "Precise_Special_Functions": "USED_120_DIGIT_GAMMA_3_OVER_2_AND_ZETA_3",
-    "claim_scope": "SCALAR_TYPED_HISTORY_PRODUCTION_OWNER_AND_TRANSACTION_CONTRACT_NOT_ADAPTIVE_OR_FULL_FLRW_TRAJECTORY"
-  }
+    "typed_history_is_sole_active_python_owner": true
+  },
+  "classification": "DURABLE_PROJECT_STATE",
+  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
+  "current_durable_stage": {
+    "artifact": "Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62",
+    "name": "PR-05C1 adaptive canonical-macro controller",
+    "status": "PASS_PR05C1_ADAPTIVE_CANONICAL_MACRO_CONTROLLER_PR05C2_OPEN"
+  },
+  "estimated_PR01_completion_percent": 100,
+  "estimated_PR02_completion_percent": 100,
+  "estimated_PR03_completion_percent": 100,
+  "estimated_PR04_completion_percent": 100,
+  "estimated_PR05_completion_percent": 75,
+  "estimated_overall_completion_percent": 97,
+  "hard_scope": {
+    "excluded_from_12_PR_scalar_release": [
+      "fine structure",
+      "J-state interference",
+      "polarization",
+      "atomic alignment"
+    ],
+    "included": [
+      "homogeneous backgrounds",
+      "all 11 Bianchi types",
+      "nonlinear large shear",
+      "finite tilt",
+      "tetrad and 1+3 formalism",
+      "scalar HYREC-grade recombination and Ly-alpha transfer"
+    ]
+  },
+  "known_limitations": [
+    "A finite local differential mass for original-HyRec virtual spikes is not source-identifiable from the canonical archive. v0.59 therefore keeps the 311 virtual rows algebraic and treats radiation time dependence through causal accepted-step history.",
+    "PR-04 closes at the source-conditioned operator-contract level only. The q_activity=1 COM state is not a reconstructed physical native/COM trajectory.",
+    "Full trajectory integration remains PR-05 scope; FLRW x_e(z) and visibility-history parity remain PR-06 scope.",
+    "The v0.56 snapshot solves use physical native face packets with an unfitted q_activity=1 COM Bose-Einstein reference state; they verify the operator but are not a reconstructed physical native/COM trajectory.",
+    "The dilute-occupation-normalized net residual stalls at 1.73712431307357e-10 from float64 cancellation. It is retained as a diagnostic; acceptance requires gross backward error and independent number closure below 1e-11 after strict Newton stagnation.",
+    "A pure computational representation crossing has zero atomic source. Atomic recoil remains owned by physical collision terms.",
+    "Four of six source-identical packet reconstructions use the current already-solved HyRec history endpoint. Future endpoints remain forbidden.",
+    "PR-04B2B proves that the full or diffusion-only positive native measure cannot be represented on the v0.51 17-cell core while preserving M0 and M2.",
+    "After support restriction, moments M0 through M4 leave a 12-dimensional null space for seventeen target masses; a unique projection requires additional physics and cannot be called canonical by default.",
+    "The canonical runtime archive supplies centre values and width-integrated rates but no explicit numerical edge array, dedicated table-generator member or bundled-table write path.",
+    "Direct multi-snapshot native/COM state-vector parity remains blocked; PR-04C3 may close only the explicitly bounded operator contract or issue a second no-go.",
+    "Full trajectory integration is PR-05 and FLRW history parity is PR-06.",
+    "The production lane is scalar elastic; Raman, fine structure, J-state interference, polarization and atomic alignment are not included.",
+    "PR-05A retains the original-HyRec native radiation block as an algebraic DAE constraint; genuine native/real-population time derivatives are PR-05B.",
+    "The q_activity=1 COM state remains an interface-off operator-verification equilibrium, not a source-derived physical COM trajectory.",
+    "Raw delta-alpha relative discrepancies near Tm=Tr are cancellation-amplified; gross-scale parity is the hard source/interpolation gate and the raw values remain disclosed.",
+    "Adaptive eventful integration is PR-05C and full FLRW recombination-history parity is PR-06.",
+    "PR-05B3 swaps only scalar Dfplus/Dfplus_Ly feedback. Sobolev escape, native A1s diffusion and completed/Schur Tvv remain canonical.",
+    "The source-identical accepted history is fixed to the canonical uniform DLNA grid. PR-05C may adapt internal microsteps but must append history only at canonical macro endpoints unless it explicitly introduces and downgrades to a new transport discretization.",
+    "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2."
+  ],
+  "locked_architecture": {
+    "angular_policies": {
+      "directional_crossing": 24,
+      "finite_or_mixed_tilt": 12,
+      "nonlinear_even_shear": 20
+    },
+    "boundary_events": "all directional boundary-speed zeros are localized inside the timestep",
+    "common_interface_ledger": "v0.57 typed ordered z~1300/1100/900 ledger with exactly six packets, complete SHA-256 provenance and maximum componentwise violation; cross-snapshot sums and averages are forbidden.",
+    "conservation": "Physical collision events accumulate photon/atom four-force with opposite sign; pure representation crossings conserve native/COM photon number and exact face energy with zero interface atom source.",
+    "coupled_boundary_adapter": "FR00 index 29 and FB02 index 34 are exact byte-locked outer owners; packet number is deposited as sigma*n_H*q/g_cell and exact face energy is retained with an unresolved cell-centroid correction.",
+    "coupled_convergence_gate": "strict net-residual Newton first; after documented line-search stagnation only, require gross-term normwise backward error and independent photon-number closure both below 1e-11.",
+    "coupled_interface_solver": "log-positive monolithic backward-Euler collision/interface residual with analytic matrix-free JVP and exact restart state.",
+    "delivery_policy": "self-contained feature Git bundle with ordered feature commits plus full recovery Git bundle; mbox/raw binary diff delivery superseded.",
+    "delta_alpha_semantics": "Canonical DAlpha is Alpha(Tm,Tr)-Alpha(Tr,Tr), not a derivative; cancellation-amplified raw relative error is diagnostic and hard parity uses the gross alpha scale.",
+    "geometry_interface": "BackgroundSnapshot physical tetrad characteristics",
+    "microphysics_firewall": "local scalar collision/common-measure microphysics is Bianchi-type independent",
+    "native_common_partition_result": "v0.54 direct positive native-to-17-cell equality rejected: support M2/M0 obstruction and exact rank-5/nullity-12 identifiability no-go",
+    "native_local_time_measure_result": "v0.59 PASS_BOUNDED_NO_GO: canonical centre frequencies and integrated rates do not identify finite dln(nu) support, cell edges or spike shape; two admissible narrow supports yield masses differing by exactly a factor of two and share the zero-width algebraic limit.",
+    "native_original_hyrec_proxy": "v0.52 dimensionless reversible 80-bin-plus-2p diagnostic with exact original-C/Schur parity",
+    "native_physical_edge_flux": "v0.53 source-identical map N_y=8*pi*nu^3*Delta f/(c^3*n_H) and exact x_1s*Gamma*(f_eq-fbar)=H*A*(fminus-fplus) edge identity",
+    "native_physical_firewall": "raw Aup/Adn, x_b=x_1s f_nu_b and completed Tvv are not physical finite-volume photon cells; centre overlap and fitted normalization remain forbidden",
+    "next_exchange_architecture": "v0.55/v0.56 split-domain full-support original-HyRec plus 35-state COM-KHW coupling through single-owner exact-face number/energy packets.",
+    "next_trajectory_architecture": "PR-05B2 implements source-identical causal characteristic history and accepted-step append/rollback; it does not invent a local native-radiation timescale.",
+    "nonlinear_update": "log-occupation backward Euler with exact analytic JVP",
+    "physical_common_measure": "v0.51 ordinary-frequency S^(r), r=0..4, with exact v0.50 C0 mass and direct conditional jump moments",
+    "pr04_claim_boundary": "PR-04 is complete only at the source-conditioned scalar split-domain operator-contract level; q_activity=1 remains an unfitted operator-verification state, not a native-derived trajectory.",
+    "pr05a_dae_boundary": "v0.58 projects the canonical native real/virtual algebraic constraint and evaluates the interface-off COM Bose equilibrium; dynamic native/atomic trajectories remain PR-05B.",
+    "pr05b1_source_identifiable_state_split": "v0.59 local eta=ln(a) mass matrix has rank one: xe differential; 2s/2p and 311 virtual departures algebraic; Dfminus/Dfminus_Ly/Dfnu are accepted-step causal memory outside the local mass matrix.",
+    "pr05b2_causal_history": "v0.60 exact 313-query fplus_from_fminus registry on immutable accepted eta history, deterministic source-history NPZ, transactional append/reject/rollback/restart and analytic fixed-stencil JVP.",
+    "pr05b2_conservation": "free characteristic propagation preserves photon number per H through nu^3/n_H invariance; photon-energy change is cosmological redshift work and the atom source is exactly zero.",
+    "pr05b2_history_architecture": "typed accepted eta grid plus Dfminus_hist[311], Dfminus_Ly_hist[3], Dfnu_hist[311], source-order interpolation, no future endpoints, mutation only after accepted steps.",
+    "pr05b2_transaction_policy": "history mutation is permitted only after a successful accepted step; future endpoints and discrete stencil switches fail closed, and switches require event localization/restart.",
+    "pr05b3_scalar_history_owner_swap": "v0.61 XOR registry with typed characteristic history as the sole active Python production owner after exact componentwise canonical parity; canonical callback retained only as an audit oracle.",
+    "pr05b3_transaction": "candidate-only nonlinear attempts, exactly-once accepted commit, byte-exact reject/rollback/restart, deterministic transaction payload carrying local state and COM restart data.",
+    "pr05b3_unchanged_owners": "Sobolev Ly-alpha escape, native A1s diffusion and completed/Schur Tvv remain canonical and active.",
+    "pr05c1_adaptive_macro_controller": "v0.62 keeps accepted original-HyRec history on the exact uniform DLNA macro grid; adaptive backward-Euler trial steps, rejection and event restart occur only inside a macro interval, and exactly one history slice is committed at a successful macro endpoint.",
+    "pr05c_next": "retain the canonical uniform DLNA accepted-history grid as macro output surfaces; allow adaptive DAE/collision microsteps only inside each macro interval, with no history mutation before a successful macro endpoint.",
+    "primitive_rate_adapter": "v0.58 byte-locked original-HyRec Alpha/delta-alpha/Beta/R2p2s and A1s/A2s/A3s3d/A4s4d registry with source-order cubic interpolation, SI boundary and analytic JVP.",
+    "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
+  },
+  "next_stage": {
+    "entry_gate": "PR05C1_ADAPTIVE_CANONICAL_MACRO_PASS",
+    "name": "PR-05C2 full coupled adaptive trajectory",
+    "tasks": [
+      "Couple the 35-state COM-KHW collision and split-domain interface to the adaptive macro/micro controller.",
+      "Drive boundary speeds and branch events from actual BackgroundSnapshot characteristics rather than synthetic controller inputs.",
+      "Close global photon-number, exact face-energy, redshift-work and collision four-force ledgers.",
+      "Run refinement and restart gates in z~1300,1100,900 windows and Bianchi II/class-B/VI_-1/9 lanes."
+    ]
+  },
+  "project": "Full Bianchi\u2013HyRec scalar completion",
+  "remote_repository_status": {
+    "exact_remote_main_sha": "27a4e097baf83fbca2b1befd5b780edbf460f020",
+    "exact_remote_main_tree": "5ee5af26f21f25a7878d308acf4934f4f99598a1",
+    "latest_merged_pr": 18,
+    "latest_merged_pr_head": "ba66b99363967c5a827fd9317f735762d6dea26a",
+    "policy": "Fetch origin/main, fetch the self-contained v0.61 feature bundle, cherry-pick receipt-listed commits, run all gates, and never force-push.",
+    "remote_ci": "SUCCESS_RUN_57",
+    "remote_content_stage": "v0.59 PR05B1 source-identifiable DAE audit",
+    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_AT_V061_STAGE_START",
+    "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
+  },
+  "remote_sync": {
+    "push_policy": "OWNER_FETCHES_FEATURE_BUNDLE_CHERRY_PICKS_TO_REMOTE_MAIN_NO_FORCE_PUSH",
+    "reason": "Connector verification at PR-05B3 start found merged PR #18/v0.59 on remote main. v0.61 descends from exact author v0.60 and is delivered as an ordered feature Git bundle rather than claiming remote-tree identity.",
+    "remote_ref_verified": true,
+    "remote_tree_match": false,
+    "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git"
+  },
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "roadmap": [
+    {
+      "pr": 1,
+      "status": "COMPLETE",
+      "title": "Exact recoil event and four-force"
+    },
+    {
+      "pr": 2,
+      "status": "COMPLETE",
+      "title": "Nonlinear anisotropic Bose collision"
+    },
+    {
+      "pr": 3,
+      "status": "COMPLETE",
+      "title": "Full scalar COM\u2013KHW amplitude"
+    },
+    {
+      "pr": 4,
+      "status": "COMPLETE_OPERATOR_CONTRACT_V057",
+      "title": "HYREC common measure and split-domain exchange contract"
+    },
+    {
+      "pr": 5,
+      "status": "IN_PROGRESS_PR05A_PR05B1_PR05B2_PR05B3_PR05C1_COMPLETE_PR05C2_NEXT",
+      "title": "Primitive HYREC operator and background interface"
+    },
+    {
+      "pr": 6,
+      "status": "PLANNED",
+      "title": "FLRW monolithic parity"
+    },
+    {
+      "pr": 7,
+      "status": "PLANNED",
+      "title": "Bianchi II class-A regression"
+    },
+    {
+      "pr": 8,
+      "status": "PLANNED",
+      "title": "Class-B regression"
+    },
+    {
+      "pr": 9,
+      "status": "PLANNED",
+      "title": "Exceptional VI_-1/9 regression"
+    },
+    {
+      "pr": 10,
+      "status": "PLANNED",
+      "title": "All-11 automated sweep"
+    },
+    {
+      "pr": 11,
+      "status": "PLANNED",
+      "title": "Equation, proof, and provenance census"
+    },
+    {
+      "pr": 12,
+      "status": "PLANNED",
+      "title": "Performance, restart, and release integration"
+    }
+  ],
+  "state_date": "2026-08-07"
 }
