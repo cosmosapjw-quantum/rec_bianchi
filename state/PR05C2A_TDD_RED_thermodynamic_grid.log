@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ test_source_temperature_requires_a_dynamic_com_frequency_measure_adapter ___
+
+    def test_source_temperature_requires_a_dynamic_com_frequency_measure_adapter() -> None:
+        from full_bianchi_hyrec.trajectory.full_coupled_adaptive import (
+            audit_thermodynamic_grid_consistency,
+        )
+        from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import (
+            parse_original_hyrec_boundary_snapshot_csv,
+        )
+    
+        network = CollisionNetwork.from_npz(NETWORK)
+        source = parse_original_hyrec_boundary_snapshot_csv(
+            ROOT
+            / "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55"
+            / "pr04c_z1300.csv"
+        )
+        line = LineBoundaryConfig.lyman_alpha(
+            temperature_K=source.trajectory.TM_eV_rescaled * 11604.518121550082,
+            x_red=-21.25,
+            x_blue=21.25,
+        )
+        audit = audit_thermodynamic_grid_consistency(network, source_line=line)
+        assert audit.mode_measure_relative_residual > 0.05
+>       assert audit.outer_face_frequency_relative_mismatch > 1.0e-5
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'ThermodynamicGridConsistencyAudit' object has no attribute 'outer_face_frequency_relative_mismatch'
+
+tests/trajectory/test_full_coupled_transport.py:485: AttributeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_full_coupled_transport.py::test_source_temperature_requires_a_dynamic_com_frequency_measure_adapter - AttributeError: 'ThermodynamicGridConsistencyAudit' object has no attribute 'outer_face_frequency_relative_mismatch'
+1 failed in 0.69s

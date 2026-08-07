@@ -1,0 +1,523 @@
+"""Bounded coupled COM collision plus source-derived frequency transport.
+
+This is the PR-05C2A reference nonlinear block.  It closes the local COM
+collision/transport/interface residual in log occupation variables while the
+scalar original-HyRec history remains representation-local.  Directional
+native feedback that cannot be represented by the scalar history is retained
+as an explicit bounded blocker rather than silently averaged.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+import math
+from typing import Sequence
+
+import numpy as np
+from scipy.constants import c, h
+from scipy.sparse.linalg import LinearOperator, gmres
+
+from full_bianchi_hyrec.recoil.frequency_liouville import (
+    ConservativeFrequencyLiouville,
+)
+from full_bianchi_hyrec.recoil.nonlinear_bose_release import (
+    HarmonicGrid,
+    apply_nonlinear_bose_jvp,
+    apply_nonlinear_bose_operator,
+    bose_photon_number,
+)
+from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import (
+    CollisionNetwork,
+    LineBoundaryConfig,
+)
+
+
+
+
+@dataclass(frozen=True)
+class FullCouplingIdentifiabilityAudit:
+    native_history_angular_rank: int
+    minimum_number_momentum_rank: int
+    exact_face_trace_rank: int
+    required_angular_rank: int
+    com_face_trace_source_defined: bool
+    p0_face_trace_is_new_closure: bool
+    fully_source_derived_coupling_identified: bool
+    bounded_no_go: bool
+
+
+@dataclass(frozen=True)
+class CollisionStiffnessAudit:
+    spectral_radius_s_inv: float
+    macro_dt_s: float
+    stiffness_number: float
+    near_null_mode_count: int
+    requires_block_preconditioner: bool
+    unpreconditioned_full_macro_production_claim: bool
+
+
+def audit_full_coupling_identifiability(
+    grid: HarmonicGrid,
+) -> FullCouplingIdentifiabilityAudit:
+    """Audit whether the locked scalar native history identifies angular flux.
+
+    Original HyRec stores one scalar occupation departure per native frequency
+    state, whereas the COM boundary has one value per angular node.  In
+    addition, the COM registry stores finite-volume cell averages and no
+    source-defined face reconstruction.  A P0 upwind trace is therefore a new
+    numerical closure, not a source-identical mapping.
+    """
+
+    return FullCouplingIdentifiabilityAudit(
+        native_history_angular_rank=1,
+        minimum_number_momentum_rank=4,
+        exact_face_trace_rank=int(grid.n_angle),
+        required_angular_rank=int(grid.n_angle),
+        com_face_trace_source_defined=False,
+        p0_face_trace_is_new_closure=True,
+        fully_source_derived_coupling_identified=False,
+        bounded_no_go=bool(grid.n_angle > 1),
+    )
+
+
+def audit_collision_stiffness(
+    network: CollisionNetwork,
+    *,
+    H_s_inv: float,
+    canonical_dlna: float,
+    null_tolerance_s_inv: float = 1.0e-14,
+    preconditioner_threshold: float = 1.0e6,
+) -> CollisionStiffnessAudit:
+    """Linearize the isotropic Bose collision block at equilibrium.
+
+    The scalar ell=0 block is a conservative lower-dimensional stiffness
+    diagnostic.  It does not replace the full anisotropic Jacobian; it answers
+    whether an unpreconditioned cosmological macro solve is a defensible
+    production claim.
+    """
+
+    H = float(H_s_inv)
+    dlna = float(canonical_dlna)
+    if not math.isfinite(H) or H <= 0.0 or not math.isfinite(dlna) or dlna <= 0.0:
+        raise ValueError("H_s_inv and canonical_dlna must be positive and finite")
+    grid = HarmonicGrid.from_directions(
+        np.asarray([[0.0, 0.0, 1.0]]), np.asarray([1.0]), ell_max=0
+    )
+    activity = network.equilibrium_weight / network.mode_measure
+    equilibrium = (activity / (1.0 - activity))[:, None]
+    size = network.n_state
+    jacobian = np.empty((size, size), dtype=float)
+    for column in range(size):
+        direction = np.zeros((size, 1), dtype=float)
+        direction[column, 0] = 1.0
+        jacobian[:, column] = apply_nonlinear_bose_jvp(
+            equilibrium,
+            direction,
+            mode_measure=network.mode_measure,
+            equilibrium_weight=network.equilibrium_weight,
+            pair_moments=network.pair_moments,
+            same_cell_rates=network.same_cell_rates,
+            grid=grid,
+        ).occupation_action_jvp[:, 0]
+    eigenvalues = np.linalg.eigvals(jacobian)
+    magnitudes = np.abs(eigenvalues)
+    radius = float(np.max(magnitudes, initial=0.0))
+    near_null = int(np.count_nonzero(magnitudes <= float(null_tolerance_s_inv)))
+    macro_dt = dlna / H
+    stiffness = radius * macro_dt
+    requires = bool(stiffness > float(preconditioner_threshold))
+    return CollisionStiffnessAudit(
+        spectral_radius_s_inv=radius,
+        macro_dt_s=macro_dt,
+        stiffness_number=stiffness,
+        near_null_mode_count=near_null,
+        requires_block_preconditioner=requires,
+        unpreconditioned_full_macro_production_claim=not requires,
+    )
+
+
+@dataclass(frozen=True)
+class ThermodynamicGridConsistencyAudit:
+    locked_doppler_width_Hz: float
+    source_doppler_width_Hz: float
+    mode_measure_relative_residual: float
+    outer_face_frequency_relative_mismatch: float
+    source_conditioned_dynamic_measure_identified: bool
+    requires_network_recompilation: bool
+    requires_explicit_frequency_remap: bool
+    bounded_no_go: bool
+
+
+def audit_thermodynamic_grid_consistency(
+    network: CollisionNetwork,
+    *,
+    source_line: LineBoundaryConfig,
+    identification_tolerance: float = 2.0e-8,
+) -> ThermodynamicGridConsistencyAudit:
+    """Audit whether the frozen COM measure matches a source-temperature grid.
+
+    The v0.50 COM network carries a fixed finite-volume mode measure.  Changing
+    the Doppler width changes the physical frequency measure represented by the
+    same dimensionless ``x`` cells.  A source-conditioned trajectory therefore
+    needs an explicit dynamic measure/kernel adapter or a recompiled network;
+    conservation on the frozen grid alone does not establish physical parity.
+    """
+
+    tolerance = float(identification_tolerance)
+    if not math.isfinite(tolerance) or tolerance < 0.0:
+        raise ValueError("identification_tolerance must be finite and nonnegative")
+    locked = ConservativeFrequencyLiouville.from_network(network)
+    intervals = np.asarray(network.state_intervals, dtype=float)
+    order = np.argsort(intervals[:, 0], kind="stable")
+    sorted_intervals = intervals[order]
+    faces = np.concatenate(([sorted_intervals[0, 0]], sorted_intervals[:, 1]))
+    source_frequency = (
+        source_line.nu_abs_Hz + faces * source_line.Doppler_width_Hz
+    )
+    source_mode = (
+        8.0
+        * math.pi
+        * (source_frequency[1:] ** 3 - source_frequency[:-1] ** 3)
+        / (3.0 * c**3)
+    )
+    locked_mode = np.asarray(network.mode_measure, dtype=float)[order]
+    residual = float(np.max(np.abs(source_mode - locked_mode) / locked_mode))
+    locked_faces = np.asarray(locked.face_frequency_Hz, dtype=float)
+    outer_mismatch = float(
+        np.max(
+            np.abs(
+                np.asarray([source_frequency[0], source_frequency[-1]])
+                - np.asarray([locked_faces[0], locked_faces[-1]])
+            )
+            / np.asarray([locked_faces[0], locked_faces[-1]])
+        )
+    )
+    identified = bool(residual <= tolerance and outer_mismatch <= tolerance)
+    return ThermodynamicGridConsistencyAudit(
+        locked_doppler_width_Hz=float(locked.reference_line.Doppler_width_Hz),
+        source_doppler_width_Hz=float(source_line.Doppler_width_Hz),
+        mode_measure_relative_residual=residual,
+        outer_face_frequency_relative_mismatch=outer_mismatch,
+        source_conditioned_dynamic_measure_identified=identified,
+        requires_network_recompilation=not identified,
+        requires_explicit_frequency_remap=not identified,
+        bounded_no_go=not identified,
+    )
+
+
+@dataclass(frozen=True)
+class CoupledCollisionTransportStepResult:
+    occupation: np.ndarray
+    converged: bool
+    newton_iterations: int
+    total_gmres_iterations: int
+    residual_relative: float
+    minimum_occupation: float
+    global_number_residual_m3: float
+    global_number_relative_residual: float
+    energy_identity_residual_J_m3: float
+    energy_identity_relative_residual: float
+    interface_atom_source_J_m3: float
+    collision_four_force_residual: float
+    collision_entropy_production: float
+    interface_number_change_m3: float
+    exact_interface_energy_change_J_m3: float
+    cosmological_redshift_work_J_m3: float
+
+
+@dataclass(frozen=True)
+class CoupledCollisionTransportProblem:
+    network: CollisionNetwork
+    grid: HarmonicGrid
+    transport: ConservativeFrequencyLiouville
+    face_speeds_x_s_inv: np.ndarray
+    native_red_occupation: np.ndarray | Sequence[float] | float
+    native_blue_occupation: np.ndarray | Sequence[float] | float
+    dt_s: float
+
+    def __post_init__(self) -> None:
+        if self.transport.network is not self.network:
+            # Identity is intentional: one immutable network owns mode measures
+            # for both collision and transport.
+            raise ValueError("transport and collision must share one network instance")
+        speeds = np.asarray(self.face_speeds_x_s_inv, dtype=float)
+        if speeds.shape != (self.network.n_state + 1, self.grid.n_angle):
+            raise ValueError("face_speeds_x_s_inv shape mismatch")
+        if not np.all(np.isfinite(speeds)):
+            raise ValueError("face speeds must be finite")
+        speeds = np.array(speeds, copy=True); speeds.setflags(write=False)
+        object.__setattr__(self, "face_speeds_x_s_inv", speeds)
+        dt = float(self.dt_s)
+        if not math.isfinite(dt) or dt <= 0.0:
+            raise ValueError("dt_s must be positive and finite")
+        object.__setattr__(self, "dt_s", dt)
+
+    @property
+    def shape(self) -> tuple[int, int]:
+        return self.network.n_state, self.grid.n_angle
+
+    def _transport(self, occupation: np.ndarray):
+        return self.transport.evaluate(
+            occupation,
+            face_speeds_x_s_inv=self.face_speeds_x_s_inv,
+            native_red_occupation=self.native_red_occupation,
+            native_blue_occupation=self.native_blue_occupation,
+            grid=self.grid,
+        )
+
+    def _collision(self, occupation: np.ndarray):
+        return apply_nonlinear_bose_operator(
+            occupation,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+            photon_momentum_scale=self.network.momentum_scale,
+        )
+
+
+    def _approximate_loss_rate_s_inv(self) -> np.ndarray:
+        """Positive diagonal loss used only as a Newton--Krylov preconditioner."""
+
+        pair_loss = np.sum(self.network.pair_moments[0], axis=1) / self.network.equilibrium_weight
+        same_loss = np.maximum(-self.network.same_cell_rates[0], 0.0)
+        collision_loss = pair_loss + same_loss
+
+        order = self.transport.sorted_indices
+        mode = self.network.mode_measure[order]
+        speeds = self.face_speeds_x_s_inv
+        density = self.transport.face_mode_density_m3
+        transport_sorted = (
+            np.maximum(-speeds[:-1], 0.0) * density[:-1, None]
+            + np.maximum(speeds[1:], 0.0) * density[1:, None]
+        ) / mode[:, None]
+        transport_loss = np.empty_like(transport_sorted)
+        transport_loss[order] = transport_sorted
+        return collision_loss[:, None] + transport_loss
+
+    def residual(self, log_occupation: np.ndarray, old_occupation: np.ndarray) -> np.ndarray:
+        old = np.asarray(old_occupation, dtype=float)
+        u = np.asarray(log_occupation, dtype=float)
+        if old.shape != self.shape or u.shape != self.shape:
+            raise ValueError("occupation shape mismatch")
+        if np.any(old <= 0.0) or not np.all(np.isfinite(old)) or not np.all(np.isfinite(u)):
+            raise ValueError("old occupation must be positive and log state finite")
+        if np.max(u) > 700.0 or np.min(u) < -745.0:
+            raise FloatingPointError("log occupation outside finite exponential range")
+        f = np.exp(u)
+        collision = self._collision(f)
+        transport = self._transport(f)
+        return f - old - self.dt_s * (
+            collision.occupation_action + transport.occupation_action
+        )
+
+    def residual_jvp(
+        self,
+        log_occupation: np.ndarray,
+        log_direction: np.ndarray,
+    ) -> np.ndarray:
+        u = np.asarray(log_occupation, dtype=float)
+        du = np.asarray(log_direction, dtype=float)
+        if u.shape != self.shape or du.shape != self.shape:
+            raise ValueError("log direction shape mismatch")
+        f = np.exp(u)
+        df = f * du
+        collision = apply_nonlinear_bose_jvp(
+            f,
+            df,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+        ).occupation_action_jvp
+        transport = self.transport.jvp(
+            f,
+            df,
+            face_speeds_x_s_inv=self.face_speeds_x_s_inv,
+            grid=self.grid,
+        ).occupation_action_jvp
+        return df - self.dt_s * (collision + transport)
+
+    def implicit_step(
+        self,
+        old_occupation: np.ndarray,
+        *,
+        nonlinear_rtol: float = 2.0e-10,
+        max_newton: int = 14,
+        gmres_rtol: float = 2.0e-9,
+        gmres_restart: int = 40,
+        gmres_maxiter: int = 160,
+    ) -> CoupledCollisionTransportStepResult:
+        old = np.asarray(old_occupation, dtype=float)
+        if old.shape != self.shape or np.any(old <= 0.0) or not np.all(np.isfinite(old)):
+            raise ValueError("old occupation must be finite and strictly positive")
+        log_f = np.log(old)
+        scale = max(float(np.max(np.abs(old))), 1.0e-300)
+        total_gmres = 0
+        converged = False
+        residual_relative = math.inf
+        newton_index = 0
+        for newton_index in range(max_newton + 1):
+            residual = self.residual(log_f, old)
+            residual_relative = float(np.max(np.abs(residual))) / scale
+            if residual_relative <= nonlinear_rtol:
+                converged = True
+                break
+            if newton_index == max_newton:
+                break
+            size = old.size
+
+            def matvec(flat):
+                return self.residual_jvp(log_f, np.asarray(flat).reshape(self.shape)).ravel()
+
+            operator = LinearOperator((size, size), matvec=matvec, dtype=float)
+            f = np.exp(log_f)
+            diagonal = f * (1.0 + self.dt_s * self._approximate_loss_rate_s_inv())
+            preconditioner = LinearOperator(
+                (size, size),
+                matvec=lambda flat: np.asarray(flat, dtype=float)
+                / np.maximum(diagonal.ravel(), 1.0e-300),
+                dtype=float,
+            )
+            counter = {"iterations": 0}
+
+            def callback(_):
+                counter["iterations"] += 1
+
+            step, info = gmres(
+                operator,
+                -residual.ravel(),
+                M=preconditioner,
+                rtol=gmres_rtol,
+                atol=0.0,
+                restart=gmres_restart,
+                maxiter=gmres_maxiter,
+                callback=callback,
+                callback_type="pr_norm",
+            )
+            total_gmres += counter["iterations"]
+            if info != 0 or not np.all(np.isfinite(step)):
+                break
+            step = step.reshape(self.shape)
+            base = float(np.max(np.abs(residual)))
+            accepted = False
+            damping = 1.0
+            for _ in range(24):
+                candidate = log_f + damping * step
+                if np.max(candidate) < 700.0 and np.min(candidate) > -745.0:
+                    candidate_residual = self.residual(candidate, old)
+                    if float(np.max(np.abs(candidate_residual))) < base:
+                        log_f = candidate
+                        accepted = True
+                        break
+                damping *= 0.5
+            if not accepted:
+                break
+
+        final = np.exp(log_f)
+        collision = self._collision(final)
+        transport = self._transport(final)
+        number_before = bose_photon_number(
+            old, mode_measure=self.network.mode_measure, grid=self.grid
+        )
+        number_after = bose_photon_number(
+            final, mode_measure=self.network.mode_measure, grid=self.grid
+        )
+        native_number_rate = float(
+            np.sum(transport.native_number_action_m3_s * self.grid.weights)
+        )
+        com_interface_number_rate = -native_number_rate
+        # Diagnose the conserved global number in extended precision; the
+        # absolute cell numbers are large and the physical residual is a
+        # cancellation between COM and interface reservoirs.
+        # Recompute the large conserved totals in extended precision rather
+        # than reusing the float64 convenience helper.
+        weights_long = np.asarray(self.grid.weights, dtype=np.longdouble)
+        measure_long = np.asarray(self.network.mode_measure, dtype=np.longdouble)
+        old_long = np.asarray(old, dtype=np.longdouble)
+        final_long = np.asarray(final, dtype=np.longdouble)
+        number_before_long = np.sum(measure_long[:, None] * old_long * weights_long[None, :])
+        number_after_long = np.sum(measure_long[:, None] * final_long * weights_long[None, :])
+        interface_change_long = (
+            np.longdouble(self.dt_s) * np.longdouble(com_interface_number_rate)
+        )
+        global_number_residual = float(
+            number_after_long - number_before_long - interface_change_long
+        )
+        number_scale = max(
+            abs(float(number_before_long)),
+            abs(float(number_after_long)),
+            abs(float(interface_change_long)),
+            1.0e-300,
+        )
+        global_number_relative = abs(global_number_residual) / number_scale
+
+        cell_energy_before = float(
+            np.sum(
+                h
+                * self.transport.cell_centroid_frequency_Hz[:, None]
+                * old[self.transport.sorted_indices]
+                * self.network.mode_measure[self.transport.sorted_indices, None]
+                * self.grid.weights[None, :]
+            )
+        )
+        cell_energy_after = float(
+            np.sum(
+                h
+                * self.transport.cell_centroid_frequency_Hz[:, None]
+                * final[self.transport.sorted_indices]
+                * self.network.mode_measure[self.transport.sorted_indices, None]
+                * self.grid.weights[None, :]
+            )
+        )
+        collision_energy_rate = c * float(collision.Q_gamma[0])
+        expected_energy_change = self.dt_s * (
+            transport.com_energy_action_W_m3 + collision_energy_rate
+        )
+        energy_residual = cell_energy_after - cell_energy_before - expected_energy_change
+        energy_scale = max(
+            abs(cell_energy_before),
+            abs(cell_energy_after),
+            abs(expected_energy_change),
+            1.0e-300,
+        )
+        energy_relative = abs(energy_residual) / energy_scale
+        return CoupledCollisionTransportStepResult(
+            occupation=np.array(final, copy=True),
+            converged=converged,
+            newton_iterations=newton_index,
+            total_gmres_iterations=total_gmres,
+            residual_relative=residual_relative,
+            minimum_occupation=float(np.min(final)),
+            global_number_residual_m3=float(global_number_residual),
+            global_number_relative_residual=float(global_number_relative),
+            energy_identity_residual_J_m3=float(energy_residual),
+            energy_identity_relative_residual=float(energy_relative),
+            interface_atom_source_J_m3=0.0,
+            collision_four_force_residual=float(np.linalg.norm(collision.Q_gamma + collision.Q_atom)),
+            collision_entropy_production=float(collision.entropy_production),
+            interface_number_change_m3=float(self.dt_s * com_interface_number_rate),
+            exact_interface_energy_change_J_m3=float(
+                self.dt_s * transport.exact_interface_energy_action_W_m3
+            ),
+            cosmological_redshift_work_J_m3=float(
+                self.dt_s
+                * (
+                    transport.outer_centroid_correction_W_m3
+                    + transport.cosmological_redshift_work_W_m3
+                )
+            ),
+        )
+
+
+__all__ = [
+    "CollisionStiffnessAudit",
+    "CoupledCollisionTransportProblem",
+    "CoupledCollisionTransportStepResult",
+    "FullCouplingIdentifiabilityAudit",
+    "ThermodynamicGridConsistencyAudit",
+    "audit_collision_stiffness",
+    "audit_full_coupling_identifiability",
+    "audit_thermodynamic_grid_consistency",
+]

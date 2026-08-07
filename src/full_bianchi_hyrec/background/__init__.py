@@ -1,6 +1,7 @@
 """Background snapshots and frame characteristics for Full Bianchi--HyRec."""
 
 from .snapshot import BackgroundSnapshot
+from .sequence import BackgroundSnapshotSequence, SourceDerivedBoundaryRoots
 from .characteristics import (
     FrameCharacteristic,
     HydrogenFrameCharacteristic,
@@ -11,6 +12,8 @@ from .characteristics import (
 
 __all__ = [
     "BackgroundSnapshot",
+    "BackgroundSnapshotSequence",
+    "SourceDerivedBoundaryRoots",
     "FrameCharacteristic",
     "HydrogenFrameCharacteristic",
     "aberrate_direction",

@@ -7,18 +7,19 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C1 / v0.62**.
-- Original-HyRec accepted radiation history remains on its exact canonical
-  `DLNA=8.49e-5` macro grid.
-- Adaptive backward-Euler full and both half-step trials, rejection and event restart occur only
-  inside one canonical macro interval; every trial passes the hard residual/positivity gates and a successful macro endpoint commits exactly one history slice.
-- Source-conditioned rank-one DAE lanes near `z~1300,1100,900` pass positivity,
-  backward-error, algebraic and restart gates.
-- Deterministic Bianchi-shaped event inputs test rollback/restart semantics only;
-  full COM-KHW/interface coupling and source-derived boundary speeds remain PR-05C2.
-- v0.62 was resealed from durable v0.61 bytes after an attachment-registration interruption; transcript-only v0.62 claims are superseded by the committed recovery receipts.
-- The recovery verifier now checks committed feature-range whitespace as well as staged and unstaged source changes; only verbatim `state/*.log` evidence is excluded.
-- Next stage: **PR-05C2 full coupled adaptive trajectory**.
+- Durable stage: **PR-05C2A / v0.63**.
+- Actual v0.48 Bianchi snapshot sequences drive direction-resolved conservative
+  frequency transport on the locked 35-state COM–KHW domain.
+- Nine source-conditioned actual-background pilot lanes close bounded-step
+  number, exact face-energy, four-force, positivity, entropy and analytic-JVP
+  gates on the frozen v0.50 COM grid.
+- Full source-identical anisotropic coupling is **not yet identified**: original
+  HyRec supplies scalar boundary history, the COM finite-volume state has no
+  source-defined face trace, and source-temperature mode measures differ from
+  the frozen grid by up to about 9.5 percent.
+- Canonical macro collision stiffness is `O(1e9)`. PR-05C2B must add an explicit
+  angular/face closure, thermodynamic grid/kernel adapter and block or
+  asymptotic-preserving preconditioner before adaptive macro trajectories.
 
 Start with:
 
@@ -34,7 +35,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C2_FULL_COUPLED_ADAPTIVE_PLAN.md`](docs/PR05C2_FULL_COUPLED_ADAPTIVE_PLAN.md).
+[`docs/PR05C2B_PRECONDITIONED_FULL_COUPLING_PLAN.md`](docs/PR05C2B_PRECONDITIONED_FULL_COUPLING_PLAN.md).
 
 ## Canonical source
 
@@ -55,15 +56,13 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #20 at
-`796eabf6339b9a13355ccc61907a5314b9cd9196`, tree
-`f6f7ef5f36917d6722e741aed705a6b4c7273955`; PR-head CI run 65 completed
-successfully. v0.62 is reconstructed on the exact author v0.61 lineage, so exact
-remote-tree identity is not assumed.
+GitHub `main` contains merged PR #21 at `ee54cb44838409f021d6c5fdb502450a11779ec4`, tree
+`369655209849c77c55f10f813fe8fecf8a4f7dbe`. Its PR-head CI completed successfully. v0.63 is developed on
+the exact author v0.62 lineage, so exact remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
 commit receipt, plus a full recovery Git bundle. Create a branch from fresh
-`origin/main`, cherry-pick only the receipt-listed v0.62 commits, rerun all
+`origin/main`, cherry-pick only the receipt-listed v0.63 commits, rerun all
 gates, and never rewrite shared history.
 
 ## Test tiers
@@ -71,5 +70,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.62 regeneration: `python scripts/run_pr05c1_adaptive_macro_stage.py`.
+- v0.63 regeneration: `python scripts/run_pr05c2a_directional_preflight_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.

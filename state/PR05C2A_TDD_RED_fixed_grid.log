@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_frequency_liouville_rejects_a_mismatched_moving_doppler_grid _______
+
+    def test_frequency_liouville_rejects_a_mismatched_moving_doppler_grid() -> None:
+        network = CollisionNetwork.from_npz(NETWORK)
+        with np.load(BACKGROUND, allow_pickle=False) as data:
+            grid = HarmonicGrid.from_directions(
+                data["directions"], data["angular_weights"], ell_max=3
+            )
+        sequence = BackgroundSnapshotSequence.from_npz(
+            BACKGROUND, "Bianchi_II_large_shear"
+        )
+        snapshot = sequence.snapshot_at_tau(0.4)
+        transport = ConservativeFrequencyLiouville.from_network(network)
+        mismatched = LineBoundaryConfig.lyman_alpha(
+            temperature_K=3550.0, x_red=-21.25, x_blue=21.25
+        )
+>       with pytest.raises(ValueError, match="fixed COM frequency grid"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/trajectory/test_full_coupled_transport.py:258: Failed
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_full_coupled_transport.py::test_frequency_liouville_rejects_a_mismatched_moving_doppler_grid - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.72s

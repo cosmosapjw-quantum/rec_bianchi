@@ -1,0 +1,19 @@
+.......F......                                                           [100%]
+=================================== FAILURES ===================================
+_____ test_full_coupling_identifiability_audit_blocks_source_derived_claim _____
+
+    def test_full_coupling_identifiability_audit_blocks_source_derived_claim() -> None:
+        from full_bianchi_hyrec.trajectory.full_coupled_adaptive import (
+            audit_full_coupling_identifiability,
+        )
+    
+        audit = audit_full_coupling_identifiability(octahedral_grid())
+        assert audit.native_history_angular_rank == 1
+>       assert audit.minimum_number_momentum_rank == 4
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'FullCouplingIdentifiabilityAudit' object has no attribute 'minimum_number_momentum_rank'
+
+tests/trajectory/test_full_coupled_transport.py:270: AttributeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_full_coupled_transport.py::test_full_coupling_identifiability_audit_blocks_source_derived_claim - AttributeError: 'FullCouplingIdentifiabilityAudit' object has no attribute 'minimum_number_momentum_rank'
+1 failed, 13 passed in 4.28s

@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_frequency_liouville_rejects_reference_grid_inconsistent_with_locked_modes _
+
+    def test_frequency_liouville_rejects_reference_grid_inconsistent_with_locked_modes() -> None:
+        network = CollisionNetwork.from_npz(NETWORK)
+        mismatched = LineBoundaryConfig.lyman_alpha(
+            temperature_K=3550.0, x_red=-21.25, x_blue=21.25
+        )
+>       with pytest.raises(ValueError, match="locked network mode measure"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/trajectory/test_full_coupled_transport.py:250: Failed
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_full_coupled_transport.py::test_frequency_liouville_rejects_reference_grid_inconsistent_with_locked_modes - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.74s

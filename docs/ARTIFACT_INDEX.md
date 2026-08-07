@@ -65,3 +65,5 @@ Exact ZIP releases are immutable canonical snapshots.
 | 59 | `Full_Bianchi_HyRec_PR05B1_source_identifiable_DAE_native_time_measure_no_go_v0_59.zip` | 104460 | `d2701e540944b46687d6ed79f8e06b75c3d74e653714e0554dbcdb6b699370b2` |
 | 60 | `Full_Bianchi_HyRec_PR05B2_causal_characteristic_history_v0_60.zip` | 273596 | `5f7860c8368ed16213dcf79087b80d4da51a4ad8bf3d10ffa5f578ead5db1c7b` |
 | 61 | `Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61.zip` | 62770 | `a2d67461ea44f76a03851a5db282a82636ce88c8be653bc5bcafe1320716edc6` |
+| 62 | `Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62.zip` | 24961 | `294f390aa3094092b9c54885c0fa1b305b845e2b2e7f7d5df89d16d3f4929348` |
+| 63 | `Full_Bianchi_HyRec_PR05C2A_directional_coupling_preflight_v0_63.zip` | 49670 | `25a8068ee8d2da1ec3cdbf1b08d61f83e78dd412ab94d372ee5a09c4d399164f` |

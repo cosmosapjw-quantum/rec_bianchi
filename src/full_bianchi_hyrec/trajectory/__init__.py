@@ -67,6 +67,18 @@ from .adaptive_macro import (
     source_conditioned_backward_euler_trial,
 )
 
+
+from .full_coupled_adaptive import (
+    CollisionStiffnessAudit,
+    CoupledCollisionTransportProblem,
+    CoupledCollisionTransportStepResult,
+    FullCouplingIdentifiabilityAudit,
+    ThermodynamicGridConsistencyAudit,
+    audit_collision_stiffness,
+    audit_full_coupling_identifiability,
+    audit_thermodynamic_grid_consistency,
+)
+
 from .time_dependent_native import (
     CausalRadiationHistoryState,
     NativeRadiationTimeMeasureAudit,
@@ -84,6 +96,14 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "CollisionStiffnessAudit",
+    "CoupledCollisionTransportProblem",
+    "CoupledCollisionTransportStepResult",
+    "FullCouplingIdentifiabilityAudit",
+    "ThermodynamicGridConsistencyAudit",
+    "audit_collision_stiffness",
+    "audit_full_coupling_identifiability",
+    "audit_thermodynamic_grid_consistency",
     "AcceptedMacrostepLedger",
     "AdaptiveBackwardEulerTrial",
     "AdaptiveControllerTolerances",
