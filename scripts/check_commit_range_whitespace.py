@@ -27,22 +27,51 @@ def _git(repo: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+_BASE_KEYS = (
+    "feature_exclusive_base_commit",
+    "feature_exclusive_base",
+    # Integration route: the delivery is cherry-picked onto remote main, so the
+    # author's endpoint never enters this history and only the remote base
+    # bounds the feature commits.
+    "connector_verified_remote_main_commit",
+)
+
+
+def _is_ancestor(repo: Path, commit: str) -> bool:
+    return _git(repo, "merge-base", "--is-ancestor", commit, "HEAD").returncode == 0
+
+
 def _load_feature_base(repo: Path) -> str:
     path = repo / "state/PATCH_BASE.json"
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError) as exc:
         raise RuntimeError(f"cannot read feature base from {path}: {exc}") from exc
-    for key in ("feature_exclusive_base_commit", "feature_exclusive_base"):
+
+    considered: list[str] = []
+    for key in _BASE_KEYS:
         candidate = value.get(key)
-        if isinstance(candidate, str) and candidate:
-            result = _git(repo, "rev-parse", "--verify", f"{candidate}^{{commit}}")
-            if result.returncode:
-                raise RuntimeError(
-                    f"feature base {candidate!r} is not a local commit:\n"
-                    f"{result.stdout}{result.stderr}"
-                )
-            return result.stdout.strip()
+        if not isinstance(candidate, str) or not candidate:
+            continue
+        result = _git(repo, "rev-parse", "--verify", f"{candidate}^{{commit}}")
+        if result.returncode:
+            # Absent from this clone. A CI checkout carries only the integration
+            # history, so the author's endpoint is not an object here at all.
+            considered.append(f"{key}={candidate} (absent)")
+            continue
+        resolved = result.stdout.strip()
+        considered.append(f"{key}={resolved}")
+        # A base that is not an ancestor of HEAD does not bound the feature
+        # commits: `base...HEAD` would fall back to a merge base far behind the
+        # branch point and sweep in unrelated already-merged history.
+        if _is_ancestor(repo, resolved):
+            return resolved
+
+    if considered:
+        raise RuntimeError(
+            "no recorded feature base is an ancestor of HEAD; "
+            f"considered {', '.join(considered)}"
+        )
     raise RuntimeError(f"{path} lacks feature_exclusive_base_commit")
 
 
