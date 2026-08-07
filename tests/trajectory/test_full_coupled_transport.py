@@ -487,4 +487,3 @@ def test_source_temperature_requires_a_dynamic_com_frequency_measure_adapter() -
     assert audit.requires_network_recompilation
     assert audit.requires_explicit_frequency_remap
     assert audit.bounded_no_go
-
