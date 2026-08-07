@@ -1,0 +1,1 @@
+Full PR-05C2 requires angle-resolved native boundary information or an explicit convergent closure, a refinement-tested COM face reconstruction, a source-temperature COM measure/kernel adapter, and a stiff block preconditioner.

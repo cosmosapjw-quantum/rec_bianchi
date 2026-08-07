@@ -417,18 +417,45 @@
     "source_restart_roundtrip_exact": true,
     "step_doubling_all_trials_gate_enforced": true
   },
+  "PR05C2A_evidence": {
+    "actual_background_models": [
+      "Bianchi_II_large_shear",
+      "Bianchi_VI_h_tilted_large_shear",
+      "Bianchi_VI_minus_1_over_9_exceptional"
+    ],
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2A_directional_coupling_preflight_v0_63.zip",
+    "artifact_bundle_sha256": "25a8068ee8d2da1ec3cdbf1b08d61f83e78dd412ab94d372ee5a09c4d399164f",
+    "artifact_bundle_size_bytes": 49670,
+    "claim": "BOUNDED_DIRECTIONAL_CONSERVATIVE_PILOT_NOT_SOURCE_IDENTICAL_FULL_TRAJECTORY",
+    "direction_count": 26,
+    "maximum_pilot_jvp_relative": 2.3100882350772342e-10,
+    "maximum_pilot_residual_relative": 6.096240973761396e-15,
+    "maximum_source_temperature_mode_measure_residual": 0.0949875396649884,
+    "maximum_source_temperature_outer_face_mismatch": 4.735610518341662e-05,
+    "maximum_stiffness_number": 1548937415.4715297,
+    "maximum_transport_energy_relative_residual": 1.3980987259907768e-19,
+    "maximum_transport_number_relative_residual": 7.948853934155215e-21,
+    "minimum_pilot_occupation": 7.230470702119545e-18,
+    "minimum_stiffness_number": 851178315.0591725,
+    "source_conditioned_redshifts": [
+      1300,
+      1100,
+      900
+    ],
+    "source_root_count": 18
+  },
   "classification": "DURABLE_PROJECT_STATE",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62",
-    "name": "PR-05C1 adaptive canonical-macro controller",
-    "status": "PASS_PR05C1_ADAPTIVE_CANONICAL_MACRO_CONTROLLER_PR05C2_OPEN"
+    "artifact": "Full_Bianchi_HyRec_PR05C2A_directional_coupling_preflight_v0_63",
+    "name": "PR-05C2A directional coupling preflight",
+    "status": "PASS_PR05C2A_DIRECTIONAL_CONSERVATIVE_PILOT_BOUNDED_NO_GO_ANGULAR_THERMODYNAMIC_STIFFNESS_PR05C2B_NEXT"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
   "estimated_PR04_completion_percent": 100,
-  "estimated_PR05_completion_percent": 82,
+  "estimated_PR05_completion_percent": 86,
   "estimated_overall_completion_percent": 97,
   "hard_scope": {
     "excluded_from_12_PR_scalar_release": [
@@ -467,7 +494,9 @@
     "PR-05B3 swaps only scalar Dfplus/Dfplus_Ly feedback. Sobolev escape, native A1s diffusion and completed/Schur Tvv remain canonical.",
     "The source-identical accepted history is fixed to the canonical uniform DLNA grid. PR-05C may adapt internal microsteps but must append history only at canonical macro endpoints unless it explicitly introduces and downgrades to a new transport discretization.",
     "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2.",
-    "Evidence logs under state/*.log may preserve upstream whitespace verbatim; committed source/test/script/docs whitespace is now checked over feature_base...HEAD, plus staged and unstaged changes, by a quick-gate policy."
+    "Evidence logs under state/*.log may preserve upstream whitespace verbatim; committed source/test/script/docs whitespace is now checked over feature_base...HEAD, plus staged and unstaged changes, by a quick-gate policy.",
+    "PR-05C2A closes a source-derived directional finite-volume pilot but not a fully source-identical anisotropic native/COM trajectory: native original-HyRec boundary history is scalar, COM face trace uses a declared P0 closure, and canonical macro collision solves require a block preconditioner.",
+    "PR-05C2A closes an actual-background directional finite-volume pilot on the frozen v0.50 COM grid but not a fully source-identical anisotropic native/COM trajectory: native original-HyRec boundary history is scalar, the COM face trace uses a declared P0 closure, source-temperature mode measures differ by up to about 9.5 percent from the frozen grid, and canonical macro collision solves require a block preconditioner."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -505,35 +534,40 @@
     "pr05b3_transaction": "candidate-only nonlinear attempts, exactly-once accepted commit, byte-exact reject/rollback/restart, deterministic transaction payload carrying local state and COM restart data.",
     "pr05b3_unchanged_owners": "Sobolev Ly-alpha escape, native A1s diffusion and completed/Schur Tvv remain canonical and active.",
     "pr05c1_adaptive_macro_controller": "v0.62 keeps accepted original-HyRec history on the exact uniform DLNA macro grid; adaptive backward-Euler full and both half-step trials occur only inside a macro interval; every trial independently passes positivity, backward-error and algebraic-residual gates; rejection/event rollback does not mutate history; exactly one history slice is committed at a successful macro endpoint.",
+    "pr05c2a_bounded_no_go": "A source-identical full anisotropic coupling is underidentified because original-HyRec boundary history has angular rank one, COM cells lack a source-defined face trace, source-temperature mode measures differ from the frozen grid, and canonical macro collision solves require block preconditioning.",
+    "pr05c2a_directional_pilot": "v0.63 uses actual v0.48 BackgroundSnapshot sequences and a conservative 26-direction, 35-state frequency Liouville/COM collision pilot on the frozen v0.50 3000 K frequency grid.",
+    "pr05c2b_next": "Introduce an explicit angular closure with uncertainty, a source-temperature network/remap adapter, a positivity/refinement-tested face reconstruction, and a harmonic-block or asymptotic-preserving preconditioner before adaptive macro trajectories.",
     "pr05c_next": "retain the canonical uniform DLNA accepted-history grid as macro output surfaces; allow adaptive DAE/collision microsteps only inside each macro interval, with no history mutation before a successful macro endpoint.",
     "primitive_rate_adapter": "v0.58 byte-locked original-HyRec Alpha/delta-alpha/Beta/R2p2s and A1s/A2s/A3s3d/A4s4d registry with source-order cubic interpolation, SI boundary and analytic JVP.",
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C1_ADAPTIVE_CANONICAL_MACRO_PASS",
-    "name": "PR-05C2 full coupled adaptive trajectory",
+    "entry_gate": "PR05C2A_DIRECTIONAL_PILOT_AND_BOUNDED_NO_GO",
+    "name": "PR-05C2B preconditioned angle-resolved full coupling",
     "tasks": [
-      "Couple the 35-state COM-KHW collision and split-domain interface to the adaptive macro/micro controller.",
-      "Drive boundary speeds and branch events from actual BackgroundSnapshot characteristics rather than synthetic controller inputs.",
-      "Close global photon-number, exact face-energy, redshift-work and collision four-force ledgers.",
-      "Run refinement and restart gates in z~1300,1100,900 windows and Bianchi II/class-B/VI_-1/9 lanes."
+      "Introduce an explicit angle-resolved native boundary state or a separately justified angular closure.",
+      "Replace the provisional P0 COM face trace with a refinement-tested face reconstruction contract.",
+      "Construct a source-temperature COM mode-measure and collision-kernel adapter, or recompile the network on a controlled temperature grid.",
+      "Implement a harmonic-block or equivalent stiff collision preconditioner for canonical macro steps.",
+      "Then rerun adaptive macro trajectories with global number, face-energy, redshift-work and four-force ledgers."
     ]
   },
+  "overall_progress_percent": 97,
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
-    "exact_remote_main_sha": "796eabf6339b9a13355ccc61907a5314b9cd9196",
-    "exact_remote_main_tree": "f6f7ef5f36917d6722e741aed705a6b4c7273955",
-    "latest_merged_pr": 20,
-    "latest_merged_pr_head": "e7ade4277e46d455fb256060391124cfbdc1e60c",
-    "policy": "Create a branch from fresh origin/main. Apply only receipt-listed v0.62 commits. Use the self-contained feature bundle, or first import the exact author-v0.61 prerequisite object and then fetch the thin incremental bundle. Rerun every gate; never force-push.",
-    "remote_ci": "SUCCESS_RUN_65",
-    "remote_content_stage": "v0.61 PR05B3 scalar history owner swap",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_AFTER_V062_RECOVERY_HARDENING",
+    "exact_remote_main_sha": "ee54cb44838409f021d6c5fdb502450a11779ec4",
+    "exact_remote_main_tree": "369655209849c77c55f10f813fe8fecf8a4f7dbe",
+    "latest_merged_pr": 21,
+    "latest_merged_pr_head": "b4a38a720d8ea349aa4e83f845f594a01f019070",
+    "policy": "Create a branch from fresh origin/main; apply only receipt-listed v0.63 feature commits; rerun all gates; never force-push.",
+    "remote_ci": "SUCCESS_RUNS_61_62",
+    "remote_content_stage": "v0.62 PR05C1 adaptive canonical-macro controller",
+    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V063",
     "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
   },
   "remote_sync": {
-    "push_policy": "OWNER_FETCHES_V062_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
-    "reason": "Remote main now includes merged PR #20/v0.61; only v0.62 feature commits remain to be applied.",
+    "push_policy": "OWNER_FETCHES_V063_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
+    "reason": "Remote main contains merged v0.62; only v0.63 feature commits remain.",
     "remote_ref_verified": true,
     "remote_tree_match": false,
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git"
@@ -562,7 +596,7 @@
     },
     {
       "pr": 5,
-      "status": "IN_PROGRESS_PR05A_PR05B1_PR05B2_PR05B3_PR05C1_COMPLETE_PR05C2_NEXT",
+      "status": "IN_PROGRESS_PR05A_B1_B2_B3_C1_C2A_COMPLETE_BOUNDED_NO_GO_C2B_NEXT",
       "title": "Primitive HYREC operator and background interface"
     },
     {
