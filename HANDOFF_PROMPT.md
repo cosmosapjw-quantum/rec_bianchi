@@ -19,21 +19,26 @@ Next bounded task: **PR-05C2 full coupled adaptive trajectory**.
    ```
 2. Read, in this order:
    - `state/PROJECT_STATE.json`
-   - `state/PR05C1_RECOVERY_RECEIPT.json` when present
+   - `state/PR05C1_RUNTIME_RECOVERY_INVENTORY.json`
+   - `state/PR05C1_RECOVERY_RECEIPT.json`
    - `state/PR19_REMOTE_BASE_RECEIPT.json` when present
    - `state/ORIGINAL_HYREC_CANONICAL_PROVENANCE.json`
    - `state/REMOTE_CHECK_LATEST.json`
    - `state/SUPERSESSION_LEDGER.json`
    - `docs/CURRENT_STATE.md`
    - `docs/ROADMAP_12PR.md`
+   - `docs/PR05C1_RUNTIME_RECOVERY_REPORT.md`
+   - `docs/PR05C1_ADAPTIVE_CANONICAL_MACRO_FORMALISM.md`
    - `docs/PR05C2_FULL_COUPLED_ADAPTIVE_PLAN.md`
    - `docs/PR05C_ADAPTIVE_SHORT_TRAJECTORY_PLAN.md`
    - `docs/PR05C_LITERATURE_BASIS.md`
    - `docs/PR05B3_SCALAR_HISTORY_OWNER_SWAP_FORMALISM.md`
+   - `archive/expanded/Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62/HARD_GATE_LEDGER.json`
+   - `archive/expanded/Full_Bianchi_HyRec_PR05C1_adaptive_canonical_macro_v0_62/PR05C1_ledger.json`
    - `archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/HARD_GATE_LEDGER.json`
    - `archive/expanded/Full_Bianchi_HyRec_PR05B3_scalar_history_owner_swap_v0_61/PR05B3_ledger.json`
    - the v0.60 through v0.51 ledgers in reverse chronological order.
-3. Use Git state, canonical bytes, hashes, ledgers, tests and connector receipts; transcript claims are not evidence.
+3. Use Git state, canonical bytes, hashes, ledgers, tests and connector receipts; transcript claims are not evidence. The first v0.62 transcript completion and the later no-local-bytes conclusion are both superseded by the committed recovery inventory and fresh seal receipts.
 4. Preserve metric `(-,+,+,+)`, ordinary frequency in Hz, explicit `c,h,k_B`, homogeneous scalar background, tetrad+1+3, all 11 Bianchi types, finite tilt and nonlinear large shear.
 5. Canonical original HyRec is `archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip`, SHA-256 `48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27`.
 6. Do not revive superseded routes: no direct native-to-COM remap, fitted normalization, inferred source cells, silent high-resolution substitution, broad-cell centroid face energy, cross-redshift summation, interpretation of `DAlpha` as a derivative, centre-derived/fitted native local transient mass, mutation of history during rejected attempts, derivatives through discrete characteristic-stencil switches, or simultaneous canonical and typed scalar-history owners.

@@ -10,13 +10,13 @@ angle/frequency-resolved Ly-alpha transfer.
 - Durable stage: **PR-05C1 / v0.62**.
 - Original-HyRec accepted radiation history remains on its exact canonical
   `DLNA=8.49e-5` macro grid.
-- Adaptive backward-Euler trial steps, rejection and event restart occur only
-  inside one canonical macro interval; a successful macro endpoint commits
-  exactly one history slice.
+- Adaptive backward-Euler full and both half-step trials, rejection and event restart occur only
+  inside one canonical macro interval; every trial passes the hard residual/positivity gates and a successful macro endpoint commits exactly one history slice.
 - Source-conditioned rank-one DAE lanes near `z~1300,1100,900` pass positivity,
   backward-error, algebraic and restart gates.
 - Deterministic Bianchi-shaped event inputs test rollback/restart semantics only;
   full COM-KHW/interface coupling and source-derived boundary speeds remain PR-05C2.
+- v0.62 was resealed from durable v0.61 bytes after an attachment-registration interruption; transcript-only v0.62 claims are superseded by the committed recovery receipts.
 - Next stage: **PR-05C2 full coupled adaptive trajectory**.
 
 Start with:
