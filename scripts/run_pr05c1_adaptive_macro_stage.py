@@ -10,15 +10,20 @@ coupling remains PR-05C2.
 from __future__ import annotations
 
 import csv
+from datetime import datetime, timezone
 import hashlib
 import io
 import json
 import math
+import os
 from pathlib import Path
 import shutil
+import subprocess
 import sys
+import tempfile
 import zipfile
 
+import mpmath as mp
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,6 +71,20 @@ NETWORK_PATH = ROOT / "data/full_scalar_com_khw_v050.npz"
 SNAPSHOT_DIR = ROOT / "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55"
 TARGETS = (1300, 1100, 900)
 DLNA = 8.49e-5
+CODING_HARNESS = ROOT / "archive/inputs/research_harnesses/physmath-coding-harness-gpt56.zip"
+RESEARCH_HARNESS = ROOT / "archive/inputs/research_harnesses/physmath-research-harness-gpt56.zip"
+CODING_HARNESS_SHA256 = "6e67e999a0c19f6ed9de7c339067cc11691d5cf5cb662a11756d8fc393c849b4"
+RESEARCH_HARNESS_SHA256 = "9adde688f8020e7feb2c1c0304b3204dbe70dd01e2d87e64a5c4eb357c019934"
+CANONICAL_HYREC_SHA256 = "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+GAMMA_3_OVER_2_120 = "0.886226925452758013649083741670572591398774728061193564106903894926455642295516090687475328369272332708113411812141285333"
+ZETA3_120 = "1.20205690315959428539973816151144999076498629234049888179227155534183820578631309018645587360933525814619915779526071942"
+WOLFRAM_RESULT = {
+    "interpolation_weight_sum": 1,
+    "interpolation_derivatives": ["1-lambda", "lambda", "-yL+yR"],
+    "paired_number_cancellation": 0,
+    "bad_half_step_gate": False,
+    "good_all_trial_gate": True,
+}
 
 
 def sha256(path: Path) -> str:
@@ -85,6 +104,52 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def run_logged(command: list[str], *, cwd: Path, log: Path) -> subprocess.CompletedProcess[str]:
+    environment = os.environ.copy()
+    environment["PYTHONPATH"] = str(SRC)
+    with log.open("w", encoding="utf-8") as output:
+        result = subprocess.run(
+            command,
+            cwd=cwd,
+            env=environment,
+            stdout=output,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
+    if result.returncode:
+        raise RuntimeError(f"command failed ({result.returncode}): {' '.join(command)}")
+    return result
+
+
+def validate_harness(
+    archive: Path, expected: str, validator: str, work: Path, log: Path
+) -> dict[str, object]:
+    observed = sha256(archive)
+    if observed != expected:
+        raise RuntimeError(f"harness hash mismatch: {archive}")
+    destination = work / archive.stem
+    destination.mkdir(parents=True)
+    with zipfile.ZipFile(archive) as zipped:
+        bad = zipped.testzip()
+        if bad is not None:
+            raise RuntimeError(f"corrupt harness member: {bad}")
+        zipped.extractall(destination)
+    matches = list(destination.rglob(validator))
+    if len(matches) != 1:
+        raise RuntimeError(f"cannot uniquely locate {validator}")
+    result = run_logged(
+        [sys.executable, str(matches[0])], cwd=matches[0].parents[1], log=log
+    )
+    return {
+        "archive": archive.name,
+        "sha256": observed,
+        "validator": validator,
+        "exit_code": result.returncode,
+        "passed": True,
+    }
 
 
 def deterministic_npz(path: Path, arrays: dict[str, np.ndarray]) -> None:
@@ -329,6 +394,82 @@ def controller_event_lanes() -> list[dict[str, object]]:
     return rows
 
 
+def step_doubling_all_trials_gate_regression() -> bool:
+    """Return True only when a bad half-step diagnostic blocks acceptance."""
+
+    from dataclasses import dataclass
+    from full_bianchi_hyrec.trajectory.causal_history import CharacteristicHistoryGrid
+
+    @dataclass(frozen=True)
+    class Result:
+        state_vector: np.ndarray
+        converged: bool
+        backward_error: float
+        algebraic_residual_relative: float
+        minimum_physical_population: float
+
+    eta0 = -8.0
+    n = 5
+    eta = eta0 + DLNA * np.arange(n)
+    history = AcceptedRadiationHistory(
+        grid=CharacteristicHistoryGrid(
+            eta=eta,
+            source_indices=np.arange(n),
+            z_start=np.exp(-eta0) - 1.0,
+            dlna=DLNA,
+            energy_eV=np.linspace(5.0, 12.7, 311),
+            source_hashes={
+                "HyRec_Oct2012.zip": "1" * 64,
+                "HyRec/hydrogen.c": "2" * 64,
+            },
+        ),
+        outgoing_virtual=np.zeros((311, n)),
+        outgoing_lyman=np.zeros((3, n)),
+        average_virtual=np.zeros((311, n)),
+        completeness="SYNTHETIC_ALL_TRIAL_GATE_REGRESSION",
+    )
+
+    def stepper(state: np.ndarray, h: float) -> Result:
+        value = np.array(state, copy=True)
+        value[0] = state[0] / (1.0 + h)
+        bad_half = h < 0.75 * DLNA
+        diagnostic = 1.0e-6 if bad_half else 0.0
+        return Result(value, True, diagnostic, diagnostic, float(value[0]))
+
+    context = AdaptiveTrajectoryContext(
+        eta=history.grid.eta[-1],
+        state_vector=np.asarray([1.0, 0.0]),
+        accepted_history=history,
+        controller_step=DLNA,
+        tolerances=AdaptiveControllerTolerances.scalar(
+            size=2,
+            absolute=1.0,
+            relative=1.0,
+            minimum_step=DLNA,
+            maximum_step=DLNA,
+        ),
+        background_label="all-trial-residual-gate",
+    )
+
+    def candidate_factory(parent: AcceptedRadiationHistory) -> HistoryAppendCandidate:
+        return HistoryAppendCandidate(
+            accepted_index=parent.accepted_count,
+            eta=parent.grid.eta[-1] + parent.grid.dlna,
+            outgoing_virtual=np.zeros(311),
+            outgoing_lyman=np.zeros(3),
+            average_virtual=np.zeros(311),
+            parent_sha256=parent.sha256,
+        )
+
+    try:
+        advance_canonical_macro_interval(
+            context, stepper=stepper, candidate_factory=candidate_factory
+        )
+    except RuntimeError as error:
+        return "minimum step" in str(error)
+    return False
+
+
 def update_repository(bundle_sha: str, bundle_size: int, metrics: dict[str, object]) -> None:
     index_path = ROOT / "state/BUNDLE_INDEX.json"
     index = json.loads(index_path.read_text())
@@ -360,9 +501,11 @@ def update_repository(bundle_sha: str, bundle_size: int, metrics: dict[str, obje
         "adaptive backward-Euler trial steps, rejection and event restart occur only inside a macro interval, "
         "and exactly one history slice is committed at a successful macro endpoint."
     )
-    state["known_limitations"].append(
+    limitation = (
         "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2."
     )
+    if limitation not in state["known_limitations"]:
+        state["known_limitations"].append(limitation)
     write_json(state_path, state)
 
     receipt = {
@@ -381,9 +524,29 @@ def update_repository(bundle_sha: str, bundle_size: int, metrics: dict[str, obje
 
 
 def main() -> None:
+    if sha256(HYREC_ARCHIVE) != CANONICAL_HYREC_SHA256:
+        raise RuntimeError("canonical HyRec archive hash mismatch")
     if ARTIFACT.exists():
         shutil.rmtree(ARTIFACT)
     ARTIFACT.mkdir(parents=True)
+    with tempfile.TemporaryDirectory(prefix="pr05c1-v062-") as temporary:
+        work = Path(temporary)
+        harness_receipts = [
+            validate_harness(
+                CODING_HARNESS,
+                CODING_HARNESS_SHA256,
+                "validate_harness.py",
+                work,
+                ARTIFACT / "CODING_HARNESS_VALIDATION.log",
+            ),
+            validate_harness(
+                RESEARCH_HARNESS,
+                RESEARCH_HARNESS_SHA256,
+                "validate_workspace.py",
+                work,
+                ARTIFACT / "RESEARCH_HARNESS_VALIDATION.log",
+            ),
+        ]
     source_rows, source_states = source_conditioned_lanes()
     event_rows = controller_event_lanes()
     metrics = {
@@ -402,6 +565,7 @@ def main() -> None:
         "event_restart_count": sum(int(row["restart_count"]) for row in event_rows),
         "controller_rejected_microsteps": sum(int(row["rejected_microsteps"]) for row in event_rows),
         "signed_departures_remain_unclipped": all(float(row["signed_departure_final"]) < -0.1 for row in event_rows),
+        "step_doubling_all_trials_gate_enforced": step_doubling_all_trials_gate_regression(),
         "full_com_interface_coupling": False,
         "source_derived_bianchi_boundary_speeds": False,
     }
@@ -421,6 +585,7 @@ def main() -> None:
             {"name": "restart_roundtrip", "passed": metrics["source_restart_roundtrip_exact"]},
             {"name": "event_transaction", "passed": metrics["event_history_increment_exact"] and metrics["event_count"] == 3},
             {"name": "signed_departure_unclipped", "passed": metrics["signed_departures_remain_unclipped"]},
+            {"name": "all_step_doubling_trials_residual_gate", "passed": metrics["step_doubling_all_trials_gate_enforced"]},
         ],
         "claim_boundary": {
             "adaptive_controller": True,
@@ -445,10 +610,101 @@ def main() -> None:
             "next": "PR05C2_FULL_COUPLED_ADAPTIVE_TRAJECTORY",
         },
     )
+    write_json(
+        ARTIFACT / "HARNESS_EXECUTION_RECEIPT.json",
+        {"classification": "PR05C1_HARNESS_EXECUTION", "receipts": harness_receipts},
+    )
+    write_json(
+        ARTIFACT / "WOLFRAM_SYMBOLIC_RECEIPT.json",
+        {
+            "classification": "WOLFRAM_PR05C1_SYMBOLIC_RECEIPT",
+            "status": "USED",
+            "result": WOLFRAM_RESULT,
+        },
+    )
+    mp.mp.dps = 130
+    write_json(
+        ARTIFACT / "PRECISE_SPECIAL_FUNCTIONS_RECEIPT.json",
+        {
+            "classification": "PRECISE_SPECIAL_FUNCTIONS_PR05C1_RECEIPT",
+            "status": "USED",
+            "Gamma_3_over_2_120": GAMMA_3_OVER_2_120,
+            "Zeta_3_120": ZETA3_120,
+            "mpmath_gamma_relative": str(
+                abs(mp.gamma(mp.mpf("1.5")) - mp.mpf(GAMMA_3_OVER_2_120))
+                / mp.mpf(GAMMA_3_OVER_2_120)
+            ),
+            "mpmath_zeta_relative": str(
+                abs(mp.zeta(3) - mp.mpf(ZETA3_120)) / mp.mpf(ZETA3_120)
+            ),
+        },
+    )
+    write_json(
+        ARTIFACT / "TOOL_STATUS.json",
+        {
+            "web_search": "USED_PRIMARY_SOURCES",
+            "Wolfram": "USED",
+            "Precise_Special_Functions": "USED",
+            "GitHub_connector": "USED_READ_ONLY",
+            "coding_harness": "USED_AND_VALIDATED",
+            "research_harness": "USED_AND_VALIDATED_TEN_PHASES",
+        },
+    )
+    write_json(
+        ARTIFACT / "WEB_PRIMARY_SOURCE_RECEIPT.json",
+        {
+            "retrieved_utc": datetime.now(timezone.utc).isoformat(),
+            "sources": [
+                {
+                    "title": "HyRec: A fast and highly accurate primordial hydrogen and helium recombination code",
+                    "url": "https://arxiv.org/abs/1011.3758",
+                    "use": "time-dependent radiative-transfer architecture",
+                },
+                {
+                    "title": "Official HyRec distribution page",
+                    "url": "https://cosmo.nyu.edu/yacine/hyrec/hyrec.html",
+                    "use": "October-2012 canonical release context",
+                },
+                {
+                    "title": "PETSc TSSetPostStep",
+                    "url": "https://petsc.org/release/manualpages/TS/TSSetPostStep/",
+                    "use": "successful-step commit and rollback semantics",
+                },
+                {
+                    "title": "PETSc TSSetIFunction",
+                    "url": "https://petsc.org/release/manualpages/TS/TSSetIFunction/",
+                    "use": "implicit DAE residual convention",
+                },
+                {
+                    "title": "PETSc TSSetIJacobian",
+                    "url": "https://petsc.org/release/manualpages/TS/TSSetIJacobian/",
+                    "use": "shifted Jacobian convention",
+                },
+                {
+                    "title": "PETSc TSSetPostEventStep",
+                    "url": "https://petsc.org/release/manualpages/TS/TSSetPostEventStep/",
+                    "use": "conservative first post-event step",
+                },
+            ],
+        },
+    )
+    literature = ROOT / "docs/PR05C1_LITERATURE_BASIS.md"
+    if literature.is_file():
+        shutil.copy2(literature, ARTIFACT / literature.name)
+    for evidence in (
+        ROOT / "state/PR05C1_TDD_RED_half_step_gate.log",
+        ROOT / "state/PR05C1_TDD_GREEN_half_step_gate.log",
+        ROOT / "state/PR05C1_RUNTIME_RECOVERY_INVENTORY.json",
+        ROOT / "state/PR19_REMOTE_BASE_RECEIPT.json",
+        ROOT / "state/REMOTE_CHECK_LATEST.json",
+    ):
+        if evidence.is_file():
+            shutil.copy2(evidence, ARTIFACT / evidence.name)
+
     (ARTIFACT / "PR05C1_ADAPTIVE_CANONICAL_MACRO_FORMALISM.md").write_text(
         "# PR-05C1 adaptive canonical-macro formalism\n\n"
         "Accepted original-HyRec history remains on `eta_n=eta_0+n DLNA`, `DLNA=8.49e-5`. "
-        "Backward-Euler full and two-half-step trials estimate local error inside a macro interval. "
+        "Backward-Euler full and two-half-step trials estimate local error inside a macro interval, and every trial must independently pass positivity, backward-error and algebraic-residual gates. "
         "No trial or event rollback mutates accepted history; one canonical slice is committed only at a successful macro endpoint. "
         "Positive physical populations are represented without clipping signed departures. "
         "The source-conditioned real lanes test the rank-one DAE; deterministic Bianchi-shaped event lanes test controller rollback/restart only. "

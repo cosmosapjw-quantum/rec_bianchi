@@ -172,6 +172,44 @@ def test_event_is_localized_without_history_mutation_and_requires_restart() -> N
     assert updated.accepted_history.accepted_count == history.accepted_count + 1
 
 
+def test_step_doubling_rejects_when_either_half_step_fails_residual_gates() -> None:
+    history = _history()
+    dlna = history.grid.dlna
+
+    def stepper(state: np.ndarray, h: float) -> _Step:
+        base = _linear_step(state, h)
+        half_step_is_bad = h < 0.75 * dlna
+        return _Step(
+            state_vector=base.state_vector,
+            converged=True,
+            backward_error=1.0e-6 if half_step_is_bad else 0.0,
+            algebraic_residual_relative=1.0e-6 if half_step_is_bad else 0.0,
+            minimum_physical_population=base.minimum_physical_population,
+        )
+
+    context = trajectory.AdaptiveTrajectoryContext(
+        eta=history.grid.eta[-1],
+        state_vector=np.array([1.0, 0.0]),
+        accepted_history=history,
+        controller_step=dlna,
+        tolerances=trajectory.AdaptiveControllerTolerances.scalar(
+            size=2,
+            absolute=1.0,
+            relative=1.0,
+            minimum_step=dlna,
+            maximum_step=dlna,
+        ),
+        background_label="half-step-residual-gate",
+    )
+
+    with pytest.raises(RuntimeError, match="minimum step"):
+        trajectory.advance_canonical_macro_interval(
+            context,
+            stepper=stepper,
+            candidate_factory=_candidate,
+        )
+
+
 def test_restart_roundtrip_is_byte_exact() -> None:
     history = _history()
     state = trajectory.TrajectoryRestartState(

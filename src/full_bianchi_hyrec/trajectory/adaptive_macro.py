@@ -587,26 +587,31 @@ def advance_canonical_macro_interval(
             raise ValueError("stepper returned a state with the wrong shape")
         error = _weighted_error_norm(state, full_state, half_state, context.tolerances)
         converged = bool(full.converged and first_half.converged and second_half.converged)
-        accepted = bool(
-            converged
-            and error <= 1.0
-            and full.minimum_physical_population > 0.0
-            and float(full.backward_error) < 1.0e-11
-            and float(full.algebraic_residual_relative) < 1.0e-11
+        trial_backward_error = max(
+            float(full.backward_error),
+            float(first_half.backward_error),
+            float(second_half.backward_error),
         )
-        maximum_backward = max(maximum_backward, float(full.backward_error), float(first_half.backward_error), float(second_half.backward_error))
-        maximum_algebraic = max(
-            maximum_algebraic,
+        trial_algebraic_residual = max(
             float(full.algebraic_residual_relative),
             float(first_half.algebraic_residual_relative),
             float(second_half.algebraic_residual_relative),
         )
-        minimum_population = min(
-            minimum_population,
+        trial_minimum_population = min(
             float(full.minimum_physical_population),
             float(first_half.minimum_physical_population),
             float(second_half.minimum_physical_population),
         )
+        accepted = bool(
+            converged
+            and error <= 1.0
+            and trial_minimum_population > 0.0
+            and trial_backward_error < 1.0e-11
+            and trial_algebraic_residual < 1.0e-11
+        )
+        maximum_backward = max(maximum_backward, trial_backward_error)
+        maximum_algebraic = max(maximum_algebraic, trial_algebraic_residual)
+        minimum_population = min(minimum_population, trial_minimum_population)
         attempts.append(
             AdaptiveMicrostepAttempt(
                 eta_start=eta,
@@ -614,17 +619,9 @@ def advance_canonical_macro_interval(
                 proposed_step=proposed,
                 accepted=accepted,
                 error_norm=error,
-                backward_error=max(float(full.backward_error), float(first_half.backward_error), float(second_half.backward_error)),
-                algebraic_residual_relative=max(
-                    float(full.algebraic_residual_relative),
-                    float(first_half.algebraic_residual_relative),
-                    float(second_half.algebraic_residual_relative),
-                ),
-                minimum_physical_population=min(
-                    float(full.minimum_physical_population),
-                    float(first_half.minimum_physical_population),
-                    float(second_half.minimum_physical_population),
-                ),
+                backward_error=trial_backward_error,
+                algebraic_residual_relative=trial_algebraic_residual,
+                minimum_physical_population=trial_minimum_population,
                 event_kind=None if event is None else event.kind,
                 event_label=None if event is None else event.label,
             )

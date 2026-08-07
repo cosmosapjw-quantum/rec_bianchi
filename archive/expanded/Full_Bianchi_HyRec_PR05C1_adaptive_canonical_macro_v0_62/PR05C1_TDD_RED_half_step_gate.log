@@ -1,0 +1,42 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_step_doubling_rejects_when_either_half_step_fails_residual_gates _____
+
+    def test_step_doubling_rejects_when_either_half_step_fails_residual_gates() -> None:
+        history = _history()
+        dlna = history.grid.dlna
+
+        def stepper(state: np.ndarray, h: float) -> _Step:
+            base = _linear_step(state, h)
+            half_step_is_bad = h < 0.75 * dlna
+            return _Step(
+                state_vector=base.state_vector,
+                converged=True,
+                backward_error=1.0e-6 if half_step_is_bad else 0.0,
+                algebraic_residual_relative=1.0e-6 if half_step_is_bad else 0.0,
+                minimum_physical_population=base.minimum_physical_population,
+            )
+
+        context = trajectory.AdaptiveTrajectoryContext(
+            eta=history.grid.eta[-1],
+            state_vector=np.array([1.0, 0.0]),
+            accepted_history=history,
+            controller_step=dlna,
+            tolerances=trajectory.AdaptiveControllerTolerances.scalar(
+                size=2,
+                absolute=1.0,
+                relative=1.0,
+                minimum_step=dlna,
+                maximum_step=dlna,
+            ),
+            background_label="half-step-residual-gate",
+        )
+
+>       with pytest.raises(RuntimeError, match="minimum step"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'RuntimeError'>
+
+tests/trajectory/test_adaptive_canonical_macro.py:205: Failed
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_adaptive_canonical_macro.py::test_step_doubling_rejects_when_either_half_step_fails_residual_gates - Failed: DID NOT RAISE <class 'RuntimeError'>
+1 failed in 0.63s
