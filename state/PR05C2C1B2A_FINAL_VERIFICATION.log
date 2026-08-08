@@ -1,0 +1,144 @@
+# PR-05C2C1B2A/v0.68 final verification — complete independent runs
+
+$ ./scripts/bootstrap_sandbox.sh --offline
+offline recovery: using dependency-complete base interpreter python3
+dependency check: PASS (numpy=2.3.5, scipy=1.17.0, pytest=9.0.2)
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v068_recovery/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "a728692029eaa4411a60f39772423fb7bcf2816e",
+  "head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+  "repository": "/mnt/data/rec_bianchi_v068_recovery",
+  "status": "PASS"
+}
+PR-05C2C1B2A v0.68 artifact: PASS; preconditioner and multi-macro OPEN
+{"status": "PASS", "bundle_count": 67, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+Sandbox ready. Read HANDOFF_PROMPT.md and state/PROJECT_STATE.json.
+$ python scripts/check_hyrec_binary_hash_policy.py
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v068_recovery/tests)
+$ python scripts/check_commit_range_whitespace.py
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "a728692029eaa4411a60f39772423fb7bcf2816e",
+  "head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+  "repository": "/mnt/data/rec_bianchi_v068_recovery",
+  "status": "PASS"
+}
+$ python scripts/verify_repo.py --quick
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v068_recovery/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "a728692029eaa4411a60f39772423fb7bcf2816e",
+  "head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+  "repository": "/mnt/data/rec_bianchi_v068_recovery",
+  "status": "PASS"
+}
+PR-05C2C1B2A v0.68 artifact: PASS; preconditioner and multi-macro OPEN
+{"status": "PASS", "bundle_count": 67, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+$ python scripts/verify_repo.py --all
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v068_recovery/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "a728692029eaa4411a60f39772423fb7bcf2816e",
+  "head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+  "repository": "/mnt/data/rec_bianchi_v068_recovery",
+  "status": "PASS"
+}
+PR-05C2C1B2A v0.68 artifact: PASS; preconditioner and multi-macro OPEN
+........................................................................ [ 27%]
+........................................................................ [ 54%]
+........................................................................ [ 82%]
+...............................................                          [100%]
+263 passed, 37 deselected in 21.75s
+{"status": "PASS", "bundle_count": 67, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68", "mode": "all", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+$ python -m pytest -q tests/trajectory/test_hyrec_two_photon_raman.py tests/trajectory/test_pr05c2c1b2a_artifact.py
+........                                                                 [100%]
+8 passed in 1.16s
+
+$ python scripts/verify_repo.py --scientific
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v068_recovery/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "a728692029eaa4411a60f39772423fb7bcf2816e",
+  "head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+  "repository": "/mnt/data/rec_bianchi_v068_recovery",
+  "status": "PASS"
+}
+PR-05C2C1B2A v0.68 artifact: PASS; preconditioner and multi-macro OPEN
+[scientific] receipt PASS: tests/recoil/test_full_harmonic_deposition.py
+[scientific] receipt PASS: tests/recoil/test_hyrec_common_measure.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_boundary_instrumentation.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_native.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_physical_flux.py
+[scientific] receipt PASS: tests/recoil/test_pair_cell_conductance.py
+[scientific] receipt PASS: tests/recoil/test_recoil_bridge.py
+[scientific] receipt PASS: tests/recoil/test_same_cell_regular.py
+[scientific] receipt PASS: tests/recoil/test_thermal_deposition.py
+[scientific] receipt PASS: tests/trajectory/test_adaptive_canonical_macro.py
+[scientific] receipt PASS: tests/trajectory/test_causal_characteristic_history.py
+[scientific] receipt PASS: tests/trajectory/test_causal_history_instrumentation.py
+[scientific] receipt PASS: tests/trajectory/test_full_coupled_transport.py
+[scientific] receipt PASS: tests/trajectory/test_hyrec_two_photon_raman.py
+[scientific] receipt PASS: tests/trajectory/test_primitive_rates.py
+[scientific] receipt PASS: tests/trajectory/test_scalar_history_owner_swap.py
+[scientific] fast aggregate: -m not slow
+........................................................................ [ 27%]
+........................................................................ [ 54%]
+........................................................................ [ 82%]
+...............................................                          [100%]
+263 passed, 37 deselected in 21.32s
+{"status": "PASS", "bundle_count": 67, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68", "mode": "scientific", "scientific_slow_file_count": 16, "scientific_slow_test_count": 37}
+
+$ py_compile tracked Python files
+195 tracked Python files PASS
+$ import package modules
+50 package modules PASS
+
+$ git diff --check
+$ git fsck --full --no-dangling
+$ git status --short
+ M state/REMOTE_CHECK_LATEST.json
+?? state/PR05C2C1B2A_FINAL_VERIFICATION.log
