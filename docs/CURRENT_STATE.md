@@ -1,26 +1,24 @@
 # Current state
 
-- Durable stage: **PR-05C2C1B1 / v0.67**.
-- Status: `PASS_PR05C2C1B1_CANONICAL_SPIKE_PHYSICAL_LINE_SOURCE_ADAPTER_FULL_WITHHELD_AUDIT_PRECONDITIONER_AND_MULTI_MACRO_OPEN`.
-- The recovered direct thermodynamic node family contains complete z~900,
-  z~1100 and z~1300 networks and the exact v0.50 3000 K anchor.
-- The October-2012 original-HyRec virtual-spike `Dtau/Dfeq/Dfplus -> Dfminus`
-  map is source-identical, directionally rescaled by the actual Bianchi
-  logarithmic frequency speed, stable at small optical depth and equipped with
-  an analytic JVP.
-- The positive paired one-photon source is an explicit scalar theory-contract
-  adapter.  It has nonnegative emission/absorption rates, exact Planck/LTE null
-  and normalized angular deposition, but is not relabelled as an explicit
-  coefficient decomposition stored by original HyRec.
-- Actual Bianchi II, class-B `VI_h` and exceptional `VI_-1/9` snapshots drive
-  fail-closed characteristic face transfer; instantaneous scalar-to-angular
-  inversion remains forbidden.
-- A complete withheld-node audit covers all 442 unordered pair blocks and all
-  17 same-cell blocks.  The event-mass weighted scalar error is about `9.33e-6`,
-  the maximum active-edge error about `8.67e-3`, and the maximum same-cell
-  relative error about `1.65e-2`.
-- PR-05 remains in progress.  Canonical two-photon/Raman source ownership,
-  measured scalable preconditioning, four-or-more-macro trajectories and PR-06
-  FLRW history parity remain open.
-- Next: **PR-05C2C1B2 canonical two-photon/Raman source census, measured
-  preconditioner and multi-macro closure**.
+- Durable stage: **PR-05C2C1B2A / v0.68**.
+- Status: `PASS_PR05C2C1B2A_CANONICAL_TWO_PHOTON_RAMAN_SOURCE_ADAPTER_PRECONDITIONER_MULTI_MACRO_OPEN`.
+- The canonical October-2012 `two_photon_tables.dat` member is byte locked and
+  its 2s, 3s/3d and 4s/4d two-photon/Raman threshold registry is explicit for
+  all 311 virtual bins.
+- The `hydrogen.c::populateTS_2photon` real-to-virtual, virtual-to-real and real
+  diagonal additions are reproduced against the original C source with maximum
+  relative residual `1.64e-14`; detailed-balance ratios are exact at float64
+  resolution.
+- A separate positive paired scalar two-photon/Raman source implements the
+  stimulated factors, energy relation, LTE/Planck null and analytic JVP.  It is
+  a theory-contract adapter and is **not** relabelled as a coefficient
+  decomposition explicitly stored by original HyRec.
+- Canonical analytic-JVP gross residual is `7.71e-9`; the tiny far-wing
+  active-edge diagnostic is `4.61e-7`.  The physical paired-action JVP residual
+  is `3.72e-9` and the maximum Planck-null residual is `3.21e-14`.
+- No global normalization is fitted.  Positive forward/reverse rates extend
+  down to about `1.09e-66 H^-1 s^-1` in the randomized audit.
+- PR-05 remains in progress.  A measured entropy/nullspace-preserving
+  preconditioner, physical characteristic coupling of the canonical source and
+  at least four canonical macro intervals in all nine locked lanes remain open.
+- Next: **PR-05C2C1B2B measured preconditioner and multi-macro closure**.
