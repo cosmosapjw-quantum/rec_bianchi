@@ -2,8 +2,8 @@ Treat the session as **RUNTIME_INTERRUPTION_RECOVERY**, not as a normal continua
 
 Repository: `git@github.com:cosmosapjw-quantum/rec_bianchi.git`
 Durable state date: `2026-08-08`
-Current stage: **PR-05C2C1B2A / v0.68 — canonical two-photon/Raman source adapter PASS; PR-05 IN PROGRESS**
-Next bounded task: **PR-05C2C1B2B measured preconditioner and multi-macro closure**.
+Current local stage: **PR-05C2C1B2B0 / v0.69 — macro-evidence integrity bounded no-go**.
+Next bounded task: **PR-05C2C1B2B1 accepted-state pseudo-transient/micro-macro continuation**.
 
 ## Required recovery order
 
@@ -13,30 +13,25 @@ Next bounded task: **PR-05C2C1B2B measured preconditioner and multi-macro closur
    python scripts/check_remote_state.py
    python scripts/check_hyrec_binary_hash_policy.py
    python scripts/check_commit_range_whitespace.py
-   if test -f scripts/check_imports.py; then PYTHONPATH=src python scripts/check_imports.py; fi
+   PYTHONPATH=src python scripts/check_imports.py
    python scripts/verify_repo.py --quick
    pytest -q -m "not slow"
    ```
-2. Read `state/PROJECT_STATE.json`, `state/PR05C2C1B2A_RECOVERY_RECEIPT.json`,
-   `state/REMOTE_CHECK_LATEST.json`, `state/SUPERSESSION_LEDGER.json`,
-   `docs/CURRENT_STATE.md`,
-   `docs/PR05C2C1B2A_TWO_PHOTON_RAMAN_SOURCE_FORMALISM.md`,
-   `docs/PR05C2C1B2A_RESEARCH_REPORT.md`,
-   `docs/PR05C2C1B2B_PRECONDITIONER_MULTI_MACRO_PLAN.md`, and the v0.68
-   artifact ledgers/verifier.
-3. Use Git state, canonical bytes, hashes, ledgers and tests; transcript claims
-   are not evidence.
-4. Preserve metric `(-,+,+,+)`, ordinary frequency in Hz, explicit `c,h,k_B`,
-   homogeneous background, tetrad+1+3, all 11 Bianchi types, finite tilt and
-   nonlinear large shear.
-5. Keep source-identical integrated-bin/matrix coefficients separate from the
-   positive angle-resolved physical paired-action contract.  Do not relabel the
-   latter as an explicitly stored original-HyRec decomposition.
-6. Do not introduce a global normalization, infer hidden native cells, perform
-   instantaneous scalar-to-angular inversion, use broad-cell centroid energy at
-   a face, or differentiate through topology/frequency-speed/limiter events.
-7. PR-05C2C1B2B must couple the source to exact characteristics, compare
-   preconditioners on residual/iterations/wall/RSS, and close at least four
-   canonical macro intervals in all nine locked lanes.
-8. PR-06 remains full FLRW history/visibility parity.  Canonical delivery is the preferred self-contained v0.68-from-v0.66 compatibility Git bundle plus the full recovery bundle; the older v0.65 cumulative route is recovery-only.
-   Never force-push shared history. Remote main already contains merged PR #25/v0.66; apply only the preferred receipt-listed v0.68-from-v0.66 commits on a fresh branch.
+2. Read `state/PROJECT_STATE.json`, `state/PR05C2C1B2B0_RECOVERY_RECEIPT.json`,
+   `state/SUPERSESSION_LEDGER.json`, `docs/CURRENT_STATE.md`,
+   `docs/PR05C2C1B2B0_MACRO_EVIDENCE_INTEGRITY_FORMALISM.md`, and
+   `docs/PR05C2C1B2B1_PSEUDOTRANSIENT_CONTINUATION_PLAN.md`.
+3. Use Git state, hashes, ledgers, tests, and canonical bytes; transcript claims
+   and the missing v0.64 worker are not evidence.
+4. Preserve `(-,+,+,+)`, ordinary Hz, explicit `c,h,k_B`, homogeneous
+   tetrad+1+3 backgrounds, finite tilt, nonlinear large shear, and all-11
+   compatibility.
+5. Do not reuse or chain v0.64 recorded macro endpoints.  Their artifact bytes
+   remain durable, but their nine macro-convergence rows are superseded.
+6. Preserve v0.65 theory and v0.66--v0.68 direct-node/source adapters.  Do not
+   fit normalization or infer a missing parent.
+7. Reconstruct an accepted-state path with pseudo-transient/adaptive microsteps.
+   Preconditioners must be compared on the same reconstructed path and selected
+   only by original residual plus total wall time and memory.
+8. Canonical delivery remains feature/full Git bundles; never force-push shared
+   history.
