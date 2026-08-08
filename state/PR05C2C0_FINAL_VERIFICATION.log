@@ -1,0 +1,19 @@
+PR-05C2C0 / v0.65 final pre-seal verification
+Generated UTC: 2026-08-08T03:55:55.466424Z
+Branch: work/pr05c2c-theory-closure-v065
+Payload HEAD: 26f2b1c1f00960517396a64ab042cc7735959b3e
+Payload tree: 36c9db8fe0e275f93c8f5db57a3bd26392e9e3ce
+
+PASS: offline bootstrap
+PASS: HyRec binary-hash policy
+PASS: committed-range/staged/unstaged whitespace policy
+PASS: direct import smoke, 45 modules (scripts/check_imports.py absent from exact author lineage)
+PASS: artifact verifier
+PASS: repository quick
+PASS: repository all — 233 passed, 36 deselected
+PASS: targeted theory/artifact — 9 passed
+PASS: scientific — 36 slow receipts across 15 files + 233 fresh fast = 269 passed
+PASS: py_compile — 179 intended Python files
+PASS: secret scan — 1376 intended files, no credential findings
+
+Post-seal git diff/fsck/clean-tree and bundle replay are recorded in external final delivery receipts.

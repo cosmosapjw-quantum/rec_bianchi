@@ -2,8 +2,8 @@ Treat the session as **RUNTIME_INTERRUPTION_RECOVERY**, not as a normal continua
 
 Repository: `git@github.com:cosmosapjw-quantum/rec_bianchi.git`
 Durable state date: `2026-08-08`
-Current stage: **PR-05C2B / v0.64 — explicit-closure optimized canonical-macro reference PASS; PR-05 IN PROGRESS**
-Next bounded task: **PR-05C2C direct thermodynamic network and native angular evolution**.
+Current stage: **PR-05C2C0 / v0.65 — scalar mathematical and physical theory contract PASS; PR-05 IN PROGRESS**
+Next bounded task: **PR-05C2C1 direct thermodynamic compiler and characteristic angular solver**.
 
 ## Required recovery order
 
@@ -17,21 +17,32 @@ Next bounded task: **PR-05C2C direct thermodynamic network and native angular ev
    python scripts/verify_repo.py --quick
    pytest -q -m "not slow"
    ```
-2. Read `state/PROJECT_STATE.json`, `state/PR05C2B_RECOVERY_RECEIPT.json`,
-   `state/REMOTE_CHECK_LATEST.json`, `state/SUPERSESSION_LEDGER.json`,
-   `docs/CURRENT_STATE.md`, `docs/PR05C2B_RESEARCH_AND_OPTIMIZATION_REPORT.md`,
-   `docs/PR05C2C_DIRECT_NETWORK_NATIVE_ANGULAR_PLAN.md`, and the v0.64 artifact
-   ledger/formalism.
-3. Use Git state, hashes, ledgers and tests; transcript claims are not evidence.
+2. Read `state/PROJECT_STATE.json`, `state/PR05C2C0_RECOVERY_RECEIPT.json`,
+   `state/PR23_REMOTE_BASE_RECEIPT.json`, `state/REMOTE_CHECK_LATEST.json`,
+   `state/SUPERSESSION_LEDGER.json`, `docs/CURRENT_STATE.md`,
+   `docs/PR05C2C0_THEORY_CLOSURE_FORMALISM.md`,
+   `docs/PR05C2C0_THEORY_COMPLETION_REPORT.md`,
+   `docs/PR05C2C1_DIRECT_COMPILER_CHARACTERISTIC_SOLVER_PLAN.md`, and the v0.65
+   artifact ledgers/verifier.
+3. Use Git state, canonical bytes, hashes, ledgers and tests; transcript claims
+   are not evidence.
 4. Preserve metric `(-,+,+,+)`, ordinary frequency in Hz, explicit `c,h,k_B`,
    homogeneous background, tetrad+1+3, all 11 Bianchi types, finite tilt and
    nonlinear large shear.
-5. Do not relabel isotropic/maximum-entropy lifting or the thermodynamic
-   conductance adapter as source-identical.  Do not fit a global normalization.
-6. Keep pair-loop collision code as an audit oracle; production action/JVP is
-   vectorized and dense assembly is batched.
-7. PR-05C2C must directly compile validation network nodes, introduce a sourced
-   or explicitly downgraded angular evolution, and show a measured
-   preconditioner improvement before selection.
-8. Canonical delivery is a feature Git bundle plus full recovery bundle; never
-   force-push shared history.
+5. The v0.65 theory closure is scalar and unpolarized.  Its explicit extension
+   axiom is local hydrogen-frame isotropy of the primitive atomic source and
+   opacity.  Do not extend the claim to atomic alignment, polarization, fine
+   structure or Raman production.
+6. Do not revive instantaneous scalar-to-angular inversion, unconstrained
+   harmonic interpolation, fitted normalization, centre-inferred native cells,
+   broad-cell centroid face energy, or a preconditioner that ignores the Bose
+   entropy metric and conserved activity nullspace.
+7. PR-05C2C1 must implement the theorem contract: direct nonnegative reciprocal
+   source-temperature event kernels, fixed-topology log interpolation, exact
+   characteristic angular evolution, exact native face traces, conservative
+   positive COM traces and a measured entropy/nullspace preconditioner.
+8. Withheld-node, four-or-more-macro, rollback/restart and FLRW-reduction gates
+   are mandatory before PR-06.  No direct compiler or multi-macro completion is
+   inherited from prose.
+9. Canonical delivery is a self-contained feature Git bundle plus full recovery
+   bundle.  Never force-push shared history.
