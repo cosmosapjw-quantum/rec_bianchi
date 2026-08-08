@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_full_withheld_node_audit_covers_all_pair_and_same_cell_blocks ______
+
+    def test_full_withheld_node_audit_covers_all_pair_and_same_cell_blocks():
+        nodes = [
+            DirectThermodynamicNode.from_npz(path, reference_path=REFERENCE)
+            for path in NODE_PATHS
+        ]
+        family = DirectThermodynamicNetworkFamily(
+            (nodes[0], nodes[2]),
+            reference=DirectThermodynamicNetworkFamily.from_paths(
+                NODE_PATHS, reference_path=REFERENCE
+            ).reference,
+        )
+>       audit = family.audit_withheld_node(nodes[1])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'DirectThermodynamicNetworkFamily' object has no attribute 'audit_withheld_node'
+
+tests/trajectory/test_direct_thermodynamic_family.py:107: AttributeError
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_direct_thermodynamic_family.py::test_full_withheld_node_audit_covers_all_pair_and_same_cell_blocks - AttributeError: 'DirectThermodynamicNetworkFamily' object has no attribute 'audit_withheld_node'
+1 failed in 0.40s
