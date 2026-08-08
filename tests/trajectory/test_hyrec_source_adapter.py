@@ -1,11 +1,68 @@
 import math
+from pathlib import Path
 
 import numpy as np
 
+from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import (
+    parse_original_hyrec_snapshot_csv,
+)
 from full_bianchi_hyrec.trajectory.hyrec_source_adapter import (
     IsotropicEinsteinLineSource,
+    OriginalHyRecVirtualSourceAdapter,
     OriginalHyRecVirtualSpikeSource,
+    apply_escape_transfer,
+    directional_optical_depth,
+    one_photon_paired_action,
+    one_photon_planck_null_residual,
 )
+
+
+ROOT = Path(__file__).resolve().parents[2]
+SNAPSHOT = (
+    ROOT
+    / "archive"
+    / "expanded"
+    / "Full_Bianchi_HyRec_PR04B2A_physical_native_edge_flux_v0_53"
+    / "ORIGINAL_HYREC_TRAJECTORY_SNAPSHOT.csv"
+)
+
+
+def test_v066_source_adapter_public_api_and_snapshot_parity_are_preserved():
+    snapshot = parse_original_hyrec_snapshot_csv(SNAPSHOT)
+    adapter = OriginalHyRecVirtualSourceAdapter.from_snapshot(snapshot)
+    reconstructed = apply_escape_transfer(
+        snapshot.Dfplus, adapter.source_function, adapter.tau_flrw
+    )
+    scale = np.maximum(np.abs(snapshot.Dfminus), 1.0e-300)
+    assert np.max(np.abs(reconstructed - snapshot.Dfminus) / scale) < 8.0e-13
+
+    tau = directional_optical_depth(
+        adapter, redshift_rate_s_inv=-snapshot.H_s_inv
+    )
+    assert np.max(np.abs(tau - snapshot.Dtau) / np.maximum(snapshot.Dtau, 1.0e-300)) < 2.0e-13
+
+    temperature_K = 3000.0
+    frequency_Hz = 2.466e15
+    lower_population = 0.8
+    degeneracy_ratio = 3.0
+    z = math.exp(-6.62607015e-34 * frequency_Hz / (1.380649e-23 * temperature_K))
+    upper_population = lower_population * degeneracy_ratio * z
+    assert abs(
+        one_photon_paired_action(
+            occupation=z / (1.0 - z),
+            upper_population=upper_population,
+            lower_population=lower_population,
+            degeneracy_ratio=degeneracy_ratio,
+            spontaneous_rate_s_inv=6.25e8,
+        )
+    ) < 2.0e-12
+    assert one_photon_planck_null_residual(
+        frequency_Hz=frequency_Hz,
+        temperature_K=temperature_K,
+        lower_population=lower_population,
+        degeneracy_ratio=degeneracy_ratio,
+        spontaneous_rate_s_inv=6.25e8,
+    ) < 3.0e-20
 
 
 def test_virtual_spike_adapter_reproduces_canonical_flrw_update_for_all_tau_scales():
