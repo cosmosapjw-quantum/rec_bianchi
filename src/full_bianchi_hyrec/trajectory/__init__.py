@@ -81,6 +81,33 @@ from .full_coupled_adaptive import (
 )
 
 
+
+
+
+
+from .hyrec_source_adapter import (
+    IsotropicEinsteinLineSource,
+    OriginalHyRecVirtualSpikeSource,
+)
+
+from .characteristic_angular import (
+    BianchiCharacteristicFaceSolver,
+    CharacteristicFaceResult,
+    constant_coefficient_transfer,
+    constant_coefficient_transfer_jvp,
+)
+
+from .hyrec_spike_transfer import (
+    OriginalHyRecSpikeTransfer,
+    SpikeTransferResult,
+)
+
+from .direct_thermodynamic import (
+    DirectThermodynamicNetworkFamily,
+    DirectThermodynamicNode,
+    WithheldThermodynamicAudit,
+)
+
 from .explicit_full_coupling import (
     ExplicitThermodynamicNetworkFamily,
     FrequencyFaceReconstruction,
@@ -108,6 +135,17 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "IsotropicEinsteinLineSource",
+    "OriginalHyRecVirtualSpikeSource",
+    "BianchiCharacteristicFaceSolver",
+    "CharacteristicFaceResult",
+    "constant_coefficient_transfer",
+    "constant_coefficient_transfer_jvp",
+    "OriginalHyRecSpikeTransfer",
+    "SpikeTransferResult",
+    "DirectThermodynamicNetworkFamily",
+    "DirectThermodynamicNode",
+    "WithheldThermodynamicAudit",
     "ExplicitThermodynamicNetworkFamily",
     "FrequencyFaceReconstruction",
     "NativeAngularClosure",
