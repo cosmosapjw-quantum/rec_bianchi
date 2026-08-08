@@ -68,8 +68,6 @@ def _scientific_input_paths(root: Path) -> list[Path]:
             "check_imports.py",
             "check_remote_state.py",
             "export_git_bundle_delivery.py",
-            "scientific_test_runner.py",
-            "verify_repo.py",
         }
         for path in scripts.iterdir():
             if not path.is_file() or path.name in excluded:

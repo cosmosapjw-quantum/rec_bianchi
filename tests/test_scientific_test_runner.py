@@ -116,3 +116,15 @@ def test_scientific_receipts_are_runtime_cache_not_tracked_state(tmp_path: Path)
     )
     assert path.is_relative_to(tmp_path / ".cache/scientific_test_receipts")
     assert not (tmp_path / "state/scientific_test_receipts").exists()
+
+
+def test_scientific_fingerprint_tracks_the_runner_contract(tmp_path: Path) -> None:
+    module = load_module()
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src/model.py").write_text("VALUE = 1\n", encoding="utf-8")
+    (tmp_path / "scripts").mkdir()
+    runner = tmp_path / "scripts/scientific_test_runner.py"
+    runner.write_text("POLICY = 1\n", encoding="utf-8")
+    before = module.scientific_input_fingerprint(tmp_path)
+    runner.write_text("POLICY = 2\n", encoding="utf-8")
+    assert module.scientific_input_fingerprint(tmp_path) != before
