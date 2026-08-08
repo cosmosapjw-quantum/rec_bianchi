@@ -30,7 +30,7 @@ BLAS_THREAD_VARIABLES = (
     "BLIS_NUM_THREADS",
 )
 RECEIPT_SCHEMA = "REC_BIANCHI_SCIENTIFIC_FILE_RECEIPT_V1"
-RECEIPT_DIR = Path("state/scientific_test_receipts")
+RECEIPT_DIR = Path(".cache/scientific_test_receipts")
 
 
 def _scientific_input_paths(root: Path) -> list[Path]:
