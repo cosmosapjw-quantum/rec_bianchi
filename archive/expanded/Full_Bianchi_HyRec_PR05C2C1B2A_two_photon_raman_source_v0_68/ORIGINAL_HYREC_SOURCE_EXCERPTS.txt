@@ -1,0 +1,35 @@
+[HyRec/hydrogen.c]
+270: void read_twog_params(TWO_PHOTON_PARAMS *twog){
+278:    for (b = 0; b < NVIRT; b++) {
+281:       fscanf(fA, "%le", &(twog->A2s_tab[b]));
+282:       fscanf(fA, "%le", &(twog->A3s3d_tab[b]));
+283:       fscanf(fA, "%le", &(twog->A4s4d_tab[b]));
+287:    /* Normalize 2s--1s differential decay rate to L2s1s (can be set by user in hydrogen.h) */
+289:    for (b = 0; b < NSUBLYA; b++) L2s1s_current += twog->A2s_tab[b];
+290:    for (b = 0; b < NSUBLYA; b++) twog->A2s_tab[b] *= L2s1s/L2s1s_current;
+293:   /* Switches for the various effects considered in Hirata (2008) and diffusion:
+299:    #if (EFFECT_A == 0)
+302:    #if (EFFECT_B == 0)
+305:    #if (EFFECT_C == 0)
+308:    #if (EFFECT_D == 0)
+467:    /***** Two-photon transitions: populating Trv, Tvr and updating Trr ******/
+470:        dbfact = exp((twog->Eb_tab[b] - E21)/TR);
+472:        Trr[0][0] -= Tvr[0][b] = -rescale2g*twog->A2s_tab[b]/fabs(exp((twog->Eb_tab[b] - E21)/TR)-1.);
+473:        Trv[0][b]  = Tvr[0][b] *dbfact;
+475:        Trr[1][1] -= Tvr[1][b] = -exp(-E32/TR)/3. * rescale2g*twog->A3s3d_tab[b]/fabs(exp((twog->Eb_tab[b] - E31)/TR)-1.)
+476:                                 -exp(-E42/TR)/3. * rescale2g*twog->A4s4d_tab[b]/fabs(exp((twog->Eb_tab[b] - E41)/TR)-1.);
+477:        Trv[1][b] = Tvr[1][b] *3.*dbfact;
+
+[HyRec/hydrogen.h]
+85: /************ TWO-PHOTON PROCESSES AND DIFFUSION. ALL SWITCHES SET TO 1 ARE THE DEFAULT MODEL  ************/
+87: #define EFFECT_A    1    /* 2s-->1s stimulated two-photon decays and non-thermal absorptions */
+88: #define EFFECT_B    1    /* Sub-Lyman alpha two-photon transitions 3s/3d<--> 1s and 4s/4d<-->1s */
+89: #define EFFECT_C    1    /* Super-Lyman alpha two-photon transitions 3s/3d<--> 1s and 4s/4d<-->1s */
+90: #define EFFECT_D    1    /* Raman scattering from 2s and 3s/3d */
+93: /**** Structure containing two-photon transition tables ****/
+95: typedef struct {
+96:     double Eb_tab[NVIRT];       /* Energies of the virtual levels in eV */
+97:     double A1s_tab[NVIRT];      /* 3*A2p1s*phi(E)*DE */
+98:     double A2s_tab[NVIRT];      /* dLambda_2s/dE * DeltaE if E < Elya dK2s/dE * Delta E if E > Elya */
+99:     double A3s3d_tab[NVIRT];    /* (dLambda_3s/dE + 5*dLambda_3d/dE) * Delta E for E < ELyb, Raman scattering rate for E > ELyb */
+100:     double A4s4d_tab[NVIRT];    /* (dLambda_4s/dE + 5*dLambda_4d/dE) * Delta E */
