@@ -1,0 +1,23 @@
+# Verification design and results
+
+```json
+{
+  "all_recorded_lanes_inconsistent_under_both_boundary_closures": true,
+  "audit_row_count": 18,
+  "audited_boundary_closure_count": 2,
+  "classification": "PR05C2C1B2B0_MACRO_EVIDENCE_INTEGRITY_METRICS",
+  "downstream_theory_and_source_adapters_affected": false,
+  "durable_worker_source_present": false,
+  "maximum_boundary_closure_implied_parent_minimum_difference": 0.0,
+  "maximum_nonpositive_component_count": 340,
+  "maximum_recorded_dt_to_positivity_limit_ratio": 3883996224.0621715,
+  "minimum_implied_parent": -1.8080775883329854e-05,
+  "minimum_nonpositive_component_count": 235,
+  "minimum_recorded_dt_to_positivity_limit_ratio": 2759881146.29607,
+  "next": "PR05C2C1B2B1_ACCEPTED_STATE_PSEUDOTRANSIENT_MICRO_MACRO_CONTINUATION",
+  "recorded_lane_count": 9,
+  "status": "PASS_BOUNDED_NO_GO_V064_RECORDED_MACRO_ENDPOINTS_INCONSISTENT_WITH_DURABLE_BACKWARD_EULER_OPERATOR_CONTINUATION_SOLVER_REQUIRED",
+  "v064_artifact_bytes_remain_durable": true,
+  "v064_macro_convergence_claim_reusable": false
+}
+```

@@ -137,7 +137,15 @@ from .time_dependent_native import (
     source_identifiable_original_hyrec_layout,
 )
 
+
+from .macro_evidence_integrity import (
+    BackwardEulerParentAudit,
+    audit_backward_euler_parent,
+)
+
 __all__ = [
+    "BackwardEulerParentAudit",
+    "audit_backward_euler_parent",
     "IsotropicEinsteinLineSource",
     "OriginalHyRecVirtualSpikeSource",
     "BianchiCharacteristicFaceSolver",
