@@ -1,0 +1,1 @@
+Determine whether the v0.63 angular, thermodynamic, face and stiffness blockers can be converted into an explicit conservative closure with quantified uncertainty and a tractable canonical-macro reference solver.

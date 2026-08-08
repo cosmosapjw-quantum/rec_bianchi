@@ -10,6 +10,8 @@ import subprocess
 import sys
 import zipfile
 
+from scientific_test_runner import run_scientific
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -82,83 +84,10 @@ def main() -> None:
 
     scientific_slow_files: list[str] = []
     scientific_slow_nodes: list[str] = []
-    scientific_env = os.environ.copy()
-    for variable in (
-        "OPENBLAS_NUM_THREADS",
-        "OMP_NUM_THREADS",
-        "MKL_NUM_THREADS",
-        "NUMEXPR_NUM_THREADS",
-        "VECLIB_MAXIMUM_THREADS",
-        "BLIS_NUM_THREADS",
-    ):
-        scientific_env[variable] = "1"
     if args.scientific:
-        # Run slow files in fresh processes *before* the aggregate fast lane.
-        # The resonant common-measure quadrature can otherwise finish its test
-        # body but stall during interpreter teardown after the aggregate suite
-        # has initialized several SciPy/BLAS extension modules.  Slow-first
-        # ordering plus file isolation preserves identical numerical coverage
-        # and gives every expensive process a clean extension-module lifecycle.
-        collection = subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "pytest",
-                "--collect-only",
-                "-q",
-                "-m",
-                "slow",
-            ],
-            cwd=ROOT,
-            check=False,
-            capture_output=True,
-            text=True,
-            env=scientific_env,
-            timeout=120,
-        )
-        if collection.returncode:
-            sys.stderr.write(collection.stdout)
-            sys.stderr.write(collection.stderr)
-            raise SystemExit(collection.returncode)
-        for line in collection.stdout.splitlines():
-            node_id = line.strip()
-            if "::" not in node_id:
-                continue
-            scientific_slow_nodes.append(node_id)
-            test_file = node_id.split("::", 1)[0]
-            if test_file not in scientific_slow_files:
-                scientific_slow_files.append(test_file)
-        assert scientific_slow_nodes, "scientific mode found no slow tests"
-
-        # Execute every slow node in a fresh interpreter.  Several independent
-        # SciPy/BLAS-heavy tests pass their assertions but can stall during
-        # extension-module teardown when multiple nodes share one process.
-        # Node isolation is slower but deterministic and preserves the exact
-        # collected scientific test set.
-        for node_id in scientific_slow_nodes:
-            result = subprocess.run(
-                [
-                    sys.executable,
-                    "-m",
-                    "pytest",
-                    "-q",
-                    node_id,
-                ],
-                cwd=ROOT,
-                env=scientific_env,
-                timeout=300,
-            )
-            if result.returncode:
-                raise SystemExit(result.returncode)
-
-        result = subprocess.run(
-            [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
-            cwd=ROOT,
-            env=scientific_env,
-            timeout=300,
-        )
-        if result.returncode:
-            raise SystemExit(result.returncode)
+        scientific_result = run_scientific(root=ROOT)
+        scientific_slow_files = list(scientific_result.slow_files)
+        scientific_slow_nodes = list(scientific_result.slow_nodes)
     elif args.all:
         result = subprocess.run(
             [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],

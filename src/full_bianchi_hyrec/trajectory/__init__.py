@@ -72,11 +72,23 @@ from .full_coupled_adaptive import (
     CollisionStiffnessAudit,
     CoupledCollisionTransportProblem,
     CoupledCollisionTransportStepResult,
+    CoupledResidualMetrics,
     FullCouplingIdentifiabilityAudit,
     ThermodynamicGridConsistencyAudit,
     audit_collision_stiffness,
     audit_full_coupling_identifiability,
     audit_thermodynamic_grid_consistency,
+)
+
+
+from .explicit_full_coupling import (
+    ExplicitThermodynamicNetworkFamily,
+    FrequencyFaceReconstruction,
+    NativeAngularClosure,
+    ThermodynamicNetworkMember,
+    isotropic_native_lift,
+    maximum_entropy_native_lift,
+    reconstruct_frequency_faces,
 )
 
 from .time_dependent_native import (
@@ -96,9 +108,17 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "ExplicitThermodynamicNetworkFamily",
+    "FrequencyFaceReconstruction",
+    "NativeAngularClosure",
+    "ThermodynamicNetworkMember",
+    "isotropic_native_lift",
+    "maximum_entropy_native_lift",
+    "reconstruct_frequency_faces",
     "CollisionStiffnessAudit",
     "CoupledCollisionTransportProblem",
     "CoupledCollisionTransportStepResult",
+    "CoupledResidualMetrics",
     "FullCouplingIdentifiabilityAudit",
     "ThermodynamicGridConsistencyAudit",
     "audit_collision_stiffness",

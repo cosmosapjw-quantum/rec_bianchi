@@ -1,0 +1,43 @@
+{
+  "claim_boundary": "Receipts are invalidated by any change to scientific source, recoil/trajectory tests, stage scripts, canonical inputs, expanded evidence or numerical data. Infrastructure-only delivery changes do not invalidate scientific results.",
+  "classification": "PR05C2B_SCIENTIFIC_RUNTIME_ROOT_CAUSE_AND_REPAIR",
+  "evidence": {
+    "fast_aggregate": {
+      "deselected_slow": 36,
+      "passed": 224,
+      "seconds": 19.83
+    },
+    "pair_and_same_parallel": "both passed in 29 s wall time",
+    "repaired_scientific_wrapper": {
+      "exit": 0,
+      "seconds": 25
+    },
+    "sequential_aggregate_symptom": "later pair-cell process stalled after earlier slow files without an assertion failure",
+    "slow_collection": {
+      "files": 15,
+      "nodes": 36
+    },
+    "standalone_pair_cell": "4 passed in 27.54 s",
+    "standalone_same_cell": "5 passed in 27.98 s"
+  },
+  "repair": {
+    "aggregate_policy": "validate every matching slow-file receipt, then execute the complete non-slow suite",
+    "blas_threads": 1,
+    "external_pytest_plugins": "disabled",
+    "isolation_granularity": "ONE_FRESH_INTERPRETER_PER_SLOW_FILE",
+    "receipt_binding": [
+      "scientific input fingerprint",
+      "exact test file",
+      "exact collected node IDs",
+      "captured log SHA-256",
+      "deterministic BLAS and pytest-plugin environment"
+    ]
+  },
+  "root_cause": "SANDBOX_CUMULATIVE_CPU_PROCESS_BUDGET_PLUS_NODE_LEVEL_PROCESS_CHURN",
+  "scientific_coverage": {
+    "fast_passed": 224,
+    "slow_passed": 36,
+    "total": 260
+  },
+  "stage": "PR-05C2B/v0.64"
+}

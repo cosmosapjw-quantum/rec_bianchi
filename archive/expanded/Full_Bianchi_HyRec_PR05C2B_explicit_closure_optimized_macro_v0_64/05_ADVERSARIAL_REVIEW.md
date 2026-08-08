@@ -1,0 +1,1 @@
+Adversaries include angular dipoles with equal monopole, face reconstruction extrema, direct-pair thermodynamic mismatch, null-mode number drift, z1300 cancellation floors and slower harmonic preconditioning.

@@ -165,7 +165,7 @@ def _validated_operator_inputs(
     return f, g, pi, pair, same
 
 
-def apply_nonlinear_bose_operator(
+def apply_nonlinear_bose_operator_pair_loop(
     occupation,
     *,
     mode_measure,
@@ -305,7 +305,7 @@ def apply_nonlinear_bose_operator(
     )
 
 
-def apply_nonlinear_bose_jvp(
+def apply_nonlinear_bose_jvp_pair_loop(
     occupation,
     perturbation,
     *,
@@ -430,6 +430,325 @@ def apply_nonlinear_bose_jvp(
         number_residual_jvp=number_residual_jvp,
     )
 
+
+
+@dataclass(frozen=True)
+class BoseBatchedJVPResult:
+    """Batched directional derivatives of the nonlinear collision action."""
+
+    occupation_action_jvp: np.ndarray
+    number_action_jvp: np.ndarray
+    number_residual_jvp: np.ndarray
+
+
+def _vectorized_pair_moments(pair: np.ndarray, ell_max: int) -> np.ndarray:
+    """Return active pair moments with all inactive/diagonal pairs zeroed."""
+
+    active = pair[0] > 0.0
+    active = active & ~np.eye(active.shape[0], dtype=bool)
+    return pair[: ell_max + 1] * active[None, :, :]
+
+
+def _vectorized_number_action(
+    f: np.ndarray,
+    g: np.ndarray,
+    pi: np.ndarray,
+    pair: np.ndarray,
+    same_rates: np.ndarray,
+    grid: HarmonicGrid,
+    *,
+    include_gross: bool,
+) -> tuple[np.ndarray, float]:
+    """Evaluate the pair action by tensor contraction instead of Python loops."""
+
+    n_state = len(g)
+    z = pi / g
+    phi = f / (z[:, None] * (1.0 + f))
+    q_ref = float(np.sum(phi * grid.weights[None, :]) / n_state)
+    delta_field = (1.0 + f) * (phi - q_ref)
+
+    partial_f = grid.partial_ell_fields(f)
+    partial_one_plus = partial_f.copy()
+    partial_one_plus[:, 0, :] += 1.0
+    partial_delta = grid.partial_ell_fields(delta_field)
+
+    ell_max = min(grid.ell_max, pair.shape[0] - 1)
+    moments = _vectorized_pair_moments(pair, ell_max)
+    # target, source, angle.  Each directed target/source contribution is
+    # represented exactly once; symmetry of the stored conductance supplies
+    # the reverse direction without an explicit unordered-pair Python loop.
+    conv_delta = np.einsum(
+        "lts,sla->tsa", moments, partial_delta[:, : ell_max + 1, :], optimize=True
+    )
+    conv_one = np.einsum(
+        "lts,sla->tsa", moments, partial_one_plus[:, : ell_max + 1, :], optimize=True
+    )
+    residual = conv_delta - (phi[:, None, :] - q_ref) * conv_one
+    number_action = np.real(
+        (1.0 + f)[:, None, :] * residual
+    ).sum(axis=1)
+
+    gross = 0.0
+    if include_gross:
+        conv_f = np.einsum(
+            "lts,sla->tsa", moments, partial_f[:, : ell_max + 1, :], optimize=True
+        )
+        forward = (1.0 + f)[:, None, :] * conv_f / z[None, :, None]
+        reverse = f[:, None, :] * conv_one / z[:, None, None]
+        gross = float(
+            np.sum(
+                (np.abs(forward) + np.abs(reverse))
+                * grid.weights[None, None, :]
+            )
+        )
+
+    ell_same = min(grid.ell_max, same_rates.shape[0] - 1)
+    same = np.real(
+        np.einsum(
+            "ls,sla->sa",
+            same_rates[: ell_same + 1],
+            partial_f[:, : ell_same + 1, :],
+            optimize=True,
+        )
+    )
+    number_action += g[:, None] * same
+    if include_gross:
+        gross += float(
+            np.sum(
+                g[:, None] * np.abs(same) * grid.weights[None, :]
+            )
+        )
+    return number_action, gross
+
+
+def apply_nonlinear_bose_action(
+    occupation,
+    *,
+    mode_measure,
+    equilibrium_weight,
+    pair_moments,
+    same_cell_rates,
+    grid,
+) -> np.ndarray:
+    """Return only the occupation action through the optimized hot path.
+
+    Diagnostics such as entropy production, four-force and harmonic output are
+    deliberately omitted.  Nonlinear residual evaluations use this function;
+    the full operator is evaluated only for accepted states and audit receipts.
+    """
+
+    f, g, pi, pair, same_rates = _validated_operator_inputs(
+        occupation,
+        mode_measure=mode_measure,
+        equilibrium_weight=equilibrium_weight,
+        pair_moments=pair_moments,
+        same_cell_rates=same_cell_rates,
+        grid=grid,
+    )
+    number_action, _ = _vectorized_number_action(
+        f, g, pi, pair, same_rates, grid, include_gross=False
+    )
+    return number_action / g[:, None]
+
+
+def apply_nonlinear_bose_operator(
+    occupation,
+    *,
+    mode_measure,
+    equilibrium_weight,
+    pair_moments,
+    same_cell_rates,
+    grid,
+    photon_momentum_scale=None,
+):
+    """Vectorized production nonlinear Bose operator.
+
+    :func:`apply_nonlinear_bose_operator_pair_loop` remains the intentionally
+    slow, structurally independent audit oracle.
+    """
+
+    f, g, pi, pair, same_rates = _validated_operator_inputs(
+        occupation,
+        mode_measure=mode_measure,
+        equilibrium_weight=equilibrium_weight,
+        pair_moments=pair_moments,
+        same_cell_rates=same_cell_rates,
+        grid=grid,
+    )
+    number_action, gross = _vectorized_number_action(
+        f, g, pi, pair, same_rates, grid, include_gross=True
+    )
+    occupation_action = number_action / g[:, None]
+    coefficients = grid.analyze(occupation_action)
+    number_residual = float(np.sum(number_action * grid.weights[None, :]))
+    z = pi / g
+    psi = np.log(f / (1.0 + f)) - np.log(z)[:, None]
+    entropy_production = float(
+        np.sum(psi * number_action * grid.weights[None, :])
+    )
+    momentum_scale = (
+        np.ones(len(g))
+        if photon_momentum_scale is None
+        else np.asarray(photon_momentum_scale, float)
+    )
+    if momentum_scale.shape != (len(g),):
+        raise ValueError("photon_momentum_scale shape mismatch")
+    weighted = number_action * grid.weights[None, :]
+    q0 = float(np.sum(momentum_scale[:, None] * weighted))
+    qvec = np.sum(
+        momentum_scale[:, None, None]
+        * weighted[:, :, None]
+        * grid.directions[None, :, :],
+        axis=(0, 1),
+    )
+    q_gamma = np.concatenate(([q0], qvec))
+    return BoseActionResult(
+        occupation_action=occupation_action,
+        number_action=number_action,
+        action_coefficients=coefficients,
+        number_residual=number_residual,
+        entropy_production=entropy_production,
+        Q_gamma=q_gamma,
+        Q_atom=-q_gamma,
+        minimum_occupation=float(np.min(f)),
+        gross_action_scale=gross,
+    )
+
+
+def apply_nonlinear_bose_jvp_batched(
+    occupation,
+    perturbations,
+    *,
+    mode_measure,
+    equilibrium_weight,
+    pair_moments,
+    same_cell_rates,
+    grid,
+) -> BoseBatchedJVPResult:
+    """Apply exact collision JVPs for a batch of perturbations.
+
+    ``perturbations`` has shape ``(batch,n_state,n_angle)``.  This path is
+    used for chunked dense-Jacobian assembly and avoids one Python-level
+    collision traversal per column.
+    """
+
+    f, g, pi, pair, same_rates = _validated_operator_inputs(
+        occupation,
+        mode_measure=mode_measure,
+        equilibrium_weight=equilibrium_weight,
+        pair_moments=pair_moments,
+        same_cell_rates=same_cell_rates,
+        grid=grid,
+    )
+    directions = np.asarray(perturbations, float)
+    if directions.ndim == 2:
+        directions = directions[None, ...]
+    if directions.ndim != 3 or directions.shape[1:] != f.shape:
+        raise ValueError("perturbations must have shape (batch,n_state,n_angle)")
+    if not np.all(np.isfinite(directions)):
+        raise ValueError("perturbations contain nonfinite values")
+
+    n_state = len(g)
+    z = pi / g
+    phi = f / (z[:, None] * (1.0 + f))
+    dphi = directions / (z[None, :, None] * (1.0 + f)[None, :, :] ** 2)
+    q_ref = float(np.sum(phi * grid.weights[None, :]) / n_state)
+    dq_ref = np.sum(
+        dphi * grid.weights[None, None, :], axis=(1, 2)
+    ) / n_state
+    delta = (1.0 + f) * (phi - q_ref)
+    ddelta = (
+        directions / z[None, :, None]
+        - q_ref * directions
+        - dq_ref[:, None, None] * (1.0 + f)[None, :, :]
+    )
+
+    partial_f = grid.partial_ell_fields(f)
+    partial_one = partial_f.copy()
+    partial_one[:, 0, :] += 1.0
+    partial_delta = grid.partial_ell_fields(delta)
+    partial_direction = grid.partial_ell_fields(directions)
+    partial_ddelta = grid.partial_ell_fields(ddelta)
+
+    ell_max = min(grid.ell_max, pair.shape[0] - 1)
+    moments = _vectorized_pair_moments(pair, ell_max)
+    conv_delta = np.einsum(
+        "lts,sla->tsa", moments, partial_delta[:, : ell_max + 1], optimize=True
+    )
+    conv_one = np.einsum(
+        "lts,sla->tsa", moments, partial_one[:, : ell_max + 1], optimize=True
+    )
+    conv_ddelta = np.einsum(
+        "lts,bsla->btsa",
+        moments,
+        partial_ddelta[:, :, : ell_max + 1],
+        optimize=True,
+    )
+    conv_direction = np.einsum(
+        "lts,bsla->btsa",
+        moments,
+        partial_direction[:, :, : ell_max + 1],
+        optimize=True,
+    )
+    residual = conv_delta - (phi[:, None, :] - q_ref) * conv_one
+    dresidual = (
+        conv_ddelta
+        - (dphi[:, :, None, :] - dq_ref[:, None, None, None])
+        * conv_one[None, :, :, :]
+        - (phi[None, :, None, :] - q_ref) * conv_direction
+    )
+    dnumber = np.real(
+        directions[:, :, None, :] * residual[None, :, :, :]
+        + (1.0 + f)[None, :, None, :] * dresidual
+    ).sum(axis=2)
+
+    ell_same = min(grid.ell_max, same_rates.shape[0] - 1)
+    same_jvp = np.real(
+        np.einsum(
+            "ls,bsla->bsa",
+            same_rates[: ell_same + 1],
+            partial_direction[:, :, : ell_same + 1],
+            optimize=True,
+        )
+    )
+    dnumber += g[None, :, None] * same_jvp
+    occupation_jvp = dnumber / g[None, :, None]
+    number_residual = np.sum(
+        dnumber * grid.weights[None, None, :], axis=(1, 2)
+    )
+    return BoseBatchedJVPResult(
+        occupation_action_jvp=occupation_jvp,
+        number_action_jvp=dnumber,
+        number_residual_jvp=np.asarray(number_residual, dtype=float),
+    )
+
+
+def apply_nonlinear_bose_jvp(
+    occupation,
+    perturbation,
+    *,
+    mode_measure,
+    equilibrium_weight,
+    pair_moments,
+    same_cell_rates,
+    grid,
+) -> BoseJVPResult:
+    """Vectorized exact Fréchet derivative for one perturbation."""
+
+    batched = apply_nonlinear_bose_jvp_batched(
+        occupation,
+        np.asarray(perturbation, float)[None, ...],
+        mode_measure=mode_measure,
+        equilibrium_weight=equilibrium_weight,
+        pair_moments=pair_moments,
+        same_cell_rates=same_cell_rates,
+        grid=grid,
+    )
+    return BoseJVPResult(
+        occupation_action_jvp=batched.occupation_action_jvp[0],
+        number_action_jvp=batched.number_action_jvp[0],
+        number_residual_jvp=float(batched.number_residual_jvp[0]),
+    )
 
 def bose_photon_number(occupation, *, mode_measure, grid) -> float:
     f = np.asarray(occupation, float)

@@ -200,6 +200,26 @@
       "new": "PR-05C2A/v0.63 bounded directional conservative pilot with explicit angular, face-trace, thermodynamic-grid and stiffness blockers",
       "old": "the unqualified PR-05C2 full-coupled adaptive trajectory target",
       "reason": "canonical sources identify scalar native history and cell-averaged COM states but not an exact angle-resolved native boundary or face trace; the frozen 3000 K grid is not source-temperature invariant and canonical macro collision solves are O(1e9) stiff"
+    },
+    {
+      "new": "fresh duration profile: 220 fast tests pass in 20.56 s; bundle exporter regression takes 0.62 s; exterior quadrature is the dominant fast cost",
+      "old": "v0.64 fast-suite timeout attributed to test_git_bundle_delivery.py from collection position alone",
+      "reason": "the earlier attribution was not individually reproduced and is superseded by measured per-node timings"
+    },
+    {
+      "new": "vectorized pair contraction, action-only residual path, batched JVP and chunked dense assembly with pair-loop audit oracle",
+      "old": "pair-loop collision action/JVP and full diagnostic evaluation on every residual call",
+      "reason": "operator parity is below 4e-27 for the dense matrix and locked single-thread speedups range from 25x to 54x on hot paths"
+    },
+    {
+      "new": "v0.64 explicit noncanonical closure with quantified angular and up-to-30.5-percent thermodynamic uncertainty; direct compilation and native angular evolution move to PR05C2C",
+      "old": "claiming source-identical angular reconstruction or direct thermodynamic network parity from scalar HyRec history and an explicit conductance rescaling",
+      "reason": "one scalar boundary datum cannot determine 26 directional values and selected direct pair quadrature disagrees materially with the closure"
+    },
+    {
+      "old": "v0.64 scientific verification as one sequential process per slow test node inside a single sandbox command",
+      "new": "fingerprint-bound slow-file receipts plus an aggregate fast lane; 36 slow nodes are verified in 15 file-isolated processes and reused only when all scientific inputs and node IDs match",
+      "reason": "standalone slow files pass, but cumulative CPU-heavy subprocesses in one sandbox command are throttled after roughly one expensive quadrature budget; the old node-isolation policy multiplied process churn and could not complete the aggregate wrapper"
     }
   ]
 }
