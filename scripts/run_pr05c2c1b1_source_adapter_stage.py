@@ -106,7 +106,7 @@ def source_excerpt() -> tuple[str, str]:
     lines = raw.decode("utf-8", errors="replace").splitlines()
     selected = []
     for number in (521, 524, 525, 780, 781, 787, 789):
-        selected.append(f"{number}: {lines[number-1]}")
+        selected.append(f"{number}: {lines[number-1].rstrip()}")
     return "\n".join(selected) + "\n", hashlib.sha256(raw).hexdigest()
 
 
@@ -469,7 +469,7 @@ def main() -> int:
     (EXPANDED / "ORIGINAL_HYREC_SOURCE_EXCERPTS.txt").write_text(excerpt)
 
     with (EXPANDED / "CHARACTERISTIC_FACE_LEDGER.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(characteristic_rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(characteristic_rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(characteristic_rows)
 

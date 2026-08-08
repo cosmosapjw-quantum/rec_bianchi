@@ -1,7 +1,7 @@
-521:       Dtau[b] = Gammab * x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H; 
+521:       Dtau[b] = Gammab * x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H;
 524:       one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
 525:       Tvv[0][b] = Dtau[b] > 0.? Gammab/one_minus_Pib : 2./(x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H);  /* Added May 2012: proper limit Dtau->0 */
 780:      if (Dtau[b] > 1e-30) {
 781:          one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
-787:          one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;               
+787:          one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;
 789:          Dfminus_hist[b][iz] = Dfplus[b] + (Dfeq - Dfplus[b])*one_minus_exptau;
