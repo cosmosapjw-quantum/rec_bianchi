@@ -444,19 +444,93 @@
     ],
     "source_root_count": 18
   },
+  "PR05C2B_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2B_explicit_closure_optimized_macro_v0_64.zip",
+    "artifact_bundle_sha256": "da3ccfe8c5c4e6cf6e9cf0f64e659778b00c3ada10f72ef79d3154c9d7c48be7",
+    "artifact_bundle_size_bytes": 59046,
+    "claim": "EXPLICIT_NONCANONICAL_CLOSURE_WITH_QUANTIFIED_UNCERTAINTY_AND_OPTIMIZED_ONE_MACRO_REFERENCE",
+    "macro_lane_count": 9,
+    "maximum_collision_entropy_production": -2.0082063333026803e-08,
+    "maximum_direct_thermodynamic_closure_discrepancy": 0.30528993146949396,
+    "maximum_macro_energy_residual": 1.5492554592789343e-13,
+    "maximum_macro_gross_backward_error": 9.02914974419302e-14,
+    "maximum_macro_jvp_residual": 3.1190785809695545e-10,
+    "maximum_macro_number_residual": 5.0631318336812805e-15,
+    "minimum_macro_occupation": 1.3498620726626376e-21,
+    "multi_macro_trajectory_completed": false,
+    "muscl_minimum_refinement_ratio": 3.7961196172750875,
+    "performance": {
+      "action_only_median_s": 0.0009004499997899984,
+      "dense_assembly_speedup": 1.5305611119218634,
+      "dense_batched_assembly_s": 0.8981288400000267,
+      "dense_matrix_relative_difference": 3.876584386397876e-27,
+      "dense_scalar_column_assembly_s": 1.3746410759995342,
+      "pair_loop_full_median_s": 0.04841360899990832,
+      "pair_loop_jvp_median_s": 0.04275559899997461,
+      "samples": {
+        "action_only": [
+          0.000752855999962776,
+          0.0009004499997899984,
+          0.0007235560005938169,
+          0.0009560690004946082,
+          0.0009525449995635427,
+          0.0013379150004766416,
+          0.0007223460006571258
+        ],
+        "pair_loop_full": [
+          0.04841360899990832,
+          0.05686953700023878,
+          0.04081172800033528
+        ],
+        "pair_loop_jvp": [
+          0.042400923000059265,
+          0.04275559899997461,
+          0.04501545799939777
+        ],
+        "vectorized_full": [
+          0.00629611299973476,
+          0.002187856000091415,
+          0.001817612999730045,
+          0.0019015520001630648,
+          0.0017858129995147465
+        ],
+        "vectorized_jvp": [
+          0.002081157000247913,
+          0.001837504999457451,
+          0.0016024669994294527,
+          0.0012177859998701024,
+          0.0011565180002435227,
+          0.0011394779994589044,
+          0.0011242629998378106
+        ]
+      },
+      "speedup_action_only_vs_pair_loop": 53.76601589338583,
+      "speedup_vectorized_full_vs_pair_loop": 25.460049999030623,
+      "speedup_vectorized_jvp_vs_pair_loop": 35.10928767824168,
+      "vectorized_full_median_s": 0.0019015520001630648,
+      "vectorized_jvp_median_s": 0.0012177859998701024
+    },
+    "recovery_classification": "RECOVERED_PRESEAL_SCIENTIFIC_CACHE_REVALIDATED_WITH_CURRENT_OPTIMIZED_IMPLEMENTATION",
+    "runtime_data": "data/pr05c2b_explicit_closure_optimized_v064.npz",
+    "runtime_data_sha256": "9e7b6975de6656318944236ae81fa11d224daf5eeba980c4b73aece001e97a21",
+    "runtime_data_size_bytes": 42837,
+    "source_identical_angular_reconstruction": false,
+    "source_identical_thermodynamic_recompilation": false,
+    "status": "PASS_EXPLICIT_CLOSURE_WITH_UNCERTAINTY_OPTIMIZED_CANONICAL_MACRO_REFERENCE_PR05C2C_NEXT"
+  },
   "classification": "DURABLE_PROJECT_STATE",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C2A_directional_coupling_preflight_v0_63",
-    "name": "PR-05C2A directional coupling preflight",
-    "status": "PASS_PR05C2A_DIRECTIONAL_CONSERVATIVE_PILOT_BOUNDED_NO_GO_ANGULAR_THERMODYNAMIC_STIFFNESS_PR05C2B_NEXT"
+    "artifact": "Full_Bianchi_HyRec_PR05C2B_explicit_closure_optimized_macro_v0_64",
+    "name": "PR-05C2B explicit-closure optimized canonical-macro reference",
+    "status": "PASS_EXPLICIT_CLOSURE_WITH_UNCERTAINTY_OPTIMIZED_CANONICAL_MACRO_REFERENCE_PR05C2C_NEXT"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
   "estimated_PR04_completion_percent": 100,
-  "estimated_PR05_completion_percent": 86,
-  "estimated_overall_completion_percent": 97,
+  "estimated_PR05_completion_percent": 92,
+  "estimated_overall_completion_percent": 98,
   "hard_scope": {
     "excluded_from_12_PR_scalar_release": [
       "fine structure",
@@ -496,7 +570,11 @@
     "PR-05C1 validates the adaptive controller with source-conditioned rank-one DAE macros and deterministic event-regression inputs. Full COM/interface coupling and source-derived Bianchi boundary speeds remain PR-05C2.",
     "Evidence logs under state/*.log may preserve upstream whitespace verbatim; committed source/test/script/docs whitespace is now checked over feature_base...HEAD, plus staged and unstaged changes, by a quick-gate policy.",
     "PR-05C2A closes a source-derived directional finite-volume pilot but not a fully source-identical anisotropic native/COM trajectory: native original-HyRec boundary history is scalar, COM face trace uses a declared P0 closure, and canonical macro collision solves require a block preconditioner.",
-    "PR-05C2A closes an actual-background directional finite-volume pilot on the frozen v0.50 COM grid but not a fully source-identical anisotropic native/COM trajectory: native original-HyRec boundary history is scalar, the COM face trace uses a declared P0 closure, source-temperature mode measures differ by up to about 9.5 percent from the frozen grid, and canonical macro collision solves require a block preconditioner."
+    "PR-05C2A closes an actual-background directional finite-volume pilot on the frozen v0.50 COM grid but not a fully source-identical anisotropic native/COM trajectory: native original-HyRec boundary history is scalar, the COM face trace uses a declared P0 closure, source-temperature mode measures differ by up to about 9.5 percent from the frozen grid, and canonical macro collision solves require a block preconditioner.",
+    "PR-05C2B adopts explicit noncanonical angular and thermodynamic closures with quantified uncertainty; it is not a source-identical reconstruction of missing native angular data.",
+    "The selected direct thermodynamic pair audit differs from the explicit conductance closure by up to about 30.5 percent, so direct network compilation remains PR-05C2C.",
+    "The v0.64 durable evidence closes one canonical macro reference per lane, not a multi-macro physical recombination trajectory.",
+    "The recovered pre-seal worker cache is immutable evidence; cold selected-pair recompilation is intentionally separated from quick/CI regeneration."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -542,17 +620,17 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C2A_DIRECTIONAL_PILOT_AND_BOUNDED_NO_GO",
-    "name": "PR-05C2B preconditioned angle-resolved full coupling",
+    "entry_gate": "PR05C2B_EXPLICIT_CLOSURE_AND_OPTIMIZATION_COMPLETE",
+    "name": "PR-05C2C direct thermodynamic network and native angular evolution",
     "tasks": [
-      "Introduce an explicit angle-resolved native boundary state or a separately justified angular closure.",
-      "Replace the provisional P0 COM face trace with a refinement-tested face reconstruction contract.",
-      "Construct a source-temperature COM mode-measure and collision-kernel adapter, or recompile the network on a controlled temperature grid.",
-      "Implement a harmonic-block or equivalent stiff collision preconditioner for canonical macro steps.",
-      "Then rerun adaptive macro trajectories with global number, face-energy, redshift-work and four-force ledgers."
+      "Replace the explicit source-temperature conductance closure with directly compiled validation networks on a controlled temperature grid.",
+      "Evolve or independently justify angle-resolved native boundary moments instead of lifting one scalar history value.",
+      "Promote MUSCL or DG face traces only after differentiability and refinement gates close.",
+      "Construct a measured block/AP preconditioner that beats the diagonal baseline before production selection.",
+      "Run multi-macro trajectories and then enter PR-06 FLRW history parity."
     ]
   },
-  "overall_progress_percent": 97,
+  "overall_progress_percent": 98,
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
     "exact_remote_main_sha": "ee54cb44838409f021d6c5fdb502450a11779ec4",
@@ -635,5 +713,5 @@
       "title": "Performance, restart, and release integration"
     }
   ],
-  "state_date": "2026-08-07"
+  "state_date": "2026-08-08"
 }

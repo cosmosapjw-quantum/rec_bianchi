@@ -1,0 +1,1 @@
+Evidence comprises the canonical HyRec archive, v0.48 actual backgrounds, v0.50 COM--KHW network, direct selected-pair quadrature, nine macro solves, face refinement, performance profiles, both pinned harnesses and primary solver literature.

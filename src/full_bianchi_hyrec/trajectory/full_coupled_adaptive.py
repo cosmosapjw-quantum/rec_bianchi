@@ -513,6 +513,7 @@ class CoupledCollisionTransportProblem:
         self,
         old_occupation: np.ndarray,
         *,
+        initial_occupation: np.ndarray | None = None,
         nonlinear_rtol: float = 2.0e-10,
         max_newton: int = 14,
         gmres_rtol: float = 2.0e-9,
@@ -528,7 +529,19 @@ class CoupledCollisionTransportProblem:
             raise ValueError("linear_solver must be 'gmres' or 'dense_batched'")
         if int(dense_chunk_size) <= 0:
             raise ValueError("dense_chunk_size must be positive")
-        log_f = np.log(old)
+        if initial_occupation is None:
+            initial = old
+        else:
+            initial = np.asarray(initial_occupation, dtype=float)
+            if (
+                initial.shape != self.shape
+                or np.any(initial <= 0.0)
+                or not np.all(np.isfinite(initial))
+            ):
+                raise ValueError(
+                    "initial_occupation must be finite and strictly positive"
+                )
+        log_f = np.log(initial)
         scale = max(float(np.max(np.abs(old))), 1.0e-300)
         total_gmres = 0
         dense_assemblies = 0

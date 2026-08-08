@@ -201,3 +201,16 @@ def test_gross_backward_error_uses_all_residual_terms_not_small_net_scale() -> N
     assert metrics.gross_backward_error >= 0.0
     assert metrics.number_relative_residual >= 0.0
     assert metrics.gross_scale >= metrics.net_scale
+
+
+def test_implicit_solver_accepts_a_positive_external_initial_guess() -> None:
+    problem, old = _small_problem()
+    predictor = problem.implicit_step(old, linear_solver="dense_batched").occupation
+    result = problem.implicit_step(
+        old,
+        initial_occupation=predictor,
+        linear_solver="dense_batched",
+    )
+    assert result.converged
+    assert result.minimum_occupation > 0.0
+    assert np.max(np.abs(result.occupation - predictor)) / np.max(predictor) < 2e-10
