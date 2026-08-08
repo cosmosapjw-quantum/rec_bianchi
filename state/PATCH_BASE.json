@@ -1,14 +1,14 @@
 {
   "classification": "PATCH_BASE_LOCK_GIT_BUNDLE",
-  "connector_verified_remote_main_commit": "2d777b1c7e56dcdf1e17feb1f728410ea0792df8",
-  "connector_verified_remote_main_tree": "0d2914566a3f211c2c3f324952b851a50da3a946",
-  "current_target_payload_head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
-  "current_target_payload_note": "PR05C2C1B2A implementation, canonical source artifact, formalism, state and handoff are complete; the final seal commit adds verification, manifest and delivery receipts.",
-  "current_target_payload_tree": "ba5234f8d38d6e6aac68c468bfb2cffeceeabf78",
+  "connector_verified_remote_main_commit": "3d429b70715c3a16bd7d27f0d78accef2c249843",
+  "connector_verified_remote_main_tree": "9ef976724fe20ae9e8bc855ccc76d74f1b09c598",
+  "current_target_payload_head": "585c421f1ca43d21dd22c8f36602b55e1cd443a8",
+  "current_target_payload_note": "v0.67/v0.68 science plus a compatibility merge that preserves the sealed v0.66 accepted-history/direct-node APIs and artifacts on the PR25 integration route.",
+  "current_target_payload_tree": "6b5ccceba0e9d0cbfaee24aabd4a7858a3de9f5c",
   "current_target_stage": "v0.68 PR-05C2C1B2A canonical two-photon/Raman source adapter",
-  "feature_exclusive_base_commit": "a728692029eaa4411a60f39772423fb7bcf2816e",
-  "feature_exclusive_base_stage": "exact author v0.65 PR05C2C0 endpoint; cumulative delivery includes unpushed v0.67 and v0.68",
-  "feature_exclusive_base_tree": "cbee58f626bf923901658729f7f1e5512220910f",
+  "feature_exclusive_base_commit": "f7d9f6c46a8a9913960375055fff47009a82fbee",
+  "feature_exclusive_base_stage": "exact author v0.66 PR05C2C1A endpoint merged through PR25",
+  "feature_exclusive_base_tree": "e19bb00910031c38b586f4503df39bda951bf1e8",
   "historical_cumulative_base_commit": "0687ba35c0dc41ce6dbc112012a993eb411bf30a",
   "historical_cumulative_base_stage": "exact author v0.60 retained only as historical recovery convenience",
   "historical_cumulative_base_tree": "01e63220e8dd4be05dff64d2b7c20ae57f60a52c",
@@ -17,12 +17,13 @@
   "incremental_base_tree": "f193eb37ec06198b097197bc059b4528f26d6e3b",
   "owner_push_policy": "LOCAL_FEATURE_BRANCH_NO_FORCE_PUSH",
   "planned_bundle_routes": [
-    "self_contained_cumulative_feature_delivery_v068_from_v065",
-    "thin_incremental_v068_with_exact_author_v067_prerequisite",
+    "preferred_self_contained_v068_from_exact_author_v066",
+    "thin_v068_from_exact_author_v066_prerequisite",
+    "thin_v068_from_exact_author_v067_prerequisite",
     "full_recovery_all_refs_v068"
   ],
-  "reason": "Remote main remains v0.65 while v0.67 is unpushed. Apply the cumulative receipt-listed feature commits on a fresh remote-main branch, or use the thin v0.67-to-v0.68 bundle only when the exact author v0.67 object is present.",
-  "remote_main_route": "CREATE_BRANCH_FROM_FRESH_REMOTE_MAIN_AND_APPLY_RECEIPT_LISTED_V067_PLUS_V068_COMMITS",
-  "remote_main_stage": "v0.65 PR05C2C0 merged through PR #24 with CI success",
-  "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
+  "reason": "Remote main now contains v0.66 through PR25. Use the v0.66-based compatibility delivery; do not replay the cumulative v0.65 bundle onto remote main.",
+  "remote_main_route": "CREATE_BRANCH_FROM_FRESH_REMOTE_MAIN_AND_APPLY_ONLY_V068_FROM_V066_RECEIPT_COMMITS",
+  "remote_main_stage": "v0.66 PR05C2C1A merged through PR #25 with CI success",
+  "tree_relation": "REMOTE_MERGE_TREE_PRESERVES_INTEGRATION_OVERLAY_AND_DIFFERS_FROM_AUTHOR_OR_DELIVERY_TREE"
 }

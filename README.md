@@ -7,19 +7,11 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B1 / v0.67**.
-- The scalar theory contract remains complete under the explicit
-  hydrogen-frame isotropic-source axiom.
-- Complete direct thermodynamic network nodes are locked at z~900,1100,1300,
-  with the exact v0.50 3000 K anchor and fixed-topology inverse-temperature log
-  interpolation.
-- The original-HyRec virtual-spike source is source-identical; the paired
-  one-photon line source is a positive theory-contract adapter and is not
-  relabelled canonical source decomposition.
-- Actual Bianchi characteristics supply directional face transport.  Full
-  withheld-node validation now covers every pair and same-cell block.
-- Next: **PR-05C2C1B2 canonical two-photon/Raman source census, measured
-  preconditioner and multi-macro closure**, then PR-06 FLRW history parity.
+- Durable stage: **PR-05C2C1B2A / v0.68**.
+- Canonical October-2012 two-photon/Raman integrated-bin ownership is source locked, with a separate positive paired physical action and analytic JVP.
+- The sealed v0.66 direct-node and accepted-history APIs remain available alongside the v0.67/v0.68 characteristic/source adapters.
+- Full withheld thermodynamic validation covers every pair and same-cell block.
+- Next: **PR-05C2C1B2B measured preconditioner and at least four canonical macro intervals in all nine locked lanes**, then PR-06 FLRW history parity.
 
 Start with:
 
@@ -57,20 +49,15 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #24 at `2d777b1c7e56dcdf1e17feb1f728410ea0792df8`, tree
-`0d2914566a3f211c2c3f324952b851a50da3a946`; PR-head CI run 81 completed successfully.  v0.67 is
-reconstructed on the exact author v0.65 lineage, so exact remote-tree identity
-is not assumed.
+GitHub `main` contains merged PR #25 at `3d429b70715c3a16bd7d27f0d78accef2c249843`, tree
+`9ef976724fe20ae9e8bc855ccc76d74f1b09c598`; PR-head CI run 84 completed successfully.
 
-Canonical patch delivery is a self-contained feature Git bundle with an ordered
-commit receipt, plus a thin incremental and full recovery Git bundle. Create a
-branch from fresh `origin/main`, cherry-pick only the receipt-listed v0.67
-commits, rerun all gates, and never rewrite shared history.
+The preferred v0.68 delivery is based on the exact author-v0.66 endpoint and includes an integration compatibility commit. Create a branch from fresh `origin/main`, cherry-pick only the receipt-listed v0.68-from-v0.66 commits, rerun all gates, and never rewrite shared history. The older cumulative v0.65 route is retained only for disaster recovery and must not be replayed onto remote main.
 
 ## Test tiers
 
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.67 regeneration: `python scripts/run_pr05c2c1b1_source_adapter_stage.py`.
+- v0.68 regeneration: `python scripts/run_pr05c2c1b2a_two_photon_raman_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.

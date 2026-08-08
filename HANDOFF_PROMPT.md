@@ -38,6 +38,5 @@ Next bounded task: **PR-05C2C1B2B measured preconditioner and multi-macro closur
 7. PR-05C2C1B2B must couple the source to exact characteristics, compare
    preconditioners on residual/iterations/wall/RSS, and close at least four
    canonical macro intervals in all nine locked lanes.
-8. PR-06 remains full FLRW history/visibility parity.  Canonical delivery is a
-   self-contained cumulative feature Git bundle plus full recovery bundle.
-   Never force-push shared history.
+8. PR-06 remains full FLRW history/visibility parity.  Canonical delivery is the preferred self-contained v0.68-from-v0.66 compatibility Git bundle plus the full recovery bundle; the older v0.65 cumulative route is recovery-only.
+   Never force-push shared history. Remote main already contains merged PR #25/v0.66; apply only the preferred receipt-listed v0.68-from-v0.66 commits on a fresh branch.
