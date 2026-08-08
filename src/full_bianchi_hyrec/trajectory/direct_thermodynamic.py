@@ -11,6 +11,7 @@ exact byte/content anchor.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 import math
 from pathlib import Path
 from typing import Iterable
@@ -23,6 +24,13 @@ from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import CollisionNetwork
 def _is_sha256(value: str) -> bool:
     return len(value) == 64 and all(ch in "0123456789abcdef" for ch in value.lower())
 
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 
@@ -67,6 +75,30 @@ class DirectThermodynamicNode:
         object.__setattr__(self, "source_path", Path(self.source_path))
         object.__setattr__(self, "block_count", int(self.block_count))
 
+    @property
+    def file_sha256(self) -> str:
+        """Compatibility digest for the immutable node file."""
+        source = Path(self.source_path)
+        return _sha256(source) if source.is_file() else self.node_sha256
+
+    def number_left_null_relative_residual(self) -> float:
+        scalar = self.network.pair_moments[0]
+        scale = max(float(np.max(np.abs(scalar))), 1.0e-300)
+        return float(np.max(np.abs(scalar - scalar.T)) / scale)
+
+    def be_action_relative_residual(self, *, activity: float = 0.5) -> float:
+        z = self.network.activity_weight
+        if np.any(activity * z >= 1.0):
+            raise ValueError("activity is outside the Bose--Einstein domain")
+        occupation = activity * z / (1.0 - activity * z)
+        phi = occupation / (z * (1.0 + occupation))
+        scalar = self.network.pair_moments[0]
+        flux = scalar * (1.0 + occupation[:, None]) * (1.0 + occupation[None, :]) * (
+            phi[None, :] - phi[:, None]
+        )
+        scale = max(float(np.max(np.abs(scalar))), 1.0e-300)
+        return float(np.max(np.abs(flux)) / scale)
+
     @classmethod
     def from_npz(
         cls,
@@ -110,6 +142,17 @@ class DirectThermodynamicNode:
             )
 
 
+def load_direct_network_node(path: str | Path) -> DirectThermodynamicNode:
+    """Load a direct node using the colocated locked v0.50 reference."""
+    source = Path(path)
+    if not source.is_file():
+        raise FileNotFoundError(source)
+    reference = source.parent / "full_scalar_com_khw_v050.npz"
+    if not reference.is_file():
+        raise FileNotFoundError(reference)
+    return DirectThermodynamicNode.from_npz(source, reference_path=reference)
+
+
 class DirectThermodynamicNetworkFamily:
     """Direct network nodes with fixed-topology positive interpolation."""
 
@@ -120,7 +163,7 @@ class DirectThermodynamicNetworkFamily:
         self,
         nodes: Iterable[DirectThermodynamicNode],
         *,
-        reference: CollisionNetwork,
+        reference: CollisionNetwork | None = None,
     ) -> None:
         ordered = tuple(sorted(nodes, key=lambda node: node.temperature_K))
         if len(ordered) < 2:
@@ -128,6 +171,8 @@ class DirectThermodynamicNetworkFamily:
         temperatures = np.asarray([node.temperature_K for node in ordered])
         if np.any(np.diff(temperatures) <= 0.0):
             raise ValueError("direct-node temperatures must be strictly increasing")
+        if reference is None:
+            reference = ordered[0].network
         for node in ordered:
             if not np.array_equal(node.network.state_labels, reference.state_labels):
                 raise ValueError("direct-node topology does not match the reference labels")
@@ -168,11 +213,18 @@ class DirectThermodynamicNetworkFamily:
             index = len(values) - 1
         return self.nodes[index - 1], self.nodes[index]
 
+    def exact_node(self, temperature_K: float, *, atol: float = 1.0e-12) -> DirectThermodynamicNode:
+        value = float(temperature_K)
+        node = min(self.nodes, key=lambda item: abs(item.temperature_K - value))
+        if not math.isclose(node.temperature_K, value, rel_tol=0.0, abs_tol=atol):
+            raise KeyError(f"no exact direct node at T={value}")
+        return node
+
     def interpolate_scalar_graph(
         self,
         *,
         temperature_K: float,
-        nH_m3: float,
+        nH_m3: float | None = None,
     ) -> tuple[np.ndarray, np.ndarray]:
         """Return scalar conductance and analytic ``d/dT`` at fixed density.
 
@@ -182,10 +234,17 @@ class DirectThermodynamicNetworkFamily:
         """
 
         temperature = float(temperature_K)
-        density = float(nH_m3)
+        left, right = self._bracket(temperature)
+        if nH_m3 is None:
+            if left is right:
+                density = left.nH_m3
+            else:
+                fraction = (temperature - left.temperature_K) / (right.temperature_K - left.temperature_K)
+                density = (1.0 - fraction) * left.nH_m3 + fraction * right.nH_m3
+        else:
+            density = float(nH_m3)
         if not (math.isfinite(density) and density > 0.0):
             raise ValueError("nH_m3 must be positive and finite")
-        left, right = self._bracket(temperature)
         mask_left = self._topology(left.network)
         mask_right = self._topology(right.network)
         if not np.array_equal(mask_left, mask_right):
@@ -379,3 +438,6 @@ class DirectThermodynamicNetworkFamily:
             "a complete interpolated network is not yet defined; use "
             "interpolate_scalar_graph or a directly compiled node"
         )
+
+
+__all__ = ["DirectThermodynamicNetworkFamily", "DirectThermodynamicNode", "WithheldThermodynamicAudit", "load_direct_network_node"]

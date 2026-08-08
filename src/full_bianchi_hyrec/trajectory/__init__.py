@@ -92,7 +92,10 @@ from .hyrec_source_adapter import (
 
 from .characteristic_angular import (
     BianchiCharacteristicFaceSolver,
+    BianchiCharacteristicFaceResult,
+    CharacteristicAngularSolver,
     CharacteristicFaceResult,
+    IsotropicTransferCoefficients,
     constant_coefficient_transfer,
     constant_coefficient_transfer_jvp,
 )
@@ -138,7 +141,10 @@ __all__ = [
     "IsotropicEinsteinLineSource",
     "OriginalHyRecVirtualSpikeSource",
     "BianchiCharacteristicFaceSolver",
+    "BianchiCharacteristicFaceResult",
+    "CharacteristicAngularSolver",
     "CharacteristicFaceResult",
+    "IsotropicTransferCoefficients",
     "constant_coefficient_transfer",
     "constant_coefficient_transfer_jvp",
     "OriginalHyRecSpikeTransfer",
