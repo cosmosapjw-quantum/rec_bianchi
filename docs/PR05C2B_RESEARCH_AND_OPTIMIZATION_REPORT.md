@@ -49,3 +49,21 @@ Metric signature is `(-,+,+,+)`.  Frequency is ordinary Hz.  `c`, `h` and
 actions have occupation s^-1, number flux has m^-3 s^-1, and exact face energy
 is `h nu_face` times number flux.  A pure representation crossing has zero atom
 source; physical collision owns photon/atom four-force exchange.
+
+## Scientific-suite runtime repair
+
+The previous scientific wrapper launched one fresh interpreter per slow test
+node.  All slow files passed in isolation, but cumulative CPU-heavy process
+churn inside one sandbox command stalled after the first expensive quadrature
+budget.  The failure was environmental/process-architecture overhead rather
+than a numerical assertion failure.
+
+The repaired runner isolates by slow **file** rather than by node, disables
+third-party pytest-plugin autoloading, pins BLAS thread pools to one thread and
+records a PASS receipt bound to a SHA-256 fingerprint of all scientific code,
+tests, canonical inputs, expanded evidence and numerical data.  A receipt is
+accepted only when its exact collected node list and captured-log hash also
+match.  This reduces 36 process startups to 15 and permits a final aggregate
+command to validate all slow evidence before running the complete fast tier.
+The repaired wrapper closes 36 slow tests plus 224 fast tests and exits zero in
+about 25 seconds once the slow-file evidence is present.
