@@ -165,3 +165,39 @@ def test_chunked_batched_dense_jacobian_matches_scalar_column_assembly() -> None
     batched = problem.dense_jacobian(log_state, method="batched", chunk_size=5)
     relative = np.max(np.abs(scalar - batched)) / max(np.max(np.abs(scalar)), 1e-300)
     assert relative < 2e-13
+
+
+def test_dense_batched_implicit_solver_matches_gmres_and_reports_diagnostics() -> None:
+    problem, old = _small_problem()
+    gmres_result = problem.implicit_step(old, max_newton=20, linear_solver="gmres")
+    dense_result = problem.implicit_step(
+        old,
+        max_newton=20,
+        linear_solver="dense_batched",
+        dense_chunk_size=5,
+    )
+
+    scale = max(float(np.max(np.abs(gmres_result.occupation))), 1e-300)
+    relative = float(np.max(np.abs(gmres_result.occupation - dense_result.occupation))) / scale
+    assert gmres_result.converged
+    assert dense_result.converged
+    assert relative < 2e-10
+    assert gmres_result.linear_solver == "gmres"
+    assert dense_result.linear_solver == "dense_batched"
+    assert dense_result.dense_jacobian_assemblies >= 1
+    assert dense_result.total_gmres_iterations == 0
+    assert dense_result.gross_backward_error < 2e-10
+    assert dense_result.global_number_relative_residual < 2e-10
+    assert dense_result.jacobian_assembly_elapsed_s >= 0.0
+    assert dense_result.linear_solve_elapsed_s >= 0.0
+
+
+def test_gross_backward_error_uses_all_residual_terms_not_small_net_scale() -> None:
+    problem, old = _small_problem()
+    log_state = np.log(old)
+    metrics = problem.residual_metrics(log_state, old)
+
+    assert metrics.net_scaled_residual >= 0.0
+    assert metrics.gross_backward_error >= 0.0
+    assert metrics.number_relative_residual >= 0.0
+    assert metrics.gross_scale >= metrics.net_scale

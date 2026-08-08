@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
+import time
 from typing import Sequence
 
 import numpy as np
@@ -207,12 +208,30 @@ def audit_thermodynamic_grid_consistency(
 
 
 @dataclass(frozen=True)
+class CoupledResidualMetrics:
+    net_scaled_residual: float
+    gross_backward_error: float
+    number_relative_residual: float
+    net_scale: float
+    gross_scale: float
+
+
+@dataclass(frozen=True)
 class CoupledCollisionTransportStepResult:
     occupation: np.ndarray
     converged: bool
+    convergence_basis: str
+    linear_solver: str
+    preconditioner: str
     newton_iterations: int
     total_gmres_iterations: int
+    dense_jacobian_assemblies: int
     residual_relative: float
+    net_scaled_residual: float
+    gross_backward_error: float
+    used_roundoff_floor_fallback: bool
+    jacobian_assembly_elapsed_s: float
+    linear_solve_elapsed_s: float
     minimum_occupation: float
     global_number_residual_m3: float
     global_number_relative_residual: float
@@ -305,6 +324,74 @@ class CoupledCollisionTransportProblem:
         transport_loss = np.empty_like(transport_sorted)
         transport_loss[order] = transport_sorted
         return collision_loss[:, None] + transport_loss
+
+    def _number_closure_metrics(
+        self,
+        old_occupation: np.ndarray,
+        new_occupation: np.ndarray,
+        transport_result,
+    ) -> tuple[float, float]:
+        weights = np.asarray(self.grid.weights, dtype=np.longdouble)
+        measure = np.asarray(self.network.mode_measure, dtype=np.longdouble)
+        old = np.asarray(old_occupation, dtype=np.longdouble)
+        new = np.asarray(new_occupation, dtype=np.longdouble)
+        before = np.sum(measure[:, None] * old * weights[None, :])
+        after = np.sum(measure[:, None] * new * weights[None, :])
+        native_rate = np.sum(
+            np.asarray(transport_result.native_number_action_m3_s, dtype=np.longdouble)
+            * weights
+        )
+        interface_change = -np.longdouble(self.dt_s) * native_rate
+        residual = after - before - interface_change
+        scale = max(
+            abs(float(before)),
+            abs(float(after)),
+            abs(float(interface_change)),
+            1.0e-300,
+        )
+        return float(residual), abs(float(residual)) / scale
+
+    def residual_metrics(
+        self,
+        log_occupation: np.ndarray,
+        old_occupation: np.ndarray,
+    ) -> CoupledResidualMetrics:
+        old = np.asarray(old_occupation, dtype=float)
+        u = np.asarray(log_occupation, dtype=float)
+        if old.shape != self.shape or u.shape != self.shape:
+            raise ValueError("occupation shape mismatch")
+        if np.any(old <= 0.0) or not np.all(np.isfinite(old)) or not np.all(np.isfinite(u)):
+            raise ValueError("old occupation must be positive and log state finite")
+        if np.max(u) > 700.0 or np.min(u) < -745.0:
+            raise FloatingPointError("log occupation outside finite exponential range")
+        occupation = np.exp(u)
+        collision = self._collision_action(occupation)
+        transport = self._transport(occupation)
+        collision_increment = self.dt_s * collision
+        transport_increment = self.dt_s * transport.occupation_action
+        residual = occupation - old - collision_increment - transport_increment
+        residual_max = float(np.max(np.abs(residual)))
+        net_scale = max(
+            float(np.max(np.abs(old))),
+            float(np.max(np.abs(occupation))),
+            1.0e-300,
+        )
+        gross_scale = max(
+            net_scale,
+            float(np.max(np.abs(collision_increment))),
+            float(np.max(np.abs(transport_increment))),
+            1.0e-300,
+        )
+        _number_residual, number_relative = self._number_closure_metrics(
+            old, occupation, transport
+        )
+        return CoupledResidualMetrics(
+            net_scaled_residual=residual_max / net_scale,
+            gross_backward_error=residual_max / gross_scale,
+            number_relative_residual=number_relative,
+            net_scale=net_scale,
+            gross_scale=gross_scale,
+        )
 
     def residual(self, log_occupation: np.ndarray, old_occupation: np.ndarray) -> np.ndarray:
         old = np.asarray(old_occupation, dtype=float)
@@ -431,14 +518,25 @@ class CoupledCollisionTransportProblem:
         gmres_rtol: float = 2.0e-9,
         gmres_restart: int = 40,
         gmres_maxiter: int = 160,
+        linear_solver: str = "gmres",
+        dense_chunk_size: int = 64,
     ) -> CoupledCollisionTransportStepResult:
         old = np.asarray(old_occupation, dtype=float)
         if old.shape != self.shape or np.any(old <= 0.0) or not np.all(np.isfinite(old)):
             raise ValueError("old occupation must be finite and strictly positive")
+        if linear_solver not in {"gmres", "dense_batched"}:
+            raise ValueError("linear_solver must be 'gmres' or 'dense_batched'")
+        if int(dense_chunk_size) <= 0:
+            raise ValueError("dense_chunk_size must be positive")
         log_f = np.log(old)
         scale = max(float(np.max(np.abs(old))), 1.0e-300)
         total_gmres = 0
+        dense_assemblies = 0
+        jacobian_elapsed = 0.0
+        linear_elapsed = 0.0
         converged = False
+        convergence_basis = "none"
+        used_roundoff_floor_fallback = False
         residual_relative = math.inf
         newton_index = 0
         for newton_index in range(max_newton + 1):
@@ -446,42 +544,64 @@ class CoupledCollisionTransportProblem:
             residual_relative = float(np.max(np.abs(residual))) / scale
             if residual_relative <= nonlinear_rtol:
                 converged = True
+                convergence_basis = "scaled_residual"
                 break
             if newton_index == max_newton:
                 break
             size = old.size
+            if linear_solver == "gmres":
+                def matvec(flat):
+                    return self.residual_jvp(
+                        log_f, np.asarray(flat).reshape(self.shape)
+                    ).ravel()
 
-            def matvec(flat):
-                return self.residual_jvp(log_f, np.asarray(flat).reshape(self.shape)).ravel()
+                operator = LinearOperator((size, size), matvec=matvec, dtype=float)
+                f = np.exp(log_f)
+                diagonal = f * (
+                    1.0 + self.dt_s * self._approximate_loss_rate_s_inv()
+                )
+                preconditioner = LinearOperator(
+                    (size, size),
+                    matvec=lambda flat: np.asarray(flat, dtype=float)
+                    / np.maximum(diagonal.ravel(), 1.0e-300),
+                    dtype=float,
+                )
+                counter = {"iterations": 0}
 
-            operator = LinearOperator((size, size), matvec=matvec, dtype=float)
-            f = np.exp(log_f)
-            diagonal = f * (1.0 + self.dt_s * self._approximate_loss_rate_s_inv())
-            preconditioner = LinearOperator(
-                (size, size),
-                matvec=lambda flat: np.asarray(flat, dtype=float)
-                / np.maximum(diagonal.ravel(), 1.0e-300),
-                dtype=float,
-            )
-            counter = {"iterations": 0}
+                def callback(_):
+                    counter["iterations"] += 1
 
-            def callback(_):
-                counter["iterations"] += 1
-
-            step, info = gmres(
-                operator,
-                -residual.ravel(),
-                M=preconditioner,
-                rtol=gmres_rtol,
-                atol=0.0,
-                restart=gmres_restart,
-                maxiter=gmres_maxiter,
-                callback=callback,
-                callback_type="pr_norm",
-            )
-            total_gmres += counter["iterations"]
-            if info != 0 or not np.all(np.isfinite(step)):
-                break
+                started = time.perf_counter()
+                step, info = gmres(
+                    operator,
+                    -residual.ravel(),
+                    M=preconditioner,
+                    rtol=gmres_rtol,
+                    atol=0.0,
+                    restart=gmres_restart,
+                    maxiter=gmres_maxiter,
+                    callback=callback,
+                    callback_type="pr_norm",
+                )
+                linear_elapsed += time.perf_counter() - started
+                total_gmres += counter["iterations"]
+                if info != 0 or not np.all(np.isfinite(step)):
+                    break
+            else:
+                started = time.perf_counter()
+                jacobian = self.dense_jacobian(
+                    log_f, method="batched", chunk_size=int(dense_chunk_size)
+                )
+                jacobian_elapsed += time.perf_counter() - started
+                dense_assemblies += 1
+                started = time.perf_counter()
+                try:
+                    step = np.linalg.solve(jacobian, -residual.ravel())
+                except np.linalg.LinAlgError:
+                    break
+                linear_elapsed += time.perf_counter() - started
+                if not np.all(np.isfinite(step)):
+                    break
             step = step.reshape(self.shape)
             base = float(np.max(np.abs(residual)))
             accepted = False
@@ -496,8 +616,25 @@ class CoupledCollisionTransportProblem:
                         break
                 damping *= 0.5
             if not accepted:
+                stalled = self.residual_metrics(log_f, old)
+                if (
+                    stalled.gross_backward_error <= nonlinear_rtol
+                    and stalled.number_relative_residual <= nonlinear_rtol
+                ):
+                    converged = True
+                    convergence_basis = "gross_backward_error"
+                    used_roundoff_floor_fallback = True
                 break
 
+        final_metrics = self.residual_metrics(log_f, old)
+        if (
+            not converged
+            and final_metrics.gross_backward_error <= nonlinear_rtol
+            and final_metrics.number_relative_residual <= nonlinear_rtol
+        ):
+            converged = True
+            convergence_basis = "gross_backward_error"
+            used_roundoff_floor_fallback = True
         final = np.exp(log_f)
         collision = self._collision(final)
         transport = self._transport(final)
@@ -511,30 +648,9 @@ class CoupledCollisionTransportProblem:
             np.sum(transport.native_number_action_m3_s * self.grid.weights)
         )
         com_interface_number_rate = -native_number_rate
-        # Diagnose the conserved global number in extended precision; the
-        # absolute cell numbers are large and the physical residual is a
-        # cancellation between COM and interface reservoirs.
-        # Recompute the large conserved totals in extended precision rather
-        # than reusing the float64 convenience helper.
-        weights_long = np.asarray(self.grid.weights, dtype=np.longdouble)
-        measure_long = np.asarray(self.network.mode_measure, dtype=np.longdouble)
-        old_long = np.asarray(old, dtype=np.longdouble)
-        final_long = np.asarray(final, dtype=np.longdouble)
-        number_before_long = np.sum(measure_long[:, None] * old_long * weights_long[None, :])
-        number_after_long = np.sum(measure_long[:, None] * final_long * weights_long[None, :])
-        interface_change_long = (
-            np.longdouble(self.dt_s) * np.longdouble(com_interface_number_rate)
+        global_number_residual, global_number_relative = self._number_closure_metrics(
+            old, final, transport
         )
-        global_number_residual = float(
-            number_after_long - number_before_long - interface_change_long
-        )
-        number_scale = max(
-            abs(float(number_before_long)),
-            abs(float(number_after_long)),
-            abs(float(interface_change_long)),
-            1.0e-300,
-        )
-        global_number_relative = abs(global_number_residual) / number_scale
 
         cell_energy_before = float(
             np.sum(
@@ -569,9 +685,18 @@ class CoupledCollisionTransportProblem:
         return CoupledCollisionTransportStepResult(
             occupation=np.array(final, copy=True),
             converged=converged,
+            convergence_basis=convergence_basis,
+            linear_solver=linear_solver,
+            preconditioner="diagonal" if linear_solver == "gmres" else "none",
             newton_iterations=newton_index,
             total_gmres_iterations=total_gmres,
-            residual_relative=residual_relative,
+            dense_jacobian_assemblies=dense_assemblies,
+            residual_relative=final_metrics.net_scaled_residual,
+            net_scaled_residual=final_metrics.net_scaled_residual,
+            gross_backward_error=final_metrics.gross_backward_error,
+            used_roundoff_floor_fallback=used_roundoff_floor_fallback,
+            jacobian_assembly_elapsed_s=jacobian_elapsed,
+            linear_solve_elapsed_s=linear_elapsed,
             minimum_occupation=float(np.min(final)),
             global_number_residual_m3=float(global_number_residual),
             global_number_relative_residual=float(global_number_relative),
@@ -598,6 +723,7 @@ __all__ = [
     "CollisionStiffnessAudit",
     "CoupledCollisionTransportProblem",
     "CoupledCollisionTransportStepResult",
+    "CoupledResidualMetrics",
     "FullCouplingIdentifiabilityAudit",
     "ThermodynamicGridConsistencyAudit",
     "audit_collision_stiffness",
