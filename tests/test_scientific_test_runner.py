@@ -101,3 +101,30 @@ def test_scientific_receipt_is_valid_only_for_matching_fingerprint_and_nodes(
         nodes=nodes + [f"{test_file}::test_three"],
         fingerprint="fingerprint-A",
     )
+
+
+def test_scientific_receipts_are_runtime_cache_not_tracked_state(tmp_path: Path) -> None:
+    module = load_module()
+    test_file = "tests/recoil/test_model.py"
+    path = module.write_scientific_receipt(
+        root=tmp_path,
+        test_file=test_file,
+        nodes=[f"{test_file}::test_one"],
+        fingerprint="fingerprint-A",
+        elapsed_seconds=0.1,
+        output="1 passed\n",
+    )
+    assert path.is_relative_to(tmp_path / ".cache/scientific_test_receipts")
+    assert not (tmp_path / "state/scientific_test_receipts").exists()
+
+
+def test_scientific_fingerprint_tracks_the_runner_contract(tmp_path: Path) -> None:
+    module = load_module()
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src/model.py").write_text("VALUE = 1\n", encoding="utf-8")
+    (tmp_path / "scripts").mkdir()
+    runner = tmp_path / "scripts/scientific_test_runner.py"
+    runner.write_text("POLICY = 1\n", encoding="utf-8")
+    before = module.scientific_input_fingerprint(tmp_path)
+    runner.write_text("POLICY = 2\n", encoding="utf-8")
+    assert module.scientific_input_fingerprint(tmp_path) != before

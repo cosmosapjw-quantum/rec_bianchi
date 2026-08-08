@@ -10,9 +10,14 @@ import subprocess
 import sys
 import zipfile
 
-from scientific_test_runner import run_scientific
+from scientific_test_runner import run_scientific, scientific_environment
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def repository_test_environment() -> dict[str, str]:
+    """Deterministic one-thread environment for the aggregate fast suite."""
+    return scientific_environment(root=ROOT)
 
 
 def sha256(path: Path) -> str:
@@ -92,6 +97,7 @@ def main() -> None:
         result = subprocess.run(
             [sys.executable, "-m", "pytest", "-q", "-m", "not slow"],
             cwd=ROOT,
+            env=repository_test_environment(),
         )
         if result.returncode:
             raise SystemExit(result.returncode)

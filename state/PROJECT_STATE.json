@@ -547,18 +547,44 @@
     "theory_completion_percent_scalar_scope": 99,
     "wolfram": "USED_EXACT_IDENTITIES"
   },
+  "PR05C2C1A_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2C1A_direct_compiler_characteristic_v0_66.zip",
+    "artifact_bundle_sha256": "2fa87a79250b32a1b0761e3036d4d7abaa4e10197879ca2adbb8a1c8ff4408ca",
+    "artifact_bundle_size_bytes": 466749,
+    "direct_blocks_per_node": 459,
+    "direct_node_count": 3,
+    "entropy_graph_preconditioner_selected": false,
+    "full_withheld_same_cell_validation_completed": false,
+    "harmonic_angle_count": 974,
+    "maximum_direct_be_action_relative_residual": 2.9818829369001605e-33,
+    "maximum_direct_number_relative_residual": 7.125980590258219e-31,
+    "maximum_direct_pair_symmetry_residual": 0.0,
+    "maximum_face_frequency_relative_residual": 5.551115123125783e-16,
+    "maximum_selected_withheld_relative_error": 0.0025705875221985358,
+    "minimum_characteristic_doppler_factor": 0.5784401367707603,
+    "minimum_direct_scalar_conductance": 3.4795420130216494e-57,
+    "minimum_manufactured_refinement_ratio": 3.98434119674277,
+    "multi_macro_trajectory_completed": false,
+    "physical_hyrec_emissivity_opacity_adapter_completed": false,
+    "reference_3000K_anchor_exact": true,
+    "runtime_data": "data/pr05c2c1a_direct_compiler_characteristic_v066.npz",
+    "runtime_data_sha256": "d79a34dd7f722d328194d11a49477fdc09cb27de8d34044b36373032054fb356",
+    "source_characteristic_face_count": 18,
+    "source_locked_virtual_escape_adapter_preflight": "IMPLEMENTED_WITH_SOURCE_HC_CONSTANT_AND_FLRW_TAU_PARITY",
+    "total_direct_block_receipts": 1377
+  },
   "classification": "DURABLE_PROJECT_STATE",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C2C0_theory_closure_v0_65",
-    "name": "PR-05C2C0 scalar mathematical and physical theory closure",
-    "status": "PASS_PR05C2C0_SCALAR_THEORY_CONTRACT_COMPLETE_DIRECT_COMPILER_AND_MULTI_MACRO_IMPLEMENTATION_NEXT"
+    "artifact": "Full_Bianchi_HyRec_PR05C2C1A_direct_compiler_characteristic_v0_66",
+    "name": "PR-05C2C1A direct thermodynamic nodes and characteristic-face solver",
+    "status": "PASS_PR05C2C1A_DIRECT_NODAL_NETWORK_CHARACTERISTIC_FACE_SOLVER_SELECTED_WITHHELD_VALIDATION_PRECONDITIONER_NOT_SELECTED_MULTI_MACRO_OPEN"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
   "estimated_PR04_completion_percent": 100,
-  "estimated_PR05_completion_percent": 94,
+  "estimated_PR05_completion_percent": 96,
   "estimated_overall_completion_percent": 98,
   "estimated_scalar_theory_completion_percent": 99,
   "hard_scope": {
@@ -654,32 +680,31 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C2C0_SCALAR_THEORY_CONTRACT_COMPLETE",
-    "name": "PR-05C2C1 direct thermodynamic compiler and characteristic angular solver",
+    "entry_gate": "PR05C2C1A_DIRECT_NODAL_NETWORK_CHARACTERISTIC_FACE_SOLVER_COMPLETE",
+    "name": "PR-05C2C1B physical source adapter, full withheld validation, measured preconditioner and multi-macro trajectory",
     "tasks": [
-      "Compile nonnegative reciprocal source-temperature COM-KHW nodal event kernels at locked, midpoint and refinement nodes with no fitted normalization.",
-      "Evolve the angle-resolved radiation field from isotropic hydrogen-frame source history using exact finite-tilt Bianchi characteristics and exact native face traces.",
-      "Implement fixed-branch analytic JVPs for conservative positive MUSCL/DG traces with event-localized branch changes.",
-      "Implement and measure an entropy-metric/nullspace-preserving AP or Schur preconditioner satisfying the v0.65 spectral-equivalence contract.",
-      "Run withheld-node, four-or-more-macro, rollback/restart and FLRW-reduction gates before entering PR-06."
+      "Derive and source-lock physical hydrogen-frame emissivity/absorption pairs for original-HyRec one-photon, two-photon, Raman and diffusion terms; reproduce the scalar FLRW source equation without a fitted scale.",
+      "Compile full withheld thermodynamic nodes for all unordered pairs and all 17 same-cell blocks, including topology-event handling and analytic log-interpolation JVP.",
+      "Benchmark nullspace-preserving activity, atomic/native Schur, angular and interface Schur preconditioners; select only a total-wall-time improvement with original-residual closure.",
+      "Run four-or-more canonical macro intervals in the nine locked redshift/Bianchi lanes with exactly-once history commit, rollback/restart, positivity and componentwise conservation gates."
     ]
   },
   "overall_progress_percent": 98,
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
-    "exact_remote_main_sha": "2add22bb71c453900a1f79f14b29074971a348f6",
-    "exact_remote_main_tree": "c07ffa8e686c5ecf8fafa1c421625f38ba819aa9",
-    "latest_merged_pr": 23,
-    "latest_merged_pr_head": "ea813f0d6ec2452ac02eec29050fe864932de427",
-    "policy": "Create a branch from fresh origin/main; apply only receipt-listed v0.65 feature commits; rerun all gates; never force-push.",
-    "remote_ci": "SUCCESS_RUN_78",
-    "remote_content_stage": "v0.64 PR05C2B explicit closure optimized macro",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V065",
+    "exact_remote_main_sha": "2d777b1c7e56dcdf1e17feb1f728410ea0792df8",
+    "exact_remote_main_tree": "0d2914566a3f211c2c3f324952b851a50da3a946",
+    "latest_merged_pr": 24,
+    "latest_merged_pr_head": "feb8e74601240dc7334a2dd79d23f1e51270237c",
+    "policy": "Create a branch from fresh origin/main; apply only receipt-listed v0.66 commits; rerun all gates; never force-push.",
+    "remote_ci": "SUCCESS_RUN_81",
+    "remote_content_stage": "v0.65 PR05C2C0 scalar mathematical contract",
+    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V066",
     "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
   },
   "remote_sync": {
-    "push_policy": "OWNER_FETCHES_V065_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
-    "reason": "Remote main contains merged v0.64 plus integration-only fixes; only v0.65 feature commits remain.",
+    "push_policy": "OWNER_FETCHES_V066_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
+    "reason": "Remote main contains merged v0.65 plus integration-only fixes; only v0.66 feature commits remain.",
     "remote_ref_verified": true,
     "remote_tree_match": false,
     "remote_url_ssh": "git@github.com:cosmosapjw-quantum/rec_bianchi.git"
@@ -708,7 +733,7 @@
     },
     {
       "pr": 5,
-      "status": "IN_PROGRESS_PR05A_B1_B2_B3_C1_C2A_C2B_COMPLETE_C2C0_THEORY_COMPLETE_C2C1_NEXT",
+      "status": "IN_PROGRESS_PR05A_B1_B2_B3_C1_C2A_C2B_C2C0_C2C1A_COMPLETE_C2C1B_NEXT",
       "title": "Primitive HYREC operator and background interface"
     },
     {
