@@ -79,6 +79,17 @@ from .full_coupled_adaptive import (
     audit_thermodynamic_grid_consistency,
 )
 
+
+from .explicit_full_coupling import (
+    ExplicitThermodynamicNetworkFamily,
+    FrequencyFaceReconstruction,
+    NativeAngularClosure,
+    ThermodynamicNetworkMember,
+    isotropic_native_lift,
+    maximum_entropy_native_lift,
+    reconstruct_frequency_faces,
+)
+
 from .time_dependent_native import (
     CausalRadiationHistoryState,
     NativeRadiationTimeMeasureAudit,
@@ -96,6 +107,13 @@ from .time_dependent_native import (
 )
 
 __all__ = [
+    "ExplicitThermodynamicNetworkFamily",
+    "FrequencyFaceReconstruction",
+    "NativeAngularClosure",
+    "ThermodynamicNetworkMember",
+    "isotropic_native_lift",
+    "maximum_entropy_native_lift",
+    "reconstruct_frequency_faces",
     "CollisionStiffnessAudit",
     "CoupledCollisionTransportProblem",
     "CoupledCollisionTransportStepResult",

@@ -21,7 +21,9 @@ from full_bianchi_hyrec.recoil.frequency_liouville import (
 )
 from full_bianchi_hyrec.recoil.nonlinear_bose_release import (
     HarmonicGrid,
+    apply_nonlinear_bose_action,
     apply_nonlinear_bose_jvp,
+    apply_nonlinear_bose_jvp_batched,
     apply_nonlinear_bose_operator,
     bose_photon_number,
 )
@@ -275,6 +277,15 @@ class CoupledCollisionTransportProblem:
             photon_momentum_scale=self.network.momentum_scale,
         )
 
+    def _collision_action(self, occupation: np.ndarray) -> np.ndarray:
+        return apply_nonlinear_bose_action(
+            occupation,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+        )
 
     def _approximate_loss_rate_s_inv(self) -> np.ndarray:
         """Positive diagonal loss used only as a Newton--Krylov preconditioner."""
@@ -305,10 +316,10 @@ class CoupledCollisionTransportProblem:
         if np.max(u) > 700.0 or np.min(u) < -745.0:
             raise FloatingPointError("log occupation outside finite exponential range")
         f = np.exp(u)
-        collision = self._collision(f)
+        collision_action = self._collision_action(f)
         transport = self._transport(f)
         return f - old - self.dt_s * (
-            collision.occupation_action + transport.occupation_action
+            collision_action + transport.occupation_action
         )
 
     def residual_jvp(
@@ -338,6 +349,78 @@ class CoupledCollisionTransportProblem:
             grid=self.grid,
         ).occupation_action_jvp
         return df - self.dt_s * (collision + transport)
+
+    def residual_jvp_batched(
+        self,
+        log_occupation: np.ndarray,
+        log_directions: np.ndarray,
+    ) -> np.ndarray:
+        """Apply the shifted residual JVP to a batch of log directions."""
+
+        u = np.asarray(log_occupation, dtype=float)
+        directions = np.asarray(log_directions, dtype=float)
+        if directions.ndim == 2:
+            directions = directions[None, ...]
+        if u.shape != self.shape or directions.ndim != 3 or directions.shape[1:] != self.shape:
+            raise ValueError("batched log direction shape mismatch")
+        f = np.exp(u)
+        df = f[None, :, :] * directions
+        collision = apply_nonlinear_bose_jvp_batched(
+            f,
+            df,
+            mode_measure=self.network.mode_measure,
+            equilibrium_weight=self.network.equilibrium_weight,
+            pair_moments=self.network.pair_moments,
+            same_cell_rates=self.network.same_cell_rates,
+            grid=self.grid,
+        ).occupation_action_jvp
+        transport = np.stack(
+            [
+                self.transport.jvp(
+                    f,
+                    item,
+                    face_speeds_x_s_inv=self.face_speeds_x_s_inv,
+                    grid=self.grid,
+                ).occupation_action_jvp
+                for item in df
+            ]
+        )
+        return df - self.dt_s * (collision + transport)
+
+    def dense_jacobian(
+        self,
+        log_occupation: np.ndarray,
+        *,
+        method: str = "batched",
+        chunk_size: int = 64,
+    ) -> np.ndarray:
+        """Assemble a dense residual Jacobian for bounded audit/hot lanes."""
+
+        u = np.asarray(log_occupation, dtype=float)
+        if u.shape != self.shape:
+            raise ValueError("log occupation shape mismatch")
+        size = u.size
+        matrix = np.empty((size, size), dtype=float)
+        if method == "scalar_columns":
+            for column in range(size):
+                direction = np.zeros(self.shape, dtype=float)
+                direction.ravel()[column] = 1.0
+                matrix[:, column] = self.residual_jvp(u, direction).ravel()
+            return matrix
+        if method != "batched":
+            raise ValueError("method must be 'scalar_columns' or 'batched'")
+        if int(chunk_size) <= 0:
+            raise ValueError("chunk_size must be positive")
+        chunk = int(chunk_size)
+        for start in range(0, size, chunk):
+            stop = min(start + chunk, size)
+            directions = np.zeros((stop - start, size), dtype=float)
+            directions[np.arange(stop - start), np.arange(start, stop)] = 1.0
+            result = self.residual_jvp_batched(
+                u, directions.reshape((stop - start,) + self.shape)
+            )
+            matrix[:, start:stop] = result.reshape(stop - start, size).T
+        return matrix
 
     def implicit_step(
         self,
