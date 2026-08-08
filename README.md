@@ -7,26 +7,19 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C0 / v0.65**.
-- The scalar, unpolarized mathematical/physical contract is complete under an
-  explicit hydrogen-frame isotropic-source axiom.
-- Exact Bianchi/tilt characteristics generate the directional radiation field
-  as an initial-boundary-value problem; one scalar instantaneous datum is still
-  not relabelled angle-resolved source data.
-- Direct thermodynamic COM--KHW kernels are required to be nonnegative
-  reciprocal nodal event graphs.  Number, BE null, positivity and Bose
-  free-energy dissipation follow structurally, and interpolation is restricted
-  to fixed topology in logarithmic conductance variables.
-- The stiff collision block has an entropy-metric graph-Laplacian form with an
-  exact activity nullspace and an explicit stiffness-independent
-  spectral-equivalence preconditioner bound.
-- Exact native face traces, conservative positive COM traces, componentwise
-  source ownership and fixed-branch index-one DAE well-posedness are locked.
-- Estimated scalar theory completion is about **99%**.  Direct compilation,
-  angular-solver implementation, multi-macro evidence and PR-06 FLRW history
-  parity remain open.
-- Next: **PR-05C2C1 direct thermodynamic compiler and characteristic angular
-  solver**.
+- Durable stage: **PR-05C2C1A / v0.66**.
+- Three full source-temperature collision-network nodes and exact finite-tilt
+  Bianchi characteristic face traces pass the bounded direct/characteristic
+  gates.
+- Selected withheld-pair interpolation is below `0.3%`, but full same-cell
+  withheld validation remains open.
+- The original-HyRec virtual-spike escape map is source-locked as a preliminary
+  adapter; complete one-/two-photon, Raman and diffusion emissivity/opacity
+  ownership remains PR-05C2C1B.
+- Scientific receipts are runtime cache files and no longer dirty the tracked
+  working tree.
+- Next: **PR-05C2C1B physical source adapter, full withheld validation, measured
+  preconditioner and multi-macro trajectory**.
 
 Start with:
 
@@ -35,7 +28,7 @@ Start with:
 python scripts/check_remote_state.py
 python scripts/check_hyrec_binary_hash_policy.py
 python scripts/check_commit_range_whitespace.py
-PYTHONPATH=src python scripts/check_imports.py
+if test -f scripts/check_imports.py; then PYTHONPATH=src python scripts/check_imports.py; fi
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
@@ -43,7 +36,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C2C1_DIRECT_COMPILER_CHARACTERISTIC_SOLVER_PLAN.md`](docs/PR05C2C1_DIRECT_COMPILER_CHARACTERISTIC_SOLVER_PLAN.md).
+[`docs/PR05C2C1B_SOURCE_ADAPTER_MULTI_MACRO_PLAN.md`](docs/PR05C2C1B_SOURCE_ADAPTER_MULTI_MACRO_PLAN.md).
 
 ## Canonical source
 
@@ -64,15 +57,15 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #23 at
-`2add22bb71c453900a1f79f14b29074971a348f6`, tree
-`c07ffa8e686c5ecf8fafa1c421625f38ba819aa9`; PR-head CI run 78 completed
-successfully.  v0.65 is developed on the exact author v0.64 lineage, so exact
+GitHub `main` contains merged PR #24 at
+`2d777b1c7e56dcdf1e17feb1f728410ea0792df8`, tree
+`0d2914566a3f211c2c3f324952b851a50da3a946`; PR-head CI run 81 completed
+successfully. v0.66 is developed on the exact author v0.65 lineage, so exact
 remote-tree identity is not assumed.
 
 Canonical patch delivery is a self-contained feature Git bundle with an ordered
 commit receipt, plus a full recovery Git bundle. Create a branch from fresh
-`origin/main`, cherry-pick only the receipt-listed v0.65 commits, rerun all
+`origin/main`, cherry-pick only the receipt-listed v0.66 commits, rerun all
 gates, and never rewrite shared history.
 
 ## Test tiers
@@ -80,5 +73,5 @@ gates, and never rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.65 regeneration: `python scripts/run_pr05c2c0_theory_closure_stage.py`.
+- v0.66 compact verification: run the current artifact verifier through `python scripts/verify_repo.py --quick`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
