@@ -138,12 +138,33 @@ from .time_dependent_native import (
 )
 
 
+from .pseudotransient_continuation import (
+    AcceptedContinuationState,
+    ContinuationTransaction,
+    ContinuationTransactionStatus,
+    MixedVariableTransform,
+    PseudoTransientIteration,
+    PseudoTransientResult,
+    PseudoTransientTolerances,
+    project_left_nullspace,
+    solve_pseudotransient,
+)
+
 from .macro_evidence_integrity import (
     BackwardEulerParentAudit,
     audit_backward_euler_parent,
 )
 
 __all__ = [
+    "AcceptedContinuationState",
+    "ContinuationTransaction",
+    "ContinuationTransactionStatus",
+    "MixedVariableTransform",
+    "PseudoTransientIteration",
+    "PseudoTransientResult",
+    "PseudoTransientTolerances",
+    "project_left_nullspace",
+    "solve_pseudotransient",
     "BackwardEulerParentAudit",
     "audit_backward_euler_parent",
     "IsotropicEinsteinLineSource",
