@@ -1,0 +1,14 @@
+{
+  "PETSc_matrix_free": {
+    "decision": "retain analytic matrix-free JVP and separate measured preconditioner",
+    "source": "PETSc SNES matrix-free operator and separate Pmat/PCSHELL documentation"
+  },
+  "PETSc_nullspace": {
+    "decision": "project incompatible RHS components before singular/near-singular Krylov solves",
+    "source": "PETSc MatSetNullSpace documentation"
+  },
+  "pseudo_transient_continuation": {
+    "decision": "use PTC as nonlinear globalization, not as evidence of physical time acceptance",
+    "source": "Kelley and Keyes, Convergence Analysis of Pseudo-Transient Continuation"
+  }
+}

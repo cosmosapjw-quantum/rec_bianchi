@@ -155,6 +155,11 @@ from .macro_evidence_integrity import (
     audit_backward_euler_parent,
 )
 
+from .physical_continuation import (
+    CoupledPhysicalContinuationAdapter,
+    PhysicalContinuationAssessment,
+)
+
 __all__ = [
     "AcceptedContinuationState",
     "ContinuationTransaction",
@@ -167,6 +172,8 @@ __all__ = [
     "solve_pseudotransient",
     "BackwardEulerParentAudit",
     "audit_backward_euler_parent",
+    "CoupledPhysicalContinuationAdapter",
+    "PhysicalContinuationAssessment",
     "IsotropicEinsteinLineSource",
     "OriginalHyRecVirtualSpikeSource",
     "BianchiCharacteristicFaceSolver",

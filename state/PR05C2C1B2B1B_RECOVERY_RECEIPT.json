@@ -1,0 +1,22 @@
+{
+  "classification": "PR05C2C1B2B1B_V071_RECOVERY_RECEIPT",
+  "durable_parent": "c241b63ba2892008f3a0b74e0f9ecfe86586bfb5",
+  "parent_stage": "reconstructed v0.70 pseudo-transient P0",
+  "recovered_defect": "generic physical backward error used an absolute unit floor max(abs(state),1), allowing false zero-iteration convergence for O(1e-18) occupations",
+  "current_status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN",
+  "load_bearing_fixes": [
+    "state-relative generic backward-error scale",
+    "problem-specific physical gross and photon-number convergence callback",
+    "durable z~1100 Bianchi-II residual and analytic physical-variable JVP adapter",
+    "matrix-free shifted pseudo-transient LinearOperator",
+    "unit-rescaling adversarial regression",
+    "dt-sweep and plot-driven CRAG evidence"
+  ],
+  "not_claimed": [
+    "converged canonical physical macro",
+    "selected production preconditioner",
+    "Rust backend parity or speedup",
+    "multi-macro trajectory"
+  ],
+  "next": "PR05C2C1B2B1C_MATRIX_FREE_SAFEGUARDED_CONTINUATION_Z1100_BIANCHI_II"
+}

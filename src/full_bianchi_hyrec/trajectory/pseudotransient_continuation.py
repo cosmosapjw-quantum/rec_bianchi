@@ -338,6 +338,25 @@ class PseudoTransientResult:
 
 ResidualFunction = Callable[[np.ndarray], np.ndarray]
 JacobianFunction = Callable[[np.ndarray], np.ndarray]
+ConvergenceMetricFunction = Callable[[np.ndarray], float]
+
+
+def _relative_state_scale(*states: np.ndarray) -> np.ndarray:
+    """Component scale without a dimensionless unit-floor.
+
+    Occupations in the recombination problem are routinely O(1e-18).  A hard
+    floor of one makes ``|J| scale`` larger than the actual operator scale by
+    eighteen orders of magnitude and can falsely label a non-root as converged.
+    The floor here is relative to the largest supplied state component.
+    """
+
+    arrays = tuple(np.asarray(state, dtype=float) for state in states)
+    if not arrays or any(array.shape != arrays[0].shape for array in arrays):
+        raise ValueError("state scales require at least one common-shape vector")
+    maximum = max(float(np.max(np.abs(array), initial=0.0)) for array in arrays)
+    floor = max(np.sqrt(np.finfo(float).eps) * maximum, np.finfo(float).tiny)
+    components = tuple(np.abs(array) for array in arrays)
+    return np.maximum.reduce(components + (np.full_like(arrays[0], floor),))
 
 
 def _physical_backward_error(
@@ -347,14 +366,16 @@ def _physical_backward_error(
 ) -> float:
     """Normwise local backward error for a stiff nonlinear residual.
 
-    Normalizing only by ``state`` is misleading when a large Jacobian maps a
-    tiny state error to a large residual.  The local operator scale
-    ``|J| max(|x|,1)`` is therefore included explicitly.
+    The state scale is relative to the physical variables, not to an arbitrary
+    dimensionless value of one.  This prevents tiny occupation vectors from
+    receiving a fictitiously enormous ``|J|`` normalization.
     """
 
-    state_scale = np.maximum(np.abs(state), 1.0)
+    state_scale = _relative_state_scale(state)
     operator_scale = np.abs(derivative) @ state_scale
-    scale = np.maximum(1.0, operator_scale)
+    scale = np.maximum.reduce(
+        (state_scale, operator_scale, np.full_like(state_scale, np.finfo(float).tiny))
+    )
     return float(np.max(np.abs(residual_vector) / scale))
 
 
@@ -370,15 +391,15 @@ def _pseudo_backward_error(
     """Cancellation-safe normwise backward error for a pseudo-step."""
 
     mass_coefficient = mass_diagonal / pseudo_time
-    state_scale = np.maximum.reduce(
-        (np.ones_like(state), np.abs(state), np.abs(old_state))
-    )
+    state_scale = _relative_state_scale(state, old_state)
     linearized_scale = (
         mass_coefficient * state_scale
         + np.abs(derivative) @ state_scale
         + np.abs(physical_residual)
     )
-    scale = np.maximum(1.0, linearized_scale)
+    scale = np.maximum.reduce(
+        (state_scale, linearized_scale, np.full_like(state_scale, np.finfo(float).tiny))
+    )
     return float(np.max(np.abs(equation) / scale))
 
 
@@ -389,6 +410,7 @@ def solve_pseudotransient(
     jacobian: JacobianFunction,
     mass_diagonal: Sequence[float],
     tolerances: PseudoTransientTolerances | None = None,
+    convergence_metric: ConvergenceMetricFunction | None = None,
 ) -> PseudoTransientResult:
     """Solve a nonlinear macro residual by dense pseudo-transient continuation.
 
@@ -414,9 +436,14 @@ def solve_pseudotransient(
         np.isfinite(initial_derivative)
     ):
         raise ValueError("jacobian returned invalid shape or nonfinite values")
-    physical_norm = _physical_backward_error(
-        initial_residual, state, initial_derivative
-    )
+    if convergence_metric is None:
+        physical_norm = _physical_backward_error(
+            initial_residual, state, initial_derivative
+        )
+    else:
+        physical_norm = float(convergence_metric(state))
+        if not math.isfinite(physical_norm) or physical_norm < 0.0:
+            raise ValueError("convergence_metric must return a finite nonnegative value")
     if physical_norm <= settings.physical_residual:
         return PseudoTransientResult(
             parent_sha256=parent.sha256,
@@ -489,9 +516,16 @@ def solve_pseudotransient(
         candidate_state = transform.decode(coordinates)
         candidate_physical = np.asarray(residual(candidate_state), dtype=float)
         candidate_derivative = np.asarray(jacobian(candidate_state), dtype=float)
-        candidate_physical_norm = _physical_backward_error(
-            candidate_physical, candidate_state, candidate_derivative
-        )
+        if convergence_metric is None:
+            candidate_physical_norm = _physical_backward_error(
+                candidate_physical, candidate_state, candidate_derivative
+            )
+        else:
+            candidate_physical_norm = float(convergence_metric(candidate_state))
+            if not math.isfinite(candidate_physical_norm) or candidate_physical_norm < 0.0:
+                raise ValueError(
+                    "convergence_metric must return a finite nonnegative value"
+                )
         minimum_positive = (
             float(np.min(candidate_state[parent.positive_mask]))
             if np.any(parent.positive_mask)
@@ -623,6 +657,7 @@ __all__ = [
     "AcceptedContinuationState",
     "ContinuationTransaction",
     "ContinuationTransactionStatus",
+    "ConvergenceMetricFunction",
     "MixedVariableTransform",
     "PseudoTransientIteration",
     "PseudoTransientResult",

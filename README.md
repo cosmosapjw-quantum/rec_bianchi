@@ -1,28 +1,23 @@
 # rec_bianchi — Full Bianchi–HyRec durable research backup
 
-This private repository is the durable active workspace for the scalar Full
+This public repository is the durable active workspace for the scalar Full
 Bianchi–HyRec program: homogeneous all-11 Bianchi backgrounds, tetrad and 1+3
 formalism, finite tilt, nonlinear large shear, HYREC-grade atomic physics and
 angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Active development stage: **PR-05C2C1B2B1A / v0.70-P0 — accepted-state
-  pseudo-transient infrastructure**.
-- The durable scientific boundary remains the v0.69 macro-evidence bounded
-  no-go: the immutable v0.64 endpoints are not accepted trajectory evidence,
-  because each implies a nonpositive backward-Euler parent under the durable
-  operator and recorded timestep.
-- v0.70-P0 supplies content-addressed accepted parents, mixed log-positive and
-  signed solver coordinates, left-nullspace projection, dense pseudo-transient
-  continuation, deterministic restart, and one-shot transactional commit or
-  rollback.  It is a development reference, not a sealed physical completion.
+- Durable stage: **PR-05C2C1B2B1B / v0.71**.
+- The v0.70 generic pseudo-transient backward-error unit floor is superseded:
+  it falsely accepted `O(1e-18)` occupations under harmless variable rescaling.
+- The z~1100 Bianchi-II physical residual, analytic JVP, problem-specific gross
+  and photon-number hard gates, and shifted matrix-free operator are connected.
+- The canonical parent is correctly rejected; no physical macro convergence is
+  claimed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
   two-photon/Raman, and characteristic-source adapters remain available.
-- Cached v0.64 endpoints must not be chained or used as nonlinear predictors.
-- Next: connect one source-derived `z~1100` Bianchi-II accepted parent to the
-  durable physical residual and shifted JVP, then run the measured
-  preconditioner bake-off and nine-lane four-or-more-macro evidence.
+- Next: **one safeguarded matrix-free z~1100 Bianchi-II macro**, then measured
+  preconditioner selection and only afterwards the 9x4 lane expansion.
 
 Start with:
 

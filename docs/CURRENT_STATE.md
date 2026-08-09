@@ -1,20 +1,25 @@
 # Current state
 
-- Durable local stage: **PR-05C2C1B2B0 / v0.69**.
-- Status: `PASS_BOUNDED_NO_GO_V064_RECORDED_MACRO_ENDPOINTS_INCONSISTENT_WITH_DURABLE_BACKWARD_EULER_OPERATOR_CONTINUATION_SOLVER_REQUIRED`.
-- The immutable v0.64 artifact bytes remain durable, but its nine recorded
-  canonical-macro endpoints are not reusable as accepted trajectory evidence:
-  every endpoint implies a nonpositive backward-Euler parent under the durable
-  operator and recorded timestep.
-- The contradiction holds for both isotropic and outward maximum-entropy native
-  boundary closures.  Between 235 and 340 of 910 state components are
-  nonpositive; recorded timesteps exceed the strict-positivity bound by
-  `2.76e9`--`3.88e9`.
+- Durable local stage: **PR-05C2C1B2B1B / v0.71**.
+- Status: `PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN`.
+- The reconstructed v0.70 generic pseudo-transient acceptance metric used an
+  absolute scale floor of one.  For the locked `z~1100` Bianchi-II occupations
+  (`O(1e-18)`), this suppresses the reported error by an arbitrary change of
+  units and falsely passes the canonical parent at zero outer iterations.
+- v0.71 replaces that floor with a state-relative scale and keeps the existing
+  physical hard gate `max(gross backward error, photon-number residual)`.
+- At the canonical `1.708369384e9 s` step, the legacy metric is `3.893e-15`, but
+  the corrected generic error is `5.143e2`; physical gross and number residuals
+  are both `1`.  The largest parent-state step passing the `1e-11` physical gate
+  is only `1.288e-6 s`.
+- The durable coupled residual, physical-variable analytic JVP and shifted
+  matrix-free `LinearOperator` are connected.  Its finite-difference JVP
+  residual is `3.49e-10`.
+- No canonical macro convergence, preconditioner selection, Rust speedup, or
+  multi-macro trajectory is claimed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
-  two-photon/Raman, and characteristic-source adapters are unaffected.
-- Preconditioner selection and multi-macro claims are reset to an accepted-state
-  path.  Cached v0.64 endpoints must not be chained or used as nonlinear
-  predictors.
-- Next: **PR-05C2C1B2B1 accepted-state pseudo-transient/micro-macro
-  continuation**, followed by the measured preconditioner bake-off and nine-lane
-  four-or-more-macro evidence.
+  two-photon/Raman, and characteristic-source adapters remain unaffected.
+- Next: **PR-05C2C1B2B1C safeguarded matrix-free continuation on the single
+  `z~1100` Bianchi-II parent**, followed by measured preconditioner selection.
+- Rust remains deferred until the Python physical residual/JVP and accepted
+  trajectory are reference-locked.

@@ -569,12 +569,34 @@
     "status": "PASS_PR05C2C1B2A_CANONICAL_TWO_PHOTON_RAMAN_SOURCE_ADAPTER_PRECONDITIONER_MULTI_MACRO_OPEN",
     "wolfram": "USED_EXACT_TWO_PHOTON_RAMAN_LTE_AND_JVP_IDENTITIES"
   },
+  "PR05C2C1B2B1B_evidence": {
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2C1B2B1B_physical_acceptance_gate_v0_71.zip",
+    "artifact_bundle_sha256": "f1241432e0e5b1ef55c23bb95c0a248aa7c3d6ad923e0136d062691c7041d1bf",
+    "artifact_bundle_size_bytes": 142854,
+    "background_model": "Bianchi_II_large_shear",
+    "canonical_dt_s": 1708369384.3217053,
+    "canonical_macro_convergence_complete": false,
+    "canonical_to_parent_gate_dt_ratio": 1326369285591446.8,
+    "corrected_state_relative_backward_error": 514.2814690317614,
+    "largest_parent_step_passing_gate_s": 1.2880043309808093e-06,
+    "legacy_rescaling_disagreement_factor": 9.999999999999999e+17,
+    "legacy_unit_floor_backward_error": 3.8933191726359165e-15,
+    "matrix_free_operator_available": true,
+    "photon_number_relative_residual": 1.0,
+    "physical_gross_backward_error": 1.0,
+    "rescaling_invariance_relative_residual": 1.1102230246251565e-16,
+    "rust_backend_selected": false,
+    "shifted_matrix_free_jvp_relative_residual": 3.4909086631099003e-10,
+    "state_count": 910,
+    "status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN",
+    "target_redshift": 1100
+  },
   "classification": "DURABLE_PROJECT_STATE",
-  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
+  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B0_macro_evidence_integrity_v0_69",
-    "name": "PR-05C2C1B2B0 macro-evidence integrity audit",
-    "status": "PASS_BOUNDED_NO_GO_V064_RECORDED_MACRO_ENDPOINTS_INCONSISTENT_WITH_DURABLE_BACKWARD_EULER_OPERATOR_CONTINUATION_SOLVER_REQUIRED"
+    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1B_physical_acceptance_gate_v0_71",
+    "name": "PR-05C2C1B2B1B physical acceptance gate and residual/JVP connection",
+    "status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
@@ -633,7 +655,8 @@
     "The full withheld z~1100 audit has event-mass weighted scalar error 9.33e-6, maximum active-edge error 8.67e-3 and maximum same-cell relative error 1.65e-2; these are validation metrics, not a substitute for direct production nodes.",
     "PR-05C2C1B2A closes the canonical integrated-bin table and real--virtual coefficient ownership. The angle-resolved positive paired source remains an explicit scalar theory-contract adapter rather than a claim that original HyRec stores those rates separately.",
     "A measured entropy/nullspace-preserving preconditioner and four-or-more-macro trajectories remain PR-05C2C1B2B gates; PR-06 remains the full FLRW history-parity gate.",
-    "The v0.64 artifact bytes remain durable, but its nine recorded canonical-macro endpoints imply nonpositive backward-Euler parents under the durable operator and recorded timesteps; those convergence rows are superseded and must not seed multi-macro continuation."
+    "The v0.64 artifact bytes remain durable, but its nine recorded canonical-macro endpoints imply nonpositive backward-Euler parents under the durable operator and recorded timesteps; those convergence rows are superseded and must not seed multi-macro continuation.",
+    "The reconstructed v0.70 generic pseudo-transient backward-error metric used an absolute unit floor and could falsely accept O(1e-18) occupation states. v0.71 supersedes that metric with state-relative scaling and requires the independent physical gross and photon-number gates; no canonical macro convergence is claimed."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -683,27 +706,27 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C2C1B2B0_MACRO_EVIDENCE_INTEGRITY_COMPLETE",
-    "name": "PR-05C2C1B2B1 accepted-state pseudo-transient/micro-macro continuation",
+    "entry_gate": "PR05C2C1B2B1B_PHYSICAL_ACCEPTANCE_GATE_COMPLETE",
+    "name": "PR-05C2C1B2B1C safeguarded matrix-free continuation on z~1100 Bianchi II",
     "tasks": [
-      "Define a source-conditioned accepted-state registry with immutable parent hashes and exact history provenance.",
-      "Globalize each canonical macro residual with pseudo-transient or adaptive microsteps without mutating accepted history.",
-      "Benchmark diagonal/AP, activity P/Q, atomic/native Schur, interface Schur, angular blocks and Krylov recycling on the reconstructed path.",
-      "Run four or more accepted canonical intervals in all nine lanes with positivity, conservation, event, rollback and restart gates."
+      "Implement log-coordinate Newton-Krylov pseudo-transient steps using the physical shifted LinearOperator.",
+      "Apply the existing diagonal/AP loss preconditioner and activity-nullspace RHS projection before more complex blocks.",
+      "Close one accepted z~1100 Bianchi-II physical macro with gross, number, positivity, energy, four-force and restart gates.",
+      "Generate residual-versus-pseudo-time, conservation-drift and Krylov-iteration evidence before any Rust backend or nine-lane expansion."
     ]
   },
   "overall_progress_percent": 97,
-  "project": "Full Bianchi\u2013HyRec scalar completion",
+  "project": "Full Bianchi–HyRec scalar completion",
   "remote_repository_status": {
-    "exact_remote_main_sha": "3d429b70715c3a16bd7d27f0d78accef2c249843",
-    "exact_remote_main_tree": "9ef976724fe20ae9e8bc855ccc76d74f1b09c598",
+    "exact_remote_main_sha": "5e5ea3a15a8611587b43e89bbb932b02d2e13c0d",
+    "exact_remote_main_tree": "1101b892b7df518113710c98ab1ad0e0746734bc",
     "latest_merged_pr": 25,
     "latest_merged_pr_head": "ddf077a93766080e8005ccc202cdc4008d896f16",
-    "policy": "Create a branch from fresh origin/main; apply receipt-listed v0.67-v0.69 commits or the self-contained v0.69 feature bundle; rerun all gates; never force-push.",
-    "remote_ci": "SUCCESS_RUN_84",
-    "remote_content_stage": "v0.66 PR05C2C1A direct compiler characteristic",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V069",
-    "tree_relation": "REMOTE_MERGE_TREE_NOT_EQUAL_TO_EXACT_LOCAL_AUTHOR_TREE"
+    "policy": "Create a branch from fresh remote main; apply only v0.69 audit commits plus v0.70/v0.71 feature commits listed in the delivery receipt; rerun gates; never force-push.",
+    "remote_ci": "NO_STATUS_OR_WORKFLOW_OBSERVED_FOR_CURRENT_DIRECT_MAIN_COMMIT",
+    "remote_content_stage": "v0.68 compatibility integration applied directly after merged v0.66",
+    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V071",
+    "tree_relation": "REMOTE_INTEGRATION_TREE_DIFFERS_FROM_EXACT_AUTHOR_LINEAGE"
   },
   "remote_sync": {
     "push_policy": "OWNER_FETCHES_V069_BUNDLE_CHERRY_PICKS_TO_FRESH_REMOTE_MAIN_NO_FORCE_PUSH",
@@ -727,7 +750,7 @@
     {
       "pr": 3,
       "status": "COMPLETE",
-      "title": "Full scalar COM\u2013KHW amplitude"
+      "title": "Full scalar COM–KHW amplitude"
     },
     {
       "pr": 4,
