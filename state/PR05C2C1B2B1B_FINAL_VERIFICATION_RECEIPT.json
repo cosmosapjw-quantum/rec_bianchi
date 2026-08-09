@@ -1,0 +1,79 @@
+{
+  "artifact": {
+    "path": "archive/bundles/Full_Bianchi_HyRec_PR05C2C1B2B1B_physical_acceptance_gate_v0_71.zip",
+    "sha256": "f1241432e0e5b1ef55c23bb95c0a248aa7c3d6ad923e0136d062691c7041d1bf",
+    "size_bytes": 142854
+  },
+  "branch": "work/pr05c2c1b2b1b-v071-physical-residual-audit",
+  "claim_boundary": {
+    "canonical_physical_macro_converged": false,
+    "false_zero_iteration_acceptance_path_removed": true,
+    "matrix_free_shifted_operator_available": true,
+    "multi_macro_complete": false,
+    "physical_residual_and_jvp_connected": true,
+    "preconditioner_selected": false,
+    "rust_backend_selected": false
+  },
+  "classification": "PR05C2C1B2B1B_V071_FINAL_VERIFICATION_RECEIPT",
+  "diagnostic_plot": {
+    "path": "archive/expanded/Full_Bianchi_HyRec_PR05C2C1B2B1B_physical_acceptance_gate_v0_71/PHYSICAL_ACCEPTANCE_DIAGNOSTIC.png",
+    "sha256": "3a90f19c427a5606b8f6884286165cadfafc4b7f4b2b75ecd0db7d219b3cbb21",
+    "size_bytes": 123842
+  },
+  "generated_utc": "2026-08-09T13:22:16.811874Z",
+  "metrics": {
+    "canonical_dt_s": 1708369384.3217053,
+    "canonical_to_gate_dt_ratio": 1326369285591446.8,
+    "corrected_state_relative_backward_error": 514.2814690317614,
+    "largest_parent_gate_dt_s": 1.2880043309808093e-06,
+    "legacy_unit_floor_backward_error": 3.8933191726359165e-15,
+    "photon_number_relative_residual": 1.0,
+    "physical_gross_backward_error": 1.0,
+    "rescaling_invariance_relative_residual": 1.1102230246251565e-16,
+    "shifted_matrix_free_jvp_relative_residual": 3.4909086631099003e-10
+  },
+  "next": "PR05C2C1B2B1C_MATRIX_FREE_SAFEGUARDED_CONTINUATION_Z1100_BIANCHI_II",
+  "payload_head": "ea32697a10b62c71845754ddaed8d1d146134383",
+  "payload_tree": "6cce5625a550532ceb530d5e0544078f457ce18f",
+  "remote": {
+    "latest_merged_pr": 25,
+    "main": "5e5ea3a15a8611587b43e89bbb932b02d2e13c0d",
+    "tree": "1101b892b7df518113710c98ab1ad0e0746734bc",
+    "v071_pushed": false,
+    "workflow_for_current_main": "NOT_OBSERVED"
+  },
+  "runtime_data": {
+    "path": "data/pr05c2c1b2b1b_physical_acceptance_gate_v071.npz",
+    "sha256": "e89e31caae40450694207e6a2485427b55cbea6f535d65e649387e6c75d4373b",
+    "size_bytes": 12726
+  },
+  "runtime_incidents": [
+    "A combined multi-command verification timed out during a repeated --all run; it was not used as PASS evidence.",
+    "A first aggregate scientific run timed out while regenerating invalidated slow receipts; all 16 slow-file receipts were then completed independently and the receipt-aware aggregate scientific verifier exited zero."
+  ],
+  "stage": "PR-05C2C1B2B1B/v0.71",
+  "status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN",
+  "tools": {
+    "coding_harness": "VALIDATED_AND_USED",
+    "precise_special_functions": "NOT_LOAD_BEARING_THIS_STAGE",
+    "research_harness": "VALIDATED_AND_USED",
+    "rust": "DEFERRED_BY_DAG_UNTIL_REFERENCE_PATH_CONVERGES",
+    "web_search": "USED_PRIMARY_SOURCES",
+    "wolfram": "NOT_AVAILABLE_IN_CURRENT_RUNTIME"
+  },
+  "verification": {
+    "all": "PASS_297_FAST_37_DESELECTED",
+    "binary_hash_policy": "PASS",
+    "commit_range_whitespace": "PASS",
+    "git_diff_check": "PASS_FEATURE_RANGE",
+    "git_fsck": "PASS_NO_DANGLING",
+    "offline_bootstrap": "PASS",
+    "package_imports": "PASS_54_MODULES",
+    "py_compile": "PASS_167_SRC_TEST_SCRIPT_FILES",
+    "quick": "PASS",
+    "scientific": "PASS_37_SLOW_PLUS_297_FAST_334_TOTAL_EXIT_0",
+    "secret_scan": "PASS_1628_FILES_NO_CREDENTIAL_FINDINGS",
+    "targeted": "PASS_17",
+    "tracked_manifest": "PASS_1628_ENTRIES_EXCLUDING_SELF_AUDITS"
+  }
+}
