@@ -7,11 +7,22 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B2A / v0.68**.
-- Canonical October-2012 two-photon/Raman integrated-bin ownership is source locked, with a separate positive paired physical action and analytic JVP.
-- The sealed v0.66 direct-node and accepted-history APIs remain available alongside the v0.67/v0.68 characteristic/source adapters.
-- Full withheld thermodynamic validation covers every pair and same-cell block.
-- Next: **PR-05C2C1B2B measured preconditioner and at least four canonical macro intervals in all nine locked lanes**, then PR-06 FLRW history parity.
+- Active development stage: **PR-05C2C1B2B1A / v0.70-P0 — accepted-state
+  pseudo-transient infrastructure**.
+- The durable scientific boundary remains the v0.69 macro-evidence bounded
+  no-go: the immutable v0.64 endpoints are not accepted trajectory evidence,
+  because each implies a nonpositive backward-Euler parent under the durable
+  operator and recorded timestep.
+- v0.70-P0 supplies content-addressed accepted parents, mixed log-positive and
+  signed solver coordinates, left-nullspace projection, dense pseudo-transient
+  continuation, deterministic restart, and one-shot transactional commit or
+  rollback.  It is a development reference, not a sealed physical completion.
+- The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
+  two-photon/Raman, and characteristic-source adapters remain available.
+- Cached v0.64 endpoints must not be chained or used as nonlinear predictors.
+- Next: connect one source-derived `z~1100` Bianchi-II accepted parent to the
+  durable physical residual and shifted JVP, then run the measured
+  preconditioner bake-off and nine-lane four-or-more-macro evidence.
 
 Start with:
 
