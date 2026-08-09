@@ -1,0 +1,51 @@
+{
+  "classification": "PR05C2C1B2B1B_V071_CURRENT_MAIN_INTEGRATION_RECEIPT",
+  "generated_utc": "2026-08-09T16:26:46Z",
+  "source_bundle": {
+    "path": "rec_bianchi_v071_from_v068_feature.bundle",
+    "sha256": "8ee7f90af837dffe1ce0f6726b0d58d211d23451d0118cd28b78706f73447b00",
+    "advertised_ref": "refs/heads/delivery/v071_from_v068",
+    "advertised_head": "817d4800add05f41fae0a9c713c64cf5786f1558"
+  },
+  "source_commits": [
+    "ea32697a10b62c71845754ddaed8d1d146134383",
+    "817d4800add05f41fae0a9c713c64cf5786f1558"
+  ],
+  "integration_base": {
+    "commit": "c21d6a21c3b5a03c7927339c818bc5324e5ce35c",
+    "tree": "f57c67ed1f37d52049c3c1683228c0af8c01e053",
+    "stage": "integrated v0.70 P0 with v0.66 compatibility overlay"
+  },
+  "applied_commits": {
+    "physical_acceptance_payload": "b009b2327c64cfb0bc792f9e9a7647318783e72a",
+    "source_receipt": "ee9b8db07d96d87f3f10c06e4d2a2fce3df42994"
+  },
+  "conflict_resolution": {
+    "README.md": "adopted v0.71 physical-acceptance status while preserving the v0.65--v0.68 adapter availability statement",
+    "docs/CURRENT_STATE.md": "adopted the v0.71 bounded physical-gate state while preserving the adapter compatibility statement",
+    "state/REMOTE_CHECK_LATEST.json": "records fetched origin/main c21d6a21 and completed GitHub Actions run 31313744451 instead of the source bundle's historical v0.68 remote snapshot",
+    "state/PATCH_BASE.json": "uses the actual integrated v0.70 base c21d6a21 so feature-range validation covers this branch"
+  },
+  "verification": {
+    "offline_bootstrap": "PASS",
+    "quick": "PASS",
+    "artifact_verifier": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN",
+    "targeted": "PASS_17",
+    "non_slow": "PASS_298_FAST_37_DESELECTED",
+    "py_compile": "PASS",
+    "git_diff_check": "PASS",
+    "git_fsck_full_no_dangling": "PASS",
+    "high_signal_secret_scan": "PASS_NO_MATCHES"
+  },
+  "claim_boundary": {
+    "physical_residual_and_jvp_connected": true,
+    "false_zero_iteration_acceptance_path_removed": true,
+    "canonical_physical_macro_converged": false,
+    "preconditioner_selected": false,
+    "multi_macro_complete": false
+  },
+  "source_author_receipts": {
+    "preserved": true,
+    "note": "The root LOCAL_GIT_RECEIPT and SECRET_SCAN retain source-author evidence; their historical author-tree remote and manifest counts are not reclassified as current-main evidence."
+  }
+}
