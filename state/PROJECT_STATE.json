@@ -591,18 +591,41 @@
     "status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN",
     "target_redshift": 1100
   },
+  "PR05C2C1B2B1D_evidence": {
+    "Bianchi_IX_D_event_required": true,
+    "R1_parent_provenance_firewall_complete": true,
+    "R2_orthogonal_Bianchi_II_provider_pilot_complete": true,
+    "R3_physical_source_derived_parent_complete": false,
+    "all_11_provider_support_claimed": false,
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2C1B2B1D_parent_provenance_background_provider_v0_72.zip",
+    "artifact_bundle_sha256": "75ec7253023c1a2edd4ff98ed329bba8944aaa22197647013ebc01220433d3fe",
+    "artifact_bundle_size_bytes": 97665,
+    "data_npz": "pr05c2c1b2b1d_parent_provider_v072.npz",
+    "data_sha256": "c15cb32f7ffac8d956362586e8705d47be53ea0e8ef73475407f982c33ef0b9e",
+    "exceptional_tilted_VI_minus_1_over_9_fail_closed": true,
+    "manufactured_parent_rejected": true,
+    "operator_verification_parent_rejected": true,
+    "parent_byte_round_trip_exact": true,
+    "provider_H_relative_error": 9.50376578767731e-07,
+    "provider_constraint_residual_absmax": 0.0,
+    "provider_state_absolute_error_max": 2.861095201867059e-07,
+    "provider_time_reconstruction_error": 6.266221763695512e-09,
+    "stale_history_rejected": true,
+    "status": "PASS_PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_R3_OPEN",
+    "uploaded_solver_archive_sha256": "6bb094d30a6d24b3feee11a1d9ae2827049945dae8281ed37d0d0796a6e9ea84"
+  },
   "classification": "DURABLE_PROJECT_STATE",
-  "completion_target": "B: verified scalar Full Bianchi–HyRec solver",
+  "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1B_physical_acceptance_gate_v0_71",
-    "name": "PR-05C2C1B2B1B physical acceptance gate and residual/JVP connection",
-    "status": "PASS_P0_FALSE_CONVERGENCE_GATE_FIXED_PHYSICAL_RESIDUAL_JVP_CONNECTED_MATRIX_FREE_CONTINUATION_OPEN"
+    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1D_parent_provenance_background_provider_v0_72",
+    "name": "PR-05C2C1B2B1D accepted-parent provenance firewall and orthogonal Bianchi-II background provider pilot",
+    "status": "PASS_PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_R3_OPEN"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
   "estimated_PR04_completion_percent": 100,
-  "estimated_PR05_completion_percent": 94,
+  "estimated_PR05_completion_percent": 95,
   "estimated_overall_completion_percent": 97,
   "estimated_scalar_theory_completion_percent": 99,
   "hard_scope": {
@@ -656,7 +679,8 @@
     "PR-05C2C1B2A closes the canonical integrated-bin table and real--virtual coefficient ownership. The angle-resolved positive paired source remains an explicit scalar theory-contract adapter rather than a claim that original HyRec stores those rates separately.",
     "A measured entropy/nullspace-preserving preconditioner and four-or-more-macro trajectories remain PR-05C2C1B2B gates; PR-06 remains the full FLRW history-parity gate.",
     "The v0.64 artifact bytes remain durable, but its nine recorded canonical-macro endpoints imply nonpositive backward-Euler parents under the durable operator and recorded timesteps; those convergence rows are superseded and must not seed multi-macro continuation.",
-    "The reconstructed v0.70 generic pseudo-transient backward-error metric used an absolute unit floor and could falsely accept O(1e-18) occupation states. v0.71 supersedes that metric with state-relative scaling and requires the independent physical gross and photon-number gates; no canonical macro convergence is claimed."
+    "The reconstructed v0.70 generic pseudo-transient backward-error metric used an absolute unit floor and could falsely accept O(1e-18) occupation states. v0.71 supersedes that metric with state-relative scaling and requires the independent physical gross and photon-number gates; no canonical macro convergence is claimed.",
+    "PR-05C2C1B2B1D/v0.72 accepts a SOURCE_DERIVED_ACCEPTED schema witness and rejects nonphysical fixtures, but it does not yet construct a physical accepted radiation parent. The dynamic background provider is validated only for the expanding orthogonal Bianchi-II pilot; all other family/tilt claims remain fail-closed or registry/smoke-only."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -706,26 +730,26 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C2C1B2B1B_PHYSICAL_ACCEPTANCE_GATE_COMPLETE",
-    "name": "PR-05C2C1B2B1C safeguarded matrix-free continuation on z~1100 Bianchi II",
+    "entry_gate": "PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_COMPLETE",
+    "name": "PR-05C2C1B2B1E source-derived accepted-parent reconstruction at z~1100 Bianchi II",
     "tasks": [
-      "Implement log-coordinate Newton-Krylov pseudo-transient steps using the physical shifted LinearOperator.",
-      "Apply the existing diagonal/AP loss preconditioner and activity-nullspace RHS projection before more complex blocks.",
-      "Close one accepted z~1100 Bianchi-II physical macro with gross, number, positivity, energy, four-force and restart gates.",
-      "Generate residual-versus-pseudo-time, conservation-drift and Krylov-iteration evidence before any Rust backend or nine-lane expansion."
+      "Construct the parent from the preceding accepted HyRec atomic/radiation history; do not reuse the operator-verification fixture or v0.64 endpoints.",
+      "Use the validated dynamic Bianchi-II provider over internal microsteps and preserve the canonical accepted-history macro grid.",
+      "Close photon number, exact face energy, source ownership, strict positivity, rollback/restart bytes and exactly-once history commit.",
+      "Only after one physical parent exists, characterize activity/slow modes and start the measured preconditioner bake-off."
     ]
   },
   "overall_progress_percent": 97,
-  "project": "Full Bianchi–HyRec scalar completion",
+  "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
     "exact_remote_main_sha": "5e5ea3a15a8611587b43e89bbb932b02d2e13c0d",
     "exact_remote_main_tree": "1101b892b7df518113710c98ab1ad0e0746734bc",
     "latest_merged_pr": 25,
     "latest_merged_pr_head": "ddf077a93766080e8005ccc202cdc4008d896f16",
-    "policy": "Create a branch from fresh remote main; apply only v0.69 audit commits plus v0.70/v0.71 feature commits listed in the delivery receipt; rerun gates; never force-push.",
+    "policy": "Create a fresh branch from remote main; apply only receipt-listed feature commits; rerun all gates; never force-push.",
     "remote_ci": "NO_STATUS_OR_WORKFLOW_OBSERVED_FOR_CURRENT_DIRECT_MAIN_COMMIT",
-    "remote_content_stage": "v0.68 compatibility integration applied directly after merged v0.66",
-    "runtime_verification": "MANAGED_GITHUB_CONNECTOR_VERIFIED_STAGE_START_V071",
+    "remote_content_stage": "v0.70-P0 accepted-state pseudo-transient infrastructure per public README; v0.71/v0.72 author stages not observed on remote main",
+    "repository_visibility": "PUBLIC",
     "tree_relation": "REMOTE_INTEGRATION_TREE_DIFFERS_FROM_EXACT_AUTHOR_LINEAGE"
   },
   "remote_sync": {
@@ -750,7 +774,7 @@
     {
       "pr": 3,
       "status": "COMPLETE",
-      "title": "Full scalar COM–KHW amplitude"
+      "title": "Full scalar COM\u2013KHW amplitude"
     },
     {
       "pr": 4,
@@ -759,7 +783,7 @@
     },
     {
       "pr": 5,
-      "status": "IN_PROGRESS_V069_MACRO_EVIDENCE_NO_GO_ACCEPTED_STATE_CONTINUATION_NEXT",
+      "status": "IN_PROGRESS_V072_PARENT_PROVENANCE_AND_BIANCHI_II_PROVIDER_PASS_R3_NEXT",
       "title": "Primitive HYREC operator and background interface"
     },
     {
@@ -798,5 +822,5 @@
       "title": "Performance, restart, and release integration"
     }
   ],
-  "state_date": "2026-08-09"
+  "state_date": "2026-08-10"
 }

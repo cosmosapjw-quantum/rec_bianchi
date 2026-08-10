@@ -7,17 +7,21 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B2B1B / v0.71**.
-- The v0.70 generic pseudo-transient backward-error unit floor is superseded:
-  it falsely accepted `O(1e-18)` occupations under harmless variable rescaling.
-- The z~1100 Bianchi-II physical residual, analytic JVP, problem-specific gross
-  and photon-number hard gates, and shifted matrix-free operator are connected.
-- The canonical parent is correctly rejected; no physical macro convergence is
-  claimed.
+- Durable stage: **PR-05C2C1B2B1D / v0.72**.
+- Production macro entry now requires a content-addressed
+  `AcceptedRadiationParent` with evidence class `SOURCE_DERIVED_ACCEPTED` and
+  exact history/atomic/background/network/interface provenance.  Manufactured
+  and operator-verification fixtures fail closed.
+- The uploaded `bianchireview87` source is byte-locked and drives a validated
+  **orthogonal Bianchi-II background-provider pilot**.  Its one-macro normalized
+  endpoint error against the locked v0.48 sequence is below `3e-7`.
+- This is not yet a physical accepted radiation parent and not all-11 provider
+  validation.  Bianchi IX requires a D-normalized H-zero event; tilted
+  exceptional `VI_-1/9` and all unvalidated families fail closed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
   two-photon/Raman, and characteristic-source adapters remain available.
-- Next: **one safeguarded matrix-free z~1100 Bianchi-II macro**, then measured
-  preconditioner selection and only afterwards the 9x4 lane expansion.
+- Next: reconstruct one source-derived accepted parent at `z~1100`, Bianchi II;
+  only then characterize slow modes and compare preconditioners.
 
 Start with:
 
@@ -26,7 +30,7 @@ Start with:
 python scripts/check_remote_state.py
 python scripts/check_hyrec_binary_hash_policy.py
 python scripts/check_commit_range_whitespace.py
-PYTHONPATH=src python scripts/check_imports.py
+if test -f scripts/check_imports.py; then PYTHONPATH=src python scripts/check_imports.py; fi
 python scripts/verify_repo.py --quick
 pytest -q -m "not slow"
 ```
@@ -34,7 +38,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C2C1B2_PRECONDITIONER_MULTI_MACRO_PLAN.md`](docs/PR05C2C1B2_PRECONDITIONER_MULTI_MACRO_PLAN.md).
+[`docs/PR05C2C1B2B1E_SOURCE_DERIVED_PARENT_PLAN.md`](docs/PR05C2C1B2B1E_SOURCE_DERIVED_PARENT_PLAN.md).
 
 ## Canonical source
 
@@ -55,15 +59,17 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-GitHub `main` contains merged PR #25 at `3d429b70715c3a16bd7d27f0d78accef2c249843`, tree
-`9ef976724fe20ae9e8bc855ccc76d74f1b09c598`; PR-head CI run 84 completed successfully.
-
-The preferred v0.68 delivery is based on the exact author-v0.66 endpoint and includes an integration compatibility commit. Create a branch from fresh `origin/main`, cherry-pick only the receipt-listed v0.68-from-v0.66 commits, rerun all gates, and never rewrite shared history. The older cumulative v0.65 route is retained only for disaster recovery and must not be replayed onto remote main.
+The public GitHub page currently advertises v0.70-P0 on `main`; the last
+connector-locked main receipt is `5e5ea3a15a8611587b43e89bbb932b02d2e13c0d`,
+tree `1101b892b7df518113710c98ab1ad0e0746734bc`.  Author v0.71/v0.72 history is
+not assumed to be present remotely.  Create a branch from fresh `origin/main`,
+apply only the ordered feature commits in the delivery receipt, rerun all gates,
+and never rewrite shared history.
 
 ## Test tiers
 
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.68 regeneration: `python scripts/run_pr05c2c1b2a_two_photon_raman_stage.py`.
+- v0.72 regeneration: `python scripts/run_pr05c2c1b2b1d_parent_provider_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
