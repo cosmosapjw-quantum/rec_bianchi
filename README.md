@@ -59,12 +59,12 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-The public GitHub page currently advertises v0.70-P0 on `main`; the last
-connector-locked main receipt is `5e5ea3a15a8611587b43e89bbb932b02d2e13c0d`,
-tree `1101b892b7df518113710c98ab1ad0e0746734bc`.  Author v0.71/v0.72 history is
-not assumed to be present remotely.  Create a branch from fresh `origin/main`,
-apply only the ordered feature commits in the delivery receipt, rerun all gates,
-and never rewrite shared history.
+The fetched `origin/main` is the v0.71 compatibility-preserving integration at
+`84ea39bf6e56ac5a6290482b614318413577ba1a`, tree
+`582fd32ce19179cac96ccdb4e01d3b17136cc9df`.  The v0.72 delivery is not yet
+assumed pushed.  Create a branch from fresh `origin/main`, apply only the v0.72
+feature commits after comparing receipt provenance, rerun all gates, and never
+rewrite shared history.
 
 ## Test tiers
 

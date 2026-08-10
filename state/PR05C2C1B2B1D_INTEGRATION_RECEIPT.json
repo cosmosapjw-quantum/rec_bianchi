@@ -1,0 +1,68 @@
+{
+  "classification": "PR05C2C1B2B1D_V072_CURRENT_MAIN_INTEGRATION_RECEIPT",
+  "generated_utc": "2026-08-10T05:24:04Z",
+  "source_handoff_package": {
+    "path": "rec_bianchi_handoff_package_v072_2026-08-10.zip",
+    "sha256": "60b9ea13f0ebebc4fde6fe9b58786d791507b9752de7b70921c856f20fecf454",
+    "inner_incremental_bundle_sha256": "9863262b27e5d0e7bb3d3cec7ab12a5fce58a82e9df0a7f9249d38e9aebb99c0"
+  },
+  "source_feature_bundle": {
+    "path": "rec_bianchi_v072_feature.bundle",
+    "sha256": "a61b6bde243225ff791371ab8195a94fedad3fbf7e1d2277b7b58d7d425ce065",
+    "advertised_ref": "refs/heads/delivery/v072",
+    "advertised_head": "c9b081bf165e4f6d3b95f78d6a92f2a74584e18e",
+    "advertised_tree": "427731b50d936f7bd210cabb0387282e944d6542"
+  },
+  "source_commits": [
+    "5bafc837c375ae14966db38cf3a4c7bfc75c8aa6",
+    "a6dbb67cc38ac54551f8987d59d3dd66f03767d3",
+    "c9b081bf165e4f6d3b95f78d6a92f2a74584e18e"
+  ],
+  "integration_base": {
+    "commit": "84ea39bf6e56ac5a6290482b614318413577ba1a",
+    "tree": "582fd32ce19179cac96ccdb4e01d3b17136cc9df",
+    "stage": "integrated v0.71 physical acceptance gate with v0.66 compatibility overlay"
+  },
+  "applied_commits": {
+    "parent_provider_payload": "9e8806f30a212284f7497fe34934cd66b35187d9",
+    "handoff_state": "8b9cf7ff25eb97b2483f02d8f166587b2766d9e4",
+    "source_receipt": "95a2fdcde116857258e36c0229a76b004dd66a0c"
+  },
+  "conflict_resolution": {
+    "README.md": "adopted v0.72 accepted-parent/provider state, preserved v0.65--v0.68 adapter availability, and records the actually fetched v0.71 origin/main",
+    "docs/CURRENT_STATE.md": "adopted the v0.72 bounded state and preserved the adapter compatibility statement",
+    "state/PATCH_BASE.json": "uses the actual v0.71 integration base so committed-range verification covers this branch",
+    "state/REMOTE_CHECK_LATEST.json": "records fetched origin/main 84ea39bf instead of the source author's historical v0.70 remote snapshot",
+    "state/TRACKED_FILES_SHA256.txt": "regenerated from the current integration tree; the source-author manifest remains byte-preserved in the v0.72 stage artifact"
+  },
+  "verification": {
+    "bundle_verify": "PASS_COMPLETE_HISTORY",
+    "handoff_inner_bundle_digest": "PASS",
+    "offline_bootstrap": "PASS",
+    "binary_hash_policy": "PASS",
+    "commit_range_whitespace": "PASS",
+    "quick": "PASS",
+    "artifact_verifier": "PASS_PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_R3_OPEN",
+    "targeted": "PASS_12",
+    "all": "PASS_310_FAST_37_DESELECTED",
+    "scientific": "PASS_EXIT_0_37_SLOW_PLUS_FAST",
+    "py_compile_and_package_imports": "PASS",
+    "git_diff_check": "PASS",
+    "git_fsck_full_no_dangling": "PASS",
+    "high_signal_secret_scan": "PASS_NO_MATCHES"
+  },
+  "claim_boundary": {
+    "parent_provenance_firewall_complete": true,
+    "orthogonal_bianchi_ii_provider_pilot_complete": true,
+    "physical_source_derived_parent_complete": false,
+    "physical_macro_converged": false,
+    "all_11_provider_complete": false,
+    "finite_tilt_provider_complete": false,
+    "preconditioner_selected": false,
+    "rust_backend_selected": false
+  },
+  "source_author_receipts": {
+    "preserved": true,
+    "note": "Root LOCAL_GIT_RECEIPT and SECRET_SCAN retain author-tree evidence. Their historical remote and manifest counts are not relabeled as current-main evidence."
+  }
+}
