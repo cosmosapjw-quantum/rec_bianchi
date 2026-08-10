@@ -1,0 +1,79 @@
+{
+  "classification": "PR05C2C1B2B1E0_V073_CURRENT_MAIN_INTEGRATION_RECEIPT",
+  "generated_utc": "2026-08-10T11:36:12Z",
+  "stage": "PR-05C2C1B2B1E0/v0.73",
+  "source_bundle": {
+    "path": "rec_bianchi_v073_incremental.bundle",
+    "sha256": "d63b666a47220f7cca76075a976cc6f4468f439d9ad0e43ae4f29073d4a0f256",
+    "verified": true,
+    "source_ref": "refs/heads/delivery/v073-incremental",
+    "source_head": "f1f9bf088af63f3298ece20cc0c87737faa61fd2",
+    "source_tree": "9a547d943528530b9843cc74c0bdf8059a93c04e",
+    "thin_prerequisite": "c62f54f09fdfd64f6bbc7310acb6b317e99bedf0"
+  },
+  "source_incremental_base": {
+    "head": "c9b081bf165e4f6d3b95f78d6a92f2a74584e18e",
+    "tree": "427731b50d936f7bd210cabb0387282e944d6542",
+    "stage": "exact author v0.72 endpoint"
+  },
+  "current_main_integration_base": {
+    "head": "822b889067de9ab6974b48107d081ad1dff514e0",
+    "tree": "fa65e081fbab3c0c963b97b510cac167afa66941",
+    "stage": "current-main v0.72 integration"
+  },
+  "source_feature_commits": [
+    {
+      "sha": "f700b8aa941d0ef5d68f813d87f8198189a1e442",
+      "subject": "feat(trajectory): construct source-derived bootstrap parent",
+      "local_applied_sha": "5a2e0b8cebf2158128cd1ef52d7749245ca96129"
+    },
+    {
+      "sha": "e583bf28a93be0e40e45c0591ceb8881e4c78384",
+      "subject": "docs(recovery): record v0.73 parent and hand off single macro",
+      "local_applied_sha": "6e2b3161d7873cc344d2d8b4f62db23dbb06265f"
+    },
+    {
+      "sha": "f1f9bf088af63f3298ece20cc0c87737faa61fd2",
+      "subject": "chore(recovery): seal v0.73 verification receipts",
+      "local_applied_sha": "c6f9908bd352b13afa2f7207c2ef5dd39f9b35e2"
+    }
+  ],
+  "integration_resolution": {
+    "docs_current_state": "source v0.73 state retained with the pre-existing v0.65-v0.68 compatibility adapters stated explicitly",
+    "patch_base": "rewritten for the actual current-main v0.72 base; source-author ancestry retained separately",
+    "remote_check": "rewritten from the actual pre-merge origin/main fetch",
+    "tracked_manifest": "regenerated after current-main conflict resolution and again after this receipt",
+    "source_author_receipts": "preserved as source evidence; not relabelled as current-main verification"
+  },
+  "verification": {
+    "offline_bootstrap": "PASS",
+    "hyrec_binary_hash_policy": "PASS",
+    "commit_range_whitespace_policy": "PASS",
+    "quick": "PASS",
+    "artifact_verifier": "PASS",
+    "targeted_tests": "PASS_6",
+    "repository_all": "PASS_316_FAST_37_DESELECTED_EXIT_0",
+    "scientific": "PASS_16_SLOW_FILES_37_SLOW_TESTS_PLUS_316_FAST_353_TOTAL_EXIT_0",
+    "py_compile": "PASS",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS",
+    "tracked_manifest": "PASS_PRE_INTEGRATION_RECEIPT_REFRESH"
+  },
+  "review": {
+    "code": "PASS: accepted-history index, source snapshot, Bianchi-II provider, atomic state, interface and branch hashes are bound before production entry",
+    "artifact_plot": "DIAGNOSTIC: source-derived parent occupation/activity; it visibly reports macro acceptance about 1 and is not used as macro-convergence evidence",
+    "p2_open": "The stage generator uses an unescaped LaTex \\nu in formalism_text, rendering the documentation equation as a line break on regeneration. This does not alter the numerical parent or sealed source artifact; correct it only in a future regenerated-artifact change."
+  },
+  "claim_boundary": {
+    "point_characteristic_scalar_history_complete": true,
+    "positive_isotropic_bootstrap_parent_complete": true,
+    "production_parent_provenance_validation_complete": true,
+    "coupled_single_macro_complete": false,
+    "history_append_performed": false,
+    "multi_macro_complete": false,
+    "native_to_COM_conservative_remap_claimed": false,
+    "original_hyrec_angular_reconstruction_claimed": false,
+    "preconditioner_selected": false
+  },
+  "remote_write_claimed": false
+}

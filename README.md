@@ -16,13 +16,15 @@ angle/frequency-resolved Ly-alpha transfer.
 - The uploaded `bianchireview87` source is byte-locked and drives a validated
   **orthogonal Bianchi-II background-provider pilot**.  Its one-macro normalized
   endpoint error against the locked v0.48 sequence is below `3e-7`.
-- This is not yet a physical accepted radiation parent and not all-11 provider
-  validation.  Bianchi IX requires a D-normalized H-zero event; tilted
+- This is not yet an accepted coupled Bianchi--HyRec macro endpoint or all-11
+  provider validation. Bianchi IX requires a D-normalized H-zero event; tilted
   exceptional `VI_-1/9` and all unvalidated families fail closed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
   two-photon/Raman, and characteristic-source adapters remain available.
-- Next: reconstruct one source-derived accepted parent at `z~1100`, Bianchi II;
-  only then characterize slow modes and compare preconditioners.
+- Next: advance exactly one dynamic coupled macro from the source-derived
+  `z~1100` Bianchi-II parent. Internal iterations must not append accepted
+  history; preconditioner comparison is permitted only on that same
+  parent/residual path.
 
 Start with:
 
@@ -60,12 +62,12 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-The fetched `origin/main` is the v0.71 compatibility-preserving integration at
-`84ea39bf6e56ac5a6290482b614318413577ba1a`, tree
-`582fd32ce19179cac96ccdb4e01d3b17136cc9df`.  The v0.72 delivery is not yet
-assumed pushed.  Create a branch from fresh `origin/main`, apply only the v0.72
-feature commits after comparing receipt provenance, rerun all gates, and never
-rewrite shared history.
+The fetched `origin/main` is the v0.72 current-main integration at
+`822b889067de9ab6974b48107d081ad1dff514e0`, tree
+`fa65e081fbab3c0c963b97b510cac167afa66941`. The v0.73 incremental delivery
+is integrated locally but is not pushed. For remote application, create a
+branch from fresh `origin/main`, compare receipt provenance, apply only the
+three v0.73 source commits, rerun all gates, and never rewrite shared history.
 
 ## Test tiers
 
