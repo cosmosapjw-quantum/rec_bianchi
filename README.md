@@ -7,7 +7,8 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B2B1D / v0.72**.
+- Durable stage: **PR-05C2C1B2B1E0 / v0.73**.
+- v0.73 constructs a positive provenance-locked bootstrap parent from the accepted scalar original-HyRec history; it is not a coupled macro endpoint and does not append history.
 - Production macro entry now requires a content-addressed
   `AcceptedRadiationParent` with evidence class `SOURCE_DERIVED_ACCEPTED` and
   exact history/atomic/background/network/interface provenance.  Manufactured
@@ -71,5 +72,5 @@ rewrite shared history.
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.72 regeneration: `python scripts/run_pr05c2c1b2b1d_parent_provider_stage.py`.
+- v0.73 regeneration: `python scripts/run_pr05c2c1b2b1e0_source_parent_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.

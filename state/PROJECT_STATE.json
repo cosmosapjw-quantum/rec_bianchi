@@ -614,19 +614,45 @@
     "status": "PASS_PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_R3_OPEN",
     "uploaded_solver_archive_sha256": "6bb094d30a6d24b3feee11a1d9ae2827049945dae8281ed37d0d0796a6e9ea84"
   },
+  "PR05C2C1B2B1E0_evidence": {
+    "accepted_history_count": 5128,
+    "accepted_history_index": 5127,
+    "accepted_history_sha256": "bbe354a7b2687a3d74ce2215a85df8821c651e8d4d01cd7acc458d6e22c2d8da",
+    "artifact_bundle": "Full_Bianchi_HyRec_PR05C2C1B2B1E0_source_derived_bootstrap_parent_v0_73.zip",
+    "artifact_bundle_sha256": "8a6f321f12c347280a6edf7a7f120f6f37352734cc2f5420319bdcb40128fe96",
+    "artifact_bundle_size_bytes": 116196,
+    "atomic_state_sha256": "306bac90a62f6c2be595fa3ac659f2a5905814a0d178c9a28e1606c3b7f9cd0a",
+    "background_sequence_sha256": "97e04212baf42bf68119c00d23c6d4b8ceb5170bdab6162383156cc12ad72bbc",
+    "coupled_macro_endpoint": false,
+    "data_npz": "pr05c2c1b2b1e0_source_derived_parent_v073.npz",
+    "data_sha256": "c74a2a0e69d6d34c338d19af2f123d1eb32130ac103a68e4494a2c9542eaa958",
+    "history_commit_performed": false,
+    "initial_physical_acceptance_metric": 1.0000000031132865,
+    "interface_sha256": "6bf621f5034f0bd3543ec05f61ece1593382c37e2a62e4f0e686335735e56b1b",
+    "isotropy_residual": 0.0,
+    "maximum_occupation": 7.816219649420642e-15,
+    "median_activity": 995.7639600690276,
+    "median_parent_to_q1_ratio": 995.7639600690353,
+    "minimum_occupation": 7.279205913286067e-15,
+    "network_sha256": "e6a28194d183658a87f0974afe3f46323106382970a85338f9ce94c20c7b5736",
+    "parent_sha256": "ec6f1a7d43807102b957befe0ef491a08e515c103124bbdcb616df08f19e3d3f",
+    "point_characteristic_count": 35,
+    "production_parent_validation_passed": true,
+    "status": "PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN"
+  },
   "classification": "DURABLE_PROJECT_STATE",
   "completion_target": "B: verified scalar Full Bianchi\u2013HyRec solver",
   "current_durable_stage": {
-    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1D_parent_provenance_background_provider_v0_72",
-    "name": "PR-05C2C1B2B1D accepted-parent provenance firewall and orthogonal Bianchi-II background provider pilot",
-    "status": "PASS_PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_R3_OPEN"
+    "artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1E0_source_derived_bootstrap_parent_v0_73",
+    "name": "PR-05C2C1B2B1E0 source-derived scalar-history bootstrap parent",
+    "status": "PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN"
   },
   "estimated_PR01_completion_percent": 100,
   "estimated_PR02_completion_percent": 100,
   "estimated_PR03_completion_percent": 100,
   "estimated_PR04_completion_percent": 100,
-  "estimated_PR05_completion_percent": 95,
-  "estimated_overall_completion_percent": 97,
+  "estimated_PR05_completion_percent": 96,
+  "estimated_overall_completion_percent": 98,
   "estimated_scalar_theory_completion_percent": 99,
   "hard_scope": {
     "excluded_from_12_PR_scalar_release": [
@@ -680,7 +706,8 @@
     "A measured entropy/nullspace-preserving preconditioner and four-or-more-macro trajectories remain PR-05C2C1B2B gates; PR-06 remains the full FLRW history-parity gate.",
     "The v0.64 artifact bytes remain durable, but its nine recorded canonical-macro endpoints imply nonpositive backward-Euler parents under the durable operator and recorded timesteps; those convergence rows are superseded and must not seed multi-macro continuation.",
     "The reconstructed v0.70 generic pseudo-transient backward-error metric used an absolute unit floor and could falsely accept O(1e-18) occupation states. v0.71 supersedes that metric with state-relative scaling and requires the independent physical gross and photon-number gates; no canonical macro convergence is claimed.",
-    "PR-05C2C1B2B1D/v0.72 accepts a SOURCE_DERIVED_ACCEPTED schema witness and rejects nonphysical fixtures, but it does not yet construct a physical accepted radiation parent. The dynamic background provider is validated only for the expanding orthogonal Bianchi-II pilot; all other family/tilt claims remain fail-closed or registry/smoke-only."
+    "PR-05C2C1B2B1D/v0.72 accepts a SOURCE_DERIVED_ACCEPTED schema witness and rejects nonphysical fixtures, but it does not yet construct a physical accepted radiation parent. The dynamic background provider is validated only for the expanding orthogonal Bianchi-II pilot; all other family/tilt claims remain fail-closed or registry/smoke-only.",
+    "PR-05C2C1B2B1E0/v0.73 constructs a positive provenance-locked bootstrap parent from the accepted scalar original-HyRec history using point-characteristic evaluation and an explicit isotropic hydrogen-frame initial-data axiom. It is not a coupled macro endpoint and performs no history append; its initial canonical-macro acceptance metric remains O(1)."
   ],
   "locked_architecture": {
     "angular_policies": {
@@ -730,16 +757,16 @@
     "production_atomic_amplitude": "v0.50 scalar elastic 1s-to-1s bound-plus-continuum COM-KHW with seagull, two time orderings and scalar interference"
   },
   "next_stage": {
-    "entry_gate": "PR05C2C1B2B1D_PARENT_PROVENANCE_FIREWALL_BIANCHI_II_PROVIDER_PILOT_COMPLETE",
-    "name": "PR-05C2C1B2B1E source-derived accepted-parent reconstruction at z~1100 Bianchi II",
+    "entry_gate": "PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COMPLETE",
+    "name": "PR-05C2C1B2B1E1 single dynamic coupled macro from the v0.73 parent",
     "tasks": [
-      "Construct the parent from the preceding accepted HyRec atomic/radiation history; do not reuse the operator-verification fixture or v0.64 endpoints.",
-      "Use the validated dynamic Bianchi-II provider over internal microsteps and preserve the canonical accepted-history macro grid.",
-      "Close photon number, exact face energy, source ownership, strict positivity, rollback/restart bytes and exactly-once history commit.",
-      "Only after one physical parent exists, characterize activity/slow modes and start the measured preconditioner bake-off."
+      "Load and validate the v0.73 parent and all provenance hashes.",
+      "Use the dynamic Bianchi-II provider at every internal evaluation and couple one-/two-photon/Raman sources, native characteristics, COM collision and interface ledgers.",
+      "Use safeguarded continuation without mutating accepted history during internal iterations; localize every branch/face/topology event.",
+      "Commit exactly one history slice only after positivity, number, exact face energy, four-force, JVP and restart gates pass."
     ]
   },
-  "overall_progress_percent": 97,
+  "overall_progress_percent": 98,
   "project": "Full Bianchi\u2013HyRec scalar completion",
   "remote_repository_status": {
     "exact_remote_main_sha": "84ea39bf6e56ac5a6290482b614318413577ba1a",
