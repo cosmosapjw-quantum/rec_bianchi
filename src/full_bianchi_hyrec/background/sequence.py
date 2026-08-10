@@ -9,11 +9,12 @@ local microphysics.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import hashlib
 import math
 from pathlib import Path
-from typing import Sequence
+from types import MappingProxyType
+from typing import Mapping, Sequence
 
 import numpy as np
 
@@ -91,6 +92,9 @@ class BackgroundSnapshotSequence:
     D0_beta_H_s_inv: np.ndarray
     source_path: str
     source_sha256: str
+    provenance: Mapping[str, str] = field(default_factory=dict)
+    constraint_residual_series: Mapping[str, np.ndarray] = field(default_factory=dict)
+    provider_branch_flags: Mapping[str, bool] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         tau = np.asarray(self.tau, dtype=float)
@@ -116,8 +120,25 @@ class BackgroundSnapshotSequence:
             object.__setattr__(self, name, _readonly(array))
         if np.any(self.H_s_inv <= 0.0):
             raise ValueError("all H values must be positive")
-        if self.model_name not in _MODEL_META:
-            raise ValueError("unsupported locked background model")
+        for name in ("model_name", "chart_id", "bianchi_type", "source_path", "source_sha256"):
+            if not str(getattr(self, name)):
+                raise ValueError(f"{name} must be nonempty")
+        provenance = {str(key): str(value) for key, value in self.provenance.items()}
+        if any(not key or not value for key, value in provenance.items()):
+            raise ValueError("provenance keys and values must be nonempty")
+        object.__setattr__(self, "provenance", MappingProxyType(provenance))
+        residuals: dict[str, np.ndarray] = {}
+        for key, value in self.constraint_residual_series.items():
+            name = str(key)
+            array = np.asarray(value, dtype=float)
+            if not name or array.shape != (n,) or not np.all(np.isfinite(array)):
+                raise ValueError("constraint residual series must be finite length-n arrays")
+            residuals[name] = _readonly(array)
+        object.__setattr__(self, "constraint_residual_series", MappingProxyType(residuals))
+        flags = {str(key): bool(value) for key, value in self.provider_branch_flags.items()}
+        if any(not key for key in flags):
+            raise ValueError("provider branch flag names must be nonempty")
+        object.__setattr__(self, "provider_branch_flags", MappingProxyType(flags))
 
     @classmethod
     def from_npz(cls, path: str | Path, model_name: str) -> "BackgroundSnapshotSequence":
@@ -180,6 +201,14 @@ class BackgroundSnapshotSequence:
             return np.array(array[left], copy=True)
         return (1.0 - fraction) * array[left] + fraction * array[right]
 
+    def _interpolate_constraint(
+        self, name: str, left: int, right: int, fraction: float
+    ) -> float:
+        array = np.asarray(self.constraint_residual_series[name], dtype=float)
+        if left == right:
+            return float(array[left])
+        return float((1.0 - fraction) * array[left] + fraction * array[right])
+
     def snapshot_at_tau(
         self, tau: float, *, H_s_inv_override: float | None = None
     ) -> BackgroundSnapshot:
@@ -189,9 +218,15 @@ class BackgroundSnapshotSequence:
         if not math.isfinite(target_H) or target_H <= 0.0:
             raise ValueError("H_s_inv_override must be positive and finite")
         scale = target_H / source_H
-        flags = {"interpolated": left != right}
+        flags = dict(self.provider_branch_flags)
+        flags["interpolated"] = left != right
         if H_s_inv_override is not None:
             flags["local_hubble_rescaled"] = True
+        residuals = {
+            name: float(self._interpolate_constraint(name, left, right, fraction))
+            for name in self.constraint_residual_series
+        }
+        residuals["source_fraction"] = fraction
         snapshot = BackgroundSnapshot(
             tau=float(tau),
             cosmic_time_s=float(self._interpolate("cosmic_time_s", left, right, fraction)) / scale,
@@ -210,7 +245,8 @@ class BackgroundSnapshotSequence:
             chart_id=self.chart_id,
             bianchi_type=self.bianchi_type,
             branch_flags=flags,
-            constraint_residuals={"source_fraction": fraction},
+            constraint_residuals=residuals,
+            provenance=self.provenance,
         )
         return snapshot
 

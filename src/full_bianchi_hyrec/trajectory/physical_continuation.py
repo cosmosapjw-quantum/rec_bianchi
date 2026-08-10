@@ -211,3 +211,35 @@ __all__ = [
     "CoupledPhysicalContinuationAdapter",
     "PhysicalContinuationAssessment",
 ]
+
+
+def build_production_continuation_adapter(
+    *,
+    problem: CoupledCollisionTransportProblem,
+    parent,
+    requirements,
+) -> CoupledPhysicalContinuationAdapter:
+    """Fail-closed production entry from a provenance-locked accepted parent.
+
+    The low-level :class:`CoupledPhysicalContinuationAdapter` constructor is
+    retained for bounded operator audits.  Production code must enter through
+    this factory so manufactured and operator-verification fixtures cannot be
+    mistaken for accepted trajectory states.
+    """
+
+    from full_bianchi_hyrec.trajectory.accepted_parent import (
+        AcceptedRadiationParent,
+        ProductionParentRequirements,
+    )
+
+    if not isinstance(parent, AcceptedRadiationParent):
+        raise TypeError("parent must be an AcceptedRadiationParent")
+    if not isinstance(requirements, ProductionParentRequirements):
+        raise TypeError("requirements must be ProductionParentRequirements")
+    parent.validate_for_production(requirements)
+    if parent.occupation.shape != problem.shape:
+        raise ValueError("accepted parent occupation shape does not match problem")
+    return CoupledPhysicalContinuationAdapter(problem, parent.occupation)
+
+
+__all__.append("build_production_continuation_adapter")

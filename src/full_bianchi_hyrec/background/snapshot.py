@@ -39,6 +39,7 @@ class BackgroundSnapshot:
     normalization: str = "physical"
     branch_flags: Mapping[str, bool] = field(default_factory=dict)
     constraint_residuals: Mapping[str, float] = field(default_factory=dict)
+    provenance: Mapping[str, str] = field(default_factory=dict)
 
     def __post_init__(self):
         for scalar_name in ("tau", "cosmic_time_s", "H_s_inv", "q"):
@@ -101,6 +102,10 @@ class BackgroundSnapshot:
                 {str(k): float(v) for k, v in self.constraint_residuals.items()}
             ),
         )
+        provenance = {str(k): str(v) for k, v in self.provenance.items()}
+        if any(not key or not value for key, value in provenance.items()):
+            raise ValueError("provenance keys and values must be nonempty")
+        object.__setattr__(self, "provenance", MappingProxyType(provenance))
 
     def replace(self, **changes) -> "BackgroundSnapshot":
         return dataclass_replace(self, **changes)

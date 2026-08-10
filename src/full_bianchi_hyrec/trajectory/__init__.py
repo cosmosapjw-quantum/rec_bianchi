@@ -158,6 +158,7 @@ from .macro_evidence_integrity import (
 from .physical_continuation import (
     CoupledPhysicalContinuationAdapter,
     PhysicalContinuationAssessment,
+    build_production_continuation_adapter,
 )
 
 __all__ = [
@@ -174,6 +175,7 @@ __all__ = [
     "audit_backward_euler_parent",
     "CoupledPhysicalContinuationAdapter",
     "PhysicalContinuationAssessment",
+    "build_production_continuation_adapter",
     "IsotropicEinsteinLineSource",
     "OriginalHyRecVirtualSpikeSource",
     "BianchiCharacteristicFaceSolver",
@@ -261,4 +263,16 @@ __all__ = [
     "audit_canonical_native_radiation_time_measure",
     "default_pr05b1_replacement_registry",
     "source_identifiable_original_hyrec_layout",
+]
+
+from .accepted_parent import (
+    AcceptedRadiationParent,
+    ParentEvidenceClass,
+    ProductionParentRequirements,
+)
+
+__all__ = globals().get("__all__", []) + [
+    "AcceptedRadiationParent",
+    "ParentEvidenceClass",
+    "ProductionParentRequirements",
 ]
