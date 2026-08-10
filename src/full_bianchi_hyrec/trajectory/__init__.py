@@ -276,3 +276,23 @@ __all__ = globals().get("__all__", []) + [
     "ParentEvidenceClass",
     "ProductionParentRequirements",
 ]
+
+from .source_derived_parent import (
+    OriginalHyRecPointCharacteristicEvaluator,
+    PointCharacteristicSample,
+    SourceDerivedBootstrapParentResult,
+    build_source_derived_bootstrap_parent,
+    hash_atomic_state,
+    hash_background_sequence,
+)
+
+__all__.extend(
+    [
+        "OriginalHyRecPointCharacteristicEvaluator",
+        "PointCharacteristicSample",
+        "SourceDerivedBootstrapParentResult",
+        "build_source_derived_bootstrap_parent",
+        "hash_atomic_state",
+        "hash_background_sequence",
+    ]
+)
