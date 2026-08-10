@@ -1,0 +1,155 @@
+PR-05C2C1B2B1E0/v0.73 final pre-seal verification
+Generated UTC: 2026-08-10T06:49:07.680210+00:00
+Pre-seal HEAD: e583bf28a93be0e40e45c0591ceb8881e4c78384
+Pre-seal tree: a5bc12a93a2bf113f18fc47ae368204b708c3fa8
+
+STATUS: PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN
+CLAIM: positive deterministic source-derived bootstrap initial parent; coupled single macro OPEN.
+
+=== quick ===
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v072_repo/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "817d4800add05f41fae0a9c713c64cf5786f1558",
+  "head": "e583bf28a93be0e40e45c0591ceb8881e4c78384",
+  "repository": "/mnt/data/rec_bianchi_v072_repo",
+  "status": "PASS"
+}
+PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN
+{"status": "PASS", "bundle_count": 71, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1E0_source_derived_bootstrap_parent_v0_73", "mode": "quick", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+	Command being timed: "timeout 150 python scripts/verify_repo.py --quick"
+	User time (seconds): 11.00
+	System time (seconds): 0.35
+	Percent of CPU this job got: 116%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 118980
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 113615
+	Voluntary context switches: 72
+	Involuntary context switches: 160
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+=== targeted ===
+...............                                                          [100%]
+15 passed in 3.08s
+	Command being timed: "timeout 180 python -m pytest -q tests/trajectory/test_source_derived_parent.py tests/trajectory/test_pr05c2c1b2b1e0_artifact.py tests/trajectory/test_accepted_parent_provenance.py tests/background/test_bianchi_review_provider.py"
+	User time (seconds): 4.20
+	System time (seconds): 0.95
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.15
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 249632
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 178610
+	Voluntary context switches: 7
+	Involuntary context switches: 39
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+=== repository all ===
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v072_repo/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "817d4800add05f41fae0a9c713c64cf5786f1558",
+  "head": "e583bf28a93be0e40e45c0591ceb8881e4c78384",
+  "repository": "/mnt/data/rec_bianchi_v072_repo",
+  "status": "PASS"
+}
+PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 91%]
+...........................                                              [100%]
+315 passed, 37 deselected in 46.73s
+{"status": "PASS", "bundle_count": 71, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1E0_source_derived_bootstrap_parent_v0_73", "mode": "all", "scientific_slow_file_count": 0, "scientific_slow_test_count": 0}
+
+=== scientific ===
+HyRec binary-hash policy PASS (/mnt/data/rec_bianchi_v072_repo/tests)
+{
+  "checks": [
+    "committed_feature_range",
+    "staged_changes",
+    "unstaged_changes"
+  ],
+  "excluded_evidence_logs": [
+    "state/*.log"
+  ],
+  "failures": {},
+  "feature_base": "817d4800add05f41fae0a9c713c64cf5786f1558",
+  "head": "e583bf28a93be0e40e45c0591ceb8881e4c78384",
+  "repository": "/mnt/data/rec_bianchi_v072_repo",
+  "status": "PASS"
+}
+PASS_PR05C2C1B2B1E0_SOURCE_DERIVED_BOOTSTRAP_PARENT_COUPLED_SINGLE_MACRO_OPEN
+[scientific] receipt PASS: tests/recoil/test_full_harmonic_deposition.py
+[scientific] receipt PASS: tests/recoil/test_hyrec_common_measure.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_boundary_instrumentation.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_native.py
+[scientific] receipt PASS: tests/recoil/test_original_hyrec_physical_flux.py
+[scientific] receipt PASS: tests/recoil/test_pair_cell_conductance.py
+[scientific] receipt PASS: tests/recoil/test_recoil_bridge.py
+[scientific] receipt PASS: tests/recoil/test_same_cell_regular.py
+[scientific] receipt PASS: tests/recoil/test_thermal_deposition.py
+[scientific] receipt PASS: tests/trajectory/test_adaptive_canonical_macro.py
+[scientific] receipt PASS: tests/trajectory/test_causal_characteristic_history.py
+[scientific] receipt PASS: tests/trajectory/test_causal_history_instrumentation.py
+[scientific] receipt PASS: tests/trajectory/test_full_coupled_transport.py
+[scientific] receipt PASS: tests/trajectory/test_hyrec_two_photon_raman.py
+[scientific] receipt PASS: tests/trajectory/test_primitive_rates.py
+[scientific] receipt PASS: tests/trajectory/test_scalar_history_owner_swap.py
+[scientific] fast aggregate: -m not slow
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 91%]
+...........................                                              [100%]
+315 passed, 37 deselected in 39.85s
+{"status": "PASS", "bundle_count": 71, "current_artifact": "Full_Bianchi_HyRec_PR05C2C1B2B1E0_source_derived_bootstrap_parent_v0_73", "mode": "scientific", "scientific_slow_file_count": 16, "scientific_slow_test_count": 37}
+
+=== pycompile/import ===
+py_compile PASS: 226 tracked Python files
+package imports PASS: 58 module paths
+
+=== runtime incidents ===
+1. An initial combined quick/targeted command exceeded the outer execution allowance after bootstrap output. Quick and targeted gates were rerun independently from the beginning and passed.
+2. A monolithic fast trajectory process stalled after partial progress without an assertion failure. The exact collected non-slow suite was partitioned into background/recoil/four trajectory groups/theory/root fresh processes; counts sum to 315. The repository --all and scientific aggregate wrappers were then run in detached processes and both returned exit 0.
+3. Slow pair-cell and same-cell files exceeded the foreground tool allowance as whole files. Every collected slow node was executed in an isolated fresh process; receipts were constructed from the actual node logs. All 16 slow files / 37 nodes validate against the final scientific fingerprint. The final scientific wrapper accepted those receipts and returned exit 0.
