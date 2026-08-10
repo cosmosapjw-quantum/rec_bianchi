@@ -296,3 +296,20 @@ __all__.extend(
         "hash_background_sequence",
     ]
 )
+
+from .single_com_macro import (
+    ActivityNumberRestoration,
+    RoundoffAwareMacroAssessment,
+    RoundoffAwareSingleMacroResult,
+    SingleMacroIteration,
+    assess_roundoff_aware_macro,
+    restore_activity_number_ledger,
+    solve_roundoff_aware_single_macro,
+)
+__all__.append("ActivityNumberRestoration")
+__all__.append("RoundoffAwareMacroAssessment")
+__all__.append("RoundoffAwareSingleMacroResult")
+__all__.append("SingleMacroIteration")
+__all__.append("assess_roundoff_aware_macro")
+__all__.append("restore_activity_number_ledger")
+__all__.append("solve_roundoff_aware_single_macro")
