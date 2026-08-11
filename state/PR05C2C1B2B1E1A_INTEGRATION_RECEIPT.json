@@ -1,0 +1,97 @@
+{
+  "classification": "PR05C2C1B2B1E1A_V074_CURRENT_MAIN_INTEGRATION_RECEIPT",
+  "generated_utc": "2026-08-11T01:17:41Z",
+  "stage": "PR-05C2C1B2B1E1A/v0.74",
+  "source_bundle": {
+    "path": "rec_bianchi_v074_incremental.bundle",
+    "sha256": "64d0268565be71f34d5ae42e3bcd5a1b196135d361c62946620a60d66e4df864",
+    "verified": true,
+    "source_ref": "HEAD",
+    "source_head": "e02e82529a1ef83bcd4ec6961f31c5a6bdbb3ae9",
+    "source_tree": "da1e3c5f9472802804ba840e850079bacb751012",
+    "thin_prerequisite": "f1f9bf088af63f3298ece20cc0c87737faa61fd2"
+  },
+  "full_recovery_bundle": {
+    "path": "rec_bianchi_v074_full.bundle",
+    "sha256": "33357b05089ea8f3fb3b2da4b7f15541dd98defa8c65210d2e0fb8ce6d163930",
+    "verified": true
+  },
+  "handoff_package": {
+    "path": "rec_bianchi_handoff_package_v074_2026-08-10.zip",
+    "sha256": "6b68133b8cf3c134e25dc05cc4878a38903ae77df16894ae918d62d701aa5b6a",
+    "zip_integrity": "PASS"
+  },
+  "source_incremental_base": {
+    "head": "f1f9bf088af63f3298ece20cc0c87737faa61fd2",
+    "tree": "9a547d943528530b9843cc74c0bdf8059a93c04e",
+    "stage": "exact author v0.73 endpoint"
+  },
+  "current_main_integration_base": {
+    "head": "a560054603735ad1d444e5fa1239f57595f2067b",
+    "tree": "49ddbc1acd94dae48c8d6010db76a6a9cb0dc06e",
+    "stage": "current-main v0.73 integration"
+  },
+  "source_feature_commits": [
+    {
+      "sha": "0e6df2028a33d01116170c8d1b421d524faaae4a",
+      "subject": "feat(trajectory): close v0.74 roundoff-aware single COM macro",
+      "local_applied_sha": "2eabac91c7ff93cceedcdb068405f2dc850a6e10"
+    },
+    {
+      "sha": "4a5f60da8cc6a0e81e79285e9190d1d1db28a504",
+      "subject": "docs(recovery): record v0.74 and hand off dynamic atomic macro",
+      "local_applied_sha": "1d267cca37adcb2bf35587d681cae11476de9105"
+    },
+    {
+      "sha": "e02e82529a1ef83bcd4ec6961f31c5a6bdbb3ae9",
+      "subject": "chore(recovery): seal v0.74 verification receipts",
+      "local_applied_sha": "4565672f5fe573492f18a05f3bcb5d3639f9378f"
+    }
+  ],
+  "integration_resolution": {
+    "docs_current_state": "v0.74 source state retained with pre-existing v0.65-v0.68 compatibility adapters stated explicitly",
+    "patch_base": "rewritten for actual current-main v0.73 base; exact author-v0.73 ancestry retained separately",
+    "remote_check": "rewritten from actual pre-merge origin/main fetch",
+    "tracked_manifest": "regenerated after current-main conflict resolution and again after this receipt",
+    "source_author_receipts": "preserved as source evidence; not relabelled as current-main verification"
+  },
+  "verification": {
+    "offline_bootstrap": "PASS",
+    "hyrec_binary_hash_policy": "PASS",
+    "commit_range_whitespace_policy": "PASS",
+    "quick": "PASS",
+    "artifact_verifier": "PASS",
+    "targeted_tests": "PASS_2",
+    "repository_all": "PASS_318_FAST_37_DESELECTED_EXIT_0",
+    "scientific": "PASS_16_SLOW_FILES_37_SLOW_TESTS_PLUS_318_FAST_355_TOTAL_EXIT_0",
+    "py_compile": "PASS",
+    "git_diff_check": "PASS",
+    "git_fsck": "PASS",
+    "tracked_manifest": "PASS_PRE_INTEGRATION_RECEIPT_REFRESH"
+  },
+  "review": {
+    "independent_change_review": "CAUTION: source scope and claim boundary pass; current-main provenance reseal required and supplied by this receipt plus refreshed manifest",
+    "p2_open": "The collision four-force gate is a collision-bookkeeping identity because Q_atom is defined as negative Q_gamma. It is not independent atomic/source-ownership evidence and remains outside the v0.74 bounded COM-subblock claim.",
+    "p3_open": "The standalone artifact verifier binds persisted artifact hashes but not the solver or runner revision. A future artifact schema should record solver and stage-runner digests."
+  },
+  "plot_review": {
+    "classification": "DIAGNOSTIC",
+    "files": [
+      "archive/expanded/Full_Bianchi_HyRec_PR05C2C1B2B1E1A_single_com_macro_v0_74/SINGLE_COM_MACRO_CONVERGENCE.png",
+      "archive/expanded/Full_Bianchi_HyRec_PR05C2C1B2B1E1A_single_com_macro_v0_74/SINGLE_COM_MACRO_STATE_UPDATE.png"
+    ],
+    "interpretation": "The plots show residual/ledger reduction and bounded COM-state update while explicitly labelling the held native boundary and open atomic/history coupling.",
+    "not_shown": "A full atomic/native/history-coupled macro endpoint or accepted-history append."
+  },
+  "claim_boundary": {
+    "source_conditioned_COM_collision_transport_root_complete": true,
+    "dynamic_background_endpoint_used": true,
+    "roundoff_limited_root_evidence_complete": true,
+    "native_boundary_evolved": false,
+    "atomic_source_evolved": false,
+    "accepted_history_append_performed": false,
+    "full_coupled_macro_endpoint_complete": false,
+    "production_preconditioner_selected": false
+  },
+  "remote_write_claimed": false
+}

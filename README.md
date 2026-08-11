@@ -7,8 +7,12 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B2B1E0 / v0.73**.
-- v0.73 constructs a positive provenance-locked bootstrap parent from the accepted scalar original-HyRec history; it is not a coupled macro endpoint and does not append history.
+- Durable stage: **PR-05C2C1B2B1E1A / v0.74**.
+- v0.74 establishes a positive, roundoff-limited root for the source-conditioned
+  35-state by 26-direction COM collision--frequency-transport subblock at the
+  dynamic orthogonal Bianchi-II endpoint. Native boundaries remain fixed at the
+  v0.73 source-derived parent; atomic sources and accepted history are not
+  evolved or appended.
 - Production macro entry now requires a content-addressed
   `AcceptedRadiationParent` with evidence class `SOURCE_DERIVED_ACCEPTED` and
   exact history/atomic/background/network/interface provenance.  Manufactured
@@ -21,10 +25,9 @@ angle/frequency-resolved Ly-alpha transfer.
   exceptional `VI_-1/9` and all unvalidated families fail closed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
   two-photon/Raman, and characteristic-source adapters remain available.
-- Next: advance exactly one dynamic coupled macro from the source-derived
-  `z~1100` Bianchi-II parent. Internal iterations must not append accepted
-  history; preconditioner comparison is permitted only on that same
-  parent/residual path.
+- Next: advance one dynamic atomic/native/history macro from the same `z~1100`
+  Bianchi-II parent and v0.74 COM residual path. Internal iterations must not
+  append accepted history; exactly one append requires all physical gates.
 
 Start with:
 
@@ -41,7 +44,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C2C1B2B1E_SOURCE_DERIVED_PARENT_PLAN.md`](docs/PR05C2C1B2B1E_SOURCE_DERIVED_PARENT_PLAN.md).
+[`docs/PR05C2C1B2B1E1A_SINGLE_COM_MACRO_FORMALISM.md`](docs/PR05C2C1B2B1E1A_SINGLE_COM_MACRO_FORMALISM.md).
 
 ## Canonical source
 
@@ -62,17 +65,17 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-The fetched `origin/main` is the v0.72 current-main integration at
-`822b889067de9ab6974b48107d081ad1dff514e0`, tree
-`fa65e081fbab3c0c963b97b510cac167afa66941`. The v0.73 incremental delivery
+The fetched `origin/main` is the v0.73 current-main integration at
+`a560054603735ad1d444e5fa1239f57595f2067b`, tree
+`49ddbc1acd94dae48c8d6010db76a6a9cb0dc06e`. The v0.74 incremental delivery
 is integrated locally but is not pushed. For remote application, create a
 branch from fresh `origin/main`, compare receipt provenance, apply only the
-three v0.73 source commits, rerun all gates, and never rewrite shared history.
+three v0.74 source commits, rerun all gates, and never rewrite shared history.
 
 ## Test tiers
 
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.73 regeneration: `python scripts/run_pr05c2c1b2b1e0_source_parent_stage.py`.
+- v0.74 regeneration: `python scripts/run_pr05c2c1b2b1e1a_single_com_macro_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
