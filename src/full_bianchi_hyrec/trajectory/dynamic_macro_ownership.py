@@ -369,6 +369,11 @@ def require_dynamic_atomic_macro_ready(
 ) -> None:
     """Fail closed before constructing a full atomic/native/COM macro."""
 
+    if audit.contract_witness_only:
+        raise DynamicMacroOwnershipError(
+            "dynamic atomic/native/COM macro is not admissible: "
+            "contract witness is not implementation evidence"
+        )
     if not audit.dynamic_atomic_macro_ready:
         details = ", ".join(audit.unresolved_processes) or "unknown ownership defect"
         raise DynamicMacroOwnershipError(

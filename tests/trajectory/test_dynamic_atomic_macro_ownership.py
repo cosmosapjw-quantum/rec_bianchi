@@ -77,9 +77,8 @@ def test_naive_atomic_source_coupling_adds_a_second_overlap() -> None:
     assert audit.overlap_count >= 3
 
 
-def test_only_explicit_split_domain_contract_witness_passes() -> None:
+def test_contract_witness_cannot_authorize_production_dynamic_macro() -> None:
     audit = _audit(resolved_split_domain_contract_witness())
-    require_dynamic_atomic_macro_ready(audit)
     assert audit.dynamic_atomic_macro_ready
     assert audit.overlap_count == 0
     assert audit.unowned_process_count == 0
@@ -87,6 +86,8 @@ def test_only_explicit_split_domain_contract_witness_passes() -> None:
     assert audit.cross_edge_owner == "split_domain_interface"
     assert audit.scalar_history_owner == "typed_characteristic_history"
     assert audit.contract_witness_only
+    with pytest.raises(DynamicMacroOwnershipError, match="contract witness"):
+        require_dynamic_atomic_macro_ready(audit)
 
 
 def test_unknown_or_multi_owner_configuration_fails_closed() -> None:
