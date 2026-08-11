@@ -161,6 +161,18 @@ from .physical_continuation import (
     build_production_continuation_adapter,
 )
 
+
+from .dynamic_macro_ownership import (
+    DynamicMacroOwnershipConfig,
+    DynamicAtomicMacroOwnershipAudit,
+    DynamicMacroOwnershipError,
+    audit_dynamic_atomic_macro_ownership,
+    current_v074_ownership_config,
+    naive_dynamic_atomic_ownership_config,
+    resolved_split_domain_contract_witness,
+    require_dynamic_atomic_macro_ready,
+)
+
 __all__ = [
     "AcceptedContinuationState",
     "ContinuationTransaction",
@@ -294,7 +306,15 @@ __all__.extend(
         "build_source_derived_bootstrap_parent",
         "hash_atomic_state",
         "hash_background_sequence",
-    ]
+        "DynamicMacroOwnershipConfig",
+    "DynamicAtomicMacroOwnershipAudit",
+    "DynamicMacroOwnershipError",
+    "audit_dynamic_atomic_macro_ownership",
+    "current_v074_ownership_config",
+    "naive_dynamic_atomic_ownership_config",
+    "resolved_split_domain_contract_witness",
+    "require_dynamic_atomic_macro_ready",
+]
 )
 
 from .single_com_macro import (

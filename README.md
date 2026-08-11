@@ -7,27 +7,14 @@ angle/frequency-resolved Ly-alpha transfer.
 
 ## Current state
 
-- Durable stage: **PR-05C2C1B2B1E1A / v0.74**.
-- v0.74 establishes a positive, roundoff-limited root for the source-conditioned
-  35-state by 26-direction COM collision--frequency-transport subblock at the
-  dynamic orthogonal Bianchi-II endpoint. Native boundaries remain fixed at the
-  v0.73 source-derived parent; atomic sources and accepted history are not
-  evolved or appended.
-- Production macro entry now requires a content-addressed
-  `AcceptedRadiationParent` with evidence class `SOURCE_DERIVED_ACCEPTED` and
-  exact history/atomic/background/network/interface provenance.  Manufactured
-  and operator-verification fixtures fail closed.
-- The uploaded `bianchireview87` source is byte-locked and drives a validated
-  **orthogonal Bianchi-II background-provider pilot**.  Its one-macro normalized
-  endpoint error against the locked v0.48 sequence is below `3e-7`.
-- This is not yet an accepted coupled Bianchi--HyRec macro endpoint or all-11
-  provider validation. Bianchi IX requires a D-normalized H-zero event; tilted
-  exceptional `VI_-1/9` and all unvalidated families fail closed.
+- Durable local stage: **PR-05C2C1B2B1E1B0 / v0.75**.
+- The immediate dynamic atomic/native/history macro is fail-closed: eight canonical original-HyRec virtual point spikes and six native diffusion edges lie inside the COM support, while two diffusion edges cross its interfaces.
+- About 98% of canonical Aup/Adn real--virtual rate mass lies inside the COM domain. Adding the full native/atomic block to the v0.74 COM root would double-own physical processes.
+- The admissible target is an exterior-native / interior-COM / single-interface replacement with residual, analytic JVP, conservation ledger and restart parity in one stage. The target contract is a witness, not an implementation claim.
+- v0.73 source-derived parent and v0.74 positive COM subblock root remain valid; no full dynamic macro or history append is claimed.
 - The v0.65 scalar theory and v0.66--v0.68 direct-node, one-photon,
   two-photon/Raman, and characteristic-source adapters remain available.
-- Next: advance one dynamic atomic/native/history macro from the same `z~1100`
-  Bianchi-II parent and v0.74 COM residual path. Internal iterations must not
-  append accepted history; exactly one append requires all physical gates.
+- Next: **PR-05C2C1B2B1E1C split-domain replacement**.
 
 Start with:
 
@@ -44,7 +31,7 @@ pytest -q -m "not slow"
 Then read [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md),
 [`state/PROJECT_STATE.json`](state/PROJECT_STATE.json),
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md), and
-[`docs/PR05C2C1B2B1E1A_SINGLE_COM_MACRO_FORMALISM.md`](docs/PR05C2C1B2B1E1A_SINGLE_COM_MACRO_FORMALISM.md).
+[`docs/PR05C2C1B2B1E1C_SPLIT_DOMAIN_REPLACEMENT_PLAN.md`](docs/PR05C2C1B2B1E1C_SPLIT_DOMAIN_REPLACEMENT_PLAN.md).
 
 ## Canonical source
 
@@ -65,17 +52,17 @@ May/October metadata variations are intrinsic to that archive.
 
 ## Remote and delivery policy
 
-The fetched `origin/main` is the v0.73 current-main integration at
-`a560054603735ad1d444e5fa1239f57595f2067b`, tree
-`49ddbc1acd94dae48c8d6010db76a6a9cb0dc06e`. The v0.74 incremental delivery
+The fetched `origin/main` is the v0.74 current-main integration at
+`e6b64e0df25d0b1db7cf8b776866db0afc14721e`, tree
+`97e5c71b93e9d0bf4429698aff9b651f974ee1fb`. The v0.75 incremental delivery
 is integrated locally but is not pushed. For remote application, create a
 branch from fresh `origin/main`, compare receipt provenance, apply only the
-three v0.74 source commits, rerun all gates, and never rewrite shared history.
+three v0.75 source commits, rerun all gates, and never rewrite shared history.
 
 ## Test tiers
 
 - Fast: `pytest -q -m "not slow"`.
 - Repository: `python scripts/verify_repo.py --all`.
 - Scientific: `python scripts/verify_repo.py --scientific`.
-- v0.74 regeneration: `python scripts/run_pr05c2c1b2b1e1a_single_com_macro_stage.py`.
+- v0.75 regeneration: `python scripts/run_pr05c2c1b2b1e1b0_dynamic_ownership_stage.py`.
 - Git-bundle export: `python scripts/export_git_bundle_delivery.py --help`.
