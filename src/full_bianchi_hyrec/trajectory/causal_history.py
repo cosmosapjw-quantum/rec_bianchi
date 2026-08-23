@@ -130,7 +130,13 @@ class CharacteristicInterpolationStencil:
         *,
         delta_eta: float = 0.0,
     ) -> float:
-        """Exact fixed-stencil JVP, including an optional query-coordinate term."""
+        """Exact fixed-primal-stencil JVP.
+
+        ``delta_eta`` is a tangent direction, not a finite perturbation.  The
+        primal evaluation owns the active stencil; deciding whether a finite
+        step crosses a stencil boundary belongs to the caller's active-set
+        radius check, outside this linear map.
+        """
 
         array = np.asarray(values, dtype=float)
         direction = np.asarray(endpoint_direction, dtype=float)
@@ -142,13 +148,8 @@ class CharacteristicInterpolationStencil:
         if not math.isfinite(deta):
             raise ValueError("delta_eta must be finite")
         if self.thermal_zero:
-            if deta != 0.0 and self.eta_query + deta >= self.eta_start:
-                raise CharacteristicStencilSwitch("thermal/nonthermal branch changes under perturbation")
             return 0.0
         assert self.left_index is not None and self.right_index is not None
-        shifted_fraction = self.fraction + deta / self.dlna
-        if not 0.0 <= shifted_fraction < 1.0:
-            raise CharacteristicStencilSwitch("query perturbation changes the discrete interpolation stencil")
         return float(
             (1.0 - self.fraction) * direction[self.left_index]
             + self.fraction * direction[self.right_index]
@@ -232,7 +233,7 @@ class CharacteristicHistoryGrid:
         query = float(eta_query)
         if not math.isfinite(query):
             raise ValueError("eta_query must be finite")
-        if count <= 1 or query < self.eta_start:
+        if query < self.eta_start:
             return CharacteristicInterpolationStencil(
                 eta_query=query,
                 eta_start=self.eta_start,
@@ -246,7 +247,7 @@ class CharacteristicHistoryGrid:
         # Exact source condition: lna >= lna_start + dlna*(iz-1) is out of range,
         # where iz is the number of already accepted entries.
         future_boundary = self.eta_start + self.dlna * (count - 1)
-        if query >= future_boundary:
+        if count <= 1 or query >= future_boundary:
             raise FutureHistoryEndpointError(
                 f"eta query {query:.17g} reaches unaccepted endpoint at {future_boundary:.17g}"
             )

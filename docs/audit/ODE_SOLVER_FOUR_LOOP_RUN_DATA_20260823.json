@@ -1,0 +1,1024 @@
+{
+  "acceptance": {
+    "numerical_probes_pass": true,
+    "promotion_authority": false,
+    "required_commands_pass": true,
+    "runner_process_environment_matches_declared": true,
+    "scientific_tier_requested": true,
+    "source_record_hashes_match": true
+  },
+  "claim_tier": "LOCAL_IMPLEMENTATION_VALIDATION_ONLY",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_adaptive_canonical_macro.py",
+        "tests/trajectory/test_causal_characteristic_history.py",
+        "tests/trajectory/test_characteristic_angular_solver.py",
+        "tests/trajectory/test_pseudotransient_continuation.py",
+        "tests/recoil/test_nonlinear_bose_release.py",
+        "tests/recoil/test_nonlinear_bose_runtime.py"
+      ],
+      "command_id": "focused_changed_surface_tests",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 5.653586767992238,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:16:22.587298Z",
+      "stderr": "",
+      "stdout": "........................................................................ [ 79%]\n...................                                                      [100%]\n91 passed in 5.42s\n",
+      "timed_out": false,
+      "timeout_seconds": 900.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-m",
+        "not slow"
+      ],
+      "command_id": "fast_repository_tests",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 21.957792811997933,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:16:28.240905Z",
+      "stderr": "",
+      "stdout": "........................................................................ [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 57%]\n........................................................................ [ 76%]\n........................................................................ [ 95%]\n..................                                                       [100%]\n378 passed, 37 deselected in 21.63s\n",
+      "timed_out": false,
+      "timeout_seconds": 1800.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "scripts/verify_repo.py",
+        "--quick"
+      ],
+      "command_id": "verify_repo_quick",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.37897550998604856,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:16:50.198727Z",
+      "stderr": "",
+      "stdout": "HyRec binary-hash policy PASS (/tmp/rec_bianchi-four-loop-impl-20260823/tests)\n{\n  \"checks\": [\n    \"committed_feature_range\",\n    \"staged_changes\",\n    \"unstaged_changes\"\n  ],\n  \"excluded_evidence_logs\": [\n    \"state/*.log\"\n  ],\n  \"failures\": {},\n  \"feature_base\": \"e6b64e0df25d0b1db7cf8b776866db0afc14721e\",\n  \"head\": \"5a09f3797210284f83a1a1adb0e0092d1ac48475\",\n  \"repository\": \"/tmp/rec_bianchi-four-loop-impl-20260823\",\n  \"status\": \"PASS\"\n}\nPASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED\n{\"status\": \"PASS\", \"bundle_count\": 73, \"current_artifact\": \"Full_Bianchi_HyRec_PR05C2C1B2B1E1B0_dynamic_macro_ownership_no_go_v0_75\", \"mode\": \"quick\", \"scientific_slow_file_count\": 0, \"scientific_slow_test_count\": 0}\n",
+      "timed_out": false,
+      "timeout_seconds": 600.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "scripts/verify_repo.py",
+        "--all"
+      ],
+      "command_id": "verify_repo_all",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 23.02706119301729,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:16:50.577728Z",
+      "stderr": "",
+      "stdout": "HyRec binary-hash policy PASS (/tmp/rec_bianchi-four-loop-impl-20260823/tests)\n{\n  \"checks\": [\n    \"committed_feature_range\",\n    \"staged_changes\",\n    \"unstaged_changes\"\n  ],\n  \"excluded_evidence_logs\": [\n    \"state/*.log\"\n  ],\n  \"failures\": {},\n  \"feature_base\": \"e6b64e0df25d0b1db7cf8b776866db0afc14721e\",\n  \"head\": \"5a09f3797210284f83a1a1adb0e0092d1ac48475\",\n  \"repository\": \"/tmp/rec_bianchi-four-loop-impl-20260823\",\n  \"status\": \"PASS\"\n}\nPASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED\n........................................................................ [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 57%]\n........................................................................ [ 76%]\n........................................................................ [ 95%]\n..................                                                       [100%]\n378 passed, 37 deselected in 22.23s\n{\"status\": \"PASS\", \"bundle_count\": 73, \"current_artifact\": \"Full_Bianchi_HyRec_PR05C2C1B2B1E1B0_dynamic_macro_ownership_no_go_v0_75\", \"mode\": \"all\", \"scientific_slow_file_count\": 0, \"scientific_slow_test_count\": 0}\n",
+      "timed_out": false,
+      "timeout_seconds": 2400.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "-m",
+        "compileall",
+        "-q",
+        "src/full_bianchi_hyrec",
+        "scripts/run_ode_solver_four_loop_audit.py"
+      ],
+      "command_id": "compileall_changed_code",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.03399438800988719,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:17:13.604814Z",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 600.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "scripts/check_imports.py"
+      ],
+      "command_id": "import_contract",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.7807330320065375,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:17:13.638836Z",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 600.0
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "command_id": "git_diff_check",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.0075787829991895705,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:17:14.419593Z",
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false,
+      "timeout_seconds": 120.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "command_id": "installed_distributions",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.37830070999916643,
+      "exit_code": 0,
+      "passed": true,
+      "required": false,
+      "started_at_utc": "2026-08-23T10:17:14.427196Z",
+      "stderr": "",
+      "stdout": "adjustText==1.3.0\nastropy==7.2.0\nastropy-iers-data==0.2026.4.13.0.58.2\nattrs==23.2.0\nBabel==2.10.3\nbcc==0.29.1\nbeautifulsoup4==4.14.3\nblinker==1.7.0\nBrlapi==0.8.5\ncamb==1.6.6\ncertifi==2023.11.17\nchardet==5.2.0\nclick==8.1.6\ncloud-init==26.1\ncobaya==3.6.2\ncolorama==0.4.6\ncommand-not-found==0.3\nconfigobj==5.0.8\ncontourpy==1.3.3\ncryptography==41.0.7\ncupshelpers==1.0\ncycler==0.12.1\ndbus-python==1.3.2\ndefer==1.0.6\ndill==0.4.1\ndistro==1.9.0\ndistro-info==1.7+build1\nfonttools==4.61.1\ngetdist==1.7.6\ngpg==1.18.0\nhealpy==1.19.0\nhttplib2==0.20.4\nidna==3.6\nijson==3.4.0.post0\niniconfig==2.3.0\nJinja2==3.1.2\njoblib==1.5.3\njsonpatch==1.32\njsonpointer==2.0\njsonschema==4.10.3\nkiwisolver==1.4.9\nlanguage-selector==0.1\nlaunchpadlib==1.11.0\nlazr.restfulclient==0.14.6\nlazr.uri==1.0.6\nlouis==3.29.0\nmarkdown-it-py==3.0.0\nMarkupSafe==2.1.5\nmatplotlib==3.10.8\nmaturin==1.3.2\nmdurl==0.1.2\nmeson==1.3.2\nmpmath==1.3.0\nnetaddr==0.8.0\nnetifaces==0.11.0\nnetworkx==3.6.1\nnumpy==2.4.2\noauthlib==3.2.2\nolefile==0.46\npackaging==26.1\npandas==3.0.0\npexpect==4.9.0\npillow==10.2.0\npip==24.0\npluggy==1.6.0\nportalocker==3.2.0\npsutil==5.9.8\nptyprocess==0.7.0\nPy-BOBYQA==1.5.0\npycairo==1.25.1\npycups==2.0.1\npyerfa==2.0.1.5\nPygments==2.17.2\nPyGObject==3.48.2\nPyJWT==2.7.0\npyparsing==3.1.1\npyrsistent==0.20.0\npyserial==3.5\npytest==9.1.1\npython-apt==2.7.7+ubuntu5.2\npython-dateutil==2.8.2\npython-debian==0.1.49+ubuntu2\npytz==2024.1\npyxdg==0.28\nPyYAML==6.0.1\nRapidFuzz==3.14.5\nrequests==2.31.0\nrich==13.7.1\nsacc==2.1.2\nscikit-learn==1.8.0\nscipy==1.17.0\nscreen-resolution-extra==0.0.0\nsetuptools==68.1.2\nsix==1.16.0\nsoupsieve==2.8.3\nssh-import-id==5.11\nsympy==1.14.0\nsystemd-python==235\nthreadpoolctl==3.6.0\ntqdm==4.67.3\ntyping_extensions==4.10.0\nubuntu-drivers-common==0.0.0\nubuntu-pro-client==8001\nufw==0.36.2\nunattended-upgrades==0.1\nurllib3==2.0.7\nwadllib==1.3.6\nwheel==0.42.0\nxdg==5\nxkit==0.0.0\n",
+      "timed_out": false,
+      "timeout_seconds": 600.0
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "scripts/verify_repo.py",
+        "--scientific"
+      ],
+      "command_id": "verify_repo_scientific",
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 23.954632262000814,
+      "exit_code": 0,
+      "passed": true,
+      "required": true,
+      "started_at_utc": "2026-08-23T10:17:14.805517Z",
+      "stderr": "",
+      "stdout": "HyRec binary-hash policy PASS (/tmp/rec_bianchi-four-loop-impl-20260823/tests)\n{\n  \"checks\": [\n    \"committed_feature_range\",\n    \"staged_changes\",\n    \"unstaged_changes\"\n  ],\n  \"excluded_evidence_logs\": [\n    \"state/*.log\"\n  ],\n  \"failures\": {},\n  \"feature_base\": \"e6b64e0df25d0b1db7cf8b776866db0afc14721e\",\n  \"head\": \"5a09f3797210284f83a1a1adb0e0092d1ac48475\",\n  \"repository\": \"/tmp/rec_bianchi-four-loop-impl-20260823\",\n  \"status\": \"PASS\"\n}\nPASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED\n[scientific] receipt PASS: tests/recoil/test_full_harmonic_deposition.py\n[scientific] receipt PASS: tests/recoil/test_hyrec_common_measure.py\n[scientific] receipt PASS: tests/recoil/test_original_hyrec_boundary_instrumentation.py\n[scientific] receipt PASS: tests/recoil/test_original_hyrec_native.py\n[scientific] receipt PASS: tests/recoil/test_original_hyrec_physical_flux.py\n[scientific] receipt PASS: tests/recoil/test_pair_cell_conductance.py\n[scientific] receipt PASS: tests/recoil/test_recoil_bridge.py\n[scientific] receipt PASS: tests/recoil/test_same_cell_regular.py\n[scientific] receipt PASS: tests/recoil/test_thermal_deposition.py\n[scientific] receipt PASS: tests/trajectory/test_adaptive_canonical_macro.py\n[scientific] receipt PASS: tests/trajectory/test_causal_characteristic_history.py\n[scientific] receipt PASS: tests/trajectory/test_causal_history_instrumentation.py\n[scientific] receipt PASS: tests/trajectory/test_full_coupled_transport.py\n[scientific] receipt PASS: tests/trajectory/test_hyrec_two_photon_raman.py\n[scientific] receipt PASS: tests/trajectory/test_primitive_rates.py\n[scientific] receipt PASS: tests/trajectory/test_scalar_history_owner_swap.py\n[scientific] fast aggregate: -m not slow\n........................................................................ [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 57%]\n........................................................................ [ 76%]\n........................................................................ [ 95%]\n..................                                                       [100%]\n378 passed, 37 deselected in 21.14s\n{\"status\": \"PASS\", \"bundle_count\": 73, \"current_artifact\": \"Full_Bianchi_HyRec_PR05C2C1B2B1E1B0_dynamic_macro_ownership_no_go_v0_75\", \"mode\": \"scientific\", \"scientific_slow_file_count\": 16, \"scientific_slow_test_count\": 37}\n",
+      "timed_out": false,
+      "timeout_seconds": 14400.0
+    }
+  ],
+  "duration_seconds": 76.61745575000532,
+  "environment": {
+    "cpu_model": "AMD Ryzen 9 5900X 12-Core Processor",
+    "distributions": {
+      "mpmath": "1.3.0",
+      "numpy": "2.4.2",
+      "pytest": "9.1.1",
+      "scipy": "1.17.0"
+    },
+    "fixed_environment_declared": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONHASHSEED": "0",
+      "TZ": "UTC",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "fixed_environment_matches": true,
+    "fixed_environment_observed": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONHASHSEED": "0",
+      "TZ": "UTC",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "machine": "x86_64",
+    "numpy_configuration": "Build Dependencies:\n  blas:\n    detection method: pkgconfig\n    found: true\n    include directory: /opt/_internal/cpython-3.12.12/lib/python3.12/site-packages/scipy_openblas64/include\n    lib directory: /opt/_internal/cpython-3.12.12/lib/python3.12/site-packages/scipy_openblas64/lib\n    name: scipy-openblas\n    openblas configuration: OpenBLAS 0.3.31.dev  USE64BITINT DYNAMIC_ARCH NO_AFFINITY\n      Haswell MAX_THREADS=64\n    pc file directory: /project/.openblas\n    version: 0.3.31.dev\n  lapack:\n    detection method: pkgconfig\n    found: true\n    include directory: /opt/_internal/cpython-3.12.12/lib/python3.12/site-packages/scipy_openblas64/include\n    lib directory: /opt/_internal/cpython-3.12.12/lib/python3.12/site-packages/scipy_openblas64/lib\n    name: scipy-openblas\n    openblas configuration: OpenBLAS 0.3.31.dev  USE64BITINT DYNAMIC_ARCH NO_AFFINITY\n      Haswell MAX_THREADS=64\n    pc file directory: /project/.openblas\n    version: 0.3.31.dev\nCompilers:\n  c:\n    commands: cc\n    linker: ld.bfd\n    name: gcc\n    version: 14.2.1\n  c++:\n    commands: c++\n    linker: ld.bfd\n    name: gcc\n    version: 14.2.1\n  cython:\n    commands: cython\n    linker: cython\n    name: cython\n    version: 3.2.4\nMachine Information:\n  build:\n    cpu: x86_64\n    endian: little\n    family: x86_64\n    system: linux\n  host:\n    cpu: x86_64\n    endian: little\n    family: x86_64\n    system: linux\nPython Information:\n  path: /tmp/build-env-jif3r6om/bin/python\n  version: '3.12'\nSIMD Extensions:\n  baseline:\n  - X86_V2\n  found:\n  - X86_V3\n  not found:\n  - X86_V4\n  - AVX512_ICL\n  - AVX512_SPR\n\n",
+    "platform": "Linux-7.0.0-29-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python_compiler": "GCC 13.3.0",
+    "python_executable": "/usr/bin/python",
+    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "explicit_nonclaims": [
+    "No full E1C/native-COM residual was implemented or executed.",
+    "No production or long cosmological trajectory was admitted.",
+    "No certified complete multiple/grazing-event enumerator was implemented.",
+    "No AP, grid-refinement, endpoint-accuracy, or scalability claim follows.",
+    "No push, merge, commit, reseal, or durable-stage publication was performed."
+  ],
+  "generated_at_utc": "2026-08-23T10:17:39.204736Z",
+  "independent_review": {
+    "confirmed_before_repair": {
+      "fast": "375 passed, 37 deselected in 33.31s",
+      "focused": "88 passed in 4.52s",
+      "git_diff_check": "PASS",
+      "issue_inventory": "56 unique; 8 LOCAL-VALIDATED, 8 PARTIAL, 40 OPEN"
+    },
+    "fatal_findings": [
+      {
+        "finding": "adaptive stage-output buffer alias produced false zero LTE",
+        "id": "REVIEW-F1",
+        "independent_scaled_full_fine_difference": 249500.68677753734,
+        "observed_reported_error_norm": 0.0
+      },
+      {
+        "finding": "PTC admission callback mutation changed checked state 1 to committed state 999",
+        "id": "REVIEW-F2",
+        "observed_checked_metric": 0.0,
+        "observed_committed_value": 999.0
+      },
+      {
+        "finding": "near-rank HarmonicGrid admitted an incoherent transform",
+        "id": "REVIEW-F3",
+        "observed_gram_residual": 1.1404378348209572,
+        "observed_synthesis_condition": 3695735321.5580006
+      },
+      {
+        "finding": "pre-review JSON omitted the later report hash and did not bind direct probes to the declared fixed process environment",
+        "id": "REVIEW-F4"
+      }
+    ],
+    "provenance": "TRANSCRIBED_INDEPENDENT_REVIEW_SUMMARY_ONLY",
+    "raw_receipt_available": false,
+    "repair_policy": "one repair-closeout; no second review round",
+    "review_round": 1,
+    "reviewer_modified_files": false,
+    "scope": "external-audit handoff readiness only",
+    "verdict": "REWORK"
+  },
+  "numerical_probes": [
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "/tmp/rec_bianchi-four-loop-impl-20260823/scripts/run_ode_solver_four_loop_audit.py",
+        "--include-scientific"
+      ],
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.3989122180209961,
+      "evidence": {
+        "coarse_absolute_error": 4.991676241239418e-07,
+        "coarse_endpoint": 0.9990009990009991,
+        "coarse_to_fine_error_ratio": 1.99933411059296,
+        "dependent_half_steps_short_circuited_before_retry": true,
+        "exact_endpoint": 0.999000499833375,
+        "expected_linear_failure_contraction": 0.35,
+        "fine_absolute_error": 2.4966693734640444e-07,
+        "fine_endpoint": 0.9990007495003124,
+        "first_attempt_failure_kind": "RETRY_LINEAR",
+        "first_attempt_has_committable_state": false,
+        "linear_failure_contraction": 0.35,
+        "returned_endpoint": 0.9990007495003124,
+        "reused_stage_buffer_reported_error_norm": 1.2475034338876867e-07,
+        "reused_stage_buffer_returned_endpoint": 0.9990007495003124,
+        "reused_stage_buffer_snapshot_preserved": true,
+        "status": "PASS",
+        "step_width": 0.001
+      },
+      "exception": null,
+      "fixed_environment_observed": {
+        "BLIS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "TZ": "UTC",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "probe_id": "adaptive_macro_contracts",
+      "started_at_utc": "2026-08-23T10:17:38.760178Z"
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "/tmp/rec_bianchi-four-loop-impl-20260823/scripts/run_ode_solver_four_loop_audit.py",
+        "--include-scientific"
+      ],
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.018266336002852768,
+      "evidence": {
+        "acceptance_limit": 2e-14,
+        "full_direction_sweep_rows": [
+          {
+            "full_direction_jvp": -4.19,
+            "full_direction_jvp_reference_mpmath_100dps": -4.19,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 0.0,
+            "optical_depth": 0.0,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.19,
+            "full_direction_jvp_reference_mpmath_100dps": -4.19,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-31,
+            "optical_depth": 1e-30,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.19,
+            "full_direction_jvp_reference_mpmath_100dps": -4.19,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-25,
+            "optical_depth": 1e-24,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.19,
+            "full_direction_jvp_reference_mpmath_100dps": -4.19,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-21,
+            "optical_depth": 1e-20,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.1899999999999995,
+            "full_direction_jvp_reference_mpmath_100dps": -4.1899999999999995,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-17,
+            "optical_depth": 1e-16,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.1899999999962585,
+            "full_direction_jvp_reference_mpmath_100dps": -4.1899999999962585,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-13,
+            "optical_depth": 1e-12,
+            "value": 3.2999999999979996,
+            "value_reference_mpmath_100dps": 3.299999999998,
+            "value_relative_error": 1.3457248783343386e-16
+          },
+          {
+            "full_direction_jvp": -4.189999999625834,
+            "full_direction_jvp_reference_mpmath_100dps": -4.189999999625833,
+            "full_direction_jvp_relative_error": 2.119757565106061e-16,
+            "opacity_s_inv": 5e-11,
+            "optical_depth": 1e-10,
+            "value": 3.2999999998,
+            "value_reference_mpmath_100dps": 3.2999999998,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.189999962583333,
+            "full_direction_jvp_reference_mpmath_100dps": -4.189999962583333,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 5e-09,
+            "optical_depth": 1e-08,
+            "value": 3.2999999800000004,
+            "value_reference_mpmath_100dps": 3.29999998,
+            "value_relative_error": 1.3457248864894315e-16
+          },
+          {
+            "full_direction_jvp": -4.189996258335086,
+            "full_direction_jvp_reference_mpmath_100dps": -4.189996258335085,
+            "full_direction_jvp_relative_error": 2.1197594578593902e-16,
+            "opacity_s_inv": 5e-07,
+            "optical_depth": 1e-06,
+            "value": 3.2999980000007834,
+            "value_reference_mpmath_100dps": 3.2999980000007834,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.189625850849436,
+            "full_direction_jvp_reference_mpmath_100dps": -4.189625850849435,
+            "full_direction_jvp_relative_error": 2.119946867141011e-16,
+            "opacity_s_inv": 5e-05,
+            "optical_depth": 0.0001,
+            "value": 3.2998000078331082,
+            "value_reference_mpmath_100dps": 3.2998000078331082,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.186260084435307,
+            "full_direction_jvp_reference_mpmath_100dps": -4.186260084435306,
+            "full_direction_jvp_relative_error": 2.1216513111605526e-16,
+            "opacity_s_inv": 0.0005,
+            "optical_depth": 0.001,
+            "value": 3.298000783108384,
+            "value_reference_mpmath_100dps": 3.298000783108384,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.1527579365606515,
+            "full_direction_jvp_reference_mpmath_100dps": -4.1527579365606515,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 0.0049999999995,
+            "optical_depth": 0.009999999999,
+            "value": 3.2800781088427082,
+            "value_reference_mpmath_100dps": 3.2800781088427082,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.152757936556944,
+            "full_direction_jvp_reference_mpmath_100dps": -4.152757936556944,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 0.005,
+            "optical_depth": 0.01,
+            "value": 3.2800781088407236,
+            "value_reference_mpmath_100dps": 3.2800781088407236,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -4.152757936553222,
+            "full_direction_jvp_reference_mpmath_100dps": -4.152757936553238,
+            "full_direction_jvp_relative_error": 3.8497817110600805e-15,
+            "opacity_s_inv": 0.0050000000005,
+            "optical_depth": 0.010000000001,
+            "value": 3.2800781088387394,
+            "value_reference_mpmath_100dps": 3.2800781088387394,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -3.8327988235891275,
+            "full_direction_jvp_reference_mpmath_100dps": -3.8327988235891293,
+            "full_direction_jvp_relative_error": 4.634620602750095e-16,
+            "opacity_s_inv": 0.05,
+            "optical_depth": 0.1,
+            "value": 3.107613323690223,
+            "value_reference_mpmath_100dps": 3.107613323690223,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": -1.7507186143080247,
+            "full_direction_jvp_reference_mpmath_100dps": -1.7507186143080244,
+            "full_direction_jvp_relative_error": 1.268305501011623e-16,
+            "opacity_s_inv": 0.5,
+            "optical_depth": 1.0,
+            "value": 1.9010290617742596,
+            "value_reference_mpmath_100dps": 1.9010290617742596,
+            "value_relative_error": 0.0
+          },
+          {
+            "full_direction_jvp": 0.022775901717282058,
+            "full_direction_jvp_reference_mpmath_100dps": 0.02277590171728207,
+            "full_direction_jvp_relative_error": 6.093189187449015e-16,
+            "opacity_s_inv": 5.0,
+            "optical_depth": 10.0,
+            "value": 0.26001997596909554,
+            "value_reference_mpmath_100dps": 0.2600199759690955,
+            "value_relative_error": 2.1348802538869386e-16
+          },
+          {
+            "full_direction_jvp": 0.007428,
+            "full_direction_jvp_reference_mpmath_100dps": 0.007428,
+            "full_direction_jvp_relative_error": 0.0,
+            "opacity_s_inv": 50.0,
+            "optical_depth": 100.0,
+            "value": 0.026000000000000002,
+            "value_reference_mpmath_100dps": 0.026,
+            "value_relative_error": 1.334402673828313e-16
+          },
+          {
+            "full_direction_jvp": 0.0007942800000000001,
+            "full_direction_jvp_reference_mpmath_100dps": 0.00079428,
+            "full_direction_jvp_relative_error": 1.3650125553778321e-16,
+            "opacity_s_inv": 500.0,
+            "optical_depth": 1000.0,
+            "value": 0.0026000000000000003,
+            "value_reference_mpmath_100dps": 0.0026,
+            "value_relative_error": 1.6680033422853916e-16
+          }
+        ],
+        "full_direction_tangents": {
+          "d_emissivity_s_inv": 0.4,
+          "d_f_initial": -0.2,
+          "d_opacity_s_inv": 1.1,
+          "d_travel_time_s": -0.3
+        },
+        "maximum_jvp_relative_error": 1.110224763975788e-16,
+        "maximum_sweep_full_direction_jvp_relative_error": 3.8497817110600805e-15,
+        "maximum_sweep_primal_relative_error": 2.1348802538869386e-16,
+        "rows": [
+          {
+            "jvp": -3.9999937333387336,
+            "jvp_reference_mpmath_100dps": -3.999993733338733,
+            "jvp_relative_error": 1.110224763975788e-16,
+            "opacity_s_inv": 1e-06,
+            "optical_depth": 2e-06,
+            "value": 3.299996000003133,
+            "value_reference_mpmath_100dps": 3.299996000003133,
+            "value_relative_error": 0.0
+          },
+          {
+            "jvp": -3.999999937333334,
+            "jvp_reference_mpmath_100dps": -3.999999937333334,
+            "jvp_relative_error": 0.0,
+            "opacity_s_inv": 1e-08,
+            "optical_depth": 2e-08,
+            "value": 3.29999996,
+            "value_reference_mpmath_100dps": 3.2999999600000005,
+            "value_relative_error": 1.3457248946453397e-16
+          },
+          {
+            "jvp": -3.9999999993733333,
+            "jvp_reference_mpmath_100dps": -3.9999999993733333,
+            "jvp_relative_error": 0.0,
+            "opacity_s_inv": 1e-10,
+            "optical_depth": 2e-10,
+            "value": 3.2999999996,
+            "value_reference_mpmath_100dps": 3.2999999996,
+            "value_relative_error": 0.0
+          },
+          {
+            "jvp": -4.0,
+            "jvp_reference_mpmath_100dps": -4.0,
+            "jvp_relative_error": 0.0,
+            "opacity_s_inv": 1e-20,
+            "optical_depth": 2e-20,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          },
+          {
+            "jvp": -4.0,
+            "jvp_reference_mpmath_100dps": -4.0,
+            "jvp_relative_error": 0.0,
+            "opacity_s_inv": 0.0,
+            "optical_depth": 0.0,
+            "value": 3.3,
+            "value_reference_mpmath_100dps": 3.3,
+            "value_relative_error": 0.0
+          }
+        ],
+        "status": "PASS"
+      },
+      "exception": null,
+      "fixed_environment_observed": {
+        "BLIS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "TZ": "UTC",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "probe_id": "stable_transfer_mpmath_oracle",
+      "started_at_utc": "2026-08-23T10:17:39.159109Z"
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "/tmp/rec_bianchi-four-loop-impl-20260823/scripts/run_ode_solver_four_loop_audit.py",
+        "--include-scientific"
+      ],
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.0010850240068975836,
+      "evidence": {
+        "caller_alias_detached": true,
+        "gram_residual": 3.3306690738754696e-16,
+        "gram_residual_acceptance_limit": 1e-10,
+        "inconsistent_raw_constructor_rejected": true,
+        "near_rank_affine_basis_condition": 400000002.43098843,
+        "near_rank_grid_epsilon": 1e-08,
+        "near_rank_grid_rejected": true,
+        "primitive_derived_sha256_after_caller_mutation": "5dc18706e7d89a03f4b952d6d8708601c23bfbb71dc746373a05bf613a20cb8d",
+        "primitive_derived_sha256_before_caller_mutation": "5dc18706e7d89a03f4b952d6d8708601c23bfbb71dc746373a05bf613a20cb8d",
+        "status": "PASS",
+        "write_flag_reversal_rejected": true
+      },
+      "exception": null,
+      "fixed_environment_observed": {
+        "BLIS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "TZ": "UTC",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "probe_id": "harmonic_grid_identity",
+      "started_at_utc": "2026-08-23T10:17:39.177390Z"
+    },
+    {
+      "argv": [
+        "/usr/bin/python",
+        "-B",
+        "/tmp/rec_bianchi-four-loop-impl-20260823/scripts/run_ode_solver_four_loop_audit.py",
+        "--include-scientific"
+      ],
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "duration_seconds": 0.0027020759880542755,
+      "evidence": {
+        "fabricated_commit_rejected": true,
+        "fixed_stencil_doubled_jvp": 2.825714285713697,
+        "fixed_stencil_jvp": 1.4128571428568486,
+        "jvp_homogeneity_absolute_error": 0.0,
+        "metadata_mutation_rejected": true,
+        "metadata_source_detached": true,
+        "mutating_metric_commit_count": 0,
+        "mutating_metric_toctou_commit_rejected": true,
+        "one_slice_future_rejected": true,
+        "signed_only_minima_are_none": true,
+        "signed_only_ptc_converged": true,
+        "signed_only_restart_sha256": "24014afb6597fc34785dc6dd14d9825f1f3e2588f79e7d3b394ea20801c8ee24",
+        "status": "PASS"
+      },
+      "exception": null,
+      "fixed_environment_observed": {
+        "BLIS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "TZ": "UTC",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      },
+      "probe_id": "causal_history_and_ptc_contracts",
+      "started_at_utc": "2026-08-23T10:17:39.178487Z"
+    }
+  ],
+  "preimplementation_evidence": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-m",
+        "not slow"
+      ],
+      "cwd": "/tmp/rec_bianchi-four-loop-impl-20260823",
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "preedit_fast_baseline",
+      "stdout_summary": "324 passed, 37 deselected in 22.72s"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_causal_characteristic_history.py",
+        "tests/trajectory/test_pseudotransient_continuation.py"
+      ],
+      "exit_code": 1,
+      "failure_meaning": "expected preimplementation counterexamples",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "history_ptc_red",
+      "stdout_summary": "10 failed, 12 passed in 2.03s"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_causal_characteristic_history.py",
+        "tests/trajectory/test_pseudotransient_continuation.py"
+      ],
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "history_ptc_green",
+      "stdout_summary": "22 passed in 2.34s"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_adaptive_canonical_macro.py",
+        "-k",
+        "fine_endpoint or finite_typed or typed_failure or rejected_trial_diagnostics or event_landing"
+      ],
+      "exit_code": 1,
+      "failure_meaning": "expected preimplementation counterexamples",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "adaptive_counterexamples_red",
+      "stdout_summary": "6 failed, 7 deselected in 0.74s"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_adaptive_canonical_macro.py",
+        "-k",
+        "fine_endpoint or finite_typed or typed_failure or rejected_trial_diagnostics or event_landing"
+      ],
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "adaptive_counterexamples_green",
+      "stdout_summary": "8 passed, 7 deselected in 0.60s"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/trajectory/test_adaptive_canonical_macro.py",
+        "tests/trajectory/test_scalar_history_owner_swap.py",
+        "tests/trajectory/test_source_identifiable_dae.py"
+      ],
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "adaptive_affected_suite",
+      "stdout_summary": "31 passed in 4.56s"
+    },
+    {
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_grid_preedit_baseline",
+      "stdout_summary": "17 passed in 2.86s"
+    },
+    {
+      "exit_code": 1,
+      "failure_meaning": "expected preimplementation counterexamples",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_grid_counterexamples_red",
+      "stdout_summary": "33 failed, 18 passed in 2.83s"
+    },
+    {
+      "disposition": "test changed to a 1-ULP-scale numerical comparison",
+      "exit_code": 1,
+      "failure_meaning": "test incorrectly required bitwise equality after legitimate weight normalization; production behavior was not weakened",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_grid_test_oracle_correction",
+      "stdout_summary": "1 failed, 50 passed"
+    },
+    {
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_grid_final_focused",
+      "stdout_summary": "51 passed in 2.63s"
+    },
+    {
+      "exit_code": 0,
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_grid_related_regression",
+      "stdout_summary": "205 passed in 99.88s"
+    },
+    {
+      "disposition": "reran with the repository source path declared; this changed the execution environment rather than retrying an unchanged numerical failure",
+      "failure": "first standalone mpmath probe omitted PYTHONPATH=src and raised ModuleNotFoundError",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_tool_failure_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "kernel_probe_environment_correction"
+    },
+    {
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "observations": {
+        "adaptive": [
+          "coarse full state was committed instead of the fine endpoint",
+          "zero-LTE failure retried the same h",
+          "event inside h_min was overrun",
+          "rejected extrema contaminated accepted diagnostics",
+          "recoverable failure could not construct because Inf was forbidden"
+        ],
+        "causal_history_count_one_future_was_thermal": true,
+        "causal_jvp_direction_switch_on_scaling": true,
+        "events": "two and grazing roots were missed while the ODE solve reported success",
+        "fabricated_continuation_state_committed": [
+          999.0
+        ],
+        "harmonic_grid_alias_and_stale_synthesis": true,
+        "history_copy_lower_bound_bytes": 140231525000,
+        "signed_only_restart_minimum": "Infinity",
+        "transfer_jvp_relative_error_by_opacity": {
+          "1e-10": 538.462,
+          "1e-20": 6.5e+19,
+          "1e-6": 3.445e-06,
+          "1e-8": 0.105858
+        },
+        "zero_distance_invalid_occupation_returned": -7.0
+      },
+      "original_capture_class": "transcribed_live_probe_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "preedit_counterexample_metrics"
+    },
+    {
+      "attempt": 1,
+      "disposition": "same command retried once after creating and verifying the exact-head worktree",
+      "failure": "initial command selected the not-yet-created isolated worktree as cwd",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_tool_failure_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "orchestration_retry",
+      "retry_budget_used": 1
+    },
+    {
+      "disposition": "insert the exact repository source directory before direct imports and rerun the changed audit-runner cell",
+      "duration_seconds": 73.46210460399743,
+      "exit_code": 1,
+      "failed_probe_count": 4,
+      "failure": "runner process omitted the repository src directory from sys.path; all direct probes raised ModuleNotFoundError",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "audit_runner_direct_probe_red",
+      "required_commands_pass": true,
+      "started_at_utc": "2026-08-23T09:34:02.040642Z",
+      "status": "FAIL"
+    },
+    {
+      "disposition": "the helper path was abandoned without an unchanged retry; source py_compile/diff checks passed and authoritative probes run only in the audit runner",
+      "exit_code": 1,
+      "failure": "an ad hoc importlib helper omitted sys.modules registration and dataclass decoration raised AttributeError",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_tool_failure_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "repair_probe_helper_import_error"
+    },
+    {
+      "disposition": "kept the new fail-closed gate, asserted ell_max=4 rejection, and ran the direction-only characteristic test at the largest full-rank fixture basis ell_max=3",
+      "duration_seconds": 49.99548924798728,
+      "failure": "the 26-direction background fixture requested ell_max=4 although its 25-mode synthesis rank is 22, condition is 3.720941216207938e16, and analysis/synthesis identity residual is 68.95678676278546",
+      "fast_result": "1 failed, 377 passed, 37 deselected in 20.90s",
+      "focused_result": "91 passed in 4.79s",
+      "limitation": "No retained canonical raw stdout/stderr bundle exists; use only as a bounded historical summary, not as independently replayable evidence.",
+      "original_capture_class": "transcribed_live_process_receipt",
+      "provenance": "TRANSCRIBED_SUMMARY_ONLY",
+      "raw_receipt_available": false,
+      "receipt_id": "repair_closeout_first_integrated_fail",
+      "status": "FAIL",
+      "verify_repo_all_result": "FAIL on the same test after internal fast run"
+    }
+  ],
+  "repository": {
+    "branch": "codex/ode-four-loop-impl-20260823",
+    "changed_file_sha256": {
+      "docs/audit/ODE_SOLVER_FOUR_LOOP_FINAL_REPORT_20260823.md": "5e93d3c3b6f59136b4a6cf89ec95aaf3c8d9f243ad7d58ddb1971c4a9d6c70c4",
+      "scripts/run_ode_solver_four_loop_audit.py": "d55874a3b2eb789d6e4a6d40026a3adff1580767aede1289dc9832fc860d3c6a",
+      "src/full_bianchi_hyrec/recoil/nonlinear_bose_release.py": "6c051f3879bdf3de3f8f18c8a83ff5850ab5b5900842fd81d9c1d8f12cdb1e66",
+      "src/full_bianchi_hyrec/recoil/nonlinear_bose_runtime.py": "9b22f30362350eb37057f42fe428832c0d962016c996a419223b3a37d098d2f0",
+      "src/full_bianchi_hyrec/trajectory/adaptive_macro.py": "529ca578904786870a3159e196408753a6a77f63145e431d6d9e148176c2af4e",
+      "src/full_bianchi_hyrec/trajectory/causal_history.py": "54d3e724d77f8dc44c3e348fed535d14dc3dfb790e88f54b029f74a363a0f164",
+      "src/full_bianchi_hyrec/trajectory/characteristic_angular.py": "394b6174ba79c62e0305de4ac1ff889d4d5b692e8fcd062d9f941655302100df",
+      "src/full_bianchi_hyrec/trajectory/pseudotransient_continuation.py": "408f272c249ce4838b71791190ccc2f2a70a8f1cb8dae3d42fb6670d74003fe1",
+      "tests/recoil/test_nonlinear_bose_release.py": "89f27865989751dedbf0398759922108f1bc0edc6d2275b4b2cbb0c022c44e70",
+      "tests/recoil/test_nonlinear_bose_runtime.py": "3e361fcb2c8cfe625584234c312150e0e679d72d7c6ffb43535993cf60a98318",
+      "tests/trajectory/test_adaptive_canonical_macro.py": "4850f21d160f033e2498eccf52dd887b880221d8c2ab735a7ccadef816ec4a8c",
+      "tests/trajectory/test_causal_characteristic_history.py": "ece736c8eeaca3eae56c0403c33d3b11da06b384821846b128bb71700f910433",
+      "tests/trajectory/test_characteristic_angular_solver.py": "4158b776b04ba769ac9e2f133c3d86f3c290abe3d8e53ce67d2e608876668b79",
+      "tests/trajectory/test_full_coupled_transport.py": "7ec03e8a58893fbbc43141347afdd95ad788459dd0f9f0c1fb42e2aae57bd7d5",
+      "tests/trajectory/test_pseudotransient_continuation.py": "fc3af1d13c6e168d25ce8df16e2f6ced48df16165714a7fa2daf1d8b19b6a2c3"
+    },
+    "diff_sha256": "eca6813b691f77468d5ec68e3da9cc08fbcdbe9866e1aa873df8a1c989163b06",
+    "generated_artifact_excluded_from_own_hash": "docs/audit/ODE_SOLVER_FOUR_LOOP_RUN_DATA_20260823.json",
+    "head": "5a09f3797210284f83a1a1adb0e0092d1ac48475",
+    "head_tree": "4002915ad851afc2ab71f94a882cc99d81748062",
+    "root": "/tmp/rec_bianchi-four-loop-impl-20260823",
+    "status_porcelain": " M src/full_bianchi_hyrec/recoil/nonlinear_bose_release.py\n M src/full_bianchi_hyrec/recoil/nonlinear_bose_runtime.py\n M src/full_bianchi_hyrec/trajectory/adaptive_macro.py\n M src/full_bianchi_hyrec/trajectory/causal_history.py\n M src/full_bianchi_hyrec/trajectory/characteristic_angular.py\n M src/full_bianchi_hyrec/trajectory/pseudotransient_continuation.py\n M tests/recoil/test_nonlinear_bose_release.py\n M tests/recoil/test_nonlinear_bose_runtime.py\n M tests/trajectory/test_adaptive_canonical_macro.py\n M tests/trajectory/test_causal_characteristic_history.py\n M tests/trajectory/test_characteristic_angular_solver.py\n M tests/trajectory/test_full_coupled_transport.py\n M tests/trajectory/test_pseudotransient_continuation.py\n?? docs/audit/\n?? scripts/run_ode_solver_four_loop_audit.py\n"
+  },
+  "schema": "REC_BIANCHI_ODE_FOUR_LOOP_AUDIT_V1",
+  "source_records": {
+    "algorithm_seeded_harness": {
+      "expected_sha256": "36a01fab6217e13b6a32d4150caf190d6f114db4531eb03bca6346694337a454",
+      "match": true,
+      "observed_sha256": "36a01fab6217e13b6a32d4150caf190d6f114db4531eb03bca6346694337a454",
+      "path": "/tmp/rec_bianchi_algoseed_coding_research_record.md"
+    },
+    "foundational_inventory": {
+      "expected_sha256": "52f6673d19d5faa473ee5f02e059bf6f95e96efa5a894c6083399fb1db3ea12b",
+      "match": true,
+      "observed_sha256": "52f6673d19d5faa473ee5f02e059bf6f95e96efa5a894c6083399fb1db3ea12b",
+      "path": "/tmp/rec_bianchi_stiff_dae_research.md"
+    },
+    "independent_numerical": {
+      "expected_sha256": "ca38de1658436a81806a9561fca5eb449e75d649f2cd57226944ae18e7571849",
+      "match": true,
+      "observed_sha256": "ca38de1658436a81806a9561fca5eb449e75d649f2cd57226944ae18e7571849",
+      "path": "/tmp/rec_bianchi_independent_numerical_research.md"
+    },
+    "physics_seeded_harness": {
+      "expected_sha256": "36a55288fa60cea297c810d9e17b2a69642675d9a4a2cc99d32f03dca0b853ba",
+      "match": true,
+      "observed_sha256": "36a55288fa60cea297c810d9e17b2a69642675d9a4a2cc99d32f03dca0b853ba",
+      "path": "/tmp/rec_bianchi_physseed_research_record.md"
+    },
+    "physics_specific": {
+      "expected_sha256": "bbee0d8a3362848aa028d627bd93f84e92fcec7e4c429b8562392224469c15a0",
+      "match": true,
+      "observed_sha256": "bbee0d8a3362848aa028d627bd93f84e92fcec7e4c429b8562392224469c15a0",
+      "path": "/tmp/rec_bianchi_physics_research_record.md"
+    }
+  },
+  "started_at_utc": "2026-08-23T10:16:22.587284Z",
+  "status": "PASS"
+}

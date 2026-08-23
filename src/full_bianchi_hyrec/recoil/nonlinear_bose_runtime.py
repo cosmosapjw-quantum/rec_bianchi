@@ -61,15 +61,24 @@ class CollisionNetwork:
         momentum = np.asarray(self.momentum_scale, dtype=float)
         n_state = len(labels)
 
+        if n_state == 0:
+            raise ValueError("collision network must contain at least one state")
         if intervals.shape != (n_state, 2):
             raise ValueError("state_intervals shape mismatch")
+        numerical_arrays = (intervals, pair, same, mode, equilibrium, momentum)
+        if not all(np.all(np.isfinite(array)) for array in numerical_arrays):
+            raise ValueError("collision network numeric fields must be finite")
         if np.any(intervals[:, 1] <= intervals[:, 0]):
             raise ValueError("state intervals must have positive width")
         if len(set(labels.tolist())) != n_state:
             raise ValueError("state labels must be unique")
-        if pair.ndim != 3 or pair.shape[1:] != (n_state, n_state):
+        if (
+            pair.ndim != 3
+            or pair.shape[0] == 0
+            or pair.shape[1:] != (n_state, n_state)
+        ):
             raise ValueError("pair moment shape mismatch")
-        if same.ndim != 2 or same.shape[1] != n_state:
+        if same.ndim != 2 or same.shape[0] == 0 or same.shape[1] != n_state:
             raise ValueError("same-cell rate shape mismatch")
         if mode.shape != (n_state,) or equilibrium.shape != (n_state,):
             raise ValueError("frequency measure shape mismatch")
@@ -82,6 +91,25 @@ class CollisionNetwork:
             raise ValueError("pair moments must be symmetric")
         if np.min(pair[0]) < -1e-30:
             raise ValueError("scalar pair conductance must be nonnegative")
+
+        try:
+            policy_items = self.inherited_release_policy.items()
+        except AttributeError as exc:
+            raise ValueError("inherited release policy must be a mapping") from exc
+        release_policy: dict[str, int] = {}
+        for key, value in policy_items:
+            if isinstance(value, (bool, np.bool_)) or not isinstance(
+                value, (int, np.integer)
+            ):
+                raise ValueError(
+                    "inherited release policy orders must be nonnegative integers"
+                )
+            order = int(value)
+            if order < 0:
+                raise ValueError(
+                    "inherited release policy orders must be nonnegative integers"
+                )
+            release_policy[str(key)] = order
 
         for name, array in (
             ("state_intervals", intervals),
@@ -98,7 +126,7 @@ class CollisionNetwork:
         object.__setattr__(
             self,
             "inherited_release_policy",
-            {str(key): int(value) for key, value in self.inherited_release_policy.items()},
+            release_policy,
         )
 
     @property
@@ -154,9 +182,29 @@ class LineBoundaryConfig:
     D0_x_blue_s_inv: float = 0.0
 
     def __post_init__(self):
-        if self.nu_abs_Hz <= 0 or self.Doppler_width_Hz <= 0:
+        names = (
+            "nu_abs_Hz",
+            "Doppler_width_Hz",
+            "x_red",
+            "x_blue",
+            "D0_nu_abs_Hz_s",
+            "D0_log_Doppler_width_s_inv",
+            "D0_x_red_s_inv",
+            "D0_x_blue_s_inv",
+        )
+        values = []
+        for name in names:
+            raw = getattr(self, name)
+            if isinstance(raw, (bool, np.bool_)):
+                raise ValueError("line boundary fields must be finite real scalars")
+            value = float(raw)
+            if not math.isfinite(value):
+                raise ValueError("line boundary fields must be finite real scalars")
+            values.append(value)
+            object.__setattr__(self, name, value)
+        if values[0] <= 0.0 or values[1] <= 0.0:
             raise ValueError("line frequency and Doppler width must be positive")
-        if self.x_red >= self.x_blue:
+        if values[2] >= values[3]:
             raise ValueError("x_red must be below x_blue")
 
     @classmethod
@@ -167,12 +215,15 @@ class LineBoundaryConfig:
         x_red: float = -10.25,
         x_blue: float = 10.25,
     ) -> "LineBoundaryConfig":
-        if temperature_K <= 0:
-            raise ValueError("temperature_K must be positive")
+        if isinstance(temperature_K, (bool, np.bool_)):
+            raise ValueError("temperature_K must be finite and positive")
+        temperature = float(temperature_K)
+        if not math.isfinite(temperature) or temperature <= 0.0:
+            raise ValueError("temperature_K must be finite and positive")
         wavelength_m = 1215.6701e-10
         nu_abs = c / wavelength_m
         hydrogen_mass = physical_constants["atomic mass constant"][0] * 1.00782503223
-        width = nu_abs * math.sqrt(2.0 * k * temperature_K / hydrogen_mass) / c
+        width = nu_abs * math.sqrt(2.0 * k * temperature / hydrogen_mass) / c
         return cls(
             nu_abs_Hz=nu_abs,
             Doppler_width_Hz=width,
@@ -247,8 +298,13 @@ def positive_harmonic_grid(ell_max: int) -> HarmonicGrid:
     spherical-harmonic analysis matrix is expensive to reconstruct.
     """
 
+    if isinstance(ell_max, (bool, np.bool_)) or not isinstance(
+        ell_max, (int, np.integer)
+    ):
+        raise ValueError("ell_max must be one of 12, 20, 24")
+    locked_ell_max = int(ell_max)
     try:
-        order = ADAPTIVE_GRID_ORDER[int(ell_max)]
+        order = ADAPTIVE_GRID_ORDER[locked_ell_max]
     except KeyError as exc:
         raise ValueError("ell_max must be one of 12, 20, 24") from exc
     points, weights = lebedev_rule(order)
@@ -257,7 +313,7 @@ def positive_harmonic_grid(ell_max: int) -> HarmonicGrid:
     return HarmonicGrid.from_directions(
         points.T,
         weights / (4.0 * math.pi),
-        ell_max=int(ell_max),
+        ell_max=locked_ell_max,
     )
 
 

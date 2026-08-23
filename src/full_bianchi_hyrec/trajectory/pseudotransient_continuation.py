@@ -16,7 +16,9 @@ from enum import Enum
 import hashlib
 import json
 import math
+import operator
 import struct
+from types import MappingProxyType
 from typing import Callable, Mapping, Sequence
 
 import numpy as np
@@ -34,18 +36,16 @@ def _immutable_float_vector(value: Sequence[float], *, name: str) -> np.ndarray:
     array = np.asarray(value, dtype="<f8")
     if array.ndim != 1 or array.size == 0 or not np.all(np.isfinite(array)):
         raise ValueError(f"{name} must be a finite nonempty one-dimensional vector")
-    result = np.array(array, dtype="<f8", copy=True)
-    result.setflags(write=False)
-    return result
+    copied = np.array(array, dtype="<f8", copy=True, order="C")
+    return np.frombuffer(copied.tobytes(order="C"), dtype="<f8")
 
 
 def _immutable_bool_vector(value: Sequence[bool], *, size: int, name: str) -> np.ndarray:
     array = np.asarray(value, dtype=np.bool_)
     if array.ndim != 1 or array.size != size:
         raise ValueError(f"{name} must be a one-dimensional vector of length {size}")
-    result = np.array(array, dtype=np.bool_, copy=True)
-    result.setflags(write=False)
-    return result
+    copied = np.array(array, dtype=np.bool_, copy=True, order="C")
+    return np.frombuffer(copied.tobytes(order="C"), dtype=np.bool_)
 
 
 def _canonical_json_bytes(value: Mapping[str, object]) -> bytes:
@@ -56,6 +56,38 @@ def _canonical_json_bytes(value: Mapping[str, object]) -> bytes:
         ensure_ascii=True,
         allow_nan=False,
     ).encode("utf-8")
+
+
+def _freeze_json_value(value: object) -> object:
+    """Detach and recursively freeze an already JSON-normalized value."""
+
+    if isinstance(value, dict):
+        return MappingProxyType(
+            {str(key): _freeze_json_value(item) for key, item in value.items()}
+        )
+    if isinstance(value, list):
+        return tuple(_freeze_json_value(item) for item in value)
+    return value
+
+
+def _thaw_json_value(value: object) -> object:
+    if isinstance(value, Mapping):
+        return {str(key): _thaw_json_value(item) for key, item in value.items()}
+    if isinstance(value, tuple):
+        return [_thaw_json_value(item) for item in value]
+    return value
+
+
+def _positive_integer(value: object, *, name: str) -> int:
+    if isinstance(value, (bool, np.bool_)):
+        raise TypeError(f"{name} must be an integer, not bool")
+    try:
+        result = operator.index(value)
+    except TypeError as exc:
+        raise TypeError(f"{name} must be an integer") from exc
+    if result <= 0:
+        raise ValueError(f"{name} must be positive")
+    return int(result)
 
 
 @dataclass(frozen=True)
@@ -120,10 +152,17 @@ class AcceptedContinuationState:
             raise ValueError("branch_id is required")
         object.__setattr__(self, "branch_id", branch)
 
-        metadata = {} if self.metadata is None else dict(self.metadata)
-        # Validate serializability now, not at a later restart boundary.
-        _canonical_json_bytes(metadata)
-        object.__setattr__(self, "metadata", metadata)
+        metadata = (
+            {}
+            if self.metadata is None
+            else _thaw_json_value(self.metadata)
+        )
+        if not isinstance(metadata, dict):
+            raise TypeError("metadata must be a JSON object mapping")
+        # JSON round-trip both validates and recursively detaches caller-owned
+        # containers before the normalized value is frozen.
+        normalized = json.loads(_canonical_json_bytes(metadata).decode("utf-8"))
+        object.__setattr__(self, "metadata", _freeze_json_value(normalized))
 
     def to_bytes(self) -> bytes:
         header = {
@@ -137,7 +176,7 @@ class AcceptedContinuationState:
             "branch_id": self.branch_id,
             "event_index": self.event_index,
             "parent_sha256": self.parent_sha256,
-            "metadata": dict(self.metadata),
+            "metadata": _thaw_json_value(self.metadata),
         }
         header_bytes = _canonical_json_bytes(header)
         return b"".join(
@@ -256,10 +295,12 @@ class PseudoTransientTolerances:
             if not math.isfinite(value) or value <= 0.0:
                 raise ValueError(f"{name} must be positive and finite")
             object.__setattr__(self, name, value)
-        outer = int(self.maximum_outer_steps)
-        newton = int(self.maximum_newton_steps)
-        if outer <= 0 or newton <= 0:
-            raise ValueError("iteration limits must be positive")
+        outer = _positive_integer(
+            self.maximum_outer_steps, name="maximum_outer_steps"
+        )
+        newton = _positive_integer(
+            self.maximum_newton_steps, name="maximum_newton_steps"
+        )
         object.__setattr__(self, "maximum_outer_steps", outer)
         object.__setattr__(self, "maximum_newton_steps", newton)
         minimum = float(self.minimum_pseudo_time)
@@ -275,7 +316,11 @@ class PseudoTransientTolerances:
         growth = float(self.growth_factor)
         shrink = float(self.shrink_factor)
         line = float(self.minimum_line_search)
-        if growth <= 1.0 or not (0.0 < shrink < 1.0) or not (0.0 < line <= 1.0):
+        if not all(math.isfinite(value) for value in (growth, shrink, line)) or (
+            growth <= 1.0
+            or not (0.0 < shrink < 1.0)
+            or not (0.0 < line <= 1.0)
+        ):
             raise ValueError("controller factors are invalid")
         object.__setattr__(self, "growth_factor", growth)
         object.__setattr__(self, "shrink_factor", shrink)
@@ -290,7 +335,31 @@ class PseudoTransientIteration:
     physical_residual: float
     pseudo_backward_error: float
     newton_steps: int
-    minimum_positive_value: float
+    minimum_positive_value: float | None
+
+    def __post_init__(self) -> None:
+        outer = operator.index(self.outer_index)
+        steps = operator.index(self.newton_steps)
+        if outer < 0 or steps < 0:
+            raise ValueError("iteration indices and counts must be nonnegative")
+        object.__setattr__(self, "outer_index", int(outer))
+        object.__setattr__(self, "newton_steps", int(steps))
+        object.__setattr__(self, "accepted", bool(self.accepted))
+        for name in ("pseudo_time", "physical_residual", "pseudo_backward_error"):
+            value = float(getattr(self, name))
+            if not math.isfinite(value) or value < 0.0:
+                raise ValueError(f"{name} must be finite and nonnegative")
+            if name == "pseudo_time" and value == 0.0:
+                raise ValueError("pseudo_time must be positive")
+            object.__setattr__(self, name, value)
+        minimum = self.minimum_positive_value
+        if minimum is not None:
+            minimum = float(minimum)
+            if not math.isfinite(minimum) or minimum <= 0.0:
+                raise ValueError(
+                    "minimum_positive_value must be None or positive and finite"
+                )
+        object.__setattr__(self, "minimum_positive_value", minimum)
 
 
 @dataclass(frozen=True)
@@ -529,14 +598,14 @@ def solve_pseudotransient(
         minimum_positive = (
             float(np.min(candidate_state[parent.positive_mask]))
             if np.any(parent.positive_mask)
-            else math.inf
+            else None
         )
         improved = candidate_physical_norm < physical_norm
         accepted = bool(
             newton_converged
             and final_backward <= settings.pseudo_backward_error
             and improved
-            and minimum_positive > 0.0
+            and (minimum_positive is None or minimum_positive > 0.0)
         )
         records.append(
             PseudoTransientIteration(
@@ -593,13 +662,27 @@ class ContinuationTransaction:
         self,
         parent: AcceptedContinuationState,
         result: PseudoTransientResult,
+        *,
+        admission_metric: ConvergenceMetricFunction,
+        maximum_admission_residual: float,
     ) -> None:
         if result.parent_sha256 != parent.sha256:
             raise ValueError("pseudo-transient result belongs to a different parent")
         if result.accepted_history_count != parent.accepted_history_count:
             raise ValueError("pseudo-steps may not mutate accepted-history count")
+        if not callable(admission_metric):
+            raise TypeError("admission_metric must be callable")
+        maximum = float(maximum_admission_residual)
+        if not math.isfinite(maximum) or maximum <= 0.0:
+            raise ValueError("maximum_admission_residual must be positive and finite")
         self.parent = parent
         self.result = result
+        self._parent_identity_sha256 = parent.sha256
+        self._result_identity_sha256 = hashlib.sha256(
+            result.restart_bytes()
+        ).hexdigest()
+        self._admission_metric = admission_metric
+        self._maximum_admission_residual = maximum
         self.status = ContinuationTransactionStatus.PENDING
         self.commit_count = 0
 
@@ -614,11 +697,40 @@ class ContinuationTransaction:
             raise RuntimeError("transaction is no longer pending")
         if not self.result.converged:
             raise RuntimeError("cannot commit a nonconverged pseudo-transient result")
-        metadata = dict(self.parent.metadata)
+        if (
+            self.parent.sha256 != self._parent_identity_sha256
+            or hashlib.sha256(self.result.restart_bytes()).hexdigest()
+            != self._result_identity_sha256
+        ):
+            raise RuntimeError("continuation parent or result identity changed")
+        candidate = _immutable_float_vector(
+            self.result.state_values, name="admission candidate"
+        )
+        observed = float(
+            self._admission_metric(candidate)
+        )
+        if (
+            not math.isfinite(observed)
+            or observed < 0.0
+            or observed > self._maximum_admission_residual
+        ):
+            raise RuntimeError(
+                "independent admission metric rejected pseudo-transient candidate"
+            )
+        if (
+            self.parent.sha256 != self._parent_identity_sha256
+            or hashlib.sha256(self.result.restart_bytes()).hexdigest()
+            != self._result_identity_sha256
+        ):
+            raise RuntimeError(
+                "continuation parent or result identity changed during admission"
+            )
+        metadata = _thaw_json_value(self.parent.metadata)
+        assert isinstance(metadata, dict)
         if metadata_update is not None:
             metadata.update(dict(metadata_update))
         committed = AcceptedContinuationState(
-            values=self.result.state_values,
+            values=candidate,
             positive_mask=self.parent.positive_mask,
             accepted_history_count=self.parent.accepted_history_count + 1,
             history_sha256=history_sha256,

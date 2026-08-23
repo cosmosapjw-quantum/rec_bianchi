@@ -14,6 +14,121 @@ import numpy as np
 from scipy.special import sph_harm_y
 
 
+_HARMONIC_IDENTITY_TOLERANCE = 1.0e-10
+_HARMONIC_MAX_WEIGHTED_CONDITION = 1.0 / math.sqrt(np.finfo(float).eps)
+
+
+def _validated_ell_max(value) -> int:
+    if isinstance(value, (bool, np.bool_)) or not isinstance(
+        value, (int, np.integer)
+    ):
+        raise ValueError("ell_max must be a nonnegative integer")
+    ell_max = int(value)
+    if ell_max < 0:
+        raise ValueError("ell_max must be a nonnegative integer")
+    return ell_max
+
+
+def _validated_grid_primitives(directions, weights, ell_max):
+    d = np.array(directions, dtype=float, copy=True, order="C")
+    w = np.array(weights, dtype=float, copy=True, order="C")
+    ell = _validated_ell_max(ell_max)
+    if d.ndim != 2 or d.shape[1] != 3 or len(d) == 0:
+        raise ValueError("directions must have nonempty shape (n,3)")
+    if w.shape != (len(d),):
+        raise ValueError("weights must have shape (n,)")
+    if not np.all(np.isfinite(d)) or not np.all(np.isfinite(w)):
+        raise ValueError("grid directions and weights must be finite")
+    if np.any(w <= 0.0):
+        raise ValueError("grid weights must be strictly positive")
+    weight_sum = float(np.sum(w))
+    if not math.isfinite(weight_sum) or weight_sum <= 0.0:
+        raise ValueError("grid weight sum must be finite and positive")
+    w /= weight_sum
+    if np.max(np.abs(np.linalg.norm(d, axis=1) - 1.0)) > 1.0e-12:
+        raise ValueError("directions must lie on unit sphere")
+    return d, w, ell
+
+
+def _harmonic_components(directions: np.ndarray, weights: np.ndarray, ell_max: int):
+    theta = np.arccos(np.clip(directions[:, 2], -1.0, 1.0))
+    phi = np.mod(np.arctan2(directions[:, 1], directions[:, 0]), 2.0 * math.pi)
+    lm = []
+    columns = []
+    for ell in range(ell_max + 1):
+        for m in range(-ell, ell + 1):
+            lm.append((ell, m))
+            columns.append(
+                math.sqrt(4.0 * math.pi) * sph_harm_y(ell, m, theta, phi)
+            )
+    synthesis = np.column_stack(columns)
+    weighted_synthesis = np.sqrt(weights)[:, None] * synthesis
+    singular_values = np.linalg.svd(weighted_synthesis, compute_uv=False)
+    if len(singular_values) < len(lm) or singular_values[-1] <= 0.0:
+        raise ValueError("directions do not support the requested harmonic basis")
+    weighted_condition = float(singular_values[0] / singular_values[-1])
+    if (
+        not math.isfinite(weighted_condition)
+        or weighted_condition > _HARMONIC_MAX_WEIGHTED_CONDITION
+    ):
+        raise ValueError(
+            "requested harmonic basis is numerically rank deficient or ill-conditioned"
+        )
+    raw_analysis = synthesis.conj().T * weights[None, :]
+    gram = raw_analysis @ synthesis
+    identity = np.eye(len(lm))
+    raw_residual = float(np.max(np.abs(gram - identity)))
+    try:
+        analysis = (
+            raw_analysis
+            if raw_residual < 1.0e-10
+            else np.linalg.solve(gram, raw_analysis)
+        )
+    except np.linalg.LinAlgError as exc:
+        raise ValueError(
+            "directions do not support the requested harmonic basis"
+        ) from exc
+    residual = float(np.max(np.abs(analysis @ synthesis - identity)))
+    if not math.isfinite(residual) or residual > _HARMONIC_IDENTITY_TOLERANCE:
+        raise ValueError(
+            "harmonic analysis/synthesis coherence residual exceeds tolerance"
+        )
+    lm_array = np.asarray(lm, dtype=int)
+    ell_of_mode = lm_array[:, 0].copy()
+    return lm_array, synthesis, analysis, ell_of_mode, residual
+
+
+def _immutable_array(value: np.ndarray) -> np.ndarray:
+    """Copy to a read-only view whose immutable bytes prevent flag reversal."""
+
+    copied = np.array(value, copy=True, order="C")
+    immutable = np.frombuffer(copied.tobytes(order="C"), dtype=copied.dtype)
+    return immutable.reshape(copied.shape)
+
+
+def _matches_derived(provided, expected) -> bool:
+    candidate = np.asarray(provided)
+    if candidate.shape != expected.shape or not np.all(np.isfinite(candidate)):
+        return False
+    if np.issubdtype(expected.dtype, np.integer):
+        return bool(np.array_equal(candidate, expected))
+    return bool(np.allclose(candidate, expected, rtol=2.0e-13, atol=2.0e-14))
+
+
+def _set_grid_components(grid, directions, weights, ell_max, derived) -> None:
+    for name, array in (
+        ("directions", directions),
+        ("weights", weights),
+        ("lm", derived[0]),
+        ("synthesis", derived[1]),
+        ("analysis", derived[2]),
+        ("ell_of_mode", derived[3]),
+    ):
+        object.__setattr__(grid, name, _immutable_array(array))
+    object.__setattr__(grid, "ell_max", ell_max)
+    object.__setattr__(grid, "gram_residual", derived[4])
+
+
 @dataclass(frozen=True)
 class HarmonicGrid:
     directions: np.ndarray
@@ -25,60 +140,37 @@ class HarmonicGrid:
     ell_of_mode: np.ndarray
     gram_residual: float
 
+    def __post_init__(self) -> None:
+        directions, weights, ell_max = _validated_grid_primitives(
+            self.directions, self.weights, self.ell_max
+        )
+        expected = _harmonic_components(directions, weights, ell_max)
+        supplied = (self.lm, self.synthesis, self.analysis, self.ell_of_mode)
+        for value, reference in zip(supplied, expected[:4]):
+            if not _matches_derived(value, reference):
+                raise ValueError(
+                    "supplied derived harmonic data are inconsistent with primitives"
+                )
+        residual = float(self.gram_residual)
+        if not math.isfinite(residual) or not math.isclose(
+            residual, expected[4], rel_tol=2.0e-12, abs_tol=2.0e-14
+        ):
+            raise ValueError(
+                "supplied derived harmonic data are inconsistent with primitives"
+            )
+        _set_grid_components(self, directions, weights, ell_max, expected)
+
     @property
     def n_angle(self) -> int:
         return int(len(self.weights))
 
     @classmethod
     def from_directions(cls, directions, weights, *, ell_max):
-        d = np.asarray(directions, float)
-        w = np.asarray(weights, float)
-        if d.ndim != 2 or d.shape[1] != 3:
-            raise ValueError("directions must have shape (n,3)")
-        if w.shape != (len(d),) or np.any(w <= 0):
-            raise ValueError("invalid weights")
-        w = w / w.sum()
-        if np.max(np.abs(np.linalg.norm(d, axis=1) - 1)) > 1e-12:
-            raise ValueError("directions must lie on unit sphere")
-        if int(ell_max) < 0:
-            raise ValueError("ell_max must be nonnegative")
-
-        theta = np.arccos(np.clip(d[:, 2], -1, 1))
-        phi = np.mod(np.arctan2(d[:, 1], d[:, 0]), 2 * math.pi)
-        lm = []
-        columns = []
-        for ell in range(int(ell_max) + 1):
-            for m in range(-ell, ell + 1):
-                lm.append((ell, m))
-                columns.append(
-                    math.sqrt(4 * math.pi) * sph_harm_y(ell, m, theta, phi)
-                )
-        synthesis = np.column_stack(columns)
-        raw_analysis = synthesis.conj().T * w[None, :]
-        gram = raw_analysis @ synthesis
-        identity = np.eye(len(lm))
-        residual = float(np.max(np.abs(gram - identity)))
-        analysis = (
-            raw_analysis
-            if residual < 1e-10
-            else np.linalg.solve(gram, raw_analysis)
-        )
-        residual = float(np.max(np.abs(analysis @ synthesis - identity)))
-        lm_array = np.asarray(lm, int)
-        ell_of_mode = np.asarray([ell for ell, _ in lm], int)
-        immutable = (d, w, lm_array, synthesis, analysis, ell_of_mode)
-        for array in immutable:
-            array.setflags(write=False)
-        return cls(
-            d,
-            w,
-            int(ell_max),
-            lm_array,
-            synthesis,
-            analysis,
-            ell_of_mode,
-            residual,
-        )
+        d, w, ell = _validated_grid_primitives(directions, weights, ell_max)
+        derived = _harmonic_components(d, w, ell)
+        grid = object.__new__(cls)
+        _set_grid_components(grid, d, w, ell, derived)
+        return grid
 
     def analyze(self, fields):
         f = np.asarray(fields)

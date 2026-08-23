@@ -224,8 +224,16 @@ def test_coupled_collision_transport_step_preserves_positivity_and_global_ledger
 def test_locked_35_state_operator_uses_actual_background_characteristics() -> None:
     network = CollisionNetwork.from_npz(NETWORK)
     with np.load(BACKGROUND, allow_pickle=False) as data:
+        # This 26-direction fixture has rank 22 at ell_max=4, so its 25-mode
+        # analysis/synthesis map is not an admissible harmonic grid.  The face
+        # speed assertion below uses directions only; ell_max=3 is the largest
+        # full-rank basis supported by these same physical ordinates.
+        with pytest.raises(ValueError, match="rank deficient|ill-conditioned"):
+            HarmonicGrid.from_directions(
+                data["directions"], data["angular_weights"], ell_max=4
+            )
         grid = HarmonicGrid.from_directions(
-            data["directions"], data["angular_weights"], ell_max=4
+            data["directions"], data["angular_weights"], ell_max=3
         )
     sequence = BackgroundSnapshotSequence.from_npz(
         BACKGROUND, "Bianchi_II_large_shear"
