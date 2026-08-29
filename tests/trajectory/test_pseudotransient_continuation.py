@@ -10,6 +10,7 @@ from full_bianchi_hyrec.trajectory.pseudotransient_continuation import (
     ContinuationTransaction,
     ContinuationTransactionStatus,
     MixedVariableTransform,
+    PseudoTransientResult,
     PseudoTransientTolerances,
     project_left_nullspace,
     solve_pseudotransient,
@@ -57,6 +58,29 @@ def test_accepted_state_hash_is_deterministic_and_provenance_sensitive() -> None
         _parent(values=(0.0, 1.0))
 
 
+def test_accepted_state_metadata_is_deeply_immutable_and_source_detached() -> None:
+    metadata = {"nested": {"values": [1, 2]}, "label": "original"}
+    parent = AcceptedContinuationState(
+        values=np.asarray([2.0]),
+        positive_mask=np.asarray([True]),
+        accepted_history_count=1,
+        history_sha256=_digest("history"),
+        background_sha256=_digest("background"),
+        network_sha256=_digest("network"),
+        interface_sha256=_digest("interface"),
+        branch_id="BII",
+        metadata=metadata,
+    )
+    before = parent.sha256
+    metadata["nested"]["values"].append(3)
+    metadata["label"] = "mutated"
+    assert parent.sha256 == before
+    with pytest.raises(TypeError):
+        parent.metadata["label"] = "forbidden"
+    with pytest.raises(TypeError):
+        parent.metadata["nested"]["new"] = 1
+
+
 def test_mixed_variable_transform_roundtrip_and_jvp_diagonal() -> None:
     transform = MixedVariableTransform(np.asarray([True, False, True]))
     values = np.asarray([2.0, -3.5, 0.25])
@@ -74,6 +98,21 @@ def test_left_null_projection_is_exact_to_roundoff() -> None:
     projected = project_left_nullspace(rhs, left)
     assert abs(float((left @ projected).item())) < 1.0e-14
     assert np.allclose(projected, rhs - np.mean(rhs))
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    [
+        {"maximum_outer_steps": True},
+        {"maximum_outer_steps": 1.5},
+        {"maximum_newton_steps": -1},
+        {"growth_factor": float("nan")},
+        {"shrink_factor": float("inf")},
+    ],
+)
+def test_pseudotransient_policy_rejects_noncanonical_values(kwargs: dict[str, object]) -> None:
+    with pytest.raises((TypeError, ValueError)):
+        PseudoTransientTolerances(**kwargs)
 
 
 def test_stiff_scalar_pseudotransient_converges_without_history_commit() -> None:
@@ -147,6 +186,21 @@ def test_nonlinear_bose_activity_root_and_restart_are_deterministic() -> None:
     assert first.sha256 == second.sha256
 
 
+def test_signed_only_iteration_uses_none_not_infinity_and_restart_is_json_safe() -> None:
+    parent = _parent(values=(2.0,), positive_mask=(False,))
+
+    result = solve_pseudotransient(
+        parent,
+        residual=lambda state: state - 1.0,
+        jacobian=lambda state: np.asarray([[1.0]]),
+        mass_diagonal=np.asarray([1.0]),
+    )
+    assert result.converged
+    assert result.iterations
+    assert all(item.minimum_positive_value is None for item in result.iterations)
+    assert result.restart_bytes()
+
+
 def test_transaction_reject_rollback_are_byte_exact_and_commit_is_one_shot() -> None:
     parent = _parent(values=(2.0,), positive_mask=(True,))
 
@@ -165,18 +219,25 @@ def test_transaction_reject_rollback_are_byte_exact_and_commit_is_one_shot() -> 
     )
     assert result.converged
 
-    rejected = ContinuationTransaction(parent, result)
+    metric = lambda state: abs(float(state[0] - 1.0))
+    rejected = ContinuationTransaction(
+        parent, result, admission_metric=metric, maximum_admission_residual=1.0e-10
+    )
     before = parent.to_bytes()
     restored = rejected.discard()
     assert restored.to_bytes() == before
     assert rejected.status is ContinuationTransactionStatus.DISCARDED
     assert rejected.commit_count == 0
 
-    rolled = ContinuationTransaction(parent, result)
+    rolled = ContinuationTransaction(
+        parent, result, admission_metric=metric, maximum_admission_residual=1.0e-10
+    )
     assert rolled.rollback().to_bytes() == before
     assert rolled.status is ContinuationTransactionStatus.ROLLED_BACK
 
-    committed_transaction = ContinuationTransaction(parent, result)
+    committed_transaction = ContinuationTransaction(
+        parent, result, admission_metric=metric, maximum_admission_residual=1.0e-10
+    )
     committed = committed_transaction.commit(
         history_sha256=_digest("history after accepted macro"),
         metadata_update={"macro_index": 7},
@@ -186,3 +247,52 @@ def test_transaction_reject_rollback_are_byte_exact_and_commit_is_one_shot() -> 
     assert committed_transaction.commit_count == 1
     with pytest.raises(RuntimeError):
         committed_transaction.commit(history_sha256=_digest("second commit"))
+
+
+def test_transaction_recomputes_admission_metric_and_rejects_fabricated_success() -> None:
+    parent = _parent(values=(2.0,), positive_mask=(True,))
+    fabricated = PseudoTransientResult(
+        parent_sha256=parent.sha256,
+        state_values=np.asarray([999.0]),
+        converged=True,
+        iterations=(),
+        final_physical_residual=0.0,
+        accepted_history_count=parent.accepted_history_count,
+    )
+    transaction = ContinuationTransaction(
+        parent,
+        fabricated,
+        admission_metric=lambda state: abs(float(state[0] - 1.0)),
+        maximum_admission_residual=1.0e-10,
+    )
+    with pytest.raises(RuntimeError, match="independent admission metric"):
+        transaction.commit(history_sha256=_digest("should not commit"))
+
+
+def test_transaction_commits_only_the_exact_checked_snapshot() -> None:
+    parent = _parent(values=(1.0,), positive_mask=(False,))
+    result = PseudoTransientResult(
+        parent_sha256=parent.sha256,
+        state_values=np.asarray([1.0]),
+        converged=True,
+        iterations=(),
+        final_physical_residual=0.0,
+        accepted_history_count=parent.accepted_history_count,
+    )
+
+    def mutate_result_during_metric(candidate: np.ndarray) -> float:
+        with pytest.raises(ValueError):
+            candidate.setflags(write=True)
+        object.__setattr__(result, "state_values", np.asarray([999.0]))
+        return 0.0
+
+    transaction = ContinuationTransaction(
+        parent,
+        result,
+        admission_metric=mutate_result_during_metric,
+        maximum_admission_residual=1.0e-12,
+    )
+    with pytest.raises(RuntimeError, match="identity changed during admission"):
+        transaction.commit(history_sha256=_digest("toctou-history"))
+    assert transaction.commit_count == 0
+    assert transaction.status is ContinuationTransactionStatus.PENDING

@@ -175,20 +175,113 @@ def constant_coefficient_transfer(
 ) -> float:
     """Exact positive solution of ``df/dt = emissivity - opacity*f``."""
 
-    f0 = float(f_initial)
-    emissivity = float(emissivity_s_inv)
+    f0, emissivity, opacity, duration = _validated_transfer_inputs(
+        f_initial,
+        emissivity_s_inv,
+        opacity_s_inv,
+        travel_time_s,
+    )
+    transmission, source_factor, _ = _constant_transfer_factors(
+        opacity, duration
+    )
+    result = math.fsum((transmission * f0, emissivity * source_factor))
+    if not math.isfinite(result):
+        raise FloatingPointError("constant transfer result is not finite")
+    return result
+
+
+def _validated_transfer_inputs(
+    f_initial: float,
+    emissivity_s_inv: float,
+    opacity_s_inv: float,
+    travel_time_s: float,
+) -> tuple[float, float, float, float]:
+    values = tuple(
+        float(value)
+        for value in (
+            f_initial,
+            emissivity_s_inv,
+            opacity_s_inv,
+            travel_time_s,
+        )
+    )
+    if not all(math.isfinite(value) for value in values):
+        raise ValueError("transfer inputs must be finite")
+    if any(value < 0.0 for value in values):
+        raise ValueError(
+            "physical occupation, emissivity, opacity and time must be nonnegative"
+        )
+    return values
+
+
+def _constant_transfer_factors(
+    opacity_s_inv: float,
+    travel_time_s: float,
+) -> tuple[float, float, float]:
+    """Return attenuation, source integral, and its opacity derivative.
+
+    For ``x = opacity*time`` below ``1e-2``, the alternating Taylor
+    remainder after the retained terms is below ``exp(x)*x**7/45360`` for
+    the derivative.  This avoids subtracting two nearly equal O(x) terms in
+    the opacity derivative while matching the ``expm1`` branch continuously.
+    """
+
     opacity = float(opacity_s_inv)
     duration = float(travel_time_s)
-    if not all(math.isfinite(v) for v in (f0, emissivity, opacity, duration)):
-        raise ValueError("transfer inputs must be finite")
-    if f0 < 0.0 or emissivity < 0.0 or opacity < 0.0 or duration < 0.0:
-        raise ValueError("physical occupation, emissivity, opacity and time must be nonnegative")
     if opacity == 0.0:
-        return f0 + emissivity * duration
+        return 1.0, duration, -0.5 * duration * duration
+
     optical_depth = opacity * duration
+    transmission = math.exp(-optical_depth)
+    if optical_depth <= 1.0e-2:
+        x = optical_depth
+        phi = 1.0 + x * (
+            -0.5
+            + x
+            * (
+                1.0 / 6.0
+                + x
+                * (
+                    -1.0 / 24.0
+                    + x
+                    * (
+                        1.0 / 120.0
+                        + x * (-1.0 / 720.0 + x * (1.0 / 5040.0))
+                    )
+                )
+            )
+        )
+        phi_prime = -0.5 + x * (
+            1.0 / 3.0
+            + x
+            * (
+                -1.0 / 8.0
+                + x
+                * (
+                    1.0 / 30.0
+                    + x
+                    * (
+                        -1.0 / 144.0
+                        + x * (1.0 / 840.0 + x * (-1.0 / 5760.0))
+                    )
+                )
+            )
+        )
+        return (
+            transmission,
+            duration * phi,
+            duration * duration * phi_prime,
+        )
+
     absorbed = -math.expm1(-optical_depth)
-    transmission = 1.0 - absorbed
-    return transmission * f0 + emissivity * absorbed / opacity
+    source_factor = absorbed / opacity
+    if math.isinf(optical_depth):
+        source_opacity_derivative = -1.0 / (opacity * opacity)
+    else:
+        source_opacity_derivative = (
+            optical_depth * transmission - absorbed
+        ) / (opacity * opacity)
+    return transmission, source_factor, source_opacity_derivative
 
 
 def constant_coefficient_transfer_jvp(
@@ -204,40 +297,45 @@ def constant_coefficient_transfer_jvp(
 ) -> float:
     """Analytic JVP of :func:`constant_coefficient_transfer`."""
 
-    f0 = float(f_initial)
-    j = float(emissivity_s_inv)
-    chi = float(opacity_s_inv)
-    time = float(travel_time_s)
-    # Reuse validation and keep the chi=0 derivative as the analytic limit.
-    constant_coefficient_transfer(
-        f_initial=f0,
-        emissivity_s_inv=j,
-        opacity_s_inv=chi,
-        travel_time_s=time,
+    f0, j, chi, time = _validated_transfer_inputs(
+        f_initial,
+        emissivity_s_inv,
+        opacity_s_inv,
+        travel_time_s,
     )
-    df0 = float(d_f_initial)
-    dj = float(d_emissivity_s_inv)
-    dchi = float(d_opacity_s_inv)
-    dtime = float(d_travel_time_s)
-    if chi == 0.0:
-        return (
-            df0
-            + time * dj
-            + j * dtime
-            + (-time * f0 - 0.5 * j * time**2) * dchi
+    tangents = tuple(
+        float(value)
+        for value in (
+            d_f_initial,
+            d_emissivity_s_inv,
+            d_opacity_s_inv,
+            d_travel_time_s,
         )
-
-    optical_depth = chi * time
-    transmission = math.exp(-optical_depth)
-    absorbed = 1.0 - transmission
-    source_factor = absorbed / chi
-    dsource_dchi = (time * transmission * chi - absorbed) / chi**2
-    return (
-        transmission * df0
-        + source_factor * dj
-        + (-time * transmission * f0 + j * dsource_dchi) * dchi
-        + transmission * (j - chi * f0) * dtime
     )
+    if not all(math.isfinite(value) for value in tangents):
+        raise ValueError("transfer tangent inputs must be finite")
+    df0, dj, dchi, dtime = tangents
+
+    transmission, source_factor, source_opacity_derivative = (
+        _constant_transfer_factors(chi, time)
+    )
+    opacity_partial = math.fsum(
+        (-time * transmission * f0, j * source_opacity_derivative)
+    )
+    time_partial = math.fsum(
+        (transmission * j, -(transmission * chi) * f0)
+    )
+    result = math.fsum(
+        (
+            transmission * df0,
+            source_factor * dj,
+            opacity_partial * dchi,
+            time_partial * dtime,
+        )
+    )
+    if not math.isfinite(result):
+        raise FloatingPointError("constant transfer JVP is not finite")
+    return result
 
 
 @dataclass(frozen=True)
@@ -325,10 +423,26 @@ class BianchiCharacteristicFaceSolver:
             and target > 0.0
         ):
             raise ValueError("frequencies must be positive and finite")
-        if int(n_steps) < 2:
+        if isinstance(n_steps, (bool, np.bool_)) or not isinstance(
+            n_steps, (int, np.integer)
+        ):
+            raise ValueError("n_steps must be an integer")
+        step_limit = int(n_steps)
+        if step_limit < 2:
             raise ValueError("n_steps must be at least two")
+        if isinstance(time_safety_factor, (bool, np.bool_)):
+            raise ValueError("time_safety_factor must be finite and positive")
+        safety_factor = float(time_safety_factor)
+        if not math.isfinite(safety_factor) or safety_factor <= 0.0:
+            raise ValueError("time_safety_factor must be finite and positive")
         direction = _unit(np.asarray(direction_normal, dtype=float))
         initial = self.local_characteristic(direction)
+        zero_time_occupation = constant_coefficient_transfer(
+            f_initial=f_initial,
+            emissivity_s_inv=emissivity_s_inv,
+            opacity_s_inv=opacity_s_inv,
+            travel_time_s=0.0,
+        )
         delta_log = math.log(target / nu0)
         if delta_log == 0.0:
             return BianchiCharacteristicFaceResult(
@@ -336,7 +450,7 @@ class BianchiCharacteristicFaceSolver:
                 direction_hydrogen=initial.direction_hydrogen,
                 frequency_face_Hz=nu0,
                 frequency_relative_residual=0.0,
-                f_face=float(f_initial),
+                f_face=zero_time_occupation,
                 travel_time_s=0.0,
                 minimum_doppler_factor=initial.doppler_factor,
                 minimum_abs_frequency_speed_s_inv=abs(initial.R_hydrogen_s_inv),
@@ -348,10 +462,10 @@ class BianchiCharacteristicFaceSolver:
             raise ValueError("frequency-speed zero requires event localization")
 
         estimated_time = delta_log / initial.R_hydrogen_s_inv
-        maximum_time = float(time_safety_factor) * estimated_time
+        maximum_time = safety_factor * estimated_time
         if maximum_time <= 0.0 or not math.isfinite(maximum_time):
             raise ValueError("invalid characteristic travel-time estimate")
-        dt = maximum_time / int(n_steps)
+        dt = maximum_time / step_limit
         target_log = math.log(target)
         log_frequency = math.log(nu0)
         orientation = math.copysign(1.0, delta_log)
@@ -360,7 +474,7 @@ class BianchiCharacteristicFaceSolver:
         min_abs_speed = abs(initial.R_hydrogen_s_inv)
         previous_speed = initial.R_hydrogen_s_inv
 
-        for step in range(1, int(n_steps) + 1):
+        for step in range(1, step_limit + 1):
             next_direction, next_log, speeds, dopplers = self._rk4_step(
                 direction, log_frequency, dt
             )
