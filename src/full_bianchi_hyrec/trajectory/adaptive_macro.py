@@ -39,6 +39,56 @@ class BackwardEulerStepResult(Protocol):
     minimum_physical_population: float
 
 
+class AdaptiveTrialFailureKind(str, Enum):
+    """Closed retry classes emitted before an adaptive trial can be accepted."""
+
+    RETRY_LTE = "RETRY_LTE"
+    RETRY_NONLINEAR = "RETRY_NONLINEAR"
+    RETRY_LINEAR = "RETRY_LINEAR"
+    RETRY_DOMAIN = "RETRY_DOMAIN"
+    NONFINITE_OUTPUT = "NONFINITE_OUTPUT"
+
+
+@dataclass(frozen=True)
+class AdaptiveBackwardEulerFailure:
+    """Retryable trial failure with no state that can be committed.
+
+    Diagnostics are optional named finite measurements.  In particular, an
+    unavailable residual is omitted instead of being encoded as ``Inf``.
+    """
+
+    kind: AdaptiveTrialFailureKind
+    message: str
+    diagnostics: tuple[tuple[str, float], ...] = ()
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "kind", AdaptiveTrialFailureKind(self.kind))
+        message = str(self.message)
+        if not message:
+            raise ValueError("failure message is required")
+        object.__setattr__(self, "message", message)
+        diagnostics: list[tuple[str, float]] = []
+        names: set[str] = set()
+        for raw_name, raw_value in self.diagnostics:
+            name = str(raw_name)
+            value = float(raw_value)
+            if not name or name in names:
+                raise ValueError("failure diagnostic names must be nonempty and unique")
+            if not math.isfinite(value):
+                raise ValueError("failure diagnostics must be finite")
+            names.add(name)
+            diagnostics.append((name, value))
+        object.__setattr__(self, "diagnostics", tuple(diagnostics))
+
+    @property
+    def converged(self) -> bool:
+        return False
+
+    @property
+    def retryable(self) -> bool:
+        return True
+
+
 @dataclass(frozen=True)
 class AdaptiveBackwardEulerTrial:
     """Raw source-conditioned BE trial without a pre-imposed acceptance gate."""
@@ -68,7 +118,7 @@ def source_conditioned_backward_euler_trial(
     problem: ScalarHistoryOwnerSwapProblem,
     old_state_vector: Sequence[float],
     delta_lna: float,
-) -> AdaptiveBackwardEulerTrial:
+) -> AdaptiveBackwardEulerTrial | AdaptiveBackwardEulerFailure:
     """Evaluate the v0.61 frozen-coefficient BE formula as an adaptive trial.
 
     The inherited v0.61 result object intentionally refuses to represent a trial
@@ -84,20 +134,34 @@ def source_conditioned_backward_euler_trial(
         raise ValueError("old state has invalid shape or values")
     if not math.isfinite(h) or h <= 0.0:
         raise ValueError("delta_lna must be positive and finite")
+    d_rate_xe, _ = problem.dae._electron_rate_derivatives()
+    d_rate_xe = float(d_rate_xe)
+    if not math.isfinite(d_rate_xe):
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.NONFINITE_OUTPUT,
+            message="electron-rate derivative is nonfinite",
+            diagnostics=(("delta_lna", h),),
+        )
+    try:
+        denominator = 1.0 / h - d_rate_xe
+    except OverflowError:
+        denominator = math.inf
+    if not math.isfinite(denominator):
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.NONFINITE_OUTPUT,
+            message="backward-Euler electron denominator is nonfinite",
+            diagnostics=(("delta_lna", h), ("electron_rate_derivative", d_rate_xe)),
+        )
+    if denominator <= 0.0:
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.RETRY_LINEAR,
+            message="backward-Euler electron denominator is nonpositive",
+            diagnostics=(("delta_lna", h), ("electron_denominator", denominator)),
+        )
     incoming = problem._incoming_for(problem.registry.active_owner)
     rhs = _dynamic_rhs(problem.dae, incoming)
     native = _source_order_real_virtual_solve(problem.dae, rhs)
-    d_rate_xe, _ = problem.dae._electron_rate_derivatives()
     intercept = problem.dae.electron_rate_per_lna(0.0, native[:2])
-    denominator = 1.0 / h - d_rate_xe
-    if denominator <= 0.0:
-        return AdaptiveBackwardEulerTrial(
-            state_vector=old,
-            converged=False,
-            backward_error=math.inf,
-            algebraic_residual_relative=math.inf,
-            minimum_physical_population=-math.inf,
-        )
     xe_new = (old[0] / h + intercept) / denominator
     new = np.concatenate((np.asarray([xe_new]), native))
     derivative = np.zeros_like(new)
@@ -121,9 +185,29 @@ def source_conditioned_backward_euler_trial(
     )
     physical = native[:2] + equilibrium
     minimum = min(float(xe_new), source.x1s, float(np.min(physical)))
+    if minimum <= 0.0 or not np.all(np.isfinite(new)):
+        diagnostics = tuple(
+            (name, value)
+            for name, value in (
+                ("backward_error", backward),
+                ("algebraic_residual_relative", algebraic),
+                ("minimum_physical_population", minimum),
+            )
+            if math.isfinite(value)
+        )
+        kind = (
+            AdaptiveTrialFailureKind.RETRY_DOMAIN
+            if math.isfinite(minimum)
+            else AdaptiveTrialFailureKind.NONFINITE_OUTPUT
+        )
+        return AdaptiveBackwardEulerFailure(
+            kind=kind,
+            message="backward-Euler source trial left the finite physical domain",
+            diagnostics=diagnostics,
+        )
     return AdaptiveBackwardEulerTrial(
         state_vector=new,
-        converged=bool(minimum > 0.0 and np.all(np.isfinite(new))),
+        converged=True,
         backward_error=backward,
         algebraic_residual_relative=algebraic,
         minimum_physical_population=minimum,
@@ -276,31 +360,72 @@ class AdaptiveMicrostepAttempt:
     eta_end: float
     proposed_step: float
     accepted: bool
-    error_norm: float
-    backward_error: float
-    algebraic_residual_relative: float
-    minimum_physical_population: float
+    error_norm: float | None
+    backward_error: float | None
+    algebraic_residual_relative: float | None
+    minimum_physical_population: float | None
+    failure_kind: AdaptiveTrialFailureKind | None = None
+    failure_diagnostics: tuple[tuple[str, float], ...] = ()
     event_kind: AdaptiveEventKind | None = None
     event_label: str | None = None
 
     def __post_init__(self) -> None:
+        for name in ("eta_start", "eta_end", "proposed_step"):
+            value = float(getattr(self, name))
+            if not math.isfinite(value):
+                raise ValueError(f"{name} must be finite")
+            object.__setattr__(self, name, value)
         for name in (
-            "eta_start",
-            "eta_end",
-            "proposed_step",
             "error_norm",
             "backward_error",
             "algebraic_residual_relative",
             "minimum_physical_population",
         ):
-            value = float(getattr(self, name))
+            raw_value = getattr(self, name)
+            if raw_value is None:
+                continue
+            value = float(raw_value)
             if not math.isfinite(value):
-                raise ValueError(f"{name} must be finite")
+                raise ValueError(f"{name} must be finite when present")
             object.__setattr__(self, name, value)
         if self.proposed_step <= 0.0 or self.eta_end <= self.eta_start:
             raise ValueError("microstep must advance with positive width")
-        if self.error_norm < 0.0 or self.backward_error < 0.0 or self.algebraic_residual_relative < 0.0:
+        if any(
+            value is not None and value < 0.0
+            for value in (self.error_norm, self.backward_error, self.algebraic_residual_relative)
+        ):
             raise ValueError("diagnostic residuals must be nonnegative")
+        if self.accepted:
+            if self.failure_kind is not None:
+                raise ValueError("an accepted attempt cannot carry a failure kind")
+            if self.failure_diagnostics:
+                raise ValueError("an accepted attempt cannot carry failure diagnostics")
+            if any(
+                value is None
+                for value in (
+                    self.error_norm,
+                    self.backward_error,
+                    self.algebraic_residual_relative,
+                    self.minimum_physical_population,
+                )
+            ):
+                raise ValueError("an accepted attempt requires complete diagnostics")
+            if self.minimum_physical_population is not None and self.minimum_physical_population <= 0.0:
+                raise ValueError("an accepted attempt must remain strictly positive")
+        else:
+            if self.failure_kind is None:
+                raise ValueError("a rejected attempt requires a typed failure kind")
+            object.__setattr__(self, "failure_kind", AdaptiveTrialFailureKind(self.failure_kind))
+        diagnostics: list[tuple[str, float]] = []
+        diagnostic_names: set[str] = set()
+        for raw_name, raw_value in self.failure_diagnostics:
+            name = str(raw_name)
+            value = float(raw_value)
+            if not name or name in diagnostic_names or not math.isfinite(value):
+                raise ValueError("failure diagnostics must have unique names and finite values")
+            diagnostic_names.add(name)
+            diagnostics.append((name, value))
+        object.__setattr__(self, "failure_diagnostics", tuple(diagnostics))
         if self.event_kind is not None:
             object.__setattr__(self, "event_kind", AdaptiveEventKind(self.event_kind))
             if not self.event_label:
@@ -529,10 +654,143 @@ def _controller_factor(error_norm: float, tolerances: AdaptiveControllerToleranc
     return min(tolerances.maximum_factor, max(tolerances.minimum_factor, raw))
 
 
+_FAILURE_CONTRACTION = {
+    AdaptiveTrialFailureKind.RETRY_NONLINEAR: 0.5,
+    AdaptiveTrialFailureKind.RETRY_LINEAR: 0.35,
+    AdaptiveTrialFailureKind.RETRY_DOMAIN: 0.2,
+    AdaptiveTrialFailureKind.NONFINITE_OUTPUT: 0.1,
+}
+
+
+def _failure_contraction(kind: AdaptiveTrialFailureKind) -> float:
+    """Return a strict, LTE-independent contraction for a failed solve stage."""
+
+    typed = AdaptiveTrialFailureKind(kind)
+    if typed is AdaptiveTrialFailureKind.RETRY_LTE:
+        raise ValueError("LTE retries use the error controller, not a failure contraction")
+    return _FAILURE_CONTRACTION[typed]
+
+
+def _finite_diagnostics(result: BackwardEulerStepResult) -> tuple[tuple[str, float], ...]:
+    diagnostics: list[tuple[str, float]] = []
+    for name in (
+        "backward_error",
+        "algebraic_residual_relative",
+        "minimum_physical_population",
+    ):
+        try:
+            value = float(getattr(result, name))
+        except (AttributeError, TypeError, ValueError):
+            continue
+        if math.isfinite(value):
+            diagnostics.append((name, value))
+    return tuple(diagnostics)
+
+
+def _classify_trial_failure(
+    result: BackwardEulerStepResult | AdaptiveBackwardEulerFailure,
+    expected_shape: tuple[int, ...],
+) -> AdaptiveBackwardEulerFailure | None:
+    """Validate one stage and map every retryable result to a closed class."""
+
+    if isinstance(result, AdaptiveBackwardEulerFailure):
+        return result
+    try:
+        vector = np.asarray(result.state_vector, dtype=float)
+    except (AttributeError, TypeError, ValueError) as exc:
+        raise ValueError("stepper returned an invalid state_vector") from exc
+    if vector.shape != expected_shape:
+        raise ValueError("stepper returned a state with the wrong shape")
+    try:
+        backward = float(result.backward_error)
+        algebraic = float(result.algebraic_residual_relative)
+        minimum = float(result.minimum_physical_population)
+    except (AttributeError, TypeError, ValueError) as exc:
+        raise ValueError("stepper returned invalid trial diagnostics") from exc
+    if (
+        not np.all(np.isfinite(vector))
+        or not math.isfinite(backward)
+        or not math.isfinite(algebraic)
+        or not math.isfinite(minimum)
+    ):
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.NONFINITE_OUTPUT,
+            message="stepper returned a nonfinite state or diagnostic",
+            diagnostics=_finite_diagnostics(result),
+        )
+    if backward < 0.0 or algebraic < 0.0:
+        raise ValueError("stepper residual diagnostics must be nonnegative")
+    if not bool(result.converged):
+        explicit_kind = getattr(result, "failure_kind", None)
+        if explicit_kind is not None:
+            kind = AdaptiveTrialFailureKind(explicit_kind)
+        elif minimum <= 0.0:
+            kind = AdaptiveTrialFailureKind.RETRY_DOMAIN
+        else:
+            kind = AdaptiveTrialFailureKind.RETRY_NONLINEAR
+        if kind is AdaptiveTrialFailureKind.RETRY_LTE:
+            raise ValueError("a failed solve stage cannot report RETRY_LTE")
+        return AdaptiveBackwardEulerFailure(
+            kind=kind,
+            message="stepper reported a retryable stage failure",
+            diagnostics=_finite_diagnostics(result),
+        )
+    if minimum <= 0.0:
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.RETRY_DOMAIN,
+            message="stepper left the strictly positive physical domain",
+            diagnostics=_finite_diagnostics(result),
+        )
+    if backward >= 1.0e-11:
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.RETRY_NONLINEAR,
+            message="stepper failed the backward-error gate",
+            diagnostics=_finite_diagnostics(result),
+        )
+    if algebraic >= 1.0e-11:
+        return AdaptiveBackwardEulerFailure(
+            kind=AdaptiveTrialFailureKind.RETRY_LINEAR,
+            message="stepper failed the algebraic-residual gate",
+            diagnostics=_finite_diagnostics(result),
+        )
+    return None
+
+
+def _snapshot_completed_trial(
+    result: BackwardEulerStepResult,
+) -> AdaptiveBackwardEulerTrial:
+    """Detach a stage before a later stepper call can reuse its buffer."""
+
+    return AdaptiveBackwardEulerTrial(
+        state_vector=np.array(result.state_vector, dtype=float, copy=True),
+        converged=True,
+        backward_error=float(result.backward_error),
+        algebraic_residual_relative=float(result.algebraic_residual_relative),
+        minimum_physical_population=float(result.minimum_physical_population),
+    )
+
+
+def _completed_stage_diagnostics(
+    completed: Sequence[AdaptiveBackwardEulerTrial],
+) -> tuple[float | None, float | None, float | None]:
+    """Summarize finite completed stages for a rejected-attempt receipt only."""
+
+    if not completed:
+        return None, None, None
+    return (
+        max(float(result.backward_error) for result in completed),
+        max(float(result.algebraic_residual_relative) for result in completed),
+        min(float(result.minimum_physical_population) for result in completed),
+    )
+
+
 def advance_canonical_macro_interval(
     context: AdaptiveTrajectoryContext,
     *,
-    stepper: Callable[[np.ndarray, float], BackwardEulerStepResult],
+    stepper: Callable[
+        [np.ndarray, float],
+        BackwardEulerStepResult | AdaptiveBackwardEulerFailure,
+    ],
     candidate_factory: Callable[[AcceptedRadiationHistory], HistoryAppendCandidate],
     maximum_attempts: int = 10000,
 ) -> tuple[AdaptiveTrajectoryContext, AcceptedMacrostepLedger]:
@@ -554,12 +812,51 @@ def advance_canonical_macro_interval(
     final_error = math.inf
     endpoint_tolerance = 128.0 * np.finfo(float).eps * max(abs(interval.eta_end), 1.0)
 
+    def record_stage_failure(
+        *,
+        failure: AdaptiveBackwardEulerFailure,
+        completed: Sequence[BackwardEulerStepResult],
+        eta_start: float,
+        width: float,
+        landing_event: AdaptiveEvent | None,
+    ) -> float:
+        backward, algebraic, minimum = _completed_stage_diagnostics(completed)
+        attempts.append(
+            AdaptiveMicrostepAttempt(
+                eta_start=eta_start,
+                eta_end=eta_start + width,
+                proposed_step=width,
+                accepted=False,
+                error_norm=None,
+                backward_error=backward,
+                algebraic_residual_relative=algebraic,
+                minimum_physical_population=minimum,
+                failure_kind=failure.kind,
+                failure_diagnostics=failure.diagnostics,
+                event_kind=None if landing_event is None else landing_event.kind,
+                event_label=None if landing_event is None else landing_event.label,
+            )
+        )
+        minimum_width = context.tolerances.minimum_step
+        at_ordinary_minimum = width <= minimum_width * (1.0 + 64.0 * np.finfo(float).eps)
+        if at_ordinary_minimum:
+            if landing_event is not None and width < minimum_width:
+                raise RuntimeError("adaptive event landing failed below the ordinary minimum step")
+            raise RuntimeError("adaptive microstep failed at the configured minimum step")
+        return max(minimum_width, width * _failure_contraction(failure.kind))
+
     for _ in range(int(maximum_attempts)):
         remaining = interval.eta_end - eta
         if remaining <= endpoint_tolerance:
             eta = interval.eta_end
             break
         proposed = min(h, remaining)
+        if (
+            proposed < context.tolerances.minimum_step
+            and remaining > context.tolerances.minimum_step + endpoint_tolerance
+        ):
+            proposed = context.tolerances.minimum_step
+        proposed = min(proposed, remaining)
         event: AdaptiveEvent | None = None
         if event_cursor < len(pending_events):
             candidate_event = pending_events[event_cursor]
@@ -575,18 +872,63 @@ def advance_canonical_macro_interval(
                     event_cursor += 1
                     h = min(h, 0.25 * interval.canonical_dlna)
                     continue
-        if proposed < context.tolerances.minimum_step and remaining > context.tolerances.minimum_step + endpoint_tolerance:
-            proposed = context.tolerances.minimum_step
-        proposed = min(proposed, remaining)
-        full = stepper(state, proposed)
-        first_half = stepper(state, 0.5 * proposed)
-        second_half = stepper(np.asarray(first_half.state_vector, dtype=float), 0.5 * proposed)
+        completed: list[AdaptiveBackwardEulerTrial] = []
+        full_raw = stepper(np.array(state, copy=True), proposed)
+        failure = _classify_trial_failure(full_raw, state.shape)
+        if failure is not None:
+            h = record_stage_failure(
+                failure=failure,
+                completed=completed,
+                eta_start=eta,
+                width=proposed,
+                landing_event=event,
+            )
+            continue
+        full = _snapshot_completed_trial(full_raw)
+        completed.append(full)
+        first_half_raw = stepper(np.array(state, copy=True), 0.5 * proposed)
+        failure = _classify_trial_failure(first_half_raw, state.shape)
+        if failure is not None:
+            h = record_stage_failure(
+                failure=failure,
+                completed=completed,
+                eta_start=eta,
+                width=proposed,
+                landing_event=event,
+            )
+            continue
+        first_half = _snapshot_completed_trial(first_half_raw)
+        completed.append(first_half)
+        second_half_raw = stepper(
+            np.array(first_half.state_vector, copy=True), 0.5 * proposed
+        )
+        failure = _classify_trial_failure(second_half_raw, state.shape)
+        if failure is not None:
+            h = record_stage_failure(
+                failure=failure,
+                completed=completed,
+                eta_start=eta,
+                width=proposed,
+                landing_event=event,
+            )
+            continue
+        second_half = _snapshot_completed_trial(second_half_raw)
+        completed.append(second_half)
         full_state = np.asarray(full.state_vector, dtype=float)
         half_state = np.asarray(second_half.state_vector, dtype=float)
-        if full_state.shape != state.shape or half_state.shape != state.shape:
-            raise ValueError("stepper returned a state with the wrong shape")
         error = _weighted_error_norm(state, full_state, half_state, context.tolerances)
-        converged = bool(full.converged and first_half.converged and second_half.converged)
+        if not math.isfinite(error):
+            h = record_stage_failure(
+                failure=AdaptiveBackwardEulerFailure(
+                    kind=AdaptiveTrialFailureKind.NONFINITE_OUTPUT,
+                    message="step-doubling produced a nonfinite LTE norm",
+                ),
+                completed=completed,
+                eta_start=eta,
+                width=proposed,
+                landing_event=event,
+            )
+            continue
         trial_backward_error = max(
             float(full.backward_error),
             float(first_half.backward_error),
@@ -602,16 +944,7 @@ def advance_canonical_macro_interval(
             float(first_half.minimum_physical_population),
             float(second_half.minimum_physical_population),
         )
-        accepted = bool(
-            converged
-            and error <= 1.0
-            and trial_minimum_population > 0.0
-            and trial_backward_error < 1.0e-11
-            and trial_algebraic_residual < 1.0e-11
-        )
-        maximum_backward = max(maximum_backward, trial_backward_error)
-        maximum_algebraic = max(maximum_algebraic, trial_algebraic_residual)
-        minimum_population = min(minimum_population, trial_minimum_population)
+        accepted = bool(error <= 1.0)
         attempts.append(
             AdaptiveMicrostepAttempt(
                 eta_start=eta,
@@ -622,17 +955,33 @@ def advance_canonical_macro_interval(
                 backward_error=trial_backward_error,
                 algebraic_residual_relative=trial_algebraic_residual,
                 minimum_physical_population=trial_minimum_population,
+                failure_kind=None if accepted else AdaptiveTrialFailureKind.RETRY_LTE,
                 event_kind=None if event is None else event.kind,
                 event_label=None if event is None else event.label,
             )
         )
         factor = _controller_factor(error, context.tolerances)
         if accepted:
-            # The full backward-Euler state is the production reference.  The
-            # two-half-step state is used only for the local error estimate.
-            state = np.array(full_state, copy=True)
+            # The accepted production path is the higher-accuracy pair of half
+            # steps.  The coarse full step remains only an LTE comparator.
+            state = np.array(half_state, copy=True)
             eta += proposed
             final_error = error
+            maximum_backward = max(
+                maximum_backward,
+                float(first_half.backward_error),
+                float(second_half.backward_error),
+            )
+            maximum_algebraic = max(
+                maximum_algebraic,
+                float(first_half.algebraic_residual_relative),
+                float(second_half.algebraic_residual_relative),
+            )
+            minimum_population = min(
+                minimum_population,
+                float(first_half.minimum_physical_population),
+                float(second_half.minimum_physical_population),
+            )
             h = min(context.tolerances.maximum_step, max(context.tolerances.minimum_step, proposed * factor))
             if event is not None and math.isclose(eta, event.eta, rel_tol=0.0, abs_tol=endpoint_tolerance):
                 localized_events.append(event.eta)
@@ -643,6 +992,8 @@ def advance_canonical_macro_interval(
         else:
             new_h = max(context.tolerances.minimum_step, proposed * min(1.0, factor))
             if proposed <= context.tolerances.minimum_step * (1.0 + 64.0 * np.finfo(float).eps):
+                if event is not None and proposed < context.tolerances.minimum_step:
+                    raise RuntimeError("adaptive event landing failed below the ordinary minimum step")
                 raise RuntimeError("adaptive microstep failed at the configured minimum step")
             h = new_h
     else:
@@ -683,11 +1034,13 @@ def advance_canonical_macro_interval(
 
 __all__ = [
     "AcceptedMacrostepLedger",
+    "AdaptiveBackwardEulerFailure",
     "AdaptiveBackwardEulerTrial",
     "AdaptiveControllerTolerances",
     "AdaptiveEvent",
     "AdaptiveEventKind",
     "AdaptiveMicrostepAttempt",
+    "AdaptiveTrialFailureKind",
     "AdaptiveTrajectoryContext",
     "CanonicalMacroInterval",
     "TrajectoryRestartState",

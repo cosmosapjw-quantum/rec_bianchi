@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from full_bianchi_hyrec.recoil.nonlinear_bose_release import (
     HarmonicGrid,
@@ -185,3 +186,90 @@ def test_number_function_uses_frequency_and_angular_measures():
         mode_measure=np.asarray([2.0, 3.0]),
         grid=grid,
     ) == 5.0
+
+
+def test_harmonic_grid_copies_primitives_without_mutating_caller_flags():
+    """Catch caller aliasing that can stale the grid's derived harmonic matrices."""
+
+    directions = np.asarray(
+        [
+            [1.0, 0.0, 0.0],
+            [-1.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0],
+            [0.0, -1.0, 0.0],
+            [0.0, 0.0, 1.0],
+            [0.0, 0.0, -1.0],
+        ]
+    )
+    weights = np.full(6, 1.0 / 6.0)
+    original_directions = directions.copy()
+    original_weights = weights.copy()
+
+    grid = HarmonicGrid.from_directions(directions, weights, ell_max=1)
+    normalized_weights = grid.weights.copy()
+
+    assert directions.flags.writeable
+    assert weights.flags.writeable
+    directions[0] = [0.0, 1.0, 0.0]
+    weights[0] = 0.25
+    assert np.array_equal(grid.directions, original_directions)
+    assert np.allclose(normalized_weights, original_weights, rtol=0.0, atol=1.0e-16)
+    assert np.array_equal(grid.weights, normalized_weights)
+    with pytest.raises(ValueError):
+        grid.directions.setflags(write=True)
+
+
+@pytest.mark.parametrize("field", ["directions", "weights"])
+def test_harmonic_grid_rejects_nonfinite_primitives(field):
+    """Catch NaN primitives passing comparison-only validation."""
+
+    directions = np.asarray(
+        [[1.0, 0.0, 0.0], [-1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+    )
+    weights = np.full(3, 1.0 / 3.0)
+    if field == "directions":
+        directions[0, 0] = np.nan
+    else:
+        weights[0] = np.nan
+
+    with pytest.raises(ValueError, match="finite"):
+        HarmonicGrid.from_directions(directions, weights, ell_max=0)
+
+
+def test_harmonic_grid_raw_constructor_rejects_stale_derived_matrices():
+    """Catch the public dataclass constructor pairing new primitives with stale matrices."""
+
+    grid = synthetic_grid()
+    permuted_directions = np.roll(grid.directions, 1, axis=0)
+
+    with pytest.raises(ValueError, match="derived"):
+        HarmonicGrid(
+            permuted_directions,
+            grid.weights,
+            grid.ell_max,
+            grid.lm,
+            grid.synthesis,
+            grid.analysis,
+            grid.ell_of_mode,
+            grid.gram_residual,
+        )
+
+
+def test_harmonic_grid_rejects_numerically_incoherent_near_rank_grid():
+    epsilon = 1.0e-8
+    directions = np.asarray(
+        [
+            [1.0, 0.0, 0.0],
+            [-1.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0],
+            [0.0, -1.0, epsilon],
+        ]
+    )
+    directions /= np.linalg.norm(directions, axis=1)[:, None]
+
+    with pytest.raises(ValueError, match="rank deficient|ill-conditioned|coherence"):
+        HarmonicGrid.from_directions(
+            directions,
+            np.ones(4),
+            ell_max=1,
+        )

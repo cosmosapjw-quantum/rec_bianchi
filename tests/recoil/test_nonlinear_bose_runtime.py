@@ -73,19 +73,23 @@ def octahedral_grid() -> HarmonicGrid:
 
 
 def two_state_network() -> CollisionNetwork:
+    return CollisionNetwork(**two_state_network_inputs())
+
+
+def two_state_network_inputs() -> dict[str, object]:
     pair = np.zeros((2, 2, 2))
     pair[0, 0, 1] = pair[0, 1, 0] = 0.8
     pair[1, 0, 1] = pair[1, 1, 0] = 0.12
-    return CollisionNetwork(
-        state_intervals=np.asarray([[-1.0, 0.0], [0.0, 1.0]]),
-        state_labels=np.asarray(["I0", "NR0"]),
-        pair_moments=pair,
-        same_cell_rates=np.zeros((2, 2)),
-        mode_measure=np.asarray([2.0, 3.0]),
-        equilibrium_weight=np.asarray([0.4, 0.9]),
-        momentum_scale=np.asarray([1.0, 1.1]),
-        inherited_release_policy={"finite_tilt": 12},
-    )
+    return {
+        "state_intervals": np.asarray([[-1.0, 0.0], [0.0, 1.0]]),
+        "state_labels": np.asarray(["I0", "NR0"]),
+        "pair_moments": pair,
+        "same_cell_rates": np.zeros((2, 2)),
+        "mode_measure": np.asarray([2.0, 3.0]),
+        "equilibrium_weight": np.asarray([0.4, 0.9]),
+        "momentum_scale": np.asarray([1.0, 1.1]),
+        "inherited_release_policy": {"finite_tilt": 12},
+    }
 
 
 @pytest.mark.parametrize(
@@ -269,3 +273,70 @@ def test_implicit_log_residual_jvp_matches_finite_difference():
         np.linalg.norm(finite_difference) + 1e-300
     )
     assert relative < 5e-10
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "state_intervals",
+        "pair_moments",
+        "same_cell_rates",
+        "mode_measure",
+        "equilibrium_weight",
+        "momentum_scale",
+    ],
+)
+def test_collision_network_rejects_nonfinite_numeric_fields(field):
+    """Catch NaN network data passing sign and symmetry comparisons."""
+
+    arguments = two_state_network_inputs()
+    damaged = np.asarray(arguments[field]).copy()
+    damaged.flat[0] = np.nan
+    arguments[field] = damaged
+
+    with pytest.raises(ValueError, match="finite"):
+        CollisionNetwork(**arguments)
+
+
+@pytest.mark.parametrize("policy_value", [True, 1.5, -1])
+def test_collision_network_rejects_invalid_release_policy(policy_value):
+    """Catch lossy int coercion and negative inherited harmonic orders."""
+
+    arguments = two_state_network_inputs()
+    arguments["inherited_release_policy"] = {"synthetic": policy_value}
+
+    with pytest.raises(ValueError, match="release policy"):
+        CollisionNetwork(**arguments)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "nu_abs_Hz",
+        "Doppler_width_Hz",
+        "x_red",
+        "x_blue",
+        "D0_nu_abs_Hz_s",
+        "D0_log_Doppler_width_s_inv",
+        "D0_x_red_s_inv",
+        "D0_x_blue_s_inv",
+    ],
+)
+def test_line_boundary_config_rejects_nonfinite_fields(field):
+    """Catch NaN line-boundary values bypassing order/positivity comparisons."""
+
+    arguments = {
+        "nu_abs_Hz": 2.466e15,
+        "Doppler_width_Hz": 5.0e10,
+    }
+    arguments[field] = float("nan")
+
+    with pytest.raises(ValueError, match="finite"):
+        LineBoundaryConfig(**arguments)
+
+
+def test_lyman_alpha_rejects_nonfinite_temperature():
+    """Catch NaN temperature propagating into a NaN Doppler width."""
+
+    with pytest.raises(ValueError, match="temperature_K"):
+        LineBoundaryConfig.lyman_alpha(temperature_K=float("nan"))

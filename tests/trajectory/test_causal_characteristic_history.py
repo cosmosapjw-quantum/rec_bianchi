@@ -11,7 +11,6 @@ from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import (
 from full_bianchi_hyrec.trajectory.causal_history import (
     AcceptedRadiationHistory,
     CharacteristicHistoryGrid,
-    CharacteristicStencilSwitch,
     FutureHistoryEndpointError,
     HistoryAppendCandidate,
     build_original_hyrec_queries,
@@ -137,20 +136,46 @@ def test_source_query_registry_has_exact_channel_counts_and_no_missing_output() 
     assert line_outputs == [0, 1]
 
 
-def test_interpolator_rejects_future_endpoint_and_discrete_stencil_switch() -> None:
+def test_interpolator_rejects_future_endpoint_and_keeps_primal_stencil_for_jvp() -> None:
     history = _synthetic_history()
     eta_query = history.grid.eta[-2] + 0.25 * history.grid.dlna
     stencil = history.grid.locate(eta_query, accepted_count=history.accepted_count)
     value = stencil.evaluate(history.outgoing_virtual[10])
     assert value > 0.0
-    with pytest.raises(CharacteristicStencilSwitch):
-        stencil.jvp(
-            history.outgoing_virtual[10],
-            np.zeros(history.accepted_count),
-            delta_eta=0.8 * history.grid.dlna,
-        )
+    derivative = stencil.jvp(
+        history.outgoing_virtual[10],
+        np.zeros(history.accepted_count),
+        delta_eta=0.8 * history.grid.dlna,
+    )
+    expected = (
+        history.outgoing_virtual[10, stencil.right_index]
+        - history.outgoing_virtual[10, stencil.left_index]
+    ) * 0.8
+    assert derivative == pytest.approx(expected)
     with pytest.raises(FutureHistoryEndpointError):
         history.grid.locate(history.grid.eta[-1], accepted_count=history.accepted_count)
+
+
+def test_one_slice_history_rejects_endpoint_and_future_before_thermal_shortcut() -> None:
+    history = _synthetic_history(n=1)
+    past = history.grid.locate(history.grid.eta_start - history.grid.dlna)
+    assert past.thermal_zero
+    with pytest.raises(FutureHistoryEndpointError):
+        history.grid.locate(history.grid.eta_start)
+    with pytest.raises(FutureHistoryEndpointError):
+        history.grid.locate(history.grid.eta_start + 10.0 * history.grid.dlna)
+
+
+def test_fixed_primal_stencil_jvp_is_homogeneous_in_direction() -> None:
+    history = _synthetic_history()
+    query = history.grid.eta[5] + 0.75 * history.grid.dlna
+    stencil = history.grid.locate(query)
+    values = history.outgoing_virtual[10]
+    direction = np.linspace(-2.0, 3.0, history.accepted_count)
+    delta_eta = 0.2 * history.grid.dlna
+    first = stencil.jvp(values, direction, delta_eta=delta_eta)
+    second = stencil.jvp(values, 2.0 * direction, delta_eta=2.0 * delta_eta)
+    assert second == pytest.approx(2.0 * first, rel=2.0e-15, abs=0.0)
 
 
 def test_append_reject_rollback_and_restart_are_byte_exact() -> None:
