@@ -11,6 +11,7 @@ from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import (
 )
 from full_bianchi_hyrec.trajectory.dynamic_macro_ownership import (
     audit_dynamic_atomic_macro_ownership,
+    implemented_split_domain_ownership_config,
     resolved_split_domain_contract_witness,
 )
 
@@ -119,6 +120,18 @@ def test_exact_owner_swap_is_implementation_evidence_not_a_witness() -> None:
     assert overlap_count == 0
     assert unowned_process_count == 0
     assert implementation_evidence
+
+    production_audit = audit_dynamic_atomic_macro_ownership(
+        parsed.trajectory,
+        doppler_width_eV=parsed.boundaries[0].doppler_width_eV,
+        config=implemented_split_domain_ownership_config(),
+    )
+    assert production_audit.com_interior_native_indices == INTERIOR_NATIVE_INDICES
+    assert production_audit.diffusion_cross_edges == CROSS_EDGES
+    assert production_audit.overlap_count == 0
+    assert production_audit.unowned_process_count == 0
+    assert production_audit.dynamic_atomic_macro_ready
+    assert not production_audit.contract_witness_only
 
 
 def test_exterior_schur_state_and_observables_match_independent_dense_primitive() -> None:
