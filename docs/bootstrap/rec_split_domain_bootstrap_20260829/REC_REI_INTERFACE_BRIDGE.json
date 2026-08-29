@@ -1,34 +1,28 @@
 {
-  "schema": "rec-rei-interface-bridge/v1",
-  "bridge_id": "REC_REI_INTERFACE_BRIDGE_20260829_R1",
-  "dependency_direction": "rei_bianchi_DEPENDS_ON_rec_bianchi_FOR_PRIMORDIAL_RECOMBINATION_INPUTS",
-  "rec_terminal_required": "PASS_REC_SPLIT_DOMAIN_REPLACEMENT_AND_INTERFACE_V1",
-  "rei_policy": {
-    "rec_independent_first_canonical_interval": "MAY_PROCEED",
-    "rec_lock_update": "FORBIDDEN_UNTIL_TERMINAL_RECEIPT",
-    "recombination_splice": "BLOCKED",
+  "dependency_direction": "rei_bianchi_DEPENDS_ON_rec_bianchi_FOR_PRIMORDIAL_RECOMBINATION",
+  "future_terminal_receipt_categories": [
+    "provider commit tree and canonical HyRec input",
+    "state and rate schema with units and frames",
+    "residual and analytic JVP identity",
+    "number energy and four-force ledgers",
+    "event and restart semantics",
+    "validity domain",
+    "numerical uncertainty or enclosure",
+    "contains_astrophysical_reionization=false"
+  ],
+  "rec_current": {
+    "claim": "PASS_BOUNDED_NO_GO_SPLIT_DOMAIN_REPLACEMENT_REQUIRED",
+    "numerical_export": "BLOCKED",
+    "terminal_required": "PASS_REC_SPLIT_DOMAIN_REPLACEMENT_AND_INTERFACE_V1"
+  },
+  "rei_current_policy": {
+    "first_canonical_interval_without_rec_numerical_import": "ALLOWED",
     "hydrogen_frame_or_Bianchi_adapter": "BLOCKED",
-    "surrogate_or_silent_replacement": false
+    "monitoring_package_metadata_lock": "ALLOWED",
+    "primordial_to_CMB_splice": "BLOCKED",
+    "silent_surrogate": "FORBIDDEN"
   },
-  "terminal_receipt_minimum": {
-    "source_commit_tree_and_canonical_HyRec_input": true,
-    "declared_state_and_rate_schema_with_units": true,
-    "residual_and_analytic_JVP_identity": true,
-    "number_energy_and_four_force_ledgers": true,
-    "event_knot_and_restart_semantics": true,
-    "validity_domain_and_frame_conventions": true,
-    "numerical_error_and_uncertainty_budget": true
-  },
-  "identity_policy": {
-    "immutable_source": "BYTE_IDENTITY",
-    "contractual_deterministic_evidence": "BYTE_IDENTITY",
-    "numerical_histories": "NUMERICAL_AND_SEMANTIC_IDENTITY",
-    "archives_and_transport": "CONTENT_OR_STRUCTURAL_IDENTITY_UNLESS_EXACT_ARCHIVE_IS_THE_DELIVERABLE"
-  },
-  "conventions": {
-    "metric_signature": "-+++",
-    "constants": "EXPLICIT_c_hbar_k_B",
-    "frequency": "ORDINARY_HZ_WHERE_REQUIRED_BY_REC_AUTHORITY",
-    "inferred_columns_units_or_frames": "FORBIDDEN"
-  }
+  "schema": "rec-rei-interface-bridge/v2",
+  "source_bound_verifier_files": "NEVER_TRANSPLANT",
+  "field_names_and_serialization": "DEFER_TO_DELIBERATE_ADAPTER_REVIEW"
 }
