@@ -147,13 +147,28 @@ def resolved_split_domain_contract_witness() -> DynamicMacroOwnershipConfig:
     )
 
 
-def implemented_split_domain_ownership_config() -> DynamicMacroOwnershipConfig:
+def implemented_split_domain_ownership_config(
+    replacement: object,
+) -> DynamicMacroOwnershipConfig:
     """One-owner configuration supplied by ``SplitDomainReplacement``.
 
     Unlike :func:`resolved_split_domain_contract_witness`, this configuration
-    is admissible only alongside the concrete residual, analytic JVP,
-    conservation ledger, and restart implementation in the same commit.
+    is derived only from a concrete replacement whose exact process-to-owner
+    registry has passed its implementation audit.  A caller cannot promote
+    the contract by requesting this configuration without that evidence.
     """
+
+    from full_bianchi_hyrec.trajectory.split_domain_replacement import (
+        SplitDomainReplacement,
+    )
+
+    if not isinstance(replacement, SplitDomainReplacement):
+        raise TypeError("replacement must be a concrete SplitDomainReplacement")
+    implementation_audit = replacement.registry.audit()
+    if not implementation_audit.implementation_evidence:
+        raise DynamicMacroOwnershipError(
+            "replacement does not have the exact process-to-owner map"
+        )
 
     return DynamicMacroOwnershipConfig(
         native_diffusion_support="exterior_only",

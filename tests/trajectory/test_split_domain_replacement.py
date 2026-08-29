@@ -161,7 +161,7 @@ def test_exact_owner_swap_is_implementation_evidence_not_a_witness() -> None:
     production_audit = audit_dynamic_atomic_macro_ownership(
         parsed.trajectory,
         doppler_width_eV=parsed.boundaries[0].doppler_width_eV,
-        config=implemented_split_domain_ownership_config(),
+        config=implemented_split_domain_ownership_config(replacement),
     )
     assert production_audit.com_interior_native_indices == INTERIOR_NATIVE_INDICES
     assert production_audit.diffusion_cross_edges == CROSS_EDGES
@@ -169,6 +169,8 @@ def test_exact_owner_swap_is_implementation_evidence_not_a_witness() -> None:
     assert production_audit.unowned_process_count == 0
     assert production_audit.dynamic_atomic_macro_ready
     assert not production_audit.contract_witness_only
+    with pytest.raises(TypeError, match="concrete SplitDomainReplacement"):
+        implemented_split_domain_ownership_config(None)
 
 
 def test_exterior_schur_state_and_observables_match_independent_dense_primitive() -> None:
@@ -453,6 +455,20 @@ def test_preregistered_owner_interface_and_ledger_mutants_are_rejected() -> None
     assert unowned_edge.unowned_process_count == 1
     assert unowned_edge.cross_edge_count == 1
     assert not unowned_edge.implementation_evidence
+
+    wrong_owner_items = list(replacement.registry.process_owners)
+    wrong_owner_items[0] = (
+        "native_diffusion_exterior",
+        "interior_com",
+    )
+    wrong_owner = SplitDomainRegistry(
+        interior_indices=INTERIOR_NATIVE_INDICES,
+        cross_edges=CROSS_EDGES,
+        process_owners=tuple(wrong_owner_items),
+        implementation_evidence=True,
+    ).audit()
+    assert wrong_owner.unowned_process_count == 1
+    assert not wrong_owner.implementation_evidence
 
     solution = replacement.solve(SplitDomainContext())
     ledger = replacement.ledger(solution.exterior_state, SplitDomainContext())

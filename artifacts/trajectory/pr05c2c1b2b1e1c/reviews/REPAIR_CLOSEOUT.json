@@ -1,0 +1,32 @@
+{
+  "schema": "rec-split-domain-repair-closeout/v1",
+  "status": "SCOPED_REPAIR_PASS_OVERALL_BLOCKED_REC_SPLIT_DEFECT",
+  "repair_round": "1_OF_1",
+  "review_head": "9a93bb38bc9e88646e3876df02728a02926df450",
+  "selected_finding": "PHYS_MATH_CODE_P1_SELF_ATTESTED_OWNER_GATE",
+  "changes": [
+    "implemented_split_domain_ownership_config now requires a concrete validated SplitDomainReplacement",
+    "SplitDomainRegistry.audit now enforces the exact process-to-owner map rather than any globally permitted owner",
+    "the surviving wrong-owner mutant is now killed"
+  ],
+  "pre_repair_reproduction": {
+    "standalone_gate_ready": true,
+    "wrong_native_owner_accepted": true
+  },
+  "post_repair_reproduction": {
+    "standalone_gate": "TypeError",
+    "wrong_native_owner_accepted": false,
+    "wrong_native_owner_unowned_count": 1
+  },
+  "scoped_test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -p no:cacheprovider -q tests/trajectory/test_split_domain_replacement.py tests/trajectory/test_dynamic_atomic_macro_ownership.py",
+    "result": "16_PASSED"
+  },
+  "unrepaired_p1": [
+    "PHYS_MATH_P1_INTERIOR_NOT_COM",
+    "PHYS_MATH_P1_PROXY_FLUX_NOT_PHOTON_NUMBER",
+    "PHYS_MATH_CODE_P1_RESTART_SCIENTIFIC_CONTEXT"
+  ],
+  "another_repair_authorized": false,
+  "terminal_ceiling_achieved": false
+}

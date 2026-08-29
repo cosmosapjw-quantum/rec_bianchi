@@ -1,6 +1,6 @@
 {
   "schema": "rec-split-domain-replacement-verification/v1",
-  "status": "PASS_TASK4_DURABLE_VERIFICATION_PENDING_DUAL_REVIEW",
+  "status": "BLOCKED_REC_SPLIT_DEFECT",
   "terminal_ceiling": "PASS_REC_SPLIT_DOMAIN_REPLACEMENT_AND_INTERFACE_V1",
   "source": {
     "branch": "audit/ode-four-loop-external-audit-20260823",
@@ -57,8 +57,8 @@
       "status": "PASS"
     },
     "r2_inner_manifest": {
-      "class": "CLASS_4_PACKAGING_PROVENANCE_BINDING",
-      "required_identity": "CONTENT_AND_PROVENANCE_BINDING",
+      "class": "CLASS_2_DETERMINISTIC_GENERATED_EVIDENCE",
+      "required_identity": "CONTRACTUAL_BYTE_AND_PROVENANCE_BINDING",
       "status": "PROVENANCE_REBIND_REQUIRED"
     }
   },
@@ -80,7 +80,8 @@
     "assembly": "test-local 313-by-313 dense primitive assembled directly from Trr Trv Tvr Tvv and source arrays without the production matrix helper",
     "reference_solve": "numpy.linalg.solve on the full dense primitive",
     "production_action": "exterior Schur solve with the exact eight-point interior partition",
-    "production_reported_residual_used_as_oracle": false
+    "production_reported_residual_used_as_oracle": false,
+    "review_limit": "This proves the native dense-to-Schur reduction only. It does not prove deposition into the physical 35-state COM representation."
   },
   "criteria": {
     "state_relative_inf_lt": 3e-12,
@@ -89,8 +90,8 @@
     "normalized_operator_residual_lt": 5e-13,
     "normalized_operator_residual_basis": "Inherited from the directly affected dense original-HyRec solve criterion; not widened after observing this result.",
     "restart_raw_residual_inf_lt": 2e-24,
-    "interface_ledgers": "EXACT_ZERO",
-    "pure_crossing_atom_source": "EXACT_ZERO"
+    "interface_ledgers": "ALGEBRAIC_EXACT_ZERO_PHYSICAL_PHOTON_MEASURE_UNPROVEN",
+    "pure_crossing_atom_source": "HARDCODED_EXACT_ZERO_PHYSICAL_INTERFACE_PROOF_UNPROVEN"
   },
   "numerical_metrics": {
     "condition_number_independent": 4281.527684044071,
@@ -125,6 +126,7 @@
     ]
   },
   "interface_ledger": {
+    "evidence_status": "ALGEBRAIC_CANCELLATION_ONLY_NOT_PHYSICAL_CONSERVATION_PROOF",
     "atom_source_W_per_H": 0.0,
     "com_energy_W_per_H": -1.985867415318085e-32,
     "com_number_flux_per_H_s": -1.2147736865559044e-14,
@@ -168,5 +170,16 @@
     "full_recombination_history_claimed": false,
     "rei_bianchi_numerical_splice": false,
     "source_bound_verifier_transplanted": false
+  },
+  "dual_review_disposition": {
+    "phys_math": "FAIL_TWO_P1_ONE_P2",
+    "phys_math_code": "FAIL_TWO_P1_ONE_P2",
+    "repair_budget": "ONE_OF_ONE_USED_ON_EXACT_OWNER_ADMISSION",
+    "remaining_p1": [
+      "eight native proxy variables are relabeled as COM instead of depositing into the physical COM representation",
+      "virtual-proxy Aup/Adn jump is mislabeled as physical photon-number flux",
+      "restart omits a fingerprint of Doppler width and other energy-defining scientific inputs"
+    ],
+    "terminal_ceiling_achieved": false
   }
 }

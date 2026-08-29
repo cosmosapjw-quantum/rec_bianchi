@@ -49,15 +49,15 @@ _ALLOWED_OWNERS = {
     "split_domain_interface",
     "typed_characteristic_history",
 }
-_REQUIRED_PROCESSES = (
-    "native_diffusion_exterior",
-    "com_diffusion_interior",
-    "native_atomic_source_exterior",
-    "com_atomic_source_interior",
-    "completed_tvv_exterior_schur",
-    "cross_edge_135_136",
-    "cross_edge_143_144",
-    "scalar_characteristic_history",
+_REQUIRED_PROCESS_OWNERS = (
+    ("native_diffusion_exterior", "exterior_native"),
+    ("com_diffusion_interior", "interior_com"),
+    ("native_atomic_source_exterior", "exterior_native"),
+    ("com_atomic_source_interior", "interior_com"),
+    ("completed_tvv_exterior_schur", "exterior_native"),
+    ("cross_edge_135_136", "split_domain_interface"),
+    ("cross_edge_143_144", "split_domain_interface"),
+    ("scalar_characteristic_history", "typed_characteristic_history"),
 )
 
 
@@ -155,10 +155,21 @@ class SplitDomainRegistry:
         names = [process for process, _ in self.process_owners]
         duplicate_names = {name for name in names if names.count(name) > 1}
         present = set(names)
-        missing = set(_REQUIRED_PROCESSES) - present
-        extra = present - set(_REQUIRED_PROCESSES)
-        invalid_owner = sum(owner not in _ALLOWED_OWNERS for _, owner in self.process_owners)
-        unowned = len(missing) + len(extra) + invalid_owner
+        required = dict(_REQUIRED_PROCESS_OWNERS)
+        missing = set(required) - present
+        extra = present - set(required)
+        actual = dict(self.process_owners)
+        wrong_owner = {
+            process
+            for process in set(required) & present
+            if actual[process] != required[process]
+        }
+        invalid_owner = {
+            process
+            for process, owner in self.process_owners
+            if owner not in _ALLOWED_OWNERS
+        }
+        unowned = len(missing | extra | wrong_owner | invalid_owner)
         cross_owned = sum(
             process in {"cross_edge_135_136", "cross_edge_143_144"}
             and owner == "split_domain_interface"
