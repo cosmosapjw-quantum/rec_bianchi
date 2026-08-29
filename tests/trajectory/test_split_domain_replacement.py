@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
 import numpy as np
+import pytest
+from scipy.constants import electron_volt
 
 from full_bianchi_hyrec.recoil.original_hyrec_native import NVIRT
 from full_bianchi_hyrec.recoil.original_hyrec_physical_flux import (
@@ -18,15 +21,22 @@ from full_bianchi_hyrec.trajectory.dynamic_macro_ownership import (
     implemented_split_domain_ownership_config,
     resolved_split_domain_contract_witness,
 )
+from full_bianchi_hyrec.trajectory.primitive_rates import LYMAN_ALPHA_ENERGY_EV
 
 
 try:
     from full_bianchi_hyrec.trajectory.split_domain_replacement import (
         SplitDomainContext,
+        SplitDomainInterfaceEntry,
+        SplitDomainLedger,
+        SplitDomainRegistry,
         SplitDomainReplacement,
     )
 except ImportError:
     SplitDomainContext = None
+    SplitDomainInterfaceEntry = None
+    SplitDomainLedger = None
+    SplitDomainRegistry = None
     SplitDomainReplacement = None
 
 
@@ -44,10 +54,18 @@ DIRECTIONAL_DERIVATIVE_SCHEDULE = (
     ("central", 1.0e-5),
     ("complex", 1.0e-30),
 )
+INHERITED_DENSE_SOLVE_RELATIVE_LIMIT = 5.0e-13
 
 
 def _parsed():
     return parse_original_hyrec_boundary_snapshot_csv(SOURCE)
+
+
+def _history_sha256_for_test(dfplus, dfminus) -> str:
+    digest = hashlib.sha256()
+    for value in (dfplus, dfminus):
+        digest.update(np.asarray(value, dtype="<f8").tobytes(order="C"))
+    return digest.hexdigest()
 
 
 def _independent_dense_primitive(snapshot) -> tuple[np.ndarray, np.ndarray]:
@@ -226,8 +244,8 @@ def test_conditioning_and_operator_residual_are_reported_separately() -> None:
     assert abs(condition_number - independent_condition_number) / (
         independent_condition_number
     ) < 2.0e-14
-    assert normalized_residual < 3.0e-15
-    assert independent_residual < 3.0e-15
+    assert normalized_residual < INHERITED_DENSE_SOLVE_RELATIVE_LIMIT
+    assert independent_residual < INHERITED_DENSE_SOLVE_RELATIVE_LIMIT
 
 
 def test_interior_atomic_deposition_is_source_exact_and_nonnegative_as_rates() -> None:
@@ -280,6 +298,41 @@ def test_interface_ledger_closes_number_energy_four_force_and_atom_source() -> N
     else:
         solution = replacement.solve(SplitDomainContext())
         ledger = replacement.ledger(solution.exterior_state, SplitDomainContext())
+        assert tuple(entry.edge for entry in ledger.entries) == CROSS_EDGES
+        for entry, (left, right) in zip(ledger.entries, CROSS_EDGES, strict=True):
+            pair_flux = (
+                parsed.trajectory.Aup_s_inv[left] * solution.full_state[2 + left]
+                - parsed.trajectory.Adn_s_inv[right] * solution.full_state[2 + right]
+            )
+            expected_native_number = (
+                pair_flux if left in INTERIOR_NATIVE_INDICES else -pair_flux
+            )
+            sign_x = 1.0 if left in INTERIOR_NATIVE_INDICES else -1.0
+            expected_energy = (
+                (LYMAN_ALPHA_ENERGY_EV + sign_x * 21.25 * parsed.boundaries[0].doppler_width_eV)
+                * parsed.trajectory.fsR**2
+                * parsed.trajectory.meR
+                * electron_volt
+            )
+            assert entry.native_number_flux_per_H_s == expected_native_number
+            assert entry.com_number_flux_per_H_s == -expected_native_number
+            assert entry.interface_energy_J == expected_energy
+            assert entry.native_photon_energy_flux_W_per_H == (
+                expected_native_number * expected_energy
+            )
+            assert entry.com_photon_energy_flux_W_per_H == (
+                -expected_native_number * expected_energy
+            )
+            assert np.array_equal(
+                entry.native_four_force_W_per_H,
+                np.asarray(
+                    (entry.native_photon_energy_flux_W_per_H, 0.0, 0.0, 0.0)
+                ),
+            )
+            assert np.array_equal(
+                entry.com_four_force_W_per_H, -entry.native_four_force_W_per_H
+            )
+            assert entry.atom_source_W_per_H == 0.0
         number_residual = ledger.number_residual_per_H_s
         energy_residual = ledger.photon_energy_residual_W_per_H
         four_force_residual = ledger.four_force_residual_W_per_H
@@ -337,8 +390,29 @@ def test_restart_and_history_round_trip_preserves_state_and_residual() -> None:
         exterior_state = replacement.solve(SplitDomainContext()).exterior_state
         encoded = json.loads(json.dumps(replacement.restart_record()))
         restored = replacement.state_from_restart_record(encoded)
+        assert set(encoded) == {
+            "schema",
+            "source_z",
+            "source_index",
+            "context",
+            "registry",
+            "registry_sha256",
+            "exterior_state",
+            "interior_com_state",
+            "full_state",
+            "history_Dfplus",
+            "history_Dfminus",
+            "history_sha256",
+        }
+        assert encoded["context"] == {
+            "interface_enabled": True,
+            "flrw_limit": False,
+        }
         restored_state = restored.exterior_state
         restored_history = restored.history_Dfplus
+        assert np.array_equal(
+            restored.history_Dfminus, parsed.trajectory.Dfminus
+        )
         restored_residual = replacement.residual(
             restored_state, SplitDomainContext()
         )
@@ -346,3 +420,85 @@ def test_restart_and_history_round_trip_preserves_state_and_residual() -> None:
     assert np.array_equal(restored_state, exterior_state)
     assert np.array_equal(restored_history, parsed.trajectory.Dfplus)
     assert np.linalg.norm(restored_residual, ord=np.inf) < 2.0e-24
+
+
+def test_preregistered_owner_interface_and_ledger_mutants_are_rejected() -> None:
+    parsed = _parsed()
+    replacement = _replacement_or_none(parsed)
+    assert replacement is not None
+    assert SplitDomainRegistry is not None
+    assert SplitDomainInterfaceEntry is not None
+    assert SplitDomainLedger is not None
+
+    double_owner = SplitDomainRegistry(
+        interior_indices=INTERIOR_NATIVE_INDICES,
+        cross_edges=CROSS_EDGES,
+        process_owners=replacement.registry.process_owners
+        + (("cross_edge_135_136", "exterior_native"),),
+        implementation_evidence=True,
+    ).audit()
+    assert double_owner.overlap_count == 1
+    assert not double_owner.implementation_evidence
+
+    unowned_edge = SplitDomainRegistry(
+        interior_indices=INTERIOR_NATIVE_INDICES,
+        cross_edges=CROSS_EDGES,
+        process_owners=tuple(
+            item
+            for item in replacement.registry.process_owners
+            if item[0] != "cross_edge_143_144"
+        ),
+        implementation_evidence=True,
+    ).audit()
+    assert unowned_edge.unowned_process_count == 1
+    assert unowned_edge.cross_edge_count == 1
+    assert not unowned_edge.implementation_evidence
+
+    solution = replacement.solve(SplitDomainContext())
+    ledger = replacement.ledger(solution.exterior_state, SplitDomainContext())
+    entry = ledger.entries[0]
+    with pytest.raises(ValueError, match="wrong number-flux sign"):
+        SplitDomainInterfaceEntry(
+            edge=entry.edge,
+            side=entry.side,
+            interface_energy_J=entry.interface_energy_J,
+            native_number_flux_per_H_s=entry.native_number_flux_per_H_s,
+            com_number_flux_per_H_s=entry.com_number_flux_per_H_s,
+            native_photon_energy_flux_W_per_H=-entry.native_photon_energy_flux_W_per_H,
+            com_photon_energy_flux_W_per_H=-entry.com_photon_energy_flux_W_per_H,
+            native_four_force_W_per_H=-entry.native_four_force_W_per_H,
+            com_four_force_W_per_H=-entry.com_four_force_W_per_H,
+            atom_source_W_per_H=0.0,
+        )
+
+    with pytest.raises(ValueError, match="zero or two"):
+        SplitDomainLedger(
+            entries=(entry,),
+            native_number_flux_per_H_s=entry.native_number_flux_per_H_s,
+            com_number_flux_per_H_s=entry.com_number_flux_per_H_s,
+            native_photon_energy_flux_W_per_H=entry.native_photon_energy_flux_W_per_H,
+            com_photon_energy_flux_W_per_H=entry.com_photon_energy_flux_W_per_H,
+            native_four_force_W_per_H=entry.native_four_force_W_per_H,
+            com_four_force_W_per_H=entry.com_four_force_W_per_H,
+            atom_source_W_per_H=0.0,
+        )
+
+
+def test_restart_rejects_context_and_history_mutants() -> None:
+    parsed = _parsed()
+    replacement = _replacement_or_none(parsed)
+    assert replacement is not None
+    record = replacement.restart_record()
+
+    context_mutant = json.loads(json.dumps(record))
+    context_mutant["context"]["interface_enabled"] = False
+    with pytest.raises(ValueError, match="context"):
+        replacement.state_from_restart_record(context_mutant)
+
+    history_mutant = json.loads(json.dumps(record))
+    history_mutant["history_Dfplus"][136] += 1.0e-18
+    history_mutant["history_sha256"] = _history_sha256_for_test(
+        history_mutant["history_Dfplus"], history_mutant["history_Dfminus"]
+    )
+    with pytest.raises(ValueError, match="Dfplus history"):
+        replacement.state_from_restart_record(history_mutant)

@@ -1,0 +1,172 @@
+{
+  "schema": "rec-split-domain-replacement-verification/v1",
+  "status": "PASS_TASK4_DURABLE_VERIFICATION_PENDING_DUAL_REVIEW",
+  "terminal_ceiling": "PASS_REC_SPLIT_DOMAIN_REPLACEMENT_AND_INTERFACE_V1",
+  "source": {
+    "branch": "audit/ode-four-loop-external-audit-20260823",
+    "head": "4cd2c7bff00ca91c57997d7e6e1ff4c67f7fccd3",
+    "tree": "3f8731cfab9c9493fcdaa18d855d95768eee1d47",
+    "ancestry_from_exact_head": "PASS",
+    "locked_blobs": {
+      "archive/expanded/Full_Bianchi_HyRec_PR05C2C1B2B1E1B0_dynamic_macro_ownership_no_go_v0_75/NUMERICAL_METRICS.json": "f38e08e54b899f50adc708078d517d716243d7a2",
+      "docs/PR05C2C1B2B1E1C_SPLIT_DOMAIN_REPLACEMENT_PLAN.md": "585b2474b4a98733637b98cf3678d8b86a0db27c",
+      "src/full_bianchi_hyrec/trajectory/dynamic_macro_ownership.py": "a196840d164aa7497b27178c1a38ca0f9627c426"
+    }
+  },
+  "r2_package": {
+    "archive_sha256": "461ec97ac30ce24aed977fda30c65d5ef28322d3883b268ab94a46a0fb26e23b",
+    "materialized_commit": "47e19df30a5e71e536d3d5167ffa3b78638a59c5",
+    "materialized_tree": "e7400fda8511e582f5bc4944b96183977412f4f3",
+    "package_id": "REC-BIANCHI-SPLIT-DOMAIN-BOOTSTRAP-20260829-R2",
+    "semantic_intake": "PASS",
+    "manifest_binding": {
+      "disposition": "PROVENANCE_REBIND_REQUIRED",
+      "result_validity_effect": "NONE",
+      "packaging_validity": "FAIL_STALE_INNER_MANIFEST",
+      "mismatches": {
+        "IMPLEMENTATION_PLAN.md": {
+          "actual": "5af7426adbe1cbbb1290fffb82fc6fe6149edbb8f9527596cde6898ae238834b",
+          "manifest": "0c634754f294f022169b017b0ca5e89d61126242c4558dd2a7b8dd502724b16a"
+        },
+        "REC_REI_INTERFACE_BRIDGE.json": {
+          "actual": "e3ceaa3a9bef84c648b58255b3c3d72ef4e8e5094c9f45d30797b08d2d06e86c",
+          "manifest": "88663c10ba35392cd447d0dc24c1b1347e1659b12027a1ee707a8405221b8398"
+        },
+        "validate_package.py": {
+          "actual": "0ce02d9eec185f68d7906207c94ec383aa066e3b860310d2ed69b7e01b5bdf87",
+          "manifest": "723365c65e93cfc9b99df6b27c88e6ed9088566fddd920d8721fb39f320fe864"
+        }
+      },
+      "note": "The immutable package bytes are exactly attributable to the materialized Git commit and tree. The stale inner manifest is packaging/provenance metadata and was not rewritten in this implementation branch."
+    }
+  },
+  "identity_classification": {
+    "immutable_source": {
+      "class": "CLASS_1_IMMUTABLE_SOURCE_INPUT",
+      "required_identity": "BYTE_AND_EXACT_GIT_IDENTITY",
+      "status": "PASS"
+    },
+    "numerical_state_jvp_and_observables": {
+      "class": "CLASS_3_NUMERICAL_SCIENTIFIC_OUTPUT",
+      "required_identity": "NUMERICAL_AND_SEMANTIC_IDENTITY",
+      "status": "PASS"
+    },
+    "outer_archive": {
+      "class": "CLASS_4_PACKAGING_TRANSPORT_METADATA",
+      "required_identity": "BYTE_IDENTITY_EXPLICITLY_SUPPLIED_BY_SIDECAR",
+      "status": "PASS"
+    },
+    "r2_inner_manifest": {
+      "class": "CLASS_4_PACKAGING_PROVENANCE_BINDING",
+      "required_identity": "CONTENT_AND_PROVENANCE_BINDING",
+      "status": "PROVENANCE_REBIND_REQUIRED"
+    }
+  },
+  "implementation_parent": {
+    "head": "b729f31efd5ab213afa74ba455373190bf38fc98",
+    "tree": "651ffe1f7f07e57269a36d8d6d9c808ff7fd8554"
+  },
+  "locked_support": {
+    "cross_edges": [
+      [135, 136],
+      [143, 144]
+    ],
+    "interface_abs_x": 21.25,
+    "interior_native_indices": [136, 137, 138, 139, 140, 141, 142, 143],
+    "native_cells_inferred": false,
+    "normalization_fitted": false
+  },
+  "independent_oracle": {
+    "assembly": "test-local 313-by-313 dense primitive assembled directly from Trr Trv Tvr Tvv and source arrays without the production matrix helper",
+    "reference_solve": "numpy.linalg.solve on the full dense primitive",
+    "production_action": "exterior Schur solve with the exact eight-point interior partition",
+    "production_reported_residual_used_as_oracle": false
+  },
+  "criteria": {
+    "state_relative_inf_lt": 3e-12,
+    "observable_moment_relative_inf_lt": 3e-12,
+    "jvp_relative_inf_lt": 2e-10,
+    "normalized_operator_residual_lt": 5e-13,
+    "normalized_operator_residual_basis": "Inherited from the directly affected dense original-HyRec solve criterion; not widened after observing this result.",
+    "restart_raw_residual_inf_lt": 2e-24,
+    "interface_ledgers": "EXACT_ZERO",
+    "pure_crossing_atom_source": "EXACT_ZERO"
+  },
+  "numerical_metrics": {
+    "condition_number_independent": 4281.527684044071,
+    "condition_number_production": 4281.527684044071,
+    "interface_off_state_relative_inf": 1.5840753843580663e-15,
+    "normalized_residual_independent": 4.0332005493662045e-17,
+    "normalized_residual_production_diagnostic": 4.0332005493662045e-17,
+    "observable_moment_relative_inf": 3.236777960680524e-14,
+    "raw_residual_independent_inf": 1.25208002876679e-26,
+    "state_relative_inf": 1.5841936122045733e-15,
+    "jvp_schedule": [
+      {
+        "epsilon": 0.0001,
+        "method": "central",
+        "relative_inf": 5.97176504546206e-15
+      },
+      {
+        "epsilon": 3e-05,
+        "method": "central",
+        "relative_inf": 7.88272986000992e-15
+      },
+      {
+        "epsilon": 1e-05,
+        "method": "central",
+        "relative_inf": 5.653270909704084e-15
+      },
+      {
+        "epsilon": 1e-30,
+        "method": "complex",
+        "relative_inf": 7.803106326070425e-15
+      }
+    ]
+  },
+  "interface_ledger": {
+    "atom_source_W_per_H": 0.0,
+    "com_energy_W_per_H": -1.985867415318085e-32,
+    "com_number_flux_per_H_s": -1.2147736865559044e-14,
+    "edges": [
+      [135, 136],
+      [143, 144]
+    ],
+    "energy_residual_W_per_H": 0.0,
+    "entry_count": 2,
+    "four_force_residual_W_per_H": [0.0, 0.0, 0.0, 0.0],
+    "native_energy_W_per_H": 1.985867415318085e-32,
+    "native_number_flux_per_H_s": 1.2147736865559044e-14,
+    "number_residual_per_H_s": 0.0
+  },
+  "restart": {
+    "history_sha256": "175ae0c6c03240b6802af2bcf148d3f7c6b0446dd8fdbc285bc73b565d09d0fa",
+    "json_round_trip_state_identity": "EXACT",
+    "json_round_trip_structure_identity": "EXACT",
+    "source_Dfplus_and_Dfminus_identity": "EXACT"
+  },
+  "mutants": {
+    "double_owner": "KILLED_BY_OVERLAP_ASSERTION",
+    "dropped_ledger_entry": "KILLED_BY_ENTRY_COUNT_ASSERTION",
+    "interface_sign_reversal": "KILLED_BY_NUMBER_ENERGY_SIGN_ASSERTION",
+    "unowned_edge": "KILLED_BY_UNOWNED_EDGE_ASSERTION"
+  },
+  "test_evidence": {
+    "genuine_red": {
+      "commit": "7907fb16",
+      "result": "5_FAILED_AT_OWNERSHIP_OR_NUMERICAL_ASSERTIONS"
+    },
+    "replacement_file": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -p no:cacheprovider -q tests/trajectory/test_split_domain_replacement.py",
+      "result": "10_PASSED"
+    },
+    "parallel_path_added": false,
+    "one_thread_n_thread_identity": "NOT_APPLICABLE"
+  },
+  "scope_firewall": {
+    "dynamic_macro_promoted": false,
+    "full_recombination_history_claimed": false,
+    "rei_bianchi_numerical_splice": false,
+    "source_bound_verifier_transplanted": false
+  }
+}

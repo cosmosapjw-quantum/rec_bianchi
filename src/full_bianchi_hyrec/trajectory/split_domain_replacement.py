@@ -293,10 +293,29 @@ class SplitDomainInterfaceEntry:
             raise ValueError("interface number entries must be equal and opposite")
         if (
             self.native_photon_energy_flux_W_per_H
+            != self.native_number_flux_per_H_s * self.interface_energy_J
+            or self.com_photon_energy_flux_W_per_H
+            != self.com_number_flux_per_H_s * self.interface_energy_J
+        ):
+            raise ValueError("interface photon energy has the wrong number-flux sign")
+        if (
+            self.native_photon_energy_flux_W_per_H
             + self.com_photon_energy_flux_W_per_H
             != 0.0
         ):
             raise ValueError("interface energy entries must be equal and opposite")
+        expected_native_four_force = np.asarray(
+            (self.native_photon_energy_flux_W_per_H, 0.0, 0.0, 0.0)
+        )
+        expected_com_four_force = np.asarray(
+            (self.com_photon_energy_flux_W_per_H, 0.0, 0.0, 0.0)
+        )
+        if not np.array_equal(
+            self.native_four_force_W_per_H, expected_native_four_force
+        ) or not np.array_equal(
+            self.com_four_force_W_per_H, expected_com_four_force
+        ):
+            raise ValueError("interface four-force is inconsistent with photon energy")
         if not np.array_equal(
             self.native_four_force_W_per_H + self.com_four_force_W_per_H,
             np.zeros(4),
@@ -778,6 +797,13 @@ class SplitDomainReplacement:
             raise ValueError("restart source redshift mismatch")
         if int(record.get("source_index", -1)) != self.snapshot.iz_local:
             raise ValueError("restart source index mismatch")
+        context_payload = record.get("context")
+        expected_context = {
+            "interface_enabled": True,
+            "flrw_limit": False,
+        }
+        if not isinstance(context_payload, Mapping) or dict(context_payload) != expected_context:
+            raise ValueError("restart context differs from the locked replacement")
         registry_payload = record.get("registry")
         if not isinstance(registry_payload, Mapping):
             raise ValueError("restart registry is missing")
@@ -812,6 +838,10 @@ class SplitDomainReplacement:
             restored.history_Dfplus, restored.history_Dfminus
         ):
             raise ValueError("restart history digest mismatch")
+        if not np.array_equal(restored.history_Dfplus, self.snapshot.Dfplus):
+            raise ValueError("restart Dfplus history differs from the source snapshot")
+        if not np.array_equal(restored.history_Dfminus, self.snapshot.Dfminus):
+            raise ValueError("restart Dfminus history differs from the source snapshot")
         expected = self.solve(SplitDomainContext())
         if not np.array_equal(restored.exterior_state, expected.exterior_state):
             raise ValueError("restart exterior state mismatch")
