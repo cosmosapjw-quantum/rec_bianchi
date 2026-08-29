@@ -1,0 +1,51 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -q tests/trajectory/test_split_domain_replacement.py",
+  "expected_failure_kind": "OWNERSHIP_OR_NUMERICAL_ASSERTION",
+  "failures": [
+    {
+      "assertion": "implementation_evidence",
+      "observed": false,
+      "test": "test_exact_owner_swap_is_implementation_evidence_not_a_witness"
+    },
+    {
+      "assertion": "state_relative < 3e-12",
+      "observed": 1.0,
+      "test": "test_exterior_schur_state_and_observables_match_independent_dense_primitive"
+    },
+    {
+      "assertion": "number_residual == 0.0",
+      "observed": 1.0,
+      "test": "test_interface_ledger_closes_number_energy_four_force_and_atom_source"
+    },
+    {
+      "assertion": "directional_relative < 2e-10",
+      "observed": 1.0,
+      "schedule_entry": ["central", 0.0001],
+      "test": "test_analytic_jvp_matches_preregistered_independent_directional_schedule"
+    },
+    {
+      "assertion": "restart exterior state equals independent Schur state",
+      "observed": false,
+      "test": "test_restart_and_history_round_trip_preserves_state_and_residual"
+    }
+  ],
+  "generated_utc": "2026-08-29T06:59:26Z",
+  "import_or_missing_file_failure": false,
+  "package_identity_disposition": {
+    "inner_manifest": "PROVENANCE_REBIND_REQUIRED",
+    "package_commit": "47e19df30a5e71e536d3d5167ffa3b78638a59c5",
+    "package_tree": "e7400fda8511e582f5bc4944b96183977412f4f3",
+    "scientific_integrity_failure": false
+  },
+  "preregistered_directional_derivative_schedule": [
+    ["central", 0.0001],
+    ["central", 0.00003],
+    ["central", 0.00001],
+    ["complex", 1e-30]
+  ],
+  "schema": "rec-split-domain-genuine-red/v1",
+  "source_head": "4cd2c7bff00ca91c57997d7e6e1ff4c67f7fccd3",
+  "source_tree": "3f8731cfab9c9493fcdaa18d855d95768eee1d47",
+  "status": "GENUINE_RED",
+  "summary": "5 failed in 0.68s"
+}

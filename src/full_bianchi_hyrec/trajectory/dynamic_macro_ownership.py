@@ -147,6 +147,42 @@ def resolved_split_domain_contract_witness() -> DynamicMacroOwnershipConfig:
     )
 
 
+def implemented_split_domain_ownership_config(
+    replacement: object,
+) -> DynamicMacroOwnershipConfig:
+    """One-owner configuration supplied by ``SplitDomainReplacement``.
+
+    Unlike :func:`resolved_split_domain_contract_witness`, this configuration
+    is derived only from a concrete replacement whose exact process-to-owner
+    registry has passed its implementation audit.  A caller cannot promote
+    the contract by requesting this configuration without that evidence.
+    """
+
+    from full_bianchi_hyrec.trajectory.split_domain_replacement import (
+        SplitDomainReplacement,
+    )
+
+    if not isinstance(replacement, SplitDomainReplacement):
+        raise TypeError("replacement must be a concrete SplitDomainReplacement")
+    implementation_audit = replacement.registry.audit()
+    if not implementation_audit.implementation_evidence:
+        raise DynamicMacroOwnershipError(
+            "replacement does not have the exact process-to-owner map"
+        )
+
+    return DynamicMacroOwnershipConfig(
+        native_diffusion_support="exterior_only",
+        com_collision_support="interior",
+        native_atomic_source_support="exterior_only",
+        com_atomic_source_support="interior",
+        completed_tvv_support="exterior_schur",
+        cross_edge_owner="split_domain_interface",
+        scalar_history_owner="typed_characteristic_history",
+        replacement_complete=True,
+        contract_witness_only=False,
+    )
+
+
 @dataclass(frozen=True)
 class DynamicAtomicMacroOwnershipAudit:
     native_virtual_count: int
@@ -389,5 +425,6 @@ __all__ = [
     "current_v074_ownership_config",
     "naive_dynamic_atomic_ownership_config",
     "resolved_split_domain_contract_witness",
+    "implemented_split_domain_ownership_config",
     "require_dynamic_atomic_macro_ready",
 ]

@@ -1,0 +1,47 @@
+{
+  "schema": "rec-split-domain-review/v1",
+  "role": "PHYS_MATH",
+  "review_round": "1_OF_1",
+  "review_head": "9a93bb38bc9e88646e3876df02728a02926df450",
+  "review_tree": "bff8b1c73c115b09299443be6f5287b8503214f8",
+  "status": "FAIL",
+  "counts": {
+    "P0": 0,
+    "P1": 2,
+    "P2": 1
+  },
+  "findings": [
+    {
+      "id": "PHYS_MATH_P1_INTERIOR_NOT_COM",
+      "severity": "P1",
+      "reproduced": true,
+      "evidence": "interior_com_state has shape 8 and is exactly the native full-state slice at source indices 136..143; no 35-state COM measure, collision state, or deposition map is present",
+      "repaired": false
+    },
+    {
+      "id": "PHYS_MATH_P1_PROXY_FLUX_NOT_PHOTON_NUMBER",
+      "severity": "P1",
+      "reproduced": true,
+      "evidence": "the ledger uses Aup*x_left-Adn*x_right for virtual proxies, despite the source firewall forbidding promotion of those proxies to photon finite-volume numbers",
+      "repaired": false
+    },
+    {
+      "id": "PHYS_MATH_P2_FOUR_FORCE_VARIANCE_UNSPECIFIED",
+      "severity": "P2",
+      "reproduced": true,
+      "evidence": "the vector cancellation is algebraic, but the implementation does not specify contravariant versus covariant tetrad components",
+      "repaired": false
+    }
+  ],
+  "passed_checks": [
+    "exact indices and cross edges",
+    "native dense-to-Schur algebra",
+    "crossing algebra signs",
+    "face-energy expression",
+    "independent native state and observable parity",
+    "preregistered JVP schedule",
+    "conditioning reported separately from residual",
+    "frozen native-state and source-history JSON round trip"
+  ],
+  "reviewer_worktree_unchanged": true
+}
