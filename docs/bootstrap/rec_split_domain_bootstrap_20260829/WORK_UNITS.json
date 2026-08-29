@@ -1,0 +1,74 @@
+{
+  "schema": "rec-bianchi-split-domain-work-units/v1",
+  "exact_next_action": "REC-BOOT-00",
+  "work_units": [
+    {
+      "id": "REC-BOOT-00",
+      "kind": "RECOVERY_AND_SOURCE_RECONSTRUCTION",
+      "actions": [
+        "create an isolated worktree from the package branch's exact main-derived base",
+        "run the repository offline bootstrap and quick checks",
+        "classify main-to-audit commits as source-bearing or audit/package-only",
+        "apply only provenance-authorized v0.75 source commits",
+        "freeze the canonical HyRec archive and source/tree identities"
+      ],
+      "terminal": ["READY_REC_SPLIT_DOMAIN", "BLOCKED_SOURCE_IDENTITY"]
+    },
+    {
+      "id": "REC-SPLIT-01",
+      "kind": "TEST_FIRST_IMPLEMENTATION",
+      "actions": [
+        "retain genuine RED for double ownership, both interface edges, analytic JVP and restart",
+        "implement exterior-native/interior-COM/single-interface ownership",
+        "preserve the valid COM root and exterior native owners",
+        "do not add full-native and COM operators"
+      ],
+      "terminal": ["IMPLEMENTED", "BLOCKED_OWNERSHIP_OR_INTERFACE"]
+    },
+    {
+      "id": "REC-VERIFY-02",
+      "kind": "INDEPENDENT_NUMERICAL_AND_LEDGER_PROOF",
+      "actions": [
+        "independent residual and JVP comparison on nondegenerate interface fixtures",
+        "number, energy and four-force ledgers",
+        "primitive versus exterior-Schur/interface parity",
+        "event localization, restart and parent-byte/semantic continuity"
+      ],
+      "terminal": ["TARGETED_GREEN", "BLOCKED_NUMERICAL_OR_CONSERVATION"]
+    },
+    {
+      "id": "REC-INTERFACE-03",
+      "kind": "EMIT_REI_ADAPTER_RECEIPT",
+      "actions": [
+        "emit typed state/rate/JVP/ledger/event/restart schema and validity domain",
+        "bind the exact rec source and canonical HyRec input",
+        "do not mutate rei_bianchi or its lock"
+      ],
+      "terminal": ["PASS_REC_SPLIT_DOMAIN_REPLACEMENT_AND_INTERFACE_V1", "BLOCKED_INTERFACE_SCHEMA"]
+    },
+    {
+      "id": "REC-DELIVER-04",
+      "kind": "BOUNDED_REVIEW_AND_DRAFT_PR",
+      "actions": [
+        "one fresh review",
+        "at most one reproduced P0/P1 repair",
+        "ordinary push, one draft PR and exact remote readback"
+      ],
+      "terminal": ["DELIVERED_DRAFT", "BLOCKED_REMOTE"]
+    }
+  ],
+  "edges": [
+    ["REC-BOOT-00", "REC-SPLIT-01"],
+    ["REC-SPLIT-01", "REC-VERIFY-02"],
+    ["REC-VERIFY-02", "REC-INTERFACE-03"],
+    ["REC-INTERFACE-03", "REC-DELIVER-04"]
+  ],
+  "forbidden_global": [
+    "dynamic macro before the split-domain gate",
+    "preconditioner or performance work",
+    "new atomic physics or inferred native cells",
+    "all-family sweep",
+    "unrelated full-suite reassurance",
+    "merge or ready transition"
+  ]
+}
