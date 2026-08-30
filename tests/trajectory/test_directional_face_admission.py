@@ -121,7 +121,10 @@ def test_frequency_speed_zero_requires_event_contract() -> None:
     )
     snapshot = sequence.snapshot_at_tau(TAU0)
 
-    with pytest.raises(ValueError, match="frequency-speed zero.*event"):
+    with pytest.raises(
+        module.FrequencySpeedZeroEventRequired,
+        match=r"frequency-speed zero.*nodes \[0, 1\].*event",
+    ) as exc_info:
         module.run_manufactured_52_ray_geometry_witness(
             snapshot=snapshot,
             line=line,
@@ -129,6 +132,7 @@ def test_frequency_speed_zero_requires_event_contract() -> None:
             logarithmic_frequency_offset=1.0e-4,
             n_steps=64,
         )
+    assert exc_info.value.node_indices == (0, 1)
 
 
 def test_missing_source_law_and_fixed_node_remap_fail_closed() -> None:

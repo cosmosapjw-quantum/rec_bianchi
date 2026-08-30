@@ -298,6 +298,17 @@ class ManufacturedGeometryWitness:
     blockers: tuple[str, ...]
 
 
+class FrequencySpeedZeroEventRequired(ValueError):
+    """Fail-closed signal carrying every ordered zero-drift node."""
+
+    def __init__(self, node_indices: Sequence[int]) -> None:
+        self.node_indices = tuple(int(index) for index in node_indices)
+        super().__init__(
+            "frequency-speed zero at ordered nodes "
+            f"{list(self.node_indices)} requires an explicit event/restart contract"
+        )
+
+
 def run_manufactured_52_ray_geometry_witness(
     *,
     snapshot: BackgroundSnapshot,
@@ -326,14 +337,19 @@ def run_manufactured_52_ray_geometry_witness(
     occupation_residuals: list[float] = []
     dopplers: list[float] = []
     frequency_speeds: list[float] = []
+    local_rates = np.asarray(
+        [
+            solver.local_characteristic(direction_normal).R_hydrogen_s_inv
+            for direction_normal in kinematics.direction_normal
+        ],
+        dtype=float,
+    )
+    zero_nodes = tuple(int(index) for index in np.flatnonzero(local_rates == 0.0))
+    if zero_nodes:
+        raise FrequencySpeedZeroEventRequired(zero_nodes)
     for side_index, target in enumerate(targets):
         for node, direction_normal in enumerate(kinematics.direction_normal):
-            local = solver.local_characteristic(direction_normal)
-            rate = float(local.R_hydrogen_s_inv)
-            if rate == 0.0:
-                raise ValueError(
-                    "frequency-speed zero requires an explicit event/restart contract"
-                )
+            rate = float(local_rates[node])
             initial_frequency = float(
                 target * math.exp(-math.copysign(offset, rate))
             )
@@ -513,6 +529,7 @@ __all__ = [
     "AngularQuadratureContract",
     "FaceKinematics",
     "ManufacturedGeometryWitness",
+    "FrequencySpeedZeroEventRequired",
     "DirectionalSourceChannel",
     "DirectionalFaceReadiness",
     "compute_hydrogen_frame_face_kinematics",
