@@ -1,0 +1,48 @@
+{
+  "schema": "rec-local01-user-report/v1",
+  "authority": "USER_REPORT_ONLY_NOT_REMOTE_ADMITTED_EVIDENCE",
+  "reported_receipt_path": "/home/cosmosapjw/worktrees/rec-local01-canonical-context-20260830/artifacts/trajectory/pr05c2c1b2b1e1c_repair/REC_LOCAL_01_CANONICAL_CONTEXT_INTEGRATION.json",
+  "execution": {
+    "canonical_context_restart": {"passed": 9, "failed": 0},
+    "component_context_deposition": {"passed": 27, "failed": 0},
+    "affected_restart_selectors": {"passed": 2, "deselected": 8},
+    "component_mutants": {
+      "detected": 4,
+      "assertion_failures_each": 1,
+      "collection_errors_each": 0
+    },
+    "rehashed_context_mutations": [
+      "doppler_width",
+      "energy_constants",
+      "source_provenance",
+      "frame",
+      "time_variable",
+      "frequency_measure",
+      "event_topology",
+      "payload_bytes"
+    ],
+    "all_context_mutations_rejected_before_parent_restore": true
+  },
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "pytest": "9.1.1"
+  },
+  "bootstrap": {
+    "status": "STOP_INVALID",
+    "failed_gate": "FETCH_AND_VALIDATE.sh",
+    "mismatched_files": [
+      "REC_REI_INTERFACE_BRIDGE.json",
+      "IMPLEMENTATION_PLAN.md",
+      "validate_package.py"
+    ],
+    "classification": "PRESERVED_R2_BOOTSTRAP_REPRODUCIBILITY_FAILURE"
+  },
+  "preservation": {
+    "tracked_cache_changes": 37,
+    "mutation_evidence_and_receipts": 6,
+    "reset_or_clean_performed": false
+  },
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+}
