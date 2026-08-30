@@ -4,8 +4,8 @@
     "exploratory_sparse_witness": [
       {
         "number_fractions": [
-          0.9297700293089333,
-          0.07022997069106668
+          0.9298244597283009,
+          0.07017554027169913
         ],
         "source_column": 0,
         "source_native_index": 136,
@@ -16,8 +16,8 @@
       },
       {
         "number_fractions": [
-          0.46876352503505947,
-          0.5312364749649405
+          0.46884063209478055,
+          0.5311593679052194
         ],
         "source_column": 1,
         "source_native_index": 137,
@@ -28,8 +28,8 @@
       },
       {
         "number_fractions": [
-          0.31039887614338324,
-          0.6896011238566168
+          0.3105412070826521,
+          0.6894587929173479
         ],
         "source_column": 2,
         "source_native_index": 138,
@@ -40,8 +40,8 @@
       },
       {
         "number_fractions": [
-          0.25001360437504316,
-          0.7499863956249568
+          0.25047606759681706,
+          0.7495239324031829
         ],
         "source_column": 3,
         "source_native_index": 139,
@@ -52,8 +52,8 @@
       },
       {
         "number_fractions": [
-          0.7774454679970011,
-          0.22255453200299893
+          0.7779081724232308,
+          0.22209182757676918
         ],
         "source_column": 4,
         "source_native_index": 140,
@@ -64,8 +64,8 @@
       },
       {
         "number_fractions": [
-          0.44903823762504025,
-          0.5509617623749598
+          0.44924384352536373,
+          0.5507561564746363
         ],
         "source_column": 5,
         "source_native_index": 141,
@@ -76,8 +76,8 @@
       },
       {
         "number_fractions": [
-          0.8691666407711867,
-          0.1308333592288134
+          0.8692437567794238,
+          0.13075624322057622
         ],
         "source_column": 6,
         "source_native_index": 142,
@@ -88,8 +88,8 @@
       },
       {
         "number_fractions": [
-          0.30879568614666686,
-          0.6912043138533331
+          0.30885011409213725,
+          0.6911498859078627
         ],
         "source_column": 7,
         "source_native_index": 143,
@@ -108,7 +108,7 @@
     "max_abs_energy_residual_eV": 0.0,
     "max_abs_number_residual": 0.0,
     "max_relative_energy_residual": 0.0,
-    "minimum_nonzero_fraction": 0.07022997069106668,
+    "minimum_nonzero_fraction": 0.07017554027169913,
     "native_spikes_used_as_finite_cells": false,
     "nonnegative": true,
     "number_and_energy_exact": true,
@@ -132,10 +132,10 @@
     ],
     "source_strictly_inside_target_hull": true,
     "target_energy_range_eV": [
-      10.194345519220779,
-      10.203326302773911
+      10.19434557462061,
+      10.203326358172344
     ],
-    "witness_sha256": "735cc3170669edbc06244cb98b8fa22564568dcdfba1e3fb3cfdfeda987a8d29"
+    "witness_sha256": "0277e168ac0a596e19078c0489b53fd797770dbe618de767970eeb43f141966e"
   },
   "blocking_conditions": [
     "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
@@ -159,7 +159,7 @@
       -21.25,
       21.25
     ],
-    "direct_node_network_measure_max_relative_mismatch": 1.0878134039731587e-08,
+    "direct_node_network_measure_max_relative_mismatch": 1.0881876986956445e-08,
     "direct_node_temperature_K": 3003.496188829631,
     "modern_definition": "LineBoundaryConfig.lyman_alpha(temperature_K=direct-node temperature)",
     "modern_line_boundary_width_Hz": 57907834835.931496,
@@ -284,13 +284,18 @@
   "status": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT",
   "stop_after_gate": "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
   "target_energy_binding": {
-    "physical_cell_energy_definition": "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/(nu_hi^3-nu_lo^3)/(fsR^2*meR)",
-    "source": "tracked COM finite-volume frequency intervals",
+    "legacy_interval_centroid_definition": "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/(nu_hi^3-nu_lo^3)/(fsR^2*meR)",
+    "legacy_interval_centroid_is_authoritative": false,
+    "legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": 5.545800263462297e-08,
+    "locked_target_energy_sha256": "19b9b6bb3d3d0657cb71745118ea396dc3cce92ed15491c20df8a9df8d91f8c8",
+    "momentum_scale_units": "kg m s^-1",
+    "physical_cell_energy_definition": "momentum_scale*c/electron_volt",
+    "source": "tracked CollisionNetwork.momentum_scale",
     "source_energy_rescale": 1.0,
     "source_parent_point_energy_definition": "point-characteristic evaluation at arithmetic x centre",
     "source_parent_point_formula_max_abs_residual_eV": 0.0,
-    "source_parent_point_to_physical_centroid_max_abs_difference_eV": 2.3441719676497996e-08,
-    "units": "eV rescaled"
+    "source_parent_point_to_locked_owner_max_abs_difference_eV": 7.884155195370113e-08,
+    "units": "eV"
   },
   "tracked_inputs": {
     "boundary_snapshot": {
