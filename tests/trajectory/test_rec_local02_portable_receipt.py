@@ -14,18 +14,20 @@ from full_bianchi_hyrec.trajectory import physical_split_reference as reference
 
 
 ROOT = Path(__file__).resolve().parents[2]
-LEGACY_DEFAULT_SHA256 = (
+LEGACY_X86_V4_SHA256 = (
     "7bf0ebf143589b45308f5e0157a80ff842dc99783b5207748732f332a6c12912"
 )
-LEGACY_X86_V4_DISABLED_SHA256 = (
+LEGACY_X86_V3_SHA256 = (
     "1ea93ca2c007209ad25ca6cafcd76d0616a9a4cc88319d56d18f43a03e930e9d"
 )
+HOST_LANE_UNAVAILABLE = "HOST_LANE_UNAVAILABLE"
 
 
 def _dispatch_probe(*, disable_x86_v4: bool) -> dict:
     script = r'''
 import hashlib
 import json
+from numpy._core._multiarray_umath import __cpu_features__
 from full_bianchi_hyrec.trajectory.physical_split_reference import (
     build_rec_local02_diagnostic,
     build_rec_local02_legacy_diagnostic,
@@ -41,7 +43,13 @@ legacy_bytes = (
 portable_bytes = (
     json.dumps(portable, indent=2, sort_keys=True, allow_nan=False) + "\n"
 ).encode()
+x86_v4 = bool(__cpu_features__.get("X86_V4", False))
+x86_v3 = bool(__cpu_features__.get("X86_V3", False))
+forensic_lane = "X86_V4" if x86_v4 else ("X86_V3" if x86_v3 else "HOST_LANE_UNAVAILABLE")
 print(json.dumps({
+    "x86_v4_available": x86_v4,
+    "x86_v3_available": x86_v3,
+    "forensic_lane": forensic_lane,
     "legacy_sha256": hashlib.sha256(legacy_bytes).hexdigest(),
     "legacy_direct": legacy["doppler_width_reconciliation"]
         ["direct_node_network_measure_max_relative_mismatch"],
@@ -62,8 +70,6 @@ print(json.dumps({
     environment = os.environ.copy()
     if disable_x86_v4:
         environment["NPY_DISABLE_CPU_FEATURES"] = "X86_V4"
-    else:
-        environment.pop("NPY_DISABLE_CPU_FEATURES", None)
     completed = subprocess.run(
         [sys.executable, "-c", script],
         cwd=ROOT,
@@ -84,26 +90,60 @@ def _set_diagnostic(receipt: dict, path: str, value: float) -> None:
     }
 
 
-def test_portable_contract_is_dispatch_stable_and_preserves_legacy_fingerprints() -> None:
-    default = _dispatch_probe(disable_x86_v4=False)
-    scalar = _dispatch_probe(disable_x86_v4=True)
+def _assert_available_legacy_fingerprint(probe: dict) -> None:
+    lane = probe["forensic_lane"]
+    if lane == "X86_V4":
+        assert probe["x86_v4_available"] is True
+        assert probe["legacy_sha256"] == LEGACY_X86_V4_SHA256
+        assert probe["legacy_direct"] == 1.0881876986956445e-08
+        assert probe["legacy_centroid"] == 5.545800263462297e-08
+    elif lane == "X86_V3":
+        assert probe["x86_v4_available"] is False
+        assert probe["x86_v3_available"] is True
+        assert probe["legacy_sha256"] == LEGACY_X86_V3_SHA256
+        assert probe["legacy_direct"] == 1.0878134039731587e-08
+        assert probe["legacy_centroid"] == 5.5440194657307984e-08
+    else:
+        assert lane == HOST_LANE_UNAVAILABLE
+        assert probe["x86_v4_available"] is False
+        assert probe["x86_v3_available"] is False
 
-    assert default["legacy_sha256"] == LEGACY_DEFAULT_SHA256
-    assert scalar["legacy_sha256"] == LEGACY_X86_V4_DISABLED_SHA256
-    assert default["legacy_direct"] == 1.0881876986956445e-08
-    assert scalar["legacy_direct"] == 1.0878134039731587e-08
-    assert default["legacy_centroid"] == 5.545800263462297e-08
-    assert scalar["legacy_centroid"] == 5.5440194657307984e-08
 
-    assert default["authority_sha256"] == scalar["authority_sha256"]
+def test_portable_contract_is_dispatch_stable_and_preserves_available_legacy_fingerprints() -> None:
+    native = _dispatch_probe(disable_x86_v4=False)
+    x86_v4_disabled = _dispatch_probe(disable_x86_v4=True)
+
+    assert isinstance(native["x86_v4_available"], bool)
+    assert x86_v4_disabled["x86_v4_available"] is False
+    _assert_available_legacy_fingerprint(native)
+    _assert_available_legacy_fingerprint(x86_v4_disabled)
+
+    assert native["authority_sha256"] == x86_v4_disabled["authority_sha256"]
     assert (
-        default["diagnostic_contract_sha256"]
-        == scalar["diagnostic_contract_sha256"]
+        native["diagnostic_contract_sha256"]
+        == x86_v4_disabled["diagnostic_contract_sha256"]
     )
-    assert default["portable_diagnostics"] == scalar["portable_diagnostics"]
-    assert default["number_energy_exact"] is scalar["number_energy_exact"] is True
-    assert default["status"] == scalar["status"] == reference.STATUS
-    assert default["claim"] == scalar["claim"] == reference.CLAIM
+    assert (
+        native["portable_diagnostics"]
+        == x86_v4_disabled["portable_diagnostics"]
+    )
+    assert (
+        native["number_energy_exact"]
+        is x86_v4_disabled["number_energy_exact"]
+        is True
+    )
+    assert native["status"] == x86_v4_disabled["status"] == reference.STATUS
+    assert native["claim"] == x86_v4_disabled["claim"] == reference.CLAIM
+
+
+def test_native_probe_respects_preconfigured_x86_v4_mask(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("NPY_DISABLE_CPU_FEATURES", "X86_V4")
+    masked_native = _dispatch_probe(disable_x86_v4=False)
+
+    assert masked_native["x86_v4_available"] is False
+    _assert_available_legacy_fingerprint(masked_native)
 
 
 def test_portable_authority_binds_raw_owner_source_and_invariants() -> None:
