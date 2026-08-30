@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_fixed_map_jvp_includes_density_derivative ________________
+tests/trajectory/test_split_context_and_deposition.py:160: in test_fixed_map_jvp_includes_density_derivative
+    np.testing.assert_allclose(analytic,numerical,rtol=2e-10,atol=1e-29)
+E   AssertionError: 
+E   Not equal to tolerance rtol=2e-10, atol=1e-29
+E   
+E   Mismatched elements: 234 / 910 (25.7%)
+E   First 5 mismatches are at indices:
+E    [3, 0]: -1.1888261348810391e-15 (ACTUAL), -1.0223904759973177e-15 (DESIRED)
+E    [3, 1]: -1.1888261348810391e-15 (ACTUAL), -1.0223904759973177e-15 (DESIRED)
+E    [3, 2]: -1.1888261348810391e-15 (ACTUAL), -1.0223904759973177e-15 (DESIRED)
+E    [3, 3]: -1.1888261348810391e-15 (ACTUAL), -1.0223904759973177e-15 (DESIRED)
+E    [3, 4]: -1.1888261348810391e-15 (ACTUAL), -1.0223904759973177e-15 (DESIRED)
+E   Max absolute difference among violations: 1.41792425e-15
+E   Max relative difference among violations: 1.74205749
+E    ACTUAL: array([[ 0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,
+E            0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,
+E            0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,...
+E    DESIRED: array([[ 0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,
+E            0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,
+E            0.000000e+00,  0.000000e+00,  0.000000e+00,  0.000000e+00,...
+=========================== short test summary info ============================
+FAILED tests/trajectory/test_split_context_and_deposition.py::test_fixed_map_jvp_includes_density_derivative
+1 failed in 0.09s

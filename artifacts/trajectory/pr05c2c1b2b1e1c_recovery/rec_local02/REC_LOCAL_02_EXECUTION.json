@@ -1,0 +1,345 @@
+{
+  "adjacent_energy_moment_feasibility": {
+    "classification": "EXPLORATORY_NONAUTHORITATIVE",
+    "exploratory_sparse_witness": [
+      {
+        "number_fractions": [
+          0.9297700293089333,
+          0.07022997069106668
+        ],
+        "source_column": 0,
+        "source_native_index": 136,
+        "target_indices": [
+          29,
+          30
+        ]
+      },
+      {
+        "number_fractions": [
+          0.46876352503505947,
+          0.5312364749649405
+        ],
+        "source_column": 1,
+        "source_native_index": 137,
+        "target_indices": [
+          30,
+          31
+        ]
+      },
+      {
+        "number_fractions": [
+          0.31039887614338324,
+          0.6896011238566168
+        ],
+        "source_column": 2,
+        "source_native_index": 138,
+        "target_indices": [
+          17,
+          18
+        ]
+      },
+      {
+        "number_fractions": [
+          0.25001360437504316,
+          0.7499863956249568
+        ],
+        "source_column": 3,
+        "source_native_index": 139,
+        "target_indices": [
+          22,
+          0
+        ]
+      },
+      {
+        "number_fractions": [
+          0.7774454679970011,
+          0.22255453200299893
+        ],
+        "source_column": 4,
+        "source_native_index": 140,
+        "target_indices": [
+          14,
+          15
+        ]
+      },
+      {
+        "number_fractions": [
+          0.44903823762504025,
+          0.5509617623749598
+        ],
+        "source_column": 5,
+        "source_native_index": 141,
+        "target_indices": [
+          26,
+          27
+        ]
+      },
+      {
+        "number_fractions": [
+          0.8691666407711867,
+          0.1308333592288134
+        ],
+        "source_column": 6,
+        "source_native_index": 142,
+        "target_indices": [
+          32,
+          33
+        ]
+      },
+      {
+        "number_fractions": [
+          0.30879568614666686,
+          0.6912043138533331
+        ],
+        "source_column": 7,
+        "source_native_index": 143,
+        "target_indices": [
+          33,
+          34
+        ]
+      }
+    ],
+    "feasible": true,
+    "infeasible_source_columns": [],
+    "map_shape": [
+      35,
+      8
+    ],
+    "max_abs_energy_residual_eV": 0.0,
+    "max_abs_number_residual": 0.0,
+    "max_relative_energy_residual": 0.0,
+    "minimum_nonzero_fraction": 0.07022997069106668,
+    "native_spikes_used_as_finite_cells": false,
+    "nonnegative": true,
+    "number_and_energy_exact": true,
+    "orientation": "B[target_com_cell,source_native_index]",
+    "physical_map": null,
+    "physical_map_selected": false,
+    "reason": "all source energies lie inside the target COM energy hull",
+    "source_energy_range_eV": [
+      10.194417,
+      10.203012
+    ],
+    "source_native_indices": [
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143
+    ],
+    "source_strictly_inside_target_hull": true,
+    "target_energy_range_eV": [
+      10.194345519220779,
+      10.203326302773911
+    ],
+    "witness_sha256": "735cc3170669edbc06244cb98b8fa22564568dcdfba1e3fb3cfdfeda987a8d29"
+  },
+  "blocking_conditions": [
+    "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
+  ],
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "conventions_if_unblocked": {
+    "energy": "joule for physical ledgers",
+    "frame": "hydrogen orthonormal frame",
+    "frequency": "ordinary frequency in Hz",
+    "metric_signature": "(-,+,+,+)",
+    "time_variable": "eta=ln(a), d/dt=H*d/deta"
+  },
+  "doppler_width_reconciliation": {
+    "csv_boundary_width_Hz": 57907148285.825386,
+    "csv_definition": "doppler_width_eV*fsR^2*meR/H_PLANCK_EV_S",
+    "default_3000K_from_network_permitted": false,
+    "default_3000K_from_network_status": "INCOMPATIBLE_WITH_DIRECT_NODE_MEASURE",
+    "default_3000K_network_measure_max_relative_mismatch": 0.0005827123144338342,
+    "difference_Hz": 686550.1061096191,
+    "direct_node_line_x": [
+      -21.25,
+      21.25
+    ],
+    "direct_node_network_measure_max_relative_mismatch": 1.0878134039731587e-08,
+    "direct_node_temperature_K": 3003.496188829631,
+    "modern_definition": "LineBoundaryConfig.lyman_alpha(temperature_K=direct-node temperature)",
+    "modern_line_boundary_width_Hz": 57907834835.931496,
+    "relative_difference": 1.1856051047806029e-05,
+    "relative_difference_denominator": "csv_boundary_width_Hz",
+    "selected_definition": "NONE_BLOCKED_NO_SILENT_SELECTION"
+  },
+  "full_coupling_identifiability": {
+    "bounded_no_go": true,
+    "com_face_trace_source_defined": false,
+    "native_history_angular_rank": 1,
+    "required_angular_rank": 26
+  },
+  "not_run": [
+    "deposition_map_selection",
+    "full_moving_map_jvp",
+    "photon_and_atomic_four_force_assembly",
+    "number_energy_four_force_balance",
+    "thermal_and_spectral_response",
+    "independent_directional_jvp",
+    "restart_and_history_transactions",
+    "physical_reference_tests"
+  ],
+  "positive_nonidentifiability_witness": {
+    "field_a_minimum": 0.5,
+    "field_b_minimum": 0.5,
+    "fields_distinct": true,
+    "source_defined_face_reconstruction": false,
+    "weighted_mean_a": 1.0,
+    "weighted_mean_b": 1.0,
+    "weighted_mean_residual": 0.0
+  },
+  "schema": "REC_LOCAL_02_SOURCE_BOUND_GATE_V1",
+  "source_flux_parity_residuals": {
+    "blue": {
+      "blackbody": 0.0,
+      "distortion_energy": 0.0,
+      "distortion_number": 0.0,
+      "energy_sum": 1.6537648327370854e-16,
+      "frequency": 0.0,
+      "interpolation": 0.0,
+      "mode_factor": 0.0,
+      "number_sum": 1.5585329246614306e-16,
+      "occupation_sum": 0.0,
+      "reference_energy": 0.0,
+      "reference_number": 0.0,
+      "total_energy": 0.0,
+      "total_number": 0.0
+    },
+    "red": {
+      "blackbody": 0.0,
+      "distortion_energy": 0.0,
+      "distortion_number": 0.0,
+      "energy_sum": 0.0,
+      "frequency": 0.0,
+      "interpolation": 0.0,
+      "mode_factor": 0.0,
+      "number_sum": 1.4539007966323554e-16,
+      "occupation_sum": 0.0,
+      "reference_energy": 0.0,
+      "reference_number": 0.0,
+      "total_energy": 0.0,
+      "total_number": 0.0
+    }
+  },
+  "source_representation": {
+    "angular_weight_sum": 1.0,
+    "direction_shape": [
+      26,
+      3
+    ],
+    "directional_measure_minimum_m3": 5278098785799740.0,
+    "directional_measure_shape": [
+      35,
+      26
+    ],
+    "mode_measure_minimum_m3": 1.6420751778043638e+17,
+    "mode_measure_shape": [
+      35
+    ],
+    "mode_measure_units": "m^-3",
+    "native_interface_edges": [
+      [
+        135,
+        136
+      ],
+      [
+        143,
+        144
+      ]
+    ],
+    "native_interior_indices": [
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143
+    ],
+    "native_spikes_define_cells": false,
+    "net_source_jump_is_total_interface_crossing_flux": false,
+    "occupation_isotropic_max_abs_residual": 0.0,
+    "occupation_minimum": 7.279205913286067e-15,
+    "occupation_shape": [
+      35,
+      26
+    ],
+    "parent_network_interval_max_abs_residual": 0.0,
+    "scalar_history_angular_rank": 1,
+    "scalar_history_outgoing_virtual_shape": [
+      311,
+      7489
+    ],
+    "source_parent_source_index_144_target_rows": [
+      34
+    ],
+    "source_parent_uses_index_144": true,
+    "weight_count": 26
+  },
+  "status": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT",
+  "stop_after_gate": "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+  "target_energy_binding": {
+    "physical_cell_energy_definition": "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/(nu_hi^3-nu_lo^3)/(fsR^2*meR)",
+    "source": "tracked COM finite-volume frequency intervals",
+    "source_energy_rescale": 1.0,
+    "source_parent_point_energy_definition": "point-characteristic evaluation at arithmetic x centre",
+    "source_parent_point_formula_max_abs_residual_eV": 0.0,
+    "source_parent_point_to_physical_centroid_max_abs_difference_eV": 2.3441719676497996e-08,
+    "units": "eV rescaled"
+  },
+  "tracked_inputs": {
+    "boundary_snapshot": {
+      "actual_sha256": "147ba6e6cfdae9c06530a0983161e769198b3bb5ad56c0c4d820b0a3f5d3e7b5",
+      "expected_sha256": "147ba6e6cfdae9c06530a0983161e769198b3bb5ad56c0c4d820b0a3f5d3e7b5",
+      "match": true,
+      "path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/pr04c_z1100.csv"
+    },
+    "direction_grid": {
+      "actual_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+      "expected_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+      "match": true,
+      "path": "data/pr01c_background_snapshots_v048.npz"
+    },
+    "network": {
+      "actual_sha256": "e6a28194d183658a87f0974afe3f46323106382970a85338f9ce94c20c7b5736",
+      "expected_sha256": "e6a28194d183658a87f0974afe3f46323106382970a85338f9ce94c20c7b5736",
+      "match": true,
+      "path": "data/z1100_direct_network_node.npz"
+    },
+    "original_hyrec": {
+      "actual_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "expected_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "match": true,
+      "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip"
+    },
+    "scalar_history": {
+      "actual_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+      "expected_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+      "match": true,
+      "path": "data/pr05b2_source_history_v060.npz"
+    },
+    "single_com_root": {
+      "actual_sha256": "b05e227e7ff8ffd64639e4a432a5789fff08cc89b8bbd63adbcec5fc2da3903c",
+      "expected_sha256": "b05e227e7ff8ffd64639e4a432a5789fff08cc89b8bbd63adbcec5fc2da3903c",
+      "match": true,
+      "path": "data/pr05c2c1b2b1e1a_single_com_macro_v074.npz"
+    },
+    "source_parent": {
+      "actual_sha256": "c74a2a0e69d6d34c338d19af2f123d1eb32130ac103a68e4494a2c9542eaa958",
+      "expected_sha256": "c74a2a0e69d6d34c338d19af2f123d1eb32130ac103a68e4494a2c9542eaa958",
+      "match": true,
+      "path": "data/pr05c2c1b2b1e0_source_derived_parent_v073.npz"
+    },
+    "two_photon_raman": {
+      "actual_sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad",
+      "expected_sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad",
+      "match": true,
+      "path": "data/pr05c2c1b2a_two_photon_raman_source_v068.npz"
+    }
+  }
+}
