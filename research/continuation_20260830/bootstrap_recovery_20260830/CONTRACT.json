@@ -1,0 +1,67 @@
+{
+  "schema": "rec-local01-bootstrap-recovery/v1",
+  "package_id": "REC-LOCAL-01-BOOTSTRAP-RECOVERY-20260830-R1",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "stack_base": {
+    "branch": "agent/continuation/research-followthrough-20260830-r2",
+    "commit": "a2bd39e1d3bd4640430725ad981922180270dfae",
+    "tree": "bdd00d5a515c5d4e0bc2967f5e6094d92240af81",
+    "pull_request": 39
+  },
+  "followthrough_rebind": {
+    "commit": "9186b6338b117e2ed80ddf6838678e61828ea84a",
+    "tree": "79230599664068b87100856ed726037224bf589b",
+    "manifest_blob_sha1": "7796611bb555c4d6b276c0781a8190acabbc18de",
+    "manifest_sha256": "b5aaffda6d8f3fd7cc0c1e7a6ea4d4d14972ddb602afc3e81ed376e4e2811afb",
+    "disposition": "PASS_TRACKED_BYTE_REBIND_ONLY"
+  },
+  "known_invalid_r2": {
+    "source_commit": "47e19df30a5e71e536d3d5167ffa3b78638a59c5",
+    "source_tree": "e7400fda8511e582f5bc4944b96183977412f4f3",
+    "package_subtree": "b24c267a69c1563c89b2a97a087754f4a046da5c",
+    "source_manifest_blob_sha1": "dd21fd2d79930f16e208dc2a59ecb1e1e81efcfb",
+    "source_manifest_sha256": "99f15d4e7bd44068555f478c43cc963b38c5ef69b52839d894e01c218c2a9710",
+    "source_status": "FAIL_STALE_INNER_MANIFEST",
+    "result_validity_effect": "NONE",
+    "repair": "EXACT_PREIMAGE_SIDECAR_REBIND"
+  },
+  "local01": {
+    "execution": "USER_REPORTED_PASS_NOT_YET_REMOTE_ADMITTED",
+    "bootstrap": "STOP_INVALID_REPRODUCIBILITY",
+    "continuation_identity": "USER_REPORTED_PASS",
+    "scientific_integrity": "NOT_FAILED_BY_BOOTSTRAP_MISMATCH",
+    "remote_evidence_admission": false
+  },
+  "exact_next_action": "REC-LOCAL-01_EVIDENCE_ADMISSION",
+  "after_admission": "REC-LOCAL-02_SOURCE_BOUND_PHYSICAL_DEPOSITION_AND_FULL_JVP",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "merge_or_ready_authorized": false,
+  "prohibited": [
+    "rewrite or delete the R2 source package",
+    "treat a sidecar rebind as a scientific pass",
+    "clean reset stash rebase amend squash force-push or delete the preserved local01 worktree",
+    "inherit user-reported counts as remote-admitted evidence without receipt hashes",
+    "run REC-LOCAL-02 before local01 evidence admission",
+    "reinterpret eight native proxies as physical 35x26 COM occupation",
+    "omit moving measure prior Doppler frame or source-target derivatives",
+    "rec-to-rei numerical export",
+    "merge or ready transition"
+  ],
+  "support_paths": [
+    "research/continuation_20260830/verify_payload.py",
+    "tools/verify_git_manifest.py"
+  ],
+  "delivery_paths": [
+    "research/continuation_20260830/bootstrap_recovery_20260830/README.md",
+    "research/continuation_20260830/bootstrap_recovery_20260830/CONTRACT.json",
+    "research/continuation_20260830/bootstrap_recovery_20260830/KNOWN_INVALID_R2.json",
+    "research/continuation_20260830/bootstrap_recovery_20260830/R2_REBOUND_MANIFEST.sha256",
+    "research/continuation_20260830/bootstrap_recovery_20260830/REC_LOCAL_01_USER_REPORT.json",
+    "research/continuation_20260830/bootstrap_recovery_20260830/REC_LOCAL_01_ADMISSION_TEMPLATE.json",
+    "research/continuation_20260830/bootstrap_recovery_20260830/IMPLEMENTATION_PLAN.md",
+    "research/continuation_20260830/bootstrap_recovery_20260830/LOCAL_CODEX_PROMPT.md",
+    "research/continuation_20260830/bootstrap_recovery_20260830/FETCH_AND_VALIDATE.sh",
+    "research/continuation_20260830/bootstrap_recovery_20260830/validate_package.py",
+    "research/continuation_20260830/bootstrap_recovery_20260830/validate_local01_admission.py"
+  ]
+}

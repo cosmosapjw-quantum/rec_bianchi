@@ -1,0 +1,43 @@
+{
+  "schema": "rec-r2-stale-manifest-forensics/v1",
+  "source": {
+    "branch": "agent/plans/rec-split-domain-bootstrap-20260829-r1",
+    "commit": "47e19df30a5e71e536d3d5167ffa3b78638a59c5",
+    "tree": "e7400fda8511e582f5bc4944b96183977412f4f3",
+    "package_path": "docs/bootstrap/rec_split_domain_bootstrap_20260829",
+    "package_subtree": "b24c267a69c1563c89b2a97a087754f4a046da5c",
+    "manifest_blob_sha1": "dd21fd2d79930f16e208dc2a59ecb1e1e81efcfb",
+    "manifest_sha256": "99f15d4e7bd44068555f478c43cc963b38c5ef69b52839d894e01c218c2a9710"
+  },
+  "history": {
+    "manifest_commit_changed_only_manifest": true,
+    "parent_validator_required_manifest_before_manifest_existed": true,
+    "passable_validator_and_manifest_commit_exists": false,
+    "stale_expected_preimages_found_in_all_git_objects": false,
+    "root_cause": "MANUAL_OR_NONCANONICAL_PREIMAGE_DIGESTS_WITHOUT_POST_SEAL_VALIDATION"
+  },
+  "mismatches": {
+    "REC_REI_INTERFACE_BRIDGE.json": {
+      "source_blob_sha1": "d08f6aa16a4e2390a8ea516cfd04f3a5913faba4",
+      "manifest_sha256": "88663c10ba35392cd447d0dc24c1b1347e1659b12027a1ee707a8405221b8398",
+      "actual_sha256": "e3ceaa3a9bef84c648b58255b3c3d72ef4e8e5094c9f45d30797b08d2d06e86c"
+    },
+    "IMPLEMENTATION_PLAN.md": {
+      "source_blob_sha1": "53cc9b3a0c7155152f0eaf055c30ce67045fb639",
+      "manifest_sha256": "0c634754f294f022169b017b0ca5e89d61126242c4558dd2a7b8dd502724b16a",
+      "actual_sha256": "5af7426adbe1cbbb1290fffb82fc6fe6149edbb8f9527596cde6898ae238834b"
+    },
+    "validate_package.py": {
+      "source_blob_sha1": "da6f9c5326811a7539c0a52f4d610fe765e0a6ec",
+      "manifest_sha256": "723365c65e93cfc9b99df6b27c88e6ed9088566fddd920d8721fb39f320fe864",
+      "actual_sha256": "0ce02d9eec185f68d7906207c94ec383aa066e3b860310d2ed69b7e01b5bdf87"
+    }
+  },
+  "classification": {
+    "object_class": "CLASS_2_DETERMINISTIC_GENERATED_EVIDENCE",
+    "status": "PROVENANCE_REBIND_REQUIRED",
+    "packaging_validity": "FAIL_STALE_INNER_MANIFEST",
+    "continuation_identity_effect": "NONE",
+    "scientific_result_validity_effect": "NONE"
+  }
+}

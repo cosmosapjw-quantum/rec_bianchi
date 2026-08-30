@@ -1,0 +1,42 @@
+{
+  "schema": "rec-local01-canonical-context-admission/v1",
+  "status": "TEMPLATE_NOT_EVIDENCE",
+  "source_receipt": {
+    "absolute_path": "__REQUIRED__",
+    "sha256": "__REQUIRED_64_LOWER_HEX__"
+  },
+  "source_worktree": {
+    "absolute_path": "__REQUIRED__",
+    "branch": "__REQUIRED__",
+    "head": "__REQUIRED_40_HEX__",
+    "tree": "__REQUIRED_40_HEX__",
+    "preservation_inventory_sha256": "__REQUIRED_64_LOWER_HEX__"
+  },
+  "evidence": {
+    "copied_paths": [],
+    "copied_path_sha256": {},
+    "canonical_context_restart_passed": 9,
+    "component_context_deposition_passed": 27,
+    "affected_restart_selectors_passed": 2,
+    "affected_restart_selectors_deselected": 8,
+    "component_mutants_detected": 4,
+    "component_mutant_assertion_failures_each": 1,
+    "component_mutant_collection_errors_each": 0,
+    "rehashed_context_mutations_detected": 8,
+    "all_rejected_before_parent_restore": true
+  },
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "pytest": "9.1.1"
+  },
+  "bootstrap_recovery": {
+    "original_status": "STOP_INVALID",
+    "classification": "HISTORICAL_R2_PACKAGING_REPRODUCIBILITY_FAILURE",
+    "r2_sidecar_rebind": "PASS_REQUIRED",
+    "followthrough_rebind": "PASS_REQUIRED"
+  },
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "next": "REC-LOCAL-02_SOURCE_BOUND_PHYSICAL_DEPOSITION_AND_FULL_JVP"
+}
