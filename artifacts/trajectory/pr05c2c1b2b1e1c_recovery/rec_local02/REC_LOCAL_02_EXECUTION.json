@@ -137,10 +137,235 @@
     ],
     "witness_sha256": "0277e168ac0a596e19078c0489b53fd797770dbe618de767970eeb43f141966e"
   },
+  "authority_projection": {
+    "blocking_conditions": [
+      "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
+    ],
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "classification": "EXPLORATORY_NONAUTHORITATIVE",
+    "conventions_if_unblocked": {
+      "energy": "joule for physical ledgers",
+      "frame": "hydrogen orthonormal frame",
+      "frequency": "ordinary frequency in Hz",
+      "metric_signature": "(-,+,+,+)",
+      "time_variable": "eta=ln(a), d/dt=H*d/deta"
+    },
+    "diagnostic_contract_sha256": "1fc6c48a5711a25c8724a598a164a8a20ce9266e3f5cc6fd8fed4a24795961cd",
+    "doppler_contract": {
+      "csv_definition": "doppler_width_eV*fsR^2*meR/H_PLANCK_EV_S",
+      "default_3000K_from_network_permitted": false,
+      "default_3000K_from_network_status": "INCOMPATIBLE_WITH_DIRECT_NODE_MEASURE",
+      "direct_node_line_x": [
+        -21.25,
+        21.25
+      ],
+      "modern_definition": "LineBoundaryConfig.lyman_alpha(temperature_K=direct-node temperature)",
+      "relative_difference_denominator": "csv_boundary_width_Hz",
+      "selected_definition": "NONE_BLOCKED_NO_SILENT_SELECTION"
+    },
+    "exploratory_witness_sha256": "0277e168ac0a596e19078c0489b53fd797770dbe618de767970eeb43f141966e",
+    "feasibility_contract": {
+      "classification": "EXPLORATORY_NONAUTHORITATIVE",
+      "infeasible_source_columns": [],
+      "map_shape": [
+        35,
+        8
+      ],
+      "native_spikes_used_as_finite_cells": false,
+      "orientation": "B[target_com_cell,source_native_index]",
+      "reason": "all source energies lie inside the target COM energy hull",
+      "source_native_indices": [
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143
+      ],
+      "source_strictly_inside_target_hull": true
+    },
+    "invariant_predicates": {
+      "angular_weight_normalized_within_2e-15": true,
+      "bounded_no_go": true,
+      "com_face_trace_source_defined": false,
+      "diagnostic_intervals_valid": true,
+      "directional_measure_positive": true,
+      "energy_residual_within_2e-15_eV": true,
+      "feasible": true,
+      "mode_measure_positive": true,
+      "native_history_angular_rank": 1,
+      "nonnegative": true,
+      "number_and_energy_exact": true,
+      "number_residual_exact_zero": true,
+      "occupation_isotropic_exact": true,
+      "occupation_positive": true,
+      "parent_network_intervals_exact": true,
+      "physical_map_is_absent": true,
+      "physical_map_selected": false,
+      "positive_fields_distinct": true,
+      "positive_fields_nonnegative": true,
+      "positive_witness_mean_within_2e-15": true,
+      "positive_witness_source_defined_face_reconstruction": false,
+      "required_angular_rank": 26,
+      "source_flux_parity_within_4e-13": true,
+      "source_parent_point_formula_exact": true,
+      "tracked_inputs_all_match": true
+    },
+    "not_run": [
+      "deposition_map_selection",
+      "full_moving_map_jvp",
+      "photon_and_atomic_four_force_assembly",
+      "number_energy_four_force_balance",
+      "thermal_and_spectral_response",
+      "independent_directional_jvp",
+      "restart_and_history_transactions",
+      "physical_reference_tests"
+    ],
+    "owners": {
+      "locked_target_energy": {
+        "c_m_s_binary64_hex": "0x1.1de784a000000p+28",
+        "definition": "momentum_scale*c/electron_volt",
+        "dtype": "<f8",
+        "electron_volt_J_binary64_hex": "0x1.7a4da290c1653p-63",
+        "order": "C",
+        "sha256": "19b9b6bb3d3d0657cb71745118ea396dc3cce92ed15491c20df8a9df8d91f8c8",
+        "shape": [
+          35
+        ]
+      },
+      "raw_momentum_scale": {
+        "dtype": "<f8",
+        "endianness": "little",
+        "order": "C",
+        "sha256": "a32194fb664491fb50ecc1f26096d6b7d03d9be153a459c1db218ce4941de409",
+        "shape": [
+          35
+        ],
+        "source_key": "momentum_scale"
+      }
+    },
+    "receipt_schema": "REC_LOCAL_02_SOURCE_BOUND_GATE_V2",
+    "schema": "REC_LOCAL_02_AUTHORITY_PROJECTION_V1",
+    "source_representation_contract": {
+      "direction_shape": [
+        26,
+        3
+      ],
+      "directional_measure_shape": [
+        35,
+        26
+      ],
+      "mode_measure_shape": [
+        35
+      ],
+      "mode_measure_units": "m^-3",
+      "native_interface_edges": [
+        [
+          135,
+          136
+        ],
+        [
+          143,
+          144
+        ]
+      ],
+      "native_interior_indices": [
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143
+      ],
+      "native_spikes_define_cells": false,
+      "net_source_jump_is_total_interface_crossing_flux": false,
+      "occupation_shape": [
+        35,
+        26
+      ],
+      "scalar_history_angular_rank": 1,
+      "scalar_history_outgoing_virtual_shape": [
+        311,
+        7489
+      ],
+      "source_parent_source_index_144_target_rows": [
+        34
+      ],
+      "source_parent_uses_index_144": true,
+      "weight_count": 26
+    },
+    "status": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT",
+    "stop_after_gate": "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "target_energy_contract": {
+      "legacy_interval_centroid_definition": "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/(nu_hi^3-nu_lo^3)/(fsR^2*meR)",
+      "legacy_interval_centroid_is_authoritative": false,
+      "momentum_scale_units": "kg m s^-1",
+      "physical_cell_energy_definition": "momentum_scale*c/electron_volt",
+      "source": "tracked CollisionNetwork.momentum_scale",
+      "source_energy_rescale": 1.0,
+      "source_parent_point_energy_definition": "point-characteristic evaluation at arithmetic x centre",
+      "units": "eV"
+    },
+    "tracked_inputs": {
+      "boundary_snapshot": {
+        "actual_sha256": "147ba6e6cfdae9c06530a0983161e769198b3bb5ad56c0c4d820b0a3f5d3e7b5",
+        "expected_sha256": "147ba6e6cfdae9c06530a0983161e769198b3bb5ad56c0c4d820b0a3f5d3e7b5",
+        "match": true,
+        "path": "archive/expanded/Full_Bianchi_HyRec_PR04C0C1A_split_domain_boundary_v0_55/pr04c_z1100.csv"
+      },
+      "direction_grid": {
+        "actual_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+        "expected_sha256": "df136bca7c120054cc45cf2b4fc2bd52acc3d60e6159b0f63c2622de03f2f03c",
+        "match": true,
+        "path": "data/pr01c_background_snapshots_v048.npz"
+      },
+      "network": {
+        "actual_sha256": "e6a28194d183658a87f0974afe3f46323106382970a85338f9ce94c20c7b5736",
+        "expected_sha256": "e6a28194d183658a87f0974afe3f46323106382970a85338f9ce94c20c7b5736",
+        "match": true,
+        "path": "data/z1100_direct_network_node.npz"
+      },
+      "original_hyrec": {
+        "actual_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+        "expected_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+        "match": true,
+        "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip"
+      },
+      "scalar_history": {
+        "actual_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+        "expected_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+        "match": true,
+        "path": "data/pr05b2_source_history_v060.npz"
+      },
+      "single_com_root": {
+        "actual_sha256": "b05e227e7ff8ffd64639e4a432a5789fff08cc89b8bbd63adbcec5fc2da3903c",
+        "expected_sha256": "b05e227e7ff8ffd64639e4a432a5789fff08cc89b8bbd63adbcec5fc2da3903c",
+        "match": true,
+        "path": "data/pr05c2c1b2b1e1a_single_com_macro_v074.npz"
+      },
+      "source_parent": {
+        "actual_sha256": "c74a2a0e69d6d34c338d19af2f123d1eb32130ac103a68e4494a2c9542eaa958",
+        "expected_sha256": "c74a2a0e69d6d34c338d19af2f123d1eb32130ac103a68e4494a2c9542eaa958",
+        "match": true,
+        "path": "data/pr05c2c1b2b1e0_source_derived_parent_v073.npz"
+      },
+      "two_photon_raman": {
+        "actual_sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad",
+        "expected_sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad",
+        "match": true,
+        "path": "data/pr05c2c1b2a_two_photon_raman_source_v068.npz"
+      }
+    }
+  },
   "blocking_conditions": [
     "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
   ],
   "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "classification": "EXPLORATORY_NONAUTHORITATIVE",
   "conventions_if_unblocked": {
     "energy": "joule for physical ledgers",
     "frame": "hydrogen orthonormal frame",
@@ -148,18 +373,58 @@
     "metric_signature": "(-,+,+,+)",
     "time_variable": "eta=ln(a), d/dt=H*d/deta"
   },
+  "diagnostic_contract": {
+    "constants": {
+      "c_m_s_binary64_hex": "0x1.1de784a000000p+28",
+      "electron_volt_J_binary64_hex": "0x1.7a4da290c1653p-63",
+      "h_eV_s_binary64_hex": "0x1.2a019a84284cdp-48",
+      "pi_binary64_hex": "0x1.921fb54442d18p+1"
+    },
+    "dtype": "<f8",
+    "fields": {
+      "doppler_width_reconciliation.direct_node_network_measure_max_relative_mismatch": {
+        "certified_interval_closed": [
+          "1.08E-8",
+          "1.10E-8"
+        ],
+        "classification": "NONAUTHORITATIVE_DIAGNOSTIC"
+      },
+      "target_energy_binding.legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": {
+        "certified_interval_closed": [
+          "5.5E-8",
+          "5.6E-8"
+        ],
+        "classification": "NONAUTHORITATIVE_DIAGNOSTIC"
+      }
+    },
+    "formula_version": "CENTER_HALFWIDTH_TRACKED_X_BINARY64_V1",
+    "operation_order": {
+      "center_Hz": "fsum(nu0,((x_lo+x_hi)*0.5)*Doppler_width)",
+      "centroid_Hz": "(m*numerator_m2)/denominator_m2",
+      "denominator_m2": "fsum(m*m,(d*d)/3)",
+      "halfwidth_Hz": "((x_hi-x_lo)*0.5)*Doppler_width",
+      "mode_measure_m3": "(((16*pi)*d)*denominator_m2)/((c*c)*c)",
+      "numerator_m2": "fsum(m*m,d*d)"
+    },
+    "reduction_order": "ascending_cell_index_python_max_v1",
+    "rounding": {
+      "absolute_quantum": "1E-15",
+      "mode": "ROUND_HALF_EVEN"
+    },
+    "schema": "REC_LOCAL_02_DIAGNOSTIC_CONTRACT_V1"
+  },
   "doppler_width_reconciliation": {
     "csv_boundary_width_Hz": 57907148285.825386,
     "csv_definition": "doppler_width_eV*fsR^2*meR/H_PLANCK_EV_S",
     "default_3000K_from_network_permitted": false,
     "default_3000K_from_network_status": "INCOMPATIBLE_WITH_DIRECT_NODE_MEASURE",
-    "default_3000K_network_measure_max_relative_mismatch": 0.0005827123144338342,
+    "default_3000K_network_measure_max_relative_mismatch": 0.0005827123149576983,
     "difference_Hz": 686550.1061096191,
     "direct_node_line_x": [
       -21.25,
       21.25
     ],
-    "direct_node_network_measure_max_relative_mismatch": 1.0881876986956445e-08,
+    "direct_node_network_measure_max_relative_mismatch": 1.0868674430328898e-08,
     "direct_node_temperature_K": 3003.496188829631,
     "modern_definition": "LineBoundaryConfig.lyman_alpha(temperature_K=direct-node temperature)",
     "modern_line_boundary_width_Hz": 57907834835.931496,
@@ -183,6 +448,19 @@
     "restart_and_history_transactions",
     "physical_reference_tests"
   ],
+  "portable_diagnostics": {
+    "schema": "REC_LOCAL_02_PORTABLE_DIAGNOSTICS_V1",
+    "values": {
+      "doppler_width_reconciliation.direct_node_network_measure_max_relative_mismatch": {
+        "binary64": 1.0868674430328898e-08,
+        "canonical_decimal": "0.000000010868674"
+      },
+      "target_energy_binding.legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": {
+        "binary64": 5.539951786204256e-08,
+        "canonical_decimal": "0.000000055399518"
+      }
+    }
+  },
   "positive_nonidentifiability_witness": {
     "field_a_minimum": 0.5,
     "field_b_minimum": 0.5,
@@ -192,7 +470,15 @@
     "weighted_mean_b": 1.0,
     "weighted_mean_residual": 0.0
   },
-  "schema": "REC_LOCAL_02_SOURCE_BOUND_GATE_V1",
+  "receipt_contract": {
+    "authority_projection_schema": "REC_LOCAL_02_AUTHORITY_PROJECTION_V1",
+    "authority_projection_sha256": "65378bddc8e61389de6abb4a36c418aa526dd06df7ef00b6e74347762cc03462",
+    "cross_architecture_bit_identity_claimed": false,
+    "diagnostic_contract_sha256": "1fc6c48a5711a25c8724a598a164a8a20ce9266e3f5cc6fd8fed4a24795961cd",
+    "raw_receipt_sha256_role": "ARCHIVAL_PUBLICATION_SEAL_ONLY_NOT_PORTABLE_AUTHORITY",
+    "schema": "REC_LOCAL_02_PORTABLE_RECEIPT_CONTRACT_V1"
+  },
+  "schema": "REC_LOCAL_02_SOURCE_BOUND_GATE_V2",
   "source_flux_parity_residuals": {
     "blue": {
       "blackbody": 0.0,
@@ -286,10 +572,20 @@
   "target_energy_binding": {
     "legacy_interval_centroid_definition": "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/(nu_hi^3-nu_lo^3)/(fsR^2*meR)",
     "legacy_interval_centroid_is_authoritative": false,
-    "legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": 5.545800263462297e-08,
+    "legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": 5.539951786204256e-08,
     "locked_target_energy_sha256": "19b9b6bb3d3d0657cb71745118ea396dc3cce92ed15491c20df8a9df8d91f8c8",
     "momentum_scale_units": "kg m s^-1",
     "physical_cell_energy_definition": "momentum_scale*c/electron_volt",
+    "raw_momentum_scale_owner": {
+      "dtype": "<f8",
+      "endianness": "little",
+      "order": "C",
+      "sha256": "a32194fb664491fb50ecc1f26096d6b7d03d9be153a459c1db218ce4941de409",
+      "shape": [
+        35
+      ],
+      "source_key": "momentum_scale"
+    },
     "source": "tracked CollisionNetwork.momentum_scale",
     "source_energy_rescale": 1.0,
     "source_parent_point_energy_definition": "point-characteristic evaluation at arithmetic x centre",
