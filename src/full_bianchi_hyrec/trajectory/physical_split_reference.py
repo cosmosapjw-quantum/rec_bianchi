@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from scipy.constants import c
+from scipy.constants import c, electron_volt
 
 from full_bianchi_hyrec.recoil.nonlinear_bose_release import HarmonicGrid
 from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import LineBoundaryConfig
@@ -90,7 +90,10 @@ def verify_tracked_inputs(root: Path) -> dict[str, dict[str, str | bool]]:
 
 def _network_energy_coordinates_eV(
     network: Any, *, source_energy_rescale: float
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    locked_energy = (
+        np.asarray(network["momentum_scale"], dtype=float) * c / electron_volt
+    )
     temperature_K = float(network["temperature_K"])
     line = LineBoundaryConfig.lyman_alpha(
         temperature_K=temperature_K, x_red=-21.25, x_blue=21.25
@@ -103,7 +106,7 @@ def _network_energy_coordinates_eV(
         0.75 * (upper**4 - lower**4) / (upper**3 - lower**3)
     )
     point_frequency = line.nu_abs_Hz + np.mean(intervals, axis=1) * line.Doppler_width_Hz
-    physical_energy = (
+    interval_centroid_energy = (
         H_PLANCK_EV_S
         * physical_centroid_frequency
         / float(source_energy_rescale)
@@ -111,7 +114,7 @@ def _network_energy_coordinates_eV(
     point_energy = (
         H_PLANCK_EV_S * point_frequency / float(source_energy_rescale)
     )
-    return physical_energy, point_energy
+    return locked_energy, point_energy, interval_centroid_energy
 
 
 def adjacent_energy_feasibility(
@@ -286,14 +289,21 @@ def build_rec_local02_diagnostic(root: str | Path) -> dict[str, Any]:
         parent_point_energy = np.asarray(
             parent["target_energies_eV_rescaled"], dtype=float
         )
-        target_energy, computed_point_energy = _network_energy_coordinates_eV(
+        (
+            target_energy,
+            computed_point_energy,
+            computed_interval_centroid_energy,
+        ) = _network_energy_coordinates_eV(
             network, source_energy_rescale=source_energy_rescale
         )
         parent_point_formula_residual = float(
             np.max(np.abs(parent_point_energy - computed_point_energy))
         )
-        point_to_physical_centroid_difference = float(
+        point_to_locked_owner_difference = float(
             np.max(np.abs(parent_point_energy - target_energy))
+        )
+        interval_centroid_to_locked_owner_difference = float(
+            np.max(np.abs(computed_interval_centroid_energy - target_energy))
         )
         history_energy = np.asarray(history["energy_eV"], dtype=float)
         source_energy = history_energy[list(NATIVE_INTERIOR_INDICES)]
@@ -388,12 +398,21 @@ def build_rec_local02_diagnostic(root: str | Path) -> dict[str, Any]:
         "source_flux_parity_residuals": residuals,
         "adjacent_energy_moment_feasibility": feasibility,
         "target_energy_binding": {
-            "source": "tracked COM finite-volume frequency intervals",
-            "units": "eV rescaled",
+            "source": "tracked CollisionNetwork.momentum_scale",
+            "units": "eV",
             "source_energy_rescale": source_energy_rescale,
-            "physical_cell_energy_definition": (
+            "momentum_scale_units": "kg m s^-1",
+            "physical_cell_energy_definition": "momentum_scale*c/electron_volt",
+            "locked_target_energy_sha256": hashlib.sha256(
+                np.asarray(target_energy, dtype="<f8").tobytes(order="C")
+            ).hexdigest(),
+            "legacy_interval_centroid_definition": (
                 "H_PLANCK_EV_S*0.75*(nu_hi^4-nu_lo^4)/"
                 "(nu_hi^3-nu_lo^3)/(fsR^2*meR)"
+            ),
+            "legacy_interval_centroid_is_authoritative": False,
+            "legacy_interval_centroid_to_locked_owner_max_abs_difference_eV": (
+                interval_centroid_to_locked_owner_difference
             ),
             "source_parent_point_energy_definition": (
                 "point-characteristic evaluation at arithmetic x centre"
@@ -401,8 +420,8 @@ def build_rec_local02_diagnostic(root: str | Path) -> dict[str, Any]:
             "source_parent_point_formula_max_abs_residual_eV": (
                 parent_point_formula_residual
             ),
-            "source_parent_point_to_physical_centroid_max_abs_difference_eV": (
-                point_to_physical_centroid_difference
+            "source_parent_point_to_locked_owner_max_abs_difference_eV": (
+                point_to_locked_owner_difference
             ),
         },
         "doppler_width_reconciliation": {
