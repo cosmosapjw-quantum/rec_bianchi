@@ -1,0 +1,102 @@
+{
+  "schema": "rec-local-01-canonical-context-integration/v1",
+  "executed_at_local_date": "2026-08-30",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "checkout": {
+    "head": "a2bd39e1d3bd4640430725ad981922180270dfae",
+    "tree": "bdd00d5a515c5d4e0bc2967f5e6094d92240af81",
+    "base_pr_36_head": "5617fdff2a602f276e942d563cb384e66d22d87f",
+    "base_pr_36_tree": "2a56de4ad352a8cc05475296fc4a438cf3cfceab",
+    "immutable_payload_head": "0bb4e813ec6ecc6093c8630ef1a722fc0b96c032",
+    "isolated_worktree": "/home/cosmosapjw/worktrees/rec-local01-canonical-context-20260830"
+  },
+  "environment": {
+    "python_executable": "/usr/bin/python3",
+    "python": "3.12.3",
+    "compiler": "GCC 13.3.0",
+    "platform": "Linux-7.0.0-29-generic-x86_64-with-glibc2.39",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "pytest": "9.1.1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "executions": [
+    {
+      "command": "python3 -m pytest -q tests/trajectory/test_split_restart_context_canonical.py",
+      "result": "PASS",
+      "passed": 9,
+      "duration_seconds_reported": 0.56
+    },
+    {
+      "command": "python3 -m pytest -q tests/trajectory/test_split_context_and_deposition.py",
+      "result": "PASS",
+      "passed": 27,
+      "duration_seconds_reported": 0.12
+    },
+    {
+      "command": "python3 -m pytest -q tests/trajectory/test_split_domain_replacement.py -k restart",
+      "result": "PASS",
+      "passed": 2,
+      "deselected": 8,
+      "duration_seconds_reported": 0.45
+    },
+    {
+      "command": "python3 tools/check_rec_pr34_component_mutations.py",
+      "result": "PASS",
+      "mutants_detected": 4,
+      "assertion_failures_per_mutant": 1,
+      "collection_errors": 0
+    },
+    {
+      "command": "in-memory rehashed context mutation probe with parent restore sentinel",
+      "result": "PASS",
+      "rejected_before_restore": 8,
+      "cases": [
+        "doppler_width",
+        "energy_constants",
+        "source_provenance",
+        "frame",
+        "time_variable",
+        "frequency_measure",
+        "event_topology",
+        "payload_bytes"
+      ]
+    }
+  ],
+  "bootstrap_validation": {
+    "script_source": "REC_BIANCHI_SPLIT_DOMAIN_REMOTE_HANDOFF_20260829_R2.zip/rec_bianchi/FETCH_AND_VALIDATE.sh",
+    "pinned_commit": "47e19df30a5e71e536d3d5167ffa3b78638a59c5",
+    "pinned_tree": "e7400fda8511e582f5bc4944b96183977412f4f3",
+    "result": "FAIL_DETERMINISTIC_EVIDENCE_MANIFEST",
+    "failed_entries": [
+      {
+        "path": "REC_REI_INTERFACE_BRIDGE.json",
+        "expected_sha256": "88663c10ba35392cd447d0dc24c1b1347e1659b12027a1ee707a8405221b8398",
+        "actual_sha256": "e3ceaa3a9bef84c648b58255b3c3d72ef4e8e5094c9f45d30797b08d2d06e86c"
+      },
+      {
+        "path": "IMPLEMENTATION_PLAN.md",
+        "expected_sha256": "0c634754f294f022169b017b0ca5e89d61126242c4558dd2a7b8dd502724b16a",
+        "actual_sha256": "5af7426adbe1cbbb1290fffb82fc6fe6149edbb8f9527596cde6898ae238834b"
+      },
+      {
+        "path": "validate_package.py",
+        "expected_sha256": "723365c65e93cfc9b99df6b27c88e6ed9088566fddd920d8721fb39f320fe864",
+        "actual_sha256": "0ce02d9eec185f68d7906207c94ec383aa066e3b860310d2ed69b7e01b5bdf87"
+      }
+    ],
+    "interpretation": "The preserved R2 bootstrap package is not reproducible under its own manifest. This is not a PR 36 or PR 39 identity mismatch and is not promoted to a scientific-integrity failure."
+  },
+  "verdicts": {
+    "canonical_context_integration": "PASS",
+    "bootstrap_package_reproducibility": "FAIL",
+    "full_physical_com_native_split": "NOT_RUN_NOT_CLAIMED",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+  },
+  "scope_limits": [
+    "The 35x26 component fixture remains synthetic and is not canonical COM physics.",
+    "Mutation tests establish detection sensitivity only for their declared component/context paths.",
+    "No physical deposition map, coupled physical JVP, atomic four-force or scientific promotion was executed."
+  ]
+}
