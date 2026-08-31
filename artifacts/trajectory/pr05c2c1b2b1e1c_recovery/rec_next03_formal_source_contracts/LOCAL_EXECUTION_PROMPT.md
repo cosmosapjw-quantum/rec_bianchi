@@ -1,17 +1,20 @@
 # REC-NEXT-03 local execution prompt
 
-Run exactly one bounded, read-only local validation. A single project-specific
-Git ref materialization is permitted before evidence-producing execution; after
-that bootstrap, do not install or upgrade anything, access the network, edit
-source or tests, regenerate tracked evidence, normalize preserved files,
-commit, push, change a PR, merge, or mark a PR ready.
+Run exactly one bounded local continuation with a distinct setup and evidence
+phase. A single project-specific Git ref materialization and one external
+formal-toolchain provisioning phase are permitted before evidence-producing
+execution. After a verified setup receipt, do not install or upgrade anything,
+access the ordinary network, edit source or tests, regenerate tracked evidence,
+normalize preserved files, commit, push, change a PR, merge, or mark a PR
+ready.
 
 ## Preconditions and immutable identity
 
-Use an existing clone and preserve it. The bootstrap block below is the only
-network-enabled step. It materializes exactly the named delivery branch into
-the named remote-tracking ref; no other ref or worktree is changed. Every
-subsequent command is network-frozen and evidence-producing.
+Use an existing clone and preserve it. The bootstrap block below materializes
+exactly the named delivery branch into the named remote-tracking ref; no other
+ref or worktree is changed. After the immutable identity gate passes, the
+expressly described external provisioning step may use the network. Every
+subsequent test and formal command is network-frozen and evidence-producing.
 
 - repository: `cosmosapjw-quantum/rec_bianchi`
 - delivery branch:
@@ -24,7 +27,7 @@ subsequent command is network-frozen and evidence-producing.
   `7adb61ed0f391f62ca2a43b7d8f9e6cb0933da0a`
 - stage manifest:
   `artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/MANIFEST.sha256`
-- expected manifest payload entries: `34`
+- expected manifest payload entries: `35`
 
 ### One-time ref materialization (before any validator)
 
@@ -59,7 +62,8 @@ test -s "$rec_bootstrap_log"
 If the fetch, ref readback, or object-type check fails, preserve the log and
 stop as `STOP_INVALID_CONTINUATION_IDENTITY`. Do not substitute another ref,
 reconstruct a bundle, or proceed transcript-only. After this block, disable
-network access for the remainder of the validation.
+ordinary network access except for the explicit provisioning phase that follows
+the immutable identity and manifest gate.
 
 Create a new detached worktree at the captured fetched commit. Choose an
 explicit safe path; do not use an existing or preserved worktree:
@@ -113,6 +117,7 @@ formal/rec_next03/rocq/_CoqProject
 formal/rec_next03/rocq/rocq-toolchain
 formal/rec_next03/sage/verify_remap_event.sage
 formal/rec_next03/wolfram/verify_frame_face_event.wls
+scripts/provision_rec_next03_formal_toolchains.py
 scripts/run_rec_next03_formal_contracts.py
 src/full_bianchi_hyrec/trajectory/directional_face_admission.py
 src/full_bianchi_hyrec/trajectory/directional_source_assembly.py
@@ -129,7 +134,7 @@ test -z "$(git status --porcelain)"
 rec_manifest=artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/MANIFEST.sha256
 test -f "$rec_manifest"
 test "$(awk 'NF {count += 1} END {print count + 0}' "$rec_manifest")" = \
-  "34"
+  "35"
 sha256sum -c "$rec_manifest"
 git diff --check
 ```
@@ -137,6 +142,61 @@ git diff --check
 Any ancestry, tree, parent, exact-path, manifest-count, manifest-byte, dirty-
 worktree, or diff-check mismatch is `STOP_INVALID_CONTINUATION_IDENTITY`.
 Preserve the output and stop. Do not repair the checkout.
+
+## LOCAL_CODEX_PROVISIONING
+
+This is the only setup window after the delivery identity/manifest gate and
+before all evidence-producing commands. Local Codex is explicitly authorized
+to install the missing formal prerequisites, but it must put every mutation,
+download, package-manager log, and setup receipt in a new caller-selected
+directory outside all Git worktrees. It may not modify this worktree, install
+or relicense Wolfram Engine, alter a scientific claim, or run a backend outside
+the formal runner.
+
+First verify the exact xAct archive and provision the exact Lean/mathlib lane.
+The provisioner installs Lean `leanprover/lean4:v4.33.0` through an existing
+`elan` launcher into a private `ELAN_HOME`, copies the checked-in Lean sources
+to an external workspace, performs the one permitted `lake update` there, and
+requires the resulting clean mathlib checkout at
+`db584cd6d46c92f209a44c0f1c829460d327499d`.
+
+```bash
+set -euo pipefail
+rec_toolchain_root=/absolute/path/outside/git/rec-next03-toolchains
+rec_xact_archive=/absolute/path/to/xAct_1.3.0.tgz
+
+python scripts/provision_rec_next03_formal_toolchains.py --plan \
+  --toolchain-root "$rec_toolchain_root" \
+  --xact-archive "$rec_xact_archive"
+
+python scripts/provision_rec_next03_formal_toolchains.py --provision \
+  --allow-network \
+  --toolchain-root "$rec_toolchain_root" \
+  --xact-archive "$rec_xact_archive"
+
+python scripts/provision_rec_next03_formal_toolchains.py --check \
+  --toolchain-root "$rec_toolchain_root" \
+  --xact-archive "$rec_xact_archive"
+
+export ELAN_HOME="$rec_toolchain_root/elan"
+export PATH="$ELAN_HOME/bin:$PATH"
+export REC_NEXT03_LEAN_WORKSPACE="$rec_toolchain_root/lean-workspace"
+```
+
+If `elan`, Git, Make, a user/network namespace utility, Sage/Singular, or
+Rocq 9.2.0 is missing, local Codex may install only that prerequisite using the
+host's official package manager or an external per-user switch. It must record
+the exact command, package/source, resulting executable path, and version in
+`$rec_toolchain_root` before returning to this prompt. No system-wide or
+unrecorded version substitution establishes a pass. Wolfram Engine remains a
+licensed host dependency: Codex may use an existing installation but may not
+download, activate, or relicense it.
+
+After the check passes, disable ordinary network access. `lake update`, package
+installation, Git fetch/pull, and all dependency resolution are forbidden for
+the remaining tests and formal run. The runner independently checks the child
+network-namespace inode, live `socket.if_nameindex()` result, and routes; an
+inherited `/sys/class/net` view is diagnostic only.
 
 ## LOCAL_EXECUTION_REQUIRED
 
@@ -161,8 +221,9 @@ fingerprint on this CPU.
 
 ### 2. Run the focused host-aware and new-contract tests
 
-Use the already-installed Python 3.12.13, NumPy 2.4.2, SciPy 1.17.0, and
-pytest 9.1.1 environment. Do not install `mpmath` or any missing dependency.
+Use the provisioned or already-installed Python 3.12.13, NumPy 2.4.2, SciPy
+1.17.0, and pytest 9.1.1 environment. After the provisioning boundary, do not
+install `mpmath` or any missing dependency.
 
 ```bash
 env -u NPY_DISABLE_CPU_FEATURES \
@@ -231,13 +292,17 @@ PYTHONDONTWRITEBYTECODE=1 python \
 
 Then create a new empty output directory outside every Git repository and run
 all backends through the isolated runner. Point the variables below at the
-already-installed, offline inputs and at a distinct nonexistent rebuild path
-inside that output directory; do not download or update anything:
+provisioned offline inputs and at a distinct nonexistent rebuild path inside
+that output directory; do not download or update anything during this phase:
 
 ```bash
-rec_formal_output="$(mktemp -d /tmp/rec-next03-formal.XXXXXX)"
-export REC_NEXT03_XACT_ARCHIVE=/absolute/path/to/xAct_1.3.0.tgz
-export REC_NEXT03_LEAN_WORKSPACE=/absolute/path/to/verified-offline-mathlib-v4.33.0-workspace
+rec_formal_output="$(mktemp -d /var/tmp/rec-next03-formal.XXXXXX)"
+: "${rec_toolchain_root:?reuse the verified provisioning root}"
+: "${rec_xact_archive:?reuse the verified xAct archive path}"
+export REC_NEXT03_XACT_ARCHIVE="$rec_xact_archive"
+export REC_NEXT03_LEAN_WORKSPACE="$rec_toolchain_root/lean-workspace"
+export ELAN_HOME="$rec_toolchain_root/elan"
+export PATH="$ELAN_HOME/bin:$PATH"
 export REC_NEXT03_LEAN_REBUILD_WORKSPACE="$rec_formal_output/lean-rebuild-workspace"
 test ! -e "$REC_NEXT03_LEAN_REBUILD_WORKSPACE"
 test "$(sha256sum "$REC_NEXT03_XACT_ARCHIVE" | awk '{print $1}')" = \
@@ -271,9 +336,11 @@ update`, fetch mathlib, install xAct, or write generated files under
 `formal/rec_next03`.
 
 Every evidence-producing external command must run inside the runner's
-verified OS network namespace. Dead proxy variables or Git URL rewrites alone
-are insufficient. If the host cannot establish and probe the configured
-namespace mechanism, record `ENVIRONMENT_GAP` and exit `69`; do not execute the
+verified OS network namespace. Dead proxy variables, Git URL rewrites, and an
+inherited `/sys/class/net` mount alone are insufficient. The runner requires a
+child namespace inode distinct from the parent, a live socket interface index
+of exactly `lo`, and no non-loopback route. If the host cannot establish and
+probe that boundary, record `ENVIRONMENT_GAP` and exit `69`; do not execute the
 backend outside isolation or synthesize a PASS.
 
 A backend PASS establishes only the encoded conditional identity. It does not

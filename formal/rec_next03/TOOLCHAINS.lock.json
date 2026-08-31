@@ -15,6 +15,8 @@
     ],
     "local_execution_required": true,
     "fake_or_inferred_pass_forbidden": true,
+    "local_codex_provisioning_allowed": true,
+    "provisioning_is_setup_not_evidence": true,
     "repository_must_remain_read_only_during_formal_execution": true,
     "raw_receipts_are_archival_byte_seals_only": true,
     "canonical_semantic_projection_required": true
@@ -271,6 +273,38 @@
       "postbuild_artifacts_must_be_outputs_of_the_recorded_namespace_isolated_builds": true,
       "LAKE_NO_CACHE_alone_is_sufficient": false
     },
+    "toolchain_provisioning": {
+      "authorized_executor": "LOCAL_CODEX",
+      "entrypoint": "scripts/provision_rec_next03_formal_toolchains.py",
+      "phase": "SETUP_AFTER_DELIVERY_IDENTITY_BEFORE_EVIDENCE",
+      "network_enabled_setup_only": true,
+      "repository_mutations": [],
+      "external_root_required": true,
+      "xact_archive_sha256_required": "7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460cef1b07be",
+      "lean": {
+        "toolchain": "leanprover/lean4:v4.33.0",
+        "materialization_command": "lake update",
+        "workspace": "<external-root>/lean-workspace",
+        "required_mathlib_tag": "v4.33.0",
+        "required_mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+        "materialization_receipt_required": true
+      },
+      "host_prerequisite_policy": {
+        "local_codex_may_install_missing_prerequisites": true,
+        "allowed_scope": [
+          "elan launcher",
+          "git",
+          "make",
+          "Linux user/network namespace utility",
+          "SageMath and Singular",
+          "Rocq 9.2.0 through a separate external switch"
+        ],
+        "must_record_package_manager_command_and_result_outside_git": true,
+        "must_not_install_or_relicense_wolfram_engine": true,
+        "exact_or_runtime_captured_version_contracts_remain_mandatory": true
+      },
+      "post_provision_execution": "NETWORK_FROZEN_RUNNER_ONLY_NO_LAKE_UPDATE_NO_DEPENDENCY_RESOLUTION"
+    },
     "network_isolation": {
       "required_for_every_tool_subprocess": true,
       "mechanism": "LINUX_USER_NETWORK_NAMESPACE",
@@ -283,12 +317,15 @@
         "--"
       ],
       "preflight": {
-        "probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_READ_/sys/class/net",
+        "probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_COMPARE_/proc/self/ns/net_WITH_PARENT_WHILE_READING_socket.if_nameindex_AND_/proc/net/route",
         "required_exit_code": 0,
         "required_interfaces": [
           "lo"
         ],
         "verified_must_equal": true,
+        "child_namespace_must_differ_from_parent": true,
+        "non_loopback_routes_must_be_empty": true,
+        "inherited_sysfs_interfaces_are_diagnostic_only": true,
         "record_executable": true,
         "record_probe_command_exit_stdout_stderr_timeout_and_reason": true
       },
@@ -310,6 +347,10 @@
         "network_isolation.probe.stderr_log",
         "network_isolation.probe.timed_out",
         "network_isolation.interfaces",
+        "network_isolation.parent_net_namespace",
+        "network_isolation.net_namespace",
+        "network_isolation.non_loopback_routes",
+        "network_isolation.sysfs_interfaces_diagnostic",
         "network_isolation.verified",
         "network_isolation.reason"
       ]
@@ -324,6 +365,6 @@
       "successful_scan_is_not_sufficient": "tool build and exact assumption audit remain mandatory"
     },
     "lean_workspace_policy": "USE_A_VERIFIED_READ_ONLY_ALREADY_MATERIALIZED_SOURCE_WORKSPACE_AND_A_DISTINCT_NEW_OUTPUT_ONLY_REBUILD_WORKSPACE; PURGE ALL COPIED BUILD OUTPUTS BEFORE SOURCE REBUILD UNDER THE VERIFIED LINUX USER/NETWORK NAMESPACE; A MISSING MANIFEST OR PACKAGE CHECKOUT IS UNEXECUTED_ENVIRONMENT_GAP, NOT PERMISSION TO RESOLVE_DEPENDENCIES_OR TRUST PREBUILT OLEANS",
-    "network_policy": "EVERY_TOOL_SUBPROCESS_MUST_RUN_WITH_THE_VERIFIED_UNSHARE_LINUX_USER_NETWORK_NAMESPACE_PREFIX; DEAD_PROXIES_AND_GIT_URL_REWRITES_ARE_DEFENSE_IN_DEPTH_ONLY"
+    "network_policy": "EVERY_TOOL_SUBPROCESS_MUST_RUN_WITH_THE_VERIFIED_UNSHARE_LINUX_USER_NETWORK_NAMESPACE_PREFIX; THE_PROBE_MUST_COMPARE_NAMESPACE_INODES_AND_LIVE_SOCKET_INTERFACE_INDEXES_RATHER_THAN_TRUSTING_AN_INHERITED_SYSFS_MOUNT; DEAD_PROXIES_AND_GIT_URL_REWRITES_ARE_DEFENSE_IN_DEPTH_ONLY"
   }
 }

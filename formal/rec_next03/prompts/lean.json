@@ -151,12 +151,15 @@
           "--fork",
           "--"
         ],
-        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_READ_/sys/class/net",
+        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_COMPARE_/proc/self/ns/net_WITH_PARENT_WHILE_READING_socket.if_nameindex_AND_/proc/net/route",
         "required_probe_exit_code": 0,
         "required_interfaces": [
           "lo"
         ],
         "verified_must_equal": true,
+        "child_namespace_must_differ_from_parent": true,
+        "non_loopback_routes_must_be_empty": true,
+        "inherited_sysfs_interfaces_are_diagnostic_only": true,
         "covered_subprocesses": "EVERY_VERSION_GIT_IDENTITY_CLEAN_RESET_BUILD_AND_ASSUMPTION_AUDIT_SUBPROCESS",
         "proxy_and_git_url_rewrite_controls": "DEFENSE_IN_DEPTH_ONLY_NOT_NETWORK_ISOLATION_EVIDENCE",
         "unavailable_denied_or_unverified_result": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
@@ -311,7 +314,7 @@
       "the rebuild workspace is outside every Git worktree and confined to the selected output directory",
       "all prior workspace and package build outputs are removed in the rebuild copy and no pre-materialized Lean compiled artifact remains",
       "all inherited Lean artifact-cache controls are cleared, the required effective cache-disable values are recorded, and no cached compiled artifact is restored, unpacked, or reused",
-      "the unshare Linux user/network namespace preflight exits zero, reports exactly the loopback interface, and is recorded as verified",
+      "the unshare Linux user/network namespace preflight exits zero, records a child namespace inode distinct from the parent, reports exactly loopback through socket.if_nameindex with no non-loopback route, and is recorded as verified",
       "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
       "namespace-isolated lake build @mathlib succeeds and rebuilt dependency artifact hashes are recorded",
       "namespace-isolated lake build @/RecNext03 succeeds against those rebuilt artifacts",
@@ -322,8 +325,8 @@
   },
   "fail_closed": [
     "Do not execute lake update or perform dependency resolution during this verification.",
-    "Do not run any version, Git identity, clean/reset, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight is verified with exactly the loopback interface.",
-    "Do not treat dead proxy variables or Git URL rewrites as proof of network isolation; if unshare is missing, denied, exits nonzero, or exposes any interface other than lo, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
+    "Do not run any version, Git identity, clean/reset, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight verifies a child namespace inode, loopback-only socket.if_nameindex result, and no non-loopback route. An inherited /sys mount is diagnostic only.",
+    "Do not treat dead proxy variables, Git URL rewrites, or an inherited /sys/class/net view as proof of network isolation; if unshare is missing, denied, exits nonzero, retains the parent namespace, exposes a non-loopback socket interface, or has a non-loopback route, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
     "Do not report PASS if the manifest, unique inputRev/tag+rev mapping, materialized mathlib Git HEAD, clean status, or tree receipt is missing or mismatched.",
     "Do not build directly in or mutate the verified source workspace.",
     "Do not reject a verified source workspace solely because it is inside a Git checkout; instead require its byte, materialized-mathlib identity, and unchanged seals. The rebuild workspace remains forbidden inside every Git worktree.",

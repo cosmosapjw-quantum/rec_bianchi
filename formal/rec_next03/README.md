@@ -3,17 +3,25 @@
 Status: **NONAUTHORITATIVE** identity checks; physical authority and repository
 implementation parity are both **NOT_ESTABLISHED**.
 
-Evidence-producing local execution must use
+Before evidence-producing execution, a local Codex job may use
+`scripts/provision_rec_next03_formal_toolchains.py --provision --allow-network`
+to install the exact Lean lane into an external ELAN_HOME and materialize a
+clean external mathlib workspace. This setup writes no repository file and is
+not formal evidence. Evidence-producing local execution must then use
 `scripts/run_rec_next03_formal_contracts.py --run-all`, a new/empty output
-directory outside Git, the exact xAct archive, a clean offline mathlib
+directory outside Git, the exact xAct archive, and the provisioned offline
+mathlib
 `v4.33.0` source workspace at commit
 `db584cd6d46c92f209a44c0f1c829460d327499d`, and a distinct nonexistent Lean
 rebuild path under the output directory. The runner clears inherited language
 search paths, performs every external tool command through its verified Linux
 user+network namespace, discards prebuilt Lean artifacts in the output-only
 copy, rebuilds without network access, and parses the exact 25 Lean and 25
-Rocq assumption audits. An unavailable or denied namespace is an
-`ENVIRONMENT_GAP`, never a fallback to unsandboxed execution.
+Rocq assumption audits. Namespace verification compares the child
+network-namespace inode with its parent, checks live socket interfaces for
+loopback only, and rejects non-loopback routes; an inherited `/sys` mount is
+diagnostic only. An unavailable or denied namespace is an `ENVIRONMENT_GAP`,
+never a fallback to unsandboxed execution.
 
 The exact command and environment contract is in the stage
 `LOCAL_EXECUTION_PROMPT.md`. The direct commands below are developer

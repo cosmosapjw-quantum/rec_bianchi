@@ -732,6 +732,26 @@ def _runner_selftest_errors() -> list[str]:
     )
     if rocq_audit["status"] != "PASS" or rocq_bad["status"] != "FAIL":
         errors.append("Rocq assumption-output parser mutation self-test failed")
+
+    parent_namespace = "net:[100]"
+    isolated_observation = {
+        "interfaces": ["lo"],
+        "net_namespace": "net:[101]",
+        "non_loopback_routes": [],
+        "sysfs_interfaces": ["docker0", "lo"],
+    }
+    if not _network_namespace_isolated(
+        isolated_observation, parent_namespace=parent_namespace
+    ):
+        errors.append("network namespace self-test rejected isolated syscall observation")
+    for mutated in (
+        {**isolated_observation, "net_namespace": parent_namespace},
+        {**isolated_observation, "interfaces": ["docker0", "lo"]},
+        {**isolated_observation, "non_loopback_routes": ["eth0"]},
+    ):
+        if _network_namespace_isolated(mutated, parent_namespace=parent_namespace):
+            errors.append("network namespace self-test accepted an unisolated observation")
+            break
     return errors
 
 
@@ -937,13 +957,43 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
         errors.append("TOOLCHAINS.lock.json: inherited search override policy mismatch")
 
     network_policy = _as_dict(build_policy.get("network_isolation"))
+    network_preflight = _as_dict(network_policy.get("preflight"))
     network_prefix_ok = network_policy.get("command_prefix") == [
         "unshare",
         *NETWORK_PREFIX_ARGUMENTS,
-    ] and network_policy.get("unavailable_denied_or_unverified_result") == NETWORK_GAP_REASON
+    ] and (
+        network_policy.get("unavailable_denied_or_unverified_result") == NETWORK_GAP_REASON
+    ) and (
+        network_preflight.get("child_namespace_must_differ_from_parent") is True
+    ) and network_preflight.get("non_loopback_routes_must_be_empty") is True and (
+        network_preflight.get("inherited_sysfs_interfaces_are_diagnostic_only") is True
+    )
     checks.append({"id": "exact_fail_closed_network_prefix_contract", "passed": network_prefix_ok})
     if toolchains is not None and not network_prefix_ok:
         errors.append("TOOLCHAINS.lock.json: network namespace prefix/result contract mismatch")
+
+    provisioning_policy = _as_dict(build_policy.get("toolchain_provisioning"))
+    provisioning_ok = (
+        provisioning_policy.get("authorized_executor") == "LOCAL_CODEX"
+        and provisioning_policy.get("entrypoint")
+        == "scripts/provision_rec_next03_formal_toolchains.py"
+        and provisioning_policy.get("phase")
+        == "SETUP_AFTER_DELIVERY_IDENTITY_BEFORE_EVIDENCE"
+        and provisioning_policy.get("network_enabled_setup_only") is True
+        and provisioning_policy.get("repository_mutations") == []
+        and provisioning_policy.get("external_root_required") is True
+        and provisioning_policy.get("xact_archive_sha256_required") == XACT_ARCHIVE_SHA256
+        and _as_dict(provisioning_policy.get("lean")).get("toolchain")
+        == "leanprover/lean4:v4.33.0"
+        and _as_dict(provisioning_policy.get("lean")).get("required_mathlib_commit")
+        == MATHLIB_COMMIT
+        and (
+            REPOSITORY_ROOT / "scripts" / "provision_rec_next03_formal_toolchains.py"
+        ).is_file()
+    )
+    checks.append({"id": "local_codex_provisioning_contract", "passed": provisioning_ok})
+    if toolchains is not None and not provisioning_ok:
+        errors.append("TOOLCHAINS.lock.json: local Codex provisioning contract mismatch")
 
     cache_policy = _as_dict(build_policy.get("lean_artifact_cache_policy"))
     cleared_cache_contract = cache_policy.get(
@@ -1054,6 +1104,18 @@ def _write_bytes(path: Path, data: bytes) -> None:
 
 def _write_json(path: Path, value: Any) -> None:
     _write_bytes(path, _canonical_json(value).encode("ascii"))
+
+
+def _network_namespace_isolated(
+    observation: Mapping[str, Any], *, parent_namespace: str | None
+) -> bool:
+    return (
+        isinstance(parent_namespace, str)
+        and isinstance(observation.get("net_namespace"), str)
+        and observation.get("net_namespace") != parent_namespace
+        and observation.get("interfaces") == ["lo"]
+        and observation.get("non_loopback_routes") == []
+    )
 
 
 def _clear_search_overrides(env: Mapping[str, str]) -> dict[str, str]:
@@ -1234,8 +1296,10 @@ def _run_command(
 
     The isolation token is passed directly by ``run_all``; no environment
     variable or caller-controlled default can disable the prefix.  A small
-    Python trampoline re-checks that only loopback exists *inside every new
-    namespace* before replacing itself with the requested executable.
+    Python trampoline re-checks the namespace inode, live socket interface
+    index, and routes *inside every new namespace* before replacing itself
+    with the requested executable.  It does not use an inherited sysfs mount
+    as the authority for the current network namespace.
     """
 
     stdout_path = logs_dir / f"{label}.stdout.log"
@@ -1244,6 +1308,9 @@ def _run_command(
     prefix = isolation.get("prefix")
     if isolation.get("verified") is not True or not isinstance(prefix, tuple):
         raise ContractError("tool subprocess refused without verified network isolation")
+    parent_namespace = isolation.get("parent_net_namespace")
+    if not isinstance(parent_namespace, str):
+        raise ContractError("tool subprocess refused without parent network namespace identity")
     expected_prefix = (str(isolation.get("executable")), *NETWORK_PREFIX_ARGUMENTS)
     if prefix != expected_prefix or not Path(prefix[0]).is_absolute():
         raise ContractError("tool subprocess refused for noncanonical network prefix")
@@ -1262,13 +1329,17 @@ def _run_command(
     if marker_path.exists() or marker_path.is_symlink():
         raise ContractError(f"namespace-entry marker already exists: {marker_path}")
     trampoline = (
-        "import json,os,sys;"
-        "interfaces=sorted(os.listdir('/sys/class/net'));"
-        "interfaces==['lo'] or sys.exit(78);"
-        "fd=os.open(sys.argv[1],os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600);"
-        "os.write(fd,(json.dumps(interfaces,separators=(',',':'))+'\\n').encode());"
+        "import json,os,socket,sys;"
+        "parent=sys.argv[1];"
+        "interfaces=sorted(name for _,name in socket.if_nameindex());"
+        "routes=[fields[0] for line in open('/proc/net/route',encoding='ascii').read().splitlines()[1:] "
+        "if len(fields:=line.split())>=1 and fields[0]!='lo'];"
+        "payload={'interfaces':interfaces,'net_namespace':os.readlink('/proc/self/ns/net'),'non_loopback_routes':routes};"
+        "(payload['net_namespace']!=parent and interfaces==['lo'] and routes==[]) or sys.exit(78);"
+        "fd=os.open(sys.argv[2],os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600);"
+        "os.write(fd,(json.dumps(payload,separators=(',',':'))+'\\n').encode());"
         "os.close(fd);"
-        "os.execv(sys.argv[2],sys.argv[2:])"
+        "os.execv(sys.argv[3],sys.argv[3:])"
     )
     actual_command = [
         *prefix,
@@ -1277,6 +1348,7 @@ def _run_command(
         "-S",
         "-c",
         trampoline,
+        parent_namespace,
         str(marker_path),
         *logical_command,
     ]
@@ -1341,9 +1413,12 @@ def _run_command(
     marker_valid = False
     if marker_path.is_file() and not marker_path.is_symlink():
         try:
-            marker_valid = _load_json_text(
+            marker_payload = _load_json_text(
                 marker_path.read_text(encoding="utf-8"), source=str(marker_path)
-            ) == ["lo"]
+            )
+            marker_valid = isinstance(marker_payload, dict) and _network_namespace_isolated(
+                marker_payload, parent_namespace=parent_namespace
+            )
         except (OSError, ContractError):
             marker_valid = False
     result["network_namespace_entry_verified"] = marker_valid
@@ -1365,9 +1440,18 @@ def _probe_network_isolation(
     unshare = str(Path(unshare_found).resolve()) if unshare_found is not None else None
     display_executable = unshare or "unshare"
     prefix = [display_executable, *NETWORK_PREFIX_ARGUMENTS]
+    try:
+        parent_net_namespace = os.readlink("/proc/self/ns/net")
+    except OSError:
+        parent_net_namespace = None
     probe_script = (
-        "import json,os; "
-        "print(json.dumps(sorted(os.listdir('/sys/class/net')),separators=(',',':')))"
+        "import json,os,socket; "
+        "interfaces=sorted(name for _,name in socket.if_nameindex()); "
+        "routes=[fields[0] for line in open('/proc/net/route',encoding='ascii').read().splitlines()[1:] "
+        "if len(fields:=line.split())>=1 and fields[0]!='lo']; "
+        "payload={'interfaces':interfaces,'net_namespace':os.readlink('/proc/self/ns/net'),'non_loopback_routes':routes,"
+        "'sysfs_interfaces':sorted(os.listdir('/sys/class/net'))}; "
+        "print(json.dumps(payload,separators=(',',':')))"
     )
     command = [*prefix, sys.executable, "-I", "-S", "-c", probe_script]
     stdout = b""
@@ -1405,20 +1489,31 @@ def _probe_network_isolation(
             stderr = str(exc).encode("utf-8", errors="replace")
     _write_bytes(stdout_path, stdout)
     _write_bytes(stderr_path, stderr)
-    interfaces: list[str] = []
+    observation: dict[str, Any] = {}
     if exit_code == 0:
         try:
             decoded = json.loads(stdout.decode("utf-8"))
-            if isinstance(decoded, list) and all(isinstance(item, str) for item in decoded):
-                interfaces = decoded
+            if isinstance(decoded, dict):
+                observation = decoded
         except (UnicodeDecodeError, json.JSONDecodeError):
-            interfaces = []
-    verified = exit_code == 0 and interfaces == ["lo"] and not timed_out
-    reason = "isolated namespace exposes loopback only" if verified else NETWORK_GAP_REASON
+            observation = {}
+    verified = (
+        exit_code == 0
+        and not timed_out
+        and _network_namespace_isolated(
+            observation, parent_namespace=parent_net_namespace
+        )
+    )
+    reason = (
+        "isolated namespace has a distinct inode, loopback-only socket interfaces, and no non-loopback route"
+        if verified
+        else NETWORK_GAP_REASON
+    )
     receipt = {
         "executable": unshare,
-        "interfaces": interfaces,
+        "interfaces": observation.get("interfaces", []),
         "mechanism": "LINUX_USER_NETWORK_NAMESPACE",
+        "parent_net_namespace": parent_net_namespace,
         "probe": {
             "command": command,
             "exit_code": exit_code,
@@ -1426,12 +1521,16 @@ def _probe_network_isolation(
             "stdout_log": stdout_path.relative_to(output_dir).as_posix(),
             "timed_out": timed_out,
         },
+        "net_namespace": observation.get("net_namespace"),
+        "non_loopback_routes": observation.get("non_loopback_routes", []),
         "reason": reason,
+        "sysfs_interfaces_diagnostic": observation.get("sysfs_interfaces", []),
         "verified": verified,
     }
     isolation = (
         {
             "executable": unshare,
+            "parent_net_namespace": parent_net_namespace,
             "prefix": (unshare, *NETWORK_PREFIX_ARGUMENTS),
             "verified": True,
         }

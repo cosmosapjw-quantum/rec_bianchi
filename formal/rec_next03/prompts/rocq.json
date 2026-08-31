@@ -80,12 +80,15 @@
           "--fork",
           "--"
         ],
-        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_READ_/sys/class/net",
+        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_COMPARE_/proc/self/ns/net_WITH_PARENT_WHILE_READING_socket.if_nameindex_AND_/proc/net/route",
         "required_probe_exit_code": 0,
         "required_interfaces": [
           "lo"
         ],
         "verified_must_equal": true,
+        "child_namespace_must_differ_from_parent": true,
+        "non_loopback_routes_must_be_empty": true,
+        "inherited_sysfs_interfaces_are_diagnostic_only": true,
         "covered_subprocesses": "EVERY_VERSION_STDLIB_IDENTITY_BUILD_AND_ASSUMPTION_AUDIT_SUBPROCESS",
         "proxy_and_git_url_rewrite_controls": "DEFENSE_IN_DEPTH_ONLY_NOT_NETWORK_ISOLATION_EVIDENCE",
         "unavailable_denied_or_unverified_result": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
@@ -227,7 +230,7 @@
     "semantic_projection_sha256_required": true,
     "pass_requirements": [
       "Rocq version 9.2.0",
-      "the unshare Linux user/network namespace preflight exits zero, reports exactly the loopback interface, and is recorded as verified",
+      "the unshare Linux user/network namespace preflight exits zero, records a child namespace inode distinct from the parent, reports exactly loopback through socket.if_nameindex with no non-loopback route, and is recorded as verified",
       "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
       "documented rocq compile -where or an allowed 9.2 compatibility frontend resolves exactly one absolute captured Stdlib root independent of inherited path overrides; every successful frontend agrees on that canonical root",
       "allowed foundation origins resolve under the captured root and the selected Stdlib module artifact hashes are recorded",
@@ -238,8 +241,8 @@
     "formula_pass_label": "PASS_NONAUTHORITATIVE_ROCQ_KERNEL_CHECK"
   },
   "fail_closed": [
-    "Do not run any version, Stdlib identity, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight is verified with exactly the loopback interface.",
-    "Do not treat dead proxy variables or Git URL rewrites as proof of network isolation; if unshare is missing, denied, exits nonzero, or exposes any interface other than lo, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
+    "Do not run any version, Stdlib identity, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight verifies a child namespace inode, loopback-only socket.if_nameindex result, and no non-loopback route. An inherited /sys mount is diagnostic only.",
+    "Do not treat dead proxy variables, Git URL rewrites, or an inherited /sys/class/net view as proof of network isolation; if unshare is missing, denied, exits nonzero, retains the parent namespace, exposes a non-loopback socket interface, or has a non-loopback route, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
     "Do not inherit any language, package, cache, or userbase override listed in execution.environment_policy.clear_inherited; only captured runner-controlled paths are permitted.",
     "Do not invoke or accept an undocumented bare where subcommand; Stdlib discovery must use the documented -where option through an allowed frontend.",
     "Do not report PASS if the Rocq 9.2 Stdlib root, executable identity, selected module hashes, or allowed foundation origins are missing, overridden, or unresolved.",

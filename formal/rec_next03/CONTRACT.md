@@ -220,12 +220,18 @@ repository authority record and source-byte verifier.
 
 ## Mutation boundary
 
-The formal prompts authorize no repository source, test, evidence, branch, PR,
-or claim mutation.  They may create only disposable build state and explicit
-receipts in a caller-selected directory outside the Git worktree.  A local
-executor must preserve raw receipts as archival seals and compare a canonical
-semantic projection separately.  Missing tools or premises yield
-`UNEXECUTED_ENVIRONMENT_GAP` or a fail-closed result, never a synthetic pass.
+The formal execution prompts authorize no repository source, test, evidence,
+branch, PR, or claim mutation. Before evidence only, a local Codex executor
+may provision the exact requested formal dependencies through
+`scripts/provision_rec_next03_formal_toolchains.py` in a caller-selected
+external root; that setup may materialize the pinned Lean/mathlib workspace
+and records its own nonauthoritative receipt. Evidence execution itself may
+create only disposable build state and explicit receipts in a caller-selected
+directory outside the Git worktree, with network disabled by the verified
+namespace. A local executor must preserve raw receipts as archival seals and
+compare a canonical semantic projection separately. Missing tools or premises
+yield `UNEXECUTED_ENVIRONMENT_GAP` or a fail-closed result, never a synthetic
+pass.
 
 The complete stable obligation list is in `OBLIGATIONS.json`.  Tool requests
 and execution boundaries are in `TOOLCHAINS.lock.json` and `prompts/*.json`.

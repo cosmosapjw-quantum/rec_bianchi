@@ -2,8 +2,9 @@
 
 This is the prompt-only locator for one bounded local validation. Preserve all
 existing checkouts and evidence. Before evidence-producing execution, exactly
-one project-specific Git ref materialization is allowed; after it, work in a
-new detached worktree with network disabled. Do not install, edit, regenerate,
+one project-specific Git ref materialization and one bounded external
+toolchain-provisioning phase are allowed. After a verified setup receipt, work
+in a new detached worktree with network disabled. Do not edit, regenerate,
 normalize, commit, push, merge, or mark a PR ready.
 
 ## Immutable continuation identity
@@ -21,10 +22,10 @@ normalize, commit, push, merge, or mark a PR ready.
   `7adb61ed0f391f62ca2a43b7d8f9e6cb0933da0a`
 - stage manifest:
   `artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/MANIFEST.sha256`
-- manifest payload entries: `34`
+- manifest payload entries: `35`
 
 The delivery diff from the exact continuation base to the materialized delivery HEAD
-must contain exactly these 35 paths:
+must contain exactly these 36 paths:
 
 ```text
 HANDOFF_PROMPT.md
@@ -53,6 +54,7 @@ formal/rec_next03/rocq/_CoqProject
 formal/rec_next03/rocq/rocq-toolchain
 formal/rec_next03/sage/verify_remap_event.sage
 formal/rec_next03/wolfram/verify_frame_face_event.wls
+scripts/provision_rec_next03_formal_toolchains.py
 scripts/run_rec_next03_formal_contracts.py
 src/full_bianchi_hyrec/trajectory/directional_face_admission.py
 src/full_bianchi_hyrec/trajectory/directional_source_assembly.py
@@ -65,7 +67,7 @@ tests/trajectory/test_paired_source_transfer.py
 ```
 
 Before executing any validator, require the base tree and parent above, base
-ancestry, the exact path set, a clean worktree, 34 manifest entries, and
+ancestry, the exact path set, a clean worktree, 35 manifest entries, and
 `sha256sum -c` success. Any mismatch is
 `STOP_INVALID_CONTINUATION_IDENTITY`; preserve it and stop.
 
@@ -107,9 +109,40 @@ The fetch may update only that exact remote-tracking ref. A missing ref,
 non-commit object, fetch error, or readback mismatch is terminal:
 `STOP_INVALID_CONTINUATION_IDENTITY`. Preserve the log; do not fetch a
 wildcard, use an alternate ref, reconstruct a bundle, or continue from a
-transcript. Capture the fetched commit OID, create the detached worktree from
-that OID, then disable network access before all identity, manifest, test, and
-formal commands.
+transcript. Capture the fetched commit OID and create the detached worktree
+from that OID. After the delivery identity and manifest pass, perform the
+explicit provisioning phase below; then disable network access before all
+evidence-producing tests and formal commands.
+
+## Local Codex provisioning boundary
+
+The local Codex executor is authorized to provision missing formal
+prerequisites only in a caller-selected directory outside all Git worktrees.
+This setup is not scientific evidence and must finish before the frozen
+validation phase. The entrypoint is:
+
+```bash
+python scripts/provision_rec_next03_formal_toolchains.py --provision \
+  --allow-network \
+  --toolchain-root /absolute/path/outside/git/rec-next03-toolchains \
+  --xact-archive /absolute/path/to/xAct_1.3.0.tgz
+```
+
+It installs only the exact Lean `v4.33.0` lane into an external `ELAN_HOME`,
+materializes the locked mathlib `v4.33.0` checkout, validates its resolved
+commit and clean origin, and seals the supplied xAct archive. If a host
+prerequisite is absent, local Codex may install only the recorded prerequisite
+needed for this contract (elan launcher, Git, Make, user/network namespace
+utility, Sage/Singular, or Rocq 9.2.0 in an external switch); it must preserve
+the package-manager command and resulting executable/version outside Git. It
+must not install or relicense Wolfram Engine, substitute an unpinned formal
+runtime, alter the repository, or run tests as part of setup.
+
+After `--check` reports the exact workspace, export its private ELAN_HOME and
+workspace path for the formal runner, disable ordinary network access, and
+run the evidence contract. The runner itself independently verifies a distinct
+user/network namespace through its namespace inode, live socket interfaces,
+and routes; an inherited `/sys/class/net` view is diagnostic only.
 
 The complete fail-fast commands, Ryzen 9 5900X host-lane procedure, pytest
 focus and dependency cone, read-only receipt validators, isolated formal

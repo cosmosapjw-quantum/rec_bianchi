@@ -43,6 +43,35 @@ This repair changes no scientific source, convention, tolerance, authority
 projection, physical-face flag, or claim. The old STOP remains preserved as a
 negative result; the next run must re-enter the immutable identity gate.
 
+## Local continuation validation and provisioning repair checkpoint
+
+At delivery commit `c45134bcba97bb347bde6c6119b479627070fc44` and tree
+`11f374edcc6ac7984dc5e932ef282af0d9ae475a`, the repaired local continuation
+completed the immutable identity gate, manifest `34/34`, clean-state and
+`git diff --check` gates, focused pytest `86/86`, dependency-cone pytest
+`68/68`, both semantic validators, and the 55/55 formal repository contract.
+The REC-NEXT-01 semantic digest remained
+`9284ed5b59437d474c293a9ecae24442ca31dc0ebad51432a959e22ccaf069d2`.
+No source, physical-face, provider-export, production-integration, or claim
+authority was established.
+
+The resulting formal-run receipt was correctly classified `ENVIRONMENT_GAP`
+before backend execution. Its original `unshare` probe used an inherited
+`/sys/class/net` mount and therefore observed host interface names despite a
+successful namespace command. That observation alone cannot establish whether
+the child network namespace is isolated. The next runner revision instead
+compares the child `/proc/self/ns/net` inode with the parent, evaluates the
+live `socket.if_nameindex()` interface set, and rejects any non-loopback route;
+the inherited sysfs list remains receipt diagnostics only.
+
+The same revision authorizes a distinct pre-evidence Local Codex provisioning
+phase. It may install the exact Lean `v4.33.0` toolchain into a caller-selected
+external `ELAN_HOME`, materialize the locked mathlib `v4.33.0` checkout, and
+verify the exact xAct archive seal. The only permitted dependency resolution is
+`lake update` in that new external workspace. The later formal runner remains
+network-isolated and still forbids dependency resolution, cached `.olean`
+reuse, repository mutation, and every scientific/PR-state promotion.
+
 The continuation identity was accepted before this work. This stage does not
 reinterpret the Ryzen 9 5900X absence of X86_V4/AVX-512 as a failure: the V1
 fingerprints remain host-lane forensic records, while V2 authority and semantic
@@ -214,8 +243,10 @@ outputs. Rocq likewise clears inherited search paths, seals the 9.2 Stdlib
 root/module bytes, and audits the exact 25 theorem assumption outputs. This
 cloud denied the required `unshare` user+network namespace, so the runner
 stopped before every backend tool command and no formal PASS is claimed here.
-The frozen runner SHA-256 is
+The historical cloud runner SHA-256 was
 `1d7499610e1feb97f177831f64e6866b04272732f8dfbbd974edfc43c6a18a94`.
+The later setup/probe repair is separately sealed by the current stage
+manifest and is not retroactively covered by that historical byte review.
 
 The following proposed IDs remain review candidates, not authority:
 
@@ -271,16 +302,18 @@ synthesized.
 
 ## Independent adversarial review
 
-The formal frozen-byte review of runner SHA-256 `1d749961...`, the 20-file
-formal package, semantic validators, and claim boundary found no P0/P1/P2.
+The historical formal frozen-byte review of runner SHA-256 `1d749961...`, the
+20-file formal package, semantic validators, and claim boundary found no
+P0/P1/P2. It does not itself certify the later provisioning/probe repair;
+that repair has its own static contract and focused regression checks.
 A separate source review found the missed red/blue event P1 and then the
 host-pinned counterexample-fixture P1 described above. After the two bounded
 RED-to-GREEN repairs, its final read-only rereview was `P0=0 / P1=0 / P2=0`
 in both tested CPU-dispatch lanes. The only publication-order condition is
-that the 34 frozen payloads be bound by the stage `MANIFEST.sha256` after all
-payload bytes are final. The delivery procedure closes it with exactly 34
-nonblank entries, excluding the manifest itself, and `sha256sum -c` without
-any later payload edit. Kernel compilation was not reviewed as executed
+that the frozen payloads be bound by the stage `MANIFEST.sha256` after all
+payload bytes are final. The historical delivery had 34 entries; the current
+provisioning repair has 35, excluding the manifest itself, and requires a
+fresh `sha256sum -c` before execution. Kernel compilation was not reviewed as executed
 evidence because the required tools and verified network namespace are
 unavailable in this cloud.
 
