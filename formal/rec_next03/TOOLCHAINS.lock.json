@@ -40,6 +40,11 @@
     "sagemath": {
       "executable": "sage",
       "version_lock": "UNPINNED_RECORD_EXACT_VERSION_AT_RUNTIME",
+      "receipt_json_boundary": {
+        "exit_code_type": "PYTHON_INT",
+        "sage_integer_conversion": "EXACT_INT_ONLY",
+        "generic_default_stringification": "FORBIDDEN"
+      },
       "required_capabilities": [
         "exact rational polynomial rings",
         "symbolic simplification",
@@ -125,6 +130,12 @@
         },
         "clean_root_package_before_build": true,
         "remove_manifest_resolved_build_directories_in_rebuild_copy_only": true,
+        "manifest_resolved_generated_directories": [
+          ".lake/build",
+          ".lake/config"
+        ],
+        "copied_workspace_first_purge_before_project_aware_lake_command": true,
+        "second_purge_after_lake_clean_before_build": true,
         "remove_build_directories_for_root_and_every_materialized_package": true,
         "prebuild_compiled_artifact_suffixes_must_be_absent": [
           ".olean",
@@ -150,6 +161,31 @@
     "rocq": {
       "executable": "rocq",
       "version": "9.2.0",
+      "release_identity": "9.2.0",
+      "accepted_cli_display_tokens": [
+        "9.2",
+        "9.2.0"
+      ],
+      "provider_identity": {
+        "provider": "OPAM_EXTERNAL_SWITCH",
+        "switch_environment_variable": "REC_NEXT03_ROCQ_OPAM_SWITCH",
+        "prefix_environment_variable": "REC_NEXT03_ROCQ_OPAM_PREFIX",
+        "root_environment_variable": "REC_NEXT03_ROCQ_OPAM_ROOT",
+        "read_only_option": "--safe",
+        "packages": {
+          "rocq-runtime": "9.2.0",
+          "rocq-core": "9.2.0",
+          "rocq-stdlib": "9.1.0"
+        },
+        "official_source_hashes": {
+          "rocq-runtime": "sha256=a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20",
+          "rocq-core": "sha256=a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20",
+          "rocq-stdlib": "sha512=5a6c01496917b8f23017d9e94af567be68850155a4545bddb067da83eed97237e34d617345942a708b6a4231e00f9bfc8311cd978bf397bb1ef2ea7c25b1a0a3"
+        },
+        "pinned_or_overlay_package": "FORBIDDEN",
+        "frontend_realpaths_must_resolve_under_prefix": true,
+        "stdlib_root_must_resolve_under_prefix": true
+      },
       "source_root": "formal/rec_next03/rocq",
       "toolchain_file": "formal/rec_next03/rocq/rocq-toolchain",
       "stdlib_contract": {
@@ -165,8 +201,8 @@
           "rocqc -where": "rocqc --version",
           "coqc -where": "coqc --version"
         },
-        "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; A COMPATIBILITY_FRONTEND_IS_ALLOWED_ONLY_IF_ITS_VERSION_IS_9.2.0_AND_ALL_SUCCESSFUL_FRONTENDS_RESOLVE_THE_SAME_CANONICAL_ROOT",
-        "required_lane": "9.2.0",
+        "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; CLI_DISPLAY_9.2_OR_9.2.0_IS_ACCEPTED_ONLY_WITH_EXACT_UNPINNED_OPAM_ROCQ_RUNTIME_AND_ROCQ_CORE_9.2.0_PLUS_ROCQ_STDLIB_9.1.0_IDENTITIES; ALL_SUCCESSFUL_FRONTENDS_AND_THE_STDLIB_ROOT_MUST_RESOLVE_UNDER_ONE_PREFIX",
+        "required_lane": "TYPED_RELEASE_9.2.0_WITH_CLI_DISPLAY_9.2_OR_9.2.0",
         "stdout_contract": "EXACTLY_ONE_NONEMPTY_PATH_AFTER_TRIMMING",
         "resolved_root_must_be_absolute_existing_directory": true,
         "resolved_root_must_not_come_from_inherited_search_path_override": true,
@@ -198,7 +234,7 @@
   },
   "version_acceptance": {
     "lean_and_mathlib": "EXACT_TOOLCHAIN_TAG_RESOLVED_COMMIT_CLEAN_CHECKOUT_AND_RECORDED_TREE",
-    "rocq": "EXACT",
+    "rocq": "TYPED_EXACT_OPAM_RELEASE_9.2.0_WITH_STRICT_CLI_DISPLAY_9.2_OR_9.2.0",
     "xact_archive": "EXACT_SHA256",
     "wolfram_sagemath_singular": "EXACT_RUNTIME_VERSION_MUST_BE_CAPTURED_BEFORE_RESULT_COMPARISON",
     "unrecorded_version_result": "UNCOMPARABLE_RECEIPT_NOT_PASS"
@@ -269,6 +305,8 @@
       ],
       "artifact_cache_restore_download_unpack_or_reuse": "FORBIDDEN",
       "cached_olean_ilean_volean_or_trace_injection_result": "FAIL_NOT_PASS",
+      "copied_config_and_build_directories_purged_before_lake_env": true,
+      "second_config_and_build_purge_after_lake_clean": true,
       "prebuild_purge_and_zero_artifact_assertion_remain_required": true,
       "postbuild_artifacts_must_be_outputs_of_the_recorded_namespace_isolated_builds": true,
       "LAKE_NO_CACHE_alone_is_sufficient": false
@@ -297,7 +335,7 @@
           "make",
           "Linux user/network namespace utility",
           "SageMath and Singular",
-          "Rocq 9.2.0 through a separate external switch"
+          "Rocq runtime/core 9.2.0 and rocq-stdlib 9.1.0 through a separate external OPAM switch"
         ],
         "must_record_package_manager_command_and_result_outside_git": true,
         "must_not_install_or_relicense_wolfram_engine": true,

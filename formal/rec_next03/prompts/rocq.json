@@ -24,7 +24,11 @@
     "toolchain_file": "formal/rec_next03/rocq/rocq-toolchain",
     "contract": "formal/rec_next03/CONTRACT.md",
     "obligations": "formal/rec_next03/OBLIGATIONS.json",
-    "expected_rocq_version": "9.2.0"
+    "expected_rocq_release_identity": "9.2.0",
+    "accepted_cli_display_tokens": [
+      "9.2",
+      "9.2.0"
+    ]
   },
   "theorem_scope": [
     "A unit spatial tetrad direction gives a null photon under the explicit (-,+,+,+) quadratic form; this is not a full standard-boost proof.",
@@ -96,6 +100,27 @@
       }
     },
     "stdlib_identity_preflight": {
+      "provider_identity": {
+        "provider": "OPAM_EXTERNAL_SWITCH",
+        "switch_environment_variable": "REC_NEXT03_ROCQ_OPAM_SWITCH",
+        "prefix_environment_variable": "REC_NEXT03_ROCQ_OPAM_PREFIX",
+        "root_environment_variable": "REC_NEXT03_ROCQ_OPAM_ROOT",
+        "read_only_option": "--safe",
+        "required_installed_packages": {
+          "rocq-runtime": "9.2.0",
+          "rocq-core": "9.2.0",
+          "rocq-stdlib": "9.1.0"
+        },
+        "official_source_hashes": {
+          "rocq-runtime": "sha256=a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20",
+          "rocq-core": "sha256=a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20",
+          "rocq-stdlib": "sha512=5a6c01496917b8f23017d9e94af567be68850155a4545bddb067da83eed97237e34d617345942a708b6a4231e00f9bfc8311cd978bf397bb1ef2ea7c25b1a0a3"
+        },
+        "pinned_or_overlay_package": "FORBIDDEN",
+        "frontend_realpaths_must_resolve_under_prefix": true,
+        "stdlib_root_must_resolve_under_prefix": true,
+        "missing_or_mismatch_result": "UNEXECUTED_TOOLCHAIN_MISMATCH_NOT_PASS"
+      },
       "documented_option": "-where",
       "documentation_url": "https://rocq-prover.org/doc/v9.2/refman/practical-tools/coq-commands.html",
       "primary_discovery_command": "rocq compile -where",
@@ -108,8 +133,12 @@
         "rocqc -where": "rocqc --version",
         "coqc -where": "coqc --version"
       },
-      "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; A COMPATIBILITY_FRONTEND_IS_ALLOWED_ONLY_IF_ITS_VERSION_IS_9.2.0_AND_ALL_SUCCESSFUL_FRONTENDS_RESOLVE_THE_SAME_CANONICAL_ROOT",
-      "required_rocq_version": "9.2.0",
+      "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; CLI_DISPLAY_9.2_OR_9.2.0_IS_ACCEPTED_ONLY_WITH_EXACT_UNPINNED_OPAM_ROCQ_RUNTIME_AND_ROCQ_CORE_9.2.0_PLUS_ROCQ_STDLIB_9.1.0_IDENTITIES; ALL_SUCCESSFUL_FRONTENDS_AND_THE_STDLIB_ROOT_MUST_RESOLVE_UNDER_ONE_PREFIX",
+      "required_release_identity": "9.2.0",
+      "accepted_cli_display_tokens": [
+        "9.2",
+        "9.2.0"
+      ],
       "stdout_contract": "EXACTLY_ONE_NONEMPTY_PATH_AFTER_TRIMMING",
       "resolved_root_must_be_absolute_existing_directory": true,
       "resolved_root_must_not_be_derived_from_COQPATH_ROCQPATH_COQLIB_or_ROCQLIB": true,
@@ -215,7 +244,7 @@
       "schema",
       "authority",
       "status",
-      "rocq_version",
+      "Rocq release identity 9.2.0, exact CLI display token, OPAM runtime/core 9.2.0 and rocq-stdlib 9.1.0 installed versions, source hashes, pin fields, switch selector, and canonical prefix",
       "top-level network_isolation with mechanism, executable, probe command/exit_code/stdout_log/stderr_log/timed_out, exact interface list, verified flag, and reason",
       "selected Rocq frontend, executable realpath, exact -where command/stdout, canonical standard-library root, root identity, and module artifact SHA-256",
       "cleared inherited search-path variables and effective runner-controlled paths",
@@ -229,7 +258,7 @@
     ],
     "semantic_projection_sha256_required": true,
     "pass_requirements": [
-      "Rocq version 9.2.0",
+      "Rocq runtime/core release identity 9.2.0 and rocq-stdlib 9.1.0 from their exact unpinned official OPAM sources; CLI display is exactly 9.2 or 9.2.0",
       "the unshare Linux user/network namespace preflight exits zero, records a child namespace inode distinct from the parent, reports exactly loopback through socket.if_nameindex with no non-loopback route, and is recorded as verified",
       "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
       "documented rocq compile -where or an allowed 9.2 compatibility frontend resolves exactly one absolute captured Stdlib root independent of inherited path overrides; every successful frontend agrees on that canonical root",
@@ -245,6 +274,7 @@
     "Do not treat dead proxy variables, Git URL rewrites, or an inherited /sys/class/net view as proof of network isolation; if unshare is missing, denied, exits nonzero, retains the parent namespace, exposes a non-loopback socket interface, or has a non-loopback route, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
     "Do not inherit any language, package, cache, or userbase override listed in execution.environment_policy.clear_inherited; only captured runner-controlled paths are permitted.",
     "Do not invoke or accept an undocumented bare where subcommand; Stdlib discovery must use the documented -where option through an allowed frontend.",
+    "Do not normalize an arbitrary 9.2 display into release 9.2.0; require live read-only OPAM runtime/core 9.2.0 plus rocq-stdlib 9.1.0, each exact official source hash and empty pin identity, frontend ownership, and a Stdlib root under the same captured prefix.",
     "Do not report PASS if the Rocq 9.2 Stdlib root, executable identity, selected module hashes, or allowed foundation origins are missing, overridden, or unresolved.",
     "Do not report PASS when any expected Print Assumptions theorem is missing, duplicated, or accompanied by an unallowlisted or unresolved foundation.",
     "Do not add Admitted, Axiom, or weaken a statement to obtain a build.",

@@ -110,6 +110,61 @@ not reinterpret the separate Lean, Rocq, or Sage failures. None of these facts
 establish source, physical, implementation-parity, provider-export, or
 scientific authority.
 
+## Formal-run portability research and coding loop checkpoint
+
+The bounded research question was whether the failed backend run revealed a
+new physical claim or three execution-contract defects. The retained evidence
+supports only the latter. A nonauthoritative Wolfram algebra probe reproduced
+the adjacent two-node identities `(1, E_s, 0, dE_s)` and distinct zero-event
+witnesses without supplying any source-defined incoming 26-direction bytes.
+Primary literature on angular quadrature, vector radiative transfer, and
+positivity-preserving DG methods supplies generic numerical constructions, not
+the repository-specific half-range/deposition/event authority required here
+([A&A 2020, DOI 10.1051/0004-6361/202037566](https://doi.org/10.1051/0004-6361/202037566),
+[JQSRT 2017, DOI 10.1016/j.jqsrt.2016.12.032](https://doi.org/10.1016/j.jqsrt.2016.12.032),
+[SIAM J. Sci. Comput. 2017, DOI 10.1137/16M1061072](https://doi.org/10.1137/16M1061072)).
+The research survivor is therefore a portability repair only; no physical
+hypothesis or source authority is promoted.
+
+The independent code audit then found one provider-provenance hole: the Rocq
+proof imports `Stdlib`, but the initial repair sealed only `rocq-runtime` and
+`rocq-core`. Official OPAM metadata shows that these packages are `9.2.0`
+from the Rocq `V9.2.0` archive, while the separately versioned latest
+`rocq-stdlib` package is `9.1.0`, permits `rocq-core >= 9.0`, and has its own
+source SHA-512
+([rocq-core 9.2.0](https://opam.ocaml.org/packages/rocq-core/rocq-core.9.2.0/),
+[rocq-runtime 9.2.0](https://opam.ocaml.org/packages/rocq-runtime/rocq-runtime.9.2.0/),
+[rocq-stdlib 9.1.0](https://opam.ocaml.org/packages/rocq-stdlib/rocq-stdlib.9.1.0/)).
+The targeted repair therefore binds the real compatible triplet rather than
+inventing a nonexistent `rocq-stdlib=9.2.0` identity. Every package version,
+source hash, and empty pin field must agree under the same external switch
+prefix before compilation.
+
+The coding loop compiled each observed failure into one existing-gate
+detector and one minimal repair:
+
+| Observed failure | Root cause | Repair and detector |
+|---|---|---|
+| copied Lean `.lake/config` OLean/trace | manifest reset planned only `.lake/build`, and `lake env` could consume copied config before the reset | purge manifest-derived root/package `.lake/build` and `.lake/config` before any project-aware Lake command, repeat after `lake clean`, require zero compiled artifacts at both boundaries; planner and functional positive/negative detectors |
+| Rocq package 9.2.0 with CLI display `9.2` | presentation token was incorrectly treated as the release identity, and the separately versioned Stdlib provider was initially not bound | accept only exact display `9.2` or `9.2.0` together with live read-only, unpinned official OPAM `rocq-runtime=9.2.0`, `rocq-core=9.2.0`, and `rocq-stdlib=9.1.0`, each exact source hash, and common prefix ownership; typed provider-identity mutation matrix |
+| Sage `Integer` JSON `TypeError` | the `.sage` preparser changed the numeric exit-code literal while `json.dumps` accepts only native JSON scalars | convert only the exact Sage `Integer` exit code to Python `int`; keep generic stringification forbidden; AST-extracted big-integer and rejection detector |
+
+The supplied Anti-Meta-Loop, Audit-Compiled Plan, Byte-vs-Semantic Identity,
+and Anti-Stall/Durable-Checkpoint documents remain compiled into
+`docs/quality/PROGRESS_FIRST_IDENTITY_POLICY.md` and `AGENTS.md`; no duplicate
+policy, ledger, gate, or harness-state file was added. The accepted
+`f8af51e...` pytest `86/86`, dependency-cone `68/68`, and semantic-validator
+checkpoint is reusable only after a byte-diff proves that `src`, `tests`, and
+the validator scripts are unchanged.
+
+Exactly one next action remains: from the pushed HEAD, verify delivery
+identity/manifest and the unchanged-evidence byte boundary, run the static
+contract, then execute the isolated formal runner once in a new `/var/tmp`
+output using the already provisioned toolchains. Preserve the new
+`formal-run.json` path/SHA-256 and backend statuses, then checkpoint without a
+second repair/retry, claim change, source/test edit, provider export, or PR
+state transition.
+
 ## Imported research inputs
 
 The following SHA-256 values are identity seals, not authority promotion:
@@ -311,7 +366,10 @@ Only the following results are claimed:
 | Decimal independent oracle | `PASS_CONDITION_AWARE_EMPIRICAL_BOUND (500 cases)` | five deterministic 100-case strata through `abs(chi dt)<=600`, case-list SHA `887dd161...`; max relative error `2.83e-14`, max `error/(eps max(1,abs(chi dt)))=1.243`, all below the declared factor-8 bound |
 | REC-LOCAL-02 portable receipt | `PASS` | authority `65378bdd...`, diagnostic contract `1fc6c48a...`, raw fetched seal `6fb64275...` |
 | REC-NEXT-01 read-only semantic check | `PASS` | semantic digest `9284ed5b59437d474c293a9ecae24442ca31dc0ebad51432a959e22ccaf069d2` |
-| formal contract static checker | `PASS (55 checks, 20 files)` | strict JSON, comment/string-aware lexical source bans, mutation self-tests, exact audit sets, cache/network contracts, nonauthority/admission markers, formal-tree hashes; no kernel execution |
+| formal contract static checker | `PASS (59 checks, 20 files)` | strict JSON, double Lean purge planner, typed Rocq release/provider mutation matrix, exact Sage JSON boundary, exact audit sets, cache/network contracts, nonauthority/admission markers, formal-tree hashes; no kernel execution |
+| focused backend portability detectors | `PASS` | known `.lake/{build,config}` artifacts removed, unknown compiled artifact preserved+rejected; Sage big-integer JSON round trip and bool/opaque rejection; Rocq short-display acceptance only with exact runtime/core/Stdlib provider identity |
+| independent P0/P1 review | `PASS (P0=0, P1=0 after one targeted repair)` | initial review found the unbound separately versioned Stdlib provider; focused recheck confirmed exact `rocq-stdlib=9.1.0` version/SHA-512/empty-pin/shared-prefix enforcement and its mutation coverage |
+| prior-evidence byte boundary | `PASS` | no diff from `f8af51e...` under `src`, `tests`, or the two semantic-validator scripts; accepted `86/86`, `68/68`, and semantic-validator checkpoint reused rather than rerun |
 | isolated formal runner | `EXPECTED ENVIRONMENT_GAP (exit 69)` | exact `unshare` preflight denied in this cloud; four backends all typed gap, zero backend tool commands/logs, formal tree unchanged |
 | Python AST parse | `PASS` | edited Python implementation, runner, and tests |
 | `git diff --check` | `PASS` | current delivery diff |
@@ -354,9 +412,11 @@ after the one-time bootstrap fetch:
 
 1. materialize and read back the exact delivery ref, then verify the fetched
    manifest and exact delivery path set;
-2. run the host-aware pytest focus and affected dependency cone;
-3. re-run both portable semantic checkers read-only;
-4. run the isolated formal runner with Wolfram+xAct, Sage+Singular,
+2. prove `src`, `tests`, and the two semantic-validator scripts are unchanged
+   from `f8af51e...`, then reuse the accepted `86/86`, `68/68`, and semantic
+   checkpoint without rerunning that unaffected cone;
+3. run the updated 59-check static formal contract;
+4. run the isolated formal runner exactly once with Wolfram+xAct, Sage+Singular,
    Lean+mathlib, and Rocq, writing every receipt outside the worktree;
 5. preserve the raw outputs and report semantic results without editing source,
    tests, evidence, the branch, or PR state.

@@ -181,10 +181,50 @@ python scripts/provision_rec_next03_formal_toolchains.py --check \
 export ELAN_HOME="$rec_toolchain_root/elan"
 export PATH="$ELAN_HOME/bin:$PATH"
 export REC_NEXT03_LEAN_WORKSPACE="$rec_toolchain_root/lean-workspace"
+
+: "${REC_NEXT03_ROCQ_OPAM_SWITCH:?set to the existing verified Rocq OPAM switch selector}"
+export REC_NEXT03_ROCQ_OPAM_ROOT="$(opam var root --safe --color=never \
+  --switch "$REC_NEXT03_ROCQ_OPAM_SWITCH")"
+export REC_NEXT03_ROCQ_OPAM_PREFIX="$(opam var prefix --safe --color=never \
+  --root "$REC_NEXT03_ROCQ_OPAM_ROOT" \
+  --switch "$REC_NEXT03_ROCQ_OPAM_SWITCH")"
+test -d "$REC_NEXT03_ROCQ_OPAM_ROOT"
+test -d "$REC_NEXT03_ROCQ_OPAM_PREFIX"
+export PATH="$REC_NEXT03_ROCQ_OPAM_PREFIX/bin:$PATH"
+
+for rec_rocq_package in rocq-runtime rocq-core rocq-stdlib; do
+  case "$rec_rocq_package" in
+    rocq-runtime|rocq-core)
+      rec_rocq_version=9.2.0
+      rec_rocq_source_hash=sha256=a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20
+      ;;
+    rocq-stdlib)
+      rec_rocq_version=9.1.0
+      rec_rocq_source_hash=sha512=5a6c01496917b8f23017d9e94af567be68850155a4545bddb067da83eed97237e34d617345942a708b6a4231e00f9bfc8311cd978bf397bb1ef2ea7c25b1a0a3
+      ;;
+  esac
+  test "$(opam show --safe --color=never \
+    --root "$REC_NEXT03_ROCQ_OPAM_ROOT" \
+    --switch "$REC_NEXT03_ROCQ_OPAM_SWITCH" --normalise \
+    --field=installed-version "$rec_rocq_package")" = "$rec_rocq_version"
+  test "$(opam show --safe --color=never \
+    --root "$REC_NEXT03_ROCQ_OPAM_ROOT" \
+    --switch "$REC_NEXT03_ROCQ_OPAM_SWITCH" --normalise \
+    --field=source-hash "$rec_rocq_package")" = "$rec_rocq_source_hash"
+  case "$(opam show --safe --color=never \
+    --root "$REC_NEXT03_ROCQ_OPAM_ROOT" \
+    --switch "$REC_NEXT03_ROCQ_OPAM_SWITCH" --normalise \
+    --field=pin "$rec_rocq_package")" in
+    ''|false) ;;
+    *) exit 65 ;;
+  esac
+done
+unset rec_rocq_package rec_rocq_source_hash rec_rocq_version
 ```
 
 If `elan`, Git, Make, a user/network namespace utility, Sage/Singular, or
-Rocq 9.2.0 is missing, local Codex may install only that prerequisite using the
+the exact Rocq runtime/core 9.2.0 plus rocq-stdlib 9.1.0 provider is missing,
+local Codex may install only that prerequisite using the
 host's official package manager or an external per-user switch. It must record
 the exact command, package/source, resulting executable path, and version in
 `$rec_toolchain_root` before returning to this prompt. No system-wide or
@@ -219,7 +259,29 @@ Do not force or emulate an unavailable AVX-512/X86_V4 lane. Native and
 X86_V4-disabled forensic probes may both produce the historical X86_V3
 fingerprint on this CPU.
 
-### 2. Run the focused host-aware and new-contract tests
+### 2. Reuse the unchanged source/test checkpoint
+
+The accepted local checkpoint at
+`f8af51e67f02b9d3b14dca27ad1dd4d2a12f118b` already passed the focused suite
+`86/86`, dependency cone `68/68`, and both semantic validators. This repair
+changes only formal runner/contracts and handoff records. Confirm that the
+scientific implementation, tests, and semantic-validator code are byte-
+unchanged, then reuse those results; do not spend a second execution cycle on
+an unaffected cone:
+
+```bash
+rec_prior_local_checkpoint=f8af51e67f02b9d3b14dca27ad1dd4d2a12f118b
+git diff --quiet "$rec_prior_local_checkpoint" HEAD -- \
+  src tests \
+  scripts/run_rec_local02_source_bound_gate.py \
+  scripts/run_rec_next01_coding_research.py
+```
+
+If this check fails, stop `STOP_INVALID_CONTINUATION_IDENTITY`; do not silently
+replace the accepted evidence by an expanded rerun. The commands below are
+retained only as the exact provenance of that reusable checkpoint.
+
+### 2a. Prior focused host-aware and new-contract tests (do not rerun)
 
 Use the provisioned or already-installed Python 3.12.13, NumPy 2.4.2, SciPy
 1.17.0, and pytest 9.1.1 environment. After the provisioning boundary, do not
@@ -260,7 +322,7 @@ The inherited expected count was `68 passed`. If the selected files have
 changed in the fetched delivery, report the collected/pass/fail counts without
 editing expectations.
 
-### 3. Re-run the semantic validators read-only
+### 3. Prior semantic validators (do not rerun after the byte check)
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python \
@@ -303,6 +365,10 @@ export REC_NEXT03_XACT_ARCHIVE="$rec_xact_archive"
 export REC_NEXT03_LEAN_WORKSPACE="$rec_toolchain_root/lean-workspace"
 export ELAN_HOME="$rec_toolchain_root/elan"
 export PATH="$ELAN_HOME/bin:$PATH"
+export REC_NEXT03_ROCQ_OPAM_SWITCH
+export REC_NEXT03_ROCQ_OPAM_ROOT
+export REC_NEXT03_ROCQ_OPAM_PREFIX
+export PATH="$REC_NEXT03_ROCQ_OPAM_PREFIX/bin:$PATH"
 export REC_NEXT03_LEAN_REBUILD_WORKSPACE="$rec_formal_output/lean-rebuild-workspace"
 rec_wolfram_license_wait_seconds=3600
 rec_wolfram_license_poll_seconds=30
@@ -332,8 +398,11 @@ caches, temporary state, builds, logs, version probes, backend reports, and
 `formal-run.json` there. For Lean it verifies the unique manifest entry and
 the exact clean official mathlib source commit, makes a separate output-only
 copy, purges every pre-existing build artifact, then performs a network-
-disabled clean dependency rebuild and aggregate compile. Pre-materialized
-`.olean` files are never trusted. The runner clears inherited Lean, Rocq,
+disabled clean dependency rebuild and aggregate compile. It removes
+manifest-derived root/package `.lake/build` and `.lake/config` directories
+before any project-aware Lake command, repeats the purge after `lake clean`,
+and requires zero remaining compiled artifacts before both boundaries. Pre-
+materialized `.olean` files are never trusted. The runner clears inherited Lean, Rocq,
 Python, Sage, and user-package search-path overrides; Rocq additionally seals
 the resolved 9.2 Stdlib root and selected module bytes. Do not run `lake
 update`, fetch mathlib, install xAct, or write generated files under
@@ -362,8 +431,14 @@ admission, or a scientific pass. A missing/wrong local toolchain is recorded
 as `ENVIRONMENT_GAP` (exit `69`) or `TOOLCHAIN_MISMATCH` (exit `65`); do not
 synthesize a PASS. Lean must report 4.33.0 with mathlib `v4.33.0` at official
 commit `db584cd6d46c92f209a44c0f1c829460d327499d`, rebuilt from verified source
-inside the output directory. Rocq must report 9.2.0, and xAct must load from
-the exact archive seal above. Wolfram, Sage, and Singular runtime versions are
+inside the output directory. Rocq release identity remains exactly 9.2.0; its
+CLI may display exactly `9.2` or `9.2.0` only when the isolated read-only OPAM
+probes establish unpinned official `rocq-runtime=9.2.0`,
+`rocq-core=9.2.0`, and separately released `rocq-stdlib=9.1.0`, each locked
+source hash, and frontend/Stdlib ownership under one captured switch prefix.
+Sage converts only its exact exit-code `Integer`
+to a JSON-native Python `int`; generic object stringification remains
+forbidden. xAct must load from the exact archive seal above. Wolfram, Sage, and Singular runtime versions are
 captured verbatim in the receipt. Lean's exact 25 `#print axioms` and Rocq's
 exact 25 `Print Assumptions` results must stay within their narrow pinned
 foundation allowlists.
@@ -382,8 +457,8 @@ Report:
 - checked-out HEAD/tree and exact-path result;
 - manifest result;
 - CPU feature readback;
-- each pytest command's collected/pass/fail/skip counts;
-- both semantic validator results and semantic digest;
+- confirmation that the unchanged `f8af51e...` pytest `86/86`, `68/68`, and
+  semantic-validator checkpoint was reused after the byte-diff check;
 - `formal-run.json` overall status plus each backend status/version;
 - confirmation that the worktree stayed clean;
 - no scientific or PR-state promotion.

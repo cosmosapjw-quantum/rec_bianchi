@@ -16,8 +16,13 @@ mathlib
 rebuild path under the output directory. The runner clears inherited language
 search paths, performs every external tool command through its verified Linux
 user+network namespace, discards prebuilt Lean artifacts in the output-only
-copy, rebuilds without network access, and parses the exact 25 Lean and 25
-Rocq assumption audits. Namespace verification compares the child
+copy before any project-aware Lake command and again before the build, rebuilds
+without network access, and parses the exact 25 Lean and 25 Rocq assumption
+audits. Rocq release `9.2.0` is bound to live official OPAM runtime/core
+identity and the separately released `rocq-stdlib=9.1.0` identity, including
+each package's exact source hash and empty pin field; its upstream CLI display
+may be exactly `9.2` or `9.2.0`, but never stands alone as release evidence.
+Namespace verification compares the child
 network-namespace inode with its parent, checks live socket interfaces for
 loopback only, and rejects non-loopback routes; an inherited `/sys` mount is
 diagnostic only. An unavailable or denied namespace is an `ENVIRONMENT_GAP`,
@@ -51,6 +56,8 @@ The Sage command uses exact `QQ` arithmetic and Sage's bundled libSingular. It
 emits exactly one JSON object on standard output and does not install packages or
 write repository files. Its remap convention is photon content `N=m f`, with
 `1^T P=1^T` and `P m_old=m_new` kept as distinct proposed obligations.
+Only Sage's exact integer exit code is converted to a JSON-native Python
+integer; arbitrary-object stringification remains forbidden.
 The JSON keeps repository `source_claim_inputs` separate from
 `independent_math_obligations`.
 

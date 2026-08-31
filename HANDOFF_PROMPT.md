@@ -133,7 +133,8 @@ materializes the locked mathlib `v4.33.0` checkout, validates its resolved
 commit and clean origin, and seals the supplied xAct archive. If a host
 prerequisite is absent, local Codex may install only the recorded prerequisite
 needed for this contract (elan launcher, Git, Make, user/network namespace
-utility, Sage/Singular, or Rocq 9.2.0 in an external switch); it must preserve
+utility, Sage/Singular, or Rocq runtime/core 9.2.0 plus rocq-stdlib 9.1.0 in an external OPAM switch);
+it must preserve
 the package-manager command and resulting executable/version outside Git. It
 must not install or relicense Wolfram Engine, substitute an unpinned formal
 runtime, alter the repository, or run tests as part of setup.
@@ -143,6 +144,15 @@ workspace path for the formal runner, disable ordinary network access, and
 run the evidence contract. The runner itself independently verifies a distinct
 user/network namespace through its namespace inode, live socket interfaces,
 and routes; an inherited `/sys/class/net` view is diagnostic only.
+The runner removes manifest-derived `.lake/build` and `.lake/config`
+directories in the output-only Lean copy before any project-aware Lake
+command and again after `lake clean`. For Rocq, set the external OPAM switch,
+root, and prefix variables specified by the stage prompt: a CLI display of
+exactly `9.2` or `9.2.0` is accepted only with live unpinned official
+`rocq-runtime=9.2.0`, `rocq-core=9.2.0`, and separately released
+`rocq-stdlib=9.1.0` provider evidence, including exact source hashes and empty
+pins, and a frontend and Stdlib root under that same prefix. Sage converts only its exact exit-code
+`Integer` to a Python `int`; generic JSON stringification is forbidden.
 If an existing local Wolfram job temporarily occupies the license, the runner
 records the classified attempt and waits for at most 3600 seconds in 30-second
 polls before resuming that backend. It never activates, relicenses, installs,
@@ -157,6 +167,10 @@ are in:
 `artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/LOCAL_EXECUTION_PROMPT.md`
 
 Read that file only after its bytes pass the manifest. Follow it verbatim.
+Its single next action is one fresh isolated formal-run attempt at the pushed
+HEAD. Reuse the `f8af51e...` pytest/semantic checkpoint after confirming
+`src`, `tests`, and the two semantic validators are byte-unchanged; do not
+repeat the unaffected suites or add another repair loop.
 
 ## Delivered boundary
 

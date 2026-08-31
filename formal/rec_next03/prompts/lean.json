@@ -170,16 +170,19 @@
       "source_workspace_mutation": "FORBIDDEN",
       "target_workspace": "$REC_NEXT03_LEAN_REBUILD_WORKSPACE",
       "steps": [
+        "before any project-aware Lake command, structurally enumerate and remove root and materialized-package .lake/build and .lake/config directories in the output-only copy",
+        "assert no .olean, .ilean, .volean, or .trace remains after the copied-workspace purge",
         "run lake clean for the root package inside the rebuild workspace",
-        "structurally enumerate root and materialized package build directories from Lake configuration and the manifest",
-        "reject any build directory that is a symlink or whose canonical path is not a descendant of the rebuild workspace",
-        "remove each validated build directory inside the rebuild workspace only",
+        "structurally re-enumerate root and materialized package .lake/build and .lake/config directories from Lake configuration and the manifest",
+        "reject any generated directory that is a symlink or whose canonical path is not a descendant of the rebuild workspace",
+        "remove each validated generated directory inside the rebuild workspace only",
         "assert no .olean, .ilean, .volean, or .trace file remains anywhere under the rebuild workspace",
         "reject any artifact-cache restore, download, unpack, or reuse path; post-reset compiled artifacts may appear only as outputs of the recorded rebuild commands"
       ],
       "direct_trust_in_prematerialized_oleans": "FORBIDDEN",
       "artifact_cache_restore_unpack_or_reuse": "FORBIDDEN",
-      "reset_inventory_and_receipt_required": true
+      "copied_workspace_reset_receipt_required": true,
+      "prebuild_reset_inventory_and_receipt_required": true
     },
     "build_phases": [
       {
@@ -290,7 +293,8 @@
       "unique mathlib manifest entry inputRev and rev",
       "source and rebuild workspace absolute canonical paths and byte-identity result",
       "mathlib package Git HEAD, HEAD tree, remote origin URL, and clean status before and after copy",
-      "prebuild build-output reset inventory and zero compiled-artifact assertion",
+      "copied-workspace .lake/build and .lake/config reset before project-aware Lake commands",
+      "post-lake-clean prebuild reset inventory and zero compiled-artifact assertion",
       "top-level environment_boundary.cleared_lean_cache_overrides and environment_boundary.effective_lean_cache_controls with LAKE_NO_CACHE=1, LAKE_ARTIFACT_CACHE=false, and LAKE_RESTORE_ARTIFACTS=0",
       "Lean backend cache_policy.cleared_inherited, cache_policy.effective, and empty cache_policy.build_log_cache_reuse_findings",
       "top-level network_isolation with mechanism, executable, probe command/exit_code/stdout_log/stderr_log/timed_out, exact interface list, verified flag, and reason",
@@ -312,7 +316,7 @@
       "materialized mathlib checkout HEAD matches the locked commit, is clean, and its HEAD tree is recorded",
       "verified source workspace may be inside a Git checkout but its checked formal bytes, materialized mathlib HEAD/tree/clean identity, and complete before/after tree seal all pass while an output-only rebuild copy is used",
       "the rebuild workspace is outside every Git worktree and confined to the selected output directory",
-      "all prior workspace and package build outputs are removed in the rebuild copy and no pre-materialized Lean compiled artifact remains",
+      "all prior workspace and package build/config outputs are removed before project-aware Lake commands, removed again after lake clean, and no pre-materialized Lean compiled artifact remains before either phase",
       "all inherited Lean artifact-cache controls are cleared, the required effective cache-disable values are recorded, and no cached compiled artifact is restored, unpacked, or reused",
       "the unshare Linux user/network namespace preflight exits zero, records a child namespace inode distinct from the parent, reports exactly loopback through socket.if_nameindex with no non-loopback route, and is recorded as verified",
       "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
@@ -333,7 +337,7 @@
     "Do not trust, reuse, or accept a pre-materialized .olean, .ilean, .volean, trace, release build, or cache artifact from the source workspace or copied package trees.",
     "Do not treat LAKE_NO_CACHE=1 alone as sufficient; require and record LAKE_ARTIFACT_CACHE=false and LAKE_RESTORE_ARTIFACTS=0 after clearing every inherited artifact-cache override.",
     "Do not restore, download, unpack, or reuse a cached .olean, .ilean, .volean, trace, or equivalent Lean compiled artifact; any such path is FAIL_NOT_PASS.",
-    "Do not report PASS unless dependency outputs were purged in the output-only rebuild copy, rebuilt under the verified namespace, inventoried, and then consumed by the aggregate compile.",
+    "Do not report PASS unless copied .lake/build and .lake/config outputs were purged before lake env or lake clean, purged again before build, rebuilt under the verified namespace, inventoried, and then consumed by the aggregate compile.",
     "Do not inherit any language, package, cache, or userbase override listed in execution.environment_policy.clear_inherited; only captured runner-controlled paths are permitted.",
     "Do not weaken a theorem or add an axiom to obtain a build.",
     "Do not treat tagged variable or unit separation as a constructed physical adapter.",

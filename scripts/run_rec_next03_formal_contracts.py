@@ -39,6 +39,20 @@ XACT_ARCHIVE_SHA256 = "7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460ce
 MATHLIB_TAG = "v4.33.0"
 MATHLIB_COMMIT = "db584cd6d46c92f209a44c0f1c829460d327499d"
 MATHLIB_GIT_URL = "https://github.com/leanprover-community/mathlib4.git"
+ROCQ_RELEASE = "9.2.0"
+ROCQ_RELEASE_SOURCE_SHA256 = (
+    "a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20"
+)
+ROCQ_STDLIB_RELEASE = "9.1.0"
+ROCQ_STDLIB_SOURCE_SHA512 = (
+    "5a6c01496917b8f23017d9e94af567be68850155a4545bddb067da83eed97237"
+    "e34d617345942a708b6a4231e00f9bfc8311cd978bf397bb1ef2ea7c25b1a0a3"
+)
+ROCQ_OPAM_PACKAGE_IDENTITIES = {
+    "rocq-runtime": (ROCQ_RELEASE, f"sha256={ROCQ_RELEASE_SOURCE_SHA256}"),
+    "rocq-core": (ROCQ_RELEASE, f"sha256={ROCQ_RELEASE_SOURCE_SHA256}"),
+    "rocq-stdlib": (ROCQ_STDLIB_RELEASE, f"sha512={ROCQ_STDLIB_SOURCE_SHA512}"),
+}
 SCIENTIFIC_TERMINAL = (
     "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / "
     "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
@@ -709,6 +723,89 @@ def _runner_selftest_errors() -> list[str]:
     if _manifest_mathlib_entry(wrong_manifest)[1] is None:
         errors.append("structured mathlib manifest self-test accepted wrong commit")
 
+    planned_lean_dirs, planned_lean_errors = _manifest_package_generated_dirs(
+        Path("/tmp/rec-next03-selftest-workspace"),
+        {
+            "packages": [
+                {"name": "mathlib", "subDir": "Mathlib"},
+                {"name": "batteries"},
+            ]
+        },
+    )
+    planned_lean_relatives = {
+        path.relative_to("/tmp/rec-next03-selftest-workspace").as_posix()
+        for path in planned_lean_dirs
+    }
+    expected_lean_relatives = {
+        ".lake/build",
+        ".lake/config",
+        ".lake/packages/mathlib/Mathlib/.lake/build",
+        ".lake/packages/mathlib/Mathlib/.lake/config",
+        ".lake/packages/batteries/.lake/build",
+        ".lake/packages/batteries/.lake/config",
+    }
+    if planned_lean_errors or planned_lean_relatives != expected_lean_relatives:
+        errors.append("Lean generated-directory purge planner self-test failed")
+
+    rocq_release_cases = (
+        ("The Rocq Prover, version 9.2", "9.2.0", "9.2.0", "9.2"),
+        ("The Rocq Prover, version 9.2.0", "9.2.0", "9.2.0", "9.2.0"),
+        ("The Rocq Prover, version 9.2.1", "9.2.0", "9.2.0", None),
+        (
+            "The Rocq Prover, version 9.2.1 (compatible protocol 9.2)",
+            "9.2.0", "9.2.0", None,
+        ),
+        ("The Rocq Prover, version 9.2", "9.2.1", "9.2.0", None),
+        ("The Rocq Prover, version 9.2", "9.2.0", "9.2.1", None),
+    )
+    for output, runtime_version, core_version, expected_token in rocq_release_cases:
+        if _rocq_release_identity(
+            output,
+            runtime_version=runtime_version,
+            core_version=core_version,
+        ) != expected_token:
+            errors.append("Rocq typed release-identity self-test failed")
+            break
+    rocq_provider_values = {
+        "rocq_runtime_version": ROCQ_RELEASE,
+        "rocq_core_version": ROCQ_RELEASE,
+        "rocq_stdlib_version": ROCQ_STDLIB_RELEASE,
+        "rocq_runtime_source_hash": f"sha256={ROCQ_RELEASE_SOURCE_SHA256}",
+        "rocq_core_source_hash": f"sha256={ROCQ_RELEASE_SOURCE_SHA256}",
+        "rocq_stdlib_source_hash": f"sha512={ROCQ_STDLIB_SOURCE_SHA512}",
+        "rocq_runtime_pin": "",
+        "rocq_core_pin": "false",
+        "rocq_stdlib_pin": "",
+    }
+    rocq_provider_prefix = Path("/external/opam/prefix")
+    if not _rocq_opam_provider_metadata_valid(
+        rocq_provider_values,
+        captured_prefix=rocq_provider_prefix,
+        expected_prefix=rocq_provider_prefix,
+    ):
+        errors.append("Rocq OPAM provider self-test rejected exact release metadata")
+    for mutation in (
+        {**rocq_provider_values, "rocq_runtime_version": "9.2.1"},
+        {**rocq_provider_values, "rocq_core_source_hash": "sha256=" + "0" * 64},
+        {**rocq_provider_values, "rocq_stdlib_version": "9.0.0"},
+        {**rocq_provider_values, "rocq_stdlib_source_hash": "sha512=" + "0" * 128},
+        {**rocq_provider_values, "rocq_runtime_pin": "git+file:///overlay"},
+        {**rocq_provider_values, "rocq_stdlib_pin": "git+file:///overlay"},
+    ):
+        if _rocq_opam_provider_metadata_valid(
+            mutation,
+            captured_prefix=rocq_provider_prefix,
+            expected_prefix=rocq_provider_prefix,
+        ):
+            errors.append("Rocq OPAM provider self-test accepted mutated metadata")
+            break
+    if _rocq_opam_provider_metadata_valid(
+        rocq_provider_values,
+        captured_prefix=Path("/foreign/prefix"),
+        expected_prefix=rocq_provider_prefix,
+    ):
+        errors.append("Rocq OPAM provider self-test accepted a foreign prefix")
+
     poisoned = {variable: "ATTACK" for variable in CLEARED_SEARCH_OVERRIDES}
     poisoned.update({variable: "ATTACK" for variable in CLEARED_LEAN_CACHE_OVERRIDES})
     poisoned[NETWORK_PREFIX_ENV] = "[]"
@@ -872,9 +969,12 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
     manifest_lock = _as_dict(mathlib_lock.get("manifest_contract"))
     checkout_lock = _as_dict(mathlib_lock.get("checkout_contract"))
     rocq_lock = _as_dict(locked_tools.get("rocq"))
+    rocq_provider_lock = _as_dict(rocq_lock.get("provider_identity"))
+    rocq_provider_packages = _as_dict(rocq_provider_lock.get("packages"))
     wolfram_lock = _as_dict(locked_tools.get("wolfram"))
     xact_lock = _as_dict(wolfram_lock.get("xact"))
     sagemath_lock = _as_dict(locked_tools.get("sagemath"))
+    sagemath_json_boundary = _as_dict(sagemath_lock.get("receipt_json_boundary"))
     singular_lock = _as_dict(locked_tools.get("singular"))
     toolchain_json_pins_ok = (
         lean_lock.get("version") == MATHLIB_TAG
@@ -888,16 +988,76 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
         and checkout_lock.get("git_head") == MATHLIB_COMMIT
         and checkout_lock.get("git_status_porcelain") == "EMPTY"
         and checkout_lock.get("record_head_tree") is True
-        and rocq_lock.get("version") == "9.2.0"
+        and rocq_lock.get("version") == ROCQ_RELEASE
+        and rocq_lock.get("release_identity") == ROCQ_RELEASE
+        and rocq_lock.get("accepted_cli_display_tokens") == ["9.2", ROCQ_RELEASE]
+        and rocq_provider_lock.get("provider") == "OPAM_EXTERNAL_SWITCH"
+        and rocq_provider_lock.get("root_environment_variable")
+        == "REC_NEXT03_ROCQ_OPAM_ROOT"
+        and rocq_provider_packages
+        == {
+            package: version
+            for package, (version, _source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        }
+        and _as_dict(rocq_provider_lock.get("official_source_hashes"))
+        == {
+            package: source_hash
+            for package, (_version, source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        }
+        and rocq_provider_lock.get("pinned_or_overlay_package") == "FORBIDDEN"
+        and rocq_provider_lock.get("frontend_realpaths_must_resolve_under_prefix")
+        is True
+        and rocq_provider_lock.get("stdlib_root_must_resolve_under_prefix") is True
         and xact_lock.get("archive_sha256") == XACT_ARCHIVE_SHA256
         and sagemath_lock.get("version_lock")
         == "UNPINNED_RECORD_EXACT_VERSION_AT_RUNTIME"
         and singular_lock.get("version_lock")
         == "UNPINNED_RECORD_EXACT_VERSION_AT_RUNTIME"
+        and sagemath_json_boundary
+        == {
+            "exit_code_type": "PYTHON_INT",
+            "sage_integer_conversion": "EXACT_INT_ONLY",
+            "generic_default_stringification": "FORBIDDEN",
+        }
     )
     checks.append({"id": "toolchain_json_exact_pins", "passed": toolchain_json_pins_ok})
     if toolchains is not None and not toolchain_json_pins_ok:
         errors.append("TOOLCHAINS.lock.json: exact backend pin policy mismatch")
+
+    rocq_prompt = _as_dict(parsed_json.get("prompts/rocq.json"))
+    rocq_prompt_inputs = _as_dict(rocq_prompt.get("inputs"))
+    rocq_prompt_preflight = _as_dict(
+        _as_dict(rocq_prompt.get("execution")).get("stdlib_identity_preflight")
+    )
+    rocq_prompt_provider = _as_dict(rocq_prompt_preflight.get("provider_identity"))
+    rocq_prompt_provider_packages = _as_dict(
+        rocq_prompt_provider.get("required_installed_packages")
+    )
+    rocq_prompt_identity_ok = (
+        rocq_prompt_inputs.get("expected_rocq_release_identity") == ROCQ_RELEASE
+        and rocq_prompt_inputs.get("accepted_cli_display_tokens")
+        == ["9.2", ROCQ_RELEASE]
+        and rocq_prompt_preflight.get("required_release_identity") == ROCQ_RELEASE
+        and rocq_prompt_preflight.get("accepted_cli_display_tokens")
+        == ["9.2", ROCQ_RELEASE]
+        and rocq_prompt_provider.get("provider") == "OPAM_EXTERNAL_SWITCH"
+        and rocq_prompt_provider.get("root_environment_variable")
+        == "REC_NEXT03_ROCQ_OPAM_ROOT"
+        and rocq_prompt_provider_packages
+        == {
+            package: version
+            for package, (version, _source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        }
+        and _as_dict(rocq_prompt_provider.get("official_source_hashes"))
+        == {
+            package: source_hash
+            for package, (_version, source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        }
+        and rocq_prompt_provider.get("pinned_or_overlay_package") == "FORBIDDEN"
+    )
+    checks.append({"id": "rocq_typed_release_identity", "passed": rocq_prompt_identity_ok})
+    if rocq_prompt and not rocq_prompt_identity_ok:
+        errors.append("prompts/rocq.json: typed release/provider identity mismatch")
 
     pin_requirements: Mapping[str, Sequence[str]] = {
         "lean/lean-toolchain": ("leanprover/lean4:v4.33.0",),
@@ -1052,6 +1212,7 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
         errors.append("TOOLCHAINS.lock.json: local Codex provisioning contract mismatch")
 
     cache_policy = _as_dict(build_policy.get("lean_artifact_cache_policy"))
+    lean_build_contract = _as_dict(lean_lock.get("from_source_build_contract"))
     cleared_cache_contract = cache_policy.get(
         "clear_inherited_before_every_tool_subprocess"
     )
@@ -1065,6 +1226,17 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
             "LAKE_NO_CACHE": "1",
             "LAKE_RESTORE_ARTIFACTS": "0",
         }
+        and lean_build_contract.get("manifest_resolved_generated_directories")
+        == [".lake/build", ".lake/config"]
+        and lean_build_contract.get(
+            "copied_workspace_first_purge_before_project_aware_lake_command"
+        )
+        is True
+        and lean_build_contract.get("second_purge_after_lake_clean_before_build")
+        is True
+        and cache_policy.get("copied_config_and_build_directories_purged_before_lake_env")
+        is True
+        and cache_policy.get("second_config_and_build_purge_after_lake_clean") is True
     )
     checks.append({"id": "lean_artifact_cache_contract", "passed": cache_contract_ok})
     if toolchains is not None and not cache_contract_ok:
@@ -1073,6 +1245,22 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
     selftest_errors = _runner_selftest_errors()
     checks.append({"id": "runner_mutation_selftests", "passed": not selftest_errors})
     errors.extend(selftest_errors)
+
+    sage_source_path = root / "sage" / "verify_remap_event.sage"
+    sage_source = (
+        sage_source_path.read_text(encoding="utf-8")
+        if sage_source_path.is_file()
+        else ""
+    )
+    sage_json_boundary_ok = (
+        "Integer as SageInteger" in sage_source
+        and "type(code) not in (int, SageInteger)" in sage_source
+        and "code = int(code)" in sage_source
+        and "default=" not in sage_source
+    )
+    checks.append({"id": "sage_strict_json_integer_boundary", "passed": sage_json_boundary_ok})
+    if sage_source_path.is_file() and not sage_json_boundary_ok:
+        errors.append("Sage exact exit-code JSON boundary contract mismatch")
 
     wolfram_prompt = parsed_json.get("prompts/wolfram.json")
     wolfram_source_path = root / "wolfram" / "verify_frame_face_event.wls"
@@ -1935,9 +2123,14 @@ def _lean_source_identity(root: Path) -> dict[str, str] | None:
     return {relative: _sha256(root / relative) for relative in relative_paths}
 
 
-def _manifest_package_build_dirs(workspace: Path, payload: Any) -> tuple[list[Path], list[str]]:
+def _manifest_package_generated_dirs(
+    workspace: Path, payload: Any
+) -> tuple[list[Path], list[str]]:
     errors: list[str] = []
-    directories = [workspace / ".lake" / "build"]
+    directories = [
+        workspace / ".lake" / "build",
+        workspace / ".lake" / "config",
+    ]
     packages = payload.get("packages") if isinstance(payload, dict) else None
     if not isinstance(packages, list):
         return directories, ["lake manifest packages must be an array"]
@@ -1959,7 +2152,8 @@ def _manifest_package_build_dirs(workspace: Path, payload: Any) -> tuple[list[Pa
         if subpath.is_absolute() or ".." in subpath.parts:
             errors.append(f"unsafe lake package subDir for {name}: {subdir!r}")
             continue
-        directories.append(workspace / ".lake" / "packages" / name / subpath / ".lake" / "build")
+        package_lake = workspace / ".lake" / "packages" / name / subpath / ".lake"
+        directories.extend((package_lake / "build", package_lake / "config"))
     return directories, errors
 
 
@@ -1994,22 +2188,22 @@ def _workspace_symlink_errors(workspace: Path) -> list[str]:
 
 
 def _purge_lean_build_artifacts(workspace: Path, manifest_payload: Any) -> dict[str, Any]:
-    build_dirs, errors = _manifest_package_build_dirs(workspace, manifest_payload)
+    generated_dirs, errors = _manifest_package_generated_dirs(workspace, manifest_payload)
     removed: list[str] = []
-    for build_dir in build_dirs:
-        if _has_symlink_component(build_dir, stop=workspace):
-            errors.append(f"refusing symlink component in build directory: {build_dir}")
+    for generated_dir in generated_dirs:
+        if _has_symlink_component(generated_dir, stop=workspace):
+            errors.append(f"refusing symlink component in generated directory: {generated_dir}")
             continue
-        resolved = build_dir.resolve()
+        resolved = generated_dir.resolve()
         if not _is_within(resolved, workspace.resolve()):
-            errors.append(f"refusing non-descendant build directory: {build_dir}")
+            errors.append(f"refusing non-descendant generated directory: {generated_dir}")
             continue
-        if build_dir.exists():
-            if not build_dir.is_dir():
-                errors.append(f"build path is not a directory: {build_dir}")
+        if generated_dir.exists():
+            if not generated_dir.is_dir():
+                errors.append(f"generated path is not a directory: {generated_dir}")
                 continue
-            shutil.rmtree(build_dir)
-            removed.append(build_dir.relative_to(workspace).as_posix())
+            shutil.rmtree(generated_dir)
+            removed.append(generated_dir.relative_to(workspace).as_posix())
     remaining = sorted(
         path.relative_to(workspace).as_posix()
         for path in workspace.rglob("*")
@@ -2021,7 +2215,7 @@ def _purge_lean_build_artifacts(workspace: Path, manifest_payload: Any) -> dict[
     return {
         "errors": errors,
         "remaining_artifacts": remaining,
-        "removed_build_directories": removed,
+        "removed_generated_directories": removed,
         "status": "PASS" if not errors else "FAIL",
     }
 
@@ -2620,6 +2814,16 @@ def _run_lean(
             rebuild_git_identity_before=rebuild_git_identity_before,
         )
 
+    copied_artifact_reset = _purge_lean_build_artifacts(
+        rebuild, rebuild_manifest_payload
+    )
+    if copied_artifact_reset.get("status") != "PASS":
+        return finish(
+            "FAIL",
+            "copied Lean artifacts could not be purged before any Lake project command",
+            copied_artifact_reset=copied_artifact_reset,
+        )
+
     version_probes = {
         "lean": _probe(
             backend=f"{name}.lean",
@@ -2683,13 +2887,15 @@ def _run_lean(
             "lake clean did not complete in the rebuild workspace",
             clean_step=clean_step,
         )
-    reset = _purge_lean_build_artifacts(rebuild, rebuild_manifest_payload)
-    if reset.get("status") != "PASS":
+    prebuild_reset = _purge_lean_build_artifacts(rebuild, rebuild_manifest_payload)
+    if prebuild_reset.get("status") != "PASS":
         return finish(
             "FAIL",
             "pre-materialized Lean artifacts could not be purged fail-closed",
             clean_step=clean_step,
-            reset=reset,
+            copied_artifact_reset=copied_artifact_reset,
+            prebuild_reset=prebuild_reset,
+            reset=prebuild_reset,
         )
 
     dependency_step = _run_command(
@@ -2706,7 +2912,9 @@ def _run_lean(
             _classify_nonzero(dependency_step, logs_dir),
             "bounded clean mathlib rebuild did not complete",
             dependency_step=dependency_step,
-            reset=reset,
+            copied_artifact_reset=copied_artifact_reset,
+            prebuild_reset=prebuild_reset,
+            reset=prebuild_reset,
         )
     dependency_inventory = _lean_artifact_inventory(rebuild)
     if dependency_inventory["count"] == 0:
@@ -2731,9 +2939,11 @@ def _run_lean(
             _classify_nonzero(aggregate_step, logs_dir),
             "bounded RecNext03 aggregate rebuild did not complete",
             aggregate_step=aggregate_step,
+            copied_artifact_reset=copied_artifact_reset,
             dependency_step=dependency_step,
             dependency_inventory=dependency_inventory,
-            reset=reset,
+            prebuild_reset=prebuild_reset,
+            reset=prebuild_reset,
         )
     cache_findings = _lean_cache_reuse_findings(
         (clean_step, dependency_step, aggregate_step), logs_dir
@@ -2802,13 +3012,15 @@ def _run_lean(
         },
         dependency_artifact_inventory=dependency_inventory,
         dependency_step=dependency_step,
+        copied_artifact_reset=copied_artifact_reset,
         lakefile_requirement=lakefile_entry,
         manifest_entry=manifest_entry,
         manifest_sha256=_sha256(manifest_path),
         rebuild_git_identity_after=rebuild_git_identity_after,
         rebuild_git_identity_before=rebuild_git_identity_before,
         rebuild_workspace=str(rebuild),
-        reset=reset,
+        prebuild_reset=prebuild_reset,
+        reset=prebuild_reset,
         source_git_identity=source_git_identity,
         source_unchanged=source_unchanged,
         source_workspace=str(source),
@@ -2821,6 +3033,37 @@ def _version_has_exact_lane(output: str, lane: str) -> bool:
     return re.search(rf"(?<![0-9.]){re.escape(lane)}(?![0-9.])", output) is not None
 
 
+def _rocq_cli_display_token(output: str) -> str | None:
+    tokens = re.findall(
+        r"(?im)^\s*(?:The\s+)?Rocq\s+Prover,\s*version\s+"
+        r"(9\.2(?:\.0)?)(?=\s|$)",
+        output,
+    )
+    return tokens[0] if len(tokens) == 1 else None
+
+
+def _rocq_release_identity(
+    output: str, *, runtime_version: str, core_version: str
+) -> str | None:
+    if runtime_version != ROCQ_RELEASE or core_version != ROCQ_RELEASE:
+        return None
+    return _rocq_cli_display_token(output)
+
+
+def _rocq_opam_provider_metadata_valid(
+    values: Mapping[str, str], *, captured_prefix: Path | None, expected_prefix: Path
+) -> bool:
+    return (
+        captured_prefix == expected_prefix
+        and all(
+            values.get(f"{package.replace('-', '_')}_version") == version
+            and values.get(f"{package.replace('-', '_')}_source_hash") == source_hash
+            and values.get(f"{package.replace('-', '_')}_pin") in {"", "false"}
+            for package, (version, source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        )
+    )
+
+
 def _run_rocq(
     *, snapshot: Path, output_dir: Path, env: Mapping[str, str],
     isolation: Mapping[str, Any], timeout_seconds: int
@@ -2830,20 +3073,181 @@ def _run_rocq(
     logs_dir = backend_dir / "logs"
     work_dir = backend_dir / "work"
     backend_dir.mkdir(parents=True, exist_ok=True)
-    candidates = {
-        "rocq_compile": shutil.which("rocq"),
-        "rocqc": shutil.which("rocqc"),
-        "coqc": shutil.which("coqc"),
+    candidates: dict[str, str | None] = {
+        "rocq_compile": None,
+        "rocqc": None,
+        "coqc": None,
     }
+    provider_receipt: dict[str, Any] = {}
 
     def finish(status: str, reason: str, **details: Any) -> dict[str, Any]:
         result = _base_backend_result(name, status=status, reason=reason)
-        result.update({"candidate_executables": candidates, **details})
+        result.update(
+            {
+                "candidate_executables": candidates,
+                "opam_provider_receipt": provider_receipt,
+                **details,
+            }
+        )
         return result
+
+    opam = shutil.which("opam")
+    switch_selector = os.environ.get("REC_NEXT03_ROCQ_OPAM_SWITCH", "")
+    expected_prefix_raw = os.environ.get("REC_NEXT03_ROCQ_OPAM_PREFIX", "")
+    opam_root_raw = os.environ.get("REC_NEXT03_ROCQ_OPAM_ROOT", "")
+    if opam is None:
+        return finish("ENVIRONMENT_GAP", "opam is required for exact Rocq provider identity")
+    if not switch_selector or "\n" in switch_selector or "\x00" in switch_selector:
+        return finish(
+            "ENVIRONMENT_GAP",
+            "REC_NEXT03_ROCQ_OPAM_SWITCH must identify the verified external switch",
+        )
+    expected_prefix_path = Path(expected_prefix_raw).expanduser()
+    opam_root_path = Path(opam_root_raw).expanduser()
+    if not expected_prefix_path.is_absolute() or not expected_prefix_path.is_dir():
+        return finish(
+            "ENVIRONMENT_GAP",
+            "REC_NEXT03_ROCQ_OPAM_PREFIX must be an existing absolute switch prefix",
+        )
+    if not opam_root_path.is_absolute() or not opam_root_path.is_dir():
+        return finish(
+            "ENVIRONMENT_GAP",
+            "REC_NEXT03_ROCQ_OPAM_ROOT must be an existing absolute OPAM root",
+        )
+    expected_prefix = expected_prefix_path.resolve()
+    opam_root = opam_root_path.resolve()
+    opam_env = dict(env)
+    opam_env.update(
+        {
+            "OPAMROOT": str(opam_root),
+            "OPAMROOTISOK": "1",
+            "OPAMSWITCH": switch_selector,
+        }
+    )
+
+    def opam_probe(label: str, *arguments: str) -> dict[str, Any]:
+        return _run_command(
+            label=f"{name}.opam.{label}",
+            command=(opam, *arguments),
+            cwd=backend_dir,
+            env=opam_env,
+            isolation=isolation,
+            logs_dir=logs_dir,
+            timeout_seconds=min(timeout_seconds, 60),
+        )
+
+    common = (
+        "--safe", "--color=never", "--root", str(opam_root),
+        "--switch", switch_selector,
+    )
+    provider_steps = {
+        "opam_version": opam_probe("version", "--version"),
+        "prefix": opam_probe("prefix", "var", "prefix", *common),
+    }
+    for package in ROCQ_OPAM_PACKAGE_IDENTITIES:
+        key = package.replace("-", "_")
+        provider_steps[f"{key}_version"] = opam_probe(
+            f"{key}.version",
+            "show", *common, "--normalise", "--field=installed-version", package,
+        )
+        provider_steps[f"{key}_source_hash"] = opam_probe(
+            f"{key}.source_hash",
+            "show", *common, "--normalise", "--field=source-hash", package,
+        )
+        provider_steps[f"{key}_pin"] = opam_probe(
+            f"{key}.pin",
+            "show", *common, "--normalise", "--field=pin", package,
+        )
+
+    provider_values = {
+        key: _command_stdout(step, logs_dir).strip()
+        for key, step in provider_steps.items()
+    }
+    provider_receipt = {
+        "expected_prefix": str(expected_prefix),
+        "official_source_hashes": {
+            package: source_hash
+            for package, (_version, source_hash) in ROCQ_OPAM_PACKAGE_IDENTITIES.items()
+        },
+        "opam_root": str(opam_root),
+        "release_identity": ROCQ_RELEASE,
+        "steps": provider_steps,
+        "switch_selector": switch_selector,
+        "values": provider_values,
+    }
+    if any(_step_has_environment_gap(step, logs_dir) for step in provider_steps.values()):
+        return finish(
+            "ENVIRONMENT_GAP",
+            "Rocq OPAM provider discovery lost the verified namespace boundary",
+        )
+    if any(step.get("exit_code") != 0 for step in provider_steps.values()):
+        return finish(
+            "TOOLCHAIN_MISMATCH",
+            "Rocq OPAM provider metadata could not be captured read-only",
+        )
+    prefix_lines = [
+        line.strip() for line in provider_values["prefix"].splitlines() if line.strip()
+    ]
+    captured_prefix = (
+        Path(prefix_lines[0]).resolve()
+        if len(prefix_lines) == 1 and Path(prefix_lines[0]).is_absolute()
+        else None
+    )
+    provider_valid = _rocq_opam_provider_metadata_valid(
+        provider_values,
+        captured_prefix=captured_prefix,
+        expected_prefix=expected_prefix,
+    )
+    provider_receipt.update(
+        {
+            "captured_prefix": str(captured_prefix) if captured_prefix else None,
+            "status": "PASS" if provider_valid else "TOOLCHAIN_MISMATCH",
+        }
+    )
+    if not provider_valid:
+        return finish(
+            "TOOLCHAIN_MISMATCH",
+            "Rocq runtime/core/Stdlib release, source, pin, or switch-prefix identity mismatched",
+        )
+
+    candidate_names = {
+        "rocq_compile": "rocq",
+        "rocqc": "rocqc",
+        "coqc": "coqc",
+    }
+    candidate_errors: list[str] = []
+    for frontend, executable_name in candidate_names.items():
+        lexical_path = expected_prefix / "bin" / executable_name
+        if not lexical_path.exists():
+            continue
+        resolved_path = lexical_path.resolve()
+        if (
+            not lexical_path.is_file()
+            or not os.access(lexical_path, os.X_OK)
+            or not _is_within(resolved_path, expected_prefix)
+        ):
+            candidate_errors.append(
+                f"{executable_name} is not a regular executable owned by the OPAM prefix"
+            )
+            continue
+        candidates[frontend] = str(resolved_path)
+    if candidate_errors:
+        return finish(
+            "TOOLCHAIN_MISMATCH",
+            "Rocq frontend ownership did not validate",
+            candidate_errors=candidate_errors,
+        )
 
     installed = [(frontend, executable) for frontend, executable in candidates.items() if executable]
     if not installed:
-        return finish("ENVIRONMENT_GAP", "rocq, rocqc, and coqc are all unavailable")
+        return finish(
+            "ENVIRONMENT_GAP",
+            "the verified OPAM switch contains none of rocq, rocqc, or coqc",
+        )
+    rocq_env = dict(env)
+    rocq_env["PATH"] = os.pathsep.join(
+        (str(expected_prefix / "bin"), rocq_env.get("PATH", ""))
+    )
     if work_dir.exists():
         return finish("FAIL", "disposable Rocq work directory unexpectedly exists")
     shutil.copytree(snapshot / "rocq", work_dir, symlinks=True)
@@ -2860,7 +3264,7 @@ def _run_rocq(
             executable=executable_value,
             arguments=("--version",),
             cwd=work_dir,
-            env=env,
+            env=rocq_env,
             isolation=isolation,
             logs_dir=logs_dir,
             timeout_seconds=timeout_seconds,
@@ -2869,7 +3273,7 @@ def _run_rocq(
             label=f"{name}.{frontend}.where",
             command=(executable_value, *where_arguments),
             cwd=work_dir,
-            env=env,
+            env=rocq_env,
             isolation=isolation,
             logs_dir=logs_dir,
             timeout_seconds=min(timeout_seconds, 60),
@@ -2878,16 +3282,24 @@ def _run_rocq(
         where_lines = [line.strip() for line in _command_stdout(where, logs_dir).splitlines() if line.strip()]
         root_value = where_lines[0] if len(where_lines) == 1 else ""
         root = Path(root_value).resolve() if root_value and Path(root_value).is_absolute() else None
+        cli_display_version = _rocq_release_identity(
+            version_output,
+            runtime_version=provider_values["rocq_runtime_version"],
+            core_version=provider_values["rocq_core_version"],
+        )
         valid = (
             version.get("exit_code") == 0
-            and _version_has_exact_lane(version_output, "9.2.0")
+            and cli_display_version is not None
             and where.get("exit_code") == 0
             and len(where_lines) == 1
             and root is not None
             and root.is_dir()
+            and _is_within(root, expected_prefix)
         )
         frontend_receipts[frontend] = {
+            "cli_display_version": cli_display_version,
             "executable": str(Path(executable_value).resolve()),
+            "release_identity": ROCQ_RELEASE if cli_display_version else None,
             "root": str(root) if root is not None else None,
             "valid_9_2_lane": valid,
             "version_probe": version,
@@ -2915,7 +3327,7 @@ def _run_rocq(
     if not selected_receipt["valid_9_2_lane"]:
         return finish(
             "TOOLCHAIN_MISMATCH",
-            "selected Rocq frontend did not establish the exact 9.2.0 -where lane",
+            "selected Rocq frontend did not establish the typed 9.2.0 release/-where lane",
             frontend_receipts=frontend_receipts,
             selected_frontend=selected_name,
         )
@@ -2952,7 +3364,7 @@ def _run_rocq(
             stdlib_identity=stdlib_identity,
         )
     rocq_multicall = candidates["rocq_compile"]
-    make = shutil.which("make")
+    make = shutil.which("make", path=rocq_env["PATH"])
     if rocq_multicall is None or make is None:
         return finish(
             "ENVIRONMENT_GAP",
@@ -2964,7 +3376,7 @@ def _run_rocq(
         label=f"{name}.makefile",
         command=(rocq_multicall, "makefile", "-f", "_CoqProject", "-o", "Makefile.rec-next03"),
         cwd=work_dir,
-        env=env,
+        env=rocq_env,
         isolation=isolation,
         logs_dir=logs_dir,
         timeout_seconds=timeout_seconds,
@@ -2979,7 +3391,7 @@ def _run_rocq(
         label=f"{name}.build",
         command=(make, "-f", "Makefile.rec-next03"),
         cwd=work_dir,
-        env=env,
+        env=rocq_env,
         isolation=isolation,
         logs_dir=logs_dir,
         timeout_seconds=timeout_seconds,
@@ -3002,7 +3414,7 @@ def _run_rocq(
         label=f"{name}.assumption_audit",
         command=audit_command,
         cwd=work_dir,
-        env=env,
+        env=rocq_env,
         isolation=isolation,
         logs_dir=logs_dir,
         timeout_seconds=timeout_seconds,

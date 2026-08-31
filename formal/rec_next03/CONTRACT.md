@@ -246,3 +246,28 @@ retries only this classified availability case. It never activates, relicenses,
 installs, or kills another Wolfram job. If capacity does not recover by the
 deadline, the Wolfram backend is `ENVIRONMENT_GAP`, never `FAIL` or `PASS`.
 Any non-license formal-command failure remains a fail-closed `FAIL`.
+
+## Backend portability boundary
+
+The output-only Lean copy is purged twice: root/package `.lake/build` and
+`.lake/config` directories are removed before any project-aware Lake command,
+then removed again after `lake clean`; both receipts must show zero remaining
+`.olean`, `.ilean`, `.volean`, or `.trace` inputs before a rebuild. Unknown
+compiled artifacts outside the manifest-derived directories remain a
+fail-closed error rather than an unrestricted deletion target.
+
+Rocq CLI presentation is not release identity. The exact release remains
+`9.2.0`; an exact display token `9.2` or `9.2.0` is accepted only when live,
+read-only OPAM evidence establishes unpinned `rocq-runtime=9.2.0` and
+`rocq-core=9.2.0` from official source SHA-256
+`a45280ab4fbaac7540b136a6b073b4a6db15739ec1e149bded43fa6f4fc25f20`
+and the separately versioned `rocq-stdlib=9.1.0` from official source SHA-512
+`5a6c01496917b8f23017d9e94af567be68850155a4545bddb067da83eed97237e34d617345942a708b6a4231e00f9bfc8311cd978bf397bb1ef2ea7c25b1a0a3`.
+All three packages must be unpinned, and both the selected frontend and Stdlib
+root must resolve under the same captured switch prefix. Missing provider
+evidence is never normalized into a pass.
+
+Sage may convert only its exact `Integer` exit code to a Python `int` before
+JSON serialization. Generic stringification or coercion of other Sage objects
+is forbidden. These repairs affect execution portability only; they establish
+no source, implementation, physical, or scientific authority.

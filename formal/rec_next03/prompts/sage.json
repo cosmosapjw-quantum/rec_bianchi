@@ -23,6 +23,11 @@
   "checked_in_script_contract": {
     "successful_status": "FORMAL_IDENTITIES_HOLD_NONAUTHORITATIVE",
     "successful_exit_code": 0,
+    "json_boundary": {
+      "exit_code": "EXACT_SAGE_INTEGER_TO_PYTHON_INT",
+      "all_other_unsupported_objects": "TYPE_ERROR",
+      "generic_default_stringification": "FORBIDDEN"
+    },
     "successful_path_expected_check_ids": [
       "sage_libsingular_available",
       "symbolic_column_gcl_shape",
@@ -84,6 +89,7 @@
       "physical_authority_status",
       "implementation_parity_status",
       "status",
+      "JSON-native Python-int exit_code",
       "toolchain",
       "arithmetic",
       "event_surfaces",
@@ -97,6 +103,7 @@
     "formula_pass_label": "PASS_NONAUTHORITATIVE_EXACT_ALGEBRA"
   },
   "fail_closed": [
+    "Do not use json.dumps default=str or coerce arbitrary Sage objects; only the exact exit-code Sage Integer may cross the JSON boundary as a Python int.",
     "Do not turn the adjacent two-node proposal into an approved locality axiom.",
     "Do not infer positivity inequalities from polynomial ideal membership alone.",
     "Do not infer remap existence, source bytes, implementation parity, or physical admission.",

@@ -2,6 +2,7 @@
 """Exact Q/libSingular checks; deliberately NONAUTHORITATIVE."""
 import json
 import sys
+from sage.rings.integer import Integer as SageInteger
 
 checks = []
 
@@ -12,6 +13,9 @@ def record(check_id, holds, detail=None):
     checks.append(item)
 
 def emit(status, code, toolchain):
+    if type(code) not in (int, SageInteger):
+        raise TypeError(f"unsupported exit-code type: {type(code).__name__}")
+    code = int(code)
     report = {
         "schema": "REC_NEXT03_SAGE_SINGULAR_FORMAL_V1",
         "authority": "NONAUTHORITATIVE",
