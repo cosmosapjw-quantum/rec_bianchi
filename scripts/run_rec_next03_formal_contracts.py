@@ -24,6 +24,7 @@ import shutil
 import subprocess
 import sys
 import tarfile
+import time
 import tomllib
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -187,6 +188,22 @@ ENVIRONMENT_GAP_PATTERNS = (
     "unknown package 'mathlib'",
     "xact unavailable",
 )
+WOLFRAM_LICENSE_SLOT_BUSY_PATTERNS = (
+    "all available licenses are in use",
+    "all licenses are in use",
+    "license limit reached",
+    "license quota reached",
+    "maximum number of concurrent",
+    "maximum number of kernels",
+    "maximum number of processes",
+    "license server is busy",
+    "license temporarily unavailable",
+    "could not obtain a license",
+    "cannot obtain a license",
+)
+WOLFRAM_LICENSE_AVAILABILITY_MARKERS = ("license", "activation", "activated")
+WOLFRAM_LICENSE_WAIT_DEFAULT_SECONDS = 3600
+WOLFRAM_LICENSE_POLL_DEFAULT_SECONDS = 30
 
 CLEARED_SEARCH_OVERRIDES = (
     "COQBIN",
@@ -752,6 +769,12 @@ def _runner_selftest_errors() -> list[str]:
         if _network_namespace_isolated(mutated, parent_namespace=parent_namespace):
             errors.append("network namespace self-test accepted an unisolated observation")
             break
+    if _wolfram_license_availability_state("License limit reached: all available licenses are in use") != "SLOT_BUSY":
+        errors.append("Wolfram license self-test failed to classify slot contention")
+    if _wolfram_license_availability_state("Wolfram Engine is not activated") != "LICENSE_OR_ACTIVATION_UNAVAILABLE":
+        errors.append("Wolfram license self-test failed to classify an unavailable runtime")
+    if _wolfram_license_availability_state("formal check failed: expected identity did not hold") is not None:
+        errors.append("Wolfram license self-test misclassified a formal failure")
     return errors
 
 
@@ -971,6 +994,39 @@ def check_contract(root: Path = FORMAL_ROOT) -> dict[str, Any]:
     checks.append({"id": "exact_fail_closed_network_prefix_contract", "passed": network_prefix_ok})
     if toolchains is not None and not network_prefix_ok:
         errors.append("TOOLCHAINS.lock.json: network namespace prefix/result contract mismatch")
+
+    wolfram_license_policy = _as_dict(build_policy.get("wolfram_license_slot_wait"))
+    wolfram_prompt_execution = _as_dict(
+        _as_dict(parsed_json.get("prompts/wolfram.json")).get("execution")
+    )
+    wolfram_prompt_license_policy = _as_dict(
+        wolfram_prompt_execution.get("license_slot_wait")
+    )
+    wolfram_license_wait_ok = (
+        wolfram_license_policy.get(
+            "external_license_contention_is_not_a_formal_counterexample"
+        )
+        is True
+        and wolfram_license_policy.get("wait_seconds_default")
+        == WOLFRAM_LICENSE_WAIT_DEFAULT_SECONDS
+        and wolfram_license_policy.get("poll_seconds_default")
+        == WOLFRAM_LICENSE_POLL_DEFAULT_SECONDS
+        and wolfram_license_policy.get("retry_scope")
+        == "ONLY_WOLFRAM_OUTPUTS_CLASSIFIED_AS_LICENSE_OR_ACTIVATION_AVAILABILITY"
+        and wolfram_license_policy.get("activation_or_relicensing_attempted") is False
+        and wolfram_license_policy.get("deadline_result") == "ENVIRONMENT_GAP"
+        and wolfram_prompt_license_policy == {
+            "external_license_contention_is_not_a_formal_counterexample": True,
+            "wait_seconds_default": WOLFRAM_LICENSE_WAIT_DEFAULT_SECONDS,
+            "poll_seconds_default": WOLFRAM_LICENSE_POLL_DEFAULT_SECONDS,
+            "retry_scope": "ONLY_WOLFRAM_OUTPUTS_CLASSIFIED_AS_LICENSE_OR_ACTIVATION_AVAILABILITY",
+            "activation_or_relicensing_attempted": False,
+            "deadline_result": "ENVIRONMENT_GAP",
+        }
+    )
+    checks.append({"id": "wolfram_license_slot_wait_contract", "passed": wolfram_license_wait_ok})
+    if toolchains is not None and not wolfram_license_wait_ok:
+        errors.append("Wolfram license-slot wait contract mismatch")
 
     provisioning_policy = _as_dict(build_policy.get("toolchain_provisioning"))
     provisioning_ok = (
@@ -1567,6 +1623,30 @@ def _combined_output(step: Mapping[str, Any], logs_dir: Path) -> str:
     return "\n".join(chunks)
 
 
+def _wolfram_license_availability_state(output: str) -> str | None:
+    """Classify an external Wolfram license boundary without inferring a proof result.
+
+    A local license slot held by another job is neither a false theorem nor an
+    executable formal counterexample. The caller may wait only for this
+    externally observable class; activation/relicensing is never attempted.
+    """
+
+    normalized = output.lower()
+    if any(pattern in normalized for pattern in WOLFRAM_LICENSE_SLOT_BUSY_PATTERNS):
+        return "SLOT_BUSY"
+    if any(marker in normalized for marker in WOLFRAM_LICENSE_AVAILABILITY_MARKERS):
+        return "LICENSE_OR_ACTIVATION_UNAVAILABLE"
+    return None
+
+
+def _wolfram_license_availability_state_for_step(
+    step: Mapping[str, Any], logs_dir: Path
+) -> str | None:
+    if step.get("exit_code") == 0:
+        return None
+    return _wolfram_license_availability_state(_combined_output(step, logs_dir))
+
+
 def _classify_nonzero(step: Mapping[str, Any], logs_dir: Path) -> str:
     if step.get("network_namespace_entry_verified") is not True:
         return "ENVIRONMENT_GAP"
@@ -2027,7 +2107,8 @@ def _rocq_stdlib_identity(root: Path, required_origins: Sequence[str]) -> dict[s
 
 def _run_wolfram(
     *, snapshot: Path, output_dir: Path, env: Mapping[str, str],
-    isolation: Mapping[str, Any], timeout_seconds: int
+    isolation: Mapping[str, Any], timeout_seconds: int,
+    license_wait_seconds: int, license_poll_seconds: int,
 ) -> dict[str, Any]:
     name = "wolfram_xact"
     backend_dir = output_dir / "backends" / name
@@ -2037,46 +2118,145 @@ def _run_wolfram(
     if executable is None:
         return _base_backend_result(name, status="ENVIRONMENT_GAP", reason="wolframscript not found")
     xact_materialization = _copy_xact_into_isolated_home(output_dir)
-    version = _probe(
-        backend=name,
-        executable=executable,
-        arguments=("-code", "$Version"),
-        cwd=backend_dir,
-        env=env,
-        isolation=isolation,
-        logs_dir=logs_dir,
-        timeout_seconds=timeout_seconds,
-    )
-    report_path = backend_dir / "report.json"
-    execution = _run_command(
-        label=f"{name}.execute",
-        command=(
-            executable,
-            "-file",
-            str(snapshot / "wolfram" / "verify_frame_face_event.wls"),
-            "--output",
-            str(report_path),
+    wait_started = time.monotonic()
+    deadline = wait_started + license_wait_seconds
+    attempts: list[dict[str, Any]] = []
+    execution: dict[str, Any] | None = None
+    report_path: Path | None = None
+    version: dict[str, Any] | None = None
+    wait_deadline_exhausted = False
+
+    while True:
+        # A prior retryable execution is preserved in ``attempts``. Do not
+        # attach it to a later, different version-probe outcome.
+        execution = None
+        report_path = None
+        attempt_number = len(attempts) + 1
+        version = _run_command(
+            label=f"{name}.version.attempt_{attempt_number:03d}",
+            command=(executable, "-code", "$Version"),
+            cwd=backend_dir,
+            env=env,
+            isolation=isolation,
+            logs_dir=logs_dir,
+            timeout_seconds=min(timeout_seconds, 60),
+        )
+        version_license_state = _wolfram_license_availability_state_for_step(version, logs_dir)
+        if version_license_state is not None:
+            attempts.append(
+                {
+                    "attempt": attempt_number,
+                    "exit_code": version.get("exit_code"),
+                    "license_availability_state": version_license_state,
+                    "phase": "version_probe",
+                    "stderr_log": version.get("stderr_log"),
+                    "stdout_log": version.get("stdout_log"),
+                }
+            )
+        elif _step_has_environment_gap(version, logs_dir):
+            result = _base_backend_result(
+                name,
+                status="ENVIRONMENT_GAP",
+                reason="Wolfram version probe lost the verified namespace boundary",
+            )
+            break
+        elif version.get("exit_code") != 0 or not _combined_output(version, logs_dir).strip():
+            result = _base_backend_result(
+                name,
+                status="TOOLCHAIN_MISMATCH",
+                reason="Wolfram runtime version could not be captured exactly",
+            )
+            break
+        else:
+            report_path = backend_dir / f"report.attempt_{attempt_number:03d}.json"
+            execution = _run_command(
+                label=f"{name}.execute.attempt_{attempt_number:03d}",
+                command=(
+                    executable,
+                    "-file",
+                    str(snapshot / "wolfram" / "verify_frame_face_event.wls"),
+                    "--output",
+                    str(report_path),
+                ),
+                cwd=backend_dir,
+                env=env,
+                isolation=isolation,
+                logs_dir=logs_dir,
+                timeout_seconds=timeout_seconds,
+            )
+            execution_license_state = _wolfram_license_availability_state_for_step(
+                execution, logs_dir
+            )
+            if execution_license_state is not None:
+                attempts.append(
+                    {
+                        "attempt": attempt_number,
+                        "exit_code": execution.get("exit_code"),
+                        "license_availability_state": execution_license_state,
+                        "phase": "formal_execution",
+                        "report_path": report_path.relative_to(output_dir).as_posix(),
+                        "stderr_log": execution.get("stderr_log"),
+                        "stdout_log": execution.get("stdout_log"),
+                    }
+                )
+            elif execution.get("exit_code") != 0:
+                status = _classify_nonzero(execution, logs_dir)
+                result = _base_backend_result(
+                    name, status=status, reason="formal command did not succeed"
+                )
+                break
+            else:
+                break
+
+        remaining_seconds = deadline - time.monotonic()
+        if remaining_seconds <= 0:
+            wait_deadline_exhausted = True
+            result = _base_backend_result(
+                name,
+                status="ENVIRONMENT_GAP",
+                reason=(
+                    "Wolfram license/activation availability did not recover before the "
+                    "configured bounded wait deadline"
+                ),
+            )
+            break
+        sleep_seconds = min(float(license_poll_seconds), remaining_seconds)
+        attempts[-1]["sleep_seconds_before_retry"] = round(sleep_seconds, 3)
+        time.sleep(sleep_seconds)
+
+    waited_seconds = round(time.monotonic() - wait_started, 3)
+    license_wait = {
+        "attempts": attempts,
+        "configured_poll_seconds": license_poll_seconds,
+        "configured_wait_seconds": license_wait_seconds,
+        "no_activation_or_relicensing_attempted": True,
+        "status": (
+            "NOT_NEEDED"
+            if not attempts
+            else "ENVIRONMENT_GAP"
+            if wait_deadline_exhausted
+            else "WAITED_AND_CONTINUED"
         ),
-        cwd=backend_dir,
-        env=env,
-        isolation=isolation,
-        logs_dir=logs_dir,
-        timeout_seconds=timeout_seconds,
-    )
-    if execution.get("exit_code") != 0:
-        status = _classify_nonzero(execution, logs_dir)
-        result = _base_backend_result(name, status=status, reason="formal command did not succeed")
-    elif _step_has_environment_gap(version, logs_dir):
+        "waited_seconds": waited_seconds,
+    }
+    if execution is None or execution.get("exit_code") != 0:
+        result.update(
+            {
+                "executable": executable,
+                "execution": execution,
+                "license_slot_wait": license_wait,
+                "version_probe": version,
+                "xact_isolated_materialization": xact_materialization,
+            }
+        )
+        return result
+
+    assert report_path is not None
+    if _step_has_environment_gap(version, logs_dir):
         result = _base_backend_result(
             name,
             status="ENVIRONMENT_GAP",
             reason="Wolfram version probe lost the verified namespace boundary",
-        )
-    elif version.get("exit_code") != 0 or not _combined_output(version, logs_dir).strip():
-        result = _base_backend_result(
-            name,
-            status="TOOLCHAIN_MISMATCH",
-            reason="Wolfram runtime version could not be captured exactly",
         )
     else:
         report, report_error = _parse_report(report_path, source="wolfram report")
@@ -2135,12 +2315,12 @@ def _run_wolfram(
         {
             "executable": executable,
             "execution": execution,
+            "license_slot_wait": license_wait,
             "version_probe": version,
             "xact_isolated_materialization": xact_materialization,
         }
     )
     return result
-
 
 def _run_sage_singular(
     *, snapshot: Path, output_dir: Path, env: Mapping[str, str],
@@ -2888,7 +3068,11 @@ def _prepare_output_dir(raw: str) -> Path:
     return output_dir
 
 
-def run_all(*, output_dir: Path, timeout_seconds: int) -> dict[str, Any]:
+def run_all(
+    *, output_dir: Path, timeout_seconds: int,
+    wolfram_license_wait_seconds: int = WOLFRAM_LICENSE_WAIT_DEFAULT_SECONDS,
+    wolfram_license_poll_seconds: int = WOLFRAM_LICENSE_POLL_DEFAULT_SECONDS,
+) -> dict[str, Any]:
     contract = check_contract()
     if contract["status"] != "PASS":
         report = {
@@ -2959,9 +3143,19 @@ def run_all(*, output_dir: Path, timeout_seconds: int) -> dict[str, Any]:
         }
         _write_json(output_dir / "formal-run.json", report)
         return report
-    backend_functions = (_run_wolfram, _run_sage_singular, _run_lean, _run_rocq)
     backends: dict[str, Any] = {}
-    for run_backend in backend_functions:
+    result = _run_wolfram(
+        snapshot=snapshot,
+        output_dir=output_dir,
+        env=env,
+        isolation=isolation,
+        timeout_seconds=timeout_seconds,
+        license_wait_seconds=wolfram_license_wait_seconds,
+        license_poll_seconds=wolfram_license_poll_seconds,
+    )
+    backends[str(result["backend"])] = result
+    _write_json(output_dir / "backends" / str(result["backend"]) / "result.json", result)
+    for run_backend in (_run_sage_singular, _run_lean, _run_rocq):
         result = run_backend(
             snapshot=snapshot,
             output_dir=output_dir,
@@ -3013,6 +3207,16 @@ def _argument_parser() -> argparse.ArgumentParser:
     mode.add_argument("--run-all", action="store_true")
     parser.add_argument("--output-dir")
     parser.add_argument("--timeout-seconds", type=int, default=3600)
+    parser.add_argument(
+        "--wolfram-license-wait-seconds",
+        type=int,
+        default=WOLFRAM_LICENSE_WAIT_DEFAULT_SECONDS,
+    )
+    parser.add_argument(
+        "--wolfram-license-poll-seconds",
+        type=int,
+        default=WOLFRAM_LICENSE_POLL_DEFAULT_SECONDS,
+    )
     return parser
 
 
@@ -3021,6 +3225,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.timeout_seconds <= 0:
         parser.error("--timeout-seconds must be positive")
+    if args.wolfram_license_wait_seconds < 0:
+        parser.error("--wolfram-license-wait-seconds must be nonnegative")
+    if args.wolfram_license_poll_seconds <= 0:
+        parser.error("--wolfram-license-poll-seconds must be positive")
     if args.check_contract:
         if args.output_dir is not None:
             parser.error("--output-dir is valid only with --run-all")
@@ -3031,7 +3239,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         parser.error("--run-all requires --output-dir")
     try:
         output_dir = _prepare_output_dir(args.output_dir)
-        report = run_all(output_dir=output_dir, timeout_seconds=args.timeout_seconds)
+        report = run_all(
+            output_dir=output_dir,
+            timeout_seconds=args.timeout_seconds,
+            wolfram_license_wait_seconds=args.wolfram_license_wait_seconds,
+            wolfram_license_poll_seconds=args.wolfram_license_poll_seconds,
+        )
     except (ContractError, OSError) as exc:
         report = {
             "admission_allowed": False,

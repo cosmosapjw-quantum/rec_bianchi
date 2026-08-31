@@ -304,6 +304,8 @@ export REC_NEXT03_LEAN_WORKSPACE="$rec_toolchain_root/lean-workspace"
 export ELAN_HOME="$rec_toolchain_root/elan"
 export PATH="$ELAN_HOME/bin:$PATH"
 export REC_NEXT03_LEAN_REBUILD_WORKSPACE="$rec_formal_output/lean-rebuild-workspace"
+rec_wolfram_license_wait_seconds=3600
+rec_wolfram_license_poll_seconds=30
 test ! -e "$REC_NEXT03_LEAN_REBUILD_WORKSPACE"
 test "$(sha256sum "$REC_NEXT03_XACT_ARCHIVE" | awk '{print $1}')" = \
   7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460cef1b07be
@@ -319,6 +321,8 @@ PYTHONDONTWRITEBYTECODE=1 python \
   --run-all \
   --output-dir "$rec_formal_output" \
   --timeout-seconds 3600 \
+  --wolfram-license-wait-seconds "$rec_wolfram_license_wait_seconds" \
+  --wolfram-license-poll-seconds "$rec_wolfram_license_poll_seconds" \
   > "$rec_formal_output.console.json"
 printf '%s\n' "$rec_formal_output"
 ```
@@ -334,6 +338,15 @@ Python, Sage, and user-package search-path overrides; Rocq additionally seals
 the resolved 9.2 Stdlib root and selected module bytes. Do not run `lake
 update`, fetch mathlib, install xAct, or write generated files under
 `formal/rec_next03`.
+
+An observed Wolfram license-slot or activation-availability message is not a
+formal counterexample. The runner preserves its per-attempt logs and waits only
+for that classified external condition, at most
+`$rec_wolfram_license_wait_seconds` seconds in
+`$rec_wolfram_license_poll_seconds`-second polls. It must not activate,
+relicense, install, or terminate another Wolfram job. If the deadline expires,
+record the Wolfram backend as `ENVIRONMENT_GAP` and continue the remaining
+backend receipts; any non-license Wolfram command failure remains `FAIL`.
 
 Every evidence-producing external command must run inside the runner's
 verified OS network namespace. Dead proxy variables, Git URL rewrites, and an

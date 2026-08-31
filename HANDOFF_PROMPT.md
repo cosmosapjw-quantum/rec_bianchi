@@ -143,6 +143,11 @@ workspace path for the formal runner, disable ordinary network access, and
 run the evidence contract. The runner itself independently verifies a distinct
 user/network namespace through its namespace inode, live socket interfaces,
 and routes; an inherited `/sys/class/net` view is diagnostic only.
+If an existing local Wolfram job temporarily occupies the license, the runner
+records the classified attempt and waits for at most 3600 seconds in 30-second
+polls before resuming that backend. It never activates, relicenses, installs,
+or terminates another Wolfram job. An exhausted wait is `ENVIRONMENT_GAP`, not
+a formal `FAIL` or a synthetic pass.
 
 The complete fail-fast commands, Ryzen 9 5900X host-lane procedure, pytest
 focus and dependency cone, read-only receipt validators, isolated formal

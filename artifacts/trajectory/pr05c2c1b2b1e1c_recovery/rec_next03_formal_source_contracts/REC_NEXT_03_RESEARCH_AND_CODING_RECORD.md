@@ -82,6 +82,34 @@ Its freshly generated raw host record had different archival bytes, as the
 typed identity policy permits; no raw digest was promoted to portable
 authority.
 
+## Local formal-runtime checkpoint and Wolfram capacity repair
+
+At continuation commit `f8af51e67f02b9d3b14dca27ad1dd4d2a12f118b` and tree
+`1cc0182ecbcdf0c735e98c57bef0836b0da0aa86`, a local executor passed the
+identity gate, exact 36-path delivery check, manifest `35/35`, provisioning
+check for Lean `4.33.0`/locked mathlib and the xAct seal, focused pytest
+`86/86`, dependency-cone pytest `68/68`, both semantic validators, and the
+56/56 static formal contract. Its namespace receipt established a distinct
+network namespace with loopback only and no external route.
+
+The actual backend run was not a formal pass. Lean stopped at an unpurged
+copied `.lake/config` artifact boundary; Rocq's installed `9.2.0` lane printed
+the CLI token `9.2`; Sage/libSingular reached a Sage-`Integer` JSON
+serialization error; and Wolfram+xAct reported an engine license/activation
+availability error while another local Codex job held the license capacity.
+The external raw receipt remains outside Git as an archival seal. No retry,
+source mutation, evidence regeneration, scientific promotion, provider export,
+or PR-state mutation occurred in that local run.
+
+The present repair changes only the Wolfram capacity classification and wait
+behavior: a classified license/activation availability message now produces a
+bounded recorded wait (default 3600 seconds, 30-second polls) and then either
+continues the Wolfram backend or records `ENVIRONMENT_GAP`. It does not
+activate, relicense, install, or terminate any Wolfram process, and it does
+not reinterpret the separate Lean, Rocq, or Sage failures. None of these facts
+establish source, physical, implementation-parity, provider-export, or
+scientific authority.
+
 ## Imported research inputs
 
 The following SHA-256 values are identity seals, not authority promotion:

@@ -235,3 +235,14 @@ pass.
 
 The complete stable obligation list is in `OBLIGATIONS.json`.  Tool requests
 and execution boundaries are in `TOOLCHAINS.lock.json` and `prompts/*.json`.
+
+## External Wolfram license-slot boundary
+
+A Wolfram runtime message that identifies license-slot contention or a
+license/activation availability boundary is external execution capacity, not a
+counterexample to any encoded formula. The isolated runner records each failed
+probe/execution attempt, waits at most 3600 seconds in 30-second polls, and
+retries only this classified availability case. It never activates, relicenses,
+installs, or kills another Wolfram job. If capacity does not recover by the
+deadline, the Wolfram backend is `ENVIRONMENT_GAP`, never `FAIL` or `PASS`.
+Any non-license formal-command failure remains a fail-closed `FAIL`.

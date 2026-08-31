@@ -27,6 +27,13 @@ The exact command and environment contract is in the stage
 `LOCAL_EXECUTION_PROMPT.md`. The direct commands below are developer
 diagnostics only; by themselves they are not a formal-run receipt.
 
+If another local job temporarily occupies the Wolfram license, the isolated
+runner treats only an observed license/activation availability message as an
+external capacity boundary. It records the attempts, waits at most 3600 seconds
+in 30-second polls, and then resumes the Wolfram backend. It does not activate,
+relicense, install, or terminate any Wolfram job. A deadline expiry is
+`ENVIRONMENT_GAP`; a non-license Wolfram proof failure remains `FAIL`.
+
 Run with Wolfram Engine and xAct/xTensor:
 
 ```bash
