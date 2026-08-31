@@ -1,0 +1,257 @@
+{
+  "schema": "rec-next03-local-formal-prompt/v1",
+  "tool": "Rocq Prover",
+  "authority": "NONAUTHORITATIVE_INDEPENDENT_KERNEL_CHECK",
+  "purpose": "Compile an independent conditional theorem transcription and preserve a complete assumptions receipt without modifying the repository.",
+  "obligation_ids": [
+    "REC3-FRAME-001",
+    "REC3-FACE-001",
+    "REC3-EVENT-RH-001",
+    "REC3-EVENT-RED-001",
+    "REC3-EVENT-BLUE-001",
+    "REC3-EVENT-MULTI-001",
+    "REC3-VARIABLE-001",
+    "REC3-UNIT-PACKET-001",
+    "REC3-REMAP-001",
+    "REC3-FORMAL-ROCQ-001",
+    "REC3-STATE-001"
+  ],
+  "inputs": {
+    "source_root": "formal/rec_next03/rocq",
+    "project_file": "formal/rec_next03/rocq/_CoqProject",
+    "contracts_source": "formal/rec_next03/rocq/RecNext03Contracts.v",
+    "audit_source": "formal/rec_next03/rocq/All.v",
+    "toolchain_file": "formal/rec_next03/rocq/rocq-toolchain",
+    "contract": "formal/rec_next03/CONTRACT.md",
+    "obligations": "formal/rec_next03/OBLIGATIONS.json",
+    "expected_rocq_version": "9.2.0"
+  },
+  "theorem_scope": [
+    "A unit spatial tetrad direction gives a null photon under the explicit (-,+,+,+) quadratic form; this is not a full standard-boost proof.",
+    "Static-grid face speed is proportional to R_H under explicit nonzero-width premises.",
+    "Positive, negative, and zero upwind branches have the stated one-sided behavior; zero secants agree only when traces agree.",
+    "Red, blue, and characteristic event constructors are distinct.",
+    "The two-cell remap transcription satisfies conditional number, constant-state, and JVP identities.",
+    "Signed distortion, total occupation, packet rate, and deposited occupation rate are separate record types with an explicit deposition seam.",
+    "No theorem supplies missing reference bytes, directional incoming data, deposition/remap approval, or external verifier authority."
+  ],
+  "mutation_policy": {
+    "repository_mutations": [],
+    "allowed_mutations": [
+      "a complete copy of formal/rec_next03/rocq in a disposable directory outside the Git worktree",
+      "Makefile.rec-next03 and Rocq build products in that disposable directory",
+      "raw build, Print Assumptions, version, hash, and semantic receipts under caller-selected receipt directory"
+    ],
+    "precondition": "Hash every checked-in Rocq input and record git status before copying.",
+    "postcondition": "Checked-in Rocq input hashes and git status are unchanged."
+  },
+  "execution": {
+    "working_directory": "DISPOSABLE_COPY_OF_formal/rec_next03/rocq",
+    "version_command": "rocq --version",
+    "environment_policy": {
+      "clear_inherited": [
+        "COQBIN",
+        "COQLIB",
+        "COQPATH",
+        "LAKE_HOME",
+        "LEAN_PATH",
+        "LEAN_SRC_PATH",
+        "MATHEMATICA_USERBASE",
+        "MATHLIB",
+        "OCAMLPATH",
+        "PYTHONHOME",
+        "PYTHONPATH",
+        "ROCQLIB",
+        "ROCQPATH",
+        "SAGE_PATH",
+        "SINGULARPATH",
+        "WOLFRAM_USERBASE"
+      ],
+      "runner_controlled_paths_only": true,
+      "capture_effective_values": true,
+      "network_isolation": {
+        "required": true,
+        "mechanism": "LINUX_USER_NETWORK_NAMESPACE",
+        "command_prefix": [
+          "unshare",
+          "--user",
+          "--map-root-user",
+          "--net",
+          "--fork",
+          "--"
+        ],
+        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_READ_/sys/class/net",
+        "required_probe_exit_code": 0,
+        "required_interfaces": [
+          "lo"
+        ],
+        "verified_must_equal": true,
+        "covered_subprocesses": "EVERY_VERSION_STDLIB_IDENTITY_BUILD_AND_ASSUMPTION_AUDIT_SUBPROCESS",
+        "proxy_and_git_url_rewrite_controls": "DEFENSE_IN_DEPTH_ONLY_NOT_NETWORK_ISOLATION_EVIDENCE",
+        "unavailable_denied_or_unverified_result": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+        "tool_execution_when_unverified": "FORBIDDEN"
+      }
+    },
+    "stdlib_identity_preflight": {
+      "documented_option": "-where",
+      "documentation_url": "https://rocq-prover.org/doc/v9.2/refman/practical-tools/coq-commands.html",
+      "primary_discovery_command": "rocq compile -where",
+      "compatibility_discovery_commands": [
+        "rocqc -where",
+        "coqc -where"
+      ],
+      "frontend_version_commands": {
+        "rocq compile -where": "rocq --version",
+        "rocqc -where": "rocqc --version",
+        "coqc -where": "coqc --version"
+      },
+      "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; A COMPATIBILITY_FRONTEND_IS_ALLOWED_ONLY_IF_ITS_VERSION_IS_9.2.0_AND_ALL_SUCCESSFUL_FRONTENDS_RESOLVE_THE_SAME_CANONICAL_ROOT",
+      "required_rocq_version": "9.2.0",
+      "stdout_contract": "EXACTLY_ONE_NONEMPTY_PATH_AFTER_TRIMMING",
+      "resolved_root_must_be_absolute_existing_directory": true,
+      "resolved_root_must_not_be_derived_from_COQPATH_ROCQPATH_COQLIB_or_ROCQLIB": true,
+      "record_rocq_executable_realpath": true,
+      "record_selected_frontend_executable_realpath_version_command_and_stdout": true,
+      "record_canonical_stdlib_root": true,
+      "record_stdlib_root_identity": true,
+      "record_module_artifact_sha256": [
+        "Stdlib.Init.Prelude",
+        "Stdlib.Reals.Rdefinitions",
+        "Stdlib.Reals.Raxioms"
+      ],
+      "allowed_foundation_origins_must_resolve_under_captured_root": true,
+      "missing_mismatch_or_unresolved_origin_result": "UNEXECUTED_TOOLCHAIN_MISMATCH_NOT_PASS"
+    },
+    "build_commands": [
+      "rocq makefile -f _CoqProject -o Makefile.rec-next03",
+      "make -f Makefile.rec-next03"
+    ],
+    "static_rejection": {
+      "method": "COMMENT_AND_STRING_AWARE_ANCHORED_LEXICAL_SCAN",
+      "full_rocq_vernacular_or_tactic_parser": false,
+      "scan_semantics": [
+        "blank nested Rocq block-comment and double-quoted string contents while preserving offsets and line numbers",
+        "scan exact Admitted followed by a period and case-insensitive whole-word admit in the remaining code-shaped text",
+        "case-insensitive line-anchored scan for singular/plural Parameter, Axiom, and Conjecture after an optional Local/Global prefix"
+      ],
+      "local_source_scope": [
+        "formal/rec_next03/rocq/RecNext03Contracts.v",
+        "formal/rec_next03/rocq/All.v"
+      ],
+      "forbidden_vernacular_command_families": [
+        "Parameter/Parameters",
+        "Axiom/Axioms",
+        "Conjecture/Conjectures"
+      ],
+      "forbidden_proof_terminators_or_tactics": [
+        "Admitted",
+        "admit"
+      ],
+      "required_finding_count": 0,
+      "finding_result": "FAIL_NOT_PASS",
+      "scan_pass_is_not_sufficient": "Rocq build and exact 25-theorem Print Assumptions audit are also required"
+    },
+    "assumption_audit": {
+      "directive": "Print Assumptions",
+      "expected_theorem_count": 25,
+      "expected_theorems": [
+        "h_eq_two_pi_hbar",
+        "energy_per_unit_from_ordinary_frequency",
+        "photon_null_of_orthonormal_tetrad_direction",
+        "vFace_static",
+        "vFace_static_pos_iff",
+        "vFace_static_neg_iff",
+        "vFace_static_zero_iff",
+        "upwindFlux_positive",
+        "upwindFlux_negative",
+        "upwindFlux_zero",
+        "classifyRed_positive",
+        "classifyBlue_negative",
+        "classifyRed_zero",
+        "classifyBlue_zero",
+        "upwind_right_zero_secant",
+        "upwind_left_zero_secant",
+        "zero_secants_agree_iff",
+        "depositPacketRate_value",
+        "remap_number_identity",
+        "remap_gcl_left",
+        "remap_gcl_right",
+        "remap_jvp_left",
+        "remap_jvp_right",
+        "event_tags_pairwise_distinct",
+        "restart_preserves_accepted_parent"
+      ],
+      "set_policy": "EACH_EXPECTED_THEOREM_EXACTLY_ONCE_NO_MISSING_EXTRA_OR_DUPLICATE",
+      "allowed_foundation_axioms": [
+        {
+          "name_prefix": "Rdefinitions.RbaseSymbolsImpl.",
+          "required_origin": "Stdlib.Reals.Rdefinitions"
+        },
+        {
+          "name_prefix": "Raxioms.",
+          "required_origin": "Stdlib.Reals.Raxioms"
+        },
+        {
+          "exact_name": "Classical_Prop.classic",
+          "required_origin": "Stdlib.Logic.Classical_Prop"
+        }
+      ],
+      "forbidden_assumptions": [
+        "any assumption declared in RecNext03Contracts.v or All.v",
+        "any reported assumption outside allowed_foundation_axioms",
+        "any assumption whose origin cannot be resolved to the required Stdlib module"
+      ]
+    },
+    "missing_executable_result": "UNEXECUTED_ENVIRONMENT_GAP",
+    "wrong_version_result": "UNEXECUTED_TOOLCHAIN_MISMATCH"
+  },
+  "receipt_contract": {
+    "raw_receipt_role": "ARCHIVAL_BYTE_SEAL_ONLY",
+    "raw_sha256_required": true,
+    "semantic_projection_fields": [
+      "schema",
+      "authority",
+      "status",
+      "rocq_version",
+      "top-level network_isolation with mechanism, executable, probe command/exit_code/stdout_log/stderr_log/timed_out, exact interface list, verified flag, and reason",
+      "selected Rocq frontend, executable realpath, exact -where command/stdout, canonical standard-library root, root identity, and module artifact SHA-256",
+      "cleared inherited search-path variables and effective runner-controlled paths",
+      "project_file_sha256",
+      "source_sha256 map sorted by path",
+      "build_exit_code",
+      "theorem names sorted lexicographically",
+      "exact 25-theorem Print Assumptions output normalized by theorem name",
+      "every reported foundation name and resolved Stdlib origin",
+      "forbidden_token_findings"
+    ],
+    "semantic_projection_sha256_required": true,
+    "pass_requirements": [
+      "Rocq version 9.2.0",
+      "the unshare Linux user/network namespace preflight exits zero, reports exactly the loopback interface, and is recorded as verified",
+      "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
+      "documented rocq compile -where or an allowed 9.2 compatibility frontend resolves exactly one absolute captured Stdlib root independent of inherited path overrides; every successful frontend agrees on that canonical root",
+      "allowed foundation origins resolve under the captured root and the selected Stdlib module artifact hashes are recorded",
+      "build exit code zero",
+      "no local Parameter, Axiom, Conjecture, Admitted, or admit",
+      "exact 25-theorem Print Assumptions audit with only the narrow reported Stdlib foundation allowlist"
+    ],
+    "formula_pass_label": "PASS_NONAUTHORITATIVE_ROCQ_KERNEL_CHECK"
+  },
+  "fail_closed": [
+    "Do not run any version, Stdlib identity, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight is verified with exactly the loopback interface.",
+    "Do not treat dead proxy variables or Git URL rewrites as proof of network isolation; if unshare is missing, denied, exits nonzero, or exposes any interface other than lo, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
+    "Do not inherit any language, package, cache, or userbase override listed in execution.environment_policy.clear_inherited; only captured runner-controlled paths are permitted.",
+    "Do not invoke or accept an undocumented bare where subcommand; Stdlib discovery must use the documented -where option through an allowed frontend.",
+    "Do not report PASS if the Rocq 9.2 Stdlib root, executable identity, selected module hashes, or allowed foundation origins are missing, overridden, or unresolved.",
+    "Do not report PASS when any expected Print Assumptions theorem is missing, duplicated, or accompanied by an unallowlisted or unresolved foundation.",
+    "Do not add Admitted, Axiom, or weaken a statement to obtain a build.",
+    "Do not infer a physical adapter from constructor inequality.",
+    "Do not infer source bytes, implementation parity, production admission, or a scientific pass from theorem compilation.",
+    "Do not modify checked-in Rocq sources during evidence-producing execution."
+  ],
+  "required_final_state": {
+    "scientific_terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "physical_face_admission": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schema": "rec-next03-local-formal-prompt/v1",
+  "tool": "SageMath with Singular",
+  "authority": "NONAUTHORITATIVE_INDEPENDENT_EXACT_ALGEBRA_CHECK",
+  "purpose": "Independently reduce the core polynomial obligations and explicit event counterexamples from the immutable prompt in a disposable directory.",
+  "obligation_ids": [
+    "REC3-FACE-001",
+    "REC3-EVENT-RH-001",
+    "REC3-EVENT-RED-001",
+    "REC3-EVENT-BLUE-001",
+    "REC3-DEPOSITION-001",
+    "REC3-REMAP-001",
+    "REC3-FORMAL-SAGE-001",
+    "REC3-STATE-001"
+  ],
+  "inputs": {
+    "script": "formal/rec_next03/sage/verify_remap_event.sage",
+    "contract": "formal/rec_next03/CONTRACT.md",
+    "obligations": "formal/rec_next03/OBLIGATIONS.json",
+    "source_map": "formal/rec_next03/SOURCE_MAP.json",
+    "formula_package_sha256": "15f0d1af469f333d14488900b6ef031aaba071643efecdc850f4720aa7155e12"
+  },
+  "checked_in_script_contract": {
+    "successful_status": "FORMAL_IDENTITIES_HOLD_NONAUTHORITATIVE",
+    "successful_exit_code": 0,
+    "successful_path_expected_check_ids": [
+      "sage_libsingular_available",
+      "symbolic_column_gcl_shape",
+      "symbolic_differentiated_column_gcl_shape",
+      "symbolic_column_gcl_number_certificate",
+      "symbolic_differentiated_column_gcl_jvp_certificate",
+      "symbolic_measure_gcl_constant_recovery_certificate",
+      "symbolic_differentiated_measure_gcl_certificate",
+      "feasible_rational_nonnegative",
+      "feasible_rational_column_gcl",
+      "feasible_rational_measure_gcl",
+      "feasible_rational_dcolumn_gcl",
+      "feasible_rational_dmeasure_gcl",
+      "feasible_rational_content_jvp_number",
+      "feasible_rational_f_equals_N_over_m_recovery",
+      "singular_feasible_ideal_nonunit",
+      "singular_total_measure_mismatch_unit_ideal",
+      "adjacent_symbolic_number",
+      "adjacent_symbolic_energy",
+      "adjacent_symbolic_dnumber",
+      "adjacent_symbolic_denergy",
+      "adjacent_feasible_rational_example",
+      "adjacent_infeasible_outside_bracket_example",
+      "event_surface_R_H_only_witness",
+      "event_surface_red_only_witness",
+      "event_surface_blue_only_witness"
+    ],
+    "scope_limits": [
+      "The remap certificates are conditional algebra plus finite exact witnesses, not existence or positivity for an approved 26-node remap.",
+      "The adjacent deposition identities are conditional on a proposed adjacent-support axiom and do not approve it.",
+      "The event witnesses separate R_H zero, red-face zero, and blue-face zero but do not implement event localization, saltation, or restart.",
+      "Delta_f versus total f and packet versus occupation rates remain typed authority obligations outside polynomial algebra."
+    ]
+  },
+  "mutation_policy": {
+    "repository_mutations": [],
+    "allowed_mutations": [
+      "raw stdout, tool versions, exact results, semantic projection, and hashes under caller-selected receipt directory"
+    ],
+    "precondition": "Hash the prompt and record git status before execution.",
+    "postcondition": "Prompt hash and git status are unchanged."
+  },
+  "execution": {
+    "mode": "Run the checked-in exact-arithmetic script read-only and invoke Singular directly only for version capture.",
+    "command_template": "sage formal/rec_next03/sage/verify_remap_event.sage > <receipt_dir>/sage.raw.json",
+    "required_version_commands": [
+      "sage --version",
+      "Singular --version"
+    ],
+    "floating_point_fallback": "FORBIDDEN",
+    "missing_executable_result": "UNEXECUTED_ENVIRONMENT_GAP"
+  },
+  "receipt_contract": {
+    "raw_receipt_role": "ARCHIVAL_BYTE_SEAL_ONLY",
+    "raw_sha256_required": true,
+    "semantic_projection_fields": [
+      "schema",
+      "authority",
+      "physical_authority_status",
+      "implementation_parity_status",
+      "status",
+      "toolchain",
+      "arithmetic",
+      "event_surfaces",
+      "authority_firewalls",
+      "prompt_sha256",
+      "checks sorted by id with id, holds, and detail",
+      "failed_check_ids sorted lexicographically"
+    ],
+    "semantic_projection_sha256_required": true,
+    "successful_path_expected_check_count": 25,
+    "formula_pass_label": "PASS_NONAUTHORITATIVE_EXACT_ALGEBRA"
+  },
+  "fail_closed": [
+    "Do not turn the adjacent two-node proposal into an approved locality axiom.",
+    "Do not infer positivity inequalities from polynomial ideal membership alone.",
+    "Do not infer remap existence, source bytes, implementation parity, or physical admission.",
+    "Keep R_H zero, red-face zero, and blue-face zero as distinct typed events."
+  ],
+  "required_final_state": {
+    "scientific_terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "physical_face_admission": false
+  }
+}

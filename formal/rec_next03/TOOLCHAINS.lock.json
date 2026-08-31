@@ -1,0 +1,329 @@
+{
+  "schema": "rec-next03-toolchains-lock/v1",
+  "status": "PARTIAL_LOCK_SPEC_NOT_EXECUTION_RECEIPT",
+  "authority": "NONAUTHORITATIVE_TOOLCHAIN_REQUEST",
+  "generated_date": "2026-08-31",
+  "execution_boundary": {
+    "cloud_host": "UNEXECUTED_ENVIRONMENT_GAP",
+    "cloud_missing_executables": [
+      "wolframscript",
+      "sage",
+      "Singular",
+      "lake",
+      "lean",
+      "rocq"
+    ],
+    "local_execution_required": true,
+    "fake_or_inferred_pass_forbidden": true,
+    "repository_must_remain_read_only_during_formal_execution": true,
+    "raw_receipts_are_archival_byte_seals_only": true,
+    "canonical_semantic_projection_required": true
+  },
+  "tools": {
+    "wolfram": {
+      "executable": "wolframscript",
+      "version_lock": "UNPINNED_RECORD_EXACT_DOLLAR_VERSION_AT_RUNTIME",
+      "required_capabilities": [
+        "exact symbolic arithmetic",
+        "RawJSON export",
+        "xAct xTensor loading"
+      ],
+      "xact": {
+        "requested_version": "1.3.0",
+        "archive_filename": "xAct_1.3.0.tgz",
+        "archive_sha256": "7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460cef1b07be"
+      },
+      "cloud_status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "sagemath": {
+      "executable": "sage",
+      "version_lock": "UNPINNED_RECORD_EXACT_VERSION_AT_RUNTIME",
+      "required_capabilities": [
+        "exact rational polynomial rings",
+        "symbolic simplification",
+        "Singular interface"
+      ],
+      "cloud_status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "singular": {
+      "executable": "Singular",
+      "version_lock": "UNPINNED_RECORD_EXACT_VERSION_AT_RUNTIME",
+      "required_capabilities": [
+        "Groebner basis",
+        "ideal reduction"
+      ],
+      "cloud_status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "lean": {
+      "executable": "lean",
+      "build_executable": "lake",
+      "version": "v4.33.0",
+      "toolchain": "leanprover/lean4:v4.33.0",
+      "mathlib": {
+        "tag": "v4.33.0",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+        "canonical_commit_url": "https://github.com/leanprover-community/mathlib4/commit/db584cd6d46c92f209a44c0f1c829460d327499d",
+        "canonical_git_url": "https://github.com/leanprover-community/mathlib4.git",
+        "offline_workspace_environment_variable": "REC_NEXT03_LEAN_WORKSPACE",
+        "manifest_path": "$REC_NEXT03_LEAN_WORKSPACE/lake-manifest.json",
+        "materialized_package_path": "$REC_NEXT03_LEAN_WORKSPACE/.lake/packages/mathlib",
+        "manifest_contract": {
+          "parser": "STRUCTURED_JSON_NOT_TEXT_SEARCH",
+          "unique_package_name": "mathlib",
+          "inputRev": "v4.33.0",
+          "rev": "db584cd6d46c92f209a44c0f1c829460d327499d",
+          "matching_entries_required": 1
+        },
+        "lakefile_contract": {
+          "parser": "STRUCTURED_TOML_NOT_TEXT_SEARCH",
+          "checked_in_path": "formal/rec_next03/lean/lakefile.toml",
+          "runtime_path": "$REC_NEXT03_LEAN_WORKSPACE/lakefile.toml",
+          "checked_in_runtime_byte_identity_required": true,
+          "unique_requirement_name": "mathlib",
+          "git": "https://github.com/leanprover-community/mathlib4.git",
+          "rev": "v4.33.0",
+          "matching_entries_required": 1
+        },
+        "checkout_contract": {
+          "git_head": "db584cd6d46c92f209a44c0f1c829460d327499d",
+          "git_status_porcelain": "EMPTY",
+          "record_head_tree": true,
+          "record_remote_origin_url": true
+        }
+      },
+      "source_root": "formal/rec_next03/lean",
+      "root_module": "formal/rec_next03/lean/RecNext03.lean",
+      "runtime_workspace": "$REC_NEXT03_LEAN_WORKSPACE",
+      "runtime_workspace_contract": {
+        "environment_variable_must_resolve_to_absolute_path": true,
+        "git_checkout_location": "ALLOWED_IF_READ_ONLY_IDENTITY_AND_UNCHANGED_SEALS_PASS",
+        "checked_in_source_copy_byte_identity_required": true,
+        "materialized_mathlib_head_tree_clean_and_origin_identity_required": true,
+        "complete_source_tree_before_after_byte_identity_required": true
+      },
+      "rebuild_workspace": "$REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+      "rebuild_workspace_contract": {
+        "environment_variable": "REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+        "environment_variable_must_resolve_to_absolute_path": true,
+        "must_be_outside_git_worktree": true,
+        "must_differ_from_source_workspace": true,
+        "must_be_new_or_empty_before_copy": true,
+        "copy_source": "$REC_NEXT03_LEAN_WORKSPACE",
+        "copy_is_output_only_and_source_workspace_remains_read_only": true,
+        "checked_in_source_and_identity_subjects_revalidated_after_copy": true,
+        "all_build_mutations_confined_to_rebuild_workspace": true
+      },
+      "from_source_build_contract": {
+        "prematerialized_olean_trust": "FORBIDDEN",
+        "artifact_cache_restore_unpack_or_reuse": "FORBIDDEN",
+        "effective_artifact_cache_environment": {
+          "LAKE_NO_CACHE": "1",
+          "LAKE_ARTIFACT_CACHE": "false",
+          "LAKE_RESTORE_ARTIFACTS": "0"
+        },
+        "clean_root_package_before_build": true,
+        "remove_manifest_resolved_build_directories_in_rebuild_copy_only": true,
+        "remove_build_directories_for_root_and_every_materialized_package": true,
+        "prebuild_compiled_artifact_suffixes_must_be_absent": [
+          ".olean",
+          ".ilean",
+          ".volean",
+          ".trace"
+        ],
+        "dependency_rebuild_target": "@mathlib",
+        "aggregate_rebuild_target": "@/RecNext03",
+        "network_boundary": "VERIFIED_LINUX_USER_NETWORK_NAMESPACE_REQUIRED_FOR_CLEAN_DEPENDENCY_REBUILD_AND_AGGREGATE_COMPILE",
+        "record_rebuilt_mathlib_artifact_inventory_and_sha256": true,
+        "record_aggregate_artifact_inventory_and_sha256": true
+      },
+      "dependency_resolution": "ALREADY_MATERIALIZED_OFFLINE_ONLY",
+      "forbidden_commands": [
+        "lake update",
+        "lake upgrade",
+        "git fetch",
+        "git pull"
+      ],
+      "cloud_status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "rocq": {
+      "executable": "rocq",
+      "version": "9.2.0",
+      "source_root": "formal/rec_next03/rocq",
+      "toolchain_file": "formal/rec_next03/rocq/rocq-toolchain",
+      "stdlib_contract": {
+        "documented_option": "-where",
+        "documentation_url": "https://rocq-prover.org/doc/v9.2/refman/practical-tools/coq-commands.html",
+        "primary_discovery_command": "rocq compile -where",
+        "compatibility_discovery_commands": [
+          "rocqc -where",
+          "coqc -where"
+        ],
+        "frontend_version_commands": {
+          "rocq compile -where": "rocq --version",
+          "rocqc -where": "rocqc --version",
+          "coqc -where": "coqc --version"
+        },
+        "frontend_policy": "USE_PRIMARY_WHEN_AVAILABLE; A COMPATIBILITY_FRONTEND_IS_ALLOWED_ONLY_IF_ITS_VERSION_IS_9.2.0_AND_ALL_SUCCESSFUL_FRONTENDS_RESOLVE_THE_SAME_CANONICAL_ROOT",
+        "required_lane": "9.2.0",
+        "stdout_contract": "EXACTLY_ONE_NONEMPTY_PATH_AFTER_TRIMMING",
+        "resolved_root_must_be_absolute_existing_directory": true,
+        "resolved_root_must_not_come_from_inherited_search_path_override": true,
+        "all_allowed_foundation_origins_must_resolve_under_root": true,
+        "record_canonical_root": true,
+        "record_root_identity": true,
+        "record_selected_frontend_executable_realpath_version_command_and_stdout": true,
+        "record_module_artifact_sha256": [
+          "Stdlib.Init.Prelude",
+          "Stdlib.Reals.Rdefinitions",
+          "Stdlib.Reals.Raxioms"
+        ]
+      },
+      "inherited_search_path_overrides_must_be_cleared": [
+        "COQPATH",
+        "ROCQPATH",
+        "COQLIB",
+        "ROCQLIB",
+        "PYTHONPATH"
+      ],
+      "cloud_status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "python_receipt_runner": {
+      "executable": "python",
+      "observed_cloud_version": "3.12.13",
+      "role": "schema, hash, and semantic-receipt validation only",
+      "formal_authority": false
+    }
+  },
+  "version_acceptance": {
+    "lean_and_mathlib": "EXACT_TOOLCHAIN_TAG_RESOLVED_COMMIT_CLEAN_CHECKOUT_AND_RECORDED_TREE",
+    "rocq": "EXACT",
+    "xact_archive": "EXACT_SHA256",
+    "wolfram_sagemath_singular": "EXACT_RUNTIME_VERSION_MUST_BE_CAPTURED_BEFORE_RESULT_COMPARISON",
+    "unrecorded_version_result": "UNCOMPARABLE_RECEIPT_NOT_PASS"
+  },
+  "build_policy": {
+    "work_directory": "DISPOSABLE_COPY_OUTSIDE_GIT_WORKTREE",
+    "receipt_directory": "CALLER_SELECTED_OUTSIDE_GIT_WORKTREE",
+    "allowed_mutations": [
+      "tool_cache outside Git worktree",
+      "disposable generated build files",
+      "raw and semantic receipts in selected receipt directory"
+    ],
+    "forbidden_mutations": [
+      "tracked source or evidence",
+      "Git index or refs",
+      "pull request state",
+      "scientific terminal or claim"
+    ],
+    "forbidden_commands": [
+      "lake update",
+      "lake upgrade",
+      "git fetch",
+      "git pull"
+    ],
+    "inherited_search_path_policy": {
+      "clear_before_every_tool_subprocess": [
+        "COQBIN",
+        "COQLIB",
+        "COQPATH",
+        "LAKE_HOME",
+        "LEAN_PATH",
+        "LEAN_SRC_PATH",
+        "MATHEMATICA_USERBASE",
+        "MATHLIB",
+        "OCAMLPATH",
+        "PYTHONHOME",
+        "PYTHONPATH",
+        "ROCQLIB",
+        "ROCQPATH",
+        "SAGE_PATH",
+        "SINGULARPATH",
+        "WOLFRAM_USERBASE"
+      ],
+      "runner_controlled_paths_only": true,
+      "capture_effective_values_in_receipt": true,
+      "nonempty_uncontrolled_value_result": "UNEXECUTED_ENVIRONMENT_OVERRIDE_NOT_PASS"
+    },
+    "lean_artifact_cache_policy": {
+      "clear_inherited_before_every_tool_subprocess": [
+        "LAKE_ARTIFACT_CACHE",
+        "LAKE_CACHE_DIR",
+        "LAKE_CACHE_URL",
+        "LAKE_RESTORE_ARTIFACTS",
+        "MATHLIB_CACHE_DIR"
+      ],
+      "required_effective_values": {
+        "LAKE_NO_CACHE": "1",
+        "LAKE_ARTIFACT_CACHE": "false",
+        "LAKE_RESTORE_ARTIFACTS": "0"
+      },
+      "record_cleared_overrides_and_effective_values_in_receipt": true,
+      "receipt_paths": [
+        "environment_boundary.cleared_lean_cache_overrides",
+        "environment_boundary.effective_lean_cache_controls",
+        "backends.lean_mathlib.cache_policy.cleared_inherited",
+        "backends.lean_mathlib.cache_policy.effective",
+        "backends.lean_mathlib.cache_policy.build_log_cache_reuse_findings"
+      ],
+      "artifact_cache_restore_download_unpack_or_reuse": "FORBIDDEN",
+      "cached_olean_ilean_volean_or_trace_injection_result": "FAIL_NOT_PASS",
+      "prebuild_purge_and_zero_artifact_assertion_remain_required": true,
+      "postbuild_artifacts_must_be_outputs_of_the_recorded_namespace_isolated_builds": true,
+      "LAKE_NO_CACHE_alone_is_sufficient": false
+    },
+    "network_isolation": {
+      "required_for_every_tool_subprocess": true,
+      "mechanism": "LINUX_USER_NETWORK_NAMESPACE",
+      "command_prefix": [
+        "unshare",
+        "--user",
+        "--map-root-user",
+        "--net",
+        "--fork",
+        "--"
+      ],
+      "preflight": {
+        "probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_READ_/sys/class/net",
+        "required_exit_code": 0,
+        "required_interfaces": [
+          "lo"
+        ],
+        "verified_must_equal": true,
+        "record_executable": true,
+        "record_probe_command_exit_stdout_stderr_timeout_and_reason": true
+      },
+      "covered_subprocesses": [
+        "version and executable-identity probes",
+        "Git dependency identity and clean-status probes",
+        "CAS and prover compilation",
+        "assumption and theorem audits"
+      ],
+      "proxy_and_git_url_rewrite_controls": "DEFENSE_IN_DEPTH_ONLY_NOT_NETWORK_ISOLATION_EVIDENCE",
+      "unavailable_denied_or_unverified_result": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "tool_execution_when_unverified": "FORBIDDEN",
+      "receipt_fields": [
+        "network_isolation.mechanism",
+        "network_isolation.executable",
+        "network_isolation.probe.command",
+        "network_isolation.probe.exit_code",
+        "network_isolation.probe.stdout_log",
+        "network_isolation.probe.stderr_log",
+        "network_isolation.probe.timed_out",
+        "network_isolation.interfaces",
+        "network_isolation.verified",
+        "network_isolation.reason"
+      ]
+    },
+    "local_formal_source_static_rejection": {
+      "method": "COMMENT_AND_STRING_AWARE_ANCHORED_LEXICAL_SCAN",
+      "full_language_parser": false,
+      "offsets_and_line_numbers_preserved": true,
+      "lean": "blank nested block comments, line comments, and quoted strings; then scan forbidden proof words and line-anchored declaration command families",
+      "rocq": "blank nested block comments and quoted strings; then scan forbidden proof words and line-anchored vernacular command families",
+      "finding_result": "FAIL_NOT_PASS",
+      "successful_scan_is_not_sufficient": "tool build and exact assumption audit remain mandatory"
+    },
+    "lean_workspace_policy": "USE_A_VERIFIED_READ_ONLY_ALREADY_MATERIALIZED_SOURCE_WORKSPACE_AND_A_DISTINCT_NEW_OUTPUT_ONLY_REBUILD_WORKSPACE; PURGE ALL COPIED BUILD OUTPUTS BEFORE SOURCE REBUILD UNDER THE VERIFIED LINUX USER/NETWORK NAMESPACE; A MISSING MANIFEST OR PACKAGE CHECKOUT IS UNEXECUTED_ENVIRONMENT_GAP, NOT PERMISSION TO RESOLVE_DEPENDENCIES_OR TRUST PREBUILT OLEANS",
+    "network_policy": "EVERY_TOOL_SUBPROCESS_MUST_RUN_WITH_THE_VERIFIED_UNSHARE_LINUX_USER_NETWORK_NAMESPACE_PREFIX; DEAD_PROXIES_AND_GIT_URL_REWRITES_ARE_DEFENSE_IN_DEPTH_ONLY"
+  }
+}

@@ -326,19 +326,30 @@ class IsotropicEinsteinLineSource:
         """Net coefficient in ``df/dt = emission - affine_opacity*f``."""
         return self.absorption_s_inv - self.emission_s_inv
 
+    def paired_coefficients(self) -> tuple[float, float]:
+        """Return positive Bose ``(emission, absorption)`` coefficients.
+
+        The tracked-occupation action is
+        ``emission*(1+f) - absorption*f``.  Keeping this positive pair avoids
+        silently assuming that the net affine opacity is nonnegative.
+        """
+
+        return self.emission_s_inv, self.absorption_s_inv
+
     def occupation_action(self, occupation: float) -> float:
         value = float(occupation)
         if not (math.isfinite(value) and value >= 0.0):
             raise ValueError("occupation must be nonnegative and finite")
-        return self.emission_s_inv * (1.0 + value) - self.absorption_s_inv * value
+        emission, absorption = self.paired_coefficients()
+        return emission * (1.0 + value) - absorption * value
 
     def directional_action(self, occupation: np.ndarray) -> np.ndarray:
         values = np.asarray(occupation, dtype=float)
         if not np.all(np.isfinite(values)) or np.any(values < 0.0):
             raise ValueError("directional occupation must be nonnegative and finite")
+        emission, absorption = self.paired_coefficients()
         return _readonly(
-            self.emission_s_inv * (1.0 + values)
-            - self.absorption_s_inv * values
+            emission * (1.0 + values) - absorption * values
         )
 
     def planck_null_residual(self, *, temperature_K: float) -> float:
