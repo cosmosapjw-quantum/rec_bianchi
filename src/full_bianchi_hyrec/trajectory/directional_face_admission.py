@@ -53,6 +53,7 @@ BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY = (
     "BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY"
 )
 BLOCKED_ANGULAR_REMAP_AUTHORITY = "BLOCKED_ANGULAR_REMAP_AUTHORITY"
+BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY = "BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY"
 BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT = (
     "BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT"
 )
@@ -61,19 +62,24 @@ BLOCKED_EXTERNAL_DIRECTIONAL_AUTHORITY_VERIFICATION = (
 )
 SOURCE_FACE_ABSENT = "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
 
+CHARACTERISTIC_R_H_ZERO = "CHARACTERISTIC_R_H_ZERO"
+RED_FACE_V_X_ZERO = "RED_FACE_V_X_ZERO"
+BLUE_FACE_V_X_ZERO = "BLUE_FACE_V_X_ZERO"
+
 REQUIRED_SOURCE_CHANNELS = (
     "virtual_spike",
     "one_photon",
     "two_photon",
     "raman",
 )
+PACKET_RATE_PER_H_S = "photon_packet hydrogen_atom^-1 s^-1"
 _SHA256 = re.compile(r"[0-9a-f]{64}")
 
 
 def _readonly(value: np.ndarray, *, dtype: Any = float) -> np.ndarray:
-    result = np.array(value, dtype=dtype, copy=True)
-    result.setflags(write=False)
-    return result
+    copied = np.array(value, dtype=dtype, copy=True, order="C")
+    immutable = np.frombuffer(copied.tobytes(order="C"), dtype=copied.dtype)
+    return immutable.reshape(copied.shape)
 
 
 def _canonical_json(value: Any) -> bytes:
@@ -299,12 +305,27 @@ class ManufacturedGeometryWitness:
 
 
 class FrequencySpeedZeroEventRequired(ValueError):
-    """Fail-closed signal carrying every ordered zero-drift node."""
+    """Fail-closed signal carrying one event surface and its ordered nodes."""
 
-    def __init__(self, node_indices: Sequence[int]) -> None:
+    def __init__(
+        self,
+        event_kind: str | Sequence[int],
+        node_indices: Sequence[int] | None = None,
+    ) -> None:
+        # Preserve the original one-argument constructor as an R_H=0 signal.
+        if node_indices is None:
+            node_indices = event_kind  # type: ignore[assignment]
+            event_kind = CHARACTERISTIC_R_H_ZERO
+        if event_kind not in {
+            CHARACTERISTIC_R_H_ZERO,
+            RED_FACE_V_X_ZERO,
+            BLUE_FACE_V_X_ZERO,
+        }:
+            raise ValueError("unknown frequency-speed zero event kind")
+        self.event_kind = str(event_kind)
         self.node_indices = tuple(int(index) for index in node_indices)
         super().__init__(
-            "frequency-speed zero at ordered nodes "
+            f"frequency-speed zero {self.event_kind} at ordered nodes "
             f"{list(self.node_indices)} requires an explicit event/restart contract"
         )
 
@@ -344,9 +365,17 @@ def run_manufactured_52_ray_geometry_witness(
         ],
         dtype=float,
     )
-    zero_nodes = tuple(int(index) for index in np.flatnonzero(local_rates == 0.0))
-    if zero_nodes:
-        raise FrequencySpeedZeroEventRequired(zero_nodes)
+    event_surfaces = (
+        (CHARACTERISTIC_R_H_ZERO, local_rates == 0.0),
+        (RED_FACE_V_X_ZERO, kinematics.red_grazing),
+        (BLUE_FACE_V_X_ZERO, kinematics.blue_grazing),
+    )
+    for event_kind, event_mask in event_surfaces:
+        zero_nodes = tuple(
+            int(index) for index in np.flatnonzero(event_mask)
+        )
+        if zero_nodes:
+            raise FrequencySpeedZeroEventRequired(event_kind, zero_nodes)
     for side_index, target in enumerate(targets):
         for node, direction_normal in enumerate(kinematics.direction_normal):
             rate = float(local_rates[node])
@@ -411,8 +440,16 @@ class DirectionalSourceChannel:
     source_sha256: str
 
     def __post_init__(self) -> None:
-        if self.coefficient_units != "s^-1":
-            raise ValueError("directional source coefficient units must be s^-1")
+        expected_units = (
+            PACKET_RATE_PER_H_S
+            if self.name in {"two_photon", "raman"}
+            else "s^-1"
+        )
+        if self.coefficient_units != expected_units:
+            raise ValueError(
+                "directional source coefficient units must preserve the "
+                f"{self.name!r} domain: {expected_units}"
+            )
         source_hash = str(self.source_sha256).lower()
         if _SHA256.fullmatch(source_hash) is None:
             raise ValueError("source_sha256 must be a SHA-256 digest")
@@ -462,61 +499,116 @@ class DirectionalFaceReadiness:
     source_manifest: dict[str, Any]
     evolution_mode: str
 
+    @property
+    def executable_source_complete(self) -> bool:
+        """Whether a quadrature-bound executable assembly was supplied."""
+
+        return BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY not in self.blockers
+
 
 def audit_directional_face_readiness(
     *,
     quadrature: AngularQuadratureContract | None = None,
-    source_channels: Sequence[DirectionalSourceChannel],
+    source_channels: Sequence[DirectionalSourceChannel] = (),
     incoming_authority_present: bool,
     evolution_mode: str,
     angular_remap_contract_sha256: str | None,
     speed_zero_event_restart_contract_sha256: str | None,
+    source_assembly: object | None = None,
 ) -> DirectionalFaceReadiness:
     """Audit contract readiness without constructing or promoting a face array."""
 
+    assembly_structurally_complete = False
+    assembly_semantic_sha256: str | None = None
+    assembly_quadrature_bound = False
+    if source_assembly is not None:
+        if source_channels:
+            raise ValueError(
+                "provide either source_channels declarations or source_assembly, not both"
+            )
+        # A delayed import avoids making the shape-only admission layer depend
+        # on the executable research assembly at module import time.
+        from full_bianchi_hyrec.trajectory.directional_source_assembly import (
+            DirectionalSourceAssembly,
+        )
+
+        if isinstance(source_assembly, DirectionalSourceAssembly):
+            source_channels = source_assembly.source_declarations()
+            assembly_semantic_sha256 = source_assembly.semantic_sha256
+            assembly_quadrature_bound = (
+                isinstance(quadrature, AngularQuadratureContract)
+                and source_assembly.quadrature_sha256 == quadrature.semantic_sha256
+            )
+            assembly_structurally_complete = assembly_quadrature_bound
     manifest = audit_directional_source_manifest(source_channels)
+    if source_assembly is not None:
+        manifest.update(
+            {
+                "contract_kind": "TYPED_DOMAIN_SEPARATED_ASSEMBLY",
+                "assembly_structurally_complete": assembly_structurally_complete,
+                "executable_complete": False,
+                "assembly_quadrature_bound": assembly_quadrature_bound,
+                "assembly_semantic_sha256": assembly_semantic_sha256,
+                "virtual_stored_variable": (
+                    source_assembly.channels[0].stored_variable
+                    if isinstance(source_assembly, DirectionalSourceAssembly)
+                    else None
+                ),
+                "occupation_action_available": (
+                    source_assembly.occupation_action_available
+                    if isinstance(source_assembly, DirectionalSourceAssembly)
+                    else False
+                ),
+                "deposition_authority_present": (
+                    source_assembly.deposition_authority_present
+                    if isinstance(source_assembly, DirectionalSourceAssembly)
+                    else False
+                ),
+                "reference_field_adapter_present": (
+                    source_assembly.reference_field_adapter_present
+                    if isinstance(source_assembly, DirectionalSourceAssembly)
+                    else False
+                ),
+            }
+        )
     blockers: list[str] = []
     if not isinstance(quadrature, AngularQuadratureContract):
         blockers.append(BLOCKED_ANGULAR_FRAME_CONTRACT)
-    if not manifest["declared_complete"]:
-        blockers.append(BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY)
-    if not incoming_authority_present:
-        blockers.append(SOURCE_FACE_ABSENT)
-    event_hash = (
-        str(speed_zero_event_restart_contract_sha256).lower()
-        if speed_zero_event_restart_contract_sha256 is not None
-        else ""
-    )
-    if _SHA256.fullmatch(event_hash) is None:
-        blockers.append(BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT)
-    if evolution_mode == FIXED_NODE_COUPLED:
-        remap_hash = (
-            str(angular_remap_contract_sha256).lower()
-            if angular_remap_contract_sha256 is not None
-            else ""
-        )
-        if _SHA256.fullmatch(remap_hash) is None:
-            blockers.append(BLOCKED_ANGULAR_REMAP_AUTHORITY)
-    elif evolution_mode != LAGRANGIAN_SAMPLER:
+    # The typed assembly preserves distinct distortion, occupation, and packet
+    # domains, but it cannot form a complete occupation source without the
+    # missing reference-field and packet-deposition adapters.
+    blockers.append(BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY)
+    if evolution_mode not in {FIXED_NODE_COUPLED, LAGRANGIAN_SAMPLER}:
         raise ValueError("unknown directional evolution mode")
-    # This research module validates declaration shape only.  It has no source
-    # authority package/verifier and therefore cannot promote arbitrary digest
+    # These values remain declaration placeholders.  A boolean, a mode string,
+    # or a SHA-shaped string is not an executable incoming-face, evolution, or
+    # event/restart contract.  Their blockers stay closed until future typed
+    # contracts replace these compatibility parameters.
+    del (
+        incoming_authority_present,
+        angular_remap_contract_sha256,
+        speed_zero_event_restart_contract_sha256,
+    )
+    blockers.extend(
+        (
+            SOURCE_FACE_ABSENT,
+            BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT,
+        )
+    )
+    blockers.append(
+        BLOCKED_ANGULAR_REMAP_AUTHORITY
+        if evolution_mode == FIXED_NODE_COUPLED
+        else BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY
+    )
+    # This research module can validate a typed source assembly, but it has no
+    # external authority package/verifier and cannot promote arbitrary digest
     # strings, booleans, or arrays into physical authority.
     blockers.append(BLOCKED_EXTERNAL_DIRECTIONAL_AUTHORITY_VERIFICATION)
     return DirectionalFaceReadiness(
         requested_authority_label=(
             THEORY_CONTRACT_DERIVED_26_ORDINATE_FACE_V1
         ),
-        declared_contract_complete=(
-            isinstance(quadrature, AngularQuadratureContract)
-            and manifest["declared_complete"]
-            and incoming_authority_present
-            and _SHA256.fullmatch(event_hash) is not None
-            and (
-                evolution_mode == LAGRANGIAN_SAMPLER
-                or BLOCKED_ANGULAR_REMAP_AUTHORITY not in blockers
-            )
-        ),
+        declared_contract_complete=False,
         physical_face_admitted=False,
         production_integration_authorized=False,
         blockers=tuple(blockers),
@@ -545,9 +637,14 @@ __all__ = [
     "HYDROGEN_TETRAD",
     "ORDINARY_FREQUENCY_HZ",
     "REQUIRED_SOURCE_CHANNELS",
+    "PACKET_RATE_PER_H_S",
     "BLOCKED_ANGULAR_FRAME_CONTRACT",
     "BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY",
     "BLOCKED_ANGULAR_REMAP_AUTHORITY",
+    "BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY",
     "BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT",
     "BLOCKED_EXTERNAL_DIRECTIONAL_AUTHORITY_VERIFICATION",
+    "CHARACTERISTIC_R_H_ZERO",
+    "RED_FACE_V_X_ZERO",
+    "BLUE_FACE_V_X_ZERO",
 ]

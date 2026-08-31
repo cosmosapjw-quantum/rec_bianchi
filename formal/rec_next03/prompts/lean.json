@@ -1,0 +1,352 @@
+{
+  "schema": "rec-next03-local-formal-prompt/v1",
+  "tool": "Lean 4 with mathlib",
+  "authority": "NONAUTHORITATIVE_CONDITIONAL_KERNEL_CHECK",
+  "purpose": "Build the pinned conditional theorem package in a disposable copy and audit all theorem assumptions without modifying the repository.",
+  "obligation_ids": [
+    "REC3-FRAME-001",
+    "REC3-FACE-001",
+    "REC3-EVENT-RH-001",
+    "REC3-EVENT-RED-001",
+    "REC3-EVENT-BLUE-001",
+    "REC3-EVENT-MULTI-001",
+    "REC3-VARIABLE-001",
+    "REC3-UNIT-PACKET-001",
+    "REC3-REMAP-001",
+    "REC3-FORMAL-LEAN-001",
+    "REC3-STATE-001"
+  ],
+  "inputs": {
+    "source_root": "formal/rec_next03/lean",
+    "toolchain_file": "formal/rec_next03/lean/lean-toolchain",
+    "checked_in_lakefile": "formal/rec_next03/lean/lakefile.toml",
+    "runtime_lakefile": "$REC_NEXT03_LEAN_WORKSPACE/lakefile.toml",
+    "contracts_source": "formal/rec_next03/lean/RecNext03/Contracts.lean",
+    "audit_source": "formal/rec_next03/lean/RecNext03/All.lean",
+    "root_module": "formal/rec_next03/lean/RecNext03.lean",
+    "offline_workspace_environment_variable": "REC_NEXT03_LEAN_WORKSPACE",
+    "rebuild_workspace_environment_variable": "REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+    "manifest": "$REC_NEXT03_LEAN_WORKSPACE/lake-manifest.json",
+    "materialized_mathlib_checkout": "$REC_NEXT03_LEAN_WORKSPACE/.lake/packages/mathlib",
+    "contract": "formal/rec_next03/CONTRACT.md",
+    "obligations": "formal/rec_next03/OBLIGATIONS.json",
+    "expected_lean_toolchain": "leanprover/lean4:v4.33.0",
+    "expected_mathlib_tag": "v4.33.0",
+    "expected_mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+    "expected_mathlib_commit_url": "https://github.com/leanprover-community/mathlib4/commit/db584cd6d46c92f209a44c0f1c829460d327499d"
+  },
+  "theorem_scope": [
+    "A unit spatial tetrad direction gives a null photon under the explicit (-,+,+,+) quadratic form; this is not a full standard-boost proof.",
+    "The moving face formula specializes to a positive-frequency multiple of R_H only under a static line and grid.",
+    "Positive, negative, and zero upwind branches have the stated one-sided behavior; zero secants agree only when the traces agree.",
+    "Characteristic, red-face, and blue-face events use distinct constructors even if numerical guards vanish simultaneously.",
+    "The two-cell remap transcription satisfies its conditional number, constant-state, and JVP identities.",
+    "Signed distortion, total occupation, packet rate, and deposited occupation rate are separate structures with no implicit coercions.",
+    "The explicit packet deposition seam does not construct the missing scale, reference field, remap, or authority."
+  ],
+  "mutation_policy": {
+    "repository_mutations": [],
+    "allowed_mutations": [
+      "an output-only copy of the verified $REC_NEXT03_LEAN_WORKSPACE at $REC_NEXT03_LEAN_REBUILD_WORKSPACE outside the Git worktree",
+      "removal and regeneration of build outputs only inside the validated rebuild copy",
+      "runner-controlled Lake cache and build products only inside that rebuild copy",
+      "raw build, assumption, version, hash, and semantic receipts under caller-selected receipt directory"
+    ],
+    "precondition": "Hash every checked-in Lean input, verify the source workspace identity, and record Git status before the output-only copy.",
+    "postcondition": "Checked-in inputs and the verified source workspace are byte-identical and unmodified; all build mutations occurred only in the rebuild copy."
+  },
+  "execution": {
+    "working_directory": "$REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+    "workspace_preflight": {
+      "source_environment_variable": "REC_NEXT03_LEAN_WORKSPACE",
+      "source_must_resolve_to_absolute_path": true,
+      "source_git_checkout_location": "ALLOWED_IF_READ_ONLY_IDENTITY_AND_UNCHANGED_SEALS_PASS",
+      "source_checked_formal_bytes_must_match_snapshot": true,
+      "source_materialized_mathlib_head_tree_clean_and_origin_identity_required": true,
+      "source_complete_tree_before_after_byte_identity_required": true,
+      "source_must_already_contain_manifest_and_mathlib_checkout": true,
+      "checked_in_source_and_source_workspace_byte_identity_required": true,
+      "rebuild_environment_variable": "REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+      "rebuild_must_resolve_to_distinct_absolute_path": true,
+      "rebuild_must_be_outside_every_git_worktree": true,
+      "rebuild_must_be_new_or_empty_before_copy": true,
+      "source_workspace_is_read_only": true,
+      "copy_source_workspace_to_rebuild_workspace": true,
+      "revalidate_manifest_lakefile_sources_mathlib_head_clean_status_and_tree_after_copy": true,
+      "missing_or_relative_path_result": "UNEXECUTED_ENVIRONMENT_GAP_NOT_PASS"
+    },
+    "version_commands": [
+      "lean --version",
+      "lake --version"
+    ],
+    "dependency_identity_preflight": {
+      "lakefile": {
+        "parser": "STRUCTURED_TOML",
+        "unique_mathlib_requirement": true,
+        "required_git": "https://github.com/leanprover-community/mathlib4.git",
+        "required_tag": "v4.33.0"
+      },
+      "manifest": {
+        "parser": "STRUCTURED_JSON",
+        "unique_mathlib_package_entry": true,
+        "required_inputRev": "v4.33.0",
+        "required_rev": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      "package_checkout": {
+        "required_git_head": "db584cd6d46c92f209a44c0f1c829460d327499d",
+        "required_git_status_porcelain": "EMPTY",
+        "record_git_head_tree": true,
+        "record_git_remote_origin_url": true
+      },
+      "mismatch_result": "UNEXECUTED_TOOLCHAIN_MISMATCH_NOT_PASS",
+      "missing_materialization_result": "UNEXECUTED_ENVIRONMENT_GAP_NOT_PASS"
+    },
+    "environment_policy": {
+      "clear_inherited": [
+        "COQBIN",
+        "COQLIB",
+        "COQPATH",
+        "LAKE_HOME",
+        "LEAN_PATH",
+        "LEAN_SRC_PATH",
+        "MATHEMATICA_USERBASE",
+        "MATHLIB",
+        "OCAMLPATH",
+        "PYTHONHOME",
+        "PYTHONPATH",
+        "ROCQLIB",
+        "ROCQPATH",
+        "SAGE_PATH",
+        "SINGULARPATH",
+        "WOLFRAM_USERBASE"
+      ],
+      "runner_controlled_paths_only": true,
+      "capture_effective_values": true,
+      "lean_artifact_cache": {
+        "clear_inherited": [
+          "LAKE_ARTIFACT_CACHE",
+          "LAKE_CACHE_DIR",
+          "LAKE_CACHE_URL",
+          "LAKE_RESTORE_ARTIFACTS",
+          "MATHLIB_CACHE_DIR"
+        ],
+        "required_effective_values": {
+          "LAKE_NO_CACHE": "1",
+          "LAKE_ARTIFACT_CACHE": "false",
+          "LAKE_RESTORE_ARTIFACTS": "0"
+        },
+        "capture_cleared_and_effective_values": true,
+        "LAKE_NO_CACHE_alone_is_sufficient": false,
+        "restore_download_unpack_or_reuse_of_cached_lean_artifacts": "FORBIDDEN",
+        "violation_result": "FAIL_NOT_PASS"
+      },
+      "network_isolation": {
+        "required": true,
+        "mechanism": "LINUX_USER_NETWORK_NAMESPACE",
+        "command_prefix": [
+          "unshare",
+          "--user",
+          "--map-root-user",
+          "--net",
+          "--fork",
+          "--"
+        ],
+        "preflight_probe": "RUN_PYTHON_UNDER_THE_EXACT_COMMAND_PREFIX_AND_COMPARE_/proc/self/ns/net_WITH_PARENT_WHILE_READING_socket.if_nameindex_AND_/proc/net/route",
+        "required_probe_exit_code": 0,
+        "required_interfaces": [
+          "lo"
+        ],
+        "verified_must_equal": true,
+        "child_namespace_must_differ_from_parent": true,
+        "non_loopback_routes_must_be_empty": true,
+        "inherited_sysfs_interfaces_are_diagnostic_only": true,
+        "covered_subprocesses": "EVERY_VERSION_GIT_IDENTITY_CLEAN_RESET_BUILD_AND_ASSUMPTION_AUDIT_SUBPROCESS",
+        "proxy_and_git_url_rewrite_controls": "DEFENSE_IN_DEPTH_ONLY_NOT_NETWORK_ISOLATION_EVIDENCE",
+        "unavailable_denied_or_unverified_result": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+        "tool_execution_when_unverified": "FORBIDDEN"
+      }
+    },
+    "build_output_reset": {
+      "source_workspace_mutation": "FORBIDDEN",
+      "target_workspace": "$REC_NEXT03_LEAN_REBUILD_WORKSPACE",
+      "steps": [
+        "before any project-aware Lake command, structurally enumerate and remove root and materialized-package .lake/build and .lake/config directories in the output-only copy",
+        "assert no .olean, .ilean, .volean, or .trace remains after the copied-workspace purge",
+        "run lake clean for the root package inside the rebuild workspace",
+        "structurally re-enumerate root and materialized package .lake/build and .lake/config directories from Lake configuration and the manifest",
+        "reject any generated directory that is a symlink or whose canonical path is not a descendant of the rebuild workspace",
+        "remove each validated generated directory inside the rebuild workspace only",
+        "assert no .olean, .ilean, .volean, or .trace file remains anywhere under the rebuild workspace",
+        "reject any artifact-cache restore, download, unpack, or reuse path; post-reset compiled artifacts may appear only as outputs of the recorded rebuild commands"
+      ],
+      "direct_trust_in_prematerialized_oleans": "FORBIDDEN",
+      "artifact_cache_restore_unpack_or_reuse": "FORBIDDEN",
+      "copied_workspace_reset_receipt_required": true,
+      "prebuild_reset_inventory_and_receipt_required": true
+    },
+    "build_phases": [
+      {
+        "phase": "CLEAN_DEPENDENCY_REBUILD",
+        "command": "lake build @mathlib",
+        "network_boundary": "VERIFIED_LINUX_USER_NETWORK_NAMESPACE",
+        "required_result": "mathlib and transitive dependency artifacts rebuilt from the verified materialized source copy",
+        "artifact_inventory_and_sha256_required": true
+      },
+      {
+        "phase": "AGGREGATE_COMPILE",
+        "command": "lake build @/RecNext03",
+        "network_boundary": "VERIFIED_LINUX_USER_NETWORK_NAMESPACE",
+        "required_result": "RecNext03 aggregate compiles against artifacts produced by CLEAN_DEPENDENCY_REBUILD",
+        "artifact_inventory_and_sha256_required": true
+      }
+    ],
+    "forbidden_commands": [
+      "lake update",
+      "lake upgrade",
+      "git fetch",
+      "git pull"
+    ],
+    "network_boundary": "VERIFIED_LINUX_USER_NETWORK_NAMESPACE_REQUIRED_FOR_EVERY_TOOL_SUBPROCESS",
+    "static_rejection": {
+      "method": "COMMENT_AND_STRING_AWARE_ANCHORED_LEXICAL_SCAN",
+      "full_lean_syntax_parser": false,
+      "scan_semantics": [
+        "blank nested Lean block-comment contents while preserving offsets and line numbers",
+        "blank Lean line-comment and double-quoted string contents while preserving offsets and line numbers",
+        "case-insensitive whole-word scan for sorry and admit in the remaining code-shaped text",
+        "case-insensitive line-anchored scan for axiom/axioms and constant/constants after optional private/protected prefixes"
+      ],
+      "local_source_scope": [
+        "formal/rec_next03/lean/RecNext03.lean",
+        "formal/rec_next03/lean/RecNext03/Contracts.lean",
+        "formal/rec_next03/lean/RecNext03/All.lean"
+      ],
+      "forbidden_declaration_command_families": [
+        "constant/constants",
+        "axiom/axioms"
+      ],
+      "forbidden_proof_terms_or_tactics": [
+        "sorry",
+        "admit"
+      ],
+      "required_finding_count": 0,
+      "finding_result": "FAIL_NOT_PASS",
+      "scan_pass_is_not_sufficient": "namespace-isolated rebuild and exact 25-theorem assumption audit are also required"
+    },
+    "assumption_audit": {
+      "directive": "#print axioms",
+      "expected_theorem_count": 25,
+      "expected_theorems": [
+        "RecNext03.h_eq_two_pi_hbar",
+        "RecNext03.energy_per_unit_from_ordinary_frequency",
+        "RecNext03.photon_null_of_orthonormal_tetrad_direction",
+        "RecNext03.vFace_static",
+        "RecNext03.vFace_static_pos_iff",
+        "RecNext03.vFace_static_neg_iff",
+        "RecNext03.vFace_static_zero_iff",
+        "RecNext03.upwindFlux_positive",
+        "RecNext03.upwindFlux_negative",
+        "RecNext03.upwindFlux_zero",
+        "RecNext03.classifyRed_positive",
+        "RecNext03.classifyBlue_negative",
+        "RecNext03.classifyRed_zero",
+        "RecNext03.classifyBlue_zero",
+        "RecNext03.upwind_right_zero_secant",
+        "RecNext03.upwind_left_zero_secant",
+        "RecNext03.zero_secants_agree_iff",
+        "RecNext03.depositPacketRate_value",
+        "RecNext03.remap_number_identity",
+        "RecNext03.remap_gcl_left",
+        "RecNext03.remap_gcl_right",
+        "RecNext03.remap_jvp_left",
+        "RecNext03.remap_jvp_right",
+        "RecNext03.event_tags_pairwise_distinct",
+        "RecNext03.restart_preserves_accepted_parent"
+      ],
+      "set_policy": "EACH_EXPECTED_THEOREM_EXACTLY_ONCE_NO_MISSING_EXTRA_OR_DUPLICATE",
+      "allowed_foundation_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "forbidden_axioms": [
+        "sorryAx",
+        "any local or user-introduced axiom",
+        "any reported axiom outside allowed_foundation_axioms"
+      ]
+    },
+    "missing_executable_result": "UNEXECUTED_ENVIRONMENT_GAP",
+    "missing_or_wrong_pinned_dependency_result": "UNEXECUTED_TOOLCHAIN_MISMATCH"
+  },
+  "receipt_contract": {
+    "raw_receipt_role": "ARCHIVAL_BYTE_SEAL_ONLY",
+    "raw_sha256_required": true,
+    "semantic_projection_fields": [
+      "schema",
+      "authority",
+      "status",
+      "lean_version",
+      "lake_version",
+      "toolchain_file_sha256",
+      "lakefile_sha256",
+      "lake_manifest_sha256",
+      "unique mathlib manifest entry inputRev and rev",
+      "source and rebuild workspace absolute canonical paths and byte-identity result",
+      "mathlib package Git HEAD, HEAD tree, remote origin URL, and clean status before and after copy",
+      "copied-workspace .lake/build and .lake/config reset before project-aware Lake commands",
+      "post-lake-clean prebuild reset inventory and zero compiled-artifact assertion",
+      "top-level environment_boundary.cleared_lean_cache_overrides and environment_boundary.effective_lean_cache_controls with LAKE_NO_CACHE=1, LAKE_ARTIFACT_CACHE=false, and LAKE_RESTORE_ARTIFACTS=0",
+      "Lean backend cache_policy.cleared_inherited, cache_policy.effective, and empty cache_policy.build_log_cache_reuse_findings",
+      "top-level network_isolation with mechanism, executable, probe command/exit_code/stdout_log/stderr_log/timed_out, exact interface list, verified flag, and reason",
+      "namespace-isolated clean dependency rebuild command and exit code",
+      "rebuilt mathlib and transitive dependency artifact inventory and SHA-256",
+      "namespace-isolated aggregate compile command and exit code",
+      "aggregate artifact inventory and SHA-256",
+      "cleared inherited search-path variables and effective runner-controlled paths",
+      "source_sha256 map sorted by path",
+      "build_exit_code",
+      "declaration names sorted lexicographically",
+      "assumptions sorted by declaration then assumption",
+      "forbidden_token_findings"
+    ],
+    "semantic_projection_sha256_required": true,
+    "pass_requirements": [
+      "exact pinned Lean and mathlib versions",
+      "unique structurally parsed lakefile and manifest mathlib entries resolve tag v4.33.0 to commit db584cd6d46c92f209a44c0f1c829460d327499d",
+      "materialized mathlib checkout HEAD matches the locked commit, is clean, and its HEAD tree is recorded",
+      "verified source workspace may be inside a Git checkout but its checked formal bytes, materialized mathlib HEAD/tree/clean identity, and complete before/after tree seal all pass while an output-only rebuild copy is used",
+      "the rebuild workspace is outside every Git worktree and confined to the selected output directory",
+      "all prior workspace and package build/config outputs are removed before project-aware Lake commands, removed again after lake clean, and no pre-materialized Lean compiled artifact remains before either phase",
+      "all inherited Lean artifact-cache controls are cleared, the required effective cache-disable values are recorded, and no cached compiled artifact is restored, unpacked, or reused",
+      "the unshare Linux user/network namespace preflight exits zero, records a child namespace inode distinct from the parent, reports exactly loopback through socket.if_nameindex with no non-loopback route, and is recorded as verified",
+      "every tool subprocess uses the exact verified namespace prefix; proxy and Git URL rewrite controls alone never satisfy this requirement",
+      "namespace-isolated lake build @mathlib succeeds and rebuilt dependency artifact hashes are recorded",
+      "namespace-isolated lake build @/RecNext03 succeeds against those rebuilt artifacts",
+      "no local constant, axiom, sorry, or admit",
+      "exact 25-theorem assumption audit with only the narrow foundation allowlist"
+    ],
+    "formula_pass_label": "PASS_NONAUTHORITATIVE_LEAN_KERNEL_CHECK"
+  },
+  "fail_closed": [
+    "Do not execute lake update or perform dependency resolution during this verification.",
+    "Do not run any version, Git identity, clean/reset, build, or assumption-audit subprocess unless the unshare Linux user/network namespace preflight verifies a child namespace inode, loopback-only socket.if_nameindex result, and no non-loopback route. An inherited /sys mount is diagnostic only.",
+    "Do not treat dead proxy variables, Git URL rewrites, or an inherited /sys/class/net view as proof of network isolation; if unshare is missing, denied, exits nonzero, retains the parent namespace, exposes a non-loopback socket interface, or has a non-loopback route, return ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS before tool execution.",
+    "Do not report PASS if the manifest, unique inputRev/tag+rev mapping, materialized mathlib Git HEAD, clean status, or tree receipt is missing or mismatched.",
+    "Do not build directly in or mutate the verified source workspace.",
+    "Do not reject a verified source workspace solely because it is inside a Git checkout; instead require its byte, materialized-mathlib identity, and unchanged seals. The rebuild workspace remains forbidden inside every Git worktree.",
+    "Do not trust, reuse, or accept a pre-materialized .olean, .ilean, .volean, trace, release build, or cache artifact from the source workspace or copied package trees.",
+    "Do not treat LAKE_NO_CACHE=1 alone as sufficient; require and record LAKE_ARTIFACT_CACHE=false and LAKE_RESTORE_ARTIFACTS=0 after clearing every inherited artifact-cache override.",
+    "Do not restore, download, unpack, or reuse a cached .olean, .ilean, .volean, trace, or equivalent Lean compiled artifact; any such path is FAIL_NOT_PASS.",
+    "Do not report PASS unless copied .lake/build and .lake/config outputs were purged before lake env or lake clean, purged again before build, rebuilt under the verified namespace, inventoried, and then consumed by the aggregate compile.",
+    "Do not inherit any language, package, cache, or userbase override listed in execution.environment_policy.clear_inherited; only captured runner-controlled paths are permitted.",
+    "Do not weaken a theorem or add an axiom to obtain a build.",
+    "Do not treat tagged variable or unit separation as a constructed physical adapter.",
+    "Do not treat an algebraic theorem as source bytes, implementation parity, production admission, or scientific evidence.",
+    "Do not modify the checked-in Lake package during evidence-producing execution."
+  ],
+  "required_final_state": {
+    "scientific_terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "physical_face_admission": false
+  }
+}

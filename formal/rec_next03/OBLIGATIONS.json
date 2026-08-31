@@ -1,0 +1,531 @@
+{
+  "schema": "rec-next03-formal-obligations/v1",
+  "authority": "NONAUTHORITATIVE_CONDITIONAL_PROOF_CONTRACT",
+  "continuation_identity": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "base_commit": "6f6ed7720505537c9f404656cb2bc53d117e40ab",
+    "base_tree": "da55957cfc70f76120724677431b351c5f52d019",
+    "base_parent": "7adb61ed0f391f62ca2a43b7d8f9e6cb0933da0a",
+    "pull_request": 46,
+    "pull_request_state": "OPEN_DRAFT_UNMERGED"
+  },
+  "scientific_boundary": {
+    "terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "promotion_permitted": false
+  },
+  "verification_policy": {
+    "cloud_formal_tool_execution": "UNEXECUTED_ENVIRONMENT_GAP",
+    "missing_tool_result": "UNEXECUTED_ENVIRONMENT_GAP",
+    "proof_receipt_authority": "NONAUTHORITATIVE",
+    "raw_receipt_role": "ARCHIVAL_BYTE_SEAL_ONLY",
+    "semantic_projection_required": true,
+    "synthetic_pass_forbidden": true
+  },
+  "mutation_policy": {
+    "repository_mutations_authorized_by_this_contract": [],
+    "external_mutations_authorized": [
+      "caller_selected_receipt_directory_outside_git_worktree",
+      "disposable_tool_build_directory_outside_git_worktree"
+    ],
+    "forbidden_mutations": [
+      "production_source_or_test_edit",
+      "tracked_evidence_normalization",
+      "scientific_claim_promotion",
+      "pull_request_ready_or_merge_transition"
+    ]
+  },
+  "obligations": [
+    {
+      "id": "REC3-IDENTITY-001",
+      "title": "Continuation identity is checked before local proof execution",
+      "kind": "governance",
+      "premises": [
+        "base commit, tree, and parent equal continuation_identity",
+        "the local worktree is isolated from preserved evidence"
+      ],
+      "formula_status": "NOT_APPLICABLE",
+      "authority_status": "PINNED_INPUT_IDENTITY",
+      "implementation_status": "HANDOFF_GATE_REQUIRED",
+      "verification_status": "SPECIFIED_NOT_EXECUTED_IN_THIS_CONTRACT",
+      "required_evidence": [
+        "git object readback",
+        "exact changed-path allowlist",
+        "manifest verification"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FRAME-001",
+      "title": "Rotation-free hydrogen standard boost identities",
+      "kind": "conditional_formula",
+      "premises": [
+        "metric signature (-,+,+,+)",
+        "0 <= beta dot beta < 1",
+        "normal tetrad is orthonormal",
+        "no additional SO(3) rotation"
+      ],
+      "formula_status": "FORMULA_CLOSED_CONDITIONAL",
+      "authority_status": "PENDING_APPROVAL_AND_HASH_BINDING",
+      "implementation_status": "RESEARCH_ARITHMETIC_ONLY",
+      "verification_status": "WOLFRAM_SAGE_LEAN_ROCQ_SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "orthonormality",
+        "determinant +1",
+        "Doppler positivity",
+        "aberrated direction norm",
+        "approved tetrad authority record"
+      ],
+      "mutation_authority": "EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FRAME-002",
+      "title": "Proposed standard-boost ID is not silently aliased",
+      "kind": "authority_firewall",
+      "premises": [
+        "HYDROGEN_STANDARD_BOOST_TETRAD_V1 is proposed",
+        "the repository generic hydrogen-tetrad tag is distinct"
+      ],
+      "formula_status": "NOT_APPLICABLE",
+      "authority_status": "ALIAS_FORBIDDEN_UNTIL_AUTHENTICATED_APPROVAL",
+      "implementation_status": "FAIL_CLOSED_REQUIRED",
+      "verification_status": "REVIEW_REQUIRED",
+      "required_evidence": [
+        "authenticated ID-to-formula mapping",
+        "metric, orientation, and no-rotation binding"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FACE-001",
+      "title": "Moving Doppler-face relative speed and half-range signs",
+      "kind": "conditional_formula",
+      "premises": [
+        "Delta_nu_D > 0",
+        "ordinary frequency convention",
+        "the face x_b(t) and line/grid derivatives are explicit"
+      ],
+      "formula_status": "FORMULA_CLOSED_CONDITIONAL",
+      "authority_status": "FRAME_AND_GRID_AUTHORITY_PENDING",
+      "implementation_status": "RESEARCH_GEOMETRY_PARTIAL",
+      "verification_status": "WOLFRAM_SAGE_LEAN_ROCQ_SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "moving-coordinate chain rule",
+        "red inflow iff v_red > 0",
+        "blue inflow iff v_blue < 0",
+        "grazing iff the corresponding v_face equals zero"
+      ],
+      "mutation_authority": "EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-EVENT-RH-001",
+      "title": "Characteristic R_H zero is a dedicated typed event",
+      "kind": "event_contract",
+      "premises": [
+        "R_H is the hydrogen-frame logarithmic frequency rate"
+      ],
+      "formula_status": "EVENT_SURFACE_IDENTIFIED",
+      "authority_status": "TURNING_POLICY_PENDING",
+      "implementation_status": "NOT_PRODUCTION_WIRED",
+      "verification_status": "SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "turning localization",
+        "virtual-spike singularity handling",
+        "accepted restart transaction"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-EVENT-RED-001",
+      "title": "Red-face v_x zero is independent of R_H zero",
+      "kind": "event_contract",
+      "premises": [
+        "moving face speed is the REC3-FACE-001 formula"
+      ],
+      "formula_status": "DISTINCTNESS_CLOSED_BY_FORMULA_AND_COUNTEREXAMPLE",
+      "authority_status": "ACCEPTANCE_RULE_PENDING",
+      "implementation_status": "EXACT_ZERO_SIGNAL_PARTIAL",
+      "verification_status": "SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "red guard localization",
+        "one-sided exact-start classification",
+        "saltation or explicit nondifferentiability result"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-EVENT-BLUE-001",
+      "title": "Blue-face v_x zero is independent of R_H zero",
+      "kind": "event_contract",
+      "premises": [
+        "moving face speed is the REC3-FACE-001 formula"
+      ],
+      "formula_status": "DISTINCTNESS_CLOSED_BY_FORMULA_AND_COUNTEREXAMPLE",
+      "authority_status": "ACCEPTANCE_RULE_PENDING",
+      "implementation_status": "EXACT_ZERO_SIGNAL_PARTIAL",
+      "verification_status": "SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "blue guard localization",
+        "one-sided exact-start classification",
+        "saltation or explicit nondifferentiability result"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-EVENT-MULTI-001",
+      "title": "Simultaneous and tangential zero events fail closed",
+      "kind": "event_contract",
+      "premises": [
+        "all exact zero node indices are preserved in canonical order"
+      ],
+      "formula_status": "TRANSVERSAL_IDENTITY_RESET_SALTATION_CLOSED_CONDITIONAL",
+      "authority_status": "MULTI_GUARD_AND_TANGENTIAL_POLICY_PENDING",
+      "implementation_status": "TYPED_SIGNAL_ONLY",
+      "verification_status": "SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "ordered simultaneous-node transaction",
+        "rejected-trial rollback",
+        "no epsilon speed replacement",
+        "tangential root higher-order analysis or explicit stop"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-INCOMING-001",
+      "title": "Exact ordered 26-direction incoming values come from accepted causal data",
+      "kind": "source_authority",
+      "premises": [
+        "red and blue incoming masks use REC3-FACE-001",
+        "node ordering and quadrature semantic identity are fixed"
+      ],
+      "formula_status": "BOUNDARY_LAW_CLOSED",
+      "authority_status": "SOURCE_DATA_ABSENT",
+      "implementation_status": "NOT_MATERIALIZED",
+      "verification_status": "BLOCKED_ON_EXTERNAL_DATA",
+      "required_evidence": [
+        "accepted initial surface or causal directional history",
+        "ordered 26-node values",
+        "frame and quadrature hash binding"
+      ],
+      "forbidden_substitutes": [
+        "scalar-to-26 duplication",
+        "manufactured zero-source witness",
+        "nearest-neighbor replication"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-VARIABLE-001",
+      "title": "Signed Delta_f and total occupation f remain separate",
+      "kind": "variable_firewall",
+      "premises": [
+        "Delta_f = f - f_ref",
+        "virtual-spike maps act on signed Delta_f",
+        "positive paired collision laws act on total f"
+      ],
+      "formula_status": "ADAPTER_FORMULA_CLOSED_CONDITIONAL",
+      "authority_status": "REFERENCE_FIELD_AND_BYTES_PENDING",
+      "implementation_status": "TYPED_RESEARCH_SEPARATION_PARTIAL",
+      "verification_status": "CODE_AND_FORMAL_REVIEW_REQUIRED",
+      "required_evidence": [
+        "approved f_ref definition",
+        "frame-dependent reference bytes",
+        "Delta_f-to-f adapter",
+        "adapter JVP"
+      ],
+      "forbidden_operations": [
+        "implicit Delta_f-to-f conversion",
+        "virtual-spike output passed directly to total-f source action"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-UNIT-ONEPHOTON-001",
+      "title": "One-photon paired coefficients act on total occupation in s^-1",
+      "kind": "unit_contract",
+      "premises": [
+        "eta >= 0",
+        "kappa >= 0",
+        "source population and profile registry are bound"
+      ],
+      "formula_status": "PAIRED_LAW_AND_PLANCK_NULL_CLOSED_CONDITIONAL",
+      "authority_status": "EXACT_SOURCE_REGISTRY_PENDING",
+      "implementation_status": "TYPED_RESEARCH_CHANNEL_PARTIAL",
+      "verification_status": "CODE_AND_FORMAL_REVIEW_REQUIRED",
+      "required_evidence": [
+        "source bytes",
+        "line/profile ownership",
+        "population and degeneracy provenance"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-UNIT-PACKET-001",
+      "title": "Two-photon and Raman packet rates require exactly-once deposition",
+      "kind": "unit_firewall",
+      "premises": [
+        "R_sq has units packet per H per second",
+        "C_occ_iq = n_H/mu_i sum_s B_is R_sq"
+      ],
+      "formula_status": "PACKET_LAWS_AND_DEPOSITION_UNITS_CLOSED_CONDITIONAL",
+      "authority_status": "BIN_OWNERSHIP_AND_DEPOSITION_AUTHORITY_PENDING",
+      "implementation_status": "TYPED_PACKET_CHANNELS_RESEARCH_ONLY",
+      "verification_status": "CODE_AND_FORMAL_REVIEW_REQUIRED",
+      "required_evidence": [
+        "byte-locked bin ownership",
+        "approved B_is",
+        "n_H and mu_i ownership",
+        "resonant one-plus-one exclusion ledger"
+      ],
+      "forbidden_operations": [
+        "packet rate added directly to one-photon occupation action",
+        "double n_H/mu_i normalization",
+        "extra one-photon line prefactor or profile",
+        "resonant channel double count"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-TRANSFER-001",
+      "title": "Paired constant transfer supports signed affine chi",
+      "kind": "conditional_formula",
+      "premises": [
+        "eta >= 0",
+        "kappa >= 0",
+        "chi = kappa - eta",
+        "dt >= 0"
+      ],
+      "formula_status": "EXACT_SOLUTION_JVP_AND_CHI_ZERO_LIMIT_CLOSED_CONDITIONAL",
+      "authority_status": "SOURCE_COEFFICIENT_AUTHORITY_PENDING",
+      "implementation_status": "PRODUCTION_SIGNED_CHI_PATH_PENDING",
+      "verification_status": "WOLFRAM_AND_CODE_SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "stable small-abs-chi-dt branch",
+        "population-inversion positivity",
+        "analytic JVP parity"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-DEPOSITION-001",
+      "title": "Positive number- and energy-preserving deposition",
+      "kind": "conditional_formula",
+      "premises": [
+        "source energy lies in the target hull",
+        "target mode measures are positive"
+      ],
+      "formula_status": "CONSERVATION_CONSTRAINTS_CLOSED_CONDITIONAL",
+      "authority_status": "LOCALITY_AXIOM_AND_MAP_APPROVAL_PENDING",
+      "implementation_status": "NOT_PRODUCTION_ADMITTED",
+      "verification_status": "WOLFRAM_SAGE_LEAN_ROCQ_SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "B_is >= 0",
+        "sum_i B_is = 1",
+        "sum_i E_i B_is = E_s",
+        "outside-hull rejection",
+        "full dn_H, dmu_i, dB_is, dR_sq JVP"
+      ],
+      "proposed_id": "ADJACENT_TWO_NODE_BARYCENTRIC_DEPOSITION_V1",
+      "proposed_id_is_authority": false,
+      "mutation_authority": "EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-REMAP-001",
+      "title": "Fixed-node remap obeys positivity and discrete GCL including JVP",
+      "kind": "conditional_formula",
+      "premises": [
+        "old and new mode measures are explicit and positive",
+        "angular ordering is fixed"
+      ],
+      "formula_status": "CONSERVATION_OBLIGATIONS_IDENTIFIED",
+      "authority_status": "REMAP_ALGORITHM_AND_APPROVAL_PENDING",
+      "implementation_status": "NOT_RUN",
+      "verification_status": "SAGE_SINGULAR_SPECIFIED_NOT_EXECUTED",
+      "required_evidence": [
+        "P elementwise nonnegative",
+        "constant-state preservation",
+        "measure conservation",
+        "differentiated constant and measure constraints",
+        "remap JVP"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-SAMPLER-001",
+      "title": "Lagrangian face sampler is executable and backtraced",
+      "kind": "implementation_authority",
+      "premises": [
+        "Lagrangian evolution is selected by an approved contract"
+      ],
+      "formula_status": "CHARACTERISTIC_LAW_CLOSED_CONDITIONAL",
+      "authority_status": "DIRECTIONAL_HISTORY_AND_SAMPLER_APPROVAL_PENDING",
+      "implementation_status": "MODE_STRING_ONLY_NOT_EXECUTABLE_CONTRACT",
+      "verification_status": "BLOCKED_ON_AUTHORITY_AND_IMPLEMENTATION",
+      "required_evidence": [
+        "approved initial surface",
+        "backtraced accepted history",
+        "geometry and source hash binding",
+        "event/restart implementation"
+      ],
+      "proposed_id": "LAGRANGIAN_BACKTRACED_FACE_SAMPLER_V1",
+      "proposed_id_is_authority": false,
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-SOURCE-BYTES-001",
+      "title": "Exact source bytes and channel ownership are externally verified",
+      "kind": "source_authority",
+      "premises": [
+        "source registry names resolve to readable immutable bytes"
+      ],
+      "formula_status": "NOT_APPLICABLE",
+      "authority_status": "ABSENT_OR_PARTIAL",
+      "implementation_status": "DIGEST_BINDING_RESEARCH_ONLY",
+      "verification_status": "BLOCKED_ON_EXTERNAL_AUTHORITY",
+      "required_evidence": [
+        "byte resolver",
+        "source and dependency SHA-256 readback",
+        "bin ownership",
+        "channel exclusion ledger"
+      ],
+      "forbidden_substitutes": [
+        "SHA-shaped string alone",
+        "boolean readiness flag",
+        "formula document"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-VERIFY-001",
+      "title": "External physical-face verifier exists and resolves all authority",
+      "kind": "external_verification",
+      "premises": [
+        "all F1 through F5 authority records exist"
+      ],
+      "formula_status": "NOT_APPLICABLE",
+      "authority_status": "VERIFIER_ABSENT",
+      "implementation_status": "NOT_RUN",
+      "verification_status": "BLOCKED",
+      "required_evidence": [
+        "independent verifier implementation",
+        "byte and semantic identity checks",
+        "production-admission result"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MAINTAIN_BLOCKER"
+    },
+    {
+      "id": "REC3-FORMAL-WOLFRAM-001",
+      "title": "Wolfram and xAct exact transcription checks",
+      "kind": "nonauthoritative_verification",
+      "premises": [
+        "formal/rec_next03/wolfram/verify_frame_face_event.wls is unchanged",
+        "a compatible Wolfram Engine and xAct are available"
+      ],
+      "formula_status": "CHECK_SCRIPT_PRESENT",
+      "authority_status": "NONAUTHORITATIVE",
+      "implementation_status": "SCRIPT_PRESENT",
+      "verification_status": "UNEXECUTED_ENVIRONMENT_GAP",
+      "required_evidence": [
+        "raw JSON receipt",
+        "tool version and system ID",
+        "canonical check-ID projection"
+      ],
+      "mutation_authority": "EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FORMAL-SAGE-001",
+      "title": "SageMath and Singular independent polynomial checks",
+      "kind": "nonauthoritative_verification",
+      "premises": [
+        "SageMath and Singular are available locally"
+      ],
+      "formula_status": "CHECK_SCRIPT_PRESENT",
+      "authority_status": "NONAUTHORITATIVE",
+      "implementation_status": "CHECK_SCRIPT_PRESENT_LOCAL_EXECUTION_REQUIRED",
+      "verification_status": "UNEXECUTED_ENVIRONMENT_GAP",
+      "required_evidence": [
+        "exact ideal reductions",
+        "counterexamples separating the three zero events",
+        "raw receipt and semantic projection"
+      ],
+      "mutation_authority": "EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FORMAL-LEAN-001",
+      "title": "Lean and mathlib conditional theorem package",
+      "kind": "nonauthoritative_verification",
+      "premises": [
+        "Lean v4.33.0 and mathlib v4.33.0 are available from the pinned package"
+      ],
+      "formula_status": "THEOREM_PACKAGE_PRESENT",
+      "authority_status": "NONAUTHORITATIVE",
+      "implementation_status": "FORMAL_PACKAGE_LOCAL_BUILD_REQUIRED",
+      "verification_status": "UNEXECUTED_ENVIRONMENT_GAP",
+      "required_evidence": [
+        "clean build",
+        "no sorry, admit, or user axiom",
+        "printed assumptions audit"
+      ],
+      "mutation_authority": "DISPOSABLE_BUILD_AND_EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-FORMAL-ROCQ-001",
+      "title": "Rocq independent conditional theorem package",
+      "kind": "nonauthoritative_verification",
+      "premises": [
+        "Rocq 9.2.0 is available locally"
+      ],
+      "formula_status": "THEOREM_PACKAGE_PRESENT",
+      "authority_status": "NONAUTHORITATIVE",
+      "implementation_status": "FORMAL_PACKAGE_LOCAL_BUILD_REQUIRED",
+      "verification_status": "UNEXECUTED_ENVIRONMENT_GAP",
+      "required_evidence": [
+        "clean build",
+        "no Admitted or user Axiom",
+        "Print Assumptions audit"
+      ],
+      "mutation_authority": "DISPOSABLE_BUILD_AND_EXTERNAL_RECEIPT_ONLY",
+      "claim_effect": "NONE"
+    },
+    {
+      "id": "REC3-STATE-001",
+      "title": "Formal progress cannot promote the physical split claim",
+      "kind": "scientific_boundary",
+      "premises": [
+        "one or more formula checks may pass"
+      ],
+      "formula_status": "NOT_APPLICABLE",
+      "authority_status": "BOUNDARY_LOCKED",
+      "implementation_status": "FAIL_CLOSED_REQUIRED",
+      "verification_status": "MANDATORY_REVIEW",
+      "required_evidence": [
+        "scientific terminal unchanged",
+        "physical face materialization false",
+        "production admission false"
+      ],
+      "mutation_authority": "NONE",
+      "claim_effect": "MUST_REMAIN_NO_PASS_REC_PHYSICAL_SPLIT"
+    }
+  ]
+}

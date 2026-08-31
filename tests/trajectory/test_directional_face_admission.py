@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import hashlib
 import importlib
 import json
@@ -13,6 +14,9 @@ import pytest
 
 from full_bianchi_hyrec.background.sequence import BackgroundSnapshotSequence
 from full_bianchi_hyrec.recoil.nonlinear_bose_runtime import LineBoundaryConfig
+from full_bianchi_hyrec.trajectory.characteristic_angular import (
+    BianchiCharacteristicFaceSolver,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -133,6 +137,101 @@ def test_frequency_speed_zero_requires_event_contract() -> None:
             n_steps=64,
         )
     assert exc_info.value.node_indices == (0, 1)
+    assert exc_info.value.event_kind == module.CHARACTERISTIC_R_H_ZERO
+
+
+def test_moving_red_face_zero_is_not_hidden_by_nonzero_characteristic_rate() -> None:
+    """Catch checking only R_H=0 while a moving red face has v_x=0."""
+
+    module = admission_module()
+    _directions, _weights, line = inputs()
+    sequence = BackgroundSnapshotSequence.from_npz(
+        BACKGROUND, "Bianchi_II_large_shear"
+    )
+    snapshot = sequence.snapshot_at_tau(TAU0 + 1.0e-8)
+    quadrature = contract()
+    base_kinematics = module.compute_hydrogen_frame_face_kinematics(
+        snapshot=snapshot,
+        line=line,
+        quadrature=quadrature,
+    )
+    moving_line = replace(
+        line,
+        D0_x_red_s_inv=float(base_kinematics.red_speed_x_s_inv[0]),
+    )
+    kinematics = module.compute_hydrogen_frame_face_kinematics(
+        snapshot=snapshot,
+        line=moving_line,
+        quadrature=quadrature,
+    )
+    solver = BianchiCharacteristicFaceSolver(snapshot)
+    characteristic_rates = np.asarray(
+        [
+            solver.local_characteristic(direction).R_hydrogen_s_inv
+            for direction in kinematics.direction_normal
+        ]
+    )
+
+    assert not np.any(characteristic_rates == 0.0)
+    assert np.flatnonzero(kinematics.red_grazing).tolist() == [0, 1]
+    assert not np.any(kinematics.blue_grazing)
+    with pytest.raises(module.FrequencySpeedZeroEventRequired) as exc_info:
+        module.run_manufactured_52_ray_geometry_witness(
+            snapshot=snapshot,
+            line=moving_line,
+            quadrature=quadrature,
+            logarithmic_frequency_offset=1.0e-4,
+            n_steps=64,
+        )
+    assert exc_info.value.event_kind == module.RED_FACE_V_X_ZERO
+    assert exc_info.value.node_indices == (0, 1)
+
+
+def test_moving_blue_face_zero_is_not_hidden_by_nonzero_characteristic_rate() -> None:
+    """Catch checking only R_H=0 while a moving blue face has v_x=0."""
+
+    module = admission_module()
+    _directions, _weights, line = inputs()
+    sequence = BackgroundSnapshotSequence.from_npz(
+        BACKGROUND, "Bianchi_II_large_shear"
+    )
+    snapshot = sequence.snapshot_at_tau(TAU0 + 1.0e-8)
+    quadrature = contract()
+    base_kinematics = module.compute_hydrogen_frame_face_kinematics(
+        snapshot=snapshot,
+        line=line,
+        quadrature=quadrature,
+    )
+    moving_line = replace(
+        line,
+        D0_x_blue_s_inv=float(base_kinematics.blue_speed_x_s_inv[0]),
+    )
+    kinematics = module.compute_hydrogen_frame_face_kinematics(
+        snapshot=snapshot,
+        line=moving_line,
+        quadrature=quadrature,
+    )
+    solver = BianchiCharacteristicFaceSolver(snapshot)
+    characteristic_rates = np.asarray(
+        [
+            solver.local_characteristic(direction).R_hydrogen_s_inv
+            for direction in kinematics.direction_normal
+        ]
+    )
+
+    assert not np.any(characteristic_rates == 0.0)
+    assert not np.any(kinematics.red_grazing)
+    assert np.flatnonzero(kinematics.blue_grazing).tolist() == [0, 1]
+    with pytest.raises(module.FrequencySpeedZeroEventRequired) as exc_info:
+        module.run_manufactured_52_ray_geometry_witness(
+            snapshot=snapshot,
+            line=moving_line,
+            quadrature=quadrature,
+            logarithmic_frequency_offset=1.0e-4,
+            n_steps=64,
+        )
+    assert exc_info.value.event_kind == module.BLUE_FACE_V_X_ZERO
+    assert exc_info.value.node_indices == (0, 1)
 
 
 def test_missing_source_law_and_fixed_node_remap_fail_closed() -> None:
@@ -171,7 +270,11 @@ def test_source_manifest_rejects_missing_duplicate_units_and_hashes() -> None:
         module.DirectionalSourceChannel(
             name=name,
             owner_label="SOURCE_IDENTICAL_SCALAR_PRIMITIVE",
-            coefficient_units="s^-1",
+            coefficient_units=(
+                module.PACKET_RATE_PER_H_S
+                if name in {"two_photon", "raman"}
+                else "s^-1"
+            ),
             source_sha256=hashlib.sha256(name.encode()).hexdigest(),
         )
         for name in module.REQUIRED_SOURCE_CHANNELS
@@ -208,7 +311,11 @@ def test_declarations_cannot_self_promote_to_physical_authority() -> None:
         module.DirectionalSourceChannel(
             name=name,
             owner_label=module.SOURCE_IDENTICAL_SCALAR_PRIMITIVE,
-            coefficient_units="s^-1",
+            coefficient_units=(
+                module.PACKET_RATE_PER_H_S
+                if name in {"two_photon", "raman"}
+                else "s^-1"
+            ),
             source_sha256=hashlib.sha256(name.encode()).hexdigest(),
         )
         for name in module.REQUIRED_SOURCE_CHANNELS
@@ -232,12 +339,104 @@ def test_declarations_cannot_self_promote_to_physical_authority() -> None:
         quadrature=contract(),
         **common,
     )
-    assert declared.declared_contract_complete
+    assert not declared.declared_contract_complete
+    assert not declared.executable_source_complete
     assert not declared.physical_face_admitted
     assert not declared.production_integration_authorized
     assert declared.blockers == (
+        module.BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY,
+        module.SOURCE_FACE_ABSENT,
+        module.BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT,
+        module.BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY,
         module.BLOCKED_EXTERNAL_DIRECTIONAL_AUTHORITY_VERIFICATION,
     )
+
+
+def test_typed_source_assembly_preserves_domains_but_cannot_clear_authority() -> None:
+    module = admission_module()
+    from full_bianchi_hyrec.trajectory.directional_source_assembly import (
+        DirectionalOccupationSourceChannel,
+        DirectionalPacketSourceChannel,
+        DirectionalSourceAssembly,
+        DirectionalVirtualSpikeJump,
+    )
+
+    quadrature = contract()
+    dependencies = {"state": "1" * 64}
+    assembly = DirectionalSourceAssembly(
+        quadrature_sha256=quadrature.semantic_sha256,
+        channels=(
+            DirectionalVirtualSpikeJump(
+                name="virtual_spike",
+                owner_label=module.SOURCE_IDENTICAL_SCALAR_PRIMITIVE,
+                source_sha256="2" * 64,
+                dependency_sha256=dependencies,
+                optical_depth=np.zeros(26),
+                equilibrium_departure=np.zeros(26),
+            ),
+            DirectionalOccupationSourceChannel(
+                name="one_photon",
+                owner_label=module.THEORY_CONTRACT_DERIVED_26_ORDINATE_FACE_V1,
+                source_sha256=hashlib.sha256(b"one_photon").hexdigest(),
+                dependency_sha256=dependencies,
+                emission_s_inv=np.zeros(26),
+                absorption_s_inv=np.zeros(26),
+            ),
+            *(
+                DirectionalPacketSourceChannel(
+                    name=name,
+                    owner_label=module.THEORY_CONTRACT_DERIVED_26_ORDINATE_FACE_V1,
+                    source_sha256=hashlib.sha256(name.encode()).hexdigest(),
+                    dependency_sha256=dependencies,
+                    emission_per_H_s=np.zeros(26),
+                    absorption_per_H_s=np.zeros(26),
+                )
+                for name in ("two_photon", "raman")
+            ),
+        ),
+    )
+    audit = module.audit_directional_face_readiness(
+        quadrature=quadrature,
+        source_assembly=assembly,
+        incoming_authority_present=True,
+        evolution_mode=module.LAGRANGIAN_SAMPLER,
+        angular_remap_contract_sha256=None,
+        speed_zero_event_restart_contract_sha256="3" * 64,
+    )
+
+    assert not audit.declared_contract_complete
+    assert not audit.executable_source_complete
+    assert audit.source_manifest["contract_kind"] == "TYPED_DOMAIN_SEPARATED_ASSEMBLY"
+    assert audit.source_manifest["assembly_quadrature_bound"]
+    assert audit.source_manifest["assembly_structurally_complete"]
+    assert not audit.source_manifest["executable_complete"]
+    assert not audit.source_manifest["occupation_action_available"]
+    assert not audit.source_manifest["deposition_authority_present"]
+    assert not audit.source_manifest["reference_field_adapter_present"]
+    assert (
+        audit.source_manifest["virtual_stored_variable"]
+        == "SIGNED_SPECTRAL_DISTORTION_DELTA_F"
+    )
+    assert audit.source_manifest["assembly_semantic_sha256"] == assembly.semantic_sha256
+    units = {
+        row["name"]: row["coefficient_units"]
+        for row in audit.source_manifest["channel_declarations"]
+    }
+    assert units == {
+        "virtual_spike": "s^-1",
+        "one_photon": "s^-1",
+        "two_photon": module.PACKET_RATE_PER_H_S,
+        "raman": module.PACKET_RATE_PER_H_S,
+    }
+    assert audit.blockers == (
+        module.BLOCKED_DIRECTIONAL_SOURCE_COEFFICIENT_AUTHORITY,
+        module.SOURCE_FACE_ABSENT,
+        module.BLOCKED_FREQUENCY_SPEED_ZERO_EVENT_RESTART_CONTRACT,
+        module.BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY,
+        module.BLOCKED_EXTERNAL_DIRECTIONAL_AUTHORITY_VERIFICATION,
+    )
+    assert not audit.physical_face_admitted
+    assert not audit.production_integration_authorized
 
 
 def test_untagged_or_wrong_frame_contract_is_rejected() -> None:
@@ -253,6 +452,28 @@ def test_untagged_or_wrong_frame_contract_is_rejected() -> None:
                 frequency_measure=module.ORDINARY_FREQUENCY_HZ,
                 source_sha256="a" * 64,
             )
+
+    # The formula package proposes this more specific tetrad ID, but a
+    # proposed string is not an authenticated alias for the existing contract.
+    with pytest.raises(ValueError, match=module.BLOCKED_ANGULAR_FRAME_CONTRACT):
+        module.AngularQuadratureContract(
+            directions=directions,
+            weights=weights,
+            frame=module.HYDROGEN_FRAME,
+            tetrad="HYDROGEN_STANDARD_BOOST_TETRAD_V1",
+            frequency_measure=module.ORDINARY_FREQUENCY_HZ,
+            source_sha256="a" * 64,
+        )
+
+
+def test_quadrature_arrays_are_bytes_backed_and_digest_cannot_mutate() -> None:
+    candidate = contract()
+    digest = candidate.semantic_sha256
+    with pytest.raises(ValueError):
+        candidate.directions.setflags(write=True)
+    with pytest.raises(ValueError):
+        candidate.weights.setflags(write=True)
+    assert candidate.semantic_sha256 == digest
 
 
 def test_authority_labels_are_noninterchangeable() -> None:

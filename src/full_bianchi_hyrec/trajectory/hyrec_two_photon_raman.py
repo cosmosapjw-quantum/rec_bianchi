@@ -8,10 +8,12 @@ reader and the real--virtual coefficients in ``hydrogen.c``.  They operate in
 HyRec's source units: energies and radiation temperature are in eV and the
 integrated-bin coefficients are rates in ``s^-1``.
 
-``PhysicalTwoPhotonRamanBin`` is the scalar, unpolarized positive paired-rate
-physics contract used when an angle-resolved radiation field is evolved.  It
-implements the two-photon and Raman gain/loss factors, but it is not relabelled
-as an independently stored original-HyRec coefficient.
+``PhysicalTwoPhotonRamanBin`` is the scalar, unpolarized positive paired-packet
+contract used when an angle-resolved radiation field is evolved.  It implements
+the two-photon and Raman gain/loss factors per H per second.  Those packet rates
+are not occupation derivatives until an authorized ``n_H B_is / mu_i``
+deposition is applied, and they are not relabelled as independently stored
+original-HyRec coefficients.
 """
 from __future__ import annotations
 
@@ -415,30 +417,51 @@ class PhysicalTwoPhotonRamanBin:
         companion_occupation: float,
         tracked_occupation: float,
     ) -> tuple[float, float]:
+        """Return forward/reverse photon-packet rates per H per second."""
+
         fc = float(companion_occupation)
         ft = float(tracked_occupation)
         if not (math.isfinite(fc) and fc >= 0.0 and math.isfinite(ft) and ft >= 0.0):
             raise ValueError("occupations must be nonnegative and finite")
+        emission, absorption = self.paired_packet_coefficients_per_H_s(
+            companion_occupation=fc
+        )
+        return float(emission * (1.0 + ft)), float(absorption * ft)
+
+    def paired_packet_coefficients_per_H_s(
+        self,
+        *,
+        companion_occupation: float,
+    ) -> tuple[float, float]:
+        """Return positive tracked-photon packet coefficients per H per second.
+
+        ``companion_occupation`` is held fixed while the tracked-bin action is
+        written as ``emission*(1+f_tracked) - absorption*f_tracked``.  This is
+        not an occupation derivative until an authorized ``n_H B_is / mu_i``
+        deposition is applied.
+        """
+
+        fc = float(companion_occupation)
+        if not (math.isfinite(fc) and fc >= 0.0):
+            raise ValueError("companion occupation must be nonnegative and finite")
         rate = self.integrated_rate_s_inv
         if self.process == "two_photon":
-            forward = rate * self.upper_population * (1.0 + fc) * (1.0 + ft)
-            reverse = (
+            emission = rate * self.upper_population * (1.0 + fc)
+            absorption = (
                 rate
                 * self.upper_to_ground_degeneracy_ratio
                 * self.ground_population
                 * fc
-                * ft
             )
         else:
-            forward = rate * self.upper_population * fc * (1.0 + ft)
-            reverse = (
+            emission = rate * self.upper_population * fc
+            absorption = (
                 rate
                 * self.upper_to_ground_degeneracy_ratio
                 * self.ground_population
                 * (1.0 + fc)
-                * ft
             )
-        return float(forward), float(reverse)
+        return float(emission), float(absorption)
 
     def net_action(self, companion_occupation: float, tracked_occupation: float) -> float:
         forward, reverse = self.paired_rates(

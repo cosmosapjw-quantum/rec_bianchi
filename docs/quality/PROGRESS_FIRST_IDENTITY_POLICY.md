@@ -107,6 +107,35 @@ are independently resolvable:
 Until then, keep every physical-face/materialization flag false and the claim
 `NO_PASS_REC_PHYSICAL_SPLIT`.
 
+### Representation and unit firewall
+
+Formula closure is not source authority.  In particular, keep these domains
+distinct in types, digests, tests, and execution paths:
+
+- the original-HyRec virtual spike acts on signed spectral distortion
+  `Delta_f`; one-photon paired coefficients act on nonnegative total
+  occupation `f`;
+- converting `Delta_f` to `f` requires an explicit, hash-bound reference field
+  and primal/JVP adapter.  An implicit conversion or direct composition is
+  forbidden;
+- two-photon and Raman primitives produce photon-packet rates per hydrogen atom
+  per second.  They become occupation rates only after an approved deposition
+  applies `n_H / mu_i * sum_s B_is R_sq` exactly once;
+- a formula package, digest-shaped declaration, or manufactured vector may
+  describe a proposed contract but cannot supply incoming values, bin/channel
+  ownership, deposition authority, or an external byte verifier.
+
+Keep the following event surfaces separately typed.  They coincide only under
+additional static-grid assumptions and must not share a restart certificate:
+
+1. `CHARACTERISTIC_R_H_ZERO`;
+2. `RED_FACE_V_X_ZERO`;
+3. `BLUE_FACE_V_X_ZERO`.
+
+At an upwind ownership switch, the one-sided directional derivatives need not
+form a Frechet JVP.  A tangential or simultaneous event therefore fails closed
+unless an approved accepted-transaction/saltation contract covers it.
+
 ## 5. Checkpoints and handoff
 
 A durable checkpoint contains only:

@@ -1,0 +1,99 @@
+{
+  "schema": "rec-next03-local-formal-prompt/v1",
+  "tool": "Wolfram Engine with xAct/xTensor",
+  "authority": "NONAUTHORITATIVE_CONDITIONAL_FORMULA_CHECK",
+  "purpose": "Execute the checked-in exact transcription script and produce auditable raw and semantic receipts without modifying the repository.",
+  "obligation_ids": [
+    "REC3-FRAME-001",
+    "REC3-FACE-001",
+    "REC3-EVENT-RH-001",
+    "REC3-EVENT-RED-001",
+    "REC3-EVENT-BLUE-001",
+    "REC3-TRANSFER-001",
+    "REC3-DEPOSITION-001",
+    "REC3-FORMAL-WOLFRAM-001",
+    "REC3-STATE-001"
+  ],
+  "inputs": {
+    "script": "formal/rec_next03/wolfram/verify_frame_face_event.wls",
+    "contract": "formal/rec_next03/CONTRACT.md",
+    "obligations": "formal/rec_next03/OBLIGATIONS.json",
+    "toolchains": "formal/rec_next03/TOOLCHAINS.lock.json",
+    "formula_package_filename": "REC_BIANCHI_FORMULA_DERIVATION_PACKAGE_20260831(1).zip",
+    "formula_package_sha256": "15f0d1af469f333d14488900b6ef031aaba071643efecdc850f4720aa7155e12",
+    "xact_archive_sha256": "7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460cef1b07be"
+  },
+  "required_checks": {
+    "expected_check_count": 29,
+    "event_surfaces_must_equal": [
+      "CHARACTERISTIC_R_H_ZERO",
+      "RED_FACE_V_X_ZERO",
+      "BLUE_FACE_V_X_ZERO"
+    ],
+    "authority_firewalls_must_be_present": [
+      "delta_f_vs_total_f",
+      "packet_rate_vs_occupation_rate"
+    ],
+    "proposed_ids_must_remain_nonauthoritative": true,
+    "failed_check_ids_must_be_empty_for_formula_pass": true
+  },
+  "mutation_policy": {
+    "repository_mutations": [],
+    "allowed_mutations": [
+      "raw JSON report under caller-selected receipt directory outside the Git worktree",
+      "semantic projection and SHA-256 files under the same receipt directory"
+    ],
+    "precondition": "Record git status and hashes of all formal inputs before execution.",
+    "postcondition": "Git status and all formal input hashes are byte-identical to the pre-execution values."
+  },
+  "execution": {
+    "command_template": "wolframscript -file formal/rec_next03/wolfram/verify_frame_face_event.wls --output <receipt_dir>/wolfram.raw.json",
+    "environment_capture": [
+      "$Version",
+      "$SystemID",
+      "xAct/xTensor load result",
+      "xAct version if exposed by the installation"
+    ],
+    "missing_executable_result": "UNEXECUTED_ENVIRONMENT_GAP",
+    "missing_xact_result": "UNEXECUTED_ENVIRONMENT_GAP",
+    "nonzero_exit_result": "FAIL_OR_ENVIRONMENT_GAP_AS_TYPED_BY_SCRIPT",
+    "license_slot_wait": {
+      "external_license_contention_is_not_a_formal_counterexample": true,
+      "wait_seconds_default": 3600,
+      "poll_seconds_default": 30,
+      "retry_scope": "ONLY_WOLFRAM_OUTPUTS_CLASSIFIED_AS_LICENSE_OR_ACTIVATION_AVAILABILITY",
+      "activation_or_relicensing_attempted": false,
+      "deadline_result": "ENVIRONMENT_GAP"
+    }
+  },
+  "receipt_contract": {
+    "raw_receipt_role": "ARCHIVAL_BYTE_SEAL_ONLY",
+    "raw_sha256_required": true,
+    "semantic_projection_fields": [
+      "schema",
+      "authority",
+      "claim_scope",
+      "status",
+      "formula_package.sha256",
+      "event_surfaces",
+      "proposed_formula_ids",
+      "authority_firewalls",
+      "checks sorted by id with only id, authority, and passed",
+      "failed_check_ids sorted lexicographically"
+    ],
+    "semantic_projection_sha256_required": true,
+    "byte_identity_claim_permitted": false,
+    "formula_pass_label": "PASS_NONAUTHORITATIVE_EXACT_TRANSCRIPTION"
+  },
+  "fail_closed": [
+    "Do not report PASS when wolframscript or xAct is unavailable.",
+    "Do not replace exact checks by floating-point sampling.",
+    "Do not treat a formula pass as implementation parity, source authority, physical-face admission, merge readiness, or a scientific pass.",
+    "Do not conflate R_H=0, v_red=0, and v_blue=0."
+  ],
+  "required_final_state": {
+    "scientific_terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "physical_face_admission": false
+  }
+}

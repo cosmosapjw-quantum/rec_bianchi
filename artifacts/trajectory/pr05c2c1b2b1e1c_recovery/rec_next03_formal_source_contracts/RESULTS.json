@@ -1,0 +1,240 @@
+{
+  "authority": "NONAUTHORITATIVE_RESEARCH_AND_CODING_RECORD",
+  "base_identity": {
+    "commit": "6f6ed7720505537c9f404656cb2bc53d117e40ab",
+    "parent": "7adb61ed0f391f62ca2a43b7d8f9e6cb0933da0a",
+    "tree": "da55957cfc70f76120724677431b351c5f52d019"
+  },
+  "blockers_resolved": [],
+  "cloud_environment": {
+    "lean_mathlib": "UNAVAILABLE",
+    "numpy": "2.3.5",
+    "pytest": "UNAVAILABLE",
+    "python": "3.12.13",
+    "required_network_namespace": "UNAVAILABLE_UNSHARE_EPERM",
+    "rocq": "UNAVAILABLE",
+    "sage_singular": "UNAVAILABLE",
+    "scipy": "1.17.0",
+    "wolfram_xact": "UNAVAILABLE"
+  },
+  "domain_firewalls": {
+    "aggregate_occupation_action_available": false,
+    "deposition_authority_present": false,
+    "enforced_tagged_vector_types": [
+      "SignedDeltaF26",
+      "TotalOccupation26",
+      "OccupationRate26",
+      "PacketRatePerH26"
+    ],
+    "one_photon": {
+      "stored_variable": "TOTAL_OCCUPATION_F",
+      "units": "s^-1"
+    },
+    "reference_field_adapter_present": false,
+    "two_photon_and_raman": {
+      "deposition_required": "(n_H/mu_i) sum_s B_is R_sq",
+      "stored_quantity": "PHOTON_PACKET_RATE",
+      "units": "photon_packet hydrogen_atom^-1 s^-1"
+    },
+    "virtual_spike": {
+      "stored_variable": "SIGNED_SPECTRAL_DISTORTION_DELTA_F",
+      "total_occupation_alias_forbidden": true
+    }
+  },
+  "executed_checks": [
+    {
+      "authority_effect": "NONE",
+      "check": "signed_chi_decimal_oracle",
+      "case_list_sha256": "887dd1611afd8374c35b4c8c159c4a6f1357aff8374ef9bb97fd649894dbd49d",
+      "count": 500,
+      "domain": "seed 20260831; five ordered 100-case zero, near-equal, positive-x, negative-x, and independent strata; abs(chi*duration)<=600",
+      "framework": "independent Decimal precision-120 comparison using the exact binary64 chi subtraction",
+      "maximum_conditioning_scaled_error": 1.2430094794304074,
+      "maximum_relative_error": 2.8266562369461282e-14,
+      "tolerance": "relative <= 8*binary64_epsilon*max(1,abs(exact_chi_duration))",
+      "worst_exact_chi_duration": -309.29420744715605,
+      "status": "PASS_CONDITION_AWARE_EMPIRICAL_BOUND"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "fresh_direct_test_function_invocation",
+      "count": 31,
+      "framework": "minimal pytest-compatible direct harness, not pytest",
+      "invocation_count_including_parameter_rows": 45,
+      "scope": "directional face admission, source assembly, and paired transfer modules",
+      "status": "PASS"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "typed_frequency_event_surface_regression",
+      "cpu_dispatch_lanes": [
+        "DEFAULT",
+        "X86_V4_AVX512F_AVX512_SKX_DISABLED"
+      ],
+      "event_kinds": [
+        "CHARACTERISTIC_R_H_ZERO",
+        "RED_FACE_V_X_ZERO",
+        "BLUE_FACE_V_X_ZERO"
+      ],
+      "ordered_moving_face_nodes": [
+        0,
+        1
+      ],
+      "status": "PASS",
+      "tracing_started_before_event": false
+    },
+    {
+      "authority_effect": "NONE",
+      "authority_projection_sha256": "65378bddc8e61389de6abb4a36c418aa526dd06df7ef00b6e74347762cc03462",
+      "check": "rec_local02_portable_receipt",
+      "diagnostic_contract_sha256": "1fc6c48a5711a25c8724a598a164a8a20ce9266e3f5cc6fd8fed4a24795961cd",
+      "raw_fetched_seal_sha256": "6fb642751e18a8ad85c3e36f76e3cd4907f2261e4570c64d06d4eeddff1c1272",
+      "status": "PASS"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "rec_next01_read_only_semantic_check",
+      "fresh_raw_sha256": "e9653ba69a3b359f43d4e994ffa566520995ed067f2aa68b9d6b25a3c375d440",
+      "raw_bytes_match": false,
+      "raw_sha256_role": "ARCHIVAL_PUBLICATION_SEAL_ONLY",
+      "semantic_sha256": "9284ed5b59437d474c293a9ecae24442ca31dc0ebad51432a959e22ccaf069d2",
+      "status": "PASS"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "python_ast_parse",
+      "scope": "edited Python implementation, formal runner, and tests",
+      "status": "PASS"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "formal_contract_static_checker",
+      "check_count": 55,
+      "formal_file_count": 20,
+      "kernel_execution": false,
+      "status": "PASS"
+    },
+    {
+      "authority_effect": "NONE",
+      "backend_tool_spawn_count": 0,
+      "backend_statuses": {
+        "lean_mathlib": "ENVIRONMENT_GAP",
+        "rocq": "ENVIRONMENT_GAP",
+        "sage_singular": "ENVIRONMENT_GAP",
+        "wolfram_xact": "ENVIRONMENT_GAP"
+      },
+      "check": "formal_runner_fail_closed_host_path",
+      "exit_code": 69,
+      "formal_tree_unchanged": true,
+      "reason": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "runner_sha256": "1d7499610e1feb97f177831f64e6866b04272732f8dfbbd974edfc43c6a18a94",
+      "status": "PASS_EXPECTED_FAIL_CLOSED_GAP"
+    },
+    {
+      "authority_effect": "NONE",
+      "check": "git_diff_check",
+      "status": "PASS"
+    }
+  ],
+  "external_authority_required": [
+    "approved frame/tetrad/frequency convention",
+    "source-identical incoming red/blue half-range values",
+    "hash-bound Delta_f-to-total-f reference-field adapter and JVP",
+    "byte-locked directional source/deposition registry with once-only normalization",
+    "approved Lagrangian sampler or fixed-node remap with conservation and JVP",
+    "accepted characteristic, face, simultaneous, and tangential event/restart contracts",
+    "external verifier resolving declarations to approved immutable bytes and executable contracts"
+  ],
+  "formal_backends": {
+    "lean_mathlib": {
+      "authority": "NONAUTHORITATIVE",
+      "expected_mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "prematerialized_olean_trust": "FORBIDDEN",
+      "reason": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "rocq": {
+      "authority": "NONAUTHORITATIVE",
+      "reason": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "sage_singular": {
+      "authority": "NONAUTHORITATIVE",
+      "reason": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    "wolfram_xact": {
+      "authority": "NONAUTHORITATIVE",
+      "reason": "ENVIRONMENT_GAP_NETWORK_ISOLATION_UNAVAILABLE_NOT_PASS",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    }
+  },
+  "implementation": {
+    "fixed_node_blocker": "BLOCKED_ANGULAR_REMAP_AUTHORITY",
+    "jax_load_bearing": false,
+    "lagrangian_blocker": "BLOCKED_LAGRANGIAN_SAMPLER_AUTHORITY",
+    "physical_face_admitted": false,
+    "physical_face_materialized": false,
+    "production_integration": "NOT_RUN",
+    "rust_production_work": "HELD_PENDING_EXTERNAL_AUTHORITY",
+    "signed_chi_transfer": "IMPLEMENTED_NONAUTHORITATIVE_FORMULA_PRIMITIVE",
+    "source_assembly": "IMPLEMENTED_RESEARCH_ONLY_TYPED_DOMAIN_ASSEMBLY"
+  },
+  "independent_review": {
+    "formal_kernel_execution_reviewed_as_pass": false,
+    "p0": 0,
+    "p1_after_manifest_verification": 0,
+    "p2": 0,
+    "publication_condition": "EXACTLY_34_FROZEN_PAYLOADS_BOUND_BY_STAGE_MANIFEST_WITH_NO_LATER_PAYLOAD_EDIT",
+    "repaired_findings": [
+      "SEPARATE_RED_AND_BLUE_FACE_ZERO_EVENTS_BEFORE_TRACING",
+      "REMOVE_HOST_PINNED_FLOAT_FROM_EVENT_COUNTEREXAMPLE"
+    ],
+    "source_rereview": "P0_0_P1_0_P2_0",
+    "status": "PASS_CONDITIONAL_ON_FINAL_MANIFEST_VERIFICATION"
+  },
+  "input_sha256": {
+    "formula_derivation_package_zip": "15f0d1af469f333d14488900b6ef031aaba071643efecdc850f4720aa7155e12",
+    "formula_package_contract_json": "49754d1d7be053496856c382dede92d6dbca7b842ce0db87c27c545805fd3e56",
+    "formula_package_derivation_report": "f933b67c1a5e2f4dd2d4be039b8177d7661523cbcc897d1699dc696239438bb4",
+    "formula_package_readme": "3c38afe7cb83f95e45374b022f8d8549f3ab563d12edcaa7b3d07b22d88df427",
+    "formula_package_wolfram_seed": "c5d93b7b3b46d5abc370f9780926760e7491886b2c488bc638f47e24aba51471",
+    "original_hyrec_hydrogen_c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "original_hyrec_two_photon_table": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+    "original_hyrec_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "pasted_markdown": "bdc46bf765a53699f8bd20832d6032562f32b276e06cb4c501613743ca5c1c07",
+    "physmath_coding_harness_zip": "6e67e999a0c19f6ed9de7c339067cc11691d5cf5cb662a11756d8fc393c849b4",
+    "physmath_research_harness_zip": "9adde688f8020e7feb2c1c0304b3204dbe70dd01e2d87e64a5c4eb357c019934",
+    "xact_1_3_0_archive": "7a6c5f600868a3922668b020a15c0692f76574ff2a559808c62d460cef1b07be"
+  },
+  "local_execution_required": [
+    "fetched manifest and exact path-set validation",
+    "Ryzen host-aware focused pytest suite",
+    "directly affected pytest dependency cone",
+    "portable receipt and coding-record semantic checks in read-only modes",
+    "isolated Wolfram+xAct, Sage+Singular, Lean+mathlib, and Rocq execution outside the worktree"
+  ],
+  "missing_or_unexecuted_checks": [
+    {
+      "check": "pytest",
+      "reason": "pytest unavailable; no dependency installation attempted",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    },
+    {
+      "check": "formal_kernels",
+      "reason": "verified Linux user+network namespace preflight was denied; runner exited 69 before every backend tool command",
+      "status": "UNEXECUTED_ENVIRONMENT_GAP"
+    }
+  ],
+  "policy": {
+    "byte_identity_vs_semantic_identity": "COMPILED",
+    "durable_checkpoint": "COMPILED",
+    "progress_first_bounded_loop": "COMPILED",
+    "retry_budget": "BOUNDED"
+  },
+  "proposed_ids_are_authority": false,
+  "schema": "rec-next03-research-coding-results/v1",
+  "scientific_claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "scientific_terminal": "BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT",
+  "status": "PARTIAL_IMPLEMENTATION_WITH_LOCAL_AND_EXTERNAL_GATES"
+}
