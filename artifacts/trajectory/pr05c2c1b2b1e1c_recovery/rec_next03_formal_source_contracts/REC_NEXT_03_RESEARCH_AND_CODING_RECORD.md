@@ -17,6 +17,32 @@ This additive stage starts from the accepted REC-NEXT-02 delivery:
 | base scientific terminal | `BLOCKED_REC_PHYSICAL_INTERFACE_DEFECT / SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT` |
 | base claim | `NO_PASS_REC_PHYSICAL_SPLIT` |
 
+## Bootstrap contract repair checkpoint
+
+The prior local attempt stopped before any validator with
+`STOP_INVALID_CONTINUATION_IDENTITY`: the required delivery
+remote-tracking ref was absent, while the handoff simultaneously prohibited
+the only operation that could materialize it. This is classified as a
+project-specific bootstrap-contract defect, not a repository or scientific
+failure. No physical, numerical, formal, or claim evidence was produced by
+that stopped attempt.
+
+The handoff is repaired only at this boundary. It now permits exactly one
+network-enabled, positive-refspec fetch of
+`agent/research/rec-next03-formal-contracts-20260831-r1` into
+`refs/remotes/origin/agent/research/rec-next03-formal-contracts-20260831-r1`,
+with `show-ref --verify`, commit-object readback, and an external bootstrap
+log. The fetched commit and tree must also match the expected OID values
+obtained from the current GitHub PR readback. The fetched commit OID is then
+frozen into a new detached worktree and network access is disabled before
+identity, manifest, test, or formal checks.
+Wildcard fetches, alternate refs, bundle reconstruction, checkout overlay, and
+transcript-only continuation remain forbidden.
+
+This repair changes no scientific source, convention, tolerance, authority
+projection, physical-face flag, or claim. The old STOP remains preserved as a
+negative result; the next run must re-enter the immutable identity gate.
+
 The continuation identity was accepted before this work. This stage does not
 reinterpret the Ryzen 9 5900X absence of X86_V4/AVX-512 as a failure: the V1
 fingerprints remain host-lane forensic records, while V2 authority and semantic
@@ -262,9 +288,11 @@ unavailable in this cloud.
 
 ### LOCAL_EXECUTION_REQUIRED
 
-The local Ryzen environment must perform one bounded, read-only validation:
+The local Ryzen environment must perform one bounded, read-only validation
+after the one-time bootstrap fetch:
 
-1. verify the fetched manifest and exact delivery path set;
+1. materialize and read back the exact delivery ref, then verify the fetched
+   manifest and exact delivery path set;
 2. run the host-aware pytest focus and affected dependency cone;
 3. re-run both portable semantic checkers read-only;
 4. run the isolated formal runner with Wolfram+xAct, Sage+Singular,

@@ -1,15 +1,17 @@
 # REC-NEXT-03 local execution prompt
 
-Run exactly one bounded, read-only local validation. Do not install or upgrade
-anything, access the network during evidence-producing execution, edit source
-or tests, regenerate tracked evidence, normalize preserved files, commit,
-push, change a PR, merge, or mark a PR ready.
+Run exactly one bounded, read-only local validation. A single project-specific
+Git ref materialization is permitted before evidence-producing execution; after
+that bootstrap, do not install or upgrade anything, access the network, edit
+source or tests, regenerate tracked evidence, normalize preserved files,
+commit, push, change a PR, merge, or mark a PR ready.
 
 ## Preconditions and immutable identity
 
-Use an existing clone that already contains the published delivery branch and
-objects. This prompt does not authorize `git fetch`, package installation, or
-any other network operation.
+Use an existing clone and preserve it. The bootstrap block below is the only
+network-enabled step. It materializes exactly the named delivery branch into
+the named remote-tracking ref; no other ref or worktree is changed. Every
+subsequent command is network-frozen and evidence-producing.
 
 - repository: `cosmosapjw-quantum/rec_bianchi`
 - delivery branch:
@@ -24,7 +26,42 @@ any other network operation.
   `artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/MANIFEST.sha256`
 - expected manifest payload entries: `34`
 
-Create a new detached worktree at the already-fetched delivery ref. Choose an
+### One-time ref materialization (before any validator)
+
+Run this block once, from a shell with network access, and preserve its raw
+stdout/stderr outside the repository. Do not replace the positive refspec with
+a wildcard, fetch all branches, or use `FETCH_HEAD` as an unpinned locator:
+
+```bash
+set -euo pipefail
+rec_repo=/absolute/path/to/existing/rec_bianchi
+rec_delivery_branch=agent/research/rec-next03-formal-contracts-20260831-r1
+rec_delivery_ref=refs/remotes/origin/$rec_delivery_branch
+: "\${REC_NEXT03_EXPECTED_HEAD:?set from the current GitHub PR readback}"
+: "\${REC_NEXT03_EXPECTED_TREE:?set from the current GitHub PR readback}"
+rec_bootstrap_log=/absolute/path/to/external-output/rec-next03-bootstrap.log
+mkdir -p "$(dirname "$rec_bootstrap_log")"
+{
+  printf 'remote=origin\nbranch=%s\nref=%s\n' \
+    "$rec_delivery_branch" "$rec_delivery_ref"
+  git -C "$rec_repo" fetch --no-tags --no-prune origin \
+    "+refs/heads/$rec_delivery_branch:$rec_delivery_ref"
+  git -C "$rec_repo" show-ref --verify "$rec_delivery_ref"
+  rec_fetched_head=$(git -C "$rec_repo" rev-parse "$rec_delivery_ref")
+  test "$(git -C "$rec_repo" cat-file -t "$rec_fetched_head")" = commit
+  test "$rec_fetched_head" = "$REC_NEXT03_EXPECTED_HEAD"
+  test "$(git -C "$rec_repo" rev-parse "$rec_fetched_head^{tree}")" = "$REC_NEXT03_EXPECTED_TREE"
+  printf 'fetched_head=%s\n' "$rec_fetched_head"
+} >"$rec_bootstrap_log" 2>&1
+test -s "$rec_bootstrap_log"
+```
+
+If the fetch, ref readback, or object-type check fails, preserve the log and
+stop as `STOP_INVALID_CONTINUATION_IDENTITY`. Do not substitute another ref,
+reconstruct a bundle, or proceed transcript-only. After this block, disable
+network access for the remainder of the validation.
+
+Create a new detached worktree at the captured fetched commit. Choose an
 explicit safe path; do not use an existing or preserved worktree:
 
 ```bash
@@ -32,10 +69,10 @@ set -euo pipefail
 rec_repo=/absolute/path/to/existing/rec_bianchi
 rec_worktree=/absolute/path/to/new/rec-next03-validation
 test ! -e "$rec_worktree"
-git -C "$rec_repo" show-ref --verify \
-  refs/remotes/origin/agent/research/rec-next03-formal-contracts-20260831-r1
-git -C "$rec_repo" worktree add --detach "$rec_worktree" \
-  refs/remotes/origin/agent/research/rec-next03-formal-contracts-20260831-r1
+rec_delivery_ref=refs/remotes/origin/agent/research/rec-next03-formal-contracts-20260831-r1
+git -C "$rec_repo" show-ref --verify "$rec_delivery_ref"
+rec_fetched_head=$(git -C "$rec_repo" rev-parse "$rec_delivery_ref")
+git -C "$rec_repo" worktree add --detach "$rec_worktree" "$rec_fetched_head"
 cd "$rec_worktree"
 ```
 

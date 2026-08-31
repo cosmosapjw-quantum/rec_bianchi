@@ -1,9 +1,10 @@
 # REC-NEXT-03 formal/source-contract continuation
 
 This is the prompt-only locator for one bounded local validation. Preserve all
-existing checkouts and evidence. Work in a new detached worktree, perform no
-installation or network access during evidence-producing execution, and do
-not edit, regenerate, normalize, commit, push, merge, or mark a PR ready.
+existing checkouts and evidence. Before evidence-producing execution, exactly
+one project-specific Git ref materialization is allowed; after it, work in a
+new detached worktree with network disabled. Do not install, edit, regenerate,
+normalize, commit, push, merge, or mark a PR ready.
 
 ## Immutable continuation identity
 
@@ -22,7 +23,7 @@ not edit, regenerate, normalize, commit, push, merge, or mark a PR ready.
   `artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_next03_formal_source_contracts/MANIFEST.sha256`
 - manifest payload entries: `34`
 
-The delivery diff from the exact continuation base to fetched delivery HEAD
+The delivery diff from the exact continuation base to the materialized delivery HEAD
 must contain exactly these 35 paths:
 
 ```text
@@ -67,6 +68,48 @@ Before executing any validator, require the base tree and parent above, base
 ancestry, the exact path set, a clean worktree, 34 manifest entries, and
 `sha256sum -c` success. Any mismatch is
 `STOP_INVALID_CONTINUATION_IDENTITY`; preserve it and stop.
+
+## Bootstrap/ref-materialization contract
+
+The prior local run stopped before intake because it required the delivery
+remote-tracking ref while simultaneously forbidding the only operation that
+could create it. That was a valid `STOP_INVALID_CONTINUATION_IDENTITY`, not a
+scientific result. The repair is limited to the pre-intake bootstrap boundary.
+
+Before reading the stage prompt or running any validator, run exactly one
+network-enabled fetch with this positive refspec:
+
+```bash
+set -euo pipefail
+rec_repo=/absolute/path/to/existing/rec_bianchi
+rec_delivery_branch=agent/research/rec-next03-formal-contracts-20260831-r1
+rec_delivery_ref=refs/remotes/origin/$rec_delivery_branch
+: "\${REC_NEXT03_EXPECTED_HEAD:?set from the current GitHub PR readback}"
+: "\${REC_NEXT03_EXPECTED_TREE:?set from the current GitHub PR readback}"
+rec_bootstrap_log=/absolute/path/to/external-output/rec-next03-bootstrap.log
+mkdir -p "$(dirname "$rec_bootstrap_log")"
+{
+  printf 'remote=origin\nbranch=%s\nref=%s\n' \
+    "$rec_delivery_branch" "$rec_delivery_ref"
+  git -C "$rec_repo" fetch --no-tags --no-prune origin \
+    "+refs/heads/$rec_delivery_branch:$rec_delivery_ref"
+  git -C "$rec_repo" show-ref --verify "$rec_delivery_ref"
+  rec_fetched_head=$(git -C "$rec_repo" rev-parse "$rec_delivery_ref")
+  test "$(git -C "$rec_repo" cat-file -t "$rec_fetched_head")" = commit
+  test "$rec_fetched_head" = "$REC_NEXT03_EXPECTED_HEAD"
+  test "$(git -C "$rec_repo" rev-parse "$rec_fetched_head^{tree}")" = "$REC_NEXT03_EXPECTED_TREE"
+  printf 'fetched_head=%s\n' "$rec_fetched_head"
+} >"$rec_bootstrap_log" 2>&1
+test -s "$rec_bootstrap_log"
+```
+
+The fetch may update only that exact remote-tracking ref. A missing ref,
+non-commit object, fetch error, or readback mismatch is terminal:
+`STOP_INVALID_CONTINUATION_IDENTITY`. Preserve the log; do not fetch a
+wildcard, use an alternate ref, reconstruct a bundle, or continue from a
+transcript. Capture the fetched commit OID, create the detached worktree from
+that OID, then disable network access before all identity, manifest, test, and
+formal commands.
 
 The complete fail-fast commands, Ryzen 9 5900X host-lane procedure, pytest
 focus and dependency cone, read-only receipt validators, isolated formal
