@@ -1,0 +1,67 @@
+{
+  "schema_version": "2.0.0",
+  "program_id": "BIANCHI-WOLFRAM-TRIREPO-20260830",
+  "change_id": "TRI-SYNC-V2-BOOTSTRAP-01",
+  "sync_run_id": "72fa2eabd32ab5d6ce2cbdb7633375d71ebce93c543ab562162d6853bd54e69f",
+  "repository": "rec_bianchi",
+  "policy_base": {
+    "branch": "policy/wolfram-trirepo-20260830-r1",
+    "commit": "cfa54eb1d66c98a290182a402a308622f6552dfb",
+    "tree": "c717e67061b31ddbd6a2c4cc38c553eb2eae5bc3"
+  },
+  "observed_research_heads": [
+    {
+      "purpose": "directional source and formal contracts",
+      "pr": 47,
+      "branch": "agent/research/rec-next03-formal-contracts-20260831-r1",
+      "commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+      "state": "OPEN_DRAFT_BLOCKED_PHYSICAL_INTERFACE"
+    }
+  ],
+  "exports": [
+    {
+      "formula_id": "REC.RECOMBINATION.HISTORY.001",
+      "owner": "rec_bianchi",
+      "authority_mode": "AUTHORITATIVE_DERIVATION",
+      "producer_ref": "agent/research/rec-next03-formal-contracts-20260831-r1",
+      "producer_commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+      "source_path": null,
+      "semantic_hash": null,
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "status": "BLOCKED_PROVIDER_NOT_PUBLISHED",
+      "consumers": ["rei_bianchi", "bass"],
+      "allowed_consumer_modes": ["PINNED_IMPORT", "ADAPTER_SPECIALIZATION"],
+      "dependencies": ["BASS.CONVENTIONS.CORE.001", "BASS.BACKGROUND.SNAPSHOT.001"],
+      "reason": "SOURCE_DEFINED_26_DIRECTION_FACE_RECONSTRUCTION_ABSENT"
+    },
+    {
+      "formula_id": "REC.ATOMIC.RATE_KERNELS.001",
+      "owner": "rec_bianchi",
+      "authority_mode": "AUTHORITATIVE_DERIVATION",
+      "producer_ref": "agent/research/rec-next03-formal-contracts-20260831-r1",
+      "producer_commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+      "source_path": null,
+      "semantic_hash": null,
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "status": "RESEARCH_ONLY_NOT_PUBLISHED",
+      "consumers": ["rei_bianchi"],
+      "allowed_consumer_modes": ["PINNED_IMPORT", "INDEPENDENT_ORACLE", "ADAPTER_SPECIALIZATION"],
+      "dependencies": ["BASS.CONVENTIONS.CORE.001"]
+    },
+    {
+      "formula_id": "REC.DIRECTIONAL_SOURCE.CONTRACT.001",
+      "owner": "rec_bianchi",
+      "authority_mode": "OWNED_EXTENSION",
+      "producer_ref": "agent/research/rec-next03-formal-contracts-20260831-r1",
+      "producer_commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+      "source_path": null,
+      "semantic_hash": null,
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "status": "SOFTWARE_CONTRACT_VERIFIED_PHYSICAL_BLOCKER",
+      "consumers": [],
+      "allowed_consumer_modes": [],
+      "dependencies": ["BASS.CONVENTIONS.CORE.001"]
+    }
+  ],
+  "claim_boundary": "REC_OWNERSHIP_MANIFEST_ONLY_NO_PROVIDER_EXPORT_OR_PHYSICAL_SPLIT_PASS"
+}

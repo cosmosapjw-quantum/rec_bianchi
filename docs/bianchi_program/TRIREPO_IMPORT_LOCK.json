@@ -1,0 +1,47 @@
+{
+  "schema_version": "2.0.0",
+  "program_id": "BIANCHI-WOLFRAM-TRIREPO-20260830",
+  "change_id": "TRI-SYNC-V2-BOOTSTRAP-01",
+  "sync_run_id": "72fa2eabd32ab5d6ce2cbdb7633375d71ebce93c543ab562162d6853bd54e69f",
+  "repository": "rec_bianchi",
+  "imports": [
+    {
+      "formula_id": "BASS.CONVENTIONS.CORE.001",
+      "producer_repository": "bass",
+      "producer_ref": "research/bass-master-ssot-v2-wolfram-w0w1-20260901-r1",
+      "producer_commit": "82776f50869d5c76e1cab4b28734c85f136c1e6f",
+      "semantic_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "local_mode": "PINNED_IMPORT",
+      "use": "shared metric, tetrad, orientation, frame, unit and Riemann conventions",
+      "status": "PINNED_DRAFT",
+      "required_claim_level": "SYMBOLIC_VERIFIED"
+    },
+    {
+      "formula_id": "BASS.GEO.BIANCHI_ALGEBRA.001",
+      "producer_repository": "bass",
+      "producer_ref": "research/bass-master-ssot-v2-alg01r2-exact-identity-20260902-r1",
+      "producer_commit": "5454456133346d984fe08226cd0f5cc339a47f59",
+      "semantic_hash": "e0e5fbba464a839fcb5b11d41c7772c666224ec69f806910aab3bfab5a2f1762",
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "local_mode": "PINNED_IMPORT",
+      "use": "Bianchi algebra and frame adapter; local rederivation is nonauthoritative unless declared as an oracle",
+      "status": "PINNED_DRAFT",
+      "required_claim_level": "SYMBOLIC_VERIFIED"
+    },
+    {
+      "formula_id": "BASS.BACKGROUND.SNAPSHOT.001",
+      "producer_repository": "bass",
+      "producer_ref": null,
+      "producer_commit": null,
+      "semantic_hash": null,
+      "convention_hash": "e12258405c1c2ec296839524f5169e03441715b3acaaff1cef9de28bfa490a70",
+      "local_mode": "PINNED_IMPORT",
+      "use": "future exact homogeneous expansion and shear history input",
+      "status": "BLOCKED_PROVIDER_NOT_PUBLISHED",
+      "required_claim_level": "CROSS_REPO_COMPATIBLE"
+    }
+  ],
+  "no_silent_fallback": true,
+  "claim_boundary": "IMPORT_LOCK_ONLY_NO_BASS_GEOMETRY_REAUTHORIZATION_OR_REC_PROVIDER_EXPORT"
+}
