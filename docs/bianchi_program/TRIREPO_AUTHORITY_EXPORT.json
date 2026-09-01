@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0.0",
+  "program_id": "BIANCHI-WOLFRAM-TRIREPO-20260830",
+  "repository": "rec_bianchi",
+  "producer_base": {
+    "branch": "policy/wolfram-trirepo-20260830-r1",
+    "commit": "cfa54eb1d66c98a290182a402a308622f6552dfb",
+    "tree": "c717e67061b31ddbd6a2c4cc38c553eb2eae5bc3",
+    "policy_pr": 44
+  },
+  "source_binding": {
+    "mode": "BOUND_BY_SYNC_POINTER",
+    "pointer_path": "docs/bianchi_program/TRIREPO_SYNC_POINTER.json"
+  },
+  "exports": [
+    {
+      "formula_id": "REC.RECOMBINATION.HISTORY.001",
+      "owner": "rec_bianchi",
+      "authority_kind": "provider_namespace",
+      "domain": "primordial recombination",
+      "authority_effect": "AUTHORITATIVE_PROVIDER",
+      "status": "DECLARED_PROVIDER_EXPORT_NOT_AUTHORIZED",
+      "semantic_hash": "cf230becc655c2ae19599d1e749d5529df3cf4955e1f31c0e25e52137c96b64a",
+      "convention_hash": "86e971e4b29bb326f3ef55c7cfb851fb4d449d2ae3c470ffbb6e7602be76c3cb",
+      "semantic_payload": {
+        "domain": "primordial recombination",
+        "formula_id": "REC.RECOMBINATION.HISTORY.001",
+        "owner": "rec_bianchi",
+        "role": "immutable high-redshift recombination history provider"
+      },
+      "source_paths": [
+        "docs/bianchi_program/BIANCHI_TRIREPO_WOLFRAM_POLICY.md"
+      ],
+      "consumers": [
+        "bass",
+        "rei_bianchi"
+      ],
+      "allowed_consumer_modes": [
+        "PINNED_IMPORT",
+        "INDEPENDENT_ORACLE",
+        "ADAPTER_SPECIALIZATION"
+      ],
+      "claim_boundary": "OWNERSHIP_NAMESPACE_ONLY_NO_PASS_REC_PHYSICAL_SPLIT"
+    },
+    {
+      "formula_id": "REC.ATOMIC.RATE.BUNDLE.001",
+      "owner": "rec_bianchi",
+      "authority_kind": "provider_namespace",
+      "domain": "atomic microphysics",
+      "authority_effect": "AUTHORITATIVE_PROVIDER",
+      "status": "DECLARED_PROVIDER_EXPORT_NOT_AUTHORIZED",
+      "semantic_hash": "db7d8abe1b492f146df8e3dc92f38684d38ed09012f7dfea0fd579ca4f22ea77",
+      "convention_hash": "86e971e4b29bb326f3ef55c7cfb851fb4d449d2ae3c470ffbb6e7602be76c3cb",
+      "semantic_payload": {
+        "domain": "atomic microphysics",
+        "formula_id": "REC.ATOMIC.RATE.BUNDLE.001",
+        "owner": "rec_bianchi",
+        "role": "shared atomic rate primitive bundle consumed by REI when applicable"
+      },
+      "source_paths": [
+        "docs/bianchi_program/BIANCHI_TRIREPO_WOLFRAM_POLICY.md"
+      ],
+      "consumers": [
+        "rei_bianchi"
+      ],
+      "allowed_consumer_modes": [
+        "PINNED_IMPORT",
+        "INDEPENDENT_ORACLE",
+        "ADAPTER_SPECIALIZATION"
+      ],
+      "claim_boundary": "OWNERSHIP_NAMESPACE_ONLY_NO_RATE_BUNDLE_ADMISSION"
+    }
+  ]
+}
