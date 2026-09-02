@@ -1,8 +1,11 @@
 # REC-NEXT-03 OJI R2 Dual Audit
 
-**Stage:** `REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R2`  
-**Disposition:** `PASS_BOUNDED_EXTERNAL_FORMULA_ORACLE_R2`  
-**Authority effect:** `NONE`  
+**Stage:** `REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R2`
+
+**Disposition:** `PASS_BOUNDED_EXTERNAL_FORMULA_ORACLE_R2`
+
+**Authority effect:** `NONE`
+
 **Scientific claim effect:** `NONE`
 
 ## Exact tested implementation
