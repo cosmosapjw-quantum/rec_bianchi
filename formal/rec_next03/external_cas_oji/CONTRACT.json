@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1",
+  "status": "SOURCE_IMPLEMENTATION_IN_PROGRESS_EXECUTION_REQUIRED",
+  "authority_effect": "NONE",
+  "source_parent": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "pull_request": 47,
+    "commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+    "tree": "445b3fbc68aaba3e17c590831bff184b2e98e86f"
+  },
+  "source_pins": {
+    "characteristics": {
+      "path": "src/full_bianchi_hyrec/background/characteristics.py",
+      "git_blob_sha1": "f71ec2607daac808b871279ad0893d4653169343"
+    },
+    "constant_pair_transfer": {
+      "path": "src/full_bianchi_hyrec/trajectory/paired_source_transfer.py",
+      "git_blob_sha1": "ec06d068eaf49afea1546b204a8bbf487bd03385"
+    },
+    "directional_face": {
+      "path": "src/full_bianchi_hyrec/trajectory/directional_face_admission.py",
+      "semantic_role": "RESEARCH_ONLY_NO_PHYSICAL_FACE_ADMISSION"
+    }
+  },
+  "genuine_red": {
+    "workflow_run": 33674831592,
+    "commit": "c911957882c88e9376e4b067396786072f4dc283",
+    "result": "2_FAILED_EXPECTED_MISSING_CONTRACT_FILES",
+    "harness_failure_superseded": 33674617302
+  },
+  "required_engines": [
+    "octave_symbolic",
+    "jas",
+    "julia_symbolics_nemo"
+  ],
+  "engine_contracts": {
+    "octave_symbolic": {
+      "independence_class": "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER",
+      "mandatory_execution": true,
+      "counts_as_independent_algebra_core": false,
+      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+    },
+    "jas": {
+      "independence_class": "INDEPENDENT_JAVA_EXACT_POLYNOMIAL_CORE",
+      "mandatory_execution": true,
+      "counts_as_independent_algebra_core": true,
+      "required_identities": ["I01", "I04", "I06", "I07", "I08", "I09"],
+      "required_mutations": ["M01", "M03", "M04", "M05", "M06", "M07", "M08"]
+    },
+    "julia_symbolics_nemo": {
+      "independence_class": "INDEPENDENT_JULIA_SYMBOLICS_PLUS_NEMO_CORE",
+      "mandatory_execution": true,
+      "counts_as_independent_algebra_core": true,
+      "required_identities": ["I01", "I02", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+    }
+  },
+  "identity_catalog": {
+    "I01": "eta*(1+f)-kappa*f = eta-(kappa-eta)*f",
+    "I02": "dF/dt = eta-(kappa-eta)*F for the exact constant-pair transfer",
+    "I03": "lim_{chi->0} F = f0+eta*t",
+    "I04": "analytic JVP uses dchi=dkappa-deta",
+    "I05": "phi(x)=(1-exp(-x))/x has the cancellation-free code series through x^8",
+    "I06": "Doppler-coordinate face speed follows the exact moving-coordinate chain rule",
+    "I07": "R_H=0, red-face speed=0 and blue-face speed=0 are distinct event surfaces",
+    "I08": "normal-frame direction flow is tangent to the unit sphere",
+    "I09": "finite Lorentz aberration preserves unit direction and the REC sign chart",
+    "I10": "the beta^2<1e-28 identity branch has nonzero bounded error with leading term beta"
+  },
+  "mutation_catalog": {
+    "M01": "omit -deta from dchi",
+    "M02": "flip the pair-transfer exponential sign",
+    "M03": "replace the chi=0 source limit by zero",
+    "M04": "omit -x*dlogDelta from Doppler-coordinate speed",
+    "M05": "merge R_H=0 with a face-speed-zero event",
+    "M06": "delete radial compensation from direction flow",
+    "M07": "flip the aberration boost sign",
+    "M08": "label the small-beta identity branch exact"
+  },
+  "static_physics_contract": {
+    "metric_signature": "(-,+,+,+)",
+    "spatial_orientation": "epsilon_123=+1",
+    "code_rate_dimension": "s^-1",
+    "source_rate_dimension": "L^-1 when parameterized by s=c*t",
+    "rate_adapter": "R_t=c*R_s and V_t=c*V_s",
+    "direction_adapter": "BASS outward sky n_sky=-REC photon propagation direction e",
+    "small_beta_branch": "BOUNDED_NUMERICAL_REGULARIZATION_NOT_EXACT_PARITY",
+    "source_domain_firewall": "occupation rates and photon-packet-per-H rates are not directly addable"
+  },
+  "aggregate_acceptance": {
+    "all_mandatory_engines_pass": true,
+    "minimum_independent_algebra_cores": 2,
+    "critical_identities_covered_by_both_independent_cores": ["I01", "I04", "I06", "I08", "I09"],
+    "minimum_execution_axes_per_mutation": 2,
+    "package_or_lock_hashes_required": true,
+    "raw_logs_required": true,
+    "normalized_receipts_required": true
+  },
+  "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
+  "withheld_claims": [
+    "SOURCE_IDENTICAL_DIRECTIONAL_FACE",
+    "REC_PROVIDER_EXPORT",
+    "PASS_REC_PHYSICAL_SPLIT",
+    "BASS_FORMULA_AUTHORITY_REDEFINITION",
+    "NUMERICAL_PARITY",
+    "SCIENCE_VALIDITY"
+  ]
+}

@@ -16,6 +16,7 @@ REQUIRED_FILES = (
     "julia/verify_rec_next03_symbolics.jl",
     "scripts/collect_engine_receipt.py",
     "scripts/verify_external_cas_matrix.py",
+    "scripts/render_external_cas_coverage.py",
 )
 
 
@@ -30,7 +31,22 @@ def test_external_cas_contract_is_fail_closed() -> None:
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     assert contract["stage_id"] == "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1"
     assert contract["authority_effect"] == "NONE"
-    assert contract["required_engines"] == ["octave_symbolic", "jas", "julia_symbolics_nemo"]
+    assert contract["required_engines"] == [
+        "octave_symbolic",
+        "jas",
+        "julia_symbolics_nemo",
+    ]
+    engines = contract["engine_contracts"]
+    assert engines["octave_symbolic"]["counts_as_independent_algebra_core"] is False
+    assert engines["jas"]["counts_as_independent_algebra_core"] is True
+    assert engines["julia_symbolics_nemo"]["counts_as_independent_algebra_core"] is True
+    assert engines["octave_symbolic"]["independence_class"] == (
+        "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER"
+    )
+    assert contract["aggregate_acceptance"]["minimum_independent_algebra_cores"] == 2
+    assert contract["static_physics_contract"]["small_beta_branch"] == (
+        "BOUNDED_NUMERICAL_REGULARIZATION_NOT_EXACT_PARITY"
+    )
     assert contract["claim_boundary"] == (
         "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION"
     )
