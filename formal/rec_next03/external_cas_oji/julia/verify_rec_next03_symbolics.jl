@@ -42,11 +42,13 @@ identity("I07",
 identity("I08", (-(q - q*n2) - (p - p*n2)) - (n2 - 1)*(q + p) == 0)
 identity("I09", (mu - beta)^2 + (1 - mu^2)*(1 - beta^2) - (1 - beta*mu)^2 == 0)
 
-# Symbolics.jl differential reconstruction of the exact affine transfer.
+# Symbolics.jl differential and limit reconstruction of the exact affine transfer.
 @variables zsym tausym f0sym etasym
 Dτ = Differential(tausym)
 Fsym = exp(-zsym*tausym)*f0sym + etasym*(1 - exp(-zsym*tausym))/zsym
 identity("I02", symbolic_zero(Dτ(Fsym) - (etasym - zsym*Fsym)))
+Fzero = Symbolics.limit(Fsym, zsym, 0)
+identity("I03", symbolic_zero(Fzero - (f0sym + etasym*tausym)))
 
 # Exact rational series coefficients used by the cancellation-free branches.
 rat(n::Integer, d::Integer=1) = Rational{BigInt}(BigInt(n), BigInt(d))
