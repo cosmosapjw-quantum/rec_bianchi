@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R2",
-  "status": "R2_IMPLEMENTATION_REQUIRED_AFTER_JULIA_BOOLEAN_FAILURE",
+  "status": "PASS_BOUNDED_EXTERNAL_FORMULA_ORACLE_R2",
   "authority_effect": "NONE",
   "source_parent": {
     "repository": "cosmosapjw-quantum/rec_bianchi",
@@ -34,9 +34,16 @@
     "commit": "4a1e5d223efaae4f44572a2aca0c0ca716eaf4c5",
     "julia_artifact": 9865537045,
     "failure": "SYMBOLIC_ISZERO_RETURNED_NON_BOOLEAN_IN_SHORT_CIRCUIT_CONTEXT",
-    "passed_before_failure": ["I01", "I02", "I04", "I06", "I07", "I08", "I09"],
     "formula_disagreement_established": false,
     "repair_policy": "REPLACE_FRAGILE_DIRECT_LIMIT_BOOLEAN_PATH_WITH_EXACT_NEMO_FORMAL_SERIES_DIVISIBILITY_PROOF"
+  },
+  "closeout": {
+    "tested_implementation_commit": "bd7a703c8807145e137a65fdc079d947208ea0c8",
+    "tested_implementation_tree": "84fc1a91da0e2b6b8e3138d951082fe52df6401d",
+    "workflow_run": 33690507393,
+    "workflow_conclusion": "SUCCESS",
+    "receipt_path": "formal/rec_next03/external_cas_oji/OJI_DURABLE_CLOSEOUT_R2.json",
+    "dual_audit_path": "formal/rec_next03/external_cas_oji/OJI_R2_DUAL_AUDIT.md"
   },
   "required_engines": [
     "octave_symbolic",
