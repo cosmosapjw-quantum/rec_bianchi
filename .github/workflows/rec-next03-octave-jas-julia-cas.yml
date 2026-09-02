@@ -1,0 +1,21 @@
+name: rec-next03-octave-jas-julia-cas
+
+on:
+  push:
+    branches:
+      - audit/rec-next03-octave-jas-julia-cas-20260903-r1
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-red-green:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Execute the bounded external-CAS contract test
+        run: python -m pytest -q tests/formal/test_rec_next03_octave_jas_julia_contract.py
