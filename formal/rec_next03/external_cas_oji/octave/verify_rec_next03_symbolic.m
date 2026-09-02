@@ -43,7 +43,8 @@ syms z real;
 phi = (1 - exp(-z))/z;
 phi_expected = 1 - z/2 + z^2/6 - z^3/24 + z^4/120 - z^5/720 + ...
                z^6/5040 - z^7/40320 + z^8/362880;
-require_zero("I05", taylor(phi, z, 0, 'order', 10) - phi_expected);
+% Octave symbolic's order is one past the largest retained exponent.
+require_zero("I05", taylor(phi, z, 0, 'order', 9) - phi_expected);
 
 % I06: moving Doppler-coordinate chain rule.
 syms nu0 x Delta R dnu0 dlogDelta dxb real;
