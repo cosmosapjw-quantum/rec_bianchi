@@ -4,16 +4,24 @@ on:
   push:
     branches:
       - audit/rec-next03-octave-jas-julia-cas-20260903-r1
+      - audit/rec-next03-oji-durable-closeout-r2-20260903
   pull_request:
 
 permissions:
   contents: read
+
+env:
+  OJI_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
 
 jobs:
   contract:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.OJI_SOURCE_HEAD_SHA }}
+      - name: Confirm exact source-head checkout
+        run: test "$(git rev-parse HEAD)" = "$OJI_SOURCE_HEAD_SHA"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -27,6 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.OJI_SOURCE_HEAD_SHA }}
+      - name: Confirm exact source-head checkout
+        run: test "$(git rev-parse HEAD)" = "$OJI_SOURCE_HEAD_SHA"
       - name: Download package payloads for checksum receipts
         run: |
           sudo apt-get update
@@ -54,7 +66,7 @@ jobs:
             --version formal/rec_next03/external_cas_oji/octave/version.txt \
             --hashes formal/rec_next03/external_cas_oji/octave/package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-sha "$OJI_SOURCE_HEAD_SHA" \
             --output formal/rec_next03/external_cas_oji/octave/receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -72,6 +84,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.OJI_SOURCE_HEAD_SHA }}
+      - name: Confirm exact source-head checkout
+        run: test "$(git rev-parse HEAD)" = "$OJI_SOURCE_HEAD_SHA"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -104,7 +120,7 @@ jobs:
             --version version.txt \
             --hashes package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-sha "$OJI_SOURCE_HEAD_SHA" \
             --output receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -122,18 +138,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.OJI_SOURCE_HEAD_SHA }}
+      - name: Confirm exact source-head checkout
+        run: test "$(git rev-parse HEAD)" = "$OJI_SOURCE_HEAD_SHA"
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.7'
-      - name: Resolve exact Julia environment
+      - name: Resolve and verify exact Julia environment
         run: |
-          julia --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(); Pkg.status()' > formal/rec_next03/external_cas_oji/julia/version.txt
+          julia --startup-file=no --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(); Pkg.status()' > formal/rec_next03/external_cas_oji/julia/version.txt
           julia --version >> formal/rec_next03/external_cas_oji/julia/version.txt
-          sha256sum formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml > formal/rec_next03/external_cas_oji/julia/package.sha256
+          python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --lock formal/rec_next03/external_cas_oji/julia/ENVIRONMENT_LOCK.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/environment_receipt.json
+          sha256sum \
+            formal/rec_next03/external_cas_oji/julia/Project.toml \
+            formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            formal/rec_next03/external_cas_oji/julia/ENVIRONMENT_LOCK.json \
+            formal/rec_next03/external_cas_oji/julia/environment_receipt.json \
+            > formal/rec_next03/external_cas_oji/julia/package.sha256
       - name: Execute Julia Symbolics and Nemo oracle
         run: |
           set +e
-          julia --project=formal/rec_next03/external_cas_oji/julia formal/rec_next03/external_cas_oji/julia/verify_rec_next03_symbolics.jl > formal/rec_next03/external_cas_oji/julia/engine.log 2>&1
+          julia --startup-file=no --project=formal/rec_next03/external_cas_oji/julia formal/rec_next03/external_cas_oji/julia/verify_rec_next03_symbolics.jl > formal/rec_next03/external_cas_oji/julia/engine.log 2>&1
           engine_rc=$?
           set -e
           cat formal/rec_next03/external_cas_oji/julia/engine.log
@@ -144,7 +174,7 @@ jobs:
             --version formal/rec_next03/external_cas_oji/julia/version.txt \
             --hashes formal/rec_next03/external_cas_oji/julia/package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-sha "$OJI_SOURCE_HEAD_SHA" \
             --output formal/rec_next03/external_cas_oji/julia/receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -155,6 +185,8 @@ jobs:
             formal/rec_next03/external_cas_oji/julia/version.txt
             formal/rec_next03/external_cas_oji/julia/package.sha256
             formal/rec_next03/external_cas_oji/julia/Manifest.toml
+            formal/rec_next03/external_cas_oji/julia/ENVIRONMENT_LOCK.json
+            formal/rec_next03/external_cas_oji/julia/environment_receipt.json
             formal/rec_next03/external_cas_oji/julia/receipt.json
           if-no-files-found: warn
 
@@ -164,6 +196,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.OJI_SOURCE_HEAD_SHA }}
+      - name: Confirm exact source-head checkout
+        run: test "$(git rev-parse HEAD)" = "$OJI_SOURCE_HEAD_SHA"
       - uses: actions/download-artifact@v4
         with:
           path: downloaded-receipts
@@ -177,6 +213,7 @@ jobs:
           python formal/rec_next03/external_cas_oji/scripts/verify_external_cas_matrix.py \
             --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
             --receipts-root downloaded-receipts \
+            --expected-source-sha "$OJI_SOURCE_HEAD_SHA" \
             --output aggregate_receipt.json
           python formal/rec_next03/external_cas_oji/scripts/render_external_cas_coverage.py \
             --aggregate aggregate_receipt.json \
