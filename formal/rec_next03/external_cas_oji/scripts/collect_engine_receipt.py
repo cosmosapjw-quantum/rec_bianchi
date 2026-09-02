@@ -6,10 +6,11 @@ import json
 import re
 from pathlib import Path
 
-IDENTITY_RE = re.compile(r"^IDENTITY\s+(I\d{2})\s+PASS\s*$", re.MULTILINE)
-MUTATION_RE = re.compile(r"^MUTATION\s+(M\d{2})\s+DETECTED\s*$", re.MULTILINE)
+IDENTITY_RE = re.compile(r"^IDENTITY\s+(I\d{2}[A-Z]?)\s+PASS\s*$", re.MULTILINE)
+MUTATION_RE = re.compile(r"^MUTATION\s+(M\d{2}[A-Z]?)\s+DETECTED\s*$", re.MULTILINE)
 STATUS_RE = re.compile(r"^STATUS\s+(PASS|FAIL)\s*$", re.MULTILINE)
 SHA_RE = re.compile(r"^([0-9a-f]{64})\s+(.+?)\s*$", re.MULTILINE)
+SOURCE_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 def main() -> int:
@@ -53,14 +54,17 @@ def main() -> int:
         errors.append("empty version receipt")
     if not package_hashes:
         errors.append("no package or lock SHA-256 receipts")
+    if SOURCE_SHA_RE.fullmatch(args.source_sha) is None:
+        errors.append("source SHA is not forty lowercase hexadecimal characters")
 
     receipt = {
-        "schema_version": "1.0.0",
+        "schema_version": "2.0.0",
         "stage_id": contract["stage_id"],
         "engine": args.engine,
         "status": "PASS" if not errors else "FAIL",
         "engine_exit_code": args.engine_exit_code,
         "source_sha": args.source_sha,
+        "source_binding": "EXACT_HEAD_NOT_EPHEMERAL_PR_MERGE_COMMIT",
         "independence_class": engine_contract["independence_class"],
         "counts_as_independent_algebra_core": engine_contract[
             "counts_as_independent_algebra_core"
