@@ -17,5 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Install the bounded test dependency
+        run: python -m pip install --disable-pip-version-check pytest
       - name: Execute the bounded external-CAS contract test
         run: python -m pytest -q tests/formal/test_rec_next03_octave_jas_julia_contract.py
