@@ -15,18 +15,22 @@ function symbolic_zero(expression)
     reduced = Symbolics.simplify(
         Symbolics.expand_derivatives(expression); expand=true
     )
-    return isequal(reduced, 0) || iszero(reduced) || string(reduced) == "0"
+    # Some Symbolics/BasicSymbolic versions return a symbolic object from
+    # iszero. isequal and the canonical textual fallback are Boolean-valued.
+    return isequal(reduced, 0) || string(reduced) == "0"
 end
 
 # Independent exact polynomial ring over QQ.
 names = [
     "eta", "kappa", "f", "a", "s", "deta", "dkappa", "df0", "dtau",
     "pchi", "ptau", "nu0", "x", "delta", "r", "dnu0", "dlogdelta",
-    "dxb", "xr", "xb", "dxr", "q", "p", "n2", "beta", "mu", "tau"
+    "dxb", "xr", "xb", "dxr", "q", "p", "n2", "beta", "mu", "tau",
+    "chi"
 ]
 P, variables = polynomial_ring(QQ, names)
 eta, kappa, f, a, s, deta, dkappa, df0, dtau, pchi, ptau, nu0, x,
-delta, r, dnu0, dlogdelta, dxb, xr, xb, dxr, q, p, n2, beta, mu, tau = variables
+delta, r, dnu0, dlogdelta, dxb, xr, xb, dxr, q, p, n2, beta, mu, tau,
+chi = variables
 
 identity("I01", eta*(1 + f) - kappa*f - (eta - (kappa - eta)*f) == 0)
 identity("I04",
@@ -35,22 +39,40 @@ identity("I04",
 identity("I06",
     ((nu0 + x*delta)*r - dnu0 - delta*x*dlogdelta - delta*dxb) -
     (nu0*r + x*delta*r - dnu0 - delta*x*dlogdelta - delta*dxb) == 0)
-identity("I07",
+
+face_numerator(nu0v, xv, deltav, rv, dnu0v, dlogv, dxv) =
+    (nu0v + xv*deltav)*rv - dnu0v - deltav*xv*dlogv - deltav*dxv
+
+onep = one(P)
+zerop = zero(P)
+vred_rh_zero = face_numerator(onep, zerop, onep, zerop, onep, zerop, zerop)
+vblue_zero_r_nonzero = face_numerator(onep, zerop, onep, onep, onep, zerop, zerop)
+identity("I07R", vred_rh_zero + onep == 0)
+identity("I07B", vblue_zero_r_nonzero == 0)
+identity("I07D",
     ((nu0 + xr*delta)*r - dnu0 - delta*xr*dlogdelta - delta*dxr) -
     ((nu0 + xb*delta)*r - dnu0 - delta*xb*dlogdelta - delta*dxb) -
     delta*((xr - xb)*(r - dlogdelta) - (dxr - dxb)) == 0)
 identity("I08", (-(q - q*n2) - (p - p*n2)) - (n2 - 1)*(q + p) == 0)
 identity("I09", (mu - beta)^2 + (1 - mu^2)*(1 - beta^2) - (1 - beta*mu)^2 == 0)
 
-# Symbolics.jl differential and direct-limit reconstruction of the exact affine transfer.
+# Symbolics.jl differential reconstruction of the exact affine transfer.
 @variables zsym tausym f0sym etasym
 Dτ = Differential(tausym)
 Fsym = exp(-zsym*tausym)*f0sym + etasym*(1 - exp(-zsym*tausym))/zsym
 identity("I02", symbolic_zero(Dτ(Fsym) - (etasym - zsym*Fsym)))
-# Symbolics.limit dispatches on the underlying BasicSymbolic variables, not Num wrappers.
-Fzero = Symbolics.limit(Symbolics.unwrap(Fsym), Symbolics.unwrap(zsym), 0)
-expected_zero = Symbolics.unwrap(f0sym + etasym*tausym)
-identity("I03", symbolic_zero(Fzero - expected_zero))
+
+# I03: independent exact formal-series proof in Nemo/QQ. The truncated
+# analytic transfer differs from f+eta*tau by chi times an exact polynomial,
+# so its constant term—and therefore the analytic chi->0 limit—is f+eta*tau.
+half = QQ(1, 2)
+sixth = QQ(1, 6)
+exp_minus_3 = onep - chi*tau + half*chi^2*tau^2 - sixth*chi^3*tau^3
+phi_2 = tau - half*chi*tau^2 + sixth*chi^2*tau^3
+transfer_3 = exp_minus_3*f + eta*phi_2
+transfer_quotient = -f*tau - half*eta*tau^2 +
+    chi*(half*f*tau^2 + sixth*eta*tau^3) - sixth*chi^2*f*tau^3
+identity("I03", transfer_3 - (f + eta*tau) - chi*transfer_quotient == 0)
 
 # Exact rational series coefficients used by the cancellation-free branches.
 rat(n::Integer, d::Integer=1) = Rational{BigInt}(BigInt(n), BigInt(d))
@@ -77,7 +99,8 @@ Fbad = exp(zsym*tausym)*f0sym + etasym*(exp(zsym*tausym) - 1)/zsym
 mutation("M02", !symbolic_zero(Dτ(Fbad) - (etasym - zsym*Fbad)))
 mutation("M03", eta*tau != 0)
 mutation("M04", delta*x*dlogdelta != 0)
-mutation("M05", one(P) != 0)
+mutation("M05R", vred_rh_zero != 0)
+mutation("M05B", onep != 0)  # R=1 in the exact blue-face-zero witness.
 mutation("M06", -(q + p) != 0)
 mutation("M07", (mu + beta)^2 + (1 - mu^2)*(1 - beta^2) - (1 - beta*mu)^2 != 0)
 mutation("M08", beta != 0)
