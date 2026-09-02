@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R2",
+  "status": "PASS_BOUNDED_EXTERNAL_FORMULA_ORACLE_R2",
+  "authority_effect": "NONE",
+  "scientific_claim_effect": "NONE",
+  "source_parent": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "scientific_pull_request": 47,
+    "scientific_commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+    "scientific_tree": "445b3fbc68aaba3e17c590831bff184b2e98e86f"
+  },
+  "publication": {
+    "pull_request": 52,
+    "base_pull_request": 51,
+    "branch": "audit/rec-next03-oji-durable-closeout-r2-20260903",
+    "state_required": "OPEN_DRAFT_NOT_MERGED"
+  },
+  "tested_implementation": {
+    "commit": "bd7a703c8807145e137a65fdc079d947208ea0c8",
+    "tree": "84fc1a91da0e2b6b8e3138d951082fe52df6401d",
+    "workflow_run": 33690507393,
+    "workflow_conclusion": "SUCCESS",
+    "exact_source_head_binding": true,
+    "ephemeral_pull_request_merge_commit_used_as_formula_evidence": false
+  },
+  "failure_lineage": {
+    "source_failure_run": 33678531383,
+    "source_failure_commit": "4a1e5d223efaae4f44572a2aca0c0ca716eaf4c5",
+    "source_failure_artifact": 9865537045,
+    "failure": "SYMBOLIC_ISZERO_RETURNED_NON_BOOLEAN_IN_SHORT_CIRCUIT_CONTEXT",
+    "classification": "ORACLE_HARNESS_TYPE_FAILURE_NO_FORMULA_DISAGREEMENT_ESTABLISHED",
+    "repair": "EXACT_JAS_AND_NEMO_QQ_FORMAL_SERIES_DIVISIBILITY_PROOF"
+  },
+  "engine_results": {
+    "octave_symbolic": {
+      "status": "PASS",
+      "independence_class": "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER",
+      "counts_as_independent_algebra_core": false,
+      "identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07R", "I07B", "I07D", "I08", "I09", "I10"],
+      "mutations": ["M01", "M02", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"],
+      "artifact_id": 9869849598,
+      "artifact_sha256": "d9426ce8e922ead94da33be3886f31004bb36ca1f09c294595f7a0012a3d4e3e"
+    },
+    "jas": {
+      "status": "PASS",
+      "independence_class": "INDEPENDENT_JAVA_EXACT_POLYNOMIAL_CORE",
+      "counts_as_independent_algebra_core": true,
+      "identities": ["I01", "I03", "I04", "I06", "I07R", "I07B", "I07D", "I08", "I09"],
+      "mutations": ["M01", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"],
+      "artifact_id": 9869840632,
+      "artifact_sha256": "0c3f85a4e9ad92fe23fa1e9c42de9889bcdd0f65ea38283137e121d503321c3c",
+      "jas_jar_sha256": "62a362d2fc2591d39f5973125aef71cf70267d486d9b321240454a242bd11976"
+    },
+    "julia_symbolics_nemo": {
+      "status": "PASS",
+      "independence_class": "INDEPENDENT_JULIA_SYMBOLICS_PLUS_NEMO_CORE",
+      "counts_as_independent_algebra_core": true,
+      "identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07R", "I07B", "I07D", "I08", "I09", "I10"],
+      "mutations": ["M01", "M02", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"],
+      "artifact_id": 9870005358,
+      "artifact_sha256": "5ed108122f94ffb035003ca2a6d07754a4e3a937669252ad2205daab7e171ca6",
+      "julia_version": "1.12.7",
+      "nemo_version": "0.56.1",
+      "symbolics_version": "7.39.0",
+      "symbolic_limits_version": "1.2.1",
+      "project_sha256": "596a97233fc57b0251aa3517b080c583d971e0bd0c79ae13eafc128ed1a1cce2",
+      "manifest_sha256": "e5eaab5c224dddd81c02e5fc798f1d631e6f71be1adf3c1c974bafa07d88e5bf",
+      "environment_lock_sha256": "ad90219d17dad3632201efae44df37aaae1d765c031c133deb1aec0bacb6725d",
+      "environment_receipt_sha256": "aa40064f7bb2d13cff481a4e5f438f5533665cfbb4262f3071dc29377fdedddd"
+    }
+  },
+  "aggregate": {
+    "status": "PASS",
+    "artifact_id": 9870018271,
+    "artifact_size_bytes": 106481,
+    "artifact_sha256": "221ea20a530f413b1e47aec8f5373c74cc4b57518308297121432f11fa65fecf",
+    "independent_algebra_cores": ["jas", "julia_symbolics_nemo"],
+    "three_axis_identities": ["I01", "I03", "I04", "I06", "I07R", "I07B", "I07D", "I08", "I09"],
+    "two_axis_identities": ["I02", "I05", "I10"],
+    "three_axis_mutations": ["M01", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"],
+    "two_axis_mutations": ["M02"],
+    "zero_coverage_identities": [],
+    "one_axis_identities": [],
+    "mutations_below_two_axes": []
+  },
+  "external_method_crosscheck": {
+    "paper": "Yang and Li, arXiv:2101.09674",
+    "role": "CANCELLATION_FREE_PHI_FUNCTION_METHOD_ONLY",
+    "authority_effect": "NONE"
+  },
+  "wolfram_closeout": {
+    "fresh_execution_status": "NOT_RUN_MCP_NETWORK_ERROR",
+    "claim": "NO_FRESH_WOLFRAM_PASS",
+    "note": "The R2 identities are independently executed by Octave/SymPy, JAS and Julia/Nemo-Symbolics; the failed Wolfram connection is preserved rather than relabelled."
+  },
+  "repository_wide_verifier": {
+    "workflow_run": 33690507390,
+    "status": "FAIL_INHERITED_PRESERVED_EVIDENCE_HYGIENE",
+    "findings": [
+      "MUTANT_drop_density_jvp.log lines 6 and 8: trailing whitespace",
+      "preservation_inventory.txt line 98: blank EOF"
+    ],
+    "r2_paths_named_in_failure": false,
+    "original_evidence_modified": false
+  },
+  "dual_audit_path": "formal/rec_next03/external_cas_oji/OJI_R2_DUAL_AUDIT.md",
+  "next_node": "REC_FACE_SOURCE_AUTHORITY_PREINTAKE",
+  "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
+  "withheld_claims": [
+    "SOURCE_IDENTICAL_DIRECTIONAL_FACE",
+    "REC_PROVIDER_EXPORT",
+    "PASS_REC_PHYSICAL_SPLIT",
+    "BASS_FORMULA_AUTHORITY_REDEFINITION",
+    "PRODUCTION_NUMERICAL_PARITY",
+    "SCIENCE_VALIDITY",
+    "MERGE_OR_READY_TRANSITION"
+  ]
+}
