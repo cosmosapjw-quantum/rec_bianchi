@@ -7,7 +7,8 @@ public final class RecNext03JasOracle {
     private static final String[] VARIABLES = {
         "eta", "kappa", "f", "a", "s", "deta", "dkappa", "df0", "dtau",
         "pchi", "ptau", "nu0", "x", "delta", "r", "dnu0", "dlogdelta",
-        "dxb", "xr", "xb", "dxr", "q", "p", "n2", "beta", "mu", "tau"
+        "dxb", "xr", "xb", "dxr", "q", "p", "n2", "beta", "mu", "tau",
+        "chi"
     };
 
     private static final GenPolynomialRing<BigRational> RING =
@@ -39,6 +40,18 @@ public final class RecNext03JasOracle {
         identity("I01",
             "eta*(1+f)-kappa*f-(eta-(kappa-eta)*f)");
 
+        /*
+         * I03: denominator-cleared exact formal-series proof.  The cubic
+         * analytic transfer differs from 6*(f+eta*tau) by chi times the
+         * exact quotient below, so the chi^0 coefficient is f+eta*tau.
+         */
+        identity("I03",
+            "(6-6*chi*tau+3*chi^2*tau^2-chi^3*tau^3)*f"
+            + "+eta*(6*tau-3*chi*tau^2+chi^2*tau^3)"
+            + "-6*(f+eta*tau)"
+            + "-chi*(-6*f*tau-3*eta*tau^2"
+            + "+chi*(3*f*tau^2+eta*tau^3)-chi^2*f*tau^3)");
+
         identity("I04",
             "a*df0+s*deta+pchi*(dkappa-deta)+ptau*dtau"
             + "-(a*df0+(s-pchi)*deta+pchi*dkappa+ptau*dtau)");
@@ -47,7 +60,12 @@ public final class RecNext03JasOracle {
             "((nu0+x*delta)*r-dnu0-delta*x*dlogdelta-delta*dxb)"
             + "-(nu0*r+x*delta*r-dnu0-delta*x*dlogdelta-delta*dxb)");
 
-        identity("I07",
+        /* Exact counterexamples for the three distinct event surfaces. */
+        identity("I07R",
+            "((1+0*1)*0-1-1*0*0-1*0)-(-1)");
+        identity("I07B",
+            "((1+0*1)*1-1-1*0*0-1*0)-0");
+        identity("I07D",
             "((nu0+xr*delta)*r-dnu0-delta*xr*dlogdelta-delta*dxr)"
             + "-((nu0+xb*delta)*r-dnu0-delta*xb*dlogdelta-delta*dxb)"
             + "-delta*((xr-xb)*(r-dlogdelta)-(dxr-dxb))");
@@ -61,7 +79,8 @@ public final class RecNext03JasOracle {
         mutation("M01", "pchi*deta");
         mutation("M03", "eta*tau");
         mutation("M04", "delta*x*dlogdelta");
-        mutation("M05", "1");
+        mutation("M05R", "-1");
+        mutation("M05B", "1");
         mutation("M06", "-(q+p)");
         mutation("M07",
             "(mu+beta)^2+(1-mu^2)*(1-beta^2)-(1-beta*mu)^2");

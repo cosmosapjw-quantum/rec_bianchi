@@ -55,16 +55,21 @@ dx_direct = (dnu - dnu0)/Delta - (nu - nu0)*dDelta/Delta^2 - dxb;
 dx_code = ((nu0 + x*Delta)*R - dnu0)/Delta - x*dlogDelta - dxb;
 require_zero("I06", dx_direct - dx_code);
 
-% I07: R_H=0 and red/blue face-speed-zero sets are independent.
-counter_RH = subs(dx_code, ...
+% I07R/I07B/I07D: the three event surfaces are distinct.
+red_at_RH_zero = subs(dx_code, ...
   [R, dnu0, Delta, x, dlogDelta, dxb, nu0], ...
   [0, 1, 1, 0, 0, 0, 1]);
-require_zero("I07", counter_RH + 1);
+require_zero("I07R", red_at_RH_zero + 1);
+
 syms xr xb dxr real;
 vred_num = (nu0 + xr*Delta)*R - dnu0 - Delta*xr*dlogDelta - Delta*dxr;
 vblue_num = (nu0 + xb*Delta)*R - dnu0 - Delta*xb*dlogDelta - Delta*dxb;
+blue_zero_at_RH_nonzero = subs(vblue_num, ...
+  [R, dnu0, Delta, xb, dlogDelta, dxb, nu0], ...
+  [1, 1, 1, 0, 0, 0, 1]);
+require_zero("I07B", blue_zero_at_RH_nonzero);
 face_difference = Delta*((xr - xb)*(R - dlogDelta) - (dxr - dxb));
-require_zero("I07", (vred_num - vblue_num) - face_difference);
+require_zero("I07D", (vred_num - vblue_num) - face_difference);
 
 % I08: projection form of the normal-frame direction flow is tangent.
 syms n2 q p real;
@@ -88,7 +93,8 @@ F_bad = exp(chi*tau)*f0 + eta*(exp(chi*tau) - 1)/chi;
 require_nonzero("M02", diff(F_bad, tau) - (eta - chi*F_bad));
 require_nonzero("M03", eta*tau);
 require_nonzero("M04", x*dlogDelta);
-require_nonzero("M05", counter_RH);
+require_nonzero("M05R", red_at_RH_zero);
+require_nonzero("M05B", sym(1));
 require_nonzero("M06", -(q + p));
 wrong_aberration = (mu + beta)^2 + (1 - mu^2)*(1 - beta^2) - ...
                     (1 - beta*mu)^2;
