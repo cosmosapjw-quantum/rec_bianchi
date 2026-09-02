@@ -3,14 +3,18 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections import Counter, defaultdict
+import re
+from collections import defaultdict
 from pathlib import Path
+
+SOURCE_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--contract", required=True)
     parser.add_argument("--receipts-root", required=True)
+    parser.add_argument("--expected-source-sha", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
@@ -27,6 +31,8 @@ def main() -> int:
     required = contract["required_engines"]
     if sorted(receipts) != sorted(required):
         errors.append(f"receipt engine set mismatch: {sorted(receipts)}")
+    if SOURCE_SHA_RE.fullmatch(args.expected_source_sha) is None:
+        errors.append("expected source SHA is not forty lowercase hexadecimal characters")
 
     identity_coverage: dict[str, list[str]] = defaultdict(list)
     mutation_coverage: dict[str, list[str]] = defaultdict(list)
@@ -40,6 +46,13 @@ def main() -> int:
             errors.append(f"{engine} status is not PASS")
         if receipt.get("authority_effect") != "NONE":
             errors.append(f"{engine} changed authority")
+        if receipt.get("source_sha") != args.expected_source_sha:
+            errors.append(
+                f"{engine} source SHA {receipt.get('source_sha')} does not match "
+                f"{args.expected_source_sha}"
+            )
+        if receipt.get("source_binding") != "EXACT_HEAD_NOT_EPHEMERAL_PR_MERGE_COMMIT":
+            errors.append(f"{engine} source binding is not exact-head")
         if receipt.get("independence_class") != expected["independence_class"]:
             errors.append(f"{engine} independence class mismatch")
         if not receipt.get("version"):
@@ -64,7 +77,12 @@ def main() -> int:
     minimum_cores = contract["aggregate_acceptance"]["minimum_independent_algebra_cores"]
     if len(core_engines) < minimum_cores:
         errors.append(f"only {len(core_engines)} independent algebra cores")
-    if len({receipts[e]["independence_class"] for e in core_engines if e in receipts}) != len(core_engines):
+    classes = {
+        receipts[e]["independence_class"]
+        for e in core_engines
+        if e in receipts
+    }
+    if len(classes) != len(core_engines):
         errors.append("independent cores do not have distinct implementation classes")
 
     for identity in contract["identity_catalog"]:
@@ -81,17 +99,24 @@ def main() -> int:
     for mutation in contract["mutation_catalog"]:
         if len(set(mutation_coverage.get(mutation, []))) < minimum_mutation_axes:
             errors.append(
-                f"mutation {mutation} has only {sorted(set(mutation_coverage.get(mutation, [])))}"
+                f"mutation {mutation} has only "
+                f"{sorted(set(mutation_coverage.get(mutation, [])))}"
             )
 
     result = {
-        "schema_version": "1.0.0",
+        "schema_version": "2.0.0",
         "stage_id": contract["stage_id"],
         "status": "PASS" if not errors else "FAIL",
+        "source_sha": args.expected_source_sha,
+        "source_binding": "EXACT_HEAD_NOT_EPHEMERAL_PR_MERGE_COMMIT",
         "required_engines": required,
         "independent_algebra_cores": sorted(core_engines),
-        "identity_coverage": {k: sorted(v) for k, v in sorted(identity_coverage.items())},
-        "mutation_coverage": {k: sorted(v) for k, v in sorted(mutation_coverage.items())},
+        "identity_coverage": {
+            key: sorted(value) for key, value in sorted(identity_coverage.items())
+        },
+        "mutation_coverage": {
+            key: sorted(value) for key, value in sorted(mutation_coverage.items())
+        },
         "errors": errors,
         "authority_effect": "NONE",
         "claim_boundary": contract["claim_boundary"],
