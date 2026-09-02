@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0.0",
-  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1",
-  "status": "SOURCE_IMPLEMENTATION_IN_PROGRESS_EXECUTION_REQUIRED",
+  "schema_version": "2.0.0",
+  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R2",
+  "status": "R2_IMPLEMENTATION_REQUIRED_AFTER_JULIA_BOOLEAN_FAILURE",
   "authority_effect": "NONE",
   "source_parent": {
     "repository": "cosmosapjw-quantum/rec_bianchi",
@@ -29,6 +29,15 @@
     "result": "2_FAILED_EXPECTED_MISSING_CONTRACT_FILES",
     "harness_failure_superseded": 33674617302
   },
+  "r2_failure_intake": {
+    "workflow_run": 33678531383,
+    "commit": "4a1e5d223efaae4f44572a2aca0c0ca716eaf4c5",
+    "julia_artifact": 9865537045,
+    "failure": "SYMBOLIC_ISZERO_RETURNED_NON_BOOLEAN_IN_SHORT_CIRCUIT_CONTEXT",
+    "passed_before_failure": ["I01", "I02", "I04", "I06", "I07", "I08", "I09"],
+    "formula_disagreement_established": false,
+    "repair_policy": "REPLACE_FRAGILE_DIRECT_LIMIT_BOOLEAN_PATH_WITH_EXACT_NEMO_FORMAL_SERIES_DIVISIBILITY_PROOF"
+  },
   "required_engines": [
     "octave_symbolic",
     "jas",
@@ -39,32 +48,34 @@
       "independence_class": "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": false,
-      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
-      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07R", "I07B", "I07D", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"]
     },
     "jas": {
       "independence_class": "INDEPENDENT_JAVA_EXACT_POLYNOMIAL_CORE",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": true,
-      "required_identities": ["I01", "I04", "I06", "I07", "I08", "I09"],
-      "required_mutations": ["M01", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I03", "I04", "I06", "I07R", "I07B", "I07D", "I08", "I09"],
+      "required_mutations": ["M01", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"]
     },
     "julia_symbolics_nemo": {
       "independence_class": "INDEPENDENT_JULIA_SYMBOLICS_PLUS_NEMO_CORE",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": true,
-      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
-      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07R", "I07B", "I07D", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05R", "M05B", "M06", "M07", "M08"]
     }
   },
   "identity_catalog": {
     "I01": "eta*(1+f)-kappa*f = eta-(kappa-eta)*f",
     "I02": "dF/dt = eta-(kappa-eta)*F for the exact constant-pair transfer",
-    "I03": "lim_{chi->0} F = f0+eta*t",
+    "I03": "the exact formal-series transfer differs from f0+eta*t by a factor of chi, establishing the analytic chi->0 limit",
     "I04": "analytic JVP uses dchi=dkappa-deta",
     "I05": "phi(x)=(1-exp(-x))/x has the cancellation-free code series through x^8",
     "I06": "Doppler-coordinate face speed follows the exact moving-coordinate chain rule",
-    "I07": "R_H=0, red-face speed=0 and blue-face speed=0 are distinct event surfaces",
+    "I07R": "R_H=0 does not imply red-face speed=0, witnessed by an exact red-face counterexample",
+    "I07B": "blue-face speed=0 does not imply R_H=0, witnessed by an exact blue-face counterexample",
+    "I07D": "red and blue face-speed numerators obey their exact difference identity",
     "I08": "normal-frame direction flow is tangent to the unit sphere",
     "I09": "finite Lorentz aberration preserves unit direction and the REC sign chart",
     "I10": "the beta^2<1e-28 identity branch has nonzero bounded error with leading term beta"
@@ -74,7 +85,8 @@
     "M02": "flip the pair-transfer exponential sign",
     "M03": "replace the chi=0 source limit by zero",
     "M04": "omit -x*dlogDelta from Doppler-coordinate speed",
-    "M05": "merge R_H=0 with a face-speed-zero event",
+    "M05R": "merge R_H=0 with red-face-speed zero",
+    "M05B": "merge blue-face-speed zero with R_H=0",
     "M06": "delete radial compensation from direction flow",
     "M07": "flip the aberration boost sign",
     "M08": "label the small-beta identity branch exact"
@@ -85,18 +97,32 @@
     "code_rate_dimension": "s^-1",
     "source_rate_dimension": "L^-1 when parameterized by s=c*t",
     "rate_adapter": "R_t=c*R_s and V_t=c*V_s",
+    "ray_parameter": "s=c*t; ell is reserved for angular rank",
     "direction_adapter": "BASS outward sky n_sky=-REC photon propagation direction e",
     "small_beta_branch": "BOUNDED_NUMERICAL_REGULARIZATION_NOT_EXACT_PARITY",
     "source_domain_firewall": "occupation rates and photon-packet-per-H rates are not directly addable"
   },
+  "source_identity_policy": {
+    "receipt_binding": "EXACT_PULL_REQUEST_HEAD_OR_PUSH_HEAD_NOT_EPHEMERAL_PULL_REQUEST_MERGE_COMMIT",
+    "same_source_sha_required_across_all_engine_receipts": true,
+    "forty_lower_hex_required": true
+  },
+  "julia_environment_policy": {
+    "lock_path": "formal/rec_next03/external_cas_oji/julia/ENVIRONMENT_LOCK.json",
+    "generated_manifest_sha256_must_match_lock": true,
+    "direct_package_versions_must_match_lock": true,
+    "lock_is_reproducibility_evidence_not_formula_authority": true
+  },
   "aggregate_acceptance": {
     "all_mandatory_engines_pass": true,
     "minimum_independent_algebra_cores": 2,
-    "critical_identities_covered_by_both_independent_cores": ["I01", "I04", "I06", "I08", "I09"],
+    "critical_identities_covered_by_both_independent_cores": ["I01", "I03", "I04", "I06", "I07R", "I07B", "I07D", "I08", "I09"],
     "minimum_execution_axes_per_mutation": 2,
     "package_or_lock_hashes_required": true,
     "raw_logs_required": true,
-    "normalized_receipts_required": true
+    "normalized_receipts_required": true,
+    "exact_source_head_binding_required": true,
+    "julia_environment_lock_required": true
   },
   "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
   "withheld_claims": [
