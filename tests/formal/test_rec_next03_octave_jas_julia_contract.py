@@ -50,3 +50,26 @@ def test_external_cas_contract_is_fail_closed() -> None:
     assert contract["claim_boundary"] == (
         "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION"
     )
+
+
+def test_julia_i03_uses_exact_nemo_series_not_heuristic_limit() -> None:
+    source_path = CAS_ROOT / "julia" / "verify_rec_next03_symbolics.jl"
+    source = source_path.read_text(encoding="utf-8")
+
+    # A mandatory exact theorem may not depend on Symbolics' experimental,
+    # heuristic limit implementation or on a symbolic Boolean in Julia control flow.
+    assert "Symbolics.limit" not in source
+    assert "iszero(reduced)" not in source
+
+    # The removable chi -> 0 limit must be reconstructed in an exact Nemo
+    # power-series ring, with both the constant coefficient and a non-vacuous
+    # first-order witness checked before the I03 PASS marker is emitted.
+    for token in (
+        "power_series_ring(",
+        "divexact(",
+        "coeff(Fseries, 0)",
+        "coeff(Fseries, 1)",
+        'identity("I03"',
+        'mutation("M03"',
+    ):
+        assert token in source, f"missing exact I03 oracle token: {token}"
