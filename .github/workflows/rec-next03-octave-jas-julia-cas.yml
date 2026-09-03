@@ -1,0 +1,235 @@
+name: rec-next03-octave-jas-julia-cas
+
+on:
+  push:
+    branches:
+      - audit/rec-next03-octave-jas-julia-cas-20260903-r1
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  REC_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+  REC_WORKFLOW_SHA: ${{ github.sha }}
+  REC_WORKFLOW_TRIGGER: ${{ github.event_name }}
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install bounded test dependencies
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Verify committed Julia environment lock
+        run: |
+          python formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
+      - name: Verify the materialized fail-closed contract
+        run: >-
+          python -m pytest -q
+          tests/formal/test_rec_next03_octave_jas_julia_contract.py
+          tests/formal/test_rec_next03_julia_lock_hardening.py
+
+  octave-symbolic:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download package payloads for checksum receipts
+        run: |
+          sudo apt-get update
+          mkdir -p package-downloads
+          cd package-downloads
+          apt-get download octave octave-symbolic python3-sympy
+          sha256sum ./*.deb > ../formal/rec_next03/external_cas_oji/octave/package.sha256
+      - name: Install GNU Octave and symbolic package
+        run: sudo apt-get install -y octave octave-symbolic
+      - name: Record runtime versions
+        run: |
+          octave --version | head -n 3 > formal/rec_next03/external_cas_oji/octave/version.txt
+          dpkg-query -W -f='${Package} ${Version}\n' octave octave-symbolic python3-sympy >> formal/rec_next03/external_cas_oji/octave/version.txt
+      - name: Execute Octave symbolic oracle and normalize receipt
+        run: |
+          set +e
+          octave --no-gui --quiet formal/rec_next03/external_cas_oji/octave/verify_rec_next03_symbolic.m > formal/rec_next03/external_cas_oji/octave/engine.log 2>&1
+          engine_rc=$?
+          set -e
+          cat formal/rec_next03/external_cas_oji/octave/engine.log
+          python3 formal/rec_next03/external_cas_oji/scripts/collect_engine_receipt.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --engine octave_symbolic \
+            --log formal/rec_next03/external_cas_oji/octave/engine.log \
+            --version formal/rec_next03/external_cas_oji/octave/version.txt \
+            --hashes formal/rec_next03/external_cas_oji/octave/package.sha256 \
+            --engine-exit-code "$engine_rc" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
+            --output formal/rec_next03/external_cas_oji/octave/receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: octave-symbolic-receipt
+          path: |
+            formal/rec_next03/external_cas_oji/octave/engine.log
+            formal/rec_next03/external_cas_oji/octave/version.txt
+            formal/rec_next03/external_cas_oji/octave/package.sha256
+            formal/rec_next03/external_cas_oji/octave/receipt.json
+          if-no-files-found: warn
+
+  jas:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+          cache: maven
+          cache-dependency-path: formal/rec_next03/external_cas_oji/jas/pom.xml
+      - name: Download JAS and runtime jars
+        working-directory: formal/rec_next03/external_cas_oji/jas
+        run: |
+          mvn -q dependency:copy-dependencies -DincludeScope=runtime -DoutputDirectory=target/dependency
+          sha256sum target/dependency/*.jar > package.sha256
+      - name: Record JAS runtime versions
+        working-directory: formal/rec_next03/external_cas_oji/jas
+        run: |
+          java -version > version.txt 2>&1
+          mvn -version >> version.txt 2>&1
+          printf 'JAS 2.7.200\n' >> version.txt
+      - name: Compile and execute JAS exact-polynomial oracle
+        working-directory: formal/rec_next03/external_cas_oji/jas
+        run: |
+          set +e
+          mvn -q -DskipTests compile exec:java -Dexec.mainClass=RecNext03JasOracle > engine.log 2>&1
+          engine_rc=$?
+          set -e
+          cat engine.log
+          python3 ../scripts/collect_engine_receipt.py \
+            --contract ../CONTRACT.json \
+            --engine jas \
+            --log engine.log \
+            --version version.txt \
+            --hashes package.sha256 \
+            --engine-exit-code "$engine_rc" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
+            --output receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jas-receipt
+          path: |
+            formal/rec_next03/external_cas_oji/jas/engine.log
+            formal/rec_next03/external_cas_oji/jas/version.txt
+            formal/rec_next03/external_cas_oji/jas/package.sha256
+            formal/rec_next03/external_cas_oji/jas/receipt.json
+          if-no-files-found: warn
+
+  julia-symbolics-nemo:
+    needs: contract
+    runs-on: ubuntu-latest
+    env:
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.12.7'
+      - name: Verify exact Julia runtime version
+        run: |
+          julia -e 'VERSION == v"1.12.7" || error("unexpected Julia runtime version: $(VERSION)")'
+      - name: Verify committed Julia environment lock
+        run: |
+          python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
+      - name: Instantiate exact Julia environment without manifest drift
+        run: |
+          julia --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(); Pkg.status()' > formal/rec_next03/external_cas_oji/julia/version.txt
+          julia --version >> formal/rec_next03/external_cas_oji/julia/version.txt
+          git diff --exit-code -- formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml
+          python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
+          sha256sum formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml > formal/rec_next03/external_cas_oji/julia/package.sha256
+      - name: Execute Julia Symbolics and Nemo oracle
+        run: |
+          set +e
+          julia --project=formal/rec_next03/external_cas_oji/julia formal/rec_next03/external_cas_oji/julia/verify_rec_next03_symbolics.jl > formal/rec_next03/external_cas_oji/julia/engine.log 2>&1
+          engine_rc=$?
+          set -e
+          cat formal/rec_next03/external_cas_oji/julia/engine.log
+          python3 formal/rec_next03/external_cas_oji/scripts/collect_engine_receipt.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --engine julia_symbolics_nemo \
+            --log formal/rec_next03/external_cas_oji/julia/engine.log \
+            --version formal/rec_next03/external_cas_oji/julia/version.txt \
+            --hashes formal/rec_next03/external_cas_oji/julia/package.sha256 \
+            --engine-exit-code "$engine_rc" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
+            --output formal/rec_next03/external_cas_oji/julia/receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: julia-symbolics-nemo-receipt
+          path: |
+            formal/rec_next03/external_cas_oji/julia/engine.log
+            formal/rec_next03/external_cas_oji/julia/version.txt
+            formal/rec_next03/external_cas_oji/julia/package.sha256
+            formal/rec_next03/external_cas_oji/julia/Project.toml
+            formal/rec_next03/external_cas_oji/julia/Manifest.toml
+            formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
+            formal/rec_next03/external_cas_oji/julia/receipt.json
+          if-no-files-found: warn
+
+  aggregate:
+    needs: [contract, octave-symbolic, jas, julia-symbolics-nemo]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded-receipts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install plot dependency
+        run: python -m pip install --disable-pip-version-check matplotlib
+      - name: Verify fail-closed aggregate and render evidence plots
+        run: |
+          python formal/rec_next03/external_cas_oji/scripts/verify_external_cas_matrix.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --receipts-root downloaded-receipts \
+            --output aggregate_receipt.json \
+            --expected-source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --expected-workflow-sha "$REC_WORKFLOW_SHA" \
+            --expected-trigger "$REC_WORKFLOW_TRIGGER"
+          python formal/rec_next03/external_cas_oji/scripts/render_external_cas_coverage.py \
+            --aggregate aggregate_receipt.json \
+            --output-dir coverage-plots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rec-next03-octave-jas-julia-aggregate
+          path: |
+            aggregate_receipt.json
+            coverage-plots/
+          if-no-files-found: warn
