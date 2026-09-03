@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1",
   "status": "SOURCE_IMPLEMENTATION_IN_PROGRESS_EXECUTION_REQUIRED",
   "authority_effect": "NONE",
@@ -97,6 +97,17 @@
     "package_or_lock_hashes_required": true,
     "raw_logs_required": true,
     "normalized_receipts_required": true
+  },
+  "provenance_contract": {
+    "source_head_sha": "EXACT_TESTED_PR_HEAD_OR_DIRECT_PUSH_COMMIT",
+    "workflow_sha": "EXACT_GITHUB_WORKFLOW_REVISION_INCLUDING_SYNTHETIC_PR_MERGE",
+    "trigger": "pull_request_OR_push",
+    "pull_request_relation": "source_head_sha=github.event.pull_request.head.sha; workflow_sha=github.sha; source_head_sha!=workflow_sha",
+    "push_relation": "source_head_sha=workflow_sha=github.sha",
+    "aggregate_requires_uniform_source_head_sha": true,
+    "aggregate_requires_uniform_workflow_sha": true,
+    "aggregate_requires_uniform_trigger": true,
+    "legacy_source_sha_field_forbidden": true
   },
   "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
   "withheld_claims": [
