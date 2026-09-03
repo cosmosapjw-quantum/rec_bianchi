@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R3",
+  "status": "PASS_BOUNDED_EXTERNAL_FORMULA_ORACLE_R3_IMPLEMENTATION",
+  "authority_effect": "NONE",
+  "scientific_claim_effect": "NONE",
+  "publication": {
+    "pull_request": 53,
+    "branch": "audit/rec-next03-oji-r3-event-transversality-20260903-r1",
+    "base_pull_request": 51,
+    "base_commit": "99617e0acd6fab728c5c31775806d3e1ac05cec7",
+    "base_tree": "daac47d18eafb050bacc9121b3d54f397943c00e",
+    "state_required": "OPEN_DRAFT_NOT_MERGED"
+  },
+  "tdd_lineage": {
+    "red_commit": "88a2fef4fcd019a8de2c04759c6f8d702e402348",
+    "red_workflow_run": 33712361434,
+    "red_result": "5_FAILED_EXPECTED_R3_EVENT_CONTRACT_ABSENT_19_PASSED",
+    "green_implementation_commit": "c07fdeb154bf9634e29571ea9b6a9082956bdac0",
+    "green_implementation_tree": "4186e57c9a974d3c6e995d9884f63043dafcd2ef",
+    "green_workflow_run": 33712810640,
+    "green_workflow_revision": "8797e2b2961c75eff245aa8d89d1313cbfc9bd88",
+    "green_workflow_conclusion": "SUCCESS"
+  },
+  "engine_results": {
+    "octave_symbolic": {
+      "status": "PASS",
+      "independence_class": "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER",
+      "counts_as_independent_algebra_core": false,
+      "artifact_id": 9877504000,
+      "artifact_sha256": "aef7fec1627521810bd1894535ef21fe30a43eecbc8c569d80a79a90577302dd"
+    },
+    "jas": {
+      "status": "PASS",
+      "independence_class": "INDEPENDENT_JAVA_EXACT_POLYNOMIAL_CORE",
+      "counts_as_independent_algebra_core": true,
+      "artifact_id": 9877485538,
+      "artifact_sha256": "e96999737f69ec4732d74042a3083e6392fe61c53ed58a459e5299f104219bab",
+      "jas_jar_sha256": "62a362d2fc2591d39f5973125aef71cf70267d486d9b321240454a242bd11976"
+    },
+    "julia_symbolics_nemo": {
+      "status": "PASS",
+      "independence_class": "INDEPENDENT_JULIA_SYMBOLICS_PLUS_NEMO_CORE",
+      "counts_as_independent_algebra_core": true,
+      "artifact_id": 9877616285,
+      "artifact_sha256": "33ff85df0d44bbddb556b4d168c04770d5897480f70d22223a150ce187d9b82b",
+      "julia_version": "1.12.7",
+      "nemo_version": "0.56.1",
+      "symbolics_version": "7.39.0",
+      "project_sha256": "596a97233fc57b0251aa3517b080c583d971e0bd0c79ae13eafc128ed1a1cce2",
+      "manifest_sha256": "e5eaab5c224dddd81c02e5fc798f1d631e6f71be1adf3c1c974bafa07d88e5bf",
+      "manifest_unchanged_after_instantiate": true
+    }
+  },
+  "aggregate": {
+    "status": "PASS",
+    "artifact_id": 9877623291,
+    "artifact_sha256": "452ecffe7f3fb959abfbc36325c7d08c58973b02e3a36bb2eec58899544fde3a",
+    "source_head_sha": "c07fdeb154bf9634e29571ea9b6a9082956bdac0",
+    "workflow_sha": "8797e2b2961c75eff245aa8d89d1313cbfc9bd88",
+    "trigger": "pull_request",
+    "independent_algebra_cores": [
+      "jas",
+      "julia_symbolics_nemo"
+    ],
+    "three_axis_identities": [
+      "I01",
+      "I03",
+      "I04",
+      "I06",
+      "I07H",
+      "I07R",
+      "I07B",
+      "I07D",
+      "I07J",
+      "I08",
+      "I09"
+    ],
+    "two_axis_identities": [
+      "I02",
+      "I05",
+      "I10"
+    ],
+    "three_axis_mutations": [
+      "M01",
+      "M03",
+      "M04",
+      "M05H",
+      "M05R",
+      "M05B",
+      "M05D",
+      "M05J",
+      "M06",
+      "M07",
+      "M08"
+    ],
+    "two_axis_mutations": [
+      "M02"
+    ],
+    "zero_coverage_identities": [],
+    "one_axis_identities": [],
+    "mutations_below_two_axes": [],
+    "errors": []
+  },
+  "event_function_theorem": {
+    "red_face_numerator": "V_RED=(NU0+X_RED*DELTA)*R_H-DOT_NU0-DELTA*X_RED*DOT_LOG_DELTA-DELTA*DOT_X_RED",
+    "blue_face_numerator": "V_BLUE=(NU0+X_BLUE*DELTA)*R_H-DOT_NU0-DELTA*X_BLUE*DOT_LOG_DELTA-DELTA*DOT_X_BLUE",
+    "witnesses_ordered_as_R_H_V_RED_V_BLUE": {
+      "hubble_zero": [0, -1, -2],
+      "red_zero": [1, 0, 1],
+      "blue_zero": [1, 1, 0]
+    },
+    "red_blue_difference_residual": "0",
+    "event_jacobian_coordinates": [
+      "R_H",
+      "DOT_X_RED",
+      "DOT_X_BLUE"
+    ],
+    "event_jacobian_determinant": "DELTA^2",
+    "physical_domain": "DELTA>0",
+    "rank_collapse_mutation": "DUPLICATE_RED_EVENT_ROW",
+    "rank_collapse_mutation_residual": "-DELTA^2",
+    "claim": "LOCAL_FUNCTIONAL_INDEPENDENCE_OF_THE_THREE_EVENT_FUNCTIONS",
+    "not_claimed": "TRAJECTORY_CROSSING_TRANSVERSALITY_REQUIRES_NONZERO_TIME_DERIVATIVE_OF_EACH_ACTIVE_EVENT_FUNCTION"
+  },
+  "wolfram_control": {
+    "status": "PASS",
+    "event_jacobian_determinant": "DELTA^2",
+    "hubble_zero_witness": [0, -1, -2],
+    "red_zero_witness": [1, 0, 1],
+    "blue_zero_witness": [1, 1, 0],
+    "red_blue_difference_residual": "0",
+    "missing_boundary_motion_mutation_residual": "DELTA*(DOT_X_BLUE-DOT_X_RED)",
+    "duplicated_row_mutation_residual": "-DELTA^2",
+    "i03_formal_series_residual": "0",
+    "independent_for_positive_delta": true,
+    "authority_effect": "NONE"
+  },
+  "literature_crosscheck": [
+    {
+      "work": "Biscani and Izzo, Reliable event detection for Taylor methods in astrodynamics",
+      "doi": "10.1093/mnras/stac1092",
+      "role": "EVENT_ROOT_ISOLATION_AND_RELIABLE_DETECTION_METHOD_ONLY"
+    },
+    {
+      "work": "Khan and Barton, Generalized Derivatives for Hybrid Systems",
+      "doi": "10.1109/TAC.2016.2644759",
+      "role": "HYBRID_EVENT_SENSITIVITY_METHOD_ONLY"
+    },
+    {
+      "work": "Hiskens, Power System Modeling for Inverse Problems",
+      "year": 2005,
+      "role": "TRANSVERSAL_EVENT_HYPERSURFACE_DISTINCTION_ONLY"
+    }
+  ],
+  "phys_math_audit": {
+    "metric_signature": "(-,+,+,+)",
+    "spatial_orientation": "epsilon_123=+1",
+    "ray_parameter": "s=c*t",
+    "event_rate_units": "R_H_AND_DOT_X_HAVE_T^-1_WHILE_V_RED_AND_V_BLUE_HAVE_FREQUENCY*T^-1",
+    "jacobian_determinant_units": "FREQUENCY^2",
+    "doppler_width_domain": "DELTA>0",
+    "known_limits": {
+      "delta_to_zero": "EVENT_JACOBIAN_LOSES_RANK_AND_NO_INDEPENDENCE_CLAIM_SURVIVES",
+      "identical_red_blue_boundary_data": "RED_BLUE_DIFFERENCE_CAN_VANISH_WITHOUT_IDENTIFYING_EITHER_FACE_WITH_R_H"
+    },
+    "p0_findings": [],
+    "p1_findings": [],
+    "p2_findings": [
+      "THE_BRANCH_AND_EARLY_PR_TITLE_USE_TRANSVERSALITY_BUT_THE_PROVED_RESULT_IS_LOCAL_FUNCTIONAL_INDEPENDENCE_NOT_DYNAMIC_CROSSING_TRANSVERSALITY"
+    ]
+  },
+  "phys_math_code_audit": {
+    "closed_findings": [
+      "PR52_M05B_CONSTANT_NONZERO_CONTROL_REPLACED_BY_RECONSTRUCTED_BLUE_EVENT_MUTANT",
+      "PR52_M05R_CONSTANT_OR_WITNESS_ONLY_CONTROL_REPLACED_BY_RECONSTRUCTED_RED_BLUE_SUBSTITUTION_MUTANT",
+      "PR51_COMBINED_I07_REPLACED_BY_SEPARATE_HUBBLE_RED_BLUE_DIFFERENCE_AND_JACOBIAN_IDENTITIES",
+      "JAS_NOW_INDEPENDENTLY_COVERS_I03",
+      "PR51_DUAL_PROVENANCE_AND_COMMITTED_JULIA_MANIFEST_PRESERVED"
+    ],
+    "p0_findings": [],
+    "p1_findings": [
+      "REPOSITORY_WIDE_VERIFY_WORKFLOW_STOPS_BEFORE_FULL_PYTEST_ON_PREEXISTING_BYTE_PRESERVED_EVIDENCE_HYGIENE"
+    ],
+    "p2_findings": [
+      "ACTIONS_SETUP_JAVA_V4_IS_DEPRECATED",
+      "THE_ORACLE_PROVES_EVENT_FUNCTION_INDEPENDENCE_BUT_DOES_NOT_EXECUTE_A_FULL_EVENT_RESTART_INTEGRATION_CAMPAIGN"
+    ]
+  },
+  "plot_crag": {
+    "artifact_paths": [
+      "coverage-plots/identity_coverage.png",
+      "coverage-plots/identity_coverage.svg",
+      "coverage-plots/mutation_coverage.png",
+      "coverage-plots/mutation_coverage.svg",
+      "coverage-plots/coverage.csv"
+    ],
+    "correctness": "ALL_FOURTEEN_IDENTITIES_HAVE_AT_LEAST_TWO_AXES_AND_ALL_TWELVE_MUTATIONS_HAVE_AT_LEAST_TWO_AXES",
+    "retrieval": "THE_EVENT_JACOBIAN_AND_MUTATION_RESIDUALS_AGREE_WITH_FRESH_WOLFRAM_EXACT_ALGEBRA",
+    "augmented": "ALL_FIVE_EVENT_IDENTITIES_AND_ALL_FIVE_EVENT_MUTATIONS_HAVE_THREE_EXECUTION_AXES",
+    "generation": "THE_NEXT_UNTESTED_LAYER_IS_DYNAMIC_EVENT_CROSSING_RESTART_AND_PHYSICAL_DIRECTIONAL_FACE_DATA_NOT_MORE_STATIC_EVENT_ALGEBRA",
+    "surviving_claim": "THREE_EXECUTION_AXES_AND_TWO_INDEPENDENT_EXACT_CORES_PASS_THE_R3_FORMULA_CONTRACT",
+    "narrowed_claim": "EVENT_FUNCTIONS_ARE_LOCALLY_FUNCTIONALLY_INDEPENDENT_FOR_DELTA_GT_ZERO",
+    "rejected_claims": [
+      "DYNAMIC_TRAJECTORY_TRANSVERSALITY",
+      "SOURCE_IDENTICAL_26_DIRECTION_PHYSICAL_FACE",
+      "REC_PROVIDER_READY",
+      "PASS_REC_PHYSICAL_SPLIT"
+    ]
+  },
+  "repository_wide_verifier": {
+    "workflow_run": 33712810635,
+    "status": "FAIL_INHERITED_PRESERVED_EVIDENCE_HYGIENE",
+    "findings": [
+      "MUTANT_drop_density_jvp.log lines 6 and 8 contain preserved trailing whitespace",
+      "preservation_inventory.txt line 98 contains a preserved blank EOF"
+    ],
+    "r3_paths_named_in_failure": false,
+    "original_evidence_modified": false,
+    "full_pytest_executed": false
+  },
+  "next_node_after_publication_replay": "REC_FACE_SOURCE_AUTHORITY_PREINTAKE",
+  "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
+  "withheld_claims": [
+    "DYNAMIC_EVENT_CROSSING_TRANSVERSALITY",
+    "SOURCE_IDENTICAL_DIRECTIONAL_FACE",
+    "REC_PROVIDER_EXPORT",
+    "PASS_REC_PHYSICAL_SPLIT",
+    "BASS_FORMULA_AUTHORITY_REDEFINITION",
+    "PRODUCTION_NUMERICAL_PARITY",
+    "SCIENCE_VALIDITY",
+    "MERGE_OR_READY_TRANSITION"
+  ]
+}
