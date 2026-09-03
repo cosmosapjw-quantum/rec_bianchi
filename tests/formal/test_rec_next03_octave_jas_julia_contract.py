@@ -1,15 +1,21 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[2]
 CAS_ROOT = ROOT / "formal" / "rec_next03" / "external_cas_oji"
+JULIA_ROOT = CAS_ROOT / "julia"
 COLLECTOR = CAS_ROOT / "scripts" / "collect_engine_receipt.py"
 AGGREGATOR = CAS_ROOT / "scripts" / "verify_external_cas_matrix.py"
+JULIA_LOCK_VERIFIER = CAS_ROOT / "scripts" / "verify_julia_environment_lock.py"
 WORKFLOW = ROOT / ".github" / "workflows" / "rec-next03-octave-jas-julia-cas.yml"
 
 REQUIRED_FILES = (
@@ -18,14 +24,20 @@ REQUIRED_FILES = (
     "jas/pom.xml",
     "jas/src/main/java/RecNext03JasOracle.java",
     "julia/Project.toml",
+    "julia/Manifest.toml",
     "julia/verify_rec_next03_symbolics.jl",
     "scripts/collect_engine_receipt.py",
     "scripts/verify_external_cas_matrix.py",
+    "scripts/verify_julia_environment_lock.py",
     "scripts/render_external_cas_coverage.py",
 )
 
 SOURCE_HEAD_SHA = "1" * 40
 WORKFLOW_SHA = "2" * 40
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def _write_minimal_contract(path: Path) -> Path:
@@ -117,6 +129,48 @@ def _run_aggregate(
     )
 
 
+def _run_julia_lock_verifier(
+    *,
+    contract: Path,
+    project: Path,
+    manifest: Path,
+    output: Path,
+) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [
+            sys.executable,
+            str(JULIA_LOCK_VERIFIER),
+            "--contract",
+            str(contract),
+            "--project",
+            str(project),
+            "--manifest",
+            str(manifest),
+            "--output",
+            str(output),
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+
+def _replace_manifest_package_field(
+    text: str,
+    *,
+    package: str,
+    field: str,
+    replacement: str,
+) -> str:
+    pattern = re.compile(
+        rf'(\[\[deps\.{re.escape(package)}\]\].*?^{re.escape(field)} = ")[^"]+("$)',
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    mutated, count = pattern.subn(rf"\g<1>{replacement}\g<2>", text, count=1)
+    assert count == 1, f"unable to mutate {package}.{field}"
+    return mutated
+
+
 def test_external_cas_axis_materialized() -> None:
     missing = [path for path in REQUIRED_FILES if not (CAS_ROOT / path).is_file()]
     assert not missing, f"missing external-CAS contract files: {missing}"
@@ -162,17 +216,12 @@ def test_external_cas_contract_is_fail_closed() -> None:
 
 
 def test_julia_i03_uses_exact_nemo_series_not_heuristic_limit() -> None:
-    source_path = CAS_ROOT / "julia" / "verify_rec_next03_symbolics.jl"
+    source_path = JULIA_ROOT / "verify_rec_next03_symbolics.jl"
     source = source_path.read_text(encoding="utf-8")
 
-    # A mandatory exact theorem may not depend on Symbolics' experimental,
-    # heuristic limit implementation or on a symbolic Boolean in Julia control flow.
     assert "Symbolics.limit" not in source
     assert "iszero(reduced)" not in source
 
-    # The removable chi -> 0 limit must be reconstructed in an exact Nemo
-    # power-series ring, with both the constant coefficient and a non-vacuous
-    # first-order witness checked before the I03 PASS marker is emitted.
     for token in (
         "power_series_ring(",
         "divexact(",
@@ -293,3 +342,143 @@ def test_workflow_passes_exact_head_and_workflow_revision_separately() -> None:
     ):
         assert token in source, f"workflow missing provenance token: {token}"
     assert "--source-sha" not in source
+
+
+def test_julia_environment_is_source_locked_and_contract_bound(tmp_path: Path) -> None:
+    contract_path = CAS_ROOT / "CONTRACT.json"
+    project_path = JULIA_ROOT / "Project.toml"
+    manifest_path = JULIA_ROOT / "Manifest.toml"
+    output = tmp_path / "julia-lock-receipt.json"
+
+    assert JULIA_LOCK_VERIFIER.is_file(), "Julia lock verifier must be source-controlled"
+    assert manifest_path.is_file(), "Manifest.toml must be source-controlled"
+
+    completed = _run_julia_lock_verifier(
+        contract=contract_path,
+        project=project_path,
+        manifest=manifest_path,
+        output=output,
+    )
+    assert completed.returncode == 0, completed.stderr or completed.stdout
+
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert receipt["status"] == "PASS"
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    lock = contract["julia_environment_lock"]
+    assert lock["julia_version"] == "1.12.7"
+    assert lock["manifest_format"] == "2.0"
+    assert lock["project_sha256"] == _sha256(project_path)
+    assert lock["manifest_sha256"] == _sha256(manifest_path)
+    assert re.fullmatch(r"[0-9a-f]{40}", lock["project_hash"])
+    assert set(lock["required_packages"]) == {"Nemo", "Symbolics"}
+    for package in ("Nemo", "Symbolics"):
+        pin = lock["required_packages"][package]
+        assert re.fullmatch(r"[0-9a-f-]{36}", pin["uuid"])
+        assert re.fullmatch(r"\d+\.\d+\.\d+", pin["version"])
+        assert re.fullmatch(r"[0-9a-f]{40}", pin["git_tree_sha1"])
+
+
+@pytest.mark.parametrize(
+    ("mutation", "expected_error"),
+    (
+        ("nemo_version", "Nemo version mismatch"),
+        ("nemo_tree", "Nemo git-tree-sha1 mismatch"),
+        ("symbolics_version", "Symbolics version mismatch"),
+        ("manifest_project_hash", "project_hash mismatch"),
+    ),
+)
+def test_julia_environment_lock_rejects_semantic_manifest_mutations_even_if_rehashed(
+    tmp_path: Path,
+    mutation: str,
+    expected_error: str,
+) -> None:
+    contract = json.loads((CAS_ROOT / "CONTRACT.json").read_text(encoding="utf-8"))
+    lock = contract["julia_environment_lock"]
+    project_path = tmp_path / "Project.toml"
+    manifest_path = tmp_path / "Manifest.toml"
+    contract_path = tmp_path / "CONTRACT.json"
+    output = tmp_path / "receipt.json"
+
+    project_path.write_bytes((JULIA_ROOT / "Project.toml").read_bytes())
+    manifest_text = (JULIA_ROOT / "Manifest.toml").read_text(encoding="utf-8")
+
+    if mutation == "nemo_version":
+        manifest_text = _replace_manifest_package_field(
+            manifest_text,
+            package="Nemo",
+            field="version",
+            replacement="0.0.0",
+        )
+    elif mutation == "nemo_tree":
+        manifest_text = _replace_manifest_package_field(
+            manifest_text,
+            package="Nemo",
+            field="git-tree-sha1",
+            replacement="0" * 40,
+        )
+    elif mutation == "symbolics_version":
+        manifest_text = _replace_manifest_package_field(
+            manifest_text,
+            package="Symbolics",
+            field="version",
+            replacement="0.0.0",
+        )
+    elif mutation == "manifest_project_hash":
+        manifest_text, count = re.subn(
+            r'(?m)^project_hash = "[0-9a-f]{40}"$',
+            f'project_hash = "{"0" * 40}"',
+            manifest_text,
+            count=1,
+        )
+        assert count == 1
+    else:  # pragma: no cover - parametrization is exhaustive
+        raise AssertionError(mutation)
+
+    manifest_path.write_text(manifest_text, encoding="utf-8")
+    lock["manifest_sha256"] = _sha256(manifest_path)
+    contract_path.write_text(json.dumps(contract), encoding="utf-8")
+
+    completed = _run_julia_lock_verifier(
+        contract=contract_path,
+        project=project_path,
+        manifest=manifest_path,
+        output=output,
+    )
+    assert completed.returncode != 0
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert receipt["status"] == "FAIL"
+    assert any(expected_error in error for error in receipt["errors"])
+
+
+def test_julia_environment_lock_rejects_project_byte_drift(tmp_path: Path) -> None:
+    contract_path = CAS_ROOT / "CONTRACT.json"
+    project_path = tmp_path / "Project.toml"
+    manifest_path = tmp_path / "Manifest.toml"
+    output = tmp_path / "receipt.json"
+
+    project_path.write_bytes((JULIA_ROOT / "Project.toml").read_bytes() + b"\n")
+    manifest_path.write_bytes((JULIA_ROOT / "Manifest.toml").read_bytes())
+
+    completed = _run_julia_lock_verifier(
+        contract=contract_path,
+        project=project_path,
+        manifest=manifest_path,
+        output=output,
+    )
+    assert completed.returncode != 0
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert any("Project.toml SHA-256 mismatch" in error for error in receipt["errors"])
+
+
+def test_workflow_enforces_committed_manifest_immutability() -> None:
+    source = WORKFLOW.read_text(encoding="utf-8")
+    for token in (
+        "Verify committed Julia environment lock",
+        "verify_julia_environment_lock.py",
+        "Pkg.instantiate()",
+        "git diff --exit-code -- formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml",
+        "formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json",
+    ):
+        assert token in source, f"workflow missing immutable-environment token: {token}"
+    assert "Pkg.resolve()" not in source
+    assert "Pkg.update()" not in source
