@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1",
-  "status": "SOURCE_IMPLEMENTATION_IN_PROGRESS_EXECUTION_REQUIRED",
+  "status": "SOURCE_ENVIRONMENT_LOCK_IMPLEMENTED_EXECUTION_REQUIRED",
   "authority_effect": "NONE",
   "source_parent": {
     "repository": "cosmosapjw-quantum/rec_bianchi",
@@ -108,6 +108,31 @@
     "aggregate_requires_uniform_workflow_sha": true,
     "aggregate_requires_uniform_trigger": true,
     "legacy_source_sha_field_forbidden": true
+  },
+  "julia_environment_lock": {
+    "lock_schema_version": "1.0.0",
+    "project_path": "formal/rec_next03/external_cas_oji/julia/Project.toml",
+    "manifest_path": "formal/rec_next03/external_cas_oji/julia/Manifest.toml",
+    "julia_version": "1.12.7",
+    "manifest_format": "2.0",
+    "project_hash": "4d311fd72de567d096eef949cd3c1541a84d0f90",
+    "project_sha256": "596a97233fc57b0251aa3517b080c583d971e0bd0c79ae13eafc128ed1a1cce2",
+    "manifest_sha256": "e5eaab5c224dddd81c02e5fc798f1d631e6f71be1adf3c1c974bafa07d88e5bf",
+    "required_packages": {
+      "Nemo": {
+        "uuid": "2edaba10-b0f1-5616-af89-8c11ac63239a",
+        "version": "0.56.1",
+        "git_tree_sha1": "10c4cc66207e5fe215c4fe381d25d1e89269378a"
+      },
+      "Symbolics": {
+        "uuid": "0c5d862f-8b57-4792-8d23-62f2024744c7",
+        "version": "7.39.0",
+        "git_tree_sha1": "0eea73fa3bb1b579e25211cf4e1aefeeb78097c1"
+      }
+    },
+    "resolver_policy": "COMMITTED_MANIFEST_MUST_NOT_CHANGE_AFTER_PKG_INSTANTIATE",
+    "forbidden_package_mutation_commands": ["Pkg.resolve()", "Pkg.update()"],
+    "claim_boundary": "REPRODUCIBLE_EXTERNAL_CAS_ENVIRONMENT_ONLY_NO_PHYSICS_OR_SCIENCE_PROMOTION"
   },
   "claim_boundary": "EXTERNAL_FORMULA_ORACLE_ONLY_NO_PHYSICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION",
   "withheld_claims": [
