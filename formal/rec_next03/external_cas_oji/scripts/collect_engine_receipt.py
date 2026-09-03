@@ -10,6 +10,8 @@ IDENTITY_RE = re.compile(r"^IDENTITY\s+(I\d{2})\s+PASS\s*$", re.MULTILINE)
 MUTATION_RE = re.compile(r"^MUTATION\s+(M\d{2})\s+DETECTED\s*$", re.MULTILINE)
 STATUS_RE = re.compile(r"^STATUS\s+(PASS|FAIL)\s*$", re.MULTILINE)
 SHA_RE = re.compile(r"^([0-9a-f]{64})\s+(.+?)\s*$", re.MULTILINE)
+GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+VALID_TRIGGERS = {"pull_request", "push"}
 
 
 def main() -> int:
@@ -20,7 +22,9 @@ def main() -> int:
     parser.add_argument("--version", required=True)
     parser.add_argument("--hashes", required=True)
     parser.add_argument("--engine-exit-code", required=True, type=int)
-    parser.add_argument("--source-sha", required=True)
+    parser.add_argument("--source-head-sha", required=True)
+    parser.add_argument("--workflow-sha", required=True)
+    parser.add_argument("--trigger", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
@@ -53,14 +57,38 @@ def main() -> int:
         errors.append("empty version receipt")
     if not package_hashes:
         errors.append("no package or lock SHA-256 receipts")
+    if not GIT_SHA_RE.fullmatch(args.source_head_sha):
+        errors.append("source_head_sha is not a lowercase 40-hex Git SHA")
+    if not GIT_SHA_RE.fullmatch(args.workflow_sha):
+        errors.append("workflow_sha is not a lowercase 40-hex Git SHA")
+    if args.trigger not in VALID_TRIGGERS:
+        errors.append(f"unsupported workflow trigger: {args.trigger}")
+    if args.trigger == "pull_request" and args.source_head_sha == args.workflow_sha:
+        errors.append(
+            "pull_request provenance requires the exact PR head to be distinct "
+            "from the synthetic workflow merge revision"
+        )
+    if args.trigger == "push" and args.source_head_sha != args.workflow_sha:
+        errors.append(
+            "push provenance requires source_head_sha and workflow_sha to be identical"
+        )
+
+    provenance_relation = (
+        "PULL_REQUEST_HEAD_DISTINCT_FROM_WORKFLOW_REVISION"
+        if args.trigger == "pull_request" and args.source_head_sha != args.workflow_sha
+        else "DIRECT_PUSH_COMMIT"
+    )
 
     receipt = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "stage_id": contract["stage_id"],
         "engine": args.engine,
         "status": "PASS" if not errors else "FAIL",
         "engine_exit_code": args.engine_exit_code,
-        "source_sha": args.source_sha,
+        "source_head_sha": args.source_head_sha,
+        "workflow_sha": args.workflow_sha,
+        "trigger": args.trigger,
+        "provenance_relation": provenance_relation,
         "independence_class": engine_contract["independence_class"],
         "counts_as_independent_algebra_core": engine_contract[
             "counts_as_independent_algebra_core"
