@@ -9,6 +9,11 @@ on:
 permissions:
   contents: read
 
+env:
+  REC_SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+  REC_WORKFLOW_SHA: ${{ github.sha }}
+  REC_WORKFLOW_TRIGGER: ${{ github.event_name }}
+
 jobs:
   contract:
     runs-on: ubuntu-latest
@@ -54,7 +59,9 @@ jobs:
             --version formal/rec_next03/external_cas_oji/octave/version.txt \
             --hashes formal/rec_next03/external_cas_oji/octave/package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
             --output formal/rec_next03/external_cas_oji/octave/receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -104,7 +111,9 @@ jobs:
             --version version.txt \
             --hashes package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
             --output receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -144,7 +153,9 @@ jobs:
             --version formal/rec_next03/external_cas_oji/julia/version.txt \
             --hashes formal/rec_next03/external_cas_oji/julia/package.sha256 \
             --engine-exit-code "$engine_rc" \
-            --source-sha "$GITHUB_SHA" \
+            --source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --workflow-sha "$REC_WORKFLOW_SHA" \
+            --trigger "$REC_WORKFLOW_TRIGGER" \
             --output formal/rec_next03/external_cas_oji/julia/receipt.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -177,7 +188,10 @@ jobs:
           python formal/rec_next03/external_cas_oji/scripts/verify_external_cas_matrix.py \
             --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
             --receipts-root downloaded-receipts \
-            --output aggregate_receipt.json
+            --output aggregate_receipt.json \
+            --expected-source-head-sha "$REC_SOURCE_HEAD_SHA" \
+            --expected-workflow-sha "$REC_WORKFLOW_SHA" \
+            --expected-trigger "$REC_WORKFLOW_TRIGGER"
           python formal/rec_next03/external_cas_oji/scripts/render_external_cas_coverage.py \
             --aggregate aggregate_receipt.json \
             --output-dir coverage-plots
