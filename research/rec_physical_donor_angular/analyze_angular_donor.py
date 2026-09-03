@@ -180,7 +180,10 @@ def main():
     if not ref_candidates: raise RuntimeError("no positive-weight Lebedev reference rule available")
     ref=lg[max(ref_candidates)]; face,fmeta=repo_face(root)
     matches=[{"order":o,**match(cur,g)} for o,g in lg.items() if len(g.w)==26]; identified=next((x['order'] for x in matches if x['identical']),None)
-    cub=exactness(cur); ranks=rank_rows(cur); L4=next(x for x in ranks if x['L']==4); L5=next(x for x in ranks if x['L']==5)
+    cub=exactness(cur); ranks=rank_rows(cur); L3=next(x for x in ranks if x['L']==3); L4=next(x for x in ranks if x['L']==4); L5=next(x for x in ranks if x['L']==5)
+    x0,y0,z0=cur.p[:,0],cur.p[:,1],cur.p[:,2]
+    l4_null_modes={"xy_x2_minus_y2":x0*y0*(x0*x0-y0*y0),"yz_y2_minus_z2":y0*z0*(y0*y0-z0*z0),"zx_z2_minus_x2":z0*x0*(z0*z0-x0*x0)}
+    l4_null_residuals={name:float(np.max(np.abs(values))) for name,values in l4_null_modes.items()}
     gr=grid_bench(grids,ref,face,nrot=a.rotations); pn=pn_bench(ref,face); plot(out,gr,pn)
     inv={}
     for p in (bg,dc,net):
@@ -192,7 +195,7 @@ def main():
       "current_26_is_physical_donor_authority":False}
     report={"schema_version":"1.0.0","stage_id":"REC_PHYSICAL_DONOR_ANGULAR_BASIS_AUDIT_R1","status":"PASS_RESEARCH_AUDIT_NO_PHYSICAL_ADMISSION","authority_effect":"NONE_RESEARCH_ONLY",
       "environment":{"python":sys.version,"platform":platform.platform(),"numpy":np.__version__,"pylebedev":"1.1.0","pylebedev_wheel_sha256":"3f7afc5e53d9392931e1c4967c4b85a25b9950efceb1df22bc08f4de03808c68"},
-      "repository_inputs":inv,"current_rule":{"point_count":26,"identified_lebedev_order":identified,"matches":matches,"cubature":cub,"harmonic_rank":ranks,"l4_full_column_rank":L4['full'],"l5_full_column_rank":L5['full'],"dimension_bound":"(L+1)^2<=26 implies L<=4"},
+      "repository_inputs":inv,"current_rule":{"point_count":26,"identified_lebedev_order":identified,"matches":matches,"cubature":cub,"harmonic_rank":ranks,"l3_full_column_rank":L3['full'],"l4_rank":L4['rank'],"l4_full_column_rank":L4['full'],"l5_full_column_rank":L5['full'],"exact_l4_null_mode_residuals":l4_null_residuals,"dimension_bound":"(L+1)^2<=26 is necessary only; the cubic grid is rank deficient already at L=4"},
       "lebedev_weight_sign_inventory":weight_inventory,"positive_lebedev_orders":positive_orders,"selected_positive_lebedev_orders":selected,"excluded_signed_candidate_orders":signed_exclusions,
       "reference_grid":{"order":ref.order,"points":len(ref.w),"all_positive":bool(np.all(ref.w>0))},"repository_face_benchmark":fmeta,"grid_benchmarks":gr,"pn_benchmarks":pn,"survivor":survivor,
       "decisions":{"fixed_26_state_authority_rejected":not L5['full'],"keep_26_as_projection_checkpoint":True,"physical_face_admitted":False,"provider_export_authorized":False,"next_node":"REC_PHYSICAL_DONOR_GENERATOR_CONTRACT_R2"},
@@ -202,9 +205,9 @@ def main():
       (out/(name+'.json')).write_text(json.dumps(rows,indent=2,sort_keys=True)+'\n');
       with (out/(name+'.csv')).open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
     (out/'NPZ_INVENTORY.json').write_text(json.dumps(inv,indent=2,sort_keys=True)+'\n')
-    receipt={"status":"PASS","audit_semantic_sha256":hashlib.sha256(json.dumps(report,sort_keys=True,separators=(',',':')).encode()).hexdigest(),"current_point_count":26,"identified_lebedev_order":identified,"current_exact_degree":cub['exact_through'],"current_l4_full_rank":L4['full'],"current_l5_full_rank":L5['full'],"fixed_26_state_authority_rejected":not L5['full'],"physical_face_admitted":False,"authority_effect":"NONE_RESEARCH_ONLY"}
+    receipt={"status":"PASS","audit_semantic_sha256":hashlib.sha256(json.dumps(report,sort_keys=True,separators=(',',':')).encode()).hexdigest(),"current_point_count":26,"identified_lebedev_order":identified,"current_exact_degree":cub['exact_through'],"current_l4_rank":L4['rank'],"current_l4_full_rank":L4['full'],"current_l5_full_rank":L5['full'],"exact_l4_null_mode_residuals":l4_null_residuals,"fixed_26_state_authority_rejected":not L5['full'],"physical_face_admitted":False,"authority_effect":"NONE_RESEARCH_ONLY"}
     (out/'RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
     half=next(r for r in gr if r['grid']=='CURRENT_REPOSITORY_26' and r['benchmark']=='HALF_RANGE_INFLOW_MASK'); beam=next(r for r in gr if r['grid']=='CURRENT_REPOSITORY_26' and r['benchmark']=='NARROW_POSITIVE_BEAM')
-    (out/'RESULT_SUMMARY.md').write_text(f"# Angular Donor Audit Result\n\nFixed 26-vector: **rejected as physical donor authority**; retained as projection/regression grid.\n\n- identified Lebedev order: {identified}\n- cubature exact through degree: {cub['exact_through']}\n- L=4 full rank: {L4['full']}\n- L=5 full rank: {L5['full']}\n- max half-range orientation error: {half['max_integral_error']:.6e}\n- max narrow-beam orientation error: {beam['max_integral_error']:.6e}\n\nSurvivor: causal characteristic donor + low-order PSTF backbone + positive adaptive residual.\n\nNo physical face/provider is admitted.\n")
+    (out/'RESULT_SUMMARY.md').write_text(f"# Angular Donor Audit Result\n\nFixed 26-vector: **rejected as physical donor authority**; retained as projection/regression grid.\n\n- identified Lebedev order: {identified}\n- cubature exact through degree: {cub['exact_through']}\n- L=4 sampling rank: {L4['rank']}/25 (full={L4['full']})\n- exact L=4 cubic null modes: xy(x^2-y^2), yz(y^2-z^2), zx(z^2-x^2)\n- L=5 full rank: {L5['full']}\n- max half-range orientation error: {half['max_integral_error']:.6e}\n- max narrow-beam orientation error: {beam['max_integral_error']:.6e}\n\nSurvivor: causal characteristic donor + low-order PSTF backbone + positive adaptive residual.\n\nNo physical face/provider is admitted.\n")
     print(json.dumps(receipt,sort_keys=True)); return 0
 if __name__=='__main__':raise SystemExit(main())

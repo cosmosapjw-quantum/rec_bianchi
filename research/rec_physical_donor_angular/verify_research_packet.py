@@ -43,28 +43,51 @@ def main() -> int:
     current = audit["current_rule"]
     if current["point_count"] != 26:
         fail("current point count")
-    if current["cubature"]["exact_through_total_degree"] < 5:
-        fail("current quadrature fails unexpectedly low polynomial degree")
-    if current["l4_full_column_rank"] is not True:
-        fail("current grid cannot support the expected L=4 sampling subspace")
+    if current["identified_lebedev_order"] != 7:
+        fail("current grid is not the expected 26-point Lebedev order-7 rule")
+    if current["cubature"]["exact_through"] < 7:
+        fail("current quadrature fails its degree-7 cubature contract")
+    if current["l3_full_column_rank"] is not True:
+        fail("current grid unexpectedly fails the L<=3 sampling subspace")
+    if current["l4_full_column_rank"] is not False or current["l4_rank"] != 22:
+        fail("current cubic 26-grid must expose its exact L=4 rank defect")
+    nulls = current["exact_l4_null_mode_residuals"]
+    if set(nulls) != {
+        "xy_x2_minus_y2",
+        "yz_y2_minus_z2",
+        "zx_z2_minus_x2",
+    }:
+        fail("missing exact cubic L=4 null modes")
+    if max(nulls.values()) > 1.0e-13:
+        fail("cubic L=4 null modes do not vanish on the current grid")
     if current["l5_full_column_rank"] is not False:
         fail("26 points incorrectly claimed to span all 36 L<=5 modes")
+
+    if not audit["excluded_signed_candidate_orders"]:
+        fail("signed-weight Lebedev rules were not exposed")
+    if audit["reference_grid"]["all_positive"] is not True:
+        fail("benchmark reference must use a positive-weight rule")
 
     benchmarks = {row["benchmark"] for row in audit["grid_benchmarks"]}
     missing = REQUIRED_BENCHMARKS - benchmarks
     if missing:
         fail(f"missing benchmarks: {sorted(missing)}")
     families = {row["family"] for row in audit["grid_benchmarks"]}
-    if not {"REPOSITORY_CURRENT", "LEBEDEV", "FIBONACCI_EQUAL_WEIGHT", "GAUSS_LEGENDRE_X_FOURIER"}.issubset(families):
+    if not {
+        "REPOSITORY_CURRENT",
+        "LEBEDEV",
+        "FIBONACCI",
+        "GL_X_FOURIER",
+    }.issubset(families):
         fail("grid-family coverage")
 
     if not audit["repository_face_benchmark"].get("available", False):
         fail(f"repository face benchmark unavailable: {audit['repository_face_benchmark']}")
 
-    positive_pn = [row for row in audit["pn_benchmarks"] if row["positive_benchmark"]]
+    positive_pn = [row for row in audit["pn_benchmarks"] if row["positive"]]
     if not positive_pn:
         fail("no positive PN realizability probes")
-    if not any(row["mean_negative_solid_angle_fraction"] > 0 for row in positive_pn):
+    if not any(row["negative_fraction"] > 0 for row in positive_pn):
         fail("PN negativity stress never activated")
 
     survivor = audit["survivor"]
@@ -82,7 +105,8 @@ def main() -> int:
         "status": "PASS",
         "current_point_count": current["point_count"],
         "identified_lebedev_order": current["identified_lebedev_order"],
-        "exact_through_degree": current["cubature"]["exact_through_total_degree"],
+        "exact_through_degree": current["cubature"]["exact_through"],
+        "l4_rank": current["l4_rank"],
         "l4_full_rank": current["l4_full_column_rank"],
         "l5_full_rank": current["l5_full_column_rank"],
         "benchmark_count": len(benchmarks),
