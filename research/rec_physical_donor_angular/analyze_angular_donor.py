@@ -16,11 +16,14 @@ class Grid:
     w: np.ndarray
     family: str
     order: int|None=None
+    require_positive: bool=True
     def __post_init__(self):
         self.p=np.asarray(self.p,float); self.w=np.asarray(self.w,float)
         assert self.p.ndim==2 and self.p.shape[1]==3 and self.w.shape==(len(self.p),)
         assert np.max(np.abs(np.linalg.norm(self.p,axis=1)-1))<5e-11
-        assert np.all(self.w>0) and abs(self.w.sum()-1)<5e-11
+        assert abs(self.w.sum()-1)<5e-11
+        if self.require_positive:
+            assert np.all(self.w>0)
 
 def fib(n):
     i=np.arange(n); z=1-2*(i+.5)/n; ph=math.pi*(3-math.sqrt(5))*i
@@ -42,7 +45,7 @@ def leb_lib():
 
 def leb(lib,o):
     p,w=lib.get_points_and_weights(o)
-    return Grid(f"LEBEDEV_{o}_{len(w)}",p,w,"LEBEDEV",o)
+    return Grid(f"LEBEDEV_{o}_{len(w)}",p,w,"LEBEDEV",o,False)
 
 def dfact(n):
     r=1
@@ -119,7 +122,7 @@ def benches(face):
       "REPOSITORY_BIANCHI_FACE_MASK":(lambda p,u:face(p),None,True),
     }
 
-def Ycoeff(p,w,v,L=4):return 4*math.pi*(Ymat(p,L).conj().T@(w*v))
+def coeff(p,w,v,L=4):return 4*math.pi*(Ymat(p,L).conj().T@(w*v))
 
 def grid_bench(grids,ref,face,seed=20260903,nrot=12):
     out=[]; U=axes(seed,nrot); B=benches(face); Yr=Ymat(ref.p,4); Yg={g.name:Ymat(g.p,4) for g in grids}
@@ -167,9 +170,15 @@ def main():
     root=a.root.resolve(); out=a.output.resolve(); out.mkdir(parents=True,exist_ok=True)
     bg=root/'data/pr01c_background_snapshots_v048.npz'; dc=root/'data/pr05c2a_directional_coupling_v063.npz'; net=root/'data/z1100_direct_network_node.npz'
     with np.load(bg,allow_pickle=False) as z: cur=Grid('CURRENT_REPOSITORY_26',z['directions'],z['angular_weights'],'REPOSITORY_CURRENT')
-    lib,orders=leb_lib(); lg={o:leb(lib,o) for o in orders}; selected=[o for o in (7,9,11,13,17,23,29) if o in lg]
+    lib,orders=leb_lib(); lg={o:leb(lib,o) for o in orders}
+    weight_inventory={str(o):{"points":len(g.w),"minimum_weight":float(g.w.min()),"maximum_weight":float(g.w.max()),"all_positive":bool(np.all(g.w>0)),"weight_sum":float(g.w.sum())} for o,g in lg.items()}
+    positive_orders=[o for o,g in lg.items() if np.all(g.w>0)]
+    selected=[o for o in (7,9,11,13,17,23,29) if o in positive_orders]
+    signed_exclusions=[o for o in (7,9,11,13,17,23,29) if o in lg and o not in positive_orders]
     grids=[cur]+[lg[o] for o in selected]+[fib(n) for n in (26,50,110)]+[tensor(4,8),tensor(6,12),tensor(8,16)]
-    ref=lg[max(o for o in orders if o<=59)]; face,fmeta=repo_face(root)
+    ref_candidates=[o for o in positive_orders if o<=59]
+    if not ref_candidates: raise RuntimeError("no positive-weight Lebedev reference rule available")
+    ref=lg[max(ref_candidates)]; face,fmeta=repo_face(root)
     matches=[{"order":o,**match(cur,g)} for o,g in lg.items() if len(g.w)==26]; identified=next((x['order'] for x in matches if x['identical']),None)
     cub=exactness(cur); ranks=rank_rows(cur); L4=next(x for x in ranks if x['L']==4); L5=next(x for x in ranks if x['L']==5)
     gr=grid_bench(grids,ref,face,nrot=a.rotations); pn=pn_bench(ref,face); plot(out,gr,pn)
@@ -184,7 +193,8 @@ def main():
     report={"schema_version":"1.0.0","stage_id":"REC_PHYSICAL_DONOR_ANGULAR_BASIS_AUDIT_R1","status":"PASS_RESEARCH_AUDIT_NO_PHYSICAL_ADMISSION","authority_effect":"NONE_RESEARCH_ONLY",
       "environment":{"python":sys.version,"platform":platform.platform(),"numpy":np.__version__,"pylebedev":"1.1.0","pylebedev_wheel_sha256":"3f7afc5e53d9392931e1c4967c4b85a25b9950efceb1df22bc08f4de03808c68"},
       "repository_inputs":inv,"current_rule":{"point_count":26,"identified_lebedev_order":identified,"matches":matches,"cubature":cub,"harmonic_rank":ranks,"l4_full_column_rank":L4['full'],"l5_full_column_rank":L5['full'],"dimension_bound":"(L+1)^2<=26 implies L<=4"},
-      "reference_grid":{"order":ref.order,"points":len(ref.w)},"repository_face_benchmark":fmeta,"grid_benchmarks":gr,"pn_benchmarks":pn,"survivor":survivor,
+      "lebedev_weight_sign_inventory":weight_inventory,"positive_lebedev_orders":positive_orders,"selected_positive_lebedev_orders":selected,"excluded_signed_candidate_orders":signed_exclusions,
+      "reference_grid":{"order":ref.order,"points":len(ref.w),"all_positive":bool(np.all(ref.w>0))},"repository_face_benchmark":fmeta,"grid_benchmarks":gr,"pn_benchmarks":pn,"survivor":survivor,
       "decisions":{"fixed_26_state_authority_rejected":not L5['full'],"keep_26_as_projection_checkpoint":True,"physical_face_admitted":False,"provider_export_authorized":False,"next_node":"REC_PHYSICAL_DONOR_GENERATOR_CONTRACT_R2"},
       "claim_boundary":"RESEARCH_DONOR_ARCHITECTURE_ONLY_NO_SOURCE_IDENTICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION"}
     (out/'ANGULAR_DONOR_AUDIT.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')

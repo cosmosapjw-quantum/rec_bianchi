@@ -45,3 +45,14 @@ def test_research_contract_is_discretization_agnostic_and_fail_closed() -> None:
     assert contract["claim_boundary"] == (
         "RESEARCH_DONOR_ARCHITECTURE_ONLY_NO_SOURCE_IDENTICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION"
     )
+
+
+def test_signed_lebedev_rules_are_inventory_only_not_positive_runtime_candidates() -> None:
+    source = (RESEARCH / "analyze_angular_donor.py").read_text(encoding="utf-8")
+    assert "require_positive: bool=True" in source
+    assert "if self.require_positive:" in source
+    assert 'return Grid(f"LEBEDEV_{o}_{len(w)}",p,w,"LEBEDEV",o,False)' in source
+    assert "positive_orders=[o for o,g in lg.items() if np.all(g.w>0)]" in source
+    assert "excluded_signed_candidate_orders" in source
+    assert "lebedev_weight_sign_inventory" in source
+    assert "no positive-weight Lebedev reference rule available" in source
