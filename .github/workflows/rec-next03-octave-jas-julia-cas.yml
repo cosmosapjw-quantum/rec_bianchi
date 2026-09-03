@@ -32,7 +32,10 @@ jobs:
             --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
             --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
       - name: Verify the materialized fail-closed contract
-        run: python -m pytest -q tests/formal/test_rec_next03_octave_jas_julia_contract.py
+        run: >-
+          python -m pytest -q
+          tests/formal/test_rec_next03_octave_jas_julia_contract.py
+          tests/formal/test_rec_next03_julia_lock_hardening.py
 
   octave-symbolic:
     needs: contract
@@ -143,6 +146,8 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.7'
+      - name: Verify exact Julia runtime version
+        run: julia -e 'VERSION == v"1.12.7" || error("unexpected Julia runtime version: $(VERSION)")'
       - name: Verify committed Julia environment lock
         run: |
           python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
