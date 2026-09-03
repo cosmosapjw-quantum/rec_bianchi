@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - audit/rec-next03-octave-jas-julia-cas-20260903-r1
+      - audit/rec-next03-oji-r3-event-transversality-20260903-r1
   pull_request:
 
 permissions:
@@ -36,6 +37,7 @@ jobs:
           python -m pytest -q
           tests/formal/test_rec_next03_octave_jas_julia_contract.py
           tests/formal/test_rec_next03_julia_lock_hardening.py
+          tests/formal/test_rec_next03_oji_r3_event_transversality.py
 
   octave-symbolic:
     needs: contract

@@ -180,7 +180,7 @@ def test_external_cas_contract_is_fail_closed() -> None:
     contract_path = CAS_ROOT / "CONTRACT.json"
     assert contract_path.is_file(), "CONTRACT.json must exist before validation"
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
-    assert contract["stage_id"] == "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1"
+    assert contract["stage_id"] == "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R3"
     assert contract["authority_effect"] == "NONE"
     assert contract["required_engines"] == [
         "octave_symbolic",

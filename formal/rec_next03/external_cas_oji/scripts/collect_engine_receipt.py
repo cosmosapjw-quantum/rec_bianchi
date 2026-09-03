@@ -6,8 +6,8 @@ import json
 import re
 from pathlib import Path
 
-IDENTITY_RE = re.compile(r"^IDENTITY\s+(I\d{2})\s+PASS\s*$", re.MULTILINE)
-MUTATION_RE = re.compile(r"^MUTATION\s+(M\d{2})\s+DETECTED\s*$", re.MULTILINE)
+IDENTITY_RE = re.compile(r"^IDENTITY\s+(I\d{2}[A-Z]?)\s+PASS\s*$", re.MULTILINE)
+MUTATION_RE = re.compile(r"^MUTATION\s+(M\d{2}[A-Z]?)\s+DETECTED\s*$", re.MULTILINE)
 STATUS_RE = re.compile(r"^STATUS\s+(PASS|FAIL)\s*$", re.MULTILINE)
 SHA_RE = re.compile(r"^([0-9a-f]{64})\s+(.+?)\s*$", re.MULTILINE)
 GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -80,7 +80,7 @@ def main() -> int:
     )
 
     receipt = {
-        "schema_version": "1.1.0",
+        "schema_version": "1.2.0",
         "stage_id": contract["stage_id"],
         "engine": args.engine,
         "status": "PASS" if not errors else "FAIL",

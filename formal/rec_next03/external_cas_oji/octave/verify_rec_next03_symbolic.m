@@ -55,16 +55,48 @@ dx_direct = (dnu - dnu0)/Delta - (nu - nu0)*dDelta/Delta^2 - dxb;
 dx_code = ((nu0 + x*Delta)*R - dnu0)/Delta - x*dlogDelta - dxb;
 require_zero("I06", dx_direct - dx_code);
 
-% I07: R_H=0 and red/blue face-speed-zero sets are independent.
-counter_RH = subs(dx_code, ...
-  [R, dnu0, Delta, x, dlogDelta, dxb, nu0], ...
-  [0, 1, 1, 0, 0, 0, 1]);
-require_zero("I07", counter_RH + 1);
+% I07H/I07R/I07B/I07D/I07J: separate event functions and rank.
 syms xr xb dxr real;
 vred_num = (nu0 + xr*Delta)*R - dnu0 - Delta*xr*dlogDelta - Delta*dxr;
 vblue_num = (nu0 + xb*Delta)*R - dnu0 - Delta*xb*dlogDelta - Delta*dxb;
+
+red_at_hubble_zero = subs(vred_num, ...
+  [nu0, xr, Delta, R, dnu0, dlogDelta, dxr], ...
+  [1, 0, 1, 0, 1, 0, 0]);
+blue_at_hubble_zero = subs(vblue_num, ...
+  [nu0, xb, Delta, R, dnu0, dlogDelta, dxb], ...
+  [1, 0, 1, 0, 1, 0, 1]);
+hubble_zero_witness = [sym(0), red_at_hubble_zero, blue_at_hubble_zero];
+require_zero("I07H", hubble_zero_witness(1)^2 + ...
+  (hubble_zero_witness(2) + 1)^2 + (hubble_zero_witness(3) + 2)^2);
+
+red_at_red_zero = subs(vred_num, ...
+  [nu0, xr, Delta, R, dnu0, dlogDelta, dxr], ...
+  [1, 0, 1, 1, 1, 0, 0]);
+blue_at_red_zero = subs(vblue_num, ...
+  [nu0, xb, Delta, R, dnu0, dlogDelta, dxb], ...
+  [1, 0, 1, 1, 1, 0, -1]);
+red_zero_witness = [sym(1), red_at_red_zero, blue_at_red_zero];
+require_zero("I07R", (red_zero_witness(1) - 1)^2 + ...
+  red_zero_witness(2)^2 + (red_zero_witness(3) - 1)^2);
+
+red_at_blue_zero = subs(vred_num, ...
+  [nu0, xr, Delta, R, dnu0, dlogDelta, dxr], ...
+  [1, 0, 1, 1, 1, 0, -1]);
+blue_at_blue_zero = subs(vblue_num, ...
+  [nu0, xb, Delta, R, dnu0, dlogDelta, dxb], ...
+  [1, 0, 1, 1, 1, 0, 0]);
+blue_zero_witness = [sym(1), red_at_blue_zero, blue_at_blue_zero];
+require_zero("I07B", (blue_zero_witness(1) - 1)^2 + ...
+  (blue_zero_witness(2) - 1)^2 + blue_zero_witness(3)^2);
+
 face_difference = Delta*((xr - xb)*(R - dlogDelta) - (dxr - dxb));
-require_zero("I07", (vred_num - vblue_num) - face_difference);
+require_zero("I07D", (vred_num - vblue_num) - face_difference);
+
+event_jacobian = [sym(1), sym(0), sym(0); ...
+                  nu0 + Delta*xr, -Delta, sym(0); ...
+                  nu0 + Delta*xb, sym(0), -Delta];
+require_zero("I07J", det(event_jacobian) - Delta^2);
 
 % I08: projection form of the normal-frame direction flow is tangent.
 syms n2 q p real;
@@ -82,13 +114,23 @@ small_error = 2*beta/(1 + sqrt(1 - beta^2));
 small_expected = beta + beta^3/4 + beta^5/8;
 require_zero("I10", taylor(small_error, beta, 0, 'order', 7) - small_expected);
 
-% Hostile controls.
+% Hostile controls. Each event mutation uses the reconstructed event functions
+% or Jacobian; no renamed numeric-constant check is admitted.
 require_nonzero("M01", chi_partial*deta);
 F_bad = exp(chi*tau)*f0 + eta*(exp(chi*tau) - 1)/chi;
 require_nonzero("M02", diff(F_bad, tau) - (eta - chi*F_bad));
 require_nonzero("M03", eta*tau);
 require_nonzero("M04", x*dlogDelta);
-require_nonzero("M05", counter_RH);
+require_nonzero("M05H", R - vred_num);
+require_nonzero("M05R", vred_num - vblue_num);
+require_nonzero("M05B", vblue_num - R);
+mutated_difference_residual = (vred_num - vblue_num) - ...
+  Delta*((xr - xb)*(R - dlogDelta));
+require_nonzero("M05D", mutated_difference_residual);
+mutated_event_jacobian = [event_jacobian(1, :); ...
+                          event_jacobian(2, :); ...
+                          event_jacobian(2, :)];
+require_nonzero("M05J", det(mutated_event_jacobian) - Delta^2);
 require_nonzero("M06", -(q + p));
 wrong_aberration = (mu + beta)^2 + (1 - mu^2)*(1 - beta^2) - ...
                     (1 - beta*mu)^2;
