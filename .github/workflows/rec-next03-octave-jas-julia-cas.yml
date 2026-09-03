@@ -24,6 +24,13 @@ jobs:
           python-version: '3.13'
       - name: Install bounded test dependencies
         run: python -m pip install --disable-pip-version-check pytest
+      - name: Verify committed Julia environment lock
+        run: |
+          python formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
       - name: Verify the materialized fail-closed contract
         run: python -m pytest -q tests/formal/test_rec_next03_octave_jas_julia_contract.py
 
@@ -129,15 +136,30 @@ jobs:
   julia-symbolics-nemo:
     needs: contract
     runs-on: ubuntu-latest
+    env:
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.7'
-      - name: Resolve exact Julia environment
+      - name: Verify committed Julia environment lock
+        run: |
+          python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
+      - name: Instantiate exact Julia environment without manifest drift
         run: |
           julia --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(); Pkg.status()' > formal/rec_next03/external_cas_oji/julia/version.txt
           julia --version >> formal/rec_next03/external_cas_oji/julia/version.txt
+          git diff --exit-code -- formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml
+          python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
+            --contract formal/rec_next03/external_cas_oji/CONTRACT.json \
+            --project formal/rec_next03/external_cas_oji/julia/Project.toml \
+            --manifest formal/rec_next03/external_cas_oji/julia/Manifest.toml \
+            --output formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
           sha256sum formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml > formal/rec_next03/external_cas_oji/julia/package.sha256
       - name: Execute Julia Symbolics and Nemo oracle
         run: |
@@ -165,7 +187,9 @@ jobs:
             formal/rec_next03/external_cas_oji/julia/engine.log
             formal/rec_next03/external_cas_oji/julia/version.txt
             formal/rec_next03/external_cas_oji/julia/package.sha256
+            formal/rec_next03/external_cas_oji/julia/Project.toml
             formal/rec_next03/external_cas_oji/julia/Manifest.toml
+            formal/rec_next03/external_cas_oji/julia/julia_environment_lock_receipt.json
             formal/rec_next03/external_cas_oji/julia/receipt.json
           if-no-files-found: warn
 
