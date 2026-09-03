@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_SOURCE_R3_DUAL_ADAPTER_TDD_RED",
+  "status": "SPEC_ONLY_NOT_EXECUTED",
+  "scientific_parent": {
+    "pull_request": 47,
+    "commit": "c4bf37d7271caf651bca41b6eaab8caff436452b"
+  },
+  "r2_parent_branch": "research/rec-source-bass-dual-representation-r2-20260903",
+  "required_missing_apis": [
+    "SourceAuthorityBundle",
+    "evaluate_grid_source",
+    "project_pstf_source",
+    "apply_grid_jump",
+    "project_pstf_jump",
+    "DualRepresentationSourceReceipt",
+    "Derived26DirectionFaceReadout"
+  ],
+  "red_tests": [
+    {
+      "id": "R3-RED-01",
+      "requirement": "grid and PSTF source actions must carry the same source_bundle_sha256"
+    },
+    {
+      "id": "R3-RED-02",
+      "requirement": "serialization must retain positive eta and kappa separately and derive signed chi"
+    },
+    {
+      "id": "R3-RED-03",
+      "requirement": "a physical eta>kappa pair with chi<0 must not be rejected as negative opacity"
+    },
+    {
+      "id": "R3-RED-04",
+      "requirement": "exact polynomial-rate projection must reject L_work < L_out + L_chi"
+    },
+    {
+      "id": "R3-RED-05",
+      "requirement": "for an exactly band-limited manufactured state, grid projection and native PSTF source action agree at the declared quadrature precision"
+    },
+    {
+      "id": "R3-RED-06",
+      "requirement": "same-cutoff mutation must expose the exact missed rank-three/rank-four source terms"
+    },
+    {
+      "id": "R3-RED-07",
+      "requirement": "anisotropic exponential jump must refuse a finite-exact-tail claim"
+    },
+    {
+      "id": "R3-RED-08",
+      "requirement": "isotropic jump is rank preserving and provides the control limit"
+    },
+    {
+      "id": "R3-RED-09",
+      "requirement": "TEFF diagnostics are read-only and cannot replace or mutate the BASS state"
+    },
+    {
+      "id": "R3-RED-10",
+      "requirement": "a 26-direction readout without parent state, source and background hashes is rejected"
+    },
+    {
+      "id": "R3-RED-11",
+      "requirement": "hydrogen propagation direction and outward-sky direction require an explicit sign adapter"
+    },
+    {
+      "id": "R3-RED-12",
+      "requirement": "full spectral grid state and radially integrated angular-density state cannot be declared byte-or-semantic equivalents"
+    }
+  ],
+  "negative_controls": [
+    "drop_kappa_and_keep_only_nonnegative_chi",
+    "use_L_work_equal_L_out_for_anisotropic_rate",
+    "truncate_exp_minus_tau_at_tau_rank",
+    "replace_full_distribution_by_TEFF_representative",
+    "promote_26_values_to_state_authority",
+    "compare_grid_coupled_G_to_full_spectral_PSTF_without_measure_adapter"
+  ],
+  "green_not_authorized_by_this_spec": true,
+  "claim_effect": "NONE"
+}

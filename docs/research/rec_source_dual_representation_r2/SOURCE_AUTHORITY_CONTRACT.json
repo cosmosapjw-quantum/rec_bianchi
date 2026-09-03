@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0.0",
+  "stage_id": "REC_SOURCE_BASS_DUAL_REPRESENTATION_R2",
+  "status": "PASS_RESEARCH_CONTRACT_NOT_ADMITTED",
+  "authority_effect": "NONE_RESEARCH_AND_DESIGN_ONLY",
+  "supersedes": {
+    "stage": "REC.CONTINUOUS_CAUSAL_SPECTRAL_ANGULAR_DONOR.V1",
+    "scope": "STATE_EVOLUTION_OWNERSHIP_ONLY",
+    "preserved": [
+      "fixed_26_is_not_state_authority",
+      "paired_source_positivity",
+      "independent_spectral_angular_face_error_axes",
+      "source_channel_type_firewalls"
+    ]
+  },
+  "ownership": {
+    "bass": [
+      "distribution_grid_state_evolution",
+      "distribution_PSTF_F_Aell_state_evolution",
+      "distribution_PSTF_Wigner_representation_maps",
+      "geometry_characteristics_and_transport_conventions"
+    ],
+    "rec_bianchi": [
+      "recombination_emission_absorption_pair",
+      "source_identical_jump_maps",
+      "incoming_and_initial_boundary_data",
+      "source_JVP_and_Jacobian",
+      "source_measure_channel_and_frame_metadata",
+      "source_byte_and_semantic_provenance"
+    ]
+  },
+  "source_bundle": {
+    "formula": "C_REC[f]=eta*(1+f)-kappa*f=eta-(kappa-eta)*f",
+    "primary_physical_fields": ["eta_s_inv", "kappa_s_inv"],
+    "derived_field": "chi_s_inv=kappa_s_inv-eta_s_inv",
+    "eta_domain": "finite_nonnegative",
+    "kappa_domain": "finite_nonnegative",
+    "chi_domain": "finite_signed",
+    "state_domain": "nonnegative_dimensionless_total_occupation",
+    "frame": "hydrogen_orthonormal_frame",
+    "frequency": "ordinary_frequency_Hz",
+    "c_explicit": true
+  },
+  "adapters": {
+    "grid": {
+      "action": "pointwise_distribution_source",
+      "formula": "eta-chi*f",
+      "authority_effect": "NONE_CONSUMER_ADAPTER"
+    },
+    "pstf": {
+      "action": "exact_distribution_source_projection",
+      "formula": "C_lm=eta_lm-sum_{LM,l'm'} chi_LM*f_l'm'*Gaunt(lm;LM;l'm')",
+      "authority_effect": "NONE_CONSUMER_ADAPTER",
+      "not_a_closure": true
+    }
+  },
+  "exact_representation_theorem": {
+    "statement": "Pi_P(C_REC_grid[f])=C_REC_PSTF(Pi_P(f))",
+    "domain": [
+      "all_active_ranks_retained",
+      "same_REC_source_bundle",
+      "same_frame_frequency_and_time_parameter",
+      "projection_and_source_integrals_exist",
+      "angular_projection_interchange_is_justified"
+    ],
+    "numerical_parity_effect": "NONE"
+  },
+  "finite_rank_policy": {
+    "bandlimited_affine_rate": {
+      "condition": "chi has angular bandlimit L_chi",
+      "exact_requirement": "L_work >= L_out + L_chi",
+      "isotropic_special_case": "L_chi=0 gives L_work=L_out"
+    },
+    "nonpolynomial_jump": {
+      "map": "f_plus=exp(-tau)*f_minus+(1-exp(-tau))*f_eq",
+      "generic_tail": "infinite_harmonic_tail_even_if_tau_is_finite_rank",
+      "required_policy": "grid_pointwise_or_adaptive_PSTF_tail_certificate"
+    },
+    "quadrature": "sampling_invertibility_is_not_product_aliasing_control"
+  },
+  "teff_diagnostics": {
+    "paper_i": ["I_spec_E", "I_ang_E_L"],
+    "paper_ii": ["I_shape_NE", "I_mu_frame", "I_ang_E_L", "regular_BE_realizability", "finite_cutoff_entropy_certificate"],
+    "role": "checkpoint_diagnostics_for_full_BASS_states",
+    "forbidden_role": "transport_closure_or_state_replacement"
+  },
+  "derived_26_direction_readout": {
+    "authority_effect": "NONE",
+    "required_parent_fields": [
+      "parent_BASS_state_sha256",
+      "parent_REC_source_bundle_sha256",
+      "parent_background_sha256",
+      "representation",
+      "projection_or_interpolation_method",
+      "node_order_hash",
+      "convention_hash"
+    ]
+  },
+  "required_next_stage": "REC_SOURCE_R3_DUAL_ADAPTER_TDD_RED",
+  "claim_boundaries": [
+    "NO_GRID_PSTF_NUMERICAL_PARITY",
+    "NO_SOURCE_COMPLETE_TWO_PHOTON_RAMAN_DEPOSITION",
+    "NO_POLARIZED_REC_SOURCE",
+    "NO_FINITE_ELECTRON_TILT_COLLISION",
+    "NO_SOURCE_IDENTICAL_PHYSICAL_FACE",
+    "NO_PROVIDER_EXPORT",
+    "NO_PASS_REC_PHYSICAL_SPLIT",
+    "NO_NUMERICAL_OR_SCIENCE_PROMOTION"
+  ]
+}

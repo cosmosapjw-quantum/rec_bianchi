@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_SOURCE_BASS_DUAL_REPRESENTATION_R2",
+  "status": "PINNED_BOUNDED_READBACK",
+  "bass": {
+    "repository": "cosmosapjw-quantum/bass",
+    "inspected_branch": "agent/continuation/research-followthrough-20260830-r2",
+    "commit": "e660451975f3fa3bd3d9a7b5ebf5d73cc544f1ac",
+    "tree": "ce31de19cc27672b157367e277201aaf7ff6a6c3",
+    "files": [
+      {
+        "path": "bianchi/matter/grid_boltzmann.py",
+        "blob": "707f2dd833e4f56a5770ff3cc5aa5c07d585645e",
+        "role": "direct_distribution_grid_F_q_direction",
+        "bounded_scope": "massless_Bianchi_I_invariant_momentum; isotropic-background_collision_gate; finite_radial_and_angular_grid"
+      },
+      {
+        "path": "bianchi/matter/grid_coupled.py",
+        "blob": "c2b8ed363239259b4c5170d708c2e7af788e0c86",
+        "role": "moment_untruncated_coupled_angular_density_grid",
+        "bounded_scope": "massless_single_species_class_A_diagonal_slice; radially_integrated_G_not_full_f_q_e"
+      },
+      {
+        "path": "bianchi/matter/hierarchy.py",
+        "blob": "d1dc99a9f662afa423dc7d3545645ad5b0469ab1",
+        "role": "distribution_to_PSTF_J_moments_and_hierarchy_RHS",
+        "bounded_scope": "dense_numerical_tensor_path_l_le_6; supplied_neighbor_moments; formula_path_distinct_from_generic_rank_authority"
+      },
+      {
+        "path": "bianchi/matter/pstf_coeff.py",
+        "blob": "1b33670ea53e827261f0a13f97d9cd353da9369d",
+        "role": "canonical_2l_plus_1_coefficients_and_generic_rank_Gaunt_blocks",
+        "bounded_scope": "closed_form_blocks_arbitrary_l; numerical_cache_and_convention_validation_required"
+      },
+      {
+        "path": "PLAN-Q-nonperturbative-backend.md",
+        "blob": "af1bf31bd4d7523570c84e81977d1ccbc472afd8",
+        "role": "truncation_free_grid_backend_architecture",
+        "bounded_scope": "plan_and_evidence_map_not_single_production_parity_receipt"
+      }
+    ],
+    "interpretation": {
+      "dual_representation_support": true,
+      "no_moment_closure_on_grid_lane": true,
+      "no_numerical_discretization_error": false,
+      "all_branch_all_species_polarized_grid_production_parity": false,
+      "generic_rank_formula_authority_distinct_from_finite_numerical_workspace": true
+    }
+  },
+  "rec_bianchi": {
+    "scientific_parent_pull_request": 47,
+    "scientific_parent_commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+    "files": [
+      {
+        "path": "src/full_bianchi_hyrec/trajectory/hyrec_source_adapter.py",
+        "blob": "23a8700c82849789db767ecf293128a82884ba46",
+        "role": "positive_paired_one_photon_source_virtual_spike_and_JVP"
+      },
+      {
+        "path": "src/full_bianchi_hyrec/trajectory/characteristic_angular.py",
+        "blob": "15979c93e8c7305ac9c3a178d6e095a21d",
+        "role": "arbitrary_direction_characteristic_reference_and_constant_transfer_JVP",
+        "qualification": "displayed_blob_identifier_was_truncated_by_connector_readback; refresh_exact_blob_before_implementation"
+      }
+    ]
+  },
+  "pin_policy": "Refresh every exact BASS/REC blob on the implementation parent before REC_SOURCE_R3; this R2 packet proves architecture and mathematics only.",
+  "authority_effect": "NONE"
+}
