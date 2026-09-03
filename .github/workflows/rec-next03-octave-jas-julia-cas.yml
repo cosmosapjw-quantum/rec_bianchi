@@ -147,7 +147,8 @@ jobs:
         with:
           version: '1.12.7'
       - name: Verify exact Julia runtime version
-        run: julia -e 'VERSION == v"1.12.7" || error("unexpected Julia runtime version: $(VERSION)")'
+        run: |
+          julia -e 'VERSION == v"1.12.7" || error("unexpected Julia runtime version: $(VERSION)")'
       - name: Verify committed Julia environment lock
         run: |
           python3 formal/rec_next03/external_cas_oji/scripts/verify_julia_environment_lock.py \
