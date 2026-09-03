@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+env:
+  RESEARCH_ROOT: research/rec_physical_donor_angular
+  PYTHONHASHSEED: '0'
+
 jobs:
   contract:
     runs-on: ubuntu-latest
@@ -19,5 +23,50 @@ jobs:
           python-version: '3.12'
       - name: Install bounded contract dependencies
         run: python -m pip install --disable-pip-version-check pytest
-      - name: Require the research contract before implementation
+      - name: Verify research contract
         run: python -m pytest -q tests/research/test_rec_physical_donor_angular_audit.py
+
+  angular-audit:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and verify PyLebedev wheel
+        run: |
+          mkdir -p package-downloads
+          python -m pip download --no-deps --dest package-downloads pylebedev==1.1.0
+          echo "3f7afc5e53d9392931e1c4967c4b85a25b9950efceb1df22bc08f4de03808c68  package-downloads/pylebedev-1.1.0-py3-none-any.whl" | sha256sum -c -
+          sha256sum package-downloads/pylebedev-1.1.0-py3-none-any.whl > pylebedev.sha256
+      - name: Install numerical research dependencies
+        run: |
+          python -m pip install --disable-pip-version-check \
+            numpy==2.2.6 scipy==1.15.3 matplotlib==3.10.3 \
+            package-downloads/pylebedev-1.1.0-py3-none-any.whl
+      - name: Record environment
+        run: |
+          python --version > research-environment.txt
+          python -m pip freeze >> research-environment.txt
+          cat pylebedev.sha256 >> research-environment.txt
+      - name: Execute angular donor audit on repository NPZ inputs
+        env:
+          PYTHONPATH: src
+          MPLBACKEND: Agg
+        run: |
+          python "$RESEARCH_ROOT/analyze_angular_donor.py" \
+            --root . \
+            --output angular-donor-results \
+            --rotations 16
+      - name: Verify fail-closed research packet
+        run: python "$RESEARCH_ROOT/verify_research_packet.py" angular-donor-results
+      - name: Create checksum manifest
+        run: |
+          find angular-donor-results -type f -print0 | sort -z | xargs -0 sha256sum > angular-donor-results/SHA256SUMS
+          cp research-environment.txt pylebedev.sha256 angular-donor-results/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rec-physical-donor-angular-audit
+          path: angular-donor-results/
+          if-no-files-found: error

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_PHYSICAL_DONOR_ANGULAR_BASIS_AUDIT_R1",
+  "program": "REC_NEXT03_PHYSICAL_DIRECTIONAL_DONOR",
+  "authority_effect": "NONE_RESEARCH_ONLY",
+  "scientific_parent": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "pull_request": 47,
+    "commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
+    "tree": "445b3fbc68aaba3e17c590831bff184b2e98e86f"
+  },
+  "angular_state_authority": "CONTINUOUS_OR_RECONSTRUCTIBLE_FUNCTION_ON_S2",
+  "fixed_26_direction_authority": false,
+  "physical_face_admitted": false,
+  "provider_export_authorized": false,
+  "candidate_families": [
+    "CURRENT_26_POINT_RULE",
+    "LEBEDEV_SEQUENCE",
+    "SPHERICAL_HARMONIC_PN",
+    "FILTERED_OR_REALIZABLE_MOMENTS",
+    "ADAPTIVE_SPHERICAL_MESH",
+    "HYBRID_LOW_MOMENT_PLUS_ADAPTIVE_RESIDUAL"
+  ],
+  "required_benchmarks": [
+    "SMOOTH_QUADRUPOLE",
+    "FINITE_BOOST_PATTERN",
+    "NARROW_POSITIVE_BEAM",
+    "HALF_RANGE_INFLOW_MASK",
+    "SIGNED_DISTORTION",
+    "REPOSITORY_BIANCHI_FACE_MASK"
+  ],
+  "required_metrics": [
+    "CUBATURE_DEGREE",
+    "SPHERICAL_HARMONIC_SAMPLING_RANK",
+    "ROTATION_SENSITIVITY",
+    "LOW_ORDER_MOMENT_ERROR",
+    "NARROW_BEAM_PEAK_CAPTURE",
+    "PN_L2_TRUNCATION_ERROR",
+    "PN_NEGATIVITY_OR_REALIZABILITY_STRESS",
+    "ACTUAL_REPOSITORY_FACE_MASK_DIAGNOSTIC"
+  ],
+  "conventions": {
+    "metric_signature": "(-,+,+,+)",
+    "spatial_orientation": "epsilon_123=+1",
+    "speed_of_light": "explicit",
+    "photon_propagation_direction": "e^a",
+    "outward_sky_direction": "n_sky^a=-e^a",
+    "ray_length_parameter": "s=c*t",
+    "angular_rank_symbol": "ell",
+    "frequency_variable": "ordinary_frequency_Hz_for_REC_faces"
+  },
+  "seed_role": {
+    "TEFF_PAPER_I": "two-axis angular-versus-spectral information-loss benchmark seed; not a solver",
+    "TEFF_PAPER_II": "moment-fiber, realizability, entropy-contraction and minimum-information reconstruction seed; not a transport closure"
+  },
+  "admission_firewalls": [
+    "A_QUADRATURE_IS_NOT_A_PHYSICAL_DONOR",
+    "CUBATURE_EXACTNESS_IS_NOT_POINT_VALUE_RECONSTRUCTION_CAPACITY",
+    "SCALAR_TO_26_REPLICATION_IS_NOT_SOURCE_IDENTICAL",
+    "ENTROPY_RECONSTRUCTION_IS_A_MODEL_CLOSURE_NOT_SOURCE_AUTHORITY",
+    "TOTAL_OCCUPATION_AND_SIGNED_DISTORTION_HAVE_DIFFERENT_REALIZABILITY_RULES",
+    "ANGULAR_AND_FREQUENCY_RESOLUTION_MUST_REFINE_INDEPENDENTLY"
+  ],
+  "claim_boundary": "RESEARCH_DONOR_ARCHITECTURE_ONLY_NO_SOURCE_IDENTICAL_FACE_PROVIDER_OR_SCIENCE_PROMOTION"
+}
