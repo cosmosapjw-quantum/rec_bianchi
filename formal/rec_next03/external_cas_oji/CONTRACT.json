@@ -1,13 +1,27 @@
 {
-  "schema_version": "1.2.0",
-  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R1",
-  "status": "SOURCE_JULIA_PACKAGE_GRAPH_LOCK_IMPLEMENTED_EXECUTION_REQUIRED",
+  "schema_version": "1.3.0",
+  "stage_id": "REC_NEXT03_EXTERNAL_CAS_OCTAVE_JAS_JULIA_R3",
+  "status": "SOURCE_R3_EVENT_TRANSVERSALITY_IMPLEMENTED_EXECUTION_REQUIRED",
   "authority_effect": "NONE",
   "source_parent": {
     "repository": "cosmosapjw-quantum/rec_bianchi",
     "pull_request": 47,
     "commit": "c4bf37d7271caf651bca41b6eaab8caff436452b",
     "tree": "445b3fbc68aaba3e17c590831bff184b2e98e86f"
+  },
+  "r3_reconciliation": {
+    "canonical_base_pull_request": 51,
+    "canonical_base_commit": "99617e0acd6fab728c5c31775806d3e1ac05cec7",
+    "canonical_base_tree": "daac47d18eafb050bacc9121b3d54f397943c00e",
+    "reference_event_split_pull_request": 52,
+    "reference_event_split_commit": "a09bfee69f7877833c44abace0e2840a8a76e380",
+    "reference_only_not_merged": true,
+    "repaired_audit_finding": "M05B_CONSTANT_NONZERO_LABEL_DID_NOT_INJECT_A_BLUE_EVENT_MERGER_MUTANT",
+    "preserved_layers": [
+      "EXACT_I03_NEMO_SERIES_PROOF",
+      "DUAL_EVENT_SOURCE_HEAD_AND_WORKFLOW_PROVENANCE",
+      "COMMITTED_JULIA_PACKAGE_GRAPH_LOCK"
+    ]
   },
   "source_pins": {
     "characteristics": {
@@ -24,10 +38,10 @@
     }
   },
   "genuine_red": {
-    "workflow_run": 33674831592,
-    "commit": "c911957882c88e9376e4b067396786072f4dc283",
-    "result": "2_FAILED_EXPECTED_MISSING_CONTRACT_FILES",
-    "harness_failure_superseded": 33674617302
+    "workflow_run": 33712361434,
+    "commit": "88a2fef4fcd019a8de2c04759c6f8d702e402348",
+    "result": "5_FAILED_EXPECTED_R3_EVENT_CONTRACT_ABSENT",
+    "prior_initial_red": 33674831592
   },
   "required_engines": [
     "octave_symbolic",
@@ -39,32 +53,36 @@
       "independence_class": "SYMPY_BACKED_CROSS_LANGUAGE_WRAPPER",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": false,
-      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
-      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07H", "I07R", "I07B", "I07D", "I07J", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05H", "M05R", "M05B", "M05D", "M05J", "M06", "M07", "M08"]
     },
     "jas": {
       "independence_class": "INDEPENDENT_JAVA_EXACT_POLYNOMIAL_CORE",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": true,
-      "required_identities": ["I01", "I04", "I06", "I07", "I08", "I09"],
-      "required_mutations": ["M01", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I03", "I04", "I06", "I07H", "I07R", "I07B", "I07D", "I07J", "I08", "I09"],
+      "required_mutations": ["M01", "M03", "M04", "M05H", "M05R", "M05B", "M05D", "M05J", "M06", "M07", "M08"]
     },
     "julia_symbolics_nemo": {
       "independence_class": "INDEPENDENT_JULIA_SYMBOLICS_PLUS_NEMO_CORE",
       "mandatory_execution": true,
       "counts_as_independent_algebra_core": true,
-      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
-      "required_mutations": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08"]
+      "required_identities": ["I01", "I02", "I03", "I04", "I05", "I06", "I07H", "I07R", "I07B", "I07D", "I07J", "I08", "I09", "I10"],
+      "required_mutations": ["M01", "M02", "M03", "M04", "M05H", "M05R", "M05B", "M05D", "M05J", "M06", "M07", "M08"]
     }
   },
   "identity_catalog": {
     "I01": "eta*(1+f)-kappa*f = eta-(kappa-eta)*f",
     "I02": "dF/dt = eta-(kappa-eta)*F for the exact constant-pair transfer",
-    "I03": "lim_{chi->0} F = f0+eta*t",
+    "I03": "the exact transfer has analytic chi->0 value f0+eta*t",
     "I04": "analytic JVP uses dchi=dkappa-deta",
     "I05": "phi(x)=(1-exp(-x))/x has the cancellation-free code series through x^8",
     "I06": "Doppler-coordinate face speed follows the exact moving-coordinate chain rule",
-    "I07": "R_H=0, red-face speed=0 and blue-face speed=0 are distinct event surfaces",
+    "I07H": "an exact witness has R_H=0 while both red and blue face speeds are nonzero",
+    "I07R": "an exact witness has red-face speed=0 while R_H and blue-face speed are nonzero",
+    "I07B": "an exact witness has blue-face speed=0 while R_H and red-face speed are nonzero",
+    "I07D": "red and blue face-speed numerators obey their exact difference identity",
+    "I07J": "the event Jacobian d(R_H,V_red,V_blue)/d(R_H,xdot_red,xdot_blue) has determinant Delta^2",
     "I08": "normal-frame direction flow is tangent to the unit sphere",
     "I09": "finite Lorentz aberration preserves unit direction and the REC sign chart",
     "I10": "the beta^2<1e-28 identity branch has nonzero bounded error with leading term beta"
@@ -72,12 +90,25 @@
   "mutation_catalog": {
     "M01": "omit -deta from dchi",
     "M02": "flip the pair-transfer exponential sign",
-    "M03": "replace the chi=0 source limit by zero",
+    "M03": "delete the chi=0 source contribution",
     "M04": "omit -x*dlogDelta from Doppler-coordinate speed",
-    "M05": "merge R_H=0 with a face-speed-zero event",
+    "M05H": "replace the characteristic event function R_H by the red-face event function",
+    "M05R": "replace the red-face event function by the blue-face event function",
+    "M05B": "replace the blue-face event function by R_H",
+    "M05D": "delete the boundary-motion term from the red-minus-blue difference identity",
+    "M05J": "duplicate one face-event row so the event Jacobian loses rank",
     "M06": "delete radial compensation from direction flow",
     "M07": "flip the aberration boost sign",
     "M08": "label the small-beta identity branch exact"
+  },
+  "event_transversality_contract": {
+    "event_functions": ["R_H", "V_RED", "V_BLUE"],
+    "differentiation_coordinates": ["R_H", "XDOT_RED", "XDOT_BLUE"],
+    "event_jacobian_determinant": "DELTA_FREQUENCY_SQUARED",
+    "physical_domain": "DELTA_FREQUENCY_GT_ZERO",
+    "vacuous_constant_nonzero_mutations_forbidden": true,
+    "runtime_event_dispatch_source_is_unchanged": true,
+    "claim": "FORMULA_LEVEL_LOCAL_FUNCTIONAL_INDEPENDENCE_ONLY"
   },
   "static_physics_contract": {
     "metric_signature": "(-,+,+,+)",
@@ -85,6 +116,7 @@
     "code_rate_dimension": "s^-1",
     "source_rate_dimension": "L^-1 when parameterized by s=c*t",
     "rate_adapter": "R_t=c*R_s and V_t=c*V_s",
+    "ray_parameter": "s=c*t; ell is reserved for angular rank",
     "direction_adapter": "BASS outward sky n_sky=-REC photon propagation direction e",
     "small_beta_branch": "BOUNDED_NUMERICAL_REGULARIZATION_NOT_EXACT_PARITY",
     "source_domain_firewall": "occupation rates and photon-packet-per-H rates are not directly addable"
@@ -92,7 +124,7 @@
   "aggregate_acceptance": {
     "all_mandatory_engines_pass": true,
     "minimum_independent_algebra_cores": 2,
-    "critical_identities_covered_by_both_independent_cores": ["I01", "I04", "I06", "I08", "I09"],
+    "critical_identities_covered_by_both_independent_cores": ["I01", "I03", "I04", "I06", "I07H", "I07R", "I07B", "I07D", "I07J", "I08", "I09"],
     "minimum_execution_axes_per_mutation": 2,
     "package_or_lock_hashes_required": true,
     "raw_logs_required": true,
