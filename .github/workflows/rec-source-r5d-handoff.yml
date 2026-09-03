@@ -1,0 +1,58 @@
+name: REC R5D trusted-payload handoff contract
+
+on:
+  pull_request:
+    paths:
+      - "research/handoffs/rec_source_r5d_20260903/**"
+      - ".github/workflows/rec-source-r5d-handoff.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check Bash syntax
+        run: bash -n research/handoffs/rec_source_r5d_20260903/R5D_TRUSTED_RF00_PAYLOAD_GATE.sh
+      - name: Parse and validate contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("research/handoffs/rec_source_r5d_20260903")
+          contract = json.loads((root / "CONTRACT.json").read_text())
+          script = (root / "R5D_TRUSTED_RF00_PAYLOAD_GATE.sh").read_text()
+
+          assert contract["stage_id"] == "BASS_REC_SOURCE_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_GATE"
+          assert contract["source_candidate"]["commit"] == "fc4d21b92a1abd1e9b35178f7d666831fc5c827d"
+          assert contract["trusted_payload"]["commit"] == "50b6e9f7a6741b7fd25b0421d2a674b9eb92cdda"
+          assert contract["trusted_payload"]["wheel_sha256"] == "99bd0596642dd31ca82080fb24306cd9bf3f6dd1ad3f68a1380f77378e266302"
+          assert contract["trusted_payload"]["shared_object_sha256"] == "5d5b8197518d8637b14e0c78b871802ed64f6506c7a95128f31bd52044a98633"
+          assert contract["opens_r6_only_on_pass"] is True
+
+          for token in (
+              "env -u BASS_ALLOW_UNVERIFIED_NATIVE_DEV",
+              "99bd0596642dd31ca82080fb24306cd9bf3f6dd1ad3f68a1380f77378e266302",
+              "5d5b8197518d8637b14e0c78b871802ed64f6506c7a95128f31bd52044a98633",
+              "PASS_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_AND_BACKEND_GATE",
+              "tests/test_backend_policy.py",
+              "tests/test_backend_integration.py",
+              "tests/test_backend_packaging.py",
+          ):
+              assert token in script, token
+
+          assert "BASS_ALLOW_UNVERIFIED_NATIVE_DEV=1" not in script
+          print("PASS_R5D_HANDOFF_STATIC_CONTRACT")
+          PY
+      - name: Check executable mode and diff hygiene
+        run: |
+          test -x research/handoffs/rec_source_r5d_20260903/R5D_TRUSTED_RF00_PAYLOAD_GATE.sh
+          git diff --check HEAD^ HEAD
