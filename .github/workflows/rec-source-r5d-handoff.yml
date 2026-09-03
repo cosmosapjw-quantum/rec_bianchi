@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -55,4 +57,4 @@ jobs:
       - name: Check executable mode and diff hygiene
         run: |
           test -x research/handoffs/rec_source_r5d_20260903/R5D_TRUSTED_RF00_PAYLOAD_GATE.sh
-          git diff --check HEAD^ HEAD
+          git diff --check HEAD^1 HEAD
