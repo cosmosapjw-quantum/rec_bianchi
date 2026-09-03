@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_SOURCE_BASS_DUAL_REPRESENTATION_R2",
+  "receipt_type": "CONNECTED_STATELESS_WOLFRAM_MATHEMATICAL_ORACLE",
+  "wolfram_version": "15.0.1 for Linux x86 (64-bit) (July 2, 2026)",
+  "xact_required": false,
+  "status": "PASS_TWO_ORACLES_WITH_FIRST_WARNING_PRESERVED",
+  "first_attempt": {
+    "status": "PASS_WITH_HARNESS_WARNING",
+    "warning": "Symbol::undefined2 from a locally scoped rank-variable construction",
+    "formula_effect": "NONE",
+    "superseded_by_clean_rerun": true
+  },
+  "clean_source_projection_oracle": {
+    "status": "PASS_CLEAN_DUAL_REPRESENTATION_SOURCE_ORACLE",
+    "assumptions": [
+      "axisymmetric exact Legendre regression",
+      "f(mu)=sum_{l=0}^4 a_l P_l(mu)",
+      "chi(mu)=sum_{L=0}^2 c_L P_L(mu)",
+      "eta(mu)=sum_{L=0}^2 e_L P_L(mu)",
+      "target output rank L_out=2",
+      "rate bandlimit L_chi=2"
+    ],
+    "checks": {
+      "triangle_rule_maximum_input_rank": 4,
+      "required_work_rank": 4,
+      "buffered_projection_residual": "0",
+      "same_cutoff_residual": "(15*a3*c1 + 10*a4*c2 - 18*a3*c2*mu - 45*a3*c1*mu^2 - 30*a4*c2*mu^2)/70",
+      "same_cutoff_residual_is_nonzero": true,
+      "thermochemical_inverse_t": "(a*r-c*n)/(4*a-3*c)",
+      "thermochemical_inverse_chi_frame": "(4*n-3*r)/(4*a-3*c)"
+    },
+    "target_source_coefficients_l0_to_l2": [
+      "(-15*a0*c0-5*a1*c1-3*a2*c2+15*e0)/15",
+      "(-35*a1*c0-35*a0*c1-14*a2*c1-14*a1*c2-9*a3*c2+35*e1)/35",
+      "(-21*a2*c0-14*a1*c1-9*a3*c1-21*a0*c2-6*a2*c2-6*a4*c2+21*e2)/21"
+    ]
+  },
+  "anisotropic_jump_tail_oracle": {
+    "status": "PASS_CLEAN_ANISOTROPIC_JUMP_TAIL_WITNESS",
+    "transmission": "T(mu)=exp(-tau0-alpha*mu)",
+    "ranks_checked": [0, 1, 2, 3, 4, 5, 6],
+    "all_coefficients_generically_nonzero": true,
+    "leading_order_in_alpha_by_rank": [0, 1, 2, 3, 4, 5, 6],
+    "leading_terms": [
+      "l=0: exp(-tau0)*(1+alpha^2/6+...)",
+      "l=1: exp(-tau0)*(-alpha-alpha^3/10+...)",
+      "l=2: exp(-tau0)*(alpha^2/3+alpha^4/42+...)",
+      "l=3: exp(-tau0)*(-alpha^3/15-alpha^5/270+...)",
+      "l=4: exp(-tau0)*(alpha^4/105+alpha^6/2310+...)",
+      "l=5: exp(-tau0)*(-alpha^5/945-alpha^7/24570+...)",
+      "l=6: exp(-tau0)*(alpha^6/10395+alpha^8/311850+...)"
+    ]
+  },
+  "conclusions": [
+    "For a rate field bandlimited at L_chi, exact outputs through L_out require a distribution work rank at least L_out+L_chi.",
+    "Using the output cutoff as the work cutoff silently aliases anisotropic source products.",
+    "An anisotropic exponential jump has a generic infinite angular tail even when optical depth has finite angular rank.",
+    "These are equation-level representation results and do not establish numerical BASS grid/PSTF parity."
+  ],
+  "claim_effect": "NONE"
+}
