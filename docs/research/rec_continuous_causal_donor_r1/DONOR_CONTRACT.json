@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "donor_id": "REC.CONTINUOUS_CAUSAL_SPECTRAL_ANGULAR_DONOR.V1",
+  "status": "RESEARCH_CONTRACT_NOT_ADMITTED",
+  "authority_object": {
+    "type": "continuous_evaluator",
+    "domain": ["time_s", "ordinary_frequency_Hz", "hydrogen_frame_unit_direction_S2"],
+    "codomain": "nonnegative_dimensionless_total_occupation"
+  },
+  "state_representation": {
+    "smooth_core": "positive_BE_dual_exponent",
+    "formula": "Psi(x,e)=x*B(e)-A(e)+rho(x,e); f=1/expm1(Psi)",
+    "required_domain": "Psi>0",
+    "spectral_resolution": "adaptive_K_or_multigroup",
+    "angular_resolution": "adaptive_PSTF_or_real_spherical_harmonic_L",
+    "low_regularity_fallback": "local_angular_FE_or_mixed_half_range_residual"
+  },
+  "causal_generator": {
+    "transport": "(partial_t+R nu partial_nu+V^A nabla_A)f=eta(1+f)-kappa f",
+    "history": "accepted_endpoints_only",
+    "frame": "hydrogen_orthonormal_frame",
+    "ordinary_frequency": true,
+    "c_explicit": true
+  },
+  "materialization": {
+    "fixed_authority_node_count": null,
+    "level0_view": "Lebedev26_degree7",
+    "allowed_views": ["Lebedev_hierarchy", "Gauss_Legendre_product", "adaptive_spherical_cells", "rotated_or_random_oracle"],
+    "all_views_authority_effect": "NONE"
+  },
+  "certificates": [
+    "dual_exponent_positive_margin",
+    "spectral_tail",
+    "angular_tail",
+    "face_flux_p_refinement",
+    "orientation_sensitivity",
+    "cross_quadrature_agreement",
+    "causal_history_hash",
+    "frame_and_basis_hashes"
+  ],
+  "forbidden": [
+    "scalar_occupation_broadcast_as_directional_authority",
+    "26_node_count_as_accuracy_certificate",
+    "nearest_neighbour_direction_fabrication",
+    "manufactured_zero_source_self_promotion",
+    "packet_rate_added_to_occupation_rate_without_deposition",
+    "provider_export_before_physical_admission"
+  ],
+  "claim_boundary": [
+    "NO_SOURCE_IDENTICAL_PHYSICAL_FACE",
+    "NO_PROVIDER_EXPORT",
+    "NO_PASS_REC_PHYSICAL_SPLIT",
+    "NO_NUMERICAL_OR_SCIENCE_PROMOTION"
+  ]
+}
