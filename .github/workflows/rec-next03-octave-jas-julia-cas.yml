@@ -12,6 +12,8 @@ jobs:
   capture-julia-manifest:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    env:
+      JULIA_PKG_PRECOMPILE_AUTO: '0'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,9 +21,9 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.12.7'
-      - name: Resolve exact Julia manifest
+      - name: Resolve exact Julia manifest without precompile
         run: |
-          julia --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(); Pkg.status()'
+          julia --project=formal/rec_next03/external_cas_oji/julia -e 'using Pkg; Pkg.instantiate(; allow_autoprecomp=false); Pkg.status()'
           sha256sum formal/rec_next03/external_cas_oji/julia/Project.toml formal/rec_next03/external_cas_oji/julia/Manifest.toml
       - name: Commit captured manifest to disposable branch
         run: |
