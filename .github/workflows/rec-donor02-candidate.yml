@@ -1,0 +1,34 @@
+name: REC-DONOR-02 exact-head candidate
+on:
+  push:
+    branches:
+      - research/rec-donor-02-minimal-physical-source-green-20260905-r1
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      REC_EXPECTED_HEAD: ${{ github.sha }}
+    steps:
+      - name: Checkout actual source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run source contracts without failure suppression
+        run: python3 scripts/run_rec_donor02_candidate.py "$RUNNER_TEMP/rec-donor02"
+      - name: Independent rational formula probes and figure generation
+        if: always()
+        run: python3 scripts/probe_rec_donor02.py "$RUNNER_TEMP/rec-donor02"
+      - name: Preserve exact outcome even when blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-donor02-${{ github.sha }}
+          path: ${{ runner.temp }}/rec-donor02
+          if-no-files-found: error
+          retention-days: 30
