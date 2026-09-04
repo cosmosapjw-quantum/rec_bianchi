@@ -1,0 +1,44 @@
+name: REC-DONOR-01 typed physical source expected RED
+
+on:
+  push:
+    branches:
+      - research/rec-donor-01-typed-physical-source-red-20260905-r1
+  pull_request:
+    branches:
+      - coordination/rec-four-repo-sync-r4-20260904-r1
+
+permissions:
+  contents: read
+
+jobs:
+  expected-red:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record interpreter
+        run: python3 --version
+
+      - name: Execute exact implementation-absent RED
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/REC_DONOR01_EXPECTED_RED_${GITHUB_RUN_ID}_${GITHUB_RUN_ATTEMPT}"
+          python3 scripts/run_rec_donor01_typed_physical_source_red.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$out"
+          printf 'REC_DONOR01_OUTPUT=%s\n' "$out" >> "$GITHUB_ENV"
+
+      - name: Upload exact RED receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-donor01-typed-physical-source-expected-red
+          path: ${{ env.REC_DONOR01_OUTPUT }}
+          if-no-files-found: error
+          retention-days: 30
