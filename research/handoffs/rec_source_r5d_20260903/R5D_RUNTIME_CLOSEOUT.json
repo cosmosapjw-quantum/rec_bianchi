@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "stage_id": "REC_SOURCE_R5D_V2_TRUSTED_PAYLOAD_RUNTIME_CLOSEOUT",
+  "classification": "PASS_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_AND_BACKEND_GATE",
+  "original_receipt_directory": "/home/cosmosapjw/Dropbox/bianchi/_runtime_receipts/BASS_REC_SOURCE_R5D_V2_20260904T021026Z",
+  "original_file_sha256": {
+    "summary.txt": "75248614421d95bc580dcdd11065e82aa8ffffba1b587e517a4871f6f38ef31f",
+    "R5D_TRUSTED_PAYLOAD_RECEIPT.json": "7f50a5c74127b65590bd3cce421515a6c8f2e5dbd64c668c34eb126a23be7a5c",
+    "native-identity.json": "f885203c7de72419294de173da36d1e2175c81b2f6a57d7e27d25c9bdcbd76b9",
+    "focused.log": "b8f5fe0bbfcc1ba1b7d9fb0297267844aa4b05b7b91a1ab72e620650781baa5b",
+    "backend.log": "3cd1e8b158bc49735e7598a1730950976cfecbef15a8225f00c19544891ae5f1",
+    "source-hashes.txt": "368603894570e9dc2d8c83dd4df69aa9e3da7324a426eba0ac01dd122c21fbf6",
+    "binding-hashes.txt": "bdd2b34539177ade20c9cdf5d8a82579e908af7f8417a2e2a46688602cb5700c",
+    "trusted_wheel": "99bd0596642dd31ca82080fb24306cd9bf3f6dd1ad3f68a1380f77378e266302"
+  },
+  "source_identity": {
+    "BASS_publication_head": "6ffbcceb660896f29d569533f0349c8ebaafbbe1",
+    "BASS_source_commit": "92d67dc79cf645947beb93ac01a9505ee277dabd",
+    "BASS_source_tree": "65cb63e6d08e80e9a8f38f83e3a536cb0a00a693",
+    "BASS_source_blob": "869677390004f68aef9f547e6556f5f1c15bd012",
+    "trusted_artifact_commit": "50b6e9f7a6741b7fd25b0421d2a674b9eb92cdda",
+    "trusted_wheel_sha256": "99bd0596642dd31ca82080fb24306cd9bf3f6dd1ad3f68a1380f77378e266302",
+    "trusted_shared_object_sha256": "5d5b8197518d8637b14e0c78b871802ed64f6506c7a95128f31bd52044a98633"
+  },
+  "executed_checks": {
+    "native_identity_rc": 0,
+    "focused_tests": "21/21 PASS",
+    "backend_tests": "54/54 PASS",
+    "forbidden_provenance_lines": 0,
+    "deterministic_source_hashes": true,
+    "deterministic_binding_hashes": true,
+    "clean_source_worktree": true,
+    "root_package_build_location": "NON_GIT_STAGING_DIRECTORY",
+    "development_override": "unset"
+  },
+  "gate_effect": {
+    "R6C_and_R5D_conjunction_satisfied": true,
+    "opens": "BASS_REC_SOURCE_R7_FULL_GRID_AND_SPECTRAL_PSTF_ADAPTER_TDD_RED",
+    "does_not_open": [
+      "production_solver_source_wiring",
+      "grid_PSTF_numerical_parity",
+      "physical_directional_face",
+      "provider_export",
+      "PASS_REC_PHYSICAL_SPLIT",
+      "PASS_RF04"
+    ]
+  }
+}
