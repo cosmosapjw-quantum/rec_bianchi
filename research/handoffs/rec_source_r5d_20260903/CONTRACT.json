@@ -1,27 +1,26 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "stage_id": "BASS_REC_SOURCE_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_GATE",
-  "status": "READY_FOR_LOCAL_EXECUTION",
+  "status": "READY_FOR_LOCAL_EXECUTION_CURRENT_R6_SOURCE",
+  "supersedes": {
+    "schema_version": "1.0.0",
+    "source_candidate": "fc4d21b92a1abd1e9b35178f7d666831fc5c827d",
+    "reason": "The historical runner was pinned to the R5 v1 protocol. The current gate must validate the exact R6 GREEN source, schema-v2 source and binding hashes, both focused suites, and clean staged packaging."
+  },
   "source_candidate": {
     "repository": "cosmosapjw-quantum/bass",
-    "branch": "research/bass-rec-source-r5-protocol-green-20260903-r1",
-    "commit": "fc4d21b92a1abd1e9b35178f7d666831fc5c827d",
-    "tree": "c0caf9b8017d4c3850a1a99629246164fd4b27ff"
+    "branch": "research/bass-rec-source-r6-hardening-green-20260904-r1",
+    "production_commit": "92d67dc79cf645947beb93ac01a9505ee277dabd",
+    "tree": "65cb63e6d08e80e9a8f38f83e3a536cb0a00a693",
+    "source_blob": "869677390004f68aef9f547e6556f5f1c15bd012",
+    "r5_test_blob": "db336d64633d8a9552bc3613c588a00f33404a4d",
+    "r6_test_blob": "49be9546c4655bc5ca330bc31ae2daf07578b74f"
   },
-  "prior_r5b": {
-    "receipt_path": "/bianchi/_runtime_receipts/BASS_REC_SOURCE_R5B_20260903T140455Z",
-    "requirements_lock": "PASS",
-    "native_build": "PASS",
-    "imports": [
-      "jax",
-      "bianchi",
-      "bianchi_rustcore"
-    ],
-    "focused_tests": "PASS_11_OF_11",
-    "canonical_hash_two_process": "PASS",
-    "local_wheel_sha256": "bf5a59534ffc9d6f9c3410aa19319f18a4a8a7a9761bcd61c5da8c8627ddf609",
-    "backend": "FAIL_CLOSED_UNVERIFIED_NATIVE_PAYLOAD",
-    "numerical_parity_reached": false
+  "closed_behavior_prerequisite": {
+    "classification": "PASS_BASS_REC_SOURCE_R6C_CLEAN_BACKEND_NONREGRESSION",
+    "receipt_path": "/bianchi/_runtime_receipts/BASS_REC_SOURCE_R6C_20260904T012030Z",
+    "development_wheel_sha256": "bf5a59534ffc9d6f9c3410aa19319f18a4a8a7a9761bcd61c5da8c8627ddf609",
+    "authority_effect": "BEHAVIOR_LEVEL_ONLY"
   },
   "trusted_payload": {
     "repository": "cosmosapjw-quantum/bass",
@@ -35,28 +34,28 @@
   "required_execution": {
     "python": "3.12.x",
     "development_override": "UNSET",
-    "focused_source_protocol": "PASS",
-    "source_payload_hash_run_1": "ca3807fa4ef49b5292bd65fd80b6fe9947c1cef7f835979122bff572900eb906",
-    "source_payload_hash_run_2": "ca3807fa4ef49b5292bd65fd80b6fe9947c1cef7f835979122bff572900eb906",
+    "root_package_build_location": "EXACT_NON_GIT_GIT_ARCHIVE_STAGE",
+    "source_worktree_clean": true,
+    "focused_source_protocol": "PASS_21_OF_21",
+    "source_payload_hash_run_1": "7f0db7e1cf7423ff6751a21ab4002ef8f13d89f788a8a746b26992abecf791e8",
+    "source_payload_hash_run_2": "7f0db7e1cf7423ff6751a21ab4002ef8f13d89f788a8a746b26992abecf791e8",
+    "integrated_binding_hash_run_1": "54762aa915b3fa0da847676a3d4491b8f7f2f358e48dd275fffee84ba6496093",
+    "integrated_binding_hash_run_2": "54762aa915b3fa0da847676a3d4491b8f7f2f358e48dd275fffee84ba6496093",
     "installed_shared_object_sha256": "5d5b8197518d8637b14e0c78b871802ed64f6506c7a95128f31bd52044a98633",
     "backend_policy_integration_packaging_cone": "PASS",
     "forbidden_provenance_diagnostics": 0
   },
   "pass_classification": "PASS_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_AND_BACKEND_GATE",
-  "failure_classifications": [
-    "STOP_REMOTE_IDENTITY_MISMATCH",
-    "STOP_TRUSTED_WHEEL_RECOVERY_FAILURE",
-    "FAIL_R5D_TRUSTED_RF00_PAYLOAD_GATE"
-  ],
-  "opens_r6_only_on_pass": true,
-  "development_behavior_differential": {
-    "optional": true,
-    "environment_variable": "BASS_ALLOW_UNVERIFIED_NATIVE_DEV=1",
-    "authority_effect": "NONE",
-    "opens_r6": false
+  "r7_opening_gate": {
+    "logic": "AND",
+    "required_classifications": [
+      "PASS_BASS_REC_SOURCE_R6C_CLEAN_BACKEND_NONREGRESSION",
+      "PASS_R5D_TRUSTED_RF00_PAYLOAD_PROVENANCE_AND_BACKEND_GATE"
+    ],
+    "opens": "BASS_REC_SOURCE_R7_FULL_GRID_AND_SPECTRAL_PSTF_ADAPTER_TDD_RED"
   },
   "claim_boundary": [
-    "NO_REC_SOURCE_INTEGRATION",
+    "NO_PHYSICAL_REC_SOURCE_INTEGRATION",
     "NO_GRID_PSTF_NUMERICAL_PARITY",
     "NO_SOURCE_IDENTICAL_PHYSICAL_FACE",
     "NO_PROVIDER_EXPORT",
