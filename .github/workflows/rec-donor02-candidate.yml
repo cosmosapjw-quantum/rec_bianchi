@@ -21,6 +21,9 @@ jobs:
           persist-credentials: false
       - name: Run source contracts without failure suppression
         run: python3 scripts/run_rec_donor02_candidate.py "$RUNNER_TEMP/rec-donor02"
+      - name: Independent rational formula probes and figure generation
+        if: always()
+        run: python3 scripts/probe_rec_donor02.py "$RUNNER_TEMP/rec-donor02"
       - name: Preserve exact outcome even when blocked
         if: always()
         uses: actions/upload-artifact@v4

@@ -15,7 +15,7 @@ FUTURE_PATH = SRC / "full_bianchi_hyrec" / "physical_source_authority.py"
 
 
 class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
-    """Implementation-absent RED for a representation-neutral REC source owner."""
+    """Inherited RED behaviours; only presence and a proved null fixture migrate."""
 
     def _module(self):
         if not FUTURE_PATH.is_file():
@@ -99,9 +99,9 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
             jvp_status=m.NO_JVP_FAIL_CLOSED,
         )
 
-    # Three controls.  These pass while the future implementation is absent.
+    # Three controls. The immutable RED metadata remains unchanged.
 
-    def test_control_parent_identity_and_future_module_absent(self):
+    def test_control_parent_identity_and_future_module_present(self):
         manifest = json.loads((DOC / "STAGE_MANIFEST.json").read_text())
         self.assertEqual(
             manifest["base_commit"],
@@ -111,7 +111,7 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
             manifest["base_tree"],
             "ce0654041d097768fae4f6a52b23c2137558f7be",
         )
-        self.assertFalse(FUTURE_PATH.exists())
+        self.assertTrue(FUTURE_PATH.is_file())
 
     def test_control_existing_affine_primitive_remains_nonauthoritative(self):
         text = (
@@ -128,7 +128,7 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
         self.assertIn("Formula closure is not source authority", text)
         self.assertIn("two-photon and Raman primitives produce photon-packet rates", text)
 
-    # Thirteen future behaviours.  Each currently fails only at _module().
+    # Thirteen inherited behaviours; unresolved deposition is NOT suppressed.
 
     def test_future_module_exposes_minimal_typed_authority_surface(self):
         m = self._module()
@@ -214,9 +214,12 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
     def test_energy_threshold_support_and_units_are_explicit(self):
         m = self._module()
         source = self._source(m)
-        self.assertEqual(source.action(energy_j=1.99e-18, occupation=0.5), 0.0)
-        self.assertNotEqual(source.action(energy_j=2.0e-18, occupation=0.5), 0.0)
-        self.assertEqual(source.action(energy_j=2.5e-18, occupation=0.5), 0.0)
+        # At f=0.5 the affine law is exactly zero everywhere, so it cannot
+        # detect endpoint inclusion. The independent Fraction control proves
+        # C(2)=-3/4; the support and physical coefficients are unchanged.
+        self.assertEqual(source.action(energy_j=1.99e-18, occupation=2.0), 0.0)
+        self.assertEqual(source.action(energy_j=2.0e-18, occupation=2.0), -0.75)
+        self.assertEqual(source.action(energy_j=2.5e-18, occupation=2.0), 0.0)
         self.assertEqual(source.support.coordinate, m.PHOTON_ENERGY_J)
         self.assertEqual(source.support.outside_policy, m.ZERO_OUTSIDE_SUPPORT)
         self.assertEqual(source.rate_units, "s^-1")
