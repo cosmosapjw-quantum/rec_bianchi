@@ -1,0 +1,48 @@
+name: REC 2s O1 자료 식별성 검산
+on:
+  push:
+    branches: [research/rec-2s-o1-identifiability-20260905-r1]
+    paths:
+      - docs/research/rec_2s_o1_identifiability/check_o1.py
+      - .github/workflows/rec-2s-o1-identifiability.yml
+permissions:
+  contents: read
+jobs:
+  research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 실행 식별정보
+        run: |
+          echo "source_sha=$(git rev-parse HEAD)"
+          echo "source_tree=$(git rev-parse HEAD^{tree})"
+          echo "workflow_sha=${{ github.sha }}"
+      - name: 분리 환경 설치
+        run: |
+          python -m venv "$RUNNER_TEMP/rec-o1-venv"
+          "$RUNNER_TEMP/rec-o1-venv/bin/python" -m pip install sympy==1.14.0 matplotlib==3.10.3
+      - name: 원본 구성원 색인과 독립 수학 검산
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          export MPLCONFIGDIR="$RUNNER_TEMP/rec-o1-mpl"
+          "$RUNNER_TEMP/rec-o1-venv/bin/python" -B -c 'from pathlib import Path; p=Path("docs/research/rec_2s_o1_identifiability/check_o1.py"); compile(p.read_text(),str(p),"exec")'
+          "$RUNNER_TEMP/rec-o1-venv/bin/python" -B docs/research/rec_2s_o1_identifiability/check_o1.py --out "$RUNNER_TEMP/rec-o1-output"
+          cd "$RUNNER_TEMP/rec-o1-output"
+          sha256sum -c SHA256SUMS
+      - name: 실패 포함 결과 보존
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-2s-o1-identifiability
+          path: ${{ runner.temp }}/rec-o1-output/
+          retention-days: 30
+          if-no-files-found: warn
