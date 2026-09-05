@@ -214,9 +214,13 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
     def test_energy_threshold_support_and_units_are_explicit(self):
         m = self._module()
         source = self._source(m)
-        self.assertEqual(source.action(energy_j=1.99e-18, occupation=0.5), 0.0)
-        self.assertNotEqual(source.action(energy_j=2.0e-18, occupation=0.5), 0.0)
-        self.assertEqual(source.action(energy_j=2.5e-18, occupation=0.5), 0.0)
+        # A non-equilibrium occupation distinguishes active support from zero.
+        self.assertEqual(source.action(energy_j=1.99e-18, occupation=2.0), 0.0)
+        self.assertEqual(source.action(energy_j=2.0e-18, occupation=2.0), -0.75)
+        self.assertEqual(source.action(energy_j=2.25e-18, occupation=2.0), -0.75)
+        self.assertEqual(source.action(energy_j=2.5e-18, occupation=2.0), 0.0)
+        # Inclusion of the lower endpoint must not break equilibrium balance.
+        self.assertEqual(source.action(energy_j=2.0e-18, occupation=0.5), 0.0)
         self.assertEqual(source.support.coordinate, m.PHOTON_ENERGY_J)
         self.assertEqual(source.support.outside_policy, m.ZERO_OUTSIDE_SUPPORT)
         self.assertEqual(source.rate_units, "s^-1")
@@ -266,14 +270,14 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
             normalization_sha256="6" * 64,
             application_count=1,
         )
-        receipt = m.deposit_packet_rate(
-            kernel=kernel,
-            deposition=binding,
-            companion_occupation=(0.5, 1.0),
-        )
-        self.assertEqual(receipt.application_count, 1)
-        self.assertEqual(receipt.output_units, "s^-1")
-        self.assertEqual(receipt.source_semantic_sha256, kernel.semantic_sha256)
+        # Hashes and a declared count do not resolve or execute an operator.
+        # This binding contains no verified B_is, mu_i, or operator resolver.
+        with self.assertRaises(m.DepositionAuthorityError):
+            m.deposit_packet_rate(
+                kernel=kernel,
+                deposition=binding,
+                companion_occupation=(0.5, 1.0),
+            )
         with self.assertRaises(m.DepositionAuthorityError):
             m.PacketDepositionBinding(
                 n_H_m3=1.0e8,
