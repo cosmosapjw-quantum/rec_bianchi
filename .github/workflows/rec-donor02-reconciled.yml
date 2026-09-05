@@ -1,0 +1,43 @@
+name: REC-DONOR-02 amended source reconciliation
+
+on:
+  push:
+    branches:
+      - research/rec-donor02-amended-protocol-green-20260905-r1
+    paths:
+      - src/full_bianchi_hyrec/physical_source_authority.py
+      - tests/trajectory/test_rec_donor01_typed_physical_source_red.py
+      - tests/trajectory/test_rec_donor02_source_safety.py
+      - scripts/run_rec_donor02_reconciled.py
+      - scripts/probe_rec_donor02.py
+      - .github/workflows/rec-donor02-reconciled.yml
+
+permissions:
+  contents: read
+
+jobs:
+  amended-protocol:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Checkout exact push head without persisted credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Execute amended contract and unchanged source
+        run: |
+          python3 -B scripts/run_rec_donor02_reconciled.py \
+            --expected-head "$GITHUB_SHA" \
+            --output-dir "$RUNNER_TEMP/rec-donor02-reconciled-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+      - name: Upload bounded protocol receipt even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rec-donor02-reconciled-${{ github.sha }}
+          path: ${{ runner.temp }}/rec-donor02-reconciled-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 30
