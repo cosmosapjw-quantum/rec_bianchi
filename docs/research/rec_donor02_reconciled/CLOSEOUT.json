@@ -1,0 +1,140 @@
+{
+  "schema": "rec-donor02-reconciled-closeout/v1",
+  "classification": "PASS_REC_DONOR02_AMENDED_SOURCE_PROTOCOL",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "draft_pr": 60,
+  "branch": "research/rec-donor02-amended-protocol-green-20260905-r1",
+  "parent_commit": "8436c135d62ebc33e329b5541ebea53d9a067ffd",
+  "parent_tree": "b1b71f7571b5d58b25164e37149d645e4bef0b46",
+  "executed_commit": "b062befcea8cebe45eab3c6c23e9ddcaeb5541e8",
+  "executed_tree": "765f3d722bc9ab5199af64e7894f3c0f82404175",
+  "source_donor_commit": "a83204c887785ee3453be2c2361b7fda012e16ba",
+  "borrowed_blobs": {
+    "src/full_bianchi_hyrec/physical_source_authority.py": "6d4f39d48993c4715f5002ba068e8dcf98336be3",
+    "tests/trajectory/test_rec_donor02_source_safety.py": "e432652b4f626bd9cf98d96f9770ba44e36cea44",
+    "scripts/probe_rec_donor02.py": "c2fbd594d1ca05b3165890ba156056257f9cfdfa"
+  },
+  "contract_test_blob": "fe2a50eb3a98cdd94d879f71fbbd96b51afd3c7b",
+  "execution": {
+    "workflow_run_id": 33933653125,
+    "job_id": 101217231750,
+    "workflow_conclusion": "success",
+    "job_conclusion": "success",
+    "event": "push",
+    "run_attempt": 1,
+    "checkout_relation": "EXACT_SOURCE_AND_WORKFLOW_HEAD",
+    "detached_checkout": true,
+    "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "compile_rc": 0,
+    "tests": 27,
+    "passes": 27,
+    "failures": [],
+    "errors": [],
+    "skips": [],
+    "expected_failures": [],
+    "unexpected_successes": [],
+    "probe_rc": 0,
+    "borrowed_blobs_exact": true,
+    "authorized_presence_migration_only": true,
+    "single_production_addition": "src/full_bianchi_hyrec/physical_source_authority.py",
+    "existing_production_files_changed": false,
+    "scoped_diff_hygiene_pass": true,
+    "clean_worktree": true
+  },
+  "bounded_numerical_probe": {
+    "status": "PASS_BOUNDED_MANUFACTURED_ORACLES_NOT_SOURCE_ADMISSION",
+    "action_cases": 36,
+    "jvp_cases": 108,
+    "reference": "fractions.Fraction exact dyadic arithmetic",
+    "max_action_residual": 0.0,
+    "max_jvp_residual": 0.0,
+    "partial_jvp_scope": "FIXED_ENERGY_SUPPORT_TRAJECTORY_NOT_EVENT_JVP",
+    "threshold_records": [
+      {"energy_j": 1.9999999999999998e-18, "source_s_inv": 0.0},
+      {"energy_j": 2e-18, "source_s_inv": -0.75},
+      {"energy_j": 2.25e-18, "source_s_inv": -0.75},
+      {"energy_j": 2.4999999999999998e-18, "source_s_inv": -0.75},
+      {"energy_j": 2.5e-18, "source_s_inv": 0.0},
+      {"energy_j": 2.5000000000000006e-18, "source_s_inv": 0.0}
+    ],
+    "detected_mutants": [
+      "drop_stimulated_C_residual",
+      "flip_absorption_J_residual",
+      "drop_state_J_residual"
+    ],
+    "hashes_identical_in_two_fresh_processes": true,
+    "fresh_process_hashes": {
+      "source": "c200d4698f8ed8590d05ef5561aed80749b1e85d13ca9bd2f8f16c11f363fb3b",
+      "payload_mutant": "ec9490abc21a7910a88332bb6ae3ac8a120a6eaabd89b652d9dc76628a4418c4",
+      "restart_mutant": "38d984499e2565b5afc540f0cbda848bc41ed498aa3c857cd6a223f6ea300c03"
+    },
+    "figure_files": ["affine_source.svg", "mutant_residuals.svg"],
+    "rendered_visual_review": "NOT_PERFORMED",
+    "universal_binary64_error_bound_claimed": false
+  },
+  "artifact": {
+    "id": 9959413063,
+    "name": "rec-donor02-reconciled-b062befcea8cebe45eab3c6c23e9ddcaeb5541e8",
+    "size_bytes": 8014,
+    "reported_sha256": "fd95811577880dda022796ad35110906b7b1b9cff7c49bfb76ec62da02b1b251",
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/33933653125/artifacts/9959413063",
+    "expires_at": "2026-10-05T00:38:51Z",
+    "digest_evidence": "MATCHING_UPLOAD_LOG_AND_GITHUB_ARTIFACT_METADATA",
+    "assistant_downloaded_and_rehashed": false,
+    "original_receipt_file": "REC_DONOR02_RECONCILED_RECEIPT.json"
+  },
+  "publication_evidence": {
+    "type": "SELECTED_SEMANTIC_MIRROR_FROM_FRESH_HOSTED_JOB_LOG",
+    "raw_artifact_byte_mirror": false,
+    "historical_evidence_regenerated": false,
+    "source_and_tests_unchanged_by_this_document": true,
+    "documentation_publication_head_itself_tested": false
+  },
+  "general_repository_verifier": {
+    "run_id": 33933674102,
+    "job_id": 101217295088,
+    "conclusion": "failure",
+    "package_install_and_import_smoke": "success",
+    "failed_step": "python scripts/verify_repo.py --quick",
+    "full_pytest": "skipped",
+    "fresh_log_retrieval": "RemoteProtocolError: Server disconnected without sending a response",
+    "fresh_root_cause": "UNRESOLVED_NOT_INFERRED_FROM_HISTORICAL_HYGIENE",
+    "repository_wide_all_green": false
+  },
+  "atlassian_sync": {
+    "cloud_id": "e1cd4b3d-2781-4a6f-9f58-e35aa48753db",
+    "BASS-19_comment": "10577",
+    "BASS-26_comment": "10578",
+    "confluence_page": "27492353",
+    "confluence_footer_comment": "28475393",
+    "official_dependency_links_changed": false,
+    "workflow_statuses_changed": false,
+    "other_repository_snapshots_refreshed": false
+  },
+  "formal_and_review_boundary": {
+    "wolfram_context": "MCP_SSE_HTTP404_BEFORE_RESULT",
+    "wolfram_evaluator": "MCP_SSE_HTTP404_BEFORE_RESULT",
+    "assistant_container_and_python": "CLIENT_ERROR_BEFORE_EXECUTION",
+    "executed_fallback": "PYTHON_FRACTION_ON_GITHUB_HOSTED_RUNNER",
+    "fresh_external_cas_pass": false,
+    "scispace": "LOCAL_NONLOCAL_SCOPE_METHOD_ONLY",
+    "primary_abstracts_checked": ["arXiv:0803.0808v2", "arXiv:1011.3758v2"],
+    "dual_audit": "SAME_ASSISTANT_PHYS_MATH_AND_PHYS_MATH_CODE",
+    "independent_reviewer_pass": false
+  },
+  "claim_boundary": {
+    "local_affine_protocol": "EXECUTED_ON_DECLARED_INPUTS",
+    "nonlocal_kernel": "MANUFACTURED_LINEAR_PACKET_PROBE_ONLY",
+    "provenance": "DECLARED_NOT_AUTHENTICATED",
+    "physical_source_authenticated": false,
+    "physical_deposition_executed": false,
+    "angular_or_moment_transform_executed": false,
+    "event_saltation_jvp": false,
+    "bass_or_rei_binding": false,
+    "provider_admitted": false,
+    "ready_or_merge_authorized": false,
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+  },
+  "next_action": "Bounded resolved-deposition adapter using existing COMSourceDepositionPlan with explicit verified B_is, mu_i and R_s inputs; fixed-map action/JVP and number/energy conservation tests; manufactured computation remains distinct from authentic physical input admission."
+}

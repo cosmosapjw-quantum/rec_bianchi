@@ -15,7 +15,7 @@ FUTURE_PATH = SRC / "full_bianchi_hyrec" / "physical_source_authority.py"
 
 
 class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
-    """Implementation-absent RED for a representation-neutral REC source owner."""
+    """REC-DONOR-01 assertions under the amended REC-DONOR-02 contract."""
 
     def _module(self):
         if not FUTURE_PATH.is_file():
@@ -99,9 +99,9 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
             jvp_status=m.NO_JVP_FAIL_CLOSED,
         )
 
-    # Three controls.  These pass while the future implementation is absent.
+    # Three controls. The historical manifest stays fixed; presence migrates.
 
-    def test_control_parent_identity_and_future_module_absent(self):
+    def test_control_parent_identity_and_future_module_present(self):
         manifest = json.loads((DOC / "STAGE_MANIFEST.json").read_text())
         self.assertEqual(
             manifest["base_commit"],
@@ -111,7 +111,7 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
             manifest["base_tree"],
             "ce0654041d097768fae4f6a52b23c2137558f7be",
         )
-        self.assertFalse(FUTURE_PATH.exists())
+        self.assertTrue(FUTURE_PATH.is_file())
 
     def test_control_existing_affine_primitive_remains_nonauthoritative(self):
         text = (
@@ -128,7 +128,7 @@ class TestRecDonor01TypedPhysicalSourceRed(unittest.TestCase):
         self.assertIn("Formula closure is not source authority", text)
         self.assertIn("two-photon and Raman primitives produce photon-packet rates", text)
 
-    # Thirteen future behaviours.  Each currently fails only at _module().
+    # Thirteen behaviours retained from the amended source contract.
 
     def test_future_module_exposes_minimal_typed_authority_surface(self):
         m = self._module()
