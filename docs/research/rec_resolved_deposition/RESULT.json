@@ -57,6 +57,33 @@
       ]
     ]
   },
+  "atlassian_sync": {
+    "cloud_id": "e1cd4b3d-2781-4a6f-9f58-e35aa48753db",
+    "official_links_or_status_changed": false,
+    "other_repository_snapshots_refreshed": false,
+    "readbacks": [
+      {
+        "comment_id": "10585",
+        "created": "2026-09-05T13:18:24.031+0900",
+        "issue": "BASS-19",
+        "status": "In Progress"
+      },
+      {
+        "comment_id": "10586",
+        "created": "2026-09-05T13:18:26.275+0900",
+        "issue": "BASS-26",
+        "status": "In Progress"
+      },
+      {
+        "comment_id": "28672001",
+        "created": "2026-09-05T04:18:28.565Z",
+        "page": "27492353",
+        "status": "current"
+      }
+    ],
+    "status": "APPEND_SUCCESS_READBACK_VERIFIED"
+  },
+  "atlassian_sync_success": true,
   "base_commit": "30576407d50e10b88a32b65a9510db61e4159e1b",
   "base_tree": "c9ceccb9a66162d4f76832b85756b8c66692895d",
   "changed_paths": [
@@ -113,10 +140,63 @@
     }
   ],
   "general_repository_verifier": {
-    "remote_status": "READ_AFTER_PUBLICATION",
+    "all_offending_blobs_unchanged_from_fixed_parent": true,
+    "causal_blob_readback": [
+      {
+        "base_blob": "c49ff1d6726d177984ea3d8b610ee208e659acc6",
+        "current_blob": "c49ff1d6726d177984ea3d8b610ee208e659acc6",
+        "path": "artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/evidence/MUTANT_drop_density_jvp.log"
+      },
+      {
+        "base_blob": "f530df47e326261066d55dc4ace711be9d7d53f8",
+        "current_blob": "f530df47e326261066d55dc4ace711be9d7d53f8",
+        "path": "artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/preservation_inventory.txt"
+      },
+      {
+        "base_blob": "8346fb77d45ac8181aba83790f741cb077ba96f7",
+        "current_blob": "8346fb77d45ac8181aba83790f741cb077ba96f7",
+        "path": "docs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md"
+      },
+      {
+        "base_blob": "6d7059ea5169377c6380492df09fe9348d30a31a",
+        "current_blob": "6d7059ea5169377c6380492df09fe9348d30a31a",
+        "path": "docs/research/rec_continuous_causal_donor_r1/README.md"
+      },
+      {
+        "base_blob": "e4ab2f62a11848983ce56a1caa4fe000e5860685",
+        "current_blob": "e4ab2f62a11848983ce56a1caa4fe000e5860685",
+        "path": "docs/research/rec_source_dual_representation_r2/README.md"
+      },
+      {
+        "base_blob": "f94d6cc2b1ccf36d721546462210a91f666c9ca5",
+        "current_blob": "f94d6cc2b1ccf36d721546462210a91f666c9ca5",
+        "path": "docs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md"
+      },
+      {
+        "base_blob": "5a58bb40bb102a940ccccaeda1a13a1e2b2aefd4",
+        "current_blob": "5a58bb40bb102a940ccccaeda1a13a1e2b2aefd4",
+        "path": "research/handoffs/rec_source_r5d_20260903/local_receipts/BASS_REC_SOURCE_R5D_V2_20260904T021026Z/README.md"
+      }
+    ],
+    "classification": "INHERITED_REPOSITORY_HYGIENE_FAILURE_NOT_ADAPTER_NUMERICS",
+    "failed_step": "python scripts/verify_repo.py --quick",
+    "failure_detail": "artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/evidence/MUTANT_drop_density_jvp.log:6: trailing whitespace.\n+E   AssertionError: \nartifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/evidence/MUTANT_drop_density_jvp.log:8: trailing whitespace.\n+E   \nartifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/preservation_inventory.txt:98: new blank line at EOF.\ndocs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md:3: trailing whitespace.\n+**Reconciliation ID:** `FOUR-REPO-REC-SYNC-20260904-R4`  \ndocs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md:4: trailing whitespace.\n+**Snapshot date:** 2026-09-04  \ndocs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md:5: trailing whitespace.\n+**Repository:** `cosmosapjw-quantum/rec_bianchi`  \ndocs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md:6: trailing whitespace.\n+**Parent:** `29c01cec6f0e1fe02a738df0fe317ea2772d4c88`  \ndocs/bianchi_program/FED_02_FOUR_REPO_SYNC_20260904/README.md:7: trailing whitespace.\n+**Scope:** documentation, exact upstream pointers, receipts, authority/DAG reconciliation  \ndocs/research/rec_continuous_causal_donor_r1/README.md:3: trailing whitespace.\n+**Date:** 2026-09-03  \ndocs/research/rec_continuous_causal_donor_r1/README.md:4: trailing whitespace.\n+**Harness:** `physmath-research-harness-gpt56` v3.1.0  \ndocs/research/rec_continuous_causal_donor_r1/README.md:5: trailing whitespace.\n+**Disposition:** `PROMOTE_HYBRID_CONTINUOUS_DONOR_DESIGN / REJECT_FIXED_26_AS_AUTHORITY`  \ndocs/research/rec_source_dual_representation_r2/README.md:3: trailing whitespace.\n+**Date:** 2026-09-03  \ndocs/research/rec_source_dual_representation_r2/README.md:4: trailing whitespace.\n+**Status:** `PASS_RESEARCH_CONTRACT / NOT_ADMITTED`  \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:8: trailing whitespace.\n+   \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:12: trailing whitespace.\n+   \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:16: trailing whitespace.\n+   \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:20: trailing whitespace.\n+   \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:26: trailing whitespace.\n+   \ndocs/research/rec_source_dual_representation_r2/SCISPACE_LITERATURE_LOCK.md:30: trailing whitespace.\n+   \nresearch/handoffs/rec_source_r5d_20260903/local_receipts/BASS_REC_SOURCE_R5D_V2_20260904T021026Z/README.md:3: trailing whitespace.\n+**Date:** 2026-09-04 UTC",
+    "first_failure": "artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/evidence/MUTANT_drop_density_jvp.log:6: trailing whitespace.",
+    "fresh_logs_read": true,
+    "full_pytest": "SKIPPED",
+    "jobs": [
+      101246876921,
+      101246750616
+    ],
+    "log_archive": "PUBLICATION_EVIDENCE.zip",
+    "log_archive_sha256": "e2163bfc5e2438236ddbdce7335c4b15b51666b3a41a50d11847d19e795de8a1",
     "repository_wide_all_green": false,
-    "status": "NOT_RUN_LOCALLY_OUTSIDE_REQUESTED_CONE"
+    "runs": [
+      33944081097,
+      33944033851
+    ]
   },
+  "github_publication_success": true,
   "moving_map_or_event_jvp": false,
   "next_single_action": "Prepare an owner-reviewable physical deposition input-authority contract tracing original HyRec packet channels, multiplicities and map/measure provenance to exact source bytes; no implementation or provider admission.",
   "oracle": {
@@ -191,7 +271,9 @@
       "first_attempt": "raw SHA range yielded no advertised ref; refused empty bundle",
       "repair": "named HEAD with fixed-parent exclusion"
     },
+    "draft_pr": 63,
     "fallback": "AUTHORIZED_GITHUB_CONNECTOR_GIT_OBJECTS_AND_NONFORCE_REF_UPDATE",
+    "final_sync_commit_identity": "Containing Git commit and live PR body; not self-serialized",
     "local_tested_commit": "3a8e32c3b13054b8f0e71fc861a39c69aa8b1625",
     "native_git_push": {
       "attempts": 1,
@@ -199,8 +281,11 @@
       "exit_code": 128
     },
     "relation": "IDENTICAL_SOURCE_TREE_AND_BLOBS_DIFFERENT_COMMIT_METADATA",
+    "remote_readback": "ALL_8_INITIAL_PATHS_AND_BLOBS_MATCH",
     "result_commit_identity": "READ_FROM_GIT_PARENT_OF_LATER_PUBLICATION_READBACK; no self-reference",
     "result_document_child_tested": false,
+    "result_publication_commit": "3a988f3808b0e0a7800bfedd26d985b43e4b61d7",
+    "result_publication_tree": "3f8e638377e4afa76c7028acfc079d99d570f615",
     "source_publication_commit": "2eafa330b41b148531ddd9f0eee26636742a1f07",
     "source_publication_tree": "41aab828da46266dc53b5b1977fe6e8c064df22d",
     "source_tested": true,
@@ -213,6 +298,18 @@
       "verify_exit_code": 0
     }
   },
+  "publication_changed_paths": [
+    "docs/research/rec_resolved_deposition/CHECKPOINT.md",
+    "docs/research/rec_resolved_deposition/EVIDENCE.zip",
+    "docs/research/rec_resolved_deposition/PUBLICATION.json",
+    "docs/research/rec_resolved_deposition/PUBLICATION_EVIDENCE.zip",
+    "docs/research/rec_resolved_deposition/RESULT.json",
+    "docs/research/rec_resolved_deposition/TESTED_SOURCE.bundle",
+    "docs/research/rec_resolved_deposition/reference_residual.png",
+    "scripts/probe_rec_resolved_deposition.py",
+    "src/full_bianchi_hyrec/resolved_deposition.py",
+    "tests/trajectory/test_rec_resolved_deposition.py"
+  ],
   "receipts": {
     "B2_action": {
       "derivative_scope": "NOT_A_DERIVATIVE",
@@ -288,6 +385,11 @@
     "reviewed_revision": "development candidate before header repair"
   },
   "schema": "rec-resolved-deposition-execution/v1",
+  "source_changed_paths": [
+    "scripts/probe_rec_resolved_deposition.py",
+    "src/full_bianchi_hyrec/resolved_deposition.py",
+    "tests/trajectory/test_rec_resolved_deposition.py"
+  ],
   "source_commit": "3a8e32c3b13054b8f0e71fc861a39c69aa8b1625",
   "source_tree": "41aab828da46266dc53b5b1977fe6e8c064df22d",
   "targeted_mutations": {

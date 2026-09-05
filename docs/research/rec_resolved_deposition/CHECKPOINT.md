@@ -206,3 +206,29 @@ this packaging issue once. This does not alter any source or scientific result.
 The final result publication and later synchronization child are connector
 commits. Their parent/tree/blob readback is the publication evidence, distinct
 from the local actual tested checkout. The complete source tree agrees exactly.
+
+## Publication and append readback
+
+[Draft PR63](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/63): OPEN,
+DRAFT, NOT MERGED. Base is the PR61 branch at the fixed 30576407... parent.
+Result publication commit `3a988f3808b0e0a7800bfedd26d985b43e4b61d7`, tree
+`3f8e638377e4afa76c7028acfc079d99d570f615`, parent `2eafa330...`, and all
+eight initial changed paths/blobs were independently read from GitHub and matched.
+A final documentation-only synchronization child carries this readback; its
+exact containing commit/tree are exposed in the live PR body rather than hashed
+into their own contents. The tested source and original evidence stay unchanged.
+
+Atlassian actual append and subsequent readback both succeeded: BASS-19 comment
+10585; BASS-26 comment10586; FED-02 page27492353 footer28672001. Jira statuses
+remain In Progress. No other repository snapshots or dependency edges changed.
+
+Fresh general CI run33944081097/job101246876921 (PR merge checkout
+`df967cdfd7d787862981eaa854b9eb2d51cdf368`) and run33944033851/job101246750616
+(exact pushed result head) failed at the committed-feature-range whitespace gate.
+First failure: existing rec_local01_admission/evidence/MUTANT_drop_density_jvp.log
+line6. All seven offending files match their fixed-parent blobs. Package imports
+passed, full pytest was skipped. This is verified inherited repository hygiene,
+not an inference from older failures and not a bounded adapter failure.
+Raw fresh logs are preserved in PUBLICATION_EVIDENCE.zip; detailed causal blob
+readback and separate publication/sync outcomes are in PUBLICATION.json.
+No hygiene repair or repository-wide all-green claim is made.
