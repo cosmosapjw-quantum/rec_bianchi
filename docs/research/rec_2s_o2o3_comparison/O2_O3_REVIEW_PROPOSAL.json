@@ -1,0 +1,139 @@
+{
+  "O2_proposal": {
+    "alternatives": [
+      "Evolve two distinct photon ledgers plus atomic response, each event counted once.",
+      "Evolve tracked photon with prescribed blackbody companion and explicit bath/reservoir accounting."
+    ],
+    "conditional_stoichiometry": {
+      "atomic_excitation_energy": "-E21_phys*R",
+      "companion_energy": "+Ec_phys*R",
+      "companion_photon_number": "+R",
+      "ground_population": "+R",
+      "tracked_energy": "+Et_phys*R",
+      "tracked_photon_number": "+R",
+      "upper_population": "-R"
+    },
+    "not_an_occupation_derivative": true,
+    "physical_inputs_authenticated": false,
+    "required_owner_evidence": [
+      "Which photon distributions are evolved and their actual supports.",
+      "Atomic population response and companion bath owner.",
+      "Once-only counting and omitted-sector energy bookkeeping."
+    ],
+    "selected_option": null
+  },
+  "O3_proposal": {
+    "JVP_adapter_owner": null,
+    "blackbody_companion_JVP": "d_f_c=(E_c/Theta)*n_c*(1+n_c)*d_log_Theta",
+    "difference": "a*x_u*(1+n_c)*f_t+a*(f_c-n_c)*(x_u*(1+f_t)-x_g*f_t)",
+    "inverse": "f_t=w_t+z_b/x_g",
+    "inverse_JVP": "d_f_t=d_w_t+d_z_b/x_g-z_b*d_x_g/x_g**2",
+    "inverse_domain": "x_g>0 and reconstructed f_t>=0",
+    "native_law": "R_N=a*(x_u*(1+n_c)-x_g*n_c*f_t)",
+    "paired_law": "R_P=a*(x_u*(1+f_c)*(1+f_t)-x_g*f_c*f_t)",
+    "physical_inputs_authenticated": false,
+    "population_input_owner": null,
+    "primal_adapter_owner": null,
+    "reference_field_bytes": null,
+    "reference_field_owner": null,
+    "required_owner_evidence": [
+      "Actual population and occupation bytes; frame and physical-time conventions.",
+      "Choice of native approximation or full Bose law and companion closure.",
+      "Reference-field ownership and consistent inverse primal/JVP; no silent Wien/Planck identification."
+    ],
+    "selected_field_law": null,
+    "source_temperature_JVP": "d_log_Theta=d_log_T_phys-2*d_log_fsR-d_log_meR",
+    "statistical_weight_ratio": 1,
+    "time_frame_owner": null
+  },
+  "changes_to_O1_O6_status": false,
+  "fixed_parent": "e65ae5c211db4e3375e73410a404f0b23da084d4",
+  "fixed_parent_tree": "e12a4ae4ed17859e4625f80fb0fa86e83a034036",
+  "inherited_contract": {
+    "git_blob": "e5d1d47199428f25ef05240f938d667f18616457",
+    "modified": false,
+    "path": "docs/research/original_hyrec_2s_input_trace/OWNER_REVIEW_CONTRACT.json",
+    "sha256": "cb149686261210dafac7490dc42eced9e793632f9607917203c81f7a831431da"
+  },
+  "inherited_deposition_inputs": {
+    "B": null,
+    "angular_rule": null,
+    "executed": false,
+    "existing_constraints": [
+      "B>=0",
+      "sum_i B[i,s]=1",
+      "sum_i E[i]*B[i,s]=E_source[s]",
+      "mu[i]>0",
+      "angular weights sum to one"
+    ],
+    "existing_formula": "df[i,a]/dt = n_H/mu[i] * sum_s B[i,s]*R[s,a]",
+    "existing_operator": "full_bianchi_hyrec.trajectory.com_source_deposition.COMSourceDepositionPlan",
+    "jvp_executed": false,
+    "map_authority": null,
+    "measure_authority": null,
+    "mu_m_inv3": null,
+    "n_H_m_inv3": null,
+    "packet_rate_values": null,
+    "target_cell_boundaries": null,
+    "target_cell_energies_J": null,
+    "units": {
+      "B": "dimensionless",
+      "R": "photon_packet H^-1 s^-1",
+      "df_dt": "s^-1",
+      "mu": "m^-3",
+      "n_H": "m^-3"
+    }
+  },
+  "inherited_required_owner_decisions": [
+    {
+      "forbidden_substitute": "Midpoints or reconstructed DeltaE inferred from spike centers; inverse-fitting A_b without the original kernel.",
+      "id": "O1_ORIGINAL_INTEGRAL_REGIONS",
+      "required_evidence": "Exact archived table-generation law, integration regions/weights and kernel convention or an explicitly approved new discretization with documented departure.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Multiply the existing 140-bin rate vector by 2, or put E21 into the tracked packet energy slot.",
+      "id": "O2_PHOTON_COUNT_AND_CLOSURE",
+      "required_evidence": "Declare whether only high-energy photons or both members of each event are evolved; specify companion/atomic energy ledger and no double counting.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Treat full paired action as exact original-HyRec storage or silently identify Wien with Planck.",
+      "id": "O3_FIELD_AND_STATE_AUTHORITY",
+      "required_evidence": "Population, time/frame, low-energy closure, reference field and signed-distortion-to-total-occupation adapter with primal/JVP authority.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Infer mu from a zero-width spike, the A2s rate, or a dimensionless reversible proxy.",
+      "id": "O4_TARGET_MEASURE",
+      "required_evidence": "Actual target representation, cell/domain support, mode measure and polarization/angular degeneracy convention, fixed or moving status, and owned bytes.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Choose any conservative B merely because its columns satisfy the two moment constraints.",
+      "id": "O5_DEPOSITION_MAP",
+      "required_evidence": "Actual ordered source/target identity and map law, overlap/support semantics, edge handling, and declared approximation/validation. Number and energy moments alone are insufficient.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Promote a scalar integrated table to directional authority or infer companion direction by energy conservation alone.",
+      "id": "O6_ANGULAR_AND_DERIVATIVE_SCOPE",
+      "required_evidence": "If anisotropic or polarized: source angular/joint-photon kernel, represented subspace and quadrature normalization. For moving maps/measures: owned derivatives/event semantics or explicit exclusion.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "numerical_examples": "MANUFACTURED_NONAUTHORITATIVE, including any temperatures, frequencies, populations and tangent directions",
+  "original_bin_intervals_eV": null,
+  "review_acceptance": {
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "merge": false,
+    "physical_input_authentication": false,
+    "provider_admission": false,
+    "ready_transition": false,
+    "science_promotion": false,
+    "trace_review": "Confirm values and source/claim boundaries; approval of this document alone does not resolve O1-O6."
+  },
+  "schema": "rec-2s-o2o3-owner-review-proposal/v1",
+  "single_next_action": "Owner reviews O2/O3 alternatives and identifies responsible input/closure/reference/JVP authority; leave O1-O6 unresolved until supplied.",
+  "status": "REVIEW_PROPOSAL_NOT_OWNER_DECISION"
+}
