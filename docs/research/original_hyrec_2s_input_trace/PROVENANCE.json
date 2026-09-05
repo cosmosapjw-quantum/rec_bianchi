@@ -1,0 +1,263 @@
+{
+  "allowed_new_prefix": "docs/research/original_hyrec_2s_input_trace/",
+  "archive_members": {
+    "HyRec/hydrogen.c": {
+      "bytes": 37471,
+      "expected_from_past_ledger": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b"
+    },
+    "HyRec/hydrogen.h": {
+      "bytes": 7837,
+      "expected_from_past_ledger": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba"
+    },
+    "HyRec/hyrec_params.h": {
+      "bytes": 3764,
+      "expected_from_past_ledger": null,
+      "sha256": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+    },
+    "HyRec/readme.pdf": {
+      "bytes": 155040,
+      "expected_from_past_ledger": null,
+      "sha256": "457815c1daa6c20d9ab18c05648e2736eee1a8a417cdcf5533d804207c8b7524"
+    },
+    "HyRec/supplement.pdf": {
+      "bytes": 462167,
+      "expected_from_past_ledger": null,
+      "sha256": "17a1eba3f768a3a668c859c4540a02a5057d5364f1ca88207e3f79b28cfd7a5e"
+    },
+    "HyRec/two_photon_tables.dat": {
+      "bytes": 25191,
+      "expected_from_past_ledger": null,
+      "sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9"
+    }
+  },
+  "expected_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "expected_hash_owners": {
+    "archive": "src/full_bianchi_hyrec/recoil/original_hyrec_native.py::ORIGINAL_HYREC_ARCHIVE_SHA256",
+    "c_and_header": "archive/bundles/Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68.zip::SOURCE_LINE_LEDGER.json",
+    "table": "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py::TWO_PHOTON_TABLE_SHA256"
+  },
+  "expected_table_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+  "historical_evidence": {
+    "c_comparison_scope": "Actual original read_twog_params plus harness-transcribed coefficient formulas. The v0.68 c_source_parity harness does not call populateTS_2photon.",
+    "c_harness_output_shape_in_stored_npz": [
+      311,
+      6
+    ],
+    "classification": "PREVIOUS_EXECUTION_REFERENCED_NOT_RERUN",
+    "historical_archive_members": {
+      "NUMERICAL_METRICS.json": {
+        "bytes": 1217,
+        "sha256": "2358fed4bc92ae5d9aeee2d1ee864a0ef22305c6a95ee92001e3073420cccfbf"
+      },
+      "SOURCE_LINE_LEDGER.json": {
+        "bytes": 1780,
+        "sha256": "212a088ef6513d25bdf9fef9a57121e871c9e8e3534bad5ff0b25271feb02d48"
+      },
+      "WEB_EVIDENCE_LEDGER.json": {
+        "bytes": 845,
+        "sha256": "28a11c34d30bde2144f37250c592623926e142a5bf7228b90ae3adcfa7f8900c"
+      },
+      "pr05c2c1b2a_two_photon_raman_source_v068.npz": {
+        "bytes": 50074,
+        "sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad"
+      }
+    },
+    "not_demonstrated": [
+      "physical B or mu",
+      "event-to-all-photon deposition mapping",
+      "source-identical full positive paired action",
+      "new native full-matrix execution"
+    ],
+    "prior_rec02c_result": "Manufactured-input numerical adapter evidence is inherited only; no physical authority is inferred.",
+    "prior_targeted_summary": "8 passed",
+    "receipt_generated_utc": "2026-08-08T13:15:45.747535Z",
+    "receipt_payload_head": "fc4b1cede1bf91d92a88f00afedfe3f56e604d5e",
+    "receipt_payload_tree": "ba5234f8d38d6e6aac68c468bfb2cffeceeabf78",
+    "recorded_c_parity_max_relative": 1.634693744337258e-14,
+    "separate_full_matrix_harness": "scripts/c_harness/original_hyrec_full_matrix_harness.c calls populateTS_2photon; inspected only, not run and not credited as this parity result.",
+    "stored_manifest_entries_freshly_checked": 29
+  },
+  "input_identity_relation": "EXACT_SOURCE_BYTES",
+  "native_defaults": {
+    "DIFFUSION": 1,
+    "EFFECT_A": 1,
+    "EFFECT_B": 1,
+    "EFFECT_C": 1,
+    "EFFECT_D": 1,
+    "MODEL": "FULL",
+    "NSUBLYA": 140,
+    "NVIRT": 311
+  },
+  "parent_commit": "aeb01d369436f2d0eda2c946e9c650e54ae06fca",
+  "parent_tree": "afa41c177aa27d73ef772a7d20522d3ef2ef7835",
+  "provenance_is_not_physical_authentication": true,
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "repository_files": {
+    "AGENTS.md": {
+      "bytes": 933,
+      "git_blob": "374340473e6cd5061f74df776872b8e300b4d21a",
+      "sha256": "dcf597d354301d001cd3441f493003d121828e7f9a66d65a6944f9bc3a63081c"
+    },
+    "archive/bundles/Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68.zip": {
+      "bytes": 68330,
+      "git_blob": "642dd193d4873bf5a03d50416537750af110e274",
+      "sha256": "884e148c5be0dca71ac7e4a41ed2cbecdcc81fd640dc4c5791a0e0e91be105b8"
+    },
+    "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip": {
+      "bytes": 726954,
+      "git_blob": "e02869896ab3b826eb64d8233f2a1272366c1fc8",
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    "data/pr05c2c1b2a_two_photon_raman_source_v068.npz": {
+      "bytes": 50074,
+      "git_blob": "15eca90d1b8c8d766447a5b78fde3988b9a17333",
+      "sha256": "536154894ce3779cc877a04b490a6e2b4501826d98efd9a12a4a6568dd0eabad"
+    },
+    "docs/quality/PROGRESS_FIRST_IDENTITY_POLICY.md": {
+      "bytes": 7468,
+      "git_blob": "50c722e2b5fe437401444054427579eadb92a9e2",
+      "sha256": "ee58844186f63de127164e12efba58cd2ba44af00ce0c04a4ac4065d60e8eb1a"
+    },
+    "docs/research/rec_resolved_deposition/PUBLICATION.json": {
+      "bytes": 11565,
+      "git_blob": "92dd118b03ae7511e34081dae696a6f8a4866bba",
+      "sha256": "74f82031f1598dfb24740dc9f1c0dddb552bdebef7c3ecebca75d5e0980e183e"
+    },
+    "docs/research/rec_resolved_deposition/RESULT.json": {
+      "bytes": 35524,
+      "git_blob": "a8e398f7f58229f2f0a6d52e10b6ecfb89320c24",
+      "sha256": "3354bc24da27ad6588b81cbe7828c2c924d297a390ea77397b559b7fdaf81fc7"
+    },
+    "scripts/c_harness/original_hyrec_full_matrix_harness.c": {
+      "bytes": 1943,
+      "git_blob": "8ecf47697a4e83ff1a47ba45ded317a10ba729bc",
+      "sha256": "e800d8fda9e10dc9013a97a9ba36de19b86bd293577a502dd6870f984c9df5b6"
+    },
+    "scripts/c_harness/original_hyrec_two_photon_raman_harness.c": {
+      "bytes": 1423,
+      "git_blob": "a21176fada74481663b6296d4d3278f0b1005b39",
+      "sha256": "d0d49ba8779fafd96187f92c5331c78768f5bfba900a7b32d124cd2aebea82ca"
+    },
+    "scripts/run_pr05c2c1b2a_two_photon_raman_stage.py": {
+      "bytes": 28483,
+      "git_blob": "857df593b322c259e3d157ae545c2637ff337fb7",
+      "sha256": "bf8cd407105ee507a1b712c6a221da91ccfad2493c96bfd5fbff352f45c4eefb"
+    },
+    "src/full_bianchi_hyrec/recoil/original_hyrec_native.py": {
+      "bytes": 22766,
+      "git_blob": "069a1671e18229f27882549a0cd38071e6d9a661",
+      "sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c"
+    },
+    "src/full_bianchi_hyrec/resolved_deposition.py": {
+      "bytes": 12788,
+      "git_blob": "887a377580c455a3a5556c6ede8e41343996d50e",
+      "sha256": "ff12a6efc4ac0fbc3da7c9223687190301dfcc56a3153dc6918205a9a91562a5"
+    },
+    "src/full_bianchi_hyrec/trajectory/com_source_deposition.py": {
+      "bytes": 7265,
+      "git_blob": "a3662cf399f14b7148d880266825be12baf934a0",
+      "sha256": "8935169ec08187c627c5efbab6ec1c46b866de79b08064da8b744b0b162ab511"
+    },
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": {
+      "bytes": 19716,
+      "git_blob": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+      "sha256": "d33bfb3456925fee33715083c8835c9ca18fa9a4dc5fe4332e62aa38db9418ed"
+    },
+    "state/PR05C2C1B2A_FINAL_VERIFICATION.log": {
+      "bytes": 6239,
+      "git_blob": "fbbb7b7e640b6d284f724dda79c631844f9b3b6c",
+      "sha256": "7d9db953284ac708dd71092b7956c2917e33de5181072a3a4e167bf16bfe053d"
+    },
+    "state/PR05C2C1B2A_FINAL_VERIFICATION_RECEIPT.json": {
+      "bytes": 2505,
+      "git_blob": "36dc20cfadc854b9ef73dd9d7484c2b34c927b48",
+      "sha256": "6edc48f24248c33271c08221f0ccd41893d5933e8dc705526425b4ccc33984e9"
+    },
+    "state/PR05C2C1B2A_RECOVERY_RECEIPT.json": {
+      "bytes": 2007,
+      "git_blob": "e1e9f2e8e2197b7e0c73aadf664c5d9dc543bb86",
+      "sha256": "e79d767b7afda1d9a40ec81d87e54697eb033eb2208c2ba32ca01b7f9e02ed5a"
+    },
+    "tests/trajectory/test_hyrec_two_photon_raman.py": {
+      "bytes": 11311,
+      "git_blob": "81cca71b42c08b32c194da3987ab0f41c6dff670",
+      "sha256": "82c4135d53ea385ae70d44d9bcf338c7043af9a9b5a8ca06a1a3571f3c1933e7"
+    },
+    "tests/trajectory/test_pr05c2c1b2a_artifact.py": {
+      "bytes": 2271,
+      "git_blob": "4fe4275d3420aca0e72de516d079503764eded68",
+      "sha256": "f5c74bfeb324911aa72529a592105243b3104712520decd60cd25eee7bbaf435"
+    }
+  },
+  "schema": "original-hyrec-2s-input-provenance/v1",
+  "scope_note": "Owner-supplied archived October-2012 ZIP contains the May-2012 third-release sources. No latest-HyRec substitution.",
+  "source_links": [
+    {
+      "id": "C_READER",
+      "lines": [
+        270,
+        347
+      ],
+      "source": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip::HyRec/hydrogen.c",
+      "supports": "Column scan; normalization 287-290; switches 299-314. No B or mu output."
+    },
+    {
+      "id": "C_MATRIX",
+      "lines": [
+        400,
+        532
+      ],
+      "source": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip::HyRec/hydrogen.c",
+      "supports": "Rescaling and matrix entries; 2s terms at 470-473; distortion variables."
+    },
+    {
+      "id": "H_TABLE",
+      "lines": [
+        95,
+        100
+      ],
+      "source": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip::HyRec/hydrogen.h",
+      "supports": "Energies and already bin-weighted differential rates, not raw differential density."
+    },
+    {
+      "id": "ZIP_README",
+      "pages_1based": [
+        1,
+        3,
+        4
+      ],
+      "source": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip::HyRec/readme.pdf",
+      "supports": "Column units; lower spectrum support; normalization revision."
+    },
+    {
+      "id": "ZIP_SUPPLEMENT",
+      "pages_1based": [
+        1,
+        2
+      ],
+      "source": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip::HyRec/supplement.pdf",
+      "supports": "Delta x_b = x_1s Delta f_b and the Wien reference; equations (4), (7)-(10)."
+    },
+    {
+      "arxiv_version_seen": "0803.0808v2",
+      "doi": "10.1103/PhysRevD.78.023001",
+      "id": "H08",
+      "locator": "Section III A, equations (26)-(29), printed p.6",
+      "supports": "Higher-energy photon convention and half-domain event integral.",
+      "url": "https://arxiv.org/pdf/0803.0808"
+    },
+    {
+      "arxiv_version_seen": "1011.3758v2",
+      "doi": "10.1103/PhysRevD.83.043513",
+      "id": "AHH11",
+      "locator": "Section IV B (48)-(50); Section V A (66)-(67), V B (71)",
+      "supports": "Blackbody companion; neglected high-energy stimulation; spike-region quadrature.",
+      "url": "https://arxiv.org/pdf/1011.3758",
+      "version_access_note": "Unversioned PDF visibly identifies v2. Explicit v2 PDF route returned a web Internal Error. No PDF-byte identity with the ZIP is claimed."
+    }
+  ],
+  "table_result_identity_relation": "LOADER_BINARY64_VALUES_AND_INDEPENDENT_DECIMAL_DIAGNOSTIC",
+  "work_branch": "agent/research/rec-hyrec-2s-input-trace-20260905-r1"
+}

@@ -1,0 +1,13 @@
+Fresh canonical-table-only test; historical C/adapter tests not rerun.
+
+Attempt 1: default runtime
+Command: PYTHONPATH=src python -B -m pytest -p no:cacheprovider -q tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_table_is_byte_locked_normalized_and_process_classified
+Exit: 1
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python: No module named pytest
+Classification: ENVIRONMENT_DEPENDENCY_MISSING_BEFORE_TEST_COLLECTION
+
+Attempt 2: existing external verification venv
+Command: PYTHONPATH=src /workspace/scratch/ae018d984864/rec02c-venv/bin/python -B -m pytest -p no:cacheprovider -q tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_table_is_byte_locked_normalized_and_process_classified
+Exit: 0
+.                                                                        [100%]
+1 passed in 0.98s
