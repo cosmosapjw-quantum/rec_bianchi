@@ -1,0 +1,45 @@
+{
+  "schema": "rec-2s-o2o3-research/v1",
+  "base_commit": "e65ae5c211db4e3375e73410a404f0b23da084d4",
+  "base_tree": "e12a4ae4ed17859e4625f80fb0fa86e83a034036",
+  "scope": "2s 스칼라 광자 계수·기준장·조건부 장부 연구",
+  "owner_model_choice": null,
+  "owner_approval": false,
+  "production_default_changed": false,
+  "paths": {
+    "native_reproduction": {
+      "role": "원본 계수 재현용 비교 기준",
+      "companion": "지정된 흑체",
+      "high_energy_stimulation": false,
+      "reference": "Wien",
+      "evolved_photon_legs": ["tracked_high_energy"],
+      "external_companion_energy_ledger_required_for_coupling": true
+    },
+    "full_pair_research": {
+      "role": "책임자 검토용 비평형 확장 제안",
+      "companion": "명시적 입력; 독립 진화 여부는 책임자 선택",
+      "high_energy_stimulation": true,
+      "reference": "전체 occupation 또는 명시적으로 변환된 기준장",
+      "proposed_photon_legs": ["tracked_high_energy", "companion_low_energy"],
+      "source_identical_to_native": false,
+      "angular_kernel_admitted": false
+    }
+  },
+  "O2": "조건부 사건/광자/에너지 장부 유도; 생산 경로 선택은 미승인",
+  "O3": "Wien-Planck 기준 변환과 미분 유도; 실제 상태·기준장 바이트 및 연결은 미승인",
+  "unresolved": ["O1_ORIGINAL_INTEGRAL_REGIONS", "O4_TARGET_MEASURE", "O5_DEPOSITION_MAP", "O6_ANGULAR_AND_DERIVATIVE_SCOPE"],
+  "B": null,
+  "mu": null,
+  "physical_packet_state": null,
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "execution_record": "실제 실행 결과는 별도 RESULT.json과 workflow 로그로 판정",
+  "next_single_action": "두 경로의 비교와 장부에 근거한 O2/O3 책임자 모델 선택",
+  "sources": [
+    "docs/research/original_hyrec_2s_input_trace/OWNER_REVIEW_CONTRACT.json",
+    "docs/research/original_hyrec_2s_input_trace/SOURCE_EXCERPTS.txt",
+    "docs/research/original_hyrec_2s_input_trace/bins_2s.csv",
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py"
+  ]
+}
