@@ -1,0 +1,249 @@
+{
+  "C_coefficient_harness": "Separate existing pytest, if run; see TARGETED_TEST.log and RUN_RECORD.json.",
+  "PR65_manifest_verified": [
+    "CENSUS_VERIFICATION.log",
+    "OWNER_REVIEW_CONTRACT.json",
+    "PROVENANCE.json",
+    "README.md",
+    "REPRODUCE.md",
+    "RUN_RECORD.json",
+    "SOURCE_EXCERPTS.txt",
+    "TARGETED_TEST.log",
+    "bins_2s.csv"
+  ],
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "coefficients": {
+    "bins": 140,
+    "diagnostic_inputs": {
+      "fsR": 1.013,
+      "meR": 0.987,
+      "source_temperature_eV": 0.25882399309326415
+    },
+    "direction": {
+      "d_log_T_phys": 0.37,
+      "d_log_fsR": -0.11,
+      "d_log_meR": 0.23,
+      "d_log_rate_scale": -0.65,
+      "d_log_source_temperature": 0.36
+    },
+    "full_C_populateTS_executed": false,
+    "max_JVP_component_scaled_error": 1.1196281660240944e-15,
+    "max_coefficient_relative_error": 1.52308760956348e-15,
+    "max_literal_exp_relative_error": 1.6292298705337864e-14,
+    "max_temperature_derivative_relative_error": 1.446145429792946e-15,
+    "mpmath_precision_digits": 80,
+    "reference_note": "Exact binary64 input values lifted to 80-digit arithmetic; not extra table precision.",
+    "subdomain_diagonal_increment_s_inv": 9.187167541065797
+  },
+  "environment": {
+    "mpmath": "1.3.0",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "python": "3.12.13",
+    "sympy": "1.14.0"
+  },
+  "manufactured": {
+    "Planck_manifold_tangent": {
+      "exact": "0",
+      "existing_JVP": -1.1102230246251565e-16
+    },
+    "inverse_JVP": {
+      "d_a": "1/7",
+      "d_f_c": "1/17",
+      "d_f_t": "4727/28842",
+      "d_w_t": "1/23",
+      "d_x_g": "-1/11",
+      "d_x_u": "1/13",
+      "d_z_b": "1/19",
+      "exact_JVP": "447626731/2855588736",
+      "existing_JVP": 0.15675462133494003,
+      "f_t": "1/3",
+      "finite_differences": [
+        {
+          "abs_error": 8.868576345522072e-09,
+          "derivative": 0.15675463020351638,
+          "step": 0.001
+        },
+        {
+          "abs_error": 2.2171677549476243e-09,
+          "derivative": 0.15675462355210779,
+          "step": 0.0005
+        },
+        {
+          "abs_error": 5.543589753909117e-10,
+          "derivative": 0.156754621889299,
+          "step": 0.00025
+        }
+      ],
+      "omitted_denominator_JVP_error": "17/4224",
+      "omitted_reference_JVP_error": "17/1472",
+      "valid_domain": "x_g>0, f_t>=0",
+      "w_t": "1/4",
+      "x_g": "1/2",
+      "x_g_zero": "UNDEFINED_INVERSE_NOT_EXTENDED",
+      "z_b": "1/24"
+    },
+    "manufactured_frequencies_Hz": {
+      "companion_frequency_Hz": 100000000000000.0,
+      "tracked_frequency_Hz": 200000000000000.0,
+      "transition_frequency_Hz": 300000000000000.0
+    },
+    "manufactured_nulls": [
+      {
+        "existing_api_forward": 0.16666666666666666,
+        "existing_api_net": 0.0,
+        "existing_api_reverse": 0.16666666666666666,
+        "field": "Planck",
+        "forward": "1/6",
+        "native": "-1/24",
+        "paired": "0",
+        "reverse": "1/6",
+        "tracked_occupation": "1/3"
+      },
+      {
+        "existing_api_forward": 0.15625,
+        "existing_api_net": 0.03125,
+        "existing_api_reverse": 0.125,
+        "field": "Wien",
+        "forward": "5/32",
+        "native": "0",
+        "paired": "1/32",
+        "reverse": "1/8",
+        "tracked_occupation": "1/4"
+      }
+    ],
+    "number_energy_ledgers": [
+      {
+        "atomic_energy_rate": "-3/32",
+        "case": "paired_Wien",
+        "companion_count_rate": "1/32",
+        "companion_energy_rate": "1/32",
+        "d_x_g": "1/32",
+        "d_x_u": "-1/32",
+        "energy_sum": "0",
+        "energy_unit": "E_star per H per second, E_star=h*(1e14 Hz)",
+        "event_rate": "1/32",
+        "status": "CONDITIONAL_STOICHIOMETRY_NOT_POPULATION_OR_DEPOSITION_EXECUTION",
+        "total_photon_count_rate": "1/16",
+        "tracked_count_rate": "1/32",
+        "tracked_energy_rate": "1/16"
+      },
+      {
+        "atomic_energy_rate": "1/8",
+        "case": "native_Planck_proposed_ledger",
+        "companion_count_rate": "-1/24",
+        "companion_energy_rate": "-1/24",
+        "d_x_g": "-1/24",
+        "d_x_u": "1/24",
+        "energy_sum": "0",
+        "energy_unit": "E_star per H per second, E_star=h*(1e14 Hz)",
+        "event_rate": "-1/24",
+        "status": "CONDITIONAL_STOICHIOMETRY_NOT_POPULATION_OR_DEPOSITION_EXECUTION",
+        "total_photon_count_rate": "-1/12",
+        "tracked_count_rate": "-1/24",
+        "tracked_energy_rate": "-1/12"
+      }
+    ],
+    "off_blackbody": [
+      {
+        "companion_change": "1/48",
+        "fc": "3/4",
+        "high_stimulation": "1/24",
+        "native": "-1/24",
+        "paired": "1/48"
+      },
+      {
+        "companion_change": "-1/48",
+        "fc": "5/4",
+        "high_stimulation": "1/24",
+        "native": "-1/24",
+        "paired": "-1/48"
+      }
+    ],
+    "physical_inputs_selected": false,
+    "thermal_chain": {
+      "exact_JVP": "-17*log(2)/48",
+      "existing_JVP": -0.24548962644831396,
+      "finite_differences": [
+        {
+          "abs_error": 1.4665123027057803e-07,
+          "derivative": -0.24548977309954423,
+          "step": 0.001
+        },
+        {
+          "abs_error": 3.666276748859332e-08,
+          "derivative": -0.24548966311108145,
+          "step": 0.0005
+        },
+        {
+          "abs_error": 9.165679548672756e-09,
+          "derivative": -0.2454896356139935,
+          "step": 0.00025
+        }
+      ],
+      "omitted_companion_error": "log(2)/6",
+      "omitted_reference_error": "3*log(2)/16",
+      "path": "fixed signed z_b, populations, rate and reference energies"
+    }
+  },
+  "not_executed": [
+    "full original C populateTS_2photon",
+    "original HyRec history/trajectory",
+    "physical deposition or occupation-rate execution",
+    "provider/physical admission"
+  ],
+  "original_member_sha256": {
+    "HyRec/hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "HyRec/hydrogen.h": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+    "HyRec/two_photon_tables.dat": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9"
+  },
+  "owner_obligations": {
+    "O1_ORIGINAL_INTEGRAL_REGIONS": "UNRESOLVED",
+    "O2_PHOTON_COUNT_AND_CLOSURE": "UNRESOLVED",
+    "O3_FIELD_AND_STATE_AUTHORITY": "UNRESOLVED",
+    "O4_TARGET_MEASURE": "UNRESOLVED",
+    "O5_DEPOSITION_MAP": "UNRESOLVED",
+    "O6_ANGULAR_AND_DERIVATIVE_SCOPE": "UNRESOLVED"
+  },
+  "parent_commit": "e65ae5c211db4e3375e73410a404f0b23da084d4",
+  "parent_tree": "e12a4ae4ed17859e4625f80fb0fa86e83a034036",
+  "schema": "rec-2s-o2o3-comparison-results/v1",
+  "source_blobs": {
+    "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip": "e02869896ab3b826eb64d8233f2a1272366c1fc8",
+    "docs/research/original_hyrec_2s_input_trace/OWNER_REVIEW_CONTRACT.json": "e5d1d47199428f25ef05240f938d667f18616457",
+    "scripts/c_harness/original_hyrec_two_photon_raman_harness.c": "a21176fada74481663b6296d4d3278f0b1005b39",
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+    "tests/trajectory/test_hyrec_two_photon_raman.py": "81cca71b42c08b32c194da3987ab0f41c6dff670"
+  },
+  "status": "CHECKS_PASSED_REVIEW_ONLY",
+  "symbolic_zero_residuals": {
+    "C_minus_D_equals_a": "0",
+    "D_over_C_equals_qc": "0",
+    "Wien_d_log_T": "0",
+    "atom_plus_tracked_energy_equals_minus_bath": "0",
+    "atomic_nuclei_number": "0",
+    "blackbody_d_log_T": "0",
+    "energy_with_both_photons": "0",
+    "inverse_JVP": "0",
+    "native_Wien_null": "0",
+    "native_at_Planck_nonzero_formula": "0",
+    "native_composed_inverse_JVP": "0",
+    "native_departure_cancellation": "0",
+    "native_departure_cancellation_JVP": "0",
+    "paired_Planck_null": "0",
+    "paired_at_Wien_nonzero_formula": "0",
+    "paired_composed_inverse_JVP": "0",
+    "paired_minus_native_decomposition": "0",
+    "rate_scale_chain": "0",
+    "reference_balance_derivative": "0",
+    "source_temperature_coordinate_chain": "0",
+    "two_photon_number_from_distinct_ledgers": "0",
+    "vacuum_spontaneous_limit": "0"
+  },
+  "thresholds": {
+    "FD_fine_absolute": 1e-07,
+    "coefficient_relative": 1.4210854715202004e-14,
+    "derivative_component_scaled": 2.842170943040401e-14,
+    "literal_exp_relative": 2e-13
+  }
+}

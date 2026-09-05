@@ -1,0 +1,249 @@
+{
+  "O1_O6_status_changes": false,
+  "allowed_change_prefix": "docs/research/rec_2s_o2o3_comparison/",
+  "environment_setup": {
+    "classification": "ENVIRONMENT_SETUP_NOT_SCIENTIFIC_EVIDENCE",
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "materialization": [
+      "git clone --filter=blob:none --no-checkout https://github.com/cosmosapjw-quantum/rec_bianchi.git rec-o23-work",
+      "git worktree add --no-checkout -b agent/research/rec-2s-o2o3-comparison-20260905-r1 ../rec-2s-o2o3 e65ae5c211db4e3375e73410a404f0b23da084d4",
+      "git reset --hard e65ae5c211db4e3375e73410a404f0b23da084d4 (new empty isolated worktree only)"
+    ],
+    "materialization_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "prior_scratch": "Previous checkout/venv absent after automatic workspace maintenance; restored from GitHub at fixed parent, not from a transcript.",
+    "production_dependencies_changed": false,
+    "provisioning_commands": [
+      "python -m venv --system-site-packages o23-venv",
+      "o23-venv/bin/python -m pip install --disable-pip-version-check --retries 0 --timeout 15 sympy==1.14.0 pytest==8.4.2"
+    ],
+    "provisioning_exit_code": 0,
+    "readiness": "Initial import-spec discovery found no sympy/pytest; no test was attempted with that Python before provisioning."
+  },
+  "fixed_parent": "e65ae5c211db4e3375e73410a404f0b23da084d4",
+  "fixed_parent_tree": "e12a4ae4ed17859e4625f80fb0fa86e83a034036",
+  "fresh_executions": [
+    {
+      "argv": [
+        "/workspace/scratch/1b6cd3e4f36a/o23-venv/bin/python",
+        "-B",
+        "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3/docs/research/rec_2s_o2o3_comparison/check_o2_o3.py",
+        "--repo",
+        "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3",
+        "--output-dir",
+        "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3/docs/research/rec_2s_o2o3_comparison"
+      ],
+      "coefficient_bins": 140,
+      "cwd": "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3",
+      "ended_at_UTC": "2026-09-05T07:17:18.833472+00:00",
+      "exit_code": 0,
+      "log": "CHECKER.log",
+      "name": "Fraction/SymPy/140-bin/existing API checker",
+      "result": "RESULTS.json",
+      "started_at_UTC": "2026-09-05T07:17:17.204271+00:00",
+      "symbolic_zero_residual_count": 22
+    },
+    {
+      "C_scope": "Actual original read_twog_params plus transcribed coefficient formulas in existing C harness; NOT populateTS_2photon or a full history solve.",
+      "argv": [
+        "/workspace/scratch/1b6cd3e4f36a/o23-venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-q",
+        "--basetemp=/workspace/scratch/1b6cd3e4f36a/o23-pytest-temp",
+        "tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_table_is_byte_locked_normalized_and_process_classified",
+        "tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_coupling_reproduces_source_formula_and_detailed_balance",
+        "tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_coupling_analytic_temperature_jvp_matches_centered_difference",
+        "tests/trajectory/test_hyrec_two_photon_raman.py::test_physical_two_photon_raman_paired_action_has_lte_planck_null[two_photon]",
+        "tests/trajectory/test_hyrec_two_photon_raman.py::test_canonical_coupling_matches_original_c_source_for_all_virtual_bins"
+      ],
+      "cwd": "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3",
+      "duration_reported_seconds": 1.39,
+      "ended_at_UTC": "2026-09-05T07:17:20.277719+00:00",
+      "environment_overrides": {
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src"
+      },
+      "existing_test_limit": "The inherited C test uses its existing numpy.allclose predicates; this child does not strengthen or edit it. Independent 140-bin mpmath checks separately use explicit relative/component-scaled bounds.",
+      "exit_code": 0,
+      "failed": 0,
+      "log": "TARGETED_TEST.log",
+      "name": "Five existing targeted pytest nodes",
+      "passed": 5,
+      "skipped": 0,
+      "started_at_UTC": "2026-09-05T07:17:18.565555+00:00"
+    },
+    {
+      "CSV_byte_equal": true,
+      "RESULTS_byte_equal": true,
+      "argv": [
+        "/workspace/scratch/1b6cd3e4f36a/o23-venv/bin/python",
+        "-B",
+        "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3/docs/research/rec_2s_o2o3_comparison/check_o2_o3.py",
+        "--repo",
+        "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3",
+        "--output-dir",
+        "/workspace/scratch/1b6cd3e4f36a/o23-lf-reproduction"
+      ],
+      "cwd": "/workspace/scratch/1b6cd3e4f36a/rec-2s-o2o3",
+      "ended_at_UTC": "2026-09-05T07:20:03.922576+00:00",
+      "exit_code": 0,
+      "full_checker_stdout_equals_CHECKER_log": true,
+      "name": "LF serialization reproduction after packaging repair",
+      "pytest_or_C_rerun": false,
+      "reason": "Verify corrected output serialization, no tolerance/formula/source change.",
+      "started_at_UTC": "2026-09-05T07:20:02.418503+00:00"
+    }
+  ],
+  "fresh_failures": [
+    {
+      "LF_csv_sha256": "62f05b9229f261c14728f00df014dac3cec7438f9d2ce57f72b6a481aad0d07a",
+      "affected_lines": 141,
+      "cause": "csv.DictWriter default CRLF is rejected by repository whitespace policy.",
+      "classification": "NEW_ARTIFACT_PACKAGING_CRLF_NOT_NUMERICAL_OR_SOURCE_FAILURE",
+      "command": "git diff --cached --check",
+      "exit_code": 2,
+      "first_diagnostic": "docs/research/rec_2s_o2o3_comparison/COEFFICIENTS_2S.csv:1: trailing whitespace.",
+      "original_csv_sha256": "1aa8a4848d6717eef53a4653a409f1d576009312929aaba87fae8cc935b2836b",
+      "repair": "Explicit LF writer; converted only newly generated CSV line endings. Parsed rows verified identical. No inherited evidence changed."
+    },
+    {
+      "classification": "COMMAND_PATH_ERROR_NOT_NUMERICAL_FAILURE",
+      "command": "git add -- docs/research/rec_2s_o2o3_comparison",
+      "cwd": "docs/research/rec_2s_o2o3_comparison (instead of repository root)",
+      "diagnostic": "fatal: pathspec 'docs/research/rec_2s_o2o3_comparison' did not match any files",
+      "effect": "No staged mutation; subsequent chained verification commands did not execute.",
+      "exit_code": 128,
+      "repair": "Run the staging command from the repository root and verify manifest separately from its directory."
+    }
+  ],
+  "historical_only": [
+    {
+      "classification": "HISTORICAL_EXECUTION_NOT_COUNTED_FRESH",
+      "note": "Old C/pytest/PR65/REC-DONOR-02C evidence is read only. The separately logged current C test is a new execution of the existing test, not an overwrite of that evidence.",
+      "recorded_v068_C_relative_residual": 1.634693744337258e-14,
+      "source": "PR65 RUN_RECORD.json and v0.68 NUMERICAL_METRICS.json"
+    },
+    {
+      "classification": "HISTORICAL_CI_NOT_RERUN",
+      "note": "Prior inherited-whitespace failures are historical context; new child CI is reported separately after publication.",
+      "source": "PR65 automatic CI runs 33948517123 and 33948542515"
+    },
+    {
+      "classification": "SIBLING_CONTEXT_READ_NOT_IMPORTED_OR_RERUN",
+      "execution_commit": "c2ee9da5235e0cda6d582f156859801fc082bb34",
+      "execution_tree": "3b2270b6acdeee157d486b432eeab06aa66d7f0d",
+      "note": "Discovered during Atlassian publication preflight. Same PR65 parent, separate branch and manufactured population example. Current child adds requested fc!=nc decomposition, exact supplied example, actual existing API/C-coefficient checks, inverse and thermal/source-coordinate JVP comparisons. No sibling numerical output/archive reverified or counts reused; no sibling mutation or supersession.",
+      "read_source_blobs": {
+        "CLOSEOUT_KO.md": "5d56b45338c7d238fe36f58a28313b0407d9df4b",
+        "RESEARCH_KO.md": "02df337228b412403734ed538af8749b640b967f"
+      },
+      "reported_80digit_diagnostic_points": 420,
+      "reported_symbolic_identities": 14,
+      "source": "Sibling PR66 research and closeout read at bb205f4f02459863d1a5e3179057c5bd34c598e4"
+    }
+  ],
+  "independent_review": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 0,
+    "agent": "/root/rec_o2_o3_review",
+    "checker_readonly_run_exit_code": 0,
+    "post_review_change_scope": "README sibling context; RUN_RECORD metadata; REVIEW.md and final manifest only. Checker/proposal/numerical results unchanged. No independent re-review.",
+    "pytest_or_C_rerun": false,
+    "receipt": "REVIEW.md",
+    "reviewed_staged_tree": "becf47ad7c7ee7e70cf710f26ba66bb5555eb9cc",
+    "status": "READY_FOR_DRAFT_REVIEW"
+  },
+  "new_artifact_identity": {
+    "checker_sha256": "10b0a82ac142cb184432c3dfdb2c28eb903c84e7bdb4bcc937b6cd1371ff7b13",
+    "coefficient_csv_sha256": "62f05b9229f261c14728f00df014dac3cec7438f9d2ce57f72b6a481aad0d07a",
+    "proposal_sha256": "f0560a9719cb4dcebd8d6c4230d1ca2683d17f967d131333a44a1a705b89f73a",
+    "results_sha256": "83c9ff377211b9b791095e968c5ddcc5d2049b4ac0636af941e34037b9c38411"
+  },
+  "not_executed": [
+    {
+      "reason": "Scope is coefficient and scalar-law comparison; no full matrix state/source/diffusion validation or history run requested.",
+      "status": "NOT_ATTEMPTED",
+      "task": "Full original populateTS_2photon C execution"
+    },
+    {
+      "reason": "No production changes; five existing nodes cover the reused dependency cone.",
+      "status": "NOT_ATTEMPTED",
+      "task": "Full repository pytest suite"
+    },
+    {
+      "reason": "No authorized physical input/map/reference owner; prohibited inference.",
+      "status": "UNRESOLVED_NOT_ATTEMPTED",
+      "task": "Physical occupation/deposition, B/mu/cell support, provider or face admission"
+    },
+    {
+      "reason": "Fraction/SymPy and existing functions are the requested tools; no missing integration region inferred.",
+      "status": "NOT_ATTEMPTED",
+      "task": "Wolfram/Lean/Sage and original spectrum reintegration"
+    }
+  ],
+  "phase": "validate/document",
+  "physical_claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "publication_policy": {
+    "destination": "cosmosapjw-quantum/rec_bianchi",
+    "fresh_preflight": "Linked account ID 58155957 equals repository owner; public destination and push permission confirmed. PR65 head still equals fixed parent.",
+    "mode": "new branch only, non-force; Draft PR; REC-only append and readback",
+    "readback_location": "Final exact commit/tree, PR and Atlassian IDs are recorded in the new Draft PR body; no self-referential commit hash is embedded here."
+  },
+  "recorded_at_UTC": "2026-09-05T07:18:59.958437+00:00",
+  "schema": "rec-2s-o2o3-run-record/v1",
+  "source_identities": {
+    "AGENTS.md": {
+      "git_blob": "374340473e6cd5061f74df776872b8e300b4d21a",
+      "sha256": "dcf597d354301d001cd3441f493003d121828e7f9a66d65a6944f9bc3a63081c"
+    },
+    "HANDOFF_PROMPT.md": {
+      "git_blob": "8659c295f084454b5364b4fad3802716a770eeb0",
+      "sha256": "d4ebdf125a0bb8b295f8a7a5490a4f1251e88ead1f3b7a3bee5ea594c4df81db"
+    },
+    "docs/quality/PROGRESS_FIRST_IDENTITY_POLICY.md": {
+      "git_blob": "50c722e2b5fe437401444054427579eadb92a9e2",
+      "sha256": "ee58844186f63de127164e12efba58cd2ba44af00ce0c04a4ac4065d60e8eb1a"
+    },
+    "docs/research/original_hyrec_2s_input_trace/OWNER_REVIEW_CONTRACT.json": {
+      "git_blob": "e5d1d47199428f25ef05240f938d667f18616457",
+      "sha256": "cb149686261210dafac7490dc42eced9e793632f9607917203c81f7a831431da"
+    },
+    "docs/research/original_hyrec_2s_input_trace/RUN_RECORD.json": {
+      "git_blob": "e81b8a7ceb182c905538bf5b9c90f30a27f46206",
+      "sha256": "04447adbae03319b20846a03cf9d6e9610a3d8fb0ca2c1ca2c8fabe3e85c4c56"
+    },
+    "docs/research/original_hyrec_2s_input_trace/SOURCE_EXCERPTS.txt": {
+      "git_blob": "55fc92802ffb5d2e3af94657fd8919ccf49ad0ae",
+      "sha256": "a3bb1b38ebf6d58dc07d23fee51b20d444f0552cbae04c87f83ae2601cc93985"
+    },
+    "scripts/c_harness/original_hyrec_full_matrix_harness.c": {
+      "git_blob": "8ecf47697a4e83ff1a47ba45ded317a10ba729bc",
+      "sha256": "e800d8fda9e10dc9013a97a9ba36de19b86bd293577a502dd6870f984c9df5b6"
+    },
+    "scripts/c_harness/original_hyrec_two_photon_raman_harness.c": {
+      "git_blob": "a21176fada74481663b6296d4d3278f0b1005b39",
+      "sha256": "d0d49ba8779fafd96187f92c5331c78768f5bfba900a7b32d124cd2aebea82ca"
+    },
+    "src/full_bianchi_hyrec/recoil/original_hyrec_native.py": {
+      "git_blob": "069a1671e18229f27882549a0cd38071e6d9a661",
+      "sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c"
+    },
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": {
+      "git_blob": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+      "sha256": "d33bfb3456925fee33715083c8835c9ca18fa9a4dc5fe4332e62aa38db9418ed"
+    },
+    "tests/trajectory/test_hyrec_two_photon_raman.py": {
+      "git_blob": "81cca71b42c08b32c194da3987ab0f41c6dff670",
+      "sha256": "82c4135d53ea385ae70d44d9bcf338c7043af9a9b5a8ca06a1a3571f3c1933e7"
+    }
+  }
+}
