@@ -1,0 +1,49 @@
+{
+  "review_rounds": 1,
+  "reviewer_task": "/root/bounded_review",
+  "requested_profile": "cuhg_terra_guide",
+  "requested_model": "gpt-5.6-terra",
+  "requested_effort": "high",
+  "actual_settings_independently_observed": false,
+  "review_scope": "exact added diff vs fixed research plan; read-only, no numerical replay",
+  "finding": {
+    "severity": "P1",
+    "task_blocking": true,
+    "file": "check_identities.wls",
+    "issue": "Export with empty $ScriptCommandLine failed but exited0"
+  },
+  "repair_scope": "Wolfram output path only, use $CommandLine and check Export success",
+  "repair_source_commit": "27cccfc94196583363a956ddf37bafce57873639",
+  "repair_source_tree": "568c617a25a2a1e79ae3ceacb9db0aaa3e65b27c",
+  "regression": "actual repaired kernel invocation exited0; JSON exists, parses, passed=true, all 8 residuals zero",
+  "primary_numerical_source_rerun": false,
+  "preserved_primary_source_bindings": {
+    "docs/research/rec_2s_base_hires_response/check_response.py": {
+      "tested_blob": "9c0151a93ff1ec8fb1ee8738f75f188e7d719cd8",
+      "current_blob": "9c0151a93ff1ec8fb1ee8738f75f188e7d719cd8",
+      "sha256": "88c16a01476dfde259169bf80b29e8443a04c21106b73611acb229fab9efc07b"
+    },
+    "docs/research/rec_2s_base_hires_response/CASES.json": {
+      "tested_blob": "a941de8a51718a3654c7b243aa12ae9bd3b3df7d",
+      "current_blob": "a941de8a51718a3654c7b243aa12ae9bd3b3df7d",
+      "sha256": "50ccd1703947185d8d5dff0559dbfb4f244a063f39358aca320e5d0018e8dec0"
+    },
+    "docs/research/rec_2s_base_hires_response/test_response.py": {
+      "tested_blob": "152eb774977bfc8efabe4d2c4ac7b94ce4f0a6e7",
+      "current_blob": "152eb774977bfc8efabe4d2c4ac7b94ce4f0a6e7",
+      "sha256": "773705c1444909f838a1f9106f2a6767a6994903312fb904f3b184847adde7b0"
+    },
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": {
+      "tested_blob": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+      "current_blob": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+      "sha256": "d33bfb3456925fee33715083c8835c9ca18fa9a4dc5fe4332e62aa38db9418ed"
+    },
+    "src/full_bianchi_hyrec/recoil/original_hyrec_native.py": {
+      "tested_blob": "069a1671e18229f27882549a0cd38071e6d9a661",
+      "current_blob": "069a1671e18229f27882549a0cd38071e6d9a661",
+      "sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c"
+    }
+  },
+  "host_closeout": "finding resolved by targeted repair and artifact readback; no extra review round",
+  "negative_export_path_runtime_test": "NOT_RUN (one optional-call retry bound); explicit export failure guard inspected"
+}
