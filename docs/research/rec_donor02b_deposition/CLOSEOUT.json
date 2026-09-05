@@ -1,0 +1,121 @@
+{
+  "schema": "rec-donor02b-component-closeout/v1",
+  "classification": "PASS_BOUNDED_EXPLICIT_MAP_COMPONENT_PROBE_NOT_PHYSICAL_ADMISSION",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "pr": 61,
+  "parent_pr": 60,
+  "parent": "b97e9f399d865d9e1bf4467c063393aa5e72d282",
+  "parent_tree": "664d76bc47b02816aa94504e1d173454ca994739",
+  "executed_head": "6deb256753d91b8aa5f85a85a0786c02ea0670da",
+  "executed_tree": "0383fad8aac23c8c59d1867acfd5a0ccd578aced",
+  "core_path": "src/full_bianchi_hyrec/trajectory/com_source_deposition.py",
+  "core_blob": "a3662cf399f14b7148d880266825be12baf934a0",
+  "production_tree_unchanged": true,
+  "workflow_run": 33940027916,
+  "job": 101235487962,
+  "workflow_conclusion": "success",
+  "actual_checkout_equals_push_head": true,
+  "runtime": {
+    "python": "3.12.3",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "sympy": "1.14.0",
+    "matplotlib": "3.10.3",
+    "location": "GitHub-hosted Ubuntu 24.04; not operator workstation"
+  },
+  "input_class": "MANUFACTURED_DYADIC_SI_DATA",
+  "density_m3": 1048576.0,
+  "measure_m3": [2097152.0, 4194304.0, 8388608.0],
+  "energy_scale_j": 8.673617379884035e-19,
+  "target_energy_scale_multipliers": [1.0, 2.0, 3.0],
+  "source_energy_scale_multipliers": [1.5, 2.5],
+  "B": [[0.5, 0.0], [0.5, 0.5], [0.0, 0.5]],
+  "alternate_B": [[0.75, 0.25], [0.0, 0.0], [0.25, 0.75]],
+  "packet_rates_per_H_s": [[2.0, -1.0], [4.0, 3.0]],
+  "packet_rate_tangent_per_H_s": [[1.0, 2.0], [-2.0, 1.0]],
+  "density_tangent_fraction": 0.25,
+  "action_s_inv": [[0.5, -0.25], [0.75, 0.25], [0.25, 0.1875]],
+  "fixed_map_jvp_s_inv": [[0.375, 0.4375], [0.0625, 0.4375], [-0.0625, 0.109375]],
+  "alternate_action_s_inv": [[1.25, 0.0], [0.0, 0.0], [0.4375, 0.25]],
+  "map_difference_max_s_inv": 0.75,
+  "verification": {
+    "action_scalar_checks": 72,
+    "jvp_scalar_checks": 72,
+    "oracle": "Independent scalar Fraction sums; no NumPy matmul in oracle",
+    "action_max_residual": 0.0,
+    "jvp_max_residual": 0.0,
+    "exactness_domain": "This finite dyadic corpus only; not a general floating-point bound",
+    "directional_number_energy_checks": "two maps by two angular channels; exact equality",
+    "source_photon_cG_fourvector_checks": "both maps; exact array equality",
+    "invalid_inputs_rejected": ["zero_measure", "number_partition", "energy_moment", "nonfinite_rate", "wrong_rate_shape", "boolean_density"],
+    "normalization_mutants_detected": ["omit_n_H", "apply_n_H_over_mu_twice"],
+    "clean_worktree": true,
+    "changed_path_and_source_blob_checks": "PASS",
+    "full_moving_measure_quotient_derivative_sympy_residual": "0"
+  },
+  "moving_measure_diagnostic": {
+    "declared_dmu_over_mu": 0.5,
+    "omitted_term_s_inv": [[-0.25, 0.125], [-0.375, -0.125], [-0.125, -0.09375]],
+    "full_tangent_formula_only": [[0.125, 0.5625], [-0.3125, 0.3125], [-0.1875, 0.015625]],
+    "production_full_jvp_implemented": false
+  },
+  "artifact": {
+    "id": 9961501445,
+    "files": 5,
+    "size_bytes": 169522,
+    "zip_sha256": "9c5ee0e936a63ada772a0b652c6819516b7e66cff9241746d840332541169d8b",
+    "digest_source": "matching GitHub upload log and artifact metadata",
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/33940027916/artifacts/9961501445",
+    "contents": ["RESULT.json", "corpus.json", "map_ambiguity.png", "moving_measure_term.png", "SHA256SUMS"],
+    "connector_download": "SUCCESS",
+    "independent_sandbox_zip_rehash": "NOT_PERFORMED_EXECUTION_CLIENT_ERROR",
+    "committed_summary_identity": "semantic selected-field mirror, not byte-identical artifact replacement"
+  },
+  "plots": {
+    "generation": "two PNGs succeeded",
+    "rendered_visual_audit": "NOT_PERFORMED",
+    "claim": "Numerical arrays checked; no claim of completed visual or publication-quality audit"
+  },
+  "execution_setup_repairs": [
+    {"failed_run": 33939738091, "failed_head": "fb5458d5046bd9ec6b204f7ec3a8f2e0e0268d2f", "stage": "NO_JOBS_WORKFLOW_VALIDATION", "cause": "runner.temp referenced in unsupported job-level env context", "fix_commit": "f355b0d86356a4fea1d1b1dd7bcf746846863c20", "change": "Move MPLCONFIGDIR assignment into shell step"},
+    {"failed_run": 33939870789, "failed_job": 101235049586, "stage": "PYTHON_IMPORT_BEFORE_NUMERICAL_PROBE", "cause": "trajectory.__init__ -> primitive_rates -> original_hyrec_native -> scipy.constants; SciPy absent", "fix_commit": "6deb256753d91b8aa5f85a85a0786c02ea0670da", "change": "Provision scipy==1.15.3; leave experiment and production unchanged"}
+  ],
+  "general_repository_verification": {
+    "run": 33940027934,
+    "job": 101235488115,
+    "conclusion": "failure",
+    "package_import_smoke": "success",
+    "failed_step": "python scripts/verify_repo.py --quick",
+    "full_pytest": "skipped",
+    "fresh_detailed_root_cause": "NOT_INSPECTED; not inferred from historical whitespace failures"
+  },
+  "research_tools": {
+    "wolfram": "context and evaluator failed at MCP SSE HTTP404 before kernel results",
+    "fraction": "executed successfully on GitHub host",
+    "sympy": "executed successfully on GitHub host",
+    "octave_sage_singular_lean_lake": "executables absent on this GitHub host; no PASS claimed",
+    "scispace": "HyRec and Hirata primary works identified; scope/method only",
+    "primary_sources": ["arXiv:1011.3758", "arXiv:0803.0808"],
+    "literature_authority_effect": "NONE_METHOD_AND_SCOPE_ONLY",
+    "review_independence": "Same-assistant math/code perspectives; no independent reviewer PASS"
+  },
+  "atlassian": {
+    "BASS-19_comment": "10580",
+    "BASS-26_comment": "10581",
+    "confluence_page": "27492353",
+    "confluence_footer_comment": "28573697",
+    "official_link_or_status_mutation": false
+  },
+  "claim_boundary": {
+    "resolved_authority_adapter_implemented": false,
+    "physical_deposition_map_selected": false,
+    "physical_source_authenticated": false,
+    "global_once_only_transaction_implemented": false,
+    "full_moving_map_event_jvp": false,
+    "BASS_REI_wiring": false,
+    "provider_admitted": false,
+    "repository_wide_all_green": false,
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+  },
+  "next_single_action": "Implement a small typed resolved NUMERICAL adapter around the existing COMSourceDepositionPlan with explicit immutable array/source/target identity, preserving manufactured-versus-authenticated provenance. Do not infer physical B from conservation, rewrite source physics, implement moving-map terms, or promote a provider."
+}
