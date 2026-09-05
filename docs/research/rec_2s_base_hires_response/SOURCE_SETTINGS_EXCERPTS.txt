@@ -1,0 +1,100 @@
+HyRec/hyrec_params.h
+39: #define ZEND    0.                /* End redshift */
+40:
+41: #define DLNA          8.49e-5    /* Time step Delta ln(a). Must be smaller than 8.5e-5 if using radiative transfer */
+42: #define DXHEII_MAX    1e-5       /* If xHeII - xHeII(Saha) < DXEHII_MAX, use post-Saha expansion for Helium. Lower value = higher accuracy. */
+43: #define DXHII_MAX     3e-4       /* If xHII - xHII(Saha) < DXHII_MAX, use post-Saha expansion for Hydrogen. Switch to ODE integration after that.
+44:                                         IMPORTANT: do not set to a lower value unless using a smaller time-step */
+45: #define XHEII_MIN     1e-6       /* Stop considering Helium recombination once xHeII < XHEII_MIN */
+46: #define DLNT_MAX      5e-4       /* Use the steady-state approximation for Tm as long as 1-Tm/Tr < DLNT_MAX, then switch to ODE integration */
+47: #define PION_MAX      1e-2       /* When the probability of being ionized from n=2 becomes lower than PION_MAX, switch off radiative transfer calculation as it becomes irrelevant */
+48:
+49: /*** Tables and parameters for radiative transfer calculation ***/
+50:
+51: #define TWOG_FILE "two_photon_tables.dat" /* Maximum DLNA = 8.49e-5 */
+52: #define NSUBLYA  140
+53: #define NSUBLYB  271
+54: #define NVIRT    311
+55: #define NDIFF    80
+56:
+57:
+58: /**** Set of higher-accuracy parameters to use if getting the spectrum (make a smoother spectrum)****/
+59:
+60: /* #define DLNA       2e-5 */
+61: /* #define DXHEII_MAX 1e-6 */
+62: /* #define DXHII_MAX  2e-5 */
+63: /* #define XHEII_MIN  1e-6 */
+64: /* #define DLNT_MAX   5e-5 */
+65: /* #define PION_MAX   1e-4 */
+66:
+67: /* /\* Higher-resolution tables *\/ */
+68: /* #define TWOG_FILE "two_photon_tables_hires.dat"  /\* maximum dlna = 8.47e-5 *\/ */
+69: /* #define NSUBLYA  408 */
+70: /* #define NSUBLYB  1323 */
+71: /* #define NVIRT    1493 */
+72: /* #define NDIFF    300 */
+73:
+
+HyRec/hydrogen.c
+266: /*********************************************************************************************
+267: Read two-photon rates from table and store in structure.
+268: **********************************************************************************************/
+269:
+270: void read_twog_params(TWO_PHOTON_PARAMS *twog){
+271:
+272:    FILE *fA;
+273:    unsigned b;
+274:    double L2s1s_current, max_DLNA, DlnE;
+275:
+276:    fA = fopen(TWOG_FILE, "r");
+277:
+278:    for (b = 0; b < NVIRT; b++) {
+279:       fscanf(fA, "%le", &(twog->Eb_tab[b]));
+280:       fscanf(fA, "%le", &(twog->A1s_tab[b]));
+281:       fscanf(fA, "%le", &(twog->A2s_tab[b]));
+282:       fscanf(fA, "%le", &(twog->A3s3d_tab[b]));
+283:       fscanf(fA, "%le", &(twog->A4s4d_tab[b]));
+284:    }
+285:    fclose(fA);
+286:
+287:    /* Normalize 2s--1s differential decay rate to L2s1s (can be set by user in hydrogen.h) */
+288:    L2s1s_current = 0.;
+289:    for (b = 0; b < NSUBLYA; b++) L2s1s_current += twog->A2s_tab[b];
+290:    for (b = 0; b < NSUBLYA; b++) twog->A2s_tab[b] *= L2s1s/L2s1s_current;
+291:
+292:
+293:   /* Switches for the various effects considered in Hirata (2008) and diffusion:
+294:       Effect A: correct 2s-->1s rate, with stimulated decays and absorptions of non-thermal photons
+295:       Effect B: Sub-Lyman-alpha two-photon decays
+296:       Effect C: Super-Lyman-alpha two-photon decays
+297:       Effect D: Raman scattering */
+298:
+299:    #if (EFFECT_A == 0)
+300:      for (b = 0; b < NSUBLYA; b++) twog->A2s_tab[b] = 0;
+
+HyRec/hydrogen.h
+24: /****** CONSTANTS IN CGS + EV UNIT SYSTEM *******/
+25:
+26: #define EI   13.598286071938324              /* Hydrogen ionization energy in eV, reduced mass, no relativistic corrections */
+27:
+28: /* Energy differences between excited levels of hydrogen -- used often */
+29: #define E21  10.198714553953742
+30: #define E31  12.087365397278509
+31: #define E41  12.748393192442178
+32: #define E32  1.8886508433247664
+33: #define E42  2.5496786384884356
+34:
+35: #define hPc       1.239841874331e-04   /* hc in eV cm */
+36: #define mH        0.93878299831e9      /* Hydrogen atom mass in eV/c^2 */
+37: #define kBoltz    8.617343e-5          /* Boltzmann constant in eV/K */
+38: #define L2s1s     8.2206               /* 2s -> 1s two-photon decay rate in s^{-1} (Labzowsky et al 2005) */
+
+HyRec/hydrogen.h
+93: /**** Structure containing two-photon transition tables ****/
+94:
+95: typedef struct {
+96:     double Eb_tab[NVIRT];       /* Energies of the virtual levels in eV */
+97:     double A1s_tab[NVIRT];      /* 3*A2p1s*phi(E)*DE */
+98:     double A2s_tab[NVIRT];      /* dLambda_2s/dE * DeltaE if E < Elya dK2s/dE * Delta E if E > Elya */
+99:     double A3s3d_tab[NVIRT];    /* (dLambda_3s/dE + 5*dLambda_3d/dE) * Delta E for E < ELyb, Raman scattering rate for E > ELyb */
+100:     double A4s4d_tab[NVIRT];    /* (dLambda_4s/dE + 5*dLambda_4d/dE) * Delta E */

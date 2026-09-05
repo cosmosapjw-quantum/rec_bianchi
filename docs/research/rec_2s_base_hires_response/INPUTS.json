@@ -1,0 +1,106 @@
+{
+  "archive": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+  },
+  "members": {
+    "HyRec/two_photon_tables.dat": {
+      "sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+      "bytes": 25191
+    },
+    "HyRec/two_photon_tables_hires.dat": {
+      "sha256": "db201c729a38c7919172cf080c8ba44cdf8e6b131a6eaa8adcbc9e58fd4d0c93",
+      "bytes": 103017
+    },
+    "HyRec/hyrec_params.h": {
+      "sha256": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2",
+      "bytes": 3764
+    },
+    "HyRec/hydrogen.c": {
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "bytes": 37471
+    },
+    "HyRec/hydrogen.h": {
+      "sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "bytes": 7837
+    },
+    "HyRec/readme.pdf": {
+      "sha256": "457815c1daa6c20d9ab18c05648e2736eee1a8a417cdcf5533d804207c8b7524",
+      "bytes": 155040
+    }
+  },
+  "E21_eV_token": "10.198714553953742",
+  "L2s1s_s_inv_token": "8.2206",
+  "tables": {
+    "base": {
+      "configuration": {
+        "TWOG_FILE": "two_photon_tables.dat",
+        "NSUBLYA": 140,
+        "NSUBLYB": 271,
+        "NVIRT": 311,
+        "NDIFF": 80,
+        "DLNA": 8.49e-05
+      },
+      "selected_2s_bins": 140,
+      "raw_A2s_all_rows_sum_including_Raman": 581.0095394313348,
+      "raw_2s_sum_numpy": 8.2245807524349,
+      "raw_2s_sum_fsum": 8.2245807524349,
+      "raw_2s_sum_sequential_float": 8.2245807524349,
+      "normalization_factor_binary64": 0.9995159932700859,
+      "normalized_2s_sum_numpy": 8.2206,
+      "normalized_2s_sum_fsum": 8.2206,
+      "decimal_120": {
+        "raw_sum": "8.22458075243490000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "factor": "0.999515993270085956416279055284611574673578258299343015006197087038316295061046564976075858813806757429460696380785871715",
+        "normalized_sum": "8.22060000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "base_loader_exact_parity": true,
+      "row_shape": [
+        311,
+        5
+      ]
+    },
+    "hires": {
+      "configuration": {
+        "TWOG_FILE": "two_photon_tables_hires.dat",
+        "NSUBLYA": 408,
+        "NSUBLYB": 1323,
+        "NVIRT": 1493,
+        "NDIFF": 300,
+        "DLNA": 2e-05
+      },
+      "selected_2s_bins": 408,
+      "raw_A2s_all_rows_sum_including_Raman": 1687.3959735016972,
+      "raw_2s_sum_numpy": 8.224707551416001,
+      "raw_2s_sum_fsum": 8.224707551416,
+      "raw_2s_sum_sequential_float": 8.224707551416,
+      "normalization_factor_binary64": 0.9995005838942814,
+      "normalized_2s_sum_numpy": 8.2206,
+      "normalized_2s_sum_fsum": 8.220599999999997,
+      "decimal_120": {
+        "raw_sum": "8.22470755141600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "factor": "0.999500583894281708922975273469154172268128572190792357325560836753035170856342752037112695042323836039625439103654254336",
+        "normalized_sum": "8.22060000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "base_loader_exact_parity": null,
+      "row_shape": [
+        1493,
+        5
+      ]
+    }
+  },
+  "changed_from_delivery": [
+    "docs/research/rec_2s_base_hires_response/CASES.json",
+    "docs/research/rec_2s_base_hires_response/METHOD_KO.md",
+    "docs/research/rec_2s_base_hires_response/check_identities.wls",
+    "docs/research/rec_2s_base_hires_response/check_response.py",
+    "docs/research/rec_2s_base_hires_response/test_response.py"
+  ],
+  "unchanged_subtrees": {
+    "src": "c1d59c46a3031d91900dfc48fa5cdf1c06bbe72b",
+    "tests": "9951f675e7cb243cbadbfe56e3e5ac87fda85873",
+    "archive": "e7e7aa968353c356d56d716e3c1aafb9bac5c2bf"
+  },
+  "normalization_authority": "hydrogen.c:276-290 applies TWOG_FILE, NVIRT, NSUBLYA to both configurations; hydrogen.h:38; readme pages 1,3,4",
+  "source_line_evidence": "SOURCE_SETTINGS_EXCERPTS.txt"
+}
