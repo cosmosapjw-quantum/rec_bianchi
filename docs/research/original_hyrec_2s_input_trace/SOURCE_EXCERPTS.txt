@@ -1,0 +1,323 @@
+# Original HyRec source excerpts
+
+Derived display only: line numbers added; trailing whitespace omitted.
+Exact bytes are the ZIP members identified in PROVENANCE.json.
+
+[HyRec/hydrogen.c]
+SHA-256: 421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b
+Lines 7-7
+7: /*         Units used: cgs + eV (all temperatures in eV)                                         */
+Lines 17-24
+17: /*                            - differential 2s--1s rate is now systematically normalized to     */
+18: /*                                 total 2s--1s rate that can be set by user in hydrogen.h       */
+19: /*            - May 2012: - Now solve for the photon distortion instead of absolute value        */
+20: /*                               of radiation field (less prone to numerical errors)             */
+21: /*                          - Improved the post-Saha expansion to properly account for           */
+22: /*                               non-thermal distortions                                         */
+23: /*                          - Added explicit dependence on fine-structure constant               */
+24: /*                           (fsR = alpha/alpha0) and electron mass (meR = me/me0 ~ mue/mue0)    */
+Lines 48-58
+48: double L2s_rescaled(double fsR, double meR) {     /* Rescaled two-photon decay rate */
+49:    return L2s1s * square(fsR*fsR*fsR*fsR) * meR;
+50: }
+51:
+52: /*****************************************************************************************************
+53: Temperature rescaling given fine-structure constant and electron mass, so we can use today's EI value
+54: *****************************************************************************************************/
+55:
+56: void rescale_T(double *T, double fsR, double meR) {
+57:    *T /= fsR*fsR*meR;
+58: }
+Lines 260-347
+260:    Dxe2 = xe*xHII - s*(1.-xHII); /* xe^2 - xe^2[Saha eq with 1s] -- gives more compact expressions */
+261:
+262:    return -nH/H *( (s*(1.-xHII)*DAlpha[0] + Alpha[0]*Dxe2)*C2s + (s*(1.-xHII)*DAlpha[1] + Alpha[1]*Dxe2)*C2p );
+263:
+264: }
+265:
+266: /*********************************************************************************************
+267: Read two-photon rates from table and store in structure.
+268: **********************************************************************************************/
+269:
+270: void read_twog_params(TWO_PHOTON_PARAMS *twog){
+271:
+272:    FILE *fA;
+273:    unsigned b;
+274:    double L2s1s_current, max_DLNA, DlnE;
+275:
+276:    fA = fopen(TWOG_FILE, "r");
+277:
+278:    for (b = 0; b < NVIRT; b++) {
+279:       fscanf(fA, "%le", &(twog->Eb_tab[b]));
+280:       fscanf(fA, "%le", &(twog->A1s_tab[b]));
+281:       fscanf(fA, "%le", &(twog->A2s_tab[b]));
+282:       fscanf(fA, "%le", &(twog->A3s3d_tab[b]));
+283:       fscanf(fA, "%le", &(twog->A4s4d_tab[b]));
+284:    }
+285:    fclose(fA);
+286:
+287:    /* Normalize 2s--1s differential decay rate to L2s1s (can be set by user in hydrogen.h) */
+288:    L2s1s_current = 0.;
+289:    for (b = 0; b < NSUBLYA; b++) L2s1s_current += twog->A2s_tab[b];
+290:    for (b = 0; b < NSUBLYA; b++) twog->A2s_tab[b] *= L2s1s/L2s1s_current;
+291:
+292:
+293:   /* Switches for the various effects considered in Hirata (2008) and diffusion:
+294:       Effect A: correct 2s-->1s rate, with stimulated decays and absorptions of non-thermal photons
+295:       Effect B: Sub-Lyman-alpha two-photon decays
+296:       Effect C: Super-Lyman-alpha two-photon decays
+297:       Effect D: Raman scattering */
+298:
+299:    #if (EFFECT_A == 0)
+300:      for (b = 0; b < NSUBLYA; b++) twog->A2s_tab[b] = 0;
+301:    #endif
+302:    #if (EFFECT_B == 0)
+303:      for (b = 0; b < NSUBLYA; b++) twog->A3s3d_tab[b] = twog->A4s4d_tab[b] = 0;
+304:    #endif
+305:    #if (EFFECT_C == 0)
+306:       for (b = NSUBLYA; b < NVIRT; b++) twog->A3s3d_tab[b] = twog->A4s4d_tab[b] = 0;
+307:    #endif
+308:    #if (EFFECT_D == 0)
+309:       for (b = NSUBLYA; b < NVIRT; b++) twog->A2s_tab[b] = 0;
+310:       for (b = NSUBLYB; b < NVIRT; b++) twog->A3s3d_tab[b] = 0;
+311:    #endif
+312:    #if (DIFFUSION == 0)
+313:       for (b = 0; b < NVIRT; b++) twog->A1s_tab[b] = 0;
+314:    #endif
+315:
+316:    /* Added May 2012: check right away that the chosen time-step is small enough given the tabulated spectrum */
+317:
+318:    max_DLNA = 1.;
+319:    for (b = 0; b < NSUBLYA-1; b++) {
+320:      DlnE = log(twog->Eb_tab[b+1]/twog->Eb_tab[b]);
+321:      max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+322:    }
+323:    DlnE = log(E21/twog->Eb_tab[NSUBLYA-1]);
+324:    max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+325:    DlnE = log(twog->Eb_tab[NSUBLYA]/E21);
+326:    max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+327:    for (b = NSUBLYA; b < NSUBLYB-1; b++) {
+328:      DlnE = log(twog->Eb_tab[b+1]/twog->Eb_tab[b]);
+329:      max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+330:    }
+331:    DlnE = log(E31/twog->Eb_tab[NSUBLYB-1]);
+332:    max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+333:    DlnE = log(twog->Eb_tab[NSUBLYB]/E31);
+334:    max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+335:    for (b = NSUBLYB; b < NVIRT-1; b++) {
+336:      DlnE = log(twog->Eb_tab[b+1]/twog->Eb_tab[b]);
+337:      max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+338:    }
+339:    DlnE = log(E41/twog->Eb_tab[NVIRT-1]);
+340:    max_DLNA = max_DLNA < DlnE ? max_DLNA : DlnE;
+341:
+342:    if (max_DLNA < DLNA) {
+343:        fprintf(stderr, "Error: the time-step used (DLNA = %E) is too large for the used frequency grid (max DLNA = %E). Change DLNA accordingly in history.h.\n", DLNA, max_DLNA);
+344:        exit(1);
+345:    }
+346:
+347: }
+Lines 400-532
+400: /*********************************************************************************************************
+401:  Populate the real-real, real-virtual, virtual-real and virtual-virtual T-matrices,
+402:  as well as the source vectors sr, sv, given Dxe = xe - xe[Saha] as an input.
+403: WITH DIFFUSION. Tvv[0][b] is the diagonal element Tbb, Tvv[1][b] = T{b,b-1} and Tvv[2][b] = T{b,b+1}
+404: Also, computes and stores the optical depths Delta tau_b for future use
+405:
+406: Modified May 2012: - now uses the photon distortion
+407: instead of absolute photon occupation number.
+408: - Accounts for explicit dependence on alpha_fs and m_e
+409: INPUT TEMPERATURE ASSUMED TO BE ALREADY RESCALED FOR VALUES OF alpha_fs and me
+410: - Added explicit dependence on xHII, which is not necessarily equal to xe if Helium has not entirely recombined
+411: **********************************************************************************************************/
+412:
+413: void populateTS_2photon(double Trr[2][2], double *Trv[2], double *Tvr[2], double *Tvv[3],
+414:                         double sr[2], double sv[NVIRT], double Dtau[NVIRT],
+415:                         double xe, double xHII, double TM, double TR, double nH, double H, HRATEEFF *rate_table,
+416:                         TWO_PHOTON_PARAMS *twog, double Dfplus[NVIRT], double Dfplus_Ly[],
+417:                         double Alpha[2], double DAlpha[2], double Beta[2], double fsR, double meR) {
+418:
+419:    double R2p2s;
+420:    unsigned b;
+421:    double  RLya, Gammab, one_minus_Pib, dbfact, x1s, s, Dxe2;
+422:
+423:    double *Aup, *Adn;
+424:    double A2p_up, A2p_dn;
+425:
+426:    double rescale2g, rescalediff;
+427:
+428:    /*** Added May 2012: rescalings for dependence on alpha and me ***/
+429:    rescale2g   = square(fsR*fsR*fsR*fsR)*meR;  /* for two-photon rates */
+430:    rescalediff = rescale2g * fsR*fsR*meR;
+431:          /* diffusion rate ~ two-photon rate * TM ~ two-photon rate * alpha^2 me * rescaled(TM) [which is assumed as an input] */
+432:
+433:
+434:    Aup = create_1D_array(NVIRT);
+435:    Adn = create_1D_array(NVIRT);
+436:
+437:    x1s  = 1.-xHII;
+438:    s    = SAHA_FACT(fsR, meR) *TR*sqrt(TR) *exp(-EI/TR)/nH;
+439:    Dxe2 = xe*xHII - s*x1s;
+440:
+441:    RLya = LYA_FACT(fsR, meR) *H /nH/x1s;   /*8 PI H/(3 nH x1s lambda_Lya^3) */
+442:
+443:    interpolate_rates(Alpha, DAlpha, Beta, &R2p2s, TR, TM / TR, rate_table, fsR, meR);
+444:
+445:
+446:   /****** 2s row and column ******/
+447:
+448:    Trr[0][0] = Beta[0] + 3.*R2p2s
+449:              + 3.* RLya * (1.664786871919931 *exp(-E32/TR)   /* Ly-beta escape */
+450: 	                     + 1.953125 *exp(-E42/TR));          /* Ly-gamma escape */
+451:
+452:    Trr[0][1] = -R2p2s;
+453:    sr[0]     = nH * (s*x1s*DAlpha[0] + Alpha[0]*Dxe2) + 3.* RLya * x1s * 1.664786871919931 *Dfplus_Ly[1];
+454:
+455:    #if (EFFECT_A == 0) /* Standard treatment of 2s-->1s two-photon decays */
+456:        Trr[0][0] += L2s1s*rescale2g;  /* rescaled for alpha, me */
+457:    #endif
+458:
+459:
+460:    /****** 2p row and column ******/
+461:
+462:    Trr[1][1] = Beta[1] + R2p2s + RLya;
+463:    Trr[1][0] = -3.*R2p2s;
+464:    sr[1]     = nH * (s*x1s*DAlpha[1] + Alpha[1]*Dxe2) + 3.*RLya * x1s * Dfplus_Ly[0];
+465:
+466:
+467:    /***** Two-photon transitions: populating Trv, Tvr and updating Trr ******/
+468:
+469:    for (b = 0; b < NVIRT; b++) {
+470:        dbfact = exp((twog->Eb_tab[b] - E21)/TR);
+471:
+472:        Trr[0][0] -= Tvr[0][b] = -rescale2g*twog->A2s_tab[b]/fabs(exp((twog->Eb_tab[b] - E21)/TR)-1.);
+473:        Trv[0][b]  = Tvr[0][b] *dbfact;
+474:
+475:        Trr[1][1] -= Tvr[1][b] = -exp(-E32/TR)/3. * rescale2g*twog->A3s3d_tab[b]/fabs(exp((twog->Eb_tab[b] - E31)/TR)-1.)
+476:                                 -exp(-E42/TR)/3. * rescale2g*twog->A4s4d_tab[b]/fabs(exp((twog->Eb_tab[b] - E41)/TR)-1.);
+477:        Trv[1][b] = Tvr[1][b] *3.*dbfact;
+478:    }
+479:
+480:     /****** Tvv and sv. Accounting for DIFFUSION ******/
+481:
+482:     populate_Diffusion(Aup, Adn, &A2p_up, &A2p_dn, TM, twog->Eb_tab, twog->A1s_tab);
+483:
+484:     /*** Added May 2012: rescale for dependence on alpha and me ***/
+485:     A2p_up *= rescalediff;
+486:     A2p_dn *= rescalediff;
+487:     for (b = 0; b < NVIRT; b++) {
+488:           Aup[b] *= rescalediff;
+489:           Adn[b] *= rescalediff;
+490:     }
+491:
+492:     /* Updating Tvr, Trv, Trr for diffusion between line center ("2p state") and two neighboring bins */
+493:
+494:     Trr[1][1] += (A2p_dn + A2p_up);
+495:
+496:     for (b = 0; b < NVIRT; b++) {
+497:
+498:       Gammab = -(Trv[0][b] + Trv[1][b]) + Aup[b] + Adn[b];    /* Inverse lifetime of virtual state b */
+499:
+500:       /*** Diffusion region ***/
+501:       if (  (b >= NSUBLYA - NDIFF/2 && b < NSUBLYA - 1)
+502:           ||(b > NSUBLYA && b < NSUBLYA + NDIFF/2)) {
+503: 	  Tvv[1][b] = -Aup[b-1];
+504:           Tvv[2][b] = -Adn[b+1];
+505:       }
+506:       /* Bins neighboring Lyman alpha. */
+507:       if (b == NSUBLYA-1)  {
+508:           Tvv[1][b] = -Aup[b-1];
+509:           Tvv[2][b] = 0.;
+510:           Tvr[1][b] -= A2p_dn;
+511:           Trv[1][b] -= Aup[b];
+512:       }
+513:       if (b == NSUBLYA)  {
+514:           Tvv[1][b] = 0.;
+515:           Tvv[2][b] = -Adn[b+1];
+516:           Tvr[1][b] -= A2p_up;
+517:           Trv[1][b] -= Adn[b];
+518:       }
+519:       /*********************/
+520:
+521:       Dtau[b] = Gammab * x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H;
+522:         /* Rescaled for alpha, me*/
+523:
+524:       one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
+525:       Tvv[0][b] = Dtau[b] > 0.? Gammab/one_minus_Pib : 2./(x1s * cube(hPc/twog->Eb_tab[b]/fsR/fsR/meR) * nH /8. /M_PI /H);  /* Added May 2012: proper limit Dtau->0 */
+526:       sv[b]  = Tvv[0][b] * x1s * Dfplus[b] * (1.-one_minus_Pib);
+527:
+528:     }
+529:
+530:     free(Aup);
+531:     free(Adn);
+532: }
+
+[HyRec/hydrogen.h]
+SHA-256: e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba
+Lines 24-42
+24: /****** CONSTANTS IN CGS + EV UNIT SYSTEM *******/
+25:
+26: #define EI   13.598286071938324              /* Hydrogen ionization energy in eV, reduced mass, no relativistic corrections */
+27:
+28: /* Energy differences between excited levels of hydrogen -- used often */
+29: #define E21  10.198714553953742
+30: #define E31  12.087365397278509
+31: #define E41  12.748393192442178
+32: #define E32  1.8886508433247664
+33: #define E42  2.5496786384884356
+34:
+35: #define hPc       1.239841874331e-04   /* hc in eV cm */
+36: #define mH        0.93878299831e9      /* Hydrogen atom mass in eV/c^2 */
+37: #define kBoltz    8.617343e-5          /* Boltzmann constant in eV/K */
+38: #define L2s1s     8.2206               /* 2s -> 1s two-photon decay rate in s^{-1} (Labzowsky et al 2005) */
+39:
+40:
+41:
+42: double square(double x);
+Lines 85-101
+85: /************ TWO-PHOTON PROCESSES AND DIFFUSION. ALL SWITCHES SET TO 1 ARE THE DEFAULT MODEL  ************/
+86:
+87: #define EFFECT_A    1    /* 2s-->1s stimulated two-photon decays and non-thermal absorptions */
+88: #define EFFECT_B    1    /* Sub-Lyman alpha two-photon transitions 3s/3d<--> 1s and 4s/4d<-->1s */
+89: #define EFFECT_C    1    /* Super-Lyman alpha two-photon transitions 3s/3d<--> 1s and 4s/4d<-->1s */
+90: #define EFFECT_D    1    /* Raman scattering from 2s and 3s/3d */
+91: #define DIFFUSION   1    /* Lyman alpha frequency diffusion */
+92:
+93: /**** Structure containing two-photon transition tables ****/
+94:
+95: typedef struct {
+96:     double Eb_tab[NVIRT];       /* Energies of the virtual levels in eV */
+97:     double A1s_tab[NVIRT];      /* 3*A2p1s*phi(E)*DE */
+98:     double A2s_tab[NVIRT];      /* dLambda_2s/dE * DeltaE if E < Elya dK2s/dE * Delta E if E > Elya */
+99:     double A3s3d_tab[NVIRT];    /* (dLambda_3s/dE + 5*dLambda_3d/dE) * Delta E for E < ELyb, Raman scattering rate for E > ELyb */
+100:     double A4s4d_tab[NVIRT];    /* (dLambda_4s/dE + 5*dLambda_4d/dE) * Delta E */
+101: }  TWO_PHOTON_PARAMS;
+
+[HyRec/hyrec_params.h]
+SHA-256: cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2
+Lines 13-29
+13: /**** Switch to choose the physical model used for hydrogen ****/
+14:
+15: /* definitions */
+16: #define PEEBLES   0    /* Peebles effective three-level atom */
+17: #define RECFAST   1    /* Effective three-level atom for hydrogen with fudge factor F = 1.14 */
+18: #define EMLA2s2p  2    /* Correct EMLA model, with standard decay rates from 2s and 2p only (accounts for nmax = infinity, l-resolved) */
+19: #define FULL      3    /* All radiative transfer effects included. Additional switches in header file hydrogen.h */
+20:
+21: /** Here is the switch **/
+22:
+23: #define MODEL FULL     /* default setting: FULL */
+24:
+25:
+26: /*** Switch to print the spectrum (nu_Ly_alpha/2 to nu_Ly_gamma).
+27: If so, a smoother spectrum can be obtained by using the higher accuracy settings below (but standard parameters are fine too). ***/
+28:
+29: #define PRINT_SPEC 0
+Lines 49-55
+49: /*** Tables and parameters for radiative transfer calculation ***/
+50:
+51: #define TWOG_FILE "two_photon_tables.dat" /* Maximum DLNA = 8.49e-5 */
+52: #define NSUBLYA  140
+53: #define NSUBLYB  271
+54: #define NVIRT    311
+55: #define NDIFF    80

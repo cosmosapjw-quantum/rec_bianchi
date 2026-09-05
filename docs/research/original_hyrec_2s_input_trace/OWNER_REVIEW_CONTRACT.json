@@ -1,0 +1,146 @@
+{
+  "channel": "2s_to_1s_two_photon_high_energy_branch",
+  "deposition_inputs": {
+    "B": null,
+    "angular_rule": null,
+    "executed": false,
+    "existing_constraints": [
+      "B>=0",
+      "sum_i B[i,s]=1",
+      "sum_i E[i]*B[i,s]=E_source[s]",
+      "mu[i]>0",
+      "angular weights sum to one"
+    ],
+    "existing_formula": "df[i,a]/dt = n_H/mu[i] * sum_s B[i,s]*R[s,a]",
+    "existing_operator": "full_bianchi_hyrec.trajectory.com_source_deposition.COMSourceDepositionPlan",
+    "jvp_executed": false,
+    "map_authority": null,
+    "measure_authority": null,
+    "mu_m_inv3": null,
+    "n_H_m_inv3": null,
+    "packet_rate_values": null,
+    "target_cell_boundaries": null,
+    "target_cell_energies_J": null,
+    "units": {
+      "B": "dimensionless",
+      "R": "photon_packet H^-1 s^-1",
+      "df_dt": "s^-1",
+      "mu": "m^-3",
+      "n_H": "m^-3"
+    }
+  },
+  "native_to_pair_mapping": {
+    "Wien_vs_Planck_reference": "Original high-energy reference is exp(-E_b/TR). A total-f adapter needs explicit reference bytes and primal/JVP ownership.",
+    "conditional_derived": "With f_c blackbody and (1+f_t) approximated by 1, the scalar event kernel reduces to the native 2s coefficient structure.",
+    "direct": [
+      "energy/raw row scan",
+      "sub-Lya A2s normalization",
+      "C matrix signs and coefficient formulas"
+    ],
+    "native_variables": "Delta x_b = x1s*(f_b - exp(-E_b/TR)); not an occupation derivative or a physical mode measure.",
+    "not_source_identical": "The existing full positive PhysicalTwoPhotonRamanBin retains (1+f_t), supports supplied f_c, and is not native matrix storage.",
+    "physical_inputs_authenticated": false
+  },
+  "parent_commit": "aeb01d369436f2d0eda2c946e9c650e54ae06fca",
+  "photon_contract": {
+    "E21_eV": 10.198714553953742,
+    "companion": "E_c = E21 - E_b, not a second existing native-grid row",
+    "continuum_companion_energy_range_eV": {
+      "lower": 0,
+      "upper": 5.099357276976871
+    },
+    "continuum_tracked_integral_eV": {
+      "convention": "Integral bounds; endpoint prescriptions not reconstructed for bins.",
+      "lower": 5.099357276976871,
+      "upper": 10.198714553953742
+    },
+    "energy_coordinates": "Exported Eb/E21/Ec are original reference-energy coordinates. Conditional physical E_J=(fsR^2*meR)*E_eV*(1 eV in J), nu=E_J/h. CSV values are not rescaled and no nonunit ratios are selected.",
+    "frame": "Scalar hydrogen-rest treatment; no anisotropic two-photon angular kernel inferred.",
+    "frequency_definition": "ordinary frequency nu = E_J / h, with h = 2*pi*hbar; not angular frequency",
+    "original_bin_intervals_eV": null,
+    "per_bin_integral": "A_b = integral over I_b of dLambda_2s/dE dE; I_b endpoints and generator provenance remain unresolved.",
+    "rate_rescaling": "fsR^8*meR is separate from the tabular normalization; no cosmological input values selected.",
+    "temperature": "TR in eV is k_B*T_r in source energy units, pre-rescaled by fsR^2*meR when constants vary.",
+    "tracked": "E_t = E_b, the higher-energy photon"
+  },
+  "quantity_contract": {
+    "all_photon_rate": "Requires a second, frequency-distinct companion ledger if both photons are evolved. Not supplied by multiplying the tracked vector by two.",
+    "event_rate_per_H_per_s": "Requires upper/ground populations and radiation factors; no actual state/rate array is selected here.",
+    "normalization": {
+      "applies_only_to_b": [
+        0,
+        139
+      ],
+      "extra_photon_count_multiplier": null,
+      "formula": "8.2206 / sum(raw_A2s[b] for b=0..139)",
+      "id": "NORM_READ_TWOG_287_290",
+      "target_s_inv": 8.2206
+    },
+    "normalized_A2s": "Same quantity after exactly one original read_twog_params normalization.",
+    "raw_A2s": "Source quadrature/bin coefficient in s^-1 per upper-state atom, not s^-1 eV^-1.",
+    "tracked_photon_rate_per_H_per_s": "One high-energy tracked photon for each forward event, and one removed for each reverse event on the half-domain."
+  },
+  "required_owner_decisions": [
+    {
+      "forbidden_substitute": "Midpoints or reconstructed DeltaE inferred from spike centers; inverse-fitting A_b without the original kernel.",
+      "id": "O1_ORIGINAL_INTEGRAL_REGIONS",
+      "required_evidence": "Exact archived table-generation law, integration regions/weights and kernel convention or an explicitly approved new discretization with documented departure.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Multiply the existing 140-bin rate vector by 2, or put E21 into the tracked packet energy slot.",
+      "id": "O2_PHOTON_COUNT_AND_CLOSURE",
+      "required_evidence": "Declare whether only high-energy photons or both members of each event are evolved; specify companion/atomic energy ledger and no double counting.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Treat full paired action as exact original-HyRec storage or silently identify Wien with Planck.",
+      "id": "O3_FIELD_AND_STATE_AUTHORITY",
+      "required_evidence": "Population, time/frame, low-energy closure, reference field and signed-distortion-to-total-occupation adapter with primal/JVP authority.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Infer mu from a zero-width spike, the A2s rate, or a dimensionless reversible proxy.",
+      "id": "O4_TARGET_MEASURE",
+      "required_evidence": "Actual target representation, cell/domain support, mode measure and polarization/angular degeneracy convention, fixed or moving status, and owned bytes.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Choose any conservative B merely because its columns satisfy the two moment constraints.",
+      "id": "O5_DEPOSITION_MAP",
+      "required_evidence": "Actual ordered source/target identity and map law, overlap/support semantics, edge handling, and declared approximation/validation. Number and energy moments alone are insufficient.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "forbidden_substitute": "Promote a scalar integrated table to directional authority or infer companion direction by energy conservation alone.",
+      "id": "O6_ANGULAR_AND_DERIVATIVE_SCOPE",
+      "required_evidence": "If anisotropic or polarized: source angular/joint-photon kernel, represented subspace and quadrature normalization. For moving maps/measures: owned derivatives/event semantics or explicit exclusion.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "review_acceptance": {
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "merge": false,
+    "physical_input_authentication": false,
+    "provider_admission": false,
+    "ready_transition": false,
+    "science_promotion": false,
+    "trace_review": "Confirm values and source/claim boundaries; approval of this document alone does not resolve O1-O6."
+  },
+  "schema": "original-hyrec-2s-owner-review-contract/v1",
+  "single_next_action": "Owner reviews the counting/companion-closure contract and identifies source-backed integration-region, target-measure and map authority; retain unresolved fields until supplied.",
+  "source_rows": {
+    "b_inclusive": [
+      0,
+      139
+    ],
+    "energy_column_1based": 1,
+    "physical_lines_1based_inclusive": [
+      1,
+      140
+    ],
+    "raw_A2s_column_1based": 3
+  },
+  "status": "OWNER_REVIEW_PENDING_NOT_PHYSICALLY_AUTHENTICATED",
+  "values_file": "bins_2s.csv"
+}
