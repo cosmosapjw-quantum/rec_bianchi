@@ -23,5 +23,7 @@ out = <|"version" -> $Version, "installation_directory" -> $InstallationDirector
  "residuals" -> Map[ToString[#, InputForm] &, res], "passed" -> ok,
  "scope" -> "new fixed-population alpha direction and weak form; no O1/O2/O3 replay"|>;
 Print[ExportString[out, "RawJSON"]];
-Export[Last[$ScriptCommandLine], out, "RawJSON"];
-Exit[If[ok, 0, 1]];
+outputPath = Last[$CommandLine];
+exported = Check[Export[outputPath, out, "RawJSON"], $Failed];
+exportOK = StringQ[exported] && FileExistsQ[outputPath];
+Exit[If[ok && exportOK, 0, 1]];
