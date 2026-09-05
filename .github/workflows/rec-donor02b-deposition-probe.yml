@@ -1,0 +1,42 @@
+name: REC DONOR02B explicit-map component probe
+on:
+  push:
+    branches:
+      - 'research/rec-donor02b-explicit-map-probe-20260905-r1'
+    paths:
+      - 'scripts/probe_rec_donor02b_deposition.py'
+      - '.github/workflows/rec-donor02b-deposition-probe.yml'
+      - 'src/full_bianchi_hyrec/trajectory/com_source_deposition.py'
+permissions:
+  contents: read
+jobs:
+  bounded-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      EXPECTED_HEAD: ${{ github.sha }}
+      MPLCONFIGDIR: ${{ runner.temp }}/rec02b-mpl
+    steps:
+      - name: Checkout exact push source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install bounded numerical probe dependencies
+        run: python3 -m pip install 'numpy==2.2.6' 'sympy==1.14.0' 'matplotlib==3.10.3'
+      - name: Compile and run explicit-map experiment
+        run: |
+          python3 -c "from pathlib import Path; p=Path('scripts/probe_rec_donor02b_deposition.py'); compile(p.read_text(),str(p),'exec')"
+          python3 scripts/probe_rec_donor02b_deposition.py --out "$RUNNER_TEMP/rec-donor02b-output"
+      - name: Preserve actual output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-donor02b-explicit-map-${{ github.sha }}
+          path: ${{ runner.temp }}/rec-donor02b-output
+          if-no-files-found: warn
+          retention-days: 30
