@@ -1,0 +1,26 @@
+{
+  "task": "REC_2S_BASE_HIRES_SINGLE_FIELD_RESPONSE_RESEARCH",
+  "lambda": [2, 8, 32],
+  "alpha": ["-1/8", "0", "1/8"],
+  "test_functions": ["1", "u", "u^2", "window"],
+  "window_center": "3/4",
+  "window_width": "1/32",
+  "field": "1/expm1(lambda*u + alpha*u*(1-u))",
+  "xg": "1/2",
+  "xu": "xg*exp(-lambda)",
+  "fsR": 1,
+  "meR": 1,
+  "precisions_dps": [80, 120],
+  "roundoff_limits": {
+    "api_value_positive_scale_eps": 128,
+    "api_jvp_component_scale_eps": 256,
+    "accounting_positive_scale_eps": 32,
+    "lte_positive_scale_eps": 256,
+    "mp80_mp120_scaled": "1e-70",
+    "mp_stable_direct_scaled": "1e-70"
+  },
+  "roundoff_justification": "binary64 unit eps, generous operation-count budgets for scalar products, two-leg chain rule and correctly rounded fsum; positive forward+reverse scales avoid net-rate conditioning. MP guard leaves 10 of 80 decimal digits for elementary operations and at most 408 terms. These are computational cross-check budgets, not base/hires accuracy tolerances.",
+  "base_hires_closeness_tolerance": null,
+  "difference_scale": "arithmetic mean of base and hires positive forward+reverse sums for the same test function",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+}
