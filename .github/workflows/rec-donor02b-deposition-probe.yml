@@ -18,7 +18,6 @@ jobs:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
       EXPECTED_HEAD: ${{ github.sha }}
-      MPLCONFIGDIR: ${{ runner.temp }}/rec02b-mpl
     steps:
       - name: Checkout exact push source
         uses: actions/checkout@v4
@@ -30,6 +29,7 @@ jobs:
         run: python3 -m pip install 'numpy==2.2.6' 'sympy==1.14.0' 'matplotlib==3.10.3'
       - name: Compile and run explicit-map experiment
         run: |
+          export MPLCONFIGDIR="$RUNNER_TEMP/rec02b-mpl"
           python3 -c "from pathlib import Path; p=Path('scripts/probe_rec_donor02b_deposition.py'); compile(p.read_text(),str(p),'exec')"
           python3 scripts/probe_rec_donor02b_deposition.py --out "$RUNNER_TEMP/rec-donor02b-output"
       - name: Preserve actual output
