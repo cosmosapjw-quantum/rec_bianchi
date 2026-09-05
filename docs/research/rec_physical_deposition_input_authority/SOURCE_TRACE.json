@@ -1,0 +1,174 @@
+{
+  "schema": "rec-physical-deposition-input-authority-trace/v1",
+  "status": "DRAFT_FOR_OWNER_REVIEW",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "base_commit": "aeb01d369436f2d0eda2c946e9c650e54ae06fca",
+  "base_tree": "afa41c177aa27d73ef772a7d20522d3ef2ef7835",
+  "base_pr": 63,
+  "production_change_authorized": false,
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "observation_boundary": {
+    "git_file_metadata_read": true,
+    "current_adapter_source_read": true,
+    "preserved_original_c_excerpts_read": true,
+    "original_archive_fresh_unpacked": false,
+    "original_archive_fresh_sha256_computed": false,
+    "original_table_values_fresh_loaded": false,
+    "fresh_production_execution": false,
+    "fresh_cas_execution": false,
+    "basis": "현재 기준의 Git 파일과 보존된 원본 발췌를 읽었다. 원본 ZIP 전체를 이번 턴에 새로 검증한 결과는 아니다."
+  },
+  "canonical_archive": {
+    "path": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+    "git_blob": "e02869896ab3b826eb64d8233f2a1272366c1fc8",
+    "size_bytes_from_git_metadata": 726954,
+    "registered_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "provenance": "ACCEPTED_PROJECT_CANONICAL_PROVENANCE",
+    "provenance_source": "docs/PR04B2A_EVIDENCE_LEDGER.md",
+    "new_rehash": false,
+    "member": "HyRec/two_photon_tables.dat",
+    "registered_member_sha256": "93d23871e21c40f5b72a6ef9acf3eb7be054735c8aee9401e455736c1d9d8cf9",
+    "member_fresh_read": false,
+    "raw_hydrogen_c_member_sha256_fresh": null,
+    "raw_hydrogen_h_member_sha256_fresh": null
+  },
+  "source_rows": [
+    {
+      "id": "S01",
+      "path": "archive/expanded/Full_Bianchi_HyRec_PR05C2C1B2A_two_photon_raman_source_v0_68/ORIGINAL_HYREC_SOURCE_EXCERPTS.txt",
+      "git_blob": "aaa32c6409c999e7a970ab033c15694bb3a207bd",
+      "role": "보존된 원본 C와 header 발췌",
+      "original_locations": ["HyRec/hydrogen.c:270,278-283,287-290,299-308,467-477", "HyRec/hydrogen.h:85-100"],
+      "supports": ["표 계수의 DeltaE 적분", "A3s3d 및 A4s4d의 가중치 5", "sub-Lya 2s 정규화", "실준위와 가상준위 결합의 열적 인자 및 부호"],
+      "does_not_establish": ["이번 ZIP-member 바이트 재검증", "전체 스펙트럼 교환 대칭 계수", "모든 물리 채널의 인증"]
+    },
+    {
+      "id": "S02",
+      "path": "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py",
+      "git_blob": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+      "symbols": ["OriginalHyRecTwoPhotonRamanTable.from_archive", "evaluate_canonical_coupling", "PhysicalTwoPhotonRamanBin.paired_packet_coefficients_per_H_s", "PhysicalTwoPhotonRamanBin.net_action", "PhysicalTwoPhotonRamanBin.jvp"],
+      "role": "원본 표의 현재 reader와 별개의 REC 추적 광자 paired 식",
+      "native_table_shape": [311, 5],
+      "rate_array_shape": [4, 311],
+      "sub_lya_count": 140,
+      "sub_lyb_count": 271,
+      "L2s1s_s_inv": 8.2206,
+      "rate_rescaling": "fsR**8 * meR",
+      "claim_boundary": "원본 감소 계수와 독립 동반 occupation을 가진 packet 계수를 직접 합성하지 않는다."
+    },
+    {
+      "id": "S03",
+      "path": "src/full_bianchi_hyrec/trajectory/primitive_rates.py",
+      "git_blob": "20357c62ff635f9f591e13dd3b260df325afa25f",
+      "symbols": ["PrimitiveRateSnapshot", "ALPHA_TABLE_SHA256", "R2P2S_TABLE_SHA256"],
+      "role": "원본 유효 원자 계수와 명시적 SI 변환",
+      "registered_members": {
+        "HyRec/Alpha_inf.dat": "c543c755d99ba8e999450dd5cb486a3ad88d26378da0ccc8363b10418e4832bd",
+        "HyRec/R_inf.dat": "ce914f4b552ba55ba00f7916f36b0986f19adfdb638e5aefae91f7b2d05a8112"
+      },
+      "cautions": ["DAlpha는 차분값이지 미분이 아니다", "원자 계수를 광자 source와 자동 동일시하지 않는다"]
+    },
+    {
+      "id": "S04",
+      "path": "src/full_bianchi_hyrec/recoil/original_hyrec_native.py",
+      "git_blob": "069a1671e18229f27882549a0cd38071e6d9a661",
+      "symbols": ["ORIGINAL_HYREC_ARCHIVE_SHA256", "audit_original_hyrec_archive", "populate_original_hyrec_diffusion"],
+      "role": "원본 바이트 기준과 native 가상준위/물리 measure 구분",
+      "claim_boundary": "x_b와 Aup/Adn을 유한 광자 셀의 number/rate로 승격하지 않는다."
+    },
+    {
+      "id": "S05",
+      "path": "src/full_bianchi_hyrec/recoil/original_hyrec_physical_flux.py",
+      "git_blob": "f183c005058dd618b97694061ca7e376814b16c0",
+      "symbols": ["OriginalHyRecTrajectorySnapshot", "physical_log_mode_factor_per_H", "transport_edge_flux_per_H_s", "collision_edge_flux_per_H_s"],
+      "role": "snapshot에서 계산하는 집계된 경계 광자 flux",
+      "formula": "J_b = H * A_b * (Delta_f_minus - Delta_f_plus)",
+      "mode_factor": "A_b = 8*pi*nu_b**3/(c**3*n_H)",
+      "claim_boundary": "집계 경계 flux는 원자 채널별 순사건률이 아니며 A_b는 mu_i가 아니다."
+    },
+    {
+      "id": "S06",
+      "path": "src/full_bianchi_hyrec/trajectory/hyrec_source_adapter.py",
+      "git_blob": "23a8700c82849789db767ecf293128a82884ba46",
+      "symbols": ["OriginalHyRecVirtualSpikeSource", "IsotropicEinsteinLineSource", "one_photon_paired_action"],
+      "role": "가상 spike 갱신과 이미 변환된 occupation source의 구별",
+      "claim_boundary": "signed Delta_f의 jump와 total f의 local source를 구별한다. 이미 변환된 occupation 계수에는 deposition을 다시 적용하지 않는다."
+    },
+    {
+      "id": "S07",
+      "path": "src/full_bianchi_hyrec/trajectory/com_source_deposition.py",
+      "git_blob": "a3662cf399f14b7148d880266825be12baf934a0",
+      "symbols": ["COMSourceDepositionPlan", "apply", "jvp"],
+      "role": "실제 caller-supplied map/measure의 수치 연산",
+      "formula": "A_ia = n_H/mu_i * sum_s B_is R_sa",
+      "angular_weight_normalization": "sum_a w_a = 1",
+      "claim_boundary": "고정 map의 수치 연산이며 물리 map을 결정하지 않는다."
+    },
+    {
+      "id": "S08",
+      "path": "src/full_bianchi_hyrec/resolved_deposition.py",
+      "git_blob": "887a377580c455a3a5556c6ede8e41343996d50e",
+      "symbols": ["DepositionLayout", "PacketRates", "ResolvedDeposition", "NumericalDepositionReceipt"],
+      "role": "PR63에서 완료된 선언/실제 배열/출력 identity 결합",
+      "claim_boundary": "수치 실행 완료와 물리 입력 인증을 분리한다."
+    },
+    {
+      "id": "S09",
+      "path": "src/full_bianchi_hyrec/physical_source_authority.py",
+      "git_blob": "6d4f39d48993c4715f5002ba068e8dcf98336be3",
+      "role": "수정된 source protocol의 보존 대상",
+      "claim_boundary": "hash-only unresolved deposition의 기존 거부를 변경하지 않는다."
+    },
+    {
+      "id": "S10",
+      "path": "docs/PR04B2A_EVIDENCE_LEDGER.md",
+      "git_blob": "4eb9366a1ac1abbe1d3ba771c0428c8ea8983d25",
+      "role": "기존 정본 출처 승인과 물리 경계 flux 검증 기록",
+      "claim_boundary": "과거 증거이며 이번 fresh 실행으로 세지 않는다."
+    },
+    {
+      "id": "S11",
+      "path": "docs/PR05B1_SOURCE_IDENTIFIABLE_DAE_FORMALISM.md",
+      "git_blob": "ceaa61ddaebbe80e3cdd3255bdb551bcb09fc2f4",
+      "role": "중심/적분 계수만으로 유한 native measure가 식별되지 않는 기존 결과",
+      "claim_boundary": "유한 target cell과 map을 native 중심으로부터 임의 생성하지 않는다."
+    },
+    {
+      "id": "S12",
+      "path": "scripts/c_harness/original_hyrec_two_photon_raman_harness.c",
+      "git_blob": "a21176fada74481663b6296d4d3278f0b1005b39",
+      "role": "원본 reader와 재구성 결합식을 비교하기 위한 기존 C 검사 도구",
+      "claim_boundary": "이번에 실행하지 않았고, 이 도구 자체를 원본 C 정의로 대체하지 않는다."
+    }
+  ],
+  "channels": [
+    {"key": "A1s", "meaning": "3*A2p1s*phi(E)*DeltaE", "direct_packet_admission": false},
+    {"key": "A2s", "meaning": "구간 적분된 2s 두 광자 또는 Raman 계수", "extra_bin_width_allowed": false, "unconditional_extra_factor_two_allowed": false},
+    {"key": "A3s3d", "meaning": "3s+5*3d의 원본 합산 계수", "independent_population_split_admitted": false},
+    {"key": "A4s4d", "meaning": "4s+5*4d의 원본 합산 계수", "independent_population_split_admitted": false},
+    {"key": "native_real_virtual", "meaning": "열적 감소와 축퇴도 인자가 포함된 대수 결합", "bare_packet_rate_equivalence_admitted": false},
+    {"key": "tracked_paired_source", "meaning": "REC에 이미 존재하는 추적 광자 paired 식", "original_native_storage_equivalence_admitted": false},
+    {"key": "native_edge_flux", "meaning": "snapshot의 집계 경계 flux", "exclusive_atomic_channel_decomposition_admitted": false}
+  ],
+  "open_review_items": [
+    {"id": "D1", "status": "OWNER_REVIEW_REQUIRED", "scope": "첫 대상 채널과 추적/전체 광자 범위를 정하고 원본 적분영역·다중도 근거를 확인한다.", "proposal_not_approved": "첫 대상을 2s 하나로 제한", "source_facts_not_arbitrary_choices": true},
+    {"id": "D2", "status": "OWNER_REVIEW_REQUIRED", "scope": "실제 target occupation/measure/grid와 물리 map 생성 규칙의 소유권을 지정한다.", "map_selected": false},
+    {"id": "D3", "status": "OWNER_REVIEW_REQUIRED", "scope": "원본 열적 감소 계통과 독립 paired source의 포함/제외, 기준장 변환, 중복 집계 방지를 정한다.", "source_snapshot_admitted": false}
+  ],
+  "fresh_verification": {
+    "source_review": "PERFORMED",
+    "symbolic_relations": "DIRECT_ALGEBRA_NOT_CAS_EXECUTED",
+    "wolfram": "MCP_SSE_HTTP_404_BEFORE_KERNEL_RESULT",
+    "container": "CLIENT_ERROR_BEFORE_EXECUTION",
+    "python": "CLIENT_ERROR_BEFORE_EXECUTION",
+    "tests_executed": 0,
+    "new_figure": false,
+    "json_parser_execution": false,
+    "scispace_search": "PERFORMED_METHOD_AND_SCOPE_ONLY",
+    "primary_paper_reading": "ABSTRACTS_ONLY",
+    "repository_wide_all_green": false
+  },
+  "next_single_action": "D1-D3를 대상으로 원본 사실과 모델 선택을 구분하는 책임자 검토를 수행한다. 새 생산 코드나 provider 승격은 하지 않는다."
+}
