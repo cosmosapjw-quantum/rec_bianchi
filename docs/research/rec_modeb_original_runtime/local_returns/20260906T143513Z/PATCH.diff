@@ -1,0 +1,30 @@
+diff --git a/docs/research/rec_modeb_original_runtime/check_original.py b/docs/research/rec_modeb_original_runtime/check_original.py
+index 929697b..6639b2b 100644
+--- a/docs/research/rec_modeb_original_runtime/check_original.py
++++ b/docs/research/rec_modeb_original_runtime/check_original.py
+@@ -241,14 +241,23 @@ try:
+         matplotlib.use('Agg')
+         import matplotlib.pyplot as plt
+         fig,ax=plt.subplots(figsize=(7,4.4))
++        display_floor=1e-18
++        zero_points=[]
+         for q in (1.,2.):
+             obs=[r for r in result['checks'].get('order8',[]) if r['q']==q]
+-            ax.semilogy([r['n'] for r in obs],[max(abs(r['planck_approximation_error']),1e-18) for r in obs],marker='o',label=f'q={q:g}')
++            ax.semilogy([r['n'] for r in obs],[max(abs(r['planck_approximation_error']),display_floor) for r in obs],marker='o',label=f'q={q:g}')
++            for r in obs:
++                if r['planck_approximation_error']==0.:
++                    zero_points.append({'n':r['n'],'q':q,'observed_error':0.})
++                    ax.annotate('0 (shown at display floor)',(r['n'],display_floor),
++                                xytext=(-8,12),textcoords='offset points',ha='right',fontsize=9)
+         ax.set_xlabel(r'$n_q$')
+         ax.set_ylabel(r'$|f_{\mathrm{interp}}-f_{\mathrm{exact}}|$')
+-        ax.set_title(r'$K=8$')
++        ax.set_title(r'$K=8$; display floor $10^{-18}$')
+         ax.legend();fig.tight_layout();fig.savefig(OUT/'native_order8_error.png',dpi=150);plt.close(fig)
+         result['plot_generated']=True
++        result['plot_display']={'floor':display_floor,'zero_points':zero_points,
++                                'numerical_results_modified':False}
+     except Exception as exc:
+         result['plot_generated']=False;result['plot_error']=repr(exc)
+     result['exit_code']=0 if ok else 1

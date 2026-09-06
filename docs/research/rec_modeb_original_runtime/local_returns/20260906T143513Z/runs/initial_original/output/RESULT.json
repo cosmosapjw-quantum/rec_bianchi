@@ -1,0 +1,568 @@
+{
+  "classification": "PASS_BOUNDED_ORIGINAL_MODEB_RUNTIME_DIAGNOSTIC",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<LOCAL_RUN_ROOT>/candidate",
+        "merge-base",
+        "--is-ancestor",
+        "823cf1c25abda5343be6020bbf0b5bedb131fc3e",
+        "HEAD"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "exit_code": 0,
+      "stdout": "rec_ancestry.stdout",
+      "stderr": "rec_ancestry.stderr"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--version",
+        "--verbose"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "exit_code": 0,
+      "stdout": "rustc_version.stdout",
+      "stderr": "rustc_version.stderr"
+    },
+    {
+      "argv": [
+        "rustc",
+        "--edition=2021",
+        "-O",
+        "<LOCAL_RUN_ROOT>/runs/initial_original/output/radial_driver.rs",
+        "-o",
+        "<LOCAL_RUN_ROOT>/runs/initial_original/output/radial_driver"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "exit_code": 0,
+      "stdout": "rust_compile.stdout",
+      "stderr": "rust_compile.stderr"
+    },
+    {
+      "argv": [
+        "<LOCAL_RUN_ROOT>/runs/initial_original/output/radial_driver"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "exit_code": 0,
+      "stdout": "rust_run.stdout",
+      "stderr": "rust_run.stderr"
+    }
+  ],
+  "checks": {
+    "log_time": {
+      "C": "-3/4",
+      "dC": "31/16",
+      "G": "-3/32",
+      "dG": "133/512",
+      "symbolic_residual": 0
+    },
+    "modeb": {
+      "pack_length": 31,
+      "photon_offset": 25,
+      "layout": "angle_major",
+      "native_sphere": false,
+      "evolve_called": false,
+      "module_called": true
+    },
+    "radial2": {
+      "powerlaw": 2.0,
+      "planck_read": 0.25819888974716115,
+      "reference": "0.258198889747161125678617693318826640722194780352772721772505",
+      "original_rust_called": true
+    },
+    "paired": {
+      "exact_planck_net": 0.0,
+      "interpolated_net": 0.028175416344814574,
+      "forward": 0.15727486121839515,
+      "reverse": 0.12909944487358058,
+      "tracked_partial": -0.375,
+      "reference": "0.0281754163448145778705183650054400097291769573677102293353107",
+      "units": "H^-1 s^-1"
+    },
+    "order8": [
+      {
+        "n": 32,
+        "q": 1.0,
+        "occupation": 1.000000000003753,
+        "planck_approximation_error": 3.752997912442879e-12,
+        "log_dot_roundoff": 4.5937922582685734e-20,
+        "roundoff_bound": 3.8826868328142297e-16,
+        "approximation_tolerance_gate": false
+      },
+      {
+        "n": 32,
+        "q": 2.0,
+        "occupation": 0.33333333330986087,
+        "planck_approximation_error": -2.3472464712644598e-11,
+        "log_dot_roundoff": 2.0130840843463723e-16,
+        "roundoff_bound": 6.554032646613604e-15,
+        "approximation_tolerance_gate": false
+      },
+      {
+        "n": 64,
+        "q": 1.0,
+        "occupation": 1.0000000000000129,
+        "planck_approximation_error": 1.2878587085651816e-14,
+        "log_dot_roundoff": 1.1430896691485988e-19,
+        "roundoff_bound": 1.9126222229589705e-16,
+        "approximation_tolerance_gate": false
+      },
+      {
+        "n": 64,
+        "q": 2.0,
+        "occupation": 0.3333333333332523,
+        "planck_approximation_error": -8.100927336348225e-14,
+        "log_dot_roundoff": 1.198106309859482e-16,
+        "roundoff_bound": 6.539556661815621e-15,
+        "approximation_tolerance_gate": false
+      },
+      {
+        "n": 128,
+        "q": 1.0,
+        "occupation": 1.0,
+        "planck_approximation_error": 0.0,
+        "log_dot_roundoff": 4.454024635838316e-19,
+        "roundoff_bound": 9.494393807884195e-17,
+        "approximation_tolerance_gate": false
+      },
+      {
+        "n": 128,
+        "q": 2.0,
+        "occupation": 0.3333333333333331,
+        "planck_approximation_error": -2.4054832200211723e-16,
+        "log_dot_roundoff": 9.034053254219609e-17,
+        "roundoff_bound": 6.536081980551874e-15,
+        "approximation_tolerance_gate": false
+      }
+    ],
+    "geometry": {
+      "q_x": 1,
+      "q_z": 4,
+      "number_jacobian_residual": 0,
+      "actual_SI_scale_selected": false,
+      "geometry_native_called": false
+    },
+    "scatter_algebra": {
+      "Jacobian_sum": "5/4",
+      "log_weight_energy": "5/2",
+      "manufactured_energy_fractions": [
+        "2/3",
+        "1/3"
+      ],
+      "new_interpolation_selected": false
+    },
+    "com": {
+      "occupation_rate": [
+        0.04695902724135762,
+        0.004695902724135762
+      ],
+      "number_per_H_s": 0.05635083268962915,
+      "energy_in_E0_per_H_s": 0.08452624903444372,
+      "actual_core_called": true,
+      "physical_map_selected": false
+    }
+  },
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "visual_audit": "NOT_PERFORMED",
+  "source_commit": "f62d2495cac0c692f33f29f139e413dccbe7241e",
+  "source_tree": "f7673ae14e0ad391a303c169c792421b5dd0650c",
+  "source_parent": "66dd777ed4d40e2cab6607b9ec7766d9ea02810f",
+  "workflow_sha": null,
+  "trigger": null,
+  "source_blobs": {
+    "bass:bianchi/q/modeb.py": "4df8421ab81459a448fff174286a03d1d38423c3",
+    "bass:_rustcore/src/kinetic/radial.rs": "ec946fced75e80201d516d1368c77eee87afd5b2",
+    "bass:_rustcore/src/kinetic/comoving.rs": "a29b12b5e7b0d529bddaf9eac53cfdb984ddaa84",
+    "rec:src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+    "rec:src/full_bianchi_hyrec/trajectory/com_source_deposition.py": "a3662cf399f14b7148d880266825be12baf934a0"
+  },
+  "initial_status": {
+    "rec": "",
+    "bass": ""
+  },
+  "environment": {
+    "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+    "numpy": "2.3.5",
+    "scipy": "1.18.0",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "python_module_paths": {
+    "ModeBState": "<LOCAL_RUN_ROOT>/bass-pinned/bianchi/q/modeb.py",
+    "PhysicalTwoPhotonRamanBin": "<LOCAL_RUN_ROOT>/candidate/src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py",
+    "COMSourceDepositionPlan": "<LOCAL_RUN_ROOT>/candidate/src/full_bianchi_hyrec/trajectory/com_source_deposition.py"
+  },
+  "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.94.1\nLLVM version: 21.1.8",
+  "native_radial_rows": [
+    {
+      "name": "power2",
+      "n": 2,
+      "order": 2,
+      "q": 2.0,
+      "index": 1,
+      "offsets": [
+        -1,
+        0
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ],
+      "indices": [
+        0,
+        1
+      ],
+      "input_y": [
+        0.0,
+        1.3862943611198906
+      ],
+      "ln_value": 0.6931471805599453,
+      "value": 2.0,
+      "tail_equal": true
+    },
+    {
+      "name": "planck2",
+      "n": 2,
+      "order": 2,
+      "q": 2.0,
+      "index": 1,
+      "offsets": [
+        -1,
+        0
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ],
+      "indices": [
+        0,
+        1
+      ],
+      "input_y": [
+        -0.0,
+        -2.70805020110221
+      ],
+      "ln_value": -1.354025100551105,
+      "value": 0.25819888974716115,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 32,
+      "order": 8,
+      "q": 1.0,
+      "index": 8,
+      "offsets": [
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        -0.0016365051269531228,
+        0.015621185302734352,
+        -0.07364273071289051,
+        0.2863883972167963,
+        0.859165191650391,
+        -0.10309982299804676,
+        0.019092559814453104,
+        -0.0018882751464843733
+      ],
+      "indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "input_y": [
+        0.44387214594922886,
+        0.3292518556285731,
+        0.21207341331933852,
+        0.09205857879452888,
+        -0.031104246876856274,
+        -0.15776445495293015,
+        -0.2883142842622255,
+        -0.42319457674177247
+      ],
+      "ln_value": 3.752997804022662e-12,
+      "value": 1.000000000003753,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 32,
+      "order": 8,
+      "q": 2.0,
+      "index": 16,
+      "offsets": [
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        -0.0024414062499999996,
+        0.02392578124999999,
+        -0.11962890624999993,
+        0.5981445312499991,
+        0.598144531250001,
+        -0.11962890625000007,
+        0.02392578125000001,
+        -0.00244140625
+      ],
+      "indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "input_y": [
+        -0.5629013158223076,
+        -0.7079930312597947,
+        -0.8590991507025624,
+        -1.0169293686851322,
+        -1.1822840855480279,
+        -1.35606593946773,
+        -1.53929241192822,
+        -1.733109428899488
+      ],
+      "ln_value": -1.098612288738527,
+      "value": 0.33333333330986087,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 64,
+      "order": 8,
+      "q": 1.0,
+      "index": 16,
+      "offsets": [
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        -0.0016365051269531228,
+        0.015621185302734352,
+        -0.07364273071289051,
+        0.2863883972167963,
+        0.859165191650391,
+        -0.10309982299804676,
+        0.019092559814453104,
+        -0.0018882751464843733
+      ],
+      "indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "input_y": [
+        0.22335085447779413,
+        0.16480450472651947,
+        0.1055430084414043,
+        0.04552868283647175,
+        -0.01527833532577337,
+        -0.07692022841190181,
+        -0.13944164582195614,
+        -0.20288986167713083
+      ],
+      "ln_value": 1.2874141856744625e-14,
+      "value": 1.0000000000000129,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 64,
+      "order": 8,
+      "q": 2.0,
+      "index": 32,
+      "offsets": [
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        -0.0024414062499999996,
+        0.02392578124999999,
+        -0.11962890624999993,
+        0.5981445312499991,
+        0.598144531250001,
+        -0.11962890625000007,
+        0.02392578125000001,
+        -0.00244140625
+      ],
+      "indices": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "input_y": [
+        -0.8249652483286709,
+        -0.9009941933941614,
+        -0.9786998093862437,
+        -1.0581775091696493,
+        -1.1395285244756712,
+        -1.2228602546672898,
+        -1.308286630715147,
+        -1.395928493865788
+      ],
+      "ln_value": -1.0986122886683527,
+      "value": 0.3333333333332523,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 128,
+      "order": 8,
+      "q": 1.0,
+      "index": 32,
+      "offsets": [
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": [
+        -0.001636505126953134,
+        0.01562118530273447,
+        -0.0736427307128911,
+        0.28638839721679904,
+        0.8591651916503891,
+        -0.10309982299804726,
+        0.01909255981445321,
+        -0.001888275146484384
+      ],
+      "indices": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "input_y": [
+        0.11211199000816008,
+        0.08247920405549418,
+        0.05265747813326771,
+        0.022641910837573154,
+        -0.007572538579501192,
+        -0.0379910545456649,
+        -0.06861896964476963,
+        -0.0994617692378309
+      ],
+      "ln_value": 6.448292420857538e-17,
+      "value": 1.0,
+      "tail_equal": true
+    },
+    {
+      "name": "planck8",
+      "n": 128,
+      "order": 8,
+      "q": 2.0,
+      "index": 63,
+      "offsets": [
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "weights": [
+        -0.002441406250000005,
+        0.023925781250000066,
+        -0.11962890625000057,
+        0.5981445312500081,
+        0.5981445312499921,
+        -0.11962890624999947,
+        0.02392578124999994,
+        -0.0024414062499999957
+      ],
+      "indices": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "input_y": [
+        -0.9601879317538351,
+        -0.9991771045865488,
+        -1.0386085896477466,
+        -1.0784947460841257,
+        -1.118848301163308,
+        -1.1596823609840585,
+        -1.2010104214121502,
+        -1.242846379238086
+      ],
+      "ln_value": -1.0986122886681104,
+      "value": 0.3333333333333331,
+      "tail_equal": true
+    }
+  ],
+  "tests": {
+    "run": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "post_status": {
+    "rec": "",
+    "bass": ""
+  },
+  "unchanged_original_blobs": true,
+  "plot_generated": true,
+  "exit_code": 0
+}
