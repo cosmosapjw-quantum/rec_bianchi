@@ -1,0 +1,95 @@
+{
+  "record_kind": "ANNOTATED_JOB_LOG_READBACK_NOT_ORIGINAL_ARTIFACT_BYTES",
+  "classification": "PARTIAL_REC_API_AND_MATH_VERIFIED_BASS_AUTH_BLOCKED",
+  "source_commit": "66dd777ed4d40e2cab6607b9ec7766d9ea02810f",
+  "source_tree": "c0cb15512fe219be8eab060279ca756b8c160335",
+  "source_parent": "f6d857afd15480e5b3a37ac99fac94d066d78e3d",
+  "run_id": 34022456414,
+  "job_id": 101457396115,
+  "workflow_sha": "66dd777ed4d40e2cab6607b9ec7766d9ea02810f",
+  "trigger": "push",
+  "tests": {"run": 6, "failures": 0, "errors": 0, "skips": 0, "elapsed_seconds": 0.052},
+  "exit_code": 0,
+  "environment": {"python": "3.12.14", "numpy": "2.2.6", "scipy": "1.15.3", "sympy": "1.14.0", "mpmath": "1.3.0"},
+  "observed": {
+    "log_time": {"C": "-3/4", "dC": "31/16", "G": "-3/32", "dG": "133/512", "symbolic_residual": 0},
+    "paired": {
+      "exact_planck_net": 0.0,
+      "closed_form_input": 0.25819888974716115,
+      "net_from_closed_form_input": 0.028175416344814574,
+      "mpmath80_reference": "0.02817541634481457787051836500544000972917695736771022933531065584716292",
+      "forward": 0.15727486121839515,
+      "reverse": 0.12909944487358058,
+      "input_origin": "INDEPENDENT_CLOSED_FORM_NOT_RUST_OUTPUT",
+      "units": "H^-1 s^-1"
+    },
+    "paired_jvp": [
+      {"actual": -0.375, "residual": 0.0},
+      {"actual": -0.050462014264383, "residual": 3.469446951953614e-18},
+      {"actual": -0.18359375, "residual": 0.0}
+    ],
+    "com": {
+      "occupation_action_s_inv": [0.04695902724135762, 0.004695902724135762],
+      "number_per_H_s": 0.05635083268962915,
+      "energy_in_E0_per_H_s": 0.08452624903444372,
+      "atom_plus_photon_energy_in_E0_per_H_s": 0.0,
+      "out_of_hull_map_rejected": true,
+      "physical_map_selected": false
+    },
+    "entropy_identity": {
+      "symbolic_affinity_residual": 0,
+      "manufactured_entropy_rates_over_kB_nH": [
+        "0.0",
+        "0.19018666951100566815481104011609222055506670825934",
+        "0.0094024182061503718212027131841499716439686592956789"
+      ],
+      "production_reconstruction_changed": false
+    },
+    "initial_status": "",
+    "post_status": "",
+    "unchanged_original_blobs": true
+  },
+  "source_blobs": {
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+    "src/full_bianchi_hyrec/trajectory/com_source_deposition.py": "a3662cf399f14b7148d880266825be12baf934a0"
+  },
+  "artifact": {
+    "id": 9985952784,
+    "size_bytes": 2348,
+    "file_count": 3,
+    "reported_zip_sha256": "e7697d71fdd7bda506afc285f7bfde91c4ff36eac2161544046113ec6542e375",
+    "digest_readback": "UPLOAD_LOG_EQUALS_ARTIFACT_METADATA",
+    "rehash_in_current_sandbox": false,
+    "expires_at": "2026-10-06T08:39:47Z"
+  },
+  "preserved_original_run_failure": {
+    "run_id": 34022055292,
+    "job_id": 101456308151,
+    "source_commit": "f6d857afd15480e5b3a37ac99fac94d066d78e3d",
+    "phase": "BASS_SOURCE_FETCH_BEFORE_COMPUTATION",
+    "exit_code": 128,
+    "message": "fatal: could not read Username for 'https://github.com': No such device or address",
+    "bass_visibility_readback": "private",
+    "source_copied_to_public_rec": false,
+    "unauthenticated_fetch_retried": false
+  },
+  "general_ci_readback": {
+    "run_id": 34022458746,
+    "job_id": 101457402658,
+    "checkout": "901fb720803b42e0b70fc4eefb2f57118457d860",
+    "conclusion": "failure",
+    "first_failed_step": "python scripts/verify_repo.py --quick",
+    "cause": "COMMITTED_FEATURE_RANGE_WHITESPACE",
+    "first_path": "artifacts/trajectory/pr05c2c1b2b1e1c_recovery/rec_local01_admission/evidence/MUTANT_drop_density_jvp.log:6",
+    "full_pytest": "skipped",
+    "later_documentation_child_ci": "NOT_YET_REVIEWED"
+  },
+  "original_bass_radial_calls": 0,
+  "original_modeb_calls": 0,
+  "full_original_diagnostic_pass": false,
+  "new_plots": 0,
+  "independent_review": false,
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+}
