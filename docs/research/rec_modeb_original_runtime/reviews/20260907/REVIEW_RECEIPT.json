@@ -1,0 +1,78 @@
+{
+  "schema": "rec.main-return-review.v1",
+  "classification": "ACCEPTED_BOUNDED_ORIGINAL_MODEB_RUNTIME_DIAGNOSTIC",
+  "review_date": "2026-09-07",
+  "basis": "GitHub source, commit diff, public raw numeric outputs and local execution records; no reexecution",
+  "return_pr": 75,
+  "return_commit": "4f8284ffd59089bef5308a57d43155408ce002e1",
+  "return_tree": "9325fcdf9bd59735fb64d573b316fc0626a5a6b8",
+  "return_parents": ["85a8c4632dd062ae201937c3647accd5d93f9733", "c813bfc32b23e4d3148e3ed9318ec9276a746e0b"],
+  "actual_tested_commit": "c813bfc32b23e4d3148e3ed9318ec9276a746e0b",
+  "actual_tested_tree": "2fbb5562333f5e86e615a401f1a177f35f11ccbc",
+  "bass_commit": "9d1c702ddf58549a06b29965a3d1b790a0c23159",
+  "observed_local_run": {
+    "tests": 8, "failures": 0, "errors": 0, "skips": 0,
+    "process_exit": 0, "elapsed_seconds": 2.431564338039607,
+    "rust_compile_exit": 0, "rust_run_exit": 0,
+    "rust_json_output_rows": 8,
+    "modeb_pack_length": 31, "modeb_photon_offset": 25,
+    "order2_actual_rust_read": 0.25819888974716115,
+    "order2_rec_actual_net_per_H_s": 0.028175416344814574,
+    "order2_exact_planck_net": 0.0,
+    "order2_actual_com_number_per_H_s": 0.05635083268962915,
+    "order2_actual_com_energy_per_H_E0_s": 0.08452624903444372
+  },
+  "observed_order8_f_errors": [
+    {"n": 32, "q1": 3.752997912442879e-12, "q2": -2.3472464712644598e-11},
+    {"n": 64, "q1": 1.2878587085651816e-14, "q2": -8.100927336348225e-14},
+    {"n": 128, "q1": 0.0, "q2": -2.4054832200211723e-16}
+  ],
+  "n128_q1_ln_output_before_exp": 6.44829242085753762e-17,
+  "repair": {
+    "path": "docs/research/rec_modeb_original_runtime/check_original.py",
+    "actual_commit_diff_reviewed": true,
+    "scope": "plot floor label, zero annotation and display metadata only",
+    "additions": 11, "deletions": 2,
+    "scientific_tests_or_tolerances_changed": false,
+    "local_report_of_equal_numeric_outputs_reviewed": true,
+    "new_comparison_execution_in_main": false
+  },
+  "new_derived_postprocessing": {
+    "status": "DIRECT_DERIVATION_AND_ONE_SCALAR_CALCULATOR_EVALUATION",
+    "formula": "Gamma/a = -ec/12 -3*et/8 -7*ec*et/16",
+    "assumptions": "xu=1/16,xg=1/2,g=1,fc=1+ec,ft=1/3+et",
+    "n128_from_recorded_errors": 9.020562075079397e-17,
+    "calculator_expression": "-3*(-2.4054832200211723e-16)/8",
+    "new_rec_api_call": false,
+    "precision_claim": "approximate scalar postprocessing, not a high-precision or native API result",
+    "other_long_calculator_requests_returned_no_result": true
+  },
+  "new_composite_jvp": {
+    "state_variable": "y_i=ln(f_i)",
+    "query_variable": "chi_s=sum_i B_is ln(1+1/f_i)",
+    "fixed_map_query_jvp": "df_s=f_s(1+f_s)sum_i B_is dy_i/(1+f_i)",
+    "status": "DERIVED_NOT_IMPLEMENTED",
+    "production_choice": false
+  },
+  "main_runtime": {
+    "container": "ClientError before process start, one admission call",
+    "python": "ClientError before code execution, one admission call",
+    "new_scientific_runs": 0,
+    "original_zip_or_full_manifest_rehashed": false,
+    "new_png_inspection": false,
+    "independent_third_party_review": false
+  },
+  "public_evidence": {
+    "host_paths_replaced": true,
+    "private_compile_warnings_summarized": true,
+    "original_private_source_or_binary_republished": false,
+    "public_copy_byte_identity_not_assumed": true
+  },
+  "general_ci": "FRESH_PR75_LOG_NOT_REVIEWED_NO_REPOSITORY_WIDE_PASS",
+  "next_single_task": "REC_FIXED_MAP_SINGLE_FIELD_READ_SCATTER_JVP",
+  "local_task_dispatched": false,
+  "old_local_handoff_rerun_required": false,
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "scientific_ceiling": "NO_PASS_REC_PHYSICAL_SPLIT"
+}
