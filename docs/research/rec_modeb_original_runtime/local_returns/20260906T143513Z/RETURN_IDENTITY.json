@@ -1,0 +1,121 @@
+{
+  "task": "REC_SPEC03A_MODEB_READ_SCATTER_COMPATIBILITY",
+  "execution_context": "LOCAL_CODEX",
+  "delivery_commit": "85a8c4632dd062ae201937c3647accd5d93f9733",
+  "delivery_tree": "7f223c2b184e100129b19e6aa6e96cc7826d8554",
+  "rec_baseline": {
+    "commit": "f62d2495cac0c692f33f29f139e413dccbe7241e",
+    "tree": "f7673ae14e0ad391a303c169c792421b5dd0650c"
+  },
+  "bass_original": {
+    "commit": "9d1c702ddf58549a06b29965a3d1b790a0c23159",
+    "tree": "12ab5b477ff75b4fdfdb4bbc60e3864675fe0e3c"
+  },
+  "tested_source": {
+    "commit": "c813bfc32b23e4d3148e3ed9318ec9276a746e0b",
+    "tree": "2fbb5562333f5e86e615a401f1a177f35f11ccbc"
+  },
+  "reused_completed_runs": true,
+  "new_numerical_runs_for_publication": 0,
+  "publication_source_relation": "First parent is exact delivery; second parent is actual tested c813bfc commit. Result/docs commit is not a tested source commit.",
+  "publication_commit_location": "Draft PR body and final response; no circular self-commit field",
+  "change_scope": [
+    "docs/research/rec_modeb_original_runtime/check_original.py",
+    "docs/research/rec_modeb_original_runtime/local_returns/20260906T143513Z/"
+  ],
+  "scientific_test_meaning_and_tolerances_unchanged": true,
+  "core_blobs": {
+    "bass:bianchi/q/modeb.py": "4df8421ab81459a448fff174286a03d1d38423c3",
+    "bass:_rustcore/src/kinetic/radial.rs": "ec946fced75e80201d516d1368c77eee87afd5b2",
+    "bass:_rustcore/src/kinetic/comoving.rs": "a29b12b5e7b0d529bddaf9eac53cfdb984ddaa84",
+    "rec:src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+    "rec:src/full_bianchi_hyrec/trajectory/com_source_deposition.py": "a3662cf399f14b7148d880266825be12baf934a0"
+  },
+  "core_unchanged_before_after": true,
+  "commands_environment_exit": {
+    "initial_original": {
+      "argv": [
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=10s",
+        "720s",
+        "<PYTHON_ENV>/bin/python",
+        "-B",
+        "<LOCAL_RUN_ROOT>/candidate/docs/research/rec_modeb_original_runtime/check_original.py",
+        "--bass",
+        "<LOCAL_RUN_ROOT>/bass-pinned",
+        "--out",
+        "<LOCAL_RUN_ROOT>/runs/initial_original/output"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1",
+        "MPLCONFIGDIR": "<LOCAL_RUN_ROOT>/mplconfig",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "start_utc": "2026-09-06T14:35:13.023119+00:00",
+      "timeout_seconds": 720,
+      "internal_subprocess_timeout_seconds": 120,
+      "exit_code": 0,
+      "elapsed_seconds": 5.954430063022301,
+      "end_utc": "2026-09-06T14:35:18.977669+00:00"
+    },
+    "repaired_plot": {
+      "argv": [
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=10s",
+        "720s",
+        "<PYTHON_ENV>/bin/python",
+        "-B",
+        "<LOCAL_RUN_ROOT>/candidate/docs/research/rec_modeb_original_runtime/check_original.py",
+        "--bass",
+        "<LOCAL_RUN_ROOT>/bass-pinned",
+        "--out",
+        "<LOCAL_RUN_ROOT>/runs/repaired_plot/output"
+      ],
+      "cwd": "<LOCAL_RUN_ROOT>/candidate",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1",
+        "MPLCONFIGDIR": "<LOCAL_RUN_ROOT>/mplconfig",
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "start_utc": "2026-09-06T14:36:52.650957+00:00",
+      "timeout_seconds": 720,
+      "internal_subprocess_timeout_seconds": 120,
+      "exit_code": 0,
+      "elapsed_seconds": 2.431564338039607,
+      "end_utc": "2026-09-06T14:36:55.082622+00:00"
+    }
+  },
+  "environment": "ENVIRONMENT.json",
+  "reuse_policy_note": {
+    "prior_outer_timeout_seconds": 720,
+    "new_handoff_example_timeout_seconds": 600,
+    "actual_elapsed_seconds": [
+      5.954430063022301,
+      2.431564338039607
+    ],
+    "reason_no_replay": "Delivery explicitly reuses completed matching runs; old commands and limits remain historical facts.",
+    "old_capture_did_not_explicitly_unset_new_handoff_environment_list": true,
+    "observed_workflow_sha_and_trigger": null,
+    "historical_full_environment_dump": "NOT_CAPTURED; absence of all unrecorded variables is not asserted",
+    "native_dispatch_calls": false
+  },
+  "results": {
+    "initial_original": "runs/initial_original/output/RESULT.json",
+    "repaired_plot": "runs/repaired_plot/output/RESULT.json"
+  },
+  "per_id_results": "runs/repaired_plot/PER_ID_RESULTS.json",
+  "public_copy_rules": "PUBLIC_COPY_MANIFEST.json",
+  "private_evidence_retention": "Original local run and sealed ZIP remain unchanged; no private BASS source or compiled binary is included in this Git return.",
+  "public_review_limit": "Public readers can check numeric output, fixed criteria, call-site source and identities. They need existing private BASS read authorization to inspect withheld component bodies.",
+  "independent_review": "NOT_PERFORMED",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT"
+}
