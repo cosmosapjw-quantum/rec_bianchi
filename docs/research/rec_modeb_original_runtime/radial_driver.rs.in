@@ -1,0 +1,33 @@
+// 진단 전용 호출기. 원본 radial.rs는 변경하거나 전사하지 않는다.
+#[path = "__RADIAL_PATH__"]
+mod radial;
+use radial::{RadialGrid, Tail, shift_stencil, apply_shift_log};
+
+fn emit(name: &str, n: usize, order: usize, q: f64, power: bool) {
+    let (lo, hi) = if n == 2 { (0.0, 4.0_f64.ln()) }
+                   else { (0.5_f64.ln(), 8.0_f64.ln()) };
+    let grid = RadialGrid::new(lo, hi, n);
+    let y: Vec<f64> = grid.p().iter().map(|p| {
+        if power { p.ln() } else { -((std::f64::consts::LN_2 * p).exp_m1()).ln() }
+    }).collect();
+    let i = if n == 2 { 1 } else { ((q.ln()-lo)/grid.dlnp).round() as usize };
+    let shift = grid.ln_p[i]-q.ln();
+    let stencil = shift_stencil(&grid, shift, order);
+    let v = apply_shift_log(&grid, &y, &stencil, Tail::Wien);
+    let p = apply_shift_log(&grid, &y, &stencil, Tail::PowerLaw);
+    let indices: Vec<usize> = stencil.0.iter().map(|o| {
+        let j = i as i64 + o;
+        assert!(j >= 0 && j < n as i64, "内部 질의만 허용");
+        j as usize
+    }).collect();
+    let used_y: Vec<f64> = indices.iter().map(|j| y[*j]).collect();
+    println!("{{\"name\":\"{}\",\"n\":{},\"order\":{},\"q\":{:.17e},\"index\":{},\"offsets\":{:?},\"weights\":{:?},\"indices\":{:?},\"input_y\":{:?},\"ln_value\":{:.17e},\"value\":{:.17e},\"tail_equal\":{}}}",
+        name,n,order,q,i,stencil.0,stencil.1,indices,used_y,v[i],v[i].exp(),v[i]==p[i]);
+}
+fn main() {
+    emit("power2",2,2,2.0,true);
+    emit("planck2",2,2,2.0,false);
+    for n in [32_usize,64,128] {
+        for q in [1.0_f64,2.0] { emit("planck8",n,8,q,false); }
+    }
+}

@@ -1,0 +1,56 @@
+name: REC original ModeB fixed snapshot
+on:
+  push:
+    branches:
+      - research/rec-modeb-original-runtime-20260906-r1
+    paths:
+      - docs/research/rec_modeb_original_runtime/check_original.py
+      - docs/research/rec_modeb_original_runtime/radial_driver.rs.in
+      - .github/workflows/rec-modeb-original-runtime.yml
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 고정 BASS 읽기 전용 snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/modeb-run"
+          git init -q "$RUNNER_TEMP/modeb-bass"
+          git -C "$RUNNER_TEMP/modeb-bass" remote add origin https://github.com/cosmosapjw-quantum/bass.git
+          git -C "$RUNNER_TEMP/modeb-bass" fetch --depth=1 origin 9d1c702ddf58549a06b29965a3d1b790a0c23159
+          git -C "$RUNNER_TEMP/modeb-bass" checkout --detach FETCH_HEAD
+      - name: 격리 진단 환경
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/modeb-venv"
+          "$RUNNER_TEMP/modeb-venv/bin/python" -m pip install numpy==2.2.6 scipy==1.15.3 sympy==1.14.0 mpmath==1.3.0 matplotlib==3.10.3
+          rustc --version
+      - name: 변경 없는 원본 함수 실행
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          MPLCONFIGDIR: ${{ runner.temp }}/modeb-mpl
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/modeb-venv/bin/python" -B docs/research/rec_modeb_original_runtime/check_original.py --bass "$RUNNER_TEMP/modeb-bass" --out "$RUNNER_TEMP/modeb-run"
+      - name: 실패 포함 원본 결과 보존
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-modeb-original-runtime-${{ github.sha }}
+          path: ${{ runner.temp }}/modeb-run
+          if-no-files-found: warn
+          retention-days: 30
