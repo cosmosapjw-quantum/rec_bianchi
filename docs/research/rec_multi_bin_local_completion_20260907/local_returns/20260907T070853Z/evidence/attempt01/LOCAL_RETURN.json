@@ -1,0 +1,227 @@
+{
+  "classification": "PASS_SELECTED_LOCAL_LANE_NOT_FULL_CLOSEOUT",
+  "base": "2e3b73972ee298d44efdfb10016e314f58b0bada",
+  "base_tree": "471442ce757fde701340729cd1abde281fd0db01",
+  "github_actions_used": false,
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "visual_audit": "NOT_PERFORMED",
+  "lanes": [
+    {
+      "lane": "supplement",
+      "argv": [
+        "/home/cosmosapjw/cosmo_lab/.venv/bin/python",
+        "-B",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source/docs/research/rec_multi_bin_local_completion_20260907/verify_nullspace.py",
+        "--out",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/evidence/attempt01/supplement/payload"
+      ],
+      "cwd": "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+      "source_commit": "9195f94bf308806ae6e9070f6175b500a1c2ef53",
+      "source_tree": "98577a94604efff77c24b89ee3a56a99fd478f16",
+      "started_utc": "2026-09-07T07:10:05.563402+00:00",
+      "status": "EXITED",
+      "returncode": 0,
+      "timed_out": false,
+      "pid": 1258354,
+      "wall_seconds": 5.278459039982408,
+      "finished_utc": "2026-09-07T07:10:10.841983+00:00",
+      "result_contract_ok": true
+    }
+  ],
+  "git_reads": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "9195f94bf308806ae6e9070f6175b500a1c2ef53\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "returncode": 0,
+      "stdout": "98577a94604efff77c24b89ee3a56a99fd478f16\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "2e3b73972ee298d44efdfb10016e314f58b0bada^{tree}"
+      ],
+      "returncode": 0,
+      "stdout": "471442ce757fde701340729cd1abde281fd0db01\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "merge-base",
+        "--is-ancestor",
+        "2e3b73972ee298d44efdfb10016e314f58b0bada",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "diff",
+        "--exit-code",
+        "2e3b73972ee298d44efdfb10016e314f58b0bada",
+        "HEAD",
+        "--",
+        "src",
+        "tests",
+        "archive",
+        ".github/workflows",
+        "docs/research/rec_2s_base_hires_response",
+        "docs/research/rec_affinity_compatibility_20260907",
+        "docs/research/rec_fixed_map_single_field_jvp_20260907"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "diff",
+        "--name-only",
+        "2e3b73972ee298d44efdfb10016e314f58b0bada",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "docs/research/rec_multi_bin_local_completion_20260907/AUTHORING_STATUS.json\ndocs/research/rec_multi_bin_local_completion_20260907/LOCAL_CODEX_HANDOFF_KO.md\ndocs/research/rec_multi_bin_local_completion_20260907/READBACK_UPDATE_KO.md\ndocs/research/rec_multi_bin_local_completion_20260907/SCIENCE_COMPLETION_KO.md\ndocs/research/rec_multi_bin_local_completion_20260907/plot_supplement.py\ndocs/research/rec_multi_bin_local_completion_20260907/run_local.py\ndocs/research/rec_multi_bin_local_completion_20260907/verify_nullspace.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD:docs/research/rec_multi_bin_affinity_20260907/study.py"
+      ],
+      "returncode": 0,
+      "stdout": "f1ad5926de6090e8317961c6cc58914cfd5c8ba3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD:docs/research/rec_multi_bin_affinity_20260907/test_study.py"
+      ],
+      "returncode": 0,
+      "stdout": "22e9ab887efa77f118d1c693a0d8313be9241d4b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD:docs/research/rec_multi_bin_affinity_20260907/run_study.py"
+      ],
+      "returncode": 0,
+      "stdout": "b6c53eeb1d90db0c5b760dba44208f4471e060a0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD:docs/research/rec_multi_bin_local_completion_20260907/verify_nullspace.py"
+      ],
+      "returncode": 0,
+      "stdout": "0fc339520af81e2ecfb331d9c31e861beaf3a44d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "rev-parse",
+        "HEAD:docs/research/rec_multi_bin_local_completion_20260907/run_local.py"
+      ],
+      "returncode": 0,
+      "stdout": "6ad643304d01341453995f94f9e9462d75e8bb54\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/cosmosapjw/research_runs/rec_multibin_supplement_nv9sfjkn/source",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "source_commit": "9195f94bf308806ae6e9070f6175b500a1c2ef53",
+  "source_tree": "98577a94604efff77c24b89ee3a56a99fd478f16",
+  "changed_paths": [
+    "docs/research/rec_multi_bin_local_completion_20260907/AUTHORING_STATUS.json",
+    "docs/research/rec_multi_bin_local_completion_20260907/LOCAL_CODEX_HANDOFF_KO.md",
+    "docs/research/rec_multi_bin_local_completion_20260907/READBACK_UPDATE_KO.md",
+    "docs/research/rec_multi_bin_local_completion_20260907/SCIENCE_COMPLETION_KO.md",
+    "docs/research/rec_multi_bin_local_completion_20260907/plot_supplement.py",
+    "docs/research/rec_multi_bin_local_completion_20260907/run_local.py",
+    "docs/research/rec_multi_bin_local_completion_20260907/verify_nullspace.py"
+  ],
+  "source_files": {
+    "docs/research/rec_multi_bin_affinity_20260907/study.py": "f1ad5926de6090e8317961c6cc58914cfd5c8ba3",
+    "docs/research/rec_multi_bin_affinity_20260907/test_study.py": "22e9ab887efa77f118d1c693a0d8313be9241d4b",
+    "docs/research/rec_multi_bin_affinity_20260907/run_study.py": "b6c53eeb1d90db0c5b760dba44208f4471e060a0",
+    "docs/research/rec_multi_bin_local_completion_20260907/verify_nullspace.py": "0fc339520af81e2ecfb331d9c31e861beaf3a44d",
+    "docs/research/rec_multi_bin_local_completion_20260907/run_local.py": "6ad643304d01341453995f94f9e9462d75e8bb54"
+  },
+  "final_status": "",
+  "wrapper_exit_code": 0
+}

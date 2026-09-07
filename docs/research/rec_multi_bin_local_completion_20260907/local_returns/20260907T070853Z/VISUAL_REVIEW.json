@@ -1,0 +1,27 @@
+{
+  "status": "PASS_RENDERED_INSPECTION",
+  "reviewer": "HOST_CODEX",
+  "method": "Opened each original generated PNG with view_image after renderer actual exit 0; compared plotted points with saved ADDITIONAL_JVP.csv.",
+  "images": {
+    "additional_jvp_180mm.png": {
+      "sha256": "73b357c86d15ee31dad626800eb8ae505e16c842f715609afecb889eaedc8a2a",
+      "width_mm": 180,
+      "visual_opened": true
+    },
+    "additional_jvp_90mm.png": {
+      "sha256": "dd565aeb83241361812ad2700d2bb0f45ee3eb27ab5cde798b072d16b7e59501",
+      "width_mm": 90,
+      "visual_opened": true
+    }
+  },
+  "observations": [
+    "90 mm and 180 mm versions have readable axes, all four series in a two-row legend, no clipped labels or legend/axis collisions.",
+    "Near-coincident values overlap at y2, and hires values nearly overlap at y4; these match the CSV and distinct markers/line styles identify the series.",
+    "Y axis is linear with an explicit zero origin and 1e-17 multiplier; no positive display floor. All 16 recorded values in this run are positive.",
+    "These are binary64 directional error diagnostics, not 80-digit implementation accuracy, grid convergence, or physical time evolution."
+  ],
+  "input_hashes_match_render_receipt": true,
+  "raw_numerical_result_and_process_unchanged": true,
+  "historical_pr79_png_visual_inspection": "NOT_PERFORMED",
+  "display_repairs": []
+}

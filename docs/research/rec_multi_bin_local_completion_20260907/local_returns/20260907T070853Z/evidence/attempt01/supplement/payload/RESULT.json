@@ -1,0 +1,308 @@
+{
+  "classification": "PASS_BOUNDED_NULLSPACE_SUPPLEMENT",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "tests": {
+    "run": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "per_id": [
+      {
+        "id": "__main__.Checks.test_01_full_left_kernel_and_energy_dependence",
+        "outcome": "PASS"
+      },
+      {
+        "id": "__main__.Checks.test_02_actual_count_source_and_density_direction",
+        "outcome": "PASS"
+      },
+      {
+        "id": "__main__.Checks.test_03_stationary_manifold_and_four_right_null_vectors",
+        "outcome": "PASS"
+      },
+      {
+        "id": "__main__.Checks.test_04_missing_photon_axes_against_independent_primal",
+        "outcome": "PASS"
+      }
+    ]
+  },
+  "observations": {
+    "complete_invariants": {
+      "rows": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "tables": [
+        {
+          "table": "base",
+          "exact_left_rank": 4,
+          "exact_stoichiometric_rank": 3,
+          "witness_bin_indices": [
+            0,
+            1,
+            16
+          ],
+          "floating_left_residual": 2.220446049250313e-16,
+          "qualification": "exact rational stencil and rounded API stencil are distinguished"
+        },
+        {
+          "table": "hires",
+          "exact_left_rank": 4,
+          "exact_stoichiometric_rank": 3,
+          "witness_bin_indices": [
+            0,
+            1,
+            34
+          ],
+          "floating_left_residual": 2.220446049250313e-16,
+          "qualification": "exact rational stencil and rounded API stencil are distinguished"
+        }
+      ],
+      "energy_combination": "energy = L1/2 + (2^-30-1/2)*L2 - L3/4"
+    },
+    "count_density_chain": [
+      {
+        "table": "base",
+        "read": "chi",
+        "field_residual": 0.0,
+        "jvp_residual": 2.220446049250313e-16,
+        "omit_beta_density_derivative_residual": 0.0917349247581768
+      },
+      {
+        "table": "base",
+        "read": "log_control",
+        "field_residual": 5.551115123125783e-17,
+        "jvp_residual": 1.1102230246251565e-16,
+        "omit_beta_density_derivative_residual": 0.06067375045771051
+      },
+      {
+        "table": "hires",
+        "read": "chi",
+        "field_residual": 2.7755575615628914e-17,
+        "jvp_residual": 3.3306690738754696e-16,
+        "omit_beta_density_derivative_residual": 0.09170457522150821
+      },
+      {
+        "table": "hires",
+        "read": "log_control",
+        "field_residual": 5.551115123125783e-17,
+        "jvp_residual": 2.220446049250313e-16,
+        "omit_beta_density_derivative_residual": 0.06066165036768523
+      }
+    ],
+    "stationary_manifold": [
+      {
+        "table": "base",
+        "positive_chi": [
+          0.5,
+          0.875,
+          1.0,
+          1.125,
+          1.5
+        ],
+        "net_rate": 3.361042616572825e-17,
+        "activity": 2.855827155410032,
+        "right_null_residual": 6.019896772778457e-16,
+        "stationary_tangent_residuals": [
+          7.209746973095204e-17,
+          4.289768658820805e-18,
+          1.5658921442211526e-17,
+          3.672855271951851e-17
+        ],
+        "count_jacobian": [
+          [
+            -21.29572819163049,
+            2.8820634065442303,
+            0.2304597047973277,
+            1.2448592881917577,
+            0.9540159167803123,
+            2.1439066079329105,
+            2.442104317801028
+          ],
+          [
+            21.29572819163049,
+            -2.8820634065442303,
+            -0.2304597047973277,
+            -1.2448592881917577,
+            -0.9540159167803123,
+            -2.1439066079329105,
+            -2.442104317801028
+          ],
+          [
+            3.3663289074818037,
+            -0.45558307616164684,
+            -0.12907549647985755,
+            -0.16200246087315148,
+            0.0,
+            -0.27900193191460654,
+            -1.3677698127444042
+          ],
+          [
+            11.379692107819935,
+            -1.5400738545572572,
+            -0.10138420831747012,
+            -0.8467857882883842,
+            -0.31433062480632207,
+            -1.45834124726834,
+            -1.074334505056624
+          ],
+          [
+            13.0994143526575,
+            -1.7728129516506526,
+            0.0,
+            -0.4721420780604437,
+            -1.2793705839479805,
+            -0.8131268574999282,
+            0.0
+          ],
+          [
+            11.379692107819935,
+            -1.540073854557257,
+            -0.10138420831747011,
+            -0.8467857882883842,
+            -0.31433062480632207,
+            -1.45834124726834,
+            -1.074334505056624
+          ],
+          [
+            3.3663289074818037,
+            -0.4555830761616469,
+            -0.12907549647985755,
+            -0.1620024608731515,
+            0.0,
+            -0.27900193191460654,
+            -1.3677698127444042
+          ]
+        ]
+      },
+      {
+        "table": "hires",
+        "positive_chi": [
+          0.5,
+          0.875,
+          1.0,
+          1.125,
+          1.5
+        ],
+        "net_rate": 1.5737025127037646e-17,
+        "activity": 2.8558066166621674,
+        "right_null_residual": 4.688876422902089e-16,
+        "stationary_tangent_residuals": [
+          7.245361157062312e-17,
+          9.59023286480393e-19,
+          6.490291900572396e-18,
+          3.160864265004778e-17
+        ],
+        "count_jacobian": [
+          [
+            -21.295575035445566,
+            2.8820426791085647,
+            0.2303293800013996,
+            1.2457784148762163,
+            0.9530470656988821,
+            2.145489535249299,
+            2.440723309580383
+          ],
+          [
+            21.295575035445566,
+            -2.8820426791085647,
+            -0.2303293800013996,
+            -1.2457784148762163,
+            -0.9530470656988821,
+            -2.145489535249299,
+            -2.440723309580383
+          ],
+          [
+            3.3644252509259633,
+            -0.455325444262477,
+            -0.12903972502695543,
+            -0.16185137349467113,
+            0.0,
+            -0.27874172802475994,
+            -1.3673907546367703
+          ],
+          [
+            11.388094164804553,
+            -1.5412109493190407,
+            -0.10128965497444414,
+            -0.8477768059530624,
+            -0.31443607549375063,
+            -1.4600479858050055,
+            -1.0733325549436126
+          ],
+          [
+            13.086111239430096,
+            -1.7710125710540936,
+            0.0,
+            -0.47230047085696525,
+            -1.2772219804102631,
+            -0.8133996428390686,
+            0.0
+          ],
+          [
+            11.388094164804553,
+            -1.5412109493190407,
+            -0.10128965497444414,
+            -0.8477768059530624,
+            -0.31443607549375063,
+            -1.4600479858050055,
+            -1.0733325549436126
+          ],
+          [
+            3.364425250925963,
+            -0.455325444262477,
+            -0.12903972502695543,
+            -0.16185137349467113,
+            0.0,
+            -0.27874172802475994,
+            -1.3673907546367703
+          ]
+        ]
+      }
+    ],
+    "additional_jvp": {
+      "comparisons": 16,
+      "max_scaled_jvp_error": 8.49796017985836e-17,
+      "normalization": "normalized",
+      "state_role": "manufactured non-equilibrium",
+      "reference": "original independent nonlinear primal; not a second derivative implementation"
+    }
+  },
+  "exit_code": 0,
+  "visual_audit": "NOT_PERFORMED"
+}
