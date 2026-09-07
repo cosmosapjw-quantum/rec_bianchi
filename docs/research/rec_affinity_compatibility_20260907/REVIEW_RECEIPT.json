@@ -1,0 +1,161 @@
+{
+  "classification": "ACCEPTED_BOUNDED_PR77_AND_AFFINITY_DISCRIMINATOR",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "authority_effect": "NONE",
+  "accepted_prior_execution": {
+    "commit": "4125f7f39b29b710ad6ca673520ae46a426b564f",
+    "tree": "bc5d7f0dbf477ccb693084dd9cd72e4e54bde25e",
+    "run": 34079604895,
+    "job": 101612248678,
+    "tests": {
+      "errors": 0,
+      "failures": 0,
+      "per_id": [
+        {
+          "id": "test_composite.Checks.test_01_exact_thermal_fixture",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_02_full_jvp_against_80_and_120_digits",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_03_log_read_control_is_a_different_operator",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_04_linearity_and_no_input_mutation",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_05_number_energy_and_directional_ledgers",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_06_equilibrium_linearized_metric_structure",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_07_entropy_rate_agrees_with_affinity",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_08_chain_omission_mutants",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_09_input_domain_is_not_silently_projected",
+          "outcome": "PASS"
+        },
+        {
+          "id": "test_composite.Checks.test_10_small_step_independent_nonlinear_path",
+          "outcome": "PASS"
+        }
+      ],
+      "run": 10,
+      "skips": 0
+    },
+    "replayed_here": false,
+    "max_scaled_chi_jvp_error": 3.101240562848418e-16
+  },
+  "new_execution": {
+    "commit": "7eb64cb8d65c1fa22f49c019f3c8ce4fb1d22bdc",
+    "tree": "09a39358a7da53f467fb4d889157174d1d40eaa8",
+    "script_blob": "b64351448cb083e3915d902a724432d659ff07d1",
+    "tests": {
+      "run": 3,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "per_id": [
+        {
+          "id": "__main__.Checks.test_01_api_reference_and_conservation",
+          "outcome": "PASS"
+        },
+        {
+          "id": "__main__.Checks.test_02_negative_entropy_interval",
+          "outcome": "PASS"
+        },
+        {
+          "id": "__main__.Checks.test_03_independent_entropy_directional_difference",
+          "outcome": "PASS"
+        }
+      ]
+    },
+    "observed_process_returncode": 0,
+    "number_of_process_runs": 1,
+    "max_scaled_api_error": 4.746399864361692e-16
+  },
+  "counterexample": {
+    "exact_interval": "log(4/(1+sqrt(15))) < eta < 0",
+    "eta0_decimal_120": "-0.197411985170979663292525745131744939354070829286778793468075581023381951061799397207484751985663013062812381787994463207",
+    "chi": {
+      "eta": -0.125,
+      "read_kind": "chi",
+      "gamma": -0.019842916699674945,
+      "affinity_read": -0.125,
+      "affinity_scatter": -0.125,
+      "entropy_rate": 0.0024803645874593647,
+      "pair_entropy_rate": 0.002480364587459368,
+      "C0": -0.1322861113311663,
+      "C1": -0.01322861113311663,
+      "number_residual": 0.0,
+      "energy_residual_E0": 0.0
+    },
+    "log_control": {
+      "eta": -0.125,
+      "read_kind": "log_control",
+      "gamma": 0.009823386150496466,
+      "affinity_read": 0.07241198517098013,
+      "affinity_scatter": -0.125,
+      "entropy_rate": -0.0012279232688120582,
+      "pair_entropy_rate": 0.0007113308922585617,
+      "C0": 0.06548924100330977,
+      "C1": 0.006548924100330977,
+      "number_residual": 0.0,
+      "energy_residual_E0": 0.0
+    }
+  },
+  "independent_review": {
+    "identity": "/root/affinity_review",
+    "passes": 1,
+    "P0": 0,
+    "P1": 0,
+    "mode": "read_only",
+    "coverage_caveats": "INDEPENDENT_REVIEW.md"
+  },
+  "preservation": {
+    "all_prior_paths_unchanged": true,
+    "scientific_script_unchanged_since_execution": true,
+    "evidence_payload_copied_without_reserialization": true,
+    "github_log_encoding": "lossless UTF-8 text in JSON content",
+    "actions_archive_downloaded": false,
+    "actions_archive_hash_verified": false
+  },
+  "ordinary_ci": {
+    "classification": "FAIL_PREEXISTING_COMMITTED_FEATURE_RANGE_WHITESPACE",
+    "jobs": [
+      101612247272,
+      101612322554
+    ],
+    "repository_pytest": "SKIPPED"
+  },
+  "figure": {
+    "visual_inspection": true,
+    "svg_serialization_repaired": true,
+    "numerical_payload_unchanged": true,
+    "physical_cosmology_claim": false
+  },
+  "not_performed": [
+    "original BASS replay",
+    "PR77 suite replay",
+    "time integration",
+    "provider admission",
+    "multi-bin study",
+    "merge",
+    "ready transition"
+  ],
+  "next": "REC_MULTI_BIN_AFFINITY_COMPATIBILITY_RESEARCH"
+}
