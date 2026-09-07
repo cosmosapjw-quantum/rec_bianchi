@@ -1,0 +1,42 @@
+name: REC fixed-map single-field composite JVP
+on:
+  push:
+    branches:
+      - research/rec-fixed-map-single-field-jvp-20260907-r1
+    paths:
+      - docs/research/rec_fixed_map_single_field_jvp_20260907/composite_probe.py
+      - docs/research/rec_fixed_map_single_field_jvp_20260907/test_composite.py
+      - docs/research/rec_fixed_map_single_field_jvp_20260907/run.py
+      - .github/workflows/rec-fixed-map-single-field-jvp.yml
+permissions:
+  contents: read
+jobs:
+  composite:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 격리 연구 환경
+        run: |
+          python -m venv "$RUNNER_TEMP/rec-jvp-venv"
+          "$RUNNER_TEMP/rec-jvp-venv/bin/python" -m pip install numpy==2.2.6 scipy==1.15.3 sympy==1.14.0 mpmath==1.3.0
+      - name: 고정 map의 단일 상태 합성 미분
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          "$RUNNER_TEMP/rec-jvp-venv/bin/python" -B docs/research/rec_fixed_map_single_field_jvp_20260907/run.py --out "$RUNNER_TEMP/rec-composite-result"
+      - name: 실패 포함 결과 보존
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-fixed-map-jvp-${{ github.sha }}
+          path: ${{ runner.temp }}/rec-composite-result
+          if-no-files-found: warn
+          retention-days: 30
