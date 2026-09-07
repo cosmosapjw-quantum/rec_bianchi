@@ -120,7 +120,7 @@ def main():
                 detail.legend(loc='lower left',ncol=2,frameon=False)
                 detail.set_title('Curved emission, psi = u²; positive-error detail')
                 full.set_yscale('symlog',linthresh=1e-16);full.set_ylim(0,max(values)*1.6)
-                full.set_yticks([0,1e-16,1e-8]);full.set_yticklabels(['0','1e-16','1e-8'])
+                full.set_yticks([0,1e-8]);full.set_yticklabels(['0','1e-8'])
                 full.set_ylabel('Full range')
                 full.set_title('Symlog: linear for |error| <= 1e-16; zero retained')
                 for axis in (detail,full):
