@@ -138,7 +138,7 @@ renderer는 이 성공 lane의 **저장된 CSV**와 RESULT/PROCESS만 소비해 
 [RENDER_RECEIPT](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/7941bac2751778136322806e34b46320192f2d5f/docs/research/rec_multi_bin_local_completion_20260907/local_returns/20260907T070853Z/figures/attempt01/RENDER_RECEIPT.json)의 세 입력 SHA256을
 원본과 대조했다. 수치 검사 재실행 없이 렌더 1회, 표시 수리 0회다.
 [VISUAL_REVIEW.json](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/7941bac2751778136322806e34b46320192f2d5f/docs/research/rec_multi_bin_local_completion_20260907/local_returns/20260907T070853Z/VISUAL_REVIEW.json)은 별도 후속 시각검토 기록이다.
-원본 RESULT/PROCESS/RENDER의 작성 당시 `visual_audit=NOT_PERFORMED`를 소급
+원본 RESULT/LOCAL_RETURN/RENDER의 작성 당시 `visual_audit=NOT_PERFORMED`를 소급
 수정하지 않았다. 이 그림은 binary64 오차 진단이며 grid-convergence,
 물리 시간진화 또는 80자리 구현 정확도 그림이 아니다.
 
@@ -190,7 +190,7 @@ stdout 항목은 이 문자열을 원래 경로로 복원한 뒤 검증한다. �
 [독립 read-only 과학/source 검토](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/7941bac2751778136322806e34b46320192f2d5f/docs/research/rec_multi_bin_local_completion_20260907/local_returns/20260907T070853Z/INDEPENDENT_REVIEW.md)는 1회 PASS,
 범위 내 CONCERN/FAIL 0건이다. reviewer는 새 numerical/render 실행을 하지
 않았으며 관측 증거와 수학·source를 검토했다. review-of-review는 하지 않았다.
-[VALIDATION_MATRIX.md](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/7941bac2751778136322806e34b46320192f2d5f/docs/research/rec_multi_bin_local_completion_20260907/local_returns/20260907T070853Z/VALIDATION_MATRIX.md)에 항목별 한계를 구분했다.
+[VALIDATION_MATRIX.md](VALIDATION_MATRIX.md)에 항목별 한계를 구분했다.
 
 ## 남겨 둔 과학적 경계
 

@@ -13,7 +13,7 @@
 | Historical original artifact and PNG audit | NOT_TESTED | Raw byte intake, full member manifest and original PNG visual review remain incomplete. |
 | Physical source, provider, full repository, grid refinement | NOT_TESTED | Out of scope; physical flags remain false. |
 
-Raw PROCESS/RESULT/RENDER_RECEIPT visual_audit fields remain their original
+Raw LOCAL_RETURN/RESULT/RENDER_RECEIPT visual_audit fields remain their original
 NOT_PERFORMED values. The later human-visible image inspection is a separate
 VISUAL_REVIEW.json; no historical record has been rewritten.
 
