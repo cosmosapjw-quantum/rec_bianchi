@@ -1,0 +1,156 @@
+{
+  "classification": "COMPLETED_BOUNDED_WEAK_DIAGNOSTIC_WITH_RESULT_AND_VISUAL_REVIEW",
+  "task": "REC_TARGET_GRID_REFINEMENT_WITH_FIXED_REFERENCE_MEASURE",
+  "slice": "FIRST_WEAK_CONSISTENCY_PROBE",
+  "execution_commit": "4a16d7c0f79408e08c8be57923881cd4120c012a",
+  "execution_tree": "603966984d089f8fb402e1d04419a5b5043c2de8",
+  "actual_process_exit": 0,
+  "numerical_runs": 1,
+  "numerical_source_repairs": 0,
+  "rows": 288,
+  "independent_discrete_oracles": 8,
+  "direct_table_state_references": 6,
+  "new_unittest_count": "NOT_APPLICABLE; script require assertions, not a unittest suite",
+  "old_test_replays": 0,
+  "harness_authority": "02ceeb6dc2e0568cefede48b6f9928799e61ac74",
+  "scientific_contract_variant": "ATTACHED_UNIFORM_MEASURE_20_OVER_1_MINUS_2EPS",
+  "different_remote_nonuniform_draft_not_executed": "dcea5acec4bf74d7687f57c3680f12ab6997e8aa",
+  "analysis": {
+    "rows": 288,
+    "oracle_comparisons": 8,
+    "direct_references": 6,
+    "max_oracle_primal_scaled_error": 1.0255644258692255e-17,
+    "max_oracle_jvp_scaled_error": 5.135036607930968e-18,
+    "saved_decomposition_residuals": {
+      "moment": 3.435904447242344e-16,
+      "jvp": 3.677613769070831e-16
+    },
+    "exact_supplied_witness": {
+      "deposited_u2": "9/16",
+      "direct_u2": "17/32",
+      "defect": "1/32"
+    },
+    "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+    "physical_source_authenticated": false,
+    "provider_admitted": false,
+    "numerical_tests_replayed": false
+  },
+  "curved_emission_u2": [
+    {
+      "table": "base",
+      "read": "chi",
+      "case": "curved_emission",
+      "power": 2,
+      "N5_moment_error": 0.007490007559201206,
+      "N129_moment_error": 1.7786672119601832e-06,
+      "N5_jvp_error": 0.008046298739792401,
+      "N129_jvp_error": 2.168260833407265e-06,
+      "local_moment_orders": [
+        2.0046239143102804,
+        1.978662575815869,
+        1.9036776347339786,
+        1.673163562687364,
+        4.47982716372768
+      ],
+      "local_jvp_orders": [
+        2.0167423095359394,
+        1.9839100927491098,
+        1.9092577041002017,
+        1.6872459037547418,
+        4.260415259515053
+      ]
+    },
+    {
+      "table": "base",
+      "read": "log_control",
+      "case": "curved_emission",
+      "power": 2,
+      "N5_moment_error": 0.022446960413030126,
+      "N129_moment_error": 7.966116807256451e-06,
+      "N5_jvp_error": 0.0075852710339372464,
+      "N129_jvp_error": 9.11962961658297e-06,
+      "local_moment_orders": [
+        2.071189950943051,
+        2.069366365441072,
+        1.9926105402605452,
+        1.7885048391866827,
+        3.5386841496328425
+      ],
+      "local_jvp_orders": [
+        1.6355618058820214,
+        2.08682911762171,
+        2.3277481016817716,
+        2.707417509899649,
+        0.9424532486285856
+      ]
+    },
+    {
+      "table": "hires",
+      "read": "chi",
+      "case": "curved_emission",
+      "power": 2,
+      "N5_moment_error": 0.007488519581519193,
+      "N129_moment_error": 7.12058332696941e-06,
+      "N5_jvp_error": 0.008044544515979274,
+      "N129_jvp_error": 7.572710468473076e-06,
+      "local_moment_orders": [
+        2.008542747013642,
+        2.008595991639186,
+        1.9981658942698943,
+        1.9454368574286642,
+        2.0777278988966934
+      ],
+      "local_jvp_orders": [
+        2.0204591742579803,
+        2.0123466972463633,
+        1.9997323628494088,
+        1.9502825440160239,
+        2.0701644733915883
+      ]
+    },
+    {
+      "table": "hires",
+      "read": "log_control",
+      "case": "curved_emission",
+      "power": 2,
+      "N5_moment_error": 0.022439281009885514,
+      "N129_moment_error": 1.781870346195813e-05,
+      "N5_jvp_error": 0.007579428937099036,
+      "N129_jvp_error": 5.489880663317459e-06,
+      "local_moment_orders": [
+        2.0736725697185476,
+        2.0904397662728185,
+        2.062796773452245,
+        2.0024296571715716,
+        2.069079602293494
+      ],
+      "local_jvp_orders": [
+        1.6343778193947553,
+        2.0743564277839086,
+        2.2616856645427825,
+        2.3285437865252074,
+        2.1321349519121635
+      ]
+    }
+  ],
+  "max_curved_chi_error_over_bound": 0.04672407707618724,
+  "independent_review": "PASS_WITH_EXPLICIT_CLAIM_LIMITS",
+  "final_four_png_visual_review": "PASS",
+  "numerical_failures": [],
+  "display_findings": [
+    "original symlog autoscale negative absolute-error area and compressed curve",
+    "first saved-only display: crowded zero/1e-16 labels at 90 mm"
+  ],
+  "display_final": "fixed in postprocess attempt02; raw originals preserved; no numerical replay",
+  "scope_not_claimed": [
+    "universal observed second order",
+    "log-control chi-bound",
+    "physical measure or provider",
+    "atomic continuum truth",
+    "time-integrated solver convergence"
+  ],
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "github_actions_used": false
+}
