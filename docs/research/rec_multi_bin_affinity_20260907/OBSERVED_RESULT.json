@@ -1,0 +1,114 @@
+{
+  "record_kind": "STRUCTURED_READBACK_OF_HOSTED_JOB_SUMMARY_NOT_ORIGINAL_RESULT_BYTES",
+  "task": "REC_MULTI_BIN_AFFINITY_COMPATIBILITY_RESEARCH",
+  "classification": "PASS_BOUNDED_MULTI_BIN_AFFINITY_JVP",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "execution": {
+    "source_commit": "2e3b73972ee298d44efdfb10016e314f58b0bada",
+    "source_tree": "471442ce757fde701340729cd1abde281fd0db01",
+    "parent_commit": "a1acf4037f68131ac4c6068eb0d450ef7e51bc97",
+    "workflow_sha": "2e3b73972ee298d44efdfb10016e314f58b0bada",
+    "context": "GITHUB_ACTIONS_PUSH_EXACT_SOURCE",
+    "run_id": 34087807264,
+    "job_id": 101635113796,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/34087807264/job/101635113796",
+    "command": ["/home/runner/work/_temp/rec-multibin-venv/bin/python", "-B", "docs/research/rec_multi_bin_affinity_20260907/run_study.py", "--out", "/home/runner/work/_temp/rec-multibin-result"],
+    "command_source": "actual workflow step; the script's sys.argv record omits interpreter flag -B",
+    "cwd": "/home/runner/work/rec_bianchi/rec_bianchi",
+    "attempt": 1,
+    "exit_code": 0,
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "unittest_seconds": 14.955,
+    "runner_elapsed_seconds": 16.80558112,
+    "initial_git_status": "",
+    "final_git_status": "",
+    "original_bass_replayed": false,
+    "previous_studies_replayed": false,
+    "science_source_repairs_after_execution": 0,
+    "environment": {"python": "3.12.14", "numpy": "2.2.6", "scipy": "1.15.3", "mpmath": "1.3.0", "sympy": "1.14.0", "matplotlib": "3.10.3"}
+  },
+  "test_ids_all_pass": [
+    "test_study.Checks.test_01_original_tables_and_fixed_partition",
+    "test_study.Checks.test_02_binwise_affinity_and_both_normalizations",
+    "test_study.Checks.test_03_common_population_aggregate_counterexample",
+    "test_study.Checks.test_04_composite_jvp_against_independent_nonlinear_primal",
+    "test_study.Checks.test_05_finite_nonthermal_null_and_its_tangent",
+    "test_study.Checks.test_06_multi_bin_linearized_metric_and_rank",
+    "test_study.Checks.test_07_invalid_input_and_no_mutation"
+  ],
+  "source_blobs_verified_before_and_after": {
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "26ddc41e24fadf0bdd19f1924e1a429d602d9c19",
+    "src/full_bianchi_hyrec/trajectory/com_source_deposition.py": "a3662cf399f14b7148d880266825be12baf934a0",
+    "docs/research/rec_2s_base_hires_response/check_response.py": "9c0151a93ff1ec8fb1ee8738f75f188e7d719cd8",
+    "docs/research/rec_2s_base_hires_response/INPUTS.json": "2fbfc82cfb36ebcd9d461b23efaf209b4d864eb2"
+  },
+  "manufactured_state": {
+    "target_u": [9.313225746154785e-10, 0.25, 0.5, 0.75, 0.9999999990686774],
+    "mode_measure_m3": [2.0, 4.0, 8.0, 4.0, 2.0],
+    "nH_m3": 8.0,
+    "H_s_inv": 4.0,
+    "lambda": 2,
+    "active_atomic_population_sum": 0.5625,
+    "common_eta": -0.01118976872514943,
+    "common_eta_selection_rule": "-min(delta_eff_base,delta_eff_hires)/2; one common population for both tables",
+    "B_role": "declared nonnegative linear-energy partition, not authenticated physical deposition",
+    "angular_role": "one scalar slot, not a physical angular quadrature"
+  },
+  "counterexample": [
+    {"table": "base", "bins": 140, "raw_sum_s_inv": 8.2245807524349, "normalized_sum_s_inv": 8.2206, "normalization_factor": 0.9995159932700859, "delta_eff": 0.02238493049350998, "chi_entropy_per_H_kB_s": 0.00028173611409276625, "log_entropy_per_H_kB_s": -0.0002603135345552853, "log_read_entropy_proxy_per_H_kB_s": 0.0005270804852294076, "chi_event_per_H_s": -0.025178010467683663, "log_event_per_H_s": 0.023263531262288358},
+    {"table": "hires", "bins": 408, "raw_sum_s_inv": 8.224707551416, "normalized_sum_s_inv": 8.220599999999997, "normalization_factor": 0.9995005838942814, "delta_eff": 0.02237953745029886, "chi_entropy_per_H_kB_s": 0.00028167186474992016, "log_entropy_per_H_kB_s": -0.0002601446373071536, "log_read_entropy_proxy_per_H_kB_s": 0.0005284552517908059, "chi_event_per_H_s": -0.025172268674048415, "log_event_per_H_s": 0.023248437362469676}
+  ],
+  "jvp": {
+    "directional_vector_comparisons": 84,
+    "max_scaled_jvp_error": 6.4310422961310704e-15,
+    "max_scaled_primal_error": 3.9470123103446857e-16,
+    "scale": "abs(error)/(1+abs(reference))",
+    "tolerance": 9.094947017729282e-13,
+    "reference": "independent nonlinear primal, mpmath80/120, central h=2^-32; mixed directions h=2^-36 refinement",
+    "precision_check_required": "80/120 difference < 1e-60",
+    "step_refinement_required": "mixed-direction difference < 1e-16",
+    "not_a_rigorous_global_error_bound": true
+  },
+  "nonthermal_null": [
+    {"table": "base", "max_relative_nodal_occupation_change": 0.06666666653007192, "max_bin_abs_net_over_forward_plus_reverse": 2.883786839040029e-16, "net_event_per_H_s": 2.3809079707781677e-16, "max_abs_null_tangent": 3.698154551649891e-18},
+    {"table": "hires", "max_relative_nodal_occupation_change": 0.06666666653007192, "max_bin_abs_net_over_forward_plus_reverse": 3.4120651288607145e-16, "net_event_per_H_s": 2.529443668408682e-16, "max_abs_null_tangent": 8.638191335494512e-19}
+  ],
+  "linearization": [
+    {"table": "base", "exact_rational_stencil_rank": 3, "count_state_dimension": 7, "ideal_nullity": 4, "independent_bin_indices": [0, 1, 16], "scaled_matrix_error": 3.0691398850882635e-16, "physical_time_eigenvalues_s_inv": [-47.36255821943287, -6.399384196320392, -1.310172049041244, -1.3472517941890027e-14, -4.3569621474600424e-16, -2.3912947661977485e-16, 3.695701708969497e-16]},
+    {"table": "hires", "exact_rational_stencil_rank": 3, "count_state_dimension": 7, "ideal_nullity": 4, "independent_bin_indices": [0, 1, 34], "scaled_matrix_error": 3.1949519454564116e-16, "physical_time_eigenvalues_s_inv": [-47.34718052407841, -6.397114331496724, -1.3091598548379755, -8.66714908476925e-15, -8.42804818760748e-16, -1.3047889184336542e-16, 5.401903090928157e-17]}
+  ],
+  "rank_qualification": "exact rational interpolation before rounding; floating matrix/spectrum are separate numerical diagnostics; no full-physics uniqueness claim",
+  "artifact": {
+    "id": 10005808072,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/34087807264/artifacts/10005808072",
+    "files_reported_by_upload": 10,
+    "size_in_bytes": 533789,
+    "sha256_reported_by_upload_and_metadata": "d57b26de66d26454733d7a29848fd37381cc86020115a90cdcd1efd0c1530694",
+    "expires_at": "2026-10-07T05:42:51Z",
+    "connector_download_succeeded": true,
+    "independent_archive_rehash_in_main_runtime": false,
+    "independent_member_manifest_check_in_main_runtime": false,
+    "raw_data_permanent_git_mirroring": "PENDING_ARTIFACT_ONLY_INTAKE",
+    "file_sha256_reported_by_runner": {
+      "BIN_DIAGNOSTICS.csv": "bc01e575841d35e919802bc77223d5adaf2fd6d1b99d5c3056d9d7718bd2335d",
+      "CASE_SUMMARY.csv": "5e4785288f8c8e8457ec345948313aaef189b0d8703cf16c11acbb2725253799",
+      "ENTROPY_CURVE.csv": "41bc9707aee69bd82fb1b4c776bb5330611b836fba73f5ca63ecfbc6dcc3fb33",
+      "JVP_COMPARISON.csv": "196f5fcdd98f2fb6718944ae2e02cfaf718d2c88d5407c88f94ab2a61802dfc7",
+      "RESULT.json": "32e3095088e741560bc6c6c7ade50767ee506b54dbe6eb5bf49f0075ee524fca",
+      "SUMMARY.json": "211f913d6295826c288b59860b30d8071b8d7f9d54acba8607eb27d85d062f84",
+      "aggregate_entropy.png": "97dab02249ca0bfcec46f589be82dacf92b4702c068e290f5eb120e2ef744bc7",
+      "bin_affinity.png": "85a4e5b086312c74ea2ee0dedcd2ba45d6f18b47f53e8e557edcfd0564f5ab61",
+      "unittest.log": "8581d3396e93ba29fc08d93805d4e56533209d7942a03aa3af955205977c03a3"
+    }
+  },
+  "visual_audit": {"plots_generated": 2, "rendered_inspection": "NOT_PERFORMED", "main_container": "PRESTART_CLIENT_ERROR", "wolfram_artifact_fallback": "MCP_SSE_HTTP_404_BEFORE_EVALUATION"},
+  "review": {"physics_math": "SAME_AUTHOR_SCOPED_REVIEW", "physics_math_code": "SAME_AUTHOR_SCOPED_REVIEW", "new_independent_reviewer_count": 0},
+  "general_ci": {"run_id": 34087830592, "job_id": 101635176981, "checkout": "d06b4c1705d9eb6062baa9673f2cb836eef7988e", "checkout_role": "synthetic PR merge ref, not an actual merge", "status": "FAIL", "cause": "committed_feature_range whitespace in seven pre-existing paths", "feature_base": "e6b64e0df25d0b1db7cf8b776866db0afc14721e", "package_import_smoke": "PASS", "repository_pytest": "SKIPPED", "fresh_full_log_read": true, "new_source_diff_whitespace": "PASS_IN_DEDICATED_RUN", "subsequent_document_child_ci": "NOT_REVIEWED"},
+  "next_scientific_work": "REC_TARGET_GRID_REFINEMENT_WITH_FIXED_REFERENCE_MEASURE",
+  "next_scientific_work_started": false
+}
