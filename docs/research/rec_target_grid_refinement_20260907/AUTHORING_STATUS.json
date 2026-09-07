@@ -1,0 +1,46 @@
+{
+  "work_unit": "REC_TARGET_GRID_REFINEMENT_WITH_FIXED_REFERENCE_MEASURE",
+  "classification": "DERIVED_AND_SOURCE_AUTHORED_NOT_EXECUTED",
+  "base_commit": "59dafbd34bc21b1b885c716b7b8cc899636bbd60",
+  "base_tree": "c0d6a862567e111cfe92a6fd5a3c30051180e38e",
+  "accepted_predecessor": "ACCEPTED_BOUNDED_NULLSPACE_SUPPLEMENT",
+  "acceptance_comment": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/80#issuecomment-5567434296",
+  "claim": "NO_PASS_REC_PHYSICAL_SPLIT",
+  "physical_source_authenticated": false,
+  "provider_admitted": false,
+  "old_suites_replayed": false,
+  "production_or_previous_evidence_changed": false,
+  "github_actions_used": false,
+  "new_source_functions": "fixed continuum input, nested hats, common mass-lumped measure, original pair/COM composition, weak decomposition and independent primal",
+  "directly_derived": [
+    "mu_i = integral hat_i(u) 8*(1+u^2) du",
+    "weak read/scatter/cross error and its fixed-grid JVP",
+    "quadratic interpolation defect and -1/512 chi witness",
+    "conditional chi-read O(h^2) source and directional error envelopes",
+    "weak source moments cannot identify mu; state quadrature is separate",
+    "per-table weak source reference separates atomic-table and target-grid errors"
+  ],
+  "planned_only": {
+    "test_groups": 6,
+    "photon_grid_nodes": [5,9,17,33,65,129],
+    "weak_rows": 576,
+    "state_rows": 18,
+    "independent_jvp_comparisons": 16,
+    "bin_sample_rows": 2192,
+    "atomic_table_contrast_rows": 288,
+    "figures": "four diagnostics at 90/180 mm; eight PNGs"
+  },
+  "new_science_executions": 0,
+  "syntax_compilation": "NOT_PERFORMED",
+  "red_green_execution": "NOT_OBSERVED; test source authored first, runtime unavailable",
+  "cas_execution": "NOT_PERFORMED",
+  "plots_generated": 0,
+  "visual_audit": "NOT_PERFORMED",
+  "independent_review": "NOT_PERFORMED",
+  "author_review": "direct derivation then equation-to-code static review only",
+  "runtime_blockers": [
+    {"tool":"container.exec", "phase":"BEFORE_PROCESS_START", "error":"ClientError"},
+    {"tool":"python.exec", "phase":"BEFORE_PROCESS_START", "error":"ClientError"}
+  ],
+  "next_action": "Run only this new research in the existing local environment, inspect saved-data plots, repair evidence-driven within scope, return immutable Git evidence."
+}
