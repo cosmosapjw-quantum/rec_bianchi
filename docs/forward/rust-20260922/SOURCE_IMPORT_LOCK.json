@@ -1,0 +1,84 @@
+{
+  "schema_version": "REC_BIANCHI_SELECTED_HE_RUST_SOURCE_LOCK_V3",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "base_commit": "5a09f3797210284f83a1a1adb0e0092d1ac48475",
+  "target_branch": "forward/rust-he-sources-20260922",
+  "authority": {
+    "A7_name": "BASS_ATOMIC_A7_T5_THEORY_READY_FINAL_20260922T1704KST.zip",
+    "A7_sha256": "9ef3929dd1164c482cb200a7c1a10e57e1e0a78c6ab47c9cc8dfd8f5fc23ce6a",
+    "A7_size_bytes": 8541005,
+    "A6_name": "BASS_ATOMIC_A6_T4_SOURCE_TRANSPORT_CLOSURE_FINAL_20260922T1507KST.zip",
+    "A6_sha256": "d8a5f4afe2ab619407f55e9ac9f5b0c9e5196689301b78c1cc98138e9c18a628",
+    "adopted": "WU29 RESULT + WU30 RESULT + WU31-A1 amendment + T4 interface/coverage/ledger/test matrix",
+    "not_adopted": "WU31 original, WU32, unprovided low-P numerical table, Bhatia-low/Jacobs-high stitched model"
+  },
+  "source_subset": [
+    {
+      "path": "source_subset/plans/LOCAL_CODEX_T4_TEST_MATRIX.json",
+      "size_bytes": 2091,
+      "sha256": "4008bb2d497c68b0579343c9e5ad223a4f0db7a7909ae0636c1dfa3b003865b0"
+    },
+    {
+      "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+      "size_bytes": 11862,
+      "sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63"
+    },
+    {
+      "path": "source_subset/reports/02_T4_CONSERVATION_EQUILIBRIUM_FRAME_AUDIT_KO.md",
+      "size_bytes": 6811,
+      "sha256": "87bd1568e99dacc2683323015de1f54aac90ac68a4af197116d0cc99f87d6501"
+    },
+    {
+      "path": "source_subset/reports/03_T4_COVERAGE_AND_MISSING_PHYSICS_KO.md",
+      "size_bytes": 4492,
+      "sha256": "2700cefb6218478479e429f1aa8c70f169d0ef2851b85b5803d36c52e4fe0c4b"
+    },
+    {
+      "path": "source_subset/schemas/SELECTED_HE_SOURCE_LEDGER.json",
+      "size_bytes": 1050,
+      "sha256": "fd64a5384d7b3d4164fc3f25045b0f23825794534ebdb879ae8f6fb900dbaef3"
+    },
+    {
+      "path": "source_subset/schemas/SOURCE_COVERAGE.json",
+      "size_bytes": 1144,
+      "sha256": "84c7d4afd59f83d387c927361ad1e13b5e8553525d50c0d2e4cb7c00875afec1"
+    },
+    {
+      "path": "source_subset/schemas/T4_SOURCE_INTERFACE_SCHEMA.json",
+      "size_bytes": 1691,
+      "sha256": "c68055fe2fe83f5d4f97d436501e392d63a3fdf5fa62614478d483a8e70441d3"
+    },
+    {
+      "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+      "size_bytes": 31983,
+      "sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519"
+    },
+    {
+      "path": "source_subset/sources/BASS_WU30_20260914_RESULT_v1.txt",
+      "size_bytes": 24395,
+      "sha256": "5bdbc5189838c06849dbebabf77eea29a80870df5b01be864d5dac64f99f8b71"
+    },
+    {
+      "path": "source_subset/sources/BASS_WU31_20260914_AMENDMENT_WU31_A1_v1.txt",
+      "size_bytes": 5616,
+      "sha256": "ee1b36beb349aff47d9697b49b80f7d2276c5e7365b61031c11f4b18298ce06d"
+    }
+  ],
+  "preservation": {
+    "git": "HASH_LOCK_ONLY_FOR_RAW_AUTHORITY_SUBSET",
+    "durable_backup": "RAW_SOURCE_SUBSET_INCLUDED_IN_FINAL_CREATE_ONLY_DUAL_BACKUP_ARTIFACT"
+  },
+  "oracle_pins": {
+    "weak_jvp_return": "results/rec-grid-weak-20260907T114805Z@6873d13ce65c46e7311790074e1069266cd31c50",
+    "study_py_commit": "59dafbd34bc21b1b885c716b7b8cc899636bbd60",
+    "study_py_blob": "f1ad5926de6090e8317961c6cc58914cfd5c8ba3",
+    "study_py_status": "PINNED_NOT_EXECUTED_IN_THIS_FORWARD_PORT"
+  },
+  "runtime": {
+    "rustc": "1.94.1 (e408947bf 2026-03-25)",
+    "cargo": "1.94.1 (29ea6fb6a 2026-03-24)",
+    "dependencies": "NONE_FOR_REC_MICROPHYSICS",
+    "python_default_dependency_added": false
+  },
+  "claim_boundary": "FIXED_INPUT_PURE_RUST_SELECTED_HE_SOURCE_PORT_ONLY; not full recombination solver, not E1C dynamic macro, not G10 closure"
+}
