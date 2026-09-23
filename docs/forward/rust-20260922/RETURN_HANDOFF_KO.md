@@ -1,15 +1,9 @@
-# selected-He Rust forward-port 반환
+# Task8 partial return
 
-STATUS=`FIXED_INPUT_SELECTED_HE_SOURCE_PARITY_PASS__DELIVERY_SHA_IS_BRANCH_TIP`
+METADATA_DISPATCH_PUBLISHED__SOURCE_COMMIT_PUSH_PENDING
 
-- repository: `cosmosapjw-quantum/rec_bianchi`
-- base: `5a09f3797210284f83a1a1adb0e0092d1ac48475`
-- target branch: `forward/rust-he-sources-20260922`
-- source-code commit: `1bc9d9527deed4a153dbcb7edbb6c7b56016f668`
-- exact delivery SHA: 이 문서를 포함하는 branch tip을 Git remote에서 확인하여 외부 반환에 기록한다. self-referential commit SHA는 파일 안에 고정하지 않는다.
+누적 source/fixtures/원문은 task8/TRANSPORT_DISPATCH.json에 고정한 package에 있다. Git에는 이 인계·상태 문서만 게시했다. source candidate/tested/delivery SHA는 없다.
 
-구현된 callable API: `he_bb_source`, `he_p_bf_source`, `he_s_bf_source`, `he_two_photon_pair_source`, `assemble_he_event_ledger`.
+현재-turn Python harness32·T4 map validator18 및 static map exit0은 확인했다. Rust compilation/test/parity는 미실행이다. 과거 PASS 문서는 historical 경로와 Git history에 보존하고 이번 검증으로 승계하지 않는다.
 
-검증: Rust 1.94.1에서 `cargo fmt --check`, `cargo test --locked` (15 tests), Python fixed-source parity runner, `cargo clippy --all-targets -- -D warnings`가 모두 exit 0이다. 상세 원로그는 `logs/`에 있다.
-
-범위: material-frame fixed-input selected-He source parity만 닫는다. finite-tilt normal-frame screen/boost transport, E1C split-domain ownership replacement, full HyRec trajectory, S4/S5 promotion, G10, G11-G13는 미승격 상태를 유지한다.
+Local Codex가 package를 안전하게 적용하여 실제 source C1을 만든 다음 기존 세 mandatory gates와 Gate P를 실행하고 같은 branch에 source/evidence를 push한다. package 적용 전 dispatch SHA를 code candidate로 쓰지 않는다.

@@ -1,33 +1,37 @@
 {
-  "schema_version": "REC_MICROPHYSICS_T4_COVERAGE_V1",
-  "mandatory_port_tests": {
-    "D86_canonical_and_outband": "PASS",
-    "vacuum_BB_B_minus_AW": "PASS",
-    "LTE_represented_modes": "PASS_SCALED_4096_EPS",
-    "complex_WP_F_trace": "PASS",
-    "He_nuclei_charge": "PASS",
-    "BF_event_signs": "PASS_BY_EVENT_MATRIX",
-    "pair_two_photons_one_event": "PASS",
-    "energy_ledger": "PASS",
-    "species_drift_reject": "PASS",
-    "below_threshold_zero_vs_unprovided_missing": "PASS"
-  },
-  "T4_matrix": {
-    "L01": "PASS",
-    "L02": "PASS_SCALAR_ENERGY_LEDGER",
-    "L03": "PASS_FOR_REPRESENTED_MATERIAL_FRAME_MODES",
-    "L04": "DEFERRED_NORMAL_FRAME_BOOST",
-    "L05": "DEFERRED_SCREEN_TRANSFORM",
-    "L06": "DEFERRED_TRANSPORT_CONTINUITY",
-    "L07": "DEFERRED_DIRECTION_LINE_SUPPORT",
-    "L08": "PARTIAL_MATERIAL_ENERGY_SIDE_ONLY",
-    "L09": "PARTIAL_MATERIAL_PAIR_SIDE_ONLY",
-    "L10": "PASS",
-    "L11": "PASS",
-    "L12": "PASS",
-    "L13": "PASS",
-    "L14": "DEFERRED_VECTOR_FOUR_FORCE_INTEGRATION",
-    "L15": "PASS"
-  },
-  "claim": "This coverage is a fixed-source Rust parity result, not a promotion of S4/S5 or G10."
+  "schema_version": "REC_HE_TASK8_PENDING_COVERAGE_V1",
+  "source_tree_published": false,
+  "gate_p": "NOT_RUN",
+  "gate_i": "DEFERRED_CONSUMER",
+  "rust_tests_authored_in_package": 75,
+  "rust_tests_executed_here": 0,
+  "parity_cases_authored": 251,
+  "parity_components_expected": 3027,
+  "actual_rust_parity": "NOT_RUN",
+  "canonical_mapping_location": "candidate/docs/forward/rust-20260922/task7/T4_COVERAGE_MAP.json inside source package",
+  "package_dispatch": "task8/TRANSPORT_DISPATCH.json",
+  "historical_coverage": "historical/49d64b2660f227f6e4d888d6c02ead266d97a138/PORT_TEST_COVERAGE.json",
+  "gate_p_ids": [
+    "T4L01",
+    "T4L02",
+    "T4L03",
+    "T4L08",
+    "T4L09",
+    "T4L10",
+    "T4L11",
+    "T4L12",
+    "T4L13",
+    "T4L14",
+    "T4L15"
+  ],
+  "consumer_only": [
+    "T4L04",
+    "T4L05",
+    "T4L06",
+    "T4L07"
+  ],
+  "material_consumer_split": [
+    "T4L08",
+    "T4L09"
+  ]
 }
