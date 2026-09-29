@@ -1,56 +1,54 @@
 {
-  "schema_version": "REC_BIANCHI_RUST_FORWARD_STATUS_V9_TASK8",
+  "schema_version": "REC_BIANCHI_RUST_FORWARD_STATUS_V10_LOCAL_TESTED",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "original_base_commit": "5a09f3797210284f83a1a1adb0e0092d1ac48475",
-  "baseline_commit": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "dispatch_commit": "c99a3579064a9691ba33809fc062ddc0a35396b7",
   "target_branch": "forward/rust-he-sources-20260922",
-  "work_unit": "TASK8_SOURCE_DELIVERY_LOCAL_TRANSPORT_HANDOFF",
-  "task1_status": "SOURCE_STATE_READY_LOCAL_OVERLAY",
-  "port_status": "CODE_WRITTEN_UNCOMPILED__AWAITING_LOCAL_CODEX",
-  "candidate_commit_sha": null,
-  "tested_commit_sha": null,
-  "delivery_commit_sha": null,
-  "allow_consumer_integration": false,
-  "completed": [
-    "A7/A6 actual manifest and identity",
-    "10 selected raw members restored",
-    "14 source/code line mappings",
-    "historical PASS metadata retained separately",
-    "known-gap and pending state written",
-    "input guards and BF energy-domain adapter authored",
-    "2 preregistered fixture/acceptance JSON files",
-    "11 Rust tests authored, not executed",
-    "BB per-mode kernel and one-owner angular assembly authored",
-    "sharp-line delta_J coefficient and moment diagnostics authored",
-    "12 Task3 Rust tests authored, not executed",
-    "existing tests/example BB call sites migrated to the approved API",
-    "actual pair screen-overlap and two tagged marginal kernels authored",
-    "full ordered exchange-closed pair quadrature with independent number/energy moments authored",
-    "15 Task4 Rust tests authored, not executed",
-    "existing tests8/example1 pair calls explicitly migrated",
-    "S scalar atomic gain/loss bracket independently authored",
-    "BF weighted-event/heat/photon moments authored",
-    "canonical SI five-channel material ledger and directional four-force authored",
-    "17 Task5 Rust tests authored, not executed",
-    "independent component-index reference and frozen source requests authored",
-    "raw full-observable Rust adapter authored, uncompiled",
-    "strict Python comparator and real failure receipts authored",
-    "32 Python harness tests observed pass; NOT Rust parity",
-    "15 original T4 IDs/classes/descriptions preserved in exact source-bound map",
-    "11 material gate obligations and 6 consumer obligations separated; 2 original rows require both",
-    "5 supplemental Rust tests authored, not executed; 75 authored Rust tests total",
-    "18 static map-validator unit tests observed exit0; not T4 or Rust PASS"
-  ],
-  "not_performed": [
-    "Rust compilation/fmt/test/clippy",
-    "Rust source parity",
-    "scientific execution",
-    "complete source commit/push"
-  ],
+  "source_candidate_commit": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
+  "tested_commit": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "delivery_commit": "RESOLVE_FROM_REMOTE_REF_AFTER_EVIDENCE_COMMIT",
+  "port_status": "FIXED_INPUT_TESTS_PASS__REVIEW_RUNTIME_HOLD",
+  "mandatory_tests": {
+    "cargo_fmt": "PASS_EXIT_0",
+    "cargo_test": "PASS_75_OF_75_EXIT_0",
+    "python_parity": "PASS_251_RECORDS_3027_COMPONENTS_111_EXPECTED_ERRORS_EXIT_0"
+  },
+  "first_failure": {
+    "source_commit": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
+    "cargo_fmt": "FAIL_EXIT_1",
+    "python_parity": "FAIL_EXIT_1_BB_JVP_CANCELLATION",
+    "retained": "task9/logs/initial"
+  },
   "source_lock": "SOURCE_IMPORT_LOCK.json",
-  "known_gaps": "KNOWN_GAPS_20260923.json",
-  "gate_status": "task7/GATE_P_I_POLICY.json",
-  "historical_record": "historical/49d64b2660f227f6e4d888d6c02ead266d97a138/FORWARD_STATUS.json",
+  "source_content_manifest": "task8/SOURCE_CONTENT_MANIFEST.sha256",
+  "execution_receipt": "task9/EXECUTION_RECEIPT.json",
+  "t4": {
+    "material_mapped_tests": "11_OF_11_IDS_OBSERVED_IN_75_TEST_PASS",
+    "static_map": "PASS_STATIC_ONLY",
+    "gate_p": "HOLD_INDEPENDENT_REVIEW_RUNTIME_BINDING",
+    "gate_i": "DEFERRED_CONSUMER",
+    "full_original_t4": "NOT_RUN"
+  },
+  "independent_review": "NOT_ADMITTED_CHILD_SANDBOX_MISMATCH__CORRECTED_REGISTRATION_REJECTED",
+  "allow_consumer_integration": false,
+  "domain": {
+    "P_bound_free_q": "JACOBS_HIGH_1_TO_1_4_ONLY",
+    "S_bound_free_q": "JACOBS_HIGH_1_TO_1_4_ONLY",
+    "two_photon_y": "D86_0_025_TO_0_975",
+    "out_of_domain": "TYPED_MISSING_AUTHORITY_OR_OUT_OF_BAND",
+    "below_threshold": "PHYSICAL_ZERO"
+  },
+  "backup": {
+    "artifact": "REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
+    "sha256": "38bb7b9488d9569c813c73fd5d11f1c66b766f08aff204ac8026b7d7430257da",
+    "bytes": 424424,
+    "dropbox": "UPLOAD_SUCCESS_R1",
+    "dropbox_id": "id:BSpOijBcT10AAAAAADv-Eg",
+    "google_drive": "UPLOAD_SUCCESS_R1",
+    "google_drive_id": "17yTxKPkvfOYn7M8KwPOwPXeXdE74ZhIr",
+    "receipt": "task9/BACKUP_RECEIPT.json",
+    "restore_verified": false
+  },
   "scientific_state_unchanged": {
     "S3": "accepted",
     "S4": "partial",
@@ -62,43 +60,5 @@
     "HOST4_physical": "HOLD",
     "HH_propagation": "unauthorized"
   },
-  "next_action": "Local Codex imports the hash-locked source package, commits the actual source candidate, runs Task9 gates, and pushes the source/evidence. GitHub dispatch publication alone is not Task8 source-publication completion.",
-  "publication_policy": "Task8 publishes complete unverified source candidate; no intermediate task is a tested or integrable candidate",
-  "task2_status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
-  "task2_evidence": "task2/TASK2_STATUS.json",
-  "task3_status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
-  "task3_evidence": "task3/TASK3_STATUS.json",
-  "task4_status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
-  "task4_evidence": "task4/TASK4_STATUS.json",
-  "task5_status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
-  "task5_evidence": "task5/TASK5_STATUS.json",
-  "task6_status": "HARNESS_AUTHORED__PYTHON_SELF_TESTED__RUST_UNCOMPILED",
-  "task6_evidence": "task6/TASK6_STATUS.json",
-  "task7_status": "T4_MAPPING_AND_SUPPLEMENTAL_TESTS_AUTHORED__LOCAL_VALIDATION_PENDING",
-  "task7_evidence": "task7/TASK7_STATUS.json",
-  "source_transport": {
-    "source_tree_applied_to_github": false,
-    "github_dispatch_commit_is_source_candidate": false,
-    "package_status": "COMPLETE_CUMULATIVE_SOURCE_READY",
-    "direct_git_result": "EXECUTION_FAILED_DNS",
-    "bulk_local_file_upload": "TOOL_NOT_EXPOSED",
-    "connector_text_metadata_writes": "AVAILABLE",
-    "policy": "Do not retype 1.3 MB of locked bytes through model text or claim a metadata-only commit contains the code."
-  },
-  "verification_here": {
-    "python_harness_self_tests": {
-      "exit": 0,
-      "tests": 32,
-      "rust_executions": 0
-    },
-    "t4_map_validator_self_tests": {
-      "exit": 0,
-      "tests": 18
-    },
-    "t4_static_map": {
-      "exit": 0,
-      "gate_p": "NOT_RUN"
-    },
-    "compiler": "NOT_RUN_BY_USER_POLICY"
-  }
+  "next_action": "Port may close at tested SHA. A separate exact-rev consumer integration in the other repo requires review binding/admission first. No automatic G10, E1C, S4/S5, or history work."
 }

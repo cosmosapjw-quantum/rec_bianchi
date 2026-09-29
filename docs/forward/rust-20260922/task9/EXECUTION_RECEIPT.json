@@ -1,0 +1,337 @@
+{
+  "schema": "REC_HE_RUST_FORWARD_EXECUTION_V1",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "base_sha": "5a09f3797210284f83a1a1adb0e0092d1ac48475",
+  "dispatch_sha": "c99a3579064a9691ba33809fc062ddc0a35396b7",
+  "initial_source_sha": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
+  "tested_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "source_manifest_sha256": "be9eb99ad5d82c6ab2613283bd777c0860c26b6d37b7dd1f1f66596168dc4890",
+  "reference_lock_sha256": "de4a27d4973a5c14f383e656925dd58354a0fdb070ad23c094aa2da3faa1388d",
+  "initial": [
+    {
+      "label": "cargo_fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:42:55.564683+00:00",
+      "end_utc": "2026-09-29T09:42:55.680816+00:00",
+      "exit": 1,
+      "stdout_bytes": 208671,
+      "stderr_bytes": 0,
+      "CARGO_NET_OFFLINE": "true",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/initial/cargo_fmt.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/initial/cargo_fmt.stderr.log",
+      "stdout_sha256": "3bb25c2a05b64ccc77158c4f1826fdc7345128bc06af2b9753851912d436ee8c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:42:55.681102+00:00",
+      "end_utc": "2026-09-29T09:42:56.588995+00:00",
+      "exit": 0,
+      "stdout_bytes": 4295,
+      "stderr_bytes": 91359,
+      "CARGO_NET_OFFLINE": "true",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/initial/cargo_test.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/initial/cargo_test.stderr.log",
+      "stdout_sha256": "3d1734a72eece66724b3551a6b3e542d79a5d8a8b781c9bf93956550b8be2cce",
+      "stderr_sha256": "139ee608fd4192234463dddd6f4ec840884622a5651892c14771082e74c2486b"
+    },
+    {
+      "label": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:42:56.589265+00:00",
+      "end_utc": "2026-09-29T09:42:56.676708+00:00",
+      "exit": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 178,
+      "CARGO_NET_OFFLINE": "true",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/initial/parity.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/initial/parity.stderr.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "27fd52f20f92a178c3e60ffa95112f24ff353f25a1f4eee2e917b4d85c3ba7d7"
+    }
+  ],
+  "tested": [
+    {
+      "label": "cargo_fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:45:07.684775+00:00",
+      "end_utc": "2026-09-29T09:45:07.772660+00:00",
+      "exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/tested/cargo_fmt.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/tested/cargo_fmt.stderr.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:45:07.772864+00:00",
+      "end_utc": "2026-09-29T09:45:08.290739+00:00",
+      "exit": 0,
+      "stdout_bytes": 4295,
+      "stderr_bytes": 34066,
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/tested/cargo_test.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/tested/cargo_test.stderr.log",
+      "stdout_sha256": "c5b34db3deac8c87be62c57c9f1e126f1767921642cb750d777bc723869dfd7e",
+      "stderr_sha256": "cdb2b4a58d199c82a679f818cf36a451ac069fa3eb0e241613a4752c28f315ac"
+    },
+    {
+      "label": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:45:08.290982+00:00",
+      "end_utc": "2026-09-29T09:45:08.372998+00:00",
+      "exit": 0,
+      "stdout_bytes": 529,
+      "stderr_bytes": 0,
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/tested/parity.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/tested/parity.stderr.log",
+      "stdout_sha256": "58d8effcc58971f2b93fcbb0a40b16882aedff56a8139387b9ef634fc8c05575",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "t4_map",
+      "argv": [
+        "python",
+        "docs/forward/rust-20260922/task7/check_t4_map.py"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:45:08.373174+00:00",
+      "end_utc": "2026-09-29T09:45:08.431167+00:00",
+      "exit": 0,
+      "stdout_bytes": 246,
+      "stderr_bytes": 0,
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/tested/t4_map.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/tested/t4_map.stderr.log",
+      "stdout_sha256": "35bb101d3593a80c762862d740edf89e95916f7e2308d719544efcf41e4888f9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "source_manifest",
+      "argv": [
+        "sha256sum",
+        "-c",
+        "docs/forward/rust-20260922/task8/SOURCE_CONTENT_MANIFEST.sha256"
+      ],
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "start_utc": "2026-09-29T09:45:08.431366+00:00",
+      "end_utc": "2026-09-29T09:45:08.434990+00:00",
+      "exit": 0,
+      "stdout_bytes": 2667,
+      "stderr_bytes": 0,
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "raw_stdout": "docs/forward/rust-20260922/task9/logs/tested/source_manifest.stdout.log",
+      "raw_stderr": "docs/forward/rust-20260922/task9/logs/tested/source_manifest.stderr.log",
+      "stdout_sha256": "40d906189cc3cdef662d5406b94b722d88a593d995aaf0bf27a01f2b3d37d908",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "rust_tests_observed": 75,
+  "t4_gate_p_mapped_tests": {
+    "T4L01": {
+      "mapped_test_symbols": [
+        "ledger_each_signed_channel",
+        "t4l01_event_matrix_exact_integer_null_vectors"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L02": {
+      "mapped_test_symbols": [
+        "bf_independent_heat_moment",
+        "ledger_each_signed_channel",
+        "pair_photon_count_energy_from_marginals",
+        "selected_material_ledger_combines_five_channels_once",
+        "t4l02_isolated_source_channel_energy_and_force"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L03": {
+      "mapped_test_symbols": [
+        "bb_lte_each_mode_584_ir",
+        "pair_lte_all_represented_modes",
+        "t4l03_bf_lte_both_gauges_nodes_and_midpoints"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L08": {
+      "mapped_test_symbols": [
+        "bf_assembly_applies_joule_and_angular_measure_once",
+        "bf_missing_zero_weight_is_not_physical_zero",
+        "bf_zero_vs_missing_vs_invalid",
+        "energy_and_width_measures_are_explicit",
+        "jacobs_energy_endpoint_roundtrip"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER"
+    },
+    "T4L09": {
+      "mapped_test_symbols": [
+        "pair_complex_transpose_reference",
+        "pair_exchange_contract_rejects_missing_or_mismatched_partner",
+        "pair_measure_factor_once",
+        "pair_perpendicular_vacuum_screen_overlap",
+        "pair_photon_count_energy_from_marginals",
+        "pair_swapped_tags_match"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER"
+    },
+    "T4L10": {
+      "mapped_test_symbols": [
+        "pbf_complex_component_reference",
+        "pbf_isotropic_scalar_non_lte",
+        "t4l10_isotropic_wp_keeps_complex_photon_matrix"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L11": {
+      "mapped_test_symbols": [
+        "bb_angular_weight_applied_once",
+        "bb_anisotropic_node_modes",
+        "bb_atom_photon_trace_complex",
+        "bb_same_wp_two_channels"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L12": {
+      "mapped_test_symbols": [
+        "bf_missing_zero_weight_is_not_physical_zero",
+        "bf_zero_vs_missing_vs_invalid",
+        "d86_all_twenty_nodes_and_reflection",
+        "d86_outside_band_error",
+        "jacobs_energy_endpoint_roundtrip",
+        "pair_lte_all_represented_modes",
+        "t4l03_bf_lte_both_gauges_nodes_and_midpoints"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L13": {
+      "mapped_test_symbols": [
+        "pair_integrated_event_passes_ledger_without_another_half",
+        "pair_material_moment_uses_one_full_tag_not_two",
+        "selected_material_ledger_combines_five_channels_once",
+        "t4l13_pbf_is_not_relabelled_as_584_decay"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L14": {
+      "mapped_test_symbols": [
+        "bb_material_momentum_survives_zero_leading_recoil_heat",
+        "bf_opposite_rays_cancel_momentum_not_energy",
+        "material_four_force_matches_photon_energy",
+        "pair_material_moment_uses_one_full_tag_not_two",
+        "t4l02_isolated_source_channel_energy_and_force"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    },
+    "T4L15": {
+      "mapped_test_symbols": [
+        "bf_assembly_invalid_measures_directions_and_drift",
+        "species_drift_bound_free_is_fail_closed"
+      ],
+      "observed_in_cargo_test": true,
+      "missing": [],
+      "scope": "MATERIAL_LIBRARY"
+    }
+  },
+  "parity": {
+    "records": 251,
+    "numeric_components": 3027,
+    "expected_error_records": 111,
+    "max_reference_scaled_difference": 1.836977083143999e-15,
+    "tolerance": 9.094947017729282e-13,
+    "status": "PASS_FIXED_INPUT_PARITY_ONLY",
+    "scope": "251 frozen finite cases; not full T4, not a recombination trajectory",
+    "reference_lock_sha256": "de4a27d4973a5c14f383e656925dd58354a0fdb070ad23c094aa2da3faa1388d",
+    "evidence_directory": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/docs/forward/rust-20260922/local_returns/task6-20260929T094508Z-cf32c492"
+  },
+  "failure_classification": "Initial cargo fmt failed formatting. Initial parity failed cancellation in BB lower-population centered JVP; source/test/reference/tolerance unchanged. Tested SHA evaluates exact affine BB lower-population term.",
+  "independent_review": {
+    "status": "NOT_ADMITTED_RUNTIME_MISMATCH",
+    "launch_id": "cl_3016dde7b24d370d406f7bcde5779694",
+    "child_id": "01a0ec8e-ffe6-7bd3-8432-5bebb8b5b75e",
+    "observed_model": "gpt-6-astra",
+    "observed_effort": "xhigh",
+    "registered_sandbox": "read-only",
+    "observed_sandbox": "danger-full-access",
+    "first_exit": "RUNTIME_MISMATCH",
+    "corrected_registration": "REJECTED_ROUTING_DECISION_CHANGED",
+    "informational_prose": "No actionable finding reported, but not accepted as independent-review evidence."
+  },
+  "gate_p": "HOLD_INDEPENDENT_REVIEW_RUNTIME_BINDING",
+  "gate_i": "DEFERRED_CONSUMER",
+  "scientific_admission": false,
+  "toolchain": {
+    "rustc": "1.94.1",
+    "cargo": "1.94.1",
+    "python": "3.12.3"
+  },
+  "ci_workflow": "verify.yml has push and pull_request triggers; remote run status not inferred from local tests"
+}

@@ -1,0 +1,85 @@
+[
+  {
+    "label": "cargo_fmt",
+    "argv": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:45:07.684775+00:00",
+    "end_utc": "2026-09-29T09:45:07.772660+00:00",
+    "exit": 0,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0,
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  {
+    "label": "cargo_test",
+    "argv": [
+      "cargo",
+      "test",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--locked"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:45:07.772864+00:00",
+    "end_utc": "2026-09-29T09:45:08.290739+00:00",
+    "exit": 0,
+    "stdout_bytes": 4295,
+    "stderr_bytes": 34066,
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  {
+    "label": "parity",
+    "argv": [
+      "python",
+      "scripts/check_rust_forward_parity.py"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:45:08.290982+00:00",
+    "end_utc": "2026-09-29T09:45:08.372998+00:00",
+    "exit": 0,
+    "stdout_bytes": 529,
+    "stderr_bytes": 0,
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  {
+    "label": "t4_map",
+    "argv": [
+      "python",
+      "docs/forward/rust-20260922/task7/check_t4_map.py"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:45:08.373174+00:00",
+    "end_utc": "2026-09-29T09:45:08.431167+00:00",
+    "exit": 0,
+    "stdout_bytes": 246,
+    "stderr_bytes": 0,
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  {
+    "label": "source_manifest",
+    "argv": [
+      "sha256sum",
+      "-c",
+      "docs/forward/rust-20260922/task8/SOURCE_CONTENT_MANIFEST.sha256"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:45:08.431366+00:00",
+    "end_utc": "2026-09-29T09:45:08.434990+00:00",
+    "exit": 0,
+    "stdout_bytes": 2667,
+    "stderr_bytes": 0,
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+]
