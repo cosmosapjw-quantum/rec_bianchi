@@ -36,19 +36,33 @@ impl HeEnergies {
     /// Existing ledger scalars use a caller-consistent energy unit (canonical: eV).
     /// canonical_si() and the new material-moment API use explicit SI instead.
     pub fn validate(self) -> Result<(), CoverageError> {
-        let values = [self.delta_s, self.delta_p, self.epsilon_ir, self.chi_p, self.chi_s];
+        let values = [
+            self.delta_s,
+            self.delta_p,
+            self.epsilon_ir,
+            self.chi_p,
+            self.chi_s,
+        ];
         if values.iter().any(|x| !x.is_finite() || *x <= 0.0) {
-            return Err(CoverageError::InvalidInput("ledger energies must be positive and finite"));
+            return Err(CoverageError::InvalidInput(
+                "ledger energies must be positive and finite",
+            ));
         }
         let tol = crate::he_singlet::PSD_MINOR_TOLERANCE;
         let scale = self.delta_p.max(self.delta_s).max(self.epsilon_ir);
         if (self.delta_p / scale - self.delta_s / scale - self.epsilon_ir / scale).abs() > tol {
-            return Err(CoverageError::InvalidInput("inconsistent ledger excitation cycle"));
+            return Err(CoverageError::InvalidInput(
+                "inconsistent ledger excitation cycle",
+            ));
         }
         let scale = values.into_iter().fold(0.0_f64, f64::max);
-        if (self.delta_p / scale + self.chi_p / scale
-            - self.delta_s / scale - self.chi_s / scale).abs() > tol {
-            return Err(CoverageError::InvalidInput("inconsistent ledger ionization cycle"));
+        if (self.delta_p / scale + self.chi_p / scale - self.delta_s / scale - self.chi_s / scale)
+            .abs()
+            > tol
+        {
+            return Err(CoverageError::InvalidInput(
+                "inconsistent ledger ionization cycle",
+            ));
         }
         Ok(())
     }
@@ -120,10 +134,9 @@ pub fn assemble_he_event_ledger(
 // Task 5: selected finite-support, material-frame moments. No normal-frame boost,
 // expansion, escape probability, species force partition, or recoil closure.
 use crate::he_singlet::{
-    BoundBoundChannel, Complex64, CoverageState, Mat2, Mat3, PBoundFreeTable,
-    SBoundFreeTable, PairAssemblyOutput, PairGridConvention, RealV, SourceState,
-    WeightedBbMode, WeightedPairMode, C_M_S, EV_J, H_J_S,
-    assemble_he_pair_grid, he_bb_kernel, he_p_bf_source, he_s_bf_source,
+    BoundBoundChannel, C_M_S, Complex64, CoverageState, EV_J, H_J_S, Mat2, Mat3, PBoundFreeTable,
+    PairAssemblyOutput, PairGridConvention, RealV, SBoundFreeTable, SourceState, WeightedBbMode,
+    WeightedPairMode, assemble_he_pair_grid, he_bb_kernel, he_p_bf_source, he_s_bf_source,
     he_two_photon_pair_source, material_energy_j, validate_screen,
 };
 
@@ -134,9 +147,13 @@ impl HeEnergies {
     }
 
     fn from_constants_si(c: HeConstants) -> Self {
-        Self { delta_s: c.delta_s_ev * EV_J, delta_p: c.delta_p_ev * EV_J,
+        Self {
+            delta_s: c.delta_s_ev * EV_J,
+            delta_p: c.delta_p_ev * EV_J,
             epsilon_ir: c.epsilon_ir_ev * EV_J,
-            chi_p: c.chi_p_ev * EV_J, chi_s: c.chi_s_ev * EV_J }
+            chi_p: c.chi_p_ev * EV_J,
+            chi_s: c.chi_s_ev * EV_J,
+        }
     }
 }
 
@@ -197,7 +214,9 @@ pub struct MaterialFourForce {
 fn finite(value: f64, quantity: &'static str) -> Result<f64, CoverageError> {
     if !value.is_finite() {
         return Err(CoverageError::NumericalDomainUncertain {
-            quantity, value, detail: "nonfinite material-moment arithmetic",
+            quantity,
+            value,
+            detail: "nonfinite material-moment arithmetic",
         });
     }
     Ok(value)
@@ -207,7 +226,9 @@ fn product(a: f64, b: f64, quantity: &'static str) -> Result<f64, CoverageError>
     let value = finite(a * b, quantity)?;
     if a != 0.0 && b != 0.0 && value == 0.0 {
         return Err(CoverageError::NumericalDomainUncertain {
-            quantity, value, detail: "nonzero moment factor underflowed; not a physical zero",
+            quantity,
+            value,
+            detail: "nonzero moment factor underflowed; not a physical zero",
         });
     }
     Ok(value)
@@ -226,23 +247,45 @@ fn add(target: &mut f64, increment: f64, name: &'static str) -> Result<(), Cover
 }
 
 fn add_matrix(target: &mut Mat3, source: Mat3, w: f64) -> Result<(), CoverageError> {
-    for i in 0..3 { for j in 0..3 {
-        add(&mut target[i][j].re, product(source[i][j].re, w, "atomic real moment")?, "atomic real sum")?;
-        add(&mut target[i][j].im, product(source[i][j].im, w, "atomic imaginary moment")?, "atomic imaginary sum")?;
-    }}
+    for i in 0..3 {
+        for j in 0..3 {
+            add(
+                &mut target[i][j].re,
+                product(source[i][j].re, w, "atomic real moment")?,
+                "atomic real sum",
+            )?;
+            add(
+                &mut target[i][j].im,
+                product(source[i][j].im, w, "atomic imaginary moment")?,
+                "atomic imaginary sum",
+            )?;
+        }
+    }
     Ok(())
 }
 
 impl MaterialPhotonMoments {
-    fn add_photons(&mut self, n: f64, energy_j: f64, e: [f64;3]) -> Result<(), CoverageError> {
+    fn add_photons(&mut self, n: f64, energy_j: f64, e: [f64; 3]) -> Result<(), CoverageError> {
         let power = product(energy_j, n, "photon power moment")?;
         add(&mut self.number_rate, n, "photon number sum")?;
         add(&mut self.energy_rate_j, power, "photon energy sum")?;
-        add(&mut self.number_gross, n.abs(), "photon net-number gross sum")?;
-        add(&mut self.energy_gross_j, power.abs(), "photon net-energy gross sum")?;
+        add(
+            &mut self.number_gross,
+            n.abs(),
+            "photon net-number gross sum",
+        )?;
+        add(
+            &mut self.energy_gross_j,
+            power.abs(),
+            "photon net-energy gross sum",
+        )?;
         let momentum = product(power, 1.0 / C_M_S, "photon momentum")?;
         for (k, direction) in e.into_iter().enumerate() {
-            add(&mut self.momentum_rate[k], product(momentum, direction, "directional photon momentum")?, "momentum sum")?;
+            add(
+                &mut self.momentum_rate[k],
+                product(momentum, direction, "directional photon momentum")?,
+                "momentum sum",
+            )?;
         }
         Ok(())
     }
@@ -250,10 +293,24 @@ impl MaterialPhotonMoments {
     pub fn four_force(self) -> Result<MaterialFourForce, CoverageError> {
         finite(self.number_rate, "photon number")?;
         finite(self.energy_rate_j, "photon power")?;
-        let q0 = product(self.energy_rate_j, 1.0 / C_M_S, "photon force time component")?;
-        let q = [q0, self.momentum_rate[0], self.momentum_rate[1], self.momentum_rate[2]];
-        for x in q { finite(x, "photon force component")?; }
-        Ok(MaterialFourForce { q_photon:q, q_matter:q.map(|x| -x) })
+        let q0 = product(
+            self.energy_rate_j,
+            1.0 / C_M_S,
+            "photon force time component",
+        )?;
+        let q = [
+            q0,
+            self.momentum_rate[0],
+            self.momentum_rate[1],
+            self.momentum_rate[2],
+        ];
+        for x in q {
+            finite(x, "photon force component")?;
+        }
+        Ok(MaterialFourForce {
+            q_photon: q,
+            q_matter: q.map(|x| -x),
+        })
     }
 }
 
@@ -282,20 +339,34 @@ pub struct BfAssemblyOutput {
 /// NOT a claim that the omitted spectrum or channel has zero physical source.
 /// All nodes are validated/evaluated even if their quadrature weight is zero.
 pub fn assemble_he_bf_grid(
-    state: &SourceState, nodes: &[WeightedBfMode],
+    state: &SourceState,
+    nodes: &[WeightedBfMode],
 ) -> Result<BfAssemblyOutput, CoverageError> {
     state.validate()?;
     let mut out = BfAssemblyOutput {
-        rates:[0.0;2], atomic_p:Mat3::zero(), atomic_s:0.0,
-        photon:MaterialPhotonMoments::default(), absorbed_photon_power_j:0.0,
-        internal_power_j:0.0, heat_power_j:0.0, event_gross:[0.0;2],
-        represented_nodes:0, physical_zero_nodes:0,
-        atomic_p_trace_residual:Complex64::new(0.0,0.0), atomic_s_residual:0.0,
+        rates: [0.0; 2],
+        atomic_p: Mat3::zero(),
+        atomic_s: 0.0,
+        photon: MaterialPhotonMoments::default(),
+        absorbed_photon_power_j: 0.0,
+        internal_power_j: 0.0,
+        heat_power_j: 0.0,
+        event_gross: [0.0; 2],
+        represented_nodes: 0,
+        physical_zero_nodes: 0,
+        atomic_p_trace_residual: Complex64::new(0.0, 0.0),
+        atomic_s_residual: 0.0,
     };
     let ag = 1.0 / (H_J_S * C_M_S).powi(3);
     for node in nodes {
-        weight(node.weight_energy_j, "BF weight must be finite nonnegative joules")?;
-        weight(node.weight_omega_sr, "BF angular weight must be finite nonnegative sr")?;
+        weight(
+            node.weight_energy_j,
+            "BF weight must be finite nonnegative joules",
+        )?;
+        weight(
+            node.weight_omega_sr,
+            "BF angular weight must be finite nonnegative sr",
+        )?;
         validate_screen(node.v, Some(node.direction))?;
         let energy_j = material_energy_j(node.energy_ev)?;
         let mut local = *state;
@@ -306,13 +377,29 @@ pub fn assemble_he_bf_grid(
             BfChannel::P(table) => {
                 let src = he_p_bf_source(node.energy_ev, &local, table)?;
                 add_matrix(&mut out.atomic_p, src.atomic_b, measure)?;
-                (0, state.constants.chi_p_ev, src.event_rate_density, src.photon_c, src.coverage)
-            },
+                (
+                    0,
+                    state.constants.chi_p_ev,
+                    src.event_rate_density,
+                    src.photon_c,
+                    src.coverage,
+                )
+            }
             BfChannel::S(table) => {
                 let src = he_s_bf_source(node.energy_ev, &local, table)?;
-                add(&mut out.atomic_s, product(src.atomic_s_density, measure, "S atomic contribution")?, "S atomic sum")?;
-                (1, state.constants.chi_s_ev, src.event_rate_density, src.photon_c, src.coverage)
-            },
+                add(
+                    &mut out.atomic_s,
+                    product(src.atomic_s_density, measure, "S atomic contribution")?,
+                    "S atomic sum",
+                )?;
+                (
+                    1,
+                    state.constants.chi_s_ev,
+                    src.event_rate_density,
+                    src.photon_c,
+                    src.coverage,
+                )
+            }
         };
         match coverage {
             CoverageState::Represented => out.represented_nodes += 1,
@@ -320,20 +407,40 @@ pub fn assemble_he_bf_grid(
         }
         let event = product(j, measure, "BF integrated signed event")?;
         add(&mut out.rates[idx], event, "BF signed event sum")?;
-        add(&mut out.event_gross[idx], event.abs(), "BF net-event gross sum")?;
+        add(
+            &mut out.event_gross[idx],
+            event.abs(),
+            "BF net-event gross sum",
+        )?;
         // Independent material terms use event density, its threshold and energy.
-        add(&mut out.absorbed_photon_power_j, product(energy_j, event, "BF removed power")?, "BF removed power sum")?;
+        add(
+            &mut out.absorbed_photon_power_j,
+            product(energy_j, event, "BF removed power")?,
+            "BF removed power sum",
+        )?;
         let chi_j = material_energy_j(chi_ev)?;
-        add(&mut out.internal_power_j, product(chi_j, event, "BF internal power")?, "BF internal power sum")?;
+        add(
+            &mut out.internal_power_j,
+            product(chi_j, event, "BF internal power")?,
+            "BF internal power sum",
+        )?;
         // E-chi is in eV here; convert ONCE. No positivity guard on signed heat.
         let kinetic_j = product(node.energy_ev - chi_ev, EV_J, "BF kinetic energy in J")?;
-        add(&mut out.heat_power_j, product(kinetic_j, event, "BF signed heat")?, "BF heat sum")?;
+        add(
+            &mut out.heat_power_j,
+            product(kinetic_j, event, "BF signed heat")?,
+            "BF heat sum",
+        )?;
         // Independent photon trace path, not n=-event nor power=-removed_power.
         let phase = product(ag, product(energy_j, energy_j, "BF E^2")?, "BF a_gamma E^2")?;
-        let number = product(product(phase, cph.trace().re, "BF photon density")?, measure, "BF photon quadrature")?;
+        let number = product(
+            product(phase, cph.trace().re, "BF photon density")?,
+            measure,
+            "BF photon quadrature",
+        )?;
         out.photon.add_photons(number, energy_j, node.direction)?;
     }
-    out.atomic_p_trace_residual = out.atomic_p.trace() + Complex64::new(out.rates[0],0.0);
+    out.atomic_p_trace_residual = out.atomic_p.trace() + Complex64::new(out.rates[0], 0.0);
     out.atomic_s_residual = finite(out.atomic_s + out.rates[1], "S trace residual")?;
     finite(out.atomic_p_trace_residual.re, "P trace real residual")?;
     finite(out.atomic_p_trace_residual.im, "P trace imaginary residual")?;
@@ -362,8 +469,17 @@ pub struct SelectedHeMaterialLedger {
 fn require_canonical_registry(c: HeConstants) -> Result<(), CoverageError> {
     c.validate()?;
     let reference = HeConstants::canonical();
-    let fields = |x:HeConstants| [x.delta_s_ev,x.delta_p_ev,x.i_he_ev,x.epsilon_ir_ev,
-        x.chi_p_ev,x.chi_s_ev,x.rydberg_ev];
+    let fields = |x: HeConstants| {
+        [
+            x.delta_s_ev,
+            x.delta_p_ev,
+            x.i_he_ev,
+            x.epsilon_ir_ev,
+            x.chi_p_ev,
+            x.chi_s_ev,
+            x.rydberg_ev,
+        ]
+    };
     if fields(c) != fields(reference) {
         return Err(CoverageError::InvalidInput(
             "combined selected-He ledger requires the canonical single-owner energy registry",
@@ -380,19 +496,30 @@ fn require_canonical_registry(c: HeConstants) -> Result<(), CoverageError> {
 /// canonical energies. Standalone BF keeps its prior consistent-input contract.
 pub fn assemble_selected_he_material_ledger(
     state: &SourceState,
-    bb584: &[DirectedBbMode], ir: &[DirectedBbMode], bf: &[WeightedBfMode],
-    pairs: &[DirectedPairMode], convention: PairGridConvention,
+    bb584: &[DirectedBbMode],
+    ir: &[DirectedBbMode],
+    bf: &[WeightedBfMode],
+    pairs: &[DirectedPairMode],
+    convention: PairGridConvention,
 ) -> Result<SelectedHeMaterialLedger, CoverageError> {
     state.validate()?;
     require_canonical_registry(state.constants)?;
     if bb584.is_empty() && ir.is_empty() && bf.is_empty() && pairs.is_empty() {
-        return Err(CoverageError::InvalidInput("no selected source support supplied"));
+        return Err(CoverageError::InvalidInput(
+            "no selected source support supplied",
+        ));
     }
     let bf_out = assemble_he_bf_grid(state, bf)?;
     let mut photon = bf_out.photon;
     let mut atomic_p = bf_out.atomic_p;
     let mut atomic_s = bf_out.atomic_s;
-    let mut rates = ChannelRates { r584:0.0, rir:0.0, rp:bf_out.rates[0], rs:bf_out.rates[1], r2g:0.0 };
+    let mut rates = ChannelRates {
+        r584: 0.0,
+        rir: 0.0,
+        rp: bf_out.rates[0],
+        rs: bf_out.rates[1],
+        r2g: 0.0,
+    };
     let ag = 1.0 / (H_J_S * C_M_S).powi(3);
     for (channel, lower, nodes) in [
         (BoundBoundChannel::He584, state.ng, bb584),
@@ -400,7 +527,10 @@ pub fn assemble_selected_he_material_ledger(
     ] {
         for node in nodes {
             validate_screen(node.mode.v, Some(node.direction))?;
-            weight(node.mode.weight_sr, "BB angular weight must be finite nonnegative")?;
+            weight(
+                node.mode.weight_sr,
+                "BB angular weight must be finite nonnegative",
+            )?;
             let k = he_bb_kernel(channel, lower, state.wp, node.mode.f, node.mode.v)?;
             let w = node.mode.weight_sr;
             let r = product(k.event_rate_per_sr, w, "BB event quadrature")?;
@@ -409,13 +539,29 @@ pub fn assemble_selected_he_material_ledger(
                 BoundBoundChannel::He584 => add(&mut rates.r584, r, "584 event sum")?,
                 BoundBoundChannel::IrPToS => {
                     add(&mut rates.rir, r, "IR event sum")?;
-                    add(&mut atomic_s, product(-k.atomic_b_shell.trace().re, w, "IR lower source")?, "S source sum")?;
-                },
+                    add(
+                        &mut atomic_s,
+                        product(-k.atomic_b_shell.trace().re, w, "IR lower source")?,
+                        "S source sum",
+                    )?;
+                }
             }
             // Integrate delta_J once, then use C_shell to recover photon moment.
             let energy_j = material_energy_j(channel.energy_ev())?;
-            let phase = product(ag, product(energy_j, energy_j, "BB energy squared")?, "BB mode factor")?;
-            let n = product(product(phase, k.occupation_c_shell.trace().re, "BB shell photon trace")?, w, "BB angular photons")?;
+            let phase = product(
+                ag,
+                product(energy_j, energy_j, "BB energy squared")?,
+                "BB mode factor",
+            )?;
+            let n = product(
+                product(
+                    phase,
+                    k.occupation_c_shell.trace().re,
+                    "BB shell photon trace",
+                )?,
+                w,
+                "BB angular photons",
+            )?;
             photon.add_photons(n, energy_j, node.direction)?;
         }
     }
@@ -429,14 +575,32 @@ pub fn assemble_selected_he_material_ledger(
             validate_screen(node.mode.input.v2, Some(node.direction2))?;
             let partner = &pairs[node.mode.exchange_partner]; // upstream index check
             if partner.direction1 != node.direction2 || partner.direction2 != node.direction1 {
-                return Err(CoverageError::InvalidInput("pair directions do not follow exchange map"));
+                return Err(CoverageError::InvalidInput(
+                    "pair directions do not follow exchange map",
+                ));
             }
             let k = he_two_photon_pair_source(&node.mode.input, state)?;
-            let d_omega = product(node.mode.weight_omega1_sr, node.mode.weight_omega2_sr, "pair angular measure")?;
+            let d_omega = product(
+                node.mode.weight_omega1_sr,
+                node.mode.weight_omega2_sr,
+                "pair angular measure",
+            )?;
             let de = product(k.delta_s_j, node.mode.weight_dy, "pair dE_J=DeltaS_J dy")?;
             let measure = product(de, d_omega, "pair photon measure")?;
-            let phase = product(ag, product(k.energy1_j,k.energy1_j,"pair E1 squared")?,"pair mode factor")?;
-            let n = product(product(phase,k.tagged_c1_per_partner_sr.trace().re,"pair first-tag density")?,measure,"pair first-tag number")?;
+            let phase = product(
+                ag,
+                product(k.energy1_j, k.energy1_j, "pair E1 squared")?,
+                "pair mode factor",
+            )?;
+            let n = product(
+                product(
+                    phase,
+                    k.tagged_c1_per_partner_sr.trace().re,
+                    "pair first-tag density",
+                )?,
+                measure,
+                "pair first-tag number",
+            )?;
             // Full ordered grid: the complete tag-1 marginal is the physical
             // photon moment. DO NOT add the full tag-2 moment a second time.
             photon.add_photons(n, k.energy1_j, node.direction1)?;
@@ -445,23 +609,53 @@ pub fn assemble_selected_he_material_ledger(
         add(&mut atomic_s, -pair.event_rate, "two-photon S source")?;
         pair_out = Some(pair);
     }
-    let ledger = assemble_he_event_ledger(rates, HeEnergies::canonical_si(),
-        bf_out.absorbed_photon_power_j, bf_out.heat_power_j)?;
-    for x in ledger.species_source { finite(x,"species source")?; }
-    for x in [ledger.p_internal,ledger.p_gamma,ledger.h_kin,ledger.energy_residual] {
-        finite(x,"SI event ledger")?;
+    let ledger = assemble_he_event_ledger(
+        rates,
+        HeEnergies::canonical_si(),
+        bf_out.absorbed_photon_power_j,
+        bf_out.heat_power_j,
+    )?;
+    for x in ledger.species_source {
+        finite(x, "species source")?;
+    }
+    for x in [
+        ledger.p_internal,
+        ledger.p_gamma,
+        ledger.h_kin,
+        ledger.energy_residual,
+    ] {
+        finite(x, "SI event ledger")?;
     }
     let force = photon.four_force()?;
-    let p_residual = atomic_p.trace() - Complex64::new(ledger.species_source[2],0.0);
-    finite(p_residual.re,"selected P trace residual")?;
-    finite(p_residual.im,"selected P trace imaginary residual")?;
+    let p_residual = atomic_p.trace() - Complex64::new(ledger.species_source[2], 0.0);
+    finite(p_residual.re, "selected P trace residual")?;
+    finite(p_residual.im, "selected P trace imaginary residual")?;
     Ok(SelectedHeMaterialLedger {
-        rates, ledger_si:ledger, bf:bf_out, atomic_p, atomic_s, photon, force, pair:pair_out,
-        photon_number_residual:finite(photon.number_rate-ledger.photon_number_source,"photon number closure")?,
-        photon_energy_residual_j:finite(photon.energy_rate_j-ledger.p_gamma,"photon energy parity")?,
-        atomic_p_trace_residual:p_residual,
-        atomic_s_residual:finite(atomic_s-ledger.species_source[1],"S source parity")?,
-        energy_residual_j:finite(ledger.p_internal+photon.energy_rate_j+bf_out.heat_power_j,"independent energy closure")?,
-        matter_energy_force_residual_j:finite(ledger.p_internal+bf_out.heat_power_j-C_M_S*force.q_matter[0],"matter internal plus kinetic energy/force")?,
+        rates,
+        ledger_si: ledger,
+        bf: bf_out,
+        atomic_p,
+        atomic_s,
+        photon,
+        force,
+        pair: pair_out,
+        photon_number_residual: finite(
+            photon.number_rate - ledger.photon_number_source,
+            "photon number closure",
+        )?,
+        photon_energy_residual_j: finite(
+            photon.energy_rate_j - ledger.p_gamma,
+            "photon energy parity",
+        )?,
+        atomic_p_trace_residual: p_residual,
+        atomic_s_residual: finite(atomic_s - ledger.species_source[1], "S source parity")?,
+        energy_residual_j: finite(
+            ledger.p_internal + photon.energy_rate_j + bf_out.heat_power_j,
+            "independent energy closure",
+        )?,
+        matter_energy_force_residual_j: finite(
+            ledger.p_internal + bf_out.heat_power_j - C_M_S * force.q_matter[0],
+            "matter internal plus kinetic energy/force",
+        )?,
     })
 }

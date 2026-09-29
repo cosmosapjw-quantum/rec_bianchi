@@ -42,8 +42,15 @@ impl fmt::Display for CoverageError {
                     "{family}: no adopted numerical authority at {value}: {detail}"
                 )
             }
-            Self::NumericalDomainUncertain { quantity, value, detail } => {
-                write!(f, "uncertain numerical domain for {quantity} at {value}: {detail}")
+            Self::NumericalDomainUncertain {
+                quantity,
+                value,
+                detail,
+            } => {
+                write!(
+                    f,
+                    "uncertain numerical domain for {quantity} at {value}: {detail}"
+                )
             }
             Self::InvalidInput(msg) => write!(f, "invalid input: {msg}"),
         }

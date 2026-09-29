@@ -36,11 +36,20 @@ impl Complex64 {
         }
     }
     pub fn approx_eq(self, rhs: Self, tol: f64) -> bool {
-        if !self.re.is_finite() || !self.im.is_finite()
-            || !rhs.re.is_finite() || !rhs.im.is_finite() || !tol.is_finite() || tol < 0.0 {
+        if !self.re.is_finite()
+            || !self.im.is_finite()
+            || !rhs.re.is_finite()
+            || !rhs.im.is_finite()
+            || !tol.is_finite()
+            || tol < 0.0
+        {
             return false;
         }
-        let scale = 1.0_f64.max(self.re.abs()).max(self.im.abs()).max(rhs.re.abs()).max(rhs.im.abs());
+        let scale = 1.0_f64
+            .max(self.re.abs())
+            .max(self.im.abs())
+            .max(rhs.re.abs())
+            .max(rhs.im.abs());
         let left = Complex64::new(self.re / scale, self.im / scale);
         let right = Complex64::new(rhs.re / scale, rhs.im / scale);
         (left - right).abs() <= tol * (1.0 / scale + left.abs() + right.abs())
@@ -189,10 +198,7 @@ impl Mat2 {
         if !hermitian_within(m, HERMITIAN_REL_TOLERANCE) {
             return Err(CoverageError::InvalidInput("matrix must be Hermitian"));
         }
-        validate_minors(&[
-            m[0][0], m[1][1],
-            m[0][0] * m[1][1] - m[0][1] * m[1][0],
-        ])
+        validate_minors(&[m[0][0], m[1][1], m[0][0] * m[1][1] - m[0][1] * m[1][0]])
     }
 }
 impl Add for Mat2 {
@@ -299,14 +305,15 @@ impl Mat3 {
         if !hermitian_within(m, HERMITIAN_REL_TOLERANCE) {
             return Err(CoverageError::InvalidInput("matrix must be Hermitian"));
         }
-        let determinant = m[0][0] * m[1][1] * m[2][2]
-            + m[0][1] * m[1][2] * m[2][0]
-            + m[0][2] * m[1][0] * m[2][1]
-            - m[0][2] * m[1][1] * m[2][0]
-            - m[0][1] * m[1][0] * m[2][2]
-            - m[0][0] * m[1][2] * m[2][1];
+        let determinant =
+            m[0][0] * m[1][1] * m[2][2] + m[0][1] * m[1][2] * m[2][0] + m[0][2] * m[1][0] * m[2][1]
+                - m[0][2] * m[1][1] * m[2][0]
+                - m[0][1] * m[1][0] * m[2][2]
+                - m[0][0] * m[1][2] * m[2][1];
         validate_minors(&[
-            m[0][0], m[1][1], m[2][2],
+            m[0][0],
+            m[1][1],
+            m[2][2],
             m[0][0] * m[1][1] - m[0][1] * m[1][0],
             m[0][0] * m[2][2] - m[0][2] * m[2][0],
             m[1][1] * m[2][2] - m[1][2] * m[2][1],
@@ -516,22 +523,30 @@ pub fn validate_screen(v: RealV, direction: Option<[f64; 3]>) -> Result<(), Cove
             let dot: f64 = v.iter().map(|row| row[i] * row[j]).sum();
             let target = if i == j { 1.0 } else { 0.0 };
             if (dot - target).abs() > SCREEN_TOLERANCE {
-                return Err(CoverageError::InvalidInput("screen columns must be orthonormal"));
+                return Err(CoverageError::InvalidInput(
+                    "screen columns must be orthonormal",
+                ));
             }
         }
     }
     if let Some(e) = direction {
-        if e.iter().any(|x| !x.is_finite() || x.abs() > 1.0 + SCREEN_TOLERANCE) {
+        if e.iter()
+            .any(|x| !x.is_finite() || x.abs() > 1.0 + SCREEN_TOLERANCE)
+        {
             return Err(CoverageError::InvalidInput("invalid photon direction"));
         }
         let norm2: f64 = e.iter().map(|x| x * x).sum();
         if (norm2 - 1.0).abs() > SCREEN_TOLERANCE {
-            return Err(CoverageError::InvalidInput("photon direction must be unit length"));
+            return Err(CoverageError::InvalidInput(
+                "photon direction must be unit length",
+            ));
         }
         for i in 0..2 {
             let dot: f64 = v.iter().zip(e).map(|(row, ek)| row[i] * ek).sum();
             if dot.abs() > SCREEN_TOLERANCE {
-                return Err(CoverageError::InvalidInput("screen is not transverse to direction"));
+                return Err(CoverageError::InvalidInput(
+                    "screen is not transverse to direction",
+                ));
             }
         }
     }
@@ -548,7 +563,10 @@ pub enum SpectralMeasure {
 
 /// Convert a positive material photon energy in eV to joules once.
 pub fn material_energy_j(energy_ev: f64) -> Result<f64, CoverageError> {
-    validate_positive(energy_ev, "material photon energy must be positive finite eV")?;
+    validate_positive(
+        energy_ev,
+        "material photon energy must be positive finite eV",
+    )?;
     let energy_j = energy_ev * EV_J;
     if energy_j == 0.0 || !energy_j.is_finite() {
         return Err(CoverageError::NumericalDomainUncertain {
@@ -662,8 +680,15 @@ pub struct HeConstants {
 }
 impl HeConstants {
     pub fn validate(self) -> Result<(), CoverageError> {
-        for value in [self.delta_s_ev, self.delta_p_ev, self.i_he_ev,
-                      self.epsilon_ir_ev, self.chi_p_ev, self.chi_s_ev, self.rydberg_ev] {
+        for value in [
+            self.delta_s_ev,
+            self.delta_p_ev,
+            self.i_he_ev,
+            self.epsilon_ir_ev,
+            self.chi_p_ev,
+            self.chi_s_ev,
+            self.rydberg_ev,
+        ] {
             validate_positive(value, "He energies must be finite positive eV")?;
         }
         validate_energy_cycle(self.delta_p_ev, self.delta_s_ev, self.epsilon_ir_ev)?;
@@ -734,7 +759,12 @@ impl SourceState {
         temperature_k: f64,
     ) -> Result<Self, CoverageError> {
         let state = Self {
-            ng, ns, wp, n_he_plus, ne, temperature_k,
+            ng,
+            ns,
+            wp,
+            n_he_plus,
+            ne,
+            temperature_k,
             f: Mat2::zero(),
             v: [[1.0, 0.0], [0.0, 1.0], [0.0, 0.0]],
             constants: HeConstants::canonical(),
@@ -854,16 +884,17 @@ fn check_bb_matrix<const N: usize>(
 
 /// Inspect sum(w) and sum(w V V^T). Only screens and weights enter this audit;
 /// source evaluation separately validates all occupations, even at zero weight.
-pub fn audit_bb_stencil(
-    modes: &[WeightedBbMode],
-) -> Result<BbStencilDiagnostics, CoverageError> {
+pub fn audit_bb_stencil(modes: &[WeightedBbMode]) -> Result<BbStencilDiagnostics, CoverageError> {
     if modes.is_empty() {
         return Err(CoverageError::InvalidInput("angular stencil empty"));
     }
     let mut weight_sum_sr = 0.0;
     let mut projector_sum_sr = [[0.0; 3]; 3];
     for mode in modes {
-        validate_nonnegative(mode.weight_sr, "angular weight must be finite nonnegative sr")?;
+        validate_nonnegative(
+            mode.weight_sr,
+            "angular weight must be finite nonnegative sr",
+        )?;
         validate_screen(mode.v, None)?;
         weight_sum_sr += mode.weight_sr;
         for (a, row) in projector_sum_sr.iter_mut().enumerate() {
@@ -882,8 +913,8 @@ pub fn audit_bb_stencil(
     for (a, row) in projector_sum_sr.iter().enumerate() {
         for (b, entry) in row.iter().enumerate() {
             let target = if a == b { full_projector } else { 0.0 };
-            projector_relative_residual = projector_relative_residual
-                .max((*entry - target).abs() / full_projector);
+            projector_relative_residual =
+                projector_relative_residual.max((*entry - target).abs() / full_projector);
         }
     }
     Ok(BbStencilDiagnostics {
@@ -934,10 +965,8 @@ pub fn he_bb_kernel(
     let vfv = v_x_vt(v, f);
     let vhv = v_x_vt(v, h);
     let vtwpv = vt_x_v(v, wp);
-    let atomic_b_shell = (vfv.scale(n_lower) - anticommutator3(vhv, wp).scale(0.5))
-        .scale(b_shell);
-    let photon_j_shell = (anticommutator2(h, vtwpv).scale(0.5) - f.scale(n_lower))
-        .scale(b_shell);
+    let atomic_b_shell = (vfv.scale(n_lower) - anticommutator3(vhv, wp).scale(0.5)).scale(b_shell);
+    let photon_j_shell = (anticommutator2(h, vtwpv).scale(0.5) - f.scale(n_lower)).scale(b_shell);
     let a_gamma_epsilon_sq = epsilon_j * epsilon_j / (H_J_S * C_M_S).powi(3);
     let occupation_c_shell = photon_j_shell.scale(1.0 / a_gamma_epsilon_sq);
     let event_rate_per_sr = photon_j_shell.trace().re;
@@ -1000,7 +1029,9 @@ pub fn he_bb_source(
         angular_j,
         angular_c,
         event_rate,
-        spectral: SpectralMeasure::SharpLineDeltaPerJoule { energy_ev: channel.energy_ev() },
+        spectral: SpectralMeasure::SharpLineDeltaPerJoule {
+            energy_ev: channel.energy_ev(),
+        },
         stencil,
     })
 }
@@ -1151,20 +1182,25 @@ fn eta(state: &SourceState, energy_ev: f64, chi_ev: f64) -> f64 {
 fn check_bf_scalar(value: f64, quantity: &'static str) -> Result<(), CoverageError> {
     if !value.is_finite() {
         return Err(CoverageError::NumericalDomainUncertain {
-            quantity, value, detail: "nonfinite BF arithmetic; no source clipping or normalization",
+            quantity,
+            value,
+            detail: "nonfinite BF arithmetic; no source clipping or normalization",
         });
     }
     Ok(())
 }
 
 fn check_bf_matrix<const N: usize>(
-    matrix: [[Complex64; N]; N], quantity: &'static str,
+    matrix: [[Complex64; N]; N],
+    quantity: &'static str,
 ) -> Result<(), CoverageError> {
     // Signed collision outputs are not density matrices; no PSD projection.
-    for row in matrix { for x in row {
-        check_bf_scalar(x.re, quantity)?;
-        check_bf_scalar(x.im, quantity)?;
-    }}
+    for row in matrix {
+        for x in row {
+            check_bf_scalar(x.re, quantity)?;
+            check_bf_scalar(x.im, quantity)?;
+        }
+    }
     Ok(())
 }
 
@@ -1175,7 +1211,10 @@ pub fn he_p_bf_source(
     state: &SourceState,
     table: PBoundFreeTable,
 ) -> Result<PBoundFreeOutput, CoverageError> {
-    validate_positive(energy_ev, "material photon energy must be positive finite eV")?;
+    validate_positive(
+        energy_ev,
+        "material photon energy must be positive finite eV",
+    )?;
     state.validate_bf()?;
     if energy_ev < state.constants.chi_p_ev {
         return Ok(PBoundFreeOutput {
@@ -1189,7 +1228,9 @@ pub fn he_p_bf_source(
         });
     }
     let q = jacobs_q_from_material_energy(
-        energy_ev, state.constants.chi_p_ev, state.constants.rydberg_ev,
+        energy_ev,
+        state.constants.chi_p_ev,
+        state.constants.rydberg_ev,
         "P_BOUND_FREE_JACOBS_HIGH",
     )?;
     let xs = table.lookup(q)?;
@@ -1215,8 +1256,14 @@ pub fn he_p_bf_source(
     check_bf_matrix(cph.0, "P photon occupation source")?;
     check_bf_matrix(ab.0, "P atomic density source")?;
     check_bf_scalar(event, "P signed event density")?;
-    check_bf_scalar(C_M_S * (gain.max_abs() + loss.max_abs()), "P photon gross scale")?;
-    check_bf_scalar(C_M_S * ag * e_j * e_j * (atom_gain.max_abs() + atom_loss.max_abs()), "P atom gross scale")?;
+    check_bf_scalar(
+        C_M_S * (gain.max_abs() + loss.max_abs()),
+        "P photon gross scale",
+    )?;
+    check_bf_scalar(
+        C_M_S * ag * e_j * e_j * (atom_gain.max_abs() + atom_loss.max_abs()),
+        "P atom gross scale",
+    )?;
     Ok(PBoundFreeOutput {
         photon_c: cph,
         atomic_b: ab,
@@ -1235,7 +1282,10 @@ pub fn he_s_bf_source(
     state: &SourceState,
     table: SBoundFreeTable,
 ) -> Result<SBoundFreeOutput, CoverageError> {
-    validate_positive(energy_ev, "material photon energy must be positive finite eV")?;
+    validate_positive(
+        energy_ev,
+        "material photon energy must be positive finite eV",
+    )?;
     state.validate_bf()?;
     if energy_ev < state.constants.chi_s_ev {
         return Ok(SBoundFreeOutput {
@@ -1249,7 +1299,9 @@ pub fn he_s_bf_source(
         });
     }
     let q = jacobs_q_from_material_energy(
-        energy_ev, state.constants.chi_s_ev, state.constants.rydberg_ev,
+        energy_ev,
+        state.constants.chi_s_ev,
+        state.constants.rydberg_ev,
         "S_BOUND_FREE_JACOBS_HIGH",
     )?;
     let sigma = table.lookup(q)? * MB_TO_M2;
@@ -1272,7 +1324,10 @@ pub fn he_s_bf_source(
     check_bf_scalar(event, "S signed event density")?;
     check_bf_scalar(atomic_s, "S atomic density source")?;
     check_bf_scalar(atom_gross, "S atom gross scale")?;
-    check_bf_scalar(C_M_S * sigma * (gain.max_abs() + loss.max_abs()), "S photon gross scale")?;
+    check_bf_scalar(
+        C_M_S * sigma * (gain.max_abs() + loss.max_abs()),
+        "S photon gross scale",
+    )?;
     Ok(SBoundFreeOutput {
         photon_c: cph,
         event_rate_density: event,
@@ -1428,14 +1483,16 @@ pub fn he_two_photon_pair_source(
     let energy2_j = pair_product(delta_s_j, 1.0 - input.y, "pair material E2")?;
     let t12 = pair_screen_overlap(input.v1, input.v2);
     let (m12, gross1) = pair_matrix_for_tag(state.ng, state.ns, input.f1, input.f2, t12)?;
-    let (m21, gross2) = pair_matrix_for_tag(state.ng, state.ns, input.f2, input.f1, t12.transpose())?;
+    let (m21, gross2) =
+        pair_matrix_for_tag(state.ng, state.ns, input.f2, input.f1, t12.transpose())?;
     let marginal_weight = w * PAIR_G_ANG;
     let atomic_weight = 0.5 * marginal_weight;
     let c1 = m12.scale(marginal_weight / pair_marginal_denominator(energy1_j, delta_s_j)?);
     let c2 = m21.scale(marginal_weight / pair_marginal_denominator(energy2_j, delta_s_j)?);
     check_pair_matrix(c1, "pair tagged C1")?;
     check_pair_matrix(c2, "pair tagged C2")?;
-    let event_rate_density = pair_product(atomic_weight, m12.trace().re, "pair atomic-event integrand")?;
+    let event_rate_density =
+        pair_product(atomic_weight, m12.trace().re, "pair atomic-event integrand")?;
     Ok(TwoPhotonPairOutput {
         screen_overlap: t12,
         pair_matrix: m12,
@@ -1495,11 +1552,15 @@ pub struct PairAssemblyOutput {
 
 fn validate_pair_exchange(nodes: &[WeightedPairMode]) -> Result<(), CoverageError> {
     for (i, node) in nodes.iter().enumerate() {
-        let partner = nodes.get(node.exchange_partner).ok_or(CoverageError::InvalidInput(
-            "pair exchange index outside ordered grid",
-        ))?;
+        let partner = nodes
+            .get(node.exchange_partner)
+            .ok_or(CoverageError::InvalidInput(
+                "pair exchange index outside ordered grid",
+            ))?;
         if partner.exchange_partner != i {
-            return Err(CoverageError::InvalidInput("pair exchange map is not an involution"));
+            return Err(CoverageError::InvalidInput(
+                "pair exchange map is not an involution",
+            ));
         }
         // Domain checks have already rejected outband/nonfinite y in the kernel.
         // This tolerance is an f64 symmetry check, never a coverage clamp.
@@ -1512,7 +1573,9 @@ fn validate_pair_exchange(nodes: &[WeightedPairMode]) -> Result<(), CoverageErro
             || partner.weight_omega1_sr != node.weight_omega2_sr
             || partner.weight_omega2_sr != node.weight_omega1_sr
         {
-            return Err(CoverageError::InvalidInput("pair exchange inputs or weights do not match"));
+            return Err(CoverageError::InvalidInput(
+                "pair exchange inputs or weights do not match",
+            ));
         }
     }
     Ok(())
@@ -1542,8 +1605,14 @@ pub fn assemble_he_pair_grid(
     let mut kernels = Vec::with_capacity(nodes.len());
     for node in nodes {
         validate_nonnegative(node.weight_dy, "pair dy weight must be finite nonnegative")?;
-        validate_nonnegative(node.weight_omega1_sr, "pair Omega1 weight must be finite nonnegative")?;
-        validate_nonnegative(node.weight_omega2_sr, "pair Omega2 weight must be finite nonnegative")?;
+        validate_nonnegative(
+            node.weight_omega1_sr,
+            "pair Omega1 weight must be finite nonnegative",
+        )?;
+        validate_nonnegative(
+            node.weight_omega2_sr,
+            "pair Omega2 weight must be finite nonnegative",
+        )?;
         // Validate every mode even at zero weight. No partial result escapes an error.
         kernels.push(he_two_photon_pair_source(&node.input, state)?);
     }
@@ -1555,7 +1624,11 @@ pub fn assemble_he_pair_grid(
     let mut energy = [0.0; 2];
     let mut weight_sum = 0.0;
     for (node, kernel) in nodes.iter().zip(&kernels) {
-        let solid_angle = pair_product(node.weight_omega1_sr, node.weight_omega2_sr, "pair angular weight")?;
+        let solid_angle = pair_product(
+            node.weight_omega1_sr,
+            node.weight_omega2_sr,
+            "pair angular weight",
+        )?;
         let measure = pair_product(node.weight_dy, solid_angle, "pair dy/angular weight")?;
         event_rate += pair_product(measure, kernel.event_rate_density, "integrated pair event")?;
         weight_sum += measure;
@@ -1563,11 +1636,18 @@ pub fn assemble_he_pair_grid(
         let de_j = pair_product(delta_s_j, node.weight_dy, "pair dE=DeltaS dy")?;
         let photon_measure = pair_product(de_j, solid_angle, "pair photon quadrature measure")?;
         let energies = [kernel.energy1_j, kernel.energy2_j];
-        let marginals = [kernel.tagged_c1_per_partner_sr, kernel.tagged_c2_per_partner_sr];
+        let marginals = [
+            kernel.tagged_c1_per_partner_sr,
+            kernel.tagged_c2_per_partner_sr,
+        ];
         for tag in 0..2 {
             let e2 = pair_product(energies[tag], energies[tag], "pair moment energy squared")?;
             let state_density = pair_product(a_gamma, e2, "pair moment mode density")?;
-            let n_density = pair_product(state_density, marginals[tag].trace().re, "pair marginal number density")?;
+            let n_density = pair_product(
+                state_density,
+                marginals[tag].trace().re,
+                "pair marginal number density",
+            )?;
             let n = pair_product(photon_measure, n_density, "pair marginal photon number")?;
             number[tag] += n;
             energy[tag] += pair_product(energies[tag], n, "pair marginal photon energy")?;
