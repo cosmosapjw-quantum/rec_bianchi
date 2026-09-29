@@ -1,0 +1,29 @@
+{
+  "schema_version": "BASS_HE_SOURCE_LEDGER_T4_V1",
+  "frame": "material_or_He_rest_frame",
+  "rate_clock": "material_ray_clock_second_for_photons__material_proper_second_for_atoms",
+  "species_order": ["g_1S0", "S_2_1S0", "P_2_1P1o_trace_WP", "HeII_1s", "electron", "photon"],
+  "channel_order": ["He584", "IR_P_to_S", "P_bound_free", "S_bound_free", "two_photon_S_to_g"],
+  "event_matrix": [
+    [1,0,0,0,1],
+    [0,1,0,-1,-1],
+    [-1,-1,-1,0,0],
+    [0,0,1,1,0],
+    [0,0,1,1,0],
+    [1,1,-1,-1,2]
+  ],
+  "conservation_left_nulls": {
+    "He_nuclei": [1,1,1,1,0,0],
+    "He_charge_minus_electron": [0,0,0,1,-1,0]
+  },
+  "energies": {
+    "g": "0",
+    "S": "Delta_S",
+    "P": "Delta_P",
+    "HeII": "I_He",
+    "relations": ["Delta_P=Delta_S+epsilon_IR", "I_He=Delta_P+chi_P", "I_He=Delta_S+chi_S"]
+  },
+  "photon_number_source": "R_584 + R_IR - R_P - R_S + 2 R_2g",
+  "internal_energy_source": "-Delta_P R_584 - epsilon_IR R_IR - Delta_S R_2g + chi_P R_P + chi_S R_S",
+  "coverage_policy": "OUTSIDE_DECLARED_DATA_DOMAIN_IS_UNKNOWN_NOT_ZERO"
+}

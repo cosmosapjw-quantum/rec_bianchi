@@ -1,0 +1,22 @@
+{
+  "schema": "REC_HE_PAIR_ACCEPTANCE_TASK4_V1",
+  "f64_expression_tolerance": 9.094947017729282e-13,
+  "existing_hermitian_screen_tolerance": 1e-12,
+  "grid_y_tolerance": 9.094947017729282e-13,
+  "rule": "All real/imag entries finite. Matrix/energy residuals normalized by independently supplied nonzero gross scale, with no added unit floor. Exact zero-occupation/vacuum entries checked as specified. Raw gates and all T4 statuses stay NOT_RUN until local Rust execution.",
+  "source_factors": {
+    "atom": "0.5*w*g once",
+    "each_marginal": "w*g/(a_gamma*E_tag_J^2*DeltaS_J), no half",
+    "ordered_tag_moments": "integrate each full tag separately using dE=DeltaS_J*dy; never add full tag estimates"
+  },
+  "negative_controls": [
+    "identity_overlap",
+    "omit_partner_transpose",
+    "extra_atomic_half",
+    "extra_marginal_half",
+    "omit_dE_equals_delta_dy",
+    "add_both_full_tag_estimates",
+    "non_exchange_closed_energy_sum"
+  ],
+  "rust_status": "NOT_RUN"
+}

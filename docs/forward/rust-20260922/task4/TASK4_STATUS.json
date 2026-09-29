@@ -1,0 +1,50 @@
+{
+  "schema": "REC_HE_TASK4_STATUS_V1",
+  "time_utc": "2026-09-22T22:17:08.340350+00:00",
+  "status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
+  "parent_task3_sha256": "2afb741638376edb61caaa7d93b95d34893cb68329784752f8f1413a0ed7273a",
+  "base_git_sha": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "source_changes": [
+    "rust/rec_microphysics/src/he_singlet.rs",
+    "rust/rec_microphysics/tests/forward.rs",
+    "rust/rec_microphysics/examples/eval_fixture.rs"
+  ],
+  "new_tests": [
+    "pair_perpendicular_vacuum_screen_overlap",
+    "pair_complex_transpose_reference",
+    "pair_swapped_tags_match",
+    "pair_lte_all_represented_modes",
+    "pair_measure_factor_once",
+    "pair_photon_count_energy_from_marginals",
+    "pair_unordered_half_grid_rejected",
+    "pair_exchange_contract_rejects_missing_or_mismatched_partner",
+    "pair_grid_weights_applied_once_no_renormalization",
+    "pair_bad_inputs_reject_even_at_zero_weight",
+    "pair_zero_and_signed_sources_remain_distinct_from_input_psd",
+    "pair_nonfinite_arithmetic_is_not_success",
+    "d86_all_twenty_nodes_and_reflection",
+    "d86_outside_band_error",
+    "pair_integrated_event_passes_ledger_without_another_half"
+  ],
+  "rust_tests_authored_new": 15,
+  "rust_test_functions_total": 53,
+  "rust_tests_executed": 0,
+  "cargo_fmt_test_clippy": "NOT_RUN_LOCAL_CODEX_OWNER",
+  "full_parity": "NOT_RUN",
+  "candidate_commit_sha": null,
+  "tested_commit_sha": null,
+  "delivery_commit_sha": null,
+  "allow_consumer_integration": false,
+  "next_task": 5,
+  "all_scientific_gates": {
+    "S3": "accepted",
+    "S4": "partial",
+    "S5": "gated",
+    "G10": "open",
+    "G11_G13": "gated",
+    "D86": "canonical",
+    "P0_physical": "OPEN",
+    "HOST4_physical": "HOLD",
+    "HH_propagation": "unauthorized"
+  }
+}

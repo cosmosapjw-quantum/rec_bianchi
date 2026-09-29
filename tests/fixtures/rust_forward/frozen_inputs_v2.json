@@ -1,0 +1,2183 @@
+{
+  "schema": "REC_HE_FROZEN_INPUTS_V2_TASK2",
+  "scope": "domain preregistration; not full source-output fixture",
+  "input_units": {
+    "densities": "m^-3 proper",
+    "F": "dimensionless material screen occupation",
+    "energy_ev": "eV",
+    "energy_width_ev": "eV before exactly one EV_J conversion",
+    "density_integration": "dE_J dOmega"
+  },
+  "default_valid_state": {
+    "ng": 2.0,
+    "ns": 0.7,
+    "wp": [
+      [
+        [
+          0.4,
+          0.0
+        ],
+        [
+          0.05,
+          0.02
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.05,
+          -0.02
+        ],
+        [
+          0.7,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.1,
+          0.0
+        ]
+      ]
+    ],
+    "n_he_plus": 0.3,
+    "ne": 0.4,
+    "temperature_k": 9000.0,
+    "f": [
+      [
+        [
+          0.2,
+          0
+        ],
+        [
+          0.03,
+          0.04
+        ]
+      ],
+      [
+        [
+          0.03,
+          -0.04
+        ],
+        [
+          0.1,
+          0
+        ]
+      ]
+    ],
+    "v": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "cases": [
+    {
+      "id": "ng_nan",
+      "kind": "scalar",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ng"
+    },
+    {
+      "id": "ng_pinf",
+      "kind": "scalar",
+      "value": {
+        "float": "+inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ng"
+    },
+    {
+      "id": "ng_ninf",
+      "kind": "scalar",
+      "value": {
+        "float": "-inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ng"
+    },
+    {
+      "id": "ng_negative",
+      "kind": "scalar",
+      "value": -1.0,
+      "expected_domain": "InvalidInput",
+      "field": "ng"
+    },
+    {
+      "id": "ng_zero",
+      "kind": "scalar",
+      "value": 0.0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "field": "ng"
+    },
+    {
+      "id": "ns_nan",
+      "kind": "scalar",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ns"
+    },
+    {
+      "id": "ns_pinf",
+      "kind": "scalar",
+      "value": {
+        "float": "+inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ns"
+    },
+    {
+      "id": "ns_ninf",
+      "kind": "scalar",
+      "value": {
+        "float": "-inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ns"
+    },
+    {
+      "id": "ns_negative",
+      "kind": "scalar",
+      "value": -1.0,
+      "expected_domain": "InvalidInput",
+      "field": "ns"
+    },
+    {
+      "id": "ns_zero",
+      "kind": "scalar",
+      "value": 0.0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "field": "ns"
+    },
+    {
+      "id": "n_he_plus_nan",
+      "kind": "scalar",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "n_he_plus"
+    },
+    {
+      "id": "n_he_plus_pinf",
+      "kind": "scalar",
+      "value": {
+        "float": "+inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "n_he_plus"
+    },
+    {
+      "id": "n_he_plus_ninf",
+      "kind": "scalar",
+      "value": {
+        "float": "-inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "n_he_plus"
+    },
+    {
+      "id": "n_he_plus_negative",
+      "kind": "scalar",
+      "value": -1.0,
+      "expected_domain": "InvalidInput",
+      "field": "n_he_plus"
+    },
+    {
+      "id": "n_he_plus_zero",
+      "kind": "scalar",
+      "value": 0.0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "field": "n_he_plus"
+    },
+    {
+      "id": "ne_nan",
+      "kind": "scalar",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ne"
+    },
+    {
+      "id": "ne_pinf",
+      "kind": "scalar",
+      "value": {
+        "float": "+inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ne"
+    },
+    {
+      "id": "ne_ninf",
+      "kind": "scalar",
+      "value": {
+        "float": "-inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "ne"
+    },
+    {
+      "id": "ne_negative",
+      "kind": "scalar",
+      "value": -1.0,
+      "expected_domain": "InvalidInput",
+      "field": "ne"
+    },
+    {
+      "id": "ne_zero",
+      "kind": "scalar",
+      "value": 0.0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "field": "ne"
+    },
+    {
+      "id": "T_nan",
+      "kind": "scalar",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "temperature_k"
+    },
+    {
+      "id": "T_pinf",
+      "kind": "scalar",
+      "value": {
+        "float": "+inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "temperature_k"
+    },
+    {
+      "id": "T_ninf",
+      "kind": "scalar",
+      "value": {
+        "float": "-inf"
+      },
+      "expected_domain": "InvalidInput",
+      "field": "temperature_k"
+    },
+    {
+      "id": "T_negative",
+      "kind": "scalar",
+      "value": -1.0,
+      "expected_domain": "InvalidInput",
+      "field": "temperature_k"
+    },
+    {
+      "id": "T_zero",
+      "kind": "scalar",
+      "value": 0.0,
+      "expected_domain": "InvalidInput",
+      "field": "temperature_k"
+    },
+    {
+      "id": "T_normal",
+      "kind": "scalar",
+      "value": 9000.0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "field": "temperature_k"
+    },
+    {
+      "id": "mat2_negative_scale_1e-280",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1e-280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e-280,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_negative_scale_1.0",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_negative_scale_1e+280",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1e+280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e+280,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_zero",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "mat2_rank1",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "mat2_roundoff_negative",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -2.2737367544323206e-13,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "NumericalDomainUncertain"
+    },
+    {
+      "id": "mat2_on_uncertain_boundary",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -9.094947017729282e-13,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "NumericalDomainUncertain"
+    },
+    {
+      "id": "mat2_below_uncertain_boundary",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1.8189894035458565e-12,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_nonhermitian",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            0.1,
+            0.2
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_nan",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "nan"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_+inf",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "+inf"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat2_-inf",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "-inf"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_negative_scale_1e-280",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1e-280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e-280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e-280,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_negative_scale_1.0",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_negative_scale_1e+280",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1e+280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e+280,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1e+280,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_zero",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "mat3_rank1",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "mat3_roundoff_negative",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -2.2737367544323206e-13,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "NumericalDomainUncertain"
+    },
+    {
+      "id": "mat3_on_uncertain_boundary",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -9.094947017729282e-13,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "NumericalDomainUncertain"
+    },
+    {
+      "id": "mat3_below_uncertain_boundary",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -1.8189894035458565e-12,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_nonhermitian",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            0.1,
+            0.2
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_nan",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "nan"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_+inf",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "+inf"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "mat3_-inf",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            {
+              "float": "-inf"
+            },
+            0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "complex_F",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            0.2,
+            0
+          ],
+          [
+            0.03,
+            0.04
+          ]
+        ],
+        [
+          [
+            0.03,
+            -0.04
+          ],
+          [
+            0.1,
+            0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "complex_WP",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            0.4,
+            0.0
+          ],
+          [
+            0.05,
+            0.02
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.05,
+            -0.02
+          ],
+          [
+            0.7,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "determinant_only_negative",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            -0.9,
+            0.0
+          ],
+          [
+            -0.9,
+            0.0
+          ]
+        ],
+        [
+          [
+            -0.9,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            -0.9,
+            0.0
+          ]
+        ],
+        [
+          [
+            -0.9,
+            0.0
+          ],
+          [
+            -0.9,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "negative_lower_principal_pair",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            1,
+            0.0
+          ],
+          [
+            0,
+            0.0
+          ],
+          [
+            0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ],
+          [
+            2,
+            0.0
+          ]
+        ],
+        [
+          [
+            0,
+            0.0
+          ],
+          [
+            2,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "invalid_over_uncertain_precedence",
+      "kind": "matrix",
+      "value": [
+        [
+          [
+            -2.2737367544323206e-13,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -1,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1,
+            0.0
+          ]
+        ]
+      ],
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "screen_valid",
+      "kind": "screen",
+      "value": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "direction": null
+    },
+    {
+      "id": "screen_zero",
+      "kind": "screen",
+      "value": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": null
+    },
+    {
+      "id": "screen_doubled",
+      "kind": "screen",
+      "value": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": null
+    },
+    {
+      "id": "screen_nonorthogonal",
+      "kind": "screen",
+      "value": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": null
+    },
+    {
+      "id": "screen_transverse",
+      "kind": "screen",
+      "value": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD",
+      "direction": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "screen_not_transverse",
+      "kind": "screen",
+      "value": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "screen_nonunit_direction",
+      "kind": "screen",
+      "value": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "screen_infinite",
+      "kind": "screen",
+      "value": [
+        [
+          {
+            "float": "+inf"
+          },
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected_domain": "InvalidInput",
+      "direction": null
+    },
+    {
+      "id": "energy_P_negative",
+      "kind": "energy",
+      "value": {
+        "literal_ev": -1
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_zero",
+      "kind": "energy",
+      "value": {
+        "literal_ev": 0
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_nan",
+      "kind": "energy",
+      "value": {
+        "literal_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_pinf",
+      "kind": "energy",
+      "value": {
+        "literal_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_subthreshold",
+      "kind": "energy",
+      "value": {
+        "chi_multiplier": 0.5
+      },
+      "expected_domain": "PhysicalZeroBelowThreshold",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_threshold",
+      "kind": "energy",
+      "value": {
+        "q": 0
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_low_missing",
+      "kind": "energy",
+      "value": {
+        "q": 0.8
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_q1",
+      "kind": "energy",
+      "value": {
+        "q": 1
+      },
+      "expected_domain": "Represented",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_q12",
+      "kind": "energy",
+      "value": {
+        "q": 1.2
+      },
+      "expected_domain": "Represented",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_q14",
+      "kind": "energy",
+      "value": {
+        "q": 1.4
+      },
+      "expected_domain": "Represented",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_q16",
+      "kind": "energy",
+      "value": {
+        "q": 1.6
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_below_low_one_ulp",
+      "kind": "energy",
+      "value": {
+        "q": 1,
+        "nextafter": "-inf"
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "P"
+    },
+    {
+      "id": "energy_P_above_high_one_ulp",
+      "kind": "energy",
+      "value": {
+        "q": 1.4,
+        "nextafter": "+inf"
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "P"
+    },
+    {
+      "id": "energy_S_negative",
+      "kind": "energy",
+      "value": {
+        "literal_ev": -1
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_zero",
+      "kind": "energy",
+      "value": {
+        "literal_ev": 0
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_nan",
+      "kind": "energy",
+      "value": {
+        "literal_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_pinf",
+      "kind": "energy",
+      "value": {
+        "literal_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_subthreshold",
+      "kind": "energy",
+      "value": {
+        "chi_multiplier": 0.5
+      },
+      "expected_domain": "PhysicalZeroBelowThreshold",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_threshold",
+      "kind": "energy",
+      "value": {
+        "q": 0
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_low_missing",
+      "kind": "energy",
+      "value": {
+        "q": 0.8
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_q1",
+      "kind": "energy",
+      "value": {
+        "q": 1
+      },
+      "expected_domain": "Represented",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_q12",
+      "kind": "energy",
+      "value": {
+        "q": 1.2
+      },
+      "expected_domain": "Represented",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_q14",
+      "kind": "energy",
+      "value": {
+        "q": 1.4
+      },
+      "expected_domain": "Represented",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_q16",
+      "kind": "energy",
+      "value": {
+        "q": 1.6
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_below_low_one_ulp",
+      "kind": "energy",
+      "value": {
+        "q": 1,
+        "nextafter": "-inf"
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "S"
+    },
+    {
+      "id": "energy_S_above_high_one_ulp",
+      "kind": "energy",
+      "value": {
+        "q": 1.4,
+        "nextafter": "+inf"
+      },
+      "expected_domain": "MissingAuthority",
+      "channel": "S"
+    },
+    {
+      "id": "constants_delta_s_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "delta_s_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_s_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "delta_s_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_s_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "delta_s_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_s_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "delta_s_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_p_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "delta_p_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_p_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "delta_p_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_p_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "delta_p_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_delta_p_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "delta_p_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_i_he_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "i_he_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_i_he_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "i_he_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_i_he_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "i_he_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_i_he_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "i_he_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_epsilon_ir_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "epsilon_ir_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_epsilon_ir_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "epsilon_ir_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_epsilon_ir_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "epsilon_ir_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_epsilon_ir_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "epsilon_ir_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_p_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "chi_p_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_p_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "chi_p_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_p_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "chi_p_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_p_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "chi_p_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_s_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "chi_s_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_s_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "chi_s_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_s_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "chi_s_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_chi_s_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "chi_s_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_rydberg_ev_0.0",
+      "kind": "constants",
+      "value": {
+        "rydberg_ev": 0.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_rydberg_ev_-1.0",
+      "kind": "constants",
+      "value": {
+        "rydberg_ev": -1.0
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_rydberg_ev_{'float': 'nan'}",
+      "kind": "constants",
+      "value": {
+        "rydberg_ev": {
+          "float": "nan"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_rydberg_ev_{'float': '+inf'}",
+      "kind": "constants",
+      "value": {
+        "rydberg_ev": {
+          "float": "+inf"
+        }
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_cycle_mismatch",
+      "kind": "constants",
+      "value": {
+        "chi_p_delta_ev": 0.25
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "constants_canonical",
+      "kind": "constants",
+      "value": {},
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "width_zero",
+      "kind": "width_ev",
+      "value": 0,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "width_one",
+      "kind": "width_ev",
+      "value": 1,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "width_quarter",
+      "kind": "width_ev",
+      "value": 0.25,
+      "expected_domain": "ACCEPTED_NUMERICAL_GUARD"
+    },
+    {
+      "id": "width_negative",
+      "kind": "width_ev",
+      "value": -1,
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "width_nan",
+      "kind": "width_ev",
+      "value": {
+        "float": "nan"
+      },
+      "expected_domain": "InvalidInput"
+    },
+    {
+      "id": "width_tiny",
+      "kind": "width_ev",
+      "value": 5e-324,
+      "expected_domain": "NumericalDomainUncertain"
+    }
+  ]
+}

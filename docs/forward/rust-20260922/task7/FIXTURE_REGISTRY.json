@@ -1,0 +1,2740 @@
+{
+  "schema": "REC_HE_T4_STATIC_FIXTURE_REGISTRY_V1",
+  "inputs": {
+    "path": "tests/fixtures/rust_forward/source_inputs_task6.json",
+    "sha256": "b499d3362bfd3946b59b16444319ac7cd96265bef134b834ea3c0e1bf159286b",
+    "size_bytes": 374930
+  },
+  "reference": {
+    "path": "tests/fixtures/rust_forward/reference_values_v2.json",
+    "sha256": "29023e9b53579992a4737dc47547c32df01f54cdce4433691b2a7d54c75f5b39",
+    "size_bytes": 130925
+  },
+  "reference_lock": {
+    "path": "tests/fixtures/rust_forward/task6_reference_lock.json",
+    "sha256": "de4a27d4973a5c14f383e656925dd58354a0fdb070ad23c094aa2da3faa1388d",
+    "size_bytes": 1604
+  },
+  "reference_records_expected": 251,
+  "reference_status_counts_expected": {
+    "ok": 140,
+    "OutOfBand": 2,
+    "InvalidInput": 91,
+    "NumericalDomainUncertain": 5,
+    "MissingAuthority": 13
+  },
+  "meaning": "REFERENCE_EXPECTATIONS_NOT_OBSERVED_RUST",
+  "groups": {
+    "signed_event_columns": [
+      "ledger_0_plus",
+      "ledger_0_minus",
+      "ledger_1_plus",
+      "ledger_1_minus",
+      "ledger_2_plus",
+      "ledger_2_minus",
+      "ledger_3_plus",
+      "ledger_3_minus",
+      "ledger_4_plus",
+      "ledger_4_minus"
+    ],
+    "bf_matrix": [
+      "bf_P_Length_q1.0",
+      "bf_P_Length_q1.2",
+      "bf_P_Length_q1.4",
+      "bf_P_Velocity_q1.0",
+      "bf_P_Velocity_q1.2",
+      "bf_P_Velocity_q1.4",
+      "bf_P_lte",
+      "bf_P_forward",
+      "bf_P_inverse",
+      "bf_P_subthreshold",
+      "bf_P_small",
+      "bf_S_Length_q1.0",
+      "bf_S_Length_q1.2",
+      "bf_S_Length_q1.4",
+      "bf_S_Velocity_q1.0",
+      "bf_S_Velocity_q1.2",
+      "bf_S_Velocity_q1.4",
+      "bf_S_lte",
+      "bf_S_forward",
+      "bf_S_inverse",
+      "bf_S_subthreshold",
+      "bf_S_small",
+      "bf_P_scalar"
+    ],
+    "bb_matrix": [
+      "bb_two_direction_diagonal_He584",
+      "bb_two_direction_diagonal_IrPToS",
+      "bb_complex_rotated_screen_He584",
+      "bb_complex_rotated_screen_IrPToS",
+      "bb_partial_vacuum_He584",
+      "bb_partial_vacuum_IrPToS",
+      "bb_zero_weight_He584",
+      "bb_zero_weight_IrPToS",
+      "bb_full_vacuum",
+      "bb_lte_He584",
+      "bb_jvp_He584",
+      "bb_lte_IrPToS",
+      "bb_jvp_IrPToS",
+      "bb_legacy_jvp"
+    ],
+    "pair_matrix": [
+      "pair_perpendicular_vacuum",
+      "pair_parallel_vacuum",
+      "pair_complex_tilted_screens",
+      "pair_signed_absorption",
+      "pair_lte_0.25",
+      "pair_lte_0.5",
+      "pair_lte_0.75"
+    ],
+    "material_lte": [
+      "bb_lte_He584",
+      "bb_lte_IrPToS",
+      "bf_P_lte",
+      "bf_S_lte",
+      "pair_complex_tilted_screens",
+      "pair_lte_0.25",
+      "pair_lte_0.5",
+      "pair_lte_0.75"
+    ],
+    "bf_material_lte": [
+      "bf_P_lte",
+      "bf_S_lte"
+    ],
+    "bf_domain_and_guards": [
+      "bf_P_subthreshold",
+      "bf_S_subthreshold",
+      "domain_000",
+      "domain_001",
+      "domain_002",
+      "domain_003",
+      "domain_004",
+      "domain_005",
+      "domain_006",
+      "domain_007",
+      "domain_008",
+      "domain_009",
+      "domain_010",
+      "domain_011",
+      "domain_012",
+      "domain_013",
+      "domain_014",
+      "domain_015",
+      "domain_016",
+      "domain_017",
+      "domain_018",
+      "domain_019",
+      "domain_020",
+      "domain_021",
+      "domain_022",
+      "domain_023",
+      "domain_024",
+      "domain_025",
+      "domain_026",
+      "domain_027",
+      "domain_028",
+      "domain_029",
+      "domain_030",
+      "domain_031",
+      "domain_032",
+      "domain_033",
+      "domain_034",
+      "domain_035",
+      "domain_036",
+      "domain_037",
+      "domain_038",
+      "domain_039",
+      "domain_040",
+      "domain_041",
+      "domain_042",
+      "domain_043",
+      "domain_044",
+      "domain_045",
+      "domain_046",
+      "domain_047",
+      "domain_048",
+      "domain_049",
+      "domain_050",
+      "domain_051",
+      "domain_052",
+      "domain_053",
+      "domain_054",
+      "domain_055",
+      "domain_056",
+      "domain_057",
+      "domain_058",
+      "domain_059",
+      "domain_060",
+      "domain_061",
+      "domain_062",
+      "domain_063",
+      "domain_064",
+      "domain_065",
+      "domain_066",
+      "domain_067",
+      "domain_068",
+      "domain_069",
+      "domain_070",
+      "domain_071",
+      "domain_072",
+      "domain_073",
+      "domain_074",
+      "domain_075",
+      "domain_076",
+      "domain_077",
+      "domain_078",
+      "domain_079",
+      "domain_080",
+      "domain_081",
+      "domain_082",
+      "domain_083",
+      "domain_084",
+      "domain_085",
+      "domain_086",
+      "domain_087",
+      "domain_088",
+      "domain_089",
+      "domain_090",
+      "domain_091",
+      "domain_092",
+      "domain_093",
+      "domain_094",
+      "domain_095",
+      "domain_096",
+      "domain_097",
+      "domain_098",
+      "domain_099",
+      "domain_100",
+      "domain_101",
+      "domain_102",
+      "domain_103",
+      "domain_104",
+      "domain_105",
+      "domain_106",
+      "domain_107",
+      "domain_108",
+      "domain_109",
+      "domain_110",
+      "domain_111",
+      "domain_112",
+      "domain_113",
+      "domain_114",
+      "domain_115",
+      "domain_116",
+      "domain_117",
+      "domain_118",
+      "domain_119",
+      "domain_120",
+      "domain_121",
+      "domain_122",
+      "domain_123",
+      "domain_124",
+      "source_error_P_drift",
+      "source_error_P_negative_density",
+      "source_error_P_non_psd",
+      "source_error_S_drift",
+      "source_error_S_negative_density",
+      "source_error_S_non_psd"
+    ],
+    "d86_band": [
+      "d86_node_1",
+      "d86_node_2",
+      "d86_node_3",
+      "d86_node_4",
+      "d86_node_5",
+      "d86_node_6",
+      "d86_node_7",
+      "d86_node_8",
+      "d86_node_9",
+      "d86_node_10",
+      "d86_node_11",
+      "d86_node_12",
+      "d86_node_13",
+      "d86_node_14",
+      "d86_node_15",
+      "d86_node_16",
+      "d86_node_17",
+      "d86_node_18",
+      "d86_node_19",
+      "d86_node_20",
+      "d86_node_21",
+      "d86_node_22",
+      "d86_node_23",
+      "d86_node_24",
+      "d86_node_25",
+      "d86_node_26",
+      "d86_node_27",
+      "d86_node_28",
+      "d86_node_29",
+      "d86_node_30",
+      "d86_node_31",
+      "d86_node_32",
+      "d86_node_33",
+      "d86_node_34",
+      "d86_node_35",
+      "d86_node_36",
+      "d86_node_37",
+      "d86_node_38",
+      "d86_node_39",
+      "d86_mid_1",
+      "d86_mid_2",
+      "d86_mid_3",
+      "d86_mid_4",
+      "d86_mid_5",
+      "d86_mid_6",
+      "d86_mid_7",
+      "d86_mid_8",
+      "d86_mid_9",
+      "d86_mid_10",
+      "d86_mid_11",
+      "d86_mid_12",
+      "d86_mid_13",
+      "d86_mid_14",
+      "d86_mid_15",
+      "d86_mid_16",
+      "d86_mid_17",
+      "d86_mid_18",
+      "d86_mid_19",
+      "d86_low",
+      "d86_high",
+      "d86_nan"
+    ],
+    "pair_geometry_measure": [
+      "pair_perpendicular_vacuum",
+      "pair_parallel_vacuum",
+      "pair_complex_tilted_screens",
+      "pair_signed_absorption",
+      "pair_lte_0.25",
+      "pair_lte_0.5",
+      "pair_lte_0.75",
+      "pair_grid",
+      "pair_unordered",
+      "pair_bad_exchange"
+    ],
+    "bf_grid": [
+      "bf_grid"
+    ],
+    "selected_ledger": [
+      "selected_mixed"
+    ],
+    "p_scalar": [
+      "bf_P_scalar"
+    ],
+    "bf_species_drift": [
+      "source_error_P_drift",
+      "source_error_S_drift"
+    ]
+  },
+  "records": [
+    {
+      "id": "bb_two_direction_diagonal_He584",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_two_direction_diagonal_IrPToS",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_complex_rotated_screen_He584",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_complex_rotated_screen_IrPToS",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_partial_vacuum_He584",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_partial_vacuum_IrPToS",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_zero_weight_He584",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_zero_weight_IrPToS",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_full_vacuum",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_lte_He584",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_jvp_He584",
+      "op": "bb_jvp",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum",
+        "plus_atomic_b",
+        "minus_atomic_b",
+        "plus_event_rate",
+        "minus_event_rate",
+        "jvp_atomic_b",
+        "jvp_event_rate"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_lte_IrPToS",
+      "op": "bb",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_jvp_IrPToS",
+      "op": "bb_jvp",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum",
+        "plus_atomic_b",
+        "minus_atomic_b",
+        "plus_event_rate",
+        "minus_event_rate",
+        "jvp_atomic_b",
+        "jvp_event_rate"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bb_legacy_jvp",
+      "op": "bb_jvp",
+      "expected_status": "ok",
+      "observable_keys": [
+        "atomic_b",
+        "angular_j",
+        "angular_c",
+        "node_b",
+        "event_rate",
+        "energy_j",
+        "weight_sum",
+        "projector_sum",
+        "plus_atomic_b",
+        "minus_atomic_b",
+        "plus_event_rate",
+        "minus_event_rate",
+        "jvp_atomic_b",
+        "jvp_event_rate"
+      ],
+      "tags": {
+        "spectral": "SharpLineDeltaPerJoule"
+      }
+    },
+    {
+      "id": "bf_P_Length_q1.0",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_Length_q1.2",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_Length_q1.4",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_Velocity_q1.0",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_Velocity_q1.2",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_Velocity_q1.4",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_lte",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_forward",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_inverse",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_subthreshold",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "PhysicalZeroBelowThreshold",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_small",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Length_q1.0",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Length_q1.2",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Length_q1.4",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Velocity_q1.0",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Velocity_q1.2",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_Velocity_q1.4",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_lte",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_forward",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_inverse",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_subthreshold",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "PhysicalZeroBelowThreshold",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_S_small",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "bf_P_scalar",
+      "op": "bf",
+      "expected_status": "ok",
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "tags": {
+        "coverage": "Represented",
+        "density_measure": "ContinuousPerJoulePerSteradian"
+      }
+    },
+    {
+      "id": "pair_perpendicular_vacuum",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_parallel_vacuum",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_complex_tilted_screens",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_signed_absorption",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_lte_0.25",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_lte_0.5",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_lte_0.75",
+      "op": "pair",
+      "expected_status": "ok",
+      "observable_keys": [
+        "screen_overlap",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "energy_j",
+        "event_rate_density",
+        "w",
+        "weights",
+        "pair_factors"
+      ],
+      "tags": {
+        "density_measure": "PairDyDOmega1DOmega2",
+        "marginal_measure": "PartnerSolidAngleAtFixedMaterialEnergy"
+      }
+    },
+    {
+      "id": "pair_grid",
+      "op": "pairgrid",
+      "expected_status": "ok",
+      "observable_keys": [
+        "event_rate",
+        "photon_number",
+        "photon_power_j",
+        "weight_sum",
+        "node_count"
+      ],
+      "tags": {
+        "convention": "FullOrderedExchangeClosed"
+      }
+    },
+    {
+      "id": "bf_grid",
+      "op": "bfgrid",
+      "expected_status": "ok",
+      "observable_keys": [
+        "rates",
+        "atomic_p",
+        "atomic_s",
+        "photon_number",
+        "photon_power_j",
+        "photon_momentum",
+        "removed_power_j",
+        "internal_power_j",
+        "heat_power_j",
+        "coverage_counts"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "selected_mixed",
+      "op": "selected",
+      "expected_status": "ok",
+      "observable_keys": [
+        "rates",
+        "species_source",
+        "atomic_p",
+        "atomic_s",
+        "photon_number",
+        "photon_power_j",
+        "internal_power_j",
+        "heat_power_j",
+        "q_photon",
+        "q_matter"
+      ],
+      "tags": {
+        "frame": "material_tetrad",
+        "metric": "-+++",
+        "pair_tag_policy": "first_full_tag_only"
+      }
+    },
+    {
+      "id": "ledger_0_plus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_0_minus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_1_plus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_1_minus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_2_plus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_2_minus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_3_plus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_3_minus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_4_plus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "ledger_4_minus",
+      "op": "ledger",
+      "expected_status": "ok",
+      "observable_keys": [
+        "species_source",
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_1",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_2",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_3",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_4",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_5",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_6",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_7",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_8",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_9",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_10",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_11",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_12",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_13",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_14",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_15",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_16",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_17",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_18",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_19",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_20",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_21",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_22",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_23",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_24",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_25",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_26",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_27",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_28",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_29",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_30",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_31",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_32",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_33",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_34",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_35",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_36",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_37",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_38",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_node_39",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_1",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_2",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_3",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_4",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_5",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_6",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_7",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_8",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_9",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_10",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_11",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_12",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_13",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_14",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_15",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_16",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_17",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_18",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_mid_19",
+      "op": "d86",
+      "expected_status": "ok",
+      "observable_keys": [
+        "w"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "d86_low",
+      "op": "d86",
+      "expected_status": "OutOfBand",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "d86_high",
+      "op": "d86",
+      "expected_status": "OutOfBand",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "d86_nan",
+      "op": "d86",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_000",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_001",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_002",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_003",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_004",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_005",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_006",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_007",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_008",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_009",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_010",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_011",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_012",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_013",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_014",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_015",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_016",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_017",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_018",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_019",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_020",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_021",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_022",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_023",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_024",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_025",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_026",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_027",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_028",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_029",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_030",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_031",
+      "op": "domain",
+      "expected_status": "NumericalDomainUncertain",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_032",
+      "op": "domain",
+      "expected_status": "NumericalDomainUncertain",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_033",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_034",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_035",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_036",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_037",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_038",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_039",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_040",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_041",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_042",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_043",
+      "op": "domain",
+      "expected_status": "NumericalDomainUncertain",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_044",
+      "op": "domain",
+      "expected_status": "NumericalDomainUncertain",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_045",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_046",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_047",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_048",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_049",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_050",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_051",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_052",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_053",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_054",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_055",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_056",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_057",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_058",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_059",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_060",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_061",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_062",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_063",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_064",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_065",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_066",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_067",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "PhysicalZeroBelowThreshold"
+      }
+    },
+    {
+      "id": "domain_068",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_069",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_070",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_071",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_072",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_073",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_074",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_075",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_076",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_077",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_078",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_079",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_080",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "PhysicalZeroBelowThreshold"
+      }
+    },
+    {
+      "id": "domain_081",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_082",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_083",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_084",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_085",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {
+        "coverage": "Represented"
+      }
+    },
+    {
+      "id": "domain_086",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_087",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_088",
+      "op": "domain",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_089",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_090",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_091",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_092",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_093",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_094",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_095",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_096",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_097",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_098",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_099",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_100",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_101",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_102",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_103",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_104",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_105",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_106",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_107",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_108",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_109",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_110",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_111",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_112",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_113",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_114",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_115",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_116",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_117",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_118",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_119",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [
+        "width_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "domain_120",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [
+        "width_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "domain_121",
+      "op": "domain",
+      "expected_status": "ok",
+      "observable_keys": [
+        "width_j"
+      ],
+      "tags": {}
+    },
+    {
+      "id": "domain_122",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_123",
+      "op": "domain",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "domain_124",
+      "op": "domain",
+      "expected_status": "NumericalDomainUncertain",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_P_drift",
+      "op": "bf",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_P_negative_density",
+      "op": "bf",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_P_non_psd",
+      "op": "bf",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_S_drift",
+      "op": "bf",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_S_negative_density",
+      "op": "bf",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "source_error_S_non_psd",
+      "op": "bf",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "pair_unordered",
+      "op": "pairgrid",
+      "expected_status": "MissingAuthority",
+      "observable_keys": [],
+      "tags": {}
+    },
+    {
+      "id": "pair_bad_exchange",
+      "op": "pairgrid",
+      "expected_status": "InvalidInput",
+      "observable_keys": [],
+      "tags": {}
+    }
+  ]
+}

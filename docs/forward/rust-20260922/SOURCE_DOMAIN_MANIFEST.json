@@ -1,15 +1,24 @@
 {
-  "schema_version": "REC_MICROPHYSICS_SOURCE_DOMAIN_V1",
+  "schema_version": "REC_MICROPHYSICS_SOURCE_DOMAIN_V4_TASK4",
   "port_scope": "fixed-input material-frame selected-He source library",
   "families": {
     "bound_bound": {
-      "channels": ["He584", "IrPToS"],
+      "channels": [
+        "He584",
+        "IrPToS"
+      ],
       "status": "REPRESENTED",
-      "spectral_semantics": "shell-integrated coefficient with explicit sharp-line convention; no finite-bin line profile"
+      "spectral_semantics": "unweighted B/J shell and C delta_J coefficient; no finite-bin profile",
+      "implementation_status": "AUTHORED_UNCOMPILED",
+      "angular_input": "per-mode real V and Hermitian PSD F; nonnegative weight in assembly only",
+      "partial_stencil": "allowed without normalization; full moment diagnostics reported separately"
     },
     "p_bound_free": {
       "status": "PARTIALLY_REPRESENTED_FAIL_CLOSED",
-      "represented_q": [1.0, 1.4],
+      "represented_q": [
+        1.0,
+        1.4
+      ],
       "interpolation": "linear across authority nodes q=1.0,1.2,1.4",
       "below_threshold": "PHYSICAL_ZERO",
       "outside_represented_above_threshold": "MISSING_AUTHORITY",
@@ -17,7 +26,10 @@
     },
     "s_bound_free": {
       "status": "PARTIALLY_REPRESENTED_FAIL_CLOSED",
-      "represented_q": [1.0, 1.4],
+      "represented_q": [
+        1.0,
+        1.4
+      ],
       "interpolation": "linear across authority nodes q=1.0,1.2,1.4",
       "below_threshold": "PHYSICAL_ZERO",
       "outside_represented_above_threshold": "MISSING_AUTHORITY",
@@ -25,13 +37,23 @@
     },
     "two_photon_pair": {
       "status": "REPRESENTED_ON_D86_BAND",
-      "y_band": [0.025, 0.975],
+      "y_band": [
+        0.025,
+        0.975
+      ],
       "interpolation": "reflect y->1-y then linear interpolation on canonical j/40 half-grid",
       "outside_band": "OUT_OF_BAND_TYPED_ERROR",
       "rescale_to_total_rate": false,
       "atomic_event_weight": "(1/2) w g_ang",
       "photon_marginal_weight": "w g_ang",
-      "photon_tags_per_atomic_event": 2
+      "photon_tags_per_atomic_event": 2,
+      "implementation_status": "AUTHORED_UNCOMPILED",
+      "geometry": "actual real T12=V1^T V2, arbitrary valid real orthonormal screens; not assumed unitary",
+      "marginals": "w*g*M_tag/(a_gamma*E_tag_J^2*DeltaS_J); no atomic half",
+      "quadrature": "full ordered exchange-closed supplied support only; explicit partner involution; no normalization",
+      "unordered_half_grid": "MissingAuthority",
+      "photon_moment_semantics": "two independent full tag estimates, each N=2R and P=DeltaS*R; do not add them",
+      "caller_contract": "F1/F2 supplied at the two returned material energies; no photon-bath interpolation or boost"
     },
     "bound_free_electron_frame": {
       "represented": "common material/electron frame, isotropic nondegenerate Maxwell electrons",
@@ -45,5 +67,13 @@
     "S4/S5 promotion",
     "G10 closure",
     "G11-G13"
-  ]
+  ],
+  "validation": "NOT_RUN_IN_RUST",
+  "implementation_limits": {
+    "bb": "per-node kernel, C-shell and diagnostics authored; local compile/parity pending",
+    "pair": "actual overlap/marginals and ordered-grid moments authored; no Rust execution, no full-band/full-sky convergence, no spatial moment",
+    "BF": "domain guards and density measure authored; independent source parity pending",
+    "ledger": "input cycles checked in code; event-derived SI heat/four-force pending Task5"
+  },
+  "input_contract": "task2/INPUT_DOMAIN_UNITS_KO.md"
 }

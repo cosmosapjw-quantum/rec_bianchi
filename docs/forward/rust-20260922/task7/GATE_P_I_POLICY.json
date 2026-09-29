@@ -1,0 +1,89 @@
+{
+  "schema": "REC_HE_GATE_P_I_POLICY_V1",
+  "status": "LOCAL_EXECUTION_PENDING",
+  "required_gate_p_ids": [
+    "T4L01",
+    "T4L02",
+    "T4L03",
+    "T4L08",
+    "T4L09",
+    "T4L10",
+    "T4L11",
+    "T4L12",
+    "T4L13",
+    "T4L14",
+    "T4L15"
+  ],
+  "consumer_only_ids": [
+    "T4L04",
+    "T4L05",
+    "T4L06",
+    "T4L07"
+  ],
+  "split_ids": [
+    "T4L08",
+    "T4L09"
+  ],
+  "required_commands": [
+    [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    [
+      "cargo",
+      "test",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--locked"
+    ],
+    [
+      "python",
+      "scripts/check_rust_forward_parity.py"
+    ]
+  ],
+  "gate_p_pass_requires": [
+    "actual candidate/tested full commit SHA and exact source+acceptance content identity",
+    "all three required commands with actual exit zero and raw stdout/stderr",
+    "all mapped Rust tests actually executed, none filtered/skipped/ignored",
+    "real Rust output for every frozen parity case with expected statuses and finite component comparison",
+    "local source review of the audit rows on the same tested code; read no-double-count paths and frame/measure conventions",
+    "known limitations, MissingAuthority domains and failures retained"
+  ],
+  "insufficient_evidence": [
+    "Python self-test pass",
+    "toy or reference values labelled as actual output",
+    "test symbol presence",
+    "existing Python CI pass",
+    "receipt schema validation only",
+    "historical PASS from 49d64b26",
+    "cargo test with zero or filtered required tests"
+  ],
+  "gate_i_rule": "Gate P may permit a separately authorized exact-revision consumer INTEGRATION TEST; it never supplies Gate I evidence itself.",
+  "partial_original_rule": "T4L08/T4L09 material subcheck PASS must not be written as full original PASS.",
+  "sampling_rule": "Finite stencil evidence is not proof on the full continuum or outside the selected domain.",
+  "current": {
+    "gate_p": "NOT_RUN",
+    "gate_i": "DEFERRED_CONSUMER",
+    "full_original_t4": "NOT_RUN",
+    "candidate_commit_sha": null,
+    "tested_commit_sha": null,
+    "delivery_commit_sha": null,
+    "allow_consumer_integration": false
+  },
+  "scientific_state_unchanged": {
+    "S3": "accepted",
+    "S4": "partial",
+    "S5": "gated",
+    "G10": "open",
+    "G11_G13": "gated",
+    "D86": "canonical",
+    "P0_physical": "OPEN",
+    "HOST4_physical": "HOLD",
+    "HH_propagation": "unauthorized"
+  },
+  "local_result_location": "task9-or-local-return evidence only; do not rewrite this Task7 authorship snapshot as observed execution."
+}

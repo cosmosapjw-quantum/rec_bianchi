@@ -1,0 +1,1359 @@
+{
+  "schema": "REC_HE_T4_COVERAGE_MAP_TASK7_V1",
+  "baseline_commit": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "supplement_acceptance": [
+    {
+      "path": "docs/forward/rust-20260922/task7/T4_SUPPLEMENT_ACCEPTANCE.json",
+      "sha256": "a819e3f0a990aa00ff112c79c24a9f947f8e2e42bd1e13927af7a08ed1e0e8d5",
+      "size_bytes": 2468
+    },
+    {
+      "path": "docs/forward/rust-20260922/task7/T4L10_SUPPLEMENT_ACCEPTANCE.json",
+      "sha256": "01f14df6eae15db685d328a1bdb2617dbe0b4dca3a0a80f822c5b9c09be2195c",
+      "size_bytes": 782
+    }
+  ],
+  "original_matrix": {
+    "path": "docs/forward/rust-20260922/source_subset/plans/LOCAL_CODEX_T4_TEST_MATRIX.json",
+    "sha256": "4008bb2d497c68b0579343c9e5ad223a4f0db7a7909ae0636c1dfa3b003865b0",
+    "size_bytes": 2091
+  },
+  "authority_audit": {
+    "path": "docs/forward/rust-20260922/source_subset/reports/02_T4_CONSERVATION_EQUILIBRIUM_FRAME_AUDIT_KO.md",
+    "sha256": "87bd1568e99dacc2683323015de1f54aac90ac68a4af197116d0cc99f87d6501",
+    "size_bytes": 6811
+  },
+  "rust_test_file": {
+    "path": "rust/rec_microphysics/tests/forward.rs",
+    "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+    "size_bytes": 74907
+  },
+  "rows": [
+    {
+      "original": {
+        "id": "T4L01",
+        "class": "exact_or_small",
+        "test": "event matrix He-nucleus and charge null vectors"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Exact integer left-null vectors for every adopted event column; signed event outputs retain the original species order.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1284,
+            1295
+          ],
+          "anchor": "fn t4l01_event_matrix_exact_integer_null_vectors(",
+          "section_sha256": "1f62835e13a6ec941c735446f0f7f03889906965cfba5d45566e2da6b3f2598a",
+          "symbol": "t4l01_event_matrix_exact_integer_null_vectors",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1145,
+            1160
+          ],
+          "anchor": "fn ledger_each_signed_channel(",
+          "section_sha256": "1b4557496813c30172cf823eefddbc88c74e966a9b5ad36c29b97e60e97eae52",
+          "symbol": "ledger_each_signed_channel",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "signed_event_columns"
+      ],
+      "observable_keys": [
+        "species_source"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            4,
+            11
+          ],
+          "anchor": "pub const EVENT_MATRIX:",
+          "section_sha256": "e497b46c49ea3b0fba7e5a9007ba6d062df6238f92015326304851481af73716"
+        },
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            83,
+            118
+          ],
+          "anchor": "pub fn assemble_he_event_ledger(",
+          "section_sha256": "03d9aac29756f969138e14c490d6a503f37e3238c06d3d3e9126979cdf2ba140"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Integer coefficient check is separate from floating evaluated source/ledger parity."
+    },
+    {
+      "original": {
+        "id": "T4L02",
+        "class": "exact_or_small",
+        "test": "channel-by-channel energy ledger P_int+P_gamma+H_kin=0"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Each of the five source channels separately: independently accumulated photon power + internal energy source + BF excess-energy heat = 0.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1373,
+            1404
+          ],
+          "anchor": "fn t4l02_isolated_source_channel_energy_and_force(",
+          "section_sha256": "2415d19b5c709e9425c9f267f29f869d824c21b91874df6402ff79d1216f125c",
+          "symbol": "t4l02_isolated_source_channel_energy_and_force",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1145,
+            1160
+          ],
+          "anchor": "fn ledger_each_signed_channel(",
+          "section_sha256": "1b4557496813c30172cf823eefddbc88c74e966a9b5ad36c29b97e60e97eae52",
+          "symbol": "ledger_each_signed_channel",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1118,
+            1142
+          ],
+          "anchor": "fn bf_independent_heat_moment(",
+          "section_sha256": "8bb09a2e903ef834766432dca5d68300957c2079952f61b6233d17d1e076315a",
+          "symbol": "bf_independent_heat_moment",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            879,
+            894
+          ],
+          "anchor": "fn pair_photon_count_energy_from_marginals(",
+          "section_sha256": "7cadd9a64973a94c5d41e5d8137c6f587d40c1980b0a8e08aa65e2f5f237a7cc",
+          "symbol": "pair_photon_count_energy_from_marginals",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1261,
+            1271
+          ],
+          "anchor": "fn selected_material_ledger_combines_five_channels_once(",
+          "section_sha256": "01cb3555cb5fde86c10052db5ee17e73887463d20022528264017e1f9728f5cb",
+          "symbol": "selected_material_ledger_combines_five_channels_once",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "signed_event_columns",
+        "bf_grid",
+        "pair_geometry_measure",
+        "selected_ledger"
+      ],
+      "observable_keys": [
+        "internal_power_j",
+        "photon_power_j",
+        "heat_power_j"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            284,
+            341
+          ],
+          "anchor": "pub fn assemble_he_bf_grid(",
+          "section_sha256": "a0ccd5686236e1bc4be4c1f37d070b815c28353d465d425b78e0a540ceada596"
+        },
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            381,
+            467
+          ],
+          "anchor": "pub fn assemble_selected_he_material_ledger(",
+          "section_sha256": "b121ec0aa2384da37ad1d0b587911d896d36100db455932c3c43686805526fe7"
+        }
+      ],
+      "local_audit_required": true,
+      "local_audit_status": "PENDING",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Legacy ledger with caller-chosen compensating heat alone is insufficient; inspect the source-based isolated-channel test and independent reference outputs."
+    },
+    {
+      "original": {
+        "id": "T4L03",
+        "class": "exact_or_small",
+        "test": "material-frame Planck/Boltzmann/Saha source zero for all represented channels"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Material Planck/Boltzmann/Saha cancellation for all five represented channel families on the registered finite energy/screen stencil, including both L/V BF families.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            597,
+            614
+          ],
+          "anchor": "fn bb_lte_each_mode_584_ir(",
+          "section_sha256": "3112a58ede37821fa20bb9badb7a5cd083d537f4a756d6f30968b56769520ff3",
+          "symbol": "bb_lte_each_mode_584_ir",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1306,
+            1370
+          ],
+          "anchor": "fn t4l03_bf_lte_both_gauges_nodes_and_midpoints(",
+          "section_sha256": "eb5dd69ae5aec1d83f1adb08aabbf7e0c9a8d7241c6358a6d374c4da10e9b4d2",
+          "symbol": "t4l03_bf_lte_both_gauges_nodes_and_midpoints",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            841,
+            858
+          ],
+          "anchor": "fn pair_lte_all_represented_modes(",
+          "section_sha256": "bea42b320381508557f161a65ce0f59eb0d2a8793aefc70e52a7bae0a90e4b9a",
+          "symbol": "pair_lte_all_represented_modes",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "material_lte"
+      ],
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "m12",
+        "m21",
+        "node_b",
+        "angular_j"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            919,
+            955
+          ],
+          "anchor": "pub fn he_bb_kernel(",
+          "section_sha256": "d15b86d5ed9e2ca1280ddcbbe3f674863f59af40795f6017d736ae0196020ef4"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1173,
+            1229
+          ],
+          "anchor": "pub fn he_p_bf_source(",
+          "section_sha256": "5ce6baef46c8d71ca952f2288911dae77ae450f815ac418e09d1067bf2c3df36"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1233,
+            1285
+          ],
+          "anchor": "pub fn he_s_bf_source(",
+          "section_sha256": "b95ea3d09cfd4f594f53dc1a5ffe97e63b91486f33cf5b18d853d30073b8c1c0"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1415,
+            1458
+          ],
+          "anchor": "pub fn he_two_photon_pair_source(",
+          "section_sha256": "5bc4e2bf3d03576347d2476d795b28772b916e62247e9324b5dda2b725b60c87"
+        }
+      ],
+      "local_audit_required": true,
+      "local_audit_status": "PENDING",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Finite tests are not a proof at every real continuum energy or every direction. The pointwise LTE argument remains the pinned T4 report; missing bands are not evaluated as zero."
+    },
+    {
+      "original": {
+        "id": "T4L04",
+        "class": "exact_or_small",
+        "test": "finite-tilt boosted LTE remains source zero"
+      },
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "gate_i_required": true,
+      "material_requirement": null,
+      "rust_tests": [],
+      "parity_groups": [],
+      "observable_keys": [],
+      "source_refs": [],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "DEFERRED_CONSUMER",
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "Boosted LTE in the normal frame requires the consumer Doppler, screen and clock adapters; no such execution in this library task."
+    },
+    {
+      "original": {
+        "id": "T4L05",
+        "class": "implementation",
+        "test": "normal/material photon source parity with Dossier-II Eq.115-119 including screen transform"
+      },
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "gate_i_required": true,
+      "material_requirement": null,
+      "rust_tests": [],
+      "parity_groups": [],
+      "observable_keys": [],
+      "source_refs": [],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "DEFERRED_CONSUMER",
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "Dossier-II Eq.115-119 normal/material source+screen transformation is not implemented or tested here. Rotated real material screens do not test a Lorentz boost."
+    },
+    {
+      "original": {
+        "id": "T4L06",
+        "class": "implementation",
+        "test": "atomic proper-density normal-time parity with Dossier-III continuity"
+      },
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "gate_i_required": true,
+      "material_requirement": null,
+      "rust_tests": [],
+      "parity_groups": [],
+      "observable_keys": [],
+      "source_refs": [],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "DEFERRED_CONSUMER",
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "Atomic proper-density normal-time continuity needs the consumer transport/clock adapter. Collision RHS alone is not the continuity equation."
+    },
+    {
+      "original": {
+        "id": "T4L07",
+        "class": "implementation",
+        "test": "direction-dependent normal-frame sharp-line support E_n=epsilon/D"
+      },
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "gate_i_required": true,
+      "material_requirement": null,
+      "rust_tests": [],
+      "parity_groups": [],
+      "observable_keys": [],
+      "source_refs": [],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "DEFERRED_CONSUMER",
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "Material SharpLineDeltaPerJoule is not the direction-dependent normal-frame support E_n=epsilon/D."
+    },
+    {
+      "original": {
+        "id": "T4L08",
+        "class": "implementation",
+        "test": "bound-free threshold and table lookup use E_m=D E_n"
+      },
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER",
+      "gate_p_required": true,
+      "gate_i_required": true,
+      "material_requirement": "Use positive material E in eV for the pinned BF threshold/table branch; separate subthreshold zero from unknown above-threshold and invalid energy. Preserve J integration measure.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            406,
+            423
+          ],
+          "anchor": "fn bf_zero_vs_missing_vs_invalid(",
+          "section_sha256": "c0503a41acae15a19c59e1a150191bebedf9ff9cbd2a2859441254ece6ddb423",
+          "symbol": "bf_zero_vs_missing_vs_invalid",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            426,
+            449
+          ],
+          "anchor": "fn jacobs_energy_endpoint_roundtrip(",
+          "section_sha256": "bf9c0751cd8cc04224d9f96a43749515e5e84298e43a40119f8b1aade18125eb",
+          "symbol": "jacobs_energy_endpoint_roundtrip",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            452,
+            464
+          ],
+          "anchor": "fn energy_and_width_measures_are_explicit(",
+          "section_sha256": "f5d177b51639db2032d702d042e3d99ba82b515ad62a23053fc8e72d1670f88f",
+          "symbol": "energy_and_width_measures_are_explicit",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1186,
+            1193
+          ],
+          "anchor": "fn bf_missing_zero_weight_is_not_physical_zero(",
+          "section_sha256": "8729355b8e1a7ce5b492dc1d1862d903465f445700ebc8e1ab8d9621cd897fb5",
+          "symbol": "bf_missing_zero_weight_is_not_physical_zero",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1209,
+            1215
+          ],
+          "anchor": "fn bf_assembly_applies_joule_and_angular_measure_once(",
+          "section_sha256": "044fffab2d2087393518f2b2f1ec28cd996ab481ea33a005288ec60d50c246eb",
+          "symbol": "bf_assembly_applies_joule_and_angular_measure_once",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "bf_domain_and_guards",
+        "bf_matrix",
+        "bf_grid"
+      ],
+      "observable_keys": [
+        "photon_c",
+        "event_rate_density",
+        "coverage_counts"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            573,
+            611
+          ],
+          "anchor": "fn jacobs_q_from_material_energy(",
+          "section_sha256": "aeb5bf857e2aa13a119dd8ab27e95bbe1775a2a8b37c751e71647709feb6a6ad"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1173,
+            1229
+          ],
+          "anchor": "pub fn he_p_bf_source(",
+          "section_sha256": "5ce6baef46c8d71ca952f2288911dae77ae450f815ac418e09d1067bf2c3df36"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1233,
+            1285
+          ],
+          "anchor": "pub fn he_s_bf_source(",
+          "section_sha256": "b95ea3d09cfd4f594f53dc1a5ffe97e63b91486f33cf5b18d853d30073b8c1c0"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "The material subcheck is Gate P only. Constructing E_m=D E_n and proving actual normal/material lookup equivalence remain Gate I; the original T4L08 cannot pass from this subcheck."
+    },
+    {
+      "original": {
+        "id": "T4L09",
+        "class": "implementation",
+        "test": "two-photon pair uses D1 E1n + D2 E2n=Delta_S"
+      },
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER",
+      "gate_p_required": true,
+      "gate_i_required": true,
+      "material_requirement": "Material pair uses E1=y DeltaS and E2=(1-y)DeltaS in one registry, actual T12, exchange-closed ordered weights, independent tagged marginal number and energy moments.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            799,
+            808
+          ],
+          "anchor": "fn pair_perpendicular_vacuum_screen_overlap(",
+          "section_sha256": "44d6edeb43faff741483d2fa8e43f8539c83384664df6a96722756ba4e72c572",
+          "symbol": "pair_perpendicular_vacuum_screen_overlap",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            811,
+            824
+          ],
+          "anchor": "fn pair_complex_transpose_reference(",
+          "section_sha256": "a43304ff79d513ce6ec2c6b97b717b811013fe9d5491a93c6ffe40ea4642cd01",
+          "symbol": "pair_complex_transpose_reference",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            827,
+            838
+          ],
+          "anchor": "fn pair_swapped_tags_match(",
+          "section_sha256": "9cd47295e478bfae95b82b26456adc1d8860024363898a4362d62cfa2f310c7c",
+          "symbol": "pair_swapped_tags_match",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            861,
+            876
+          ],
+          "anchor": "fn pair_measure_factor_once(",
+          "section_sha256": "5a4b85383a5ad53c537027920c8365597c4e5c448b17e394a39da8719ec16aaa",
+          "symbol": "pair_measure_factor_once",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            879,
+            894
+          ],
+          "anchor": "fn pair_photon_count_energy_from_marginals(",
+          "section_sha256": "7cadd9a64973a94c5d41e5d8137c6f587d40c1980b0a8e08aa65e2f5f237a7cc",
+          "symbol": "pair_photon_count_energy_from_marginals",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            903,
+            919
+          ],
+          "anchor": "fn pair_exchange_contract_rejects_missing_or_mismatched_partner(",
+          "section_sha256": "7748d0accd03b86b501c88337ddb05538dcd1dc33681ab5e1fc0e107ec61e372",
+          "symbol": "pair_exchange_contract_rejects_missing_or_mismatched_partner",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "pair_geometry_measure"
+      ],
+      "observable_keys": [
+        "energy_j",
+        "m12",
+        "m21",
+        "c1",
+        "c2",
+        "photon_number",
+        "photon_power_j"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1415,
+            1458
+          ],
+          "anchor": "pub fn he_two_photon_pair_source(",
+          "section_sha256": "5bc4e2bf3d03576347d2476d795b28772b916e62247e9324b5dda2b725b60c87"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1526,
+            1598
+          ],
+          "anchor": "pub fn assemble_he_pair_grid(",
+          "section_sha256": "c2473694d8caa0824604ad177d250a9dcf347cefe95d78c295b84f5bbd8f39eb"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "limits": "This does not test D1 E1n + D2 E2n=DeltaS. Normal-frame pair kinematics and lookup are deferred to Gate I."
+    },
+    {
+      "original": {
+        "id": "T4L10",
+        "class": "implementation",
+        "test": "P-bound-free full matrix source reduces to scalar isotropic formula when W_P=n_P I3/3"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Full P-bound-free matrix must reduce to the independent scalar isotropic result with WP=nP I3/3; no trace-only substitute for complex matrix parity.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1060,
+            1076
+          ],
+          "anchor": "fn pbf_isotropic_scalar_non_lte(",
+          "section_sha256": "3b1707253f974222a71e9c3547e55103284da3061dc667a6285b6c2a41f4029c",
+          "symbol": "pbf_isotropic_scalar_non_lte",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1039,
+            1057
+          ],
+          "anchor": "fn pbf_complex_component_reference(",
+          "section_sha256": "574992df97d607dd15581335006d1ef1448fff75d6c1e2793c8e73240d010a2b",
+          "symbol": "pbf_complex_component_reference",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1439,
+            1463
+          ],
+          "anchor": "fn t4l10_isotropic_wp_keeps_complex_photon_matrix(",
+          "section_sha256": "6992a6f14b48f2acc031a170c1ba45f94d155d54ee41f5bd3feaba8602710292",
+          "symbol": "t4l10_isotropic_wp_keeps_complex_photon_matrix",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "p_scalar",
+        "bf_matrix"
+      ],
+      "observable_keys": [
+        "photon_c",
+        "atomic",
+        "event_rate_density"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1139,
+            1143
+          ],
+          "anchor": "fn te_map(",
+          "section_sha256": "9ed03a0b1509781d2a04cf21feec88f00202c3e189d9ddefd273f290854a5e99"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1173,
+            1229
+          ],
+          "anchor": "pub fn he_p_bf_source(",
+          "section_sha256": "5ce6baef46c8d71ca952f2288911dae77ae450f815ac418e09d1067bf2c3df36"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Frozen finite q values and represented L/V tables only; no low-table or whole-grid admission."
+    },
+    {
+      "original": {
+        "id": "T4L11",
+        "class": "implementation",
+        "test": "584/IR matrix event trace parity between atom and photon source"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Per-mode and assembled 584/IR atom and photon traces agree for complex WP,F, per-node screens, and exactly one caller-owned WP.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            564,
+            582
+          ],
+          "anchor": "fn bb_atom_photon_trace_complex(",
+          "section_sha256": "73e156e22984914b22521e5b9495cec37f05c9136d4969526a969979273ee5d6",
+          "symbol": "bb_atom_photon_trace_complex",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            544,
+            561
+          ],
+          "anchor": "fn bb_anisotropic_node_modes(",
+          "section_sha256": "1a4f6b4c7dbef3c80df94614ddb9ba527fec28bffb1d32ce494ed4c44d6a04b6",
+          "symbol": "bb_anisotropic_node_modes",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            634,
+            643
+          ],
+          "anchor": "fn bb_same_wp_two_channels(",
+          "section_sha256": "e9c1e1b36855bea69195fa5400f20e6013a4b63a35cc0988403384eb16ee86e2",
+          "symbol": "bb_same_wp_two_channels",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            660,
+            672
+          ],
+          "anchor": "fn bb_angular_weight_applied_once(",
+          "section_sha256": "6cbb1be300d931a138899661b2b8a56be23b81e7c2783d4da15da0fc1dc6705c",
+          "symbol": "bb_angular_weight_applied_once",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "bb_matrix"
+      ],
+      "observable_keys": [
+        "atomic_b",
+        "node_b",
+        "angular_j",
+        "event_rate",
+        "angular_c"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            919,
+            955
+          ],
+          "anchor": "pub fn he_bb_kernel(",
+          "section_sha256": "d15b86d5ed9e2ca1280ddcbbe3f674863f59af40795f6017d736ae0196020ef4"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            975,
+            1006
+          ],
+          "anchor": "pub fn he_bb_source(",
+          "section_sha256": "b86b22df78cc4cc45eaebda19c4e0c7921d2c7a21a694bd53b119bda76d33910"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Material trace agreement does not validate normal-frame screen transformations or arbitrary-angle quadrature accuracy."
+    },
+    {
+      "original": {
+        "id": "T4L12",
+        "class": "implementation",
+        "test": "coverage mask returns explicit UNKNOWN outside domain and preserves LTE on represented modes"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Fail closed for unprovided source domains; accept physical subthreshold zero only as specified; LTE inside the same represented mask for forward and inverse.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            406,
+            423
+          ],
+          "anchor": "fn bf_zero_vs_missing_vs_invalid(",
+          "section_sha256": "c0503a41acae15a19c59e1a150191bebedf9ff9cbd2a2859441254ece6ddb423",
+          "symbol": "bf_zero_vs_missing_vs_invalid",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1186,
+            1193
+          ],
+          "anchor": "fn bf_missing_zero_weight_is_not_physical_zero(",
+          "section_sha256": "8729355b8e1a7ce5b492dc1d1862d903465f445700ebc8e1ab8d9621cd897fb5",
+          "symbol": "bf_missing_zero_weight_is_not_physical_zero",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            426,
+            449
+          ],
+          "anchor": "fn jacobs_energy_endpoint_roundtrip(",
+          "section_sha256": "bf9c0751cd8cc04224d9f96a43749515e5e84298e43a40119f8b1aade18125eb",
+          "symbol": "jacobs_energy_endpoint_roundtrip",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            988,
+            995
+          ],
+          "anchor": "fn d86_outside_band_error(",
+          "section_sha256": "c0210eeb744f36b303b786ad0ec1bf48aedf998cce64160359be15236abddfed",
+          "symbol": "d86_outside_band_error",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            976,
+            985
+          ],
+          "anchor": "fn d86_all_twenty_nodes_and_reflection(",
+          "section_sha256": "c9a1bb4926c157690820a52f8b8d23d8fe15159dfe72e8928c90f18d17988e15",
+          "symbol": "d86_all_twenty_nodes_and_reflection",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1306,
+            1370
+          ],
+          "anchor": "fn t4l03_bf_lte_both_gauges_nodes_and_midpoints(",
+          "section_sha256": "eb5dd69ae5aec1d83f1adb08aabbf7e0c9a8d7241c6358a6d374c4da10e9b4d2",
+          "symbol": "t4l03_bf_lte_both_gauges_nodes_and_midpoints",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            841,
+            858
+          ],
+          "anchor": "fn pair_lte_all_represented_modes(",
+          "section_sha256": "bea42b320381508557f161a65ce0f59eb0d2a8793aefc70e52a7bae0a90e4b9a",
+          "symbol": "pair_lte_all_represented_modes",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "bf_domain_and_guards",
+        "d86_band",
+        "material_lte"
+      ],
+      "observable_keys": [
+        "photon_c",
+        "event_rate_density",
+        "w"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/coverage.rs",
+          "sha256": "d2c11ddf4736dac833dfacdaca3414c0cb1b6d612389fe56c6d7d6443eb30ecd",
+          "size_bytes": 2985,
+          "lines": [
+            4,
+            22
+          ],
+          "anchor": "pub enum CoverageError",
+          "section_sha256": "e0e3f6c50b1da174691ca0e0ccbd45b72b88c73cfcc54837e30df6f129aeaff1"
+        },
+        {
+          "path": "rust/rec_microphysics/src/coverage.rs",
+          "sha256": "d2c11ddf4736dac833dfacdaca3414c0cb1b6d612389fe56c6d7d6443eb30ecd",
+          "size_bytes": 2985,
+          "lines": [
+            66,
+            99
+          ],
+          "anchor": "pub fn d86_w(",
+          "section_sha256": "f1c9bdf373ac648411c20773c3affe0a3b9d6284079546de240690676486ebeb"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1173,
+            1229
+          ],
+          "anchor": "pub fn he_p_bf_source(",
+          "section_sha256": "5ce6baef46c8d71ca952f2288911dae77ae450f815ac418e09d1067bf2c3df36"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1233,
+            1285
+          ],
+          "anchor": "pub fn he_s_bf_source(",
+          "section_sha256": "b95ea3d09cfd4f594f53dc1a5ffe97e63b91486f33cf5b18d853d30073b8c1c0"
+        }
+      ],
+      "local_audit_required": true,
+      "local_audit_status": "PENDING",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "UNKNOWN from original prose maps to typed MissingAuthority/OutOfBand, not successful numeric zero. Nonfinite/invalid inputs have their own error types."
+    },
+    {
+      "original": {
+        "id": "T4L13",
+        "class": "audit",
+        "test": "no duplicate 2gamma total loss, no 584 continuum absorption added to atomic P decay"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "One resolved two-photon atomic event loss; one full tagged marginal for physical photon moments; no added total decay or propagation-continuum correction in P atomic decay.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            998,
+            1006
+          ],
+          "anchor": "fn pair_integrated_event_passes_ledger_without_another_half(",
+          "section_sha256": "9636807fd1adf9e69d0dc7cb3dd05dac5b985e9979b3d876c035372d030a7ae3",
+          "symbol": "pair_integrated_event_passes_ledger_without_another_half",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1245,
+            1253
+          ],
+          "anchor": "fn pair_material_moment_uses_one_full_tag_not_two(",
+          "section_sha256": "595a37b1aa269f6b099f73f67bbe7280520dc4c6114fdd11395d9830311d0f5c",
+          "symbol": "pair_material_moment_uses_one_full_tag_not_two",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1407,
+            1436
+          ],
+          "anchor": "fn t4l13_pbf_is_not_relabelled_as_584_decay(",
+          "section_sha256": "8a9e573a9dd70438299c9e619fe194622702e56c2a8df2e0c59cfa53eb157a0e",
+          "symbol": "t4l13_pbf_is_not_relabelled_as_584_decay",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1261,
+            1271
+          ],
+          "anchor": "fn selected_material_ledger_combines_five_channels_once(",
+          "section_sha256": "01cb3555cb5fde86c10052db5ee17e73887463d20022528264017e1f9728f5cb",
+          "symbol": "selected_material_ledger_combines_five_channels_once",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "pair_geometry_measure",
+        "selected_ledger"
+      ],
+      "observable_keys": [
+        "rates",
+        "species_source",
+        "photon_number",
+        "photon_power_j"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            381,
+            467
+          ],
+          "anchor": "pub fn assemble_selected_he_material_ledger(",
+          "section_sha256": "b121ec0aa2384da37ad1d0b587911d896d36100db455932c3c43686805526fe7"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            1526,
+            1598
+          ],
+          "anchor": "pub fn assemble_he_pair_grid(",
+          "section_sha256": "c2473694d8caa0824604ad177d250a9dcf347cefe95d78c295b84f5bbd8f39eb"
+        }
+      ],
+      "local_audit_required": true,
+      "local_audit_status": "PENDING",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "The Pbf independence test is not an implemented H/He propagation absorber. Source audit must also inspect the reachable API and ensure there is no extra continuum-to-P-decay term; future consumer collisions require a separate audit."
+    },
+    {
+      "original": {
+        "id": "T4L14",
+        "class": "audit",
+        "test": "four-force moment equals scalar photon-energy ledger in material frame"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "Direct material photon energy and directional momentum moment agree with the source/event energy ledger; internal plus kinetic energy, not heat alone, supplies matter energy.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1163,
+            1174
+          ],
+          "anchor": "fn material_four_force_matches_photon_energy(",
+          "section_sha256": "6b7f30e6407a957f5a5626b6a80c1c3328b2773ee703bfa551a925f1eeb9c386",
+          "symbol": "material_four_force_matches_photon_energy",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1373,
+            1404
+          ],
+          "anchor": "fn t4l02_isolated_source_channel_energy_and_force(",
+          "section_sha256": "2415d19b5c709e9425c9f267f29f869d824c21b91874df6402ff79d1216f125c",
+          "symbol": "t4l02_isolated_source_channel_energy_and_force",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1177,
+            1183
+          ],
+          "anchor": "fn bf_opposite_rays_cancel_momentum_not_energy(",
+          "section_sha256": "274c8f49ca57023e47bf55dcb84272e0a6084bbe5b54c26116a2df26eb1c9c36",
+          "symbol": "bf_opposite_rays_cancel_momentum_not_energy",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1227,
+            1237
+          ],
+          "anchor": "fn bb_material_momentum_survives_zero_leading_recoil_heat(",
+          "section_sha256": "1b8d6131c77aa90aa4f13cda12a21ab204630438893cfa539d41b66f04503e13",
+          "symbol": "bb_material_momentum_survives_zero_leading_recoil_heat",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1245,
+            1253
+          ],
+          "anchor": "fn pair_material_moment_uses_one_full_tag_not_two(",
+          "section_sha256": "595a37b1aa269f6b099f73f67bbe7280520dc4c6114fdd11395d9830311d0f5c",
+          "symbol": "pair_material_moment_uses_one_full_tag_not_two",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "bf_grid",
+        "selected_ledger"
+      ],
+      "observable_keys": [
+        "q_photon",
+        "q_matter",
+        "photon_power_j",
+        "internal_power_j",
+        "heat_power_j",
+        "photon_momentum"
+      ],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            177,
+            186
+          ],
+          "anchor": "pub struct MaterialPhotonMoments",
+          "section_sha256": "f2178a0af962e5a3221383eed88875600161bb36ad505379e0721e4cb88168b5"
+        },
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            192,
+            195
+          ],
+          "anchor": "pub struct MaterialFourForce",
+          "section_sha256": "b15a1f188fd7beb4a92d4bafe0dde8104ced11a8772118e8468eabe2821a2d21"
+        },
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "sha256": "2aba5b6c517ecf6e1aa562dd9630c90edf15aa2d40796bbc74f3f89e57c3d042",
+          "size_bytes": 20561,
+          "lines": [
+            381,
+            467
+          ],
+          "anchor": "pub fn assemble_selected_he_material_ledger(",
+          "section_sha256": "b121ec0aa2384da37ad1d0b587911d896d36100db455932c3c43686805526fe7"
+        }
+      ],
+      "local_audit_required": true,
+      "local_audit_status": "PENDING",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Q_m=-Q_gamma is imposed by definition; independent scalar/phase-space agreement is a different check. No species-force partition, gravity coupling or trajectory validation."
+    },
+    {
+      "original": {
+        "id": "T4L15",
+        "class": "negative_control",
+        "test": "species-drift BF inverse is rejected unless a rederived electron distribution kernel is supplied"
+      },
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "gate_i_required": false,
+      "material_requirement": "P/S inverse accepts only the adopted common material/electron-frame Maxwell policy. Species drift must return MissingAuthority without partial numeric source output.",
+      "rust_tests": [
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            166,
+            180
+          ],
+          "anchor": "fn species_drift_bound_free_is_fail_closed(",
+          "section_sha256": "a71a0d8453e232093b8ccedbcd9d41b51e25a466f99cc171483a65dfa0c299be",
+          "symbol": "species_drift_bound_free_is_fail_closed",
+          "execution": "NOT_RUN"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "sha256": "74501bd465bf245f47772ad683a27103860d6606fddaef3bb3e1146eb1cd0c02",
+          "size_bytes": 74907,
+          "lines": [
+            1196,
+            1206
+          ],
+          "anchor": "fn bf_assembly_invalid_measures_directions_and_drift(",
+          "section_sha256": "21c4a89bb8bee35c7af0cf772fb2452afe55756c0652c4aeb57b76659e292d0f",
+          "symbol": "bf_assembly_invalid_measures_directions_and_drift",
+          "execution": "NOT_RUN"
+        }
+      ],
+      "parity_groups": [
+        "bf_species_drift"
+      ],
+      "observable_keys": [],
+      "source_refs": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            709,
+            712
+          ],
+          "anchor": "pub enum ElectronFramePolicy",
+          "section_sha256": "4cd14231f1a0e581fb71a8d8b8899df52afd2350636885bba16c0fd0a5c59ce0"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "sha256": "51a2f2aa090159156dc1233414e16d804bb340e3f9d0acbe8290b9ed83418e3d",
+          "size_bytes": 56864,
+          "lines": [
+            773,
+            784
+          ],
+          "anchor": "    fn validate_bf(&self)",
+          "section_sha256": "8f4ef234347e6b01d495918d9b6487b7e0e9dbe47a885a16d48d9c78a0864d0b"
+        }
+      ],
+      "local_audit_required": false,
+      "local_audit_status": "NOT_APPLICABLE",
+      "authorship_status": "WRITTEN_NOT_EXECUTED",
+      "material_execution": "NOT_RUN",
+      "original_full_execution": "NOT_RUN",
+      "limits": "Rejection does not rederive or implement a drifting/non-Maxwell electron distribution."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version":"BASS_LOCAL_CODEX_T4_TEST_MATRIX_V1",
+  "execution_time":"AFTER_T5_THEORY_READY_AND_USER_LOCAL_EXECUTION_AUTHORIZATION",
+  "tests":[
+    {"id":"T4L01","class":"exact_or_small","test":"event matrix He-nucleus and charge null vectors"},
+    {"id":"T4L02","class":"exact_or_small","test":"channel-by-channel energy ledger P_int+P_gamma+H_kin=0"},
+    {"id":"T4L03","class":"exact_or_small","test":"material-frame Planck/Boltzmann/Saha source zero for all represented channels"},
+    {"id":"T4L04","class":"exact_or_small","test":"finite-tilt boosted LTE remains source zero"},
+    {"id":"T4L05","class":"implementation","test":"normal/material photon source parity with Dossier-II Eq.115-119 including screen transform"},
+    {"id":"T4L06","class":"implementation","test":"atomic proper-density normal-time parity with Dossier-III continuity"},
+    {"id":"T4L07","class":"implementation","test":"direction-dependent normal-frame sharp-line support E_n=epsilon/D"},
+    {"id":"T4L08","class":"implementation","test":"bound-free threshold and table lookup use E_m=D E_n"},
+    {"id":"T4L09","class":"implementation","test":"two-photon pair uses D1 E1n + D2 E2n=Delta_S"},
+    {"id":"T4L10","class":"implementation","test":"P-bound-free full matrix source reduces to scalar isotropic formula when W_P=n_P I3/3"},
+    {"id":"T4L11","class":"implementation","test":"584/IR matrix event trace parity between atom and photon source"},
+    {"id":"T4L12","class":"implementation","test":"coverage mask returns explicit UNKNOWN outside domain and preserves LTE on represented modes"},
+    {"id":"T4L13","class":"audit","test":"no duplicate 2gamma total loss, no 584 continuum absorption added to atomic P decay"},
+    {"id":"T4L14","class":"audit","test":"four-force moment equals scalar photon-energy ledger in material frame"},
+    {"id":"T4L15","class":"negative_control","test":"species-drift BF inverse is rejected unless a rederived electron distribution kernel is supplied"}
+  ],
+  "promotion_note":"Passing these interface tests does not close S4/S5 or G10-G13 by itself."
+}

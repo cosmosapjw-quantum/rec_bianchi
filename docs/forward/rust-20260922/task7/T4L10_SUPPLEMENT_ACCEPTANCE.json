@@ -1,0 +1,50 @@
+{
+  "schema": "REC_HE_TASK7_T4L10_COMPLEX_F_SUPPLEMENT_V1",
+  "test": "t4l10_isotropic_wp_keeps_complex_photon_matrix",
+  "q": 1.2,
+  "gauges": [
+    "Length",
+    "Velocity"
+  ],
+  "n_p": 4.2,
+  "f": [
+    [
+      [
+        0.2,
+        0.0
+      ],
+      [
+        0.03,
+        0.04
+      ]
+    ],
+    [
+      [
+        0.03,
+        -0.04
+      ],
+      [
+        0.1,
+        0.0
+      ]
+    ]
+  ],
+  "v": [
+    [
+      0.6,
+      0.0
+    ],
+    [
+      0.8,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "scalar_reduction": "C=c sigma_tot [3 eta (I2+F) - nP F]",
+  "tolerance": 9.094947017729282e-13,
+  "execution": "NOT_RUN",
+  "reason": "Original T4L10 requires WP isotropic, not F scalar; existing scalar-F checks do not cover the offdiagonal reduced source."
+}

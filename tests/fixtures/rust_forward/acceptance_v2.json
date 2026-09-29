@@ -1,0 +1,38 @@
+{
+  "schema": "REC_HE_ACCEPTANCE_V2_TASK2",
+  "status": "PREREGISTERED_NOT_RUST_EXECUTED",
+  "expression_tolerance": 9.094947017729282e-13,
+  "hermitian_relative_tolerance": 1e-12,
+  "screen_dimensionless_tolerance": 1e-12,
+  "matrix_scale": "max(abs(real_component),abs(imag_component)); no +1 floor",
+  "principal_minors": "all 3 for 2x2 and all 7 for 3x3; original entries scaled only; no symmetrization/projection/clipping",
+  "psd_decision": {
+    "below_minus_tolerance": "InvalidInput",
+    "minus_tolerance_inclusive_to_zero_exclusive": "NumericalDomainUncertain",
+    "nonnegative": "accepted numerical domain guard only"
+  },
+  "severity_precedence": "any invalid minor takes precedence over uncertain minors",
+  "energy_endpoint_policy": "physical E-band comparison first; exact E==chi+q_node*Ry binds q_node; no tolerance-based clamp of E or direct-q lookup",
+  "nonfinite_json": "tagged objects {float:nan|+inf|-inf}; no nonstandard JSON NaN tokens",
+  "non_scope": [
+    "Rust execution",
+    "full source numerical parity",
+    "interval proof",
+    "normal-frame transport",
+    "G10",
+    "E1C"
+  ],
+  "rust_tests": [
+    "reject_nonfinite_public_inputs",
+    "reject_non_psd_input",
+    "roundoff_psd_boundary_is_uncertain",
+    "reject_nonorthonormal_screen",
+    "reject_inconsistent_or_nonfinite_constants",
+    "bf_zero_vs_missing_vs_invalid",
+    "jacobs_energy_endpoint_roundtrip",
+    "energy_and_width_measures_are_explicit",
+    "signed_sources_are_not_projected",
+    "valid_complex_and_zero_inputs_unchanged",
+    "ledger_energy_inputs_reject_nonfinite_but_signed_rates_allowed"
+  ]
+}

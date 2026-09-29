@@ -1,9 +1,9 @@
-# Task8 partial return
+# Task8 transport handoff status
 
-METADATA_DISPATCH_PUBLISHED__SOURCE_COMMIT_PUSH_PENDING
+CODE_WRITTEN_UNCOMPILED__AWAITING_LOCAL_CODEX
 
-누적 source/fixtures/원문은 task8/TRANSPORT_DISPATCH.json에 고정한 package에 있다. Git에는 이 인계·상태 문서만 게시했다. source candidate/tested/delivery SHA는 없다.
+현재 repository의 Task8 commit은 dispatch metadata만 포함한다. 누적 source는 task8/TRANSPORT_DISPATCH.json에 고정된 package에 있다. source candidate/tested/delivery SHA는 미정이며 consumer integration은 허용하지 않는다.
 
-현재-turn Python harness32·T4 map validator18 및 static map exit0은 확인했다. Rust compilation/test/parity는 미실행이다. 과거 PASS 문서는 historical 경로와 Git history에 보존하고 이번 검증으로 승계하지 않는다.
+현재-turn Python harness self-test 32개, T4 map validator self-test 18개 및 정적 map 검사 exit 0은 확인했다. Rust compilation/test/parity는 실행하지 않았다. 과거 PASS를 승계하지 않는다.
 
-Local Codex가 package를 안전하게 적용하여 실제 source C1을 만든 다음 기존 세 mandatory gates와 Gate P를 실행하고 같은 branch에 source/evidence를 push한다. package 적용 전 dispatch SHA를 code candidate로 쓰지 않는다.
+다음 실행은 START_HANDOFF_KO.md에 따른 **누적 source package 적용 → 실제 source commit C1 → local 세 필수 검증 → evidence C2 → fast-forward push**이다. 기존 physical HOLD는 유지한다.

@@ -13,6 +13,11 @@ pub enum CoverageError {
         value: f64,
         detail: &'static str,
     },
+    NumericalDomainUncertain {
+        quantity: &'static str,
+        value: f64,
+        detail: &'static str,
+    },
     InvalidInput(&'static str),
 }
 
@@ -36,6 +41,9 @@ impl fmt::Display for CoverageError {
                     f,
                     "{family}: no adopted numerical authority at {value}: {detail}"
                 )
+            }
+            Self::NumericalDomainUncertain { quantity, value, detail } => {
+                write!(f, "uncertain numerical domain for {quantity} at {value}: {detail}")
             }
             Self::InvalidInput(msg) => write!(f, "invalid input: {msg}"),
         }

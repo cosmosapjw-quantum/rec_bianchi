@@ -1,0 +1,300 @@
+﻿# BASS WU29 — He I singlet n=2 IR source and physical closure
+Scientific RESULT v1 / actual work date 2026-09-13 UTC
+PHYSICAL_SOURCE_DERIVATION_ONLY; NO_PRODUCTION_CODE_MIGRATION
+
+
+## 0. 결론과 완료 경계
+실제 He I 2^1P_1^o→2^1S_0의 A_IR=1.9746×10^6 s^-1를 원 논문의 one-photon 표에서 취득하고, 같은 W_P·n_S·F를 쓰는 정·역 IR matrix source를 연결했다. He584, P/S bound-free, S↔g 두 광자가 포함된 선택된 singlet 블록의 핵수·전하·광자·내부에너지·전자 운동에너지·four-force 원장을 닫았다. 이는 선택한 미시모형의 형식적 연결이며 전체 He 원자계나 재결합 이력의 폐쇄는 아니다.
+새 물리적 연결은 다음과 같다. IR 에너지0.602247875373 eV는 기존 S→g 두 광자 spectrum의 y=0.029212962933에 놓인다. 대응하는 hard photon은20.013527277746 eV여서 기존 P/S bound-free 채택 구간을 모두 벗어난다. IR와 두 광자는 별개 F가 아니라 같은 주파수장의 source이며, 그 hard partner의 continuum 반응은 아직 수치적으로 주어지지 않았다. 한 주파수에서의 nonzero spectrum을 유한 적분률로 오인하지 않는다.
+고정 Planck bath의 작은 판별에서는 S→P 재여기 계수가 기존 band-only 두 광자 하향계수보다1.25×10^4–1.12×10^5배 크다. 따라서 그 조건에서 S를 단지 두 광자 붕괴를 기다리는 저장고로 취급하는 축약은 선택된 source조차 놓친다. 이 비교는 full-spectrum 두 광자 적분, 전체 원자의 lifetime 또는 실제 우주론 예측이 아니다.
+
+
+## 1. Authority, restored state and scope
+물리 authority는 Mathematical Verification Dossier I–V Revised,12September2026이다. WU28 RESULT/EVIDENCE/INTAKE/RECEIPT를 native 원문으로 끝까지 읽었으며 handoff의 각 revision 및 END marker와 일치했다. Dropbox WU28 receipt도 전체 읽어 기록된 path와2026-09-13T12:46:53Z를 확인했다. 역사적 dual-write/readback을 재사용했고 부모 byte/hash 검증이나 영수증 복구를 다시 수행하지 않았다.
+WU27/26/23/24 RESULT를 각각 끝까지 읽었다. 각 exact ID/revision은 이번 INTAKE에 보존했다. 이전 EVIDENCE/receipt를 모두 새로 읽었다거나 부모 숫자를 재실행했다고 하지 않는다. WU26의 actual CHIANTI band 원문을 채택했으며 대화상의 full-domain fit을 섞지 않았다.
+Dossier III의 실제 PDF350152bytes를 취득하고 해당 규약·보존·평형·밀도/fraction·소거·물질 열·비등방/tilt 절을 읽었다. 다섯 dossier 전체를 이번에 전수 재감사한 것은 아니다. Dossier III는 unaligned scalar atom을 선언한다. 여기의 W_P는 부모 WU23/28의 명시적 확장이며 scalar dossier에 원래 포함돼 있었다고 소급하지 않는다. 새로운 물리규약 충돌 또는 부모 수정은 발견/수행하지 않았다.
+승인 폴더에서 WU29를 먼저 검색했으며 기존 결과가 없었다. WU14–16 수치·controller 분기는 DEFERRED로 보존한다. 기존 문서·저장소·권한·수치궤적을 수정/삭제하지 않았다.
+
+
+## 2. 정의, 근사 및 시계
+Metric(-,+,+,+), u.u=-1, U^a=c u^a, D_m=U^a∇_a, θ_U=∇_a U^a. D_m는 물질 세계선의 고유초 미분이며, 모든 n은 proper density다. 동일 물질흐름의 밀도식은 (D_m+θ_U)n=R이다. Matrix W의 좌변은 기존 원자기저의 수송/회전 connection을 포함한 covariant derivative로 읽으며, 아래 B들은 오직 collision source다.
+h_P=2πℏ, a_γ=(h_P c)^(-3),
+ dn_γ=a_γ E² trF(E,e) dE dΩ.                                      (1)
+F=F†≥0는 물질계 energy와 방향에 대한2×2 screen occupation, trI2=2다. 편광2를 측도에 중복하지 않는다. V는 real Cartesian3×2, V^T V=I2, VV^T=I3-ee^T다. 복소 screen/구면기저 변경에는 conjugation adapter를 함께 적용한다.
+g=1s²1^1S0, S=1s2s2^1S0: n_g,n_S scalar, g_g=g_S=1.
+P=1s2p2^1P1^o: W_P=W_P†≥0, trW_P=n_P, g_P=3.
+n_+=HeII1s 총 이온밀도(g_+=2), n_e=총 자유전자밀도(g_e=2).
+P의 orbital3은 triplet spin3이나 수소 양성자밀도가 아니다. 같은 P가584와IR 및 P-bound-free에 동시에 들어간다. 같은 S가IR,S-bound-free,두 광자에 들어간다.
+
+
+채택 근사: spin-independent nonrelativistic LS E1, 실제 correlated-He strength, heavy atom sharp line, 약한 비결맞음 복사와 atom–photon kinetic factorization. P 내부 coherency는 유지하지만 서로 다른 원자 energy level 사이 optical coherence는 secular하게 생략한다. BF inverse에는 등방·비축퇴 Maxwell 전자와 unpolarized spin reservoir를 사용한다. W_P,F의 비등방/정렬/편광은 허용한다. 이 가정들은 공간균질성에서 자동으로 나오지 않는다.
+Recoil/Doppler, natural wings/complete PRD, fine/hyperfine/spin–orbit 전체 보정, 외부장, 위상결맞음 Raman/겹치는 공명, 완전한 self-energy, 전자 속도·스핀 kinetic closure는 계산하지 않았다. 원자에너지의 평가값과 leading E1 tensor를 조합한 calibrated 모델이지 한 Hamiltonian의 모든 정밀 보정을 재현한 것은 아니다.
+
+
+광자 ray clock은 dt_r=-u_a dx^a/c로 정의되는 국소 물질계 경로시간이다. C_t는 그 초당 occupation source이며 D_m를 photon derivative로 대체하지 않는다. 기존 inverse-length 형식에는 C_ell=C_t/c다. normal time/finite tilt가 필요하면 Dossier II의 energy·direction·screen·clock adapter를 그대로 적용한다. 이번에 새로운 normal-frame 식이나 임의1/γ 인자를 만들지 않았다.
+
+
+## 3. 실제 singlet IR 원자자료
+[L1] NIST persistent-line HTML의 singlet 행을 직접 읽었다:
+ lower166277.4403 cm^-1,1s2s ^1S,J0;
+ upper171134.8970 cm^-1,1s2p ^1P°,J1;
+ displayedλ20581.287 Å, A=0.0197×10^8 s^-1, A-reference D96.
+D96은 Drake1996의 High Precision Calculations for Helium이며 실제 reference table도 읽었다. NIST 표시 파장을 곧바로 진공파장으로 쓰지 않고, 부모와 같은 평가준위 차로 vacuum energy/frequency를 계산했다.
+[L2] Zalialiutdinov et al.2016,PRA93,012510,arXiv1601.04156의 TableI(p8),N500,one-photon E1 column을 실제 이미지로 읽었다:
+ 2^1P1→2^1S0: 1.9746(6) s^-1 =1.9746×10^6 s^-1.
+이 값을 새 IR coefficient로 채택한다. 논문 제목의 three-photon coefficient나 다른 column의 M2/triplet 숫자가 아니다. 관련 계산 설명은 correlated nonrelativistic Hylleraas wavefunctions를 사용한다. 그 전체 원자계산을 새로 실행한 것은 아니다.
+NIST1.97×10^6과의 상대 표시차0.002329585739는 반올림/representation 비교이며 오차상한이나 confidence interval이 아니다. 이론값의 표시 다섯 자릿수를 현대 정밀 원자 오차 인증으로 승격하지 않는다. A584=1.7989×10^9 s^-1는 부모값이며 같은 NIST 표와도 교차 확인했다.
+
+
+[L3] 부모와 같은 NIST M02 level calibration:
+ Δ_S=h_P c [100×166277.4403] m^-1,
+ Δ_P=h_P c [100×171134.8970] m^-1,
+ I_He=h_P c [100×198310.6691] m^-1,
+ ε_IR=Δ_P-Δ_S, χ_S=I_He-Δ_S, χ_P=I_He-Δ_P.                       (2)
+여기 숫자 앞100은 cm^-1에서 m^-1 변환이다. χ_P=3.36936632062 eV,χ_S=3.9716141959953 eV인 부모값과 같은 규약이다.
+ Δ_P=Δ_S+ε_IR, χ_S=χ_P+ε_IR                                     (3)
+는 동일 level registry의 정확한 에너지 cycle이다. 별도로 발견한 더 정밀한 IR 실험 frequency만 끼워 넣어 (3)을 깨뜨리지 않았다. 그 실험의 원문을 읽거나 재현한 것으로 세지 않는다.
+실제 계산:
+ ε_IR=0.6022478753734781 eV;
+ ν_IR=145622888372156.86 Hz;
+ λ_IR,vac=2058.690507730105 nm;
+ νtilde_IR=4857.4567 cm^-1.                                       (4)
+뒤쪽 자릿수는 고정입력 환산이며 원자물리 불확도가 아니다.
+
+
+R=r1+r2를 전자 위치의 합으로 쓰면 회전대칭 때문에
+ <S|R_i|P_j>=d_IR δ_ij,
+ A_IR=4α_fs ω_IR³ |d_IR|²/(3c²), ω_IR=ε_IR/ℏ.                    (5)
+따라서 |d_IR|=sqrt[3c² A_IR/(4α_fs ω_IR³)]. 이 값은 charge dipole/e이며 길이 단위다. 실제 charge dipole는 e|d_IR|다. 두 전자 correlation은 취득한 strength에 들어 있고 별도 factor2를 넣지 않는다. Hydrogenic radial substitution을 하지 않았다.
+ d_IR/a0=2.91603572177710,
+ f_SP=2m_e ω_IR |d_IR|²/ℏ=0.376391914079924.                       (6)
+이 계산은 strength 환산이지 독립 wavefunction 검증이 아니다. A 하나로 |d|는 정하지만 다른 전이와의 상대위상, dispersive self-energy, 매질보정은 정하지 못한다. 현재 secular incoherent sum에는 그 상대위상이 필요하지 않으며 coherent Raman 확장에는 새 입력이 필요하다.
+
+
+## 4. Singlet IR의 정·역 matrix source — derived
+H=I2+F, W=W_P라 쓰고 rate measure를
+ b_IR(E)=3A_IR δ_D(E-ε_IR)/(8π)                                   (7)
+로 정의한다. [b]=s^-1 J^-1, δ_D는 에너지 적분측도이지 pointwise 단면적이 아니다. [a_γE²]=(volume×energy)^-1이므로 아래 C는 occupation/s다.
+
+
+P 원자의 국소 source:
+ B_IR=∫b_IR [n_S V F V^T - {V H V^T,W}/2] dE dΩ.                (8)
+같은 사건의 photon-number matrix source와 occupation source:
+ J_IR(E,e)=b_IR[{H,V^T W V}/2 - n_S F],
+ C_IR=J_IR/(a_γ E²),
+ R_IR=∫trJ_IR dE dΩ=-tr B_IR.                                    (9)
+S source는 +R_IR이다. R_IR>0은 net P→S이며 재흡수가 우세하면 음수다. 자발방출은 H의I2, 유도방출은 H의F, 역흡수는 n_S F로 분리된다. BF inverse의 singlet1/4 또는 triplet3/4를 (8),(9)에 넣지 않는다.
+유도는 E1 coupling의 Cartesian amplitude ε_lambda,j와 <S|R_i|P_j>=dδ_ij를 수축하여 얻는다. 흡수 pump는 n_S VFV^T이고, 각 upper amplitude의 감쇠는 VH V^T다. 같은 진폭 수축으로 방출의 screen tensor는 V^TWV가 된다. Cyclic trace에 의해 각 E,e에서
+ tr[n_S VFV^T-{VHV^T,W}/2]
+       +tr[{H,V^TWV}/2-n_S F]=0                                (10)
+이다. 이는 전자각을 적분한 BF map의 별도 transpose convention을 없애지 않는다.
+
+
+정규화:
+ ∫(I3-ee^T)dΩ=(8π/3)I3,
+ ∫b_IR V V^T dE dΩ=A_IR I3.                                    (11)
+따라서 진공에서 B_IR=-A_IR W, R_IR=A_IR n_P다. A_IR는 upper total population의 원자당 partial rate이고 이를3으로 나누지 않는다.
+등방 F_IR=f_IR I2이면
+ B_IR=A_IR[n_S f_IR I3-(1+f_IR)W],
+ R_IR=A_IR[n_P(1+f_IR)-3n_S f_IR].                              (12)
+반대로 arbitrary F에서 W=n_P I3/3라고 지정한 순간의 source는
+ J_IR=b_IR[n_P(I2+F)/3-n_S F].                                  (13)
+하지만 비등방 pump가 이 scalar subspace를 계속 보존하는 것은 아니다. W=n|z><z|와 W=n|x><x|는 같은 n_P이나 e=z 진공 방출의 screen tensor가 각각0과 n diag(1,0)이다. 총 rate가 같아도 angular/polarization source는 다르다. Stokes/단일 scalar rate만으로 general W source를 대신할 수 없다.
+(8),(9)는 Hermiticity와 동일 사건 trace를 보존한다. source 자체의 PSD 또는 all-time 양성보존 적분기 완료를 주장하지 않는다. f≥0의 고정 유한 bath에서 pump와 loss의 형식이 정해졌다는 것과 joint dynamical solver의 검증은 다른 수준이다.
+
+
+Sharp-line 한계에서는 F(E_IR,e)의 공명 trace가 정의될 정도의 regularity/line-transfer prescription을 요구한다. δ_D source를 다시 δ_D와 곱하는 계산을 하지 않는다. 실제 폭·재분배·경계에서 그 trace를 어떻게 얻는지는 아래 physical closure의 추가 항목이다. 임의 Voigt 폭을 넣고 상세평형이나 wing accuracy가 자동 보존된다고 하지 않는다.
+
+
+## 5. 같은 상태·같은 F에 결합한 다섯 source
+5.1 He584
+(7)–(9)에서 n_S→n_g,ε_IR→Δ_P,A_IR→A584를 바꾼 B584,J584,C584,R584를 사용한다. 이는 부모 WU23/24의 heavy sharp-line 한계다. 같은 W_P에 동시에 작용한다. 별도의 P584 population을 만들지 않는다. Parent의 finite-momentum shell은 별도 근사이며 이번에 새로 재현하지 않았다.
+
+
+5.2 P bound-free — WU28 재사용
+Φ(T_m)=[m_e k_BT_m/(2πℏ²)]^(3/2),
+η_P(E)=n_+ n_e exp[-(E-χ_P)/(k_BT_m)]/(4Φ),
+T_E[X]=(3σ_s-3σ_d/5)X+(9σ_d/10)X^T+(9σ_d/10)tr(X)I3,
+J_F=V F^T V^T, J_H=V(I2+F)^T V^T,
+K_F=T_E[J_F], K_W=V^T T_E[W^T]V,
+B_P=ca_γ∫E²[η_P T_E[J_H]-{K_F,W}/2]dE dΩ,
+C_Pbf=c[3η_P σ_tot(I2+F)-{F,K_W}/2],
+j_P=-a_γ E²trC_Pbf, R_P=∫j_P=-trB_P.                           (14)
+R_P>0을 net ionization으로 정의한다. σ_tot=σ_s+σ_d. 실제 partials를 사용하며 총단면적에서 임의 partial ratio/위상을 만들지 않는다. 이 map은 전자방향 완전구면 동일가중 적분 및 isotropic inverse/no direction-dependent blocking 안에서 phase-free다. General differential electron source와 Im(s*d)의 부호는 여전히 미확정이다.
+
+
+5.3 S bound-free — WU27 재사용
+η_S(E)=n_+n_e exp[-(E-χ_S)/(k_BT_m)]/(4Φ),
+C_Sbf=cσ_S[η_S(I2+F)-n_S F],
+j_S=-a_γ E²trC_Sbf, R_S=∫j_S=n_SΓ_S-n_+n_eα_S[F,T_m].            (15)
+Γ_S=ca_γ∫E²σ_S trF,
+α_S=ca_γ/(4Φ)∫E²σ_S exp[-(E-χ_S)/(k_BT_m)](2+trF).
+적분은 실제 channel domain에 한한다. 기본 Milne 관계를 새 성과로 반복 유도한 것이 아니며, 같은 scalar n_S가 IR/pair 식에 들어가도록 연결한 것이다.
+
+
+5.4 S↔g 두 광자 — WU26 재사용
+Δ=Δ_S,E=Δy,E'=Δ(1-y),T12=V1^TV2(real basis),H_i=I2+F_i,
+M12=(n_S/2){H1,T12 H2^T T12†}-(n_g/2){F1,T12 F2^T T12†},
+g_ang=3/(64π²),
+C_2γ(E,e1)=w(y)/(a_γE²Δ) g_ang∫M12 dΩ2,
+R_2γ=(1/2)∫w(y)dy g_ang∫trM12 dΩ1dΩ2
+      =n_SΛ_down[F]-n_gΛ_up[F].                                (16)
+모든 F와 population은 각 해당 적분 안에 있다. 원자사건은 unordered pair이므로1/2, photon source는 두 tag를 세므로 추가1/2가 없다. 동일 w로 ∫a_γE²trC_2γ=2R_2γ, ∫a_γE³trC_2γ=Δ_S R_2γ다.
+채택 계산형은 CHIANTI41node He row의 w=A_tabψ,A_tab50.94/s를 .025≤y≤.975에서 선형으로 이은 band representative다. 같은 band atomic vacuum integral은51.06161925/s이며 별도로50.94 n_S를 더하지 않는다. normalization/endpoints의 차이는 미해결로 보존한다. 이번에 spectrum 적분을 재실행하지 않았다.
+
+
+5.5 공동 retained equations
+다른 물리반응이 없는 선택된 subsystem에서는
+ (D_m+θ_U)n_g= R584+R_2γ,
+ (D_m+θ_U)n_S= R_IR-R_S-R_2γ,
+ (D_m+θ_U)W_P= B584+B_IR+B_P,
+ (D_m+θ_U)n_+=R_P+R_S,
+ (D_m+θ_U)n_e|He=R_P+R_S,                                      (17)
+ L_t[F]=C584+C_IR+C_Pbf+C_Sbf+C_2γ.                              (18)
+원래 모델의 H continuum/Thomson/다른 실제 정의된 source를 결합할 때에는 같은 F의 우변에 한 번씩만 더하고 그 species/열 원장도 함께 확장한다. (17)의 n_e식은 He 기여이지 전체 H/He 전자식이 아니다.
+He584 photon의 H continuum 흡수는 이미 방출된 광자의 전파에서 작용한다. cn_Hσ_H를 B584 또는 B_IR의 atomic loss에 직접 넣지 않는다. 반면 같은 P에 실제 작용하는 P→S나 P ionization은 경쟁 atomic exit다.
+Full(17),(18)를 유지하면서 effective escape coefficient나 He*-H 직접반응, 별도 resonant-scattering cycle을 또 더하지 않는다. P→S 이후 S storage, S→P 재여기, S ionization, S→g 두 광자 도달은 다른 사건이다. IR 후 pair decay는 세 광자를 내며 에너지 합이 ε_IR+Δ_S=Δ_P다. P→g의 한 광자 방출과 동일 사건을 복제한 것이 아니다.
+S→g 두 광자 band에서 virtual singlet P는 S보다 높은 에너지라 downhill on-shell cascade pole이 없다. IR를 명시했다고 기존 S→g pair를 새 real cascade로 다시 세거나 coefficient를 빼지 않는다. Coherent Raman/삼광자 full-amplitude matching은 이 secular channel model 밖이다.
+
+
+## 6. 핵수·전하·광자·에너지·four-force
+R584,R_IR,R_2γ는 net downward, R_P,R_S는 net ionization이다. Population 순서(g,S,P,HeII,e,photon),channel 순서(584,IR,Pbf,Sbf,2γ)의 event matrix는
+ S_event={{1,0,0,0,1},
+          {0,1,0,-1,-1},
+          {-1,-1,-1,0,0},
+          {0,0,1,1,0},
+          {0,0,1,1,0},
+          {1,1,-1,-1,2}}.                                      (19)
+따라서 n_He=n_g+n_S+trW_P+n_+의 공통 dilution 외 생성은0, He charge와 전자의 collision 생성 차도0이다. 실제 HeIII/H가 있으면 기존 charge equation의 해당 항을 보존한다.
+전체 주파수 photon collision number source는
+ S_Nγ=R584+R_IR-R_P-R_S+2R_2γ.                                  (20)
+유한 spectral/spatial domain에는 photon storage와 주파수·공간 경계flux가 남는다. 이 수치 회계를 escaping photon rate 또는 영구 중성화율로 바꾸지 않는다.
+
+
+원자 바닥을0으로 한 내부에너지밀도:
+ u_int=Δ_S n_S+Δ_P trW_P+I_He n_+.
+충돌 source:
+ P_int=-Δ_P R584-ε_IR R_IR-Δ_S R_2γ+χ_P R_P+χ_S R_S,
+ P_γ=Δ_P R584+ε_IR R_IR+Δ_S R_2γ-∫E(j_P+j_S)dE dΩ,
+ H_kin=∫[(E-χ_P)j_P+(E-χ_S)j_S]dE dΩ,
+ P_int+P_γ+H_kin=0.                                             (21)
+χ_P/S는 그 들뜬 상태에서 continuum까지의 내부에너지차다. 이미 u_int에 들어간 excitation energy를 열로 또 더하지 않는다. 역capture가 우세하면 j<0로 capture electron의 kinetic energy 제거도 같은 식에 반영된다.
+Heavy sharp BB와 pair에서 kinetic heat는0이지만 momentum transfer가0이라는 뜻은 아니다. 모든 selected photons에 대해 S_γ=a_γE²C_total이면
+ Q_m^a=-(1/c)∫E(u^a+e^a)trS_γ dE dΩ,
+ Q_γ^a=-Q_m^a.                                                 (22)
+이는 총물질 대 복사의 local collision four-force다. 전자/이온/원자 사이 운동량 분배 및 비열적 이완까지 결정한 것은 아니다. Geometric redshift 에너지는 Liouville/geometry 부분이며 (21)에 열로 중복하지 않는다.
+H_kin을 T_m 방정식의 즉시 열로 쓰려면 실제 electron thermalization/common-temperature closure가 필요하다. Dossier III의 particle-number 변화에 따른 온도항을 삭제하지 않는다. Bound-bound은 free electron을 줄이지 않고, bound-free capture만 그 channel에서 free electron을 줄인다.
+
+
+## 7. 공통 Planck–Boltzmann–Saha 평형과 비평형의 구분
+공통 T>0에서 F_eq(E,e)=f_Pl(E,T)I2이고, g_g=g_S=1,g_P=3,g_+=g_e=2이면
+ n_g,eq=n_+ n_e exp[I_He/(k_BT)]/(4Φ),
+ n_S,eq=n_g,eq exp[-Δ_S/(k_BT)],
+ W_P,eq=n_g,eq exp[-Δ_P/(k_BT)]I3.                              (23)
+P의 per-orbital density를 w_P,eq라 하면 η_P=w_P,eq exp[-E/(k_BT)],η_S=n_S,eq exp[-E/(k_BT)]다.
+각 BB shell에서 W_P=n_L exp[-ε_L/(k_BT)]I3와
+ exp[-ε_L/(k_BT)](1+f_Pl(ε_L))=f_Pl(ε_L)
+를 넣으면 (8),(9)가 E,e별로0이다. BF는 T_E[I3]=3σ_totI3와 (23)을 넣어 각 E,e에서0이다. Pair는 E+E'=Δ_S와
+ exp[-Δ_S/(k_BT)](1+f_Pl(E))(1+f_Pl(E'))=f_Pl(E)f_Pl(E')           (24)
+로 각 pair에서0이다. 별도의 전체 적분 상쇄만을 강제한 것이 아니다.
+Band restriction을 정·역에 동일하게 적용해도 해당 modes의 평형 상쇄는 보존된다. 그러나 이것은 missing coverage가 무해하다는 증명이 아니다. 비평형에서는 n_P/n_S=3exp[-ε_IR/(k_BT)] 또는 Saha를 강제하지 않고 (17),(18)를 풀어야 한다.
+
+
+## 8. 조건부 소거와 실제 physical closure 조건
+Primary route는 retained equations다. 기존 exact-memory/Schur 이론은 재사용하며 새 발명처럼 재증명하지 않는다. IR를 포함한 새 연결에서 어느 operator의 relaxation을 평가해야 하는지 명시한다.
+원자/복사가 등방이고 coefficients가 주어졌다는 추가 조건에서 x_i=n_i/n_He(공통 보존 nuclei)로 쓰자. f584,fIR은 실제 해당 mode occupation이다.
+ a=A584(1+f584), b=A_IR(1+fIR), c_up=3A_IR fIR,
+ d=Λ_down, L_P=a+b+Γ_P, L_S=c_up+d+Γ_S,
+ q_P=3A584 f584 x_g+n_e x_+α_P,
+ q_S=Λ_up x_g+n_e x_+α_S,
+ D_m (x_P,x_S)^T=(q_P,q_S)^T-L(x_P,x_S)^T,
+ L={{L_P,-c_up},{-b,L_S}}.                                      (25)
+α_P는 WU28의 scalar inverse이고 현재 full-energy 숫자는 없다. Γ_P/S도 실제 F와 실제σ의 함수이며 미취득 tail을0으로 채우지 않는다. Density식을 그냥0으로 놓으면 θ dilution이 빠지므로 이 식은 fractions로 썼다.
+ detL=(a+Γ_P)(c_up+d+Γ_S)+b(d+Γ_S),
+ λ_±=[L_P+L_S ± sqrt((L_P-L_S)^2+4bc_up)]/2.                     (26)
+유효 소거는 실제 stable relaxation, initial transient decay, coefficients/source/history 변화와 재구성 residual에 의해 조건부다. 단지 A_IR가 크거나 어떤 cosmic epoch라는 이유로 x_P/x_S를 평형비로 reset하지 않는다. Anisotropic case는 full W 연산자의 relaxation 문제이며2×2 scalar L로 대체할 수 없다. Coupled photon storage/escape는 atomic λ로만 제어되지 않는다.
+고정 bath에서 첫 원자 ground 도달 전 ionization을 terminal 경쟁으로 두는 별도 진단에서는
+ p_Pg=(aL_S+bd)/detL,
+ p_Sg=(dL_P+c_up a)/detL                                        (27)
+를 얻는다. p_Pg=(a+b p_Sg)/L_P,p_Sg=(d+c_up p_Pg)/L_S를 풀면 된다. (27)은 최초 ground 도달확률일 뿐 g 재흡수/재이온화 및 radiation escape가 있는 전체 모델의 영구 중성화확률이 아니다. (27)을 (17)에 직접반응으로 또 더하지 않는다. 실제 Γ_P/S 전체값이 없으므로 이 확률의 실제 수치를 주장하지 않는다.
+
+
+물리계 전체를 닫기 위해서는 최소한 다음 종류의 입력이 더 필요하다. 해당 실제 spectral domain의 σ_s,σ_d,σ_S와 pair w(정규화 포함); sharp-line trace/line-profile 및 transport boundary/initial F; 다른 n/term·triplet·HeI ground continuum·HeIII 및 feeding/collisional exits를 생략해도 되는 정량 근거나 명시적 원장; T_m/n_e/spin/velocity reservoir의 kinetic closure; material/geometry 초기자료. 선택한 다섯 source에서 conservation이 맞는 것만으로 이 입력들이 결정되지 않는다.
+
+
+## 9. 실제 bounded numerical discriminator
+고정 constants: c299792458,h_P6.62607015e-34,k_B1.380649e-23,e1.602176634e-19,m_e9.1093837139e-31,α_fs7.2973525643e-3(SI). 원자 입력 불확도/공분산을 전파하지 않았다.
+새 Wolfram WL02에서 prescribed isotropic Planck bath를3000,6000,10000K로 지정하고 b=A_IR(1+fIR),c_up=3A_IR fIR를 계산했다. 이전 WU26의 band-only Λ_down={51.0914614809,51.3305981161,52.0859914682}/s를 분모로 재사용했다. 이 분모를 이번에 새로 적분했다고 하지 않는다.
+ T/K | fIR | b /s | c_up /s | c_up/Λ_down,B
+ 3000 |0.107830444210|2.18752199514e6|6.38765985412e5|1.25024019063e4
+ 6000 |0.453457192175|2.86999657167e6|2.68618971501e6|5.23311594564e4
+10000 |0.988632858053|3.92675444151e6|5.85646332453e6|1.12438357406e5.  (28)
+이는 per-upper P→S와 per-lower S→P의 서로 다른 계수다. Population을 곱하기 전의 계수비를 곧바로 net event flux비로 읽지 않는다. Full-spectrum Λ의 미확정 soft contribution까지 포함한 upper/lower bound라고 하지 않는다.
+진공에서 두 BB 출구만 세면
+ p_P→S=A_IR/(A584+A_IR)=0.001096467238752,
+ τ_P,twoBB=1/(A584+A_IR)=5.55285748380e-10s.                      (29)
+IR가 P의 작은 branching이어도 S 재여기는 빠를 수 있다. τ_P는 두 출구만의 값으로, BF/다른 채널을 포함한 모든 환경의 lifetime이 아니다. Thermal two-BB IR branching은 위 세 온도에서 .00121455618809,.00159287621457,.00217810970009다. H propagation opacity를 그 분모에 넣지 않았다.
+
+
+실제 새 cross-frequency 연결:
+ y_IR=ε_IR/Δ_S=0.0292129629325308 ∈[.025,.975],
+ E_partner=Δ_S-ε_IR=20.0135272777463 eV.
+기존 band의 처음 두 노드 ψ(.025)=.153,ψ(.05)=.495를 그대로 선형 연결하면
+ w_B(y_IR)=10.7296619787931 s^-1 per unit y.                      (30)
+이 값은 spectral density이지 총 pair rate 또는 특정 sharp-line pumping의 적분효과가 아니다. F_IR와 대응하는 F_partner를 같은 pair source에 넣을 수 있다는 실제 overlap을 판별한다. 유한 폭/fluency/field가 있어야 그 효과의 크기를 계산할 수 있다.
+P-BF 채택 E=[5.41022028905,16.97505944347]eV,
+S-BF 채택 E=[4.107671127224,17.577307318839]eV.
+E_partner뿐 아니라584 photonΔ_P≈21.21802303eV도 둘 다 범위 밖이다. 해당 q=K/Ry는
+ channel | q(E_partner) | q(E584)
+ P |1.22332326672718|1.31185207153497
+ S |1.17905886432328|1.26758766913107.                              (31)
+기존 두 자료의 upper q=1을 넘는다. IR 자체는 두 BF 문턱보다 낮지만, 그 pair partner와584 광자는 실제 들뜬He를 이온화할 수 있는 에너지이며 σ를0으로 가정할 수 없다. 이번에는 외삽한σ나 미지 full Maxwell capture rate를 만들지 않았다.
+
+
+## 10. Actual evidence and failures
+Scientific Wolfram TWO calls: WL01(timeConstraint45s) IR01–IR12 True; WL02(40s) IR13–IR18 True. 두 반환 모두 kernel15.0.1 Linux x86, 경고/False/미평가 비교 보고 없음. 별도 source-image acquisition ONE call(30s): 실제TableI page8 이미지 반환. WolframContext의 자동 검색5개는 No Results Found였고 원자 수치 근거로 쓰지 않았다.
+WL01은 angular normalization, 일반 행렬성분을 둔 고정 Cartesian screen의 trace 및 LTE, scalar한계, 하나의 complex PSD 입력, 핵수/전하/energy/pair identity다. 독립 물리모형18개 또는 production tests18개로 세지 않는다. General source proof는§4–7의 유도이며 finite witness와 구별한다.
+그 complex witness의 W={{3,i,-i},{-i,3,1},{i,1,3}},F={{4/5,1/5+3i/10},{1/5-3i/10,1/2}},nS=7/5,V=(e_x,e_y)에서 Tr(B/b)=-217/25,Tr(J/b)=217/25였다. 실제 행렬 전체와 모든 Wolfram 입력/반환은 EVIDENCE에 있다.
+독립 local Python3.13.5/mpmath1.3.0/SymPy1.14.0으로 고정상수 환산, rate table, 같은 complex witness와 (26)의 det를 검산했다. 8개 명시 비교 True, actual process exit0. 모든 Wolfram 프로그램을 local에서 native 실행한 것은 아니며 full BF/pair integration이나 ODE/controller/production test는 없다.
+접근 실패: malformed Docs FieldMask1개, malformed Drive q1개, Dropbox trailing-slash query1개를 올바른 요청으로 수정했다. 일부 웹 catalog/PDF/원문 및 web screenshot 실패가 있었지만 선택된 primary table은 Wolfram image로 확인했다. Local external download4개는 DNS NameResolutionError로 실패했으며 local PDF/파일/계산은 작동했다. 권한 우회나 환경 재설치 loop는 하지 않았다. 입력 문법/접근 실패를 물리 실패 또는 통과 검사로 재분류하지 않는다.
+원자료의 정확한 채택 행과 source locator, SciSpace 질문/선정/비선정 범위, 입력·반환·실패 원장이 EVIDENCE에 보존된다. 수동으로 보존한 tool-return 전사본이지 signed raw tool-envelope archive가 아니다. Public source PDF/image의 raw bytes는 이번 checkpoint에서 미확보다.
+
+
+## 11. Claim gates, progress and nextONE
+(1) SELECTED_CHANNEL_FORMAL_CONNECTION = derived.
+같은 g/S/W_P/n_+/n_e/F에서 다섯 채널의 정·역 source와 event/energy/force/LTE 연결을 명시했다. Weak-incoherent/heavy-atom/Maxwell inverse의 조건부 모형이다.
+(2) ACTUAL_DATA_COMPUTATIONAL_FORM = literature-supported + bounded numerically checked, PARTIAL_COVERAGE.
+IR rate 및 energy, inherited584, P/S BF의 해당 bands, CHIANTI pair band는 정해졌다. 전체 공통 spectrum을 실제σ로 모두 계산하는 joint closure는 아직 아니다. IR–pair hard partner에서 새 공백을 구체적으로 식별했다.
+(3) FULL_PHYSICAL_AND_RECOMBINATION_HISTORY_CLOSURE = unresolved.
+전체 energy/atomic/reservoir/line-transfer coverage, 전체 H/He multilevel 및 x_e(z), observable accuracy, general nonthermal electron/spin inverse는 완료하지 않았다.
+Production implementation-verified, all-time positive/adaptive integrator, continuum convergence, speedup,11 Bianchi families/non-axisymmetric solver 완료를 주장하지 않는다.
+
+
+Whole-plan progress:
+A |4| 공통 기하·초기자료·물질: 기존 결과 재사용
+B |6| 운동론·편광·Thomson: 기존 수송에 선택 source 연결
+C |5| 재결합: singlet IR 및 공동 n=2 source 연결 전진; 전체 closure 미완료
+D |3| 재이온화: 전역 closure 이번 미진행
+E |4| 유한 수치구조·오차통제: WU14–16 후속 검증 DEFERRED
+F |6| 공간섭동·LoS·관측량: 이번 미진행
+28은 분류 합계이며 완료수/완료율이 아니다.
+
+
+Next ONE research action — WU30 candidate:
+실제 correlated-He 자료에서 P/S bound-free의 기존 구간 위쪽을, 이번 shared-field hard photons E≈20.0135eV와 He584 E≈21.2180eV를 포함하도록 확보한다. P에는 σ_s,σ_d inclusive orbital input을, S에는 singlet σ_S를 취득하고 동일 Milne/event source에 연결하여 그 유한 에너지 구간의 opacity gap을 메운다. 문턱/무한고에너지 full-rate closure와 differential phase는 별도 unresolved로 유지한다. 임의 hydrogenic substitution·외삽·rescaling이나 controller 복귀는 하지 않는다.
+이 연구 loop는 여기서 종료한다. 새 단계의 실행은 다음 사용자 요청에 따른다.
+
+
+## References and adopted scope
+[L1] NIST HeI persistent lines: https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm . 실제singlet IR 및584 rows; reference table https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable7.htm . D96 identity는 Drake1996,High Precision Calculations for Helium,AIP,pp154–171. 그 book chapter 전체 정독은 아니다.
+[L2] T.Zalialiutdinov,D.Solovyev,L.Labzowsky,G.Plunien,PhysRevA93,012510(2016),DOI10.1103/PhysRevA.93.012510; https://arxiv.org/pdf/1601.04156 . 관련 leading-Hylleraas 설명,TableI one-photon singlet E1 column,N500. 실제 p8 image Wolfram Import read. 다른 multiphoton/spin columns를 입력으로 채택하지 않았다.
+[L3] NIST HeI levels: https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable5.htm . M02 evaluated levels reused to preserve energycycles; no isolated newerfrequency replacement.
+[P1] WU28 RESULT https://docs.google.com/document/d/1ijzUXA_kFIgUEPA--mcx9rFeLhelviEo1MLBhePoReA/edit ; EVIDENCE https://docs.google.com/document/d/1sF3_W16MohKPfL_fPfrBSDKcGn4eDGsb-pBqNOsVbc4/edit . Actual Jacobs NASA1973 partials;P inclusive source/phase limit.
+[P2] WU27 RESULT https://docs.google.com/document/d/125wZIai8HhPgszjXR9cnmgcYg_9T2sRsNxghrdPhiLA/edit . Actual S correlated crosssection and singlet inverse. Its legacy isolated-S conditional reduction is not silently used as the whole IR-coupled network.
+[P3] WU26 RESULT https://docs.google.com/document/d/12wGm3tLjTxa6bfia34DElGhrJb9if_lxsvXIvSfKlEc/edit . CHIANTI41node band,not conversational full-domain fit; bandrates historical.
+[P4] WU23 RESULT https://docs.google.com/document/d/1MJiXYZlpCbYUJFguednz2-7R-sT7EnmgtJBAiIt7TAY/edit ; WU24 RESULT https://docs.google.com/document/d/12O27XkzOeZN0dmWP_eQR-Ad4a6h1UMRfHnJgw6jtI1I/edit . Atomic loss versus photon absorption, original BB and retarded-boundary conventions.
+[S1] Mathematical Verification Dossier III Revised,12September2026, https://drive.google.com/file/d/1uvdg3Z7s37qPjb1OvERLo6jWdS055lNY/view . Relevant authority sections as declared§1.
+
+
+New backups are described by a separate receipt with actual provider IDs/revisions/readback. This RESULT does not predeclare future upload completion or raw-byte provider parity.
+[END WU29 SCIENTIFIC RESULT v1]
