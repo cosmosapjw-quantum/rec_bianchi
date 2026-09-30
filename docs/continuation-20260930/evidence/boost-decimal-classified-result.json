@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "cases": 105,
+  "validated_cases": 103,
+  "components": 824,
+  "numerical_domain_uncertain": [
+    {
+      "case": 90,
+      "reason": "ERR NumericalDomainUncertain { quantity: \"beta dot four-vector\", value: -0.0, detail: \"nonzero frame product underflowed\" }"
+    },
+    {
+      "case": 99,
+      "reason": "ERR NumericalDomainUncertain { quantity: \"boost spatial product\", value: 0.0, detail: \"nonzero frame product underflowed\" }"
+    }
+  ],
+  "oracle": "100-digit Decimal from exact input binary64 values",
+  "scaling": "8*max_abs_input*max(1,gamma^2), no dimensional unit floor",
+  "tolerance": 9.094947017729282e-13,
+  "max_gross_scaled_difference": 2.9958825671370304e-17
+}

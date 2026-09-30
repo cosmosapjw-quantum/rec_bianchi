@@ -1,0 +1,42 @@
+I’ll review the four scoped files against the supplied references and validation evidence, then return actionable correctness findings only.
+
+The source-clock formulas and boost signs match the references. I found a mismatch between the documented normal-frame force type and the actual return type; I’m also checking whether near-light-speed boosts return inaccurate finite values.
+
+The existing probe reproduces finite wrong outputs for an oblique velocity near light speed and for very small nonzero components. Both return `Ok`. The supplied Decimal cases cover neither edge; I’m checking the exact errors against the same tolerance.
+
+{
+  "task_id": "REC-HE-FRAME-BRIDGE-20260930",
+  "candidate_digest": "1c0c9eb5fa9b552882c0d45e7704cd7d4a7404c234e2a4890d1e876190703e61",
+  "scope": [
+    "rust/rec_microphysics/src/lib.rs",
+    "rust/rec_microphysics/src/frame.rs",
+    "rust/rec_microphysics/tests/frame.rs",
+    "docs/continuation-20260930/FRAME_BRIDGE.md"
+  ],
+  "limits": [
+    "One read-only review; HEAD and all four candidate source hashes matched the supplied identities.",
+    "Inspected the supplied references, required dependencies, tests and Host validation receipts.",
+    "Numerical reproducers used the existing boost_probe_classified executable and in-memory 100-digit Decimal calculations. No writes, spawning or heavy science.",
+    "Unrelated dirty payloads, screen implementation, quadrature, solver integration and scientific admission excluded."
+  ],
+  "findings": [
+    {
+      "location": "rust/rec_microphysics/src/frame.rs:72-76",
+      "invariant": "Accepted velocities must produce accurate Lorentz factors and invariant-preserving boosts, or return NumericalDomainUncertain.",
+      "evidence": "Reproducer: MaterialVelocity::new([0.6, 0.7999999999999998, 0.0]).unwrap().normal_to_material_four_vector([1.0, 0.0, 0.0, 0.0]). The rounded hypot norm yields gamma=67108864, whereas Decimal evaluation from the exact binary64 beta components gives 56717341.93959738. The returned vector has Minkowski norm approximately -1.4 instead of -1; inverse boosting returns [1.5, 0.29999999701976776, 0.3999999985098839, 0.0], all through Ok. Error under the supplied oracle's gross scaling is 4.0379e-10, exceeding 4096eps=9.0949e-13. Compute the residual defining gamma accurately or refuse this numerically uncertain domain.",
+      "severity": "P2"
+    },
+    {
+      "location": "rust/rec_microphysics/src/frame.rs:29-40",
+      "invariant": "Destructive underflow must not silently return finite values outside the numerical tolerance.",
+      "evidence": "The product and quotient guards detect only results rounded to zero. Reproducer: beta=[0.6,0,0], input=[f64::from_bits(3),0,0,0]. The existing probe returns forward components [f64::from_bits(4),-f64::from_bits(2),0,0]; inverse boosting returns time component f64::from_bits(4), rather than the original bits(3). Both calls return Ok. The supplied gross-scaled comparison gives error 0.0266667 versus tolerance 9.0949e-13. Detect destructive precision loss in nonzero subnormal arithmetic and return NumericalDomainUncertain, while retaining accurately representable subnormal cases.",
+      "severity": "P2"
+    },
+    {
+      "location": "rust/rec_microphysics/src/frame.rs:233-239",
+      "invariant": "The force adapter must return the distinct NormalFourForce promised by FRAME_BRIDGE.md:9.",
+      "evidence": "The method instead returns and constructs MaterialFourForce; NormalFourForce is unused. A caller declaring `let normal: NormalFourForce = v.material_four_force_to_normal(force).unwrap();` fails type checking. Conversely, the returned normal-frame components remain accepted as material-frame input for another boost. Change the return type and constructed value to NormalFourForce, and explicitly bind that type in the existing force test.",
+      "severity": "P2"
+    }
+  ]
+}
