@@ -1,0 +1,147 @@
+{
+  "schema": "REC_HE_F1_REPAIR_FINAL_V1",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "reviewed_source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "author_tested_source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "superseded_dependency_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "review_cwd_worktree_identity": {
+    "head_commit": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+    "repo_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+    "repo_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "worktree_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git/worktrees/rec-rust-he-review-20260930",
+    "worktree_root": "/tmp/rec-rust-he-review-20260930"
+  },
+  "runtime_environment_identity": {
+    "schema": "REC_HE_F1_REVIEW_BINDING_V1",
+    "reviewed_source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+    "author_tested_source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+    "author_cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "review_identity": {
+      "head_commit": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+      "repo_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+      "repo_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "worktree_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git/worktrees/rec-rust-he-review-20260930",
+      "worktree_root": "/tmp/rec-rust-he-review-20260930"
+    },
+    "runtime": {
+      "claim_admitted": false,
+      "effort": "xhigh",
+      "fresh_context": true,
+      "launch_id": "cl_feed72812fd364774dfba92c7a20830d",
+      "model": "gpt-6-astra",
+      "requested_sandbox": "read-only",
+      "runtime_state": "MATCH",
+      "status": "REVIEW_RETURNED",
+      "thread_id": "01a0efda-7d37-7a62-b2a7-51b956795776",
+      "transcript_path": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T10-07-49-01a0efda-7d37-7a62-b2a7-51b956795776.jsonl",
+      "transport": "CODEX_APP_SERVER_REVIEW",
+      "turn_id": "01a0efda-801a-78a0-8385-5736dcd5d05d"
+    },
+    "observed_sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "lifecycle_status": "VALIDATOR_PASSED",
+    "validator_purpose": "Exact HEAD identity only; full suite results are separately in RERUN_RECEIPT.json",
+    "transcript_sha256": "8b55d569e6b5a5874fc94af186a269fd7109eb8530642cfed224b42ec0853c18",
+    "prior_review_preserved": "../review_rebind",
+    "worktree_reuse": "Existing explicitly authorized independent worktree moved from old tested SHA to new source; prior review receipt retained. New thread/turn/launch and fresh context."
+  },
+  "exact_commands_and_exits": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:07:21.819098+00:00",
+      "end_utc": "2026-09-30T01:07:21.899726+00:00",
+      "stdout": {
+        "path": "fmt.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fmt.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:07:21.900089+00:00",
+      "end_utc": "2026-09-30T01:07:22.376835+00:00",
+      "stdout": {
+        "path": "cargo_test.stdout.log",
+        "bytes": 4344,
+        "sha256": "e0c07ba67e0521b3f9d1905d545cc7c5339d935b9167bbec28719937024bdf9e"
+      },
+      "stderr": {
+        "path": "cargo_test.stderr.log",
+        "bytes": 34054,
+        "sha256": "96ede4e37db382e68568a81e5fb32458219456da94ff26460f2b522bb4d96ef1"
+      }
+    },
+    {
+      "name": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:07:22.377287+00:00",
+      "end_utc": "2026-09-30T01:07:22.462778+00:00",
+      "stdout": {
+        "path": "parity.stdout.log",
+        "bytes": 517,
+        "sha256": "ae6e6c1f6a14ef04cadb6b187e1fdea1e1525513d1948ce20a9cd0fd6f32cdca"
+      },
+      "stderr": {
+        "path": "parity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "source_domain_findings": {
+    "Jacobs_P_S": "high q=1..1.4 only",
+    "D86": "y=.025..975 only",
+    "below_threshold": "physical zero",
+    "outside_authority": "typed error",
+    "renormalization_or_stitch": "none added"
+  },
+  "finding_F1": "RESOLVED_TYPED_NUMERICAL_DOMAIN_ERROR",
+  "independent_findings": [],
+  "review_scope": "Changed source cell plus downstream fixed-input tests; unchanged prior full source review carried by exact diff/hash evidence",
+  "gate_p_scoped_review_decision": "PASS_FIXED_INPUT_IMPLEMENTATION_REVIEW_ONLY",
+  "dependency_candidate_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "scientific_claims_not_promoted": [
+    "full T4",
+    "Gate I",
+    "S4",
+    "S5",
+    "G10",
+    "E1C",
+    "history",
+    "observable",
+    "production",
+    "scientific admission",
+    "PROJECT_STATE scientific PASS"
+  ],
+  "scientific_gates_unchanged": true,
+  "allow_consumer_integration": false,
+  "next_action": "Close this port, or separately authorize exact-rev integration in the other repository at dependency_candidate_sha."
+}

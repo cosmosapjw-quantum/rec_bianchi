@@ -1,0 +1,46 @@
+{
+  "status": "PASS_TOY_EXACT_BB_ALGEBRA_ONLY",
+  "checks": [
+    {
+      "case": "two_direction_diagonal",
+      "direct_vs_matrix_chain": "EXACT_MATCH",
+      "hermiticity": "EXACT",
+      "pointwise_and_integrated_trace": "EXACT_ZERO"
+    },
+    {
+      "case": "complex_rotated_screen",
+      "direct_vs_matrix_chain": "EXACT_MATCH",
+      "hermiticity": "EXACT",
+      "pointwise_and_integrated_trace": "EXACT_ZERO"
+    },
+    {
+      "case": "partial_vacuum",
+      "direct_vs_matrix_chain": "EXACT_MATCH",
+      "hermiticity": "EXACT",
+      "pointwise_and_integrated_trace": "EXACT_ZERO"
+    },
+    {
+      "case": "zero_weight",
+      "direct_vs_matrix_chain": "EXACT_MATCH",
+      "hermiticity": "EXACT",
+      "pointwise_and_integrated_trace": "EXACT_ZERO"
+    },
+    {
+      "case": "six_point_vacuum",
+      "result": "EXACT_MINUS_W_AFTER_DIVIDING_BY_A"
+    },
+    {
+      "case": "lte",
+      "modes": 9,
+      "result": "EXACT_ZERO"
+    }
+  ],
+  "mutation_rejections": {
+    "broadcast_first_F": true,
+    "transpose_BB_F": true,
+    "double_angular_weight": true,
+    "replace_J_with_zero": true
+  },
+  "rust_invoked": false,
+  "omit_b_shell": "DEFERRED_LOCAL_RUST_REFERENCE_TEST"
+}

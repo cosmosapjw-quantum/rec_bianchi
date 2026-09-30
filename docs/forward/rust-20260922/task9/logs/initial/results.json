@@ -1,0 +1,51 @@
+[
+  {
+    "label": "cargo_fmt",
+    "argv": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:42:55.564683+00:00",
+    "end_utc": "2026-09-29T09:42:55.680816+00:00",
+    "exit": 1,
+    "stdout_bytes": 208671,
+    "stderr_bytes": 0,
+    "CARGO_NET_OFFLINE": "true"
+  },
+  {
+    "label": "cargo_test",
+    "argv": [
+      "cargo",
+      "test",
+      "--manifest-path",
+      "rust/rec_microphysics/Cargo.toml",
+      "--locked"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:42:55.681102+00:00",
+    "end_utc": "2026-09-29T09:42:56.588995+00:00",
+    "exit": 0,
+    "stdout_bytes": 4295,
+    "stderr_bytes": 91359,
+    "CARGO_NET_OFFLINE": "true"
+  },
+  {
+    "label": "parity",
+    "argv": [
+      "python",
+      "scripts/check_rust_forward_parity.py"
+    ],
+    "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "start_utc": "2026-09-29T09:42:56.589265+00:00",
+    "end_utc": "2026-09-29T09:42:56.676708+00:00",
+    "exit": 1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 178,
+    "CARGO_NET_OFFLINE": "true"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "task_id": "REC-HE-FRAME-BRIDGE-20260930",
+  "source_ref": "2e2a71acaf7179eb84804e7397d22504f123c3cdd8dc88d80c8d725a8e954496",
+  "changed_paths": [
+    "rust/rec_microphysics/src/lib.rs",
+    "rust/rec_microphysics/src/frame.rs",
+    "rust/rec_microphysics/tests/frame.rs",
+    "docs/continuation-20260930/FRAME_BRIDGE.md"
+  ],
+  "candidate_digest": "1c0c9eb5fa9b552882c0d45e7704cd7d4a7404c234e2a4890d1e876190703e61",
+  "checks": [
+    "cargo fmt --check",
+    "cargo test --offline: 76+7+1 tests",
+    "Host fixed parity 251 records/3027 components/111 errors"
+  ],
+  "exit_codes": {
+    "fmt": 0,
+    "cargo_test": 0,
+    "parity": 0
+  },
+  "unresolved": [
+    "Standalone frame bridge only; no screen map, quadrature, solver or history admission"
+  ],
+  "next_action": "Independent read-only code review",
+  "file_refs": [
+    "rust/rec_microphysics/src/lib.rs",
+    "rust/rec_microphysics/src/frame.rs",
+    "rust/rec_microphysics/tests/frame.rs",
+    "docs/continuation-20260930/FRAME_BRIDGE.md"
+  ],
+  "log_refs": [
+    "/tmp/rec-continuation-20260930/fmt.log",
+    "/tmp/rec-continuation-20260930/cargo-test.log",
+    "/tmp/rec-continuation-20260930/parity.log"
+  ]
+}

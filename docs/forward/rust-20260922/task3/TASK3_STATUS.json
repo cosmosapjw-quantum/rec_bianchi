@@ -1,0 +1,47 @@
+{
+  "schema": "REC_HE_TASK3_STATUS_V1",
+  "time_utc": "2026-09-22T21:44:19.890060+00:00",
+  "status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
+  "parent_task2_sha256": "d91e090c555daa5a9ef498a7bc15fb8a9686aea016679e9b588392745dc6a996",
+  "base_git_sha": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "source_changes": [
+    "rust/rec_microphysics/src/he_singlet.rs",
+    "rust/rec_microphysics/tests/forward.rs",
+    "rust/rec_microphysics/examples/eval_fixture.rs"
+  ],
+  "new_tests": [
+    "bb_anisotropic_node_modes",
+    "bb_atom_photon_trace_complex",
+    "vacuum_bb_full_stencil_minus_aw",
+    "bb_lte_each_mode_584_ir",
+    "bb_sharp_shell_not_profile",
+    "bb_same_wp_two_channels",
+    "bb_partial_stencil_is_not_renormalized",
+    "bb_angular_weight_applied_once",
+    "bb_invalid_modes_and_weights",
+    "bb_stencil_diagnostics_are_moments_only",
+    "bb_zero_sources_and_zero_weight",
+    "bb_nonfinite_arithmetic_is_not_success"
+  ],
+  "rust_tests_authored_new": 12,
+  "rust_test_functions_total": 38,
+  "rust_tests_executed": 0,
+  "cargo_fmt_test_clippy": "NOT_RUN_LOCAL_CODEX_OWNER",
+  "full_parity": "NOT_RUN",
+  "candidate_commit_sha": null,
+  "tested_commit_sha": null,
+  "delivery_commit_sha": null,
+  "allow_consumer_integration": false,
+  "next_task": 4,
+  "all_scientific_gates": {
+    "S3": "accepted",
+    "S4": "partial",
+    "S5": "gated",
+    "G10": "open",
+    "G11_G13": "gated",
+    "D86": "canonical",
+    "P0_physical": "OPEN",
+    "HOST4_physical": "HOLD",
+    "HH_propagation": "unauthorized"
+  }
+}

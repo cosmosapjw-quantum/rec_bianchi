@@ -1,0 +1,51 @@
+﻿# BASS WU31-A1 — Explicit atomic spectral-data amendment
+2026-09-14 Asia/Seoul / v1
+Scope: future central-band numerical representative only. No older document is overwritten,deleted,or retrospectively relabeled.
+
+
+## 1. Exact target and authority
+Target is the numerical HeI1s2s2^1S0→ground E1E1 spectrum branch introduced in WU26 RESULT§3 and reused by WU27/WU29/WU30. It is not a correction to Dossier geometry/clock/measure,not a change to pair-counting or spin weights,and not a production code patch.
+WU26 RESULT ID12wGm3tLjTxa6bfia34DElGhrJb9if_lxsvXIvSfKlEc
+revision ANLCKQnPMsIfNWtDM2a9_btHhirVPDTyFP_8n8WvwJYDOiTJp3VgwhDiCTFi2ekOtW2uZS2ee-s4gjwqwqIftn8pNCQD7PJnGHQO0a8hOEs
+WU30 immediate parent RESULT1NgkdxUjz78Qc34V1dQFovPVmV44kvH9etFWmHALUnNk
+revision ANLCKQmaCy12xfx2A8zi0AIuT0vQKZOynQXsuqedVkA9RJV4OrLCyRt0_y_rG-i2ip6XFKKDomXsJh1UkGXxuW64L_rOR7duSDykshSjeOg
+The old CHIANTI raw row,its A_tab50.94/s,band integral51.06161925/s,old outputs and warnings remain historical immutable evidence. They are not invalidated as calculations of their explicitly declared old representative.
+
+
+## 2. Newly read evidence and why a new branch is selected
+Original1969TableII supplies absolute w69. Actual20half-grid nodes obey psi_CHI=Round[w69/50.94,.001]. OfficialCHIANTI notes state D69distribution divided byD86A. Multiplying50.94 back reconstructs1969spectrum;it does not normalize that old spectrum to50.94.
+Drake1986 TableV supplies a newer directly tabulated nonrelativistic absolute spectrum,with length/velocity versions. TableIII NR odd-extrapolation totals51.020/51.016/s are distinct from the screened-relativistic estimated total50.943±.073/s. The1987erratum does not replaceTableVnodes or changeHe50.943. These facts were confirmed in actual originalPDFtext/images.
+Therefore the declaration that CHIANTI A_tab is an exactly compatible independent atomic loss for its reconstructed shape is not allowed. WU26 already declined that declaration;this amendment now identifies its source-level cause and selects a transparent newer NR band for future computations.
+
+
+## 3. Effective numerical selection from WU31 onward
+CANONICAL_NUMERICAL_BAND=D86_TABLE_V_LENGTH_LINEAR_B
+B=[1/40,39/40]. On half-grid yj=j/40,j=1..20,use the exact printed values:
+{7.736,25.158,43.302,59.693,73.920,86.112,96.523,105.407,112.986,119.447,124.942,129.596,133.508,136.760,139.416,141.525,143.128,144.253,144.921,145.142}/s.
+Reflect abouty=.5 and linearly interpolate only withinB. WU31 RESULT§4 lists separatevelocityrows for same-study comparison. Do not average them into an invented uncertainty distribution.
+Atomic band vacuum loss is computed from this SAME w:
+Lambda_B=.5 integral_B wdy=50.9259/s.
+OutsideB is unprovided,not physicalzero. No endpoint extrapolation or full-spectrum normalization is supplied. Neither51.020 nor50.943 nor50.94 is added as an independent atomic loss above this resolved photon source.
+Unchanged:Delta and levelregistry,photonF acrossfrequencies,atompopulationnS/ng,screenpairtensor,Boseforward/inverse,measure,trI2=2,atomicpair1/2,number2R,energyDeltaR,fourforce,IR/584/P/Sbound-free and WU30hard-photonopacity coefficients. No effective direct reaction is added.
+
+
+## 4. Downstream numerical impact actually recomputed
+At fixed PlanckT=3000,6000,10000K,the newdown-bandrates are
+{50.9556216147870,51.1938510835593,51.9464170653009}/s.
+The same-call legacyreplay is
+{51.0914614809425,51.3305981160596,52.0859914681932}/s.
+The new/oldrelativechanges are approximately-.265876%,-.266405%,-.267969%.
+At yIR=.0292129629325308,newlengthw=10.6719296084221/s pery instead of10.7296619787931,relative-.5380632725%.
+Old WU27 isolated-S conditional coefficients and WU29 IR/pair ratios using legacy denominators are still labeled OLD_INPUT results. Their revised full coupled values were not recomputed here;do not silently substitute a new denominator into historical tables and call it a rerun. WU30P/Ssigma,targetenergies and their source identity are unchanged.
+At frozenF/populations,the source difference is the old pair operator evaluated with Delta w=wnew-wold. It obeysDeltaN_gamma=2DeltaR andDeltaP_gamma=Delta*DeltaR. During a dynamically recoupled history,changingw can changeF/populations,and this fixed-state difference is not the whole nonlinear response. No history or observable error is inferred from the smallbandratio.
+
+
+## 5. Open conditions and nonclaims
+The new band gives a positive compatibility budget .0941/s relative to the original NRlengthtotal51.020/s,not a computed physicalsoftintegral. Inter-node interpolationerror can contribute. A positive budget does not determinew(y)at the endpoints orC0.
+LowestP length-projectionC0,P=2.46893867036233e6/s is not fullC0 and not its bound. HigherP/continuum interference remainsneeded. The off-diagonal sum rule and endpoint-subtractedvelocityform are formal atomicclosureconditions,not already convergedcorrelated-He implementation.
+No full normalizedw,fullstimulatedcorrection,atomicprecisioncertification,fullH/He multilevel,xe(z),controller/production/11family/observablecompletion is declared.
+
+
+## 6. Preservation and readback
+This is a separate new amendment authorized within the physical-source continuation. Original parent files and their backups are untouched. Its fullcontent must be read with WU31 RESULT1lL1WK8bKyPLrZzHdnTF8rL6NVdvld2HXY0TNzTpSqiU and actual WOLFRAM_EVIDENCE. Provider writes/readbacks are documented separately by BACKUP_RECEIPT/CLOSEOUT. This scientific amendment is not a self-certified backup receipt.
+[END WU31 AMENDMENT A1 v1]

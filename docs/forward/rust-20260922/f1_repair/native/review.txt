@@ -1,0 +1,37 @@
+I’ll record the checkout identity first, then review the repair, regression tests, and exact-SHA receipts. I’ll keep personally executed checks separate from inspected Host results.
+
+The checkout is at the requested `d3cc6e0120061f113d28e7a3a55a2e3dd561e81e`. It has a detached HEAD, no tracked modifications, and three untracked paths, which I’ll leave untouched. The repair diff contains four files. I’m using the independent-diff-review skill for this scoped review.
+
+The new guards cover every returned floating-point field: species sources, photon count, both conservation residuals, both powers, heat, and energy residual. The arithmetic order is unchanged. The regression exercises the original F1 case, photon-count overflow, energy-residual overflow, and a large finite control. I’ll now run the existing targeted test binary and verify the receipt hashes and metadata refresh.
+
+The targeted Rust regression passed: 1 test passed, 75 filtered out. Both inspected rerun bundles match their recorded log hashes and report 76/76 tests plus unchanged fixed-input parity. I also verified that the mapping changes are limited to hashes, sizes, and line coordinates; all 44 manifest entries match, and the frozen references and `4096ε` tolerance are unchanged. No scoped defect has emerged.
+
+**No BLOCKER, MAJOR, or MINOR findings in the bounded repair. F1 is resolved in the reviewed source.** Final scoped admission remains with Host.
+
+Reviewer identity: cwd `/tmp/rec-rust-he-review-20260930`; detached HEAD `d3cc6e0120061f113d28e7a3a55a2e3dd561e81e`. Session configured read-only with approval policy `never`; Linux x86_64, Python 3.12.3 at `/usr/bin/python`. Initial and final status matched: no tracked modifications; untracked `.cuh/` and the two existing `local_returns/task6-20260930T004247Z-1a2445da/` and `task6-20260930T010722Z-291e7dc0/` directories. No files edited or nested agents launched.
+
+Reviewed scope: `c7f743c86186666651110597cf537040e2c52f0c..d3cc6e0120061f113d28e7a3a55a2e3dd561e81e`, comprising:
+
+- [ledger.rs](/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/src/ledger.rs:97)
+- [tests/forward.rs](/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/tests/forward.rs:2642)
+- [T4_COVERAGE_MAP.json](/tmp/rec-rust-he-review-20260930/docs/forward/rust-20260922/task7/T4_COVERAGE_MAP.json)
+- [SOURCE_CONTENT_MANIFEST.sha256](/tmp/rec-rust-he-review-20260930/docs/forward/rust-20260922/task8/SOURCE_CONTENT_MANIFEST.sha256)
+
+Supporting reads covered `coverage.rs`’s error contract, `HeEnergies` validation and constants, the material-ledger and fixture callers, relevant existing ledger tests, parity-checker and mapping-validator sections, `SOURCE_SCOPE_AUDIT.json`, and the selected-He ledger/coverage schemas. The broader historical source audit was retained.
+
+The guards at [ledger.rs:121](/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/src/ledger.rs:121) reject every nonfinite calculated output before `Ok`: all six species sources, nuclei and charge residuals, internal and photon powers, and energy residual. Photon count aliases checked `s[5]`; heat already passes finite-input validation; the event matrix contains fixed integers. Callers propagate the typed error.
+
+For original F1 (`r584=1e308`, other rates zero, canonical energies), internal power becomes `-Inf`; the function now returns `NumericalDomainUncertain` with quantity `"ledger internal power"`. It cannot return the former ledger containing infinities and NaN. Source comparison confirmed that arithmetic expressions and evaluation order are unchanged.
+
+The regression meaningfully checks original F1, two-photon count overflow, energy-residual overflow, and a large finite control. It asserts the error variant, quantity, and nonfinite offending value.
+
+Personally executed:
+
+- Existing binary `rust/rec_microphysics/target/debug/deps/forward-b4445c8e59dfb770 --exact ledger_rejects_finite_input_overflow`: **1 passed, 75 filtered out**, exit 0.
+- Read-only Python arithmetic checks covering the regression cases, photon-power-only overflow, nuclei intermediate overflow, NaN-producing cancellation, negative residual overflow, and 20 signed finite channel controls.
+- Source/hash checks: all **79 mapping references**, **44 manifest entries**, and **15 frozen reference-lock entries** matched. Mapping changes were exclusively hashes, sizes, and line coordinates. Only ledger, test, and mapping hashes changed in the manifest. Frozen fixtures, checker, authority subset, and `4096ε` tolerance were unchanged against both repair base and previously reviewed SHA.
+
+Inspected—not personally executed—were both exact-SHA [author receipts](/tmp/rec_he_f1_repair/author_tests/receipt.json) and [independent-checkout Host receipts](/tmp/rec_he_f1_repair/review_tests/receipt.json), including their raw logs and verified byte counts/hashes. Both report formatting exit 0, **76/76 tests**, and parity exit 0: 251 records, 3,027 numeric components, 111 expected errors, maximum scaled difference `1.836977083143999e-15`, tolerance `9.094947017729282e-13`.
+
+Residual limits: I did not rebuild or personally rerun Cargo/parity. Additional overflow cases were Python/source checks, not additional Rust executions; the new regression does not separately exercise every guard. No scientific claim or gate is promoted: full T4, Gate I, S4/S5, G10/E1C, history, and production remain outside this review.
+

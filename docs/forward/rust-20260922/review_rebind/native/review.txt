@@ -1,0 +1,67 @@
+I’ll verify the checkout and source hashes, then review the public interfaces against the frozen authority and independently recompute the requested fixture cases. I’ll use the independent-diff-review skill and keep all work read-only.
+
+The checkout is at the requested detached SHA, and all ten authority files match the lock’s SHA-256 and size entries. The lock limits numerical coverage to Jacobs high-q and D86; it lists `study.py` as oracle provenance. I’m now tracing the matrix formulas and event factors through the source and ledger.
+
+The source formulas preserve the required transpose conventions and use one shared `W_P`. Angular weights and the pair-event `1/2` enter once. The APIs operate in the material frame; the normal-frame boost and distinct ray/atom clock conversions remain outside this implementation’s scope.
+
+The independent recomputation matches 30 fixture records across 1,433 numerical components. The largest error divided by the frozen reference scale is `2.91e-16`, below the unchanged `4096ε` tolerance. The BB JVP adapter uses the direct affine coefficient. I’m checking the combined ledger and error paths next.
+
+The pair, BF, and combined material ledgers also match the independent recomputation. I found one minor error-path gap: the standalone legacy event ledger can return `Ok` with infinite powers and a NaN residual after finite-input overflow. This does not affect the checked fixtures; the combined assembler already rejects nonfinite outputs.
+
+**One MINOR finding. No blocking formula or coverage finding in the reviewed fixed-input scope.**
+
+**Identity and scope**
+
+- Actual cwd: `/tmp/rec-rust-he-review-20260930`
+- Actual detached HEAD: `2ee3760870f9ac47eaab518a4c4a907f1a3f6f85`
+- Read all public entry points and implementations in `lib.rs`, `he_singlet.rs`, `coverage.rs`, `ledger.rs`, all of `tests/forward.rs`, and `examples/eval_fixture.rs`.
+- All six files matched the exact HEAD bytes at completion. No files, tests, validators, or tolerances were changed; no agents were spawned.
+
+**F1 — MINOR: standalone event ledger permits nonfinite results after finite-input overflow**
+
+- **Location:** [ledger.rs:117](/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/src/ledger.rs:117), through the unconditional `Ok` construction at line 121.
+- **Evidence:** With `HeEnergies::canonical()`, `r584=1e308`, all other rates zero, and zero BF power/heat, every input passes validation. Read-only IEEE-754 recomputation gives `p_internal=-Inf`, `p_gamma=+Inf`, and `energy_residual=NaN`. There is no output-finiteness check before returning success.
+- **Impact:** Direct callers of this public legacy API can receive an unusable ledger as `Ok`. The checked fixtures are unaffected, and the combined material assembler subsequently checks these outputs.
+- **Suggested repair:** Check generated species sources, powers, and residuals before returning; report `NumericalDomainUncertain` on overflow. Add one focused finite-input overflow regression without changing existing tolerances.
+
+**Authority and source audit**
+
+Fresh SHA-256 and byte-size checks passed for **all ten** members in [SOURCE_IMPORT_LOCK.json](/tmp/rec-rust-he-review-20260930/docs/forward/rust-20260922/SOURCE_IMPORT_LOCK.json). WU29/WU30/WU31-A1 and the T4 interface, coverage, ledger, and test matrix were the authority. A7/A6 remain archive provenance; their archives were not independently rehashed.
+
+The weak/JVP `study.py` commit/blob pin is oracle provenance. It is absent from the reviewed Rust execution path; no merged physics dependency was found.
+
+The implementation preserves:
+
+- 584/IR sharp-line coefficients, one shared upper `W_P`, and atom–photon trace signs.
+- The distinct BB, P-BF, and pair transpose/conjugation conventions.
+- Jacobs **high-q `[1,1.4]` only**, with separate length/velocity tables.
+- Below-threshold physical zero versus unsupported above-threshold `MissingAuthority`.
+- D86 **`y=[0.025,0.975]` only**, reflected linear interpolation and typed out-band errors.
+- Single application of angular/energy measures and the unordered pair-event `1/2`; the full photon marginal is counted once.
+- Nuclei, charge, photon-number, internal/radiation/kinetic-energy, and material four-force bookkeeping.
+
+No silent family stitching, extrapolation, rate rescaling, or source projection was found. The [BB JVP adapter](/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/examples/eval_fixture.rs:262) evaluates the direct affine coefficient using lower population `1` and zero upper matrix; it does not subtract nearly equal totals.
+
+**Independent calculations**
+
+Separate Python component calculations—without executing the author’s reference functions—matched **33 frozen records / 1,513 numerical components**. Maximum absolute error divided by the frozen reference scale was **`2.91e-16`**, below unchanged **`4096ε = 9.094947017729282e-13`**.
+
+| Requested check | Result |
+|---|---|
+| Vacuum BB | `B=-A W_P`; fixture rate `5.3967e9` |
+| Nonzero lower population; affine/JVP BB | Matched; legacy `dR/dn_lower=-701571000` |
+| P/S BF in domain, both gauges | Matched |
+| BF below threshold | Exact zero |
+| Unsupported BF energies, including one-ULP exterior endpoints | `MissingAuthority` classification confirmed |
+| D86 nodes/interior | Matched; first midpoint `16.447`; band vacuum loss `50.9259 s⁻¹` |
+| Out-band pair | `OutOfBand` path confirmed |
+| Pair and combined event ledger | Matched; exact integer nuclei/charge null vectors vanish |
+
+The combined independent energy residual was approximately **`−1.62e-27 J m⁻³ s⁻¹`**. Error variants were verified through source inspection and independent classification, not Rust execution. One reviewer calculation initially omitted the fixture’s canonical-constants fallback; that calculation was corrected without altering repository files.
+
+**Scoped verdict and limitations**
+
+The reviewed mathematics is valid for the checked **scoped fixed-input implementation**, with F1 remaining a minor standalone-API robustness defect. Host compiler/test/parity validation remains separate.
+
+Material-frame inputs and outputs are preserved. Normal-frame transport—including photon factor `D=γ(1−β·e)` versus atomic factor `1/γ`—is outside these APIs and was not executed. This review establishes no full T4, Gate I, S4/S5, G10, E1C, history, production, or scientific admission.
+

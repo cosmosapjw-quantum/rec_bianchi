@@ -1,0 +1,49 @@
+{
+  "schema_version": "REC_MICROPHYSICS_SOURCE_DOMAIN_V1",
+  "port_scope": "fixed-input material-frame selected-He source library",
+  "families": {
+    "bound_bound": {
+      "channels": ["He584", "IrPToS"],
+      "status": "REPRESENTED",
+      "spectral_semantics": "shell-integrated coefficient with explicit sharp-line convention; no finite-bin line profile"
+    },
+    "p_bound_free": {
+      "status": "PARTIALLY_REPRESENTED_FAIL_CLOSED",
+      "represented_q": [1.0, 1.4],
+      "interpolation": "linear across authority nodes q=1.0,1.2,1.4",
+      "below_threshold": "PHYSICAL_ZERO",
+      "outside_represented_above_threshold": "MISSING_AUTHORITY",
+      "forbidden": "Bhatia-low/Jacobs-high stitching or extrapolation"
+    },
+    "s_bound_free": {
+      "status": "PARTIALLY_REPRESENTED_FAIL_CLOSED",
+      "represented_q": [1.0, 1.4],
+      "interpolation": "linear across authority nodes q=1.0,1.2,1.4",
+      "below_threshold": "PHYSICAL_ZERO",
+      "outside_represented_above_threshold": "MISSING_AUTHORITY",
+      "forbidden": "Bhatia-low/Jacobs-high stitching or extrapolation"
+    },
+    "two_photon_pair": {
+      "status": "REPRESENTED_ON_D86_BAND",
+      "y_band": [0.025, 0.975],
+      "interpolation": "reflect y->1-y then linear interpolation on canonical j/40 half-grid",
+      "outside_band": "OUT_OF_BAND_TYPED_ERROR",
+      "rescale_to_total_rate": false,
+      "atomic_event_weight": "(1/2) w g_ang",
+      "photon_marginal_weight": "w g_ang",
+      "photon_tags_per_atomic_event": 2
+    },
+    "bound_free_electron_frame": {
+      "represented": "common material/electron frame, isotropic nondegenerate Maxwell electrons",
+      "species_drift": "MISSING_AUTHORITY"
+    }
+  },
+  "non_scope": [
+    "finite-tilt normal-frame source transformation",
+    "full recombination trajectory",
+    "E1C exterior-native/interior-COM owner replacement",
+    "S4/S5 promotion",
+    "G10 closure",
+    "G11-G13"
+  ]
+}

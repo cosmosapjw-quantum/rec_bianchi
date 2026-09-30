@@ -1,0 +1,32 @@
+FFF
+======================================================================
+FAIL: test_new_reference_scale_comparator_required (__main__.Red.test_new_reference_scale_comparator_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/rec_he_task6_20260923/test_red.py", line 8, in test_new_reference_scale_comparator_required
+    def test_new_reference_scale_comparator_required(self):self.assertTrue(hasattr(m,'compare_component'))
+                                                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_nonfinite_must_not_pass (__main__.Red.test_nonfinite_must_not_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/rec_he_task6_20260923/test_red.py", line 6, in test_nonfinite_must_not_pass
+    def test_nonfinite_must_not_pass(self):self.assertFalse(m.close(float('inf'),1.,4096*2**-52))
+                                           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_tiny_source_deletion_must_not_pass (__main__.Red.test_tiny_source_deletion_must_not_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/rec_he_task6_20260923/test_red.py", line 7, in test_tiny_source_deletion_must_not_pass
+    def test_tiny_source_deletion_must_not_pass(self):self.assertFalse(m.close(0.,1e-20,4096*2**-52))
+                                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=3)

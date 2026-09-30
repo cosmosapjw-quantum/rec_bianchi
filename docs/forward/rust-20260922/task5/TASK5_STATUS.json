@@ -1,0 +1,56 @@
+{
+  "schema": "REC_HE_TASK5_STATUS_V1",
+  "utc": "2026-09-22T22:48:38.206578+00:00",
+  "status": "CODE_AND_TESTS_WRITTEN_UNCOMPILED",
+  "parent_task4_archive_sha256": "7851fb2b7336ed2c866d0884edb751ce10d19e3b25f0e543e0624d9f413c4229",
+  "base_git_sha": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "changed_production_paths": [
+    "rust/rec_microphysics/src/he_singlet.rs",
+    "rust/rec_microphysics/src/ledger.rs"
+  ],
+  "changed_test_paths": [
+    "rust/rec_microphysics/tests/forward.rs"
+  ],
+  "new_tests": [
+    "pbf_complex_component_reference",
+    "pbf_isotropic_scalar_non_lte",
+    "sbf_lte_and_non_lte",
+    "bf_photon_ion_electron_sign",
+    "bf_independent_heat_moment",
+    "ledger_each_signed_channel",
+    "material_four_force_matches_photon_energy",
+    "bf_opposite_rays_cancel_momentum_not_energy",
+    "bf_missing_zero_weight_is_not_physical_zero",
+    "bf_assembly_invalid_measures_directions_and_drift",
+    "bf_assembly_applies_joule_and_angular_measure_once",
+    "bf_nonfinite_arithmetic_is_not_a_valid_source",
+    "bb_material_momentum_survives_zero_leading_recoil_heat",
+    "pair_material_moment_uses_one_full_tag_not_two",
+    "pair_material_direction_exchange_is_enforced",
+    "selected_material_ledger_combines_five_channels_once",
+    "selected_material_ledger_has_no_empty_or_mixed_registry_success"
+  ],
+  "rust_tests_authored_new": 17,
+  "rust_test_functions_total": 70,
+  "rust_tests_executed": 0,
+  "cargo_fmt_test_clippy": "NOT_RUN_LOCAL_CODEX_OWNER",
+  "full_parity": "NOT_RUN",
+  "candidate_commit_sha": null,
+  "tested_commit_sha": null,
+  "delivery_commit_sha": null,
+  "allow_consumer_integration": false,
+  "next_task": 6,
+  "new_physics_assumptions": false,
+  "implementation_restriction": "combined five-channel material assembler requires exact canonical HeConstants; standalone BF contract unchanged",
+  "all_scientific_gates": {
+    "S3": "accepted",
+    "S4": "partial",
+    "S5": "gated",
+    "G10": "open",
+    "G11_G13": "gated",
+    "D86": "canonical",
+    "P0_physical": "OPEN",
+    "HOST4_physical": "HOLD",
+    "HH_propagation": "unauthorized"
+  }
+}

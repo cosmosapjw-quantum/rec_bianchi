@@ -1,0 +1,81 @@
+{
+  "source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+  "environment": {
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)"
+  },
+  "commands": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:06:55.944155+00:00",
+      "end_utc": "2026-09-30T01:06:56.035999+00:00",
+      "stdout": {
+        "path": "fmt.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fmt.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:06:56.036362+00:00",
+      "end_utc": "2026-09-30T01:06:56.626913+00:00",
+      "stdout": {
+        "path": "cargo_test.stdout.log",
+        "bytes": 4344,
+        "sha256": "d980b31d192b0aee51727642250cc5577df5a1e19faa62307fb012cc093e9c17"
+      },
+      "stderr": {
+        "path": "cargo_test.stderr.log",
+        "bytes": 34066,
+        "sha256": "a6dc18510946ea4b6df0440479fddd9317f40b969134f1ac98da931e1c2f2b55"
+      }
+    },
+    {
+      "name": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "exit": 0,
+      "start_utc": "2026-09-30T01:06:56.627380+00:00",
+      "end_utc": "2026-09-30T01:06:56.709286+00:00",
+      "stdout": {
+        "path": "parity.stdout.log",
+        "bytes": 529,
+        "sha256": "9c8dbd47cd9e2af5bedf1735a99a507854a6648693c8cb9e7b5b210bd3b41b26"
+      },
+      "stderr": {
+        "path": "parity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

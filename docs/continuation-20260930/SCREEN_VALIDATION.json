@@ -1,0 +1,167 @@
+{
+  "task_id": "REC-HE-SCREEN-20260930",
+  "base_head": "5a6a3988053e876e96ef546d040ef856eca2bb4e",
+  "implementation_status": "HOST_VALIDATED_WITH_SCOPED_INDEPENDENT_REVIEW",
+  "summary_ko": "Dossier II 식135-136 물리적 스크린 변환과 복소 충돌행렬의 정방향/역방향 기저 변환을 구현했다. 기존 광선 시간 인자 D와 연결할 수 있다.",
+  "candidate_digest": "f9eeba9d551cc2a88ae9917144c8f3d886f942037c4d79664f6eb8b179f48093",
+  "source_sha256": {
+    "rust/rec_microphysics/src/lib.rs": "88fa8e053cc16733beeea852cb71d6e0fff48fd08ec79f273d3dd9d98ac99c63",
+    "rust/rec_microphysics/src/screen.rs": "39c81bcff494d674d237fd0f270dc721c6840d5d545be85eaaca875b258b019f",
+    "rust/rec_microphysics/tests/screen.rs": "321b56575458f4de5e0d00227db92b1c2212c892a2e562743ecab227f31efb7c",
+    "docs/continuation-20260930/SCREEN_BRIDGE.md": "dc28fb13473ac32821dfeaf8055050b17364d8722fe242e2ecfe2fcd3b8696f5"
+  },
+  "author": {
+    "source_kind": "HOST_OBSERVED_CODEX_RUNTIME",
+    "thread_id": "01a0f1eb-29c8-7780-81a9-5d37ad521909",
+    "turn_context": {
+      "turn_id": "01a0f1eb-2a6c-75d0-8481-4a80a09a650b",
+      "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+      "model": "gpt-6-sol",
+      "effort": "high",
+      "sandbox_policy": {
+        "type": "danger-full-access"
+      }
+    },
+    "counters": {
+      "input_tokens": 1130887,
+      "cached_input_tokens": 1067904,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 10790,
+      "reasoning_output_tokens": 1939,
+      "total_tokens": 1141677
+    },
+    "transcript_ref": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-45-15-01a0f1eb-29c8-7780-81a9-5d37ad521909.jsonl",
+    "stop_disposition": "Candidate returned; host interrupted diagnostic continuation after hook Cargo PATH failure; no further code edits"
+  },
+  "fmt": "PASS",
+  "cargo": {
+    "status": "PASS",
+    "existing_selected_he": 76,
+    "existing_frame": 8,
+    "new_screen": 3,
+    "existing_doctests": 1,
+    "total": 88,
+    "command": "screen-evidence/final-cargo-test-command.json"
+  },
+  "parity": {
+    "records": 251,
+    "numeric_components": 3027,
+    "expected_error_records": 111,
+    "max_reference_scaled_difference": 1.836977083143999e-15,
+    "tolerance": 9.094947017729282e-13,
+    "status": "PASS_FIXED_INPUT_PARITY_ONLY",
+    "scope": "251 frozen finite cases; not full T4, not a recombination trajectory",
+    "reference_lock_sha256": "de4a27d4973a5c14f383e656925dd58354a0fdb070ad23c094aa2da3faa1388d",
+    "evidence_directory": "/tmp/rec-screen-20260930/parity"
+  },
+  "decimal_oracle": {
+    "status": "PASS",
+    "cases": 96,
+    "components": 3264,
+    "tolerance": 9.094947017729282e-13,
+    "max_scaled_residual": 1.2387950117479245e-14,
+    "oracle": "100-digit Decimal closed spatial null-gauge formula from exact binary64 inputs; scalar clock uses Doppler once",
+    "scales": "geometry absolute; matrices divided by declared input amplitude; clock by amplitude*max(1,D)",
+    "seed": 20260930
+  },
+  "independent_review": {
+    "status": "NO_ACTIONABLE_FINDINGS",
+    "findings": [],
+    "candidate_digest": "f9eeba9d551cc2a88ae9917144c8f3d886f942037c4d79664f6eb8b179f48093",
+    "runtime": {
+      "claim_admitted": false,
+      "effort": "xhigh",
+      "fresh_context": true,
+      "launch_id": "cl_0636a58304ebc2ab1596d60c8f50222f",
+      "model": "gpt-6-astra",
+      "requested_sandbox": "read-only",
+      "runtime_state": "MATCH",
+      "status": "REVIEW_RETURNED",
+      "thread_id": "01a0f1f5-11a0-7983-82ba-8ebe3ac93064",
+      "transcript_path": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-56-06-01a0f1f5-11a0-7983-82ba-8ebe3ac93064.jsonl",
+      "transport": "CODEX_APP_SERVER_REVIEW",
+      "turn_id": "01a0f1f5-17b4-7cb1-87a0-b0a0e3075139"
+    },
+    "usage": {
+      "usage": {
+        "last": {
+          "cacheWriteInputTokens": 0,
+          "cachedInputTokens": 59008,
+          "inputTokens": 59403,
+          "outputTokens": 626,
+          "reasoningOutputTokens": 233,
+          "totalTokens": 60029
+        },
+        "modelContextWindow": 258400,
+        "total": {
+          "cacheWriteInputTokens": 0,
+          "cachedInputTokens": 286976,
+          "inputTokens": 347482,
+          "outputTokens": 3993,
+          "reasoningOutputTokens": 1731,
+          "totalTokens": 351475
+        }
+      }
+    },
+    "report": "screen-evidence/review/report.json",
+    "limits": [
+      "One bounded read-only review; no writes, agents, network or unrelated dirty-file audit.",
+      "HEAD matches base 5a6a3988053e876e96ef546d040ef856eca2bb4e; all four supplied source hashes match.",
+      "Checked Eq. 135–136 fidelity, API invariants, numerical guards and scoped tests using existing dependencies.",
+      "Replayed the existing probe and independently recomputed all 3264 reference components: maximum normalized residual 1.2387950117479245e-14, below 9.094947017729282e-13.",
+      "Existing compiled screen tests passed 3/3. Full Cargo and selected-He parity receipts were inspected; no rebuild or full-suite rerun.",
+      "No review of the previous frame task's full numerical domain; admission remains with Host."
+    ]
+  },
+  "preserved": {
+    "immutable_source_subset": "10/10 MATCH",
+    "protected_source_test_and_dirty_paths": 13,
+    "existing_reference_tolerance": "UNCHANGED",
+    "unrelated_dirty_edits": "PRESERVED"
+  },
+  "initial_failure": {
+    "description": "New author regression erroneously expected overflow for MAX through identity; corrected to genuine rotated basis. No production code or frozen reference tolerance changed to pass this test.",
+    "raw_log": "screen-evidence/cargo-test.log",
+    "original_cargo_exit": "NOT_MEASURED_BY_HOST_WRAPPER; FAILURE_OBSERVED_IN_LOG",
+    "corrected_full_cargo_exit": 0
+  },
+  "automatic_author_stop": {
+    "status": "VALIDATOR_FAILED_ENVIRONMENT",
+    "first_blocker": "/usr/bin/env: 'cargo': No such file or directory\n",
+    "exit_code": 127,
+    "runtime_identity": "MATCH",
+    "formal_lifecycle_admitted": false,
+    "host_action": "Preserved failure; independent direct Cargo validation passed. Stopped author diagnostic continuation without changing harness or frozen stop validator.",
+    "receipt": "screen-evidence/author-lifecycle.json"
+  },
+  "bounded_work": {
+    "decision": "COMPLETE_ACCEPTANCE",
+    "acceptance_sha256": "df8502da58c6326a89cf98877ac75616b428a595fb971850aa049c17a555b732",
+    "review_rounds": 1,
+    "repair_closeout_rounds": 0,
+    "scope": "Tested screen candidate, not automated lifecycle or full scientific admission"
+  },
+  "native_dispatches": {
+    "implementation": 1,
+    "independent_review": 1
+  },
+  "local_calls": 0,
+  "local_qualification": "UNKNOWN_NOT_FAILED",
+  "total_task_cost": "NOT_MEASURED",
+  "scientific_claim_admitted": false,
+  "scientific_gates_changed": false,
+  "whole_project_complete": false,
+  "remaining": [
+    "selected-He normal-frame consumer integration and angular measure quadrature",
+    "E1C single-owner replacement and native histories",
+    "missing atomic spectra, endpoints and physical closures",
+    "previous frame task full-domain independent repair closeout",
+    "automatic Cargo validator environment repair outside this repository task"
+  ],
+  "evidence_directory": "screen-evidence",
+  "previous_push": {
+    "commit": "5a6a3988053e876e96ef546d040ef856eca2bb4e",
+    "status": "VERIFIED_R1",
+    "receipt": "screen-evidence/push-verified.json"
+  }
+}

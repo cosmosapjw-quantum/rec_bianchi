@@ -1,0 +1,161 @@
+{
+  "tested_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "method": "direct WU29/WU30/WU31-A1 scalar formulas on deterministic frozen inputs, compared with raw Rust bytes; no reference_values_v2.json imported",
+  "tolerance": 9.094947017729282e-13,
+  "checks": [
+    {
+      "label": "vacuum_B00_minus_AW",
+      "fixture_id": "bb_full_vacuum",
+      "field": "atomic_b",
+      "index": 0,
+      "expected_independent": -1798900000.0,
+      "observed_rust": -1798899999.9999998,
+      "scaled_difference": 1.3253576024323893e-16
+    },
+    {
+      "label": "vacuum_three_upper_events",
+      "fixture_id": "bb_full_vacuum",
+      "field": "event_rate",
+      "index": 0,
+      "expected_independent": 5396700000.0,
+      "observed_rust": 5396699999.999999,
+      "scaled_difference": 1.7671434699098523e-16
+    },
+    {
+      "label": "nonzero_lower_B00",
+      "fixture_id": "bb_two_direction_diagonal_He584",
+      "field": "atomic_b",
+      "index": 0,
+      "expected_independent": -81596590.73148301,
+      "observed_rust": -81596590.73148301,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "direct_affine_B00",
+      "fixture_id": "bb_legacy_jvp",
+      "field": "jvp_atomic_b",
+      "index": 0,
+      "expected_independent": 233857000.0,
+      "observed_rust": 233856999.99999997,
+      "scaled_difference": 1.2743823100311435e-16
+    },
+    {
+      "label": "direct_affine_event_rate",
+      "fixture_id": "bb_legacy_jvp",
+      "field": "jvp_event_rate",
+      "index": 0,
+      "expected_independent": -701571000.0,
+      "observed_rust": -701570999.9999999,
+      "scaled_difference": 1.699176413374858e-16
+    },
+    {
+      "label": "P_BF_forward_C00_from_Jacobs_partials",
+      "fixture_id": "bf_P_forward",
+      "field": "photon_c",
+      "index": 0,
+      "expected_independent": -2.1417319653260494e-16,
+      "observed_rust": -2.1417319653260494e-16,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "S_BF_forward_C00_from_Jacobs",
+      "fixture_id": "bf_S_forward",
+      "field": "photon_c",
+      "index": 0,
+      "expected_independent": -1.6293023675529979e-15,
+      "observed_rust": -1.6293023675529979e-15,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "bf_P_subthreshold_typed_status",
+      "fixture_id": "bf_P_subthreshold",
+      "expected_independent": "ok",
+      "observed_rust": "ok"
+    },
+    {
+      "label": "BF_below_threshold_physical_zero",
+      "fixture_id": "bf_P_subthreshold",
+      "field": "event_rate_density",
+      "index": 0,
+      "expected_independent": 0.0,
+      "observed_rust": 0.0,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "domain_073_typed_status",
+      "fixture_id": "domain_073",
+      "expected_independent": "MissingAuthority",
+      "observed_rust": "MissingAuthority"
+    },
+    {
+      "label": "D86_first_node",
+      "fixture_id": "d86_node_1",
+      "field": "w",
+      "index": 0,
+      "expected_independent": 7.736,
+      "observed_rust": 7.736,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "D86_linear_interior",
+      "fixture_id": "d86_mid_1",
+      "field": "w",
+      "index": 0,
+      "expected_independent": 16.447,
+      "observed_rust": 16.447,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "d86_low_typed_status",
+      "fixture_id": "d86_low",
+      "expected_independent": "OutOfBand",
+      "observed_rust": "OutOfBand"
+    },
+    {
+      "label": "pair_one_atomic_event_two_tags",
+      "fixture_id": "pair_parallel_vacuum",
+      "field": "event_rate_density",
+      "index": 0,
+      "expected_independent": 0.5673052229309212,
+      "observed_rust": 0.5673052229309212,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "ledger_584_ground_plus_one",
+      "fixture_id": "ledger_0_plus",
+      "field": "species_source",
+      "index": 0,
+      "expected_independent": 1.0,
+      "observed_rust": 1.0,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "ledger_584_charge_zero",
+      "fixture_id": "ledger_0_plus",
+      "field": "species_source",
+      "index": 4,
+      "expected_independent": 0.0,
+      "observed_rust": 0.0,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "ledger_584_internal",
+      "fixture_id": "ledger_0_plus",
+      "field": "internal_power_j",
+      "index": 0,
+      "expected_independent": -3.3995020715925862e-18,
+      "observed_rust": -3.3995020715925862e-18,
+      "scaled_difference": 0.0
+    },
+    {
+      "label": "ledger_584_radiation",
+      "fixture_id": "ledger_0_plus",
+      "field": "photon_power_j",
+      "index": 0,
+      "expected_independent": 3.3995020715925862e-18,
+      "observed_rust": 3.3995020715925862e-18,
+      "scaled_difference": 0.0
+    }
+  ],
+  "status": "PASS"
+}
