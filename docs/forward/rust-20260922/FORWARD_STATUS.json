@@ -1,16 +1,16 @@
 {
-  "schema_version": "REC_BIANCHI_RUST_FORWARD_STATUS_V10_LOCAL_TESTED",
+  "schema_version": "REC_BIANCHI_RUST_FORWARD_STATUS_V11_F1_REPAIRED_REVIEWED",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "original_base_commit": "5a09f3797210284f83a1a1adb0e0092d1ac48475",
   "dispatch_commit": "c99a3579064a9691ba33809fc062ddc0a35396b7",
   "target_branch": "forward/rust-he-sources-20260922",
-  "source_candidate_commit": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
-  "tested_commit": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "source_candidate_commit": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "tested_commit": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
   "delivery_commit": "RESOLVE_FROM_REMOTE_REF_AFTER_EVIDENCE_COMMIT",
-  "port_status": "FIXED_INPUT_TESTS_PASS__REVIEW_RUNTIME_HOLD",
+  "port_status": "FIXED_INPUT_TESTS_AND_SCOPED_REVIEW_PASS",
   "mandatory_tests": {
     "cargo_fmt": "PASS_EXIT_0",
-    "cargo_test": "PASS_75_OF_75_EXIT_0",
+    "cargo_test": "PASS_76_OF_76_EXIT_0",
     "python_parity": "PASS_251_RECORDS_3027_COMPONENTS_111_EXPECTED_ERRORS_EXIT_0"
   },
   "first_failure": {
@@ -21,15 +21,15 @@
   },
   "source_lock": "SOURCE_IMPORT_LOCK.json",
   "source_content_manifest": "task8/SOURCE_CONTENT_MANIFEST.sha256",
-  "execution_receipt": "task9/EXECUTION_RECEIPT.json",
+  "execution_receipt": "f1_repair/RERUN_RECEIPT.json",
   "t4": {
-    "material_mapped_tests": "11_OF_11_IDS_OBSERVED_IN_75_TEST_PASS",
+    "material_mapped_tests": "11_OF_11_IDS_OBSERVED_IN_76_TEST_PASS",
     "static_map": "PASS_STATIC_ONLY",
-    "gate_p": "HOLD_INDEPENDENT_REVIEW_RUNTIME_BINDING",
+    "gate_p": "PASS_SCOPED_FIXED_INPUT_IMPLEMENTATION_REVIEW_ONLY",
     "gate_i": "DEFERRED_CONSUMER",
     "full_original_t4": "NOT_RUN"
   },
-  "independent_review": "NOT_ADMITTED_CHILD_SANDBOX_MISMATCH__CORRECTED_REGISTRATION_REJECTED",
+  "independent_review": "PASS_BOUND_FRESH_READ_ONLY_NO_FINDINGS",
   "allow_consumer_integration": false,
   "domain": {
     "P_bound_free_q": "JACOBS_HIGH_1_TO_1_4_ONLY",
@@ -37,17 +37,6 @@
     "two_photon_y": "D86_0_025_TO_0_975",
     "out_of_domain": "TYPED_MISSING_AUTHORITY_OR_OUT_OF_BAND",
     "below_threshold": "PHYSICAL_ZERO"
-  },
-  "backup": {
-    "artifact": "REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
-    "sha256": "38bb7b9488d9569c813c73fd5d11f1c66b766f08aff204ac8026b7d7430257da",
-    "bytes": 424424,
-    "dropbox": "UPLOAD_SUCCESS_R1",
-    "dropbox_id": "id:BSpOijBcT10AAAAAADv-Eg",
-    "google_drive": "UPLOAD_SUCCESS_R1",
-    "google_drive_id": "17yTxKPkvfOYn7M8KwPOwPXeXdE74ZhIr",
-    "receipt": "task9/BACKUP_RECEIPT.json",
-    "restore_verified": false
   },
   "scientific_state_unchanged": {
     "S3": "accepted",
@@ -60,5 +49,23 @@
     "HOST4_physical": "HOLD",
     "HH_propagation": "unauthorized"
   },
-  "next_action": "Port may close at tested SHA. A separate exact-rev consumer integration in the other repo requires review binding/admission first. No automatic G10, E1C, S4/S5, or history work."
+  "next_action": "Close this port, or separately authorize exact-rev integration in the other repository at dependency_candidate_sha.",
+  "dependency_candidate_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "source_import_commit": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
+  "review_receipt": "f1_repair/FINAL_DECISION.json",
+  "previous_backup": {
+    "artifact": "REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
+    "sha256": "38bb7b9488d9569c813c73fd5d11f1c66b766f08aff204ac8026b7d7430257da",
+    "bytes": 424424,
+    "dropbox": "UPLOAD_SUCCESS_R1",
+    "dropbox_id": "id:BSpOijBcT10AAAAAADv-Eg",
+    "google_drive": "UPLOAD_SUCCESS_R1",
+    "google_drive_id": "17yTxKPkvfOYn7M8KwPOwPXeXdE74ZhIr",
+    "receipt": "task9/BACKUP_RECEIPT.json",
+    "restore_verified": false
+  },
+  "backup": {
+    "receipt": "f1_repair/BACKUP_RECEIPT.json",
+    "status": "DUAL_BACKUP_COMPLETE_R1_RESTORE_NOT_TESTED"
+  }
 }
