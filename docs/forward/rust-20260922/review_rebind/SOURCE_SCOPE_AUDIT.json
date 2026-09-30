@@ -1,0 +1,173 @@
+{
+  "schema": "REC_HE_SOURCE_SCOPE_REVIEW_V1",
+  "reviewed_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "source_identity": {
+    "source_lock": "docs/forward/rust-20260922/SOURCE_IMPORT_LOCK.json",
+    "subset_files_verified": 10,
+    "subset_hashes": "all matched size and SHA256",
+    "content_manifest_entries_verified": 44,
+    "A7_reference_sha256": "9ef3929dd1164c482cb200a7c1a10e57e1e0a78c6ab47c9cc8dfd8f5fc23ce6a",
+    "A6_reference_sha256": "d8a5f4afe2ab619407f55e9ac9f5b0c9e5196689301b78c1cc98138e9c18a628",
+    "weak_jvp_oracle_commit": "6873d13ce65c46e7311790074e1069266cd31c50",
+    "study_py_blob_verified": "f1ad5926de6090e8317961c6cc58914cfd5c8ba3",
+    "study_helper_merged_into_production": false,
+    "verified_subset": [
+      {
+        "path": "source_subset/plans/LOCAL_CODEX_T4_TEST_MATRIX.json",
+        "size_bytes": 2091,
+        "sha256": "4008bb2d497c68b0579343c9e5ad223a4f0db7a7909ae0636c1dfa3b003865b0",
+        "match": true
+      },
+      {
+        "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+        "size_bytes": 11862,
+        "sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+        "match": true
+      },
+      {
+        "path": "source_subset/reports/02_T4_CONSERVATION_EQUILIBRIUM_FRAME_AUDIT_KO.md",
+        "size_bytes": 6811,
+        "sha256": "87bd1568e99dacc2683323015de1f54aac90ac68a4af197116d0cc99f87d6501",
+        "match": true
+      },
+      {
+        "path": "source_subset/reports/03_T4_COVERAGE_AND_MISSING_PHYSICS_KO.md",
+        "size_bytes": 4492,
+        "sha256": "2700cefb6218478479e429f1aa8c70f169d0ef2851b85b5803d36c52e4fe0c4b",
+        "match": true
+      },
+      {
+        "path": "source_subset/schemas/SELECTED_HE_SOURCE_LEDGER.json",
+        "size_bytes": 1050,
+        "sha256": "fd64a5384d7b3d4164fc3f25045b0f23825794534ebdb879ae8f6fb900dbaef3",
+        "match": true
+      },
+      {
+        "path": "source_subset/schemas/SOURCE_COVERAGE.json",
+        "size_bytes": 1144,
+        "sha256": "84c7d4afd59f83d387c927361ad1e13b5e8553525d50c0d2e4cb7c00875afec1",
+        "match": true
+      },
+      {
+        "path": "source_subset/schemas/T4_SOURCE_INTERFACE_SCHEMA.json",
+        "size_bytes": 1691,
+        "sha256": "c68055fe2fe83f5d4f97d436501e392d63a3fdf5fa62614478d483a8e70441d3",
+        "match": true
+      },
+      {
+        "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+        "size_bytes": 31983,
+        "sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+        "match": true
+      },
+      {
+        "path": "source_subset/sources/BASS_WU30_20260914_RESULT_v1.txt",
+        "size_bytes": 24395,
+        "sha256": "5bdbc5189838c06849dbebabf77eea29a80870df5b01be864d5dac64f99f8b71",
+        "match": true
+      },
+      {
+        "path": "source_subset/sources/BASS_WU31_20260914_AMENDMENT_WU31_A1_v1.txt",
+        "size_bytes": 5616,
+        "sha256": "ee1b36beb349aff47d9697b49b80f7d2276c5e7365b61031c11f4b18298ce06d",
+        "match": true
+      }
+    ]
+  },
+  "entry_points": [
+    {
+      "family": "BB 584/IR",
+      "functions": [
+        "he_bb_kernel",
+        "he_bb_source"
+      ],
+      "file": "rust/rec_microphysics/src/he_singlet.rs",
+      "lines": "950-1038",
+      "findings": "same caller-owned WP; lower ng/ns selected by channel; shell coefficient with delta-J spectral tag; angular measure applied once; signed trace and complex matrices maintained"
+    },
+    {
+      "family": "P BF",
+      "functions": [
+        "he_p_bf_source",
+        "PBoundFreeTable::lookup"
+      ],
+      "file": "rust/rec_microphysics/src/he_singlet.rs",
+      "lines": "1050-1098,1209-1278",
+      "findings": "Jacobs P high q 1.0..1.4 only; s/d partials; same table handle in forward/inverse; common material Maxwell guard; below-threshold zero and unsupported above-threshold error"
+    },
+    {
+      "family": "S BF",
+      "functions": [
+        "he_s_bf_source",
+        "SBoundFreeTable::lookup"
+      ],
+      "file": "rust/rec_microphysics/src/he_singlet.rs",
+      "lines": "1100-1137,1280-1343",
+      "findings": "Jacobs S high q 1.0..1.4 only; no Bhatia splice; same table forward/inverse; signed event trace"
+    },
+    {
+      "family": "two-photon pair",
+      "functions": [
+        "d86_w",
+        "he_two_photon_pair_source",
+        "assemble_he_pair_grid"
+      ],
+      "file": "rust/rec_microphysics/src/coverage.rs and he_singlet.rs",
+      "lines": "coverage.rs:62-106; he_singlet.rs:1346-1672",
+      "findings": "20 printed D86 half-grid nodes; reflection and linear interpolation within y .025..975; typed out-band; atomic factor one-half versus two photon tags; full ordered exchange partner required; no total-rate rescale"
+    },
+    {
+      "family": "event and material ledger",
+      "functions": [
+        "assemble_he_event_ledger",
+        "assemble_he_bf_grid",
+        "assemble_selected_he_material_ledger"
+      ],
+      "file": "rust/rec_microphysics/src/ledger.rs",
+      "lines": "4-159,341-447,497-682",
+      "findings": "event matrix columns and signed rates; nuclei/charge residuals; BF photon negative versus ion positive; proper second and ray-clock occupation separated; SI material moments and momentum; pair integrated rate consumed once"
+    }
+  ],
+  "domain_firewall": {
+    "BF_below_threshold": "PhysicalZeroBelowThreshold with zero outputs after state validation",
+    "BF_outside_high_band": "MissingAuthority; no stitch/extrapolation",
+    "D86_outside_band": "OutOfBand typed error",
+    "unknown_to_zero": false,
+    "spectral_delta_profile_invented": false,
+    "total_rate_renormalization": false,
+    "unprovided_consumer_integration": false
+  },
+  "regression": {
+    "file": "rust/rec_microphysics/examples/eval_fixture.rs",
+    "lines": "238-266",
+    "finding": "plus/minus values remain reported, but lower-population JVP is evaluated as he_bb_source(channel,1.0,Mat3::zero(),modes); no near-cancelling total subtraction used for JVP",
+    "legacy_fixture_observed_finite_difference": 233856999.9921875,
+    "direct_affine_observed": 233856999.99999997,
+    "subtraction_delta": -0.007812470197677612,
+    "raw_output": "logs/parity/rust_fixture.stdout.bin"
+  },
+  "independent_scalar_spot_check": "SPOT_CHECK.json",
+  "host_scoped_audit": "SOURCE_DEFECT_FOUND_NO_DEPENDENCY_CANDIDATE",
+  "not_claimed": [
+    "full T4",
+    "Gate I",
+    "S4",
+    "S5",
+    "G10",
+    "E1C",
+    "history",
+    "observable",
+    "production",
+    "scientific admission"
+  ],
+  "source_defect": {
+    "id": "F1",
+    "severity": "MINOR",
+    "file": "rust/rec_microphysics/src/ledger.rs",
+    "line": 117,
+    "condition": "finite r584=1e308 with canonical energies and zero other rates returns Ok containing -Inf,+Inf,NaN",
+    "review_report": "native/review.txt",
+    "host_reproduction": "defect_repro/receipt.json",
+    "decision_rule": "any source defect => no dependency candidate; separate repair work unit"
+  }
+}

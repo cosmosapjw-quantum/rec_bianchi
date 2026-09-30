@@ -1,0 +1,67 @@
+{
+  "tested_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "environment": {
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "commands": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "started_utc": "2026-09-30T00:42:45.528172+00:00",
+      "ended_utc": "2026-09-30T00:42:45.707525+00:00",
+      "exit": 0,
+      "stdout_path": "fmt.stdout.log",
+      "stderr_path": "fmt.stderr.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "name": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "started_utc": "2026-09-30T00:42:45.707800+00:00",
+      "ended_utc": "2026-09-30T00:42:47.276173+00:00",
+      "exit": 0,
+      "stdout_path": "cargo_test.stdout.log",
+      "stderr_path": "cargo_test.stderr.log",
+      "stdout_sha256": "184bbaa64f91bcc6869c435b80336e14a599519cc54a3258083a8649c5caae5a",
+      "stderr_sha256": "16203c4b176f4f824a99c959b1cdc445194a7f49c90a308ab66a6e635e38c959",
+      "stdout_bytes": 4295,
+      "stderr_bytes": 34054
+    },
+    {
+      "name": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "started_utc": "2026-09-30T00:42:47.276478+00:00",
+      "ended_utc": "2026-09-30T00:42:47.409083+00:00",
+      "exit": 0,
+      "stdout_path": "parity.stdout.log",
+      "stderr_path": "parity.stderr.log",
+      "stdout_sha256": "4ea3227f242bd5db812e9dcb3bf582ae58bd4efefe9088e08b993940389178fa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 517,
+      "stderr_bytes": 0
+    }
+  ]
+}
