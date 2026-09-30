@@ -2637,3 +2637,55 @@ fn t4l10_isotropic_wp_keeps_complex_photon_matrix() {
         }
     }
 }
+
+#[test]
+fn ledger_rejects_finite_input_overflow() {
+    let zero = ChannelRates {
+        r584: 0.0,
+        rir: 0.0,
+        rp: 0.0,
+        rs: 0.0,
+        r2g: 0.0,
+    };
+    let cases = [
+        (
+            ChannelRates {
+                r584: 1e308,
+                ..zero
+            },
+            HeEnergies::canonical(),
+            0.0,
+            0.0,
+            "ledger internal power",
+        ),
+        (
+            ChannelRates { r2g: 1e308, ..zero },
+            HeEnergies::canonical_si(),
+            0.0,
+            0.0,
+            "ledger species source",
+        ),
+        (zero, HeEnergies::canonical(), -1e308, 0.0, "finite control"),
+        (
+            zero,
+            HeEnergies::canonical(),
+            -1e308,
+            1e308,
+            "ledger energy residual",
+        ),
+    ];
+    for (rates, energies, bf_power, heat, expected) in cases {
+        let result = assemble_he_event_ledger(rates, energies, bf_power, heat);
+        if expected == "finite control" {
+            let ledger = result.unwrap();
+            assert_eq!(ledger.p_gamma, 1e308);
+            assert_eq!(ledger.energy_residual, 1e308);
+        } else {
+            assert!(matches!(
+                result,
+                Err(CoverageError::NumericalDomainUncertain { quantity, value, .. })
+                    if quantity == expected && !value.is_finite()
+            ));
+        }
+    }
+}

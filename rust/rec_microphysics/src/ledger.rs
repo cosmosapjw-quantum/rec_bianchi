@@ -118,6 +118,14 @@ pub fn assemble_he_event_ledger(
         + e.chi_p * r.rp
         + e.chi_s * r.rs;
     let pg = e.delta_p * r.r584 + e.epsilon_ir * r.rir + e.delta_s * r.r2g - bf_photon_energy;
+    for value in s {
+        finite(value, "ledger species source")?;
+    }
+    finite(nuclei, "ledger He nuclei residual")?;
+    finite(charge, "ledger charge residual")?;
+    finite(pint, "ledger internal power")?;
+    finite(pg, "ledger photon power")?;
+    let energy_residual = finite(pint + pg + h_kin, "ledger energy residual")?;
     Ok(HeEventLedger {
         species_source: s,
         he_nuclei_residual: nuclei,
@@ -126,7 +134,7 @@ pub fn assemble_he_event_ledger(
         p_internal: pint,
         p_gamma: pg,
         h_kin,
-        energy_residual: pint + pg + h_kin,
+        energy_residual,
         event_matrix: EVENT_MATRIX,
     })
 }
