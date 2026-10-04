@@ -1,0 +1,115 @@
+{
+  "task_id": "CR-F0-FASTEST-TRACK-SYNC-20261004-02",
+  "state": "blocked",
+  "input_identity": {
+    "chatgpt_thread_url": "https://chatgpt.com/c/6abfa205-dbe8-83ee-969b-0e00111c9404",
+    "thread_content_access": "UNAVAILABLE_LOGIN_REQUIRED",
+    "bass_repository": "cosmosapjw-quantum/bass_cr",
+    "bass_branch": "research/r4q-gap-closure-20261001",
+    "bass_parent": "d8dbc9c046c183c2953bdde24f377d85376d70a6",
+    "bass_parent_tree": "caa183d1bf7664f314951a48193d52392ce0fb7e",
+    "receiver_repository": "cosmosapjw-quantum/rei_bianchi",
+    "receiver_branch": "forward/rust-reion-kernels-20260922",
+    "receiver_commit": "5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a",
+    "receiver_tree": "877c31ddfa0dedbaf0ae65a071b302e63fe62597",
+    "receiver_source_sha256": {
+      "rust/rei_microphysics/src/coverage.rs": "0c542eaf42cd8ece217a2f02cc7fbb500f0bea8b983c1f18d44c96d0aea050c1",
+      "rust/rei_microphysics/src/group_rates.rs": "393786f3c473d98dbf57752967ba63cf07f055dfff9027a1d00770d2ef73a6a4",
+      "rust/rei_microphysics/src/hydrogen_step.rs": "d3a4515dd2cb4e723095db6c750531acc3999fe0d5fa856707e520ec93056fb6",
+      "rust/rei_microphysics/src/joint_affine.rs": "5782ec4a2fdb8885af4056dca26e60bb31b585a7ce5de0c18cccbb143ae5f8b3",
+      "rust/rei_microphysics/src/lib.rs": "b5598890b04c255c643b7decdfed4e046c84bba030aec09c7c7d38a0b32d86eb",
+      "rust/rei_microphysics/src/lift.rs": "632474da40f075051f77ed618b65af13fba133ea6bbee6e49325aeb2578d1871"
+    },
+    "latest_chat_handoff": "docs/fastest_track_chat/REI-CHAT-FT05-20261004/TASK_RETURN.json",
+    "latest_chat_handoff_sha256": "2798c4f48c68fbc963d1a7d03d49232f4a1109785abe85c52a6d061f9786b25f",
+    "adoption_zip_sha256": "c2e86d5d7f6fb5e9a359a0248358b45f69e19ccc24c760b0f92421aa315040ae",
+    "receiver_owner_thread_url": "https://chatgpt.com/c/6ac2217b-3210-83ee-ae3d-d37ba50351b3",
+    "owner_thread_does_not_replace_user_target": true
+  },
+  "changed_paths": [
+    "docs/fastest_track_sync_20261004_v2/TASK_RETURN.json",
+    "docs/fastest_track_sync_20261004_v2/NEXT_HANDOFF_KO.md",
+    "docs/fastest_track_sync_20261004_v2/BACKUP_RECEIPT.json",
+    "docs/fastest_track_sync_20261004_v2/RECEIVER_PROGRESS.json"
+  ],
+  "commands": [
+    {
+      "command": "git fetch origin forward/rust-reion-kernels-20260922; read bounded diff 64bc3aa..5f3bfe2 and exact runtime receipts/source blobs",
+      "exit_code": 0,
+      "evidence_path": "RECEIVER_PROGRESS.json"
+    },
+    {
+      "command": "SHA-256 compare REI-F02 artifacts against pinned Git source blobs",
+      "exit_code": 0,
+      "evidence_path": "RECEIVER_PROGRESS.json"
+    }
+  ],
+  "artifacts": [
+    "TASK_RETURN.json",
+    "NEXT_HANDOFF_KO.md",
+    "BACKUP_RECEIPT.json",
+    "RECEIVER_PROGRESS.json"
+  ],
+  "claim": {
+    "basis": "New receiver F00 process declaration disables cosmic_rays, and F02 constant-rate hydrogen oracle artifacts match receipt hashes. These are source/design evidence; no actual CR dispatch/load/callback integration evidence is present in the designated crate.",
+    "ceiling": {
+      "G02": "UNRESOLVED",
+      "production": "HOLD",
+      "capture": false,
+      "all_bound": "OPEN",
+      "b_grid": "NO_GO",
+      "CR_OFF_ACCEPTANCE_created": false,
+      "actual_receiver_CR_source": null,
+      "provider_load_count": null,
+      "provider_callback_count": null
+    }
+  },
+  "next_task": "REI-F01 then REI-F03 actual consumer dispatch integration (receiver-owned); CR-F0 binding when entrypoint is supplied",
+  "blocker": {
+    "category": "IMPLEMENTATION",
+    "code": "WAIT_FOR_REI_CONSUMER_TASK",
+    "scope": "F00 is now completed and declares cosmic_rays=false; F02 scalar oracle is completed. Actual provider-load-before-off ordering and coupled consumer entrypoint/instrumentation are still absent from the designated crate. Do not keep waiting for already-completed F00."
+  },
+  "extensions": {
+    "primary_lane": "CR_OFF_FASTEST",
+    "precision_atomic_lane": "PARKED",
+    "latest_receiver_theory_task": "REI-CHAT-FT05_BIANCHI_I_TRANSPORT",
+    "latest_receiver_theory_state": "SCOPED_TRANSPORT_INTERFACE_AND_LIGHT_REFERENCE_CLOSED__PRODUCTION_AND_PHYSICAL_ACCURACY_OPEN",
+    "receiver_independent_next_task": "REI-CHAT-FT06_PAIRED_SCIENCE_SPEC",
+    "science_tests_replayed": 0,
+    "receiver_tests_run": 0,
+    "atomic_calls": 0,
+    "native_calls": 0,
+    "history_calls": 0,
+    "old_patch_reapplications": 0,
+    "old_authorizations_reused": false,
+    "independent_reviewer_used": false,
+    "sync_mechanism": "Append-only records on existing BASS_CR branch, exact receiver commit/source identities and create-only Dropbox status; original user thread remains target; direct thread access unverified",
+    "loop_contract": {
+      "read_first": "Latest relevant TASK_RETURN and NEXT_HANDOFF from authenticated existing branches/mirrors",
+      "proceed_if": "Actual receiver dispatch/source identity supplied, or focused in-scope repair is demonstrated",
+      "validation": "Changed code/environment only, targeted checks; inherit unchanged evidence",
+      "return": "Observed identities, changed paths, commands/logs, actual state, next task, remote publication receipt",
+      "do_not_repeat_on_same_blocker": "No new packet/full audit/atomic retry without new receiver evidence",
+      "ownership": "Bianchi transport and dynamics remain rei_bianchi; no automatic FT05 implementation here"
+    },
+    "receiver_next_codex_task": "REI-F01",
+    "receiver_completed_tasks": [
+      "REI-F00",
+      "REI-F02"
+    ],
+    "CR_off_model_declaration_verified": true,
+    "CR_off_runtime_binding_verified": false,
+    "F02_prior_validation_inherited": {
+      "crate_tests_passed": 49,
+      "new_targeted_tests": 6,
+      "independent_decimal_rust_cases": 103,
+      "decimal_working_precision": 1100,
+      "finite_comparison_relative_tolerance": 4e-14,
+      "subnormal_absolute_tolerance_ulps": 2,
+      "uniform_enclosure_claim": false
+    },
+    "source_code_modified": false,
+    "new_science_runs": 0
+  }
+}

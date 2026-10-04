@@ -1,0 +1,197 @@
+{
+  "task_id": "REI-F03",
+  "state": "completed",
+  "input_identity": {
+    "logical_task": "REI-F03",
+    "candidate_source_parent_commit": "283153da9842218662451b61843bcc859d3eeb12",
+    "publication_parent_commit": "6f264b14a5195dba8dc11150f0171c0377f4d7e1",
+    "frozen_inputs": {
+      "rust/rei_microphysics/src/lib.rs": "680acb65583cfc0b4bfabfa89471c39115b622f24707ec601d84b7601423da53",
+      "rust/rei_microphysics/tests/hhe_events.rs": "9048174c8e2bc411308d9b1709fff777d9182036a580948cf69e91cfec9bbfa5",
+      "rust/rei_microphysics/tests/hhe_fixture.rs": "0cc9a2e2a4a571400928a69f3ddcd9900321cf4b0e5c85c9d317f6c28352a8f1",
+      ".cuh/fastest-track/REI-F03/reference.py": "f16af146a305ea9917b265df5112e7cf6f438e9404dd70ee5b78acaf0b9e5b90",
+      ".cuh/fastest-track/REI-F03/reference.json": "18534dc24284e5344bfa06f30f70c802f7e8005177441c74796c2d2df5b7564c",
+      ".cuh/fastest-track/REI-F03/verify_candidate.py": "ac2ff4ad2e16d4c44491689f04a95f34dc17df964c06db7e391abeaa9a1a6d87",
+      "docs/atomic_reionization_handoff_20261004_v1/threads/rei_bianchi/CONTROLLED_FIXTURE.json": "92064c3ee60139972be3e49b0a0c5bbf45b25094914b22d1e197dbe7344f6fba"
+    }
+  },
+  "changed_paths": [
+    "rust/rei_microphysics/src/hhe_events.rs",
+    "rust/rei_microphysics/src/thermal.rs",
+    "rust/rei_microphysics/src/microstep.rs",
+    "rust/rei_microphysics/src/lib.rs",
+    "rust/rei_microphysics/examples/hhe_fixture.rs",
+    "rust/rei_microphysics/tests/hhe_events.rs",
+    "rust/rei_microphysics/tests/hhe_fixture.rs",
+    "docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/hhe_solver_binding.json"
+  ],
+  "commands": [
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /usr/bin/python3 .cuh/fastest-track/REI-F03/verify_boundaries.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/boundary-green.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /usr/bin/python3 .cuh/fastest-track/REI-F03/verify_candidate.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/final-candidate.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /home/cosmosapjw/.cargo/bin/cargo run --quiet --manifest-path rust/rei_microphysics/Cargo.toml --example hhe_fixture -- 1e12",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/final-bisection.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /home/cosmosapjw/.cargo/bin/cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml -- --check",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/final-fmt.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /home/cosmosapjw/.cargo/bin/cargo clippy --manifest-path rust/rei_microphysics/Cargo.toml --lib --locked -- -D warnings",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/final-clippy-lib.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /home/cosmosapjw/.cargo/bin/cargo clippy --manifest-path rust/rei_microphysics/Cargo.toml --all-targets --locked -- -D warnings -A clippy::excessive_precision",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/final-clippy-all.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F03 -- /usr/bin/python3 scripts/verify_repo.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/verify-repo.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "rust/rei_microphysics/src/hhe_events.rs",
+      "sha256": "c100b08e034089c2d67b2102769ccdd51f1d29a2f388d6bb2dfe7984af93b290"
+    },
+    {
+      "path": "rust/rei_microphysics/src/thermal.rs",
+      "sha256": "6d7be31934bb33a46c0911d28b62e34d22027e08a8a1945c5d7d32bf32f79b8a"
+    },
+    {
+      "path": "rust/rei_microphysics/src/microstep.rs",
+      "sha256": "e03cc1512cdd2b60735b1ab655c8e6657423c18ee4ad55ca1d30f24ad4974e53"
+    },
+    {
+      "path": "rust/rei_microphysics/src/lib.rs",
+      "sha256": "d4f155351a7f78680f5e8cde3c5bd18d26999cc8d01d595f99fcdfc3c94441bf"
+    },
+    {
+      "path": "rust/rei_microphysics/examples/hhe_fixture.rs",
+      "sha256": "cbe1ef923e853a2b60750596fa145fb237f714766854155c10010a693186e897"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/hhe_events.rs",
+      "sha256": "9048174c8e2bc411308d9b1709fff777d9182036a580948cf69e91cfec9bbfa5"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/hhe_fixture.rs",
+      "sha256": "0cc9a2e2a4a571400928a69f3ddcd9900321cf4b0e5c85c9d317f6c28352a8f1"
+    },
+    {
+      "path": "docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/hhe_solver_binding.json",
+      "sha256": "54fb656c77cc9a03e40abade3b844bf6c4c77467c1ab6575dc1e5b19163f09e2"
+    }
+  ],
+  "claim": {
+    "basis": "Actual finite synthetic mixed/pure RHS/implicit/event/energy tests, independent five-population+lnT SciPy reference methods, three Rust refinement levels, bounded rejection and one native independent review with targeted Host repair",
+    "ceiling": "Synthetic static Case-A constant-rate full HHe implementation and point residual/source-site binding only; no interval certificate, physical provider/history, full FLRW/filling or Peebles admission"
+  },
+  "next_task": "REI-F04",
+  "blocker": null,
+  "execution_mode": "CODEX_ONLY",
+  "validation": {
+    "crate_tests_passed": 63,
+    "new_frozen_tests": 8,
+    "external_boundary_assertions": 7,
+    "independent_methods": [
+      "DOP853",
+      "Radau"
+    ],
+    "reference_coordinate_basis": "five proper populations plus lnT, photons,escape,events",
+    "refinement_dt_s": [
+      1000000000,
+      500000000,
+      250000000
+    ],
+    "refinement_observable_errors": [
+      7.29885922368112e-06,
+      3.6487399572848744e-06,
+      1.8241970884957937e-06
+    ],
+    "max_scaled_energy_residual": 1.5101850155835768e-13,
+    "max_scaled_event_residual": 2.6215669717520595e-13,
+    "strict_local_limit": 0.0002,
+    "strict_public_width_limit": 0.002,
+    "public_width_evaluated": false,
+    "rejected_branch": {
+      "fixture_id": "REI_SYNTHETIC_HHE_3GROUP_STATIC_V1",
+      "dt_s": 1000000000000,
+      "t_end_s": 1000000000000,
+      "coordinates": [
+        "x_HII",
+        "x_HeII",
+        "x_HeIII",
+        "u_th_proper_erg_cm3",
+        "N0_proper_cm3",
+        "N1_proper_cm3",
+        "N2_proper_cm3"
+      ],
+      "source_site": "backward_euler_endpoint",
+      "scientific_admission": "HOLD",
+      "accepted_steps": 512,
+      "rejected_steps": 9,
+      "rejected_candidate_writes": 0,
+      "max_local_error": 6.705429498060286e-05,
+      "observables": [
+        0.22221731011867685,
+        0.11627298611253341,
+        0.0016377122289656066,
+        9.145820659349233
+      ],
+      "photons_cm3": [
+        1.4046098200267876e-11,
+        3.862130350893689e-08,
+        1.2157321803626526e-07
+      ],
+      "relative_energy_residual": -4.809665148640765e-14,
+      "scaled_event_residual": 1.0693790959085542e-13
+    },
+    "strict_library_clippy": true,
+    "all_target_clippy_precision_fixture_allowance": true,
+    "original_fixture_and_tests_unchanged": true
+  },
+  "review": {
+    "status": "SCOPED_INDEPENDENT_REVIEW_THREE_P2_REPAIRED_BY_HOST",
+    "receipt": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/review.json",
+    "final_bytes_independently_reviewed": false
+  },
+  "native_usage": {
+    "dispatches": 2,
+    "known_total_tokens": 2737828,
+    "cost": "NOT_MEASURED",
+    "runtime_receipt": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F03_reference/native-runtime.json",
+    "soft_target": 100000,
+    "target_exceeded_replan": "Retain same-task cumulative identities and usage. One deterministic Host repair with actual validators, then same-branch publication; no third native dispatch, no local inference.",
+    "prior_task_accounting": "F00/F02/F01 closed receipts retained unchanged; no reset or substitution"
+  },
+  "scientific_admission": "HOLD",
+  "unresolved": [
+    "F04 interval nonlinear remainder/root certification and independent source-site boxes",
+    "Raw physical domain/rate and FT03 thermal closure admission",
+    "Full FLRW redshift/diffuse/volume consumer, manufactured filling closure separate",
+    "Peebles retained n2/bath/line/two-photon/QSS source closure absent"
+  ],
+  "research_sync": {
+    "latest_handoff": "REI-CHAT-FLRW01-20261004",
+    "latest_read_commit": "6f264b14a5195dba8dc11150f0171c0377f4d7e1",
+    "next_chat_task": "REI-CHAT-FLRW02_SOURCE_BOUND_THREE_EQUATION_REGRESSION",
+    "PB02_and_FT07": "DEFERRED_NOT_COMPLETED",
+    "F01_ack": "docs/fastest_track_chat/REI-CHAT-PB01-20261004/SYNC_DELTA_ACK.json",
+    "F03_ack_observed": false,
+    "direct_chat_delivery": "UNDELIVERED_BROWSER_MODULE_MISSING"
+  }
+}

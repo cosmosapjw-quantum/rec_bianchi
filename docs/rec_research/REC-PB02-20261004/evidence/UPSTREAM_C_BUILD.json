@@ -1,0 +1,55 @@
+{
+  "initial_failure": {
+    "kind": "RUNTIME_BUILD_CONFIGURATION",
+    "command_flag": "-std=c11",
+    "exit_code": 1,
+    "decisive_output": "hydrogen.c:722: error: M_PI undeclared",
+    "subsequent_missing_binary_exit": 127
+  },
+  "repair": "Use GNU C dialect expected by upstream M_PI; no upstream formula/source changes",
+  "command": [
+    "cc",
+    "-O2",
+    "-std=gnu11",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-I/tmp/rec_theory_source_cache",
+    "/tmp/rec_theory_source_cache/hydrogen.c",
+    "/tmp/rec_theory_source_cache/hyrectools.c",
+    "rec_bianchi_loop_20261004/coding/upstream_tla_driver.c",
+    "-Wl,--gc-sections",
+    "-lm",
+    "-o",
+    "/tmp/rec_theory_source_cache/hyrec_tla_probe"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "upstream_files": [
+    {
+      "path": "hydrogen.c",
+      "sha256": "734800ccd69b41d60b519f200003ce27c3b7640f76a70353499424842ba19616",
+      "bytes": 46627
+    },
+    {
+      "path": "hydrogen.h",
+      "sha256": "1b2c64d108078722dd546f4e8b9bddca2cbe6abdf4b63e44e76fe0e9d58f4e52",
+      "bytes": 11868
+    },
+    {
+      "path": "hyrectools.c",
+      "sha256": "868a4f5104e90c18b84948843cb2090b22732e54d88b5f658323a38394275ce4",
+      "bytes": 8529
+    },
+    {
+      "path": "hyrectools.h",
+      "sha256": "00e71fdbaef4831f41822e00750a24e03c9954175b6a9680c67fb0ffc1be5715",
+      "bytes": 1341
+    },
+    {
+      "path": "energy_injection.h",
+      "sha256": "e2f0603b2bfe730814bdd57d46eff9f53d8bb1e10315524b395aa4dde97de2ea",
+      "bytes": 1175
+    }
+  ]
+}

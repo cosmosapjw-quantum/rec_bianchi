@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "task_id": "REI-F03",
+  "fixture_id": "REI_SYNTHETIC_HHE_3GROUP_STATIC_V1",
+  "implementation_scope": "STATIC_HOMOGENEOUS_CONSTANT_SYNTHETIC_RATES",
+  "independent_coordinates": [
+    {
+      "name": "x_HII",
+      "units": "fraction of H nuclei"
+    },
+    {
+      "name": "x_HeII",
+      "units": "fraction of He nuclei"
+    },
+    {
+      "name": "x_HeIII",
+      "units": "fraction of He nuclei"
+    },
+    {
+      "name": "u_th_proper",
+      "units": "erg cm^-3"
+    },
+    {
+      "name": "N0_proper",
+      "units": "cm^-3"
+    },
+    {
+      "name": "N1_proper",
+      "units": "cm^-3"
+    },
+    {
+      "name": "N2_proper",
+      "units": "cm^-3"
+    }
+  ],
+  "derived_coordinates": {
+    "x_HI": "1-x_HII",
+    "x_HeI": "1-x_HeII-x_HeIII",
+    "n_e": "n_H*x_HII+n_He*(x_HeII+2*x_HeIII)",
+    "T": "2*u/(3*k_B*(n_H+n_He+n_e))"
+  },
+  "auxiliary_coordinates": [
+    "cumulative escaped energy erg cm^-3",
+    "9 photo counts +3 collision counts +3 recombination counts cm^-3"
+  ],
+  "actual_source_site": {
+    "name": "backward_euler_endpoint",
+    "time": "t_old+dt for each individual BE solve",
+    "full_step": "F(y_full;y0,dt)",
+    "first_half": "F(y_half1;y0,dt/2)",
+    "second_half": "F(y_half2;y_half1,dt/2)",
+    "rates_and_events": "same point y_endpoint inside each individual map",
+    "F00_four_site_plan": "Historical planned design preserved; not asserted as this BE map"
+  },
+  "residual": {
+    "definition": "F_k=y_new[k]-y_old[k]-dt*rhs_k(y_new), k=0..6",
+    "physical_units": "fractions3,erg cm^-3,cm^-3 photons3",
+    "binding_status": "ACTUAL_ACCEPTANCE_SOURCE_BOUND",
+    "source_function": "microstep.rs::be_endpoint_residual",
+    "normalization": [
+      "1",
+      "1",
+      "1",
+      "max(u_old,1e-30)",
+      "max(N0_old,1e-30)",
+      "max(N1_old,1e-30)",
+      "max(N2_old,1e-30)"
+    ],
+    "auxiliary_escape_residual": "escape_new-escape_old-dt*escape_rate_at_endpoint scaled by max(Etotal_old,1e-30), included in max norm",
+    "default_residual_strict_lt": 1e-14,
+    "default_max_iterations": 80,
+    "state_box": "NOT_IMPLEMENTED",
+    "uniqueness_or_remainder_bound": "NOT_EVALUABLE"
+  },
+  "scheme": {
+    "name": "backward Euler with transactional full/two-half local comparison",
+    "accepted_candidate": "two-half state and summed halfstep event/escape ledgers",
+    "error_observables": [
+      "x_HII",
+      "x_HeII",
+      "x_HeIII",
+      "ln_T"
+    ],
+    "estimator": "max absolute difference of full and two-half finite point observables",
+    "strict_local_lt": 0.0002,
+    "public_width_lt": 0.002,
+    "uniform_public_width_measured": false,
+    "source_box_or_interval_certificate": "NOT_EVALUABLE_F04_PENDING",
+    "minimum_trial_dt_s": 1000.0,
+    "population_update": "Positive production/destruction endpoint iteration; helium numerator uses stored old HeII plus nonnegative production terms. No population clipping."
+  },
+  "energy_convention": {
+    "frame": "proper density static volume1cm3",
+    "closure": "Case-A synthetic primary-only instantaneous escaping recombination",
+    "binding": "ev*[nH*xH*chiHI+nHe*(xHeII*chiHeI+xHeIII*(chiHeI+chiHeII))]",
+    "conserved_total": "u_th+binding+primary photon energy+cumulative escaped energy",
+    "expansion": "exactly zero by original fixture; not general cosmological energy implementation"
+  },
+  "peebles_source_bound": {
+    "research_handoff": "REI-CHAT-PB01-20261004",
+    "status": "MISSING_PEEBLES_CLOSURE_AT_CONSUMER",
+    "selected_model_classification": "MODEL_SCOPE_MISMATCH",
+    "absent_in_this_map": [
+      "retained n2",
+      "thermal inverse n2 bath",
+      "Lyman-alpha escape",
+      "2s two-photon",
+      "statistical shell redistribution",
+      "QSS elimination"
+    ],
+    "external_C_factor_injected": false,
+    "replacement_of_REC_owner": false
+  },
+  "scientific_admission": "HOLD",
+  "publication_source_parent": "6f264b14a5195dba8dc11150f0171c0377f4d7e1",
+  "candidate_source_parent": "283153da9842218662451b61843bcc859d3eeb12",
+  "fixture_source": {
+    "path": "docs/atomic_reionization_handoff_20261004_v1/threads/rei_bianchi/CONTROLLED_FIXTURE.json",
+    "sha256": "92064c3ee60139972be3e49b0a0c5bbf45b25094914b22d1e197dbe7344f6fba"
+  },
+  "source_artifacts": [
+    {
+      "path": "rust/rei_microphysics/src/hhe_events.rs",
+      "sha256": "c100b08e034089c2d67b2102769ccdd51f1d29a2f388d6bb2dfe7984af93b290"
+    },
+    {
+      "path": "rust/rei_microphysics/src/thermal.rs",
+      "sha256": "6d7be31934bb33a46c0911d28b62e34d22027e08a8a1945c5d7d32bf32f79b8a"
+    },
+    {
+      "path": "rust/rei_microphysics/src/microstep.rs",
+      "sha256": "e03cc1512cdd2b60735b1ab655c8e6657423c18ee4ad55ca1d30f24ad4974e53"
+    },
+    {
+      "path": "rust/rei_microphysics/src/lib.rs",
+      "sha256": "d4f155351a7f78680f5e8cde3c5bd18d26999cc8d01d595f99fcdfc3c94441bf"
+    },
+    {
+      "path": "rust/rei_microphysics/examples/hhe_fixture.rs",
+      "sha256": "cbe1ef923e853a2b60750596fa145fb237f714766854155c10010a693186e897"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/hhe_events.rs",
+      "sha256": "9048174c8e2bc411308d9b1709fff777d9182036a580948cf69e91cfec9bbfa5"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/hhe_fixture.rs",
+      "sha256": "0cc9a2e2a4a571400928a69f3ddcd9900321cf4b0e5c85c9d317f6c28352a8f1"
+    }
+  ],
+  "actual_function_bindings": [
+    {
+      "role": "species_photon_rhs",
+      "path": "rust/rei_microphysics/src/hhe_events.rs",
+      "function": "pub fn hhe_rhs",
+      "line": 208
+    },
+    {
+      "role": "temperature",
+      "path": "rust/rei_microphysics/src/hhe_events.rs",
+      "function": "pub fn temperature",
+      "line": 143
+    },
+    {
+      "role": "energy",
+      "path": "rust/rei_microphysics/src/hhe_events.rs",
+      "function": "pub fn total_energy",
+      "line": 162
+    },
+    {
+      "role": "thermal_endpoint",
+      "path": "rust/rei_microphysics/src/thermal.rs",
+      "function": "pub(crate) fn endpoint_thermal",
+      "line": 4
+    },
+    {
+      "role": "residual",
+      "path": "rust/rei_microphysics/src/microstep.rs",
+      "function": "fn be_endpoint_residual",
+      "line": 31
+    },
+    {
+      "role": "implicit_map",
+      "path": "rust/rei_microphysics/src/microstep.rs",
+      "function": "pub fn implicit_hhe_step",
+      "line": 128
+    },
+    {
+      "role": "local_comparison",
+      "path": "rust/rei_microphysics/src/microstep.rs",
+      "function": "pub fn adaptive_hhe_step",
+      "line": 222
+    }
+  ],
+  "flrw_source_bound": {
+    "latest_research_handoff": "REI-CHAT-FLRW01-20261004",
+    "next_research_task": "REI-CHAT-FLRW02_SOURCE_BOUND_THREE_EQUATION_REGRESSION",
+    "H_fraction_source": "(1-x_HII)*(sum_g c*sigma_HI,g*N_g + n_e*beta_HI) - x_HII*n_e*alpha_HII",
+    "electron_source": "n_H*x_HII+n_He*(x_HeII+2*x_HeIII); pure H -> recombination alpha_HII*n_H*x_HII^2",
+    "photon_source": "dN_g/dt=-sum_a P_ag, same per-species P in event ledger",
+    "source_site": "same actual endpoint inside every BE constituent",
+    "additional_fraction_minus3Hx": false,
+    "tested_geometry": "H=0 static fixture only",
+    "proper_comoving_conversion": "new HHe model entirely proper; prior fourgroup and homogeneous converter preserved separately",
+    "external_primary_source": "zero by fixture",
+    "tracked_diffuse_ionizing_emissivity": "zero by this Case-A escape toy; not reconstructed from emitted energy",
+    "escaping_energy_output": "sum RR events*(chi_ev*ev+1.5*kB*T) at each constituent endpoint",
+    "recombination_counts": "3 event counters, not an emitted ionizing-photon spectrum/count adapter",
+    "redshift_threshold_exit": "NOT_IMPLEMENTED_IN_STATIC_HHE_MAP; existing fourgroup API separate",
+    "filling_volume_Q_or_two_phase_closure": "NOT_IMPLEMENTED; homogeneous fractional x is not QV",
+    "physical_or_full_FLRW_consumer_admission": false
+  }
+}

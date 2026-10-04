@@ -1,0 +1,14 @@
+{
+  "id": "E2-INDEPENDENT-PARITY",
+  "frozen_before_execution": true,
+  "source_grid": {"T_K": [100,500,1000,2000,3000,4000,6000,10000], "nH_cm3": [0.000001,1,250,1000], "H_s": [1e-18,5e-14,1e-10], "xp": [0.000001,0.1,0.9,0.99999999], "x2": 0},
+  "source_points": 384,
+  "source_oracle": "Unmodified pinned HYREC-2 rec_TLA_dxHIIdlna, PEEBLES mode, Fudge=1, fsR=meR=1, injection=0, Tm=Tr",
+  "source_tolerance": {"coefficient_relative": 2e-12, "rhs_absolute_divided_by_sum_of_forward_reverse_Peebles_fluxes": 2e-12},
+  "shell_oracle": "Python Decimal precision 70; independent event stoichiometry; no Rust formulas imported",
+  "shell_grid": {"betaP_s": [0,1e-12,1,1e12], "B": [0,1e-10,0.2], "state_xp_x2": [[0.1,0.02],[0.6,0.3]], "nH_m3": 250000000, "alphaB_m3_s": 6e-19, "Lambda_s": 8.2206, "Ralpha_s": 1.2},
+  "shell_points": 24,
+  "shell_tolerance": {"individual_flux_scaled_absolute": 2e-12, "conservation_sum_over_event_flux_scale": 2e-12},
+  "cancellation_policy": "Zero/near-zero net RHS uses sum of absolute gross fluxes, never a net relative error. Exact zero coefficients compared as zero. Statistical failures retained without changing frozen thresholds.",
+  "interpretation": "Numerical regression domain only; not physical fit-validity certificate, interval bound or complete recombination history"
+}

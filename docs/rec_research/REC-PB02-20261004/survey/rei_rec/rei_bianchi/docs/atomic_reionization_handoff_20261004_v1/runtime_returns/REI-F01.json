@@ -1,0 +1,136 @@
+{
+  "task_id": "REI-F01",
+  "state": "completed",
+  "input_identity": {
+    "logical_task": "REI-F01",
+    "candidate_source_parent_commit": "5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a",
+    "publication_parent_commit": "dc931a67cd5ed25046a96eb5deb42186d72176da",
+    "frozen_inputs": {
+      "rust/rei_microphysics/tests/atomic_provider.rs": "2eda20476d2938fc980c9822be40fb3d2bfc9e8c4e778c87ca86ddeee535af89",
+      "rust/rei_microphysics/tests/homogeneous_rates.rs": "629507a2ffc02410c057d5426d48382f4c5af9a35eb0bc5e9dba9d7ba9e2d597",
+      ".cuh/fastest-track/REI-F01/verner-oracle.json": "b8fd032786b9f3a202f8d8ec0bdc2cab9325dad35f6177c5d2af9c1d56b4abca",
+      ".cuh/fastest-track/REI-F01/c-reference.json": "2576e7e58c865ff434557e54baf55f77ed029bc2cdfd800ea7bea089640cbc51",
+      ".cuh/fastest-track/REI-F01/verify_candidate.py": "e8178172478580ee05cf906d35f548e2d5d1e3c2e2a357ffc78ddfac960e54b4"
+    }
+  },
+  "changed_paths": [
+    "rust/rei_microphysics/src/atomic_provider.rs",
+    "rust/rei_microphysics/src/homogeneous_rates.rs",
+    "rust/rei_microphysics/src/lib.rs",
+    "rust/rei_microphysics/tests/atomic_provider.rs",
+    "rust/rei_microphysics/tests/homogeneous_rates.rs",
+    "docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/atomic_provider_manifest.json"
+  ],
+  "commands": [
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- cargo test --manifest-path rust/rei_microphysics/Cargo.toml --locked",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/final-cargo-test.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- python3 .cuh/fastest-track/REI-F01/verify_candidate.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/final-targeted.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- python3 .cuh/fastest-track/REI-F01/verify_underflow.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/underflow-green.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml -- --check",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/final-fmt.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- cargo clippy --manifest-path rust/rei_microphysics/Cargo.toml --lib --locked -- -D warnings",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/final-clippy-lib.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- cargo clippy --manifest-path rust/rei_microphysics/Cargo.toml --all-targets --locked -- -D warnings -A clippy::excessive_precision",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/final-clippy.log"
+    },
+    {
+      "command": "CUHG_EXECUTION_MODE=CODEX_ONLY cuhg-telemetry run --project /home/cosmosapjw/Dropbox/bianchi/rei_bianchi --task REI-F01 -- python3 scripts/verify_repo.py",
+      "exit_code": 0,
+      "evidence_path": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/verify-repo.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "rust/rei_microphysics/src/atomic_provider.rs",
+      "sha256": "b0b572d3940a7a1f740e09d5f43c60236ec61511e8bdbcc68e60395ec7e107d3"
+    },
+    {
+      "path": "rust/rei_microphysics/src/homogeneous_rates.rs",
+      "sha256": "50000b7cd7b1f7c9536cfe92a1f932add545bb951cc32b8a63c4affecfca3f47"
+    },
+    {
+      "path": "rust/rei_microphysics/src/lib.rs",
+      "sha256": "680acb65583cfc0b4bfabfa89471c39115b622f24707ec601d84b7601423da53"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/atomic_provider.rs",
+      "sha256": "2eda20476d2938fc980c9822be40fb3d2bfc9e8c4e778c87ca86ddeee535af89"
+    },
+    {
+      "path": "rust/rei_microphysics/tests/homogeneous_rates.rs",
+      "sha256": "629507a2ffc02410c057d5426d48382f4c5af9a35eb0bc5e9dba9d7ba9e2d597"
+    },
+    {
+      "path": "docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/atomic_provider_manifest.json",
+      "sha256": "35aaf2158679521e99666d12b968094f5105b49e0e8304717693c1800cc587db"
+    }
+  ],
+  "claim": {
+    "basis": "Actual original C540 comparisons, Verner24 finite values, frozen conservation/domain tests, independent native scoped review and one direct-Rust underflow repair closeout",
+    "ceiling": "Raw reference coefficient/units and primary homogeneous absorption ledger only; no physical provider, derivative, interval or history admission"
+  },
+  "next_task": "REI-F03",
+  "blocker": null,
+  "execution_mode": "CODEX_ONLY",
+  "validation": {
+    "crate_tests_passed": 55,
+    "new_frozen_tests": 6,
+    "frozen_verifier_tests": 32,
+    "original_c_values": 540,
+    "verner_values": 24,
+    "reference_relative_tolerance": 3e-12,
+    "underflow_external_regressions": 4,
+    "strict_library_clippy": true,
+    "all_target_clippy_precision_fixture_allowance": true,
+    "original_tests_and_tolerances_unchanged": true
+  },
+  "review": {
+    "status": "SCOPED_INDEPENDENT_REVIEW_P2_REPAIRED_BY_HOST",
+    "receipt": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/review.json",
+    "final_bytes_independently_reviewed": false
+  },
+  "native_usage": {
+    "dispatches": 2,
+    "known_total_tokens": 2715181,
+    "runtime_receipt": "docs/atomic_reionization_handoff_20261004_v1/runtime_returns/evidence/F01_reference/native-runtime.json",
+    "cost": "NOT_MEASURED",
+    "soft_target": 100000,
+    "target_exceeded_replan": "Retain exact cumulative known usage; perform deterministic one-repair closeout and Git publication, no extra native dispatch"
+  },
+  "prior_local_request": {
+    "request": "/home/cosmosapjw/Dropbox/bianchi/rei_bianchi/.cuh/fastest-track/REI-F01/helper-request.json",
+    "receipt": "/home/cosmosapjw/Dropbox/bianchi/rei_bianchi/.cuh/fastest-track/REI-F01/helper-fleet-receipt.json",
+    "execution_state": "TERMINAL_BACKEND_UNREACHABLE",
+    "usage": "NOT_MEASURED",
+    "cleanup_status": "COMPLETE",
+    "process_group_ended": true,
+    "model_calls": "NOT_MEASURED",
+    "response_source_integrated": false,
+    "receipt_sha256": "adace6a58607b418369a6dfe84ff546fd2adba0c69ee4ea35ce7f817b9e5c26e"
+  },
+  "scientific_admission": "HOLD",
+  "unresolved": [
+    "Raw physical-domain support and atomic model error",
+    "FT03 kinetic thermal closure/model adapter not implemented here",
+    "F03/F04 actual HHe residual and solver site binding"
+  ]
+}

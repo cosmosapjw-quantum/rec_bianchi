@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "type": "finite_point_arithmetic_not_independent_upstream_execution",
+  "profile": "HYREC2_09e8243_TLA_CONSTANTS",
+  "fixtures": [
+    {
+      "Tm_K": 3000.0,
+      "Tr_K": 3000.0,
+      "nH_cm3": 250.0,
+      "H_s": 5e-14,
+      "xe": 0.1,
+      "alphaB_Tm_cm3_s": 6.685412343969989e-13,
+      "alphaB_Tr_cm3_s": 6.685412343969989e-13,
+      "Phi_cm3": 3.964497285743337e+20,
+      "betaP_s": 515.5775345899355,
+      "Ralpha_s": 1.0361997927901994,
+      "C": 0.021501337234858833,
+      "x2_qss_at_fixed_ground": 1.2688607166243882e-14,
+      "rhs_per_s": -3.5862885954445544e-14,
+      "normalized_elimination_error": 1.7175892615126526e-17
+    },
+    {
+      "Tm_K": 2000.0,
+      "Tr_K": 3000.0,
+      "nH_cm3": 250.0,
+      "H_s": 5e-14,
+      "xe": 0.1,
+      "alphaB_Tm_cm3_s": 9.041550050854544e-13,
+      "alphaB_Tr_cm3_s": 6.685412343969989e-13,
+      "Phi_cm3": 3.964497285743337e+20,
+      "betaP_s": 515.5775345899355,
+      "Ralpha_s": 1.0361997927901994,
+      "C": 0.021501337234858833,
+      "x2_qss_at_fixed_ground": 1.7160248075327955e-14,
+      "rhs_per_s": -4.852791380631849e-14,
+      "normalized_elimination_error": 7.05561106559777e-18
+    },
+    {
+      "Tm_K": 3000.0,
+      "Tr_K": 2000.0,
+      "nH_cm3": 250.0,
+      "H_s": 5e-14,
+      "xe": 0.1,
+      "alphaB_Tm_cm3_s": 6.685412343969989e-13,
+      "alphaB_Tr_cm3_s": 9.041550050854544e-13,
+      "Phi_cm3": 2.15799898593779e+20,
+      "betaP_s": 0.529371577098564,
+      "Ralpha_s": 1.0361997927901994,
+      "C": 0.9553595809236678,
+      "x2_qss_at_fixed_ground": 5.63762056075357e-13,
+      "rhs_per_s": -1.5967431838092622e-12,
+      "normalized_elimination_error": 1.1566590649643986e-16
+    }
+  ],
+  "checks": [
+    "sameT fixture",
+    "twoT fixture alphaTm changes with betaTr held",
+    "reverse twoT fixture"
+  ],
+  "upstream_C_executed": false,
+  "physical_history_executed": false,
+  "source": "SOURCE_LOCK.json"
+}

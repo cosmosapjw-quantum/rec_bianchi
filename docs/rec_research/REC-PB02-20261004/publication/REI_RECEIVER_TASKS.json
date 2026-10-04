@@ -1,0 +1,256 @@
+{
+  "schema": "rec.rei.receiver.tasks.v1",
+  "taskset": "REC-PB02-TO-REI-PB03-20261004",
+  "receiver_repository": "cosmosapjw-quantum/rei_bianchi",
+  "receiver_branch": "forward/rust-reion-kernels-20260922",
+  "observed_receiver": {
+    "commit": "c1d7f89c8abc90a6adf971390f2bce7ae7530a23",
+    "tree": "98c48f7885414922123fbbbe2733181b09b6ef5e",
+    "read_scope": [
+      "runtime_returns/REI-F03.json",
+      "runtime_inputs/hhe_solver_binding.json",
+      "CODEX_SYNC_KO.md",
+      "REI-CHAT-FLRW01-20261004/NEXT_HANDOFF_KO.md"
+    ]
+  },
+  "producer_repository": "cosmosapjw-quantum/rec_bianchi",
+  "producer_branch": "forward/rust-he-sources-20260922",
+  "producer_base_commit": "5694a5c7ef487adc969f38ae9112b796396216ca",
+  "publication_commit": null,
+  "publication_identity_status": "RESOLVE_FROM_ACTUAL_PUBLICATION_RECEIPT_BEFORE_DEPENDENCY_IMPORT",
+  "current_priority_preserved": {
+    "chat": "REI-CHAT-FLRW02_SOURCE_BOUND_THREE_EQUATION_REGRESSION",
+    "codex": "REI-F04",
+    "deferred": [
+      "REI-CHAT-PB02_SOURCE_BOUND_REDUCTION_CONTRACT",
+      "REI-CHAT-FT07_PHYSICAL_MODEL_ERROR_BUDGET"
+    ],
+    "this_taskset_does_not_change_scheduler": true
+  },
+  "completed_evidence": {
+    "native_targeted": 20,
+    "native_total": 108,
+    "source_parity_points": 384,
+    "decimal_shell_points": 24,
+    "angular_points": 42,
+    "angular_checks": 95
+  },
+  "execution_boundary": {
+    "rei_consumer_connected": false,
+    "matched_cosmological_history_executed": false,
+    "scientific_admission": "HOLD",
+    "interval_certified": false
+  },
+  "mode_ids": {
+    "source": "PEEBLES_HYREC2_TLA_FUDGE1_ONE_T_SOURCE_V1",
+    "retained": "PURE_H_RETAINED_N2_RESEARCH_V1",
+    "upstream_profile": "HYREC2_TLA_2020_PEEBLES_FUDGE1"
+  },
+  "source_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+  "inputs_contract": {
+    "nH": "proper m^-3",
+    "alphaB": "m^3/s",
+    "temperatures": "K; Tm exactly equals Tr for this API",
+    "H_beta_Lambda_Ralpha": "s^-1",
+    "time": "proper s",
+    "xp": "pure H xe=xp",
+    "retained_x1": "1-xp-x2",
+    "collapsed_x1": "1-xp"
+  },
+  "ownership": {
+    "HHeCaseA": "existing F00/F03 unchanged",
+    "thermalbath": "prescribed external reservoir",
+    "groundcontinuum": "Case B recycling",
+    "shellweights": "x2s=x2/4,x2p=3*x2/4",
+    "Ralpha": "assemble from actual selected state; do not freeze silently",
+    "energy_spectrum_outputs": "not provided by native point module"
+  },
+  "guards": [
+    "finite admissible inputs",
+    "H>0 and x1>0 for Sobolev source",
+    "source rounded constants retained as a named profile",
+    "finite regression grid is not fit validity proof",
+    "no QSS projection or clipping to force agreement",
+    "no automatic He,E1C or atomic admission",
+    "preserve old strict local <2e-4,width <2e-3 and failed [160,161]"
+  ],
+  "low_cost_execution": {
+    "read_order": [
+      "REI_RECEIVER_HANDOFF_KO.md",
+      "REI_RECEIVER_TASKS.json",
+      "actual publication receipt",
+      "one current task inputs only"
+    ],
+    "selector": "one pending task with all dependencies complete and activation consistent with live receiver priority",
+    "already_passed_replay": "only for changed inputs/code or concrete unresolved risk",
+    "on_blocker": "record exact failure and smallest next action; no source/tolerance substitution"
+  },
+  "tasks": [
+    {
+      "id": "REC-PB02-NATIVE-EVIDENCE",
+      "kind": "evidence_anchor",
+      "status": "completed_bounded",
+      "depends_on": [],
+      "inputs": [
+        "docs/rec_research/REC-PB02-20261004/theory_reference/SOURCE_LOCK.json"
+      ],
+      "outputs": [
+        "rust/rec_microphysics/src/hydrogen_peebles.rs",
+        "docs/rec_research/REC-PB02-20261004/coding/NATIVE_IMPLEMENTATION_STATUS.json",
+        "docs/rec_research/REC-PB02-20261004/evidence/INDEPENDENT_PARITY_RESULT.json"
+      ],
+      "acceptance": [
+        "20 new and 108 total native tests passed",
+        "384 source points and 24 independent Decimal shell points passed"
+      ],
+      "claim_ceiling": "pointwise implementation; no REI connection",
+      "do_not_run_heavy": true
+    },
+    {
+      "id": "REI-PB03-00-RECEIPT-BINDING",
+      "kind": "intake",
+      "status": "pending",
+      "depends_on": [
+        "REC-PB02-NATIVE-EVIDENCE"
+      ],
+      "inputs": [
+        "actual REC publication receipt",
+        "docs/rec_research/REC-PB02-20261004/coding/NATIVE_IMPLEMENTATION_STATUS.json",
+        "live REI ref and changed-source diff"
+      ],
+      "outputs": [
+        "docs/rec_receiver/PB03/DEPENDENCY_LOCK.json"
+      ],
+      "acceptance": [
+        "record actual REC commit/tree and four changed source hashes",
+        "record observed live REI head/source site",
+        "null publication identity cannot admit dependency",
+        "preserve latest FLRW02/F04 priority and F03 return"
+      ],
+      "do_not_run_heavy": true
+    },
+    {
+      "id": "REI-PB03-01-ONE-T-ADAPTER",
+      "kind": "coding",
+      "status": "pending",
+      "depends_on": [
+        "REI-PB03-00-RECEIPT-BINDING"
+      ],
+      "inputs": [
+        "docs/rec_receiver/PB03/DEPENDENCY_LOCK.json",
+        "rust/rec_microphysics/src/hydrogen_peebles.rs",
+        "docs/rec_research/REC-PB02-20261004/theory_reference/PB02_SOURCE_CONTRACT.json"
+      ],
+      "outputs": [
+        "rust/rei_microphysics/src/rec_peebles_reference.rs",
+        "docs/rec_receiver/PB03/ADAPTER_CONTRACT.json"
+      ],
+      "acceptance": [
+        "real pinned REC public API invocation",
+        "separate pure H one T mode ID",
+        "exactly once cgs to SI conversion",
+        "retained source uses actual x1=1-xp-x2; collapsed source explicitly assembles x2=0",
+        "reject Tm != Tr",
+        "preserve original Case A F00/F03",
+        "no automatic energy or photon spectrum coupling",
+        "frozen_escape_qss is not state dependent Ralpha root"
+      ],
+      "do_not_run_heavy": true
+    },
+    {
+      "id": "REI-PB03-02-POINT-REGRESSION",
+      "kind": "coding_verification",
+      "status": "pending",
+      "depends_on": [
+        "REI-PB03-01-ONE-T-ADAPTER"
+      ],
+      "inputs": [
+        "rust/rei_microphysics/src/rec_peebles_reference.rs",
+        "docs/rec_research/REC-PB02-20261004/research/PARITY_EXPERIMENT_PLAN.json",
+        "docs/rec_research/REC-PB02-20261004/evidence/INDEPENDENT_PARITY_RESULT.json"
+      ],
+      "outputs": [
+        "rust/rei_microphysics/tests/rec_peebles_reference.rs",
+        "docs/rec_receiver/PB03/POINTWISE_RETURN.json"
+      ],
+      "acceptance": [
+        "compare actual REI emitted C,betaP,Ralpha,species RHS and defect against independent oracle",
+        "include C much less than 1 and near Saha; gross flux scale for cancellation",
+        "factor 4, factor 3 and redshift sign negative controls",
+        "separate actual ground vs collapsed ground assembly",
+        "mass and charge conservation; no minus 3Hx fraction sink",
+        "reject invalid inputs without state mutation",
+        "replay old Case A fixture only for concrete shared-boundary regression risk"
+      ],
+      "completion_label": "REI_CONSUMER_POINTWISE_VERIFIED_ONLY",
+      "do_not_run_heavy": true
+    },
+    {
+      "id": "REI-PB03-03-MATCHED-HISTORY-PLAN",
+      "kind": "research_preregistration",
+      "status": "pending",
+      "depends_on": [
+        "REI-PB03-02-POINT-REGRESSION"
+      ],
+      "inputs": [
+        "docs/rec_receiver/PB03/POINTWISE_RETURN.json",
+        "docs/rec_research/REC-PB02-20261004/theory_reference/PB02_SOURCE_CONTRACT.json"
+      ],
+      "outputs": [
+        "docs/rec_receiver/PB03/HISTORY_PREREGISTRATION.json"
+      ],
+      "acceptance": [
+        "fix common H(z),nH(z),one T profile,IC and redshift interval",
+        "pin same alpha and constants",
+        "freeze residual scales,tolerances,refinement and two independent solvers before execution",
+        "declare retained shell vs collapsed approximation and time dependent escape",
+        "separate chosen cosmology from synthetic diagnostic",
+        "cap runtime and state dimension; no sweeps"
+      ],
+      "do_not_run_heavy": true
+    },
+    {
+      "id": "REI-PB03-04-MATCHED-HISTORY",
+      "kind": "bounded_numerical",
+      "status": "pending_not_executed",
+      "depends_on": [
+        "REI-PB03-03-MATCHED-HISTORY-PLAN"
+      ],
+      "inputs": [
+        "docs/rec_receiver/PB03/HISTORY_PREREGISTRATION.json",
+        "rust/rei_microphysics/src/rec_peebles_reference.rs"
+      ],
+      "outputs": [
+        "docs/rec_receiver/PB03/history.csv",
+        "docs/rec_receiver/PB03/HISTORY_RETURN.json",
+        "docs/rec_receiver/PB03/history.svg"
+      ],
+      "acceptance": [
+        "execute actual consumer and independent matched Peebles integration",
+        "observe convergence under frozen criteria",
+        "report QSS lag and finite ground defects separately",
+        "preserve failures; no post hoc tolerance, floor or IC tuning",
+        "mark general Bianchi,He,thermal and interval gates separately"
+      ],
+      "completion_label": "BOUNDED_MATCHED_FLRW_HISTORY_ONLY",
+      "do_not_run_heavy": true
+    }
+  ],
+  "preserved_lanes": [
+    {
+      "id": "REC-E1C-NATIVE-COM",
+      "state": "legacy_unresolved_preserved",
+      "reopen_trigger": "explicit split-domain full Lyalpha/native COM integration scope"
+    },
+    {
+      "id": "REC-SELECTED-HE",
+      "state": "fixed input evidence preserved; consumer gate open",
+      "reopen_trigger": "explicit He spectral or polarized consumer domain with source coverage"
+    },
+    {
+      "id": "ATOMIC-HH-CR-BASS_HE",
+      "state": "original plans and gates preserved",
+      "reopen_trigger": "explicit species/temperature/energy domain beyond adopted external reference"
+    }
+  ]
+}

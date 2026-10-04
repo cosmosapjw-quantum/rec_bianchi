@@ -1,0 +1,339 @@
+{
+  "task_id": "HH-F1M-SOURCE-INTAKE-20261004",
+  "state": "completed",
+  "canonical_task": "HH-F1",
+  "canonical_state": "WAITING_ON_REI_DOMAIN",
+  "input_identity": {
+    "HH_head": "387887b92dd57c88be48c1cf1a37d099f6339562",
+    "HH_tree": "e4912f4aa4340c81f9c69d1e1e120ae4b65d0574",
+    "REI_initial_head": "5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a",
+    "REI_latest_read_head": "dc931a67cd5ed25046a96eb5deb42186d72176da",
+    "F1M_sha256": "186e1169a7265a8b83108dab654f9e40d1817c790d6a3c234ec2c27514fa91e0",
+    "F1P_sha256": "35e64c16be7d8fda86f4f2b35a88fdffd0d7721276e92316f4371ae35a14c8d1"
+  },
+  "changed_paths": [
+    "verify_f1m_intake.py",
+    "test_intake.py",
+    "WORK_REPORT_KO.md",
+    "FOLLOWUP_EXECUTION_STATE.json",
+    "CONSUMER_BINDING_STATUS.json"
+  ],
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/root/WU088_HH_FASTEST_SYNC_20261004_v2/verify_f1m_intake.py",
+        "--f1m",
+        "/root/.cache/WU088_HH/sha256/18/6e/186e1169a7265a8b83108dab654f9e40d1817c790d6a3c234ec2c27514fa91e0"
+      ],
+      "exit_code": 2,
+      "evidence_path": "evidence/INTAKE_INCOMPLETE.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/root/WU088_HH_FASTEST_SYNC_20261004_v2/verify_f1m_intake.py",
+        "--f1m",
+        "/root/.cache/WU088_HH/sha256/18/6e/186e1169a7265a8b83108dab654f9e40d1817c790d6a3c234ec2c27514fa91e0",
+        "--f1p",
+        "/root/.cache/WU088_HH/sha256/35/e6/35e64c16be7d8fda86f4f2b35a88fdffd0d7721276e92316f4371ae35a14c8d1"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/INTAKE_CLOSED.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "test_intake",
+        "-v"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/INTAKE_REGRESSION.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/rei_model_lock.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_00.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/closure_process_decision.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_01.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/parent_and_lane_applicability.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_02.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_returns/REI-F00.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_03.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_returns/REI-F02.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_04.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/configs/rei_fastest_v1/science_scenario_v1.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 1,
+      "evidence_path": "evidence/REI_READ_05.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/CODEX_SYNC_KO.md?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_06.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT05-20261004/TASK_RETURN.json?ref=5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_READ_07.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/atomic_reionization_handoff_20261004_v1/tools/task_packet.py",
+        "next",
+        "--thread",
+        "WU088_HH",
+        "--state",
+        "/root/WU088_HH_FASTEST_SYNC_20261004_v2/FOLLOWUP_EXECUTION_STATE.json"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/TASK_SELECTOR.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT06-20261004/README_KO.md?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_FT06_READ_00.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT06-20261004/PAIR_CONTRACT_SUMMARY.json?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_FT06_READ_01.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT06-20261004/NEXT_HANDOFF_KO.md?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_FT06_READ_02.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT06-20261004/TASK_RETURN.json?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_FT06_READ_03.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/fastest_track_chat/REI-CHAT-FT06-20261004/CODEX_RETURN_ACK.json?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/REI_FT06_READ_04.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/configs/rei_fastest_v1/science_scenario_v1.json?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 1,
+      "evidence_path": "evidence/SCENARIO_CURRENT.stdout"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/cosmosapjw-quantum/rei_bianchi/contents/docs/atomic_reionization_handoff_20261004_v1/runtime_inputs/rei_model_lock.json?ref=dc931a67cd5ed25046a96eb5deb42186d72176da"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/MODEL_LOCK_CURRENT.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "test_intake",
+        "-v"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/FINAL_INTAKE_TESTS.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verify_f1m_intake.py",
+        "--f1m",
+        "/root/.cache/WU088_HH/sha256/18/6e/186e1169a7265a8b83108dab654f9e40d1817c790d6a3c234ec2c27514fa91e0",
+        "--f1p",
+        "/root/.cache/WU088_HH/sha256/35/e6/35e64c16be7d8fda86f4f2b35a88fdffd0d7721276e92316f4371ae35a14c8d1"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/FINAL_SOURCE_CLOSURE.stdout"
+    },
+    {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/PYTHON_VERSION.stdout"
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/HH_HEAD.stdout"
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/HH_TREE.stdout"
+    },
+    {
+      "command": [
+        "git",
+        "ls-remote",
+        "https://github.com/cosmosapjw-quantum/WU088_HH.git",
+        "refs/heads/research/r31ao-unequal-order-ladder-20260930"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/PREPUBLISH_HH.stdout"
+    },
+    {
+      "command": [
+        "git",
+        "ls-remote",
+        "https://github.com/cosmosapjw-quantum/rei_bianchi.git",
+        "refs/heads/forward/rust-reion-kernels-20260922"
+      ],
+      "exit_code": 0,
+      "evidence_path": "evidence/PREPUBLISH_REI.stdout"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "verify_f1m_intake.py",
+      "bytes": 4228,
+      "sha256": "a358d4b40d20e805eeb00346750fa81ae2c4b88b6e1bc86e8959771aff250c95"
+    },
+    {
+      "path": "test_intake.py",
+      "bytes": 2734,
+      "sha256": "a00431b97aa6807dd9ded71ed8b88a1019a4abd2b43f3e3dd5fae28d733d11b4"
+    },
+    {
+      "path": "evidence/SOURCE_CLOSURE.json",
+      "bytes": 4890,
+      "sha256": "bad23a9ab10a3cb024a7fd26e93617d34fd67c36c948a911eeb61710a9a1628a"
+    },
+    {
+      "path": "input/F1P_DELIVERY_MANIFEST.json",
+      "bytes": 9428,
+      "sha256": "2ccecac31e88d7b1802b08a084035a309d0ff31eb2b2ce189a8bcdf91e0e625e"
+    },
+    {
+      "path": "CONSUMER_BINDING_STATUS.json",
+      "bytes": 1224,
+      "sha256": "9a826d65ea6e8429cc0515cd25af4086e2d887699ae926fe26a91186df8295cb"
+    }
+  ],
+  "claim": {
+    "basis": "Exact two-archive intake,54/59 payloads, directly pinned17 source rows,4 fresh transport/closure checks",
+    "ceiling": "F1M direct source provenance only; no physical domain, cross-section, thermal closure, numerical accuracy or science promotion"
+  },
+  "next_task": "REI-F07",
+  "blocker": null,
+  "canonical_blocker": {
+    "kind": "consumer_dependency",
+    "reason": "Actual HH application domain and binding not supplied by REI-F00 or FT06"
+  },
+  "validation": {
+    "new_unique_cli_checks": 4,
+    "passes": 4,
+    "errors": 0,
+    "skipped": 0,
+    "historical_F1M_numeric_suite_reruns": 0,
+    "legacy_science_suite_reruns": 0,
+    "field_callbacks": 0,
+    "HH_integrations": 0
+  },
+  "extensions": {
+    "hh_legacy": {
+      "accepted": 24,
+      "total": 289,
+      "missing": 265,
+      "missing_bound": "UNBOUNDED",
+      "epsilon_C": null,
+      "epsilon_R": null,
+      "B22": "OPEN_UNDETERMINED",
+      "scientific_admission": false,
+      "production_admission": false
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+  "mode": "OFFLINE_BUILD",
+  "upstream_sources_vendored": false,
+  "cache": "/tmp/rec_theory_source_cache",
+  "binary": "/tmp/hyrec_tla_replay_checked",
+  "metadata_check": {
+    "source_lock": "/workspace/scratch/a5a7937171cb/rec_bianchi_loop_20261004/theory_reference/SOURCE_LOCK.json",
+    "build_evidence": "/workspace/scratch/a5a7937171cb/rec_bianchi_loop_20261004/evidence/UPSTREAM_C_BUILD.json",
+    "status": "MATCHED_EXACT_SOURCE_IDENTITIES"
+  },
+  "command": [
+    "cc",
+    "-O2",
+    "-std=gnu11",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-I/tmp/rec_theory_source_cache",
+    "/tmp/rec_theory_source_cache/hydrogen.c",
+    "/tmp/rec_theory_source_cache/hyrectools.c",
+    "/workspace/scratch/a5a7937171cb/rec_bianchi_loop_20261004/coding/upstream_tla_driver.c",
+    "-Wl,--gc-sections",
+    "-lm",
+    "-o",
+    "/tmp/hyrec_tla_replay_checked"
+  ],
+  "upstream_files": [
+    {
+      "path": "hydrogen.c",
+      "bytes": 46627,
+      "sha256": "734800ccd69b41d60b519f200003ce27c3b7640f76a70353499424842ba19616",
+      "acquisition": "EXISTING_CACHE_VALIDATED"
+    },
+    {
+      "path": "hydrogen.h",
+      "bytes": 11868,
+      "sha256": "1b2c64d108078722dd546f4e8b9bddca2cbe6abdf4b63e44e76fe0e9d58f4e52",
+      "acquisition": "EXISTING_CACHE_VALIDATED"
+    },
+    {
+      "path": "hyrectools.c",
+      "bytes": 8529,
+      "sha256": "868a4f5104e90c18b84948843cb2090b22732e54d88b5f658323a38394275ce4",
+      "acquisition": "EXISTING_CACHE_VALIDATED"
+    },
+    {
+      "path": "hyrectools.h",
+      "bytes": 1341,
+      "sha256": "00e71fdbaef4831f41822e00750a24e03c9954175b6a9680c67fb0ffc1be5715",
+      "acquisition": "EXISTING_CACHE_VALIDATED"
+    },
+    {
+      "path": "energy_injection.h",
+      "bytes": 1175,
+      "sha256": "e2f0603b2bfe730814bdd57d46eff9f53d8bb1e10315524b395aa4dde97de2ea",
+      "acquisition": "EXISTING_CACHE_VALIDATED"
+    }
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "binary_sha256": "61d9fc4b6f255e9d701ed6803fb477f5db6a685ce7ab7443daa6fec078b384ba",
+  "driver_sha256": "ff5f85798530740061a14d562e526039dc65f5a5c622778273f608d3a709c4bd",
+  "status": "SOURCE_IDENTITY_AND_LOCAL_BUILD_VERIFIED",
+  "parity_or_scientific_admission": "NOT_PERFORMED_BY_THIS_SCRIPT"
+}

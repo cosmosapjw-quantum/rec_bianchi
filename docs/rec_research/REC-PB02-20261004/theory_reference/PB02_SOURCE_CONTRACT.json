@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0",
+  "task_id": "REC-BIANCHI-PB02-20261004",
+  "predecessor": "REI-CHAT-PB01-20261004",
+  "target": "rec_bianchi pure-hydrogen research consumer with explicit reference-source identity",
+  "status": "DERIVED_SOURCE_CONTRACT_RUNTIME_EVIDENCE_SEPARATE",
+  "mode_ids": {
+    "legacy_pb01": "PEEBLES_PURE_H_ONE_T_THICK_SOB_QSS_REFERENCE_V1",
+    "retained_shell": "PURE_H_RETAINED_N2_RESEARCH_V1",
+    "geometry_diagnostic": "POSITIVE_LOCAL_DIRECTIONAL_SOBOLEV_UNPOLARIZED_V1",
+    "native_this_loop": "PEEBLES_HYREC2_TLA_FUDGE1_ONE_T_SOURCE_V1",
+    "baseline_theory_reference": "PEEBLES_HYREC2_TLA_FUDGE1_TWO_T_SOURCE_V1"
+  },
+  "units": {
+    "temperature_input": "K",
+    "proper_density_input": "cm^-3 or m^-3 tagged once",
+    "time": "proper s",
+    "alpha_cgs": "cm^3/s",
+    "alpha_si": "m^3/s",
+    "rates": "s^-1",
+    "geometry_sigma": "s^-1",
+    "signature": "(-,+,+,+)",
+    "natural_units": false
+  },
+  "source_profile": {
+    "id": "HYREC2_09e8243_TLA_CONSTANTS",
+    "commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+    "path": "hydrogen.c + hydrogen.h",
+    "kB_eV_per_K": 8.617343e-05,
+    "chi1_eV": 13.598286071938324,
+    "E21_eV": 10.198714553953742,
+    "chi2_expression": "chi1/4",
+    "Lambda2gamma_per_s": 8.2206,
+    "Ralpha_prefactor_cm3inverse": 4662899067555897,
+    "fsR": 1,
+    "meR": 1,
+    "Fudge": 1,
+    "nonthermal_ion": 0,
+    "nonthermal_exclya": 0,
+    "upstream_temperature": "eV",
+    "upstream_derivative": "dxHII/dln(a)",
+    "upstream_reimplementation_policy": "Independent mathematical expression + source pointer; vendored original absent because repository license not explicit.",
+    "Phi_prefactor_cm3_inverse_eV_minus_3_over_2": 3.016103031869581e+21,
+    "Ralpha_prefactor_unit": "cm^-3; Ralpha=prefactor*H/(nH_cm^-3*x1)",
+    "constant_identity_policy": "Pinned upstream prefactors are the source-comparison authority. Recomputed modern SI/CODATA constants are a separate profile, never silently mixed."
+  },
+  "alpha_profile": {
+    "name": "PPB_as_used_in_HYREC2",
+    "formula_cgs": "4.309e-13*t4^(-0.6166)/(1+0.6703*t4^0.5300)",
+    "formula_si": "4.309e-19*t4^(-0.6166)/(1+0.6703*t4^0.5300)",
+    "t4": "T_K/10000",
+    "algorithm_domain": "finite T>0",
+    "initial_regression_domain_K": [
+      100,
+      10000
+    ],
+    "domain_evidence": "selected test domain; not an externally certified physical-accuracy interval",
+    "original_fit_accuracy_range": "UNRESOLVED_NOT_ASSERTED",
+    "floor_or_fudge": "none"
+  },
+  "equations": {
+    "Phi_source": "3.016103031869581e21*(kB_eV_per_K*Tr_K)^1.5 cm^-3",
+    "betaP_source": "alphaB_cgs(Tr_K)*Phi_source*exp(-chi1_eV/(4*kB_eV_per_K*Tr_K))",
+    "beta_shell": "betaP/4",
+    "A": "nH*alphaB(Tm)*xe*xp",
+    "q": "x1*exp(-E21/(kB*Tr))",
+    "Ralpha_source": "4.662899067555897e15*H/(nH_cgs*x1)",
+    "Dg": "(Lambda2gamma+3*Ralpha)/4",
+    "r": "betaP/4+Dg",
+    "x2_qss_fixed_ground": "(A+4*Dg*q)/r",
+    "electron_retained": "-A+betaP*x2/4",
+    "shell_retained": "A-betaP*x2/4-Dg*(x2-4*q)",
+    "ground_retained": "Dg*(x2-4*q)",
+    "C": "(Lambda2gamma+3*Ralpha)/(Lambda2gamma+3*Ralpha+betaP)",
+    "electron_reduced": "-C*(A-betaP*q)",
+    "closure_defect": "electron_retained-electron_reduced=betaP*(x2-x2_qss_fixed_ground)/4",
+    "defect_evolution": "delta_dot=-r*delta-total_time_derivative(x2_qss_fixed_ground)",
+    "defect_bound": "abs(delta)<=exp(-rmin*dt)*abs(delta0)+(L/rmin)*(1-exp(-rmin*dt)) if r>=rmin>0 and abs(total_derivative(x2star))<=L",
+    "physical_mass_closure": "x1=1-xp-x2 and xe=xp for pureH retained mode",
+    "Peebles_mass_closure": "x1=1-xp with x2 neglected",
+    "convert_z": "dx/dz=-dx/dt/[H*(1+z)]",
+    "convert_lna": "dx/dln(a)=dx/dt/H"
+  },
+  "derivative_precision_notes": [
+    "Near Saha avoid comparing cancellation-dominated relative error of net RHS alone.",
+    "Track absolute residual normalized to sum of recombination and ionization rates.",
+    "One-T Saha fixed point does not test C-factor correctness.",
+    "Two-T equilibrium is not thermal Saha."
+  ],
+  "ownership": {
+    "caseA_reionization": "existing mode unchanged; not silently upgraded to Peebles",
+    "thermal_bath": "retained prescribed reservoir",
+    "ground_continuum": "recycled within CaseB; do not count independent CaseA sink",
+    "Lya": "owned once by escape closure",
+    "two_photon": "owned once by Lambda2gamma + inverse term",
+    "scalar_xe_energy": "no detailed spectrum or thermal-energy guarantee",
+    "future_energy_state": "E21*x2+chi1*xp perH plus thermal and radiation reservoirs"
+  },
+  "sobolev_contract": {
+    "status": "DERIVED_CONDITIONAL_NOT_GENERAL_BIANCHI_RT",
+    "A21": "Einstein spontaneous 2p->1s rate, independently source-pinned when numericalphysicalvaluesused",
+    "h": "H+sigma_ij*n_i*n_j",
+    "admission": "H+lambda_min(sigma)>0; isotropic angular weighting; local coefficient/direction variation negligible on line crossing; negligible stimulated population correction",
+    "aS": "3*A21*lambda_alpha^3*n1/(8*pi)",
+    "tau": "aS/h",
+    "p": "-expm1(-tau)/tau",
+    "Ralpha": "A21*angular_mean(p)",
+    "mean_h": "H",
+    "p_second_derivative": "-aS*exp(-aS/h)/h^3 < 0",
+    "Jensen": "angular_mean(p(h)) <= p(H)",
+    "thick_limit": "Ralpha -> 8*pi*H/(3*lambda_alpha^3*n1)",
+    "S2": "sum_ij sigma_ij*sigma_ij (NOT half-contraction shear scalar)",
+    "quadratic_absolute": "delta_mean_p=-tau0*exp(-tau0)*S2/(15*H^2)+O(norm(sigma/H)^3)",
+    "quadratic_relative": "delta_mean_p/p0=-tau0^2*exp(-tau0)*S2/[15*H^2*(1-exp(-tau0))]+O(norm(sigma/H)^3)",
+    "numeric_small_tau": "Use expm1; p=1-tau/2+tau^2/6-... as needed",
+    "reject": [
+      "any h<=0",
+      "nonpositive n1",
+      "nonfinite parameters",
+      "anisotropic bath silently treated as scalarTr",
+      "claiming volume-scale redshift exact for everydirection"
+    ],
+    "uniform_thick_error_bound": "0 <= 1/tau0 - mean(p) <= exp(-tau_min)/tau0, where tau_min=aS/h_max and isotropic mean(h)=H; relative to 1/tau0 <= exp(-tau_min)",
+    "small_shear_remainder_note": "Generic cubic angular moment need not vanish. Even(sigma,-sigma) symmetrization cancels odd terms."
+  },
+  "acceptance_required": [
+    {
+      "id": "P02-A01",
+      "check": "oneT source-matched native alpha,beta,C,RHS fixtures; twoT external reference arithmetic separately; native rejects unequal temperatures",
+      "evidence_required": "native oneT runtimerecord + separately labeled twoT external arithmetic"
+    },
+    {
+      "id": "P02-A02",
+      "check": "independent shell elimination and factor4/factor3 mutation detection",
+      "evidence_required": "runtimerecord"
+    },
+    {
+      "id": "P02-A03",
+      "check": "actual rec crate public entrypoint test plus provenanceprofile",
+      "evidence_required": "nativebuildtest"
+    },
+    {
+      "id": "P02-A04",
+      "check": "mass sum, charge, energy ownership checks",
+      "evidence_required": "algebra_and_finitechecks"
+    },
+    {
+      "id": "P02-A05",
+      "check": "angularmoment, Jensen, thicklimit, secondordercoefficient, quadrature convergence",
+      "evidence_required": "finitechecks"
+    },
+    {
+      "id": "P02-A06",
+      "check": "optional matched scalarhistory; not automatic wholeprojectpromote",
+      "evidence_required": "twoindependentmatchedintegrations"
+    },
+    {
+      "id": "P02-A07",
+      "check": "retained finite-shell partition equilibrium and nuclei conservation; collapsed equilibrium only on x2-neglected closure",
+      "evidence_required": "native finitepartition tests"
+    }
+  ],
+  "unresolved": [
+    "upstreamPPBphysicalaccuracybound",
+    "generalBianchiLyaand2photonradiationclosure",
+    "actualuniformintervalremainder",
+    "generalthermalenergyconsumer",
+    "lateHHecompletehistory",
+    "productionreiPeeblesbindinguntilactualconsumerexec"
+  ],
+  "native_scope_this_loop": {
+    "temperature_profile": "ONE_T",
+    "Tm_not_equal_Tr": "REJECT",
+    "two_temperature_formula": "derived source reference and finite external arithmetic only; native twoT consumer not claimed",
+    "test_authority": "native execution report is authoritative; this theory contract does not expand executable scope"
+  },
+  "equilibrium_contract": {
+    "temperature_profile": "ONE_T_ONLY",
+    "B": "exp(-E21/(kB*T))",
+    "S": "Phi(T)*exp(-chi1/(kB*T))/nH under chi1=chi2+E21",
+    "S_rate": "betaP(T)*B/(nH*alphaB(T)); use this for exact implemented-rate residual",
+    "collapsed_peebles": {
+      "label": "APPROXIMATE_MASS_CLOSURE_X2_NEGLECTED",
+      "mass_closure": "x1=1-xp; xe=xp",
+      "equation": "xp^2/(1-xp)=S"
+    },
+    "retained_shell": {
+      "label": "EXACT_EQUILIBRIUM_WITHIN_FINITE_1S_N2_CONTINUUM_MODEL",
+      "mass_closure": "x1+x2+xp=1; xe=xp",
+      "detailed_balance": [
+        "x2=4*B*x1",
+        "xp^2/x1=S"
+      ],
+      "eliminated_equation": "xp^2/(1-xp)=S/(1+4*B)",
+      "ground_fraction": "x1=(1-xp)/(1+4*B)"
+    },
+    "prohibited_inference": "Collapsed Saha is not exact finite-shell equilibrium; finite partition is not infinite multilevel-atom partition.",
+    "source_constant_roundoff": "If source-rounded chi1 differs from chi2+E21, rate residual uses S_rate; energy identity discrepancy reported separately."
+  }
+}
