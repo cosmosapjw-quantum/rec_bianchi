@@ -3,3 +3,5 @@ pub mod frame;
 pub mod he_singlet;
 pub mod ledger;
 pub mod screen;
+
+pub mod hydrogen_peebles;
