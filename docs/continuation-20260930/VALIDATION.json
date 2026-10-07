@@ -1,0 +1,154 @@
+{
+  "task_id": "REC-HE-FRAME-BRIDGE-20260930",
+  "base_head": "37bcd6eaf41b2559cc4ce414051ad3ad702012ec",
+  "implementation_status": "HOST_VALIDATED_AFTER_INDEPENDENT_REVIEW_REPAIRS",
+  "whole_project_complete": false,
+  "author": "CODEX_SUBAGENT_GPT6_SOL_HIGH",
+  "repair_author": "HOST_CODEX",
+  "final_source_sha256": {
+    "rust/rec_microphysics/src/lib.rs": "108cf56c60054dc1c834d433af34d5450b11025525066bfb3de8f69c4c83d5ad",
+    "rust/rec_microphysics/src/frame.rs": "bc5715c93294dffbe69c16457559563ee6bdbcb4251573ef453d584144e68235",
+    "rust/rec_microphysics/tests/frame.rs": "5f2e13cb363dd4e3a207494ff2f739e7bfba462ed49408bf14fa3ab4c22a09e1",
+    "docs/continuation-20260930/FRAME_BRIDGE.md": "191f582a83b8133b33618c1b25cf7e2b1f00b78a5ec9280db5a968a43531346f"
+  },
+  "preexisting_dirty_tracked_files_preserved": 7,
+  "fixed_dependency_hashes_unchanged": true,
+  "fmt": "PASS",
+  "cargo": {
+    "status": "PASS",
+    "old_tests": 76,
+    "new_tests": 8,
+    "compile_fail_doctests": 1,
+    "total": 85
+  },
+  "parity": {
+    "records": 251,
+    "numeric_components": 3027,
+    "expected_error_records": 111,
+    "max_reference_scaled_difference": 1.836977083143999e-15,
+    "tolerance": 9.094947017729282e-13,
+    "status": "PASS_FIXED_INPUT_PARITY_ONLY",
+    "scope": "251 frozen finite cases; not full T4, not a recombination trajectory",
+    "reference_lock_sha256": "de4a27d4973a5c14f383e656925dd58354a0fdb070ad23c094aa2da3faa1388d",
+    "evidence_directory": "/tmp/rec-continuation-20260930/repair-parity"
+  },
+  "supplementary_decimal": {
+    "status": "PASS",
+    "cases": 105,
+    "validated_cases": 101,
+    "components": 808,
+    "numerical_domain_uncertain": [
+      {
+        "case": 90,
+        "reason": "ERR NumericalDomainUncertain { quantity: \"beta dot four-vector\", value: -0.0, detail: \"nonzero frame product underflowed\" }"
+      },
+      {
+        "case": 91,
+        "reason": "ERR NumericalDomainUncertain { quantity: \"beta dot four-vector\", value: -1e-320, detail: \"destructive nonzero subnormal rounding\" }"
+      },
+      {
+        "case": 99,
+        "reason": "ERR NumericalDomainUncertain { quantity: \"boost spatial product\", value: 0.0, detail: \"nonzero frame product underflowed\" }"
+      },
+      {
+        "case": 100,
+        "reason": "ERR NumericalDomainUncertain { quantity: \"boost spatial product\", value: 5e-321, detail: \"destructive nonzero subnormal rounding\" }"
+      }
+    ],
+    "oracle": "100-digit Decimal from exact input binary64 values",
+    "scaling": "8*max_abs_input*max(1,gamma^2), no dimensional unit floor",
+    "tolerance": 9.094947017729282e-13,
+    "max_gross_scaled_difference": 2.9958825671370304e-17
+  },
+  "independent_review": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "sandbox": "read-only",
+    "runtime_state": "MATCH",
+    "candidate_digest": "1c0c9eb5fa9b552882c0d45e7704cd7d4a7404c234e2a4890d1e876190703e61",
+    "findings_count": 3,
+    "findings": [
+      {
+        "location": "rust/rec_microphysics/src/frame.rs:72-76",
+        "invariant": "Accepted velocities must produce accurate Lorentz factors and invariant-preserving boosts, or return NumericalDomainUncertain.",
+        "evidence": "Reproducer: MaterialVelocity::new([0.6, 0.7999999999999998, 0.0]).unwrap().normal_to_material_four_vector([1.0, 0.0, 0.0, 0.0]). The rounded hypot norm yields gamma=67108864, whereas Decimal evaluation from the exact binary64 beta components gives 56717341.93959738. The returned vector has Minkowski norm approximately -1.4 instead of -1; inverse boosting returns [1.5, 0.29999999701976776, 0.3999999985098839, 0.0], all through Ok. Error under the supplied oracle's gross scaling is 4.0379e-10, exceeding 4096eps=9.0949e-13. Compute the residual defining gamma accurately or refuse this numerically uncertain domain.",
+        "severity": "P2",
+        "host_disposition": "REPAIRED_REGRESSION_PASS"
+      },
+      {
+        "location": "rust/rec_microphysics/src/frame.rs:29-40",
+        "invariant": "Destructive underflow must not silently return finite values outside the numerical tolerance.",
+        "evidence": "The product and quotient guards detect only results rounded to zero. Reproducer: beta=[0.6,0,0], input=[f64::from_bits(3),0,0,0]. The existing probe returns forward components [f64::from_bits(4),-f64::from_bits(2),0,0]; inverse boosting returns time component f64::from_bits(4), rather than the original bits(3). Both calls return Ok. The supplied gross-scaled comparison gives error 0.0266667 versus tolerance 9.0949e-13. Detect destructive precision loss in nonzero subnormal arithmetic and return NumericalDomainUncertain, while retaining accurately representable subnormal cases.",
+        "severity": "P2",
+        "host_disposition": "REPAIRED_REGRESSION_PASS"
+      },
+      {
+        "location": "rust/rec_microphysics/src/frame.rs:233-239",
+        "invariant": "The force adapter must return the distinct NormalFourForce promised by FRAME_BRIDGE.md:9.",
+        "evidence": "The method instead returns and constructs MaterialFourForce; NormalFourForce is unused. A caller declaring `let normal: NormalFourForce = v.material_four_force_to_normal(force).unwrap();` fails type checking. Conversely, the returned normal-frame components remain accepted as material-frame input for another boost. Change the return type and constructed value to NormalFourForce, and explicitly bind that type in the existing force test.",
+        "severity": "P2",
+        "host_disposition": "REPAIRED_REGRESSION_PASS"
+      }
+    ],
+    "final_candidate_independently_rereviewed": false,
+    "report": "evidence/review/report.json"
+  },
+  "formal_workspace_completion": "NOT_ADMITTED_WORKSPACE_SCOPE_VIOLATION",
+  "formal_completion_response": {
+    "claim_admitted": false,
+    "status": "HOST_VALIDATION_REQUIRED",
+    "task_complete": false
+  },
+  "scientific_claim_admitted": false,
+  "scientific_gates_changed": false,
+  "native_dispatches": {
+    "unsuccessful_inventory": 1,
+    "implementation": 1,
+    "review": 1
+  },
+  "local_model_calls": 0,
+  "local_qualification": "UNKNOWN_NOT_FAILED",
+  "author_usage": {
+    "input_tokens": 882422,
+    "cached_input_tokens": 806784,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 12329,
+    "reasoning_output_tokens": 1544,
+    "total_tokens": 894751
+  },
+  "review_usage": {
+    "last": {
+      "cacheWriteInputTokens": 0,
+      "cachedInputTokens": 63744,
+      "inputTokens": 70137,
+      "outputTokens": 1805,
+      "reasoningOutputTokens": 902,
+      "totalTokens": 71942
+    },
+    "modelContextWindow": 258400,
+    "total": {
+      "cacheWriteInputTokens": 0,
+      "cachedInputTokens": 300928,
+      "inputTokens": 372028,
+      "outputTokens": 7451,
+      "reasoningOutputTokens": 4003,
+      "totalTokens": 379479
+    }
+  },
+  "total_task_cost": "NOT_MEASURED",
+  "remaining": [
+    "screen/measure/consumer integration",
+    "E1C single-owner replacement",
+    "dynamic macro and accepted histories",
+    "full source spectra and missing physical closures",
+    "formal independent repair closeout"
+  ],
+  "bounded_work": {
+    "decision": "DEFER_FOLLOWUP",
+    "contract_check": "PASS",
+    "acceptance_sha256": "f5f4c6baed01e099981beb29ad5f60cc1c7e550634e6330ea9c163209242830f",
+    "review_rounds": 1,
+    "repair_closeout_rounds": 1,
+    "scope": "Local bridge plus finite tests; broader project not complete"
+  }
+}

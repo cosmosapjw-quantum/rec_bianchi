@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "task_id": "REI-CHAT-PB01-20261004",
+  "mode_id": "PEEBLES_PURE_H_ONE_T_THICK_SOB_QSS_REFERENCE_V1",
+  "priority": "user_requested_before_FT07",
+  "production_mode_created": false,
+  "claim_status": {
+    "derived_reference_recovery": true,
+    "current_selected_caseA_recovery": false,
+    "current_model_classification": "MODEL_SCOPE_MISMATCH",
+    "consumer_regression": "NOT_RUN_NO_PEEBLES_SOURCE_BOUND_HOOK",
+    "atomic_accuracy_certified": false
+  },
+  "input_contract": {
+    "nH": "proper cm^-3",
+    "H": "s^-1, H>0",
+    "Tm_Tr": "equal for baseline; separate profile for two-temperature",
+    "xe_xp": "pure-H xe=xp; otherwise use xe*xp",
+    "alphaB": "same case-B function on both sides, cm^3/s",
+    "betaP": "alphaB(Tr)*(2*pi*mu*kB*Tr/h^2)^(3/2)*exp(-chi2/(kB*Tr)), s^-1",
+    "beta_shell": "betaP/4",
+    "Lambda2gamma": "2s->1s decay rate, s^-1; NOT a thermal cooling coefficient",
+    "Ralpha": "per 2p atom, s^-1",
+    "K": "lambda_alpha^3/(8*pi*H), cm^3*s",
+    "energies": "chi1=chi2+E21; E21=h*c/lambda_alpha; h=2*pi*hbar"
+  },
+  "physical_reduction_conditions": [
+    "FLRW geometry on time interval, not instantaneously equal axes only",
+    "no external nonthermal source but KEEP thermal n2-ionizing bath",
+    "thermal Lyalpha blue-side boundary, not Planck-enforced line core",
+    "ground-continuum recycling / Case B",
+    "fast statistical shell redistribution x2p=3*x2s",
+    "inverse photoionization and thermal inverse decays included",
+    "isotropic emission, no alignment or tilt",
+    "large Sobolev optical depth and negligible stimulated correction",
+    "quasi-steady excited shell with checked rate separation",
+    "x2 negligible in x1=1-xe",
+    "common prescribed temperature baseline"
+  ],
+  "equations": {
+    "A": "nH*alphaB(Tm)*xe*xp",
+    "q": "x1*exp(-E21/(kB*Tr))",
+    "Dg": "(Lambda2gamma+3*Ralpha)/4",
+    "shell": "dx2/dt=A-beta_shell*x2-Dg*(x2-4*q)",
+    "electron": "dxe/dt=-A+beta_shell*x2",
+    "x2_qss": "(A+4*Dg*q)/(beta_shell+Dg)",
+    "C": "(Lambda2gamma+3*Ralpha)/(Lambda2gamma+3*Ralpha+betaP)",
+    "C_K": "(1+K*Lambda2gamma*n1)/(1+K*(Lambda2gamma+betaP)*n1)",
+    "Peebles_time": "dxe/dt=-C*(A-betaP*q)",
+    "Peebles_redshift": "dxe/dz=C*(A-betaP*q)/(H*(1+z))",
+    "Saha": "xe^2/(1-xe)=Phi(T)/nH*exp(-chi1/(kB*T))",
+    "excitation_energy_per_H": "chi1*xp+E21*x2"
+  },
+  "do_not_infer": [
+    "Case B alone implies Peebles",
+    "Saha fixed point implies correct C",
+    "late C=1 tail implies bottleneck recovery",
+    "scalar constant-rate solver implies thermochemistry solver",
+    "geometry isotropization creates missing level closure",
+    "default corrected RECFAST equals original Peebles",
+    "legacy Tm beta equals blackbody Tr beta for two temperatures",
+    "point tests imply interval or physical accuracy",
+    "standalone scalar research oracle is a production recombination surrogate"
+  ],
+  "restoration_gates": [
+    {"id":"PB-G01","item":"reference convention and temperature profile","state":"CLOSED"},
+    {"id":"PB-G02","item":"n2 QSS algebra and beta/degeneracy factors","state":"DERIVED_AND_SCALAR_CHECKED"},
+    {"id":"PB-G03","item":"FLRW limit under local Sobolev assumptions","state":"DERIVED_CONDITIONAL_AND_LIGHT_CHECKED"},
+    {"id":"PB-G04","item":"actual selected model has required level/bath/escape mechanism","state":"UNSATISFIED_BY_READ_CASE_A_CLOSURE"},
+    {"id":"PB-G05","item":"source-bound consumer regression","state":"NOT_RUN"},
+    {"id":"PB-G06","item":"matched history regression","state":"NOT_RUN"}
+  ],
+  "next_task": "REI-CHAT-PB02_SOURCE_BOUND_REDUCTION_CONTRACT",
+  "preserved_limits": {
+    "local_error_strict_lt":0.0002,
+    "public_width_strict_lt":0.002,
+    "historical_failed_interval":[160,161],
+    "historical_failure":0.00021245050576368385,
+    "prefix":160
+  }
+}

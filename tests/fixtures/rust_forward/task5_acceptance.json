@@ -1,0 +1,21 @@
+{
+  "schema": "TASK5_ACCEPTANCE_V1",
+  "tolerance": 9.094947017729282e-13,
+  "origin": "unchanged implementation-only 4096 eps",
+  "comparison": "abs(actual-reference)<=tol*reference_gross; if reference_gross=0 require exact equality; all finite",
+  "hermitian_screen_tolerance": 1e-12,
+  "force_components": "contravariant material orthonormal tetrad (P_gamma/c, momentum_rate)",
+  "no_unit_floor": true,
+  "no_clipping": true,
+  "rust_red_green": "DEFERRED_TO_LOCAL_CODEX_BY_USER_NO_COMPILE_POLICY",
+  "required_local_tests": [
+    "pbf_complex_component_reference",
+    "pbf_isotropic_scalar_non_lte",
+    "sbf_lte_and_non_lte",
+    "bf_photon_ion_electron_sign",
+    "bf_independent_heat_moment",
+    "ledger_each_signed_channel",
+    "material_four_force_matches_photon_energy"
+  ],
+  "reference_generation": "fixed before source edit; independent component contraction; no Rust values read"
+}

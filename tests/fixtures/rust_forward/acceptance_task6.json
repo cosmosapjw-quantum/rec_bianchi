@@ -1,0 +1,29 @@
+{
+  "schema": "REC_HE_PARITY_ACCEPTANCE_TASK6_V1",
+  "tolerance": 9.094947017729282e-13,
+  "scale_policy": "independent sum of absolute gain/loss contraction terms; per-output dimensional scale; no unit floor",
+  "finite_policy": "reject nonfinite actual/reference/scale, bools and duplicate JSON keys",
+  "zero_scale_policy": "exact equality",
+  "rust_status": "NOT_RUN",
+  "legacy": "Prior fixtures/acceptance files remain byte-preserved. Legacy D86 and BB JVP values included as fixed inputs, not historical PASS inheritance.",
+  "wire": "REC_HE_WIRE_V2, newline records with safe numeric IDs; plain whitespace token input, strict JSON output; no third-party Rust dependency",
+  "max_cases": 512,
+  "max_input_bytes": 2000000,
+  "max_output_bytes": 2000000,
+  "negative_controls": [
+    "transpose_or_conjugate_matrix",
+    "pair_extra_half",
+    "bf_sign_flip",
+    "small_source_zero",
+    "nonfinite",
+    "missing_to_zero",
+    "schema_missing",
+    "unknown_field",
+    "duplicate_key",
+    "subprocess_nonzero",
+    "malformed_json",
+    "truncated_output",
+    "timeout"
+  ],
+  "reference_origin": "source formulas and previous rational/scalar fixtures only; reference never reads Rust output"
+}

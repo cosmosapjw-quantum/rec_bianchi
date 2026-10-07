@@ -1,0 +1,1003 @@
+   Compiling rec_microphysics v0.1.0 (/tmp/rec-rust-he-review-20260930/rust/rec_microphysics)
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:753:16
+    |
+753 |             [c((2.0 / 5.0), 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+    |                ^         ^
+    |
+    = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+    |
+753 -             [c((2.0 / 5.0), 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+753 +             [c(2.0 / 5.0 , 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:754:29
+    |
+754 |             [c(0.0, 0.0), c((7.0 / 10.0), 0.0), c(0.0, 0.0)],
+    |                             ^          ^
+    |
+help: remove these parentheses
+    |
+754 -             [c(0.0, 0.0), c((7.0 / 10.0), 0.0), c(0.0, 0.0)],
+754 +             [c(0.0, 0.0), c(7.0 / 10.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:755:42
+    |
+755 |             [c(0.0, 0.0), c(0.0, 0.0), c((11.0 / 10.0), 0.0)],
+    |                                          ^           ^
+    |
+help: remove these parentheses
+    |
+755 -             [c(0.0, 0.0), c(0.0, 0.0), c((11.0 / 10.0), 0.0)],
+755 +             [c(0.0, 0.0), c(0.0, 0.0), c(11.0 / 10.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:762:28
+    |
+762 |                         [c((1.0 / 10.0), 0.0), c(0.0, 0.0)],
+    |                            ^          ^
+    |
+help: remove these parentheses
+    |
+762 -                         [c((1.0 / 10.0), 0.0), c(0.0, 0.0)],
+762 +                         [c(1.0 / 10.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:763:41
+    |
+763 |                         [c(0.0, 0.0), c((2.0 / 5.0), 0.0)],
+    |                                         ^         ^
+    |
+help: remove these parentheses
+    |
+763 -                         [c(0.0, 0.0), c((2.0 / 5.0), 0.0)],
+763 +                         [c(0.0, 0.0), c(2.0 / 5.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:768:24
+    |
+768 |                     [c((-19.0 / 50.0), 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+    |                        ^            ^
+    |
+help: remove these parentheses
+    |
+768 -                     [c((-19.0 / 50.0), 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+768 +                     [c(-19.0 / 50.0 , 0.0), c(0.0, 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:769:37
+    |
+769 |                     [c(0.0, 0.0), c((-37.0 / 50.0), 0.0), c(0.0, 0.0)],
+    |                                     ^            ^
+    |
+help: remove these parentheses
+    |
+769 -                     [c(0.0, 0.0), c((-37.0 / 50.0), 0.0), c(0.0, 0.0)],
+769 +                     [c(0.0, 0.0), c(-37.0 / 50.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:773:24
+    |
+773 |                     [c((19.0 / 50.0), 0.0), c(0.0, 0.0)],
+    |                        ^           ^
+    |
+help: remove these parentheses
+    |
+773 -                     [c((19.0 / 50.0), 0.0), c(0.0, 0.0)],
+773 +                     [c(19.0 / 50.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:774:37
+    |
+774 |                     [c(0.0, 0.0), c((37.0 / 50.0), 0.0)],
+    |                                     ^           ^
+    |
+help: remove these parentheses
+    |
+774 -                     [c(0.0, 0.0), c((37.0 / 50.0), 0.0)],
+774 +                     [c(0.0, 0.0), c(37.0 / 50.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:783:28
+    |
+783 |                         [c((7.0 / 10.0), 0.0), c(0.0, 0.0)],
+    |                            ^          ^
+    |
+help: remove these parentheses
+    |
+783 -                         [c((7.0 / 10.0), 0.0), c(0.0, 0.0)],
+783 +                         [c(7.0 / 10.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:784:41
+    |
+784 |                         [c(0.0, 0.0), c((1.0 / 5.0), 0.0)],
+    |                                         ^         ^
+    |
+help: remove these parentheses
+    |
+784 -                         [c(0.0, 0.0), c((1.0 / 5.0), 0.0)],
+784 +                         [c(0.0, 0.0), c(1.0 / 5.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:790:37
+    |
+790 |                     [c(0.0, 0.0), c((-77.0 / 100.0), 0.0), c(0.0, 0.0)],
+    |                                     ^             ^
+    |
+help: remove these parentheses
+    |
+790 -                     [c(0.0, 0.0), c((-77.0 / 100.0), 0.0), c(0.0, 0.0)],
+790 +                     [c(0.0, 0.0), c(-77.0 / 100.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:791:50
+    |
+791 |                     [c(0.0, 0.0), c(0.0, 0.0), c((-6.0 / 5.0), 0.0)],
+    |                                                  ^          ^
+    |
+help: remove these parentheses
+    |
+791 -                     [c(0.0, 0.0), c(0.0, 0.0), c((-6.0 / 5.0), 0.0)],
+791 +                     [c(0.0, 0.0), c(0.0, 0.0), c(-6.0 / 5.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:794:24
+    |
+794 |                     [c((77.0 / 100.0), 0.0), c(0.0, 0.0)],
+    |                        ^            ^
+    |
+help: remove these parentheses
+    |
+794 -                     [c((77.0 / 100.0), 0.0), c(0.0, 0.0)],
+794 +                     [c(77.0 / 100.0 , 0.0), c(0.0, 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:795:37
+    |
+795 |                     [c(0.0, 0.0), c((6.0 / 5.0), 0.0)],
+    |                                     ^         ^
+    |
+help: remove these parentheses
+    |
+795 -                     [c(0.0, 0.0), c((6.0 / 5.0), 0.0)],
+795 +                     [c(0.0, 0.0), c(6.0 / 5.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:808:19
+    |
+808 |                 c((2.0 / 5.0), 0.0),
+    |                   ^         ^
+    |
+help: remove these parentheses
+    |
+808 -                 c((2.0 / 5.0), 0.0),
+808 +                 c(2.0 / 5.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:809:19
+    |
+809 |                 c((1.0 / 20.0), (1.0 / 50.0)),
+    |                   ^          ^
+    |
+help: remove these parentheses
+    |
+809 -                 c((1.0 / 20.0), (1.0 / 50.0)),
+809 +                 c(1.0 / 20.0 , (1.0 / 50.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:809:33
+    |
+809 |                 c((1.0 / 20.0), (1.0 / 50.0)),
+    |                                 ^          ^
+    |
+help: remove these parentheses
+    |
+809 -                 c((1.0 / 20.0), (1.0 / 50.0)),
+809 +                 c((1.0 / 20.0), 1.0 / 50.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:810:19
+    |
+810 |                 c((3.0 / 100.0), (-1.0 / 100.0)),
+    |                   ^           ^
+    |
+help: remove these parentheses
+    |
+810 -                 c((3.0 / 100.0), (-1.0 / 100.0)),
+810 +                 c(3.0 / 100.0 , (-1.0 / 100.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:810:34
+    |
+810 |                 c((3.0 / 100.0), (-1.0 / 100.0)),
+    |                                  ^            ^
+    |
+help: remove these parentheses
+    |
+810 -                 c((3.0 / 100.0), (-1.0 / 100.0)),
+810 +                 c((3.0 / 100.0), -1.0 / 100.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:813:19
+    |
+813 |                 c((1.0 / 20.0), (-1.0 / 50.0)),
+    |                   ^          ^
+    |
+help: remove these parentheses
+    |
+813 -                 c((1.0 / 20.0), (-1.0 / 50.0)),
+813 +                 c(1.0 / 20.0 , (-1.0 / 50.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:813:33
+    |
+813 |                 c((1.0 / 20.0), (-1.0 / 50.0)),
+    |                                 ^           ^
+    |
+help: remove these parentheses
+    |
+813 -                 c((1.0 / 20.0), (-1.0 / 50.0)),
+813 +                 c((1.0 / 20.0), -1.0 / 50.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:814:19
+    |
+814 |                 c((7.0 / 10.0), 0.0),
+    |                   ^          ^
+    |
+help: remove these parentheses
+    |
+814 -                 c((7.0 / 10.0), 0.0),
+814 +                 c(7.0 / 10.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:815:19
+    |
+815 |                 c((-1.0 / 25.0), (1.0 / 40.0)),
+    |                   ^           ^
+    |
+help: remove these parentheses
+    |
+815 -                 c((-1.0 / 25.0), (1.0 / 40.0)),
+815 +                 c(-1.0 / 25.0 , (1.0 / 40.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:815:34
+    |
+815 |                 c((-1.0 / 25.0), (1.0 / 40.0)),
+    |                                  ^          ^
+    |
+help: remove these parentheses
+    |
+815 -                 c((-1.0 / 25.0), (1.0 / 40.0)),
+815 +                 c((-1.0 / 25.0), 1.0 / 40.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:818:19
+    |
+818 |                 c((3.0 / 100.0), (1.0 / 100.0)),
+    |                   ^           ^
+    |
+help: remove these parentheses
+    |
+818 -                 c((3.0 / 100.0), (1.0 / 100.0)),
+818 +                 c(3.0 / 100.0 , (1.0 / 100.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:818:34
+    |
+818 |                 c((3.0 / 100.0), (1.0 / 100.0)),
+    |                                  ^           ^
+    |
+help: remove these parentheses
+    |
+818 -                 c((3.0 / 100.0), (1.0 / 100.0)),
+818 +                 c((3.0 / 100.0), 1.0 / 100.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:819:19
+    |
+819 |                 c((-1.0 / 25.0), (-1.0 / 40.0)),
+    |                   ^           ^
+    |
+help: remove these parentheses
+    |
+819 -                 c((-1.0 / 25.0), (-1.0 / 40.0)),
+819 +                 c(-1.0 / 25.0 , (-1.0 / 40.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:819:34
+    |
+819 |                 c((-1.0 / 25.0), (-1.0 / 40.0)),
+    |                                  ^           ^
+    |
+help: remove these parentheses
+    |
+819 -                 c((-1.0 / 25.0), (-1.0 / 40.0)),
+819 +                 c((-1.0 / 25.0), -1.0 / 40.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:820:19
+    |
+820 |                 c((11.0 / 10.0), 0.0),
+    |                   ^           ^
+    |
+help: remove these parentheses
+    |
+820 -                 c((11.0 / 10.0), 0.0),
+820 +                 c(11.0 / 10.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:828:28
+    |
+828 |                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+    |                            ^         ^
+    |
+help: remove these parentheses
+    |
+828 -                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+828 +                         [c(1.0 / 5.0 , 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:828:49
+    |
+828 |                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+    |                                                 ^           ^
+    |
+help: remove these parentheses
+    |
+828 -                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+828 +                         [c((1.0 / 5.0), 0.0), c(3.0 / 100.0 , (1.0 / 25.0))],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:828:64
+    |
+828 |                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+    |                                                                ^          ^
+    |
+help: remove these parentheses
+    |
+828 -                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), (1.0 / 25.0))],
+828 +                         [c((1.0 / 5.0), 0.0), c((3.0 / 100.0), 1.0 / 25.0 )],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:829:28
+    |
+829 |                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+    |                            ^           ^
+    |
+help: remove these parentheses
+    |
+829 -                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+829 +                         [c(3.0 / 100.0 , (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:829:43
+    |
+829 |                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+    |                                           ^           ^
+    |
+help: remove these parentheses
+    |
+829 -                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+829 +                         [c((3.0 / 100.0), -1.0 / 25.0 ), c((1.0 / 10.0), 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:829:61
+    |
+829 |                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+    |                                                             ^          ^
+    |
+help: remove these parentheses
+    |
+829 -                         [c((3.0 / 100.0), (-1.0 / 25.0)), c((1.0 / 10.0), 0.0)],
+829 +                         [c((3.0 / 100.0), (-1.0 / 25.0)), c(1.0 / 10.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:835:27
+    |
+835 |                         c((-303.0 / 2000.0), 0.0),
+    |                           ^               ^
+    |
+help: remove these parentheses
+    |
+835 -                         c((-303.0 / 2000.0), 0.0),
+835 +                         c(-303.0 / 2000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:836:27
+    |
+836 |                         c((-13987.0 / 50000.0), (-2139.0 / 200000.0)),
+    |                           ^                  ^
+    |
+help: remove these parentheses
+    |
+836 -                         c((-13987.0 / 50000.0), (-2139.0 / 200000.0)),
+836 +                         c(-13987.0 / 50000.0 , (-2139.0 / 200000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:836:49
+    |
+836 |                         c((-13987.0 / 50000.0), (-2139.0 / 200000.0)),
+    |                                                 ^                  ^
+    |
+help: remove these parentheses
+    |
+836 -                         c((-13987.0 / 50000.0), (-2139.0 / 200000.0)),
+836 +                         c((-13987.0 / 50000.0), -2139.0 / 200000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:837:27
+    |
+837 |                         c((-79.0 / 6250.0), (-89.0 / 50000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+837 -                         c((-79.0 / 6250.0), (-89.0 / 50000.0)),
+837 +                         c(-79.0 / 6250.0 , (-89.0 / 50000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:837:45
+    |
+837 |                         c((-79.0 / 6250.0), (-89.0 / 50000.0)),
+    |                                             ^               ^
+    |
+help: remove these parentheses
+    |
+837 -                         c((-79.0 / 6250.0), (-89.0 / 50000.0)),
+837 +                         c((-79.0 / 6250.0), -89.0 / 50000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:840:27
+    |
+840 |                         c((-13987.0 / 50000.0), (2139.0 / 200000.0)),
+    |                           ^                  ^
+    |
+help: remove these parentheses
+    |
+840 -                         c((-13987.0 / 50000.0), (2139.0 / 200000.0)),
+840 +                         c(-13987.0 / 50000.0 , (2139.0 / 200000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:840:49
+    |
+840 |                         c((-13987.0 / 50000.0), (2139.0 / 200000.0)),
+    |                                                 ^                 ^
+    |
+help: remove these parentheses
+    |
+840 -                         c((-13987.0 / 50000.0), (2139.0 / 200000.0)),
+840 +                         c((-13987.0 / 50000.0), 2139.0 / 200000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:841:27
+    |
+841 |                         c((-2979.0 / 6250.0), 0.0),
+    |                           ^                ^
+    |
+help: remove these parentheses
+    |
+841 -                         c((-2979.0 / 6250.0), 0.0),
+841 +                         c(-2979.0 / 6250.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:842:27
+    |
+842 |                         c((2323.0 / 100000.0), (-2729.0 / 100000.0)),
+    |                           ^                 ^
+    |
+help: remove these parentheses
+    |
+842 -                         c((2323.0 / 100000.0), (-2729.0 / 100000.0)),
+842 +                         c(2323.0 / 100000.0 , (-2729.0 / 100000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:842:48
+    |
+842 |                         c((2323.0 / 100000.0), (-2729.0 / 100000.0)),
+    |                                                ^                  ^
+    |
+help: remove these parentheses
+    |
+842 -                         c((2323.0 / 100000.0), (-2729.0 / 100000.0)),
+842 +                         c((2323.0 / 100000.0), -2729.0 / 100000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:845:27
+    |
+845 |                         c((-79.0 / 6250.0), (89.0 / 50000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+845 -                         c((-79.0 / 6250.0), (89.0 / 50000.0)),
+845 +                         c(-79.0 / 6250.0 , (89.0 / 50000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:845:45
+    |
+845 |                         c((-79.0 / 6250.0), (89.0 / 50000.0)),
+    |                                             ^              ^
+    |
+help: remove these parentheses
+    |
+845 -                         c((-79.0 / 6250.0), (89.0 / 50000.0)),
+845 +                         c((-79.0 / 6250.0), 89.0 / 50000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:846:27
+    |
+846 |                         c((2323.0 / 100000.0), (2729.0 / 100000.0)),
+    |                           ^                 ^
+    |
+help: remove these parentheses
+    |
+846 -                         c((2323.0 / 100000.0), (2729.0 / 100000.0)),
+846 +                         c(2323.0 / 100000.0 , (2729.0 / 100000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:846:48
+    |
+846 |                         c((2323.0 / 100000.0), (2729.0 / 100000.0)),
+    |                                                ^                 ^
+    |
+help: remove these parentheses
+    |
+846 -                         c((2323.0 / 100000.0), (2729.0 / 100000.0)),
+846 +                         c((2323.0 / 100000.0), 2729.0 / 100000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:847:27
+    |
+847 |                         c((-57007.0 / 50000.0), 0.0),
+    |                           ^                  ^
+    |
+help: remove these parentheses
+    |
+847 -                         c((-57007.0 / 50000.0), 0.0),
+847 +                         c(-57007.0 / 50000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:852:27
+    |
+852 |                         c((31407.0 / 50000.0), 0.0),
+    |                           ^                 ^
+    |
+help: remove these parentheses
+    |
+852 -                         c((31407.0 / 50000.0), 0.0),
+852 +                         c(31407.0 / 50000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:853:27
+    |
+853 |                         c((-11.0 / 1000.0), (229.0 / 10000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+853 -                         c((-11.0 / 1000.0), (229.0 / 10000.0)),
+853 +                         c(-11.0 / 1000.0 , (229.0 / 10000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:853:45
+    |
+853 |                         c((-11.0 / 1000.0), (229.0 / 10000.0)),
+    |                                             ^               ^
+    |
+help: remove these parentheses
+    |
+853 -                         c((-11.0 / 1000.0), (229.0 / 10000.0)),
+853 +                         c((-11.0 / 1000.0), 229.0 / 10000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:856:27
+    |
+856 |                         c((-11.0 / 1000.0), (-229.0 / 10000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+856 -                         c((-11.0 / 1000.0), (-229.0 / 10000.0)),
+856 +                         c(-11.0 / 1000.0 , (-229.0 / 10000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:856:45
+    |
+856 |                         c((-11.0 / 1000.0), (-229.0 / 10000.0)),
+    |                                             ^                ^
+    |
+help: remove these parentheses
+    |
+856 -                         c((-11.0 / 1000.0), (-229.0 / 10000.0)),
+856 +                         c((-11.0 / 1000.0), -229.0 / 10000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:857:27
+    |
+857 |                         c((57007.0 / 50000.0), 0.0),
+    |                           ^                 ^
+    |
+help: remove these parentheses
+    |
+857 -                         c((57007.0 / 50000.0), 0.0),
+857 +                         c(57007.0 / 50000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:867:28
+    |
+867 |                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+    |                            ^         ^
+    |
+help: remove these parentheses
+    |
+867 -                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+867 +                         [c(2.0 / 5.0 , 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:867:49
+    |
+867 |                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+    |                                                 ^          ^
+    |
+help: remove these parentheses
+    |
+867 -                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+867 +                         [c((2.0 / 5.0), 0.0), c(1.0 / 25.0 , (-3.0 / 100.0))],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:867:63
+    |
+867 |                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+    |                                                               ^            ^
+    |
+help: remove these parentheses
+    |
+867 -                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), (-3.0 / 100.0))],
+867 +                         [c((2.0 / 5.0), 0.0), c((1.0 / 25.0), -3.0 / 100.0 )],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:868:28
+    |
+868 |                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+    |                            ^          ^
+    |
+help: remove these parentheses
+    |
+868 -                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+868 +                         [c(1.0 / 25.0 , (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:868:42
+    |
+868 |                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+    |                                          ^           ^
+    |
+help: remove these parentheses
+    |
+868 -                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+868 +                         [c((1.0 / 25.0), 3.0 / 100.0 ), c((1.0 / 5.0), 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:868:60
+    |
+868 |                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+    |                                                            ^         ^
+    |
+help: remove these parentheses
+    |
+868 -                         [c((1.0 / 25.0), (3.0 / 100.0)), c((1.0 / 5.0), 0.0)],
+868 +                         [c((1.0 / 25.0), (3.0 / 100.0)), c(1.0 / 5.0 , 0.0)],
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:874:27
+    |
+874 |                         c((-1407.0 / 5000.0), 0.0),
+    |                           ^                ^
+    |
+help: remove these parentheses
+    |
+874 -                         c((-1407.0 / 5000.0), 0.0),
+874 +                         c(-1407.0 / 5000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:875:27
+    |
+875 |                         c((-59.0 / 1000.0), (-61.0 / 2000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+875 -                         c((-59.0 / 1000.0), (-61.0 / 2000.0)),
+875 +                         c(-59.0 / 1000.0 , (-61.0 / 2000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:875:45
+    |
+875 |                         c((-59.0 / 1000.0), (-61.0 / 2000.0)),
+    |                                             ^              ^
+    |
+help: remove these parentheses
+    |
+875 -                         c((-59.0 / 1000.0), (-61.0 / 2000.0)),
+875 +                         c((-59.0 / 1000.0), -61.0 / 2000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:876:27
+    |
+876 |                         c((-823.0 / 40000.0), (59.0 / 10000.0)),
+    |                           ^                ^
+    |
+help: remove these parentheses
+    |
+876 -                         c((-823.0 / 40000.0), (59.0 / 10000.0)),
+876 +                         c(-823.0 / 40000.0 , (59.0 / 10000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:876:47
+    |
+876 |                         c((-823.0 / 40000.0), (59.0 / 10000.0)),
+    |                                               ^              ^
+    |
+help: remove these parentheses
+    |
+876 -                         c((-823.0 / 40000.0), (59.0 / 10000.0)),
+876 +                         c((-823.0 / 40000.0), 59.0 / 10000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:879:27
+    |
+879 |                         c((-59.0 / 1000.0), (61.0 / 2000.0)),
+    |                           ^              ^
+    |
+help: remove these parentheses
+    |
+879 -                         c((-59.0 / 1000.0), (61.0 / 2000.0)),
+879 +                         c(-59.0 / 1000.0 , (61.0 / 2000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:879:45
+    |
+879 |                         c((-59.0 / 1000.0), (61.0 / 2000.0)),
+    |                                             ^             ^
+    |
+help: remove these parentheses
+    |
+879 -                         c((-59.0 / 1000.0), (61.0 / 2000.0)),
+879 +                         c((-59.0 / 1000.0), 61.0 / 2000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:880:27
+    |
+880 |                         c((-3507.0 / 5000.0), 0.0),
+    |                           ^                ^
+    |
+help: remove these parentheses
+    |
+880 -                         c((-3507.0 / 5000.0), 0.0),
+880 +                         c(-3507.0 / 5000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:881:27
+    |
+881 |                         c((93.0 / 4000.0), (-61.0 / 4000.0)),
+    |                           ^             ^
+    |
+help: remove these parentheses
+    |
+881 -                         c((93.0 / 4000.0), (-61.0 / 4000.0)),
+881 +                         c(93.0 / 4000.0 , (-61.0 / 4000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:881:44
+    |
+881 |                         c((93.0 / 4000.0), (-61.0 / 4000.0)),
+    |                                            ^              ^
+    |
+help: remove these parentheses
+    |
+881 -                         c((93.0 / 4000.0), (-61.0 / 4000.0)),
+881 +                         c((93.0 / 4000.0), -61.0 / 4000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:884:27
+    |
+884 |                         c((-823.0 / 40000.0), (-59.0 / 10000.0)),
+    |                           ^                ^
+    |
+help: remove these parentheses
+    |
+884 -                         c((-823.0 / 40000.0), (-59.0 / 10000.0)),
+884 +                         c(-823.0 / 40000.0 , (-59.0 / 10000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:884:47
+    |
+884 |                         c((-823.0 / 40000.0), (-59.0 / 10000.0)),
+    |                                               ^               ^
+    |
+help: remove these parentheses
+    |
+884 -                         c((-823.0 / 40000.0), (-59.0 / 10000.0)),
+884 +                         c((-823.0 / 40000.0), -59.0 / 10000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:885:27
+    |
+885 |                         c((93.0 / 4000.0), (61.0 / 4000.0)),
+    |                           ^             ^
+    |
+help: remove these parentheses
+    |
+885 -                         c((93.0 / 4000.0), (61.0 / 4000.0)),
+885 +                         c(93.0 / 4000.0 , (61.0 / 4000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:885:44
+    |
+885 |                         c((93.0 / 4000.0), (61.0 / 4000.0)),
+    |                                            ^             ^
+    |
+help: remove these parentheses
+    |
+885 -                         c((93.0 / 4000.0), (61.0 / 4000.0)),
+885 +                         c((93.0 / 4000.0), 61.0 / 4000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:891:27
+    |
+891 |                         c((1407.0 / 5000.0), 0.0),
+    |                           ^               ^
+    |
+help: remove these parentheses
+    |
+891 -                         c((1407.0 / 5000.0), 0.0),
+891 +                         c(1407.0 / 5000.0 , 0.0),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:892:27
+    |
+892 |                         c((59.0 / 1000.0), (61.0 / 2000.0)),
+    |                           ^             ^
+    |
+help: remove these parentheses
+    |
+892 -                         c((59.0 / 1000.0), (61.0 / 2000.0)),
+892 +                         c(59.0 / 1000.0 , (61.0 / 2000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:892:44
+    |
+892 |                         c((59.0 / 1000.0), (61.0 / 2000.0)),
+    |                                            ^             ^
+    |
+help: remove these parentheses
+    |
+892 -                         c((59.0 / 1000.0), (61.0 / 2000.0)),
+892 +                         c((59.0 / 1000.0), 61.0 / 2000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:895:27
+    |
+895 |                         c((59.0 / 1000.0), (-61.0 / 2000.0)),
+    |                           ^             ^
+    |
+help: remove these parentheses
+    |
+895 -                         c((59.0 / 1000.0), (-61.0 / 2000.0)),
+895 +                         c(59.0 / 1000.0 , (-61.0 / 2000.0)),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:895:44
+    |
+895 |                         c((59.0 / 1000.0), (-61.0 / 2000.0)),
+    |                                            ^              ^
+    |
+help: remove these parentheses
+    |
+895 -                         c((59.0 / 1000.0), (-61.0 / 2000.0)),
+895 +                         c((59.0 / 1000.0), -61.0 / 2000.0 ),
+    |
+
+warning: unnecessary parentheses around function argument
+   --> tests/forward.rs:896:27
+    |
+896 |                         c((3507.0 / 5000.0), 0.0),
+    |                           ^               ^
+    |
+help: remove these parentheses
+    |
+896 -                         c((3507.0 / 5000.0), 0.0),
+896 +                         c(3507.0 / 5000.0 , 0.0),
+    |
+
+warning: `rec_microphysics` (test "forward") generated 83 warnings (run `cargo fix --test "forward" -p rec_microphysics` to apply 83 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.42s
+     Running unittests src/lib.rs (rust/rec_microphysics/target/debug/deps/rec_microphysics-93fa6b92e281e691)
+     Running tests/forward.rs (rust/rec_microphysics/target/debug/deps/forward-b4445c8e59dfb770)
+   Doc-tests rec_microphysics

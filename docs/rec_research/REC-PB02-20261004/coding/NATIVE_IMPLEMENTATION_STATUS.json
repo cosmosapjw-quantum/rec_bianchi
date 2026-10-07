@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "task": "REC-BIANCHI-PB02_NATIVE_H_ONE_T",
+  "classification": "implementation-verified_pointwise_reference",
+  "source_parent_commit": "5694a5c7ef487adc969f38ae9112b796396216ca",
+  "rustc": "1.94.1",
+  "cargo": "1.94.1",
+  "dependencies": "none",
+  "targeted_tests": {
+    "passed": 20,
+    "failed": 0,
+    "exit_code": 0,
+    "log": "TARGETED_TEST_LOG.txt"
+  },
+  "integrated_tests": {
+    "passed": 108,
+    "failed": 0,
+    "exit_code": 0,
+    "breakdown": {
+      "forward": 76,
+      "frame": 8,
+      "hydrogen_peebles": 20,
+      "screen": 3,
+      "doctest": 1
+    },
+    "log": "FULL_CRATE_TEST_LOG.txt"
+  },
+  "probe_build": "PASS",
+  "formatter": "NOT_RUN_RUSTFMT_UNAVAILABLE",
+  "source_profile": "HYREC2_TLA_2020_PEEBLES_FUDGE1",
+  "upstream_commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+  "native_temperature_scope": "ONE_T_EQUALITY_REQUIRED",
+  "qss_scope": "instantaneous_fixed_ground_and_frozen_escape_finite_mass_only",
+  "scientific_history_admitted": false,
+  "rei_consumer_connected": false,
+  "full_uniform_certification": false,
+  "changed_files": [
+    {
+      "path": "rec_microphysics/src/lib.rs",
+      "sha256": "ec394a01f90afcb4825759799749a493ae16d545fdf8cdee6f5ec6c040c9ffa5",
+      "bytes": 112
+    },
+    {
+      "path": "rec_microphysics/src/hydrogen_peebles.rs",
+      "sha256": "08d651596a99f88b5350c3a3e74e39f642c16579446aff690d60dd2f3fa6e6b8",
+      "bytes": 11862
+    },
+    {
+      "path": "rec_microphysics/tests/hydrogen_peebles.rs",
+      "sha256": "d36c26ade132bd5dd84b3b7dac1ef1ca17bc74a00327a915a46e76039bc101ae",
+      "bytes": 7715
+    },
+    {
+      "path": "rec_microphysics/examples/peebles_probe.rs",
+      "sha256": "48d951861865243e2d919c10601082ac740a66c352a8fe53daf41d3d150d330f",
+      "bytes": 2767
+    }
+  ]
+}

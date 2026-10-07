@@ -1,0 +1,90 @@
+{
+  "schema_version": "REC_HE_KNOWN_GAPS_TASK7_V1",
+  "baseline_commit": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "evidence_kind": "SOURCE_AND_CODE_STATIC_READ; historical toy results are not current runtime results",
+  "gaps": [
+    {
+      "id": "G01",
+      "priority": "P1",
+      "finding": "pair screen overlap identity shortcut",
+      "mapping_row": "M08",
+      "owner_task": 4,
+      "repair_status": "PAIR_GEOMETRY_MARGINAL_ASSEMBLY_AUTHORED_UNCOMPILED_TASK4",
+      "acceptance_status": "NOT_RUN_IN_RUST",
+      "implementation_map": "task4/API_SOURCE_MAP.json"
+    },
+    {
+      "id": "G02",
+      "priority": "P1",
+      "finding": "BB single F broadcast limits angular input",
+      "mapping_row": "M03",
+      "owner_task": 3,
+      "repair_status": "PER_MODE_KERNEL_AND_ASSEMBLY_AUTHORED_UNCOMPILED_TASK3",
+      "acceptance_status": "NOT_RUN_IN_RUST",
+      "implementation_map": "task3/API_SOURCE_MAP.json"
+    },
+    {
+      "id": "G03",
+      "priority": "P1",
+      "finding": "pair physical marginal and quadrature ownership incomplete",
+      "mapping_row": "M09",
+      "owner_task": 4,
+      "repair_status": "PAIR_GEOMETRY_MARGINAL_ASSEMBLY_AUTHORED_UNCOMPILED_TASK4",
+      "acceptance_status": "NOT_RUN_IN_RUST",
+      "implementation_map": "task4/API_SOURCE_MAP.json"
+    },
+    {
+      "id": "G04",
+      "priority": "P1",
+      "finding": "public input finite/PSD/screen guards incomplete",
+      "mapping_row": "M01",
+      "owner_task": 2,
+      "repair_status": "GUARDS_AUTHORED_UNCOMPILED_TASK2",
+      "acceptance_status": "NOT_RUN_IN_RUST; local compile/tests pending"
+    },
+    {
+      "id": "G05",
+      "priority": "P1",
+      "finding": "independent full matrix oracle and strict scale/nonfinite gates missing",
+      "mapping_row": "M13",
+      "owner_task": 6,
+      "repair_status": "REFERENCE_AND_RAW_OUTPUT_HARNESS_AUTHORED_TASK6",
+      "acceptance_status": "PYTHON_CHECKER_SELF_TESTS_PASS_32; ACTUAL_RUST_PARITY_NOT_RUN",
+      "partial_progress": "251 fixed records / 3027 raw numeric components with frozen reference scales; Python validators and source-reference crosschecks executed; Rust adapter uncompiled",
+      "implementation_map": "task6/API_SOURCE_MAP.json"
+    },
+    {
+      "id": "G06",
+      "priority": "P1",
+      "finding": "independent event energy/heat/material four-force assembly missing",
+      "mapping_row": "M11",
+      "owner_task": 5,
+      "repair_status": "BF_SIGNED_HEAT_AND_FIVE_CHANNEL_MATERIAL_MOMENTS_AUTHORED_TASK5",
+      "acceptance_status": "NOT_RUN_IN_RUST",
+      "partial_progress": "raw photon, atomic, threshold/excess-energy moments independently accumulated; runtime parity remains local",
+      "implementation_map": "task5/API_SOURCE_MAP.json"
+    },
+    {
+      "id": "G07",
+      "priority": "P2",
+      "finding": "T4 broader stated coverage is not an available low partial table",
+      "mapping_row": "M06",
+      "owner_task": 5,
+      "repair_status": "EXISTING_HIGH_FAMILY_AND_UNKNOWN_BOUNDARIES_PRESERVED_TASK5",
+      "acceptance_status": "NO_LOW_TABLE_ADMISSION; Rust regression tests not run"
+    },
+    {
+      "id": "G08",
+      "priority": "P2",
+      "finding": "historical PASS and untested general-input port must be separated",
+      "mapping_row": "M14",
+      "owner_task": 1,
+      "repair_status": "STATE_ANNOTATION_PREPARED_LOCALLY",
+      "acceptance_status": "AWAITING_LOCAL_CODEX; no PASS inherited"
+    }
+  ],
+  "new_physics_assumptions": false,
+  "candidate_code_available": "LOCAL_OVERLAY_NOT_PUBLISHED__SOURCE_MATCHED_REPAIR_AWAITING_LOCAL_TEST",
+  "t4_mapping": "task7/T4_COVERAGE_MAP.json",
+  "task7_review_note": "No prior gap is promoted to runtime-verified. Integer-null, BF both-gauge LTE, isolated-channel energy, 584/Pbf non-relabel and complex-F scalar-reduction coverage supplemented in tests only."
+}

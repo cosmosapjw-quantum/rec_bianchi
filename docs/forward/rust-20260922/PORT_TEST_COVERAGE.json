@@ -1,0 +1,164 @@
+{
+  "schema": "REC_HE_T4_COVERAGE_TASK7",
+  "mapping": "task7/T4_COVERAGE_MAP.json",
+  "policy": "task7/GATE_P_I_POLICY.json",
+  "fixture_registry": "task7/FIXTURE_REGISTRY.json",
+  "original_matrix": {
+    "path": "docs/forward/rust-20260922/source_subset/plans/LOCAL_CODEX_T4_TEST_MATRIX.json",
+    "sha256": "4008bb2d497c68b0579343c9e5ad223a4f0db7a7909ae0636c1dfa3b003865b0",
+    "size_bytes": 2091
+  },
+  "current": {
+    "gate_p": "HOLD_INDEPENDENT_REVIEW_RUNTIME_BINDING",
+    "gate_i": "DEFERRED_CONSUMER",
+    "full_original_t4": "NOT_RUN",
+    "candidate_commit_sha": "0ef9968c1dcfa17ba63072965902c86d3b59d9ad",
+    "tested_commit_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+    "delivery_commit_sha": null,
+    "allow_consumer_integration": false
+  },
+  "rows": [
+    {
+      "id": "T4L01",
+      "original_test": "event matrix He-nucleus and charge null vectors",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L02",
+      "original_test": "channel-by-channel energy ledger P_int+P_gamma+H_kin=0",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "HOST_SCOPED_REVIEW_DONE__INDEPENDENT_NOT_ADMITTED"
+    },
+    {
+      "id": "T4L03",
+      "original_test": "material-frame Planck/Boltzmann/Saha source zero for all represented channels",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "HOST_SCOPED_REVIEW_DONE__INDEPENDENT_NOT_ADMITTED"
+    },
+    {
+      "id": "T4L04",
+      "original_test": "finite-tilt boosted LTE remains source zero",
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L05",
+      "original_test": "normal/material photon source parity with Dossier-II Eq.115-119 including screen transform",
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L06",
+      "original_test": "atomic proper-density normal-time parity with Dossier-III continuity",
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L07",
+      "original_test": "direction-dependent normal-frame sharp-line support E_n=epsilon/D",
+      "scope": "CONSUMER_ONLY",
+      "gate_p_required": false,
+      "material_execution": "NOT_APPLICABLE",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L08",
+      "original_test": "bound-free threshold and table lookup use E_m=D E_n",
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L09",
+      "original_test": "two-photon pair uses D1 E1n + D2 E2n=Delta_S",
+      "scope": "MATERIAL_SUBCHECK_PLUS_CONSUMER",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "DEFERRED_CONSUMER",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L10",
+      "original_test": "P-bound-free full matrix source reduces to scalar isotropic formula when W_P=n_P I3/3",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L11",
+      "original_test": "584/IR matrix event trace parity between atom and photon source",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "T4L12",
+      "original_test": "coverage mask returns explicit UNKNOWN outside domain and preserves LTE on represented modes",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "HOST_SCOPED_REVIEW_DONE__INDEPENDENT_NOT_ADMITTED"
+    },
+    {
+      "id": "T4L13",
+      "original_test": "no duplicate 2gamma total loss, no 584 continuum absorption added to atomic P decay",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "HOST_SCOPED_REVIEW_DONE__INDEPENDENT_NOT_ADMITTED"
+    },
+    {
+      "id": "T4L14",
+      "original_test": "four-force moment equals scalar photon-energy ledger in material frame",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "HOST_SCOPED_REVIEW_DONE__INDEPENDENT_NOT_ADMITTED"
+    },
+    {
+      "id": "T4L15",
+      "original_test": "species-drift BF inverse is rejected unless a rederived electron distribution kernel is supplied",
+      "scope": "MATERIAL_LIBRARY",
+      "gate_p_required": true,
+      "material_execution": "PASS_MAPPED_TESTS",
+      "original_full_execution": "NOT_RUN",
+      "local_audit_status": "NOT_APPLICABLE"
+    }
+  ],
+  "rust_test_functions_authored": 75,
+  "rust_tests_executed_this_task": 0,
+  "reference_inputs": 251,
+  "reference_numeric_components": 3027,
+  "reference_numbers_are_observations": false,
+  "warning": "Static mapping/checker self-tests are not execution of any original T4 test. Legacy Task1/Task4 status snapshots remain historical evidence.",
+  "tested_execution_receipt": "task9/EXECUTION_RECEIPT.json"
+}

@@ -1,0 +1,19 @@
+{
+  "source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "repro_source": "repro.rs",
+  "compile_argv": [
+    "rustc",
+    "--edition=2024",
+    "/tmp/rec_he_review_rebind/overflow_repro/repro.rs",
+    "--extern",
+    "rec_microphysics=/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/target/debug/deps/librec_microphysics-f2e292beddffeb43.rlib",
+    "-L",
+    "dependency=/tmp/rec-rust-he-review-20260930/rust/rec_microphysics/target/debug/deps",
+    "-o",
+    "/tmp/rec_he_review_rebind/overflow_repro/repro"
+  ],
+  "compile_exit": 0,
+  "run_exit": 0,
+  "run_stdout": "p_internal=-inf p_gamma=inf energy_residual=NaN",
+  "classification": "SOURCE_DEFECT_CONFIRMED_PUBLIC_LEDGER_NONFINITE_OK"
+}

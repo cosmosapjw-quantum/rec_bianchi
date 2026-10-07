@@ -1,0 +1,37 @@
+{
+  "source_authority": [
+    "BASS_WU29_20260913_RESULT_v1.txt",
+    "BASS_WU30_20260914_RESULT_v1.txt",
+    "BASS_WU31_20260914_AMENDMENT_WU31_A1_v1.txt",
+    "T4 interface/coverage/ledger"
+  ],
+  "implementation_tolerance": 9.094947017729282e-13,
+  "expected": {
+    "d86_0025": 7.736,
+    "d86_05": 145.142,
+    "d86_0975": 7.736,
+    "p_q12_s_mb": 0.011987983616479864,
+    "p_q12_d_mb": 0.010059902806023145,
+    "s_q10_mb": 0.543492904604474,
+    "pair_tags": 2,
+    "pair_factor": 0.5,
+    "pair_weight_ratio": 2.0
+  },
+  "zero_or_scaled_residual_keys": [
+    "bb_vac_rel",
+    "bb_jvp_rel",
+    "p_lte_rel",
+    "p_lte_atom_rel",
+    "s_lte_rel",
+    "complex_trace_rel",
+    "pair_matrix_abs",
+    "he_nuclei_residual",
+    "charge_residual",
+    "energy_residual"
+  ],
+  "notes": [
+    "Tolerance is implementation-only f64 expression-level parity, not an outward interval proof.",
+    "P-low and S-low numerical rows are not present in the selected authority subset and are not invented.",
+    "The BB finite-stencil/JVP check is a local port oracle; it does not rerun or promote the September scientific weak/JVP study."
+  ]
+}

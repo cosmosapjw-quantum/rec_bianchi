@@ -1,0 +1,34 @@
+{
+  "schema_version": "BASS_T4_SOURCE_TRANSPORT_INTERFACE_V1",
+  "input_state": {
+    "normal_frame": ["E_n", "e_n", "F_n", "n_tetrad"],
+    "material_frame": ["u_m", "beta_m", "gamma_m", "n_g", "n_S", "W_P", "n_HeII", "n_e", "T_m"],
+    "atomic_data": ["line_coefficients", "bound_free_cross_sections", "two_photon_w", "coverage_masks"]
+  },
+  "boost": {
+    "D_mray": "gamma_m*(1-beta_m dot e_n)",
+    "E_m": "D_mray*E_n",
+    "photon_source_normal_time": "D_mray * BoostScreen_m_to_n(C_t_material)",
+    "photon_source_normal_length": "D_mray/c * BoostScreen_m_to_n(C_t_material)",
+    "atom_proper_density_normal_time": "(R-theta_U*n)/gamma_m",
+    "warning": "PHOTON_RAY_CLOCK_AND_ATOM_WORLDLINE_CLOCK_ARE_NOT_THE_SAME_FACTOR"
+  },
+  "energy_lookup": {
+    "bound_bound": "line support evaluated at material E_m",
+    "bound_free": "q=(E_m-chi_i)/Ry and threshold E_m>=chi_i",
+    "two_photon": "E1_m+E2_m=Delta_S",
+    "normal_frame_two_photon_constraint": "D1*E1_n + D2*E2_n = Delta_S"
+  },
+  "collision_outputs": {
+    "atomic": ["B_584", "B_IR", "B_P", "R_584", "R_IR", "R_P", "R_S", "R_2g"],
+    "photon": ["C_584", "C_IR", "C_Pbf", "C_Sbf", "C_2g"],
+    "ledger": ["P_int", "P_gamma", "H_kin", "Q_m_fourvector"]
+  },
+  "frame_firewall": {
+    "bound_free_inverse_baseline": "u_e=u_He=u_m and isotropic nondegenerate Maxwell electrons in that frame",
+    "species_drift": "DEFERRED_REDERIVATION_REQUIRED",
+    "orbital_W_P": "3D material orbital space; do not apply photon screen boost",
+    "photon_F": "2D physical screen occupation; use existing finite photon boost adapter"
+  },
+  "missing_data_behavior": "RETURN_EXPLICIT_UNKNOWN_OR_MISSING_DOMAIN_STATE__NEVER_SILENT_ZERO"
+}

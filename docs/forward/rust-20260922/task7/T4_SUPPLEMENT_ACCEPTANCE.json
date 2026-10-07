@@ -1,0 +1,99 @@
+{
+  "schema": "REC_HE_TASK7_T4_SUPPLEMENT_V1",
+  "kind": "PRESPECIFIED_INPUTS_AND_ASSERTIONS_NOT_OBSERVED_RESULTS",
+  "tolerance": 9.094947017729282e-13,
+  "tolerance_origin": "unchanged implementation-only 4096*f64::EPSILON",
+  "tests": {
+    "t4l01_event_matrix_exact_integer_null_vectors": {
+      "null_vectors": [
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          -1,
+          0
+        ]
+      ],
+      "columns": 5,
+      "arithmetic": "integer"
+    },
+    "t4l03_bf_lte_both_gauges_nodes_and_midpoints": {
+      "temperature_k": 8000.0,
+      "n_he_plus": 20000000.0,
+      "ne": 30000000.0,
+      "q": [
+        1.0,
+        1.1,
+        1.2,
+        1.3,
+        1.4
+      ],
+      "families": [
+        "P_Length",
+        "P_Velocity",
+        "S_Length",
+        "S_Velocity"
+      ],
+      "screens": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.6,
+            0.0
+          ],
+          [
+            0.8,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      ],
+      "expected": "all source real/imag components zero within independently assembled gross bounds",
+      "not_proved": "LTE over every continuum energy/direction"
+    },
+    "t4l02_isolated_source_channel_energy_and_force": {
+      "channels": [
+        "He584",
+        "IrPToS",
+        "PBF",
+        "SBF",
+        "TwoPhoton"
+      ],
+      "expected": "per-channel nonzero event; other event channels zero; separately accumulated photon power + internal power + heat zero; cQ_gamma0 matches photon power; cQ_matter0 matches internal plus heat",
+      "not_independent": "Q_matter=-Q_gamma is a definition"
+    },
+    "t4l13_pbf_is_not_relabelled_as_584_decay": {
+      "state": "t5_state with n_he_plus=ne=0",
+      "q": 1.2,
+      "bb_F": "0.1 I2",
+      "pbf_F": "0.2 I2",
+      "expected": "mix.r584==isolated_584.r584; mix.rp==isolated_bf.rp; atom matrix and photon number add exactly once; no phenomenological continuum correction"
+    }
+  },
+  "ruling": "Append source-contract tests in Task7 to cover mapping gaps; no production changes, no existing fixture or threshold changes. Rust execution remains local-only."
+}

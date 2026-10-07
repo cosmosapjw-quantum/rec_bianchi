@@ -1,0 +1,75 @@
+{
+  "schema": "REC_HE_F1_BACKUP_V1",
+  "artifact": "REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+  "size": 560486,
+  "sha256": "e2ac170882a5303b5b4d8adf31e2b01c82c9b7e79679961109a01eb46bfbab74",
+  "native_hashes": {
+    "dropbox": "ca13a7b5c1ae85400705e7259e6bf36013f603ea43138a7e88c31a52a78c9b8c",
+    "md5": "d12aafeaeb065f82f8571d240dc264c4"
+  },
+  "manifest_entries": 256,
+  "zip_crc": "PASS",
+  "tested_source_sha": "d3cc6e0120061f113d28e7a3a55a2e3dd561e81e",
+  "provider_writes": {
+    "dropbox": {
+      "argv": [
+        "rclone",
+        "copyto",
+        "--immutable",
+        "/tmp/rec_he_f1_repair/REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "dbx:BASS_DERIVATION_DOSSIERS_20260912/REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip"
+      ],
+      "exit": 0,
+      "metadata_exit": 0,
+      "metadata": {
+        "Path": "REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "Name": "REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "Size": 560486,
+        "MimeType": "application/zip",
+        "ModTime": "2026-09-30T01:16:54Z",
+        "IsDir": false,
+        "Hashes": {
+          "dropbox": "ca13a7b5c1ae85400705e7259e6bf36013f603ea43138a7e88c31a52a78c9b8c"
+        },
+        "ID": "id:BSpOijBcT10AAAAAADwIfQ"
+      },
+      "native_hash_match": true,
+      "not_reuploaded": true
+    },
+    "google_drive": {
+      "argv": [
+        "rclone",
+        "copyto",
+        "--immutable",
+        "/tmp/rec_he_f1_repair/REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "gdrv:BASS_DERIVATION_DOSSIERS_20260912/REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip"
+      ],
+      "exit": 0,
+      "metadata_exit": 0,
+      "metadata": {
+        "Path": "REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "Name": "REC_BIANCHI_RUST_FORWARD_F1_REPAIRED_d3cc6e0_20260930.zip",
+        "Size": 560486,
+        "MimeType": "application/zip",
+        "ModTime": "2026-09-30T01:16:54.023Z",
+        "IsDir": false,
+        "Hashes": {
+          "md5": "d12aafeaeb065f82f8571d240dc264c4"
+        },
+        "ID": "1d81DygLXo0TDP6VS5851FlzbNBYnRoHl"
+      },
+      "native_hash_match": true,
+      "not_reuploaded": false
+    }
+  },
+  "restore_verified": false,
+  "first_attempt": {
+    "script_exit": 1,
+    "stage": "Dropbox metadata validation after successful upload",
+    "cause": "Script expected Hashes.DropboxHash; actual rclone key was Hashes.dropbox. Values matched. Packaging/metadata handling only.",
+    "repair": "Normalize native hash keys; reuse uploaded Dropbox object and continue Drive upload. No source retest or duplicate Dropbox upload."
+  },
+  "scope": "Scoped source, fixtures, source lock/subset, historical failures, new raw test/review evidence and start handoff. Final backup receipt/status are added in Git evidence commit after packaging.",
+  "publication_verifier": "BACKUP_VERIFICATION.json",
+  "status": "DUAL_BACKUP_COMPLETE"
+}

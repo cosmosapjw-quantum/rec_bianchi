@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "task_id": "REC-BIANCHI-PB02-20261004",
+  "evidence": "literature-supported_and_source-inspected",
+  "checked_date_utc": "2026-10-04",
+  "sources": [
+    {
+      "id": "PB01",
+      "kind": "existing_project_contract",
+      "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/67957715cf3336b89c27c1e59c33ca23098f8934/docs/fastest_track_chat/REI-CHAT-PB01-20261004/PEEBLES_REDUCTION_SPEC.json",
+      "commit": "67957715cf3336b89c27c1e59c33ca23098f8934",
+      "status": "READ_AUTHORITATIVE_PREDECESSOR",
+      "role": "Do not duplicate or promote existing conditional result; close source-bound follow-up"
+    },
+    {
+      "id": "HYREC_PAPER",
+      "kind": "primary_paper",
+      "url": "https://arxiv.org/pdf/1011.3758v2",
+      "doi": "10.1103/PhysRevD.83.043513",
+      "section": "II.A equations 1-12",
+      "version": "arXiv:1011.3758v2",
+      "web_ref": "turn111view0",
+      "role": "TLA level conventions, two-temperature detailed balance, large-tau Sobolev model"
+    },
+    {
+      "id": "HYREC2_CODE",
+      "kind": "author_repository",
+      "url": "https://github.com/nanoomlee/HYREC-2/tree/09e8243d0e08edd3603a94dfbc445ae06cafe139",
+      "commit": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+      "tree": "582d8b56b20a4a8b311d4eece68d9d8100e7530d",
+      "release_label": "July 2020",
+      "files": [
+        {
+          "path": "hydrogen.c",
+          "git_blob": "233f174bfb1758fa910866310340ae1bfad703db",
+          "sha256": "734800ccd69b41d60b519f200003ce27c3b7640f76a70353499424842ba19616",
+          "bytes": 46627
+        },
+        {
+          "path": "hydrogen.h",
+          "git_blob": "088b34a699efe5d6d3aefb158229e9fb83d9a586",
+          "sha256": "1b2c64d108078722dd546f4e8b9bddca2cbe6abdf4b63e44e76fe0e9d58f4e52",
+          "bytes": 11868
+        }
+      ],
+      "symbols": [
+        "alphaB_PPB",
+        "rec_TLA_dxHIIdlna",
+        "rec_dxHIIdlna",
+        "SAHA_FACT",
+        "LYA_FACT"
+      ],
+      "source_mode": "PEEBLES; Fudge=1; fsR=meR=1; ion=exclya=0",
+      "license_state": "NO_EXPLICIT_LICENSE_FOUND_IN_PINNED_TREE_OR_REPOSITORY_METADATA",
+      "license_consequence": "Publicly readable is not established condition-free redistribution; this packet references formulas and source identities without vendoring upstream source."
+    },
+    {
+      "id": "RECFAST_CAMB",
+      "kind": "official_code_crosscheck",
+      "url": "https://github.com/cmbant/CAMB/blob/56a95f78fdd72709c5af6b668141ec0c617777c3/fortran/recfast.f90",
+      "commit": "56a95f78fdd72709c5af6b668141ec0c617777c3",
+      "documentation": "https://camb.info/doc/files/recfast.html",
+      "web_ref": "turn115view1",
+      "license_state": "EMBEDDED_UBC_PERMISSION_NOTICE_PRESENT",
+      "license_summary": "Use/copy/modify/distribute permitted with notice and disclaimer preservation; CAMB repository terms also require consideration for copied wrapper material.",
+      "behavior": "Inspected default hydrogen Rup and Boltzmann factor use Tmat; Hswitch adds fitted correction; unmodified default is not the matched two-temperature Peebles benchmark."
+    },
+    {
+      "id": "HYREC2_PAPER",
+      "kind": "primary_paper",
+      "url": "https://arxiv.org/pdf/2007.14114",
+      "doi": "10.1103/PhysRevD.102.083517",
+      "web_ref": "turn111view1",
+      "role": "Four-level effective atom and calibrated escape correction; SWIFT/FULL not target Peebles oracle"
+    },
+    {
+      "id": "NG_CHU_2025",
+      "kind": "primary_bianchi_paper",
+      "url": "https://arxiv.org/html/2503.14969v2",
+      "doi": "10.1103/3njx-sy22",
+      "version": "arXiv:2503.14969v2",
+      "web_ref": "turn116view0",
+      "section": "II.2, equations 17-23",
+      "license_state": "ARXIV_HTML_CC_BY_4_0",
+      "role": "Restricted LRS Bianchi-I mean-expansion recombination comparison; assumes negligible radiation temperature anisotropy and isotropic pressure, not general anisotropic RT validation"
+    },
+    {
+      "id": "NG_CHU_CODE",
+      "kind": "author_code_archive",
+      "url": "https://zenodo.org/records/15847891",
+      "doi": "10.5281/zenodo.15847891",
+      "version": "1.0",
+      "file": "theory_and_likelihood.py",
+      "reported_bytes_approx": 71400,
+      "reported_md5": "f1bbbcdff7c13cf8e7ac786b4c41ac5b",
+      "web_ref": "turn115search1",
+      "status": "METADATA_READ_CODE_NOT_DOWNLOADED_OR_EXECUTED",
+      "license_state": "NOT_CONFIRMED",
+      "author_notation_caution": "Hx and Ha interchangeable; Hz and Hc interchangeable"
+    }
+  ]
+}

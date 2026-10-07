@@ -1,0 +1,161 @@
+{
+  "child": {
+    "child_id": "01a0f1eb-29c8-7780-81a9-5d37ad521909",
+    "runtime_observation": {
+      "observed": {
+        "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+        "effort": "high",
+        "model": "gpt-6-sol",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      },
+      "state": "MATCH",
+      "transcript_ref": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-45-15-01a0f1eb-29c8-7780-81a9-5d37ad521909.jsonl",
+      "transcript_sha256": "b11da49f2a31e23c2ed92eae5722b5a7bf51959640979939df3e14222f256f7b",
+      "turn_id": "01a0f1eb-2a6c-75d0-8481-4a80a09a650b"
+    },
+    "runtime_profile": {
+      "effort": "high",
+      "model": "gpt-6-sol",
+      "model_reasoning_effort": "high"
+    },
+    "transcript_ref": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-45-15-01a0f1eb-29c8-7780-81a9-5d37ad521909.jsonl"
+  },
+  "claim": {
+    "session_id": "01a0f1b4-8ce3-7711-b660-03562717372a",
+    "tool_use_id": "call_RDhmrcmV4L8bC7QVNENOfeQr"
+  },
+  "continuation_context": null,
+  "exits": {
+    "sha256:cd6922fc8c302e6e37e7467c8a0b73c036698e34bfbb75e605aebb8aa2cc493e": {
+      "child_id": "01a0f1eb-29c8-7780-81a9-5d37ad521909",
+      "claim_admitted": false,
+      "decision": "BLOCKED_BY_VALIDATOR",
+      "event_digest": "sha256:cd6922fc8c302e6e37e7467c8a0b73c036698e34bfbb75e605aebb8aa2cc493e",
+      "identity": {
+        "head_commit": "5a6a3988053e876e96ef546d040ef856eca2bb4e",
+        "repo_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+        "repo_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+        "worktree_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+        "worktree_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi"
+      },
+      "launch_id": "cl_59ad40eee624a2c136c186a7ae35095c",
+      "profile": {
+        "effort": "high",
+        "model": "gpt-6-sol",
+        "model_reasoning_effort": "high",
+        "profile_id": "cuhg_gpt6_sol_worker",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      },
+      "runtime_observation": {
+        "observed": {
+          "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+          "effort": "high",
+          "model": "gpt-6-sol",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          }
+        },
+        "state": "MATCH",
+        "transcript_ref": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-45-15-01a0f1eb-29c8-7780-81a9-5d37ad521909.jsonl",
+        "transcript_sha256": "b11da49f2a31e23c2ed92eae5722b5a7bf51959640979939df3e14222f256f7b",
+        "turn_id": "01a0f1eb-2a6c-75d0-8481-4a80a09a650b"
+      },
+      "schema": "cuhg-child-lifecycle/v1",
+      "status": "VALIDATOR_FAILED",
+      "transcript_ref": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T19-45-15-01a0f1eb-29c8-7780-81a9-5d37ad521909.jsonl",
+      "validator_execution": {
+        "argv": [
+          "/usr/bin/env",
+          "cargo",
+          "test",
+          "--offline",
+          "--manifest-path",
+          "rust/rec_microphysics/Cargo.toml"
+        ],
+        "config_digest": "sha256:48c012a3889986b3b851b73bbc3c3a07e3f65616d035d2c3c5569f12927b8ef4",
+        "cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+        "ended_at": "2026-09-30T10:55:44.785292Z",
+        "environment_digest": "sha256:19e4f448cef1060ec4560ccac918e582c9f4502ef1fd26eb3a35361d31cdf6e1",
+        "environment_names": [
+          "CUHG_CHILD_EVENT_PATH",
+          "CUHG_CHILD_RECEIPT",
+          "PATH",
+          "PYTHONDONTWRITEBYTECODE",
+          "PYTHONNOUSERSITE"
+        ],
+        "executable_digest": "sha256:886e5fa8be716b03eeda48856e0f04493f2969fc148fb7812594ffac647fa050",
+        "exit_code": 127,
+        "implementation_digest": "sha256:e7dd189833461cdd0c39934df67b093064bdab9a520eccf87e443fb6b0b5e519",
+        "lease_id": "child-validator-cl_59ad40eee624a2c136c186a7ae35095c",
+        "max_buffered_bytes": 131121,
+        "operational_status": "FATAL_ERROR",
+        "pgid": 2210935,
+        "pid": 2210935,
+        "process_group_ended": true,
+        "process_start_identity": "linux-start:1ebd41e2-e6e5-4169-aac7-c7611dcb631f:2210935:2210935:2210935:11998485",
+        "run_id": "validator-cd6922fc8c302e6e37e7467c8a0b73c0",
+        "runner_id": "cuhg-child-lifecycle",
+        "runner_version": "1",
+        "spec_digest": "sha256:5222cb3ea9de9583441ce7e83b9b201a187defea9ad0172c909485cf033a9e04",
+        "started_at": "2026-09-30T10:55:44.734191Z",
+        "stderr": {
+          "device": 66308,
+          "digest": "sha256:f87d82014f6ef4c5fb606f126f3e79efbb7fea8b3b028cd3a9dc56923c834bf0",
+          "fsynced": true,
+          "inode": 4063645,
+          "path": "/home/cosmosapjw/.codex/runtime/global-hooks/v1/lifecycle/validator-spools/validator-cd6922fc8c302e6e37e7467c8a0b73c0.stderr.628722efba9640b381115dbd3cb87146.spool",
+          "size_bytes": 49
+        },
+        "stdout": {
+          "device": 66308,
+          "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "fsynced": true,
+          "inode": 4063571,
+          "path": "/home/cosmosapjw/.codex/runtime/global-hooks/v1/lifecycle/validator-spools/validator-cd6922fc8c302e6e37e7467c8a0b73c0.stdout.5aece87c38fc47e49f9a9d3a798ebbba.spool",
+          "size_bytes": 0
+        },
+        "termination_reason": "EXITED",
+        "termination_signals": [],
+        "wall_time_ms": 52
+      }
+    }
+  },
+  "harness_contract": null,
+  "identity": {
+    "head_commit": "5a6a3988053e876e96ef546d040ef856eca2bb4e",
+    "repo_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+    "repo_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "worktree_id": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+    "worktree_root": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi"
+  },
+  "last_exit_digest": "sha256:cd6922fc8c302e6e37e7467c8a0b73c036698e34bfbb75e605aebb8aa2cc493e",
+  "launch_id": "cl_59ad40eee624a2c136c186a7ae35095c",
+  "profile": {
+    "effort": "high",
+    "model": "gpt-6-sol",
+    "model_reasoning_effort": "high",
+    "profile_id": "cuhg_gpt6_sol_worker",
+    "sandbox_policy": {
+      "type": "danger-full-access"
+    }
+  },
+  "run_id": "REC-HE-SCREEN-20260930",
+  "schema": "cuhg-child-lifecycle/v1",
+  "session_id": "01a0f1b4-8ce3-7711-b660-03562717372a",
+  "task_id": "REC-HE-SCREEN-20260930",
+  "task_name": "rec_screen_author",
+  "validator_argv": [
+    "cargo",
+    "test",
+    "--offline",
+    "--manifest-path",
+    "rust/rec_microphysics/Cargo.toml"
+  ],
+  "validator_files": {
+    "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/rust/rec_microphysics/Cargo.toml": "ec1d4515f08efb4da800bff441165f0c9e5a6747854cee6a045158b7ed29fd55"
+  }
+}

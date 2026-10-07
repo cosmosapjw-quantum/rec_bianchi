@@ -1,0 +1,18 @@
+{
+  "schema": "REC_HE_TASK3_ACCEPTANCE_V1",
+  "tolerance": 9.094947017729282e-13,
+  "threshold_origin": "unchanged approved 4096*f64::EPSILON; implementation only",
+  "reference_comparison": "finite(actual,expected,reference_gross); abs(actual-expected)<=tol*reference_gross; zero gross requires exact equality; no +1 floor",
+  "bb_normalization": "b_shell=3A/(8pi); references are divided by b_shell",
+  "spectral_measure": "SharpLineDeltaPerJoule; C_shell multiplies delta_J, never a sampled line profile",
+  "moment_tolerance": 9.094947017729282e-13,
+  "mutation_cases": [
+    "broadcast_first_F",
+    "transpose_BB_F",
+    "double_angular_weight",
+    "omit_b_shell",
+    "replace_J_with_zero"
+  ],
+  "toy_scope": "exact finite fixture contractions and moment identities, not Rust parity",
+  "compiler_gate": "NOT_RUN_OWNER_LOCAL_CODEX"
+}

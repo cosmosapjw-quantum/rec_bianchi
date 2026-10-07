@@ -1,0 +1,278 @@
+{
+  "review_id": "REC-PB02-INDEPENDENT-20261004",
+  "status": "COMPLETED",
+  "verdict": "confirmed",
+  "verdict_scope": "New source-bound one-temperature pure-H pointwise REC kernel, finite-shell versus collapsed closure distinction, source-aligned finite regressions and conditional local angular Sobolev derivation only.",
+  "reviewer_independence": "Reviewer did not edit implementation or authored theory. Read pinned author source separately, inspected current code and saved execution evidence, and separately executed 3 native/original-C comparison points. No old published scientific suite rerun by reviewer.",
+  "finding_counts": {
+    "blocking_open": 0,
+    "resolved": 1
+  },
+  "findings": [
+    {
+      "id": "IR-01",
+      "severity": "medium",
+      "category": "theory_model_closure_ambiguity",
+      "status": "RESOLVED_VERIFIED",
+      "original_problem": "Collapsed Saha equilibrium was described without excluding finite retained shell.",
+      "resolution": "Both closures now stated: xp²/(1−xp)=S versus S/(1+4B), with rate-based S_rate for implemented constants. New native synthetic B=0.2 negative-control detects the difference.",
+      "evidence": [
+        "theory_reference/PB02_SOURCE_BOUND_THEORY_KO.md section3",
+        "theory_reference/PB02_SOURCE_CONTRACT.json equilibrium_contract",
+        "coding/rec_microphysics/tests/hydrogen_peebles.rs retained_saha_partition_differs_from_collapsed_saha"
+      ]
+    }
+  ],
+  "confirmed": [
+    {
+      "claim": "beta_P versus beta_shell=beta_P/4 and per-2p escape shell weight3/4; alpha(Tm) versus beta(alpha(Tr)) source convention",
+      "status": "literature-supported_and_source-inspected",
+      "source": "https://raw.githubusercontent.com/nanoomlee/HYREC-2/09e8243d0e08edd3603a94dfbc445ae06cafe139/hydrogen.c"
+    },
+    {
+      "claim": "Mass/charge and same-instantaneous-rate closure defect; finite frozen-Ralpha QSS scope",
+      "status": "derived_and_implementation-verified"
+    },
+    {
+      "claim": "Angular concavity/Jensen, uniform thick cancellation and exponential bound, quadratic shear coefficient with generic cubic remainder",
+      "status": "derived_conditional"
+    },
+    {
+      "claim": "New native20 and integrated108 tests passed",
+      "status": "implementation-verified_saved_logs_reviewed"
+    },
+    {
+      "claim": "384 author-C/Rust source points and24 Decimal70 stoichiometric points within2e-12 thresholds",
+      "status": "numerically_checked_saved_evidence_reviewed"
+    },
+    {
+      "claim": "Reviewer3 independent off-equilibrium source points/15component checks",
+      "status": "numerically_checked_reviewer_executed",
+      "maximum_relative_difference": 4.206926783247165e-15
+    },
+    {
+      "claim": "42angular points/95checks; convergence/Jensen/M4 coefficient tests",
+      "status": "numerically_checked_saved_evidence_reviewed"
+    },
+    {
+      "claim": "Pinned external source replay helper checks five file identities before offline original-C build; saved exit0 inspected",
+      "status": "implementation-verified_saved_evidence_reviewed"
+    }
+  ],
+  "scope_limits": {
+    "native_temperature": "Tm=Tr only; unequal temperatures rejected",
+    "physical_history": "NOT_EXECUTED_THIS_LOOP",
+    "rei_connected_consumer": "NOT_IMPLEMENTED_OR_CLAIMED",
+    "general_bianchi_rt": "UNRESOLVED",
+    "uniform_error_bound": "NOT_ESTABLISHED",
+    "source_fit_physical_accuracy": "UNRESOLVED",
+    "matter_heat_or_photon_spectrum": "NOT_PROVIDED_BY_SCALAR_KERNEL",
+    "optional_matched_trajectory": "NOT_EXECUTED_NOT_REQUIRED_FOR_POINTWISE_SLICE",
+    "license": "Pinned upstream has no explicit redistribution license established; upstream C/header source retained outside packet, independent formula implementation and caller only."
+  },
+  "important_qualifications": [
+    "The frozen_escape_qss function is not the nonlinear QSS root when Ralpha changes with x1.",
+    "closure_defect compares a common instantaneous C; source-reassembled full collapsed model has an additional C difference.",
+    "Saha zero alone cannot validate C.",
+    "Angular proof fixes H,n1 and isotropic populations/boundary; it does not remove background shear dependence or prove anisotropic transfer.",
+    "At uniform large optical depth, the direct local angular correction is exponentially bounded; finite-tau plot is not a measured physical cosmological signal.",
+    "Source-rounded constants and independently supplied SI physical constants are separate profiles.",
+    "Case-A reionization authority, selected-He admission and old E1C owner remain unchanged.",
+    "Decimal is the actual high-precision oracle; mpmath/CAS PASS is not claimed."
+  ],
+  "preserved_existing_files": [
+    {
+      "path": "Cargo.lock",
+      "unchanged": true
+    },
+    {
+      "path": "Cargo.toml",
+      "unchanged": true
+    },
+    {
+      "path": "src/coverage.rs",
+      "unchanged": true
+    },
+    {
+      "path": "src/frame.rs",
+      "unchanged": true
+    },
+    {
+      "path": "src/he_singlet.rs",
+      "unchanged": true
+    },
+    {
+      "path": "src/ledger.rs",
+      "unchanged": true
+    },
+    {
+      "path": "src/screen.rs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/forward.rs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/frame.rs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/screen.rs",
+      "unchanged": true
+    }
+  ],
+  "reviewed_file_identities": [
+    {
+      "path": "research/PREREGISTRATION.json",
+      "bytes": 2370,
+      "sha256": "afe1de1d24022bc382e8e038f2ed2ff6b5604c390c6d1fd5bd4a8215f028ee82"
+    },
+    {
+      "path": "research/PARITY_EXPERIMENT_PLAN.json",
+      "bytes": 1314,
+      "sha256": "58d185eacdb1a640869786e15367320b6f18d3e9c46da90c499576ceb748f542"
+    },
+    {
+      "path": "research/independent_parity.py",
+      "bytes": 4667,
+      "sha256": "bb6c3949714d0c9e271d8bc2317e8eac84ed1fd5b87843305d6f3595e7c80be0"
+    },
+    {
+      "path": "research/ANGULAR_EXPERIMENT_PLAN.json",
+      "bytes": 525,
+      "sha256": "7284f308f341e04028dbd956685a1a6e90c7851adeeb2da4a7b255d34ab28ebd"
+    },
+    {
+      "path": "research/angular_sobolev_study.py",
+      "bytes": 3798,
+      "sha256": "6e855c3668e9d6fcf59fe498c7463ad99002eac2e804f59df125087cfb24eaf8"
+    },
+    {
+      "path": "coding/SCIENTIFIC_CONTRACT.md",
+      "bytes": 2204,
+      "sha256": "91cb145c276a0f6533344a943bc2417675e320e331591bc29a0c7b201f00928f"
+    },
+    {
+      "path": "coding/VALIDATION_MATRIX.md",
+      "bytes": 1155,
+      "sha256": "46b3ea86c754657a3cf5aff8aa81174866ce8663cf9e9745e0174386e56a37f9"
+    },
+    {
+      "path": "coding/README_NATIVE_KO.md",
+      "bytes": 6943,
+      "sha256": "52b259f89ef8a7c05f9a06cd027a0204323e38ec789aa688d8d5be8bf51c291a"
+    },
+    {
+      "path": "coding/NATIVE_IMPLEMENTATION_STATUS.json",
+      "bytes": 1809,
+      "sha256": "6768d0036ee86e844cc3dc0039a4cd432634b0218b002cc63d6ee1a3941ea7d0"
+    },
+    {
+      "path": "coding/TARGETED_TEST_LOG.txt",
+      "bytes": 1550,
+      "sha256": "158ac295233f11f90bc67ebaf35cee3ff759d90821e140a4778f9bca0bc72312"
+    },
+    {
+      "path": "coding/FULL_CRATE_TEST_LOG.txt",
+      "bytes": 41045,
+      "sha256": "adc03c57da109b749b65e6c6d3ee92856e8041998356f73316a77837a637729f"
+    },
+    {
+      "path": "coding/upstream_tla_driver.c",
+      "bytes": 1011,
+      "sha256": "ff5f85798530740061a14d562e526039dc65f5a5c622778273f608d3a709c4bd"
+    },
+    {
+      "path": "coding/rec_microphysics/src/lib.rs",
+      "bytes": 112,
+      "sha256": "ec394a01f90afcb4825759799749a493ae16d545fdf8cdee6f5ec6c040c9ffa5"
+    },
+    {
+      "path": "coding/rec_microphysics/src/hydrogen_peebles.rs",
+      "bytes": 11862,
+      "sha256": "08d651596a99f88b5350c3a3e74e39f642c16579446aff690d60dd2f3fa6e6b8"
+    },
+    {
+      "path": "coding/rec_microphysics/tests/hydrogen_peebles.rs",
+      "bytes": 7715,
+      "sha256": "d36c26ade132bd5dd84b3b7dac1ef1ca17bc74a00327a915a46e76039bc101ae"
+    },
+    {
+      "path": "coding/rec_microphysics/examples/peebles_probe.rs",
+      "bytes": 2767,
+      "sha256": "48d951861865243e2d919c10601082ac740a66c352a8fe53daf41d3d150d330f"
+    },
+    {
+      "path": "theory_reference/SOURCE_LOCK.json",
+      "bytes": 4522,
+      "sha256": "4330b9549991872d37a480fc54d7c2df056fc227d7a168e259203c6b5b6fe216"
+    },
+    {
+      "path": "theory_reference/PB02_SOURCE_CONTRACT.json",
+      "bytes": 9204,
+      "sha256": "2fb73afee5cbbe3b6017521ac3efd3dd91ffb03d65d8d1e9921b0587546f940b"
+    },
+    {
+      "path": "theory_reference/PB02_SOURCE_BOUND_THEORY_KO.md",
+      "bytes": 13267,
+      "sha256": "84b824fe1cb046af09c9b4e3e6203e3f2e854535c3d21e05623979a92c68044b"
+    },
+    {
+      "path": "theory_reference/SOURCE_PROFILE_FIXTURES.json",
+      "bytes": 1944,
+      "sha256": "1148933beadf1a71dcc3c53b9fa37961b2206e9c8e882fc9af7bbaba2927a58f"
+    },
+    {
+      "path": "evidence/UPSTREAM_C_BUILD.json",
+      "bytes": 1545,
+      "sha256": "258e96b509bb380a6f7e3cd028014c6d9099bb3fd4480a7c133568d2755dfb97"
+    },
+    {
+      "path": "evidence/INDEPENDENT_PARITY_RESULT.json",
+      "bytes": 1085,
+      "sha256": "4ee730f24988a7523b80ae3cf357066fb3d755b67de2bef906e46f8704cac0e4"
+    },
+    {
+      "path": "evidence/upstream_native_parity.csv",
+      "bytes": 40303,
+      "sha256": "d1a251eefbb0ffbefe0b4803ecab46d2aca5e32e13474383635fb87674727876"
+    },
+    {
+      "path": "evidence/decimal_shell_parity.csv",
+      "bytes": 3712,
+      "sha256": "3a8389d5faacf61d08855f9dc9b3cec26b14c218584cef8876d8e56d8ffbe168"
+    },
+    {
+      "path": "evidence/ANGULAR_STUDY_RESULT.json",
+      "bytes": 559,
+      "sha256": "2848e7dbd2322b0b4d83a09a490a1446523a53cccc941dcc4524c00ae387512f"
+    },
+    {
+      "path": "evidence/angular_sobolev_points.csv",
+      "bytes": 5527,
+      "sha256": "566b162a6dbc73a9d95cea681152f1917e00c751234a08a51d8d0a36c8be0192"
+    },
+    {
+      "path": "coding/fetch_upstream_reference.py",
+      "bytes": 8389,
+      "sha256": "c46cf37444992103e6191db4225892853b49a1cba1655ce3721d31dee71cc771"
+    },
+    {
+      "path": "evidence/UPSTREAM_REPLAY_HELPER_CHECK.json",
+      "bytes": 2319,
+      "sha256": "5d678046178f740358187f7717ba8dc1ef03eeb21dbac886d2e7d447343fcfee"
+    }
+  ],
+  "runtime_notes": [
+    "Rust1.94.1 native logs inspected; rustfmt unavailable and not claimed.",
+    "Original authorC first c11 build failed M_PI; gnu11 build succeeded without source modification.",
+    "Optional reviewer sympy attempt failed because dependency unavailable in both existing Python runtimes; no install/retry expansion, no CAS validation claimed."
+  ],
+  "not_reviewed": [
+    "Future publication commit/ref identity",
+    "Future cloud backup ACK/restore",
+    "Future production receiver implementation"
+  ],
+  "stop_condition": "Bounded review complete; no additional audit loop required before publication of this exact reviewed scope."
+}

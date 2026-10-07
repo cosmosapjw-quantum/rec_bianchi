@@ -1,0 +1,101 @@
+{
+  "schema": "REI_REC_BASS_SYNC03_THREAD_RETURN_V1",
+  "task_id": "REI-REC-BASS-SYNC03-20261007",
+  "central_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/tree/34765f5cc35169b5e8718571f3c01777cd28aec7/docs/research_sync/REI-REC-BASS-SYNC03-20261007",
+  "central_commit": "34765f5cc35169b5e8718571f3c01777cd28aec7",
+  "ordered_execution": [
+    "Loop1 actual F08 BASS receiver",
+    "Independent loop1 review and SYNC_GATE_LOOP1",
+    "Loop2 conditional endpoint-linear transfer",
+    "Independent exact-rational T2 audit"
+  ],
+  "loop1": {
+    "status": "PASS_SCOPED",
+    "histories": 6,
+    "cells": 112000,
+    "decimal70_scalar_comparisons": 784054,
+    "max_tau_absolute_error": 1.1476861436274077e-19,
+    "source_chemistry_independently_rerun": false,
+    "full_bass_build": false
+  },
+  "loop2": {
+    "status": "PASS_CONDITIONAL_ENDPOINT_LINEAR_FUNCTIONAL",
+    "T2_delta_tau_BI_minus_FLRW": "3.4422264935785798336931040502163283e-12",
+    "T2_conditional_interval": [
+      "3.2511236791254256128024824787758359e-12",
+      "3.6333293080074927998903070755981209e-12"
+    ],
+    "conditional_sign": "POSITIVE",
+    "T2_minus_T1_change": "-6.18918583903451595606603356918e-16",
+    "continuous_sign": "NOT_CERTIFIED",
+    "physical_sign": "NOT_CERTIFIED",
+    "mass_contrast": "nominal_only_not_interval_enclosure"
+  },
+  "shared_contract": {
+    "density": "proper ne_cm3; multiply1e6 once to m^-3",
+    "clock": "normal seconds",
+    "D": "1 exactly in supplied histories",
+    "BASS_sigma_T_m2": "6.6524587e-29 as pinned binary64",
+    "observer_tail": "explicit finite slab tail0 baseline and tail0.1 external diagnostic; physical tail unprovided",
+    "reconstruction": "endpoint piecewise-linear density; receiver mean-cell q reproduces endpoint and cell-integrated depth",
+    "conditional_boxes": "inherited certified discrete gas boxes at fixed binary stage densities and actual stage conditioning; no between-node or continuum enclosure"
+  },
+  "protected": [
+    "Existing owner production and research source files",
+    "original failure evidence and numerical tolerances",
+    "HH/RCT/CR OFF baseline",
+    "original atomic precision and REC helium extension lanes"
+  ],
+  "recipient_ack": "NOT_OBSERVED_DIRECT_CHAT_WRITE_UNAVAILABLE",
+  "external_mutation_by_this_worker": false,
+  "review_evidence": [
+    "review/LOOP1_DECISION.json",
+    "review/LOOP2_INDEPENDENT_SPOT.json"
+  ],
+  "evidence": [
+    "loop1/outputs/NATIVE_SUMMARY.json",
+    "loop1/evidence/DECIMAL_RESULT.json",
+    "loop2/TRANSFER_RESULT.json",
+    "figures/F08_BASS_CONDITIONAL_VISIBILITY.pdf"
+  ],
+  "repo": "cosmosapjw-quantum/rec_bianchi",
+  "target_branch": "forward/rust-he-sources-20260922",
+  "target_pr": 81,
+  "source_pin": "73ed56b2383e21014fcb70cd8f87f1d010731c60",
+  "status_correction": "REC-PB02 pure-H one-temperature reference and SYNC02 actual REC->REI consumer are reusable completed bounded work; no unchanged Peebles rerun is required by SYNC03.",
+  "parallel_ready": [
+    {
+      "id": "REC-REI-HANDOFF-CONTRACT",
+      "task": "Specify a future REC->late-IGM handoff using explicit epoch, proper density, species convention, gas/radiation temperatures and frame/time ownership.",
+      "depends_on": [
+        "current REC and admitted IGM source schemas"
+      ],
+      "prohibited": [
+        "claim a physical matched history from a schema",
+        "reuse one-T Peebles at unrestricted two-temperature conditions"
+      ]
+    },
+    {
+      "id": "REC-PB-SOURCE-RETURN",
+      "task": "Use existing source-pinned pure-H module and SYNC02 benchmark as the reference return for downstream baseline questions.",
+      "depends_on": [
+        "existing REC-PB02 and SYNC02 evidence"
+      ],
+      "prohibited": [
+        "rerun unchanged full REC suite",
+        "promote helium gate I"
+      ]
+    }
+  ],
+  "owner_reserved": [
+    "E1C split-domain ownership replacement",
+    "He V11 consumer gate I",
+    "full coupled cosmological REC history"
+  ],
+  "already_complete_do_not_repeat": [
+    "REC-PB02 pointwise one-T HYREC/Decimal reference verification",
+    "SYNC02 pure-H REC->REI implementation and expanding benchmark"
+  ],
+  "pr_append_summary": "SYNC03 closes a downstream finite F08 opacity receiver and transfers discrete endpoint uncertainty; it does not change or reopen the completed pure-H Peebles reference. Existing He gate I and E1C ownership lanes remain separate.",
+  "thread": "rec_bianchi"
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "REC_HE_RUST_FORWARD_DUAL_BACKUP_R1_V1",
+  "artifact": "REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
+  "bytes": 424424,
+  "sha256": "38bb7b9488d9569c813c73fd5d11f1c66b766f08aff204ac8026b7d7430257da",
+  "zip_crc": "PASS",
+  "manifest_entries": 176,
+  "manifest_name": "BACKUP_MANIFEST.sha256",
+  "tested_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "provider_writes": {
+    "dropbox": {
+      "status": "UPLOAD_SUCCESS_R1",
+      "command": "rclone copyto --immutable",
+      "remote": "dbx:BASS_DERIVATION_DOSSIERS_20260912/REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
+      "exit": 0,
+      "id": "id:BSpOijBcT10AAAAAADv-Eg",
+      "size": 424424,
+      "dropbox_content_hash": "3ff8032306e9a8c48a7ccff87eeed1c5c1d1111dad887441d19fee65882c0ddb",
+      "local_hash_match": true
+    },
+    "google_drive": {
+      "status": "UPLOAD_SUCCESS_R1",
+      "command": "rclone copyto --immutable",
+      "remote": "gdrv:BASS_DERIVATION_DOSSIERS_20260912/REC_BIANCHI_RUST_FORWARD_TESTED_2ee3760_20260929.zip",
+      "exit": 0,
+      "id": "17yTxKPkvfOYn7M8KwPOwPXeXdE74ZhIr",
+      "size": 424424,
+      "md5": "ce7d5b27d231a862fcc3fbf815873e04",
+      "local_hash_match": true
+    }
+  },
+  "readback_scope": "R1 remote identity, size, native hash metadata match local; no restore/readback download performed",
+  "source_scope": "Scoped Rust source, fixtures, authority subset, locks, current handoff draft and raw initial/tested logs. Git evidence commit adds final backup receipt separately."
+}

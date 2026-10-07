@@ -25,3 +25,7 @@ pytest -q -m "not slow"
 7. The owner swap is complete only when replacement residual, analytic JVP, number/energy/four-force ledger, restart and primitive/exterior-Schur/interface parity coexist.
 8. Do not attempt the dynamic macro, preconditioner selection or Rust optimization before this replacement gate passes.
 9. Canonical delivery is a self-contained feature Git bundle plus a full recovery bundle; never force-push shared history.
+
+## Scoped selected-He Rust forward-port (2026-09-22)
+
+A separately authorized fixed-input `rec_microphysics` Rust source port lives on `forward/rust-he-sources-20260922`; start at `docs/forward/rust-20260922/START_HANDOFF_KO.md`. This is not the dynamic-macro Rust optimization prohibited by item 8 and does not advance E1C, S4/S5, G10, or history state.

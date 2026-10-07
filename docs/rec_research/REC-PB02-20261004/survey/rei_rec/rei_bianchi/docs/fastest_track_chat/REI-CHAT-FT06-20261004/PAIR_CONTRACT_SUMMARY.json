@@ -1,0 +1,55 @@
+{
+  "schema": "rei.paired-science-contract-projection.v1",
+  "full_contract": "rei_chat_ft06_20261004/PAIRED_SCIENCE_SPEC.json in sealed ZIP",
+  "full_contract_sha256": "f320c5507f77fde3344febfb734d3738562988ea91461c9ee65350a314c4689b",
+  "comparison_lanes": {
+    "PV_GEOMETRIC_RESPONSE": "prescribed a_i^B=a_bar*exp(beta_i), sum beta=0; a_i^F=a_bar, beta(t0)=0; same proper-time endpoints and volume dilution",
+    "EC_SELF_CONSISTENT": "future Einstein-solved lane; same H,matter,Lambda and nonzero shear cannot all be imposed; not executed"
+  },
+  "paired_inputs": ["initial gas and tetrad radiation", "a_bar and nH(t)", "proper-time source normalization", "atomic function realization including cooling derivatives", "threshold/Case/escape/omission policies", "quadrature and numerical controls"],
+  "not_paired_by_force": ["directional observed-z density factor", "point source values at different temperatures", "independent site numerical remainders"],
+  "primary_observables": ["x_HII", "x_HeII", "x_HeIII", "lnT", "passive tau/tau_ref on fixed interval"],
+  "estimator": "Delta O=O_B(lambda)-O_F(lambda)",
+  "angular_contract": {
+    "weights": "positive and normalized",
+    "M2": "delta_ij/3",
+    "M4": "(delta_ij*delta_kl+delta_ik*delta_jl+delta_il*delta_jk)/15",
+    "six_axes": "not M4 exact; negative control for intended isotropic continuum",
+    "isotropic14": "six axes weight1/15 each; eight normalized cube corners weight3/40 each",
+    "orientation_test": "rotate quadrature relative to metric axes"
+  },
+  "spectral_contract": "refine within the same physical spectrum; delta lines and finite-width bands are distinct models; preserve all threshold crossings",
+  "smooth_nulls": {
+    "scalar_first_variation": "zero for initially isotropic rotationally-equivariant smooth fixed-volume evolution",
+    "stress": "first-order allowed",
+    "scalar_evenness": "not generic; cubic tr(B^3) is allowed",
+    "no_unchecked_extension": "threshold crossings, anisotropic initial data, unpaired sources or fixed observed-z surfaces"
+  },
+  "observed_surface": {
+    "redshift": "1+z=(a_bar_o/a_bar_e)*sqrt(sum n_o_i^2 exp(2*(beta_o_i-beta_e_i)))",
+    "linear_time_shift": "delta t_e=n_o^T(beta_o-beta_e)n_o/H_e",
+    "tau_endpoint": "-c*sigma_T*n_e(t*)*delta t_e",
+    "multiple_time_roots": "enumerate or reject ambiguity, never endpoint-only detection"
+  },
+  "RR_source_family": {
+    "alpha": "alpha0(T)*exp(lambda_a+lambda_s*ln(T/Tp))",
+    "q": "1.5+dln(alpha0)/dlnT+lambda_s",
+    "cooling": "kB*T*alpha*q",
+    "conditional_error_bound": "exp(eta0)-1+exp(eta0)*eta1/qmin when |ln(alpha_true/alpha_model)|<=eta0 and |dln(alpha_true/alpha_model)/dlnT|<=eta1",
+    "eta1_from_rate_error_alone": false,
+    "probe_pm_0_02_is_physical_bound": false
+  },
+  "pilot": {
+    "t_end_s": 10000000000000.0,
+    "a_bar": "exp(0.03*s)",
+    "beta": "epsilon*(1/3,2/3,-1)*s",
+    "epsilon_abs_max": 0.02,
+    "angular_max": 128,
+    "band_gauss_order_max": 8,
+    "temperature_guard_K": [30000,110000],
+    "continuous_family_bounds_K": [31878.91167922021,106192.75165363487],
+    "empirical_contrast_test": "abs(Delta_low-Delta_high)<=1e-10+0.01*abs(Delta_high) componentwise",
+    "numerical_error_enclosure": false,
+    "physical_accuracy_admission": false
+  }
+}

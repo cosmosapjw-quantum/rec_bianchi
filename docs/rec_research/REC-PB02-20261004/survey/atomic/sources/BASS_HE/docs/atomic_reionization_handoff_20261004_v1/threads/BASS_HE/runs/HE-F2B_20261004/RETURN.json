@@ -1,0 +1,55 @@
+{
+  "task_id": "HE-F2B",
+  "state": "completed",
+  "input_identity": {
+    "supplier_repo": "cosmosapjw-quantum/BASS_HE",
+    "supplier_commit": "ec568e8b3ee7d66de910422332d0b327728d08b9",
+    "consumer_repo": "cosmosapjw-quantum/rei_bianchi",
+    "consumer_commit": "5f3bfe2fc8fe275ab6a054ca9082f03c5b91427a",
+    "consumer_tree": "877c31ddfa0dedbaf0ae65a071b302e63fe62597",
+    "manifest": "INPUT_LOCK.json",
+    "consumer_latest_observed_commit": "dc931a67cd5ed25046a96eb5deb42186d72176da",
+    "bound_F00_paths_unchanged_at_latest": true
+  },
+  "changed_paths": [
+    "owner_scope_intake.py",
+    "tests/test_owner_scope.py",
+    "data/OWNER_SCOPE_BINDING.json",
+    "REPORT_KO.md",
+    "REPO_SYNC_POLICY.json",
+    "CURRENT_FASTEST_STATE.json",
+    "CODEX_START_KO.md"
+  ],
+  "commands": [
+    {
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python -W error -m pytest -q -p no:cacheprovider tests",
+      "exit_code": 0,
+      "evidence_path": "evidence/FINAL_TESTS.log"
+    },
+    {
+      "command": "python -W error -B owner_scope_intake.py --out data/OWNER_SCOPE_BINDING.json",
+      "exit_code": 0,
+      "evidence_path": "evidence/BUILD_BINDING.log"
+    }
+  ],
+  "artifacts": [
+    "data/OWNER_SCOPE_BINDING.json",
+    "CURRENT_FASTEST_STATE.json",
+    "REPO_SYNC_POLICY.json",
+    "handoff/NEXT_STEP_KO.md"
+  ],
+  "claim": {
+    "basis": "Fresh GitHub refs/diff; actual owner F00 files with Git blob and receipt SHA; tested exclusion semantics",
+    "ceiling": "Only baseline exclusion and source-dependency binding, not physical RCT acceptance or provider integration"
+  },
+  "next_task": "HE-F2_WAIT_OWNER_OPT_IN_AND_PROVIDER_CONTRACT",
+  "unique_new_tests": 20,
+  "unchanged_suite_replayed": false,
+  "consumer_mutations": 0,
+  "new_physical_runs": 0,
+  "NCP64_required": false,
+  "HE_F2_actual_inclusion_state": "WAIT_OWNER_OPT_IN_AND_PROVIDER_CONTRACT",
+  "baseline_dependency": "NOT_REQUIRED_WHILE_EXCLUDED",
+  "independent_scientific_review": "NOT_RUN",
+  "prepared_but_unpublished": "publication/TASKS.json is a proposed plan-state projection only; root CURRENT_FASTEST_STATE overrides stale task scheduling without changing dependencies"
+}

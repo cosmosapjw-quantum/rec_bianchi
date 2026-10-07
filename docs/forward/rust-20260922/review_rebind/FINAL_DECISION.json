@@ -1,0 +1,139 @@
+{
+  "schema": "REC_HE_REVIEW_FINAL_DECISION_V1",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "reviewed_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "author_tested_source_sha": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+  "review_cwd_worktree_identity": {
+    "cwd": "/tmp/rec-rust-he-review-20260930",
+    "git_common_dir": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git",
+    "git_dir": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi/.git/worktrees/rec-rust-he-review-20260930",
+    "head": "2ee3760870f9ac47eaab518a4c4a907f1a3f6f85",
+    "detached": true,
+    "tracked_source_diff_exit": 0,
+    "author_test_cwd": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+    "distinct_from_author_test_cwd": true
+  },
+  "runtime_environment_identity": {
+    "review_runtime": {
+      "transport": "CODEX_APP_SERVER_REVIEW",
+      "launch_id": "cl_e563fde50691cd75a5021ede49a0cd90",
+      "thread_id": "01a0efc3-23ee-7d93-920c-2ab4e8dfa0fe",
+      "turn_id": "01a0efc3-278f-7c20-9a13-a707898bf5e8",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "sandbox_requested": "read-only",
+      "sandbox_observed": {
+        "type": "read-only"
+      },
+      "network_access": false,
+      "fresh_context": true,
+      "nested_agents": false,
+      "runtime_state": "MATCH",
+      "lifecycle_status": "VALIDATOR_PASSED",
+      "validator_exit": 0,
+      "transcript_sha256": "c4a0341af9d86d62ef9fd7c0d8b05bda189741192639e7c5d3a287c183f38248",
+      "transcript_path": "/home/cosmosapjw/.codex/sessions/2026/09/30/rollout-2026-09-30T09-42-19-01a0efc3-23ee-7d93-920c-2ab4e8dfa0fe.jsonl",
+      "claim_admitted_by_runtime": false,
+      "raw_receipt": "native/lifecycle-exit.json"
+    },
+    "host_rerun_environment": {
+      "kernel": "Linux 7.0.0-34-generic x86_64",
+      "rustc": "1.94.1",
+      "cargo": "1.94.1",
+      "python": "3.12.3",
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "exact_commands_and_exits": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "exit": 0,
+      "stdout_path": "logs/rerun/fmt.stdout.log",
+      "stderr_path": "logs/rerun/fmt.stderr.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "cargo_test",
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "rust/rec_microphysics/Cargo.toml",
+        "--locked"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "exit": 0,
+      "stdout_path": "logs/rerun/cargo_test.stdout.log",
+      "stderr_path": "logs/rerun/cargo_test.stderr.log",
+      "stdout_sha256": "184bbaa64f91bcc6869c435b80336e14a599519cc54a3258083a8649c5caae5a",
+      "stderr_sha256": "16203c4b176f4f824a99c959b1cdc445194a7f49c90a308ab66a6e635e38c959"
+    },
+    {
+      "name": "parity",
+      "argv": [
+        "python",
+        "scripts/check_rust_forward_parity.py"
+      ],
+      "cwd": "/tmp/rec-rust-he-review-20260930",
+      "exit": 0,
+      "stdout_path": "logs/rerun/parity.stdout.log",
+      "stderr_path": "logs/rerun/parity.stderr.log",
+      "stdout_sha256": "4ea3227f242bd5db812e9dcb3bf582ae58bd4efefe9088e08b993940389178fa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_domain_findings": {
+    "WU29_WU30_WU31_A1_and_T4_lock": "PASS_10_OF_10",
+    "public_entry_points": "AUDITED",
+    "Jacobs_P_S_high_q": "ONLY_1_TO_1_4",
+    "D86_y": "ONLY_0_025_TO_0_975",
+    "below_threshold": "PHYSICAL_ZERO",
+    "outside_authority": "TYPED_ERROR",
+    "stitch_or_extrapolate_or_rescale": "NONE_FOUND",
+    "affine_BB_JVP": "DIRECT_SOURCE_EVALUATION",
+    "source_defect": {
+      "id": "F1",
+      "severity": "MINOR",
+      "path": "rust/rec_microphysics/src/ledger.rs",
+      "line": 117,
+      "behavior": "finite r584=1e308 returns Ok with -Inf/+Inf/NaN output",
+      "independent_report": "native/review.txt",
+      "host_reproduction": "defect_repro/receipt.json"
+    }
+  },
+  "independent_reviewer": {
+    "runtime_state": "MATCH",
+    "lifecycle_status": "VALIDATOR_PASSED",
+    "review_result": "ONE_MINOR_SOURCE_DEFECT"
+  },
+  "gate_p_scoped_review_decision": "HOLD_SOURCE_DEFECT_F1",
+  "dependency_candidate_sha": null,
+  "scientific_claims_not_promoted": [
+    "full T4",
+    "Gate I",
+    "S4",
+    "S5",
+    "G10",
+    "E1C",
+    "history",
+    "observable",
+    "production",
+    "scientific admission",
+    "PROJECT_STATE scientific PASS"
+  ],
+  "scientific_gates_unchanged": true,
+  "production_mutation": false,
+  "scientific_state_mutation": false,
+  "required_next_action": "Separate bounded source repair; new source SHA; full fixed-input fmt/test/parity rerun; fresh independent review before any dependency candidate."
+}

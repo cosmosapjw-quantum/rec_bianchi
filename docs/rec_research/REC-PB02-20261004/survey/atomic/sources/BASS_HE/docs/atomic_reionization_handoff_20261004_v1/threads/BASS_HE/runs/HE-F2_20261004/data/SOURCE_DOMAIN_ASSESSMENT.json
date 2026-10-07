@@ -1,0 +1,68 @@
+{
+  "consumer_model_id": "REI_FT03_HG_RATE_MOMENT_CASE_A_CONTROLLED_V1",
+  "source_assessments": [
+    {
+      "provider_id": "GM25_W82_RCX_CONSTANT_200_10000_K_V1",
+      "consumer_model_id": "REI_FT03_HG_RATE_MOMENT_CASE_A_CONTROLLED_V1",
+      "consumer_commit": "64bc3aa0871bb324817afd3d36db018dd34181cf",
+      "process_policy": "EXPLICITLY_DISABLED_IN_CURRENT_CONSUMER",
+      "source_domain_K": [
+        "200",
+        "10000"
+      ],
+      "consumer_guard_K": [
+        "30000",
+        "110000"
+      ],
+      "source_domain_covers_consumer_guard": false,
+      "overlap_K": null,
+      "blockers": [
+        "MISSING_CANONICAL_REI_SCOPE_AND_PROVIDER_INSTANCE",
+        "RCT_CLOSURE_NOT_SELECTED",
+        "PROCESS_EXPLICITLY_EXCLUDED",
+        "SOURCE_DOMAIN_DOES_NOT_COVER_CONSUMER_GUARD"
+      ],
+      "action": "NO_INJECTION",
+      "replacement_rate": null,
+      "consumer_admission": false,
+      "disabled_is_source_zero": false,
+      "recombination_escape_auto_applies_to_RCT": false
+    },
+    {
+      "provider_id": "KF96_HEIII_HI_RCT_NOMINAL_V1",
+      "consumer_model_id": "REI_FT03_HG_RATE_MOMENT_CASE_A_CONTROLLED_V1",
+      "consumer_commit": "64bc3aa0871bb324817afd3d36db018dd34181cf",
+      "process_policy": "EXPLICITLY_DISABLED_IN_CURRENT_CONSUMER",
+      "source_domain_K": [
+        "1000",
+        "10000000"
+      ],
+      "consumer_guard_K": [
+        "30000",
+        "110000"
+      ],
+      "source_domain_covers_consumer_guard": true,
+      "overlap_K": [
+        "30000",
+        "110000"
+      ],
+      "blockers": [
+        "MISSING_CANONICAL_REI_SCOPE_AND_PROVIDER_INSTANCE",
+        "RCT_CLOSURE_NOT_SELECTED",
+        "PROCESS_EXPLICITLY_EXCLUDED"
+      ],
+      "action": "NO_INJECTION",
+      "replacement_rate": null,
+      "consumer_admission": false,
+      "disabled_is_source_zero": false,
+      "recombination_escape_auto_applies_to_RCT": false
+    }
+  ],
+  "pair_common_domain_K": [
+    "1000",
+    "10000"
+  ],
+  "paired_intersection_with_current_consumer_K": null,
+  "consumer_initial_T_K": 50000.0,
+  "new_physical_evaluations": 0
+}

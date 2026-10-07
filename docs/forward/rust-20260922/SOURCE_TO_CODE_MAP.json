@@ -1,0 +1,640 @@
+{
+  "schema_version": "REC_HE_SOURCE_CODE_MAP_TASK1_V1",
+  "baseline_commit": "49d64b2660f227f6e4d888d6c02ead266d97a138",
+  "line_numbering": "1-based UTF-8 splitlines; BOM remains in raw member bytes",
+  "mapping_rows": [
+    {
+      "id": "M01",
+      "label": "입력, matrix, screen, 밀도, 시계",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            19,
+            34
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "## 2. 정의, 근사 및 시계\nMetric(-,+,+,+), u.u=-1, U^a=c u^a, D_m=U^a∇_a, θ_U=∇_a U^a. D_m는 물질 세계선의 고유초 미분이며, 모든 n은 proper density다. 동일 물질흐름의 밀도식은 (D_m+θ_U)n=R이다. Matrix W의 좌변은 기존 원자기저의 수송/회전 connection을 포함한 covariant derivative로 읽으며, 아래 B들은 오직 collision source다.\nh_P=2πℏ, a_γ=(h_P c)^(-3),\n dn_γ=a_γ E² trF(E,e) dE dΩ.                                      (1)\nF=F†≥0는 물질계 energy와 방향에 대한2×2 screen occupation, trI2=2다. 편광2를 측도에 중복하지 않는다. V는 real Cartesian3×2, V^T V=I2, VV^T=I3-ee^T다. 복소 screen/구면기저 변경에는 conjugation adapter를 함께 적용한다.\ng=1s²1^1S0, S=1s2s2^1S0: n_g,n_S scalar, g_g=g_S=1.\nP=1s2p2^1P1^o: W_P=W_P†≥0, trW_P=n_P, g_P=3.\nn_+=HeII1s 총 이온밀도(g_+=2), n_e=총 자유전자밀도(g_e=2).\nP의 orbital3은 triplet spin3이나 수소 양성자밀도가 아니다. 같은 P가584와IR 및 P-bound-free에 동시에 들어간다. 같은 S가IR,S-bound-free,두 광자에 들어간다.\n\n\n채택 근사: spin-independent nonrelativistic LS E1, 실제 correlated-He strength, heavy atom sharp line, 약한 비결맞음 복사와 atom–photon kinetic factorization. P 내부 coherency는 유지하지만 서로 다른 원자 energy level 사이 optical coherence는 secular하게 생략한다. BF inverse에는 등방·비축퇴 Maxwell 전자와 unpolarized spin reservoir를 사용한다. W_P,F의 비등방/정렬/편광은 허용한다. 이 가정들은 공간균질성에서 자동으로 나오지 않는다.\nRecoil/Doppler, natural wings/complete PRD, fine/hyperfine/spin–orbit 전체 보정, 외부장, 위상결맞음 Raman/겹치는 공명, 완전한 self-energy, 전자 속도·스핀 kinetic closure는 계산하지 않았다. 원자에너지의 평가값과 leading E1 tensor를 조합한 calibrated 모델이지 한 Hamiltonian의 모든 정밀 보정을 재현한 것은 아니다.\n\n\n광자 ray clock은 dt_r=-u_a dx^a/c로 정의되는 국소 물질계 경로시간이다. C_t는 그 초당 occupation source이며 D_m를 photon derivative로 대체하지 않는다. 기존 inverse-length 형식에는 C_ell=C_t/c다. normal time/finite tilt가 필요하면 Dossier II의 energy·direction·screen·clock adapter를 그대로 적용한다. 이번에 새로운 normal-frame 식이나 임의1/γ 인자를 만들지 않았다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            13,
+            25
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "## 1. 공통 물질계 상태와 광자 측도\n\nMetric은 `(-,+,+,+)`이고 물질/He 공통 rest congruence를 `u_m^a`라 둔다. `U_m^a=c u_m^a`, `D_m=U_m^a nabla_a`, `theta_U=nabla_a U_m^a`이다. `n_g,n_S,n_+,n_e`와 `W_P`는 material proper density이다.\n\n광자 occupation은 material physical screen의 2x2 Hermitian PSD matrix `F(E,e)`이고\n\n`a_gamma=(h_P c)^(-3)`,\n\n`dn_gamma=a_gamma E^2 tr(F) dE dOmega`,\n\n`tr I_2=2`이다. 편광 degeneracy를 측도에 다시 곱하지 않는다.\n\nP-state는 real Cartesian orbital basis의 3x3 matrix `W_P>=0`, `tr W_P=n_P`로 유지한다. 584 line, IR line, P bound-free가 모두 같은 `W_P`를 사용한다. S는 IR, S bound-free, two-photon에 같은 scalar `n_S`를 사용한다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            458,
+            550
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub struct SourceState {\n    pub ng: f64,\n    pub ns: f64,\n    pub wp: Mat3,\n    pub n_he_plus: f64,\n    pub ne: f64,\n    pub temperature_k: f64,\n    pub f: Mat2,\n    pub v: RealV,\n    pub constants: HeConstants,\n    pub electron_frame: ElectronFramePolicy,\n}\nimpl SourceState {\n    pub fn simple(\n        ng: f64,\n        ns: f64,\n        wp: Mat3,\n        n_he_plus: f64,\n        ne: f64,\n        temperature_k: f64,\n    ) -> Result<Self, CoverageError> {\n        if [ng, ns, n_he_plus, ne, temperature_k]\n            .iter()\n            .any(|x| !x.is_finite())\n            || temperature_k <= 0.0\n            || ng < 0.0\n            || ns < 0.0\n            || n_he_plus < 0.0\n            || ne < 0.0\n        {\n            return Err(CoverageError::InvalidInput(\n                \"state densities must be finite/nonnegative and T positive\",\n            ));\n        }\n        if !wp.is_hermitian(1e-12) {\n            return Err(CoverageError::InvalidInput(\"W_P must be Hermitian\"));\n        }\n        Ok(Self {\n            ng,\n            ns,\n            wp,\n            n_he_plus,\n            ne,\n            temperature_k,\n            f: Mat2::zero(),\n            v: [[1.0, 0.0], [0.0, 1.0], [0.0, 0.0]],\n            constants: HeConstants::canonical(),\n            electron_frame: ElectronFramePolicy::CommonMaterialMaxwell,\n        })\n    }\n    pub fn lte_populations(\n        temperature_k: f64,\n        n_he_plus: f64,\n        ne: f64,\n    ) -> Result<Self, CoverageError> {\n        let c = HeConstants::canonical();\n        let phi = phi_m3(temperature_k);\n        let ng = n_he_plus * ne * (c.i_he_ev * EV_J / (KB_J_K * temperature_k)).exp() / (4.0 * phi);\n        let ns = ng * (-c.delta_s_ev * EV_J / (KB_J_K * temperature_k)).exp();\n        let wp = Mat3::scalar(ng * (-c.delta_p_ev * EV_J / (KB_J_K * temperature_k)).exp());\n        Self::simple(ng, ns, wp, n_he_plus, ne, temperature_k)\n    }\n    fn validate(&self) -> Result<(), CoverageError> {\n        if [self.ng, self.ns, self.n_he_plus, self.ne]\n            .iter()\n            .any(|x| !x.is_finite() || *x < 0.0)\n        {\n            return Err(CoverageError::InvalidInput(\n                \"state densities must be finite and nonnegative\",\n            ));\n        }\n        if !self.wp.is_hermitian(1e-12) {\n            return Err(CoverageError::InvalidInput(\"W_P must be Hermitian\"));\n        }\n        if !self.f.is_hermitian(1e-12) {\n            return Err(CoverageError::InvalidInput(\"F must be Hermitian\"));\n        }\n        if self.temperature_k <= 0.0 || !self.temperature_k.is_finite() {\n            return Err(CoverageError::InvalidInput(\"temperature must be positive\"));\n        }\n        Ok(())\n    }\n    fn validate_bf(&self) -> Result<(), CoverageError> {\n        self.validate()?;\n        if self.electron_frame != ElectronFramePolicy::CommonMaterialMaxwell {\n            return Err(CoverageError::MissingAuthority {\n                family: \"BOUND_FREE_SPECIES_DRIFT\",\n                value: 0.0,\n                detail: \"inverse kernel is authorized only for common material/electron frame with isotropic nondegenerate Maxwell electrons\",\n            });\n        }\n        Ok(())\n    }"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "Task2에서 finite/domain/PSD/screen guards 보완. Signed source 행렬에는 PSD를 강요하지 않음.",
+      "next_plan_task": 2,
+      "T4_ids": [
+        "T4L03",
+        "T4L12",
+        "T4L15"
+      ]
+    },
+    {
+      "id": "M02",
+      "label": "공통 level energy registry",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            49,
+            56
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "[L3] 부모와 같은 NIST M02 level calibration:\n Δ_S=h_P c [100×166277.4403] m^-1,\n Δ_P=h_P c [100×171134.8970] m^-1,\n I_He=h_P c [100×198310.6691] m^-1,\n ε_IR=Δ_P-Δ_S, χ_S=I_He-Δ_S, χ_P=I_He-Δ_P.                       (2)\n여기 숫자 앞100은 cm^-1에서 m^-1 변환이다. χ_P=3.36936632062 eV,χ_S=3.9716141959953 eV인 부모값과 같은 규약이다.\n Δ_P=Δ_S+ε_IR, χ_S=χ_P+ε_IR                                     (3)\n는 동일 level registry의 정확한 에너지 cycle이다. 별도로 발견한 더 정밀한 IR 실험 frequency만 끼워 넣어 (3)을 깨뜨리지 않았다. 그 실험의 원문을 읽거나 재현한 것으로 세지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            407,
+            430
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub struct HeConstants {\n    pub delta_s_ev: f64,\n    pub delta_p_ev: f64,\n    pub i_he_ev: f64,\n    pub epsilon_ir_ev: f64,\n    pub chi_p_ev: f64,\n    pub chi_s_ev: f64,\n    pub rydberg_ev: f64,\n}\nimpl HeConstants {\n    pub fn canonical() -> Self {\n        let hc_ev_m = H_J_S * C_M_S / EV_J;\n        let delta_s = 166_277.440_3 * 100.0 * hc_ev_m;\n        let delta_p = 171_134.897_0 * 100.0 * hc_ev_m;\n        let i_he = 198_310.669_1 * 100.0 * hc_ev_m;\n        Self {\n            delta_s_ev: delta_s,\n            delta_p_ev: delta_p,\n            i_he_ev: i_he,\n            epsilon_ir_ev: delta_p - delta_s,\n            chi_p_ev: i_he - delta_p,\n            chi_s_ev: i_he - delta_s,\n            rydberg_ev: 13.605_693_122_843_6,\n        }"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            554,
+            572
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub enum BoundBoundChannel {\n    He584,\n    IrPToS,\n}\nimpl BoundBoundChannel {\n    pub const fn a_s_inv(self) -> f64 {\n        match self {\n            Self::He584 => 1.7989e9,\n            Self::IrPToS => 1.9746e6,\n        }\n    }\n    pub fn energy_ev(self) -> f64 {\n        let c = HeConstants::canonical();\n        match self {\n            Self::He584 => c.delta_p_ev,\n            Self::IrPToS => c.epsilon_ir_ev,\n        }\n    }\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "독립 상수를 덧붙이지 않고 같은 energy cycle과 SI/eV 변환 위치 고정.",
+      "next_plan_task": 2,
+      "T4_ids": [
+        "T4L02"
+      ]
+    },
+    {
+      "id": "M03",
+      "label": "BB 584/IR 같은 WP와 방향별 bath",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            74,
+            106
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "## 4. Singlet IR의 정·역 matrix source — derived\nH=I2+F, W=W_P라 쓰고 rate measure를\n b_IR(E)=3A_IR δ_D(E-ε_IR)/(8π)                                   (7)\n로 정의한다. [b]=s^-1 J^-1, δ_D는 에너지 적분측도이지 pointwise 단면적이 아니다. [a_γE²]=(volume×energy)^-1이므로 아래 C는 occupation/s다.\n\n\nP 원자의 국소 source:\n B_IR=∫b_IR [n_S V F V^T - {V H V^T,W}/2] dE dΩ.                (8)\n같은 사건의 photon-number matrix source와 occupation source:\n J_IR(E,e)=b_IR[{H,V^T W V}/2 - n_S F],\n C_IR=J_IR/(a_γ E²),\n R_IR=∫trJ_IR dE dΩ=-tr B_IR.                                    (9)\nS source는 +R_IR이다. R_IR>0은 net P→S이며 재흡수가 우세하면 음수다. 자발방출은 H의I2, 유도방출은 H의F, 역흡수는 n_S F로 분리된다. BF inverse의 singlet1/4 또는 triplet3/4를 (8),(9)에 넣지 않는다.\n유도는 E1 coupling의 Cartesian amplitude ε_lambda,j와 <S|R_i|P_j>=dδ_ij를 수축하여 얻는다. 흡수 pump는 n_S VFV^T이고, 각 upper amplitude의 감쇠는 VH V^T다. 같은 진폭 수축으로 방출의 screen tensor는 V^TWV가 된다. Cyclic trace에 의해 각 E,e에서\n tr[n_S VFV^T-{VHV^T,W}/2]\n       +tr[{H,V^TWV}/2-n_S F]=0                                (10)\n이다. 이는 전자각을 적분한 BF map의 별도 transpose convention을 없애지 않는다.\n\n\n정규화:\n ∫(I3-ee^T)dΩ=(8π/3)I3,\n ∫b_IR V V^T dE dΩ=A_IR I3.                                    (11)\n따라서 진공에서 B_IR=-A_IR W, R_IR=A_IR n_P다. A_IR는 upper total population의 원자당 partial rate이고 이를3으로 나누지 않는다.\n등방 F_IR=f_IR I2이면\n B_IR=A_IR[n_S f_IR I3-(1+f_IR)W],\n R_IR=A_IR[n_P(1+f_IR)-3n_S f_IR].                              (12)\n반대로 arbitrary F에서 W=n_P I3/3라고 지정한 순간의 source는\n J_IR=b_IR[n_P(I2+F)/3-n_S F].                                  (13)\n하지만 비등방 pump가 이 scalar subspace를 계속 보존하는 것은 아니다. W=n|z><z|와 W=n|x><x|는 같은 n_P이나 e=z 진공 방출의 screen tensor가 각각0과 n diag(1,0)이다. 총 rate가 같아도 angular/polarization source는 다르다. Stokes/단일 scalar rate만으로 general W source를 대신할 수 없다.\n(8),(9)는 Hermiticity와 동일 사건 trace를 보존한다. source 자체의 PSD 또는 all-time 양성보존 적분기 완료를 주장하지 않는다. f≥0의 고정 유한 bath에서 pump와 loss의 형식이 정해졌다는 것과 joint dynamical solver의 검증은 다른 수준이다.\n\n\nSharp-line 한계에서는 F(E_IR,e)의 공명 trace가 정의될 정도의 regularity/line-transfer prescription을 요구한다. δ_D source를 다시 δ_D와 곱하는 계산을 하지 않는다. 실제 폭·재분배·경계에서 그 trace를 어떻게 얻는지는 아래 physical closure의 추가 항목이다. 임의 Voigt 폭을 넣고 상세평형이나 wing accuracy가 자동 보존된다고 하지 않는다."
+        },
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            109,
+            111
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "## 5. 같은 상태·같은 F에 결합한 다섯 source\n5.1 He584\n(7)–(9)에서 n_S→n_g,ε_IR→Δ_P,A_IR→A584를 바꾼 B584,J584,C584,R584를 사용한다. 이는 부모 WU23/24의 heavy sharp-line 한계다. 같은 W_P에 동시에 작용한다. 별도의 P584 population을 만들지 않는다. Parent의 finite-momentum shell은 별도 근사이며 이번에 새로 재현하지 않았다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            35,
+            63
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "### 2.1 P -> g 584 bound-bound\n\nWU29의 bound-bound matrix formula에 lower density `n_g`, upper matrix `W_P`, transition energy `Delta_P`, Einstein coefficient `A_584`를 넣는다.\n\nSharp-line distribution을 `b_584(E)=3 A_584 delta_D(E-Delta_P)/(8 pi)`로 쓴다. `H=I_2+F`이면\n\n`B_584 = integral b_584 [ n_g V F V^T - {V H V^T,W_P}/2 ] dE dOmega`,\n\n`J_584 = b_584 [ {H,V^T W_P V}/2 - n_g F ]`,\n\n`C_584=J_584/(a_gamma E^2)`,\n\n`R_584=integral tr J_584=-tr B_584`.\n\nPositive `R_584`는 net P->g이다.\n\n### 2.2 P <-> S IR bound-bound\n\n동일식에서 lower `n_S`, energy `epsilon_IR`, coefficient `A_IR`를 사용한다.\n\n`B_IR = integral b_IR [ n_S V F V^T - {V H V^T,W_P}/2 ] dE dOmega`,\n\n`J_IR = b_IR [ {H,V^T W_P V}/2 - n_S F ]`,\n\n`C_IR=J_IR/(a_gamma E^2)`,\n\n`R_IR=integral tr J_IR=-tr B_IR`.\n\nPositive `R_IR`는 net P->S이다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            575,
+            634
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub struct SharpLineConvention {\n    pub energy_ev: f64,\n    pub shell_integrated: bool,\n}\n#[derive(Clone, Debug)]\npub struct BoundBoundOutput {\n    pub atomic_b: Mat3,\n    pub angular_j: Vec<Mat2>,\n    pub event_rate: f64,\n    pub spectral: SharpLineConvention,\n}\n\n/// Shell-integrated sharp-line source. The Dirac-delta convention is represented\n/// explicitly by `spectral`; no finite-bin line profile is invented here.\npub fn he_bb_source(\n    channel: BoundBoundChannel,\n    n_lower: f64,\n    wp: Mat3,\n    f: Mat2,\n    angular: &[AngularSample],\n) -> Result<BoundBoundOutput, CoverageError> {\n    if n_lower < 0.0 || !n_lower.is_finite() {\n        return Err(CoverageError::InvalidInput(\"lower population\"));\n    }\n    if !wp.is_hermitian(1e-12) || !f.is_hermitian(1e-12) {\n        return Err(CoverageError::InvalidInput(\"BB W_P/F must be Hermitian\"));\n    }\n    if angular.is_empty() {\n        return Err(CoverageError::InvalidInput(\"angular stencil empty\"));\n    }\n    let a = channel.a_s_inv();\n    let b = 3.0 * a / (8.0 * PI);\n    let h = Mat2::identity() + f;\n    let mut atomic = Mat3::zero();\n    let mut js = Vec::with_capacity(angular.len());\n    let mut rate = 0.0;\n    for s in angular {\n        if s.weight_sr < 0.0 || !s.weight_sr.is_finite() {\n            return Err(CoverageError::InvalidInput(\"angular weight\"));\n        }\n        let vfv = v_x_vt(s.v, f);\n        let vhv = v_x_vt(s.v, h);\n        let bi = vfv.scale(n_lower) - anticommutator3(vhv, wp).scale(0.5);\n        atomic = atomic + bi.scale(b * s.weight_sr);\n        let vtwpv = vt_x_v(s.v, wp);\n        let ji = anticommutator2(h, vtwpv).scale(0.5) - f.scale(n_lower);\n        let ji = ji.scale(b);\n        rate += s.weight_sr * ji.trace().re;\n        js.push(ji);\n    }\n    Ok(BoundBoundOutput {\n        atomic_b: atomic,\n        angular_j: js,\n        event_rate: rate,\n        spectral: SharpLineConvention {\n            energy_ev: channel.energy_ev(),\n            shell_integrated: true,\n        },\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "현재 단일 F broadcast. Pointwise kernel, per-mode F/V angular assembly와 sharp delta coefficient를 Task3에서 분리.",
+      "next_plan_task": 3,
+      "T4_ids": [
+        "T4L03",
+        "T4L11"
+      ]
+    },
+    {
+      "id": "M04",
+      "label": "P BF inclusive transpose map",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            114,
+            123
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "5.2 P bound-free — WU28 재사용\nΦ(T_m)=[m_e k_BT_m/(2πℏ²)]^(3/2),\nη_P(E)=n_+ n_e exp[-(E-χ_P)/(k_BT_m)]/(4Φ),\nT_E[X]=(3σ_s-3σ_d/5)X+(9σ_d/10)X^T+(9σ_d/10)tr(X)I3,\nJ_F=V F^T V^T, J_H=V(I2+F)^T V^T,\nK_F=T_E[J_F], K_W=V^T T_E[W^T]V,\nB_P=ca_γ∫E²[η_P T_E[J_H]-{K_F,W}/2]dE dΩ,\nC_Pbf=c[3η_P σ_tot(I2+F)-{F,K_W}/2],\nj_P=-a_γ E²trC_Pbf, R_P=∫j_P=-trB_P.                           (14)\nR_P>0을 net ionization으로 정의한다. σ_tot=σ_s+σ_d. 실제 partials를 사용하며 총단면적에서 임의 partial ratio/위상을 만들지 않는다. 이 map은 전자방향 완전구면 동일가중 적분 및 isotropic inverse/no direction-dependent blocking 안에서 phase-free다. General differential electron source와 Im(s*d)의 부호는 여전히 미확정이다."
+        },
+        {
+          "path": "source_subset/sources/BASS_WU30_20260914_RESULT_v1.txt",
+          "lines": [
+            88,
+            105
+          ],
+          "file_sha256": "5bdbc5189838c06849dbebabf77eea29a80870df5b01be864d5dac64f99f8b71",
+          "excerpt": "## 5. 유한구간을 기존 정·역 source에 연결 — derived connection\n기존 WU28 연산자를 새 실제 partials로 평가한다:\n T_E[X]=(3sigma_s-3sigma_d/5)X+(9sigma_d/10)X^T+(9sigma_d/10)trX I3.\n이는 이미 유도된 inclusive local CP map이며 이번 새 성과로 재증명하지 않는다. T_E[I3]=3sigma_totI3,trace-selfadjoint 및 transpose compatibility를 재사용한다. Uniform full electron-angle integration과 isotropic inverse에서만 미취득 relative phase가 사라진다.\nPhi=[me kBT_m/(2pi hbar²)]^(3/2),\n eta_i(E)=n_+ n_e exp[-(E-chi_i)/(kBT_m)]/(4Phi),i=P,S,\n J_F=V F^T V^T,J_H=V(I2+F)^T V^T,\n K_F=T_E[J_F],K_W=V^T T_E[W^T]V.                              (7)\nP orbital degeneracy3은 source trace에 있고 etaP에 다시 넣지 않는다.\n\n\nHigh-band atomic/photon source:\n B_P,B=ca_gamma integral_B E²[etaP T_E[J_H]-{K_F,W}/2]dE dOmega,\n C_Pbf=c[3etaP sigma_tot(I2+F)-{F,K_W}/2],\n C_Sbf=c sigmaS[etaS(I2+F)-nS F],\n R_i,B=-integral_B a_gamma E²trC_i dE dOmega.                   (8)\nB는 정의된 실제band 또는 common band다. 같은sigma/domain/eta를 원자와광자 및 양방향에 사용한다. 이는 알려진 구간의 contribution을 계산하는 식이지 외부의 physicalsource를0으로 선언한 truncation model이 아니다. 기본 Milne 관계를 새로 재발명하거나 별도 fittedalpha를 추가하지 않았다.\nP source trace=-RP,B이고 S population source=-RS,B다. n_+,n_e source는 RP,B+RS,B다. 같은 nS/W_P가 WU29 IR/584/pair 식에 들어가고 동일 F가 모든 주파수 source에 들어간다. 독립 population/복사온도장을 만들지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            756,
+            812
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "fn te_map(x: Mat3, sigma_s: f64, sigma_d: f64) -> Mat3 {\n    x.scale(3.0 * sigma_s - 3.0 * sigma_d / 5.0)\n        + x.transpose().scale(9.0 * sigma_d / 10.0)\n        + Mat3::identity().scale(9.0 * sigma_d / 10.0 * x.trace().re)\n}\nfn eta(state: &SourceState, energy_ev: f64, chi_ev: f64) -> f64 {\n    state.n_he_plus\n        * state.ne\n        * (-(energy_ev - chi_ev) * EV_J / (KB_J_K * state.temperature_k)).exp()\n        / (4.0 * phi_m3(state.temperature_k))\n}\n\npub fn he_p_bf_source(\n    energy_ev: f64,\n    state: &SourceState,\n    table: PBoundFreeTable,\n) -> Result<PBoundFreeOutput, CoverageError> {\n    state.validate_bf()?;\n    if energy_ev < state.constants.chi_p_ev {\n        return Ok(PBoundFreeOutput {\n            photon_c: Mat2::zero(),\n            atomic_b: Mat3::zero(),\n            event_rate_density: 0.0,\n            gross_scale: 0.0,\n            atomic_gross_scale: 0.0,\n            coverage: CoverageState::PhysicalZeroBelowThreshold,\n        });\n    }\n    let q = (energy_ev - state.constants.chi_p_ev) / state.constants.rydberg_ev;\n    let xs = table.lookup(q)?;\n    let ss = xs.sigma_s_mb * MB_TO_M2;\n    let sd = xs.sigma_d_mb * MB_TO_M2;\n    let st = ss + sd;\n    let et = eta(state, energy_ev, state.constants.chi_p_ev);\n    let h = Mat2::identity() + state.f;\n    let kw = vt_x_v(state.v, te_map(state.wp.transpose(), ss, sd));\n    let gain = h.scale(3.0 * et * st);\n    let loss = anticommutator2(state.f, kw).scale(0.5);\n    let cph = (gain - loss).scale(C_M_S);\n    let e_j = energy_ev * EV_J;\n    let ag = 1.0 / (H_J_S * C_M_S).powi(3);\n    let j_f = v_x_vt(state.v, state.f.transpose());\n    let j_h = v_x_vt(state.v, h.transpose());\n    let kf = te_map(j_f, ss, sd);\n    let atom_gain = te_map(j_h, ss, sd).scale(et);\n    let atom_loss = anticommutator3(kf, state.wp).scale(0.5);\n    let ab = (atom_gain - atom_loss).scale(C_M_S * ag * e_j * e_j);\n    let event = -ag * e_j * e_j * cph.trace().re;\n    Ok(PBoundFreeOutput {\n        photon_c: cph,\n        atomic_b: ab,\n        event_rate_density: event,\n        gross_scale: C_M_S * (gain.max_abs() + loss.max_abs()),\n        atomic_gross_scale: C_M_S * ag * e_j * e_j * (atom_gain.max_abs() + atom_loss.max_abs()),\n        coverage: CoverageState::Represented,\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "T_E, F^T, W^T 순서를 그대로 유지. Photon source와 atomic source를 독립 성분 참조로 대조할 코드 작성은 Task4 이후.",
+      "next_plan_task": 4,
+      "T4_ids": [
+        "T4L03",
+        "T4L10",
+        "T4L11"
+      ]
+    },
+    {
+      "id": "M05",
+      "label": "S BF와 net ionization 부호",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            126,
+            132
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "5.3 S bound-free — WU27 재사용\nη_S(E)=n_+n_e exp[-(E-χ_S)/(k_BT_m)]/(4Φ),\nC_Sbf=cσ_S[η_S(I2+F)-n_S F],\nj_S=-a_γ E²trC_Sbf, R_S=∫j_S=n_SΓ_S-n_+n_eα_S[F,T_m].            (15)\nΓ_S=ca_γ∫E²σ_S trF,\nα_S=ca_γ/(4Φ)∫E²σ_S exp[-(E-χ_S)/(k_BT_m)](2+trF).\n적분은 실제 channel domain에 한한다. 기본 Milne 관계를 새 성과로 반복 유도한 것이 아니며, 같은 scalar n_S가 IR/pair 식에 들어가도록 연결한 것이다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            90,
+            98
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "### 2.4 S bound-free\n\n`eta_S(E)=n_+ n_e exp[-(E-chi_S)/(k_B T_m)]/(4 Phi)`이고\n\n`C_Sbf=c sigma_S(E) [eta_S(I_2+F)-n_S F]`,\n\n`j_S=-a_gamma E^2 tr C_Sbf`,\n\n`R_S=integral j_S dE dOmega`."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            814,
+            844
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub fn he_s_bf_source(\n    energy_ev: f64,\n    state: &SourceState,\n    table: SBoundFreeTable,\n) -> Result<SBoundFreeOutput, CoverageError> {\n    state.validate_bf()?;\n    if energy_ev < state.constants.chi_s_ev {\n        return Ok(SBoundFreeOutput {\n            photon_c: Mat2::zero(),\n            event_rate_density: 0.0,\n            gross_scale: 0.0,\n            coverage: CoverageState::PhysicalZeroBelowThreshold,\n        });\n    }\n    let q = (energy_ev - state.constants.chi_s_ev) / state.constants.rydberg_ev;\n    let sigma = table.lookup(q)? * MB_TO_M2;\n    let et = eta(state, energy_ev, state.constants.chi_s_ev);\n    let h = Mat2::identity() + state.f;\n    let gain = h.scale(et);\n    let loss = state.f.scale(state.ns);\n    let cph = (gain - loss).scale(C_M_S * sigma);\n    let e_j = energy_ev * EV_J;\n    let ag = 1.0 / (H_J_S * C_M_S).powi(3);\n    let event = -ag * e_j * e_j * cph.trace().re;\n    Ok(SBoundFreeOutput {\n        photon_c: cph,\n        event_rate_density: event,\n        gross_scale: C_M_S * sigma * (gain.max_abs() + loss.max_abs()),\n        coverage: CoverageState::Represented,\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "Positive energy below threshold만 physical zero. j=-a_gamma E^2 trC, proper measure를 유지.",
+      "next_plan_task": 4,
+      "T4_ids": [
+        "T4L02",
+        "T4L08",
+        "T4L12"
+      ]
+    },
+    {
+      "id": "M06",
+      "label": "Jacobs high P partial/S 표",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU30_20260914_RESULT_v1.txt",
+          "lines": [
+            45,
+            85
+          ],
+          "file_sha256": "5bdbc5189838c06849dbebabf77eea29a80870df5b01be864d5dac64f99f8b71",
+          "excerpt": "같은 단면적 변환을 쓴다:\n sigma_l(E)=4pi² alpha_fs a0² f_l(q),q=(E-chi)/Ry,\n 4pi² alpha_fs a0²=8.06728372576034Mb,\n 1Mb=10^-18cm²=10^-22m².                                      (2)\n원자료의 per-Rydberg oscillator-density convention이다. 임의 인자2/3 또는 fitting rescale은 넣지 않았다.\n\n\n이번 raw row:\nq | P f_s,L | P f_s,V | P f_d,L | P f_d,V | S f_L | S f_V\n1.0 |.002114|.001935|.003201|.002810|.06737|.06635\n1.2 |.001486|.001380|.001247|.001010|.04812|.04696\n1.4 |.001134|.001075|.0003970|.0002663|.03526|.03398             (3)\nS의 outgoing p wave는 단일 LS channel이며 P의 outgoing s/d와 혼동하지 않는다. P q1은 이미 WU28에서 채택한 동일 원행이고1.2/1.4가 새 범위다. S 세 행은 이번에 직접 채택한 별도 Jacobs branch다.\nSame-study TableVI, length form, Mb:\nq | unpolarized P | M_L=1 P with unpolarized photons\n1.0 |.04288|.05269\n1.2 |.02204|.02854\n1.4 |.01235|.01708.\n비편극 total=(sigma_s+sigma_d),그 준비기하의 M1=3sigma_s/2+21sigma_d/20로 대조했다. 최대 상대차는 각각3.578231626e-4,3.101193561e-4다. 1e-3 기준은 이번 인쇄표 수치정규화 비교 기준이며 저자가 보장한 물리 오차가 아니다. 같은 원자계산의 다른 표 간 일치는 독립 실험 검증이 아니다.\n\n\n## 4. 계산형 representative와 S-model interface\n각 원행 f를 q에 대해 piecewise linear로 연결한다:\n f_B(q)=f_j+(f_(j+1)-f_j)(q-q_j)/(q_(j+1)-q_j),\n q_j<=q<=q_(j+1),q_j={1,1.2,1.4}.                              (4)\n각 s/d/S와 L/V에 별도로 동일 정의를 사용한다. 양수 node의 convex interpolation은 양수이나 원래 물리함수의 정확도/곡률 bound를 인증하지 않는다. Outside1<=q<=1.4의 numerical query는 Missing으로 반환했다. 물리적 sigma=0을 선언하지 않는다.\n채택 energy domains:\n B_P=[16.9750594434654,22.4173366926028]eV,\n B_S,J=[17.5773073188389,23.0195845679763]eV,\n B_common=B_P intersection B_S,J\n       =[17.5773073188389,22.4173366926028]eV.                  (5)\n두 target photon이 모두 common band 안이다. qmax1.4<3이므로 이 계산형은 선택한 ground-residual HeII의 첫 excited-residual threshold 아래다. 이것만으로 미해결 resonance/오차를 인증하지 않는다.\n\n\nS 부모 WU27은 Bhatia2022 Table3 hybrid를 .01<=q<=1에서 사용했다. 이번 Jacobs S는 다른 계산이다. q1에서\n sigma_S,J,L=.543492904604474Mb,\n sigma_S,Bhatia,parent=.5474Mb,\n sigma_J/sigma_Bhatia-1=-.00713755096004.                        (6)\n이 -0.713755096%를 숨기지 않는다. 두 모형의 결과가 가깝다고 같은 wavefunction/accuracy가 되는 것이 아니다. 이번 target 두 점에서는 모두 qS>1이므로 Jacobs high-band만 쓴다. Low/high를 전역 spectrum으로 조합한 Maxwell integral이나 자동 smooth splice는 하지 않았다. 향후 조합은 명시적 model interface,중복 구간 처리와 source uncertainty를 포함해야 한다. 원자자료를 맞추는 rescale은 하지 않는다.\nBhatia 원문 직접 접근은 web429 및 Wolfram AccessDenied209character string이었다. 후자의 TEXT_RETURNED는 접근거절 페이지일 뿐 atomic data 취득 성공이 아니다. 이 경로의 상위 q 데이터를 취득했다고 하지 않는다. 별개의 공개 Jacobs 계산으로 finiteband 입력을 제공했다.\nP와 S의 L/V 차이는 같은 근사계산의 다른 dipole form이다. Independent error bars/통계적 confidence interval/현대 정밀 원자오차로 해석하지 않는다."
+        },
+        {
+          "path": "source_subset/reports/03_T4_COVERAGE_AND_MISSING_PHYSICS_KO.md",
+          "lines": [
+            3,
+            23
+          ],
+          "file_sha256": "2700cefb6218478479e429f1aa8c70f169d0ef2851b85b5803d36c52e4fe0c4b",
+          "excerpt": "## 1. P bound-free numerical coverage\n\nJacobs source family에서 WU28은 q=0.15...1.0, WU30은 q=1.0,1.2,1.4를 사용한다. 같은 P source family 안에서는 piecewise-linear representative를 q in [0.15,1.4]로 정의할 수 있다.\n\n`E=chi_P+q Ry`이므로 대략 5.4102...22.4173 eV가 represented range이다. 이 범위 밖은 `UNKNOWN`, physical zero가 아니다.\n\nAlignment-inclusive P map에는 sigma_s와 sigma_d가 모두 필요하다. Total sigma만 있는 구간은 scalar unpolarized opacity에는 쓸 수 있어도 full W_P matrix source에는 promotion하지 않는다.\n\nElectron-angle-resolved source에는 relative s/d phase의 imaginary-sign 정보가 추가로 필요하다. 현재 full-angle inclusive map은 그 phase를 제거하지만 anisotropic electron weighting에서는 다시 필요하다.\n\n## 2. S bound-free numerical coverage\n\nWU27 low branch는 Bhatia-derived q≈0.01...1, WU30 high branch는 Jacobs q=1...1.4이다. 두 atomic calculations는 q=1에서 약 -0.713755% 차이가 있으며 동일 model family가 아니다.\n\n따라서 T4는 이 둘을 자동 smooth splice하지 않는다.\n\n- `S_BF_LOW_BHATIA`: finite low-q source branch.\n- `S_BF_HIGH_JACOBS`: q in [1,1.4] source branch.\n- `S_BF_GLOBAL_STITCH`: `UNRESOLVED`.\n\nE_partner≈20.0135 eV와 584≈21.2180 eV의 hard-photon tests에는 WU30 Jacobs high branch가 직접 적용 가능하다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            637,
+            732
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub enum DipoleGauge {\n    Length,\n    Velocity,\n}\n#[derive(Clone, Copy, Debug)]\npub struct PPartialXs {\n    pub sigma_s_mb: f64,\n    pub sigma_d_mb: f64,\n}\n#[derive(Clone, Copy, Debug)]\npub struct PBoundFreeTable {\n    gauge: DipoleGauge,\n}\nimpl PBoundFreeTable {\n    pub const fn jacobs_high_length() -> Self {\n        Self {\n            gauge: DipoleGauge::Length,\n        }\n    }\n    pub const fn jacobs_high_velocity() -> Self {\n        Self {\n            gauge: DipoleGauge::Velocity,\n        }\n    }\n    pub fn lookup(self, q: f64) -> Result<PPartialXs, CoverageError> {\n        if !q.is_finite() {\n            return Err(CoverageError::InvalidInput(\"q\"));\n        }\n        if !(1.0..=1.4).contains(&q) {\n            return Err(CoverageError::MissingAuthority {\n                family: \"P_BOUND_FREE_JACOBS_HIGH\",\n                value: q,\n                detail: \"selected source subset contains exact numerical rows only for q=1.0,1.2,1.4; do not invent low/high extrapolation\",\n            });\n        }\n        let (fs, fd) = match self.gauge {\n            DipoleGauge::Length => (\n                [0.002114, 0.001486, 0.001134],\n                [0.003201, 0.001247, 0.0003970],\n            ),\n            DipoleGauge::Velocity => (\n                [0.001935, 0.001380, 0.001075],\n                [0.002810, 0.001010, 0.0002663],\n            ),\n        };\n        let interp = |v: [f64; 3]| -> f64 {\n            if q <= 1.2 {\n                v[0] + (v[1] - v[0]) * (q - 1.0) / 0.2\n            } else {\n                v[1] + (v[2] - v[1]) * (q - 1.2) / 0.2\n            }\n        };\n        Ok(PPartialXs {\n            sigma_s_mb: JACOBS_F_TO_MB * interp(fs),\n            sigma_d_mb: JACOBS_F_TO_MB * interp(fd),\n        })\n    }\n}\n#[derive(Clone, Copy, Debug)]\npub struct SBoundFreeTable {\n    gauge: DipoleGauge,\n}\nimpl SBoundFreeTable {\n    pub const fn jacobs_high_length() -> Self {\n        Self {\n            gauge: DipoleGauge::Length,\n        }\n    }\n    pub const fn jacobs_high_velocity() -> Self {\n        Self {\n            gauge: DipoleGauge::Velocity,\n        }\n    }\n    pub fn lookup(self, q: f64) -> Result<f64, CoverageError> {\n        if !q.is_finite() {\n            return Err(CoverageError::InvalidInput(\"q\"));\n        }\n        if !(1.0..=1.4).contains(&q) {\n            return Err(CoverageError::MissingAuthority {\n                family: \"S_BOUND_FREE_JACOBS_HIGH\",\n                value: q,\n                detail: \"Bhatia low branch and Jacobs high branch are not stitched; selected subset provides high numerical rows only\",\n            });\n        }\n        let f = match self.gauge {\n            DipoleGauge::Length => [0.06737, 0.04812, 0.03526],\n            DipoleGauge::Velocity => [0.06635, 0.04696, 0.03398],\n        };\n        let v = if q <= 1.2 {\n            f[0] + (f[1] - f[0]) * (q - 1.0) / 0.2\n        } else {\n            f[1] + (f[2] - f[1]) * (q - 1.2) / 0.2\n        };\n        Ok(JACOBS_F_TO_MB * v)\n    }\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "이번 numeric admission은 high q=[1,1.4]. Raw T4 low-domain 서술을 삭제하지 않되 없는 partial rows를 만들지 않음.",
+      "next_plan_task": 4,
+      "T4_ids": [
+        "T4L08",
+        "T4L12"
+      ]
+    },
+    {
+      "id": "M07",
+      "label": "D86 수치 band supersession",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU31_20260914_AMENDMENT_WU31_A1_v1.txt",
+          "lines": [
+            21,
+            29
+          ],
+          "file_sha256": "ee1b36beb349aff47d9697b49b80f7d2276c5e7365b61031c11f4b18298ce06d",
+          "excerpt": "## 3. Effective numerical selection from WU31 onward\nCANONICAL_NUMERICAL_BAND=D86_TABLE_V_LENGTH_LINEAR_B\nB=[1/40,39/40]. On half-grid yj=j/40,j=1..20,use the exact printed values:\n{7.736,25.158,43.302,59.693,73.920,86.112,96.523,105.407,112.986,119.447,124.942,129.596,133.508,136.760,139.416,141.525,143.128,144.253,144.921,145.142}/s.\nReflect abouty=.5 and linearly interpolate only withinB. WU31 RESULT§4 lists separatevelocityrows for same-study comparison. Do not average them into an invented uncertainty distribution.\nAtomic band vacuum loss is computed from this SAME w:\nLambda_B=.5 integral_B wdy=50.9259/s.\nOutsideB is unprovided,not physicalzero. No endpoint extrapolation or full-spectrum normalization is supplied. Neither51.020 nor50.943 nor50.94 is added as an independent atomic loss above this resolved photon source.\nUnchanged:Delta and levelregistry,photonF acrossfrequencies,atompopulationnS/ng,screenpairtensor,Boseforward/inverse,measure,trI2=2,atomicpair1/2,number2R,energyDeltaR,fourforce,IR/584/P/Sbound-free and WU30hard-photonopacity coefficients. No effective direct reaction is added."
+        },
+        {
+          "path": "source_subset/reports/03_T4_COVERAGE_AND_MISSING_PHYSICS_KO.md",
+          "lines": [
+            25,
+            36
+          ],
+          "file_sha256": "2700cefb6218478479e429f1aa8c70f169d0ef2851b85b5803d36c52e4fe0c4b",
+          "excerpt": "## 3. two-photon coverage\n\nCanonical numerical central-band representative는 WU31-A1의 `D86_TABLE_V_LENGTH_LINEAR_B`이다.\n\n- material-frame y domain `[1/40,39/40]`.\n- printed length-gauge half-grid를 reflect하고 band 내부에서만 linear interpolation.\n- vacuum band event loss `Lambda_B=50.9259 s^-1`, 같은 w에서 계산.\n- D86 velocity rows는 gauge comparison이며 평균해 invented uncertainty로 만들지 않는다.\n- `51.020`, `50.943`, `50.94 s^-1`를 resolved source 위에 별도 decay로 더하지 않는다.\n- y<1/40 또는 y>39/40는 `UNKNOWN`.\n\nWU32 이후 finite-ECG C0 calculations는 endpoint/atomic-convergence research branch이다. G10–G13과 T3 claim chain의 수용 없이 canonical collision spectrum을 교체하지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/coverage.rs",
+          "lines": [
+            47,
+            91
+          ],
+          "file_sha256": "270ca6588e8caeda9e22bf3c66f62074a8d0a83d4d26a5ba47d4170edfaae344",
+          "excerpt": "pub const D86_Y_MIN: f64 = 1.0 / 40.0;\npub const D86_Y_MAX: f64 = 39.0 / 40.0;\n\nconst D86_HALF: [f64; 20] = [\n    7.736, 25.158, 43.302, 59.693, 73.920, 86.112, 96.523, 105.407, 112.986, 119.447, 124.942,\n    129.596, 133.508, 136.760, 139.416, 141.525, 143.128, 144.253, 144.921, 145.142,\n];\n\n/// Canonical WU31-A1 D86 length-gauge representative.\n/// Reflect y -> 1-y, then linearly interpolate the printed j/40 half-grid.\n/// Outside [1/40,39/40] is UNKNOWN and therefore a typed error, never zero.\npub fn d86_w(y: f64) -> Result<f64, CoverageError> {\n    if !y.is_finite() {\n        return Err(CoverageError::InvalidInput(\"two-photon y must be finite\"));\n    }\n    if !(D86_Y_MIN..=D86_Y_MAX).contains(&y) {\n        return Err(CoverageError::OutOfBand {\n            family: \"D86_TABLE_V_LENGTH_LINEAR_B\",\n            value: y,\n            min: D86_Y_MIN,\n            max: D86_Y_MAX,\n        });\n    }\n    let yr = if y > 0.5 { 1.0 - y } else { y };\n    let x = yr * 40.0;\n    let nearest = x.round();\n    if (x - nearest).abs() <= 16.0 * f64::EPSILON * x.abs().max(1.0) {\n        let idx = nearest as usize;\n        if (1..=20).contains(&idx) {\n            return Ok(D86_HALF[idx - 1]);\n        }\n    }\n    let j0 = x.floor() as usize;\n    let j1 = j0 + 1;\n    if j0 < 1 || j1 > 20 {\n        return Err(CoverageError::OutOfBand {\n            family: \"D86_TABLE_V_LENGTH_LINEAR_B\",\n            value: y,\n            min: D86_Y_MIN,\n            max: D86_Y_MAX,\n        });\n    }\n    let t = x - j0 as f64;\n    Ok(D86_HALF[j0 - 1] * (1.0 - t) + D86_HALF[j1 - 1] * t)\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "현 D86 원 node 유지. WU29 line143 legacy numerical choice만 A1로 대체. Endpoint/total rescale 금지.",
+      "next_plan_task": 5,
+      "T4_ids": [
+        "T4L12",
+        "T4L13"
+      ]
+    },
+    {
+      "id": "M08",
+      "label": "두 photon 방향의 screen overlap",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            135,
+            142
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "5.4 S↔g 두 광자 — WU26 재사용\nΔ=Δ_S,E=Δy,E'=Δ(1-y),T12=V1^TV2(real basis),H_i=I2+F_i,\nM12=(n_S/2){H1,T12 H2^T T12†}-(n_g/2){F1,T12 F2^T T12†},\ng_ang=3/(64π²),\nC_2γ(E,e1)=w(y)/(a_γE²Δ) g_ang∫M12 dΩ2,\nR_2γ=(1/2)∫w(y)dy g_ang∫trM12 dΩ1dΩ2\n      =n_SΛ_down[F]-n_gΛ_up[F].                                (16)\n모든 F와 population은 각 해당 적분 안에 있다. 원자사건은 unordered pair이므로1/2, photon source는 두 tag를 세므로 추가1/2가 없다. 동일 w로 ∫a_γE²trC_2γ=2R_2γ, ∫a_γE³trC_2γ=Δ_S R_2γ다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            100,
+            112
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "### 2.5 S <-> g two-photon\n\n`Delta=Delta_S`, `E_1=Delta y`, `E_2=Delta(1-y)`를 material frame에서 정의한다. 두 screen 사이의 real-basis adapter를 `T_12=V_1^T V_2`로 두고 `H_i=I_2+F_i`라 하면\n\n`M_12=(n_S/2){H_1,T_12 H_2^T T_12^dagger}-(n_g/2){F_1,T_12 F_2^T T_12^dagger}`.\n\n`g_ang=3/(64 pi^2)`이고\n\n`C_2g(E_1,e_1)=w(y)/(a_gamma E_1^2 Delta) g_ang integral M_12 dOmega_2`,\n\n`R_2g=(1/2) integral w(y)dy g_ang integral tr M_12 dOmega_1 dOmega_2`.\n\n원자 event에는 unordered pair factor 1/2가 있지만 one-photon marginal source는 두 tagged photons를 세므로 추가 1/2를 넣지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            861,
+            891
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub fn he_two_photon_pair_source(\n    y: f64,\n    state: &SourceState,\n    f1: Mat2,\n    f2: Mat2,\n) -> Result<TwoPhotonPairOutput, CoverageError> {\n    state.validate()?;\n    if !f1.is_hermitian(1e-12) || !f2.is_hermitian(1e-12) {\n        return Err(CoverageError::InvalidInput(\"pair F must be Hermitian\"));\n    }\n    let w = d86_w(y)?;\n    let h1 = Mat2::identity() + f1;\n    let h2 = Mat2::identity() + f2;\n    // Identity real screen adapter T12 for fixed-input parity. General transport may\n    // supply a rotated screen before calling this source.\n    let emit = anticommutator2(h1, h2.transpose()).scale(0.5 * state.ns);\n    let absorb = anticommutator2(f1, f2.transpose()).scale(0.5 * state.ng);\n    let m = emit - absorb;\n    let g = 3.0 / (64.0 * PI * PI);\n    let atomic_event_weight = 0.5 * w * g;\n    let photon_marginal_weight = w * g;\n    Ok(TwoPhotonPairOutput {\n        pair_matrix: m,\n        event_rate_density: atomic_event_weight * m.trace().re,\n        photon_tags_per_event: 2,\n        atom_pair_factor: 0.5,\n        w_s_inv: w,\n        atomic_event_weight_s_inv: atomic_event_weight,\n        photon_marginal_weight_s_inv: photon_marginal_weight,\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "현재 identity shortcut은 일반 T12=V1^T V2가 아님. Task5에서 V1/V2 입력으로 원문대로 구현. Material-frame 내부 문제로 consumer boost에 미루지 않음.",
+      "next_plan_task": 5,
+      "T4_ids": [
+        "T4L03",
+        "T4L09",
+        "T4L13"
+      ]
+    },
+    {
+      "id": "M09",
+      "label": "Pair kernel/event/marginal/측도 분리",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            135,
+            142
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "5.4 S↔g 두 광자 — WU26 재사용\nΔ=Δ_S,E=Δy,E'=Δ(1-y),T12=V1^TV2(real basis),H_i=I2+F_i,\nM12=(n_S/2){H1,T12 H2^T T12†}-(n_g/2){F1,T12 F2^T T12†},\ng_ang=3/(64π²),\nC_2γ(E,e1)=w(y)/(a_γE²Δ) g_ang∫M12 dΩ2,\nR_2γ=(1/2)∫w(y)dy g_ang∫trM12 dΩ1dΩ2\n      =n_SΛ_down[F]-n_gΛ_up[F].                                (16)\n모든 F와 population은 각 해당 적분 안에 있다. 원자사건은 unordered pair이므로1/2, photon source는 두 tag를 세므로 추가1/2가 없다. 동일 w로 ∫a_γE²trC_2γ=2R_2γ, ∫a_γE³trC_2γ=Δ_S R_2γ다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            100,
+            112
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "### 2.5 S <-> g two-photon\n\n`Delta=Delta_S`, `E_1=Delta y`, `E_2=Delta(1-y)`를 material frame에서 정의한다. 두 screen 사이의 real-basis adapter를 `T_12=V_1^T V_2`로 두고 `H_i=I_2+F_i`라 하면\n\n`M_12=(n_S/2){H_1,T_12 H_2^T T_12^dagger}-(n_g/2){F_1,T_12 F_2^T T_12^dagger}`.\n\n`g_ang=3/(64 pi^2)`이고\n\n`C_2g(E_1,e_1)=w(y)/(a_gamma E_1^2 Delta) g_ang integral M_12 dOmega_2`,\n\n`R_2g=(1/2) integral w(y)dy g_ang integral tr M_12 dOmega_1 dOmega_2`.\n\n원자 event에는 unordered pair factor 1/2가 있지만 one-photon marginal source는 두 tagged photons를 세므로 추가 1/2를 넣지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            847,
+            891
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "pub struct TwoPhotonPairOutput {\n    /// Unweighted material-frame M12 kernel.\n    pub pair_matrix: Mat2,\n    pub event_rate_density: f64,\n    pub photon_tags_per_event: u8,\n    pub atom_pair_factor: f64,\n    pub w_s_inv: f64,\n    /// Weight for the unordered atomic event integrand: (1/2) w g_ang.\n    pub atomic_event_weight_s_inv: f64,\n    /// Weight for one tagged-photon marginal before E/angular measures: w g_ang.\n    /// No extra unordered-pair 1/2 belongs here.\n    pub photon_marginal_weight_s_inv: f64,\n}\n\npub fn he_two_photon_pair_source(\n    y: f64,\n    state: &SourceState,\n    f1: Mat2,\n    f2: Mat2,\n) -> Result<TwoPhotonPairOutput, CoverageError> {\n    state.validate()?;\n    if !f1.is_hermitian(1e-12) || !f2.is_hermitian(1e-12) {\n        return Err(CoverageError::InvalidInput(\"pair F must be Hermitian\"));\n    }\n    let w = d86_w(y)?;\n    let h1 = Mat2::identity() + f1;\n    let h2 = Mat2::identity() + f2;\n    // Identity real screen adapter T12 for fixed-input parity. General transport may\n    // supply a rotated screen before calling this source.\n    let emit = anticommutator2(h1, h2.transpose()).scale(0.5 * state.ns);\n    let absorb = anticommutator2(f1, f2.transpose()).scale(0.5 * state.ng);\n    let m = emit - absorb;\n    let g = 3.0 / (64.0 * PI * PI);\n    let atomic_event_weight = 0.5 * w * g;\n    let photon_marginal_weight = w * g;\n    Ok(TwoPhotonPairOutput {\n        pair_matrix: m,\n        event_rate_density: atomic_event_weight * m.trace().re,\n        photon_tags_per_event: 2,\n        atom_pair_factor: 0.5,\n        w_s_inv: w,\n        atomic_event_weight_s_inv: atomic_event_weight,\n        photon_marginal_weight_s_inv: photon_marginal_weight,\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "1/2 atomic event, photon tag2, 1/(a_gamma E1^2 Delta), dy/dOmega를 각 소유 위치에서 한 번 적용. 현재 partial weights를 전체 marginal로 부르지 않음.",
+      "next_plan_task": 5,
+      "T4_ids": [
+        "T4L02",
+        "T4L09",
+        "T4L13"
+      ]
+    },
+    {
+      "id": "M10",
+      "label": "He 사건 행렬과 핵수·전하",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            160,
+            170
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "## 6. 핵수·전하·광자·에너지·four-force\nR584,R_IR,R_2γ는 net downward, R_P,R_S는 net ionization이다. Population 순서(g,S,P,HeII,e,photon),channel 순서(584,IR,Pbf,Sbf,2γ)의 event matrix는\n S_event={{1,0,0,0,1},\n          {0,1,0,-1,-1},\n          {-1,-1,-1,0,0},\n          {0,0,1,1,0},\n          {0,0,1,1,0},\n          {1,1,-1,-1,2}}.                                      (19)\n따라서 n_He=n_g+n_S+trW_P+n_+의 공통 dilution 외 생성은0, He charge와 전자의 collision 생성 차도0이다. 실제 HeIII/H가 있으면 기존 charge equation의 해당 항을 보존한다.\n전체 주파수 photon collision number source는\n S_Nγ=R584+R_IR-R_P-R_S+2R_2γ.                                  (20)"
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "lines": [
+            4,
+            10
+          ],
+          "file_sha256": "b966209762ab386bf2a93defea1c16b8b236b4839b5eb9213033b865707409e5",
+          "excerpt": "pub const EVENT_MATRIX: [[i32; 5]; 6] = [\n    [1, 0, 0, 0, 1],\n    [0, 1, 0, -1, -1],\n    [-1, -1, -1, 0, 0],\n    [0, 0, 1, 1, 0],\n    [0, 0, 1, 1, 0],\n    [1, 1, -1, -1, 2],"
+        },
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "lines": [
+            63,
+            97
+          ],
+          "file_sha256": "b966209762ab386bf2a93defea1c16b8b236b4839b5eb9213033b865707409e5",
+          "excerpt": "pub fn assemble_he_event_ledger(\n    r: ChannelRates,\n    e: HeEnergies,\n    bf_photon_energy: f64,\n    h_kin: f64,\n) -> Result<HeEventLedger, CoverageError> {\n    let vals = [r.r584, r.rir, r.rp, r.rs, r.r2g, bf_photon_energy, h_kin];\n    if vals.iter().any(|x| !x.is_finite()) {\n        return Err(CoverageError::InvalidInput(\"ledger values must be finite\"));\n    }\n    let rates = r.as_array();\n    let mut s = [0.0; 6];\n    for i in 0..6 {\n        for j in 0..5 {\n            s[i] += EVENT_MATRIX[i][j] as f64 * rates[j];\n        }\n    }\n    let nuclei = s[0] + s[1] + s[2] + s[3];\n    let charge = s[3] - s[4];\n    let pint = -e.delta_p * r.r584 - e.epsilon_ir * r.rir - e.delta_s * r.r2g\n        + e.chi_p * r.rp\n        + e.chi_s * r.rs;\n    let pg = e.delta_p * r.r584 + e.epsilon_ir * r.rir + e.delta_s * r.r2g - bf_photon_energy;\n    Ok(HeEventLedger {\n        species_source: s,\n        he_nuclei_residual: nuclei,\n        charge_minus_e_residual: charge,\n        photon_number_source: s[5],\n        p_internal: pint,\n        p_gamma: pg,\n        h_kin,\n        energy_residual: pint + pg + h_kin,\n        event_matrix: EVENT_MATRIX,\n    })\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "기존 signed event matrix 보존. 새 quadrature assembly에서 integrated rates에 1/2나 2를 중복하지 않음.",
+      "next_plan_task": 6,
+      "T4_ids": [
+        "T4L01",
+        "T4L13"
+      ]
+    },
+    {
+      "id": "M11",
+      "label": "독립 열·광자·내부에너지 및 material four-force",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            174,
+            185
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "원자 바닥을0으로 한 내부에너지밀도:\n u_int=Δ_S n_S+Δ_P trW_P+I_He n_+.\n충돌 source:\n P_int=-Δ_P R584-ε_IR R_IR-Δ_S R_2γ+χ_P R_P+χ_S R_S,\n P_γ=Δ_P R584+ε_IR R_IR+Δ_S R_2γ-∫E(j_P+j_S)dE dΩ,\n H_kin=∫[(E-χ_P)j_P+(E-χ_S)j_S]dE dΩ,\n P_int+P_γ+H_kin=0.                                             (21)\nχ_P/S는 그 들뜬 상태에서 continuum까지의 내부에너지차다. 이미 u_int에 들어간 excitation energy를 열로 또 더하지 않는다. 역capture가 우세하면 j<0로 capture electron의 kinetic energy 제거도 같은 식에 반영된다.\nHeavy sharp BB와 pair에서 kinetic heat는0이지만 momentum transfer가0이라는 뜻은 아니다. 모든 selected photons에 대해 S_γ=a_γE²C_total이면\n Q_m^a=-(1/c)∫E(u^a+e^a)trS_γ dE dΩ,\n Q_γ^a=-Q_m^a.                                                 (22)\n이는 총물질 대 복사의 local collision four-force다. 전자/이온/원자 사이 운동량 분배 및 비열적 이완까지 결정한 것은 아니다. Geometric redshift 에너지는 Liouville/geometry 부분이며 (21)에 열로 중복하지 않는다."
+        },
+        {
+          "path": "source_subset/reports/02_T4_CONSERVATION_EQUILIBRIUM_FRAME_AUDIT_KO.md",
+          "lines": [
+            25,
+            66
+          ],
+          "file_sha256": "87bd1568e99dacc2683323015de1f54aac90ac68a4af197116d0cc99f87d6501",
+          "excerpt": "## 2. energy ledger\n\nAtomic ground energy를 0으로 두면\n\n`u_int=Delta_S n_S + Delta_P tr(W_P) + I_He n_+`.\n\nLevel relations은\n\n`Delta_P=Delta_S+epsilon_IR`,\n`I_He=Delta_P+chi_P=Delta_S+chi_S`.\n\n따라서 event rates의 internal-energy source는\n\n`P_int=-Delta_P R_584-epsilon_IR R_IR-Delta_S R_2g+chi_P R_P+chi_S R_S`.\n\nBound-free signed spectral density `j_i`를 쓰면\n\n`P_gamma=Delta_P R_584+epsilon_IR R_IR+Delta_S R_2g-integral E(j_P+j_S)dE dOmega`,\n\n`H_kin=integral[(E-chi_P)j_P+(E-chi_S)j_S]dE dOmega`.\n\n정확히\n\n`P_int+P_gamma+H_kin=0`.\n\nWolfram exact event algebra가 다섯 channel 각각에서 이 항등식을 확인했다. 첫 ledger call에서 internal changes는\n\n`(-Delta_P,-epsilon_IR,chi_P,chi_S,-Delta_S)`\n\n로 환원되며 photon+kinetic 항을 더하면 전부 0이었다.\n\n## 3. four-force ledger\n\n`S_gamma(E,e)=a_gamma E^2 C_He(E,e)`라 하면 material-frame total matter force는\n\n`Q_m^a=-(1/c) integral E(u_m^a+e_m^a) tr S_gamma dE dOmega`,\n\n`Q_gamma^a=-Q_m^a`.\n\nPositive photon emission에서 `c(-u_m.Q_m)=-P_gamma`가 되어 위 scalar energy ledger와 일치한다.\n\nBound-bound/two-photon heavy-atom approximation에서 recoil kinetic energy를 leading order에 생략해도 momentum transfer를 0으로 만들지는 않는다. Total material force는 유지한다. Electron/ion/neutral atom 사이의 force partition은 별도 closure이다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/ledger.rs",
+          "lines": [
+            49,
+            97
+          ],
+          "file_sha256": "b966209762ab386bf2a93defea1c16b8b236b4839b5eb9213033b865707409e5",
+          "excerpt": "pub struct HeEventLedger {\n    pub species_source: [f64; 6],\n    pub he_nuclei_residual: f64,\n    pub charge_minus_e_residual: f64,\n    pub photon_number_source: f64,\n    pub p_internal: f64,\n    pub p_gamma: f64,\n    pub h_kin: f64,\n    pub energy_residual: f64,\n    pub event_matrix: [[i32; 5]; 6],\n}\n\n/// Assemble the selected-He signed event ledger. `bf_photon_energy` is\n/// integral E (j_P+j_S) dE dOmega in the same energy units as `HeEnergies`.\npub fn assemble_he_event_ledger(\n    r: ChannelRates,\n    e: HeEnergies,\n    bf_photon_energy: f64,\n    h_kin: f64,\n) -> Result<HeEventLedger, CoverageError> {\n    let vals = [r.r584, r.rir, r.rp, r.rs, r.r2g, bf_photon_energy, h_kin];\n    if vals.iter().any(|x| !x.is_finite()) {\n        return Err(CoverageError::InvalidInput(\"ledger values must be finite\"));\n    }\n    let rates = r.as_array();\n    let mut s = [0.0; 6];\n    for i in 0..6 {\n        for j in 0..5 {\n            s[i] += EVENT_MATRIX[i][j] as f64 * rates[j];\n        }\n    }\n    let nuclei = s[0] + s[1] + s[2] + s[3];\n    let charge = s[3] - s[4];\n    let pint = -e.delta_p * r.r584 - e.epsilon_ir * r.rir - e.delta_s * r.r2g\n        + e.chi_p * r.rp\n        + e.chi_s * r.rs;\n    let pg = e.delta_p * r.r584 + e.epsilon_ir * r.rir + e.delta_s * r.r2g - bf_photon_energy;\n    Ok(HeEventLedger {\n        species_source: s,\n        he_nuclei_residual: nuclei,\n        charge_minus_e_residual: charge,\n        photon_number_source: s[5],\n        p_internal: pint,\n        p_gamma: pg,\n        h_kin,\n        energy_residual: pint + pg + h_kin,\n        event_matrix: EVENT_MATRIX,\n    })\n}"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "lines": [
+            125,
+            142
+          ],
+          "file_sha256": "4b61e43dd61f18d7e584677fafd64a08d7f1c939fee9475198d27443490c4ab1",
+          "excerpt": "fn event_ledger_conserves_nuclei_charge_photons_and_energy() {\n    let rates = ChannelRates {\n        r584: 2.0,\n        rir: -3.0,\n        rp: 5.0,\n        rs: -7.0,\n        r2g: 11.0,\n    };\n    let e = HeEnergies::canonical();\n    let h_kin = -8.0;\n    let bf_photon = e.chi_p * rates.rp + e.chi_s * rates.rs + h_kin;\n    let l = assemble_he_event_ledger(rates, e, bf_photon, h_kin).unwrap();\n    assert!(l.he_nuclei_residual.abs() < 1e-12);\n    assert!(l.charge_minus_e_residual.abs() < 1e-12);\n    assert!((l.photon_number_source - (2.0 - 3.0 - 5.0 + 7.0 + 22.0)).abs() < 1e-12);\n    assert!((l.p_internal + l.p_gamma + l.h_kin).abs() < 1e-10);\n    assert_eq!(l.event_matrix[5][4], 2);\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "Task6에서 j_i,E,weights로 heat와 photon moment 독립 누적. Test의 constructed cancellation을 독립 물리검증으로 세지 않음. 총물질 force만, species partition은 scope 밖.",
+      "next_plan_task": 6,
+      "T4_ids": [
+        "T4L02",
+        "T4L14"
+      ]
+    },
+    {
+      "id": "M12",
+      "label": "공통 Maxwell electron frame",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            30,
+            34
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "채택 근사: spin-independent nonrelativistic LS E1, 실제 correlated-He strength, heavy atom sharp line, 약한 비결맞음 복사와 atom–photon kinetic factorization. P 내부 coherency는 유지하지만 서로 다른 원자 energy level 사이 optical coherence는 secular하게 생략한다. BF inverse에는 등방·비축퇴 Maxwell 전자와 unpolarized spin reservoir를 사용한다. W_P,F의 비등방/정렬/편광은 허용한다. 이 가정들은 공간균질성에서 자동으로 나오지 않는다.\nRecoil/Doppler, natural wings/complete PRD, fine/hyperfine/spin–orbit 전체 보정, 외부장, 위상결맞음 Raman/겹치는 공명, 완전한 self-energy, 전자 속도·스핀 kinetic closure는 계산하지 않았다. 원자에너지의 평가값과 leading E1 tensor를 조합한 calibrated 모델이지 한 Hamiltonian의 모든 정밀 보정을 재현한 것은 아니다.\n\n\n광자 ray clock은 dt_r=-u_a dx^a/c로 정의되는 국소 물질계 경로시간이다. C_t는 그 초당 occupation source이며 D_m를 photon derivative로 대체하지 않는다. 기존 inverse-length 형식에는 C_ell=C_t/c다. normal time/finite tilt가 필요하면 Dossier II의 energy·direction·screen·clock adapter를 그대로 적용한다. 이번에 새로운 normal-frame 식이나 임의1/γ 인자를 만들지 않았다."
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            228,
+            238
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "## 7. electron frame assumption의 firewall\n\n현재 bound-free inverse coefficient `eta_i`는 isotropic, nondegenerate Maxwell electrons가 atom/material rest frame에 있다는 가정 아래 유도됐다. 따라서 T4 baseline closure는\n\n`u_e=u_He=u_m`\n\n을 요구한다.\n\n만약 `u_e != u_He`이면 electron distribution은 He rest frame에서 anisotropic해진다. 이때 현재 scalar Maxwell `eta_i`를 photon boost만 붙여 사용하면 안 된다. Differential electron kernel 또는 재유도된 boosted electron integral이 필요하다. 이 branch는 `DEFERRED_SPECIES_DRIFT_PHYSICS`이다.\n\nElectron-rest-frame Thomson collision은 별도 kernel이며 자신의 finite boost adapter를 유지한다. Bound-free inverse와 Thomson의 rest frame을 같은 식이라고 합치지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            451,
+            468
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "#[derive(Clone, Copy, Debug, PartialEq, Eq)]\npub enum ElectronFramePolicy {\n    CommonMaterialMaxwell,\n    SpeciesDriftUnsupported,\n}\n\n#[derive(Clone, Copy, Debug)]\npub struct SourceState {\n    pub ng: f64,\n    pub ns: f64,\n    pub wp: Mat3,\n    pub n_he_plus: f64,\n    pub ne: f64,\n    pub temperature_k: f64,\n    pub f: Mat2,\n    pub v: RealV,\n    pub constants: HeConstants,\n    pub electron_frame: ElectronFramePolicy,"
+        },
+        {
+          "path": "rust/rec_microphysics/src/he_singlet.rs",
+          "lines": [
+            540,
+            550
+          ],
+          "file_sha256": "6a46dc8971d6acf5abbeb22d535fbcef8b5026c422263c9932aed09cb9f7096d",
+          "excerpt": "    fn validate_bf(&self) -> Result<(), CoverageError> {\n        self.validate()?;\n        if self.electron_frame != ElectronFramePolicy::CommonMaterialMaxwell {\n            return Err(CoverageError::MissingAuthority {\n                family: \"BOUND_FREE_SPECIES_DRIFT\",\n                value: 0.0,\n                detail: \"inverse kernel is authorized only for common material/electron frame with isotropic nondegenerate Maxwell electrons\",\n            });\n        }\n        Ok(())\n    }"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "현재 inverse의 common material/electron restriction 유지. Drift 지원은 MissingAuthority, 추가 photon boost만으로 닫지 않음.",
+      "next_plan_task": 4,
+      "T4_ids": [
+        "T4L15"
+      ]
+    },
+    {
+      "id": "M13",
+      "label": "독립 oracle, scale 및 nonfinite 비교",
+      "authority": [
+        {
+          "path": "source_subset/sources/BASS_WU29_20260913_RESULT_v1.txt",
+          "lines": [
+            23,
+            25
+          ],
+          "file_sha256": "50d84f6a650b001692468a3c4effc7e425f3e5bf410a1c1d406a60ea7a92b519",
+          "excerpt": "F=F†≥0는 물질계 energy와 방향에 대한2×2 screen occupation, trI2=2다. 편광2를 측도에 중복하지 않는다. V는 real Cartesian3×2, V^T V=I2, VV^T=I3-ee^T다. 복소 screen/구면기저 변경에는 conjugation adapter를 함께 적용한다.\ng=1s²1^1S0, S=1s2s2^1S0: n_g,n_S scalar, g_g=g_S=1.\nP=1s2p2^1P1^o: W_P=W_P†≥0, trW_P=n_P, g_P=3."
+        },
+        {
+          "path": "IMPLEMENTATION_PLAN_KO.md",
+          "lines": [
+            1,
+            30
+          ],
+          "file_sha256": "3a349e30a8eb17148de02a59c698cdda304c85e0115008700442fd5444950a6f",
+          "excerpt": "# rec_bianchi selected-He source repair and forward-port Implementation Plan\n\n> For agentic workers: 기존 계획의 native/inline 실행 방식을 따른다. Superpowers executing-plans를 사용하되, 이 문서의 웹/로컬 역할 분리가 전역 TDD 및 compile 위치의 일반 기본값보다 우선한다. 새 worktree를 만들지 않는다.\n\n**Goal:** 최초 START가 지정한 selected-He source를 일반 material-frame fixed input에서 의미를 유지하는 callable Rust library로 완성하고, 미검증 코드 게시와 local 검증을 분리한다.\n\n**Architecture:** 현재 PR #81의 `rec_microphysics`를 최소 보완한다. Pointwise source kernel, measure/각도 적분, signed event ledger를 분리하고 기존 solver는 연결하지 않는다. Source subset, 입력 fixture, 실패 분기와 exact candidate가 Git으로 전달되므로 local Codex는 대화나 파일 다운로드 없이 재검증할 수 있어야 한다.\n\n**Tech Stack:** Rust rlib / f64 / 현행 Mat2, Mat3, Complex64 / external Rust dependencies 0개 / Python standard-library reference와 검증 runner. 기준 toolchain은 Rust 1.94.1이지만 실제 local binary/version은 실행 때 기록한다.\n\n**Spec:** `START_CONTRACT_AND_DELTA_KO.md`. 최초 START와 최신 사용자 지시를 함께 보존한다.\n\n## Global Constraints\n\n- Repository `cosmosapjw-quantum/rec_bianchi`.\n- Original base `5a09f3797210284f83a1a1adb0e0092d1ac48475`.\n- Observed continuation head `49d64b2660f227f6e4d888d6c02ead266d97a138`.\n- Existing branch `forward/rust-he-sources-20260922`, PR #81. 이 branch의 좁은 수정만 한다.\n- Git/kernel 기준과 archive/delivery 기준을 구분한다. ZIP/TAR SHA는 commit/tree SHA가 아니다.\n- 원 source subset을 repo에 추가하고 SHA/size로 잠근다. 기존 local exact bytes가 있으면 redownload하지 않는다.\n- 원 T4 ID `T4L01` ... `T4L15`를 유지한다. 임의 L01 rename이나 일부 시험의 PASS 승계 금지.\n- Compiler, cargo fmt/test/clippy와 전체 package parity는 이 스레드에서 실행하지 않는다. Toy는 작은 식/연산자/negative control에 한한다.\n- TDD의 compiler-red/green은 local 소유다. 여기서 toy-red를 확인했더라도 Rust-red 또는 Rust-green이라고 쓰지 않는다.\n- 기존 허용치 `4096 * f64::EPSILON = 9.094947017729282e-13`은 유지한다. 물리 오차/interval proof로 해석하지 않는다.\n- Existing Python/C solver와 PROJECT_STATE science 판정 불변. Heavy eigensolve/grid/history/S4/S5/G10 실행 금지.\n- 다음 두 commit을 기본 작업 단위로 한다: 후보 source/fixtures, local evidence/handoff. 필요한 최소 follow-up은 허용하되 새 연구단계로 만들지 않는다.\n\n## Review Focus\n\n1. 서로 수직인 photon 방향의 screen overlap은 rank deficient일 수 있다. Identity나 unitary rotation으로 대체하지 않는다."
+        }
+      ],
+      "current_code": [
+        {
+          "path": "scripts/check_rust_forward_parity.py",
+          "lines": [
+            14,
+            43
+          ],
+          "file_sha256": "00254308f89ccb019e6ae77e15e6d00d62341877dc0e7f3ef40604d4689984eb",
+          "excerpt": "def close(a: float, b: float, tol: float) -> bool:\n    return abs(a-b) <= tol * (1.0 + abs(a) + abs(b))\n\ndef main() -> int:\n    cfg = json.loads(FIXTURE.read_text())\n    tol = float(cfg[\"implementation_tolerance\"])\n    proc = subprocess.run(\n        [\"cargo\", \"run\", \"--manifest-path\", str(MANIFEST), \"--locked\", \"--example\", \"eval_fixture\", \"--quiet\"],\n        cwd=ROOT, text=True, capture_output=True\n    )\n    if proc.returncode != 0:\n        print(proc.stdout, end=\"\")\n        print(proc.stderr, end=\"\", file=sys.stderr)\n        fail(f\"Rust fixture exited {proc.returncode}\")\n    try:\n        got = json.loads(proc.stdout.strip())\n    except Exception as exc:\n        fail(f\"fixture JSON parse: {exc}; stdout={proc.stdout!r}\")\n    for key, expected in cfg[\"expected\"].items():\n        actual = got.get(key)\n        if actual is None or not close(float(actual), float(expected), tol):\n            fail(f\"{key}: got {actual}, expected {expected}, tol={tol}\")\n    for key in cfg[\"zero_or_scaled_residual_keys\"]:\n        value = float(got.get(key, math.inf))\n        # Absolute zero-ledger entries are also safely bounded by this same tiny gate.\n        if not math.isfinite(value) or abs(value) > tol:\n            fail(f\"{key}: residual {value} exceeds {tol}\")\n    if not close(float(got[\"bb_jvp_num\"]), float(got[\"bb_jvp_ana\"]), tol):\n        fail(f\"BB JVP: numeric {got['bb_jvp_num']} analytic {got['bb_jvp_ana']}\")\n    print(json.dumps({\"status\":\"PASS\",\"tolerance\":tol,\"values\":got}, sort_keys=True))"
+        },
+        {
+          "path": "rust/rec_microphysics/tests/forward.rs",
+          "lines": [
+            97,
+            108
+          ],
+          "file_sha256": "4b61e43dd61f18d7e584677fafd64a08d7f1c939fee9475198d27443490c4ab1",
+          "excerpt": "fn complex_wp_f_trace_parity_is_preserved() {\n    let mut state =\n        SourceState::simple(2.0, 0.7, wp_diag(0.4, 0.7, 1.1), 0.3, 0.4, 9000.0).unwrap();\n    state.f = Mat2([[c(0.2, 0.0), c(0.03, 0.04)], [c(0.03, -0.04), c(0.1, 0.0)]]);\n    state.wp[0][1] = c(0.05, 0.02);\n    state.wp[1][0] = c(0.05, -0.02);\n    let e = state.constants.chi_p_ev + 1.2 * state.constants.rydberg_ev;\n    let out = he_p_bf_source(e, &state, PBoundFreeTable::jacobs_high_length()).unwrap();\n    let lhs = out.atomic_b.trace().re;\n    let rhs = -out.event_rate_density;\n    assert!((lhs - rhs).abs() <= 1e-10 * (1.0 + lhs.abs() + rhs.abs()));\n}"
+        }
+      ],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "현재 비교 바닥과 self-residual만으로 expression-level parity 인증하지 않음. 기존 4096eps 유지, reference scale 및 nonfinite negative controls는 Task6에서 구현.",
+      "next_plan_task": 6,
+      "T4_ids": [
+        "T4L03",
+        "T4L10",
+        "T4L11",
+        "T4L12"
+      ]
+    },
+    {
+      "id": "M14",
+      "label": "원 T4 ID와 material/consumer 검증 범위",
+      "authority": [
+        {
+          "path": "source_subset/plans/LOCAL_CODEX_T4_TEST_MATRIX.json",
+          "lines": [
+            5,
+            21
+          ],
+          "file_sha256": "4008bb2d497c68b0579343c9e5ad223a4f0db7a7909ae0636c1dfa3b003865b0",
+          "excerpt": "    {\"id\":\"T4L01\",\"class\":\"exact_or_small\",\"test\":\"event matrix He-nucleus and charge null vectors\"},\n    {\"id\":\"T4L02\",\"class\":\"exact_or_small\",\"test\":\"channel-by-channel energy ledger P_int+P_gamma+H_kin=0\"},\n    {\"id\":\"T4L03\",\"class\":\"exact_or_small\",\"test\":\"material-frame Planck/Boltzmann/Saha source zero for all represented channels\"},\n    {\"id\":\"T4L04\",\"class\":\"exact_or_small\",\"test\":\"finite-tilt boosted LTE remains source zero\"},\n    {\"id\":\"T4L05\",\"class\":\"implementation\",\"test\":\"normal/material photon source parity with Dossier-II Eq.115-119 including screen transform\"},\n    {\"id\":\"T4L06\",\"class\":\"implementation\",\"test\":\"atomic proper-density normal-time parity with Dossier-III continuity\"},\n    {\"id\":\"T4L07\",\"class\":\"implementation\",\"test\":\"direction-dependent normal-frame sharp-line support E_n=epsilon/D\"},\n    {\"id\":\"T4L08\",\"class\":\"implementation\",\"test\":\"bound-free threshold and table lookup use E_m=D E_n\"},\n    {\"id\":\"T4L09\",\"class\":\"implementation\",\"test\":\"two-photon pair uses D1 E1n + D2 E2n=Delta_S\"},\n    {\"id\":\"T4L10\",\"class\":\"implementation\",\"test\":\"P-bound-free full matrix source reduces to scalar isotropic formula when W_P=n_P I3/3\"},\n    {\"id\":\"T4L11\",\"class\":\"implementation\",\"test\":\"584/IR matrix event trace parity between atom and photon source\"},\n    {\"id\":\"T4L12\",\"class\":\"implementation\",\"test\":\"coverage mask returns explicit UNKNOWN outside domain and preserves LTE on represented modes\"},\n    {\"id\":\"T4L13\",\"class\":\"audit\",\"test\":\"no duplicate 2gamma total loss, no 584 continuum absorption added to atomic P decay\"},\n    {\"id\":\"T4L14\",\"class\":\"audit\",\"test\":\"four-force moment equals scalar photon-energy ledger in material frame\"},\n    {\"id\":\"T4L15\",\"class\":\"negative_control\",\"test\":\"species-drift BF inverse is rejected unless a rederived electron distribution kernel is supplied\"}\n  ],\n  \"promotion_note\":\"Passing these interface tests does not close S4/S5 or G10-G13 by itself.\""
+        },
+        {
+          "path": "source_subset/reports/01_T4_SOURCE_TO_TRANSPORT_INTERFACE_KO.md",
+          "lines": [
+            254,
+            267
+          ],
+          "file_sha256": "f115e4f04ae2316f0f4134f5243b9962b628073487beee0b0afc242760c92f63",
+          "excerpt": "## 9. implementation contract\n\n한 collision evaluation은 다음 순서를 따른다.\n\n1. normal phase-space point `(E_n,e_n,F_n)`과 material tilt를 읽는다.\n2. 기존 finite boost로 `(E_m,e_m,F_m)`을 얻는다.\n3. material-frame atom/electron proper densities와 `W_P`, `T_m`을 읽는다.\n4. atomic data coverage를 `E_m`, 또는 pair의 material `y`에서 판정한다.\n5. UNKNOWN coverage면 0을 반환하지 말고 explicit missing-domain state를 반환한다.\n6. represented channel에 대해 material `B`, `R`, `C_t`, thermal/force ledger를 계산한다.\n7. photon source만 `D_mray B_(m->n)`로 normal-time source로 변환한다.\n8. atom proper-density ODE가 normal time이면 collision source를 `1/gamma_m`로 변환한다.\n9. energy-momentum은 material-frame four-force로 조립한 뒤 four-vector boost를 사용한다.\n10. Liouville redshift/screen rotation을 collision heat나 atomic rate에 다시 넣지 않는다."
+        }
+      ],
+      "current_code": [],
+      "status": "STATIC_MAPPING_ONLY__NOT_IMPLEMENTATION_VERIFIED",
+      "decision": "원 ID T4L01...T4L15를 그대로 유지. 전체 T4와 GateP를 구별; 이 단계의 원 T4 실행은 전부 NOT_RUN.",
+      "next_plan_task": 7,
+      "T4_ids": [
+        "T4L01",
+        "T4L02",
+        "T4L03",
+        "T4L04",
+        "T4L05",
+        "T4L06",
+        "T4L07",
+        "T4L08",
+        "T4L09",
+        "T4L10",
+        "T4L11",
+        "T4L12",
+        "T4L13",
+        "T4L14",
+        "T4L15"
+      ]
+    }
+  ],
+  "scientific_verification": "NOT_PERFORMED"
+}
