@@ -1,0 +1,21 @@
+{
+  "schema": "P02B-FLRW-ENDPOINT-CONTRACT-v1",
+  "scope": "Original October-2012 HyRec FLRW conditional endpoint; not adopted as a REI or Bianchi IC",
+  "archive": "archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+  "archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "input_member": "HyRec/input.dat",
+  "input_sha256": "f8073ba70197378e156a6723e229ff47cc9f0d8be0121f1fce82aff6c64abcbc",
+  "cosmology": {"T0_K": 2.728, "obh2": 0.021976, "omh2": 0.13, "okh2": 0.0, "odeh2": 0.343, "w0": -1.0, "wa": 0.0, "Y": 0.24, "Nnueff": 3.04, "fsR": 1.0, "meR": 1.0},
+  "endpoint_z": 5.807,
+  "baseline_DLNA": 0.0000849,
+  "refined_DLNA": 0.00004245,
+  "endpoint_relative_tolerance": 0.0001,
+  "export_cubic_epsilon_multiplier": 64,
+  "compiler_flags": ["-O2"],
+  "run_wall_limit_seconds_each": 300,
+  "maximum_science_runs": 2,
+  "maximum_targeted_repairs": 1,
+  "mapping": "xHII=xe, xHI=1-xe, xHeI=1, xHeII=xHeIII=0: neutral-after-original-HyRec-cutoff, not resolved helium endpoint abundances",
+  "exclusions": ["Bianchi background adoption", "REI IC admission", "low-temperature REI atomic/thermal closure", "photon field", "CR injection/deposition", "long IGM history", "continuum/global recombination error certification"],
+  "pass_transition": "Make this archived-cosmology FLRW endpoint available to the separate cosmology/background mapping and cold-provider gates."
+}

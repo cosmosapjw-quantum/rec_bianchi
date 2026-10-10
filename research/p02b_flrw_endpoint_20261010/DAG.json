@@ -1,0 +1,15 @@
+{
+  "schema": "P02B-FLRW-ENDPOINT-DAG-v1",
+  "nodes": [
+    {"id": "P02B_SOURCE", "status": "PASS", "evidence": "evidence/SOURCE_MANIFEST.json"},
+    {"id": "P02B_NATIVE_ENDPOINT", "status": "PASS_SCOPED", "depends_on": ["P02B_SOURCE"], "evidence": ["evidence/baseline.json", "evidence/refined.json"]},
+    {"id": "P02B_NUMERICAL_EXPORT", "status": "PASS_SCOPED", "depends_on": ["P02B_NATIVE_ENDPOINT"], "evidence": "evidence/VALIDATION.json"},
+    {"id": "P02B_INDEPENDENT_REVIEW", "status": "PASS_SCOPED", "depends_on": ["P02B_NUMERICAL_EXPORT"], "evidence": "evidence/INDEPENDENT_REVIEW.json"},
+    {"id": "P02B_PUBLICATION", "status": "READY", "depends_on": ["P02B_INDEPENDENT_REVIEW"]},
+    {"id": "P02_BACKGROUND_MAPPING", "status": "HOLD_OWNER_MODEL_CHOICE", "depends_on": ["P02B_INDEPENDENT_REVIEW"], "missing": "Adopted cosmology/Bianchi background mapping; this archival FLRW contract is not an REI IC decision."},
+    {"id": "P02_COLD_ATOMIC_THERMAL", "status": "HOLD_PROVIDER_DOMAIN", "missing": "Provider valid for the actual approximately 1 K residual-IGM endpoint and selected composition."},
+    {"id": "P02_PHOTON_SOURCE_IC", "status": "HOLD_MODEL_INPUT", "missing": "Photon/source initial conditions and closure for the chosen cold history."},
+    {"id": "P02_REI_BIANCHI_IC", "status": "HOLD", "depends_on": ["P02_BACKGROUND_MAPPING", "P02_COLD_ATOMIC_THERMAL", "P02_PHOTON_SOURCE_IC"]}
+  ],
+  "global_scientific_admission": "HOLD"
+}
