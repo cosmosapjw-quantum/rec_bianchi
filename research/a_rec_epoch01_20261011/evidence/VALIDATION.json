@@ -1,0 +1,160 @@
+{
+  "status": "PASS_SCOPED",
+  "science_runs": 2,
+  "checks": {
+    "baseline": {
+      "epochs": [
+        {
+          "domain": "PASS",
+          "SI_mapping": "PASS",
+          "cubic_scaled_errors": {
+            "xe_per_H": 1.3248364011800136e-16,
+            "Tm_K": 0.0
+          },
+          "cubic_scaled_limit": 1.4210854715202004e-14
+        },
+        {
+          "domain": "PASS",
+          "SI_mapping": "PASS",
+          "cubic_scaled_errors": {
+            "xe_per_H": 2.7167304704970555e-16,
+            "Tm_K": 1.446944640387448e-16
+          },
+          "cubic_scaled_limit": 1.4210854715202004e-14
+        }
+      ],
+      "native_history": {
+        "status": "PASS",
+        "nodes": 105859,
+        "sha256": "67f23bd3a3b52488c62c6d54cbb0d53e685503e0db320284410ce723acf0a3ba"
+      }
+    },
+    "refined": {
+      "epochs": [
+        {
+          "domain": "PASS",
+          "SI_mapping": "PASS",
+          "cubic_scaled_errors": {
+            "xe_per_H": 0.0,
+            "Tm_K": 1.8901691413584378e-16
+          },
+          "cubic_scaled_limit": 1.4210854715202004e-14
+        },
+        {
+          "domain": "PASS",
+          "SI_mapping": "PASS",
+          "cubic_scaled_errors": {
+            "xe_per_H": 0.0,
+            "Tm_K": 1.4470656293893647e-16
+          },
+          "cubic_scaled_limit": 1.4210854715202004e-14
+        }
+      ],
+      "native_history": {
+        "status": "PASS",
+        "nodes": 211717,
+        "sha256": "e4f01225c62b69755f369ad0eadc8196e6b14d2b1a89b4427c4c85e9249c2796"
+      }
+    }
+  },
+  "relative_differences": {
+    "20.0": {
+      "xe_per_H": 1.7649926256558314e-07,
+      "Tm_K": 1.0051249443782222e-07,
+      "ne_m3": 1.764992625665573e-07
+    },
+    "15.9": {
+      "xe_per_H": 6.304660458642791e-07,
+      "Tm_K": 1.0664074497333458e-07,
+      "ne_m3": 6.304660457779093e-07
+    }
+  },
+  "limit": 0.0001,
+  "receipts": {
+    "baseline": {
+      "binary_sha256": "298ddda45dd37f3e0e31e15d277835df8c0008a7e4c204a092953db4558061c0",
+      "build": {
+        "command": [
+          "/usr/bin/cc",
+          "-O2",
+          "hyrectools.c",
+          "helium.c",
+          "hydrogen.c",
+          "history.c",
+          "epoch_driver.c",
+          "-lm",
+          "-o",
+          "epochs"
+        ],
+        "cwd": "/tmp/a-rec-epoch01-b0wzeqiq/baseline",
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 0.6486724889837205,
+        "cpu_seconds": 0.5626990000000001,
+        "wall_limit_seconds": 300,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "bd9c3b6b0ac39ece1be3eea01d5029484baa5f9e66309bbe65537e4743a75c93",
+        "stdin_sha256": null
+      },
+      "run": {
+        "command": [
+          "/tmp/a-rec-epoch01-b0wzeqiq/baseline/epochs",
+          "/home/cosmosapjw/rec_worktrees/p02b-flrw-endpoint-20261010/research/a_rec_epoch01_20261011/evidence/baseline.native_history.csv"
+        ],
+        "cwd": "/tmp/a-rec-epoch01-b0wzeqiq/baseline",
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 0.5380215340410359,
+        "cpu_seconds": 0.534489,
+        "wall_limit_seconds": 300,
+        "stdout_sha256": "a78dfd7b25157f9426cd1affeb6b3137e29483c699cd58f330800bca6702733c",
+        "stderr_sha256": "29195aae4fc692cb8778f9b419d11431d0ad916ed7a7f3030bdbb8982a0bcfff",
+        "stdin_sha256": "f8073ba70197378e156a6723e229ff47cc9f0d8be0121f1fce82aff6c64abcbc"
+      }
+    },
+    "refined": {
+      "binary_sha256": "29fccff261f65448300c25210d51bedf9e4eace6a8e377b2a2157b54b364b4ce",
+      "build": {
+        "command": [
+          "/usr/bin/cc",
+          "-O2",
+          "hyrectools.c",
+          "helium.c",
+          "hydrogen.c",
+          "history.c",
+          "epoch_driver.c",
+          "-lm",
+          "-o",
+          "epochs"
+        ],
+        "cwd": "/tmp/a-rec-epoch01-b0wzeqiq/refined",
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 0.54806684498908,
+        "cpu_seconds": 0.5413030000000001,
+        "wall_limit_seconds": 300,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "bd9c3b6b0ac39ece1be3eea01d5029484baa5f9e66309bbe65537e4743a75c93",
+        "stdin_sha256": null
+      },
+      "run": {
+        "command": [
+          "/tmp/a-rec-epoch01-b0wzeqiq/refined/epochs",
+          "/home/cosmosapjw/rec_worktrees/p02b-flrw-endpoint-20261010/research/a_rec_epoch01_20261011/evidence/refined.native_history.csv"
+        ],
+        "cwd": "/tmp/a-rec-epoch01-b0wzeqiq/refined",
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 1.0955751040019095,
+        "cpu_seconds": 1.0891469999999999,
+        "wall_limit_seconds": 300,
+        "stdout_sha256": "4792b92db01a4423f3ea5dacfa5cad17e050791da2bef2819e6335839dade49b",
+        "stderr_sha256": "29195aae4fc692cb8778f9b419d11431d0ad916ed7a7f3030bdbb8982a0bcfff",
+        "stdin_sha256": "f8073ba70197378e156a6723e229ff47cc9f0d8be0121f1fce82aff6c64abcbc"
+      }
+    }
+  },
+  "independent_review": "PENDING",
+  "Bianchi_IC_adoption": "HOLD",
+  "claim": "One DLNA halving; no continuum/global error certificate"
+}
