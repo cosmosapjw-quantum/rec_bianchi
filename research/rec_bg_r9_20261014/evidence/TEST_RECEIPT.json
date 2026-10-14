@@ -1,12 +1,42 @@
 {
   "selected_stage": "R9",
-  "python_unit_tests": {"cases":16,"exit":0,"stdout":"evidence/unit_stdout.txt","stderr":"evidence/unit_stderr.txt"},
-  "independent_mp_55dps_numerical": {"cases":6,"grid_levels":[1024,2048],"windows_per_case":5,"total_rows":60,"exit":0,"max_dt_relative":2.491689611916742e-14,"max_db_relative":2.514924308128385e-14,"compared_to":1e-9,"scope":"isolated mathematical background, not native full-trajectory"},
+  "python_unit_tests": {
+    "cases": 17,
+    "exit": 0,
+    "stdout": "evidence/unit_stdout.txt",
+    "stderr": "evidence/unit_stderr.txt"
+  },
+  "independent_mp_55dps_numerical": {
+    "cases": 6,
+    "grid_levels": [
+      1024,
+      2048
+    ],
+    "windows_per_case": 5,
+    "total_rows": 60,
+    "exit": 0,
+    "max_dt_relative": 2.491689611916742e-14,
+    "max_db_relative": 2.514924308128385e-14,
+    "compared_to": 1e-09,
+    "scope": "isolated mathematical background, not native full-trajectory"
+  },
   "symbolic": "evidence/WOLFRAM_RESULT.json",
   "xAct": "evidence/XACT_STATUS.json",
-  "production_science_solver_runs":0,
-  "native_subagent":"NOT_RUN",
-  "independent_review":"NOT_RUN",
-  "canonical_repository_source_mutated":false,
-  "empirical_reionization_claim":"NOT_ISSUED"
+  "production_science_solver_runs": 0,
+  "native_subagent": "NOT_RUN",
+  "independent_review": "NOT_RUN",
+  "canonical_repository_source_mutated": false,
+  "empirical_reionization_claim": "NOT_ISSUED",
+  "repair_episode": {
+    "finding": "local evaluation relative error measured against positive polynomial increment needs mixed term (1+alpha)*eta_eval",
+    "red_test_exit": 1,
+    "green_test_exit": 0,
+    "changed_paths": [
+      "theory/REPORT_KO.md",
+      "theory/R9_DOSSIER_SUPPLEMENT.tex",
+      "code/interval_reference.py",
+      "code/test_interval_reference.py"
+    ],
+    "original_v1_archive_preserved_sha256": "4db1e96828ba10a20ab0f1a8ac92f8075a0354e7b301c0fb07cf88624c673a4e"
+  }
 }

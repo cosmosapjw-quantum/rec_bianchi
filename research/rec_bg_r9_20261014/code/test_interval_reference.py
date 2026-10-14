@@ -70,6 +70,13 @@ class IntervalContractTests(unittest.TestCase):
         e=conditional_clock_bound(1.92141e-11,0.,0.,312237)
         self.assertGreater(e,1.92141e-11)
         self.assertLess(e,5.39e-11)
+    def test_evaluation_relative_error_composition(self):
+        # Floating evaluation error relative to the interpolated positive integral.
+        poly=1.0e-4; n=1
+        # Deliberately large evaluation error makes the mixed term falsifiable.
+        local=.1
+        expected=poly+(1+poly)*local
+        self.assertAlmostEqual(conditional_clock_bound(poly,0.,local,n),expected,places=15)
     def test_photon_isotropic_limit(self):
         for mu in (-1.,-.23,0.,.4,1.):
             x=photon_map(mu,0.,0.)

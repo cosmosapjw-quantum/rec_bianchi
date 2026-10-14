@@ -60,12 +60,12 @@ $\epsilon_h<1$이고 $s$가 $I$에서 한 부호이므로
 
 $q=0$에서는 $\Delta b=\widehat{\Delta b}=0$을 정확히 사용하며 상대오차를 정의하지 않는다. 이 상대상계는 부분구간의 길이에 의한 나눗셈을 포함하지 않는다. **이것은 정확한 node/derivative를 가진 이상적 수학적 다항식의 정리이지 binary64 구현에 대한 인증이 아니다.**
 
-노드값 절대오차 $e_F$와 도함수 절대오차 $e_{F'}$가 알려져 있으면 Hermite basis에서 $|\widetilde P-P|\le e_F+h e_{F'}/4$다. 로컬 적분 평가 상대오차 $\eta_{\rm eval}$를 따로 제한한 경우에 한해
+노드값 절대오차 $e_F$와 도함수 절대오차 $e_{F'}$가 알려져 있으면 Hermite basis에서 $|\widetilde P-P|\le e_F+h e_{F'}/4$다. $\alpha_I=\epsilon_h+(e_F+h e_{F'}/4)/(\inf_I F)$로 정의하고, **기계적 로컬 적분값과 다항식의 정확한 적분값의 차**를 그 다항식 적분의 상대오차 $\eta_{\rm eval}$로 제한하면, 양의 적분에 대해
 \[
- \eta_I\le\epsilon_h+\frac{e_F+(h/4)e_{F'}}{\inf_I F}+\eta_{\rm eval}
+ \boxed{\eta_I\le\alpha_I+(1+\alpha_I)\eta_{\rm eval}.}
 \tag{R9-T05}
 \]
-는 보수적 error decomposition이다. 별도 수치인증 없이 $e_F=e_{F'}=\eta_{\rm eval}=0$으로 선언하지 않는다. $N$개의 계산된 양의 시간증분에 공통 상대상계 $\eta<1$가 있고 순차 binary64 합산이 통상적 모델을 만족하면
+이는 두 단계의 상대오차를 합성한 보수적 상계다. 교차항 $\alpha_I\eta_{\rm eval}$을 임의로 삭제하면 엄밀한 상계가 아니다. 별도 수치인증 없이 $e_F=e_{F'}=\eta_{\rm eval}=0$으로 선언하지 않는다. $N$개의 계산된 양의 시간증분에 공통 상대상계 $\eta<1$가 있고 순차 binary64 합산이 통상적 모델을 만족하면
 \[
  \frac{|\widehat t_N-t_N|}{t_N}\le\eta+(1+\eta)\gamma_{N-1},\quad
  \gamma_{N-1}=\frac{(N-1)2^{-53}}{1-(N-1)2^{-53}}.

@@ -1,0 +1,5 @@
+# R9 v1 precision erratum and bounded repair
+
+The first immutable R9 archive (`SHA256 4db1e96828ba10a20ab0f1a8ac92f8075a0354e7b301c0fb07cf88624c673a4e`) stated an additive bound for a floating local integration error defined relative to the *polynomial* integral. This omitted the mixed term between the exact-data Hermite/node error `alpha` and the local evaluator relative error `eta_eval`. The corrected bound is `eta_total <= alpha + (1+alpha)*eta_eval`, before positive accumulation roundoff.
+
+The affected reference function `conditional_clock_bound` and report R9-T05 are revised. A new test `test_evaluation_relative_error_composition` failed before correction (`RED EXIT=1`, difference `1e-5`) and passed after correction; 17/17 unit tests and the existing 60-case numerical reference suite passed afterward. No source cosmology, empirical data, production solver, output identity or scientific admission was altered. V1 remains in both providers as historical evidence; the create-only `v2` archive supersedes it for use.

@@ -7,30 +7,90 @@
     "model": "prescribed normal-comoving axisymmetric Bianchi-I",
     "signature": "(-,+,+,+)",
     "metric": "-c^2dt^2 + a^2 exp(-2b)(dx^2+dy^2) + a^2 exp(4b) dz^2",
-    "scale_interval": [0.047619047619047616, 0.2],
+    "scale_interval": [
+      0.047619047619047616,
+      0.2
+    ],
     "clock": "elapsed proper seconds since initial zbar20 slice, not absolute universe age",
-    "family": ["PhysicalDensityFixed", "SameHDiagnostic_counterfactual"],
-    "q_ref_cases": [0.0, 0.005, -0.005, 0.01, -0.01],
-    "protected": ["c,hbar,kB explicit in physical units", "normal frame", "Bianchi-I shear signed convention", "cold source and chemistry and Thomson convention unchanged"]
+    "family": [
+      "PhysicalDensityFixed",
+      "SameHDiagnostic_counterfactual"
+    ],
+    "q_ref_cases": [
+      0.0,
+      0.005,
+      -0.005,
+      0.01,
+      -0.01
+    ],
+    "protected": [
+      "c,hbar,kB explicit in physical units",
+      "normal frame",
+      "Bianchi-I shear signed convention",
+      "cold source and chemistry and Thomson convention unchanged"
+    ]
   },
   "exact_mathematical_interface": {
     "name": "finite_interval_geometry",
     "input": [
-      {"name": "a1", "type": "f64", "condition": "finite, a_ref <= a1"},
-      {"name": "a2", "type": "f64", "condition": "finite, a1 < a2 <= a_end"},
-      {"name": "background_identity", "type": "immutable-model-identifier", "condition": "exact pinned cosmology, q_ref, family, endpoints, source and method"}
+      {
+        "name": "a1",
+        "type": "f64",
+        "condition": "finite, a_ref <= a1"
+      },
+      {
+        "name": "a2",
+        "type": "f64",
+        "condition": "finite, a1 < a2 <= a_end"
+      },
+      {
+        "name": "background_identity",
+        "type": "immutable-model-identifier",
+        "condition": "exact pinned cosmology, q_ref, family, endpoints, source and method"
+      }
     ],
     "output": [
-      {"name": "delta_l", "type": "f64", "definition": "log1p((a2-a1)/a1)", "units": "dimensionless"},
-      {"name": "delta_t_s", "type": "f64", "definition": "integral_{L1}^{L2} 1/H dL", "units": "proper seconds", "condition": "finite and >0"},
-      {"name": "delta_b", "type": "f64", "definition": "integral_{L1}^{L2} s/H dL", "units": "dimensionless", "condition": "sign(delta_b)=sign(q_ref), or exact zero for q_ref=0"},
-      {"name": "method_identity", "type": "versioned new numerical method", "condition": "never silently equated to old point_at_scale cumulative difference"},
-      {"name": "validation_scope", "type": "enum", "condition": "component, native-step, full-trajectory, or scientific: no automatic promotion"}
+      {
+        "name": "delta_l",
+        "type": "f64",
+        "definition": "log1p((a2-a1)/a1)",
+        "units": "dimensionless"
+      },
+      {
+        "name": "delta_t_s",
+        "type": "f64",
+        "definition": "integral_{L1}^{L2} 1/H dL",
+        "units": "proper seconds",
+        "condition": "finite and >0"
+      },
+      {
+        "name": "delta_b",
+        "type": "f64",
+        "definition": "integral_{L1}^{L2} s/H dL",
+        "units": "dimensionless",
+        "condition": "sign(delta_b)=sign(q_ref), or exact zero for q_ref=0"
+      },
+      {
+        "name": "method_identity",
+        "type": "versioned new numerical method",
+        "condition": "never silently equated to old point_at_scale cumulative difference"
+      },
+      {
+        "name": "validation_scope",
+        "type": "enum",
+        "condition": "component, native-step, full-trajectory, or scientific: no automatic promotion"
+      }
     ],
     "composition": "dt(a1,a3) approximately equals dt(a1,a2)+dt(a2,a3), same for db; cross-call error envelope recorded",
     "near_origin": "form interval from supplied binary64 endpoints, not subtraction of separately rounded log(a/ar) or cumulative proper times",
     "no_extrapolation": true,
-    "failure_semantics": ["nonfinite or reversed endpoints typed error", "out-of-domain typed error", "nonpositive H typed error", "overflow or non-positive delta_t typed error", "uncertified interface error field remains null, never zero-filled"]
+    "failure_semantics": [
+      "nonfinite or reversed endpoints typed error",
+      "out-of-domain typed error",
+      "nonpositive H typed error",
+      "overflow or non-positive delta_t typed error",
+      "uncertified interface error field remains null, never zero-filled"
+    ]
   },
   "candidates": [
     {
@@ -47,7 +107,11 @@
       "ideal_epsilon_1024_lt": 3.080731e-10,
       "ideal_epsilon_2048_lt": 1.921401e-11,
       "status": "SUPPLIER_READY_NOT_PRODUCTION",
-      "required_missing_error_inputs": ["actual node F and Fprime error", "binary64 exp/log/series error", "actual call-site integration error and coupled trajectory effects"]
+      "required_missing_error_inputs": [
+        "actual node F and Fprime error",
+        "binary64 exp/log/series error",
+        "actual call-site integration error and coupled trajectory effects"
+      ]
     }
   ],
   "callsite_invariants": [
@@ -60,9 +124,18 @@
   ],
   "evidence_and_gates": {
     "source_oracle": "Existing REC R8 private 102 accepted-step subset plus independent high precision local quadrature with original provenance; no producer rerun",
-    "local_interval_relative_target": 1e-9,
+    "local_interval_relative_target": 1e-09,
     "component_reference": "Existing REI BACKGROUND_TABLE_001 stable increment gate; adoption requires owner to freeze a native criterion",
-    "actual_native_checks": ["source/config/executable hash and preserved original steps", "positive dt and signed db", "near-origin worst previously observed failure and late cells", "q sign reflection for background only", "gas/photons/ledgers and adaptive controls on matched input with changed numerical method", "conserved charge/baryon/energy accounting", "identity of output and checkpoint namespace under new compiled method", "finite error/refinement evidence or explicit unknowns"],
+    "actual_native_checks": [
+      "source/config/executable hash and preserved original steps",
+      "positive dt and signed db",
+      "near-origin worst previously observed failure and late cells",
+      "q sign reflection for background only",
+      "gas/photons/ledgers and adaptive controls on matched input with changed numerical method",
+      "conserved charge/baryon/energy accounting",
+      "identity of output and checkpoint namespace under new compiled method",
+      "finite error/refinement evidence or explicit unknowns"
+    ],
     "full_science_success": "NOT_ISSUED",
     "cross_repo_claims": "No conversion of a finite clock theorem into standalone CMB/optical depth or full reionization scientific PASS"
   },
@@ -76,6 +149,13 @@
     "process_start_or_kill_authorized": false,
     "production_source_files_changed_here": 0,
     "native_subagent": "NOT_RUN_NO_NATIVE_TOOL",
-    "read_only_oracle_tests": 16
+    "read_only_oracle_tests": 17
+  },
+  "error_composition_contract": {
+    "alpha": "epsilon_ideal + node_error_relative_to_true_positive_integral",
+    "local_eval_relative": "relative to exact integral of positive approximating polynomial",
+    "total_local_relative": "alpha + (1+alpha)*eta_eval",
+    "sum_accumulation": "eta + (1+eta)*gamma_(N-1) for positive dt under standard binary64 model",
+    "importance": "mixed term is mathematically necessary"
   }
 }

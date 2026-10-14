@@ -47,8 +47,12 @@ $A_2=v^2(c_2+3c_3u)$, and $A_3=v^3c_3$. Then
 M_k(z)=\sum_{j=0}^{\infty}\frac{(-z)^j}{j!(k+j+1)}.
 \end{equation}
 This uses the same interpolated $F$ for clock and shear increment.
-Finite-precision endpoint/slope, moment and accumulation errors require
-separate bounds and tests; source and solver clock interfaces are not changed
+Let $\alpha=\epsilon_h+(e_F+h e_{F'}/4)/(\inf_I F)$
+bound the exact-data Hermite remainder and measured node errors. If the
+floating quadrature of the positive interpolant has relative error
+$\eta_{\rm eval}$ relative to its exact polynomial integral, then
+$\eta_I\le\alpha+(1+\alpha)\eta_{\rm eval}$; the cross term
+must not be omitted. Source and solver clock interfaces are not changed
 merely by writing this identity.
 
 \paragraph{Collisionless photon map and error transmission.}

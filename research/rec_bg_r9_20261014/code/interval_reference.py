@@ -159,5 +159,9 @@ def conditional_clock_bound(ideal_relative:float,node_relative:float,local_eval_
     unit=2.0**-53
     k=(N-1)*unit
     if k>=1:raise ValueError("roundoff standard model inapplicable")
-    eta=ideal_relative+node_relative+local_eval_relative
+    # The local floating-evaluation relative bound is with respect to the
+    # ideal computed polynomial increment, not the unknown exact integral.
+    # Its interaction with interpolation/node error cannot be omitted.
+    eta_poly=ideal_relative+node_relative
+    eta=eta_poly+(1+eta_poly)*local_eval_relative
     return eta+(1+eta)*k/(1-k)
