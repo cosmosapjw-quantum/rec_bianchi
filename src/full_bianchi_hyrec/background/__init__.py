@@ -5,6 +5,7 @@ from .axisymmetric_bianchi_i import (
     AxisymmetricBianchiIBackground,
     BianchiIModelParameters,
     FiniteBianchiIIncrement,
+    FiniteBianchiILogIncrement,
     BianchiIPhysicalPoint,
     axisymmetric_photon_map,
 )
@@ -34,6 +35,7 @@ __all__ = [
     "AxisymmetricBianchiIBackground",
     "BianchiIModelParameters",
     "FiniteBianchiIIncrement",
+    "FiniteBianchiILogIncrement",
     "BianchiIPhysicalPoint",
     "axisymmetric_photon_map",
     "BackgroundSnapshotSequence",
