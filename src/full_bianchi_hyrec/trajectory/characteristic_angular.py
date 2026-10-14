@@ -21,6 +21,7 @@ from full_bianchi_hyrec.background.characteristics import (
 )
 from full_bianchi_hyrec.background.snapshot import BackgroundSnapshot
 from full_bianchi_hyrec.background.sequence import BackgroundSnapshotSequence
+from full_bianchi_hyrec.background.axisymmetric_bianchi_i import AxisymmetricBianchiIBackground
 
 Coefficient = Callable[[float, float], float]
 
@@ -67,8 +68,79 @@ class CharacteristicAngularSolver:
     instantaneous scalar-to-angular inversion.
     """
 
-    def __init__(self, sequence: BackgroundSnapshotSequence) -> None:
+    def __init__(
+        self,
+        sequence: BackgroundSnapshotSequence,
+        *,
+        interval_source: AxisymmetricBianchiIBackground | None = None,
+    ) -> None:
+        """Bind an optional exact geometric clock to the same source as the snapshots.
+
+        The historical midpoint-H behavior is preserved when interval_source is
+        omitted. A supplied positive-rate interval source is accepted *only* for
+        source-identical prescribed axisymmetric Bianchi-I snapshots. The binding
+        does not change the normal-frame photon direction/frequency integrator.
+        """
         self.sequence = sequence
+        if interval_source is not None:
+            if not isinstance(interval_source, AxisymmetricBianchiIBackground):
+                raise TypeError("interval_source requires AxisymmetricBianchiIBackground")
+            if (
+                sequence.bianchi_type != "I"
+                or sequence.model_name != "Bianchi_I_axisymmetric_prescribed_clock"
+                or sequence.source_sha256 != interval_source.source_sha256
+                or sequence.provenance.get("method_identity")
+                != "rec_lrs_bianchi_i_positive_rate_hermite_1"
+                or not sequence.provider_branch_flags.get("prescribed_non_tilted_bianchi_i")
+            ):
+                raise ValueError("interval_source and sequence source identity disagree")
+            # Model identifiers alone cannot prove that the actual numerical
+            # snapshot payload is unchanged. Check *every* supplied H, shear,
+            # normal-frame/curvature entry and the deceleration source. Exact
+            # analytic local rates avoid recomputing full cumulative proper time.
+            tau0 = float(sequence.tau[0])
+            h_ref = interval_source.cosmology.hubble_flrw(interval_source.a_ref)
+            for index, tau in enumerate(sequence.tau):
+                delta_l = float(tau - tau0)
+                a = interval_source.a_ref * math.exp(delta_l)
+                if a > interval_source.a_end and a - interval_source.a_end <= 4*math.ulp(interval_source.a_end):
+                    a = interval_source.a_end
+                if not interval_source.a_ref <= a <= interval_source.a_end:
+                    raise ValueError("interval_source and sequence time-chart domain disagree")
+                F, dF = interval_source._rate_slope(math.log(a / interval_source.a_ref))
+                expected_h = 1.0/F
+                expected_s = interval_source.q_ref*h_ref*(interval_source.a_ref/a)**3
+                expected_sigma = np.diag((-expected_s,-expected_s,2.0*expected_s))
+                expected_q = -1.0 + dF/F
+                if (
+                    abs(float(sequence.H_s_inv[index])/expected_h - 1.0) > 1e-12
+                    or np.max(np.abs(sequence.sigma_s_inv[index]-expected_sigma))/expected_h > 1e-12
+                    or abs(float(sequence.q[index])-expected_q) > 1e-12
+                    or np.max(np.abs(sequence.N_s_inv[index]))/expected_h > 1e-12
+                    or np.max(np.abs(sequence.A_s_inv[index]))/expected_h > 1e-12
+                    or np.max(np.abs(sequence.frame_rotation_s_inv[index]))/expected_h > 1e-12
+                    or np.max(np.abs(sequence.beta_H[index])) > 1e-12
+                    or np.max(np.abs(sequence.D0_beta_H_s_inv[index]))/expected_h > 1e-12
+                ):
+                    raise ValueError("interval_source and numerical snapshot payload mismatch")
+        self.interval_source = interval_source
+
+    def _clock_step(self, left: float, right: float, midpoint_snapshot: BackgroundSnapshot) -> float:
+        """Positive proper-time step from a source-bound geometry if supplied."""
+        if self.interval_source is None:
+            return (right-left)/midpoint_snapshot.H_s_inv
+        source = self.interval_source
+        tau_anchor = float(self.sequence.tau[0])
+
+        def scale(tau: float) -> float:
+            a = source.a_ref * math.exp(tau - tau_anchor)
+            if a > source.a_end and a-source.a_end <= 4*math.ulp(source.a_end):
+                return source.a_end
+            return a
+
+        left_a = scale(left)
+        right_a = scale(right)
+        return source.interval(left_a,right_a).delta_t_s
 
     def _rhs(self, tau: float, direction_h: np.ndarray, log_frequency: float) -> tuple[np.ndarray, float, float]:
         snapshot = self.sequence.snapshot_at_tau(float(tau))
@@ -143,7 +215,7 @@ class CharacteristicAngularSolver:
             lognu = 0.5 * (log_frequency_forward[index] + log_frequency_forward[index + 1])
             frequency = math.exp(lognu)
             snapshot = self.sequence.snapshot_at_tau(midpoint)
-            physical_dt = (right - left) / snapshot.H_s_inv
+            physical_dt = self._clock_step(left, right, snapshot)
             eta = float(coefficients.emissivity_s_inv(midpoint, frequency))
             chi = float(coefficients.opacity_s_inv(midpoint, frequency))
             if not math.isfinite(eta + chi) or eta < 0.0 or chi < 0.0:

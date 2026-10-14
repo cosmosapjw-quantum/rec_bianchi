@@ -1,0 +1,190 @@
+{
+  "unit": "REC_C7_LRS_TRANSPORT_20261015",
+  "stage": "C7_ONLY",
+  "UTC": "2026-10-14T15:53:01.714174+00:00",
+  "science_scope": "Prescribed non-tilted LRS Bianchi-I photon-characteristic and manufactured positive source/opacity only",
+  "developer_changes": {
+    "src/full_bianchi_hyrec/trajectory/characteristic_angular.py": {
+      "sha256": "a557dd140ebea870a918bbe07d4af2ccaab326a75bb85c6ea7df423e489988bf",
+      "bytes": 21223
+    },
+    "tests/trajectory/test_axisymmetric_bianchi_i_physical_transport.py": {
+      "sha256": "dedf9ac6a85a82bb72332be1fb4d37c015331508340821275be69483333471c1",
+      "bytes": 8113
+    },
+    "scripts/validate_axisymmetric_transport_c7.py": {
+      "sha256": "184bb99047474a01109c0120b7b911b6f85a5ef87adcfdf582b75b12cd66c780",
+      "bytes": 7413
+    },
+    "research/rec_c7_lrs_transport_20261015/README_KO.md": {
+      "sha256": "f871220f941144e532fc2b857ada366abfbdaa7d81d4296338aa37d704066290",
+      "bytes": 4860
+    }
+  },
+  "fresh_test_runs": {
+    "targeted_transport": {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "tests/trajectory/test_axisymmetric_bianchi_i_physical_transport.py",
+        "-q"
+      ],
+      "exit": 0,
+      "stdout_tail": ".............                                                            [100%]\n13 passed in 6.83s\n",
+      "stderr_tail": ""
+    },
+    "background_plus_trajectory": {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "tests/background",
+        "tests/trajectory/test_characteristic_angular_solver.py",
+        "tests/trajectory/test_axisymmetric_bianchi_i_physical_transport.py",
+        "tests/trajectory/test_causal_characteristic_history.py",
+        "-q"
+      ],
+      "exit": 0,
+      "stdout_tail": ".....................................................ss                  [100%]\n=========================== short test summary info ============================\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:176: need --run-slow option to run\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:199: need --run-slow option to run\n53 passed, 2 skipped in 10.29s\n",
+      "stderr_tail": ""
+    },
+    "syntax": {
+      "command": [
+        "python3",
+        "-m",
+        "py_compile",
+        "src/full_bianchi_hyrec/trajectory/characteristic_angular.py",
+        "scripts/validate_axisymmetric_transport_c7.py"
+      ],
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  },
+  "actual_science_result_sha256": "86c371a1fab1c7d2cd1b1c9d2cc97ec96f3dcbbcab911051afd9a13b5bd6a710",
+  "constant_source": [
+    {
+      "q_ref": 0.0,
+      "source_identity": "4f6dbbc10da773bbc6ef2d40aa1c71749b7c9827e68127cc5783e09e24d3026e",
+      "delta_t_proper_s": 1.151654394982461e+16,
+      "delta_b": 0.0,
+      "closed_form_f_face": 0.0012231495200289014,
+      "comparisons": {
+        "legacy": {
+          "f_face": 0.001223160527418537,
+          "relative_error_to_proper_time_closed_form": 8.999218374716733e-06
+        },
+        "source_bound": {
+          "f_face": 0.0012231495200289023,
+          "relative_error_to_proper_time_closed_form": 6.661338147750939e-16
+        }
+      },
+      "strict_source_clock_pass": true
+    },
+    {
+      "q_ref": 0.01,
+      "source_identity": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "delta_t_proper_s": 1.1516354568053792e+16,
+      "delta_b": 0.004478168223022577,
+      "closed_form_f_face": 0.0012231531042782358,
+      "comparisons": {
+        "legacy": {
+          "f_face": 0.0012231641126528466,
+          "relative_error_to_proper_time_closed_form": 8.999997279435235e-06
+        },
+        "source_bound": {
+          "f_face": 0.0012231531042782367,
+          "relative_error_to_proper_time_closed_form": 6.661338147750939e-16
+        }
+      },
+      "strict_source_clock_pass": true
+    },
+    {
+      "q_ref": -0.01,
+      "source_identity": "d64fe41e56a2b5825be6e217d7530f36df10243cf41923053893f04f954be164",
+      "delta_t_proper_s": 1.1516354568053792e+16,
+      "delta_b": -0.004478168223022577,
+      "closed_form_f_face": 0.0012231531042782358,
+      "comparisons": {
+        "legacy": {
+          "f_face": 0.0012231641126528466,
+          "relative_error_to_proper_time_closed_form": 8.999997279435235e-06
+        },
+        "source_bound": {
+          "f_face": 0.0012231531042782367,
+          "relative_error_to_proper_time_closed_form": 6.661338147750939e-16
+        }
+      },
+      "strict_source_clock_pass": true
+    }
+  ],
+  "collisionless_null_ray": {
+    "source_identity": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+    "solver_geometry": "real CharacteristicAngularSolver with actual BackgroundSnapshotSequence",
+    "relative_initial_energy_error": 3.1532709776627144e-10,
+    "absolute_initial_mu_error": -9.75044323059393e-10,
+    "translation_Killing_momentum_relative_error": 1.0827035884500735e-09,
+    "source_free_occupation_relative_error": 0.0,
+    "Killing_momentum_and_Liouville_pass": true
+  },
+  "time_dependent_source": {
+    "oracle": "independent scipy DOP853 source ODE, mpmath not used",
+    "true_f_face": 0.0012326855086856262,
+    "refinements": [
+      {
+        "nsteps": 64,
+        "f_face": 0.001232686269270453,
+        "absolute_error": 7.605848266738907e-10,
+        "relative_error": 6.170144950523593e-07
+      },
+      {
+        "nsteps": 128,
+        "f_face": 0.0012326856988494122,
+        "absolute_error": 1.9016378597670747e-10,
+        "relative_error": 1.5426788468886343e-07
+      },
+      {
+        "nsteps": 256,
+        "f_face": 0.0012326855562276573,
+        "absolute_error": 4.754203107582011e-11,
+        "relative_error": 3.8567851134985176e-08
+      }
+    ],
+    "error_reduction_ratio_64_to_128": 3.999630228055368,
+    "error_reduction_ratio_128_to_256": 3.999908747555062,
+    "scoped_time_source_pass": true
+  },
+  "xAct": {
+    "WolframVersion": "15.0.0 for Linux x86 (64-bit) (May 26, 2026)",
+    "xTensorVersion": "{\"1.3.0\", {2025, 12, 29}}",
+    "signature": "-+++",
+    "labels": [
+      "baryon_current_product",
+      "ionization_fraction_current",
+      "occupation_current_product",
+      "emission_minus_absorption_derivation"
+    ],
+    "residuals": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "all_exact_zero": true,
+    "scope": "4D abstract covariant scalar/current identities only; no actual detailed balance, Einstein or HyRec source dynamics proved."
+  },
+  "wolfram_cloud": "15.0.1, six exact identities zero (chat tool output), not a local kernel output file",
+  "original_C5_source_model_code_SHA256": "d4475f556a386044528517a1007e2ab5a303ee672da863b531f69014d6f89b1a",
+  "REI_native_scientific_run": 0,
+  "native_subagent": "NOT_RUN_TOOL_UNAVAILABLE",
+  "scientific_admission": "NOT_ISSUED",
+  "known_scope_limitations": [
+    "Full HyRec atomic rate/inventory coupling",
+    "Einstein anisotropic stress backreaction",
+    "REI native Rust driver binary equivalence",
+    "Observer optical depth/tau",
+    "Physical full-history convergence or novel scalar detection"
+  ],
+  "next_stage": "C8_targeted_numerical_error_convergence_and_resource_tests"
+}
