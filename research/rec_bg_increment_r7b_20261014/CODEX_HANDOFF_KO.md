@@ -1,0 +1,13 @@
+# REC R7B → REI: positive local clock/shear supplier
+
+Read the latest owner STATE and actual terminal/progress records. This handoff does not authorize a new run, restart, process signal, numerical tolerance change or canonical source edit.
+
+The inspected BACKGROUND_TABLE_001 already has a passing stable primitive increment, but production still subtracts cumulative clock values. This new supplier instead interpolates F=1/H directly with exact analytic slope F'=m1F/2. The same positive F polynomial supplies dt and db=s*dt. Its ideal relative increment bounds are <3.080731e-10 (1024cells) and <1.921401e-11 (2048cells), uniformly over every positive subinterval in the prescribed density-positive model. Numeric node/libm error is separate. Actual804high-precision interval checks passed1e-9, and21unit tests passed. No whole-driver speedup or history error is measured.
+
+Consume code/increment_clock.py, theory/REPORT_KO.md BI-03–BI-13, results/NUMERICAL_SUMMARY.json and SUPPLIER_DAG.json. The model coefficients, q sign, SameH label, actual dyadic a endpoints and source units must match the receiver. Use log1p((a2-a1)/a1), split at actually crossed knots, and integrate shifted polynomials; never recover small dt or db by subtracting large cumulative outputs. The photon helper returns initial-to-final local direction/energy/Jacobian, not the reverse angular chart.
+
+READY: REC_BG_POSITIVE_INTERVAL_SUPPLIER for a separate owner contract. Preserve BACKGROUND_EXACT_CACHE_001 unchanged: it explicitly retains old dt subtraction and requires byte-parity. A new rate-table interval integration is a changed numerical provider, not that cache unit. Keep current T-rate-table priority and exclusive source ownership. Need: interval API binding in tentative/source/ray/clock accumulation, same-input native numerical checks, one finite overlap/step review and explicit adoption. Reuse old native component evidence; do not rerun old benchmark just to confirm the known HOLD. Do not label old histories/checkpoints as generated with a new provider.
+
+Canonical AX08/AX11/AX12 and production TABLE HOLD are not changed by this supplier. Existing complete ZERO and three-case response stay valid at their old scope. Half-case/refinement gaps remain explicit. HE17R7's electron-floor patch and HH source_pair_guard are separate existing suppliers; do not duplicate them or import warm P01 error radii.
+
+Local checks: `python3 -m unittest discover -s code -p 'test_increment.py' -v`. Optional numerical reproduction: `python3 code/validate_numeric.py` in an extracted copy, because it writes results. `python3 verify_release.py` is read-only and checks the manifest, not scientific truth. Native subagent and fresh independent agent review NOT_RUN.

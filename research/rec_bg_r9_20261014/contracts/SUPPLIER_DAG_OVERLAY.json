@@ -1,0 +1,12 @@
+{
+  "schema":"rec.bg.r9.supplier.overlay.v1",
+  "canonical_rei_state_mutated":false,
+  "canonical_rec_dag_mutated":false,
+  "nodes":[
+    {"id":"REC_BG_R9_DOSSIER_SUPPLEMENT","status":"READY_FOR_EDITOR_REVIEW","evidence":["theory/R9_DOSSIER_SUPPLEMENT.tex","theory/REPORT_KO.md"],"positive_transition":"Place additive scope-qualified formulas in the next authoritative volume revision, retaining original source identity"},
+    {"id":"REC_BG_R9_INTERVAL_INTERFACE","status":"READY_FOR_OWNER_CONTRACT","evidence":["contracts/REI_NATIVE_INTERVAL_INTERFACE.json","code/interval_reference.py","evidence/UNIT_TESTS.txt"],"positive_transition":"Owner may consume tested interface and choose a bounded changed-method native lane without changing current runs"},
+    {"id":"REI_PLUS_PRELAUNCH_RECOVERY","status":"IN_OWNER_LANE_NOT_CHANGED","cause":"LIVE_WORKERS_OR_CHILDREN_HOLD","response":"Current Codex has own authority and recovery; no second worker/dispatcher is launched"},
+    {"id":"REI_PRODUCTION_FINITE_CLOCK_ADOPTION","status":"HOLD_OWNER_APPROVAL_REQUIRED","requires":["full changed call-site contract","measured native source/clock/ledger comparison","independent review","new compiled/output identity"],"not_owner_DAG_ready":true},
+    {"id":"REI_AX11_AX12","status":"PENDING_OWNER_INPUT","requires":["signed family", "refinement", "source/IC actual executions"],"no_state_change":true}
+  ]
+}

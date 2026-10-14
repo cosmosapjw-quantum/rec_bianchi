@@ -1,0 +1,14 @@
+{
+  "schema":"rec.bg.r8.supplier.overlay.v1",
+  "canonical_rec_dag_mutated":false,
+  "canonical_rei_dag_mutated":false,
+  "source_goal":"REI-AXBI-GOAL-20261014",
+  "nodes":[
+    {"id":"REC_R8_NATIVE_CLOCK_DIAGNOSTIC_INGEST","status":"READY_FOR_OWNER_CONSUMPTION","evidence":["results/MEASURED_STEP_DIAGNOSTIC.json","code/audit_saved_steps.py"],"action":"Read immutable 102-step diagnostic with case hash/scope, preserving active original scientific runs and first failed cases"},
+    {"id":"REC_R8_FINITE_INCREMENT_CONTRACT_INPUT","status":"READY_FOR_OWNER_CONTRACT","depends_on":["REC_R8_NATIVE_CLOCK_DIAGNOSTIC_INGEST","REC_BG_POSITIVE_INTERVAL_SUPPLIER"],"action":"Freeze one bounded native short-interval integration test, retain existing table stable primitive first; alternate positive-rate Hermite only as separately-identified method"},
+    {"id":"REI_PRODUCTION_NATIVE_INTERVAL_ADOPTION","status":"HOLD_NOT_AUTHORIZED","requires":["owner finite authority","all changed call-sites","native numerical overlap and source/ledger checks","changed-method independent review","separate new method/binary/output identity"],"interpretation":"Theoretical readiness does not equal production gate closure"},
+    {"id":"REI_AX08","status":"OWNER_IN_PROGRESS_UNCHANGED","rule":"No duplicate restart or changed live binary"},
+    {"id":"REI_AX11_AX12","status":"OWNER_PENDING_UNCHANGED","rule":"Actual signed family and refinement/source-IC inputs remain required"}
+  ],
+  "next_stage":"R9 only when asked or selected by NEXT_LOOP"
+}

@@ -1,0 +1,74 @@
+% REC-BG-R9 additive theory fragment, 2026-10-14.
+% Intended cross-reference: Dossier II 2.2, II 2.6, VI 6.3, VII 7.12-7.13.
+% DO NOT replace or mark any unmodified authoritative volume as revised.
+% Convention (-,+,+,+); time t measured in physical proper seconds.
+\subsection{A positive finite-interval clock for LRS Bianchi I}
+\label{sec:rec-r9-finite-clock}
+Consider $ds^2=-c^2dt^2+a(t)^2e^{-2b(t)}(dx^2+dy^2)
++a(t)^2e^{4b(t)}dz^2$, with $H=\dot a/a$ and $s=\dot b$.
+For the prescribed $a_r\le a\le a_e$ background, let
+\begin{equation}\label{eq:rec-r9-background}
+ L=\ln(a/a_r),\quad H^2=S(L)=\sum_{p\in\{0,3,4,6\}}C_p e^{-pL},
+ \quad C_p\ge0,\ S(L)>0,\quad s=s_re^{-3L}.
+\end{equation}
+The actual physical model has $C_6=s_r^2$; the explicitly
+counterfactual same-$H$ diagnostic has $C_6=0$. Define
+$F(L)=S(L)^{-1/2}$, so that $dt=F\,dL$ and $db=sF\,dL$.
+
+\paragraph{Positive-increment lemma.}
+For $w_p=C_pe^{-pL}/S$ and $m_k=\sum p^kw_p$,
+\begin{equation}\label{eq:rec-r9-fourth}
+\frac{F^{(4)}}F=\frac{105m_1^4-180m_1^2m_2+36m_2^2
++48m_1m_3-8m_4}{16},\qquad |F^{(4)}|\le30537F.
+\end{equation}
+Let $P$ be the exact-data cubic Hermite interpolant on a cell
+of width $h$. Then
+\begin{equation}\label{eq:rec-r9-bound}
+ |P/F-1|\le \epsilon_h:=\frac{30537}{384}e^{3h}h^4.
+\end{equation}
+For any nonempty cell subinterval $I$ and $\epsilon_h<1$,
+\begin{equation}\label{eq:rec-r9-integral-bound}
+\left|\frac{\int_I P\,dL}{\int_I F\,dL}-1\right|\le\epsilon_h,
+\qquad\left|\frac{\int_I sP\,dL}{\int_I sF\,dL}-1\right|\le\epsilon_h
+\quad (s_r\ne0).
+\end{equation}
+The second ratio is replaced by exact $\Delta b=0$ when $s_r=0$.
+These are exact-real inequalities, not software floating-point certificates.
+
+\paragraph{Cancellation-resistant computational form.}
+Use the supplied binary64 endpoints via
+$\Delta L=\log1p((a_2-a_1)/a_1)$. In a Hermite cell write
+$P(u)=\sum_{k=0}^3c_ku^k$. For $u\to u+v$, set
+$A_0=P(u)$, $A_1=vP'(u)$,
+$A_2=v^2(c_2+3c_3u)$, and $A_3=v^3c_3$. Then
+\begin{equation}\label{eq:rec-r9-computation}
+\Delta t=hv\sum_{k=0}^3\frac{A_k}{k+1},\quad
+\Delta b=s(L_1)hv\sum_{k=0}^3A_k M_k(3hv),\quad
+M_k(z)=\sum_{j=0}^{\infty}\frac{(-z)^j}{j!(k+j+1)}.
+\end{equation}
+This uses the same interpolated $F$ for clock and shear increment.
+Let $\alpha=\epsilon_h+(e_F+h e_{F'}/4)/(\inf_I F)$
+bound the exact-data Hermite remainder and measured node errors. If the
+floating quadrature of the positive interpolant has relative error
+$\eta_{\rm eval}$ relative to its exact polynomial integral, then
+$\eta_I\le\alpha+(1+\alpha)\eta_{\rm eval}$; the cross term
+must not be omitted. Source and solver clock interfaces are not changed
+merely by writing this identity.
+
+\paragraph{Collisionless photon map and error transmission.}
+For an initial direction cosine $\mu$ and $B=\Delta b$,
+\begin{equation}\label{eq:rec-r9-null-map}
+ R^2=e^{2B}(1-\mu^2)+e^{-4B}\mu^2,
+\quad \mu'=\frac{\mu e^{-2B}}R,\quad
+ \frac{E_2}{E_1}=e^{-\Delta L}R,\quad
+ \frac{d\Omega_2}{d\Omega_1}=R^{-3}.
+\end{equation}
+At fixed $\Delta L$, two finite geometries differing by $\delta B$ satisfy
+\begin{equation}\label{eq:rec-r9-null-errors}
+ |\delta\ln(E_2/E_1)|\le2|\delta B|,\quad
+ |\delta\mu'|\le\frac2{\sqrt3}|\delta B|,\quad
+ |\delta\ln(d\Omega_2/d\Omega_1)|\le6|\delta B|.
+\end{equation}
+These bounds do not encompass photon collisions, closure, ionization-state
+changes or numerical observer-tail error. They supplement rather than
+replace the full polarized Liouville and source equations of Dossiers II, VI.
