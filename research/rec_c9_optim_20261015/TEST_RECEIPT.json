@@ -1,0 +1,203 @@
+{
+  "run_id": "REC_C9_OPTIM_20261015",
+  "datetime_utc": "2026-10-14T23:41:58.049180+00:00",
+  "selection": "C9 scientific code review + user-requested concrete optimization",
+  "method": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+  "scientific_scope": "normal-comoving prescribed LRS Bianchi I with scalar nonnegative source/opacity",
+  "review": "SAME_AUTHOR_TESTS_AND_INDEPENDENT_NUMERICAL_ORACLE; EXTERNAL_INDEPENDENT_PEER_REVIEW_NOT_RUN",
+  "native_subagent": "NOT_RUN_NO_HOST_DELEGATION_TOOLS",
+  "commands": {
+    "new_c9_tests": {
+      "command": "python3 -m pytest tests/trajectory/test_axisymmetric_batched_c9.py -q",
+      "exit": 0,
+      "stdout_tail": "..............................                                           [100%]\n30 passed in 18.81s\n",
+      "stderr": ""
+    },
+    "integration_tests": {
+      "command": "python3 -m pytest tests/background tests/trajectory/test_axisymmetric_batched_c9.py tests/trajectory/test_axisymmetric_bianchi_i_c8_numerics.py tests/trajectory/test_axisymmetric_bianchi_i_physical_transport.py tests/trajectory/test_characteristic_angular_solver.py tests/trajectory/test_causal_characteristic_history.py -q",
+      "exit": 0,
+      "stdout_tail": "........................................................................ [ 70%]\n............................ss                                           [100%]\n=========================== short test summary info ============================\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:176: need --run-slow option to run\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:199: need --run-slow option to run\n100 passed, 2 skipped in 28.43s\n",
+      "stderr": ""
+    },
+    "public_import": {
+      "command": [
+        "/usr/bin/python3",
+        "-c",
+        "import full_bianchi_hyrec.trajectory as t; assert t.AxisymmetricBianchiIBatchSolver; assert t.BatchIsotropicCoefficients; print(\"PACKAGE_PUBLIC_BATCH_IMPORT_OK\")"
+      ],
+      "environment": "PYTHONPATH=src",
+      "exit": 0,
+      "stdout": "PACKAGE_PUBLIC_BATCH_IMPORT_OK\n",
+      "stderr": ""
+    },
+    "source_compile": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "py_compile",
+        "src/full_bianchi_hyrec/trajectory/axisymmetric_batched.py",
+        "src/full_bianchi_hyrec/trajectory/__init__.py",
+        "scripts/benchmark_axisymmetric_batch_c9.py",
+        "scripts/assess_axisymmetric_batch_c9.py"
+      ],
+      "environment": "PYTHONPATH=src",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "diagnosed_nonphysics_failure": {
+    "original_command": "python3 -c import full_bianchi_hyrec.trajectory (without PYTHONPATH)",
+    "original_exit": 1,
+    "diagnosis": "source-layout requires PYTHONPATH=src as repo pytest config",
+    "corrected": "PYTHONPATH=src python3 -c... exit 0",
+    "remaining_blocker": false
+  },
+  "benchmarks": {
+    "before_sha256": {
+      "BENCHMARK.json": "f957feeb53f6304c3793d19d5110a0be2f091cb430c0fccb990098ec75c1ac5d",
+      "BENCHMARK_CACHED.json": "730f5f7cc3ecc69272f610040e1a6c30e6ae91a2c53855df1899dc7c1a9c5997"
+    },
+    "cached_speedups": [
+      [
+        8,
+        98.22758190078748
+      ],
+      [
+        26,
+        344.3311496161843
+      ],
+      [
+        64,
+        845.9254597530211
+      ]
+    ],
+    "max_occupation_difference": 8.717950805703367e-10,
+    "true_multi_chunk_threads": [
+      {
+        "workers": 1,
+        "ratio_to_one_worker": 1.0,
+        "speedup_if_greater_than_one": 1.0
+      },
+      {
+        "workers": 2,
+        "ratio_to_one_worker": 1.390940496442467,
+        "speedup_if_greater_than_one": 0.7189380153627317
+      },
+      {
+        "workers": 4,
+        "ratio_to_one_worker": 2.220236387822911,
+        "speedup_if_greater_than_one": 0.45040249114220055
+      }
+    ],
+    "memory": [
+      {
+        "nrays": 16384,
+        "peak_python_traced_bytes": 3299806,
+        "post_call_python_traced_bytes": 1182116,
+        "measured_elapsed_s": 0.10177901806309819,
+        "chunk_size": 4096,
+        "workers": 1,
+        "note": "tracemalloc includes Python-managed allocations, not all native library RSS; constructors excluded"
+      },
+      {
+        "nrays": 65536,
+        "peak_python_traced_bytes": 13184886,
+        "post_call_python_traced_bytes": 4720812,
+        "measured_elapsed_s": 0.4733051370130852,
+        "chunk_size": 4096,
+        "workers": 1,
+        "note": "tracemalloc includes Python-managed allocations, not all native library RSS; constructors excluded"
+      }
+    ],
+    "default_workers": 1
+  },
+  "xact": {
+    "WolframVersion": "15.0.0 for Linux x86 (64-bit) (May 26, 2026)",
+    "xTensorVersion": "{\"1.3.0\", {2025, 12, 29}}",
+    "signature": "-+++",
+    "identities": [
+      "Killing_vector_symmetric_split_algebra",
+      "transport_source_product_rule",
+      "positive_rate_occupation_current_rule"
+    ],
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ],
+    "all_exact_zero": true,
+    "assumptions": "The Killing conservation conclusion additionally assumes geodesic k^b nabla_b k^a=0 and Killing xi satisfying nabla_(a xi_b)=0; not proved by the zero residual alone."
+  },
+  "wolfram_cloud": "4 exact pure scalar symbolic null map composition and frozen transport semigroup identities zero, observed in chat",
+  "sources": {
+    "src/full_bianchi_hyrec/trajectory/axisymmetric_batched.py": {
+      "sha256": "68ba14db113cd376683cdeabeea141aaa53ce311daffcc3677f94ac48a1c47bc",
+      "bytes": 13204
+    },
+    "src/full_bianchi_hyrec/trajectory/__init__.py": {
+      "sha256": "954000eb61e09eb1f3db50af690ad433a32c1781d16d036ed6bbf8e8c79aedde",
+      "bytes": 9983
+    },
+    "tests/trajectory/test_axisymmetric_batched_c9.py": {
+      "sha256": "aacd056f7a454251892f5de5f9d1978dfbb855cfa8f572bc1ea67a0582402f19",
+      "bytes": 14290
+    },
+    "scripts/benchmark_axisymmetric_batch_c9.py": {
+      "sha256": "1d2c107dcc1516c248d9cb36365f61bde53228e727bc24923e6564735e2351b1",
+      "bytes": 6545
+    },
+    "scripts/assess_axisymmetric_batch_c9.py": {
+      "sha256": "bad496482250b6ff9dcc9e1fd4bcd09cad501a7189fd236b711c19d349cc52a5",
+      "bytes": 6642
+    },
+    "research/rec_c9_optim_20261015/REPORT_KO.md": {
+      "sha256": "47b8fdeb8e54524cae53c02b32cb4b7710557ae3563512cffdb0b40237542d5a",
+      "bytes": 11243
+    },
+    "research/rec_c9_optim_20261015/BENCHMARK.json": {
+      "sha256": "f957feeb53f6304c3793d19d5110a0be2f091cb430c0fccb990098ec75c1ac5d",
+      "bytes": 6189
+    },
+    "research/rec_c9_optim_20261015/BENCHMARK_CACHED.json": {
+      "sha256": "730f5f7cc3ecc69272f610040e1a6c30e6ae91a2c53855df1899dc7c1a9c5997",
+      "bytes": 6210
+    },
+    "research/rec_c9_optim_20261015/OPTIM_ASSESSMENT.json": {
+      "sha256": "2fae936dcad81c10a3744398576fffb919f48a68c13b58c4f5c447ca37625e9c",
+      "bytes": 7785
+    },
+    "research/rec_c9_optim_20261015/C9_BATCH_SPEEDUP.png": {
+      "sha256": "600032ce1e1f2c098b4c8f7a4c9bc3ab06a3e4afae4974debf7366276d53ffff",
+      "bytes": 84958
+    },
+    "research/rec_c9_optim_20261015/C9_THREADS_COST.png": {
+      "sha256": "a5cafac6af751ed7df97364167dac06b5be3706904503259b2436fa2a722885e",
+      "bytes": 66071
+    },
+    "research/rec_c9_optim_20261015/verify_c9_xact.wl": {
+      "sha256": "ce038effdd35a52987176f6d5392026925a9a5f52493c89846a0016c7dfe37d5",
+      "bytes": 1408
+    },
+    "research/rec_c9_optim_20261015/XACT_RESULT.json": {
+      "sha256": "a4d60a14d8fa223f0d220ae12e25aeb31b6565445ac43eb075a1100890635688",
+      "bytes": 527
+    },
+    "research/rec_c9_optim_20261015/XACT_STDOUT.txt": {
+      "sha256": "7fa7f290eaf1ea4bf14ca16b1db23c9cb1ed7648c1871ea223a2e0a2d2b88e8c",
+      "bytes": 2961
+    },
+    "research/rec_c9_optim_20261015/XACT_STDERR.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "research/rec_c9_optim_20261015/NEXT_LOOP.json": {
+      "sha256": "2621e9bbca4a9b020d3e63399d349048a2d26127cfa12af95fe0e854a26f4ec2",
+      "bytes": 1612
+    }
+  },
+  "new_REI_native_solver_runs": 0,
+  "full_HyRec_chemical_validation": "NOT_RUN",
+  "stage_status": "SCOPED_IMPL_AND_AUDIT_VERIFIED; EXTERNAL_INDEPENDENT_REVIEW_NOT_RUN",
+  "next_stage": "C10 release decision"
+}

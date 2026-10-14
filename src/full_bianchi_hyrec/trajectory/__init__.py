@@ -100,6 +100,12 @@ from .characteristic_angular import (
     constant_coefficient_transfer_jvp,
 )
 
+from .axisymmetric_batched import (
+    AxisymmetricBianchiIBatchSolver,
+    AxisymmetricBatchFaceResult,
+    BatchIsotropicCoefficients,
+)
+
 from .hyrec_spike_transfer import (
     OriginalHyRecSpikeTransfer,
     SpikeTransferResult,
@@ -333,3 +339,9 @@ __all__.append("SingleMacroIteration")
 __all__.append("assess_roundoff_aware_macro")
 __all__.append("restore_activity_number_ledger")
 __all__.append("solve_roundoff_aware_single_macro")
+
+__all__.extend([
+    "AxisymmetricBianchiIBatchSolver",
+    "AxisymmetricBatchFaceResult",
+    "BatchIsotropicCoefficients",
+])

@@ -1,0 +1,231 @@
+{
+  "schema": "rec.c9.optim_assessment.v1",
+  "scope": "C9 option reviewed with source-matched scalar positive transfer",
+  "before_after_benchmark_sha256": {
+    "BENCHMARK.json": "f957feeb53f6304c3793d19d5110a0be2f091cb430c0fccb990098ec75c1ac5d",
+    "BENCHMARK_CACHED.json": "730f5f7cc3ecc69272f610040e1a6c30e6ae91a2c53855df1899dc7c1a9c5997"
+  },
+  "warm_scalar_vs_batch": [
+    {
+      "nrays": 8,
+      "original_scalar_median_s": 0.46393810806330293,
+      "uncached_vector_median_s": 0.015501786023378372,
+      "cached_vector_median_s": 0.004723094054497778,
+      "uncached_speedup": 29.015309997659344,
+      "cached_speedup": 98.22758190078748,
+      "cached_versus_uncached_vector_speedup": 3.28212520108849,
+      "max_scalar_to_exact_batch_occupation_relative_difference": 8.717950805703367e-10
+    },
+    {
+      "nrays": 26,
+      "original_scalar_median_s": 1.547465872950852,
+      "uncached_vector_median_s": 0.015079668024554849,
+      "cached_vector_median_s": 0.004494121065363288,
+      "uncached_speedup": 102.21749573673537,
+      "cached_speedup": 344.3311496161843,
+      "cached_versus_uncached_vector_speedup": 3.355420961125324,
+      "max_scalar_to_exact_batch_occupation_relative_difference": 8.717950805703367e-10
+    },
+    {
+      "nrays": 64,
+      "original_scalar_median_s": 3.9598988139769062,
+      "uncached_vector_median_s": 0.03029680496547371,
+      "cached_vector_median_s": 0.004681143909692764,
+      "uncached_speedup": 129.3235309633416,
+      "cached_speedup": 845.9254597530211,
+      "cached_versus_uncached_vector_speedup": 6.472094332058715,
+      "max_scalar_to_exact_batch_occupation_relative_difference": 8.717950805703367e-10
+    }
+  ],
+  "worker_benchmark": [
+    {
+      "M": 256,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.005295593990013003,
+        0.005178001010790467,
+        0.005245368927717209
+      ],
+      "median_s": 0.005245368927717209,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 256,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.005261208978481591,
+        0.0052339870017021894,
+        0.005287709063850343
+      ],
+      "median_s": 0.005261208978481591,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 256,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.005199581966735423,
+        0.005203168955631554,
+        0.005568137974478304
+      ],
+      "median_s": 0.005203168955631554,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 4096,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.017895872006192803,
+        0.013563978020101786,
+        0.013191855046898127
+      ],
+      "median_s": 0.013563978020101786,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 4096,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.013034176896326244,
+        0.014476469019427896,
+        0.013367836945690215
+      ],
+      "median_s": 0.013367836945690215,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 4096,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.013757592998445034,
+        0.013991423998959363,
+        0.01489009999204427
+      ],
+      "median_s": 0.013991423998959363,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 1,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 16384,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.06217083602678031,
+        0.057022639899514616,
+        0.05611585907172412
+      ],
+      "median_s": 0.057022639899514616,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 4,
+      "actually_uses_parallel_path": false
+    },
+    {
+      "M": 16384,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.09867685800418258,
+        0.07824797509238124,
+        0.07931509905029088
+      ],
+      "median_s": 0.07931509905029088,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 4,
+      "actually_uses_parallel_path": true
+    },
+    {
+      "M": 16384,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.12350733706261963,
+        0.12660374003462493,
+        0.12904263194650412
+      ],
+      "median_s": 0.12660374003462493,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+      "effective_chunks": 4,
+      "actually_uses_parallel_path": true
+    }
+  ],
+  "real_multi_chunk_thread_ratio": [
+    {
+      "workers": 1,
+      "ratio_to_one_worker": 1.0,
+      "speedup_if_greater_than_one": 1.0
+    },
+    {
+      "workers": 2,
+      "ratio_to_one_worker": 1.390940496442467,
+      "speedup_if_greater_than_one": 0.7189380153627317
+    },
+    {
+      "workers": 4,
+      "ratio_to_one_worker": 2.220236387822911,
+      "speedup_if_greater_than_one": 0.45040249114220055
+    }
+  ],
+  "measured_memory": [
+    {
+      "nrays": 16384,
+      "peak_python_traced_bytes": 3299806,
+      "post_call_python_traced_bytes": 1182116,
+      "measured_elapsed_s": 0.10177901806309819,
+      "chunk_size": 4096,
+      "workers": 1,
+      "note": "tracemalloc includes Python-managed allocations, not all native library RSS; constructors excluded"
+    },
+    {
+      "nrays": 65536,
+      "peak_python_traced_bytes": 13184886,
+      "post_call_python_traced_bytes": 4720812,
+      "measured_elapsed_s": 0.4733051370130852,
+      "chunk_size": 4096,
+      "workers": 1,
+      "note": "tracemalloc includes Python-managed allocations, not all native library RSS; constructors excluded"
+    }
+  ],
+  "default_parallel_policy": "workers=1; worker>1 is opt-in and only runs concurrently for >=2 chunks and thread-safe pure callbacks",
+  "scientific_scope": "normal-comoving prescribed LRS Bianchi I exact null k_i; independent scalar occupation transfer only",
+  "not_claimed": [
+    "Native Rust/REI full speedup",
+    "Numba/CUDA acceleration",
+    "parallel advantage under tested conditions",
+    "full gas radiation Einstein coupling or scientific admission"
+  ]
+}
