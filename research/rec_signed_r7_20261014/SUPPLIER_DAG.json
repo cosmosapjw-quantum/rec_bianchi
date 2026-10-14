@@ -1,0 +1,32 @@
+{
+  "scope": "REC supplier only; canonical REI unchanged",
+  "nodes": [
+    {
+      "id": "RC7_PARTIAL_PARITY_INGEST",
+      "state": "READY",
+      "read": [
+        "THEORY_AND_HANDOFF_KO.md",
+        "RESULT_SUMMARY.json"
+      ],
+      "action": "Consume already computed three-case partial diagnostic; no solver"
+    },
+    {
+      "id": "RC7_ODD_ERROR_INTERFACE",
+      "state": "READY",
+      "read": [
+        "code/parity_compare.py"
+      ],
+      "action": "Bind effective plus/minus error inputs; baseline value error not required, query-clock uncertainty separate"
+    },
+    {
+      "id": "FIVE_CASE_COEFFICIENTS",
+      "state": "WAIT_FOR_ACTUAL_OWNER_INPUTS"
+    },
+    {
+      "id": "PHYSICAL_RESPONSE_ADMISSION",
+      "state": "NOT_ISSUED"
+    }
+  ],
+  "owner_process_source_STATE_edits": false,
+  "launch_authorized": false
+}
