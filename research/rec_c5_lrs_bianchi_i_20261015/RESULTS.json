@@ -1,0 +1,161 @@
+{
+  "unit": "REC_C5_LRS_BI_20261015",
+  "selected_stage": [
+    "C5",
+    "C6"
+  ],
+  "local_repository": "/home/cosmosapjw/Dropbox/bianchi/rec_bianchi",
+  "UTC": "2026-10-14T15:20:19.236156+00:00",
+  "model": "prescribed non-tilted axisymmetric Bianchi I, PhysicalDensityFixed/SameHDiagnostic",
+  "geometry_result": "FINITE_COMPONENT_PASS_ONLY",
+  "scientific_admission": "NOT_ISSUED",
+  "native_solvers_started": 0,
+  "source_files": {
+    "src/full_bianchi_hyrec/background/axisymmetric_bianchi_i.py": {
+      "sha256": "d4475f556a386044528517a1007e2ab5a303ee672da863b531f69014d6f89b1a",
+      "bytes": 13237
+    },
+    "src/full_bianchi_hyrec/background/__init__.py": {
+      "sha256": "c8d12baf249cc56b946228d0872ad8847bf93d4479b1e742c5d1f5785bb326b9",
+      "bytes": 1713
+    },
+    "scripts/validate_axisymmetric_clock_bridge.py": {
+      "sha256": "16c46f05186ba757b102a137a466fe136b5952f2d68745cc8cfd929cd2ac45ad",
+      "bytes": 5709
+    },
+    "tests/background/test_axisymmetric_bianchi_i.py": {
+      "sha256": "af261102b682a8ac8b347683742680f7fe39a806ac4c1d4f61aff2c86110f7d6",
+      "bytes": 5833
+    },
+    "tests/background/test_axisymmetric_clock_bridge.py": {
+      "sha256": "4d255cd21bc8ae2809e9db86cf20aefd0af7bde57d086afc2c31ae0110f87980",
+      "bytes": 3194
+    },
+    "research/rec_c5_lrs_bianchi_i_20261015/README_KO.md": {
+      "sha256": "2a04d34d8e950147188700adb63c4f4321f48335285676258e4302b82e005474",
+      "bytes": 5445
+    }
+  },
+  "test_runs": {
+    "background": {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "tests/background",
+        "-q"
+      ],
+      "exit": 0,
+      "stdout_tail": "..................................                                       [100%]\n34 passed in 2.84s\n",
+      "stderr_tail": ""
+    },
+    "trajectory": {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "tests/trajectory/test_primitive_trajectory.py",
+        "tests/trajectory/test_causal_characteristic_history.py",
+        "tests/trajectory/test_accepted_parent_provenance.py",
+        "-q"
+      ],
+      "exit": 0,
+      "stdout_tail": "............ss....                                                       [100%]\n=========================== short test summary info ============================\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:176: need --run-slow option to run\nSKIPPED [1] tests/trajectory/test_causal_characteristic_history.py:199: need --run-slow option to run\n16 passed, 2 skipped in 3.24s\n",
+      "stderr_tail": "",
+      "fresh_summary": "16 passed, 2 slow skipped; a prior targeted run showed 18 passed, but this is the latest saved complete command"
+    },
+    "bytecode": {
+      "command": [
+        "python3",
+        "-m",
+        "py_compile",
+        "src/full_bianchi_hyrec/background/axisymmetric_bianchi_i.py",
+        "scripts/validate_axisymmetric_clock_bridge.py"
+      ],
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    "bridge": {
+      "command": [
+        "python3",
+        "scripts/validate_axisymmetric_clock_bridge.py",
+        "--input",
+        "/home/cosmosapjw/rec_theory_runs/REC_BG_R8_20261014/SAMPLED_STEPS.csv",
+        "--summary",
+        "/home/cosmosapjw/rec_theory_runs/REC_BG_R8_20261014/SAMPLED_STEP_SUMMARY.json",
+        "--out",
+        "/home/cosmosapjw/rec_theory_runs/REC_C5_BI_20261015/NATIVE_R8_COMPARE.json"
+      ],
+      "exit": 0,
+      "stdout_tail": "bianchi_i.native_clock_bridge.v1\",\n  \"scientific_status\": \"SCOPED_COMPONENT_DIAGNOSTIC_ONLY\",\n  \"source_sample_csv_sha256\": \"80bb1c703d7662ab316590a28a59087b5dc8648aba74e634ca00c2d4347ce4b2\",\n  \"source_summary_sha256\": \"fe53a590a2654f43f8f74ee8dc4d3f90a360805b459bdd1c99eef2d9bd71be6a\",\n  \"model_source_identities\": {\n    \"ZERO\": \"4f6dbbc10da773bbc6ef2d40aa1c71749b7c9827e68127cc5783e09e24d3026e\",\n    \"SHEAR_PLUS\": \"e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28\",\n    \"SHEAR_MINUS\": \"d64fe41e56a2b5825be6e217d7530f36df10243cf41923053893f04f954be164\"\n  },\n  \"sample_count\": 102,\n  \"counts_by_case\": {\n    \"ZERO\": 40,\n    \"SHEAR_PLUS\": 31,\n    \"SHEAR_MINUS\": 31\n  },\n  \"max_relative_error_by_case\": {\n    \"ZERO\": 4.951594689828198e-14,\n    \"SHEAR_PLUS\": 4.9960036108132044e-14,\n    \"SHEAR_MINUS\": 4.9960036108132044e-14\n  },\n  \"max_relative_error\": 4.9960036108132044e-14,\n  \"legacy_saved_exceeding_1e_minus_8\": 24,\n  \"frozen_component_tolerance\": 1e-09,\n  \"component_pass\": true\n}\n",
+      "stderr_tail": ""
+    }
+  },
+  "private_oracle_source": {
+    "input_file_sha256": "80bb1c703d7662ab316590a28a59087b5dc8648aba74e634ca00c2d4347ce4b2",
+    "R8_source_summary_sha256": "fe53a590a2654f43f8f74ee8dc4d3f90a360805b459bdd1c99eef2d9bd71be6a",
+    "R8_native_original_histories": [
+      {
+        "case": "ZERO",
+        "sha256": "4f6852c3a5152b91224ce5fecad6ccdfe9f7ece4c8a6d39825c6f5e5ca8ae92f",
+        "rows": 312238
+      },
+      {
+        "case": "SHEAR_PLUS",
+        "sha256": "1f29ed5dd6a7cc0588eceb9cc8748a3f3ab78e94c482f3758fd585f8910c1587",
+        "rows": 200001
+      },
+      {
+        "case": "SHEAR_MINUS",
+        "sha256": "1bf53b7b8e2477e3288f42591efd682ea77b96a7b1628904909ea57860ab36a6",
+        "rows": 200001
+      }
+    ]
+  },
+  "component_result": {
+    "sample_count": 102,
+    "counts_by_case": {
+      "ZERO": 40,
+      "SHEAR_PLUS": 31,
+      "SHEAR_MINUS": 31
+    },
+    "max_relative_error_by_case": {
+      "ZERO": 4.951594689828198e-14,
+      "SHEAR_PLUS": 4.9960036108132044e-14,
+      "SHEAR_MINUS": 4.9960036108132044e-14
+    },
+    "max_relative_error": 4.9960036108132044e-14,
+    "legacy_saved_exceeding_1e_minus_8": 24,
+    "frozen_component_tolerance": 1e-09,
+    "component_pass": true
+  },
+  "Wolfram_cloud": "15.0.1: four symbolic null/quad equations zero, observed independently; output displayed in chat",
+  "xAct_local": {
+    "WLVersion": "15.0.0 for Linux x86 (64-bit) (May 26, 2026)",
+    "xTensorVersion": "{\"1.3.0\", {2025, 12, 29}}",
+    "labels": [
+      "unit_direction_tangent",
+      "expansion_shear_energy",
+      "proper_clock_product"
+    ],
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ],
+    "all_exact_zero": true,
+    "scientific_scope": "abstract tensor identities on normal-frame 3-space; not finite-difference or coupled solver certificate"
+  },
+  "environment": {
+    "Python": "3.12.3",
+    "OS": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "pytest": "9.1.1",
+    "mpmath": "1.3.0"
+  },
+  "new_native_REI_driver_comparison": "NOT_RUN",
+  "native_subagent": "NOT_RUN",
+  "next_required": "Owner-led native changed-path validation of same dt/db in Rust driver with gas/photons/ledgers; preserve old checkpoint identities."
+}
