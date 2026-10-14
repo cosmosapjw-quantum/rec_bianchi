@@ -1,0 +1,47 @@
+{
+  "schema": "rec.bg.increment.supplier.v1",
+  "nodes": [
+    {
+      "id": "REC_BG_POSITIVE_INTERVAL_THEORY",
+      "status": "DERIVED_AND_SYMBOLICALLY_CHECKED",
+      "evidence": [
+        "theory/REPORT_KO.md",
+        "evidence/EXACT_KNOT_WIDTHS.json",
+        "evidence/CLOUD_WOLFRAM_OBSERVED.json"
+      ]
+    },
+    {
+      "id": "REC_BG_POSITIVE_INTERVAL_ORACLE",
+      "status": "IMPLEMENTATION_VERIFIED_SCOPED",
+      "evidence": [
+        "evidence/FINAL_TESTS.stderr",
+        "results/NUMERICAL_SUMMARY.json"
+      ],
+      "test_count": 21,
+      "intervals": 804
+    },
+    {
+      "id": "REC_BG_POSITIVE_INTERVAL_SUPPLIER",
+      "status": "READY_FOR_OWNER_CONTRACT",
+      "action": "Define separate numerical interval API and finite driver integration checks; consume this source-bound result. Do not amend existing cache-only unit."
+    },
+    {
+      "id": "REI_PRODUCTION_INTERVAL_ADOPTION",
+      "status": "NOT_EXECUTED",
+      "requires": [
+        "owner_integration_contract",
+        "native_interval_call_site",
+        "step/ledger/clock_checks",
+        "independent_review"
+      ],
+      "owner_STATE_modified": false
+    },
+    {
+      "id": "REC_R7_FIVE_CASE_RESPONSE",
+      "status": "WAIT_FOR_REAL_INPUTS",
+      "replay_three_case": false
+    }
+  ],
+  "native_subagent": "NOT_RUN",
+  "canonical_REI_DAG_mutation": false
+}
