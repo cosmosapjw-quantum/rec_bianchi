@@ -1,0 +1,31 @@
+{
+  "schema": "rec.c9.optim.next.v1",
+  "selected_stage": "C9",
+  "stage_status": "SCOPED_PASS_SELF_VERIFIED_EXTERNAL_INDEPENDENT_REVIEW_NOT_RUN",
+  "new_exact_method": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1",
+  "source_git_parent": "b65a1d2a91e804387171dcfe2a4d2e51c3ed10c2",
+  "next_coding_stage": "C10",
+  "next_task": "Decide release readiness, compare frozen source and scientific accuracy versus the independent scalar R10 baseline and document protected native REI endpoints",
+  "theory_status": "R10_FINITE_CLOCK_ALREADY_CLOSED_NO_NEW_R_CYCLE",
+  "protected": [
+    "non-tilted normal-comoving LRS Bianchi I only",
+    "proper time in seconds, frequencies in Hz",
+    "source emission/opacity positive and nonnegative occupation",
+    "existing C7 scalar characteristic unchanged",
+    "generic tilted Bianchi branches unchanged",
+    "native REI owner executables/queues untouched"
+  ],
+  "actual_verifications": [
+    "C9 30 scientific tests PASS",
+    "related 100 PASS 2 slow SKIP",
+    "scalar-vs-batched occupation max rel 8.71795e-10",
+    "independent high precision shear quadrature tests",
+    "local Wolfram+xTensor exact symbolic checks"
+  ],
+  "performance_scope": "128 characteristic steps, 257 frozen snapshot nodes, actual CPU NumPy, warmed scalar and batch solver instances",
+  "parallel_status": "Implemented opt-in ThreadPoolExecutor; 16384 rays real 4 chunks slower at 2 or 4 worker, default workers=1",
+  "native_subagent": "NOT_RUN_HOST_UNAVAILABLE",
+  "local_codex": "NOT_USED",
+  "full_reionization_scientific_admission": "NOT_ISSUED",
+  "no_automatic_next_stage": true
+}

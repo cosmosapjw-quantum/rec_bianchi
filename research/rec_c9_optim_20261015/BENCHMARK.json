@@ -1,0 +1,207 @@
+{
+  "schema": "rec.c9.opt_benchmark.v1",
+  "same_models": true,
+  "measurement": "actual local perf_counter; constructors warmed and excluded",
+  "machine": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "logical_cpus": 24,
+  "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+  "n_step": 128,
+  "snapshot_nodes": 257,
+  "q_ref": 0.01,
+  "source_kernel": "time-frequency dependent nonnegative emissivity and opacity",
+  "matched_legacy": [
+    {
+      "M": 8,
+      "n_step": 128,
+      "same_geometry_and_source": true,
+      "scalar_samples_s": [
+        0.4505697439890355,
+        0.4341152170673013,
+        0.4497891269857064
+      ],
+      "batch_samples_s": [
+        0.01529520598705858,
+        0.01555327302776277,
+        0.015501786023378372
+      ],
+      "scalar_median_s": 0.4497891269857064,
+      "vector_median_s": 0.015501786023378372,
+      "ratio_scalar_to_batch": 29.015309997659344,
+      "max_relative_occupation_difference": 8.717950805703367e-10
+    },
+    {
+      "M": 26,
+      "n_step": 128,
+      "same_geometry_and_source": true,
+      "scalar_samples_s": [
+        1.5022305850870907,
+        1.54140590201132,
+        1.5657126309815794
+      ],
+      "batch_samples_s": [
+        0.014985862071625888,
+        0.015079668024554849,
+        0.01549011399038136
+      ],
+      "scalar_median_s": 1.54140590201132,
+      "vector_median_s": 0.015079668024554849,
+      "ratio_scalar_to_batch": 102.21749573673537,
+      "max_relative_occupation_difference": 8.717950805703367e-10
+    },
+    {
+      "M": 64,
+      "n_step": 128,
+      "same_geometry_and_source": true,
+      "scalar_samples_s": [
+        3.744688689010218,
+        3.9180897950427607,
+        4.185258021927439
+      ],
+      "batch_samples_s": [
+        0.01720473007299006,
+        0.03029680496547371,
+        0.03782458009663969
+      ],
+      "scalar_median_s": 3.9180897950427607,
+      "vector_median_s": 0.03029680496547371,
+      "ratio_scalar_to_batch": 129.3235309633416,
+      "max_relative_occupation_difference": 8.717950805703367e-10
+    }
+  ],
+  "threaded_batch": [
+    {
+      "M": 256,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.032574776909314096,
+        0.030004212050698698,
+        0.03271613304968923
+      ],
+      "median_s": 0.032574776909314096,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 256,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.031940248096361756,
+        0.028978975024074316,
+        0.0356348950881511
+      ],
+      "median_s": 0.031940248096361756,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 256,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.022738890955224633,
+        0.020975531893782318,
+        0.02181112894322723
+      ],
+      "median_s": 0.02181112894322723,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 4096,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.02578479307703674,
+        0.026997192995622754,
+        0.024581721052527428
+      ],
+      "median_s": 0.02578479307703674,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 4096,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.025157820084132254,
+        0.024574397946707904,
+        0.02414683997631073
+      ],
+      "median_s": 0.024574397946707904,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 4096,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.024804361979477108,
+        0.02435703808441758,
+        0.025450401939451694
+      ],
+      "median_s": 0.024804361979477108,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 16384,
+      "workers": 1,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.07089964195620269,
+        0.0649648429825902,
+        0.06504427408799529
+      ],
+      "median_s": 0.06504427408799529,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 16384,
+      "workers": 2,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.08083978306967765,
+        0.07992965402081609,
+        0.08713590202387422
+      ],
+      "median_s": 0.08083978306967765,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    },
+    {
+      "M": 16384,
+      "workers": 4,
+      "chunk_size": 4096,
+      "repeats": 3,
+      "samples_s": [
+        0.23258687101770192,
+        0.2181416309904307,
+        0.17309093510266393
+      ],
+      "median_s": 0.2181416309904307,
+      "source_model_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "method_identity": "rec_lrs_bi_exact_Ki_batch_source_log_clock_v1"
+    }
+  ],
+  "scope": "prescribed LRS Bianchi-I, independent scalar occupation only",
+  "not_claimed": [
+    "NCP scaling",
+    "native Rust parity",
+    "whole HyRec thermodynamic integration",
+    "full observer CMB or reionization detection"
+  ]
+}
