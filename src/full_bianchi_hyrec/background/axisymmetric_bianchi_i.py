@@ -66,6 +66,23 @@ class FiniteBianchiIIncrement:
 
 
 @dataclass(frozen=True, slots=True)
+class FiniteBianchiILogIncrement:
+    """Interval formed from *supplied logarithmic* clock coordinates.
+
+    The physical model is unchanged, but this new representation has a distinct
+    numerical method identity from the existing binary64 scale-factor API.
+    No reconstructed a1/a2 are part of the source identity or acceptance.
+    """
+    l1: float
+    l2: float
+    delta_l: float
+    delta_t_s: float
+    delta_b: float
+    cells_crossed: int
+    method_identity: str = "rec_lrs_bianchi_i_positive_rate_hermite_log_interval_v1"
+
+
+@dataclass(frozen=True, slots=True)
 class BianchiIPhysicalPoint:
     a: float
     b: float
@@ -140,6 +157,7 @@ class AxisymmetricBianchiIBackground:
     _l_end: float = field(init=False, repr=False)
     _s_ref: float = field(init=False, repr=False)
     _knots: tuple[float, ...] = field(init=False, repr=False)
+    _l_knots: tuple[float, ...] = field(init=False, repr=False)
     _coefficients: tuple[tuple[float, ...], ...] = field(init=False, repr=False)
     _source_sha256: str = field(init=False, repr=False)
 
@@ -170,6 +188,10 @@ class AxisymmetricBianchiIBackground:
         if not all(y>x for x,y in zip(knots,knots[1:])):
             raise ValueError("non-monotone binary64 table knots")
         object.__setattr__(self,"_knots",knots)
+        # The logarithmic knots are authoritative for short accepted clock
+        # intervals: converting L to a can erase a representable time step.
+        l_knots=tuple(j*h for j in range(self.cells))+(L,)
+        object.__setattr__(self,"_l_knots",l_knots)
         coeffs=[]
         for j in range(self.cells):
             f0,d0=self._rate_slope(j*h)
@@ -235,6 +257,53 @@ class AxisymmetricBianchiIBackground:
                 raise ValueError("cell traversal exceeded finite bound")
         dt=math.fsum(dt_parts);db=math.fsum(db_parts)
         return FiniteBianchiIIncrement(a1,a2,dl,dt,db,counts)
+
+    def interval_log(self, l1: float, l2: float) -> FiniteBianchiILogIncrement:
+        """Compute dt and db directly from the *given* L=ln(a/a_ref) endpoints.
+
+        This uses the same positive F=1/H Hermite coefficients and small-z
+        exponential moments as interval(a1,a2). It does NOT reconstruct
+        binary64 a1/a2 by multiplying a_ref*exp(L), which can collapse a
+        representable positive delta_L at near-origin machine precision.
+
+        Caller must supply finite 0<=l1<l2<=ln(a_end/a_ref) in this source's
+        log chart. Both dt>0 and sign(db)=sign(q_ref) are required. Full
+        binary64 node/accumulation error bounds remain separate from the
+        R7B ideal exact-real Hermite error theorem.
+        """
+        if not all(math.isfinite(l) for l in (l1, l2)):
+            raise ValueError("nonfinite log interval")
+        if not 0.0 <= l1 < l2 <= self._l_end:
+            raise ValueError("log interval outside expanding domain or reversed")
+        idx=max(0,min(self.cells-1,bisect.bisect_right(self._l_knots,l1)-1))
+        current=l1
+        times=[];shears=[]
+        count=0
+        while current<l2:
+            if idx>=self.cells:
+                raise ValueError("log table exhausted before requested endpoint")
+            node=self._l_knots[idx]
+            right=min(l2,self._l_knots[idx+1])
+            if right<=current:
+                raise ValueError("log interval cell traversal stagnation")
+            u=(current-node)/self._h
+            v=(right-current)/self._h
+            # Exact table knots can round to within a handful of ulps of a
+            # unit cell endpoint; keep typed fail-closed bounds in _segment.
+            s_left=self._s_ref*math.exp(-3.0*current)
+            dt,db=_segment(self._coefficients[idx],u,v,self._h,s_left)
+            times.append(dt);shears.append(db)
+            current=right
+            idx+=1
+            count+=1
+            if count>self.cells+1:
+                raise ValueError("log interval cell traversal exceeded bound")
+        return FiniteBianchiILogIncrement(
+            l1=l1,l2=l2,delta_l=l2-l1,
+            delta_t_s=math.fsum(times),
+            delta_b=math.fsum(shears),
+            cells_crossed=count,
+        )
 
     def point(self,a:float)->BianchiIPhysicalPoint:
         if not math.isfinite(a) or not self.a_ref<=a<=self.a_end:

@@ -124,6 +124,11 @@ class CharacteristicAngularSolver:
                 ):
                     raise ValueError("interval_source and numerical snapshot payload mismatch")
         self.interval_source = interval_source
+        self.source_clock_method_identity = (
+            "rec_lrs_bianchi_i_positive_rate_hermite_log_interval_v1"
+            if interval_source is not None
+            else "rec_legacy_midpoint_H_per_step"
+        )
 
     def _clock_step(self, left: float, right: float, midpoint_snapshot: BackgroundSnapshot) -> float:
         """Positive proper-time step from a source-bound geometry if supplied."""
@@ -131,16 +136,11 @@ class CharacteristicAngularSolver:
             return (right-left)/midpoint_snapshot.H_s_inv
         source = self.interval_source
         tau_anchor = float(self.sequence.tau[0])
-
-        def scale(tau: float) -> float:
-            a = source.a_ref * math.exp(tau - tau_anchor)
-            if a > source.a_end and a-source.a_end <= 4*math.ulp(source.a_end):
-                return source.a_end
-            return a
-
-        left_a = scale(left)
-        right_a = scale(right)
-        return source.interval(left_a,right_a).delta_t_s
+        # Preserve the represented log-clock interval: a_ref*exp(tau-tau0)
+        # may round adjacent positive tau steps to the *same* binary64 a.
+        # This is a new, explicit logarithmic-input method identity, not a
+        # replacement of the existing scale-endpoint interval(a1,a2) API.
+        return source.interval_log(left-tau_anchor,right-tau_anchor).delta_t_s
 
     def _rhs(self, tau: float, direction_h: np.ndarray, log_frequency: float) -> tuple[np.ndarray, float, float]:
         snapshot = self.sequence.snapshot_at_tau(float(tau))

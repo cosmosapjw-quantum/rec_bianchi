@@ -1,0 +1,68 @@
+{
+  "schema": "rec.finite_clock.r10_c8.resume.v1",
+  "unit": "REC_R10_C8_20261015",
+  "theory": {
+    "stage": "R10",
+    "status": "COMPLETE_SCOPED_THEORY_CLOSEOUT",
+    "cycle": "REC_FINITE_CLOCK_R6_TO_R10",
+    "next_theory_stage": "NONE_WITHOUT_NEW_CYCLE_REQUEST",
+    "source_reused": [
+      "REC_BG_R7B_20261014",
+      "REC_BG_R8_20261014",
+      "REC_BG_R9_20261014_v2"
+    ],
+    "selected_claims": [
+      "C8 extremely-short log step positive clock correction",
+      "scalar transport positivity",
+      "exact variable-coefficient source error identity and conditional bound"
+    ],
+    "full_rec_physics_complete": false
+  },
+  "coding": {
+    "stage": "C8",
+    "status": "COMPLETE_SCOPED_NUMERIC_CONVERGENCE",
+    "baseline": "REC_C7_LRS_TRANSPORT_20261015_PR86",
+    "next_selected_stage": "C9",
+    "next_objective": "independent changed-surface review of log interval, numerical source-bound clock, snapshot construction and transport error balance",
+    "scientific_native_REI_runs": 0
+  },
+  "science_claims": {
+    "prescribed_LRS_Bianchi_I_component": true,
+    "non_tilted": true,
+    "collisionless_geometry_analytic_reference": true,
+    "manufactured_nonnegative_opacity": true,
+    "full_HyRec_source_consistency": "UNKNOWN",
+    "native_REI_driver_adoption": "NOT_RUN",
+    "AX08_signed_full": "NOT_ADMITTED",
+    "AX11_AX12": "PENDING",
+    "full_observer_tau": "NOT_RUN"
+  },
+  "current_repo_paths": [
+    "src/full_bianchi_hyrec/background/axisymmetric_bianchi_i.py",
+    "src/full_bianchi_hyrec/trajectory/characteristic_angular.py",
+    "tests/trajectory/test_axisymmetric_bianchi_i_c8_numerics.py",
+    "scripts/measure_axisymmetric_c8.py",
+    "research/rec_r10_c8_20261015/REPORT_KO.md"
+  ],
+  "execution": "Use only actual user-authorized local REC Python tests and direct independent reference measures; do not touch native REI Codex scheduler, owned checkpoint, process or authority",
+  "verification": {
+    "native_subagent": "NOT_RUN_NO_NATIVE_DELEGATION_TOOL",
+    "external_independent_review": "NOT_RUN",
+    "wolfram": "15.0.1 scalar transport difference identity exact 0",
+    "xAct": "15.0.0 xTensor1.3.0 current product/rate-difference exact 0"
+  },
+  "reading_order": [
+    "REPORT_KO.md",
+    "C8_RESULTS.json",
+    "RESUME.json",
+    "C8_LOG_INTERVAL_COMPARISON.csv",
+    "C8_REFINEMENT.csv"
+  ],
+  "remaining": [
+    "C9 independent scientific changed-method review",
+    "Global end-to-end chemistry source-error and convergence evidence",
+    "Production Rust native changed-method ledger acceptance by REI owner",
+    "Scientific full-signed-reionization history and optical depth"
+  ],
+  "automatic_next_cycle": false
+}
