@@ -1,0 +1,45 @@
+{
+  "schema": "rec.r3.causal_incoming.next.v1",
+  "date_kst": "2026-10-15",
+  "parent_commit": "130775798c97c3af9baa4098f6b293f1f402b451",
+  "parent_pr": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/91",
+  "completed_theory": [
+    "R3_SOURCE_PHOTON_HISTORY_OWNER_MAP",
+    "R3_CONST_Q_KILLING_RETARDED_LOOKBACK",
+    "R3_CAUSAL_ACCEPTED_STEP_SUFFICIENT_BOUND",
+    "R3_EXACT_PLANCK_REFERENCE_CORRECTION"
+  ],
+  "completed_code": [
+    "C5_source_module_311plus2",
+    "C6_native_original_hydrogen_c_parity",
+    "C7_signed_q_kinematic_tests",
+    "C8_vector_direct_owner_gather_benchmark"
+  ],
+  "source_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "validation": {
+    "source_C_fplus_313_times_4": "PASS_SCOPED",
+    "max_scaled_relative_C_diff": 6.828510269357105e-14,
+    "threshold": 2e-11,
+    "new_tests_with_slow": "13 PASS",
+    "full_repo_pytest": "462 PASS 39 SKIP",
+    "quick_repo_gate": "PASS_BOUNDED_NO_GO_DAE_SCOPE",
+    "native_original_FULL_trajectory": "NOT_RUN",
+    "native_bianchi_q_nonzero": "NOT_SOURCE_IMPLEMENTED",
+    "coupled_helium": "NOT_IMPLEMENTED",
+    "actual_REI_native_checkpoints": "UNCHANGED"
+  },
+  "next_stage": "R3b_NATIVE_FULL_ALGEBRAIC_COLLISION_AND_OUTGOING_OWNER",
+  "next_actions": [
+    "Map exact source instantaneous state Trr/Trv/Tvr/Tvv/s/Dtau from original hydrogen.c:414-625 and verify rates against native C at controlled prior histories",
+    "Implement source-equivalent 2 real + 311 virtual algebraic solve plus outgoing Dfminus and Lyman accepted-history writes, test no future reads",
+    "Integrate a native source-faithful independent q=0 FULL hydrogen+Tm trajectory and compare xe(z),Tm(z) with raw original C FULL; keep source and numerical error separate",
+    "After H validation integrate helium species with source valid epoch and electron/energy ledgers; only then admit anisotropic q!=0 source iteration",
+    "Provide nontrivial anisotropic Planck/polarization initial histories before z_start, not automatic isotropic zero distortion"
+  ],
+  "stop_condition": "Do not admit FULL recombination history without source-owned algebraic collision, atomic electron flow, accepted-history writeback, helium/thermal ledgers and independent integrated validation.",
+  "default_parallel_workers": 1,
+  "local_Codex_used": false,
+  "native_subagents": "NOT_RUN",
+  "active_other_repo_mutations": 0,
+  "source_worktree": "/home/cosmosapjw/rec_theory_runs/REC_R3_CAUSAL_20261015/checkout"
+}
