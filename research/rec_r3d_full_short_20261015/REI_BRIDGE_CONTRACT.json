@@ -1,0 +1,50 @@
+{
+  "schema": "rec.r3d.rei_handoff.v1",
+  "created_kst": "2026-10-15",
+  "source_rec_repo": "cosmosapjw-quantum/rec_bianchi",
+  "source_rec_parent_commit": "8071d2e26d1befe2efe4599c5abd416d90e5e031",
+  "original_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "source_pr94": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/94",
+  "target_rei_repo": "cosmosapjw-quantum/rei_bianchi",
+  "target_pr150": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/150",
+  "last_inspected_rei_pr150_head": "54dd5352672127e77970eb06f3dda027f2aee275",
+  "source_rei_scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696",
+  "target_rei_pr150_config_path": "research/flrw_production_integration_20261015/configs/hyrec_donor_full.cfg",
+  "target_rei_config_git_blob_sha": "d9dcdbb4b33ebfe89f6c1322cba2a83a7bab15a6",
+  "source_qualified_q0_donor": {
+    "x_HII": 0.000210349192936,
+    "x_HeII": 0,
+    "x_HeIII": 0,
+    "Tgas_K": 9.306042400380866,
+    "initial_ionizing_photon_stock": "EXACT_ZERO_CONDITIONAL_REI_SOURCE_ONSET"
+  },
+  "donor_activation": "DISABLED_REQUIRES_SEPARATE_REI_SENSITIVITY_CAMPAIGN",
+  "this_cycle_science": "INDEPENDENT_PYTHON_SHORT_H_ONLY_FULL_ATOMIC_ZERO_PREHISTORY_Q0_EXPERIMENT",
+  "this_cycle_donor_qualified": false,
+  "testable_config_audit": "src/full_bianchi_hyrec/trajectory/rei_donor_config_audit.py",
+  "target_mutation": false,
+  "native_rei_recompute": "NOT_RUN",
+  "source_history_to_rei_transport_interface": "PR94 comparison packet only; this cycle does not transfer spectral photons into REI UV cells",
+  "horizon": {
+    "rec_synthetic_initial_z": 900,
+    "rei_admitted_zbar_range": [
+      4,
+      20
+    ],
+    "signed_q_recombination": "UNRESOLVED_NOT_EXTRAPOLATED"
+  },
+  "must_run_on_ncp_before_science_admission": [
+    "Clone or freeze qualified REI PR150 source and source fixture, preserve scenario lock, require fresh output namespace with same MD14/BB50K source",
+    "Run one-step native REI chemical charge, photon inventory, thermal energy and opacity ledgers for baseline and opt-in donor IC, with q0",
+    "Run controlled zbar20->19.8 grid, angular and time refinements separately under PR150 covariant positive N/Uq support contract",
+    "Only after accepted thresholds and native scientific review launch fresh zbar20->4; verify first failure, make no resumption from old IC",
+    "REI anisotropic signed q may be run only over its locked zbar20->4 domain; high-z Bianchi recombination requires new dynamical closure"
+  ],
+  "resources": {
+    "NCP_prior_observed_logical_cpus": 64,
+    "NCP_prior_observed_ram_bytes": 135050518528,
+    "NCP_current_run": "NOT_ATTEMPTED_NO_HEAVY_JOB",
+    "owner_pc_current_cpus": 24
+  },
+  "policy": "UNCHANGED_SOURCE_OWNER_GATE_NO_PRODUCTION_ADOPTION"
+}

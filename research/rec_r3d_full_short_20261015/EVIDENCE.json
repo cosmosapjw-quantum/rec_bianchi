@@ -1,0 +1,78 @@
+{
+  "schema": "rec.r3d.execution_receipt.v1",
+  "date_kst": "2026-10-15",
+  "authority": "SOURCE_READONLY_RESEARCH_EXECUTION",
+  "rec_parent_sha": "8071d2e26d1befe2efe4599c5abd416d90e5e031",
+  "original_hyrec_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "environment": {
+    "host_role": "owner_pc_not_ncp",
+    "python": "3.12.3",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "wolfram": "15.0",
+    "xAct_xTensor": "1.3.0",
+    "cpu_logical": 24
+  },
+  "executed": {
+    "pytest_full_fast": {
+      "result": "PASS",
+      "passed": 484,
+      "deselected_slow": 41,
+      "elapsed_seconds": 47.49,
+      "log": "PYTEST_QUICK.log"
+    },
+    "pytest_new_focused": {
+      "result": "PASS",
+      "passed": 16,
+      "deselected_slow": 1
+    },
+    "native_hyrec2012_c_one_step": {
+      "result": "PASS",
+      "passed": 1,
+      "log": "NATIVE_C_PARITY.log",
+      "argument": "--run-slow"
+    },
+    "wolfram_xact": {
+      "result": "PASS",
+      "checks": 5,
+      "log": "XACT_RESULT.log",
+      "script": "XACT_CHECK.wl"
+    },
+    "numerical_refinement": {
+      "result": "OBSERVED_DECREASING_GRID_DIFFERENCES",
+      "three_grids": [
+        17,
+        33,
+        65
+      ],
+      "report": "NUMERICS.json"
+    },
+    "thread_comparison": {
+      "result": "PARALLEL_REGRESSION_FOR_MEASURED_SHORT_CASES",
+      "cases": 4,
+      "threads": 2,
+      "median_serial_div_parallel": 0.8186276045820762
+    }
+  },
+  "scientific_scope": "SOURCE_PHYSICS_MATCHED_BOUNDED_Q0_H_ONLY_SYNTHETIC_ZERO_PREHISTORY_SHORT_RUN",
+  "uncomputed": [
+    "SELF_CONSISTENT_FULL_PRIMORDIAL_REC_HISTORY_WITH_TRUE_CAUSAL_PAST",
+    "PRIMORDIAL_HELIUM_SPECIES_HISTORY",
+    "HIGH_Z_BIANCHI_ATOMIC_FEEDBACK",
+    "NATIVE_REI_NEW_INITIAL_CONDITION_RUN"
+  ],
+  "cross_repo": {
+    "rei_repo_modified": false,
+    "rec_dirty_main_modified": false,
+    "original_HyRec_source_modified": false,
+    "pr150_config_blob_sha": "d9dcdbb4b33ebfe89f6c1322cba2a83a7bab15a6"
+  },
+  "ncp": {
+    "heavy_computations_required_in_this_bounded_unit": false,
+    "actual_ncp_used": false,
+    "ssh_alias_ncp": "UNRESOLVED_FROM_OWNER_LOCAL_ALIAS",
+    "prior_rei_production_host_preflight": "64_cpu_135GB_prior_observation"
+  },
+  "review": "ONE_LOCAL_CODE_TEST_PLUS_SOURCE_NATIVE_C_CROSSCHECK",
+  "claim_gate": "IMPLEMENTATION_VERIFIED_SHORT_LOCAL_ONLY"
+}
