@@ -1,0 +1,18 @@
+# REC R3f NCP original HyRec H+He FULL YHe scan
+
+The source capsule was built from PR #97 HEAD `9fed68682c7083c54f245e76d6c86f3eae040136` plus the runner and verifier changes in this evidence branch. The immutable October 2012 HyRec ZIP is SHA-256 `48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27`. The actual NCP run used host `s1a0e5abed09`, 64 CPUs in its affinity, 48 workers, a 2 GiB address-space cap per C process, and a 120 s per-case timeout.
+
+The original C FULL H+He FLRW calculation completed all 97 independent inputs, from `YHe=0.2394` to `0.2514` in steps of `0.000125`. Every science stdout has 8,001 physical rows. The baseline stdout is byte-identical to the prior source reference (`6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400`); maximum relative baseline error is zero for both `xe` and `Tm/Tr`. All 49 overlapping local cases have identical stdout hashes. The 1,581 local and NCP derivative rows agree exactly, and independent arithmetic from the seven retained curves reproduces both Richardson columns exactly. The postrun verifier passed with `--expected-mode ncp`.
+
+At redshift 20, the Richardson derivatives are `dxe/dYHe=0.0002906109833332752` and `dTm/dYHe=3.0485118666388664 K`; the source-density response is `d ln ne/dYHe=0.05635912058893777` at fixed baryon density. At redshift 1100, `dxe/dYHe=0.10121123600927613` and `d ln ne/dYHe=-0.6276228272539843`. The density response crosses zero between redshift 142 and 143. The `d ln ne` result includes `d ln nH/dYHe=-1/(1-YHe)`; it is not the derivative of `xe` alone. At redshift 1100, the two Richardson estimates differ by relative `2.0171e-6` for `xe` and `1.2162e-5` for `Tm`. These are measured convergence diagnostics, without a predeclared tolerance gate.
+
+The matched seven-case serial control took 6.8193 s; its parallel control took 1.0651 s, a measured 6.4026× ratio. The 97-case science scan took 3.5266 s; the full command took 13.89 s. GNU time measured 130.41 user and 6.32 system CPU seconds. Its 78,316 KiB maximum RSS covers the timed command; aggregate C-child peak RSS was **not measured**, because the sampler did not match the live C process names. Host available RAM before the run was 132,024,684,544 bytes and the minimum recorded sample was 128,997,715,968 bytes.
+
+The 13,652,738-byte raw return archive contains the source capsule, all baseline/control/science inputs and stdout/stderr, per-case elapsed times and hashes, results, manifests, logs, resource preflight, contract, and receipt. Its SHA-256 is `61fa9a431bbbb811a1f928505ef9ed76f6fc396cc2a3953586becc21aaa41b83`. Both create-only backups were read back byte-for-byte:
+
+- Dropbox `dbx:bianchi/rec_bianchi/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz` (ID `id:BSpOijBcT10AAAAAAD9ExQ`).
+- Google Drive `gdrv:rec_bianchi_research_backups/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz` (ID `1gqqeirpKr3urmVl8gDn-AMaZCihDE_5q`).
+
+The raw archive is kept outside Git; tracked files here are the science summary, SHA manifest, comparison receipt, logs, and plots. The SHA manifest paths refer to the raw archive result tree. `RUN.json` and the CSVs are exact copies from that tree. The two PNGs were generated from the verified derivative CSV after retrieval.
+
+**Claim boundary:** this is only the original HyRec October 2012 native C FULL H+He `q=0` FLRW input sensitivity to `YHe`. It does not establish an independent Python FULL history, self-consistent high-redshift Bianchi recombination, reionization optical-depth change, or a CMB observable. The next physical step is the independent Python FULL H+He history with the actual initial photon spectrum and species, compared against the original C production history.

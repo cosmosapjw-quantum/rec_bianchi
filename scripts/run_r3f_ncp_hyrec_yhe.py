@@ -114,17 +114,26 @@ def parse_history(stdout: bytes, yhe: float) -> list[tuple[float, float]]:
 
 def original_case(binary: Path, source_dir: Path, index: int,
                   *, wall_limit: int, address_limit_gib: int,
-                  include_curve: bool=False) -> dict:
+                  include_curve: bool=False, raw_dir: Path) -> dict:
     yhe = PARAMS["YHe"] + index*STEP
     input_text = source_input(yhe)
     cmd = [str(binary)]
     if shutil.which("prlimit"):
         cmd = ["prlimit", "--as="+str(address_limit_gib*(1024**3)), "--", *cmd]
     start = time.perf_counter()
+    raw_dir.mkdir(parents=True, exist_ok=False)
+    input_bytes = input_text.encode("ascii")
+    input_path = raw_dir / "input.txt"
+    input_path.write_bytes(input_bytes)
+    stdout = b""
+    stderr = b""
+    status = "ERROR"
+    error = None
     try:
-        p = subprocess.run(cmd, cwd=source_dir, input=input_text.encode("ascii"),
+        p = subprocess.run(cmd, cwd=source_dir, input=input_bytes,
                            capture_output=True, timeout=wall_limit,
                            env={**os.environ, "OMP_NUM_THREADS":"1", "OPENBLAS_NUM_THREADS":"1"})
+        stdout, stderr = p.stdout, p.stderr
         if p.returncode:
             raise RuntimeError(f"C_EXIT_{p.returncode}: {p.stderr[-250:]!r}")
         if len(p.stdout)>2_000_000:
@@ -137,13 +146,36 @@ def original_case(binary: Path, source_dir: Path, index: int,
         result = {"index":index,"YHe":yhe,"source_input_sha256":hashlib.sha256(input_text.encode()).hexdigest(),
                   "source_stdout_sha256":hashlib.sha256(p.stdout).hexdigest(),
                   "z_slices":samples,"rows":8001,"elapsed_s":time.perf_counter()-start,"status":"PASS"}
+        status = "PASS"
         if include_curve:
             result["curve"] = {str(z):[rows[8000-z][0],rows[8000-z][1]*PARAMS["T0_K"]*(1+z)]
                                for z in DERIVATIVE_Z}
+        result["raw_dir"] = str(raw_dir.relative_to(raw_dir.parents[1]))
         return result
-    except (ValueError,TimeoutError,subprocess.TimeoutExpired,RuntimeError,UnicodeError) as e:
-        return {"index":index,"YHe":yhe,"status":"ERROR","error_type":type(e).__name__,
-                "error_message":str(e)[:500],"elapsed_s":time.perf_counter()-start}
+    except subprocess.TimeoutExpired as e:
+        stdout = e.stdout or b""
+        stderr = e.stderr or b""
+        error = e
+    except (ValueError,TimeoutError,RuntimeError,UnicodeError,OSError) as e:
+        error = e
+    finally:
+        elapsed = time.perf_counter()-start
+        (raw_dir / "stdout.bin").write_bytes(stdout)
+        (raw_dir / "stderr.bin").write_bytes(stderr)
+        meta = {"index":index,"YHe":yhe,"status":status,"elapsed_s":elapsed,
+                "command":cmd,"source_sha256":SOURCE_SHA,
+                "binary_sha256":hashlib.sha256(binary.read_bytes()).hexdigest(),
+                "input_sha256":hashlib.sha256(input_bytes).hexdigest(),
+                "stdout_sha256":hashlib.sha256(stdout).hexdigest(),
+                "stderr_sha256":hashlib.sha256(stderr).hexdigest()}
+        if error is not None:
+            meta.update({"error_type":type(error).__name__,"error_message":str(error)[:1000]})
+        (raw_dir / "case.json").write_text(json.dumps(meta,sort_keys=True,indent=2)+"\n")
+    return {"index":index,"YHe":yhe,"status":"ERROR","error_type":type(error).__name__,
+            "error_message":str(error)[:500],"elapsed_s":elapsed,
+            "source_input_sha256":hashlib.sha256(input_bytes).hexdigest(),
+            "source_stdout_sha256":hashlib.sha256(stdout).hexdigest(),
+            "raw_dir":str(raw_dir.relative_to(raw_dir.parents[1]))}
 
 
 def semantic_baseline_check(reference_raw: bytes, current_raw: bytes, yhe:float) -> dict:
@@ -209,9 +241,9 @@ def execute(*,output_dir:Path,mode:str,workers:int,address_limit_gib:int=2,
     if mode=="ncp" and (cpu<48 or not shutil.which("prlimit")):
         raise RuntimeError("NCP PREFLIGHT requires >=48 CPU affinity and prlimit executable")
     indices = list(CENTRAL_INDICES) if mode=="smoke" else list(range(-24,25)) if mode=="local" else list(range(-48,49))
-    output_dir.mkdir(parents=True,exist_ok=True)
-    if any(output_dir.iterdir()):
+    if output_dir.exists():
         raise FileExistsError("CREATE_ONLY_OUTPUT_DIR_REQUIRED")
+    output_dir.mkdir(parents=True,exist_ok=False)
     started=time.perf_counter()
     with tempfile.TemporaryDirectory(prefix="rec_r3f_original_hyrec_") as td:
         tmp=Path(td)
@@ -223,20 +255,54 @@ def execute(*,output_dir:Path,mode:str,workers:int,address_limit_gib:int=2,
         if hashlib.sha256(raw_ref).hexdigest()!=BASELINE_STDOUT_SHA:
             raise RuntimeError("PR94_BASELINE_SOURCE_OUTPUT_SHA_DRIFT")
         baseline_input=source_input(PARAMS["YHe"])
-        baseline=subprocess.run([str(binary)],input=baseline_input.encode(),cwd=source_dir,
-                                capture_output=True,timeout=wall_limit_s,check=True)
+        raw_root=output_dir/"raw_cases"
+        raw_root.mkdir()
+        baseline_dir=raw_root/"baseline_source"
+        baseline_dir.mkdir()
+        baseline_bytes=baseline_input.encode()
+        (baseline_dir/"input.txt").write_bytes(baseline_bytes)
+        baseline_start=time.perf_counter()
+        baseline_command=[str(binary)]
+        try:
+            baseline=subprocess.run(baseline_command,input=baseline_bytes,cwd=source_dir,
+                                    capture_output=True,timeout=wall_limit_s,check=True)
+        except (subprocess.TimeoutExpired,subprocess.CalledProcessError) as exc:
+            partial_out=exc.stdout or exc.output or b""
+            partial_err=exc.stderr or b""
+            (baseline_dir/"stdout.bin").write_bytes(partial_out)
+            (baseline_dir/"stderr.bin").write_bytes(partial_err)
+            (baseline_dir/"case.json").write_text(json.dumps({
+                "role":"baseline_source","status":"ERROR","elapsed_s":time.perf_counter()-baseline_start,
+                "command":baseline_command,"source_sha256":SOURCE_SHA,
+                "binary_sha256":hashlib.sha256(binary.read_bytes()).hexdigest(),
+                "input_sha256":hashlib.sha256(baseline_bytes).hexdigest(),
+                "stdout_sha256":hashlib.sha256(partial_out).hexdigest(),
+                "stderr_sha256":hashlib.sha256(partial_err).hexdigest(),
+                "error_type":type(exc).__name__,"error_message":str(exc)[:1000]},sort_keys=True,indent=2)+"\n")
+            raise
+        (baseline_dir/"stdout.bin").write_bytes(baseline.stdout)
+        (baseline_dir/"stderr.bin").write_bytes(baseline.stderr)
+        (baseline_dir/"case.json").write_text(json.dumps({
+            "role":"baseline_source","status":"PASS","elapsed_s":time.perf_counter()-baseline_start,
+            "command":[str(binary)],"source_sha256":SOURCE_SHA,
+            "binary_sha256":hashlib.sha256(binary.read_bytes()).hexdigest(),
+            "input_sha256":hashlib.sha256(baseline_bytes).hexdigest(),
+            "stdout_sha256":hashlib.sha256(baseline.stdout).hexdigest(),
+            "stderr_sha256":hashlib.sha256(baseline.stderr).hexdigest()},sort_keys=True,indent=2)+"\n")
         comparison=semantic_baseline_check(raw_ref,baseline.stdout,PARAMS["YHe"])
         if not comparison["science_equivalent"]:
             raise RuntimeError("SOURCE_BASELINE_SCIENCE_EQUIVALENCE_GATE_FAIL")
         sample_subset=[-4,-2,-1,0,1,2,4]
         t0=time.perf_counter()
         control_serial=[original_case(binary,source_dir,j,wall_limit=wall_limit_s,
-                       address_limit_gib=address_limit_gib) for j in sample_subset]
+                       address_limit_gib=address_limit_gib,
+                       raw_dir=raw_root/f"control_serial_{j:+03d}") for j in sample_subset]
         serial_seconds=time.perf_counter()-t0
         t0=time.perf_counter()
         with cf.ThreadPoolExecutor(max_workers=min(workers,len(sample_subset))) as pool:
             control_parallel=list(pool.map(lambda j:original_case(binary,source_dir,j,
-                  wall_limit=wall_limit_s,address_limit_gib=address_limit_gib), sample_subset))
+                  wall_limit=wall_limit_s,address_limit_gib=address_limit_gib,
+                  raw_dir=raw_root/f"control_parallel_{j:+03d}"), sample_subset))
         parallel_seconds=time.perf_counter()-t0
         if any(a["status"]!="PASS" or b["status"]!="PASS" or
                a["source_stdout_sha256"]!=b["source_stdout_sha256"]
@@ -246,7 +312,8 @@ def execute(*,output_dir:Path,mode:str,workers:int,address_limit_gib:int=2,
         with cf.ThreadPoolExecutor(max_workers=workers) as pool:
             futures=[pool.submit(original_case,binary,source_dir,j,
                                  wall_limit=wall_limit_s,address_limit_gib=address_limit_gib,
-                                 include_curve=(j in CENTRAL_INDICES)) for j in indices]
+                                 include_curve=(j in CENTRAL_INDICES),
+                                 raw_dir=raw_root/f"science_{j:+03d}") for j in indices]
             results=[future.result() for future in cf.as_completed(futures)]
         scientific_wall=time.perf_counter()-t0
     results.sort(key=lambda o:o["index"])
@@ -272,6 +339,9 @@ def execute(*,output_dir:Path,mode:str,workers:int,address_limit_gib:int=2,
                           PARAMS["YHe"]+max(indices)*STEP],
             "serial_control_seconds":serial_seconds,"parallel_control_seconds":parallel_seconds,
             "controlled_speedup":serial_seconds/parallel_seconds,
+            "serial_parallel_control_stdout_sha256":{
+                "serial":{str(r["index"]):r["source_stdout_sha256"] for r in control_serial},
+                "parallel":{str(r["index"]):r["source_stdout_sha256"] for r in control_parallel}},
             "science_wall_seconds":scientific_wall,"total_elapsed_seconds":time.perf_counter()-started,
             "derivatives":derivative_summaries,"cases":results,
             "scientific_scope":"FULL native 2012 H+He FLRW YHe source-input partial sensitivity at fixed other parameters",
@@ -288,8 +358,13 @@ def execute(*,output_dir:Path,mode:str,workers:int,address_limit_gib:int=2,
                         s.get("20",{}).get("xe_per_H"),s.get("20",{}).get("Tm_K"),
                         s.get("900",{}).get("xe_per_H"),s.get("1100",{}).get("xe_per_H"),
                         r.get("source_stdout_sha256")])
-    digest={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in output_dir.iterdir() if f.is_file()}
-    (output_dir/"SHA256_MANIFEST.json").write_text(json.dumps(digest,indent=2,sort_keys=True)+"\n")
+    digest={f.relative_to(output_dir).as_posix():{"sha256":hashlib.sha256(f.read_bytes()).hexdigest(),
+            "size_bytes":f.stat().st_size} for f in sorted(output_dir.rglob("*"))
+            if f.is_file() and f.name!="SHA256_MANIFEST.json"}
+    manifest_path=output_dir/"SHA256_MANIFEST.json"
+    if manifest_path.exists():
+        raise FileExistsError("CREATE_ONLY_MANIFEST_REQUIRED")
+    manifest_path.write_text(json.dumps(digest,indent=2,sort_keys=True)+"\n")
     print(json.dumps({k:report[k] for k in ("status","host","science_cases_passed",
              "science_cases","science_wall_seconds","controlled_speedup")},indent=2))
     if failures:

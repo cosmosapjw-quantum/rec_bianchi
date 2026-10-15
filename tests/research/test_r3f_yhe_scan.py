@@ -42,6 +42,23 @@ def test_output_shape_input_validation(tmp_path):
     with pytest.raises(ValueError): y.execute(output_dir=tmp_path,mode='smoke',workers=2,wall_limit_s=1)
 
 
+def test_timeout_preserves_partial_raw_process_evidence(tmp_path, monkeypatch):
+    import hashlib, json, subprocess
+    binary=tmp_path/'solver'; binary.write_bytes(b'fake executable identity')
+    source=tmp_path/'source'; source.mkdir()
+    raw=tmp_path/'raw'
+    def timeout(*args, **kwargs):
+        raise subprocess.TimeoutExpired(args[0], 1, output=b'partial stdout', stderr=b'partial stderr')
+    monkeypatch.setattr(y.subprocess, 'run', timeout)
+    result=y.original_case(binary, source, 0, wall_limit=1, address_limit_gib=2, raw_dir=raw)
+    assert result['status']=='ERROR'
+    assert (raw/'input.txt').is_file()
+    assert (raw/'stdout.bin').read_bytes()==b'partial stdout'
+    assert (raw/'stderr.bin').read_bytes()==b'partial stderr'
+    meta=json.loads((raw/'case.json').read_text())
+    assert meta['status']=='ERROR' and meta['binary_sha256']==hashlib.sha256(binary.read_bytes()).hexdigest()
+
+
 @pytest.mark.slow
 def test_actual_original_c_native_smoke(tmp_path):
     report=y.execute(output_dir=tmp_path/'real_c',mode='smoke',workers=3)
