@@ -148,3 +148,24 @@ def test_original_c_interpolate_rates_matches_python_at_knot_and_off_grid(tmp_pa
         )
         relative = np.abs(py_values - c_values) / np.maximum(np.abs(c_values), 1.0e-300)
         assert np.max(relative) < 2.0e-12
+
+
+def test_low_temperature_photoionization_underflows_to_valid_zero():
+    # Original HyRec has a finite 0.004eV table lower edge, but the
+    # Boltzmann-suppressed beta rates can underflow to exact binary64 zero.
+    # β=0 is nonnegative, not a negative-rate physics violation.
+    table=OriginalHyRecPrimitiveRateTable.from_archive(ARCHIVE)
+    cold=table.evaluate(radiation_temperature_eV_rescaled=.004,
+                        matter_to_radiation_temperature_ratio=.95)
+    assert np.all(cold.beta_s_inv==0.0)
+    assert np.all(cold.alpha_m3_s>0.0)
+    assert cold.photoionization_zero_in_binary64
+    assert np.all(cold.d_beta_d_log_Tr_s_inv==0.0)
+
+
+def test_cold_detailed_balance_does_not_falsely_pass_underflow():
+    table=OriginalHyRecPrimitiveRateTable.from_archive(ARCHIVE)
+    cold=table.evaluate(radiation_temperature_eV_rescaled=.004,
+                        matter_to_radiation_temperature_ratio=1.)
+    with pytest.raises(FloatingPointError,match="underflow|uninformative"):
+        detailed_balance_residuals(cold,n_H_m3=2.4e8,x_1s=.7)

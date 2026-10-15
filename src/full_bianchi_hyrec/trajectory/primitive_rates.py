@@ -188,14 +188,28 @@ class PrimitiveRateSnapshot:
             object.__setattr__(self, name, _readonly(getattr(self, name), (NVIRT,), name))
         if np.any(self.alpha_m3_s <= 0.0) or np.any(self.alpha_equilibrium_m3_s <= 0.0):
             raise ValueError("recombination coefficients must be positive")
-        if np.any(self.beta_s_inv <= 0.0):
-            raise ValueError("photoionization rates must be positive")
+        # The original HyRec Boltzmann factor can legitimately underflow
+        # to exactly zero near the cold edge of its rate table. Zero remains
+        # physical (nonnegative); only a *negative* photoionization rate
+        # violates the source contract. Do not perturb it to an arbitrary
+        # positive floor, which would change the compiled native semantics.
+        if np.any(self.beta_s_inv < 0.0):
+            raise ValueError("photoionization rates must be nonnegative")
         if np.any(self.A1s_s_inv < 0.0) or np.any(self.A2s_s_inv < 0.0):
             raise ValueError("two-photon rates must be nonnegative")
         hashes = {str(k): str(v) for k, v in self.source_hashes.items()}
         if any(len(value) != 64 for value in hashes.values()):
             raise ValueError("source hashes must be SHA-256 hex strings")
         object.__setattr__(self, "source_hashes", MappingProxyType(hashes))
+
+    @property
+    def photoionization_zero_in_binary64(self) -> bool:
+        """At least one native-positive beta underflowed or rounded to zero.
+
+        This is a numerical representation flag, not a claim that the
+        physical thermodynamic equilibrium rate vanishes exactly.
+        """
+        return bool(np.any(self.beta_s_inv == 0.0))
 
     @property
     def value_vector_si(self) -> np.ndarray:
@@ -503,6 +517,15 @@ def detailed_balance_residuals(
     ) * math.exp(-LYMAN_ALPHA_ENERGY_EV / Tr)
     forward = n_H * rates.alpha_equilibrium_m3_s * xe_squared
     reverse = rates.beta_s_inv * excited
+    # Both fluxes becoming binary64 zero is an *uninformative test*, not
+    # evidence for thermodynamic detailed balance to 1e-13 accuracy.
+    # Continue allowing either branch's genuine zero in ordinary source
+    # evolution, but fail closed when the user requests a relative audit.
+    if np.any((forward == 0.0) & (reverse == 0.0)):
+        raise FloatingPointError(
+            "detailed-balance relative residual is uninformative after "
+            "photoionization/Saha underflow; use log-domain source diagnostics"
+        )
     return (forward - reverse) / np.maximum(
         np.maximum(np.abs(forward), np.abs(reverse)), 1.0e-300
     )
