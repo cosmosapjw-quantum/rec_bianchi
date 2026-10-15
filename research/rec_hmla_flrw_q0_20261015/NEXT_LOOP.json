@@ -1,0 +1,44 @@
+{
+  "schema": "rec.hmla.flrw.q0.next.v1",
+  "completed_theory_stage": "R2_SOURCE_MODEL_REUSE_EXACT_HMLA",
+  "completed_coding_scope": "C5_C6_SOURCE_FAITHFUL_HMLA_AND_REFERENCE_EXECUTION",
+  "upstream_source_parent": "99dbd883042bb60734f92cd424f2f91826d1ea48",
+  "source_bianchi_q": "0 ONLY",
+  "integrated_actual_own_history": true,
+  "ionization_model": "H-only neutral-He approximation with original EMLA2s2p source and thermal ODE",
+  "full_HyRec2012_dynamic_radiation": "NOT_IMPLEMENTED",
+  "native_q0_C_HMLA_reference": "compiled switch from original 2012 HyRec C with exact source change",
+  "next_theory_stage": "R3",
+  "next_coding_stage": "Source-owner-verified FULL Ly-alpha radiative transport plus coupled helium, not automatically admitted",
+  "next_objective": "Derive and execute the smallest causal original-HyRec FULL Ly-alpha virtual-bin/history source replacement and helium stages; preserve source rate and number/energy ledgers. Then integrate q0 and compare full xe,Tm to native FULL.",
+  "native_REI_runs_by_this_scope": 0,
+  "local_Codex_used": false,
+  "native_subagents": "NOT_RUN",
+  "parallel_risk": "2/4 worker slower; keep vectorized single-batch default",
+  "claimed_speedup_scope": "common z,Tm HMLA source RHS only, not 2-state full ODE",
+  "source_equivalence_gate": "Python HMLA vs original C instant RHS 96-state max1.834825761e-14",
+  "original_C_Full_vs_EMLA_source_mode_gate": {
+    "original_C_FULL_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+    "separately_C_source_switched_EMLA_sha256": "75d4bd873fa45b941a58a2977c5f8206002fedead134499d2a16a976b49d38d6",
+    "mode_switch": "#define MODEL FULL -> #define MODEL EMLA2s2p",
+    "common_redshift_range": [
+      600,
+      1600
+    ],
+    "max_abs_relative_electron_fraction_CEMLA_vs_CFULL": 0.014281952168201384,
+    "signed_relative_electron_fraction_CEMLA_vs_CFULL": 0.014281952168201384,
+    "redshift_at_max": 1268.0,
+    "same_helium_and_thermal_C_models": true,
+    "scientific_scope": "native C HMLA2s2p vs native C FULL; mode-switch counterfactual, not Python source error"
+  },
+  "own_numerical_integration": {
+    "coarse_to_tight_max_absolute_x_HII": 5.982221498168627e-06,
+    "coarse_to_tight_max_rel_x_HII": 6.243091725099958e-05,
+    "baseline_to_tight_max_absolute_x_HII": 2.2304254060356854e-07,
+    "baseline_to_tight_max_rel_x_HII": 6.712733820135597e-06,
+    "baseline_to_tight_max_rel_Tm": 3.914836144147671e-08,
+    "numerical_model_difference_ratio": 0.00047016264109162845
+  },
+  "own_model_error_vs_FULL": 0.01427747173733307,
+  "own_model_error_vs_same_C_EMLA": 2.5313434416585068e-05
+}

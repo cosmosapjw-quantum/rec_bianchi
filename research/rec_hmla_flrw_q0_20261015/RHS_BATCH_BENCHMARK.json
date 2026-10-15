@@ -1,0 +1,142 @@
+{
+  "schema": "rec.hmla2s2p.vectorized_source_benchmark.v1",
+  "source_scope": "single z/Tm with independent hydrogen/helium electron states, 2s2p HMLA RHS only",
+  "benchmark": [
+    {
+      "states": 64,
+      "source_shared_z": 1100.0,
+      "source_shared_Tm_K": 3000.7454922449997,
+      "max_scaled_relative_difference": 0.0,
+      "serial_source": {
+        "samples_s": [
+          0.008423359948210418,
+          0.008154692011885345,
+          0.008131659007631242
+        ],
+        "median_s": 0.008154692011885345
+      },
+      "batched_source": {
+        "samples_s": [
+          0.0001669550547376275,
+          0.0001665750751271844,
+          0.0001642199931666255
+        ],
+        "median_s": 0.0001665750751271844
+      },
+      "speedup": 48.955055284585804
+    },
+    {
+      "states": 512,
+      "source_shared_z": 1100.0,
+      "source_shared_Tm_K": 3000.7454922449997,
+      "max_scaled_relative_difference": 0.0,
+      "serial_source": {
+        "samples_s": [
+          0.0813705789623782,
+          0.0825059920316562,
+          0.09137315000407398
+        ],
+        "median_s": 0.0825059920316562
+      },
+      "batched_source": {
+        "samples_s": [
+          0.00018188310787081718,
+          0.00018348603043705225,
+          0.00019490800332278013
+        ],
+        "median_s": 0.00018348603043705225
+      },
+      "speedup": 449.6581665379762
+    },
+    {
+      "states": 2048,
+      "source_shared_z": 1100.0,
+      "source_shared_Tm_K": 3000.7454922449997,
+      "max_scaled_relative_difference": 0.0,
+      "serial_source": {
+        "samples_s": [
+          0.2929128319956362,
+          0.29496965394355357,
+          0.2979259639978409
+        ],
+        "median_s": 0.29496965394355357
+      },
+      "batched_source": {
+        "samples_s": [
+          0.0002491200575605035,
+          0.00019395595882087946,
+          0.00018747407011687756
+        ],
+        "median_s": 0.00019395595882087946
+      },
+      "speedup": 1520.807381927159
+    },
+    {
+      "states": 8192,
+      "source_shared_z": 1100.0,
+      "source_shared_Tm_K": 3000.7454922449997,
+      "max_scaled_relative_difference": 0.0,
+      "serial_source": {
+        "samples_s": [
+          1.1328993330243975,
+          1.3517227079719305,
+          1.2139628229197115
+        ],
+        "median_s": 1.2139628229197115
+      },
+      "batched_source": {
+        "samples_s": [
+          0.0002405550330877304,
+          0.00023875106126070023,
+          0.0002475370420143008
+        ],
+        "median_s": 0.0002405550330877304
+      },
+      "speedup": 5046.507684073188
+    }
+  ],
+  "thread_experiment": [
+    {
+      "workers": 1,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0008068630704656243,
+        0.0007851619739085436,
+        0.0009545820066705346,
+        0.0013751460937783122,
+        0.0007912040455266833
+      ],
+      "median_s": 0.0008068630704656243,
+      "bit_equal_single_full_numpy": true
+    },
+    {
+      "workers": 2,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0019459730247035623,
+        0.0019104660023003817,
+        0.0023824580712243915,
+        0.0017016819911077619,
+        0.0014471519971266389
+      ],
+      "median_s": 0.0019104660023003817,
+      "bit_equal_single_full_numpy": true
+    },
+    {
+      "workers": 4,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0027699179481714964,
+        0.002726807026192546,
+        0.002978882985189557,
+        0.002860568929463625,
+        0.0030481539433822036
+      ],
+      "median_s": 0.002860568929463625,
+      "bit_equal_single_full_numpy": true
+    }
+  ],
+  "default_parallel": "1-worker to avoid overhead unless measured future regime",
+  "source_rate_table_evaluations": "scalar = N calls; batch=1 call per common z/Tm array",
+  "no_FULL_history_speed_claim": true
+}

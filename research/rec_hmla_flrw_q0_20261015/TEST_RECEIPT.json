@@ -1,0 +1,217 @@
+{
+  "schema": "rec.hmla.q0.execution_scientific_review.v1",
+  "observed_kst": "2026-10-15T13:31:20.098458+09:00",
+  "source_parent": "99dbd883042bb60734f92cd424f2f91826d1ea48",
+  "source_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "source_C_native_harness_sha256": "a3426c1905156c8a56b08e1a79a981bbb768b49ab8058b16936119a19734396f",
+  "source_native_C_EMLA_history_sha256": "75d4bd873fa45b941a58a2977c5f8206002fedead134499d2a16a976b49d38d6",
+  "source_native_FULL_history_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+  "actual_REC_native_HMLA_RHS_parity": {
+    "points": 96,
+    "max_scaled_rel_difference": 1.8348257610199602e-14
+  },
+  "actual_REC_q0_self_integrated_hydrogen_HMLA": {
+    "name": "tight",
+    "rtol": 2e-09,
+    "atol_x": 2e-11,
+    "wall_s": 0.19325170502997935,
+    "initial_ionization_source": "analytic first-order hydrogen post-Saha, own source Jacobian; no reference injection",
+    "z_start": 1599.9999999999995,
+    "z_end": 600.0,
+    "x_end": 0.0009569296273028047,
+    "Tm_end_K": 1628.163562779938,
+    "max_rel_deviation_vs_original_FULL_xe": 0.01427747173733307,
+    "signed_deviation_at_max": 0.01427747173733307,
+    "redshift_of_max": 1270.7298637218778,
+    "max_rel_matter_T_deviation_vs_original_FULL": 1.0392842734852081e-05,
+    "C_EMLA2s2p_hydrogen_relative_difference_max": 2.5313434416585068e-05,
+    "C_EMLA2s2p_hydrogen_difference_max_redshift": 901.5348257911149
+  },
+  "actual_REC_convergence": {
+    "coarse_to_tight_max_absolute_x_HII": 5.982221498168627e-06,
+    "coarse_to_tight_max_rel_x_HII": 6.243091725099958e-05,
+    "baseline_to_tight_max_absolute_x_HII": 2.2304254060356854e-07,
+    "baseline_to_tight_max_rel_x_HII": 6.712733820135597e-06,
+    "baseline_to_tight_max_rel_Tm": 3.914836144147671e-08,
+    "numerical_model_difference_ratio": 0.00047016264109162845
+  },
+  "original_C_model_switch_difference": 0.014281952168201384,
+  "atom_rates_shared_vectorization": [
+    {
+      "states": 64,
+      "speedup": 48.955055284585804,
+      "max_scaled_relative_difference": 0.0
+    },
+    {
+      "states": 512,
+      "speedup": 449.6581665379762,
+      "max_scaled_relative_difference": 0.0
+    },
+    {
+      "states": 2048,
+      "speedup": 1520.807381927159,
+      "max_scaled_relative_difference": 0.0
+    },
+    {
+      "states": 8192,
+      "speedup": 5046.507684073188,
+      "max_scaled_relative_difference": 0.0
+    }
+  ],
+  "cpu_parallel_test": [
+    {
+      "workers": 1,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0008068630704656243,
+        0.0007851619739085436,
+        0.0009545820066705346,
+        0.0013751460937783122,
+        0.0007912040455266833
+      ],
+      "median_s": 0.0008068630704656243,
+      "bit_equal_single_full_numpy": true
+    },
+    {
+      "workers": 2,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0019459730247035623,
+        0.0019104660023003817,
+        0.0023824580712243915,
+        0.0017016819911077619,
+        0.0014471519971266389
+      ],
+      "median_s": 0.0019104660023003817,
+      "bit_equal_single_full_numpy": true
+    },
+    {
+      "workers": 4,
+      "actual_chunks": 4,
+      "samples_s": [
+        0.0027699179481714964,
+        0.002726807026192546,
+        0.002978882985189557,
+        0.002860568929463625,
+        0.0030481539433822036
+      ],
+      "median_s": 0.002860568929463625,
+      "bit_equal_single_full_numpy": true
+    }
+  ],
+  "targeted_pytest": {
+    "returncode": 0,
+    "stdout_summary": "12 passed in 2.42s",
+    "command": "PYTHONPATH=src:scripts python3 -m pytest tests/trajectory/test_hmla_flrw.py -q --run-slow"
+  },
+  "full_pytest": {
+    "returncode": 0,
+    "stdout_summary": "450 passed, 38 skipped",
+    "command": "PYTHONPATH=src:scripts python3 -m pytest -q"
+  },
+  "source_syntax_py_compile": "PASS",
+  "public_package_source_import": "PASS",
+  "code_files_sha256": {
+    "src/full_bianchi_hyrec/trajectory/hmla_flrw.py": {
+      "sha256": "6ef3f63876e0434d6d0ac7d8c16dd0a7be1970688e9e17c689abb0e3aea693a1",
+      "bytes": 13018
+    },
+    "src/full_bianchi_hyrec/trajectory/__init__.py": {
+      "sha256": "2acd03b58e2faec97ef3c21f4b43fcb1fa68bd2f8c542acc66b9a5b1a9819116",
+      "bytes": 11062
+    },
+    "tests/trajectory/test_hmla_flrw.py": {
+      "sha256": "f559e8dc2899d7bcb39aeccf890ac3495107dbfac6500733f0048d40d9b5fa30",
+      "bytes": 5475
+    },
+    "scripts/c_harness/original_hyrec_hmla_rhs_harness.c": {
+      "sha256": "a3426c1905156c8a56b08e1a79a981bbb768b49ab8058b16936119a19734396f",
+      "bytes": 1873
+    },
+    "scripts/verify_hmla_native_rhs.py": {
+      "sha256": "0e9f8eb4c0c1e574c801454b6a3da79b98d517ad4e5f0021e443239704b33887",
+      "bytes": 4559
+    },
+    "scripts/run_hmla_q0_flrw.py": {
+      "sha256": "8547028806a93bdbfb34f58a642b2da2793d3d279b206614d3c84770af995ed5",
+      "bytes": 8790
+    },
+    "scripts/run_original_hyrec_emla_switch.py": {
+      "sha256": "58d6090c2405aa6714ee832695bcc73915dbc276d602bfefe0cce7a895065cf4",
+      "bytes": 3981
+    },
+    "scripts/benchmark_hmla_rhs.py": {
+      "sha256": "ae92b5e944d1c03566f3920096f26b492e701f4e42b7aa52875dfa4e3aa5c33c",
+      "bytes": 4178
+    },
+    "research/rec_hmla_flrw_q0_20261015/REPORT_KO.md": {
+      "sha256": "a73f96f5ac5b2dc1b1cca97c8f34a96e640b53db78c25538a9ee04484068c990",
+      "bytes": 9422
+    },
+    "research/rec_hmla_flrw_q0_20261015/NEXT_LOOP.json": {
+      "sha256": "b8885e9d0d1305c28540f6d2c033ea7a82fbe3cffbd95ca103e46050481e126d",
+      "bytes": 2638
+    },
+    "research/rec_hmla_flrw_q0_20261015/C_EMLA_SOURCE_RECEIPT.json": {
+      "sha256": "b8dd72194e9924389410e25f4318fd474e4f9c1a9306f5e41efd84bdaf518d7a",
+      "bytes": 747
+    },
+    "research/rec_hmla_flrw_q0_20261015/C_EMLA_VS_FULL.json": {
+      "sha256": "35dc51f7a387e3d8f8bab9a32ee979abe20b91ec686adcf1fe338d8e28f23200",
+      "bytes": 669
+    },
+    "research/rec_hmla_flrw_q0_20261015/HMLA_C_PARITY.json": {
+      "sha256": "7fbf34d36383b104b858a7558312ee557ea39d83e6bedb5ee52a518e990ef142",
+      "bytes": 30086
+    },
+    "research/rec_hmla_flrw_q0_20261015/RHS_BATCH_BENCHMARK.json": {
+      "sha256": "9468412c944728387636021fd3ed2bdb7d0942e8de35138871c118ce2c199e01",
+      "bytes": 3821
+    },
+    "research/rec_hmla_flrw_q0_20261015/HYREC2012_MATCHED_INPUT.txt": {
+      "sha256": "523eeef77af15c00404962afc0f63ff907897b6d7535ea782e46bd46538395b3",
+      "bytes": 76
+    },
+    "research/rec_hmla_flrw_q0_20261015/trajectory_post_saha/RUN_RESULTS.json": {
+      "sha256": "15e79ea17e3546433b2b9e7a30add50e445422ae9a03f30df002f77fd12785e3",
+      "bytes": 4428
+    },
+    "research/rec_hmla_flrw_q0_20261015/trajectory_post_saha/REC_Q0_HMLA_REL_DIFFERENCE.png": {
+      "sha256": "e1740a30ae9b639519e481def4e230f8cac77fe7051366673eafc5c55e103b23",
+      "bytes": 79051
+    },
+    "research/rec_hmla_flrw_q0_20261015/trajectory_post_saha/REC_Q0_HMLA_XE_COMPARISON.png": {
+      "sha256": "eefbdfcb25b75e4735649f37d239320594671c416afee2af286fbea9b46da3be",
+      "bytes": 96135
+    },
+    "research/rec_hmla_flrw_q0_20261015/trajectory_post_saha/REC_HMLA_Q0_TRAJECTORY.csv": {
+      "sha256": "90ac2e0030307852c4c29854299d2f38a4c6e34d111f3793bb7fecd2b93d5daa",
+      "bytes": 28027
+    }
+  },
+  "claims": [
+    {
+      "claim": "actual independent C 96-state source equation parity",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "claim": "q=0 original rate H-only EMLA2s2p + Tm local ODE",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "claim": "same-original-C EMLA full history comparison",
+      "status": "NUMERICALLY_CLOSE_NOT_IDENTICAL_HELIUM"
+    },
+    {
+      "claim": "original HyRec FULL, 311 virtual bins and helium coupled",
+      "status": "NOT_RUN_NOT_ADMITTED"
+    },
+    {
+      "claim": "REI full signed q and emissivity source-driven chemistry",
+      "status": "NOT_TOUCHED"
+    }
+  ],
+  "local_codex_used": false,
+  "native_subagent": "NOT_RUN_TOOL_UNAVAILABLE",
+  "independent_PEER_REVIEW": "NOT_RUN"
+}

@@ -375,3 +375,14 @@ __all__.extend([
     "hyrec_source_hubble_per_s",
     "hyrec_source_hydrogen_number_density_m3",
 ])
+
+from .hmla_flrw import (
+    HMLAFlrwSource,
+    HMLAHistory,
+    integrate_hmla_hydrogen,
+)
+__all__.extend([
+    "HMLAFlrwSource",
+    "HMLAHistory",
+    "integrate_hmla_hydrogen",
+])
