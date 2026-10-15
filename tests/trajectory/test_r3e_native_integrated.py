@@ -2,6 +2,11 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
+
+# CI invokes bare `pytest -q`; scripts/ is intentionally not an installed package.
+# Bind the exact repository scripts directory for this source-oracle test only.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
 import numpy as np
 import pytest

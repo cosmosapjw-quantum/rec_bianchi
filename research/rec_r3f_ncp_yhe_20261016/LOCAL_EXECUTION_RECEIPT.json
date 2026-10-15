@@ -1,0 +1,44 @@
+{
+  "schema": "rec.r3f.local_execution_receipt.v1",
+  "created_kst": "2026-10-16",
+  "source": {
+    "repo_parent": "05e35be9f5788b3ea1708027f2c131ccd57985a5",
+    "immutable_original_hyrec2012_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "prior_rec_pr94_stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400"
+  },
+  "environment": {
+    "execution": "OpenAI working container local, not owner's desktop and not NCP",
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cpu_affinity": 5,
+    "compiler": "GCC original HyRec C source, -O3 -fno-fast-math"
+  },
+  "verified": {
+    "source_zip_SHA_256": "PASS",
+    "PR94_original_C_stdout_byte_identity_all_8001_rows": "PASS",
+    "7_HHe_FULL_native_C_case_smoke": "PASS",
+    "49_HHe_FULL_native_C_cases": "PASS",
+    "7_serial_parallel_control_source_output_byte_identity": "PASS",
+    "source_derivative_curve_1581_z_rows": "PASS",
+    "postrun_source_density_identity_and_sha_manifest": "PASS",
+    "full_repository_non_slow_tests": "489 PASS, 42 deselected, 0 FAIL, 71.40s",
+    "standalone_slow_real_C_test": "1 PASS",
+    "Wolfram_Richardson_leading_error": "-4g h^4 for fifth-degree polynomial",
+    "Wolfram_log_density_source_term": "-1/(1-YHe)"
+  },
+  "measured": {
+    "local_49_case_main_wall_s": 6.860063130999947,
+    "control_serial_over_parallel_ratio": 2.978996612551333,
+    "z20_xe": 0.000210349192936,
+    "z20_Tm_K": 9.306042400380866,
+    "z20_dxe_dYHe": 0.0002906109833332752,
+    "z20_dTm_K_dYHe": 3.0485118666388664,
+    "z20_dln_ne_dYHe_fixed_omegabh2": 0.05635912058893777,
+    "z_sign_crossing_interpolated": 142.14041645883046
+  },
+  "scientific_admission": "ACTUAL_SOURCE_NATIVE_FULL_H_HE_Q0_YHE_PARAMETER_SENSITIVITY_ONLY",
+  "unrun": ["NCP 97-case native C source scan", "REI native ionization evolution", "high-redshift signed Bianchi fully coupled recombination", "independent Python primordial full H+He production parity"],
+  "native_subagent": "NOT_RUN_TOOL_ABSENT",
+  "previous_remote_desktop_blocker": "monthly_usage_cap_prior_turn; no attempt made to bypass this limit"
+}
