@@ -1,0 +1,56 @@
+{
+  "schema": "rec.r3.causal_incoming.test_receipt.v1",
+  "date_kst": "2026-10-15",
+  "source_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "run_commands": [
+    "PYTHONPATH=src:scripts OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m pytest tests/trajectory/test_causal_virtual_redshift.py -q --tb=short --run-slow",
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q --tb=short",
+    "python3 scripts/verify_repo.py --quick",
+    "PYTHONPATH=src python3 scripts/verify_causal_fplus_native.py --output research/rec_r3_causal_fplus_20261015/NATIVE_C_PARITY.json",
+    "PYTHONPATH=src python3 scripts/benchmark_causal_virtual_redshift.py --output research/rec_r3_causal_fplus_20261015/BENCHMARK.json"
+  ],
+  "observed": {
+    "new_tests_with_slow": {
+      "passed": 13,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "full_repo_pytest": {
+      "passed": 462,
+      "skipped": 39,
+      "failed": 0,
+      "exit_code": 0,
+      "elapsed_s": 49.64
+    },
+    "repo_quick_gate": {
+      "exit_code": 0,
+      "status": "PASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED"
+    },
+    "source_native": {
+      "exit_code": 0,
+      "comparisons": 1252,
+      "max_scaled_rel_error": 6.828510269357105e-14,
+      "max_absolute_difference": 1.5670109524204556e-20
+    },
+    "benchmark_source_only": {
+      "exit_code": 0,
+      "batch_128_before_s": 0.012197004980407655,
+      "batch_128_after_s": 0.006424420978873968,
+      "no_full_solver_benchmark": true
+    },
+    "source_code_compile": {
+      "exit_code": 0
+    },
+    "native_REI_owner_changes": 0
+  },
+  "scoped_admission": "SOURCE_INCOMING_C_PARITY_PASS_AND_CONST_Q_KINEMATIC_TESTED",
+  "full_hyrec_admission": "NOT_ISSUED",
+  "limitations": [
+    "native source verified q0 only",
+    "standalone atom+virtual FULL source not coupled",
+    "no new xe(z) FULL",
+    "no HeIII/HeII dynamics",
+    "no native q !=0 production",
+    "prehistory requires physical boundary"
+  ]
+}
