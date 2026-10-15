@@ -1,0 +1,48 @@
+{
+  "schema": "rec.r3b.full.source.next.v1",
+  "date": "2026-10-15",
+  "parent_commit": "98b9f3099fa12b80437531473c627998ff6c0d20",
+  "parent_pr": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/92",
+  "completed_scopes": [
+    "R3b source-identifiable two-real/311-virtual algebraic collision/Schur/source reconstruction",
+    "C5 actual Python original HyRec2012 FULL source and outgoing candidate",
+    "C6 original C 4-source-state q0 full source/outgoing parity",
+    "C7 exact-scope source matrix and escape-factor numerical checks",
+    "C8 measured banded/Schur vs true dense313 fixed-coefficient numerical performance"
+  ],
+  "science_status": "SCOPED_SOURCE_POINT_PARITY_ONLY",
+  "tests": {
+    "native_C_states": 4,
+    "exact_native_C_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "max_native_C_scaled_rel": 3.5099619408579026e-9,
+    "gate": 1e-8,
+    "linear_residual_max": 4.356223313768861e-16,
+    "full_repo_pytest": "468 passed 40 slow skipped",
+    "targeted_pytest_including_original_C": "7 passed",
+    "repo_quick_gate": "PASS_BOUND_NO_GO_STILL_ACTIVE",
+    "wolfram_3state_block_schur": "IDENTITY_ZERO",
+    "source_escape_mp75": "NATIVE_ERROR_MAX_9.06e-5_NEAR_SWITCH",
+    "dense_schur_agreement": "3.66e-14 max at z900; 1.41e-15 at z1200"
+  },
+  "next_stage": "R3c_INDEPENDENT_SELF_CONSISTENT_H_FULL_CAUSAL_TRAJECTORY",
+  "next_objective": "Continue the source-equivalent original HyRec q0 coupled H-only FULL history over 1600 to 600 with actual accepted step commits, consistent physical prehistory/initial condition and xHII/Tm, then compare native C FULL under matched approximations. Do not compare a manufactured-history point evaluation against physically evolved native FULL as if same-state trajectories.",
+  "next_actions": [
+    "R3c set physically admissible source-owned initial incoming/outgoing photon histories; include onset below source T_r upper bound and decide Saha/post-Saha consistent thermal IC independent of reference xe curve",
+    "Carry state x_HII,T_m,311 virtual outgoing,3 Lyman outgoing,311 average (last is diagnostic) along increasing eta and strict accepted-step provenance; use genuine predictor/corrector or implicit scheme for stiff electron derivative, with no future read.",
+    "Introduce a matched original C FULL H-only reference run with identical initial and helium assumptions, rather than compare to default 8001-row H+He physical model blindly",
+    "Run dt refinement and physical source number/energy ledgers including photon direction/spectrum before q!=0 claims",
+    "Only after H/q0 trajectory and true C parity, dynamically include HeII/HeIII, true electron contributions and recombination epoch and Bianchi directional opacity/collision"
+  ],
+  "physical_nonadmissions": [
+    "global FULL xe(z)",
+    "global FULL Tm(z)",
+    "coupled primordial H+He species",
+    "self-consistent q!=0 collision",
+    "CMB spectra/observables",
+    "production REI native abundances"
+  ],
+  "native_subagent": "NOT_RUN tool capability unavailable; serial explicit work",
+  "local_codex_used": false,
+  "other_repo_mutations": 0,
+  "worktree": "/home/cosmosapjw/rec_theory_runs/REC_R3B_FULL_SOURCE_20261015/checkout"
+}

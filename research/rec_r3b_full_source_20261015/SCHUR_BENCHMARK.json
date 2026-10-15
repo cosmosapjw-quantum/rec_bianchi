@@ -1,0 +1,75 @@
+{
+  "samples": [
+    {
+      "Tm_over_Tr": 0.98,
+      "banded_diffusion_dimension": 80,
+      "banded_matrix_relative_residual": 3.847686070237208e-13,
+      "banded_over_dense_speedup": 9.900421771677296,
+      "dense_dimension": 313,
+      "dense_matrix_relative_residual": 2.1137264353108592e-13,
+      "global_relative_solution_difference": 3.6574852732295545e-14,
+      "max_abs_solution_difference": 4.652890945610781e-24,
+      "timing": {
+        "banded_schur": {
+          "median_s_per_call": 6.6313525e-05,
+          "trials_s_per_call": [
+            6.6313525e-05,
+            7.009658750000001e-05,
+            6.85555375e-05,
+            6.481731250000001e-05,
+            6.48813125e-05
+          ]
+        },
+        "dense313": {
+          "median_s_per_call": 0.0006565318666666667,
+          "trials_s_per_call": [
+            0.0006580453333333334,
+            0.000600591,
+            0.0006565318666666667,
+            0.0006934466,
+            0.0006188803333333334
+          ]
+        }
+      },
+      "x_HII": 0.04,
+      "z": 900.0
+    },
+    {
+      "Tm_over_Tr": 0.999,
+      "banded_diffusion_dimension": 80,
+      "banded_matrix_relative_residual": 1.1335121180329019e-13,
+      "banded_over_dense_speedup": 9.25855514749653,
+      "dense_dimension": 313,
+      "dense_matrix_relative_residual": 7.446697733355305e-14,
+      "global_relative_solution_difference": 1.4126079106226285e-15,
+      "max_abs_solution_difference": 2.261821987449685e-26,
+      "timing": {
+        "banded_schur": {
+          "median_s_per_call": 6.593545e-05,
+          "trials_s_per_call": [
+            6.593545e-05,
+            6.303906250000001e-05,
+            6.38804125e-05,
+            6.6363125e-05,
+            7.491386250000002e-05
+          ]
+        },
+        "dense313": {
+          "median_s_per_call": 0.0006104670000000001,
+          "trials_s_per_call": [
+            0.000611155,
+            0.0006104670000000001,
+            0.0006127594,
+            0.0005906166666666667,
+            0.0005923786666666667
+          ]
+        }
+      },
+      "x_HII": 0.45,
+      "z": 1200.0
+    }
+  ],
+  "schema": "rec.r3b.sparse_schur_vs_dense.v1",
+  "scope": "fixed-coefficient algebraic solve only",
+  "single_thread_requested": true
+}

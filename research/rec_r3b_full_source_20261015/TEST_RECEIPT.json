@@ -1,0 +1,60 @@
+{
+  "schema": "rec.r3b.full.source.execution.v1",
+  "date": "2026-10-15",
+  "parent_commit": "98b9f3099fa12b80437531473c627998ff6c0d20",
+  "original_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "tested_commands": [
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/verify_full_atomic_native.py --output research/rec_r3b_full_source_20261015/NATIVE_POINT_PARITY.json",
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest tests/trajectory/test_full_2012_atomic_source.py -q --run-slow --tb=short",
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q --tb=short",
+    "PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/benchmark_full_atomic_schur.py --output research/rec_r3b_full_source_20261015/SCHUR_BENCHMARK.json",
+    "PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/audit_full_2012_escape_cancellation.py --output research/rec_r3b_full_source_20261015/ESCAPE_CANCELLATION_AUDIT.json",
+    "python3 scripts/verify_repo.py --quick"
+  ],
+  "results": {
+    "source_C_parity": {
+      "exit_code": 0,
+      "state_count": 4,
+      "max_scaled_rel": 3.5099619408579026e-9,
+      "gate": 1e-8,
+      "scientific_scope": "instant source, manufactured accepted history"
+    },
+    "targeted_pytest": {
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0
+    },
+    "full_pytest": {
+      "exit_code": 0,
+      "passed": 468,
+      "skipped": 40,
+      "failed": 0,
+      "duration_s": 46.44
+    },
+    "quick_repo_check": {
+      "exit_code": 0,
+      "status": "PASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED"
+    },
+    "schur_vs_dense": {
+      "exit_code": 0,
+      "rel_solution_z900": 3.6574852732295545e-14,
+      "rel_solution_z1200": 1.4126079106226285e-15,
+      "source_only_speedup_z900": 9.900421771677296,
+      "source_only_speedup_z1200": 9.25855514749653
+    },
+    "numeric_escape_mpmath": {
+      "exit_code": 0,
+      "precision_digits": 75,
+      "native_max_rel_error": 0.00009062571871672453,
+      "alternative_selected_tau_test_rel": "less_than_5e-13"
+    },
+    "wolfram_symbolic": {
+      "status": "PASS",
+      "output": "{0,{0,0,0}}",
+      "scope": "2-real 1-virtual illustrative block determinant+residual; analytic identity generalizes"
+    }
+  },
+  "release_gate": "H_ONLY_INSTANT_RECOMBINATION_SOURCE_SCOPED_PASS_GLOBAL_FULL_NOT_ADMITTED",
+  "preserved_different_repo_native_rei": true,
+  "worktree_clean_requirement": "validate and checkpoint new commit before release"
+}
