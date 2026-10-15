@@ -345,3 +345,12 @@ __all__.extend([
     "AxisymmetricBatchFaceResult",
     "BatchIsotropicCoefficients",
 ])
+
+from .axisymmetric_phase_space import (
+    AxisymmetricPhaseVolumeMap,
+    axisymmetric_phase_space_map,
+)
+__all__.extend([
+    "AxisymmetricPhaseVolumeMap",
+    "axisymmetric_phase_space_map",
+])
