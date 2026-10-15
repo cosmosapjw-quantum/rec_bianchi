@@ -1,0 +1,201 @@
+{
+  "schema": "rec.c10.phase_space_moment.v1",
+  "model": "non-tilted axisymmetric prescribed Bianchi I, passive collisionless radiation",
+  "conventions": {
+    "signature": "-+++",
+    "log_scale": "L=ln(a/a_ref)",
+    "number_density": "n_gamma(face)/n_gamma(initial)=(a_initial/a_face)^3 for isotropic initial f",
+    "energy_density": "rho_gamma(face)/rho_gamma(initial)=(a_initial/a_face)^4 * mean_sky(R^-4)",
+    "solid_angle": "dOmega_initial/dOmega_face=R^-3"
+  },
+  "source_reference": "independent mpmath 75-digit B and full-sky energy moment",
+  "angles_gl_order": 96,
+  "cases": [
+    {
+      "q_ref": 0.0,
+      "source_sha256": "4f6dbbc10da773bbc6ef2d40aa1c71749b7c9827e68127cc5783e09e24d3026e",
+      "initial_l": 0.0,
+      "face_l": 0.7419373447293773,
+      "B_initial_minus_face": -0.0,
+      "B_mpmath75": 0.0,
+      "number_jacobian_full_sky_normalized": 0.9999999999999998,
+      "energy_moment_full_sky_factor": 0.9999999999999998,
+      "energy_factor_mpmath75": 1.0,
+      "cubic_phase_volume_max_relative_error": 2.220446049250313e-16,
+      "small_B_energy_series_4th": 1.0
+    },
+    {
+      "q_ref": -0.005,
+      "source_sha256": "779f8dfb47c6b76716e4d2a0a1eeed2696b8eb0dc0526b04e3648b8875349005",
+      "initial_l": 0.0,
+      "face_l": 0.7419373447293773,
+      "B_initial_minus_face": 0.0022391243431689784,
+      "B_mpmath75": 0.0022391243431690373,
+      "number_jacobian_full_sky_normalized": 0.9999999999999998,
+      "energy_moment_full_sky_factor": 1.0000080304435923,
+      "energy_factor_mpmath75": 1.0000080304435923,
+      "cubic_phase_volume_max_relative_error": 6.661338147750939e-16,
+      "small_B_energy_series_4th": 1.000008030443596
+    },
+    {
+      "q_ref": 0.005,
+      "source_sha256": "e6acdfc7926a252aa548f97e49f16cb3ab49aa20ccc99159d03c1640023b6636",
+      "initial_l": 0.0,
+      "face_l": 0.7419373447293773,
+      "B_initial_minus_face": -0.0022391243431689784,
+      "B_mpmath75": -0.0022391243431690373,
+      "number_jacobian_full_sky_normalized": 1.0,
+      "energy_moment_full_sky_factor": 1.0000080133369362,
+      "energy_factor_mpmath75": 1.0000080133369362,
+      "cubic_phase_volume_max_relative_error": 6.661338147750939e-16,
+      "small_B_energy_series_4th": 1.0000080133369325
+    },
+    {
+      "q_ref": -0.01,
+      "source_sha256": "d64fe41e56a2b5825be6e217d7530f36df10243cf41923053893f04f954be164",
+      "initial_l": 0.0,
+      "face_l": 0.7419373447293773,
+      "B_initial_minus_face": 0.004478168223022576,
+      "B_mpmath75": 0.004478168223022695,
+      "number_jacobian_full_sky_normalized": 0.9999999999999998,
+      "energy_moment_full_sky_factor": 1.0000321548997795,
+      "energy_factor_mpmath75": 1.0000321548997797,
+      "cubic_phase_volume_max_relative_error": 6.661338147750939e-16,
+      "small_B_energy_series_4th": 1.0000321548999034
+    },
+    {
+      "q_ref": 0.01,
+      "source_sha256": "e58d2e952abbd07dd7f8d4a2f0e478233f4ac0ea1d977c1fd2970b458c342a28",
+      "initial_l": 0.0,
+      "face_l": 0.7419373447293773,
+      "B_initial_minus_face": -0.004478168223022576,
+      "B_mpmath75": -0.004478168223022695,
+      "number_jacobian_full_sky_normalized": 1.0,
+      "energy_moment_full_sky_factor": 1.0000320180540963,
+      "energy_factor_mpmath75": 1.000032018054096,
+      "cubic_phase_volume_max_relative_error": 6.661338147750939e-16,
+      "small_B_energy_series_4th": 1.0000320180539701
+    }
+  ],
+  "even_correction_q01_over_q005": 3.999864854890417,
+  "actual_matched_benchmark": [
+    {
+      "nrays": 64,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 3.750005271285772e-05,
+        "samples_s": [
+          4.538591019809246e-05,
+          3.750005271285772e-05,
+          3.679899964481592e-05,
+          4.3612089939415455e-05,
+          3.685895353555679e-05
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 6.938097067177296e-05,
+        "samples_s": [
+          8.278607856482267e-05,
+          6.938097067177296e-05,
+          7.21360556781292e-05,
+          6.833905354142189e-05,
+          6.609491538256407e-05
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.005077281966805458,
+        "samples_s": [
+          0.005069556995294988,
+          0.005075577995739877,
+          0.005112637998536229,
+          0.005077281966805458,
+          0.005081258015707135
+        ]
+      },
+      "prepared_speedup_vs_scalar": 0.5404947833644866,
+      "prepared_speedup_vs_cold": 73.17974824574061,
+      "max_relative_difference": 5.551115123125783e-16
+    },
+    {
+      "nrays": 1024,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 0.0005560179706662893,
+        "samples_s": [
+          0.0005693939747288823,
+          0.0005560179706662893,
+          0.0005449270829558372,
+          0.0005628109211102128,
+          0.0005405090050771832
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 0.00013551500160247087,
+        "samples_s": [
+          0.00018499803263694048,
+          0.0001391019904986024,
+          0.00013422302436083555,
+          0.00013551500160247087,
+          0.00013254000805318356
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.005231902003288269,
+        "samples_s": [
+          0.005573656992055476,
+          0.005230139009654522,
+          0.005429416080005467,
+          0.005231902003288269,
+          0.005116234999150038
+        ]
+      },
+      "prepared_speedup_vs_scalar": 4.102999402954302,
+      "prepared_speedup_vs_cold": 38.60754854754674,
+      "max_relative_difference": 8.881784197001252e-16
+    },
+    {
+      "nrays": 8192,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 0.004671065951697528,
+        "samples_s": [
+          0.004607795970514417,
+          0.005261959042400122,
+          0.0046202599769458175,
+          0.00488868507090956,
+          0.004671065951697528
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 0.0013845700304955244,
+        "samples_s": [
+          0.0015310259768739343,
+          0.0015200460329651833,
+          0.0013845700304955244,
+          0.001358240027911961,
+          0.0012881580041721463
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.006572950980626047,
+        "samples_s": [
+          0.006572950980626047,
+          0.006533817038871348,
+          0.006615772028453648,
+          0.00663317390717566,
+          0.006517805973999202
+        ]
+      },
+      "prepared_speedup_vs_scalar": 3.3736581384950233,
+      "prepared_speedup_vs_cold": 4.747286764739267,
+      "max_relative_difference": 1.1102230246251565e-15
+    }
+  ],
+  "not_claimed": [
+    "full-Boltzmann energy moment from evolving f",
+    "ionizing photon absorption or heating ledger",
+    "native REI q family convergence",
+    "Thomson scattering",
+    "novel observational signature or strong no-go"
+  ]
+}

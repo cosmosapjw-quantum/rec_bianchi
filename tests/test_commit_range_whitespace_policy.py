@@ -84,3 +84,35 @@ def test_checker_rejects_uncommitted_source_whitespace(tmp_path: Path) -> None:
     assert result.returncode != 0
     assert "sample.py" in result.stdout + result.stderr
     assert "trailing whitespace" in result.stdout + result.stderr
+
+
+def test_known_immutable_generated_csv_is_excluded_but_new_csv_is_checked(tmp_path: Path) -> None:
+    repo, _ = _init_repo(tmp_path)
+    frozen = repo / "research/rec_r10_c8_20261015/C8_REFINEMENT.csv"
+    frozen.parent.mkdir(parents=True)
+    frozen.write_bytes(b"x,y\r\n1,2\r\n")
+    _git(repo, "add", "state/PATCH_BASE.json", str(frozen.relative_to(repo)))
+    _git(repo, "commit", "-q", "-m", "preserve original CSV bytes")
+    result = _run_checker(repo)
+    assert result.returncode == 0, result.stdout + result.stderr
+
+    new_csv = repo / "research/new_scenario/output.csv"
+    new_csv.parent.mkdir(parents=True)
+    new_csv.write_bytes(b"x,y\r\n1,2\r\n")
+    _git(repo, "add", str(new_csv.relative_to(repo)))
+    _git(repo, "commit", "-q", "-m", "unregistered artifact is still checked")
+    result = _run_checker(repo)
+    assert result.returncode != 0
+    assert "research/new_scenario/output.csv" in result.stdout + result.stderr
+
+
+def test_normal_python_and_markdown_source_still_have_strict_whitespace_gate(tmp_path: Path) -> None:
+    repo, _ = _init_repo(tmp_path)
+    markdown = repo / "research/current/README.md"
+    markdown.parent.mkdir(parents=True)
+    markdown.write_text("ordinary scientific source must be clean  \n")
+    _git(repo, "add", "state/PATCH_BASE.json", str(markdown.relative_to(repo)))
+    _git(repo, "commit", "-q", "-m", "bad source")
+    result = _run_checker(repo)
+    assert result.returncode != 0
+    assert "research/current/README.md" in result.stdout + result.stderr

@@ -1,0 +1,32 @@
+Needs["xAct`xTensor`"];
+DefManifold[MC10,4,{aa,bb,cc,dd,ee,ff}];
+DefMetric[-1,gC10[-aa,-bb],D0,{";","D"}];
+DefTensor[kk[aa],MC10];
+DefTensor[zz[-aa],MC10];
+DefTensor[Nph[],MC10];
+DefTensor[UU[aa],MC10];
+DefTensor[Eph[],MC10];
+r1=ToCanonical[ContractMetric[Expand[
+ kk[aa]D0[-aa][kk[bb]zz[-bb]]
+ -kk[aa]D0[-aa][kk[bb]]zz[-bb]
+ -1/2 kk[aa]kk[bb](D0[-aa][zz[-bb]]+D0[-bb][zz[-aa]])
+]]];
+r2=ToCanonical[ContractMetric[Expand[
+ D0[-aa][Nph[]UU[aa]]
+ -Nph[]D0[-aa][UU[aa]]-UU[aa]D0[-aa][Nph[]]
+]]];
+r3=ToCanonical[ContractMetric[Expand[
+ D0[-aa][Eph[]UU[aa]]
+ -Eph[]D0[-aa][UU[aa]]-UU[aa]D0[-aa][Eph[]]
+]]];
+res={r1,r2,r3};
+out=<|"WolframVersion"->System`$Version,
+"xTensorVersion"->ToString[xAct`xTensor`$Version,InputForm],
+"signature"->"-+++",
+"results"->{"geodesic_Killing_momentum_conditional_symmetrization","photon_number_current_product_rule","photon_energy_current_product_rule"},
+"residuals"->(ToString[#,InputForm]&/@res),
+"all_exact_zero"->And@@(TrueQ[#===0]&/@res),
+"qualifier"->"Killing conservation requires geodesic kk and Killing zz; current product rules alone do not prove collision integrals vanish."|>;
+Export["/home/cosmosapjw/rec_theory_runs/REC_C10_PHASE_VOLUME_20261015/checkout/research/rec_c10_phase_volume_20261015/XACT_RESULT.json",out,"RawJSON"];
+Print[ExportString[out,"RawJSON"]];
+If[!out["all_exact_zero"],Exit[2]];

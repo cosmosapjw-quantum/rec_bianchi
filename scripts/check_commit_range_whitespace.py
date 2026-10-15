@@ -14,7 +14,25 @@ import subprocess
 import sys
 
 
-DEFAULT_EXCLUDES = ("state/*.log",)
+# Preserve the byte identity of imported numeric evidence rather than applying
+# source-code whitespace rules to immutable stdout, SVG path formatting or
+# RFC4180 CRLF CSV rows. Also preserve two specifically identified historical
+# handoff/theory documents whose original signed payloads remain byte-locked.
+# This is a CLOSED list of paths from the observed PR #88 CI failure, not a
+# wildcard exemption for source, tests, scripts or ordinary documentation.
+DEFAULT_EXCLUDES = (
+    "state/*.log",
+    "docs/continuation-20260930/screen-evidence/final-cargo-test.log",
+    "docs/rec_research/REC-PB02-20261004/coding/FULL_CRATE_TEST_LOG.txt",
+    "docs/rec_research/REC-PB02-20261004/coding/TARGETED_TEST_LOG.txt",
+    "docs/rec_research/REC-PB02-20261004/evidence/angular_sobolev_conditional.svg",
+    "docs/rec_research/REC-PB02-20261004/theory_reference/PB02_SOURCE_BOUND_THEORY_KO.md",
+    "research/rec_bg_r9_20261014/handoff/CODEX_HANDOFF_KO.md",
+    "research/rec_r10_c8_20261015/C8_LOG_INTERVAL_COMPARISON.csv",
+    "research/rec_r10_c8_20261015/C8_REFINEMENT.csv",
+    "research/rec_c9_optim_20261015/XACT_STDOUT.txt",
+    "research/rec_c9_optim_20261015/REPORT_KO.md",
+)
 
 
 def _git(repo: Path, *arguments: str) -> subprocess.CompletedProcess[str]:

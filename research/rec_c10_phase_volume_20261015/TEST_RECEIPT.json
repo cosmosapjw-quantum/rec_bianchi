@@ -1,0 +1,104 @@
+{
+  "schema": "rec.c10.execution_receipt.v1",
+  "observed_kst": "2026-10-15T09:28:39.875332+09:00",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "source_head_parent": "72316baef363930fda109b3a9beeaf6aa39dbd9c",
+  "code_paths": {
+    "src/full_bianchi_hyrec/trajectory/axisymmetric_phase_space.py": {
+      "sha256": "da2c5cc9cf945a03f1b7a99c1c6426604b1cc6e63e7568f41407708e94c82885",
+      "bytes": 6114
+    },
+    "src/full_bianchi_hyrec/trajectory/__init__.py": {
+      "sha256": "d4d79ebbbe2987ebef1cb551d29703022a3f061888ce18c4faaed38a8d73e674",
+      "bytes": 10182
+    },
+    "tests/trajectory/test_axisymmetric_phase_volume_c10.py": {
+      "sha256": "f20e57ac485e5b96b5929207fd05bdcbeb1c16ddb0243125bf8860c11d3aa32e",
+      "bytes": 5440
+    },
+    "scripts/measure_phase_volume_c10.py": {
+      "sha256": "ab8bb0042383e8788dac00beba31650c262e304ca9ac5b26a2094ee2a9e600c8",
+      "bytes": 8213
+    },
+    "scripts/plot_phase_volume_c10.py": {
+      "sha256": "d962315ec238996127472d6d5e3b135dfd19a6f8728f422d20a300fe0b427e0e",
+      "bytes": 1435
+    },
+    "scripts/check_commit_range_whitespace.py": {
+      "sha256": "23fba53dcc1e098c3645ab9d04d93c961cda48577e4dac9f08aa5499d9c234b0",
+      "bytes": 5943
+    },
+    "tests/test_commit_range_whitespace_policy.py": {
+      "sha256": "9e53d1e69053c061f72f792bb22fe5738f73970803ebf33651299018f33e3b9b",
+      "bytes": 4211
+    },
+    "research/rec_c10_phase_volume_20261015/REPORT_KO.md": {
+      "sha256": "5d82a95edaff846510ee900eb2b1e30a2fd095c8f8f09de16629cdfde9eb2c98",
+      "bytes": 10019
+    },
+    "research/rec_c10_phase_volume_20261015/PHASE_SPACE_MEASUREMENTS_V3.json": {
+      "sha256": "d29eefb8c3404d7d52af11085144ca3766862079ab0a831bd23fd06abf7ab444",
+      "bytes": 6949
+    },
+    "research/rec_c10_phase_volume_20261015/C10_ENERGY_SHEAR_PARITY.png": {
+      "sha256": "013e96c726429cc62a1155a5e615b26dee9100402d50889651307cc39b859f03",
+      "bytes": 104190
+    },
+    "research/rec_c10_phase_volume_20261015/verify_phase_volume_xact.wl": {
+      "sha256": "381b4d324ebd1c149dcdea88e34272f715e73a13f91bb6d1be77c8247b9edfe1",
+      "bytes": 1343
+    },
+    "research/rec_c10_phase_volume_20261015/XACT_RESULT.json": {
+      "sha256": "6f983297012d8f04505d077e7a2364ef5a77ccce5c6e1d5bb7bbf25b25ffc7ac",
+      "bytes": 498
+    }
+  },
+  "targeted": {
+    "exit": 0,
+    "summary": "22 passed in 1.98s"
+  },
+  "full": {
+    "exit": 0,
+    "summary": "421 passed, 37 skipped in 52.72s",
+    "stdout_sha256": "3c36de0ffc21ec8c2b30e0e8e0ed4040ee71796b5f8f7e9179a777fc29f40892"
+  },
+  "quick": {
+    "exit": 0,
+    "status": "PASS"
+  },
+  "py_compile": {
+    "exit": 0
+  },
+  "wolfram_cloud": {
+    "2nd_series_coeff": "8/5",
+    "3rd": "16/21",
+    "4th": "8/35",
+    "jacobian_residual": "0",
+    "cubic_phase_residual": "0"
+  },
+  "wolfram_local_xact": {
+    "WolframVersion": "15.0.0 for Linux x86 (64-bit) (May 26, 2026)",
+    "xTensorVersion": "{\"1.3.0\", {2025, 12, 29}}",
+    "signature": "-+++",
+    "results": [
+      "geodesic_Killing_momentum_conditional_symmetrization",
+      "photon_number_current_product_rule",
+      "photon_energy_current_product_rule"
+    ],
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ],
+    "all_exact_zero": true,
+    "qualifier": "Killing conservation requires geodesic kk and Killing zz; current product rules alone do not prove collision integrals vanish."
+  },
+  "data_sha256": "d29eefb8c3404d7d52af11085144ca3766862079ab0a831bd23fd06abf7ab444",
+  "original_bad_benchmark": "source_integral_recomputed_per_one_shot_call, performance slower than precomputed scalar; fixed with prepared provider",
+  "original_script_print_error": "KeyError actual_speedup due renamed benchmark field, fixed rerun as V3; V2 retained privately",
+  "method_identity": "rec_lrs_bi_killing_phase_volume_v1",
+  "native_subagents": "NOT_RUN_NO_NATIVE_DELEGATION",
+  "local_codex": "NOT_USED",
+  "native_REI_solver_starts_by_this_loop": 0
+}

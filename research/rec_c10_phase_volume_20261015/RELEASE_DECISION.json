@@ -1,0 +1,197 @@
+{
+  "schema": "rec.c10.scoped_release.v1",
+  "observed_kst": "2026-10-15T09:28:39.875332+09:00",
+  "parent_commit": "72316baef363930fda109b3a9beeaf6aa39dbd9c",
+  "selected_stages": [
+    "NEW_R1_THEORY_PHOTON_NUMBER_ENERGY_LEDGER",
+    "C10_CODING_RELEASE"
+  ],
+  "component_release": "SCOPED_READY_FOR_PEER_REVIEW",
+  "native_production": "HOLD_NOT_ADMITTED",
+  "github_ci": "LOCAL_QUICK_PASS_NEW_PR_PENDING",
+  "claims": {
+    "source_free_killing_map": "ANALYTIC_AND_EXECUTED",
+    "phase_volume_number_identity": "WOLFRAM_SYMBOLIC_AND_5_CASE_NUMERIC",
+    "isotropic_initial_energy_quadrupolar_response": "WOLFRAM_4TH_ORDER_AND_75_DIGIT_QUADRATURE",
+    "new_prepared_benchmark": "MEASURED_ACTUAL_LOCAL_CPU_NO_RUST",
+    "full_GAS_PHOTON_SOURCE_CONSERVATION": "NOT_RUN",
+    "rei_AX08_AX11_AX12": "OWNER_PENDING",
+    "observer_photon_optical_depth": "NOT_RUN"
+  },
+  "tests": {
+    "selected": "22 passed",
+    "full": "421 passed,37 skipped",
+    "quick": "PASS",
+    "source_compile": "PASS",
+    "local_xAct": "3 exact zero residuals"
+  },
+  "known_ci_initial_failure": "historical original SVG CSV stdout and two source-handoff whitespace diagnostics; exact-path policy non-physics repair with original bytes preserved",
+  "current_integration_lock": "EXPLICIT_DRIVER_ADOPTION_NOT_AUTHORIZED",
+  "source_sha256": {
+    "src/full_bianchi_hyrec/trajectory/axisymmetric_phase_space.py": {
+      "sha256": "da2c5cc9cf945a03f1b7a99c1c6426604b1cc6e63e7568f41407708e94c82885",
+      "bytes": 6114
+    },
+    "src/full_bianchi_hyrec/trajectory/__init__.py": {
+      "sha256": "d4d79ebbbe2987ebef1cb551d29703022a3f061888ce18c4faaed38a8d73e674",
+      "bytes": 10182
+    },
+    "tests/trajectory/test_axisymmetric_phase_volume_c10.py": {
+      "sha256": "f20e57ac485e5b96b5929207fd05bdcbeb1c16ddb0243125bf8860c11d3aa32e",
+      "bytes": 5440
+    },
+    "scripts/measure_phase_volume_c10.py": {
+      "sha256": "ab8bb0042383e8788dac00beba31650c262e304ca9ac5b26a2094ee2a9e600c8",
+      "bytes": 8213
+    },
+    "scripts/plot_phase_volume_c10.py": {
+      "sha256": "d962315ec238996127472d6d5e3b135dfd19a6f8728f422d20a300fe0b427e0e",
+      "bytes": 1435
+    },
+    "scripts/check_commit_range_whitespace.py": {
+      "sha256": "23fba53dcc1e098c3645ab9d04d93c961cda48577e4dac9f08aa5499d9c234b0",
+      "bytes": 5943
+    },
+    "tests/test_commit_range_whitespace_policy.py": {
+      "sha256": "9e53d1e69053c061f72f792bb22fe5738f73970803ebf33651299018f33e3b9b",
+      "bytes": 4211
+    },
+    "research/rec_c10_phase_volume_20261015/REPORT_KO.md": {
+      "sha256": "5d82a95edaff846510ee900eb2b1e30a2fd095c8f8f09de16629cdfde9eb2c98",
+      "bytes": 10019
+    },
+    "research/rec_c10_phase_volume_20261015/PHASE_SPACE_MEASUREMENTS_V3.json": {
+      "sha256": "d29eefb8c3404d7d52af11085144ca3766862079ab0a831bd23fd06abf7ab444",
+      "bytes": 6949
+    },
+    "research/rec_c10_phase_volume_20261015/C10_ENERGY_SHEAR_PARITY.png": {
+      "sha256": "013e96c726429cc62a1155a5e615b26dee9100402d50889651307cc39b859f03",
+      "bytes": 104190
+    },
+    "research/rec_c10_phase_volume_20261015/verify_phase_volume_xact.wl": {
+      "sha256": "381b4d324ebd1c149dcdea88e34272f715e73a13f91bb6d1be77c8247b9edfe1",
+      "bytes": 1343
+    },
+    "research/rec_c10_phase_volume_20261015/XACT_RESULT.json": {
+      "sha256": "6f983297012d8f04505d077e7a2364ef5a77ccce5c6e1d5bb7bbf25b25ffc7ac",
+      "bytes": 498
+    }
+  },
+  "physical_scope": "Prescribed normal-comoving LRS Bianchi-I, collisionless null ray and independent isotropic-initial distribution moment; no production atom/radiation coupling.",
+  "benchmarks": [
+    {
+      "nrays": 64,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 3.750005271285772e-05,
+        "samples_s": [
+          4.538591019809246e-05,
+          3.750005271285772e-05,
+          3.679899964481592e-05,
+          4.3612089939415455e-05,
+          3.685895353555679e-05
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 6.938097067177296e-05,
+        "samples_s": [
+          8.278607856482267e-05,
+          6.938097067177296e-05,
+          7.21360556781292e-05,
+          6.833905354142189e-05,
+          6.609491538256407e-05
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.005077281966805458,
+        "samples_s": [
+          0.005069556995294988,
+          0.005075577995739877,
+          0.005112637998536229,
+          0.005077281966805458,
+          0.005081258015707135
+        ]
+      },
+      "prepared_speedup_vs_scalar": 0.5404947833644866,
+      "prepared_speedup_vs_cold": 73.17974824574061,
+      "max_relative_difference": 5.551115123125783e-16
+    },
+    {
+      "nrays": 1024,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 0.0005560179706662893,
+        "samples_s": [
+          0.0005693939747288823,
+          0.0005560179706662893,
+          0.0005449270829558372,
+          0.0005628109211102128,
+          0.0005405090050771832
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 0.00013551500160247087,
+        "samples_s": [
+          0.00018499803263694048,
+          0.0001391019904986024,
+          0.00013422302436083555,
+          0.00013551500160247087,
+          0.00013254000805318356
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.005231902003288269,
+        "samples_s": [
+          0.005573656992055476,
+          0.005230139009654522,
+          0.005429416080005467,
+          0.005231902003288269,
+          0.005116234999150038
+        ]
+      },
+      "prepared_speedup_vs_scalar": 4.102999402954302,
+      "prepared_speedup_vs_cold": 38.60754854754674,
+      "max_relative_difference": 8.881784197001252e-16
+    },
+    {
+      "nrays": 8192,
+      "source_prepare_once_s": 0.0051836519269272685,
+      "scalar_prepared": {
+        "median_s": 0.004671065951697528,
+        "samples_s": [
+          0.004607795970514417,
+          0.005261959042400122,
+          0.0046202599769458175,
+          0.00488868507090956,
+          0.004671065951697528
+        ]
+      },
+      "vector_prepared": {
+        "median_s": 0.0013845700304955244,
+        "samples_s": [
+          0.0015310259768739343,
+          0.0015200460329651833,
+          0.0013845700304955244,
+          0.001358240027911961,
+          0.0012881580041721463
+        ]
+      },
+      "vector_cold": {
+        "median_s": 0.006572950980626047,
+        "samples_s": [
+          0.006572950980626047,
+          0.006533817038871348,
+          0.006615772028453648,
+          0.00663317390717566,
+          0.006517805973999202
+        ]
+      },
+      "prepared_speedup_vs_scalar": 3.3736581384950233,
+      "prepared_speedup_vs_cold": 4.747286764739267,
+      "max_relative_difference": 1.1102230246251565e-15
+    }
+  ],
+  "next_theory_R2": "Map actual REI SOURCE07/covariant photon/cohort H+He energy and number source IDs, clock, frequency bins, angular quadrature, ray identity and source-age to conservative phase-volume control. Require original source bytes before bridge.",
+  "no_further_automatic_C_stages": true,
+  "external_independent_peer_review": "NOT_RUN"
+}
