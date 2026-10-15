@@ -1,0 +1,88 @@
+{
+  "schema": "rec.r3e.full_history_source_trajectory_receipt.v1",
+  "date_kst": "2026-10-15",
+  "authority": {
+    "parent_commit": "a76cf0f3044f4946ee4a6c3eb1c9beec3405aee6",
+    "original_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "source_native_dlna": 0.0000849,
+    "source_C_archive": "HyRec_Oct2012.zip"
+  },
+  "physics": {
+    "metric_signature": "-+++",
+    "background": "FLRW q0 hydrogen only helium neutral",
+    "temporal_initial_conditions": {
+      "z_start": 900,
+      "x_HII": 0.04,
+      "Tm_over_Tgamma": 0.98,
+      "photon_distortion_prestart": "ZERO_SYNTHETIC"
+    },
+    "integrator": "explicit Euler x_HII; implicit Compton+adiabatic Tm; 2-real+311 virtual original C/Schur algebraic source",
+    "limitation": "NOT original H+He production full history or CMB observable",
+    "comparison_type": "Each C and Python history self-evolved, neither fed xe or photon outputs from the other",
+    "shared_quantities": "Background H,nH and thermal update law shared by design"
+  },
+  "local_evidence": {
+    "environment": "owner-PC Ubuntu 24.04 Python3.12 numpy2.4.2 scipy1.17.0 gcc",
+    "quick_tests": "488 PASS, 41 deselected, 50.48 s",
+    "case_33": {
+      "steps": 33,
+      "worst_relative_global": 4.2056406721019395e-13,
+      "relative_by_field": {
+        "x_HII": 5.0306980803327406e-15,
+        "Tm_K": 3.706118007306597e-16,
+        "dx_dln_a": 1.747344878335602e-13,
+        "virtual_out": 4.2056406721019395e-13,
+        "lyman_out": 2.276789170890947e-13
+      }
+    },
+    "case_129": {
+      "steps": 129,
+      "worst_relative_global": 6.076757312080765e-13,
+      "relative_by_field": {
+        "x_HII": 1.8474805019152996e-14,
+        "Tm_K": 5.559177010959895e-16,
+        "dx_dln_a": 1.9792880233216484e-13,
+        "virtual_out": 6.076757312080765e-13,
+        "lyman_out": 2.8281990482160983e-13
+      }
+    },
+    "test_scope": "source-native bounded independent histories only",
+    "source_code_identity_check_at_published_head": "NOT_RERUN_AFTER_GITHUB_CONNECTOR_RECONSTRUCTION"
+  },
+  "wolfram": {
+    "kernel": "WolframLanguageEvaluator",
+    "result": "thermal BE positivity and cap, Euler HII admissibility for positive/negative rates: four symbolic checks True"
+  },
+  "ncp": {
+    "host": "s1a0e5abed09",
+    "ssh": "CONNECTED_READONLY_PRECHECK",
+    "cpu_affinity": 64,
+    "memory_available_approx_GiB": 122,
+    "rustc": "1.99.0",
+    "cargo": "1.99.0",
+    "numpy_scipy": "NOT_INSTALLED_DEFAULT_PYTHON",
+    "science_compute": "NOT_RUN",
+    "blocker": "Desktop Commander reached monthly usage cap; remote NCP environment mutation attempted but blocked. Avoid retry/reconnect until quota reset."
+  },
+  "cross_repo": {
+    "rei_branch": "research/flrw-production-integration-20261015",
+    "latest_observed_rei_pr150_head": "c578683d995d375dbfc824cb080cb6b576d19348",
+    "rei_donor_config_git_blob": "d9dcdbb4b33ebfe89f6c1322cba2a83a7bab15a6",
+    "rei_mutation": false,
+    "donor_ic_adoption": false
+  },
+  "publication": {
+    "new_GitHub_branch": "research/rec-r3e-native-history-parity-20261015",
+    "remote_files": "C wrapper, Python independent trajectory comparator and regression tests",
+    "remote_commit_test_run": "NOT_RUN",
+    "local_dirty_checkout": "Isolated worktree /home/cosmosapjw/rec_theory_runs/REC_R3E_NATIVE_HISTORY_20261015/checkout still has uncommitted source and logs. Protect before pulling remote branch.",
+    "native_subagents": "NOT_RUN_TOOL_ABSENT"
+  },
+  "open_tasks": [
+    "Use source-native real photon prehistory rather than artificial pre-z900 thermal distortion",
+    "Integrate original 2012 full H+He with exact production time scheme and independently reconstruct Python",
+    "REI isolated q0 native initial-condition sensitivity and charge/heat/opacity ledgers after PR150 transport gate",
+    "NCP 64CPU/128GB scientific benchmark and dual Dropbox+Drive backups when host access restored"
+  ],
+  "claim_gate": "SCOPED_LOCAL_IMPLEMENTATION_VERIFIED_NCP_EXECUTION_BLOCKED_BACKUP_PARTIAL"
+}
