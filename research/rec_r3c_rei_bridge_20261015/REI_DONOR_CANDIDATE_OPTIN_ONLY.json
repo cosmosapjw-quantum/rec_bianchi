@@ -1,0 +1,38 @@
+{
+  "activation": "DISABLED_REQUIRES_SEPARATE_REI_SENSITIVITY_CAMPAIGN",
+  "adopted_into_original_REI_scenario": false,
+  "candidate_initial_gas": {
+    "Tgas_K": 9.306042400380866,
+    "electron_fraction_xe_per_H": 0.000210349192936,
+    "x_HII": 0.000210349192936,
+    "x_HeII": 0.0,
+    "x_HeIII": 0.0
+  },
+  "clock": "zbar=20 reference slice; NOT proper time since z=20",
+  "model": "ORIGINAL_HYREC_2012_FULL_H_HE_FLRW_Q0_CONDITIONAL",
+  "original_REI_gas_initial": {
+    "Tgas_K": 8.098143045064857,
+    "x_HII": 0.0002,
+    "x_HeII": 0.0,
+    "x_HeIII": 0.0
+  },
+  "provenance_sha256": "108cfb276507642c062db179cdb43e28a8e1421d4a7946d9077fe56cd47d9599",
+  "requirements_before_USE": [
+    "Create isolated REI sensitivity branch/run with fresh physical zbar20 initial point and identical MD14/BB50K source; do not resume baseline checkpoints",
+    "Preserve exact original scenario unchanged and compare paired q0 and signed-q families only as conditional initial-value sensitivity",
+    "Compute native gas species/charge/energy ledgers, BBN-style plots and milestone differences, and absolute solver error before any claim of observed or fitted effect",
+    "Do not interpret q!=0 case as a physically evolved primordial anisotropic recombination history"
+  ],
+  "schema": "rei.conditional.primordial_donor_candidate.v1",
+  "scientific_state": "COMPARISON_PACKET_NOT_DERIVED_BIANCHI_PRIMORDIAL_HISTORY",
+  "source_conversion": {
+    "fHe_REI": 0.08130135170951498,
+    "fHe_source": 0.08188416223421702,
+    "nH_source_vs_REI_fractional": -0.00054115419996148
+  },
+  "source_physics": "reference primordial recombination only; no astrophysical prehistory",
+  "source_rec_full_C_stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+  "source_rei_goal": "REI-AXBI-GOAL-20261014",
+  "source_rei_scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696",
+  "unchanged_initial_ionizing_photons": "EXACT_ZERO_CONDITIONAL_REI_ASTROPHYSICAL_SOURCE_ONSET"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "rec.r3c.rei_native_reference.tests.v1",
+  "source_parent_commit": "2c4627bf480a306f34bb35d0ec5a3d18182b170e",
+  "original_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "recipient_scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696",
+  "commands": [
+    "PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/run_rei_primordial_source_intake.py --scenario /home/cosmosapjw/Dropbox/bianchi/rei_bianchi/research/axbi_goal_20261014/scenario/SCENARIO_LOCK.json --output-dir research/rec_r3c_rei_bridge_20261015",
+    "PYTHONPATH=src python3 scripts/export_rei_conditional_donor.py --scenario /home/cosmosapjw/Dropbox/bianchi/rei_bianchi/research/axbi_goal_20261014/scenario/SCENARIO_LOCK.json --source research/rec_r3c_rei_bridge_20261015/REI_CONDITIONAL_BOUNDARY.json --output research/rec_r3c_rei_bridge_20261015/REI_DONOR_CANDIDATE_OPTIN_ONLY.json",
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest tests/trajectory/test_rei_initial_boundary.py -q --run-slow --tb=short",
+    "PYTHONPATH=src:scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q --tb=short"
+  ],
+  "receipt": {
+    "original_native_source_build_exit": 0,
+    "original_full_native_H_He_cases": 3,
+    "native_full_output_rows_per_case": 8001,
+    "source_R3c_reference_stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+    "serial_two_worker_sha_match": true,
+    "native_C_parallel_speedup_over_serial_sum": 1.4437711195198006,
+    "numpy_receiver_postprocessing_speedup": 29.876425549717474,
+    "numpy_scalar_max_scaled_rel": 3.922037280885353e-16,
+    "isolated_source_compile": "GCC_C99_O3_NO_FAST_MATH",
+    "recombination_reference_status": "ACTUAL_ORIGINAL_HYREC_NATIVE_FULL_Q0_AT_MATCHED_REI_BACKGROUND",
+    "REI_donor_adoption": "NO",
+    "targeted_pytest": {
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0,
+      "slow_enabled": true
+    },
+    "full_pytest": {
+      "exit_code": 0,
+      "passed": 474,
+      "skipped": 41,
+      "failed": 0,
+      "duration_s": 52.78
+    },
+    "wolfram": {
+      "status": "PASS",
+      "result": "h>0&&s<-h/Sqrt[3]",
+      "meaning": "formal H_parallel<0 in backward-extrapolated negative q only"
+    },
+    "quick_repository_gate": "PASS_BOUNDED_NO_GO_DYNAMIC_ATOMIC_MACRO_OWNERSHIP_OVERLAP_SPLIT_DOMAIN_REPLACEMENT_REQUIRED"
+  },
+  "no_native_rei_solver_executed": true,
+  "stop_scope": "Source-matched q0 donor is a conditional REI IC experiment, not a verified REI physical result."
+}
