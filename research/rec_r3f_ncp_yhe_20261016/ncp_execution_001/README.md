@@ -13,6 +13,6 @@ The 13,652,738-byte raw return archive contains the source capsule, all baseline
 - Dropbox `dbx:bianchi/rec_bianchi/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz` (ID `id:BSpOijBcT10AAAAAAD9ExQ`).
 - Google Drive `gdrv:rec_bianchi_research_backups/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz` (ID `1gqqeirpKr3urmVl8gDn-AMaZCihDE_5q`).
 
-The raw archive is kept outside Git; tracked files here are the science summary, SHA manifest, comparison receipt, logs, and plots. The SHA manifest paths refer to the raw archive result tree. `RUN.json` and the CSVs are exact copies from that tree. The two PNGs were generated from the verified derivative CSV after retrieval.
+The raw archive is kept outside Git; tracked files here are the science summary, SHA manifest, comparison receipt, logs, and plots. The SHA manifest paths refer to the raw archive result tree. `RUN.json` is an exact copy. The two tracked CSVs have LF line endings for the repository whitespace gate; parsed rows and every value exactly match the archived CRLF originals. The two PNGs were generated from the verified derivative CSV after retrieval.
 
 **Claim boundary:** this is only the original HyRec October 2012 native C FULL H+He `q=0` FLRW input sensitivity to `YHe`. It does not establish an independent Python FULL history, self-consistent high-redshift Bianchi recombination, reionization optical-depth change, or a CMB observable. The next physical step is the independent Python FULL H+He history with the actual initial photon spectrum and species, compared against the original C production history.
