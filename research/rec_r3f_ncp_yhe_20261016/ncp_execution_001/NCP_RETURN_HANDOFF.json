@@ -1,0 +1,57 @@
+{
+  "backups": {
+    "dropbox": {
+      "id": "id:BSpOijBcT10AAAAAAD9ExQ",
+      "path": "dbx:bianchi/rec_bianchi/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz",
+      "readback_sha256": "61fa9a431bbbb811a1f928505ef9ed76f6fc396cc2a3953586becc21aaa41b83",
+      "readback_size_bytes": 13652738
+    },
+    "google_drive": {
+      "id": "1gqqeirpKr3urmVl8gDn-AMaZCihDE_5q",
+      "path": "gdrv:rec_bianchi_research_backups/20261016/R3F_NCP_001/NCP_RETURN_001.tar.gz",
+      "readback_sha256": "61fa9a431bbbb811a1f928505ef9ed76f6fc396cc2a3953586becc21aaa41b83",
+      "readback_size_bytes": 13652738
+    }
+  },
+  "baseline_max_rel_Tm_over_Tr": 0.0,
+  "baseline_max_rel_xe": 0.0,
+  "binary_sha256": "3e9c734bd7850330b99857177bf1f18e15fcadd27fa9d9ac397072194c30a590",
+  "cases_expected": 97,
+  "cases_passed": 97,
+  "claim_limit": "Only original HyRec 2012 native C FULL H+He q=0 FLRW YHe input sensitivity; no independent Python FULL history, nonzero-q Bianchi, REI reionization, or CMB observable",
+  "created_utc": "2026-10-15T23:37:29.308983+00:00",
+  "draft_pr": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/98",
+  "evidence_branch": "research/rec-r3f-ncp-execution-evidence-20261016",
+  "evidence_commit": "6a78eb35019c4a24f88159ccdfa9834aa3a55fb9",
+  "evidence_tree": "98a90a369171d38ffef7a64ee9db32c65705410d",
+  "ncp_host": "s1a0e5abed09",
+  "ncp_task_namespace": "REC_R3F_FULL_HHE_YHE_20261016_001",
+  "next_minimal_physical_step": "Implement independent Python FULL H+He history with actual initial photon spectrum and species, then compare convergence against original C production history",
+  "raw_archive": {
+    "name": "NCP_RETURN_001.tar.gz",
+    "sha256": "61fa9a431bbbb811a1f928505ef9ed76f6fc396cc2a3953586becc21aaa41b83",
+    "size_bytes": 13652738
+  },
+  "remaining_verifier_improvement": "Reusable verifier does not recompute Richardson CSV from retained RUN curves; independent one-time review recomputed all 1581 rows exactly.",
+  "resource_summary": {
+    "aggregate_native_C_peak_rss": "NOT_MEASURED",
+    "available_ram_preflight_bytes": 132024684544,
+    "cpu_affinity": 64,
+    "gnu_time_max_rss_kib_command_scope": 78316,
+    "minimum_sampled_available_ram_bytes": 128997715968,
+    "per_case_address_limit_GiB": 2,
+    "per_case_wall_limit_s": 120,
+    "workers": 48
+  },
+  "schema": "rec.r3f.ncp_return_handoff.v1",
+  "science_gate": "PASS_SCOPED_ORIGINAL_HYREC_FULL_Q0_YHE_ONLY",
+  "source_base_commit": "9fed68682c7083c54f245e76d6c86f3eae040136",
+  "source_capsule_sha256": "f2d8a126b71e47f774aa4d6c86a8ffc2cf8809aa84a95e8a6dce9edaef6aa4ec",
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "tests": {
+    "full_non_slow": "492 passed, 2 skipped, 42 deselected",
+    "local49_overlap": "49 stdout SHA matches and 1581 derivative rows exactly match",
+    "ncp_postrun_verifier": "PASS 97/97",
+    "original_C_smoke": "PASS 7/7"
+  }
+}
