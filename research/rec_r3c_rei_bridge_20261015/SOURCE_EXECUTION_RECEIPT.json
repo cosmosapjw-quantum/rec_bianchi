@@ -1,0 +1,91 @@
+{
+  "all_three_source_case_shas_match": [
+    true,
+    true,
+    true
+  ],
+  "compiled_original_binary_sha256": "3e9c734bd7850330b99857177bf1f18e15fcadd27fa9d9ac397072194c30a590",
+  "complete_self_evolved_REC_FULL_History": "NOT_COMPUTED",
+  "derived_observables_vectorization": {
+    "comparison": "same float64 background/thermal/electron observables",
+    "max_rel_difference": 3.922037280885353e-16,
+    "numpy_vector_s": 8.389701906708069e-05,
+    "rows": 1581,
+    "scalar_s": 0.0025065430440008637,
+    "scope": "native C source evolution NOT included",
+    "speedup_postprocess_only": 29.876425549717474
+  },
+  "matched_massless_Neff": 3.03821934419124,
+  "matched_rad_h2": 4.1793392000000004e-05,
+  "native_C_output_rows": 8001,
+  "native_C_stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+  "no_REI_production_change": true,
+  "no_local_codex": true,
+  "raw_original_C_build_command": [
+    "gcc",
+    "-std=gnu99",
+    "-O3",
+    "-fno-fast-math",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/HyRec/hyrec.c",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/HyRec/history.c",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/HyRec/hydrogen.c",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/HyRec/helium.c",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/HyRec/hyrectools.c",
+    "-lm",
+    "-o",
+    "/tmp/rec_rei_orig_hyrec_4jrkx0jg/hyrec_original_rei_matched"
+  ],
+  "raw_output_gzip_sha256": "cfd1a7293431e4410e7ec597acc793d6b56e2d1f4eb5cd13ed3f48aaef4e26fb",
+  "scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696",
+  "schema": "rec.rei.native_source_execution.v1",
+  "scientific_admission": "REI_CONDITIONAL_IC_COMPARISON_ONLY",
+  "serial_sum_wall_s": 1.3762363909045234,
+  "source_inputs": {
+    "N_eff_massless_equivalent": 3.03821934419124,
+    "T0_K": 2.7255,
+    "YHe": 0.2454,
+    "fsR": 1.0,
+    "meR": 1.0,
+    "omega_b_h2": 0.0224,
+    "omega_cb_h2": 0.14309694000000003,
+    "omega_k_h2": 0.0,
+    "omega_lambda_h2": 0.31113726660800006,
+    "w0": -1.0,
+    "wa": 0.0
+  },
+  "source_variants": [
+    {
+      "Tgas_K_z20": 9.306042400380866,
+      "YHe_mass": 0.2454,
+      "input_sha256": "b88ee10ad9614689d9deffef519e7e43e40e209128a7bbe85dfe39078599450a",
+      "label": "REI_MATCHED_CENTRAL",
+      "stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+      "wall_s": 0.4670446799136698,
+      "x_e_z20": 0.000210349192936
+    },
+    {
+      "Tgas_K_z20": 9.29995268899975,
+      "YHe_mass": 0.2434,
+      "input_sha256": "48235e23d1ec18613e8f19419f1118ff2a77e18c28d9b715cb348108764b7ad3",
+      "label": "Y_HE_MINUS_0P002",
+      "stdout_sha256": "ccf7772c2130622a50990486b7f2d74947aaec7cb0a7c8aac630946c79905bcd",
+      "wall_s": 0.4444643600145355,
+      "x_e_z20": 0.000209769508896
+    },
+    {
+      "Tgas_K_z20": 9.312146756008397,
+      "YHe_mass": 0.2474,
+      "input_sha256": "dfd73e74ffb879b1682348ebc7777bb0cc87206c837ab591659789bad2454f54",
+      "label": "Y_HE_PLUS_0P002",
+      "stdout_sha256": "d27268ea3bf7c63783b7a3feee8c4cc0bbe05f5b761095cd859dff12444ca002",
+      "wall_s": 0.4647273509763181,
+      "x_e_z20": 0.000210931960942
+    }
+  ],
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "PASS_SCOPED_NATIVE_C_REFERENCE_AND_CONDITIONAL_REI_BOUNDARY",
+  "target_ic_consistency": "FLRW H(z) exactly density matched in nominal source convention; slight nH0 and fHe normalization differences explicitly disclosed",
+  "two_worker_parallel_bit_identical": true,
+  "two_worker_speedup_vs_sum": 1.4437711195198006,
+  "two_worker_total_wall_s": 0.9532233830541372
+}
