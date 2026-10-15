@@ -119,7 +119,7 @@ python3 scripts/verify_r3f_result.py \
 
 ## 단계 D: 결과 회수·이중 백업·GitHub 게시
 
-NCP에서 새 `NCP_RETURN_001.tar.gz`를 create-only로 생성한다. Source immutable ZIP과 science results/log, `REI_BRIDGE_CONTRACT` 관련 문서, manifest 및 실제 host/command/clock/CPU/메모리 설명을 포함한다. archiving 대상에 비밀키·환경 변수 원문·다른 task의 source·checkpoint가 포함되면 중단한다. 소유자 PC로 `scp` 후 로컬과 NCP archive hash 비교. 
+NCP에서 새 `NCP_RETURN_001.tar.gz`를 create-only로 생성한다. Source immutable ZIP과 science results/log, `REI_BRIDGE_CONTRACT` 관련 문서, manifest 및 실제 host/command/clock/CPU/메모리 설명을 포함한다. archiving 대상에 비밀키·환경 변수 원문·다른 task의 source·checkpoint가 포함되면 중단한다. 소유자 PC로 `scp` 후 로컬과 NCP archive hash 비교.
 
 - Dropbox: `dbx:bianchi/rec_bianchi/20261016/R3F_NCP_001/` (create-only)
 - Google Drive: `gdrv:rec_bianchi_research_backups/20261016/R3F_NCP_001/` (create-only)
@@ -130,7 +130,7 @@ NCP에서 새 `NCP_RETURN_001.tar.gz`를 create-only로 생성한다. Source imm
 
 ## 성공/실패 기준과 후속 원 연구
 
-성공: 97개 original-C source run PASS; baseline original raw C science-equivalent ≤1e-9 (가능하면 byte-identical, 단 byte mismatch만으로 물리 FAIL 단정 금지); 8,001행×97, serial/parallel control byte parity; 1,581행 민감도 CSV와 불변식 검증; 두 원격 백업의 hash/size verified; PR에 실제 증거 게시. 실패/부분 실행은 완전한 error traceback, hash, 상태, 후속 최소 조치를 반환한다. 
+성공: 97개 original-C source run PASS; baseline original raw C science-equivalent ≤1e-9 (가능하면 byte-identical, 단 byte mismatch만으로 물리 FAIL 단정 금지); 8,001행×97, serial/parallel control byte parity; 1,581행 민감도 CSV와 불변식 검증; 두 원격 백업의 hash/size verified; PR에 실제 증거 게시. 실패/부분 실행은 완전한 error traceback, hash, 상태, 후속 최소 조치를 반환한다.
 
 이 실험을 REI CMB 광학깊이 예측으로 승격하지 않는다. 다음 물리 코드 목표는 **실제 초기 photon spectrum 및 H+He species를 가진 독립 Python HyRec FULL 적분의 원본 C production history convergence**, 그다음 사용자 승인된 고-z Bianchi 동역학과 `rei_bianchi`의 fresh q0 initial-condition 민감도 검사다.
 
