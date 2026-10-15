@@ -2,11 +2,16 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
+
+# CI invokes bare `pytest -q`; scripts/ is intentionally not an installed package.
+# Bind the exact repository scripts directory for this source-oracle test only.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
 import numpy as np
 import pytest
 
-from scripts.verify_r3e_native_integrated import (
+from verify_r3e_native_integrated import (
     ARCHIVE, ORIGINAL_SHA, _c_row_views,
     compile_unmodified_native, paired_full_history_case, run_one,
 )
@@ -52,7 +57,7 @@ def test_source_step_shape_thermo_domain_and_native_full_history(tmp_path):
 
 
 def test_source_hash_guard_disallows_unauthorized_replacement(tmp_path,monkeypatch):
-    from scripts import verify_r3e_native_integrated as module
+    import verify_r3e_native_integrated as module
     counterfeit=tmp_path/"counterfeit.zip"
     counterfeit.write_bytes(b"untrusted C source")
     monkeypatch.setattr(module,"ARCHIVE",counterfeit)
