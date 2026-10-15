@@ -53,7 +53,7 @@ x_e=2.10349192936\times10^{-4},\quad T_m=9.306042400380866\;{\rm K},
 
 전체 \(20\le z\le1600\)에서 \(\partial_Y\ln n_e\)는 \(z=142\)에서 \(+3.46374\times10^{-5}\), \(z=143\)에서 \(-2.12039\times10^{-4}\)로 부호가 바뀐다. 인접 정수 적색편이를 선형 보간하면 **\(z\approx142.1404\)**다. 이는 interpolation-derived 위치일 뿐 물리적인 영점 오차막대/추정 posterior가 아니다.
 
-**검증:** source raw stdout byte identity, 49개 native run 전부 finite 및 8,001-row/시계/도메인 검사, 7개 control serial·parallel stdout byte identity, 두 차분 스케일의 Richardson self-consistency, postrun independent result/manifest/invariant verifier PASS. 
+**검증:** source raw stdout byte identity, 49개 native run 전부 finite 및 8,001-row/시계/도메인 검사, 7개 control serial·parallel stdout byte identity, 두 차분 스케일의 Richardson self-consistency, postrun independent result/manifest/invariant verifier PASS.
 
 ## 4. NCP 실행 / 미실행 범위
 
