@@ -1,0 +1,229 @@
+{
+  "unit": "REC_HYREC_RECFAST_VALIDATION_20261015",
+  "stage": "SOURCE_BOUND_ATOMIC_HYREC_RELIABILITY_AND_PRIMORDIAL_REFERENCE_BASELINE",
+  "observed_kst": "2026-10-15T10:23:38.891500+09:00",
+  "parent_commit": "6fcf576c52dd198497b4fcd31268be4eb1e5131e",
+  "result_matrix": [
+    {
+      "claim": "original HyRec hydrogen effective rate primitives, native C vs REC Python",
+      "status": "SCOPED_PASS_NATIVE_C_PARITY",
+      "points": 60,
+      "max_rel": 1.3642420526593924e-12,
+      "source_native_zero_beta_points": 12
+    },
+    {
+      "claim": "matched FLRW source H(z), hydrogen nH(z) in source units",
+      "status": "SCOPED_PASS_TESTED"
+    },
+    {
+      "claim": "independent HyRec2012_FULL vs HyRec2_SWIFT and RECFAST1.7 x_e(z), T_m(z)",
+      "status": "REFERENCE_TO_REFERENCE_ONLY"
+    },
+    {
+      "claim": "fully coupled original-HyRec physics and REC itself recombination x_e(z), T_m(z)",
+      "status": "NOT_COMPUTED_NOT_ADMITTED"
+    },
+    {
+      "claim": "native REI signed q reionization abundance history plus source-angle photon ledger",
+      "status": "OWNER_IN_PROGRESS_NOT_ADMITTED"
+    }
+  ],
+  "source_identities": {
+    "HyRec_2012_FULL": {
+      "sha_source": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    "HyRec2_2020": {
+      "sha_source": "09e8243d0e08edd3603a94dfbc445ae06cafe139"
+    },
+    "RECFAST_1.7": {
+      "sha_source": "b34efc0f409050a980be5deca7d016a01bd13631"
+    }
+  },
+  "original_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "matched_cosmology": {
+    "h": 0.6735837,
+    "T0_K": 2.7255,
+    "Omega_b": 0.0494142797907188,
+    "Omega_cb": 0.31242079216478097,
+    "Y_He_mass_fraction": 0.245,
+    "N_eff_massless": 3.0,
+    "neutrino_mass_eV": 0.0,
+    "Omega_r_h2": 4.1578740068818545e-05,
+    "Omega_de_h2": 0.3119234221656212
+  },
+  "run_outputs": {
+    "HyRec2_2020": {
+      "code": "HyRec2_2020",
+      "command": [
+        "hyrec_ref"
+      ],
+      "process_returncode": 0,
+      "elapsed_seconds": 0.01040232798550278,
+      "stdin_sha256": "ee38f5f0e4da6f5313c8e310978b73b2c8b71c489d3dc8b43e5c0fa3142174b7",
+      "output_file": "HyRec2_2020/output_xe.dat",
+      "output_sha256": "33d2a5598a90ee11f8648933b669e1704c958f8646d0987fc8f7775431c0a9a8",
+      "output_size_bytes": 366893,
+      "output_rows": 8000,
+      "note": "HyRec2012 col3=Tm/(T0*(1+z)), HyRec2 col3=Tm[K], RECFAST only z,xe"
+    },
+    "HyRec_2012_FULL": {
+      "code": "HyRec_2012_FULL",
+      "command": [
+        "hyrec_ref"
+      ],
+      "process_returncode": 0,
+      "elapsed_seconds": 0.5241745309904218,
+      "stdin_sha256": "523eeef77af15c00404962afc0f63ff907897b6d7535ea782e46bd46538395b3",
+      "output_file": "HyRec_2012_FULL/STDOUT.log",
+      "output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "output_size_bytes": 336042,
+      "output_rows": 8001,
+      "note": "HyRec2012 col3=Tm/(T0*(1+z)), HyRec2 col3=Tm[K], RECFAST only z,xe"
+    },
+    "RECFAST_1.7": {
+      "code": "RECFAST_1.7",
+      "command": [
+        "recfast_ref"
+      ],
+      "process_returncode": 0,
+      "elapsed_seconds": 0.007052103988826275,
+      "stdin_sha256": "adee8944177082b740fd00279068ef3ce822a2b532b39eb91de81ee74ec1dbbb",
+      "output_file": "RECFAST_1.7/matched_recfast.out",
+      "output_sha256": "cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163",
+      "output_size_bytes": 36009,
+      "output_rows": 1001,
+      "note": "HyRec2012 col3=Tm/(T0*(1+z)), HyRec2 col3=Tm[K], RECFAST only z,xe"
+    }
+  },
+  "source_table_original_HyRec_Tr_eV": [
+    0.004,
+    0.4
+  ],
+  "source_table_z_at_T0": [
+    16.031030081159894,
+    1702.1030081159895
+  ],
+  "scientific_reference_results": {
+    "hydrogen::HyRec2_2020": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "HyRec2_2020",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "33d2a5598a90ee11f8648933b669e1704c958f8646d0987fc8f7775431c0a9a8",
+      "z_min": 600.0,
+      "z_max": 1600.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 101,
+      "maximum_abs_relative_xe_difference": 7.179584472815625e-05,
+      "signed_relative_difference_at_max": -7.179584472815625e-05,
+      "redshift_at_max": 750.0,
+      "max_relative_matter_temperature": {
+        "maximum_relative_difference": 0.00024459779809249405,
+        "redshift_at_max": 770.0
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    },
+    "hydrogen::RECFAST_1.7": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "RECFAST_1.7",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163",
+      "z_min": 600.0,
+      "z_max": 1600.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 101,
+      "maximum_abs_relative_xe_difference": 0.002598040381886885,
+      "signed_relative_difference_at_max": 0.002598040381886885,
+      "redshift_at_max": 600.0,
+      "max_relative_matter_temperature": {
+        "status": "NOT_AVAILABLE_UPSTREAM"
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    },
+    "helium::HyRec2_2020": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "HyRec2_2020",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "33d2a5598a90ee11f8648933b669e1704c958f8646d0987fc8f7775431c0a9a8",
+      "z_min": 1600.0,
+      "z_max": 3000.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 141,
+      "maximum_abs_relative_xe_difference": 1.616316309622039e-06,
+      "signed_relative_difference_at_max": 1.616316309622039e-06,
+      "redshift_at_max": 1730.0,
+      "max_relative_matter_temperature": {
+        "maximum_relative_difference": 7.463450968359098e-10,
+        "redshift_at_max": 1600.0
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    },
+    "helium::RECFAST_1.7": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "RECFAST_1.7",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163",
+      "z_min": 1600.0,
+      "z_max": 3000.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 141,
+      "maximum_abs_relative_xe_difference": 0.0026584881050328163,
+      "signed_relative_difference_at_max": -0.0026584881050328163,
+      "redshift_at_max": 1800.0,
+      "max_relative_matter_temperature": {
+        "status": "NOT_AVAILABLE_UPSTREAM"
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    },
+    "post_recombination_no_reionization::HyRec2_2020": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "HyRec2_2020",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "33d2a5598a90ee11f8648933b669e1704c958f8646d0987fc8f7775431c0a9a8",
+      "z_min": 20.0,
+      "z_max": 200.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 19,
+      "maximum_abs_relative_xe_difference": 1.9334742776247354e-05,
+      "signed_relative_difference_at_max": -1.9334742776247354e-05,
+      "redshift_at_max": 200.0,
+      "max_relative_matter_temperature": {
+        "maximum_relative_difference": 5.853124484866967e-06,
+        "redshift_at_max": 20.0
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    },
+    "post_recombination_no_reionization::RECFAST_1.7": {
+      "classification": "REFERENCE_TO_REFERENCE_ONLY_NOT_CURRENT_REC_SOLVER",
+      "reference": "HyRec_2012_FULL",
+      "candidate": "RECFAST_1.7",
+      "ref_output_sha256": "e772c8cdd19e20618a1f71c2104e542fbb7de287ecc8ee1c7ae06697af8bf906",
+      "candidate_output_sha256": "cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163",
+      "z_min": 20.0,
+      "z_max": 200.0,
+      "redshift_step": 10.0,
+      "n_comparisons": 19,
+      "maximum_abs_relative_xe_difference": 0.00831830966822027,
+      "signed_relative_difference_at_max": 0.00831830966822027,
+      "redshift_at_max": 20.0,
+      "max_relative_matter_temperature": {
+        "status": "NOT_AVAILABLE_UPSTREAM"
+      },
+      "scientific_admission": "REFERENCE_CODES_ONLY"
+    }
+  },
+  "flrw_xe_verdict": "NO_REC_SELF_CONSISTENT_XE_OBSERVED",
+  "physical_transition_q0_history_z": "primordial recombination z3000->600 with new source-specific FLRW background; old prescribed BianchiI z20->4 unchanged",
+  "local_codex_used": false,
+  "native_subagents": "NOT_RUN",
+  "new_native_REI_solver_runs": 0,
+  "execution_notes": [
+    "real upstream C full HyRec2012, C HYREC2 2020 SWIFT, and modern Fortran RECFAST1.7 compiled and run twice each with output byte SHA identity",
+    "cold rate beta0 underflow now accepted as nonnegative",
+    "both detailed-balance flux terms underflowing zero raises explicitly rather than false PASS"
+  ]
+}

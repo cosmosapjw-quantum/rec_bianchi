@@ -354,3 +354,24 @@ __all__.extend([
     "AxisymmetricPhaseVolumeMap",
     "axisymmetric_phase_space_map",
 ])
+
+from .recombination_reference import (
+    PrimordialReferenceHistory,
+    RecombinationReferenceKind,
+    compare_primordial_references,
+    original_hyrec_atomic_table_supported_redshift,
+    electron_fraction_from_species,
+    hyrec_source_equivalent_flrw_background,
+    hyrec_source_hubble_per_s,
+    hyrec_source_hydrogen_number_density_m3,
+)
+__all__.extend([
+    "PrimordialReferenceHistory",
+    "RecombinationReferenceKind",
+    "compare_primordial_references",
+    "original_hyrec_atomic_table_supported_redshift",
+    "electron_fraction_from_species",
+    "hyrec_source_equivalent_flrw_background",
+    "hyrec_source_hubble_per_s",
+    "hyrec_source_hydrogen_number_density_m3",
+])
