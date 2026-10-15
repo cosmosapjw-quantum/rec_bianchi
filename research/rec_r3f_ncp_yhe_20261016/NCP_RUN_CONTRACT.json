@@ -1,0 +1,49 @@
+{
+  "schema": "rec.r3f.ncp_run_contract.v1",
+  "date_kst": "2026-10-16",
+  "authority": {
+    "rec_parent_commit": "05e35be9f5788b3ea1708027f2c131ccd57985a5",
+    "source_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "source_native_oct2012_model": "FULL",
+    "original_rei_matched_C_stdout_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+    "rei_scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"
+  },
+  "science": {
+    "model": "original HyRec October 2012 FULL H+He FLRW q=0",
+    "varied_parameter": "helium mass fraction YHe",
+    "held_fixed": ["omega_b_h2", "omega_cb_h2", "omega_k_h2", "omega_lambda_h2", "T0_K", "N_eff_massless_equivalent", "w0", "wa", "original atomic rate tables"],
+    "YHe_baseline": 0.2454,
+    "YHe_step": 0.000125,
+    "YHe_indices": [-48, 48],
+    "YHe_range": [0.2394, 0.2514],
+    "redshift_rows_per_source_run": 8001,
+    "redshift_derivative_curve": [20, 1600],
+    "cannot_claim": ["REI native run", "nonzero Bianchi q primordial history", "independent H+He Python production parity", "observational likelihood", "full CMB observable"]
+  },
+  "ncp": {
+    "host_from_prior_observation": "s1a0e5abed09",
+    "actual_current_preflight_required": true,
+    "minimum_cpu_affinity_for_mode_ncp": 48,
+    "maximum_concurrent_native_C_cases": 48,
+    "maximum_total_requested_address_space_GiB": 112,
+    "per_C_process_address_space_GiB": 2,
+    "per_case_timeout_seconds": 120,
+    "source_stack": "Python 3.12 standard library + gcc + prlimit; Rust installed but not needed here",
+    "output_policy": "CREATE_ONLY_TASK_DIR_AND_NO_MUTATION_OF_REI_OR_OTHER_NCP_TASKS"
+  },
+  "acceptance": {
+    "source_zip_exact_sha": true,
+    "prior_reference_stdout_exact_sha_before_comparing": true,
+    "source_same_input_numeric_max_relative_xe_and_Tm": 1e-9,
+    "eight_thousand_one_complete_physical_rows": true,
+    "all_97_cases_successful": true,
+    "serial_parallel_source_stdout_byte_identical_for_controls": true,
+    "artifact_sha256_manifest": true,
+    "source_density_derivative_identity_tolerance": 5e-12,
+    "richardson_derivative_is_source_local_not_posterior": true,
+    "ncp_actual_result_must_be_returned": true
+  },
+  "outputs": ["RUN.json", "CASE_SUMMARY.csv", "SOURCE_DERIVATIVES_Z20_1600.csv", "SHA256_MANIFEST.json", "NCP_PUBLISH_RECEIPT.json", "NCP_RUN_STDOUT.log"],
+  "publish": "stack new PR on R3f, do not merge PR96/R3f or mutate rei_bianchi; create-only Double Backup Dropbox+Google Drive and verify remote readback hash",
+  "status": "READY_FOR_CODEX_NCP_HANDOFF_NOT_EXECUTED_ON_NCP"
+}
