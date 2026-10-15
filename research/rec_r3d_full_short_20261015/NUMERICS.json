@@ -1,0 +1,65 @@
+{
+  "batch_cases": 4,
+  "batch_steps_each": 45,
+  "convergence": {
+    "Tm_K": {
+      "endpoints": [
+        2454.334843344795,
+        2454.448425718066,
+        2454.497165826266
+      ],
+      "observed_ratio_d_coarse_over_d_fine": 2.3303676882490945,
+      "reference_not_exact": true,
+      "successive_absolute_differences": [
+        0.11358237327112874,
+        0.04874010820003605
+      ]
+    },
+    "x_HII": {
+      "endpoints": [
+        0.038971369005575594,
+        0.03898146538861644,
+        0.03898466228145945
+      ],
+      "observed_ratio_d_coarse_over_d_fine": 3.1581862566689747,
+      "reference_not_exact": true,
+      "successive_absolute_differences": [
+        1.0096383040843204e-05,
+        3.1968928430117782e-06
+      ]
+    }
+  },
+  "execution": "local owner PC; 24 logical CPUs, NOT NCP",
+  "fixed_interval_ln_a": 0.0003396,
+  "grids": [
+    {
+      "step_ln_a": 2.1225e-05,
+      "steps": 17
+    },
+    {
+      "step_ln_a": 1.06125e-05,
+      "steps": 33
+    },
+    {
+      "step_ln_a": 5.30625e-06,
+      "steps": 65
+    }
+  ],
+  "median_speedup_serial_div_parallel": 0.8186276045820762,
+  "model": "REC_SOURCE_HYREC2012_H_ONLY_Q0_ZERO_PREHISTORY",
+  "parallel_s": [
+    0.22751491609960794,
+    0.25513183407019824,
+    0.23237929306924343
+  ],
+  "real_source_operator": "2-real+311-virtual with 80-bin banded Schur",
+  "schema": "rec.r3d.short_full_numerics.v1",
+  "scoped_claim": "SHORT_CONTROLLED_H_ONLY_NUMERICAL_EXPERIMENT_NOT_FULL_RECOMBINATION",
+  "serial_s": [
+    0.17701644194312394,
+    0.190232104039751,
+    0.19523211591877043
+  ],
+  "source_step_ln_a": 8.49e-05,
+  "threads_for_parallel": 2
+}
