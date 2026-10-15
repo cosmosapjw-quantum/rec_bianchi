@@ -24,7 +24,8 @@ All three were independently compiled and run on this machine in isolated source
 
 ## 2. Matching cosmology, units, redshift, source semantics
 
-Chosen common reference was (h=0.6735837,Omega_b=0.0494142797907188,Omega_{cb}=0.31242079216478097,T_0=2.7255,K,Y_{m He}=0.245, N_mathrm{eff}=3.0) with **massless neutrinos**. This is intentional because the pinned RECFAST executable hardwires (N_
+Chosen common reference was (h=0.6735837,Omega_b=0.0494142797907188,Omega_{cb}=0.31242079216478097,T_0=2.7255,K,Y_{
+m He}=0.245, N_mathrm{eff}=3.0) with **massless neutrinos**. This is intentional because the pinned RECFAST executable hardwires (N_
 u=3). It is not the default HYREC-2 sample ((N_mathrm{eff}=3.046,sum m_
 u=0.06mathrm{eV})). The flat density closure uses (omega_{cb}=0.14175,omega_b=0.02242,omega_r=4.1578740068818545\times10^{-5},omega_Lambda=0.3119234221656212).
 
@@ -37,9 +38,12 @@ where (omega_i=Omega_i h^2). REI/REC prescribed background `hyrec_source_equival
 
 The original HyRec 2012 hydrogen density is
 [
- n_{m H}(z)=11.223846333047\,\omega_b (1-Y_{m He})(1+z)^3\ \mathrm{m}^{-3}.
+ n_{
+m H}(z)=11.223846333047\,\omega_b (1-Y_{
+m He})(1+z)^3\ \mathrm{m}^{-3}.
 ]
-HYREC-2 stores the corresponding (n_{H,0}) as (11.223846333047\times10^{-6}\omega_b(1-Y_{m He})\ \mathrm{cm}^{-3}). Both are explicitly and numerically identified, including endpoint tests, in `recombination_reference.py`.
+HYREC-2 stores the corresponding (n_{H,0}) as (11.223846333047\times10^{-6}\omega_b(1-Y_{
+m He})\ \mathrm{cm}^{-3}). Both are explicitly and numerically identified, including endpoint tests, in `recombination_reference.py`.
 
 The reference (x_e=n_e/n_H) is *not* (x_{HII}) and may exceed 1 due to helium. A source-correct mapping requires
 [
@@ -101,3 +105,8 @@ This audit closes **real mismatches of physics domain and numerical underflow** 
 ### Primary sources
 
 Ali-Haïmoud and Hirata, *Phys. Rev. D* **83** (2011) 043513, DOI `10.1103/PhysRevD.83.043513`; Lee and Ali-Haïmoud, *Phys. Rev. D* **102** (2020) 083517, DOI `10.1103/PhysRevD.102.083517`; Seager, Sasselov and Scott (1999/2000) primordial recombination; pinned original C source code and table hashes. Paper-literature novelty of this local numeric reference adapter is NOT claimed.
+
+
+## 7. Additional RECFAST native bounds-checked compiler control
+
+The selected modern RECFAST 1.7 Fortran source emitted static array-bound warnings during optimized compilation. A separate isolated native build was therefore performed with `gfortran -O0 -g -fcheck=bounds -fbacktrace -ffree-line-length-none -cpp` and the **identical pinned FLRW input**. The reference ran successfully (process exit 0); all 1000 numerical (x_e(z)) output rows matched the previous `-O2` binary **bit-for-bit**; the shared exact output SHA256 is `cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163`. This tests one input and one compiler; it is not a universal guarantee against all undefined memory access or solver failure.

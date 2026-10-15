@@ -71,8 +71,8 @@
       "bytes": 43003
     },
     "research/rec_hyrec_reference_20261015/REPORT_KO.md": {
-      "sha256": "33ac85d8f833ce8152d74a896927333357c01018793c9fcb5d1489fdfd8fabe4",
-      "bytes": 12493
+      "sha256": "ed154d823e838c567594142ce47b476c7ebb4f6cdd89d6009518f33a6f6782a0",
+      "bytes": 13218
     },
     "research/rec_hyrec_reference_20261015/SCIENTIFIC_VERDICT.json": {
       "sha256": "5af6a69f2711a471dbfaeb76dd0b9d93ced92cadc69cf9a5e5098f353e2a27c9",
@@ -97,11 +97,27 @@
     "research/rec_hyrec_reference_20261015/reference/REFERENCE_XE_CURVES.png": {
       "sha256": "1582d0f4b5d915b0f1fdb0cfe9c069d4dccf22925af64eb30570b1fd7ee4e527",
       "bytes": 83527
+    },
+    "research/rec_hyrec_reference_20261015/RECFAST_BOUNDS_CHECK.json": {
+      "sha256": "500ce4168cf56eb9f9dd577b119f235c8ade2313fe22dac618ad981e1b1736a1",
+      "bytes": 646
     }
   },
   "git_next_branch": "research/rec-hyrec-recfast-reference-20261015",
   "remote_REI_workflow_mutations": false,
   "full_solver_accepted_science": false,
   "native_subagent": "NOT_RUN_NO_HOST_DISPATCH",
-  "no_local_codex": true
+  "no_local_codex": true,
+  "recfast_bounds_checked_control": {
+    "source": "Modern RECFAST1.7 Git commit b34efc0f409050a980be5deca7d016a01bd13631",
+    "comparator": "Same generated matched FLRW input, N_eff=3.0 massless",
+    "optimized_build": "gfortran -O2 -ffree-line-length-none -cpp",
+    "bounds_check_build": "gfortran -O0 -g -fcheck=bounds -fbacktrace -ffree-line-length-none -cpp",
+    "optimized_exit": 0,
+    "bounds_check_exit": 0,
+    "output_numeric_data_rows": 1000,
+    "output_sha256_identical": true,
+    "output_sha256": "cfb21568475b3105a9570179cb15d1a907c4cee0e328bad2b99a0e7a08d84163",
+    "limitation": "one trusted source, one compiler, one matched cosmology; static warnings not broadly resolved"
+  }
 }
