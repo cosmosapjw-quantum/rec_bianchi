@@ -114,6 +114,30 @@ user plus system CPU 8.89 s, and peak RSS 115,596 KiB. The Python
 `RLIMIT_CPU=540s` is process-local, not a cumulative parent-plus-child cap.
 No full-history or refinement result follows from this bounded PASS.
 
+U4 resumes the reviewed U3 accepted checkpoint at RT index `j=382`,
+retaining photon columns `0..381` and the H RHS tail. It accepts 622
+additional H-only source-grid steps, reaches the first H post-Saha exit at
+output `j=1002`, then makes exactly two H ODE updates using the original
+`1.25*f[j]-0.25*f[j-2]` operator. The output at the crossing is still
+post-Saha. The final accepted node is global index `19227`, `j=1004`,
+`z=1562.918035636796`, `xe=0.9876865008915172`,
+`Tm=4262.453568037749 K`. The raw NCP archive SHA-256 is
+`eef9f413f5ec92559688ceadeea3204d227353845d1a0c5302f8ed5923050d8a`.
+The compact receipt is
+[`hydrogen_transition_001/verification.json`](hydrogen_transition_001/verification.json).
+
+Independent review recalculated all 622 original-C/Python state and RHS
+rows and 388,750 spectral values. It admitted **U4 scoped PASS**: maximum
+scaled `xe` error `3.3690958985516697e-16`, H RHS error
+`1.5456566582194853e-11`, and photon tolerance ratio
+`0.017993595275177278`. The Schur normalized residual was at most
+`7.374683637967221e-16`. Eight checkpoints and all accepted causal
+history prefixes were checked. The whole command used one NCP CPU and
+finished in 13.34 s with 12.79 s user plus 0.47 s system CPU, peak RSS
+137,968 KiB, under its 2 GiB address-space and 600 s external wall limits.
+U4 did not enter the coupled matter-temperature ODE or establish a
+`z=20` result or time-step convergence.
+
 ## Actual symbolic checks
 
 Wolfram Language returned zero for the Saha logarithmic derivative residual
