@@ -173,3 +173,46 @@ the implementation's fail-closed checks, including duplicate refinement,
 fake Richardson/parity evidence and same-unit H/nH consistency, but did not
 admit a `z=20` scientific value. The final-code command and tests are in
 [`rei_interface_005/REPAIR_RECEIPT.json`](rei_interface_005/REPAIR_RECEIPT.json).
+
+## Later source-stage execution (U5–U7, 2026-10-16)
+
+The entries above describe their own historical review point. Subsequent
+source-native continuations reached the original EMLA stage and supplied a
+**candidate** value at `z=20`; they do not turn the earlier strict REI HOLD
+into an admitted donor. Their execution and independent-review identities are
+in `thermal_transition_001`, `full_thermal_to_rt_001`, and `emla_to_z20_001`.
+
+- **U5 FULL H+Tm thermal transition:** 7,364 accepted additional steps to
+  local `j=8368`, `z=835.9345846122524`. The original fixed verifier is
+  `FAIL`: 9 of 2,290,204 average virtual-photon comparisons exceed its
+  original criterion, maximum ratio 32.6532069. All state, RHS, and causal
+  checks passed. The independent Decimal80 audit identified original-C
+  binary64 cancellation in `phi=1-(1-exp(-tau))/tau` near `tau=1e-6`.
+  Independent admission is scoped to state, causal, thermal and roundoff
+  diagnosis; the original average-spectrum comparison remains
+  `HOLD_ORIGINAL_TOLERANCE_NOT_MET`. Raw archive SHA-256:
+  `45b6fd5e010521c670a38aa818dd0b7a19bb6f8f691b0f6a0f86695061e6916b`.
+- **U6 FULL H+Tm to RT/EMLA:** 2,604 further accepted steps to local
+  `j=10972`, `z=669.9310085614876`. Independent scoped PASS: maximum `xe`
+  relative error `1.1942934172329893e-13`, `Tm` relative error
+  `4.450208665276195e-16`; all 1,627,500 new spectral values pass the
+  unchanged original criterion. Raw archive SHA-256:
+  `d5a4665f6be0b84e88a70b10e0189f793f8621fb38d3f59be592f186aa4cdf96`.
+- **U7 EMLA2s2p H+Tm to `z=20` stencil:** 40,804 further accepted updates
+  to global `69999`, local `j=51776`. Source cubic interpolation on globals
+  `69996..69999` gives independent Python
+  `xe(20)=0.00021034919293635483`, `Tm(20)=9.306042400382015 K`.
+  Relative to full-precision original C these differ by
+  `2.177690398906047e-14` and `1.3361746423260956e-14`. Independent
+  scoped PASS compared all 40,804 accepted steps and 25 fresh same-input
+  source samples. The separate source-qualified REI packet has
+  `activation=false`. Raw archive SHA-256:
+  `264c7fa5379bdd9c5f2fa1b4a70de18606408099df5ed00c32a911e1ddbe2b0e`.
+
+All three raw archives were returned to the owner PC and independently read
+back in full from create-only Dropbox and Google Drive destinations, with
+matching SHA-256 values. Source-grid temporal refinement and Richardson
+convergence remain `NOT_RUN`. U7 ends at the `z=20` output stencil; it does
+not yet include the original low-redshift Peebles transition or `z=0`
+production endpoint. The U5 average-spectrum HOLD prevents global FULL
+spectral parity admission even if later source stages pass.
