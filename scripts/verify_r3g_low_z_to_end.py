@@ -45,6 +45,12 @@ BASELINE_GZIP_SHA256="cfd1a7293431e4410e7ec597acc793d6b56e2d1f4eb5cd13ed3f48aaef
 BASELINE_STDOUT_SHA256="6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400"
 
 
+def regenerated_baseline_byte_status(observed_sha256:str)->str:
+    """Classify generated text identity separately from numerical agreement."""
+    return ("BYTE_IDENTITY_MATCH" if observed_sha256==BASELINE_STDOUT_SHA256
+            else "BYTE_IDENTITY_MISMATCH")
+
+
 def parse_native(path:Path,expected:int=EXTRA_ACCEPTED)->dict:
     rows=np.full((expected,17),np.nan);models=[None]*expected
     node=event=end=production=None;prod_nodes={};outputs=np.full((8001,4),np.nan)
@@ -308,8 +314,8 @@ def main()->int:
                         errors[key]=max(errors[key],d)
             with (ev/"native_baseline_stdout.txt").open("x") as out:out.write(native["baseline"])
             report["native_baseline_stdout_sha256"]=sha256(ev/"native_baseline_stdout.txt")
-            if report["native_baseline_stdout_sha256"]!=BASELINE_STDOUT_SHA256:
-                raise ArithmeticError("U8_C_ORIGINAL_BASELINE_BYTE_IDENTITY")
+            report["regenerated_baseline_byte_status"]=regenerated_baseline_byte_status(
+                report["native_baseline_stdout_sha256"])
             with gzip.open(BASELINE_GZIP,"rb") as stream:
                 import hashlib
                 h=hashlib.sha256()

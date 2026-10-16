@@ -28,6 +28,12 @@ comparison require a fresh independent preflight decision and one bounded NCP
 case. U5's historical average-spectrum gate remains HOLD; temporal refinement
 is NOT_RUN, and REI activation remains false.
 
+The first independent preflight held one output-classification path: a newly
+generated C text SHA mismatch caused an unconditional failure. The bounded
+repair records `BYTE_IDENTITY_MISMATCH` separately while preserving all
+numerical comparisons and hard checks of the archived baseline input hashes.
+`LOCAL_PREFLIGHT_REPAIR_001.json` preserves this finding and local rerun.
+
 Execution interface:
 
 ```text

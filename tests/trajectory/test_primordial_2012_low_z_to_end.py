@@ -128,3 +128,8 @@ def test_parser_rejects_unexpected_model_or_nonfinite(tmp_path):
 def test_manifest_rejects_missing_frozen_inputs(tmp_path):
     path=tmp_path/"manifest.json";path.write_text("{}")
     with pytest.raises(ValueError,match="U8_MANIFEST_INPUT_SHA"):V.validate_manifest(path)
+
+
+def test_regenerated_text_sha_mismatch_is_separate_from_numeric_gate():
+    assert V.regenerated_baseline_byte_status(V.BASELINE_STDOUT_SHA256)=="BYTE_IDENTITY_MATCH"
+    assert V.regenerated_baseline_byte_status("0"*64)=="BYTE_IDENTITY_MISMATCH"
