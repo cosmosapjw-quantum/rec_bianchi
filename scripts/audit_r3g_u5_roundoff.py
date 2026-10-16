@@ -123,8 +123,30 @@ def require_phi_domain(bin_index: int, tau: float) -> None:
         raise ValueError("PHI_DIAGNOSTIC_DOMAIN")
 
 
+def compare_common_input(py_out, c_full: dict, fbbv: np.ndarray,
+                         fbbl: np.ndarray) -> dict[str,float]:
+    """Frozen 625-field and RHS source parity for one identical input."""
+    maxima={}
+    for name, p, bb in (("virtual",py_out.outgoing_virtual,fbbv),
+                        ("average",py_out.average_virtual,fbbv),
+                        ("lyman",py_out.outgoing_lyman,fbbl)):
+        a=np.asarray(p,dtype=float); b=np.asarray(c_full[name],dtype=float)
+        n=3 if name=="lyman" else 311
+        if a.shape!=(n,) or b.shape!=(n,) or not np.all(np.isfinite(a)) or not np.all(np.isfinite(b)):
+            raise ValueError(f"COMMON_INPUT_SHAPE_OR_FINITE:{name}")
+        tol=1e-7*np.maximum(np.abs(a),np.abs(b))+1e-10*bb
+        ratio=np.abs(a-b)/tol
+        if not np.all(np.isfinite(ratio)) or np.any(ratio>1):
+            raise ValueError(f"COMMON_INPUT_PHOTON_PARITY:{name}")
+        maxima[name]=float(np.max(ratio))
+    rhs=require_scaled_pair(float(py_out.dxHII_dln_a),float(c_full["rhs"]),
+                            2e-10,"COMMON_INPUT_RHS")
+    maxima["rhs"]=rhs
+    return maxima
+
+
 def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
-                      energies: np.ndarray) -> list[dict]:
+                      energies: np.ndarray) -> tuple[list[dict],dict,dict]:
     """Re-evaluate only the nine failing bins on each owner's saved state."""
     from full_bianchi_hyrec.trajectory.causal_virtual_redshift import (
         causal_incoming_from_accepted_histories, _source_edges)
@@ -150,6 +172,9 @@ def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
     pointer=lambda arr: arr.ctypes.data_as(ptr)
     u=2.**-53
     output=[]
+    common_max={owner:{name:0. for name in ("virtual","average","lyman","rhs")}
+                for owner in ("Python","C")}
+    call_counts={"python_snapshot":0,"c_full":0,"c_populate":0}
     c_v=np.zeros((311,END),dtype=float); c_l=np.zeros((3,END),dtype=float)
     c_v[:,START:END]=saved_c["virtual"].T
     c_l[:,START:END]=saved_c["lyman"].T
@@ -193,8 +218,10 @@ def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
             py_snap=populate_original_full_atomic(source,z=state["z"],xHII=state["xe"],
                 xe=state["xe"],Tm_K=tm,incoming_virtual=incoming,incoming_lyman=ly)
             py_out=complete_original_full_atomic(py_snap)
+            call_counts["python_snapshot"]+=1
             # Exactly one original C FULL and one original C populate per own input.
             c_full=oracle(j,state["z"],state["xe"],0.,tm,hv,hl)
+            call_counts["c_full"]+=1
             if owner=="Python":
                 raw_channels=(py["virtual_out"][:,j],py["average_virtual"][:,j],py["lyman_out"][:,j])
             else:
@@ -202,6 +229,9 @@ def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
             tr_ev=8.617343e-5*tr
             bbv=1/np.expm1(energies/tr_ev)
             bbl=1/np.expm1(np.array((10.198714553953742,12.087365397278509,12.748393192442178))/tr_ev)
+            observed=compare_common_input(py_out,c_full,bbv,bbl)
+            for field,ratio in observed.items():
+                common_max[owner][field]=max(common_max[owner][field],ratio)
             for name,own,candidate,bb in zip(("virtual","average","lyman"),raw_channels,
                 (c_full["virtual"],c_full["average"],c_full["lyman"]),(bbv,bbv,bbl)):
                 all_tol=1e-7*np.maximum(np.abs(own),np.abs(candidate))+1e-10*bb
@@ -225,6 +255,7 @@ def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
                 pop(state["xe"],state["xe"],nH,cosmology.hubble_s(state["z"]),tm_ev,tr_ev,
                     pointer(np.ascontiguousarray(incoming)),pointer(np.ascontiguousarray(ly)),
                     *[pointer(arr) for arr in arrays])
+                call_counts["c_populate"]+=1
             finally: os.chdir(old)
             if owner=="Python":
                 tau=float(py_snap.Dtau[b]); rv=py_snap.Trv; vr=py_snap.Tvr
@@ -261,7 +292,9 @@ def scalar_diagnostic(folder: Path, py: dict, saved_c: dict, cosmology,
         require_bound(abs(p["raw"]-c["raw"]),tol,bound)
         output.append({"j":j,"bin":b,"original_tolerance":tol,"stable_remainder_absolute":str(stable),
                        "propagated_bound":bound,"raw_absolute":abs(p["raw"]-c["raw"]),"owners":owned})
-    return output
+    if call_counts != {"python_snapshot":18,"c_full":18,"c_populate":18}:
+        raise ValueError(f"DIAGNOSTIC_CALL_CAP_OR_COUNT:{call_counts}")
+    return output,common_max,call_counts
 
 
 def audit(folder: Path) -> dict:
@@ -361,7 +394,7 @@ def audit(folder: Path) -> dict:
         loc=np.argwhere(ratio>1)
         failures[channel]=[(int(START+k),int(b)) for k,b in loc]
     require_expected_failures(failures)
-    details=scalar_diagnostic(folder,py,c,cosmology,table.energy_eV)
+    details,common_max,call_counts=scalar_diagnostic(folder,py,c,cosmology,table.energy_eV)
     return {"scope":"R3G-U5-ROUNDOFF-AUDIT-001","original_verification_status":"FAIL",
         "original_average_gate":"HOLD_ORIGINAL_TOLERANCE_NOT_MET",
         "state_causal_thermal_gate":"PASS","cancellation_diagnostic":"NUMERICALLY_CHECKED",
@@ -381,6 +414,8 @@ def audit(folder: Path) -> dict:
         "photon_max_tolerance_ratio":ratios,"photon_failure_pairs":failures,
         "matrix_residual_max":float(np.nanmax(py["matrix_residual"][START:END])),
         "nine_pair_diagnostic":details,
+        "nine_pair_common_input_max_tolerance_ratio_by_owner":common_max,
+        "nine_pair_atomic_call_counts":call_counts,
         "claim_ceiling":"q=0 original HyRec bounded saved U5 trajectory; nine average-spectrum failures remain original FAIL"}
 
 

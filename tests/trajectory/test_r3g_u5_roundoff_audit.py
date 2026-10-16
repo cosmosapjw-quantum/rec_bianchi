@@ -4,7 +4,9 @@ from __future__ import annotations
 import importlib.util
 from decimal import Decimal
 from pathlib import Path
+from types import SimpleNamespace
 
+import numpy as np
 import pytest
 
 SCRIPT=Path(__file__).resolve().parents[2]/"scripts/audit_r3g_u5_roundoff.py"
@@ -55,3 +57,19 @@ def test_pinned_input_hash_rejects_before_npz_or_trajectory_load(tmp_path):
         (tmp_path/name).write_bytes(b"mutated")
     with pytest.raises(ValueError,match="IMMUTABLE_INPUT_SHA_MISMATCH"):
         audit.audit(tmp_path)
+
+
+def test_c_owner_python_snapshot_mutation_and_nonfinite_rhs_reject():
+    """The common-input gate applies to C-owned state/history too."""
+    p=SimpleNamespace(outgoing_virtual=np.zeros(311),average_virtual=np.zeros(311),
+                      outgoing_lyman=np.zeros(3),dxHII_dln_a=0.)
+    c={"virtual":np.zeros(311),"average":np.zeros(311),
+       "lyman":np.zeros(3),"rhs":0.}
+    assert audit.compare_common_input(p,c,np.ones(311),np.ones(3))["rhs"]==0
+    p.average_virtual[8]=1e-5
+    with pytest.raises(ValueError,match="COMMON_INPUT_PHOTON_PARITY:average"):
+        audit.compare_common_input(p,c,np.ones(311),np.ones(3))
+    p.average_virtual[8]=0
+    c["rhs"]=float("nan")
+    with pytest.raises(ValueError,match="COMMON_INPUT_RHS_PARITY"):
+        audit.compare_common_input(p,c,np.ones(311),np.ones(3))
