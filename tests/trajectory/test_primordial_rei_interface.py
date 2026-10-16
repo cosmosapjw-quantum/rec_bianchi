@@ -30,7 +30,7 @@ from full_bianchi_hyrec.trajectory.primordial_rei_interface import (
 )
 
 ROOT = Path(__file__).resolve().parents[2]
-PARTIAL = ROOT / "research/rec_r3g_primordial_20261016/rei_interface_001/INPUT_HISTORY_STATUS.json"
+PARTIAL = ROOT / "research/rec_r3g_primordial_20261016/rei_interface_005/INPUT_HISTORY_STATUS.json"
 TARGET_SHA = "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"
 
 

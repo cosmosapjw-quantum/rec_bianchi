@@ -112,6 +112,31 @@ def test_native_source_small_tau_formula_has_no_spurious_floor():
         _original_escape_factors(np.array([-.1]))
 
 
+def test_native_escape_uses_scalar_c_libm_at_cancellation_sensitive_depth():
+    import ctypes
+    import ctypes.util
+
+    libm_name=ctypes.util.find_library("m")
+    if libm_name is None:
+        pytest.skip("C libm is unavailable")
+    c_exp=ctypes.CDLL(libm_name).exp
+    c_exp.argtypes=(ctypes.c_double,)
+    c_exp.restype=ctypes.c_double
+    threshold=1e-6
+    depths=np.array([np.nextafter(threshold,0.),threshold,
+                     np.nextafter(threshold,np.inf),
+                     1.592053136706244e-6])
+    p,survive=_original_escape_factors(depths)
+    for index,tau in enumerate(depths):
+        if tau<=threshold:
+            assert p[index]==.5*tau-tau*tau/6.0
+            assert survive[index]==tau-.5*tau*tau
+        else:
+            transmission=c_exp(-float(tau))
+            assert p[index]==1.-(1.-transmission)/tau
+            assert survive[index]==1.-transmission
+
+
 def test_accepted_history_read_is_separate_from_algebraic_source(model):
     # One physical z=900 point with actual earlier accepted 311+3 history.
     # The expected input is not an external xe(z) reference curve.
