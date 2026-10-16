@@ -128,13 +128,15 @@ def continue_emla_to_z20(checkpoint:dict[str,np.ndarray],boundary:dict,
     t_rhs[:START_J]=checkpoint["thermal_rhs_dln_a"]
     h_prev=boundary["hydrogen_prev"];h_prev2=boundary["hydrogen_prev2"]
     t_prev=boundary["thermal_prev"];t_prev2=boundary["thermal_prev2"]
-    accepted=START_J;samples=[];common_max={"hydrogen":0.,"thermal":0.}
+    accepted=START_J;attempted=0;samples=[];common_max={"hydrogen":0.,"thermal":0.}
     status="BOUNDED_EMLA_INTERVAL_COMPLETE_BEFORE_Z20_STENCIL"
+    stop_failure=None
 
     def emit(phase:str,failure=None):
         if checkpoint_callback is None:return
         n=accepted
         checkpoint_callback({"phase":phase,"accepted_extra":n-START_J,
+            "emla_evaluations_attempted":attempted,"status":status,
             **{key:nodes[key][:n+1].copy() for key in node_names},
             "hydrogen_rhs_dln_a":h_rhs[:n].copy(),"thermal_rhs_dln_a":t_rhs[:n].copy(),
             "hydrogen_prev":h_prev,"hydrogen_prev2":h_prev2,
@@ -151,9 +153,12 @@ def continue_emla_to_z20(checkpoint:dict[str,np.ndarray],boundary:dict,
                 raise ValueError(f"U7_SOURCE_GRID_STAGE_INDEX:j={j}:iz={iz}")
             if not (0<xe<1 and 0<tm<=tr and float(nodes["xHeII"][j])==0. and
                     not bool(nodes["post_saha"][j])):
-                status="HOLD_NEXT_STAGE_REQUIRED:EMLA_STATE_DOMAIN";break
+                status="HOLD_NEXT_STAGE_REQUIRED:EMLA_STATE_DOMAIN"
+                stop_failure={"reason":status,"input_j":j,"last_accepted_j":accepted};break
             if not (8.617343e-5*tr/(c.fsR*c.fsR*c.meR)>.004 and tm/tr>.1):
-                status="HOLD_NEXT_STAGE_REQUIRED:THERMAL_TABLE_OR_RATIO_BOUNDARY";break
+                status="HOLD_NEXT_STAGE_REQUIRED:THERMAL_TABLE_OR_RATIO_BOUNDARY"
+                stop_failure={"reason":status,"input_j":j,"last_accepted_j":accepted};break
+            attempted+=1
             f=float(source.hydrogen_rhs_ln_a(z=z,x_HII=xe,x_e=xe,Tm_K=tm,fsR=c.fsR,meR=c.meR))
             g=float(source_thermal_rhs(c,xe,tm,z))
             if not math.isfinite(f) or not math.isfinite(g):
@@ -170,23 +175,26 @@ def continue_emla_to_z20(checkpoint:dict[str,np.ndarray],boundary:dict,
                 samples.append(j)
                 common_max["hydrogen"]=max(common_max["hydrogen"],h_err)
                 common_max["thermal"]=max(common_max["thermal"],t_err)
-            h_rhs[j]=f;t_rhs[j]=g
             nextj=j+1;zn=c.redshift(iz+1)
+            nextxe=xe+SOURCE_DLNA*(1.25*f-.25*h_prev2)
+            nexttm=tm+SOURCE_DLNA*(1.25*g-.25*t_prev2)
+            if not (0<nextxe<1 and 0<nexttm<=c.T0_K*(1+zn)):
+                status="HOLD_NEXT_STAGE_REQUIRED:EMLA_ACCEPTED_STATE_DOMAIN"
+                stop_failure={"reason":status,"input_j":j,"candidate_j":nextj,
+                    "candidate_xe":nextxe,"candidate_Tm_K":nexttm,
+                    "last_accepted_j":accepted};break
+            h_rhs[j]=f;t_rhs[j]=g
             nodes["global_iz"][nextj]=iz+1;nodes["z"][nextj]=zn
-            nodes["xe"][nextj]=xe+SOURCE_DLNA*(1.25*f-.25*h_prev2)
-            nodes["xHII"][nextj]=nodes["xe"][nextj]
-            nodes["xH1s"][nextj]=1-nodes["xe"][nextj]
+            nodes["xe"][nextj]=nextxe;nodes["xHII"][nextj]=nextxe
+            nodes["xH1s"][nextj]=1-nextxe
             nodes["xHeII"][nextj]=0.;nodes["post_saha"][nextj]=False
-            nodes["Tm_K"][nextj]=tm+SOURCE_DLNA*(1.25*g-.25*t_prev2)
+            nodes["Tm_K"][nextj]=nexttm
             h_prev2,h_prev=h_prev,f;t_prev2,t_prev=t_prev,g
-            if not (0<float(nodes["xe"][nextj])<1 and
-                    0<float(nodes["Tm_K"][nextj])<=c.T0_K*(1+zn)):
-                status="HOLD_NEXT_STAGE_REQUIRED:EMLA_ACCEPTED_STATE_DOMAIN";break
             accepted=nextj
             if accepted-START_J in (1,2) or (accepted-START_J)%4096==0:
                 emit(f"ACCEPTED_{accepted-START_J:05d}")
         if accepted==END_J:status="STOP_AT_Z20_CUBIC_STENCIL"
-        emit("STOP")
+        emit("STOP",stop_failure)
     except BaseException as exc:
         emit("EXCEPTION",{"type":type(exc).__name__,"message":str(exc),"last_accepted_j":accepted})
         raise
@@ -198,7 +206,8 @@ def continue_emla_to_z20(checkpoint:dict[str,np.ndarray],boundary:dict,
                "source_model":"original Oct-2012 HyRec q=0 EMLA2s2p",
                "activation":False,"rei_initial_condition_replaced":False,
                "claim_ceiling":"candidate primordial q=0 donor; no REI production or optical-depth prediction"}
-    return {"status":status,"accepted_extra":n-START_J,"emla_evaluations":n-START_J,
+    return {"status":status,"failure":stop_failure,"accepted_extra":n-START_J,
+        "emla_evaluations":attempted,
         "samples":samples,"common_max":common_max,"nodes":{k:nodes[k][:n+1] for k in node_names},
         "hydrogen_rhs_dln_a":h_rhs[:n],"thermal_rhs_dln_a":t_rhs[:n],
         "hydrogen_prev":h_prev,"hydrogen_prev2":h_prev2,

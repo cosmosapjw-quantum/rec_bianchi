@@ -246,7 +246,8 @@ def main()->int:
             if xe_err>5e-9 or tm_err>5e-10:raise ArithmeticError("U7_Z20_CUBIC_PARITY")
             with (ev/"candidate_rei_donor.json").open("x") as out:
                 json.dump(result["candidate_donor"],out,sort_keys=True,indent=2);out.write("\n")
-        report.update({"status":result["status"],"accepted_extra":n,"emla_evaluations":n,
+        report.update({"status":result["status"],"accepted_extra":n,
+          "emla_evaluations":result["emla_evaluations"],"stop_failure":result["failure"],
           "end_global_iz":int(result["nodes"]["global_iz"][-1]),"end_z":float(result["nodes"]["z"][-1]),
           "maxima":maxima,"common_input_max":result["common_max"],
           "common_input_sample_j":result["samples"],"common_h_calls":oracle.h_calls,

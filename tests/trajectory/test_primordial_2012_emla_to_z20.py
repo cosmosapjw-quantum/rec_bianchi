@@ -60,17 +60,22 @@ def test_common_oracle_signature_and_thermal_source(tmp_path):
     assert math.isfinite(HyRec2012Cosmology().redshift(END_GLOBAL_IZ))
 
 
-def test_one_step_carries_both_source_derivative_memories():
+def _synthetic_boundary(tm=1800.):
     c=HyRec2012Cosmology();j=START_J
     cp={"global_iz":np.arange(18223,18223+j+1,dtype=int),
         "z":np.array([c.redshift(i) for i in range(18223,18223+j+1)]),
-        "xe":np.full(j+1,.0013),"Tm_K":np.full(j+1,1800.),
+        "xe":np.full(j+1,.0013),"Tm_K":np.full(j+1,tm),
         "xHII":np.full(j+1,.0013),"xH1s":np.full(j+1,.9987),
         "xHeII":np.zeros(j+1),"post_saha":np.zeros(j+1,dtype=bool),
         "hydrogen_rhs_dln_a":np.full(j,-.004),
         "thermal_rhs_dln_a":np.full(j,-1800.)}
     boundary={"hydrogen_prev":-.004,"hydrogen_prev2":-.006,
               "thermal_prev":-1800.,"thermal_prev2":-1900.}
+    return c,cp,boundary
+
+
+def test_one_step_carries_both_source_derivative_memories():
+    c,cp,boundary=_synthetic_boundary()
     class Source:
         def hydrogen_rhs_ln_a(self,**kwargs):return -.005
     class Oracle:
@@ -85,3 +90,45 @@ def test_one_step_carries_both_source_derivative_memories():
     assert r["hydrogen_prev2"]==pytest.approx(-.004)
     assert r["hydrogen_prev"]==pytest.approx(-.005)
     assert r["thermal_prev2"]==pytest.approx(-1800.)
+
+
+def test_rejected_candidate_retains_last_accepted_state_and_memories():
+    c,cp,boundary=_synthetic_boundary()
+    class Source:
+        def hydrogen_rhs_ln_a(self,**kwargs):return -1e8
+    class Oracle:
+        def __call__(self,*args):return -1e8
+        def thermal_rhs(self,xe,tm,z):
+            from full_bianchi_hyrec.trajectory.primordial_2012_thermal_transition import source_thermal_rhs
+            return source_thermal_rhs(c,xe,tm,z)
+    receipts=[]
+    r=continue_emla_to_z20(cp,boundary,c,Source(),common_input_oracle=Oracle(),
+                            max_extra_accepted=1,checkpoint_callback=receipts.append)
+    assert r["status"]=="HOLD_NEXT_STAGE_REQUIRED:EMLA_ACCEPTED_STATE_DOMAIN"
+    assert r["accepted_extra"]==0 and r["emla_evaluations"]==1
+    assert r["hydrogen_prev"]==boundary["hydrogen_prev"]
+    assert r["hydrogen_prev2"]==boundary["hydrogen_prev2"]
+    assert r["thermal_prev"]==boundary["thermal_prev"]
+    assert r["thermal_prev2"]==boundary["thermal_prev2"]
+    assert r["nodes"]["xe"][-1]==.0013
+    assert receipts[-1]["phase"]=="STOP"
+    assert receipts[-1]["emla_evaluations_attempted"]==1
+    assert receipts[-1]["failure"]["candidate_j"]==START_J+1
+    assert receipts[-1]["hydrogen_prev"]==boundary["hydrogen_prev"]
+
+
+def test_thermal_guard_keeps_same_typed_c_and_python_status(tmp_path):
+    c,cp,boundary=_synthetic_boundary(tm=100.)
+    class Uncalled:
+        def hydrogen_rhs_ln_a(self,**kwargs):raise AssertionError("guard must run first")
+        def __call__(self,*args):raise AssertionError("guard must run first")
+        def thermal_rhs(self,*args):raise AssertionError("guard must run first")
+    oracle=Uncalled()
+    r=continue_emla_to_z20(cp,boundary,c,Uncalled(),common_input_oracle=oracle,max_extra_accepted=1)
+    status="HOLD_NEXT_STAGE_REQUIRED:THERMAL_TABLE_OR_RATIO_BOUNDARY"
+    assert r["status"]==status and r["accepted_extra"]==0 and r["emla_evaluations"]==0
+    path=tmp_path/"c.csv"
+    path.write_text(f"U7NODE,10972,29195,669,0.0013,100,-0.004,-0.006,-1800,-1900\n"
+                    f"U7END,{status},10972,0\n")
+    assert V.parse_native(path,1)["end"][0]==r["status"]
+    assert status in (ROOT/"scripts/c_harness/original_hyrec_emla_to_z20_harness.c").read_text()

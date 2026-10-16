@@ -23,6 +23,15 @@ Local pinned-input preflight and one-step original-C/Python smoke passed;
 `LOCAL_PREFLIGHT.json` records their hashes and observed errors. The full U7
 NCP launch requires fresh independent scientific preflight review.
 
+The first independent preflight found two failure-path defects, retained in
+`LOCAL_PREFLIGHT.json`. The bounded repair keeps F/G memories at the last
+accepted state when a candidate is rejected, records attempted evaluations
+separately, and matches the Python/C thermal guard code. Its targeted test
+uses a deliberately unphysical H RHS of `-1e8` to force rejection. The same
+falsifier using the real pinned U6 STOP is saved in
+`REAL_U6_REJECTED_CANDIDATE.json`; this is a guard test, not a physical
+trajectory. `LOCAL_PREFLIGHT_REPAIR_001.json` records the second local smoke.
+
 Execution interface:
 
 ```text

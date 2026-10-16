@@ -280,9 +280,12 @@ int main(int argc, char **argv) {
       if (rel< p.nzrt || rel>=51776 || in+1>=allocated_nodes) {
         fprintf(stderr,"U7_SOURCE_STAGE_OR_CAPACITY:%d:%ld\n",rel,in); return 9;
       }
-      if (!(oldxe>0. && oldxe<1. && oldtm>0. && oldtm<=tr &&
-            kBoltz*tr/p.fsR/p.fsR/p.meR>TR_MIN && oldtm/tr>TM_TR_MIN)) {
-        printf("U7END,HOLD_NEXT_STAGE_REQUIRED:EMLA_STATE_OR_TABLE,%d,%d\n",rel,u7_accepted);
+      if (!(oldxe>0. && oldxe<1. && oldtm>0. && oldtm<=tr)) {
+        printf("U7END,HOLD_NEXT_STAGE_REQUIRED:EMLA_STATE_DOMAIN,%d,%d\n",rel,u7_accepted);
+        return 0;
+      }
+      if (!(kBoltz*tr/p.fsR/p.fsR/p.meR>TR_MIN && oldtm/tr>TM_TR_MIN)) {
+        printf("U7END,HOLD_NEXT_STAGE_REQUIRED:THERMAL_TABLE_OR_RATIO_BOUNDARY,%d,%d\n",rel,u7_accepted);
         return 0;
       }
       nH=1e-6*p.nH0*(1.+z)*(1.+z)*(1.+z);
@@ -294,6 +297,10 @@ int main(int argc, char **argv) {
         &rates,(unsigned)in,&twog,outgoing,ly,average,
         &dHPrev,&dTprev,&dHPrev2,&dTprev2);
       iz=in+1;z=z_of(iz);
+      if (!(xe[iz]>0. && xe[iz]<1. && tm[iz]>0. && tm[iz]<=p.T0*(1.+z))) {
+        printf("U7END,HOLD_NEXT_STAGE_REQUIRED:EMLA_ACCEPTED_STATE_DOMAIN,%d,%d\n",rel,u7_accepted);
+        return 0;
+      }
       printf("U7STEP,%d,%ld,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g,EMLA2s2p\n",
         rel,in, z_of(in),oldxe,oldtm,rhsH,rhsT,oldHprev,oldHprev2,oldTprev,oldTprev2,
         (double)iz,z,xe[iz],tm[iz]);
