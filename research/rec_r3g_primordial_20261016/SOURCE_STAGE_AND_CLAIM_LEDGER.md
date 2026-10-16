@@ -216,3 +216,41 @@ convergence remain `NOT_RUN`. U7 ends at the `z=20` output stencil; it does
 not yet include the original low-redshift Peebles transition or `z=0`
 production endpoint. The U5 average-spectrum HOLD prevents global FULL
 spectral parity admission even if later source stages pass.
+
+## U8 source-native low-redshift completion
+
+U8 independently continues the reviewed U7 STOP for 35,859 accepted
+updates, from global `69999` through `105858`. The original table guard
+first fails at global `72466`, `z=16.0296920693132`, because the radiation
+temperature reaches `0.004 eV`; the original source then uses Peebles
+Fudge=1 for the remaining 33,392 updates. The first 2,467 updates use
+EMLA2s2p. Hydrogen and thermal derivative memories carry through this
+irreversible transition. The final slightly negative-redshift node is an
+interpolation stencil only; no atomic rate is evaluated there.
+
+The separate Python trajectory is combined with the immutable U1 helium
+prefix to produce all 8,001 integer-redshift rows. Independent review
+recomputed the 35,859 saved accepted states and 8,001 cubic outputs, checked
+15 checkpoints, and admitted **scoped PASS** for original source-grid
+implementation and numerical parity. The maximum original C comparison
+errors are `1.9975565903499173e-13` for `xe`,
+`1.35952144758694e-14` for `Tm`, and `1.355371802495417e-14` for
+`Tm/Tr`, all below the frozen criteria. At `z=0`, Python gives
+`xe=0.00017561302565687926`, `Tm=0.021729486776389226 K`; full-precision
+C gives `0.00017561302565687574` and `0.021729486776388987 K`.
+
+The regenerated C formatted output SHA differs from the archived original
+baseline: 15 of 8,001 `xe` display values differ only in the last printed
+digits (maximum absolute difference `1.1102230246251565e-15`); every
+`Tm/Tr` display value agrees. This is retained as
+`BYTE_IDENTITY_MISMATCH`, class 3 numerically equivalent output, not as a
+scientific-integrity failure. The archived baseline input itself matched its
+required SHA-256. The precise C operation path for these rounding differences
+has not been isolated.
+
+The complete original **source-native time grid** is now covered by Python
+integration. That does not establish temporal convergence: an actual
+`h/2` run needs causal frequency-history remapping, and U5's original
+average-spectrum gate remains `HOLD_ORIGINAL_TOLERANCE_NOT_MET`. The
+candidate REC-to-REI boundary remains `activation=false`; no REI production,
+optical-depth, self-consistent Bianchi, or CMB claim is admitted.
