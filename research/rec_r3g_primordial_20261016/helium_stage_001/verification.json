@@ -1,0 +1,151 @@
+{
+  "acceptance_scaled_max": {
+    "Tm_K": 2e-12,
+    "xHII": 2e-12,
+    "xHeI": 2e-12,
+    "xHeII": 2e-12,
+    "xHeIII": 2e-12,
+    "xe": 2e-12,
+    "z": 2e-12
+  },
+  "c_binary_sha256": "92aa59c8cf9d45897281ccff2e92574242df920ed67895908d862439c3234c11",
+  "c_compiler_command": [
+    "prlimit",
+    "--as=2147483648",
+    "--",
+    "gcc",
+    "-std=gnu99",
+    "-O2",
+    "-fno-fast-math",
+    "-I",
+    "/tmp/r3g-helium-evidence-run-007/source",
+    "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/scripts/c_harness/original_hyrec_helium_stage_harness.c",
+    "/tmp/r3g-helium-evidence-run-007/source/history.c",
+    "/tmp/r3g-helium-evidence-run-007/source/hydrogen.c",
+    "/tmp/r3g-helium-evidence-run-007/source/helium.c",
+    "/tmp/r3g-helium-evidence-run-007/source/hyrectools.c",
+    "-lm",
+    "-o",
+    "/tmp/r3g-helium-evidence-run-007/helium_stage_oracle"
+  ],
+  "c_shared_library_command": [
+    "prlimit",
+    "--as=2147483648",
+    "--",
+    "gcc",
+    "-std=gnu99",
+    "-O2",
+    "-fno-fast-math",
+    "-shared",
+    "-fPIC",
+    "-I",
+    "/tmp/r3g-helium-evidence-run-007/source",
+    "/tmp/r3g-helium-evidence-run-007/source/helium.c",
+    "-lm",
+    "-o",
+    "/tmp/r3g-helium-evidence-run-007/liboriginal_helium.so"
+  ],
+  "common_input_rhs_map_parity": {
+    "first_failure": null,
+    "limit": 2e-10,
+    "max_abs_difference": 1.0331312128564999e-12,
+    "max_scaled_difference": 1.0331312128564999e-12,
+    "shared_library_sha256": "10592f90e652cc87c1e449d2e24142e33148c901c80a1dd9c36af279b111368a"
+  },
+  "compared_rows": 18224,
+  "first_actual_source_predictor_update_index": 12084,
+  "first_failure": null,
+  "independence_limit": "Python stages are independently computed; C output is used only as oracle. No H FULL evolution or full-history claim.",
+  "izH0": 18223,
+  "max_abs_difference": {
+    "Tm_K": 0.0,
+    "xHII": 1.1102230246251565e-16,
+    "xHeI": 6.938893903907228e-17,
+    "xHeII": 1.3877787807814457e-16,
+    "xHeIII": 1.3877787807814457e-16,
+    "xe": 2.220446049250313e-16,
+    "z": 0.0
+  },
+  "max_scaled_difference_d_over_max_1_abs_C": {
+    "Tm_K": 0.0,
+    "xHII": 1.1102230246251565e-16,
+    "xHeI": 6.938893903907228e-17,
+    "xHeII": 1.3877787807814457e-16,
+    "xHeIII": 1.3877787807814457e-16,
+    "xe": 2.1756662172518215e-16,
+    "z": 0.0
+  },
+  "python_accepted_rows": {
+    "path": "/tmp/r3g-helium-evidence-run-007/python_accepted_rows.jsonl",
+    "rows": 18224,
+    "sha256": "27785d0adfddfb960d007459a9969fb9ef4a74a38415e928238fc94a107177a4"
+  },
+  "raw_oracle": {
+    "stderr_path": "/tmp/r3g-helium-evidence-run-007/oracle_stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "/tmp/r3g-helium-evidence-run-007/oracle_stdout.txt",
+    "stdout_sha256": "4acb582e3596bc17d29a5f076b2a9cd49c49f0305659fc2a8387b873ef1e3358"
+  },
+  "resources": {
+    "MKL_NUM_THREADS": 1,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "address_space_limit_bytes": 2147483648,
+    "children_cpu_s": 0.7308979999999999,
+    "largest_child_peak_rss_bytes": 90669056,
+    "parent_RLIMIT_AS_bytes": [
+      2147483648,
+      2147483648
+    ],
+    "parent_cpu_s": 1.279618,
+    "parent_peak_rss_bytes": 418332672,
+    "wall_limit_s_each_child": 60,
+    "wall_s": 1.50009600201156
+  },
+  "rows": 18224,
+  "scope": "HeIII Saha + HeII->HeI through izH0; H Saha closure; Tm steady-state",
+  "source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976"
+  },
+  "source_stage_boundaries": {
+    "HeIII_Saha_indices": [
+      0,
+      7715
+    ],
+    "HeII_HeI_start_index": 7716,
+    "end_inclusive_izH0": 18223
+  },
+  "status": "PASS",
+  "supporting_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "helium.h": "f256bb6a0af0e8904b10891a9fc826d8f0332d718d62a709eeae3ca648e1e0a4",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "history.h": "99c590758874ecbe80e83b218660863c6aa43786175f64d483267c78b209d710",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hydrogen.h": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2",
+    "hyrectools.c": "beb97b6cee3b80cf74d58264da7087301865881d266de1c17dd472a08665bb79",
+    "hyrectools.h": "537de0362b930d6059725ab51cfb1d0078398ad0a02eb02aae93bef9751d7be6"
+  },
+  "trajectory_rhs_diagnostic": {
+    "first_discrepancy": {
+      "C_input": {
+        "H_s_inv": 4.874660227136025e-13,
+        "xH1s": 5.789225469981521e-12,
+        "xHeII": 0.08188415290422779,
+        "z": 4149.047308714977
+      },
+      "C_rhs_at_source_input_state": 2.6232193572979667e-06,
+      "Python_rhs_at_its_own_input_state": -2.2427103108284326e-06,
+      "absolute_difference": 4.865929668126399e-06,
+      "classification": "trajectory state sensitivity diagnostic; direct common-input map checked separately",
+      "index": 7733,
+      "scaled_difference": 4.865929668126399e-06
+    },
+    "interpretation": "This is trajectory-to-trajectory RHS comparison at slightly different binary64 states; not the common-input RHS map gate.",
+    "max_abs_difference": 4.865929668126399e-06,
+    "max_scaled_difference": 4.865929668126399e-06
+  },
+  "z_at_izH0": 1702.072263548342
+}

@@ -1,0 +1,28 @@
+{
+  "adopted_into_REI": false,
+  "claim": "HOLD only; no validated full z=20 history or REI production activation",
+  "code_sha256": {
+    "scripts/build_r3g_rei_boundary.py": "7aa1ac5a40461dd90caa83049af665294e6f9de2f74f5f6aac4ba35777654551",
+    "src/full_bianchi_hyrec/trajectory/primordial_rei_interface.py": "0fc8277895e5deb71e500dcf646c74d4fbc26e314475df181da101d9cc752e90",
+    "tests/trajectory/test_primordial_rei_interface.py": "d2bd67218cdd52fcc51ff3984a5b062944023eebddd24b9d7aff752d5348bf46"
+  },
+  "command_exit_code": 2,
+  "decision": "HOLD_MISSING_VALIDATED_HISTORY",
+  "file_sha256": {
+    "BOUNDARY_HOLD.json": "f737cde5e4098781933aec625bdeb18a9e253b395ff55b224547b22d261eb9b3",
+    "INPUT_HISTORY_STATUS.json": "14660457b3022b65ee699a53f69717e598058e70904cf9c5412d8af81e0f301e",
+    "command_exit_code.txt": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "command_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command_stdout.txt": "eebbfc33cd2aae0e2ab882b421056782b79e0bbeeda15fdf5c660bf757a3ecb9",
+    "tests_exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tests_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_stdout.txt": "a03a6db607233997f0b613d9b46ce81455839c5f03372e7632cf879eafebbc36"
+  },
+  "receipt_id": "R3G_REI_INTERFACE_005_DENSITY_TOLERANCE_REPAIR",
+  "source_boundary": null,
+  "test_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 prlimit --as=1073741824 -- python -m pytest -q tests/trajectory/test_primordial_rei_interface.py",
+  "tests_exit_code": 0,
+  "tests_stdout": "............                                                             [100%]\n12 passed in 0.61s",
+  "timestamp_utc": "2026-10-16T01:01:43.575828+00:00",
+  "tolerance": "1e-12*max(abs(actual),abs(expected),1e-15) for source and recipient H and nH; source charge uses same bound"
+}

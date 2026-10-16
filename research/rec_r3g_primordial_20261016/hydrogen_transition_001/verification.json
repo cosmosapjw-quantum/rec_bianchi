@@ -1,0 +1,151 @@
+{
+  "accepted_extra": 622,
+  "affinity": [
+    40
+  ],
+  "branch_steps_after_event": 2,
+  "checkpoint_count": 8,
+  "claim_ceiling": "bounded q=0 original HyRec H-only stage; no full primordial Python history or Bianchi/CMB claim",
+  "common_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-I",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/capsule_001/source/scripts/c_harness/original_hyrec_full_source_harness.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "b46e37f94b7fc89fad76dc6740b7b400e82285f9926ef6fa25dfca1d78b997bf",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.6236497500212863
+  },
+  "common_input_max": {
+    "average": 0.013710650528106702,
+    "lyman": 5.851238427826843e-07,
+    "rhs": 6.396549956377839e-13,
+    "virtual": 2.6164610513359084e-06
+  },
+  "common_input_sample_j": [
+    382,
+    383,
+    384,
+    510,
+    638,
+    766,
+    894,
+    1001,
+    1002,
+    1003,
+    1004
+  ],
+  "event_j": 1002,
+  "execution_manifest_sha256": "2525c30efb410e7610e56a420a31d52c2e0e0070d99575024f7324c7a47754d0",
+  "first_failure": null,
+  "hydrogen_rhs_max_scaled": 1.5456566582194853e-11,
+  "limits": {
+    "address_space_bytes": 2147483648,
+    "build_s": 30,
+    "common_input_max": 64,
+    "cpu_s": 540,
+    "extra_accepted_max": 2048,
+    "full_evaluations_max": 8192,
+    "native_oracle_s": 60,
+    "wall_s": 600
+  },
+  "native_binary_sha256": "4ad6a9e797ffbe002f53b422b0724124982d6d2bee86727a2239283a1137e82b",
+  "native_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/capsule_001/source/scripts/c_harness/original_hyrec_hydrogen_transition_harness.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/history.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/native_u4_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "3dd43aa4cf41ad44aa923efa309b8914ff150e025c3697e3eb94e124bc3f51e1",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 1.126289619016461
+  },
+  "native_c_end": [
+    "EVENT_TWO_STEPS_COMPLETE",
+    1,
+    2,
+    622
+  ],
+  "native_c_stage_metadata": {
+    "izH0": 18223,
+    "nzrt": 10972,
+    "zH0": 1702.072263548342
+  },
+  "native_c_stdout_sha256": "490f09972dc9991fccccbc8af2d0b05244e22f907820d6ee72bc79e1cd16ff73",
+  "native_run": {
+    "command": [
+      "/root/REC_R3G_HYDROGEN_TRANSITION_20261016_001/result_001/native_u4_oracle",
+      "2048"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "490f09972dc9991fccccbc8af2d0b05244e22f907820d6ee72bc79e1cd16ff73",
+    "wall_s": 0.7239099779981188
+  },
+  "python_full_evaluations": 2484,
+  "python_rows_sha256": "d9e9767ede5ba0aef8c7ba8ab8a0c220f18df416ec0b33971dc63c2e71c56b08",
+  "resources": {
+    "parent_cpu_s": 9.787494,
+    "parent_peak_rss_bytes": 141279232,
+    "wall_s": 12.249466351990122
+  },
+  "scope": "U4 H-only steady-temperature bounded transition",
+  "source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "spectrum_max_tolerance_ratio": {
+    "average": 0.017993595275177278,
+    "lyman": 0.000224850964097631,
+    "virtual": 0.0008046501969138221
+  },
+  "start": {
+    "Tm_K": 4493.594294033827,
+    "accepted_photon_columns": 382,
+    "h_rhs_f380": -0.2124815101975269,
+    "h_rhs_f381": -0.07000009611303343,
+    "iz": 18605,
+    "j": 382,
+    "post_saha": true,
+    "xe": 0.9979258049614494,
+    "z": 1647.72462398495
+  },
+  "state_max_scaled": {
+    "Tm_K": 0.0,
+    "xH1s": 5.161466175991733e-14,
+    "xHII": 3.3690958985516697e-16,
+    "xHeII": 0.0,
+    "xe": 3.3690958985516697e-16
+  },
+  "status": "EVENT_TWO_STEPS_COMPLETE",
+  "u3_stop_json_sha256_expected": "7b86be4d2e9c4a3aa53047a20b4408bf2a52be33a94e53a9ee6987ba73b7f12b",
+  "u3_stop_npz_sha256_expected": "97e54b568191a037f03822472972008952ee6c0eaedf486367d0c29f1c9bbe8b",
+  "u3_verification_sha256_expected": "8ed9aa4ac0c570fadf3f80f83b13c528056b5f4cadcd713c92b5b5031af4e082"
+}

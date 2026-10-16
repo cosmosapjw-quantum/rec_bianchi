@@ -79,8 +79,13 @@ def _original_escape_factors(tau):
     survive[small]=t[small]-.5*t[small]*t[small]
     if np.any(~small):
         z=t[~small]
-        p[~small]=1.-(1.-np.exp(-z))/z
-        survive[~small]=1.-np.exp(-z)
+        # Scalar libm matches the original C exp() rounding at the branch.
+        # NumPy's vector exp can differ by one ulp, which cancellation here
+        # amplifies near tau=1e-6 in strict source-point parity checks.
+        transmission=np.fromiter((math.exp(-float(value)) for value in z),
+                                 dtype=np.float64,count=z.size)
+        p[~small]=1.-(1.-transmission)/z
+        survive[~small]=1.-transmission
     return p,survive
 
 

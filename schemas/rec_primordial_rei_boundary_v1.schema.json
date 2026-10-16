@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/cosmosapjw-quantum/rec_bianchi/schemas/rec_primordial_rei_boundary_v1.schema.json",
+  "title": "REC primordial HyRec to REI comparison boundary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "packet_version", "decision", "source_boundary", "recipient_comparison", "activation", "adopted_into_REI", "identity", "scope", "normalization_ledger", "clock_convention", "source_evidence_status", "hold_reasons"],
+  "properties": {
+    "schema": {"const": "rec.primordial.rei_boundary.v1"},
+    "packet_version": {"const": 1},
+    "decision": {"enum": ["HOLD_MISSING_VALIDATED_HISTORY", "REC_SOURCE_BOUNDARY_VALIDATED"]},
+    "source_boundary": {"$ref": "#/$defs/sourceBoundary"},
+    "recipient_comparison": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/recipientComparison"}]},
+    "activation": {"const": "DISABLED_REQUIRES_SEPARATE_REI_APPROVAL"},
+    "adopted_into_REI": {"const": false},
+    "identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["history_manifest_sha256", "target_scenario_sha256", "source_original_hyrec_zip_sha256"],
+      "properties": {
+        "history_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "target_scenario_sha256": {"const": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"},
+        "source_original_hyrec_zip_sha256": {"const": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"}
+      }
+    },
+    "scope": {"const": "ORIGINAL_HYREC_2012_STAGE_SEQUENCE_FLRW_Q0"},
+    "normalization_ledger": {
+      "type": "object", "additionalProperties": false,
+      "required": ["helium_mass_fraction", "fHe_helium_nuclei_per_hydrogen_nucleus", "fHe_REI_target_nuclei_per_hydrogen_nucleus"],
+      "properties": {
+        "helium_mass_fraction": {"const": 0.2454},
+        "fHe_helium_nuclei_per_hydrogen_nucleus": {"const": 0.08188416223421702},
+        "fHe_REI_target_nuclei_per_hydrogen_nucleus": {"const": 0.08130135170951498}
+      }
+    },
+    "clock_convention": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coordinate", "proper_time", "reference_z"],
+      "properties": {
+        "coordinate": {"const": "FLRW redshift z and ln(a)=-ln(1+z)"},
+        "proper_time": {"const": "not inferred from a single boundary slice"},
+        "reference_z": {"const": 20.0}
+      }
+    },
+    "source_evidence_status": {"type": "string"},
+    "hold_reasons": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "recipientComparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "scenario_sha256", "rei_commit", "clock_convention", "H_s_inv", "nH_m3", "fHe_target_nHe_per_nH", "projection", "activation", "adopted_into_REI"],
+      "properties": {
+        "scope": {"const": "ORIGINAL_HYREC_2012_STAGE_SEQUENCE_FLRW_Q0"},
+        "scenario_sha256": {"const": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"},
+        "rei_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "clock_convention": {"const": "REI_MEAN_REDSHIFT_ZBAR_A_INV_MINUS_1"},
+        "H_s_inv": {"type": "number", "exclusiveMinimum": 0}, "nH_m3": {"type": "number", "exclusiveMinimum": 0},
+        "fHe_target_nHe_per_nH": {"const": 0.08130135170951498}, "projection": {"type": "null"},
+        "activation": {"const": "DISABLED_REQUIRES_SEPARATE_REI_APPROVAL"}, "adopted_into_REI": {"const": false}
+      }
+    },
+    "sourceBoundary": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sourceBoundaryObject"}]},
+    "sourceBoundaryObject": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "z", "a", "ln_a", "metric_signature", "q_over_H", "T_radiation_K", "proper_time_since_reference_s", "clock_note", "species_per_source_normalization", "nH_source_m3", "nHe_source_m3", "ne_source_m3", "Tm_K", "H_s_inv", "thomson_opacity_proper_s_inv", "thomson_opacity_per_ln_a", "thermal_energy_density_J_m3", "thermal_energy_density_erg_cm3", "source_stage", "interpolation_provenance", "source_identity", "normalization_conversion", "species_determination"],
+      "properties": {
+        "scope": {"const": "ORIGINAL_HYREC_2012_STAGE_SEQUENCE_FLRW_Q0"}, "z": {"const": 20}, "a": {"type": "number", "exclusiveMinimum": 0}, "ln_a": {"type": "number"}, "metric_signature": {"const": "-+++"}, "q_over_H": {"const": 0.0}, "T_radiation_K": {"type": "number", "exclusiveMinimum": 0},
+        "proper_time_since_reference_s": {"type": "null"}, "clock_note": {"type": "string"}, "source_stage": {"type": "string"},
+        "interpolation_provenance": {"type": "object"}, "species_determination": {"type": "string"},
+        "species_per_source_normalization": {"type": "object", "additionalProperties": false, "required": ["xHII_per_H", "xHI_per_H", "xHeII_per_He", "xHeIII_per_He", "xHeI_per_He", "xHeII_per_H", "xHeIII_per_H", "xHeI_per_H", "helium_inventory_per_H", "xe_per_H", "determination"], "properties": {"xHII_per_H": {"type": "number", "minimum": 0, "maximum": 1}, "xHI_per_H": {"type": "number", "minimum": 0, "maximum": 1}, "xHeII_per_He": {"type": "number", "minimum": 0, "maximum": 1}, "xHeIII_per_He": {"type": "number", "minimum": 0, "maximum": 1}, "xHeI_per_He": {"type": "number", "minimum": 0, "maximum": 1}, "xHeII_per_H": {"type": "number", "minimum": 0}, "xHeIII_per_H": {"type": "number", "minimum": 0}, "xHeI_per_H": {"type": "number", "minimum": 0}, "helium_inventory_per_H": {"type": "number", "exclusiveMinimum": 0}, "xe_per_H": {"type": "number", "minimum": 0}, "determination": {"type": "object"}}},
+        "nH_source_m3": {"type": "number", "exclusiveMinimum": 0}, "nHe_source_m3": {"type": "number", "minimum": 0}, "ne_source_m3": {"type": "number", "minimum": 0}, "Tm_K": {"type": "number", "exclusiveMinimum": 0}, "H_s_inv": {"type": "number", "exclusiveMinimum": 0}, "thomson_opacity_proper_s_inv": {"type": "number", "minimum": 0}, "thomson_opacity_per_ln_a": {"type": "number", "minimum": 0}, "thermal_energy_density_J_m3": {"type": "number", "exclusiveMinimum": 0}, "thermal_energy_density_erg_cm3": {"type": "number", "exclusiveMinimum": 0},
+        "source_identity": {"type": "object", "additionalProperties": false, "required": ["original_hyrec_zip_sha256", "rec_commit", "validation_receipt_sha256", "history_sha256", "cosmology_sha256"], "properties": {"original_hyrec_zip_sha256": {"const": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"}, "rec_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "validation_receipt_sha256": {"$ref": "#/$defs/sha256"}, "history_sha256": {"$ref": "#/$defs/sha256"}, "cosmology_sha256": {"$ref": "#/$defs/sha256"}}},
+        "normalization_conversion": {"type": "object", "additionalProperties": false, "required": ["source_nHe_per_nH", "target_nHe_per_nH", "source_species_basis", "target_species_basis"], "properties": {"source_nHe_per_nH": {"const": 0.08188416223421702}, "target_nHe_per_nH": {"const": 0.08130135170951498}, "source_species_basis": {"type": "string"}, "target_species_basis": {"type": "string"}}}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "HOLD_MISSING_VALIDATED_HISTORY"}}, "required": ["decision"]},
+      "then": {"properties": {"source_boundary": {"type": "null"}, "recipient_comparison": {"type": "null"}, "hold_reasons": {"minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"decision": {"const": "REC_SOURCE_BOUNDARY_VALIDATED"}}, "required": ["decision"]},
+      "then": {"properties": {"source_boundary": {"$ref": "#/$defs/sourceBoundaryObject"}, "recipient_comparison": {"$ref": "#/$defs/recipientComparison"}, "hold_reasons": {"maxItems": 0}}}
+    }
+  ]
+}

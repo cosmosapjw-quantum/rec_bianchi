@@ -1,0 +1,84 @@
+{
+  "activation": false,
+  "adopted_into_REI": false,
+  "candidate_source_boundary": {
+    "H_s_inv": 1.1835101981052422e-16,
+    "T_radiation_K": 57.235499999999995,
+    "Tm_K": 9.306042400382015,
+    "a": 0.047619047619047616,
+    "clock_note": "source slice at fixed FLRW z; proper-time origin is not inferred",
+    "interpolation_provenance": "four consecutive accepted source ln(a) states, global 69996..69999, no extrapolation",
+    "ln_a": -3.044522437723423,
+    "metric_signature": "-+++",
+    "nH_source_m3": 1756.970280931192,
+    "nHe_source_m3": 143.86803952446758,
+    "ne_source_m3": 0.3695772806070369,
+    "proper_time_since_reference_s": null,
+    "q_over_H": 0.0,
+    "source_stage": "H_EMLA2S2P_TM_COEVOLUTION",
+    "species_per_source_normalization": {
+      "determination": {
+        "xHI": "hydrogen_nucleus_closure_1_minus_xHII",
+        "xHII": "integrated source EMLA2s2p HII ODE",
+        "xHeI": "helium_nucleus_closure_1_minus_xHeII_minus_xHeIII",
+        "xHeII": "source helium stage neutral algebraic closure at z20",
+        "xHeIII": "source HeIII stage neutral algebraic closure at z20",
+        "xe": "charge_identity_from_source_species_per_H"
+      },
+      "helium_inventory_per_H": 0.08188416223421702,
+      "xHII_per_H": 0.00021034919293635483,
+      "xHI_per_H": 0.9997896508070636,
+      "xHeIII_per_H": 0.0,
+      "xHeIII_per_He": 0.0,
+      "xHeII_per_H": 0.0,
+      "xHeII_per_He": 0.0,
+      "xHeI_per_H": 0.08188416223421702,
+      "xHeI_per_He": 1.0,
+      "xe_per_H": 0.00021034919293635483
+    },
+    "thermal_energy_density_J_m3": 3.6641156972322555e-19,
+    "thermal_energy_density_erg_cm3": 3.664115697232256e-18,
+    "thomson_opacity_per_ln_a": 6.227821451672908e-05,
+    "thomson_opacity_proper_s_inv": 7.37069020003348e-21,
+    "z": 20.0
+  },
+  "claim_gates": {
+    "historic_u5_cross_history_average": "HOLD_ORIGINAL_TOLERANCE_NOT_MET",
+    "rei_production": "UNCHANGED",
+    "strict_rei_boundary_admission": "HOLD",
+    "temporal_refinement": "NOT_RUN",
+    "u7_independent_result_review": "PENDING"
+  },
+  "decision": "CANDIDATE_ONLY_NOT_ADMITTED_FOR_REI",
+  "original_c_fullprecision_comparison": {
+    "Tm_relative_error": 1.3361746423260956e-14,
+    "original_c_Tm_K": 9.306042400381891,
+    "original_c_xe": 0.00021034919293635025,
+    "python_Tm_K": 9.306042400382015,
+    "python_xe": 0.00021034919293635483,
+    "source_cubic_global_i": 69997,
+    "source_fraction": 0.6369272874144372,
+    "xe_relative_error": 2.177690398906047e-14
+  },
+  "r3f_original_c_formatted_comparison": {
+    "Tm_K": 9.306042400380866,
+    "identity": "research/rec_r3f_ncp_yhe_20261016/RESEARCH_REPORT_KO.md:41; display precision differs from U7 fullprecision C oracle",
+    "xe": 0.000210349192936
+  },
+  "recipient_baseline": {
+    "normalization_difference": "HyRec uses 3.97153 in fHe denominator; REI uses 4",
+    "recipient_helium_nuclei_per_H": 0.08130135170951498,
+    "source_helium_nuclei_per_H": 0.08188416223421702,
+    "target_scenario_sha256": "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"
+  },
+  "schema": "rec.hyrec.z20_candidate.v1",
+  "source_identity": {
+    "original_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "python_execution_commit": "cb3d130c0a54d8cc2336fd1b1ec7e59e8e7f3b3c",
+    "source_clock": "ln(a)=-ln(1+z), source h=8.49e-5, q=0 FLRW, metric -+++",
+    "source_cosmology_canonical_sha256": "d4cd69a722ff5c9c73a275b5a5731aca9ae48aca3fd73af723c540f2fdd012d0",
+    "u7_candidate_raw_sha256": "b62da75a9f4994e2441aa5472f7654fb30372af386e6d0d6287cc676e446a27c",
+    "u7_verification_sha256": "203ed2182d986e12f78a9106fc86adc04ce639850cd96cad631162e40f570fa3",
+    "units": "SI except source dimensionless fractions"
+  }
+}
