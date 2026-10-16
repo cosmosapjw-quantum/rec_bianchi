@@ -13,7 +13,7 @@ For **portable runnable source + actual sandbox C h/h2/h4 stdout, analytical cau
 ```bash
 rclone copyto --immutable 'gdrv:rec_bianchi_research_backups/20261016/R3H_SOURCE_C_P3/REC_R3H_P3_SOURCE_C_REFINEMENT_20261016.zip' "$NEW_WORKSPACE/R3H_P3.zip"
 printf '%s  %s\n' '63419c2583019df60817df3fc8837aa8102d88d0316594066dcac45a6a24b485' "$NEW_WORKSPACE/R3H_P3.zip" | sha256sum -c -
-mkdir -m 700 "$NEW_WORKSPACE/r3h_verified" 
+mkdir -m 700 "$NEW_WORKSPACE/r3h_verified"
 unzip -q "$NEW_WORKSPACE/R3H_P3.zip" -d "$NEW_WORKSPACE/r3h_verified"
 ```
 The preceding `NEW_WORKSPACE` must be a new isolated directory, never the user's dirty working checkout. If rclone is unavailable, retrieve the same exact archive via connected Google Drive file ID `18HfDLLsRgOJMZSp_VMW5FRaUFZfQeOIn` and check its SHA; otherwise reproduce only the missing bounded controls from original sources and preserve the failure. The separate 9-case roundoff audit ZIP is at `gdrv:rec_bianchi_research_backups/20261016/R3H_U5_IEEE_P2/REC_R3H_P2_IEEE_SHADOW_SANDBOX_20261016.zip`, SHA256 `a4a966eb346abd9a29e1933612780d91e1f1ccb665e1dad555d1f1cd40f936be`. NEVER assume these are native PR99 raw U5 archives: P2 contains a carefully labelled numerical fixture and self-tests.
@@ -41,4 +41,4 @@ Latest separate `rei_bianchi` source-clock science as of this handoff was PR #17
 7. Every coherent completed stage: commit real source/tests/results and an updated DAG with `PASS/FAIL/HOLD/NOT_RUN`, publish a draft stacked GitHub PR, make create-only cloud backups in `dbx:bianchi/rec_bianchi/20261016/` and `gdrv:rec_bianchi_research_backups/20261016/`, verify each raw archive with `rclone cat ...|sha256sum` on both and keep receipt. Never include private keys or unrelated output; never edit original dirty checkout. If no Dropbox exists, record BACKUP_PARTIAL.
 8. Return genuine implementation range, executed commands, test counts, `original_C` and Python clock-matched relative errors, signed three-level differences, source/commit/archive SHA, CPU/RSS/wall metrics, phase DAG, cloud readbacks, PR URLs and exact minimal remaining physical blocker. If work stops early, preserve useful partial source and evidence. Do not replace doing physics with more planning.
 
-No user file downloads or further authorization are required for the already requested local research and NCP calculations. User shouldn't have to repeat the prompt or run SSH. 
+No user file downloads or further authorization are required for the already requested local research and NCP calculations. User shouldn't have to repeat the prompt or run SSH.
