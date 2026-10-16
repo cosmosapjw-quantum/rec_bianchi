@@ -1,0 +1,222 @@
+{
+  "common_input_binary_sha256": "db1e8dc1384bb5cd7d91c276174d8bb0e24402cf722e78f9febb7c591e43e27f",
+  "common_input_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/scripts/c_harness/original_hyrec_full_source_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "30a3c95e3bedf89183d61d1558b5e52d40ede2e499cb698d365b6686ada4a43e",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.42021947901230305
+  },
+  "common_input_parity": {
+    "evaluations": 32,
+    "full_evaluations_compared": 32,
+    "max_average_tolerance_ratio": 4.592299406252126e-06,
+    "max_lyman_tolerance_ratio": 2.880415399536601e-06,
+    "max_rhs_scaled": 1.5161720010449346e-13,
+    "max_virtual_tolerance_ratio": 4.525006110073601e-06,
+    "photon_limit": "1e-7 max(|C|,|Python|) + 1e-10 fBB(E,Tr)",
+    "rhs_scaled_limit": 2e-10,
+    "status": "PASS"
+  },
+  "first_failure": null,
+  "integrated_photon_parity": {
+    "columns": 8,
+    "limits": "abs(C-P) <= 1e-7 max(abs(C),abs(P)) + 1e-10 fBB(E,Tr)",
+    "max_tolerance_ratio": {
+      "average": 5.1232699759945545e-06,
+      "lyman": 2.5375235708045017e-06,
+      "virtual": 5.031786161775726e-06
+    },
+    "status": "PASS"
+  },
+  "integrated_rhs_parity": {
+    "criterion": "|Python-C|/max(1,|C|) <= 2e-7",
+    "helium_values": 8,
+    "hydrogen_values": 8,
+    "max_helium_scaled": 1.5959455978986625e-16,
+    "max_hydrogen_scaled": 9.010847623613927e-14,
+    "status": "PASS"
+  },
+  "integrated_state_parity": {
+    "accepted_steps": 8,
+    "limits": {
+      "Tm_relative": 5e-10,
+      "xHII_xe_scaled": 5e-09,
+      "xHeII_abs": 5e-10
+    },
+    "max_error": {
+      "Tm_relative": 0.0,
+      "xHII_scaled": 0.0,
+      "xHeII_abs": 5.421010862427522e-20,
+      "xe_scaled": 0.0
+    },
+    "nodes": 9,
+    "status": "PASS",
+    "stepwise_differences": [
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 0.0,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 2.710505431213761e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 2.710505431213761e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 2.710505431213761e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 2.710505431213761e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 5.421010862427522e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 5.421010862427522e-20,
+        "xe": 0.0
+      },
+      {
+        "Tm_K": 0.0,
+        "xHII": 0.0,
+        "xHeII": 2.710505431213761e-20,
+        "xe": 0.0
+      }
+    ]
+  },
+  "native_binary_sha256": "b544e8c0b6af93a320d52aa90a5fb5373f383356c465f960f0925fc8406f94c3",
+  "native_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/scripts/c_harness/original_hyrec_full_start_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/history.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/helium.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/native_full_start_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "70ec86a438b340acf2da5a41b461cff4daa096a48cbced5163471557625d652f",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.7263648060616106
+  },
+  "native_rows": {
+    "accepted_state_nodes": 9,
+    "accepted_steps": 8,
+    "average_bins": 311,
+    "interpretation": "one NODE record is the U1 boundary; each of eight STEP records adds one accepted output node",
+    "lyman_bins": 3,
+    "printed_start_node_rows": 1,
+    "virtual_bins": 311
+  },
+  "native_run": {
+    "command": [
+      "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/research/rec_r3g_primordial_20261016/full_start_011/native_full_start_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "9a09a13cd7bc5fc76c2d576f672744f33e3758ae4b954de437e9086d4d431d4f",
+    "wall_s": 0.07166323799174279
+  },
+  "original_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+  },
+  "photon_history": {
+    "average_virtual_bins_per_column": 311,
+    "committed_columns": 8,
+    "future_columns_initialized": "NaN sentinel; only current accepted column committed",
+    "lyman_bins_per_column": 3,
+    "virtual_bins_per_column": 311
+  },
+  "python_full_evaluations": 32,
+  "python_history_sha256": "6b486c7819388146fcae255cfc66c2b91564af6f12f88e88c9246c25d3f5a528",
+  "resources": {
+    "OMP_NUM_THREADS": 1,
+    "address_space_limit_bytes": 2147483648,
+    "allowed_affinity": [
+      0,
+      1
+    ],
+    "children_cpu_s": 2.259767,
+    "children_peak_rss_bytes": 105537536,
+    "parent_cpu_s": 0.213723,
+    "parent_peak_rss_bytes": 418332672,
+    "prelimit_vm_size_kib": 277004,
+    "wall_limit_s": 180,
+    "wall_s": 1.4248033120529726
+  },
+  "scope": "8 accepted source-grid H+He FULL start steps; not full-history admission",
+  "source_stage": {
+    "XHEII_MIN": 1e-06,
+    "joint_H_He": true,
+    "native_dlna": 8.49e-05,
+    "post_saha_flags": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "PASS",
+  "u1_accepted_rows_sha256_expected": "27785d0adfddfb960d007459a9969fb9ef4a74a38415e928238fc94a107177a4",
+  "u1_checkpoint": {
+    "accepted_rows_sha256_expected": "27785d0adfddfb960d007459a9969fb9ef4a74a38415e928238fc94a107177a4",
+    "final_index": 18223,
+    "producer_sha256": "ce41e63a508871b47fee0386b8b9ae0e246948a454c6d5ad74abf46293b9d0a7",
+    "receipt_sha256": "39f4c78d3cf78afd615b1a388f2988585c9724b9e7ae980a22632cdc2ede3ebb",
+    "xHeII": 0.00019950947032284656,
+    "z": 1702.072263548342
+  },
+  "u1_producer_sha256": "ce41e63a508871b47fee0386b8b9ae0e246948a454c6d5ad74abf46293b9d0a7",
+  "u1_review_receipt_sha256": "39f4c78d3cf78afd615b1a388f2988585c9724b9e7ae980a22632cdc2ede3ebb"
+}

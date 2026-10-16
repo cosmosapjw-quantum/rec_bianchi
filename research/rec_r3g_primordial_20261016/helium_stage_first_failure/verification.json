@@ -1,0 +1,102 @@
+{
+  "acceptance_scaled_max": {
+    "Tm_K": 2e-12,
+    "helium_rhs_dln_a": 2e-10,
+    "xHII": 2e-12,
+    "xHeI": 2e-12,
+    "xHeII": 2e-12,
+    "xHeIII": 2e-12,
+    "xe": 2e-12,
+    "z": 2e-12
+  },
+  "c_binary_sha256": "703b8fbee3374444f19f6303c19651ca5ca16a60f94d1b1c7d24d4333c3b5548",
+  "c_compiler_command": [
+    "gcc",
+    "-std=gnu99",
+    "-O2",
+    "-fno-fast-math",
+    "-I",
+    "/tmp/r3g-helium-evidence-run-004/source",
+    "/home/cosmosapjw/rec_theory_runs/REC_R3G_20261016/fresh_clone/scripts/c_harness/original_hyrec_helium_stage_harness.c",
+    "/tmp/r3g-helium-evidence-run-004/source/helium.c",
+    "-lm",
+    "-o",
+    "/tmp/r3g-helium-evidence-run-004/helium_stage_oracle"
+  ],
+  "c_shared_library_command": [
+    "gcc",
+    "-std=gnu99",
+    "-O2",
+    "-fno-fast-math",
+    "-shared",
+    "-fPIC",
+    "-I",
+    "/tmp/r3g-helium-evidence-run-004/source",
+    "/tmp/r3g-helium-evidence-run-004/source/helium.c",
+    "-lm",
+    "-o",
+    "/tmp/r3g-helium-evidence-run-004/liboriginal_helium.so"
+  ],
+  "common_input_rhs_map_parity": {
+    "first_failure": null,
+    "limit": 2e-10,
+    "max_abs_difference": 1.0249578963339445e-12,
+    "max_scaled_difference": 1.5546057544086377e-13,
+    "shared_library_sha256": "10592f90e652cc87c1e449d2e24142e33148c901c80a1dd9c36af279b111368a"
+  },
+  "compared_rows_before_stop": 7734,
+  "first_failure": {
+    "C": 2.6232193572979667e-06,
+    "Python": -2.2427103108284326e-06,
+    "absolute_difference": 4.865929668126399e-06,
+    "index": 7733,
+    "kind": "PARITY_TOLERANCE",
+    "limit": 2e-10,
+    "quantity": "helium_rhs_dln_a",
+    "scaled_difference": 4.865929668126399e-06
+  },
+  "first_helium_ode_index": 12083,
+  "independence_limit": "Python stages are independently computed; C output is used only as oracle. No H FULL evolution or full-history claim.",
+  "izH0": 18223,
+  "max_abs_difference": {
+    "Tm_K": 0.0,
+    "helium_rhs_dln_a": 4.865929668126399e-06,
+    "xHII": 1.1102230246251565e-16,
+    "xHeI": 1.3877787807814457e-17,
+    "xHeII": 1.3877787807814457e-16,
+    "xHeIII": 1.3877787807814457e-16,
+    "xe": 2.220446049250313e-16,
+    "z": 0.0
+  },
+  "max_scaled_difference_d_over_max_1_abs_C": {
+    "Tm_K": 0.0,
+    "helium_rhs_dln_a": 4.865929668126399e-06,
+    "xHII": 1.1102230246251565e-16,
+    "xHeI": 1.3877787807814457e-17,
+    "xHeII": 1.3877787807814457e-16,
+    "xHeIII": 1.3877787807814457e-16,
+    "xe": 2.0523879967199748e-16,
+    "z": 0.0
+  },
+  "raw_oracle": {
+    "stderr_path": "/tmp/r3g-helium-evidence-run-004/oracle_stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "/tmp/r3g-helium-evidence-run-004/oracle_stdout.txt",
+    "stdout_sha256": "63c6c1cb5d50bd296f6633c17f5ea8e674d42fdbc6c49ee653dc5e74c6148161"
+  },
+  "rows": 18224,
+  "scope": "HeIII Saha + HeII->HeI through izH0; H Saha closure; Tm steady-state",
+  "source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976"
+  },
+  "source_stage_boundaries": {
+    "HeIII_Saha_indices": [
+      0,
+      7715
+    ],
+    "end_inclusive_izH0": 18223
+  },
+  "status": "FAIL",
+  "z_at_izH0": 1702.072263548342
+}
