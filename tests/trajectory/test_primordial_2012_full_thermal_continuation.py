@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -69,3 +70,28 @@ def test_u6_rejects_unreviewed_or_oversized_work():
     with pytest.raises(ValueError,match="U6_COMMON_INPUT_C_ORACLE_REQUIRED"):
         continue_full_thermal_to_rt({}, {}, None, None,
             common_input_oracle=lambda *_:None,max_extra_accepted=1)
+
+
+@pytest.mark.parametrize("hard_cpu",[270,120])
+def test_u6_capture_never_raises_inherited_cpu_hard_limit(tmp_path,hard_cpu):
+    """Actual capture route must work after the parent lowers its hard cap."""
+    code=r'''import importlib.util,json,os,resource,sys
+from pathlib import Path
+script=Path(sys.argv[1]); target=Path(sys.argv[2]); cap=int(sys.argv[3])
+sys.path.insert(0,str(script.parent))
+soft,hard=resource.getrlimit(resource.RLIMIT_CPU)
+if hard!=resource.RLIM_INFINITY: cap=min(cap,hard)
+resource.setrlimit(resource.RLIMIT_CPU,(cap,cap))
+spec=importlib.util.spec_from_file_location("u6_capture_test",script)
+mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+child="import json,resource; print(json.dumps({'cpu':resource.getrlimit(resource.RLIMIT_CPU),'as':resource.getrlimit(resource.RLIMIT_AS)}))"
+result=mod.run_capture_u6([sys.executable,"-c",child],target,target/"stdout.json",target/"stderr.txt",5,os.environ.copy())
+print(json.dumps({'result':result,'child':json.loads((target/"stdout.json").read_text()),'parent_cap':cap}))'''
+    proc=subprocess.run([sys.executable,"-c",code,str(SCRIPT),str(tmp_path),str(hard_cpu)],
+                        text=True,capture_output=True,timeout=15,check=True)
+    receipt=json.loads(proc.stdout)
+    assert receipt["result"]["returncode"]==0
+    assert receipt["child"]["cpu"][0]<=receipt["parent_cap"]
+    assert receipt["child"]["cpu"][1]<=receipt["parent_cap"]
+    assert receipt["child"]["as"][0]<=2*1024**3
+    assert receipt["child"]["as"][1]<=2*1024**3

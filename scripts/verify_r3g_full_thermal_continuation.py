@@ -9,7 +9,9 @@ import math
 import os
 import resource
 import signal
+import subprocess
 import sys
+import time
 import traceback
 from pathlib import Path
 
@@ -28,7 +30,7 @@ from full_bianchi_hyrec.trajectory.primordial_2012_helium import HyRec2012Cosmol
 from full_bianchi_hyrec.trajectory.primordial_2012_full_start import make_hmla_source
 from full_bianchi_hyrec.trajectory.primitive_rates import OriginalHyRecPrimitiveRateTable
 from verify_r3g_continuation import (safe_source,zip_member_hashes,PINNED_ZIP_SHA,
-    PINNED_SOURCE,run_capture,compare_state,load_u2_verifier)
+    PINNED_SOURCE,compare_state,load_u2_verifier)
 from verify_r3g_hydrogen_transition import save_checkpoint
 from verify_r3g_thermal_transition import CombinedOracle
 
@@ -39,6 +41,27 @@ U6_FILES=(
  "scripts/c_harness/original_hyrec_full_thermal_to_rt_harness.c",
  "tests/trajectory/test_primordial_2012_full_thermal_continuation.py",
 )
+
+
+def child_limits_u6() -> None:
+    """Lower inherited limits without ever raising a hard limit in preexec."""
+    for kind,cap in ((resource.RLIMIT_AS,2*1024**3),(resource.RLIMIT_CPU,270)):
+        soft,hard=resource.getrlimit(kind)
+        finite=[cap]
+        if soft!=resource.RLIM_INFINITY: finite.append(soft)
+        if hard!=resource.RLIM_INFINITY: finite.append(hard)
+        target=min(finite)
+        resource.setrlimit(kind,(target,target))
+
+
+def run_capture_u6(cmd,cwd,stdout,stderr,timeout,env):
+    started=time.monotonic()
+    with Path(stdout).open("xb") as out,Path(stderr).open("xb") as err:
+        proc=subprocess.run(cmd,cwd=cwd,stdout=out,stderr=err,timeout=timeout,
+                            env=env,preexec_fn=child_limits_u6,check=False)
+    return {"command":cmd,"returncode":proc.returncode,
+            "wall_s":time.monotonic()-started,
+            "stdout_sha256":sha256(stdout),"stderr_sha256":sha256(stderr)}
 
 
 def parse_native(path:Path) -> dict:
@@ -159,21 +182,21 @@ def main() -> int:
         common_cc=["gcc","-std=gnu99","-O2","-fno-fast-math","-shared","-fPIC","-I",str(src),
                    str(ROOT/"scripts/c_harness/original_hyrec_full_source_harness.c"),
                    str(src/"hydrogen.c"),str(src/"hyrectools.c"),"-lm","-o",str(ev/"liboriginal_full_source.so")]
-        report["common_build"]=run_capture(common_cc,src,ev/"common_build_stdout.txt",ev/"common_build_stderr.txt",30,os.environ.copy())
+        report["common_build"]=run_capture_u6(common_cc,src,ev/"common_build_stdout.txt",ev/"common_build_stderr.txt",30,os.environ.copy())
         if report["common_build"]["returncode"]: raise RuntimeError("U6_COMMON_C_BUILD_FAILED")
         thermal_cc=["gcc","-std=gnu99","-O2","-fno-fast-math","-shared","-fPIC","-I",str(src),
                     str(src/"history.c"),str(src/"hydrogen.c"),str(src/"helium.c"),str(src/"hyrectools.c"),
                     "-lm","-o",str(ev/"liboriginal_history.so")]
-        report["thermal_build"]=run_capture(thermal_cc,src,ev/"thermal_build_stdout.txt",ev/"thermal_build_stderr.txt",30,os.environ.copy())
+        report["thermal_build"]=run_capture_u6(thermal_cc,src,ev/"thermal_build_stdout.txt",ev/"thermal_build_stderr.txt",30,os.environ.copy())
         if report["thermal_build"]["returncode"]: raise RuntimeError("U6_THERMAL_C_BUILD_FAILED")
         native_cc=["gcc","-std=gnu99","-O2","-fno-fast-math","-I",str(src),
                    str(ROOT/"scripts/c_harness/original_hyrec_full_thermal_to_rt_harness.c"),
                    str(src/"history.c"),str(src/"hydrogen.c"),str(src/"helium.c"),str(src/"hyrectools.c"),
                    "-lm","-o",str(ev/"native_u6_oracle")]
-        report["native_build"]=run_capture(native_cc,src,ev/"native_build_stdout.txt",ev/"native_build_stderr.txt",30,os.environ.copy())
+        report["native_build"]=run_capture_u6(native_cc,src,ev/"native_build_stdout.txt",ev/"native_build_stderr.txt",30,os.environ.copy())
         if report["native_build"]["returncode"]: raise RuntimeError("U6_NATIVE_C_BUILD_FAILED")
         report["native_binary_sha256"]=sha256(ev/"native_u6_oracle")
-        report["native_run"]=run_capture([str(ev/"native_u6_oracle"),str(args.max_extra_accepted)],
+        report["native_run"]=run_capture_u6([str(ev/"native_u6_oracle"),str(args.max_extra_accepted)],
             src,ev/"native_oracle_stdout.csv",ev/"native_oracle_stderr.txt",60,os.environ.copy())
         if report["native_run"]["returncode"]: raise RuntimeError("U6_NATIVE_C_ORACLE_FAILED")
         native=parse_native(ev/"native_oracle_stdout.csv")

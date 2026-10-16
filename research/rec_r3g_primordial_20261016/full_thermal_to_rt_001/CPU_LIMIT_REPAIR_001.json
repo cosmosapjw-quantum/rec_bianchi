@@ -1,0 +1,60 @@
+{
+  "first_preflight_status": "HOLD_CHILD_LIMIT_INHERITANCE",
+  "focused_tests": "6 passed in 4.24s",
+  "ncp_executed": false,
+  "observed_cases": [
+    {
+      "capture": {
+        "command": [
+          "/usr/bin/python",
+          "-c",
+          "import json,resource; print(json.dumps({'cpu':resource.getrlimit(resource.RLIMIT_CPU),'as':resource.getrlimit(resource.RLIMIT_AS)}))"
+        ],
+        "returncode": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "ebcc4b8bc4d804a8585a94adea0eb41546ee3f1ef841adf636b48b976f71e279",
+        "wall_s": 0.03970728209242225
+      },
+      "child": {
+        "as": [
+          2147483648,
+          2147483648
+        ],
+        "cpu": [
+          270,
+          270
+        ]
+      },
+      "inherited_cpu_hard": 270
+    },
+    {
+      "capture": {
+        "command": [
+          "/usr/bin/python",
+          "-c",
+          "import json,resource; print(json.dumps({'cpu':resource.getrlimit(resource.RLIMIT_CPU),'as':resource.getrlimit(resource.RLIMIT_AS)}))"
+        ],
+        "returncode": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "dc5ef968c18a300d14b61cabeca7e263cdd9924a11e33f022131c40fc464375a",
+        "wall_s": 0.03870846203062683
+      },
+      "child": {
+        "as": [
+          2147483648,
+          2147483648
+        ],
+        "cpu": [
+          120,
+          120
+        ]
+      },
+      "inherited_cpu_hard": 120
+    }
+  ],
+  "physics_changes": false,
+  "script_sha256": "573328d89f09a8f5c470501feb8b7112b07997dff0a29e63e3f3a2387545b6bc",
+  "status": "CAPTURE_LIMIT_INHERITANCE_PASS",
+  "task": "R3G-U6-CPU-LIMIT-REPAIR-001",
+  "test_sha256": "dcbe2826b4ec1c9a285fdb6208595b0b1f55046c21489e86bfb7895b3bf91663"
+}
