@@ -89,6 +89,31 @@ tool-transcript traceback, with no durable stdout/stderr or exit code.
 run sets BLAS/OMP thread counts before NumPy import and retains the original
 2 GiB address-space limit. No missing `_008` receipt is reconstructed.
 
+U3 resumes the independently computed U2 state and causal photon history.
+The NCP run accepted 374 additional source-grid steps, from global index
+18231 to 18605, and evaluated the Python FULL atomic source 1,497 times.
+The first HeII cutoff (`xHeII<=1e-6`) occurs at global index 18603,
+`z=1648.004601195495`; the run then accepts exactly two H-only steps.
+The final state is `z=1647.72462398495`, `xe=xHII=0.9979258049614494`,
+`xHeII=0`, and `Tm=4493.594294033827 K`. H post-Saha remains active.
+The raw NCP archive was returned byte-identically to the owner PC (SHA-256
+`6160a4810eda1edeb2db5c96ffd342202d87bb223c91d0d9bdf3331bc44a2527`).
+The compact run receipt is [`continuation_001/verification.json`](continuation_001/verification.json)
+and the return receipt is [`continuation_001/NCP_RETURN.json`](continuation_001/NCP_RETURN.json).
+
+An independent reviewer recomputed all 374 original-C/Python state and RHS
+comparisons and all 233,750 spectral values from raw output and admitted
+**U3 scoped PASS**. Maximum scaled errors were `1.11247806e-16` for `xe`,
+`7.08642520e-11` for H RHS, `9.05525654e-16` for He RHS; maximum photon
+tolerance ratio was `0.00121115801`. The largest Schur normalized residual
+was `7.12302942e-16`. The accepted outgoing history remained causal; the
+endpoint diagnostic was not committed as a photon-history column. The
+command used one NCP CPU, 2 GiB virtual-address limit, BLAS/OMP one thread,
+and an external 600 s timeout. Actual whole-command wall time was 8.97 s,
+user plus system CPU 8.89 s, and peak RSS 115,596 KiB. The Python
+`RLIMIT_CPU=540s` is process-local, not a cumulative parent-plus-child cap.
+No full-history or refinement result follows from this bounded PASS.
+
 ## Actual symbolic checks
 
 Wolfram Language returned zero for the Saha logarithmic derivative residual
@@ -110,3 +135,17 @@ comparison with `x_e=0.000210349192936` and `Tm=9.306042400380866 K`.
 It projects helium neutral conditionally because C stdout lacks independent
 species. A new Python `z=20` donor requires a validated independent FULL
 history; no REI production scenario or checkpoint is changed here.
+
+The versioned REC-owned interface in `primordial_rei_interface.py` can
+represent the source and recipient number-density conventions separately,
+interpolate a *validated* source-native history at `z=20`, and compute
+Thomson/thermal quantities. It checks full-grid, source-stage, source-parity,
+independent-review and numerical-refinement evidence before admitting a
+physical boundary. Its actual output in
+[`rei_interface_005/BOUNDARY_HOLD.json`](rei_interface_005/BOUNDARY_HOLD.json)
+is `HOLD_MISSING_VALIDATED_HISTORY`, with both boundary records null,
+activation disabled and `adopted_into_REI=false`. Independent review passed
+the implementation's fail-closed checks, including duplicate refinement,
+fake Richardson/parity evidence and same-unit H/nH consistency, but did not
+admit a `z=20` scientific value. The final-code command and tests are in
+[`rei_interface_005/REPAIR_RECEIPT.json`](rei_interface_005/REPAIR_RECEIPT.json).

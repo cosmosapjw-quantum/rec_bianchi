@@ -1,0 +1,214 @@
+{
+  "artifact_sha256": {
+    "checkpoint_0000_start.json": "b5d0bfd3dcd8262231a23183b0d2b5d75e67ffa74aa1e4330f4b508d3a9b132f",
+    "checkpoint_0000_start.npz": "6819302b52f0403050e0cf7842feb37e0b6e2396e62f49c02c4508f03a1f544d",
+    "checkpoint_0128_accepted_0128.json": "94b31aa57ea820a0c36a23b0c5de603b179a3a4fc952bd4a729458e441db7172",
+    "checkpoint_0128_accepted_0128.npz": "9fe29799be655df7c66659512838af986569669e17cb13b17585fc803258afb0",
+    "checkpoint_0256_accepted_0256.json": "cc89efc82f383da8169a28255be67d3c801ba1e9b48f14d9968d8a146206ac1e",
+    "checkpoint_0256_accepted_0256.npz": "cb1eb7171a48144911394ddb2d515920ff12e708eecc8a7c29ebecc1e5d58f01",
+    "checkpoint_0372_event.json": "20dc9b0ed48d3be9d79672a2f9a02e0ce430b971f925eb5f0a7456d3c7fca0c1",
+    "checkpoint_0372_event.npz": "1902e0b21f51878b6aa5b3c73de6cc98349c6f24b7d4565deb11175f7bf9a104",
+    "checkpoint_0374_endpoint_diagnostic.json": "60c58baf2564d510607b37313b53d6fcc3b1a0b1a41a9fd589ef0f61b75a2d4f",
+    "checkpoint_0374_endpoint_diagnostic.npz": "97e54b568191a037f03822472972008952ee6c0eaedf486367d0c29f1c9bbe8b",
+    "checkpoint_0374_stop.json": "7b86be4d2e9c4a3aa53047a20b4408bf2a52be33a94e53a9ee6987ba73b7f12b",
+    "checkpoint_0374_stop.npz": "97e54b568191a037f03822472972008952ee6c0eaedf486367d0c29f1c9bbe8b",
+    "common_build_stderr.txt": "e739412ed4a7f40ce75b4e7e85de0e1d07838a1e34e6fef93d44ba0a82bdd920",
+    "common_build_stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controller_execution_manifest.json": "d548ea7fa744f415ba45dd99d251b3ae773794eeb1e6c46c1c77970babd41805",
+    "liboriginal_full_source.so": "db1e8dc1384bb5cd7d91c276174d8bb0e24402cf722e78f9febb7c591e43e27f",
+    "native_build_stderr.txt": "77ed79151326af631fb7cf1fca01f5ee4e1e50d17478a02654f942e0e5b6627d",
+    "native_build_stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native_continuation_oracle": "e87e772ed65c4a51eedac5e0a4a5bdff06f04a57200199e0a7aedb883b627fb9",
+    "native_oracle_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native_oracle_stdout.csv": "cacf733ebb9d36d9cc8d3d9693eeee9b3ce23b8fd98fcafbe1ccfbf71e269f73",
+    "python_accepted_rows.jsonl": "8e032cb8baefe940471f2623c6bec67a356d4176a31ba3d73384feb99667e136",
+    "source_manifest.json": "15de7b951a66c4f87382727ddcff4f2fb759f270c2202d3a5afec762857c4fe3"
+  },
+  "branch_steps_after_event": 2,
+  "checkpoint_count": 6,
+  "common_input_binary_sha256": "db1e8dc1384bb5cd7d91c276174d8bb0e24402cf722e78f9febb7c591e43e27f",
+  "common_input_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-I",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/capsule_001/source/scripts/c_harness/original_hyrec_full_source_harness.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e739412ed4a7f40ce75b4e7e85de0e1d07838a1e34e6fef93d44ba0a82bdd920",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.7260034599748906
+  },
+  "common_input_sample_ledger": {
+    "columns": [
+      8,
+      9,
+      16,
+      32,
+      64,
+      128,
+      256,
+      379,
+      380,
+      381,
+      382
+    ],
+    "count": 11,
+    "limit": 64,
+    "max_average_tolerance_ratio": 0.0008262407899017263,
+    "max_lyman_tolerance_ratio": 1.300726935894276e-06,
+    "max_rhs_scaled": 2.51909604287448e-13,
+    "max_virtual_tolerance_ratio": 2.6164610513359122e-06
+  },
+  "endpoint_diagnostic": {
+    "column": 18605,
+    "committed_as_trajectory_column": false,
+    "hydrogen_rhs_dln_a": -0.07017209656772791,
+    "matrix_residual": 1.2540524494968312e-16
+  },
+  "event": "HELIUM_CUTOFF",
+  "execution_manifest_sha256": "d548ea7fa744f415ba45dd99d251b3ae773794eeb1e6c46c1c77970babd41805",
+  "first_failure": null,
+  "independence_limit": "This is a bounded q=0 original HyRec H+He input-history continuation; it does not establish a self-consistent Bianchi recombination or CMB prediction.",
+  "integrated_photon_parity": {
+    "limit": "abs(C-P)<=1e-7*max(abs(C),abs(P))+1e-10*fBB",
+    "max_tolerance_ratio": {
+      "average": 0.0012072739262516993,
+      "lyman": 0.001211158006388105,
+      "virtual": 0.001206028284768768
+    }
+  },
+  "integrated_state_parity": {
+    "limits": {
+      "Tm_relative": 5e-10,
+      "xH1s_xHII_xe_scaled": 5e-09,
+      "xHeII_abs": 5e-10
+    },
+    "max_scaled_or_absolute": {
+      "Tm_K": 0.0,
+      "xH1s": 1.0772361387443674e-13,
+      "xHII": 1.1124792880545474e-16,
+      "xHeII": 6.776263578034403e-19,
+      "xe": 1.1124780557609672e-16
+    }
+  },
+  "integrated_trajectory_rhs_parity": {
+    "limit": 2e-07,
+    "max_scaled": {
+      "helium_scaled": 9.055256544598933e-16,
+      "hydrogen_scaled": 7.086425196645152e-11
+    }
+  },
+  "limits": {
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "address_space_bytes": 2147483648,
+    "cpu_affinity": [
+      40
+    ],
+    "cpu_s": 540,
+    "extra_accepted_max": 2048,
+    "python_full_evaluations_max": 8192,
+    "wall_s": 600
+  },
+  "manifest_sha256": "15de7b951a66c4f87382727ddcff4f2fb759f270c2202d3a5afec762857c4fe3",
+  "native_binary_sha256": "e87e772ed65c4a51eedac5e0a4a5bdff06f04a57200199e0a7aedb883b627fb9",
+  "native_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/capsule_001/source/scripts/c_harness/original_hyrec_continuation_harness.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/history.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/native_continuation_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "77ed79151326af631fb7cf1fca01f5ee4e1e50d17478a02654f942e0e5b6627d",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 1.176460329996189
+  },
+  "native_c_end": [
+    "EVENT_TWO_STEPS_COMPLETE",
+    "1",
+    "1",
+    "2",
+    "382"
+  ],
+  "native_c_stdout_sha256": "cacf733ebb9d36d9cc8d3d9693eeee9b3ce23b8fd98fcafbe1ccfbf71e269f73",
+  "native_c_step_rows": 374,
+  "native_run": {
+    "command": [
+      "/root/REC_R3G_PRIMORDIAL_HHE_20261016_001/result_001/native_continuation_oracle",
+      "2048"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "cacf733ebb9d36d9cc8d3d9693eeee9b3ce23b8fd98fcafbe1ccfbf71e269f73",
+    "wall_s": 0.32366250501945615
+  },
+  "original_c_stage_metadata": {
+    "izH0": 18223,
+    "nzrt": 10972,
+    "zH0": 1702.072263548342
+  },
+  "original_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+  },
+  "python_accepted_extra": 374,
+  "python_full_evaluations": 1497,
+  "python_rows_sha256": "8e032cb8baefe940471f2623c6bec67a356d4176a31ba3d73384feb99667e136",
+  "resources": {
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "address_space_limit_bytes": 2147483648,
+    "allowed_affinity": [
+      40
+    ],
+    "cpu_limit_s": 540,
+    "parent_cpu_s": 5.465294000000001,
+    "parent_peak_rss_bytes": 118370304,
+    "wall_limit_s": 600,
+    "wall_s": 7.678483804978896
+  },
+  "scope": "independent Python continuation from reviewed U2 j=8; source-native q=0 interval",
+  "source_zip_sha256_expected": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "EVENT_TWO_STEPS_COMPLETE",
+  "u2_checkpoint_sha256_expected": "6b486c7819388146fcae255cfc66c2b91564af6f12f88e88c9246c25d3f5a528",
+  "u2_endpoint": {
+    "Tm_K": 4638.567394929452,
+    "helium_rhs_f6": -0.02108461736649537,
+    "helium_rhs_f7": -0.020925603717679,
+    "hydrogen_rhs_f6": -0.023931131222127356,
+    "hydrogen_rhs_f7": -0.023998372510091858,
+    "iz": 18231,
+    "post_saha": true,
+    "xH1s": 0.0007288666004594053,
+    "xHII": 0.9992711333995405,
+    "xHeII": 0.00018496985017510528,
+    "xe": 0.9994561032497157,
+    "z": 1700.9159296024009
+  },
+  "u2_producer_sha256_expected": "22e68ae6eef25c24ce7fb79b520edd5f953afa0fb74cb0b87da6f4737a655a31",
+  "u2_receipt_sha256_expected": "93d192707a4f0b00f27b2cf85905c412cda32fe94c1ba33a45fce55219ee20e8"
+}
