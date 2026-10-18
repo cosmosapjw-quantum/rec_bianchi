@@ -94,6 +94,7 @@ class U6RTResult:
 def integrate_u6_rt_boundary(checkpoint: dict, c: HyRec2012Cosmology, source,
                              *, max_extra_accepted: int = MAX_EXTRA_ACCEPTED,
                              max_full_evaluations: int = MAX_FULL_EVALUATIONS,
+                             on_attempt: Callable | None = None,
                              observer: Callable | None = None,
                              on_accept: Callable | None = None) -> U6RTResult:
     if not 1 <= max_extra_accepted <= MAX_EXTRA_ACCEPTED:
@@ -139,6 +140,8 @@ def integrate_u6_rt_boundary(checkpoint: dict, c: HyRec2012Cosmology, source,
         if not (PREFIX_COLUMNS <= j < cap and np.all(np.isfinite(virtual[:, :j])) and
                 np.all(np.isfinite(lyman[:, :j]))):
             raise ArithmeticError(f"UNACCEPTED_PHOTON_HISTORY_READ:{j}")
+        if on_attempt is not None:
+            on_attempt(g, z, xe, tm, j)
         incoming = causal_incoming_from_accepted_histories(
             energies_eV=table.energy_eV, virtual_history=virtual[:, :j],
             lyman_history=lyman[:, :j], z_start=c.redshift(RT_IZ), iz=j,

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import deque
 import hashlib
 import json
 import math
@@ -35,10 +36,10 @@ from full_bianchi_hyrec.trajectory.primordial_2012_refined_u6_rt_boundary import
     integrate_u6_rt_boundary, load_frozen_checkpoint)
 from full_bianchi_hyrec.trajectory.primordial_2012_thermal_transition import source_thermal_rhs
 
-CPU_CAP = 110
-WALL_CAP = 220
+CPU_CAP = 75
+WALL_CAP = 180
 MAX_AVERAGE_FAILURES = 64
-MANIFEST = ROOT/"research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V2.json"
+MANIFEST = ROOT/"research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V4.json"
 
 
 def process_tree_cpu_s() -> float:
@@ -77,6 +78,64 @@ def causal_link_count(table, j: int) -> int:
     if not np.all(np.floor(emit[active]).astype(np.int64)+1<=j-1):
         raise ArithmeticError(f"U6_FUTURE_PHOTON_INDEX:{j}")
     return len(delay)
+
+
+def check_thermal_event_row(row: list[str], expected: dict) -> None:
+    if len(row)!=5 or row[0]!="THERMAL_EVENT" or int(row[1])!=53177:
+        raise ArithmeticError("C_PRIOR_THERMAL_EVENT_FIELDS")
+    for name, token in zip(("delta","thermal_seed_prev2","thermal_seed_prev"),row[2:]):
+        value=float(token)
+        if not math.isfinite(value) or not math.isfinite(float(expected[name])):
+            raise ArithmeticError(f"C_PRIOR_THERMAL_NONFINITE:{name}")
+        if abs(float(expected[name])-value)/max(1.,abs(value))>2.e-10:
+            raise ArithmeticError(f"C_PRIOR_THERMAL_SEED:{name}")
+
+
+class AcceptedEvidenceWriter:
+    """Flush attempt, source and accepted-step bytes before later failure."""
+    def __init__(self, folder: Path):
+        self.files={name:(folder/name).open("x" if name.endswith(".jsonl") else "xb")
+                    for name in ("python_attempts.jsonl", "python_source_evaluations.jsonl",
+                                 "python_accepted_partial.jsonl", "python_partial_virtual_f64le.bin",
+                                 "python_partial_average_f64le.bin", "python_partial_lyman_f64le.bin")}
+        self.accepted=0
+
+    def _row(self,name:str,value:dict) -> None:
+        f=self.files[name]
+        f.write(json.dumps(value,sort_keys=True,allow_nan=False,separators=(",",":"))+"\n")
+        f.flush()
+
+    def attempt(self,g:int,z:float,xe:float,tm:float,j:int) -> None:
+        self._row("python_attempts.jsonl",{"input_iz":g,"photon_col":j,
+            "z":z,"xe":xe,"Tm_K":tm,"accepted_before":self.accepted})
+
+    def source(self,g:int,out) -> None:
+        self._row("python_source_evaluations.jsonl",{
+            "input_iz":g,"hydrogen_rhs":float(out.dxHII_dln_a),
+            "schur_residual":float(out.normalized_matrix_residual),
+            "virtual_sha256":hashlib.sha256(np.asarray(out.outgoing_virtual,dtype="<f8").tobytes()).hexdigest(),
+            "average_sha256":hashlib.sha256(np.asarray(out.average_virtual,dtype="<f8").tobytes()).hexdigest(),
+            "lyman_sha256":hashlib.sha256(np.asarray(out.outgoing_lyman,dtype="<f8").tobytes()).hexdigest()})
+
+    def accept(self,state:dict,step:dict,out) -> None:
+        self._row("python_accepted_partial.jsonl",{"state":state,"step":step})
+        for name,array in (("python_partial_virtual_f64le.bin",out.outgoing_virtual),
+                           ("python_partial_average_f64le.bin",out.average_virtual),
+                           ("python_partial_lyman_f64le.bin",out.outgoing_lyman)):
+            f=self.files[name]
+            f.write(np.asarray(array,dtype="<f8").tobytes())
+            f.flush()
+        self.accepted+=1
+
+    def close(self) -> None:
+        for f in self.files.values(): f.close()
+
+
+def last_jsonl(path: Path) -> dict | None:
+    if not path.is_file(): return None
+    with path.open() as stream:
+        rows=deque(stream,maxlen=1)
+    return json.loads(rows[0]) if rows else None
 
 
 def _run(cmd: list[str], cwd: Path, stdout: Path, stderr: Path,
@@ -148,13 +207,9 @@ def compare_native_stream(path: Path, result, c, table, source, oracle,
                 if counts[tag] != 1 or int(row[1]) != RT_IZ:
                     raise ArithmeticError("C_NODE_GRID")
             elif tag == "THERMAL_EVENT":
-                if counts[tag] != 1 or int(row[1]) != 53177:
+                if counts[tag] != 1:
                     raise ArithmeticError("C_PRIOR_THERMAL_EVENT")
-                for name, value in zip(("delta", "thermal_seed_prev2", "thermal_seed_prev"), row[2:]):
-                    py = result.event[name]
-                    cv_value = float(value)
-                    if abs(py-cv_value)/max(1., abs(cv_value)) > 2.e-10:
-                        raise ArithmeticError(f"C_PRIOR_THERMAL_SEED:{name}")
+                check_thermal_event_row(row,result.event)
             elif tag in ("PV", "PL"):
                 col, b = map(int, row[1:3])
                 expected_tag = "PV" if prefix_position % 314 < 311 else "PL"
@@ -338,7 +393,9 @@ def main() -> None:
                  "max_virtual_tolerance_ratio":0.,"max_average_tolerance_ratio":0.,
                  "max_lyman_tolerance_ratio":0.,"max_thermal_rhs_scaled":0.}
         causal={"checked_links":0,"accepted_inputs":0}
+        writer=AcceptedEvidenceWriter(ev)
         def observer(g,z,xh,tm,vh,lh,out):
+            writer.source(g,out)
             guard_cpu(cpu0,"atomic_source_observer")
             causal["checked_links"]+=causal_link_count(table,g-RT_IZ)
             causal["accepted_inputs"]+=1
@@ -351,9 +408,13 @@ def main() -> None:
                 if not math.isfinite(ratio) or ratio>2.e-10:
                     raise ArithmeticError(f"COMMON_INPUT_THERMAL_RHS:{g}:{ratio}")
                 metrics["max_thermal_rhs_scaled"]=max(metrics["max_thermal_rhs_scaled"],ratio)
-        result=integrate_u6_rt_boundary(cp,c,source,
-            max_extra_accepted=args.max_extra_accepted,
-            max_full_evaluations=args.max_extra_accepted,observer=observer)
+        try:
+            result=integrate_u6_rt_boundary(cp,c,source,
+                max_extra_accepted=args.max_extra_accepted,
+                max_full_evaluations=args.max_extra_accepted,
+                on_attempt=writer.attempt,observer=observer,on_accept=writer.accept)
+        finally:
+            writer.close()
         report["python_result"]={"status":result.status,"steps":len(result.steps),
             "full_evaluations":result.full_evaluations,"rt_stop_iz":result.rt_stop_iz}
         if causal != {"checked_links":313*len(result.steps),
@@ -382,6 +443,14 @@ def main() -> None:
         report["first_failure"]={"type":type(exc).__name__,"message":str(exc)}
     finally:
         signal.alarm(0)
+        report["partial_accepted_sha256"]={name:sha(ev/name) for name in (
+            "python_attempts.jsonl","python_source_evaluations.jsonl",
+            "python_accepted_partial.jsonl","python_partial_virtual_f64le.bin",
+            "python_partial_average_f64le.bin","python_partial_lyman_f64le.bin")
+            if (ev/name).is_file()}
+        report["last_attempt"]=last_jsonl(ev/"python_attempts.jsonl")
+        report["last_source_evaluation"]=last_jsonl(ev/"python_source_evaluations.jsonl")
+        report["last_accepted"]=last_jsonl(ev/"python_accepted_partial.jsonl")
         usage=resource.getrusage(resource.RUSAGE_SELF)
         report["resources"].update({"wall_s":time.monotonic()-start,
             "parent_cpu_s":usage.ru_utime+usage.ru_stime-usage0.ru_utime-usage0.ru_stime,
