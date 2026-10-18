@@ -36,10 +36,10 @@ from full_bianchi_hyrec.trajectory.primordial_2012_refined_u6_rt_boundary import
     integrate_u6_rt_boundary, load_frozen_checkpoint)
 from full_bianchi_hyrec.trajectory.primordial_2012_thermal_transition import source_thermal_rhs
 
-CPU_CAP = 75
+CPU_CAP = 65
 WALL_CAP = 180
 MAX_AVERAGE_FAILURES = 64
-MANIFEST = ROOT/"research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V4.json"
+MANIFEST = ROOT/"research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V5.json"
 
 
 def process_tree_cpu_s() -> float:
