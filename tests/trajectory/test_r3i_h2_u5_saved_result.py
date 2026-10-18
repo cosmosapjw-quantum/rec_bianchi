@@ -7,7 +7,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "src"))
-from verify_r3i_h2_u5_saved_result import validate_record_order, causal_link_indices
+from verify_r3i_h2_u5_saved_result import (
+    validate_record_order, causal_link_indices, thermal_latch_condition,
+    remaining_budget, EVENT_IZ, START_IZ)
 from r3i_u5_average_forensic import numerical_gates, phi80
 
 
@@ -58,3 +60,29 @@ def test_missing_step_record_fails():
     with pytest.raises(ArithmeticError, match="C_STEP_ORDER"):
         validate_record_order("STEP", ["STEP", "1"], phase="STEP", i=0,
                               col=2006, bin_index=0)
+
+
+def test_thermal_switch_is_one_time_latch():
+    event = EVENT_IZ - START_IZ
+    assert thermal_latch_condition(event-1, 0.0004997842898611937, False)
+    assert not thermal_latch_condition(event-1, 0.0004997842898611937, True)
+    assert not thermal_latch_condition(event-1, 0.0005000545426558922, False)
+    assert thermal_latch_condition(event, 0.0005000545426558922, True)
+    assert not thermal_latch_condition(event, 0.0004999870062093459, True)
+    # The saved second input legitimately drops below the trigger.
+    assert thermal_latch_condition(event+1, 0.0004999870062093459, True)
+    assert not thermal_latch_condition(event+1, 0.0004999870062093459, False)
+    assert not thermal_latch_condition(event+1, float("nan"), True)
+
+
+def test_missing_thermal_event_record_fails_at_event_step():
+    event = EVENT_IZ - START_IZ
+    with pytest.raises(ArithmeticError, match="C_THERMAL_EVENT_MISSING"):
+        validate_record_order("STEP", ["STEP", str(event)], phase="STEP", i=event,
+                              col=2006, bin_index=0)
+
+
+def test_cumulative_cap_debits_prior_cost_and_is_bounded():
+    assert remaining_budget(120.315836, 179.17210247197) == (290, 480)
+    with pytest.raises(ArithmeticError, match="AUDIT_CUMULATIVE_BUDGET_EXHAUSTED"):
+        remaining_budget(451., 0.)

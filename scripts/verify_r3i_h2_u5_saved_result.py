@@ -51,6 +51,18 @@ FIELDS_PER_STEP = 625
 EVENT_IZ = 53177
 CPU_CAP = 450
 WALL_CAP = 750
+PRIOR_AUDIT_SHA = "5a13fc32d6a5fe591992d3097d2679c9d9ce22ac9f1833d2107c6a273cd9fc2f"
+PRIOR_LAUNCHER_TIME_SHA = "d13ecdf9e65fccede426ee0779ce5d9668da3a88d0af1f31ab2d5fd540beb28c"
+PRIOR_LAUNCHER_WALL_S = 156.58
+PRIOR_DIAGNOSTICS_SHA = "a9a4c640a55ecf9b1e3a69301412dacaadceebdd738380da316cf1931f151eda"
+PRIOR_RAW_FAILURES_SHA = "1b5cbda932cfb068563a39abeeabfb88b7e77ae7f6c8cab3ba11cb8731b4f16d"
+SMOKE_SHAS = (
+    "0ba462c1113e92a7755b099dd3f13b5269fe9e5c8f7ebfc81e0143305d742fd6",
+    "bc1bced471bde01e250986288a092451b59925f760efc15ee7a2b86ff731d5d5",
+    "0381fac231dafff8974eb8c346c7047d39573ccc133dae0dded91c613fc4224b",
+)
+PRIOR_CPU_S = 120.315836
+PRIOR_WALL_S = 179.17210247197
 
 
 def require(cond: bool, code: str) -> None:
@@ -90,6 +102,8 @@ def validate_record_order(tag: str, row: list[str], *, phase: str, i: int,
         require(tag == "BASE", "C_BASE_ORDER")
         return "STEP", 0, col, 0
     if phase == "STEP":
+        if i == EVENT_IZ-START_IZ:
+            require(tag == "THERMAL_EVENT", "C_THERMAL_EVENT_MISSING")
         if tag == "THERMAL_EVENT":
             require(i == EVENT_IZ - START_IZ, "C_THERMAL_EVENT_ORDER")
             return "EVENT_STEP", i, col, 0
@@ -124,6 +138,62 @@ def causal_link_indices(table, j: int, dlna: float = 4.245e-5) -> int:
     floor = np.floor(emit[active]).astype(np.int64)
     require(np.all(floor + 1 <= j - 1), f"CAUSAL_FUTURE_ENDPOINT:{j}")
     return len(lookback)
+
+
+def thermal_latch_condition(step: int, delta: float, coupled: bool) -> bool:
+    """DLNT_MAX triggers the source thermal branch once at event input."""
+    if not math.isfinite(delta):
+        return False
+    event_step = EVENT_IZ - START_IZ
+    return ((not coupled and delta < 5.e-4) if step < event_step else
+            (coupled and delta >= 5.e-4) if step == event_step else coupled)
+
+
+def remaining_budget(prior_cpu_s: float, prior_launcher_wall_s: float) -> tuple[int, int]:
+    """Charge a prior failed audit; integer limits conservatively round down."""
+    require(all(math.isfinite(v) and v >= 0. for v in
+                (prior_cpu_s, prior_launcher_wall_s)), "PRIOR_COST_NONFINITE")
+    cpu = min(290, math.floor(CPU_CAP-prior_cpu_s))
+    wall = min(480, math.floor(WALL_CAP-prior_launcher_wall_s))
+    require(cpu > 0 and wall > 0, "AUDIT_CUMULATIVE_BUDGET_EXHAUSTED")
+    return cpu, wall
+
+
+def verify_prior_audit(base: Path) -> dict:
+    receipt = base / "full_run_001/audit.json"
+    launcher_time = base / "full_run_001_time.txt"
+    diagnostics = base / "full_run_001/average_diagnostics.jsonl"
+    raw_failures = base / "full_run_001/average_raw_failures.jsonl"
+    require(sha(receipt) == PRIOR_AUDIT_SHA and
+            sha(launcher_time) == PRIOR_LAUNCHER_TIME_SHA and
+            sha(diagnostics) == PRIOR_DIAGNOSTICS_SHA and
+            sha(raw_failures) == PRIOR_RAW_FAILURES_SHA, "PRIOR_AUDIT_RECEIPTS_SHA")
+    for n, expected in enumerate(SMOKE_SHAS, 1):
+        require(sha(base / f"local_smoke_00{n}/audit.json") == expected,
+                f"PRIOR_SMOKE_RECEIPT_SHA:{n}")
+    data = json.loads(receipt.read_text())
+    require(data["status"] == "FAIL" and
+            data["first_failure"]["message"] == "THERMAL_SWITCH_CONDITION:14726" and
+            data["provenance"]["archive_sha256"] == ARCHIVE_SHA and
+            abs(data["resources"]["additional_cpu_s"]-109.627916) < 1.e-9,
+            "PRIOR_AUDIT_RECEIPT_CONTENT")
+    require("Elapsed (wall clock) time (h:mm:ss or m:ss): 2:36.58" in
+            launcher_time.read_text(), "PRIOR_LAUNCHER_TIME_CONTENT")
+    require("User time (seconds): 109.12" in launcher_time.read_text() and
+            "System time (seconds): 1.30" in launcher_time.read_text(),
+            "PRIOR_LAUNCHER_CPU_CONTENT")
+    require(len(diagnostics.read_text().splitlines()) == 8 and
+            len(raw_failures.read_text().splitlines()) == 8,
+            "PRIOR_DIAGNOSTIC_COUNT")
+    cpu, wall = remaining_budget(PRIOR_CPU_S, PRIOR_WALL_S)
+    return {"prior_audit_sha256": PRIOR_AUDIT_SHA,
+            "prior_launcher_time_sha256": PRIOR_LAUNCHER_TIME_SHA,
+            "prior_diagnostics_sha256": PRIOR_DIAGNOSTICS_SHA,
+            "prior_raw_failures_sha256": PRIOR_RAW_FAILURES_SHA,
+            "prior_smoke_sha256": list(SMOKE_SHAS),
+            "prior_cumulative_cpu_s": PRIOR_CPU_S,
+            "prior_cumulative_wall_s": PRIOR_WALL_S,
+            "remaining_cpu_limit_s": cpu, "remaining_wall_limit_s": wall}
 
 
 def verify_provenance(folder: Path, archive: Path, checkpoint: Path) -> dict:
@@ -287,7 +357,7 @@ def audit(folder: Path, checkpoint: Path, evidence: Path, *, smoke_steps: int = 
                         states[idx]["xHeII"] == 0. and not states[idx]["post_saha"],
                         f"PY_SPECIES_LEDGER:{idx}")
                 delta = 1.-states[idx]["Tm_K"]/c.T0_K/(1.+states[idx]["z"])
-                require(delta < 5.e-4 if idx < EVENT_IZ-START_IZ else delta >= 5.e-4,
+                require(thermal_latch_condition(idx, delta, bool(step["coupled"])),
                         f"THERMAL_SWITCH_CONDITION:{idx}")
                 residual = finite_number(str(step["schur_residual"]), "SCHUR_NONFINITE")
                 require(0. <= residual <= 2.e-10, f"SCHUR_RESIDUAL:{idx}")
@@ -435,24 +505,31 @@ def main() -> None:
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--evidence-dir", type=Path, required=True)
     parser.add_argument("--smoke-steps", type=int, default=0)
+    parser.add_argument("--prior-evidence-dir", type=Path)
     args = parser.parse_args()
     if not 0 <= args.smoke_steps <= STEPS:
         parser.error("smoke steps outside frozen range")
+    if not args.smoke_steps and args.prior_evidence_dir is None:
+        parser.error("full reread requires frozen prior evidence directory")
+    prior = verify_prior_audit(args.prior_evidence_dir) if args.prior_evidence_dir else None
+    cpu_limit = prior["remaining_cpu_limit_s"] if prior else CPU_CAP
+    wall_limit = prior["remaining_wall_limit_s"] if prior else WALL_CAP
     ev = args.evidence_dir.resolve()
     ev.mkdir(parents=True, exist_ok=False)
     affinity = sorted(os.sched_getaffinity(0))
     os.sched_setaffinity(0, {affinity[0]})
     resource.setrlimit(resource.RLIMIT_AS, (2*1024**3, 2*1024**3))
-    resource.setrlimit(resource.RLIMIT_CPU, (CPU_CAP, CPU_CAP))
+    resource.setrlimit(resource.RLIMIT_CPU, (cpu_limit, cpu_limit))
     signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError("AUDIT_WALL_CAP")))
-    signal.alarm(WALL_CAP)
+    signal.alarm(wall_limit)
     start = time.monotonic()
     cpu0 = resource.getrusage(resource.RUSAGE_SELF)
     report = {"status": "FAIL", "first_failure": None,
               "mode": "SMOKE_ONLY" if args.smoke_steps else "FULL_OFFLINE_AUDIT",
+              "prior_run": prior,
               "resources": {"affinity": [affinity[0]], "blas_threads": 1,
-                            "address_limit_bytes": 2*1024**3, "cpu_limit_s": CPU_CAP,
-                            "wall_limit_s": WALL_CAP}}
+                            "address_limit_bytes": 2*1024**3, "cpu_limit_s": cpu_limit,
+                            "wall_limit_s": wall_limit}}
     try:
         report["provenance"] = verify_provenance(args.input_dir, args.archive, args.checkpoint)
         report["audit"] = audit(args.input_dir, args.checkpoint, ev,
