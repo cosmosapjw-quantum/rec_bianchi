@@ -9,7 +9,7 @@
     {"id":"P2_OWNED_REAL_SOURCE","depends_on":["P1_BACKUP_FIRST"],"status":"PASS_3_PHYSICAL_SNAPSHOTS","evidence":"EVIDENCE.json","publication":"commits 9b67afa8,9d3f22c9,02a773e3","backup":"33-test artifact acknowledged in Dropbox, Drive and Library"},
     {"id":"P3_PAIRED_RUNNER","depends_on":["P2_OWNED_REAL_SOURCE"],"status":"IMPLEMENTED_37_TESTS_PASS","evidence":"EVIDENCE.json","publication":"tested code 42ed7b5d","backup":"BACKUP_ACKS.json","actual_U5_temporal_pair":"NOT_RUN"},
     {"id":"P4_HANDOFF_AND_PRESERVATION","depends_on":["P3_PAIRED_RUNNER"],"status":"SOURCE_AND_PROMPTS_PUBLISHED","evidence":"HANDOFF_KO.md","remote_full_byte_readback":"NOT_RUN"},
-    {"id":"NCP_REVIEWED_U5_PAIR","depends_on":["P3_PAIRED_RUNNER"],"status":"READY_NOT_RUN"},
+    {"id":"NCP_REVIEWED_U5_PAIR","depends_on":["P3_PAIRED_RUNNER"],"status":"PASS_LOCAL_PAIR16_AND_PAIR128_BYTE_IDENTITY","evidence":"EXECUTION_001.json"},
     {"id":"NCP_FULL_U6","depends_on":["NCP_REVIEWED_U5_PAIR"],"status":"NOT_RUN_ALLOCATION_AND_SOURCE_GATES_REQUIRED"}
   ],
   "preserve": {"U5_h_original":"HOLD_9_FAIL","U5_h2_original":"HOLD_8_FAIL","three_level_Python_order":"NOT_RUN","REI_activation":false,"old_budget":"CLOSED_HOLD_NOT_RESET"}
