@@ -1,0 +1,17 @@
+{
+  "schema": "rec.r3j.u6-owned-history-dag.v1",
+  "baseline": "b2ae286274fea1fbe24a8c981fc84456e0f181ae",
+  "nodes": {
+    "RECOVERY": {"status": "COMPLETE", "evidence": "RECOVERY.json", "superseded_work": "U4 already completed in PR101"},
+    "OWNED_HISTORY": {"status": "IMPLEMENTED", "source": "src/full_bianchi_hyrec/trajectory/owned_flrw_history.py", "depends_on": ["RECOVERY"]},
+    "U6_OPT_IN": {"status": "IMPLEMENTED", "source": "src/full_bianchi_hyrec/trajectory/primordial_2012_owned_u6.py", "depends_on": ["OWNED_HISTORY"]},
+    "FOCUSED_PARITY": {"status": "CI_RESULT_REQUIRED_FOR_EXACT_COMMIT", "workflow": ".github/workflows/verify-r3j-owned-history.yml", "result": "artifact MANIFEST.json:test_outcome and pytest.xml", "scope": "source-gather and synthetic recurrence; not actual U5 checkpoint", "depends_on": ["U6_OPT_IN"]},
+    "NCP_ADAPTER": {"status": "IMPLEMENTED", "source": "scripts/run_r3j_u6_owned.py", "resource_caps_unchanged": {"process_tree_cpu_s": 60, "wall_s": 180, "address_gib": 2, "cpu_affinity": 1}},
+    "ACTUAL_CHECKPOINT_SMOKE": {"status": "NOT_RUN", "steps": 3, "depends_on": ["FOCUSED_PARITY", "NCP_ADAPTER"]},
+    "U6_FULL": {"status": "NOT_RUN", "steps": 5210, "first_input_global_index": 53179, "final_global_index": 58389, "first_emla_evaluation": false, "depends_on": ["ACTUAL_CHECKPOINT_SMOKE", "NEW_ALLOCATION_AND_RESERVE_PREFLIGHT"]},
+    "PRESERVATION": {"source_status": "GITHUB_COMMITS", "tested_source_archive": "CI upload-artifact REC_R3J_TESTED_SOURCE_<commit>", "provider_ack_and_readback": "reported separately after artifact transfer", "raw_U6_results": "NOT_CREATED"}
+  },
+  "held_gates": {"h_U5_original_average": "HOLD_9_FAIL", "h2_U5_original_average": "HOLD_8_FAIL", "h2_complete_history": "NOT_RUN", "h4_python_history": "NOT_RUN", "Richardson_order": "UNRESOLVED", "REI_activation": false},
+  "handoff": "HANDOFF_KO.md",
+  "review_independence": "No new independent model reviewer was available; CI is execution evidence, not independent scientific review."
+}
