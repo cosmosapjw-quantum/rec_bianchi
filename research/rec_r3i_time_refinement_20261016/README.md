@@ -67,10 +67,33 @@ the owner PC re-read all 46 archived member hashes. The full result remains
 under the 4,096-step, 16,384-evaluation, 600-CPU-second, 900-wall-second,
 2-GiB caps. The slim receipt is `h2_continuation_001/ncp_run_001/verification.json`.
 
-The next READY node is `H2_U4_POST_SAHA_EXIT`: continue the reviewed h/2
-checkpoint from index 37207 through the source H-only post-Saha exit and two
-hydrogen ODE steps. Its contract must retain exact source stage switching,
-the same-h independent C oracle and prior resource caps. The H ODE and
-thermal ODE transitions, U5, full primordial history, h/4 Python history,
-and h/h2/h4 Python order remain NOT_RUN. The original U5 nine FAIL/HOLD is
-unchanged. The claim ceiling is original q=0 HyRec FULL H+He only.
+## H2_U4_POST_SAHA_EXIT: scoped PASS after NCP and independent review
+
+The frozen `h/2` checkpoint at index 37207 was advanced by 1,245 accepted
+H-only steps and 4,974 FULL evaluations. The source hydrogen post-Saha flag
+switched off at index 38450, `z=1563.1836114659973`, when the correction
+grew from `0.0002999244616380906` (previous index) to
+`0.00030116516124563744`, beyond the source `0.0003` threshold. The next
+two accepted hydrogen ODE steps agree bitwise with the source predictor.
+The final state at index 38452 is `z=1563.0508179145497`,
+`xe=0.9877219981632187`, `Tm=4262.815466804915 K`.
+
+An independent raw check covered 778,125 unique spectral fields and
+1,556,862 causal frequency-link checks. Maximum same-h C/Python relative
+`xe` difference was `2.2437514751170334e-16`, scaled H RHS difference
+`1.4565681993872204e-11`, and largest spectral tolerance ratio
+`0.010368808386171642`. NCP resource use was 24.770156 cumulative CPU
+seconds, 24.916579431 wall seconds, one CPU affinity and 2 GiB address cap.
+The raw archive SHA-256 is
+`836deb219a91b9ac6767b031fe90f357a963003d360b9d034348ed9324ddef11`.
+The result receipt is
+`h2_u4_post_saha_exit_001/ncp_run_001/verification.json` and the Python
+checkpoint SHA-256 is
+`7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943`.
+
+The next READY node is `H2_U5_THERMAL_START`, which must independently
+advance h/2 hydrogen ODE and source Tmss until the original thermal switch,
+then make two coupled H/Tm updates. The thermal ODE transition, full
+primordial history, h/4 Python history and h/h2/h4 Python order remain
+NOT_RUN. The original U5 nine FAIL/HOLD is unchanged. The claim ceiling is
+original q=0 HyRec FULL H+He only.

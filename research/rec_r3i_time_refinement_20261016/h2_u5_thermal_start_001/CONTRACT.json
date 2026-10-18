@@ -1,0 +1,49 @@
+{
+  "node": "H2_U5_THERMAL_START",
+  "decision_owner": "Astra independent H2_U4 NCP result review",
+  "source_scope": "original October 2012 HyRec q=0 FULL H+He only",
+  "start": {
+    "global_iz": 38452,
+    "reviewed_python_checkpoint_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+    "reviewed_ncp_raw_archive_sha256": "836deb219a91b9ac6767b031fe90f357a963003d360b9d034348ed9324ddef11",
+    "source_capsule_commit": "23ae8ad804126b53fa2ef17f9c464d7f5b3d00d6",
+    "accepted_photon_columns": [0, 2005],
+    "hydrogen_rhs_tail_input_indices": [38450, 38451],
+    "hydrogen_rhs_tail": [-0.4919330230209214, -0.45204486161530666],
+    "hydrogen_post_saha": false,
+    "helium": "neutral"
+  },
+  "execution": {
+    "h": 4.245e-5,
+    "native_C_oracle": "independently recompute same-h/2 from z=8000; no Python-state import",
+    "thermal_switch": "first accepted input with 1-Tm/[T0(1+z)] >= 5e-4",
+    "before_switch": "source Tmss and hydrogen ODE",
+    "after_switch": "exactly two coupled hydrogen/matter-temperature accepted steps",
+    "thermal_seeds_at_input_g": [
+      "dTprev2=(T[g-1]-T[g-3])/(2*h)",
+      "dTprev=(T[g]-T[g-2])/(2*h)"
+    ],
+    "thermal_rhs": "original rec_dTmdlna with source predictor operand order"
+  },
+  "verification": {
+    "same_h_only": true,
+    "state_H_RHS_spectrum_Schur_tolerances": "retain H2_U4_POST_SAHA_EXIT frozen values",
+    "thermal_same_input_rhs_scaled_max1_limit": 2e-10,
+    "thermal_trajectory_rhs_scaled_max1_limit": 2e-7,
+    "thermal_RT_table_domain_indices": "exact source agreement",
+    "causal_links": 313,
+    "U5_original_mean_photon_gate": "nine FAIL/HOLD unchanged",
+    "new_mean_photon_failure": "preserve actual C/Python tau,Q,f_in and independently judge original gate versus Decimal-80/IEEE gate; do not change tolerance"
+  },
+  "caps": {
+    "extra_accepted_steps": 20000,
+    "FULL_evaluations": 20000,
+    "CPU_affinity": 1,
+    "BLAS_OMP_threads": 1,
+    "address_space_GiB": 2,
+    "cumulative_process_tree_CPU_seconds": 600,
+    "wall_seconds": 900
+  },
+  "stop_and_claim": "first source-state/RHS/causal failure or prior RT/table-domain transition: preserve raw and HOLD; no full-history or Python time-convergence claim",
+  "gate": "fresh independent static review before one NCP run, independent result review afterward"
+}
