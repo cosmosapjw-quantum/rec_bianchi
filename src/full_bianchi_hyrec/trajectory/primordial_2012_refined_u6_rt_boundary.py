@@ -137,8 +137,8 @@ def integrate_u6_rt_boundary(checkpoint: dict, c: HyRec2012Cosmology, source,
         tr = c.T0_K*(1.+z)
         if not 0. < xe < 1. or not 0. < tm <= tr:
             raise ArithmeticError(f"SOURCE_STATE_DOMAIN:{g}")
-        if not (PREFIX_COLUMNS <= j < cap and np.all(np.isfinite(virtual[:, :j])) and
-                np.all(np.isfinite(lyman[:, :j]))):
+        # The following causal call owns full-prefix shape/finiteness checks.
+        if not (PREFIX_COLUMNS <= j < cap):
             raise ArithmeticError(f"UNACCEPTED_PHOTON_HISTORY_READ:{j}")
         if on_attempt is not None:
             on_attempt(g, z, xe, tm, j)

@@ -55,16 +55,17 @@ def guard_cpu(start: float, stage: str) -> int:
     return math.floor(remaining)
 
 
-def verify_source_closure(checkpoint: Path) -> dict:
+def verify_source_closure(checkpoint: Path, source_manifest: Path = MANIFEST) -> dict:
     if sha(checkpoint)!=CHECKPOINT_SHA256:
         raise ValueError("U6_CHECKPOINT_SHA")
-    manifest=json.loads(MANIFEST.read_text())
+    manifest=json.loads(source_manifest.read_text())
     files=manifest["files"]
     for relative,digest in files.items():
         p=ROOT/relative
         if not p.is_file() or sha(p)!=digest:
             raise ValueError(f"U6_SOURCE_CLOSURE:{relative}")
-    return {"manifest_sha256":sha(MANIFEST),"source_files":len(files),
+    return {"manifest_path":str(source_manifest.resolve()),
+            "manifest_sha256":sha(source_manifest),"source_files":len(files),
             "checkpoint_sha256":CHECKPOINT_SHA256}
 
 
@@ -338,6 +339,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--checkpoint",type=Path,required=True)
     ap.add_argument("--evidence-dir",type=Path,required=True)
+    ap.add_argument("--source-manifest",type=Path,default=MANIFEST)
     ap.add_argument("--max-extra-accepted",type=int,default=MAX_EXTRA_ACCEPTED)
     args = ap.parse_args()
     if not 1 <= args.max_extra_accepted <= MAX_EXTRA_ACCEPTED:
@@ -358,7 +360,7 @@ def main() -> None:
                            "address_limit_bytes":2*1024**3,
                            "cpu_limit_s":CPU_CAP,"wall_limit_s":WALL_CAP}}
     try:
-        report["source_closure"]=verify_source_closure(args.checkpoint)
+        report["source_closure"]=verify_source_closure(args.checkpoint,args.source_manifest)
         cp = load_frozen_checkpoint(args.checkpoint)
         source_dir = safe_extract_source(
             ROOT/"archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
