@@ -1,0 +1,63 @@
+{
+  "schema": "rec.r3k.executed-characterization.v1",
+  "date": "2026-10-18",
+  "tested_code_commit": "42ed7b5d1de1218b8e943dd4b376ec1744014510",
+  "base_pr102_commit": "e0cfdf76a6e8bf04110715d14efaad7077aeff8b",
+  "related_pr103_readonly": "3a5adf6cac28555acd14707b6fd5659535e4763d",
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "runtime": {
+    "execution_location": "GitHub Actions, not ChatGPT sandbox or NCP",
+    "workflow_run": 39127381978,
+    "job_id": 117675257407,
+    "conclusion": "success",
+    "pytest_passed": 37,
+    "pytest_seconds": 3.87,
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1",
+    "BLAS_OMP_threads": 1,
+    "prior_focused_pass": {"commit": "02a773e3239b3af4ab7c78a897d7521731741b0b", "tests": 33, "seconds": 1.57},
+    "sandbox_failure": "container ClientError and Python ServerError; cause not established",
+    "native_subagent": "NOT_RUN"
+  },
+  "physical_checkpoint": {
+    "path": "research/rec_r3i_time_refinement_20261016/h2_u4_post_saha_exit_001/ncp_run_001/python_u4_exit.npz",
+    "sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+    "scope": "three physical U4 states; not U5 initial-condition temporal integration"
+  },
+  "physical_samples": [
+    {"global_index":38436,"z":1564.1134820699726,"prefix_columns":1990,"gather_bitwise_equal":true,"average_tolerance_ratio":2.0300159967437363e-5,"virtual_tolerance_ratio":4.382429786757833e-7,"lyman_tolerance_ratio":1.1940529888293243e-7,"rhs_scaled_difference":1.4988010832439613e-13,"schur_residual":3.1427117209786643e-16},
+    {"global_index":38444,"z":1563.5820597720754,"prefix_columns":1998,"gather_bitwise_equal":true,"average_tolerance_ratio":3.0600639045270963e-7,"virtual_tolerance_ratio":2.971912800338515e-7,"lyman_tolerance_ratio":8.885571538291408e-8,"rhs_scaled_difference":1.765254609153999e-14,"schur_residual":2.0493020194297173e-16},
+    {"global_index":38452,"z":1563.0508179145497,"prefix_columns":2006,"gather_bitwise_equal":true,"average_tolerance_ratio":3.1599081412941504e-7,"virtual_tolerance_ratio":3.0097439561552527e-7,"lyman_tolerance_ratio":9.149279827448899e-8,"rhs_scaled_difference":2.603472992745992e-13,"schur_residual":1.5288714573253942e-16}
+  ],
+  "thresholds_unchanged": {
+    "spectral": "abs(P-C) <= 1e-7 max(abs(P),abs(C)) + 1e-10 fBB",
+    "same_input_rhs_max1_scaled": 2e-10,
+    "schur_normalized": 2e-10
+  },
+  "paired_runner_tests": {
+    "test_source": "synthetic deterministic atomic source, actual legacy and owned integrators",
+    "steps_per_backend": 3,
+    "negative_controls": ["single-bit output change", "state/RHS/endpoint change", "nonfinite or wrong dtype", "input checkpoint mutation", "incomplete interval", "invalid step counts"],
+    "actual_reviewed_U5_checkpoint_run": "NOT_RUN",
+    "full_5210_step_U6": "NOT_RUN",
+    "production_speedup": "NOT_MEASURED"
+  },
+  "symbolic_checks": {
+    "engine": "Wolfram Language actual evaluation",
+    "affine_interpolation_defect": 0,
+    "causal_integer_index_implication": true,
+    "legacy_two_scan_visits": 63269979500,
+    "one_prefix_plus_appended_finite_checks": 13714375,
+    "interpretation": "validation-element counts; not total instruction count, peak RAM or measured speedup"
+  },
+  "inherited_gates": {
+    "U5_h_original_average": "HOLD_9_FAIL",
+    "U5_h2_original_average": "HOLD_8_FAIL",
+    "full_U6": "NOT_RUN",
+    "Python_three_grid_order": "NOT_RUN",
+    "REI_activation": false,
+    "historical_budget": "CLOSED_HOLD_NOT_RESET"
+  }
+}

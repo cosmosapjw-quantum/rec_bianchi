@@ -1,0 +1,55 @@
+name: verify-r3k-owned-physical
+on:
+  push:
+    branches: [research/rec-r3k-owned-u6-validation-20261018]
+permissions:
+  contents: read
+concurrency:
+  group: r3k-owned-physical-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused-real-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONPATH: src:scripts
+      REC_R3K_EVIDENCE_DIRECTORY: delivery/real_source
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[test]'
+      - name: Characterization and real U4 atomic comparisons
+        id: tests
+        run: |
+          mkdir -p delivery
+          set -o pipefail
+          python -m pytest -q tests/trajectory/test_owned_flrw_history.py tests/trajectory/test_primordial_2012_refined_u6_rt_boundary.py tests/trajectory/test_r3k_backend_comparison.py tests/trajectory/test_r3k_pair_driver.py --junitxml=delivery/pytest.xml 2>&1 | tee delivery/pytest.log
+      - name: Preserve source and actual outcome
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+        run: |
+          mkdir -p delivery
+          git archive --format=tar HEAD src scripts tests/trajectory pyproject.toml requirements.txt requirements-dev.txt archive/inputs/original_hyrec_oct2012 research/rec_r3i_time_refinement_20261016 research/rec_r3j_u6_owned_history_20261018 research/rec_r3k_owned_validation_20261018 .github/workflows/verify-r3k-owned-physical.yml | gzip -n > delivery/REC_R3K_SOURCE_CAPSULE.tar.gz
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          folder=Path('delivery')
+          files={str(p.relative_to(folder)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(folder.rglob('*')) if p.is_file()}
+          report={'schema':'rec.r3k.ci-receipt.v1','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'test_outcome':os.environ['TEST_OUTCOME'],'python':sys.version,'execution_environment':'GitHub Actions; ChatGPT sandbox and NCP not used','files':files,'scientific_scope':'real U4 owned-gather/native-C atomic snapshots and synthetic U6 recurrence; actual U5 temporal pair and full U6 NOT_RUN'}
+          (folder/'MANIFEST.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          print('R3K_MANIFEST='+json.dumps(report,sort_keys=True))
+          for p in sorted((folder/'real_source').glob('*.json')):
+              print('R3K_PHYSICAL_SNAPSHOT='+json.dumps(json.loads(p.read_text()),sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: REC_R3K_TESTED_SOURCE_${{ github.sha }}
+          path: delivery/
+          retention-days: 30
