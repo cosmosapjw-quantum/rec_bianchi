@@ -11,6 +11,8 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/"src"),str(ROOT/"scripts")]
 from full_bianchi_hyrec.trajectory.primordial_2012_refined_start import HyRec2012Cosmology
 from full_bianchi_hyrec.trajectory.primordial_2012_refined_u4_exit import original_rt_stop_index
+from full_bianchi_hyrec.trajectory.causal_virtual_redshift import causal_incoming_from_accepted_histories
+import full_bianchi_hyrec.trajectory.primordial_2012_refined_u6_rt_boundary as u6
 from full_bianchi_hyrec.trajectory.primordial_2012_refined_u6_rt_boundary import (
     CHECKPOINT_SHA256, H_RHS_TAIL, T_RHS_TAIL, START_IZ, PREFIX_COLUMNS,
     MAX_EXTRA_ACCEPTED, load_frozen_checkpoint, integrate_u6_rt_boundary)
@@ -85,3 +87,60 @@ def test_attempt_and_accepted_bytes_survive_later_rejection(tmp_path):
     assert (tmp_path/"python_partial_virtual_f64le.bin").stat().st_size==311*8
     assert (tmp_path/"python_partial_average_f64le.bin").stat().st_size==311*8
     assert (tmp_path/"python_partial_lyman_f64le.bin").stat().st_size==3*8
+
+
+@pytest.mark.parametrize("field,bad", [("virtual_out", np.nan), ("lyman_out", np.inf)])
+def test_nonfinite_accepted_prefix_rejected_after_attempt_before_atomic(
+        monkeypatch, tmp_path, field, bad):
+    c=HyRec2012Cosmology()
+    zero=np.array([0.],dtype=float)
+    spectrum={"virtual_out":np.broadcast_to(zero,(311,PREFIX_COLUMNS)),
+              "average_virtual":np.broadcast_to(zero,(311,PREFIX_COLUMNS)),
+              "lyman_out":np.broadcast_to(zero,(3,PREFIX_COLUMNS))}
+    rows=311 if field=="virtual_out" else 3
+    spectrum[field]=np.broadcast_to(np.array([bad]),(rows,PREFIX_COLUMNS))
+    state={"iz":START_IZ,"z":c.redshift(START_IZ),
+           "Tm_K":.99*c.T0_K*(1.+c.redshift(START_IZ)),"xe":.005,
+           "post_saha":False,"xHeII":0.,"branch":"H_ONLY"}
+    checkpoint={"state":state,"rhs_h_tail":H_RHS_TAIL,
+                "rhs_t_tail":T_RHS_TAIL,"event":{},**spectrum}
+    source=SimpleNamespace(table=SimpleNamespace(archive_path=
+        ROOT/"archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip"))
+    atomic=[]
+    monkeypatch.setattr(u6,"populate_original_full_atomic",
+                        lambda *args,**kwargs: atomic.append(1))
+    writer=AcceptedEvidenceWriter(tmp_path)
+    try:
+        with pytest.raises(ValueError,match="accepted native virtual/lyman history shapes invalid"):
+            integrate_u6_rt_boundary(checkpoint,c,source,max_extra_accepted=1,
+                on_attempt=writer.attempt)
+    finally:
+        writer.close()
+    attempt=last_jsonl(tmp_path/"python_attempts.jsonl")
+    assert attempt["input_iz"]==START_IZ
+    assert attempt["photon_col"]==PREFIX_COLUMNS
+    assert attempt["accepted_before"]==0
+    assert atomic==[]
+
+
+def test_causal_owner_rejects_invalid_index_future_column_and_shape():
+    rates=OriginalHyRecPrimitiveRateTable.from_archive(
+        ROOT/"archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip")
+    e=_canonical_twophoton_table(rates.archive_path).energy_eV
+    c=HyRec2012Cosmology()
+    z0=c.redshift(c.izH0)
+    args={"energies_eV":e,"virtual_history":np.zeros((311,2)),
+          "lyman_history":np.zeros((3,2)),"z_start":z0,
+          "z_face":c.redshift(c.izH0+2),"dlna":u6.DLNA}
+    with pytest.raises(ValueError,match="at least 2 accepted past steps required"):
+        causal_incoming_from_accepted_histories(**args,iz=1)
+    with pytest.raises(ValueError,match="accepted native virtual/lyman history shapes invalid"):
+        causal_incoming_from_accepted_histories(**args,iz=3)
+    with pytest.raises(ValueError,match="accepted native virtual/lyman history shapes invalid"):
+        causal_incoming_from_accepted_histories(
+            **{**args,"virtual_history":np.zeros((311,3))},iz=2)
+    with pytest.raises(ValueError,match="accepted native virtual/lyman history shapes invalid"):
+        causal_incoming_from_accepted_histories(**{**args,"lyman_history":np.zeros((2,2))},iz=2)
+    with pytest.raises(ValueError,match="current/unaccepted future history"):
+        causal_incoming_from_accepted_histories(
+            **{**args,"z_face":c.redshift(c.izH0+10)},iz=2)
