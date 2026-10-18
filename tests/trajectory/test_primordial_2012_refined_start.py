@@ -4,15 +4,21 @@ import io
 import math
 from pathlib import Path
 import zipfile
+import sys
 
 import numpy as np
 import pytest
+
+ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
+sys.path.insert(0,str(ROOT/"scripts"))
+
 from full_bianchi_hyrec.trajectory.primordial_2012_refined_start import (
     DLNA,HyRec2012Cosmology,integrate_full_start_eight,saha_heii,
     source_native_derivative_seeds,checked_common_input_rhs_ratio,
     checked_common_input_spectrum_ratio,
 )
-from scripts.verify_r3i_h2_start import (
+from verify_r3i_h2_start import (
     compare_state,compare_photon_spectra,checked_integrated_rhs_ratio,parse_native,
 )
 from full_bianchi_hyrec.trajectory.causal_virtual_redshift import (
