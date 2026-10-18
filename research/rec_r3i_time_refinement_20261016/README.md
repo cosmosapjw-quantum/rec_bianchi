@@ -36,7 +36,7 @@ The accepted checkpoint NPZ SHA-256 is
 `a6fe8a9a9e6d32b99d5b567e62d87912fdf4d71aa7a9392b33fdf23c55b8416d`.
 Large raw files remain in the immutable owner-side result and backup capsule.
 
-## H2_CONTINUATION: READY for one bounded NCP run
+## H2_CONTINUATION: scoped PASS after NCP and independent review
 
 The separate `h2_continuation_001/CONTRACT.json` fixes the event and resource
 caps. `SOURCE_MANIFEST_V5.json` SHA-256
@@ -47,8 +47,30 @@ same-h `xe` difference zero; it is `SMOKE_ONLY` and does not establish an event
 or a convergence order. The V5 independent review authorized one NCP execution,
 with full result review still pending.
 
-The next node stops at the first HeII cutoff or hydrogen post-Saha switch plus
-two accepted steps, or at its 4,096-step, 16,384-FULL-evaluation, 600 cumulative
-CPU-second, 900 wall-second, one-CPU, 2-GiB cap. A cap before the event plus two
-is HOLD. The h/h2/h4 Python order, U4/U5, and full primordial history remain
-NOT_RUN. The claim ceiling is original q=0 HyRec FULL H+He only.
+The NCP run used the frozen commit `53edd26ee5ff58edf7389e44fd05c41392dc3f28`
+and independently reached helium cutoff at global index 37205,
+`z=1648.074602926592`, followed by exactly two H-only accepted steps.
+It took 753 additional accepted steps and 3,012 FULL source evaluations.
+The final state at index 37207 is `xe=0.9979346805949129`,
+`Tm=4494.16659111864 K`. The independently generated same-h C history
+has maximum relative `xe` error `1.1124844999609022e-16`, absolute HeII
+error `4.87890977618477e-19`, scaled H RHS error
+`6.498029544999007e-11`, and maximum spectral tolerance ratio
+`0.0011406261097209518`. All 761 accepted columns and their 625
+spectral values were independently checked. A separate review reconstructed
+942,756 causal link checks with no current or future history read.
+The NCP run used one CPU, 14.04488 cumulative CPU seconds, 14.44640 wall
+seconds, and parent/child peak RSS 114,147,328 / 112,721,920 bytes
+(separate high-water measurements). The raw archive SHA-256 is
+`0c6105a816277420b551471b7c9815085269a7475e8c4b7a7c3d31fa93208132`;
+the owner PC re-read all 46 archived member hashes. The full result remains
+under the 4,096-step, 16,384-evaluation, 600-CPU-second, 900-wall-second,
+2-GiB caps. The slim receipt is `h2_continuation_001/ncp_run_001/verification.json`.
+
+The next READY node is `H2_U4_POST_SAHA_EXIT`: continue the reviewed h/2
+checkpoint from index 37207 through the source H-only post-Saha exit and two
+hydrogen ODE steps. Its contract must retain exact source stage switching,
+the same-h independent C oracle and prior resource caps. The H ODE and
+thermal ODE transitions, U5, full primordial history, h/4 Python history,
+and h/h2/h4 Python order remain NOT_RUN. The original U5 nine FAIL/HOLD is
+unchanged. The claim ceiling is original q=0 HyRec FULL H+He only.
