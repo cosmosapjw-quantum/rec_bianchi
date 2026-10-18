@@ -1,0 +1,29 @@
+{
+  "node": "H2_U6_RT_BOUNDARY",
+  "status": "READY_FOR_IMPLEMENTATION",
+  "review_owner": "Astra independent result review after H2 U5 saved-result audit",
+  "physical_scope": "original October 2012 HyRec q=0 FULL H+He h/2 grid",
+  "start": {
+    "python_checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "global_iz": 53179,
+    "z": 836.0411750186029,
+    "accepted_photon_columns": "0..16732",
+    "hydrogen_rhs_tail_input_iz": [53177, 53178],
+    "hydrogen_rhs_tail": [-0.056163878950571774, -0.0561296548568869],
+    "thermal_rhs_tail": [-2280.408518685064, -2281.8526711832496],
+    "thermal_branch": "coupled_latched_no_reseed"
+  },
+  "stop": {
+    "accepted_full_inputs": "53179..58388",
+    "maximum_new_accepted_steps": 5210,
+    "rt_boundary_global_iz": 58389,
+    "rt_boundary_z_approx": 669.95949,
+    "rt_boundary_photon_column": 21943,
+    "first_emla_evaluation": "PROHIBITED_BEFORE_NEXT_REVIEW"
+  },
+  "oracle": "independently rerun original C h/2 from z=8000; never use Python input state as C trajectory",
+  "verification": "same-h state, H/Tm RHS, Schur, 313 accepted-past causal links per step, original average gate and separate restricted Decimal80/IEEE gate",
+  "forbidden": "h-grid checkpoint interpolation, changing stage physics or tolerances, changing REI checkpoints",
+  "caps": {"per_run_cpu_s_max": 180, "per_run_wall_s_max": 300, "address_limit_gib": 2, "cpu_affinity": 1, "blas_omp_threads": 1, "governing_cumulative_cpu_s": 450, "governing_cumulative_wall_s": 750},
+  "execution_rule": "local bounded smoke and fresh static review before any full NCP execution; stop first failure"
+}
