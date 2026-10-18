@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir -p delivery
           set -o pipefail
-          python -m pytest -q tests/trajectory/test_owned_flrw_history.py tests/trajectory/test_primordial_2012_refined_u6_rt_boundary.py tests/trajectory/test_r3k_backend_comparison.py --junitxml=delivery/pytest.xml 2>&1 | tee delivery/pytest.log
+          python -m pytest -q tests/trajectory/test_owned_flrw_history.py tests/trajectory/test_primordial_2012_refined_u6_rt_boundary.py tests/trajectory/test_r3k_backend_comparison.py tests/trajectory/test_r3k_pair_driver.py --junitxml=delivery/pytest.xml 2>&1 | tee delivery/pytest.log
       - name: Preserve source and actual outcome
         if: always()
         env:
@@ -43,7 +43,9 @@ jobs:
           files={str(p.relative_to(folder)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(folder.rglob('*')) if p.is_file()}
           report={'schema':'rec.r3k.ci-receipt.v1','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'test_outcome':os.environ['TEST_OUTCOME'],'python':sys.version,'execution_environment':'GitHub Actions; ChatGPT sandbox and NCP not used','files':files,'scientific_scope':'real U4 owned-gather/native-C atomic snapshots and synthetic U6 recurrence; actual U5 temporal pair and full U6 NOT_RUN'}
           (folder/'MANIFEST.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
-          print(json.dumps(report,indent=2))
+          print('R3K_MANIFEST='+json.dumps(report,sort_keys=True))
+          for p in sorted((folder/'real_source').glob('*.json')):
+              print('R3K_PHYSICAL_SNAPSHOT='+json.dumps(json.loads(p.read_text()),sort_keys=True))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
