@@ -1,0 +1,79 @@
+{
+  "decision_owner": "Astra independent result review before scientific admission",
+  "frozen_base": {
+    "h2_checkpoint_npz_sha256": "a6fe8a9a9e6d32b99d5b567e62d87912fdf4d71aa7a9392b33fdf23c55b8416d",
+    "h2_checkpoint_producer_exact_sha256": "82ea5c627fbb7a4e280fbb351c65f83cd6608364226aa643354bc8ab0f6435e0",
+    "h2_dlna": 4.245e-05,
+    "hydrogen_and_helium_rhs_tail_columns": [
+      6,
+      7
+    ],
+    "local_contract_commit": "049c0d84ea5289aee63e71f750d07a65ef8cab8b",
+    "original_october_2012_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "pr_100_commit": "320b8810aaf1acdaa90e2eca860cf70b9af1ef75",
+    "start_committed_photon_columns": 8,
+    "start_global_iz": 36454
+  },
+  "hard_caps": {
+    "BLAS_OMP_threads": 1,
+    "CPU_affinity_cores": 1,
+    "CPU_seconds": "600 cumulative parent plus compiler plus original-C child; each child receives the remaining CPU budget",
+    "FULL_atomic_evaluations": 16384,
+    "address_space_GiB": 2,
+    "cumulative_process_tree_CPU_seconds": 600,
+    "extra_accepted_steps": 4096,
+    "wall_seconds": 900
+  },
+  "node": "REC-R3I-H2-CONTINUATION-v1",
+  "source_owned_execution": {
+    "first_event": [
+      "accepted xHeII <= 1e-6",
+      "hydrogen post-Saha flag switches off"
+    ],
+    "helium_cutoff_h_only_transfer": "pass preceding total electron fraction xe, retain source species ledger and H derivative tails",
+    "independent_python_history_from_reviewed_h2_checkpoint": true,
+    "native_C_oracle_from_z_8000": true,
+    "native_C_source_change": "exactly one active DLNA token 8.49e-5 -> (8.49e-5/2.)",
+    "photon_history": "use only accepted previous outgoing columns; future columns NaN; no coarse h checkpoint import",
+    "source_frequency_links": 313,
+    "source_stage_conditions_rechecked_each_step": true,
+    "stop": "exactly two further accepted steps after first event",
+    "virtual_bins": 311
+  },
+  "stop_and_claim": {
+    "cap_without_event_plus_two": "HOLD",
+    "first_numerical_stage_thermal_or_RT_failure": "stop and preserve raw first failure and partial accepted records",
+    "local_one_step_receipt": "SMOKE_ONLY",
+    "old_U5_average_photon_gate": "HOLD unchanged",
+    "scientific_scope": "q=0 original HyRec FULL H+He; no temporal-order or full-history claim from this node"
+  },
+  "verification": {
+    "accepted_state": {
+      "Tm_relative_floor_K": 1.0,
+      "Tm_relative_limit": 5e-10,
+      "species_ledger_absolute_limit": 5e-13,
+      "stage_indices_and_flags": "exact",
+      "xHII_and_xe_limit": 5e-09,
+      "xHII_and_xe_relative_floor": 1e-08,
+      "xHeII_absolute_limit": 5e-10,
+      "z_absolute_limit": 2e-12
+    },
+    "all_spectral_values_per_accepted_column": 625,
+    "causal_conditions": [
+      "all 313 source frequency links",
+      "active accepted indices k>=0 and k+1<=j-1",
+      "no current or future photon history read",
+      "outgoing writeback once per accepted current column"
+    ],
+    "photon_tolerance": "abs(P-C) <= 1e-7 max(abs(P),abs(C)) + 1e-10 fBB(E,Tr)",
+    "same_h_C_Python_only": true,
+    "same_input_rhs_scaled_max1_limit": 2e-10,
+    "same_input_sampling": [
+      "first three continuation steps",
+      "every 128th continuation step",
+      "at most 64 distinct atomic source calls in the event neighborhood including calls already sampled by the first-three/every-128 rule"
+    ],
+    "schur_normalized_residual_limit": 2e-10,
+    "trajectory_rhs_scaled_max1_limit": 2e-07
+  }
+}
