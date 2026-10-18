@@ -1,0 +1,107 @@
+{
+  "common_input_binary_sha256": "34247ff18d5a1709e7efb013cb6d8b007a18b0b0a8f4467c592411639e6be162",
+  "common_input_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-DR3I_SHARED",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/scripts/c_harness/original_hyrec_r3i_h2_start_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/helium.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "065d2f237e43f4ae63872e6bb50fe8158d3ca4332d02ebe17047e5d120ce7187",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.5733975330367684
+  },
+  "first_failure": {
+    "message": "HE_RHS:15438:common=5.23603304607872e-13:trajectory=5.1086298962449853e-06",
+    "type": "ArithmeticError"
+  },
+  "native_binary_sha256": "268c19f7135730c69bd7f3c6ac55937ed0d84e7867db4c00cb852b01a5f9f994",
+  "native_build": {
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/scripts/c_harness/original_hyrec_r3i_h2_start_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/history.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/helium.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/native_full_start_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e635f77e63ceb08a30c41e32461af0d786df2cd41cd56cfeac9e7891dd0ba2f6",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.6740266410633922
+  },
+  "native_rows": {
+    "accepted_state_nodes": 9,
+    "accepted_steps": 8,
+    "average_bins": 311,
+    "interpretation": "one NODE record is the U1 boundary; each of eight STEP records adds one accepted output node",
+    "lyman_bins": 3,
+    "printed_start_node_rows": 1,
+    "virtual_bins": 311
+  },
+  "native_run": {
+    "command": [
+      "/home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/fresh_clone/research/rec_r3i_time_refinement_20261016/h2_start_001/run_002/native_full_start_oracle"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "c26ea58419722f8e2d1b4f0c677a31f875cb24e2a03e2481a98586f43fb66c33",
+    "wall_s": 0.22611566493287683
+  },
+  "python_producer_sha256": "51bb1713919fd46a4c7b24c4d688371714b54a415fefd1895bbd43d5ae88d6a8",
+  "resources": {
+    "OMP_NUM_THREADS": 1,
+    "address_space_limit_bytes": 2147483648,
+    "allowed_affinity": [
+      0
+    ],
+    "children_cpu_s": 1.199687,
+    "children_peak_rss_bytes": 112984064,
+    "parent_cpu_s": 0.699551,
+    "parent_peak_rss_bytes": 139366400,
+    "prelimit_vm_size_kib": 278340,
+    "wall_limit_s": 180,
+    "wall_s": 2.168674997985363
+  },
+  "scientific_admission": "HOLD_PENDING_INDEPENDENT_REVIEW",
+  "scope": "8 accepted source-grid H+He FULL start steps; not full-history admission",
+  "source_identity": {
+    "modified": {
+      "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+      "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+      "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+    },
+    "only_source_change": "one active DLNA token: 8.49e-5 -> (8.49e-5/2.)",
+    "original": {
+      "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+      "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+      "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+    }
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "FAIL",
+  "three_level_order": "NOT_RUN"
+}

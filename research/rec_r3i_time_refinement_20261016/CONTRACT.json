@@ -1,0 +1,96 @@
+{
+  "contract_id": "REC-R3I-H2-START-v1",
+  "base_head": "320b8810aaf1acdaa90e2eca860cf70b9af1ef75",
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "r3h_package_sha256": "63419c2583019df60817df3fc8837aa8102d88d0316594066dcac45a6a24b485",
+  "execution": "Independent Python from z8000; C same-h oracle only; no coarse checkpoint resampling",
+  "clock": {
+    "h": "8.49e-5/2",
+    "izH0": 36446,
+    "He_rows": 36447,
+    "accepted_FULL": 8,
+    "global_nodes": [
+      36446,
+      36454
+    ],
+    "committed_photon_columns": [
+      0,
+      7
+    ],
+    "bins": 311,
+    "q": 0
+  },
+  "source_semantics": [
+    "original HeIII Saha; H Saha/He post-Saha and He ODE switches",
+    "Tm=Tr in HeIII; Tmss later",
+    "izH0 floor formula and indexed redshift",
+    "zout=(1+zin)exp(-h)-1",
+    "source finite-difference derivative seeds and H seed minus He",
+    "j-2 predictor h*(1.25current-.25prev2)",
+    "He first; accepted H FULL commit; next-node H post-Saha trial FULL maps discarded",
+    "313 causal edges; k>=0,k+1<=j-1; theta in [0,1]; eta_emit<etaRT+h*(j-1)",
+    "j0/j1 zero prehistory; future NaN; no current/trial visible"
+  ],
+  "C_source_change": "Verified original copied source; exactly one active DLNA definition changed to (8.49e-5/2.); no model changes",
+  "tolerances": {
+    "helium_states_scaled_max1": 2e-12,
+    "helium_rhs_same_input_and_trajectory_scaled_max1": 2e-10,
+    "stage_flags": "EXACT",
+    "FULL_H_states_relative_floor1e-8": 5e-09,
+    "FULL_xHeII_absolute": 5e-10,
+    "FULL_Tm_relative_floor1K": 5e-10,
+    "FULL_z_absolute": 2e-12,
+    "electron_He_ledger_absolute": 5e-13,
+    "trajectory_H_He_rhs_scaled_max1": 2e-07,
+    "same_input_H_rhs_scaled_max1": 2e-10,
+    "625_spectral_values_each_call": "abs(P-C)<=1e-7*max(abs(P),abs(C))+1e-10*fBB",
+    "Schur_normalized_residual": 2e-10
+  },
+  "caps": {
+    "CPU": 1,
+    "BLAS_OMP_threads": 1,
+    "AS_bytes": 2147483648,
+    "CPU_s": 120,
+    "wall_s": 180,
+    "gcc_child_s": 60,
+    "C_oracle_s": 30,
+    "He_rows": 50000,
+    "accepted_FULL": 8,
+    "FULL_evaluations": 40
+  },
+  "stop": "First substantive ambiguity, stage mismatch, numerical gate failure or hard cap; preserve first failure, stdout/stderr/hashes create-only; no NCP/cloud/push",
+  "claim_gates": "Local same-h unit verification only; fresh Astra independent review required for scoped admission; publication does not imply scientific admission",
+  "R3I-CONVERGENCE-v1": {
+    "levels": "independent Python h,h2,h4 only; C h cannot substitute",
+    "common_grid": "z8000..0 original four-point cubic",
+    "scales": {
+      "xe": "max(abs(xe_h4),1e-4)",
+      "Tm": "max(abs(Tm_h4),1K)",
+      "ratio_floor": 0.0001
+    },
+    "differences": "signed D01=P_h-P_h2,D12=P_h2-P_h4",
+    "p_gate": "same sign; both above max(32*u*max(abs(a),abs(b),floor),10*(same-h parity errors at both grids),10*(output quantization half-units at both grids)); u=2^-53; else NONMONOTONE/ROUNDOFF_UNRESOLVED",
+    "sensitivity_target": "max(abs(D12)/S)<=1e-4",
+    "contraction_target": "maxnorm(D12)<=.75*maxnorm(D01) and 2*maxnorm(D12)<=1e-4 global and per regime; no global p2 claim",
+    "transition_windows_z": [
+      [
+        1553,
+        1573
+      ],
+      [
+        826,
+        846
+      ]
+    ],
+    "stage_neighborhood": "eta +/-4*hcoarse",
+    "report_z": [
+      1563,
+      836,
+      1100,
+      20,
+      0
+    ],
+    "h2_only_order": "NOT_RUN",
+    "U5": "old nine FAIL/HOLD unchanged; R3h IEEE-shadow 9/9 saved diagnostic only; new h2 failure needs own tau/Q/fin raw and Decimal80 audit; separate gates"
+  }
+}

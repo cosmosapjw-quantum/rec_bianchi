@@ -1,0 +1,5 @@
+# H2 U5 thermal switch: saved-result audit
+
+The one authorized NCP run completed 14,727 accepted Python steps from the reviewed H2 U4 checkpoint and reached the source thermal event at input index 53177, then completed two coupled H/Tm steps. Its original-C comparison stopped at the first integrated mean-photon mismatch: step 3162, input index 41614, bin 8. The **original gate fails** (ratio 2.4235253635704352). The separately defined Decimal-80/IEEE diagnostic passes for that coordinate. This does not establish same-grid integrated parity, and the older U5 nine-failure gate remains HOLD.
+
+`NCP_RESULT.json` identifies the immutable owner-returned raw archive and selected evidence SHA-256 values. The archive was streamed on the owner PC with all 53 payload members checked against its manifest. The new `H2_U5_SAVED_RESULT_AUDIT_v1` node will evaluate every saved step and spectral record offline; it must receive an independent static review before its bounded full run. No physical trajectory will be rerun for this audit.

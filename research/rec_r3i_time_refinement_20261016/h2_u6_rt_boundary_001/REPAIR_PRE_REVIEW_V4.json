@@ -1,0 +1,135 @@
+{
+  "budget": {
+    "full_run_proposed_cpu_cap_s": 75,
+    "full_run_proposed_wall_cap_s": 180,
+    "governing_cpu_s": 450,
+    "governing_wall_s": 750,
+    "measured_u6_launches": [
+      {
+        "cpu_s": 18.85,
+        "id": "smoke_001",
+        "wall_s": 29.59
+      },
+      {
+        "cpu_s": 18.88,
+        "id": "smoke_002",
+        "wall_s": 30.08
+      },
+      {
+        "cpu_s": 4.03,
+        "id": "tests_001",
+        "wall_s": 5.66
+      },
+      {
+        "cpu_s": 4.24,
+        "id": "repair_tests_001",
+        "wall_s": 11.08
+      },
+      {
+        "cpu_s": 18.68,
+        "id": "smoke_003",
+        "wall_s": 24.97
+      }
+    ],
+    "measured_u6_subtotal_cpu_s": 64.68,
+    "measured_u6_subtotal_wall_s": 101.38,
+    "other_command_wall_inventory_s": [
+      {
+        "description": "source_read_and_checkpoint_inspection",
+        "observed_tool_wall_s_approx": 10.7
+      },
+      {
+        "description": "harness_generation_compile_diagnostics",
+        "observed_tool_wall_s_approx": 7.7
+      },
+      {
+        "description": "initial_manifest_test_and_closure_scans",
+        "observed_tool_wall_s_approx": 12.799999999999999
+      },
+      {
+        "description": "smoke_and_hash_summaries",
+        "observed_tool_wall_s_approx": 4.2
+      },
+      {
+        "description": "measured_test_wrapper_overhead",
+        "observed_tool_wall_s_approx": 1.56
+      },
+      {
+        "description": "pre_review_generation_and_prior_commit_push",
+        "observed_tool_wall_s_approx": 6.8999999999999995
+      },
+      {
+        "description": "patch_calls",
+        "observed_tool_wall_s_approx": 4.0
+      },
+      {
+        "description": "v3_manifest_generation_and_repair_summaries",
+        "observed_tool_wall_s_approx": 4.529999999999999
+      },
+      {
+        "description": "additional_read_only_tool_calls_before_v4",
+        "observed_tool_wall_s_approx": 5.7
+      },
+      {
+        "description": "v4_manifest_generation",
+        "observed_tool_wall_s_approx": 1.5
+      }
+    ],
+    "other_inventory_sum_wall_s_approx": 59.589999999999996,
+    "pre_full_upper_cpu_s": 366.795836,
+    "pre_full_upper_wall_s": 501.59210247197,
+    "prior_u5_conservative_cpu_s": 237.115836,
+    "prior_u5_conservative_wall_s": 335.21210247197,
+    "unmetered_debit_cpu_s_upper_allowance": 65,
+    "unmetered_debit_is_not_measured_cpu": "The 65s is a conservative allowance based on command wall-time inventory, not measured CPU; reconcile new commands before full launch.",
+    "unmetered_debit_wall_s_upper_allowance": 65,
+    "worst_case_cumulative_cpu_s": 441.795836,
+    "worst_case_cumulative_wall_s": 681.5921024719701
+  },
+  "full_u6_run": "NOT_RUN_PENDING_INDEPENDENT_STATIC_REVIEW",
+  "node": "H2_U6_RT_BOUNDARY",
+  "physical_scope": "original October 2012 HyRec q=0 FULL H+He h/2; U6 one-step smoke only",
+  "repair": "create-only attempted/source/accepted raw trace and 625 spectral field streams; THERMAL_EVENT exactly 5 fields and all seeds finite; no physics or tolerance change",
+  "smoke_003": {
+    "accepted_steps": 1,
+    "causal_links": 313,
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "command": "python scripts/verify_r3i_h2_u6_rt_boundary.py --checkpoint /home/cosmosapjw/rec_theory_runs/REC_R3I_20261016/U5_SAVED_AUDIT_INPUTS_001/run_001/python_u5_thermal.npz --evidence-dir research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/local_smoke_003 --max-extra-accepted 1",
+    "first_failure": null,
+    "parent_peak_rss_bytes": 366944256,
+    "receipt_sha256": "2c60507a5ec7c8bcca4702780ef7b70f44f2e6e21b0100ee872fbe6b212f1985",
+    "result": "SMOKE_ONLY",
+    "same_h_Tm_relative_max": 1.994402531967008e-16,
+    "same_h_xe_relative_max": 1.3223362155349243e-13,
+    "source_manifest_v3_sha256_used": "b92d79c7d40d4824bd2dad38c73395e47099fd9f5a3d1010a5d60a5a006a63ea",
+    "spectral_fields": 625,
+    "stdout_sha256": "1d964f4fc0c4f11ae653652dafda74947cfc7830dd0bdedc6eaf9b0296d04743",
+    "time_sha256": "e1786036e27bc2d9c15cb370d45f7a33e96b4019d31427359d451a391ded15e5"
+  },
+  "source_manifest_v4": {
+    "path": "research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V4.json",
+    "regular_files_sha_verified": 109,
+    "sha256": "61a672817071bd47334f119087b3ed354212d9e2ab75ee1740de7534029e1153"
+  },
+  "source_sha256": {
+    "scripts/verify_r3i_h2_u6_rt_boundary.py": "b7f4d2037e3582e5c61fad70901b804961ee36c1bc2ab8328c0ec2f7b37dcda5",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_refined_u6_rt_boundary.py": "3a9f78795c096014c112055e4ffca07ba45bfb5b0f5f3fd9a5210d7da48d8171",
+    "tests/trajectory/test_primordial_2012_refined_u6_rt_boundary.py": "b145fdacc5d7e8d2a9488f668db3bc55c333b228457185a43eb55cde70d42726"
+  },
+  "status": "READY_FOR_FRESH_STATIC_REVIEW_NOT_EXECUTED",
+  "tests": {
+    "command": "python -m pytest -q tests/trajectory/test_primordial_2012_refined_u6_rt_boundary.py",
+    "negative_controls": "missing and nonfinite thermal fields, accepted-evidence write before a simulated failure",
+    "result": "6_PASS",
+    "stdout_sha256": "dc5dba5e6ccd8a3537ee1604a26e13ceedf64eeef8d2e18e2209ca259f17668c",
+    "time_sha256": "e2447bce7aaee1640a19525cab0d39b23fd49d184504a34a448d30f2a3363849"
+  },
+  "u5_raw_dual_backup": {
+    "dropbox": "dbx:bianchi/rec_bianchi/20261016/R3I_H2_U5_THERMAL_20261018_001_916cedd/REC_R3I_H2_U5_THERMAL_RUN_001_RAW.tar.gz",
+    "google_drive": "gdrv:rec_bianchi_research_backups/20261016/R3I_H2_U5_THERMAL_20261018_001_916cedd/REC_R3I_H2_U5_THERMAL_RUN_001_RAW.tar.gz",
+    "immutable_archive_sha256": "8d18bd221e4cf9aa4af1e8a48eb2048ebe9c65d33dda0f9a3de17fb529823c3c",
+    "provenance": "parent controller reported independent rclone cat readbacks; worker did not rerun them",
+    "reported_readback_both_match": true
+  },
+  "v4_change_from_smoke3": "Only verifier CPU cap 90->75, wall cap 200->180, and V3->V4 manifest pointer; solver/model/tolerances and evidence writer unchanged. The smoke3 result is not an exact V4 execution receipt."
+}

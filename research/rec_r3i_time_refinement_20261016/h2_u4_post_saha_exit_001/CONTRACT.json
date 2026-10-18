@@ -1,0 +1,41 @@
+{
+  "node": "H2_U4_POST_SAHA_EXIT",
+  "decision_owner": "Astra independent NCP result review",
+  "source_scope": "original October 2012 HyRec q=0 FULL H+He only",
+  "start": {
+    "global_iz": 37207,
+    "reviewed_python_checkpoint_sha256": "70274c9631b33e4ed1c4b8761608cd9ce22f82d96b0afbcb36c0e786e2c04c6d",
+    "reviewed_ncp_raw_archive_sha256": "0c6105a816277420b551471b7c9815085269a7475e8c4b7a7c3d31fa93208132",
+    "source_capsule_commit": "53edd26ee5ff58edf7389e44fd05c41392dc3f28",
+    "accepted_photon_columns": [0, 760],
+    "hydrogen_rhs_tail": [-0.2140541132585438, -0.06964592995647713],
+    "hydrogen_rhs_tail_input_indices": [37205, 37206],
+    "helium": "neutral at this source stage"
+  },
+  "execution": {
+    "h": 4.245e-5,
+    "start_from_own_reviewed_python_h2_checkpoint": true,
+    "native_C_oracle": "independently recompute h/2 from z=8000; no Python state import",
+    "integrator": "source h*(1.25*f_j - 0.25*f_{j-2}) after post-Saha exit",
+    "stop": "first hydrogen post-Saha true-to-false flag transition plus exactly two accepted hydrogen ODE steps",
+    "thermal": "source Tmss through this bounded node",
+    "prestep_conditions": "check source thermal and RT transitions before each step; if either crosses before endpoint, typed HOLD"
+  },
+  "verification": {
+    "same_h_only": true,
+    "state_rhs_spectral_schur_tolerances": "retain REC-R3I-H2-CONTINUATION-v1 frozen values",
+    "causal_links": 313,
+    "all_spectral_values_per_accepted_column": 625,
+    "U5_old_gate": "nine FAIL/HOLD unchanged"
+  },
+  "caps": {
+    "extra_accepted_steps": 4096,
+    "FULL_evaluations": 16384,
+    "CPU_affinity": 1,
+    "address_space_GiB": 2,
+    "cumulative_CPU_seconds": 600,
+    "wall_seconds": 900
+  },
+  "stop_and_claim": "preserve first failure and partial outputs; cap or prior thermal/RT event is HOLD; no full history or Python time convergence claim",
+  "gate": "static independent review before one NCP execution, independent result review afterward"
+}

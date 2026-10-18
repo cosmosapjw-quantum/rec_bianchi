@@ -1,0 +1,28 @@
+{
+  "capsule_preflight": {
+    "checkpoint_sha256": "a6fe8a9a9e6d32b99d5b567e62d87912fdf4d71aa7a9392b33fdf23c55b8416d",
+    "status": "PASS",
+    "verified_files": 90
+  },
+  "changed_files_sha256": {
+    "scripts/verify_r3i_h2_continuation.py": "93ca95c6474d8ac289774784632ce416d6edfb825f55fa862fe3017ff16ce5ef",
+    "tests/trajectory/test_primordial_2012_refined_continuation.py": "057b484316627328e91fb333c4bbad3f2d0c10419905730237a9224b0bbc724b"
+  },
+  "checks": [
+    "cumulative parent+children CPU checked every 4096 native stdout lines",
+    "cumulative CPU checked after all validations and immediately before PASS",
+    "final measured cumulative CPU >=600 yields explicit FAIL_CPU_CAP while preserving earlier first failure"
+  ],
+  "node": "REC-R3I-H2-CONTINUATION-v1",
+  "physical_run": "NOT_RUN",
+  "prior_smoke": "local_smoke_003 retained, not repeated",
+  "repair_scope": "one Astra-authorized cumulative CPU watchdog validation repair only",
+  "review_status": "HOLD_PENDING_FRESH_READ_ONLY_REVIEW",
+  "source_manifest_v4_sha256": "1b3fdb94094e14a6bcb57ab0e36790ae0c44a9226516c5e7aa25b76d48c686d2",
+  "source_manifest_v5_sha256": "03804f8f4d022d03e6004f7384f821b2cfc8dbc99a3b6281c1a7595fae390faa",
+  "targeted_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -q tests/trajectory/test_primordial_2012_refined_continuation.py",
+    "passed": 12,
+    "status": "PASS"
+  }
+}

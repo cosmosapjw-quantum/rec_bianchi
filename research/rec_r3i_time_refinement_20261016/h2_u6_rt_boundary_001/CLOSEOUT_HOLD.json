@@ -1,0 +1,50 @@
+{
+  "node": "H2_U6_RT_BOUNDARY",
+  "decision": "HOLD_BUDGET_BEFORE_NCP",
+  "review_authority": "Astra independent final budget decision relayed by controller",
+  "full_u6_accepted_steps": 0,
+  "full_u6_status": "NOT_RUN",
+  "latest_source_commit_before_closeout": "f544dbf82f840c8ad686019bbf7c9a7506621667",
+  "latest_source_manifest_v6_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+  "local_smoke": {
+    "scope": "one accepted h/2 FULL input at global 53179; independently generated native C same-grid step",
+    "verification_sha256": "2c60507a5ec7c8bcca4702780ef7b70f44f2e6e21b0100ee872fbe6b212f1985",
+    "spectral_fields": 625,
+    "causal_links": 313,
+    "same_h_xe_relative_max": 1.3223362155349243e-13,
+    "same_h_Tm_relative_max": 1.994402531967008e-16,
+    "first_failure": null,
+    "targeted_tests_after_repair": "6_PASS"
+  },
+  "u5_reviewed_input": {
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "same_h_steps_checked": 14727,
+    "spectral_fields_checked": 9204375,
+    "causal_links_checked": 4609551,
+    "original_average_gate": "HOLD_8_FAIL",
+    "restricted_decimal80_ieee_gate": "PASS_8_OF_8",
+    "full_audit_sha256": "9e7ffe430d1d1f1079c22094f7b76767c3b263613b2c81e361caaccfce02a518",
+    "raw_archive_sha256": "8d18bd221e4cf9aa4af1e8a48eb2048ebe9c65d33dda0f9a3de17fb529823c3c",
+    "dropbox_readback": "VERIFIED_SAME_SHA256_BY_CONTROLLER",
+    "google_drive_readback": "VERIFIED_SAME_SHA256_BY_CONTROLLER"
+  },
+  "u4_raw_input": {
+    "checkpoint_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+    "raw_archive_sha256": "836deb219a91b9ac6767b031fe90f357a963003d360b9d034348ed9324ddef11",
+    "owner_pc_readback": "VERIFIED_SAME_SHA256_IN_RAW_ARCHIVE_RECEIPT",
+    "dropbox_file_listing": "PRESENT_2026-10-18",
+    "google_drive_readback": "VERIFIED_SAME_SHA256_BY_CONTROLLER_2026-10-18"
+  },
+  "budget_at_hold": {
+    "governing_cpu_s": 450,
+    "governing_wall_s": 750,
+    "cumulative_cpu_s_upper": 388.195836,
+    "cumulative_wall_s_upper": 522.99210247197,
+    "remaining_cpu_s_before_closeout": 61.804164,
+    "remaining_wall_s_before_closeout": 227.00789752803,
+    "u6_full_cpu_cap_s": 60,
+    "u6_full_wall_cap_s": 180,
+    "reason": "The maximum permitted U6 compute would leave too little cumulative CPU for preparation, transfer, and recovery; no physical execution was launched."
+  },
+  "claim_ceiling": "Original October 2012 HyRec q=0 FULL H+He h/2 partial history only; no whole primordial time convergence, Bianchi, REI opacity, or CMB admission"
+}

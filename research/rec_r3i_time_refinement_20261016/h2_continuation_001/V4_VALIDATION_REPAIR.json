@@ -1,0 +1,46 @@
+{
+  "checkpoint_sha256": "a6fe8a9a9e6d32b99d5b567e62d87912fdf4d71aa7a9392b33fdf23c55b8416d",
+  "contract_sha256": "5675159b9c761910fc1bf62532a8ce2ab316166c86ce97ebd94c27b26818b950",
+  "final_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -q tests/trajectory/test_primordial_2012_refined_continuation.py",
+    "passed": 10,
+    "status": "PASS"
+  },
+  "first_test_failures": [
+    {
+      "classification": "validation_order",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -q tests/trajectory/test_primordial_2012_refined_continuation.py",
+      "failure": "AttributeError: NoneType source.table before corrupt checkpoint ledger validation",
+      "fix": "check checkpoint species ledgers before loading source photon table",
+      "test": "test_negative_or_nonfinite_species_ledger_stops_before_source"
+    },
+    {
+      "classification": "draft_manifest_hash_stale_after_validation_order_fix",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -q tests/trajectory/test_primordial_2012_refined_continuation.py",
+      "failure": "CAPSULE_SOURCE_CLOSURE_MISSING_OR_CHANGED: primordial_2012_refined_continuation.py",
+      "fix": "refresh draft V4 manifest after final code; expand package closure to account for __init__ relative imports",
+      "test": "test_cumulative_cpu_watchdog_and_capsule_closure"
+    }
+  ],
+  "frozen_manifest_sha256": "1b3fdb94094e14a6bcb57ab0e36790ae0c44a9226516c5e7aa25b76d48c686d2",
+  "local_smoke": {
+    "accepted_extra": 1,
+    "cumulative_process_tree_cpu_s": 1.5115429999999996,
+    "event_plus_two": "NOT_RUN",
+    "full_evaluations": 4,
+    "global_output_iz": 36455,
+    "max_electron_ledger_residual": 1.5504091066542713e-17,
+    "receipt_sha256": "da94a4a7283b3be126d0cded2d0473b72494ef07031cdd693642e594cdff9af4",
+    "source_C_same_h_state_max_xe": 0.0,
+    "status": "SMOKE_ONLY"
+  },
+  "ncp_long_physics_run": "NOT_RUN",
+  "node": "REC-R3I-H2-CONTINUATION-v1",
+  "review_status": "HOLD_PENDING_FRESH_READ_ONLY_REVIEW",
+  "scope": "one bounded validation and manifest repair; no physics, clock, or tolerance change",
+  "source_closure_preflight": {
+    "full_package_Python_files": 82,
+    "status": "PASS",
+    "verified_files": 90
+  }
+}
