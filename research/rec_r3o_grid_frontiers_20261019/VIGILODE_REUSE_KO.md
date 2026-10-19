@@ -36,7 +36,7 @@ dense output 오차가 크게 달랐다. 이 근거로 이번 제한된 RODAS
 선택한 코드는 `claude/nice-dijkstra-208xq0`의
 `a21d573980f66fe02891bd216153443b5352f921`이다. 이 정체성을 저장소의
 default main이나 벤치마크 실행 당시의 `8a8bd409...`와 혼동하지 않는다.
-선택한 122개 파일의 Git blob을 원격 트리와 실제 비교해 일치시켰다.
+초기 122개 파일에 원본 integrators/build.rs를 추가한 현재 123개 파일의 Git blob을 원격 트리와 실제 비교해 일치시켰다.
 core, krylov, integrators의 수치 소스는 수정하지 않았다.
 
 배포용 아카이브는 `rust/vendor/vigilode-a21d573-three-crates.tar.gz`다.
@@ -129,7 +129,25 @@ NPZ/CSV/receipt 해시를 보존한다. 부모가 전체 원본 결과를 독립
 작은 패킷은 전체 생산자 아카이브를 대체하는 원본 파일로 표시하지
 않으며, `review/RUST_BOUNDARY_PARENT_READBACK.json`에 이 범위를 명시한다.
 
-현재 Rust 독립 C9 감사와, 캐시 라이브러리를 사용하지 않는 GitHub의
-새 Cargo 빌드 검증은 진행 중이다. 실행 코드와 이후 build-wrapper
+Rust 독립 C9 감사에서 세 P2 수정과 제한된 수치 근거의 검토가 끝났다.
+초기 GitHub Cargo 빌드는 배포 아카이브에서 원본 integrators/build.rs가
+빠져 수치 실행 전에 실패했다. 원본 바이트를 추가한 v2 패키지의
+새 소스 빌드 검증은 아직 대기 상태다. 실행 코드와 이후 build-wrapper
 수정의 관계는 `EVIDENCE.json`에 구분한다. 새 Cargo 경로는 검토된
 Cargo.lock을 그대로 사용하며 build 중 lockfile을 다시 생성하지 않는다.
+
+## 소스 빌드 보정과 실행기 종료 조건
+
+v2 아카이브는 731,431 bytes, SHA256
+`77c03b85844909b45428bfafd066d2403cb6f7f1870b8a68d705c4bfd1e7aca4`다.
+첫 CI 실패 아카이브는 전체 원격 readback SHA 일치를 확인해 보존했다.
+`review/VIGILODE_PACKAGING_CLOSURE.json`과 `review/C9_RUST.md`에
+정체성과 검토 범위가 있다. 이 패키징 수정은 수치 소스를 바꾸지 않는다.
+
+실행기는 완료 시 입력·산출물 해시 작업까지 측정한 후 최종 receipt
+쓰기 여유를 남기지 못하면 거절한다. CPU는 완료 자식의 실제 사용량과
+실행 중 프로세스 트리를 추적하며, RSS는 50ms 표본이므로 정확한 peak로
+표시하지 않는다. Cargo.lock은 입력으로 고정하고 `--locked`를 사용한다.
+보정된 16개 계약 검사는 1.766172 CPU초, 물리 step 0으로 통과했다.
+부모가 추가로 CLI를 2–32 step으로 한정해 1-attempt 실패 검사의 전제를
+명시했다. 기본 16 step은 같으며 별도 parser 거절 검사가 통과했다.

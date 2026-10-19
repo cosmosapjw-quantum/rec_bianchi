@@ -24,7 +24,7 @@ for _key in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "RAYO
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 sys.path.insert(0,str(ROOT/"src"))
-from build_r3o_rust import Budget, cpu, dump_new, reserve, sha256, own_code_hashes, ensure_vigilode, ORIGINAL_ZIP, PACKAGE
+from build_r3o_rust import Budget, cpu, dump_new, reserve, sha256, own_code_hashes, ensure_vigilode, finalize_resource_record, ORIGINAL_ZIP, PACKAGE
 
 DEFAULT_PACKET = PACKAGE/"fixtures/r3m_u6_boundary.json"
 
@@ -149,11 +149,7 @@ def packet_command(args):
         if (record["inputs_after"]!=record.get("inputs_before")
                 or any(record["code_after"].get(k)!=v for k,v in code_before.items())):
             record["status"]="FAILED";record["identity_failure"]="INPUT_OR_EXISTING_CODE_MUTATION";exit_code=2
-        record["process_tree_cpu_s"]=cpu()-budget.start_cpu
-        record["wall_s"]=time.monotonic()-budget.start_wall
-        if record["process_tree_cpu_s"]>20. or record["wall_s"]>60.:
-            record["status"]="FAILED";record["resource_failure"]="PACKET_INTAKE_BUDGET";exit_code=2
-        record["exit_code"]=exit_code
+        exit_code=finalize_resource_record(record,budget,exit_code,"PACKET_INTAKE")
         dump_new(ev/"packet_receipt.json",record)
         print(json.dumps({k:record.get(k) for k in ("status","packet_sha256","process_tree_cpu_s","wall_s","failure")}))
     return exit_code
@@ -225,7 +221,8 @@ def main():
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--raw-dir",type=Path,default=ROOT.parent/"rec_raw_verified/full5210_stored")
     ap.add_argument("--source-zip",type=Path,default=ORIGINAL_ZIP)
-    ap.add_argument("--steps",type=int,default=16,choices=range(1,33))
+    ap.add_argument("--steps",type=int,default=16,choices=range(2,33),
+                    help="2-32 steps; at least two are needed for the one-attempt partial-run control")
     ap.add_argument("--boundary-packet",type=Path,help="use the sealed derived checkpoint packet; no full NPZ/CSV retrieval")
     group=ap.add_mutually_exclusive_group()
     group.add_argument("--export-boundary-packet",type=Path,help="create derived packet from authenticated full raw; zero numerical steps")
@@ -352,12 +349,9 @@ def main():
                 if ensure_vigilode()!=build["vigilode"]:raise ValueError("R3O_VIGILODE_MUTATION")
         except BaseException as exc:
             report["identity_failure"]=str(exc);report["status"]="FAILED";exit_code=2
-        report["process_tree_cpu_s"]=cpu()-budget.start_cpu
-        report["wall_s"]=time.monotonic()-budget.start_wall
-        if report["process_tree_cpu_s"]>20. or report["wall_s"]>60.:
-            report["resource_failure"]="R3O_TOTAL_NUMERICAL_BUDGET";report["status"]="FAILED";exit_code=2
-        report["commands"]=budget.commands;report["exit_code"]=exit_code
+        report["commands"]=budget.commands
         report["artifacts_sha256"]={str(p.relative_to(ev)):sha256(p) for p in sorted(ev.rglob("*")) if p.is_file()}
+        exit_code=finalize_resource_record(report,budget,exit_code,"NUMERICAL")
         dump_new(ev/"verification.json",report)
         print(json.dumps({k:report.get(k) for k in ("status","primary_summary","process_tree_cpu_s","wall_s","failure","identity_failure")}))
     return exit_code

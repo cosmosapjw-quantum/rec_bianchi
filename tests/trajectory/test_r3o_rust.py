@@ -109,6 +109,113 @@ class R3ORustContracts(unittest.TestCase):
 
 @unittest.skipUnless(os.environ.get("REC_R3O_TEST_OUTPUT"),"requires a create-only test evidence directory")
 class R3OBuildGuardContracts(unittest.TestCase):
+    def finalizer_control(self, module_name):
+        """Exercise the real finally branch with synthetic hashing costs.
+
+        Running that branch, rather than only its budget helper, detects moving
+        the resource sample ahead of the expensive source/artifact identity work.
+        These receipts are explicitly synthetic and evolve no physical state.
+        """
+        import ast
+        import importlib
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        root=Path(__file__).resolve().parents[2]
+        sys.path.insert(0,str(root/"scripts"))
+        module=importlib.import_module(module_name)
+        import build_r3o_rust
+        main=next(n for n in ast.parse(Path(module.__file__).read_text()).body
+                  if isinstance(n,ast.FunctionDef) and n.name=="main")
+        branch=next(n for n in main.body if isinstance(n,ast.Try)).finalbody
+        code=compile(ast.Module(body=branch,type_ignores=[]),module.__file__,"exec")
+        is_build=module_name=="build_r3o_rust"
+        cpu_cap,wall_cap=(240.,480.) if is_build else (20.,60.)
+        for over in (False,True):
+            with self.subTest(over_budget=over):
+                directory=Path(os.environ["REC_R3O_TEST_OUTPUT"])/self._testMethodName/str(over)
+                directory.mkdir(parents=True,exist_ok=False)
+                (directory/"synthetic_artifact.txt").write_text("no numerical data\n")
+                clock={"cpu":1.,"wall":1.,"hash_called":False}
+                after=(cpu_cap+1.,wall_cap+1.) if over else (2.,2.)
+                def hashing_cost():
+                    clock.update(cpu=after[0],wall=after[1],hash_called=True)
+                def own_hashes():
+                    if is_build:hashing_cost()
+                    return {"synthetic_source":"unchanged"}
+                def artifact_hash(path):
+                    hashing_cost()
+                    return "synthetic_hash_only"
+                report={"schema":"rec.r3o.synthetic-finalizer-control.v1",
+                        "synthetic_clock_only":True,"physical_steps":0,
+                        "status":"BUILD_PASS" if is_build else "BOUNDED_PASS",
+                        "code_before":{"synthetic_source":"unchanged"}}
+                budget=SimpleNamespace(start_cpu=0.,start_wall=0.,cpu_s=cpu_cap,wall_s=wall_cap,commands=[])
+                fake_time=SimpleNamespace(monotonic=lambda:clock["wall"])
+                namespace=dict(vars(module),report=report,budget=budget,exit_code=0,
+                    ev=directory,code_before={"synthetic_source":"unchanged"},
+                    own_code_hashes=own_hashes,sha256=artifact_hash,time=fake_time,
+                    signal=SimpleNamespace(ITIMER_REAL=0,setitimer=lambda *args:None))
+                with patch.object(build_r3o_rust,"cpu",lambda:clock["cpu"]),patch.object(build_r3o_rust,"time",fake_time):
+                    exec(code,namespace)
+                filename="build.json" if is_build else "verification.json"
+                result=json.loads((directory/filename).read_text())
+                self.assertTrue(clock["hash_called"])
+                self.assertEqual(result["process_tree_cpu_s"],after[0])
+                self.assertEqual(result["wall_s"],after[1])
+                self.assertEqual(namespace["exit_code"],2 if over else 0)
+                self.assertEqual(result["exit_code"],namespace["exit_code"])
+                self.assertEqual(result["final_receipt_write_reserve"],{"cpu_s":2.,"wall_s":3.})
+                self.assertEqual(result["status"]=="FAILED",over)
+
+    def test_build_finalizer_accounts_for_source_hash_work(self):
+        self.finalizer_control("build_r3o_rust")
+
+    def test_verifier_finalizer_accounts_for_artifact_hash_work(self):
+        self.finalizer_control("verify_r3o_rust")
+
+    def test_missing_committed_lock_fails_before_cargo(self):
+        root=Path(__file__).resolve().parents[2]
+        sys.path.insert(0,str(root/"scripts"))
+        import build_r3o_rust
+        from unittest.mock import patch
+        directory=Path(os.environ["REC_R3O_TEST_OUTPUT"])/self._testMethodName
+        directory.mkdir(exist_ok=False)
+        package=directory/"missing-lock-package";package.mkdir()
+        output=directory/"expected_failure"
+        with patch.object(build_r3o_rust,"PACKAGE",package),patch.object(sys,"argv",["build_r3o_rust.py","--output",str(output)]):
+            code=build_r3o_rust.main()
+        result=json.loads((output/"build.json").read_text())
+        self.assertEqual(code,2)
+        self.assertIn("COMMITTED_CARGO_LOCK_REQUIRED",result["failure"]["message"])
+        self.assertEqual(result["commands"],[])
+        self.assertFalse((package/"Cargo.lock").exists())
+
+    def test_locked_cargo_build_rejects_and_preserves_invalid_lock(self):
+        import shutil
+        cargo=shutil.which("cargo")
+        if cargo is None:self.skipTest("actual Cargo not on PATH for this launcher-only control")
+        root=Path(__file__).resolve().parents[2]
+        sys.path.insert(0,str(root/"scripts"))
+        from build_r3o_rust import Budget
+        directory=Path(os.environ["REC_R3O_TEST_OUTPUT"])/self._testMethodName
+        directory.mkdir(exist_ok=False)
+        (directory/"src").mkdir()
+        (directory/"src/main.rs").write_text("fn main() {}\n")
+        (directory/"Cargo.toml").write_text('[package]\nname="r3o-invalid-lock-control"\nversion="0.0.0"\nedition="2024"\n[workspace]\n')
+        lock=directory/"Cargo.lock";lock.write_bytes(b"version = INVALID_LOCK\n")
+        before=lock.read_bytes()
+        budget=Budget(directory,cpu_s=10.,wall_s=20.)
+        env=dict(os.environ,CARGO_HOME=str(directory/"cargo_home"),CARGO_TARGET_DIR=str(directory/"target"))
+        # metadata --no-deps intentionally does not resolve dependencies or parse
+        # the lock. Exercise the actual --locked build gate; malformed TOML must
+        # stop Cargo before it compiles this dependency-free control package.
+        result=budget.run([cargo,"build","--locked","--offline","--release","-j1","--manifest-path",directory/"Cargo.toml"],
+            cwd=directory,env=env,label="invalid_lock",expected=(101,))
+        self.assertEqual(result["returncode"],101)
+        self.assertEqual(lock.read_bytes(),before)
+        self.assertIn("lock",Path(result["stderr"]).read_text().lower())
+        self.assertFalse((directory/"target/release/r3o-invalid-lock-control").exists())
+
     def test_process_tree_cpu_cap_retains_actual_failure(self):
         root=Path(__file__).resolve().parents[2]
         sys.path.insert(0,str(root/"scripts"))
@@ -124,6 +231,7 @@ class R3OBuildGuardContracts(unittest.TestCase):
         self.assertGreater(result["max_polled_process_tree_rss_bytes"],0)
         self.assertIsNotNone(result["pid_namespace_mapping"]["procfs_pid"])
         self.assertNotEqual(result["returncode"],0)
+        self.assertEqual(result["resource_measurement_coverage"]["live_scope"],"MAPPED_CHILD_AND_DESCENDANTS_POLLED")
 
     def test_published_vigilode_archive_materializes_without_private_checkout(self):
         root=Path(__file__).resolve().parents[2]
@@ -139,6 +247,20 @@ class R3OBuildGuardContracts(unittest.TestCase):
         self.assertTrue((extracted/"crates/rodas5p-integrators/src/rodas5p_fast.rs").is_file())
         self.assertGreater(len(record["members"]),120)
         self.assertEqual(record["upstream_commit"],"a21d573980f66fe02891bd216153443b5352f921")
+
+
+class R3ORustCli(unittest.TestCase):
+    def test_one_step_is_rejected_before_build_or_output_creation(self):
+        import tempfile
+        root=Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/"must_not_be_created"
+            result=subprocess.run([sys.executable,"-B",str(root/"scripts/verify_r3o_rust.py"),
+                "--steps","1","--output",str(output)],cwd=root,
+                capture_output=True,text=True,timeout=10)
+            self.assertEqual(result.returncode,2)
+            self.assertIn("argument --steps: invalid choice:",result.stderr)
+            self.assertFalse(output.exists())
 
 
 if __name__=="__main__":unittest.main()

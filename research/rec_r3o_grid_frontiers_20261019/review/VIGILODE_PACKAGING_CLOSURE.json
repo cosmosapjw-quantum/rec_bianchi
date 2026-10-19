@@ -1,0 +1,24 @@
+{
+  "schema": "rec.r3o.vigilode-packaging-closure.v1",
+  "finding": "Fresh Cargo compile of integrators failed with three missing compile-time profile env vars",
+  "cause": "Original automatic Cargo build.rs omitted in parentselectedsourcepackage",
+  "correction": "Include exact upstream build.rs (Git blob verified); no manual fabricated environment or numerical-source change",
+  "new_upstream_file": {
+    "path": "crates/rodas5p-integrators/build.rs",
+    "sha": "725309e91c989f79e5a5e75307addd7ae3478937",
+    "size": 587,
+    "sha256": "a212e1bd0d2d4c6286cbd8015fa01e317111788d535efecd41c37c408bac5f7e"
+  },
+  "upstream_files_total": 123,
+  "archive": {
+    "bytes": 731431,
+    "path": "rust/vendor/vigilode-a21d573-three-crates.tar.gz",
+    "sha256": "77c03b85844909b45428bfafd066d2403cb6f7f1870b8a68d705c4bfd1e7aca4"
+  },
+  "failed_ci_run": 39265931080,
+  "failed_artifact_id": 12192183631,
+  "failed_remote_artifact_sha256": "81de9a968f8c8cbda8840ff6d337be893b52f89b6ae8b1d9c68616d0b4c9f675",
+  "failed_remote_artifact_whole_readback": "MATCH",
+  "native_numerical_work_in_failed_CI": "NOT_RUN",
+  "closure_execution": "PENDING_FRESH_CARGO_CI"
+}

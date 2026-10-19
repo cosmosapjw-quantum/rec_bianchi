@@ -1,6 +1,6 @@
 {
   "schema": "rec.r3o.evidence.v1",
-  "phase": "RUST_BOUNDED_EXECUTION_COMPLETE_FINAL_REVIEW_AND_FRESH_CARGO_CI_PENDING",
+  "phase": "RUST_C9_COMPLETE_PACKAGING_CORRECTED_FRESH_CARGO_CI_PENDING",
   "previous_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
   "execution_location": "ChatGPT sandbox",
   "h2_lowz": {
@@ -26,10 +26,10 @@
   },
   "vigilode_rust": {
     "upstream_commit": "a21d573980f66fe02891bd216153443b5352f921",
-    "selected_source_files_git_blob_match": 122,
+    "selected_source_files_git_blob_match": 123,
     "source_package": "../../rust/VIGILODE_SOURCE.json",
     "compiled_numeric_and_verifier_source_matches_local_run": false,
-    "build_wrapper_post_run_change": "committed lock captured before Cargo; no generate-lockfile during build; targeted guard controls",
+    "build_wrapper_post_run_change": "locked Cargo, aggregate process telemetry with PID mapping, finalization budget gate; parser restricts2..32",
     "local_build": "rust_local/build_002/build.json",
     "local_build_mode": "REBUILD_C_BRIDGE_AND_RUST_CALLER_WITH_SOURCE_MATCHED_RLIBS",
     "dependency_compile_commit": "8a8bd409b1d96c7b7421f496d229e119fd3d284e",
@@ -37,7 +37,7 @@
     "local_verification": "rust_local/verify_001/verification.json",
     "accepted_fixed_steps": 16,
     "scalar_byte_comparisons": 102,
-    "fixed_same_h_status": "LOCAL_PASS_PENDING_C9",
+    "fixed_same_h_status": "LOCAL_SCOPED_PASS_C9_REVIEWED",
     "diagnostic": "EXPLORATORY_METHOD_COMPARISON",
     "diagnostic_accepted_steps": 16,
     "diagnostic_output_nodes": 17,
@@ -47,10 +47,16 @@
     "faer_2x2_residual": 1.2507140131633662e-16,
     "portable_boundary_packet_sha256": "4adfdeee1ae236725f8a654072498649c89f8e5b2e33f88eb6f40080ffbcb19d",
     "portable_packet_full_raw_parent_readback": "review/RUST_BOUNDARY_PARENT_READBACK.json",
-    "review": "IN_PROGRESS",
-    "fresh_Cargo_CI": "PENDING_PUSH",
+    "review": "C9_COMPLETE_THREE_P2_CLOSED; P3_PARENT_PARSER_CONTROL_PASS",
+    "fresh_Cargo_CI": "INITIAL_44934_FAILED_MISSING_UPSTREAM_BUILD_RS; V2_PENDING_PUSH",
     "executed_source_relation": "Six source files have only an extra final newline removed for whitespace gate; exact matching build002 source preserved. Builder/test changes separately recorded; fresh Cargo CI pending.",
-    "format_receipt": "review/RUST_PUBLICATION_FORMAT.json"
+    "format_receipt": "review/RUST_PUBLICATION_FORMAT.json",
+    "packaging_revision": 2,
+    "packaging_closure": "review/VIGILODE_PACKAGING_CLOSURE.json",
+    "C9_report": "review/C9_RUST.md",
+    "P3_closure": "review/C9_RUST_P3_CLOSURE.json",
+    "corrective_contracts": "rust_local/contracts_fix_002/contracts_receipt.json",
+    "corrective_contract_tests": 16
   },
   "held": {
     "U5_h": "HOLD_9_FAIL",
@@ -94,6 +100,13 @@
       "subtests_passed": 72,
       "receipt": "receipts/CORE_CI.json",
       "new_tests_in_total": 48
+    },
+    "rust_corrective_contracts": {
+      "passed": 16,
+      "skipped": 0,
+      "physical_steps": 0,
+      "cpu_s": 1.766172,
+      "receipt": "rust_local/contracts_fix_002/contracts_receipt.json"
     }
   },
   "current_core_code_sha256": {
@@ -113,7 +126,7 @@
   },
   "files": {
     "THEORY_KO.md": "f43cc17e1ee724777da3c79bc381332234678879e78975964213a94a404b3273",
-    "VIGILODE_REUSE_KO.md": "c79afe91a226ba29b647b6b6587c662b9d26f755eecb6e52aeccefe967eafc3b",
+    "VIGILODE_REUSE_KO.md": "5ce61c920a99c94c66e3f4c0696a6124fd309a17997146013f6a458e3bfd30ea",
     "frontier_probes_001/FIGURE_REVIEW_KO.md": "f83b30a979ec62b5c7ccfcd1ad15c9fff14683a93712d03f2069d608b4a64502",
     "frontier_probes_001/FINAL_PLOT_SELECTION.json": "208ab5c89d07509f4d2e511d2c6213faeb417d992a776bad2a9971d55aed3adc",
     "frontier_probes_001/execution.json": "6db3adbb09e21b6ebc74803acb7c9f67da3dd5335c6c9848507bc243f602d3fa",
@@ -220,7 +233,7 @@
     "review/C9_CODE.md": "df55ea80394513a66df4e446d70d8a7738cf24b2a3793f252eff4ea6c75a3d5c",
     "review/C9_CODE_ORIGINAL.md.gz": "810e21b3b990464d0c77b14d7a7a686e63add3a463ea19841870326a09273296",
     "review/C9_P2_CLOSURE.json": "f3c6d41bffdc068ae987637f68ee27af30538f3017dc63737827abcbf4169939",
-    "review/C9_RUST.md": "26c50ca47f1f7afaff8fe74dc3e1b03befc796a377ee57e87ff317149d2f85a6",
+    "review/C9_RUST.md": "33054a6c62259721a424ed137c34baba352d486fe48c763f7b4dfbf4534e9ec7",
     "review/FIGURE_PARENT_READBACK.json": "9b319675d845a1278ce790a47e1c2fbe1bc3fc65836c2b72f48106e47d8a7a94",
     "review/R6_P2_01_CLOSURE.json": "98129dca40d6d12cbe0be6acfb09372d6039d66ba02ee2790516e9a370846367",
     "review/R6_PHYS_MATH.md": "4f7c5fb18ee41f08ef57d722368615a979711ab5ee4248ad86c2e83e738d4e44",

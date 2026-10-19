@@ -58,17 +58,38 @@ def cpu():
     return a.ru_utime + a.ru_stime + b.ru_utime + b.ru_stime
 
 
+def proc_children(pid):
+    """Return direct children, including on procfs mounts without task/children.
+
+    The fallback reads only numeric stat records to match PPIDs. It never treats
+    a missing children interface as an empty process tree.
+    """
+    try:
+        return [int(p) for p in Path(f"/proc/{pid}/task/{pid}/children").read_text().split()]
+    except FileNotFoundError:
+        children = []
+        for entry in Path("/proc").iterdir():
+            if not entry.name.isdigit():
+                continue
+            try:
+                fields = (entry/"stat").read_text().rsplit(") ", 1)[1].split()
+            except (FileNotFoundError, ProcessLookupError):
+                continue
+            if int(fields[1]) == pid:
+                children.append(int(entry.name))
+        return children
+
+
 def live_usage(pid):
     try:
         fields = Path(f"/proc/{pid}/stat").read_text().rsplit(") ", 1)[1].split()
         ticks = sum(int(fields[i]) for i in (11, 12, 13, 14))
         rss = int(fields[21]) * os.sysconf("SC_PAGE_SIZE")
-        children = Path(f"/proc/{pid}/task/{pid}/children").read_text().split()
     except (FileNotFoundError, ProcessLookupError):
         return 0., 0
     used = ticks / os.sysconf("SC_CLK_TCK")
-    for child in children:
-        c, r = live_usage(int(child))
+    for child in proc_children(pid):
+        c, r = live_usage(child)
         used += c
         rss += r
     return used, rss
@@ -79,11 +100,12 @@ def procfs_child_pid(namespace_pid):
 
     This host exposes outer PIDs in /proc while getpid/Popen return inner PIDs.
     Reading /proc/<Popen.pid> would otherwise inspect an unrelated host process.
-    Only the launcher's own child list is searched, never a machine-wide scan.
+    Match only the launcher's own children, using the PPID fallback if needed.
     """
     own = int(Path("/proc/self/stat").read_text().split(" ",1)[0])
-    children = Path(f"/proc/{own}/task/{own}/children").read_text().split()
-    for child in children:
+    if own == os.getpid():
+        return namespace_pid
+    for child in proc_children(own):
         try:
             status = Path(f"/proc/{child}/status").read_text().splitlines()
         except FileNotFoundError:
@@ -148,6 +170,13 @@ class Budget:
             "wall_s": time.monotonic()-wall, "process_tree_cpu_s": cpu()-before,
             "max_polled_process_tree_rss_bytes": max_rss or None,
             "pid_namespace_mapping":{"popen_pid":None if process is None else process.pid,"procfs_pid":procfs_pid},"failure": failure,
+            "resource_measurement_coverage": {
+                "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED" if max_rss else "NO_LIVE_SAMPLE_BEFORE_EXIT_OR_FAILURE",
+                "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+                "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK",
+                "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+                "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+                "per_process_address_space_limit_bytes": self.memory_bytes},
             "stdout": str(log.with_suffix(".stdout.log")), "stderr": str(log.with_suffix(".stderr.log")),
             "stdout_sha256": sha256(log.with_suffix(".stdout.log")),
             "stderr_sha256": sha256(log.with_suffix(".stderr.log"))}
@@ -157,6 +186,26 @@ class Budget:
             raise RuntimeError(f"R3O_COMMAND_FAILED:{label}:{result['returncode']}:{failure}")
         self.check()
         return result
+
+
+def finalize_resource_record(report, budget, exit_code, kind):
+    """Measure after all identity/artifact work, reserving the final write.
+
+    The reported sample excludes only serialization/fsync of this last receipt.
+    The same allowance reserves two CPU and three wall seconds for that write;
+    no receipt admits work that has already consumed this reserve.
+    """
+    report["process_tree_cpu_s"] = cpu()-budget.start_cpu
+    report["wall_s"] = time.monotonic()-budget.start_wall
+    report["resource_measurement_scope"] = "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE"
+    report["final_receipt_write_reserve"] = {"cpu_s": 2., "wall_s": 3.}
+    if (report["process_tree_cpu_s"] > budget.cpu_s-2.
+            or report["wall_s"] > budget.wall_s-3.):
+        report["status"] = "FAILED"
+        report["resource_failure"] = f"R3O_TOTAL_{kind}_BUDGET_INCLUDING_RECEIPT_RESERVE"
+        exit_code = 2
+    report["exit_code"] = exit_code
+    return exit_code
 
 
 def own_code_hashes():
@@ -418,13 +467,7 @@ def main():
             report["status"] = "FAILED"
             exit_code = 2
         report["commands"] = budget.commands
-        report["process_tree_cpu_s"] = cpu()-budget.start_cpu
-        report["wall_s"] = time.monotonic()-budget.start_wall
-        if report["process_tree_cpu_s"]>240. or report["wall_s"]>480.:
-            report["status"]="FAILED"
-            report["resource_failure"]="R3O_TOTAL_BUILD_BUDGET"
-            exit_code=2
-        report["exit_code"] = exit_code
+        exit_code = finalize_resource_record(report, budget, exit_code, "BUILD")
         dump_new(ev/"build.json",report)
         print(json.dumps({k:report.get(k) for k in ("status","binary","binary_sha256","process_tree_cpu_s","wall_s","failure","identity_failure")}))
     return exit_code

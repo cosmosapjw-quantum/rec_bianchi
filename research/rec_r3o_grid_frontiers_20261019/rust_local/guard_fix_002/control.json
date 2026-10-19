@@ -1,0 +1,27 @@
+{
+  "execution": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "import time; until=time.process_time()+1.5\nwhile time.process_time()<until: pass\n"
+    ],
+    "cwd": "/workspace/scratch/afe554957b2e/rec_recovery/r3o_rust_runs/guard_fix_002",
+    "failure": "RuntimeError: R3O_AGGREGATE_CPU_CAP",
+    "max_polled_process_tree_rss_bytes": 6553600,
+    "pid_namespace_mapping": {
+      "popen_pid": 6,
+      "procfs_pid": 349219
+    },
+    "process_tree_cpu_s": 0.423261,
+    "returncode": -9,
+    "stderr": "/workspace/scratch/afe554957b2e/rec_recovery/r3o_rust_runs/guard_fix_002/expected_cpu_limit.stderr.log",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "/workspace/scratch/afe554957b2e/rec_recovery/r3o_rust_runs/guard_fix_002/expected_cpu_limit.stdout.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.413156242997502
+  },
+  "expected_failure": "R3O_COMMAND_FAILED:expected_cpu_limit:-9:RuntimeError: R3O_AGGREGATE_CPU_CAP",
+  "physical_steps": 0,
+  "status": "PASS"
+}
