@@ -4,6 +4,8 @@
 
 PR105 `3eb34b6a322d86d580b94f8f4bacfcadd33938ef` 이후의 구현 단위다. PR105에 게시된 실제 U5 pair16/pair128 및 3-step owned/C smoke 실행 receipt를 재사용한다. 이번 세션은 해당 적분을 반복하지 않았다. 새 결과는 비용 계측 실행기, 선택적 ZIP_STORED history 출력, 작은 U5 복구 capsule 추출기와 그 구현 검증이다.
 
+[PR106](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/106)에 게시했다. 실행 코드를 검증한 commit은 `98a21a7972afa8d01fe79b60b4d207a5f346ef5b`다. 새 GitHub Actions [39205059850](https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39205059850)에서도 42 tests 및 실제 저장 U4 1쌍의 바이트 비교가 통과했다. CI ZIP은 GitHub/Drive에서 전체 hash를 독립 대조했고 Drive/Dropbox 업로드가 완료됐다. 첫 공통 CI의 검토 문서 끝 공백 2곳은 이 문서 closeout에서 수정했으며, 후속 CI의 실제 결과는 PR Conversation receipt를 읽는다.
+
 현재 세션의 실제 Python/C++ probe는 각각 PYTHON_PASS/CPP_PASS다. Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0에서 새 계약 테스트 42개가 통과했다. 실제 U4 checkpoint를 읽은 저장 실험은 3개의 교차 순서 쌍에서 5개 배열과 압축 해제된 NPY member가 모두 바이트 일치했다. 새 U5/U6 적분과 원본 C 과학 실행은 0회다.
 
 실행 근거와 의미를 다음처럼 구분한다.

@@ -1,6 +1,7 @@
 {
   "base_commit": "3eb34b6a322d86d580b94f8f4bacfcadd33938ef",
   "branch": "research/rec-r3l-profiled-history-io-20261019",
+  "code_commit": "98a21a7972afa8d01fe79b60b4d207a5f346ef5b",
   "next_nodes": [
     {
       "depends_on": [
@@ -85,12 +86,13 @@
       "status": "PASS_THREE_LOSSLESS_PAIRS"
     },
     {
+      "ci_evidence": "CI_EXECUTION.json",
       "depends_on": [
         "P5_IMPLEMENTATION"
       ],
       "evidence": "LOCAL_TEST_EXECUTION.json",
       "id": "P7_FAILURE_AND_SOURCE_CONTRACTS",
-      "status": "PASS_42_LOCAL_TESTS"
+      "status": "PASS_42_LOCAL_AND_42_GITHUB_ACTIONS_TESTS"
     },
     {
       "depends_on": [
@@ -102,12 +104,15 @@
       "status": "TWO_FINDINGS_FIXED_NARROW_CLOSURE_PASS"
     },
     {
+      "Drive_full_readback": "PASS",
+      "Dropbox_full_readback": "NOT_RUN",
       "depends_on": [
         "P8_INDEPENDENT_REVIEW"
       ],
       "evidence": "BACKUP_ACKS.json",
+      "final_archive_receipt": "PR106 Conversation after closeout commit",
       "id": "P9_PUBLICATION_AND_RECOVERY",
-      "status": "IN_PROGRESS"
+      "status": "DONE_DRAFT_PR_AND_CI_ARCHIVE_DOUBLE_BACKUP"
     },
     {
       "depends_on": [
@@ -115,9 +120,10 @@
       ],
       "evidence": "HANDOFF_KO.md",
       "id": "P10_EXECUTABLE_HANDOFF",
-      "status": "PREPARED_NO_USER_FILE_PREPARATION"
+      "status": "PUBLISHED_NO_USER_FILE_PREPARATION"
     }
   ],
+  "pr": 106,
   "preserve": {
     "Bianchi_REI_CMB_prediction": "NOT_AUTHORIZED_BY_LOCAL_IMPLEMENTATION_CHECKS",
     "Python_h_h2_h4_convergence": "NOT_ESTABLISHED",

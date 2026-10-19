@@ -8,10 +8,12 @@ $physmath-research-loop를 사용해 rec_bianchi를 이어가라.
 
 저장소: https://github.com/cosmosapjw-quantum/rec_bianchi
 브랜치: `research/rec-r3l-profiled-history-io-20261019`
+PR: https://github.com/cosmosapjw-quantum/rec_bianchi/pull/106
+테스트된 실행 코드 SHA: `98a21a7972afa8d01fe79b60b4d207a5f346ef5b`. 후속 문서 HEAD와 최종 아카이브는 PR Conversation receipt에서 확인한다.
 부모 PR105 HEAD: `3eb34b6a322d86d580b94f8f4bacfcadd33938ef`.
 연구 경로: `research/rec_r3l_profiled_history_20261019/`.
 
-1. 먼저 최신 PR/HEAD와 Drive `rec_bianchi_research_backups/`, Dropbox `/bianchi/rec_bianchi/`의 새 결과를 읽어라. README_KO, EVIDENCE, DAG, BACKUP_ACKS, PR Conversation의 최종 receipt를 확인한다. PR105의 U5 pair16/pair128와 3-step C smoke는 이미 보고된 실행이므로 반복하지 않는다. 원래 pair RESULT.json, smoke verification.json 및 원시 출력의 독립 대조가 가능한지는 별도 근거로 기록한다. 예전 37 tests는 GitHub Actions, R3l의 42 tests와 3쌍 저장 측정은 ChatGPT sandbox에서 수행됐다.
+1. 먼저 최신 PR/HEAD와 Drive `rec_bianchi_research_backups/`, Dropbox `/bianchi/rec_bianchi/`의 새 결과를 읽어라. README_KO, EVIDENCE, DAG, BACKUP_ACKS, PR Conversation의 최종 receipt를 확인한다. PR105의 U5 pair16/pair128와 3-step C smoke는 이미 보고된 실행이므로 반복하지 않는다. 원래 pair RESULT.json, smoke verification.json 및 원시 출력의 독립 대조가 가능한지는 별도 근거로 기록한다. 예전 37 tests는 GitHub Actions, R3l의 42 tests와 3쌍 저장 측정은 ChatGPT sandbox에서 수행됐다. 추가로 코드 SHA 98a21a79의 GitHub Actions 39205059850에서 42 tests와 저장 1쌍이 통과했다. 서로 다른 실행 기록을 합쳐 새 과학 실행 PASS로 부르지 않는다.
 
 2. 현재 Python/C/C++/rclone/SSH 사용 가능 여부와 CPU affinity, memory, 동시 작업, 실제 비용 여유를 직접 확인한다. 과거 runtime 실패를 계승하지 않는다. 기존 인증을 사용하며 접속 주소·key 내용을 공개 코드/PR에 쓰지 않는다. 사용자에게 파일 준비나 수동 명령을 요구하지 않는다.
 

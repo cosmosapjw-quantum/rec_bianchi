@@ -9,16 +9,16 @@ The initial review found two blocking implementation defects: diagnostic finaliz
 
 The reviewer independently reread storage benchmark pair 0: the container hashes, five unique uncompressed NPY members and their receipt hashes matched; compressed/stored ZIP methods were 8/0. The reviewer independently checked the unchanged verifier, C harness and V6 manifest identities, not all 109 closure files. The two-point cost fit was accepted only as a descriptive extrapolation; full-run cost and the missing PR105 detailed raw evidence remained unresolved. There were no scientific runs or campaign reruns by the reviewer. The extractor and benchmark pairs 1/2 were outside that initial independent scope.
 
-## Narrow closure report (verbatim)
+## Narrow closure report (text preserved; Markdown trailing spaces normalized)
 
 **Both exception-handling findings are closed for the updated revisions I reviewed.** I read both source files and all five added regression-test definitions. I also completed five independent, memory-only fault-injection probes against the imported implementation. All five passed.
 
 ### Closure findings
 
-**1. `PhaseLedger.measure()` preserves the primary exception and clears its frame.**  
+**1. `PhaseLedger.measure()` preserves the primary exception and clears its frame.**
 In [r3l_u6_cost.py](../../scripts/r3l_u6_cost.py), `PhaseLedger.measure()` at line 62 now removes the frame before diagnostic finalization. Failures in the ending clock or end-event emission are recorded in `profiling_errors`, invalidate the accounting, and attach a note to an existing primary exception. My probes confirmed that the original exception object survives, the stack is empty, and the summary reports `INVALID_PROFILING_ERROR`.
 
-**2. `execute()` preserves verifier failures through closeout.**  
+**2. `execute()` preserves verifier failures through closeout.**
 In [run_r3l_u6_profiled.py](../../scripts/run_r3l_u6_profiled.py), `execute()` at line 51 retains the primary exception and its traceback through receipt handling, profile output, and journal closeout. Secondary failures are recorded separately. My probes confirmed preservation of the original `SystemExit` object and its verifier traceback origin, together with restoration of `sys.argv` and every instrumented verifier binding.
 
 ### Independently checked fault cases

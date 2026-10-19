@@ -1,11 +1,37 @@
 {
   "current_delivery": {
-    "full_remote_readback": "NOT_RUN",
-    "provider_ack": "NOT_YET_OBSERVED",
-    "status": "PENDING_PUBLICATION_AND_UPLOAD"
+    "bytes": 34460796,
+    "dropbox": {
+      "file_id": "id:BSpOijBcT10AAAAAAD_PqQ",
+      "full_remote_readback": "NOT_RUN",
+      "metadata_bytes": 34460796,
+      "path": "/bianchi/rec_bianchi/20261016/R3L_CLOSEOUT_20261019_98a21a79/REC_R3L_CI_98a21a79_20261019.zip",
+      "upload_ack": "COMPLETED"
+    },
+    "filename": "REC_R3L_CI_98a21a79_20261019.zip",
+    "github": {
+      "artifact_id": 12165103622,
+      "full_remote_readback": "PASS",
+      "run_id": 39205059850
+    },
+    "google_drive": {
+      "file_id": "1mOKb5irkOkvdrF8qheCExdBvnjt_oXOc",
+      "folder_id": "1Vj4o37Teon9Rc2W8gXR_tpZkSrj1jiOV",
+      "full_remote_readback": "PASS",
+      "metadata_bytes": 34460796,
+      "path": "rec_bianchi_research_backups/R3L_CLOSEOUT_20261019_98a21a79/REC_R3L_CI_98a21a79_20261019.zip",
+      "readback_bytes": 34460796,
+      "readback_sha256": "8ffcfdb2e077fce06a1b30df800016e28e20eb9c01cd6cf7160a594c43160f10",
+      "upload_ack": "COMPLETE"
+    },
+    "kind": "CI_SOURCE_AND_EVIDENCE_ARCHIVE",
+    "library": "FINAL_CODE_EVIDENCE_HANDOFF_ZIP_TO_BE_SAVED_AFTER_DOCUMENTATION_COMMIT",
+    "producer_sha256": "8ffcfdb2e077fce06a1b30df800016e28e20eb9c01cd6cf7160a594c43160f10",
+    "source_commit": "98a21a7972afa8d01fe79b60b4d207a5f346ef5b"
   },
-  "recorded_utc": "2026-10-19T05:27:53.812842+00:00",
-  "recovered_old_archive": "RECOVERY_INTAKE.json",
+  "final_archive_receipt": "PR106 Conversation: post-commit producer hash, upload acknowledgements and independent readback are recorded after the final ZIP exists",
+  "recorded_utc": "2026-10-19T05:47:57.662991+00:00",
+  "recovered_old_R3K_archive": "RECOVERY_INTAKE.json: Drive full byte readback PASS; Dropbox and Library full byte readback NOT_RUN",
   "schema": "rec.r3l.backup-acks.v1",
-  "self_reference_rule": "A final archive cannot contain its own future hash or remote ACK. Read the later PR Conversation receipt for final archive identity and post-upload readback."
+  "self_reference_rule": "This committed file records only acknowledgements already observed. A future archive hash or upload response cannot be embedded in the archive before creation."
 }
