@@ -1,0 +1,38 @@
+{
+  "schema": "rec.r3o.review-closure.v1",
+  "finding": "R6-P2-01",
+  "status": "CLOSED_BY_TARGETED_FIX",
+  "change": "Incomplete terminal stencil now returns SOURCE_END_REACHED_INCOMPLETE_Z0_STENCIL, preserving actual states and no fabricated interpolation.",
+  "original_review_sha256": "4f7c5fb18ee41f08ef57d722368615a979711ab5ee4248ad86c2e83e738d4e44",
+  "new_module_sha256": "6f6cdfa281fc893f80334e43418a130cdd7526be8e14d9575eed74dcbd7edee6",
+  "test": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/trajectory",
+      "-p",
+      "test_r3o_lowz.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_s": 2.583856728997489,
+    "cpu_s": 2.571919,
+    "execution_location": "ChatGPT sandbox",
+    "purpose": "R6-P2-01 correction and refreshed exact-code smoke"
+  },
+  "test_count": 21,
+  "terminal_restart_subcases": [
+    1,
+    2,
+    3
+  ],
+  "new_exact_code_smoke": {
+    "status": "SMOKE_PASS_SAME_H_PENDING_REVIEW",
+    "accepted_steps": 16,
+    "verification_sha256": "0b6219008a9efb20f2f4913af039a7b45be8ceb03c6517090078d3eb047436f9"
+  },
+  "does_not_claim": "automatic CLI resume or full low-z execution"
+}

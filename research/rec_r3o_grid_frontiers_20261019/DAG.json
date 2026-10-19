@@ -14,12 +14,12 @@
     },
     {
       "id": "ORIGINAL_H_U8",
-      "status": "reused_raw_restored",
+      "status": "reused_adapter_complete",
       "evidence": [
         "receipts/U8_SCOPED_REVIEW_REUSED.json",
-        "receipts/U8_BACKUP_RECEIPT_REUSED.json"
-      ],
-      "next": "identity-bound state descriptor"
+        "receipts/U8_BACKUP_RECEIPT_REUSED.json",
+        "reused_h_trace_001/h_state_trace.json"
+      ]
     },
     {
       "id": "R3M_FULL_U6",
@@ -33,17 +33,28 @@
     },
     {
       "id": "H2_LOW_Z",
-      "status": "in_progress",
+      "status": "16_step_smoke_scoped_same_h_review_pass",
       "depends_on": [
         "R3M_FULL_U6"
-      ]
+      ],
+      "evidence": [
+        "lowz_smoke_002/verification.json",
+        "review/R6_P2_01_CLOSURE.json"
+      ],
+      "full153327": "NOT_RUN"
     },
     {
       "id": "INDEPENDENT_H4_START",
-      "status": "in_progress",
+      "status": "8_step_start_scoped_same_h_review_pass",
       "depends_on": [
         "ORIGINAL_SOURCE_ZIP"
-      ]
+      ],
+      "evidence": [
+        "h4_start_002/verification.json",
+        "review/C9_CODE.md",
+        "review/C9_P2_CLOSURE.json"
+      ],
+      "full_h4": "NOT_RUN"
     },
     {
       "id": "THREE_GRID_CONVERGENCE",
@@ -58,9 +69,23 @@
     {
       "id": "BIANCHI_REI_CMB",
       "status": "not_admitted"
+    },
+    {
+      "id": "EXPANDED_BACKUP_FIRST",
+      "status": "complete_scoped_inventory_and_new_result_review",
+      "evidence": [
+        "receipts/EXPANDED_INTAKE.json"
+      ]
+    },
+    {
+      "id": "VIGILODE_RUST_REUSE",
+      "status": "pinned_source_prepared_implementation_in_progress",
+      "depends_on": [
+        "EXPANDED_BACKUP_FIRST"
+      ]
     }
   ],
-  "stage": "INTAKE_COMPLETE_IMPLEMENTATION_IN_PROGRESS",
+  "stage": "CORE_REVIEWED_RESOURCE_FIXES_TESTED_RUST_IN_PROGRESS",
   "REI_activation": false,
   "historical_budget": "CLOSED_HOLD_NOT_RESET"
 }

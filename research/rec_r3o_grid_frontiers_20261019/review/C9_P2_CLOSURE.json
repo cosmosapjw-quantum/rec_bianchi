@@ -1,0 +1,43 @@
+{
+  "schema": "rec.r3o.c9-closure.v1",
+  "review_sha256": "c03a40548aa40f082e3d8fee5a1d7f572568c28788155026fe703d0d109d41e2",
+  "findings": {
+    "C9-P2-01": {
+      "status": "CLOSED_TARGETED_REGRESSION_PASS",
+      "change": "Own subprocess session, kill process group on failure/timeout, wait and retain command/stdout/stderr/failure receipt"
+    },
+    "C9-P2-02": {
+      "status": "CLOSED_TARGETED_REGRESSION_PASS",
+      "change": "Reserve recovery within allowance; measure after required source/input/artifact hashes; total cap can veto numerical PASS"
+    }
+  },
+  "old_runner_sha256": "96e03f326342940606dba33dd44d8f172d5bb6a773dc15f404635babca6f4deb",
+  "old_runner_snapshot": "h4_runner_before_C9_P2.py.gz",
+  "new_runner_sha256": "2ef6e33beb14352cba59225820af5d2217dea26edde5b7041e063eea7168000f",
+  "regression_test_sha256": "5766cbd2659ae87abe9c8af08b1da16f34dccc3cf56d791ef92d02124d7dd5b6",
+  "execution": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/trajectory",
+      "-p",
+      "test_r3o_h4_resources.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "cpu_s": 1.0810659999999999,
+    "wall_s": 1.5710686829988845,
+    "execution_location": "ChatGPT sandbox",
+    "classification": "SYNTHETIC_RESOURCE_REGRESSION_NO_HYREC",
+    "log_sha256": "0523b98fda5ccd983809770e7fee7124fea76bb7d02d1f8e883a0c3512880bb7"
+  },
+  "actual_tests": 3,
+  "synthetic_main_accounting_cases": 3,
+  "new_physical_history_steps": 0,
+  "physical_result_reuse": "start_002 original code/receipt retained; numerical modules and C harness unchanged; actual run had ample resource headroom",
+  "remaining_scope": "Final JSON serialization follows the recorded resource snapshot; no claim of a hard OS bound on receipt serialization."
+}

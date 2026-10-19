@@ -1,0 +1,118 @@
+{
+  "conditional_tr_min_input_iz": 144931,
+  "conditional_tr_min_scope": "source clock and C/Python guard tests with Tm/Tr > 0.1; not a complete physical h2 trajectory",
+  "conditional_tr_min_z": 16.030414995085543,
+  "execution_location": "current sandbox; original R3M full U6 reused from owner workstation",
+  "files_sha256": {
+    "scripts/c_harness/original_hyrec_r3o_lowz_harness.c": "d179b07d33562557924f763b85a58f5a2cec48ec2a78c4ab39a6702d82e88756",
+    "scripts/verify_r3o_lowz.py": "192f6ba070f35d7cede83fc03a96757064844f517f9b6c5910c2d7d305ddb193",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_refined_low_z.py": "484d8822b1cf4b607d47c196571f7bdbee7eabfad7bc77489d6befdd8106294b",
+    "tests/trajectory/test_r3o_lowz.py": "1426df45824660bfbfa9f7f57c7cea2fc357baa0edbb80ad7bc6371d21cd4900"
+  },
+  "full_153327_step_lowz": "NOT_RUN_PARENT_COORDINATION_AND_CURRENT_ALLOCATION_REQUIRED",
+  "github_and_backup_mutations": "NONE_PARENT_HANDLES",
+  "historical_status": {
+    "REI_activation": false,
+    "budget": "CLOSED_HOLD_NOT_RESET",
+    "u5_h2": "HOLD_8_FAIL",
+    "u5_original_h": "HOLD_9_FAIL"
+  },
+  "independent_dual_review": "NOT_RUN_IMPLEMENTER_IS_NOT_INDEPENDENT_REVIEWER",
+  "measured_test_and_smoke_cpu_s_total": 10.917784999999999,
+  "parent_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
+  "prior_attempts": [
+    {
+      "class": "environment",
+      "name": "tests_001",
+      "reason": "pytest absent; replaced dependency with stdlib unittest"
+    },
+    {
+      "class": "implementation/error contract",
+      "name": "tests_002",
+      "reason": "native endpoint wrapper rejected through guard first; now explicitly rejects output-only end before guard"
+    },
+    {
+      "class": "test expectation",
+      "name": "tests_003",
+      "reason": "hardcoded doubled h switch index was one h2 input late; source guard and C agree on144931; corrected controlled transition test"
+    }
+  ],
+  "python_version": "3.12.14",
+  "receipts": {
+    "r3o_lowz_smoke_001_execution.json": "88499e51134db023570007b8b02f108719b0f6d3b09126c315b9707ed870c94e",
+    "r3o_lowz_tests_004.json": "6e98e7006147a85a2d5a01fa8e9f468070c78ef6eb4d64e5d7b2a04d77f31165",
+    "r3o_lowz_tests_004.log": "81ed259de364dff2a983ecd98a9348c140d8e2deecd23d1bce188693154018dd",
+    "verification.json": "3f509eb19c97f95352036034f81f153306d41f813afe41d68ef3cee684ab21bc"
+  },
+  "same_h_smoke": {
+    "accepted_steps": 16,
+    "inputs_after": {
+      "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+      "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+      "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+    },
+    "inputs_before": {
+      "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+      "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+      "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+    },
+    "resources": {
+      "address_limit_bytes": 2147483648,
+      "peak_child_rss_bytes": 70463488,
+      "peak_parent_rss_bytes": 93151232,
+      "process_tree_cpu_s": 5.048521000000001,
+      "wall_s": 5.354274590004934
+    },
+    "same_h": {
+      "common_input_globals": [
+        58389,
+        58390,
+        58391,
+        58404
+      ],
+      "common_input_maxima": {
+        "hydrogen_rhs": 2.1707559781417694e-14,
+        "thermal_rhs": 3.621030056849089e-14
+      },
+      "compared_steps": 16,
+      "maxima": {
+        "Tm_K": 2.49687949887451e-16,
+        "hydrogen_prev": 6.539907504432563e-16,
+        "hydrogen_prev2": 6.539907504432563e-16,
+        "thermal_prev": 3.6101122023224644e-14,
+        "thermal_prev2": 3.6101122023224644e-14,
+        "xe": 7.434376394267938e-14
+      },
+      "rhs_tolerances": {
+        "hydrogen_rhs": 3e-10,
+        "thermal_rhs": 2e-10
+      },
+      "state_tolerances": {
+        "Tm_K": 5e-10,
+        "xe": 5e-09
+      }
+    },
+    "status": "SMOKE_PASS_SAME_H_PENDING_REVIEW"
+  },
+  "schema": "rec.r3o.lowz.implementation.v1",
+  "smoke_source_identity_matches_current": true,
+  "tests_final": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/trajectory",
+      "-p",
+      "test_r3o_lowz.py",
+      "-v"
+    ],
+    "cpu_s": 2.2753859999999997,
+    "exit_code": 0,
+    "wall_s": 2.2769355420023203
+  },
+  "tests_final_count": 20
+}

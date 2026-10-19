@@ -1,0 +1,65 @@
+{
+  "schema": "rec.r3o.backup-acks.v1",
+  "stage0": {
+    "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE",
+    "file": "REC_R3O_INTAKE_STAGE0_20261019.zip",
+    "bytes": 18233,
+    "producer_sha256": "27393f3c4e60ed9797fc6176fd0db5d746ea34593ef014d065254df8b7dd45fb",
+    "providers": {
+      "Drive": {
+        "file_id": "1sUkdQbfByTp2kmBHoseexsnJo-_J5rvQ",
+        "upload_ack": "SUCCESS",
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Dropbox": {
+        "file_id": "id:BSpOijBcT10AAAAAAD_QzA",
+        "upload_ack": "COMPLETED",
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Library": {
+        "library_file_id": "libfile_00ed70ac542c819185eb0035470477e0",
+        "upload_ack": "SUCCESS",
+        "whole_remote_readback": "NOT_RUN"
+      }
+    }
+  },
+  "prior_production_restoration": {
+    "U8_original_h": {
+      "provider": "Dropbox",
+      "bytes": 309819364,
+      "sha256": "d302fc3680bbaafe39f1f5c840365cc04c9d6718d3e0a3221929a40c4c7d3012",
+      "whole_remote_readback": "MATCH",
+      "method": "authorized whole urllib download, hashed before extraction",
+      "source_receipt": "receipts/U8_BACKUP_RECEIPT_REUSED.json"
+    },
+    "R3M_U6": "reused prior intact verified raw; original tar confirmed during diskrecovery"
+  },
+  "publication": {
+    "pr": 109,
+    "intake_commit": "8e66dcaecc53b35dc3a1b49382288708d76fe475"
+  },
+  "next": "reviewed implementation / vigilode reuse then final immutable archive seal",
+  "stage1": {
+    "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE",
+    "file": "REC_R3O_CORE_LOCAL_STAGE1_20261019.zip",
+    "bytes": 28664245,
+    "producer_sha256": "b5044c7aa9bb041fbac61685c8c08cdab8be9199b0e502887ef59abc1e4008af",
+    "providers": {
+      "Drive": {
+        "file_id": "1g16N8hwkrUOGDfQ96Oaw6sQXBhfyFpZg",
+        "upload_ack": "SUCCESS",
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Dropbox": {
+        "file_id": "id:BSpOijBcT10AAAAAAD_Q2A",
+        "upload_ack": "COMPLETED",
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Library": {
+        "library_file_id": "libfile_9e6b6ef32620819192775334a4e40fa3",
+        "upload_ack": "SUCCESS",
+        "whole_remote_readback": "NOT_RUN"
+      }
+    }
+  }
+}
