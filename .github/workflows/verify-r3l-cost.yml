@@ -1,0 +1,59 @@
+name: verify-r3l-cost
+on:
+  push:
+    branches: [research/rec-r3l-profiled-history-io-20261019]
+    paths:
+      - scripts/r3l_u6_cost.py
+      - scripts/run_r3l_u6_profiled.py
+      - scripts/benchmark_r3l_history_container.py
+      - scripts/extract_r3l_reviewed_u5.py
+      - tests/trajectory/test_r3l_*.py
+      - .github/workflows/verify-r3l-cost.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts-and-lossless-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONPATH: src:scripts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Test phase, storage, source binding and recovery contracts
+        id: tests
+        run: |
+          mkdir -p delivery
+          set -o pipefail
+          python -m unittest discover -s tests/trajectory -p 'test_r3l_*.py' -v 2>&1 | tee delivery/tests.log
+      - name: Real U4 lossless container comparison only
+        id: storage
+        run: python scripts/benchmark_r3l_history_container.py --evidence-dir delivery/storage --repeats 1
+      - name: Preserve exact code and test outcome
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+          STORAGE_OUTCOME: ${{ steps.storage.outcome }}
+        run: |
+          git archive --format=tar HEAD src scripts tests/trajectory pyproject.toml requirements.txt requirements-dev.txt archive/inputs/original_hyrec_oct2012 research/rec_r3i_time_refinement_20261016 research/rec_r3j_u6_owned_history_20261018 research/rec_r3k_owned_validation_20261018 research/rec_r3l_profiled_history_20261019 research/rec_r3g_primordial_20261016/thermal_transition_001/U5_SCOPED_REVIEW.json .github/workflows/verify-r3l-cost.yml | gzip -n > delivery/REC_R3L_SOURCE_CAPSULE.tar.gz
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          d=Path('delivery')
+          files={str(p.relative_to(d)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(d.rglob('*')) if p.is_file()}
+          r={'schema':'rec.r3l.ci-receipt.v1','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'python':sys.version,'tests':os.environ['TEST_OUTCOME'],'storage':os.environ['STORAGE_OUTCOME'],'files':files,'scope':'execution/storage contracts and real saved U4 container bytes; no new U5/U6 integration','full_U6':'NOT_RUN'}
+          (d/'MANIFEST.json').write_text(json.dumps(r,indent=2,sort_keys=True)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: REC_R3L_COST_${{ github.sha }}
+          path: delivery/
+          retention-days: 30
