@@ -1,0 +1,22 @@
+{
+  "finding": "C9-RUST-P3-01",
+  "status": "PASS",
+  "scope": "actual CLI parser rejects one-step before build or output creation",
+  "physical_steps": 0,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_one_step_is_rejected_before_build_or_output_creation (test_r3o_rust.R3ORustCli.test_one_step_is_rejected_before_build_or_output_creation) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.091s\n\nOK\n",
+  "process_tree_cpu_s": 0.23598999999999998,
+  "wall_s": 0.17469913799868664,
+  "resource_limits": {
+    "cpu_s": 3,
+    "wall_s": 12
+  },
+  "changed_files": {
+    "scripts/verify_r3o_rust.py": "c835282aba6a8cddaffba0733f3ad99cc9dcca6cc59134dc01d8439ccec9e5bd",
+    "tests/trajectory/test_r3o_rust.py": "9c773e58b8b17d2949175f3b34c95e76f0d4a50333a2026df62da35154cf2552"
+  },
+  "change": "restrict verifier steps to2..32; default16 and numerical implementation unchanged",
+  "failed_control": "C9_RUST_P3_CONTROL_001_FAILED_ASSERTION.json; initial assertion assumed unquoted argparse value; actual rejection was correct",
+  "review_scope": "parent narrow follow-up after independent C9_RUST.md"
+}

@@ -1,0 +1,91 @@
+{
+  "binary64_hex": {
+    "native": [
+      "3f55c356bfa38ba6",
+      "409c7a1964f37fac",
+      "bf7353ef73a1af18",
+      "bf735589f2f60ed1",
+      "c09d0b8a36a7036d",
+      "c09d0bd74013e8a9"
+    ],
+    "python": [
+      "3f55c356bfa38d6d",
+      "409c7a1964f37fae",
+      "bf7353ef73a1b1aa",
+      "bf735589f2f6115b",
+      "c09d0b8a36a7036d",
+      "c09d0bd74013e786"
+    ]
+  },
+  "cosmology": {
+    "N_eff": 3.03821934419124,
+    "T0_K": 2.7255,
+    "YHe": 0.2454,
+    "fsR": 1.0,
+    "meR": 1.0,
+    "omega_b_h2": 0.0224,
+    "omega_de_h2": 0.31113726660800006,
+    "omega_k_h2": 0.0,
+    "omega_m_h2": 0.14309694000000003,
+    "w0": -1.0,
+    "wa": 0.0
+  },
+  "derivation": "load_reviewed_u6_boundary authenticates all three full R3M files and original ZIP before and after extraction; native and Python tails remain separate",
+  "end_iz": 211716,
+  "global_iz": 58389,
+  "h2": 4.245e-05,
+  "h2_binary64_hex": "3f06418ae4caf054",
+  "historical_status": {
+    "REI_activation": false,
+    "budget": "CLOSED_HOLD_NOT_RESET",
+    "u5_h2": "HOLD_8_FAIL",
+    "u5_original_h": "HOLD_9_FAIL"
+  },
+  "original_producer_inputs_sha256": {
+    "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+    "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+  },
+  "parent_review": "PR107 REVIEW_PASS_SAME_H_ONLY (reused)",
+  "producer_status_preserved": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "reader_source_sha256": "6f6cdfa281fc893f80334e43418a130cdd7526be8e14d9575eed74dcbd7edee6",
+  "representation": "DERIVED_BOUNDARY_PACKET_NOT_FULL_PRODUCER_ARTIFACT",
+  "schema": "rec.r3o.derived-u6-boundary.v1",
+  "scope": "Six scalars per native/Python boundary: xe, Tm_K and four original predictor memories. No photon or full trajectory arrays.",
+  "source_nz": 211717,
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "state_fields": [
+    "xe",
+    "Tm_K",
+    "hydrogen_prev",
+    "hydrogen_prev2",
+    "thermal_prev",
+    "thermal_prev2"
+  ],
+  "states": {
+    "native": {
+      "Tm_K": 1822.5247991606402,
+      "hydrogen_prev": -0.0047187188703039715,
+      "hydrogen_prev2": -0.004720248092215677,
+      "iz": 58389,
+      "peebles_event_iz": null,
+      "peebles_event_reason": null,
+      "thermal_prev": -1858.8849741073457,
+      "thermal_prev2": -1858.9602053747897,
+      "xe": 0.0013283106950942951
+    },
+    "python": {
+      "Tm_K": 1822.5247991606407,
+      "hydrogen_prev": -0.004718718870304542,
+      "hydrogen_prev2": -0.0047202480922162405,
+      "iz": 58389,
+      "peebles_event_iz": null,
+      "peebles_event_reason": null,
+      "thermal_prev": -1858.8849741073457,
+      "thermal_prev2": -1858.9602053747235,
+      "xe": 0.0013283106950943938
+    }
+  },
+  "u5_checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b"
+}

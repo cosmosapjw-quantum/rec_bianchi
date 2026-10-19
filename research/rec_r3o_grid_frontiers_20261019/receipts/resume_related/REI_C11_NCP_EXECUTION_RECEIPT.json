@@ -1,0 +1,141 @@
+{
+  "schema": "rei.lrs.vigilode.ncp_execution.1",
+  "pr": 198,
+  "branch": "research/rei-lrs-v14-physical-birth-20261018",
+  "intake_head": "9b55aa20203d598d810f1c731f1da52705080773",
+  "source_publication_sha": "d87ba9ca25acb8a2a032154fa23057b45acd6207",
+  "source_changed": false,
+  "host": {
+    "node": "s1a0e5abed09",
+    "kernel": "Linux 6.8.0-124-generic x86_64",
+    "cpu_count": 64,
+    "python": "3.12.3",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28) LLVM 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "toolchain_note": "Sandbox used Rust/Cargo 1.94.1; NCP not downgraded"
+  },
+  "repository": {
+    "REI_REPO": "/root/REI_LRS_CASEB_V4_20261016/repo (existing LRS checkout, branch research/rei-lrs-recomb-thermal-oracle-20261016, status clean before and after, blob:none partial clone)",
+    "no_new_clone_worktree_reset_clean": true,
+    "origin_branch_before": "55d267d00e8dd9b04005af5d8551e948251c0777",
+    "origin_branch_after": "9b55aa20203d598d810f1c731f1da52705080773"
+  },
+  "job_root": "/tmp/rei_lrs_vigilode_20261019T171038Z",
+  "attempts": [
+    {
+      "launch": "rei_lrs_vigilode_launch_20261019T170805Z",
+      "exit": 1,
+      "stage": "REI_SOURCE_SHA",
+      "cause": "git fetch origin BRANCH wrote only FETCH_HEAD (single-branch fetch refspec); origin/BRANCH stale at 55d267d lacked FINAL_DELIVERY.json; json.decoder.JSONDecodeError",
+      "job_root_created": false
+    },
+    {
+      "launch": "rei_lrs_vigilode_launch_20261019T170835Z",
+      "exit": 1,
+      "stage": "REI_SOURCE_SHA",
+      "cause": "operator error: intended fix not applied (sed pattern missed); identical to attempt 1",
+      "job_root_created": false
+    },
+    {
+      "launch": "rei_lrs_vigilode_launch_20261019T170925Z",
+      "exit": 1,
+      "stage": "REI_SOURCE_SHA",
+      "cause": "operator error: launched before the fix edit applied; identical to attempt 1",
+      "job_root_created": false
+    },
+    {
+      "launch": "rei_lrs_vigilode_launch_20261019T171026Z",
+      "exit": 1,
+      "prepare_and_run_exit": 0,
+      "analyze_exit": 1,
+      "cause": "analyze_matrix.py ModuleNotFoundError: matplotlib (system python3); CSV and JSON were written before the plot import",
+      "fix": "one-line fetch refspec change only (tools/launcher_r1_to_r4.diff)"
+    },
+    {
+      "step": "analysis rerun",
+      "command": "analysis_venv/bin/python analyze_matrix.py --receipts run/evidence --out analysis_r2",
+      "exit": 0,
+      "env": "new venv in job root: matplotlib 3.11.2, numpy 2.5.4 (analysis only)",
+      "csv_json_identical_to_attempt4_partial": true
+    }
+  ],
+  "minimal_compatibility_fix": {
+    "what": "git -C REPO fetch origin +refs/heads/BRANCH:refs/remotes/origin/BRANCH",
+    "why": "existing checkout has single-branch fetch refspec",
+    "source_change": "NONE (command wrapper only); new source SHA not applicable",
+    "regression": "ORIGIN_BRANCH_SHA echoed = 9b55aa2; REI_SOURCE_SHA resolved = d87ba9c"
+  },
+  "steps": {
+    "native_restore": {
+      "exit": 0,
+      "baseline_files": 152,
+      "vigilode_files": 477,
+      "append_bytes": 173
+    },
+    "vigilode_archive_sha256": "823164c2e78c0b3229e45df0087dd9af094d6900b6eb76f1dd66d9f3fb4af409 (equals VIGILODE_PIN)",
+    "cargo_fetch": {
+      "exit": 0,
+      "wall_s": 3.12
+    },
+    "release_build": {
+      "exit": 0,
+      "wall_s": 335.574,
+      "locked": true,
+      "offline": true
+    },
+    "focused_tests": {
+      "exit": 0,
+      "pass": 7,
+      "fail": 0
+    },
+    "executable_sha256": "6f0a5382dd10f03850e78e83d91d7930b374c622895f5538316cc21f84e74d12",
+    "sandbox_executable_sha256": "358d254f88d196cd1ada4f71283fa3a69a068bbbf25ae28980af287575106905"
+  },
+  "matrix": {
+    "unique": 19,
+    "completed": 19,
+    "failed_or_truncated": 0,
+    "overall_exit": 0,
+    "native_rhs": 38840,
+    "native_wall_s": 15.824811033,
+    "process_wall_s": 19.061708406108664,
+    "caps": "RHS 200000/case, Radau internal 30 s, process <=40 s, total 180 s (unchanged)"
+  },
+  "comparison_with_sandbox": {
+    "file": "NCP_VS_SANDBOX.json",
+    "policy": "CSV byte equality not required",
+    "endpoint_columns": "all 19 cases x 11 physics columns bitwise equal",
+    "raw_records": "316540 non-timing numeric leaves in 19 raw.json: 0 unequal, 0 structural differences; 38 timing leaves differ (raw.json SHA differs only through wall time)",
+    "finite_difference": "refinement 435 and empirical comparison 323 numeric leaves: 0 unequal",
+    "independent_balances": "C9 audit re-applied unchanged: every max/cumulative balance (events HII/HeII/HeIII/electron, photo binding, binding change, thermal, escape decomposition, CMB input, gas+binding, photon N/U, full photon+gas+binding, source N/U, adiabatic and photon work, layouts) equal to sandbox",
+    "rhs_counts": "equal per case (38840 total)",
+    "cost": "native wall 15.825 s (NCP) vs 9.146 s (sandbox), process 19.06 s vs 10.91 s; one timed run each, different hardware; no speed claim",
+    "denominator_zero": "source_N_H/source_U_eV_H are exactly 0 in disabled cases: relative difference undefined, absolute 0; not a success claim"
+  },
+  "not_recounted": [
+    "84 prior NCP histories",
+    "76 manufactured problems",
+    "57 Python tests",
+    "prior SSPRK2/projection cases",
+    "sandbox 19 cases"
+  ],
+  "DAG": {
+    "C1_new_execution_intake": "COMPLETE;PR198_HEAD_9b55aa2_NO_LATER_COMMITS;LATEST_BACKUP_IS_C10;NO_POST_DELIVERY_RUN_FOUND",
+    "C3_numerical_contract": "UNCHANGED;19_UNIQUE_SETTINGS",
+    "C5_native_adapter": "NCP_RUST_1.99.0_LOCKED_OFFLINE_RELEASE_BUILD_EXIT0",
+    "C6_focused_tests": "NCP_7_PASS(6_NATIVE+1_CLASSIFICATION)",
+    "C7_physical_campaign": "NCP_19_COMPLETED;0_FAILED_OR_TRUNCATED;OVERALL_EXIT0;NOT_A_FULL_EOR_CAMPAIGN",
+    "C8_accuracy_cost": "NCP_ENDPOINT_FD_RAW_LEDGERS_BITWISE_EQUAL_TO_SANDBOX;RHS_38840_EQUAL;NATIVE_WALL_15.825S_VS_9.146S_SINGLE_RUN_EACH",
+    "C9_independent_balances": "C9_AUDIT_REAPPLIED_UNCHANGED_ON_NCP;ALL_MAX_BALANCES_EQUAL_SANDBOX;NOT_A_NEW_INDEPENDENT_REVIEW",
+    "C10_publication_backup": "SEE_NCP_DELIVERY_BACKUPS",
+    "NCP": "NEW_VIGILODE_RUN_COMPLETE",
+    "GENERAL_SOURCE_ON_ORDER": "HOLD",
+    "UNIFORM_STIFF": "HOLD",
+    "CASE_B": "HOLD",
+    "FULL_EOR": "HOLD",
+    "SIGNED_BIANCHI": "HOLD",
+    "POSITIVE_CMB_NONZERO_BOUNDARY": "HOLD",
+    "GENERAL_POSITIVITY": "HOLD"
+  },
+  "production_scientific_admission": "NOT_ISSUED"
+}

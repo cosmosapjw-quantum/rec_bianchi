@@ -1,0 +1,21 @@
+{
+  "finding": "C9-RUST-P3-01",
+  "status": "FAIL",
+  "scope": "actual parser rejection before build or output creation; no physical steps",
+  "physical_steps": 0,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "test_one_step_is_rejected_before_build_or_output_creation (test_r3o_rust.R3ORustCli.test_one_step_is_rejected_before_build_or_output_creation) ... FAIL\n\n======================================================================\nFAIL: test_one_step_is_rejected_before_build_or_output_creation (test_r3o_rust.R3ORustCli.test_one_step_is_rejected_before_build_or_output_creation)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/afe554957b2e/rec_work/tests/trajectory/test_r3o_rust.py\", line 262, in test_one_step_is_rejected_before_build_or_output_creation\n    self.assertIn(\"invalid choice: 1\",result.stderr)\nAssertionError: 'invalid choice: 1' not found in \"usage: verify_r3o_rust.py [-h] [--build BUILD] --output OUTPUT\\n                          [--raw-dir RAW_DIR] [--source-zip SOURCE_ZIP]\\n                          [--steps {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32}]\\n                          [--boundary-packet BOUNDARY_PACKET]\\n                          [--export-boundary-packet EXPORT_BOUNDARY_PACKET | --check-boundary-packet CHECK_BOUNDARY_PACKET]\\nverify_r3o_rust.py: error: argument --steps: invalid choice: '1' (choose from 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32)\\n\"\n\n----------------------------------------------------------------------\nRan 1 test in 0.065s\n\nFAILED (failures=1)\n",
+  "process_tree_cpu_s": 0.150784,
+  "wall_s": 0.12456512499920791,
+  "resource_limits": {
+    "cpu_s": 3,
+    "wall_s": 12
+  },
+  "changed_files": {
+    "scripts/verify_r3o_rust.py": "c835282aba6a8cddaffba0733f3ad99cc9dcca6cc59134dc01d8439ccec9e5bd",
+    "tests/trajectory/test_r3o_rust.py": "5ef6d15fef1873b3d2ac4c7e2a319fc4a44e186984e01f6ce1227104caccb3a1"
+  },
+  "change": "restrict verifier steps to2..32; default16 and numerical implementation unchanged",
+  "independent_C9_source_report": "C9_RUST.md; parent narrow follow-up closure"
+}
