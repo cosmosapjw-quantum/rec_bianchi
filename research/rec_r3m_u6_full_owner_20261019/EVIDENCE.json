@@ -1,0 +1,455 @@
+{
+ "admission": "receipts/FULL_U6_ADMISSION_001.json",
+ "allocation": "receipts/ALLOCATION_R3M-OWNER-20261019-001.json",
+ "branch": "research/rec-r3m-u5-pilot128-20261019",
+ "claim_ceiling": "Python-owned U6 equals original HyRec C at the same h=4.245e-5 over all 5210 U6 steps within the original gates; no convergence, error bound or physics prediction.",
+ "cost_prediction_vs_actual": {
+  "actual_process_tree_cpu_s": 37.588099,
+  "not_used_as_bound": [
+   "two-point 6.047946 s",
+   "22.48 storage ratio"
+  ],
+  "observed_spectral_row_cost_ratio_to_prefix_row": 1.1878140016828003,
+  "predicted_2x": 43.91161913717353,
+  "predicted_process_tree_cpu_s_1x": 36.29264168950615
+ },
+ "environment": "receipts/ENVIRONMENT_001.json",
+ "frozen_inputs": {
+  "original_hyrec_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "u5_checkpoint_owner_copies_matching": [
+   "REC_R3I_20261016/U5_SAVED_AUDIT_INPUTS_001/run_001/python_u5_thermal.npz",
+   "REC_U6_RECOVERY_20261018/inputs/run_001/python_u5_thermal.npz"
+  ],
+  "u5_raw": {
+   "bytes": 308069518,
+   "path_on_owner": "rec_theory_runs/REC_R3I_20261016/REC_R3I_H2_U5_THERMAL_RUN_001_RAW.tar.gz",
+   "sha256": "8d18bd221e4cf9aa4af1e8a48eb2048ebe9c65d33dda0f9a3de17fb529823c3c"
+  },
+  "v6_files_matched": "109/109",
+  "v6_manifest_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585"
+ },
+ "full5210_stored": {
+  "causal_links": 1630730,
+  "common_input_sample": {
+   "max_average_tolerance_ratio": 1.1351965923223427e-05,
+   "max_lyman_tolerance_ratio": 3.3778591473583835e-06,
+   "max_rhs_scaled": 4.683753385137379e-15,
+   "max_thermal_rhs_scaled": 3.987522852282203e-13,
+   "max_virtual_tolerance_ratio": 3.3801090540847487e-06,
+   "sampled_evaluations": 42,
+   "status": "PASS"
+  },
+  "executable_code_identical_to": "98a21a7972afa8d01fe79b60b4d207a5f346ef5b (diff touches research docs only)",
+  "execution_location": "owner workstation, label owner, core 4",
+  "exit_code": 0,
+  "first_failure": null,
+  "maxima": {
+   "Tm_K": 4.364788115448193e-16,
+   "average": 0.01016409195990302,
+   "hydrogen_rhs": 2.7873536811995336e-14,
+   "lyman": 1.7690729538503825e-05,
+   "thermal_rhs": 6.31956681027985e-13,
+   "virtual": 1.7688723656877556e-05,
+   "xe": 1.3229192355050086e-13
+  },
+  "native_stdout_sha256": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+  "original_average_failures": 0,
+  "profile": {
+   "accounting_status": "VALID",
+   "cpu_at_interval_entry_s": 0.700553,
+   "excluded_tail": [
+    "profile receipt read/hash/write/fsync",
+    "final journal/console output",
+    "backup transfer and recovery"
+   ],
+   "exclusive_sum": {
+    "children_cpu_s": 4.469955,
+    "parent_cpu_s": 32.936852,
+    "wall_s": 41.61693182308227
+   },
+   "measured_interval": {
+    "children_cpu_s": 4.471261999999999,
+    "parent_cpu_s": 33.116837,
+    "wall_s": 42.119582784944214
+   },
+   "phases": {
+    "callback_observer": {
+     "calls": 5210,
+     "exclusive_cpu_s": 0.314551,
+     "exclusive_wall_s": 0.303794,
+     "inclusive_cpu_s": 4.41405
+    },
+    "callback_on_accept": {
+     "calls": 5210,
+     "exclusive_cpu_s": 0.254098,
+     "exclusive_wall_s": 0.258793,
+     "inclusive_cpu_s": 0.254098
+    },
+    "callback_on_attempt": {
+     "calls": 5210,
+     "exclusive_cpu_s": 0.091005,
+     "exclusive_wall_s": 0.090965,
+     "inclusive_cpu_s": 0.091005
+    },
+    "causal_link_count": {
+     "calls": 5210,
+     "exclusive_cpu_s": 0.437828,
+     "exclusive_wall_s": 0.441805,
+     "inclusive_cpu_s": 0.437828
+    },
+    "check_one_source": {
+     "calls": 42,
+     "exclusive_cpu_s": 3.661671,
+     "exclusive_wall_s": 3.662606,
+     "inclusive_cpu_s": 3.661671
+    },
+    "checkpoint_load": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.508769,
+     "exclusive_wall_s": 0.517006,
+     "inclusive_cpu_s": 0.508769
+    },
+    "common_build": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.539113,
+     "exclusive_wall_s": 0.59346,
+     "inclusive_cpu_s": 0.539113
+    },
+    "common_oracle_setup": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.000475,
+     "exclusive_wall_s": 0.007058,
+     "inclusive_cpu_s": 0.000475
+    },
+    "history_write": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.135164,
+     "exclusive_wall_s": 2.757484,
+     "inclusive_cpu_s": 0.135164
+    },
+    "native_build": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.663825,
+     "exclusive_wall_s": 1.358107,
+     "inclusive_cpu_s": 0.663825
+    },
+    "native_run": {
+     "calls": 1,
+     "exclusive_cpu_s": 3.461247,
+     "exclusive_wall_s": 3.524037,
+     "inclusive_cpu_s": 3.461247
+    },
+    "native_stream_validation": {
+     "calls": 1,
+     "exclusive_cpu_s": 21.409138,
+     "exclusive_wall_s": 21.456752,
+     "inclusive_cpu_s": 21.409138
+    },
+    "original_source_extract": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.006089,
+     "exclusive_wall_s": 0.051833,
+     "inclusive_cpu_s": 0.006089
+    },
+    "owned_integration": {
+     "calls": 1,
+     "exclusive_cpu_s": 5.83744,
+     "exclusive_wall_s": 5.877791,
+     "inclusive_cpu_s": 10.596593
+    },
+    "python_source_setup": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.000125,
+     "exclusive_wall_s": 0.005792,
+     "inclusive_cpu_s": 0.000125
+    },
+    "source_closure": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.086269,
+     "exclusive_wall_s": 0.709647,
+     "inclusive_cpu_s": 0.086269
+    }
+   },
+   "process_tree_cpu_s": 37.588099,
+   "unattributed": {
+    "children_cpu_s": 0.001306999999999725,
+    "parent_cpu_s": 0.17998499999999495,
+    "wall_s": 0.5026509618619457
+   }
+  },
+  "python_history_sha256": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+  "python_result": {
+   "full_evaluations": 5210,
+   "rt_stop_iz": 58389,
+   "status": "RT_BOUNDARY_REACHED_NO_EMLA_EVALUATION",
+   "steps": 5210
+  },
+  "resources": {
+   "address_limit_bytes": 2147483648,
+   "affinity": [
+    4
+   ],
+   "blas_threads": 1,
+   "cpu_limit_s": 60,
+   "parent_cpu_s": 33.100578,
+   "peak_rss_bytes": 435322880,
+   "process_tree_cpu_s": 37.570539999999994,
+   "wall_limit_s": 180,
+   "wall_s": 42.045046729035676
+  },
+  "same_h_status": "PASS_PENDING_REVIEW",
+  "secondary_profiling_or_closeout_errors": [],
+  "source_commit": "d0e534b1f5b4bb20fe19875f6d502681b833470d",
+  "spectral_fields": 3256250,
+  "verification_sha256": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b",
+  "verifier_status": "PASS_PENDING_INDEPENDENT_REVIEW"
+ },
+ "independent_reviews": {
+  "PR105_raw_audit": {
+   "file": "INDEPENDENT_REVIEW.md",
+   "verdict": "ALL_RECEIPT_NUMBERS_MATCH_RAW; receipt top-level NATIVE_SMOKE_PASS overstates raw SMOKE_ONLY/PASS_PENDING_REVIEW; receipt stores no raw-file hashes"
+  },
+  "full_U6_same_h_recompute": {
+   "file": "INDEPENDENT_REVIEW.md",
+   "output": "review/check_full.out",
+   "scope": "same-h parity only",
+   "scripts": [
+    "review/check_full.py",
+    "review/check_hash.py"
+   ],
+   "verdict": "REVIEW_PASS"
+  }
+ },
+ "native_c_cost_diagnostic": {
+  "N128": {
+   "equals_pilot_native_stdout": true,
+   "stdout_sha256": "c79fdb419dd2349ab499091900ec1f45f55cab40b47beece03f152b5674d86ec",
+   "sys_s": 0.27,
+   "user_s": 2.64
+  },
+  "N5210": {
+   "equals_full_run_native_stdout": true,
+   "stdout_sha256": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+   "sys_s": 0.32,
+   "user_s": 3.35
+  },
+  "binary_sha256": "6eaecc2c63d6f18c6b98c71da12c8faa5a0e285be8af914242c020d4dc4cec75",
+  "csv_retained": "hashes only; CSVs equal to the preserved run outputs",
+  "purpose": "cost identification only, no scientific claim"
+ },
+ "parent_head": "d0e534b1f5b4bb20fe19875f6d502681b833470d",
+ "parent_pr": 106,
+ "pilot128_stored": {
+  "causal_links": 40064,
+  "common_input_sample": {
+   "max_average_tolerance_ratio": 5.9874291946844105e-06,
+   "max_lyman_tolerance_ratio": 7.729289612061731e-07,
+   "max_rhs_scaled": 1.5404344466674047e-15,
+   "max_thermal_rhs_scaled": 3.987522852282203e-13,
+   "max_virtual_tolerance_ratio": 7.735283058968068e-07,
+   "sampled_evaluations": 2,
+   "status": "PASS"
+  },
+  "executable_code_identical_to": "98a21a7972afa8d01fe79b60b4d207a5f346ef5b (diff touches research docs only)",
+  "execution_location": "owner workstation, label owner, core 4",
+  "exit_code": 0,
+  "first_failure": null,
+  "maxima": {
+   "Tm_K": 2.004991947124378e-16,
+   "average": 0.00019045677218709626,
+   "hydrogen_rhs": 2.7873536811995336e-14,
+   "lyman": 7.945153711588767e-06,
+   "thermal_rhs": 6.31956681027985e-13,
+   "virtual": 1.7687978267914015e-05,
+   "xe": 1.3229192355050086e-13
+  },
+  "native_stdout_sha256": "c79fdb419dd2349ab499091900ec1f45f55cab40b47beece03f152b5674d86ec",
+  "original_average_failures": 0,
+  "profile": {
+   "accounting_status": "VALID",
+   "cpu_at_interval_entry_s": 0.694307,
+   "excluded_tail": [
+    "profile receipt read/hash/write/fsync",
+    "final journal/console output",
+    "backup transfer and recovery"
+   ],
+   "exclusive_sum": {
+    "children_cpu_s": 3.521216,
+    "parent_cpu_s": 13.787858000000002,
+    "wall_s": 21.186592739191838
+   },
+   "measured_interval": {
+    "children_cpu_s": 3.522487,
+    "parent_cpu_s": 13.854951,
+    "wall_s": 22.0940708409762
+   },
+   "phases": {
+    "callback_observer": {
+     "calls": 128,
+     "exclusive_cpu_s": 0.009005,
+     "exclusive_wall_s": 0.008732,
+     "inclusive_cpu_s": 0.184676
+    },
+    "callback_on_accept": {
+     "calls": 128,
+     "exclusive_cpu_s": 0.007127,
+     "exclusive_wall_s": 0.007139,
+     "inclusive_cpu_s": 0.007127
+    },
+    "callback_on_attempt": {
+     "calls": 128,
+     "exclusive_cpu_s": 0.002799,
+     "exclusive_wall_s": 0.002797,
+     "inclusive_cpu_s": 0.002799
+    },
+    "causal_link_count": {
+     "calls": 128,
+     "exclusive_cpu_s": 0.012951,
+     "exclusive_wall_s": 0.013072,
+     "inclusive_cpu_s": 0.012951
+    },
+    "check_one_source": {
+     "calls": 2,
+     "exclusive_cpu_s": 0.16272,
+     "exclusive_wall_s": 0.162733,
+     "inclusive_cpu_s": 0.16272
+    },
+    "checkpoint_load": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.476195,
+     "exclusive_wall_s": 0.518551,
+     "inclusive_cpu_s": 0.476195
+    },
+    "common_build": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.498905,
+     "exclusive_wall_s": 0.696213,
+     "inclusive_cpu_s": 0.498905
+    },
+    "common_oracle_setup": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.000506,
+     "exclusive_wall_s": 0.057291,
+     "inclusive_cpu_s": 0.000506
+    },
+    "history_write": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.081379,
+     "exclusive_wall_s": 2.128083,
+     "inclusive_cpu_s": 0.081379
+    },
+    "native_build": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.614127,
+     "exclusive_wall_s": 1.645727,
+     "inclusive_cpu_s": 0.614127
+    },
+    "native_run": {
+     "calls": 1,
+     "exclusive_cpu_s": 2.547634,
+     "exclusive_wall_s": 2.639832,
+     "inclusive_cpu_s": 2.547634
+    },
+    "native_stream_validation": {
+     "calls": 1,
+     "exclusive_cpu_s": 12.546394,
+     "exclusive_wall_s": 12.622753,
+     "inclusive_cpu_s": 12.546394
+    },
+    "original_source_extract": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.005849,
+     "exclusive_wall_s": 0.137515,
+     "inclusive_cpu_s": 0.005849
+    },
+    "owned_integration": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.285827,
+     "exclusive_wall_s": 0.337644,
+     "inclusive_cpu_s": 0.480429
+    },
+    "python_source_setup": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.00015,
+     "exclusive_wall_s": 0.075642,
+     "inclusive_cpu_s": 0.00015
+    },
+    "source_closure": {
+     "calls": 1,
+     "exclusive_cpu_s": 0.057506,
+     "exclusive_wall_s": 0.132871,
+     "inclusive_cpu_s": 0.057506
+    }
+   },
+   "process_tree_cpu_s": 17.377437999999998,
+   "unattributed": {
+    "children_cpu_s": 0.0012710000000000221,
+    "parent_cpu_s": 0.06709299999999807,
+    "wall_s": 0.9074781017843634
+   }
+  },
+  "python_history_sha256": "97f606453166fa2d451265a08414be1b5fde6ff18584fe239a44fbe4a83ab55e",
+  "python_result": {
+   "full_evaluations": 128,
+   "rt_stop_iz": 58389,
+   "status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+   "steps": 128
+  },
+  "resources": {
+   "address_limit_bytes": 2147483648,
+   "affinity": [
+    4
+   ],
+   "blas_threads": 1,
+   "cpu_limit_s": 60,
+   "parent_cpu_s": 13.844534999999999,
+   "peak_rss_bytes": 372510720,
+   "process_tree_cpu_s": 17.365757999999996,
+   "wall_limit_s": 180,
+   "wall_s": 22.0187663519755
+  },
+  "same_h_status": "PASS_PENDING_REVIEW",
+  "secondary_profiling_or_closeout_errors": [],
+  "source_commit": "d0e534b1f5b4bb20fe19875f6d502681b833470d",
+  "spectral_fields": 80000,
+  "verification_sha256": "cab10d2d4ea49ae335618cecea78890da87dd919b3be380f30996a7aaec2a417",
+  "verifier_status": "SMOKE_ONLY"
+ },
+ "preserve": {
+  "Bianchi_REI_CMB_prediction": "NOT_AUTHORIZED_BY_THIS_UNIT",
+  "Python_h_h2_h4_convergence": "NOT_ESTABLISHED",
+  "REI_activation": false,
+  "U5_h2_original_average": "HOLD_8_FAIL",
+  "U5_h_original_average": "HOLD_9_FAIL",
+  "dln_a": 4.245e-05,
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "original_atomic_thermal_operators": "UNCHANGED",
+  "predictor_memory": "UNCHANGED",
+  "q": 0,
+  "same_h_criteria": "ORIGINAL_VERIFIER_UNCHANGED",
+  "stage_boundaries": "UNCHANGED (RT 36446, U6 start 53179, boundary 58389)"
+ },
+ "project": "rec_bianchi",
+ "recorded_utc": "2026-10-19T08:40:45.896529+00:00",
+ "schema": "rec.r3m.evidence.v1",
+ "status": "FULL_U6_5210_SAME_H_PARITY_PASS_INDEPENDENTLY_REVIEWED_CONVERGENCE_NOT_TESTED",
+ "tests_owner_env": {
+  "command": "python3 -m unittest discover -s tests/trajectory -p 'test_r3l_*.py' -v",
+  "log_sha256": "0f9558c3966e6354b3526719d0565272ca9dbec6f702e27b70733174dd8768c0",
+  "reason": "Python 3.12.3/NumPy 2.4.2 differ from R3L sandbox 3.12.14/2.3.5",
+  "result": "OK",
+  "tests": 42
+ },
+ "u5_recovery": {
+  "capsule": "REC_R3L_REVIEWED_U5_CHECKPOINT.zip",
+  "capsule_bytes": 79241895,
+  "capsule_sha256": "3b469781e937fa6a543a007088b73fb5b01a420261e9c4daa2d454cb3ae88106",
+  "checkpoint_bytes": 79241133,
+  "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+  "cpu_s": 3.1,
+  "new_integrations": 0,
+  "receipt": "receipts/U5_RECOVERY_RECEIPT.json",
+  "status": "PASS_CHECKPOINT_CAPSULE_ONLY",
+  "tool": "scripts/extract_r3l_reviewed_u5.py"
+ }
+}
