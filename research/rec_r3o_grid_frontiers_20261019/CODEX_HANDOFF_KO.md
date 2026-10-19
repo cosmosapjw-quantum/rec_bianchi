@@ -19,7 +19,8 @@ checkout을 자동으로 준비하라. 사용자의 파일 다운로드·수동 
 research/rec_r3o_grid_frontiers_20261019/ 아래의 EVIDENCE.json, DAG.json,
 BACKUP_ACKS.json, HANDOFF_KO.md, receipts/RESUME_INTAKE.json,
 receipts/RUST_CI.json, review/C9_RUST.md, review/C9_RUST_P3_CLOSURE.json,
-rust/rec-hyrec-vigilode/README.md를 실제로 읽어라.
+receipts/RUNTIME_RECOVERY.json을 읽고, 저장소 루트의
+rust/rec-hyrec-vigilode/README.md도 실제로 읽어라.
 
 재사용: 원본 U4/U5, PR105 legacy/owned 실행 결과, PR107 h2 U6 5210-step,
 PR108 comparator, R3O h2 16-step와 독립 h4 72893 He rows+8 FULL steps.
@@ -73,5 +74,15 @@ VigilODE 최신tip b56bb19와 PR71최신64b98521을 이미 읽었다.
 CPU/wall/관측한 RSS 범위, 실패·미완료·실행하지 않은 항목을 기록하라.
 완료 노드 재사용, 변경 코드 push, 독립 검토, DAG·백업·게시를 수행하라.
 원격 upload ACK, producer SHA, 전체 readback SHA를 구분하라.
+복구 ZIP은 REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip,
+65000923 bytes, SHA256 d016d23ad5202ca1f5cb5c57602f8769fc6812daba9ec4a90f7def8b843b3f52.
+Drive 1MqtCpM_oGURIXVQFFZZQ_Db0S2oqr7sd,
+Dropbox id:BSpOijBcT10AAAAAAD_SCQ,
+Library libfile_efa61140bb748191804ba587356baafc.
+Drive/Dropbox 전체 readback MATCH, Library는 ACK이고 전체 readback NOT_RUN.
+과거 35.6MB ZIP과 sandbox binary는 scratch 초기화로 원격 ACK 전에
+손실되었으므로 새 복구 ZIP의 해시로 바꿔 적지 말라. Git 및 CI에 보존된
+실행 receipt를 재사용하라. 마지막 closeout ZIP/PR receipt의 최종 HEAD를
+확인하라.
 전체 진척 표와 복사 가능한 한국어 반환 handoff를 본문에 출력하라.
 ```

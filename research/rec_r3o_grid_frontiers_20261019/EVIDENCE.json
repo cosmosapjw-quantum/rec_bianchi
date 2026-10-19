@@ -1,8 +1,8 @@
 {
   "schema": "rec.r3o.evidence.v1",
-  "phase": "IMPLEMENTATION_REVIEW_AND_FRESH_CARGO_CI_COMPLETE_ARCHIVE_SEAL_PENDING",
+  "phase": "SCOPED_IMPLEMENTATION_REVIEW_CI_AND_THREE_BACKUPS_COMPLETE",
   "previous_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
-  "execution_location": "ChatGPT sandbox",
+  "execution_location": "ChatGPT sandbox (core and historical local runs); GitHub Actions (fresh Cargo and CI); NCP NOT_RUN_BY_THIS_TASK",
   "h2_lowz": {
     "mode": "smoke",
     "accepted_steps": 16,
@@ -49,7 +49,7 @@
     "portable_packet_full_raw_parent_readback": "review/RUST_BOUNDARY_PARENT_READBACK.json",
     "review": "C9_COMPLETE_THREE_P2_CLOSED; P3_PARENT_PARSER_CONTROL_PASS",
     "fresh_Cargo_CI": "SUCCESS_4512b19e",
-    "executed_source_relation": "Six source files have only an extra final newline removed for whitespace gate; exact matching build002 source preserved. Builder/test changes separately recorded; fresh Cargo CI pending.",
+    "executed_source_relation": "Historical build002 exact source preserved, including six final-newline differences. Builder/test fixes and packaging revision are separate. Fresh Cargo CI SUCCESS at 4512b19e matches all 67 current source files.",
     "format_receipt": "review/RUST_PUBLICATION_FORMAT.json",
     "packaging_revision": 2,
     "packaging_closure": "review/VIGILODE_PACKAGING_CLOSURE.json",
@@ -144,8 +144,8 @@
     "tests/trajectory/test_r3o_h4_resources.py": "5766cbd2659ae87abe9c8af08b1da16f34dccc3cf56d791ef92d02124d7dd5b6"
   },
   "files": {
-    "CODEX_HANDOFF_KO.md": "c62530d971b284238c62b6aa0f098cb663a5c0181b88a62a8d2cdbf57dfbcaa0",
-    "HANDOFF_KO.md": "89cbf53c02335f2f1f987f84dcc819816f3caaf487d096945af320dfc0601be8",
+    "CODEX_HANDOFF_KO.md": "72fe9549b52fe58447b41c2a555c768652f531d81ba2dd1cf89b0f926ba08d64",
+    "HANDOFF_KO.md": "efa3ca05cabb90584e6898684e68e995950b7cb4a972a7cfcd486324a98b89b6",
     "THEORY_KO.md": "f43cc17e1ee724777da3c79bc381332234678879e78975964213a94a404b3273",
     "VIGILODE_REUSE_KO.md": "16b0da7324e5ebb982934850e17fa51b0889758fbdbb10d548c59a76e6bee301",
     "frontier_probes_001/FIGURE_REVIEW_KO.md": "f83b30a979ec62b5c7ccfcd1ad15c9fff14683a93712d03f2069d608b4a64502",
@@ -235,6 +235,7 @@
     "lowz_smoke_002/python_native_lowz.npz": "2d6c54f448a5b109e21cb265f469b94860a2525ae2f777ef02b19bb05ffbc784",
     "lowz_smoke_002/source_manifest.json": "fad92f22cba59913c20bfb8fdfd0ffb6a4d9a36a5b9de215652a8da89d89cce0",
     "lowz_smoke_002/verification.json": "0b6219008a9efb20f2f4913af039a7b45be8ceb03c6517090078d3eb047436f9",
+    "receipts/ARCHIVE_PRESERVATION.json": "50802d1ccf39f3c5a978763e33a4d4a9d58701a6fd9637db53df767757cc2285",
     "receipts/BASE_LOCAL_BLOBS.json": "b3cb8f4cce5d01206f008ea94bb5987f1b73e0d0233c60e60fd8cc22fc289926",
     "receipts/COMMON_CI_4512b19e.log.gz": "7b9b4a3fccf991fa59e82c4f445068fbc477e8fd5c8984f897d1817164aa7bde",
     "receipts/CORE_CI.json": "64de4a3ddbaa239fddc4d8329a01cdf695d9533c6955e81b4e8caccf848305c8",
@@ -242,9 +243,12 @@
     "receipts/DISK_RECOVERY.json": "a8cb1196e0577952b06017bba5f3ceadd41ec6798057b2c539359638c58e567a",
     "receipts/EXPANDED_INTAKE.json": "c66418e5e941ec82f29639fd4c3d0bab087068085206ef6833c55597be97d87f",
     "receipts/INTAKE.json": "31ed1f00fe8b0bafcd6cb8f369fd104d01d72faa7ec6873d96c3eabad1d81aee",
+    "receipts/PORTABLE_DRIVE_READBACK.json": "d7f5fdaa9069a270ff0f9a737853db555abf3dc7f650885ca4c186edcc4ad886",
+    "receipts/PORTABLE_DROPBOX_READBACK.json": "4419e3bed567796dcace68847f53d4ced8d0005615efdf26a587659172188508",
     "receipts/R3O_RUST_CI_44934c47_FAILED_BUILD_39265931080.zip": "81de9a968f8c8cbda8840ff6d337be893b52f89b6ae8b1d9c68616d0b4c9f675",
     "receipts/R3O_RUST_CI_4512b19e_39295368355.zip": "37ed9a21c00f6c6a934358c22f5df3ebf2776de3accbd05ba4bb3a2f9076958d",
     "receipts/RESUME_INTAKE.json": "1b80524fca0a9b047dcc84cedc378255fae8dc3f65de0aeb734c5a7ad84559bd",
+    "receipts/RUNTIME_RECOVERY.json": "4310edff7b8e9b974d8d6108dd1fb7dbb49ea25a7c9bdad4a9f3da2a2d1387ca",
     "receipts/RUST_CI.json": "bce9eb2b22a5ee8447f29d75cf829c49fb112dd05e33cb8bf30c0da98da1d574",
     "receipts/RUST_CI_4512b19e.log.gz": "f21de864e7417377ad7ccbee0789738ee789c62d13ba9b3a9f6fa91996319259",
     "receipts/RUST_PACKAGE_SOURCES.json": "0744d67d9762d4f1f40d141c10dca72c084a628a43f48bc4bdd8044de70fe154",
@@ -542,8 +546,22 @@
     "core_code_commit": "f94101da3cc55d194e4576a8f6fc8da60e1a02f7",
     "core_ci_commit": "f94352c7b51ff40474d705cbf699d7d61d7f8d66",
     "stage1_receipt": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/109#issuecomment-6268592673",
-    "rust_extension": "LOCAL_EXECUTION_COMPLETE_REVIEW_IN_PROGRESS"
+    "rust_extension": "SOURCE_PUSHED_REVIEW_CLOSED_AND_FRESH_CARGO_CI_SUCCESS",
+    "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc",
+    "final_archive": "receipts/ARCHIVE_PRESERVATION.json",
+    "closing_HEAD_and_CI": "Detached CLOSEOUT_RECEIPTS and PR109 final receipt; closing docs do not change the tested code."
   },
   "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb",
-  "resume_intake": "receipts/RESUME_INTAKE.json"
+  "resume_intake": "receipts/RESUME_INTAKE.json",
+  "recovery": {
+    "status": "RESTORED_GIT_3293_FILES_MATCH_NO_PHYSICAL_RERUN",
+    "receipt": "receipts/RUNTIME_RECOVERY.json",
+    "lost_local_archive": "LOST_LOCAL_BEFORE_REMOTE_ACK",
+    "historical_sandbox_binary": "LOST_TRANSIENT_NO_REMOTE_COPY_IDENTIFIED"
+  },
+  "backup_closeout": {
+    "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE_DRIVE_DROPBOX_WHOLE_READBACK_MATCH",
+    "receipt": "receipts/ARCHIVE_PRESERVATION.json",
+    "sha256": "d016d23ad5202ca1f5cb5c57602f8769fc6812daba9ec4a90f7def8b843b3f52"
+  }
 }

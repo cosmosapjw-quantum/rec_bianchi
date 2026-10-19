@@ -32,14 +32,15 @@
       "method": "authorized whole urllib download, hashed before extraction",
       "source_receipt": "receipts/U8_BACKUP_RECEIPT_REUSED.json"
     },
-    "R3M_U6": "reused prior intact verified raw; original tar confirmed during diskrecovery"
+    "R3M_U6": "Actual earlier full-raw identity verification retained in review/RUST_BOUNDARY_PARENT_READBACK.json; transient raw was lost in runtime reset and was not restored again for closeout."
   },
   "publication": {
     "pr": 109,
     "intake_commit": "8e66dcaecc53b35dc3a1b49382288708d76fe475",
-    "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb"
+    "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb",
+    "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc"
   },
-  "next": "Seal code/evidence archive, upload all3, full remote readback then detached closing receipt",
+  "next": "Detached CLOSEOUT_RECEIPTS and final PR109 Conversation receipt bind the containing closing commit and its actual lightweight CI; no new physical campaign.",
   "stage1": {
     "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE",
     "file": "REC_R3O_CORE_LOCAL_STAGE1_20261019.zip",
@@ -86,5 +87,88 @@
         "whole_remote_readback": "NOT_RUN"
       }
     }
+  },
+  "stage3_recovered_portable": {
+    "name": "REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip",
+    "bytes": 65000923,
+    "producer_sha256": "d016d23ad5202ca1f5cb5c57602f8769fc6812daba9ec4a90f7def8b843b3f52",
+    "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc",
+    "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb",
+    "repository_files": 3218,
+    "extra_metadata_files": 3,
+    "excluded_files": 75,
+    "scope": "Every tracked file except historical archive/bundles and one 35MB historical PR05B2 source-history fixture; all current source/scripts/tests/rust/research/docs and original source ZIP included.",
+    "zip_crc_and_all_member_sha256": "MATCH",
+    "transfer_limit_bytes": 104857600,
+    "local_packaging_target_note": "Initial 50MiB preference assertion rejected size only; all member hashes and CRC passed. Actual 100MiB provider limit is satisfied; Library uses larger-file prepared upload route.",
+    "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE_DRIVE_DROPBOX_WHOLE_READBACK_MATCH",
+    "providers": {
+      "Drive": {
+        "file_id": "1MqtCpM_oGURIXVQFFZZQ_Db0S2oqr7sd",
+        "url": "https://drive.google.com/file/d/1MqtCpM_oGURIXVQFFZZQ_Db0S2oqr7sd/view?usp=drivesdk",
+        "upload_ack": "SUCCESS",
+        "whole_remote_readback": "MATCH",
+        "readback_receipt": "receipts/PORTABLE_DRIVE_READBACK.json"
+      },
+      "Dropbox": {
+        "file_id": "id:BSpOijBcT10AAAAAAD_SCQ",
+        "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3O_GRID_FRONTIERS_20261019/REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip",
+        "path_display": "/bianchi/rec_bianchi/20261016/R3O_GRID_FRONTIERS_20261019/REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip",
+        "upload_ack": "COMPLETED",
+        "whole_remote_readback": "MATCH",
+        "readback_receipt": "receipts/PORTABLE_DROPBOX_READBACK.json"
+      },
+      "Library": {
+        "library_file_id": "libfile_efa61140bb748191804ba587356baafc",
+        "file_id": "file_00000000995081f4b48b09b6870ffe69",
+        "path": "/rec_bianchi_recovery/R3O_20261019/REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip",
+        "version": 0,
+        "upload_ack": "SUCCESS",
+        "local_metadata_applied": true,
+        "whole_remote_readback": "NOT_RUN"
+      }
+    }
+  },
+  "complete_git_snapshot_extra": {
+    "name": "REC_R3O_FULL_GIT_CODE_EVIDENCE_721c717b_RECOVERED_20261019.zip",
+    "bytes": 121217205,
+    "producer_sha256": "bb96587279eec3503693367e05ae023c285175afeadb2adabe59fc073a17a87a",
+    "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc",
+    "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb",
+    "scope": "COMPLETE_GITHUB_ARCHIVE_AT_721c717b; full producer raw not in Git remains separate",
+    "git_blob_files_matched": 3293,
+    "providers": {
+      "Library": {
+        "library_file_id": "libfile_ae8da69b6b50819199de8421cbde7c7a",
+        "file_id": "file_000000008bdc820992dc39bf296f6dd4",
+        "path": "/rec_bianchi_recovery/R3O_20261019/REC_R3O_FULL_GIT_CODE_EVIDENCE_721c717b_RECOVERED_20261019.zip",
+        "upload_ack": "SUCCESS",
+        "local_metadata_applied": true,
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Drive": {
+        "upload_ack": "FAILED_BEFORE_ACTION_INVOCATION_HTTP_413",
+        "reason": "121217205 bytes exceeds 104857600-byte transfer limit",
+        "remote_file_id": null,
+        "whole_remote_readback": "NOT_RUN"
+      },
+      "Dropbox": {
+        "upload_ack": "UNKNOWN_INTERRUPTED_NO_MATCHING_REMOTE_OBJECT_OBSERVED",
+        "retry": "NOT_RETRIED_WITH_121MB_FILE",
+        "whole_remote_readback": "NOT_RUN"
+      }
+    }
+  },
+  "lost_unsaved_archive": {
+    "name": "REC_R3O_CODE_EVIDENCE_HANDOFF_721c717b_20261019.zip",
+    "bytes": 35591750,
+    "producer_sha256": "da2fb7d6d04238c863b0ffd07d9988f7d3186f23e0f889176a0e55494f88ac18",
+    "remote_upload": "NO_ACK_NO_REMOTE_FILE_FOUND",
+    "recovery_status": "LOST_LOCAL_BEFORE_REMOTE_ACK"
+  },
+  "historical_sandbox_binary": {
+    "sha256": "a29462c2b47508a88396357c43fc303364dcb5a28208ff1cb81cc39a1b1a2907",
+    "status": "LOST_TRANSIENT_NO_REMOTE_COPY_IDENTIFIED",
+    "retained_numeric_receipts": "PRESERVED_IN_GITHUB"
   }
 }

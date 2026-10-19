@@ -63,6 +63,24 @@ full low-z CLI는 `--allocation-json`과 `--smoke-verification`을 요구한다.
 
 ## 보존과 복원
 
-현재 구현·필수 원본 입력·경량 실행 증거는 최종 CODE_EVIDENCE_HANDOFF ZIP으로 보존한다. 이는 과거 저장소의 모든 연구 자료나 400MB 전체 U6 raw를 중복 포함하는 Git 저장소 전체 복사본이 아니다. 완전한 Git 트리는 게시된 HEAD에서 자동으로 fetch하고, raw는 기존 생산자 hash와 백업 ID로 복원한다. 작은 derived packet은 full raw의 대체 원본으로 표시하지 않는다.
+현재 코드·모든 연구 증거를 담은 새 복구 파일은
+`REC_R3O_PORTABLE_CODE_EVIDENCE_HANDOFF_721c717b_RECOVERED_20261019.zip`이다.
+65,000,923 bytes, SHA256
+`d016d23ad5202ca1f5cb5c57602f8769fc6812daba9ec4a90f7def8b843b3f52`.
+Drive·Dropbox·Library 업로드 완료 응답을 받았다. Drive와 Dropbox는 실제 전체 원격 readback도 위 생산자 해시와 일치했다. Library의 독립 전체 readback은 NOT_RUN이다.
 
-최종 ZIP을 만든 뒤 생기는 원격 보존 ACK와 최종 게시 HEAD는 분리된 CLOSEOUT_RECEIPTS ZIP 및 PR109 마지막 receipt로 연결한다. 자기 자신의 SHA256 또는 생성 후 upload ACK를 내부에 가졌다고 주장하지 않는다. 상세 provider별 상태는 `BACKUP_ACKS.json`과 detached 최종 receipt가 권위 있는 기록이다.
+이 ZIP의 `rec_bianchi/`에는 게시된 `721c717b03fe365a4745d4c71e81c8b8999f8ebc`의 Git 파일 3218개가 바이트 그대로 들어 있다. 모든 현재 src/scripts/tests/rust/research/docs, 원본 HyRec ZIP을 포함한다. 과거 `archive/bundles/` 및 `data/pr05b2_source_history_v060.npz` 등 총 75개 Git 파일은 제외했으며 경로와 Git blob SHA를 내부 manifest에 보존했다. 따라서 전체 레거시 테스트 입력이 모두 포함된 아카이브라고 부르지 않는다. Rust 16-step 및 독립 h4 시작에 필요한 현재 입력은 들어 있다. 원본 400MB U6 raw는 기존 생산자 identity와 백업 ID로 자동 복원하며 작은 derived packet을 그 원본으로 표시하지 않는다.
+
+전체 Git 파일 3293개가 필요한 경우 같은 Git commit을 fetch하거나 별도
+`REC_R3O_FULL_GIT_CODE_EVIDENCE_721c717b_RECOVERED_20261019.zip`을 사용한다.
+121,217,205 bytes, SHA256
+`bb96587279eec3503693367e05ae023c285175afeadb2adabe59fc073a17a87a`.
+전체 파일을 Git blob과 대조해 일치했고 Library에 보존했다. 이 전체 ZIP의 Drive 전송은 100MiB 한도 때문에 action 전에 HTTP 413으로 실패했다. Dropbox의 앞선 전송은 중단되어 완료 ACK가 없고 같은 이름의 원격 객체가 관측되지 않았다. 작은 복구 ZIP은 별도 전송으로 성공했다.
+
+2026-10-19 19:53 UTC에 scratch 전체 초기화가 실제 관측되었다. 앞서 생성한
+`REC_R3O_CODE_EVIDENCE_HANDOFF_721c717b_20261019.zip`(35,591,750 bytes,
+SHA256 `da2fb7d6d04238c863b0ffd07d9988f7d3186f23e0f889176a0e55494f88ac18`)은
+원격 ACK 전에 손실되었다. 이 이름과 해시를 복구된 새 ZIP으로 바꿔 적지 않는다.
+이전 sandbox binary `a29462c2...`의 원격 사본도 확인되지 않았다. 실제 실행 receipt와 정확한 당시 소스, 성공한 CI artifact는 Git에 남아 복구되었다. 새 물리 실행은 반복하지 않았다. 실패한 전송·runtime 초기화는 물리 FAIL이나 새 PASS가 아니다. 상세는 `receipts/RUNTIME_RECOVERY.json`.
+
+최종 ZIP을 만든 뒤 생긴 원격 ACK, 이 마감 문서 커밋의 HEAD와 마지막 일반 CI는 분리된 CLOSEOUT_RECEIPTS ZIP 및 PR109 마지막 receipt로 연결한다. 자기 자신의 SHA256 또는 생성 후 upload ACK를 내부에 가졌다고 주장하지 않는다. `BACKUP_ACKS.json`, `receipts/ARCHIVE_PRESERVATION.json`과 detached 최종 receipt를 함께 읽는다.

@@ -107,9 +107,30 @@
         "INDEPENDENT_H4_START"
       ],
       "handoff": "CODEX_HANDOFF_KO.md"
+    },
+    {
+      "id": "RUNTIME_RECOVERY",
+      "status": "COMPLETE_3293_GIT_BLOBS_MATCH_NO_PHYSICAL_RERUN",
+      "evidence": [
+        "receipts/RUNTIME_RECOVERY.json"
+      ]
+    },
+    {
+      "id": "THREE_PROVIDER_PRESERVATION",
+      "status": "UPLOAD_ACKNOWLEDGED_ALL_THREE_DRIVE_DROPBOX_WHOLE_READBACK_MATCH",
+      "depends_on": [
+        "RUNTIME_RECOVERY",
+        "VIGILODE_RUST_REUSE"
+      ],
+      "evidence": [
+        "BACKUP_ACKS.json",
+        "receipts/ARCHIVE_PRESERVATION.json",
+        "receipts/PORTABLE_DRIVE_READBACK.json",
+        "receipts/PORTABLE_DROPBOX_READBACK.json"
+      ]
     }
   ],
-  "stage": "IMPLEMENTATION_REVIEW_AND_FRESH_CARGO_CI_COMPLETE_ARCHIVE_SEAL_PENDING",
+  "stage": "SCOPED_IMPLEMENTATION_REVIEW_CI_AND_THREE_BACKUPS_COMPLETE",
   "REI_activation": false,
   "historical_budget": "CLOSED_HOLD_NOT_RESET",
   "publication": {
@@ -120,6 +141,8 @@
     "stage1_receipt": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/109#issuecomment-6268592673",
     "rust_extension": "SOURCE_PUSHED_AND_NEW_CARGO_CI_SUCCESS",
     "tested_code_commit": "4512b19e5615fabcb80e0860dbf3bb3086fe01fb",
-    "final_archive": "PENDING_IMMUTABLE_SEAL"
+    "final_archive": "receipts/ARCHIVE_PRESERVATION.json",
+    "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc",
+    "closing_HEAD_and_CI": "Detached CLOSEOUT_RECEIPTS and PR109 final receipt; closing docs do not change the tested code."
   }
 }
