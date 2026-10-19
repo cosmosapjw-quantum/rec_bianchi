@@ -1,0 +1,63 @@
+{
+  "schema": "rec.r3n.backup-first-intake.v1",
+  "recorded_utc": "2026-10-19T09:31:46Z",
+  "parent_pr": 107,
+  "parent_head": "328f3723948979f74ae6c19474f45cb1882fb7b9",
+  "reused_execution": {
+    "location": "owner workstation",
+    "code": "d0e534b1f5b4bb20fe19875f6d502681b833470d",
+    "full_u6_steps": 5210,
+    "same_h_status": "REVIEW_PASS_SAME_H_ONLY",
+    "cpu_s": 37.57054,
+    "wall_s": 42.045046729035676,
+    "new_U6_integration_in_this_session": false
+  },
+  "current_session_full_drive_readbacks": [
+    {
+      "file_id": "1GdAli-et-gNv3dUOvBhLf3kS0uu2xSpW",
+      "filename": "REC_R3M_CODE_EVIDENCE_HANDOFF_328f3723_20261019.zip",
+      "bytes": 15557124,
+      "sha256": "4d9c01f0149087350db6448ef025706c815ddf122e9e6c6fe6856a9df1e28a4d",
+      "status": "MATCH"
+    },
+    {
+      "file_id": "173QaPYquHnrWeS_Rxrb1rRPSk0VrGMmx",
+      "filename": "REC_R3M_FULL5210_STORED_OWNER_RAW_001.tar.gz",
+      "bytes": 232521236,
+      "sha256": "8cd5da29521b47d6b715dfa6889ae11d239ef430460deae97824ee32584b80b9",
+      "status": "MATCH"
+    }
+  ],
+  "current_session_dropbox_full_readback": "NOT_RUN; reuse reported PR107 producer-session readbacks, not a new independent check",
+  "prior_library": "PR107 receipt: NOT_USED_NO_CONNECTOR_IN_OWNER_SESSION",
+  "prior_final_receipt": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/107#issuecomment-6263365434",
+  "new_environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "sandbox_commands": "EXECUTABLE",
+    "git_shell_transport": "FAILED browser-proxy:8889; GitHub connector works",
+    "native_subagent_execution": "NOT_CLAIMED; separately identified review tool used"
+  },
+  "recovery_finding": {
+    "class": "environment/input-copy failure",
+    "observed_extracted_native_csv_bytes": 83034112,
+    "observed_sha256": "c708f32a1a52c45d846193f7f1b43752543888a058050ffad15bfa6fb91d3c0f",
+    "tar_member_bytes": 299795855,
+    "tar_member_sha256": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "repair": "Streamed original tar member to a separate file, fsync, full local readback hash MATCH; selected a separate verified raw directory. Original archive/receipts unchanged.",
+    "cause": "UNRESOLVED local extracted-copy truncation; no producer corruption or numerical failure established",
+    "status": "RECOVERY_OBLIGATION_CLOSED_ROOT_CAUSE_UNKNOWN",
+    "rejection_log": "real_h2_trace_001/failure.json"
+  },
+  "base_tree_validation": {
+    "git_tree": "58347ff940a738eb3d87fd5497ea3618721673a8",
+    "unchanged_capsule_files_verified_against_git_blob_sha1": 417,
+    "mismatch": []
+  },
+  "next_contract": {
+    "path": "research/rec_r3i_time_refinement_20261016/CONTRACT.json",
+    "sha256": "308aecdfb9fbe1eac292a5d6cc120ba60966b7988e6df82bd4e337d6598a6fa6",
+    "field": "R3I-CONVERGENCE-v1",
+    "status": "REUSED_UNCHANGED"
+  }
+}

@@ -1,0 +1,64 @@
+name: verify-r3n-convergence
+on:
+  push:
+    branches: [research/rec-r3n-convergence-diagnostics-20261019]
+    paths:
+      - src/full_bianchi_hyrec/trajectory/time_convergence.py
+      - scripts/compare_r3n_time_grids.py
+      - scripts/probe_r3n_predictor.py
+      - tests/trajectory/test_r3n_*.py
+      - research/rec_r3n_time_convergence_20261019/real_h2_trace_003/**
+      - .github/workflows/verify-r3n-convergence.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract-and-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONPATH: src:scripts
+      MPLCONFIGDIR: /tmp/rec-r3n-mpl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0 matplotlib
+      - name: Original C interpolation and convergence contract tests
+        run: |
+          mkdir -p delivery
+          set -o pipefail
+          python -m unittest discover -s tests/trajectory -p 'test_r3n_*.py' -v 2>&1 | tee delivery/tests.log
+      - name: Analytic ODE and predictor-memory controls only
+        run: python scripts/probe_r3n_predictor.py --evidence-dir delivery/probes
+      - name: Reviewed real h2 input must remain insufficient for three grids
+        run: |
+          python scripts/compare_r3n_time_grids.py analyze --history research/rec_r3n_time_convergence_20261019/real_h2_trace_003/h2_state_trace.json --evidence-dir delivery/real_h2
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('delivery/real_h2/result.json').read_text())
+          assert r['status']=='INSUFFICIENT_LEVELS'
+          assert r['levels_missing']==[0,2] and r['global_coverage'] is False
+          PY
+      - name: Bind exact code and artifacts
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,subprocess,sys
+          from pathlib import Path
+          d=Path('delivery');d.mkdir(exist_ok=True)
+          files={str(p.relative_to(d)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(d.rglob('*')) if p.is_file()}
+          r={'schema':'rec.r3n.ci-receipt.v1','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'python':sys.version,'files':files,'new_HyRec_integrations':0,'reused_full_U6':'PR107 owner run','Python_h_h2_h4_convergence':'NOT_RUN','REI_activation':False}
+          (d/'MANIFEST.json').write_text(json.dumps(r,indent=2,sort_keys=True)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: REC_R3N_CONVERGENCE_${{ github.sha }}
+          path: delivery/
+          retention-days: 30

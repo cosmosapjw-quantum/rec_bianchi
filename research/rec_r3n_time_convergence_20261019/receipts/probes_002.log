@@ -1,0 +1,158 @@
+{
+  "schema": "rec.r3n.predictor-probes.v1",
+  "status": "PASS_SCOPED",
+  "model": "dy/ds=-200y; s=ln(a)-ln(a_start); exact same-grid -h,-2h derivatives; biased case starts from y(0)=1.01 instead of 1",
+  "step_sizes": [
+    8.49e-05,
+    4.245e-05,
+    2.1225e-05
+  ],
+  "steps": [
+    64,
+    128,
+    256
+  ],
+  "new_physical_integrations": 0,
+  "three_grid_recombination": "NOT_RUN",
+  "cases": {
+    "original_prev2": {
+      "endpoint_absolute_error": [
+        7.158790343025911e-05,
+        1.7755674390829146e-05,
+        4.421324942771587e-06
+      ],
+      "endpoint_error_order": [
+        2.011435671192829,
+        2.005729484064694
+      ],
+      "median_observed_difference_order": 2.013525766340777,
+      "original_numeric_gate_status": "NUMERIC_TARGETS_MET",
+      "scope": "MANUFACTURED_CONTROL_NOT_RECOMBINATION"
+    },
+    "mutated_prev1": {
+      "endpoint_absolute_error": [
+        0.0015412433355505017,
+        0.0007743700046261015,
+        0.00038810970660535515
+      ],
+      "endpoint_error_order": [
+        0.9929996805899007,
+        0.9965585553105176
+      ],
+      "median_observed_difference_order": 0.9907586357316802,
+      "original_numeric_gate_status": "NUMERIC_TARGETS_NOT_MET",
+      "scope": "MANUFACTURED_CONTROL_NOT_RECOMBINATION"
+    },
+    "shared_checkpoint_bias": {
+      "endpoint_absolute_error": [
+        0.003445514726073018,
+        0.003391144174743732,
+        0.0033776764818010396
+      ],
+      "endpoint_error_order": [
+        0.022947401552045305,
+        0.005740970383446357
+      ],
+      "median_observed_difference_order": 2.0135257663583612,
+      "original_numeric_gate_status": "NUMERIC_TARGETS_MET",
+      "scope": "MANUFACTURED_CONTROL_NOT_RECOMBINATION"
+    }
+  },
+  "scalar_stability_probe": {
+    "-2.1": {
+      "roots": [
+        [
+          -1.326749178429666,
+          0.0
+        ],
+        [
+          -0.7956100746606956,
+          0.0
+        ],
+        [
+          0.4973592530903635,
+          0.0
+        ]
+      ],
+      "max_modulus": 1.326749178429666
+    },
+    "-2.0": {
+      "roots": [
+        [
+          -1.0000000142814922,
+          0.0
+        ],
+        [
+          -0.9999999857185096,
+          0.0
+        ],
+        [
+          0.5000000000000001,
+          0.0
+        ]
+      ],
+      "max_modulus": 1.0000000142814922
+    },
+    "-1.9": {
+      "roots": [
+        [
+          -0.9389647766576923,
+          0.25062206527525754
+        ],
+        [
+          -0.9389647766576923,
+          -0.25062206527525754
+        ],
+        [
+          0.502929553315384,
+          0.0
+        ]
+      ],
+      "max_modulus": 0.9718365456220842
+    },
+    "-0.1": {
+      "roots": [
+        [
+          0.9054910042480304,
+          0.0
+        ],
+        [
+          -0.015245502124014834,
+          0.16545967702756445
+        ],
+        [
+          -0.015245502124014834,
+          -0.16545967702756445
+        ]
+      ],
+      "max_modulus": 0.9054910042480304
+    },
+    "0.0": {
+      "roots": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "max_modulus": 1.0
+    }
+  },
+  "checks": {
+    "original_endpoint_order_near_2": true,
+    "wrong_memory_order_near_1": true,
+    "common_bias_survives_h_refinement": true,
+    "common_bias_hidden_from_signed_order": true,
+    "scalar_minus_1p9_inside": true,
+    "scalar_minus_2p1_outside": true
+  },
+  "cpu_s": 3.099715503,
+  "wall_s": 3.1183443929985515
+}
