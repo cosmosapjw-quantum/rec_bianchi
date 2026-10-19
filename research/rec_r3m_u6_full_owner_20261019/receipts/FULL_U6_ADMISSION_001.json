@@ -1,0 +1,42 @@
+{
+  "schema": "rec.r3m.full-u6-admission.v1",
+  "utc": "2026-10-19T08:24:40.165000+00:00",
+  "allocation_id": "R3M-OWNER-20261019-001",
+  "inputs": {
+    "pilot128_profile": "evidence_001/pilot128_stored.r3l_profile.json",
+    "pilot_same_h": "PASS_PENDING_REVIEW, 0 original average failures, first_failure null",
+    "backend_parity": "PR105 pair16/pair128 PASS_BOUNDED_BACKEND_BYTE_EQUIVALENCE; raw independently re-audited on owner host this session (all receipt numbers match raw)",
+    "native_C_full_cost": "measured directly: standalone original-C harness N=5210, user 3.35 + sys 0.32 s, same binary sha 6eaecc2c..., core 4, AS 2GiB",
+    "owned_fit": "A+B*N from PR105 N=16/128 points, used only for owned integration phase; pilot owned inclusive minus check_one_source 0.317 s vs fit 0.329 s at N=128"
+  },
+  "phase_estimate_cpu_s": {
+    "pre_interval_and_fixed": 2.3475449999999998,
+    "owned_integration": 6.0479460736250115,
+    "check_one_source_calls": 42,
+    "check_one_source": 3.4171199999999997,
+    "causal_link_count": 0.5271461718751148,
+    "native_run": 3.79879,
+    "history_write": 0.10590708718344119,
+    "unattributed": 0.07,
+    "stream_prefix_rows": 5290614,
+    "stream_per_row_cpu_s": 2.3360634340655355e-06,
+    "stream_prefix": 12.359209909155199,
+    "stream_full_spectral_rows": 3261460,
+    "total_if_spectral_row_cost_1x_prefix": 36.29264168950615,
+    "total_if_2x": 43.91161913717353,
+    "breakeven_spectral_row_multiplier_at_59s": 3.980368227424786
+  },
+  "unmeasured_risks": [
+    "per-row cost of V/A/L stream rows vs PV rows not separately identified (pilot has 80000 spectral rows only)",
+    "forensic _owner diagnostics cost per original-average-gate failure: 0 failures in pilot, so cost unmeasured; up to 64 allowed",
+    "wall under concurrent desktop load"
+  ],
+  "not_used_as_bound": [
+    "two-point 6.047946 s total extrapolation",
+    "22.48 storage ratio"
+  ],
+  "caps": "unchanged 60 CPU s / 180 wall s / 2 GiB / BLAS1; no ledger reset",
+  "disk_free_bytes": 16481984512,
+  "decision": "ADMIT_ONE_FULL_ATTEMPT",
+  "decision_basis": "phase-resolved estimate below cap with margin under 2x spectral-row assumption; break-even multiplier >3; same-h pilot pass; parity preserved; disk/transfer reserve available. A cap hit is a HOLD outcome, not a reason to raise caps."
+}

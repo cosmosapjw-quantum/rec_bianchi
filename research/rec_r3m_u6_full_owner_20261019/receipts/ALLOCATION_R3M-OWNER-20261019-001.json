@@ -1,0 +1,36 @@
+{
+  "schema": "rec.r3m.allocation.v1",
+  "allocation_id": "R3M-OWNER-20261019-001",
+  "created_utc": "2026-10-19T08:08:39.755352+00:00",
+  "authority": "Explicit user instruction in this owner-host session (2026-10-19 17:04 KST) to run profiled pilot128 and, only if admitted, one full U6. The ID string itself grants nothing.",
+  "host": "owner workstation; no NCP, no paid cloud compute; monetary cost of CPU 0",
+  "historical_allocations": "CLOSED_HOLD_NOT_RESET (not reused, not reset)",
+  "per_run_caps": {
+    "process_tree_cpu_s": 60,
+    "wall_s": 180,
+    "address_space_bytes": 2147483648,
+    "blas_threads": 1,
+    "cpu_affinity": "single core 4 (taskset), verifier pins affinity[0]"
+  },
+  "authorized_attempts": {
+    "pilot128_stored": 1,
+    "full_5210_stored": "1 attempt only if admission criteria in HANDOFF step 9 are met; else 0"
+  },
+  "concurrent_use_at_allocation": {
+    "loadavg": [
+      9.00048828125,
+      7.23974609375,
+      6.0009765625
+    ],
+    "note": "pre-existing unrelated desktop load; per-core busy 12-29%; one udevd thread ~98%"
+  },
+  "reserves": {
+    "disk_free_bytes_at_allocation": 17656111104,
+    "disk_reserve_required_bytes": 4294967296,
+    "disk_reserve_basis": "PR105 smoke3 evidence 258 MiB; pilot ~0.4 GiB, full <1.5 GiB, raw tarballs, staging",
+    "transfer_reserve": "rclone gdrv/dbx existing auth; raw tarballs expected <1 GiB each; create-only paths",
+    "recovery_reserve": "local raw kept until both remote readbacks pass; checkpoint capsule separately backed up",
+    "closeout_tail_not_in_cap": "profile write/hash/fsync, journal tail, tar, upload, readback are outside the 60 s cap and are recorded separately"
+  },
+  "admission_rule_for_full": "pilot same-h PASS + preserved backend parity + measured phase costs extrapolated to 5210 with explicit per-step marginal staying below 60 CPU s and 180 wall s with margin; never raise caps"
+}

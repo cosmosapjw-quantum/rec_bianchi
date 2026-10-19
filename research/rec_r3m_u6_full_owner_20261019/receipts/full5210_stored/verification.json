@@ -1,0 +1,193 @@
+{
+  "causal_links": {
+    "accepted_inputs": 5210,
+    "checked_links": 1630730
+  },
+  "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+  "common_binary_sha256": "e70ca8b9bb3ea857db5756d305a07c4207f3ac127fb9004d26ab0cf14c5078bb",
+  "common_build": {
+    "child_cpu_limit_s": 58,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-DR3I_SHARED",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/checkout/scripts/c_harness/original_hyrec_r3i_h2_u6_rt_boundary_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/history.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/helium.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "50faafd9ec393f84ff8389c94b01bfccd01938833fb3f096071a571838722db2",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.5717919999733567
+  },
+  "common_input_sample": {
+    "max_average_tolerance_ratio": 1.1351965923223427e-05,
+    "max_lyman_tolerance_ratio": 3.3778591473583835e-06,
+    "max_rhs_scaled": 4.683753385137379e-15,
+    "max_thermal_rhs_scaled": 3.987522852282203e-13,
+    "max_virtual_tolerance_ratio": 3.3801090540847487e-06,
+    "sampled_evaluations": 42,
+    "status": "PASS"
+  },
+  "first_failure": null,
+  "last_accepted": {
+    "state": {
+      "Tm_K": 1822.5247991606407,
+      "branch": "H_ONLY",
+      "iz": 58389,
+      "post_saha": false,
+      "xH1s": 0.9986716893049056,
+      "xHII": 0.0013283106950943938,
+      "xHeII": 0.0,
+      "xe": 0.0013283106950943938,
+      "z": 669.959490187319
+    },
+    "step": {
+      "branch": "H_ONLY",
+      "coupled": true,
+      "hydrogen_rhs": -0.004718718870304542,
+      "input_iz": 58388,
+      "output_iz": 58389,
+      "photon_col": 21942,
+      "schur_residual": 1.378817928964382e-16,
+      "thermal_rhs": -1858.8849741073457
+    }
+  },
+  "last_attempt": {
+    "Tm_K": 1822.603707230973,
+    "accepted_before": 5209,
+    "input_iz": 58388,
+    "photon_col": 21942,
+    "xe": 0.0013285109722451355,
+    "z": 669.9879730222214
+  },
+  "last_source_evaluation": {
+    "average_sha256": "248cfc4ed2104aabddac7abcd4e52d12f1a162349d1c74910175af5f3a22c331",
+    "hydrogen_rhs": -0.004718718870304542,
+    "input_iz": 58388,
+    "lyman_sha256": "44e28f5b8530bc2e390cd1a6434058c54a00b1919b3cb228bfd9e12ca5b4f43f",
+    "schur_residual": 1.378817928964382e-16,
+    "virtual_sha256": "e98b1aab89ebf655658655317aeaeb4da702c287355d81822a15dd62c3a9a0a6"
+  },
+  "modified_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+  },
+  "native_binary_sha256": "6eaecc2c63d6f18c6b98c71da12c8faa5a0e285be8af914242c020d4dc4cec75",
+  "native_build": {
+    "child_cpu_limit_s": 59,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/checkout/scripts/c_harness/original_hyrec_r3i_h2_u6_rt_boundary_harness.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/history.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/hydrogen.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/helium.c",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/native_u6_rt"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "50faafd9ec393f84ff8389c94b01bfccd01938833fb3f096071a571838722db2",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 1.316988953971304
+  },
+  "native_run": {
+    "child_cpu_limit_s": 47,
+    "command": [
+      "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/native_u6_rt"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "wall_s": 3.335485234973021
+  },
+  "partial_accepted_sha256": {
+    "python_accepted_partial.jsonl": "c6af638858bfe2cf62518b85de4c4fc70e2cf3967455e19e49464f078cd5907c",
+    "python_attempts.jsonl": "da725f36517d410ddc13ffa2fb370712bf4e96e4234620d386c98da9a8960e99",
+    "python_partial_average_f64le.bin": "184a5b3ed32be9b6aeb6ee55da2519ef17cbe4047084d28fa505ddca0032f35a",
+    "python_partial_lyman_f64le.bin": "cac9bcc9ed20fcc9bfadac5b8d16a56d9884aa22ef75dad826209cc44d43454c",
+    "python_partial_virtual_f64le.bin": "962a0b71692913c06c8115a9f2da5b699941fa70e56cc02bbf40353018495c65",
+    "python_source_evaluations.jsonl": "0508334c546f02ab7aabf28e66fe7924b7fef98f74601f0697fde20d78d5fc9d"
+  },
+  "python_history_sha256": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+  "python_result": {
+    "full_evaluations": 5210,
+    "rt_stop_iz": 58389,
+    "status": "RT_BOUNDARY_REACHED_NO_EMLA_EVALUATION",
+    "steps": 5210
+  },
+  "resources": {
+    "address_limit_bytes": 2147483648,
+    "affinity": [
+      4
+    ],
+    "blas_threads": 1,
+    "cpu_limit_s": 60,
+    "parent_cpu_s": 33.100578,
+    "peak_rss_bytes": 435322880,
+    "process_tree_cpu_s": 37.570539999999994,
+    "wall_limit_s": 180,
+    "wall_s": 42.045046729035676
+  },
+  "same_h_parity": {
+    "causal_links": 1630730,
+    "counts": {
+      "A": 1620310,
+      "BASE": 1,
+      "END": 1,
+      "HE": 36447,
+      "L": 15630,
+      "NODE": 1,
+      "PARAM": 1,
+      "PL": 50199,
+      "PV": 5203963,
+      "STEP": 5210,
+      "THERMAL_EVENT": 1,
+      "V": 1620310
+    },
+    "end": {
+      "coupled": 5212,
+      "event_iz": 53177,
+      "status": "RT_BOUNDARY_REACHED_NO_EMLA_EVALUATION",
+      "steps": 5210
+    },
+    "maxima": {
+      "Tm_K": 4.364788115448193e-16,
+      "average": 0.01016409195990302,
+      "hydrogen_rhs": 2.7873536811995336e-14,
+      "lyman": 1.7690729538503825e-05,
+      "thermal_rhs": 6.31956681027985e-13,
+      "virtual": 1.7688723656877556e-05,
+      "xe": 1.3229192355050086e-13
+    },
+    "original_average_failures": [],
+    "spectral_fields": 3256250,
+    "status": "PASS_PENDING_REVIEW"
+  },
+  "source_closure": {
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "manifest_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+    "source_files": 109
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "PASS_PENDING_INDEPENDENT_REVIEW"
+}

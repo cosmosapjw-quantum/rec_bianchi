@@ -1,0 +1,107 @@
+{
+ "schema": "rec.r3m.phase-dag.v1",
+ "project": "rec_bianchi",
+ "parent_pr": 106,
+ "phases": [
+  {
+   "id": "M0_INTAKE",
+   "status": "DONE",
+   "evidence": "PR106 body+final receipt, README_KO/EVIDENCE/DAG/BACKUP_ACKS/HANDOFF_KO of R3L read; no newer remote results"
+  },
+  {
+   "id": "M1_ENVIRONMENT",
+   "status": "DONE_OWNER",
+   "evidence": "receipts/ENVIRONMENT_001.json"
+  },
+  {
+   "id": "M2_FROZEN_CONTRACT",
+   "status": "PASS_ZIP_V6_109",
+   "depends_on": [
+    "M1_ENVIRONMENT"
+   ]
+  },
+  {
+   "id": "M3_TESTS_OWNER_ENV",
+   "status": "PASS_42",
+   "depends_on": [
+    "M1_ENVIRONMENT"
+   ]
+  },
+  {
+   "id": "RECOVER_REVIEWED_U5_SMALL_CAPSULE",
+   "status": "DONE_PASS_DOUBLE_BACKUP_FULL_READBACK",
+   "depends_on": [
+    "M2_FROZEN_CONTRACT"
+   ]
+  },
+  {
+   "id": "M4_ALLOCATION",
+   "status": "CREATED_OWNER_R3M-OWNER-20261019-001",
+   "evidence": "receipts/ALLOCATION_R3M-OWNER-20261019-001.json"
+  },
+  {
+   "id": "U5_PROFILED_PILOT128_STORED",
+   "status": "SMOKE_ONLY_SAME_H_PASS_PENDING_REVIEW_ACCOUNTING_VALID",
+   "depends_on": [
+    "RECOVER_REVIEWED_U5_SMALL_CAPSULE",
+    "M3_TESTS_OWNER_ENV",
+    "M4_ALLOCATION"
+   ]
+  },
+  {
+   "id": "PR105_RAW_AUDIT",
+   "status": "DONE_NUMBERS_MATCH_WORDING_OVERSTATEMENT_NOTED",
+   "evidence": "INDEPENDENT_REVIEW.md"
+  },
+  {
+   "id": "C_COST_DIAGNOSTIC",
+   "status": "DONE_MEASURED_N128_N5210",
+   "depends_on": [
+    "U5_PROFILED_PILOT128_STORED"
+   ]
+  },
+  {
+   "id": "FULL_U6_ADMISSION",
+   "status": "ADMIT_ONE_FULL_ATTEMPT",
+   "depends_on": [
+    "U5_PROFILED_PILOT128_STORED",
+    "PR105_RAW_AUDIT",
+    "C_COST_DIAGNOSTIC"
+   ]
+  },
+  {
+   "id": "FULL_U6_5210",
+   "status": "PASS_PENDING_INDEPENDENT_REVIEW_THEN_REVIEW_PASS",
+   "depends_on": [
+    "FULL_U6_ADMISSION"
+   ]
+  },
+  {
+   "id": "FULL_U6_INDEPENDENT_REVIEW",
+   "status": "REVIEW_PASS_SAME_H_ONLY",
+   "depends_on": [
+    "FULL_U6_5210"
+   ]
+  },
+  {
+   "id": "BACKUP",
+   "status": "CAPSULE_PILOT_FULL_RAW_DRIVE_DROPBOX_FULL_READBACK_PASS",
+   "evidence": "BACKUP_ACKS.json"
+  }
+ ],
+ "next_nodes": [
+  {
+   "id": "PYTHON_H_H2_H4_CONVERGENCE_U6",
+   "status": "NOT_RUN_NOT_AUTHORIZED_BY_THIS_UNIT",
+   "note": "same-h parity does not establish convergence; U5 h HOLD_9_FAIL/h2 HOLD_8_FAIL unchanged"
+  },
+  {
+   "id": "BIANCHI_REI_CMB",
+   "status": "NOT_AUTHORIZED_BY_THIS_UNIT"
+  },
+  {
+   "id": "PR105_RECEIPT_WORDING",
+   "status": "OPTIONAL_ERRATUM: NATIVE_SMOKE_PASS should read SMOKE_ONLY/PASS_PENDING_REVIEW"
+  }
+ ]
+}

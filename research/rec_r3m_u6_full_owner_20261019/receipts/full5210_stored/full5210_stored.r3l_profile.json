@@ -1,0 +1,315 @@
+{
+  "allocation_id": "R3M-OWNER-20261019-001",
+  "closeout_errors": [],
+  "execution_status": "returned",
+  "full_run_budget_admission": "NOT_ESTABLISHED_BY_PROFILING",
+  "historical_allocation": "CLOSED_HOLD_NOT_RESET",
+  "history_container": "stored",
+  "requested_steps": 5210,
+  "run_error": null,
+  "runtime": {
+    "executor_label": "owner",
+    "numpy": "2.4.2",
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "scipy": "1.17.0",
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "schema": "rec.r3l.phase-profile.v1",
+  "scientific_status": "READ_ORIGINAL_VERIFICATION_RECEIPT",
+  "source": {
+    "additional_source_sha256": {
+      "scripts/r3l_u6_cost.py": "5be50dd40e895a9b88cd61a3c84fff6daa650e90796021c6aa209d352742fb1d",
+      "scripts/run_r3j_u6_owned.py": "f99f6d6e55d8844da8404668c386e68e5c492d9fa8445e8feb05255d793773fb",
+      "scripts/run_r3l_u6_profiled.py": "e8f6c08425cdd4d61808b5c806910b28ffcfc969fc1d2f6e6d3473a6ff720b32",
+      "src/full_bianchi_hyrec/trajectory/owned_flrw_history.py": "3e90e1bf3b9d8158197409b54ad429f3eecfe6643d5725cf5e0865e56cf8aab5",
+      "src/full_bianchi_hyrec/trajectory/primordial_2012_owned_u6.py": "f782fd899ec2e93355a54709b9442e6dd1c3d55f35e01f9f9ef85c5a655918ce",
+      "tests/trajectory/test_owned_flrw_history.py": "45d2e195aa6a66a872246c5794120d38ef6aec335eafa3b551d4d67c68ce1718"
+    },
+    "commit": "d0e534b1f5b4bb20fe19875f6d502681b833470d"
+  },
+  "timings": {
+    "accounting_status": "VALID",
+    "cpu_at_interval_entry_s": 0.700553,
+    "excluded_tail": [
+      "profile receipt read/hash/write/fsync",
+      "final journal/console output",
+      "backup transfer and recovery"
+    ],
+    "exclusive_sum": {
+      "children_cpu_s": 4.469955,
+      "parent_cpu_s": 32.936852,
+      "wall_s": 41.61693182308227
+    },
+    "measured_interval": {
+      "children_cpu_s": 4.471261999999999,
+      "parent_cpu_s": 33.116837,
+      "wall_s": 42.119582784944214
+    },
+    "phases": {
+      "callback_observer": {
+        "calls": 5210,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.3145509999999596,
+          "wall_s": 0.3037941869115457
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 4.414049999999952,
+          "wall_s": 4.4082053690217435
+        }
+      },
+      "callback_on_accept": {
+        "calls": 5210,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.25409800000002436,
+          "wall_s": 0.2587931421585381
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.25409800000002436,
+          "wall_s": 0.2587931421585381
+        }
+      },
+      "callback_on_attempt": {
+        "calls": 5210,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.09100500000000333,
+          "wall_s": 0.09096547274384648
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.09100500000000333,
+          "wall_s": 0.09096547274384648
+        }
+      },
+      "causal_link_count": {
+        "calls": 5210,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.43782799999999256,
+          "wall_s": 0.44180541683454067
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.43782799999999256,
+          "wall_s": 0.44180541683454067
+        }
+      },
+      "check_one_source": {
+        "calls": 42,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 3.6616709999999997,
+          "wall_s": 3.662605765275657
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 3.6616709999999997,
+          "wall_s": 3.662605765275657
+        }
+      },
+      "checkpoint_load": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.508769,
+          "wall_s": 0.5170058159856126
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.508769,
+          "wall_s": 0.5170058159856126
+        }
+      },
+      "common_build": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.53456,
+          "parent_cpu_s": 0.004553000000000251,
+          "wall_s": 0.5934596080332994
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.53456,
+          "parent_cpu_s": 0.004553000000000251,
+          "wall_s": 0.5934596080332994
+        }
+      },
+      "common_oracle_setup": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.0004750000000000032,
+          "wall_s": 0.007058437098748982
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.0004750000000000032,
+          "wall_s": 0.007058437098748982
+        }
+      },
+      "history_write": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.13516399999999962,
+          "wall_s": 2.7574844979681075
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.13516399999999962,
+          "wall_s": 2.7574844979681075
+        }
+      },
+      "native_build": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.655795,
+          "parent_cpu_s": 0.00802999999999976,
+          "wall_s": 1.3581068300409243
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.655795,
+          "parent_cpu_s": 0.00802999999999976,
+          "wall_s": 1.3581068300409243
+        }
+      },
+      "native_run": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 3.2795999999999994,
+          "parent_cpu_s": 0.18164700000000167,
+          "wall_s": 3.5240374569548294
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 3.2795999999999994,
+          "parent_cpu_s": 0.18164700000000167,
+          "wall_s": 3.5240374569548294
+        }
+      },
+      "native_stream_validation": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 21.409138,
+          "wall_s": 21.456752080004662
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 21.409138,
+          "wall_s": 21.456752080004662
+        }
+      },
+      "original_source_extract": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.006089000000000011,
+          "wall_s": 0.05183331703301519
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.006089000000000011,
+          "wall_s": 0.05183331703301519
+        }
+      },
+      "owned_integration": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 5.83744000000002,
+          "wall_s": 5.877790781087242
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 10.596593,
+          "wall_s": 10.63575476501137
+        }
+      },
+      "python_source_setup": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.00012500000000015277,
+          "wall_s": 0.005791699048131704
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.00012500000000015277,
+          "wall_s": 0.005791699048131704
+        }
+      },
+      "source_closure": {
+        "calls": 1,
+        "exclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.08626900000000004,
+          "wall_s": 0.7096473159035668
+        },
+        "failed_calls": 0,
+        "inclusive": {
+          "children_cpu_s": 0.0,
+          "parent_cpu_s": 0.08626900000000004,
+          "wall_s": 0.7096473159035668
+        }
+      }
+    },
+    "process_tree_cpu_s": 37.588099,
+    "profiling_errors": [],
+    "scope": "phase costs within the launched verifier; includes reaped children; ends at this summary clock sample, before profile closeout; nested inclusive times must not be added together",
+    "unattributed": {
+      "children_cpu_s": 0.001306999999999725,
+      "parent_cpu_s": 0.17998499999999495,
+      "wall_s": 0.5026509618619457
+    }
+  },
+  "verification": {
+    "first_failure": null,
+    "path": "/home/cosmosapjw/rec_theory_runs/REC_R3M_U6_PILOT_20261019/evidence_full_001/full5210_stored/verification.json",
+    "python_result": {
+      "full_evaluations": 5210,
+      "rt_stop_iz": 58389,
+      "status": "RT_BOUNDARY_REACHED_NO_EMLA_EVALUATION",
+      "steps": 5210
+    },
+    "resources": {
+      "address_limit_bytes": 2147483648,
+      "affinity": [
+        4
+      ],
+      "blas_threads": 1,
+      "cpu_limit_s": 60,
+      "parent_cpu_s": 33.100578,
+      "peak_rss_bytes": 435322880,
+      "process_tree_cpu_s": 37.570539999999994,
+      "wall_limit_s": 180,
+      "wall_s": 42.045046729035676
+    },
+    "same_h_status": "PASS_PENDING_REVIEW",
+    "sha256": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b",
+    "status": "PASS_PENDING_INDEPENDENT_REVIEW"
+  }
+}
