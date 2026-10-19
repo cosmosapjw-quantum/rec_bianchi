@@ -1,0 +1,141 @@
+{
+  "base_commit": "3eb34b6a322d86d580b94f8f4bacfcadd33938ef",
+  "branch": "research/rec-r3l-profiled-history-io-20261019",
+  "next_nodes": [
+    {
+      "depends_on": [
+        "P10_EXECUTABLE_HANDOFF"
+      ],
+      "id": "RECOVER_REVIEWED_U5_SMALL_CAPSULE",
+      "implementation": "scripts/extract_r3l_reviewed_u5.py",
+      "status": "NOT_RUN_RAW_EXCEEDS_CURRENT_TRANSFER_LIMIT"
+    },
+    {
+      "depends_on": [
+        "RECOVER_REVIEWED_U5_SMALL_CAPSULE"
+      ],
+      "id": "U5_PROFILED_PILOT128_STORED",
+      "implementation": "scripts/run_r3l_u6_profiled.py",
+      "scope": "new storage and phase cost, not repetition of completed pair16/pair128",
+      "status": "NOT_RUN_VALID_ALLOCATION_AND_SOURCE_REQUIRED"
+    },
+    {
+      "admission": [
+        "valid actual allocation",
+        "preserved backend parity evidence",
+        "same-h validation",
+        "measured complete cost and recovery reserve"
+      ],
+      "depends_on": [
+        "U5_PROFILED_PILOT128_STORED"
+      ],
+      "id": "FULL_U6_5210",
+      "status": "NOT_RUN_BUDGET_AND_RECOVERY_RESERVE_HOLD"
+    },
+    {
+      "id": "PYTHON_THREE_GRID_BIANCHI_REI_CMB",
+      "status": "NOT_AUTHORIZED_BY_THIS_UNIT"
+    }
+  ],
+  "phases": [
+    {
+      "evidence": "RECOVERY_INTAKE.json",
+      "id": "P1_BACKUP_FIRST",
+      "status": "DONE_SCOPED_WITH_DRIVE_FULL_READBACK"
+    },
+    {
+      "depends_on": [
+        "P1_BACKUP_FIRST"
+      ],
+      "evidence": "../rec_r3k_owned_validation_20261018/EXECUTION_001.json",
+      "id": "P2_LATEST_EXECUTION_REUSE",
+      "raw_audit": "NOT_RUN",
+      "status": "DONE_PR105_RECEIPT_REUSED"
+    },
+    {
+      "depends_on": [
+        "P2_LATEST_EXECUTION_REUSE"
+      ],
+      "evidence": "FROZEN_SOURCE_READBACK.json",
+      "id": "P3_FROZEN_CONTRACT",
+      "status": "PASS_ALL_109_SOURCE_HASHES"
+    },
+    {
+      "depends_on": [
+        "P3_FROZEN_CONTRACT"
+      ],
+      "evidence": "COST_MODEL.json",
+      "id": "P4_CONSTRUCTIVE_COST_ANALYSIS",
+      "status": "DONE_DESCRIPTIVE_MODEL_AND_MISSING_PHASE_BOUND_IDENTIFIED"
+    },
+    {
+      "depends_on": [
+        "P4_CONSTRUCTIVE_COST_ANALYSIS"
+      ],
+      "evidence": "SOURCE_SHA256.json",
+      "id": "P5_IMPLEMENTATION",
+      "status": "DONE_PROFILE_STORAGE_RECOVERY_ADAPTERS"
+    },
+    {
+      "depends_on": [
+        "P5_IMPLEMENTATION"
+      ],
+      "evidence": "STORAGE_BENCHMARK.json",
+      "id": "P6_REAL_U4_STORAGE",
+      "status": "PASS_THREE_LOSSLESS_PAIRS"
+    },
+    {
+      "depends_on": [
+        "P5_IMPLEMENTATION"
+      ],
+      "evidence": "LOCAL_TEST_EXECUTION.json",
+      "id": "P7_FAILURE_AND_SOURCE_CONTRACTS",
+      "status": "PASS_42_LOCAL_TESTS"
+    },
+    {
+      "depends_on": [
+        "P6_REAL_U4_STORAGE",
+        "P7_FAILURE_AND_SOURCE_CONTRACTS"
+      ],
+      "evidence": "INDEPENDENT_REVIEW.md",
+      "id": "P8_INDEPENDENT_REVIEW",
+      "status": "TWO_FINDINGS_FIXED_NARROW_CLOSURE_PASS"
+    },
+    {
+      "depends_on": [
+        "P8_INDEPENDENT_REVIEW"
+      ],
+      "evidence": "BACKUP_ACKS.json",
+      "id": "P9_PUBLICATION_AND_RECOVERY",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "depends_on": [
+        "P8_INDEPENDENT_REVIEW"
+      ],
+      "evidence": "HANDOFF_KO.md",
+      "id": "P10_EXECUTABLE_HANDOFF",
+      "status": "PREPARED_NO_USER_FILE_PREPARATION"
+    }
+  ],
+  "preserve": {
+    "Bianchi_REI_CMB_prediction": "NOT_AUTHORIZED_BY_LOCAL_IMPLEMENTATION_CHECKS",
+    "Python_h_h2_h4_convergence": "NOT_ESTABLISHED",
+    "REI_activation": false,
+    "U5_h2_original_average": "HOLD_8_FAIL",
+    "U5_h_original_average": "HOLD_9_FAIL",
+    "dln_a": 4.245e-05,
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "original_atomic_thermal_operators": "UNCHANGED",
+    "original_source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "predictor_memory": "UNCHANGED",
+    "q": 0,
+    "reviewed_u5_checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "reviewed_u5_raw_sha256": "8d18bd221e4cf9aa4af1e8a48eb2048ebe9c65d33dda0f9a3de17fb529823c3c",
+    "same_h_validation": "ORIGINAL_VERIFIER_UNCHANGED",
+    "stage_boundaries": "UNCHANGED"
+  },
+  "project": "rec_bianchi",
+  "schema": "rec.r3l.phase-dag.v1",
+  "selected_unit": "U6 phase cost attribution, optional lossless output, and reviewed checkpoint recovery preparation"
+}
