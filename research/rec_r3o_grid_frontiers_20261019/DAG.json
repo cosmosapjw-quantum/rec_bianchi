@@ -1,0 +1,66 @@
+{
+  "schema": "rec.r3o.dag.v1",
+  "project": "rec_bianchi",
+  "base_pr": 108,
+  "base_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
+  "nodes": [
+    {
+      "id": "BACKUP_FIRST",
+      "status": "complete",
+      "evidence": [
+        "receipts/INTAKE.json",
+        "receipts/BASE_LOCAL_BLOBS.json"
+      ]
+    },
+    {
+      "id": "ORIGINAL_H_U8",
+      "status": "reused_raw_restored",
+      "evidence": [
+        "receipts/U8_SCOPED_REVIEW_REUSED.json",
+        "receipts/U8_BACKUP_RECEIPT_REUSED.json"
+      ],
+      "next": "identity-bound state descriptor"
+    },
+    {
+      "id": "R3M_FULL_U6",
+      "status": "reused",
+      "scope": "same-h owner5210steps; no new execution"
+    },
+    {
+      "id": "R3N_COMPARATOR",
+      "status": "reused",
+      "scope": "unchanged45tests/evidence; actual3gridconvergence remainsnotrun"
+    },
+    {
+      "id": "H2_LOW_Z",
+      "status": "in_progress",
+      "depends_on": [
+        "R3M_FULL_U6"
+      ]
+    },
+    {
+      "id": "INDEPENDENT_H4_START",
+      "status": "in_progress",
+      "depends_on": [
+        "ORIGINAL_SOURCE_ZIP"
+      ]
+    },
+    {
+      "id": "THREE_GRID_CONVERGENCE",
+      "status": "not_run",
+      "depends_on": [
+        "H2_LOW_Z",
+        "INDEPENDENT_H4_START",
+        "ORIGINAL_H_U8"
+      ],
+      "reason": "h4 continuation and complete grid/parity/boundary inputs still required"
+    },
+    {
+      "id": "BIANCHI_REI_CMB",
+      "status": "not_admitted"
+    }
+  ],
+  "stage": "INTAKE_COMPLETE_IMPLEMENTATION_IN_PROGRESS",
+  "REI_activation": false,
+  "historical_budget": "CLOSED_HOLD_NOT_RESET"
+}
