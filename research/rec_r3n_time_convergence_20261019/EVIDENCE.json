@@ -1,7 +1,7 @@
 {
   "schema": "rec.r3n.evidence.v1",
   "project": "rec_bianchi",
-  "status": "LOCAL_IMPLEMENTATION_AND_INDEPENDENT_REVIEW_COMPLETE_CI_PENDING",
+  "status": "DEDICATED_CODE_CI_PASS_COMMON_WHITESPACE_CORRECTION_PENDING",
   "base_head": "328f3723948979f74ae6c19474f45cb1882fb7b9",
   "branch": "research/rec-r3n-convergence-diagnostics-20261019",
   "workflow_skill": "physmath-research-loop 1.0.0 canonical requested skill",
@@ -21,7 +21,30 @@
       "scope": "includes 18 original C interpolation bit comparisons; not 18 trajectory runs",
       "receipt": "receipts/LOCAL_VALIDATION.json"
     },
-    "CI": "NOT_RUN_YET"
+    "CI": {
+      "source_code_sha": "0e828e8ef7aa418a86b76f59c462457a66bbf4ee",
+      "dedicated_run": 39235616621,
+      "dedicated_status": "SUCCESS",
+      "dedicated_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39235616621",
+      "unittest_count": 45,
+      "analytic_checks": 6,
+      "saved_h2_status": "INSUFFICIENT_LEVELS",
+      "artifact_id": 12179686319,
+      "artifact_zip_sha256": "d2189ce77cad292ee120a3296973918f0825ae50307bf6f5357aa7c1c2e0fac2",
+      "artifact_whole_readback": "MATCH",
+      "artifact": "ci/REC_R3N_CODE_CI_0e828e8e.zip",
+      "manifest": "ci/code_0e828e8e/MANIFEST.json",
+      "common_runs_first_attempt": {
+        "runs": [
+          39235616386,
+          39235620242
+        ],
+        "status": "FAILED_BEFORE_PYTEST",
+        "reason": "verbatim failed test log trailing space; losslessly compressed in follow-up",
+        "receipt": "receipts/CI_FORMAT_CORRECTION.json"
+      },
+      "common_ci_after_correction": "PENDING"
+    }
   },
   "manufactured_probes": {
     "result": "probes_004/result.json",
@@ -77,14 +100,23 @@
     "new_strong_no_go": false
   },
   "publication": {
-    "status": "PENDING_PUSH",
-    "intended_branch": "research/rec-r3n-convergence-diagnostics-20261019",
-    "base_head": "328f3723948979f74ae6c19474f45cb1882fb7b9"
+    "pr": 108,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/108",
+    "branch": "research/rec-r3n-convergence-diagnostics-20261019",
+    "initial_code_commit": "0e828e8ef7aa418a86b76f59c462457a66bbf4ee",
+    "status": "PUSHED_DRAFT_PR_OPEN_CI_IN_PROGRESS"
   },
   "files": {
     "HANDOFF_KO.md": "379a874637bc21d8160d068ddb46e25bfd93ef9dd7f5aa1bb04b47a46b680cf4",
-    "README_KO.md": "f90bd0320d2fec1caab600df59146b4b432fe158f30de2df17194f948aa51e41",
+    "README_KO.md": "74003725eaf64b2aef33cc1aa6ab605904ad4b593ce49b7b1fafcc8d85521f25",
     "THEORY_KO.md": "406f15a61cf03342520ca7943a7a1a092de4646253b77d22e3acb26a7670f191",
+    "ci/REC_R3N_CODE_CI_0e828e8e.zip": "d2189ce77cad292ee120a3296973918f0825ae50307bf6f5357aa7c1c2e0fac2",
+    "ci/code_0e828e8e/MANIFEST.json": "c55856575b291b130dda7af9add6f236bb80f9027d285028ef1a546965eb8a02",
+    "ci/code_0e828e8e/probes/result.json": "682086e48e8ba49ed88cce06c2d30332b161408db1963caa2e376cb4cffefde8",
+    "ci/code_0e828e8e/real_h2/execution.json": "f30e53772e8de249f49dd0daf81d69202f99bae2ddcdecd9f1cccf93184fef01",
+    "ci/code_0e828e8e/real_h2/result.json": "255282b227a81c3181d71f6eb126f95c92c6929322b5ced5881635a8aa26bb5a",
+    "ci/code_0e828e8e/tests.log": "cdebd5eaace2dec4ccb539c96ba6bd64ef8de5e1e0dea9e7048d546646a74956",
+    "ci/common_failure_39235616386.log.gz": "a378e9cfb97ba63e3c2c980a1e126f65674c3ded428705ed283e5a3bb5133461",
     "probes_004/R3N_NUMERICAL_PROBES.pdf": "93a2576d77d9d049c227748d7d7cd6bf46bcda2f1d94d122e1954c15591586d7",
     "probes_004/R3N_NUMERICAL_PROBES.png": "4850c4954963943868bd7a0c99ba4cdcf5d7ab6808a4ec55ec38340249566ee2",
     "probes_004/diagnostics.json": "81b5b354d9f727e89d4acb5ed29e262cd679291616f3fabad1bf092e15441518",
@@ -99,8 +131,9 @@
     "real_h2_trace_003/h2_state_trace.json": "69cee60842577f1bf7aea3fc761f203519a9457ad8a4b3176afe7ccf26dd2e18",
     "real_h2_trace_003/h2_state_trace.npz": "56c27b459b910a56a1b4c4b133a2fd0e6f759db1dca3050ea97663828a1b07c9",
     "real_h2_trace_003/result.json": "f98f622735cbdd55132fc7d6b21dba6e6d123b06ac64a361aea5633793ff0b97",
+    "receipts/CI_FORMAT_CORRECTION.json": "71e6c23bd741e77f1aa530e9eb029732ba20969efa6f404cf924c2f04c1e7f2d",
     "receipts/INTAKE.json": "d8b449ad9577899be424f85418c3fdbe080ba1989add27ca74d438cc7ced1db9",
-    "receipts/LOCAL_VALIDATION.json": "54ae1c9554795f6c4b6175f34e8747a48bfe4c67fbf9969f18f101d834f19ba2",
+    "receipts/LOCAL_VALIDATION.json": "e35ebf6159c6a5cb58e766e7e88db4a6f2a04f668e024dfd577c08312b60eb8c",
     "receipts/SOURCES.json": "2e6d9590955bff7ccd7fd6edf58e6ddc07fe7deeb6c14e4ef02899833458aaf4",
     "receipts/probes_002.log": "0e080a5fa68f1541d88b48fbc9915450fd5bfd61a7079c691fef457a86d0b8f4",
     "receipts/probes_003.log": "706af840875aa415980a64fa90c949a15cc757ea3d53587b74028fdfec6b7ddc",
@@ -110,7 +143,7 @@
     "receipts/tests_004.log": "5f18151fa030092a46840a644519f6bc4772ed7acaa4164f1dab03daae39e66e",
     "receipts/tests_005.log": "b0ab55fdb9bbf88924e8b873185267dcffda996cf52d32883da8be5c3e929201",
     "receipts/tests_006.log": "665b5b01bdccad3e225d56257862461dfa0b2b9579f3a63a8a93f527f10f146b",
-    "receipts/tests_007.log": "ca4051c5d5c742fac862dcb22d9970c05898560b08bede3f2741add0e38a85bb",
+    "receipts/tests_007.log.gz": "a6d58b3a95af1f3807c3681f874e5a1c03d0b81e54893ac655b32ee821de4684",
     "receipts/tests_008.log": "79aebd08d7564861658af7224b04f4623a884a47dcfdbd973b9bf7f70e74c842",
     "review/C9_CLOSURE_001.md": "148e7493c8296015c90fbc7b08e086656baacb9962f429b5e493114407e50225",
     "review/C9_CLOSURE_FINAL.md": "30cd5cbd3d57bc1cbc07c713125f94353879a3504e4aa052a2fb4f2d25342a83",

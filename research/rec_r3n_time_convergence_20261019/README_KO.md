@@ -63,3 +63,10 @@ z≈836.041…669.959의 h2 자료다. h/h4의 해당 독립 이력, h2의 낮�
 predictor memory, same-h 기준은 수정하지 않았다. U5 `HOLD_9_FAIL`/`HOLD_8_FAIL`,
 `CLOSED_HOLD_NOT_RESET`, REI=false를 유지한다. Bianchi/REI/CMB 예측이나 production
 speedup을 이 단위에서 승인하지 않는다.
+
+## 게시 후 공통 CI의 형식 교정
+
+전용 코드 CI는 첫 게시 SHA에서 45 tests/6 controls를 통과했다. 공통 CI는 이전 실패
+로그 `tests_007`의 원문 줄 끝 공백을 발견해 pytest 전에 중단했다. 원문을 손실 없는
+`receipts/tests_007.log.gz`로 보존하고 압축 해제 바이트 일치를 확인했다. 수치 코드나
+whitespace gate 정책은 수정하지 않았다. `receipts/CI_FORMAT_CORRECTION.json`을 참조한다.
