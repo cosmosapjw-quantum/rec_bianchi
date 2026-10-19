@@ -2,6 +2,14 @@
 
 ## 바로 쓸 코드
 
+게시: https://github.com/cosmosapjw-quantum/rec_bianchi/pull/108
+
+전용 CI가 실제 실행한 코드 SHA는 `0e828e8ef7aa418a86b76f59c462457a66bbf4ee`다.
+run `39235616621`에서 45 tests와 6 analytic controls가 통과했다. 수치 코드가 같은
+문서/증거 commit `3c8baceb204448e751565a7b4cf437e6c385f5da`의 공통 push/PR CI는
+각각 787 PASS, 4 SKIP, 14 subtests PASS다. 실행 장소는 GitHub Actions다.
+샌드박스에서도 45 tests를 실행했다. 위 수는 서로 중복되며 새 물리 실험 수가 아니다.
+
 작업 branch는 `research/rec-r3n-convergence-diagnostics-20261019`이며, 최종 HEAD와 CI는
 PR Conversation 최종 receipt가 기준이다. 시작 전에 백업의 더 새로운 결과와 GitHub를
 대조한다. PR107의 full U6 5210-step 같은-h 실행은 완료 노드로 재사용한다.

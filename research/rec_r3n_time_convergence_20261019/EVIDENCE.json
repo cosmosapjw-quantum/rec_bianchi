@@ -1,7 +1,7 @@
 {
   "schema": "rec.r3n.evidence.v1",
   "project": "rec_bianchi",
-  "status": "DEDICATED_CODE_CI_PASS_COMMON_WHITESPACE_CORRECTION_PENDING",
+  "status": "R3N_IMPLEMENTATION_VALIDATED_SCIENTIFIC_SCOPE_HELD",
   "base_head": "328f3723948979f74ae6c19474f45cb1882fb7b9",
   "branch": "research/rec-r3n-convergence-diagnostics-20261019",
   "workflow_skill": "physmath-research-loop 1.0.0 canonical requested skill",
@@ -43,7 +43,19 @@
         "reason": "verbatim failed test log trailing space; losslessly compressed in follow-up",
         "receipt": "receipts/CI_FORMAT_CORRECTION.json"
       },
-      "common_ci_after_correction": "PENDING"
+      "common_ci_after_correction": {
+        "status": "SUCCESS_PUSH_AND_PR",
+        "head_sha": "3c8baceb204448e751565a7b4cf437e6c385f5da",
+        "runs": [
+          39236237364,
+          39236244171
+        ],
+        "pytest_passed_per_run": 787,
+        "pytest_skipped_per_run": 4,
+        "subtests_passed_per_run": 14,
+        "receipt": "ci/COMMON_CI_RECEIPT.json",
+        "counts_overlap": "Each common run includes the 45 R3N tests; repeated jobs and subtests are not additional independent trajectory experiments."
+      }
     }
   },
   "manufactured_probes": {
@@ -104,12 +116,15 @@
     "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/108",
     "branch": "research/rec-r3n-convergence-diagnostics-20261019",
     "initial_code_commit": "0e828e8ef7aa418a86b76f59c462457a66bbf4ee",
-    "status": "PUSHED_DRAFT_PR_OPEN_CI_IN_PROGRESS"
+    "status": "PUBLISHED_REVIEWED_DRAFT_PR_CODE_CI_SUCCESS",
+    "last_verified_content_head": "3c8baceb204448e751565a7b4cf437e6c385f5da",
+    "final_head_location": "PR108 Conversation final archive receipt; final HEAD is not self-embedded in its own tree"
   },
   "files": {
-    "HANDOFF_KO.md": "379a874637bc21d8160d068ddb46e25bfd93ef9dd7f5aa1bb04b47a46b680cf4",
-    "README_KO.md": "74003725eaf64b2aef33cc1aa6ab605904ad4b593ce49b7b1fafcc8d85521f25",
+    "HANDOFF_KO.md": "70effd568e80ae9bfe88e63d0dd8401c001e6c56d1c09cda13d85fcb2024179f",
+    "README_KO.md": "f31f57b7a6e1d6bbf933ac2ad724cfdea3faefd7f44cffca76eed49cc985dd8d",
     "THEORY_KO.md": "406f15a61cf03342520ca7943a7a1a092de4646253b77d22e3acb26a7670f191",
+    "ci/COMMON_CI_RECEIPT.json": "f7ac8c8e365b8028beda8f386403e9f09a8679dce3254ca0a7d55359722b38be",
     "ci/REC_R3N_CODE_CI_0e828e8e.zip": "d2189ce77cad292ee120a3296973918f0825ae50307bf6f5357aa7c1c2e0fac2",
     "ci/code_0e828e8e/MANIFEST.json": "c55856575b291b130dda7af9add6f236bb80f9027d285028ef1a546965eb8a02",
     "ci/code_0e828e8e/probes/result.json": "682086e48e8ba49ed88cce06c2d30332b161408db1963caa2e376cb4cffefde8",
@@ -117,6 +132,8 @@
     "ci/code_0e828e8e/real_h2/result.json": "255282b227a81c3181d71f6eb126f95c92c6929322b5ced5881635a8aa26bb5a",
     "ci/code_0e828e8e/tests.log": "cdebd5eaace2dec4ccb539c96ba6bd64ef8de5e1e0dea9e7048d546646a74956",
     "ci/common_failure_39235616386.log.gz": "a378e9cfb97ba63e3c2c980a1e126f65674c3ded428705ed283e5a3bb5133461",
+    "ci/common_success_39236237364.log.gz": "f57c22603e00b1024a7f3d3141f9721a853917bc1fc104065c9768c6c4a6bcdb",
+    "ci/common_success_39236244171.log.gz": "8c612ca5b9166c71e6827b19a70ba686c4db43eaede19679865568c424eedc85",
     "probes_004/R3N_NUMERICAL_PROBES.pdf": "93a2576d77d9d049c227748d7d7cd6bf46bcda2f1d94d122e1954c15591586d7",
     "probes_004/R3N_NUMERICAL_PROBES.png": "4850c4954963943868bd7a0c99ba4cdcf5d7ab6808a4ec55ec38340249566ee2",
     "probes_004/diagnostics.json": "81b5b354d9f727e89d4acb5ed29e262cd679291616f3fabad1bf092e15441518",
@@ -149,5 +166,11 @@
     "review/C9_CLOSURE_FINAL.md": "30cd5cbd3d57bc1cbc07c713125f94353879a3504e4aa052a2fb4f2d25342a83",
     "review/C9_INITIAL.md": "217db9e15e579c5b1d612be1bcab0f5bcc467a99bf61589806fb6feac728f404",
     "review/R6_ORIGINAL_RESPONSE.md": "c8dc3bca7f105fb412b76fc311804533093a4044fa03279a3ca9106333623447"
+  },
+  "artifact_scope": "Restored R3M source capsule with 417 verified unchanged Git blobs plus all selected R3N code/evidence. Unrelated full repository content is retained by the Git API base tree; it is not replicated in this scoped ZIP.",
+  "closeout": {
+    "stage1_backup": "UPLOAD_ACKNOWLEDGED_ALL_THREE",
+    "final_archive_seal": "Published after this commit in the PR108 Conversation receipt; producer hash, provider ACK and whole remote readback are separate fields.",
+    "new_NCP_submission": false
   }
 }

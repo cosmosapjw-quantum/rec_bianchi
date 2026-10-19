@@ -70,3 +70,7 @@ speedup을 이 단위에서 승인하지 않는다.
 로그 `tests_007`의 원문 줄 끝 공백을 발견해 pytest 전에 중단했다. 원문을 손실 없는
 `receipts/tests_007.log.gz`로 보존하고 압축 해제 바이트 일치를 확인했다. 수치 코드나
 whitespace gate 정책은 수정하지 않았다. `receipts/CI_FORMAT_CORRECTION.json`을 참조한다.
+
+공통 CI 재검증도 성공했다: `3c8baceb`의 push/PR run은 각각 787 PASS, 4 SKIP,
+14 subtests PASS다. 전용 CI의 45개 테스트를 포함한 수다. 최종 문서 HEAD와 보존
+ZIP의 생산자 SHA 및 저장소별 전체 회수 검사는 PR108 Conversation receipt에 기록한다.

@@ -92,10 +92,12 @@
     },
     {
       "id": "R10",
-      "status": "in_progress",
+      "status": "complete",
       "evidence_refs": [
+        "EVIDENCE.json",
         "BACKUP_ACKS.json",
-        "HANDOFF_KO.md"
+        "HANDOFF_KO.md",
+        "ci/COMMON_CI_RECEIPT.json"
       ],
       "reason": "bounded predictor/convergence-diagnostic unit; no global physical convergence admission"
     }
@@ -177,10 +179,12 @@
     },
     {
       "id": "C10",
-      "status": "in_progress",
+      "status": "complete",
       "evidence_refs": [
+        "EVIDENCE.json",
         "BACKUP_ACKS.json",
-        "HANDOFF_KO.md"
+        "HANDOFF_KO.md",
+        "ci/COMMON_CI_RECEIPT.json"
       ]
     }
   ],
@@ -217,11 +221,11 @@
     },
     {
       "id": "N4_PUBLISH_CI_BACKUP",
-      "status": "pushed_PR108_dedicated_CI_success_common_format_fix_pending",
+      "status": "complete_code_published_CI_pass_stage1_backup_ack",
       "evidence": [
         "EVIDENCE.json",
         "BACKUP_ACKS.json",
-        "receipts/CI_FORMAT_CORRECTION.json"
+        "ci/COMMON_CI_RECEIPT.json"
       ]
     }
   ],
@@ -243,5 +247,7 @@
       "status": "not_admitted"
     }
   ],
-  "progress_updated_utc": "2026-10-19T10:15:15.304993+00:00"
+  "progress_updated_utc": "2026-10-19T10:23:15.354973+00:00",
+  "unit_status": "R1_R10_AND_C1_C10_COMPLETE_FOR_R3N_DIAGNOSTIC_UNIT",
+  "archive_seal": "Resolve the final immutable archive identity and readbacks from the external PR108 Conversation receipt, produced after this commit."
 }
