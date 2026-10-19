@@ -136,6 +136,11 @@ h2 `HOLD_8_FAIL`, 닫힌 과거 비용, `REI_activation=false`를 유지한다.
 
 ## vigilode/Rust 확장
 
-추가 요청의 백업 전체 intake가 끝난 뒤 실제 고정 커밋의 코드를 조사해
-별도 확장 기록으로 연결한다. 이 문서의 원본 predictor, atomic/thermal
-연산자 및 같은-h 수용 기준을 자동 교체하는 근거로 사용하지 않는다.
+추가 요청의 백업 전체 intake를 마친 뒤 실제 고정 커밋의 코드를 조사해
+`VIGILODE_REUSE_KO.md`에 연결했다. Rust가 원본 predictor를 소유하는
+경로와, 명시적 시각을 가진 RODAS5P 진단을 실제 구현·제한 실행했다.
+전자는 원본 C 상태·메모리의 102개 비트 비교가 일치했다. 후자는
+원본 predictor에 대한 xe 차이가 기존 같은-h 허용값의 최대 2.53배다.
+이 차이는 방법 비교 기록이며 연속 해 정확도의 순위나 production
+대체 승인으로 해석하지 않는다. 본문의 원본 predictor, atomic/thermal
+연산자 및 같은-h 수용 기준은 유지한다.

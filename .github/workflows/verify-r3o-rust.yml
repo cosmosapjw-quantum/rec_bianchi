@@ -1,0 +1,64 @@
+name: verify-r3o-rust
+
+on:
+  push:
+    paths:
+      - 'rust/**'
+      - 'scripts/build_r3o_rust.py'
+      - 'scripts/verify_r3o_rust.py'
+      - 'scripts/c_harness/original_hyrec_r3o_rust_bridge.c'
+      - 'scripts/c_harness/original_hyrec_r3o_lowz_harness.c'
+      - 'tests/trajectory/test_r3o_rust.py'
+      - '.github/workflows/verify-r3o-rust.yml'
+  pull_request:
+    paths:
+      - 'rust/**'
+      - 'scripts/build_r3o_rust.py'
+      - 'scripts/verify_r3o_rust.py'
+      - 'scripts/c_harness/original_hyrec_r3o_rust_bridge.c'
+      - 'scripts/c_harness/original_hyrec_r3o_lowz_harness.c'
+      - 'tests/trajectory/test_r3o_rust.py'
+      - '.github/workflows/verify-r3o-rust.yml'
+  workflow_dispatch:
+
+jobs:
+  bounded-rust-original-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      RUSTUP_TOOLCHAIN: '1.94.1'
+      CARGO_BUILD_JOBS: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      RAYON_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install the pinned Rust toolchain and Python test dependencies
+        run: |
+          rustup toolchain install 1.94.1 --profile minimal
+          python -m pip install -e '.[test]'
+      - name: Build the pinned VigilODE source and original C operator
+        run: python scripts/build_r3o_rust.py --output r3o-ci/build
+      - name: Compare 16 h2 steps, the VigilODE diagnostic, and rejection controls
+        run: >-
+          python scripts/verify_r3o_rust.py
+          --build r3o-ci/build/build.json
+          --boundary-packet rust/rec-hyrec-vigilode/fixtures/r3m_u6_boundary.json
+          --steps 16 --output r3o-ci/numerical
+      - name: Preserve bounded evidence, including failed attempts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3o-rust-${{ github.sha }}-${{ github.run_id }}
+          if-no-files-found: error
+          path: |
+            r3o-ci/build/build.json
+            r3o-ci/build/source_manifest.json
+            r3o-ci/build/*.execution.json
+            r3o-ci/build/*.log
+            r3o-ci/build/exception.txt
+            r3o-ci/numerical/**
