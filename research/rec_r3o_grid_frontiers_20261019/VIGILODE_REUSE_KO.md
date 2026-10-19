@@ -132,7 +132,7 @@ NPZ/CSV/receipt 해시를 보존한다. 부모가 전체 원본 결과를 독립
 Rust 독립 C9 감사에서 세 P2 수정과 제한된 수치 근거의 검토가 끝났다.
 초기 GitHub Cargo 빌드는 배포 아카이브에서 원본 integrators/build.rs가
 빠져 수치 실행 전에 실패했다. 원본 바이트를 추가한 v2 패키지의
-새 소스 빌드 검증은 아직 대기 상태다. 실행 코드와 이후 build-wrapper
+수정된 소스는 4512b19e의 실제 GitHub 새 Cargo 빌드와 16-step 검증을 통과했다. 실행 코드와 이후 build-wrapper
 수정의 관계는 `EVIDENCE.json`에 구분한다. 새 Cargo 경로는 검토된
 Cargo.lock을 그대로 사용하며 build 중 lockfile을 다시 생성하지 않는다.
 
@@ -151,3 +151,28 @@ v2 아카이브는 731,431 bytes, SHA256
 보정된 16개 계약 검사는 1.766172 CPU초, 물리 step 0으로 통과했다.
 부모가 추가로 CLI를 2–32 step으로 한정해 1-attempt 실패 검사의 전제를
 명시했다. 기본 16 step은 같으며 별도 parser 거절 검사가 통과했다.
+
+## 재개 후 새 실행과 최신 upstream 검토
+
+`receipts/RUST_CI.json`은 GitHub push 코드 4512b19e의 새 Cargo 빌드와
+17개 전용 계약 검사, 실제 16-step을 기록한다. Build153.660120 CPU초,
+수치·제어1.743074 CPU초이며 원격 artifact의 전체 SHA가 일치했다.
+같은 코드의 일반 CI는836PASS/20SKIP/72subtestsPASS다.20skip 중16개
+Rust 계약 검사는 위 전용 환경에서 실제 통과했으며 나머지4개는 상속됐다.
+
+중단 후 최신 tip b56bb19와 PR71의64b98521을 다시 읽었다. 새 tip의
+ShiftedOperator nonfinite 오류전파 수정은 실제 중요한 수정이다. 그러나
+현행 R3O fast factor는 I/(h gamma)-J를 자체 버퍼에 구성하고
+InPlaceZeroSkipping으로 풀며 ShiftedOperator를 호출하지 않는다.
+별도 faer probe도 DenseMatrix.sub의 오류를 직접 전파한다. 이것은
+해당 소스 경로의 정적 판단이며 새 tip 전체를 실행한 결과가 아니다.
+현재 수치 pin은 a21d573으로 유지하고, 미래 shifted/matrix-free 경로에는
+그 수정을 요구한다. 새 triage smoke의 PROMOTE/PRUNE 분류는 잠정적인
+계측 파이프라인 확인이며 HyRec 생산 승인으로 옮기지 않는다.
+
+PR71의 달성오차 정합 비교·보존된 초기 비트 FAIL·전체 상태 읽기 검산을
+읽었다. core Cargo/crates tree는 a21과 같은 것을 직접 대조했다.
+Robertson/HIRES/van der Pol과 공간 Brusselator의 비용 순위가 다르며
+공유 호스트라는 제약이 있다. 관련 원문, HE29 합성검사와 REI C11
+실제 NCP 반환은 receipts/RESUME_INTAKE.json에 소유 프로젝트별로
+기록했다. REC checkpoint와 연구 완료 수에는 합산하지 않았다.

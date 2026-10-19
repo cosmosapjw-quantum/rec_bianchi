@@ -1,0 +1,95 @@
+{
+  "schema": "he29.continuation.dag.v4",
+  "date": "2026-10-19",
+  "execution_commit": "1569f3718cd4b17a16936ad3d72bc7d5ed9b0f4f",
+  "code_prompt_snapshot_commit": "961ca736af53f18e6527f876524c67e22aa89fe0",
+  "pull_request": 78,
+  "stages": {
+    "S0_INTAKE": "REFRESHED_NO_NEW_RETURN_OBSERVED",
+    "S1_BOUND_SCIENCE": "REUSED_90_CASES_720_BOUNDS_NO_RERUN",
+    "S2_SOURCE": "PUBLISHED",
+    "CORE_TESTS": "REUSED_PREVIOUS_47_PASS_NO_RERUN",
+    "INPUT_RESTORATION_TESTS": "REUSED_PREVIOUS_3_PASS_NO_RERUN",
+    "TOTAL_TESTS": "REUSED_PREVIOUS_50_PASS_NO_RERUN",
+    "NATIVE_REFERENCES": "LAST_KNOWN_NOT_RUN_0_OF_4_NO_NEW_RETURN",
+    "FINAL_BACKUP": "DRIVE_FULL_BYTE_RESTORE_DROPBOX_UPLOAD_CONTENT_HASH_MATCH",
+    "HANDOFFS": "UPDATED_FOUR_CASES_GIT_FIRST_WITH_PINNED_REUSE_OVERLAY",
+    "EXECUTION_REUSE_OVERLAY": "PREPARED_BOUNDARY_CHECKS_COMPLETE",
+    "NCP_DISPATCH": "BLOCKED_REMOTE_PROVIDER_MONTHLY_QUOTA",
+    "CONTINUATION_PUBLICATION": "PUBLISHED_2f17a031_9_FILE_READBACK_MATCH",
+    "CONTINUATION_BACKUP": "DRIVE_UPLOAD_METADATA_CONFIRMED_DROPBOX_UPLOAD_CONTENT_HASH_MATCH_RAW_READBACK_NOT_VERIFIED",
+    "VIGILODE_R2": "PUBLISHED_7_OF_7_READBACK_DUAL_RAW_BACKUP_MATCH",
+    "VIGILODE_C6": "NEW_PYTHON_96_PASS_RUST_SMOKE_3_PASS",
+    "VIGILODE_CANARY": "NOT_RUN_BASELINE_4_OF_4_REQUIRED",
+    "VIGILODE_PUBLICATION": "PUBLISHED_5764225_54_FILE_READBACK_MATCH",
+    "VIGILODE_BACKUP": "DUAL_RAW_READBACK_229_OF_229_PAYLOAD_HASHES_MATCH"
+  },
+  "native_calls": 0,
+  "physical_changes": false,
+  "next": "Inspect new native returns/processes using an available authorized NCP executor. Finish only the four original Radau+DOP853 pairs. After all four are admitted, the optional pinned VigilODE r4/table512 canary is available; no duplicate transport or old source suite.",
+  "input_backup": {
+    "original_sha256": "a70d320c7ead5f1fd93170c18f1f80ae5eb58a293a6045a0f728bb7ae2743205",
+    "drive_id": "1I31wE6A3laYE6nxMcKNmm5rNMeESIsXi",
+    "dropbox_id": "id:BSpOijBcT10AAAAAAD_Ncg"
+  },
+  "final_backup": {
+    "archive_sha256": "c47c5efcfcd668203cbd6082d25e128c7ea8a08291f3a039a4a52674f0530a28",
+    "drive_id": "16z5ApkTBP30elscQJy_LYLdRLIYnS8Le",
+    "dropbox_id": "id:BSpOijBcT10AAAAAAD_Ntw",
+    "delivery_receipt": "results/publication_retry/DELIVERY.json"
+  },
+  "intake_publication_commit": "3f16fe525d726aaebbe9262e0e869540321209eb",
+  "observation_utc": "2026-10-19T11:54:39.788649+00:00",
+  "new_activity": {
+    "native_calls": 0,
+    "inherited_tests_run": 0,
+    "he28_transport_runs": 0,
+    "new_native_returns_observed": 0,
+    "expected_reference_pairs": 4,
+    "new_scientific_results": 0,
+    "new_boundary_patch_checks": "results/continuation_20261019/OVERLAY_CHECKS.json",
+    "new_rust_bridge_compile": true,
+    "new_rust_synthetic_smokes": 3,
+    "new_python_extension_tests": 96,
+    "he29_native_calls": 0
+  },
+  "execution_visibility": {
+    "ncp_workspace": "UNOBSERVED",
+    "reason": "Remote Desktop Commander monthly usage limit; no retry/reconnect",
+    "submitted": false,
+    "started": false,
+    "absence_claim": "No new return found on inspected GitHub and backup surfaces; unreported NCP execution is not excluded."
+  },
+  "execution_overlay": {
+    "path": "ncp/REUSE_SOURCE_VALIDATION_20261019.patch",
+    "sha256": "cd0b7ab40688b3c60ab689876690b2edd71aea5268b4e7ff285a637ca094a33e",
+    "applies_to_execution_revision": "1569f3718cd4b17a16936ad3d72bc7d5ed9b0f4f",
+    "original_bootstrap_git_blob": "ed227e2937f554bd5ecda4bf24dd5597b73a77a4",
+    "patched_bootstrap_sha256": "11d0ad0125f40a2890dac82e5103f13d17e6066f41440eabb06c7a8b1f319bc2",
+    "scientific_and_test_source_files_changed": 0
+  },
+  "continuation_receipt": "results/continuation_20261019/DELIVERY.json",
+  "continuation_publication_commit": "2f17a0313fea3fd4d109b0e1f8b88a8d812af447",
+  "continuation_backup": {
+    "archive_sha256": "242201a11e93f1df71deb20324c7af8ff5ec1df49172fdfb1efd256e8e724664",
+    "drive_id": "1bi5SSnupj1aKrXq_VRzLpRe2zfX6nbwj",
+    "dropbox_id": "id:BSpOijBcT10AAAAAAD_Q0Q",
+    "delivery_receipt": "results/continuation_20261019/DELIVERY.json"
+  },
+  "vigilode_extension": {
+    "path": "vigilode_20261019",
+    "source_revision": "a21d573980f66fe02891bd216153443b5352f921",
+    "implementation": "COMPILED_AND_SCOPED_CHECKS_PASS",
+    "new_python_test_methods": 96,
+    "new_rust_smokes": 3,
+    "baseline_pairs_created": 0,
+    "canary": "NOT_RUN_REQUIRES_FOUR_ADMITTED_BASELINE_PAIRS",
+    "r2_publication_commit": "c0dc26736bea18bcaa8d0a6241daed2b5a1ea7f9",
+    "implementation_publication": "PUBLISHED_54_OF_54_READBACK_MATCH",
+    "backup_receipt": "vigilode_20261019/DELIVERY.json",
+    "code_publication_commit": "57642252991b5c453db66eb5a078e6a62cc6f4ea",
+    "complete_backup_sha256": "7bf7398b77b2bf04a6917bef4241fc216764c7658ebf25c85e5df7377fb6147a",
+    "complete_backup_status": "BOTH_PROVIDERS_RAW_AND_229_PAYLOAD_HASHES_MATCH"
+  },
+  "last_delivery_update_utc": "2026-10-19T13:41:26.787076+00:00"
+}

@@ -1,0 +1,658 @@
+{
+  "command": [
+    "/home/runner/work/rec_bianchi/rec_bianchi/r3o-ci/build/target/release/rec-hyrec-vigilode",
+    "--input",
+    "/home/runner/work/rec_bianchi/rec_bianchi/r3o-ci/numerical/request.json",
+    "--output",
+    "/home/runner/work/rec_bianchi/rec_bianchi/r3o-ci/numerical/partial.json",
+    "--mode",
+    "diagnostic",
+    "--max-attempts",
+    "1"
+  ],
+  "diagnostic": {
+    "accepted_steps": 1,
+    "algorithm": "integrate_rodas5p_fast_observed",
+    "attempts": 1,
+    "autonomous": false,
+    "callbacks": {
+      "evaluations_attempted": 15,
+      "failed_callbacks": [],
+      "last_callback": {
+        "error": null,
+        "ordinal": 15,
+        "physical_state": [
+          0.0013281105157509029,
+          1822.4458942845088
+        ],
+        "physical_state_bits": [
+          "3f55c27fcec28a6a",
+          "409c79c89882e5c1"
+        ],
+        "tau": 0.00004245
+      },
+      "source_work": {
+        "accepted_steps": 0,
+        "block_linear_iterations": 0,
+        "block_linear_solves": 0,
+        "block_matvecs": 0,
+        "block_preconditioner_apps": 0,
+        "diagnostic_matvecs": 0,
+        "direct_factorizations": 0,
+        "direct_solve_calls": 0,
+        "fallback_steps": 0,
+        "fast_accepts": 0,
+        "fast_attempts": 0,
+        "forced_stage_solves": 0,
+        "ft_calls": 1,
+        "harmonic_ritz_solves": 0,
+        "jacobian_builds": 1,
+        "jvp_calls": 0,
+        "jvp_vectors": 0,
+        "linear_iterations": 0,
+        "linear_matvecs": 0,
+        "linear_solve_failures": 0,
+        "linear_solves": 0,
+        "local_error_failures": 0,
+        "mass_matvecs": 0,
+        "nonfinite_step_failures": 0,
+        "nonlinear_failures": 0,
+        "nonlinear_iterations": 0,
+        "nonlinear_jacobian_evaluations": 0,
+        "nonlinear_residual_evaluations": 0,
+        "nonlinear_solve_failures": 0,
+        "nonlinear_solves": 0,
+        "orthogonalization_inner_products": 0,
+        "orthogonalization_vector_updates": 0,
+        "phi_actions": 0,
+        "phi_dense_oracle_calls": 0,
+        "phi_krylov_vectors": 0,
+        "phi_projected_exponentials": 0,
+        "phi_restarts": 0,
+        "preconditioner_apps": 0,
+        "recycle_cross_operator_refreshes": 0,
+        "recycle_dropped_vectors": 0,
+        "recycle_projection_calls": 0,
+        "recycle_refresh_matvecs": 0,
+        "recycle_same_operator_uses": 0,
+        "recycle_updates": 0,
+        "recycle_vectors_selected": 0,
+        "rejected_steps": 0,
+        "rhs_batch_calls": 0,
+        "rhs_calls": 15,
+        "rhs_evaluations": 15
+      }
+    },
+    "classification": "EXPLORATORY_METHOD_COMPARISON",
+    "comparisons_with_python_fixed_h2": [
+      {
+        "admission_test": false,
+        "scaled_state_residual": [
+          0.000014855319325599446,
+          4.99030082988058e-7
+        ],
+        "tau": 0.0,
+        "wrms": 0.000010510222245253796
+      },
+      {
+        "admission_test": false,
+        "scaled_state_residual": [
+          1.2475523693927433,
+          0.0009247427798385533
+        ],
+        "tau": 0.00004245,
+        "wrms": 0.8821529826301832
+      }
+    ],
+    "config": {
+      "atol": 1e-12,
+      "controller": "integral",
+      "initial_step": 0.00004245,
+      "max_attempts": 1,
+      "max_factor": 5.0,
+      "max_step": 0.0000849,
+      "max_step_policy": "allow-clock-resolution-slack",
+      "min_factor": 0.2,
+      "min_step": 1e-12,
+      "reject_max_factor": 0.9,
+      "rtol": 1e-9,
+      "safety": 0.9
+    },
+    "dense_interpolation": false,
+    "driver": "rodas5p-fast-transformed-v2",
+    "internal_steps": 1,
+    "jacobian_reuses": 0,
+    "last_committed_output": {
+      "state": [
+        0.0013281105157509029,
+        1822.445894284509
+      ],
+      "tau": 0.00004245
+    },
+    "last_internal_accepted_state_exposed_by_api": false,
+    "lu_backend": "InPlaceZeroSkipping",
+    "message": "maximum step count or minimum step reached",
+    "model": "EMLA2s2p",
+    "normalized_states": [
+      [
+        1.0,
+        1.0
+      ],
+      [
+        0.9998492978004833,
+        0.9999567057325269
+      ]
+    ],
+    "normalizers": [
+      0.0013283106950942951,
+      1822.5247991606402
+    ],
+    "physical_atol": [
+      1.328310695094295e-15,
+      1.82252479916064e-9
+    ],
+    "physical_rtol": 1e-9,
+    "physical_states": [
+      [
+        0.0013283106950942951,
+        1822.5247991606402
+      ],
+      [
+        0.0013281105157509029,
+        1822.445894284509
+      ]
+    ],
+    "probes": {
+      "analytic_2x2_solution": [
+        -3.5497403960342333,
+        -1.0075989032269108
+      ],
+      "faer_0_24_4_linear_residual": 1.2507140131633662e-16,
+      "faer_solution": [
+        -3.5497403960342333,
+        -1.0075989032269108
+      ],
+      "faer_vs_analytic_2x2": 0.0,
+      "initial_fixed_and_continuous_rhs_byte_identity": true,
+      "jacobian_normalized": [
+        -7.101394513814022,
+        2.922207099069547,
+        0.9788889792448187,
+        -291.255964204052
+      ],
+      "matrix_I_minus_hJ": [
+        1.0003014541971114,
+        -0.00012404769135550227,
+        -0.000041553837168942554,
+        1.012363815680462
+      ],
+      "partial_t_half_delta": [
+        4.8502311988940505,
+        -292.6059917918167
+      ],
+      "partial_t_normalized": [
+        4.850231853925635,
+        -292.60598506164473
+      ],
+      "partial_t_relative_consistency": 1.3505160253291377e-7,
+      "source_callbacks": {
+        "evaluations_attempted": 10,
+        "failed_callbacks": [],
+        "last_callback": {
+          "error": null,
+          "ordinal": 10,
+          "physical_state": [
+            0.0013283106950942951,
+            1822.5247991606402
+          ],
+          "physical_state_bits": [
+            "3f55c356bfa38ba6",
+            "409c7a1964f37fac"
+          ],
+          "tau": 1e-7
+        },
+        "source_work": {
+          "accepted_steps": 0,
+          "block_linear_iterations": 0,
+          "block_linear_solves": 0,
+          "block_matvecs": 0,
+          "block_preconditioner_apps": 0,
+          "diagnostic_matvecs": 0,
+          "direct_factorizations": 0,
+          "direct_solve_calls": 0,
+          "fallback_steps": 0,
+          "fast_accepts": 0,
+          "fast_attempts": 0,
+          "forced_stage_solves": 0,
+          "ft_calls": 1,
+          "harmonic_ritz_solves": 0,
+          "jacobian_builds": 1,
+          "jvp_calls": 0,
+          "jvp_vectors": 0,
+          "linear_iterations": 0,
+          "linear_matvecs": 0,
+          "linear_solve_failures": 0,
+          "linear_solves": 0,
+          "local_error_failures": 0,
+          "mass_matvecs": 0,
+          "nonfinite_step_failures": 0,
+          "nonlinear_failures": 0,
+          "nonlinear_iterations": 0,
+          "nonlinear_jacobian_evaluations": 0,
+          "nonlinear_residual_evaluations": 0,
+          "nonlinear_solve_failures": 0,
+          "nonlinear_solves": 0,
+          "orthogonalization_inner_products": 0,
+          "orthogonalization_vector_updates": 0,
+          "phi_actions": 0,
+          "phi_dense_oracle_calls": 0,
+          "phi_krylov_vectors": 0,
+          "phi_projected_exponentials": 0,
+          "phi_restarts": 0,
+          "preconditioner_apps": 0,
+          "recycle_cross_operator_refreshes": 0,
+          "recycle_dropped_vectors": 0,
+          "recycle_projection_calls": 0,
+          "recycle_refresh_matvecs": 0,
+          "recycle_same_operator_uses": 0,
+          "recycle_updates": 0,
+          "recycle_vectors_selected": 0,
+          "rejected_steps": 0,
+          "rhs_batch_calls": 0,
+          "rhs_calls": 10,
+          "rhs_evaluations": 10
+        }
+      },
+      "success": true,
+      "thermal_coefficients_Tr_A_lambda_Teq": [
+        1828.700090505538,
+        289.25596420189373,
+        291.25596420189373,
+        1816.1427504660535
+      ],
+      "thermal_jacobian_relative": 7.410278366797428e-12
+    },
+    "production_admission": false,
+    "rejected_steps": 0,
+    "requested_times": [
+      0.0,
+      0.00004245,
+      0.0000849,
+      0.00012735,
+      0.0001698,
+      0.00021225,
+      0.0002547,
+      0.00029715000000000004,
+      0.0003396,
+      0.00038205,
+      0.0004245,
+      0.00046695000000000005,
+      0.0005094,
+      0.00055185,
+      0.0005943000000000001,
+      0.0006367500000000001,
+      0.0006792
+    ],
+    "same_algorithm_parity": false,
+    "status": "PARTIAL_BOUNDED_FAILURE",
+    "success": false,
+    "time": "tau = ln(a/a_native_U6_boundary)",
+    "times": [
+      0.0,
+      0.00004245
+    ],
+    "work": {
+      "accepted_steps": 1,
+      "block_linear_iterations": 0,
+      "block_linear_solves": 0,
+      "block_matvecs": 0,
+      "block_preconditioner_apps": 0,
+      "diagnostic_matvecs": 0,
+      "direct_factorizations": 1,
+      "direct_solve_calls": 8,
+      "fallback_steps": 0,
+      "fast_accepts": 0,
+      "fast_attempts": 0,
+      "forced_stage_solves": 0,
+      "ft_calls": 1,
+      "harmonic_ritz_solves": 0,
+      "jacobian_builds": 1,
+      "jvp_calls": 0,
+      "jvp_vectors": 0,
+      "linear_iterations": 0,
+      "linear_matvecs": 0,
+      "linear_solve_failures": 0,
+      "linear_solves": 8,
+      "local_error_failures": 0,
+      "mass_matvecs": 0,
+      "nonfinite_step_failures": 0,
+      "nonlinear_failures": 0,
+      "nonlinear_iterations": 0,
+      "nonlinear_jacobian_evaluations": 0,
+      "nonlinear_residual_evaluations": 0,
+      "nonlinear_solve_failures": 0,
+      "nonlinear_solves": 0,
+      "orthogonalization_inner_products": 0,
+      "orthogonalization_vector_updates": 0,
+      "phi_actions": 0,
+      "phi_dense_oracle_calls": 0,
+      "phi_krylov_vectors": 0,
+      "phi_projected_exponentials": 0,
+      "phi_restarts": 0,
+      "preconditioner_apps": 0,
+      "recycle_cross_operator_refreshes": 0,
+      "recycle_dropped_vectors": 0,
+      "recycle_projection_calls": 0,
+      "recycle_refresh_matvecs": 0,
+      "recycle_same_operator_uses": 0,
+      "recycle_updates": 0,
+      "recycle_vectors_selected": 0,
+      "rejected_steps": 0,
+      "rhs_batch_calls": 0,
+      "rhs_calls": 8,
+      "rhs_evaluations": 8
+    }
+  },
+  "end_iz": 211716,
+  "exit_code": 3,
+  "full_153327_steps": "NOT_RUN",
+  "global_convergence": "NOT_RUN",
+  "h2": 0.00004245,
+  "historical_status": {
+    "REI_activation": false,
+    "budget": "CLOSED_HOLD_NOT_RESET",
+    "u5_h2": "HOLD_8_FAIL",
+    "u5_original_h": "HOLD_9_FAIL"
+  },
+  "input": {
+    "end_iz": 211716,
+    "h2": 0.00004245,
+    "input_hashes": {
+      "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+      "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+      "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+    },
+    "native": {
+      "Tm_K": 1822.5247991606402,
+      "hydrogen_prev": -0.0047187188703039715,
+      "hydrogen_prev2": -0.004720248092215677,
+      "iz": 58389,
+      "peebles_event_iz": null,
+      "peebles_event_reason": null,
+      "thermal_prev": -1858.8849741073457,
+      "thermal_prev2": -1858.9602053747897,
+      "xe": 0.0013283106950942951
+    },
+    "python_rhs": [
+      [
+        -0.004716413511094509,
+        -1858.8097461252908
+      ],
+      [
+        -0.004714886708281364,
+        -1858.7344660579308
+      ],
+      [
+        -0.004713360616287136,
+        -1858.6591901907314
+      ],
+      [
+        -0.0047118351761785545,
+        -1858.5839295848596
+      ],
+      [
+        -0.004710310446173788,
+        -1858.508672791304
+      ],
+      [
+        -0.0047087864258557755,
+        -1858.433419804207
+      ],
+      [
+        -0.004707263114803002,
+        -1858.3581706531331
+      ],
+      [
+        -0.004705740512598907,
+        -1858.282925330487
+      ],
+      [
+        -0.004704218618827204,
+        -1858.2076838292824
+      ],
+      [
+        -0.004702697433071935,
+        -1858.1324461422043
+      ],
+      [
+        -0.0047011769549174295,
+        -1858.0572122624776
+      ],
+      [
+        -0.004699657183948246,
+        -1857.9819821832702
+      ],
+      [
+        -0.004698138119749259,
+        -1857.9067558976883
+      ],
+      [
+        -0.004696619761905643,
+        -1857.8315333992434
+      ],
+      [
+        -0.004695102110002814,
+        -1857.7563146812572
+      ],
+      [
+        -0.0046935851636265135,
+        -1857.6810997371883
+      ]
+    ],
+    "python_states": [
+      {
+        "Tm_K": 1822.5247991606407,
+        "hydrogen_prev": -0.004718718870304542,
+        "hydrogen_prev2": -0.0047202480922162405,
+        "iz": 58389,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.8849741073457,
+        "thermal_prev2": -1858.9602053747235,
+        "xe": 0.0013283106950943938
+      },
+      {
+        "Tm_K": 1822.4458942836663,
+        "hydrogen_prev": -0.004716413511094509,
+        "hydrogen_prev2": -0.004718718870304542,
+        "iz": 58390,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.8097461252908,
+        "thermal_prev2": -1858.8849741073457,
+        "xe": 0.00132811052403534
+      },
+      {
+        "Tm_K": 1822.3669926028488,
+        "hydrogen_prev": -0.004714886708281364,
+        "hydrogen_prev2": -0.004716413511094509,
+        "iz": 58391,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.7344660579308,
+        "thermal_prev2": -1858.8097461252908,
+        "xe": 0.001327910417763393
+      },
+      {
+        "Tm_K": 1822.2880941180001,
+        "hydrogen_prev": -0.004713360616287136,
+        "hydrogen_prev2": -0.004714886708281364,
+        "iz": 58392,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.6591901907314,
+        "thermal_prev2": -1858.7344660579308,
+        "xe": 0.0013277103680040777
+      },
+      {
+        "Tm_K": 1822.2091988277575,
+        "hydrogen_prev": -0.0047118351761785545,
+        "hydrogen_prev2": -0.004713360616287136,
+        "iz": 58393,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.5839295848596,
+        "thermal_prev2": -1858.6591901907314,
+        "xe": 0.0013275103829852334
+      },
+      {
+        "Tm_K": 1822.1303067319634,
+        "hydrogen_prev": -0.004710310446173788,
+        "hydrogen_prev2": -0.0047118351761785545,
+        "iz": 58394,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.508672791304,
+        "thermal_prev2": -1858.5839295848596,
+        "xe": 0.0013273104626767237
+      },
+      {
+        "Tm_K": 1822.0514178305777,
+        "hydrogen_prev": -0.0047087864258557755,
+        "hydrogen_prev2": -0.004710310446173788,
+        "iz": 58395,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.433419804207,
+        "thermal_prev2": -1858.508672791304,
+        "xe": 0.001327110607047809
+      },
+      {
+        "Tm_K": 1821.9725321234375,
+        "hydrogen_prev": -0.004707263114803002,
+        "hydrogen_prev2": -0.0047087864258557755,
+        "iz": 58396,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.3581706531331,
+        "thermal_prev2": -1858.433419804207,
+        "xe": 0.0013269108160683897
+      },
+      {
+        "Tm_K": 1821.89364961038,
+        "hydrogen_prev": -0.004705740512598907,
+        "hydrogen_prev2": -0.004707263114803002,
+        "iz": 58397,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.282925330487,
+        "thermal_prev2": -1858.3581706531331,
+        "xe": 0.0013267110897083843
+      },
+      {
+        "Tm_K": 1821.814770291243,
+        "hydrogen_prev": -0.004704218618827204,
+        "hydrogen_prev2": -0.004705740512598907,
+        "iz": 58398,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.2076838292824,
+        "thermal_prev2": -1858.282925330487,
+        "xe": 0.0013265114279377287
+      },
+      {
+        "Tm_K": 1821.7358941658645,
+        "hydrogen_prev": -0.004702697433071935,
+        "hydrogen_prev2": -0.004704218618827204,
+        "iz": 58399,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.1324461422043,
+        "thermal_prev2": -1858.2076838292824,
+        "xe": 0.0013263118307263763
+      },
+      {
+        "Tm_K": 1821.6570212340835,
+        "hydrogen_prev": -0.0047011769549174295,
+        "hydrogen_prev2": -0.004702697433071935,
+        "iz": 58400,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1858.0572122624776,
+        "thermal_prev2": -1858.1324461422043,
+        "xe": 0.0013261122980442984
+      },
+      {
+        "Tm_K": 1821.5781514957384,
+        "hydrogen_prev": -0.004699657183948246,
+        "hydrogen_prev2": -0.0047011769549174295,
+        "iz": 58401,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1857.9819821832702,
+        "thermal_prev2": -1858.0572122624776,
+        "xe": 0.0013259128298614836
+      },
+      {
+        "Tm_K": 1821.4992849506687,
+        "hydrogen_prev": -0.004698138119749259,
+        "hydrogen_prev2": -0.004699657183948246,
+        "iz": 58402,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1857.9067558976883,
+        "thermal_prev2": -1857.9819821832702,
+        "xe": 0.0013257134261479384
+      },
+      {
+        "Tm_K": 1821.4204215987136,
+        "hydrogen_prev": -0.004696619761905643,
+        "hydrogen_prev2": -0.004698138119749259,
+        "iz": 58403,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1857.8315333992434,
+        "thermal_prev2": -1857.9067558976883,
+        "xe": 0.001325514086873687
+      },
+      {
+        "Tm_K": 1821.3415614397127,
+        "hydrogen_prev": -0.004695102110002814,
+        "hydrogen_prev2": -0.004696619761905643,
+        "iz": 58404,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1857.7563146812572,
+        "thermal_prev2": -1857.8315333992434,
+        "xe": 0.0013253148120087707
+      },
+      {
+        "Tm_K": 1821.2627044735061,
+        "hydrogen_prev": -0.0046935851636265135,
+        "hydrogen_prev2": -0.004695102110002814,
+        "iz": 58405,
+        "peebles_event_iz": null,
+        "peebles_event_reason": null,
+        "thermal_prev": -1857.6810997371883,
+        "thermal_prev2": -1857.7563146812572,
+        "xe": 0.001325115601523249
+      }
+    ],
+    "schema": "rec.r3o.rust-input.v1",
+    "start_iz": 58389,
+    "steps": 16
+  },
+  "input_hashes": {
+    "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+    "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+  },
+  "production_admission": false,
+  "schema": "rec.r3o.rust-output.v1",
+  "speedup": "NOT_RUN",
+  "start_iz": 58389,
+  "status": "BOUNDED_FAILURE",
+  "vigilode_commit": "a21d573980f66fe02891bd216153443b5352f921"
+}
