@@ -1,0 +1,120 @@
+{
+  "schema": "rec.r3n.evidence.v1",
+  "project": "rec_bianchi",
+  "status": "LOCAL_IMPLEMENTATION_AND_INDEPENDENT_REVIEW_COMPLETE_CI_PENDING",
+  "base_head": "328f3723948979f74ae6c19474f45cb1882fb7b9",
+  "branch": "research/rec-r3n-convergence-diagnostics-20261019",
+  "workflow_skill": "physmath-research-loop 1.0.0 canonical requested skill",
+  "scope": "State-only saved-history convergence diagnostics and original-predictor conditional mathematics",
+  "backup_first": "receipts/INTAKE.json",
+  "contract_reused": {
+    "path": "research/rec_r3i_time_refinement_20261016/CONTRACT.json",
+    "sha256": "308aecdfb9fbe1eac292a5d6cc120ba60966b7988e6df82bd4e337d6598a6fa6"
+  },
+  "theory": "THEORY_KO.md",
+  "sources": "receipts/SOURCES.json",
+  "tests": {
+    "sandbox": {
+      "count": 45,
+      "exit_code": 0,
+      "log": "receipts/tests_008.log",
+      "scope": "includes 18 original C interpolation bit comparisons; not 18 trajectory runs",
+      "receipt": "receipts/LOCAL_VALIDATION.json"
+    },
+    "CI": "NOT_RUN_YET"
+  },
+  "manufactured_probes": {
+    "result": "probes_004/result.json",
+    "status": "PASS_SCOPED",
+    "actual_integrated_test_equation": "yprime=-200y; exact same-grid memory; deliberate lag/bias controls",
+    "new_physical_integrations": 0
+  },
+  "saved_real_data": {
+    "trace": "real_h2_trace_003/h2_state_trace.json",
+    "extraction": "real_h2_trace_003/execution.json",
+    "analysis": "real_h2_analysis_004/result.json",
+    "status": "INSUFFICIENT_LEVELS",
+    "levels_missing_in_selected_input": [
+      0,
+      2
+    ],
+    "global_coverage": false,
+    "states": 5211,
+    "not_a_project_wide_absence_claim": true
+  },
+  "reviews": {
+    "R6": "complete; review/R6_ORIGINAL_RESPONSE.md",
+    "C9": {
+      "initial": "review/C9_INITIAL.md",
+      "first_closure": "review/C9_CLOSURE_001.md",
+      "closed": [
+        "missing-boundary-evidence",
+        "indexed-endpoint-cancellation",
+        "concurrent-output-preservation"
+      ],
+      "endpoint_fix": "construction-scale gamma3 padding; late-grid and near-z0 endpoint/outside controls passed independently",
+      "final": "review/C9_CLOSURE_FINAL.md",
+      "status": "ALL_THREE_FINDINGS_CLOSED"
+    }
+  },
+  "preserve": {
+    "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "h2": 4.245e-05,
+    "original_atomic_thermal_operators": "UNCHANGED",
+    "stage_boundaries": "UNCHANGED",
+    "predictor_memory": "UNCHANGED",
+    "same_h_criteria": "UNCHANGED",
+    "U5_h": "HOLD_9_FAIL",
+    "U5_h2": "HOLD_8_FAIL",
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "REI_activation": false
+  },
+  "scientific_claims": {
+    "Python_h_h2_h4_recombination_convergence": "NOT_RUN",
+    "production_speedup": "NOT_MEASURED",
+    "Bianchi_REI_CMB": "NOT_ADMITTED",
+    "new_strong_no_go": false
+  },
+  "publication": {
+    "status": "PENDING_PUSH",
+    "intended_branch": "research/rec-r3n-convergence-diagnostics-20261019",
+    "base_head": "328f3723948979f74ae6c19474f45cb1882fb7b9"
+  },
+  "files": {
+    "HANDOFF_KO.md": "379a874637bc21d8160d068ddb46e25bfd93ef9dd7f5aa1bb04b47a46b680cf4",
+    "README_KO.md": "f90bd0320d2fec1caab600df59146b4b432fe158f30de2df17194f948aa51e41",
+    "THEORY_KO.md": "406f15a61cf03342520ca7943a7a1a092de4646253b77d22e3acb26a7670f191",
+    "probes_004/R3N_NUMERICAL_PROBES.pdf": "93a2576d77d9d049c227748d7d7cd6bf46bcda2f1d94d122e1954c15591586d7",
+    "probes_004/R3N_NUMERICAL_PROBES.png": "4850c4954963943868bd7a0c99ba4cdcf5d7ab6808a4ec55ec38340249566ee2",
+    "probes_004/diagnostics.json": "81b5b354d9f727e89d4acb5ed29e262cd679291616f3fabad1bf092e15441518",
+    "probes_004/result.json": "aee98cc08ee1bc6932e7f5b6452a24f4f054daf66091f51382317002bc8509bd",
+    "real_h2_analysis_001/execution.json": "8924eb7a7759549e8989976e01d2a76f272200662ccc8713844e145f66d6a827",
+    "real_h2_analysis_001/failure.json": "cd9024ac60274e01e8f9709990709c25d4b1625ed1b381e7f71b2af7ff6faa60",
+    "real_h2_analysis_004/execution.json": "cd0263e889410d5827b2ff4e0a29372898f7b0e388339549a2647366fc031894",
+    "real_h2_analysis_004/result.json": "874fe7c336151dabf5703ef7d6ab4c9a6ff2891d1eea65f8aae34fff64a9d028",
+    "real_h2_trace_001/execution.json": "f36fda418f50690be7ebe8e49fa60748b34d352384ce96590abe8692fcd93904",
+    "real_h2_trace_001/failure.json": "2dce935e468155ddd31a7a1ab6cb14ad8bfef4aacdc3ecda75da85e5214533c0",
+    "real_h2_trace_003/execution.json": "5ba30d4bbe6d8151f6f00c1dd542c1a1d2ead92ade9b79d6cc66768dd28b73df",
+    "real_h2_trace_003/h2_state_trace.json": "69cee60842577f1bf7aea3fc761f203519a9457ad8a4b3176afe7ccf26dd2e18",
+    "real_h2_trace_003/h2_state_trace.npz": "56c27b459b910a56a1b4c4b133a2fd0e6f759db1dca3050ea97663828a1b07c9",
+    "real_h2_trace_003/result.json": "f98f622735cbdd55132fc7d6b21dba6e6d123b06ac64a361aea5633793ff0b97",
+    "receipts/INTAKE.json": "d8b449ad9577899be424f85418c3fdbe080ba1989add27ca74d438cc7ced1db9",
+    "receipts/LOCAL_VALIDATION.json": "54ae1c9554795f6c4b6175f34e8747a48bfe4c67fbf9969f18f101d834f19ba2",
+    "receipts/SOURCES.json": "2e6d9590955bff7ccd7fd6edf58e6ddc07fe7deeb6c14e4ef02899833458aaf4",
+    "receipts/probes_002.log": "0e080a5fa68f1541d88b48fbc9915450fd5bfd61a7079c691fef457a86d0b8f4",
+    "receipts/probes_003.log": "706af840875aa415980a64fa90c949a15cc757ea3d53587b74028fdfec6b7ddc",
+    "receipts/probes_004.log": "aee98cc08ee1bc6932e7f5b6452a24f4f054daf66091f51382317002bc8509bd",
+    "receipts/tests_002.log": "b49f5788ec62de4b4f3ec525ff0e705c5040c5ff3f1e27a9a7c6c0f2e1c91584",
+    "receipts/tests_003.log": "54fc4617413bf4092981b0f4bf6b94b301e7448ef6f6de4027888587b3574cb4",
+    "receipts/tests_004.log": "5f18151fa030092a46840a644519f6bc4772ed7acaa4164f1dab03daae39e66e",
+    "receipts/tests_005.log": "b0ab55fdb9bbf88924e8b873185267dcffda996cf52d32883da8be5c3e929201",
+    "receipts/tests_006.log": "665b5b01bdccad3e225d56257862461dfa0b2b9579f3a63a8a93f527f10f146b",
+    "receipts/tests_007.log": "ca4051c5d5c742fac862dcb22d9970c05898560b08bede3f2741add0e38a85bb",
+    "receipts/tests_008.log": "79aebd08d7564861658af7224b04f4623a884a47dcfdbd973b9bf7f70e74c842",
+    "review/C9_CLOSURE_001.md": "148e7493c8296015c90fbc7b08e086656baacb9962f429b5e493114407e50225",
+    "review/C9_CLOSURE_FINAL.md": "30cd5cbd3d57bc1cbc07c713125f94353879a3504e4aa052a2fb4f2d25342a83",
+    "review/C9_INITIAL.md": "217db9e15e579c5b1d612be1bcab0f5bcc467a99bf61589806fb6feac728f404",
+    "review/R6_ORIGINAL_RESPONSE.md": "c8dc3bca7f105fb412b76fc311804533093a4044fa03279a3ca9106333623447"
+  }
+}

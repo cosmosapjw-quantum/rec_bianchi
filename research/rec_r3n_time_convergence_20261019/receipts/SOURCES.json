@@ -1,0 +1,93 @@
+{
+  "schema": "rec.r3n.sources.v1",
+  "science_tools": {
+    "SciSpace": {
+      "status": "CALLED",
+      "query": "For HyRec cosmological hydrogen recombination with time dependent radiative transfer and effective multilevel atom stage switches, how is time step convergence assessed separately from agreement between implementations, and which photon history interpolation and stage boundary errors control this convergence?",
+      "papers": [
+        {
+          "title": "HyRec: A Fast and Highly Accurate Primordial Hydrogen and Helium Recombination Code",
+          "doi": null,
+          "year": "2011-02-15T00:00:00Z",
+          "urls": {
+            "order": [
+              "Html",
+              "Others"
+            ],
+            "data": {
+              "Html": [
+                "http://ui.adsabs.harvard.edu/abs/2010ascl.soft11023A/abstract",
+                "https://www.arxiv-vanity.com/papers/1011.3758/"
+              ],
+              "Others": [
+                "https://resolver.caltech.edu/CaltechAUTHORS:20110307-093938930"
+              ]
+            },
+            "is_show": true
+          }
+        },
+        {
+          "title": "HyRec: A fast and highly accurate primordial hydrogen and helium recombination code",
+          "doi": "10.1103/PHYSREVD.83.043513",
+          "year": "2011-02-15T00:00:00Z",
+          "urls": {
+            "order": [
+              "Html"
+            ],
+            "data": {
+              "Html": [
+                "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.83.043513",
+                "https://arxiv.org/abs/1011.3758"
+              ]
+            },
+            "is_show": true
+          }
+        },
+        {
+          "title": "Ultrafast effective multilevel atom method for primordial hydrogen recombination",
+          "doi": "10.1103/PHYSREVD.82.063521",
+          "year": "2010-09-15T00:00:00Z",
+          "urls": {
+            "order": [
+              "Html"
+            ],
+            "data": {
+              "Html": [
+                "https://arxiv.org/abs/1006.1355",
+                "https://link.aps.org/doi/10.1103/PhysRevD.82.063521"
+              ]
+            },
+            "is_show": true
+          }
+        },
+        {
+          "title": "HYREC-2: a highly accurate sub-millisecond recombination code",
+          "doi": "10.48550/arxiv.2007.14114",
+          "year": "2022-02-25T00:00:00Z"
+        }
+      ]
+    },
+    "Exa": {
+      "status": "CALLED",
+      "primary_selected": [
+        "https://arxiv.org/abs/1011.3758",
+        "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.83.043513"
+      ]
+    },
+    "Wolfram": {
+      "context": "INTERNAL_ERROR",
+      "evaluator": "TWO_SUCCESSFUL_ALGEBRA_CALLS",
+      "first_output": [
+        {
+          "type": "text",
+          "text": "Out[1]= {(2*f2*h^3)/3 - (7*f3*h^4)/24 + (7*f4*h^5)/40, ((1 + r)^2*(-1 + 2*r))/2, (4*(-(Cos[2*s]*Sin[s]) + 5*Cos[2*s]^2*Sin[s] + Sin[2*s] - Cos[s]*Sin[2*s] + 5*Sin[s]*Sin[2*s]^2))/(1 - 10*Cos[2*s] + 25*Cos[2*s]^2 + 25*Sin[2*s]^2), 2^p}"
+        }
+      ],
+      "second_output": "{2*s + 4*s^2 + 2*s^3 - z - 2*s*z + 2*s^2*z + s^3*z, -((-2 + q)*(4 + 3*q)), (f1*h^2)/4 + (7*f2*h^3)/24, 1 + t - t^2, {5/16, 15/16, -5/16, 1/16}}"
+    }
+  },
+  "use": {
+    "paper": "Appendix C C1 and V D Eq94 context. No paper cosmology/switch thresholds substituted for frozen Oct2012 source.",
+    "novelty": "No literature novelty or strong no-go claimed; source recurrence is known, current work constructs a scoped diagnostic and counterexamples."
+  }
+}
