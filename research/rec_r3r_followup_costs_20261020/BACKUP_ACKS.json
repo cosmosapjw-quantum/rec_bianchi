@@ -15,13 +15,38 @@
         "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
         "expected_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
         "whole_readback": "PASS",
-        "method": "prepare_materialize returned distinct workspace readback path; read complete bytes and hashed independently of upload ACK"
+        "method": "prepare_materialize returned distinct workspace readback path; read complete bytes and hashed independently of upload ACK",
+        "historical_published_receipt": "receipts/STAGE1_LIBRARY.json",
+        "historical_published_receipt_sha256": "20fa77f44d8cafebb67f452e77447c70a180da65127314ed6d28664a994106b3",
+        "current_recovery_readback": "receipts/recovery/STAGE1_LIBRARY_CURRENT_READBACK.json"
       },
       "google_drive": {
-        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+        "status": "UNKNOWN_NO_ACK",
+        "object_id": null,
+        "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
+        "history_receipt": "receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+        "current_exact_name_search": "receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+        "late_completion_observed_in_current_queries": false,
+        "new_attempt_in_current_recovery": false,
+        "scope": "Per-file state only; no global Drive unavailability claim"
       },
       "dropbox": {
-        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+        "status": "EXISTING_OBJECT_METADATA_ACK_AND_CURRENT_WHOLE_READBACK_PASS",
+        "file_id": "id:BSpOijBcT10AAAAAAD_aBQ",
+        "path": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+        "server_modified": "2026-10-20T18:01:22Z",
+        "rev": "65e496b10af180af03d47",
+        "bytes": 7277134,
+        "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+        "content_hash": "0849020220c1f22706c8958ed837b24f00132cd847dfbed9aae7d5b34db327e6",
+        "content_hash_computed": "0849020220c1f22706c8958ed837b24f00132cd847dfbed9aae7d5b34db327e6",
+        "whole_readback": "PASS",
+        "current_metadata_receipt": "receipts/backup/STAGE1_DROPBOX_CURRENT_METADATA.json",
+        "current_readback_receipt": "receipts/backup/STAGE1_DROPBOX_CURRENT_READBACK.json",
+        "current_readback_started_at_utc": "2026-10-20T20:56:32.779685+00:00",
+        "current_readback_finished_at_utc": "2026-10-20T20:56:33.435897+00:00",
+        "new_upload_performed": false,
+        "historical_upload_ack": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence."
       }
     },
     {
@@ -43,15 +68,110 @@
         "expected_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
         "upload_ack": "SUCCEEDED",
         "whole_readback": "PASS",
-        "method": "prepare_materialize to distinct workspace path, apply full returned xattrs, read complete bytes and SHA independently of upload ACK"
+        "method": "prepare_materialize to distinct workspace path, apply full returned xattrs, read complete bytes and SHA independently of upload ACK",
+        "historical_published_receipt": "receipts/STAGE2_LIBRARY.json",
+        "historical_published_receipt_sha256": "cbf110c6cc45d05dcbda31b486a113845090e78f2d08499105f719ea21333415",
+        "current_recovery_readback": "receipts/recovery/STAGE2_LIBRARY_CURRENT_READBACK.json"
       },
       "google_drive": {
-        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+        "status": "NOT_ATTEMPTED",
+        "object_id": null,
+        "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
+        "history_receipt": "receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+        "current_exact_name_search": "receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+        "late_completion_observed_in_current_queries": false,
+        "new_attempt_in_current_recovery": false,
+        "scope": "Per-file state only; no global Drive unavailability claim"
       },
       "dropbox": {
-        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+        "status": "EXISTING_OBJECT_METADATA_ACK_AND_CURRENT_WHOLE_READBACK_PASS",
+        "file_id": "id:BSpOijBcT10AAAAAAD_aCA",
+        "path": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+        "server_modified": "2026-10-20T18:19:20Z",
+        "rev": "65e49ab50c04f0af03d47",
+        "bytes": 23953020,
+        "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+        "content_hash": "6fbcb91d1fe9c9424adbbfc0ba2423eaf06f962d3a6cccc85072d267b08c1c9e",
+        "content_hash_computed": "6fbcb91d1fe9c9424adbbfc0ba2423eaf06f962d3a6cccc85072d267b08c1c9e",
+        "whole_readback": "PASS",
+        "current_metadata_receipt": "receipts/backup/STAGE2_DROPBOX_CURRENT_METADATA.json",
+        "current_readback_receipt": "receipts/backup/STAGE2_DROPBOX_CURRENT_READBACK.json",
+        "current_readback_started_at_utc": "2026-10-20T20:56:35.358214+00:00",
+        "current_readback_finished_at_utc": "2026-10-20T20:56:36.139332+00:00",
+        "new_upload_performed": false,
+        "historical_upload_ack": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence."
+      }
+    },
+    {
+      "stage": "STAGE3_REVIEWED_DELIVERY",
+      "filename": "REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+      "bytes": 2080888,
+      "sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+      "source_commit": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
+      "source_tree": "3d8967ad4863d7c6a510e585348e3639e0ca9f04",
+      "base_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "type": "Immutable source/review/evidence delta; requires Stage2 and original R3P base chain",
+      "producer_recovered_proof": "receipts/backup/stage3_packaging_recovered/RECONSTRUCTION_PROOF.json",
+      "producer_readback": "complete_reused: producer entry/tree proof from fixed archive; current recovery separately verifies archive bytes and delta blob identities",
+      "library": {
+        "library_file_id": "libfile_db8555ce49908191a447a5885e6b3181",
+        "file_id": "file_00000000b428820b8cb8b0d6b17a2467",
+        "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+        "size": 2080888,
+        "sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+        "whole_readback": "PASS",
+        "current_recovery_readback": "receipts/recovery/STAGE3_LIBRARY_CURRENT_READBACK.json",
+        "new_upload_performed": false,
+        "historical_upload_ack": "Original unpublished ACK/readback receipt not recovered; pinned existing object now independently restored and hashed"
+      },
+      "dropbox": {
+        "status": "EXISTING_OBJECT_METADATA_ACK_AND_CURRENT_WHOLE_READBACK_PASS",
+        "file_id": "id:BSpOijBcT10AAAAAAD_aCg",
+        "path": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+        "server_modified": "2026-10-20T18:23:31Z",
+        "rev": "65e49ba4ed7590af03d47",
+        "bytes": 2080888,
+        "sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+        "content_hash": "35e1e4e38719539fb914053d8976d316b34f6500e9647e17aaa95daa43977e60",
+        "content_hash_computed": "35e1e4e38719539fb914053d8976d316b34f6500e9647e17aaa95daa43977e60",
+        "whole_readback": "PASS",
+        "current_metadata_receipt": "receipts/backup/STAGE3_DROPBOX_CURRENT_METADATA.json",
+        "current_readback_receipt": "receipts/backup/STAGE3_DROPBOX_CURRENT_READBACK.json",
+        "current_readback_started_at_utc": "2026-10-20T20:56:31.827990+00:00",
+        "current_readback_finished_at_utc": "2026-10-20T20:56:32.164916+00:00",
+        "new_upload_performed": false,
+        "historical_upload_ack": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence."
+      },
+      "google_drive": {
+        "status": "UNKNOWN_NO_ACK_TIMEOUT_25S",
+        "object_id": null,
+        "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
+        "history_receipt": "receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+        "current_exact_name_search": "receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+        "late_completion_observed_in_current_queries": false,
+        "new_attempt_in_current_recovery": false,
+        "scope": "Per-file state only; no global Drive unavailability claim"
       }
     }
   ],
-  "policy": "create_only; producer hash / provider ACK / independent remote readback distinct"
+  "policy": "create_only; producer hash, upload ACK, current provider metadata ACK and independent complete remote readback are distinct; no overwrite or duplicate uncertain mutation",
+  "recovery": {
+    "schema": "rec.r3r.backup-current-evidence-recovery.v1",
+    "recorded_at_utc": "2026-10-20T20:59:04.812260+00:00",
+    "base_commit": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+    "base_tree": "565550bec51506b2a85c48442b9ab0d69be18be7",
+    "previous_backup_acks_sha256": "ea6cdc1d5eb2be5718455ec69e060eb5b17760af19e2a6b1e81b46bacc6f4c0d",
+    "previous_backup_acks_snapshot": "receipts/recovery/BACKUP_ACKS_BEFORE_RUNTIME_RECOVERY.json",
+    "reason": "Workspace pruning removed unpublished provider receipts; current provider metadata and fresh whole-file reads reestablish archival byte evidence without repeating scientific work.",
+    "current_provider_whole_readbacks": {
+      "dropbox": "PASS_3_OF_3",
+      "library": "PASS_3_OF_3",
+      "google_drive": "NOT_RUN_NO_CONFIRMED_STAGE123_OBJECT"
+    },
+    "historical_published_library_receipts": "Stage1 and Stage2 files unchanged byte-for-byte",
+    "historical_r3p_preservation": "R3P BACKUP_ACKS remains unchanged, including original NOT_RUN statements",
+    "new_scientific_runs": 0,
+    "new_remote_uploads": 0,
+    "evidence_rule": "Current remote-readback evidence is separate from historical producer PASS, historical upload ACK, and scientific validation."
+  }
 }

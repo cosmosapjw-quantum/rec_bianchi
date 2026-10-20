@@ -143,7 +143,7 @@
     {
       "id": "R10",
       "name": "종료·재개",
-      "status": "in_progress",
+      "status": "blocked_external_shipping",
       "depends_on": [
         "R9",
         "C9"
@@ -152,7 +152,8 @@
         "HANDOFF_KO.md",
         "DELIVERY.json",
         "BACKUP_ACKS.json"
-      ]
+      ],
+      "scope_completed": "Science, implementation, CI and handoffcomplete; Drive preservation remainsunresolved"
     },
     {
       "id": "C1",
@@ -223,7 +224,8 @@
       ],
       "evidence": [
         "receipts/formal_validation_001/validation.json",
-        "receipts/formal_validation_002/validation.json"
+        "receipts/formal_validation_002/validation.json",
+        "receipts/ci/CI_ISOLATION_CI.json"
       ]
     },
     {
@@ -261,13 +263,14 @@
       ],
       "evidence": [
         "receipts/C9_CODE_AUDIT.json",
-        "receipts/C9_EVIDENCE_READBACK.json"
+        "receipts/C9_EVIDENCE_READBACK.json",
+        "receipts/CI_ISOLATION_AUDIT.json"
       ]
     },
     {
       "id": "C10",
       "name": "판정·인계",
-      "status": "in_progress",
+      "status": "blocked_external_shipping",
       "depends_on": [
         "C9",
         "R9"
@@ -277,17 +280,19 @@
         "HANDOFF_KO.md",
         "DELIVERY.json",
         "BACKUP_ACKS.json"
-      ]
+      ],
+      "scope_completed": "Science, implementation, CI and handoffcomplete; Drive preservation remainsunresolved"
     }
   ],
-  "next": "Finish normalized shipping HEAD CI and create-only multi-provider preservation; no further science execution required for this candidate",
-  "publication": "IN_PROGRESS_PR112_DRAFT",
-  "backup": "IN_PROGRESS",
+  "next": "Continue new user-requested R3S NCP campaign preparation; close Drive preservation when a valid create-only write/readback path is available. No R3R science rerun.",
+  "publication": "PR112_DRAFT_TEST_FIX_CI_SUCCESS_METADATA_PUBLICATION_PENDING",
+  "backup": "DROPBOX_LIBRARY_REMOTE_SHA_PASS_DRIVE_UNRESOLVED",
   "out_of_scope_held": [
     "global h/h2/h4 convergence",
     "new full5210 or full h4 allocation",
     "new production speedup",
     "REI activation",
     "production approval"
-  ]
+  ],
+  "ci_test_execution_source_commit": "70a53396e910869ea069e184a44f1fb21cb47a0a"
 }

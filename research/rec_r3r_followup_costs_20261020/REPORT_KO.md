@@ -1,5 +1,21 @@
 # REC R3R — 실제 spectral 감사 연결과 제한 수치 연구
 
+## 2026-10-21 재개: CI 수정과 복구 결과
+
+자동 작업공간 정리 후 GitHub checkout과 세 고정 보존 archive를 직접 복구했다. Stage1/2/3 전체 SHA는 각각 기존 identity와 일치했다. 이번 복구는 기존 수치 결과의 재실행이 아니며, 원본 실패와 raw도 유지했다.
+
+새 test-only source는 `70a53396e910869ea069e184a44f1fb21cb47a0a`, tree는 `565550bec51506b2a85c48442b9ab0d69be18be7`이다. **기존 성공 benchmark·pilot의 실행 source는 여전히 `1313b1f1b2c081d57bcce9c60e757ef79110df91`**이다.
+
+일반 CI에서 전체 pytest 누적 CPU가 imported trace CLI의 55초 작업 guard에 들어가 두 기존 검사가 실패했다. 실제 실패값은 CPU92.440560/92.626558초, wall80.063518/80.249547초였다. 수치 ratio 불일치가 아닌 test process 범위 오류다. 두 trace를 새 bounded child에 배치하고, 부모의 소진된 guard는 child 실행 전후 모두 계속 거절하는 반례를 검사했다. NumPy comparator·benchmark·solver·resource cap은 변경하지 않았다.
+
+현재 실제 CI는 일반 **1038 PASS /103 SKIP /72 subtest PASS**(138.69s), 전용 **60 PASS /1 SKIP**(9.47s)다. PR의 synthetic merge `2fe1008f31a4ccb36b1b03fe14e31a65a7c75b2f`의 tree도 source와 정확히 같다. `receipts/ci/CI_ISOLATION_CI.json` 및 별도 `CI_ISOLATION_AUDIT`를 읽는다. 반복 CI를 새 고유 테스트 수로 합산하지 않는다.
+
+이 새 CI 반환이 실제 수정 검증을 완료했으므로 준비 중이던 `formal_validation_003` 로컬 재검사는 `NOT_RUN_SUPERSEDED_BY_ACTUAL_SOURCE70A_CI_RETURN`으로 종료했다. 원래 validation allocation 누적 CPU21.365609000000003초 /wall21.497515038005076초를 초기화하지 않았고, 새 적분은 0회다.
+
+사용자는 64코어·128GB NCP를 이용한 미실행 작업의 일괄 준비를 추가로 요청했다. 이는 별도 R3S 노드 `research/rec_r3s_ncp_campaign_20261021/`에서 수행한다. 현재 연결 도구는 실제 월간 사용량 한도로 실행 호출을 중지했으며, online 장치의 CPU·RAM·NCP identity는 검증하지 못했다. 기존 h4 event+2/h2 low-z와 R3M full5210은 재사용하고, 원래 시간 recurrence와 아직 열리지 않은 global convergence/full-run 조건을 보존한다.
+
+Stage1/2/3 Dropbox·Library의 전체 원격 SHA는 복구됐다. Drive는 기존 write 요청의 ACK가 없고, 현재 exact-name read에서도 완료 객체를 찾지 못했다. 과거 UNKNOWN은 취소나 성공으로 바꾸지 않는다. R3R의 과학·코드·CI 완료와 Drive 보존 미완료를 분리한다.
+
 ## 결론과 범위
 
 R3P 이후 이미 반환된 R3Q NCP 결과를 먼저 복구한 뒤, 별도 R3R 노드에서 **후보 B: bounded NumPy ratio 계산을 실제 spectral stream 감사에 연결**했다. 원래 HyRec2012 atomic/thermal operator, predictor recurrence, causal/stage boundary, scalar Planck 계산과 same-h tolerance는 그대로 유지했다. 기존 R3Q comparator와 worker는 수정하지 않았다. 새 실행 경로는 opt-in이며 기본 backend는 legacy다.

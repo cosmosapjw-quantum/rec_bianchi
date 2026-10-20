@@ -1,0 +1,70 @@
+{
+  "schema": "rec-r3r-runtime-recovery-handoff-v1",
+  "created_at_utc": "2026-10-20T20:53:21.024250+00:00",
+  "status": "COMPLETE_FOR_PINNED_STAGE123_LIBRARY_RECOVERY",
+  "recovered_roots": [
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_stage1",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_stage2",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_stage3"
+  ],
+  "archive_root": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_archives",
+  "references": [
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/R3R_STAGE123_RECOVERY_MANIFEST.json",
+      "bytes": 131613,
+      "sha256": "b3ebcc996ea84ba07d48a6ee0f59f556ef66c860eab1cb3826eaaf745c4a4880"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/STAGE123_RECOVERY_EXECUTION.json",
+      "bytes": 739,
+      "sha256": "d70df12927f40952b2346cd52253adfc644040378bb82915d765f4757aaf6a2a"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
+      "bytes": 124350,
+      "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/DRIVE_EXACT_RECOVERY_SEARCH.json",
+      "bytes": 840,
+      "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/stage123_recovery.stdout",
+      "bytes": 1119,
+      "sha256": "b47a7136daef8d30b3ada2aeeecb3b76dfa527e082714a621a8eaa218c0d18a6"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/stage123_recovery.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovery_input_backup_agent.json",
+      "bytes": 17616,
+      "sha256": "6d246ea3ede9e02827a981bd0234956e9de0b0eedc35931523abba9942b8df1e"
+    },
+    {
+      "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recover_stage_archives_backup_agent.py",
+      "bytes": 5950,
+      "sha256": "0ebfeeccd22b1d32688e053d007dc9b95586ddac932cc55262bedbd9b691942d"
+    }
+  ],
+  "claims": {
+    "archive_full_readback": "PASS_3_OF_3",
+    "library_xattrs": "PASS_3_OF_3",
+    "safe_extraction": "PASS_371_REGULAR_FILES",
+    "embedded_manifests": "PASS_344_REFERENCED_ENTRIES",
+    "new_drive_writes": 0,
+    "drive_late_completion_observed": false,
+    "new_scientific_execution": 0,
+    "full_git_tree_reconstruction_in_recovery": "NOT_RUN",
+    "physical_validity": "UNCHANGED_FROM_ORIGINAL_EVIDENCE",
+    "historical_provider_receipts": "Reuse pinned original or current Git receipts; current recovery is separate evidence"
+  },
+  "limitations": [
+    "Drive direct parent list and accessible exact-name search did not find the three archives; absence of observed files does not prove cancellation of prior uncertain writes.",
+    "Stage2/3 are source delta archives requiring original base chains; root restores Git separately.",
+    "Stage3 immutable archive predates its own Library readback and later backup metadata; do not replace current Git BACKUP_ACKS with older snapshot metadata."
+  ]
+}

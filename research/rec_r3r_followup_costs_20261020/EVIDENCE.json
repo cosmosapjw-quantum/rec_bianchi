@@ -1,6 +1,6 @@
 {
   "schema": "rec.r3r.evidence.v1",
-  "status": "SCOPED_RESEARCH_COMPLETE_SHIPPING_IN_PROGRESS",
+  "status": "SCOPED_RESEARCH_AND_CI_COMPLETE_DRIVE_PRESERVATION_UNRESOLVED",
   "base_commit": "5b44bb21ce0599e55e0848e5e3ff320c9e8ca172",
   "base_tree": "9403d3778d0a81e9632cea58e42e59ed9581e980",
   "r3p_base": "888d56d72579d1e1fd30f66abe02d9f91809a767",
@@ -88,7 +88,7 @@
       "scope": "Draft research; no production solver speedup, no full-history physical approval"
     }
   },
-  "source_role_policy": "base, actual execution source, reconstructed code snapshot, and later metadata HEAD remain distinct",
+  "source_role_policy": "1313b1f1 is successful scientific tests/benchmark/pilot source; 70a53396 is later test-only CI execution source; delivery HEAD and backup capsule are distinct metadata identities.",
   "profile_timer_scope": "cProfile default elapsed timer, not exclusive process CPU",
   "new_validation": {
     "receipt": "receipts/formal_validation_002/validation.json",
@@ -576,7 +576,11 @@
     "receipts/VISUAL_REVIEW.json": "5fb0c02636dadae4ce23a6d1fa1b99d400567d70dd7643521b160f1f57ab5f05",
     "receipts/CLAIM_GATE.json": "942e47daaa56321ee76efe7ff660ddf6b7c6d1e187e7bcbc887b6d14321d615d",
     "receipts/TEXT_NORMALIZATION.json": "e72c4e636add98d48872165d4c9a01f63bb5953a43e3c2f297f91a19c4542a76",
-    "figures/PLOT_GENERATION.json": "1aa4954e06763cd0bbfa02204b3ec954a8ecb395d275c7a9da22ff909020ac80"
+    "figures/PLOT_GENERATION.json": "1aa4954e06763cd0bbfa02204b3ec954a8ecb395d275c7a9da22ff909020ac80",
+    "receipts/ci/CI_ISOLATION_CI.json": "b7f28c54e9d781b382687cb7d8a37984edf231bb8bfb16ab30a57bcf8bb88dc2",
+    "receipts/CI_ISOLATION_AUDIT.json": "d28ba948bc3014f52b197fe4a8cbd6d1a0f1b6ce742fa6f45182877554c34424",
+    "receipts/CI_ISOLATION_EVIDENCE_READBACK.json": "144fc37050b5494561c679758c9bf31984b7e579aacae22042121a72b9958316",
+    "receipts/CI_FIX_PUBLICATION.json": "3f9e54686e2ff38303cc88f065c15f82de140e74c2aa3568861415fc2245ef99"
   },
   "grid_namespace": {
     "original_R3P_user_reference_h": 4.245e-05,
@@ -584,5 +588,26 @@
     "existing_R3O_R3Q_h2_dlna": 4.245e-05,
     "existing_R3Q_h4_pilot_dlna": 2.1225e-05,
     "comparison": "Native and Python on identical existing R3Q quarter grid; no global convergence or renaming of R3P reference h"
+  },
+  "resumed_on_kst": "2026-10-21",
+  "ci_test_execution_source_commit": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+  "ci_test_execution_source_tree": "565550bec51506b2a85c48442b9ab0d69be18be7",
+  "ci_repair": {
+    "receipt": "receipts/ci/CI_ISOLATION_CI.json",
+    "audit": "receipts/CI_ISOLATION_AUDIT.json",
+    "classification": "TEST_HARNESS_PROCESS_LIFETIME_CPU_SCOPE_ERROR",
+    "changed_source": "tests/test_r3r_stream_audit.py",
+    "runtime_code_changed": false,
+    "actual_general_result": "1038 PASS,103 SKIP,72 subtests PASS",
+    "actual_dedicated_result": "60 PASS,1 SKIP",
+    "new_unique_cases": 0,
+    "formal_validation_003": "NOT_RUN_SUPERSEDED_BY_ACTUAL_SOURCE70A_CI_RETURN"
+  },
+  "resume_recovery": {
+    "status": "RECOVERED_FIXED_GIT_AND_REMOTE_ARCHIVE_BYTES",
+    "receipt": "receipts/recovery/R3R_STAGE123_RECOVERY_MANIFEST.json",
+    "new_scientific_runs": 0,
+    "new_hardware_request": "NCP64cores128GB; actualhostnotyetverified",
+    "next_research_node": "R3S"
   }
 }
