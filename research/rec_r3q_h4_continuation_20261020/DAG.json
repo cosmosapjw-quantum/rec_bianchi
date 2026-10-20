@@ -1,0 +1,91 @@
+{
+  "schema": "rec.r3q.dag.v1",
+  "nodes": [
+    {
+      "id": "REC-R3M-U6",
+      "state": "REUSED_COMPLETE",
+      "evidence_or_dependency": "owner full5210, independent same-h review"
+    },
+    {
+      "id": "REC-R3O-H4-START8",
+      "state": "REUSED_COMPLETE",
+      "evidence_or_dependency": "frozen checkpoint40dd109a"
+    },
+    {
+      "id": "REC-R3P-EXACT-AUDIT",
+      "state": "REUSED_COMPLETE",
+      "evidence_or_dependency": "15 saved comparisons and16step smoke"
+    },
+    {
+      "id": "REC-R3Q-CODE",
+      "state": "COMPLETE",
+      "evidence_or_dependency": "new module/C oracle/worker/supervisor"
+    },
+    {
+      "id": "REC-R3Q-SMOKE",
+      "state": "PASS_SCOPED",
+      "evidence_or_dependency": "smoke003:2accepted/8FULL; independent review"
+    },
+    {
+      "id": "REC-R3Q-H4-EVENT",
+      "state": "READY_NCP",
+      "evidence_or_dependency": "new600CPU/900wall allocation; max8192steps firstevent+2"
+    },
+    {
+      "id": "REC-R3O-LOWZ-H2",
+      "state": "READY_WITH_INPUT_RESTORE",
+      "evidence_or_dependency": "existing153327step runner; R3M rawbackup required"
+    },
+    {
+      "id": "REC-H4-U4-U5-U6-LOWZ",
+      "state": "PENDING_DEPENDENT_STAGE_IMPLEMENTATION",
+      "evidence_or_dependency": "event result provides actual nextstage boundary; no fullh4 execution yet"
+    },
+    {
+      "id": "REC-THREE-GRID",
+      "state": "HOLD",
+      "evidence_or_dependency": "need matched completeh/h2/h4 histories"
+    },
+    {
+      "id": "REC-REI-ACTIVATION",
+      "state": "HOLD",
+      "evidence_or_dependency": "source interface and global science gates remain"
+    }
+  ],
+  "edges": [
+    [
+      "REC-R3O-H4-START8",
+      "REC-R3Q-CODE"
+    ],
+    [
+      "REC-R3Q-CODE",
+      "REC-R3Q-SMOKE"
+    ],
+    [
+      "REC-R3Q-SMOKE",
+      "REC-R3Q-H4-EVENT"
+    ],
+    [
+      "REC-R3Q-H4-EVENT",
+      "REC-H4-U4-U5-U6-LOWZ"
+    ],
+    [
+      "REC-R3M-U6",
+      "REC-R3O-LOWZ-H2"
+    ],
+    [
+      "REC-H4-U4-U5-U6-LOWZ",
+      "REC-THREE-GRID"
+    ],
+    [
+      "REC-R3O-LOWZ-H2",
+      "REC-THREE-GRID"
+    ],
+    [
+      "REC-THREE-GRID",
+      "REC-REI-ACTIVATION"
+    ]
+  ],
+  "publication": "PENDING_PARENT_PUSH",
+  "backup": "PENDING_PARENT_PROVIDER_ACK"
+}

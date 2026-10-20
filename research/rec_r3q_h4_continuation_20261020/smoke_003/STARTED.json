@@ -1,0 +1,32 @@
+{
+  "schema": "rec.r3q.h4-supervised.v1",
+  "status": "STARTED",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/scripts/verify_r3q_h4_continuation.py",
+    "--supervised",
+    "--checkpoint",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+    "--evidence-dir",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/research/rec_r3q_h4_continuation_20261020/smoke_003/worker",
+    "--mode",
+    "smoke",
+    "--new-allocation-id",
+    "REC_R3Q_SANDBOX_20261020_SMOKE_003",
+    "--max-extra-accepted",
+    "2"
+  ],
+  "new_allocation_id": "REC_R3Q_SANDBOX_20261020_SMOKE_003",
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "rei_activation": false,
+  "allocation": {
+    "total_cpu_s": 60,
+    "total_wall_s": 180,
+    "address_space_bytes_per_process": 2147483648,
+    "threads": 1,
+    "worker_closeout_cpu_s_in_total": 5,
+    "worker_closeout_wall_s_in_total": 12,
+    "supervisor_closeout_wall_s_in_total": 2
+  }
+}
