@@ -1,0 +1,160 @@
+{
+  "schema": "rec.r3r.stage4-dropbox-preservation.v1",
+  "source_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+  "source_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
+  "archive": {
+    "filename": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+    "local_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+    "bytes": 469172,
+    "sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+    "producer_scope": "Fixed Git delta with 61 entries and 51 delta source files; producer result reused, no rerun in backup task",
+    "current_local_identity": "PASS_ACTUAL_BYTES_AND_SHA256"
+  },
+  "provider": "Dropbox",
+  "create_only": {
+    "destination": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+    "preflight": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[NOT_FOUND] Not found (reason: NOT_FOUND)"
+        }
+      ],
+      "structuredContent": {
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    },
+    "upload_contract": "ALREADY_EXISTS returns failure; existing objects are not overwritten",
+    "new_upload_calls": 1,
+    "folder_creation_calls": 0
+  },
+  "upload": {
+    "operation": "mcp__codex_apps__dropbox_upload_file",
+    "arguments": {
+      "destination_path": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+      "source_file": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz"
+    },
+    "started_at_clock_utc": "2026-10-20 21:03:51 UTC",
+    "initial_status": "in_progress",
+    "operation_id_retention": "Ephemeral operation token omitted after completed result",
+    "completion_operation": "mcp__codex_apps__dropbox_check_upload_file_status",
+    "completion_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"file\":{\"file\":{\"size\":469172},\"file_id\":\"id:BSpOijBcT10AAAAAAD_aFw\",\"modified_time\":\"2026-10-20T21:03:56Z\",\"name\":\"REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz\",\"object_type\":\"file\",\"path\":\"ns:183516487//bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz\",\"path_display\":\"/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz\"},\"status\":\"completed\"}"
+        }
+      ],
+      "structuredContent": {
+        "file": {
+          "file": {
+            "size": 469172
+          },
+          "file_id": "id:BSpOijBcT10AAAAAAD_aFw",
+          "modified_time": "2026-10-20T21:03:56Z",
+          "name": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+          "object_type": "file",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz"
+        },
+        "status": "completed"
+      },
+      "isError": false
+    },
+    "ack": "COMPLETED"
+  },
+  "metadata_read": {
+    "operation": "mcp__codex_apps__dropbox_get_file_metadata",
+    "arguments": {
+      "path_or_file_id": "id:BSpOijBcT10AAAAAAD_aFw"
+    },
+    "metadata_type": "file",
+    "file": {
+      "id": "id:BSpOijBcT10AAAAAAD_aFw",
+      "name": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+      "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+      "path_lower": "/bianchi/rec_bianchi/20261016/rec_r3r_stage4_ci_recovery_bf6bb95c_20261021.tar.gz",
+      "client_modified": "2026-10-20T21:03:55Z",
+      "server_modified": "2026-10-20T21:03:56Z",
+      "size": 469172,
+      "rev": "65e4bf7f962e40af03d47",
+      "is_downloadable": true,
+      "mime_type": "application/octet-stream"
+    },
+    "retained_fields": "File identity/version/downloadability subset; sharing/profile metadata omitted"
+  },
+  "readback_execution": {
+    "chunk_id": "a051cf",
+    "wall_time_seconds": 0.16120283,
+    "exit_code": 0,
+    "original_token_count": 75,
+    "output": "{\"stage\": 4, \"status\": \"PASS_CURRENT_WHOLE_REMOTE_READBACK\", \"receipt\": \"/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_dropbox_readback/STAGE4_DROPBOX_CURRENT_READBACK.json\", \"bytes\": 469172, \"sha256\": \"125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0\", \"exit_code\": 0}\n"
+  },
+  "readback_receipt_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_dropbox_readback/STAGE4_DROPBOX_CURRENT_READBACK.json",
+  "scope": {
+    "new_scientific_runs": 0,
+    "new_drive_calls": 0,
+    "r3r_frozen_subtree_edits": 0,
+    "library_handled_by": "root"
+  },
+  "independent_whole_readback": {
+    "receipt_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_dropbox_readback/STAGE4_DROPBOX_CURRENT_READBACK.json",
+    "receipt_sha256": "75ae5d5ade0769e3da9f501809e9f993419846a5e4000308c3c19c153d97434a",
+    "result": {
+      "schema": "rec-r3r-dropbox-recovery-whole-readback-v1",
+      "stage": 4,
+      "started_at_utc": "2026-10-20T21:04:34.807512+00:00",
+      "provider": "Dropbox",
+      "metadata": {
+        "content_hash": "57899d95bed8e08b72cf52a198aacf807b87433f1c7ea86b3e01034648e71a60",
+        "expiration_in_sec": 600,
+        "id": "id:BSpOijBcT10AAAAAAD_aFw",
+        "name": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+        "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+        "size": 469172
+      },
+      "expected_archive_bytes": 469172,
+      "expected_archive_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+      "download_method": "Single GET of current connector-issued temporary download link; no HEAD, preview, or range preflight",
+      "download_link_record": "Sensitive single-use URL deliberately not retained",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/dropbox_whole_readback_recovery.py",
+        "<complete transfer plus pinned expectations on stdin; URL not retained>"
+      ],
+      "script_sha256": "7f1ec57fabefabf44878d0c3238fdb5fa6e4ee808d3b0d1212516c8c6480adfb",
+      "environment": {
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+        "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+        "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+      },
+      "output_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/recovered_dropbox_readback/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+      "scope": "New archival readback only; no upload and no scientific execution",
+      "http_status": 200,
+      "bytes": 469172,
+      "sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+      "streamed_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+      "dropbox_content_hash_computed": "57899d95bed8e08b72cf52a198aacf807b87433f1c7ea86b3e01034648e71a60",
+      "whole_readback": "PASS",
+      "content_hash_check": "PASS",
+      "status": "PASS_CURRENT_WHOLE_REMOTE_READBACK",
+      "exit_code": 0,
+      "finished_at_utc": "2026-10-20T21:04:35.062854+00:00",
+      "wall_seconds": 0.2553485759999603,
+      "cpu_seconds": 0.012671063000000003,
+      "maxrss_kib": 17324
+    }
+  },
+  "combined_tool_output_sha256": "37102aa48b80df2ffdff85052d91a9ad7cf616ca0c0bc7f438dc63915fcdbe84",
+  "stdout_stderr_separately_captured": false,
+  "recorded_at_utc": "2026-10-20T21:05:12.656180+00:00",
+  "status": "PASS_CREATE_ONLY_UPLOAD_ACK_AND_INDEPENDENT_FULL_REMOTE_READBACK",
+  "producer_receipt_reused": {
+    "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3r_stage4_packaging/PACKAGING_RECEIPT.json",
+    "sha256": "7b7b7f6567f543eb86d71ec7d07f21388678e56f8c8ff5cc4f895ae09adcb0a3",
+    "verdict": "complete_reused",
+    "producer_rerun_in_backup_task": false
+  }
+}

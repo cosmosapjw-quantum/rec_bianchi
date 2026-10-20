@@ -1,0 +1,394 @@
+{
+  "schema": "rec.r3s.finite-campaign.v1",
+  "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+  "base_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
+  "research_node": "R3S",
+  "source_paths": [
+    "scripts/run_r3s_ncp_campaign.py",
+    "tests/test_r3s_ncp_campaign.py",
+    "scripts/r3r_stream_audit.py",
+    "scripts/benchmark_r3r_stream_audit.py",
+    "scripts/run_r3r_h4_supervised.py",
+    "scripts/build_r3o_rust.py",
+    "tests/test_r3r_stream_audit.py",
+    "tests/fixtures/r3r_actual32/MANIFEST.json",
+    "tests/fixtures/r3r_actual32/native_stream.csv.gz",
+    "tests/fixtures/r3r_actual32/python_continuation.npz"
+  ],
+  "nodes": [
+    {
+      "id": "R3P_exact_audit",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3p_exact_acceleration_20261020/DAG.json"
+      ],
+      "scope": "15 saved-stream comparisons, smoke16, audits and CI remain prior evidence."
+    },
+    {
+      "id": "R3M_full5210",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3m_u6_full_owner_20261019/DAG.json"
+      ],
+      "scope": "Completed original U6 full5210 and independent same-h review supersede older R3K/R3L pending rows. No new full integration."
+    },
+    {
+      "id": "R3O_h4_start8",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/h4_start_002/verification.json"
+      ],
+      "scope": "Independent h4 start and checkpoint40dd109a already complete."
+    },
+    {
+      "id": "R3Q_h4_first_event_plus_two",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json"
+      ],
+      "scope": "Historical NCP1511 accepted steps through iz74411. Same-h scoped evidence only."
+    },
+    {
+      "id": "R3O_h2_lowz",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json"
+      ],
+      "scope": "Historical NCP153327 low-z steps already complete. Additive endpoint correction preserves four original terminal states."
+    },
+    {
+      "id": "R3N_comparator",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3n_time_convergence_20261019/DAG.json"
+      ],
+      "scope": "Comparator implementation and45 contracts reused. A complete three-grid physical diagnostic is not yet admissible."
+    },
+    {
+      "id": "R3R_optimized_audit",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3r_followup_costs_20261020/receipts/CLAIM_GATE.json"
+      ],
+      "scope": "Actual1313b1f1 saved-stream benchmark,25000 lane-byte proof and32-step NumPy pilot reused; subsequent CI isolation is test-only."
+    },
+    {
+      "id": "R3G_h_history",
+      "status": "complete_reused",
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/reused_h_trace_001/h_state_trace.json"
+      ],
+      "scope": "105859 accepted nodes recovered. Nodewise C parity and stage semantics before input29195 remain UNKNOWN."
+    },
+    {
+      "id": "trace_original",
+      "status": "ready",
+      "depends_on": [],
+      "exclusive": false,
+      "scope": "Retained actual32 ordered-lane existing contract on newly verified NCP platform.",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "caps": {
+        "cpu_s": 60,
+        "wall_s": 180,
+        "per_process_as_bytes": 2147483648
+      },
+      "new_platform_result": "NOT_RUN"
+    },
+    {
+      "id": "trace_interleaved",
+      "status": "ready",
+      "depends_on": [],
+      "exclusive": false,
+      "scope": "Existing valid arbitrary per-tag interleaving contract on newly verified NCP platform.",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "caps": {
+        "cpu_s": 60,
+        "wall_s": 180,
+        "per_process_as_bytes": 2147483648
+      },
+      "new_platform_result": "NOT_RUN"
+    },
+    {
+      "id": "saved_stream_benchmark",
+      "status": "ready",
+      "depends_on": [
+        "trace_original",
+        "trace_interleaved"
+      ],
+      "exclusive": true,
+      "scope": "Five alternating paired rounds, one separate warmup; full saved CSV parsing/open/alloc/verdict included. No solver.",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "caps": {
+        "cpu_s": 60,
+        "wall_s": 180,
+        "per_process_as_bytes": 2147483648
+      },
+      "new_platform_result": "NOT_RUN"
+    },
+    {
+      "id": "h4_legacy16",
+      "status": "ready",
+      "depends_on": [
+        "trace_original",
+        "trace_interleaved"
+      ],
+      "exclusive": true,
+      "scope": "Existing public R3R launcher with legacy comparator,16 new accepted steps, same frozen h4 start.",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "caps": {
+        "cpu_s": 60,
+        "wall_s": 180,
+        "per_process_as_bytes": 2147483648
+      },
+      "new_platform_result": "NOT_RUN"
+    },
+    {
+      "id": "h4_numpy16",
+      "status": "ready",
+      "depends_on": [
+        "h4_legacy16"
+      ],
+      "exclusive": true,
+      "scope": "Same public launcher with NumPy comparator and same16-step inputs/CPU; final raw+NPY member byte gate.",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "caps": {
+        "cpu_s": 60,
+        "wall_s": 180,
+        "per_process_as_bytes": 2147483648
+      },
+      "new_platform_result": "NOT_RUN"
+    },
+    {
+      "id": "CURRENT_NCP_ACCESS",
+      "status": "blocked",
+      "depends_on": [],
+      "classification": "ENVIRONMENT_ACCESS",
+      "reason": "Desktop Commander monthly usage limit currently pauses calls. The observed online device is not identified as NCP; no retry/reconnect/bypass. Host/result inventory is unverified.",
+      "executable_command": null
+    },
+    {
+      "id": "R3P_rust_platform_build",
+      "status": "blocked",
+      "depends_on": [
+        "R3P_exact_audit"
+      ],
+      "classification": "BUDGET_COMPATIBILITY",
+      "reason": "Existing build_r3p_rust.py declares90CPU/180wall/2GiB and strict rustc1.94.1. It does not fit the uniform60CPU campaign contract; old source/caps remain unchanged.",
+      "executable_command": null
+    },
+    {
+      "id": "R3P_rust_u6_smoke16",
+      "status": "blocked",
+      "depends_on": [
+        "R3P_rust_platform_build"
+      ],
+      "classification": "DEPENDENCY_INPUT_AND_BUILD_IDENTITY",
+      "reason": "Original U5 checkpoint7aeec545 and a current source/binary-verified prebuilt Rust build are required. No command is publicly enabled by this coordinator.",
+      "executable_command": null
+    },
+    {
+      "id": "R3O_vigilode_platform_build",
+      "status": "blocked",
+      "depends_on": [],
+      "classification": "BUDGET_COMPATIBILITY",
+      "reason": "Existing build_r3o_rust.py declares240CPU/480wall/3GiB; it is outside the uniform60CPU/180wall/2GiB contract. Pinned vendor preparation must be isolated.",
+      "executable_command": null
+    },
+    {
+      "id": "R3O_vigilode_platform_smoke16",
+      "status": "blocked",
+      "depends_on": [
+        "R3O_vigilode_platform_build"
+      ],
+      "classification": "BUDGET_COMPATIBILITY",
+      "reason": "Existing verify_r3o_rust.py uses20CPU/60wall with3GiB AS. No lowering shim or larger public allocation is introduced; exploratory Rodas code is not the original predictor integrator.",
+      "executable_command": null
+    },
+    {
+      "id": "h4_U4_after_first_event",
+      "status": "blocked",
+      "depends_on": [
+        "R3Q_h4_first_event_plus_two"
+      ],
+      "classification": "MISSING_STAGE_IMPLEMENTATION",
+      "reason": "Current quarter continuation accepts the frozen start and stops at first event plus2. It cannot consume the event-end checkpoint as a new generic stage. New source-faithful U4 contract required.",
+      "executable_command": null
+    },
+    {
+      "id": "h4_U5_thermal",
+      "status": "blocked",
+      "depends_on": [
+        "h4_U4_after_first_event"
+      ],
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "reason": "Preserve original state/RHS current-prev2 memory, stage input ownership, photon history and original same-h tolerance before allocation.",
+      "executable_command": null
+    },
+    {
+      "id": "h4_U6_RT_boundary",
+      "status": "blocked",
+      "depends_on": [
+        "h4_U5_thermal"
+      ],
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "reason": "RT boundary and causal accepted-column ownership must be implemented and reviewed sequentially.",
+      "executable_command": null
+    },
+    {
+      "id": "h4_lowz",
+      "status": "blocked",
+      "depends_on": [
+        "h4_U6_RT_boundary"
+      ],
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "reason": "Complete h4 low-z trajectory does not exist. No full-mode command or scientific allocation is supplied.",
+      "executable_command": null
+    },
+    {
+      "id": "h2_full_history_assembly",
+      "status": "blocked",
+      "depends_on": [
+        "R3O_h2_lowz"
+      ],
+      "classification": "MISSING_ASSEMBLED_PROVENANCE",
+      "reason": "Assemble retained independently evolved h2 stages contiguously with grid/stage/nodewise uncertainty metadata. Existing R3N h2 descriptor covers only U6 iz53179..58389.",
+      "executable_command": null
+    },
+    {
+      "id": "h_nodewise_C_and_boundaries",
+      "status": "blocked",
+      "depends_on": [
+        "R3G_h_history"
+      ],
+      "classification": "MISSING_EVIDENCE",
+      "reason": "prepare_r3o_h_history leaves nodewise_C_parity UNKNOWN and regime semantics before input29195 UNKNOWN. Aggregate integer-z maxima are not nodewise error bounds.",
+      "executable_command": null
+    },
+    {
+      "id": "three_grid_uncertainty",
+      "status": "blocked",
+      "depends_on": [
+        "h4_lowz",
+        "h2_full_history_assembly",
+        "h_nodewise_C_and_boundaries"
+      ],
+      "classification": "MISSING_EVIDENCE",
+      "reason": "Full independent h/h2/h4 histories plus original output stencils, uncertainties and stage boundaries are required. signed_triplet returns UNCERTAINTY_MISSING before slope interpretation when bounds are absent.",
+      "executable_command": null
+    },
+    {
+      "id": "global_h_h2_h4_convergence",
+      "status": "blocked",
+      "depends_on": [
+        "three_grid_uncertainty"
+      ],
+      "classification": "SCIENTIFIC_GATE",
+      "reason": "analyze --require-complete exists, but full input/uncertainty gates are not open. h4 completion alone is insufficient; exit0 diagnostic is not a physical PASS.",
+      "executable_command": null
+    },
+    {
+      "id": "original_U5_failure_resolution",
+      "status": "blocked",
+      "depends_on": [],
+      "classification": "PHYSICAL_OR_NUMERICAL_FAILURE_CLASSIFICATION",
+      "reason": "Original h HOLD_9_FAIL and h/2 HOLD_8_FAIL remain. No performance result closes these failures.",
+      "executable_command": null
+    },
+    {
+      "id": "REI_Bianchi_CMB",
+      "status": "blocked",
+      "depends_on": [
+        "global_h_h2_h4_convergence",
+        "original_U5_failure_resolution"
+      ],
+      "classification": "EXCLUDED_RESEARCH_LANE",
+      "reason": "REI_activation=false, Bianchi/REI/CMB physical approval and production readiness remain held and outside this platform batch.",
+      "executable_command": null
+    },
+    {
+      "id": "R3R_external_preservation",
+      "status": "blocked",
+      "depends_on": [],
+      "classification": "EXTERNAL_SHIPPING",
+      "reason": "R3R source/science/CI closeout is complete; Drive preservation remains explicitly unresolved in bf6bb95c DAG. This is not a scientific NCP run.",
+      "executable_command": null
+    }
+  ],
+  "scientific_holds": {
+    "original_R3P_reference_h": 4.245e-05,
+    "U5_h": "HOLD_9_FAIL",
+    "U5_h2": "HOLD_8_FAIL",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "REI_activation": false,
+    "global_h_h2_h4_convergence": "NOT_RUN",
+    "new_production_speedup": "NOT_MEASURED",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "new_full5210_allocation": null
+  },
+  "catalogue_policy": "Only five fixed argv builders exist in code. JSON cannot create new executable jobs, replace dependencies or remove timing barriers. Ready denotes code-ready, conditional on hard runtime gates.",
+  "execution_status": "NOT_RUN_ON_NCP",
+  "new_physics_implementation": "NONE",
+  "parallel_width": {
+    "independent_correctness_jobs": 2,
+    "timed_jobs": 1,
+    "target_logical_cpus": 64,
+    "claim": "Finite frontier width; no64x acceleration claim"
+  },
+  "selected_allocation": {
+    "default_jobs": 5,
+    "cpu_s": 305,
+    "wall_s": 912,
+    "reserve_cpu_s": 5,
+    "reserve_wall_s": 12,
+    "scope": "An explicit new whole-campaign allocation is required at run time. Every job remains60CPU/180wall/2GiB; no old allocation is reset."
+  }
+}
