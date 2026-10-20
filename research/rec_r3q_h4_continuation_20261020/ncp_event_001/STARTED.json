@@ -1,0 +1,32 @@
+{
+  "schema": "rec.r3q.h4-supervised.v1",
+  "status": "STARTED",
+  "command": [
+    "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "-B",
+    "/root/REC_R3Q_NCP_20261020/source/scripts/verify_r3q_h4_continuation.py",
+    "--supervised",
+    "--checkpoint",
+    "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+    "--evidence-dir",
+    "/root/REC_R3Q_NCP_20261020/source/research/rec_r3q_h4_continuation_20261020/ncp_event_001/worker",
+    "--mode",
+    "event",
+    "--new-allocation-id",
+    "REC_R3Q_NCP_EVENT_20261020T1141Z",
+    "--max-extra-accepted",
+    "8192"
+  ],
+  "new_allocation_id": "REC_R3Q_NCP_EVENT_20261020T1141Z",
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "rei_activation": false,
+  "allocation": {
+    "total_cpu_s": 600,
+    "total_wall_s": 900,
+    "address_space_bytes_per_process": 2147483648,
+    "threads": 1,
+    "worker_closeout_cpu_s_in_total": 5,
+    "worker_closeout_wall_s_in_total": 12,
+    "supervisor_closeout_wall_s_in_total": 2
+  }
+}

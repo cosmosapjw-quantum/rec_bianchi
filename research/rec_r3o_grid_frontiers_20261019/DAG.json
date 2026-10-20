@@ -38,15 +38,19 @@
     },
     {
       "id": "H2_LOW_Z",
-      "status": "16_step_smoke_scoped_same_h_review_pass",
+      "status": "153327_step_full_lowz_same_h_scoped_review_pass",
       "depends_on": [
         "R3M_FULL_U6"
       ],
       "evidence": [
-        "lowz_smoke_002/verification.json",
-        "review/R6_P2_01_CLOSURE.json"
+        "lowz_ncp_smoke_001/verification.json",
+        "lowz_ncp_full_001/verification.json",
+        "lowz_ncp_full_001/INDEPENDENT_REVIEW.json"
       ],
-      "full153327": "NOT_RUN"
+      "full153327": "PASS_SCOPED_SAME_H",
+      "endpoint": "STOP_AT_SOURCE_Z0_CUBIC_STENCIL; source provides only 3 terminal states for required 4-state stencil",
+      "historical_U5": "HOLD_8_FAIL",
+      "h_h2_h4_convergence": "NOT_RUN"
     },
     {
       "id": "INDEPENDENT_H4_START",
@@ -144,5 +148,15 @@
     "final_archive": "receipts/ARCHIVE_PRESERVATION.json",
     "source_evidence_commit": "721c717b03fe365a4745d4c71e81c8b8999f8ebc",
     "closing_HEAD_and_CI": "Detached CLOSEOUT_RECEIPTS and PR109 final receipt; closing docs do not change the tested code."
+  },
+  "ncp_lowz_full_20261020": {
+    "host": "s1a0e5abed09",
+    "allocation_id": "REC_R3O_LOWZ_NCP_20261020T114015Z",
+    "status": "PASS_SCOPED_FULL_LOWZ_SAME_H",
+    "independent_review": "lowz_ncp_full_001/INDEPENDENT_REVIEW.json",
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "U5_h2": "HOLD_8_FAIL",
+    "three_grid_convergence": "NOT_RUN",
+    "REI_activation": false
   }
 }

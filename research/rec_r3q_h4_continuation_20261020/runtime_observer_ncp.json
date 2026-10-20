@@ -1,0 +1,31 @@
+{
+  "schema":"rec.r3q.ncp-runtime-observer.v1",
+  "host":"s1a0e5abed09",
+  "h4_event":{
+    "launch":"taskset -c 63; Python 3.12.3 venv; BLAS/OMP/MKL/NUMEXPR threads=1",
+    "runner_recorded_affinity":[63],
+    "terminal":"/root/REC_R3Q_NCP_20261020/source/research/rec_r3q_h4_continuation_20261020/ncp_event_001/TERMINAL.json",
+    "terminal_sha256":"52df5f331437b1a7239ffed1b5a834aa41a487000cbf0ba060e5f65794f91f9b",
+    "worker_verification_sha256":"415efed4559eb3a2c844e919135df89ec3b4d9ed095c5e2dd3fd07d963539cd4",
+    "actual_cpu_s":30.196189,
+    "actual_wall_s":30.345126653992338,
+    "observed_peak_parent_rss_bytes":142118912,
+    "observed_peak_waited_child_rss_bytes":223346688
+  },
+  "h2_lowz_full":{
+    "launch":"taskset -c 62; Python 3.12.3 venv; BLAS/OMP/MKL/NUMEXPR threads=1",
+    "controller_ps_observation_utc":"2026-10-20T11:41:14Z",
+    "pid":980995,
+    "psr":62,
+    "elapsed_s_at_observation":35,
+    "cpu_percent_at_observation":94.9,
+    "rss_kib_at_observation":139304,
+    "verification":"/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/verification.json",
+    "verification_sha256":"3525f0fc13bc493a8ebc6d42741d7e9af5cbe726478df819f2ea918f5ad98c37",
+    "actual_process_tree_cpu_s":60.755865,
+    "actual_wall_s":62.63294564798707,
+    "observed_peak_parent_rss_bytes":263897088,
+    "observed_peak_child_rss_bytes":61931520
+  },
+  "limitations":"h2 runner does not itself record scheduler affinity; the observed one-CPU execution comes from the controller taskset launch and an in-run PSR snapshot. RSS scopes are parent/child maxima, not an aggregate process-tree peak."
+}

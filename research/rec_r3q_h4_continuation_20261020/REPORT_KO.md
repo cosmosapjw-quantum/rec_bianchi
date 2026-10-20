@@ -1,4 +1,23 @@
-# R3Q 독립 h4 continuation 연구 결과
+# R3Q 독립 h4 continuation 및 NCP 제한 실행 결과
+
+## 2026-10-20 NCP 실행 후속
+
+PR #111의 게시된 소스 `1ad0380110621446c42df9d995fd85db3a6c7e7a`에서 입력과 완료된 R3M U6 결과를 SHA 검증 후 재사용했다. NCP `s1a0e5abed09`는 64 CPU / 약 125 GiB RAM 호스트였다. 재귀 순서가 직렬인 두 서로 독립적인 경로를 CPU 63과 62에 각각 고정하고 BLAS/OMP 스레드를 1로 제한해 병렬 수행했다. 각 allocation의 주소공간 한도는 계약대로 프로세스당 2 GiB였다. 두 경로 실행 중 기존 HE29 작업도 관찰되어 계속 실행되도록 두었다.
+
+| 경로 | 실제 결과 | 자원 및 범위 |
+|---|---|---|
+| h4 first event+2 | helium cutoff `iz=74409` 후 H_ONLY 2 step, endpoint `iz=74411`, `EVENT_PLUS_TWO`; native same-h parity PASS, source closure 100/100. Astra 독립 판정 `PASS_SCOPED_H4_FIRST_EVENT_PLUS_TWO`. | 30.196 CPU s / 30.345 s runner wall; allocation 600/900 CPU/wall, 2 GiB/process. NCP affinity `[63]`. |
+| h2 low-z | 153,327 accepted steps, 43 checkpoints, same-h PASS. Source-defined z=0 cubic stencil에서 정지; 마지막 입력 z=`-2.238689928646398e-5`, 네 번째 경계 상태 부족. Astra 독립 판정 scoped PASS. | 60.756 CPU s / 62.633 s runner wall; allocation 600/900 CPU/wall, 2 GiB/process. launch CPU 62 확인. |
+
+원본 실행물과 검토서는 각각 `ncp_event_001/` 및 `../rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/` 아래 있으며, 하위 `INDEPENDENT_REVIEW.json`은 최종 검토판정 및 해시를 기록한다. h4 continuation NPZ SHA는 `7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9`, h2 low-z NPZ SHA는 `b25e2cbdafe4037d222116c4985eac95a380552f6799a2b3e950fb499965dbe6`이다. h2 z=0 interpolation 수치는 native 대 Python `xe=0.0001756130661263253 / 0.00017561306612632919`, `Tm=0.021729482901094277 / 0.02172948290109453`로 계산됐고, 그 값은 독립 검토서에서 4-state cubic 재계산으로 검사했다. 기존 source 경계에서 필요한 stencil coverage가 없으므로 이를 완전 z=0 종료로 해석하지 않는다.
+
+사용자의 64코어 자원 요청을 반영해 두 독립 경로를 동시 배정했으나, 두 시간축 재귀는 각각 직렬이며 기존 호스트 작업도 있어 나머지 코어를 임의로 과할당하지 않았다. allocation의 2 GiB/process 제약을 유지했으며 128 GiB 전체를 작업에 노출하거나 사용했다고 주장하지 않는다. h2 실행 중 PSR 62 스냅샷과 launcher taskset은 남았지만 전체 연속 affinity mask 및 동시 process-tree RSS 합계는 측정하지 않았다.
+
+**상태 경계:** 원래 budget `CLOSED_HOLD_NOT_RESET`, 원본 h U5 `HOLD_9_FAIL`, h2 U5 `HOLD_8_FAIL`을 그대로 보존한다. h4 event+2만 완료되었고, 후속 h4 U4/U5/U6/low-z 모듈 연결은 구현 미완료다. h2 노드는 source cubic-stencil 경계에서 종료됐다. 세 격자 수렴 `HOLD/NOT_RUN`, 전체 물리 admission 미승인, `REI_activation=false`, Bianchi/REI/CMB admission=false다. 이 scoped PASS들은 역사적 U5나 전역 과학 주장을 변경하지 않는다.
+
+두 경로는 이번 새 allocation에서 합계 약 90.952 CPU초와 93초 solver wall을 사용했다. 서로의 비용을 역사적 U5 비용에 합산하거나 U5를 재개하지 않았다. 실행시각·호스트·launcher 및 관찰의 한계는 allocation/runtime observer receipts에 보존되어 있다.
+
+---
 
 실제 start8 checkpoint에서 다음2개 accepted steps를 진행하는 새 Python/C 실행 경로를 완성했다. h4=2.1225e-5, iz72900→72902에서 original-C 같은-h 검증 PASS이며, 동일 소스의 독립 검토는 `PASS_SCOPED_TWO_STEP_CONTINUATION_AND_EXECUTION_HARNESS`다. 첫 stage event 실행은 NCP에 넘길 준비가 됐다.
 

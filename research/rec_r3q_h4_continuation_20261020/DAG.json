@@ -28,13 +28,13 @@
     },
     {
       "id": "REC-R3Q-H4-EVENT",
-      "state": "READY_NCP",
-      "evidence_or_dependency": "new600CPU/900wall allocation; max8192steps firstevent+2"
+      "state": "PASS_SCOPED_FIRST_EVENT_PLUS_TWO",
+      "evidence_or_dependency": "ncp_event_001/INDEPENDENT_REVIEW.json; iz74409 helium cutoff +2 H_ONLY to iz74411; allocation 600CPU/900wall"
     },
     {
       "id": "REC-R3O-LOWZ-H2",
-      "state": "READY_WITH_INPUT_RESTORE",
-      "evidence_or_dependency": "existing153327step runner; R3M rawbackup required"
+      "state": "PASS_SCOPED_FULL_LOWZ_SAME_H",
+      "evidence_or_dependency": "../rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json; 153327 steps; STOP_AT_SOURCE_Z0_CUBIC_STENCIL"
     },
     {
       "id": "REC-H4-U4-U5-U6-LOWZ",
@@ -87,5 +87,11 @@
     ]
   ],
   "publication": "PENDING_PARENT_PUSH",
-  "backup": "PENDING_PARENT_PROVIDER_ACK"
+  "backup": "PENDING_PARENT_PROVIDER_ACK",
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "historical_h_U5": "HOLD_9_FAIL",
+  "historical_h2_U5": "HOLD_8_FAIL",
+  "h_h2_h4_convergence": "HOLD",
+  "rei_activation": false,
+  "same_allocation_next_ready": "NONE; h4 dependent U4/U5/U6/low-z stage implementation is pending a separate scoped contract; h2 reached its source-defined z=0 cubic-stencil boundary"
 }

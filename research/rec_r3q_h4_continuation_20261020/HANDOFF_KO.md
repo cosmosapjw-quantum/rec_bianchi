@@ -1,5 +1,17 @@
 # REC R3Q: 독립 h4 event continuation 및 h2 low-z 실행 계약
 
+## 2026-10-20 실행 반환 상태
+
+아래 계약의 첫 h4 event+2와 독립 h2 low-z full은 NCP에서 실행됐고 fresh Astra 검토로 각각 `PASS_SCOPED_H4_FIRST_EVENT_PLUS_TWO`, h2 scoped same-h PASS를 받았다. 원본 output, saved-output parity 검토, allocation 및 runtime observer는 이 디렉터리의 `ncp_event_001/`, `host_coordination_ncp.json`, `runtime_observer_ncp.json`, 그리고 sibling `../rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/`에 있다.
+
+다음 작업은 h4 checkpoint `ncp_event_001/python_continuation.npz` (SHA `7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9`)의 H-only/post-Saha endpoint `iz=74411`을 입력으로 하는 별도 scoped h4 U4/U5/U6/low-z 구현 계약이다. 현 event runner는 full h4 continuation이 아니다. 독립 h2 결과는 153,327 accepted steps를 만들었으나 source가 z=0 cubic interpolation에 필요한 네 상태 중 세 개만 제공하여 `STOP_AT_SOURCE_Z0_CUBIC_STENCIL`에서 멈췄다; 자동 resume나 완전한 z=0 결과로 표시하지 않는다.
+
+원래 U5 budget과 gate는 `CLOSED_HOLD_NOT_RESET`, h U5 `HOLD_9_FAIL`, h2 U5 `HOLD_8_FAIL`로 그대로다. three-grid convergence `HOLD/NOT_RUN`, REI activation=false, 과학적/전역 admission은 미승인이다. 동일 allocation에서 지금 실행 가능한 다음 단계는 없다. 세 격자는 complete matched histories와 별도의 h4 dependent-stage implementation/review가 필요하다.
+
+NCP에서는 64 CPU를 가진 호스트에 서로 독립적인 h4/h2 path를 taskset으로 각각 CPU 63/62에 배정해 동시에 수행했다. 두 runner 모두 내부 순차 재귀여서 경로별 한 코어를 사용했다. 각각 2 GiB/process 제한을 유지했다. 128 GiB 전체 사용을 요청 계약에 맞추어 확장하지 않았고, 동시 process-tree RSS와 모든 시점의 h2 affinity mask를 측정했다고 주장하지 않는다. 누적 새 allocation usage는 runner receipt 기준 CPU `30.196189+60.755865`초, wall `30.345127+62.632946`초다.
+
+---
+
 이 문서를 받은 local Codex가 checkout, 입력 취득, 컴파일, 경량 플랫폼 확인과 실제 제한 실행을 직접 수행한다. 사용자가 파일을 미리 내려받거나 경로를 채울 필요가 없다. 실제 실행 전 최근 반환 결과를 조회하여 완료된 동일 campaign은 재사용한다.
 
 ## 소스와 완료 결과
