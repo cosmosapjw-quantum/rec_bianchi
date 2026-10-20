@@ -1,0 +1,905 @@
+{
+  "ci_checkout_commit": "71a72b76fc0cbfa0b32a63f3061b793e5634f7d4",
+  "ci_checkout_kind": "GITHUB_SYNTHETIC_PULL_REQUEST_MERGE",
+  "ci_checkout_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+  "collection_scope": "Read-only GitHub workflow/job/artifact collection, whole ZIP and entry hashes, raw JUnit parsing and fixed Git blob comparison. No forced workflow rerun, pytest, solver or benchmark executed by collector.",
+  "counting_policy": {
+    "R3S_unique_contract_cases": 47,
+    "dedicated_and_local_not_additive": true,
+    "general_subtests_not_added_to_top_level_cases": true,
+    "general_suite_includes_R3S_cases": true,
+    "prior45_and_targeted5_are_revalidation_of_same_current47_union": true
+  },
+  "dedicated": {
+    "NCP_execution": "NOT_RUN",
+    "all_entry_crc_and_sha256_readback": "PASS",
+    "allocation_id": "REC_R3S_LOCAL_VALIDATION_CI_39503008348_1",
+    "archive_entry_count": 89,
+    "artifact": {
+      "bytes": 65144,
+      "path": "ci_fixed/dedicated_39503008348.zip",
+      "sha256": "8a7ee2c116ca2d55312ca62622d51663df1dbeffea1c90fa49b82f3f3cd25901"
+    },
+    "artifact_id": 12302996055,
+    "canonical_validation_manifest_files_verified": 60,
+    "command": {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-B",
+        "-X",
+        "pycache_prefix=/home/runner/work/_temp/r3s-validation-39503008348-1/empty-pytest-pycache",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r3s_ncp_campaign.py",
+        "--basetemp=/home/runner/work/_temp/r3s-validation-39503008348-1/pytest-work",
+        "--junitxml=/home/runner/work/_temp/r3s-validation-39503008348-1/tests.xml"
+      ],
+      "cwd": "/home/runner/work/rec_bianchi/rec_bianchi",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 147828736,
+      "pid_namespace_mapping": {
+        "popen_pid": 2168,
+        "procfs_pid": 2168
+      },
+      "process_tree_cpu_s": 3.338826,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/home/runner/work/_temp/r3s-validation-39503008348-1/tests.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/home/runner/work/_temp/r3s-validation-39503008348-1/tests.stdout.log",
+      "stdout_sha256": "370b779a80fae64998f5219cf1913eaf42efc037efd72c51470b70585ab520c7",
+      "wall_s": 4.324150265999997
+    },
+    "conclusion": "success",
+    "cumulative_cpu_s": 3.438309,
+    "cumulative_wall_s": 4.533052243,
+    "effective_limits": {
+      "as": [
+        2147483648,
+        2147483648
+      ],
+      "cpu": [
+        60,
+        60
+      ]
+    },
+    "envelope": {
+      "cpu_s": 60.0,
+      "per_process_as_bytes": 2147483648,
+      "wall_s": 180.0
+    },
+    "environment": {
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "executable": "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+      "hostname": "runnervmxehtw",
+      "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]"
+    },
+    "final_receipt_write_reserve": {
+      "cpu_s": 2.0,
+      "wall_s": 3.0
+    },
+    "github_artifact_sha256": "8a7ee2c116ca2d55312ca62622d51663df1dbeffea1c90fa49b82f3f3cd25901",
+    "independent_whole_archive_readback": "PASS_MATCHES_GITHUB_DIGEST",
+    "job_id": 118904904676,
+    "job_log": {
+      "bytes": 26390,
+      "path": "ci_fixed/dedicated_job_118904904676.log",
+      "sha256": "ddbe34ae371cfa7c444b01fa0b16a2dd9d7d2a90cfad8e623208f2dfa1dcb68c"
+    },
+    "junit": {
+      "bytes": 6202,
+      "path": "ci_fixed/dedicated_artifact/tests.xml",
+      "sha256": "9a0ecce64e4e256b9bc9cd9190c713ad9d50109e663b75ce706c298aa3dab820"
+    },
+    "junit_case_ids": [
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited0-60-expected0]",
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited1-60-expected1]",
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited2-60-expected2]",
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited3-20-expected3]",
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited4-60-expected4]",
+      "tests.test_r3s_ncp_campaign::test_limits_only_lower[inherited5-4096-expected5]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[0-]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[2-1]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[0,,1]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[-1]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[0;echo]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_rejects_malformed[65536]",
+      "tests.test_r3s_ncp_campaign::test_cpu_assignment_normalizes_duplicates",
+      "tests.test_r3s_ncp_campaign::test_cgroup_minimum_ancestor_quota_and_remaining_memory",
+      "tests.test_r3s_ncp_campaign::test_cgroup_escape_rejected",
+      "tests.test_r3s_ncp_campaign::test_cgroup_v1_is_not_treated_as_unlimited",
+      "tests.test_r3s_ncp_campaign::test_host_target_and_actual_capacity_are_separate[change0-assigned0-IDENTITY]",
+      "tests.test_r3s_ncp_campaign::test_host_target_and_actual_capacity_are_separate[change1-assigned1-TARGET_NOT_OBSERVED]",
+      "tests.test_r3s_ncp_campaign::test_host_target_and_actual_capacity_are_separate[change2-assigned2-OUTSIDE_AFFINITY]",
+      "tests.test_r3s_ncp_campaign::test_host_target_and_actual_capacity_are_separate[change3-assigned3-NO_EFFECTIVE]",
+      "tests.test_r3s_ncp_campaign::test_host_target_and_actual_capacity_are_separate[change4-assigned4-NO_EFFECTIVE]",
+      "tests.test_r3s_ncp_campaign::test_memory_reserves_whole_active_allowances_without_rss_credit",
+      "tests.test_r3s_ncp_campaign::test_fixed_catalogue_blocks_new_commands_and_changed_barriers",
+      "tests.test_r3s_ncp_campaign::test_cycle_and_duplicate_nodes_fail_closed",
+      "tests.test_r3s_ncp_campaign::test_blocked_rust_does_not_block_numpy_frontier",
+      "tests.test_r3s_ncp_campaign::test_timed_frontier_is_an_exclusive_barrier",
+      "tests.test_r3s_ncp_campaign::test_wrong_source_sha_fails_before_source_reads",
+      "tests.test_r3s_ncp_campaign::test_plan_never_launches_jobs_or_changes_limits",
+      "tests.test_r3s_ncp_campaign::test_caught_deadline_keeps_original_hard_end_and_cannot_rearm_reserve",
+      "tests.test_r3s_ncp_campaign::test_timeout_in_final_identity_skips_all_later_optional_work",
+      "tests.test_r3s_ncp_campaign::test_allocation_id_cannot_move_to_fresh_output",
+      "tests.test_r3s_ncp_campaign::test_resume_nonfinite_or_negative_cost_is_rejected[values0]",
+      "tests.test_r3s_ncp_campaign::test_resume_nonfinite_or_negative_cost_is_rejected[values1]",
+      "tests.test_r3s_ncp_campaign::test_resume_nonfinite_or_negative_cost_is_rejected[values2]",
+      "tests.test_r3s_ncp_campaign::test_resume_nonfinite_or_negative_cost_is_rejected[values3]",
+      "tests.test_r3s_ncp_campaign::test_resume_cost_must_be_monotone",
+      "tests.test_r3s_ncp_campaign::test_resume_host_cpu_budget_and_unclosed_attempt_are_gates",
+      "tests.test_r3s_ncp_campaign::test_resume_reuses_completed_output_and_rejects_tamper",
+      "tests.test_r3s_ncp_campaign::test_host_intake_allows_only_verified_same_campaign_resume_completion",
+      "tests.test_r3s_ncp_campaign::test_namespace_mapping_selects_callers_level",
+      "tests.test_r3s_ncp_campaign::test_pidfd_signal_remains_bound_after_numeric_pid_reuse",
+      "tests.test_r3s_ncp_campaign::test_all_tid_children_are_visible",
+      "tests.test_r3s_ncp_campaign::test_missing_task_interface_uses_ppid_scan",
+      "tests.test_r3s_ncp_campaign::test_actual_dummy_process_ownership_in_fresh_child[parallel_and_barrier]",
+      "tests.test_r3s_ncp_campaign::test_actual_dummy_process_ownership_in_fresh_child[leader_leaves_new_session]",
+      "tests.test_r3s_ncp_campaign::test_actual_dummy_process_ownership_in_fresh_child[guardian_killed]"
+    ],
+    "junit_observed_counts": {
+      "cases": 47,
+      "errors": 0,
+      "failures": 0,
+      "passes": 47,
+      "skips": 0
+    },
+    "new_REC_benchmark_trials": 0,
+    "new_accepted_steps": 0,
+    "new_scientific_integrations": 0,
+    "prior_cpu_s": 0.0,
+    "prior_wall_s": 0.0,
+    "readback_details": {
+      "bytes": 63329,
+      "path": "ci_fixed/DEDICATED_READBACK.json",
+      "sha256": "c4e92d34abbf4043155683c7934d2d418a7f7f51645d1c257a65d26e8b6ded47"
+    },
+    "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+    "run_id": 39503008348,
+    "source_after": {
+      "bytes": 29917,
+      "path": "ci_fixed/dedicated_artifact/SOURCE_AFTER.json",
+      "sha256": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3"
+    },
+    "source_before": {
+      "bytes": 29917,
+      "path": "ci_fixed/dedicated_artifact/SOURCE_BEFORE.json",
+      "sha256": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3"
+    },
+    "source_before_after_identity": "UNCHANGED",
+    "source_closure_files_matched_to_fixed_git_blobs": 114,
+    "status": "completed",
+    "stderr": {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 99,
+      "path": "ci_fixed/dedicated_artifact/tests.stdout.log",
+      "sha256": "370b779a80fae64998f5219cf1913eaf42efc037efd72c51470b70585ab520c7"
+    },
+    "test_stdout_summary": "...............................................                          [100%]\n47 passed in 2.84s",
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39503008348",
+    "validation_receipt": {
+      "bytes": 11809,
+      "path": "ci_fixed/dedicated_artifact/validation.json",
+      "sha256": "a5d81fb0b2c1971281268d3f7a6b4603e1c534ee8310f9fe591740d2736a1540"
+    }
+  },
+  "fixed_source_and_actual_ci_tree_equal": true,
+  "fixed_source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+  "fixed_source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+  "general": {
+    "checkout_commit_from_actual_logs": "71a72b76fc0cbfa0b32a63f3061b793e5634f7d4",
+    "checkout_log_lines": [
+      "2026-10-20T21:46:09.4560484Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +71a72b76fc0cbfa0b32a63f3061b793e5634f7d4:refs/remotes/pull/113/merge"
+    ],
+    "checkout_tree_from_independent_git_object": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "command": [
+      "pytest",
+      "-q"
+    ],
+    "conclusion": "success",
+    "elapsed_scope": "Pytest-reported suite elapsed time. Not total workflow wall, CPU or a solver benchmark.",
+    "job_id": 118904905612,
+    "job_log": {
+      "bytes": 56710,
+      "path": "ci_fixed/general_job_118904905612.log",
+      "sha256": "dd6b9543d347d991ed7e5e782bd9b0495765d8db53d906f003499b73a8ecfbd8"
+    },
+    "log_data_scope": "Exact UTF-8 encoding of connector-decoded combined job logs; separate raw stdout/stderr files are not exposed by this workflow.",
+    "observed_log_counts": {
+      "passes": 1085,
+      "skips": 103,
+      "subtests_passed": 72
+    },
+    "peak_memory_bytes": "NOT_RECORDED",
+    "pytest_exit_code": "Not separately printed; GitHub step and job completed successfully.",
+    "pytest_reported_elapsed_s": 242.47,
+    "quick_verification_line": "2026-10-20T21:46:30.9997301Z {\"status\": \"PASS\", \"bundle_count\": 73, \"current_artifact\": \"Full_Bianchi_HyRec_PR05C2C1B2B1E1B0_dynamic_macro_ownership_no_go_v0_75\", \"mode\": \"quick\", \"scientific_slow_file_count\": 0, \"scientific_slow_test_count\": 0}",
+    "run_id": 39503008360,
+    "separate_allocation": "Preexisting general regression workflow; not charged to local R3S validation and not represented as bounded R3S dedicated job.",
+    "status": "completed",
+    "steps": [
+      {
+        "conclusion": "success",
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/checkout@v4",
+        "number": 2,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/setup-python@v5",
+        "number": 3,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run python -m pip install --upgrade pip",
+        "number": 4,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run python -m pip install -e '.[test]'",
+        "number": 5,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Record numerical runtime dispatch",
+        "number": 6,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Smoke-import every package module from the committed tree",
+        "number": 7,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run python scripts/verify_repo.py --quick",
+        "number": 8,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run pytest -q",
+        "number": 9,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/setup-python@v5",
+        "number": 17,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/checkout@v4",
+        "number": 18,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Complete job",
+        "number": 19,
+        "status": "completed"
+      }
+    ],
+    "summary_line": "2026-10-20T21:50:33.7916909Z 1085 passed, 103 skipped, 72 subtests passed in 242.47s (0:04:02)",
+    "total_cpu_s": "NOT_RECORDED",
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39503008360"
+  },
+  "independent_source_identity_commands": [
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "71a72b76fc0cbfa0b32a63f3061b793e5634f7d4"
+      ],
+      "exit_code": 0,
+      "scope": "Read-only remote Git-object recovery; no checkout/branch movement."
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "commit",
+        "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 373,
+        "path": "ci_fixed/fixed_source.commit",
+        "sha256": "4e4387cea318496978b6223c18dd9314cae7618eeb4e2f9fed664daa4e159b9a"
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "commit",
+        "71a72b76fc0cbfa0b32a63f3061b793e5634f7d4"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 1214,
+        "path": "ci_fixed/ci_merge.commit",
+        "sha256": "134ee8b9bc5ab9eacd8dc8b0f01d4db90c3e5c690304de18a006aa8a99680b8d"
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-rlz",
+        "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32"
+      ],
+      "exit_code": 0,
+      "scope": "114 source-closure records were matched to pinned modes/blob IDs and SHA256 of actual git cat-file blob bytes."
+    }
+  ],
+  "limitations": [
+    "This receipt does not authorize or evidence an NCP run, physical convergence or production readiness.",
+    "Public fixed source 52f884b7 and CI synthetic merge71a72b76 are different commits with the same exact tree.",
+    "Artifact materializations of pytest current aliases are retained in raw ZIP; canonical manifest and test identities determine counts.",
+    "CI runner resource receipt is a separate CI allocation. It is not added to the local validation/plotting ledger."
+  ],
+  "merge_parents": [
+    "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+    "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32"
+  ],
+  "observed_at_utc": "2026-10-20T21:54:24.520263+00:00",
+  "pull_request": 113,
+  "raw_files": [
+    {
+      "bytes": 63329,
+      "path": "ci_fixed/DEDICATED_READBACK.json",
+      "sha256": "c4e92d34abbf4043155683c7934d2d418a7f7f51645d1c257a65d26e8b6ded47"
+    },
+    {
+      "bytes": 337,
+      "path": "ci_fixed/artifact_download_connector_metadata.json",
+      "sha256": "942321dad7498c6b36fd1b7532c76d2fea848bd6110f1d420aa0fb13af0125c4"
+    },
+    {
+      "bytes": 1214,
+      "path": "ci_fixed/ci_merge.commit",
+      "sha256": "134ee8b9bc5ab9eacd8dc8b0f01d4db90c3e5c690304de18a006aa8a99680b8d"
+    },
+    {
+      "bytes": 65144,
+      "path": "ci_fixed/dedicated_39503008348.zip",
+      "sha256": "8a7ee2c116ca2d55312ca62622d51663df1dbeffea1c90fa49b82f3f3cd25901"
+    },
+    {
+      "bytes": 29917,
+      "path": "ci_fixed/dedicated_artifact/SOURCE_AFTER.json",
+      "sha256": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3"
+    },
+    {
+      "bytes": 29917,
+      "path": "ci_fixed/dedicated_artifact/SOURCE_BEFORE.json",
+      "sha256": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/driver.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 5919,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/driver.stdout.json",
+      "sha256": "ba025a32502a2c9be3bbc60364b7a71ead9bc7cdfa9360df8c3dbca2ffe1c5a3"
+    },
+    {
+      "bytes": 368,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/a/GUARDIAN.json",
+      "sha256": "343bc3ad3d87da17d0f5fdd806ddc0cc80d8ed822b88687256ebd83f5ef2640d"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/a/LIMITS.json",
+      "sha256": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1"
+    },
+    {
+      "bytes": 1578,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/a/TERMINAL.json",
+      "sha256": "bbf36d79609c844b52766ab005e7f4b7555d24837d9a3c572ccae23fb82d7c8c"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/a/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/a/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 358,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/b/GUARDIAN.json",
+      "sha256": "d1720400f8231ce7533011a3c5c77330adaf4f2331bb6ec72f03c5e523656c5b"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/b/LIMITS.json",
+      "sha256": "18bd3d1aaf045c9a897ffafa529800344fd77645a6ade228fb8bc6b6d0ada0e0"
+    },
+    {
+      "bytes": 1567,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/b/TERMINAL.json",
+      "sha256": "6fd16a97fb482f5afe2341d085abc762640c7d799ca262d96ded272f8b0e97c8"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/b/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/b/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1198,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/events.jsonl",
+      "sha256": "14fd513f73e9a7e885dd97d7cfc9cc6d2103e421cc1203a39e7bb75ec4539884"
+    },
+    {
+      "bytes": 359,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/timed/GUARDIAN.json",
+      "sha256": "dd9cdf118e614e7ab2ae44fe5960961cf70c7ad66ac1b456cd85841d8b03f1b6"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/timed/LIMITS.json",
+      "sha256": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1"
+    },
+    {
+      "bytes": 1573,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/timed/TERMINAL.json",
+      "sha256": "5327a7976eab9daef61e78634cc4c1d119f3b077d3d1766c073631286dae7ebf"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/timed/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne0/run/timed/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/driver.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2125,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/driver.stdout.json",
+      "sha256": "6c2f121903d90b05f970b450000deedbdd5f0c0f975d17354b8123388be3fd36"
+    },
+    {
+      "bytes": 498,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/events.jsonl",
+      "sha256": "1b4dcbfb3ae54fbddb7b1eda1b3ae7e6a40ae12a8472a1e4a42f44d2fc27235b"
+    },
+    {
+      "bytes": 449,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/orphan/GUARDIAN.json",
+      "sha256": "efbcca4e291f9f0a25d2297ac623c46862bbbf05f9f75f6dc0fa97a3bbe70cb5"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/orphan/LIMITS.json",
+      "sha256": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1"
+    },
+    {
+      "bytes": 1288,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/orphan/TERMINAL.json",
+      "sha256": "3f770ab77b3992c3ee9fca1e262d5bb361f6d99dfcc5880bd78f84620893b414"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/orphan/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne1/run/orphan/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/driver.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2278,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/driver.stdout.json",
+      "sha256": "4ae44cb988c8758c62be12c5694d53a4a27054a15400d022c062a71f79c3a969"
+    },
+    {
+      "bytes": 584,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/run/events.jsonl",
+      "sha256": "728eb12364dd8a8f3248a20dd8471236324345b1a2225ecc4e3dd1c928999d13"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/LIMITS.json",
+      "sha256": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1"
+    },
+    {
+      "bytes": 1277,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/TERMINAL.json",
+      "sha256": "628f9792bf82197b1135058d50abe4d6b7f580bf960828c1deaf8122f59fa3c7"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/driver.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2278,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/driver.stdout.json",
+      "sha256": "4ae44cb988c8758c62be12c5694d53a4a27054a15400d022c062a71f79c3a969"
+    },
+    {
+      "bytes": 584,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/run/events.jsonl",
+      "sha256": "728eb12364dd8a8f3248a20dd8471236324345b1a2225ecc4e3dd1c928999d13"
+    },
+    {
+      "bytes": 164,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/run/guardian_killed/LIMITS.json",
+      "sha256": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1"
+    },
+    {
+      "bytes": 1277,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/run/guardian_killed/TERMINAL.json",
+      "sha256": "628f9792bf82197b1135058d50abe4d6b7f580bf960828c1deaf8122f59fa3c7"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/run/guardian_killed/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_actual_dummy_process_ownecurrent/run/guardian_killed/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_all_tid_children_are_visi0/100/task/100/children",
+      "sha256": "14993db977ff54ff86b0c447cbf330d1718c108468ea0f0fe2ec1fbfdb73af2b"
+    },
+    {
+      "bytes": 8,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_all_tid_children_are_visi0/100/task/101/children",
+      "sha256": "0e58cb3530f8ab08b87e821227ae4fe8cc44957ec2f961b6862b3bdc5e6a5dd2"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_all_tid_children_are_visicurrent/100/task/100/children",
+      "sha256": "14993db977ff54ff86b0c447cbf330d1718c108468ea0f0fe2ec1fbfdb73af2b"
+    },
+    {
+      "bytes": 8,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_all_tid_children_are_visicurrent/100/task/101/children",
+      "sha256": "0e58cb3530f8ab08b87e821227ae4fe8cc44957ec2f961b6862b3bdc5e6a5dd2"
+    },
+    {
+      "bytes": 170,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_allocation_id_cannot_move0/registry/new-platform-001.json",
+      "sha256": "e866a2ea04ca633c789dcaedabebbc32955122d456d7f588e0742cc6d9f2a4e3"
+    },
+    {
+      "bytes": 170,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_allocation_id_cannot_movecurrent/registry/new-platform-001.json",
+      "sha256": "e866a2ea04ca633c789dcaedabebbc32955122d456d7f588e0742cc6d9f2a4e3"
+    },
+    {
+      "bytes": 13,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/cpu.max",
+      "sha256": "bac56da3656597df7cd4dc1d2cfa939d185b508c9b7dd15a620d7a626092328d"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/memory.current",
+      "sha256": "b090147020e033534635010c4f7eb6fc270d44e5df67ea9e744a8087df9ca106"
+    },
+    {
+      "bytes": 5,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/memory.max",
+      "sha256": "39e5b4830d4d9c14db7368a95b65d5463ea3d09520373723430c03a5a453b5df"
+    },
+    {
+      "bytes": 10,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/cpu.max",
+      "sha256": "cec99e2608b5d863bf1fd2c57dce02ab52f3047b4e97e5b510aed9cf700fadcf"
+    },
+    {
+      "bytes": 13,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/cpu.max",
+      "sha256": "c3bc35088445c148427afe9a9a9a57b2cc20932789dc59abab85db14d7d5ecc5"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/memory.current",
+      "sha256": "40510175845988f13f6162ed8526f0b09f73384467fa855e1e79b44a56562a58"
+    },
+    {
+      "bytes": 5,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/memory.max",
+      "sha256": "876c9b16254e157d1eb645390dcfae6f29b9d3cd394e73a91de8ee5d0e67ee43"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/memory.current",
+      "sha256": "0f8eb4b72b6e0c9e88b388eb967b49e067ef1004bf07bffc22c3acb13b43580a"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/memory.max",
+      "sha256": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c"
+    },
+    {
+      "bytes": 13,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/cpu.max",
+      "sha256": "bac56da3656597df7cd4dc1d2cfa939d185b508c9b7dd15a620d7a626092328d"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/memory.current",
+      "sha256": "b090147020e033534635010c4f7eb6fc270d44e5df67ea9e744a8087df9ca106"
+    },
+    {
+      "bytes": 5,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/memory.max",
+      "sha256": "39e5b4830d4d9c14db7368a95b65d5463ea3d09520373723430c03a5a453b5df"
+    },
+    {
+      "bytes": 10,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/cpu.max",
+      "sha256": "cec99e2608b5d863bf1fd2c57dce02ab52f3047b4e97e5b510aed9cf700fadcf"
+    },
+    {
+      "bytes": 13,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/job/cpu.max",
+      "sha256": "c3bc35088445c148427afe9a9a9a57b2cc20932789dc59abab85db14d7d5ecc5"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/job/memory.current",
+      "sha256": "40510175845988f13f6162ed8526f0b09f73384467fa855e1e79b44a56562a58"
+    },
+    {
+      "bytes": 5,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/job/memory.max",
+      "sha256": "876c9b16254e157d1eb645390dcfae6f29b9d3cd394e73a91de8ee5d0e67ee43"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/memory.current",
+      "sha256": "0f8eb4b72b6e0c9e88b388eb967b49e067ef1004bf07bffc22c3acb13b43580a"
+    },
+    {
+      "bytes": 4,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_cgroup_minimum_ancestor_qcurrent/cgroup/team/memory.max",
+      "sha256": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c"
+    },
+    {
+      "bytes": 19,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_host_intake_allows_only_v0/host_inventory.json",
+      "sha256": "16a927257c904e0ff541e88282ccdb9bbb645ded083bcd159610999e471dafce"
+    },
+    {
+      "bytes": 535,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_host_intake_allows_only_v0/intake.json",
+      "sha256": "004ca715a4455e8e04b7d27effa517f37ab1d947baafa5a81e1bf4c7265b43ff"
+    },
+    {
+      "bytes": 19,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_host_intake_allows_only_vcurrent/host_inventory.json",
+      "sha256": "16a927257c904e0ff541e88282ccdb9bbb645ded083bcd159610999e471dafce"
+    },
+    {
+      "bytes": 535,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_host_intake_allows_only_vcurrent/intake.json",
+      "sha256": "004ca715a4455e8e04b7d27effa517f37ab1d947baafa5a81e1bf4c7265b43ff"
+    },
+    {
+      "bytes": 22,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_missing_task_interface_us0/202/stat",
+      "sha256": "bb01c67acb5e36acdd4de68fcc5f66a4518e3356b8d2d4532a9321cd8333826e"
+    },
+    {
+      "bytes": 22,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_missing_task_interface_uscurrent/202/stat",
+      "sha256": "bb01c67acb5e36acdd4de68fcc5f66a4518e3356b8d2d4532a9321cd8333826e"
+    },
+    {
+      "bytes": 10659,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_plan_never_launches_jobs_0/manifest.json",
+      "sha256": "ec5d5761aba58fab55a7a0666b08b1003a14d7a21bedbdb2f6f26f61d86bee05"
+    },
+    {
+      "bytes": 10659,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_plan_never_launches_jobs_current/manifest.json",
+      "sha256": "ec5d5761aba58fab55a7a0666b08b1003a14d7a21bedbdb2f6f26f61d86bee05"
+    },
+    {
+      "bytes": 238,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_host_cpu_budget_an0/CAMPAIGN.json",
+      "sha256": "13f9085da86574247e4c10e83a8fd81978a52f23826f25c7149b01b72021eb15"
+    },
+    {
+      "bytes": 3,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_host_cpu_budget_an0/attempt_0001.STARTED.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 238,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_host_cpu_budget_ancurrent/CAMPAIGN.json",
+      "sha256": "13f9085da86574247e4c10e83a8fd81978a52f23826f25c7149b01b72021eb15"
+    },
+    {
+      "bytes": 3,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_host_cpu_budget_ancurrent/attempt_0001.STARTED.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 147,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_o0/CAMPAIGN.json",
+      "sha256": "017aca2f8770fa0dc9333cda85bee81903bf1ca3a1b690689ccd578ffdecded0"
+    },
+    {
+      "bytes": 162,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_o0/jobs/trace_original/TERMINAL.json",
+      "sha256": "b6ccda761a19ef4e5d812cabc264850b293d5d7b9176d0d40b87ea7f996ae7c1"
+    },
+    {
+      "bytes": 18,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_o0/jobs/trace_original/raw.json",
+      "sha256": "f687b355896d9ca4af05ddd0b8a732c4890af2114d664282cf56a5cef8e909e8"
+    },
+    {
+      "bytes": 147,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_ocurrent/CAMPAIGN.json",
+      "sha256": "017aca2f8770fa0dc9333cda85bee81903bf1ca3a1b690689ccd578ffdecded0"
+    },
+    {
+      "bytes": 162,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_ocurrent/jobs/trace_original/TERMINAL.json",
+      "sha256": "b6ccda761a19ef4e5d812cabc264850b293d5d7b9176d0d40b87ea7f996ae7c1"
+    },
+    {
+      "bytes": 18,
+      "path": "ci_fixed/dedicated_artifact/pytest-work/test_resume_reuses_completed_ocurrent/jobs/trace_original/raw.json",
+      "sha256": "f687b355896d9ca4af05ddd0b8a732c4890af2114d664282cf56a5cef8e909e8"
+    },
+    {
+      "bytes": 1523,
+      "path": "ci_fixed/dedicated_artifact/tests.execution.json",
+      "sha256": "d90778734751d35a6b8c95ed595edfc0ea5bff561b47801ad747dc8d214df3a2"
+    },
+    {
+      "bytes": 0,
+      "path": "ci_fixed/dedicated_artifact/tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 99,
+      "path": "ci_fixed/dedicated_artifact/tests.stdout.log",
+      "sha256": "370b779a80fae64998f5219cf1913eaf42efc037efd72c51470b70585ab520c7"
+    },
+    {
+      "bytes": 6202,
+      "path": "ci_fixed/dedicated_artifact/tests.xml",
+      "sha256": "9a0ecce64e4e256b9bc9cd9190c713ad9d50109e663b75ce706c298aa3dab820"
+    },
+    {
+      "bytes": 11809,
+      "path": "ci_fixed/dedicated_artifact/validation.json",
+      "sha256": "a5d81fb0b2c1971281268d3f7a6b4603e1c534ee8310f9fe591740d2736a1540"
+    },
+    {
+      "bytes": 1098,
+      "path": "ci_fixed/dedicated_artifacts.json",
+      "sha256": "6afc6d52f4a285129522b13d089ccc2edbb9083efba602cbf92469505aafd3ea"
+    },
+    {
+      "bytes": 26390,
+      "path": "ci_fixed/dedicated_job_118904904676.log",
+      "sha256": "ddbe34ae371cfa7c444b01fa0b16a2dd9d7d2a90cfad8e623208f2dfa1dcb68c"
+    },
+    {
+      "bytes": 1993,
+      "path": "ci_fixed/dedicated_jobs.json",
+      "sha256": "b8e656bf12ce1bef50a8ec1ea54abfb25701f4c59ec56d0820f5df4ac9865143"
+    },
+    {
+      "bytes": 373,
+      "path": "ci_fixed/fixed_source.commit",
+      "sha256": "4e4387cea318496978b6223c18dd9314cae7618eeb4e2f9fed664daa4e159b9a"
+    },
+    {
+      "bytes": 56710,
+      "path": "ci_fixed/general_job_118904905612.log",
+      "sha256": "dd6b9543d347d991ed7e5e782bd9b0495765d8db53d906f003499b73a8ecfbd8"
+    },
+    {
+      "bytes": 2476,
+      "path": "ci_fixed/general_jobs_final.json",
+      "sha256": "d9c6aed777fdf3f68d8e4d493cef3c179d1183143fdd354a4780848cb4765f15"
+    },
+    {
+      "bytes": 2299,
+      "path": "ci_fixed/general_jobs_initial.json",
+      "sha256": "0e175bc30083e5252f96cbf854e7af9f70fdeb7eeaaaae045047cf5a550d102c"
+    },
+    {
+      "bytes": 804,
+      "path": "ci_fixed/merge_commit_connector_metadata.json",
+      "sha256": "453de15a94ac35690729377eaaa9a804d4e8db162f30c0c9caaafa00adfd74f3"
+    },
+    {
+      "bytes": 1039,
+      "path": "ci_fixed/workflow_runs_final.json",
+      "sha256": "cbc89e9e365c3ed5d3a7d52fef9db389ec200e536b8e35be0ae3882a5c9323ac"
+    },
+    {
+      "bytes": 1037,
+      "path": "ci_fixed/workflow_runs_initial.json",
+      "sha256": "02cf538691d8f3c89ed37b4eb449f6fd798c4cdae54f10678dbe41ff729395c3"
+    }
+  ],
+  "raw_git_commit_hash_verification": "PASS_RECOMPUTED_GIT_SHA1_FROM_COMMIT_HEADER_AND_RAW_BYTES",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "schema": "rec.r3s.fixed-source-ci.v1",
+  "status": "PASS_SCOPED"
+}

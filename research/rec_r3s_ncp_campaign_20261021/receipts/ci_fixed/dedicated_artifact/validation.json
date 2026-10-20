@@ -1,0 +1,176 @@
+{
+  "NCP_execution": "NOT_RUN",
+  "allocation_id": "REC_R3S_LOCAL_VALIDATION_CI_39503008348_1",
+  "command_scope": "new R3S dummy scheduler contracts only",
+  "commands": [
+    {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-B",
+        "-X",
+        "pycache_prefix=/home/runner/work/_temp/r3s-validation-39503008348-1/empty-pytest-pycache",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r3s_ncp_campaign.py",
+        "--basetemp=/home/runner/work/_temp/r3s-validation-39503008348-1/pytest-work",
+        "--junitxml=/home/runner/work/_temp/r3s-validation-39503008348-1/tests.xml"
+      ],
+      "cwd": "/home/runner/work/rec_bianchi/rec_bianchi",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 147828736,
+      "pid_namespace_mapping": {
+        "popen_pid": 2168,
+        "procfs_pid": 2168
+      },
+      "process_tree_cpu_s": 3.338826,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/home/runner/work/_temp/r3s-validation-39503008348-1/tests.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/home/runner/work/_temp/r3s-validation-39503008348-1/tests.stdout.log",
+      "stdout_sha256": "370b779a80fae64998f5219cf1913eaf42efc037efd72c51470b70585ab520c7",
+      "wall_s": 4.324150265999997
+    }
+  ],
+  "effective_limits": {
+    "as": [
+      2147483648,
+      2147483648
+    ],
+    "cpu": [
+      60,
+      60
+    ]
+  },
+  "environment": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "executable": "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+    "hostname": "runnervmxehtw",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]"
+  },
+  "evidence_sha256": {
+    "SOURCE_AFTER.json": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3",
+    "SOURCE_BEFORE.json": "613b28b48deac7f30f75b3329f79abd074098ab858ccde7cde13e3b0ad8596d3",
+    "pytest-work/test_actual_dummy_process_owne0/driver.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/driver.stdout.json": "ba025a32502a2c9be3bbc60364b7a71ead9bc7cdfa9360df8c3dbca2ffe1c5a3",
+    "pytest-work/test_actual_dummy_process_owne0/run/a/GUARDIAN.json": "343bc3ad3d87da17d0f5fdd806ddc0cc80d8ed822b88687256ebd83f5ef2640d",
+    "pytest-work/test_actual_dummy_process_owne0/run/a/LIMITS.json": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1",
+    "pytest-work/test_actual_dummy_process_owne0/run/a/TERMINAL.json": "bbf36d79609c844b52766ab005e7f4b7555d24837d9a3c572ccae23fb82d7c8c",
+    "pytest-work/test_actual_dummy_process_owne0/run/a/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/run/a/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/run/b/GUARDIAN.json": "d1720400f8231ce7533011a3c5c77330adaf4f2331bb6ec72f03c5e523656c5b",
+    "pytest-work/test_actual_dummy_process_owne0/run/b/LIMITS.json": "18bd3d1aaf045c9a897ffafa529800344fd77645a6ade228fb8bc6b6d0ada0e0",
+    "pytest-work/test_actual_dummy_process_owne0/run/b/TERMINAL.json": "6fd16a97fb482f5afe2341d085abc762640c7d799ca262d96ded272f8b0e97c8",
+    "pytest-work/test_actual_dummy_process_owne0/run/b/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/run/b/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/run/events.jsonl": "14fd513f73e9a7e885dd97d7cfc9cc6d2103e421cc1203a39e7bb75ec4539884",
+    "pytest-work/test_actual_dummy_process_owne0/run/timed/GUARDIAN.json": "dd9cdf118e614e7ab2ae44fe5960961cf70c7ad66ac1b456cd85841d8b03f1b6",
+    "pytest-work/test_actual_dummy_process_owne0/run/timed/LIMITS.json": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1",
+    "pytest-work/test_actual_dummy_process_owne0/run/timed/TERMINAL.json": "5327a7976eab9daef61e78634cc4c1d119f3b077d3d1766c073631286dae7ebf",
+    "pytest-work/test_actual_dummy_process_owne0/run/timed/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne0/run/timed/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne1/driver.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne1/driver.stdout.json": "6c2f121903d90b05f970b450000deedbdd5f0c0f975d17354b8123388be3fd36",
+    "pytest-work/test_actual_dummy_process_owne1/run/events.jsonl": "1b4dcbfb3ae54fbddb7b1eda1b3ae7e6a40ae12a8472a1e4a42f44d2fc27235b",
+    "pytest-work/test_actual_dummy_process_owne1/run/orphan/GUARDIAN.json": "efbcca4e291f9f0a25d2297ac623c46862bbbf05f9f75f6dc0fa97a3bbe70cb5",
+    "pytest-work/test_actual_dummy_process_owne1/run/orphan/LIMITS.json": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1",
+    "pytest-work/test_actual_dummy_process_owne1/run/orphan/TERMINAL.json": "3f770ab77b3992c3ee9fca1e262d5bb361f6d99dfcc5880bd78f84620893b414",
+    "pytest-work/test_actual_dummy_process_owne1/run/orphan/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne1/run/orphan/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne2/driver.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne2/driver.stdout.json": "4ae44cb988c8758c62be12c5694d53a4a27054a15400d022c062a71f79c3a969",
+    "pytest-work/test_actual_dummy_process_owne2/run/events.jsonl": "728eb12364dd8a8f3248a20dd8471236324345b1a2225ecc4e3dd1c928999d13",
+    "pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/LIMITS.json": "2303ccb14909530d57aa49d8c6e62a1aa4afeefea4e2f4fc46369d04fb98abb1",
+    "pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/TERMINAL.json": "628f9792bf82197b1135058d50abe4d6b7f580bf960828c1deaf8122f59fa3c7",
+    "pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_actual_dummy_process_owne2/run/guardian_killed/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-work/test_all_tid_children_are_visi0/100/task/100/children": "14993db977ff54ff86b0c447cbf330d1718c108468ea0f0fe2ec1fbfdb73af2b",
+    "pytest-work/test_all_tid_children_are_visi0/100/task/101/children": "0e58cb3530f8ab08b87e821227ae4fe8cc44957ec2f961b6862b3bdc5e6a5dd2",
+    "pytest-work/test_allocation_id_cannot_move0/registry/new-platform-001.json": "e866a2ea04ca633c789dcaedabebbc32955122d456d7f588e0742cc6d9f2a4e3",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/cpu.max": "bac56da3656597df7cd4dc1d2cfa939d185b508c9b7dd15a620d7a626092328d",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/memory.current": "b090147020e033534635010c4f7eb6fc270d44e5df67ea9e744a8087df9ca106",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/memory.max": "39e5b4830d4d9c14db7368a95b65d5463ea3d09520373723430c03a5a453b5df",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/cpu.max": "cec99e2608b5d863bf1fd2c57dce02ab52f3047b4e97e5b510aed9cf700fadcf",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/cpu.max": "c3bc35088445c148427afe9a9a9a57b2cc20932789dc59abab85db14d7d5ecc5",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/memory.current": "40510175845988f13f6162ed8526f0b09f73384467fa855e1e79b44a56562a58",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/job/memory.max": "876c9b16254e157d1eb645390dcfae6f29b9d3cd394e73a91de8ee5d0e67ee43",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/memory.current": "0f8eb4b72b6e0c9e88b388eb967b49e067ef1004bf07bffc22c3acb13b43580a",
+    "pytest-work/test_cgroup_minimum_ancestor_q0/cgroup/team/memory.max": "ad5f9478d603fe97eae2bbff07f76fe7f18610343b5f3bc8e00945ee51b30d2c",
+    "pytest-work/test_host_intake_allows_only_v0/host_inventory.json": "16a927257c904e0ff541e88282ccdb9bbb645ded083bcd159610999e471dafce",
+    "pytest-work/test_host_intake_allows_only_v0/intake.json": "004ca715a4455e8e04b7d27effa517f37ab1d947baafa5a81e1bf4c7265b43ff",
+    "pytest-work/test_missing_task_interface_us0/202/stat": "bb01c67acb5e36acdd4de68fcc5f66a4518e3356b8d2d4532a9321cd8333826e",
+    "pytest-work/test_plan_never_launches_jobs_0/manifest.json": "ec5d5761aba58fab55a7a0666b08b1003a14d7a21bedbdb2f6f26f61d86bee05",
+    "pytest-work/test_resume_host_cpu_budget_an0/CAMPAIGN.json": "13f9085da86574247e4c10e83a8fd81978a52f23826f25c7149b01b72021eb15",
+    "pytest-work/test_resume_host_cpu_budget_an0/attempt_0001.STARTED.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "pytest-work/test_resume_reuses_completed_o0/CAMPAIGN.json": "017aca2f8770fa0dc9333cda85bee81903bf1ca3a1b690689ccd578ffdecded0",
+    "pytest-work/test_resume_reuses_completed_o0/jobs/trace_original/TERMINAL.json": "b6ccda761a19ef4e5d812cabc264850b293d5d7b9176d0d40b87ea7f996ae7c1",
+    "pytest-work/test_resume_reuses_completed_o0/jobs/trace_original/raw.json": "f687b355896d9ca4af05ddd0b8a732c4890af2114d664282cf56a5cef8e909e8",
+    "tests.execution.json": "d90778734751d35a6b8c95ed595edfc0ea5bff561b47801ad747dc8d214df3a2",
+    "tests.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests.stdout.log": "370b779a80fae64998f5219cf1913eaf42efc037efd72c51470b70585ab520c7",
+    "tests.xml": "9a0ecce64e4e256b9bc9cd9190c713ad9d50109e663b75ce706c298aa3dab820"
+  },
+  "exit_code": 0,
+  "final_receipt_write_reserve": {
+    "cpu_s": 2.0,
+    "wall_s": 3.0
+  },
+  "first_failure": null,
+  "inherited_limits": {
+    "as": [
+      -1,
+      -1
+    ],
+    "cpu": [
+      -1,
+      -1
+    ]
+  },
+  "new_REC_benchmark_trials": 0,
+  "new_accepted_steps": 0,
+  "new_execution_cpu_s": 3.438309,
+  "new_execution_wall_s": 4.533052243,
+  "new_scientific_integrations": 0,
+  "prior_cpu_s": 0.0,
+  "prior_receipt_sha256": null,
+  "prior_wall_s": 0.0,
+  "process_tree_cpu_s": 3.438309,
+  "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+  "schema": "rec.r3s.local-validation.v1",
+  "source_commit": "71a72b76fc0cbfa0b32a63f3061b793e5634f7d4",
+  "source_files_verified": 114,
+  "source_input_identity": "UNCHANGED",
+  "source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+  "status": "COMPLETED_SCOPED",
+  "test_counts": {
+    "cases": 47,
+    "errors": 0,
+    "failures": 0,
+    "passes": 47,
+    "skips": 0
+  },
+  "total_envelope": {
+    "cpu_s": 60.0,
+    "per_process_as_bytes": 2147483648,
+    "wall_s": 180.0
+  },
+  "wall_accounting": "cumulative active supervised intervals, including preflight and final evidence hashing; editing pauses excluded",
+  "wall_s": 4.533052243,
+  "wrapper_sha256": "12eca453d39196cedca9e9a8e0353a3b7d9067da6bd9a8c9a0bb51972565447d"
+}

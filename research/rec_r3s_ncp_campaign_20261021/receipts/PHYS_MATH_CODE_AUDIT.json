@@ -1,0 +1,415 @@
+{
+  "NCP_execution": "NOT_RUN",
+  "actual_resource_evidence": {
+    "allocation_id": "REC_R3S_LOCAL_VALIDATION_20261021_001",
+    "environment": {
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "hostname": "6a4240d1fd44",
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "final_receipt_reserve": {
+      "cpu_s": 2.0,
+      "wall_s": 3.0
+    },
+    "memory_scope": "Per-process AS ceilings, sampled tree RSS and separate rusage maxima; no exact aggregate peak.",
+    "plot_effective_limits": {
+      "as": [
+        2147483648,
+        2147483648
+      ],
+      "cpu": [
+        50,
+        52
+      ]
+    },
+    "plot_new_cpu_s": 1.834219000000001,
+    "plot_new_wall_s": 1.8478889120015083,
+    "plot_reaped_child_maxrss_bytes": 81424384,
+    "plot_self_maxrss_bytes": 81555456,
+    "sampled_test_tree_RSS_bytes": [
+      110886912,
+      111079424
+    ],
+    "total_envelope": {
+      "cpu_s": 60.0,
+      "per_process_as_bytes": 2147483648,
+      "wall_s": 180.0
+    },
+    "validation_001_cpu_s": 3.8238679999999996,
+    "validation_001_effective_limits": {
+      "as": [
+        2147483648,
+        2147483648
+      ],
+      "cpu": [
+        60,
+        60
+      ]
+    },
+    "validation_001_wall_s": 3.8181037540052785,
+    "validation_002_cumulative_cpu_s": 7.929025999999999,
+    "validation_002_cumulative_wall_s": 7.837205600008019,
+    "validation_002_effective_limits": {
+      "as": [
+        2147483648,
+        2147483648
+      ],
+      "cpu": [
+        56,
+        56
+      ]
+    },
+    "with_plot_cumulative_cpu_s": 9.763245,
+    "with_plot_cumulative_wall_s": 9.685094512009528
+  },
+  "actual_test_evidence": {
+    "actual_dummy_scenarios": [
+      {
+        "all_owned_descendants_reaped": true,
+        "cumulative_cpu_s": 1.1677849999999999,
+        "cumulative_wall_s": 1.1105794320028508,
+        "driver_sha256": "e6b6491adf88e034bcfd3773f98ae7b350129030eb1a09c3189e0fcf51a94ab1",
+        "events_sha256": "a89c4846e25d3a45473f8b1ad2e1e69fbd4d2dabe55c33a5726d76a965078e9e",
+        "expected_failure": null,
+        "scenario": "parallel_and_barrier",
+        "verdict": "PASS_SCOPED_DUMMY_CONTRACT"
+      },
+      {
+        "all_owned_descendants_reaped": true,
+        "cumulative_cpu_s": 0.436202,
+        "cumulative_wall_s": 0.476488694010186,
+        "driver_sha256": "44e65569f89660ae76a4028e2bb106667b7f3f7adfc77d0c9eb6774553459eef",
+        "events_sha256": "c8882f6b5bbd2368b9b8d489b51956f5d09f1a38b6ffb29bf15783ad7e2dfc32",
+        "expected_failure": null,
+        "scenario": "leader_leaves_new_session",
+        "verdict": "PASS_SCOPED_DUMMY_CONTRACT"
+      },
+      {
+        "all_owned_descendants_reaped": true,
+        "cumulative_cpu_s": 0.420271,
+        "cumulative_wall_s": 0.4427186420070939,
+        "driver_sha256": "f7053a918ecede99bff6d005e4b39fb3fbbc81b81eb6185d429eda91f3330da6",
+        "events_sha256": "71504a6d261e561dd6cd8319896dade4deb6d8a9cb14107935258b190469af60",
+        "expected_failure": {
+          "message": "UNEXPECTED_ADOPTED_JOB_DESCENDANT",
+          "type": "ValueError"
+        },
+        "scenario": "guardian_killed",
+        "verdict": "PASS_SCOPED_DUMMY_CONTRACT"
+      }
+    ],
+    "counting": {
+      "CI_repetition_adds_unique_cases": 0,
+      "local_case_executions": 50,
+      "new_deadline_cases": 2,
+      "old_R3R_or_R3P_cases_rerun_here": 0,
+      "repeated_affected_dummy_cases": 3,
+      "unique_new_R3S_cases": 47
+    },
+    "first": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-X",
+        "pycache_prefix=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_001/empty-pytest-pycache",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r3s_ncp_campaign.py",
+        "--basetemp=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_001/pytest-work",
+        "--junitxml=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_001/tests.xml"
+      ],
+      "counts": {
+        "cases": 45,
+        "errors": 0,
+        "failures": 0,
+        "passes": 45,
+        "skips": 0
+      },
+      "exit_code": 0,
+      "new_cpu_s": 3.8238679999999996,
+      "new_wall_s": 3.8181037540052785,
+      "source_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+      "validation_sha256": "1aec53bcb0aa0fe6f0648c4738f345adb8d61ab752d79039e63848794a0d98d8"
+    },
+    "new_deadline_test_method": "Mocked clock/signal only; no actual expiry stress or scientific run is claimed.",
+    "targeted": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-X",
+        "pycache_prefix=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/empty-pytest-pycache",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r3s_ncp_campaign.py::test_caught_deadline_keeps_original_hard_end_and_cannot_rearm_reserve",
+        "tests/test_r3s_ncp_campaign.py::test_timeout_in_final_identity_skips_all_later_optional_work",
+        "tests/test_r3s_ncp_campaign.py::test_actual_dummy_process_ownership_in_fresh_child",
+        "--basetemp=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/pytest-work",
+        "--junitxml=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/tests.xml"
+      ],
+      "counts": {
+        "cases": 5,
+        "errors": 0,
+        "failures": 0,
+        "passes": 5,
+        "skips": 0
+      },
+      "exit_code": 0,
+      "new_cpu_s": 4.105157999999999,
+      "new_wall_s": 4.019101846002741,
+      "source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+      "validation_sha256": "fa9382e6e8c71ed425a778ba92a2fac7f589cb82ca6667718ee6e26ac99af44e"
+    }
+  },
+  "claim_gate": {
+    "Implementation correctness": {
+      "scope": "Reviewed final52f884 source; original45 cases plus new2 and repeated3 source-bound targeted cases; no remaining P1/P2 in this scope.",
+      "verdict": "PASS_SCOPED_INDEPENDENT_CODE_AUDIT"
+    },
+    "Mathematical correctness": {
+      "scope": "Extended accepted-state recurrence contract; fixed independent-job DAG and conditional work/span/Amdahl algebra.",
+      "verdict": "PASS_SCOPED"
+    },
+    "Measured acceleration": {
+      "scope": "No new solver or NCP benchmark. R3R saved-stream component ratio1.3641298365714964 is reused only in its original scope.",
+      "verdict": "NOT_MEASURED_R3S_NCP"
+    },
+    "Memory and resource behavior": {
+      "scope": "Lower inherited caps, same allocation carry-forward, sampled tree RSS, observed owned-child cleanup; no exact aggregate-peak or generic security-container claim.",
+      "verdict": "PASS_SCOPED_LOCAL_OBSERVATIONS; NCP_UNVERIFIED"
+    },
+    "Numerical equivalence": {
+      "scope": "No R3S numerical payload implementation change. Prior25000 lane proof and prior pilot remain prior evidence.",
+      "verdict": "COMPLETE_REUSED_R3R; NEW_NCP_NOT_RUN"
+    },
+    "Physical validity": {
+      "scope": "Original U5 failures and missing global convergence remain.",
+      "verdict": "HOLD"
+    },
+    "Production readiness": {
+      "scope": "No physical or production gate promotion.",
+      "verdict": "NOT_APPROVED"
+    }
+  },
+  "figure_review": {
+    "actual_figures": 1,
+    "directly_viewed_format": "PNG",
+    "formats": [
+      "PNG",
+      "PDF",
+      "SVG"
+    ],
+    "plotting_raw_receipt_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_plots_001/plotting.json",
+    "plotting_raw_receipt_sha256": "d3e717d5d26d09679592bd96a46e15b48c270bd014ee297b4f29834d877e1ae2",
+    "producer_original_status_preserved": "COMPLETED_SYNTHETIC_PLOTS_PENDING_VISUAL_REVIEW",
+    "receipt": "VISUAL_REVIEW.json",
+    "sha256": "d712b517b123998684f0db2da29a9f48a74c6ead543278d3615f77b76bfdd3cd",
+    "source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "verdict": "PASS_SCOPED_DIRECT_PNG_REVIEW"
+  },
+  "findings": {
+    "G4_source_and_targeted_return": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "closed": [
+      "G1",
+      "G2",
+      "G3",
+      "G4"
+    ],
+    "history": "CODE_FINDINGS_HISTORY.json",
+    "open_P1_P2": []
+  },
+  "independence": "Reviewer authored none of coordinator/tests/wrapper/workflow/theory/plotter; own evidence-readback/report code is identified separately.",
+  "linked_evidence": {
+    "AUDIT_EVIDENCE_READBACK_001.json": {
+      "bytes": 49571,
+      "sha256": "2c0f55e9ee1926b77a43fcb2d214e2852f7d4738b171068c86fca435fa51febf"
+    },
+    "AUDIT_EVIDENCE_READBACK_002.json": {
+      "bytes": 42782,
+      "sha256": "676e0405f24f0d46564eab0e56fe167926e5f40a92d4410cc170f5090c088347"
+    },
+    "CODE_FINDINGS_HISTORY.json": {
+      "bytes": 5071,
+      "sha256": "4dfe80b6635f17f9e413fbb05fd7c097686344dd0c3d93de99dd260714fbf301"
+    },
+    "DEADLINE_FIX_STATIC_READBACK.json": {
+      "bytes": 4862,
+      "sha256": "e08f3007cb11923fe94dfa74a5e2a3c50e05fb03d4b6aa6b159c343532d373ca"
+    },
+    "PENDING_GLOBAL_DAG_REVIEW.json": {
+      "bytes": 7099,
+      "sha256": "747fd87a44570307969878720cb483ef4830c0f966266037b6d471cc003348e3"
+    },
+    "PHYS_MATH_AUDIT.json": {
+      "bytes": 7088,
+      "sha256": "832a1d6861e262ded110764a70318a14edeefe600d80c6a51110b8b145046314"
+    },
+    "PHYS_MATH_AUDIT.md": {
+      "bytes": 7930,
+      "sha256": "faeead3ca9b5d3e33795af7de1ea13e7213faa272dd64b53f210f6974d7b8cd6"
+    },
+    "VISUAL_REVIEW.json": {
+      "bytes": 6289,
+      "sha256": "d712b517b123998684f0db2da29a9f48a74c6ead543278d3615f77b76bfdd3cd"
+    },
+    "audit_evidence_readback.py": {
+      "bytes": 14999,
+      "sha256": "b205dc9cf07702432f97e168c60d4d7f2dfcee1d57eb05affeb4b1298380f9e5"
+    },
+    "local_validation_001/validation.json": {
+      "bytes": 12020,
+      "sha256": "1aec53bcb0aa0fe6f0648c4738f345adb8d61ab752d79039e63848794a0d98d8"
+    },
+    "local_validation_002/validation.json": {
+      "bytes": 9422,
+      "sha256": "fa9382e6e8c71ed425a778ba92a2fac7f589cb82ca6667718ee6e26ac99af44e"
+    },
+    "prepublication_review/7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26.py.txt": {
+      "bytes": 49202,
+      "sha256": "7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26"
+    },
+    "prepublication_review/GUARDIAN_READONLY_SUPPLEMENT.json": {
+      "bytes": 6842,
+      "sha256": "bd4b9c150f96b516f56a5a5753c820132bd34e9e5ef4417577b2aded7665b197"
+    },
+    "prepublication_review/audit_evidence_readback_001_source.py.txt": {
+      "bytes": 12982,
+      "sha256": "6991bce866a8ebc1a7ac0446f89eda716b9557a2db37cf7c89595961d1c60c47"
+    }
+  },
+  "new_accepted_steps": 0,
+  "new_scientific_benchmark_trials": 0,
+  "new_scientific_integrations": 0,
+  "new_test_executions_by_this_auditor": 0,
+  "one_independent_code_review": true,
+  "physical_holds": {
+    "REI_activation": false,
+    "U5_original_h": "HOLD_9_FAIL",
+    "U5_original_h2": "HOLD_8_FAIL",
+    "global_h_h2_h4_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_full5210_allocation": null
+  },
+  "primary_interface_sources": [
+    {
+      "inspected": "man-pages6.19; manualdate2026-02-08; process-directory fd support and PID-reuse semantics",
+      "url": "https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html"
+    },
+    {
+      "inspected": "NSpid hierarchy, per-task children semantics and RSS limitations",
+      "url": "https://www.kernel.org/doc/html/latest/filesystems/proc.html"
+    }
+  ],
+  "remaining_gates_separate_from_code_verdict": [
+    "Actual NCP access/current-source result and session intake",
+    "Observed64CPU/128GB host and explicit CPU ownership",
+    "Explicit new finite campaign allocation before any NCP run",
+    "Source-faithful future h4 stages; h2 assembly; original-h nodewise C/boundary evidence; global convergence",
+    "Final delivery CI and external preservation recorded by shipping owner"
+  ],
+  "report": {
+    "bytes": 15959,
+    "sha256": "fe74f0a2069bd513dbde0d68ecc2808fa821f5a9cd917838d8cc77edcdb2a700"
+  },
+  "reviewed_sources": {
+    ".github/workflows/verify-r3s-ncp-campaign.yml": {
+      "bytes": 1886,
+      "git_blob_sha1": "128ec378dbfe4c20360849718ed40fcead0dd45a",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "582f3c2bf81c1c510d67fad320b3a0b41581c14c9604daafe54d1c55fcbeada4"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/CAMPAIGN.json": {
+      "bytes": 14673,
+      "git_blob_sha1": "928a49de381700862f374dacc41aa0032323f7d0",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "fc41acec1e6cc819fb1bfab0284ab19e6a1119f99bdd573241c253fa0442f059"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/THEORY_KO.md": {
+      "bytes": 12149,
+      "git_blob_sha1": "e0a2e036a70c213882a5ab6b8b4d0c906812ddb0",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "ae17eed714e81601f6a32084d043442f072d5b9dd56c9fc3d8f17ce83c0291a9"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/validation/plot_local_validation.py": {
+      "bytes": 24759,
+      "git_blob_sha1": "b62baed6f53a0bd962191cca58befe15e30dde5e",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "47960422855ca4ff2b86e8645786597cb1fcbc8d9006cc688cc2fb9ed2a87427"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/validation/run_local_validation.py": {
+      "bytes": 10874,
+      "git_blob_sha1": "205e3ceb00b0873ae4c1fbf47f5b2852ef89d4f7",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "12eca453d39196cedca9e9a8e0353a3b7d9067da6bd9a8c9a0bb51972565447d"
+    },
+    "scripts/run_r3s_ncp_campaign.py": {
+      "bytes": 57490,
+      "git_blob_sha1": "a67a071883c254c0115b8e7f5f0737afc848ed77",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "8e53d84479a6aa026cd80f15f8e0a22494cfce69e157a82635b731770df95221"
+    },
+    "tests/test_r3s_ncp_campaign.py": {
+      "bytes": 19509,
+      "git_blob_sha1": "9e57dc83df60a38a9a99f2d29f715706c0b5265b",
+      "review_method": "COMPLETE_SOURCE_READ",
+      "sha256": "82e11ce853bfd639b33920a9ccc621877199ecc42f25504cec20d3b6b06c1254"
+    }
+  },
+  "reviewed_utc": "2026-10-20T21:54:51.000649+00:00",
+  "reviewer": "/root/context_intake",
+  "schema": "rec.r3s.independent-phys-math-code-audit.v1",
+  "source_evidence": {
+    "files_per_validation": 114,
+    "first_actual_raw_files_hashed": 60,
+    "frozen_unique_files": 100,
+    "independent_readback_methods": [
+      "Git tree and actual cat-file object bytes with independent SHA1/SHA256",
+      "All actual receipt-declared raw file hashes",
+      "JUnit individual names/statuses and actual command/stdout/stderr",
+      "Driver/TERMINAL/GUARDIAN/LIMITS/event linkage",
+      "Exact prior allocation and cost chain",
+      "Direct PNG view plus figure/input/source hash readback"
+    ],
+    "plot_self_binding_is_additional_to_114_test_entries": true,
+    "targeted_actual_raw_files_hashed": 39
+  },
+  "source_identity": {
+    "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+    "base_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
+    "final_assessed_source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "final_assessed_source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "first_source_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+    "first_source_tree": "a4c5005fcf93bb98df31b4a39a3431dd01d7daed",
+    "later_delivery_HEAD": "SEPARATE_METADATA_AND_SHIPPING_IDENTITY",
+    "reused_R3R_scientific_execution_source": "1313b1f1b2c081d57bcce9c60e757ef79110df91"
+  },
+  "supports_DAG_gates": [
+    "PHYS_MATH_CODE_AUDIT",
+    "FINAL_INDEPENDENT_CODE_AUDIT"
+  ],
+  "unchanged_predecessor_files_since_R3S_base": [
+    "scripts/r3r_stream_audit.py",
+    "scripts/benchmark_r3r_stream_audit.py",
+    "scripts/run_r3r_h4_supervised.py",
+    "scripts/build_r3o_rust.py",
+    "tests/test_r3r_stream_audit.py"
+  ],
+  "verdict": "PASS_SCOPED_INDEPENDENT_CODE_AUDIT"
+}

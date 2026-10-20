@@ -1,0 +1,98 @@
+{
+  "CI_repetitions_recounted_as_new": false,
+  "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+  "claim_axes": {
+    "implementation_correctness": {
+      "local_case_executions": 50,
+      "new_unique_contracts": 47,
+      "open_P1_P2_in_independent_review": 0,
+      "repeated_affected_dummy_cases": 3,
+      "scope": "Fixed finite catalogue, supported Linux interfaces, source/input/runtime identity, ownership/cleanup, deadlines and resume; actual NCP compatibility remains unverified",
+      "verdict": "PASS_SCOPED_LOCAL"
+    },
+    "mathematical_correctness": {
+      "evidence": [
+        "receipts/PHYS_MATH_AUDIT.json",
+        "THEORY_KO.md",
+        "receipts/WOLFRAM_EXACT_INPUT_CHECK.json"
+      ],
+      "scope": "Retained recurrence, fixed-job independence, conditional work/span and Amdahl algebra; no new physical solution theorem",
+      "verdict": "PASS_SCOPED_CONTRACT"
+    },
+    "measured_acceleration": {
+      "R3R_paired_CPU_median_ratio": 1.3641298365714964,
+      "R3R_paired_wall_median_ratio": 1.3638913471290828,
+      "new_production_speedup": "NOT_MEASURED",
+      "scope": "R3R whole saved-stream audit includes open, parse, allocation and verdict; synthetic R3S timeline has no measured serial baseline",
+      "verdict": "R3S_NCP_NOT_MEASURED; R3R_AUDIT_COMPLETE_REUSED"
+    },
+    "memory_and_resource_behavior": {
+      "allocation_id": "REC_R3S_LOCAL_VALIDATION_20261021_001",
+      "caps": {
+        "cpu_s": 60.0,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180.0
+      },
+      "cumulative_CPU_s": 9.763245,
+      "cumulative_wall_s": 9.685094512009528,
+      "exact_aggregate_peak_or_memory_reduction_claim": false,
+      "receipt_reserve": {
+        "cpu_s": 2,
+        "wall_s": 3
+      },
+      "scope": "Observed local process limits, carried costs and owned-child cleanup; sampled RSS and per-process AS are distinct",
+      "verdict": "PASS_SCOPED_LOCAL; NCP_UNVERIFIED"
+    },
+    "numerical_equivalence": {
+      "new_NCP_comparisons": 0,
+      "new_R3S_REC_lane_comparisons": 0,
+      "scope": "Prior actual25000 binary64 lanes and32-step raw/NPY gate; R3S changes no numerical operator",
+      "verdict": "COMPLETE_REUSED_R3R; NCP_NOT_RUN"
+    },
+    "physical_validity": {
+      "scope": "Original U5 failures, missing nodewise uncertainty/provenance and global h/h2/h4 convergence NOT_RUN retained",
+      "verdict": "HOLD_NOT_ESTABLISHED"
+    },
+    "production_readiness": {
+      "scope": "Draft research; no whole-production speed result, global convergence or full allocation",
+      "verdict": "NOT_APPROVED"
+    }
+  },
+  "execution_source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+  "execution_source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+  "external_shipping_and_execution_gates": "DAG.json and BACKUP_ACKS.json are separate; not passed by this local claim gate",
+  "first_validation_source": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+  "independent_code_audit": {
+    "bytes": 16177,
+    "path": "receipts/PHYS_MATH_CODE_AUDIT.json",
+    "sha256": "27725830840a0172b1460211e2d0da52d7a4b19015ff0755c6523847395aa5ad"
+  },
+  "mathematical_audit": {
+    "bytes": 7088,
+    "path": "receipts/PHYS_MATH_AUDIT.json",
+    "sha256": "832a1d6861e262ded110764a70318a14edeefe600d80c6a51110b8b145046314"
+  },
+  "new_R3S_NCP_runs": 0,
+  "new_R3S_scientific_integrations": 0,
+  "prior_results_recounted_as_new": false,
+  "reviewed_utc": "2026-10-20T21:55:56.980214+00:00",
+  "schema": "rec.r3s.claim-gate.v1",
+  "scientific_holds": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_full5210_allocation": false,
+    "new_whole_production_speedup": "NOT_MEASURED",
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "reference_user_h": 4.245e-05
+  },
+  "status": "PASS_SCOPED_LOCAL_RESEARCH_WITH_EXTERNAL_EXECUTION_AND_SHIPPING_BLOCKERS",
+  "visual_review": {
+    "bytes": 6289,
+    "path": "receipts/VISUAL_REVIEW.json",
+    "sha256": "d712b517b123998684f0db2da29a9f48a74c6ead543278d3615f77b76bfdd3cd"
+  }
+}

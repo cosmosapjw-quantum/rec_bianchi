@@ -1,275 +1,314 @@
 {
-  "schema": "rec.r3s.research-dag.v1",
-  "node": "R3S",
-  "repository": "cosmosapjw-quantum/rec_bianchi",
   "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
   "branch": "research/rec-r3s-ncp-campaign-20261021",
-  "selected_candidate": "C: bounded NCP platform campaign for already implemented exact audit and pilots",
+  "coding_nodes": [
+    {
+      "evidence": [
+        "receipts/INTAKE.json",
+        "receipts/PREDECESSOR_PUBLICATION.json"
+      ],
+      "id": "C1",
+      "name": "목표·baseline",
+      "status": "complete"
+    },
+    {
+      "evidence": [
+        "THEORY_KO.md"
+      ],
+      "id": "C2",
+      "name": "식–데이터–코드",
+      "status": "complete"
+    },
+    {
+      "id": "C3",
+      "name": "수치 설계",
+      "scope": "Original numerical scheme reused; only independent whole-job scheduling selected.",
+      "status": "complete_scoped"
+    },
+    {
+      "evidence": [
+        "CAMPAIGN.json",
+        "NCP_PENDING_JOBS.json"
+      ],
+      "id": "C4",
+      "name": "실행 DAG·자원",
+      "status": "complete_scoped"
+    },
+    {
+      "id": "C5",
+      "name": "구현",
+      "status": "complete_scoped"
+    },
+    {
+      "id": "C6",
+      "name": "구현 검증",
+      "status": "complete_scoped"
+    },
+    {
+      "id": "C7",
+      "name": "과학 검증",
+      "reused": "R3R scoped scientific equivalence remains complete_reused; no new platform result.",
+      "status": "blocked_external_NCP_validation"
+    },
+    {
+      "id": "C8",
+      "name": "수치·재현성",
+      "status": "complete_scoped"
+    },
+    {
+      "id": "C9",
+      "name": "독립 검토",
+      "status": "complete_scoped"
+    },
+    {
+      "id": "C10",
+      "known_external_blockers": [
+        "NCP usage quota",
+        "Google Drive preservation unresolved"
+      ],
+      "name": "판정·인계",
+      "status": "in_progress_final_preservation"
+    }
+  ],
+  "invariants": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_full5210_allocation": false,
+    "new_whole_production_speedup": "NOT_MEASURED",
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "reference_user_h": 4.245e-05
+  },
+  "node": "R3S",
   "predecessors": [
     {
       "id": "R3P_R1_R10_C1_C10",
-      "status": "complete_reused",
       "source_roles": {
-        "implementation_execution": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
         "code_evidence_snapshot": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+        "implementation_execution": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
         "preservation_metadata_head": "888d56d72579d1e1fd30f66abe02d9f91809a767"
-      }
+      },
+      "status": "complete_reused"
     },
     {
-      "id": "R3Q_NCP_H4_FIRST_EVENT_PLUS_TWO",
-      "status": "complete_reused",
+      "evidence_archive_sha256": "5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2",
       "execution_source": "1ad0380110621446c42df9d995fd85db3a6c7e7a",
-      "evidence_archive_sha256": "5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2"
+      "id": "R3Q_NCP_H4_FIRST_EVENT_PLUS_TWO",
+      "status": "complete_reused"
     },
     {
       "id": "R3O_H2_LOW_Z_RETURN_AND_R3R_ENDPOINT_CORRECTION",
-      "status": "complete_reused",
-      "limit": "not a complete global three-grid result"
+      "limit": "not a complete global three-grid result",
+      "status": "complete_reused"
     },
     {
-      "id": "R3R_EXACT_STREAM_NUMPY",
-      "status": "complete_reused",
-      "execution_source": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
       "ci_test_fix_source": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+      "execution_source": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "id": "R3R_EXACT_STREAM_NUMPY",
       "metadata_head": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
-      "preservation_limit": "Dropbox/Library whole readbacks PASS; Google Drive stage obligations unresolved"
+      "preservation_limit": "Dropbox/Library whole readbacks PASS; Google Drive stage obligations unresolved",
+      "status": "complete_reused"
     }
   ],
+  "repository": "cosmosapjw-quantum/rec_bianchi",
   "research_nodes": [
     {
       "id": "R1",
+      "limit": "No newer external scientific return found in checked GitHub/backup scope; NCP device quota prevents comprehensive runtime lookup.",
       "name": "latest source and real receipt recovery",
-      "status": "complete_scoped",
-      "limit": "No newer external scientific return found in checked GitHub/backup scope; NCP device quota prevents comprehensive runtime lookup."
+      "status": "complete_scoped"
     },
     {
-      "id": "R2",
-      "name": "physics numerical code resource contracts",
-      "status": "complete",
       "depends_on": [
         "R1"
-      ]
+      ],
+      "id": "R2",
+      "name": "physics numerical code resource contracts",
+      "status": "complete"
     },
     {
-      "id": "R3",
-      "name": "compare at most three candidates and select one",
-      "status": "complete",
       "depends_on": [
         "R2"
-      ]
+      ],
+      "id": "R3",
+      "name": "compare at most three candidates and select one",
+      "status": "complete"
     },
     {
-      "id": "R4",
-      "name": "primary literature and algebra",
-      "status": "complete_pending_independent_review",
       "depends_on": [
         "R3"
       ],
+      "evidence": [
+        "receipts/PHYS_MATH_AUDIT.json"
+      ],
+      "id": "R4",
+      "name": "primary literature and algebra",
       "receipt": "receipts/WOLFRAM_EXACT_INPUT_CHECK.json",
-      "limit": "undefined W/L/P display warnings retained; fixed-DAG proof supplied separately"
+      "status": "complete_scoped"
     },
     {
-      "id": "R5",
-      "name": "bounded whole-job coordinator and platform manifest",
-      "status": "implemented_pending_fixed_source_verification",
       "depends_on": [
         "R3"
-      ]
+      ],
+      "evidence": [
+        "receipts/PHYS_MATH_CODE_AUDIT.json"
+      ],
+      "id": "R5",
+      "name": "bounded whole-job coordinator and platform manifest",
+      "status": "complete_scoped"
     },
     {
-      "id": "R6",
-      "name": "fixed-source local dummy and adversarial contracts",
-      "status": "not_run",
       "depends_on": [
         "R5"
-      ]
+      ],
+      "evidence": [
+        "receipts/local_validation_001/validation.json",
+        "receipts/local_validation_002/validation.json"
+      ],
+      "id": "R6",
+      "name": "fixed-source local dummy and adversarial contracts",
+      "status": "complete_scoped"
     },
     {
-      "id": "R7",
-      "name": "actual local schedule/resource plots and visual inspection",
-      "status": "not_run",
       "depends_on": [
         "R6"
-      ]
+      ],
+      "evidence": [
+        "receipts/plots_001/plotting.json",
+        "receipts/VISUAL_REVIEW.json"
+      ],
+      "id": "R7",
+      "name": "actual local schedule/resource plots and visual inspection",
+      "status": "complete_scoped"
     },
     {
-      "id": "R8",
-      "name": "PHYS-MATH and PHYS-MATH-CODE audits",
-      "status": "in_progress",
       "depends_on": [
         "R4",
         "R5",
         "R6"
-      ]
+      ],
+      "evidence": [
+        "receipts/PHYS_MATH_AUDIT.json",
+        "receipts/PHYS_MATH_CODE_AUDIT.json"
+      ],
+      "id": "R8",
+      "name": "PHYS-MATH and PHYS-MATH-CODE audits",
+      "status": "complete_scoped"
     },
     {
-      "id": "R9",
-      "name": "independent code audit and final claim gates",
-      "status": "not_run",
       "depends_on": [
         "R7",
         "R8"
-      ]
+      ],
+      "evidence": [
+        "receipts/CLAIM_GATE.json"
+      ],
+      "id": "R9",
+      "name": "independent code audit and final claim gates",
+      "status": "complete_scoped"
     },
     {
-      "id": "R10",
-      "name": "source and evidence publication, backups, handoff",
-      "status": "in_progress",
       "depends_on": [
         "R1"
       ],
-      "limit": "GitHub source checkpoint and final reviewed delivery are separate stages"
+      "evidence": [
+        "BACKUP_ACKS.json",
+        "DELIVERY.json"
+      ],
+      "id": "R10",
+      "limit": "GitHub source checkpoint and final reviewed delivery are separate stages",
+      "name": "source and evidence publication, backups, handoff",
+      "status": "in_progress_final_preservation"
     }
   ],
   "runtime_nodes": [
     {
       "id": "NCP_ACCESS",
-      "status": "blocked_external_usage_quota",
-      "message": "Desktop Commander reported monthly tool usage exhausted. Device remains paired; no retry/reconnect or execution attempted after that response."
+      "message": "Desktop Commander reported monthly tool usage exhausted. Device remains paired; no retry/reconnect or execution attempted after that response.",
+      "status": "blocked_external_usage_quota"
     },
     {
-      "id": "NCP_HARDWARE_IDENTITY",
-      "status": "unverified",
       "depends_on": [
         "NCP_ACCESS"
       ],
+      "id": "NCP_HARDWARE_IDENTITY",
+      "limit": "Connected device name is not proof of NCP identity or capacity.",
       "requested_target": {
         "logical_cpus": 64,
         "ram_bytes_minimum": 128000000000
       },
-      "limit": "Connected device name is not proof of NCP identity or capacity."
+      "status": "unverified"
     },
     {
-      "id": "NCP_PLATFORM_FIVE_JOBS",
-      "status": "not_run",
       "depends_on": [
         "NCP_HARDWARE_IDENTITY",
         "R9"
       ],
-      "limit": "Only fixed allowlisted jobs; explicit new allocation and assigned CPUs required."
+      "id": "NCP_PLATFORM_FIVE_JOBS",
+      "limit": "Only fixed allowlisted jobs; explicit new allocation and assigned CPUs required.",
+      "status": "not_run"
     },
     {
+      "gate": "U4 -> U5 -> U6 -> low-z continuation, no full allocation inferred",
       "id": "H4_POST_EVENT_STAGES",
-      "status": "blocked_missing_stage_implementation_and_validation",
-      "gate": "U4 -> U5 -> U6 -> low-z continuation, no full allocation inferred"
+      "status": "blocked_missing_stage_implementation_and_validation"
     },
     {
+      "gate": "endpoint return alone is not all stage data",
       "id": "H2_COMPLETE_HISTORY_ASSEMBLY",
-      "status": "pending_provenance_and_assembly",
-      "gate": "endpoint return alone is not all stage data"
+      "status": "pending_provenance_and_assembly"
     },
     {
+      "gate": "nodewise_C_parity UNKNOWN; early regime labels UNKNOWN",
       "id": "H_NODEWISE_PARITY_AND_EARLY_BOUNDARIES",
-      "status": "unresolved",
-      "gate": "nodewise_C_parity UNKNOWN; early regime labels UNKNOWN"
+      "status": "unresolved"
     },
     {
-      "id": "GLOBAL_H_H2_H4_CONVERGENCE",
-      "status": "not_run",
       "depends_on": [
         "H4_POST_EVENT_STAGES",
         "H2_COMPLETE_HISTORY_ASSEMBLY",
         "H_NODEWISE_PARITY_AND_EARLY_BOUNDARIES"
       ],
-      "gate": "UNCERTAINTY_MISSING is retained; coverage alone cannot close it"
+      "gate": "UNCERTAINTY_MISSING is retained; coverage alone cannot close it",
+      "id": "GLOBAL_H_H2_H4_CONVERGENCE",
+      "status": "not_run"
     }
   ],
-  "invariants": {
-    "reference_user_h": 4.245e-05,
-    "original_U5_h": "HOLD_9_FAIL",
-    "original_U5_h2": "HOLD_8_FAIL",
-    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
-    "REI_activation": false,
-    "global_convergence": "NOT_RUN",
-    "new_full5210_allocation": false,
-    "new_whole_production_speedup": "NOT_MEASURED",
-    "physical_validity": "HOLD",
-    "production_readiness": "NOT_APPROVED"
-  },
+  "schema": "rec.r3s.research-dag.v1",
+  "selected_candidate": "C: bounded NCP platform campaign for already implemented exact audit and pilots",
   "stage_delivery": [
     {
-      "stage": "R3R predecessor closure",
-      "status": "published_and_two_remote_readbacks_pass",
-      "commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
       "archive_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
-      "google_drive": "UNRESOLVED_NO_NEW_UNCHANGED_WRITE_RETRY"
+      "commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+      "google_drive": "UNRESOLVED_NO_NEW_UNCHANGED_WRITE_RETRY",
+      "stage": "R3R predecessor closure",
+      "status": "published_and_two_remote_readbacks_pass"
     },
     {
+      "archive_sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
+      "commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+      "dropbox": "PASS_WHOLE_READBACK",
+      "google_drive": "NOT_ATTEMPTED_EXISTING_WRITE_STATE_UNRESOLVED",
+      "library": "PASS_WHOLE_READBACK",
       "stage": "R3S source checkpoint",
-      "status": "pending"
+      "status": "published_two_complete_remote_readbacks"
     },
     {
+      "CI": "receipts/CI_FIXED_SOURCE.json",
+      "NCP_runs": 0,
+      "execution_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+      "new_scientific_integrations": 0,
+      "new_unique_contracts": 47,
       "stage": "R3S reviewed local verification",
-      "status": "pending"
+      "status": "verified_final_archive_pending"
     }
   ],
-  "coding_nodes": [
-    {
-      "id": "C1",
-      "name": "목표·baseline",
-      "status": "complete",
-      "evidence": [
-        "receipts/INTAKE.json",
-        "receipts/PREDECESSOR_PUBLICATION.json"
-      ]
-    },
-    {
-      "id": "C2",
-      "name": "식–데이터–코드",
-      "status": "complete",
-      "evidence": [
-        "THEORY_KO.md"
-      ]
-    },
-    {
-      "id": "C3",
-      "name": "수치 설계",
-      "status": "complete_scoped",
-      "scope": "Original numerical scheme reused; only independent whole-job scheduling selected."
-    },
-    {
-      "id": "C4",
-      "name": "실행 DAG·자원",
-      "status": "complete_pending_fixed_source_verification",
-      "evidence": [
-        "CAMPAIGN.json",
-        "NCP_PENDING_JOBS.json"
-      ]
-    },
-    {
-      "id": "C5",
-      "name": "구현",
-      "status": "complete_pending_fixed_source_verification"
-    },
-    {
-      "id": "C6",
-      "name": "구현 검증",
-      "status": "not_run"
-    },
-    {
-      "id": "C7",
-      "name": "과학 검증",
-      "status": "blocked_external_NCP_validation",
-      "reused": "R3R scoped scientific equivalence remains complete_reused; no new platform result."
-    },
-    {
-      "id": "C8",
-      "name": "수치·재현성",
-      "status": "pending_local_evidence_and_plots"
-    },
-    {
-      "id": "C9",
-      "name": "독립 검토",
-      "status": "in_progress"
-    },
-    {
-      "id": "C10",
-      "name": "판정·인계",
-      "status": "in_progress",
-      "known_external_blockers": [
-        "NCP usage quota",
-        "Google Drive preservation unresolved"
-      ]
-    }
-  ]
+  "updated_utc": "2026-10-20T21:55:56.980214+00:00",
+  "validated_source": {
+    "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"
+  }
 }

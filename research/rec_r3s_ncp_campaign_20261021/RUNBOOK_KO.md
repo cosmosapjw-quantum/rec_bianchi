@@ -108,6 +108,6 @@ R3P Rust build의90 CPU s, R3O Rust build의240 CPU/480 wall/3 GiB, R3O verifier
 
 ## 검증 상태와 문헌
 
-이 runbook 작성 시 새 R3S tests/더미 실행/NCP scientific workload는 실행하지 않았다. 실제 검증 결과는 고정 source 게시 후 별도 receipt와 독립 audit가 갱신한다. 세 더미 process case는 fresh bounded child에서만 돌며 기존 pytest process의 limit/subreaper를 변경하지 않는다. `--basetemp` 아래 각 case의 `driver.stdout.json`, `driver.stderr.log`, `run/events.jsonl`, job logs/receipts가 timeline plot의 실제 입력이다.
+초기 작성 뒤 R3S source96e8에서45 PASS, source52f884에서 신규2+영향받는dummy3의 targeted5 PASS를 실제 확인했다. 고유 계약은47개다. 실제 검증 명령·source/input identity·CPU/wall·stdout/stderr·exit·독립 감사와 CI는 `EVIDENCE.json`과 해당 receipt에 기록했다. 새 NCP scientific workload는 여전히 NOT_RUN이다. 원본 validation/plot receipt의 상태를 사후 변경하지 않는다. 세 더미 process case는 fresh bounded child에서만 돌며 기존 pytest process의 limit/subreaper를 변경하지 않는다. `--basetemp` 아래 각 case의 `driver.stdout.json`, `driver.stderr.log`, `run/events.jsonl`, job logs/receipts가 timeline plot의 실제 입력이다.
 
 구현 근거는 [Python subprocess 문서](https://docs.python.org/3.12/library/subprocess.html), [Linux PR_SET_CHILD_SUBREAPER](https://man7.org/linux/man-pages/man2/PR_SET_CHILD_SUBREAPER.2const.html), [Linux pidfd_send_signal](https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html)이다. 스레드가 있는 parent의 `preexec_fn`을 사용하지 않으며 subreaper 설정을 각 guardian에서 직접 확인한다. PID descriptor의 안정된 process 참조와 전통적인 numeric PID signal의 재사용 race를 구별한다.

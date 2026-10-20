@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+"""Read fixed Git objects and existing R3S validation bytes; execute no tests/jobs."""
+from __future__ import annotations
+
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import resource
+import subprocess
+import time
+import xml.etree.ElementTree as ET
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def main():
+    began_wall, began_cpu = time.monotonic(), time.process_time()
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--repository', type=Path, required=True)
+    ap.add_argument('--validation', type=Path, required=True)
+    ap.add_argument('--commit', required=True)
+    ap.add_argument('--cases', type=int, required=True)
+    ap.add_argument('--output', type=Path, required=True)
+    args = ap.parse_args()
+    root, raw = args.repository.resolve(), args.validation.resolve()
+
+    def git(*argv):
+        return subprocess.check_output(['git', *argv], cwd=root, timeout=20)
+
+    def read_json(path):
+        return json.loads(path.read_bytes())
+
+    receipt = read_json(raw / 'validation.json')
+    before_bytes = (raw / 'SOURCE_BEFORE.json').read_bytes()
+    after_bytes = (raw / 'SOURCE_AFTER.json').read_bytes()
+    require(before_bytes == after_bytes, 'source readbacks differ')
+    before = json.loads(before_bytes)
+    require(receipt['source_commit'] == before['commit'] == args.commit, 'execution commit mismatch')
+    tree = git('rev-parse', args.commit + '^{tree}').decode().strip()
+    require(tree == receipt['source_tree'] == before['tree'], 'execution tree mismatch')
+    tree_entries = {}
+    for item in git('ls-tree', '-rz', args.commit).split(b'\0'):
+        if item:
+            meta, name = item.split(b'\t', 1)
+            mode, kind, blob = meta.decode().split()
+            tree_entries[name.decode()] = (mode, kind, blob)
+    identifiers = [record['git_blob'] for record in before['files'].values()]
+    data = subprocess.run(['git', 'cat-file', '--batch'], cwd=root,
+                          input=('\n'.join(identifiers) + '\n').encode(),
+                          stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                          timeout=20, check=True).stdout
+    fixed_bytes, cursor = {}, 0
+    for name, record in before['files'].items():
+        end = data.index(b'\n', cursor)
+        blob, kind, size = data[cursor:end].decode().split()
+        length = int(size)
+        content = data[end + 1:end + 1 + length]
+        cursor = end + length + 2
+        require(tree_entries[name] == (record['mode'], 'blob', blob), 'Git tree binding mismatch: ' + name)
+        require(kind == 'blob' and len(content) == record['bytes']
+                and digest(content) == record['sha256'], 'fixed object bytes mismatch: ' + name)
+        require(hashlib.sha1(b'blob ' + str(length).encode() + b'\0' + content).hexdigest() == blob,
+                'independent Git blob digest mismatch: ' + name)
+        fixed_bytes[name] = content
+    require(cursor == len(data), 'unconsumed Git batch output')
+    frozen = json.loads(git('show', args.commit + ':research/rec_r3q_h4_continuation_20261020/SOURCE_CLOSURE.json'))
+    for name, expected in frozen['files'].items():
+        require(name in fixed_bytes and digest(fixed_bytes[name]) == expected, 'frozen source changed: ' + name)
+    require(len(before['files']) == before['file_count'] == receipt['source_files_verified'], 'source count mismatch')
+
+    raw_inventory = {}
+    for name, expected in receipt['evidence_sha256'].items():
+        path = raw / name
+        require(path.resolve().is_relative_to(raw) and not path.is_symlink(), 'unsafe evidence path')
+        content = path.read_bytes()
+        require(digest(content) == expected, 'raw evidence hash mismatch: ' + name)
+        raw_inventory[name] = {'bytes': len(content), 'sha256': expected}
+    execution = read_json(raw / 'tests.execution.json')
+    require(receipt['commands'] == [execution] and execution['returncode'] == receipt['exit_code'] == 0,
+            'actual command receipt mismatch')
+    require(execution['failure'] is None and receipt['first_failure'] is None, 'unexpected validation failure')
+    require('tests/test_r3s_ncp_campaign.py' in execution['command'], 'different test scope')
+    require(not any('test_r3r_' in part for part in execution['command']), 'old test run included')
+    require((raw / 'tests.stderr.log').read_bytes() == b'', 'nonempty actual stderr')
+    cases = ET.parse(raw / 'tests.xml').findall('.//testcase')
+    identifiers = [(case.get('classname'), case.get('name')) for case in cases]
+    require(len(cases) == len(set(identifiers)) == args.cases, 'JUnit unique case count mismatch')
+    require(all(not any(case.find(tag) is not None for tag in ('failure', 'error', 'skipped')) for case in cases),
+            'actual JUnit has a non-PASS case')
+    require(receipt['test_counts'] == {'cases': args.cases, 'passes': args.cases,
+                                      'failures': 0, 'errors': 0, 'skips': 0}, 'summary count differs from JUnit')
+    require(receipt['new_scientific_integrations'] == receipt['new_accepted_steps']
+            == receipt['new_REC_benchmark_trials'] == 0 and receipt['NCP_execution'] == 'NOT_RUN',
+            'unexpected scientific execution scope')
+    require(receipt['total_envelope'] == {'cpu_s': 60.0, 'wall_s': 180.0,
+                                         'per_process_as_bytes': 2 * 1024**3}, 'validation envelope changed')
+    require(receipt['process_tree_cpu_s'] < 58 and receipt['wall_s'] < 177, 'receipt reserve absent')
+
+    coordinator_hash = before['files']['scripts/run_r3s_ncp_campaign.py']['sha256']
+    dummy = []
+    # Explicit numeric directories prevent pytest's *current symlinks from
+    # duplicating observations or test counts.
+    for index in range(3):
+        directory = raw / f'pytest-work/test_actual_dummy_process_owne{index}'
+        if not directory.exists():
+            continue
+        require(not directory.is_symlink(), 'dummy directory is a symlink')
+        record = read_json(directory / 'driver.stdout.json')
+        events = [json.loads(line) for line in (directory / 'run/events.jsonl').read_text().splitlines()]
+        require(record['events'] == events, 'driver events differ from actual append log')
+        require(all(a['monotonic_s'] <= b['monotonic_s'] for a, b in zip(events, events[1:])), 'event order changed')
+        require(record['source_sha256'] == coordinator_hash and record['all_owned_descendants_reaped'],
+                'dummy source or ownership gate failed')
+        require(record['new_solver_integrations'] == record['timed_scientific_benchmark_trials'] == 0,
+                'dummy executed science')
+        require((directory / 'driver.stderr.log').read_bytes() == b'', 'dummy stderr not empty')
+        for key, job in record['jobs'].items():
+            job_dir = directory / 'run' / key
+            require(read_json(job_dir / 'TERMINAL.json') == job, 'job summary differs from terminal bytes')
+            for name, expected in job['files_sha256'].items():
+                require(digest((job_dir / name).read_bytes()) == expected, 'terminal artifact mismatch')
+            limits = read_json(job_dir / 'LIMITS.json')
+            for label, cap in [('cpu', 60), ('address_space', 2 * 1024**3)]:
+                old = limits['inherited'][label]
+                new = limits['effective'][label]
+                require(all(0 <= value <= cap for value in new), 'dummy cap exceeds envelope')
+                require(all(previous == -1 or value <= previous for previous, value in zip(old, new)),
+                        'inherited limit was raised')
+        keys = set(record['jobs'])
+        if keys == {'a', 'b', 'timed'}:
+            started = {event['job']: event['monotonic_s'] for event in events if event['event'] == 'job_started'}
+            ended = {event['job']: event['monotonic_s'] for event in events if event['event'] == 'job_terminal'}
+            require(max(started['a'], started['b']) < min(ended['a'], ended['b']), 'no actual trace-width overlap')
+            require(started['timed'] > max(ended['a'], ended['b']), 'exclusive timing barrier violated')
+            require(record['failure'] is None and all(job['status'] == 'complete' for job in record['jobs'].values()),
+                    'parallel dummy did not complete')
+            scenario = 'parallel_and_barrier'
+        elif keys == {'orphan'}:
+            guardian = read_json(directory / 'run/orphan/GUARDIAN.json')
+            require(guardian['status'] == 'HOLD'
+                    and guardian['failure']['message'] == 'JOB_LEADER_LEFT_OWNED_DESCENDANTS'
+                    and guardian['all_owned_descendants_reaped']
+                    and record['jobs']['orphan']['status'] == 'blocked', 'orphan case falsely passed')
+            scenario = 'leader_leaves_new_session'
+        elif keys == {'guardian_killed'}:
+            require(record['failure']['message'] == 'UNEXPECTED_ADOPTED_JOB_DESCENDANT'
+                    and record['jobs']['guardian_killed']['returncode'] == -9
+                    and record['jobs']['guardian_killed']['status'] == 'blocked', 'killed guardian case falsely passed')
+            scenario = 'guardian_killed'
+        else:
+            raise ValueError('unexpected dummy job catalogue')
+        dummy.append({'scenario': scenario, 'driver_sha256': digest((directory / 'driver.stdout.json').read_bytes()),
+                      'events_sha256': digest((directory / 'run/events.jsonl').read_bytes()),
+                      'all_owned_descendants_reaped': True, 'cumulative_cpu_s': record['cumulative_cpu_s'],
+                      'cumulative_wall_s': record['cumulative_wall_s'],
+                      'expected_failure': record['failure'], 'verdict': 'PASS_SCOPED_DUMMY_CONTRACT'})
+    if any(case.get('name', '').startswith('test_actual_dummy_process_ownership_and_barriers') for case in cases):
+        require(len(dummy) == 3, 'actual three dummy scenarios missing')
+
+    output = {'schema': 'rec.r3s.independent-evidence-readback.v1',
+              'reviewed_utc': datetime.now(timezone.utc).isoformat(),
+              'verdict': 'PASS_SCOPED_EXISTING_VALIDATION_BYTES',
+              'auditor': '/root/context_intake; authored neither coordinator nor test implementation',
+              'source_commit': args.commit, 'source_tree': tree,
+              'validation_directory': str(raw), 'validation_sha256': digest((raw / 'validation.json').read_bytes()),
+              'source_snapshot_sha256': digest(before_bytes), 'source_files_verified': len(before['files']),
+              'frozen_files_verified': len(frozen['files']),
+              'actual_command': execution['command'], 'actual_exit_code': execution['returncode'],
+              'unique_test_cases_in_this_receipt': args.cases, 'junit_case_names': identifiers,
+              'dummy_scenarios': dummy, 'actual_resource_cost': {
+                  key: receipt[key] for key in ('process_tree_cpu_s', 'wall_s', 'new_execution_cpu_s',
+                                               'new_execution_wall_s', 'prior_cpu_s', 'prior_wall_s')},
+              'max_polled_test_tree_rss_bytes': execution['max_polled_process_tree_rss_bytes'],
+              'resource_scope': receipt['resource_measurement_scope'],
+              'memory_scope': 'PER_PROCESS_AS_AND_SAMPLED_TREE_RSS; NOT_EXACT_AGGREGATE_PEAK',
+              'raw_evidence_inventory': raw_inventory,
+              'source_files': before['files'],
+              'new_scientific_integrations': 0, 'new_benchmark_trials': 0,
+              'new_test_executions_by_this_auditor': 0,
+              'NCP': 'NOT_RUN',
+              'limitations': ['This reads actual retained evidence and Git objects; it does not rerun tests.',
+                              'Dummy completion does not establish NCP host compatibility or physical convergence.',
+                              'Later source changes require their own source-bound targeted validation.'],
+              'readback_script_sha256': digest(Path(__file__).read_bytes()),
+              'readback_only_cpu_s': time.process_time() - began_cpu,
+              'readback_only_wall_s': time.monotonic() - began_wall,
+              'readback_process_maxrss_bytes': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024}
+    with args.output.open('x') as stream:
+        json.dump(output, stream, sort_keys=True, indent=2, allow_nan=False)
+        stream.write('\n')
+    print(json.dumps({'verdict': output['verdict'], 'source_commit': args.commit,
+                      'source_files': len(before['files']), 'frozen_files': len(frozen['files']),
+                      'raw_files': len(raw_inventory), 'actual_cases_read': args.cases,
+                      'actual_dummy_scenarios_read': len(dummy), 'output': str(args.output)}))
+
+
+if __name__ == '__main__':
+    main()

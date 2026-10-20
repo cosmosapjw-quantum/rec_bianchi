@@ -1,0 +1,170 @@
+{
+  "NCP_execution": "NOT_RUN",
+  "code_audit_link": {
+    "evidence": [
+      "DEADLINE_FIX_STATIC_READBACK.json",
+      "AUDIT_EVIDENCE_READBACK_002.json",
+      "VISUAL_REVIEW.json"
+    ],
+    "path": "PHYS_MATH_CODE_AUDIT.json",
+    "previous_deadline_P2": "CLOSED_BY_MINIMAL_SOURCE_CORRECTION_AND_ACTUAL_TARGETED_RECEIPT",
+    "source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "status": "PASS_SCOPED_INDEPENDENT_CODE_AUDIT"
+  },
+  "equation_to_code": [
+    {
+      "code": "primordial_2012_quarter_continuation.py current/prev2 RHS and accepted photon history; R3S make_job invokes retained whole programs",
+      "equation": "X[n+1] = F_n(X[n]) on extended accepted state",
+      "verdict": "PRESERVED; NO_TIME_STEP_PARALLELIZATION"
+    },
+    {
+      "code": "CATALOG dependencies, selected_jobs, choose_ready exclusive barrier",
+      "equation": "T >= max(W/P,L)",
+      "hypotheses": "Nonnegative fixed per-job costs, P > 0 homogeneous processors, nonduplicated DAG-respecting execution.",
+      "proof": "Total processing <= P*T gives T>=W/P; each ordered dependency path gives T>=L.",
+      "verdict": "PASS_CONDITIONAL_LOWER_BOUND; NOT_RUNTIME_PREDICTION"
+    },
+    {
+      "equation": "S(q,a) = 1/(1-q+q/a)",
+      "hypotheses": "0 <= q <= 1; a >= 1; unchanged remainder of cost",
+      "results": [
+        "1 <= S <= a",
+        "dS/dq = a*(a-1)/(a+q-a*q)^2 >= 0",
+        "S(0,a)=1; S(1,a)=a"
+      ],
+      "verdict": "PASS_CONDITIONAL_ALGEBRA; q_UNMEASURED"
+    },
+    {
+      "N_default": 5,
+      "default_values": {
+        "cpu_s": 305,
+        "wall_s": 912
+      },
+      "equation": "Ccampaign=60*N+5 CPU seconds; Wcampaign=180*N+12 wall seconds",
+      "verdict": "PASS_ALLOCATION_ARITHMETIC; NO_EXECUTION_AUTHORIZATION_OR_PER_JOB_CAP_INCREASE"
+    }
+  ],
+  "external_algebra_scope": "Exact Wolfram input/response preserves Symbol::undefined2 for symbolic W/L/P; display is not a proof of the work/span theorem.",
+  "final_code_link_updated_utc": "2026-10-20T21:54:51.000649+00:00",
+  "grid_namespace": {
+    "level1_H0_over2": 4.245e-05,
+    "level2_H0_over4": 2.1225e-05,
+    "original_R3P_user_reference_h": 4.245e-05,
+    "time_convergence_H0": 8.49e-05
+  },
+  "independence": "Reviewer authored neither coordinator, tests, original predictor, nor R3R numerical implementation.",
+  "independent_jobs": {
+    "fixed_input_source_required": true,
+    "maximum_ready_correctness_width": 2,
+    "payload_equivalence_does_not_include": [
+      "CPU time",
+      "wall time",
+      "RSS",
+      "timestamps",
+      "actual resource-cap outcome"
+    ],
+    "private_outputs_required": true,
+    "timed_job_concurrency": 1
+  },
+  "limitations": [
+    "No new physical convergence claim follows from preserved recurrence or scheduler proof.",
+    "Global h4 continuation, h2 full history assembly, original-h nodewise uncertainty and boundary provenance remain separate blocked dependencies.",
+    "Per-process AS and polled RSS are different quantities; no exact aggregate memory-peak theorem is asserted."
+  ],
+  "linked_evidence": {
+    "research/rec_r3r_followup_costs_20261020/receipts/CLAIM_GATE.json": {
+      "bytes": 2392,
+      "sha256": "942e47daaa56321ee76efe7ff660ddf6b7c6d1e187e7bcbc887b6d14321d615d"
+    },
+    "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_AUDIT.json": {
+      "bytes": 8559,
+      "sha256": "8063728515e3e78b9f4943333402f37081ba985487d2e79856b08919c983d5f4"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/receipts/AUDIT_EVIDENCE_READBACK_001.json": {
+      "bytes": 49571,
+      "sha256": "2c0f55e9ee1926b77a43fcb2d214e2852f7d4738b171068c86fca435fa51febf"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/receipts/LITERATURE_AND_ALGEBRA.json": {
+      "bytes": 8201,
+      "sha256": "e40502802bf68d08faf8428ef67a5933cfca7d340a6874fb31a3aefe6f7c78c6"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/receipts/PENDING_GLOBAL_DAG_REVIEW.json": {
+      "bytes": 7099,
+      "sha256": "747fd87a44570307969878720cb483ef4830c0f966266037b6d471cc003348e3"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/receipts/WOLFRAM_EXACT_INPUT_CHECK.json": {
+      "bytes": 2067,
+      "sha256": "3e86d482d965ccef7ebde0bf9bc367d6a06f7d5749e042a433bcf7ab5faa5f55"
+    }
+  },
+  "new_REC_benchmark_trials": 0,
+  "new_accepted_steps": 0,
+  "new_scientific_integrations": 0,
+  "old_tests_rerun": 0,
+  "reused_science": {
+    "R3R_execution_source": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "all_lane_binary64_count": 25000,
+    "measured_audit_cpu_ratio": 1.3641298365714964,
+    "new_validation_of_these_lanes_in_R3S": false,
+    "scope": "Saved-stream audit only; not a solver or NCP speedup",
+    "status": "complete_reused"
+  },
+  "reviewed_fixed_sources": {
+    "research/rec_r3s_ncp_campaign_20261021/CAMPAIGN.json": {
+      "bytes": 14673,
+      "sha256": "fc41acec1e6cc819fb1bfab0284ab19e6a1119f99bdd573241c253fa0442f059"
+    },
+    "research/rec_r3s_ncp_campaign_20261021/THEORY_KO.md": {
+      "bytes": 12149,
+      "sha256": "ae17eed714e81601f6a32084d043442f072d5b9dd56c9fc3d8f17ce83c0291a9"
+    },
+    "scripts/compare_r3n_time_grids.py": {
+      "bytes": 10050,
+      "sha256": "3c4ed4c80112c52810b83f80fc7760011c7a39c439b3d544f4aa23dda4d09bb3"
+    },
+    "scripts/prepare_r3o_h_history.py": {
+      "bytes": 12268,
+      "sha256": "c5a938c0b37cae5ff8b1ec05099bb420fd2da9a17e719ef047c9192c52224cad"
+    },
+    "scripts/r3r_stream_audit.py": {
+      "bytes": 15058,
+      "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+    },
+    "scripts/run_r3s_ncp_campaign.py": {
+      "bytes": 54712,
+      "sha256": "d1baa75529e030b81e03708326b1297c62fbb0069313c49ce5ba1b0723cc7e69"
+    },
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_continuation.py": {
+      "bytes": 14040,
+      "sha256": "ce80868c2882797a39986173e9ee053733d5f8c5439df819cac76ef2b5f0d58b"
+    },
+    "src/full_bianchi_hyrec/trajectory/time_convergence.py": {
+      "bytes": 17702,
+      "sha256": "dace3618b133c8a40a342e8a9b8ffa0981da926911e300671640d0fe2252cfda"
+    },
+    "tests/test_r3s_ncp_campaign.py": {
+      "bytes": 17015,
+      "sha256": "6f8416d59ad49f156ba295e906f6966afc6c4edd7fc0d9a9c2b57a9fabf01f10"
+    }
+  },
+  "reviewed_utc": "2026-10-20T21:37:27.531735+00:00",
+  "reviewer": "/root/context_intake",
+  "schema": "rec.r3s.independent-phys-math-audit.v1",
+  "scientific_holds": {
+    "REI_activation": false,
+    "U5_original_h": "HOLD_9_FAIL",
+    "U5_original_h2": "HOLD_8_FAIL",
+    "global_h_h2_h4_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_full5210_allocation": null,
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED"
+  },
+  "source_checkpoint": {
+    "commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+    "role": "First R3S source and actual 45-case validation; later resource-only correction reviewed separately.",
+    "tree": "a4c5005fcf93bb98df31b4a39a3431dd01d7daed"
+  },
+  "verdict": "PASS_SCOPED_MATHEMATICAL_CONTRACT"
+}
