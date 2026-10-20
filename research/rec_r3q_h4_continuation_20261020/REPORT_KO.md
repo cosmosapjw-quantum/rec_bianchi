@@ -15,7 +15,7 @@ PR #111의 게시된 소스 `1ad0380110621446c42df9d995fd85db3a6c7e7a`에서 입
 
 **상태 경계:** 원래 budget `CLOSED_HOLD_NOT_RESET`, 원본 h U5 `HOLD_9_FAIL`, h2 U5 `HOLD_8_FAIL`을 그대로 보존한다. h4 event+2만 완료되었고, 후속 h4 U4/U5/U6/low-z 모듈 연결은 구현 미완료다. h2 노드는 source cubic-stencil 경계에서 종료됐다. 세 격자 수렴 `HOLD/NOT_RUN`, 전체 물리 admission 미승인, `REI_activation=false`, Bianchi/REI/CMB admission=false다. 이 scoped PASS들은 역사적 U5나 전역 과학 주장을 변경하지 않는다.
 
-두 경로는 이번 새 allocation에서 합계 약 90.952 CPU초와 93초 solver wall을 사용했다. 서로의 비용을 역사적 U5 비용에 합산하거나 U5를 재개하지 않았다. 실행시각·호스트·launcher 및 관찰의 한계는 allocation/runtime observer receipts에 보존되어 있다.
+두 경로는 이번 새 allocation에서 합계 약 90.952 CPU초와 93초 solver wall을 사용했다. 서로의 비용을 역사적 U5 비용에 합산하거나 U5를 재개하지 않았다. 실행시각·호스트·launcher 및 관찰의 한계는 allocation/runtime observer receipts에 보존되어 있다. reviewed 결과 묶음은 `NCP_EXECUTION_DELIVERY.json`에 기록한 SHA `5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2`로 Dropbox와 Google Drive에 각각 업로드한 뒤 전체 재다운로드 hash까지 일치했다. PR #111 브랜치에는 commit `2236c19ff71b2706696e1985d968b2b841fd55bc`로 게시했고 원격 ref SHA를 확인했다.
 
 ---
 

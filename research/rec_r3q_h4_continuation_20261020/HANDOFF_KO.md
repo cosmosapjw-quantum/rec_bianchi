@@ -10,6 +10,8 @@
 
 NCP에서는 64 CPU를 가진 호스트에 서로 독립적인 h4/h2 path를 taskset으로 각각 CPU 63/62에 배정해 동시에 수행했다. 두 runner 모두 내부 순차 재귀여서 경로별 한 코어를 사용했다. 각각 2 GiB/process 제한을 유지했다. 128 GiB 전체 사용을 요청 계약에 맞추어 확장하지 않았고, 동시 process-tree RSS와 모든 시점의 h2 affinity mask를 측정했다고 주장하지 않는다. 누적 새 allocation usage는 runner receipt 기준 CPU `30.196189+60.755865`초, wall `30.345127+62.632946`초다.
 
+결과는 PR #111 branch commit `2236c19ff71b2706696e1985d968b2b841fd55bc`에 게시됐으며 remote SHA 확인을 마쳤다. 전체 결과 tar.gz는 Dropbox `id:BSpOijBcT10AAAAAAD_Z2g`와 Drive `1ywSnt0ACqMPiNdwuHGPnniT8oNHqhmTc`에 저장했고 둘 다 다운로드 readback SHA가 local SHA와 일치한다. `NCP_EXECUTION_DELIVERY.json`에 file size와 SHA를 기록했다.
+
 ---
 
 이 문서를 받은 local Codex가 checkout, 입력 취득, 컴파일, 경량 플랫폼 확인과 실제 제한 실행을 직접 수행한다. 사용자가 파일을 미리 내려받거나 경로를 채울 필요가 없다. 실제 실행 전 최근 반환 결과를 조회하여 완료된 동일 campaign은 재사용한다.
