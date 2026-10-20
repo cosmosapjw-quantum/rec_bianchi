@@ -4,128 +4,128 @@
     {
       "id": "INTAKE",
       "status": "complete",
-      "backup": "stage0_pending_upload",
-      "publication": "stage0_pending_push"
+      "backup": "stage0_three_upload_ACKs; whole readback NOT_RUN",
+      "publication": "73f201c9273329235c9df32577d4a72121b20921"
     },
     {
       "id": "R1_GOAL",
       "status": "complete",
-      "backup": "stage0_pending_upload",
-      "publication": "stage0_pending_push"
+      "backup": "stage0_three_upload_ACKs; whole readback NOT_RUN",
+      "publication": "73f201c9273329235c9df32577d4a72121b20921"
     },
     {
       "id": "R2_SOURCES",
-      "status": "in_progress",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R3_CLAIMS",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R4_CANDIDATES",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R5_DERIVATION",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R6_INDEPENDENT_MATH",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R7_PROBES",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R8_SELECTION",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R9_CODE_CONTRACT",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "R10_THEORY_CLOSE",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C1_BASELINE",
       "status": "complete_reused",
-      "backup": "stage0_pending_upload",
-      "publication": "stage0_pending_push"
+      "backup": "stage0_three_upload_ACKs; whole readback NOT_RUN",
+      "publication": "73f201c9273329235c9df32577d4a72121b20921"
     },
     {
       "id": "C2_MAPPING",
-      "status": "in_progress",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C3_ALGORITHM",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C4_COST_DAG",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "complete",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C5_IMPLEMENT",
       "status": "in_progress",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C6_CONTRACTS",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "in_progress",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C7_SAME_H",
       "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C8_MATCHED_COST",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "in_progress",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C9_INDEPENDENT_CODE",
-      "status": "planned",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "status": "in_progress",
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     },
     {
       "id": "C10_PUBLISH",
       "status": "in_progress",
-      "backup": "pending",
-      "publication": "stage0_pending_push"
+      "backup": "stage1_archive_pending",
+      "publication": "stage1_push_pending"
     }
   ],
   "preserve": {
@@ -139,5 +139,91 @@
     "physical_operator": "Original HyRec2012 atomic/thermal and stage guards",
     "global_h_h2_h4_convergence": "NOT_RUN",
     "production_speedup": "NOT_MEASURED_BY_R3P"
-  }
+  },
+  "edges": [
+    [
+      "INTAKE",
+      "R1_GOAL"
+    ],
+    [
+      "R1_GOAL",
+      "R2_SOURCES"
+    ],
+    [
+      "R2_SOURCES",
+      "R3_CLAIMS"
+    ],
+    [
+      "R3_CLAIMS",
+      "R4_CANDIDATES"
+    ],
+    [
+      "R4_CANDIDATES",
+      "R5_DERIVATION"
+    ],
+    [
+      "R5_DERIVATION",
+      "R6_INDEPENDENT_MATH"
+    ],
+    [
+      "R6_INDEPENDENT_MATH",
+      "R7_PROBES"
+    ],
+    [
+      "R7_PROBES",
+      "R8_SELECTION"
+    ],
+    [
+      "R8_SELECTION",
+      "R9_CODE_CONTRACT"
+    ],
+    [
+      "R9_CODE_CONTRACT",
+      "R10_THEORY_CLOSE"
+    ],
+    [
+      "R9_CODE_CONTRACT",
+      "C2_MAPPING"
+    ],
+    [
+      "C1_BASELINE",
+      "C2_MAPPING"
+    ],
+    [
+      "C2_MAPPING",
+      "C3_ALGORITHM"
+    ],
+    [
+      "C3_ALGORITHM",
+      "C4_COST_DAG"
+    ],
+    [
+      "C4_COST_DAG",
+      "C5_IMPLEMENT"
+    ],
+    [
+      "C5_IMPLEMENT",
+      "C6_CONTRACTS"
+    ],
+    [
+      "C6_CONTRACTS",
+      "C7_SAME_H"
+    ],
+    [
+      "C6_CONTRACTS",
+      "C8_MATCHED_COST"
+    ],
+    [
+      "C7_SAME_H",
+      "C9_INDEPENDENT_CODE"
+    ],
+    [
+      "C8_MATCHED_COST",
+      "C9_INDEPENDENT_CODE"
+    ],
+    [
+      "C9_INDEPENDENT_CODE",
+      "C10_PUBLISH"
+    ]
+  ]
 }

@@ -1,0 +1,57 @@
+{
+  "schema": "rec.r3p.audit-plan.v1",
+  "declared_before_repeated_series": true,
+  "completed_pilots_excluded_from_repeated_statistics": true,
+  "scope": "Saved R3M full output audit only; new physical steps=0",
+  "rounds": [
+    [
+      "legacy",
+      "cached",
+      "rust1",
+      "rust2",
+      "rust4"
+    ],
+    [
+      "rust1",
+      "rust2",
+      "rust4",
+      "legacy",
+      "cached"
+    ],
+    [
+      "rust4",
+      "legacy",
+      "cached",
+      "rust1",
+      "rust2"
+    ]
+  ],
+  "affinity_cpus": 4,
+  "blas_threads": 1,
+  "rust_block_columns": 32,
+  "per_invocation_caps": {
+    "cpu_s": 60,
+    "wall_s": 180,
+    "address_space_bytes": 2147483648
+  },
+  "series_caps": {
+    "process_tree_cpu_s": 300,
+    "wall_s": 480,
+    "memory_bytes": 2147483648
+  },
+  "comparison": [
+    "exact entire verdict",
+    "SHA256 of all native cv/cl binary64 bytes",
+    "SHA256 of raw and diagnostic files"
+  ],
+  "timing": [
+    "audit CPU/wall including CSV allocation parse checks maxima forensic",
+    "setup CPU/wall separately",
+    "total invocation CPU/wall",
+    "peak RSS"
+  ],
+  "summary": "medians and observed paired ranges; 3 repeats do not support population confidence bounds",
+  "rust_pool_creation": "separate setup, reused within audit",
+  "stop_rule": "Any failure, source drift, identity mismatch or cap stops series; no silent sample replacement",
+  "new_production_speedup": "not inferred"
+}

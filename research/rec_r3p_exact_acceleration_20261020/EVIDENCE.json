@@ -1,6 +1,6 @@
 {
   "schema": "rec.r3p.evidence.v1",
-  "stage": "INTAKE_COMPLETE_IMPLEMENTATION_IN_PROGRESS",
+  "stage": "IMPLEMENTED_PILOT_DIFFERENTIAL_PASS_REVIEW_IN_PROGRESS",
   "base_head": "368d87ad5de90dde74226ed109c3ba29d9607c84",
   "preserve": {
     "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
@@ -20,8 +20,8 @@
     "R3O lowz16 and independenth4start8",
     "R3L/R3M original profiles"
   ],
-  "new_benchmarks": "NOT_RUN",
-  "runtime": "ChatGPT sandbox Python3.12.14; C available; Rust toolchain not yet restored",
+  "new_benchmarks": "Three saved-data pilot audits completed; matched repeats pending",
+  "runtime": "ChatGPT sandbox Python3.12.14, C, rustc1.94.1 restored from official SHA-verified distribution",
   "native_agents": [
     {
       "id": "01a1572c-24f0-76b8-8798-e73ec83e60ab",
@@ -30,6 +30,26 @@
     {
       "id": "01a1572c-2f9a-7499-aef0-f599e53340a0",
       "task": "REC cost/source intake"
+    },
+    {
+      "id": "01a15771-e4a4-7280-b214-78d009a7b089",
+      "task": "Rust implementation, SIMD compiler evidence and binding tests"
     }
-  ]
+  ],
+  "new_physical_steps": 0,
+  "pilot_checks": {
+    "cached": {
+      "verdict": true,
+      "verdict_sha256": true,
+      "native_array_sha256": true,
+      "diagnostic_sha256": true
+    },
+    "rust": {
+      "verdict": true,
+      "verdict_sha256": true,
+      "native_array_sha256": true,
+      "diagnostic_sha256": true
+    }
+  },
+  "source_contract_tightening": "Python-prefix NaN/Inf explicitly rejected; Rust requires exactly four ASCII CSV fields; no claim of identical incidental exceptions for invalid grammar"
 }
