@@ -1,0 +1,197 @@
+{
+  "Bianchi_REI_CMB_admission": false,
+  "accepted_steps": 16,
+  "code_unchanged": true,
+  "end_contract": {
+    "dlna": 4.245e-05,
+    "end_iz": 211716,
+    "last_rhs_z": 2.0063051384022756e-05,
+    "last_z": -2.238689928646398e-05,
+    "production_steps": 153327,
+    "source_nz": 211717,
+    "start_iz": 58389
+  },
+  "failure": null,
+  "full_U6": "REUSED_PR107",
+  "h_h2_h4_convergence": "NOT_RUN",
+  "historical_status": {
+    "REI_activation": false,
+    "budget": "CLOSED_HOLD_NOT_RESET",
+    "u5_h2": "HOLD_8_FAIL",
+    "u5_original_h": "HOLD_9_FAIL"
+  },
+  "history_sha256": "2d6c54f448a5b109e21cb265f469b94860a2525ae2f777ef02b19bb05ffbc784",
+  "independent_review": "NOT_RUN_PARENT_REQUIRED",
+  "inputs_after": {
+    "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+    "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+  },
+  "inputs_before": {
+    "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+    "source_zip": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+  },
+  "last_checkpoint": {
+    "path": "checkpoint_00004.json",
+    "sha256": "967dcfd7ec77f28d7e13c1bdc24dd616dcbad8acac0a7cf26c11bffb038322bb"
+  },
+  "limits": {
+    "cpu_s": 20.0,
+    "memory_bytes": 2147483648,
+    "recovery_cpu_s": 3.0,
+    "recovery_wall_s": 8.0,
+    "wall_s": 60.0
+  },
+  "mode": "smoke",
+  "native_binary_sha256": "354d36a27c14d39db662f9ca1593878e50f64d62a1a12266c9e42b3b6c6b33e3",
+  "native_build": {
+    "child_cpu_limit_s": 8,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-shared",
+      "-fPIC",
+      "-I",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/source_h2",
+      "/root/REC_R3Q_NCP_20261020/source/scripts/c_harness/original_hyrec_r3o_lowz_harness.c",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/source_h2/history.c",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/source_h2/hydrogen.c",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/source_h2/helium.c",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/source_h2/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3Q_NCP_20261020/source/research/rec_r3o_grid_frontiers_20261019/lowz_ncp_smoke_001/liboriginal_r3o_lowz.so"
+    ],
+    "process_tree_cpu_s": 0.9446589999999997,
+    "returncode": 0,
+    "stderr_sha256": "66835265c7298882d8eaa78872ac896ff9ff13e6bc057d4f2fcd207752655203",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.9609724490146618
+  },
+  "parent_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
+  "python_status": "BOUNDED_LOW_Z_COMPLETE",
+  "resources": {
+    "address_limit_bytes": 2147483648,
+    "peak_child_rss_bytes": 62132224,
+    "peak_parent_rss_bytes": 100913152,
+    "process_tree_cpu_s": 11.582783000000001,
+    "wall_s": 11.538007596012903
+  },
+  "same_h": {
+    "common_input_globals": [
+      58389,
+      58390,
+      58391,
+      58404
+    ],
+    "common_input_maxima": {
+      "hydrogen_rhs": 2.1707559781417694e-14,
+      "thermal_rhs": 3.621030056849089e-14
+    },
+    "compared_steps": 16,
+    "maxima": {
+      "Tm_K": 2.49687949887451e-16,
+      "hydrogen_prev": 6.539907504432563e-16,
+      "hydrogen_prev2": 6.539907504432563e-16,
+      "thermal_prev": 3.6101122023224644e-14,
+      "thermal_prev2": 3.6101122023224644e-14,
+      "xe": 7.434376394267938e-14
+    },
+    "rhs_tolerances": {
+      "hydrogen_rhs": 3e-10,
+      "thermal_rhs": 2e-10
+    },
+    "state_tolerances": {
+      "Tm_K": 5e-10,
+      "xe": 5e-09
+    }
+  },
+  "schema": "rec.r3o.lowz.v1",
+  "source_code_sha256": {
+    "scripts/c_harness/original_hyrec_r3o_lowz_harness.c": "d179b07d33562557924f763b85a58f5a2cec48ec2a78c4ab39a6702d82e88756",
+    "scripts/verify_r3o_lowz.py": "192f6ba070f35d7cede83fc03a96757064844f517f9b6c5910c2d7d305ddb193",
+    "src/full_bianchi_hyrec/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/full_bianchi_hyrec/background/__init__.py": "143c072cac9e1d64cf79374951b1e4f94aeb00cfda03a8d2ad16d2533e719b5e",
+    "src/full_bianchi_hyrec/background/axisymmetric_bianchi_i.py": "5296880dbf2d1b00e2810c969e6a0406b46f10acff04c794e8f718aff5813955",
+    "src/full_bianchi_hyrec/background/branch_events.py": "0785875c160b41ac7d1961803a0b0308e479e7c263b6635bd24ca0c84b482d46",
+    "src/full_bianchi_hyrec/background/characteristics.py": "0d27f31b85a2bb58cd27761f3c382fe519aec29c1a59d3f856496c5a8c5225af",
+    "src/full_bianchi_hyrec/background/evolution_provider.py": "e82bb47ebe5b5f1cb178668aa67cd317b70e8c93549786582522855dff396204",
+    "src/full_bianchi_hyrec/background/sequence.py": "d2b15eba530bc8058f32413f55f5249fa0b6b573382213bb5205c79c9a86d418",
+    "src/full_bianchi_hyrec/background/snapshot.py": "22130c4a907ef020b70c1e54b1fc26c545d8a4ba35a88e7d2bd7bd5f8de646e7",
+    "src/full_bianchi_hyrec/recoil/__init__.py": "c7a5120fa8d9d707958c2869036bcb994481309d2130f2f5daa58913bd2bb9db",
+    "src/full_bianchi_hyrec/recoil/coupled_interface.py": "3c1487f0dec2aa2e9e1732d5a4a34e9ef1b03d5c361fe49b53e835c7dc59576e",
+    "src/full_bianchi_hyrec/recoil/frequency_liouville.py": "e1ce23a87f95f91a6220bd096849c15f2fca3b15e95aa90b43fc971a8401ae26",
+    "src/full_bianchi_hyrec/recoil/nonlinear_bose_release.py": "3eaaf021aada06789e6533532d986ec096287b48d4dab78c248980811110042e",
+    "src/full_bianchi_hyrec/recoil/nonlinear_bose_runtime.py": "5ec3472eb075a7d050341b42837319e4397fb4175480b23e1e8ef9924385fd58",
+    "src/full_bianchi_hyrec/recoil/original_hyrec_native.py": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c",
+    "src/full_bianchi_hyrec/recoil/original_hyrec_physical_flux.py": "37e00dd8224ddd4d5cec7b2b78c689893996e499b944f38302c5dcc104b61e9f",
+    "src/full_bianchi_hyrec/recoil/split_domain_exchange.py": "f7d4ad58930563c97b40cf4be521e1bac5285d59f3ade56fd0378baca54a262d",
+    "src/full_bianchi_hyrec/trajectory/__init__.py": "2acd03b58e2faec97ef3c21f4b43fcb1fa68bd2f8c542acc66b9a5b1a9819116",
+    "src/full_bianchi_hyrec/trajectory/accepted_parent.py": "a467f721a9d3f0f9af732de154423e6da01a967879ea0bf910c6971da55b9caa",
+    "src/full_bianchi_hyrec/trajectory/adaptive_macro.py": "4100818b72f76d95c9e4bff7768dfe549e2feb648705a44f78b519088acba66a",
+    "src/full_bianchi_hyrec/trajectory/axisymmetric_batched.py": "68ba14db113cd376683cdeabeea141aaa53ce311daffcc3677f94ac48a1c47bc",
+    "src/full_bianchi_hyrec/trajectory/axisymmetric_phase_space.py": "da2c5cc9cf945a03f1b7a99c1c6426604b1cc6e63e7568f41407708e94c82885",
+    "src/full_bianchi_hyrec/trajectory/causal_history.py": "54102b4e0a3dd875600190ad38dd75f16fae04a67da1bc4e347fd9a62f025f5c",
+    "src/full_bianchi_hyrec/trajectory/causal_history_step.py": "a70a54d1d462646f3cc43b05b4137ca7ec5d7166b83c76864ec0158ec6421427",
+    "src/full_bianchi_hyrec/trajectory/causal_virtual_redshift.py": "dd33e40fd61659e395485e1c176cd4a242e50042241acd4f159d77ff30527df3",
+    "src/full_bianchi_hyrec/trajectory/characteristic_angular.py": "1fa89cdf0b2d0568f395444dc8212d325926572057950e55a52f8a0a469dcc53",
+    "src/full_bianchi_hyrec/trajectory/direct_thermodynamic.py": "a30cc70034f4c9f8d4c05650062e71b9bba2eda7f4743dbe173f4d850f2383b2",
+    "src/full_bianchi_hyrec/trajectory/dynamic_macro_ownership.py": "333b6a7a08c3c8aa1bcf95b844c54e64f80bfad7bb4a844ed31376d992492a36",
+    "src/full_bianchi_hyrec/trajectory/explicit_full_coupling.py": "d8879ba03477f65624173490edf109ee7d0280703316c9ceb79f37a86b5e3590",
+    "src/full_bianchi_hyrec/trajectory/full_2012_atomic_source.py": "1af383a2c596220561ef1c3be6a1bb755a68ee49f2428ed78cbbaf82c5f59578",
+    "src/full_bianchi_hyrec/trajectory/full_coupled_adaptive.py": "7424e24fe247554508bf4575a331564e752ea55ca6bf7edfca250273eb1db97f",
+    "src/full_bianchi_hyrec/trajectory/history_ownership.py": "6d44bf215ad52a66932b524d08a8039abae6b52e09437fdbf1c71dc67d0f1ad0",
+    "src/full_bianchi_hyrec/trajectory/hmla_flrw.py": "6ef3f63876e0434d6d0ac7d8c16dd0a7be1970688e9e17c689abb0e3aea693a1",
+    "src/full_bianchi_hyrec/trajectory/hyrec_source_adapter.py": "453e4cbb1f20a12bb0fd2e0b2e67f5dbaaf18639e525afe2b91def95969e4369",
+    "src/full_bianchi_hyrec/trajectory/hyrec_spike_transfer.py": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+    "src/full_bianchi_hyrec/trajectory/hyrec_two_photon_raman.py": "de3c9eb009d8df7d5d19f91ee74c1838643ab04251a4c351b36bc2be2ca4e2bf",
+    "src/full_bianchi_hyrec/trajectory/macro_evidence_integrity.py": "dad3dae0999f745f180ed18139e58cbf158c6b4cc6861024b9b67339fa928917",
+    "src/full_bianchi_hyrec/trajectory/physical_continuation.py": "67daa8e4bfb4a03d35a8a232333c186953685ed3a8573b26689565fd8feb121e",
+    "src/full_bianchi_hyrec/trajectory/primitive_rates.py": "abcfa386e1579a95895397e78b2dc4df769d599022089f3864b6306e59135fc9",
+    "src/full_bianchi_hyrec/trajectory/primitive_trajectory.py": "2e4d4c618493f9ba560444bb7cad7848cccf8012c15b08241cbefe797f15eec1",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_full_start.py": "22e68ae6eef25c24ce7fb79b520edd5f953afa0fb74cb0b87da6f4737a655a31",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_helium.py": "ce41e63a508871b47fee0386b8b9ae0e246948a454c6d5ad74abf46293b9d0a7",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_low_z_to_end.py": "5ee5a27b2c06781e94e8d26e925e0d131e669c3b1ccfc260cd26032b2ff13ec8",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_refined_low_z.py": "6f6cdfa281fc893f80334e43418a130cdd7526be8e14d9575eed74dcbd7edee6",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_refined_start.py": "bd72cd1c35718d11a13aee0905babe0c74af4d941545e5245562fcb3a5630e77",
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_thermal_transition.py": "66376a64a964a2a01a52bc1d9e05e7157a563e3db1b4a7f08bce3d0818d512fa",
+    "src/full_bianchi_hyrec/trajectory/pseudotransient_continuation.py": "4c2ec9ea675fda9c3197397946f20a7198273a2d44c901e93fd87e80d688c58f",
+    "src/full_bianchi_hyrec/trajectory/recombination_reference.py": "9ef95f4d855326508670899487e9a7c2a553ce1533fe71db506c3759a4790778",
+    "src/full_bianchi_hyrec/trajectory/single_com_macro.py": "d79e5c4ff0f835305d00a2a24cba2bfd13874653bfa06fa616dbb0257c15c6f1",
+    "src/full_bianchi_hyrec/trajectory/source_derived_parent.py": "2b11bcfaee032f55ccf08859cca9898abedc240078275f06ca5a184affbf2964",
+    "src/full_bianchi_hyrec/trajectory/time_dependent_native.py": "1144ce0f4dca79442378519c1050be2aef09d02b0d5a0f6daf1af2e58935ad32"
+  },
+  "source_copy_unchanged": true,
+  "source_identity_kind": "content-addressed source capsule or checkout",
+  "start": {
+    "native": {
+      "Tm_K": 1822.5247991606402,
+      "hydrogen_prev": -0.0047187188703039715,
+      "hydrogen_prev2": -0.004720248092215677,
+      "iz": 58389,
+      "peebles_event_iz": null,
+      "peebles_event_reason": null,
+      "thermal_prev": -1858.8849741073457,
+      "thermal_prev2": -1858.9602053747897,
+      "xe": 0.0013283106950942951
+    },
+    "python": {
+      "Tm_K": 1822.5247991606407,
+      "hydrogen_prev": -0.004718718870304542,
+      "hydrogen_prev2": -0.0047202480922162405,
+      "iz": 58389,
+      "peebles_event_iz": null,
+      "peebles_event_reason": null,
+      "thermal_prev": -1858.8849741073457,
+      "thermal_prev2": -1858.9602053747235,
+      "xe": 0.0013283106950943938
+    }
+  },
+  "status": "SMOKE_PASS_SAME_H_PENDING_REVIEW"
+}

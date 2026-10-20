@@ -1,0 +1,47 @@
+{
+  "allocation": {
+    "address_space_bytes_per_process": 2147483648,
+    "supervisor_closeout_wall_s_in_total": 2,
+    "threads": 1,
+    "total_cpu_s": 60,
+    "total_wall_s": 180,
+    "worker_closeout_cpu_s_in_total": 5,
+    "worker_closeout_wall_s_in_total": 12
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/scripts/verify_r3q_h4_continuation.py",
+    "--supervised",
+    "--checkpoint",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+    "--evidence-dir",
+    "/workspace/scratch/37bc4acea758/orchestration_20261020/repos/rec_bianchi/worktree/research/rec_r3q_h4_continuation_20261020/smoke_002/worker",
+    "--mode",
+    "smoke",
+    "--new-allocation-id",
+    "REC_R3Q_SANDBOX_20261020_SMOKE_002",
+    "--max-extra-accepted",
+    "2"
+  ],
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "new_allocation_id": "REC_R3Q_SANDBOX_20261020_SMOKE_002",
+  "process": {
+    "failure": null,
+    "peak_rss_scope": "maximum waited child, not simultaneous process-tree sum",
+    "process_group_kill_sent": false,
+    "process_group_owned": true,
+    "returncode": 0,
+    "waited_children_cpu_s": 2.469946,
+    "waited_children_peak_rss_bytes": 222298112,
+    "wall_s": 2.5231993420020444
+  },
+  "rei_activation": false,
+  "schema": "rec.r3q.h4-supervised.v1",
+  "scientific_admission": "HOLD_PENDING_INDEPENDENT_REVIEW",
+  "status": "COMPLETED_SCOPED",
+  "total_cpu_s_including_supervisor": 2.4752497530000004,
+  "total_wall_s_including_supervisor": 2.523553467995953,
+  "worker_status": "SMOKE_ONLY",
+  "worker_verification_sha256": "862bf0cb7f71533fe9b5414160b9f3e61de7ac03f9b989e86d5de0d681a2142a"
+}

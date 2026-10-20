@@ -1,0 +1,56 @@
+{
+  "schema": "rec.r3o.ncp_h2_lowz_independent_review.v1",
+  "status": "PASS_SCOPED_H2_LOWZ_SAME_H",
+  "reviewer_role": "fresh Astra-tier research reviewer; read-only",
+  "evidence_basis": "saved verification, accepted ledger, NPZ, checkpoints, allocation and source/input hashes; no solver or test rerun",
+  "allocation_id": "REC_R3O_LOWZ_NCP_20261020T114015Z",
+  "source": {
+    "parent_head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
+    "source_code_sha256_count": 52,
+    "source_code_match": true,
+    "input_hashes_match_before_after_and_live": true,
+    "initial_state_and_derivative_memory_match_reused_U6": true
+  },
+  "result": {
+    "accepted_steps": 153327,
+    "states": 153328,
+    "checkpoints": 43,
+    "accepted_ledger_rows_reconciled": 153327,
+    "transition_iz": 144931,
+    "transition_steps": {"EMLA": 86542, "Peebles": 66785},
+    "terminal_status": "STOP_AT_SOURCE_Z0_CUBIC_STENCIL",
+    "last_input_z": -2.238689928646398e-5,
+    "required_terminal_states": 4,
+    "available_terminal_states": 3,
+    "z0_cubic_recompute": "PASS",
+    "same_h_parity": "PASS",
+    "first_16_steps_match_smoke": true
+  },
+  "resources": {
+    "cpu_limit_s": 600,
+    "wall_limit_s": 900,
+    "address_limit_bytes_per_process": 2147483648,
+    "process_tree_cpu_s": 60.755865,
+    "runner_wall_s": 62.63294564798707,
+    "parent_peak_rss_bytes": 263897088,
+    "child_peak_rss_bytes": 61931520,
+    "launch_cpu": 62,
+    "affinity_limit": "launcher taskset and in-run PSR snapshot observed; continuous full affinity mask not recorded"
+  },
+  "reviewed_sha256": {
+    "verification.json": "3525f0fc13bc493a8ebc6d42741d7e9af5cbe726478df819f2ea918f5ad98c37",
+    "allocation.json": "7283506c16215eeb2936a024c38ad12830241705a3ab5d1c4d1c05c733daba45",
+    "checkpoint_00042.json": "d74a0f87f36c0f52cd1bb72e46cbfaaed1ae7ae639ecd5ae3ab2e58a7f6083f7",
+    "python_native_lowz.npz": "b25e2cbdafe4037d222116c4985eac95a380552f6799a2b3e950fb499965dbe6",
+    "accepted_pairs.jsonl": "5716fd600fbec0e68700d3c5dc56ae6468d02241be3e19c0e3479c238f041d20",
+    "smoke_verification.json": "9c7b4be82ec54c08562c61c9a5fb63eb72d0a3679c114967b059659e5c814780"
+  },
+  "claim_ceiling": {
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "h2_U5": "HOLD_8_FAIL",
+    "original_h_U5": "HOLD_9_FAIL",
+    "h_h2_h4_convergence": "NOT_RUN",
+    "REI_activation": false,
+    "Bianchi_REI_CMB_admission": false
+  }
+}
