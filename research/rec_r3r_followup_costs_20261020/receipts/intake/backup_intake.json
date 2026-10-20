@@ -1,0 +1,901 @@
+{
+  "schema": "rec.r3q.followup.backup_intake.v1",
+  "checked_at_utc": "2026-10-20T13:25:32.355Z",
+  "status": "NEW_R3Q_NCP_EXECUTION_RETURN_FOUND",
+  "scope": {
+    "research_repo": "cosmosapjw-quantum/rec_bianchi",
+    "prior_r3p_head": "888d56d72579d1e1fd30f66abe02d9f91809a767",
+    "prior_r3p_comment": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110#issuecomment-6284856174",
+    "read_only_provider_actions": true,
+    "repeated_scientific_campaigns": 0,
+    "github_and_library": "separate parent/team intake"
+  },
+  "skills": [
+    "google-drive",
+    "find-dropbox-content",
+    "inspect-dropbox-file"
+  ],
+  "queries": [
+    {
+      "provider": "drive",
+      "operation": "list_folder",
+      "url": "https://drive.google.com/drive/folders/1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR",
+      "top_k": 200
+    },
+    {
+      "provider": "drive",
+      "operation": "get_file_metadata",
+      "id": "1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR",
+      "found_parent": "1BTX6wu9Rim5pYKcK62m9wR65jKx1oGy4"
+    },
+    {
+      "provider": "drive",
+      "operation": "list_folder",
+      "url": "https://drive.google.com/drive/folders/1BTX6wu9Rim5pYKcK62m9wR65jKx1oGy4",
+      "top_k": 200
+    },
+    {
+      "provider": "drive",
+      "operation": "search",
+      "query": "REC",
+      "filter": "modifiedTime > '2026-10-20T06:22:25Z'",
+      "topn": 100,
+      "result_count": 1,
+      "coverage": "search may depend on indexing; direct parent listing also performed"
+    },
+    {
+      "provider": "dropbox",
+      "operation": "list_folder",
+      "path": "/bianchi/rec_bianchi",
+      "recursive": false,
+      "has_more": false
+    },
+    {
+      "provider": "dropbox",
+      "operation": "list_folder",
+      "path": "ns:183516487//bianchi/rec_bianchi/20261016",
+      "recursive": false,
+      "has_more": false
+    },
+    {
+      "provider": "dropbox",
+      "operation": "list_folder",
+      "path": "ns:183516487//bianchi/rec_bianchi/research",
+      "recursive": false,
+      "has_more": false
+    },
+    {
+      "provider": "dropbox",
+      "operation": "search",
+      "query": "R3Q",
+      "path": "ns:183516487//bianchi/rec_bianchi",
+      "last_modified_after": "2026-10-20T06:22:31Z",
+      "has_more": false,
+      "results": [
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_S_Q",
+          "match_type": "BOTH_FILENAME_AND_CONTENT",
+          "object_type": "folder",
+          "path": "ns:183516487//bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d",
+          "path_display": "/bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d",
+          "rank": 1,
+          "title": "rec-r3q-111-888d",
+          "url": "https://www.dropbox.com/home/bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d"
+        }
+      ]
+    },
+    {
+      "provider": "dropbox",
+      "operation": "search",
+      "query": "REC_R3Q",
+      "include_folders": true,
+      "has_more": false,
+      "results": [
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Z2Q",
+          "match_type": "BOTH_FILENAME_AND_CONTENT",
+          "object_type": "folder",
+          "path": "ns:183516487//BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020",
+          "path_display": "/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020",
+          "rank": 1,
+          "title": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020",
+          "url": "https://www.dropbox.com/home/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Z2g",
+          "last_modified": "2026-10-20T11:53:05Z",
+          "match_type": "BOTH_FILENAME_AND_CONTENT",
+          "mime_type": "application/octet-stream",
+          "object_type": "file",
+          "path": "ns:183516487//BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "path_display": "/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "rank": 2,
+          "size": 14318848,
+          "title": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "url": "https://www.dropbox.com/preview/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Z2A",
+          "last_modified": "2026-10-20T11:51:58Z",
+          "match_type": "BOTH_FILENAME_AND_CONTENT",
+          "mime_type": "application/octet-stream",
+          "object_type": "file",
+          "path": "ns:183516487//BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "path_display": "/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "rank": 3,
+          "size": 14318848,
+          "title": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "url": "https://www.dropbox.com/preview/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_S_Q",
+          "match_type": "BOTH_FILENAME_AND_CONTENT",
+          "object_type": "folder",
+          "path": "ns:183516487//bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d",
+          "path_display": "/bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d",
+          "rank": 4,
+          "title": "rec-r3q-111-888d",
+          "url": "https://www.dropbox.com/home/bianchi/rec_bianchi/.git/worktrees/rec-r3q-111-888d"
+        }
+      ]
+    }
+  ],
+  "provider_inventories": [
+    {
+      "label": "drive_r3p",
+      "files": [
+        {
+          "id": "1WgI9Po3rzb_BAl2h27Sk79Hm66LxMXwh",
+          "name": "REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
+          "size_bytes": 24488,
+          "mime_type": "application/zip",
+          "created_time": "2026-10-20T06:22:25.532Z",
+          "modified_time": "2026-10-20T06:22:25.532Z",
+          "url": "https://drive.google.com/file/d/1WgI9Po3rzb_BAl2h27Sk79Hm66LxMXwh/view?usp=drivesdk"
+        },
+        {
+          "id": "1z6jRDcaAV3BDXFWdtJi81Csxf2ECLXiI",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part003",
+          "size_bytes": 21429229,
+          "mime_type": "application/octet-stream",
+          "created_time": "2026-10-20T06:16:26.106Z",
+          "modified_time": "2026-10-20T06:16:26.106Z",
+          "url": "https://drive.google.com/file/d/1z6jRDcaAV3BDXFWdtJi81Csxf2ECLXiI/view?usp=drivesdk"
+        },
+        {
+          "id": "12BRzh-qCz3M5hfvr4xjKg6ndhKzX8aEQ",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part002",
+          "size_bytes": 50331648,
+          "mime_type": "application/octet-stream",
+          "created_time": "2026-10-20T06:16:09.150Z",
+          "modified_time": "2026-10-20T06:16:09.150Z",
+          "url": "https://drive.google.com/file/d/12BRzh-qCz3M5hfvr4xjKg6ndhKzX8aEQ/view?usp=drivesdk"
+        },
+        {
+          "id": "1U8bHb_S2hIj2QSef_8jbeFXPhPCuxmqj",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part001",
+          "size_bytes": 50331648,
+          "mime_type": "application/x-zip",
+          "created_time": "2026-10-20T06:15:34.324Z",
+          "modified_time": "2026-10-20T06:15:34.324Z",
+          "url": "https://drive.google.com/file/d/1U8bHb_S2hIj2QSef_8jbeFXPhPCuxmqj/view?usp=drivesdk"
+        },
+        {
+          "id": "1506vjEOl7wTBFmeyaMnxOfmBdKzKy_ye",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part003",
+          "size_bytes": 47743055,
+          "mime_type": "application/octet-stream",
+          "created_time": "2026-10-20T06:06:23.246Z",
+          "modified_time": "2026-10-20T06:06:23.246Z",
+          "url": "https://drive.google.com/file/d/1506vjEOl7wTBFmeyaMnxOfmBdKzKy_ye/view?usp=drivesdk"
+        },
+        {
+          "id": "1AJ9E3f2s-GpYGo4ia0xlVXoFpc99pc60",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part002",
+          "size_bytes": 50331648,
+          "mime_type": "application/octet-stream",
+          "created_time": "2026-10-20T06:05:58.365Z",
+          "modified_time": "2026-10-20T06:05:58.365Z",
+          "url": "https://drive.google.com/file/d/1AJ9E3f2s-GpYGo4ia0xlVXoFpc99pc60/view?usp=drivesdk"
+        },
+        {
+          "id": "1TcVDe3mi9ZdJ5rJPU1KEpaV_GSiN7BiZ",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part001",
+          "size_bytes": 50331648,
+          "mime_type": "application/x-gzip",
+          "created_time": "2026-10-20T06:05:33.171Z",
+          "modified_time": "2026-10-20T06:05:33.171Z",
+          "url": "https://drive.google.com/file/d/1TcVDe3mi9ZdJ5rJPU1KEpaV_GSiN7BiZ/view?usp=drivesdk"
+        },
+        {
+          "id": "1Q01oBXjUtj9yaQOx4ICW_RGBZnw9i_PB",
+          "name": "REC_R3P_STAGE2_VALIDATED_CODE_20261020.zip",
+          "size_bytes": 1106797,
+          "mime_type": "application/zip",
+          "created_time": "2026-10-20T05:58:14.559Z",
+          "modified_time": "2026-10-20T05:58:14.559Z",
+          "url": "https://drive.google.com/file/d/1Q01oBXjUtj9yaQOx4ICW_RGBZnw9i_PB/view?usp=drivesdk"
+        },
+        {
+          "id": "1dDlNTBkr5wWjQsT9TMtg3oqdQelwl9WH",
+          "name": "REC_R3P_STAGE1_IMPLEMENTATION_20261020.zip",
+          "size_bytes": 582857,
+          "mime_type": "application/zip",
+          "created_time": "2026-10-20T05:39:28.422Z",
+          "modified_time": "2026-10-20T05:39:28.422Z",
+          "url": "https://drive.google.com/file/d/1dDlNTBkr5wWjQsT9TMtg3oqdQelwl9WH/view?usp=drivesdk"
+        },
+        {
+          "id": "1Y7Ec5jh93kH8zUlEb-giX-kw9wRkc2vp",
+          "name": "REC_R3P_STAGE0_INTAKE_20261020.zip",
+          "size_bytes": 19745,
+          "mime_type": "application/zip",
+          "created_time": "2026-10-20T03:52:44.767Z",
+          "modified_time": "2026-10-20T03:52:44.767Z",
+          "url": "https://drive.google.com/file/d/1Y7Ec5jh93kH8zUlEb-giX-kw9wRkc2vp/view?usp=drivesdk"
+        }
+      ],
+      "query_result_count": 10,
+      "completeness": "BOUNDED_LIST_TOP_200_NO_PAGINATION_FIELD"
+    },
+    {
+      "label": "drive_parent",
+      "files": [
+        {
+          "id": "1JN0cClMmrbModiXEB2Uq3zg8_VsN9SIM",
+          "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-20T11:52:40.228Z",
+          "modified_time": "2026-10-20T11:52:40.228Z",
+          "url": "https://drive.google.com/drive/folders/1JN0cClMmrbModiXEB2Uq3zg8_VsN9SIM"
+        },
+        {
+          "id": "1181NwZ0H-pHP0DXbDvoFJMij2QSNWbmi",
+          "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "size_bytes": 14318848,
+          "mime_type": "application/gzip",
+          "created_time": "2026-10-20T11:58:54.622Z",
+          "modified_time": "2026-10-20T11:51:35.649Z",
+          "url": "https://drive.google.com/file/d/1181NwZ0H-pHP0DXbDvoFJMij2QSNWbmi/view?usp=drivesdk"
+        },
+        {
+          "id": "1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR",
+          "name": "R3P_EXACT_ACCELERATION_20261020",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-20T03:48:58.854Z",
+          "modified_time": "2026-10-20T03:48:58.854Z",
+          "url": "https://drive.google.com/drive/folders/1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR"
+        },
+        {
+          "id": "1MUBX74kpF0dlk7E4_U3AkHpaIh2V-a51",
+          "name": "R3O_GRID_FRONTIERS_20261019",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T11:52:05.196Z",
+          "modified_time": "2026-10-19T11:52:05.196Z",
+          "url": "https://drive.google.com/drive/folders/1MUBX74kpF0dlk7E4_U3AkHpaIh2V-a51"
+        },
+        {
+          "id": "1NXJvqSCjzVwMlgcDjCTg31fw8ApxXHb0",
+          "name": "R3N_CONVERGENCE_20261019",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T09:41:18.624Z",
+          "modified_time": "2026-10-19T09:41:18.624Z",
+          "url": "https://drive.google.com/drive/folders/1NXJvqSCjzVwMlgcDjCTg31fw8ApxXHb0"
+        },
+        {
+          "id": "1Mtj7c9nYpRk5b91cS7nXTWj-Ch_HnDgM",
+          "name": "TMP_PRESERVE_20261019",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T09:34:41.316Z",
+          "modified_time": "2026-10-19T09:34:41.316Z",
+          "url": "https://drive.google.com/drive/folders/1Mtj7c9nYpRk5b91cS7nXTWj-Ch_HnDgM"
+        },
+        {
+          "id": "1Y2gi6-UcLY5_B3037CiaH4aGNSDBvNr5",
+          "name": "R3M_CLOSEOUT_20261019_328f3723",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T08:44:32.403Z",
+          "modified_time": "2026-10-19T08:44:32.403Z",
+          "url": "https://drive.google.com/drive/folders/1Y2gi6-UcLY5_B3037CiaH4aGNSDBvNr5"
+        },
+        {
+          "id": "1tpEv_fqYOcKuGxZsp9PDAQR4Zs8rdgep",
+          "name": "R3M_FULL5210_OWNER_20261019_d0e534b1",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T08:27:35.455Z",
+          "modified_time": "2026-10-19T08:27:35.455Z",
+          "url": "https://drive.google.com/drive/folders/1tpEv_fqYOcKuGxZsp9PDAQR4Zs8rdgep"
+        },
+        {
+          "id": "1W95w95PTy0SgOe6NFmycMs8oYo2iMAKC",
+          "name": "R3M_PILOT128_OWNER_20261019_d0e534b1",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T08:18:41.385Z",
+          "modified_time": "2026-10-19T08:18:41.385Z",
+          "url": "https://drive.google.com/drive/folders/1W95w95PTy0SgOe6NFmycMs8oYo2iMAKC"
+        },
+        {
+          "id": "1cUEcoAbhPZ8adYIKKx-_e3RoZ71Cfd2y",
+          "name": "R3M_U5_CHECKPOINT_20261019_7aeec545",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T08:12:53.213Z",
+          "modified_time": "2026-10-19T08:12:53.213Z",
+          "url": "https://drive.google.com/drive/folders/1cUEcoAbhPZ8adYIKKx-_e3RoZ71Cfd2y"
+        },
+        {
+          "id": "1Vj4o37Teon9Rc2W8gXR_tpZkSrj1jiOV",
+          "name": "R3L_CLOSEOUT_20261019_98a21a79",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-19T05:44:04.831Z",
+          "modified_time": "2026-10-19T05:44:04.831Z",
+          "url": "https://drive.google.com/drive/folders/1Vj4o37Teon9Rc2W8gXR_tpZkSrj1jiOV"
+        },
+        {
+          "id": "17NoopZ7KfgwDGK28qqSSrVNrSEREKocU",
+          "name": "R3K_CLOSEOUT_20261018_bf590549",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-18T12:41:45.626Z",
+          "modified_time": "2026-10-18T12:41:45.626Z",
+          "url": "https://drive.google.com/drive/folders/17NoopZ7KfgwDGK28qqSSrVNrSEREKocU"
+        },
+        {
+          "id": "1bS5DzRsZtDS3EmcF39Q68hT7FBlC5IRA",
+          "name": "R3K_TESTED_SOURCE_20261018_02a773e3",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-18T12:26:08.343Z",
+          "modified_time": "2026-10-18T12:26:08.343Z",
+          "url": "https://drive.google.com/drive/folders/1bS5DzRsZtDS3EmcF39Q68hT7FBlC5IRA"
+        },
+        {
+          "id": "1gjf0lri30spCMDjL8FUWq537eNU-1p6-",
+          "name": "R3J_TESTED_SOURCE_20261018_e0cfdf76",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-18T07:17:50.906Z",
+          "modified_time": "2026-10-18T07:17:50.906Z",
+          "url": "https://drive.google.com/drive/folders/1gjf0lri30spCMDjL8FUWq537eNU-1p6-"
+        },
+        {
+          "id": "1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k",
+          "name": "20261016",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-15T18:39:19.015Z",
+          "modified_time": "2026-10-15T18:39:19.015Z",
+          "url": "https://drive.google.com/drive/folders/1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k"
+        },
+        {
+          "id": "13GQbS1D_e9LPn37xPLnG_budMXpOxhS2",
+          "name": "20261015",
+          "size_bytes": null,
+          "mime_type": "application/vnd.google-apps.folder",
+          "created_time": "2026-10-15T14:35:46.072Z",
+          "modified_time": "2026-10-15T14:35:46.072Z",
+          "url": "https://drive.google.com/drive/folders/13GQbS1D_e9LPn37xPLnG_budMXpOxhS2"
+        }
+      ],
+      "query_result_count": 16,
+      "completeness": "BOUNDED_LIST_TOP_200_NO_PAGINATION_FIELD"
+    },
+    {
+      "label": "drive_r3q",
+      "files": [
+        {
+          "id": "1ywSnt0ACqMPiNdwuHGPnniT8oNHqhmTc",
+          "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "size_bytes": 14318848,
+          "mime_type": "application/gzip",
+          "created_time": "2026-10-20T12:00:02.928Z",
+          "modified_time": "2026-10-20T12:00:02.928Z",
+          "url": "https://drive.google.com/file/d/1ywSnt0ACqMPiNdwuHGPnniT8oNHqhmTc/view?usp=drivesdk"
+        },
+        {
+          "id": "1I3LdyPErwyN2Qa_bI7hSkAk-mLLSHB3C",
+          "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "size_bytes": 14318848,
+          "mime_type": "application/gzip",
+          "created_time": "2026-10-20T12:01:29.362Z",
+          "modified_time": "2026-10-20T11:51:35.649Z",
+          "url": "https://drive.google.com/file/d/1I3LdyPErwyN2Qa_bI7hSkAk-mLLSHB3C/view?usp=drivesdk"
+        }
+      ],
+      "query_result_count": 2,
+      "completeness": "BOUNDED_LIST_TOP_200_NO_PAGINATION_FIELD"
+    },
+    {
+      "label": "dropbox_r3p_normalized",
+      "entries": [
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SIA",
+          "name": "REC_R3P_STAGE0_INTAKE_20261020.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE0_INTAKE_20261020.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE0_INTAKE_20261020.zip",
+          "size_bytes": 19745,
+          "modified_time": "2026-10-20T03:52:50Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SPw",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part001",
+          "size_bytes": 50331648,
+          "modified_time": "2026-10-20T06:17:06Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SMw",
+          "name": "REC_R3P_STAGE1_IMPLEMENTATION_20261020.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE1_IMPLEMENTATION_20261020.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE1_IMPLEMENTATION_20261020.zip",
+          "size_bytes": 582857,
+          "modified_time": "2026-10-20T05:39:34Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SOg",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part001",
+          "size_bytes": 50331648,
+          "modified_time": "2026-10-20T06:07:05Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SQQ",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part002",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part002",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part002",
+          "size_bytes": 50331648,
+          "modified_time": "2026-10-20T06:17:29Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SPA",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part003",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part003",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part003",
+          "size_bytes": 47743055,
+          "modified_time": "2026-10-20T06:07:38Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SOQ",
+          "name": "REC_R3P_STAGE2_VALIDATED_CODE_20261020.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE2_VALIDATED_CODE_20261020.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_STAGE2_VALIDATED_CODE_20261020.zip",
+          "size_bytes": 1106797,
+          "modified_time": "2026-10-20T06:02:27Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SRA",
+          "name": "REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
+          "size_bytes": 24488,
+          "modified_time": "2026-10-20T06:22:31Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SQg",
+          "name": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part003",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part003",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip.part003",
+          "size_bytes": 21429229,
+          "modified_time": "2026-10-20T06:17:35Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SOw",
+          "name": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part002",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part002",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020/REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz.part002",
+          "size_bytes": 50331648,
+          "modified_time": "2026-10-20T06:07:18Z",
+          "object_type": "file"
+        }
+      ],
+      "has_more": false,
+      "cursor": "",
+      "completeness": "COMPLETE_DIRECT_CHILDREN_AT_QUERY_TIME"
+    },
+    {
+      "label": "dropbox_parent",
+      "entries": [
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Qbg",
+          "name": "R3M_CLOSEOUT_20261019_328f3723",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3M_CLOSEOUT_20261019_328f3723",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3M_CLOSEOUT_20261019_328f3723",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T08:45:10Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Qyw",
+          "name": "R3O_GRID_FRONTIERS_20261019",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3O_GRID_FRONTIERS_20261019",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3O_GRID_FRONTIERS_20261019",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T11:52:06Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD9tZA",
+          "name": "R3G_U3_NCP_7a85032_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U3_NCP_7a85032_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U3_NCP_7a85032_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T00:59:41Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_SHw",
+          "name": "R3P_EXACT_ACCELERATION_20261020",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020",
+          "size_bytes": null,
+          "modified_time": "2026-10-20T03:48:59Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_EbQ",
+          "name": "R3J_TESTED_SOURCE_20261018_e0cfdf76",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3J_TESTED_SOURCE_20261018_e0cfdf76",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3J_TESTED_SOURCE_20261018_e0cfdf76",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T07:18:05Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD9Exw",
+          "name": "R3F_NCP_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3F_NCP_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3F_NCP_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-15T23:33:39Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD9x3w",
+          "name": "R3G_U4_NCP_9a2ca20_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U4_NCP_9a2ca20_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U4_NCP_9a2ca20_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T01:17:58Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD9uRw",
+          "name": "R3G_LOCAL_U1_U2_140f0e6_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_LOCAL_U1_U2_140f0e6_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_LOCAL_U1_U2_140f0e6_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T01:03:40Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-H9g",
+          "name": "R3G_U6_NCP_85706be_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U6_NCP_85706be_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U6_NCP_85706be_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T02:34:33Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_QtQ",
+          "name": "R3N_CONVERGENCE_20261019",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3N_CONVERGENCE_20261019",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3N_CONVERGENCE_20261019",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T09:41:19Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_QHA",
+          "name": "R3M_FULL5210_OWNER_20261019_d0e534b1",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3M_FULL5210_OWNER_20261019_d0e534b1",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3M_FULL5210_OWNER_20261019_d0e534b1",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T08:33:10Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-KDQ",
+          "name": "R3G_U7_NCP_cb3d130_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U7_NCP_cb3d130_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U7_NCP_cb3d130_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T02:49:41Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-8Vw",
+          "name": "R3I_H2_U6_HOLD_20261018_3f06b60_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3I_H2_U6_HOLD_20261018_3f06b60_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3I_H2_U6_HOLD_20261018_3f06b60_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T05:25:38Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_PqA",
+          "name": "R3L_CLOSEOUT_20261019_98a21a79",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3L_CLOSEOUT_20261019_98a21a79",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3L_CLOSEOUT_20261019_98a21a79",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T05:44:06Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-Q6A",
+          "name": "R3G_U8_LOW_Z_TO_END_001_6c6c385f",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U8_LOW_Z_TO_END_001_6c6c385f",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U8_LOW_Z_TO_END_001_6c6c385f",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T03:32:20Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD95tQ",
+          "name": "R3G_U5_FIRST_FAILURE_7660239_001",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3G_U5_FIRST_FAILURE_7660239_001",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3G_U5_FIRST_FAILURE_7660239_001",
+          "size_bytes": null,
+          "modified_time": "2026-10-16T01:54:54Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_QBQ",
+          "name": "R3M_U5_CHECKPOINT_20261019_7aeec545",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3M_U5_CHECKPOINT_20261019_7aeec545",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3M_U5_CHECKPOINT_20261019_7aeec545",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T08:14:17Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_MaA",
+          "name": "REC_R3K_CODE_EVIDENCE_HANDOFF_bf590549_20261018.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_R3K_CODE_EVIDENCE_HANDOFF_bf590549_20261018.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3K_CODE_EVIDENCE_HANDOFF_bf590549_20261018.zip",
+          "size_bytes": 15127402,
+          "modified_time": "2026-10-18T12:45:19Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_QCA",
+          "name": "R3M_PILOT128_OWNER_20261019_d0e534b1",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3M_PILOT128_OWNER_20261019_d0e534b1",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3M_PILOT128_OWNER_20261019_d0e534b1",
+          "size_bytes": null,
+          "modified_time": "2026-10-19T08:22:12Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_MFQ",
+          "name": "REC_R3K_TESTED_SOURCE_02a773e3_20261018.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_R3K_TESTED_SOURCE_02a773e3_20261018.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3K_TESTED_SOURCE_02a773e3_20261018.zip",
+          "size_bytes": 15120611,
+          "modified_time": "2026-10-18T12:28:39Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-8PQ",
+          "name": "R3I_H2_U4_EXIT_20261018_001_23ae8ad",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3I_H2_U4_EXIT_20261018_001_23ae8ad",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3I_H2_U4_EXIT_20261018_001_23ae8ad",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T03:51:28Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-8UQ",
+          "name": "R3I_H2_U5_THERMAL_20261018_001_916cedd",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3I_H2_U5_THERMAL_20261018_001_916cedd",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3I_H2_U5_THERMAL_20261018_001_916cedd",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T04:30:36Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Ikg",
+          "name": "R3I_U6_RECOVERY_20261018_001_3a5adf6",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3I_U6_RECOVERY_20261018_001_3a5adf6",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3I_U6_RECOVERY_20261018_001_3a5adf6",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T09:30:18Z",
+          "object_type": "folder"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_MFw",
+          "name": "REC_R3K_TESTED_SOURCE_42ed7b5d_20261018.zip",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_R3K_TESTED_SOURCE_42ed7b5d_20261018.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3K_TESTED_SOURCE_42ed7b5d_20261018.zip",
+          "size_bytes": 15121615,
+          "modified_time": "2026-10-18T12:33:15Z",
+          "object_type": "file"
+        },
+        {
+          "id": "id:BSpOijBcT10AAAAAAD-7hw",
+          "name": "R3I_H2_CONT_20261018_001_53edd26",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/R3I_H2_CONT_20261018_001_53edd26",
+          "path_display": "/bianchi/rec_bianchi/20261016/R3I_H2_CONT_20261018_001_53edd26",
+          "size_bytes": null,
+          "modified_time": "2026-10-18T03:38:02Z",
+          "object_type": "folder"
+        }
+      ],
+      "has_more": false,
+      "cursor": "",
+      "completeness": "COMPLETE_DIRECT_CHILDREN_AT_QUERY_TIME"
+    },
+    {
+      "label": "dropbox_r3q_folder",
+      "entries": [
+        {
+          "id": "id:BSpOijBcT10AAAAAAD_Z2g",
+          "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "path": "ns:183516487//BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "path_display": "/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+          "size_bytes": 14318848,
+          "modified_time": "2026-10-20T11:53:05Z",
+          "object_type": "file"
+        }
+      ],
+      "has_more": false,
+      "cursor": "",
+      "completeness": "COMPLETE_DIRECT_CHILDREN_AT_QUERY_TIME"
+    }
+  ],
+  "new_archive": {
+    "name": "REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+    "bytes": 14318848,
+    "sha256": "5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2",
+    "local_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+    "safe_extraction_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/new_return",
+    "members": 66,
+    "total_uncompressed_bytes": 15205197,
+    "unsafe_members": 0,
+    "drive": {
+      "id": "1ywSnt0ACqMPiNdwuHGPnniT8oNHqhmTc",
+      "folder_id": "1JN0cClMmrbModiXEB2Uq3zg8_VsN9SIM",
+      "created_time": "2026-10-20T12:00:02.928Z",
+      "full_readback": "PASS",
+      "bytes": 14318848,
+      "sha256": "5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2"
+    },
+    "dropbox": {
+      "id": "id:BSpOijBcT10AAAAAAD_Z2g",
+      "path": "/BASS_DERIVATION_DOSSIERS_20260912/REC_R3Q_NCP_REVIEWED_RESULTS_20261020/REC_R3Q_NCP_REVIEWED_RESULTS_20261020.tar.gz",
+      "rev": "65e4446037f400af03d47",
+      "server_modified": "2026-10-20T11:53:05Z",
+      "full_readback": "PASS",
+      "bytes": 14318848,
+      "sha256": "5219995db41dfebf8d0ceafa445402f9125e01321241a34a54fd9f4592c513e2",
+      "provider_content_hash": "c4fd639d881e467c35504b9f783ccba661917492f6d9e9a2922c2c09dc0acc5d"
+    },
+    "other_same_named_objects": "Metadata and sizes read only; their byte identity was not inferred or separately tested."
+  },
+  "new_return": {
+    "execution_source_commit": "1ad0380110621446c42df9d995fd85db3a6c7e7a",
+    "source_tree": "efd65193713f19d0e60a0617182b3449c7091510",
+    "source_identity_basis": "ncp_event_001/INDEPENDENT_REVIEW.json and source_tree_manifest_ncp.json; separate current Git identity check by parent",
+    "h4": {
+      "extra_accepted": 1511,
+      "full_evaluations": 6044,
+      "event": "HELIUM_CUTOFF",
+      "event_iz": 74409,
+      "endpoint_iz": 74411,
+      "endpoint_z": 1648.0396016895968,
+      "endpoint_branch": "H_ONLY",
+      "endpoint_post_saha": true,
+      "reviewed_status": "PASS_SCOPED_H4_FIRST_EVENT_PLUS_TWO",
+      "same_h": "PASS",
+      "first_failure": null,
+      "exit_code": 0,
+      "runner_cpu_s": 30.196189,
+      "runner_wall_s": 30.345126653992338,
+      "whole_supervisor_cpu_s": 31.315760764,
+      "whole_supervisor_wall_s": 31.468693311006064,
+      "npz_sha256": "7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9",
+      "verification_sha256": "415efed4559eb3a2c844e919135df89ec3b4d9ed095c5e2dd3fd07d963539cd4",
+      "terminal_sha256": "52df5f331437b1a7239ffed1b5a834aa41a487000cbf0ba060e5f65794f91f9b",
+      "allocation_id": "REC_R3Q_NCP_EVENT_20261020T1141Z",
+      "allocation_cpu_s": 600,
+      "allocation_wall_s": 900,
+      "address_limit_bytes_per_process": 2147483648,
+      "host": "s1a0e5abed09",
+      "affinity": [
+        63
+      ]
+    },
+    "h2_lowz": {
+      "accepted_steps": 153327,
+      "states": 153328,
+      "checkpoint_count": 43,
+      "start_iz": 58389,
+      "end_iz": 211716,
+      "last_z": -0.00002238689928646398,
+      "dlna": 0.00004245,
+      "reviewed_status": "PASS_SCOPED_H2_LOWZ_SAME_H",
+      "terminal_status": "STOP_AT_SOURCE_Z0_CUBIC_STENCIL",
+      "same_h": "PASS",
+      "first_failure": null,
+      "runner_cpu_s": 60.755865,
+      "runner_wall_s": 62.63294564798707,
+      "top_level_exit_code": "NOT_INCLUDED_IN_THIS_COMPACT_RETURN",
+      "native_build_exit_code": 0,
+      "npz_sha256": "b25e2cbdafe4037d222116c4985eac95a380552f6799a2b3e950fb499965dbe6",
+      "verification_sha256": "3525f0fc13bc493a8ebc6d42741d7e9af5cbe726478df819f2ea918f5ad98c37",
+      "allocation_id": "REC_R3O_LOWZ_NCP_20261020T114015Z",
+      "launch_cpu": 62,
+      "address_limit_bytes_per_process": 2147483648
+    },
+    "environment": {
+      "host": "s1a0e5abed09",
+      "python_version_from_runtime_observer": "3.12.3",
+      "compiler": "gcc commands present, exact compiler version absent from this compact return",
+      "rust": "not required by R3Q",
+      "blas_threads": 1
+    },
+    "retained_scientific_ceiling": {
+      "historical_budget": "CLOSED_HOLD_NOT_RESET",
+      "original_h_U5": "HOLD_9_FAIL",
+      "h2_U5": "HOLD_8_FAIL",
+      "h_h2_h4_convergence": "HOLD/NOT_RUN",
+      "REI_activation": false,
+      "production_speedup": "NOT_MEASURED"
+    }
+  },
+  "findings": [
+    {
+      "classification": "METADATA_SCOPE",
+      "detail": "Top-level R3Q EVIDENCE.json and DELIVERY.json retain pre-NCP smoke/publication scopes (event_execution/ncp_execution NOT_RUN). Current execution evidence resides in NCP child receipts and updated HANDOFF/REPORT/DAG. Preserve historical fields rather than reading them as global current status."
+    },
+    {
+      "classification": "NUMERICAL_CONTRACT_UNRESOLVED",
+      "detail": "H2 HANDOFF and independent review report 4 required/3 available terminal states, yet verification.z0 explicitly contains a clamped four-point stencil indices 211713..211716, clamped_index211714, fraction1.4726230889209546 and computed cubic values. Parent should inspect source before accepting endpoint completeness or treating the stop as a true missing-state limit."
+    },
+    {
+      "classification": "RAW_SCOPE_LIMITATION",
+      "detail": "New compact return includes H4 NPZ and H2 native/Python NPZ plus command/exit/build/stdout/stderr hashes. It omits H4 native_oracle_stdout.csv, H4 partial photon streams and full worker stdout/stderr, and H2 accepted_pairs.jsonl. Their saved review assertions and hashes can be reused, but full raw comparisons of those absent files were not repeated."
+    },
+    {
+      "classification": "RESOURCE_SCOPE",
+      "detail": "RSS values are parent/child maxima, not simultaneous process-tree aggregate. H4 recorded affinity[63]; H2 controller taskset and PSR62 observed, no continuous affinity log. Old NCP allocations are expired and no new allocation was issued."
+    }
+  ],
+  "current_turn_failures_and_recovery": [
+    {
+      "classification": "INVALID_ARGUMENT",
+      "operation": "Dropbox list_folder with trailing slash",
+      "error": "INVALID_PATH",
+      "recovery": "retry exact same authorized folder without trailing slash succeeded",
+      "resolved": true
+    },
+    {
+      "classification": "EXECUTION_FAILED",
+      "operation": "Python HTTPS download under default sandbox",
+      "error": "PermissionError Errno1 socket denied",
+      "recovery": "same read-only authenticated download with require_escalated succeeded",
+      "resolved": true
+    }
+  ],
+  "claim_scope": "Evidence intake and remote archive byte identity only; no new independent physics audit, benchmark, solver run or campaign repeat."
+}

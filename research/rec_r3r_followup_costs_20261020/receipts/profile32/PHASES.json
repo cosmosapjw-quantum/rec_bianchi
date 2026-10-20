@@ -1,0 +1,72 @@
+{
+  "timer": "cProfile default elapsed timer; not exclusive process-tree CPU",
+  "total_profiler_wall_s": 3.1337584679999813,
+  "phases": [
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+      "line": 165,
+      "name": "compare_native_stream",
+      "calls": 1,
+      "exclusive_profiler_wall_s": 0.146397774,
+      "inclusive_profiler_wall_s": 0.252768103
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+      "line": 147,
+      "name": "check_one_source",
+      "calls": 9,
+      "exclusive_profiler_wall_s": 0.000283966,
+      "inclusive_profiler_wall_s": 0.004622153
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/src/full_bianchi_hyrec/trajectory/causal_virtual_redshift.py",
+      "line": 171,
+      "name": "causal_incoming_from_accepted_histories",
+      "calls": 128,
+      "exclusive_profiler_wall_s": 0.023102562,
+      "inclusive_profiler_wall_s": 0.055333597000000005
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/src/full_bianchi_hyrec/trajectory/full_2012_atomic_source.py",
+      "line": 322,
+      "name": "complete_original_full_atomic",
+      "calls": 128,
+      "exclusive_profiler_wall_s": 0.006809403,
+      "inclusive_profiler_wall_s": 0.066014206
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_continuation.py",
+      "line": 159,
+      "name": "rhs",
+      "calls": 128,
+      "exclusive_profiler_wall_s": 0.005224692,
+      "inclusive_profiler_wall_s": 0.280682973
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_continuation.py",
+      "line": 86,
+      "name": "integrate_continuation",
+      "calls": 1,
+      "exclusive_profiler_wall_s": 0.0017729290000000001,
+      "inclusive_profiler_wall_s": 0.29066426700000003
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/src/full_bianchi_hyrec/trajectory/full_2012_atomic_source.py",
+      "line": 227,
+      "name": "populate_original_full_atomic",
+      "calls": 128,
+      "exclusive_profiler_wall_s": 0.010397883,
+      "inclusive_profiler_wall_s": 0.138230509
+    },
+    {
+      "file": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+      "line": 327,
+      "name": "observer",
+      "calls": 128,
+      "exclusive_profiler_wall_s": 0.000330468,
+      "inclusive_profiler_wall_s": 0.006125704
+    }
+  ],
+  "failure_correction": "failed/execution.json new_accepted_steps=32 denotes requested steps only; actual accepted steps=0 and worker status=FAIL. cProfile CLI suppresses SystemExit, so outer exit0 is not success. Repaired wrapper uses Profile.runcall and propagates exit.",
+  "same_allocation_cpu_s": 4.739402999999999
+}

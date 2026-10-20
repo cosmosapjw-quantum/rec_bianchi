@@ -1,0 +1,191 @@
+{
+  "unit": "REC_R3Q_TARGETED_ALGORITHM_SUPPORT",
+  "observed_at": "2026-10-20T13:31:40Z",
+  "scope": "No repo modification, no solver run; primary literature plus finite-sum symbolic check",
+  "parent_reported_counts_not_revalidated": {
+    "full_observer_calls": 6044,
+    "approx_selected_samples": 117
+  },
+  "sources": [
+    {
+      "id": "N1",
+      "url": "https://numpy.org/doc/2.3/user/basics.copies.html",
+      "version": "2.3",
+      "scope": "data copy versus view"
+    },
+    {
+      "id": "N2",
+      "url": "https://numpy.org/doc/2.3/reference/ufuncs.html",
+      "version": "2.3",
+      "scope": "elementwise,dtype,out,where,overlap,temporary expression"
+    },
+    {
+      "id": "N3",
+      "url": "https://numpy.org/doc/2.3/reference/generated/numpy.maximum.html",
+      "version": "2.3",
+      "scope": "NaN policy,output allocation"
+    },
+    {
+      "id": "P1",
+      "url": "https://docs.python.org/3.14/library/copy.html",
+      "version": "3.14 documentation",
+      "scope": "assignment,shallow,deep"
+    },
+    {
+      "id": "P2",
+      "url": "https://docs.python.org/3.14/reference/expressions.html#evaluation-order",
+      "version": "web 3.14.8; Exa 3.14.7 cached",
+      "scope": "6.16",
+      "last_updated_observed": "2026-10-20T13:02:00Z"
+    },
+    {
+      "id": "P3",
+      "url": "https://docs.python.org/3.14/tutorial/floatingpoint.html",
+      "version": "3.14 documentation",
+      "scope": "binary64 and rounding"
+    },
+    {
+      "id": "H1",
+      "url": "https://arxiv.org/pdf/1011.3758",
+      "canonical_version_url": "https://arxiv.org/abs/1011.3758v2",
+      "doi": "10.1103/PhysRevD.83.043513",
+      "version_date": "2011-01-21",
+      "scope": "V.D,V.E,AppendixC",
+      "pdf_page_count": 24
+    }
+  ],
+  "tool_status": {
+    "exa": {
+      "status": "SUCCESS",
+      "search_calls": 2,
+      "requested_results": 10,
+      "search_requests": [
+        {
+          "query": "Find the official NumPy reference documentation explaining array copying versus views, np.copy independent numeric data buffer, and whether elementwise universal functions allocate output arrays or support out parameters.",
+          "objective": "Primary numpy.org versioned documentation only. Extract data-copy ownership, ufunc elementwise and output buffer semantics. Exclude tutorials, performance hype, and reductions.",
+          "numResults": 5
+        },
+        {
+          "query": "Find original HyRec paper by Yacine Ali-Haimoud and Christopher Hirata arXiv 1011.3758 and official documentation describing effective multilevel atom, radiative transfer feedback and numerical integration accuracy.",
+          "objective": "Locate primary original paper 1011.3758 and official author repository. Preserve title, author, DOI, date and direct source URL. No third-party summaries and no upgrade to newer HyRec solver as if same operator.",
+          "numResults": 5
+        }
+      ],
+      "fetch_requests": [
+        {
+          "urls": [
+            "https://numpy.org/doc/2.3/user/basics.copies.html",
+            "https://numpy.org/doc/2.3/reference/ufuncs.html",
+            "https://numpy.org/doc/2.3/reference/generated/numpy.maximum.html"
+          ],
+          "maxCharacters": 15000
+        },
+        {
+          "urls": [
+            "https://docs.python.org/3.14/library/copy.html",
+            "https://docs.python.org/3.14/reference/expressions.html#evaluation-order",
+            "https://docs.python.org/3.14/tutorial/floatingpoint.html"
+          ],
+          "maxCharacters": 12000
+        },
+        {
+          "urls": [
+            "https://arxiv.org/abs/1011.3758v2",
+            "https://arxiv.org/pdf/1011.3758v2"
+          ],
+          "maxCharacters": 80000
+        }
+      ],
+      "pdf_versioned_fetch_limitation": "Exa returned paper abstract/bibliographic content rather than section text; actual sections read through web PDF"
+    },
+    "scispace": {
+      "status": "SUCCESS",
+      "request": {
+        "searchQuestion": "How does the original Ali-Haimoud and Hirata HyRec paper, arXiv:1011.3758, separate effective multilevel hydrogen recombination, radiative transfer feedback, and time integration, and which numerical accuracy claims apply to that fixed operator rather than to diagnostic or output-only acceleration?"
+      },
+      "adopted_unique_id": "45gwrpvqjn",
+      "adopted_doi": "10.1103/PHYSREVD.83.043513",
+      "usage": "Discovery cross-check only; no secondary summary adopted as proof"
+    },
+    "wolfram_context": {
+      "args": {
+        "context": "We are optimizing diagnostic history snapshots in cosmosapjw-quantum/rec_bianchi after completed R3P exact audit acceleration. The original HyRec2012 atomic/thermal operator, predictor recurrence, causal/stage boundaries and tolerances are frozen. Candidate: perform copied accepted-history snapshots only at deterministic selected oracle sample events instead of all observer events. Need symbolic finite-sum work model with initial history n0, N=md events, every d-th sampled event, and distinguish the real-algebra count reduction from any binary64 numerical equivalence or measured solver speedup. Derive sum(n0+k), sampled sum(n0+dj), difference, ratio, then Amdahl speedup with copied-work fraction f. This is integer/real symbolic algebra, not a physical solver run."
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "tool call error: tool call failed for `codex_apps/wolfram.WolframContext`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+          }
+        ],
+        "isError": true
+      }
+    },
+    "wolfram_evaluator": {
+      "args": {
+        "code": "Assuming[Element[{m,d,n0},Integers] && m>=1 && d>=1 && n0>=0, Module[{all,selected}, all=Sum[n0+k,{k,1,m d}]; selected=Sum[n0+d j,{j,1,m}]; <|\"all\"->Factor[all],\"selected\"->Factor[selected],\"difference\"->Factor[all-selected],\"copyWorkRatio\"->FullSimplify[all/selected],\"zeroSeedRatio\"->FullSimplify[(all/selected)/.n0->0],\"differenceNonnegative\"->FullSimplify[all-selected>=0],\"Amdahl\"->(1/(1-f+f/r))|>]]",
+        "timeConstraint": 20
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Out[1]= <|\"all\" -> (d*m*(1 + d*m + 2*n0))/2, \"selected\" -> (m*(d + d*m + 2*n0))/2, \"difference\" -> ((-1 + d)*m*(d*m + 2*n0))/2, \"copyWorkRatio\" -> (d*(1 + d*m + 2*n0))/(d + d*m + 2*n0), \"zeroSeedRatio\" -> (1 + d*m)/(1 + m), \"differenceNonnegative\" -> True, \"Amdahl\" -> (1 - f + f/r)^(-1)|>"
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    },
+    "web": {
+      "versioned_pdf_open": {
+        "url": "https://arxiv.org/pdf/1011.3758v2",
+        "status": "SERVICE_ERROR",
+        "message": "Failed to fetch: DisabledError"
+      },
+      "unversioned_pdf_open": {
+        "url": "https://arxiv.org/pdf/1011.3758",
+        "status": "SUCCESS",
+        "ref": "turn1view1"
+      },
+      "references": {
+        "hyrec_sections": "turn3view0",
+        "hyrec_appendix_c": "turn3view1",
+        "python_order": "turn3view2",
+        "numpy_maximum": "turn1view4"
+      },
+      "root_citation_requirement": "Root must open/read these exact sources before citing shared refs"
+    }
+  },
+  "derived": {
+    "conditions": [
+      "same metadata selection",
+      "same causal boundary",
+      "no required unsampled side effects or exceptions",
+      "same selected snapshot ownership",
+      "observer pure wrt solver"
+    ],
+    "all": "d*m*(1+d*m+2*n0)/2",
+    "selected": "m*(d+d*m+2*n0)/2",
+    "difference": "(d-1)*m*(d*m+2*n0)/2",
+    "ratio": "d*(1+d*m+2*n0)/(d+d*m+2*n0)",
+    "zero_seed_ratio": "(1+d*m)/(1+m)",
+    "amdahl": "1/(1-f+f/r)",
+    "status": "DERIVED_AND_WOLFRAM_CHECKED",
+    "bitwise_proof": false,
+    "measured_speedup": false
+  },
+  "recommendation": {
+    "candidate": "guarded owned history snapshot",
+    "status": "CONDITIONAL_ON_PARENT_SOURCE_AND_PROFILE",
+    "risks": [
+      "required exception timing",
+      "callback state updates on nonsampled events",
+      "mutable aliasing",
+      "object conversion hooks"
+    ],
+    "other_candidate": "spectral batch has broader dtype/parsing/formatting/exception/ordering surface"
+  },
+  "code_imported": false
+}
+
