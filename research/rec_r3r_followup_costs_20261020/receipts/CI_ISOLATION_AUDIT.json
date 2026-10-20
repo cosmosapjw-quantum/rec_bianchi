@@ -1,0 +1,263 @@
+{
+  "schema": "rec.r3r.ci-isolation-independent-audit.v1",
+  "created_utc": "2026-10-20T20:57:55.325754+00:00",
+  "reviewer": "independent context_intake agent; neither numerical implementation nor test-only fix author",
+  "status": "PASS_SCOPED_CI_ISOLATION_P2_CLOSED",
+  "scope": "The two saved-stream tests now isolate their CLI process budget; actual fixed-source CI and its raw logs reviewed. Historical C9, raw science, failed CI and physical holds preserved.",
+  "source_identity": {
+    "scientific_execution_source_complete_reused": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "scientific_execution_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+    "previous_delivery_head": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
+    "published_test_only_commit": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+    "published_test_only_tree": "565550bec51506b2a85c48442b9ab0d69be18be7",
+    "actual_PR_CI_checkout": "2fe1008f31a4ccb36b1b03fe14e31a65a7c75b2f",
+    "actual_PR_CI_checkout_tree": "565550bec51506b2a85c48442b9ab0d69be18be7",
+    "merge_tree_equals_published_test_source_tree": true,
+    "test_file": "tests/test_r3r_stream_audit.py",
+    "test_sha256": "6b29e4018f56ba20e455f7cac375a45d0eb712659827def308258c4bd0cd74d3",
+    "prior_unexecuted_local_test_commit_record": "1a4e05a1a3c9fef8c661c5bd3ccacd4662020402",
+    "prior_local_tree_record": "565550bec51506b2a85c48442b9ab0d69be18be7",
+    "prior_local_commit_was_not_actual_execution_source": true
+  },
+  "change_review": {
+    "committed_files": [
+      "tests/test_r3r_stream_audit.py"
+    ],
+    "diff_insertions": 92,
+    "diff_deletions": 3,
+    "test_functions_unchanged": 18,
+    "parameterizations_unchanged": true,
+    "unique_R3R_case_universe": 61,
+    "new_unique_cases": 0,
+    "protected_runtime": {
+      "scripts/benchmark_r3r_stream_audit.py": {
+        "base_bytes_equal": true,
+        "scientific_source_AST_and_locations_equal": true,
+        "scientific_source_bytes_equal": true,
+        "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4"
+      },
+      "scripts/build_r3o_rust.py": {
+        "base_bytes_equal": true,
+        "scientific_source_AST_and_locations_equal": true,
+        "scientific_source_bytes_equal": true,
+        "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5"
+      },
+      "scripts/r3r_stream_audit.py": {
+        "base_bytes_equal": true,
+        "scientific_source_AST_and_locations_equal": true,
+        "scientific_source_bytes_equal": true,
+        "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+      },
+      "scripts/run_r3r_h4_supervised.py": {
+        "base_bytes_equal": true,
+        "scientific_source_AST_and_locations_equal": true,
+        "scientific_source_bytes_equal": false,
+        "sha256": "0973c179ccf4a0c5eec38b1005bf43f14c9dbd98852b7ef0cf56f55da43721ec"
+      },
+      "scripts/verify_r3q_h4_continuation.py": {
+        "base_bytes_equal": true,
+        "scientific_source_AST_and_locations_equal": true,
+        "scientific_source_bytes_equal": true,
+        "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a"
+      }
+    },
+    "frozen_sources_verified": 100,
+    "total_source_paths_verified": 111
+  },
+  "finding": {
+    "id": "CI-P2-IMPORTED-PROCESS-LIFETIME-BUDGET",
+    "severity": "P2",
+    "status": "CLOSED_BY_ACTUAL_FIXED_SOURCE_CI",
+    "classification": "TEST_HARNESS_EXECUTION_SCOPE_ERROR",
+    "actual_failure_values": [
+      {
+        "cpu_s": 92.44056,
+        "wall_s": 80.063518
+      },
+      {
+        "cpu_s": 92.626558,
+        "wall_s": 80.249547
+      }
+    ],
+    "root_cause": "Two imported lane trace tests called the unchanged CLI process-lifetime guard after unrelated general pytest work had already spent its 55 CPU-second work threshold. Actual failure is not a ratio mismatch.",
+    "repair": "Fresh bounded child per existing trace test; parent guard demonstrably remains spent before and after the child; no CLI guard reset or limit increase.",
+    "adversarial_parent_wall_mock_s": 181,
+    "mock_is_not_actual_failed_CI_wall": true,
+    "unchanged_assertions": [
+      "25000 lanes",
+      "200000 binary64 trace bytes per backend",
+      "scalar and NumPy trace SHA equality",
+      "0 differing binary64 lanes",
+      "same input hashes before and after",
+      "valid per-tag interleaving",
+      "child returncode zero and empty stderr",
+      "lower-only inherited CPU/AS limits and fresh pycache"
+    ]
+  },
+  "actual_CI": {
+    "historical_general": {
+      "passed": 1036,
+      "failed": 2,
+      "skipped": 103,
+      "subtests_passed": 72,
+      "pytest_wall_s": 131.63,
+      "classification": "TEST_HARNESS_PROCESS_LIFETIME_CPU_SCOPE_ERROR",
+      "actual_guard_values": [
+        {
+          "cpu_s": 92.44056,
+          "wall_s": 80.063518
+        },
+        {
+          "cpu_s": 92.626558,
+          "wall_s": 80.249547
+        }
+      ]
+    },
+    "new_general": {
+      "conclusion": "success",
+      "completed_utc": "2026-10-20T20:49:37Z",
+      "passed": 1038,
+      "skipped": 103,
+      "failed": 0,
+      "subtests_passed": 72,
+      "pytest_wall_s": 138.69
+    },
+    "new_dedicated": {
+      "conclusion": "success",
+      "completed_utc": "2026-10-20T20:47:32Z",
+      "passed": 60,
+      "skipped": 1,
+      "failed": 0,
+      "pytest_wall_s": 9.47,
+      "unique_case_universe": 61
+    },
+    "raw_logs": [
+      {
+        "file": "39473175864_job118802238478.log",
+        "kind": "historical_general",
+        "run_id": 39473175864,
+        "job_id": 118802238478,
+        "branch_head": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
+        "actual_checkout_sha": "866646195e93d2d2456cd87a28320466146ac98a",
+        "bytes": 62608,
+        "sha256": "e313549464b465f321fd27bc6e436cae7c96f46374135f9b6121428851a6497c",
+        "actual_pytest_summary": "2 failed, 1036 passed, 103 skipped, 72 subtests passed in 131.63s (0:02:11)",
+        "python": "3.13.16",
+        "numpy": "2.5.4",
+        "source_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39473175864",
+        "decoded_log_scope": "Exact UTF-8 bytes returned by GitHub decoded-log connector; original BOM and terminal bytes retained"
+      },
+      {
+        "file": "39473175860_job118802238859.log",
+        "kind": "historical_dedicated",
+        "run_id": 39473175860,
+        "job_id": 118802238859,
+        "branch_head": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
+        "actual_checkout_sha": "866646195e93d2d2456cd87a28320466146ac98a",
+        "bytes": 26082,
+        "sha256": "27f48982a95e7c60638605344bbe586b7bf70822d68f90494e575c46919fb0b7",
+        "actual_pytest_summary": "60 passed, 1 skipped in 4.16s",
+        "python": "3.12.15",
+        "numpy": "2.5.4",
+        "source_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39473175860",
+        "decoded_log_scope": "Exact UTF-8 bytes returned by GitHub decoded-log connector; original BOM and terminal bytes retained"
+      },
+      {
+        "file": "39494896783_job118877283392.log",
+        "kind": "current_general",
+        "run_id": 39494896783,
+        "job_id": 118877283392,
+        "branch_head": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+        "actual_checkout_sha": "2fe1008f31a4ccb36b1b03fe14e31a65a7c75b2f",
+        "bytes": 56426,
+        "sha256": "be2e987e27f7896f4806cee7e6c4686fb599e73f127c154fbcb2c5d54c31ba6a",
+        "actual_pytest_summary": "1038 passed, 103 skipped, 72 subtests passed in 138.69s (0:02:18)",
+        "python": "3.13.16",
+        "numpy": "2.5.4",
+        "source_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39494896783",
+        "decoded_log_scope": "Exact UTF-8 bytes returned by GitHub decoded-log connector; original BOM and terminal bytes retained"
+      },
+      {
+        "file": "39494897256_job118877284387.log",
+        "kind": "current_dedicated",
+        "run_id": 39494897256,
+        "job_id": 118877284387,
+        "branch_head": "70a53396e910869ea069e184a44f1fb21cb47a0a",
+        "actual_checkout_sha": "2fe1008f31a4ccb36b1b03fe14e31a65a7c75b2f",
+        "bytes": 26083,
+        "sha256": "b252d8e076051ad67360e911a326d17458025ec5f01bc478b921bd94fe789e6a",
+        "actual_pytest_summary": "60 passed, 1 skipped in 9.47s",
+        "python": "3.12.15",
+        "numpy": "2.5.4",
+        "source_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39494897256",
+        "decoded_log_scope": "Exact UTF-8 bytes returned by GitHub decoded-log connector; original BOM and terminal bytes retained"
+      }
+    ],
+    "test_counts": "1036 prior passes plus two repaired passes gives1038 general passes; dedicated60PASS+1SKIP remains same61 cases; repeated CI does not increase unique count.",
+    "optional_skipped_case": "Externally preserved unmodified full CSV case; original local1313 result remains complete_reused.",
+    "new_CI_numerical_raw_scope": "Read actual CI execution logs and exact executed tree; new child f64 files were not independently downloaded. Original direct25000-lane raw-byte audit remains reused."
+  },
+  "resource_review": {
+    "child_cpu_cap_s": 60,
+    "child_wall_work_alarm_s": 168,
+    "parent_child_timeout_s": 180,
+    "per_process_address_space_cap_bytes": 2147483648,
+    "inherited_lower_limits_preserved": true,
+    "existing_CLI_work_reserves_cpu_s": 5,
+    "existing_CLI_work_reserves_wall_s": 12,
+    "proof_scope": "Exact source assertions plus actual completed CI. No new NCP resource measurement, RSS benchmark or whole-solver speedup.",
+    "general_CI_job_scope": "Whole general pytest duration is not a60CPU scientific-run allocation."
+  },
+  "formal_validation_003": {
+    "status": "NOT_RUN_SUPERSEDED_BY_ACTUAL_SOURCE70A_CI_RETURN",
+    "new_local_allocation_CPU_spent_s": 0,
+    "lost_unexecuted_wrapper_sha256": "e8a168c9768c399fd8e3e2d70aa1f4c2d9858a9b4c7ecb867fd6ac104c734538",
+    "lost_wrapper_status": "PRUNED_BEFORE_EXECUTION"
+  },
+  "historical_C9_sha256_unchanged": {
+    "C9_CODE_AUDIT.json": "6d9fd3ffcb478f4986b1b424923350c936f68979cda750bff32f6e46984a02e7",
+    "C9_CODE_AUDIT.md": "2014053e0af6973e0034f41f1a0de4f566a6b65102fa79c69b8a14449127be62",
+    "C9_EVIDENCE_READBACK.json": "bb3d1d49f68089028f5b2b47045cb6b6aa737a5f474e56a5a2af8bcbd85e96c4"
+  },
+  "new_local_solver_integrations": 0,
+  "new_local_test_executions": 0,
+  "new_timed_benchmark_trials": 0,
+  "independent_readback_execution": {
+    "schema": "rec.r3r.ci-isolation-readback-execution.v1",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/scratch/45780e6e06f6/rec_bianchi/research/rec_r3r_followup_costs_20261020/receipts/ci_isolation_evidence_readback.py"
+    ],
+    "cwd": "/workspace/scratch/45780e6e06f6/rec_bianchi",
+    "start_utc": "2026-10-20T20:55:53.738453+00:00",
+    "exit_code": 0,
+    "wall_s": 0.46590665899566375,
+    "waited_child_tree_cpu_s": 0.45879,
+    "script_sha256": "9aa0bd959a2afc22ef65ddf72bd603edaa90efa67da1e4cfdaaf19231c7048ba",
+    "stdout_sha256": "2cdfa232c39686ce56dced9165e434aff78efcbb6e1b906d79dd4a1e26448291",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "Saved metadata, fixed Git bytes and actual CI log audit only; no tests, solver or benchmark invocation"
+  },
+  "verdict_axes": {
+    "Mathematical correctness": "UNCHANGED_COMPLETE_REUSED_R3R_SCOPED_PASS",
+    "Numerical equivalence": "FIXED_SOURCE_CI_REGRESSION_PASS; original full lane-byte evidence reused",
+    "Implementation correctness": "PASS_SCOPED_CI_ISOLATION_FIX",
+    "Measured acceleration": "NO_NEW_MEASUREMENT; original1313 audit-only result retained",
+    "Memory and resource behavior": "LOWER_ONLY_TEST_CHILD_LIMIT_ASSERTIONS_PASS_IN_CI; no new NCP/RSS measurement",
+    "Physical validity": "NOT_ESTABLISHED; original U5 holds and global convergence NOT_RUN preserved",
+    "Production readiness": "NOT_APPROVED"
+  },
+  "remaining_reviewed_P1": 0,
+  "remaining_reviewed_P2": 0,
+  "remaining_shipping_gate": "CI recorded here belongs to70a and identical merge tree. Later delivery changes and remote backup readbacks require their own receipts.",
+  "evidence_sha256": {
+    "CI_ISOLATION_EVIDENCE_READBACK.json": "144fc37050b5494561c679758c9bf31984b7e579aacae22042121a72b9958316",
+    "ci/CI_ISOLATION_CI.json": "b7f28c54e9d781b382687cb7d8a37984edf231bb8bfb16ab30a57bcf8bb88dc2",
+    "ci/CI_ISOLATION_LOGS.tar.gz": "a81331bccf93627d846842db6a1f072eb28385180e540c2dd134d40ad6738eee",
+    "ci_isolation_evidence_readback.py": "9aa0bd959a2afc22ef65ddf72bd603edaa90efa67da1e4cfdaaf19231c7048ba",
+    "ci_isolation_evidence_readback.execution.json": "1ac8aa6b4e95cd54f560acafc7c0cf519505baa6acce2633fb6e6d1695de4576",
+    "ci_isolation_evidence_readback.stdout.log": "2cdfa232c39686ce56dced9165e434aff78efcbb6e1b906d79dd4a1e26448291",
+    "ci_isolation_evidence_readback.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

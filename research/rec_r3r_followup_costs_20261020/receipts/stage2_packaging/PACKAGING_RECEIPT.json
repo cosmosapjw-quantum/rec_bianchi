@@ -1,0 +1,107 @@
+{
+  "archive": {
+    "bytes": 23953020,
+    "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+    "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b"
+  },
+  "archive_entry_count": 213,
+  "archive_type": "DELTA_REQUIRES_R3P_BASE_ZIP; NOT_A_FULL_SNAPSHOT",
+  "base_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+  "base_inventory_count": 3410,
+  "base_tree": "fa3fe13ab28c6489df0d424125edb3d631171f40",
+  "base_zip_new_readback": "NOT_RUN_REUSED_PREVIOUS_EVIDENCE",
+  "benchmark_runs": 0,
+  "code_delta_files": 114,
+  "code_source_policy": "FIXED_GIT_OBJECTS_ONLY; WORKTREE_CODE_NOT_READ",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/package_r3r_stage2.py",
+    "--repo",
+    "/workspace/scratch/45780e6e06f6/rec_bianchi",
+    "--intake",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake",
+    "--receipt-dir",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3r_stage2_packaging"
+  ],
+  "created_utc": "2026-10-20T18:05:47.104633+00:00",
+  "deleted_paths": [],
+  "excluded_cache_files": [
+    {
+      "bytes": 192,
+      "path": "formal_validation_001/pytest-cache/tmp/pytest-of-root/pytest-14/test_fresh_prefix_reads_source0/sealed_probe.cpython-312.pyc",
+      "reason": "USER_REQUESTED_PYC_AND_CACHE_EXCLUSION"
+    },
+    {
+      "bytes": 192,
+      "path": "formal_validation_002/pytest-cache/tmp/pytest-of-root/pytest-15/test_fresh_prefix_reads_source0/sealed_probe.cpython-312.pyc",
+      "reason": "USER_REQUESTED_PYC_AND_CACHE_EXCLUSION"
+    }
+  ],
+  "failed_source_delta_files": 1,
+  "fixed_git_blob_readback": "PASS_EVERY_CODE_PAYLOAD",
+  "full_inventory_delta_reconstruction": {
+    "base_to_target": {
+      "added": 108,
+      "base_count": 3410,
+      "deleted": 0,
+      "modified": 6,
+      "reconstructed_target_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+      "target_count": 3518
+    },
+    "inventory_recomputed_tree_hashes": {
+      "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f": "fa3fe13ab28c6489df0d424125edb3d631171f40",
+      "1313b1f1b2c081d57bcce9c60e757ef79110df91": "97423cad509a9604269740132a6ad850faf8f19a",
+      "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad": "cf4071391ed3664eac8d9ecfed2d27815eb541ec"
+    },
+    "scope": "Full inventory application and canonical Git tree-object hash recomputation; no base ZIP extraction or integration run",
+    "status": "PASS",
+    "target_to_failed_execution_source": {
+      "changed": 1,
+      "deleted": 7,
+      "reconstructed_tree": "cf4071391ed3664eac8d9ecfed2d27815eb541ec",
+      "target": "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad"
+    }
+  },
+  "gzip_footer_crc": "PASS_FULL_STREAM_READ",
+  "gzip_full_decompressed_bytes": 39086080,
+  "independent_remote_readback": "NOT_RUN_BY_PACKAGING_PRODUCER",
+  "limits": {
+    "address_space_bytes": 2147483648,
+    "cpu_seconds": 60,
+    "reserve_cpu_seconds": 5,
+    "reserve_wall_seconds": 12,
+    "wall_seconds": 180
+  },
+  "member_sha256_readback": "PASS_EVERY_MEMBER",
+  "original_raw_before_after": "UNCHANGED",
+  "producer": {
+    "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/package_r3r_stage2.py",
+    "sha256": "bf6ed87a01e256776dbca62c6c1306bccdad12b745256fc1fb429abbf5455cea"
+  },
+  "raw_evidence_files": 84,
+  "resources": {
+    "children_max_rss_bytes": 61480960,
+    "effective_rlimit_as": [
+      2147483648,
+      2147483648
+    ],
+    "effective_rlimit_cpu": [
+      60,
+      60
+    ],
+    "parent_cpu_seconds": 2.107038,
+    "parent_peak_rss_bytes": 77111296,
+    "process_tree_cpu_seconds": 2.3649590000000003,
+    "reaped_children_cpu_seconds": 0.257914,
+    "recovery_receipt_write_within_reserve": true,
+    "rss_scope": "separate process-lifetime rusage peaks; not summed concurrent RSS",
+    "wall_seconds_since_module_start": 2.304813941998873
+  },
+  "schema": "REC_R3R_STAGE2_PACKAGING_V1",
+  "scientific_integrations": 0,
+  "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+  "source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+  "status": "PASS_CODE_DELTA_AND_EVIDENCE_PRODUCER_READBACK",
+  "target_inventory_count": 3518,
+  "total_member_payload_bytes": 38918442
+}

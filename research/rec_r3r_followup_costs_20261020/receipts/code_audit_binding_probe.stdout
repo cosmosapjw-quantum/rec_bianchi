@@ -1,0 +1,192 @@
+{
+  "actual_launcher_sha256": "fe8c946a8b0bdbab53d813c46ce22d188f6a0117b6872607d33032666a8fd85f",
+  "checks": [
+    {
+      "fixture_commit": "0ede6a68684552de312b54ed08109eb09d5cac59",
+      "fixture_tree": "6bcede6eab7d1500d1c6564a6996eaf68e71b369",
+      "name": "matching_committed_fixture_is_accepted",
+      "status": "PASS"
+    },
+    {
+      "exception_class": "ValueError",
+      "exception_message": "R3R_EXPECTED_COMMIT_MISMATCH",
+      "name": "wrong_expected_commit",
+      "status": "PASS"
+    },
+    {
+      "exception_class": "ValueError",
+      "exception_message": "R3R_RUNTIME_NOT_AT_EXPECTED_COMMIT:runtime.py",
+      "name": "uncommitted_runtime_byte_change",
+      "status": "PASS"
+    },
+    {
+      "exception_class": "ValueError",
+      "exception_message": "R3R_RUNTIME_NOT_AT_EXPECTED_COMMIT:physics.py",
+      "name": "same_content_symlink",
+      "status": "PASS"
+    },
+    {
+      "exception_class": "ValueError",
+      "exception_message": "R3R_FROZEN_SOURCE_CHANGED:physics.py",
+      "name": "committed_manifest_with_wrong_frozen_digest",
+      "status": "PASS"
+    }
+  ],
+  "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+  "fixture_git_commands": [
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "init",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "add",
+        "physics.py",
+        "checkpoint.bin",
+        "runtime.py",
+        "manifest.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "commit",
+        "-q",
+        "-m",
+        "Synthetic source binding fixture"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "0ede6a68684552de312b54ed08109eb09d5cac59\n",
+      "stdout_sha256": "00f413ccc4fbd77c6a3d82fdaa8f9fa367f46939a203505daaa84c03fac6d42e"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "add",
+        "manifest.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "commit",
+        "-q",
+        "-m",
+        "Synthetic inconsistent frozen digest"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=R3R Independent Audit",
+        "-c",
+        "user.email=r3r-audit@example.invalid",
+        "-c",
+        "commit.gpgSign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "55816084fc67ed5ca9bbf8b9cb8f5cacf4645b00\n",
+      "stdout_sha256": "03cb95b8b9950f50cb69d348f6fd85a5bc609c19b40cb6c46d0fece8c3626928"
+    }
+  ],
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "schema": "rec.r3r.independent-source-binding-probe.v1",
+  "scientific_validation": "NOT_PERFORMED_BY_SYNTHETIC_IDENTITY_FIXTURE",
+  "solver_integrations": 0,
+  "status": "PASS",
+  "unique_checks": 5
+}

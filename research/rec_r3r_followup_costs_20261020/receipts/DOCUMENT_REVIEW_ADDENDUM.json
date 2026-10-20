@@ -1,0 +1,71 @@
+{
+  "schema": "rec.r3r.document-review-addendum.v1",
+  "created_utc": "2026-10-20T18:11:51.457705+00:00",
+  "reviewer": "independent context_intake agent",
+  "status": "PASS_SCOPED_DOCUMENT_AND_PACKAGING_REVIEW",
+  "no_implementation_edits": true,
+  "new_numerical_executions": 0,
+  "actual_execution_source": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+  "actual_execution_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+  "reviewed_document_sha256": {
+    "REPORT_KO.md": "469dd1e3d5b49fec7e7f6906fa378391bbabcf55b8598c2505b1b31f0d420ec8",
+    "HANDOFF_KO.md": "573630637d9d9316f031792b078383b1d79da17e59e29e64e6967b582b9323e5",
+    "EVIDENCE.json": "5b9a2e16d0714f2572ca33dbaf09de667df5e50884acd5b6acaec58503d4515d",
+    "DAG.json": "85d4682d04df1fb8b192e97800f6365c363fc76fe924fc51375b06f23dc7f501",
+    "receipts/CLAIM_GATE.json": "942e47daaa56321ee76efe7ff660ddf6b7c6d1e187e7bcbc887b6d14321d615d"
+  },
+  "crosschecks": {
+    "receipt_digests_verified": 15,
+    "DAG_nodes": 23,
+    "DAG_acyclic": true,
+    "all_DAG_evidence_paths_exist": true,
+    "source_identity_matches_actual_receipts": true,
+    "claim_axes_equal_between_EVIDENCE_and_CLAIM_GATE": true,
+    "all_benchmark_summary_and_RSS_records_match_actual": true,
+    "global_convergence_NOT_RUN_distinct_from_h4_completion_HOLD": true
+  },
+  "findings": [
+    {
+      "id": "DOC-P2-PILOT-CAP",
+      "severity": "P2_metadata",
+      "status": "CLOSED",
+      "before": "EVIDENCE.new_execution_limits.max_pilot_steps=128 despite implemented public bound32",
+      "after": "max_pilot_steps=32 and user_step_ceiling=128; readback verified",
+      "new_science_execution_needed": false
+    },
+    {
+      "id": "DOC-P3-GRID-NAMESPACE",
+      "severity": "clarity",
+      "status": "CLOSED",
+      "before": "unqualified preserve.h2/h4 could be confused with user R3P reference h",
+      "after": "explicit grid_namespace separates original_R3P_user_reference_h and existing_R3O_R3Q grids; old ambiguous numeric keys removed"
+    }
+  ],
+  "packaging_readback": [
+    {
+      "manifest": "figures/SVG_ARCHIVE.json",
+      "manifest_sha256": "1ec3a53ac863fa9376fe091df4c9450673e273549cc9177720374085b8c98fd5",
+      "archive": "figures/ORIGINAL_SVG.tar.gz",
+      "archive_sha256": "1d08f14e90a43d81a743bacb4bd836c56c3921a9998cdd704d2763ce30d9d621",
+      "verified_members": 4,
+      "comparison": "direct bytes equal original executed/generated files"
+    },
+    {
+      "manifest": "receipts/FORMAL_JUNIT.json",
+      "manifest_sha256": "c72e88b61cc8d2769d376656e41d47803421ff0a98bfc5d514b1b1a9f8d61611",
+      "archive": "receipts/FORMAL_JUNIT.tar.gz",
+      "archive_sha256": "910ce59d1df65d1ac2326e5997adfb5433dd19064865bf4c6328055eee508440",
+      "verified_members": 2,
+      "comparison": "direct bytes equal original executed/generated files"
+    }
+  ],
+  "C9_source_code_verdict": "UNCHANGED_PASS_SCOPED",
+  "remaining_implementation_P1": 0,
+  "remaining_implementation_P2": 0,
+  "remaining_document_P1": 0,
+  "remaining_document_P2": 0,
+  "remaining_shipping_gates": "Final delivery HEAD CI, ACK and full remote readbacks remain separate; this addendum attests neither",
+  "recovery_wording_suggestion": "Make FORMAL_RAW_LOGS path explicit as receipts/FORMAL_RAW_LOGS.tar.gz and link the SVG/JUnit archive manifests in HANDOFF; editorial, no scientific change",
+  "measurement_scope": "metadata and saved archive byte reads only; no solver/comparator/test-suite/benchmark invocation",
+  "readback_wall_s": 0.007886907987995073
+}

@@ -1,0 +1,305 @@
+{
+  "initial_0": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110",
+      "number": 110,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": true,
+      "body": "## Problem and resulting behavior\n\nThe reused R3M full run spent 56.96% of exclusive process-tree CPU in native-stream auditing. This PR reduces repeated scalar work and adds an opt-in bounded Rust prefix auditor using vendored Rayon 1.12.0. The original HyRec atomic/thermal operator, recurrence, stage and causal guards, and same-h tolerances remain fixed.\n\nThe implementation includes an exact immutable geometry cache, transactional C ABI/binding checks, a separate independent-lane SIMD ratio API, offline build receipts, and a public supervisor covering source/input preflight through worker closeout. The ratio API is measured separately and is not yet connected to the full spectral stream loop.\n\n## Source and evidence identities\n\n| Role | Commit |\n|---|---|\n| Actual smoke and tested implementation | `e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d` |\n| Complete code/evidence archive snapshot | `0b80913bf1c665cc4cfab6dfaa3ea35f815a482f` |\n| Final preservation metadata HEAD | `888d56d72579d1e1fd30f66abe02d9f91809a767` |\n\nThe successors change research evidence and preservation metadata only. A Git diff confirmed unchanged scripts, src, rust, tests and workflows from the tested implementation through final HEAD.\n\n## Actual validation and measured scope\n\n- **15 saved-full comparisons:** identical verdict, native-array and diagnostic hashes. The first two uninterrupted rounds are primary. A resource-initialization failure in round 3 was preserved; only the missing worker resumed after the inherited-limit repair, within the original allocation.\n- **Audit-only cost:** primary median CPU was 22.368621475 s for legacy and 10.027651230 s for Rust1; median paired CPU ratio 2.232513. No new whole-production speedup or memory-reduction claim.\n- **Actual original-U5 smoke16:** 5,008 causal links and 10,000 spectral fields met the original same-h gates; source/input identity stayed unchanged. Whole supervision cost 8.826414 CPU s / 8.790703708 wall s. Original `SMOKE_ONLY`, `PASS_PENDING_REVIEW`, and `HOLD_CAP_BEFORE_RT_BOUNDARY` statuses are preserved.\n- **Tests:** 214 distinct local Python contract cases, 18 Rust release tests and C ABI checks. Dedicated exact-source GitHub CI also passed all 214 cases; general CI reported 968 PASS, 102 SKIP and 72 subtest PASS. Duplicate runs are not counted as new distinct cases.\n- **Independent review:** final changed-source/resource/receipt review closed with no remaining P1/P2 within the reviewed scope. Earlier failures and repairs are retained.\n\n## Durable recovery\n\nThe complete 3,410-file tracked snapshot ZIP is 122,092,525 bytes, SHA256 `edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521`. Drive, Dropbox and Library each returned upload acknowledgments and passed independent full remote readback SHA checks.\n\nThe new smoke raw archive is 148,406,351 bytes, SHA256 `6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369`. All three providers passed independent whole readback; all 43 archive member hashes were also verified from the fresh Drive copy.\n\nThe final metadata supplement is 24,488 bytes, SHA256 `f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b`, with all three independent whole readbacks PASS. Its identities and final HEAD CI are bound in the final Conversation receipt. The immutable complete snapshot does not claim to contain its own later upload acknowledgment.\n\n## Scientific boundaries and handoff\n\nU5 h=`HOLD_9_FAIL`, h2=`HOLD_8_FAIL`, historical costs=`CLOSED_HOLD_NOT_RESET`, h=4.245e-5 and REI_activation=false remain. No new full5210 integration, global h/h2/h4 convergence, or Bianchi/REI/CMB prediction approval. The public launcher admits smoke16 or pilot ≤128 only; no new full allocation exists.\n\n[Report](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/REPORT_KO.md) · [Evidence](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/EVIDENCE.json) · [DAG](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/DAG.json) · [Backup receipts](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json) · [NCP handoff](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/HANDOFF_KO.md)\n\nKeep this PR draft; do not merge.",
+      "title": "REC R3P: exact stream audit acceleration, bounded Rust parallelism and actual U5 smoke",
+      "base": "research/rec-r3o-grid-frontiers-20261019",
+      "base_sha": "368d87ad5de90dde74226ed109c3ba29d9607c84",
+      "head": "research/rec-r3p-exact-acceleration-20261020",
+      "head_sha": "888d56d72579d1e1fd30f66abe02d9f91809a767",
+      "head_repo_id": 1322785483,
+      "head_repo_full_name": "cosmosapjw-quantum/rec_bianchi",
+      "merge_commit_sha": "854b047bbb8d7195b4b1a843ef3beb40dc12bf38",
+      "user": {
+        "login": "cosmosapjw-quantum",
+        "name": "cosmosapjw-quantum",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/58155957?v=4",
+        "id": 58155957
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-20T05:25:49Z",
+      "updated_at": "2026-10-20T06:27:11Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 5,
+      "changed_files": 116,
+      "additions": 19957,
+      "deletions": 0,
+      "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110",
+      "display_title": "REC R3P: exact stream audit acceleration, bounded Rust parallelism and actual U5 smoke"
+    }
+  },
+  "initial_1": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "comments": [
+        {
+          "id": 6284856174,
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110#issuecomment-6284856174",
+          "body": "# R3P 최종 아카이브 보존 receipt — 2026-10-20 UTC\n\n## 정확한 코드·실행·게시 identity\n\n| 역할 | SHA |\n|---|---|\n| 실제 U5 smoke16 및 테스트 코드 | `e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d` |\n| 전체 코드·증거 ZIP snapshot | `0b80913bf1c665cc4cfab6dfaa3ea35f815a482f` |\n| 최종 게시 HEAD | `888d56d72579d1e1fd30f66abe02d9f91809a767` |\n\nBranch: `research/rec-r3p-exact-acceleration-20261020`. PR110은 open/draft이며 merge하지 않았다. 최종 checkout은 clean이고, 테스트 코드부터 최종 HEAD까지 scripts/src/rust/tests/.github의 Git diff는 비어 있다. 뒤 commit은 연구 증거 및 보존 metadata다.\n\n## 실제 실행과 검토\n\n완료 R3M full5210/R3O를 재사용했다. 새 full5210 적분은 없다. 저장된 full raw의 15개 감사 실행은 verdict/native arrays/diagnostic hashes가 같았다. 주 분석은 중단 없는 첫 두 round다. 마지막 resource-init 실패와 한 worker만 재개한 기록을 보존했으며 총263.522928 CPU초/300초다.\n\n실제 reviewed U5 smoke16은5,008 causal links,10,000 spectral fields,5,254,162 prefix records를 검증했다. common-input oracle은 원래 두 sampled evaluation에서PASS다. Whole supervision8.826414 CPU초/8.790703708 wall초, exit=0, first_failure=null, input/source identity=UNCHANGED다.\n\n원래 상태 `SMOKE_ONLY`, `PASS_PENDING_REVIEW`, `HOLD_CAP_BEFORE_RT_BOUNDARY`를 고치지 않았다. 별도 독립 최종 C9 검토는 source23개/frozen109개/영수증 연결을 대조하고 검토 범위의 남은P1/P2 없이 닫혔다. 새 실제 실행은 ChatGPT sandbox, CI는 GitHub Actions이며 NCP 실행은 없다.\n\n## 최종 HEAD의 실제 CI\n\n| Workflow | Run | 결과 |\n|---|---|---|\n| R3P dedicated, PR | [39379868662](https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379868662) | SUCCESS;214 PASS, Rust18 release/C ABI build 포함 |\n| General, PR | [39379868663](https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379868663) | SUCCESS;968 PASS,102 SKIP,72 subtest PASS |\n| General, push | [39379863479](https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379863479) | SUCCESS;968 PASS,102 SKIP,72 subtest PASS |\n\nRun/job 단계와 실제 job log를 읽었다. 일반 검사에서 build receipt가 없어 건너뛴 R3P Rust binding 항목은 전용 CI에서 실제 build와 함께 검증됐다. 중복 실행을 새로운 고유 테스트 수로 합산하지 않는다.\n\n## 생산자 hash 및 독립 전체 원격 readback\n\n| 묶음 | bytes | SHA256 | 독립 readback |\n|---|---:|---|---|\n| `REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip` |122,092,525| `edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521` | Drive/Dropbox/Library 각각PASS |\n| `REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz` |148,406,351| `6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369` | Drive/Dropbox/Library 각각PASS |\n| `REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip` |24,488| `f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b` | Drive/Dropbox/Library 각각PASS |\n\n전체 코드 ZIP은 **추적 파일3,410개 전체 snapshot**이다. producer 단계에서 각 entry를 고정 Git blob과 대조하고 CRC를 확인했다. Git object history는 제외하며 reviewed U5 capsule과 대용량 raw는 별도 identity로 연결한다.\n\nDrive/Dropbox의 코드 ZIP과 raw는 `.part001`→`.part003` 순서의 byte concatenation으로 복구한다. 각 부분과 합친 전체 SHA를 실제 새 remote GET으로 확인했다. Library의 코드 ZIP은 완전한 한 파일, raw는 세 부분이다. raw는 fresh Drive copy에서 내부43개 파일의 크기/hash도 모두 확인했다.\n\n최종 보존 ZIP은 complete snapshot 이후 바뀐 **8개 metadata 파일과 manifest**를 담는다. complete snapshot에 적용하면 최종 HEAD의 tracked content가 된다. 업로드 뒤 작성한 metadata가 앞선 immutable ZIP에 자기 자신의 hash/receipt까지 포함한다고 주장하지 않는다.\n\n### 복구 ID\n\n| 저장소 | 코드 ZIP | raw | 최종 metadata ZIP |\n|---|---|---|---|\n| Drive | `1U8bHb_S2hIj2QSef_8jbeFXPhPCuxmqj / 12BRzh-qCz3M5hfvr4xjKg6ndhKzX8aEQ / 1z6jRDcaAV3BDXFWdtJi81Csxf2ECLXiI` | `1TcVDe3mi9ZdJ5rJPU1KEpaV_GSiN7BiZ / 1AJ9E3f2s-GpYGo4ia0xlVXoFpc99pc60 / 1506vjEOl7wTBFmeyaMnxOfmBdKzKy_ye` | `1WgI9Po3rzb_BAl2h27Sk79Hm66LxMXwh` |\n| Dropbox | `id:BSpOijBcT10AAAAAAD_SPw / id:BSpOijBcT10AAAAAAD_SQQ / id:BSpOijBcT10AAAAAAD_SQg` | `id:BSpOijBcT10AAAAAAD_SOg / id:BSpOijBcT10AAAAAAD_SOw / id:BSpOijBcT10AAAAAAD_SPA` | `id:BSpOijBcT10AAAAAAD_SRA` |\n| Library | `libfile_111f6cd07ea481918530b8cadd60c22f` | `libfile_980e7b54dacc8191be6305e20c600c73 / libfile_707388dc71388191ac42ebd73ffac002 / libfile_c590d7a626488191969c91d92da8a6c1` | `libfile_c252c0494c288191af9db9de62040edd` |\n\nDrive folder ID: `1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR`.\n\nDropbox directory: `/bianchi/rec_bianchi/20261016/R3P_EXACT_ACCELERATION_20261020`.\n\nLibrary directory: `/rec_bianchi_recovery/R3P_20261020`.\n\nRaw/complete-code 상세 ACK·부분 hash·원격 검증은 [BACKUP_ACKS.json](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json)에 있다. 최종 metadata ZIP은 **2026-10-20T06:23:13.401165+00:00**에 각 저장소에서24,488bytes/위 SHA의 독립 전체 readback을 확인했다. 이 post-archive ACK/readback은 본 Conversation receipt에 보존한다.\n\nStage0/Stage2 ZIP 자체의 `whole_remote_readback=NOT_RUN`은 유지한다. Stage1 및 위 세 closeout 묶음의 세 저장소 전체 readback은PASS다. 생산자 hash나 ACK를 독립 readback으로 혼동하지 않는다.\n\n## DAG 및 유지 상태\n\n이 bounded optimization loop의 [R1–R10/C1–C10 DAG](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/DAG.json)는 완료됐다. [보고서](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/REPORT_KO.md), [증거](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/EVIDENCE.json), [독립 최종 검토](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/receipts/C9_FINAL_REVIEW.md), [NCP 인계](https://github.com/cosmosapjw-quantum/rec_bianchi/blob/888d56d72579d1e1fd30f66abe02d9f91809a767/research/rec_r3p_exact_acceleration_20261020/HANDOFF_KO.md)에 실제 결과·비용 범위·실패/수정 이력과 남은 admission을 기록했다.\n\nU5 원래 h=`HOLD_9_FAIL`, h2=`HOLD_8_FAIL`, 기존 비용=`CLOSED_HOLD_NOT_RESET`, h=4.245e-5, 원래 atomic/thermal/stage/causal gate, REI_activation=false를 유지한다. 새 production speedup, full-run admission, 전역 h/h2/h4 수렴, Bianchi/REI/CMB 예측을 승인하지 않는다. NCP에는 compile, 작은 환경 호환성 수정, 게시된 bounded launcher의 허가된 실제 실행을 남긴다.\n",
+          "created_at": "2026-10-20T06:27:11Z",
+          "updated_at": "2026-10-20T06:27:11Z"
+        }
+      ]
+    }
+  },
+  "initial_2": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "issues": [
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/111",
+          "title": "R3Q: continue the actual h4 checkpoint through the next event",
+          "issue_number": 111
+        },
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110",
+          "title": "REC R3P: exact stream audit acceleration, bounded Rust parallelism and actual U5 smoke",
+          "issue_number": 110
+        },
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/109",
+          "title": "REC R3O: grid-frontier validation and pinned VigilODE Rust reuse",
+          "issue_number": 109
+        },
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/108",
+          "title": "REC R3N: saved-grid convergence diagnostics and predictor controls",
+          "issue_number": 108
+        },
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/106",
+          "title": "REC R3l: profile U6 costs and prepare lossless reviewed-input recovery",
+          "issue_number": 106
+        },
+        {
+          "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/107",
+          "title": "REC R3m: profiled pilot128 and full 5210-step U6 same-h run on owner host",
+          "issue_number": 107
+        }
+      ]
+    }
+  },
+  "initial_3": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "branches": [
+        {
+          "branch": "research/rec-r3-causal-fplus-20261015"
+        },
+        {
+          "branch": "research/rec-r3b-full-sources-20261015"
+        },
+        {
+          "branch": "research/rec-r3c-rei-bridge-20261015"
+        },
+        {
+          "branch": "research/rec-r3d-full-accepted-step-20261015"
+        },
+        {
+          "branch": "research/rec-r3e-native-history-parity-20261015"
+        },
+        {
+          "branch": "research/rec-r3f-hyrec-full-yhe-ncp-20261016"
+        },
+        {
+          "branch": "research/rec-r3f-ncp-execution-evidence-20261016"
+        },
+        {
+          "branch": "research/rec-r3g-independent-primordial-hhe-20261016"
+        },
+        {
+          "branch": "research/rec-r3h-u5-precision-and-refinement-20261016"
+        },
+        {
+          "branch": "research/rec-r3i-independent-python-time-refinement-20261016"
+        },
+        {
+          "branch": "research/rec-r3j-u6-owned-history-20261018"
+        },
+        {
+          "branch": "research/rec-r3k-owned-u6-execution-20261018"
+        },
+        {
+          "branch": "research/rec-r3k-owned-u6-validation-20261018"
+        },
+        {
+          "branch": "research/rec-r3l-profiled-history-io-20261019"
+        },
+        {
+          "branch": "research/rec-r3m-u5-pilot128-20261019"
+        },
+        {
+          "branch": "research/rec-r3n-convergence-diagnostics-20261019"
+        },
+        {
+          "branch": "research/rec-r3o-grid-frontiers-20261019"
+        },
+        {
+          "branch": "research/rec-r3p-exact-acceleration-20261020"
+        }
+      ],
+      "cursor": "MTg"
+    }
+  },
+  "followup_0": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/111",
+      "number": 111,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": true,
+      "title": "R3Q: continue the actual h4 checkpoint through the next event",
+      "base": "research/rec-r3p-exact-acceleration-20261020",
+      "base_sha": "888d56d72579d1e1fd30f66abe02d9f91809a767",
+      "head": "research/orchestration-20261020-next-loop",
+      "head_sha": "5b44bb21ce0599e55e0848e5e3ff320c9e8ca172",
+      "head_repo_id": 1322785483,
+      "head_repo_full_name": "cosmosapjw-quantum/rec_bianchi",
+      "merge_commit_sha": "7771c9beafc116d3be710f4092a3bd6c3cf427d4",
+      "user": {
+        "login": "cosmosapjw-quantum",
+        "name": "cosmosapjw-quantum",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/58155957?v=4",
+        "id": 58155957
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-20T10:28:22Z",
+      "updated_at": "2026-10-20T12:01:15Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 4,
+      "changed_files": 60,
+      "additions": 4589,
+      "deletions": 4,
+      "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/111",
+      "display_title": "R3Q: continue the actual h4 checkpoint through the next event"
+    }
+  },
+  "followup_1": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "comments": [],
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/111",
+      "title": "cosmosapjw-quantum/rec_bianchi PR #111 comments",
+      "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/111",
+      "display_title": "cosmosapjw-quantum/rec_bianchi PR #111 comments"
+    }
+  },
+  "followup_2": {
+    "status": "fulfilled",
+    "isError": false,
+    "data": {
+      "branches": [],
+      "cursor": null
+    }
+  },
+  "authoritative_updated_pr_collection": {
+    "url": "https://api.github.com/repos/cosmosapjw-quantum/rec_bianchi/pulls?state=all&sort=updated&direction=desc&per_page=10",
+    "items": [
+      {
+        "number": 111,
+        "title": "R3Q: continue the actual h4 checkpoint through the next event",
+        "updated_at": "2026-10-20T12:01:15Z",
+        "head": "5b44bb21ce0599e55e0848e5e3ff320c9e8ca172",
+        "branch": "research/orchestration-20261020-next-loop",
+        "draft": true
+      },
+      {
+        "number": 110,
+        "title": "REC R3P: exact stream audit acceleration, bounded Rust parallelism and actual U5 smoke",
+        "updated_at": "2026-10-20T06:27:11Z",
+        "head": "888d56d72579d1e1fd30f66abe02d9f91809a767",
+        "branch": "research/rec-r3p-exact-acceleration-20261020",
+        "draft": true
+      },
+      {
+        "number": 109,
+        "title": "REC R3O: grid-frontier validation and pinned VigilODE Rust reuse",
+        "updated_at": "2026-10-19T20:27:55Z",
+        "head": "368d87ad5de90dde74226ed109c3ba29d9607c84",
+        "branch": "research/rec-r3o-grid-frontiers-20261019",
+        "draft": true
+      },
+      {
+        "number": 108,
+        "title": "REC R3N: saved-grid convergence diagnostics and predictor controls",
+        "updated_at": "2026-10-19T10:42:02Z",
+        "head": "23e0a3a6c439a1f015aa8f7380f4eedf0b569df7",
+        "branch": "research/rec-r3n-convergence-diagnostics-20261019",
+        "draft": true
+      },
+      {
+        "number": 106,
+        "title": "REC R3l: profile U6 costs and prepare lossless reviewed-input recovery",
+        "updated_at": "2026-10-19T08:49:09Z",
+        "head": "d0e534b1f5b4bb20fe19875f6d502681b833470d",
+        "branch": "research/rec-r3l-profiled-history-io-20261019",
+        "draft": true
+      },
+      {
+        "number": 107,
+        "title": "REC R3m: profiled pilot128 and full 5210-step U6 same-h run on owner host",
+        "updated_at": "2026-10-19T08:49:08Z",
+        "head": "328f3723948979f74ae6c19474f45cb1882fb7b9",
+        "branch": "research/rec-r3m-u5-pilot128-20261019",
+        "draft": true
+      },
+      {
+        "number": 105,
+        "title": "REC R3k: execute reviewed U5 owned U6 backend comparison",
+        "updated_at": "2026-10-18T13:17:29Z",
+        "head": "3eb34b6a322d86d580b94f8f4bacfcadd33938ef",
+        "branch": "research/rec-r3k-owned-u6-execution-20261018",
+        "draft": true
+      },
+      {
+        "number": 104,
+        "title": "REC R3k: physical owned-history characterization and bounded U6 backend parity runner",
+        "updated_at": "2026-10-18T12:45:55Z",
+        "head": "bf590549737f738b21854b83df78dbdc67a2e1d3",
+        "branch": "research/rec-r3k-owned-u6-validation-20261018",
+        "draft": true
+      },
+      {
+        "number": 103,
+        "title": "REC R3i U6: preserve causal validation and remove duplicate prefix scan",
+        "updated_at": "2026-10-18T09:46:29Z",
+        "head": "3a5adf6cac28555acd14707b6fd5659535e4763d",
+        "branch": "research/rec-u6-recovery-duplicate-prefix-20261018",
+        "draft": true
+      },
+      {
+        "number": 102,
+        "title": "REC R3j: opt-in owned photon-history path for bounded h/2 U6",
+        "updated_at": "2026-10-18T07:21:57Z",
+        "head": "e0cfdf76a6e8bf04110715d14efaad7077aeff8b",
+        "branch": "research/rec-r3j-u6-owned-history-20261018",
+        "draft": true
+      }
+    ]
+  }
+}

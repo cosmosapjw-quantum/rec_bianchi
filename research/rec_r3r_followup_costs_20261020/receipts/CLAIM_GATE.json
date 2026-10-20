@@ -1,0 +1,48 @@
+{
+  "schema": "rec.r3r.claim-gate.v1",
+  "status": "PASS_SCOPED_RESEARCH",
+  "executed_source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+  "executed_source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+  "independent_audit": "C9_CODE_AUDIT.json",
+  "independent_raw_readback": "C9_EVIDENCE_READBACK.json",
+  "old_test_results_recounted_as_new": false,
+  "new_unique_local_cases": 61,
+  "new_formal_solver_accepted_steps": 32,
+  "new_profile_solver_accepted_steps": 32,
+  "physical_contract_changed": false,
+  "source_post_execution_edit": "EOF-only runtime formatting, AST including locations identical; subsequent report/receipt additions are metadata",
+  "claim_axes": {
+    "mathematical_correctness": {
+      "verdict": "PASS_SCOPED",
+      "scope": "Conditional binary64 operation graph, stable source arrays/pure redshift between synchronous guards; no global physical proof"
+    },
+    "numerical_equivalence": {
+      "verdict": "PASS_SCOPED",
+      "scope": "25000 native-binary64 ratio lanes, exact verdict/maxima/guard order, 6 raw outputs and 10 NPZ payloads, 32 accepted steps, 61 unique local contracts"
+    },
+    "implementation_correctness": {
+      "verdict": "PASS_SCOPED",
+      "scope": "Actual source-bound opt-in NumPy path; independent PHYS-MATH-CODE and C9; open P1/P2 zero"
+    },
+    "measured_acceleration": {
+      "verdict": "PASS_SCOPED_AUDIT_ONLY",
+      "paired_cpu_median": 1.3641298365714964,
+      "paired_wall_median": 1.3638913471290828,
+      "scope": "entire warm-cache CSV audit including open, parsing, allocations, callbacks, and verdict; no solver",
+      "new_production_speedup": "NOT_MEASURED"
+    },
+    "memory_and_resource_behavior": {
+      "verdict": "PASS_SCOPED",
+      "scope": "Observed bounded execution; explicitly managed payload <=60*B bytes with B<=625; per-process AS and sampled tree RSS distinct; no exact whole-tree peak or memory reduction claim"
+    },
+    "physical_validity": {
+      "verdict": "NOT_ESTABLISHED_HOLD",
+      "scope": "U5 HOLD_9_FAIL/HOLD_8_FAIL and global convergence NOT_RUN preserved"
+    },
+    "production_readiness": {
+      "verdict": "NOT_APPROVED",
+      "scope": "Draft research; no production solver speedup, no full-history physical approval"
+    }
+  },
+  "shipping_gates": "Tracked separately in DELIVERY.json and BACKUP_ACKS.json; not automatically passed by this claim gate"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "rec.r3r.drive-uncertain-write-recovery.v1",
+  "recorded_at_utc": "2026-10-20T20:59:04.812260+00:00",
+  "provenance": "Previous live-session handoff; original unpublished probe files were lost during workspace pruning. This is an additive reconstruction, not byte-for-byte restoration of those lost receipts.",
+  "parent_folder_id": "1BTX6wu9Rim5pYKcK62m9wR65jKx1oGy4",
+  "stages": [
+    {
+      "stage": 1,
+      "upload_status": "UNKNOWN_NO_ACK",
+      "new_attempt_in_current_recovery": false,
+      "notes": "One earlier unique archive upload attempt to existing parent had no returned ACK; no duplicate retry."
+    },
+    {
+      "stage": 2,
+      "upload_status": "NOT_ATTEMPTED",
+      "new_attempt_in_current_recovery": false
+    },
+    {
+      "stage": 3,
+      "upload_status": "UNKNOWN_NO_ACK_TIMEOUT_25S",
+      "timeout_reported_at_utc": "2026-10-20T18:26:27.750Z",
+      "new_attempt_in_current_recovery": false,
+      "notes": "Earlier distinct Stage3 upload was bounded by Promise.race25s. Local timeout does not prove remote cancellation."
+    }
+  ],
+  "current_readonly_followup": [
+    "receipts/recovery/R3R_STAGE123_RECOVERY_MANIFEST.json",
+    "receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json"
+  ],
+  "current_followup_result": "Direct parent listing returned16 entries and accessible exact-name search returned0 matches for the three archive names. No late completion observed in those scopes.",
+  "new_drive_mutations": 0,
+  "global_write_capability_claim": "NOT_INFERRED_FROM_OLD_TIMEOUTS"
+}

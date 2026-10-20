@@ -1,0 +1,101 @@
+{
+  "metadata": [
+    {
+      "stage": 1,
+      "operation": "mcp__codex_apps__dropbox_get_file_metadata",
+      "arguments": {
+        "path_or_file_id": "id:BSpOijBcT10AAAAAAD_aBQ"
+      },
+      "isError": false,
+      "metadata_type": "file",
+      "file": {
+        "id": "id:BSpOijBcT10AAAAAAD_aBQ",
+        "name": "REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+        "path_lower": "/bianchi/rec_bianchi/20261016/rec_r3r_stage1_intake_profile32_4a1912b6_20261020.tar.gz",
+        "client_modified": "2026-10-20T18:01:20Z",
+        "server_modified": "2026-10-20T18:01:22Z",
+        "size": 7277134,
+        "rev": "65e496b10af180af03d47",
+        "is_downloadable": true,
+        "mime_type": "application/octet-stream"
+      },
+      "retained_fields": "File identity/version/downloadability subset; sharing/profile metadata omitted as unrelated"
+    },
+    {
+      "stage": 2,
+      "operation": "mcp__codex_apps__dropbox_get_file_metadata",
+      "arguments": {
+        "path_or_file_id": "id:BSpOijBcT10AAAAAAD_aCA"
+      },
+      "isError": false,
+      "metadata_type": "file",
+      "file": {
+        "id": "id:BSpOijBcT10AAAAAAD_aCA",
+        "name": "REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+        "path_lower": "/bianchi/rec_bianchi/20261016/rec_r3r_stage2_code_evidence_1313b1f1_20261020.tar.gz",
+        "client_modified": "2026-10-20T18:19:17Z",
+        "server_modified": "2026-10-20T18:19:20Z",
+        "size": 23953020,
+        "rev": "65e49ab50c04f0af03d47",
+        "is_downloadable": true,
+        "mime_type": "application/octet-stream"
+      },
+      "retained_fields": "File identity/version/downloadability subset; sharing/profile metadata omitted as unrelated"
+    },
+    {
+      "stage": 3,
+      "operation": "mcp__codex_apps__dropbox_get_file_metadata",
+      "arguments": {
+        "path_or_file_id": "id:BSpOijBcT10AAAAAAD_aCg"
+      },
+      "isError": false,
+      "metadata_type": "file",
+      "file": {
+        "id": "id:BSpOijBcT10AAAAAAD_aCg",
+        "name": "REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+        "path_lower": "/bianchi/rec_bianchi/20261016/rec_r3r_stage3_reviewed_delivery_7d1a0503_20261020.tar.gz",
+        "client_modified": "2026-10-20T18:23:30Z",
+        "server_modified": "2026-10-20T18:23:31Z",
+        "size": 2080888,
+        "rev": "65e49ba4ed7590af03d47",
+        "is_downloadable": true,
+        "mime_type": "application/octet-stream"
+      },
+      "retained_fields": "File identity/version/downloadability subset; sharing/profile metadata omitted as unrelated"
+    }
+  ],
+  "drive_schema": {
+    "tools": [
+      {
+        "name": "mcp__codex_apps__google_drive_create_file",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nCreate a native Google Doc, Sheet, or Slide file. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_create_file(args: {\n  // Native Google Workspace MIME type to create. Supported values: application/vnd.google-apps.document, application/vnd.google-apps.spreadsheet, application/vnd.google-apps.presentation.\n  mime_type: string;\n  // Destination folder ID, supported only for direct Google Drive service-account connections. Use a writable shared-drive folder. Omit for OAuth or delegated connections.\n  parent_folder_id?: string | null;\n  // Title for the new file.\n  title: string;\n}): Promise<CallToolResult>; };\n```"
+      },
+      {
+        "name": "mcp__codex_apps__google_drive_import_document",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nUpload a local DOC/DOCX/ODT/RTF/HTML/TXT file to Drive, defaulting to native Google Docs. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_import_document(args: {\n  // Destination folder ID. Required for direct service accounts: use a shared-drive folder the service account can write to. Omit for the connected user's My Drive.\n  parent_folder_id?: string | null;\n  // Uploaded document file to import through Google Drive's conversion flow. Pass the resolved uploaded file object directly. The source MIME type must match one of the accepted document import MIME types on `source_file.mime_type`. Defaults to creating a native Google Doc; use `upload_file` to store arbitrary raw files without conversion. This parameter expects an absolute local file path. If you want to upload a file, provide the absolute path to that file here.\n  source_file: string;\n  // Optional title for the imported Google Docs document. Defaults to the uploaded filename stem.\n  title?: string | null;\n  // How to store the uploaded file in Drive. Defaults to native_google_docs. `keep_source_file_type` preserves the uploaded file type, but the source file must still be one of the accepted Drive import MIME types for this action.\n  upload_mode?: \"native_google_docs\" | \"keep_source_file_type\";\n}): Promise<CallToolResult>; };\n```"
+      },
+      {
+        "name": "mcp__codex_apps__google_drive_import_presentation",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nUpload a local PPT/PPTX/ODP file to Drive, defaulting to native Google Slides. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_import_presentation(args: {\n  // Destination folder ID. Required for direct service accounts: use a shared-drive folder the service account can write to. Omit for the connected user's My Drive.\n  parent_folder_id?: string | null;\n  // Uploaded presentation file to import through Google Drive's conversion flow. Pass the resolved uploaded file object directly. The source MIME type must match one of the accepted presentation import MIME types on `source_file.mime_type`. Defaults to creating a native Google Slides deck; use `upload_file` to store arbitrary raw files without conversion. This parameter expects an absolute local file path. If you want to upload a file, provide the absolute path to that file here.\n  source_file: string;\n  // Optional title for the imported Google Slides presentation. Defaults to the uploaded filename stem.\n  title?: string | null;\n  // How to store the uploaded file in Drive. Defaults to native_google_slides. `keep_source_file_type` preserves the uploaded file type, but the source file must still be one of the accepted Drive import MIME types for this action.\n  upload_mode?: \"native_google_slides\" | \"keep_source_file_type\";\n}): Promise<CallToolResult>; };\n```"
+      },
+      {
+        "name": "mcp__codex_apps__google_drive_import_spreadsheet",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nUpload a spreadsheet file to Drive, defaulting to native Google Sheets conversion. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_import_spreadsheet(args: {\n  // Destination folder ID. Required for direct service accounts: use a shared-drive folder the service account can write to. Omit for the connected user's My Drive.\n  parent_folder_id?: string | null;\n  // Uploaded spreadsheet file to import through Google Drive's conversion flow. Pass the resolved uploaded file object directly. The source MIME type must match one of the accepted spreadsheet import MIME types on `source_file.mime_type`. Defaults to creating a native Google Sheet; use `upload_file` to store arbitrary raw files without conversion. This parameter expects an absolute local file path. If you want to upload a file, provide the absolute path to that file here.\n  source_file: string;\n  // Optional title for the imported spreadsheet. Defaults to the uploaded filename stem.\n  title?: string | null;\n  // How to store the uploaded spreadsheet in Drive. Defaults to native_google_sheets. `keep_source_file_type` preserves the uploaded file type, but the source file must still be one of the accepted Drive import MIME types for this action.\n  upload_mode?: \"native_google_sheets\" | \"keep_source_file_type\";\n}): Promise<CallToolResult>; };\n```"
+      },
+      {
+        "name": "mcp__codex_apps__google_drive_update_file",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nUpdate an existing Drive file. Without `file_uri`, this updates metadata and parents only, including rename and move operations. With `file_uri`, this replaces the raw file bytes in place using Drive files.update upload semantics while preserving the same Drive file ID. Do not use Google Workspace MIME types with `file_uri`; native Docs/Sheets/Slides edits use their dedicated batch-update actions. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_update_file(args: {\n  // Optional Google Drive API `addParents` query parameter: comma-separated parent folder IDs to add. For moving a file, set this to the destination folder ID.\n  addParents?: string | null;\n  // Google Drive API `fileId` path parameter. Raw file IDs are preferred; Drive/Docs/Sheets/Slides URLs are also accepted.\n  fileId: string;\n  // Optional connector file reference whose bytes should replace the existing raw Drive file content. Leave null for a metadata-only rename or move. Do not pass raw local file paths or string URLs. This parameter expects an absolute local file path. If you want to upload a file, provide the absolute path to that file here.\n  file_uri?: string;\n  // Optional MIME type for the replacement bytes. Leave null to use the MIME type from file_uri, or application/octet-stream if file_uri does not include one. Do not use Google Workspace MIME types such as application/vnd.google-apps.document.\n  mime_type?: string | null;\n  // Optional Google Drive file name. Use this to rename an existing Drive file. Leave null when only changing parents.\n  name?: string | null;\n  // Optional Google Drive API `removeParents` query parameter: comma-separated parent folder IDs to remove. For moving a file, set this to the current/source parent folder ID.\n  removeParents?: string | null;\n}): Promise<CallToolResult>; };\n```"
+      },
+      {
+        "name": "mcp__codex_apps__google_drive_upload_file",
+        "description": "Search and work with files from Google Drive, Docs, Sheets, and Slides.\n\nUpload a file reference as a new Google Drive file, not rename or move an existing file. This tool is part of plugin `Google Drive`.\n\nexec tool declaration:\n```ts\ndeclare const tools: { mcp__codex_apps__google_drive_upload_file(args: {\n  // Optional destination file name including extension. Leave null to use the name from file_uri.\n  file_name?: string | null;\n  // Required file reference for the bytes to upload. Pass the `file_uri` object returned by another connector or generated by the runtime; if you provide it manually, send the same structured object/dictionary shape rather than base64 content. Do not pass raw local file paths or string URLs. This parameter expects an absolute local file path. If you want to upload a file, provide the absolute path to that file here.\n  file_uri: string;\n  // Optional MIME type for the Drive file. Leave null to use the MIME type from file_uri.\n  mime_type?: string | null;\n  // Optional destination Google Drive folder ID. Leave null to upload to My Drive/root. Do not pass folder URLs, folder names, `root`, or local filesystem paths.\n  parent_folder_id?: string | null;\n}): Promise<CallToolResult>; };\n```"
+      }
+    ],
+    "conclusion": "Only upload_file provides supported create-only arbitrary raw binary upload; file_uri runtime schema is a string absolute local path. No materially different valid route found. Native import routes exclude gzip archives; update_file replaces an existing object and is unsuitable for create-only preservation.",
+    "mutations": 0
+  },
+  "recorded_at_utc": "2026-10-20T20:55:36.909079+00:00"
+}

@@ -1,0 +1,282 @@
+{
+  "schema": "rec.r3r.phys-math-code-audit.v1",
+  "reviewer": "/root/context_intake",
+  "authors": {
+    "comparator_and_benchmark": "/root/source_intake",
+    "launcher_and_benchmark_startup_correction": "/root"
+  },
+  "audit_date_utc": "2026-10-20",
+  "final_source_inspected_at_utc": "2026-10-20T17:41:16Z",
+  "verdict": "PASS_SCOPED",
+  "open_findings": {
+    "P1": 0,
+    "P2": 0
+  },
+  "independence": "Reviewer neither authored nor edited implementation; direct source inspection, reused independent derivation, real stale-bytecode counterexample and synthetic Git identity probes.",
+  "scope": [
+    "scripts/r3r_stream_audit.py",
+    "scripts/run_r3r_h4_supervised.py",
+    "scripts/benchmark_r3r_stream_audit.py",
+    "frozen scripts/build_r3o_rust.py Budget/finalize paths",
+    "frozen R3Q worker and source closure",
+    "two new regression test files"
+  ],
+  "base_identity": {
+    "initial_review_head": "4a1912b661f4227707ad7efa93df56bfa47f930a",
+    "final_observed_metadata_head": "46ebb765d2c5c8af6d53c5b59ade1a405d4551be",
+    "tree": "eac9172f63a3b4a07181e4c9a97258e680d066b0"
+  },
+  "implementation_source_commit": null,
+  "source_commit_status": "Implementation files uncommitted at review; later shipping receipt must bind these exact blobs to the actual source commit.",
+  "reviewed_sources": [
+    {
+      "path": "scripts/r3r_stream_audit.py",
+      "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8",
+      "git_blob": "6b6f78b6130228139def030d91ad0a81c267841e"
+    },
+    {
+      "path": "scripts/run_r3r_h4_supervised.py",
+      "sha256": "fe8c946a8b0bdbab53d813c46ce22d188f6a0117b6872607d33032666a8fd85f",
+      "git_blob": "27268076ac5b4f443c5d3b86359fc6ebefb42920"
+    },
+    {
+      "path": "scripts/benchmark_r3r_stream_audit.py",
+      "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4",
+      "git_blob": "3e07742a1c0b9f7280d93ddcbac992ff4f7f7c51"
+    },
+    {
+      "path": "scripts/build_r3o_rust.py",
+      "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+      "git_blob": "202737d5eb1255798ba86cad07932ca7108f8663"
+    },
+    {
+      "path": "scripts/verify_r3q_h4_continuation.py",
+      "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a",
+      "git_blob": "062c86002d1eb97ded88688c42dc6f1f35253829"
+    },
+    {
+      "path": "research/rec_r3q_h4_continuation_20261020/SOURCE_CLOSURE.json",
+      "sha256": "0332531f65a2851119f50806cdf7bc384b494b09759fcf5d497d6c1a7d032bcf",
+      "git_blob": "de6bc2566914d2082f17560cf42091b4b1c07063"
+    },
+    {
+      "path": "tests/test_r3r_supervised.py",
+      "sha256": "9d7623114a8f59981f5515d842a7733a4148eb466ab8b66b714e025ee67d684a"
+    },
+    {
+      "path": "tests/test_r3r_stream_audit.py",
+      "sha256": "d5655eb97f32acb3baa19fbbfb217e3c9e731b4053a2487043a9e0a458afb9cf"
+    },
+    {
+      "path": "tests/fixtures/r3r_actual32/MANIFEST.json",
+      "sha256": "114f7b45205c628339ec489872a5021d6cfa0c6819c75e6e19c7395e40998fd2"
+    }
+  ],
+  "reused_evidence": [
+    {
+      "path": "PHYS_MATH_AUDIT.json",
+      "status": "complete_reused",
+      "sha256": "8063728515e3e78b9f4943333402f37081ba985487d2e79856b08919c983d5f4",
+      "reason": "Comparator source blob unchanged; lane independence, units, operation graph, cache, first failure, NaN and signed-zero derivation."
+    }
+  ],
+  "source_closure_scope": {
+    "frozen_manifest_entries": 100,
+    "additional_runtime_entries": 4,
+    "total_unique_files_bound_by_launcher": 104,
+    "checks": [
+      "expected full HEAD",
+      "Git tree blob identity for every runtime/frozen path",
+      "SHA256 matches frozen manifest for each frozen entry",
+      "reject path symlink",
+      "before/after equality"
+    ],
+    "reviewer_execution_scope": "Five synthetic identity probes; fresh real-source before/after seal belongs to formal launcher execution."
+  },
+  "findings": [
+    {
+      "id": "PMC-F1",
+      "priority": "P2",
+      "category": "implementation",
+      "finding": "Public launcher allowed 1..128 while frozen smoke worker allows only 1..32.",
+      "resolution": "Public range changed to 1..32; user ceiling 128 recorded separately; no event/full adapter.",
+      "status": "CLOSED",
+      "closure": "Final source read and rejection test source inspected; formal execution separate."
+    },
+    {
+      "id": "PMC-F2",
+      "priority": "P2",
+      "category": "implementation_reproducibility",
+      "finding": "-B prevents bytecode writing but permits stale timestamp-valid bytecode reads, so sealed .py bytes did not necessarily match imported code.",
+      "resolution": "New empty create-only supervisor and worker cache prefixes; child -B -X pycache_prefix from startup; worker entry validates prefix; benchmark CLI uses fresh prefix.",
+      "status": "CLOSED",
+      "closure": "Independent real counterexample and fresh-prefix recovery, then final source inspection."
+    },
+    {
+      "id": "PMC-F3",
+      "priority": "P2",
+      "category": "resource_implementation",
+      "finding": "Benchmark numerical imports occurred before install_limits.",
+      "resolution": "CLI-only install_limits before NumPy/project imports; helper import does not install limits/alarm.",
+      "status": "CLOSED",
+      "closure": "Direct read of final benchmark SHA256 4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4."
+    },
+    {
+      "id": "PMC-O1",
+      "priority": "OBSERVABILITY",
+      "category": "receipt_scope",
+      "finding": "Records appended in preexec_fn exist only in fork child copy.",
+      "resolution": "Receipt labels fork-local scope and records actual worker-entry rlimits; worker-main records retained by worker.",
+      "status": "CLOSED"
+    }
+  ],
+  "independently_executed_cache_probe": {
+    "fixture_initial_source": "VALUE = 1\n",
+    "fixture_replacement_source": "VALUE = 2\n",
+    "replacement_sha256": "3da6c4b355804b265ecef19dfe5945fe2790a8cc38dc9d0547fb1634c94cbbe7",
+    "method": "py_compile initial source; replace with same-size source; restore exact mtime/atime; run ordinary -B import and fresh-prefix -B import.",
+    "baseline": {
+      "interpreter_arguments": [
+        "-B",
+        "-c",
+        "import sealed_fixture; print(sealed_fixture.VALUE)"
+      ],
+      "exit_code": 0,
+      "stdout": "1\n",
+      "stderr": ""
+    },
+    "recovery": {
+      "interpreter_arguments": [
+        "-B",
+        "-X",
+        "pycache_prefix=<fresh temporary path>/unused_cache",
+        "-c",
+        "import sealed_fixture; print(sealed_fixture.VALUE)"
+      ],
+      "exit_code": 0,
+      "stdout": "2\n",
+      "stderr": ""
+    },
+    "outcome": "COUNTEREXAMPLE_CONFIRMED_AND_FRESH_PREFIX_RECOVERY_PASS",
+    "capture_scope": "Actual process results from current-session tool return, transcribed here. This initial probe did not create a file-level stdout hash receipt.",
+    "counting": "One audit counterexample with two subprocesses; overlaps later regression coverage and is not added to the test-suite count.",
+    "solver_integrations": 0
+  },
+  "independent_binding_probe": {
+    "script": "code_audit_binding_probe.py",
+    "script_sha256": "2182e0799060a7f657d1210c01f7214f9944427b98e4eb319bb1dc573f05b29f",
+    "execution": "code_audit_binding_probe.execution.json",
+    "stdout": "code_audit_binding_probe.stdout",
+    "stderr": "code_audit_binding_probe.stderr",
+    "exit_code": 0,
+    "stdout_sha256": "a88ef949a8e8792ef396ac9979aa1cd7b232232660161c2b4a612b1c29b845ca",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unique_cases": 5,
+    "wall_s": 0.08158673500292934,
+    "reaped_child_cpu_s": 0.08167899999999999,
+    "cases": [
+      "matching committed fixture",
+      "wrong expected commit",
+      "uncommitted runtime change",
+      "same-content symlink",
+      "committed inconsistent frozen digest"
+    ],
+    "scientific_validation": "NOT_PERFORMED_BY_SYNTHETIC_IDENTITY_FIXTURE",
+    "solver_integrations": 0
+  },
+  "resources": {
+    "public_steps": {
+      "minimum": 1,
+      "maximum": 32,
+      "user_ceiling": 128
+    },
+    "cpu_limit_s": 60,
+    "wall_limit_s": 180,
+    "per_process_address_limit_bytes": 2147483648,
+    "inherited_limits": "soft and hard never increased",
+    "supervisor_receipt_reserve": {
+      "cpu_s": 2,
+      "wall_s": 3
+    },
+    "frozen_worker_recovery_reserve": {
+      "cpu_s": 5,
+      "wall_s": 12
+    },
+    "benchmark_recovery_reserve": {
+      "cpu_s": 5,
+      "wall_s": 12
+    },
+    "kill_scope": "frozen Budget kills live worker process group on caught failure",
+    "rss_scope": "50 ms sampled mapped worker tree; no supervisor RSS in sampled tree sum; not exact peak",
+    "measurement_scope": "supervisor and reaped/live worker tree including preparation, compile, audit, source checks and closeout before final receipt write",
+    "comparator_payload_bound": "60*B NumPy bytes, B<=625; excludes Python objects and total RSS"
+  },
+  "fail_closed_admission": {
+    "required": [
+      "new evidence directory",
+      "worker command returncode 0",
+      "SMOKE_ONLY",
+      "no worker first_failure",
+      "binding exit code 0",
+      "source_identity UNCHANGED",
+      "same_h_parity PASS",
+      "accepted steps equal requested count",
+      "final resource reserve gate"
+    ],
+    "failures": "Missing/invalid receipts, changed source, worker exception or cap cause failed result; crash/missing final receipt is not PASS.",
+    "actual_backend_route": "Captured frozen comparator for legacy; candidate.compare_native_stream for numpy; wrapper call timing/stats recorded independently of scientific verdict.",
+    "no_physics_mutations": [
+      "atomic source",
+      "thermal operator",
+      "predictor recurrence",
+      "causal or stage boundary",
+      "same-h tolerance",
+      "event criterion",
+      "common-input oracle"
+    ],
+    "no_full_mode": true
+  },
+  "test_source_review": {
+    "supervisor_cases_author_reported_development": 9,
+    "comparator_cases_author_reported_development": 52,
+    "formal_committed_execution_status_at_review": "PENDING_PARENT_EXECUTION",
+    "authors_reports_counted_as_reviewer_executions": false,
+    "prior_R3P_test_counts_recounted": 0,
+    "focus": [
+      "actual retained stream",
+      "optional unmodified raw",
+      "25000 lane binary64 trace",
+      "maxima hex and verdict",
+      "per-tag interleaving",
+      "first-failure precedence",
+      "guard mutation",
+      "nonfinite/extreme/subnormal/signed-zero",
+      "tolerance neighbors",
+      "NumPy error policies",
+      "exact HE tags",
+      "step bound and no event",
+      "inherited limits",
+      "stale pycache"
+    ]
+  },
+  "claim_axes": {
+    "mathematical_correctness": "PASS_SCOPED_COMPLETE_REUSED_DERIVATION",
+    "numerical_equivalence": "FORMAL_PAIRED_EXECUTION_RECEIPT_REQUIRED",
+    "implementation_correctness": "PASS_SCOPED_CODE_AUDIT_AND_FIVE_IDENTITY_PROBES",
+    "measured_acceleration": "NOT_MEASURED_BY_THIS_AUDITOR",
+    "memory_and_resource_behavior": "ENFORCEMENT_PATHS_AND_SCOPED_BOUNDS_REVIEWED; ACTUAL_PILOT_AND_RSS_RECEIPTS_REQUIRED",
+    "physical_validity": "UNCHANGED_NOT_ESTABLISHED",
+    "production_readiness": "NOT_ISSUED"
+  },
+  "remaining_execution_gates": [
+    "Actual implementation source commit bound to reviewed blobs",
+    "Formal regression output and CI",
+    "Saved-stream paired benchmark raw receipts",
+    "Bounded source-bound pilot and runtime binding",
+    "DAG/handoff/backup receipt publication"
+  ],
+  "primary_source_urls": [
+    "https://docs.python.org/3.14/using/cmdline.html#cmdoption-B",
+    "https://docs.python.org/3.14/library/sys.html#sys.pycache_prefix"
+  ]
+}
