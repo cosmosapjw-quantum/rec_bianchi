@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "research_node": "R3R",
+  "audit_kind": "PHYS_MATH",
+  "reviewer": "/root/context_intake",
+  "implementation_author": "/root/source_intake",
+  "independence": "Different agent; direct source inspection and mathematical derivation. No implementation edits and no solver execution.",
+  "review_date_utc": "2026-10-20",
+  "final_source_read_started_at_utc": "2026-10-20T13:46:56Z",
+  "verdict": "PASS_SCOPED",
+  "base_identity": {
+    "head": "4a1912b661f4227707ad7efa93df56bfa47f930a",
+    "tree": "eac9172f63a3b4a07181e4c9a97258e680d066b0"
+  },
+  "candidate_source_commit": null,
+  "candidate_source_commit_status": "Uncommitted working file at audit; later source commit must bind this exact blob. Base HEAD is not candidate source commit.",
+  "sources": [
+    {
+      "path": "scripts/r3r_stream_audit.py",
+      "role": "candidate",
+      "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8",
+      "git_blob": "6b6f78b6130228139def030d91ad0a81c267841e"
+    },
+    {
+      "path": "scripts/verify_r3q_h4_continuation.py",
+      "role": "frozen native stream comparator",
+      "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a",
+      "git_blob": "062c86002d1eb97ded88688c42dc6f1f35253829"
+    },
+    {
+      "path": "scripts/verify_r3i_h2_start.py",
+      "role": "frozen imported comparison helpers",
+      "sha256": "db7f9bcba5f38673a159ebd885745322dcc0d168c43dfae4027b95cd540ba330",
+      "git_blob": "82c84ac4c16c67f231de8f59c24db9f5e6bac623"
+    },
+    {
+      "path": "src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_start.py",
+      "role": "frozen pure redshift and quarter-start cosmology",
+      "sha256": "6247e0681d74e5b6f26f9818faf4a49af4ce61e64e4970bfe3b7c21ad951fd10",
+      "git_blob": "e515c0966fe36f05951f173833bfbc3d1278ba34"
+    }
+  ],
+  "actual_identity_commands": [
+    {
+      "command": "git rev-parse HEAD HEAD^{tree}",
+      "exit_code": 0,
+      "stdout": "4a1912b661f4227707ad7efa93df56bfa47f930a\neac9172f63a3b4a07181e4c9a97258e680d066b0\n",
+      "stderr": "",
+      "stdout_sha256": "a1903d571859fc88a963335d3190ef166b0bf12afddf8feb64de95fc2a62d5d8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "git hash-object scripts/r3r_stream_audit.py scripts/verify_r3q_h4_continuation.py scripts/verify_r3i_h2_start.py src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_start.py",
+      "exit_code": 0,
+      "stdout": "6b6f78b6130228139def030d91ad0a81c267841e\n062c86002d1eb97ded88688c42dc6f1f35253829\n82c84ac4c16c67f231de8f59c24db9f5e6bac623\ne515c0966fe36f05951f173833bfbc3d1278ba34\n",
+      "stderr": "",
+      "stdout_sha256": "255cb589cbbb63faa1c6575251e6f58b2eafa66f3779e0cc979f20868d2c38d7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "git diff --name-only 4a1912b661f4227707ad7efa93df56bfa47f930a -- src scripts/verify_r3q_h4_continuation.py scripts/verify_r3i_h2_start.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "contract": {
+    "input_dtype": "ordinary binary64 scientific arrays",
+    "input_lifetime": "stable between synchronous reference cpu_guard calls",
+    "redshift": "pure source function of validated integer index",
+    "guard_mutation": "allowed; prior rows flushed and Planck/array-map caches invalidated before callback",
+    "equivalence_observables": [
+      "returned verdict",
+      "exception class",
+      "exception message",
+      "synchronous guard record schedule"
+    ],
+    "excluded_observables": [
+      "warning stack locations",
+      "warning timing",
+      "asynchronous interruption timing",
+      "allocation failure timing",
+      "actual CPU threshold outcome"
+    ],
+    "excluded_inputs": [
+      "concurrent mutation",
+      "side-effecting per-read cosmology or energy access",
+      "arbitrary custom array subclasses"
+    ],
+    "relative_tolerance": 1e-07,
+    "absolute_planck_coefficient": 1e-10,
+    "acceptance": "finite(ratio) and ratio <= 1",
+    "planck_operator": "1 / math.expm1(E / ((KB_EV_K * T0_K) * (1 + redshift)))",
+    "preserved_operations": [
+      "separate binary64 subtract",
+      "absolute value",
+      "maximum",
+      "separate two products",
+      "add",
+      "divide"
+    ],
+    "not_introduced": [
+      "FMA",
+      "vector transcendental",
+      "signed sum reduction",
+      "new tolerance",
+      "new state advancement"
+    ]
+  },
+  "derivations": [
+    {
+      "id": "PM1",
+      "claim": "Dimensionless unchanged Planck-scaled same-h ratio",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM2",
+      "claim": "Independent lanes preserve their individual rounded operation graph",
+      "verdict": "PASS_SCOPED",
+      "limitation": "Actual platform bitwise execution remains required."
+    },
+    {
+      "id": "PM3",
+      "claim": "One-j, 314-entry cache has exact energy identity and invalidates at guards",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM4",
+      "claim": "Healthy finite per-tag maximum grouping selects an existing value; positive-zero initialization preserves zero ties",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM5",
+      "claim": "Whole-block scalar replay preserves first failure and original diagnostic across numerical and later parse/control/read errors",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM6",
+      "claim": "Nonfinite or unacceptable vector ratios replay scalar; nondefault NumPy error policies use scalar evaluation",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM7",
+      "claim": "Original guard record boundaries preserved, without a promise of identical budget outcomes",
+      "verdict": "PASS_SCOPED"
+    },
+    {
+      "id": "PM8",
+      "claim": "Bounded incremental array payload, independent of full stream length",
+      "verdict": "PASS_SCOPED"
+    }
+  ],
+  "memory_bounds": {
+    "max_block_rows": 625,
+    "persistent_numpy_payload_bytes_formula": "25 * B",
+    "conservative_numpy_working_payload_bytes_formula": "60 * B",
+    "maximum_numpy_working_payload_bytes": 37500,
+    "maximum_planck_entries": 314,
+    "python_pending_metadata": "O(B)",
+    "excluded": [
+      "Python object headers",
+      "allocator overhead",
+      "file buffers",
+      "pre-existing accepted history",
+      "RSS",
+      "whole-process address-space bound"
+    ]
+  },
+  "new_numeric_experiments_by_this_reviewer": [],
+  "solver_executions_by_this_reviewer": 0,
+  "prior_completed_R3P_test_counts_added": 0,
+  "author_test_reports": "Not counted as independent executions in this mathematical audit; parent pairs actual tests and saved-stream receipts separately.",
+  "findings": {
+    "open_P1": 0,
+    "open_P2": 0,
+    "resolved_scope_clarifications": [
+      "Warning location/timing is excluded from diagnostic equivalence.",
+      "Guard positions are preserved; measured CPU-cap outcome can change with computation cost."
+    ],
+    "strong_no_go_claim": false
+  },
+  "claim_axes": {
+    "mathematical_correctness": "PASS_SCOPED",
+    "numerical_equivalence": "REQUIRES_PAIRED_EXECUTION",
+    "implementation_correctness": "REQUIRES_CODE_AUDIT_AND_TESTS",
+    "measured_acceleration": "NOT_ASSESSED_BY_THIS_AUDIT",
+    "memory_and_resource_behavior": "PASS_SCOPED_PAYLOAD_BOUND; WHOLE_PROCESS_MEASUREMENT_REQUIRED",
+    "physical_validity": "UNCHANGED_NOT_ESTABLISHED",
+    "production_readiness": "NOT_ISSUED"
+  },
+  "preserved_nonclaims": [
+    "No new global h/h2/h4 convergence verdict.",
+    "No reinterpretation of original U5 HOLD failures.",
+    "No resetting of the historical closed cost ledger.",
+    "No new production speedup claim.",
+    "No new full5210 allocation.",
+    "REI_activation remains false."
+  ],
+  "literature_receipt": "receipts/intake/literature_support.json",
+  "primary_urls_inspected_in_this_reviewer_session": [
+    "https://arxiv.org/abs/1011.3758v2",
+    "https://arxiv.org/pdf/1011.3758",
+    "https://numpy.org/doc/2.3/user/basics.copies.html",
+    "https://numpy.org/doc/2.3/reference/ufuncs.html",
+    "https://numpy.org/doc/2.3/reference/generated/numpy.maximum.html",
+    "https://docs.python.org/3.14/reference/expressions.html#evaluation-order",
+    "https://docs.python.org/3.14/tutorial/floatingpoint.html"
+  ]
+}
