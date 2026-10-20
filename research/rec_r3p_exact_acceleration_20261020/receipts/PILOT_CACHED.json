@@ -1,0 +1,84 @@
+{
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "audit_cpu_s": 19.968856622,
+  "audit_wall_s": 19.996596913002577,
+  "backend": "cached",
+  "blas_threads": 1,
+  "cpu_cap_s": 60,
+  "diagnostic_sha256": {
+    "average_diagnostics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "average_raw_failures.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "execution_location": "ChatGPT sandbox or explicitly recorded executor; see host",
+  "guard_calls": 2087,
+  "host": "6a4240d1fd44",
+  "input_sha256": {
+    "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+    "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+    "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+  },
+  "measurement": "Audit interval includes allocation, CSV reading, all predicates, maxima and forensic files. Setup/hashes separate.",
+  "native_array_sha256": [
+    "e1cde4fd84512e60a8fa5f3c5468eac632af2cf0b34f181dc03d327bb7105f8c",
+    "961a10b46e0839f07bded61f0e409ff6ffa31f8344fa86fc1a61fc83b3bee646"
+  ],
+  "new_physical_steps": 0,
+  "numpy": "2.3.5",
+  "peak_rss_bytes": 254840832,
+  "python": "3.12.14",
+  "schema": "rec.r3p.saved-audit.v1",
+  "scipy": "1.17.0",
+  "setup_cpu_s": 1.0375033969999998,
+  "setup_wall_s": 1.0406389519994264,
+  "source_sha256": {
+    "scripts/benchmark_r3p_audit.py": "7527a1cd388a41952ab8bf3780c5d9f9452e1abc8797fad0142c66375514a4ae",
+    "scripts/r3p_rust_audit.py": "4526d270c2bab9e94a0c80bd2ee2393f840da64d0e3812c4a5163a2c1c9f65f8",
+    "scripts/r3p_stream_audit.py": "d7a60e225d72626200be5ace2fbd1bf7828c386846b102dbdd5cf30f6ea9da4b"
+  },
+  "status": "AUDIT_COMPLETED_PENDING_DIFFERENTIAL_REVIEW",
+  "threads": 1,
+  "total_cpu_s": 21.310198568,
+  "total_wall_s": 21.341688589000114,
+  "verdict": {
+    "causal_links": 1630730,
+    "counts": {
+      "A": 1620310,
+      "BASE": 1,
+      "END": 1,
+      "HE": 36447,
+      "L": 15630,
+      "NODE": 1,
+      "PARAM": 1,
+      "PL": 50199,
+      "PV": 5203963,
+      "STEP": 5210,
+      "THERMAL_EVENT": 1,
+      "V": 1620310
+    },
+    "end": {
+      "coupled": 5212,
+      "event_iz": 53177,
+      "status": "RT_BOUNDARY_REACHED_NO_EMLA_EVALUATION",
+      "steps": 5210
+    },
+    "maxima": {
+      "Tm_K": 4.364788115448193e-16,
+      "average": 0.01016409195990302,
+      "hydrogen_rhs": 2.7873536811995336e-14,
+      "lyman": 1.7690729538503825e-05,
+      "thermal_rhs": 6.31956681027985e-13,
+      "virtual": 1.7688723656877556e-05,
+      "xe": 1.3229192355050086e-13
+    },
+    "original_average_failures": [],
+    "spectral_fields": 3256250,
+    "status": "PASS_PENDING_REVIEW"
+  },
+  "verdict_sha256": "99ce067477d566d910beca63cf87473097a531c50cd8341ef2033ba5eb2ed561",
+  "wall_cap_s": 180
+}

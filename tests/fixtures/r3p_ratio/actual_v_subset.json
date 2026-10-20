@@ -1,0 +1,118 @@
+{
+  "arrays": {
+    "fbb": {
+      "dtype": "<f8",
+      "nbytes": 4984,
+      "raw_sha256": "d8ba85e70859f31d63f830e58ac83688e2d55619aed5b668ef07a561045bd138",
+      "shape": [
+        623
+      ]
+    },
+    "native": {
+      "dtype": "<f8",
+      "nbytes": 4984,
+      "raw_sha256": "31ecaf0c90029ff5d9772fcb73e79f4bc2362585fcde26e4e5f3a1650774e3c9",
+      "shape": [
+        623
+      ]
+    },
+    "py": {
+      "dtype": "<f8",
+      "nbytes": 4984,
+      "raw_sha256": "9499e553be2b7e8893fcfba796fe44ffc44ff7b569c6f32ca672f37eaa962854",
+      "shape": [
+        623
+      ]
+    },
+    "scalar_ratio": {
+      "dtype": "<f8",
+      "nbytes": 4984,
+      "raw_sha256": "bb6ddc3d717236e9b25363609ff40644022c1aaaede25d53e6dedf412def45f6",
+      "shape": [
+        623
+      ]
+    },
+    "source_indices": {
+      "dtype": "<i8",
+      "nbytes": 4984,
+      "raw_sha256": "45716191f879a1318e512fdb73cc0ff44476e8169cb3ce9b32f75fea96746270",
+      "shape": [
+        623
+      ]
+    }
+  },
+  "expected_ratio": {
+    "arithmetic": "Separate ordered Python binary64 operations; finite values checked; no expm1 recomputation, FMA, or horizontal reduction.",
+    "array": "scalar_ratio",
+    "contract": "scripts/verify_r3i_h2_u6_rt_boundary.py::compare_native_stream (V-lane ratio)",
+    "contract_sha256": "8f30859e99136a5a916ca046bf553c24943d798ef67e783cc295fb4ef9327b50",
+    "expression": "abs(float(py) - float(native)) / (1.e-7 * max(abs(float(py)), abs(float(native))) + 1.e-10 * float(fbb))",
+    "numpy": "2.3.5",
+    "python": "3.12.14"
+  },
+  "fixture_bytes": 20899,
+  "fixture_file": "actual_v_subset.npz",
+  "fixture_sha256": "4593660bf42d6223139f15c1c0ab32c57c4fb13a55543e59b25d4599992ee5d1",
+  "lanes": 623,
+  "new_physical_steps": 0,
+  "performance_measurement": false,
+  "raw_encoding": "SHA256 of little-endian C-order array bytes, without NPY header; dtype and shape are explicit.",
+  "schema": "rec.r3p.ratio-fixture.v1",
+  "selection": {
+    "includes_first_and_last_source_lanes": true,
+    "method": "sorted(set(range(0, 9952, 16)) | {9951})",
+    "odd_lane_count_exercises_scalar_tail": true,
+    "stride": 16
+  },
+  "source": {
+    "arrays": {
+      "fbb": {
+        "dtype": "<f8",
+        "nbytes": 79616,
+        "raw_sha256": "8477922803342e491835c23d5c4dc9440c8242e6c56cff909ff94c8354b131b0",
+        "shape": [
+          9952
+        ]
+      },
+      "native": {
+        "dtype": "<f8",
+        "nbytes": 79616,
+        "raw_sha256": "388d722f4441990fb6b810fb41b7c3899692c6e9dae72bf3f657d2cbec41e7d6",
+        "shape": [
+          9952
+        ]
+      },
+      "py": {
+        "dtype": "<f8",
+        "nbytes": 79616,
+        "raw_sha256": "4dc5ca895b8fee2f70c601b42a311ae3a593731271a62fd2c869ccbc54aece35",
+        "shape": [
+          9952
+        ]
+      }
+    },
+    "extraction": "scripts/benchmark_r3p_audit.py --ratio-fixture; py/native transpose then flatten of the first min(32,len(steps)) accepted V columns after PREFIX_COLUMNS; fbb saved with original scalar math.expm1 and Tr association",
+    "kind": "actual saved R3M V-lane audit data; no synthetic replacement",
+    "lanes": 9952,
+    "layout": "column-major over saved accepted steps: flat index = accepted_step * 311 + virtual_bin; first 32 accepted-step columns, V only",
+    "npz_bytes": 239588,
+    "npz_path": "/workspace/scratch/afe554957b2e/rec_runs/audit_pilot_legacy/ratio_fixture.npz",
+    "npz_sha256": "83c1099a8fe6862d6e241d675c2077c53492ededcdd7d81050b01b46640296b9",
+    "receipt_backend": "legacy",
+    "receipt_path": "/workspace/scratch/afe554957b2e/rec_runs/audit_pilot_legacy/result.json",
+    "receipt_schema": "rec.r3p.saved-audit.v1",
+    "receipt_sha256": "a68eb2ca75d26a1c928ca7101e5541043b51b6106533c53b8b12168499a551e5",
+    "receipt_status": "AUDIT_COMPLETED_PENDING_DIFFERENTIAL_REVIEW",
+    "source_sha256_as_recorded": {
+      "scripts/benchmark_r3p_audit.py": "7527a1cd388a41952ab8bf3780c5d9f9452e1abc8797fad0142c66375514a4ae",
+      "scripts/r3p_rust_audit.py": "4526d270c2bab9e94a0c80bd2ee2393f840da64d0e3812c4a5163a2c1c9f65f8",
+      "scripts/r3p_stream_audit.py": "d7a60e225d72626200be5ace2fbd1bf7828c386846b102dbdd5cf30f6ea9da4b"
+    },
+    "upstream_hash_verification": "Copied exactly from the saved audit receipt. The NPZ and receipt were rehashed for this extraction; the large upstream raw CSV/NPZ were not reread or independently rehashed.",
+    "upstream_input_sha256_as_recorded": {
+      "native_oracle_stdout.csv": "57ebca0157e956747059af4ae3d9dfb44a98157e58e6ffdbb917a520c3406c38",
+      "python_u6_rt.npz": "5ceb99a7ed221f920460aa41188ce60a748332e854a75ee58362d3f10a360cd2",
+      "verification.json": "1d55f1ff90a9fad7174ddc6022bbf957aeb4f683b7831ecbb63acd854d925b4b"
+    }
+  }
+}

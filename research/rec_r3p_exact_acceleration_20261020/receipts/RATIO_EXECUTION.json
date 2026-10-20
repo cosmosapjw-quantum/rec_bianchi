@@ -1,0 +1,58 @@
+{
+  "allocation_id": "R3P_RATIO_KERNEL_001",
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/afe554957b2e/rec_env/bin/python",
+        "-B",
+        "/workspace/scratch/afe554957b2e/rec_work/scripts/benchmark_r3p_ratio.py",
+        "--fixture",
+        "/workspace/scratch/afe554957b2e/rec_runs/audit_pilot_legacy/ratio_fixture.npz",
+        "--provenance",
+        "/workspace/scratch/afe554957b2e/rec_runs/audit_pilot_legacy/result.json",
+        "--build",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/build.json",
+        "--output",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_ratio_001/ratio.json",
+        "--threads",
+        "1",
+        "--cpu-cap",
+        "30",
+        "--wall-cap",
+        "120"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 27840512,
+      "pid_namespace_mapping": {
+        "popen_pid": 6,
+        "procfs_pid": 121478
+      },
+      "process_tree_cpu_s": 2.8284189999999994,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_ratio_001/ratio.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_ratio_001/ratio.stdout.log",
+      "stdout_sha256": "0f99a9949b6a81a10c4692f7a958634e4c7fa15691c627e9e4174afb7c8f7fee",
+      "wall_s": 2.8861568069987698
+    }
+  ],
+  "exit_code": 0,
+  "final_receipt_write_reserve": {
+    "cpu_s": 2.0,
+    "wall_s": 3.0
+  },
+  "new_physical_steps": 0,
+  "process_tree_cpu_s": 2.829587,
+  "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+  "status": "PASS_BOUNDED_RATIO_RUN",
+  "wall_s": 2.88825713299957
+}

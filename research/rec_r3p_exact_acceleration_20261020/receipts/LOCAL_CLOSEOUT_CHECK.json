@@ -1,0 +1,32 @@
+{
+  "schema": "rec.r3p.local-closeout-check.v1",
+  "code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+  "command": [
+    "python",
+    "-B",
+    "scripts/verify_repo.py",
+    "--quick"
+  ],
+  "initial": {
+    "status": "ENVIRONMENT_BLOCKED",
+    "exit_code": 2,
+    "stdout": "HyRec binary-hash policy PASS (/workspace/scratch/afe554957b2e/rec_work/tests)\n{\n  \"status\": \"ERROR\",\n  \"error\": \"no recorded feature base is an ancestor of HEAD; considered feature_exclusive_base_commit=e6b64e0df25d0b1db7cf8b776866db0afc14721e (absent), connector_verified_remote_main_commit=e6b64e0df25d0b1db7cf8b776866db0afc14721e (absent)\"\n}\n",
+    "reason": "Shallow checkout omitted the repository-recorded feature base; no physics or candidate numerical failure"
+  },
+  "repair": "Fetched existing ancestry with git fetch --unshallow --filter=blob:none; did not edit source, thresholds, policy or recorded feature base",
+  "after_repair": {
+    "exit_code": 0,
+    "status": "PASS",
+    "feature_base": "e6b64e0df25d0b1db7cf8b776866db0afc14721e",
+    "binary_hash_policy": "PASS",
+    "whitespace_policy": "PASS",
+    "bundle_count": 73,
+    "scientific_slow_file_count": 0,
+    "scientific_slow_test_count": 0
+  },
+  "scope": "Repository quick policy check only; no candidate physics run",
+  "new_untracked_text_scan": {
+    "files_checked": 31,
+    "trailing_whitespace_or_extra_EOF_blank": 0
+  }
+}

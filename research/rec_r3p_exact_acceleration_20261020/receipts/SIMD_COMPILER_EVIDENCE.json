@@ -1,0 +1,724 @@
+{
+  "schema": "rec.r3p.simd-evidence.v1",
+  "status": "RECORDED_FROM_EXISTING_ARTIFACTS",
+  "scope": {
+    "function": "rec_stream_audit::ratio_kernel",
+    "caller": "rec_ratio_batch",
+    "target_triple": "x86_64-unknown-linux-gnu",
+    "target_cpu": "x86-64",
+    "claim": "The specified final release artifact contains a two-lane binary64 SIMD loop with a scalar tail in ratio_kernel.",
+    "operation_count_semantics": "Static instruction/IR-site counts in one loop body, not execution counts, speed measurements, or horizontal sums.",
+    "limits": [
+      "No inference of a throughput gain or SIMD share of end-to-end audit time.",
+      "The prefix CSV audit and scalar libm expm1 are not claimed to be SIMD by this kernel evidence.",
+      "No tests or builds were rerun during this evidence-collection turn."
+    ]
+  },
+  "parent_build": {
+    "receipt": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/build.json",
+      "bytes": 8155,
+      "sha256": "d53d84663162989f9c6f63731754a253effe8d212bbea84aba222b134c266602"
+    },
+    "metadata": {
+      "abi_binary_sha256": "38edba45b3ffe7e4d5c276733a68c410ad367e5ea0f8646e80ab981f911b6d40",
+      "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+      "compiler_artifacts": {
+        "target/release/deps/rec_stream_audit.ll": "a617a90a34c50f34e033362bff7c063b1ddded1907eba573dd04fe8936eb0a0e",
+        "target/release/deps/rec_stream_audit.s": "d5c7d4d1fb87ad95dba85fbeab468ace11a159341b7ac6a7664e4175651c9d4b"
+      },
+      "cpu_cap_s": 90.0,
+      "exit_code": 0,
+      "final_receipt_write_reserve": {
+        "cpu_s": 2.0,
+        "wall_s": 3.0
+      },
+      "library": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/librec_stream_audit.so",
+      "library_sha256": "7e6f4bde4497d7771d0f45167d4c7a33a000949d248cab33bbffa126564aaec8",
+      "memory_bytes": 2147483648,
+      "new_physical_runs": 0,
+      "process_tree_cpu_s": 8.182546,
+      "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+      "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+      "schema": "rec.r3p.audit-build.v1",
+      "source_sha256": {
+        "rust/REC_STREAM_AUDIT_VENDOR.json": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368",
+        "rust/rec-stream-audit/Cargo.lock": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+        "rust/rec-stream-audit/Cargo.toml": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16",
+        "rust/rec-stream-audit/include/rec_stream_audit.h": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5",
+        "rust/rec-stream-audit/src/lib.rs": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743",
+        "rust/rec-stream-audit/src/tests.rs": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f",
+        "rust/rec-stream-audit/tests/abi_smoke.c": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83",
+        "scripts/build_r3o_rust.py": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+        "scripts/build_r3p_rust.py": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb"
+      },
+      "status": "BUILT",
+      "vendor_sha256": "911f4fedc55891656e638b6b9131a57f081a1c7980fcdbb13f3b3e9263c51fc0",
+      "wall_cap_s": 180.0,
+      "wall_s": 7.9692668940006115
+    },
+    "executions": [
+      {
+        "id": "rust_tests",
+        "receipt": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.execution.json",
+          "bytes": 1241,
+          "sha256": "0806b48991a8245e15131fe85b90a6d753344fb6f46381ddbed01c0113ed8348"
+        },
+        "record": {
+          "command": [
+            "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+            "test",
+            "--release",
+            "--locked",
+            "--offline",
+            "--lib"
+          ],
+          "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+          "failure": null,
+          "max_polled_process_tree_rss_bytes": 334438400,
+          "pid_namespace_mapping": {
+            "popen_pid": 9,
+            "procfs_pid": 94782
+          },
+          "process_tree_cpu_s": 6.765969,
+          "resource_measurement_coverage": {
+            "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+            "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+            "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+            "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+            "per_process_address_space_limit_bytes": 2147483648,
+            "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+          },
+          "returncode": 0,
+          "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stderr.log",
+          "stderr_sha256": "40392a487717118444adeaee47c9fbe84ec2702d6886a5495003e48c1f1e1c3f",
+          "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stdout.log",
+          "stdout_sha256": "d25079b442b6e24786f9eea1ea6ca88a26fda208c2ebbdff6e6721c9d0ff14af",
+          "wall_s": 6.431795500997396
+        },
+        "exact_logs": {
+          "stdout": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stdout.log",
+            "bytes": 1566,
+            "sha256": "d25079b442b6e24786f9eea1ea6ca88a26fda208c2ebbdff6e6721c9d0ff14af",
+            "utf8": "\nrunning 18 tests\ntest tests::batch_checks_nonfinite_inputs_zero_denominator_overflow_and_pointer_contract ... ok\ntest tests::invalid_handle_thread_counts_and_null_free ... ok\ntest tests::exact_boundary_matches_independent_python_math_reference ... ok\ntest tests::batch_matches_independent_scalar_formula_bit_for_bit_and_accepts_ratios_above_one ... ok\ntest tests::overlapping_buffers_and_unwritable_status_metadata_are_rejected ... ok\ntest tests::earliest_failure_and_attempt_count_are_identical_with_one_two_four_threads ... ok\ntest tests::scalar_association_matches_python_vectors_that_differ_under_fma ... ok\ntest tests::metadata_caps_lengths_nulls_alignment_and_ranges_are_checked_before_reads ... ok\ntest tests::unwinds_and_panicking_payload_destructors_stay_inside_boundary_helper ... ok\ntest tests::whitespace_crlf_and_final_unterminated_line ... ok\ntest tests::row_counts_blank_records_and_extra_records_are_ordered ... ok\ntest tests::later_invalid_utf8_or_missing_rows_do_not_mask_an_earlier_record_error ... ok\ntest tests::zero_tolerance_nonfinite_tolerance_and_blackbody_boundary_semantics ... ok\ntest tests::pv_pl_transition_and_lyman_bin_order_are_checked ... ok\ntest tests::integer_grammar_and_overflow_are_explicit ... ok\ntest tests::exact_four_fields_and_native_grammar ... ok\ntest tests::python_values_tr_and_energies_must_be_finite_and_positive_where_required ... ok\ntest tests::valid_maximum_block_has_exact_native_bits_and_reuses_local_pool ... ok\n\ntest result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s\n\n"
+          },
+          "stderr": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stderr.log",
+            "bytes": 503,
+            "sha256": "40392a487717118444adeaee47c9fbe84ec2702d6886a5495003e48c1f1e1c3f",
+            "utf8": "   Compiling crossbeam-utils v0.8.23\n   Compiling crossbeam-epoch v0.9.21\n   Compiling crossbeam-deque v0.8.8\n   Compiling rayon-core v1.13.0\n   Compiling either v1.19.0\n   Compiling rayon v1.12.0\n   Compiling rec-stream-audit v0.1.0 (/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work)\n    Finished `release` profile [optimized] target(s) in 6.31s\n     Running unittests src/lib.rs (/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/deps/rec_stream_audit-812c77321661aea3)\n"
+          }
+        }
+      },
+      {
+        "id": "rust_build",
+        "receipt": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.execution.json",
+          "bytes": 1296,
+          "sha256": "1d96a465b00f79e0be5925cb03a8fc27a293611ff1d8c48c607af3041b70f9fb"
+        },
+        "record": {
+          "command": [
+            "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+            "rustc",
+            "--release",
+            "--locked",
+            "--offline",
+            "--lib",
+            "--",
+            "--emit=llvm-ir,asm,link"
+          ],
+          "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+          "failure": null,
+          "max_polled_process_tree_rss_bytes": 223768576,
+          "pid_namespace_mapping": {
+            "popen_pid": 497,
+            "procfs_pid": 95310
+          },
+          "process_tree_cpu_s": 1.1964100000000002,
+          "resource_measurement_coverage": {
+            "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+            "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+            "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+            "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+            "per_process_address_space_limit_bytes": 2147483648,
+            "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+          },
+          "returncode": 0,
+          "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stderr.log",
+          "stderr_sha256": "6ba6d5398ddd91dfbb59e524441164bbf34b3d53b099eb88f3b7ee6b9c48603a",
+          "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stdout.log",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "wall_s": 1.1977908770022623
+        },
+        "exact_logs": {
+          "stdout": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stdout.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "utf8": ""
+          },
+          "stderr": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stderr.log",
+            "bytes": 161,
+            "sha256": "6ba6d5398ddd91dfbb59e524441164bbf34b3d53b099eb88f3b7ee6b9c48603a",
+            "utf8": "   Compiling rec-stream-audit v0.1.0 (/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work)\n    Finished `release` profile [optimized] target(s) in 1.15s\n"
+          }
+        }
+      },
+      {
+        "id": "abi_build",
+        "receipt": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.execution.json",
+          "bytes": 1687,
+          "sha256": "c60367d2f6f4f2debbe43c581708291963ccc5b675b65957c66a4e8a984c0d5e"
+        },
+        "record": {
+          "command": [
+            "/usr/bin/cc",
+            "-std=c11",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-ffp-contract=off",
+            "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/tests/abi_smoke.c",
+            "-I",
+            "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/include",
+            "-L",
+            "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release",
+            "-lrec_stream_audit",
+            "-lm",
+            "-Wl,-rpath,/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release",
+            "-o",
+            "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_smoke"
+          ],
+          "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+          "failure": null,
+          "max_polled_process_tree_rss_bytes": 9023488,
+          "pid_namespace_mapping": {
+            "popen_pid": 519,
+            "procfs_pid": 95337
+          },
+          "process_tree_cpu_s": 0.07268000000000008,
+          "resource_measurement_coverage": {
+            "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+            "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+            "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+            "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+            "per_process_address_space_limit_bytes": 2147483648,
+            "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+          },
+          "returncode": 0,
+          "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stdout.log",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "wall_s": 0.10864649400173221
+        },
+        "exact_logs": {
+          "stdout": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stdout.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "utf8": ""
+          },
+          "stderr": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "utf8": ""
+          }
+        }
+      },
+      {
+        "id": "abi_test",
+        "receipt": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.execution.json",
+          "bytes": 1191,
+          "sha256": "dd9792e784a9596119c6674ff4f70eed40ea9ee7494fab91cb5728fd560b98ad"
+        },
+        "record": {
+          "command": [
+            "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_smoke"
+          ],
+          "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+          "failure": null,
+          "max_polled_process_tree_rss_bytes": 1101824,
+          "pid_namespace_mapping": {
+            "popen_pid": 524,
+            "procfs_pid": 95342
+          },
+          "process_tree_cpu_s": 0.007493000000000194,
+          "resource_measurement_coverage": {
+            "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+            "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+            "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+            "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+            "per_process_address_space_limit_bytes": 2147483648,
+            "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+          },
+          "returncode": 0,
+          "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stdout.log",
+          "stdout_sha256": "c759ef22470aabcd908c580e87e9a0e29d1a3784997840640b7a2ef13f08b3f8",
+          "wall_s": 0.05413452699940535
+        },
+        "exact_logs": {
+          "stdout": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stdout.log",
+            "bytes": 88,
+            "sha256": "c759ef22470aabcd908c580e87e9a0e29d1a3784997840640b7a2ef13f08b3f8",
+            "utf8": "C ABI smoke PASS: layout, parsed bits, parity/work count at 1/2/4 threads, batch ratios\n"
+          },
+          "stderr": {
+            "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "utf8": ""
+          }
+        }
+      }
+    ],
+    "unit_counts": {
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered_out": 0,
+      "listed_ok": 18
+    },
+    "abi_pass_count": 1,
+    "source_checks": [
+      {
+        "recorded_repo_relative_path": "rust/REC_STREAM_AUDIT_VENDOR.json",
+        "recorded_sha256": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/REC_STREAM_AUDIT_VENDOR.json",
+          "bytes": 449,
+          "sha256": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368"
+        },
+        "current_repo_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/Cargo.lock",
+        "recorded_sha256": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/Cargo.lock",
+          "bytes": 1566,
+          "sha256": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/Cargo.lock",
+          "bytes": 1566,
+          "sha256": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/Cargo.toml",
+        "recorded_sha256": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/Cargo.toml",
+          "bytes": 502,
+          "sha256": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/Cargo.toml",
+          "bytes": 502,
+          "sha256": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/include/rec_stream_audit.h",
+        "recorded_sha256": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/include/rec_stream_audit.h",
+          "bytes": 4856,
+          "sha256": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/include/rec_stream_audit.h",
+          "bytes": 4856,
+          "sha256": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/src/lib.rs",
+        "recorded_sha256": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/src/lib.rs",
+          "bytes": 19811,
+          "sha256": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/src/lib.rs",
+          "bytes": 19811,
+          "sha256": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/src/tests.rs",
+        "recorded_sha256": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/src/tests.rs",
+          "bytes": 19280,
+          "sha256": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/src/tests.rs",
+          "bytes": 19280,
+          "sha256": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "rust/rec-stream-audit/tests/abi_smoke.c",
+        "recorded_sha256": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit/tests/abi_smoke.c",
+          "bytes": 2859,
+          "sha256": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83"
+        },
+        "current_repo_matches": true,
+        "isolated_work_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/tests/abi_smoke.c",
+          "bytes": 2859,
+          "sha256": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83"
+        },
+        "isolated_work_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "scripts/build_r3o_rust.py",
+        "recorded_sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/scripts/build_r3o_rust.py",
+          "bytes": 24307,
+          "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5"
+        },
+        "current_repo_matches": true
+      },
+      {
+        "recorded_repo_relative_path": "scripts/build_r3p_rust.py",
+        "recorded_sha256": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb",
+        "current_repo_file": {
+          "path": "/workspace/scratch/afe554957b2e/rec_work/scripts/build_r3p_rust.py",
+          "bytes": 5638,
+          "sha256": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb"
+        },
+        "current_repo_matches": true
+      }
+    ],
+    "all_isolated_work_sources_match": true,
+    "all_current_repo_sources_match": true,
+    "library_verified": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/librec_stream_audit.so",
+      "bytes": 599480,
+      "sha256": "7e6f4bde4497d7771d0f45167d4c7a33a000949d248cab33bbffa126564aaec8"
+    },
+    "library_matches_user_report": true,
+    "compiler_artifacts_match_recorded_hashes": true
+  },
+  "source": {
+    "file": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/src/lib.rs",
+      "bytes": 19811,
+      "sha256": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743"
+    },
+    "functions": {
+      "tolerance": {
+        "start_line_1based": 351,
+        "end_line_1based": 359,
+        "sha256_utf8": "808219c04201e096de590f6f5e873c691e70759670e9f03ccdf110898c0ab99e",
+        "utf8": "#[inline]\nfn tolerance(py: f64, native: f64, fbb: f64) -> f64 {\n    let py_abs = py.abs();\n    let native_abs = native.abs();\n    let largest = if py_abs >= native_abs { py_abs } else { native_abs };\n    let relative = 1.0e-7 * largest;\n    let floor = 1.0e-10 * fbb;\n    relative + floor\n}\n"
+      },
+      "ratio_kernel": {
+        "start_line_1based": 503,
+        "end_line_1based": 508,
+        "sha256_utf8": "2dcd8d205c4e4918949be2fd5a4346f0e4e466deaf5e897d4483e7e9cf83558b",
+        "utf8": "#[inline(never)]\nfn ratio_kernel(py: &[f64], native: &[f64], fbb: &[f64], out: &mut [MaybeUninit<f64>]) {\n    for (((&py, &native), &fbb), dst) in py.iter().zip(native).zip(fbb).zip(out) {\n        dst.write((py - native).abs() / tolerance(py, native, fbb));\n    }\n}\n"
+      }
+    }
+  },
+  "llvm": {
+    "file": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/deps/rec_stream_audit.ll",
+      "bytes": 875839,
+      "sha256": "a617a90a34c50f34e033362bff7c063b1ddded1907eba573dd04fe8936eb0a0e"
+    },
+    "symbol": "_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE",
+    "function_attributes": "attributes #5 = { nofree noinline norecurse nosync nounwind nonlazybind memory(argmem: readwrite) uwtable \"probe-stack\"=\"inline-asm\" \"target-cpu\"=\"x86-64\" }",
+    "function_excerpt": {
+      "start_line_1based": 2363,
+      "end_line_1based": 2435,
+      "sha256_utf8": "1f8340c1ed67f9b8efff89ab0e0e39b801310a60593b304944170628f73556db",
+      "utf8": "define internal fastcc void @_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE(ptr noalias noundef nonnull readonly align 8 captures(none) %py.0, i64 noundef range(i64 0, 1152921504606846976) %py.1, ptr noalias noundef nonnull readonly align 8 captures(none) %native.0, i64 noundef range(i64 0, 1152921504606846976) %native.1, ptr noalias noundef nonnull readonly align 8 captures(none) %fbb.0, i64 noundef range(i64 0, 1152921504606846976) %fbb.1, ptr noalias noundef nonnull writeonly align 8 captures(none) %out.0, i64 noundef range(i64 0, 1152921504606846976) %out.1) unnamed_addr #5 personality ptr @rust_eh_personality {\nstart:\n  %_0.sroa.0.0.i.i.i = tail call noundef i64 @llvm.umin.i64(i64 range(i64 0, 1152921504606846976) %native.1, i64 %py.1)\n  %_0.sroa.0.0.i.i.i5 = tail call noundef i64 @llvm.umin.i64(i64 range(i64 0, 1152921504606846976) %fbb.1, i64 %_0.sroa.0.0.i.i.i)\n  %_0.sroa.0.0.i.i.i11 = tail call noundef i64 @llvm.umin.i64(i64 range(i64 0, 1152921504606846976) %out.1, i64 %_0.sroa.0.0.i.i.i5)\n  switch i64 %_0.sroa.0.0.i.i.i11, label %vector.ph [\n    i64 0, label %bb7\n    i64 1, label %bb6.preheader\n  ]\n\nvector.ph:                                        ; preds = %start\n  %n.vec = and i64 %_0.sroa.0.0.i.i.i11, 1152921504606846974\n  br label %vector.body\n\nvector.body:                                      ; preds = %vector.body, %vector.ph\n  %index = phi i64 [ 0, %vector.ph ], [ %index.next, %vector.body ]\n  %0 = getelementptr inbounds nuw double, ptr %py.0, i64 %index\n  %1 = getelementptr inbounds nuw double, ptr %native.0, i64 %index\n  %2 = getelementptr inbounds nuw double, ptr %fbb.0, i64 %index\n  %3 = getelementptr inbounds nuw double, ptr %out.0, i64 %index\n  %wide.load = load <2 x double>, ptr %0, align 8\n  %wide.load22 = load <2 x double>, ptr %1, align 8\n  %wide.load23 = load <2 x double>, ptr %2, align 8\n  %4 = fsub <2 x double> %wide.load, %wide.load22\n  %5 = tail call <2 x double> @llvm.fabs.v2f64(<2 x double> %4)\n  %6 = tail call <2 x double> @llvm.fabs.v2f64(<2 x double> %wide.load)\n  %7 = tail call <2 x double> @llvm.fabs.v2f64(<2 x double> %wide.load22)\n  %8 = fcmp oge <2 x double> %6, %7\n  %9 = select <2 x i1> %8, <2 x double> %6, <2 x double> %7\n  %10 = fmul <2 x double> %9, splat (double 0x3E7AD7F29ABCAF48)\n  %11 = fmul <2 x double> %wide.load23, splat (double 1.000000e-10)\n  %12 = fadd <2 x double> %11, %10\n  %13 = fdiv <2 x double> %5, %12\n  store <2 x double> %13, ptr %3, align 8\n  %index.next = add nuw i64 %index, 2\n  %14 = icmp eq i64 %index.next, %n.vec\n  br i1 %14, label %middle.block, label %vector.body, !llvm.loop !280\n\nmiddle.block:                                     ; preds = %vector.body\n  %cmp.n = icmp eq i64 %_0.sroa.0.0.i.i.i11, %n.vec\n  br i1 %cmp.n, label %bb7, label %bb6.preheader\n\nbb6.preheader:                                    ; preds = %start, %middle.block\n  %iter.sroa.20.021.ph = phi i64 [ 0, %start ], [ %n.vec, %middle.block ]\n  br label %bb6\n\nbb6:                                              ; preds = %bb6.preheader, %bb6\n  %iter.sroa.20.021 = phi i64 [ %15, %bb6 ], [ %iter.sroa.20.021.ph, %bb6.preheader ]\n  %15 = add nuw nsw i64 %iter.sroa.20.021, 1\n  %_3.i.i.i.i.i.i = getelementptr inbounds nuw double, ptr %py.0, i64 %iter.sroa.20.021\n  %_3.i2.i.i.i.i.i = getelementptr inbounds nuw double, ptr %native.0, i64 %iter.sroa.20.021\n  %_3.i.i.i.i = getelementptr inbounds nuw double, ptr %fbb.0, i64 %iter.sroa.20.021\n  %_3.i.i = getelementptr inbounds nuw double, ptr %out.0, i64 %iter.sroa.20.021\n  %py = load double, ptr %_3.i.i.i.i.i.i, align 8, !noundef !22\n  %native = load double, ptr %_3.i2.i.i.i.i.i, align 8, !noundef !22\n  %fbb = load double, ptr %_3.i.i.i.i, align 8, !noundef !22\n  %_19 = fsub double %py, %native\n  %16 = tail call double @llvm.fabs.f64(double %_19)\n  %17 = tail call double @llvm.fabs.f64(double %py)\n  %18 = tail call double @llvm.fabs.f64(double %native)\n  %_33.inv = fcmp oge double %17, %18\n  %_31.sroa.0.0 = select i1 %_33.inv, double %17, double %18\n  %_34 = fmul double %_31.sroa.0.0, 0x3E7AD7F29ABCAF48\n  %_35 = fmul double %fbb, 1.000000e-10\n  %_20 = fadd double %_35, %_34\n  %_17 = fdiv double %16, %_20\n  store double %_17, ptr %_3.i.i, align 8\n  %exitcond.not = icmp eq i64 %15, %_0.sroa.0.0.i.i.i11\n  br i1 %exitcond.not, label %bb7, label %bb6, !llvm.loop !283\n\nbb7:                                              ; preds = %bb6, %middle.block, %start\n  ret void\n}\n"
+    },
+    "vector_lanes": 2,
+    "bits_per_lane": 64,
+    "vector_body_static_op_counts": {
+      "fsub": 1,
+      "fmul": 2,
+      "fadd": 1,
+      "fdiv": 1,
+      "fcmp": 1,
+      "fabs": 3,
+      "load": 3,
+      "store": 1
+    },
+    "scalar_tail_static_op_counts": {
+      "fsub": 1,
+      "fmul": 2,
+      "fadd": 1,
+      "fdiv": 1,
+      "fcmp": 1,
+      "fabs": 3,
+      "load": 3,
+      "store": 1
+    },
+    "fast_math_flags_found": [],
+    "fma_intrinsics_found": [],
+    "horizontal_reduction_intrinsics_found": [],
+    "shufflevector_sites": 0,
+    "calling_convention_note": "fastcc is an LLVM calling convention; it is not the fast floating-point flag.",
+    "full_module_scalar_expm1_call_sites": [
+      {
+        "line_1based": 2306,
+        "utf8": "  %denominator.i.i = call noundef double @expm1(double noundef %argument.i.i) #35, !noalias !277"
+      }
+    ]
+  },
+  "assembly": {
+    "file": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/deps/rec_stream_audit.s",
+      "bytes": 317179,
+      "sha256": "d5c7d4d1fb87ad95dba85fbeab468ace11a159341b7ac6a7664e4175651c9d4b"
+    },
+    "symbol": "_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE",
+    "function_excerpt": {
+      "start_line_1based": 2695,
+      "end_line_1based": 2774,
+      "sha256_utf8": "8e3f53161e3ebd13ad10df565d31c446016be72fafad7dda245b1b70e7995530",
+      "utf8": "_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE:\n\t.cfi_startproc\n\tcmpq\t%rsi, %rcx\n\tcmovbq\t%rcx, %rsi\n\tmovq\t16(%rsp), %rax\n\tcmpq\t%rsi, %r9\n\tcmovbq\t%r9, %rsi\n\tcmpq\t%rsi, %rax\n\tcmovbq\t%rax, %rsi\n\ttestq\t%rsi, %rsi\n\tje\t.LBB13_8\n\tmovq\t8(%rsp), %rax\n\tcmpq\t$1, %rsi\n\tjne\t.LBB13_3\n\txorl\t%ecx, %ecx\n\tjmp\t.LBB13_6\n.LBB13_3:\n\tmovabsq\t$1152921504606846974, %rcx\n\tandq\t%rsi, %rcx\n\txorl\t%r9d, %r9d\n\tmovapd\t.LCPI13_0(%rip), %xmm0\n\tmovapd\t.LCPI13_1(%rip), %xmm1\n\tmovapd\t.LCPI13_2(%rip), %xmm2\n\t.p2align\t4\n.LBB13_4:\n\tmovupd\t(%rdi,%r9,8), %xmm3\n\tmovupd\t(%rdx,%r9,8), %xmm4\n\tmovupd\t(%r8,%r9,8), %xmm5\n\tmovapd\t%xmm3, %xmm6\n\tsubpd\t%xmm4, %xmm6\n\tandpd\t%xmm0, %xmm6\n\tandpd\t%xmm0, %xmm3\n\tandpd\t%xmm0, %xmm4\n\tmovapd\t%xmm4, %xmm7\n\tcmplepd\t%xmm3, %xmm7\n\tandpd\t%xmm7, %xmm3\n\tandnpd\t%xmm4, %xmm7\n\torpd\t%xmm3, %xmm7\n\tmulpd\t%xmm1, %xmm7\n\tmulpd\t%xmm2, %xmm5\n\taddpd\t%xmm7, %xmm5\n\tdivpd\t%xmm5, %xmm6\n\tmovupd\t%xmm6, (%rax,%r9,8)\n\taddq\t$2, %r9\n\tcmpq\t%r9, %rcx\n\tjne\t.LBB13_4\n\tcmpq\t%rcx, %rsi\n\tje\t.LBB13_8\n.LBB13_6:\n\tmovapd\t.LCPI13_0(%rip), %xmm0\n\tmovsd\t.LCPI13_3(%rip), %xmm1\n\tmovsd\t.LCPI13_4(%rip), %xmm2\n\t.p2align\t4\n.LBB13_7:\n\tmovsd\t(%rdi,%rcx,8), %xmm3\n\tmovsd\t(%rdx,%rcx,8), %xmm4\n\tmovapd\t%xmm3, %xmm5\n\tsubsd\t%xmm4, %xmm5\n\tandpd\t%xmm0, %xmm5\n\tandpd\t%xmm0, %xmm3\n\tandpd\t%xmm0, %xmm4\n\tmovapd\t%xmm4, %xmm6\n\tcmplesd\t%xmm3, %xmm6\n\tandpd\t%xmm6, %xmm3\n\tandnpd\t%xmm4, %xmm6\n\torpd\t%xmm3, %xmm6\n\tmulsd\t%xmm1, %xmm6\n\tmovsd\t(%r8,%rcx,8), %xmm3\n\tmulsd\t%xmm2, %xmm3\n\taddsd\t%xmm6, %xmm3\n\tdivsd\t%xmm3, %xmm5\n\tmovsd\t%xmm5, (%rax,%rcx,8)\n\tincq\t%rcx\n\tcmpq\t%rcx, %rsi\n\tjne\t.LBB13_7\n.LBB13_8:\n\tretq\n.Lfunc_end13:\n\t.size\t_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE, .Lfunc_end13-_ZN16rec_stream_audit12ratio_kernel17hed4892b37576acaeE\n\t.cfi_endproc\n"
+    },
+    "instruction_set_observed": "128-bit SSE2 packed binary64 arithmetic and scalar SSE2 tail",
+    "packed_arithmetic_static_counts": {
+      "subpd": 1,
+      "mulpd": 2,
+      "addpd": 1,
+      "divpd": 1
+    },
+    "scalar_arithmetic_static_counts": {
+      "subsd": 1,
+      "mulsd": 2,
+      "addsd": 1,
+      "divsd": 1
+    },
+    "whole_function_mnemonic_counts": {
+      "addpd": 1,
+      "addq": 1,
+      "addsd": 1,
+      "andnpd": 2,
+      "andpd": 8,
+      "andq": 1,
+      "cmovbq": 3,
+      "cmplepd": 1,
+      "cmplesd": 1,
+      "cmpq": 7,
+      "divpd": 1,
+      "divsd": 1,
+      "incq": 1,
+      "je": 2,
+      "jmp": 1,
+      "jne": 3,
+      "movabsq": 1,
+      "movapd": 8,
+      "movq": 2,
+      "movsd": 6,
+      "movupd": 4,
+      "mulpd": 2,
+      "mulsd": 2,
+      "orpd": 2,
+      "retq": 1,
+      "subpd": 1,
+      "subsd": 1,
+      "testq": 1,
+      "xorl": 2
+    },
+    "fused_arithmetic_mnemonics_found": {},
+    "horizontal_arithmetic_mnemonics_found": {},
+    "full_module_scalar_expm1_call_sites": []
+  },
+  "implementation_history": {
+    "handoff": {
+      "path": "/tmp/rec_r3p_rust_impl.md",
+      "bytes": 7444,
+      "sha256": "2cd4de76facf8586a94c7329ee89b751a6313779d9605dbb40126c7b31f00b8f"
+    },
+    "observed_local_success_logs": [
+      {
+        "id": "implementation_debug_tests",
+        "command": [
+          "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+          "test",
+          "--locked",
+          "--offline",
+          "--lib",
+          "--manifest-path",
+          "rust/rec-stream-audit/Cargo.toml"
+        ],
+        "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+        "environment_overrides": {
+          "CARGO_HOME": "/workspace/scratch/afe554957b2e/cargo_r3p",
+          "CARGO_TARGET_DIR": "/tmp/rec_r3p_rust_impl_target",
+          "RUSTC": "/workspace/scratch/afe554957b2e/rust194/bin/rustc",
+          "RUSTDOC": "/workspace/scratch/afe554957b2e/rust194/bin/rustdoc"
+        },
+        "returncode": 0,
+        "log_provenance": "Verbatim combined tool-output text from the preceding implementation turn; original stdout/stderr separation unavailable.",
+        "ordered_output_chunks_utf8": [
+          "   Compiling rec-stream-audit v0.1.0 (/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.83s\n     Running unittests src/lib.rs (/tmp/rec_r3p_rust_impl_target/debug/deps/rec_stream_audit-38c5ac9950563185)\n\nrunning 18 tests\ntest tests::batch_checks_nonfinite_inputs_zero_denominator_overflow_and_pointer_contract ... ok\ntest tests::invalid_handle_thread_counts_and_null_free ... ok\ntest tests::metadata_caps_lengths_nulls_alignment_and_ranges_are_checked_before_reads ... ok\ntest tests::exact_boundary_matches_independent_python_math_reference ... ok\ntest tests::overlapping_buffers_and_unwritable_status_metadata_are_rejected ... ok\ntest tests::batch_matches_independent_scalar_formula_bit_for_bit_and_accepts_ratios_above_one ... ok\ntest tests::scalar_association_matches_python_vectors_that_differ_under_fma ... ok\ntest tests::row_counts_blank_records_and_extra_records_are_ordered ... ok\ntest tests::later_invalid_utf8_or_missing_rows_do_not_mask_an_earlier_record_error ... ok\ntest tests::whitespace_crlf_and_final_unterminated_line ... ok\ntest tests::earliest_failure_and_attempt_count_are_identical_with_one_two_four_threads ... ok\ntest tests::pv_pl_transition_and_lyman_bin_order_are_checked ... ok\ntest tests::zero_tolerance_nonfinite_tolerance_and_blackbody_boundary_semantics ... ok\ntest tests::unwinds_and_panicking_payload_destructors_stay_inside_boundary_helper ... ok\ntest tests::exact_four_fields_and_native_grammar ... ok\ntest tests::integer_grammar_and_overflow_are_explicit ... ok\ntest tests::python_values_tr_and_energies_must_be_finite_and_positive_where_required ... ok\ntest tests::valid_maximum_block_has_exact_native_bits_and_reuses_local_pool ... ok\n\ntest result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s\n\n"
+        ],
+        "combined_utf8_sha256": "cf55df34ab121591cb4c8a5d4cd03f6755aa1b061ce4ba5200a7a17df7b3996d",
+        "measured_process_cpu_s": null,
+        "measured_process_wall_s": null,
+        "timing_note": "No independent CPU/wall measurement recorded; printed Cargo/test-runner durations are retained only in the exact output.",
+        "unit_counts": {
+          "passed": 18,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0
+        }
+      },
+      {
+        "id": "implementation_release_tests",
+        "command": [
+          "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+          "test",
+          "--release",
+          "--locked",
+          "--offline",
+          "--lib",
+          "--manifest-path",
+          "rust/rec-stream-audit/Cargo.toml"
+        ],
+        "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+        "environment_overrides": {
+          "CARGO_HOME": "/workspace/scratch/afe554957b2e/cargo_r3p",
+          "CARGO_TARGET_DIR": "/tmp/rec_r3p_rust_impl_target",
+          "RUSTC": "/workspace/scratch/afe554957b2e/rust194/bin/rustc",
+          "RUSTDOC": "/workspace/scratch/afe554957b2e/rust194/bin/rustdoc"
+        },
+        "returncode": 0,
+        "log_provenance": "Verbatim combined tool-output text from the preceding implementation turn; original stdout/stderr separation unavailable.",
+        "ordered_output_chunks_utf8": [
+          "   Compiling crossbeam-utils v0.8.23\n   Compiling crossbeam-epoch v0.9.21\n   Compiling crossbeam-deque v0.8.8\n   Compiling rayon-core v1.13.0\n   Compiling either v1.19.0\n",
+          "   Compiling rayon v1.12.0\n   Compiling rec-stream-audit v0.1.0 (/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit)\n    Finished `release` profile [optimized] target(s) in 5.04s\n     Running unittests src/lib.rs (/tmp/rec_r3p_rust_impl_target/release/deps/rec_stream_audit-812c77321661aea3)\n\nrunning 18 tests\ntest tests::batch_checks_nonfinite_inputs_zero_denominator_overflow_and_pointer_contract ... ok\ntest tests::exact_boundary_matches_independent_python_math_reference ... ok\ntest tests::invalid_handle_thread_counts_and_null_free ... ok\ntest tests::metadata_caps_lengths_nulls_alignment_and_ranges_are_checked_before_reads ... ok\ntest tests::overlapping_buffers_and_unwritable_status_metadata_are_rejected ... ok\ntest tests::batch_matches_independent_scalar_formula_bit_for_bit_and_accepts_ratios_above_one ... ok\ntest tests::later_invalid_utf8_or_missing_rows_do_not_mask_an_earlier_record_error ... ok\ntest tests::earliest_failure_and_attempt_count_are_identical_with_one_two_four_threads ... ok\ntest tests::row_counts_blank_records_and_extra_records_are_ordered ... ok\ntest tests::scalar_association_matches_python_vectors_that_differ_under_fma ... ok\ntest tests::zero_tolerance_nonfinite_tolerance_and_blackbody_boundary_semantics ... ok\ntest tests::pv_pl_transition_and_lyman_bin_order_are_checked ... ok\ntest tests::whitespace_crlf_and_final_unterminated_line ... ok\ntest tests::integer_grammar_and_overflow_are_explicit ... ok\ntest tests::unwinds_and_panicking_payload_destructors_stay_inside_boundary_helper ... ok\ntest tests::exact_four_fields_and_native_grammar ... ok\ntest tests::python_values_tr_and_energies_must_be_finite_and_positive_where_required ... ok\ntest tests::valid_maximum_block_has_exact_native_bits_and_reuses_local_pool ... ok\n\ntest result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s\n\n"
+        ],
+        "combined_utf8_sha256": "923db15deb82fd905d2c928dbf16aa5cdfea5904f4307df919df26bb3910a0c5",
+        "measured_process_cpu_s": null,
+        "measured_process_wall_s": null,
+        "timing_note": "No independent CPU/wall measurement recorded; printed Cargo/test-runner durations are retained only in the exact output.",
+        "unit_counts": {
+          "passed": 18,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0
+        }
+      },
+      {
+        "id": "implementation_release_build",
+        "command": [
+          "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+          "rustc",
+          "--release",
+          "--locked",
+          "--offline",
+          "--lib",
+          "--manifest-path",
+          "rust/rec-stream-audit/Cargo.toml",
+          "--",
+          "--emit=llvm-ir,asm,link"
+        ],
+        "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+        "environment_overrides": {
+          "CARGO_HOME": "/workspace/scratch/afe554957b2e/cargo_r3p",
+          "CARGO_TARGET_DIR": "/tmp/rec_r3p_rust_impl_target",
+          "RUSTC": "/workspace/scratch/afe554957b2e/rust194/bin/rustc",
+          "RUSTDOC": "/workspace/scratch/afe554957b2e/rust194/bin/rustdoc"
+        },
+        "returncode": 0,
+        "log_provenance": "Verbatim combined tool-output text from the preceding implementation turn; original stdout/stderr separation unavailable.",
+        "ordered_output_chunks_utf8": [
+          "   Compiling rec-stream-audit v0.1.0 (/workspace/scratch/afe554957b2e/rec_work/rust/rec-stream-audit)\n",
+          "    Finished `release` profile [optimized] target(s) in 1.28s\n"
+        ],
+        "combined_utf8_sha256": "fe2e6c897fd329eaa77d3b4818199ab4d00f6e6a64ed4523b5c33c7b7ffab7c4",
+        "measured_process_cpu_s": null,
+        "measured_process_wall_s": null,
+        "timing_note": "No independent CPU/wall measurement recorded; printed Cargo/test-runner durations are retained only in the exact output."
+      }
+    ],
+    "actual_failed_first_compile": {
+      "provenance": "Actual first Rust compilation in the preceding turn, tool session 83557, completion chunk d37bcf; summarized diagnostic note, not a fabricated on-disk log.",
+      "command": [
+        "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+        "test",
+        "--locked",
+        "--lib",
+        "--manifest-path",
+        "rust/rec-stream-audit/Cargo.toml"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+      "environment_overrides": {
+        "CARGO_HOME": "/workspace/scratch/afe554957b2e/cargo_r3p",
+        "CARGO_TARGET_DIR": "/tmp/rec_r3p_rust_impl_target",
+        "RUSTC": "/workspace/scratch/afe554957b2e/rust194/bin/rustc",
+        "RUSTDOC": "/workspace/scratch/afe554957b2e/rust194/bin/rustdoc",
+        "CARGO_HTTP_TIMEOUT": "20",
+        "CARGO_NET_RETRY": "0"
+      },
+      "returncode": 101,
+      "tests_executed": 0,
+      "diagnostic_count": 10,
+      "diagnostic_codes": {
+        "E0610": 5,
+        "E0277": 5
+      },
+      "first_diagnostic_excerpt_utf8": "error[E0610]: `{integer}` is a primitive type and therefore doesn't have fields\n   --> src/lib.rs:357:22\n    |\n357 |     let relative = 1.e-7 * largest;\n    |                      ^\n    |\nhelp: if intended to be a floating point literal, consider adding a `0` after the period\n    |\n357 |     let relative = 1.0e-7 * largest;\n    |                      +\n",
+      "affected_literals": [
+        "src/lib.rs: 1.e-7, 1.e-10",
+        "src/tests.rs: 1.e-5, 1.e-7, 1.e-10"
+      ],
+      "correction": "Use valid Rust literals 1.0e-5, 1.0e-7 and 1.0e-10; binary64 constants and operation association unchanged.",
+      "result_after_fix": "18/18 debug and 18/18 release unit tests passed; later parent fresh offline build also passed 18/18 release and C ABI.",
+      "failed_source_sha256": null,
+      "failed_source_identity_note": "No pre-fix source-file hash was recorded; no reconstructed hash is presented as an observation.",
+      "measured_process_cpu_s": null,
+      "measured_process_wall_s": null
+    },
+    "initial_registry_attempt_note": "An earlier cargo generate-lockfile invocation failed at proxy access before compiling Rust; an approved retry generated the lockfile once. This is distinct from the actual compilation failure above."
+  },
+  "collection": {
+    "repo_head_observed": "73f201c9273329235c9df32577d4a72121b20921",
+    "new_tests": 0,
+    "new_builds": 0,
+    "new_physical_runs": 0,
+    "source_edits": 0,
+    "written_artifacts": [
+      "/tmp/rec_r3p_simd_evidence.json"
+    ]
+  }
+}

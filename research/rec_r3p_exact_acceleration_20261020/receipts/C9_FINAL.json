@@ -1,0 +1,150 @@
+{
+  "actual_execution": {
+    "REI_activation": false,
+    "allocation_id": "R3P_U5_SMOKE16_20261020_001",
+    "causal_links": 5008,
+    "common_input_sample_evaluations": 2,
+    "dlna": 4.245e-05,
+    "first_failure": null,
+    "historical_status": {
+      "allocation": "CLOSED_HOLD_NOT_RESET",
+      "h2_U5": "HOLD_8_FAIL",
+      "h_U5": "HOLD_9_FAIL"
+    },
+    "original_average_failures": [],
+    "prefix_records": 5254162,
+    "python_result": {
+      "full_evaluations": 16,
+      "rt_stop_iz": 58389,
+      "status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+      "steps": 16
+    },
+    "same_h_status": "PASS_PENDING_REVIEW",
+    "source_identity": "UNCHANGED",
+    "spectral_fields": 10000,
+    "supervisor_exit_code": 0,
+    "verification_status": "SMOKE_ONLY",
+    "worker_exit_code": 0
+  },
+  "created_utc": "2026-10-20T06:05:00.238670+00:00",
+  "crosscheck": {
+    "failed_conditions": [],
+    "file_json_conditions": 49,
+    "path": "/tmp/rec_r3p_c9_stage2_receipt_crosscheck.json",
+    "sha256": "46b5b05552411f79da89aa545b84fa56f1c70fda41143047db2239b94dccbdd7"
+  },
+  "decision": "SCOPED_C9_RESOURCE_GUARD_AND_ACTUAL_SMOKE_RECEIPT_REVIEW_COMPLETE",
+  "decision_scope": "Stage2 reviewed resource guards, exact source identity and existing smoke16 receipt closure; not a blanket scientific PASS",
+  "final_report": {
+    "path": "/tmp/rec_r3p_c9_final.md",
+    "sha256": "4fe7493a5e5b320460d1bebab067792c2bd9ade5a2e5cb76dac38c0f5b9463dd"
+  },
+  "final_stability": {
+    "additional_source_count": 23,
+    "all_additional_source_bytes_unchanged": true,
+    "all_frozen_file_bytes_unchanged": true,
+    "frozen_file_count": 109,
+    "observed_head": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+    "path": "/tmp/rec_r3p_c9_final_stability.json",
+    "receipt_stability": {
+      "execution": true,
+      "profile": true,
+      "supervision": true,
+      "verification": true
+    },
+    "sha256": "c1004b75203d307c6f0702213824cdb068ead6b109f75d9d39e860acf005060a",
+    "target_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+    "tracked_checkout_clean": true,
+    "utc": "2026-10-20T06:03:36.406293+00:00"
+  },
+  "open_P1": [],
+  "open_P2": [],
+  "preserved_limits_of_claim": [
+    "Rust canonical input contract is narrower than legacy parser; first logical error only within delivered bounded block; resource/transport/size aborts can take priority",
+    "Memory is per-process RLIMIT_AS plus sampled worker/descendant RSS, not exact aggregate supervisor-plus-worker memory",
+    "Final supervisor receipt serialization/fsync uses the disclosed reserve rather than direct measurement",
+    "No full-run admission, convergence or production speedup established"
+  ],
+  "receipt_chain": {
+    "execution": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_execution.json",
+      "sha256": "b3673f7fcd10ffd2bcd3652fcdb7744f2aeb28e725594be70f0677eaeb5af403"
+    },
+    "profile": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3l_profile.json",
+      "sha256": "28aada196ab9736a7566a5df8dcaefdd0482d51eb94b3603929fdf7bb920528b"
+    },
+    "supervision": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_supervision/supervision.json",
+      "sha256": "294cdc2eec8a2f30c61444599f6fe907234900974e424d3afbc1b7ddedd1102b"
+    },
+    "verification": {
+      "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/verification.json",
+      "sha256": "b759d530776873ce7c0080a077e9d67280044d2a540a769a33995ec94170172b"
+    }
+  },
+  "remote_ci_and_backup": "Parent-reported evidence only; no independent remote readback in this followup",
+  "resources": {
+    "applied_cpu": [
+      58,
+      59
+    ],
+    "caps": {
+      "address_bytes": 2147483648,
+      "cpu_s": 60,
+      "wall_s": 180
+    },
+    "cpu_with_receipt_reserve_s": 10.826414,
+    "final_receipt_write_reserve": {
+      "cpu_s": 2.0,
+      "wall_s": 3.0
+    },
+    "frozen_cpu_request": [
+      60,
+      60
+    ],
+    "inherited_cpu": [
+      58,
+      59
+    ],
+    "memory_scope": {
+      "address_space": "PER_PROCESS_RLIMIT_AS",
+      "exact_aggregate_parent_plus_children_memory": false,
+      "rss": "POLLED_WORKER_AND_DESCENDANT_RSS",
+      "supervisor_rss_in_polled_total": false
+    },
+    "sampled_worker_tree_rss_bytes": 383242240,
+    "wall_with_receipt_reserve_s": 11.790703708000365,
+    "whole_launch_cpu_s": 8.826414,
+    "whole_launch_wall_s": 8.790703708000365
+  },
+  "reviewed_guard_sha256": {
+    "scripts/build_r3o_rust.py": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+    "scripts/run_r3p_u6_audited.py": "4e0e2482b163c044b9b1b35a8831a7d57aa6440ad8fac98ec79d00889a6f1bb4",
+    "scripts/run_r3p_u6_supervised.py": "e22c11253f450b3b4b07cc9212d0ebafb1a2bc0d29844cac14de7f453ab437f9",
+    "scripts/verify_r3i_h2_u6_rt_boundary.py": "8f30859e99136a5a916ca046bf553c24943d798ef67e783cc295fb4ef9327b50",
+    "tests/trajectory/test_r3p_u6_audited.py": "d7d5dbc24f9eb1e57ebcfad2788fd315129d15eaba4818116d080bf7fe34d84d"
+  },
+  "reviewer_actions_this_followup": {
+    "candidate_benchmark_runs": 0,
+    "candidate_builds": 0,
+    "candidate_code_authored": false,
+    "candidate_test_runs": 0,
+    "physical_or_numeric_runs": 0,
+    "repository_edits": false,
+    "scope": "Read-only source/Git object/receipt hash and JSON inspection; report artifacts only"
+  },
+  "schema": "rec.r3p.c9-final-review.v1",
+  "source_binding": {
+    "actual_files_match_receipts_and_required_hashes": true,
+    "additional_commit_bound_files": 23,
+    "build_receipt_sha256": "d53d84663162989f9c6f63731754a253effe8d212bbea84aba222b134c266602",
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "frozen_manifest_files": 109,
+    "frozen_manifest_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+    "rust_library_sha256": "7e6f4bde4497d7771d0f45167d4c7a33a000949d248cab33bbffa126564aaec8",
+    "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+  },
+  "source_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/tree/e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+  "target_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d"
+}

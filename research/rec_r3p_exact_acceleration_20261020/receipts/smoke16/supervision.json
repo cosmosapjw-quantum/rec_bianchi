@@ -1,0 +1,95 @@
+{
+  "allocation_id": "R3P_U5_SMOKE16_20261020_001",
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/afe554957b2e/rec_env/bin/python",
+        "-B",
+        "-c",
+        "import sys; sys.path.insert(0, '/workspace/scratch/afe554957b2e/rec_work/scripts'); from run_r3p_u6_audited import main; main()",
+        "--checkpoint",
+        "/workspace/scratch/afe554957b2e/rec_recovery/u5/python_u5_thermal.npz",
+        "--source-zip",
+        "/workspace/scratch/afe554957b2e/rec_work/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+        "--expected-commit",
+        "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+        "--new-allocation-id",
+        "R3P_U5_SMOKE16_20261020_001",
+        "--evidence-dir",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001",
+        "--mode",
+        "smoke",
+        "--audit-backend",
+        "rust",
+        "--build",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/build.json",
+        "--block-columns",
+        "32",
+        "--history-container",
+        "stored"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 383242240,
+      "pid_namespace_mapping": {
+        "popen_pid": 5,
+        "procfs_pid": 124785
+      },
+      "process_tree_cpu_s": 8.743491,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_supervision/worker.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_supervision/worker.stdout.log",
+      "stdout_sha256": "5e576ae56a9be2a1ab7a9075b02b27e40524e66d4339c41e9664b8b0b0ef630b",
+      "wall_s": 8.706983367999783
+    }
+  ],
+  "exit_code": 0,
+  "expected_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+  "final_receipt_write_reserve": {
+    "cpu_s": 2.0,
+    "wall_s": 3.0
+  },
+  "first_failure": null,
+  "historical_allocation": "CLOSED_HOLD_NOT_RESET",
+  "inherited_process_limits": {
+    "address_space": [
+      2147483648,
+      2147483648
+    ],
+    "cpu": [
+      60,
+      60
+    ]
+  },
+  "limits": {
+    "cpu_s": 60.0,
+    "memory_bytes": 2147483648,
+    "wall_s": 180.0
+  },
+  "limits_scope": "SUPERVISOR_AND_COMPLETE_WORKER_PROCESS_TREE_INCLUDING_PREFLIGHT_AND_CLOSEOUT",
+  "measurement_exclusion": "FINAL_SUPERVISOR_RECEIPT_SERIALIZATION_FSYNC_ONLY_RESERVED",
+  "memory_scope": {
+    "address_space": "PER_PROCESS_RLIMIT_AS",
+    "exact_aggregate_parent_plus_children_memory": false,
+    "rss": "POLLED_WORKER_AND_DESCENDANT_RSS",
+    "supervisor_rss_in_polled_total": false
+  },
+  "process_tree_cpu_s": 8.826414,
+  "requested_steps": 16,
+  "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+  "schema": "rec.r3p.u6-supervision.v1",
+  "scientific_status": "READ_ORIGINAL_VERIFICATION_AND_WORKER_RECEIPTS",
+  "status": "WORKER_RETURNED_WITHIN_SUPERVISED_BUDGET",
+  "wall_s": 8.790703708000365,
+  "worker_receipt": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_execution.json",
+  "worker_receipt_sha256": "b3673f7fcd10ffd2bcd3652fcdb7744f2aeb28e725594be70f0677eaeb5af403"
+}

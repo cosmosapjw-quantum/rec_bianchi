@@ -1,0 +1,193 @@
+{
+  "causal_links": {
+    "accepted_inputs": 16,
+    "checked_links": 5008
+  },
+  "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+  "common_binary_sha256": "b8a035ad708b27c6e1aec4df08fd2e87f213408e5d523ab3f505434dd8b6e523",
+  "common_build": {
+    "child_cpu_limit_s": 58,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-DR3I_SHARED",
+      "-I",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec",
+      "/workspace/scratch/afe554957b2e/rec_work/scripts/c_harness/original_hyrec_r3i_h2_u6_rt_boundary_harness.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/history.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/hydrogen.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/helium.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/liboriginal_full_source.so"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "fcb9b6ca9a79bb5de8c157a5dbe2e77a5ecfd1fac4719964a1243d9ae14e17d6",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.5746031689996016
+  },
+  "common_input_sample": {
+    "max_average_tolerance_ratio": 7.484601025252692e-06,
+    "max_lyman_tolerance_ratio": 3.825449625442317e-07,
+    "max_rhs_scaled": 1.2628786905111156e-15,
+    "max_thermal_rhs_scaled": 3.987522852282203e-13,
+    "max_virtual_tolerance_ratio": 3.82825617785996e-07,
+    "sampled_evaluations": 2,
+    "status": "PASS"
+  },
+  "first_failure": null,
+  "last_accepted": {
+    "state": {
+      "Tm_K": 2278.6613944108385,
+      "branch": "H_ONLY",
+      "iz": 53195,
+      "post_saha": false,
+      "xH1s": 0.9946372196653791,
+      "xHII": 0.005362780334620898,
+      "xHeII": 0.0,
+      "xe": 0.005362780334620898,
+      "z": 835.472849677664
+    },
+    "step": {
+      "branch": "H_ONLY",
+      "coupled": true,
+      "hydrogen_rhs": -0.05558525796561967,
+      "input_iz": 53194,
+      "output_iz": 53195,
+      "photon_col": 16748,
+      "schur_residual": 7.452950176206632e-16,
+      "thermal_rhs": -2289.9857598191434
+    }
+  },
+  "last_attempt": {
+    "Tm_K": 2278.758608647319,
+    "accepted_before": 15,
+    "input_iz": 53194,
+    "photon_col": 16748,
+    "xe": 0.005365139209946365,
+    "z": 835.5083587038062
+  },
+  "last_source_evaluation": {
+    "average_sha256": "327405f56351366f5e0335e905727035f5ef5d7929b1dc6075e20c87605a25ed",
+    "hydrogen_rhs": -0.05558525796561967,
+    "input_iz": 53194,
+    "lyman_sha256": "94252c4cc5f6d1bd6425aea4516f5128adada2478d97cd206ca3da156f370afd",
+    "schur_residual": 7.452950176206632e-16,
+    "virtual_sha256": "e927e0617dac68f94b00e076394c44ff1e0dfa089dfc6097fcb9438f526fc9f7"
+  },
+  "modified_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+  },
+  "native_binary_sha256": "8a2a939ef421982ad42ccfe7e13160361c2003a7f9e4aa9d1384aeffda1b1c71",
+  "native_build": {
+    "child_cpu_limit_s": 59,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec",
+      "/workspace/scratch/afe554957b2e/rec_work/scripts/c_harness/original_hyrec_r3i_h2_u6_rt_boundary_harness.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/history.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/hydrogen.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/helium.c",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/native_u6_rt"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "fcb9b6ca9a79bb5de8c157a5dbe2e77a5ecfd1fac4719964a1243d9ae14e17d6",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.6713083819995518
+  },
+  "native_run": {
+    "child_cpu_limit_s": 57,
+    "command": [
+      "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/native_u6_rt"
+    ],
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "d29007bdfd6a526fc828d131ea24c1abd086c666ae1f7797d4850c32e3caa5b0",
+    "wall_s": 2.7849883909984783
+  },
+  "partial_accepted_sha256": {
+    "python_accepted_partial.jsonl": "466fdd238f7062be60adc1abc7be4523097ea99a0820cd9cd62a7ef66439c86f",
+    "python_attempts.jsonl": "5f39280fa76b2b225961b5bfe77a3c7882f66aa7b1ed8eb893d4fc2d51894542",
+    "python_partial_average_f64le.bin": "31483064f203e1ebc637ed08dae45ba8705f0348db8e3ddc7dd70ba2cc1b3796",
+    "python_partial_lyman_f64le.bin": "b741bfdcdc055394eca4d59b43ab6a2ed8e6a1cd417d402d4ab8486cc3d9e0e1",
+    "python_partial_virtual_f64le.bin": "5fca64795a2ae3f105bafd7e73c528af46c32bcf0f5b31ff19d747491296edda",
+    "python_source_evaluations.jsonl": "d0decfbbdb96f66c7325a76563e6a975f668b712d992a27689c3f64e1d78b4aa"
+  },
+  "python_history_sha256": "5f3fa1c3b743b3f45464f2d67f8f3458b7923681f6744705cc6747b81755e250",
+  "python_result": {
+    "full_evaluations": 16,
+    "rt_stop_iz": 58389,
+    "status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+    "steps": 16
+  },
+  "resources": {
+    "address_limit_bytes": 2147483648,
+    "affinity": [
+      0
+    ],
+    "blas_threads": 1,
+    "cpu_limit_s": 60,
+    "parent_cpu_s": 3.2309339999999995,
+    "peak_rss_bytes": 354856960,
+    "process_tree_cpu_s": 7.135006999999999,
+    "wall_limit_s": 180,
+    "wall_s": 7.282683645997167
+  },
+  "same_h_parity": {
+    "causal_links": 5008,
+    "counts": {
+      "A": 4976,
+      "BASE": 1,
+      "END": 1,
+      "HE": 36447,
+      "L": 48,
+      "NODE": 1,
+      "PARAM": 1,
+      "PL": 50199,
+      "PV": 5203963,
+      "STEP": 16,
+      "THERMAL_EVENT": 1,
+      "V": 4976
+    },
+    "end": {
+      "coupled": 18,
+      "event_iz": 53177,
+      "status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+      "steps": 16
+    },
+    "maxima": {
+      "Tm_K": 1.994402531967008e-16,
+      "average": 2.1722981554269436e-05,
+      "hydrogen_rhs": 1.9047263766225342e-14,
+      "lyman": 4.376735287656637e-06,
+      "thermal_rhs": 5.270936699700386e-13,
+      "virtual": 5.653137029811636e-06,
+      "xe": 1.3229192355050086e-13
+    },
+    "original_average_failures": [],
+    "spectral_fields": 10000,
+    "status": "PASS_PENDING_REVIEW"
+  },
+  "source_closure": {
+    "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+    "manifest_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+    "source_files": 109
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "SMOKE_ONLY"
+}

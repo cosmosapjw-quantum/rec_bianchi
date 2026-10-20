@@ -1,0 +1,198 @@
+{
+  "schema": "rec.r3p.github-ci.v1",
+  "code_evidence_snapshot_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+  "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+  "runs": [
+    {
+      "id": 39379161540,
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379161540",
+      "name": "verify-r3p-audit",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "jobs": [
+        {
+          "id": 118484024838,
+          "name": "bounded-exact-audit",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install compiler and Python test dependencies",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build offline and run Rust and C ABI checks",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check scalar differential, actual physical fixtures, bindings and launcher",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve build and verification evidence",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 39379161558,
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379161558",
+      "name": "verify-durable-backup",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "jobs": [
+        {
+          "id": 118484024698,
+          "name": "verify",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install --upgrade pip",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -e '.[test]'",
+              "conclusion": "success"
+            },
+            {
+              "name": "Record numerical runtime dispatch",
+              "conclusion": "success"
+            },
+            {
+              "name": "Smoke-import every package module from the committed tree",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/verify_repo.py --quick",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run pytest -q",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 39379155901,
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39379155901",
+      "name": "verify-durable-backup",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "jobs": [
+        {
+          "id": 118484007701,
+          "name": "verify",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install --upgrade pip",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -e '.[test]'",
+              "conclusion": "success"
+            },
+            {
+              "name": "Record numerical runtime dispatch",
+              "conclusion": "success"
+            },
+            {
+              "name": "Smoke-import every package module from the committed tree",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/verify_repo.py --quick",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run pytest -q",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "note": "Evidence-only successor; source/test/compiler inputs unchanged from tested code commit. No workflow rerun requested."
+}

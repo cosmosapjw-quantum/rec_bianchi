@@ -1,0 +1,174 @@
+{
+  "abi_binary_sha256": "38edba45b3ffe7e4d5c276733a68c410ad367e5ea0f8646e80ab981f911b6d40",
+  "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--offline",
+        "--lib"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 334438400,
+      "pid_namespace_mapping": {
+        "popen_pid": 9,
+        "procfs_pid": 94782
+      },
+      "process_tree_cpu_s": 6.765969,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stderr.log",
+      "stderr_sha256": "40392a487717118444adeaee47c9fbe84ec2702d6886a5495003e48c1f1e1c3f",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_tests.stdout.log",
+      "stdout_sha256": "d25079b442b6e24786f9eea1ea6ca88a26fda208c2ebbdff6e6721c9d0ff14af",
+      "wall_s": 6.431795500997396
+    },
+    {
+      "command": [
+        "/workspace/scratch/afe554957b2e/rust194/bin/cargo",
+        "rustc",
+        "--release",
+        "--locked",
+        "--offline",
+        "--lib",
+        "--",
+        "--emit=llvm-ir,asm,link"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 223768576,
+      "pid_namespace_mapping": {
+        "popen_pid": 497,
+        "procfs_pid": 95310
+      },
+      "process_tree_cpu_s": 1.1964100000000002,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stderr.log",
+      "stderr_sha256": "6ba6d5398ddd91dfbb59e524441164bbf34b3d53b099eb88f3b7ee6b9c48603a",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/rust_build.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wall_s": 1.1977908770022623
+    },
+    {
+      "command": [
+        "/usr/bin/cc",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-ffp-contract=off",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/tests/abi_smoke.c",
+        "-I",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work/include",
+        "-L",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release",
+        "-lrec_stream_audit",
+        "-lm",
+        "-Wl,-rpath,/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release",
+        "-o",
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_smoke"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 9023488,
+      "pid_namespace_mapping": {
+        "popen_pid": 519,
+        "procfs_pid": 95337
+      },
+      "process_tree_cpu_s": 0.07268000000000008,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_build.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wall_s": 0.10864649400173221
+    },
+    {
+      "command": [
+        "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_smoke"
+      ],
+      "cwd": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/work",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 1101824,
+      "pid_namespace_mapping": {
+        "popen_pid": 524,
+        "procfs_pid": 95342
+      },
+      "process_tree_cpu_s": 0.007493000000000194,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 0,
+      "stderr": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/abi_test.stdout.log",
+      "stdout_sha256": "c759ef22470aabcd908c580e87e9a0e29d1a3784997840640b7a2ef13f08b3f8",
+      "wall_s": 0.05413452699940535
+    }
+  ],
+  "compiler_artifacts": {
+    "target/release/deps/rec_stream_audit.ll": "a617a90a34c50f34e033362bff7c063b1ddded1907eba573dd04fe8936eb0a0e",
+    "target/release/deps/rec_stream_audit.s": "d5c7d4d1fb87ad95dba85fbeab468ace11a159341b7ac6a7664e4175651c9d4b"
+  },
+  "cpu_cap_s": 90.0,
+  "exit_code": 0,
+  "final_receipt_write_reserve": {
+    "cpu_s": 2.0,
+    "wall_s": 3.0
+  },
+  "library": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/librec_stream_audit.so",
+  "library_sha256": "7e6f4bde4497d7771d0f45167d4c7a33a000949d248cab33bbffa126564aaec8",
+  "memory_bytes": 2147483648,
+  "new_physical_runs": 0,
+  "process_tree_cpu_s": 8.182546,
+  "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+  "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "schema": "rec.r3p.audit-build.v1",
+  "source_sha256": {
+    "rust/REC_STREAM_AUDIT_VENDOR.json": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368",
+    "rust/rec-stream-audit/Cargo.lock": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+    "rust/rec-stream-audit/Cargo.toml": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16",
+    "rust/rec-stream-audit/include/rec_stream_audit.h": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5",
+    "rust/rec-stream-audit/src/lib.rs": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743",
+    "rust/rec-stream-audit/src/tests.rs": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f",
+    "rust/rec-stream-audit/tests/abi_smoke.c": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83",
+    "scripts/build_r3o_rust.py": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+    "scripts/build_r3p_rust.py": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb"
+  },
+  "status": "BUILT",
+  "vendor_sha256": "911f4fedc55891656e638b6b9131a57f081a1c7980fcdbb13f3b3e9263c51fc0",
+  "wall_cap_s": 180.0,
+  "wall_s": 7.9692668940006115
+}

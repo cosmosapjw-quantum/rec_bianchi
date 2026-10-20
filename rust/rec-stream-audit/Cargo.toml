@@ -1,0 +1,27 @@
+[package]
+name = "rec-stream-audit"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+license = "MIT"
+description = "Bounded, ordered REC scalar native-output prefix audit"
+publish = false
+
+[lib]
+name = "rec_stream_audit"
+crate-type = ["cdylib", "rlib"]
+
+# Keep this adapter independent of the physics crates and their build profiles.
+[workspace]
+
+[dependencies]
+rayon = "=1.12.0"
+
+[profile.release]
+opt-level = 3
+lto = false
+codegen-units = 1
+panic = "unwind"
+
+[profile.dev]
+panic = "unwind"
