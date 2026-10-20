@@ -14,6 +14,7 @@ import json
 import math
 import os
 from pathlib import Path
+import subprocess
 import sys
 from types import SimpleNamespace
 import warnings
@@ -117,6 +118,86 @@ def write_stream(tmp_path, content):
     return path
 
 
+TRACE_CHILD = r"""
+import resource, signal, sys, time
+started = time.monotonic()
+inherited, effective = {}, {}
+for name, kind, cap in (("cpu", resource.RLIMIT_CPU, 60),
+                         ("address_space", resource.RLIMIT_AS, 2*1024**3)):
+    soft, hard = resource.getrlimit(kind)
+    inherited[name] = [soft, hard]
+    hard = cap if hard == resource.RLIM_INFINITY else min(hard, cap)
+    soft = hard if soft == resource.RLIM_INFINITY else min(soft, hard)
+    resource.setrlimit(kind, (soft, hard))
+    effective[name] = list(resource.getrlimit(kind))
+def deadline(_signum, _frame):
+    raise TimeoutError("R3R_TRACE_TEST_WORK_WALL_LIMIT")
+signal.signal(signal.SIGALRM, deadline)
+signal.setitimer(signal.ITIMER_REAL, 168.)
+import hashlib, json
+from pathlib import Path
+request = json.loads(sys.argv[1])
+def check_inputs():
+    for name, expected in request["sha256"].items():
+        if hashlib.sha256(Path(name).read_bytes()).hexdigest() != expected:
+            raise ValueError("TRACE_TEST_INPUT_HASH_MISMATCH:"+name)
+check_inputs()
+root = Path(request["root"])
+sys.path[:0] = [str(root/"scripts"), str(root/"src")]
+import benchmark_r3r_stream_audit as audit
+inputs = audit.load_inputs(Path(request["checkpoint"]), Path(request["python_result"]),
+                           Path(request["source_archive"]), request["event"])
+trace = audit.trace_lane_ratios(Path(request["native_stream"]), inputs, 512)
+check_inputs()
+audit.check_budget("independent_trace_test_complete")
+result = {"trace": trace, "input_sha256": request["sha256"],
+          "inputs_before_after": "UNCHANGED", "inherited_limits": inherited,
+          "effective_limits": effective, "cpu_s": audit.total_cpu_s(),
+          "wall_s": time.monotonic()-started, "pycache_prefix": sys.pycache_prefix,
+          "dont_write_bytecode": sys.dont_write_bytecode}
+signal.setitimer(signal.ITIMER_REAL, 0.)
+print(json.dumps(result, sort_keys=True, allow_nan=False))
+"""
+
+
+def trace_in_fresh_process(actual, native_stream, tmp_path):
+    """Allocate a new bounded replay process; retain the unchanged CLI guard."""
+    folder = tmp_path / "independent_lane_trace"
+    folder.mkdir()
+    cache = folder / "empty_pycache"
+    cache.mkdir()
+    assert not any(cache.iterdir())
+    result_path = FIXTURE / "python_continuation.npz"
+    expected = {
+        str(native_stream): digest(native_stream.read_bytes()),
+        str(result_path): actual.manifest["fixture_files"]["python_continuation.npz"]["sha256"],
+        str(CP): actual.manifest["checkpoint_sha256"],
+        str(ZIP): actual.manifest["source_zip_sha256"],
+    }
+    request = {"root": str(ROOT), "native_stream": str(native_stream),
+               "python_result": str(result_path), "checkpoint": str(CP),
+               "source_archive": str(ZIP), "event": actual.manifest["python_event"],
+               "sha256": expected}
+    command = [sys.executable, "-B", "-X", f"pycache_prefix={cache}", "-c",
+               TRACE_CHILD, json.dumps(request, sort_keys=True)]
+    stdout, stderr = folder/"trace.stdout.json", folder/"trace.stderr.log"
+    with stdout.open("xb") as out, stderr.open("xb") as err:
+        done = subprocess.run(command, cwd=ROOT, stdout=out, stderr=err, timeout=180, check=False)
+    assert done.returncode == 0, (done.returncode, stderr.read_text(), stdout.read_text())
+    assert stderr.read_bytes() == b""
+    response = json.loads(stdout.read_text())
+    assert response["inputs_before_after"] == "UNCHANGED"
+    assert response["input_sha256"] == expected
+    assert response["pycache_prefix"] == str(cache)
+    assert response["dont_write_bytecode"] is True
+    assert response["cpu_s"] < 55. and response["wall_s"] < 168.
+    for name, cap in (("cpu", 60), ("address_space", 2*1024**3)):
+        assert all(0 <= value <= cap for value in response["effective_limits"][name])
+        for before, after in zip(response["inherited_limits"][name], response["effective_limits"][name]):
+            assert before == -1 or after <= before
+    return response["trace"]
+
+
 def test_opt_in_signature_and_source_are_preserved():
     assert baseline.compare_native_stream is ORIGINAL_COMPARE
     signature = inspect.signature(optimized.compare_native_stream)
@@ -156,8 +237,16 @@ def test_actual_unmodified_raw_when_supplied(actual):
     assert old.identity["verdict"] == actual.manifest["expected_same_h_parity"]
 
 
-def test_actual_all_lane_binary64_bytes_separate_from_maxima(actual):
-    trace = benchmark.trace_lane_ratios(actual.path, actual.inputs, 512)
+def test_actual_all_lane_binary64_bytes_separate_from_maxima(actual, tmp_path, monkeypatch):
+    # General CI can reach this case after earlier pytest work has spent its
+    # process budget.  That spent parent allowance must remain spent.
+    monkeypatch.setattr(benchmark, "total_cpu_s", lambda: 92.44)
+    monkeypatch.setattr(benchmark, "START_WALL", benchmark.time.monotonic()-181.)
+    with pytest.raises(RuntimeError, match="R3R_REPLAY_BUDGET"):
+        benchmark.check_budget("previous_pytest_work")
+    trace = trace_in_fresh_process(actual, actual.path, tmp_path)
+    with pytest.raises(RuntimeError, match="R3R_REPLAY_BUDGET"):
+        benchmark.check_budget("parent_allowance_remains_spent")
     assert trace["status"] == "PASS"
     assert trace["lanes"] == 25000
     assert trace["differing_binary64_lanes"] == 0
@@ -188,7 +277,7 @@ def test_valid_arbitrary_per_tag_interleaving_and_ordered_lane_trace(actual, tmp
     assert old.error is None
     assert old.identity["verdict"] == actual.manifest["expected_same_h_parity"]
     assert new.stats["max_buffered_rows"] <= 512
-    trace = benchmark.trace_lane_ratios(path, actual.inputs, 512)
+    trace = trace_in_fresh_process(actual, path, tmp_path)
     assert trace["lanes"] == 25000 and trace["differing_binary64_lanes"] == 0
 
 
