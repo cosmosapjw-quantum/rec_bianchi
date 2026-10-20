@@ -1,155 +1,293 @@
 {
   "schema": "rec.r3r.dag.v1",
+  "research_node": "R3R",
+  "base_commit": "5b44bb21ce0599e55e0848e5e3ff320c9e8ca172",
+  "executed_source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
   "nodes": [
     {
       "id": "R3P",
       "status": "complete_reused",
-      "evidence": "../rec_r3p_exact_acceleration_20261020/EVIDENCE.json"
+      "evidence": [
+        "../rec_r3p_exact_acceleration_20261020/EVIDENCE.json"
+      ],
+      "scope": "Completed R3P R1-R10/C1-C10, benchmarks, smoke16 and CI reused without rerun"
     },
     {
       "id": "R3Q_H4_EVENT",
       "status": "complete_reused",
-      "evidence": "../rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json"
+      "evidence": [
+        "../rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json"
+      ],
+      "scope": "Newly recovered historical NCP first event plus two, not a new execution here"
     },
     {
       "id": "R3O_H2_LOWZ",
       "status": "complete_reused",
-      "evidence": "../rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json"
+      "evidence": [
+        "../rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json"
+      ],
+      "scope": "Historical reviewed low-z result; additive endpoint interpretation correction only"
     },
     {
       "id": "R1",
+      "name": "연구 위치·계약",
       "status": "complete",
+      "depends_on": [
+        "R3P",
+        "R3Q_H4_EVENT",
+        "R3O_H2_LOWZ"
+      ],
       "evidence": [
         "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "receipts/intake/github_intake.json"
       ]
     },
     {
       "id": "R2",
+      "name": "근거·재사용",
       "status": "complete",
+      "depends_on": [
+        "R3P",
+        "R3Q_H4_EVENT",
+        "R3O_H2_LOWZ"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "receipts/intake/literature_support.json",
+        "receipts/intake/endpoint_correction.md"
       ]
     },
     {
       "id": "R3",
+      "name": "주장·전제 정렬",
       "status": "complete",
+      "depends_on": [
+        "R1",
+        "R2"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
+        "EQUATION_TO_CODE.md",
         "receipts/profile32/PHASES.json"
       ]
     },
     {
       "id": "R4",
+      "name": "가설·표현 탐색",
       "status": "complete",
+      "depends_on": [
+        "R3"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "REPORT_KO.md",
+        "receipts/profile32/repaired/verification.json"
       ]
     },
     {
       "id": "R5",
-      "status": "pending",
-      "evidence": []
+      "name": "구성적 유도",
+      "status": "complete",
+      "depends_on": [
+        "R3",
+        "R4"
+      ],
+      "evidence": [
+        "EQUATION_TO_CODE.md"
+      ]
     },
     {
       "id": "R6",
-      "status": "pending",
-      "evidence": []
+      "name": "독립 검증",
+      "status": "complete",
+      "depends_on": [
+        "R5"
+      ],
+      "evidence": [
+        "receipts/PHYS_MATH_AUDIT.json"
+      ]
     },
     {
       "id": "R7",
-      "status": "pending",
-      "evidence": []
+      "name": "판별 검증",
+      "status": "complete",
+      "depends_on": [
+        "R6",
+        "C6"
+      ],
+      "evidence": [
+        "receipts/formal_validation_002/benchmark/benchmark.json",
+        "receipts/SAME_OUTPUT_CHECK.json"
+      ]
     },
     {
       "id": "R8",
-      "status": "pending",
-      "evidence": []
+      "name": "결과 판정",
+      "status": "complete",
+      "depends_on": [
+        "R7"
+      ],
+      "evidence": [
+        "receipts/CLAIM_GATE.json"
+      ]
     },
     {
       "id": "R9",
-      "status": "pending",
-      "evidence": []
+      "name": "정식 결과·코딩 연결",
+      "status": "complete",
+      "depends_on": [
+        "R8"
+      ],
+      "evidence": [
+        "REPORT_KO.md",
+        "EQUATION_TO_CODE.md"
+      ]
     },
     {
       "id": "R10",
-      "status": "pending",
-      "evidence": []
+      "name": "종료·재개",
+      "status": "in_progress",
+      "depends_on": [
+        "R9",
+        "C9"
+      ],
+      "evidence": [
+        "HANDOFF_KO.md",
+        "DELIVERY.json",
+        "BACKUP_ACKS.json"
+      ]
     },
     {
       "id": "C1",
+      "name": "목표·baseline",
       "status": "complete",
+      "depends_on": [
+        "R3P",
+        "R3Q_H4_EVENT"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
         "receipts/profile32/PHASES.json"
       ]
     },
     {
       "id": "C2",
+      "name": "식–데이터–코드",
       "status": "complete",
+      "depends_on": [
+        "C1",
+        "R5"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "EQUATION_TO_CODE.md"
       ]
     },
     {
       "id": "C3",
-      "status": "in_progress",
+      "name": "수치 설계",
+      "status": "complete",
+      "depends_on": [
+        "C2"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "EQUATION_TO_CODE.md",
+        "receipts/PHYS_MATH_CODE_AUDIT.json"
       ]
     },
     {
       "id": "C4",
-      "status": "pending",
+      "name": "실행 DAG·자원",
+      "status": "complete",
+      "depends_on": [
+        "C3"
+      ],
       "evidence": [
-        "EVIDENCE.json",
-        "receipts/intake/github_intake.json",
-        "receipts/profile32/PHASES.json"
+        "receipts/formal_validation_002/validation.json"
       ]
     },
     {
       "id": "C5",
-      "status": "pending",
-      "evidence": []
+      "name": "구현",
+      "status": "complete",
+      "depends_on": [
+        "C4"
+      ],
+      "evidence": [
+        "../../scripts/r3r_stream_audit.py",
+        "../../scripts/run_r3r_h4_supervised.py",
+        "../../scripts/benchmark_r3r_stream_audit.py"
+      ]
     },
     {
       "id": "C6",
-      "status": "pending",
-      "evidence": []
+      "name": "구현 검증",
+      "status": "complete",
+      "depends_on": [
+        "C5"
+      ],
+      "evidence": [
+        "receipts/formal_validation_001/validation.json",
+        "receipts/formal_validation_002/validation.json"
+      ]
     },
     {
       "id": "C7",
-      "status": "pending",
-      "evidence": []
+      "name": "과학 검증",
+      "status": "complete",
+      "depends_on": [
+        "C6",
+        "R6"
+      ],
+      "evidence": [
+        "receipts/formal_validation_002/pilot/worker/verification.json",
+        "receipts/SAME_OUTPUT_CHECK.json"
+      ]
     },
     {
       "id": "C8",
-      "status": "pending",
-      "evidence": []
+      "name": "수치·재현성",
+      "status": "complete",
+      "depends_on": [
+        "C7"
+      ],
+      "evidence": [
+        "receipts/formal_validation_002/benchmark/benchmark.json",
+        "figures/PLOT_GENERATION.json",
+        "receipts/VISUAL_REVIEW.json"
+      ]
     },
     {
       "id": "C9",
-      "status": "pending",
-      "evidence": []
+      "name": "독립 검토",
+      "status": "complete",
+      "depends_on": [
+        "C8"
+      ],
+      "evidence": [
+        "receipts/C9_CODE_AUDIT.json",
+        "receipts/C9_EVIDENCE_READBACK.json"
+      ]
     },
     {
       "id": "C10",
-      "status": "pending",
-      "evidence": []
+      "name": "판정·인계",
+      "status": "in_progress",
+      "depends_on": [
+        "C9",
+        "R9"
+      ],
+      "evidence": [
+        "receipts/CLAIM_GATE.json",
+        "HANDOFF_KO.md",
+        "DELIVERY.json",
+        "BACKUP_ACKS.json"
+      ]
     }
   ],
-  "next": "Implement opt-in comparator, matched benchmark and independent audits; keep physical full histories held",
-  "publication": "pending",
-  "backup": "pending"
+  "next": "Finish normalized shipping HEAD CI and create-only multi-provider preservation; no further science execution required for this candidate",
+  "publication": "IN_PROGRESS_PR112_DRAFT",
+  "backup": "IN_PROGRESS",
+  "out_of_scope_held": [
+    "global h/h2/h4 convergence",
+    "new full5210 or full h4 allocation",
+    "new production speedup",
+    "REI activation",
+    "production approval"
+  ]
 }

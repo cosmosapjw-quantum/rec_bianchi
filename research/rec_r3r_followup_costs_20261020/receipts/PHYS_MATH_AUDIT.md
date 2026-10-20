@@ -103,4 +103,3 @@ The new 32-step profile supports this audit path as a candidate because frozen s
 | Production readiness | NOT_ISSUED |
 
 Historical same-h HOLD results, unrepeated global convergence status, closed cost ledger, REI_activation=false, and absence of a newly authorized full5210 allocation remain independent conditions. No mathematical no-go result is asserted. Completed R3P evidence is reused as precedent, not counted as fresh R3R validation.
-

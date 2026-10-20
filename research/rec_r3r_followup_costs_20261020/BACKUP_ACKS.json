@@ -1,5 +1,57 @@
 {
   "schema": "rec.r3r.backups.v1",
-  "stages": [],
+  "stages": [
+    {
+      "stage": "STAGE1_INTAKE_PROFILE32",
+      "filename": "REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+      "bytes": 7277134,
+      "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+      "library": {
+        "schema": "rec.r3r.library-readback.v1",
+        "library_file_id": "libfile_b89b6a154f608191b812048fb25b1b4b",
+        "file_id": "file_00000000ebb8820b9b1b9ae182f94370",
+        "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+        "size": 7277134,
+        "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+        "expected_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+        "whole_readback": "PASS",
+        "method": "prepare_materialize returned distinct workspace readback path; read complete bytes and hashed independently of upload ACK"
+      },
+      "google_drive": {
+        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+      },
+      "dropbox": {
+        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+      }
+    },
+    {
+      "stage": "STAGE2_CODE_EVIDENCE",
+      "filename": "REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+      "bytes": 23953020,
+      "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+      "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "type": "Code delta requiring R3P 0b complete snapshot plus original formal raw evidence",
+      "producer": "receipts/stage2_packaging/PACKAGING_RECEIPT.json",
+      "producer_readback": "PASS_EVERY_ENTRY_AND_RECONSTRUCTED_GIT_TREE",
+      "library": {
+        "schema": "rec.r3r.library-readback.v1",
+        "library_file_id": "libfile_4452939e318c8191adfb7aee439ac8a6",
+        "file_id": "file_000000008974820b86ed49f5e7017a4a",
+        "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+        "size": 23953020,
+        "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+        "expected_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+        "upload_ack": "SUCCEEDED",
+        "whole_readback": "PASS",
+        "method": "prepare_materialize to distinct workspace path, apply full returned xattrs, read complete bytes and SHA independently of upload ACK"
+      },
+      "google_drive": {
+        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+      },
+      "dropbox": {
+        "status": "PENDING_ACTUAL_PROVIDER_RECEIPT"
+      }
+    }
+  ],
   "policy": "create_only; producer hash / provider ACK / independent remote readback distinct"
 }

@@ -1,0 +1,225 @@
+{
+  "archived_raw_logs_verified": 17,
+  "audited_source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+  "audited_source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+  "benchmark": {
+    "differing_binary64_lanes": 0,
+    "exact_zero_lanes": 4,
+    "fresh_process_rss_bytes": {
+      "legacy": 88875008,
+      "r3r_numpy": 88887296
+    },
+    "lane_count": 25000,
+    "lane_sha256": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c",
+    "max_ratio": 1.5314944635351782e-05,
+    "max_ratio_hex": "0x1.00f12fb48f856p-16",
+    "median_paired_ratios": {
+      "cpu": 1.3641298365714964,
+      "wall": 1.3638913471290828
+    },
+    "medians": {
+      "legacy": {
+        "median_cpu_s": 0.1093080129999997,
+        "median_wall_s": 0.10932107699045446,
+        "trials": 5
+      },
+      "r3r_numpy": {
+        "median_cpu_s": 0.08013021200000026,
+        "median_wall_s": 0.08015380200231448,
+        "trials": 5
+      }
+    },
+    "ordered_tag_j_bin_sha256": "32982a349440111d3965644c97639f807a813f9ba64f4e667e837a9af400efce",
+    "paired_ratios": [
+      {
+        "legacy_over_r3r_cpu": 1.274104226345035,
+        "legacy_over_r3r_wall": 1.2736383914460587,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 0
+      },
+      {
+        "legacy_over_r3r_cpu": 1.3127040182163516,
+        "legacy_over_r3r_wall": 1.312554965370207,
+        "order": [
+          "r3r_numpy",
+          "legacy"
+        ],
+        "round": 1
+      },
+      {
+        "legacy_over_r3r_cpu": 1.3641298365714964,
+        "legacy_over_r3r_wall": 1.3638913471290828,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 2
+      },
+      {
+        "legacy_over_r3r_cpu": 1.408808284077276,
+        "legacy_over_r3r_wall": 1.4085111118747682,
+        "order": [
+          "r3r_numpy",
+          "legacy"
+        ],
+        "round": 3
+      },
+      {
+        "legacy_over_r3r_cpu": 1.4095473211425844,
+        "legacy_over_r3r_wall": 1.4093631363799328,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 4
+      }
+    ],
+    "raw_counts": {
+      "A": 12440,
+      "EVENT": 1,
+      "HE": 72893,
+      "L": 120,
+      "NODE": 1,
+      "STEP": 40,
+      "V": 12440
+    },
+    "status": "PASS_READBACK",
+    "warmup_trials_excluded": 2
+  },
+  "created_utc": "2026-10-20T17:56:54.129325+00:00",
+  "formal_attempts": {
+    "1": {
+      "cpu_s": 5.334566000000001,
+      "exit_code": 2,
+      "failures": [
+        "test_fresh_prefix_reads_source_when_B_can_read_stale_cache"
+      ],
+      "junit": {
+        "errors": 0,
+        "failures": 1,
+        "skipped": 0,
+        "tests": 61
+      },
+      "source_commit": "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad",
+      "status": "FAILED",
+      "validation_sha256": "51916f7bebec179d0618cf35d9d07cbab49cf7ed2af71a9d6d6c48c40ca4eb4f",
+      "verified_raw_files": 5,
+      "wall_s": 5.2222272670042
+    },
+    "2": {
+      "cpu_s": 21.365609000000003,
+      "exit_code": 0,
+      "failures": [],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 61
+      },
+      "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "status": "COMPLETED_SCOPED",
+      "validation_sha256": "43291dac83ca57412f52049abbd6156ef27ca7e23551adf8adefd65ae3dc078f",
+      "verified_raw_files": 64,
+      "wall_s": 21.497515038005076
+    }
+  },
+  "method": "independent standard-library byte reads and arithmetic; zero solver imports/runs",
+  "pilot": {
+    "backend": "numpy",
+    "extra_accepted": 32,
+    "full_evaluations": 128,
+    "same_output_npz_payload_fields": 10,
+    "same_output_raw_files": 6,
+    "scientific_status_preserved": "SMOKE_ONLY",
+    "source_files_verified_against_executed_Git": 104,
+    "status": "PASS_READBACK",
+    "supervision_cpu_s": 3.8579509999999995,
+    "supervision_wall_s": 3.9148534609994385,
+    "worker_entry_limits": {
+      "address_space": [
+        2147483648,
+        2147483648
+      ],
+      "cpu": [
+        41,
+        42
+      ],
+      "dont_write_bytecode": true,
+      "prefix_empty_at_entry": true,
+      "pycache_prefix": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_002/pilot/pycache-worker"
+    }
+  },
+  "plots": {
+    "files_verified": 12,
+    "generation_receipt_sha256": "1aa4954e06763cd0bbfa02204b3ec954a8ecb395d275c7a9da22ff909020ac80",
+    "independent_human_like_visual_inspection": "separately documented in C9 review",
+    "original_visual_review_field": "NOT_RUN",
+    "status": "PASS_HASH_AND_DATA_READBACK"
+  },
+  "resources": {
+    "scope": "readback auditor only; no solver, test suite or benchmark rerun",
+    "self_cpu_s": 0.209132427,
+    "self_peak_rss_bytes": 18448384,
+    "wall_s": 0.3931629940052517
+  },
+  "schema": "rec.r3r.c9-evidence-readback.v1",
+  "script_sha256": "64b4ef2fac10e6ea9c039813c6120b0d2f92ac963d909dd22af23b93426ffa86",
+  "status": "PASS_INDEPENDENT_EVIDENCE_READBACK",
+  "text_normalization": [
+    {
+      "exact_EOF_only_transform": true,
+      "path": ".github/workflows/verify-r3r-stream-audit.yml"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/EQUATION_TO_CODE.md"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/REPORT_KO.md"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_AUDIT.md"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_CODE_AUDIT.json"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_CODE_AUDIT.md"
+    },
+    {
+      "AST_with_locations_identical": true,
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/code_audit_binding_probe.py"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/context_intake.json"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/literature_support.json"
+    },
+    {
+      "exact_EOF_only_transform": true,
+      "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/literature_support.md"
+    },
+    {
+      "AST_with_locations_identical": true,
+      "exact_EOF_only_transform": true,
+      "path": "scripts/run_r3r_h4_supervised.py"
+    },
+    {
+      "AST_with_locations_identical": true,
+      "exact_EOF_only_transform": true,
+      "path": "tests/test_r3r_supervised.py"
+    }
+  ],
+  "unique_local_files_hashed": 100
+}

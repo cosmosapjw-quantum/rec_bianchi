@@ -90,4 +90,3 @@ def test_fresh_prefix_reads_source_when_B_can_read_stale_cache(tmp_path):
     assert old.stdout.strip() == "1"
     assert new.stdout.strip() == "2"
     assert not list(fresh.iterdir())
-

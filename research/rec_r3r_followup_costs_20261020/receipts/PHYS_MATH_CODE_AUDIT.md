@@ -107,4 +107,3 @@ The reviewer also inspected both new test files. Their coverage includes actual 
 | Production readiness | NOT_ISSUED |
 
 The implementation remains an opt-in audit improvement. The historical U5 HOLD failures, closed cost ledger, disabled REI activation, and unresolved global convergence are preserved. No new full5210 allocation or production speedup follows from this review.
-

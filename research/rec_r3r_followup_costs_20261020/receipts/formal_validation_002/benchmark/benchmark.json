@@ -1,0 +1,1707 @@
+{
+  "claim_limits": {
+    "global_convergence": "NOT_RUN",
+    "new_production_speedup": "NOT_MEASURED",
+    "physical_validity": "UNCHANGED_NOT_ESTABLISHED",
+    "rei_activation": false
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+    "--source-sha",
+    "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "--native-stream",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/native_oracle_stdout.csv",
+    "--python-result",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/python_continuation.npz",
+    "--verification",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/verification.json",
+    "--rounds",
+    "5",
+    "--warmups",
+    "1",
+    "--output-dir",
+    "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_002/benchmark"
+  ],
+  "differential": {
+    "compared": "canonical verdict JSON, all maxima float.hex, guard labels",
+    "status": "PASS"
+  },
+  "environment": {
+    "active_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-n6v0lhrw",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "dont_write_bytecode": true,
+    "fresh_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-n6v0lhrw",
+    "machine": "x86_64",
+    "np_geterr": {
+      "divide": "warn",
+      "invalid": "warn",
+      "over": "warn",
+      "under": "ignore"
+    },
+    "numpy_version": "2.3.5",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": {
+      "bytes": 30894944,
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "rlimit_as": [
+      2147483648,
+      2147483648
+    ],
+    "rlimit_cpu": [
+      48,
+      49
+    ],
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "fresh_process_rss": {
+    "legacy": {
+      "child_cpu_limit_s": 52,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+        "--source-sha",
+        "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+        "--native-stream",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/native_oracle_stdout.csv",
+        "--python-result",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/python_continuation.npz",
+        "--verification",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/verification.json",
+        "--checkpoint",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+        "--source-archive",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+        "--block-rows",
+        "512",
+        "--rss-backend",
+        "legacy"
+      ],
+      "result": {
+        "backend": "legacy",
+        "environment": {
+          "active_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-y40cms3e",
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+          "dont_write_bytecode": true,
+          "fresh_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-y40cms3e",
+          "machine": "x86_64",
+          "np_geterr": {
+            "divide": "warn",
+            "invalid": "warn",
+            "over": "warn",
+            "under": "ignore"
+          },
+          "numpy_version": "2.3.5",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+          "python_executable": {
+            "bytes": 30894944,
+            "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+            "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+          },
+          "rlimit_as": [
+            2147483648,
+            2147483648
+          ],
+          "rlimit_cpu": [
+            48,
+            49
+          ],
+          "thread_environment": {
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1"
+          }
+        },
+        "input_file_hashes": {
+          "checkpoint": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef",
+          "native_stream": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d",
+          "python_result": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216",
+          "source_archive": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+          "verification": "611b476cca68ff703ef8309bf480a0b7466c5a967ba3c8811fd2acc349c3c848"
+        },
+        "peak_rss_bytes": 88875008,
+        "peak_rss_scope": "fresh process lifetime including interpreter, imports, hashing and input setup",
+        "pid": 34,
+        "process_tree_cpu_s": 1.592089,
+        "source": {
+          "branch": "research/rec-r3r-followup-costs-20261020",
+          "source_commit_sha": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+          "source_files": {
+            "scripts/benchmark_r3r_stream_audit.py": {
+              "bytes": 24730,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+              "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4"
+            },
+            "scripts/r3r_stream_audit.py": {
+              "bytes": 15058,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/r3r_stream_audit.py",
+              "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+            },
+            "scripts/verify_r3q_h4_continuation.py": {
+              "bytes": 24091,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+              "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a"
+            }
+          },
+          "source_tree_sha": "97423cad509a9604269740132a6ad850faf8f19a",
+          "tracked_scripts_and_src_unchanged": true
+        },
+        "status": "PASS",
+        "trial": {
+          "backend": "legacy",
+          "cpu_s": 0.12113005399999999,
+          "identity": {
+            "guard_labels": [
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_complete"
+            ],
+            "maxima_float_hex": {
+              "Tm_K": "0x0.0p+0",
+              "average": "0x1.00f12fb48f856p-16",
+              "helium_rhs": "0x1.6000000000000p-55",
+              "hydrogen_rhs": "0x1.d446000000000p-43",
+              "lyman": "0x1.195aea2cb0e23p-18",
+              "virtual": "0x1.9b80385b86dd4p-18",
+              "xHII": "0x0.0p+0",
+              "xHeII": "0x1.0000000000000p-64",
+              "xe": "0x0.0p+0"
+            },
+            "verdict": {
+              "counts": {
+                "A": 12440,
+                "EVENT": 1,
+                "HE": 72893,
+                "L": 120,
+                "NODE": 1,
+                "STEP": 40,
+                "V": 12440
+              },
+              "maxima": {
+                "Tm_K": 0.0,
+                "average": 1.5314944635351782e-05,
+                "helium_rhs": 3.8163916471489756e-17,
+                "hydrogen_rhs": 2.0795518085314768e-13,
+                "lyman": 4.192518230086996e-06,
+                "virtual": 6.131840645486276e-06,
+                "xHII": 0.0,
+                "xHeII": 5.421010862427522e-20,
+                "xe": 0.0
+              },
+              "native_event": {
+                "relative_index": -1,
+                "steps": 40,
+                "type": 0
+              },
+              "status": "PASS"
+            }
+          },
+          "optional_comparator_stats": null,
+          "phase": "fresh_process_rss",
+          "position": 0,
+          "round": 0,
+          "wall_s": 0.12116619199514389
+        }
+      },
+      "returncode": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "30917beb5720d37d223e109159f1944b6a3cbd477c4266b0c7e5a62644766aea"
+    },
+    "r3r_numpy": {
+      "child_cpu_limit_s": 50,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+        "--source-sha",
+        "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+        "--native-stream",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/native_oracle_stdout.csv",
+        "--python-result",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/python_continuation.npz",
+        "--verification",
+        "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/verification.json",
+        "--checkpoint",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+        "--source-archive",
+        "/workspace/scratch/45780e6e06f6/rec_bianchi/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+        "--block-rows",
+        "512",
+        "--rss-backend",
+        "r3r_numpy"
+      ],
+      "result": {
+        "backend": "r3r_numpy",
+        "environment": {
+          "active_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-tp16airw",
+          "affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+          "dont_write_bytecode": true,
+          "fresh_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-tp16airw",
+          "machine": "x86_64",
+          "np_geterr": {
+            "divide": "warn",
+            "invalid": "warn",
+            "over": "warn",
+            "under": "ignore"
+          },
+          "numpy_version": "2.3.5",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+          "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+          "python_executable": {
+            "bytes": 30894944,
+            "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+            "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+          },
+          "rlimit_as": [
+            2147483648,
+            2147483648
+          ],
+          "rlimit_cpu": [
+            48,
+            49
+          ],
+          "thread_environment": {
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1"
+          }
+        },
+        "input_file_hashes": {
+          "checkpoint": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef",
+          "native_stream": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d",
+          "python_result": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216",
+          "source_archive": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+          "verification": "611b476cca68ff703ef8309bf480a0b7466c5a967ba3c8811fd2acc349c3c848"
+        },
+        "peak_rss_bytes": 88887296,
+        "peak_rss_scope": "fresh process lifetime including interpreter, imports, hashing and input setup",
+        "pid": 50,
+        "process_tree_cpu_s": 1.5149869999999999,
+        "source": {
+          "branch": "research/rec-r3r-followup-costs-20261020",
+          "source_commit_sha": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+          "source_files": {
+            "scripts/benchmark_r3r_stream_audit.py": {
+              "bytes": 24730,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+              "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4"
+            },
+            "scripts/r3r_stream_audit.py": {
+              "bytes": 15058,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/r3r_stream_audit.py",
+              "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+            },
+            "scripts/verify_r3q_h4_continuation.py": {
+              "bytes": 24091,
+              "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+              "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a"
+            }
+          },
+          "source_tree_sha": "97423cad509a9604269740132a6ad850faf8f19a",
+          "tracked_scripts_and_src_unchanged": true
+        },
+        "status": "PASS",
+        "trial": {
+          "backend": "r3r_numpy",
+          "cpu_s": 0.08759939300000008,
+          "identity": {
+            "guard_labels": [
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_stream",
+              "native_stdout_complete"
+            ],
+            "maxima_float_hex": {
+              "Tm_K": "0x0.0p+0",
+              "average": "0x1.00f12fb48f856p-16",
+              "helium_rhs": "0x1.6000000000000p-55",
+              "hydrogen_rhs": "0x1.d446000000000p-43",
+              "lyman": "0x1.195aea2cb0e23p-18",
+              "virtual": "0x1.9b80385b86dd4p-18",
+              "xHII": "0x0.0p+0",
+              "xHeII": "0x1.0000000000000p-64",
+              "xe": "0x0.0p+0"
+            },
+            "verdict": {
+              "counts": {
+                "A": 12440,
+                "EVENT": 1,
+                "HE": 72893,
+                "L": 120,
+                "NODE": 1,
+                "STEP": 40,
+                "V": 12440
+              },
+              "maxima": {
+                "Tm_K": 0.0,
+                "average": 1.5314944635351782e-05,
+                "helium_rhs": 3.8163916471489756e-17,
+                "hydrogen_rhs": 2.0795518085314768e-13,
+                "lyman": 4.192518230086996e-06,
+                "virtual": 6.131840645486276e-06,
+                "xHII": 0.0,
+                "xHeII": 5.421010862427522e-20,
+                "xe": 0.0
+              },
+              "native_event": {
+                "relative_index": -1,
+                "steps": 40,
+                "type": 0
+              },
+              "status": "PASS"
+            }
+          },
+          "optional_comparator_stats": {
+            "block_rows": 512,
+            "cache_invalidations": 12,
+            "flushes": 80,
+            "guard_calls": 12,
+            "max_buffered_rows": 512,
+            "max_planck_cache_entries": 314,
+            "numpy_buffer_payload_bytes": 12800,
+            "numpy_working_payload_bound_bytes": 30720,
+            "payload_scope": "NumPy data only; excludes Python objects and RSS",
+            "planck_cache_hits": 11666,
+            "scalar_planck_calls": 13334,
+            "scalar_replay_blocks": 0,
+            "spectral_rows": 25000
+          },
+          "phase": "fresh_process_rss",
+          "position": 0,
+          "round": 0,
+          "wall_s": 0.08761529700132087
+        }
+      },
+      "returncode": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c983b6cf9a8dabf99945d41c2d338bc14118613e4930a854e0e35f1c116669fe"
+    }
+  },
+  "input_arrays_before_after": {
+    "identities": {
+      "checkpoint/Tm_K": {
+        "dtype": "<f8",
+        "sha256": "a3e41581e104b7f1b4cc0ced61e79e9dc6a834518ce415b2c51b972b8d16439c",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/average_virtual": {
+        "dtype": "<f8",
+        "sha256": "976109511743fb46b4b74593d152099a20862e3bae5ec51074b8c22fe1d386d2",
+        "shape": [
+          311,
+          8
+        ]
+      },
+      "checkpoint/checkpoint_resampled": {
+        "dtype": "|b1",
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "shape": []
+      },
+      "checkpoint/dlna": {
+        "dtype": "<f8",
+        "sha256": "5ec49e4ff0c0f2ee679fea567c253f6ac4c5c1421fc7df07fcc6996b90b5bcc6",
+        "shape": []
+      },
+      "checkpoint/final_predictor": {
+        "dtype": "<f8",
+        "sha256": "ff281b002a1d06f14733d0ff993efbd5553410bfd58781bf74cbc085ab3e03a5",
+        "shape": [
+          2,
+          2
+        ]
+      },
+      "checkpoint/full_evaluations": {
+        "dtype": "<i8",
+        "sha256": "9d4ac218fb54041e3a70a8e14db1ea1af9f570f4842b4702ef9323f1ad8f0ec4",
+        "shape": []
+      },
+      "checkpoint/helium_rhs_dln_a": {
+        "dtype": "<f8",
+        "sha256": "fe5ecc1292a483c018b9b0cf4f8bd63e3042fb1100bffd966874ab9d99b6ea5d",
+        "shape": [
+          8
+        ]
+      },
+      "checkpoint/hydrogen_rhs_dln_a": {
+        "dtype": "<f8",
+        "sha256": "78b572a9a52a4e28ce5b5ec9060e97d9cfe062d4acac4c19e710b0d8dac3c6c8",
+        "shape": [
+          8
+        ]
+      },
+      "checkpoint/initial_predictor": {
+        "dtype": "<f8",
+        "sha256": "c131f2e6c82ad7b6e6dfd541d94f2332b247fc0386cc12c78cd6de029292115a",
+        "shape": [
+          2,
+          2
+        ]
+      },
+      "checkpoint/iz": {
+        "dtype": "<i8",
+        "sha256": "33f84934733cddeb2683f992862ef53e1c493fc7a46bbf0d408abf14b0473e12",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/lyman_out": {
+        "dtype": "<f8",
+        "sha256": "b525c500f974b49d9d48a5a8c5f202453040fdf3906a2d6ae25bb248b9385df4",
+        "shape": [
+          3,
+          8
+        ]
+      },
+      "checkpoint/matrix_residual": {
+        "dtype": "<f8",
+        "sha256": "07b5f2957d4eb1d2214f1c3875075ccccaa0508455b3551f333063a337925068",
+        "shape": [
+          8
+        ]
+      },
+      "checkpoint/post_saha": {
+        "dtype": "|b1",
+        "sha256": "040a5a009f9b9d5e4771742174142e74fa2d3e0aaa3df5717f01ade338d75d0e",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/predictor_input_global_indices": {
+        "dtype": "<i8",
+        "sha256": "a4bc8aa4841564e8775740b9f6cb2b3932c6fe49eb5061529edddf516cc7511c",
+        "shape": [
+          2
+        ]
+      },
+      "checkpoint/rei_activation": {
+        "dtype": "|b1",
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "shape": []
+      },
+      "checkpoint/schema": {
+        "dtype": "<U31",
+        "sha256": "be9cf6a5269186774cea780aa04ecc232f6fec0e2b7d825a185994529ea1ef5a",
+        "shape": []
+      },
+      "checkpoint/source_mode": {
+        "dtype": "<U54",
+        "sha256": "ce64e1ef290d2e8a0c1e1f0a1dc4b9553f0a1d93dc672ed759bbdc64c84d1b8a",
+        "shape": []
+      },
+      "checkpoint/source_zip_sha256": {
+        "dtype": "<U64",
+        "sha256": "114f00ccc3a358fdba86e9b23a3eb46b9840a3ea93ae318183625209aadbbda2",
+        "shape": []
+      },
+      "checkpoint/virtual_out": {
+        "dtype": "<f8",
+        "sha256": "68e1a37139bc76aab873959ea615aa0d7cafc7df4dbccd8d7878d2d618162afd",
+        "shape": [
+          311,
+          8
+        ]
+      },
+      "checkpoint/xH1s": {
+        "dtype": "<f8",
+        "sha256": "732915e680c379ea3a347ae8486dd928a916e3fb2a6059aa905ad037012c32a3",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/xHII": {
+        "dtype": "<f8",
+        "sha256": "bc8c5081367dd7944ca8dcf7ea32a8ed420c49bbd8714757659ffa0b846b1534",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/xHeII": {
+        "dtype": "<f8",
+        "sha256": "20bc24360630c161a0b99d00f44fbf7642c018871a0247e52237d72b90a71f12",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/xe": {
+        "dtype": "<f8",
+        "sha256": "887da309e94c59fcaf2a8a16abcde369fec4ee9b8e5e341a1fa80b72b0df07df",
+        "shape": [
+          9
+        ]
+      },
+      "checkpoint/z": {
+        "dtype": "<f8",
+        "sha256": "7c15bbc0a9d146816fc6f85502e2c358d9f4dbc8667e6a514769024a5c801048",
+        "shape": [
+          9
+        ]
+      },
+      "result/average_virtual": {
+        "dtype": "<f8",
+        "sha256": "3e8ce639ba0583cd55c158e145720c3a82c29fe7350506419f7db18248a35bdf",
+        "shape": [
+          311,
+          40
+        ]
+      },
+      "result/lyman_out": {
+        "dtype": "<f8",
+        "sha256": "92d3071d97ba91d596277160ea82abd767a8fd31d73a8449cb0dbcf63659a397",
+        "shape": [
+          3,
+          40
+        ]
+      },
+      "result/virtual_out": {
+        "dtype": "<f8",
+        "sha256": "f5f8d91dbaafbe1e28a10382636e1bcc481ab5cdcf1feed00b5ab98c55492c60",
+        "shape": [
+          311,
+          40
+        ]
+      },
+      "table/energy_eV": {
+        "dtype": "<f8",
+        "sha256": "5822bd412686a99d1866cd4fd887b07412fde665a6ccd4e742d4387c4675b3c7",
+        "shape": [
+          311
+        ]
+      }
+    },
+    "status": "UNCHANGED"
+  },
+  "inputs": {
+    "files": {
+      "checkpoint": {
+        "bytes": 43904,
+        "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+        "sha256": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef"
+      },
+      "native_stream": {
+        "bytes": 15434249,
+        "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/native_oracle_stdout.csv",
+        "sha256": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d"
+      },
+      "python_result": {
+        "bytes": 197179,
+        "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/python_continuation.npz",
+        "sha256": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216"
+      },
+      "source_archive": {
+        "bytes": 726954,
+        "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+        "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+      },
+      "verification": {
+        "bytes": 7318,
+        "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/profile32_repaired/worker/verification.json",
+        "sha256": "611b476cca68ff703ef8309bf480a0b7466c5a967ba3c8811fd2acc349c3c848"
+      }
+    },
+    "frozen_source_closure": {
+      "checkpoint_sha256": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef",
+      "manifest_sha256": "0332531f65a2851119f50806cdf7bc384b494b09759fcf5d497d6c1a7d032bcf",
+      "verified_files": 100
+    },
+    "original_execution_allocation": "REC_R3R_DIAGNOSTIC_PROFILE32_20261020_001",
+    "original_execution_status": "SMOKE_ONLY",
+    "original_source_producer_sha256": "ce80868c2882797a39986173e9ee053733d5f8c5439df819cac76ef2b5f0d58b"
+  },
+  "lane_binary64_trace": {
+    "differing_binary64_lanes": 0,
+    "identity": {
+      "guard_labels": [
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_stream",
+        "native_stdout_complete"
+      ],
+      "maxima_float_hex": {
+        "Tm_K": "0x0.0p+0",
+        "average": "0x1.00f12fb48f856p-16",
+        "helium_rhs": "0x1.6000000000000p-55",
+        "hydrogen_rhs": "0x1.d446000000000p-43",
+        "lyman": "0x1.195aea2cb0e23p-18",
+        "virtual": "0x1.9b80385b86dd4p-18",
+        "xHII": "0x0.0p+0",
+        "xHeII": "0x1.0000000000000p-64",
+        "xe": "0x0.0p+0"
+      },
+      "verdict": {
+        "counts": {
+          "A": 12440,
+          "EVENT": 1,
+          "HE": 72893,
+          "L": 120,
+          "NODE": 1,
+          "STEP": 40,
+          "V": 12440
+        },
+        "maxima": {
+          "Tm_K": 0.0,
+          "average": 1.5314944635351782e-05,
+          "helium_rhs": 3.8163916471489756e-17,
+          "hydrogen_rhs": 2.0795518085314768e-13,
+          "lyman": 4.192518230086996e-06,
+          "virtual": 6.131840645486276e-06,
+          "xHII": 0.0,
+          "xHeII": 5.421010862427522e-20,
+          "xe": 0.0
+        },
+        "native_event": {
+          "relative_index": -1,
+          "steps": 40,
+          "type": 0
+        },
+        "status": "PASS"
+      }
+    },
+    "lanes": 25000,
+    "native_byteorder": "little",
+    "ordered_tag_j_bin_sha256": "32982a349440111d3965644c97639f807a813f9ba64f4e667e837a9af400efce",
+    "scope": "separate untimed scalar CSV scan vs external NumPy divide trace; healthy vector path only",
+    "status": "PASS",
+    "traces": {
+      "numpy": {
+        "bytes": 200000,
+        "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_002/benchmark/lane_ratios_numpy.f64native.bin",
+        "sha256": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c"
+      },
+      "scalar": {
+        "bytes": 200000,
+        "path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_002/benchmark/lane_ratios_scalar.f64native.bin",
+        "sha256": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c"
+      }
+    }
+  },
+  "limits": {
+    "address_bytes": 2147483648,
+    "cpu_s": 60,
+    "recovery_cpu_s": 5,
+    "recovery_wall_s": 12,
+    "wall_s": 180
+  },
+  "resources": {
+    "parent_cumulative_peak_rss_bytes": 88870912,
+    "parent_rss_scope": "process lifetime; not a per-backend comparison",
+    "process_tree_cpu_s": 6.2808329999999994,
+    "wall_s_since_module_start": 6.188046356008272
+  },
+  "schema": "REC_R3R_STREAM_AUDIT_BENCHMARK_V1",
+  "solver_integrations": 0,
+  "source": {
+    "branch": "research/rec-r3r-followup-costs-20261020",
+    "source_commit_sha": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "source_files": {
+      "scripts/benchmark_r3r_stream_audit.py": {
+        "bytes": 24730,
+        "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/benchmark_r3r_stream_audit.py",
+        "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4"
+      },
+      "scripts/r3r_stream_audit.py": {
+        "bytes": 15058,
+        "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/r3r_stream_audit.py",
+        "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+      },
+      "scripts/verify_r3q_h4_continuation.py": {
+        "bytes": 24091,
+        "path": "/workspace/scratch/45780e6e06f6/rec_bianchi/scripts/verify_r3q_h4_continuation.py",
+        "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a"
+      }
+    },
+    "source_tree_sha": "97423cad509a9604269740132a6ad850faf8f19a",
+    "tracked_scripts_and_src_unchanged": true
+  },
+  "status": "PASS_SAVED_STREAM_AUDIT_ONLY",
+  "summary": {
+    "backends": {
+      "legacy": {
+        "median_cpu_s": 0.1093080129999997,
+        "median_wall_s": 0.10932107699045446,
+        "trials": 5
+      },
+      "r3r_numpy": {
+        "median_cpu_s": 0.08013021200000026,
+        "median_wall_s": 0.08015380200231448,
+        "trials": 5
+      }
+    },
+    "measurement_scope": "entire warm-cache CSV audit including open, parsing, allocations, callbacks, and verdict; no solver",
+    "median_paired_cpu_ratio": 1.3641298365714964,
+    "median_paired_wall_ratio": 1.3638913471290828,
+    "paired_ratios": [
+      {
+        "legacy_over_r3r_cpu": 1.274104226345035,
+        "legacy_over_r3r_wall": 1.2736383914460587,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 0
+      },
+      {
+        "legacy_over_r3r_cpu": 1.3127040182163516,
+        "legacy_over_r3r_wall": 1.312554965370207,
+        "order": [
+          "r3r_numpy",
+          "legacy"
+        ],
+        "round": 1
+      },
+      {
+        "legacy_over_r3r_cpu": 1.3641298365714964,
+        "legacy_over_r3r_wall": 1.3638913471290828,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 2
+      },
+      {
+        "legacy_over_r3r_cpu": 1.408808284077276,
+        "legacy_over_r3r_wall": 1.4085111118747682,
+        "order": [
+          "r3r_numpy",
+          "legacy"
+        ],
+        "round": 3
+      },
+      {
+        "legacy_over_r3r_cpu": 1.4095473211425844,
+        "legacy_over_r3r_wall": 1.4093631363799328,
+        "order": [
+          "legacy",
+          "r3r_numpy"
+        ],
+        "round": 4
+      }
+    ],
+    "uncertainty_scope": "at most five local paired rounds; no confidence interval or platform-general claim"
+  },
+  "trials": [
+    {
+      "backend": "legacy",
+      "cpu_s": 0.111950051,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "warmup",
+      "position": 0,
+      "round": 0,
+      "wall_s": 0.11195910199603532
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.08355149600000011,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "warmup",
+      "position": 1,
+      "round": 0,
+      "wall_s": 0.08356988900050055
+    },
+    {
+      "backend": "legacy",
+      "cpu_s": 0.102351356,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "measured",
+      "position": 0,
+      "round": 0,
+      "wall_s": 0.10236374399391934
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.08033201199999995,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "measured",
+      "position": 1,
+      "round": 0,
+      "wall_s": 0.08037111999874469
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.08472037599999993,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "measured",
+      "position": 0,
+      "round": 1,
+      "wall_s": 0.08474083899636753
+    },
+    {
+      "backend": "legacy",
+      "cpu_s": 0.11121277800000007,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "measured",
+      "position": 1,
+      "round": 1,
+      "wall_s": 0.11122700899431948
+    },
+    {
+      "backend": "legacy",
+      "cpu_s": 0.1093080129999997,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "measured",
+      "position": 0,
+      "round": 2,
+      "wall_s": 0.10932107699045446
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.08013021200000026,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "measured",
+      "position": 1,
+      "round": 2,
+      "wall_s": 0.08015380200231448
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.07816991299999998,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "measured",
+      "position": 0,
+      "round": 3,
+      "wall_s": 0.0781985240028007
+    },
+    {
+      "backend": "legacy",
+      "cpu_s": 0.11012642099999992,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "measured",
+      "position": 1,
+      "round": 3,
+      "wall_s": 0.11014348999015056
+    },
+    {
+      "backend": "legacy",
+      "cpu_s": 0.10826996699999958,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": null,
+      "phase": "measured",
+      "position": 0,
+      "round": 4,
+      "wall_s": 0.10828161500103306
+    },
+    {
+      "backend": "r3r_numpy",
+      "cpu_s": 0.07681187099999987,
+      "identity": {
+        "guard_labels": [
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_stream",
+          "native_stdout_complete"
+        ],
+        "maxima_float_hex": {
+          "Tm_K": "0x0.0p+0",
+          "average": "0x1.00f12fb48f856p-16",
+          "helium_rhs": "0x1.6000000000000p-55",
+          "hydrogen_rhs": "0x1.d446000000000p-43",
+          "lyman": "0x1.195aea2cb0e23p-18",
+          "virtual": "0x1.9b80385b86dd4p-18",
+          "xHII": "0x0.0p+0",
+          "xHeII": "0x1.0000000000000p-64",
+          "xe": "0x0.0p+0"
+        },
+        "verdict": {
+          "counts": {
+            "A": 12440,
+            "EVENT": 1,
+            "HE": 72893,
+            "L": 120,
+            "NODE": 1,
+            "STEP": 40,
+            "V": 12440
+          },
+          "maxima": {
+            "Tm_K": 0.0,
+            "average": 1.5314944635351782e-05,
+            "helium_rhs": 3.8163916471489756e-17,
+            "hydrogen_rhs": 2.0795518085314768e-13,
+            "lyman": 4.192518230086996e-06,
+            "virtual": 6.131840645486276e-06,
+            "xHII": 0.0,
+            "xHeII": 5.421010862427522e-20,
+            "xe": 0.0
+          },
+          "native_event": {
+            "relative_index": -1,
+            "steps": 40,
+            "type": 0
+          },
+          "status": "PASS"
+        }
+      },
+      "optional_comparator_stats": {
+        "block_rows": 512,
+        "cache_invalidations": 12,
+        "flushes": 80,
+        "guard_calls": 12,
+        "max_buffered_rows": 512,
+        "max_planck_cache_entries": 314,
+        "numpy_buffer_payload_bytes": 12800,
+        "numpy_working_payload_bound_bytes": 30720,
+        "payload_scope": "NumPy data only; excludes Python objects and RSS",
+        "planck_cache_hits": 11666,
+        "scalar_planck_calls": 13334,
+        "scalar_replay_blocks": 0,
+        "spectral_rows": 25000
+      },
+      "phase": "measured",
+      "position": 1,
+      "round": 4,
+      "wall_s": 0.07683017400268
+    }
+  ]
+}

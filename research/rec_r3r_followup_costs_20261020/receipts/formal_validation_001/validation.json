@@ -1,0 +1,75 @@
+{
+  "allocation_id": "REC_R3R_VALIDATION_20261020_001",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-X",
+        "pycache_prefix=/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_001/pytest-cache",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r3r_stream_audit.py",
+        "tests/test_r3r_supervised.py",
+        "--junitxml=/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_001/tests.xml"
+      ],
+      "cwd": "/workspace/scratch/45780e6e06f6/rec_bianchi",
+      "failure": null,
+      "max_polled_process_tree_rss_bytes": 115097600,
+      "pid_namespace_mapping": {
+        "popen_pid": 5,
+        "procfs_pid": 252407
+      },
+      "process_tree_cpu_s": 5.245063,
+      "resource_measurement_coverage": {
+        "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+        "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+        "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+        "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+        "per_process_address_space_limit_bytes": 2147483648,
+        "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+      },
+      "returncode": 1,
+      "stderr": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_001/tests.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_001/tests.stdout.log",
+      "stdout_sha256": "4e915bded7054065f40061584aaec94e5786c8b010e1ee677c3bc1bd50c47e6d",
+      "wall_s": 5.131715801995597
+    }
+  ],
+  "evidence_sha256": {
+    "pytest-cache/tmp/pytest-of-root/pytest-14/test_fresh_prefix_reads_source0/sealed_probe.cpython-312.pyc": "d10b51c942c8aaa9ee33ea3c23007f176043eadd7aae73b6304610d90f7bdf2e",
+    "tests.execution.json": "885614483234a37a73fecdd979c92f23d825cb6f251ac5fe36033c78fda15200",
+    "tests.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests.stdout.log": "4e915bded7054065f40061584aaec94e5786c8b010e1ee677c3bc1bd50c47e6d",
+    "tests.xml": "95dbcb02873053f58c918f03c1e6dcb6807c74bc3017d4c624a3aebbba513528"
+  },
+  "exit_code": 2,
+  "final_receipt_write_reserve": {
+    "cpu_s": 2.0,
+    "wall_s": 3.0
+  },
+  "first_failure": {
+    "message": "R3O_COMMAND_FAILED:tests:1:None",
+    "type": "RuntimeError"
+  },
+  "max_new_accepted_steps": 32,
+  "process_tree_cpu_s": 5.334566000000001,
+  "repository_source_commit": "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad",
+  "resource_measurement_scope": "ALL_COMMANDS_AND_FINAL_IDENTITY_ARTIFACT_HASHING_BEFORE_FINAL_RECEIPT_WRITE",
+  "schema": "rec.r3r.formal-validation.v1",
+  "status": "FAILED",
+  "total_envelope": {
+    "cpu_s": 60,
+    "per_process_address_space_bytes": 2147483648,
+    "reserve_cpu_s": 2,
+    "reserve_wall_s": 3,
+    "wall_s": 180
+  },
+  "validation_wrapper_sha256": "fa6eed62ad1284bb7a155d9ff7675341bae0da093c1951e751eebb043dd55dea",
+  "wall_s": 5.2222272670042,
+  "wrapper_scope": "External captured harness, not a file in repository_source_commit"
+}

@@ -1,0 +1,593 @@
+{
+  "CI": {
+    "actual_source_record": {
+      "archive": "SOURCE1313_CI_LOGS.tar.gz",
+      "archive_bytes": 15528,
+      "archive_sha256": "256a0db6d3dc556314abf726a97c70eab78a16fdc2fea7de398c84e0ba31dcfd",
+      "dedicated": {
+        "conclusion": "success",
+        "job_id": 118787721568,
+        "run_id": 39468980732,
+        "scope": "R3R contract cases; read actual raw job log; same unique cases as local run"
+      },
+      "general": {
+        "conclusion": "failure",
+        "fix": "../TEXT_NORMALIZATION.json; not yet verified by CI in this historical receipt",
+        "job_id": 118787721170,
+        "reason": "12 new blank lines at EOF in committed authored files; global pytest step skipped",
+        "run_id": 39468980697
+      },
+      "raw_logs": [
+        {
+          "bytes": 48904,
+          "conclusion": "failure",
+          "file": "39468980697_job118787721170.log",
+          "sha256": "ff6eb5a9395698daa069b2c3ccf5763047a42cb4767911a77576690489a95e2f"
+        },
+        {
+          "bytes": 26083,
+          "conclusion": "success",
+          "file": "39468980732_job118787721568.log",
+          "sha256": "f1ef89767b04b30d08177d96041f9e0fd625e3f397cb2fb659cc63de8e3d2d76"
+        }
+      ],
+      "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91"
+    },
+    "dedicated": {
+      "count_relation": "same unique cases as local 61; not additional unique tests",
+      "job_id": 118787721568,
+      "numpy": "2.5.4",
+      "passed": 60,
+      "python": "3.12.15",
+      "reported_test_seconds": 4.04,
+      "run_id": 39468980732,
+      "skip": "optional externally preserved unmodified raw case",
+      "skipped": 1,
+      "status": "SUCCESS"
+    },
+    "general": {
+      "general_pytest": "SKIPPED",
+      "job_id": 118787721170,
+      "reason": "12 new blank lines at EOF",
+      "run_id": 39468980697,
+      "status": "FAILURE"
+    },
+    "independent_raw_log_and_archive_member_hash_readback": "PASS",
+    "normalized_delivery_CI": "PENDING_SEPARATE_SHIPPING_RECEIPT"
+  },
+  "actual_execution_source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+  "actual_execution_source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+  "actual_test_results": {
+    "failed": 0,
+    "passed": 61,
+    "prior_attempt": {
+      "benchmark_executed": false,
+      "failed": 1,
+      "failure": "test_fresh_prefix_reads_source_when_B_can_read_stale_cache",
+      "passed": 60,
+      "pilot_executed": false
+    },
+    "repeat_counts_added": false,
+    "skipped": 0,
+    "source": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "stdout_reported_seconds": 4.29,
+    "unique_local_cases": 61
+  },
+  "audit_execution": {
+    "child_cpu_s": 0.45617599999999997,
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/scratch/45780e6e06f6/rec_bianchi/research/rec_r3r_followup_costs_20261020/receipts/c9_evidence_readback.py"
+    ],
+    "cwd": "/workspace/scratch/45780e6e06f6/rec_bianchi",
+    "exit_code": 0,
+    "schema": "rec.r3r.c9-readback-execution.v1",
+    "scope": "Independent saved-evidence audit, no solver or benchmark rerun",
+    "script_sha256": "64b4ef2fac10e6ea9c039813c6120b0d2f92ac963d909dd22af23b93426ffa86",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "be10f3e20caae6730ad51fe9d28753c010564713fd6ef1c46f0fc46f4174b3e6",
+    "wall_s": 0.4521387379936641
+  },
+  "benchmark_environment": {
+    "active_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-n6v0lhrw",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "dont_write_bytecode": true,
+    "fresh_pycache_prefix": "/tmp/rec-r3r-benchmark-pycache-n6v0lhrw",
+    "machine": "x86_64",
+    "np_geterr": {
+      "divide": "warn",
+      "invalid": "warn",
+      "over": "warn",
+      "under": "ignore"
+    },
+    "numpy_version": "2.3.5",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": {
+      "bytes": 30894944,
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "rlimit_as": [
+      2147483648,
+      2147483648
+    ],
+    "rlimit_cpu": [
+      48,
+      49
+    ],
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "created_utc": "2026-10-20T18:02:30.514584+00:00",
+  "equivalence_contract": {
+    "excluded": [
+      "warning stack locations and emission timing",
+      "asynchronous mutation",
+      "impure scalar redshift side effects",
+      "allocation-failure timing",
+      "identical resource-cap outcomes despite differing work"
+    ],
+    "first_error_class_message_preserved_in_scope": true,
+    "guard_mutation_supported": true,
+    "ordered_failed_block_replay": true,
+    "ordinary_binary64_arrays": true,
+    "original_scalar_math_expm1": true,
+    "pure_redshift": true,
+    "separately_rounded_ufunc_graph": true,
+    "stable_between_synchronous_guards": true
+  },
+  "failed_fixture_attempt_source": "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad",
+  "final_claim_gates": {
+    "Implementation correctness": "PASS_SCOPED zero open P1/P2 in inspected code and local actual evidence",
+    "Mathematical correctness": "PASS_SCOPED conditional independent-lane transformation; prior derivation complete_reused",
+    "Measured acceleration": "PASS_SAVED_STREAM_ONLY; production speedup NOT_MEASURED",
+    "Memory and resource behavior": "PASS_SCOPED observed limits and bounded NumPy payload; exact unsampled tree peak not established",
+    "Numerical equivalence": "PASS_SCOPED actual 25000-lane bitwise trace, adversarial cases and identical 32-step outputs; not universal platform proof",
+    "Physical validity": "UNCHANGED_NOT_ESTABLISHED; U5 HOLD; REI false; global matched-grid convergence HOLD",
+    "Production readiness": "HOLD; scientific admission and final shipping gates remain separate"
+  },
+  "frozen_source_identity_count": 100,
+  "independence": {
+    "authored_implementation": false,
+    "authored_plots": false,
+    "authored_regression_tests": false,
+    "authored_this_readback_and_audit": true
+  },
+  "independent_readback": {
+    "archived_raw_logs_verified": 17,
+    "audited_source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "audited_source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+    "benchmark": {
+      "differing_binary64_lanes": 0,
+      "exact_zero_lanes": 4,
+      "fresh_process_rss_bytes": {
+        "legacy": 88875008,
+        "r3r_numpy": 88887296
+      },
+      "lane_count": 25000,
+      "lane_sha256": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c",
+      "max_ratio": 1.5314944635351782e-05,
+      "max_ratio_hex": "0x1.00f12fb48f856p-16",
+      "median_paired_ratios": {
+        "cpu": 1.3641298365714964,
+        "wall": 1.3638913471290828
+      },
+      "medians": {
+        "legacy": {
+          "median_cpu_s": 0.1093080129999997,
+          "median_wall_s": 0.10932107699045446,
+          "trials": 5
+        },
+        "r3r_numpy": {
+          "median_cpu_s": 0.08013021200000026,
+          "median_wall_s": 0.08015380200231448,
+          "trials": 5
+        }
+      },
+      "ordered_tag_j_bin_sha256": "32982a349440111d3965644c97639f807a813f9ba64f4e667e837a9af400efce",
+      "paired_ratios": [
+        {
+          "legacy_over_r3r_cpu": 1.274104226345035,
+          "legacy_over_r3r_wall": 1.2736383914460587,
+          "order": [
+            "legacy",
+            "r3r_numpy"
+          ],
+          "round": 0
+        },
+        {
+          "legacy_over_r3r_cpu": 1.3127040182163516,
+          "legacy_over_r3r_wall": 1.312554965370207,
+          "order": [
+            "r3r_numpy",
+            "legacy"
+          ],
+          "round": 1
+        },
+        {
+          "legacy_over_r3r_cpu": 1.3641298365714964,
+          "legacy_over_r3r_wall": 1.3638913471290828,
+          "order": [
+            "legacy",
+            "r3r_numpy"
+          ],
+          "round": 2
+        },
+        {
+          "legacy_over_r3r_cpu": 1.408808284077276,
+          "legacy_over_r3r_wall": 1.4085111118747682,
+          "order": [
+            "r3r_numpy",
+            "legacy"
+          ],
+          "round": 3
+        },
+        {
+          "legacy_over_r3r_cpu": 1.4095473211425844,
+          "legacy_over_r3r_wall": 1.4093631363799328,
+          "order": [
+            "legacy",
+            "r3r_numpy"
+          ],
+          "round": 4
+        }
+      ],
+      "raw_counts": {
+        "A": 12440,
+        "EVENT": 1,
+        "HE": 72893,
+        "L": 120,
+        "NODE": 1,
+        "STEP": 40,
+        "V": 12440
+      },
+      "status": "PASS_READBACK",
+      "warmup_trials_excluded": 2
+    },
+    "created_utc": "2026-10-20T17:56:54.129325+00:00",
+    "formal_attempts": {
+      "1": {
+        "cpu_s": 5.334566000000001,
+        "exit_code": 2,
+        "failures": [
+          "test_fresh_prefix_reads_source_when_B_can_read_stale_cache"
+        ],
+        "junit": {
+          "errors": 0,
+          "failures": 1,
+          "skipped": 0,
+          "tests": 61
+        },
+        "source_commit": "65ec195ec32cfcc4e918d1dd86b711fdeb5709ad",
+        "status": "FAILED",
+        "validation_sha256": "51916f7bebec179d0618cf35d9d07cbab49cf7ed2af71a9d6d6c48c40ca4eb4f",
+        "verified_raw_files": 5,
+        "wall_s": 5.2222272670042
+      },
+      "2": {
+        "cpu_s": 21.365609000000003,
+        "exit_code": 0,
+        "failures": [],
+        "junit": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 61
+        },
+        "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+        "status": "COMPLETED_SCOPED",
+        "validation_sha256": "43291dac83ca57412f52049abbd6156ef27ca7e23551adf8adefd65ae3dc078f",
+        "verified_raw_files": 64,
+        "wall_s": 21.497515038005076
+      }
+    },
+    "method": "independent standard-library byte reads and arithmetic; zero solver imports/runs",
+    "pilot": {
+      "backend": "numpy",
+      "extra_accepted": 32,
+      "full_evaluations": 128,
+      "same_output_npz_payload_fields": 10,
+      "same_output_raw_files": 6,
+      "scientific_status_preserved": "SMOKE_ONLY",
+      "source_files_verified_against_executed_Git": 104,
+      "status": "PASS_READBACK",
+      "supervision_cpu_s": 3.8579509999999995,
+      "supervision_wall_s": 3.9148534609994385,
+      "worker_entry_limits": {
+        "address_space": [
+          2147483648,
+          2147483648
+        ],
+        "cpu": [
+          41,
+          42
+        ],
+        "dont_write_bytecode": true,
+        "prefix_empty_at_entry": true,
+        "pycache_prefix": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/formal_validation_002/pilot/pycache-worker"
+      }
+    },
+    "plots": {
+      "files_verified": 12,
+      "generation_receipt_sha256": "1aa4954e06763cd0bbfa02204b3ec954a8ecb395d275c7a9da22ff909020ac80",
+      "independent_human_like_visual_inspection": "separately documented in C9 review",
+      "original_visual_review_field": "NOT_RUN",
+      "status": "PASS_HASH_AND_DATA_READBACK"
+    },
+    "resources": {
+      "scope": "readback auditor only; no solver, test suite or benchmark rerun",
+      "self_cpu_s": 0.209132427,
+      "self_peak_rss_bytes": 18448384,
+      "wall_s": 0.3931629940052517
+    },
+    "schema": "rec.r3r.c9-evidence-readback.v1",
+    "script_sha256": "64b4ef2fac10e6ea9c039813c6120b0d2f92ac963d909dd22af23b93426ffa86",
+    "status": "PASS_INDEPENDENT_EVIDENCE_READBACK",
+    "text_normalization": [
+      {
+        "exact_EOF_only_transform": true,
+        "path": ".github/workflows/verify-r3r-stream-audit.yml"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/EQUATION_TO_CODE.md"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/REPORT_KO.md"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_AUDIT.md"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_CODE_AUDIT.json"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/PHYS_MATH_CODE_AUDIT.md"
+      },
+      {
+        "AST_with_locations_identical": true,
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/code_audit_binding_probe.py"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/context_intake.json"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/literature_support.json"
+      },
+      {
+        "exact_EOF_only_transform": true,
+        "path": "research/rec_r3r_followup_costs_20261020/receipts/intake/literature_support.md"
+      },
+      {
+        "AST_with_locations_identical": true,
+        "exact_EOF_only_transform": true,
+        "path": "scripts/run_r3r_h4_supervised.py"
+      },
+      {
+        "AST_with_locations_identical": true,
+        "exact_EOF_only_transform": true,
+        "path": "tests/test_r3r_supervised.py"
+      }
+    ],
+    "unique_local_files_hashed": 100
+  },
+  "inspection_limits": "Frozen closure files received byte-identity verification; no claim of a new mathematical derivation of all 100 files.",
+  "measurement_limitations": [
+    "five paired local trials with one excluded warmup pair",
+    "all round drift preserved",
+    "no platform-independent acceleration claim",
+    "not SIMD-only attribution",
+    "input setup excluded from timed audit",
+    "no paired whole-solver timing; earlier legacy pilot was profiled"
+  ],
+  "measurement_scope": "entire warm-cache CSV audit including open, parsing, allocations, callbacks, and verdict; no solver",
+  "memory_claim": {
+    "actual_block_rows": 512,
+    "conservative_numpy_working_payload_bytes": 30720,
+    "fresh_process_legacy_rss_bytes": 88875008,
+    "fresh_process_numpy_rss_bytes": 88887296,
+    "max_block_rows": 625,
+    "memory_reduction_claim": false,
+    "persistent_numpy_payload_bytes": 12800,
+    "rss_difference_bytes": 12288,
+    "rss_sample_count_per_backend": 1,
+    "scope": "fresh process lifetime including imports, input setup and hashing; not incremental allocation or exact tree peak"
+  },
+  "open_P1": 0,
+  "open_P2": 0,
+  "pilot_bound_source_files": 104,
+  "plots": {
+    "directly_viewed_PNGs": 4,
+    "observations": [
+      "all five timing pairs and zero-based cost axes readable",
+      "all 25000 residual lanes and four exact zeros retained; symlog core explicit",
+      "zero differences shown with padding explicitly not a tolerance",
+      "fresh-process RSS zero-based and labeled with correct setup scope"
+    ],
+    "original_producer_visual_field_preserved": "NOT_RUN",
+    "status": "PASS_DIRECT_VISUAL_INSPECTION_BY_INDEPENDENT_AUDITOR",
+    "verified_render_files": 12
+  },
+  "preservation_gate": {
+    "aborted_provider_call_without_ACK_is_backup": false,
+    "final_provider_ACKs": "OUTSIDE_THIS_C9_ACCEPTANCE",
+    "independent_remote_whole_readback": "OUTSIDE_THIS_C9_ACCEPTANCE",
+    "instruction": "Parent must link actual ACK/full readback or retain unresolved status; C9 is not a preservation receipt."
+  },
+  "receipts_sha256": {
+    "C9_CODE_AUDIT.md": "2014053e0af6973e0034f41f1a0de4f566a6b65102fa79c69b8a14449127be62",
+    "C9_EVIDENCE_READBACK.json": "bb3d1d49f68089028f5b2b47045cb6b6aa737a5f474e56a5a2af8bcbd85e96c4",
+    "PHYS_MATH_AUDIT.json": "8063728515e3e78b9f4943333402f37081ba985487d2e79856b08919c983d5f4",
+    "PHYS_MATH_CODE_AUDIT.json": "df8c6f1df6451a48fd5f40e25a00980910cd301e602f1491e3fd95127ee1234d",
+    "RAW_LOGS_MANIFEST.json": "e3cb2f575b4643fcb3c84ec6e53f561655e68644cdd236b9653080dde2d76e5a",
+    "SAME_OUTPUT_CHECK.json": "89643c9024d28a7ca7b0ba099f3be07ac982cd683eafdeccbacb05c853ff945b",
+    "TEXT_NORMALIZATION.json": "e72c4e636add98d48872165d4c9a01f63bb5953a43e3c2f297f91a19c4542a76",
+    "VISUAL_REVIEW.json": "5fb0c02636dadae4ce23a6d1fa1b99d400567d70dd7643521b160f1f57ab5f05",
+    "c9_evidence_readback.execution.json": "bae24b93f0330d4cad7180bc67900869bdfed7e64e17d21da2f9c68b5e4db654",
+    "c9_evidence_readback.py": "64b4ef2fac10e6ea9c039813c6120b0d2f92ac963d909dd22af23b93426ffa86",
+    "c9_evidence_readback.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "c9_evidence_readback.stdout": "be10f3e20caae6730ad51fe9d28753c010564713fd6ef1c46f0fc46f4174b3e6",
+    "ci/SOURCE1313_CI.json": "83b35a09b432b9b0631a32c558bb0e9a67a8669651761c4ea29d4ec90c0e9be2",
+    "ci/SOURCE1313_CI_LOGS.tar.gz": "256a0db6d3dc556314abf726a97c70eab78a16fdc2fea7de398c84e0ba31dcfd"
+  },
+  "recommended_next_execution": "No additional local science run required. If target-platform validation remains desired, explicitly allocate one source-bound 1..32-step smoke; do not enable full5210.",
+  "resolved_findings": [
+    {
+      "id": "step-bound",
+      "resolution": "public launcher narrowed to frozen smoke 1..32; no full/event route",
+      "severity": "P2"
+    },
+    {
+      "id": "stale-bytecode",
+      "resolution": "fresh create-only pycache prefixes before project imports; actual source-binding probes preserved",
+      "severity": "P2"
+    },
+    {
+      "id": "benchmark-import-envelope",
+      "resolution": "CLI limits and alarm installed before NumPy/project imports",
+      "severity": "P2"
+    },
+    {
+      "id": "formal-test-cache-context",
+      "resolution": "deliberately stale subprocess now inherits parent cache prefix; original assertions retained; failed first attempt preserved",
+      "severity": "fixture_failure"
+    },
+    {
+      "id": "EOF-whitespace",
+      "resolution": "exact terminal-newline-only transformation verified; Python ASTs including locations identical; delivery CI still separate",
+      "severity": "CI_hygiene"
+    }
+  ],
+  "resource_claim": {
+    "CPU_cap_s": 60,
+    "formal_cumulative_CPU_s": 21.365609000000003,
+    "formal_cumulative_wall_s": 21.497515038005076,
+    "full_or_event_mode": false,
+    "includes_prior_failed_formal_attempt": true,
+    "inherited_lower_limits_preserved": true,
+    "max_public_steps": 32,
+    "per_process_AS_bytes": 2147483648,
+    "separate_later_plot_and_C9_cost_not_in_formal_total": true,
+    "user_step_ceiling": 128,
+    "wall_accounting": "cumulative supervised execution intervals; intervening editing excluded",
+    "wall_cap_s": 180
+  },
+  "reused_evidence": [
+    {
+      "path": "PHYS_MATH_AUDIT.json",
+      "scope": "conditional lane arithmetic and ordered diagnostic proof",
+      "status": "complete_reused"
+    },
+    {
+      "path": "PHYS_MATH_CODE_AUDIT.json",
+      "scope": "source binding/resource review and previously resolved findings",
+      "status": "complete_reused"
+    }
+  ],
+  "review_base_commit": "46ebb765d2c5c8af6d53c5b59ade1a405d4551be",
+  "reviewed_source_files": {
+    ".github/workflows/verify-r3r-stream-audit.yml": {
+      "bytes": 1370,
+      "git_blob": "11b5820289c3bdd47a048403a46437383d2f7b0f",
+      "sha256": "14d73753c7e61aaad052720c15c919f668790f126b170e529fb74b2f50c95c3e"
+    },
+    "research/rec_r3q_h4_continuation_20261020/SOURCE_CLOSURE.json": {
+      "bytes": 13231,
+      "git_blob": "de6bc2566914d2082f17560cf42091b4b1c07063",
+      "sha256": "0332531f65a2851119f50806cdf7bc384b494b09759fcf5d497d6c1a7d032bcf"
+    },
+    "scripts/benchmark_r3r_stream_audit.py": {
+      "bytes": 24730,
+      "git_blob": "3e07742a1c0b9f7280d93ddcbac992ff4f7f7c51",
+      "sha256": "4b6f99e085aa016e0bbff3a67673ad3646b53bca793c1b6f7b9c9921547e3dd4"
+    },
+    "scripts/build_r3o_rust.py": {
+      "bytes": 24307,
+      "git_blob": "202737d5eb1255798ba86cad07932ca7108f8663",
+      "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5"
+    },
+    "scripts/plot_r3r_audit.py": {
+      "bytes": 15887,
+      "git_blob": "355f1b792887321a5cec81c9eb42575e25684186",
+      "sha256": "8ec4cb3b06a81e0396ecb4014de5aca5bbb9c7e05878200874d357d8a8c20657"
+    },
+    "scripts/r3r_stream_audit.py": {
+      "bytes": 15058,
+      "git_blob": "6b6f78b6130228139def030d91ad0a81c267841e",
+      "sha256": "10021e086b9f842dce21cf18a9b1207bdcdc127c56384715b181500db3b9aea8"
+    },
+    "scripts/run_r3r_h4_supervised.py": {
+      "bytes": 14743,
+      "git_blob": "27268076ac5b4f443c5d3b86359fc6ebefb42920",
+      "sha256": "fe8c946a8b0bdbab53d813c46ce22d188f6a0117b6872607d33032666a8fd85f"
+    },
+    "scripts/verify_r3q_h4_continuation.py": {
+      "bytes": 24091,
+      "git_blob": "062c86002d1eb97ded88688c42dc6f1f35253829",
+      "sha256": "30b415cbf1328c89ac96a864b7bd99b91c2f52fc59481f75cdafaaa70d42261a"
+    },
+    "tests/fixtures/r3r_actual32/MANIFEST.json": {
+      "bytes": 2887,
+      "git_blob": "fdde8d6da6f0614c3e9c613c59bf96657688373e",
+      "sha256": "114f7b45205c628339ec489872a5021d6cfa0c6819c75e6e19c7395e40998fd2"
+    },
+    "tests/fixtures/r3r_actual32/native_stream.csv.gz": {
+      "bytes": 306557,
+      "git_blob": "08dcf82de45c45773e485eface95ff029d918355",
+      "sha256": "d7e7b76480418e3983ec6083a0d3675763cf2077e233fabbe8ac186248f8c425"
+    },
+    "tests/fixtures/r3r_actual32/python_continuation.npz": {
+      "bytes": 197179,
+      "git_blob": "11727a80cea7f580097ba8a588748580ffd117b8",
+      "sha256": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216"
+    },
+    "tests/test_r3r_stream_audit.py": {
+      "bytes": 14982,
+      "git_blob": "b2ccbae61a800848280bccbc1bf2d96c46a312d2",
+      "sha256": "d5655eb97f32acb3baa19fbbfb217e3c9e731b4053a2487043a9e0a458afb9cf"
+    },
+    "tests/test_r3r_supervised.py": {
+      "bytes": 4031,
+      "git_blob": "363c0f49cf9d38fa3e846976a0e76a78052a3f89",
+      "sha256": "c3ec302ee7cbc2db49b189c0bbccfd600d35b446f4a05e91e20686805796f28d"
+    }
+  },
+  "reviewer": "independent context_intake agent",
+  "schema": "rec.r3r.c9-code-audit.v1",
+  "scope": "Independent code inspection and actual committed-source/raw-evidence audit; zero new solver, benchmark, or test-suite executions in C9",
+  "source_normalization": {
+    "Python_AST_including_locations_identical": true,
+    "actual_execution_source_unchanged": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+    "comparator_and_benchmark_bytes_unchanged": true,
+    "exact_EOF_only_transform_verified": true,
+    "historical_executed_launcher_sha256": "fe8c946a8b0bdbab53d813c46ce22d188f6a0117b6872607d33032666a8fd85f",
+    "normalized_launcher_sha256": "0973c179ccf4a0c5eec38b1005bf43f14c9dbd98852b7ef0cf56f55da43721ec",
+    "record_sha256": "e72c4e636add98d48872165d4c9a01f63bb5953a43e3c2f297f91a19c4542a76",
+    "transformations": 12
+  },
+  "verdict": "PASS_SCOPED"
+}

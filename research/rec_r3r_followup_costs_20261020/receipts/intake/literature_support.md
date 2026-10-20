@@ -73,4 +73,3 @@ with x=ln a and f=dot(x_e)/H. The observer optimization above changes none of th
 SciSpace was called once with the targeted HyRec question. It returned the original paper (unique_id 45gwrpvqjn, DOI 10.1103/PHYSREVD.83.043513) alongside related records. The original primary PDF, rather than SciSpace's summary, supports the numerical statements above. Exa performed two searches requesting five results each; ten returned slots were screened, then only targeted primary documents were read. Stable NumPy search results currently pointed to 2.5, so the retained documentation citations deliberately use explicit 2.3 paths; this is not a claim about the runtime installed in the parent workspace.
 
 No external code was imported. The reusable change is the generic conditional-construction pattern and existing NumPy ownership semantics; no added scientific approximation or package is required by the proposed observer change.
-
