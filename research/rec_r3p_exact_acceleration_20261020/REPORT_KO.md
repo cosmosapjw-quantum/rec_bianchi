@@ -68,7 +68,15 @@ VigilODE의 pinned `ParallelExecution`에서 로컬 pool, indexed output 순서 
 
 ## 실제 U5 smoke와 게시 상태
 
-SMOKE_RESULT_PENDING_FINAL_UPDATE
+고정 source commit `e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d`에서 실제 검토된 U5 checkpoint의 16-step 실행을 완료했다. 종료 코드 0, 첫 실패 없음, 입력·소스 identity는 UNCHANGED였다. 원본 verification은 `SMOKE_ONLY`, 적분은 `HOLD_CAP_BEFORE_RT_BOUNDARY`, same-h 항목은 `PASS_PENDING_REVIEW`라는 원래 명칭을 유지한다. 독립 C9 후속 검토는 실제 소스 23개, frozen 파일 109개, 영수증 해시 연결을 확인하고 검토 범위의 남은 P1/P2 없이 닫혔다.
+
+5,008 causal links, 10,000 spectral fields, 기존 prefix 5,254,162개를 검사했다. common-input oracle은 원래 두 sampled evaluation에서 PASS이며 이를 16개 전체 oracle 재검증으로 확대하지 않는다. average 최대 tolerance ratio는 2.1722981554269436e-5, virtual은 5.653137029811636e-6, lyman은 4.376735287656637e-6였다. original average failures는 빈 목록이다. 이 새 실행은 원본 C와의 tolerance gate 검증이며 saved-stream의 bitwise 비교와 구분한다.
+
+전체 supervisor 측정은 CPU 8.826414초, wall 8.790703708초다. 입력 검사, C컴파일, 적분, 감사, worker closeout과 마지막 hash 검사를 포함한다. 마지막 supervisor receipt write만 2 CPU초/3 wall초 reserve로 남겼으며 실제 측정값으로 더하지 않았다. 메모리는 process별 2GiB AS 제한과 50ms sampled worker/descendant RSS이며 부모까지 합친 정확한 aggregate memory/peak가 아니다.
+
+같은 코드의 GitHub Actions 전용 CI는 push와 PR에서 각각 Python 214개 모두 PASS였다. Rust18개 release 검사 및 C ABI는 실제 offline build에 포함됐다. 일반 회귀 CI는 각각 968 PASS, 102 SKIP, 72 subtest PASS다. 일반 CI에서 build receipt가 없어 건너뛴 R3P Rust binding 항목은 전용 CI가 실제 빌드와 함께 검증했다. 중복 실행을 새로운 고유 case 수로 합산하지 않는다.
+
+[새 smoke 영수증](receipts/smoke16/verification.json), [전체 자원 감시](receipts/smoke16/supervision.json), [독립 최종 검토](receipts/C9_FINAL_REVIEW.md), [실제 CI 상태](receipts/STAGE2_CI.json), [원시 결과 복구 manifest](receipts/SMOKE16_RAW_ARCHIVE.json)에 원래 상태와 해시를 보존했다. 마지막 백업·readback·publication 상태는 BACKUP_ACKS.json과 DAG.json에서 확인한다.
 
 ## 보존한 과학적 상태
 

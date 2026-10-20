@@ -1,6 +1,6 @@
 {
   "schema": "rec.r3p.evidence.v1",
-  "stage": "IMPLEMENTATION_AND_MATCHED_MEASUREMENTS_COMPLETE_READY_FOR_SMOKE",
+  "stage": "IMPLEMENTATION_MEASUREMENTS_AND_ACTUAL_SMOKE_COMPLETE_FINAL_BACKUP_IN_PROGRESS",
   "base_head": "368d87ad5de90dde74226ed109c3ba29d9607c84",
   "preserve": {
     "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
@@ -36,7 +36,7 @@
       "task": "Rust implementation, SIMD compiler evidence and binding tests"
     }
   ],
-  "new_physical_steps": 0,
+  "new_physical_steps": 16,
   "pilot_checks": {
     "cached": {
       "verdict": true,
@@ -53,16 +53,49 @@
   },
   "source_contract_tightening": "Python-prefix NaN/Inf explicitly rejected; Rust requires exactly four ASCII CSV fields; no claim of identical incidental exceptions for invalid grammar",
   "audit_comparison": "receipts/AUDIT_COMPARISON.json",
-  "independent_review": "receipts/C9_STAGE1_REVIEW.md; two documentation findings clarified; enclosing whole-launch resource scope pending",
+  "independent_review": {
+    "final": "receipts/C9_FINAL_REVIEW.md",
+    "machine_receipt": "receipts/C9_FINAL.json",
+    "initial_history": "receipts/C9_STAGE1_REVIEW.md",
+    "reviewer_native_agent": "01a1572c-24f0-76b8-8798-e73ec83e60ab",
+    "status": "CLOSED_NO_REMAINING_P1_P2_IN_REVIEWED_SCOPE"
+  },
   "tests": {
     "scalar_cases": 58,
     "binding_cases": 82,
     "runner_cases": 72,
     "resource_limit_regressions": 2,
     "rust_unit_cases": 18,
-    "C_ABI": "PASS"
+    "C_ABI": "PASS",
+    "R3P_CI": {
+      "passed": 214,
+      "skipped": 0
+    },
+    "general_CI": {
+      "passed": 968,
+      "skipped": 102,
+      "subtests_passed": 72
+    }
   },
   "ratio_benchmark": "receipts/RATIO_BENCHMARK.json",
-  "same_h_smoke": "NOT_RUN_AT_STAGE2_SOURCE_PUBLICATION",
-  "resource_guard_fix": "Outer public supervisor covers preflight/worker/closeout with60CPU/180wall/2GiB and2CPU/3wall reserve"
+  "same_h_smoke": {
+    "status": "COMPLETE_SMOKE_ONLY",
+    "original_status": "SMOKE_ONLY",
+    "original_same_h_status": "PASS_PENDING_REVIEW",
+    "python_status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+    "code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+    "same_h_links": 5008,
+    "spectral_fields": 10000,
+    "accepted_steps": 16,
+    "original_common_input_samples": 2,
+    "whole_supervision_cpu_s": 8.826414,
+    "whole_supervision_wall_s": 8.790703708000365,
+    "receipt": "receipts/smoke16/verification.json",
+    "raw_manifest": "receipts/SMOKE16_RAW_ARCHIVE.json"
+  },
+  "resource_guard_fix": "Outer public supervisor covers preflight/worker/closeout with60CPU/180wall/2GiB and2CPU/3wall reserve",
+  "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+  "new_full5210_steps": 0,
+  "github_ci": "receipts/STAGE2_CI.json",
+  "agent_scope_note": "Native agents actually executed; independent final reviewer used read-only source/hash/receipt checks, no new candidate test run."
 }

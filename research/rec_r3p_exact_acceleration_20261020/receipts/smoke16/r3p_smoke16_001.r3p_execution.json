@@ -1,0 +1,192 @@
+{
+  "REI_activation": false,
+  "allocation_id": "R3P_U5_SMOKE16_20261020_001",
+  "audit": {
+    "backend": "rust",
+    "block_columns": 32,
+    "cached_causal_geometry": true,
+    "guard_timing": "RUST_BOUNDED_CHUNKS_PLUS_4096_LINES_SEPARATE_FROM_SCALAR",
+    "input_contract": {
+      "abort_priority": "RESOURCE_TRANSPORT_SIZE_AND_GUARD_ABORTS_MAY_PRECEDE_UNDELIVERED_ROW_ERRORS",
+      "earliest_logical_failure": "WITHIN_THE_BOUNDED_BLOCK_DELIVERED_TO_RUST_ONLY",
+      "grammar": "EXACTLY_FOUR_ASCII_COMMA_SEPARATED_FIELDS_PV_OR_PL",
+      "indices": "CANONICAL_ASCII_UNSIGNED_DECIMAL",
+      "legacy_trailing_fields_and_incidental_exception_types": "NOT_PRESERVED",
+      "stricter_than_legacy": true,
+      "temperature_and_energy": "FINITE_AND_STRICTLY_POSITIVE",
+      "tolerance": "FINITE"
+    },
+    "python_prefix_nonfinite": "REJECT_C_PREFIX_NONFINITE",
+    "rust_threads": 1
+  },
+  "audit_statistics": {
+    "prefix": {
+      "attempted_records": 5254162,
+      "block_columns": 32,
+      "calls": 523,
+      "guard_checks": 2329,
+      "max_array_scratch_bytes": 163536,
+      "max_text_bytes": 356988,
+      "threads": 1,
+      "validated_columns": 16733,
+      "validated_records": 5254162
+    },
+    "resource_limits": [
+      {
+        "applied": [
+          2147483648,
+          2147483648
+        ],
+        "inherited": [
+          2147483648,
+          2147483648
+        ],
+        "requested": [
+          2147483648,
+          2147483648
+        ],
+        "resource": "AS"
+      },
+      {
+        "applied": [
+          58,
+          59
+        ],
+        "inherited": [
+          58,
+          59
+        ],
+        "requested": [
+          60,
+          60
+        ],
+        "resource": "CPU"
+      }
+    ]
+  },
+  "build": {
+    "library": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/target/release/librec_stream_audit.so",
+    "library_sha256": "7e6f4bde4497d7771d0f45167d4c7a33a000949d248cab33bbffa126564aaec8",
+    "receipt": "/workspace/scratch/afe554957b2e/rec_runs/r3p_build_001/build.json",
+    "receipt_sha256": "d53d84663162989f9c6f63731754a253effe8d212bbea84aba222b134c266602",
+    "vendor_sha256": "911f4fedc55891656e638b6b9131a57f081a1c7980fcdbb13f3b3e9263c51fc0"
+  },
+  "closeout_errors": [],
+  "dlna": 4.245e-05,
+  "execution_status": "returned",
+  "first_failure": null,
+  "full_run_admission": "UNAVAILABLE_SMOKE_PILOT_ONLY",
+  "historical_status": {
+    "allocation": "CLOSED_HOLD_NOT_RESET",
+    "h2_U5": "HOLD_8_FAIL",
+    "h_U5": "HOLD_9_FAIL"
+  },
+  "history_container": "stored",
+  "identity_status": "UNCHANGED",
+  "inputs_before": {
+    "checkpoint": {
+      "path": "/workspace/scratch/afe554957b2e/rec_recovery/u5/python_u5_thermal.npz",
+      "sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b"
+    },
+    "source_zip": {
+      "path": "/workspace/scratch/afe554957b2e/rec_work/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    }
+  },
+  "limits": {
+    "address_bytes": 2147483648,
+    "cpu_affinity_count": 1,
+    "cpu_s": 60,
+    "max_steps": 128,
+    "wall_s": 180
+  },
+  "limits_scope": "INNER_FROZEN_VERIFIER_REQUESTED_LIMITS_CLAMPED_TO_INHERITED_LIMITS",
+  "profile": {
+    "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3l_profile.json",
+    "sha256": "28aada196ab9736a7566a5df8dcaefdd0482d51eb94b3603929fdf7bb920528b"
+  },
+  "requested_steps": 16,
+  "schema": "rec.r3p.u6-audited-run.v1",
+  "scientific_status": "READ_ORIGINAL_VERIFICATION_RECEIPT",
+  "source": {
+    "additional_source_sha256": {
+      "research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V6.json": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+      "rust/REC_STREAM_AUDIT_VENDOR.json": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368",
+      "rust/rec-stream-audit/Cargo.lock": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+      "rust/rec-stream-audit/Cargo.toml": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16",
+      "rust/rec-stream-audit/include/rec_stream_audit.h": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5",
+      "rust/rec-stream-audit/src/lib.rs": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743",
+      "rust/rec-stream-audit/src/tests.rs": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f",
+      "rust/rec-stream-audit/tests/abi_smoke.c": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83",
+      "rust/vendor/rec-stream-audit-registry-20261020.tar.gz": "911f4fedc55891656e638b6b9131a57f081a1c7980fcdbb13f3b3e9263c51fc0",
+      "scripts/build_r3o_rust.py": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+      "scripts/build_r3p_rust.py": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb",
+      "scripts/r3l_u6_cost.py": "5be50dd40e895a9b88cd61a3c84fff6daa650e90796021c6aa209d352742fb1d",
+      "scripts/r3p_rust_audit.py": "9fd0e46ca57ebe2e3bd865479f11004bf73bad7f6ff05637ab34fa53f490dfec",
+      "scripts/r3p_stream_audit.py": "d580410a65a61e867078ccd6c17a8bd1a8d0b0afc535c000f47e78e6c5c46f53",
+      "scripts/run_r3j_u6_owned.py": "f99f6d6e55d8844da8404668c386e68e5c492d9fa8445e8feb05255d793773fb",
+      "scripts/run_r3l_u6_profiled.py": "e8f6c08425cdd4d61808b5c806910b28ffcfc969fc1d2f6e6d3473a6ff720b32",
+      "scripts/run_r3p_u6_audited.py": "4e0e2482b163c044b9b1b35a8831a7d57aa6440ad8fac98ec79d00889a6f1bb4",
+      "scripts/run_r3p_u6_supervised.py": "e22c11253f450b3b4b07cc9212d0ebafb1a2bc0d29844cac14de7f453ab437f9",
+      "src/full_bianchi_hyrec/trajectory/owned_flrw_history.py": "3e90e1bf3b9d8158197409b54ad429f3eecfe6643d5725cf5e0865e56cf8aab5",
+      "src/full_bianchi_hyrec/trajectory/primordial_2012_owned_u6.py": "f782fd899ec2e93355a54709b9442e6dd1c3d55f35e01f9f9ef85c5a655918ce",
+      "tests/trajectory/test_owned_flrw_history.py": "45d2e195aa6a66a872246c5794120d38ef6aec335eafa3b551d4d67c68ce1718",
+      "tests/trajectory/test_r3p_stream_audit.py": "ad4f07b18197fe6c5dbf4fee04a37ecab2c8df088b4ac349098591b2e93d0326",
+      "tests/trajectory/test_r3p_u6_audited.py": "d7d5dbc24f9eb1e57ebcfad2788fd315129d15eaba4818116d080bf7fe34d84d"
+    },
+    "commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+    "frozen_v6": {
+      "checkpoint_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+      "contract": "research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/CONTRACT.json",
+      "contract_sha256": "3dd7b019e48ad8ef426d507608333b70afab9c1e551fa540c5110e7eaddfca0a",
+      "manifest": "research/rec_r3i_time_refinement_20261016/h2_u6_rt_boundary_001/SOURCE_MANIFEST_V6.json",
+      "manifest_sha256": "f02f4e0b39dfafbb7656704cee59b8d95c976e9b55e840141d333be15b452585",
+      "source_files": 109
+    },
+    "rust_build_source_sha256": {
+      "rust/REC_STREAM_AUDIT_VENDOR.json": "ef6bd3aacbaa333f0f148683027626454b006f75ae5840cae6dfb796cda35368",
+      "rust/rec-stream-audit/Cargo.lock": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+      "rust/rec-stream-audit/Cargo.toml": "823425e22da7436bc835f07dcf3cf298e7994a9b800bf041368405488d00ee16",
+      "rust/rec-stream-audit/include/rec_stream_audit.h": "ed968004b79ef8a1793bc46b0dfe360bb7f3a3b96051688180a6aa54d9fbe6e5",
+      "rust/rec-stream-audit/src/lib.rs": "fddcdc1bb1282f26c1cf03be889966844c9827893d9b2be6adc9ba6e959d7743",
+      "rust/rec-stream-audit/src/tests.rs": "0623b373145b12db40b084b0867ca6c72702760feda2d113996475c06ccf7b7f",
+      "rust/rec-stream-audit/tests/abi_smoke.c": "7b36518dd3599ac9f73a6334e67f6fc66cea049e697c509c8068216af49c0c83",
+      "scripts/build_r3o_rust.py": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5",
+      "scripts/build_r3p_rust.py": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb"
+    },
+    "vendor": {
+      "cargo_lock_sha256": "7af2db0a742c71381057459b36e1ba711d907003012ab122ba5eb05a2c7fb052",
+      "path": "rust/vendor/rec-stream-audit-registry-20261020.tar.gz",
+      "sha256": "911f4fedc55891656e638b6b9131a57f081a1c7980fcdbb13f3b3e9263c51fc0"
+    }
+  },
+  "start": "ORIGINAL_FROZEN_H2_U5",
+  "supervisor_receipt": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001.r3p_supervision/supervision.json",
+  "verification": {
+    "first_failure": null,
+    "path": "/workspace/scratch/afe554957b2e/rec_runs/r3p_smoke16_001/verification.json",
+    "python_result": {
+      "full_evaluations": 16,
+      "rt_stop_iz": 58389,
+      "status": "HOLD_CAP_BEFORE_RT_BOUNDARY",
+      "steps": 16
+    },
+    "resources": {
+      "address_limit_bytes": 2147483648,
+      "affinity": [
+        0
+      ],
+      "blas_threads": 1,
+      "cpu_limit_s": 60,
+      "parent_cpu_s": 3.2309339999999995,
+      "peak_rss_bytes": 354856960,
+      "process_tree_cpu_s": 7.135006999999999,
+      "wall_limit_s": 180,
+      "wall_s": 7.282683645997167
+    },
+    "same_h_status": "PASS_PENDING_REVIEW",
+    "sha256": "b759d530776873ce7c0080a077e9d67280044d2a540a769a33995ec94170172b",
+    "status": "SMOKE_ONLY"
+  },
+  "whole_launch_budget_scope": "PUBLIC_CLI_REQUIRES_SEPARATE_SUPERVISOR_RECEIPT;_PROGRAMMATIC_EXECUTE_IS_WORKER_ONLY"
+}
