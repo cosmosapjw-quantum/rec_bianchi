@@ -1,0 +1,730 @@
+{
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "boot_id": "d1720622-df98-427a-ba04-7fcbd1727d50",
+  "cgroup": {
+    "ancestors": [
+      {
+        "cpu_max": [
+          "max",
+          100000
+        ],
+        "memory_max": "max",
+        "path": "/sys/fs/cgroup/user.slice/user-0.slice/session-1386.scope"
+      },
+      {
+        "cpu_max": [
+          "max",
+          100000
+        ],
+        "memory_max": "max",
+        "path": "/sys/fs/cgroup/user.slice/user-0.slice"
+      },
+      {
+        "cpu_max": [
+          "max",
+          100000
+        ],
+        "memory_max": "max",
+        "path": "/sys/fs/cgroup/user.slice"
+      },
+      {
+        "path": "/sys/fs/cgroup"
+      }
+    ],
+    "cpu_quota_cores": null,
+    "memory_remaining_bytes": null
+  },
+  "command_receipts": {
+    "boot_id": {
+      "argv": [
+        "cat",
+        "/proc/sys/kernel/random/boot_id"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0015145170036703348,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_boot_id.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.345920+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.344606+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_boot_id.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "d1720622-df98-427a-ba04-7fcbd1727d50\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_boot_id.stdout",
+      "stdout_sha256": "2e0a7172542b57ad13072d61d0159ef15c85112fabf3452c777028e5aceb8e41"
+    },
+    "cargo_path_version": {
+      "argv": [
+        "/root/.cargo/bin/cargo",
+        "--version"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.011889386019902304,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_cargo_path_version.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.402485+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.390835+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_cargo_path_version.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_cargo_path_version.stdout",
+      "stdout_sha256": "1f88eaf7fe1aaec83184752cf4c944cd22f00184136ff36a3e4c318cc60ef566"
+    },
+    "compiler_cc": {
+      "argv": [
+        "cc",
+        "--version"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0014456239878199995,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_cc.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.350904+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.349653+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_cc.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_cc.stdout",
+      "stdout_sha256": "3e8cc208c40f60832f67377aa1b03c3e7e858f20cd5d365464944700c0bd7ad1"
+    },
+    "compiler_gcc": {
+      "argv": [
+        "gcc",
+        "--version"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0016290310013573617,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gcc.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.347656+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.346225+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gcc.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gcc.stdout",
+      "stdout_sha256": "8497f84b2b8334c413d9c6166bd39d009ba55d2ff60a8f23e66dfa5819c2b048"
+    },
+    "compiler_gxx": {
+      "argv": [
+        "g++",
+        "--version"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0015610940172336996,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gxx.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.349329+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.347964+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gxx.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_compiler_gxx.stdout",
+      "stdout_sha256": "59d1cbef41d4ae78d5063d525b7aa13d18dc0493ea00537efc19b2ee398cb5a8"
+    },
+    "disk": {
+      "argv": [
+        "df",
+        "-B1",
+        "-P",
+        "/",
+        "/root"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0014818540075793862,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_disk.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.339662+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.338379+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_disk.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Filesystem         1-blocks        Used   Available Capacity Mounted on\n/dev/vda2      105557581824 60818866176 40319938560      61% /\n/dev/vda2      105557581824 60818866176 40319938560      61% /\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_disk.stdout",
+      "stdout_sha256": "287a71b1b07bc080483586b12a237a8bc56b3d917a553949cf5e2a912ed3edc8"
+    },
+    "gcc_sha": {
+      "argv": [
+        "sha256sum",
+        "/usr/bin/gcc"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.005253868002910167,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_sha.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.357718+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.352674+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_sha.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26  /usr/bin/gcc\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_sha.stdout",
+      "stdout_sha256": "db0fc73917e80882e866bb733900c53f7aa07ba2785dd9ed41a7ca5c7a362da5"
+    },
+    "gcc_target": {
+      "argv": [
+        "gcc",
+        "-dumpmachine"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0013375720009207726,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_target.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.352344+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.351203+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_target.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "x86_64-linux-gnu\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gcc_target.stdout",
+      "stdout_sha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989"
+    },
+    "gxx_sha": {
+      "argv": [
+        "sha256sum",
+        "/usr/bin/g++"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0052065250056330115,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gxx_sha.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.363036+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.358031+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gxx_sha.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769  /usr/bin/g++\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_gxx_sha.stdout",
+      "stdout_sha256": "270c5feedba8a3dd8e2d7c2c229cb2f6d75537200d1f33b1dc713a250727e97e"
+    },
+    "hostnamectl": {
+      "argv": [
+        "hostnamectl"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.009089831990422681,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_hostnamectl.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.310941+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.302103+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_hostnamectl.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": " Static hostname: s1a0e5abed09\n       Icon name: computer-vm\n         Chassis: vm \ud83d\uddb4\n      Machine ID: 37e474d2a37c4655bb50b87698f439e6\n         Boot ID: d1720622df98427aba047fcbd1727d50\n  Virtualization: kvm\nOperating System: Ubuntu 24.04.1 LTS\n          Kernel: Linux 6.8.0-124-generic\n    Architecture: x86-64\n Hardware Vendor: NAVERCloud\n  Hardware Model: c64-g3_HIGH_CPU\nFirmware Version: GEN3;HIGH_CPU\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_hostnamectl.stdout",
+      "stdout_sha256": "689d8583e311e1c802e7794390295f45d9e4d9ada93be935907b5cd47c29bc25"
+    },
+    "lscpu": {
+      "argv": [
+        "lscpu"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.020792712981346995,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_lscpu.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.333782+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.313262+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_lscpu.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  64\nOn-line CPU(s) list:                     0-63\nVendor ID:                               GenuineIntel\nBIOS Vendor ID:                          NAVERCloud\nModel name:                              Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz\nBIOS Model name:                         GEN3  CPU @ 2.0GHz\nBIOS CPU family:                         1\nCPU family:                              6\nModel:                                   85\nThread(s) per core:                      1\nCore(s) per socket:                      64\nSocket(s):                               1\nStepping:                                7\nBogoMIPS:                                4389.69\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat vnmi umip pku ospke avx512_vnni md_clear arch_capabilities\nVirtualization:                          VT-x\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               2 MiB (64 instances)\nL1i cache:                               2 MiB (64 instances)\nL2 cache:                                256 MiB (64 instances)\nL3 cache:                                16 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-63\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Mitigation; Aligned branch/return thunks\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Mitigation; TSX disabled\nVulnerability Vmscape:                   Not affected\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_lscpu.stdout",
+      "stdout_sha256": "4b21cf68627e1328a2339fd13552e14537aa723f9ef1ec7d645621dd6efd42f0"
+    },
+    "machine_id": {
+      "argv": [
+        "cat",
+        "/etc/machine-id"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0013164510019123554,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_machine_id.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.344256+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.343165+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_machine_id.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "37e474d2a37c4655bb50b87698f439e6\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_machine_id.stdout",
+      "stdout_sha256": "91a08931056914bee74c8871bab61d8bb7d99043d2e09e9cb5676d77e2578235"
+    },
+    "memory": {
+      "argv": [
+        "free",
+        "-b"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0024167879892047495,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_memory.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.338074+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.335857+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_memory.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "               total        used        free      shared  buff/cache   available\nMem:     135050526720  3645190144 81634557952     1331200 51063910400 131405336576\nSwap:              0           0           0\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_memory.stdout",
+      "stdout_sha256": "23b296e45de0625ef2b85ac37480c0199fbb399418dc92ba53461b7ae2f07e1f"
+    },
+    "mountinfo": {
+      "argv": [
+        "cat",
+        "/proc/self/mountinfo"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0015626020031049848,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_mountinfo.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.342844+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.341481+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_mountinfo.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "25 30 0:23 / /sys rw,nosuid,nodev,noexec,relatime shared:7 - sysfs sysfs rw\n26 30 0:24 / /proc rw,nosuid,nodev,noexec,relatime shared:12 - proc proc rw\n27 30 0:5 / /dev rw,nosuid,relatime shared:2 - devtmpfs udev rw,size=65905376k,nr_inodes=16476344,mode=755,inode64\n28 27 0:25 / /dev/pts rw,nosuid,noexec,relatime shared:3 - devpts devpts rw,gid=5,mode=620,ptmxmode=000\n29 30 0:26 / /run rw,nosuid,nodev,noexec,relatime shared:5 - tmpfs tmpfs rw,size=13188528k,mode=755,inode64\n30 1 253:2 / / rw,relatime shared:1 - ext4 /dev/vda2 rw\n31 25 0:6 / /sys/kernel/security rw,nosuid,nodev,noexec,relatime shared:8 - securityfs securityfs rw\n32 27 0:27 / /dev/shm rw,nosuid,nodev shared:4 - tmpfs tmpfs rw,inode64\n33 29 0:28 / /run/lock rw,nosuid,nodev,noexec,relatime shared:6 - tmpfs tmpfs rw,size=5120k,inode64\n34 25 0:29 / /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime shared:9 - cgroup2 cgroup2 rw,nsdelegate,memory_recursiveprot\n35 25 0:30 / /sys/fs/pstore rw,nosuid,nodev,noexec,relatime shared:10 - pstore pstore rw\n36 25 0:31 / /sys/fs/bpf rw,nosuid,nodev,noexec,relatime shared:11 - bpf bpf rw,mode=700\n37 26 0:32 / /proc/sys/fs/binfmt_misc rw,relatime shared:13 - autofs systemd-1 rw,fd=32,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=12304\n38 27 0:33 / /dev/hugepages rw,nosuid,nodev,relatime shared:14 - hugetlbfs hugetlbfs rw,pagesize=2M\n39 27 0:20 / /dev/mqueue rw,nosuid,nodev,noexec,relatime shared:15 - mqueue mqueue rw\n40 25 0:7 / /sys/kernel/debug rw,nosuid,nodev,noexec,relatime shared:16 - debugfs debugfs rw\n41 25 0:12 / /sys/kernel/tracing rw,nosuid,nodev,noexec,relatime shared:17 - tracefs tracefs rw\n42 25 0:34 / /sys/fs/fuse/connections rw,nosuid,nodev,noexec,relatime shared:18 - fusectl fusectl rw\n43 25 0:21 / /sys/kernel/config rw,nosuid,nodev,noexec,relatime shared:19 - configfs configfs rw\n45 37 0:35 / /proc/sys/fs/binfmt_misc rw,nosuid,nodev,noexec,relatime shared:29 - binfmt_misc binfmt_misc rw\n49 29 0:40 / /run/user/0 rw,nosuid,nodev,relatime shared:75 - tmpfs tmpfs rw,size=13188528k,nr_inodes=3297132,mode=700,inode64\n59 40 0:12 / /sys/kernel/debug/tracing rw,nosuid,nodev,noexec,relatime shared:122 - tracefs tracefs rw\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_mountinfo.stdout",
+      "stdout_sha256": "b52f21485eb19d21bc318a66e89956215464145e508bbdca5b0856ff6342c016"
+    },
+    "numa": {
+      "argv": [
+        "numactl",
+        "-H"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0015673020097892731,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_numa.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.335537+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.334180+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_numa.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "available: 1 nodes (0)\nnode 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63\nnode 0 size: 128794 MB\nnode 0 free: 77852 MB\nnode distances:\nnode   0 \n  0:  10 \n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_numa.stdout",
+      "stdout_sha256": "d2da1b04d6d0d51e93b36ccad5d8de90a865d82cfa13d6291ee3e201df423145"
+    },
+    "openblas_ldconfig": {
+      "argv": [
+        "bash",
+        "-lc",
+        "ldconfig -p | grep -Ei \"openblas|libblas\\.so\""
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.00801691401284188,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_openblas_ldconfig.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.371146+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.363340+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_openblas_ldconfig.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "\tlibopenblas.so.0 (libc6,x86-64) => /lib/x86_64-linux-gnu/libopenblas.so.0\n\tlibopenblas.so (libc6,x86-64) => /lib/x86_64-linux-gnu/libopenblas.so\n\tlibblas.so.3 (libc6,x86-64) => /lib/x86_64-linux-gnu/libblas.so.3\n\tlibblas.so (libc6,x86-64) => /lib/x86_64-linux-gnu/libblas.so\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_openblas_ldconfig.stdout",
+      "stdout_sha256": "723359f263c00e225446e4a76ca04268328ef63c5e421dac5a74b42022adbacb"
+    },
+    "python_system": {
+      "argv": [
+        "/usr/bin/python3",
+        "--version"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.001627003017347306,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_python_system.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.372861+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.371462+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_python_system.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Python 3.12.3\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_python_system.stdout",
+      "stdout_sha256": "5b3e43dc38ca01e3f5a7854ba50d4330864b0c1e0f646650b2c78cf072acc366"
+    },
+    "rust_toolchains": {
+      "argv": [
+        "/root/.cargo/bin/rustup",
+        "toolchain",
+        "list"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.008680013997945935,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rust_toolchains.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.411282+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.402842+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rust_toolchains.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "stable-x86_64-unknown-linux-gnu (active, default)\n1.94.1-x86_64-unknown-linux-gnu\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rust_toolchains.stdout",
+      "stdout_sha256": "3ea65fd3fc45a7925d2a09833a7ea430265e7456d7a0cc55ee1c6533d80ceda7"
+    },
+    "rustc_path_version": {
+      "argv": [
+        "/root/.cargo/bin/rustc",
+        "--version",
+        "--verbose"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0175241420220118,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rustc_path_version.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.390435+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.373193+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rustc_path_version.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_rustc_path_version.stdout",
+      "stdout_sha256": "b569b0c98ea3133c7252b4b8ea6b39b7b353813df0dd5f5c412c355691424112"
+    },
+    "self_cgroup": {
+      "argv": [
+        "cat",
+        "/proc/self/cgroup"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.001394555001752451,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_self_cgroup.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.341157+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.339965+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_self_cgroup.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "0::/user.slice/user-0.slice/session-1386.scope\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_self_cgroup.stdout",
+      "stdout_sha256": "b568980560fb2c5070fabd37cc42745d40d63e1588fc022493783299dfca196f"
+    },
+    "uname": {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "cwd": null,
+      "elapsed_wall_s": 0.0018277860071975738,
+      "exit_code": 0,
+      "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_uname.exit",
+      "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "finished_at_utc": "2026-10-20T23:10:59.312936+00:00",
+      "started_at_utc": "2026-10-20T23:10:59.311324+00:00",
+      "stderr": "",
+      "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_uname.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Linux s1a0e5abed09 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux\n",
+      "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/host_uname.stdout",
+      "stdout_sha256": "a867dd194085533ea7a51ac9c9a3f87a760595529206f7b4e37db6846780c202"
+    }
+  },
+  "compilers": {
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+    "cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "gcc_target": "x86_64-linux-gnu",
+    "gxx": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "rust_toolchain_status": "AVAILABLE_AT_EXPLICIT_CARGO_PATH_STABLE_AND_1.94.1",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "rustup_toolchains": "stable-x86_64-unknown-linux-gnu (active, default)\n1.94.1-x86_64-unknown-linux-gnu\n"
+  },
+  "cpu_assignment_candidate": {
+    "assignment_verdict": "FRESH_PINNED_ASSIGNMENT_AFTER_OCCUPANCY_REVIEW",
+    "cpu_ids": [
+      62,
+      63
+    ],
+    "psr_observed_busy_ids": []
+  },
+  "current_load_average": [
+    4.64990234375,
+    1.55810546875,
+    1.23779296875
+  ],
+  "disk": "Filesystem         1-blocks        Used   Available Capacity Mounted on\n/dev/vda2      105557581824 60818866176 40319938560      61% /\n/dev/vda2      105557581824 60818866176 40319938560      61% /\n",
+  "effective_cpu_slots": 64,
+  "effective_memory_available_bytes": 131385700352,
+  "host": "s1a0e5abed09",
+  "input_hashes": {
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/native_oracle_stdout.csv": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d",
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/python_continuation.npz": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216",
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/verification.json": "b7b9247a9bf5a98884a85a8248cc9b7b30135782b76d2a98c76acb34f7037427"
+  },
+  "logical_cpus": 64,
+  "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  64\nOn-line CPU(s) list:                     0-63\nVendor ID:                               GenuineIntel\nBIOS Vendor ID:                          NAVERCloud\nModel name:                              Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz\nBIOS Model name:                         GEN3  CPU @ 2.0GHz\nBIOS CPU family:                         1\nCPU family:                              6\nModel:                                   85\nThread(s) per core:                      1\nCore(s) per socket:                      64\nSocket(s):                               1\nStepping:                                7\nBogoMIPS:                                4389.69\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat vnmi umip pku ospke avx512_vnni md_clear arch_capabilities\nVirtualization:                          VT-x\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               2 MiB (64 instances)\nL1i cache:                               2 MiB (64 instances)\nL2 cache:                                256 MiB (64 instances)\nL3 cache:                                16 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-63\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Mitigation; Aligned branch/return thunks\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Mitigation; TSX disabled\nVulnerability Vmscape:                   Not affected\n",
+  "machine_id": "37e474d2a37c4655bb50b87698f439e6",
+  "memory_available_bytes": 131385700352,
+  "memory_total_bytes": 135050526720,
+  "numa": "available: 1 nodes (0)\nnode 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63\nnode 0 size: 128794 MB\nnode 0 free: 77852 MB\nnode distances:\nnode   0 \n  0:  10 \n",
+  "observed_at_kst": "2026-10-21T08:10:59+09:00",
+  "observed_at_utc": "2026-10-20T23:10:54.716683+00:00",
+  "os": " Static hostname: s1a0e5abed09\n       Icon name: computer-vm\n         Chassis: vm \ud83d\uddb4\n      Machine ID: 37e474d2a37c4655bb50b87698f439e6\n         Boot ID: d1720622df98427aba047fcbd1727d50\n  Virtualization: kvm\nOperating System: Ubuntu 24.04.1 LTS\n          Kernel: Linux 6.8.0-124-generic\n    Architecture: x86-64\n Hardware Vendor: NAVERCloud\n  Hardware Model: c64-g3_HIGH_CPU\nFirmware Version: GEN3;HIGH_CPU\n",
+  "plan_receipt": {
+    "argv": [
+      "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+      "-B",
+      "scripts/run_r3s_ncp_campaign.py",
+      "--plan",
+      "--expected-commit",
+      "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+      "--raw-dir",
+      "/root/REC_R3S_NCP_20261021/raw_r3r_25000"
+    ],
+    "cwd": "/root/REC_R3S_NCP_20261021/source",
+    "elapsed_wall_s": 0.21214761599549092,
+    "exit_code": 0,
+    "exit_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/campaign_plan.exit",
+    "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "finished_at_utc": "2026-10-20T23:10:54.928363+00:00",
+    "started_at_utc": "2026-10-20T23:10:54.716723+00:00",
+    "stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/campaign_plan.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/campaign_plan.stdout",
+    "stdout_sha256": "4e0d730f6102350e9a46998914d17ac23bee7a6bfe41d298536a2049b391932e"
+  },
+  "python": {
+    "campaign_runtime": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "executable": "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "numpy_config": "TypeError: show_config() got an unexpected keyword argument 'stream'",
+    "openblas_config": "OpenBLAS 0.3.26 NO_LAPACKE DYNAMIC_ARCH NO_AFFINITY SkylakeX MAX_THREADS=64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "9.1.1",
+      "scipy": "1.17.0"
+    },
+    "system": "Python 3.12.3"
+  },
+  "r3s_plan": {
+    "exit_code": 0,
+    "gate_errors": [],
+    "input_hashes": {
+      "/root/REC_R3S_NCP_20261021/raw_r3r_25000/native_oracle_stdout.csv": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d",
+      "/root/REC_R3S_NCP_20261021/raw_r3r_25000/python_continuation.npz": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216",
+      "/root/REC_R3S_NCP_20261021/raw_r3r_25000/verification.json": "b7b9247a9bf5a98884a85a8248cc9b7b30135782b76d2a98c76acb34f7037427"
+    },
+    "manifest_sha256": "fc41acec1e6cc819fb1bfab0284ab19e6a1119f99bdd573241c253fa0442f059",
+    "plan_stderr_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/campaign_plan.stderr",
+    "plan_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "plan_stdout_path": "/root/REC_R3S_NCP_20261021/intake/attempt_003/commands/campaign_plan.stdout",
+    "plan_stdout_sha256": "4e0d730f6102350e9a46998914d17ac23bee7a6bfe41d298536a2049b391932e",
+    "source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "status": "PLAN_ONLY_NO_EXECUTION"
+  },
+  "runtime_probes": {
+    "c_compile": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_compile.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      }
+    },
+    "c_run": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_run.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_run.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      },
+      "stdout": {
+        "bytes": 20,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/c_run.stdout",
+        "sha256": "e3a00efede676eb7d812a3d9a13ca046cf1877699cb9caa9b136b848fa7ca542",
+        "text": "NCP_C_PROBE_PASS 42\n"
+      }
+    },
+    "cxx_compile": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_compile.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      }
+    },
+    "cxx_run": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_run.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_run.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      },
+      "stdout": {
+        "bytes": 23,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/cxx_run.stdout",
+        "sha256": "82b42ae5f9281c44efbe51139a58bee50b524c69e2e373e4bdf8bc815340a170",
+        "text": "NCP_CXX_PROBE_PASS 42\\n"
+      }
+    },
+    "python": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/python.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 0,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/python.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "text": ""
+      },
+      "stdout": {
+        "bytes": 511,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/python.stdout",
+        "sha256": "35a2bcf37f91a6f95443e961ece245bd97bcc1feb6baa9dcb13664e86a903b3f",
+        "text": "{\"executable\": \"/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python\", \"numpy\": \"2.3.5\", \"numpy_file\": \"/root/HE29_REFERENCE_20261020T120000Z/venv/lib/python3.12/site-packages/numpy/__init__.py\", \"platform\": \"Linux-6.8.0-124-generic-x86_64-with-glibc2.39\", \"probe_result\": 4.0, \"pytest\": \"9.1.1\", \"python\": \"3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]\", \"scipy\": \"1.17.0\", \"status\": \"PYTHON_PASS\", \"threadpools\": {\"error\": \"ModuleNotFoundError:No module named 'threadpoolctl'\", \"status\": \"unavailable\"}}\n"
+      }
+    },
+    "rust": {
+      "exit": {
+        "bytes": 2,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/rust.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "text": "0\n"
+      },
+      "stderr": {
+        "bytes": 276,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/rust.stderr",
+        "sha256": "c6eadaa23a093e30e0931be4c971a67ea2aa4283e22edc9b06ebbb21b7778d4b",
+        "text": "   Compiling ncp_rust_probe v0.1.0 (/root/REC_R3S_NCP_20261021/intake/probes/rust_probe)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.19s\n     Running unittests src/lib.rs (target/debug/deps/ncp_rust_probe-509d72bd5e4b0957)\n   Doc-tests ncp_rust_probe\n"
+      },
+      "stdout": {
+        "bytes": 256,
+        "path": "/root/REC_R3S_NCP_20261021/intake/probes/rust.stdout",
+        "sha256": "ce41f76cb565c14f262454a4fbab8ed30b6a54e4b1126955126d291280efee10",
+        "text": "\nrunning 1 test\ntest tests::exact_probe ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n"
+      }
+    }
+  },
+  "schema": "rec.r3s.ncp-host-inventory.v1",
+  "source": {
+    "clean": true,
+    "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "execution_source_role": "R3S fixed source52f884; final metadata HEAD d36b245 is separate",
+    "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"
+  },
+  "status": "OBSERVED",
+  "uname": "Linux s1a0e5abed09 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux\n"
+}

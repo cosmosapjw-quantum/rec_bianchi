@@ -82,3 +82,11 @@ Drive의 기존 UNKNOWN_NO_ACK/NOT_ATTEMPTED/UNKNOWN_NO_ACK_TIMEOUT_25S 상태�
 ### Stage2 최신 보존 연결
 
 Reviewed delivery `265b82042e918c2554fbb9d890c8e7a7cce5ebfb` / tree `0478d4489837c9b3ac482be46e6871c8b7aad2cc`, archive `REC_R3S_STAGE2_REVIEWED_DELIVERY_265b8204_20261021.tar.gz`, 756,456 bytes, SHA256 `d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0`을 사용한다. Library `libfile_458442bc4688819186a1f5290a221181` / file `file_000000000b34820ba674ad43b65a12ae`, Dropbox `id:BSpOijBcT10AAAAAAD_aJA`의 전체 readback은 각각 PASS다. Git delta base96e8b88d와 code execution52f884b7를 구별한다. 그 뒤 보존 ACK를 기록한 최종 metadata commit과 archive는 PR113의 실제 최종 보존 댓글을 읽어 복구한다.
+
+## NCP 실행 addendum — 2026-10-21
+
+실제 NCP `s1a0e5abed09`(64 logical/physical CPU, total RAM 135,050,526,720 bytes)에서 allocation `REC_R3S_NCP_20261021_001`을 실행했다. 새 계산은 41.782113 CPU초 / 33.843081 wall초였고, 다섯 job 모두 종료했으며 각 job의 60 CPU초/180초/2 GiB 계약과 descendant cleanup을 확인했다. 두 trace는 scoped PASS, saved-stream producer는 25,000 lane·binary64 mismatch 0과 paired median CPU/wall 1.387459x/1.387844x를 냈다. 그러나 producer `PASS_SAVED_STREAM_AUDIT_ONLY`와 runner가 요구한 `PASS`의 enum 불일치로 campaign terminal은 `HOLD`로 유지한다. h4 legacy/NumPy는 각 16 accepted-step `SMOKE_ONLY`이며 same-h parity PASS이다. solver integration은 0이다. 원 U5 HOLD/예산, global convergence NOT_RUN, physical HOLD, production NOT_APPROVED는 불변이다. 상세는 `ncp_execution_001/NCP_RETURN_HANDOFF_KO.md` 및 원시 receipt를 본다.
+
+## Adjudication update — 2026-10-21
+
+Astra-tier independent review accepted the exact-enum adapter patch and the existing saved-stream receipt as `PASS_SCOPED`. The four-case targeted regression passed; no NCP job was rerun. The original `attempt_0001.TERMINAL.json` remains `HOLD` byte-for-byte; see additive `ncp_execution_001/receipts/CAMPAIGN_ADJUDICATION_001.json`. Costs remain 41.782113 CPU s / 33.843081 wall s within the original allocation. All scientific limits, including U5 HOLD, physical HOLD, convergence NOT_RUN, and production NOT_APPROVED, remain unchanged.

@@ -36,6 +36,57 @@
     "status": "PASS_ACTUAL_LOCAL_RECEIPT_HASH_LINKS"
   },
   "index_state": "REVIEWED_DELIVERY_TWO_PROVIDER_WHOLE_READBACK_PASS_DRIVE_UNRESOLVED",
+  "ncp_execution_001": {
+    "archive_bytes": 21866513,
+    "archive_path": "receipts/NCP_R3S_NCP_EXECUTION_001.tar.gz",
+    "archive_sha256": "cb51d9500b27b6fb503a3cd5390eb2d32b77142c7d0930de12753325bf19acce",
+    "manifest_path": "receipts/NCP_EXECUTION_001_ARCHIVE_MANIFEST.json",
+    "manifest_sha256": "58dbc537127e3fe026fb746954544e41a9b72c2d816c8df8e003d944eb076d35",
+    "previous_google_drive_unknown_no_ack": "PRESERVED_UNCHANGED_SEPARATE_TARGET",
+    "providers": {
+      "Dropbox": {
+        "object_id": "id:BSpOijBcT10AAAAAAD_atQ",
+        "path": "dbx:bianchi/rec_bianchi/20261016/REC_R3S_NCP_EXECUTION_001_20261021.tar.gz",
+        "readback_bytes": 21866513,
+        "readback_command": [
+          "rclone",
+          "cat",
+          "dbx:bianchi/rec_bianchi/20261016/REC_R3S_NCP_EXECUTION_001_20261021.tar.gz"
+        ],
+        "readback_exit_code": 0,
+        "readback_receipt": "receipts/backup_upload_001/dropbox_readback.json",
+        "readback_receipt_sha256": "0c1cd306aa8225ae9367a78d3e1ae0134eafc7083fa56ef7165ae43e91e12a5a",
+        "readback_sha256": "cb51d9500b27b6fb503a3cd5390eb2d32b77142c7d0930de12753325bf19acce",
+        "status": "PASS_CREATE_ONLY_UPLOAD_AND_WHOLE_OBJECT_READBACK",
+        "upload_exit_code": 0,
+        "upload_exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "upload_stderr_sha256": "e7ba04cfeade18340af165972e01c8b1705846aef0f3bad5ad4233e06b4f121c",
+        "upload_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "whole_object_sha_match": true
+      },
+      "GoogleDrive": {
+        "object_id": "1w4RYJ56kF3HbDag0n8-_XCuRyKXu52Uy",
+        "path": "gdrv:rec_bianchi_research_backups/REC_R3S_NCP_EXECUTION_001_20261021.tar.gz",
+        "readback_bytes": 21866513,
+        "readback_command": [
+          "rclone",
+          "cat",
+          "gdrv:rec_bianchi_research_backups/REC_R3S_NCP_EXECUTION_001_20261021.tar.gz"
+        ],
+        "readback_exit_code": 0,
+        "readback_receipt": "receipts/backup_upload_001/drive_readback.json",
+        "readback_receipt_sha256": "9d13d60d701b85e8c6e7607cbcf21cc3cdcf412dd33d855ac8800bcc79204660",
+        "readback_sha256": "cb51d9500b27b6fb503a3cd5390eb2d32b77142c7d0930de12753325bf19acce",
+        "status": "PASS_CREATE_ONLY_UPLOAD_AND_WHOLE_OBJECT_READBACK",
+        "upload_exit_code": 0,
+        "upload_exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "upload_stderr_sha256": "5bdf9a2f18614b5bf1dabdcf72727971d4a93de2f2403128be1939064c88b360",
+        "upload_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "whole_object_sha_match": true
+      }
+    },
+    "recorded_at_utc": "2026-10-20T23:31:38.362224+00:00"
+  },
   "policy": {
     "archival_pass_is_not_scientific_validation": true,
     "create_only": true,
@@ -652,6 +703,7 @@
   ],
   "summary": {
     "drive_current_followup_preservation": "UNRESOLVED_SEPARATE_FROM_OTHER_PROVIDERS",
+    "ncp_execution_001": "PASS_CREATE_ONLY_WHOLE_READBACK_DROPBOX_AND_NEW_GOOGLE_DRIVE_OBJECT; OLD_DRIVE_UNKNOWN_NO_ACK_UNCHANGED",
     "r3p_closeout_archives_all_three_providers": "PASS_complete_reused_FOR_3_DISTINCT_CLOSEOUT_ARCHIVES",
     "r3r_stage1_to_stage4_library_and_dropbox": "PASS_complete_reused_FOR_EACH_WHOLE_ARCHIVE",
     "r3s_final_delivery": "PASS_ACTUAL_ACK_AND_INDEPENDENT_WHOLE_READBACK_LIBRARY_DROPBOX; DRIVE_NOT_ATTEMPTED",

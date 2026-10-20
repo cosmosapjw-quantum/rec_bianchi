@@ -392,7 +392,8 @@ def verify_job(job):
         return {"verdict": "PASS_SCOPED", "existing_contracts_revalidated": 1, "new_integrations": 0}
     if job.id == "saved_stream_benchmark":
         receipt = json.loads((job.directory / "run/benchmark.json").read_text())
-        require(receipt["status"] == "PASS", "SAVED_AUDIT_BENCHMARK_NOT_PASSED")
+        require(receipt["status"] == "PASS_SAVED_STREAM_AUDIT_ONLY",
+                "SAVED_AUDIT_BENCHMARK_NOT_PASSED")
         return {"verdict": "PASS_SCOPED", "new_integrations": 0,
                 "scope": "WARM_CACHE_SAVED_STREAM_AUDIT_ONLY"}
     if job.id.startswith("h4_"):

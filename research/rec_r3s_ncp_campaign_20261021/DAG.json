@@ -47,8 +47,8 @@
     {
       "id": "C7",
       "name": "과학 검증",
-      "reused": "R3R scoped scientific equivalence remains complete_reused; no new platform result.",
-      "status": "blocked_external_NCP_validation"
+      "reused": "R3R scientific equivalence reused; current exact NCP trace, benchmark, and matched 16-step pilot evidence are scoped only.",
+      "status": "complete_scoped_platform_validation_after_adjudication"
     },
     {
       "id": "C8",
@@ -63,8 +63,8 @@
     {
       "id": "C10",
       "known_external_blockers": [
-        "NCP usage quota",
-        "Google Drive preservation unresolved"
+        "Google Drive preservation unresolved",
+        "NCP benchmark status adapter repair awaiting targeted regression and final independent closeout"
       ],
       "name": "판정·인계",
       "status": "complete_scoped_handoff_with_external_blockers"
@@ -228,20 +228,20 @@
   "runtime_nodes": [
     {
       "id": "NCP_ACCESS",
-      "message": "Desktop Commander reported monthly tool usage exhausted. Device remains paired; no retry/reconnect or execution attempted after that response.",
-      "status": "blocked_external_usage_quota"
+      "message": "Authenticated SSH to s1a0e5abed09 on 2026-10-20 UTC was observed; five-job campaign executed under allocation REC_R3S_NCP_20261021_001.",
+      "status": "complete_scoped"
     },
     {
       "depends_on": [
         "NCP_ACCESS"
       ],
       "id": "NCP_HARDWARE_IDENTITY",
-      "limit": "Connected device name is not proof of NCP identity or capacity.",
+      "limit": "Host identity s1a0e5abed09; 64 logical/physical CPUs, affinity 0-63, 128 GiB total; cgroup v2 CPU and RAM max. Effective capacity measured.",
       "requested_target": {
         "logical_cpus": 64,
         "ram_bytes_minimum": 128000000000
       },
-      "status": "unverified"
+      "status": "complete_scoped_verified"
     },
     {
       "depends_on": [
@@ -249,8 +249,8 @@
         "R9"
       ],
       "id": "NCP_PLATFORM_FIVE_JOBS",
-      "limit": "Only fixed allowlisted jobs; explicit new allocation and assigned CPUs required.",
-      "status": "not_run"
+      "limit": "Original terminal HOLD remains immutable; additive adjudication receipt closes the exact enum mismatch from raw producer PASS and passing regression. No rerun.",
+      "status": "complete_scoped_after_adjudication"
     },
     {
       "gate": "U4 -> U5 -> U6 -> low-z continuation, no full allocation inferred",
@@ -314,7 +314,7 @@
       "status": "published_two_complete_remote_readbacks"
     }
   ],
-  "updated_utc": "2026-10-20T22:06:19.161270+00:00",
+  "updated_utc": "2026-10-20T23:22:26.157176+00:00",
   "validated_source": {
     "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
     "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"

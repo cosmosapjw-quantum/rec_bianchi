@@ -138,6 +138,27 @@ def test_timed_frontier_is_an_exclusive_barrier(tmp_path):
     assert campaign.choose_ready([dependent], [], set(), 64) == []
 
 
+@pytest.mark.parametrize("status,accepted", [
+    ("PASS_SAVED_STREAM_AUDIT_ONLY", True),
+    ("PASS", False),
+    ("FAIL", False),
+    ("PASS_OTHER_SCOPE", False),
+])
+def test_saved_stream_verifier_accepts_only_producer_status(tmp_path, status, accepted):
+    run = tmp_path / "run"
+    run.mkdir()
+    (run / "benchmark.json").write_text(json.dumps({"status": status}))
+    job = campaign.Job("saved_stream_benchmark", (), tmp_path)
+    if accepted:
+        assert campaign.verify_job(job) == {
+            "verdict": "PASS_SCOPED", "new_integrations": 0,
+            "scope": "WARM_CACHE_SAVED_STREAM_AUDIT_ONLY",
+        }
+    else:
+        with pytest.raises(ValueError, match="SAVED_AUDIT_BENCHMARK_NOT_PASSED"):
+            campaign.verify_job(job)
+
+
 def test_wrong_source_sha_fails_before_source_reads(monkeypatch):
     monkeypatch.setattr(campaign, "git", lambda *args: b"b" * 40 + b"\n")
     with pytest.raises(ValueError, match="SOURCE_HEAD_MISMATCH"):

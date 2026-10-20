@@ -1,0 +1,104 @@
+{
+  "allocation_id": "REC_R3S_NCP_20261021_001",
+  "invariants": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_full5210_allocation": false,
+    "new_whole_production_speedup": "NOT_MEASURED",
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "reference_user_h": 4.245e-05
+  },
+  "schema": "rec.r3s.ncp-remaining-dag.v1",
+  "source_dag": "DAG.json",
+  "state": [
+    {
+      "id": "R3P_exact_audit",
+      "state": "COMPLETED_REUSED"
+    },
+    {
+      "id": "R3M_full5210",
+      "state": "COMPLETED_REUSED"
+    },
+    {
+      "id": "R3Q_h4_first_event_plus_two",
+      "state": "COMPLETED_REUSED"
+    },
+    {
+      "id": "R3O_h2_lowz",
+      "state": "COMPLETED_REUSED"
+    },
+    {
+      "id": "R3R_optimized_audit",
+      "state": "COMPLETED_REUSED"
+    },
+    {
+      "id": "trace_original",
+      "state": "EXECUTED_SCOPED_PASS"
+    },
+    {
+      "id": "trace_interleaved",
+      "state": "EXECUTED_SCOPED_PASS"
+    },
+    {
+      "id": "saved_stream_benchmark",
+      "reason": "producer raw receipt and exact consumer enum regression reviewed; original terminal HOLD immutable; no rerun",
+      "state": "EXECUTED_SCOPED_PASS_AFTER_ADJUDICATION"
+    },
+    {
+      "id": "h4_legacy16",
+      "state": "EXECUTED_SCOPED_PASS_SMOKE_ONLY"
+    },
+    {
+      "id": "h4_numpy16",
+      "state": "EXECUTED_SCOPED_PASS_SMOKE_ONLY"
+    },
+    {
+      "id": "h4_U4_after_first_event",
+      "state": "BLOCKED_BY_MISSING_IMPLEMENTATION"
+    },
+    {
+      "id": "h4_U5_thermal",
+      "state": "BLOCKED_BY_DEPENDENT_IMPLEMENTATION_AND_ORIGINAL_HOLD"
+    },
+    {
+      "id": "h4_U6_RT_boundary",
+      "state": "BLOCKED_BY_DEPENDENT_IMPLEMENTATION"
+    },
+    {
+      "id": "h4_lowz",
+      "state": "BLOCKED_BY_MISSING_COMPLETE_H4_HISTORY"
+    },
+    {
+      "id": "h2_full_history_assembly",
+      "state": "BLOCKED_BY_MISSING_ASSEMBLY_AND_STAGE_UNCERTAINTY_PROVENANCE"
+    },
+    {
+      "id": "h_nodewise_C_and_boundaries",
+      "state": "BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "id": "three_grid_uncertainty",
+      "state": "BLOCKED_BY_MISSING_INPUTS_AND_UNCERTAINTY"
+    },
+    {
+      "id": "global_h_h2_h4_convergence",
+      "state": "NOT_RUN_SCIENTIFIC_GATE_CLOSED"
+    },
+    {
+      "id": "original_U5_failure_resolution",
+      "state": "BLOCKED_HOLD_9_FAIL_AND_HOLD_8_FAIL"
+    },
+    {
+      "id": "R3P_rust_platform_build",
+      "state": "NOT_RUN_SEPARATE_90_CPU_CONTRACT_REQUIRED"
+    },
+    {
+      "id": "R3O_vigilode_platform_build",
+      "state": "NOT_RUN_SEPARATE_240_CPU_CONTRACT_REQUIRED"
+    }
+  ]
+}

@@ -70,25 +70,18 @@
   "branch": "research/rec-r3s-ncp-campaign-20261021",
   "claim_gate": "receipts/CLAIM_GATE.json",
   "current_NCP": {
-    "active_unknown_session_interrupted": false,
-    "actual_target_hardware_identity": "UNVERIFIED",
-    "maximum_ready_correctness_width": 2,
-    "new_campaign_allocation_started": false,
-    "next_frontier": [
-      "trace_original",
-      "trace_interleaved",
-      "saved_stream_benchmark",
-      "h4_legacy16",
-      "h4_numpy16"
-    ],
-    "requested_CPU": 64,
-    "requested_RAM_GB": 128,
-    "selected_five_job_allowance_if_explicitly_assigned": {
-      "cpu_s": 305,
-      "wall_s": 912
-    },
-    "status": "BLOCKED_EXTERNAL_TOOL_USAGE_QUOTA",
-    "timed_width": 1
+    "campaign_status": "HOLD",
+    "cgroup_cpu_quota_cores": null,
+    "cgroup_memory_remaining_bytes": null,
+    "effective_cpu_slots": 64,
+    "effective_memory_available_bytes": 131385700352,
+    "evidence": "ncp_execution_001",
+    "execution_allocation": "REC_R3S_NCP_20261021_001",
+    "hostname": "s1a0e5abed09",
+    "logical_cpus": 64,
+    "machine_id": "37e474d2a37c4655bb50b87698f439e6",
+    "memory_total_bytes": 135050526720,
+    "status": "VERIFIED_AND_EXECUTED_SCOPED"
   },
   "draft_PR": 113,
   "execution_sources": {
@@ -126,7 +119,29 @@
     "resolution": "Some original logical paths in CI and plot receipts are immutable archive members; verify member SHA and restore when needed."
   },
   "metadata_head": "Resolve actual enclosing Git commit and latest PR113 preservation receipt; never substitute it for an execution source",
-  "new_NCP_runs": 0,
+  "new_NCP_runs": {
+    "actual_cpu_s": 41.782112999999995,
+    "actual_wall_s": 33.84308078902541,
+    "adjudication_receipt": "ncp_execution_001/receipts/CAMPAIGN_ADJUDICATION_001.json",
+    "allocation_id": "REC_R3S_NCP_20261021_001",
+    "benchmark_median_paired_cpu_ratio": 1.3874592504453431,
+    "benchmark_median_paired_wall_ratio": 1.3878444844734634,
+    "claim_gate": "receipts/CLAIM_GATE.json; unchanged",
+    "differing_binary64_lanes": 0,
+    "job_ids": [
+      "h4_legacy16",
+      "h4_numpy16",
+      "saved_stream_benchmark",
+      "trace_interleaved",
+      "trace_original"
+    ],
+    "new_scientific_integrations": 0,
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "status": "PASS_SCOPED_AFTER_ADJUDICATION; ORIGINAL_TERMINAL_HOLD_PRESERVED"
+  },
   "new_scientific_integrations": 0,
   "node": "R3S",
   "raw_receipt_index": [
@@ -246,7 +261,7 @@
       "sha256": "8676ffff0e95ae064a1fb1d2f48f2e33610463da06b45b9bf6459556d24330db"
     }
   ],
-  "recorded_utc": "2026-10-20T21:55:56.980214+00:00",
+  "recorded_utc": "2026-10-20T23:20:13.005734+00:00",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "reviewed_delivery": {
     "archive_sha256": "d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0",

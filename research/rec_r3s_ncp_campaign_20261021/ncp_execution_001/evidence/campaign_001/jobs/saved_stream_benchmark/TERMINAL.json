@@ -1,0 +1,69 @@
+{
+  "command": [
+    "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "-B",
+    "-X",
+    "pycache_prefix=/root/REC_R3S_NCP_20261021/evidence/campaign_001/jobs/saved_stream_benchmark/pycache",
+    "/root/REC_R3S_NCP_20261021/source/scripts/benchmark_r3r_stream_audit.py",
+    "--source-sha",
+    "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "--native-stream",
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/native_oracle_stdout.csv",
+    "--python-result",
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/python_continuation.npz",
+    "--verification",
+    "/root/REC_R3S_NCP_20261021/raw_r3r_25000/verification.json",
+    "--rounds",
+    "5",
+    "--warmups",
+    "1",
+    "--output-dir",
+    "/root/REC_R3S_NCP_20261021/evidence/campaign_001/jobs/saved_stream_benchmark/run"
+  ],
+  "completed_wait4_ru_maxrss_bytes": 105881600,
+  "cpu_affinity": [
+    62
+  ],
+  "cpu_s": 11.356829000000001,
+  "failure": "ValueError: SAVED_AUDIT_BENCHMARK_NOT_PASSED",
+  "files_sha256": {
+    "GUARDIAN.json": "b5188988e89bec23b1e4848f781074d59dadb5a202525130076b61d0f928fd69",
+    "LIMITS.json": "5dd2fae838b4f5ca57cce9441eb3cf8f30dd252c919cd6209ac6d569bbfc33fa",
+    "run/benchmark.json": "5733f05d5f02ba16a89b378fb44b3f639e3b36e297a69b6d0d777d7ec622ee67",
+    "run/lane_ratios_numpy.f64native.bin": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c",
+    "run/lane_ratios_scalar.f64native.bin": "c174927905389fa933dc4bf5d3e89cfc32535e0721bbd58196101a1164c2bf3c",
+    "run/rss_legacy.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run/rss_legacy.stdout.json": "0fea9d9b2c1a813dccf5243526c41f9e4dac13fd960b877baabb7d91e30abb30",
+    "run/rss_r3r_numpy.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run/rss_r3r_numpy.stdout.json": "6bb199b498dda63d74624d706d44f4ebcd76b0cb17eb5e7e9eb86555b5e2a7a9",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "f30145dcac72dd420d3ef53954f5f1426547966cf39c6fcb97973a172c37b911"
+  },
+  "guardian": {
+    "all_owned_descendants_reaped": true,
+    "command_exit_code": 0,
+    "cpu_s": 11.333468000000002,
+    "failure": null,
+    "max_polled_command_tree_rss_bytes": 208642048,
+    "reaped_adopted_descendant_pids": [],
+    "scope": "GUARDIAN_AND_ALL_REAPED_DESCENDANTS; FINAL_RECEIPT_WRITE_RESERVED",
+    "status": "PASS",
+    "subreaper_enabled": true,
+    "wall_s": 11.246196410997072
+  },
+  "job": "saved_stream_benchmark",
+  "limits": {
+    "cpu_s": 60.0,
+    "per_process_as_bytes": 2147483648,
+    "wall_s": 180.0
+  },
+  "max_polled_process_tree_rss_bytes": 237326336,
+  "memory_scope": "50MS_POLLED_TREE_RSS_AND_WAIT4_PEAK; NOT_EXACT_AGGREGATE_PEAK",
+  "resource_scope": "GUARDIAN_AND_REAPED_DESCENDANTS_PLUS_PARENT_SETUP_AND_CLOSEOUT",
+  "returncode": 0,
+  "started_monotonic_s": 246717.430165649,
+  "status": "blocked",
+  "terminal_monotonic_s": 246728.846113718,
+  "verdict": null,
+  "wall_s": 11.415943421976408
+}

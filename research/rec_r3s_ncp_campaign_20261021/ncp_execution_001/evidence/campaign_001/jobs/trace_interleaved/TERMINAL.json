@@ -1,0 +1,66 @@
+{
+  "command": [
+    "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "-B",
+    "-X",
+    "pycache_prefix=/root/REC_R3S_NCP_20261021/evidence/campaign_001/jobs/trace_interleaved/pycache",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r3r_stream_audit.py::test_valid_arbitrary_per_tag_interleaving_and_ordered_lane_trace",
+    "--basetemp=/root/REC_R3S_NCP_20261021/evidence/campaign_001/jobs/trace_interleaved/pytest-temp",
+    "-o",
+    "tmp_path_retention_policy=all",
+    "--junitxml=/root/REC_R3S_NCP_20261021/evidence/campaign_001/jobs/trace_interleaved/tests.xml"
+  ],
+  "completed_wait4_ru_maxrss_bytes": 119046144,
+  "cpu_affinity": [
+    63
+  ],
+  "cpu_s": 7.559742,
+  "failure": null,
+  "files_sha256": {
+    "GUARDIAN.json": "c71797b6a854255b743c3371bc0b7f51b78e65eb79f0b35ef1bc16f68cebd35e",
+    "LIMITS.json": "2154511c65a77c21b6293db18663909e15f152ea85b6d1f3be84b30f232f1264",
+    "pytest-temp/r3r_actual320/native_stream.csv": "4595458f301ebb4a525f5881aa48c1e263ac3660d587fa261d201ee88ef91415",
+    "pytest-temp/test_valid_arbitrary_per_tag_i0/independent_lane_trace/trace.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pytest-temp/test_valid_arbitrary_per_tag_i0/independent_lane_trace/trace.stdout.json": "0670a185998419d1afe67f308a1ea05ea73a2c9ebc92a91eb9342b82c0dadeb5",
+    "pytest-temp/test_valid_arbitrary_per_tag_i0/native.csv": "9852f605f8c13dc300d77cafee774e2435d8b35c43159d978f8550aa2d19a6d8",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "2531872c137c7fe7b0148ca74df9860c25afb888341ea109a6fccd7a0a4ffd65",
+    "tests.xml": "08e90ce3941336e7367098924929ce4f9028197503ac533f18915acd84d1fd0e"
+  },
+  "guardian": {
+    "all_owned_descendants_reaped": true,
+    "command_exit_code": 0,
+    "cpu_s": 7.53177,
+    "failure": null,
+    "max_polled_command_tree_rss_bytes": 222756864,
+    "reaped_adopted_descendant_pids": [],
+    "scope": "GUARDIAN_AND_ALL_REAPED_DESCENDANTS; FINAL_RECEIPT_WRITE_RESERVED",
+    "status": "PASS",
+    "subreaper_enabled": true,
+    "wall_s": 7.668134995998116
+  },
+  "job": "trace_interleaved",
+  "limits": {
+    "cpu_s": 60.0,
+    "per_process_as_bytes": 2147483648,
+    "wall_s": 180.0
+  },
+  "max_polled_process_tree_rss_bytes": 251068416,
+  "memory_scope": "50MS_POLLED_TREE_RSS_AND_WAIT4_PEAK; NOT_EXACT_AGGREGATE_PEAK",
+  "resource_scope": "GUARDIAN_AND_REAPED_DESCENDANTS_PLUS_PARENT_SETUP_AND_CLOSEOUT",
+  "returncode": 0,
+  "started_monotonic_s": 246709.574279551,
+  "status": "complete",
+  "terminal_monotonic_s": 246717.425654768,
+  "verdict": {
+    "existing_contracts_revalidated": 1,
+    "new_integrations": 0,
+    "verdict": "PASS_SCOPED"
+  },
+  "wall_s": 7.851366492017405
+}
