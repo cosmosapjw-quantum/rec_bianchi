@@ -75,7 +75,12 @@ def test_fresh_prefix_reads_source_when_B_can_read_stale_cache(tmp_path):
     module.write_text("VALUE = 2\n")
     os.utime(module, ns=(stat.st_atime_ns, stat.st_mtime_ns))
     source = "import sys;sys.path.insert(0," + repr(str(tmp_path)) + ");import sealed_probe;print(sealed_probe.VALUE)"
-    old = subprocess.run([sys.executable, "-B", "-c", source],
+    # py_compile follows the parent cache prefix. Make the stale-cache probe
+    # read that same prefix even when pytest itself uses a fresh private one.
+    old_command = [sys.executable, "-B"]
+    if sys.pycache_prefix is not None:
+        old_command += ["-X", "pycache_prefix=" + sys.pycache_prefix]
+    old = subprocess.run([*old_command, "-c", source],
                          capture_output=True, text=True, timeout=10)
     fresh = tmp_path / "fresh"
     fresh.mkdir()
