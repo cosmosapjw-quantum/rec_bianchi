@@ -1,593 +1,7 @@
 {
-  "schema": "rec.r3s.backups.v1",
-  "index_state": "DRAFT_AWAITING_FINAL_FIXED_GIT_ARCHIVE",
-  "written_at_utc": "2026-10-20T21:49:54.293120+00:00",
-  "identity_observation": {
-    "checkout_head_at_draft": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
-    "checkout_tree_at_draft": "eb2108cfea0cd33577afed425389cbbce2de1189",
-    "scope": "Observed checkout identity only; distinct from archive source commits and later publication HEAD"
-  },
-  "policy": {
-    "create_only": true,
-    "producer_hash_is_not_remote_readback": true,
-    "upload_ack_is_not_remote_readback": true,
-    "unknown_remote_mutation_is_not_cancellation": true,
-    "no_self_inclusion_claim": true,
-    "archival_pass_is_not_scientific_validation": true,
-    "prior_evidence_reuse": "complete_reused",
-    "new_provider_calls_in_this_index_update": 0,
-    "new_scientific_runs_in_this_index_update": 0
-  },
-  "r3p_source_roles": {
-    "actual_smoke_and_tested_code": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
-    "complete_snapshot": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
-    "final_preservation_metadata_head": "888d56d72579d1e1fd30f66abe02d9f91809a767"
-  },
-  "r3p_reused_baseline": [
-    {
-      "stage_id": "R3P_COMPLETE_SNAPSHOT",
-      "status": "complete_reused",
-      "role": "Complete tracked source/evidence snapshot and required root of subsequent delta chain",
-      "filename": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip",
-      "bytes": 122092525,
-      "sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
-      "source_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
-      "providers": {
-        "Drive": {
-          "object_ids_in_restore_order": [
-            "1U8bHb_S2hIj2QSef_8jbeFXPhPCuxmqj",
-            "12BRzh-qCz3M5hfvr4xjKg6ndhKzX8aEQ",
-            "1z6jRDcaAV3BDXFWdtJi81Csxf2ECLXiI"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
-          "readback_bytes": 122092525,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh independent full remote GETs and ordered concatenated byte stream"
-        },
-        "Dropbox": {
-          "object_ids_in_restore_order": [
-            "id:BSpOijBcT10AAAAAAD_SPw",
-            "id:BSpOijBcT10AAAAAAD_SQQ",
-            "id:BSpOijBcT10AAAAAAD_SQg"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
-          "readback_bytes": 122092525,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh independent full remote GETs and ordered concatenated byte stream"
-        },
-        "Library": {
-          "object_ids_in_restore_order": [
-            "libfile_111f6cd07ea481918530b8cadd60c22f"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
-          "readback_bytes": 122092525,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh complete Library materialization"
-        }
-      },
-      "evidence": {
-        "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
-        "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0",
-        "bytes": 26617,
-        "role": "Historical producer/ACK/full remote readback chain",
-        "json_pointer": "/final_code_evidence"
-      },
-      "restore": "Follow ordered part IDs and part SHA256 in linked original BACKUP_ACKS; do not infer whole identity from one part."
-    },
-    {
-      "stage_id": "R3P_SMOKE16_RAW",
-      "status": "complete_reused",
-      "role": "Historical actual U5 smoke16 raw, independent of later R3S scheduler validation",
-      "filename": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz",
-      "bytes": 148406351,
-      "sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
-      "source_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
-      "providers": {
-        "Drive": {
-          "object_ids_in_restore_order": [
-            "1TcVDe3mi9ZdJ5rJPU1KEpaV_GSiN7BiZ",
-            "1AJ9E3f2s-GpYGo4ia0xlVXoFpc99pc60",
-            "1506vjEOl7wTBFmeyaMnxOfmBdKzKy_ye"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
-          "readback_bytes": 148406351,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh independent full remote GETs, ordered concatenated byte stream"
-        },
-        "Dropbox": {
-          "object_ids_in_restore_order": [
-            "id:BSpOijBcT10AAAAAAD_SOg",
-            "id:BSpOijBcT10AAAAAAD_SOw",
-            "id:BSpOijBcT10AAAAAAD_SPA"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
-          "readback_bytes": 148406351,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh independent full remote GETs, ordered concatenated byte stream"
-        },
-        "Library": {
-          "object_ids_in_restore_order": [
-            "libfile_980e7b54dacc8191be6305e20c600c73",
-            "libfile_707388dc71388191ac42ebd73ffac002",
-            "libfile_c590d7a626488191969c91d92da8a6c1"
-          ],
-          "whole_readback": "PASS",
-          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
-          "readback_bytes": 148406351,
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false,
-          "method": "Fresh whole materialization"
-        }
-      },
-      "evidence": {
-        "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
-        "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0",
-        "bytes": 26617,
-        "role": "Historical producer/ACK/full remote readback chain",
-        "json_pointer": "/smoke16_raw"
-      },
-      "restore": "Follow ordered part IDs and part SHA256 in linked original BACKUP_ACKS; do not infer whole identity from one part."
-    },
-    {
-      "stage_id": "R3P_FINAL_PRESERVATION_METADATA",
-      "status": "complete_reused",
-      "role": "Historical final metadata supplement; distinct from actual tested source and full snapshot; not the root of R3R Stage2 delta",
-      "filename": "REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
-      "bytes": 24488,
-      "sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
-      "source_commit": "888d56d72579d1e1fd30f66abe02d9f91809a767",
-      "providers": {
-        "Drive": {
-          "object_id": "1WgI9Po3rzb_BAl2h27Sk79Hm66LxMXwh",
-          "whole_readback": "PASS",
-          "readback_bytes": 24488,
-          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false
-        },
-        "Dropbox": {
-          "object_id": "id:BSpOijBcT10AAAAAAD_SRA",
-          "whole_readback": "PASS",
-          "readback_bytes": 24488,
-          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false
-        },
-        "Library": {
-          "object_id": "libfile_c252c0494c288191af9db9de62040edd",
-          "whole_readback": "PASS",
-          "readback_bytes": 24488,
-          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
-          "evidence_status": "complete_reused",
-          "new_readback_in_this_index_update": false
-        }
-      },
-      "evidence": {
-        "path": "../rec_r3r_followup_costs_20261020/receipts/intake/github_intake.json",
-        "sha256": "d290650812b923e3e96c0da847a3d3e05666f8054a7be840476af1b4b29752bb",
-        "bytes": 22577,
-        "role": "Preserved actual PR110 final receipt, published after immutable metadata ZIP",
-        "json_pointer": "/initial_1/data/comments/0",
-        "comment_id": 6284856174,
-        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110#issuecomment-6284856174",
-        "comment_body_sha256": "2bf8ccd2ebeea586cbb6d4ab8975b8c5db0fcf402597e0077f46dfe9584137df"
-      },
-      "receipt_timestamp_utc": "2026-10-20T06:23:13.401165+00:00",
-      "self_inclusion_claim": false
-    }
-  ],
-  "r3p_historical_incomplete_records": {
-    "evidence": {
-      "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
-      "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0",
-      "bytes": 26617,
-      "role": "Unmodified original historical stage-specific statuses"
-    },
-    "stage0_zip_whole_remote_readback": "NOT_RUN",
-    "stage2_zip_whole_remote_readback": "NOT_RUN",
-    "unchanged": true,
-    "scope": "These individual ZIP NOT_RUN records remain NOT_RUN despite distinct later whole archives having PASS."
-  },
-  "r3r_reused_stages": [
-    {
-      "stage_id": "R3R_STAGE1",
-      "name": "STAGE1_INTAKE_PROFILE32",
-      "status": "complete_reused",
-      "filename": "REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
-      "bytes": 7277134,
-      "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
-      "source_commit": "4a1912b661f4227707ad7efa93df56bfa47f930a",
-      "source_tree": "eac9172f63a3b4a07181e4c9a97258e680d066b0",
-      "base_commit": null,
-      "role": "Intake/profile evidence checkpoint; ancillary raw evidence",
-      "providers": {
-        "Library": {
-          "library_file_id": "libfile_b89b6a154f608191b812048fb25b1b4b",
-          "file_id": "file_00000000ebb8820b9b1b9ae182f94370",
-          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
-          "readback_bytes": 7277134,
-          "upload_ack_scope": "Historical published ACK/readback retained separately from current recovery readback",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE1_LIBRARY_CURRENT_READBACK.json",
-            "sha256": "7a50980585d28af46f94332c2c2cd0d7e2542da3ced35aafb129ceca6c0c69c8",
-            "bytes": 1115,
-            "role": "Actual full Library recovery readback and xattr verification"
-          }
-        },
-        "Dropbox": {
-          "file_id": "id:BSpOijBcT10AAAAAAD_aBQ",
-          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
-          "readback_bytes": 7277134,
-          "dropbox_content_hash": "0849020220c1f22706c8958ed837b24f00132cd847dfbed9aae7d5b34db327e6",
-          "exit_code": 0,
-          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE1_DROPBOX_CURRENT_READBACK.json",
-            "sha256": "7f193f44a7f0ccd1c4ed9b779ab0a61cd0cf6f33600bfaec8f97ec15b8bbf071",
-            "bytes": 2419,
-            "role": "Actual complete independent Dropbox recovery GET and hash"
-          },
-          "metadata_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE1_DROPBOX_CURRENT_METADATA.json",
-            "sha256": "24fce71b4cc0ed6a5ebdc6a3c424a2b06b3eab962df2034c527ae73a38e0a624",
-            "bytes": 1034,
-            "role": "Actual existing object metadata ACK"
-          }
-        },
-        "Drive": {
-          "status": "UNKNOWN_NO_ACK",
-          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
-          "evidence_status": "complete_reused",
-          "history_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
-            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36",
-            "bytes": 1534,
-            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned"
-          },
-          "readonly_followup": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
-            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159",
-            "bytes": 840,
-            "role": "Bounded exact-name query; no late completion observed in that scope"
-          },
-          "global_write_unavailability_inferred": false,
-          "new_mutation_in_this_index_update": false
-        }
-      },
-      "source_binding_evidence": {
-        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
-        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea",
-        "bytes": 124350,
-        "role": "Actual recovery checks of embedded manifests and code blob identities",
-        "json_pointer": "/stage1"
-      }
-    },
-    {
-      "stage_id": "R3R_STAGE2",
-      "name": "STAGE2_CODE_EVIDENCE",
-      "status": "complete_reused",
-      "filename": "REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
-      "bytes": 23953020,
-      "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
-      "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
-      "source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
-      "base_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
-      "role": "Required fixed Git source/evidence delta in the recovery chain",
-      "providers": {
-        "Library": {
-          "library_file_id": "libfile_4452939e318c8191adfb7aee439ac8a6",
-          "file_id": "file_000000008974820b86ed49f5e7017a4a",
-          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
-          "readback_bytes": 23953020,
-          "upload_ack_scope": "Historical published ACK/readback retained separately from current recovery readback",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE2_LIBRARY_CURRENT_READBACK.json",
-            "sha256": "a368833128d945bd92bb9f872c638544e0d3ad16b44c00aa5938f939928cb2c8",
-            "bytes": 1113,
-            "role": "Actual full Library recovery readback and xattr verification"
-          }
-        },
-        "Dropbox": {
-          "file_id": "id:BSpOijBcT10AAAAAAD_aCA",
-          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
-          "readback_bytes": 23953020,
-          "dropbox_content_hash": "6fbcb91d1fe9c9424adbbfc0ba2423eaf06f962d3a6cccc85072d267b08c1c9e",
-          "exit_code": 0,
-          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE2_DROPBOX_CURRENT_READBACK.json",
-            "sha256": "e8f1734549f91ae26aafafffdacebf47d50bedd60454bf12509e90e5a5bf8244",
-            "bytes": 2409,
-            "role": "Actual complete independent Dropbox recovery GET and hash"
-          },
-          "metadata_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE2_DROPBOX_CURRENT_METADATA.json",
-            "sha256": "9c9cc6dbfa450907e303890aeeb516b9f657112f888d0c6e501dfb6a48212d0f",
-            "bytes": 1026,
-            "role": "Actual existing object metadata ACK"
-          }
-        },
-        "Drive": {
-          "status": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
-          "evidence_status": "complete_reused",
-          "history_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
-            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36",
-            "bytes": 1534,
-            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned"
-          },
-          "readonly_followup": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
-            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159",
-            "bytes": 840,
-            "role": "Bounded exact-name query; no late completion observed in that scope"
-          },
-          "global_write_unavailability_inferred": false,
-          "new_mutation_in_this_index_update": false
-        }
-      },
-      "source_binding_evidence": {
-        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
-        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea",
-        "bytes": 124350,
-        "role": "Actual recovery checks of embedded manifests and code blob identities",
-        "json_pointer": "/stage2"
-      }
-    },
-    {
-      "stage_id": "R3R_STAGE3",
-      "name": "STAGE3_REVIEWED_DELIVERY",
-      "status": "complete_reused",
-      "filename": "REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
-      "bytes": 2080888,
-      "sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
-      "source_commit": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
-      "source_tree": "3d8967ad4863d7c6a510e585348e3639e0ca9f04",
-      "base_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
-      "role": "Required fixed Git source/evidence delta in the recovery chain",
-      "providers": {
-        "Library": {
-          "library_file_id": "libfile_db8555ce49908191a447a5885e6b3181",
-          "file_id": "file_00000000b428820b8cb8b0d6b17a2467",
-          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
-          "readback_bytes": 2080888,
-          "upload_ack_scope": "Original unpublished ACK/readback receipt not recovered; pinned existing object now independently restored and hashed",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE3_LIBRARY_CURRENT_READBACK.json",
-            "sha256": "f066614617e41340dbc2d1488bb28392017ce2d7aa323b7ae96d33aed8e87ed3",
-            "bytes": 1116,
-            "role": "Actual full Library recovery readback and xattr verification"
-          }
-        },
-        "Dropbox": {
-          "file_id": "id:BSpOijBcT10AAAAAAD_aCg",
-          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
-          "whole_readback": "PASS",
-          "readback_sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
-          "readback_bytes": 2080888,
-          "dropbox_content_hash": "35e1e4e38719539fb914053d8976d316b34f6500e9647e17aaa95daa43977e60",
-          "exit_code": 0,
-          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE3_DROPBOX_CURRENT_READBACK.json",
-            "sha256": "bf4212f7f9258a58351fac7567e62645360b6fbddf3c2825b484bd340ca7a970",
-            "bytes": 2424,
-            "role": "Actual complete independent Dropbox recovery GET and hash"
-          },
-          "metadata_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE3_DROPBOX_CURRENT_METADATA.json",
-            "sha256": "f6128c7f043cee388276c558ece253026283b79d4ea6fd74ede16cf93eb73d05",
-            "bytes": 1037,
-            "role": "Actual existing object metadata ACK"
-          }
-        },
-        "Drive": {
-          "status": "UNKNOWN_NO_ACK_TIMEOUT_25S",
-          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT",
-          "evidence_status": "complete_reused",
-          "history_evidence": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
-            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36",
-            "bytes": 1534,
-            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned"
-          },
-          "readonly_followup": {
-            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
-            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159",
-            "bytes": 840,
-            "role": "Bounded exact-name query; no late completion observed in that scope"
-          },
-          "global_write_unavailability_inferred": false,
-          "new_mutation_in_this_index_update": false
-        }
-      },
-      "source_binding_evidence": {
-        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
-        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea",
-        "bytes": 124350,
-        "role": "Actual recovery checks of embedded manifests and code blob identities",
-        "json_pointer": "/stage3"
-      }
-    },
-    {
-      "stage_id": "R3R_STAGE4",
-      "name": "CI_RECOVERY_CLOSEOUT",
-      "status": "complete_reused",
-      "filename": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
-      "bytes": 469172,
-      "sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
-      "source_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
-      "source_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
-      "role": "Fixed Git CI/recovery closeout delta; establishes R3S base bf6bb95c",
-      "providers": {
-        "Library": {
-          "library_file_id": "libfile_8b6ef368af5881918593a8648587c14b",
-          "file_id": "file_00000000ab24820bbbb3dcef15288ea3",
-          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
-          "upload_ack": "SUCCEEDED",
-          "whole_readback": "PASS",
-          "readback_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
-          "readback_bytes": 469172,
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "receipts/R3R_STAGE4_LIBRARY.json",
-            "sha256": "42e52f358304293dca5942966ed990b05a87ee747187e22e45daee5dd01a97d9",
-            "bytes": 724,
-            "role": "Actual upload ACK and separate full Library readback"
-          }
-        },
-        "Dropbox": {
-          "file_id": "id:BSpOijBcT10AAAAAAD_aFw",
-          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
-          "upload_ack": "COMPLETED",
-          "whole_readback": "PASS",
-          "readback_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
-          "readback_bytes": 469172,
-          "dropbox_content_hash": "57899d95bed8e08b72cf52a198aacf807b87433f1c7ea86b3e01034648e71a60",
-          "exit_code": 0,
-          "evidence_status": "complete_reused",
-          "evidence": {
-            "path": "receipts/R3R_STAGE4_DROPBOX.json",
-            "sha256": "a2af3ee40723efae705ab0fd701438742b239b2d16b93ef97151d98df6677898",
-            "bytes": 8145,
-            "role": "Actual create-only upload ACK and separate full Dropbox readback"
-          }
-        },
-        "Drive": {
-          "status": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN",
-          "scope": "Stage4 upload was not attempted per current provider instruction; no global capability inference",
-          "evidence": {
-            "path": "receipts/R3R_STAGE4_DROPBOX.json",
-            "sha256": "a2af3ee40723efae705ab0fd701438742b239b2d16b93ef97151d98df6677898",
-            "bytes": 8145,
-            "role": "Actual Stage4 scope records zero new Drive calls"
-          }
-        }
-      }
-    }
-  ],
-  "r3s_stages": [
-    {
-      "stage_id": "R3S_STAGE1",
-      "name": "SOURCE_CHECKPOINT_PRE_FINAL_REVIEW",
-      "status": "complete",
-      "filename": "REC_R3S_STAGE1_SOURCE_96e8b88d_20261021.tar.gz",
-      "bytes": 374529,
-      "sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
-      "source_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
-      "source_tree": "a4c5005fcf93bb98df31b4a39a3431dd01d7daed",
-      "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
-      "base_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
-      "scope": "Fixed Git delta from bf6bb95c. Preserves 96e8b88d before later review repairs; it is not the current corrected source or the final evidence delivery. Previous base chain required.",
-      "providers": {
-        "Library": {
-          "library_file_id": "libfile_277e7eaf77a881918efba66a57e9194a",
-          "file_id": "file_000000005d90820bb75e7c023af1249d",
-          "directory_id": "6ad7d8f6c22881919eb6566f680c1b14",
-          "upload_ack": "completed",
-          "whole_readback": "PASS",
-          "readback_sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
-          "readback_bytes": 374529,
-          "exit_code": 0,
-          "evidence": {
-            "path": "receipts/STAGE1_LIBRARY.json",
-            "sha256": "f4997fbe5b1c912c97f4dfafeb25faf72a542068a766fd3d9e406ae7d5dca963",
-            "bytes": 1144,
-            "role": "Actual R3S Stage1 upload ACK and independent whole readback"
-          },
-          "evidence_reused_in_this_index_update": true
-        },
-        "Dropbox": {
-          "file_id": "id:BSpOijBcT10AAAAAAD_aHg",
-          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3S_STAGE1_SOURCE_96e8b88d_20261021.tar.gz",
-          "upload_ack": "completed",
-          "whole_readback": "PASS",
-          "readback_sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
-          "readback_bytes": 374529,
-          "dropbox_content_hash": "cb26d4c50635b790ffeb45cebf8114e234f12c53bf98aa097f0f6e4099d683bf",
-          "exit_code": 0,
-          "evidence": {
-            "path": "receipts/STAGE1_DROPBOX.json",
-            "sha256": "9cde17e5a5fa05fffe23135703582b724e837aa4e06c6b4609df43403541ae6f",
-            "bytes": 8303,
-            "role": "Actual R3S Stage1 create-only upload ACK and independent whole readback"
-          },
-          "evidence_reused_in_this_index_update": true
-        },
-        "Drive": {
-          "status": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN",
-          "scope": "Current R3S Stage1 archive has not been uploaded to Drive; unresolved earlier per-object states remain separate",
-          "evidence": {
-            "path": "receipts/STAGE1_DROPBOX.json",
-            "sha256": "9cde17e5a5fa05fffe23135703582b724e837aa4e06c6b4609df43403541ae6f",
-            "bytes": 8303,
-            "role": "Actual R3S Stage1 preservation scope records no Drive attempt"
-          }
-        }
-      }
-    },
-    {
-      "stage_id": "R3S_STAGE2",
-      "name": "FINAL_CODE_EVIDENCE_DELIVERY",
-      "status": "pending",
-      "archive_status": "NOT_PRODUCED",
-      "source_identity": "TO_BE_BOUND_TO_ACTUAL_FIXED_GIT_PRODUCER_RECEIPT",
-      "providers": {
-        "Library": {
-          "upload_ack": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN"
-        },
-        "Dropbox": {
-          "upload_ack": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN"
-        },
-        "Drive": {
-          "upload_ack": "NOT_ATTEMPTED",
-          "whole_readback": "NOT_RUN"
-        }
-      },
-      "pending_rule": "No filename, object ID, byte count, or SHA256 is asserted before actual production and provider results."
-    }
-  ],
-  "source_delta_recovery_order": [
-    "R3P_COMPLETE_SNAPSHOT at 0b80913b",
-    "R3R_STAGE2 delta at 1313b1f1",
-    "R3R_STAGE3 delta at 7d1a0503",
-    "R3R_STAGE4 delta at bf6bb95c",
-    "R3S_STAGE1 delta at 96e8b88d; historical checkpoint only",
-    "R3S_STAGE2 final delta pending actual producer base/source identity"
-  ],
   "drive_open_gate": {
-    "status": "UNRESOLVED_PER_OBJECT_CREATE_AND_READBACK",
+    "global_write_unavailability": "NOT_CLAIMED",
+    "historical_r3p_pass_unchanged": true,
     "r3r_stage1": "UNKNOWN_NO_ACK",
     "r3r_stage2": "NOT_ATTEMPTED",
     "r3r_stage3": "UNKNOWN_NO_ACK_TIMEOUT_25S",
@@ -595,26 +9,653 @@
     "r3s_stage1": "NOT_ATTEMPTED",
     "r3s_stage2": "NOT_ATTEMPTED_ARCHIVE_NOT_PRODUCED",
     "read_service_evidence": {
-      "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
-      "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159",
       "bytes": 840,
-      "role": "Actual responsive exact-name read query"
+      "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+      "role": "Actual responsive exact-name read query",
+      "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159"
     },
-    "global_write_unavailability": "NOT_CLAIMED",
-    "unchanged_mutation_retry": "NOT_PERFORMED",
-    "historical_r3p_pass_unchanged": true
+    "status": "UNRESOLVED_PER_OBJECT_CREATE_AND_READBACK",
+    "unchanged_mutation_retry": "NOT_PERFORMED"
   },
-  "summary": {
-    "r3p_closeout_archives_all_three_providers": "PASS_complete_reused_FOR_3_DISTINCT_CLOSEOUT_ARCHIVES",
-    "r3r_stage1_to_stage4_library_and_dropbox": "PASS_complete_reused_FOR_EACH_WHOLE_ARCHIVE",
-    "r3s_stage1_library_and_dropbox": "PASS_ACTUAL_ACK_AND_WHOLE_REMOTE_READBACK",
-    "r3s_final_delivery": "PENDING_ARCHIVE_PRODUCTION",
-    "drive_current_followup_preservation": "UNRESOLVED_SEPARATE_FROM_OTHER_PROVIDERS"
+  "final_metadata_preservation": {
+    "actual_receipt_location": "PR113 final preservation comment and standalone final receipt; no recursive self-hash claim",
+    "stage": "R3S_STAGE3_FINAL_PRESERVATION",
+    "status": "TO_BE_PRODUCED_FROM_ENCLOSING_FIXED_COMMIT"
+  },
+  "identity_observation": {
+    "checkout_head_at_draft": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "checkout_tree_at_draft": "eb2108cfea0cd33577afed425389cbbce2de1189",
+    "reviewed_delivery_commit": "265b82042e918c2554fbb9d890c8e7a7cce5ebfb",
+    "reviewed_delivery_tree": "0478d4489837c9b3ac482be46e6871c8b7aad2cc",
+    "scope": "Observed checkout identity only; distinct from archive source commits and later publication HEAD"
   },
   "index_link_check": {
-    "status": "PASS_ACTUAL_LOCAL_RECEIPT_HASH_LINKS",
-    "linked_references": 29,
-    "distinct_receipt_paths": 18,
-    "scope": "JSON receipt linkage only; prior remote hash results are reused, not reexecuted."
-  }
+    "distinct_receipt_paths": 21,
+    "linked_references": 32,
+    "scope": "Local receipt links; remote whole readbacks already performed and separately recorded; no remote repetition",
+    "status": "PASS_ACTUAL_LOCAL_RECEIPT_HASH_LINKS"
+  },
+  "index_state": "REVIEWED_DELIVERY_TWO_PROVIDER_WHOLE_READBACK_PASS_DRIVE_UNRESOLVED",
+  "policy": {
+    "archival_pass_is_not_scientific_validation": true,
+    "create_only": true,
+    "new_provider_calls_in_this_index_update": 0,
+    "new_scientific_runs_in_this_index_update": 0,
+    "no_self_inclusion_claim": true,
+    "prior_evidence_reuse": "complete_reused",
+    "producer_hash_is_not_remote_readback": true,
+    "unknown_remote_mutation_is_not_cancellation": true,
+    "upload_ack_is_not_remote_readback": true
+  },
+  "r3p_historical_incomplete_records": {
+    "evidence": {
+      "bytes": 26617,
+      "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
+      "role": "Unmodified original historical stage-specific statuses",
+      "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0"
+    },
+    "scope": "These individual ZIP NOT_RUN records remain NOT_RUN despite distinct later whole archives having PASS.",
+    "stage0_zip_whole_remote_readback": "NOT_RUN",
+    "stage2_zip_whole_remote_readback": "NOT_RUN",
+    "unchanged": true
+  },
+  "r3p_reused_baseline": [
+    {
+      "bytes": 122092525,
+      "evidence": {
+        "bytes": 26617,
+        "json_pointer": "/final_code_evidence",
+        "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
+        "role": "Historical producer/ACK/full remote readback chain",
+        "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0"
+      },
+      "filename": "REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh independent full remote GETs and ordered concatenated byte stream",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "1U8bHb_S2hIj2QSef_8jbeFXPhPCuxmqj",
+            "12BRzh-qCz3M5hfvr4xjKg6ndhKzX8aEQ",
+            "1z6jRDcaAV3BDXFWdtJi81Csxf2ECLXiI"
+          ],
+          "readback_bytes": 122092525,
+          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
+          "whole_readback": "PASS"
+        },
+        "Dropbox": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh independent full remote GETs and ordered concatenated byte stream",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "id:BSpOijBcT10AAAAAAD_SPw",
+            "id:BSpOijBcT10AAAAAAD_SQQ",
+            "id:BSpOijBcT10AAAAAAD_SQg"
+          ],
+          "readback_bytes": 122092525,
+          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh complete Library materialization",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "libfile_111f6cd07ea481918530b8cadd60c22f"
+          ],
+          "readback_bytes": 122092525,
+          "readback_sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
+          "whole_readback": "PASS"
+        }
+      },
+      "restore": "Follow ordered part IDs and part SHA256 in linked original BACKUP_ACKS; do not infer whole identity from one part.",
+      "role": "Complete tracked source/evidence snapshot and required root of subsequent delta chain",
+      "sha256": "edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521",
+      "source_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "stage_id": "R3P_COMPLETE_SNAPSHOT",
+      "status": "complete_reused"
+    },
+    {
+      "bytes": 148406351,
+      "evidence": {
+        "bytes": 26617,
+        "json_pointer": "/smoke16_raw",
+        "path": "../rec_r3p_exact_acceleration_20261020/BACKUP_ACKS.json",
+        "role": "Historical producer/ACK/full remote readback chain",
+        "sha256": "f244e2004e987eea9d2f39b5b13afbc2d823e3aaae5f90b4fd4367f6e657c9e0"
+      },
+      "filename": "REC_R3P_U5_SMOKE16_RAW_e2b39e33_20261020.tar.gz",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh independent full remote GETs, ordered concatenated byte stream",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "1TcVDe3mi9ZdJ5rJPU1KEpaV_GSiN7BiZ",
+            "1AJ9E3f2s-GpYGo4ia0xlVXoFpc99pc60",
+            "1506vjEOl7wTBFmeyaMnxOfmBdKzKy_ye"
+          ],
+          "readback_bytes": 148406351,
+          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
+          "whole_readback": "PASS"
+        },
+        "Dropbox": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh independent full remote GETs, ordered concatenated byte stream",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "id:BSpOijBcT10AAAAAAD_SOg",
+            "id:BSpOijBcT10AAAAAAD_SOw",
+            "id:BSpOijBcT10AAAAAAD_SPA"
+          ],
+          "readback_bytes": 148406351,
+          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence_status": "complete_reused",
+          "method": "Fresh whole materialization",
+          "new_readback_in_this_index_update": false,
+          "object_ids_in_restore_order": [
+            "libfile_980e7b54dacc8191be6305e20c600c73",
+            "libfile_707388dc71388191ac42ebd73ffac002",
+            "libfile_c590d7a626488191969c91d92da8a6c1"
+          ],
+          "readback_bytes": 148406351,
+          "readback_sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
+          "whole_readback": "PASS"
+        }
+      },
+      "restore": "Follow ordered part IDs and part SHA256 in linked original BACKUP_ACKS; do not infer whole identity from one part.",
+      "role": "Historical actual U5 smoke16 raw, independent of later R3S scheduler validation",
+      "sha256": "6876e568102476c4c7448f0dcbabcfe656399df37341862c6d3a92319be36369",
+      "source_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+      "stage_id": "R3P_SMOKE16_RAW",
+      "status": "complete_reused"
+    },
+    {
+      "bytes": 24488,
+      "evidence": {
+        "bytes": 22577,
+        "comment_body_sha256": "2bf8ccd2ebeea586cbb6d4ab8975b8c5db0fcf402597e0077f46dfe9584137df",
+        "comment_id": 6284856174,
+        "json_pointer": "/initial_1/data/comments/0",
+        "path": "../rec_r3r_followup_costs_20261020/receipts/intake/github_intake.json",
+        "role": "Preserved actual PR110 final receipt, published after immutable metadata ZIP",
+        "sha256": "d290650812b923e3e96c0da847a3d3e05666f8054a7be840476af1b4b29752bb",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110#issuecomment-6284856174"
+      },
+      "filename": "REC_R3P_FINAL_PRESERVATION_888d56d7_20261020.zip",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "new_readback_in_this_index_update": false,
+          "object_id": "1WgI9Po3rzb_BAl2h27Sk79Hm66LxMXwh",
+          "readback_bytes": 24488,
+          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
+          "whole_readback": "PASS"
+        },
+        "Dropbox": {
+          "evidence_status": "complete_reused",
+          "new_readback_in_this_index_update": false,
+          "object_id": "id:BSpOijBcT10AAAAAAD_SRA",
+          "readback_bytes": 24488,
+          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence_status": "complete_reused",
+          "new_readback_in_this_index_update": false,
+          "object_id": "libfile_c252c0494c288191af9db9de62040edd",
+          "readback_bytes": 24488,
+          "readback_sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
+          "whole_readback": "PASS"
+        }
+      },
+      "receipt_timestamp_utc": "2026-10-20T06:23:13.401165+00:00",
+      "role": "Historical final metadata supplement; distinct from actual tested source and full snapshot; not the root of R3R Stage2 delta",
+      "self_inclusion_claim": false,
+      "sha256": "f7dd6f1640d335fec0d4565f02ba29f2eca20a1ba45ccc87a7754abfa8d03b4b",
+      "source_commit": "888d56d72579d1e1fd30f66abe02d9f91809a767",
+      "stage_id": "R3P_FINAL_PRESERVATION_METADATA",
+      "status": "complete_reused"
+    }
+  ],
+  "r3p_source_roles": {
+    "actual_smoke_and_tested_code": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+    "complete_snapshot": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+    "final_preservation_metadata_head": "888d56d72579d1e1fd30f66abe02d9f91809a767"
+  },
+  "r3r_reused_stages": [
+    {
+      "base_commit": null,
+      "bytes": 7277134,
+      "filename": "REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+      "name": "STAGE1_INTAKE_PROFILE32",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "global_write_unavailability_inferred": false,
+          "history_evidence": {
+            "bytes": 1534,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned",
+            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36"
+          },
+          "new_mutation_in_this_index_update": false,
+          "readonly_followup": {
+            "bytes": 840,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+            "role": "Bounded exact-name query; no late completion observed in that scope",
+            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159"
+          },
+          "status": "UNKNOWN_NO_ACK",
+          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "0849020220c1f22706c8958ed837b24f00132cd847dfbed9aae7d5b34db327e6",
+          "evidence": {
+            "bytes": 2419,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE1_DROPBOX_CURRENT_READBACK.json",
+            "role": "Actual complete independent Dropbox recovery GET and hash",
+            "sha256": "7f193f44a7f0ccd1c4ed9b779ab0a61cd0cf6f33600bfaec8f97ec15b8bbf071"
+          },
+          "evidence_status": "complete_reused",
+          "exit_code": 0,
+          "file_id": "id:BSpOijBcT10AAAAAAD_aBQ",
+          "metadata_evidence": {
+            "bytes": 1034,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE1_DROPBOX_CURRENT_METADATA.json",
+            "role": "Actual existing object metadata ACK",
+            "sha256": "24fce71b4cc0ed6a5ebdc6a3c424a2b06b3eab962df2034c527ae73a38e0a624"
+          },
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+          "readback_bytes": 7277134,
+          "readback_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence": {
+            "bytes": 1115,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE1_LIBRARY_CURRENT_READBACK.json",
+            "role": "Actual full Library recovery readback and xattr verification",
+            "sha256": "7a50980585d28af46f94332c2c2cd0d7e2542da3ced35aafb129ceca6c0c69c8"
+          },
+          "evidence_status": "complete_reused",
+          "file_id": "file_00000000ebb8820b9b1b9ae182f94370",
+          "library_file_id": "libfile_b89b6a154f608191b812048fb25b1b4b",
+          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE1_INTAKE_PROFILE32_4a1912b6_20261020.tar.gz",
+          "readback_bytes": 7277134,
+          "readback_sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+          "upload_ack_scope": "Historical published ACK/readback retained separately from current recovery readback",
+          "whole_readback": "PASS"
+        }
+      },
+      "role": "Intake/profile evidence checkpoint; ancillary raw evidence",
+      "sha256": "1eb3035040def50a70766e6e59c2751538f57dbc920a3c8b0b473e6200e2f367",
+      "source_binding_evidence": {
+        "bytes": 124350,
+        "json_pointer": "/stage1",
+        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
+        "role": "Actual recovery checks of embedded manifests and code blob identities",
+        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea"
+      },
+      "source_commit": "4a1912b661f4227707ad7efa93df56bfa47f930a",
+      "source_tree": "eac9172f63a3b4a07181e4c9a97258e680d066b0",
+      "stage_id": "R3R_STAGE1",
+      "status": "complete_reused"
+    },
+    {
+      "base_commit": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "bytes": 23953020,
+      "filename": "REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+      "name": "STAGE2_CODE_EVIDENCE",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "global_write_unavailability_inferred": false,
+          "history_evidence": {
+            "bytes": 1534,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned",
+            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36"
+          },
+          "new_mutation_in_this_index_update": false,
+          "readonly_followup": {
+            "bytes": 840,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+            "role": "Bounded exact-name query; no late completion observed in that scope",
+            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159"
+          },
+          "status": "NOT_ATTEMPTED",
+          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "6fbcb91d1fe9c9424adbbfc0ba2423eaf06f962d3a6cccc85072d267b08c1c9e",
+          "evidence": {
+            "bytes": 2409,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE2_DROPBOX_CURRENT_READBACK.json",
+            "role": "Actual complete independent Dropbox recovery GET and hash",
+            "sha256": "e8f1734549f91ae26aafafffdacebf47d50bedd60454bf12509e90e5a5bf8244"
+          },
+          "evidence_status": "complete_reused",
+          "exit_code": 0,
+          "file_id": "id:BSpOijBcT10AAAAAAD_aCA",
+          "metadata_evidence": {
+            "bytes": 1026,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE2_DROPBOX_CURRENT_METADATA.json",
+            "role": "Actual existing object metadata ACK",
+            "sha256": "9c9cc6dbfa450907e303890aeeb516b9f657112f888d0c6e501dfb6a48212d0f"
+          },
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+          "readback_bytes": 23953020,
+          "readback_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence": {
+            "bytes": 1113,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE2_LIBRARY_CURRENT_READBACK.json",
+            "role": "Actual full Library recovery readback and xattr verification",
+            "sha256": "a368833128d945bd92bb9f872c638544e0d3ad16b44c00aa5938f939928cb2c8"
+          },
+          "evidence_status": "complete_reused",
+          "file_id": "file_000000008974820b86ed49f5e7017a4a",
+          "library_file_id": "libfile_4452939e318c8191adfb7aee439ac8a6",
+          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE2_CODE_EVIDENCE_1313b1f1_20261020.tar.gz",
+          "readback_bytes": 23953020,
+          "readback_sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+          "upload_ack_scope": "Historical published ACK/readback retained separately from current recovery readback",
+          "whole_readback": "PASS"
+        }
+      },
+      "role": "Required fixed Git source/evidence delta in the recovery chain",
+      "sha256": "402e9a8a0d2f5e8cdbb1fbc2b2dea8e9556a48cc17224ef139c06ad3555dea5b",
+      "source_binding_evidence": {
+        "bytes": 124350,
+        "json_pointer": "/stage2",
+        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
+        "role": "Actual recovery checks of embedded manifests and code blob identities",
+        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea"
+      },
+      "source_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "source_tree": "97423cad509a9604269740132a6ad850faf8f19a",
+      "stage_id": "R3R_STAGE2",
+      "status": "complete_reused"
+    },
+    {
+      "base_commit": "1313b1f1b2c081d57bcce9c60e757ef79110df91",
+      "bytes": 2080888,
+      "filename": "REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+      "name": "STAGE3_REVIEWED_DELIVERY",
+      "providers": {
+        "Drive": {
+          "evidence_status": "complete_reused",
+          "global_write_unavailability_inferred": false,
+          "history_evidence": {
+            "bytes": 1534,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/DRIVE_UNCERTAIN_HISTORY_RECOVERY.json",
+            "role": "Reconstructed additive uncertain mutation history; original unpublished receipt was pruned",
+            "sha256": "59887519320435821634ff9f4ab518180504e883e0afb7c1a8b1cd6b3a238c36"
+          },
+          "new_mutation_in_this_index_update": false,
+          "readonly_followup": {
+            "bytes": 840,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/DRIVE_EXACT_RECOVERY_SEARCH.json",
+            "role": "Bounded exact-name query; no late completion observed in that scope",
+            "sha256": "07ac2837b4cabf0fd586eccadc60252aa4d8b57735467a7f836af6de4c9ef159"
+          },
+          "status": "UNKNOWN_NO_ACK_TIMEOUT_25S",
+          "whole_readback": "NOT_RUN_NO_CONFIRMED_OBJECT"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "35e1e4e38719539fb914053d8976d316b34f6500e9647e17aaa95daa43977e60",
+          "evidence": {
+            "bytes": 2424,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE3_DROPBOX_CURRENT_READBACK.json",
+            "role": "Actual complete independent Dropbox recovery GET and hash",
+            "sha256": "bf4212f7f9258a58351fac7567e62645360b6fbddf3c2825b484bd340ca7a970"
+          },
+          "evidence_status": "complete_reused",
+          "exit_code": 0,
+          "file_id": "id:BSpOijBcT10AAAAAAD_aCg",
+          "metadata_evidence": {
+            "bytes": 1037,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/backup/STAGE3_DROPBOX_CURRENT_METADATA.json",
+            "role": "Actual existing object metadata ACK",
+            "sha256": "f6128c7f043cee388276c558ece253026283b79d4ea6fd74ede16cf93eb73d05"
+          },
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+          "readback_bytes": 2080888,
+          "readback_sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+          "upload_ack_scope": "Prior completed upload ACK reported in live-session handoff; original unpublished receipt lost on pruning. Current metadata and full readback are independently observed evidence.",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence": {
+            "bytes": 1116,
+            "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/STAGE3_LIBRARY_CURRENT_READBACK.json",
+            "role": "Actual full Library recovery readback and xattr verification",
+            "sha256": "f066614617e41340dbc2d1488bb28392017ce2d7aa323b7ae96d33aed8e87ed3"
+          },
+          "evidence_status": "complete_reused",
+          "file_id": "file_00000000b428820b8cb8b0d6b17a2467",
+          "library_file_id": "libfile_db8555ce49908191a447a5885e6b3181",
+          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE3_REVIEWED_DELIVERY_7d1a0503_20261020.tar.gz",
+          "readback_bytes": 2080888,
+          "readback_sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+          "upload_ack_scope": "Original unpublished ACK/readback receipt not recovered; pinned existing object now independently restored and hashed",
+          "whole_readback": "PASS"
+        }
+      },
+      "role": "Required fixed Git source/evidence delta in the recovery chain",
+      "sha256": "67fdeefcf8249f4b63d2b75f011d1d169d74fa2b1801b4367557fc0e4f966359",
+      "source_binding_evidence": {
+        "bytes": 124350,
+        "json_pointer": "/stage3",
+        "path": "../rec_r3r_followup_costs_20261020/receipts/recovery/ARCHIVE_MANIFEST_BINDING_RECOVERY.json",
+        "role": "Actual recovery checks of embedded manifests and code blob identities",
+        "sha256": "71e8d748b66dc36e961e56cefcf4704fbaf6dfef1502865011735fa4973f06ea"
+      },
+      "source_commit": "7d1a05033ad7b82527c66ae45a1feb09ff0d4ccc",
+      "source_tree": "3d8967ad4863d7c6a510e585348e3639e0ca9f04",
+      "stage_id": "R3R_STAGE3",
+      "status": "complete_reused"
+    },
+    {
+      "bytes": 469172,
+      "filename": "REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+      "name": "CI_RECOVERY_CLOSEOUT",
+      "providers": {
+        "Drive": {
+          "evidence": {
+            "bytes": 8145,
+            "path": "receipts/R3R_STAGE4_DROPBOX.json",
+            "role": "Actual Stage4 scope records zero new Drive calls",
+            "sha256": "a2af3ee40723efae705ab0fd701438742b239b2d16b93ef97151d98df6677898"
+          },
+          "scope": "Stage4 upload was not attempted per current provider instruction; no global capability inference",
+          "status": "NOT_ATTEMPTED",
+          "whole_readback": "NOT_RUN"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "57899d95bed8e08b72cf52a198aacf807b87433f1c7ea86b3e01034648e71a60",
+          "evidence": {
+            "bytes": 8145,
+            "path": "receipts/R3R_STAGE4_DROPBOX.json",
+            "role": "Actual create-only upload ACK and separate full Dropbox readback",
+            "sha256": "a2af3ee40723efae705ab0fd701438742b239b2d16b93ef97151d98df6677898"
+          },
+          "evidence_status": "complete_reused",
+          "exit_code": 0,
+          "file_id": "id:BSpOijBcT10AAAAAAD_aFw",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+          "readback_bytes": 469172,
+          "readback_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+          "upload_ack": "COMPLETED",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "evidence": {
+            "bytes": 724,
+            "path": "receipts/R3R_STAGE4_LIBRARY.json",
+            "role": "Actual upload ACK and separate full Library readback",
+            "sha256": "42e52f358304293dca5942966ed990b05a87ee747187e22e45daee5dd01a97d9"
+          },
+          "evidence_status": "complete_reused",
+          "file_id": "file_00000000ab24820bbbb3dcef15288ea3",
+          "library_file_id": "libfile_8b6ef368af5881918593a8648587c14b",
+          "path": "/rec_bianchi_recovery/R3R_20261020/REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz",
+          "readback_bytes": 469172,
+          "readback_sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+          "upload_ack": "SUCCEEDED",
+          "whole_readback": "PASS"
+        }
+      },
+      "role": "Fixed Git CI/recovery closeout delta; establishes R3S base bf6bb95c",
+      "sha256": "125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0",
+      "source_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+      "source_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
+      "stage_id": "R3R_STAGE4",
+      "status": "complete_reused"
+    }
+  ],
+  "r3s_stages": [
+    {
+      "base_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+      "base_tree": "64c5f41587733f7e2c05ae5f862bba3a6b753f29",
+      "bytes": 374529,
+      "filename": "REC_R3S_STAGE1_SOURCE_96e8b88d_20261021.tar.gz",
+      "name": "SOURCE_CHECKPOINT_PRE_FINAL_REVIEW",
+      "providers": {
+        "Drive": {
+          "evidence": {
+            "bytes": 8303,
+            "path": "receipts/STAGE1_DROPBOX.json",
+            "role": "Actual R3S Stage1 preservation scope records no Drive attempt",
+            "sha256": "9cde17e5a5fa05fffe23135703582b724e837aa4e06c6b4609df43403541ae6f"
+          },
+          "scope": "Current R3S Stage1 archive has not been uploaded to Drive; unresolved earlier per-object states remain separate",
+          "status": "NOT_ATTEMPTED",
+          "whole_readback": "NOT_RUN"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "cb26d4c50635b790ffeb45cebf8114e234f12c53bf98aa097f0f6e4099d683bf",
+          "evidence": {
+            "bytes": 8303,
+            "path": "receipts/STAGE1_DROPBOX.json",
+            "role": "Actual R3S Stage1 create-only upload ACK and independent whole readback",
+            "sha256": "9cde17e5a5fa05fffe23135703582b724e837aa4e06c6b4609df43403541ae6f"
+          },
+          "evidence_reused_in_this_index_update": true,
+          "exit_code": 0,
+          "file_id": "id:BSpOijBcT10AAAAAAD_aHg",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3S_STAGE1_SOURCE_96e8b88d_20261021.tar.gz",
+          "readback_bytes": 374529,
+          "readback_sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
+          "upload_ack": "completed",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "directory_id": "6ad7d8f6c22881919eb6566f680c1b14",
+          "evidence": {
+            "bytes": 1144,
+            "path": "receipts/STAGE1_LIBRARY.json",
+            "role": "Actual R3S Stage1 upload ACK and independent whole readback",
+            "sha256": "f4997fbe5b1c912c97f4dfafeb25faf72a542068a766fd3d9e406ae7d5dca963"
+          },
+          "evidence_reused_in_this_index_update": true,
+          "exit_code": 0,
+          "file_id": "file_000000005d90820bb75e7c023af1249d",
+          "library_file_id": "libfile_277e7eaf77a881918efba66a57e9194a",
+          "readback_bytes": 374529,
+          "readback_sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
+          "upload_ack": "completed",
+          "whole_readback": "PASS"
+        }
+      },
+      "scope": "Fixed Git delta from bf6bb95c. Preserves 96e8b88d before later review repairs; it is not the current corrected source or the final evidence delivery. Previous base chain required.",
+      "sha256": "498ef4dddddc16ce7efc70de75342b261a13b0bdaf020dac31d7695adca64c93",
+      "source_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+      "source_tree": "a4c5005fcf93bb98df31b4a39a3431dd01d7daed",
+      "stage_id": "R3S_STAGE1",
+      "status": "complete"
+    },
+    {
+      "archive_scope": "DELTA_REQUIRES_PREVIOUS_BASE_CHAIN; NOT_STANDALONE_FULL_SNAPSHOT",
+      "base_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+      "base_tree": "a4c5005fcf93bb98df31b4a39a3431dd01d7daed",
+      "bytes": 756456,
+      "code_execution_source": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+      "filename": "REC_R3S_STAGE2_REVIEWED_DELIVERY_265b8204_20261021.tar.gz",
+      "name": "REVIEWED_CODE_EVIDENCE_DELIVERY",
+      "producer": {
+        "bytes": 1954,
+        "path": "receipts/STAGE2_PACKAGING_RECEIPT.json",
+        "sha256": "d400d4bddd2a0cbeaf462c02ccdcc8550dcdab33590c37c9e9ce85abdb20a28f"
+      },
+      "producer_remote_NOT_RUN_field_preserved": "Independent remote results follow; original producer record is unchanged",
+      "providers": {
+        "Drive": {
+          "reason": "Prior per-object Drive create attempts have no ACK; this unchanged write route was not retried. No service-wide outage or cancellation claim.",
+          "upload_ack": "NOT_ATTEMPTED",
+          "whole_readback": "NOT_RUN"
+        },
+        "Dropbox": {
+          "dropbox_content_hash": "2144f0713628cccb2a27095ecf808992f7266e11044be7622bcb2b0540206b81",
+          "evidence": {
+            "bytes": 9809,
+            "path": "receipts/STAGE2_DROPBOX.json",
+            "sha256": "535fb038c0b79d2314dec493cb952b36b4f43812eea236e65cfc857641641900"
+          },
+          "file_id": "id:BSpOijBcT10AAAAAAD_aJA",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_R3S_STAGE2_REVIEWED_DELIVERY_265b8204_20261021.tar.gz",
+          "readback_bytes": 756456,
+          "readback_sha256": "d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0",
+          "upload_ack": "completed",
+          "whole_readback": "PASS"
+        },
+        "Library": {
+          "directory_id": "6ad7d8f6c22881919eb6566f680c1b14",
+          "evidence": {
+            "bytes": 1627,
+            "path": "receipts/STAGE2_LIBRARY.json",
+            "sha256": "82e35d05bbdec5828a296b491ba8d177eb8851f8e19b010d3ca00d0e471ca268"
+          },
+          "file_id": "file_000000000b34820ba674ad43b65a12ae",
+          "library_file_id": "libfile_458442bc4688819186a1f5290a221181",
+          "readback_bytes": 756456,
+          "readback_sha256": "d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0",
+          "upload_ack": "succeeded",
+          "whole_readback": "PASS"
+        }
+      },
+      "sha256": "d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0",
+      "source_commit": "265b82042e918c2554fbb9d890c8e7a7cce5ebfb",
+      "source_tree": "0478d4489837c9b3ac482be46e6871c8b7aad2cc",
+      "stage_id": "R3S_STAGE2",
+      "status": "complete_two_providers_drive_unresolved"
+    }
+  ],
+  "schema": "rec.r3s.backups.v1",
+  "source_delta_recovery_order": [
+    "R3P_COMPLETE_SNAPSHOT at 0b80913b",
+    "R3R_STAGE2 delta at 1313b1f1",
+    "R3R_STAGE3 delta at 7d1a0503",
+    "R3R_STAGE4 delta at bf6bb95c",
+    "R3S_STAGE1 delta at 96e8b88d; historical checkpoint only",
+    "R3S_STAGE2 fixed Git delta96e8b88d ->265b8204; exact base/source trees and members in producer receipt",
+    "Final preservation metadata delta265b8204 -> enclosing metadata commit: see actual PR113 preservation receipt for final commit/archive/IDs"
+  ],
+  "summary": {
+    "drive_current_followup_preservation": "UNRESOLVED_SEPARATE_FROM_OTHER_PROVIDERS",
+    "r3p_closeout_archives_all_three_providers": "PASS_complete_reused_FOR_3_DISTINCT_CLOSEOUT_ARCHIVES",
+    "r3r_stage1_to_stage4_library_and_dropbox": "PASS_complete_reused_FOR_EACH_WHOLE_ARCHIVE",
+    "r3s_final_delivery": "PASS_ACTUAL_ACK_AND_INDEPENDENT_WHOLE_READBACK_LIBRARY_DROPBOX; DRIVE_NOT_ATTEMPTED",
+    "r3s_stage1_library_and_dropbox": "PASS_ACTUAL_ACK_AND_WHOLE_REMOTE_READBACK"
+  },
+  "written_at_utc": "2026-10-20T22:06:19.161270+00:00"
 }

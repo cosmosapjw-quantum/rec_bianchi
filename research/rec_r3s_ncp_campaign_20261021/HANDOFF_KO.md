@@ -78,3 +78,7 @@ Drive의 기존 UNKNOWN_NO_ACK/NOT_ATTEMPTED/UNKNOWN_NO_ACK_TIMEOUT_25S 상태�
 ### 원본 text 증거의 archive 매핑
 
 생성 SVG와 원시 CI/git/connector text 12개는 원본 공백을 유지하기 위해 `receipts/ORIGINAL_TEXT_EVIDENCE.tar.gz` 안에 보존했다. 크기42,222 bytes, SHA256 `728048efca0483083401d771b726ca0df38ffcf0cf42b391fc7580e8b8080a78`이며 `ORIGINAL_TEXT_ARCHIVE.json`이 원래 logical path와 각 member SHA를 연결한다. 원래 CI/plot receipt는 그 logical path를 유지한다. 새 checkout에서 원문이 필요한 검토자는 archive와 member SHA를 확인하고 해당 경로로 복구한다. PNG/PDF 및 나머지 raw는 직접 Git 파일로 제공한다. 원문 정규화·receipt 변경·whitespace gate 완화는 하지 않았다.
+
+### Stage2 최신 보존 연결
+
+Reviewed delivery `265b82042e918c2554fbb9d890c8e7a7cce5ebfb` / tree `0478d4489837c9b3ac482be46e6871c8b7aad2cc`, archive `REC_R3S_STAGE2_REVIEWED_DELIVERY_265b8204_20261021.tar.gz`, 756,456 bytes, SHA256 `d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0`을 사용한다. Library `libfile_458442bc4688819186a1f5290a221181` / file `file_000000000b34820ba674ad43b65a12ae`, Dropbox `id:BSpOijBcT10AAAAAAD_aJA`의 전체 readback은 각각 PASS다. Git delta base96e8b88d와 code execution52f884b7를 구별한다. 그 뒤 보존 ACK를 기록한 최종 metadata commit과 archive는 PR113의 실제 최종 보존 댓글을 읽어 복구한다.

@@ -67,9 +67,10 @@
         "Google Drive preservation unresolved"
       ],
       "name": "판정·인계",
-      "status": "in_progress_final_preservation"
+      "status": "complete_scoped_handoff_with_external_blockers"
     }
   ],
+  "final_metadata_preservation": "Posted after this commit in PR113 final preservation receipt; enclosing source is not known before creating its own commit",
   "invariants": {
     "REI_activation": false,
     "global_convergence": "NOT_RUN",
@@ -219,9 +220,9 @@
         "DELIVERY.json"
       ],
       "id": "R10",
-      "limit": "GitHub source checkpoint and final reviewed delivery are separate stages",
+      "limit": "Source/evidence/CI/audits/handoff published; Dropbox and Library full readback PASS. Google Drive current followup preservation remains unresolved.",
       "name": "source and evidence publication, backups, handoff",
-      "status": "in_progress_final_preservation"
+      "status": "blocked_external_drive_preservation"
     }
   ],
   "runtime_nodes": [
@@ -298,15 +299,22 @@
     },
     {
       "CI": "receipts/CI_FIXED_SOURCE.json",
+      "Drive": "NOT_ATTEMPTED",
+      "Dropbox": "PASS",
+      "Library": "PASS",
       "NCP_runs": 0,
+      "archive_bytes": 756456,
+      "archive_sha256": "d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0",
+      "delivery_commit": "265b82042e918c2554fbb9d890c8e7a7cce5ebfb",
+      "delivery_tree": "0478d4489837c9b3ac482be46e6871c8b7aad2cc",
       "execution_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
       "new_scientific_integrations": 0,
       "new_unique_contracts": 47,
       "stage": "R3S reviewed local verification",
-      "status": "verified_final_archive_pending"
+      "status": "published_two_complete_remote_readbacks"
     }
   ],
-  "updated_utc": "2026-10-20T21:55:56.980214+00:00",
+  "updated_utc": "2026-10-20T22:06:19.161270+00:00",
   "validated_source": {
     "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
     "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"

@@ -116,7 +116,7 @@ Wolfram input과 output은 별도 receipt로 보존했다. symbolic W/L/P를 표
 
 ## 9. 보존과 인계
 
-R3R stage1/2/3 백업은 workspace pruning 이후 Drive/Dropbox/Library/GitHub에 연결된 자료에서 직접 복구했다. Library와 Dropbox에서 세 archive의 전체 SHA를 새로 확인했고, 추출한371개 regular file과344개 manifest-bound 항목을 연결했다. stage1의78 archive entries는77개 payload와 MANIFEST이며 중복 결과 수가 아니다.
+R3R stage1/2/3 백업은 workspace pruning 이후 연결 소스를 조사하고 GitHub·Dropbox·Library에서 직접 복구했다. Library와 Dropbox에서 세 archive의 전체 SHA를 새로 확인했고, 추출한371개 regular file과344개 manifest-bound 항목을 연결했다. stage1의78 archive entries는77개 payload와 MANIFEST이며 중복 결과 수가 아니다.
 
 R3R Stage4 `REC_R3R_STAGE4_CI_RECOVERY_bf6bb95c_20261021.tar.gz`는469,172 bytes, SHA256 `125043bf82a1d7ac7b398ce284f40b84f7e1c910459bcc49d13ea81190c4e7a0`이다. Dropbox와 Library의 create ACK 및 별도 전체 readback이 PASS다. 고정 Git delta이므로 이전 base chain이 필요하다.
 
@@ -139,3 +139,7 @@ PR112와 PR113은 draft/unmerged다. 실제 source·tree·metadata HEAD, CI, arc
 ### 원본 text 증거의 archive 매핑
 
 생성 SVG와 원시 CI/git/connector text 12개는 원본 공백을 유지하기 위해 `receipts/ORIGINAL_TEXT_EVIDENCE.tar.gz` 안에 보존했다. 크기42,222 bytes, SHA256 `728048efca0483083401d771b726ca0df38ffcf0cf42b391fc7580e8b8080a78`이며 `ORIGINAL_TEXT_ARCHIVE.json`이 원래 logical path와 각 member SHA를 연결한다. 원래 CI/plot receipt는 그 logical path를 유지한다. 새 checkout에서 원문이 필요한 검토자는 archive와 member SHA를 확인하고 해당 경로로 복구한다. PNG/PDF 및 나머지 raw는 직접 Git 파일로 제공한다. 원문 정규화·receipt 변경·whitespace gate 완화는 하지 않았다.
+
+### 검토된 최종 배송
+
+코드·검증·CI raw·감사·handoff의 배송 commit은 `265b82042e918c2554fbb9d890c8e7a7cce5ebfb`, tree `0478d4489837c9b3ac482be46e6871c8b7aad2cc`이다. `REC_R3S_STAGE2_REVIEWED_DELIVERY_265b8204_20261021.tar.gz`는756,456 bytes/SHA256 `d19c38eb9d4b938851cfef129c71d00a9756e59ba9451d2fe991cdbb7ffddbf0`이며, Library ID `libfile_458442bc4688819186a1f5290a221181`, Dropbox ID `id:BSpOijBcT10AAAAAAD_aJA` 각각의 완료 ACK와 별도 전체 SHA가 PASS다. delta base는96e8b88d, 실제 code/test/plot execution source는52f884b7로 구별한다. 최종 보존 metadata HEAD와 그 자체의 보존/CI receipt는 PR113의 마지막 보존 댓글에 별도로 고정한다.
