@@ -89,3 +89,7 @@ VigilODE의 pinned `ParallelExecution`에서 로컬 pool, indexed output 순서 
 - [HyRec 원 논문](https://arxiv.org/abs/1011.3758), [HyRec2 원 논문](https://arxiv.org/abs/2007.14114): effective atom/희소 RT 구조와 별도 보정 기반 방법의 구분. HyRec2로 원래 October2012 operator를 대체하지 않았다.
 - [Rayon1.12 ThreadPoolBuilder](https://docs.rs/rayon/1.12.0/rayon/struct.ThreadPoolBuilder.html), [IndexedParallelIterator](https://docs.rs/rayon/1.12.0/rayon/iter/trait.IndexedParallelIterator.html)
 - [VigilODE exact cache source](https://github.com/cosmosapjw-quantum/vigilode/blob/3c0157910076ce552283c831c2be000c66671fab/crates/rodas5p-integrators/src/exact_band_cache.rs), [pinned parallel source](https://github.com/cosmosapjw-quantum/vigilode/blob/a21d573980f66fe02891bd216153443b5352f921/crates/rodas5p-integrators/src/parallel.rs)
+
+## 최종 보존
+
+코드·증거 snapshot `0b80913bf1c665cc4cfab6dfaa3ea35f815a482f`의 모든 추적 파일3,410개를 ZIP으로 보존했다. ZIP은122,092,525bytes, SHA256 `edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521`이며 Drive·Dropbox·Library 전체 원격 readback이 각각PASS다. 새16단계 raw148,406,351bytes도 세 저장소 독립 전체 readback이PASS다. 생산자 hash, 업로드ACK, 독립 readback을 BACKUP_ACKS.json에서 별도로 기록했다. 최종 보존 metadata는 이 immutable ZIP 뒤의 Git commit/PR110 Conversation에 있다.

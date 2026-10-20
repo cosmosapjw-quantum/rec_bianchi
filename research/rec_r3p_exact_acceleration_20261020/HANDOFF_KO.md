@@ -51,3 +51,9 @@ python -B scripts/run_r3p_u6_supervised.py --checkpoint <검증한_U5_경로> --
 ## 유지할 과학적 상태
 
 h=4.245e-5, 원래 atomic/thermal operator, predictor recurrence, causal/stage boundary와 같은-h gate를 보존한다. U5 원래 h=HOLD_9_FAIL, h2=HOLD_8_FAIL, 기존 비용=CLOSED_HOLD_NOT_RESET, REI_activation=false다. Python h/h2/h4 전역 수렴과 Bianchi/REI/CMB 예측을 승인하지 않는다. VigilODE pin `a21d573980f66fe02891bd216153443b5352f921`을 유지하며 upstream solver 결과를 REC의 성능이나 정확성으로 대체하지 않는다.
+
+## 최종 코드·증거 보존
+
+완료 snapshot은 `0b80913bf1c665cc4cfab6dfaa3ea35f815a482f`다. 전체 추적 파일3,410개를 담은 `REC_R3P_CODE_EVIDENCE_HANDOFF_0b80913b_20261020.zip`은122,092,525bytes, SHA256 `edccebf552671489f91e3ec2c31357fb901b73f90e0230d0cbe24a0b1f524521`다. 각 entry를 Git blob과 대조했고 세 저장소 독립 전체 readback SHA도 모두PASS다. Drive/Dropbox는3부분이며 Library는한개 완전한ZIP이다. 부분 hash/원격 ID는 BACKUP_ACKS.json에 있다.
+
+원본 snapshot ZIP과 그 업로드 후 작성한 보존 metadata의 commit을 구분한다. 이 마지막 metadata와 최종 HEAD CI는 GitHub/PR110 Conversation에 결속한다. 원래 단계0/2 ZIP 자체의 readback은NOT_RUN이고 단계1 및 새 raw/최종 코드 ZIP의3저장소 전체 readback은PASS다. 후자의 검증으로 과거 단계의 독립 readback 이력을 소급 변경하지 않는다.

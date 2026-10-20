@@ -107,8 +107,9 @@
       "id": "C7_SAME_H",
       "status": "complete_SMOKE_ONLY_same_h_gate_met",
       "backup": "smoke16_raw_three_upload_ACKs_and_three_independent_whole_readback_SHA_PASS",
-      "publication": "stage3_evidence_pending_push",
-      "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d"
+      "publication": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+      "final_archive": "three_upload_ACKs_and_three_independent_whole_readback_SHA_PASS"
     },
     {
       "id": "C8_MATCHED_COST",
@@ -119,15 +120,20 @@
     {
       "id": "C9_INDEPENDENT_CODE",
       "status": "complete_no_remaining_P1_P2_in_reviewed_scope",
-      "backup": "final_archive_pending",
-      "publication": "stage3_evidence_pending_push",
-      "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d"
+      "backup": "final_code_archive_three_independent_whole_readback_SHA_PASS",
+      "publication": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+      "tested_code_commit": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+      "final_archive": "three_upload_ACKs_and_three_independent_whole_readback_SHA_PASS"
     },
     {
       "id": "C10_PUBLISH",
-      "status": "in_progress_final_archive_and_remote_readback",
-      "backup": "stage2_three_upload_ACKs; smoke16_raw_three_independent_whole_readback_SHA_PASS; final_code_archive_pending",
-      "publication": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d"
+      "status": "complete",
+      "backup": "final_code_and_smoke_raw_each_three_upload_ACKs_and_three_independent_whole_readback_SHA_PASS",
+      "publication": {
+        "code": "e2b39e33e7c840fbe63024bf9e918ef5a1bfaf6d",
+        "evidence_archive_snapshot": "0b80913bf1c665cc4cfab6dfaa3ea35f815a482f",
+        "preservation_metadata": "successor commit containing this DAG; resolved HEAD and CI in PR110 Conversation"
+      }
     }
   ],
   "preserve": {
@@ -227,5 +233,14 @@
       "C9_INDEPENDENT_CODE",
       "C10_PUBLISH"
     ]
-  ]
+  ],
+  "closeout": {
+    "new_full5210": "NOT_RUN_BY_R3P",
+    "NCP": "NOT_RUN",
+    "production_speedup": "NOT_MEASURED",
+    "raw_remote_restoration_members": 43,
+    "code_archive_verified_git_blob_entries": 3410,
+    "final_conversation_receipt": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/110",
+    "self_referential_archive_hash": "NOT_CLAIMED"
+  }
 }
