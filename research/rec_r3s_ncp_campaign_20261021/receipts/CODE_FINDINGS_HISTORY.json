@@ -1,0 +1,89 @@
+{
+  "additional_closed_design_observations": [
+    "Charge startup/preflight and final hashing to cumulative campaign costs.",
+    "Reserve full active/new memory allowances without crediting summed RSS.",
+    "Fail closed on unrecognized cgroup v1/hybrid hierarchy.",
+    "Bind resume to finite monotone costs and same source/input/host/CPU/allocation/runtime identity.",
+    "Preserve parent pytest limits/subreaper state by running only dummy process scenarios in fresh bounded children.",
+    "Remove inherited PYTEST_ADDOPTS and PYTEST_PLUGINS from selected-test command environment."
+  ],
+  "final_reviewed_utc": "2026-10-20T21:54:51.000649+00:00",
+  "final_source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+  "final_verdict": "PASS_SCOPED; NO_OPEN_P1_P2_FINDINGS",
+  "findings": [
+    {
+      "classification": "IMPLEMENTATION_SIGNAL_TARGET_IDENTITY",
+      "correction": "Caller namespace depth mapping; signaling moved to an opened process directory descriptor bound to the reviewed child.",
+      "evidence": [
+        "prepublication_review/GUARDIAN_READONLY_SUPPLEMENT.json",
+        "AUDIT_EVIDENCE_READBACK_001.json"
+      ],
+      "id": "G1",
+      "observed_on": "7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26",
+      "problem": "Taking child NSpid[-1] may use a different PID namespace from the signaling caller.",
+      "severity": "P1",
+      "status": "CLOSED_ON_96E8_SOURCE_AND_SCOPE_TESTS"
+    },
+    {
+      "classification": "IMPLEMENTATION_PID_REUSE_RACE",
+      "correction": "Opened /proc/PID descriptor, descriptor-relative stat and immediate PPID validation, pidfd_send_signal; no numeric PID signal in coordinator cleanup.",
+      "evidence": [
+        "AUDIT_EVIDENCE_READBACK_001.json"
+      ],
+      "id": "G2",
+      "observed_on": "7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26",
+      "problem": "Numeric kill after checking stat/starttime can target a reused PID; check and use are not bound.",
+      "severity": "P1",
+      "status": "CLOSED_ON_96E8_SOURCE_AND_SCOPE_TESTS"
+    },
+    {
+      "classification": "IMPLEMENTATION_LIVE_USAGE_COVERAGE",
+      "correction": "Small R3S-only all-TID union with PPID-scan fallback; fixed inherited helper is unchanged. Claim remains scoped to the fixed jobs and sampled process information.",
+      "evidence": [
+        "AUDIT_EVIDENCE_READBACK_001.json"
+      ],
+      "id": "G3",
+      "problem": "Frozen monitor main-TID children interface alone can miss live children forked by another thread.",
+      "severity": "P2_SCOPED_MONITOR_COVERAGE",
+      "status": "CLOSED_WITH_EXPLICIT_SCOPE"
+    },
+    {
+      "classification": "IMPLEMENTATION_RESOURCE_CLOSEOUT",
+      "closure": {
+        "actual_readback": "AUDIT_EVIDENCE_READBACK_002.json",
+        "coordinator_sha256": "8e53d84479a6aa026cd80f15f8e0a22494cfce69e157a82635b731770df95221",
+        "new_specific_cases": 2,
+        "repeated_affected_dummy_cases": 3,
+        "reviewed_utc": "2026-10-20T21:54:51.000649+00:00",
+        "source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+        "source_tree": "eb2108cfea0cd33577afed425389cbbce2de1189",
+        "static_evidence": "DEADLINE_FIX_STATIC_READBACK.json",
+        "test_sha256": "82e11ce853bfd639b33920a9ccc621877199ecc42f25504cec20d3b6b06c1254",
+        "validation_sha256": "fa9382e6e8c71ed425a778ba92a2fac7f589cb82ca6667718ee6e26ac99af44e",
+        "verdict": "PASS_SCOPED_ABSOLUTE_DEADLINE_AND_CLOSEOUT_CONTRACT"
+      },
+      "evidence": "Static call flow arm_deadline -> execute_jobs catch -> main final identity/full file_hashes, or final identity catch -> full file_hashes. Existing 45 tests do not exercise this expiry path.",
+      "id": "G4",
+      "observed_on": "96e8b88d854d1606c6204cefe2f2920f46219dff",
+      "prior_45_case_verdict": "UNCHANGED_PASS_ON_ORIGINAL_SCOPE",
+      "problem": "A one-shot campaign SIGALRM is caught by execute_jobs or final identity handling, then nonessential final source/input/runtime or full output hashing can continue without an armed wall deadline.",
+      "requested_minimum_correction": "Preserve an absolute hard deadline and durable expiry flag; skip expensive closeout after expiry; bound cleanup and final receipt by remaining reserve.",
+      "severity": "P2",
+      "status": "CLOSED_ON_52F884_SOURCE_AND_ACTUAL_TARGETED_RECEIPT"
+    }
+  ],
+  "open_P1_P2": [],
+  "recorded_utc": "2026-10-20T21:38:56.298827+00:00",
+  "reviewer": "/root/context_intake",
+  "schema": "rec.r3s.independent-code-findings.v1",
+  "scientific_runs_by_reviewer": 0,
+  "scope_limits": [
+    "No generic hostile-process security container claim.",
+    "No NCP compatibility, physical convergence, production readiness or measured new scientific speedup is established by this review."
+  ],
+  "source_snapshots": {
+    "early_guardian": "7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26",
+    "first_published_coordinator": "d1baa75529e030b81e03708326b1297c62fbb0069313c49ce5ba1b0723cc7e69",
+    "first_source_commit": "96e8b88d854d1606c6204cefe2f2920f46219dff"
+  }
+}

@@ -1,0 +1,30 @@
+scope,round,backend,cpu_s,wall_s,rss_bytes,legacy_over_numpy_cpu,legacy_over_numpy_wall,binary64_lane_difference,solver_integrations,affinity,status
+saved_stream_audit,0,legacy,0.1991386959999999,0.20193970599211752,,,,0,0,62,warmup
+saved_stream_audit,0,r3r_numpy,0.14251889800000006,0.14453980399412103,,,,0,0,62,warmup
+saved_stream_audit,0,legacy,0.19781001399999987,0.20026409800630063,,,,0,0,62,measured
+saved_stream_audit,0,r3r_numpy,0.1425699629999997,0.1442986589972861,,,,0,0,62,measured
+saved_stream_audit,1,r3r_numpy,0.14474125399999993,0.14687123597832397,,,,0,0,62,measured
+saved_stream_audit,1,legacy,0.19916720599999982,0.20171634698635899,,,,0,0,62,measured
+saved_stream_audit,2,legacy,0.19405367699999987,0.1962728340004105,,,,0,0,62,measured
+saved_stream_audit,2,r3r_numpy,0.14647819599999945,0.14861714400467463,,,,0,0,62,measured
+saved_stream_audit,3,r3r_numpy,0.14179560999999996,0.14393158600432798,,,,0,0,62,measured
+saved_stream_audit,3,legacy,0.20002315500000023,0.20287445999565534,,,,0,0,62,measured
+saved_stream_audit,4,legacy,0.20200631299999916,0.20473701201262884,,,,0,0,62,measured
+saved_stream_audit,4,r3r_numpy,0.14203117899999995,0.1436045010050293,,,,0,0,62,measured
+paired_ratio,0,legacy_over_r3r_numpy,,,,1.38745925044534,1.38784448447346,0,0,62,MEASURED
+paired_ratio,1,legacy_over_r3r_numpy,,,,1.37602238819901,1.37342309161291,0,0,62,MEASURED
+paired_ratio,2,legacy_over_r3r_numpy,,,,1.32479565081482,1.32066078456088,0,0,62,MEASURED
+paired_ratio,3,legacy_over_r3r_numpy,,,,1.41064420118507,1.40952007566675,0,0,62,MEASURED
+paired_ratio,4,legacy_over_r3r_numpy,,,,1.42226738116424,1.42570052177862,0,0,62,MEASURED
+fresh_process_rss,,legacy,0.19959336199999989,0.20345567000913434,105861120,,,,0,62,PASS
+fresh_process_rss,,r3r_numpy,0.14302310099999982,0.14535440600593574,105725952,,,,0,62,PASS
+campaign_job,,h4_legacy16,6.7182849999999945,6.834278769994853,378687488,,,,,62,complete
+campaign_job,,h4_numpy16,6.686115999999998,6.790705268009333,377511936,,,,,62,complete
+campaign_job,,saved_stream_benchmark,11.356829000000001,11.415943421976408,237326336,,,,,62,blocked
+campaign_job,,trace_interleaved,7.559742,7.851366492017405,251068416,,,,,63,complete
+campaign_job,,trace_original,7.401584999999999,7.635892527992837,251297792,,,,,62,complete
+measurement_scope,throughput_rows_per_s,io_bytes_observed,setup_compile_time,solver_integration_time,audit_postprocess_time,worker_utilization_cpu_over_wall,aggregate_memory_observation,measurement_status,notes
+saved_stream_audit_legacy,123936.41057603834,15434249,INCLUDED_NOT_SEPARATELY_MEASURED,0 solver integrations,0.20171634698635899,~1.0; single CPU affinity [62],MemAvailable pre-run 131385700352 bytes; in-run aggregate peak not measured,MEASURED_SCOPE_LIMITED,Warm-cache full CSV audit open/parse/allocation/callback/verdict
+saved_stream_audit_r3r_numpy,173251.7833063867,15434249,INCLUDED_NOT_SEPARATELY_MEASURED,0 solver integrations,0.1442986589972861,~1.0; single CPU affinity [62],MemAvailable pre-run 131385700352 bytes; in-run aggregate peak not measured,MEASURED_SCOPE_LIMITED,Warm-cache full CSV audit open/parse/allocation/callback/verdict
+h4_16_step_pilot_h4_legacy16,,NOT_MEASURED,included in job CPU/wall; compile/setup split unavailable,integration-only time not separately instrumented,6.834278769994853,0.9830276501883247,tree RSS is separately recorded; aggregate host peak not measured,MEASURED_SCOPE_LIMITED,16 accepted steps; worker status SMOKE_ONLY; no performance claim
+h4_16_step_pilot_h4_numpy16,,NOT_MEASURED,included in job CPU/wall; compile/setup split unavailable,integration-only time not separately instrumented,6.790705268009333,0.9845981729612019,tree RSS is separately recorded; aggregate host peak not measured,MEASURED_SCOPE_LIMITED,16 accepted steps; worker status SMOKE_ONLY; no performance claim

@@ -1,0 +1,87 @@
+{
+  "adapter_repair": {
+    "accepts_only": "PASS_SAVED_STREAM_AUDIT_ONLY",
+    "diff_check_exit_code": 0,
+    "runner_sha256": "a9cc531307e3ed04aad67b9ff468291d406fa9c54ed30f7f6e2d30e11d620429",
+    "scope": "scripts/run_r3s_ncp_campaign.py and tests/test_r3s_ncp_campaign.py only",
+    "targeted_validation_exit_code": 0,
+    "targeted_validation_stdout_sha256": "7a125e7176e57773d5b77a34eddea5fd497f89d3030d3f59c62831a94e8c61bd",
+    "test_sha256": "1620f80786ad25531da0db1bb9272da7d3fb71a1c32e698f9629772f2c3dbec5"
+  },
+  "adjudication_id": "REC_R3S_NCP_ADJUDICATION_001",
+  "allocation": {
+    "cpu_limit_s": 305,
+    "cpu_s": 41.782112999999995,
+    "id": "REC_R3S_NCP_20261021_001",
+    "resource_cost_reset": false,
+    "wall_limit_s": 912,
+    "wall_s": 33.84308078902541
+  },
+  "benchmark_receipt": {
+    "adjudicated_job_status": "PASS_SCOPED",
+    "differential": "PASS",
+    "differing_binary64_lanes": 0,
+    "lanes": 25000,
+    "median_paired_cpu_ratio": 1.3874592504453431,
+    "median_paired_wall_ratio": 1.3878444844734634,
+    "path": "evidence/campaign_001/jobs/saved_stream_benchmark/run/benchmark.json",
+    "producer_exit_code": 0,
+    "producer_status": "PASS_SAVED_STREAM_AUDIT_ONLY",
+    "scope": "entire warm-cache CSV audit including open, parsing, allocations, callbacks, and verdict; no solver",
+    "sha256": "5733f05d5f02ba16a89b378fb44b3f639e3b36e297a69b6d0d777d7ec622ee67",
+    "solver_integrations": 0
+  },
+  "campaign_closeout": {
+    "all_guardians_pass": true,
+    "all_job_exit_codes_zero": true,
+    "all_owned_descendants_reaped": true,
+    "all_resource_caps_respected": true,
+    "file_hash_inventory_complete": true,
+    "jobs_adjudicated_complete": 5,
+    "original_terminal_immutable": true,
+    "post_adjudication_blocked_jobs": 0
+  },
+  "claim_ceiling": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "new_scientific_integrations": 0,
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "whole_production_speedup": "NOT_MEASURED"
+  },
+  "execution_source": {
+    "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"
+  },
+  "independent_review": {
+    "benchmark_receipt_sha256": "5733f05d5f02ba16a89b378fb44b3f639e3b36e297a69b6d0d777d7ec622ee67",
+    "decision": "PASS_SCOPED; no additional repair",
+    "findings": [
+      "exact producer enum only is accepted",
+      "other values PASS, FAIL, PASS_OTHER_SCOPE rejected",
+      "scientific equations, tolerances, claims, and job resource limits unchanged",
+      "producer exit 0, differential PASS, 25000 lanes, zero binary64 differences",
+      "original terminal HOLD preserved; additive adjudication permitted without rerun",
+      "h4 remains 16-step SMOKE_ONLY; not a later-stage or physical result"
+    ],
+    "original_campaign_terminal_sha256": "eaee72446c4f8b2e5ce8de52a8a508e88a3dfb34f3697b070db29af239006625",
+    "review_scope": "original campaign raw receipts, producer/consumer status contract, two-file adapter diff, targeted validation stdout/exit/diff-check receipt",
+    "reviewer_tier": "Astra-tier independent read-only review",
+    "validation_receipt": "receipts/adapter_repair_validation_001/VALIDATION.json",
+    "validation_receipt_sha256": "ff0ebe1aee3e60cb3b8c59947e41d9d3aaf90cb821ac8785f62195c3aa7c98c8"
+  },
+  "no_rerun": true,
+  "original_terminal": {
+    "original_blocked_job_count": 1,
+    "path": "evidence/campaign_001/attempt_0001.TERMINAL.json",
+    "sha256": "eaee72446c4f8b2e5ce8de52a8a508e88a3dfb34f3697b070db29af239006625",
+    "status": "HOLD"
+  },
+  "recorded_at_utc": "2026-10-20T23:22:26.157176+00:00",
+  "schema": "rec.r3s.ncp-campaign-adjudication.v1",
+  "scope": "post hoc mechanical revalidation of the exact saved-stream producer receipt under the corrected consumer enum; no scientific calculation was rerun",
+  "status": "PASS_SCOPED"
+}

@@ -32,6 +32,10 @@ DEFAULT_EXCLUDES = (
     "research/rec_r10_c8_20261015/C8_REFINEMENT.csv",
     "research/rec_c9_optim_20261015/XACT_STDOUT.txt",
     "research/rec_c9_optim_20261015/REPORT_KO.md",
+    # One immutable NCP execution bundle: preserve raw command output, imported
+    # source bytes, and RFC4180 CRLF measurements exactly as captured.
+    "research/rec_r3s_ncp_campaign_20261021/ncp_execution_001/**",
+    "research/rec_r3s_ncp_campaign_20261021/receipts/backup_upload_001/**",
 )
 
 

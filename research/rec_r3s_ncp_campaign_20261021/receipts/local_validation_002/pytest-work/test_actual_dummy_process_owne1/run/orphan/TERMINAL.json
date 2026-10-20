@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-c",
+    "import subprocess,sys; subprocess.Popen([sys.executable,'-B','-c','import time; time.sleep(5)'],start_new_session=True)"
+  ],
+  "completed_wait4_ru_maxrss_bytes": 22056960,
+  "cpu_affinity": [
+    0
+  ],
+  "cpu_s": 0.414207,
+  "failure": "ValueError: JOB_GUARDIAN_NONZERO_EXIT",
+  "files_sha256": {
+    "GUARDIAN.json": "dbaaf9d811580959934b9f74d6d0e8d6d9e5c58d09029701607e9fba3839843a",
+    "LIMITS.json": "7ea8aa040c0718343c49dac5f8a6bde1a7842bad1ef09e299437dd9bdb296232",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "guardian": null,
+  "job": "orphan",
+  "limits": {
+    "cpu_s": 60.0,
+    "per_process_as_bytes": 2147483648,
+    "wall_s": 180.0
+  },
+  "max_polled_process_tree_rss_bytes": 21921792,
+  "memory_scope": "50MS_POLLED_TREE_RSS_AND_WAIT4_PEAK; NOT_EXACT_AGGREGATE_PEAK",
+  "resource_scope": "GUARDIAN_AND_REAPED_DESCENDANTS_PLUS_PARENT_SETUP_AND_CLOSEOUT",
+  "returncode": 2,
+  "started_monotonic_s": 85386.906210594,
+  "status": "blocked",
+  "terminal_monotonic_s": 85387.378150551,
+  "verdict": null,
+  "wall_s": 0.4719340790034039
+}

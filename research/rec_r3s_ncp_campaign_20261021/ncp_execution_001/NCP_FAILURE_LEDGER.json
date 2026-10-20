@@ -1,0 +1,35 @@
+{
+  "classification_policy": "Controller intake/transport/packaging failures are not scientific failures; original NCP raw receipts are retained.",
+  "items": [
+    {
+      "classification": "CONTROLLER_LAUNCH_ERROR",
+      "event": "Attempted to execute a remote path through local process cwd; local process creation denied before SSH or science execution.",
+      "id": "LOCAL_REMOTE_PATH_LAUNCH",
+      "science_started": false
+    },
+    {
+      "classification": "INTAKE_SERIALIZATION_ERROR",
+      "event": "Attempt_003 intake JSON ended with literal backslash+n after closing brace; first SSH run stopped with JSONDecodeError.",
+      "id": "HOST_INTAKE_JSON_TRAILING_LITERAL",
+      "repair": "Created attempt_004 by removing only invalid two-byte suffix and serializing valid JSON; retained source and corrected hash.",
+      "science_started": false
+    },
+    {
+      "classification": "PACKAGING_COLLECTOR_ERROR",
+      "event": "Initial archive list included absent intake/attempt_001 path; tar stopped and no copy was made.",
+      "id": "CAMPAIGN_TAR_ATTEMPT_001",
+      "recovery": "Created attempt002 archive with present evidence paths; local/remote archive hashes matched.",
+      "science_started": false
+    },
+    {
+      "adjudication_receipt": "receipts/CAMPAIGN_ADJUDICATION_001.json",
+      "classification": "IMPLEMENTATION_CONTRACT_MISMATCH",
+      "event": "Benchmark producer emitted PASS_SAVED_STREAM_AUDIT_ONLY and exit 0; campaign consumer requires status == PASS and marked job blocked, making terminal HOLD. Raw differential, lane, benchmark, guardian and resource gates passed.",
+      "id": "CAMPAIGN_CLOSEOUT",
+      "original_campaign_terminal_status": "HOLD",
+      "repair_state": "CLOSED_BY_ADDITIVE_PASS_SCOPED_ADJUDICATION",
+      "science_failure": false
+    }
+  ],
+  "schema": "rec.r3s.ncp-failure-ledger.v1"
+}

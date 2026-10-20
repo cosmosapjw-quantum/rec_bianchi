@@ -1,0 +1,133 @@
+{
+  "schema": "rec.r3s.guardian-readonly-supplement.v1",
+  "recorded_at_utc": "2026-10-20T21:19:20.520196+00:00",
+  "reviewer": "backup_intake (not implementation author)",
+  "scope": [
+    "guardian descendant ownership and cleanup after leader exit or SIGKILL",
+    "PID namespace mapping and unintended signal target risk",
+    "bounded related observation on live descendant measurement"
+  ],
+  "reviewed_source": {
+    "path": "scripts/run_r3s_ncp_campaign.py",
+    "sha256": "7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26",
+    "snapshot_path": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_guardian_review/7746b0513f9477264f35067b87efe031ea135f34da942e8849dde93d4cf81d26.py",
+    "current_source_sha256_at_report": "5601487790aa0d617a830fbba239030ce3f465835b8dca6477f3f80d70eb69a0",
+    "snapshot_equals_current": false
+  },
+  "support_source": {
+    "path": "scripts/build_r3o_rust.py",
+    "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5"
+  },
+  "status": "DRAFT_SOURCE_FINDINGS_REQUIRING_FINAL_SHA_REVIEW",
+  "actions": {
+    "implementation_edits": 0,
+    "campaign_imports": 0,
+    "campaign_runs": 0,
+    "namespace_creations": 0,
+    "signals_sent": 0,
+    "synthetic_tests_executed": 0
+  },
+  "findings": [
+    {
+      "id": "G1",
+      "priority": "P1",
+      "state": "FOUND_IN_REVIEWED_SNAPSHOT; owner reports caller-depth fix, not yet independently read back",
+      "location": "child_snapshot lines415-418 and kill_snapshot lines429-431 in reviewed snapshot",
+      "problem": "NSpid[-1] identifies the deepest namespace of each descendant. A deeper descendant namespace makes this different from the caller-local PID accepted by os.kill. Validation reads one outer procfs process, but the signal may target a different process in the caller namespace.",
+      "necessary_conditions": [
+        "Read the caller NSpid vector using the same procfs mount. Let d be its length.",
+        "Require caller NSpid[-1] equals getpid and caller first entry equals /proc/self/stat PID.",
+        "For a proven descendant require target vector length at least d and target first entry equal the observed outer procfs PID.",
+        "Map the signal PID as target NSpid[d-1], with valid positive integer identity, rather than target[-1].",
+        "If NSpid is unavailable or malformed, do not silently apply a cross-namespace fallback. Accept a direct numeric fallback only when own procfs PID equals getpid and ownership is proven."
+      ]
+    },
+    {
+      "id": "G2",
+      "priority": "P1_CANDIDATE",
+      "state": "OWNER_NOTIFIED; final implementation pending",
+      "location": "kill_snapshot lines429-431 in reviewed snapshot",
+      "problem": "The procfs starttime check and subsequent numeric os.kill are separate operations. A process can exit and have its PID recycled between them. Rechecking starttime/local PID narrows but does not atomically close this race.",
+      "recommended_resolution": "Use a stable process reference when signaling, such as pidfd_send_signal with a procfs process directory fd. Bind identity/ownership reads to the same fd and never convert a validated fd back into a bare PID for the final signal. Report unsupported capability as a bounded cleanup hold; do not silently claim race-free cleanup with kill(PID).",
+      "limitation": "No PID-reuse schedule was executed; this is the ordinary API race documented by Linux man-pages."
+    },
+    {
+      "id": "G3",
+      "priority": "P2_SCOPE_REVIEW",
+      "state": "REFERRED_TO_PRIMARY_AUDITOR_FOR_CATALOG_SCOPE",
+      "location": "build_r3o_rust.py proc_children lines67-80 and live_usage lines83-95",
+      "problem": "The fast path reads only /proc/PID/task/PID/children. Children forked by other threads can be absent while the parent lives because /proc/.../task/TID/children is per task. The PPid fallback only runs when that main-thread interface is absent.",
+      "implication": "This can make live CPU/RSS measurement partial. After the leader is terminated, subreaper adoption can still permit eventual cleanup; that does not retroactively establish live measurement coverage.",
+      "possible_resolution": "Establish the catalog restriction explicitly, or enumerate all task/TID children with de-duplication / use a complete PPid scan for the R3S process tracker."
+    }
+  ],
+  "source_flow_observations": [
+    "The reviewed guardian calls PR_SET_CHILD_SUBREAPER before spawning the job and loops wait4(-1,WNOHANG).",
+    "A leader exit with surviving/adopted descendants produces HOLD and enters cleanup; cleanup is not dependent on process-group membership, so setsid alone does not escape that ownership path.",
+    "Controller enables subreaper and rejects direct adopted descendants outside the active guardian inventory, entering cleanup after a guardian hard exit.",
+    "These are source-flow observations, not new runtime test PASS claims."
+  ],
+  "synthetic_test_proposals": [
+    {
+      "name": "nested_target_uses_caller_namespace",
+      "caller_nspid": [
+        9000,
+        44
+      ],
+      "target_nspid": [
+        9100,
+        321,
+        1
+      ],
+      "expected": "321, never1"
+    },
+    {
+      "name": "procfs_in_caller_namespace_with_nested_target",
+      "caller_nspid": [
+        44
+      ],
+      "target_nspid": [
+        321,
+        1
+      ],
+      "expected": "321, never1"
+    },
+    {
+      "name": "shorter_target_vector",
+      "caller_nspid": [
+        9000,
+        44
+      ],
+      "target_nspid": [
+        9100
+      ],
+      "expected": "fail closed before signal"
+    },
+    {
+      "name": "missing_or_malformed_mapping",
+      "expected": "missing depth mapping with own procfs PID != getpid, noninteger IDs or inconsistent first entries cause no signal"
+    },
+    {
+      "name": "identity_changes_before_signal",
+      "expected": "mock target metadata/PID reuse; final signal must be tied to the originally validated stable fd, or rejected; no real namespace or signal required"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://man7.org/linux/man-pages/man5/proc_pid_status.5.html",
+      "ref_id": "turn9view0",
+      "supports": "NSpid vector ordering from procfs-mounted namespace inward"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man2/pidfd_send_signal.2.html",
+      "ref_id": "turn9view1",
+      "supports": "PID recycling race, stable fd signal, proc/PID directory fd option"
+    },
+    {
+      "url": "https://docs.kernel.org/7.0/filesystems/proc.html",
+      "ref_id": "turn8search0",
+      "supports": "per pid/tid children interface and non-atomic procfs enumeration"
+    }
+  ],
+  "overall_verdict": "No final code approval until the fixed source SHA and relevant synthetic regressions are independently reviewed; no scientific or production verdict from this supplement"
+}

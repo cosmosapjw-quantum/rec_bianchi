@@ -1,0 +1,40 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-X",
+    "pycache_prefix=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/empty-pytest-pycache",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r3s_ncp_campaign.py::test_caught_deadline_keeps_original_hard_end_and_cannot_rearm_reserve",
+    "tests/test_r3s_ncp_campaign.py::test_timeout_in_final_identity_skips_all_later_optional_work",
+    "tests/test_r3s_ncp_campaign.py::test_actual_dummy_process_ownership_in_fresh_child",
+    "--basetemp=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/pytest-work",
+    "--junitxml=/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/tests.xml"
+  ],
+  "cwd": "/workspace/scratch/45780e6e06f6/rec_bianchi",
+  "failure": null,
+  "max_polled_process_tree_rss_bytes": 111079424,
+  "pid_namespace_mapping": {
+    "popen_pid": 9,
+    "procfs_pid": 391906
+  },
+  "process_tree_cpu_s": 3.979777,
+  "resource_measurement_coverage": {
+    "child_enumeration": "PROC_TASK_CHILDREN_WITH_PPID_STAT_SCAN_FALLBACK",
+    "completed_cpu": "RUSAGE_SELF_PLUS_REAPED_CHILDREN",
+    "live_scope": "MAPPED_CHILD_AND_DESCENDANTS_POLLED",
+    "memory_enforcement": "PER_PROCESS_RLIMIT_AS_AND_SAMPLED_DESCENDANT_RSS",
+    "per_process_address_space_limit_bytes": 2147483648,
+    "rss": "50_MS_SAMPLED_PROCESS_TREE_RSS_NOT_EXACT_PEAK"
+  },
+  "returncode": 0,
+  "stderr": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/tests.stderr.log",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "/workspace/scratch/45780e6e06f6/rec_r3q_intake/r3s_local_validation_002/tests.stdout.log",
+  "stdout_sha256": "5189cf7c45fa4768770f19366e40b6611538c292d6bba19cf7aceb92c41ac290",
+  "wall_s": 3.9100531909934944
+}

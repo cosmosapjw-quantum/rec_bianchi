@@ -1,0 +1,21 @@
+{
+  "schema": "rec.r3s.algebra-input-recovery.v1",
+  "purpose": "Prior R3S algebra response was preserved but its exact serialized request was not retained in the restored artifact. This small follow-up preserves exact new input and output; it is not a REC numerical rerun.",
+  "code": "Clear[q,a,W,L,P]; s=1/(1-q+q/a); <|\"Assumptions\"->(Element[{q,a},Reals] && 0<=q<=1 && a>=1), \"AmdahlBounds\"->FullSimplify[1<=s<=a, Element[{q,a},Reals] && 0<=q<=1 && a>=1], \"AmdahlDerivative\"->FullSimplify[D[s,q]], \"DerivativeNonnegative\"->FullSimplify[D[s,q]>=0, Element[{q,a},Reals] && 0<=q<=1 && a>=1], \"EndpointSpeedups\"->{FullSimplify[s/.q->0],FullSimplify[s/.q->1]}, \"IllustrationsNotMeasuredSolverFractions\"->Table[{q0,N[s/.{a->13641298365714964/10000000000000000,q->q0},16]},{q0,{1/10,1/4,1/2}}], \"FixedDAGWorkSpanBound\"->Max[W/P,L], \"ReadyWidthTwoAt64CPUs\"->Min[2,64]|>",
+  "timeConstraint": 10,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Symbol::undefined2: Warning: Global symbols \"W, L, P, W, P, L\" are undefined.\nGeneral::messages: Messages were generated which may indicate errors.\n\nOut[1]= <|\"Assumptions\" -> Element[q | a, Reals] && 0 <= q <= 1 && a >= 1, \"AmdahlBounds\" -> True, \"AmdahlDerivative\" -> ((-1 + a)*a)/(a + q - a*q)^2, \"DerivativeNonnegative\" -> True, \"EndpointSpeedups\" -> {1, a}, \"IllustrationsNotMeasuredSolverFractions\" -> {{1/10, 1.02742526283162175287939948864127274541`16.}, {1/4, 1.0715047102891215733099755230021651976`16.}, {1/2, 1.15402277444269475345684353610963283987`16.}}, \"FixedDAGWorkSpanBound\" -> Max[L, W/P], \"ReadyWidthTwoAt64CPUs\" -> 2|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "claim_scope": {
+    "work_span": "Displayed symbolic bound is justified separately by the report's fixed-DAG proof; this evaluator did not prove a scheduling theorem.",
+    "fractions": "Illustrative q values, not measured whole-solver cost fractions.",
+    "tests": "No solver step, physics audit or measured speedup test is added."
+  }
+}

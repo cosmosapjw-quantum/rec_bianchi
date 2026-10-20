@@ -1,0 +1,525 @@
+{
+  "evidence_files": {
+    "research/rec_r3m_u6_full_owner_20261019/DAG.json": {
+      "bytes": 2470,
+      "sha256": "78661ef30189f94853c2ce6ed5100b6fd4e5008c0c9d8c644e9d43c33c494ab1"
+    },
+    "research/rec_r3n_time_convergence_20261019/DAG.json": {
+      "bytes": 6674,
+      "sha256": "be2c6e575c3294d82e4be9634010d6ad173ce11aa351310c6c346abc128cf06b"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/DAG.json": {
+      "bytes": 5100,
+      "sha256": "a178659814c2c1a1f8cba3919fe4427605487df75814517a21b1f155186ac950"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/h4_start_002/verification.json": {
+      "bytes": 13234,
+      "sha256": "6291598aae822e08be8c572437cbe04564b498b9e4c84279876dc7f82c66534e"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json": {
+      "bytes": 2398,
+      "sha256": "c50c4870de9a9ab294b9d75440beb75b93c5a9f2d7a88b5e5e2afa35a205a001"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/reused_h_trace_001/h_state_trace.json": {
+      "bytes": 2465,
+      "sha256": "bb9d69284d75f357aaf2a786f573099c888af76e29551653cc557d8239a18d40"
+    },
+    "research/rec_r3p_exact_acceleration_20261020/DAG.json": {
+      "bytes": 7344,
+      "sha256": "acd206d3629df8e745ddb15015a5574c43379990a3a1f208479e1f27d72d25e1"
+    },
+    "research/rec_r3q_h4_continuation_20261020/DAG.json": {
+      "bytes": 2887,
+      "sha256": "0553ba4b1808c6edd0f56405e5be6f38c3f06b658af7935d2fe7fc5b4d49034d"
+    },
+    "research/rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json": {
+      "bytes": 2641,
+      "sha256": "6219f1833885e29cc2f66c0ef57f2f6c56fc67c4672577341d5bd206ab6cf780"
+    },
+    "research/rec_r3r_followup_costs_20261020/receipts/CLAIM_GATE.json": {
+      "bytes": 2392,
+      "sha256": "942e47daaa56321ee76efe7ff660ddf6b7c6d1e187e7bcbc887b6d14321d615d"
+    },
+    "scripts/build_r3o_rust.py": {
+      "bytes": 24307,
+      "sha256": "d33f4761482720cd822a3006460e9462091c9219180541e78cdc51a4ca35cfd5"
+    },
+    "scripts/build_r3p_rust.py": {
+      "bytes": 5638,
+      "sha256": "d7bfaaab5c3e32842e01b45201c4713e4b144d0c95a4ff3991e90ae4a5482adb"
+    },
+    "scripts/prepare_r3o_h_history.py": {
+      "bytes": 12268,
+      "sha256": "c5a938c0b37cae5ff8b1ec05099bb420fd2da9a17e719ef047c9192c52224cad"
+    },
+    "scripts/verify_r3o_rust.py": {
+      "bytes": 21301,
+      "sha256": "c835282aba6a8cddaffba0733f3ad99cc9dcca6cc59134dc01d8439ccec9e5bd"
+    },
+    "src/full_bianchi_hyrec/trajectory/time_convergence.py": {
+      "bytes": 17702,
+      "sha256": "dace3618b133c8a40a342e8a9b8ffa0981da926911e300671640d0fe2252cfda"
+    }
+  },
+  "existing_launcher_commands_for_blocked_assessment_only": {
+    "R3O_build": [
+      "python",
+      "-B",
+      "scripts/build_r3o_rust.py",
+      "--output",
+      "NEW_OUTPUT"
+    ],
+    "R3O_smoke": [
+      "python",
+      "-B",
+      "scripts/verify_r3o_rust.py",
+      "--build",
+      "VERIFIED_BUILD_JSON",
+      "--boundary-packet",
+      "rust/rec-hyrec-vigilode/fixtures/r3m_u6_boundary.json",
+      "--steps",
+      "16",
+      "--output",
+      "NEW_OUTPUT"
+    ],
+    "R3P_build": [
+      "python",
+      "-B",
+      "scripts/build_r3p_rust.py",
+      "--output",
+      "NEW_OUTPUT"
+    ]
+  },
+  "grid_naming": {
+    "level1_H0_over2": 4.245e-05,
+    "level2_H0_over4": 2.1225e-05,
+    "original_user_R3P_h": 4.245e-05,
+    "time_convergence_H0": 8.49e-05
+  },
+  "new_NCP_campaign": {
+    "adjudication_receipt": "ncp_execution_001/receipts/CAMPAIGN_ADJUDICATION_001.json",
+    "allocation_id": "REC_R3S_NCP_20261021_001",
+    "campaign_terminal_sha256": "eaee72446c4f8b2e5ce8de52a8a508e88a3dfb34f3697b070db29af239006625",
+    "cpu_s": 41.782112999999995,
+    "h4_pilot_accepted_steps_per_backend": 16,
+    "new_scientific_integrations": 0,
+    "original_terminal_status": "HOLD",
+    "results": "ncp_execution_001/NCP_CAMPAIGN_RESULTS.json",
+    "status": "PASS_SCOPED_AFTER_ADJUDICATION",
+    "wall_s": 33.84308078902541
+  },
+  "new_NCP_host_results": "UNRESOLVED_DUE_CURRENT_DESKTOP_COMMANDER_USAGE_LIMIT",
+  "new_benchmarks": 0,
+  "new_integrations": 0,
+  "nodes": [
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3p_exact_acceleration_20261020/DAG.json"
+      ],
+      "id": "R3P_exact_audit",
+      "scope": "15 saved-stream comparisons, smoke16, audits and CI remain prior evidence.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3m_u6_full_owner_20261019/DAG.json"
+      ],
+      "id": "R3M_full5210",
+      "scope": "Completed original U6 full5210 and independent same-h review supersede older R3K/R3L pending rows. No new full integration.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/h4_start_002/verification.json"
+      ],
+      "id": "R3O_h4_start8",
+      "scope": "Independent h4 start and checkpoint40dd109a already complete.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json"
+      ],
+      "id": "R3Q_h4_first_event_plus_two",
+      "scope": "Historical NCP1511 accepted steps through iz74411. Same-h scoped evidence only.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json"
+      ],
+      "id": "R3O_h2_lowz",
+      "scope": "Historical NCP153327 low-z steps already complete. Additive endpoint correction preserves four original terminal states.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3n_time_convergence_20261019/DAG.json"
+      ],
+      "id": "R3N_comparator",
+      "scope": "Comparator implementation and45 contracts reused. A complete three-grid physical diagnostic is not yet admissible.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3r_followup_costs_20261020/receipts/CLAIM_GATE.json"
+      ],
+      "id": "R3R_optimized_audit",
+      "scope": "Actual1313b1f1 saved-stream benchmark,25000 lane-byte proof and32-step NumPy pilot reused; subsequent CI isolation is test-only.",
+      "status": "complete_reused"
+    },
+    {
+      "depends_on": [],
+      "evidence": [
+        "research/rec_r3o_grid_frontiers_20261019/reused_h_trace_001/h_state_trace.json"
+      ],
+      "id": "R3G_h_history",
+      "scope": "105859 accepted nodes recovered. Nodewise C parity and stage semantics before input29195 remain UNKNOWN.",
+      "status": "complete_reused"
+    },
+    {
+      "caps": {
+        "cpu_s": 60,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180
+      },
+      "cpu_s": 7.401584999999999,
+      "depends_on": [],
+      "exclusive": false,
+      "execution_receipt": "ncp_execution_001/evidence/campaign_001/jobs/trace_original/TERMINAL.json",
+      "id": "trace_original",
+      "new_platform_result": "COMPLETE",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "returncode": 0,
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "scope": "Retained actual32 ordered-lane existing contract on newly verified NCP platform.",
+      "status": "complete_scoped",
+      "wall_s": 7.635892527992837
+    },
+    {
+      "caps": {
+        "cpu_s": 60,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180
+      },
+      "cpu_s": 7.559742,
+      "depends_on": [],
+      "exclusive": false,
+      "execution_receipt": "ncp_execution_001/evidence/campaign_001/jobs/trace_interleaved/TERMINAL.json",
+      "id": "trace_interleaved",
+      "new_platform_result": "COMPLETE",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "returncode": 0,
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "scope": "Existing valid arbitrary per-tag interleaving contract on newly verified NCP platform.",
+      "status": "complete_scoped",
+      "wall_s": 7.851366492017405
+    },
+    {
+      "adjudication_receipt": "ncp_execution_001/receipts/CAMPAIGN_ADJUDICATION_001.json",
+      "caps": {
+        "cpu_s": 60,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180
+      },
+      "cpu_s": 11.356829000000001,
+      "depends_on": [
+        "trace_original",
+        "trace_interleaved"
+      ],
+      "exclusive": true,
+      "execution_receipt": "ncp_execution_001/evidence/campaign_001/jobs/saved_stream_benchmark/TERMINAL.json",
+      "id": "saved_stream_benchmark",
+      "new_platform_result": "PASS_SCOPED",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "returncode": 0,
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "scope": "Five alternating paired rounds, one separate warmup; full saved CSV parsing/open/alloc/verdict included. No solver.",
+      "status": "complete_scoped_after_adjudication",
+      "wall_s": 11.415943421976408
+    },
+    {
+      "caps": {
+        "cpu_s": 60,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180
+      },
+      "cpu_s": 6.7182849999999945,
+      "depends_on": [
+        "trace_original",
+        "trace_interleaved"
+      ],
+      "exclusive": true,
+      "execution_receipt": "ncp_execution_001/evidence/campaign_001/jobs/h4_legacy16/TERMINAL.json",
+      "id": "h4_legacy16",
+      "new_platform_result": "COMPLETE",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "returncode": 0,
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "scope": "Existing public R3R launcher with legacy comparator,16 new accepted steps, same frozen h4 start.",
+      "status": "complete_scoped",
+      "wall_s": 6.834278769994853
+    },
+    {
+      "caps": {
+        "cpu_s": 60,
+        "per_process_as_bytes": 2147483648,
+        "wall_s": 180
+      },
+      "cpu_s": 6.686115999999998,
+      "depends_on": [
+        "h4_legacy16"
+      ],
+      "exclusive": true,
+      "execution_receipt": "ncp_execution_001/evidence/campaign_001/jobs/h4_numpy16/TERMINAL.json",
+      "id": "h4_numpy16",
+      "new_platform_result": "COMPLETE",
+      "readiness_scope": "CODE_READY_CONDITIONAL_ON_CURRENT_HOST_SOURCE_INPUT_INTAKE_AND_NEW_ALLOCATION",
+      "returncode": 0,
+      "runtime_gates": [
+        "CURRENT_NCP_ACCESS",
+        "ACTUAL_64_CPU_128_GB_HOST",
+        "CURRENT_RESULT_AND_SESSION_INTAKE",
+        "FIXED_SOURCE_AND_INPUT_SHA",
+        "EXPLICIT_CPU_OWNERSHIP",
+        "UNSPENT_SELECTED_JOB_SUM_ALLOCATION"
+      ],
+      "scope": "Same public launcher with NumPy comparator and same16-step inputs/CPU; final raw+NPY member byte gate.",
+      "status": "complete_scoped",
+      "wall_s": 6.790705268009333
+    },
+    {
+      "classification": "ENVIRONMENT_ACCESS",
+      "depends_on": [],
+      "executable_command": null,
+      "id": "CURRENT_NCP_ACCESS",
+      "reason": "SSH identity verified and campaign executed on s1a0e5abed09; inventory and receipts are in ncp_execution_001.",
+      "status": "complete_scoped"
+    },
+    {
+      "classification": "BUDGET_COMPATIBILITY",
+      "depends_on": [
+        "R3P_exact_audit"
+      ],
+      "executable_command": null,
+      "id": "R3P_rust_platform_build",
+      "reason": "Existing build_r3p_rust.py declares90CPU/180wall/2GiB and strict rustc1.94.1. It does not fit the uniform60CPU campaign contract; old source/caps remain unchanged.",
+      "status": "blocked"
+    },
+    {
+      "classification": "DEPENDENCY_INPUT_AND_BUILD_IDENTITY",
+      "depends_on": [
+        "R3P_rust_platform_build"
+      ],
+      "executable_command": null,
+      "id": "R3P_rust_u6_smoke16",
+      "reason": "Original U5 checkpoint7aeec545 and a current source/binary-verified prebuilt Rust build are required. No command is publicly enabled by this coordinator.",
+      "status": "blocked"
+    },
+    {
+      "classification": "BUDGET_COMPATIBILITY",
+      "depends_on": [],
+      "executable_command": null,
+      "id": "R3O_vigilode_platform_build",
+      "reason": "Existing build_r3o_rust.py declares240CPU/480wall/3GiB; it is outside the uniform60CPU/180wall/2GiB contract. Pinned vendor preparation must be isolated.",
+      "status": "blocked"
+    },
+    {
+      "classification": "BUDGET_COMPATIBILITY",
+      "depends_on": [
+        "R3O_vigilode_platform_build"
+      ],
+      "executable_command": null,
+      "id": "R3O_vigilode_platform_smoke16",
+      "reason": "Existing verify_r3o_rust.py uses20CPU/60wall with3GiB AS. No lowering shim or larger public allocation is introduced; exploratory Rodas code is not the original predictor integrator.",
+      "status": "blocked"
+    },
+    {
+      "classification": "MISSING_STAGE_IMPLEMENTATION",
+      "depends_on": [
+        "R3Q_h4_first_event_plus_two"
+      ],
+      "executable_command": null,
+      "id": "h4_U4_after_first_event",
+      "reason": "Current quarter continuation accepts the frozen start and stops at first event plus2. It cannot consume the event-end checkpoint as a new generic stage. New source-faithful U4 contract required.",
+      "status": "blocked"
+    },
+    {
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "depends_on": [
+        "h4_U4_after_first_event"
+      ],
+      "executable_command": null,
+      "id": "h4_U5_thermal",
+      "reason": "Preserve original state/RHS current-prev2 memory, stage input ownership, photon history and original same-h tolerance before allocation.",
+      "status": "blocked"
+    },
+    {
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "depends_on": [
+        "h4_U5_thermal"
+      ],
+      "executable_command": null,
+      "id": "h4_U6_RT_boundary",
+      "reason": "RT boundary and causal accepted-column ownership must be implemented and reviewed sequentially.",
+      "status": "blocked"
+    },
+    {
+      "classification": "DEPENDENT_STAGE_IMPLEMENTATION",
+      "depends_on": [
+        "h4_U6_RT_boundary"
+      ],
+      "executable_command": null,
+      "id": "h4_lowz",
+      "reason": "Complete h4 low-z trajectory does not exist. No full-mode command or scientific allocation is supplied.",
+      "status": "blocked"
+    },
+    {
+      "classification": "MISSING_ASSEMBLED_PROVENANCE",
+      "depends_on": [
+        "R3O_h2_lowz"
+      ],
+      "executable_command": null,
+      "id": "h2_full_history_assembly",
+      "reason": "Assemble retained independently evolved h2 stages contiguously with grid/stage/nodewise uncertainty metadata. Existing R3N h2 descriptor covers only U6 iz53179..58389.",
+      "status": "blocked"
+    },
+    {
+      "classification": "MISSING_EVIDENCE",
+      "depends_on": [
+        "R3G_h_history"
+      ],
+      "executable_command": null,
+      "id": "h_nodewise_C_and_boundaries",
+      "reason": "prepare_r3o_h_history leaves nodewise_C_parity UNKNOWN and regime semantics before input29195 UNKNOWN. Aggregate integer-z maxima are not nodewise error bounds.",
+      "status": "blocked"
+    },
+    {
+      "classification": "MISSING_EVIDENCE",
+      "depends_on": [
+        "h4_lowz",
+        "h2_full_history_assembly",
+        "h_nodewise_C_and_boundaries"
+      ],
+      "executable_command": null,
+      "id": "three_grid_uncertainty",
+      "reason": "Full independent h/h2/h4 histories plus original output stencils, uncertainties and stage boundaries are required. signed_triplet returns UNCERTAINTY_MISSING before slope interpretation when bounds are absent.",
+      "status": "blocked"
+    },
+    {
+      "classification": "SCIENTIFIC_GATE",
+      "depends_on": [
+        "three_grid_uncertainty"
+      ],
+      "executable_command": null,
+      "id": "global_h_h2_h4_convergence",
+      "reason": "analyze --require-complete exists, but full input/uncertainty gates are not open. h4 completion alone is insufficient; exit0 diagnostic is not a physical PASS.",
+      "status": "blocked"
+    },
+    {
+      "classification": "PHYSICAL_OR_NUMERICAL_FAILURE_CLASSIFICATION",
+      "depends_on": [],
+      "executable_command": null,
+      "id": "original_U5_failure_resolution",
+      "reason": "Original h HOLD_9_FAIL and h/2 HOLD_8_FAIL remain. No performance result closes these failures.",
+      "status": "blocked"
+    },
+    {
+      "classification": "EXCLUDED_RESEARCH_LANE",
+      "depends_on": [
+        "global_h_h2_h4_convergence",
+        "original_U5_failure_resolution"
+      ],
+      "executable_command": null,
+      "id": "REI_Bianchi_CMB",
+      "reason": "REI_activation=false, Bianchi/REI/CMB physical approval and production readiness remain held and outside this platform batch.",
+      "status": "blocked"
+    },
+    {
+      "classification": "EXTERNAL_SHIPPING",
+      "depends_on": [],
+      "executable_command": null,
+      "id": "R3R_external_preservation",
+      "reason": "R3R source/science/CI closeout is complete; Drive preservation remains explicitly unresolved in bf6bb95c DAG. This is not a scientific NCP run.",
+      "status": "blocked"
+    }
+  ],
+  "observed_source_commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+  "preserved_h2_endpoint": {
+    "accepted_last_iz": 211716,
+    "additional_negative_z_RHS_required": false,
+    "s": 1.4726230889209546,
+    "s_clipped_to_unit_interval": false,
+    "terminal_stencil": [
+      211713,
+      211714,
+      211715,
+      211716
+    ]
+  },
+  "schema": "rec.r3s.pending-job-intake.v1",
+  "scientific_holds": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "whole_production_speedup": "NOT_MEASURED"
+  },
+  "status": "SCOPED_PASS_AFTER_ADJUDICATION; ORIGINAL_TERMINAL_HOLD_PRESERVED",
+  "superseded_pending_rows": [
+    {
+      "disposition": "complete_reused",
+      "newer": "R3M_FULL_U6_5210 and independent same-h review",
+      "older": "R3K/R3L full U6 pending"
+    },
+    {
+      "disposition": "complete_reused",
+      "newer": "lowz_ncp_full_001 verification and independent review",
+      "older": "R3O H2 low-z NOT_RUN wording"
+    },
+    {
+      "disposition": "No extra negative-z RHS job; preserve old source and receipts",
+      "newer": "R3R additive endpoint correction: indices211713..211716, original cubic s1.4726230889209546",
+      "older": "R3O endpoint requires additional fourth state"
+    }
+  ],
+  "tests_executed_by_inventory": 0
+}

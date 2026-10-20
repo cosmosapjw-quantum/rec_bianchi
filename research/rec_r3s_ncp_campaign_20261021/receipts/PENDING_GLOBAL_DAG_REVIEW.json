@@ -1,0 +1,168 @@
+{
+  "author": "independent context_intake audit agent; no solver or coordinator implementation authored",
+  "limitations": [
+    "This review does not independently rerun prior numerical evidence",
+    "NCP identity/capacity is not established by a requested 64-core/128-GB target",
+    "No new full-mode allocation is created by this review"
+  ],
+  "mathematical_contract": {
+    "accepted_recurrence": "next accepted state depends on current accepted state, current and prev2 RHS, and accepted photon history; current FULL column is committed once",
+    "grid_namespace": {
+      "level1_H0_over2": 4.245e-05,
+      "level2_H0_over4": 2.1225e-05,
+      "original_R3P_user_reference_h": 4.245e-05,
+      "time_convergence_H0": 8.49e-05
+    },
+    "missing_uncertainty": "signed_triplet explicitly returns UNCERTAINTY_MISSING before slope interpretation when parity or quantization bounds are missing",
+    "parallelism": "Independent whole jobs only. No consecutive accepted steps are made independent by hardware width."
+  },
+  "new_benchmark_runs": 0,
+  "new_integrations": 0,
+  "observed_checkout_commit": "bf6bb95c58182529ad3d773a1dd0ab4f0fc7c70b",
+  "pending_obligations": [
+    {
+      "classification": "MISSING_IMPLEMENTATION_AND_TRAJECTORY_COVERAGE",
+      "depends_on": [
+        "R3Q_h4_first_event_plus_two"
+      ],
+      "id": "h4_after_first_event",
+      "requirement": "Source-faithful U4/U5/U6/low-z continuation, checkpoints and raw receipts under a separately concrete allocation; existing first-event worker alone is insufficient"
+    },
+    {
+      "classification": "MISSING_ASSEMBLED_PROVENANCE",
+      "depends_on": [
+        "existing independently evolved h2 stage pieces",
+        "R3O_h2_lowz_source_endpoint"
+      ],
+      "id": "h2_full_history_assembly",
+      "requirement": "Assemble contiguous accepted histories and stage/uncertainty provenance without resampling or rerunning completed trajectories"
+    },
+    {
+      "classification": "MISSING_EVIDENCE",
+      "depends_on": [
+        "all three independent histories"
+      ],
+      "id": "same_grid_uncertainty_and_boundaries",
+      "requirement": "Recover or establish nodewise same-h C uncertainty and boundary coverage; integer-z aggregate maxima are not automatically nodewise bounds"
+    },
+    {
+      "classification": "NOT_RUN",
+      "depends_on": [
+        "complete h/h2/h4 histories",
+        "same_grid_uncertainty_and_boundaries"
+      ],
+      "id": "global_three_grid_diagnostic",
+      "requirement": "Preserve original cubic output rule, complete endpoint stencils, canonical targets, signed differences, uncertainty and boundary gates; a completed diagnostic is not physical approval"
+    }
+  ],
+  "preserve": {
+    "REI_activation": false,
+    "U5_h": "HOLD_9_FAIL",
+    "U5_h2": "HOLD_8_FAIL",
+    "global_h_h2_h4_convergence": "NOT_RUN",
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "production_speedup": "NOT_MEASURED"
+  },
+  "reused": [
+    {
+      "claim": "Partial h4 history through first event plus two only",
+      "endpoint_global_iz": 74411,
+      "extra_accepted": 1511,
+      "id": "R3Q_h4_first_event_plus_two",
+      "new_execution": false,
+      "status": "complete_reused"
+    },
+    {
+      "correction": "Historical three-state sentence superseded by preserved R3R endpoint correction; no additional negative-redshift RHS required",
+      "endpoint_global_iz": 211716,
+      "id": "R3O_h2_lowz_source_endpoint",
+      "new_execution": false,
+      "status": "complete_reused",
+      "terminal_stencil_indices": [
+        211713,
+        211714,
+        211715,
+        211716
+      ]
+    },
+    {
+      "history_npz_sha256_from_reused_descriptor": "d46fb7eaeb6cc8792c5d929f28953d48684cf1e4f3305f33f6ba4f3393999fd3",
+      "id": "R3G_original_h_history",
+      "limitations": [
+        "nodewise_C_parity UNKNOWN",
+        "stage regime before input29195 UNKNOWN"
+      ],
+      "new_execution": false,
+      "nodes": 105859,
+      "prior_adapter_command": [
+        "python3",
+        "scripts/prepare_r3o_h_history.py",
+        "--raw-dir",
+        "/workspace/scratch/afe554957b2e/rec_recovery/r3g_u8_reused",
+        "--evidence-dir",
+        "research/rec_r3o_grid_frontiers_20261019/reused_h_trace_001"
+      ],
+      "prior_adapter_exit_code": 0,
+      "prior_adapter_new_hyrec_integrations": 0,
+      "source_commit": "6c6c385f69f73ad477a3131d637b25fe7faca5ac",
+      "status": "complete_reused"
+    }
+  ],
+  "reviewed_utc": "2026-10-20T21:04:58.730119+00:00",
+  "schema": "rec.r3s.pending-global-dag-independent-review.v1",
+  "scope": "Read-only source and prior-receipt dependency review; no numerical or solver execution",
+  "sources": {
+    "research/rec_r3n_time_convergence_20261019/DAG.json": {
+      "bytes": 6674,
+      "sha256": "be2c6e575c3294d82e4be9634010d6ad173ce11aa351310c6c346abc128cf06b"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/DAG.json": {
+      "bytes": 5100,
+      "sha256": "a178659814c2c1a1f8cba3919fe4427605487df75814517a21b1f155186ac950"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/local_execution/r3o_h_input_adapter_001.execution.json": {
+      "bytes": 493,
+      "sha256": "495ac235f3cd84b0ad1dd7036c11f9feec48405fbccf24f4a0d4242d8f42a3ce"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/lowz_ncp_full_001/INDEPENDENT_REVIEW.json": {
+      "bytes": 2398,
+      "sha256": "c50c4870de9a9ab294b9d75440beb75b93c5a9f2d7a88b5e5e2afa35a205a001"
+    },
+    "research/rec_r3o_grid_frontiers_20261019/reused_h_trace_001/h_state_trace.json": {
+      "bytes": 2465,
+      "sha256": "bb9d69284d75f357aaf2a786f573099c888af76e29551653cc557d8239a18d40"
+    },
+    "research/rec_r3q_h4_continuation_20261020/DAG.json": {
+      "bytes": 2887,
+      "sha256": "0553ba4b1808c6edd0f56405e5be6f38c3f06b658af7935d2fe7fc5b4d49034d"
+    },
+    "research/rec_r3q_h4_continuation_20261020/ncp_event_001/INDEPENDENT_REVIEW.json": {
+      "bytes": 2641,
+      "sha256": "6219f1833885e29cc2f66c0ef57f2f6c56fc67c4672577341d5bd206ab6cf780"
+    },
+    "research/rec_r3r_followup_costs_20261020/receipts/intake/endpoint_correction.md": {
+      "bytes": 8553,
+      "sha256": "74eb2eb092241139d3fd56cd710a62406f5aaecfede72aa5b0214860a62dbe55"
+    },
+    "scripts/compare_r3n_time_grids.py": {
+      "bytes": 10050,
+      "sha256": "3c4ed4c80112c52810b83f80fc7760011c7a39c439b3d544f4aa23dda4d09bb3"
+    },
+    "scripts/prepare_r3o_h_history.py": {
+      "bytes": 12268,
+      "sha256": "c5a938c0b37cae5ff8b1ec05099bb420fd2da9a17e719ef047c9192c52224cad"
+    },
+    "src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_continuation.py": {
+      "bytes": 14040,
+      "sha256": "ce80868c2882797a39986173e9ee053733d5f8c5439df819cac76ef2b5f0d58b"
+    },
+    "src/full_bianchi_hyrec/trajectory/time_convergence.py": {
+      "bytes": 17702,
+      "sha256": "dace3618b133c8a40a342e8a9b8ffa0981da926911e300671640d0fe2252cfda"
+    }
+  },
+  "tests_rerun": 0,
+  "verdict": "PASS_SCOPED_DAG_REVIEW; FULL_GLOBAL_WORK_REMAINS_BLOCKED_BY_EXPLICIT_DEPENDENCIES"
+}
