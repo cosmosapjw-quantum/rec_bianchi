@@ -688,13 +688,58 @@ def resume_records(directory, expected_header):
     return len(starts) + 1, *costs, completed, blocked
 
 
-def arm_deadline(remaining):
-    require(math.isfinite(remaining) and remaining > 0., "CAMPAIGN_WALL_RESERVE_ALREADY_EXHAUSTED")
-    old = signal.getitimer(signal.ITIMER_REAL)[0]
-    def expired(_signal, _frame):
+@dataclass
+class CampaignDeadline:
+    work_end: float
+    hard_end: float
+    exhausted: bool = False
+
+    def expired(self, _signal=None, _frame=None):
+        # A caught TimeoutError never disarms the allocation's absolute end.
+        # The final alarm uses the kernel default action and cannot be caught
+        # by the executor/closeout's broad Python exception handlers.
+        if not self.exhausted:
+            self.exhausted = True
+            signal.signal(signal.SIGALRM, signal.SIG_DFL)
+            remaining = self.hard_end - time.monotonic()
+            if remaining <= 0.:
+                signal.raise_signal(signal.SIGALRM)
+            else:
+                signal.setitimer(signal.ITIMER_REAL, remaining)
         raise TimeoutError("R3S_CAMPAIGN_WALL_DEADLINE")
-    signal.signal(signal.SIGALRM, expired)
-    signal.setitimer(signal.ITIMER_REAL, min(old, remaining) if old > 0. else remaining)
+
+    def check_work(self):
+        if self.exhausted or time.monotonic() >= self.work_end:
+            self.expired()
+
+
+def arm_deadline(remaining, previous=None):
+    require(math.isfinite(remaining) and remaining > 0., "CAMPAIGN_WALL_RESERVE_ALREADY_EXHAUSTED")
+    if previous is not None and previous.exhausted:
+        previous.check_work()
+    now = time.monotonic()
+    if previous is None:
+        old = signal.getitimer(signal.ITIMER_REAL)[0]
+        hard = min(now + remaining + 3., now + old) if old > 0. else now + remaining + 3.
+        deadline = CampaignDeadline(min(now + remaining, hard - 3.), hard)
+    else:
+        deadline = previous
+        deadline.hard_end = min(deadline.hard_end, now + remaining + 3.)
+        deadline.work_end = min(deadline.work_end, now + remaining, deadline.hard_end - 3.)
+    deadline.check_work()
+    signal.signal(signal.SIGALRM, deadline.expired)
+    signal.setitimer(signal.ITIMER_REAL, deadline.work_end - now)
+    return deadline
+
+
+def before_deadline(deadline, action):
+    """Never begin optional verification or hashing after durable expiry."""
+    if deadline is not None:
+        deadline.check_work()
+    value = action()
+    if deadline is not None:
+        deadline.check_work()
+    return value
 
 
 def host_intake(path, observed, source_sha, selected, assigned, verified_resume_completed=()):
@@ -719,7 +764,7 @@ def host_intake(path, observed, source_sha, selected, assigned, verified_resume_
 
 
 def execute_jobs(jobs, out, assigned_cpus, capacity, env, campaign_cpu, campaign_wall,
-                 prior_cpu=0., prior_wall=0., already_complete=None):
+                 prior_cpu=0., prior_wall=0., already_complete=None, deadline=None):
     """Single-thread scheduler. Each job has a separate bounded subreaper."""
     start_cpu, start_wall = total_cpu(), time.monotonic()
     support = sys.modules[__name__]
@@ -733,6 +778,8 @@ def execute_jobs(jobs, out, assigned_cpus, capacity, env, campaign_cpu, campaign
     failure = None
     try:
         while pending or active:
+            if deadline is not None:
+                deadline.check_work()
             current_cpu = prior_cpu + total_cpu() - start_cpu
             current_wall = prior_wall + time.monotonic() - start_wall
             require(current_cpu < campaign_cpu - RESERVE_CPU_S
@@ -793,10 +840,10 @@ def execute_jobs(jobs, out, assigned_cpus, capacity, env, campaign_cpu, campaign
                     guardian = json.loads((job.directory / "GUARDIAN.json").read_text())
                     require(guardian["status"] == "PASS" and guardian["all_owned_descendants_reaped"],
                             "JOB_DESCENDANT_OR_RESOURCE_FAILURE")
-                    verdict = verify_job(job)
+                    verdict = before_deadline(deadline, lambda: verify_job(job))
                 except Exception as exc:
                     state["failure"] = f"{type(exc).__name__}: {exc}"
-                files = file_hashes(job.directory)
+                files = before_deadline(deadline, lambda: file_hashes(job.directory))
                 used_cpu = usage.ru_utime + usage.ru_stime + state["setup_cpu_s"] + total_cpu() - before_closeout
                 elapsed = time.monotonic() - state["started"]
                 if used_cpu >= CPU_S - 2. or elapsed >= WALL_S - 3.:
@@ -839,7 +886,10 @@ def execute_jobs(jobs, out, assigned_cpus, capacity, env, campaign_cpu, campaign
         failure = {"type": type(exc).__name__, "message": str(exc)}
     finally:
         try:
-            reaped = cleanup_children(own_procfs, support, time.monotonic() + 3.)
+            cleanup_end = time.monotonic() + 3.
+            if deadline is not None:
+                cleanup_end = min(cleanup_end, deadline.hard_end)
+            reaped = cleanup_children(own_procfs, support, cleanup_end)
             for pid, status, _usage in reaped:
                 if pid in active:
                     active[pid]["process"].returncode = os.waitstatus_to_exitcode(status)
@@ -848,6 +898,7 @@ def execute_jobs(jobs, out, assigned_cpus, capacity, env, campaign_cpu, campaign
         for state in active.values():
             state["stdout"].close(); state["stderr"].close()
     return {"jobs": results, "failure": failure,
+            "wall_deadline_exhausted": deadline is not None and deadline.exhausted,
             "all_owned_descendants_reaped": not support.proc_children(own_procfs),
             "cumulative_cpu_s": prior_cpu + total_cpu() - start_cpu,
             "cumulative_wall_s": prior_wall + time.monotonic() - start_wall,
@@ -892,7 +943,7 @@ def main(argv=None):
     ap.add_argument("--jobs", default=",".join(CATALOG))
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args(argv)
-    limits = None
+    limits = deadline = None
     if args.run:
         # Before source/input reads or project imports. --plan is read-only and
         # never changes the caller's limits, signal handlers or affinity.
@@ -905,7 +956,7 @@ def main(argv=None):
             terminals = sorted(args.evidence_dir.glob("attempt_*.TERMINAL.json"))
             if terminals:
                 _cpu_hint, prior_wall_hint = checked_costs(json.loads(terminals[-1].read_text()))
-        arm_deadline(args.campaign_wall_seconds - prior_wall_hint - 3. - (time.monotonic() - start_wall))
+        deadline = arm_deadline(args.campaign_wall_seconds - prior_wall_hint - 3. - (time.monotonic() - start_wall))
     manifest = json.loads(MANIFEST.read_text())
     selected = selected_jobs(manifest["nodes"], args.jobs.split(","))
     expected_cpu = len(selected) * CPU_S + RESERVE_CPU_S
@@ -918,16 +969,17 @@ def main(argv=None):
         "scientific_holds": manifest["scientific_holds"], "gate_errors": []}
     source = inputs = observation = None
     try:
-        source = bind_source(args.expected_commit or git("rev-parse", "HEAD").decode().strip())
+        source = before_deadline(deadline,
+            lambda: bind_source(args.expected_commit or git("rev-parse", "HEAD").decode().strip()))
         plan["source"] = source
     except Exception as exc:
         plan["gate_errors"].append("SOURCE:" + str(exc))
     try:
-        observation = hardware(); plan["hardware_observed"] = observation
+        observation = before_deadline(deadline, hardware); plan["hardware_observed"] = observation
     except Exception as exc:
         plan["gate_errors"].append("HARDWARE:" + str(exc))
     try:
-        inputs = input_hashes(args.raw_dir, "saved_stream_benchmark" in selected)
+        inputs = before_deadline(deadline, lambda: input_hashes(args.raw_dir, "saved_stream_benchmark" in selected))
     except Exception as exc:
         plan["gate_errors"].append("INPUT:" + str(exc))
     if not args.run:
@@ -944,7 +996,7 @@ def main(argv=None):
             "EXACT_SELECTED_JOB_SUM_AND_RESERVE_ALLOCATION_REQUIRED")
     assigned = cpu_set(args.cpu_ids)
     capacity = validate_host(observation, args.expected_host, assigned)
-    runtime = runtime_identity(args.test_pythonpath)
+    runtime = before_deadline(deadline, lambda: runtime_identity(args.test_pythonpath))
     require("numpy" in runtime["packages"], "NUMPY_RUNTIME_UNAVAILABLE")
     require(not set(selected).intersection(CASE_NAMES) or "pytest" in runtime["packages"], "PYTEST_RUNTIME_UNAVAILABLE")
     require(not any(key.startswith("h4_") for key in selected) or runtime["cc"] is not None,
@@ -998,19 +1050,22 @@ def main(argv=None):
         sys.dont_write_bytecode = True
         cache = out / f"supervisor_pycache_{attempt:04d}"; cache.mkdir()
         sys.pycache_prefix = str(cache)
-        arm_deadline(expected_wall - prior_wall - (time.monotonic() - start_wall) - 3.)
+        deadline = arm_deadline(expected_wall - prior_wall - (time.monotonic() - start_wall) - 3., deadline)
         result = execute_jobs(jobs, out, assigned, capacity, env, expected_cpu, expected_wall,
-            prior_cpu + total_cpu() - start_cpu, prior_wall + time.monotonic() - start_wall, completed)
+            prior_cpu + total_cpu() - start_cpu, prior_wall + time.monotonic() - start_wall, completed, deadline)
         result["complete_reused"] = sorted(completed)
         result["previous_failed_or_partial_jobs"] = blocked
         try:
-            require(bind_source(args.expected_commit) == source, "FINAL_SOURCE_CHANGED")
-            require(input_hashes(args.raw_dir, "saved_stream_benchmark" in selected) == inputs, "FINAL_INPUT_CHANGED")
-            require(stable_environment(hardware()) == header["environment"], "FINAL_HOST_ENVIRONMENT_CHANGED")
-            require(runtime_identity(args.test_pythonpath) == runtime, "FINAL_RUNTIME_IDENTITY_CHANGED")
+            require(before_deadline(deadline, lambda: bind_source(args.expected_commit)) == source, "FINAL_SOURCE_CHANGED")
+            require(before_deadline(deadline, lambda: input_hashes(args.raw_dir, "saved_stream_benchmark" in selected)) == inputs,
+                    "FINAL_INPUT_CHANGED")
+            require(before_deadline(deadline, lambda: stable_environment(hardware())) == header["environment"],
+                    "FINAL_HOST_ENVIRONMENT_CHANGED")
+            require(before_deadline(deadline, lambda: runtime_identity(args.test_pythonpath)) == runtime,
+                    "FINAL_RUNTIME_IDENTITY_CHANGED")
             successful = set(completed) | {key for key, value in result["jobs"].items() if value["status"] == "complete"}
             if {"h4_legacy16", "h4_numpy16"}.issubset(successful):
-                result["matched_pilots"] = matched_outputs(out)
+                result["matched_pilots"] = before_deadline(deadline, lambda: matched_outputs(out))
             require(set(selected).issubset(successful) and result["failure"] is None
                     and result["all_owned_descendants_reaped"], "CAMPAIGN_INCOMPLETE_OR_BLOCKED")
             result["status"] = "COMPLETED_SCOPED"
@@ -1024,7 +1079,7 @@ def main(argv=None):
             "status": result["status"], "started_monotonic_s": start_wall,
             "terminal_monotonic_s": time.monotonic()})
         try:
-            result["files_sha256"] = file_hashes(out)
+            result["files_sha256"] = before_deadline(deadline, lambda: file_hashes(out))
             result["file_hash_inventory_complete"] = True
         except BaseException as exc:
             result["status"] = "HOLD_FINAL_HASHING"
@@ -1036,6 +1091,11 @@ def main(argv=None):
         result["cumulative_wall_s"] = prior_wall + time.monotonic() - start_wall
         result["resource_scope"] = "PREFLIGHT_THROUGH_FINAL_FILE_HASHING; FINAL_RECEIPT_WRITE_RESERVED"
         result["receipt_reserve"] = {"cpu_s": 2., "wall_s": 3.}
+        result["wall_deadline_exhausted"] = deadline.exhausted
+        result["absolute_wall_hard_end_monotonic_s"] = deadline.hard_end
+        if deadline.exhausted:
+            result["status"] = "HOLD_WALL_DEADLINE"
+            result["nonessential_closeout_after_deadline"] = "SKIPPED"
         if result["cumulative_cpu_s"] >= expected_cpu - 2. or result["cumulative_wall_s"] >= expected_wall - 3.:
             result["status"] = "HOLD_RESOURCE_BUDGET"
         write_new(prefix.with_suffix(".TERMINAL.json"), result)

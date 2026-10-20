@@ -161,6 +161,53 @@ def test_plan_never_launches_jobs_or_changes_limits(nodes, tmp_path, monkeypatch
     assert (plan["required_campaign_cpu_s"], plan["required_campaign_wall_s"]) == (305., 912.)
 
 
+def test_caught_deadline_keeps_original_hard_end_and_cannot_rearm_reserve(monkeypatch):
+    clock, handlers, timers = [100.], {}, []
+    monkeypatch.setattr(campaign.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(campaign.signal, "getitimer", lambda kind: (8., 0.))
+    monkeypatch.setattr(campaign.signal, "signal", lambda kind, handler: handlers.__setitem__(kind, handler))
+    monkeypatch.setattr(campaign.signal, "setitimer", lambda kind, value: timers.append((kind, value)))
+    deadline = campaign.arm_deadline(10.)
+    assert (deadline.work_end, deadline.hard_end) == (105., 108.)
+    clock[0] = 105.
+    with pytest.raises(TimeoutError):
+        handlers[campaign.signal.SIGALRM](campaign.signal.SIGALRM, None)
+    assert deadline.exhausted
+    assert handlers[campaign.signal.SIGALRM] == campaign.signal.SIG_DFL
+    assert timers[-1] == (campaign.signal.ITIMER_REAL, 3.)
+    old_timers = list(timers)
+    clock[0] = 106.
+    with pytest.raises(TimeoutError):
+        campaign.arm_deadline(1000., deadline)
+    assert deadline.hard_end == 108. and timers == old_timers
+
+
+def test_timeout_in_final_identity_skips_all_later_optional_work(monkeypatch):
+    clock, handlers, timers, called = [100.], {}, [], []
+    monkeypatch.setattr(campaign.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(campaign.signal, "getitimer", lambda kind: (0., 0.))
+    monkeypatch.setattr(campaign.signal, "signal", lambda kind, handler: handlers.__setitem__(kind, handler))
+    monkeypatch.setattr(campaign.signal, "setitimer", lambda kind, value: timers.append((kind, value)))
+    deadline = campaign.arm_deadline(10.)
+    def interrupted_identity():
+        called.append("identity_started")
+        clock[0] = 110.
+        deadline.expired()
+    # A broad closeout handler can catch the first exception, but the durable
+    # gate must reject every subsequent expensive callback before it starts.
+    try:
+        campaign.before_deadline(deadline, interrupted_identity)
+    except Exception:
+        pass
+    for name in ("bind_source", "input_hashes", "runtime_identity", "matched_outputs", "full_file_hashes"):
+        with pytest.raises(TimeoutError):
+            campaign.before_deadline(deadline, lambda label=name: called.append(label))
+    assert called == ["identity_started"]
+    assert deadline.exhausted and deadline.hard_end == 113.
+    assert handlers[campaign.signal.SIGALRM] == campaign.signal.SIG_DFL
+    assert timers[-1] == (campaign.signal.ITIMER_REAL, 3.)
+
+
 def test_allocation_id_cannot_move_to_fresh_output(tmp_path, monkeypatch):
     monkeypatch.setattr(campaign, "ALLOCATION_REGISTRY", tmp_path / "registry")
     identity = {"allocation_id": "new-platform-001", "evidence_directory": str(tmp_path / "one")}
