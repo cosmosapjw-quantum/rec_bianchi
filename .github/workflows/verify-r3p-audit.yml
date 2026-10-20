@@ -1,0 +1,63 @@
+name: verify-r3p-audit
+
+on:
+  push:
+    paths:
+      - 'rust/rec-stream-audit/**'
+      - 'rust/vendor/rec-stream-audit-registry-20261020.tar.gz'
+      - 'rust/REC_STREAM_AUDIT_VENDOR.json'
+      - 'scripts/*r3p*.py'
+      - 'tests/trajectory/test_r3p*.py'
+      - 'tests/fixtures/r3p*/**'
+      - '.github/workflows/verify-r3p-audit.yml'
+  pull_request:
+    paths:
+      - 'rust/rec-stream-audit/**'
+      - 'rust/vendor/rec-stream-audit-registry-20261020.tar.gz'
+      - 'rust/REC_STREAM_AUDIT_VENDOR.json'
+      - 'scripts/*r3p*.py'
+      - 'tests/trajectory/test_r3p*.py'
+      - 'tests/fixtures/r3p*/**'
+      - '.github/workflows/verify-r3p-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  bounded-exact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      RUSTUP_TOOLCHAIN: '1.94.1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install compiler and Python test dependencies
+        run: |
+          rustup toolchain install 1.94.1 --profile minimal
+          python -m pip install -e '.[test]'
+      - name: Build offline and run Rust and C ABI checks
+        run: python -B scripts/build_r3p_rust.py --output r3p-ci/build
+      - name: Check scalar differential, actual physical fixtures, bindings and launcher
+        env:
+          R3P_BUILD_RECEIPT: ${{ github.workspace }}/r3p-ci/build/build.json
+        run: |
+          python -B -m pytest -q -p no:cacheprovider tests/trajectory/test_r3p*.py --junitxml=r3p-ci/tests.xml
+      - name: Preserve build and verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3p-audit-${{ github.sha }}-${{ github.run_id }}
+          if-no-files-found: error
+          path: |
+            r3p-ci/build/build.json
+            r3p-ci/build/*.execution.json
+            r3p-ci/build/*.log
+            r3p-ci/build/target/release/deps/*.ll
+            r3p-ci/build/target/release/deps/*.s
+            r3p-ci/tests.xml

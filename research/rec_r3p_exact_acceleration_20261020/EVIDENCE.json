@@ -1,6 +1,6 @@
 {
   "schema": "rec.r3p.evidence.v1",
-  "stage": "IMPLEMENTED_PILOT_DIFFERENTIAL_PASS_REVIEW_IN_PROGRESS",
+  "stage": "IMPLEMENTATION_AND_MATCHED_MEASUREMENTS_COMPLETE_READY_FOR_SMOKE",
   "base_head": "368d87ad5de90dde74226ed109c3ba29d9607c84",
   "preserve": {
     "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
@@ -20,7 +20,7 @@
     "R3O lowz16 and independenth4start8",
     "R3L/R3M original profiles"
   ],
-  "new_benchmarks": "Three saved-data pilot audits completed; matched repeats pending",
+  "new_benchmarks": "15/15 saved full R3M comparisons bit-identical; initial14+retainedresourceinitfailure+onecorrectedcontinuation",
   "runtime": "ChatGPT sandbox Python3.12.14, C, rustc1.94.1 restored from official SHA-verified distribution",
   "native_agents": [
     {
@@ -51,5 +51,18 @@
       "diagnostic_sha256": true
     }
   },
-  "source_contract_tightening": "Python-prefix NaN/Inf explicitly rejected; Rust requires exactly four ASCII CSV fields; no claim of identical incidental exceptions for invalid grammar"
+  "source_contract_tightening": "Python-prefix NaN/Inf explicitly rejected; Rust requires exactly four ASCII CSV fields; no claim of identical incidental exceptions for invalid grammar",
+  "audit_comparison": "receipts/AUDIT_COMPARISON.json",
+  "independent_review": "receipts/C9_STAGE1_REVIEW.md; two documentation findings clarified; enclosing whole-launch resource scope pending",
+  "tests": {
+    "scalar_cases": 58,
+    "binding_cases": 82,
+    "runner_cases": 72,
+    "resource_limit_regressions": 2,
+    "rust_unit_cases": 18,
+    "C_ABI": "PASS"
+  },
+  "ratio_benchmark": "receipts/RATIO_BENCHMARK.json",
+  "same_h_smoke": "NOT_RUN_AT_STAGE2_SOURCE_PUBLICATION",
+  "resource_guard_fix": "Outer public supervisor covers preflight/worker/closeout with60CPU/180wall/2GiB and2CPU/3wall reserve"
 }

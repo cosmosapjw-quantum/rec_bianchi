@@ -25,7 +25,11 @@ propagate unchanged. This module imports or compiles no accelerator.
 Material input-contract correction: a nonfinite *Python prefix* value now
 raises ``ArithmeticError("C_PREFIX_NONFINITE")``. The old prefix comparison
 could accept NaN and infinity. Other parser behavior, including incidental
-IndexError/ValueError diagnostics and ignored trailing fields, is retained.
+IndexError/ValueError diagnostics and ignored trailing fields, is retained
+when prefix_auditor=None. The Rust hook accepts only canonical four-field
+ASCII prefix records and has additional finite-positive metadata checks.
+Its logical first-row guarantee applies inside a delivered bounded block;
+resource/transport aborts may precede inspection of an earlier queued row.
 No status, average-gate failure or historical hold is promoted.
 
 ``causal_link_count(table, j)`` is an optional separate drop-in. Its four-entry
@@ -104,7 +108,9 @@ def compare_native_stream(path: Path, result, c, table, source, oracle,
 
     Original positional arguments, return fields, tolerances, scalar guards
     and forensic writes match the frozen verifier. The documented nonfinite
-    Python-prefix fix is the only intentionally stricter input check.
+    Python-prefix fix is the only intentionally stricter input check when
+    prefix_auditor=None. An accelerator hook owns its separately documented
+    canonical grammar, metadata restrictions and abort-priority contract.
     """
     n = len(result.steps)
     cv = np.full((311, PREFIX_COLUMNS+n), np.nan)

@@ -1,13 +1,11 @@
-# R3P 단계 1 — 정확 산술을 보존하는 감사 가속
+# R3P 단계 2 — 실제 U5 smoke 직전
 
-PR110의 Stage0에서 최신 GitHub 및 관련 REC 백업을 먼저 대조했다. 완료된 R3M 전체 h2 U6 5210-step 적분과 R3O의 실제 검증을 재사용한다.
+정확 source commit의 공개 진입점은 `scripts/run_r3p_u6_supervised.py`다. `run_r3p_u6_audited.py` CLI도 같은 supervisor로 위임한다. `--mode smoke --audit-backend rust --build <오프라인 build.json>`으로16단계만 원본C와 검증한다. 원래U5 checkpoint hash, 원본sourceZIP hash, h=4.245e-5, operator/stage/REI 조건은 고정이다.
 
-새 구현은 Python의 열별 온도·동일 단계 V/A Planck 캐시, 불변 인과 geometry, Rust/Rayon의 독립 prefix 열 검증이다. 원래 시간 적분, atomic/thermal 연산자 및 단계 경계는 유지한다. 새 `rec-stream-audit` crate, 고정 Cargo.lock, 라이선스와 오프라인 vendor를 포함했다. rustc 1.94.1로 실제 오프라인 빌드와 Rust 18개 테스트 및 C ABI 검사가 통과했다.
+소스와 입력 hash 검사, C컴파일, 적분, 감사, closeout까지60CPU/180wall/2GiB와2CPU/3wall receipt reserve에 포함한다. 새 full allocation은 없다. 실제smoke는 이 단계의 source commit 고정 뒤 수행하며 아직PASS로 기록하지 않았다.
 
-저장된 R3M 전체 raw를 새로 원격 복구하고 원래 SHA와 대조했다. 세 pilot 감사는 8,510,412개 prefix/spectral field와 모든 control 행에서 verdict·native history·diagnostic 해시가 같았다. 기존 21.4372, Python 캐시 19.9689, Rust 1-thread 9.78686 CPU초는 단회 pilot이다. 반복 비용 측정과 독립 코드 검토, 새 source-bound 16-step smoke는 진행 중이다. 신규 전체 물리 적분은 0회다.
+저장된R3M 전체감사는15개모두 verdict/native history/diagnostic hash가 같았다. 원래두round10개가주분석이고, 마지막자원초기화오류를 고친뒤 한개만재개한 세번째round는 별도descriptive자료다. 총263.522928CPU초/300초. Ratio9,952lane도scalar/NumPy/Rust bitwise일치, 실제bounded측정2.829587CPU초다. 상세결과는REPORT_KO.md와receipts에 있다.
 
-입력 계약 강화: Python prefix의 NaN/Inf를 명시적으로 거절한다. Rust는 원래 생성기의 네 필드 ASCII 문법만 받는다. 잘못된 문법의 우연한 예외 문자열까지 원래 parser와 같다고 주장하지 않는다. 정상 검토 입력의 전체 비트/판정을 대조한다.
+현재로컬검증은Python58+82+72+2사례, Rust18사례,C ABI PASS다. 독립C9의문법/우선순위설명과전체자원범위보완을반영했다. 최종C9followup과현재코드CI는뒤영수증으로확정한다. stage0/1은세저장소업로드ACK가있고stage1은세원격전체readbackSHA도PASS다. stage2업로드ACK와sourcecommit은뒤BACKUP_ACKS/Conversation에결속한다.
 
-후속 순서: 코드 독립 검토 → 동일 입력 3-round legacy/cached/Rust 1·2·4 비교 → exact-source U5 16-step 원본 C 같은-h smoke → 현재 코드 CI → 최종 백업/게시/DAG.
-
-원본 source ZIP, U5 checkpoint identity, h=4.245e-5, U5 h HOLD_9_FAIL / h2 HOLD_8_FAIL, CLOSED_HOLD_NOT_RESET, REI=false를 유지한다. 새 production speedup, 전역 h/h2/h4 수렴, Bianchi/REI/CMB 예측은 승인하지 않았다. 상세 상태는 EVIDENCE.json, DAG.json, BACKUP_ACKS.json과 receipts를 따른다.
+U5 h HOLD_9_FAIL, h2 HOLD_8_FAIL, CLOSED_HOLD_NOT_RESET, REI=false 유지. 새전역수렴/production speedup/Bianchi/REI/CMB 예측을승인하지않는다.

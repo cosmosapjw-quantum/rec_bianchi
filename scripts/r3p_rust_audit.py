@@ -2,7 +2,11 @@
 
 This adapter changes verification work only.  It neither calls the physical C
 operator nor advances a photon history.  Scalar libm and every prefix field are
-retained.  A failed block is discarded; its earliest bad row is reported.
+retained. A failed block is discarded. Within a bounded block delivered to
+Rust, its earliest logical row failure is reported. Resource, input-size and
+transport aborts may occur before an unvalidated earlier row is inspected.
+Only canonical, four-field ASCII prefix records are accepted; incidental
+legacy exceptions and its larger accepted text grammar are not reproduced.
 """
 from __future__ import annotations
 

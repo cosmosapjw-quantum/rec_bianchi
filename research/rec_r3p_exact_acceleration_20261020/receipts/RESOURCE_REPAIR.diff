@@ -1,0 +1,54 @@
+diff --git a/scripts/benchmark_r3p_audit.py b/scripts/benchmark_r3p_audit.py
+index 72e25ce..7b3fd26 100644
+--- a/scripts/benchmark_r3p_audit.py
++++ b/scripts/benchmark_r3p_audit.py
+@@ -92,14 +92,6 @@ def load_inputs(raw, checkpoint):
+ def run(args):
+     output = args.output.resolve()
+     output.mkdir(parents=True,exist_ok=False)
+-    available = sorted(os.sched_getaffinity(0))
+-    if args.cpus > len(available):
+-        raise ValueError("R3P_AFFINITY_TOO_SMALL")
+-    os.sched_setaffinity(0,set(available[:args.cpus]))
+-    resource.setrlimit(resource.RLIMIT_AS,(2*1024**3,2*1024**3))
+-    resource.setrlimit(resource.RLIMIT_CPU,(60,61))
+-    signal.signal(signal.SIGALRM,lambda *_: (_ for _ in ()).throw(TimeoutError("R3P_AUDIT_WALL_CAP")))
+-    signal.alarm(180)
+     all_cpu,all_wall = time.process_time(),time.perf_counter()
+     report = {"schema":"rec.r3p.saved-audit.v1","status":"FAILED","backend":args.backend,
+               "threads":args.threads if args.backend=="rust" else 1,"new_physical_steps":0,
+@@ -110,6 +102,25 @@ def run(args):
+               "measurement":"Audit interval includes allocation, CSV reading, all predicates, maxima and forensic files. Setup/hashes separate."}
+     prefix = None
+     try:
++        available = sorted(os.sched_getaffinity(0))
++        if args.cpus > len(available):
++            raise ValueError("R3P_AFFINITY_TOO_SMALL")
++        os.sched_setaffinity(0,set(available[:args.cpus]))
++        report["affinity"] = sorted(os.sched_getaffinity(0))
++        def tighten(kind, soft, hard):
++            inherited = resource.getrlimit(kind)
++            soft = min([soft] + [v for v in inherited if v != resource.RLIM_INFINITY])
++            hard = min([hard] + ([inherited[1]] if inherited[1] != resource.RLIM_INFINITY else []))
++            resource.setrlimit(kind, (soft, hard))
++            return soft, hard
++        report["effective_address_limits"] = tighten(resource.RLIMIT_AS,2*1024**3,2*1024**3)
++        cpu_soft,cpu_hard = tighten(resource.RLIMIT_CPU,60,61)
++        report["effective_cpu_limits"] = [cpu_soft,cpu_hard]
++        if time.process_time() >= cpu_soft-3.:
++            raise RuntimeError("R3P_INHERITED_CPU_BUDGET_NO_RESERVE")
++        signal.signal(signal.SIGALRM,lambda *_: (_ for _ in ()).throw(TimeoutError("R3P_AUDIT_WALL_CAP")))
++        signal.signal(signal.SIGXCPU,lambda *_: (_ for _ in ()).throw(TimeoutError("R3P_AUDIT_CPU_CAP")))
++        signal.alarm(180)
+         context = load_inputs(args.raw,args.checkpoint)
+         result,c,table,source,oracle,source_dir = context
+         module = legacy if args.backend=="legacy" else cached
+@@ -129,7 +140,7 @@ def run(args):
+         def guard(_):
+             nonlocal guards
+             guards += 1
+-            if time.process_time()-all_cpu > 57. or time.perf_counter()-all_wall > 177.:
++            if time.process_time() > cpu_soft-3. or time.perf_counter()-all_wall > 177.:
+                 raise RuntimeError("R3P_AUDIT_BUDGET_WITH_RESERVE")
+         module.np = capture
+         t0,c0 = time.perf_counter(),time.process_time()

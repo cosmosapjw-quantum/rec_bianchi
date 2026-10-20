@@ -1,0 +1,34 @@
+{
+  "schema": "rec.r3p.symbolic-check.v1",
+  "provenance": "Actual parent Wolfram calls in this research loop, summarized from returned outputs; not a reconstructed full engine transcript",
+  "profile_fraction": "21409138/37588099",
+  "amdahl_ceiling": 2.323270264388424,
+  "amdahl_s_2_4_8": [
+    1.3981831627022194,
+    1.7457466173984222,
+    1.99352390181157
+  ],
+  "checks": [
+    {
+      "expression": "Reduce[d>1 && Ceiling[d]<2,d,Reals]",
+      "result": "False"
+    },
+    {
+      "expression": "FullSimplify[(cs+cm+ck/w<ck)==(cs+cm<ck*(1-1/w)), Assumptions->ck>0&&cs>=0&&cm>=0&&w>=1]",
+      "result": "True"
+    },
+    {
+      "expression": "FullSimplify[Max[Max[a,b],Max[c,d]]==Max[a,b,c,d], Assumptions->Element[{a,b,c,d},Reals]]",
+      "result": "True"
+    }
+  ],
+  "warnings": [
+    "MinValue::lpsub",
+    "MaxValue::lpsub"
+  ],
+  "not_adopted": [
+    "Initial unconstrained cost Reduce conditions",
+    "Any implication that an exact-real floor or max proof certifies binary64 rounding boundaries"
+  ],
+  "scope": "Exact real algebra conditional on assumptions; no performance observation, integration correctness or floating-point proof"
+}
