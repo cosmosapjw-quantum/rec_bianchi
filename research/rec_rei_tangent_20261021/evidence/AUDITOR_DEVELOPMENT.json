@@ -1,0 +1,321 @@
+{
+  "development_scope": "One frozen case (index0),five stored states; no full fixture run and no unit suite run.",
+  "result": {
+    "schema": "rec.tangent.independent_verification.v1",
+    "status": "FAIL_SCOPED",
+    "scope": "Finite stored states and original-owner finite differences; no IVP or global error certification.",
+    "case_count": 1,
+    "state_count": 5,
+    "state_directions_per_point": 3,
+    "initial_seed_columns_per_case": 3,
+    "case_indices": [
+      0
+    ],
+    "state_fd": {
+      "formula": "central five-point, fourth order",
+      "step": 0.000740095979741405,
+      "directions": "sin(.37*j),cos(.53*j),sin(.23*j)*cos(.71*j); max(1,abs(y)) row scale; du=0"
+    },
+    "amplitude_fd": {
+      "formula": "central five-point at fixed y and radiation seed",
+      "step": 0.000740095979741405,
+      "reference": "fresh original CanonicalFVSpecies objects at A+h,A-h,A+2h,A-2h"
+    },
+    "initial_fd": {
+      "formula": "central two-point original initial state/field values",
+      "steps": [
+        2e-06,
+        2e-07,
+        2e-07
+      ],
+      "zero_shear": "signed smooth extension"
+    },
+    "scaled_error_definition": "max_i |actual-reference|/max(1,|reference_i|)",
+    "duality": {
+      "max_limit_fraction": 0.007940542596927025,
+      "max_abs_residual": 3.1086244689504383e-15,
+      "limit": "512*eps64*(1+|lambda dot JVP|+|VJP_y dot direction|+|VJP_A*dA|)"
+    },
+    "moment_sign": {
+      "max_pi_b": -5.164818949679677e-07,
+      "min_pi_b": -0.008488374973290786
+    },
+    "metrics": {
+      "rhs": {
+        "maximum_scaled_error": 2.710505431213761e-20,
+        "maximum_abs_error": 2.710505431213761e-20,
+        "tolerance": 2e-13,
+        "comparisons": 200,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 40
+        },
+        "pass": true
+      },
+      "state_jvp": {
+        "maximum_scaled_error": 2.9540342241625027e-08,
+        "maximum_abs_error": 7.11398410402353e-07,
+        "tolerance": 2e-08,
+        "comparisons": 600,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 152,
+          "direction": 0
+        },
+        "pass": false
+      },
+      "amplitude_jvp": {
+        "maximum_scaled_error": 2.531735339142361e-13,
+        "maximum_abs_error": 2.531735339142361e-13,
+        "tolerance": 2e-08,
+        "comparisons": 200,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 40
+        },
+        "pass": true
+      },
+      "observable_jvp": {
+        "maximum_scaled_error": 2.953375235138913e-08,
+        "maximum_abs_error": 1.1580478442851927e-06,
+        "tolerance": 2e-08,
+        "comparisons": 60,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 152,
+          "direction": 0
+        },
+        "pass": false
+      },
+      "observable_amplitude": {
+        "maximum_scaled_error": 2.4145182381252184e-16,
+        "maximum_abs_error": 2.4145182381252184e-16,
+        "tolerance": 2e-08,
+        "comparisons": 20,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "moment_rho_b_fd": {
+        "maximum_scaled_error": 2.0364829614316626e-13,
+        "maximum_abs_error": 2.0364829614316626e-13,
+        "tolerance": 2e-08,
+        "comparisons": 5,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "moment_pi_b_fd": {
+        "maximum_scaled_error": 1.1135189992295125e-14,
+        "maximum_abs_error": 1.1135189992295125e-14,
+        "tolerance": 2e-08,
+        "comparisons": 5,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "moment_pi_b_chain_rule": {
+        "maximum_scaled_error": 1.734723475976807e-18,
+        "maximum_abs_error": 1.734723475976807e-18,
+        "tolerance": 2e-13,
+        "comparisons": 5,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "rho_b_plus_six_owner_pi": {
+        "maximum_scaled_error": 8.673617379884035e-19,
+        "maximum_abs_error": 8.673617379884035e-19,
+        "tolerance": 2e-13,
+        "comparisons": 5,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "stored_observables": {
+        "maximum_scaled_error": 1.0842021724855044e-19,
+        "maximum_abs_error": 1.0842021724855044e-19,
+        "tolerance": 2e-13,
+        "comparisons": 20,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "owner_observables": {
+        "maximum_scaled_error": 1.0842021724855044e-19,
+        "maximum_abs_error": 1.0842021724855044e-19,
+        "tolerance": 2e-13,
+        "comparisons": 20,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "stored_index": 0
+        },
+        "pass": true
+      },
+      "initial_state": {
+        "maximum_scaled_error": 1.3877787807814457e-17,
+        "maximum_abs_error": 1.3877787807814457e-17,
+        "tolerance": 2e-13,
+        "comparisons": 40,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f"
+        },
+        "pass": true
+      },
+      "initial_seed_state_fd": {
+        "maximum_scaled_error": 1.1233148210267849e-12,
+        "maximum_abs_error": 7.524647571699461e-11,
+        "tolerance": 2e-09,
+        "comparisons": 120,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "seed_column": 2
+        },
+        "pass": true
+      },
+      "initial_seed_amplitude_fd": {
+        "maximum_scaled_error": 5.984238166463665e-14,
+        "maximum_abs_error": 8.753886504564434e-11,
+        "tolerance": 2e-09,
+        "comparisons": 3,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "seed_column": 1
+        },
+        "pass": true
+      },
+      "initial_observable_identity": {
+        "maximum_scaled_error": 3.3306690738754696e-16,
+        "maximum_abs_error": 3.3306690738754696e-16,
+        "tolerance": 2e-09,
+        "comparisons": 9,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f"
+        },
+        "pass": true
+      },
+      "initial_observable_fd": {
+        "maximum_scaled_error": 2.1438406605511773e-12,
+        "maximum_abs_error": 2.1438406605511773e-12,
+        "tolerance": 2e-09,
+        "comparisons": 9,
+        "worst_context": {
+          "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+          "seed_column": 2
+        },
+        "pass": true
+      }
+    },
+    "gates": {
+      "rhs": true,
+      "state_jvp": false,
+      "amplitude_jvp": true,
+      "observable_jvp": false,
+      "observable_amplitude": true,
+      "moment_rho_b_fd": true,
+      "moment_pi_b_fd": true,
+      "moment_pi_b_chain_rule": true,
+      "rho_b_plus_six_owner_pi": true,
+      "stored_observables": true,
+      "owner_observables": true,
+      "initial_state": true,
+      "initial_seed_state_fd": true,
+      "initial_seed_amplitude_fd": true,
+      "initial_observable_identity": true,
+      "initial_observable_fd": true,
+      "duality": true,
+      "nonpositive_pi_b": true
+    },
+    "unit_tests": {
+      "status": "NOT_RUN_DEVELOPMENT_SUBSET"
+    },
+    "execution_counts": {
+      "original_rhs_evaluations": 85,
+      "original_field_evaluations": 91,
+      "base_models": 1,
+      "amplitude_perturbed_models": 4,
+      "initial_seed_perturbed_models": 6,
+      "new_ODE_integrations": 0,
+      "NCP": 0,
+      "benchmarks": 0
+    },
+    "fixture_sha256": "0df69ad101752b9ce43fb898789619e442a82f3ae7847cc519ad0ff00419f21a",
+    "fixture_manifest_sha256": "5b0932e2d831278963ac28054673eecd905658d53a135bc87b70e02cd129e753",
+    "source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+    "code_sha256": {
+      "owner_model.py": "b38cfdbccd581d575c671d34d23a37adf1ec629a647b0ec51ac73f35662a1d6a",
+      "tangent_core.py": "3d5020ee8348c8a42c29d5f1f4f3c20b0f179dd28c9f6a2ec6300dab255da7b9",
+      "verify_tangent.py": "6340151fe53c23b02e5b537230a96f3ad7ddd7e056f633142ee7618e2ccea7f4",
+      "test_tangent_contract.py": "4a90d439c6ba354dfac465ff363434600c0641d385c2bd2afabe798f595de6ee"
+    },
+    "runtime": {
+      "python": "3.12.14",
+      "numpy": "2.3.5"
+    },
+    "historical_failure_note": "D8 case c original FAILED_WORKER_EXIT/124 remains historical; using saved states does not adjudicate solver success.",
+    "global_convergence": "NOT_RUN",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED"
+  },
+  "reference_step_diagnosis": {
+    "case_index": 0,
+    "stored_index": 152,
+    "direction": 0,
+    "raw_points": [
+      {
+        "step": 0.000740095979741405,
+        "divisor": 1,
+        "state_scaled_error": 2.9540342241625027e-08,
+        "observable_scaled_error": 2.953375235138913e-08,
+        "fd_rhs_change_from_previous": null
+      },
+      {
+        "step": 0.0003700479898707025,
+        "divisor": 2,
+        "state_scaled_error": 1.8470809483977963e-09,
+        "observable_scaled_error": 1.8466690154989101e-09,
+        "fd_rhs_change_from_previous": 2.7693261242075537e-08
+      },
+      {
+        "step": 0.00018502399493535126,
+        "divisor": 4,
+        "state_scaled_error": 1.1545525472633742e-10,
+        "observable_scaled_error": 1.1542954327597164e-10,
+        "fd_rhs_change_from_previous": 1.7316256934715337e-09
+      },
+      {
+        "step": 9.251199746767563e-05,
+        "divisor": 8,
+        "state_scaled_error": 1.2134779292516384e-11,
+        "observable_scaled_error": 7.214516338403949e-12,
+        "fd_rhs_change_from_previous": 1.0823914962551864e-10
+      }
+    ],
+    "new_original_rhs_evaluations": 16,
+    "new_original_field_evaluations": 16,
+    "explanation": "Successive step halving resolves fourth-order truncation in late-time state perturbations; tolerance and analytic core unchanged."
+  },
+  "correction": {
+    "state_fd_step_final": "eps64**0.2 / 8",
+    "acceptance_tolerance_unchanged": 2e-08,
+    "full_fixture_run": "NOT_RUN_BY_AUDITOR",
+    "core_edits": 0,
+    "factory_edits": 0,
+    "distinct_development_cases": 1,
+    "full_development_case_pass_claim": false,
+    "targeted_late_endpoint_refinement": "state1.21348e-11,observable7.21452e-12",
+    "final_verifier_sha256": "a93dec99a29cc7eee0921534e3a9e05004f9093bbbf8faf93df09b0557a16033"
+  }
+}

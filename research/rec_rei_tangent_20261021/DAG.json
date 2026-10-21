@@ -5,7 +5,10 @@
   ],
   "REC_U5_closed": "CLOSED_HOLD_NOT_RESET",
   "REI_activation": false,
-  "backup": "PENDING",
+  "backup": {
+    "stage_A": "id:BSpOijBcT10AAAAAAD_hgw",
+    "stage_B": "PENDING"
+  },
   "completed_reused": [
     "REC116",
     "REC117_175",
@@ -18,9 +21,12 @@
   ],
   "global_convergence": "NOT_RUN",
   "new_execution": {
+    "ODE": 2,
+    "ODE_scope": "one synthetic parent plus one160-state augmented x0to1e-4,3outputnodes",
     "NCP": 0,
-    "ODE": 0,
-    "benchmark": 0
+    "benchmark": 0,
+    "stored_state_checks": 200,
+    "unit_tests": 8
   },
   "nodes": [
     {
@@ -59,7 +65,13 @@
       ],
       "id": "R5",
       "name": "derivation",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
     },
     {
       "depends_on": [
@@ -67,7 +79,13 @@
       ],
       "id": "R6",
       "name": "independent_math",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
     },
     {
       "depends_on": [
@@ -75,7 +93,13 @@
       ],
       "id": "R7",
       "name": "discriminating_checks",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
     },
     {
       "depends_on": [
@@ -83,7 +107,13 @@
       ],
       "id": "R8",
       "name": "adjudication",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
     },
     {
       "depends_on": [
@@ -91,7 +121,13 @@
       ],
       "id": "R9",
       "name": "coding_contract",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
     },
     {
       "depends_on": [
@@ -137,7 +173,12 @@
       ],
       "id": "C5",
       "name": "implementation",
-      "status": "PENDING"
+      "status": "CORE_COMPLETE_DISPATCH_IN_PROGRESS",
+      "evidence": [
+        "code/tangent_core.py",
+        "code/owner_model.py",
+        "code/augmented.py"
+      ]
     },
     {
       "depends_on": [
@@ -145,7 +186,11 @@
       ],
       "id": "C6",
       "name": "implementation_validation",
-      "status": "PENDING"
+      "status": "CORE_AND_WIRING_COMPLETE",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
     },
     {
       "depends_on": [
@@ -153,7 +198,11 @@
       ],
       "id": "C7",
       "name": "science_validation",
-      "status": "PENDING"
+      "status": "CORE_AND_WIRING_COMPLETE",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
     },
     {
       "depends_on": [
@@ -161,7 +210,11 @@
       ],
       "id": "C8",
       "name": "reproducibility",
-      "status": "PENDING"
+      "status": "CORE_AND_WIRING_COMPLETE",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
     },
     {
       "depends_on": [
@@ -169,7 +222,10 @@
       ],
       "id": "C9",
       "name": "independent_review",
-      "status": "PENDING"
+      "status": "CORE_AUDIT_COMPLETE_DISPATCH_PLOT_PENDING",
+      "evidence": [
+        "evidence/C9_PHYSICS_CODE_REVIEW.json"
+      ]
     },
     {
       "depends_on": [
@@ -182,9 +238,12 @@
   ],
   "physical": "HOLD",
   "production": "NOT_APPROVED",
-  "publication": "PENDING",
+  "publication": {
+    "stage_A": "158eb1f740e93ae9a866d75100f2dd11cacb2ab1",
+    "stage_B": "PENDING"
+  },
   "schema": "rec.tangent.dag.v1",
-  "stage": "A_CONTRACT_INPUT",
+  "stage": "B_DERIVATION_CORE_VERIFICATION",
   "status": "IN_PROGRESS",
   "timestamp_utc": "2026-10-21T13:18:42.677780+00:00"
 }

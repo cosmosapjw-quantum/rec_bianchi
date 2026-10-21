@@ -1,0 +1,15 @@
+{
+  "code": "Clear[\"Global`*\"]; ee = Sqrt[mm^2+uu+ww]; pi=(ww-uu/2)/(3ee); db[f_]:=2uu D[f,uu]-4ww D[f,ww]; fact=-((2uu+8ww)mm^2+uu^2+14uu ww+4ww^2)/(6ee^3); ass=mm>0&&uu>=0&&ww>=0; out=<|\"rho_b_plus_6pi\"->FullSimplify[db[ee]+6pi,ass],\"pi_b_factorized_residual\"->FullSimplify[db[pi]-fact,ass],\"positive_factor_denominator\"->FullSimplify[ee>0,ass],\"initial_v_derivative\"->FullSimplify[D[ss/Sqrt[6-ss^2],ss]-6/(6-ss^2)^(3/2),-Sqrt[6]<ss<Sqrt[6]],\"amplitude_S_derivative\"->FullSimplify[D[pm/(km0(1-ss^2/6)),ss]-2ss(pm/(km0(1-ss^2/6)))/(6-ss^2)],\"normalized_A_derivative\"->FullSimplify[D[(n0+aa n1)/(z0+aa z1),aa]-(n1/(z0+aa z1)-(n0+aa n1)z1/(z0+aa z1)^2)]|>; out",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"rho_b_plus_6pi\" -> 0, \"pi_b_factorized_residual\" -> 0, \"positive_factor_denominator\" -> True, \"initial_v_derivative\" -> 0, \"amplitude_S_derivative\" -> 0, \"normalized_A_derivative\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "method": "Independent symbolic differentiation of packet formula and initial seed map",
+  "claim_scope": "exact algebra under stated real-domain assumptions"
+}

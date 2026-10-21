@@ -1,0 +1,63 @@
+{
+  "stage": "A_CONTRACT_INPUT",
+  "commit": "158eb1f740e93ae9a866d75100f2dd11cacb2ab1",
+  "tree": "4eef521f2e845807445b4392ff50eeb03bfd711b",
+  "branch": "research/rec-rei-tangent-20261021",
+  "pr": {
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/118",
+    "number": 118,
+    "state": "open",
+    "merged": false,
+    "mergeable": false,
+    "draft": true,
+    "body": "## 연구 목표\n\n기존 z20→2 matter/radiation pilot을 재사용해, PR147의40-state collisionless RHS 전체에 대한 analytic JVP/VJP와 초기세signed seed의 tangent 실행 인터페이스를 준비합니다. H constraint feedback과 matter 분포 amplitude 직접항을 함께 포함하여 후속 NCP local response 계산을 가능하게 합니다.\n\n## 현재 단계 A\n\n- 최신 REI215 NCP small-case 반환, BASS_CR93 pressure derivatives, HH132 whole-cell 계약을 조사했습니다.\n- 후보3개 중 full40-state tangent adapter 한 단위를 선택했습니다.\n- 원 physical source5files와40storedcase×5epochs fixture, 검증 tolerance를 고정했습니다.\n- 이 commit은 계약/입력 checkpoint입니다. 구현·CAS·경량검증·독립검토·그림은 후속 commit으로 게시합니다.\n\n완료729/175/237/1231 계산을 다시 실행하지 않습니다. Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED, 기존 REC U5 HOLD 및 REI_activation=false를 유지합니다.\n\nStage A source commit: 158eb1f740e93ae9a866d75100f2dd11cacb2ab1.\n기존 REC117의 내용 변경 없이 stacked draft로 게시합니다.",
+    "title": "research: analytic full-state tangent operator for split LRS pilot",
+    "base": "research/rec-rei-trajectory63-20261021",
+    "base_sha": "77b71c7dece730324d3963b9e95956fcc21d3211",
+    "head": "research/rec-rei-tangent-20261021",
+    "head_sha": "158eb1f740e93ae9a866d75100f2dd11cacb2ab1",
+    "head_repo_id": 1322785483,
+    "head_repo_full_name": "cosmosapjw-quantum/rec_bianchi",
+    "merge_commit_sha": null,
+    "user": {
+      "login": "cosmosapjw-quantum",
+      "name": "cosmosapjw-quantum",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/58155957?v=4",
+      "id": 58155957
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-10-21T13:22:05Z",
+    "updated_at": "2026-10-21T13:22:05Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 1,
+    "changed_files": 20,
+    "additions": 4896,
+    "deletions": 0,
+    "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/118",
+    "display_title": "research: analytic full-state tangent operator for split LRS pilot"
+  },
+  "backup": {
+    "file": {
+      "file": {
+        "size": 87399
+      },
+      "file_id": "id:BSpOijBcT10AAAAAAD_hgw",
+      "modified_time": "2026-10-21T13:19:12Z",
+      "name": "REC_REI_TANGENT_STAGE_A_20261021.zip",
+      "object_type": "file",
+      "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_REI_TANGENT_STAGE_A_20261021.zip",
+      "path_display": "/bianchi/rec_bianchi/20261016/REC_REI_TANGENT_STAGE_A_20261021.zip"
+    },
+    "status": "completed"
+  },
+  "archive": {
+    "bytes": 87399,
+    "sha256": "230b3856c26d24185c3390a9b22e2ca31e309377870d93922f743e1dcc1dfb18"
+  },
+  "backup_readback": "ACK_SIZE_CONFIRMED_FULL_READBACK_NOT_RUN"
+}
