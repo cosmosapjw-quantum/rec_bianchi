@@ -254,3 +254,13 @@ python -m unittest discover \
 ```
 
 그림 재생성의 정확 CLI와환경변수는 `evidence/PLOT_REVIEW.json` 및 `NORM_PLOT_REVIEW.json`의 실제 실행 명령을 따른다. `CODEX_HANDOFF_KO.md`와`NEXT_THREAD_HANDOFF_KO.md`는 각각 실행 환경 및 새대화에 붙여넣기 가능한 독립 문서다.
+
+## 최종 보존·CI 전달 기록
+
+과학 payload는 commit `6f68ad9326d4f6529b9fcde2d35c31631b43d958`, tree `7e96a7d329dbea60096fc3f7ef6a53d74020113e`의73개 파일이다. 원격 tree의 모든 blob SHA와 크기가 일치했다. Science archive는 `REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip`, 31,476,566 bytes, 1,775 payload이며 내부 manifest 대조와 Dropbox 전체-byte readback이 통과했다. SHA256은 `828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f`, Dropbox ID는 `id:BSpOijBcT10AAAAAAD_gPA`다.
+
+Stage1도 Dropbox `id:BSpOijBcT10AAAAAAD_gOQ`에서 전체-byte readback PASS다. Drive Stage1 upload는 약1,014초 무응답 뒤 기다림을 중단해 ACK가 없었고, 정확 파일명 목록 조회에서도 확인되지 않았다. 성공/실패를 추정하지 않고 `UNCONFIRMED_AFTER_INTERRUPTED_WAIT`를 보존하며 재전송하지 않았다. Stage2는 성공이 확인된 Dropbox 경로로 보존했다.
+
+Stage2 원격 CI39590922817/39590915157은 새 네 파일의 EOF 추가 빈 줄에서 repository whitespace gate가 실패했고, 이후 pytest는 skipped였다. 검사 규칙을 변경하지 않고 빈 줄1개씩만 제거했다. Test의 본문과 AST는 동일하며 실행된 원 test SHA639abdff…b44d7은 과학 archive와 원 C9 기록에 보존한다. 최종 형식의 test SHA는5a9d6a095e24b64bd6b8a69744da628c1ad3e4cbfecad8ab129075efe0919fe7이다. Reducer·관측량·결과·그림은 변하지 않았다. 원 C9를 소급 수정하지 않고 `CI_WHITESPACE_REPAIR.json`과 별도 C9 format addendum으로 연결한다.
+
+새 closing commit의 실제 CI와 최종 DAG/backup 결과는 마지막 PR117 댓글 및 별도 closing receipt가 소유한다. 과학 archive는 immutable snapshot이므로 자신의 upload ACK나 나중 CI를 포함한다고 주장하지 않는다. Closing archive는 전달 metadata와 위 네 파일의 형식 수정만 보충하며 과학 자료를 재포장하거나 재계산하지 않는다.

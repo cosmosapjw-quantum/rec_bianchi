@@ -167,4 +167,3 @@ positivity=-1≤A≤2.
 - not_run: 새 ODE/benchmark/performance claim.
 - unresolved: newz2 trajectory 결과, 시간연속양성/전역수렴/fullcoldEoR.
 - strong no-go: 새배제정리를채택하지않음; NG1–NG7 해당없음. 기존 finite-sentinel counterexample는원래scope로재사용.
-

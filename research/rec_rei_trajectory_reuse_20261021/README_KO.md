@@ -43,3 +43,7 @@ PNG와 동일 내용의 PDF가 `figures/`에 있다. 그림에서 초기/진화 
 Physical HOLD; global convergence NOT_RUN; production NOT_APPROVED; 원 REC U5 HOLD_9_FAIL/HOLD_8_FAIL 및 CLOSED_HOLD_NOT_RESET; REC REI_activation=false.
 
 작은 저장 차이는 참해 오차·physical decoupling·미검사 parameter/시간의 인증이 아니다. warm C15의 729와 이번 collisionless 자료는 source/구간/closure가 달라 행·계수를 합치지 않는다. 이전 153+90 sentinel 제안은 NOT_SUBMITTED이며 정확 반례는 보존한다.
+
+## 게시와 보존
+
+과학 commit `6f68ad9326d4f6529b9fcde2d35c31631b43d958` / tree `7e96a7d329dbea60096fc3f7ef6a53d74020113e`, 73개 원격 blob/size 일치. 전체 science archive는31,476,566 bytes이며1,775 payload검사 및Dropbox whole-byte SHA256 readback PASS다. `DELIVERY.json`이 provider별 결과를 구분한다. Stage2 CI의 네 파일 EOF 공백 문제는 내용/AST를 유지한 채 정리했으며 최종 exact-head CI는 마지막 PR117 전달 댓글을 따른다.

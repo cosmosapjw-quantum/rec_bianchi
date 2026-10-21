@@ -9,6 +9,8 @@ REC/REI 독립 matter/radiation 연구를 이어받아라.
 Repo: cosmosapjw-quantum/rec_bianchi
 Draft PR117: https://github.com/cosmosapjw-quantum/rec_bianchi/pull/117
 Branch: research/rec-rei-trajectory63-20261021
+Science commit: 6f68ad9326d4f6529b9fcde2d35c31631b43d958
+Science tree: 7e96a7d329dbea60096fc3f7ef6a53d74020113e
 Research path: research/rec_rei_trajectory_reuse_20261021/
 먼저 README_KO.md, REPORT_KO.md, DAG.json, DELIVERY.json,
 provenance/SOURCE_LOCK.json, FINAL_UPSTREAM_PUBLICATION_CHECK.json,
@@ -26,7 +28,8 @@ kappa_t=8piG/c²; H,s[s^-1], stress[J/m³].
 공통 x=ln(a/a_ref), a_ref=1/21로 비교하며 같은 proper time 비교가 아니다.
 그림 5종 PNG/PDF 완료; 8 focused tests PASS; independent C9 PASS_SCOPED.
 Reducer SHA 03596192ccd5602187549fb52734870b343aea6e1ca7f13d0df8d7e7b7c1c77a.
-Test SHA 639abdff416becf8978fc0f013c211d8a1bf1fb6fd2346a1da526e643f2b44d7.
+실행된 Test SHA 639abdff416becf8978fc0f013c211d8a1bf1fb6fd2346a1da526e643f2b44d7.
+EOF 빈 줄1개만 정리한 현재 Test SHA 5a9d6a095e24b64bd6b8a69744da628c1ad3e4cbfecad8ab129075efe0919fe7; body/AST 동일.
 NPZ SHA 239595a3313a68e0125ec7b333b8d515c3fd5d6d8ec115fbef2496d3b18428b9.
 최종 guard 변경 후 9 arrays/SUMMARY exact same. 과거 PR116 C6 NOT_RUN은 그대로 둔다.
 
@@ -48,6 +51,12 @@ warm C15 a=.1999→.2, gas 12000K와 이번 collisionless L8 ne_source=None의 �
 old 153 axis+90 sentinel 243 설계는 NOT_SUBMITTED. 반례 때문에 미검사 486 인증 불가.
 
 이번 새 ODE/NCP/benchmark 0, 동일 case pending 0. performance NOT_MEASURED.
+Science archive REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip,31,476,566 bytes,
+SHA828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f,
+Dropbox id:BSpOijBcT10AAAAAAD_gPA, 전체-byte readback PASS.
+Stage2 CI의4파일EOF문제는내용/AST변경없이수정;최종HEAD/CI는마지막PR댓글과closingreceipt를읽어라.
+Drive미확인상태를성공으로바꾸지마라.
+
 Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED,
 REC U5 HOLD_9_FAIL/HOLD_8_FAIL, CLOSED_HOLD_NOT_RESET, REI_activation=false 유지.
 후속은 최신 근거 후보 최대 3개에서 하나만 고르고 유한 source/구간/closure/resolution/허용 기준을 고정한다.

@@ -9,6 +9,9 @@ branch research/rec-rei-trajectory63-20261021의 최신 HEAD와
 research/rec_rei_trajectory_reuse_20261021/{README_KO.md,REPORT_KO.md,DAG.json,DELIVERY.json,CODEX_HANDOFF_KO.md},
 마지막 보존·CI 댓글을 읽어라. DELIVERY가 실제 구현 commit/tree/backup identity를 소유한다.
 
+과학 commit 6f68ad9326d4f6529b9fcde2d35c31631b43d958,
+tree 7e96a7d329dbea60096fc3f7ef6a53d74020113e.
+
 이번 대화에서 완료한 것:
 
 - 최신 다른 작업의 REI collisionless z20→2 완료 237 tails 발견·재사용.
@@ -38,6 +41,12 @@ mass fraction .1, m/T 30, ne_source=None. full cold EoR은 아직 아니다.
 REC116 head 4cffa8a0…/tree 916132bd…/CI 39565947569 SUCCESS다.
 warm C15 짧은 구간과 현재 collisionless long window를 섞지 마라.
 원 153+90 sentinel 제안은 NOT_SUBMITTED, 나머지 486의 인증으로 쓰지 마라.
+
+Science archive REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip,31,476,566 bytes,
+SHA828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f,
+Dropbox id:BSpOijBcT10AAAAAAD_gPA, 전체-byte readback PASS.
+Stage2 CI의4파일EOF문제는내용/AST변경없이수정;최종HEAD/CI는마지막PR댓글과closingreceipt를읽어라.
+Drive미확인상태를성공으로바꾸지마라.
 
 Physical HOLD/global convergence NOT_RUN/production NOT_APPROVED,
 원 REC U5 HOLD/CLOSED_HOLD_NOT_RESET/REI_activation=false를 유지한다.

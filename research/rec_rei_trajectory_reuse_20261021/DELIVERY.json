@@ -1,108 +1,214 @@
 {
-  "schema": "rec.trajectory.delivery.v1",
-  "stage": "S2_PREPUBLICATION_SNAPSHOT",
+  "schema": "rec.trajectory.delivery.v2",
   "repository": "cosmosapjw-quantum/rec_bianchi",
   "pr": 117,
+  "draft": true,
   "branch": "research/rec-rei-trajectory63-20261021",
-  "base_branch": "research/rec-rei-axis-reuse-20261021",
+  "stage": "S3_CLOSING_RECEIPT_PRECOMMIT",
+  "scientific_payload_commit": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+  "scientific_payload_tree": "7e96a7d329dbea60096fc3f7ef6a53d74020113e",
+  "scientific_payload_paths": 73,
+  "remote_tree_blob_and_size_readback": "PASS_ALL73",
   "stage1": {
-    "commit": "e79fca7b53aba2e99ea94fe2b4e498056da117be",
-    "tree": "92ba9b4db1fb2a31b9f98dc44522121c65faca86",
+    "schema": "rec.rei.stage_backup_receipt.v1",
+    "recorded_utc": "2026-10-21T11:16:12.800443+00:00",
+    "stage": "STAGE1",
     "archive": {
       "path": "/workspace/scratch/36ad4bc67b35/delivery/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
+      "name": "REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
       "bytes": 24679269,
       "sha256": "4a2924f881240f8505c5a6fd58674b728ebec115ae5c7aeeed4c5c7f444d41d0",
-      "payloads": 1720,
-      "source_commit": "e79fca7b53aba2e99ea94fe2b4e498056da117be"
+      "local_binding_check": "PASS",
+      "payload_count": 1720
+    },
+    "publication": {
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "pr": 117,
+      "commit": "e79fca7b53aba2e99ea94fe2b4e498056da117be"
+    },
+    "drive": {
+      "status": "UNCONFIRMED_AFTER_INTERRUPTED_WAIT",
+      "tool": "mcp__codex_apps__google_drive_upload_file",
+      "attempt_count": 1,
+      "parent_folder_id": "1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR",
+      "observed_tool_return": "aborted by user after 1014.3s",
+      "ack_received": false,
+      "file_id": null,
+      "operation_id": null,
+      "remote_presence": "EXACT_NAME_NOT_FOUND_IN_ONE_FOLDER_LIST",
+      "whole_archive_readback": "NOT_RUN",
+      "mutation_outcome": "UNKNOWN_DO_NOT_REUPLOAD",
+      "presence_check": {
+        "checked_utc": "2026-10-21T11:15:23.289014+00:00",
+        "tool": "google_drive_list_folder",
+        "top_k": 100,
+        "returned_count": 12,
+        "exact_name_matches": 0,
+        "query_scope": "direct children of the authorized REC folder",
+        "scope_limit": "observed provider listing only; not evidence of eventual failed mutation"
+      }
+    },
+    "dropbox": {
+      "status": "COMPLETED_ACK_SIZE_AND_WHOLE_ARCHIVE_SHA256_VERIFIED",
+      "attempt_count": 1,
+      "destination_path": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
+      "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
+      "whole_archive_readback": {
+        "status": "PASS",
+        "bytes": 24679269,
+        "sha256": "4a2924f881240f8505c5a6fd58674b728ebec115ae5c7aeeed4c5c7f444d41d0",
+        "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
+        "observed_utc": "2026-10-21T11:16:42.696963+00:00",
+        "scope": "one complete archive streamed once; no payload or scientific validation repeated"
+      },
+      "call_started_utc": "2026-10-21T11:15:30.119265+00:00",
+      "tool": "mcp__codex_apps__dropbox_upload_file",
+      "recommended_poll_after_ms": 1000,
+      "ack_received": true,
+      "initial_ack_utc": "2026-10-21T11:15:53.528216+00:00",
+      "completed_ack": {
+        "file": {
+          "file": {
+            "size": 24679269
+          },
+          "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
+          "modified_time": "2026-10-21T11:15:50Z",
+          "name": "REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
+          "object_type": "file",
+          "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
+          "path_display": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip"
+        },
+        "status": "completed"
+      },
+      "size_verified": true,
+      "completion_observed_utc": "2026-10-21T11:16:12.800412+00:00"
+    },
+    "notes": [
+      "Drive tool wait interrupted for status after no returned ACK; no cancellation, deletion or reupload issued.",
+      "Dropbox had not been invoked because provider mutations were being executed sequentially.",
+      "No provider success or failure is inferred from interrupted wait.",
+      "No scientific verification was repeated."
+    ]
+  },
+  "stage2": {
+    "archive": {
+      "archive": "/workspace/scratch/36ad4bc67b35/delivery/REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+      "name": "REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+      "bytes": 31476566,
+      "sha256": "828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f",
+      "payload_count": 1775,
+      "payload_manifest_validation": "PASS_ALL_PAYLOADS",
+      "science_commit": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+      "science_tree": "7e96a7d329dbea60096fc3f7ef6a53d74020113e",
+      "new_ODE": 0,
+      "new_NCP": 0,
+      "new_benchmarks": 0
     },
     "backup": {
       "schema": "rec.rei.stage_backup_receipt.v1",
-      "recorded_utc": "2026-10-21T11:16:12.800443+00:00",
-      "stage": "STAGE1",
+      "recorded_utc": "2026-10-21T11:21:11.388350+00:00",
+      "stage": "STAGE2_SCIENCE",
       "archive": {
-        "path": "/workspace/scratch/36ad4bc67b35/delivery/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
-        "name": "REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
-        "bytes": 24679269,
-        "sha256": "4a2924f881240f8505c5a6fd58674b728ebec115ae5c7aeeed4c5c7f444d41d0",
-        "local_binding_check": "PASS",
-        "payload_count": 1720
+        "path": "/workspace/scratch/36ad4bc67b35/delivery/REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+        "name": "REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+        "bytes": 31476566,
+        "sha256": "828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f",
+        "local_archive_binding": "PASS",
+        "payload_count_reported_by_parent": 1775
       },
       "publication": {
         "repository": "cosmosapjw-quantum/rec_bianchi",
         "pr": 117,
-        "commit": "e79fca7b53aba2e99ea94fe2b4e498056da117be"
-      },
-      "drive": {
-        "status": "UNCONFIRMED_AFTER_INTERRUPTED_WAIT",
-        "tool": "mcp__codex_apps__google_drive_upload_file",
-        "attempt_count": 1,
-        "parent_folder_id": "1BMLUuRlxjx84QyhL1_iQfwPivY2H-EmR",
-        "observed_tool_return": "aborted by user after 1014.3s",
-        "ack_received": false,
-        "file_id": null,
-        "operation_id": null,
-        "remote_presence": "EXACT_NAME_NOT_FOUND_IN_ONE_FOLDER_LIST",
-        "whole_archive_readback": "NOT_RUN",
-        "mutation_outcome": "UNKNOWN_DO_NOT_REUPLOAD",
-        "presence_check": {
-          "checked_utc": "2026-10-21T11:15:23.289014+00:00",
-          "tool": "google_drive_list_folder",
-          "top_k": 100,
-          "returned_count": 12,
-          "exact_name_matches": 0,
-          "query_scope": "direct children of the authorized REC folder",
-          "scope_limit": "observed provider listing only; not evidence of eventual failed mutation"
-        }
+        "commit": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+        "tree": "7e96a7d329dbea60096fc3f7ef6a53d74020113e",
+        "remote_git_payload_count_reported_by_parent": 73
       },
       "dropbox": {
         "status": "COMPLETED_ACK_SIZE_AND_WHOLE_ARCHIVE_SHA256_VERIFIED",
         "attempt_count": 1,
-        "destination_path": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
-        "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
-        "operation_id": "AVD5_7PYQxdbTC2PBxFOVAWNUyZdXa6KLsX_m55EKeMbPXb5D7wvR4pAUAqYTFQVyRMy1yanVgLMMu8uiDsNsrYDqJ6tTi68rMVsWQI8Z5nVBVy4ID1CAK_GizNhmQakABz_onP0wkVI7KwjWrrxwNdL-lByYOMwlt_p7n02wBgocrZkDD2tEUQcv92J-q_NfXGkVHGg0zE0kKSfNlL3WMFskVDasqcq5YsCjgPFjHraRza8SiGHD4Vl5qF7HVvoybBDxAcxNdOG-tTi-9lY1eae",
+        "call_started_utc": "2026-10-21T11:20:05.613347+00:00",
+        "destination_path": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+        "file_id": "id:BSpOijBcT10AAAAAAD_gPA",
         "whole_archive_readback": {
           "status": "PASS",
-          "bytes": 24679269,
-          "sha256": "4a2924f881240f8505c5a6fd58674b728ebec115ae5c7aeeed4c5c7f444d41d0",
-          "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
-          "observed_utc": "2026-10-21T11:16:42.696963+00:00",
+          "bytes": 31476566,
+          "sha256": "828eb4667a87b7c23674686daa5b94c260cf0adb4c86851b853de7bf059c6c0f",
+          "file_id": "id:BSpOijBcT10AAAAAAD_gPA",
+          "observed_utc": "2026-10-21T11:21:11.388120+00:00",
           "scope": "one complete archive streamed once; no payload or scientific validation repeated"
         },
-        "call_started_utc": "2026-10-21T11:15:30.119265+00:00",
-        "tool": "mcp__codex_apps__dropbox_upload_file",
-        "recommended_poll_after_ms": 1000,
         "ack_received": true,
-        "initial_ack_utc": "2026-10-21T11:15:53.528216+00:00",
+        "operation_id_received": true,
+        "initial_ack_utc": "2026-10-21T11:20:34.697111+00:00",
         "completed_ack": {
           "file": {
             "file": {
-              "size": 24679269
+              "size": 31476566
             },
-            "file_id": "id:BSpOijBcT10AAAAAAD_gOQ",
-            "modified_time": "2026-10-21T11:15:50Z",
-            "name": "REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
+            "file_id": "id:BSpOijBcT10AAAAAAD_gPA",
+            "modified_time": "2026-10-21T11:20:41Z",
+            "name": "REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
             "object_type": "file",
-            "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip",
-            "path_display": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_STAGE1_e79fca7b_20261021.zip"
+            "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip",
+            "path_display": "/bianchi/rec_bianchi/20261016/REC_REI_TRAJECTORY63_SCIENCE_6f68ad93_20261021.zip"
           },
           "status": "completed"
         },
         "size_verified": true,
-        "completion_observed_utc": "2026-10-21T11:16:12.800412+00:00"
+        "completion_observed_utc": "2026-10-21T11:20:48.882328+00:00"
+      },
+      "drive": {
+        "status": "NOT_ATTEMPTED_FOR_STAGE2",
+        "reason": "Parent directed no further Drive upload; Stage1 interrupted wait remains unconfirmed in STAGE1_BACKUP_ACKS.json."
       },
       "notes": [
-        "Drive tool wait interrupted for status after no returned ACK; no cancellation, deletion or reupload issued.",
-        "Dropbox had not been invoked because provider mutations were being executed sequentially.",
-        "No provider success or failure is inferred from interrupted wait.",
-        "No scientific verification was repeated."
+        "No scientific or payload-level validation repeated.",
+        "One create-only upload request; poll only its returned operation.",
+        "Public receipt omits opaque operation tokens and temporary signed URLs."
       ]
     }
   },
-  "implementation_publication": "PENDING_EXPECTED_HEAD_FF",
-  "final_backup": "PENDING_STAGE2_ARCHIVE",
-  "source_sha256": "03596192ccd5602187549fb52734870b343aea6e1ca7f13d0df8d7e7b7c1c77a",
+  "implementation_source_sha256": "03596192ccd5602187549fb52734870b343aea6e1ca7f13d0df8d7e7b7c1c77a",
+  "passed_test_source_sha256": "639abdff416becf8978fc0f013c211d8a1bf1fb6fd2346a1da526e643f2b44d7",
+  "current_test_source_sha256": "5a9d6a095e24b64bd6b8a69744da628c1ad3e4cbfecad8ab129075efe0919fe7",
+  "test_format_change": "only one terminal blank line removed; body/AST identical; see CI_WHITESPACE_REPAIR and C9_FORMAT_ADDENDUM",
+  "historical_ci": {
+    "head_sha": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+    "scope": "repository workflows; focused8 tests separately recorded",
+    "runs": [
+      {
+        "id": 39590922817,
+        "name": "verify-durable-backup",
+        "event": "pull_request",
+        "status": "completed",
+        "conclusion": "failure",
+        "head_sha": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39590922817",
+        "created_at": "2026-10-21T11:18:03Z",
+        "updated_at": "2026-10-21T11:18:33Z"
+      },
+      {
+        "id": 39590915157,
+        "name": "verify-durable-backup",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "failure",
+        "head_sha": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39590915157",
+        "created_at": "2026-10-21T11:17:59Z",
+        "updated_at": "2026-10-21T11:18:35Z"
+      }
+    ]
+  },
+  "closing_ci": "PENDING_NEW_COMMIT; final exact-head result is recorded in final PR comment and closing receipt",
+  "remaining_delivery": "Publish this additive metadata/EOF-fix commit, read its actual CI, back up closing receipt without repacking scientific data.",
+  "new_ODE_runs": 0,
+  "new_NCP_jobs": 0,
+  "new_benchmarks": 0,
   "physical": "HOLD",
   "global_convergence": "NOT_RUN",
   "production": "NOT_APPROVED",
-  "scope": "Delivery status snapshots are chronological. Final receipt commit will refer to the immutable implementation commit; no self-referential hash claim."
+  "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET",
+  "REC_REI_activation": false,
+  "no_force_or_merge": true
 }

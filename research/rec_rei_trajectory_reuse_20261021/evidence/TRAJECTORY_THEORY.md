@@ -150,4 +150,3 @@ TRAJECTORY_CAS.json에 실제입출력이있다.
 판정: PASS_SCOPED_RETROSPECTIVE_ANALYSIS_CONTRACT.
 아직 reducer source의 C9 review/실제 residual값 검토는 별도다.
 물리HOLD,globalconvergence NOT_RUN,production NOT_APPROVED,원REC U5HOLD,REC REI_activation=false는보존한다.
-

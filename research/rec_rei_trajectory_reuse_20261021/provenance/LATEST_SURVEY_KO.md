@@ -67,4 +67,3 @@ Git의 REI198 new_sweep에는 endpoints/run/summary/plots가 있으나 raw cases
 ## 공유 자원와 범위
 기존 ACCEL01 pending-only executor/HH74 resources cooperative leases/CR91 CPU55-aware runner를 재사용한다. 최대64CPU/128GiB는 실제 할당이 아니며 실제 affinity/quota/freeCPU/RAM/공동lease에 맞춘다. innerBLAS/OpenMP1, 타 세션을 veto로 쓰지 않고 fitting chunks를 배정한다. 과거 V12 cap/debit나 다른 lane 실패를 재설정하지 않는다.
 Full cold EoR/Thomson/native HHe/source Q/전역 수렴은 독립 후속으로 남는다. 이 선택의 실제 성과는 재사용된 z20→4와 새 z4→2로 연결된 명시적 collisionless 그림이다.
-
