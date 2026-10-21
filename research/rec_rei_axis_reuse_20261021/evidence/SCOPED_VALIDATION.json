@@ -1,0 +1,17 @@
+{
+  "schema": "rec.rei.axis_reuse.scoped_validation.v1",
+  "actual_executed_source_sha256": "453eee672e2a6d78bf0f76aa42f5453e68c1066cc561f5fe547be9e30e01e457",
+  "input_sha256": "c322453eed4c4c236ff19501ea6eca50353d6ebecc604a6cab9647b3a090255c",
+  "unit_tests": {"command":"python -m unittest -v test_axis_reuse", "exit":0, "unique_methods":12, "status":"PASS_SCOPED", "red_attempt":"ModuleNotFoundError before implementation; preserved"},
+  "analysis": {"command":"timeout 180 python axis_reuse.py --csv ../../intake/REI_SPLIT729_CASES.csv --out ../results/axis153_validation", "exit":0, "limits":{"CPU_s":60,"wall_s":180,"address_space_bytes":2147483648}, "gnu_time":{"user_s":1.12,"system_s":0.12,"wall_s":0.84,"maxrss_KiB":113260}, "main_timer":{"CPU_s":0.12404377899999997,"wall_s":0.12581780400000753}, "timer_scope":"GNU time includes wrapped process startup and termination; main timer excludes imports/startup/final receipt. Different nested scopes are not summed."},
+  "result_summary_sha256": "58820d835586921b97ab8a5de13d7e104024965d2e05dca7267f3ef7f77e169d",
+  "comparison_csv_sha256": "85f76ec6cc1c741e8570a6590d2234fc8e11591ecf40b5fec88db506a41d00f0",
+  "review_method":"Serial PHYS-MATH and PHYS-MATH-CODE checking plus actual Wolfram algebra; no independent agent available",
+  "independent_agent_review":"NOT_RUN_TOOL_NOT_EXPOSED",
+  "validation_design":"Retrospective stored-data comparison. Mixed endpoints excluded from prediction construction, but this is not a preregistered blinded prospective study.",
+  "new_ODE_runs":0,
+  "new_NCP_jobs":0,
+  "new_benchmarks":0,
+  "global_error_bound":null,
+  "production":"NOT_APPROVED"
+}
