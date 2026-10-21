@@ -1,7 +1,7 @@
 {
   "schema": "rec.rei.hheli.sandbox.dag.v1",
   "unit": "HHLI_SANDBOX_20261021",
-  "current": "D_COUPLED_CODING_READY_FOR_FIRST_CASE",
+  "current": "G_DELIVERY_STAGE_C_SNAPSHOT_READY",
   "nodes": [
     {
       "id": "A_SOURCE_AND_SCOPE",
@@ -22,24 +22,28 @@
     },
     {
       "id": "D_COUPLED_CODING",
-      "status": "C1_C7_COMPLETE_C8_ACTUAL_PILOT_READY",
+      "status": "C1_C9_COMPLETE_SCOPED_C10_DELIVERY",
       "loops": "C1-C10",
       "next": "E_NEW_PILOT"
     },
     {
       "id": "E_NEW_PILOT",
-      "status": "READY_NOT_RUN",
-      "next": "F_FIGURE_AND_DUAL_AUDIT"
+      "status": "COMPLETE_125_MAIN_PLUS_1_DISTINCT_CONTROL",
+      "next": "F_FIGURE_AND_DUAL_AUDIT",
+      "samples_per_case": 193,
+      "new_unique_IVPs": 126,
+      "old_campaign_reruns": 0
     },
     {
       "id": "F_FIGURE_AND_DUAL_AUDIT",
-      "status": "WAITING_FOR_ACTUAL_OUTPUT",
-      "next": "G_DELIVERY"
+      "status": "COMPLETE_SCOPED_5_PNG_DIRECT_INDEPENDENT_REVIEW",
+      "next": "G_DELIVERY",
+      "final_independent_visual_receipt": "evidence/INDEPENDENT_VISUAL_REVIEW.json"
     },
     {
       "id": "G_DELIVERY",
-      "status": "WAITING",
-      "next": "finite continuation selected from new evidence"
+      "status": "LOCAL_RESULTS_AND_ONE_COMMAND_COMPLETE_REMOTE_STAGE_C_PENDING",
+      "next": "SOURCE_BOUND_THERMAL_IONIC_YIELD_CLOSURE_NOT_RUN"
     }
   ],
   "immutable_holds": {
@@ -51,6 +55,32 @@
     "REI_activation": false
   },
   "completed_old_campaigns": "complete_reused, never queued by this unit",
-  "publication": "STAGE_A_POSTED_PR119_2d1a0b09_STAGE_B_PENDING",
-  "backup": "STAGE_A_ACK_112861B_STAGE_B_PENDING"
+  "publication": "STAGE_B_POSTED_PR119_a9495298",
+  "backup": "STAGE_B_ACK_205429B",
+  "new_results": {
+    "main_complete": 125,
+    "control_complete": 1,
+    "samples_each": 193,
+    "unique_IVPs": 126,
+    "output_recovery_ODE": 0,
+    "final_pipeline_new_workers": 0,
+    "benchmark": 0,
+    "NCP": 0
+  },
+  "next_candidates": [
+    {
+      "candidate": "source-bound thermal/ionic-yield closure",
+      "selected": true
+    },
+    {
+      "candidate": "CI/CX number-process expansion",
+      "selected": false
+    },
+    {
+      "candidate": "larger same-model sweep",
+      "selected": false
+    }
+  ],
+  "C6_independent_code_review": "PASS_SCOPED_FOR_NEW_PROJECT_CORE",
+  "historical_PR116_C6": "NOT_RUN_TOOL_NOT_EXPOSED_PRESERVED"
 }

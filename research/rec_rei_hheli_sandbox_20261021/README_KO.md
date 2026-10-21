@@ -1,6 +1,8 @@
 # REC → REI H/He/Li sandbox pilot
 
-이 단위는 PR118 다음의 새 **최적화 코딩 → 물리 → 결합 코딩** 연구 루프다. 현재 stage A는 최신 근거 수집과 실행 가능한 유한 물리 계약을 고정한다. 실제 새 sweep 완료 여부는 `DAG.json`과 실행 receipt로 판정한다.
+이 단위는 PR118 다음의 **최적화 코딩 → 물리 → 결합 코딩** 연구 루프다. 새 125-case sweep과 별도 opacity-off control 1개를 이 샌드박스에서 z=20→2까지 모두 완료했다. 각 case는 62상태와 193개 저장 시각을 갖는다. 실제 결과와 한 명령 실행 방법은 [REPORT_KO.md](REPORT_KO.md)에 있다.
+
+게시: [REC PR119](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/119), branch `research/rec-rei-hheli-sandbox-20261021`. 과학 모형은 아래의 유한 preliminary 계약이며 완전한 thermal/radiative EoR 폐쇄가 아니다.
 
 ## 선택한 다음 단계
 
@@ -29,4 +31,11 @@ REC116 warm729 축분해, REC117 175 trajectory, PR118 tangent, HE29/U4B 및 다
 
 ## 진행
 
-Stage A: source survey + scope + resource snapshot. 다음: prepared moment 계산의 동일 방정식 parity와 sandbox 실행기.
+Source survey, 최적화 parity, 물리 R1–R10, 결합 코딩 C1–C10, 125+1 실제 계산, 저장 결과·그림 검토를 수행했다. 현재 게시/보존 상태는 `DAG.json`, `stages/`와 PR119 최종 댓글에 있다.
+
+```bash
+cd research/rec_rei_hheli_sandbox_20261021
+python code/run_all.py --execute --workers auto
+```
+
+완료한 125+1은 hash를 확인하고 재사용한다. 저장 요약·그림만 만들려면 `python code/run_all.py`를 쓴다. 정상 결과는 `results/pilot_v2`; `results/pilot`은 최초 JSON 출력 실패의 보존 기록이다. 원 데이터·코드·재현 의존성은 이 폴더 안에 있다. [그림 캡션](figures/CAPTIONS.md), [전체 요약](results/SUMMARY.json), [Codex handoff](CODEX_HANDOFF_KO.md), [다음 스레드 handoff](NEXT_THREAD_HANDOFF_KO.md)를 함께 제공한다.

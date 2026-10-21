@@ -1,0 +1,91 @@
+{
+  "schema": "rec.rei.hheli.coupled62.v1",
+  "status": "COMPLETE",
+  "config": {
+    "Sigma_F": 0.003,
+    "P_m_initial_target": -0.0005,
+    "P_r_initial_target": -0.0012,
+    "matter_A": -0.7314130380431909,
+    "radiation_A": -0.4019171856996327,
+    "opacity": true,
+    "backend": "prepared",
+    "uv_cutoff_eV": 200.0,
+    "samples": 193,
+    "rtol": 2e-08,
+    "geometry_atol": 2e-11,
+    "atomic_atol": 2e-10,
+    "case_id": "s01_m00_r00"
+  },
+  "scientific_identity_sha256": "894e8f4b1d0fbc46a78cc62783ca2517d8f87e595b05ffd9fda6dcfa32efef61",
+  "outputs": {
+    "trajectory.npz": {
+      "bytes": 175884,
+      "sha256": "26afa110b86fd7d0dc5be2ff7038ae32789150f4ff6a8b835aadd8e84695896b"
+    }
+  },
+  "gates": {
+    "full_interval_and_samples": true,
+    "initial_physical_axes": true,
+    "finite": true,
+    "population_positivity": true,
+    "isotope_scaled_conservation": true,
+    "baryon_conservation": true,
+    "nonnegative_electrons": true,
+    "number_monopoles": true,
+    "monotone_optical_depth": true,
+    "einstein_constraint": true,
+    "tensor_sum": true,
+    "finite_angular_positivity": true,
+    "trace_energy_small": true
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "nfev": 1496,
+  "njev": 31,
+  "nlu": 111,
+  "rhs_calls": 1496,
+  "jac_calls": 31,
+  "samples": 193,
+  "x_end": 1.9459101490553132,
+  "z_end": 2.0000000000000004,
+  "initial_signed_observables": [
+    0.002999999999999999,
+    -0.0004999999999999998,
+    -0.0012000000000000001,
+    -0.0017,
+    -0.0007100573206541607,
+    -0.0004899426793458393
+  ],
+  "final_signed_observables": [
+    -7.872322349134408e-05,
+    -9.711544432063082e-06,
+    -0.0001553234398730435,
+    -0.00016503498430510657,
+    -8.955313817985817e-05,
+    -6.577030169318532e-05
+  ],
+  "min_scaled_population": 0.0,
+  "baryon_error": 6.661338147750939e-16,
+  "initial_axis_error": 8.673617379884035e-19,
+  "isotope_scaled_errors": {
+    "n": 0.0,
+    "H1": 8.823497364474106e-16,
+    "D": 8.975725671869006e-16,
+    "T": 0.0,
+    "He3": 1.6829485634754385e-15,
+    "He4": 1.6994235995351916e-15,
+    "Li6": 1.4628767898092753e-15,
+    "Li7": 1.2326283423892372e-15
+  },
+  "number_monopole_error": 0.0,
+  "max_einstein_constraint": 4.369123759289266e-16,
+  "max_trace_energy_fraction": 2.1940628847794236e-08,
+  "final_tau_T": 0.06934075621199655,
+  "solver_message": "The solver successfully reached the end of the integration interval.",
+  "physical_scope": "conditional prescribed T/UV, test-fluid baryons, single-photoelectron yield; Physical HOLD",
+  "wall_seconds": 0.6677871940046316
+}

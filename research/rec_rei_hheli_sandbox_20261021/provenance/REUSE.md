@@ -41,4 +41,3 @@ RUN19 TARGET_NETWORK_19.json은 요청된 19 reaction identity와 stoichiometry�
 ## 판정과 접근 공백
 
 READ_ONLY 조사이며 새 ODE=0, NCP=0, benchmark=0, Git mutation=0, external post=0. 반환물은 직접 API에서 읽은 metadata/선택 source와 owner의 저장된 receipt를 구별한다. 전체 private 대화, 모든 NCP filesystem, 모든 branch의 모든 파일 내용에는 접근했다고 주장하지 않는다. backup 조사는 별도 INPUT_SURVEY.json과 대조한다. Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED, 원래 REC U5 HOLD는 유지한다.
-

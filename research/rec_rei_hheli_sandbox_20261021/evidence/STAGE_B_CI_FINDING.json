@@ -1,0 +1,26 @@
+{
+  "head": "a949529872eb5ba0e20c7e206fe893e5d544e48c",
+  "workflow_runs": [
+    39623446966,
+    39623441713
+  ],
+  "conclusion": "FAILURE_PRESERVED",
+  "failing_step": "python scripts/verify_repo.py --quick",
+  "reason": "git whitespace check: new blank line at EOF in two descriptive provenance files",
+  "scientific_source_change": false,
+  "repairs": [
+    {
+      "path": "provenance/REUSE.md",
+      "old_sha256": "ae141c7fbf2834580cd0008a855f880ad2b2d43180511682b9f820600557630c",
+      "new_sha256": "0a0002c47828cf6b6ee22828201c5a49c7f44aa12027bf1f9d698b349bf2b37e",
+      "change": "remove duplicate blank newline at EOF; original bytes retained in Stage B ZIP and commit"
+    },
+    {
+      "path": "provenance/atomic_literature_retrieval.json",
+      "old_sha256": "fdf7d13973aad5372839774820802f27524e8d3926523193bb216d40bc2749d0",
+      "new_sha256": "c7b487081f7a2b6f3670230e5d65b84bd4960eec9366da323da3394206278c35",
+      "change": "remove duplicate blank newline at EOF; original bytes retained in Stage B ZIP and commit"
+    }
+  ],
+  "final_head_ci": "PENDING"
+}

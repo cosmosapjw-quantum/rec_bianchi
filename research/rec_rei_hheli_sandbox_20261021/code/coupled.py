@@ -40,7 +40,10 @@ def atomic_json(path, value):
     if path.exists():raise FileExistsError(str(path))
     temporary=path.with_name(path.name+f'.{os.getpid()}.tmp')
     with temporary.open('xb') as stream:
-        stream.write(json.dumps(value,indent=2,allow_nan=False).encode()+b'\n')
+        def scalar(item):
+            if isinstance(item,np.generic):return item.item()
+            raise TypeError('unsupported receipt type: '+type(item).__name__)
+        stream.write(json.dumps(value,indent=2,allow_nan=False,default=scalar).encode()+b'\n')
         stream.flush();os.fsync(stream.fileno())
     os.link(temporary,path)
     temporary.unlink()

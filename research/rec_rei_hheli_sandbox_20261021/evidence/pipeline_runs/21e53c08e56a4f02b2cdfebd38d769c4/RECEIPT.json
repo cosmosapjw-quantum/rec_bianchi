@@ -1,0 +1,88 @@
+{
+  "schema": "rec.hheli.pipeline.v1",
+  "run_id": "21e53c08e56a4f02b2cdfebd38d769c4",
+  "started_utc": "2026-10-21T15:32:59.771745+00:00",
+  "wrapper_sha256": "218e673a0ea389f789ca6ca7b35faf28fb9b22672ee6ec7f5957d287e8ef2c0b",
+  "execute_missing_enabled": true,
+  "steps": [
+    {
+      "name": "main_campaign",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/code/run_pilot.py",
+        "--execute",
+        "--manifest",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/data/CAMPAIGN.json",
+        "--output",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/pilot_v2",
+        "--workers",
+        "auto"
+      ],
+      "exit_code": 0,
+      "stdout": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/main_campaign.stdout.txt",
+      "stderr": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/main_campaign.stderr.txt",
+      "completion_counts": {
+        "completed": 0,
+        "complete_reused": 125
+      },
+      "new_workers": 0
+    },
+    {
+      "name": "opacity_off_control",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/code/run_pilot.py",
+        "--execute",
+        "--manifest",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/data/CONTROL_CAMPAIGN.json",
+        "--output",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/control",
+        "--workers",
+        "auto"
+      ],
+      "exit_code": 0,
+      "stdout": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/opacity_off_control.stdout.txt",
+      "stderr": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/opacity_off_control.stderr.txt",
+      "completion_counts": {
+        "completed": 0,
+        "complete_reused": 1
+      },
+      "new_workers": 0
+    },
+    {
+      "name": "saved_data_summary",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/code/summarize_pilot.py",
+        "--input",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/pilot_v2",
+        "--control",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/control",
+        "--output",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results"
+      ],
+      "exit_code": 0,
+      "stdout": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/saved_data_summary.stdout.txt",
+      "stderr": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/saved_data_summary.stderr.txt"
+    },
+    {
+      "name": "saved_data_figures",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/code/plot_pilot.py",
+        "--input",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/pilot_v2",
+        "--control",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/results/control",
+        "--output",
+        "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/figures"
+      ],
+      "exit_code": 0,
+      "stdout": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/saved_data_figures.stdout.txt",
+      "stderr": "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/saved_data_figures.stderr.txt"
+    }
+  ],
+  "status": "COMPLETE",
+  "scope": "Runnable finite pilot and saved-data reports; no benchmark or global convergence claim.",
+  "finished_utc": "2026-10-21T15:33:15.193319+00:00"
+}

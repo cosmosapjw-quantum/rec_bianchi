@@ -1,0 +1,1981 @@
+{
+  "schema": "rec.hheli.control_comparison.v1",
+  "status": "PASS_SAVED_DATA_COMPARISON",
+  "difference_direction": "opacity_on minus opacity_off",
+  "on_case": "s03_m03_r03",
+  "off_case": "control_s03_m03_r03_opacity_off",
+  "same_scientific_config_except": [
+    "opacity",
+    "case_id"
+  ],
+  "same_initial_state": true,
+  "source_identity": {
+    "main_base_identity": "8c80d32ea0211e1dd41ee802d3cf2d78c828002a44bf1a0916dffac6161704d8",
+    "control_base_identity": "cc41b84d2a0b3fe6ee98a1224216aba97cb732d901382a8d7d09fe44aa20c56d",
+    "main_frozen_sha256": "14be42054350d7b8f9b124c6caeb8cbe88d7425c8fdfd3b533ea4bfbf71c7aa6",
+    "control_frozen_sha256": "e327970adcdebe7784844427015f4a785813d5b6c564f1c52c6c300bf2c10017",
+    "on_receipt": {
+      "case_id": "s03_m03_r03",
+      "scientific_identity_sha256": "17d9b611dd5297333ea3b6e275ec9374a15720b83e702a25a5a78ff6d0dfc180",
+      "result_sha256": "768dcc480bfb9b76b0e44948421a700d3c55707bf5a63cb90c589a8c1fadd5c7",
+      "complete_sha256": "95db0df154297b2ec3066da5eee622e1e1eef0c15b2fadc47e7bf94ba3c4930c",
+      "npz_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "npz_bytes": 178306,
+      "recovery": null
+    },
+    "off_receipt": {
+      "case_id": "control_s03_m03_r03_opacity_off",
+      "scientific_identity_sha256": "b942e2becdcf2676a5081a0dbe3753fa6c85b61e4475064a706b661624b4bfb3",
+      "result_sha256": "782fb6055f594dfd52d7c4e93fc4abeba3588ba30d273b60181bfccd7af75f4f",
+      "complete_sha256": "70928a7c246e1a683f78184a93e0f367391a3f701f5ea8050219e6334f9b1caa",
+      "npz_sha256": "d2979a859d0f051539099f8cfd9375f25f5cac47d0425ca0ba661cde71eb9d1d",
+      "npz_bytes": 150792,
+      "recovery": null
+    },
+    "all_common_scientific_source_bytes_equal": true
+  },
+  "samples": 193,
+  "x_range": [
+    0.0,
+    1.9459101490553132
+  ],
+  "z_range": [
+    20.0,
+    2.0000000000000004
+  ],
+  "signed_observables": {
+    "S_F_signed": {
+      "max_absolute_difference": 4.870392720773137e-07,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": 0.007829492495771527,
+        "off": 0.00782900545649945,
+        "on_minus_off": 4.870392720773137e-07
+      },
+      "endpoint": {
+        "on": 0.007829492495771527,
+        "off": 0.00782900545649945,
+        "on_minus_off": 4.870392720773137e-07,
+        "absolute_difference": 4.870392720773137e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.4999999999999995e-05,
+        "profile_scale": 0.14999999999999994,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 6.220572691529482e-05,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": 6.220572691529482e-05
+        },
+        "endpoint": 6.220572691529482e-05
+      }
+    },
+    "P_m_F_signed": {
+      "max_absolute_difference": 1.8519851750018054e-11,
+      "max_abs_at": {
+        "sample_index": 172,
+        "x": 1.743211175195385,
+        "z": 2.6741112347346205,
+        "on": 6.526569856361428e-06,
+        "off": 6.526588376213178e-06,
+        "on_minus_off": -1.8519851750018054e-11
+      },
+      "endpoint": {
+        "on": 4.099113931451914e-06,
+        "off": 4.099131233491608e-06,
+        "on_minus_off": -1.730203969395219e-11,
+        "absolute_difference": 1.730203969395219e-11
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 5.000000000000001e-08,
+        "profile_scale": 0.0005000000000000001,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 4.22090406683917e-06,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": -4.22090406683917e-06
+        },
+        "endpoint": -4.22090406683917e-06
+      }
+    },
+    "P_r_F_signed": {
+      "max_absolute_difference": 1.0385720322942396e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": -6.007061670236272e-05,
+        "off": -6.110918873465696e-05,
+        "on_minus_off": 1.0385720322942396e-06
+      },
+      "endpoint": {
+        "on": -4.2979949073526186e-05,
+        "off": -4.385116618529152e-05,
+        "on_minus_off": 8.712171117653325e-07,
+        "absolute_difference": 8.712171117653325e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 6e-08,
+        "profile_scale": 0.0006,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.01990331980945532,
+        "max_abs_at": {
+          "sample_index": 61,
+          "z": 10.316825125033324,
+          "signed_value": -0.01990331980945532
+        },
+        "endpoint": 0.019867592758742975
+      }
+    },
+    "P_total_F_signed": {
+      "max_absolute_difference": 1.0385552533467455e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": -4.92652919923285e-05,
+        "off": -5.0303847245675245e-05,
+        "on_minus_off": 1.0385552533467455e-06
+      },
+      "endpoint": {
+        "on": -3.888083514207427e-05,
+        "off": -3.975203495179991e-05,
+        "on_minus_off": 8.71199809725642e-07,
+        "absolute_difference": 8.71199809725642e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.1e-07,
+        "profile_scale": 0.0011,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.35603195185390846,
+        "max_abs_at": {
+          "sample_index": 85,
+          "z": 7.8733446425801965,
+          "signed_value": 0.35603195185390846
+        },
+        "endpoint": 0.021915854390397574
+      }
+    },
+    "P_gamma_F_signed": {
+      "max_absolute_difference": 1.0386730271910114e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": -3.5120515989708943e-05,
+        "off": -3.6159189016899955e-05,
+        "on_minus_off": 1.0386730271910114e-06
+      },
+      "endpoint": {
+        "on": -2.507599139470062e-05,
+        "off": -2.594736797424036e-05,
+        "on_minus_off": 8.713765795397401e-07,
+        "absolute_difference": 8.713765795397401e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 3.550286603270804e-08,
+        "profile_scale": 0.00035502866032708036,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.03363994019791886,
+        "max_abs_at": {
+          "sample_index": 61,
+          "z": 10.316825125033324,
+          "signed_value": -0.03363994019791886
+        },
+        "endpoint": 0.033582465104160554
+      }
+    },
+    "P_nu_F_signed": {
+      "max_absolute_difference": 1.5946777440754324e-10,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": -1.790395767882557e-05,
+        "off": -1.790379821105116e-05,
+        "on_minus_off": -1.5946777440754324e-10
+      },
+      "endpoint": {
+        "on": -1.790395767882557e-05,
+        "off": -1.790379821105116e-05,
+        "on_minus_off": -1.5946777440754324e-10,
+        "absolute_difference": 1.5946777440754324e-10
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 2.449713396729196e-08,
+        "profile_scale": 0.0002449713396729196,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 8.906844914861512e-06,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": -8.906844914861512e-06
+        },
+        "endpoint": -8.906844914861512e-06
+      }
+    }
+  },
+  "norm_observables": {
+    "Sigma_F": {
+      "max_absolute_difference": 4.870392720773137e-07,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": 0.007829492495771527,
+        "off": 0.00782900545649945,
+        "on_minus_off": 4.870392720773137e-07
+      },
+      "endpoint": {
+        "on": 0.007829492495771527,
+        "off": 0.00782900545649945,
+        "on_minus_off": 4.870392720773137e-07,
+        "absolute_difference": 4.870392720773137e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.4999999999999995e-05,
+        "profile_scale": 0.14999999999999994,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 6.220572691529482e-05,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": 6.220572691529482e-05
+        },
+        "endpoint": 6.220572691529482e-05
+      }
+    },
+    "Pi_m_F": {
+      "max_absolute_difference": 1.8519851750018054e-11,
+      "max_abs_at": {
+        "sample_index": 172,
+        "x": 1.743211175195385,
+        "z": 2.6741112347346205,
+        "on": 6.526569856361428e-06,
+        "off": 6.526588376213178e-06,
+        "on_minus_off": -1.8519851750018054e-11
+      },
+      "endpoint": {
+        "on": 4.099113931451914e-06,
+        "off": 4.099131233491608e-06,
+        "on_minus_off": -1.730203969395219e-11,
+        "absolute_difference": 1.730203969395219e-11
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 5.000000000000001e-08,
+        "profile_scale": 0.0005000000000000001,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 4.22090406683917e-06,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": -4.22090406683917e-06
+        },
+        "endpoint": -4.22090406683917e-06
+      }
+    },
+    "Pi_r_F": {
+      "max_absolute_difference": 1.0385720322942396e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": 6.007061670236272e-05,
+        "off": 6.110918873465696e-05,
+        "on_minus_off": -1.0385720322942396e-06
+      },
+      "endpoint": {
+        "on": 4.2979949073526186e-05,
+        "off": 4.385116618529152e-05,
+        "on_minus_off": -8.712171117653325e-07,
+        "absolute_difference": 8.712171117653325e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 6e-08,
+        "profile_scale": 0.0006,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.01990331980945532,
+        "max_abs_at": {
+          "sample_index": 61,
+          "z": 10.316825125033324,
+          "signed_value": -0.01990331980945532
+        },
+        "endpoint": -0.019867592758742975
+      }
+    },
+    "Pi_total_F": {
+      "max_absolute_difference": 1.0385552533467455e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": 4.92652919923285e-05,
+        "off": 5.0303847245675245e-05,
+        "on_minus_off": -1.0385552533467455e-06
+      },
+      "endpoint": {
+        "on": 3.888083514207427e-05,
+        "off": 3.975203495179991e-05,
+        "on_minus_off": -8.71199809725642e-07,
+        "absolute_difference": 8.71199809725642e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.1e-07,
+        "profile_scale": 0.0011,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.35603195185390846,
+        "max_abs_at": {
+          "sample_index": 85,
+          "z": 7.8733446425801965,
+          "signed_value": 0.35603195185390846
+        },
+        "endpoint": -0.021915854390397574
+      }
+    },
+    "Pi_gamma_F": {
+      "max_absolute_difference": 1.0386730271910114e-06,
+      "max_abs_at": {
+        "sample_index": 150,
+        "x": 1.5202423039494635,
+        "z": 3.591836870980356,
+        "on": 3.5120515989708943e-05,
+        "off": 3.6159189016899955e-05,
+        "on_minus_off": -1.0386730271910114e-06
+      },
+      "endpoint": {
+        "on": 2.507599139470062e-05,
+        "off": 2.594736797424036e-05,
+        "on_minus_off": -8.713765795397401e-07,
+        "absolute_difference": 8.713765795397401e-07
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 3.550286603270804e-08,
+        "profile_scale": 0.00035502866032708036,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.03363994019791886,
+        "max_abs_at": {
+          "sample_index": 61,
+          "z": 10.316825125033324,
+          "signed_value": -0.03363994019791886
+        },
+        "endpoint": -0.033582465104160554
+      }
+    },
+    "Pi_nu_F": {
+      "max_absolute_difference": 1.5946777440754324e-10,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": 1.790395767882557e-05,
+        "off": 1.790379821105116e-05,
+        "on_minus_off": 1.5946777440754324e-10
+      },
+      "endpoint": {
+        "on": 1.790395767882557e-05,
+        "off": 1.790379821105116e-05,
+        "on_minus_off": 1.5946777440754324e-10,
+        "absolute_difference": 1.5946777440754324e-10
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 2.449713396729196e-08,
+        "profile_scale": 0.0002449713396729196,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 8.906844914861512e-06,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": 8.906844914861512e-06
+        },
+        "endpoint": 8.906844914861512e-06
+      }
+    }
+  },
+  "diagnostics": {
+    "ne_m3": {
+      "max_absolute_difference": 2.305711177541525e-10,
+      "max_abs_at": {
+        "sample_index": 64,
+        "x": 0.6486367163517711,
+        "z": 9.977917130068914,
+        "on": 74.75222858398742,
+        "off": 74.75222858421799,
+        "on_minus_off": -2.305711177541525e-10
+      },
+      "endpoint": {
+        "on": 6.002923889259884,
+        "off": 6.002923889259885,
+        "on_minus_off": -8.881784197001252e-16,
+        "absolute_difference": 8.881784197001252e-16
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 0.01779704649951984,
+        "profile_scale": 177.9704649951984,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 1.2512506381530363e-09,
+        "max_abs_at": {
+          "sample_index": 24,
+          "z": 15.465769810473713,
+          "signed_value": -1.2512506381530363e-09
+        },
+        "endpoint": -1.4795763466020403e-16
+      }
+    },
+    "H": {
+      "max_absolute_difference": 8.33253128215951e-27,
+      "max_abs_at": {
+        "sample_index": 154,
+        "x": 1.5607820987214494,
+        "z": 3.4094075542841633,
+        "on": 1.1497678110857589e-17,
+        "off": 1.149767811919012e-17,
+        "on_minus_off": -8.33253128215951e-27
+      },
+      "endpoint": {
+        "on": 6.6222219549744975e-18,
+        "off": 6.622221961292864e-18,
+        "on_minus_off": -6.318366783300117e-27,
+        "absolute_difference": 6.318366783300117e-27
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.1857355403902878e-20,
+        "profile_scale": 1.1857355403902877e-16,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 9.541158270186664e-10,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": -9.541158270186664e-10
+        },
+        "endpoint": -9.541158270186664e-10
+      }
+    },
+    "tau_T": {
+      "max_absolute_difference": 1.843833419279406e-11,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": 0.06933355498245734,
+        "off": 0.06933355496401901,
+        "on_minus_off": 1.843833419279406e-11
+      },
+      "endpoint": {
+        "on": 0.06933355498245734,
+        "off": 0.06933355496401901,
+        "on_minus_off": 1.843833419279406e-11,
+        "absolute_difference": 1.843833419279406e-11
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 6.933355498245735e-06,
+        "profile_scale": 0.06933355498245734,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 180,
+        "excluded_samples": 13,
+        "max_abs": 3.5498242095762986e-10,
+        "max_abs_at": {
+          "sample_index": 40,
+          "z": 13.000940277010637,
+          "signed_value": -3.5498242095762986e-10
+        },
+        "endpoint": 2.6593666223316103e-10
+      }
+    },
+    "gamma_T_per_H": {
+      "max_absolute_difference": 2.39758768394438e-11,
+      "max_abs_at": {
+        "sample_index": 152,
+        "x": 1.5405122013354564,
+        "z": 3.499697788401054,
+        "on": 0.0341050722494417,
+        "off": 0.03410507222546582,
+        "on_minus_off": 2.39758768394438e-11
+      },
+      "endpoint": {
+        "on": 0.018078483388097505,
+        "off": 0.018078483370848542,
+        "on_minus_off": 1.7248962674853985e-11,
+        "absolute_difference": 1.7248962674853985e-11
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 9.630638302127573e-06,
+        "profile_scale": 0.09630638302127573,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 1.2523066370484898e-09,
+        "max_abs_at": {
+          "sample_index": 24,
+          "z": 15.465769810473713,
+          "signed_value": -1.2523066370484898e-09
+        },
+        "endpoint": 9.541155806360582e-10
+      }
+    },
+    "trace_energy_fraction": {
+      "max_absolute_difference": 4.1867412523404024e-17,
+      "max_abs_at": {
+        "sample_index": 192,
+        "x": 1.9459101490553132,
+        "z": 2.0000000000000004,
+        "on": 2.1940423206639278e-08,
+        "off": 2.1940423164771866e-08,
+        "on_minus_off": 4.1867412523404024e-17
+      },
+      "endpoint": {
+        "on": 2.1940423206639278e-08,
+        "off": 2.1940423164771866e-08,
+        "on_minus_off": 4.1867412523404024e-17,
+        "absolute_difference": 4.1867412523404024e-17
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 2.194042320663928e-12,
+        "profile_scale": 2.1940423206639278e-08,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 155,
+        "excluded_samples": 38,
+        "max_abs": 1.908231766046096e-09,
+        "max_abs_at": {
+          "sample_index": 192,
+          "z": 2.0000000000000004,
+          "signed_value": 1.908231766046096e-09
+        },
+        "endpoint": 1.908231766046096e-09
+      }
+    },
+    "T_K": {
+      "max_absolute_difference": 0.0,
+      "max_abs_at": {
+        "sample_index": 0,
+        "x": 0.0,
+        "z": 20.0,
+        "on": 100.00000000009116,
+        "off": 100.00000000009116,
+        "on_minus_off": 0.0
+      },
+      "endpoint": {
+        "on": 11999.955652992518,
+        "off": 11999.955652992518,
+        "on_minus_off": 0.0,
+        "absolute_difference": 0.0
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 1.1999955652992518,
+        "profile_scale": 11999.955652992518,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 193,
+        "excluded_samples": 0,
+        "max_abs": 0.0,
+        "max_abs_at": {
+          "sample_index": 0,
+          "z": 20.0,
+          "signed_value": 0.0
+        },
+        "endpoint": 0.0
+      }
+    },
+    "uv_scale": {
+      "max_absolute_difference": 0.0,
+      "max_abs_at": {
+        "sample_index": 0,
+        "x": 0.0,
+        "z": 20.0,
+        "on": 7.66053886991358e-15,
+        "off": 7.66053886991358e-15,
+        "on_minus_off": 0.0
+      },
+      "endpoint": {
+        "on": 0.9999962733607158,
+        "off": 0.9999962733607158,
+        "on_minus_off": 0.0,
+        "absolute_difference": 0.0
+      },
+      "normalized_difference": {
+        "definition": "(on-off)/max(abs(on),abs(off))",
+        "absolute_denominator_floor": 9.999962733607159e-05,
+        "profile_scale": 0.9999962733607158,
+        "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+        "included_samples": 135,
+        "excluded_samples": 58,
+        "max_abs": 0.0,
+        "max_abs_at": {
+          "sample_index": 58,
+          "z": 10.666195817765436,
+          "signed_value": 0.0
+        },
+        "endpoint": 0.0
+      }
+    }
+  },
+  "chemistry": [
+    {
+      "species": "n",
+      "Y_per_baryon": {
+        "max_absolute_difference": 0.0,
+        "max_abs_at": {
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0,
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0
+        },
+        "endpoint": {
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1e-30,
+          "profile_scale": 0.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 0,
+          "excluded_samples": 193,
+          "max_abs": null,
+          "max_abs_at": null,
+          "endpoint": null
+        }
+      },
+      "charge_fraction": null,
+      "charge_fraction_status": "UNDEFINED_ZERO_ISOTOPE_INVENTORY; Y remains recorded"
+    },
+    {
+      "species": "H1I",
+      "Y_per_baryon": {
+        "max_absolute_difference": 6.606382108031994e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.4512245949184741,
+          "off": 0.45122459491781347,
+          "on_minus_off": 6.606382108031994e-13
+        },
+        "endpoint": {
+          "on": 1.6659755831972596e-06,
+          "off": 1.6659755831973975e-06,
+          "on_minus_off": -1.3785461216563738e-19,
+          "absolute_difference": 1.3785461216563738e-19
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.548040851342302e-05,
+          "profile_scale": 0.7548040851342301,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 97,
+          "excluded_samples": 96,
+          "max_abs": 6.2546350842320324e-12,
+          "max_abs_at": {
+            "sample_index": 93,
+            "z": 7.182291200659934,
+            "signed_value": -6.2546350842320324e-12
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 8.751888103120109e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.5976845696376009,
+          "off": 0.5976845696367257,
+          "on_minus_off": 8.751888103120109e-13
+        },
+        "endpoint": {
+          "on": 2.2067234602978824e-06,
+          "off": 2.2067234602980645e-06,
+          "on_minus_off": -1.8211208365967457e-19,
+          "absolute_difference": 1.8211208365967457e-19
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.998008970802335e-05,
+          "profile_scale": 0.9998008970802335,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 97,
+          "excluded_samples": 96,
+          "max_abs": 6.254546561101101e-12,
+          "max_abs_at": {
+            "sample_index": 93,
+            "z": 7.182291200659934,
+            "signed_value": -6.254546561101101e-12
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "H1II",
+      "Y_per_baryon": {
+        "max_absolute_difference": 6.606937219544307e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.30372980384083964,
+          "off": 0.30372980384150033,
+          "on_minus_off": -6.606937219544307e-13
+        },
+        "endpoint": {
+          "on": 0.7549527327837303,
+          "off": 0.7549527327837305,
+          "on_minus_off": -2.220446049250313e-16,
+          "absolute_difference": 2.220446049250313e-16
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.549527327837306e-05,
+          "profile_scale": 0.7549527327837305,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 193,
+          "excluded_samples": 0,
+          "max_abs": 1.1910969522810608e-09,
+          "max_abs_at": {
+            "sample_index": 24,
+            "z": 15.465769810473713,
+            "signed_value": -1.1910969522810608e-09
+          },
+          "endpoint": -2.9411722785119036e-16
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 8.751332991607796e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.4023154303623992,
+          "off": 0.40231543036327433,
+          "on_minus_off": -8.751332991607796e-13
+        },
+        "endpoint": {
+          "on": 0.9999977932765398,
+          "off": 0.9999977932765398,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.999977932765398e-05,
+          "profile_scale": 0.9999977932765398,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 193,
+          "excluded_samples": 0,
+          "max_abs": 1.191096903139555e-09,
+          "max_abs_at": {
+            "sample_index": 24,
+            "z": 15.465769810473713,
+            "signed_value": -1.191096903139555e-09
+          },
+          "endpoint": 0.0
+        }
+      }
+    },
+    {
+      "species": "DI",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.6515448405564348e-17,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 1.1280614872961852e-05,
+          "off": 1.1280614872945337e-05,
+          "on_minus_off": 1.6515448405564348e-17
+        },
+        "endpoint": {
+          "on": 4.1649389579931515e-11,
+          "off": 4.164938957993494e-11,
+          "on_minus_off": -3.42504472385238e-24,
+          "absolute_difference": 3.42504472385238e-24
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1.8870102128355755e-09,
+          "profile_scale": 1.8870102128355754e-05,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 97,
+          "excluded_samples": 96,
+          "max_abs": 6.255266473101519e-12,
+          "max_abs_at": {
+            "sample_index": 93,
+            "z": 7.182291200659934,
+            "signed_value": -6.255266473101519e-12
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 8.751888103120109e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.5976845696376009,
+          "off": 0.5976845696367257,
+          "on_minus_off": 8.751888103120109e-13
+        },
+        "endpoint": {
+          "on": 2.2067234602978837e-06,
+          "off": 2.2067234602980636e-06,
+          "on_minus_off": -1.7999450129153882e-19,
+          "absolute_difference": 1.7999450129153882e-19
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.998008970802336e-05,
+          "profile_scale": 0.9998008970802336,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 97,
+          "excluded_samples": 96,
+          "max_abs": 6.254911548548498e-12,
+          "max_abs_at": {
+            "sample_index": 93,
+            "z": 7.182291200659934,
+            "signed_value": -6.254911548548498e-12
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "DII",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.6517142471458857e-17,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 7.593245096020991e-06,
+          "off": 7.593245096037508e-06,
+          "on_minus_off": -1.6517142471458857e-17
+        },
+        "endpoint": {
+          "on": 1.8873818319593257e-05,
+          "off": 1.8873818319593267e-05,
+          "on_minus_off": -1.0164395367051604e-20,
+          "absolute_difference": 1.0164395367051604e-20
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1.887381831959327e-09,
+          "profile_scale": 1.8873818319593267e-05,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 193,
+          "excluded_samples": 0,
+          "max_abs": 1.1910971255311677e-09,
+          "max_abs_at": {
+            "sample_index": 24,
+            "z": 15.465769810473713,
+            "signed_value": -1.1910971255311677e-09
+          },
+          "endpoint": -5.385447287314276e-16
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 8.750777880095484e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.4023154303623992,
+          "off": 0.4023154303632743,
+          "on_minus_off": -8.750777880095484e-13
+        },
+        "endpoint": {
+          "on": 0.9999977932765396,
+          "off": 0.9999977932765396,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.999977932765397e-05,
+          "profile_scale": 0.9999977932765396,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 193,
+          "excluded_samples": 0,
+          "max_abs": 1.191097039252393e-09,
+          "max_abs_at": {
+            "sample_index": 24,
+            "z": 15.465769810473713,
+            "signed_value": -1.191097039252393e-09
+          },
+          "endpoint": 0.0
+        }
+      }
+    },
+    {
+      "species": "TI",
+      "Y_per_baryon": {
+        "max_absolute_difference": 0.0,
+        "max_abs_at": {
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0,
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0
+        },
+        "endpoint": {
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1e-30,
+          "profile_scale": 0.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 0,
+          "excluded_samples": 193,
+          "max_abs": null,
+          "max_abs_at": null,
+          "endpoint": null
+        }
+      },
+      "charge_fraction": null,
+      "charge_fraction_status": "UNDEFINED_ZERO_ISOTOPE_INVENTORY; Y remains recorded"
+    },
+    {
+      "species": "TII",
+      "Y_per_baryon": {
+        "max_absolute_difference": 0.0,
+        "max_abs_at": {
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0,
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0
+        },
+        "endpoint": {
+          "on": 0.0,
+          "off": 0.0,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1e-30,
+          "profile_scale": 0.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 0,
+          "excluded_samples": 193,
+          "max_abs": null,
+          "max_abs_at": null,
+          "endpoint": null
+        }
+      },
+      "charge_fraction": null,
+      "charge_fraction_status": "UNDEFINED_ZERO_ISOTOPE_INVENTORY; Y remains recorded"
+    },
+    {
+      "species": "He3I",
+      "Y_per_baryon": {
+        "max_absolute_difference": 5.742883382384156e-18,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 5.439562171182469e-06,
+          "off": 5.439562171176726e-06,
+          "on_minus_off": 5.742883382384156e-18
+        },
+        "endpoint": {
+          "on": 1.1060910716226152e-14,
+          "off": 1.1060910716280525e-14,
+          "on_minus_off": -5.437302675326346e-26,
+          "absolute_difference": 5.437302675326346e-26
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.549543987593139e-10,
+          "profile_scale": 7.549543987593138e-06,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 90,
+          "excluded_samples": 103,
+          "max_abs": 8.430564044575905e-12,
+          "max_abs_at": {
+            "sample_index": 89,
+            "z": 7.52081508949742,
+            "signed_value": 8.430564044575905e-12
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 7.606137941706947e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.7205153291538938,
+          "off": 0.7205153291531332,
+          "on_minus_off": 7.606137941706947e-13
+        },
+        "endpoint": {
+          "on": 1.4651097780744865e-09,
+          "off": 1.4651097780816887e-09,
+          "on_minus_off": -7.202261593499212e-21,
+          "absolute_difference": 7.202261593499212e-21
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 0.0001,
+          "profile_scale": 1.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 90,
+          "excluded_samples": 103,
+          "max_abs": 8.430529531398917e-12,
+          "max_abs_at": {
+            "sample_index": 89,
+            "z": 7.52081508949742,
+            "signed_value": 8.430529531398917e-12
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "He3II",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.2669918825029824e-17,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 2.003664138467081e-06,
+          "off": 2.003664138479751e-06,
+          "on_minus_off": -1.2669918825029824e-17
+        },
+        "endpoint": {
+          "on": 2.8169944880618486e-09,
+          "off": 2.8169944880621124e-09,
+          "on_minus_off": -2.6387061540441583e-22,
+          "absolute_difference": 2.6387061540441583e-22
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 6.318242617183836e-10,
+          "profile_scale": 6.318242617183836e-06,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 152,
+          "excluded_samples": 41,
+          "max_abs": 6.654649455294358e-10,
+          "max_abs_at": {
+            "sample_index": 41,
+            "z": 12.859758111137324,
+            "signed_value": -6.654649455294358e-10
+          },
+          "endpoint": -9.367097327405125e-14
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 1.6783796574770804e-12,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.2654020086193137,
+          "off": 0.26540200862099206,
+          "on_minus_off": -1.6783796574770804e-12
+        },
+        "endpoint": {
+          "on": 0.00037313438966529326,
+          "off": 0.0003731343896653282,
+          "on_minus_off": -3.496552006265752e-17,
+          "absolute_difference": 3.496552006265752e-17
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 8.369038749316763e-05,
+          "profile_scale": 0.8369038749316763,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 152,
+          "excluded_samples": 41,
+          "max_abs": 6.654650850941901e-10,
+          "max_abs_at": {
+            "sample_index": 41,
+            "z": 12.859758111137324,
+            "signed_value": -6.654650850941901e-10
+          },
+          "endpoint": -9.370757837147843e-14
+        }
+      }
+    },
+    {
+      "species": "He3III",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.2708035307656268e-17,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 5.539789666234365e-06,
+          "off": 5.539789666221657e-06,
+          "on_minus_off": 1.2708035307656268e-17
+        },
+        "endpoint": {
+          "on": 7.5467269820441625e-06,
+          "off": 7.546726982044162e-06,
+          "on_minus_off": 8.470329472543003e-22,
+          "absolute_difference": 8.470329472543003e-22
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.546726982044163e-10,
+          "profile_scale": 7.5467269820441625e-06,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 133,
+          "excluded_samples": 60,
+          "max_abs": 1.4324044241466783e-11,
+          "max_abs_at": {
+            "sample_index": 67,
+            "z": 9.649158503658121,
+            "signed_value": -1.4324044241466783e-11
+          },
+          "endpoint": 1.1223845108874824e-16
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 1.6829870830292748e-12,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.7337912959164705,
+          "off": 0.7337912959147875,
+          "on_minus_off": 1.6829870830292748e-12
+        },
+        "endpoint": {
+          "on": 0.999626864145225,
+          "off": 0.9996268641452248,
+          "on_minus_off": 1.1102230246251565e-16,
+          "absolute_difference": 1.1102230246251565e-16
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.99626864145225e-05,
+          "profile_scale": 0.999626864145225,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 133,
+          "excluded_samples": 60,
+          "max_abs": 1.4324269393551235e-11,
+          "max_abs_at": {
+            "sample_index": 67,
+            "z": 9.649158503658121,
+            "signed_value": -1.4324269393551235e-11
+          },
+          "endpoint": 1.1106374432768988e-16
+        }
+      }
+    },
+    {
+      "species": "He4I",
+      "Y_per_baryon": {
+        "max_absolute_difference": 4.6601611458640946e-14,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.0441288984085995,
+          "off": 0.0441288984085529,
+          "on_minus_off": 4.6601611458640946e-14
+        },
+        "endpoint": {
+          "on": 8.973255382368906e-11,
+          "off": 8.973255382413012e-11,
+          "on_minus_off": -4.410552875526886e-22,
+          "absolute_difference": 4.410552875526886e-22
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 6.1246300561599964e-06,
+          "profile_scale": 0.06124630056159996,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 90,
+          "excluded_samples": 103,
+          "max_abs": 8.431649046776221e-12,
+          "max_abs_at": {
+            "sample_index": 89,
+            "z": 7.52081508949742,
+            "signed_value": 8.431649046776221e-12
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 7.603917495657697e-13,
+        "max_abs_at": {
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "on": 0.7205153291538937,
+          "off": 0.7205153291531333,
+          "on_minus_off": 7.603917495657697e-13
+        },
+        "endpoint": {
+          "on": 1.465109778074487e-09,
+          "off": 1.4651097780816898e-09,
+          "on_minus_off": -7.202675183805488e-21,
+          "absolute_difference": 7.202675183805488e-21
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 0.0001,
+          "profile_scale": 1.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 90,
+          "excluded_samples": 103,
+          "max_abs": 8.430529531398917e-12,
+          "max_abs_at": {
+            "sample_index": 89,
+            "z": 7.52081508949742,
+            "signed_value": 8.430529531398917e-12
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "He4II",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.0277195761076996e-13,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.01625489118955083,
+          "off": 0.016254891189653602,
+          "on_minus_off": -1.0277195761076996e-13
+        },
+        "endpoint": {
+          "on": 2.2853100979309712e-05,
+          "off": 2.285310097931184e-05,
+          "on_minus_off": -2.1277467635028025e-18,
+          "absolute_difference": 2.1277467635028025e-18
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 5.125726626523311e-06,
+          "profile_scale": 0.05125726626523311,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 152,
+          "excluded_samples": 41,
+          "max_abs": 6.654650999110739e-10,
+          "max_abs_at": {
+            "sample_index": 41,
+            "z": 12.859758111137324,
+            "signed_value": -6.654650999110739e-10
+          },
+          "endpoint": -9.310538492911669e-14
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 1.6783241463258491e-12,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.26540200861931373,
+          "off": 0.26540200862099206,
+          "on_minus_off": -1.6783241463258491e-12
+        },
+        "endpoint": {
+          "on": 0.00037313438966529326,
+          "off": 0.00037313438966532833,
+          "on_minus_off": -3.507394027990607e-17,
+          "absolute_difference": 3.507394027990607e-17
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 8.369038749316763e-05,
+          "profile_scale": 0.8369038749316763,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 152,
+          "excluded_samples": 41,
+          "max_abs": 6.65465321028241e-10,
+          "max_abs_at": {
+            "sample_index": 41,
+            "z": 12.859758111137324,
+            "signed_value": -6.65465321028241e-10
+          },
+          "endpoint": -9.399814450596362e-14
+        }
+      }
+    },
+    {
+      "species": "He4III",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.0312584119986923e-13,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.044942002259186084,
+          "off": 0.04494200225908296,
+          "on_minus_off": 1.0312584119986923e-13
+        },
+        "endpoint": {
+          "on": 0.0612234473708881,
+          "off": 0.06122344737088804,
+          "on_minus_off": 5.551115123125783e-17,
+          "absolute_difference": 5.551115123125783e-17
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 6.12234473708881e-06,
+          "profile_scale": 0.0612234473708881,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 133,
+          "excluded_samples": 60,
+          "max_abs": 1.4323959770835282e-11,
+          "max_abs_at": {
+            "sample_index": 67,
+            "z": 9.649158503658121,
+            "signed_value": -1.4323959770835282e-11
+          },
+          "endpoint": 9.06697574459904e-16
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 1.6829870830292748e-12,
+        "max_abs_at": {
+          "sample_index": 86,
+          "x": 0.8716055875976925,
+          "z": 7.783867936702318,
+          "on": 0.7337912959164705,
+          "off": 0.7337912959147875,
+          "on_minus_off": 1.6829870830292748e-12
+        },
+        "endpoint": {
+          "on": 0.9996268641452248,
+          "off": 0.9996268641452248,
+          "on_minus_off": 0.0,
+          "absolute_difference": 0.0
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.996268641452249e-05,
+          "profile_scale": 0.9996268641452248,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 133,
+          "excluded_samples": 60,
+          "max_abs": 1.4324636043223432e-11,
+          "max_abs_at": {
+            "sample_index": 67,
+            "z": 9.649158503658121,
+            "signed_value": -1.4324636043223432e-11
+          },
+          "endpoint": 0.0
+        }
+      }
+    },
+    {
+      "species": "Li6I",
+      "Y_per_baryon": {
+        "max_absolute_difference": 2.969627434659238e-26,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 1.305657259470866e-15,
+          "off": 1.3056572595005622e-15,
+          "on_minus_off": -2.969627434659238e-26
+        },
+        "endpoint": {
+          "on": 1.1944834165915522e-26,
+          "off": 1.1944834167187338e-26,
+          "on_minus_off": -1.2718154369957456e-36,
+          "absolute_difference": 1.2718154369957456e-36
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 1.9064180298145775e-19,
+          "profile_scale": 1.9064180298145773e-15,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 88,
+          "excluded_samples": 105,
+          "max_abs": 3.533225860763633e-10,
+          "max_abs_at": {
+            "sample_index": 40,
+            "z": 13.000940277010637,
+            "signed_value": -3.533225860763633e-10
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 3.933409153944467e-12,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 0.17294518206882073,
+          "off": 0.17294518207275414,
+          "on_minus_off": -3.933409153944467e-12
+        },
+        "endpoint": {
+          "on": 1.5821928033727053e-12,
+          "off": 1.5821928035411656e-12,
+          "on_minus_off": -1.684602996768608e-22,
+          "absolute_difference": 1.684602996768608e-22
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 2.5252095132468517e-05,
+          "profile_scale": 0.25252095132468516,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 88,
+          "excluded_samples": 105,
+          "max_abs": 3.5332260647842177e-10,
+          "max_abs_at": {
+            "sample_index": 40,
+            "z": 13.000940277010637,
+            "signed_value": -3.5332260647842177e-10
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "Li6II",
+      "Y_per_baryon": {
+        "max_absolute_difference": 2.969035788980322e-26,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 6.222157509130045e-15,
+          "off": 6.2221575091003544e-15,
+          "on_minus_off": 2.969035788980322e-26
+        },
+        "endpoint": {
+          "on": 2.1607336402997355e-20,
+          "off": 2.1607336402361467e-20,
+          "on_minus_off": 6.358879008569794e-31,
+          "absolute_difference": 6.358879008569794e-31
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.549543987593139e-19,
+          "profile_scale": 7.549543987593138e-15,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 134,
+          "excluded_samples": 59,
+          "max_abs": 2.1003153802464992e-11,
+          "max_abs_at": {
+            "sample_index": 111,
+            "z": 5.817842908852039,
+            "signed_value": -2.1003153802464992e-11
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 3.9332981316420046e-12,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 0.824176601839196,
+          "off": 0.8241766018352628,
+          "on_minus_off": 3.9332981316420046e-12
+        },
+        "endpoint": {
+          "on": 2.8620717275780785e-06,
+          "off": 2.8620717274938453e-06,
+          "on_minus_off": 8.42331914397039e-17,
+          "absolute_difference": 8.42331914397039e-17
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 0.0001,
+          "profile_scale": 1.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 134,
+          "excluded_samples": 59,
+          "max_abs": 2.1002109715299935e-11,
+          "max_abs_at": {
+            "sample_index": 111,
+            "z": 5.817842908852039,
+            "signed_value": -2.1002109715299935e-11
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "Li6III",
+      "Y_per_baryon": {
+        "max_absolute_difference": 3.2140165430967073e-26,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 2.975227002471863e-15,
+          "off": 2.9752270025040032e-15,
+          "on_minus_off": -3.2140165430967073e-26
+        },
+        "endpoint": {
+          "on": 6.237888157391603e-17,
+          "off": 6.237888157410447e-17,
+          "on_minus_off": -1.884391487346692e-28,
+          "absolute_difference": 1.884391487346692e-28
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 5.45139524795187e-19,
+          "profile_scale": 5.45139524795187e-15,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 145,
+          "excluded_samples": 48,
+          "max_abs": 5.1058202190203854e-11,
+          "max_abs_at": {
+            "sample_index": 48,
+            "z": 11.91055121197655,
+            "signed_value": -5.1058202190203854e-11
+          },
+          "endpoint": -3.0208805284655263e-12
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 4.2568726321690065e-12,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 0.3940936045092698,
+          "off": 0.39409360451352665,
+          "on_minus_off": -4.2568726321690065e-12
+        },
+        "endpoint": {
+          "on": 0.008262602572609563,
+          "off": 0.008262602572634512,
+          "on_minus_off": -2.494879303149844e-14,
+          "absolute_difference": 2.494879303149844e-14
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.220827187589941e-05,
+          "profile_scale": 0.722082718758994,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 145,
+          "excluded_samples": 48,
+          "max_abs": 5.105782529425919e-11,
+          "max_abs_at": {
+            "sample_index": 48,
+            "z": 11.91055121197655,
+            "signed_value": -5.105782529425919e-11
+          },
+          "endpoint": -3.0194836084853072e-12
+        }
+      }
+    },
+    {
+      "species": "Li6IV",
+      "Y_per_baryon": {
+        "max_absolute_difference": 3.294677570655556e-26,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 4.505562313432188e-15,
+          "off": 4.505562313399241e-15,
+          "on_minus_off": 3.294677570655556e-26
+        },
+        "endpoint": {
+          "on": 7.487143498670864e-15,
+          "off": 7.487143498670687e-15,
+          "on_minus_off": 1.7670484276950664e-28,
+          "absolute_difference": 1.7670484276950664e-28
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.487143498670864e-19,
+          "profile_scale": 7.487143498670864e-15,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 118,
+          "excluded_samples": 75,
+          "max_abs": 1.8708964243516107e-11,
+          "max_abs_at": {
+            "sample_index": 75,
+            "z": 8.81980520634638,
+            "signed_value": 1.8708964243516107e-11
+          },
+          "endpoint": 2.3601102717061015e-14
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 4.364508754406415e-12,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 0.5967992663976258,
+          "off": 0.5967992663932613,
+          "on_minus_off": 4.364508754406415e-12
+        },
+        "endpoint": {
+          "on": 0.9917345353540807,
+          "off": 0.9917345353540559,
+          "on_minus_off": 2.4868995751603507e-14,
+          "absolute_difference": 2.4868995751603507e-14
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.917345353540808e-05,
+          "profile_scale": 0.9917345353540807,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 118,
+          "excluded_samples": 75,
+          "max_abs": 1.870984280170307e-11,
+          "max_abs_at": {
+            "sample_index": 75,
+            "z": 8.81980520634638,
+            "signed_value": 1.870984280170307e-11
+          },
+          "endpoint": 2.5076262714522172e-14
+        }
+      }
+    },
+    {
+      "species": "Li7I",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.4848279736238981e-21,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 6.52828629735433e-11,
+          "off": 6.528286297502813e-11,
+          "on_minus_off": -1.4848279736238981e-21
+        },
+        "endpoint": {
+          "on": 5.972417082957771e-22,
+          "off": 5.972417083593668e-22,
+          "on_minus_off": -6.35897304811786e-32,
+          "absolute_difference": 6.35897304811786e-32
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.532090149072889e-15,
+          "profile_scale": 9.532090149072888e-11,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 88,
+          "excluded_samples": 105,
+          "max_abs": 3.5332269321469235e-10,
+          "max_abs_at": {
+            "sample_index": 40,
+            "z": 13.000940277010637,
+            "signed_value": -3.5332269321469235e-10
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 3.933464665095698e-12,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 0.17294518206882073,
+          "off": 0.1729451820727542,
+          "on_minus_off": -3.933464665095698e-12
+        },
+        "endpoint": {
+          "on": 1.582192803372707e-12,
+          "off": 1.5821928035411656e-12,
+          "on_minus_off": -1.6845868408972691e-22,
+          "absolute_difference": 1.6845868408972691e-22
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 2.5252095132468524e-05,
+          "profile_scale": 0.2525209513246852,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 88,
+          "excluded_samples": 105,
+          "max_abs": 3.533227365932809e-10,
+          "max_abs_at": {
+            "sample_index": 40,
+            "z": 13.000940277010637,
+            "signed_value": -3.533227365932809e-10
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "Li7II",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.4845307055912619e-21,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 3.1110787545650223e-10,
+          "off": 3.111078754550177e-10,
+          "on_minus_off": 1.4845307055912619e-21
+        },
+        "endpoint": {
+          "on": 1.080366820149869e-15,
+          "off": 1.0803668201180734e-15,
+          "on_minus_off": 3.1795630430611797e-26,
+          "absolute_difference": 3.1795630430611797e-26
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 3.774771993796569e-14,
+          "profile_scale": 3.774771993796569e-10,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 134,
+          "excluded_samples": 59,
+          "max_abs": 2.1003254993460863e-11,
+          "max_abs_at": {
+            "sample_index": 111,
+            "z": 5.817842908852039,
+            "signed_value": -2.1003254993460863e-11
+          },
+          "endpoint": null
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 3.933187109339542e-12,
+        "max_abs_at": {
+          "sample_index": 61,
+          "x": 0.6182318702727818,
+          "z": 10.316825125033324,
+          "on": 0.8241766018391959,
+          "off": 0.8241766018352628,
+          "on_minus_off": 3.933187109339542e-12
+        },
+        "endpoint": {
+          "on": 2.8620717275780798e-06,
+          "off": 2.8620717274938457e-06,
+          "on_minus_off": 8.423403847265115e-17,
+          "absolute_difference": 8.423403847265115e-17
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 0.0001,
+          "profile_scale": 1.0,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 134,
+          "excluded_samples": 59,
+          "max_abs": 2.1002234201016426e-11,
+          "max_abs_at": {
+            "sample_index": 111,
+            "z": 5.817842908852039,
+            "signed_value": -2.1002234201016426e-11
+          },
+          "endpoint": null
+        }
+      }
+    },
+    {
+      "species": "Li7III",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.60695343624911e-21,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 1.4876135012359322e-10,
+          "off": 1.4876135012520017e-10,
+          "on_minus_off": -1.60695343624911e-21
+        },
+        "endpoint": {
+          "on": 3.1189440786958046e-12,
+          "off": 3.1189440787052243e-12,
+          "on_minus_off": -9.419680784160992e-24,
+          "absolute_difference": 9.419680784160992e-24
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 2.725697623975935e-14,
+          "profile_scale": 2.725697623975935e-10,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 145,
+          "excluded_samples": 48,
+          "max_abs": 5.1058269878031365e-11,
+          "max_abs_at": {
+            "sample_index": 48,
+            "z": 11.91055121197655,
+            "signed_value": -5.1058269878031365e-11
+          },
+          "endpoint": -3.0201505850888515e-12
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 4.256817121017775e-12,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 0.3940936045092698,
+          "off": 0.3940936045135266,
+          "on_minus_off": -4.256817121017775e-12
+        },
+        "endpoint": {
+          "on": 0.008262602572609567,
+          "off": 0.008262602572634515,
+          "on_minus_off": -2.494879303149844e-14,
+          "absolute_difference": 2.494879303149844e-14
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 7.22082718758994e-05,
+          "profile_scale": 0.7220827187589939,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 145,
+          "excluded_samples": 48,
+          "max_abs": 5.105746454697821e-11,
+          "max_abs_at": {
+            "sample_index": 48,
+            "z": 11.91055121197655,
+            "signed_value": -5.105746454697821e-11
+          },
+          "endpoint": -3.019483608485306e-12
+        }
+      }
+    },
+    {
+      "species": "Li7IV",
+      "Y_per_baryon": {
+        "max_absolute_difference": 1.6473301898993546e-21,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 2.2527811567160947e-10,
+          "off": 2.2527811566996214e-10,
+          "on_minus_off": 1.6473301898993546e-21
+        },
+        "endpoint": {
+          "on": 3.743571749335434e-10,
+          "off": 3.7435717493353425e-10,
+          "on_minus_off": 9.150685526367869e-24,
+          "absolute_difference": 9.150685526367869e-24
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 3.743571749335434e-14,
+          "profile_scale": 3.743571749335434e-10,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 118,
+          "excluded_samples": 75,
+          "max_abs": 1.8709583236791566e-11,
+          "max_abs_at": {
+            "sample_index": 75,
+            "z": 8.81980520634638,
+            "signed_value": 1.8709583236791566e-11
+          },
+          "endpoint": 2.444372951578213e-14
+        }
+      },
+      "charge_fraction": {
+        "max_absolute_difference": 4.364508754406415e-12,
+        "max_abs_at": {
+          "sample_index": 95,
+          "x": 0.9628201258346603,
+          "z": 7.018106621414518,
+          "on": 0.5967992663976258,
+          "off": 0.5967992663932613,
+          "on_minus_off": 4.364508754406415e-12
+        },
+        "endpoint": {
+          "on": 0.9917345353540807,
+          "off": 0.9917345353540558,
+          "on_minus_off": 2.4980018054066022e-14,
+          "absolute_difference": 2.4980018054066022e-14
+        },
+        "normalized_difference": {
+          "definition": "(on-off)/max(abs(on),abs(off))",
+          "absolute_denominator_floor": 9.917345353540808e-05,
+          "profile_scale": 0.9917345353540807,
+          "rule": "Both absolute values must exceed max(absolute_floor,1e-4*profile_scale).",
+          "included_samples": 118,
+          "excluded_samples": 75,
+          "max_abs": 1.871050691304476e-11,
+          "max_abs_at": {
+            "sample_index": 75,
+            "z": 8.81980520634638,
+            "signed_value": 1.871050691304476e-11
+          },
+          "endpoint": 2.518821031592629e-14
+        }
+      }
+    }
+  ],
+  "scope": {
+    "control": "Distinct prospective finite model with photon Thomson collision switched off.",
+    "tau_off": "Potential electron-column Thomson depth from this trajectory, integrated from z20; not applied collision depth.",
+    "applied_photon_collision_amplitude_off": 0.0,
+    "gamma_T_per_H_off": "Electron-derived diagnostic remains nonzero; applied operator is zero.",
+    "indirect_feedback": "Neutrino, chemistry and geometry trajectories may change indirectly. Instantaneous gamma-only wiring does not imply identical full neutrino histories.",
+    "convergence_certification": "NOT_RUN",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "benchmark": 0,
+    "reducer_new_ODE": 0
+  },
+  "max_absolute_charge_fraction_difference": 4.364508754406415e-12,
+  "max_absolute_Y_per_baryon_difference": 6.606937219544307e-13
+}

@@ -23,7 +23,7 @@
 
 ## R5: 실제 유도
 
-기존 finite canonical-momentum quadrature의 수를 고정한다. `24×12` cells, 각 cell Gauss3, 총 2592 positive packets; `m/T_ref=30`, `fm=0.1` 비바리온 분율이다. `Q_perp=q_perp² exp(-2x+2b)`, `Q_parallel=q_parallel² exp(-2x-4b)`, `E=sqrt(m²+Q_perp+Q_parallel)`. 고정 양의 number weights로 rho, P_perp, P_parallel을 합한다. `p_m=(P_parallel-P_perp)/3`이며 직접 미분하면 `rho_b=-6p_m`이다. 기존 source equation, quadrature, cutoff는 바꾸지 않는다.
+기존 finite canonical-momentum quadrature의 수를 고정한다. `24×12` cells, 각 cell Gauss3, 총 2592 positive packets; `m/T_ref=30`이며 `fm=0.1`은 전체 `Omega_m`의 10%를 비바리온 Vlasov 성분에 배정한다는 뜻이다. 나머지 dust에는 바리온이 포함된다. `Q_perp=q_perp² exp(-2x+2b)`, `Q_parallel=q_parallel² exp(-2x-4b)`, `E=sqrt(m²+Q_perp+Q_parallel)`. 고정 양의 number weights로 rho, P_perp, P_parallel을 합한다. `p_m=(P_parallel-P_perp)/3`이며 직접 미분하면 `rho_b=-6p_m`이다. 기존 source equation, quadrature, cutoff는 바꾸지 않는다.
 
 \[
 H^2=H_0^2[\Omega_{dust}/a^3+\rho_{mass,norm}+\rho_{rad,norm}+\Omega_\Lambda]+s^2,
