@@ -1,0 +1,165 @@
+{
+  "schema": "rec.trajectory.independent_c9_review.v1",
+  "date": "2026-10-21",
+  "reviewer": "/root/theory_literature",
+  "independence": "Nonimplementing agent reviewed reducer, authored focused tests, and independently read all selected raw arrays; reducer implementation belongs to /root.",
+  "decision": "PASS_SCOPED_INDEPENDENT_PHYS_MATH_CODE_REVIEW",
+  "blocking_findings_open": 0,
+  "identity": {
+    "reducer_path": "code/reduce_trajectories.py",
+    "reducer_sha256": "03596192ccd5602187549fb52734870b343aea6e1ca7f13d0df8d7e7b7c1c77a",
+    "test_path": "code/test_trajectory_reuse.py",
+    "test_sha256": "639abdff416becf8978fc0f013c211d8a1bf1fb6fd2346a1da526e643f2b44d7",
+    "physical_source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+    "result_array_sha256": "239595a3313a68e0125ec7b333b8d515c3fd5d6d8ec115fbef2496d3b18428b9",
+    "final_result_path": "results_final/TRAJECTORY_ANALYSIS.npz"
+  },
+  "scope": {
+    "model": "source-pinned collisionless finite L8; canonical 24x12 Gauss3; no electron scattering",
+    "nominal_cases": 175,
+    "support_cases": 63,
+    "mixed_cases": 112,
+    "epochs": 153,
+    "z": [
+      20,
+      2
+    ],
+    "fields": [
+      "signed S_F=sqrt(6)*s/H",
+      "signed P_m_F",
+      "signed P_r_F"
+    ],
+    "clock": "common x=ln(a/a_ref) and common redshift; case-specific elapsed proper time",
+    "contract": "retrospective comparison of stored trajectories; no fit, no interpolation",
+    "new_ODE": 0,
+    "new_NCP_jobs": 0,
+    "new_benchmarks": 0
+  },
+  "findings_closed": [
+    {
+      "id": "C9_REAL_INPUT_AND_RAW_CLOCK",
+      "initial_finding": "Complex values could be silently cast to real; raw state/clock and scale arrays needed explicit finite, shape, and sign checks.",
+      "resolution": "Reject complex axes/values before dtype cast; check raw_y and all used scalar histories for real finite values and required shape; require positive a,H and specified common x grid.",
+      "final_locations": [
+        "code/reduce_trajectories.py:52",
+        "code/reduce_trajectories.py:134"
+      ],
+      "verification": "Independent finite/complex, malformed grid, hash tamper, and clock tests passed. This finding was initially source-inspected; no pre-repair failing run is claimed."
+    },
+    {
+      "id": "C9_NAN_NORMALIZATION_BYPASS",
+      "initial_finding": "NaN in Pi_matter_J_m3 or Sigma_F passed because max(normalization_error,norm_error)>5e-12 could evaluate false for NaN.",
+      "observed_red": "Two failing subtests with ValueError not raised, against intermediate reducer SHA15cc18c373d50d00a6cf27778616ffd981372259b9fe573d1fbcc45ba6913060.",
+      "resolution": "P_total, Sigma_F, Pi_matter_J_m3, Pi_gamma_J_m3, Pi_nu_J_m3 now enter explicit real/finite/shape validation before normalization comparisons.",
+      "final_locations": [
+        "code/reduce_trajectories.py:134",
+        "code/reduce_trajectories.py:157"
+      ],
+      "red_evidence": "C9_REMAINING_NAN_RED.json",
+      "green_evidence": "C9_FINAL_TESTS_GREEN.json",
+      "actual_data_impact": "None observed: independent reading confirmed all actual selected fields finite and old/intermediate/final scientific arrays identical."
+    }
+  ],
+  "source_checks": [
+    {
+      "claim": "Only axis support enters predictions",
+      "location": "code/reduce_trajectories.py:68",
+      "evidence": "Held-out perturbation leaves every prediction unchanged; independent scalar audit agrees exactly."
+    },
+    {
+      "claim": "Axis responses are reused exactly",
+      "location": "code/reduce_trajectories.py:74",
+      "evidence": "Adversarial large-anchor fixture and actual 63-support byte-value comparison."
+    },
+    {
+      "claim": "Shear is signed before reconstruction",
+      "location": "code/reduce_trajectories.py:151",
+      "evidence": "Direct sqrt(6)*s/H projection from all 175 raws; signed crossing test."
+    },
+    {
+      "claim": "Matter and radiation add before norm",
+      "location": "code/reduce_trajectories.py:196",
+      "evidence": "Cancellation fixture and independently recomputed actual total/norm metrics."
+    },
+    {
+      "claim": "Comparison statistics exclude support",
+      "location": "code/reduce_trajectories.py:183",
+      "evidence": "112 mixed cases and independently recomputed maxima/locations/endpoints."
+    },
+    {
+      "claim": "Input source and receipts are pinned",
+      "location": "code/reduce_trajectories.py:81",
+      "evidence": "Manifest/source/raw SHA checks; identity tamper test; no original input bytes altered."
+    },
+    {
+      "claim": "Proper clocks are case-specific",
+      "location": "code/reduce_trajectories.py:148",
+      "evidence": "Common x,a arrays enforced; unequal proper clocks accepted and preserved."
+    }
+  ],
+  "mathematical_review": {
+    "mixed_integral": "At fixed x,S and conditional C2 parameter response, R=integral_0^m integral_0^r F_mr(u,v) dv du. No uniform derivative bound is established.",
+    "stored_error": "R_saved=R_exact+e11-e10-e01+e00, including solver, rounding and calibration-realization differences.",
+    "norm_bounds": "Norm error <= signed error; total norm error <= |Rm+Rr| <= |Rm|+|Rr|.",
+    "proofs": "Direct FTC and reverse triangle; Wolfram polynomial/error-combination checks and universal real norm inequalities.",
+    "evidence": [
+      "TRAJECTORY_THEORY.md",
+      "TRAJECTORY_CAS.json"
+    ]
+  },
+  "test_execution": {
+    "methods": 8,
+    "result": "PASS",
+    "exit_code": 0,
+    "unittest_elapsed_s": 0.089,
+    "evidence": "C9_FINAL_TESTS_GREEN.json",
+    "coverage": [
+      "additive response and exact support reuse",
+      "known time-dependent mixed polynomial",
+      "no held-out leakage",
+      "signed shear and cancellation",
+      "duplicate/incomplete/no-zero/shape errors",
+      "real/finite inputs",
+      "redshift alignment vs unequal proper clocks",
+      "raw identity and nonfinite observer histories"
+    ]
+  },
+  "independent_result_audit": {
+    "all175_raw_arrays_read": true,
+    "actual_projection_max_difference": 0,
+    "scalar_prediction_max_difference": 0,
+    "support_reused_exactly": true,
+    "all_actual_used_fields_real_finite": true,
+    "old_intermediate_final_all9_arrays_equal": true,
+    "old_intermediate_final_summaries_equal": true,
+    "final_npz_bytes_equal_to_independently_audited_npz": true,
+    "max_saved_Sigma_vs_abs_signed_S_difference": 4.163336342344337e-17,
+    "max_signed_residual": {
+      "S": 9.40056251721652e-9,
+      "Pm": 8.582762394605706e-9,
+      "Pr": 1.1057774095034681e-8,
+      "total": 1.9152545950075223e-8
+    },
+    "evidence": [
+      "C9_ACTUAL_RESULTS_AUDIT.json",
+      "C9_FINAL_RESULT_PARITY.json",
+      "audit_trajectory_results.py"
+    ]
+  },
+  "limitations": [
+    "Review concerns this saved-data reducer and finite input snapshot; no continuous-time or exact-ODE error certificate.",
+    "Initial shear orientation includes positive/zero values only.",
+    "No warm C15 729 rows or coefficients are mixed with this collisionless response.",
+    "No prospective certification of uncomputed cases; support accuracy is not independent validation.",
+    "Plots are separately reviewed in PLOT_REVIEW files; this C9 does not relabel author visual review as independent figure review.",
+    "No performance speedup, parallel scaling, or memory reduction benchmark.",
+    "Historical REC PR116 C6 NOT_RUN state is not rewritten by this new independent C9."
+  ],
+  "preserved_states": {
+    "physical": "HOLD",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET",
+    "REC_REI_activation": false
+  }
+}

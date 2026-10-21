@@ -1,0 +1,177 @@
+{
+  "schema": "rec.rei.norm_plot_review.v1",
+  "recorded_at_utc": "2026-10-21T11:16:20.018421+00:00",
+  "decision": "PASS_SCOPED_STORED_NORM_PILOT_FIGURE",
+  "source": {
+    "path": "code/plot_norms.py",
+    "bytes": 9082,
+    "sha256": "9277b4a5c008c8773dfe9169938caddc21a629c0e07189c8d4b8af274279b254"
+  },
+  "input": {
+    "path": "results/TRAJECTORY_ANALYSIS.npz",
+    "bytes": 1396525,
+    "sha256": "239595a3313a68e0125ec7b333b8d515c3fd5d6d8ec115fbef2496d3b18428b9"
+  },
+  "figures": [
+    {
+      "path": "figures/05_norm_evolution_and_endpoint_pilot.png",
+      "bytes": 411372,
+      "sha256": "f174dac55a54be8cbada8fea48f3b43274450e7b57c4e8a18710cb7adf8b08a7"
+    },
+    {
+      "path": "figures/05_norm_evolution_and_endpoint_pilot.pdf",
+      "bytes": 52479,
+      "sha256": "5baa798df19d5416d64c36b1219d6827ef2264add9224cc87bebc268b5efae03"
+    }
+  ],
+  "execution": {
+    "command": [
+      "python",
+      "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_trajectory_reuse_20261021/code/plot_norms.py",
+      "--input",
+      "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_trajectory_reuse_20261021/results/TRAJECTORY_ANALYSIS.npz",
+      "--output-dir",
+      "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_trajectory_reuse_20261021/figures"
+    ],
+    "environment": {
+      "MPLCONFIGDIR": "/tmp/rec_norm_plot_mplconfig"
+    },
+    "cwd": "/workspace/scratch/36ad4bc67b35",
+    "exit_code": 0,
+    "new_ODE_runs": 0,
+    "new_benchmarks": 0
+  },
+  "scientific_scope": {
+    "geometry": "non-tilted LRS Bianchi I",
+    "closure": "collisionless fixed L8",
+    "normalization": "full Frobenius",
+    "physical_source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+    "physical_source_PR": 147,
+    "input_provenance": "provenance/SOURCE_LOCK.json",
+    "comparison_clock": "common mean redshift; case-dependent proper time",
+    "z_initial": 20,
+    "z_final": 2,
+    "join_z": 4,
+    "saved_epochs": 153,
+    "nominal_cases": 175,
+    "new_solution_claim": false
+  },
+  "norm_definitions": {
+    "Sigma_F": "abs(actual[:,:,0])",
+    "Pi_m_F": "abs(actual[:,:,1])",
+    "Pi_r_F": "abs(actual[:,:,2])",
+    "Pi_total_F": "abs(actual[:,:,1]+actual[:,:,2])",
+    "signed_input_channels": [
+      "S_F_signed",
+      "P_m_F_signed",
+      "P_r_F_signed"
+    ]
+  },
+  "panels": {
+    "upper": "Five representative actual norm histories, one panel each for Sigma_F/Pi_m_F/Pi_r_F",
+    "selected_histories": [
+      {
+        "nominal": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "case_id": "56912caf147ab3910f928b7fe736e419ea472b6a3b04ceb93afdd3115961ae9e"
+      },
+      {
+        "nominal": [
+          0.0,
+          0.0003,
+          0.0
+        ],
+        "case_id": "37797c2bf2a50461fe3c12a82ec637bf5cd539916355420ee55346e3ad22f54b"
+      },
+      {
+        "nominal": [
+          0.0,
+          0.0,
+          0.0003
+        ],
+        "case_id": "f6d867e760b1a965b050c1ad5b790d04caa98114fafe73af8369c686092812dc"
+      },
+      {
+        "nominal": [
+          0.0,
+          0.0003,
+          -0.0003
+        ],
+        "case_id": "9bad767cd17b0651746fca2bd9c6ad6911a6df067ad58af71ab0872827ccacf9"
+      },
+      {
+        "nominal": [
+          0.0,
+          -0.0003,
+          0.0003
+        ],
+        "case_id": "85b934bda9234641873454696f22e7cd74c757c944f34820d1e30cd1e1afea3b"
+      }
+    ],
+    "lower": "All 175 z=2 endpoints: (Sigma_F,Pi_m_F), (Sigma_F,Pi_r_F), (Sigma_F,Pi_total_F)",
+    "initial_shear_colours": [
+      0.0,
+      0.0003,
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1
+    ],
+    "points_per_initial_shear_colour": 25,
+    "endpoint_ranges": {
+      "Sigma_F": {
+        "minimum": 2.0760631305256124e-20,
+        "maximum": 0.005311432097083972
+      },
+      "Pi_m_F": {
+        "minimum": 4.1156621969138285e-21,
+        "maximum": 8.851425947637313e-06
+      },
+      "Pi_r_F": {
+        "minimum": 5.333397996274496e-23,
+        "maximum": 0.00020812599293428715
+      },
+      "Pi_total_F": {
+        "minimum": 4.168996176876573e-21,
+        "maximum": 0.00021673977237881683
+      }
+    }
+  },
+  "display": {
+    "norm_y_scale": "symlog",
+    "norm_y_linear_threshold": 1e-10,
+    "endpoint_sigma_x_scale": "symlog",
+    "endpoint_sigma_x_linear_threshold": 1e-06,
+    "redshift_x_scale": "linear, reversed 20 to 2",
+    "zero_preserved": true,
+    "floor": false,
+    "jitter": false,
+    "interpolated_response_samples": 0,
+    "overlap": "retained and explicitly captioned",
+    "line_segments": "join stored samples only"
+  },
+  "direct_visual_review": {
+    "reviewer": "/root/rei_latest_survey",
+    "author_self_review": true,
+    "tool": "view_image",
+    "final_png_sha256": "f174dac55a54be8cbada8fea48f3b43274450e7b57c4e8a18710cb7adf8b08a7",
+    "status": "PASS_SCOPED",
+    "observations": [
+      "All six panels show nonnegative norms explicitly.",
+      "Total-stress endpoint panel takes the signed component sum before absolute value.",
+      "Five top histories and seven endpoint colour groups have separate readable legends.",
+      "Source/clock/normalization/fixed-L8/preliminary/z4-join captions visible.",
+      "No caption or legend clipping; endpoint Sigma axis expanded by a declared symlog threshold for legibility.",
+      "Baseline roundoff values and exact zeros are retained; overlapping points are not displaced.",
+      "PDF is produced from the same Figure object; no separate PDF visual inspection claimed."
+    ]
+  },
+  "existing_four_figures_and_source_modified": false,
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED"
+}
