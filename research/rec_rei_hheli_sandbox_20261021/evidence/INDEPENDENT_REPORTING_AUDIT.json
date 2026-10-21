@@ -1,0 +1,98 @@
+{
+  "schema": "rec.hheli.independent_reporting_audit.v1",
+  "status": "PASS_SCOPED",
+  "created_utc": "2026-10-21T15:35:27.917462+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "checks": {
+    "current_reducer_hash_matches_report": true,
+    "all_current_frozen_source_hashes_match": true,
+    "125_original_completion_result_array_chains_preserved": true,
+    "common_full193grid_preserved": true,
+    "ENDPOINTS_all125_signed_norm_diagnostics_exact": true,
+    "SPECIES_ENDPOINTS_all2625_initial_inventory_fractions_exact": true,
+    "REPRESENTATIVE_EVOLUTION_all193_all_fields_exact": true,
+    "SUMMARY_global_ranges_and_locations_exact": true,
+    "SUMMARY_193node_extrema_and_locations_exact": true,
+    "SUMMARY_representative_snapshots_exact_saved_nodes": true,
+    "CONTROL_all6_signed_ne_Y_fraction_metrics_match_independent_audit": true,
+    "CONTROL_off_potential_column_and_zero_applied_collision_explicit": true,
+    "SUMMARY_CONTROL_fixed_initial_inventory_definition_explicit": true,
+    "SUMMARY_CSV_CONTROL_all_artifact_metadata_matches": true,
+    "final_wrapper_four_exit0_all126_reused_zero_new_workers": true,
+    "first_wrapper_receipt_preserved": true,
+    "unique_IVP_accounting125plus1_unknown_first_counters_preserved": true,
+    "physical_global_production_REC_HOLD_preserved": true
+  },
+  "comparison_counts": {
+    "ENDPOINTS_numeric_cells_compared": 5375,
+    "global_extrema_records_compared": 222
+  },
+  "case_counts": {
+    "main": 125,
+    "control": 1,
+    "main_csv_rows": 125,
+    "species_csv_rows": 2625,
+    "evolution_csv_rows": 193
+  },
+  "artifacts": {
+    "results/ENDPOINTS.csv": {
+      "bytes": 136591,
+      "sha256": "8ab3521d7ccf72e5d5aa8e66e82cd0c0b882777116c7e8eda353535e34c6215e",
+      "rows": 125
+    },
+    "results/SPECIES_ENDPOINTS.csv": {
+      "bytes": 232184,
+      "sha256": "bcd45fbdca0768dbe957003c4cd208de8af5dbc4f2ee2f75e7ec392c5c162dc5",
+      "rows": 2625
+    },
+    "results/REPRESENTATIVE_EVOLUTION.csv": {
+      "bytes": 314818,
+      "sha256": "b51b06ad2c057a6a2daba0bd452db58a7642d2840c17a1bf1e50c463d47c7e90",
+      "rows": 193
+    },
+    "results/CONTROL_COMPARISON.json": {
+      "bytes": 70118,
+      "sha256": "af3fbe68175f7ef6181f9c3746092eeff4d97ca168ee51a4459d7be1f050813f"
+    },
+    "results/SUMMARY.json": {
+      "bytes": 462486,
+      "sha256": "b54a77206f7c2ee58bf14f88fc5b4cf5fa2f44ad6831caa16dc09274eddf7fd8"
+    },
+    "code/summarize_pilot.py": {
+      "bytes": 36820,
+      "sha256": "db25849a561111eeaf432eaf2821722077b992b14f82d55909f00bbfc308129e"
+    },
+    "code/run_all.py": {
+      "bytes": 5197,
+      "sha256": "218e673a0ea389f789ca6ca7b35faf28fb9b22672ee6ec7f5957d287e8ef2c0b"
+    },
+    "evidence/PIPELINE_LAST_RUN.json": {
+      "bytes": 4135,
+      "sha256": "9d2b6d61ce6b1a137930cae3280f9bcdf6af2b3d92595883e087e72f35b79f4c"
+    },
+    "evidence/pipeline_runs/21e53c08e56a4f02b2cdfebd38d769c4/RECEIPT.json": {
+      "bytes": 4135,
+      "sha256": "9d2b6d61ce6b1a137930cae3280f9bcdf6af2b3d92595883e087e72f35b79f4c"
+    }
+  },
+  "reused_independent_audits": {
+    "results": "evidence/INDEPENDENT_RESULT_AUDIT.json",
+    "control": "evidence/INDEPENDENT_CONTROL_AUDIT.json"
+  },
+  "reporting_correction": "Fixed-initial-isotope denominator now agrees with plots and independent raw scaled-fraction audit; old current-total reducer and reports preserved separately. No scientific arrays changed.",
+  "wrapper_review": "Read-only review found no blocking defect. Atomic RUNNING receipts are written before steps and after each completed step. Final observed execution reused125+1 and launched zero new workers; earlier wrapper receipt remains preserved.",
+  "execution": {
+    "project_scientific_modules_imported": [],
+    "ODE": 0,
+    "RHS": 0,
+    "Jacobian": 0,
+    "NCP": 0,
+    "benchmark": 0,
+    "scientific_inputs_or_arrays_changed": false
+  },
+  "independence": "Independent of new atomic/coupled/reducer/plot authors, but reviewer earlier authored reused PR118 tangent dependency; not an independent audit of that dependency.",
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL"
+}

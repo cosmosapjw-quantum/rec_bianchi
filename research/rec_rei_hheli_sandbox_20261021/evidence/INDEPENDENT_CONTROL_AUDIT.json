@@ -1,0 +1,103 @@
+{
+  "schema": "rec.hheli.independent_opacity_control_audit.v1",
+  "status": "PASS_DISTINCT_ONE_CASE_CONTROL",
+  "created_utc": "2026-10-21T15:22:10.446409+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "checks": {
+    "control_hash_identity": true,
+    "current_control_source_hashes": true,
+    "source_base_hash": true,
+    "completed_boolean_gates": true,
+    "result_hash": true,
+    "payload_hash": true,
+    "payload_bytes": true,
+    "common_science_inputs_identical": true,
+    "only_case_name_opacity_config_difference": true,
+    "same_193_grid_and_initial_state": true,
+    "finite_control_arrays": true,
+    "scaled_population_identity": true,
+    "electron_source_consistency": true,
+    "nonnegative_populations_and_ne": true,
+    "conserved_baryons": true,
+    "signed_sum_and_norm": true,
+    "potential_optical_depth_monotone": true
+  },
+  "main_case": "s03_m03_r03",
+  "control_case": "control_s03_m03_r03_opacity_off",
+  "config_difference": {
+    "opacity": {
+      "on": true,
+      "off": false
+    },
+    "case_id": {
+      "on": "s03_m03_r03",
+      "off": "control_s03_m03_r03_opacity_off"
+    }
+  },
+  "common_frozen_input_count": 23,
+  "control_only_input": [
+    "data/CONTROL_CAMPAIGN.json"
+  ],
+  "main_only_input": [
+    "data/CAMPAIGN.json"
+  ],
+  "source_code_sha256": {
+    "code/coupled.py": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+    "code/geometry.py": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0",
+    "code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+  },
+  "main_npz_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+  "control_npz_sha256": "d2979a859d0f051539099f8cfd9375f25f5cac47d0425ca0ba661cde71eb9d1d",
+  "metrics": {
+    "signed_on_minus_off_endpoint": [
+      4.870392720773137e-07,
+      -1.730203969395219e-11,
+      8.712171117653325e-07,
+      8.71199809725642e-07,
+      8.713765795397401e-07,
+      -1.5946777440754324e-10
+    ],
+    "signed_difference_max_abs_per_component": [
+      4.870392720773137e-07,
+      1.8519851750018054e-11,
+      1.0385720322942396e-06,
+      1.0385552533467455e-06,
+      1.0386730271910114e-06,
+      1.5946777440754324e-10
+    ],
+    "norm_on_minus_off_endpoint": [
+      4.870392720773137e-07,
+      -1.730203969395219e-11,
+      -8.712171117653325e-07,
+      -8.71199809725642e-07,
+      -8.713765795397401e-07,
+      1.5946777440754324e-10
+    ],
+    "proper_ne_on_minus_off_endpoint_m3": -8.881784197001252e-16,
+    "proper_ne_difference_max_abs_m3": 2.305711177541525e-10,
+    "all21Y_difference_max_abs": 6.606937219544307e-13,
+    "charge_fraction_difference_max_abs": 4.364064665196565e-12,
+    "potential_tau_on": 0.06933355498245734,
+    "potential_tau_off": 0.06933355496401901,
+    "off_baryon_error": 5.551115123125783e-16,
+    "off_min_scaled_population": 0.0
+  },
+  "meaning": [
+    "Only photon collision coefficient is zeroed by opacity=False; atomic rates, abundances, ne and potential optical-depth diagnostic are retained",
+    "Off-case gamma_T_per_H and tau are potential electron-column diagnostics, not applied collision amplitudes",
+    "Neutrinos have no direct collision term in either case but can differ through geometry feedback",
+    "Paired differences are finite saved-solution comparisons, not convergence-certified effects or missing-physics error bounds"
+  ],
+  "execution": {
+    "control_actual_new_IVP": 1,
+    "main_campaign_actual_new_IVP": 125,
+    "total_campaign_actual_new_IVP": 126,
+    "reviewer_new_ODE": 0,
+    "reviewer_RHS_calls": 0,
+    "reviewer_project_physics_imports": false
+  },
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REC_U5": "UNCHANGED"
+}

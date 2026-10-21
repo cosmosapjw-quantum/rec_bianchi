@@ -1,0 +1,128 @@
+{
+  "old_coupled_sha256": "09a3325c584b895f8c1de44d3b64a458ec7e27f8eec843c7e15aa246a6088d47",
+  "old_matches_frozen": true,
+  "current_coupled_sha256": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+  "all_module_AST_except_atomic_json_equal": true,
+  "old_writer": "def atomic_json(path, value):\n    path = Path(path)\n    if path.exists():\n        raise FileExistsError(str(path))\n    temporary = path.with_name(path.name + f'.{os.getpid()}.tmp')\n    with temporary.open('xb') as stream:\n        stream.write(json.dumps(value, indent=2, allow_nan=False).encode() + b'\\n')\n        stream.flush()\n        os.fsync(stream.fileno())\n    os.link(temporary, path)\n    temporary.unlink()",
+  "new_writer": "def atomic_json(path, value):\n    path = Path(path)\n    if path.exists():\n        raise FileExistsError(str(path))\n    temporary = path.with_name(path.name + f'.{os.getpid()}.tmp')\n    with temporary.open('xb') as stream:\n\n        def scalar(item):\n            if isinstance(item, np.generic):\n                return item.item()\n            raise TypeError('unsupported receipt type: ' + type(item).__name__)\n        stream.write(json.dumps(value, indent=2, allow_nan=False, default=scalar).encode() + b'\\n')\n        stream.flush()\n        os.fsync(stream.fileno())\n    os.link(temporary, path)\n    temporary.unlink()",
+  "frozen_changed_files": {
+    "code/coupled.py": {
+      "old": "09a3325c584b895f8c1de44d3b64a458ec7e27f8eec843c7e15aa246a6088d47",
+      "current": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f"
+    }
+  },
+  "trajectory": {
+    "bytes": 152815,
+    "sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89",
+    "keys": [
+      "x",
+      "z",
+      "raw_state",
+      "Y",
+      "scaled_populations",
+      "signed_observables",
+      "observables_norm",
+      "diagnostics",
+      "diagnostic_names",
+      "species_names",
+      "A",
+      "q",
+      "isotope_scales",
+      "initial_Y"
+    ],
+    "shapes": {
+      "x": [
+        193
+      ],
+      "z": [
+        193
+      ],
+      "raw_state": [
+        193,
+        62
+      ],
+      "Y": [
+        193,
+        21
+      ],
+      "scaled_populations": [
+        193,
+        21
+      ],
+      "signed_observables": [
+        193,
+        6
+      ],
+      "observables_norm": [
+        193,
+        6
+      ],
+      "diagnostics": [
+        193,
+        25
+      ],
+      "diagnostic_names": [
+        25
+      ],
+      "species_names": [
+        21
+      ],
+      "A": [
+        21
+      ],
+      "q": [
+        21
+      ],
+      "isotope_scales": [
+        21
+      ],
+      "initial_Y": [
+        21
+      ]
+    },
+    "finite_numeric": true,
+    "z_range": [
+      20.0,
+      2.0000000000000004
+    ],
+    "x_range": [
+      0.0,
+      1.9459101490553132
+    ],
+    "baryon_max_abs": 8.881784197001252e-16,
+    "population_min_scaled": 0.0,
+    "norm_abs_difference": 0.0,
+    "tensor_sum_max_abs": 2.5721446476048455e-35,
+    "ne_min": 0.13302674122336397,
+    "tau_final": 0.06934076357187009,
+    "tau_min_step": 3.8000587892760706e-07,
+    "trace_energy_max": 2.1940630370712316e-08,
+    "angular_minima": {
+      "min_photon_angular_weight": 1.0,
+      "min_neutrino_angular_weight": 1.0,
+      "min_photon_number_angular_weight": 1.0,
+      "min_neutrino_number_angular_weight": 1.0
+    },
+    "Li7_final_fraction": [
+      1.5821930316556764e-12,
+      2.8620715624094897e-06,
+      0.008262602346034745,
+      0.99173453558082
+    ],
+    "nT_max_abs": 0.0
+  },
+  "scientific_execution": {
+    "new_ODE": 0,
+    "RHS_evaluations": 0,
+    "physics_modules_imported": false,
+    "archive_source_read": "/workspace/scratch/36ad4bc67b35/delivery/REC_REI_HHLI_STAGE_B_20261021.zip"
+  },
+  "old_failed_namespace_sha256": {
+    "results/pilot/FROZEN.json": "a601029e5bc640fa05f7a0fd355b97f536080b8f4a1f75dfb93c42db488e76dd",
+    "results/pilot/RUN_db7a3e56060b49128aec24644f75e902.json": "4f52f169ae78973cca536a41f3b24800f0747f51c1e876cb8d37e9a9e82f9f63",
+    "results/pilot/cases/s00_m02_r02/CLAIM.json": "ece2563fcd38865c76d62ac0533856c591028b44a508b60267b006506947c1ee",
+    "results/pilot/cases/s00_m02_r02/RESULT.json.6.tmp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "results/pilot/cases/s00_m02_r02/RUNNER_FAILED.json": "e8aea4070ed92cf512438892673f3f7f6d3b21907c0fb1bb0f73562fe43ff49d",
+    "results/pilot/cases/s00_m02_r02/trajectory.npz": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89"
+  }
+}

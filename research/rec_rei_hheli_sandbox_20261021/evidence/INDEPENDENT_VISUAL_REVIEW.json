@@ -1,0 +1,133 @@
+{
+  "schema": "rec.hheli.independent_visual_review.v1",
+  "status": "PASS_SCOPED",
+  "created_utc": "2026-10-21T15:33:50.963329+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "independence": "Independent of this project atomic/coupled/plot authors; reviewer authored the reused PR118 tangent dependency earlier, so not an independent audit of that dependency.",
+  "plot_code_sha256": "f4aaba36ce9114c7fee15f16d66e4ecdd3e600a48aa62e06a14b4a75de9a4510",
+  "plot_build_sha256": "2122ab322d6214ccb510dd407376133515dc16c0cb7f8a7a88a73ae90170da6c",
+  "checks": {
+    "plot_code_matches_build": true,
+    "125_main_case_evidence_matches_independent_array_audit": true,
+    "control_npz_matches_independent_audit": true,
+    "control_six_signed_endpoint_differences_match_independent_arithmetic": true,
+    "control_six_signed_max_differences_match_independent_arithmetic": true,
+    "all_11_published_artifact_hashes_match_build": true,
+    "five_png_hashes_match_author_final_view": true
+  },
+  "direct_png_views": [
+    {
+      "path": "figures/01_shear_stress_evolution.png",
+      "assessment": "PASS_DIRECT_VIEW",
+      "finding": "Four norm panels display 125 completed histories, median/range and representative seeds over z20 to2. The zero seed legend uses its declared target; its retained roundoff residual is disclosed. Signed components are added before the total norm. Labels and legend are legible.",
+      "sha256": "457e8a63ba0936a924a9fe02ceff34608054cc9fe26eda8ac5468b0b6052bfa5"
+    },
+    {
+      "path": "figures/02_physical_parameter_sweep.png",
+      "assessment": "PASS_DIRECT_VIEW",
+      "finding": "Endpoint Sigma norm axis begins at zero. Signed heatmap colorbar ticks are separated, including zero. Stored redshifts and the fixed Sigma slice are explicit; no interpolation or parameter-domain certification is implied.",
+      "sha256": "69c6df38e9adcc69f3535c50614c422f436663aa8aa8f9155c57d589adb29fea"
+    },
+    {
+      "path": "figures/03_all_isotope_ion_fractions.png",
+      "assessment": "PASS_DIRECT_VIEW",
+      "finding": "All six populated isotope panels and retained ionic stages are visible, including Li IV. Roman I to IV correspond to charges0 to3. Initial isotope inventory normalization, unpopulated n/T and lack of a populated decay history are explicit. No clipping or diagnostic renormalization is claimed.",
+      "sha256": "dbb16a87868f370a1bf4694be990535e3be71a2ac08402e8ebc5ec2026c6ff0d"
+    },
+    {
+      "path": "figures/04_atomic_opacity_energy_diagnostics.png",
+      "assessment": "PASS_DIRECT_VIEW",
+      "finding": "Electron density, prescribed T/UV, accumulated optical depth, photon/neutrino signed stress and trace-energy/power diagnostics are legible. Sparse zero ticks and separated legends resolve the earlier display overlap. Net required gas input, absorption, bath-minus-escape and unresolved core energy are distinct.",
+      "sha256": "ac76e57472188cba60b4b303bce481739cb6c015c82446dbcfdbdb7d4ab86554"
+    },
+    {
+      "path": "figures/05_opacity_control_response.png",
+      "assessment": "PASS_DIRECT_VIEW",
+      "finding": "Paired on/off histories and signed on-minus-off responses are explicit. Off optical depth is labeled as a potential electron column and applied collision is zero. Indirect matter/neutrino geometry feedback and lack of global convergence certification are stated. Legends and footer do not overlap.",
+      "sha256": "6e916a578189c78d5a823699c765537cec5507903c0652629765e4d3014a761d"
+    }
+  ],
+  "artifact_hash_inventory": [
+    {
+      "path": "figures/01_shear_stress_evolution.png",
+      "bytes": 285267,
+      "sha256": "457e8a63ba0936a924a9fe02ceff34608054cc9fe26eda8ac5468b0b6052bfa5",
+      "matches_build": true
+    },
+    {
+      "path": "figures/01_shear_stress_evolution.pdf",
+      "bytes": 47655,
+      "sha256": "4bda74cf621a11f05bdaa04ba6f9555e8e7e31ccb924e111cb427251539289b8",
+      "matches_build": true
+    },
+    {
+      "path": "figures/02_physical_parameter_sweep.png",
+      "bytes": 237232,
+      "sha256": "69c6df38e9adcc69f3535c50614c422f436663aa8aa8f9155c57d589adb29fea",
+      "matches_build": true
+    },
+    {
+      "path": "figures/02_physical_parameter_sweep.pdf",
+      "bytes": 46536,
+      "sha256": "5a3b18fdffd428907972c976d277037ffc0a71372de0448a3bf2ed924e5b27d6",
+      "matches_build": true
+    },
+    {
+      "path": "figures/03_all_isotope_ion_fractions.png",
+      "bytes": 393920,
+      "sha256": "dbb16a87868f370a1bf4694be990535e3be71a2ac08402e8ebc5ec2026c6ff0d",
+      "matches_build": true
+    },
+    {
+      "path": "figures/03_all_isotope_ion_fractions.pdf",
+      "bytes": 39917,
+      "sha256": "dbb74d19ea59990fc638bf9ca631aec09de246ef6c93ad096eaa0c607a9e50e6",
+      "matches_build": true
+    },
+    {
+      "path": "figures/04_atomic_opacity_energy_diagnostics.png",
+      "bytes": 416761,
+      "sha256": "ac76e57472188cba60b4b303bce481739cb6c015c82446dbcfdbdb7d4ab86554",
+      "matches_build": true
+    },
+    {
+      "path": "figures/04_atomic_opacity_energy_diagnostics.pdf",
+      "bytes": 50800,
+      "sha256": "c4336c05ea03350295638b717a4e352ceb22a377dcb8effe2364e9665a076957",
+      "matches_build": true
+    },
+    {
+      "path": "figures/05_opacity_control_response.png",
+      "bytes": 321722,
+      "sha256": "6e916a578189c78d5a823699c765537cec5507903c0652629765e4d3014a761d",
+      "matches_build": true
+    },
+    {
+      "path": "figures/05_opacity_control_response.pdf",
+      "bytes": 37169,
+      "sha256": "4c187134ffe42f4c3e1a9b559dd26d06a8749bfe07dbcef50ff9e715b5f5babd",
+      "matches_build": true
+    },
+    {
+      "path": "figures/CAPTIONS.md",
+      "bytes": 4340,
+      "sha256": "6c13281b25dae31ef8e95c23788db994ea877a928bd3f1c59dcf0ad959825f14",
+      "matches_build": true
+    }
+  ],
+  "PDF_visual_review": "NOT_RUN; bytes/hash checked only",
+  "execution": {
+    "new_ODE": 0,
+    "new_NCP": 0,
+    "benchmark": 0,
+    "scientific_inputs_or_arrays_changed": false
+  },
+  "limitations": [
+    "Visual review and saved-array consistency do not certify the ODE true solution or omitted physics.",
+    "The displayed tiny control differences remain finite-tolerance comparisons, with no measured convergence error bound."
+  ],
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL"
+}

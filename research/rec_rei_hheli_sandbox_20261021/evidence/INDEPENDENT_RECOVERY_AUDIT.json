@@ -1,0 +1,65 @@
+{
+  "schema": "rec.hheli.independent_recovery_audit.v1",
+  "created_utc": "2026-10-21T15:15:25.195768+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "status": "PASS_IO_ONLY_COMPATIBLE_DATA_RECOVERY",
+  "checks": {
+    "old_failed_namespace_preserved": true,
+    "old_result_remains_absent": true,
+    "byte_identical_trajectory": true,
+    "frozen_key_set_unchanged": true,
+    "frozen_configs_unchanged": true,
+    "only_coupled_file_identity_changed": true,
+    "current_inputs_match_v2_frozen": true,
+    "base_identities_canonical": true,
+    "old_new_execution_identities_explicit": true,
+    "complete_identity": true,
+    "result_config_exact": true,
+    "complete_result_hash": true,
+    "complete_output_hash": true,
+    "complete_output_size": true,
+    "gates_boolean_true": true,
+    "unknown_solver_counters_preserved": true,
+    "recovery_receipts_identical": true,
+    "source_AST_equivalence_independently_checked": true
+  },
+  "checked_gate_count": 13,
+  "source_mapping": {
+    "old_coupled_sha256": "09a3325c584b895f8c1de44d3b64a458ec7e27f8eec843c7e15aa246a6088d47",
+    "new_coupled_sha256": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+    "old_case_identity": "854462ff0e533217ae41f571fb222c9493a668649698f6a3e21724ed5ff230b3",
+    "compatible_delivery_identity": "25ea4617c21fbe785cea490d157d2a0bbaac954d7a8f791b12ae79b939e04db8",
+    "AST_scope": "Entire module AST identical after removing only atomic_json; imports, constants, scientific class, integrator call and run_case unchanged",
+    "source_byte_identity_claim": false
+  },
+  "payload": {
+    "bytes": 152815,
+    "sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89"
+  },
+  "reviewed_files_sha256": {
+    "code/recover_output.py": "a1924ad98d23955ecd55f57bfd7e2e5be8e449ce7e71e6ac3ed85e2c72cdaf86",
+    "code/coupled.py": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+    "code/geometry.py": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0",
+    "code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80",
+    "code/run_pilot.py": "85c2e3456f277566193ba3938c92eeb8b4b1e978adf46bec6c8c03ebdfd3a70a",
+    "evidence/OUTPUT_RECOVERY_CONTRACT.json": "6ddd5c02e02cfc35b16278cc1418ef750ff7b84ed4a65b978acf8a1c53db6827",
+    "evidence/OUTPUT_RECOVERY_RECEIPT.json": "344cfd7b238243ce6ecce20900a56948b697cc43121a2bd439fdc4b6cf05c310",
+    "results/pilot_v2/cases/s00_m02_r02/RESULT.json": "bbd02246d92e86b7a751d9d97efc740e40a96deaac37843dd1ad8d9aacaf8f97",
+    "results/pilot_v2/cases/s00_m02_r02/COMPLETE.json": "abf7de41ec2b26da465440342529aca65da7e29e03d1821671ac649325c714b8"
+  },
+  "execution_scope": {
+    "reviewer_new_ODE": 0,
+    "reviewer_RHS_evaluations": 0,
+    "reviewer_physics_imports": false,
+    "author_recovery_coupled_RHS_calls": 0,
+    "author_recovery_coupled_Jacobian_calls": 0,
+    "author_recovery_saved_state_diagnostics": 193,
+    "clarification": "Diagnostics invoke atomic algebraic rate/Jacobian evaluation internally. Zero RHS/Jacobian counters refer to coupled integrator entry points, not zero atomic arithmetic."
+  },
+  "limits": [
+    "No new solution accuracy certificate",
+    "No reconstructed solver counters",
+    "New 124-case campaign still monitored separately",
+    "Physical HOLD; global convergence NOT_RUN; production NOT_APPROVED; REC U5 unchanged"
+  ]
+}

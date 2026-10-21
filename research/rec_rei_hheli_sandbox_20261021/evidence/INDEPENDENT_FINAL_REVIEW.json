@@ -1,0 +1,112 @@
+{
+  "schema": "rec.hheli.independent_final_review.v1",
+  "status": "PASS_SCOPED_NO_BLOCKING_DEFECT_FOUND",
+  "created_utc": "2026-10-21T15:36:59.238580+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "project": "research/rec_rei_hheli_sandbox_20261021",
+  "C6_independent_code_review": "PASS_SCOPED_FOR_NEW_PROJECT_CORE",
+  "historical_reviews": "This does not reset PR116 historical C6 NOT_RUN or the original REC U5 HOLD.",
+  "independence": "Reviewer is independent of the new atomic_network/coupled/dispatcher/reducer/plot/wrapper authors, but authored the reused PR118 tangent dependency in a prior task. This review is not an independent audit of that dependency.",
+  "source_code_sha256": {
+    "code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80",
+    "code/geometry.py": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0",
+    "code/coupled.py": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+    "code/run_pilot.py": "85c2e3456f277566193ba3938c92eeb8b4b1e978adf46bec6c8c03ebdfd3a70a",
+    "code/summarize_pilot.py": "db25849a561111eeaf432eaf2821722077b992b14f82d55909f00bbfc308129e",
+    "code/plot_pilot.py": "f4aaba36ce9114c7fee15f16d66e4ecdd3e600a48aa62e06a14b4a75de9a4510",
+    "code/run_all.py": "218e673a0ea389f789ca6ca7b35faf28fb9b22672ee6ec7f5957d287e8ef2c0b"
+  },
+  "evidence": [
+    {
+      "path": "evidence/INDEPENDENT_PHOTO_SCOPE_REVIEW.json",
+      "sha256": "917e1c8a7451db54606a40a7835564075ed8a644b6719a35238aaaa52f6c6aed",
+      "bytes": 1434,
+      "status": "ACCEPTABLE_CONDITIONAL_NUMBER_MODEL"
+    },
+    {
+      "path": "evidence/INDEPENDENT_CODE_REVIEW_CURRENT.json",
+      "sha256": "cc0a16346fdfe8e3521d993fb92883224d543294a4391d70096ba48c5c9678ed",
+      "bytes": 2305,
+      "status": "PASS_SCOPED_NO_BLOCKING_CODE_DEFECT_FOUND"
+    },
+    {
+      "path": "evidence/INDEPENDENT_RECOVERY_AUDIT.json",
+      "sha256": "db59fbd9ce0e987ec3dad4dc658d8dc5dbd79a7da676383b14701b5ba7fa60ff",
+      "bytes": 3410,
+      "status": "PASS_IO_ONLY_COMPATIBLE_DATA_RECOVERY"
+    },
+    {
+      "path": "evidence/INDEPENDENT_RESULT_AUDIT.json",
+      "sha256": "73c337ed7deea46e4d7991a4294d608f2907a8570a3d85044e236e15de2fccd9",
+      "bytes": 282284,
+      "status": "PASS_ALL_125_SAVED_TRAJECTORIES"
+    },
+    {
+      "path": "evidence/INDEPENDENT_CONTROL_AUDIT.json",
+      "sha256": "c472f44835a58e93d54232e697286c85621ec9830aef05157c70639dcdc16c8d",
+      "bytes": 3772,
+      "status": "PASS_DISTINCT_ONE_CASE_CONTROL"
+    },
+    {
+      "path": "evidence/INDEPENDENT_VISUAL_REVIEW.json",
+      "sha256": "4787e2c528f7a1e4c9dbe4d68d8b31db458e5b1dd83f39b441c21f39c60b807e",
+      "bytes": 6350,
+      "status": "PASS_SCOPED"
+    },
+    {
+      "path": "evidence/INDEPENDENT_REPORTING_AUDIT.json",
+      "sha256": "efad770198ad79c3acc8fd29f0b43dda472728851eaeaa3cba16303aced5927b",
+      "bytes": 4184,
+      "status": "PASS_SCOPED"
+    }
+  ],
+  "completed_scope": {
+    "new_core": "Read-only source, SI units, signed tensor normalization, species stoichiometry, rank-one electron Jacobian, analytic geometry coupling, gamma-only Thomson wiring, energy-accounting and conditional-model claim review.",
+    "output_recovery": "18 checks: original failed namespace preserved, byte-identical first trajectory, scientific AST equivalence except atomic_json writer, explicit old/current identities, unknown counters kept unknown.",
+    "main_saved_arrays": "125 full193-node cases; all recorded gates true; independent stored-array conservation/normalization/charge/angle checks; original RESULT/NPZ hashes still unchanged.",
+    "control": "17 checks on one distinct opacity-off IVP with matching initial state and shared inputs; signed on-minus-off arithmetic independently reproduced.",
+    "reporting": "18 checks including5375 endpoint cells,2625 species rows,193 representative rows,222 global extrema, all saved-node extrema, control/fixed-initial-fraction metrics, frozen hashes and final wrapper receipt.",
+    "visual": "Five final PNGs directly viewed; all11 PNG/PDF/caption hashes checked. PDF visual rendering review not run.",
+    "wrapper": "Read-only review plus observed final execution: four exit0 steps,125+1 complete_reused,zero new workers. Both wrapper receipts preserved."
+  },
+  "execution_accounting": {
+    "unique_main_IVPs": 125,
+    "distinct_control_IVPs": 1,
+    "total_unique_IVPs": 126,
+    "first_main_IVP_recovered_without_solver_rerun": true,
+    "first_main_solver_counters": "UNKNOWN_REPORT_SERIALIZATION_FAILED",
+    "independent_auditor_ODE": 0,
+    "independent_auditor_RHS": 0,
+    "independent_auditor_Jacobian": 0,
+    "NCP": 0,
+    "benchmark": 0,
+    "old729_reruns": 0
+  },
+  "closed_findings": [
+    "Strict real/finite input validation and RR source-table URL corrected before frozen execution.",
+    "The first solved case report serializer failure was recovered by an I/O-only compatible change; original failed record and identical payload remain preserved.",
+    "CSV/summary charge fractions now use fixed initial isotope inventory, matching figures and the independent raw-array audit.",
+    "Display-only sparse zero ticks, Sigma norm domain and legend/footer spacing fixed; final PNGs directly checked.",
+    "Wrapper now writes atomic RUNNING progress receipts before steps and after each completed step."
+  ],
+  "nonblocking_limits": [
+    "UV/T are prescribed and gas/UV energies are test-fluid diagnostics; this is not a closed thermal EoR solution.",
+    "LiI inner-shell absorption uses explicit single-step charge-yield coarse-graining, not a source-validated Auger or heat yield.",
+    "CI/CX/negative ions/molecules/photonuclear/fusion channels are outside the retained finite closure; no omission-error bound is claimed.",
+    "Elemental electronic equality of isotope rates is an explicit approximation. n/T inventories are zero in this pilot.",
+    "Saved193-time/129-angle positivity is not continuous-time/angle certification. The algebraic Einstein consistency gate is not an independent dynamical error estimate.",
+    "No global convergence, ODE true-error, speedup or parallel-scaling certificate. Tiny control differences remain finite-tolerance numerical comparisons.",
+    "This local audit does not independently verify remote publication, CI, or whole-byte backup readback."
+  ],
+  "verdicts": {
+    "mathematical": "PASS_SCOPED_ALGEBRA_AND_EVENT_ACCOUNTING",
+    "numerical": "PASS_SAVED_FINITE_GATES; GLOBAL_CONVERGENCE_NOT_RUN",
+    "implementation": "PASS_SCOPED",
+    "performance": "NOT_BENCHMARKED",
+    "memory": "NO_REDUCTION_OR_SCALING_MEASUREMENT",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "REI_activation": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "rec.hheli.independent_C6_current.v1",
+  "status": "PASS_SCOPED_NO_BLOCKING_CODE_DEFECT_FOUND",
+  "created_utc": "2026-10-21T15:15:49.976667+00:00",
+  "reviewer_agent": "/root/next_backup_context",
+  "code_sha256": {
+    "code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80",
+    "code/geometry.py": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0",
+    "code/coupled.py": "e3005323ea085251f14262dac5671fd93d1e31d20b9dc877ca64146b58ac509f",
+    "code/run_pilot.py": "85c2e3456f277566193ba3938c92eeb8b4b1e978adf46bec6c8c03ebdfd3a70a",
+    "code/recover_output.py": "a1924ad98d23955ecd55f57bfd7e2e5be8e449ce7e71e6ac3ed85e2c72cdaf86",
+    "code/plot_pilot.py": "a39cd7fc4865e58286a7c633547e382750d9b3b4712fe5723576ac64d4ee0ffd"
+  },
+  "coverage": [
+    "Read new atomic, geometry, full coupled62 and analytic Jacobian",
+    "Read dispatcher reuse/claim/resource admission code",
+    "Read output recovery code and independently verify 18 recovery checks",
+    "Read plot loader and scientific plotting expressions; generated figures pending"
+  ],
+  "prior_review": "evidence/INDEPENDENT_CODE_REVIEW_STAGE_B.json",
+  "post_snapshot_changes": [
+    "Added both radiation number angular minima and full 4-block finite positivity gate; read and checked index mapping",
+    "Added initial physical-axis check; read and checked norm/sign mapping",
+    "NumPy scalar JSON serializer fix only after first complete trajectory; entire scientific AST equivalence independently verified"
+  ],
+  "recovery_audit": "evidence/INDEPENDENT_RECOVERY_AUDIT.json",
+  "independence": {
+    "author_of_current_new_core": false,
+    "prior_author_of_reused_PR118_tangent_dependency": true,
+    "claim": "New code independent review only; no new independent audit of reused tangent source"
+  },
+  "execution": {
+    "reviewer_new_ODE": 0,
+    "reviewer_NCP": 0,
+    "reviewer_benchmark": 0,
+    "saved_NPZ_reads": 1,
+    "new_solver_case_claims": 0
+  },
+  "numerical_scope": "Author finite Jacobian and atomic receipts reused with explicit hashes; whole campaign/figures pending",
+  "verdicts": {
+    "implementation": "PASS_SCOPED",
+    "physical": "HOLD",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REC_U5": "UNCHANGED"
+  }
+}
