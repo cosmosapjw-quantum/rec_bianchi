@@ -1,0 +1,20 @@
+{
+  "utc_date": "2026-10-21",
+  "host": "s1a0e5abed09",
+  "command": [
+    "ssh", "root@49.50.142.2", "systemd-run --scope --unit=r3t-u4a-cgroup-probe-20261021-01.scope --property=CPUAccounting=yes /bin/sleep 1",
+    "systemctl show r3t-u4a-cgroup-probe-20261021-01.scope -p ActiveState -p ControlGroup -p CPUUsageNSec",
+    "cat /sys/fs/cgroup${ControlGroup}/cgroup.events when readable"
+  ],
+  "exit_code": 0,
+  "stdout": [
+    "launch_exit=0",
+    "Running as unit: r3t-u4a-cgroup-probe-20261021-01.scope; invocation ID: d54207c899dc4e94b22460a9c358787c",
+    "ControlGroup=",
+    "CPUUsageNSec=[not set]",
+    "ActiveState=inactive",
+    "CGROUP_EVENTS_REMOVED_OR_UNREADABLE"
+  ],
+  "interpretation": "after harmless scope natural exit, systemd removed/cleared transient cgroup path and CPUUsageNSec; terminal CPU must use runner process-tree receipt when scope is removed, while live CPU remains polled from cgroup",
+  "scientific_work": false
+}
