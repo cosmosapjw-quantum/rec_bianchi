@@ -1,0 +1,54 @@
+{
+  "head_sha": "6f68ad9326d4f6529b9fcde2d35c31631b43d958",
+  "workflow": "verify-durable-backup",
+  "runs": [
+    39590922817,
+    39590915157
+  ],
+  "failure": "committed_feature_range whitespace check: new blank line at EOF in four new files",
+  "pytest": "SKIPPED_AFTER_WHITESPACE_FAILURE",
+  "failed_paths": [
+    "code/test_trajectory_reuse.py",
+    "evidence/LITERATURE_SURVEY_HISTORICAL.md",
+    "evidence/TRAJECTORY_THEORY.md",
+    "provenance/LATEST_SURVEY_KO.md"
+  ],
+  "gate_changed": false,
+  "changes": [
+    {
+      "path": "code/test_trajectory_reuse.py",
+      "old_sha256": "639abdff416becf8978fc0f013c211d8a1bf1fb6fd2346a1da526e643f2b44d7",
+      "new_sha256": "5a9d6a095e24b64bd6b8a69744da628c1ad3e4cbfecad8ab129075efe0919fe7",
+      "removed_bytes": 1,
+      "change": "EOF newline normalization only",
+      "body_identical": true,
+      "AST_identical": true
+    },
+    {
+      "path": "evidence/LITERATURE_SURVEY_HISTORICAL.md",
+      "old_sha256": "dff8b5efa9b28b6d8ee672ba9bca138e2c2dbf1dc4cb7f8152192484df69049f",
+      "new_sha256": "5658e944a3f84ee598fcdf5ae0965b37467135bb71b80fa43df097089de39394",
+      "removed_bytes": 1,
+      "change": "EOF newline normalization only",
+      "body_identical": true
+    },
+    {
+      "path": "evidence/TRAJECTORY_THEORY.md",
+      "old_sha256": "a3e9ad0212a3a6a89c0d1b54efd6608e3733685d124dfe46f130c06e50b04fc5",
+      "new_sha256": "ec5ea0fa2ce3ab6ee3cdfc79d56a3e66bedeb6cc890ef23346bf9fb8a73b2b73",
+      "removed_bytes": 1,
+      "change": "EOF newline normalization only",
+      "body_identical": true
+    },
+    {
+      "path": "provenance/LATEST_SURVEY_KO.md",
+      "old_sha256": "61c2748bb68342b3a03b5f166e4cba6b4c0df21a10ae8f889ff1fff0bf2eed65",
+      "new_sha256": "74db5f9be70d1cf92d7d152bb1b3929bbd1d2934d361b0e3b7fd4417b488424b",
+      "removed_bytes": 1,
+      "change": "EOF newline normalization only",
+      "body_identical": true
+    }
+  ],
+  "status": "REPAIRED_PENDING_NEW_CI",
+  "new_ODE": 0
+}

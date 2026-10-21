@@ -1,0 +1,77 @@
+{
+  "schema": "rec.trajectory.claim_ledger.v1",
+  "claims": [
+    {
+      "id": "SOURCE",
+      "claim": "175 selected collisionless cases bound by source/config/raw identities",
+      "status": "checked",
+      "evidence": [
+        "provenance/SOURCE_LOCK.json",
+        "results/INPUT_PROJECTION.json"
+      ]
+    },
+    {
+      "id": "PREDICTOR",
+      "claim": "Only63 support trajectories feed predictions;112 mixed only compared",
+      "status": "implemented_and_independently_checked",
+      "evidence": [
+        "code/reduce_trajectories.py",
+        "code/test_trajectory_reuse.py",
+        "evidence/C9_ACTUAL_RESULTS_AUDIT.json"
+      ]
+    },
+    {
+      "id": "MIXED_IDENTITY",
+      "claim": "C2 exact finite response obeys mixed integral identity",
+      "status": "derived_conditional",
+      "evidence": [
+        "evidence/TRAJECTORY_THEORY.md",
+        "evidence/TRAJECTORY_CAS.json"
+      ]
+    },
+    {
+      "id": "DISCREPANCIES",
+      "claim": "17,136 stored mixed points; max total1.9152545950075223e-8",
+      "status": "executed_independently_recomputed",
+      "evidence": [
+        "results/SUMMARY.json",
+        "evidence/C9_ACTUAL_RESULTS_AUDIT.json"
+      ]
+    },
+    {
+      "id": "PLOTS",
+      "claim": "5PNG/5PDF generated from actual source-bound arrays and directly viewed",
+      "status": "complete_scoped",
+      "evidence": [
+        "evidence/PLOT_REVIEW.json",
+        "evidence/ROOT_FIGURE_REVIEW.json",
+        "evidence/NORM_PLOT_REVIEW.json"
+      ]
+    },
+    {
+      "id": "EXACT_ODE_ERROR",
+      "claim": "No claim of true-solution/global error bound",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "SPEEDUP",
+      "claim": "No baseline speedup or scaling measurement",
+      "status": "NOT_MEASURED"
+    },
+    {
+      "id": "MEMORY_REDUCTION",
+      "claim": "RSS observed but no baseline comparison",
+      "status": "NOT_MEASURED"
+    },
+    {
+      "id": "PHYSICS",
+      "claim": "Collisionless preliminary only; full cold EoR not established",
+      "status": "HOLD"
+    },
+    {
+      "id": "PRODUCTION",
+      "claim": "No production approval",
+      "status": "NOT_APPROVED"
+    }
+  ]
+}

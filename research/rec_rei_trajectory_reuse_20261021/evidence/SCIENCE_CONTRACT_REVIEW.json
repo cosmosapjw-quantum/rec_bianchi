@@ -1,0 +1,119 @@
+{
+  "schema": "rec.trajectory_science_contract_review.v1",
+  "date": "2026-10-21",
+  "reviewer": "/root/theory_literature",
+  "independence": "nonimplementing agent; direct source/read-only data inspection plus direct proof and Wolfram",
+  "decision": "PASS_SCOPED_RETROSPECTIVE_ANALYSIS_CONTRACT",
+  "supersedes": {
+    "candidate": "new z4->2 ODE extension",
+    "reason": "Latest other-thread237 tails completed; replace duplicate proposed execution with stored trajectory analysis",
+    "old_report_preserved": "THEORY_LITERATURE.md"
+  },
+  "scope": {
+    "source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+    "model": "non-tilted LRS collisionless Einstein-Vlasov, finiteL8, canonical24x12Gauss3",
+    "nominal_cases": 175,
+    "supports": 63,
+    "mixed": 112,
+    "epochs": 153,
+    "zbar": [
+      20,
+      2
+    ],
+    "clock": "common x=ln(a/a_ref); not common elapsed propertime",
+    "axes": {
+      "initial_Sigma_F": [
+        0,
+        0.0003,
+        0.001,
+        0.003,
+        0.01,
+        0.03,
+        0.1
+      ],
+      "initial_signed_Pm_F": [
+        -0.0003,
+        -0.0001,
+        0,
+        0.0001,
+        0.0003
+      ],
+      "initial_signed_Pr_F": [
+        -0.001,
+        -0.0003,
+        0,
+        0.0003,
+        0.001
+      ]
+    },
+    "initial_shear_orientation": "positive orzero only",
+    "fields": [
+      "signed S_F=sqrt6*s/H",
+      "signed P_m_F",
+      "signed P_r_F"
+    ],
+    "prediction": "F(S,m,0)+F(S,0,r)-F(S,0,0)",
+    "no_fit": true,
+    "actual_execution": "read-only saved-input inspection; ODE0; NCP0; benchmark0"
+  },
+  "claims": [
+    {
+      "id": "trajectory_rectangle",
+      "status": "derived",
+      "statement": "At fixedx,S, a C2 exactresponse obeys thedoublemixedintegral identity",
+      "evidence": "TRAJECTORY_THEORY.md"
+    },
+    {
+      "id": "norm_reverse_triangle",
+      "status": "derived/CAS-checked",
+      "statement": "Normdiscrepancyboundedby signedsavedresidual; total<=|Rm+Rr|<=|Rm|+|Rr|",
+      "evidence": "TRAJECTORY_CAS.json"
+    },
+    {
+      "id": "clock_and_counts",
+      "status": "numerically checked",
+      "statement": "175unique keys,63support112mixed,all x arrays equal153samples",
+      "evidence": "TRAJECTORY_INPUT_CONTRACT_INSPECTION.json"
+    }
+  ],
+  "closed_findings": [
+    {
+      "id": "S_SIGN",
+      "risk": "Predicting magnitudes then restoring a sign loses reversals",
+      "resolution": "Derive signedS directly from saved s/H before reconstruction"
+    },
+    {
+      "id": "TIME_ALIGNMENT",
+      "risk": "Equal index interpreted as equal proper time",
+      "resolution": "Require exact common x,z arrays; elapsedproper clocks remain case-specific"
+    },
+    {
+      "id": "NOMINAL_REALIZED",
+      "risk": "Zero snapping masks actual data",
+      "resolution": "Keep realized offsets; configaxes only lookup/labels"
+    },
+    {
+      "id": "SCOPE_MIX",
+      "risk": "Warm729 used as long-window response basis",
+      "resolution": "Use only PR147 collisionless175 subset, no rows/coefficients fromwarmC15"
+    }
+  ],
+  "open_obligations": [
+    "C9 reducer source review when code available",
+    "Actual112mixed153epoch residuals and figure checks",
+    "Input hashes/receipts pinned in final result package"
+  ],
+  "preserved_states": {
+    "physical": "HOLD",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET",
+    "REC_REI_activation": false
+  },
+  "strong_no_go": "not_applicable; no new exclusion theorem",
+  "evidence": [
+    "TRAJECTORY_THEORY.md",
+    "TRAJECTORY_CAS.json",
+    "TRAJECTORY_INPUT_CONTRACT_INSPECTION.json"
+  ]
+}

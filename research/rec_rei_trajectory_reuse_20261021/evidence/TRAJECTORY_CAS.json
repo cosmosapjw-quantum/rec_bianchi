@@ -1,0 +1,13 @@
+{
+  "code": "ClearAll[\"Global`*\"];\nf[u_,v_]:= c00+c10 u+c01 v+c20 u^2+c02 v^2+c11 u v+c21 u^2 v+c12 u v^2+c22 u^2 v^2;\nrectangle=Expand[f[m,r]-f[m,0]-f[0,r]+f[0,0]];\nmixedIntegral=Integrate[D[f[u,v],u,v],{u,0,m},{v,0,r}];\nactualError=Expand[(ff+e11)-(fm+e10)-(fr+e01)+(f0+e00)-((ff-fm-fr+f0)+(e11-e10-e01+e00))];\nreverseTriangle=Resolve[ForAll[{a,b},Abs[Abs[a]-Abs[b]]<=Abs[a-b]],Reals];\ntotalTriangle=Resolve[ForAll[{am,ar,bm,br},Abs[Abs[am+ar]-Abs[bm+br]]<=Abs[(am-bm)+(ar-br)]<=Abs[am-bm]+Abs[ar-br]],Reals];\n<|\"rectangle_minus_mixed_integral\"->FullSimplify[rectangle-mixedIntegral],\"error_combination_residual\"->actualError,\"reverse_triangle_real\"->reverseTriangle,\"total_reverse_and_direct_triangle_real\"->totalTriangle,\"counts\"->{7(5+5-1),7(5-1)(5-1),175*153,112*153}|>",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"rectangle_minus_mixed_integral\" -> 0, \"error_combination_residual\" -> 0, \"reverse_triangle_real\" -> True, \"total_reverse_and_direct_triangle_real\" -> True, \"counts\" -> {63, 112, 26775, 17136}|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}
