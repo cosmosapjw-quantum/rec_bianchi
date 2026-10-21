@@ -1,0 +1,57 @@
+{
+  "schema": "rec.rei.axis_reuse.intake.v1",
+  "date_utc": "2026-10-21",
+  "goal": "Contribute to the independent matter/radiation non-tilted Bianchi-I pilot without replaying completed integrations or running a performance benchmark.",
+  "rec_base": "df95a074730ea0d13d609cf88d448f01f4a47ef1",
+  "rei_result_commit": "c8e9f67aa031ffb33a9b0347bdea61dbb01fb746",
+  "rei_delivery_head": "d32cd99fa19c65aa1ca63dbc8aab8741834270e8",
+  "rei_execution_adapter": "bass@82372ed8db68085868603d4267a630ed9cde6abb",
+  "physical_owner": "rei_bianchi@80825585f9fe31d2ee0d5af545ada3fa1f52be72",
+  "input": {
+    "library_file_id": "file_00000000253c81f68bd5ebd1cb4ec0a5",
+    "name": "REI_SPLIT729_CASES.csv",
+    "bytes": 1778657,
+    "sha256": "c322453eed4c4c236ff19501ea6eca50353d6ebecc604a6cab9647b3a090255c",
+    "actual_local_hash_match": true,
+    "rows": 729,
+    "columns": 149
+  },
+  "latest_related": {
+    "REC_PR114": "U4B 74443->74475 already published; no replay",
+    "REI_PR213": "729 independent signed Sigma/Pi_m/Pi_r cases complete; reuse",
+    "REI_PR198": "8bd35af5f11c7ea5945b656be1c013d1c1933498: different long-span collisionless model; never combine its rows with warm C15",
+    "conversation_search": "Relevant latest thread summaries recovered; not a byte-level verification",
+    "coverage": "Focused latest-source/receipt delta after prior census; not an exhaustive fresh read of every historical branch and private run"
+  },
+  "candidates": [
+    {"id":"REPEAT_729", "decision":"PRUNED_COMPLETED"},
+    {"id":"NEW_KERNEL_BENCHMARK", "decision":"DEFERRED_USER_EXCLUDES_DETAILED_BENCHMARKS"},
+    {"id":"AXIS_ANCHORED_REUSE", "decision":"SELECTED", "construction":"Fhat(S,m,r)=F(S,m,0)+F(S,0,r)-F(S,0,0)", "axis_support":153, "withheld_mixed_cases":576}
+  ],
+  "physics": {
+    "scope":"warm a=0.1999->0.2, non-tilted LRS C15 conditional pilot",
+    "Sigma_signed":"sqrt(3)*s/H",
+    "Pi_A_signed":"(8*pi*G/c^2)*D_A/(sqrt(3)*H^2)",
+    "matter":"massive nonbaryonic Vlasov; isotropic H/He and cold matter have zero anisotropic stress in this closure",
+    "radiation":"gamma + massless neutrino + evolving UV",
+    "total":"sum signed tensors first, then take norm",
+    "approximation":"Endpoint response approximation only; not a changed solver or a continuous error certificate"
+  },
+  "dag": {
+    "intake":"complete",
+    "upstream_pilot":"complete_reused",
+    "theory_and_reducer":"in_progress",
+    "withheld_validation":"pending",
+    "plots_and_report":"pending",
+    "publication_backup_handoff":"in_progress"
+  },
+  "runtime": {
+    "python":"PYTHON_PASS",
+    "native_subagent":"NOT_RUN_TOOL_NOT_EXPOSED",
+    "remote_execution":"SERVICE_ERROR: monthly Desktop Commander usage exhausted; no retry/reconnect",
+    "direct_container_http":"EXECUTION_FAILED_DNS; connected Library materialization used instead",
+    "new_ODE_runs":0,
+    "new_NCP_jobs":0
+  },
+  "preserved_holds": ["REC U5 HOLD_9_FAIL/HOLD_8_FAIL", "CLOSED_HOLD_NOT_RESET", "REI_activation=false in REC", "global convergence NOT_RUN", "physical validity HOLD", "production NOT_APPROVED"]
+}

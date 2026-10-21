@@ -1,0 +1,115 @@
+{
+  "schema": "rec.rei.axis_reuse.validation.v1",
+  "status": "STORED_GRID_ENDPOINT_COMPARISON_ONLY",
+  "cases": 729,
+  "support_cases": 153,
+  "withheld_cases": 576,
+  "formula": "Fhat(S,m,r)=F(S,m,0)+F(S,0,r)-F(S,0,0)",
+  "fit_coefficients": 0,
+  "new_ODE_runs": 0,
+  "benchmark_runs": 0,
+  "display_floor": 3e-13,
+  "floor_meaning": "Inherited orientation/display floor, not a physical or solver accuracy bound",
+  "orientation_mismatches_above_display_floor": {
+    "final_signed_Sigma": 0,
+    "final_signed_Pi_m": 0,
+    "final_signed_Pi_r": 0,
+    "final_signed_Pi_total": 0
+  },
+  "nonzero_cancellation_withheld_count": 72,
+  "cancellation_Pi_total_max_abs_error": 3.9510982640131203e-14,
+  "observables": {
+    "final_signed_Sigma": {
+      "max_abs_error": 1.5612511283791264e-17,
+      "rms_error": 2.9547885000841347e-18,
+      "max_abs_exact_stored_float_interaction": 1.5612511283791264e-17,
+      "comparison_to_display_floor": 5.204170427930421e-05
+    },
+    "final_signed_Pi_m": {
+      "max_abs_error": 2.2970232486929643e-14,
+      "rms_error": 7.591442465167958e-15,
+      "max_abs_exact_stored_float_interaction": 2.297022058793653e-14,
+      "comparison_to_display_floor": 0.07656744162309881
+    },
+    "final_signed_Pi_r": {
+      "max_abs_error": 1.6540805183873353e-14,
+      "rms_error": 5.473720333274038e-15,
+      "max_abs_exact_stored_float_interaction": 1.6540828915685127e-14,
+      "comparison_to_display_floor": 0.05513601727957784
+    },
+    "final_signed_Pi_total": {
+      "max_abs_error": 3.9510982640131203e-14,
+      "rms_error": 1.3065163180381524e-14,
+      "max_abs_exact_stored_float_interaction": 3.9510992377701374e-14,
+      "comparison_to_display_floor": 0.13170327546710403
+    },
+    "final_Tgas_K": {
+      "max_abs_error": 1.0913936421275139e-11,
+      "rms_error": 2.1756174486665446e-12,
+      "max_abs_exact_stored_float_interaction": 1.0913936421275139e-11,
+      "comparison_to_display_floor": null
+    },
+    "final_x_HII": {
+      "max_abs_error": 4.440892098500626e-16,
+      "rms_error": 1.0111121659566547e-16,
+      "max_abs_exact_stored_float_interaction": 4.440892098500626e-16,
+      "comparison_to_display_floor": null
+    },
+    "final_x_HeII": {
+      "max_abs_error": 1.1102230246251565e-16,
+      "rms_error": 5.088522196198634e-17,
+      "max_abs_exact_stored_float_interaction": 1.1102230246251565e-16,
+      "comparison_to_display_floor": null
+    },
+    "final_b": {
+      "max_abs_error": 2.329340604949326e-21,
+      "rms_error": 4.887743761145141e-22,
+      "max_abs_exact_stored_float_interaction": 2.329340604949326e-21,
+      "comparison_to_display_floor": null
+    },
+    "final_H": {
+      "max_abs_error": 3.0814879110195774e-33,
+      "rms_error": 1.041111167951921e-33,
+      "max_abs_exact_stored_float_interaction": 3.0814879110195774e-33,
+      "comparison_to_display_floor": null
+    },
+    "final_elapsed_s": {
+      "max_abs_error": 0.0625,
+      "rms_error": 0.020422379090310055,
+      "max_abs_exact_stored_float_interaction": 0.0625,
+      "comparison_to_display_floor": null
+    }
+  },
+  "cost_claim": {
+    "support_fraction": 0.20987654320987653,
+    "avoided_fraction_before_new_sentinels": 0.7901234567901234,
+    "measured_speedup": null,
+    "not_measured": "solver speed, parallel scaling, pipeline RSS reduction"
+  },
+  "limits": [
+    "finite stored endpoints only",
+    "same warm C15 source and initial family only",
+    "no interpolation between grid points",
+    "no change to original solver",
+    "not a certificate of ODE accuracy or full EoR",
+    "split response approximation does not imply uncoupled matter/radiation physics"
+  ],
+  "input": {
+    "sha256": "c322453eed4c4c236ff19501ea6eca50353d6ebecc604a6cab9647b3a090255c",
+    "bytes": 1778657,
+    "rows": 729,
+    "columns": 149
+  },
+  "scope": {
+    "a_initial": [
+      0.1999
+    ],
+    "a_final": [
+      0.2
+    ],
+    "model_scope": [
+      "near-z4 native MD14 born; Einstein s/H/b and BASS l2 Gamma/nu + Vlasov matter feedback active; stellar source emitter global Q^a and full EoR NOT closed"
+    ],
+    "rei_result_commit": "c8e9f67aa031ffb33a9b0347bdea61dbb01fb746"
+  }
+}
