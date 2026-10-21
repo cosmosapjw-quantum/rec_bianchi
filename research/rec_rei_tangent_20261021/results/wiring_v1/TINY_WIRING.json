@@ -1,0 +1,68 @@
+{
+  "schema": "rec.tangent.execution.v1",
+  "status": "PASS_SCOPED_WIRING",
+  "axes": [
+    0.002,
+    7e-05,
+    -0.0002
+  ],
+  "checks": {
+    "solver_success_and_requested_grid": true,
+    "finite_state_and_tangents": true,
+    "finite_observables_and_tangents": true,
+    "initial_signed_axes": true,
+    "initial_observable_seed_identity": true,
+    "signed_component_sum": true,
+    "tangent_component_sum": true,
+    "number_monopoles": true,
+    "number_monopole_tangents": true,
+    "inert_thermal_coordinate": true,
+    "original_RHS_at_start_and_end": true,
+    "parent_IVP_success": true,
+    "parent_state_agreement": true
+  },
+  "source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+  "method": "DOP853",
+  "rtol": 3e-11,
+  "atol": 3e-13,
+  "seed_scales": [
+    0.1,
+    0.0003,
+    0.001
+  ],
+  "state_size": 40,
+  "augmented_size": 160,
+  "epochs": 3,
+  "x_interval": [
+    0.0,
+    0.0001
+  ],
+  "redshift_interval": [
+    20.0,
+    19.9979001049965
+  ],
+  "nfev": 17,
+  "prepared_rhs_calls": 17,
+  "max_start_end_rhs_scaled_difference": 0.0,
+  "worker_wall_s": 0.027199333999305964,
+  "worker_cpu_s": 0.02719919599999998,
+  "peak_rss_bytes": 67358720,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "new_augmented_IVP": 1,
+  "benchmark": 0,
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "parent_IVP": {
+    "success": true,
+    "nfev": 17,
+    "worker_wall_s": 0.0029701530002057552
+  },
+  "parent_state_scaled_difference": 0.0,
+  "new_ODE_solves": 2,
+  "scope": "synthetic interior seed, x0 to1e-4, 3 output nodes; no z20to2 sensitivity solve"
+}

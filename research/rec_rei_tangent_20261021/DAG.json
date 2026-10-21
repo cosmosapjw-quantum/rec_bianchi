@@ -1,0 +1,286 @@
+{
+  "REC_U5": [
+    "HOLD_9_FAIL",
+    "HOLD_8_FAIL"
+  ],
+  "REC_U5_closed": "CLOSED_HOLD_NOT_RESET",
+  "REI_activation": false,
+  "backup": {
+    "stage_A": "id:BSpOijBcT10AAAAAAD_hgw",
+    "stage_B": "id:BSpOijBcT10AAAAAAD_hhQ",
+    "stage_C": "PENDING"
+  },
+  "completed_reused": [
+    "REC116",
+    "REC117_175",
+    "REI213_warm729",
+    "REI199_unified237",
+    "REC_U4B",
+    "HE29",
+    "HH130_1231tails",
+    "REI_D8"
+  ],
+  "global_convergence": "NOT_RUN",
+  "new_execution": {
+    "ODE": 2,
+    "ODE_scope": "one synthetic parent plus one160-state augmented x0to1e-4,3outputnodes",
+    "NCP": 0,
+    "benchmark": 0,
+    "stored_state_checks": 200,
+    "unit_tests": 8
+  },
+  "nodes": [
+    {
+      "depends_on": [],
+      "id": "R1",
+      "name": "contract",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R1"
+      ],
+      "id": "R2",
+      "name": "evidence_reuse",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R2"
+      ],
+      "id": "R3",
+      "name": "claims",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R3"
+      ],
+      "id": "R4",
+      "name": "candidate_selection",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R4"
+      ],
+      "id": "R5",
+      "name": "derivation",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "R5"
+      ],
+      "id": "R6",
+      "name": "independent_math",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "R6"
+      ],
+      "id": "R7",
+      "name": "discriminating_checks",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "R7"
+      ],
+      "id": "R8",
+      "name": "adjudication",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "R8"
+      ],
+      "id": "R9",
+      "name": "coding_contract",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json",
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "results/verification_v1/VERIFICATION.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "R9"
+      ],
+      "id": "R10",
+      "name": "handoff",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "CODEX_HANDOFF_KO.md",
+        "NEXT_THREAD_HANDOFF_KO.md"
+      ]
+    },
+    {
+      "depends_on": [],
+      "id": "C1",
+      "name": "baseline",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C1"
+      ],
+      "id": "C2",
+      "name": "equation_code_map",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C2"
+      ],
+      "id": "C3",
+      "name": "numeric_design",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C3"
+      ],
+      "id": "C4",
+      "name": "execution_dag",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C4"
+      ],
+      "id": "C5",
+      "name": "implementation",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "code/tangent_core.py",
+        "code/owner_model.py",
+        "code/augmented.py",
+        "code/ncp_tangent.py",
+        "code/plot_tangent.py"
+      ]
+    },
+    {
+      "depends_on": [
+        "C5"
+      ],
+      "id": "C6",
+      "name": "implementation_validation",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "C6"
+      ],
+      "id": "C7",
+      "name": "science_validation",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "C7"
+      ],
+      "id": "C8",
+      "name": "reproducibility",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "results/verification_v1/VERIFICATION.json",
+        "results/wiring_v1/TINY_WIRING.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "C8"
+      ],
+      "id": "C9",
+      "name": "independent_review",
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "evidence/C9_AUGMENTED_REVIEW.json",
+        "evidence/C9_DISPATCH_OPERATIONAL_AUDIT.json",
+        "evidence/C9_DISPATCH_STATIC_REVIEW.json",
+        "evidence/C9_PLOT_ADAPTER_REVIEW.json",
+        "evidence/C9_FINAL_CLAIM_REVIEW.json",
+        "evidence/PLOT_VISUAL_REVIEW.json"
+      ]
+    },
+    {
+      "depends_on": [
+        "C9"
+      ],
+      "id": "C10",
+      "name": "delivery",
+      "status": "LOCAL_DELIVERY_READY_PUBLICATION_PENDING",
+      "evidence": [
+        "evidence/STAGE_A_RECEIPT.json",
+        "evidence/STAGE_B_RECEIPT.json",
+        "PR118 final preservation comment and terminal receipt to be attached after publication"
+      ]
+    }
+  ],
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "publication": {
+    "stage_A": "158eb1f740e93ae9a866d75100f2dd11cacb2ab1",
+    "stage_B": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+    "stage_C": "PENDING"
+  },
+  "schema": "rec.tangent.dag.v1",
+  "stage": "C_LOCAL_COMPLETE_D_PUBLICATION_PENDING",
+  "status": "LOCAL_COMPLETE_PENDING_TERMINAL_RECEIPT",
+  "timestamp_utc": "2026-10-21T13:45:41.567044+00:00",
+  "future_work": [
+    {
+      "id": "NCP_INTERIOR3_FULL_TANGENT",
+      "depends_on": [
+        "C10"
+      ],
+      "status": "READY_NOT_SUBMITTED",
+      "case_count": 3,
+      "case_manifest": "inputs/NCP_TANGENT_CASES.json",
+      "redshift_interval": [
+        20,
+        2
+      ],
+      "epochs": 153,
+      "new_executions": 0
+    }
+  ],
+  "publication_snapshot_note": "This file is the pre-publication snapshot. Actual final commit/tree/CI/backup and C10 completion are recorded in the terminal receipt and PR118 closing comment without a self-referential commit loop."
+}

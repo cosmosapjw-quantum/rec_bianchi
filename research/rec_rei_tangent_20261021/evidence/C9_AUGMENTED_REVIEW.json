@@ -1,0 +1,122 @@
+{
+  "reviewer": "/root/next_theory_scope",
+  "status": "PASS_SCOPED_SCIENCE_WIRING",
+  "scope": {
+    "files": [
+      "code/augmented.py",
+      "code/verify_wiring.py",
+      "inputs/NCP_TANGENT_CASES.json"
+    ],
+    "physics": "Pinned PR147 collisionless non-tilted LRS finite 40-state model and three independent signed initial coordinates.",
+    "method": "Static derivation-to-code review; small deterministic array layout and three initial-model construction checks; readback of root-owned tiny wiring execution receipt.",
+    "excluded": [
+      "Independent trajectory re-integration",
+      "full z20 to2 tangent accuracy",
+      "NCP controller/scheduler",
+      "resource admission correctness",
+      "global convergence"
+    ]
+  },
+  "identities": {
+    "code/augmented.py": "acb9c82c1b40eccc76e67facfb9bd4588dce8cb581d3b497e9d06ccde132c945",
+    "code/verify_wiring.py": "773093e080a5db6afd8105a9511a3f373d051521eda6342d2ca0cc01cb18094f",
+    "inputs/NCP_TANGENT_CASES.json": "9bac7b9e4b7dcfbb3564827e085aea97037d0097709acf5838b63b3af8446a98",
+    "results/wiring_v1/TINY_WIRING.json": "014bfb9c28f487d8395a76f1c80b1bd74d8be0c2af1665e203ff4861a115b96c"
+  },
+  "equation_checks": [
+    {
+      "id": "A1_layout",
+      "result": "PASS",
+      "reason": "Initial concatenation is 40 parent entries followed by row-major (40,3) scaled tangents. The RHS uses the inverse reshape; variable-first solve_ivp output is transposed before (epochs,40,3) reconstruction. Independent distinct-column roundtrip checks passed."
+    },
+    {
+      "id": "A2_parameter_forcing",
+      "result": "PASS",
+      "reason": "T=Z diag(scales), T'=J T+F_A(A_theta diag(scales)); initial_tangents*SEED_SCALES and a_direction=amplitude_gradient*SEED_SCALES implement both factors. Unscaling uses the last parameter axis. Observable projection receives unscaled Z and unscaled amplitude_gradient, so direct A dependence is retained."
+    },
+    {
+      "id": "A3_time",
+      "result": "PASS",
+      "reason": "Source cosmology is extended to a_end=1/3. default_grid contains 121 x samples from0 to ln(21/5), followed by32 additional samples to ln7. Positive strict spacing, join index120 and 153 total were executed. z=21 exp(-x)-1 decreases20 to2. Tiny wiring covers only x0 to1e-4."
+    },
+    {
+      "id": "A4_error_units",
+      "result": "PASS_WITH_SCOPE",
+      "reason": "Equal atol=3e-13 applies to parent coordinates and scaled tangent coordinates. The corresponding unscaled absolute-weight terms are [3e-12,1e-9,3e-10] per parameter column; rtol is invariant under constant positive scaling. These are local adaptive solver weights, not componentwise global error bounds or derivative convergence certificates."
+    },
+    {
+      "id": "A5_numbers_and_inert_state",
+      "result": "PASS",
+      "reason": "Ngamma0 index13 and Nnu0 index31 are correct for 4+4*9 coordinates. Both are initially1 and all three initial tangent entries are0. Checks use unscaled derivative units and source-compatible finite tolerances. u index3 remains0; tau sensitivity is retained."
+    },
+    {
+      "id": "A6_observables",
+      "result": "PASS",
+      "reason": "observed columns are signed S,Pm,Pr,Ptotal and total is component sum. Norms are formed afterward. Initial three-coordinate identity uses the complete observable JVP, including direct A and H normalization. No norm derivatives at zero are stored or claimed."
+    },
+    {
+      "id": "A7_manifest",
+      "result": "PASS",
+      "reason": "All three listed coordinates are valid interior A/k inputs and differ from the completed pilot grid. Their full-range tangent jobs remain READY_NOT_SUBMITTED. The local tiny check at interior_1 is a distinct short interval and is not misreported as full-range completion."
+    },
+    {
+      "id": "A8_scientific_ceiling",
+      "result": "PASS",
+      "reason": "Receipts preserve Physical HOLD, global_convergence NOT_RUN, production NOT_APPROVED. Parent code remains vendored and unchanged; the analytic finite-field implementation was separately compared to original RHS. No accuracy, closure, or convergence promotion follows from a successful wiring check."
+    }
+  ],
+  "executed_by_reviewer": {
+    "new_ODE_solves": 0,
+    "benchmark": 0,
+    "command": "python /workspace/scratch/36ad4bc67b35/next_loop_theory/audit_augmented_arrays.py",
+    "exit_code": 0,
+    "evidence": "C9_AUGMENTED_ARRAY_CHECKS.json",
+    "initial_observable_seed_identity_max_error": 4.440892098500626e-16
+  },
+  "reused_root_execution": {
+    "receipt": "results/wiring_v1/TINY_WIRING.json",
+    "status": "PASS_SCOPED_WIRING",
+    "new_ODE_solves": 2,
+    "parent_nfev": 17,
+    "augmented_nfev": 17,
+    "x_interval": [
+      0,
+      0.0001
+    ],
+    "epochs": 3,
+    "checks_passed": 13,
+    "parent_state_scaled_difference": 0,
+    "max_start_end_rhs_scaled_difference": 0,
+    "independent_repeat_performed": false,
+    "limits": "The comparison tests parent-state wiring on the stated short interval. It is not a finite-difference certification of evolved sensitivities over z20 to2.",
+    "executed_science_commit": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+    "executed_verify_wiring_sha256": "9a7f5088829a9d9509e81f09361371efa5298ab76c35f42bf7f4960d84c783dc",
+    "post_execution_failure_branch_review": "C9_AUGMENTED_CLOSURE.json; no new integration"
+  },
+  "findings": [
+    {
+      "id": "AUG-P2-1",
+      "severity": "P2_nonblocking_failure_receipt",
+      "target": "verify_wiring.py comparison before parent grid validation",
+      "evidence": "difference=arrays['raw_y']-parent.y.T is evaluated before parent.success and reached-grid checks. A partial-grid parent failure can raise a broadcast exception instead of recording the structured solver failure.",
+      "impact": "The observed successful two-IVP execution is unaffected and no false PASS was found. Failure diagnostics could be lost for a future failed parent check.",
+      "recommended_change": "Check parent.success and exact parent.t/grid and shape first. Compute difference only if comparable; otherwise store null and false checks with the parent message.",
+      "status": "CLOSED_STATIC_REVIEW",
+      "resolution": {
+        "status": "CLOSED_STATIC_REVIEW",
+        "new_verify_wiring_sha256": "773093e080a5db6afd8105a9511a3f373d051521eda6342d2ca0cc01cb18094f",
+        "old_executed_verify_wiring_sha256": "9a7f5088829a9d9509e81f09361371efa5298ab76c35f42bf7f4960d84c783dc",
+        "old_executed_science_commit": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+        "proof": "Removing only the new parent_reached assignment and failure-return branch reconstructs the exact executed old bytes by SHA256. The successful path and all integrator calls remain byte-identical.",
+        "failure_branch": "Parent success, exact t grid, and y shape are checked before augmented solve or parent comparison; failure writes FAIL_PARENT, null comparison, new_ODE_solves1, new_augmented_IVP0 and returns1.",
+        "new_ODE_solves": 0,
+        "benchmark": 0,
+        "executed_receipt_unchanged_sha256": "014bfb9c28f487d8395a76f1c80b1bd74d8be0c2af1665e203ff4861a115b96c",
+        "execution_pin_receipt_sha256": "2f82ec68bbca5ddfecdeee82ddc7421756eb0f09e0f55b03905d7c0573d00ef3"
+      }
+    }
+  ],
+  "remaining_blocking_findings": [],
+  "review_helper_history": "An initial inline review helper failed only while serializing numpy.bool_ into JSON; no solve was executed. The file-based helper converts to Python bool and completed. This is reviewer evidence tooling, not a product regression.",
+  "remaining_nonblocking_findings": []
+}

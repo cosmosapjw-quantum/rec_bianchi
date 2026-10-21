@@ -1,0 +1,109 @@
+{
+  "reviewer": "/root/next_theory_scope",
+  "kind": "independent_source_and_mathematical_derivation",
+  "scope": "PR147 collisionless LRS 40-state analytic JVP/VJP and independent initial seed tangent equations",
+  "status": "PASS_DERIVATION_SCOPED",
+  "implementation_review": "NOT_RUN_CODE_NOT_YET_SUPPLIED",
+  "read_sources": [
+    {
+      "path": "intake/unified_z2_snapshot_20261021/vendor/canonical_fv.py",
+      "symbols": [
+        "CanonicalMomentumFV.__init__",
+        "CanonicalMomentumFV.moments",
+        "CanonicalFVSpecies.fields",
+        "CanonicalFVSpecies.rhs"
+      ]
+    },
+    {
+      "path": "intake/unified_z2_snapshot_20261021/vendor/species_hierarchy.py",
+      "symbols": [
+        "SpeciesHierarchy.initial_state",
+        "SpeciesHierarchy.fields"
+      ]
+    },
+    {
+      "path": "intake/unified_z2_snapshot_20261021/components/component_adapter.py",
+      "symbols": [
+        "quadrature_q",
+        "calibration",
+        "model"
+      ]
+    },
+    {
+      "path": "intake/unified_z2_snapshot_20261021/adapter.py",
+      "symbols": [
+        "cosmology",
+        "model",
+        "observables"
+      ]
+    },
+    {
+      "repository": "cosmosapjw-quantum/bass_cr",
+      "commit": "5ecb8a6c4961302b7066b06278e72ecd2d77f8c9",
+      "path": "research/cr_c21n_mass_shell_cache_20261021/mass_shell_derivatives.py",
+      "git_blob": "0d471b04fcbfa28786cda1b2bae1304c6fc617e5"
+    },
+    {
+      "repository": "cosmosapjw-quantum/rei_bianchi",
+      "commit": "231df3ab717dbc112f63b77953f64def08e9bcb5",
+      "paths": [
+        "research/rei_sigma_pi_native_moments_20261021/moments.cpp",
+        "research/rei_sigma_pi_native_moments_20261021/THEORY.md"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "T1",
+      "finding": "rho_b=-6*pi_s; pi_b has a nonpositive packetwise factorization; rho_bb>=0 for a positive finite measure.",
+      "method": "Independent differentiation and polynomial expansion",
+      "status": "PASS"
+    },
+    {
+      "id": "T2",
+      "finding": "Full H constraint depends on b,v and energy monopoles; stress on b and energy quadrupoles; u is inert in the pinned fm>0 RHS.",
+      "method": "Line-by-line source-to-formula map",
+      "status": "PASS"
+    },
+    {
+      "id": "T3",
+      "finding": "JVP and VJP match by explicit pairing; transpose formula includes H normalization and shear damping.",
+      "method": "Independent dot-product expansion",
+      "status": "PASS"
+    },
+    {
+      "id": "T4",
+      "finding": "Matter seed changes the fixed canonical distribution, requiring f_A*A_theta in addition to JY.",
+      "method": "Source parameter-path tracing",
+      "status": "PASS"
+    },
+    {
+      "id": "T5",
+      "finding": "Nref(A) derivative cannot be dropped solely because its finite-grid value is small.",
+      "method": "Quotient rule for the exact finite sums",
+      "status": "PASS"
+    },
+    {
+      "id": "T6",
+      "finding": "Signed observables are differentiable; absolute norms require a separate zero treatment.",
+      "method": "Explicit chain rule and |x| directional derivative",
+      "status": "PASS"
+    }
+  ],
+  "implementation_obligations": [
+    "Keep direct A forcing and Nref_A term.",
+    "Use original SI observable factors rather than silently regrouping into normalized-source constants.",
+    "Respect positive/zero shear boundary derivatives; do not claim an unexecuted negative-shear pilot.",
+    "Test independent finite differences in addition to JVP/VJP duality.",
+    "Keep u perturbations admissible under the inherited source guard.",
+    "Preserve source code/data pins and compare actual code before declaring implementation acceptance."
+  ],
+  "claim_limits": {
+    "new_ODE_integrations": 0,
+    "new_benchmarks": 0,
+    "finite_field_derivative": "analytically derived",
+    "global_convergence": "NOT_RUN",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED"
+  }
+}

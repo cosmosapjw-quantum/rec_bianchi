@@ -1,0 +1,58 @@
+{
+  "reviewer": "/root/next_theory_scope",
+  "scope": "NCP completed_case_plots adapter and ncp_tangent.py RUN_MANIFEST/RESULT producer; no plot rendering or solver execution",
+  "status": "PASS_SCHEMA_WITH_OPEN_FULL_WINDOW_ADMISSION_FINDING",
+  "plot_code_sha256": "44fbf90e5ded6c6479ed44833718c3d57d741cc50c129ace270306ad39529582",
+  "ncp_code_sha256": "635dc03877de1b885da25b777553ee198194cbacb1b53dd006826ac7d0a5408c",
+  "adapter_ast_sha256": "eaced68caeb41093592033c6cd4b09affe280503ac1b6b32140e792ddab1ba2f",
+  "new_ODE": 0,
+  "new_plots": 0,
+  "benchmark": 0,
+  "checks": [
+    {
+      "id": "P1_schema",
+      "result": "PASS",
+      "reason": "RUN schema rec_bianchi.tangent_run.v1 and RESULT schema rec_bianchi.tangent_result.v1 match the producer; nested integration rec.tangent.execution.v1 is checked."
+    },
+    {
+      "id": "P2_digest",
+      "result": "PASS",
+      "reason": "Run hash recomputes sorted-key JSON excluding sha256 exactly as the producer does before adding sha256. source_commit is pinned and source_code_identity equals the complete RUN_MANIFEST object. tangent.npz bytes must match the recorded SHA256."
+    },
+    {
+      "id": "P3_status",
+      "result": "PASS",
+      "reason": "Outer status COMPLETE/task_exit_code0 and inner status COMPLETED are distinct and checked in their correct layers. Empty checks is explicitly rejected before all(...), preventing empty-dictionary vacuous acceptance."
+    },
+    {
+      "id": "P4_arrays",
+      "result": "PASS",
+      "reason": "Axes shape3, n-length x/z, signed observables(n,4), and unscaled signed tangent(n,4,3) match augmented.py outputs. Seed index is last axis and corresponds to S_i,Pm_i,Pr_i. Case axes match both wrapper and integration; signed totals are checked for values and tangent columns."
+    },
+    {
+      "id": "P5_partial_and_failure",
+      "result": "PASS_SCOPED",
+      "reason": "FAILED/ATTEMPT/claim-only cases have no COMPLETE RESULT and are not plotted. A completed subset can be plotted without claiming all three cases complete; no accepted cases raises NO_COMPLETED_TANGENT_CASES_TO_PLOT. Malformed COMPLETE raises before that case is plotted. Earlier accepted plots may remain as preserved partial output if a later case rejects, but final PLOT_BUILD is not emitted."
+    },
+    {
+      "id": "P6_full_window",
+      "result": "OPEN",
+      "reason": "The adapter checks n from receipt, monotonic x/z and z(x), but does not require153 nodes, canonical output grid, x interval[0,ln7], or redshift interval[20,2]. A short declared COMPLETED input can pass these checks despite the full-window NCP contract."
+    }
+  ],
+  "findings": [
+    {
+      "id": "PLOT-P2-1",
+      "severity": "P2_scientific_output_contract",
+      "status": "OPEN",
+      "target": "completed_case_plots after count and shape validation",
+      "impact": "The axis uses actual z values, so it does not fabricate endpoint labels. However, short completed data are accepted by a path intended for the fixed153-node z20to2 NCP delivery.",
+      "minimum_fix": "Require count153; compare x to the fixed121+32 grid; compare receipt x_interval and redshift_interval to the frozen endpoints with a small absolute rounding tolerance. Keep the plotter solver-free."
+    }
+  ],
+  "limits": [
+    "This is static schema/provenance consistency review, not remote execution attestation.",
+    "Default local diagnostic layout and visual legends are outside this review.",
+    "Physical HOLD/global convergence NOT_RUN/production NOT_APPROVED remain."
+  ]
+}

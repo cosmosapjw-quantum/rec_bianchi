@@ -1,0 +1,201 @@
+{
+  "schema": "rec.tangent.plot_build.v1",
+  "status": "BUILT_VISUALLY_REVIEWED",
+  "mode": "saved_state_and_tiny_wiring",
+  "files": [
+    {
+      "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/01_local_partials_on_saved_states.png",
+      "bytes": 235101,
+      "sha256": "1d5b84236066ba364b9d652c3778313b3bee616bd3bd0e3ce4082a868b7dc321"
+    },
+    {
+      "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/01_local_partials_on_saved_states.pdf",
+      "bytes": 77548,
+      "sha256": "cd9fcb81fd4ccbdfb988a0c94852bdb2c930fcd70e1cb4f9fc9daa7f78922c0d"
+    },
+    {
+      "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/02_finite_set_validation_and_tiny_response.png",
+      "bytes": 299268,
+      "sha256": "95b623e8bd57481769221b74953e7e9bfda771eda6d987cd2710851f69a54f62"
+    },
+    {
+      "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/02_finite_set_validation_and_tiny_response.pdf",
+      "bytes": 39325,
+      "sha256": "afd850af28f4fae0716001f6b448bdb263ef86747bb80c5550d7f341d4b05858"
+    }
+  ],
+  "summary": {
+    "local_partials": {
+      "representative_case_indices": [
+        5,
+        1,
+        17,
+        39
+      ],
+      "representative_case_ids": [
+        "9bad767cd17b0651746fca2bd9c6ad6911a6df067ad58af71ab0872827ccacf9",
+        "85b934bda9234641873454696f22e7cd74c757c944f34820d1e30cd1e1afea3b",
+        "d58d4df366eadd417f7fbbd20b5906f51265660fb6bff81dec830d4bf16965e8",
+        "c6b60da0b4024b188f3780393f8f85586fab1b420a1b28e339902872e37d941d"
+      ],
+      "local_pi_b_range": [
+        -0.010118241787641351,
+        -4.965766577156852e-07
+      ],
+      "interpretation": "Fixed-x/A packet slope and fixed-x/y amplitude partials at stored states; not integrated sensitivity."
+    },
+    "validation": {
+      "tiny_x_interval": [
+        0.0,
+        0.0001
+      ],
+      "tiny_z_interval": [
+        20.0,
+        19.9979001049965
+      ],
+      "tiny_response_delta": [
+        [
+          -0.00014964908939452126,
+          9.998270284659701e-05,
+          9.998754589555485e-05
+        ],
+        [
+          -2.828857138319534e-07,
+          -0.00019629362378525972,
+          -1.414441984269204e-11
+        ],
+        [
+          -9.633294626734438e-07,
+          -4.816328031063367e-11,
+          -9.943258794919974e-05
+        ]
+      ],
+      "max_duality_limit_fraction": 0.019529318053720175,
+      "new_ODE_by_plotter": 0,
+      "input_tiny_ODE_solves": 2
+    }
+  },
+  "inputs": {
+    "verification": {
+      "path": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/results/verification_v1/VERIFICATION.json",
+      "bytes": 10827,
+      "sha256": "531bce4ae4ecce06bd6eb244c33a26b06b3ddf912b65d7bdcfd20cfc2e7be284"
+    },
+    "diagnostics": {
+      "path": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/results/verification_v1/VERIFICATION_DIAGNOSTICS.npz",
+      "bytes": 65575,
+      "sha256": "3e3fc89c745618a8f10e50f9992fc55d5634e8443f00f8f1fa7faeb10d33a770"
+    },
+    "tiny_receipt": {
+      "path": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/results/wiring_v1/TINY_WIRING.json",
+      "bytes": 1661,
+      "sha256": "014bfb9c28f487d8395a76f1c80b1bd74d8be0c2af1665e203ff4861a115b96c"
+    },
+    "tiny_data": {
+      "path": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/results/wiring_v1/TINY_WIRING.npz",
+      "bytes": 5883,
+      "sha256": "2666eb1951acb3e208ed3eee3bfa37a77f831da8b5e791a1ad918f23a389ca8c"
+    }
+  },
+  "code_sha256": "2fb59b7d9432d45fe2c58f501bccf3d81603d93988ef27b1f4782543ee176194",
+  "post_build_adapter_correction": {
+    "reason": "The actual concurrent NCP runner uses COMPLETE wrapper receipts, nested COMPLETED integration, RUN_MANIFEST.json and tangent.npz; corrected the optional consumer to that inspected contract.",
+    "current_code_sha256": "d89c6d01a2a471d13493457bd81c06a40376e60368409e1773fd35d5aca87f58",
+    "rendered_code_sha256": "cbf6ac63f23e1339123ee4e923a6783c2678c6ef14b9d6f954a8a2961ef25b66",
+    "default_figure_functions_AST_unchanged": true,
+    "functions_checked": [
+      "configure",
+      "default_plots",
+      "epoch_max",
+      "load_npz",
+      "plot_local_partials",
+      "plot_validation",
+      "redshift_axis",
+      "representative_cases",
+      "require_shape",
+      "save_pair",
+      "sha256"
+    ],
+    "NCP_plot_execution": "NOT_RUN_NO_NEW_COMPLETED_RESULTS",
+    "new_ODE": 0,
+    "figures_rerendered": 0,
+    "completed_case_validation": [
+      "RUN_MANIFEST canonical hash",
+      "wrapper identity and source-code identity",
+      "nested integration status/checks/source",
+      "mandatory tangent.npz SHA256",
+      "axes/state shape/redshift order/signed sums"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8"
+  },
+  "new_ODE_by_plotter": 0,
+  "new_NCP_by_plotter": 0,
+  "benchmarks": 0,
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "figure_render_code_sha256": {
+    "01_local_partials_on_saved_states": "cbf6ac63f23e1339123ee4e923a6783c2678c6ef14b9d6f954a8a2961ef25b66",
+    "02_finite_set_validation_and_tiny_response": "2fb59b7d9432d45fe2c58f501bccf3d81603d93988ef27b1f4782543ee176194"
+  },
+  "layout_revision": {
+    "time_utc": "2026-10-21T13:40:08.165823+00:00",
+    "reason": "Root visual review requested moving both diagnostic legends below the axes and increasing lower spacing, because legends overlaid FD curves and the duality limit line.",
+    "backup_directory": "/workspace/scratch/36ad4bc67b35/next_loop_survey/plot_validation_prev_20261021",
+    "previous_receipt_sha256": "f158e712a2caa9ee21b13348da0f3413d4c5ca737692e2f352d1d9adec39f8b8",
+    "previous_code_sha256": "d89c6d01a2a471d13493457bd81c06a40376e60368409e1773fd35d5aca87f58",
+    "previous_figure2_files": [
+      {
+        "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/02_finite_set_validation_and_tiny_response.png",
+        "bytes": 298982,
+        "sha256": "318556690072f6bc1b480cbd7c8b0a50d1d5cec509942796bfbe2d75e7cdc5c2"
+      },
+      {
+        "file": "/workspace/scratch/36ad4bc67b35/rec_bianchi/research/rec_rei_tangent_20261021/figures/02_finite_set_validation_and_tiny_response.pdf",
+        "bytes": 39382,
+        "sha256": "390ed8dcfe17a6fbc7b06792c8bba1e55dd4bdaa008deea0ebde7a7e83641439"
+      }
+    ],
+    "current_code_sha256": "2fb59b7d9432d45fe2c58f501bccf3d81603d93988ef27b1f4782543ee176194",
+    "rendered_figures": [
+      "02_finite_set_validation_and_tiny_response"
+    ],
+    "figure_1_bytes_unchanged": true,
+    "scientific_input_hashes_unchanged": true,
+    "scientific_summary_unchanged": true,
+    "all_other_functions_AST_unchanged_except": [
+      "plot_validation",
+      "completed_case_plots"
+    ],
+    "child_visual_review": "PASS_LEGENDS_AND_FOOTERS_SEPARATED",
+    "root_visual_review": "PENDING_RERENDER_REVIEW",
+    "new_ODE": 0,
+    "new_NCP": 0,
+    "benchmarks": 0
+  },
+  "full_window_adapter_guard": {
+    "reason": "Independent review found a completed tiny-window receipt could otherwise be accepted by the future full-window plot adapter.",
+    "function": "completed_case_plots",
+    "required_epochs": 153,
+    "required_grid": "concat(linspace(0,log(21/5),121), linspace(log(21/5),log(7),33)[1:])",
+    "required_x_interval": "[0,log(7)]",
+    "required_redshift_interval": [
+      20,
+      2
+    ],
+    "rtol": 0,
+    "atol": 2e-14,
+    "syntax_import": "PASS",
+    "future_NCP_plot_execution": "NOT_RUN_NO_NEW_COMPLETED_RESULTS",
+    "independent_guard_review": "PENDING",
+    "new_ODE": 0,
+    "new_NCP": 0,
+    "independent_review": "PASS_SCOPED_C9_PLOT_ADAPTER_REVIEW"
+  },
+  "root_visual_review": "PLOT_VISUAL_REVIEW.json",
+  "NCP_adapter_independent_review": "C9_PLOT_ADAPTER_REVIEW.json"
+}

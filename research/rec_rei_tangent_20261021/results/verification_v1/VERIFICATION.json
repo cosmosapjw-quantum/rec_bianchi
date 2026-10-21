@@ -1,0 +1,319 @@
+{
+  "schema": "rec.tangent.independent_verification.v1",
+  "status": "PASS_SCOPED",
+  "scope": "Finite stored states and original-owner finite differences; no IVP or global error certification.",
+  "case_count": 40,
+  "state_count": 200,
+  "state_directions_per_point": 3,
+  "initial_seed_columns_per_case": 3,
+  "case_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "state_fd": {
+    "formula": "central five-point, fourth order",
+    "step": 9.251199746767563e-05,
+    "directions": "sin(.37*j),cos(.53*j),sin(.23*j)*cos(.71*j); max(1,abs(y)) row scale; du=0"
+  },
+  "amplitude_fd": {
+    "formula": "central five-point at fixed y and radiation seed",
+    "step": 0.000740095979741405,
+    "reference": "fresh original CanonicalFVSpecies objects at A+h,A-h,A+2h,A-2h"
+  },
+  "initial_fd": {
+    "formula": "central two-point original initial state/field values",
+    "steps": [
+      2e-06,
+      2e-07,
+      2e-07
+    ],
+    "zero_shear": "signed smooth extension"
+  },
+  "scaled_error_definition": "max_i |actual-reference|/max(1,|reference_i|)",
+  "duality": {
+    "max_limit_fraction": 0.019529318053720175,
+    "max_abs_residual": 1.509903313490213e-14,
+    "limit": "512*eps64*(1+|lambda dot JVP|+|VJP_y dot direction|+|VJP_A*dA|)"
+  },
+  "moment_sign": {
+    "max_pi_b": -4.965766577156852e-07,
+    "min_pi_b": -0.010118241787641351
+  },
+  "metrics": {
+    "rhs": {
+      "maximum_scaled_error": 2.168404344971009e-19,
+      "maximum_abs_error": 2.168404344971009e-19,
+      "tolerance": 2e-13,
+      "comparisons": 8000,
+      "worst_context": {
+        "case_id": "8d61cfdb452593d31d80ecdd098056653910579d33fe18beef2c78d2d7038e18",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "state_jvp": {
+      "maximum_scaled_error": 4.9454773609625136e-11,
+      "maximum_abs_error": 1.958078144070896e-10,
+      "tolerance": 2e-08,
+      "comparisons": 24000,
+      "worst_context": {
+        "case_id": "21ea5ef90b88fe39ef23999a898248cb199c716a868472891d1fe0677e876375",
+        "stored_index": 152,
+        "direction": 0
+      },
+      "pass": true
+    },
+    "amplitude_jvp": {
+      "maximum_scaled_error": 3.669190847291192e-12,
+      "maximum_abs_error": 3.669190847291192e-12,
+      "tolerance": 2e-08,
+      "comparisons": 8000,
+      "worst_context": {
+        "case_id": "08f3356c2e5fd26c6492f66d9582e9b799c30b8c5a9bcbcfeeda0656d0a86f2b",
+        "stored_index": 152
+      },
+      "pass": true
+    },
+    "observable_jvp": {
+      "maximum_scaled_error": 7.214885452455315e-12,
+      "maximum_abs_error": 2.829025902428839e-10,
+      "tolerance": 2e-08,
+      "comparisons": 2400,
+      "worst_context": {
+        "case_id": "08f3356c2e5fd26c6492f66d9582e9b799c30b8c5a9bcbcfeeda0656d0a86f2b",
+        "stored_index": 152,
+        "direction": 0
+      },
+      "pass": true
+    },
+    "observable_amplitude": {
+      "maximum_scaled_error": 3.990146430603729e-15,
+      "maximum_abs_error": 3.990146430603729e-15,
+      "tolerance": 2e-08,
+      "comparisons": 800,
+      "worst_context": {
+        "case_id": "5c5b85dadd5861106199ed46e26d04d057cb7853c6f64963a7f4f1c18727888a",
+        "stored_index": 80
+      },
+      "pass": true
+    },
+    "moment_rho_b_fd": {
+      "maximum_scaled_error": 2.0364829614316626e-13,
+      "maximum_abs_error": 2.0364829614316626e-13,
+      "tolerance": 2e-08,
+      "comparisons": 200,
+      "worst_context": {
+        "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "moment_pi_b_fd": {
+      "maximum_scaled_error": 1.4833620443077677e-14,
+      "maximum_abs_error": 1.4833620443077677e-14,
+      "tolerance": 2e-08,
+      "comparisons": 200,
+      "worst_context": {
+        "case_id": "5c5b85dadd5861106199ed46e26d04d057cb7853c6f64963a7f4f1c18727888a",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "moment_pi_b_chain_rule": {
+      "maximum_scaled_error": 3.469446951953614e-18,
+      "maximum_abs_error": 3.469446951953614e-18,
+      "tolerance": 2e-13,
+      "comparisons": 200,
+      "worst_context": {
+        "case_id": "e20270eecaee873632695c20bf8a059f2bfde941659ab9903ff209724faf7772",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "rho_b_plus_six_owner_pi": {
+      "maximum_scaled_error": 2.6020852139652106e-18,
+      "maximum_abs_error": 2.6020852139652106e-18,
+      "tolerance": 2e-13,
+      "comparisons": 200,
+      "worst_context": {
+        "case_id": "49c11f58a2f3cacb3551676ceaa5a895bed9988fc9cd8a746442dfb26494fae4",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "stored_observables": {
+      "maximum_scaled_error": 1.3877787807814457e-17,
+      "maximum_abs_error": 1.3877787807814457e-17,
+      "tolerance": 2e-13,
+      "comparisons": 800,
+      "worst_context": {
+        "case_id": "21ea5ef90b88fe39ef23999a898248cb199c716a868472891d1fe0677e876375",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "owner_observables": {
+      "maximum_scaled_error": 1.3877787807814457e-17,
+      "maximum_abs_error": 1.3877787807814457e-17,
+      "tolerance": 2e-13,
+      "comparisons": 800,
+      "worst_context": {
+        "case_id": "21ea5ef90b88fe39ef23999a898248cb199c716a868472891d1fe0677e876375",
+        "stored_index": 0
+      },
+      "pass": true
+    },
+    "initial_state": {
+      "maximum_scaled_error": 2.7755575615628914e-17,
+      "maximum_abs_error": 2.7755575615628914e-17,
+      "tolerance": 2e-13,
+      "comparisons": 1600,
+      "worst_context": {
+        "case_id": "96dd1b4f3d080f013adb8aad1344fbe61cc1abc8d6fadc7f810c13af551d036a"
+      },
+      "pass": true
+    },
+    "initial_seed_state_fd": {
+      "maximum_scaled_error": 3.82598141536461e-12,
+      "maximum_abs_error": 7.524647571699461e-11,
+      "tolerance": 2e-09,
+      "comparisons": 4800,
+      "worst_context": {
+        "case_id": "d58d4df366eadd417f7fbbd20b5906f51265660fb6bff81dec830d4bf16965e8",
+        "seed_column": 0
+      },
+      "pass": true
+    },
+    "initial_seed_amplitude_fd": {
+      "maximum_scaled_error": 1.634360568159455e-11,
+      "maximum_abs_error": 1.3233147910796106e-10,
+      "tolerance": 2e-09,
+      "comparisons": 120,
+      "worst_context": {
+        "case_id": "2652d616bbcefc313461d962d165195b0cfa532fe16164d4c90ab33222f937c8",
+        "seed_column": 0
+      },
+      "pass": true
+    },
+    "initial_observable_identity": {
+      "maximum_scaled_error": 4.440892098500626e-16,
+      "maximum_abs_error": 4.440892098500626e-16,
+      "tolerance": 2e-09,
+      "comparisons": 360,
+      "worst_context": {
+        "case_id": "c86d63da5cb1c2a496576d60eb5a6e81c233e23f426c9d1627b09a55972fcd16"
+      },
+      "pass": true
+    },
+    "initial_observable_fd": {
+      "maximum_scaled_error": 2.1438406605511773e-12,
+      "maximum_abs_error": 2.1438406605511773e-12,
+      "tolerance": 2e-09,
+      "comparisons": 360,
+      "worst_context": {
+        "case_id": "d6919864c797cc5a3cd77566572dfb47e8eeb03c8736f514730b43efcb00063f",
+        "seed_column": 2
+      },
+      "pass": true
+    }
+  },
+  "gates": {
+    "rhs": true,
+    "state_jvp": true,
+    "amplitude_jvp": true,
+    "observable_jvp": true,
+    "observable_amplitude": true,
+    "moment_rho_b_fd": true,
+    "moment_pi_b_fd": true,
+    "moment_pi_b_chain_rule": true,
+    "rho_b_plus_six_owner_pi": true,
+    "stored_observables": true,
+    "owner_observables": true,
+    "initial_state": true,
+    "initial_seed_state_fd": true,
+    "initial_seed_amplitude_fd": true,
+    "initial_observable_identity": true,
+    "initial_observable_fd": true,
+    "duality": true,
+    "nonpositive_pi_b": true,
+    "contract_tests": true
+  },
+  "unit_tests": {
+    "tests_run": 8,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "log": "test_01_complex_values_are_rejected (test_tangent_contract.TestTangentContract.test_01_complex_values_are_rejected) ... ok\ntest_02_nonfinite_values_are_rejected (test_tangent_contract.TestTangentContract.test_02_nonfinite_values_are_rejected) ... ok\ntest_03_state_and_action_shapes_are_rejected (test_tangent_contract.TestTangentContract.test_03_state_and_action_shapes_are_rejected) ... ok\ntest_04_source_chart_and_seed_domain_are_rejected (test_tangent_contract.TestTangentContract.test_04_source_chart_and_seed_domain_are_rejected) ... ok\ntest_05_collision_sources_are_rejected (test_tangent_contract.TestTangentContract.test_05_collision_sources_are_rejected) ... ok\ntest_06_changed_closure_and_grid_are_rejected (test_tangent_contract.TestTangentContract.test_06_changed_closure_and_grid_are_rejected) ... ok\ntest_07_inactive_tau_and_thermal_columns_use_admissible_states (test_tangent_contract.TestTangentContract.test_07_inactive_tau_and_thermal_columns_use_admissible_states) ... ok\ntest_08_snapshot_and_public_arrays_are_immutable (test_tangent_contract.TestTangentContract.test_08_snapshot_and_public_arrays_are_immutable) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.025s\n\nOK\n"
+  },
+  "execution_counts": {
+    "original_rhs_evaluations": 3400,
+    "original_field_evaluations": 3640,
+    "base_models": 40,
+    "amplitude_perturbed_models": 160,
+    "initial_seed_perturbed_models": 240,
+    "new_ODE_integrations": 0,
+    "NCP": 0,
+    "benchmarks": 0
+  },
+  "execution_counts_scope": "Counters cover the fixture audit; eight bounded contract tests are recorded separately.",
+  "fixture_sha256": "0df69ad101752b9ce43fb898789619e442a82f3ae7847cc519ad0ff00419f21a",
+  "fixture_manifest_sha256": "5b0932e2d831278963ac28054673eecd905658d53a135bc87b70e02cd129e753",
+  "source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe",
+  "code_sha256": {
+    "owner_model.py": "b38cfdbccd581d575c671d34d23a37adf1ec629a647b0ec51ac73f35662a1d6a",
+    "tangent_core.py": "3d5020ee8348c8a42c29d5f1f4f3c20b0f179dd28c9f6a2ec6300dab255da7b9",
+    "verify_tangent.py": "a93dec99a29cc7eee0921534e3a9e05004f9093bbbf8faf93df09b0557a16033",
+    "test_tangent_contract.py": "4a90d439c6ba354dfac465ff363434600c0641d385c2bd2afabe798f595de6ee"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "historical_failure_note": "D8 case c original FAILED_WORKER_EXIT/124 remains historical; using saved states does not adjudicate solver success.",
+  "global_convergence": "NOT_RUN",
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "diagnostics": {
+    "file": "VERIFICATION_DIAGNOSTICS.npz",
+    "bytes": 65575,
+    "sha256": "3e3fc89c745618a8f10e50f9992fc55d5634e8443f00f8f1fa7faeb10d33a770"
+  }
+}

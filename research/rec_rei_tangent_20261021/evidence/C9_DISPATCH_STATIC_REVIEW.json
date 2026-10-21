@@ -1,0 +1,29 @@
+{
+  "schema": "rec.tangent.independent_dispatch_review.v1",
+  "reviewer": "/root",
+  "author": "/root/next_backup_context",
+  "status": "PASS_SCOPED",
+  "code_sha256": "635dc03877de1b885da25b777553ee198194cbacb1b53dd006826ac7d0a5408c",
+  "runtime_evidence": "C9_DISPATCH_OPERATIONAL_AUDIT.json",
+  "blocking_findings": [],
+  "remaining_nonblocking_findings": [],
+  "reviewed": [
+    "create-only namespace/atomic claim/JSON and NPZ publication",
+    "source/code/input hashes before and after worker execution",
+    "complete_reused and failed/attempt/claim preservation",
+    "spawn process and numerical thread cap",
+    "resource admission with explicit and compatible peer reservations",
+    "only own UUID lease cleanup",
+    "no pending fast path before sampler or augmented import",
+    "worker callable result distinct from unavailable OS process exit code"
+  ],
+  "limitations": [
+    "20 operational checks use synthetic workers/resources/PID identity.",
+    "RHS deadline is cooperative; no hard kill guarantee.",
+    "No live NCP allocation or full sensitivity IVP.",
+    "NO_PENDING_WORK may contain preserved failures and is not a science-success verdict."
+  ],
+  "new_ODE": 0,
+  "NCP": 0,
+  "benchmark": 0
+}

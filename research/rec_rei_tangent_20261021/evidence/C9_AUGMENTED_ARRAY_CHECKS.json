@@ -1,0 +1,139 @@
+{
+  "initial_vector_shape_160": true,
+  "single_sample_column_roundtrip": true,
+  "multi_sample_column_roundtrip": true,
+  "default_grid_153_strict_samples": true,
+  "default_join_120": true,
+  "default_endpoint_log7": true,
+  "number_indices": [
+    13,
+    31
+  ],
+  "unscaled_atol_terms": [
+    2.9999999999999997e-12,
+    1e-09,
+    3e-10
+  ],
+  "models": [
+    {
+      "id": "interior_1",
+      "axes": [
+        0.002,
+        7e-05,
+        -0.0002
+      ],
+      "A": 0.10239773999446876,
+      "k": -0.06698614179473691,
+      "inside_parameter_domain": true,
+      "number_monopoles_initial": [
+        1.0,
+        1.0
+      ],
+      "number_monopole_tangent_initial": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "initial_signed_observables": [
+        0.0019999999999999996,
+        7.000000000000008e-05,
+        -0.00019999999999999998
+      ],
+      "initial_observable_seed_identity_error": 3.3306690738754696e-16
+    },
+    {
+      "id": "interior_2",
+      "axes": [
+        0.006,
+        -7e-05,
+        0.0002
+      ],
+      "A": -0.10239828611902548,
+      "k": 0.06698649905630338,
+      "inside_parameter_domain": true,
+      "number_monopoles_initial": [
+        1.0,
+        1.0
+      ],
+      "number_monopole_tangent_initial": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "initial_signed_observables": [
+        0.0059999999999999975,
+        -6.999999999999995e-05,
+        0.00019999999999999993
+      ],
+      "initial_observable_seed_identity_error": 4.440892098500626e-16
+    },
+    {
+      "id": "interior_3",
+      "axes": [
+        0.015,
+        0.0002,
+        -0.0007
+      ],
+      "A": 0.2925757479600022,
+      "k": -0.2344601322355405,
+      "inside_parameter_domain": true,
+      "number_monopoles_initial": [
+        1.0,
+        1.0
+      ],
+      "number_monopole_tangent_initial": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "initial_signed_observables": [
+        0.014999999999999994,
+        0.00020000000000000004,
+        -0.0006999999999999998
+      ],
+      "initial_observable_seed_identity_error": 4.440892098500626e-16
+    }
+  ],
+  "new_ODE_solves": 0,
+  "benchmark": 0,
+  "review_helper_correction": "First inline helper completed array/model calculations but JSON serialization failed on numpy.bool_. Explicit Python bool conversion fixes only reviewer evidence serialization; no product code or scientific solve was involved.",
+  "file_sha256": {
+    "code/augmented.py": "acb9c82c1b40eccc76e67facfb9bd4588dce8cb581d3b497e9d06ccde132c945",
+    "code/verify_wiring.py": "9a7f5088829a9d9509e81f09361371efa5298ab76c35f42bf7f4960d84c783dc",
+    "inputs/NCP_TANGENT_CASES.json": "9bac7b9e4b7dcfbb3564827e085aea97037d0097709acf5838b63b3af8446a98"
+  },
+  "post_execution_static_change": {
+    "status": "CLOSED_STATIC_REVIEW",
+    "new_verify_wiring_sha256": "773093e080a5db6afd8105a9511a3f373d051521eda6342d2ca0cc01cb18094f",
+    "old_executed_verify_wiring_sha256": "9a7f5088829a9d9509e81f09361371efa5298ab76c35f42bf7f4960d84c783dc",
+    "old_executed_science_commit": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+    "proof": "Removing only the new parent_reached assignment and failure-return branch reconstructs the exact executed old bytes by SHA256. The successful path and all integrator calls remain byte-identical.",
+    "failure_branch": "Parent success, exact t grid, and y shape are checked before augmented solve or parent comparison; failure writes FAIL_PARENT, null comparison, new_ODE_solves1, new_augmented_IVP0 and returns1.",
+    "new_ODE_solves": 0,
+    "benchmark": 0,
+    "executed_receipt_unchanged_sha256": "014bfb9c28f487d8395a76f1c80b1bd74d8be0c2af1665e203ff4861a115b96c",
+    "execution_pin_receipt_sha256": "2f82ec68bbca5ddfecdeee82ddc7421756eb0f09e0f55b03905d7c0573d00ef3"
+  },
+  "file_sha256_meaning": "Hashes at execution of array and initial-model checks; verify_wiring was not imported or executed by this check. The later failure-branch-only change is separately bound below."
+}

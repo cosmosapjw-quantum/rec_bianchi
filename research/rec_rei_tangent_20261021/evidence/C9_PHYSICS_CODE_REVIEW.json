@@ -1,0 +1,108 @@
+{
+  "reviewer": "/root/next_theory_scope",
+  "status": "PASS_SCOPED_PHYSICS_AND_CODE_REVIEW",
+  "scope": {
+    "files": [
+      "code/tangent_core.py",
+      "code/owner_model.py",
+      "CONTRACT_KO.md"
+    ],
+    "source": "REI PR147 3b85dedce84d37b3e165da00685a8a984950aafe; collisionless non-tilted LRS, fm=0.1, m/Tref=30, L8, 24x12 Gauss3; x fixed in each local derivative",
+    "excluded": [
+      "NCP CLI/scheduler under construction",
+      "full 200-state verification owned by another reviewer",
+      "full z20 to2 tangent trajectories",
+      "global convergence and continuum quadrature certificate",
+      "warm C15 native kernel adjudication"
+    ]
+  },
+  "method": [
+    "Read both implementation files and contract in full.",
+    "Compare each formula with independent THEORY_JVP_KO.md and original CanonicalFVSpecies/SpeciesHierarchy source.",
+    "Trace initial seed-to-A and seed-to-radiation-multipole paths.",
+    "Execute independent three-point original RHS/SI-observable finite difference check with joint state and A perturbation.",
+    "Compare rho_b/pi_b with subtraction of two pre-existing published C21N directional derivatives.",
+    "Execute transpose pairing and two initial-map finite-difference probes, including the explicitly declared signed extension at S=0."
+  ],
+  "execution": {
+    "command": "python /workspace/scratch/36ad4bc67b35/next_loop_theory/audit_tangent_points.py",
+    "exit_code": 0,
+    "new_ODE_integrations": 0,
+    "benchmark": 0,
+    "raw_result": "C9_POINT_CHECKS.json",
+    "source_rhs_calls": 15
+  },
+  "identities": {
+    "tangent_core_sha256": "3d5020ee8348c8a42c29d5f1f4f3c20b0f179dd28c9f6a2ec6300dab255da7b9",
+    "owner_model_sha256": "b38cfdbccd581d575c671d34d23a37adf1ec629a647b0ec51ac73f35662a1d6a",
+    "contract_sha256": "bb3f583f596e3567b620b3ce11ad7e514dfdf8e5c0968db4eeccc427303c708d",
+    "files_stable_during_point_checks": true
+  },
+  "formula_reviews": [
+    {
+      "location": "tangent_core.py prepare: U,W,E; weight_A; rho_b; pi_b_kernel",
+      "conclusion": "PASS",
+      "reason": "U_b=2U and W_b=-4W produce rho_b=-6pi and the nonpositive expanded pi_b numerator. weight_A contains both packet derivative and finite reference-normalization quotient term. No small-Z_A substitution occurs."
+    },
+    {
+      "location": "tangent_core.py _variations and prepare hfactor coefficients",
+      "conclusion": "PASS",
+      "reason": "delta logH includes b, normalized shear v, both radiation energy monopoles, and the direct A density derivative with the correct factor 1/(2H²). d_b,d_A and radiation quadrupole coefficients form delta D. Inert tau/u inputs stay absent as in the pinned fm>0 source."
+    },
+    {
+      "location": "tangent_core.py Prepared.jvp",
+      "conclusion": "PASS",
+      "reason": "The signs of -T delta logH, T delta v-B delta logH, -3 delta v+C(deltaD-D delta logH), and all radiation product-rule terms agree with independent derivation. State and A directions are propagated together; batched columns reuse the same prepared geometry."
+    },
+    {
+      "location": "tangent_core.py Prepared.vjp",
+      "conclusion": "PASS",
+      "reason": "bar_B combines b-output and radiation flows, bar_h includes the time, shear-ratio and forcing normalizations, and each radiation block uses the transposed original matrix. F_A cotangent contains both H and pressure pathways. Numerical pairing is supplementary to the explicit transpose derivation."
+    },
+    {
+      "location": "owner_model.py calibration_constants and make_model",
+      "conclusion": "PASS",
+      "reason": "Km/Kr scale as 1-S²/6; A_theta and k_theta carry the S normalization terms; y0_v derivative is 6/(6-S²)^(3/2); all four ell2 initial rows receive k_theta/5. The documented signed extension makes the zero-shear derivative well-defined without reclassifying historical positive-shear rows."
+    },
+    {
+      "location": "tangent_core.py observable_jvp and obs_factor",
+      "conclusion": "PASS_AFTER_CLARIFICATION_FIX",
+      "reason": "Each component retains H^-2 normalization; radiation and matter derivatives are signed and the total derivative is added before any norm. The accepted code captures actual rho_crit and kappa_t rather than reducing the observable factor to normalized forcing constants."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C9-F1",
+      "severity": "P2_clarity_and_FP_path",
+      "target": "Initial tangent_core.py obs_factor grouped kappa_t*rho_crit as 3H0².",
+      "evidence": "First-read code SHA256 ff2b0c9690d98ca0f63023dff38c0a19f8426cfea70d04ac07c08f1c0e11c758 used sqrt6*3H0²/H² while the original adapter builds SI observables from kappa_t and rho_crit.",
+      "impact": "Mathematically equivalent for the pinned source, but obscures the intended SI source path and alters floating-point grouping. This was not identified as a finite-field physical sign error.",
+      "resolution": "Root added _KAPPA_TIME and snapshot source.rhocrit_j_m3, then used sqrt6*_KAPPA_TIME*_rho_crit/H².",
+      "closure": "Read corrected lines and executed original SI-observable and observable-JVP comparisons. Closed at accepted hash3d5020ee…"
+    }
+  ],
+  "numerical_summary": {
+    "max_source_rhs_scaled_error": 1.35510963576736e-20,
+    "max_joint_state_and_A_jvp_fd5_scaled_error": 1.706490852048115e-11,
+    "max_signed_observable_source_scaled_error": 2.1647549786282973e-19,
+    "max_observable_joint_jvp_fd5_scaled_error": 3.0681537977029196e-15,
+    "max_transpose_scaled_residual": 7.768529799883263e-17,
+    "max_initial_state_map_fd5_scaled_error": 8.558078196468588e-14,
+    "max_initial_A_map_fd5_scaled_error": 9.74349675586797e-14,
+    "all_three_pi_b_nonpositive": true
+  },
+  "remaining_blocking_findings": [],
+  "qualifications": [
+    "Acceptance concerns derivatives of the smooth finite-sum model, not derivatives of floating-point rounding.",
+    "Original pi=(pa-pp)/3 and the adapter's single signed packet reduction are equal as finite mathematical sums; numerical equivalence is tested, not byte equivalence claimed.",
+    "make_model recomputes the same mathematical calibration with a declared signed extension and z2 endpoint; the historical trajectories remain frozen evidence.",
+    "The source hash gate is executed by the pinned owner-model entry path; arbitrary externally modified model matrices are outside this source-identity acceptance.",
+    "Only signed observable Jacobians are accepted at zero stresses; a differentiable absolute norm at zero is not claimed.",
+    "New API guards and NCP scheduler execution need their own code tests/review. No automatic scope extension of this review."
+  ],
+  "states": {
+    "physical": "HOLD",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED"
+  }
+}
