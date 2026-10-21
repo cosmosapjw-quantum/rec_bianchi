@@ -29,9 +29,14 @@ from full_bianchi_hyrec.trajectory.primordial_2012_refined_start import (
 )
 
 CHECKPOINT_SHA256 = "7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9"
+U4A_FINAL_CHECKPOINT_SHA256 = "7d7cf81dafd46672be8018cd7dacaa26f2aa21653a47774206005716ef967529"
+U4A_WORKER_RESULT_SHA256 = "b59def277ddf3446020d45a5af931d2155b7fb3496ae3245092d10b71575e95f"
+U4A_SOURCE_ZIP_SHA256 = "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
 SOURCE_INDEX_START = 72892
 START_IZ = 74411
+U4B_START_IZ = 74443
 PREFIX_COLUMNS = 1519
+U4B_PREFIX_COLUMNS = 1551
 MAX_ACCEPTED = 32
 MAX_FULL_EVALUATIONS = 128
 DLNT_MAX = 5e-4
@@ -90,6 +95,87 @@ def load_reviewed_restart(path: Path) -> dict:
             "final_predictor": predictor}
 
 
+def load_u4b_restart(final_checkpoint: Path, accepted_dir: Path) -> dict:
+    """Reconstruct U4B only from the frozen U4A final checkpoint and append streams."""
+    if _sha(final_checkpoint) != U4A_FINAL_CHECKPOINT_SHA256:
+        raise ValueError("REVIEWED_U4A_FINAL_CHECKPOINT_SHA_MISMATCH")
+    import json
+    with np.load(final_checkpoint, allow_pickle=False) as archive:
+        required = {"states_json", "steps_json", "virtual_out", "average_virtual",
+                    "lyman_out", "final_predictor", "dlna", "rei_activation"}
+        if not required <= set(archive.files):
+            raise ValueError("U4B_FINAL_CHECKPOINT_FIELDS")
+        states = [json.loads(str(v)) for v in archive["states_json"]]
+        steps = [json.loads(str(v)) for v in archive["steps_json"]]
+        virtual = np.array(archive["virtual_out"], copy=True)
+        average = np.array(archive["average_virtual"], copy=True)
+        lyman = np.array(archive["lyman_out"], copy=True)
+        predictor = np.array(archive["final_predictor"], copy=True)
+        dlna = float(archive["dlna"])
+        rei_activation = bool(archive["rei_activation"])
+    if (len(states) != 33 or len(steps) != 32 or states[-1].get("iz") != U4B_START_IZ
+            or dlna != DLNA or rei_activation or virtual.shape != (NVIRT, U4B_PREFIX_COLUMNS)
+            or average.shape != virtual.shape or lyman.shape != (3, U4B_PREFIX_COLUMNS)
+            or predictor.shape != (2, 2) or not np.all(np.isfinite(predictor))):
+        raise ValueError("U4B_FINAL_CHECKPOINT_SHAPE_OR_INDEX")
+    state = dict(states[-1])
+    if (state.get("branch") != "H_ONLY" or state.get("xHeII") != 0.0
+            or state.get("post_saha") is not True or state.get("xe") != state.get("xHII")
+            or not math.isfinite(float(state.get("Tm_K", math.nan)))):
+        raise ValueError("U4B_FINAL_CHECKPOINT_STAGE_OR_STATE")
+    if ([s.get("input_iz") for s in steps] != list(range(START_IZ, U4B_START_IZ))
+            or [s.get("output_iz") for s in steps] != list(range(START_IZ + 1, U4B_START_IZ + 1))
+            or [s.get("photon_col") for s in steps] != list(range(PREFIX_COLUMNS, U4B_PREFIX_COLUMNS))):
+        raise ValueError("U4B_ACCEPTED_OWNERSHIP_GAP_OR_DUPLICATE")
+    if _sha(accepted_dir / "accepted.jsonl") != "4978241e17bdc8c67c0020ba95f8ea9f686ba8b680d48aa9b5f213a51f7f035d":
+        raise ValueError("U4B_ACCEPTED_JSONL_SHA_MISMATCH")
+    if _sha(accepted_dir / "RESULT.json") != U4A_WORKER_RESULT_SHA256:
+        raise ValueError("U4B_WORKER_RESULT_SHA_MISMATCH")
+    with (accepted_dir / "RESULT.json").open(encoding="utf-8") as stream:
+        worker_result = json.load(stream)
+    if (worker_result.get("source_zip_sha256") != U4A_SOURCE_ZIP_SHA256
+            or worker_result.get("accepted_end_global_index") != U4B_START_IZ
+            or worker_result.get("status") != "PASS_SCOPED_U4A_RESTART"
+            or worker_result.get("accepted_artifacts", {}).get("final_checkpoint.npz") != U4A_FINAL_CHECKPOINT_SHA256):
+        raise ValueError("U4B_SOURCE_OR_RESULT_BINDING_MISMATCH")
+    with (accepted_dir / "MANIFEST.json").open(encoding="utf-8") as stream:
+        manifest = json.load(stream)
+    rows = [json.loads(line) for line in (accepted_dir / "accepted.jsonl").read_text().splitlines()]
+    if len(rows) != 32:
+        raise ValueError("U4B_ACCEPTED_JSONL_ROW_COUNT")
+    for i, row in enumerate(rows):
+        if row.get("state") != states[i + 1] or row.get("step") != steps[i]:
+            raise ValueError("U4B_ACCEPTED_JSONL_CHECKPOINT_MISMATCH")
+    append_specs = (("accepted_virtual_f64le.bin", virtual, NVIRT),
+                    ("accepted_average_f64le.bin", average, NVIRT),
+                    ("accepted_lyman_f64le.bin", lyman, 3))
+    for name, whole, lanes in append_specs:
+        raw = (accepted_dir / name).read_bytes()
+        if manifest.get(name) != hashlib.sha256(raw).hexdigest():
+            raise ValueError("U4B_ACCEPTED_STREAM_MANIFEST_MISMATCH:" + name)
+        if len(raw) != lanes * 32 * 8:
+            raise ValueError("U4B_APPEND_STREAM_LENGTH:" + name)
+        # Accepted output is appended one FULL evaluation at a time, hence
+        # step-major [accepted_step, lane] rather than checkpoint [lane, col].
+        appended = np.frombuffer(raw, dtype="<f8").reshape(32, lanes).T
+        if not np.array_equal(whole[:, PREFIX_COLUMNS:], appended):
+            raise ValueError("U4B_APPEND_STREAM_MISMATCH:" + name)
+        if not np.all(np.isfinite(whole)):
+            raise ValueError("U4B_HISTORY_NONFINITE:" + name)
+    if [s.get("input_iz") for s in steps[-2:]] != [74441, 74442]:
+        raise ValueError("U4B_PREDICTOR_INPUT_INDEX")
+    _state_ledger(state)
+    tail = tuple(float(v) for v in predictor[1])
+    rhs = tuple(float(s["hydrogen_rhs"]) for s in steps[-2:])
+    if tail != rhs:
+        raise ValueError("U4B_PREDICTOR_TAIL_MISMATCH")
+    return {"state": state, "rhs_tail": tail, "virtual_out": virtual,
+            "average_virtual": average, "lyman_out": lyman,
+            "final_predictor": predictor, "accepted_steps": len(steps),
+            "source_index_start": SOURCE_INDEX_START, "run_start_iz": U4B_START_IZ,
+            "restart_contract": "R3T_U4B_FROM_U4A_FINAL_V1"}
+
+
 def original_rt_stop_index(c: QuarterStartCosmology) -> int:
     """Original ``rec_set_derived_params`` RT stop translated on the h/4 clock."""
     z, pion = 900.0, 1.0
@@ -117,6 +203,8 @@ class U4AResult:
     full_evaluations: int
     status: str
     rt_stop_iz: int
+    run_start_iz: int = START_IZ
+    restart_contract: str = "R3T_U4A_74411_V1"
 
 
 def restart_checkpoint(result: U4AResult) -> dict:
@@ -127,7 +215,9 @@ def restart_checkpoint(result: U4AResult) -> dict:
             "virtual_out": np.array(result.virtual_out, copy=True),
             "average_virtual": np.array(result.average_virtual, copy=True),
             "lyman_out": np.array(result.lyman_out, copy=True),
-            "final_predictor": np.array(result.final_predictor, copy=True)}
+            "final_predictor": np.array(result.final_predictor, copy=True),
+            "run_start_iz": getattr(result, "run_start_iz", START_IZ),
+            "restart_contract": getattr(result, "restart_contract", "R3T_U4A_74411_V1")}
 
 
 def integrate_u4a(checkpoint: dict, c: QuarterStartCosmology, source, *,
@@ -142,7 +232,13 @@ def integrate_u4a(checkpoint: dict, c: QuarterStartCosmology, source, *,
     state = dict(checkpoint["state"])
     # A split continuation remains one bounded allocation path; a caller
     # cannot turn the 32-step contract into an unbounded chain of restarts.
-    if state.get("iz", START_IZ - 1) - START_IZ + accepted_steps > MAX_ACCEPTED:
+    run_start = int(checkpoint.get("run_start_iz", START_IZ))
+    contract = checkpoint.get("restart_contract", "R3T_U4A_74411_V1")
+    if run_start not in (START_IZ, U4B_START_IZ) or (run_start == U4B_START_IZ and contract != "R3T_U4B_FROM_U4A_FINAL_V1"):
+        raise ValueError("RESTART_CONTRACT_OR_START_INDEX")
+    if int(state.get("iz", -1)) < run_start:
+        raise ValueError("RESTART_STATE_BEFORE_CONTRACT_START")
+    if state.get("iz", run_start - 1) - run_start + accepted_steps > MAX_ACCEPTED:
         raise ValueError("CUMULATIVE_ACCEPTED_STEP_CAP")
     virtual0, average0, lyman0 = (np.asarray(checkpoint[k], dtype=float) for k in ("virtual_out", "average_virtual", "lyman_out"))
     if (state.get("branch") != "H_ONLY" or state.get("xHeII") != 0.0
@@ -225,11 +321,15 @@ def integrate_u4a(checkpoint: dict, c: QuarterStartCosmology, source, *,
         if on_accept is not None:
             on_accept(dict(ns), dict(steps[-1]), current)
         dprev2, dprev = dprev, current.dxHII_dln_a
+        # U4B is an event-bounded continuation. Preserve and stop on its first
+        # accepted post-Saha exit; the historical U4A run contract is unchanged.
+        if run_start == U4B_START_IZ and not ns["post_saha"]:
+            break
     # history.c keeps the helium derivative memory through the H-only stage;
     # it is historical causal state, even though H-only does not update it.
     cols = n0 + len(steps); predictor = np.array([predictor0[0], [dprev2, dprev]])
     status = "POST_SAHA_EXIT_WITHIN_BOUND" if any(not s["post_saha"] for s in states[1:]) else "NO_EVENT_WITHIN_BOUND"
-    return U4AResult(tuple(states), tuple(steps), virtual[:, :cols].copy(), average[:, :cols].copy(), lyman[:, :cols].copy(), predictor, evaluations, status, rt_stop)
+    return U4AResult(tuple(states), tuple(steps), virtual[:, :cols].copy(), average[:, :cols].copy(), lyman[:, :cols].copy(), predictor, evaluations, status, rt_stop, run_start, contract)
 
 
 def common_input_observer(oracle, source_table, metrics: dict) -> Callable:

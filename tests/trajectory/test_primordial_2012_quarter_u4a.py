@@ -115,3 +115,70 @@ def test_common_input_callback_uses_canonical_h4_two_photon_lanes():
     mod.common_input_observer(oracle, table, metrics)(74411,c.redshift(74411),.99,0.,4400.,np.ones((311,1519)),np.ones((3,1519)),out)
     assert oracle.calls == [(1519,(311,1519),(3,1519))]
     assert metrics["sampled_evaluations"] == 1
+
+
+def test_u4b_restart_reassembles_full_accepted_history_from_final_checkpoint():
+    node = ROOT / "research/rec_r3t_u4a_20261021/ncp_execution_001/evidence"
+    cp = mod.load_u4b_restart(node / "final_checkpoint.npz", node)
+    assert cp["state"]["iz"] == 74443
+    assert cp["run_start_iz"] == 74443
+    assert cp["accepted_steps"] == 32
+    assert cp["virtual_out"].shape == (311, 1551)
+    assert cp["average_virtual"].shape == (311, 1551)
+    assert cp["lyman_out"].shape == (3, 1551)
+    assert cp["rhs_tail"] == (-0.07114765752633298, -0.07119959986036085)
+    assert cp["final_predictor"].shape == (2, 2)
+
+
+def test_u4b_restart_rejects_changed_or_duplicate_append_history(tmp_path):
+    node = ROOT / "research/rec_r3t_u4a_20261021/ncp_execution_001/evidence"
+    cp = tmp_path / "final_checkpoint.npz"
+    cp.write_bytes((node / "final_checkpoint.npz").read_bytes())
+    import shutil
+    for name in ("accepted.jsonl", "MANIFEST.json", "RESULT.json", "accepted_virtual_f64le.bin",
+                 "accepted_average_f64le.bin", "accepted_lyman_f64le.bin"):
+        shutil.copy2(node / name, tmp_path / name)
+    with (tmp_path / "accepted_virtual_f64le.bin").open("ab") as stream:
+        stream.write(b"duplicate-column")
+    with pytest.raises(ValueError, match="APPEND_STREAM_LENGTH|STREAM_MANIFEST_MISMATCH"):
+        mod.load_u4b_restart(cp, tmp_path)
+
+
+def _u4b_checkpoint():
+    node = ROOT / "research/rec_r3t_u4a_20261021/ncp_execution_001/evidence"
+    return mod.load_u4b_restart(node / "final_checkpoint.npz", node)
+
+
+def test_u4b_stops_at_first_post_saha_exit_and_keeps_restart_contract():
+    cp = _u4b_checkpoint()
+    cp["state"] = dict(cp["state"], post_saha=False)
+    c, source = _source()
+    got = mod.integrate_u4a(cp, c, source, accepted_steps=32, max_full_evaluations=128)
+    assert len(got.steps) == 1
+    assert got.states[-1]["iz"] == 74444
+    assert got.status == "POST_SAHA_EXIT_WITHIN_BOUND"
+    restart = mod.restart_checkpoint(got)
+    assert restart["run_start_iz"] == 74443
+    assert restart["restart_contract"] == "R3T_U4B_FROM_U4A_FINAL_V1"
+
+
+def test_u4b_rejects_state_before_contract_start():
+    cp = _u4b_checkpoint()
+    cp["state"] = dict(cp["state"], iz=74442)
+    c, source = _source()
+    with pytest.raises(ValueError, match="RESTART_STATE_BEFORE_CONTRACT_START"):
+        mod.integrate_u4a(cp, c, source, accepted_steps=1, max_full_evaluations=4)
+
+
+@pytest.mark.parametrize("boundary", ["thermal", "rt"])
+def test_u4b_boundary_predicates_stop_before_full_source(monkeypatch, boundary):
+    cp = _u4b_checkpoint()
+    c, source = _source()
+    if boundary == "thermal":
+        cp["state"] = dict(cp["state"], Tm_K=0.)
+    else:
+        monkeypatch.setattr(mod, "original_rt_stop_index", lambda _: mod.U4B_START_IZ)
+    monkeypatch.setattr(mod, "populate_original_full_atomic",
+                        lambda *args, **kwargs: pytest.fail("source ran before boundary guard"))
+    with pytest.raises(RuntimeError, match="HOLD_(THERMAL|RT)_STAGE_BEFORE_ENDPOINT"):
+        mod.integrate_u4a(cp, c, source, accepted_steps=1, max_full_evaluations=4)

@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]; sys.path[:0]=[str(ROOT/"src"), str(ROO
 from verify_r3i_h2_start import FullSourceCOracle, sha, compare_state
 from verify_r3o_h4_start import prepare_source
 from full_bianchi_hyrec.trajectory.primordial_2012_quarter_start import QuarterStartCosmology, make_hmla_source
-from full_bianchi_hyrec.trajectory.primordial_2012_quarter_u4a import (CHECKPOINT_SHA256, common_input_observer, integrate_u4a, load_reviewed_restart, restart_checkpoint)
+from full_bianchi_hyrec.trajectory.primordial_2012_quarter_u4a import (CHECKPOINT_SHA256, SOURCE_INDEX_START, START_IZ, PREFIX_COLUMNS, U4B_START_IZ, U4B_PREFIX_COLUMNS, common_input_observer, integrate_u4a, load_reviewed_restart, load_u4b_restart, restart_checkpoint)
 from full_bianchi_hyrec.trajectory.primitive_rates import OriginalHyRecPrimitiveRateTable
 from full_bianchi_hyrec.trajectory.full_2012_atomic_source import _canonical_twophoton_table
 
@@ -81,11 +81,13 @@ def compare_native_restart(path, result, table, c, initial_rhs_tail=None):
     return {"status":"PASS_COMMON_CHECKPOINT_NATIVE_RESTART", "max_state_scaled":max_state,"max_h_rhs_scaled":max_rhs,"max_lane_tolerance_ratio":max_lane}
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("--checkpoint", type=Path, required=True); p.add_argument("--evidence-dir", type=Path, required=True); p.add_argument("--new-allocation-id", required=True); p.add_argument("--steps", type=int, choices=(16,32), default=32); a=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument("--mode",choices=("u4a","u4b"),default="u4a"); p.add_argument("--checkpoint", type=Path, required=True); p.add_argument("--accepted-dir",type=Path); p.add_argument("--evidence-dir", type=Path, required=True); p.add_argument("--new-allocation-id", required=True); p.add_argument("--steps", type=int, choices=(16,32), default=32); a=p.parse_args()
+    if a.mode=="u4b" and a.accepted_dir is None: p.error("--accepted-dir is required for U4B")
+    if a.mode=="u4a" and a.accepted_dir is not None: p.error("--accepted-dir applies only to U4B")
     ev=a.evidence_dir.resolve(); ev.mkdir(parents=True, exist_ok=False)
     if not a.new_allocation_id.strip() or "CLOSED" in a.new_allocation_id.upper(): p.error("fresh allocation identifier required")
     started=time.monotonic(); ru0=resource.getrusage(resource.RUSAGE_SELF); child0=resource.getrusage(resource.RUSAGE_CHILDREN)
-    report={"status":"FAIL", "new_allocation_id":a.new_allocation_id, "argv":[sys.executable]+sys.argv, "checkpoint_sha256":CHECKPOINT_SHA256, "limits":{"cpu_s":60,"wall_s":180,"address_space_bytes":2*1024**3,"accepted_steps":a.steps,"single_trajectory_full_evaluations":4*a.steps}, "historical_budget":"CLOSED_HOLD_NOT_RESET", "old_U5_gate":"HOLD", "rei_activation":False}
+    report={"status":"FAIL", "mode":a.mode, "new_allocation_id":a.new_allocation_id, "argv":[sys.executable]+sys.argv, "checkpoint_sha256":CHECKPOINT_SHA256 if a.mode=="u4a" else None, "limits":{"cpu_s":60,"wall_s":180,"address_space_bytes":2*1024**3,"accepted_steps":a.steps,"single_trajectory_full_evaluations":4*a.steps}, "historical_budget":"CLOSED_HOLD_NOT_RESET", "old_U5_gate":"HOLD", "rei_activation":False}
     phases={}; report["phase_wall_s"]=phases
     write_new(ev/"STARTED.json", report)
     try:
@@ -102,7 +104,9 @@ def main():
         signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError("R3T_U4A_WALL_CAP")))
         signal.alarm(180)
         aff=sorted(os.sched_getaffinity(0)); os.sched_setaffinity(0,{aff[0]}); report["affinity"]=[aff[0]]
-        t=time.perf_counter(); cp=load_reviewed_restart(a.checkpoint); src=prepare_source(ZIP,ev/"source_extract")[0]; phases["setup_source_checkpoint"]=time.perf_counter()-t
+        t=time.perf_counter(); cp=load_reviewed_restart(a.checkpoint) if a.mode=="u4a" else load_u4b_restart(a.checkpoint,a.accepted_dir); src=prepare_source(ZIP,ev/"source_extract")[0]; phases["setup_source_checkpoint"]=time.perf_counter()-t
+        run_start=int(cp.get("run_start_iz",START_IZ)); prefix_cols=int(cp["state"]["iz"]-SOURCE_INDEX_START)
+        if a.mode=="u4b" and (run_start!=U4B_START_IZ or prefix_cols!=U4B_PREFIX_COLUMNS): raise ValueError("U4B_NATIVE_INPUT_BINDING")
         lib=ev/"liboriginal_full_source.so"; flags=["gcc","-std=gnu99","-O2","-fno-fast-math","-shared","-fPIC","-DR3Q_SHARED","-I",str(src)]
         cmd=flags+[str(HARNESS)]+[str(src/f) for f in ("history.c","hydrogen.c","helium.c","hyrectools.c")]+["-lm","-o",str(lib)]
         def child_limits():
@@ -138,9 +142,14 @@ def main():
         finally:
             for handle in (accepted,pv,pa,pl): handle.close()
         enforce_tree("after_python_restart")
-        t=time.perf_counter(); half=a.steps//2; first=integrate_u4a(cp,c,source,accepted_steps=half,max_full_evaluations=4*half); second=integrate_u4a(restart_checkpoint(first),c,source,accepted_steps=half,max_full_evaluations=4*half); phases["split_restart_audit"]=time.perf_counter()-t
-        split_states=first.states + second.states[1:]
-        same=(one.states==split_states and (one.final_predictor==second.final_predictor).all() and (one.virtual_out==second.virtual_out).all() and (one.average_virtual==second.average_virtual).all() and (one.lyman_out==second.lyman_out).all())
+        t=time.perf_counter(); half=a.steps//2
+        first=integrate_u4a(cp,c,source,accepted_steps=half,max_full_evaluations=4*half)
+        second=None
+        if a.mode!="u4b" or first.status!="POST_SAHA_EXIT_WITHIN_BOUND":
+            second=integrate_u4a(restart_checkpoint(first),c,source,accepted_steps=a.steps-half,max_full_evaluations=4*(a.steps-half))
+        split_final=second if second is not None else first
+        split_states=first.states + (second.states[1:] if second is not None else ())
+        same=(one.states==split_states and (one.final_predictor==split_final.final_predictor).all() and (one.virtual_out==split_final.virtual_out).all() and (one.average_virtual==split_final.average_virtual).all() and (one.lyman_out==split_final.lyman_out).all())
         if not same: raise ArithmeticError("RESTART_SPLIT_IDENTITY")
         # Native continuation receives precisely the reviewed endpoint and
         # accepted prefix.  It is not an independent reconstruction of U1--U3.
@@ -151,7 +160,7 @@ def main():
         (ev/"native_build_stdout.txt").write_text(nb.stdout); (ev/"native_build_stderr.txt").write_text(nb.stderr)
         if nb.returncode: raise RuntimeError("NATIVE_RESTART_BUILD_FAILED")
         enforce_tree("after_native_build")
-        t=time.perf_counter(); nr=subprocess.run([str(native),str(a.steps),repr(cp["state"]["xe"]),repr(cp["state"]["Tm_K"]),repr(cp["rhs_tail"][0]),repr(cp["rhs_tail"][1]),"1",str(ev/"checkpoint_prefix_virtual_f64le.bin"),str(ev/"checkpoint_prefix_average_f64le.bin"),str(ev/"checkpoint_prefix_lyman_f64le.bin")],cwd=src,capture_output=True,text=True,timeout=120,check=False,preexec_fn=child_limits); phases["native_run"]=time.perf_counter()-t
+        t=time.perf_counter(); nr=subprocess.run([str(native),str(len(one.steps)),repr(cp["state"]["xe"]),repr(cp["state"]["Tm_K"]),repr(cp["rhs_tail"][0]),repr(cp["rhs_tail"][1]),"1",str(run_start),str(prefix_cols),str(ev/"checkpoint_prefix_virtual_f64le.bin"),str(ev/"checkpoint_prefix_average_f64le.bin"),str(ev/"checkpoint_prefix_lyman_f64le.bin")],cwd=src,capture_output=True,text=True,timeout=120,check=False,preexec_fn=child_limits); phases["native_run"]=time.perf_counter()-t
         (ev/"native_restart_stdout.txt").write_text(nr.stdout); (ev/"native_restart_stderr.txt").write_text(nr.stderr)
         if nr.returncode: raise RuntimeError("NATIVE_RESTART_FAILED")
         enforce_tree("after_native_restart")
@@ -164,7 +173,7 @@ def main():
                 lyman_out=one.lyman_out,final_predictor=one.final_predictor,
                 dlna=np.array(2.1225e-5),rei_activation=np.array(False))
         accepted_artifacts={name:sha(ev/name) for name in ("accepted.jsonl","accepted_virtual_f64le.bin","accepted_average_f64le.bin","accepted_lyman_f64le.bin","final_checkpoint.npz")}
-        report.update(status="PASS_SCOPED_U4A_RESTART", accepted_end_global_index=one.states[-1]["iz"], full_evaluations=one.full_evaluations, rt_stop_iz=one.rt_stop_iz, common_input=metrics, native_restart_parity=native_parity, restart_split={"one_shot":a.steps,"split":[half,half],"status":"PASS_BITWISE"}, event=one.status, accepted_artifacts=accepted_artifacts, source_zip_sha256=sha(ZIP), checkpoint_file_sha256=sha(a.checkpoint), producer_sha256=sha(ROOT/"src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_u4a.py"))
+        report.update(status="PASS_SCOPED_U4A_RESTART" if a.mode=="u4a" else "PASS_SCOPED_U4B_RESTART", accepted_end_global_index=one.states[-1]["iz"], accepted_steps=len(one.steps), requested_accepted_steps=a.steps, full_evaluations=one.full_evaluations, rt_stop_iz=one.rt_stop_iz, common_input=metrics, native_restart_parity=native_parity, restart_split={"one_shot_accepted":len(one.steps),"first_requested":half,"second_requested":0 if second is None else a.steps-half,"second_skipped_at_event":second is None and first.status=="POST_SAHA_EXIT_WITHIN_BOUND","status":"PASS_EXACT_VALUE_EQUALITY"}, event=one.status, accepted_artifacts=accepted_artifacts, source_zip_sha256=sha(ZIP), checkpoint_file_sha256=sha(a.checkpoint), producer_sha256=sha(ROOT/"src/full_bianchi_hyrec/trajectory/primordial_2012_quarter_u4a.py"))
     except Exception as e:
         report["first_failure"]={"type":type(e).__name__,"message":str(e)}
     finally:
@@ -175,5 +184,6 @@ def main():
         report["evidence_manifest"]={p.name:sha(p) for p in sorted(ev.iterdir()) if p.is_file() and p.name not in ("RESULT.json","MANIFEST.json")}
         write_new(ev/"MANIFEST.json",report["evidence_manifest"])
         write_new(ev/"RESULT.json",report)
-    if report["status"]!="PASS_SCOPED_U4A_RESTART": raise SystemExit(1)
+    expected_status="PASS_SCOPED_U4A_RESTART" if a.mode=="u4a" else "PASS_SCOPED_U4B_RESTART"
+    if report["status"]!=expected_status: raise SystemExit(1)
 if __name__=="__main__": main()

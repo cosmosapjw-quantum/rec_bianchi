@@ -36,6 +36,10 @@ DEFAULT_EXCLUDES = (
     # source bytes, and RFC4180 CRLF measurements exactly as captured.
     "research/rec_r3s_ncp_campaign_20261021/ncp_execution_001/**",
     "research/rec_r3s_ncp_campaign_20261021/receipts/backup_upload_001/**",
+    # Preserve only the two immutable provider stderr records whose progress
+    # formatting contains trailing spaces. Adjacent R3T evidence remains checked.
+    "research/rec_r3t_u4a_20261021/receipts/backup_001/drive_upload.stderr.txt",
+    "research/rec_r3t_u4a_20261021/receipts/backup_001/dropbox_upload.stderr.txt",
 )
 
 
