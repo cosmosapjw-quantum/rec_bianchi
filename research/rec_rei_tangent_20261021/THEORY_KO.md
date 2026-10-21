@@ -166,9 +166,10 @@ JVP/VJP끼리의 일치만으로 양쪽의 공통 부호 오류를 배제할 수
 `Y0=partial y0/partial theta`의 v row에는 `(dv0/dS0,0,0)`가 들어가고,
 네 radiation block의 ell2 row에는 각각 `(dk/dtheta)/5`가 들어간다.
 monopoles는 상수1, 나머지 상태는 상수0이므로 그 행의 초기 도함수는0이다.
-원 positive-shear 입력 경계 S0=0에서 이 식은 admissible right derivative로
-해석한다. 명시적인 signed extension을 채택하지 않는 한 음의 S0 case를 원
-pilot에 추가했다고 말하지 않는다. S0=0.1의 bounded contract도 왼쪽 미분을 쓴다.
+원 positive-shear pilot의 경계 S0=0에서는 원래 slice의 right derivative와
+일치한다. 이번 adapter는 |S0|<sqrt(6)의 signed-shear smooth extension을
+명시적으로 채택하므로 S0=0과 S0=0.1의 초기 map 검사는 그 확장의 central
+derivative를 사용한다. 기존 pilot에 음의 S0 case를 계산했다고 말하지 않는다.
 
 직접 A forcing은 고정 y에서 앞 절의 `delta A=1`, `delta y=0`인 식으로
 `f_A`를 얻는다. 따라서 세 열은
@@ -250,5 +251,7 @@ Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED는 유지한�
   chain-rule 유도와 primary official equations에 의존한다. DAE adjoint theorem을
   현재 explicit ODE에 필요 이상으로 추가하지 않는다.
 
-현재 노트는 독립적인 source·수식 검토다. 구현 검토는 실제 코드 diff와 출력이
-준비된 후 별도 receipt로 기록해야 한다.
+현재 노트는 독립적인 source·수식 검토다. 이후 실제 코드·출력 검토는
+evidence/C9_PHYSICS_CODE_REVIEW.json, C9_AUGMENTED_REVIEW.json과
+results/verification_v1/VERIFICATION.json에 별도로 기록했다. 위의 rho_x
+항등식은 이론 유도이며 현재 실행 verifier의 별도 수치 gate로 세지 않는다.

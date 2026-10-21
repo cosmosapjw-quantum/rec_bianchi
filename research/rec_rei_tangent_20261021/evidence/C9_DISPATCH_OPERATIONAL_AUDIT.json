@@ -1,0 +1,59 @@
+{
+  "actual_NCP_jobs": 0,
+  "actual_scientific_ODE": 0,
+  "audit_code_sha256": "b596d2aa5e7a1912ae0e9da74ab72b31d74df804c39e5a994899d1e7a66c3922",
+  "audited_code_sha256": "635dc03877de1b885da25b777553ee198194cbacb1b53dd006826ac7d0a5408c",
+  "benchmarks": 0,
+  "check_count": 20,
+  "checks": {
+    "busy_cpu_still_allows_one_nice_worker": true,
+    "changed_identity_rejected_without_overwrite": true,
+    "complete_reuse_no_second_worker_or_overwrite": true,
+    "existing_claim_never_resubmitted": true,
+    "failure_preserved_without_retry": true,
+    "fully_reserved_cpu_defers": true,
+    "identity_has_ten_actual_source_and_code_hashes": true,
+    "idle_capacity_admits_only_three_pending": true,
+    "live_peer_lease_and_explicit_reservation_both_honored": true,
+    "marker_unchanged": true,
+    "memory_reservation_is_in_bytes": true,
+    "no_pending_execute_skips_sampler_and_new_jobs": true,
+    "only_one_owned_lease_created": true,
+    "owned_lease_removed_and_peer_bytes_preserved": true,
+    "payload_corruption_rejected": true,
+    "plan_only_submits_zero_and_imports_no_sampler": true,
+    "requested_limit_respected": true,
+    "three_new_interior_cases": true,
+    "unknown_output_rejected": true,
+    "unknown_peer_file_untouched": true
+  },
+  "limits": [
+    "No speedup or scaling measurement.",
+    "No hard-kill timeout experiment.",
+    "No assertion that plan-only or NO_PENDING_WORK means all cases completed.",
+    "No scientific arrays produced by the stub are retained."
+  ],
+  "resource_observations": "Synthetic CPU/RAM samples, synthetic PID-start provider and temporary local lease records only; no live NCP allocation observed.",
+  "run_identity": {
+    "file_sha256": {
+      "code/augmented.py": "acb9c82c1b40eccc76e67facfb9bd4588dce8cb581d3b497e9d06ccde132c945",
+      "code/ncp_tangent.py": "635dc03877de1b885da25b777553ee198194cbacb1b53dd006826ac7d0a5408c",
+      "code/owner_model.py": "b38cfdbccd581d575c671d34d23a37adf1ec629a647b0ec51ac73f35662a1d6a",
+      "code/resources.py": "31b5692675d246f5bfa5c3cb2f50780de07df285db0e218e2cf5f4ba023f8024",
+      "code/tangent_core.py": "3d5020ee8348c8a42c29d5f1f4f3c20b0f179dd28c9f6a2ec6300dab255da7b9",
+      "vendor/LICENSE": "bfb425597830af905d9b52262dc5fc56e436de05796f6638a78258adaa0b8760",
+      "vendor/REI_BACKGROUND_FAMILY_LOCK.json": "46f818c2f9de890c72f71fa3cc70366b28c42ca0d65190bd905b6310023e7af0",
+      "vendor/canonical_fv.py": "91c1641b851aa9580141d4423e2579ced5f11b95aa716b3fc2cb0137df344cc5",
+      "vendor/lrs_boltzmann.py": "06ef834e4cd7adacf01f0ad6e3becc5aea9a493b5b99fd398be82610543984cc",
+      "vendor/species_hierarchy.py": "ced7906b35c26d8d0374ee8ce7f67ceb957b51a63d44e5a2661997b7e46983c5"
+    },
+    "input_sha256": "9bac7b9e4b7dcfbb3564827e085aea97037d0097709acf5838b63b3af8446a98",
+    "schema": "rec_bianchi.tangent_run.v1",
+    "sha256": "13b49e18a518e56ba91e83a15fa362334efdd13d58cb794e175c66c06518531c",
+    "source_commit": "3b85dedce84d37b3e165da00685a8a984950aafe"
+  },
+  "schema": "rec.tangent.operational_audit.v1",
+  "status": "PASS_SCOPED",
+  "synthetic_stub_invocations": 2,
+  "timestamp_utc": "2026-10-21T13:39:16.911366+00:00"
+}

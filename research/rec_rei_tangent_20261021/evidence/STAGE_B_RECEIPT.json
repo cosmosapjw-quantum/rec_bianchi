@@ -1,0 +1,52 @@
+{
+  "schema": "rec.tangent.stage_receipt.v1",
+  "stage": "B",
+  "head": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+  "tree": "76675a4a5dea5234ca5358ba8239dfbe407fce34",
+  "pr": 118,
+  "comment": {
+    "id": 6317369102,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/118#issuecomment-6317369102",
+    "body": "## Stage B — 유도·core 구현·가벼운 검증 완료\n\n게시 commit `e24296c59e3611d7c02cbe7901918811c8c07cc9`, tree `76675a4a5dea5234ca5358ba8239dfbe407fce34`.\n\n고정 PR14740-state의 analytic JVP/VJP, 독립 matter amplitude 직접항, 초기세seed mapping,160-state scaled tangent wiring을 구현했습니다. 양의 finite packet에서 rho_b=-6*pi_s와 pi_b<=0를 유도하고 Wolfram으로 검산했습니다. 별도검토자는 원source와수식/구현을대조했습니다.\n\n실제 검증: 저장40case×5epochs=200state, 원RHS finite difference600방향,8contract tests PASS. 최대scaled 차이는 RHS2.17e-19,state JVP4.95e-11,directA3.67e-12,signedobservable JVP7.22e-12입니다. VJPduality 최대절대residual1.51e-14로고정기준내입니다.\n\n새synthetic interior seed의 x0→1e-4에서 parent1+augmented1,총2tinyIVP를실행했고3outputnodes/13checks PASS, parentstate차0입니다. 전체z20→2 sensitivity는아직실행하지않았습니다. 완료pilot은재사용했고NCP/benchmark새실행0입니다. 개발중의5pointFD간격에따른truncation실패와step-halving교정근거도보존했습니다. tolerance는완화하지않았습니다.\n\nStage B archive: REC_REI_TANGENT_STAGE_B_20261021.zip,204281bytes,41payload, SHA256 `3aa357abc44bb0bf3a862f49e29a40d47ade1c24abf5c3ae19165342bcaeff9a`. Dropbox `id:BSpOijBcT10AAAAAAD_hhQ` ACK/크기확인,whole-byte readback NOT_RUN.\n\nDAG: R1–R9 scopedcomplete; C5core/C6–C8core+wiring complete; C9coreaudit complete. NCPdispatch·그림·최종handoff가Stage C에남았습니다. Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED, 기존REC U5 HOLD와REI_activation=false 유지.",
+    "created_at": "2026-10-21T13:32:35Z"
+  },
+  "archive": {
+    "name": "REC_REI_TANGENT_STAGE_B_20261021.zip",
+    "bytes": 204281,
+    "payload_count": 41,
+    "sha256": "3aa357abc44bb0bf3a862f49e29a40d47ade1c24abf5c3ae19165342bcaeff9a",
+    "backup": {
+      "file": {
+        "file": {
+          "size": 204281
+        },
+        "file_id": "id:BSpOijBcT10AAAAAAD_hhQ",
+        "modified_time": "2026-10-21T13:31:07Z",
+        "name": "REC_REI_TANGENT_STAGE_B_20261021.zip",
+        "object_type": "file",
+        "path": "ns:183516487//bianchi/rec_bianchi/20261016/REC_REI_TANGENT_STAGE_B_20261021.zip",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_REI_TANGENT_STAGE_B_20261021.zip"
+      },
+      "status": "completed"
+    },
+    "whole_readback": "NOT_RUN"
+  },
+  "CI": [
+    {
+      "id": 39608773294,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39608773294"
+    },
+    {
+      "id": 39608766687,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/39608766687"
+    }
+  ]
+}

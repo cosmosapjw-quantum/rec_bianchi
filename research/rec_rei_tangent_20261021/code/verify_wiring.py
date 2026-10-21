@@ -29,6 +29,19 @@ def main():
     parent = solve_ivp(model.rhs, (0., float(grid[-1])), model.initial_state(),
                        method='DOP853', rtol=3e-11, atol=3e-13, t_eval=grid)
     parent_wall = time.monotonic()-started
+    parent_reached = bool(parent.success and np.array_equal(parent.t, grid)
+                          and parent.y.shape == (40, len(grid)))
+    if not parent_reached:
+        receipt = {'status': 'FAIL_PARENT', 'new_ODE_solves': 1,
+                   'parent_IVP': {'success': bool(parent.success),
+                                  'message': str(parent.message),
+                                  'nfev': int(parent.nfev), 'worker_wall_s': parent_wall},
+                   'parent_state_scaled_difference': None,
+                   'checks': {'parent_reached_requested_grid': False},
+                   'new_augmented_IVP': 0}
+        receipt_path.write_text(json.dumps(receipt, indent=2, allow_nan=False)+'\n')
+        print(json.dumps(receipt, indent=2, allow_nan=False))
+        return 1
     arrays, receipt = integrate_case(axes, grid)
     difference = float(np.max(abs(arrays['raw_y']-parent.y.T)/(1+abs(parent.y.T))))
     receipt['parent_IVP'] = {'success': bool(parent.success), 'nfev': int(parent.nfev),

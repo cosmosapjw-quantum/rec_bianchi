@@ -7,7 +7,8 @@
   "REI_activation": false,
   "backup": {
     "stage_A": "id:BSpOijBcT10AAAAAAD_hgw",
-    "stage_B": "PENDING"
+    "stage_B": "id:BSpOijBcT10AAAAAAD_hhQ",
+    "stage_C": "PENDING"
   },
   "completed_reused": [
     "REC116",
@@ -135,7 +136,11 @@
       ],
       "id": "R10",
       "name": "handoff",
-      "status": "PENDING"
+      "status": "COMPLETE_SCOPED",
+      "evidence": [
+        "CODEX_HANDOFF_KO.md",
+        "NEXT_THREAD_HANDOFF_KO.md"
+      ]
     },
     {
       "depends_on": [],
@@ -173,11 +178,13 @@
       ],
       "id": "C5",
       "name": "implementation",
-      "status": "CORE_COMPLETE_DISPATCH_IN_PROGRESS",
+      "status": "COMPLETE_SCOPED",
       "evidence": [
         "code/tangent_core.py",
         "code/owner_model.py",
-        "code/augmented.py"
+        "code/augmented.py",
+        "code/ncp_tangent.py",
+        "code/plot_tangent.py"
       ]
     },
     {
@@ -186,7 +193,7 @@
       ],
       "id": "C6",
       "name": "implementation_validation",
-      "status": "CORE_AND_WIRING_COMPLETE",
+      "status": "COMPLETE_SCOPED",
       "evidence": [
         "results/verification_v1/VERIFICATION.json",
         "results/wiring_v1/TINY_WIRING.json"
@@ -198,7 +205,7 @@
       ],
       "id": "C7",
       "name": "science_validation",
-      "status": "CORE_AND_WIRING_COMPLETE",
+      "status": "COMPLETE_SCOPED",
       "evidence": [
         "results/verification_v1/VERIFICATION.json",
         "results/wiring_v1/TINY_WIRING.json"
@@ -210,7 +217,7 @@
       ],
       "id": "C8",
       "name": "reproducibility",
-      "status": "CORE_AND_WIRING_COMPLETE",
+      "status": "COMPLETE_SCOPED",
       "evidence": [
         "results/verification_v1/VERIFICATION.json",
         "results/wiring_v1/TINY_WIRING.json"
@@ -222,9 +229,15 @@
       ],
       "id": "C9",
       "name": "independent_review",
-      "status": "CORE_AUDIT_COMPLETE_DISPATCH_PLOT_PENDING",
+      "status": "COMPLETE_SCOPED",
       "evidence": [
-        "evidence/C9_PHYSICS_CODE_REVIEW.json"
+        "evidence/C9_PHYSICS_CODE_REVIEW.json",
+        "evidence/C9_AUGMENTED_REVIEW.json",
+        "evidence/C9_DISPATCH_OPERATIONAL_AUDIT.json",
+        "evidence/C9_DISPATCH_STATIC_REVIEW.json",
+        "evidence/C9_PLOT_ADAPTER_REVIEW.json",
+        "evidence/C9_FINAL_CLAIM_REVIEW.json",
+        "evidence/PLOT_VISUAL_REVIEW.json"
       ]
     },
     {
@@ -233,17 +246,41 @@
       ],
       "id": "C10",
       "name": "delivery",
-      "status": "PENDING"
+      "status": "LOCAL_DELIVERY_READY_PUBLICATION_PENDING",
+      "evidence": [
+        "evidence/STAGE_A_RECEIPT.json",
+        "evidence/STAGE_B_RECEIPT.json",
+        "PR118 final preservation comment and terminal receipt to be attached after publication"
+      ]
     }
   ],
   "physical": "HOLD",
   "production": "NOT_APPROVED",
   "publication": {
     "stage_A": "158eb1f740e93ae9a866d75100f2dd11cacb2ab1",
-    "stage_B": "PENDING"
+    "stage_B": "e24296c59e3611d7c02cbe7901918811c8c07cc9",
+    "stage_C": "PENDING"
   },
   "schema": "rec.tangent.dag.v1",
-  "stage": "B_DERIVATION_CORE_VERIFICATION",
-  "status": "IN_PROGRESS",
-  "timestamp_utc": "2026-10-21T13:18:42.677780+00:00"
+  "stage": "C_LOCAL_COMPLETE_D_PUBLICATION_PENDING",
+  "status": "LOCAL_COMPLETE_PENDING_TERMINAL_RECEIPT",
+  "timestamp_utc": "2026-10-21T13:45:41.567044+00:00",
+  "future_work": [
+    {
+      "id": "NCP_INTERIOR3_FULL_TANGENT",
+      "depends_on": [
+        "C10"
+      ],
+      "status": "READY_NOT_SUBMITTED",
+      "case_count": 3,
+      "case_manifest": "inputs/NCP_TANGENT_CASES.json",
+      "redshift_interval": [
+        20,
+        2
+      ],
+      "epochs": 153,
+      "new_executions": 0
+    }
+  ],
+  "publication_snapshot_note": "This file is the pre-publication snapshot. Actual final commit/tree/CI/backup and C10 completion are recorded in the terminal receipt and PR118 closing comment without a self-referential commit loop."
 }

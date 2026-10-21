@@ -1,0 +1,16 @@
+{
+  "schema": "rec.tangent.development.v1",
+  "timestamp_utc": "2026-10-21T13:44:56.755138+00:00",
+  "initial_attempt": {
+    "status": "FAIL_ENVIRONMENT_PID_NAMESPACE",
+    "exit_code": 1,
+    "failure": "OWN_PROCESS_IDENTITY_UNAVAILABLE in cooperative lease creation",
+    "scientific_ODE": 0,
+    "NCP": 0
+  },
+  "observation": "Managed execution getpid and mounted /proc process namespace differed; a later getpid=5 process read stat comm sync_share.sh, which was not its Python interpreter. No remote host was queried.",
+  "change": "Only audit fixture uses explicit synthetic PID-start provider, alongside synthetic CPU/RAM sample. Production ncp_tangent.py unchanged.",
+  "accepted_operational_audit": "C9_DISPATCH_OPERATIONAL_AUDIT.json",
+  "accepted_check_count": 20,
+  "real_NCP_admission": "NOT_RUN"
+}
