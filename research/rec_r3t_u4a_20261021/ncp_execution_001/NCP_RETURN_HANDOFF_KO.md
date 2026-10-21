@@ -80,3 +80,7 @@ unchanged. U5 `h=HOLD_9_FAIL`, U5 `h/2=HOLD_8_FAIL`,
 - Independent audit: `NCP_AUDIT_RESULTS.md`
 - Raw execution evidence and receipts: this directory's `evidence/` and
   `receipt/` subdirectories, plus `resource_terminal_readback_*`.
+- Provider receipts: `NCP_BACKUP_RECEIPTS.json`. Dropbox upload and whole-object
+  SHA readback passed; the new Google Drive path remains `UNKNOWN_NO_ACK` after
+  a stalled upload and has no readback. The prior Google Drive unknown object
+  is unchanged.
