@@ -4,7 +4,7 @@
 
 게시: [REC PR119](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/119), branch `research/rec-rei-hheli-sandbox-20261021`. 과학 모형은 아래의 유한 preliminary 계약이며 완전한 thermal/radiative EoR 폐쇄가 아니다.
 
-## 선택한 다음 단계
+## 이번 실행에서 선택한 연구 단위
 
 1. 기존 tangent-only NCP 실행: 이미 준비되어 있으나 이번 요청의 H/He/Li 범위를 충족하지 않는다.
 2. 완전 열·복사·광핵반응 폐쇄: isotope별 에너지 모멘트와 일부 광단면/반응 계수 의존성이 아직 남는다.
@@ -32,6 +32,8 @@ REC116 warm729 축분해, REC117 175 trajectory, PR118 tangent, HE29/U4B 및 다
 ## 진행
 
 Source survey, 최적화 parity, 물리 R1–R10, 결합 코딩 C1–C10, 125+1 실제 계산, 저장 결과·그림 검토를 수행했다. 현재 게시/보존 상태는 `DAG.json`, `stages/`와 PR119 최종 댓글에 있다.
+
+과학·실행 산출물은 `8509ef6ba713279134c98f9f47464aa879069755`에 게시했고 원격 683개 파일의 Git blob hash와 크기가 모두 일치했다. 해당 HEAD의 CI `39629774142`, `39629764139`는 모두 SUCCESS다. Stage C ZIP의 로컬 전체 payload 검증과 Dropbox ACK/크기를 확인했다. 원격 whole-byte readback은 NOT_RUN이다. 최종 문서 마감 commit·archive 영수증은 PR119 마지막 보존 댓글에 고정한다. 다음 연구 후보는 source-bound thermal/ionic-yield closure 하나이며 아직 실행하지 않았다.
 
 ```bash
 cd research/rec_rei_hheli_sandbox_20261021

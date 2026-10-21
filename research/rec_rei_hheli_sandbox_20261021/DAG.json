@@ -1,7 +1,7 @@
 {
   "schema": "rec.rei.hheli.sandbox.dag.v1",
   "unit": "HHLI_SANDBOX_20261021",
-  "current": "G_DELIVERY_STAGE_C_SNAPSHOT_READY",
+  "current": "G_DELIVERY_COMPLETE_SCOPED",
   "nodes": [
     {
       "id": "A_SOURCE_AND_SCOPE",
@@ -22,7 +22,7 @@
     },
     {
       "id": "D_COUPLED_CODING",
-      "status": "C1_C9_COMPLETE_SCOPED_C10_DELIVERY",
+      "status": "C1_C10_COMPLETE_SCOPED",
       "loops": "C1-C10",
       "next": "E_NEW_PILOT"
     },
@@ -42,8 +42,9 @@
     },
     {
       "id": "G_DELIVERY",
-      "status": "LOCAL_RESULTS_AND_ONE_COMMAND_COMPLETE_REMOTE_STAGE_C_PENDING",
-      "next": "SOURCE_BOUND_THERMAL_IONIC_YIELD_CLOSURE_NOT_RUN"
+      "status": "STAGE_C_PUBLISHED_BACKUP_ACK_REMOTE_TREE_VERIFIED_CI_SUCCESS",
+      "next": "SOURCE_BOUND_THERMAL_IONIC_YIELD_CLOSURE_NOT_RUN",
+      "receipt": "stages/STAGE_C_RECEIPT.json"
     }
   ],
   "immutable_holds": {
@@ -55,8 +56,29 @@
     "REI_activation": false
   },
   "completed_old_campaigns": "complete_reused, never queued by this unit",
-  "publication": "STAGE_B_POSTED_PR119_a9495298",
-  "backup": "STAGE_B_ACK_205429B",
+  "publication": {
+    "PR": 119,
+    "scientific_head": "8509ef6ba713279134c98f9f47464aa879069755",
+    "scientific_tree": "15a8891913ae2a4a53654185d31929af1aef4050",
+    "remote_payload_files": 683,
+    "all_remote_blob_sha_and_sizes": "PASS",
+    "ci_runs": [
+      39629774142,
+      39629764139
+    ],
+    "ci": "SUCCESS",
+    "closing_documentation_commit": "Read final PR119 receipt; a commit cannot embed its own SHA."
+  },
+  "backup": {
+    "stage_c_zip_sha256": "9eae3389f83082488f5fbae09b1371994996c87f9e25956b38e81c64d9c31bd6",
+    "bytes": 27031588,
+    "payloads": 683,
+    "local_payload_readback": "PASS",
+    "dropbox_file_id": "id:BSpOijBcT10AAAAAAD_hnQ",
+    "remote_ack_and_size": "PASS",
+    "remote_whole_byte_readback": "NOT_RUN",
+    "final_closure_archive_receipt": "Final PR119 receipt records the archive containing this closure snapshot."
+  },
   "new_results": {
     "main_complete": 125,
     "control_complete": 1,
@@ -82,5 +104,14 @@
     }
   ],
   "C6_independent_code_review": "PASS_SCOPED_FOR_NEW_PROJECT_CORE",
-  "historical_PR116_C6": "NOT_RUN_TOOL_NOT_EXPOSED_PRESERVED"
+  "historical_PR116_C6": "NOT_RUN_TOOL_NOT_EXPOSED_PRESERVED",
+  "next_dag": {
+    "node": "SOURCE_BOUND_THERMAL_IONIC_YIELD_CLOSURE",
+    "status": "SELECTED_NOT_RUN",
+    "must_first_fix": [
+      "new sources and ionic yield assumptions",
+      "energy ledger and finite acceptance criteria"
+    ],
+    "reuse_completed_126": true
+  }
 }

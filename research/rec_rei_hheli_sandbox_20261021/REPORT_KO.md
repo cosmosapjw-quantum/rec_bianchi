@@ -6,7 +6,7 @@
 
 이것은 **지정 온도·UV장과 21상태 photo/RR/DR number network의 유한 preliminary 모형**이다. 모든 알려진 불안정 핵종·음이온·분자·광핵반응·열수지·복사수송을 닫은 EoR 예측이라고 하지 않는다. Physical HOLD, global convergence NOT_RUN, production NOT_APPROVED와 원래 REC U5 HOLD는 유지한다.
 
-게시: [REC PR119](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/119), `research/rec-rei-hheli-sandbox-20261021`. Stage A/B 확정 보존은 `stages/`, 실제 결과와 최종 보존의 정확한 HEAD/tree/archive/CI는 PR119 완료 댓글과 후속 stage receipt에서 확인한다.
+게시: [REC PR119](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/119), `research/rec-rei-hheli-sandbox-20261021`. Stage A/B/C 확정 보존은 `stages/`에 있다. 과학·실행 산출물 HEAD는 `8509ef6ba713279134c98f9f47464aa879069755`, tree는 `15a8891913ae2a4a53654185d31929af1aef4050`이다. 원격 683개 파일의 blob SHA와 크기를 모두 대조했고, 해당 HEAD의 CI `39629774142`, `39629764139`는 SUCCESS다. 최종 문서 마감 HEAD/tree/archive/CI는 PR119 마지막 보존 댓글에서 확인한다.
 
 ## 최신 근거 조사
 

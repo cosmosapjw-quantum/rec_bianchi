@@ -5,6 +5,13 @@ REC PR119와 branch research/rec-rei-hheli-sandbox-20261021의 최신 HEAD/tree,
 마지막 Stage C/최종 보존 댓글과 정확한 HEAD의 CI를 먼저 읽어라.
 Repo: cosmosapjw-quantum/rec_bianchi
 Unit: research/rec_rei_hheli_sandbox_20261021/
+과학/실행 게시 HEAD: 8509ef6ba713279134c98f9f47464aa879069755
+tree: 15a8891913ae2a4a53654185d31929af1aef4050
+Stage C CI39629774142/39629764139 모두 SUCCESS; 이전 in_progress는 snapshot.
+Stage C 원격683파일 blobSHA/크기 PASS, ZIP27031588B, local683payload PASS.
+ZIP SHA256 9eae3389f83082488f5fbae09b1371994996c87f9e25956b38e81c64d9c31bd6
+Dropbox id:BSpOijBcT10AAAAAAD_hnQ ACK/size PASS, whole-byte NOT_RUN.
+문서 마감 commit과 최종 ZIP/CI는 PR119 마지막 보존 댓글에서 별도로 고정하라.
 필독: README_KO.md, REPORT_KO.md, THEORY_KO.md, DAG.json,
 results/SUMMARY.json, results/CONTROL_COMPARISON.json,
 evidence/PIPELINE_LAST_RUN.json, INDEPENDENT_*와 stages/.
