@@ -1,0 +1,547 @@
+{
+  "schema": "rec.next_loop.upstream_delta.v1",
+  "observed_utc": "2026-10-21T13:14:54Z",
+  "observed_kst": "2026-10-21T22:14:54+09:00",
+  "nominal_cutoff_utc": "2026-10-21T12:47:45Z",
+  "scope": {
+    "repositories": [
+      "rec_bianchi",
+      "rei_bianchi",
+      "WU088_HH",
+      "bass",
+      "bass_cr",
+      "BASS_HE"
+    ],
+    "queries": [
+      "updated:>=2026-10-21T12:47:45Z (six-repository search, returned4)",
+      "latest5 updated PRs per repository,30 metadata records",
+      "named PR heads, NCP new commit compare, REI199 new commit compare, selected source/result/contract files"
+    ],
+    "prior_survey_reused": "Prior823 branch-ref survey and previous recovery results reused; no repeat enumeration.",
+    "coverage_note": "PR-associated branch heads and relevant published files checked; not all private conversations or un-PR branches/files. Earlier-than-cutoff deltas absent from last snapshot are explicitly recovered."
+  },
+  "unchanged": [
+    {
+      "pr": "REC116",
+      "head": "4cffa8a0abdb104a40cac17cfc65593bec909fb3"
+    },
+    {
+      "pr": "REC117",
+      "head": "77b71c7dece730324d3963b9e95956fcc21d3211"
+    },
+    {
+      "pr": "REI213",
+      "head": "d32cd99fa19c65aa1ca63dbc8aab8741834270e8"
+    },
+    {
+      "pr": "REI216",
+      "head": "1f32cc442ebde284bbb944455ba96066c9e0e055"
+    },
+    {
+      "pr": "HH130",
+      "head": "535d24dbccf4fab40fd11f36330a63c4e288e24c"
+    }
+  ],
+  "new_or_recovered": [
+    {
+      "unit": "ACCEL02_NCP_TARGET_RETURN",
+      "pr": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/215",
+      "head": "926bae816ef8339137e2813cc40f1d514b763e1f",
+      "peer": "https://github.com/cosmosapjw-quantum/bass/pull/178",
+      "peer_head": "215bb3e66d81a7013d2132831d210aee36234ab4",
+      "source_rei": "231df3ab717dbc112f63b77953f64def08e9bcb5",
+      "source_bass": "7fe0e25a28c0e48110c522378e203ffb934cc504",
+      "new_delta": "one target-local build and five provided two-step native cases,40/40unchangedgates,completed729reusedjobs0",
+      "status": "EXECUTION_COMPLETE_PENDING_SCIENTIFIC_ADJUDICATION",
+      "receipt_review": "PASS_SCOPED_NCP_EXECUTION_EVIDENCE_AND_RECEIPT_INTEGRITY",
+      "resources_historical_execution": {
+        "host": "s1a0e5abed09",
+        "kernel": "Linux 6.8.0-124-generic x86_64",
+        "affinity": "0-63",
+        "cpu_quota_cores": null,
+        "mem_total_bytes": 135050526720,
+        "mem_available_initial_bytes": 86227820544,
+        "disk_available_bytes": 73211985920
+      },
+      "archive": {
+        "name": "BASS_REI_ACCEL02_NCP_TARGET_20261021_ad92f4207a68.zip",
+        "bytes": 6003218,
+        "sha256": "ad92f4207a6845a0326a095cb904792b6d34bf0654f7148fe3c530b47f5e2817",
+        "dropbox_path": "/BASS_BACKUPS/BASS_REI_ACCEL02_NCP_TARGET_20261021_ad92f4207a68.zip",
+        "dropbox_id": "id:BSpOijBcT10AAAAAAD_g_w",
+        "dropbox_full_get_sha256": "ad92f4207a6845a0326a095cb904792b6d34bf0654f7148fe3c530b47f5e2817",
+        "dropbox_full_get_bytes": 6003218,
+        "zip_members": 367,
+        "crc": "PASS"
+      },
+      "source_changed": false,
+      "compare_note": "One commit afterd669...;10addedroot-leveldocumentation/evidencefiles. Existingnativeimplementationunchanged. Latest receipts at root/evidence, not project subdirectory.",
+      "review_limit": "Sourcecommit-treebindingnotindependentlycheckedinupstreamreviewcheckout; differentialtarget/native-vs-owner scientificadjudicationpending.",
+      "action": "ReuseNCPreturn; do not repeatbuild/cases orclaimfreshNCPmonitoring."
+    },
+    {
+      "unit": "C21N_MASS_SHELL_DERIVATIVES_AND_PREPARED_GRID",
+      "pr": "https://github.com/cosmosapjw-quantum/bass_cr/pull/93",
+      "head": "0f45d0a422d79ccead565a8abaab860fcc230687",
+      "content_commit": "5ecb8a6c4961302b7066b06278e72ecd2d77f8c9",
+      "source": "3b85dedce84d37b3e165da00685a8a984950aafe",
+      "status": "COMPLETE_SCOPED",
+      "model": "PR14740statecollisionless24x12Gauss3non-tiltedLRS;m/Tref30;fm0.1;ne_sourceNone",
+      "implemented": [
+        "analyticpacketdirectionalderivativesalongb'=s/H",
+        "fullsourceobservabledirectionalderivatives",
+        "initialzero-shearactual-offsetquadraticjet",
+        "immutableA-independentpreparedmomentumgrid",
+        "sharedrunnerdiskandinodeadmission",
+        "fourpreparedoffgridcases;actualexecutionNOT_RUN"
+      ],
+      "differentiation_scope": "mass_shell_derivatives.pypacket_derivatives(eta,b,b_eta) givesdirectionaleta derivatives;source_derivativesprovidesH_log,stressesandfirstderivatives;initial_cancellation_jetrequiresb0=s0=0. No standalone arbitrary-coordinate Jacobian matrix/batched response backend observed inthisreadsource.",
+      "reuse_candidate": "Do not rederive/reimplement existing directionalchainrule orquadraticcancellationjet. Reuse source equations/code withexplicitpin; broader derivative matrix only if distinctneededcontract."
+    },
+    {
+      "unit": "HH132_PHYS77_WHOLE_CELL",
+      "pr": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/132",
+      "head": "91eeb12012b5fdcdbd2423ab28a72ecf4ca7cbcc",
+      "parent": "ec28299fe7e81aab184b93aff787cb00a185dd2e",
+      "status": "S0_CONTRACT_PUBLISHED_IMPLEMENTATION_PENDING",
+      "contract": {
+        "schema": "PHYS77_WHOLE_CELL_CONTRACT_V1",
+        "unit": "PHYS77",
+        "parent_pr": 131,
+        "parent_commit": "ec28299fe7e81aab184b93aff787cb00a185dd2e",
+        "parent_branch": "research/hh-phys76-rei199-d8-20261021",
+        "science_baseline": "92f5ab9dba531ebe05909dcb77d3740d2c68c580",
+        "selected_parent_obligation": "FINITE_OWNER_WHOLE_CELL_SOURCE_OR_RESIDUAL_ENCLOSURE",
+        "parent_alias": "WHOLE_CELL_SOURCE_RESIDUAL_ENCLOSURE",
+        "objective": "Construct an outward whole-cell producer for the actual frozen finite-L8 owner, verify light bounded cases without replay, and deliver executable source/runner plus exact restart contracts.",
+        "bounded_deliverables": [
+          "exact binary64 coefficient table export",
+          "same-owner real-lift RHS and alpha/Pm/Pr box extension",
+          "affine-predictor defect first-exit inclusion theorem and implementation",
+          "light manufactured and selected original-initial-cell verification",
+          "identity-aware pending-only shared-resource validation runner"
+        ],
+        "model": {
+          "scope": "real smooth RHS over exactly captured stored binary64 coefficients and exact saved initial state",
+          "dimension": 8,
+          "L": 8,
+          "massive_grid": [
+            24,
+            12,
+            3
+          ],
+          "packets": 2592,
+          "full_captured_monopole_row": true,
+          "frame": "same comoving normal orthonormal frame",
+          "signature": "-+++",
+          "S": "sqrt(3)*s/H signed half",
+          "P_A": "sqrt(3)*(8*pi*G/c^2)*p_A/H^2 signed half",
+          "Frobenius": "sqrt(2)*abs(signed_half)",
+          "total": "sum signed tensors then norm",
+          "attribution": "conditional same-trajectory memory"
+        },
+        "unchanged_completed": {
+          "long_histories": 1231,
+          "warm_histories": 729,
+          "HH74_controls": 63,
+          "D8_saved_brackets": 4
+        },
+        "execution_scope": {
+          "new_science_ODE": 0,
+          "old_ODE_replay": 0,
+          "new_NCP": 0,
+          "benchmarks": 0,
+          "permitted": "light symbolic, interval, manufactured and source-equivalence checks"
+        },
+        "resources": {
+          "cpu_cap": 64,
+          "memory_cap_GiB": 128,
+          "reserve_GiB": 16,
+          "nested_threads": 1,
+          "foreign_process_signals": false
+        },
+        "acceptance": [
+          "exact captured table identity; no enforced analytical M0 substitutions",
+          "outward elementary/reduction arithmetic",
+          "strict tube inclusion plus regular domain",
+          "source intervals bind declared exact-real IVP and cell",
+          "stored positive brightness alone never used as continuum premise",
+          "actual changed-dependency independent review",
+          "additive draft publication and two-provider backup"
+        ],
+        "remaining_global_obligations": [
+          "full-history IVP enclosure coverage",
+          "initial-parameter construction and machine-rounding relation if claimed",
+          "angular and massive-quadrature continuum error",
+          "full cold EoR",
+          "general non-LRS",
+          "HH matched xi/rates"
+        ],
+        "HH_R10": "OFF",
+        "production_admission": "NOT_ISSUED"
+      },
+      "action": "Avoidduplicatingconcurrentwhole-cellsourceenclosureunit. No globalveto; anotherindependentunitmayproceed."
+    },
+    {
+      "unit": "REI199_D8_OWNER_PUBLICATION",
+      "pr": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/199",
+      "head": "eb8042b729051f4700bd5d88d6781c4620009bcb",
+      "results_commit": "a3cb0606341688affb6aea29990e960e53188d32",
+      "timing": "Updated12:39:33Z,beforethenominalcutoffbutafterlastsurveyobservation; recoveredbylatest5listing.",
+      "result": "SamefourD8stored-samplebrackets;newODE0.",
+      "caveat": "Casec1c39be4e...originalattemptFAILED_WORKER_EXIT/124;laterdata-onlyrawrecoveryisnotoriginalsolversuccess.",
+      "backup": {
+        "sha256": "d5e11690b866d5ccc6245b36c690f6a7d7cf6a1430ece4d034342421ec8ba203",
+        "bytes": 319891,
+        "drive": "1zgO5O0k-W206OmslJ8_Sa3XYLkY9IoSH",
+        "dropbox": "id:BSpOijBcT10AAAAAAD_gTQ",
+        "owner_receipt": "bothwhole-readbackPASS"
+      },
+      "action": "complete_reused; noD8rerun"
+    },
+    {
+      "unit": "HH131_D8_AND_HE83_CLOSEOUT",
+      "hh_pr": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/131",
+      "hh_head": "ec28299fe7e81aab184b93aff787cb00a185dd2e",
+      "he_pr": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/83",
+      "he_head": "e173f373cd481864d0395e3a7a76520615a80e1a",
+      "result": "SamealreadyknownD8fourbrackets+HE237consumer/runnerclosure; noadditionaldistinctODEresultidentifiedhere",
+      "action": "reusewithoutmixing40state153nodeownerwithHH8state97nodeowner"
+    }
+  ],
+  "new_science_runs_by_this_survey": 0,
+  "remote_mutations": 0,
+  "local_writes": "Surveyandfetchedsourcecopiesonly",
+  "evidence": [
+    {
+      "path": "evidence/REI215_NCP_TARGET_EXECUTION.json",
+      "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/926bae816ef8339137e2813cc40f1d514b763e1f/evidence/NCP_TARGET_EXECUTION.json",
+      "remote_git_blob": "790915b5b86081966f0952393e19e3ac6076e495",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 4345,
+      "sha256": "6795a0361d037c485fe55696d7048fd687dcbac92e80f836b407bef84cce87e6",
+      "git_blob": "790915b5b86081966f0952393e19e3ac6076e495",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/REI215_NCP_CASE_GATE_SUMMARY.json",
+      "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/926bae816ef8339137e2813cc40f1d514b763e1f/evidence/NCP_CASE_GATE_SUMMARY.json",
+      "remote_git_blob": "d648a70a2b521d08fc1c6217985d283cff785800",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 739,
+      "sha256": "9587f24f468afaa4125bd005fb33fff773dc8e25095502ffb590a983e0466194",
+      "git_blob": "d648a70a2b521d08fc1c6217985d283cff785800",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/REI215_NCP_INDEPENDENT_REVIEW.json",
+      "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/926bae816ef8339137e2813cc40f1d514b763e1f/evidence/NCP_INDEPENDENT_REVIEW.json",
+      "remote_git_blob": "74afa57dcf457558511b0239746ded4ff446eef9",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 587,
+      "sha256": "70a636ef48a64f5af1f38f29b6df26f1ed4191154e42f961c11f1a57811ee009",
+      "git_blob": "74afa57dcf457558511b0239746ded4ff446eef9",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/HH132_CONTRACT.json",
+      "url": "https://github.com/cosmosapjw-quantum/WU088_HH/blob/91eeb12012b5fdcdbd2423ab28a72ecf4ca7cbcc/research/hh_phys77_whole_cell_20261021/CONTRACT.json",
+      "remote_git_blob": "fceb4e56e7f6940dfbd1129be1fc87065f151ba0",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 2876,
+      "sha256": "17ed4eae972aeb3c220374f5bc6d97ecf2d8181c838ece23bcd28079bfc06cc7",
+      "git_blob": "fceb4e56e7f6940dfbd1129be1fc87065f151ba0",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/CR93_mass_shell_derivatives.py",
+      "url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/0f45d0a422d79ccead565a8abaab860fcc230687/research/cr_c21n_mass_shell_cache_20261021/mass_shell_derivatives.py",
+      "remote_git_blob": "0d471b04fcbfa28786cda1b2bae1304c6fc617e5",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 8843,
+      "sha256": "db108994e96f268e074778a3e763dddc8ca72799541b670aca11bbc728d6ef7c",
+      "git_blob": "0d471b04fcbfa28786cda1b2bae1304c6fc617e5",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/CR93_RESEARCH_DAG.json",
+      "url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/0f45d0a422d79ccead565a8abaab860fcc230687/research/cr_c21n_mass_shell_cache_20261021/RESEARCH_DAG.json",
+      "remote_git_blob": "abd8d2aa4d318dd7946d1d8280867e10c2aa71c1",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 3690,
+      "sha256": "646d14e115702100181b7e7278efb28f6246c261b897805fa37796da61965803",
+      "git_blob": "abd8d2aa4d318dd7946d1d8280867e10c2aa71c1",
+      "remote_git_match": true
+    },
+    {
+      "path": "evidence/CR93_MASS_SHELL_DERIVATION_KO.md",
+      "url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/0f45d0a422d79ccead565a8abaab860fcc230687/research/cr_c21n_mass_shell_cache_20261021/theory/MASS_SHELL_DERIVATION_KO.md",
+      "remote_git_blob": "8104c948d0481d224d046f7cad8c970955a0a1aa",
+      "content_source": "GitHub fetch_file UTF8 full response",
+      "bytes": 12409,
+      "sha256": "10651fb7c71bad650f1ed3ca004fed2d0181b81f5960e37df76dd534107b8128",
+      "git_blob": "8104c948d0481d224d046f7cad8c970955a0a1aa",
+      "remote_git_match": true
+    }
+  ],
+  "latest_pr_metadata": {
+    "rec_bianchi": [
+      {
+        "number": 117,
+        "title": "REC → REI: z20→2 matter/radiation 175-case trajectory reuse and preliminary plots",
+        "head": "77b71c7dece730324d3963b9e95956fcc21d3211",
+        "branch": "research/rec-rei-trajectory63-20261021",
+        "updated_at": "2026-10-21T12:47:46Z",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/117"
+      },
+      {
+        "number": 116,
+        "title": "REC-to-REI: axis-response reuse of completed independent matter/radiation pilot",
+        "head": "4cffa8a0abdb104a40cac17cfc65593bec909fb3",
+        "branch": "research/rec-rei-axis-reuse-20261021",
+        "updated_at": "2026-10-21T10:35:06Z",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/116"
+      },
+      {
+        "number": 115,
+        "title": "research: REC-to-REI C15 warm HHe Sigma-Pi pilot and shared-node dispatcher",
+        "head": "99e9b8991a478c387efc9f751e477eb548ac665e",
+        "branch": "research/rec-rei-c15-pilot-bridge-20261021",
+        "updated_at": "2026-10-21T06:15:50Z",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/115"
+      },
+      {
+        "number": 114,
+        "title": "R3T-U4A: bounded h4 U4 restart validation",
+        "head": "df95a074730ea0d13d609cf88d448f01f4a47ef1",
+        "branch": "research/rec-r3t-u4a-20261021",
+        "updated_at": "2026-10-21T05:05:32Z",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/114"
+      },
+      {
+        "number": 113,
+        "title": "research(rec): R3S bounded NCP campaign and resource contracts",
+        "head": "8737bdad851e53a8c78c484f1153b8e0dd455927",
+        "branch": "research/rec-r3s-ncp-campaign-20261021",
+        "updated_at": "2026-10-20T23:35:38Z",
+        "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/113"
+      }
+    ],
+    "rei_bianchi": [
+      {
+        "number": 215,
+        "title": "ACCEL02: reflected native massive moments for the reusable split-stress pilot",
+        "head": "926bae816ef8339137e2813cc40f1d514b763e1f",
+        "branch": "research/rei-sigma-pi-native-moments-20261021",
+        "updated_at": "2026-10-21T13:08:32Z",
+        "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/215"
+      },
+      {
+        "number": 199,
+        "title": "Age-exposure accuracy: certified observables, centered mean age, and native age32 reference",
+        "head": "eb8042b729051f4700bd5d88d6781c4620009bcb",
+        "branch": "research/rei-age-exposure-envelope-20261018",
+        "updated_at": "2026-10-21T12:39:33Z",
+        "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/199"
+      },
+      {
+        "number": 216,
+        "title": "research: complete D8 with HE30 saved-sample shear reversal brackets",
+        "head": "1f32cc442ebde284bbb944455ba96066c9e0e055",
+        "branch": "research/he30-d3-reversal-brackets-20261021",
+        "updated_at": "2026-10-21T11:46:46Z",
+        "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/216"
+      },
+      {
+        "number": 214,
+        "title": "ACCEL01: reuse split729 and prepare resource-aware exact acceleration",
+        "head": "98fcf3943fa54e089b0292d166c3a47becb5edb8",
+        "branch": "research/rei-sigma-pi-acceleration-20261021",
+        "updated_at": "2026-10-21T10:45:41Z",
+        "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/214"
+      },
+      {
+        "number": 213,
+        "title": "Complete independent matter/radiation Sigma/Pi pilot: 729 cases",
+        "head": "d32cd99fa19c65aa1ca63dbc8aab8741834270e8",
+        "branch": "research/rei-sigma-pi-pilot-20261021",
+        "updated_at": "2026-10-21T08:04:59Z",
+        "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/213"
+      }
+    ],
+    "WU088_HH": [
+      {
+        "number": 132,
+        "title": "PHYS77: finite-owner whole-cell signed source enclosure",
+        "head": "91eeb12012b5fdcdbd2423ab28a72ecf4ca7cbcc",
+        "branch": "research/hh-phys77-whole-cell-enclosure-20261021",
+        "updated_at": "2026-10-21T12:58:21Z",
+        "url": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/132"
+      },
+      {
+        "number": 131,
+        "title": "PHYS76: scoped REI199 D8 saved-sample brackets",
+        "head": "ec28299fe7e81aab184b93aff787cb00a185dd2e",
+        "branch": "research/hh-phys76-rei199-d8-20261021",
+        "updated_at": "2026-10-21T12:40:33Z",
+        "url": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/131"
+      },
+      {
+        "number": 130,
+        "title": "PHYS76: 1231 z20–2 preliminary sector histories, signed transport and sweep plots",
+        "head": "535d24dbccf4fab40fd11f36330a63c4e288e24c",
+        "branch": "research/hh-phys76-time-transport-20261021",
+        "updated_at": "2026-10-21T11:58:19Z",
+        "url": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/130"
+      },
+      {
+        "number": 129,
+        "title": "PHYS75 supplemental recovery: archive earlier shear-attribution code and update handoffs",
+        "head": "b76fd4b5d0dfe4850ebde66a8a10f78402d36c00",
+        "branch": "research/hh-phys75-shear-attribution-recovery-20261021",
+        "updated_at": "2026-10-21T10:43:24Z",
+        "url": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/129"
+      },
+      {
+        "number": 128,
+        "title": "PHYS75: separate matter/radiation shear memory and collisionless 8-to-3 state reduction",
+        "head": "92f5ab9dba531ebe05909dcb77d3740d2c68c580",
+        "branch": "research/hh-phys75-sector-memory-20261021",
+        "updated_at": "2026-10-21T07:57:00Z",
+        "url": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/128"
+      }
+    ],
+    "bass": [
+      {
+        "number": 178,
+        "title": "ACCEL02: reflected native massive moments for the reusable split-stress pilot",
+        "head": "215bb3e66d81a7013d2132831d210aee36234ab4",
+        "branch": "research/rei-sigma-pi-native-moments-20261021",
+        "updated_at": "2026-10-21T13:08:44Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass/pull/178"
+      },
+      {
+        "number": 177,
+        "title": "ACCEL01: exact C15 moment reuse and completed-case-aware work planning",
+        "head": "4f19e6eaf50e8458d59d27ff47f03e9d8c8b22ca",
+        "branch": "research/rei-sigma-pi-acceleration-20261021",
+        "updated_at": "2026-10-21T10:45:35Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass/pull/177"
+      },
+      {
+        "number": 176,
+        "title": "Complete independent matter/radiation Sigma/Pi pilot: 729 cases",
+        "head": "26f4a89a54462c4e7c5705f281f187f33f45166a",
+        "branch": "research/rei-sigma-pi-pilot-20261021",
+        "updated_at": "2026-10-21T07:05:15Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass/pull/176"
+      },
+      {
+        "number": 174,
+        "title": "BASS: verify source quadrature, coupled histories, and exact cohort optimizations",
+        "head": "106a0153bf113fa4f0beea9743e84a744b65f424",
+        "branch": "research/bass-isotropy-checkpoint-recovery-20261018",
+        "updated_at": "2026-10-21T03:34:28Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass/pull/174"
+      },
+      {
+        "number": 175,
+        "title": "Add shared-Q normalization and compensated event ledger adapter",
+        "head": "4940770c7904ed6f6fd5caca8e525905593bb683",
+        "branch": "research/orchestration-20261020-next-loop",
+        "updated_at": "2026-10-20T11:52:30Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass/pull/175"
+      }
+    ],
+    "bass_cr": [
+      {
+        "number": 93,
+        "title": "C21N: mass-shell cancellation jets and exact prepared-grid reuse",
+        "head": "0f45d0a422d79ccead565a8abaab860fcc230687",
+        "branch": "research/cr-c21n-mass-shell-cache-20261021",
+        "updated_at": "2026-10-21T12:52:29Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass_cr/pull/93"
+      },
+      {
+        "number": 92,
+        "title": "C21M: publish scoped NCP98 refinement and combined 125-point analysis",
+        "head": "645a7f1a960be10e10574a819d7fb35a4511d9fa",
+        "branch": "research/cr-c21m-ncp98-refinement-20261021",
+        "updated_at": "2026-10-21T10:59:11Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass_cr/pull/92"
+      },
+      {
+        "number": 91,
+        "title": "C21M: independent matter/radiation stresses and verified 27-point LRS pilot",
+        "head": "b78a943e5d7ae341bbfe84f742a06a4ac36d0e43",
+        "branch": "research/cr-c21m-independent-stress-20261021",
+        "updated_at": "2026-10-21T10:29:04Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass_cr/pull/91"
+      },
+      {
+        "number": 90,
+        "title": "C21L: source-bound REI shear–stress pilot with exact worker reuse",
+        "head": "e954467132eef864a0fb86ba5de44f90f76b08e0",
+        "branch": "research/cr-c21l-rei-sigma-pi-pilot-20261021",
+        "updated_at": "2026-10-21T08:44:29Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass_cr/pull/90"
+      },
+      {
+        "number": 89,
+        "title": "C21K: exact epoch opacity reuse and bounded H/G/I/K NCP campaign",
+        "head": "dc1c0c0721b74454958e5d16264c24ec465ba1d8",
+        "branch": "research/cr-c21k-epoch-cache-campaign-20261021",
+        "updated_at": "2026-10-21T05:05:59Z",
+        "url": "https://github.com/cosmosapjw-quantum/bass_cr/pull/89"
+      }
+    ],
+    "BASS_HE": [
+      {
+        "number": 83,
+        "title": "research: HE30 reviewed z20→2 component plots, shared runner and REI D8 brackets",
+        "head": "e173f373cd481864d0395e3a7a76520615a80e1a",
+        "branch": "research/he30-z2-continuation-20261021",
+        "updated_at": "2026-10-21T12:39:15Z",
+        "url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/83"
+      },
+      {
+        "number": 82,
+        "title": "research: HE29 to REI Sigma/Pi pilot and shared NCP64 execution",
+        "head": "048a73de4246f609b1bc14854ea5c48757cb82fd",
+        "branch": "research/he29-rei-sigma-pi-pilot-20261021",
+        "updated_at": "2026-10-21T10:32:27Z",
+        "url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/82"
+      },
+      {
+        "number": 78,
+        "title": "HE29: admit HPC64 packed canary and close prepared execution queue",
+        "head": "38493edccd9344c11fd66e63e1d938f77c2b093f",
+        "branch": "research/he29-survival-budget-20261018",
+        "updated_at": "2026-10-21T05:01:31Z",
+        "url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/78"
+      },
+      {
+        "number": 81,
+        "title": "HE29: publish HPC64 packed canary return",
+        "head": "fcdf56d9a66b2d159d42a9a72131f94040cd5891",
+        "branch": "results/he29-hpc64-packed-canary-20261021",
+        "updated_at": "2026-10-21T04:55:23Z",
+        "url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/81"
+      },
+      {
+        "number": 80,
+        "title": "HE29: publish bounded NCP native reference return",
+        "head": "089d6afba06bb35f303fc704163d75f5761ec9df",
+        "branch": "results/he29-native-reference-return-20261020",
+        "updated_at": "2026-10-20T12:48:23Z",
+        "url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/80"
+      }
+    ]
+  },
+  "limits": [
+    "OwnerexecutedNCPdatahereisreadandattributed;thisagentdidnotaccessNCPorindependentlyreruncases.",
+    "No freshCIqueryorallgreenclaim.",
+    "No personal-contextorbackupproviderqueryinthisagent; siblinghandles those.",
+    "No all-repository analytic-Jacobian absence proof; statement limited to inspectedfiles and current PRmetadata."
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "REC_U5": [
+    "HOLD_9_FAIL",
+    "HOLD_8_FAIL"
+  ],
+  "REC_U5_closed": "CLOSED_HOLD_NOT_RESET",
+  "REI_activation": false,
+  "backup": "PENDING",
+  "completed_reused": [
+    "REC116",
+    "REC117_175",
+    "REI213_warm729",
+    "REI199_unified237",
+    "REC_U4B",
+    "HE29",
+    "HH130_1231tails",
+    "REI_D8"
+  ],
+  "global_convergence": "NOT_RUN",
+  "new_execution": {
+    "NCP": 0,
+    "ODE": 0,
+    "benchmark": 0
+  },
+  "nodes": [
+    {
+      "depends_on": [],
+      "id": "R1",
+      "name": "contract",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R1"
+      ],
+      "id": "R2",
+      "name": "evidence_reuse",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R2"
+      ],
+      "id": "R3",
+      "name": "claims",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R3"
+      ],
+      "id": "R4",
+      "name": "candidate_selection",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "R4"
+      ],
+      "id": "R5",
+      "name": "derivation",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "R5"
+      ],
+      "id": "R6",
+      "name": "independent_math",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "R6"
+      ],
+      "id": "R7",
+      "name": "discriminating_checks",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "R7"
+      ],
+      "id": "R8",
+      "name": "adjudication",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "R8"
+      ],
+      "id": "R9",
+      "name": "coding_contract",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "R9"
+      ],
+      "id": "R10",
+      "name": "handoff",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [],
+      "id": "C1",
+      "name": "baseline",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C1"
+      ],
+      "id": "C2",
+      "name": "equation_code_map",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C2"
+      ],
+      "id": "C3",
+      "name": "numeric_design",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C3"
+      ],
+      "id": "C4",
+      "name": "execution_dag",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "depends_on": [
+        "C4"
+      ],
+      "id": "C5",
+      "name": "implementation",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "C5"
+      ],
+      "id": "C6",
+      "name": "implementation_validation",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "C6"
+      ],
+      "id": "C7",
+      "name": "science_validation",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "C7"
+      ],
+      "id": "C8",
+      "name": "reproducibility",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "C8"
+      ],
+      "id": "C9",
+      "name": "independent_review",
+      "status": "PENDING"
+    },
+    {
+      "depends_on": [
+        "C9"
+      ],
+      "id": "C10",
+      "name": "delivery",
+      "status": "PENDING"
+    }
+  ],
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "publication": "PENDING",
+  "schema": "rec.tangent.dag.v1",
+  "stage": "A_CONTRACT_INPUT",
+  "status": "IN_PROGRESS",
+  "timestamp_utc": "2026-10-21T13:18:42.677780+00:00"
+}
