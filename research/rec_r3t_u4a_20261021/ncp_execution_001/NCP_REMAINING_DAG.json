@@ -1,0 +1,53 @@
+{
+  "schema": "rec.r3t-u4a.remaining-dag.v1",
+  "updated_utc": "2026-10-21T02:25:05Z",
+  "nodes": [
+    {
+      "id": "R3P_R3M_R3Q_R3R_R3S_REUSE",
+      "state": "COMPLETED_REUSED",
+      "note": "No repeated calculations; prior inputs/results retained by their existing receipts."
+    },
+    {
+      "id": "R3T_U4A_RESTART_74411_TO_74443",
+      "state": "PASS_SCOPED",
+      "depends_on": ["R3Q_H4_EVENT_PLUS_TWO"],
+      "evidence": "ncp_execution_001/NCP_CAMPAIGN_RESULTS.json",
+      "scope": "32 accepted H_ONLY steps, same-h Python/native checks, split restart equality, no event"
+    },
+    {
+      "id": "R3T_U4A_RESOURCE_RECEIPT",
+      "state": "PASS_SCOPED_OBSERVED_RESOURCE_BOUNDS",
+      "evidence": "ncp_execution_001/resource_terminal_readback_stdout.txt",
+      "original_supervisor_state": "CAP_HOLD preserved as raw; independent additive adjudication uses exact-unit systemd terminal journal"
+    },
+    {
+      "id": "R3T_SUPERVISOR_TERMINAL_ACCOUNTING_REPAIR",
+      "state": "BLOCKED_BY_MISSING_IMPLEMENTATION",
+      "note": "Future invocations need robust journal/terminal resource receipt reconciliation. Do not reuse the consumed allocation."
+    },
+    {
+      "id": "R3T_U4_CONTINUE_TO_EVENT_OR_STAGE_BOUNDARY",
+      "state": "BLOCKED_BY_RESOURCE_CONTRACT",
+      "note": "The single new allocation is consumed. A separate reviewed allocation is required; index 74443 is retained checkpoint evidence, not authority to resume."
+    },
+    {
+      "id": "U5_HISTORICAL_HOLD",
+      "state": "HOLD_PRESERVED",
+      "h": "HOLD_9_FAIL",
+      "h_over_2": "HOLD_8_FAIL",
+      "ledger": "CLOSED_HOLD_NOT_RESET"
+    },
+    {
+      "id": "GLOBAL_CONVERGENCE",
+      "state": "NOT_RUN"
+    },
+    {
+      "id": "PHYSICAL_VALIDITY",
+      "state": "HOLD"
+    },
+    {
+      "id": "PRODUCTION_READINESS",
+      "state": "NOT_APPROVED"
+    }
+  ]
+}

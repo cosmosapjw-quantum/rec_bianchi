@@ -1,0 +1,43 @@
+{
+  "schema": "rec.r3t-u4a.ncp-failure-ledger.v1",
+  "historical_failures_preserved": true,
+  "entries": [
+    {
+      "id": "STAGE_SOURCE_SHA_SHORT_COMPARE_001",
+      "phase": "NCP source staging preflight",
+      "classification": "OPERATIONAL_COMMAND_GUARD_MISMATCH",
+      "command_exit": 1,
+      "cause": "preflight compared full git SHA to the abbreviated literal 44715ef",
+      "science_evidence": false,
+      "recovery": "verified the full expected commit SHA 44715efbf7822dca28aa367d637b8ba36d3b1558 and continued in the already-created source namespace without overwrite",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "SUPERVISOR_TERMINAL_CPU_RECEIPT_001",
+      "phase": "single scientific execution terminalization",
+      "classification": "SUPERVISOR_ACCOUNTING_FALSE_HOLD_WITH_RAW_CAP_HOLD_RETAINED",
+      "supervisor_status": "CAP_HOLD",
+      "cause": "transient cgroup was removed; worker RUSAGE CPU snapshot 4.212451 s was lower than the last active cgroup observation by more than the fixed 0.25 s guard; terminal systemctl counters were [not set]",
+      "scientific_worker_status": "PASS_SCOPED_U4A_RESTART",
+      "additive_evidence": "exact-unit systemd journal reports successful deactivation and 5.346 s CPU, 321.3M memory peak; independent review adjudicated observed scope bounds as PASS_SCOPED",
+      "relaunch": "NOT_RUN; allocation launch count remains one",
+      "raw_supervisor_receipt_sha256": "3cea5fe3f71968ce9c47c9847f120bfabbad9d073d1e840eaee0b1740ad172a1",
+      "journal_readback_sha256": "1189c5eb8aa260a299b0e27531e4f3f25ee0e889597ce03e887aa35608b62733"
+    },
+    {
+      "id": "PHYSICS_GATE_REMAINDERS",
+      "phase": "scientific claim boundary",
+      "classification": "EXPECTED_NOT_REACHED_WITHIN_BOUND",
+      "state": "NO_EVENT_WITHIN_BOUND",
+      "meaning": "U4 transition/event boundary was not reached in 32 accepted steps; no event or stage exit is claimed",
+      "historical_u5_h": "HOLD_9_FAIL",
+      "historical_u5_h_over_2": "HOLD_8_FAIL",
+      "ledger": "CLOSED_HOLD_NOT_RESET",
+      "rei_activation": false,
+      "global_convergence": "NOT_RUN",
+      "physical_validity": "HOLD",
+      "production_readiness": "NOT_APPROVED"
+    }
+  ]
+}
