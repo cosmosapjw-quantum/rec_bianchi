@@ -19,9 +19,11 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'vendor/baseline'))
 sys.path.insert(0, str(ROOT / 'vendor/he31'))
+sys.path.insert(0, str(ROOT / 'vendor/tangent'))
 from canonical_fv import CanonicalFVSpecies
 from lrs_boltzmann import SourceLock, GAMMA_PER_NE
 from prepared_moments import PreparedCanonicalMoments
+from tangent_core import TangentOperator
 
 C = 299792458.0
 G = 6.67430e-11
@@ -70,6 +72,9 @@ class Geometry:
             mass_over_Tref=30., radial_cells=24, angular_cells=12,
             subcell_gauss_order=3)
         self.backend = backend
+        # Exact analytic Jacobian actions from PR118; BDF requests the small
+        # 40x40 block only at Jacobian refreshes, not at every RHS call.
+        self.tangent = TangentOperator(self.model)
         if backend == 'prepared':
             self.model.momentum = PreparedCanonicalMoments(self.model.momentum)
         self.source = src
@@ -116,3 +121,19 @@ class Geometry:
 
     def baryon_number_density(self, x):
         return self.nb0/(self.source.aref*math.exp(x))**3
+
+    def jacobian_blocks(self, x, y, field, ne_m3):
+        prepared = self.tangent.prepare(x, y)
+        jac = prepared.jvp(np.eye(40))
+        h, a = field['H'], field['a']
+        hgrad = np.zeros(40)
+        hgrad[1] = -3*self.source.h0**2*field['Pi_matter_norm']/h**2
+        hgrad[2] = self.source.href**2*y[2]/h**2
+        hgrad[4] = self.source.h0**2*self.model.omega_gamma/(2*h*h*a**4)
+        hgrad[22] = self.source.h0**2*self.model.omega_nu/(2*h*h*a**4)
+        gamma = ne_m3*(GAMMA_PER_NE/1e6)/h
+        for start in (4,13):
+            weighted = self.model.thomson*y[start:start+9]
+            jac[start:start+9] += gamma*np.outer(weighted,hgrad)
+            jac[start:start+9,start:start+9] -= gamma*np.diag(self.model.thomson)
+        return jac, hgrad
