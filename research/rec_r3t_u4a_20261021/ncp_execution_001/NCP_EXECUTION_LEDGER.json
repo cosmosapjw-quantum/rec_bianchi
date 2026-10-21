@@ -1,0 +1,66 @@
+{
+  "schema": "rec.r3t-u4a.ncp-execution-ledger.v1",
+  "allocation_id": "REC_R3T_U4A_NCP_20261021_001",
+  "launches": 1,
+  "state": "EXECUTED",
+  "source_commit": "44715efbf7822dca28aa367d637b8ba36d3b1558",
+  "source_tree": "5a20935016e521f9768bbdd068300d3fa6dda164",
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "checkpoint_sha256": "7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9",
+  "checkpoint_global_index": 74411,
+  "supervisor": {
+    "unit": "r3t-u4a-541eb8e9d59a4711.scope",
+    "argv": [
+      "systemd-run", "--scope", "--no-block",
+      "--unit=r3t-u4a-541eb8e9d59a4711.scope",
+      "--property=CPUAccounting=yes", "--property=CPUQuota=100%",
+      "--property=MemoryAccounting=yes", "--property=MemoryMax=2G",
+      "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+      "/root/REC_R3T_U4A_NCP_20261021_001/source/scripts/verify_r3t_u4a.py",
+      "--checkpoint", "/root/REC_R3T_U4A_NCP_20261021_001/input/accepted_checkpoint_74411.npz",
+      "--evidence-dir", "/root/REC_R3T_U4A_NCP_20261021_001/evidence/u4a_001",
+      "--new-allocation-id", "REC_R3T_U4A_NCP_20261021_001", "--steps", "32"
+    ],
+    "exit": 1,
+    "terminal_status": "CAP_HOLD",
+    "terminal_result_sha256": "3cea5fe3f71968ce9c47c9847f120bfabbad9d073d1e840eaee0b1740ad172a1"
+  },
+  "worker": {
+    "status": "PASS_SCOPED_U4A_RESTART",
+    "accepted_index_range": [74411, 74443],
+    "accepted_steps": 32,
+    "primary_python_full_evaluations": 128,
+    "split_audit_python_full_evaluations": 128,
+    "common_input_c_reference_evaluations": 128,
+    "native_restart_c_evaluations": 32,
+    "worker_result_sha256": "b59def277ddf3446020d45a5af931d2155b7fb3496ae3245092d10b71575e95f"
+  },
+  "resource_measurements": {
+    "hard_limits": {"cpu_s": 60, "wall_s": 180, "per_process_address_space_bytes": 2147483648},
+    "supervisor_early_kill_thresholds": {"cpu_s": 50, "wall_s": 150},
+    "systemd_terminal_journal_cpu_s": 5.346,
+    "supervisor_wall_s": 5.4253399959998205,
+    "systemd_terminal_memory_peak": "321.3M",
+    "worker_snapshot_cpu_s": 4.212451,
+    "worker_snapshot_scope": "after imports/resource baseline through worker finally, before final manifest and RESULT writes",
+    "worker_max_rss_kib": 138240,
+    "memory_current_high_water_bytes": 303095808,
+    "systemd_final_counters": "CPUUsageNSec, MemoryPeak and MemoryCurrent were [not set] after transient cgroup removal",
+    "journal_result": "success",
+    "allocation_resource_adjudication": "PASS_SCOPED_OBSERVED_RESOURCE_BOUNDS; original supervisor CAP_HOLD preserved"
+  },
+  "phase_wall_seconds": {
+    "source_checkpoint_setup": 0.13726081998902373,
+    "common_compile": 0.9526997419889085,
+    "python_one_shot_integration": 0.8556609409861267,
+    "split_restart_audit": 0.4773290739976801,
+    "native_compile": 0.96290471899556,
+    "native_restart": 0.21505117998458445,
+    "native_comparison": 0.16889151799841784,
+    "worker_total_at_snapshot": 4.218227922014194,
+    "supervisor_total_wall": 5.4253399959998205
+  },
+  "io_bytes": "NOT_MEASURED",
+  "historical_budget": "CLOSED_HOLD_NOT_RESET",
+  "original_terminal_hold_sha256": "eaee72446c4f8b2e5ce8de52a8a508e88a3dfb34f3697b070db29af239006625"
+}

@@ -116,3 +116,26 @@ def test_normal_python_and_markdown_source_still_have_strict_whitespace_gate(tmp
     result = _run_checker(repo)
     assert result.returncode != 0
     assert "research/current/README.md" in result.stdout + result.stderr
+
+
+def test_only_the_two_recorded_r3t_provider_stderr_paths_are_excluded(tmp_path: Path) -> None:
+    repo, _ = _init_repo(tmp_path)
+    excluded = [
+        "research/rec_r3t_u4a_20261021/receipts/backup_001/drive_upload.stderr.txt",
+        "research/rec_r3t_u4a_20261021/receipts/backup_001/dropbox_upload.stderr.txt",
+    ]
+    for name in excluded:
+        path = repo / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b"captured provider progress   \n")
+    _git(repo, "add", "state/PATCH_BASE.json", *excluded)
+    _git(repo, "commit", "-q", "-m", "preserve raw provider stderr")
+    assert _run_checker(repo).returncode == 0
+
+    adjacent = repo / "research/rec_r3t_u4a_20261021/receipts/backup_001/other.stderr.txt"
+    adjacent.write_bytes(b"unregistered evidence   \n")
+    _git(repo, "add", str(adjacent.relative_to(repo)))
+    _git(repo, "commit", "-q", "-m", "check adjacent evidence")
+    result = _run_checker(repo)
+    assert result.returncode != 0
+    assert adjacent.relative_to(repo).as_posix() in result.stdout + result.stderr

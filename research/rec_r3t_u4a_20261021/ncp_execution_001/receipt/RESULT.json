@@ -1,0 +1,76 @@
+{
+  "aggregate_cpu_s": NaN,
+  "cgroup_terminal_state": "REMOVED",
+  "final_cpu_receipt_error": "worker CPU below active cgroup observation",
+  "final_scope": {
+    "ActiveState": "inactive",
+    "CPUQuotaPerSecUSec": "infinity",
+    "CPUUsageNSec": "[not set]",
+    "ControlGroup": "",
+    "MemoryCurrent": "[not set]",
+    "MemoryMax": "infinity",
+    "MemoryPeak": "[not set]"
+  },
+  "io_bytes": "NOT_MEASURED",
+  "last_scope": {
+    "ActiveState": "inactive",
+    "CPUQuotaPerSecUSec": "infinity",
+    "CPUUsageNSec": "[not set]",
+    "ControlGroup": "",
+    "MemoryCurrent": "[not set]",
+    "MemoryMax": "infinity",
+    "MemoryPeak": "[not set]"
+  },
+  "launch": {
+    "argv": [
+      "systemd-run",
+      "--scope",
+      "--no-block",
+      "--unit=r3t-u4a-541eb8e9d59a4711.scope",
+      "--property=CPUAccounting=yes",
+      "--property=CPUQuota=100%",
+      "--property=MemoryAccounting=yes",
+      "--property=MemoryMax=2G",
+      "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+      "/root/REC_R3T_U4A_NCP_20261021_001/source/scripts/verify_r3t_u4a.py",
+      "--checkpoint",
+      "/root/REC_R3T_U4A_NCP_20261021_001/input/accepted_checkpoint_74411.npz",
+      "--evidence-dir",
+      "/root/REC_R3T_U4A_NCP_20261021_001/evidence/u4a_001",
+      "--new-allocation-id",
+      "REC_R3T_U4A_NCP_20261021_001",
+      "--steps",
+      "32"
+    ],
+    "exit": 0,
+    "launcher_pid": 1166833,
+    "stderr": "Running as unit: r3t-u4a-541eb8e9d59a4711.scope; invocation ID: f9776f43da0d4607b49199981a3a5150\n",
+    "stdout": ""
+  },
+  "limits": {
+    "kill_threshold_cpu_s": 50,
+    "kill_threshold_wall_s": 150,
+    "per_process_as_bytes": 2147483648,
+    "process_tree_cpu_s": 60,
+    "scope_memory_max": "2G",
+    "wall_s": 180
+  },
+  "max_memory_current_bytes": 303095808,
+  "memory_current_observation": "NOT_SET_BY_SYSTEMD",
+  "memory_peak_bytes": "[not set]",
+  "status": "CAP_HOLD",
+  "unit": "r3t-u4a-541eb8e9d59a4711.scope",
+  "wall_s": 5.4253399959998205,
+  "worker_argv": [
+    "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "/root/REC_R3T_U4A_NCP_20261021_001/source/scripts/verify_r3t_u4a.py",
+    "--checkpoint",
+    "/root/REC_R3T_U4A_NCP_20261021_001/input/accepted_checkpoint_74411.npz",
+    "--evidence-dir",
+    "/root/REC_R3T_U4A_NCP_20261021_001/evidence/u4a_001",
+    "--new-allocation-id",
+    "REC_R3T_U4A_NCP_20261021_001",
+    "--steps",
+    "32"
+  ]
+}

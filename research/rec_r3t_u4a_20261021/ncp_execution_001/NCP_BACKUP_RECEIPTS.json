@@ -1,0 +1,42 @@
+{
+  "schema": "rec.r3t-u4a.backup-receipts.v1",
+  "status": "PASS_ONE_PROVIDER_UNKNOWN_NO_ACK_ONE_PROVIDER",
+  "archive": {
+    "path": "/tmp/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz",
+    "bytes": 23089615,
+    "sha256": "321efef5e3355e6a657eeb86d9dacedcee98dd5e4723b0fa289fd2e36513cdff",
+    "entries": 184,
+    "includes": ["R3T-U4A source files", "frozen contract and audits", "allocation and raw NCP returns", "accepted checkpoints and streams", "source archive extraction used by the runner"],
+    "excludes": ["self-referential backup acknowledgements created after this archive"]
+  },
+  "create_only_policy": "Exact destination preflight absent; immutable copyto; no existing result or historical backup was replaced.",
+  "providers": {
+    "Dropbox": {
+      "status": "PASS_CREATE_ONLY_UPLOAD_AND_WHOLE_OBJECT_READBACK",
+      "path": "dbx:bianchi/rec_bianchi/20261016/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz",
+      "object_id": "id:BSpOijBcT10AAAAAAD_drQ",
+      "upload_argv": ["rclone", "copyto", "--immutable", "--log-level", "INFO", "/tmp/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz", "dbx:bianchi/rec_bianchi/20261016/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz"],
+      "upload_exit": 0,
+      "readback_argv": ["rclone", "cat", "dbx:bianchi/rec_bianchi/20261016/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz"],
+      "readback_exit": 0,
+      "readback_bytes": 23089615,
+      "readback_sha256": "321efef5e3355e6a657eeb86d9dacedcee98dd5e4723b0fa289fd2e36513cdff",
+      "whole_object_sha_match": true,
+      "upload_receipts": ["../../receipts/backup_001/dropbox_upload.*.txt"],
+      "readback_receipts": ["../../receipts/backup_001/dropbox_readback.*", "../../receipts/backup_001/dropbox_metadata.json"]
+    },
+    "GoogleDrive": {
+      "status": "UNKNOWN_NO_ACK",
+      "path": "gdrv:rec_bianchi_research_backups/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz",
+      "upload_command": ["rclone", "copyto", "--immutable", "--log-level", "INFO", "/tmp/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz", "gdrv:rec_bianchi_research_backups/REC_R3T_U4A_NCP_EXECUTION_001_20261021.tar.gz"],
+      "observed_transfer": "22.020 MiB (100%) reported, followed by a repeated 22.020 MiB transfer attempt stalled at 0 B/s; no provider completion acknowledgement",
+      "process_termination": "SIGTERM to the task-owned rclone PID after the stalled transfer; exit 143",
+      "post_stop_readonly_metadata_query_exit": 3,
+      "post_stop_query_output": "Failed to lsjson: directory not found",
+      "readback": "NOT_RUN; provider object identity and full bytes were not acknowledged",
+      "retry": "NOT_RUN; exact path not retried and UNKNOWN_NO_ACK retained",
+      "receipts": ["../../receipts/backup_001/drive_upload.*.txt", "../../receipts/backup_001/drive_post_stop_metadata.*.txt"]
+    }
+  },
+  "prior_google_drive_unknown_backup_state": "UNCHANGED; this attempt used a distinct R3T-U4A path and does not adjudicate the older UNKNOWN_NO_ACK object"
+}
