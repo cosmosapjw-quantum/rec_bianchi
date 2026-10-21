@@ -1,0 +1,97 @@
+{
+  "schema": "rec.r3t-u4b.campaign-results.v1",
+  "allocation_id": "REC_R3T_U4B_NCP_20261021_001",
+  "status": "PASS_SCOPED_U4B_NUMERICAL_RESTART",
+  "source": {
+    "commit": "a09e1d249d4cf4b706c09571fa7f231c8084c251",
+    "tree": "2186e9a53316b040bbfa6a02da09d9378b28baf0",
+    "archive_sha256": "a76cec469b7f4db7a67d8eb30331a585fd3713f9798cc0a3852b4ff9088c9048"
+  },
+  "input": {
+    "bundle_sha256": "808b8087078e5c8fc2f332f441a712ce9a8ce161366b1ead3565c36bb5a1b56a",
+    "U4A_checkpoint_sha256": "7d7cf81dafd46672be8018cd7dacaa26f2aa21653a47774206005716ef967529",
+    "U4A_result_sha256": "b59def277ddf3446020d45a5af931d2155b7fb3496ae3245092d10b71575e95f"
+  },
+  "execution": {
+    "worker_launches": 1,
+    "start_index": 74443,
+    "end_index": 74475,
+    "accepted_steps": 32,
+    "event": "NO_EVENT_WITHIN_BOUND",
+    "U5_U6_auto_entry": false,
+    "worker_exit": {
+      "code_kind": "1",
+      "status_or_signal": "0",
+      "unit_result": "success"
+    },
+    "supervisor_exit": 0,
+    "unit_stop_exit": 0,
+    "argv": [
+      "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+      "/root/REC_R3T_U4B_NCP_20261021_001/source/scripts/verify_r3t_u4a.py",
+      "--checkpoint",
+      "/root/REC_R3T_U4B_NCP_20261021_001/input/u4a_001/final_checkpoint.npz",
+      "--evidence-dir",
+      "/root/REC_R3T_U4B_NCP_20261021_001/evidence/u4b_001",
+      "--new-allocation-id",
+      "REC_R3T_U4B_NCP_20261021_001",
+      "--steps",
+      "32",
+      "--mode",
+      "u4b",
+      "--accepted-dir",
+      "/root/REC_R3T_U4B_NCP_20261021_001/input/u4a_001"
+    ]
+  },
+  "numerics": {
+    "common_input_evaluations": 128,
+    "max_rhs_scaled": 1.3991210612405974e-13,
+    "max_tolerance_ratio": {
+      "average": 0.00012867236465731682,
+      "lyman": 2.986458318271331e-06,
+      "virtual": 0.00010670012218765965
+    },
+    "native_restart": {
+      "max_h_rhs_scaled": 1.5519280305298366e-11,
+      "max_lane_tolerance_ratio": 0.00023476254700241836,
+      "max_state_scaled": 4.930470639159558e-14,
+      "status": "PASS_COMMON_CHECKPOINT_NATIVE_RESTART"
+    },
+    "restart_split": {
+      "first_requested": 16,
+      "one_shot_accepted": 32,
+      "second_requested": 16,
+      "second_skipped_at_event": false,
+      "status": "PASS_EXACT_VALUE_EQUALITY"
+    },
+    "accepted_schur_max": 5.786145415750408e-16,
+    "thermal_predicate_max": 1.041836845350197e-06,
+    "thermal_threshold": 0.0005,
+    "all_33_states_post_saha": true,
+    "rt_stop_index": 116777,
+    "boundary_crossing": "NOT_RUN"
+  },
+  "output": {
+    "final_checkpoint_sha256": "1a8a224ff473c2c2cd054bc6ec78bcb06ee900b9e2694a9f30509591a56b5446",
+    "result_sha256": "70ead443818866a4168d8f2ec733f13ee2c4c1ae144caeb342332c0b5305bd4f",
+    "manifest_sha256": "0c010aed02cd4a684c2d1d6d731fe64926e47ba5a24bfa99a128d4dc19dae339",
+    "manifest_entries": 49,
+    "all_manifest_hashes_match": true,
+    "mechanical_audit_sha256": "47d68453c7faa4fd729a56700ce6ff913503e11c164b8b10cfe3f243056f74a3"
+  },
+  "resource": {
+    "systemd_invocation_id": "1895cb059131412aa0f945ec8e4f6e99",
+    "service_terminal_cpu_s": 5.375101,
+    "controller_cpu_observed_s": 0.16375499999999998,
+    "observed_sum_cpu_s": 5.538856,
+    "whole_allocation_cpu": "UNRESOLVED",
+    "wall_snapshot_s": 5.465623100986704,
+    "whole_allocation_wall": "UNRESOLVED",
+    "worker_wall_s": 4.165755781985354,
+    "worker_max_rss_kib": 139264,
+    "systemd_memory_peak_bytes": "336064512",
+    "io_bytes": "NOT_MEASURED"
+  },
+  "allocation_accounting_addendum_sha256": "9e1eafeb33ee10e22c4aae46fe1451d6bec351db442fb91e1e9971ebfd426c7b",
+  "review": "Independent read-only result reviewer: PASS_SCOPED_U4B_NUMERICAL_RESTART; split independent raw recomputation NOT claimed; no physical/global convergence admission."
+}

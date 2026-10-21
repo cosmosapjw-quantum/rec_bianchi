@@ -1,0 +1,26 @@
+{
+  "schema": "rec.r3t-u4b.failure-ledger.v1",
+  "allocation_id": "REC_R3T_U4B_NCP_20261021_001",
+  "failures": [
+    {
+      "id": "prelaunch_attempt_001",
+      "class": "ORCHESTRATION/RECEIPT_NAMESPACE",
+      "state": "PRESERVED",
+      "effect": "receipt.mkdir(exist_ok=False) failed before systemd-run; no worker/unit; CPU NOT_MEASURED; observed wall 0.238 s; no science output; no allocation reset"
+    },
+    {
+      "id": "accounting_scope",
+      "class": "MEASUREMENT_COVERAGE",
+      "state": "UNRESOLVED_FULL_ALLOCATION_CPU_AND_WALL",
+      "effect": "attempt001 CPU missing; controller startup/final write and stop/finalization wall excluded; service terminal counter remains exact"
+    },
+    {
+      "id": "allocation_input_tar_sha_field",
+      "class": "PACKAGING_METADATA",
+      "state": "CORRECTED_ADDITIVELY",
+      "effect": "original metadata string is 60 hex chars; full digest separately bound in input and LAUNCH_002"
+    }
+  ],
+  "scientific_failure": "NONE_OBSERVED_WITHIN_SCOPED_ACCEPTANCE",
+  "physical_hold": "PRESERVED"
+}

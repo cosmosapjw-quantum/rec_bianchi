@@ -1,0 +1,90 @@
+{
+  "acceptance": [
+    "U4B loader verifies frozen U4A result/checkpoint/source and all 1551 causal prefix columns",
+    "Python and native common-input parity retain the existing tolerances",
+    "one-shot and restart split agree through actual reached endpoint",
+    "native U4B event/thermal/RT predicates do not evaluate source beyond the boundary",
+    "worker and all descendants terminate; same InvocationID final service CPU counter is present",
+    "CPU, wall, MemoryMax, and per-process RLIMIT_AS stay within the registered envelope"
+  ],
+  "accounting_scope": "Begins before receipt creation and systemd launch. The retained service CPU includes Python import/bootstrap, source preparation, compilation, primary integration, same-h split audit, common-input C references, native compilation/restart/comparison, and worker evidence writes. Supervisor CPU is added once from its own getrusage counters. Wall includes setup, service execution, terminal readback, cleanup, and final receipt writes. No prior allocation cost is credited.",
+  "allocation_id": "REC_R3T_U4B_NCP_20261021_001",
+  "command_template": [
+    "/root/HE29_REFERENCE_20261020T120000Z/venv/bin/python",
+    "/root/REC_R3T_U4B_NCP_20261021_001/source/scripts/run_r3t_u4a_supervised.py",
+    "--receipt-dir",
+    "/root/REC_R3T_U4B_NCP_20261021_001/receipts/allocation_001",
+    "--checkpoint",
+    "/root/REC_R3T_U4B_NCP_20261021_001/input/u4a_001/final_checkpoint.npz",
+    "--accepted-dir",
+    "/root/REC_R3T_U4B_NCP_20261021_001/input/u4a_001",
+    "--evidence-dir",
+    "/root/REC_R3T_U4B_NCP_20261021_001/evidence/u4b_001",
+    "--new-allocation-id",
+    "REC_R3T_U4B_NCP_20261021_001",
+    "--mode",
+    "u4b",
+    "--steps",
+    "32"
+  ],
+  "historical_claims": {
+    "global_convergence": "NOT_RUN",
+    "ledger": "CLOSED_HOLD_NOT_RESET",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "rei_activation": false,
+    "u5_h": "HOLD_9_FAIL",
+    "u5_h_over_2": "HOLD_8_FAIL"
+  },
+  "host": {
+    "architecture": "x86_64",
+    "cpu_quota": "100% (one CPU for serial recurrence)",
+    "hostname": "s1a0e5abed09",
+    "machine_id": "37e474d2a37c4655bb50b87698f439e6",
+    "memory_max": "2G"
+  },
+  "input": {
+    "accepted_jsonl_sha256": "4978241e17bdc8c67c0020ba95f8ea9f686ba8b680d48aa9b5f213a51f7f035d",
+    "accepted_manifest_sha256": "8e727aca984fa3208e1b51fd4a7c19145c64570bf2e3f7454ac087934bf716ab",
+    "accepted_prefix_columns": 1551,
+    "accepted_result_sha256": "b59def277ddf3446020d45a5af931d2155b7fb3496ae3245092d10b71575e95f",
+    "average_stream_sha256": "efa33c28d4feec8ea08931b05f7218edc5417c00356509272508c554ebf64a47",
+    "basis": "REC_R3T_U4A_NCP_20261021_001/evidence/final_checkpoint.npz plus the same U4A accepted records and causal streams",
+    "checkpoint_sha256": "7d7cf81dafd46672be8018cd7dacaa26f2aa21653a47774206005716ef967529",
+    "global_start_index": 74443,
+    "input_bundle": "REC_R3T_U4B_NCP_20261021_001_input.tar.gz",
+    "input_bundle_bytes": 7504442,
+    "input_bundle_sha256": "808b8087078e5c8fc2f332f441a712ce9a8ce161366b1ead3565c36bb5a1b56a",
+    "lyman_stream_sha256": "d50e6d4430ec3f456f9078d75370e214887e21f09ebadebf4d25593f882a8979",
+    "virtual_stream_sha256": "6fc624d2ca9259c418a1a45787d9c1911871fe1807bb1562fd790dd50804ef29"
+  },
+  "launches": 0,
+  "limits": {
+    "accepted_steps_max": 32,
+    "address_space_bytes_per_process": 2147483648,
+    "automatic_continuation": false,
+    "cpu_seconds_hard": 60,
+    "endpoint_if_full_bound": 74475,
+    "launches": 1,
+    "supervisor_early_cpu_seconds": 50,
+    "supervisor_early_wall_seconds": 150,
+    "systemd_memory_max": "2G",
+    "wall_seconds_hard": 180
+  },
+  "pre_execution_archive_verification": {
+    "all_hashes_match": true,
+    "input_tar_sha256": "808b8087078e5c8fc2f332f441a712ce9a8ce161366b1ead3565c36bb5a1",
+    "source_tar_sha256": "a76cec469b7f4db7a67d8eb30331a585fd3713f9798cc0a3852b4ff9088c9048"
+  },
+  "registered_local": "2026-10-21T13:54:34+09:00",
+  "registered_utc": "2026-10-21T04:54:34Z",
+  "schema": "rec.r3t-u4b.ncp-allocation.v1",
+  "source": {
+    "archive": "REC_R3T_U4B_NCP_20261021_001_source.tar.gz",
+    "archive_bytes": 207986527,
+    "archive_sha256": "a76cec469b7f4db7a67d8eb30331a585fd3713f9798cc0a3852b4ff9088c9048",
+    "commit": "a09e1d249d4cf4b706c09571fa7f231c8084c251",
+    "tree": "2186e9a53316b040bbfa6a02da09d9378b28baf0"
+  },
+  "status": "REGISTERED_ON_NCP_BEFORE_EXECUTION"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "rec.r3t-u4b.allocation-accounting-addendum.v1",
+  "allocation_id": "REC_R3T_U4B_NCP_20261021_001",
+  "additive_to": "../ALLOCATION_001.json",
+  "original_receipt_mutated": false,
+  "status": "SCOPED_SERVICE_ACCOUNTING_CONFIRMED_CUMULATIVE_ALLOCATION_UNRESOLVED",
+  "launches": {
+    "registered_worker_launches": 1,
+    "attempt_001": "FAILED_BEFORE_SYSTEMD_RUN; receipt namespace collision; no worker/unit; CPU NOT_MEASURED; wall 0.238 s observed by controller",
+    "attempt_002": "one actual worker launch; no rerun"
+  },
+  "accounting_scope_correction": {
+    "systemd_service_cpu_s": 5.375101,
+    "controller_cpu_s_observed_after_python_start_and_imports": 0.163755,
+    "observed_cpu_sum_s": 5.538856,
+    "service_cpu_scope": "same retained systemd InvocationID; includes service Python bootstrap/import, worker and descendants, and worker evidence writes; terminal CPUUsageNSec observed before unit cleanup",
+    "controller_cpu_scope": "getrusage interval starts after Python startup/imports and receipt directory creation; excludes controller startup and final controller receipt write",
+    "allocation_cpu_verdict": "UNRESOLVED; observed sum is not complete full-allocation CPU because attempt_001 CPU is unmeasured and controller startup/final write are outside measured interval",
+    "service_wall_s": 5.465623100986704,
+    "wall_scope": "controller snapshot before systemctl stop completion and final controller receipt write; not full allocation wall",
+    "worker_internal_wall_s": 4.165755781985354,
+    "worker_rss_kib": 139264,
+    "systemd_memory_peak_bytes": 336064512,
+    "systemd_memory_max_bytes": 2147483648,
+    "per_process_address_space_bytes": 2147483648,
+    "io_bytes": "NOT_MEASURED"
+  },
+  "scoped_resource_verdict": "PASS_SCOPED_OBSERVED_SERVICE_LIMITS; service CPU 5.375101 < 50 early kill < 60 hard, observed controller CPU 0.163755, worker internal wall 4.165756 < 150 early wall < 180 hard, systemd MemoryPeak < 2 GiB, per-process RLIMIT_AS set to 2 GiB",
+  "immutable_metadata_correction": {
+    "allocation_receipt_pre_execution_archive_verification_input_tar_sha256": "808b8087078e5c8fc2f332f441a712ce9a8ce161366b1ead3565c36bb5a1",
+    "field_issue": "truncated to 60 hexadecimal characters in original registration receipt",
+    "verified_full_input_bundle_sha256": "808b8087078e5c8fc2f332f441a712ce9a8ce161366b1ead3565c36bb5a1b56a",
+    "verification_basis": "exact 64-character digest recorded independently in allocation input binding and prelaunch LAUNCH_002; NCP source archive transfer/readback manifest was checked before launch",
+    "scientific_input_bytes_changed": false
+  },
+  "historical_claims_preserved": {
+    "u5_h": "HOLD_9_FAIL",
+    "u5_h_over_2": "HOLD_8_FAIL",
+    "ledger": "CLOSED_HOLD_NOT_RESET",
+    "rei_activation": false,
+    "global_convergence": "NOT_RUN",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED"
+  },
+  "original_terminal_cap_hold_sha256": "3cea5fe3f71968ce9c47c9847f120bfabbad9d073d1e840eaee0b1740ad172a1",
+  "original_terminal_journal_sha256": "1189c5eb8aa260a299b0e27531e4f3f25ee0e889597ce03e887aa35608b62733"
+}

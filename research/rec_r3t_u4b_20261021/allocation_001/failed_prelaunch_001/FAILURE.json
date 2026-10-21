@@ -1,0 +1,20 @@
+{
+  "allocation_id": "REC_R3T_U4B_NCP_20261021_001",
+  "attempt": 1,
+  "cause": "The supervisor requires receipt_dir not to exist, but allocation_001 was already used for immutable registration files. FileExistsError occurred at receipt.mkdir(exist_ok=False) before STARTED receipt, timer, or systemd-run call.",
+  "classification": "SUPERVISOR_SETUP_PATH_COLLISION_BEFORE_SYSTEMD_LAUNCH",
+  "cpu_measurement": "NOT_MEASURED; supervisor failed before it initialized its accounting. The outer command wall observed by the execution client was 0.238 s. This attempt created no systemd service or scientific worker.",
+  "cumulative_allocation_budget_reset": false,
+  "evidence_created": false,
+  "exit": 1,
+  "raw_files": [
+    "stdout.txt",
+    "stderr.txt",
+    "exit.txt"
+  ],
+  "recovery": "Use a new create-only child receipt directory worker_run_001 under the same already registered allocation. Preserve attempt 1 raw output. Register attempt 2 before launch; worker launch count remains capped at one.",
+  "schema": "rec.r3t-u4b.prelaunch-failure.v1",
+  "science_executed": false,
+  "systemd_invocations": 0,
+  "worker_launches": 0
+}

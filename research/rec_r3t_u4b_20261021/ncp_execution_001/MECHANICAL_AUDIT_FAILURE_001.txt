@@ -1,0 +1,9 @@
+First mechanical audit script attempt exited before writing an audit result:
+
+Traceback (most recent call last):
+  File "<stdin>", line 33, in <module>
+TypeError: '<=' not supported between instances of 'str' and 'int'
+
+The terminal receipt stores MemoryPeak as a decimal string. The audit parser was
+corrected to convert that observed byte counter to int before comparing it with
+the registered cap. No execution evidence was modified.
