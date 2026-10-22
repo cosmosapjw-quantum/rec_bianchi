@@ -1,0 +1,38 @@
+{
+  "schema": "rec.omitted_budget.collisional_focused_tests.v1",
+  "status": "PASS",
+  "command": "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -u code/test_collisional_budget.py",
+  "cwd": "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_thermal_omitted_budget_20261022",
+  "exit_code": 0,
+  "test_methods": 10,
+  "unittest_reported_runtime_seconds": 0.547,
+  "output_stream": "Tool-captured combined stdout/stderr; unittest writes its runner report to stderr",
+  "actual_output": "test_domain_errors_and_explicit_continuation_flags (__main__.TestCollisionalBudget.test_domain_errors_and_explicit_continuation_flags) ... ok\ntest_extreme_temperatures_underflow_is_not_source_support (__main__.TestCollisionalBudget.test_extreme_temperatures_underflow_is_not_source_support) ... ok\ntest_independent_cgs_to_si_coefficients (__main__.TestCollisionalBudget.test_independent_cgs_to_si_coefficients) ... ok\ntest_independent_wolfram_high_precision_fixture (__main__.TestCollisionalBudget.test_independent_wolfram_high_precision_fixture) ... ok\ntest_invalid_input_rejection (__main__.TestCollisionalBudget.test_invalid_input_rejection) ... ok\ntest_native_channel_conservation_charge_and_energy (__main__.TestCollisionalBudget.test_native_channel_conservation_charge_and_energy) ... ok\ntest_shared_electronic_rates_and_canonical_energy_hybrid (__main__.TestCollisionalBudget.test_shared_electronic_rates_and_canonical_energy_hybrid) ... ok\ntest_unavailable_channels_are_not_certified_zero (__main__.TestCollisionalBudget.test_unavailable_channels_are_not_certified_zero) ... ok\ntest_volume_power_against_cgs_densities (__main__.TestCollisionalBudget.test_volume_power_against_cgs_densities) ... ok\ntest_zero_density_and_population_limits_and_bad_parent (__main__.TestCollisionalBudget.test_zero_density_and_population_limits_and_bad_parent) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.547s\n\nOK\n",
+  "execution_evidence": {
+    "final_tool_chunk_id": "da18ab",
+    "tool_reported_poll_wall_seconds": 2.1763e-05,
+    "unchanged_tests_replayed": false
+  },
+  "timestamp_note": "Original execution UTC was not separately captured. recorded_utc timestamps persistence of retained actual output.",
+  "hash_capture_note": "SHA256 values recorded after the successful test from the unchanged authored provider, test and source data; this is not a fresh test execution.",
+  "author_independence": "rei_dependency authored collisional_budget.py and its focused tests; this is implementation verification, not an independent provider review.",
+  "recorded_utc": "2026-10-22T03:27:18.079502+00:00",
+  "tested_file_identities": {
+    "code/collisional_budget.py": {
+      "bytes": 11997,
+      "sha256": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252"
+    },
+    "code/test_collisional_budget.py": {
+      "bytes": 9701,
+      "sha256": "390c1c6beadaabdcd6f4584da207318e7687fd97c4c8ffc02c99cb1f3ed43826"
+    },
+    "data/HG97_COLLISIONAL_SOURCE.json": {
+      "bytes": 2668,
+      "sha256": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5"
+    },
+    "evidence/WOLFRAM_CHECK.json": {
+      "bytes": 3846,
+      "sha256": "fc7427453695e959e95b2267b94f5ee1177c421d8c56c3182e7abccd54e094e6"
+    }
+  }
+}
