@@ -1,0 +1,757 @@
+{
+  "schema": "rec.omitted_budget.implementation_review.v1",
+  "reviewer": "rei_dependency",
+  "status": "PASS_NO_BLOCKING_IMPLEMENTATION_FINDINGS",
+  "reviewed_utc": "2026-10-22T03:32:56.322079+00:00",
+  "author_disclosure": "Reviewer authored collisional_budget.py, its focused tests, and HG97_COLLISIONAL_SOURCE.json. Root authored Compton provider and postprocess_omitted.py. This is independent implementation review of the root driver, not an independent collisional-provider review. thermal_physics owns the separate theory/raw-NPZ numerical comparison.",
+  "scope": "Static source/units/support/quadrature/provenance review plus byte and structural checks of actual budget_v1 artifacts. No source-term recalculation, quadrature replay, unit-test replay, ODE or driver execution.",
+  "checks": {
+    "syntax_and_no_ODE_call_in_driver": {
+      "passed": true
+    },
+    "runtime_source_identity": {
+      "passed": true
+    },
+    "result_manifest_all_bytes": {
+      "passed": true,
+      "files_checked": 20,
+      "hash_or_size_failures": [],
+      "missing": [],
+      "unexpected": []
+    },
+    "inherited_source_identity": {
+      "passed": true
+    },
+    "inherited_parent_source_lock": {
+      "passed": true,
+      "files_checked": 49,
+      "failures": []
+    },
+    "eight_case_inventory": {
+      "passed": true
+    },
+    "s00_m02_r02_mao2017_nominal_input_binding": {
+      "passed": true
+    },
+    "s00_m02_r02_mao2017_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s00_m02_r02_mao2017_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s00_m02_r02_mao2017_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s00_m02_r02_mao2017_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s00_m02_r02_mao2017_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s00_m02_r02_mao2017_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s02_m04_r01_mao2017_nominal_input_binding": {
+      "passed": true
+    },
+    "s02_m04_r01_mao2017_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s02_m04_r01_mao2017_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s02_m04_r01_mao2017_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s02_m04_r01_mao2017_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s02_m04_r01_mao2017_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s02_m04_r01_mao2017_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s03_m03_r03_mao2017_nominal_input_binding": {
+      "passed": true
+    },
+    "s03_m03_r03_mao2017_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s03_m03_r03_mao2017_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s03_m03_r03_mao2017_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s03_m03_r03_mao2017_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s03_m03_r03_mao2017_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s03_m03_r03_mao2017_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s03_m03_r03_mao2017_refined_input_binding": {
+      "passed": true
+    },
+    "s03_m03_r03_mao2017_refined_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s03_m03_r03_mao2017_refined_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s03_m03_r03_mao2017_refined_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s03_m03_r03_mao2017_refined_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s03_m03_r03_mao2017_refined_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s03_m03_r03_mao2017_refined_case_summary_content": {
+      "passed": true
+    },
+    "s03_m03_r03_rate_derivative_nominal_input_binding": {
+      "passed": true
+    },
+    "s03_m03_r03_rate_derivative_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s03_m03_r03_rate_derivative_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s03_m03_r03_rate_derivative_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s03_m03_r03_rate_derivative_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s03_m03_r03_rate_derivative_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s03_m03_r03_rate_derivative_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s04_m04_r04_mao2017_nominal_input_binding": {
+      "passed": true
+    },
+    "s04_m04_r04_mao2017_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s04_m04_r04_mao2017_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s04_m04_r04_mao2017_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s04_m04_r04_mao2017_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s04_m04_r04_mao2017_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s04_m04_r04_mao2017_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s04_m04_r04_mao2017_refined_input_binding": {
+      "passed": true
+    },
+    "s04_m04_r04_mao2017_refined_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s04_m04_r04_mao2017_refined_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s04_m04_r04_mao2017_refined_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s04_m04_r04_mao2017_refined_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s04_m04_r04_mao2017_refined_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s04_m04_r04_mao2017_refined_case_summary_content": {
+      "passed": true
+    },
+    "s04_m04_r04_rate_derivative_nominal_input_binding": {
+      "passed": true
+    },
+    "s04_m04_r04_rate_derivative_nominal_NPZ_CRC": {
+      "passed": true,
+      "first_bad_member": null
+    },
+    "s04_m04_r04_rate_derivative_nominal_array_schema": {
+      "passed": true,
+      "arrays": 39,
+      "numeric_arrays": 30,
+      "finite": true,
+      "shapes": true,
+      "names": true
+    },
+    "s04_m04_r04_rate_derivative_nominal_copied_inputs_exact": {
+      "passed": true,
+      "fields": {
+        "x": true,
+        "z": true,
+        "T_K": true,
+        "Y": true,
+        "H_s": true,
+        "nb_m3": true,
+        "ne_m3": true,
+        "eta": true,
+        "elapsed_Myr": true,
+        "photon_energy_monopole": true,
+        "photon_number_monopole": true
+      }
+    },
+    "s04_m04_r04_rate_derivative_nominal_support_mask_and_summary_binding": {
+      "passed": true,
+      "interval_count_bindings": 22,
+      "quadrature_recomputed": false
+    },
+    "s04_m04_r04_rate_derivative_nominal_ordered_grid": {
+      "passed": true,
+      "nodes": 109,
+      "coarse_nodes": 55,
+      "coarse_retains_both_endpoints": true
+    },
+    "s04_m04_r04_rate_derivative_nominal_case_summary_content": {
+      "passed": true
+    },
+    "s03_m03_r03_pair_grids_exact": {
+      "passed": true
+    },
+    "s04_m04_r04_pair_grids_exact": {
+      "passed": true
+    },
+    "reported_completion_scope": {
+      "passed": true
+    }
+  },
+  "findings": [],
+  "new_ODE_integrations": 0,
+  "old_IVP_reruns": 0,
+  "test_suites_replayed": 0,
+  "driver_reexecutions": 0,
+  "source_terms_recalculated": false,
+  "source_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+  "reviewed_source_files": {
+    "code/postprocess_omitted.py": "b6f44f191978d449843a89da1fa2c0ebeb85b9b807883e96e8eeaea0a1a2ad8c",
+    "code/compton_budget.py": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567",
+    "code/collisional_budget.py": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252",
+    "data/HG97_COLLISIONAL_SOURCE.json": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5"
+  },
+  "case_artifacts": [
+    {
+      "label": "s00_m02_r02_mao2017_nominal",
+      "budget_npz_sha256": "00302537dd379eae06bc9c943cb699adec5bdce8755b799b88c1f5b63ae13025",
+      "summary_sha256": "2a401e72f30c3cac1d78b441fb5a49f9a78812ec12865406256a14aac1979709",
+      "input_trajectory_sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s02_m04_r01_mao2017_nominal",
+      "budget_npz_sha256": "b399cb4f5ceb20dfe03ed417313a971f1fa417e6d081bd75d25d2db84d8c6c69",
+      "summary_sha256": "4c7a507f96ac93d3e88aaeeed890e1658b755cce799518c0dbc0f017cb46fe12",
+      "input_trajectory_sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s03_m03_r03_mao2017_nominal",
+      "budget_npz_sha256": "3c63a06dfbd89252ac14147bd87a396cabb4a31010c41bb20fd084f767a5d736",
+      "summary_sha256": "e72b4a8e69f36cf2aa32cb908e1fe94540c61e58da6eef6d53f5b1f7924e6c5b",
+      "input_trajectory_sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s03_m03_r03_mao2017_refined",
+      "budget_npz_sha256": "e45ffb11c614b9b8ff9ac190d36d3b075a2b8f247d48c70ef744fd5b6c45a1a7",
+      "summary_sha256": "9137218e68e2e3c0aa4e458ae526ecba2607ce11319ea5b19ea6dc441978bb6f",
+      "input_trajectory_sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s03_m03_r03_rate_derivative_nominal",
+      "budget_npz_sha256": "cf8fa72341f144534c88afdacb3787b7b040ae915a7e1258287df0fcb86b809d",
+      "summary_sha256": "9dfd59c68497f8df3b22ca2a3fef6d7791ef71b01a0cfb9409430cd317d6126f",
+      "input_trajectory_sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s04_m04_r04_mao2017_nominal",
+      "budget_npz_sha256": "900a3d5d92a037602494a21cc72431b0ed2d7148d44703d42dfbbdd48d28577f",
+      "summary_sha256": "42f18a3de8436dc4a60473639023e91314ed2f24f9e77c0cd4e3001d7a402916",
+      "input_trajectory_sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s04_m04_r04_mao2017_refined",
+      "budget_npz_sha256": "fad9058e1fe4c605cd3c6c0cf005c7d7662fc696b5c11f365411207ca63a3b50",
+      "summary_sha256": "006a0ec3f3d12713ab3bf25db379a3b60f0187d65031ed0b93176e0b7e4b49c0",
+      "input_trajectory_sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    },
+    {
+      "label": "s04_m04_r04_rate_derivative_nominal",
+      "budget_npz_sha256": "aeb487995e84c83cb3f6af17618fd35d817cabcc3080475084773e083491cecb",
+      "summary_sha256": "d7e6d96072cfa982d941554b6bde9e51eb01a538d052ed8feae32cbf105b9557",
+      "input_trajectory_sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+      "array_count": 39,
+      "saved_nodes": 109,
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 99,
+          "continuation_nodes": 10,
+          "underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "underflow_nodes": 0
+        }
+      }
+    }
+  ],
+  "reviewed_artifact_identities": {
+    "SUMMARY.json": {
+      "bytes": 123742,
+      "sha256": "e0b94c5ab9f9a3accee9fd73eda5e2cd0ba7698f855067c53b635f2bd2c533e7"
+    },
+    "RESULT.json": {
+      "bytes": 3386,
+      "sha256": "a66c115e7233d5744009994486962c301a1098847346c124e332b09ebbf5e1ac"
+    },
+    "INPUTS.json": {
+      "bytes": 3869,
+      "sha256": "91be623c04770b2166d435b1e618975bcbf307645216f6c6084646fc0a2b3783"
+    }
+  },
+  "original_driver_run": {
+    "reported_wall_seconds": 0.6768658970013348,
+    "reported_cpu_seconds": 0.6551065709999999,
+    "saved_states": 872,
+    "new_ODE_integrations": 0,
+    "old_IVP_reruns": 0
+  },
+  "static_findings": [
+    {
+      "topic": "units_and_signs",
+      "verdict": "PASS",
+      "basis": "Signed W/m3 powers divide by nb*H*eV_J for eV/baryon per x. Adiabatic work reverses the retained positive work owner. CI binding cancels kinetic transfer in the total-gas budget; CE enters as negative gas power."
+    },
+    {
+      "topic": "temperature_forcing",
+      "verdict": "PASS",
+      "basis": "The CI forcing includes -particle_source/(H*eta), and the combined primary forcing uses ci_full. Planck reference remains separate from the actual-monopole primary sum."
+    },
+    {
+      "topic": "radiation_owners",
+      "verdict": "PASS",
+      "basis": "Actual photon normalization uses the same 4*StefanBoltzmann/c*T0^4 owner as inherited species_hierarchy.py and raw-state energy monopole index4. Planck Uref uses A_RAD_J_M3_K4*Tref^4 independently. UV retains original bin-centre moments and records continuum differences/occupation."
+    },
+    {
+      "topic": "support_classification",
+      "verdict": "PASS",
+      "basis": "Every supported interval requires both endpoint masks. CI-dependent forcing requires CI support; total-gas primary drops CI support after exact binding exchange cancellation. Continuation/boundary contributions remain separately reported, and unavailable native masks persist."
+    },
+    {
+      "topic": "retained_grid_quadrature",
+      "verdict": "PASS",
+      "basis": "Primary composite trapezoid is positive-weight on ordered109nodes; stride2 produces55nodes including both endpoints; Simpson is diagnostic. Code and contract do not promote these to a continuous-error bound or solved temperature response."
+    },
+    {
+      "topic": "provenance_and_creation",
+      "verdict": "PASS",
+      "basis": "Driver checks old source identity and matching COMPLETE trajectory receipt/bytes before use. Output root is create-only; runtime sources and input trajectory hashes are rechecked; RESULT binds all20 output payloads."
+    },
+    {
+      "topic": "known_preexecution_fixes",
+      "verdict": "PASS",
+      "basis": "Executed driver uses the independent CI gradient residual numerator, checks particle-source balance, stores masks and gradient, and saves the Planck reference energy density with its own constant."
+    }
+  ],
+  "review_wall_seconds": 0.2538114710005175
+}

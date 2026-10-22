@@ -1,0 +1,525 @@
+{
+  "schema": "rec.thermal_omitted_budget.sources.v1",
+  "prepared_utc": "2026-10-22",
+  "preparer": "thermal_physics",
+  "authorship_scope": "Author of THEORY_KO.md and this provenance; not independent validation of own theory. Independent implementation/results review is a separate receipt.",
+  "source_identity_reused": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+  "primary_literature": [
+    {
+      "id": "HG97",
+      "authors": [
+        "Lam Hui",
+        "Nickolay Y. Gnedin"
+      ],
+      "title": "Equation of State of the Photoionized Intergalactic Medium",
+      "journal": "MNRAS 292 (1997), 27",
+      "doi": "10.1093/mnras/292.1.27",
+      "landing_url": "https://arxiv.org/abs/astro-ph/9612232",
+      "pdf_url": "https://arxiv.org/pdf/astro-ph/9612232v1",
+      "version": "astro-ph/9612232v1, submitted 1996-12-26",
+      "retrieved_pdf": {
+        "bytes": 1383278,
+        "sha256": "6ea0b803b554c91d598705f96416e1a8b67549fb02cb567944eaacdba5d148b0",
+        "redistributed": false
+      },
+      "locations": {
+        "thresholds_printed_page": 27,
+        "HI_HeI_CI_printed_page": 29,
+        "HeII_CI_and_HI_HeII_CE_printed_page": 30,
+        "zero_based_pdf_pages": [
+          26,
+          28,
+          29
+        ]
+      },
+      "adopted": "CI HI/HeI/HeII fits; CE HI/HeII energy coefficients; published temperature accuracy intervals.",
+      "not_adopted": "HG recombination rates/cooling and isotropic cosmological Compton formula do not replace existing owners."
+    },
+    {
+      "id": "SS2000",
+      "authors": [
+        "S. Y. Sazonov",
+        "R. A. Sunyaev"
+      ],
+      "title": "The profile of a narrow line after single scattering by Maxwellian electrons: relativistic corrections to the kernel of the integral kinetic equation",
+      "journal": "Astrophysical Journal 543 (2000), 28-55",
+      "doi": "10.1086/317078",
+      "landing_url": "https://arxiv.org/abs/astro-ph/9910280",
+      "pdf_url": "https://arxiv.org/pdf/astro-ph/9910280v3",
+      "version": "astro-ph/9910280v3, revised 2000-09-14",
+      "retrieved_pdf": {
+        "bytes": 624758,
+        "sha256": "ba510cf6f707a7aa52d8da6916aa7df250a103c738ead3a9f262431294d86902",
+        "redistributed": false
+      },
+      "locations": {
+        "anisotropic_occupation_equation": "(2), printed page2, PDF index1",
+        "Kompaneets_equation": "(6), printed page2, PDF index1",
+        "angle_dependent_moments": "(18), printed pages7-8, PDF indices6-7",
+        "angle_integrated_first_moment": "(25), printed page13, PDF index12"
+      },
+      "adopted": "Leading Thomson/nonrelativistic thermal and spontaneous recoil moments; occupation definition and induced-scattering dependency.",
+      "approximation": "kBT and photon E much smaller than m_e c^2; isotropic Maxwellian electrons in the non-tilted local frame."
+    }
+  ],
+  "coefficient_transcription": {
+    "temperature_variable": "t=T/(1 K), lambda=2*T_rate/T",
+    "CI_formula_cgs": "A*t^(-3/2)*exp(-lambda/2)*lambda^p/[1+(lambda/b)^d]^f",
+    "CI_units_cgs": "cm^3 s^-1",
+    "CI_to_SI": 1e-06,
+    "CI_accuracy_domain_K": [
+      10000.0,
+      1000000000.0
+    ],
+    "CI_source_stated_accuracy_fraction": 0.03,
+    "CI_rows": [
+      {
+        "channel": "HI",
+        "rate_threshold_K": 157807.0,
+        "A": 21.11,
+        "lambda_power": -1.089,
+        "lambda_denominator_scale": 0.354,
+        "inner_power": 0.874,
+        "outer_power": 1.101,
+        "rate_threshold_eV": 13.598755100993442,
+        "binding_owner_chi_eV": 13.599999999999998,
+        "binding_to_rate_threshold_relative_difference": 9.154507139164103e-05
+      },
+      {
+        "channel": "HeI",
+        "rate_threshold_K": 285335.0,
+        "A": 32.38,
+        "lambda_power": -1.146,
+        "lambda_denominator_scale": 0.416,
+        "inner_power": 0.987,
+        "outer_power": 1.056,
+        "rate_threshold_eV": 24.588267863541944,
+        "binding_owner_chi_eV": 24.59,
+        "binding_to_rate_threshold_relative_difference": 7.044564780533946e-05
+      },
+      {
+        "channel": "HeII",
+        "rate_threshold_K": 631515.0,
+        "A": 19.95,
+        "lambda_power": -1.089,
+        "lambda_denominator_scale": 0.553,
+        "inner_power": 0.735,
+        "outer_power": 1.275,
+        "rate_threshold_eV": 54.419752150436125,
+        "binding_owner_chi_eV": 54.42,
+        "binding_to_rate_threshold_relative_difference": 4.554404496426301e-06
+      }
+    ],
+    "CE_formula_cgs": "A*t^power*exp(-0.75*lambda/2)/(1+sqrt(T/(1e5 K)))",
+    "CE_units_cgs": "erg cm^3 s^-1",
+    "CE_to_SI": 1e-13,
+    "CE_accuracy_domain_K": [
+      5000.0,
+      500000.0
+    ],
+    "CE_source_stated_accuracy_fraction_approx": 0.1,
+    "CE_rows": [
+      {
+        "channel": "HI",
+        "A": 7.5e-19,
+        "temperature_power": 0.0,
+        "rate_threshold_K": 157807.0
+      },
+      {
+        "channel": "HeII",
+        "A": 5.54e-17,
+        "temperature_power": -0.397,
+        "rate_threshold_K": 631515.0
+      }
+    ],
+    "outside_domain": "Evaluate a separately labeled analytic continuation; retain masks; no zero clipping.",
+    "missing_channels": [
+      "HeI CE/metastable",
+      "Li CI",
+      "Li CE"
+    ],
+    "supported_interval_definition": "Both endpoints satisfy the source accuracy domain. All other saved intervals are continuation/boundary contributions."
+  },
+  "existing_source_owners": [
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/code/atomic_network.py",
+      "bytes": 15617,
+      "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/data/atomic_model.json",
+      "bytes": 3085,
+      "sha256": "9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/data/atomic_coefficients.json",
+      "bytes": 6086,
+      "sha256": "38397e6b560f463f09a5923eaa5902a24312e5246abc158694451c631cd4d6bc"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/vendor/baseline/species_hierarchy.py",
+      "bytes": 6083,
+      "sha256": "ced7906b35c26d8d0374ee8ce7f67ceb957b51a63d44e5a2661997b7e46983c5"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/vendor/baseline/lrs_boltzmann.py",
+      "bytes": 10300,
+      "sha256": "06ef834e4cd7adacf01f0ad6e3becc5aea9a493b5b99fd398be82610543984cc"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/code/geometry.py",
+      "bytes": 5599,
+      "sha256": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/vendor/baseline/REI_BACKGROUND_FAMILY_LOCK.json",
+      "bytes": 2552,
+      "sha256": "46f818c2f9de890c72f71fa3cc70366b28c42ca0d65190bd905b6310023e7af0"
+    },
+    {
+      "path": "research/rec_rei_hheli_sandbox_20261021/vendor/atomic_reused/lithium_coefficients.json",
+      "bytes": 3528,
+      "sha256": "cb171718019b2851060625b7794314876dadded8bc258378b4321a37f26bd11d"
+    }
+  ],
+  "radiation_ownership": {
+    "photon_energy_monopole_raw_state_index": 4,
+    "actual_U_formula": "rho_crit_J_m3*omega_gamma*Egamma0/a^4",
+    "Tcmb0_K": 2.7255,
+    "actual_model": "Independent energy and number angular moments ell<=8, elastic Thomson; no stored frequency spectrum.",
+    "neutrinos_excluded_from_Compton": true,
+    "Planck_reference": "Separate isotropic reference Tref=Tcmb0/a, Uref=a_R*Tref^4; not a reconstruction of actual photon spectrum.",
+    "UV": {
+      "source_convention": "External local isotropic number flux, bin-integrated m^-2 s^-1; flux is c times photon number density",
+      "support_eV": [
+        5.0,
+        200.0
+      ],
+      "bin_count": 71,
+      "number_power_index": -2.5,
+      "spectrum_definition": "epsilon=E/(1 eV); dPhi/depsilon=N epsilon^p",
+      "normalization_N_m2_s": 335924659928.32745,
+      "normalization_relative_spread": 0.0,
+      "maximum_continuous_occupation_at_uv_one": 6.080164368120585e-20,
+      "U_J_m3_at_uv_one": 1.35220315295051e-16,
+      "M_J2_m3_at_uv_one": 6.850967980980672e-34,
+      "spontaneous_Compton_temperature_K": 91741.6864919717,
+      "U_bin_vs_continuous_relative_difference": 0.0002579823548909399,
+      "M_bin_vs_continuous_relative_difference": 0.0002570606173928347,
+      "maximum_photon_energy_over_mec2": 0.00039139023618200107
+    }
+  },
+  "constants_for_preparation": {
+    "c_m_s": 299792458.0,
+    "kB_J_K": 1.380649e-23,
+    "h_J_s": 6.62607015e-34,
+    "eV_J": 1.602176634e-19,
+    "m_e_kg": 9.1093837139e-31,
+    "electron_mass_local_source": "CODATA 2022",
+    "sigma_T_m2_inherited": 6.6524587051e-29
+  },
+  "saved_node_evidence": [
+    {
+      "case_id": "s00_m02_r02_mao2017_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s00_m02_r02_mao2017_nominal/trajectory.npz",
+        "bytes": 94417,
+        "sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s00_m02_r02_mao2017_nominal/RESULT.json",
+        "bytes": 3995,
+        "sha256": "b4e5637847d34894cff9827dab412f92b4bd8f856cbb8e53b5648514386a41d1"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14177.029709642544
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        1.0,
+        1.0
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3907718305476103e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s02_m04_r01_mao2017_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s02_m04_r01_mao2017_nominal/trajectory.npz",
+        "bytes": 107628,
+        "sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s02_m04_r01_mao2017_nominal/RESULT.json",
+        "bytes": 4016,
+        "sha256": "7f48be1dea97045126c4a4bdc337f617e6f56b4474be9bcf75f84bfc828bb3b2"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14177.00409648051
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        1.000527321420525,
+        1.0007032806422873
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3907675112206754e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s03_m03_r03_mao2017_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/trajectory.npz",
+        "bytes": 108065,
+        "sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/RESULT.json",
+        "bytes": 4015,
+        "sha256": "a36d74ab59fdd30fa4018acbab820f1d848f0793270178960498779996a95526"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14176.447240327188
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        0.999042732447023,
+        0.9993087616136122
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3906736046667435e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s03_m03_r03_mao2017_refined",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/trajectory.npz",
+        "bytes": 107835,
+        "sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/RESULT.json",
+        "bytes": 4014,
+        "sha256": "d3d32d495f178198c06663373fe33b5cff750270e792a1db735d38ef9ad10e56"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14176.447839355818
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        0.999042732447023,
+        0.9993087616082433
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3906737056851375e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s03_m03_r03_rate_derivative_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_rate_derivative_nominal/trajectory.npz",
+        "bytes": 108005,
+        "sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_rate_derivative_nominal/RESULT.json",
+        "bytes": 4029,
+        "sha256": "50f126e62f1c3151ae80199b86e4724cc5fc097d12c2405736b2c58ef34b8078"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14173.86582874357
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        0.999042732447023,
+        0.9993087616139581
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3902382831485154e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s04_m04_r04_mao2017_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/trajectory.npz",
+        "bytes": 107787,
+        "sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/RESULT.json",
+        "bytes": 4008,
+        "sha256": "6ed868b281b974f1201a3f30d5a11435bb18d5637f03a6c104fd1b5bce58e830"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14167.031370243054
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        1.0028725371021108,
+        1.012397642548296
+      ],
+      "maximum_electron_kBT_over_mec2": 2.389085740535942e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s04_m04_r04_mao2017_refined",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/trajectory.npz",
+        "bytes": 107319,
+        "sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/RESULT.json",
+        "bytes": 4013,
+        "sha256": "4349b6fd76fdd3e2bf96bdab563bb288cc554e891bcf9c1c06a66df4b6055c08"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14167.031966208237
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        1.0028725371021108,
+        1.0123976424036807
+      ],
+      "maximum_electron_kBT_over_mec2": 2.3890858410377255e-06,
+      "exact_zero_neutron_tritium": true
+    },
+    {
+      "case_id": "s04_m04_r04_rate_derivative_nominal",
+      "input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_rate_derivative_nominal/trajectory.npz",
+        "bytes": 107731,
+        "sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216"
+      },
+      "receipt_input": {
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_rate_derivative_nominal/RESULT.json",
+        "bytes": 4031,
+        "sha256": "f07d46659090529847673bfb3acd6f00ba003f3af235b1ca2a20c2eef7984a61"
+      },
+      "saved_count": 109,
+      "T_K_range": [
+        1081.3197799717439,
+        14164.45299919549
+      ],
+      "ci_outside_accuracy_nodes": 10,
+      "ci_supported_intervals": 98,
+      "ce_outside_accuracy_nodes": 3,
+      "ce_supported_intervals": 105,
+      "uv_amplitude_range": [
+        0.08246384705644905,
+        0.9999962733607158
+      ],
+      "Egamma0_range": [
+        1.0028725371021108,
+        1.0123976425638384
+      ],
+      "maximum_electron_kBT_over_mec2": 2.388650931764608e-06,
+      "exact_zero_neutron_tritium": true
+    }
+  ],
+  "equation_to_code": [
+    {
+      "theory": "(6)-(12)",
+      "target": "code/collisional_budget.py",
+      "source": [
+        "HG97",
+        "existing atomic binding owner"
+      ]
+    },
+    {
+      "theory": "(13)-(21)",
+      "target": "code/compton_budget.py",
+      "source": [
+        "SS2000",
+        "existing photon/UV source owners"
+      ]
+    },
+    {
+      "theory": "(4)-(5), fixed saved intervals",
+      "target": "code/postprocess_omitted.py",
+      "source": [
+        "derived particle/energy ledger",
+        "immutable thermal8 NPZ"
+      ]
+    }
+  ],
+  "tools_and_retrieval": {
+    "web_primary_pdf_and_metadata": "Successful",
+    "exa_search_and_fetch": "Used for initial discovery; some raw GitHub URLs were not crawled; not used as adopted coefficient evidence.",
+    "scispace_search": "Actual successful search used for literature discovery; adopted equations verified in primary PDFs.",
+    "default_shell_pdf_fetch": "Network blocked with Operation not permitted; preserved in scratch retrieval log.",
+    "escalated_readonly_public_pdf_fetch": "Successful; only public arXiv bytes downloaded to scratch.",
+    "local_source_search": "rg/read-only inspection; no existing H/He CI/CE or Compton energy module was adopted from donor.",
+    "grackle_status": "Official documentation located for implementation context; no Grackle code or coefficient adopted.",
+    "no_new_ode_integrations": true,
+    "initial_npz_probe": "First exploratory read requested nonexistent key y; after inspecting NPZ keys used raw_state. No files or trajectories were changed."
+  },
+  "interpretation_limits": [
+    "Fixed-path forcing is not an evolved deltaT or rigorous omission error bound.",
+    "Leading actual-U hot term is identifiable; full CMB recoil/stimulated closure is not supplied.",
+    "Planck comparison replaces the actual-U hot term in a comparison; it is never added to that same component.",
+    "No continuous/dense trajectory recovery from the109 saved nodes.",
+    "CI kinetic loss and binding gain cancel in total gas energy; CI particle source must enter the temperature forcing.",
+    "Low-temperature fit continuation retains an empirical accuracy obligation even if its fitted contribution is small.",
+    "Physical HOLD and inherited production/global-convergence/REI limits remain."
+  ]
+}

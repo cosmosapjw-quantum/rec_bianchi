@@ -1,0 +1,324 @@
+{
+  "schema": "rec.omitted.physics_review.v1",
+  "reviewed_utc": "2026-10-22T03:30:59.647786+00:00",
+  "status": "PASS_SCOPED_IMPLEMENTATION_AND_FIXED_PATH_RESULTS",
+  "source_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+  "source_files": {
+    "code/postprocess_omitted.py": "b6f44f191978d449843a89da1fa2c0ebeb85b9b807883e96e8eeaea0a1a2ad8c",
+    "code/compton_budget.py": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567",
+    "code/collisional_budget.py": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252",
+    "data/HG97_COLLISIONAL_SOURCE.json": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5"
+  },
+  "theory_identity": {
+    "path": "THEORY_KO.md",
+    "sha256": "e6c07f93646a62e6e843bfd0eda0a9fe4aa35e089e8301cd5807df824b936328",
+    "bytes": 18672
+  },
+  "provenance_identity": {
+    "path": "provenance/SOURCES.json",
+    "sha256": "b9232d63d3afe002306d3292e9c6eae798fc16db277598fe383a3db77ccecf04",
+    "bytes": 20021
+  },
+  "authorship_disclosure": "Reviewer authored THEORY_KO.md and SOURCES.json. Review is independent of the runtime implementation and reconstructs results from raw prior NPZ; it is not an independent review of own theory.",
+  "independent_method": "Direct HG97 original formula evaluation and independent Compton moments; no new-runtime imports. Uses stored H,nb and rawY,T, independently reconstructs ne and eta.",
+  "source_inputs": [
+    {
+      "path": "results/budget_v1/RESULT.json",
+      "sha256": "a66c115e7233d5744009994486962c301a1098847346c124e332b09ebbf5e1ac",
+      "bytes": 3386
+    },
+    {
+      "path": "results/budget_v1/SUMMARY.json",
+      "sha256": "e0b94c5ab9f9a3accee9fd73eda5e2cd0ba7698f855067c53b635f2bd2c533e7",
+      "bytes": 123742
+    },
+    {
+      "path": "results/budget_v1/INPUTS.json",
+      "sha256": "91be623c04770b2166d435b1e618975bcbf307645216f6c6084646fc0a2b3783",
+      "bytes": 3869
+    }
+  ],
+  "corrected_before_first_postprocess": [
+    {
+      "id": "PM-OMIT-01",
+      "issue": "A common-event CI balance is identically zero and is not an independent gradient check.",
+      "resolution": "Driver uses nb I\u00b7dY minus binding and separately gates the charge/particle residual."
+    },
+    {
+      "id": "PM-OMIT-02",
+      "issue": "Stored Planck-reference energy moment used a slightly different radiation constant than its computed power.",
+      "resolution": "Saved reference U now uses the same A_RAD*Tref^4. Actual U retains the inherited source normalization."
+    }
+  ],
+  "open_blocking_findings": [],
+  "new_ODE_integrations": 0,
+  "old_IVP_reruns": 0,
+  "checked_saved_states": 872,
+  "checked_trajectories": 8,
+  "primary_109_trapezoid_ranges_eV_per_baryon": {
+    "CMB_hot": [
+      -2.591856217394395,
+      -2.5760445796984865
+    ],
+    "Planck_reference": [
+      -2.574439153998848,
+      -2.5696911259480872
+    ],
+    "UV_net": [
+      6.231574209256072e-05,
+      6.23362852000175e-05
+    ],
+    "CI_kinetic": [
+      -2.064870581606626e-05,
+      -2.0445815207693062e-05
+    ],
+    "CI_binding": [
+      2.0445815207693062e-05,
+      2.064870581606626e-05
+    ],
+    "CE_kinetic": [
+      -0.0013221456710345203,
+      -0.0013122178797134465
+    ],
+    "base_total_kinetic": [
+      -2.593126565347224,
+      -2.5773244461199116
+    ],
+    "base_total_gas": [
+      -2.5931061195320173,
+      -2.5773038092954246
+    ]
+  },
+  "primary_fixed_path_forcing_range": [
+    -1.029553990151305,
+    -1.0230800204133421
+  ],
+  "scientific_assessment": "The identifiable actual-U thermal Compton term dominates the supplied omitted components and motivates Compton coupling work. The fixed-path result does not solve a corrected temperature or close the missing full photon spectrum.",
+  "limitations": [
+    "First-order Thomson/nonrelativistic Compton; full CMB recoil/induced closure absent.",
+    "The Planck curve is a separately assumed isotropic field, not an actual-spectrum reconstruction.",
+    "HG source accuracy intervals and low-T analytic continuation remain distinct; no new empirical validation.",
+    "HeI CE/metastables and Li CI/CE are unavailable; other missing processes are not bounded by this result.",
+    "109-point trapezoid,55-point coarsening and109-point Simpson are retained-grid diagnostics, not continuous error bounds.",
+    "Integrated forcing is not delta lnT, a solved thermal history, or a rigorous total omission bound.",
+    "Budget interval starts at the restart nearz7.9637; inherited elapsed_Myr remains cumulative fromz20.",
+    "No new geometry/stress/opacity response can be inferred without solving the changed coupled problem.",
+    "Physical HOLD, production NOT_APPROVED, global convergence NOT_RUN, U5 CLOSED_HOLD_NOT_RESET and REI_activation=false remain."
+  ],
+  "case_comparisons": [
+    {
+      "case_id": "s00_m02_r02_mao2017_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s00_m02_r02_mao2017_nominal/budget.npz",
+        "sha256": "00302537dd379eae06bc9c943cb699adec5bdce8755b799b88c1f5b63ae13025",
+        "bytes": 98888
+      },
+      "maximum_relative_power_difference": 1.2893588677480957e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.857310706129453e-14,
+      "maximum_relative_particle_source_difference": 8.601338351084852e-15,
+      "maximum_relative_forcing_difference": 1.2121589270749315e-15,
+      "maximum_relative_integral_difference": 2.4600999429354835e-15,
+      "CI_binding_balance_scaled": 1.8029595238909679e-16,
+      "particle_balance_scaled": 2.0971922767284734e-16,
+      "baryon_balance_scaled": 1.0894879138468754e-16,
+      "isotope_balance_scaled": 5.384947462350322e-17,
+      "actual_radiation_moment_relative_difference": 9.173357947723955e-16,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s02_m04_r01_mao2017_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s02_m04_r01_mao2017_nominal/budget.npz",
+        "sha256": "b399cb4f5ceb20dfe03ed417313a971f1fa417e6d081bd75d25d2db84d8c6c69",
+        "bytes": 99596
+      },
+      "maximum_relative_power_difference": 1.1242866985467219e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.8754066333009e-14,
+      "maximum_relative_particle_source_difference": 7.598478738942412e-15,
+      "maximum_relative_forcing_difference": 1.3468982787748716e-15,
+      "maximum_relative_integral_difference": 2.2961372717931853e-15,
+      "CI_binding_balance_scaled": 2.0177275212225504e-16,
+      "particle_balance_scaled": 2.1790674723563565e-16,
+      "baryon_balance_scaled": 1.0885128463901316e-16,
+      "isotope_balance_scaled": 5.013420242750676e-17,
+      "actual_radiation_moment_relative_difference": 9.243214883194272e-16,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s03_m03_r03_mao2017_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s03_m03_r03_mao2017_nominal/budget.npz",
+        "sha256": "3c63a06dfbd89252ac14147bd87a396cabb4a31010c41bb20fd084f767a5d736",
+        "bytes": 99599
+      },
+      "maximum_relative_power_difference": 1.3552477014299138e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.893315990621235e-14,
+      "maximum_relative_particle_source_difference": 8.448005324602535e-15,
+      "maximum_relative_forcing_difference": 1.6979660230698554e-15,
+      "maximum_relative_integral_difference": 1.9701471752713035e-15,
+      "CI_binding_balance_scaled": 2.0245576969526467e-16,
+      "particle_balance_scaled": 2.179548471140699e-16,
+      "baryon_balance_scaled": 1.1002898499299718e-16,
+      "isotope_balance_scaled": 5.1970136489595494e-17,
+      "actual_radiation_moment_relative_difference": 1.0411751517782731e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s03_m03_r03_mao2017_refined",
+      "budget_npz": {
+        "path": "results/budget_v1/s03_m03_r03_mao2017_refined/budget.npz",
+        "sha256": "e45ffb11c614b9b8ff9ac190d36d3b075a2b8f247d48c70ef744fd5b6c45a1a7",
+        "bytes": 99533
+      },
+      "maximum_relative_power_difference": 1.3036407938581346e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.893315990621235e-14,
+      "maximum_relative_particle_source_difference": 1.295782021646106e-14,
+      "maximum_relative_forcing_difference": 1.3452759595024402e-15,
+      "maximum_relative_integral_difference": 2.461179950698156e-15,
+      "CI_binding_balance_scaled": 1.571616854986698e-16,
+      "particle_balance_scaled": 2.150733501374741e-16,
+      "baryon_balance_scaled": 1.0899015136063954e-16,
+      "isotope_balance_scaled": 5.054601009055841e-17,
+      "actual_radiation_moment_relative_difference": 1.0411751517793205e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s03_m03_r03_rate_derivative_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s03_m03_r03_rate_derivative_nominal/budget.npz",
+        "sha256": "cf8fa72341f144534c88afdacb3787b7b040ae915a7e1258287df0fcb86b809d",
+        "bytes": 99549
+      },
+      "maximum_relative_power_difference": 1.3020767316534111e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.893315990621235e-14,
+      "maximum_relative_particle_source_difference": 7.45129137360435e-15,
+      "maximum_relative_forcing_difference": 1.3782521455413744e-15,
+      "maximum_relative_integral_difference": 3.285971364533085e-15,
+      "CI_binding_balance_scaled": 1.837337583002857e-16,
+      "particle_balance_scaled": 2.1026914896348062e-16,
+      "baryon_balance_scaled": 1.0776853832640949e-16,
+      "isotope_balance_scaled": 5.2156661076180505e-17,
+      "actual_radiation_moment_relative_difference": 1.0411751517779658e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s04_m04_r04_mao2017_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s04_m04_r04_mao2017_nominal/budget.npz",
+        "sha256": "900a3d5d92a037602494a21cc72431b0ed2d7148d44703d42dfbbdd48d28577f",
+        "bytes": 99741
+      },
+      "maximum_relative_power_difference": 1.4924689929861505e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.87195143589608e-14,
+      "maximum_relative_particle_source_difference": 7.76598631452733e-15,
+      "maximum_relative_forcing_difference": 1.678921647829544e-15,
+      "maximum_relative_integral_difference": 2.643959735238581e-15,
+      "CI_binding_balance_scaled": 1.9409041102526387e-16,
+      "particle_balance_scaled": 2.162833253829437e-16,
+      "baryon_balance_scaled": 1.0883523936986104e-16,
+      "isotope_balance_scaled": 5.185970600037458e-17,
+      "actual_radiation_moment_relative_difference": 1.0288960802329322e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s04_m04_r04_mao2017_refined",
+      "budget_npz": {
+        "path": "results/budget_v1/s04_m04_r04_mao2017_refined/budget.npz",
+        "sha256": "fad9058e1fe4c605cd3c6c0cf005c7d7662fc696b5c11f365411207ca63a3b50",
+        "bytes": 99720
+      },
+      "maximum_relative_power_difference": 1.2768440419688303e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.87195143589608e-14,
+      "maximum_relative_particle_source_difference": 9.058528143150406e-15,
+      "maximum_relative_forcing_difference": 1.3241466132555882e-15,
+      "maximum_relative_integral_difference": 2.8092055734541712e-15,
+      "CI_binding_balance_scaled": 1.6504005553894154e-16,
+      "particle_balance_scaled": 2.2100335200555084e-16,
+      "baryon_balance_scaled": 1.0539658021894362e-16,
+      "isotope_balance_scaled": 5.446003789584912e-17,
+      "actual_radiation_moment_relative_difference": 1.028896080256451e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    },
+    {
+      "case_id": "s04_m04_r04_rate_derivative_nominal",
+      "budget_npz": {
+        "path": "results/budget_v1/s04_m04_r04_rate_derivative_nominal/budget.npz",
+        "sha256": "aeb487995e84c83cb3f6af17618fd35d817cabcc3080475084773e083491cecb",
+        "bytes": 99613
+      },
+      "maximum_relative_power_difference": 1.2661509728806738e-14,
+      "maximum_relative_coefficient_difference": 7.865494115477097e-14,
+      "maximum_relative_dY_difference": 7.87195143589608e-14,
+      "maximum_relative_particle_source_difference": 7.256962789634688e-15,
+      "maximum_relative_forcing_difference": 1.3976949548163277e-15,
+      "maximum_relative_integral_difference": 1.1995712343384603e-15,
+      "CI_binding_balance_scaled": 1.7619373525401538e-16,
+      "particle_balance_scaled": 1.9314083957107793e-16,
+      "baryon_balance_scaled": 1.1077142617385185e-16,
+      "isotope_balance_scaled": 5.147134306082896e-17,
+      "actual_radiation_moment_relative_difference": 1.0288960802193571e-15,
+      "reference_radiation_moment_relative_difference": 1.0069760023753477e-15,
+      "CI_outside_source_domain_nodes": 10,
+      "CE_outside_source_domain_nodes": 3,
+      "exact_zero_neutron_tritium": true,
+      "all_scoped_checks_passed": true
+    }
+  ],
+  "independent_artifacts": [
+    {
+      "path": "evidence/independent_physics/recompute_saved8.py",
+      "sha256": "2fe7f971211a080951aa4523a4c594e97644bede377a45e20f669db54063a23f",
+      "bytes": 5711
+    },
+    {
+      "path": "evidence/independent_physics/compare_budget.py",
+      "sha256": "ac4f3ccc9f974c5ddc067630463ce08fc9e1a725412757edebd398cb55473256",
+      "bytes": 12535
+    },
+    {
+      "path": "evidence/independent_physics/INDEPENDENT_FIXED_PATH.json",
+      "sha256": "083ba8ed066ae341504421308775e3d45485685b5550067d87eb3d59a9ac43f9",
+      "bytes": 21619
+    },
+    {
+      "path": "evidence/independent_physics/independent_fixed_path.npz",
+      "sha256": "862d23e16a3d14a0758fa65b0659f1603ed1a32a0e4dbd3ddcb0f89c6fc20c0b",
+      "bytes": 207955
+    }
+  ]
+}

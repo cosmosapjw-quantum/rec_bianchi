@@ -1,0 +1,36 @@
+{
+  "status": "PASS_CURRENT_V3",
+  "root_visual_review": "All three v1 PNGs viewed; v2 PNG01/03 viewed; v3 PNG02 viewed. Identical byte reuse binds v3 PNG01/03 to their reviewed v2 images. Independent reviewer directly viewed all three v3 PNGs.",
+  "versions": {
+    "v1": "RETIRED_TITLE_OVERLAP",
+    "v2": "RETIRED_PNG02_TRUNCATED_IDAT_CHECKSUM",
+    "v3": "CURRENT_PNG_CRC_AND_VISUAL_PASS"
+  },
+  "identity_reuse": [
+    {
+      "name": "01_compton_energy_budget.png",
+      "v2_v3_identical": true
+    },
+    {
+      "name": "03_numerical_comparisons.png",
+      "v2_v3_identical": true
+    }
+  ],
+  "fix": "Render into BytesIO, verify PNG CRC before writing, verify exact file bytes. No runtime or source-budget reexecution.",
+  "new_ODE_integrations": 0,
+  "PDF_visual_review": "NOT_RUN; vector exports from same figure objects",
+  "current_pngs": {
+    "01_compton_energy_budget.png": {
+      "sha256": "7f0b6641d795c5fab1123bb70e96be9ebb8f3b0ae7b9617ca57aa51364cc6c18",
+      "bytes": 232529
+    },
+    "02_source_support_and_transfer.png": {
+      "sha256": "7417cc4f00c23ddf7a1ba4db4da89df8a24906fffd52a93831466fb521d50ee2",
+      "bytes": 408546
+    },
+    "03_numerical_comparisons.png": {
+      "sha256": "9bc9faec19c320af1ab2ab00658cca5edf8cea49d78aac0e78f8fca5677b0651",
+      "bytes": 171342
+    }
+  }
+}

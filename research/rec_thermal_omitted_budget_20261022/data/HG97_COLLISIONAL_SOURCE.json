@@ -1,0 +1,49 @@
+{
+  "schema": "rec.omitted_budget.hg97_collisional.v1",
+  "source": {
+    "authors": "Lam Hui and Nickolay Y. Gnedin",
+    "title": "Equation of State of the Photoionized Intergalactic Medium",
+    "reference": "Hui and Gnedin (1997), Appendix A",
+    "arxiv": "astro-ph/9612232v1",
+    "url": "https://arxiv.org/pdf/astro-ph/9612232",
+    "human_pages": [27, 29, 30],
+    "read_utc_date": "2026-10-22"
+  },
+  "lambda_definition": "lambda_j = 2 * threshold_K[j] / temperature_K",
+  "threshold_K": {"HI": 157807.0, "HeI": 285335.0, "HeII": 631515.0},
+  "CI": {
+    "formula_cgs": "A*T^(-1.5)*exp(-lambda/2)*lambda^(-b)/(1+(lambda/c)^d)^e",
+    "coefficient_cgs_units": "cm^3 s^-1",
+    "cgs_to_SI": 1e-6,
+    "published_temperature_range_K": [10000.0, 1000000000.0],
+    "published_relative_accuracy": 0.03,
+    "underlying_reference": "HG97 fit to Lotz (1967)",
+    "parameters": {
+      "HI": {"A": 21.11, "b": 1.089, "c": 0.354, "d": 0.874, "e": 1.101},
+      "HeI": {"A": 32.38, "b": 1.146, "c": 0.416, "d": 0.987, "e": 1.056},
+      "HeII": {"A": 19.95, "b": 1.089, "c": 0.553, "d": 0.735, "e": 1.275}
+    }
+  },
+  "CE": {
+    "formula_cgs": "A*T^temperature_power*exp(-0.75*threshold_K/T)/(1+sqrt(T/100000 K))",
+    "coefficient_cgs_units": "erg cm^3 s^-1",
+    "cgs_to_SI": 1e-13,
+    "published_temperature_range_K": [5000.0, 500000.0],
+    "published_relative_accuracy_approximate": 0.1,
+    "underlying_reference": "HG97 compilation of Black (1981), corrected by Cen (1992)",
+    "parameters": {
+      "HI": {"A": 7.5e-19, "temperature_power": 0.0},
+      "HeII": {"A": 5.54e-17, "temperature_power": -0.397}
+    }
+  },
+  "application": {
+    "abundance_definition": "Y_i is nuclei or ions of native species i per baryon",
+    "isotope_extension": "One electronic coefficient for H1/D/T and one for He3/He4 at the same charge; isotope shifts are not added.",
+    "CI_energy_increment": "Use atomic.ionization_energy_J[upper] - atomic.ionization_energy_J[lower], not k_B times the HG97 rate threshold.",
+    "CI_energy_scope": "Kinetic energy is transferred to canonical ionization binding energy. CI itself has zero photon escape.",
+    "threshold_hybrid": "HG97 thresholds control rate shapes; the parent's energy ladder controls energy accounting. Their mismatch is reported per channel.",
+    "CE_energy_scope": "Positive optically thin line-cooling/escape power for the two included electronic channels.",
+    "extrapolation": "Explicitly requested analytic continuation is diagnostic and has no published accuracy claim outside the stated intervals.",
+    "unavailable": ["CI_LiI", "CI_LiII", "CI_LiIII", "CE_HeI", "CE_LiI", "CE_LiII", "CE_LiIII"]
+  }
+}

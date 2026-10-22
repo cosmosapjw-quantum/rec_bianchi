@@ -1,0 +1,42 @@
+{
+  "schema": "rec.omitted.symbolic_check.v1",
+  "tool": "Wolfram Language evaluator",
+  "code": "Clear[kb,temp,nb,eta,hub,chi,r,x,beta,mu]; n[x_]:=1/(Exp[x]-1); forcing=(2*(-nb*chi*r)/(3*kb*temp*nb)-r)/(hub*eta); expected=-(2*chi/(3*kb*temp)+1)*r/(hub*eta); angular=Integrate[(1-beta*mu)^2/(1-beta^2)-(1-beta*mu),{mu,-1,1}]/2; params={{157807,2111/100,1089/1000,354/1000,874/1000,1101/1000},{285335,3238/100,1146/1000,416/1000,987/1000,1056/1000},{631515,1995/100,1089/1000,553/1000,735/1000,1275/1000}}; rate[t_,p_]:=With[{lam=2*p[[1]]/t},10^-6*p[[2]]*t^(-3/2)*Exp[-lam/2]*lam^(-p[[3]])/(1+(lam/p[[4]])^p[[5]])^p[[6]]]; ExportString[<|\"ci_total_gas_residual\"->Simplify[-chi*r+chi*r],\"ci_logT_forcing_residual\"->FullSimplify[forcing-expected],\"planck_stationarity_residual\"->FullSimplify[D[n[x],x]+n[x]+n[x]^2],\"isotropic_electron_angular_residual\"->FullSimplify[angular-4*beta^2/(3*(1-beta^2))],\"HG97_CI_m3_s_reference\"->Table[<|\"T_K\"->t,\"HI\"->ToString[N[rate[t,params[[1]]],35],InputForm],\"HeI\"->ToString[N[rate[t,params[[2]]],35],InputForm],\"HeII\"->ToString[N[rate[t,params[[3]]],35],InputForm]|>,{t,{10000,14177,100000}}]|>,\"RawJSON\"]",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= \"{\\n\\t\\\"ci_total_gas_residual\\\":0,\\n\\t\\\"ci_logT_forcing_residual\\\":0,\\n\\t\\\"planck_stationarity_residual\\\":0,\\n\\t\\\"isotropic_electron_angular_residual\\\":0,\\n\\t\\\"HG97_CI_m3_s_reference\\\":[\\n\\t\\t{\\n\\t\\t\\t\\\"T_K\\\":10000,\\n\\t\\t\\t\\\"HI\\\":\\\"8.9640247970898873723941086061195062481253854454543646359`35.*^-22\\\",\\n\\t\\t\\t\\\"HeI\\\":\\\"7.487355036000239700756235061174797109072262165071`35.*^-28\\\",\\n\\t\\t\\t\\\"HeII\\\":\\\"2.31546288325083107904990181471300910010404715916965429`35.*^-43\\\"\\n\\t\\t},\\n\\t\\t{\\n\\t\\t\\t\\\"T_K\\\":14177,\\n\\t\\t\\t\\\"HI\\\":\\\"1.1272713563824310461297078781008875318312146316220571673012`35.*^-19\\\",\\n\\t\\t\\t\\\"HeI\\\":\\\"4.24885462965462249041683584063089956939279185699418297`35.*^-24\\\",\\n\\t\\t\\t\\\"HeII\\\":\\\"3.3277117930188582306201085261420763053613921608734949513827514`35.*^-35\\\"\\n\\t\\t},\\n\\t\\t{\\n\\t\\t\\t\\\"T_K\\\":100000,\\n\\t\\t\\t\\\"HI\\\":\\\"4.12434580430311190417796010547601473866923475538127913716085749`35.*^-15\\\",\\n\\t\\t\\t\\\"HeI\\\":\\\"4.8478720681778121704381507298404085678416061899057944429331196`35.*^-16\\\",\\n\\t\\t\\t\\\"HeII\\\":\\\"3.40152475449306011027047726297747479578025277285591750681491`35.*^-18\\\"\\n\\t\\t}\\n\\t]\\n}\""
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "parsed": {
+    "ci_total_gas_residual": 0,
+    "ci_logT_forcing_residual": 0,
+    "planck_stationarity_residual": 0,
+    "isotropic_electron_angular_residual": 0,
+    "HG97_CI_m3_s_reference": [
+      {
+        "T_K": 10000,
+        "HI": "8.9640247970898873723941086061195062481253854454543646359`35.*^-22",
+        "HeI": "7.487355036000239700756235061174797109072262165071`35.*^-28",
+        "HeII": "2.31546288325083107904990181471300910010404715916965429`35.*^-43"
+      },
+      {
+        "T_K": 14177,
+        "HI": "1.1272713563824310461297078781008875318312146316220571673012`35.*^-19",
+        "HeI": "4.24885462965462249041683584063089956939279185699418297`35.*^-24",
+        "HeII": "3.3277117930188582306201085261420763053613921608734949513827514`35.*^-35"
+      },
+      {
+        "T_K": 100000,
+        "HI": "4.12434580430311190417796010547601473866923475538127913716085749`35.*^-15",
+        "HeI": "4.8478720681778121704381507298404085678416061899057944429331196`35.*^-16",
+        "HeII": "3.40152475449306011027047726297747479578025277285591750681491`35.*^-18"
+      }
+    ]
+  },
+  "scope": "Algebraic/analytic identities and independently evaluated CI coefficients; no empirical accuracy validation or ODE."
+}
