@@ -1,0 +1,141 @@
+{
+  "schema": "rec.compton_coupled.dag.v1",
+  "unit": "REC_COMPTON_COUPLED_20261022",
+  "workflow_version": "1.0.0",
+  "approval_design": "0.2",
+  "science_status": "COMPLETE_SCOPED_COMPTON_PILOT",
+  "parent_local_commit": "3a5a853abb2eb0f67650288aa1cee82c576f9ffc",
+  "parent_remote_commit": "04c0b10c1f1ec38d57c751369c553b638979e453",
+  "parent_tree": "712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7",
+  "inputs": {
+    "thermal_runtime_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+    "omitted_runtime_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+    "new_planned_IVPs": 8,
+    "old_IVP_reruns": 0,
+    "new_completed_IVPs": 8
+  },
+  "nodes": [
+    {
+      "id": "intake",
+      "dependencies": [],
+      "status": "COMPLETE",
+      "artifacts": [
+        "FROZEN_CONTRACT.md",
+        "provenance/REMOTE_INTAKE.json",
+        "provenance/PROJECT_PROTOCOL_INTAKE.json"
+      ]
+    },
+    {
+      "id": "theory",
+      "dependencies": [
+        "intake"
+      ],
+      "status": "COMPLETE_WITH_RETAINED_EVIDENCE",
+      "artifacts": [
+        "THEORY_KO.md",
+        "provenance/COMPTON_SOURCES.json",
+        "evidence/WOLFRAM_COUPLING.json"
+      ]
+    },
+    {
+      "id": "runtime_preflight",
+      "dependencies": [
+        "theory"
+      ],
+      "status": "COMPLETE_WITH_RETAINED_EVIDENCE",
+      "artifacts": [
+        "code/compton_system.py",
+        "code/run_compton.py",
+        "evidence/COMPTON_SYSTEM_TESTS.json",
+        "evidence/driver_review",
+        "evidence/PREFLIGHT_ADMISSION.json",
+        "evidence/independent_review/PREFLIGHT_REVIEW.json"
+      ]
+    },
+    {
+      "id": "coupled8",
+      "dependencies": [
+        "runtime_preflight"
+      ],
+      "status": "COMPLETE_WITH_RETAINED_EVIDENCE",
+      "artifacts": [
+        "results/compton8",
+        "evidence/ivp_execution",
+        "results/compton8/REFINEMENT.json"
+      ],
+      "observed": {
+        "new_IVPs": 8,
+        "old_reruns": 0,
+        "refinement_pairs": 4,
+        "gates_per_case": 64,
+        "campaign_charged_seconds": 309.2018256930023
+      }
+    },
+    {
+      "id": "analysis",
+      "dependencies": [
+        "coupled8"
+      ],
+      "status": "COMPLETE_WITH_RETAINED_EVIDENCE",
+      "artifacts": [
+        "results/analysis_v1"
+      ]
+    },
+    {
+      "id": "independent_review",
+      "dependencies": [
+        "analysis"
+      ],
+      "status": "PASS_SCOPED_COMPLETED_PILOT_AND_REPORT",
+      "artifacts": [
+        "evidence/independent_review",
+        "REVIEW_INDEPENDENT_KO.md",
+        "evidence/independent_review/FINAL_REVIEW.json"
+      ],
+      "final_review_sha256": "584af8cc557fac881c7d417eaa02983c4aeefc786a346dc24f9fc4c0c1ad0d3d"
+    },
+    {
+      "id": "figures_report_handoff",
+      "dependencies": [
+        "analysis",
+        "independent_review"
+      ],
+      "status": "COMPLETE_INDEPENDENTLY_REVIEWED",
+      "artifacts": [
+        "figures/v2",
+        "REPORT_KO.md",
+        "HANDOFF_KO.md",
+        "LOOP_EVIDENCE_KO.md",
+        "NEXT_UNIT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "delivery",
+      "dependencies": [
+        "figures_report_handoff"
+      ],
+      "status": "A_B_COMPLETE_STAGE_C_PROVIDER_RECEIPT_PENDING",
+      "artifacts": [
+        "DELIVERY_STATUS.json",
+        "evidence/delivery",
+        "DRAFT_PR.md"
+      ]
+    }
+  ],
+  "classification": {
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "REI_activation": false,
+    "U5": "CLOSED_HOLD_NOT_RESET",
+    "strong_no_go_submitted": false
+  },
+  "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "analysis_identity": "f824bdead1ce75b94f5102764184ea8dee2db71ecc06296dc7fa2ac9d71708c3",
+  "successor": {
+    "contract": "NEXT_UNIT_CONTRACT.md",
+    "status": "PROPOSED_IMPLEMENTATION_NOT_RUN_BENCHMARK_NOT_RUN",
+    "new_IVPs": 0,
+    "active_wall_budget_seconds": 600
+  }
+}

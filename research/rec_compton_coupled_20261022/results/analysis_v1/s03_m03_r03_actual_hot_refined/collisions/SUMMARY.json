@@ -1,0 +1,1716 @@
+{
+  "status": "COMPLETE_SCOPED_NEW_PATH_COLLISION_BUDGET",
+  "label": "s03_m03_r03_actual_hot_refined",
+  "coupled_runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "source_identity": "d47b7f1fdfa830fddbcc385c66ca9b660ec1436f29b85271ee17ec1823c112af",
+  "source_files": {
+    "research/rec_compton_coupled_20261022/code/analyze_collisions.py": "acd7a1ed448d282cc4b102ecfd6d2043611caa3dfa480913e105c073ba0969a1",
+    "research/rec_thermal_omitted_budget_20261022/code/collisional_budget.py": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252",
+    "research/rec_thermal_omitted_budget_20261022/code/compton_budget.py": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567",
+    "research/rec_thermal_omitted_budget_20261022/data/HG97_COLLISIONAL_SOURCE.json": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5",
+    "research/rec_rei_hheli_sandbox_20261021/code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+  },
+  "input_receipt_sha256": "a2cd252d71d30b0e4a6e89a8477024a47411ca6699d4f19e8c2c15766daf44d9",
+  "input_grids": {
+    "comparison_109": {
+      "filename": "trajectory.npz",
+      "bytes": 156109,
+      "sha256": "9657db33d1d01570b9bd004c42f63382b5c795481d5d1c3bba927a03f533c25c"
+    },
+    "dense_513": {
+      "filename": "dense_513.npz",
+      "bytes": 705649,
+      "sha256": "9ab634525de2ef4d6d820a66f974cc822c7807c5feda10514967c5565efe9f07"
+    },
+    "dense_1025": {
+      "filename": "dense_1025.npz",
+      "bytes": 1395109,
+      "sha256": "8ad6030a2c55d17ea85b66c14151377a8aef8588a12bc33b0df1c00e20c7f14e"
+    }
+  },
+  "grids": {
+    "comparison_109": {
+      "samples": 109,
+      "z_start": 7.963732801243163,
+      "z_end": 2.0000000000000004,
+      "T_min_K": 1081.3197799717439,
+      "T_max_K": 11409.52646700898,
+      "elapsed_Myr_start": 461.7103379443533,
+      "elapsed_Myr_end": 3092.301693767172,
+      "energy_eV_per_baryon": {
+        "photo_primary": {
+          "trapezoid": 9.583643841763909,
+          "simpson": 9.557963774273,
+          "simpson_minus_trapezoid": -0.025680067490908343,
+          "positive_part_trapezoid": 9.583643841763909,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 9.583643841763909,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "rr_kinetic": {
+          "trapezoid": -0.7890909488550484,
+          "simpson": -0.7894786589558045,
+          "simpson_minus_trapezoid": -0.00038771010075611123,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.7890909488550484,
+          "absolute_throughput_trapezoid": 0.7890909488550484,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "dr_kinetic": {
+          "trapezoid": -1.5825553129736533e-17,
+          "simpson": -1.5825553141872585e-17,
+          "simpson_minus_trapezoid": -1.2136051870073817e-26,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.5825553129736533e-17,
+          "absolute_throughput_trapezoid": 1.5825553129736533e-17,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "expansion_work": {
+          "trapezoid": -4.874331505072853,
+          "simpson": -4.875339547563305,
+          "simpson_minus_trapezoid": -0.0010080424904526097,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -4.874331505072853,
+          "absolute_throughput_trapezoid": 4.874331505072853,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_selected": {
+          "trapezoid": -2.1714115809835643,
+          "simpson": -2.172743858493559,
+          "simpson_minus_trapezoid": -0.0013322775099946504,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -2.1714115809835643,
+          "absolute_throughput_trapezoid": 2.1714115809835643,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_uv": {
+          "trapezoid": 6.391006214911176e-05,
+          "simpson": 6.390889465572446e-05,
+          "simpson_minus_trapezoid": -1.1674933872988418e-09,
+          "positive_part_trapezoid": 6.391006214911176e-05,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 6.391006214911176e-05,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 108,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "ci_kinetic": {
+          "trapezoid": -1.6602066073341837e-06,
+          "simpson": -1.660207058301618e-06,
+          "simpson_minus_trapezoid": -4.5096743438384804e-13,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.6602066073341837e-06,
+          "absolute_throughput_trapezoid": 1.6602066073341837e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -1.5408356230879755e-06,
+          "continuation_or_boundary_contribution": -1.1937098424620832e-07,
+          "supported_absolute_throughput": 1.5408356230879755e-06,
+          "continuation_or_boundary_absolute_throughput": 1.1937098424620832e-07
+        },
+        "ci_binding": {
+          "trapezoid": 1.6602066073341837e-06,
+          "simpson": 1.660207058301618e-06,
+          "simpson_minus_trapezoid": 4.5096743438384804e-13,
+          "positive_part_trapezoid": 1.6602066073341837e-06,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 1.6602066073341837e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": 1.5408356230879755e-06,
+          "continuation_or_boundary_contribution": 1.1937098424620832e-07,
+          "supported_absolute_throughput": 1.5408356230879755e-06,
+          "continuation_or_boundary_absolute_throughput": 1.1937098424620832e-07
+        },
+        "ci_total_gas": {
+          "trapezoid": 0.0,
+          "simpson": 0.0,
+          "simpson_minus_trapezoid": 0.0,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 0.0,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": 0.0,
+          "continuation_or_boundary_contribution": 0.0,
+          "supported_absolute_throughput": 0.0,
+          "continuation_or_boundary_absolute_throughput": 0.0
+        },
+        "ce_HI": {
+          "trapezoid": -0.00023772537005433797,
+          "simpson": -0.00023772543614921388,
+          "simpson_minus_trapezoid": -6.60948759102515e-11,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023772537005433797,
+          "absolute_throughput_trapezoid": 0.00023772537005433797,
+          "fit_support_applicable": true,
+          "supported_intervals": 105,
+          "total_intervals": 108,
+          "supported_interval_contribution": -0.00023772007102810348,
+          "continuation_or_boundary_contribution": -5.299026234527532e-09,
+          "supported_absolute_throughput": 0.00023772007102810348,
+          "continuation_or_boundary_absolute_throughput": 5.299026234527532e-09
+        },
+        "ce_HeII": {
+          "trapezoid": -8.526529838914678e-17,
+          "simpson": -8.52652984319971e-17,
+          "simpson_minus_trapezoid": -4.28503203999748e-26,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -8.526529838914678e-17,
+          "absolute_throughput_trapezoid": 8.526529838914678e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 105,
+          "total_intervals": 108,
+          "supported_interval_contribution": -8.526529838914677e-17,
+          "continuation_or_boundary_contribution": -3.935469629148392e-34,
+          "supported_absolute_throughput": 8.526529838914677e-17,
+          "continuation_or_boundary_absolute_throughput": 3.935469629148392e-34
+        },
+        "included_collision_kinetic": {
+          "trapezoid": -0.00023938557666175746,
+          "simpson": -0.0002393856432076008,
+          "simpson_minus_trapezoid": -6.654584332578886e-11,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023938557666175746,
+          "absolute_throughput_trapezoid": 0.00023938557666175746,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -0.00020696878575508166,
+          "continuation_or_boundary_contribution": -3.241679090667578e-05,
+          "supported_absolute_throughput": 0.00020696878575508166,
+          "continuation_or_boundary_absolute_throughput": 3.241679090667578e-05
+        },
+        "included_collision_total_gas": {
+          "trapezoid": -0.00023772537005442324,
+          "simpson": -0.00023772543614929915,
+          "simpson_minus_trapezoid": -6.60948759102515e-11,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023772537005442324,
+          "absolute_throughput_trapezoid": 0.00023772537005442324,
+          "fit_support_applicable": true,
+          "supported_intervals": 105,
+          "total_intervals": 108,
+          "supported_interval_contribution": -0.00023772007102818875,
+          "continuation_or_boundary_contribution": -5.299026234527532e-09,
+          "supported_absolute_throughput": 0.00023772007102818875,
+          "continuation_or_boundary_absolute_throughput": 5.299026234527532e-09
+        }
+      },
+      "fixed_path_logT_forcing": {
+        "ci_energy_only": {
+          "trapezoid": -6.898294016342551e-07,
+          "simpson": -6.89829647240737e-07,
+          "simpson_minus_trapezoid": -2.456064818788051e-13,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -6.898294016342551e-07,
+          "absolute_throughput_trapezoid": 6.898294016342551e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -6.328583636646899e-07,
+          "continuation_or_boundary_contribution": -5.6971037969565147e-08,
+          "supported_absolute_throughput": 6.328583636646899e-07,
+          "continuation_or_boundary_absolute_throughput": 5.6971037969565147e-08
+        },
+        "ci_particle_only": {
+          "trapezoid": -7.208924974392232e-08,
+          "simpson": -7.20892693349422e-08,
+          "simpson_minus_trapezoid": -1.959101987543769e-14,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.208924974392232e-08,
+          "absolute_throughput_trapezoid": 7.208924974392232e-08,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -6.690390038711985e-08,
+          "continuation_or_boundary_contribution": -5.185349356802499e-09,
+          "supported_absolute_throughput": 6.690390038711985e-08,
+          "continuation_or_boundary_absolute_throughput": 5.185349356802499e-09
+        },
+        "ci_full": {
+          "trapezoid": -7.619186513781774e-07,
+          "simpson": -7.619189165756795e-07,
+          "simpson_minus_trapezoid": -2.6519750204541035e-13,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.619186513781774e-07,
+          "absolute_throughput_trapezoid": 7.619186513781774e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -6.997622640518097e-07,
+          "continuation_or_boundary_contribution": -6.215638732636764e-08,
+          "supported_absolute_throughput": 6.997622640518097e-07,
+          "continuation_or_boundary_absolute_throughput": 6.215638732636764e-08
+        },
+        "ce_HI": {
+          "trapezoid": -0.00010044390307050828,
+          "simpson": -0.00010044388074682934,
+          "simpson_minus_trapezoid": 2.2323678943261295e-11,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010044390307050828,
+          "absolute_throughput_trapezoid": 0.00010044390307050828,
+          "fit_support_applicable": true,
+          "supported_intervals": 105,
+          "total_intervals": 108,
+          "supported_interval_contribution": -0.00010043966601609508,
+          "continuation_or_boundary_contribution": -4.237054413191729e-09,
+          "supported_absolute_throughput": 0.00010043966601609508,
+          "continuation_or_boundary_absolute_throughput": 4.237054413191729e-09
+        },
+        "ce_HeII": {
+          "trapezoid": -3.455544316960871e-17,
+          "simpson": -3.455544319102086e-17,
+          "simpson_minus_trapezoid": -2.1412150158027076e-26,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -3.455544316960871e-17,
+          "absolute_throughput_trapezoid": 3.455544316960871e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 105,
+          "total_intervals": 108,
+          "supported_interval_contribution": -3.45554431696087e-17,
+          "continuation_or_boundary_contribution": -3.123891788616791e-34,
+          "supported_absolute_throughput": 3.45554431696087e-17,
+          "continuation_or_boundary_absolute_throughput": 3.123891788616791e-34
+        },
+        "included_collision_total": {
+          "trapezoid": -0.00010120582172192102,
+          "simpson": -0.00010120579966343956,
+          "simpson_minus_trapezoid": 2.2058481465568082e-11,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010120582172192102,
+          "absolute_throughput_trapezoid": 0.00010120582172192102,
+          "fit_support_applicable": true,
+          "supported_intervals": 70,
+          "total_intervals": 108,
+          "supported_interval_contribution": -8.539623044738498e-05,
+          "continuation_or_boundary_contribution": -1.5809591274536037e-05,
+          "supported_absolute_throughput": 8.539623044738498e-05,
+          "continuation_or_boundary_absolute_throughput": 1.5809591274536037e-05
+        }
+      },
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 71,
+          "continuation_nodes": 38,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 71,
+          "continuation_nodes": 38,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 71,
+          "continuation_nodes": 38,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 106,
+          "continuation_nodes": 3,
+          "coefficient_underflow_nodes": 0
+        }
+      },
+      "event_and_power_underflow": {
+        "ci_event": 0,
+        "ci_volume": 0,
+        "ci_power": 0,
+        "ce_power": 0
+      },
+      "conservation_max_scaled": {
+        "binding_gradient": 2.1717057697708078e-16,
+        "particle": 2.1399724985030697e-16,
+        "baryon": 1.0854328993032434e-16,
+        "isotope": 5.1529069772525724e-17
+      },
+      "max_abs_fixed_path_forcing": {
+        "ci_energy_only": 1.995222839508575e-06,
+        "ci_particle_only": 2.1152670695099126e-07,
+        "ci_full": 2.206749546459566e-06,
+        "ce_HI": 0.00027552176861656306,
+        "ce_HeII": 1.4079837742747263e-16,
+        "included_collision_total": 0.00027758040986224205
+      },
+      "unavailable": {
+        "CI_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_HeI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        }
+      }
+    },
+    "dense_513": {
+      "samples": 513,
+      "z_start": 7.963732801243163,
+      "z_end": 2.0000000000000004,
+      "T_min_K": 1081.3197799717439,
+      "T_max_K": 11409.570299098565,
+      "elapsed_Myr_start": 461.7103379443533,
+      "elapsed_Myr_end": 3092.301693767172,
+      "energy_eV_per_baryon": {
+        "photo_primary": {
+          "trapezoid": 9.553515240330158,
+          "simpson": 9.552145571910511,
+          "simpson_minus_trapezoid": -0.001369668419647141,
+          "positive_part_trapezoid": 9.553515240330158,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 9.553515240330158,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "rr_kinetic": {
+          "trapezoid": -0.7895336334789479,
+          "simpson": -0.7895560421802559,
+          "simpson_minus_trapezoid": -2.2408701307985446e-05,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.7895336334789479,
+          "absolute_throughput_trapezoid": 0.7895336334789479,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "dr_kinetic": {
+          "trapezoid": -1.5825553140889704e-17,
+          "simpson": -1.5825553141420062e-17,
+          "simpson_minus_trapezoid": -5.303579658534905e-28,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.5825553140889704e-17,
+          "absolute_throughput_trapezoid": 1.5825553140889704e-17,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "expansion_work": {
+          "trapezoid": -4.875343827798629,
+          "simpson": -4.875391976130283,
+          "simpson_minus_trapezoid": -4.814833165411869e-05,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -4.875343827798629,
+          "absolute_throughput_trapezoid": 4.875343827798629,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_selected": {
+          "trapezoid": -2.1727523410698204,
+          "simpson": -2.1728161540815965,
+          "simpson_minus_trapezoid": -6.381301177604826e-05,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -2.1727523410698204,
+          "absolute_throughput_trapezoid": 2.1727523410698204,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_uv": {
+          "trapezoid": 6.390894347976733e-05,
+          "simpson": 6.390889127351715e-05,
+          "simpson_minus_trapezoid": -5.220625018712791e-11,
+          "positive_part_trapezoid": 6.390894347976733e-05,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 6.390894347976733e-05,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 512,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "ci_kinetic": {
+          "trapezoid": -1.6602069733861428e-06,
+          "simpson": -1.6602069904265067e-06,
+          "simpson_minus_trapezoid": -1.704036382858202e-14,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.6602069733861428e-06,
+          "absolute_throughput_trapezoid": 1.6602069733861428e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -1.5651032317135901e-06,
+          "continuation_or_boundary_contribution": -9.510374167255275e-08,
+          "supported_absolute_throughput": 1.5651032317135901e-06,
+          "continuation_or_boundary_absolute_throughput": 9.510374167255275e-08
+        },
+        "ci_binding": {
+          "trapezoid": 1.6602069733861428e-06,
+          "simpson": 1.6602069904265067e-06,
+          "simpson_minus_trapezoid": 1.704036382858202e-14,
+          "positive_part_trapezoid": 1.6602069733861428e-06,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 1.6602069733861428e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": 1.5651032317135901e-06,
+          "continuation_or_boundary_contribution": 9.510374167255275e-08,
+          "supported_absolute_throughput": 1.5651032317135901e-06,
+          "continuation_or_boundary_absolute_throughput": 9.510374167255275e-08
+        },
+        "ci_total_gas": {
+          "trapezoid": 0.0,
+          "simpson": 0.0,
+          "simpson_minus_trapezoid": 0.0,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 0.0,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": 0.0,
+          "continuation_or_boundary_contribution": 0.0,
+          "supported_absolute_throughput": 0.0,
+          "continuation_or_boundary_absolute_throughput": 0.0
+        },
+        "ce_HI": {
+          "trapezoid": -0.0002377254780045361,
+          "simpson": -0.0002377254830802654,
+          "simpson_minus_trapezoid": -5.075729306259699e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.0002377254780045361,
+          "absolute_throughput_trapezoid": 0.0002377254780045361,
+          "fit_support_applicable": true,
+          "supported_intervals": 501,
+          "total_intervals": 512,
+          "supported_interval_contribution": -0.00023772528711219623,
+          "continuation_or_boundary_contribution": -1.9089233985760203e-10,
+          "supported_absolute_throughput": 0.00023772528711219623,
+          "continuation_or_boundary_absolute_throughput": 1.9089233985760203e-10
+        },
+        "ce_HeII": {
+          "trapezoid": -8.52652984275425e-17,
+          "simpson": -8.526529842939021e-17,
+          "simpson_minus_trapezoid": -1.847709455253915e-27,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -8.52652984275425e-17,
+          "absolute_throughput_trapezoid": 8.52652984275425e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 501,
+          "total_intervals": 512,
+          "supported_interval_contribution": -8.526529842754249e-17,
+          "continuation_or_boundary_contribution": -2.8863433078965078e-39,
+          "supported_absolute_throughput": 8.526529842754249e-17,
+          "continuation_or_boundary_absolute_throughput": 2.8863433078965078e-39
+        },
+        "included_collision_kinetic": {
+          "trapezoid": -0.0002393856849780075,
+          "simpson": -0.00023938569007077716,
+          "simpson_minus_trapezoid": -5.092769657594545e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.0002393856849780075,
+          "absolute_throughput_trapezoid": 0.0002393856849780075,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -0.00021189053039030452,
+          "continuation_or_boundary_contribution": -2.749515458770299e-05,
+          "supported_absolute_throughput": 0.00021189053039030452,
+          "continuation_or_boundary_absolute_throughput": 2.749515458770299e-05
+        },
+        "included_collision_total_gas": {
+          "trapezoid": -0.00023772547800462134,
+          "simpson": -0.00023772548308035067,
+          "simpson_minus_trapezoid": -5.0757293333647535e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023772547800462134,
+          "absolute_throughput_trapezoid": 0.00023772547800462134,
+          "fit_support_applicable": true,
+          "supported_intervals": 501,
+          "total_intervals": 512,
+          "supported_interval_contribution": -0.00023772528711228148,
+          "continuation_or_boundary_contribution": -1.9089233985760203e-10,
+          "supported_absolute_throughput": 0.00023772528711228148,
+          "continuation_or_boundary_absolute_throughput": 1.9089233985760203e-10
+        }
+      },
+      "fixed_path_logT_forcing": {
+        "ci_energy_only": {
+          "trapezoid": -6.898295823139786e-07,
+          "simpson": -6.89829590720423e-07,
+          "simpson_minus_trapezoid": -8.406444447716071e-15,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -6.898295823139786e-07,
+          "absolute_throughput_trapezoid": 6.898295823139786e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -6.438361547681482e-07,
+          "continuation_or_boundary_contribution": -4.599342754583041e-08,
+          "supported_absolute_throughput": 6.438361547681482e-07,
+          "continuation_or_boundary_absolute_throughput": 4.599342754583041e-08
+        },
+        "ci_particle_only": {
+          "trapezoid": -7.208926563583673e-08,
+          "simpson": -7.208926637563012e-08,
+          "simpson_minus_trapezoid": -7.39793388055104e-16,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.208926563583673e-08,
+          "absolute_throughput_trapezoid": 7.208926563583673e-08,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -6.795786880953773e-08,
+          "continuation_or_boundary_contribution": -4.131396826299e-09,
+          "supported_absolute_throughput": 6.795786880953773e-08,
+          "continuation_or_boundary_absolute_throughput": 4.131396826299e-09
+        },
+        "ci_full": {
+          "trapezoid": -7.619188479498152e-07,
+          "simpson": -7.619188570960533e-07,
+          "simpson_minus_trapezoid": -9.146238047529412e-15,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.619188479498152e-07,
+          "absolute_throughput_trapezoid": 7.619188479498152e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -7.117940235776859e-07,
+          "continuation_or_boundary_contribution": -5.0124824372129404e-08,
+          "supported_absolute_throughput": 7.117940235776859e-07,
+          "continuation_or_boundary_absolute_throughput": 5.0124824372129404e-08
+        },
+        "ce_HI": {
+          "trapezoid": -0.00010044395532874702,
+          "simpson": -0.00010044395780736441,
+          "simpson_minus_trapezoid": -2.4786173954223154e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010044395532874702,
+          "absolute_throughput_trapezoid": 0.00010044395532874702,
+          "fit_support_applicable": true,
+          "supported_intervals": 501,
+          "total_intervals": 512,
+          "supported_interval_contribution": -0.00010044377800666104,
+          "continuation_or_boundary_contribution": -1.7732208597230404e-10,
+          "supported_absolute_throughput": 0.00010044377800666104,
+          "continuation_or_boundary_absolute_throughput": 1.7732208597230404e-10
+        },
+        "ce_HeII": {
+          "trapezoid": -3.455544318907392e-17,
+          "simpson": -3.455544319000442e-17,
+          "simpson_minus_trapezoid": -9.304984155631157e-28,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -3.455544318907392e-17,
+          "absolute_throughput_trapezoid": 3.455544318907392e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 501,
+          "total_intervals": 512,
+          "supported_interval_contribution": -3.4555443189073916e-17,
+          "continuation_or_boundary_contribution": -2.5960079702105897e-39,
+          "supported_absolute_throughput": 3.4555443189073916e-17,
+          "continuation_or_boundary_absolute_throughput": 2.5960079702105897e-39
+        },
+        "included_collision_total": {
+          "trapezoid": -0.00010120587417673137,
+          "simpson": -0.00010120587666449502,
+          "simpson_minus_trapezoid": -2.48776364363424e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010120587417673137,
+          "absolute_throughput_trapezoid": 0.00010120587417673137,
+          "fit_support_applicable": true,
+          "supported_intervals": 340,
+          "total_intervals": 512,
+          "supported_interval_contribution": -8.762406860608959e-05,
+          "continuation_or_boundary_contribution": -1.3581805570641797e-05,
+          "supported_absolute_throughput": 8.762406860608959e-05,
+          "continuation_or_boundary_absolute_throughput": 1.3581805570641797e-05
+        }
+      },
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 341,
+          "continuation_nodes": 172,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 341,
+          "continuation_nodes": 172,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 341,
+          "continuation_nodes": 172,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 502,
+          "continuation_nodes": 11,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 502,
+          "continuation_nodes": 11,
+          "coefficient_underflow_nodes": 0
+        }
+      },
+      "event_and_power_underflow": {
+        "ci_event": 0,
+        "ci_volume": 0,
+        "ci_power": 0,
+        "ce_power": 0
+      },
+      "conservation_max_scaled": {
+        "binding_gradient": 2.0187797457411378e-16,
+        "particle": 2.2197398636131033e-16,
+        "baryon": 1.10473403110012e-16,
+        "isotope": 5.377813831808767e-17
+      },
+      "max_abs_fixed_path_forcing": {
+        "ci_energy_only": 1.995760660610021e-06,
+        "ci_particle_only": 2.1163725464244037e-07,
+        "ci_full": 2.2071057565228782e-06,
+        "ce_HI": 0.00027558731772616503,
+        "ce_HeII": 1.4086425724008323e-16,
+        "included_collision_total": 0.00027762378915833894
+      },
+      "unavailable": {
+        "CI_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_HeI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        }
+      }
+    },
+    "dense_1025": {
+      "samples": 1025,
+      "z_start": 7.963732801243163,
+      "z_end": 2.0000000000000004,
+      "T_min_K": 1081.3197799717439,
+      "T_max_K": 11409.570299098565,
+      "elapsed_Myr_start": 461.7103379443533,
+      "elapsed_Myr_end": 3092.301693767172,
+      "energy_eV_per_baryon": {
+        "photo_primary": {
+          "trapezoid": 9.552858411512622,
+          "simpson": 9.552639468573442,
+          "simpson_minus_trapezoid": -0.00021894293917945618,
+          "positive_part_trapezoid": 9.552858411512622,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 9.552858411512622,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "rr_kinetic": {
+          "trapezoid": -0.7895508223647759,
+          "simpson": -0.7895565519933853,
+          "simpson_minus_trapezoid": -5.72962860934112e-06,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.7895508223647759,
+          "absolute_throughput_trapezoid": 0.7895508223647759,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "dr_kinetic": {
+          "trapezoid": -1.5825553141282917e-17,
+          "simpson": -1.5825553141413988e-17,
+          "simpson_minus_trapezoid": -1.3107108829521772e-28,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.5825553141282917e-17,
+          "absolute_throughput_trapezoid": 1.5825553141282917e-17,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "expansion_work": {
+          "trapezoid": -4.875379924488769,
+          "simpson": -4.875391956718816,
+          "simpson_minus_trapezoid": -1.2032230046976622e-05,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -4.875379924488769,
+          "absolute_throughput_trapezoid": 4.875379924488769,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_selected": {
+          "trapezoid": -2.172800172117947,
+          "simpson": -2.1728161158006554,
+          "simpson_minus_trapezoid": -1.5943682708297047e-05,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -2.172800172117947,
+          "absolute_throughput_trapezoid": 2.172800172117947,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "compton_uv": {
+          "trapezoid": 6.390890422012953e-05,
+          "simpson": 6.390889113358359e-05,
+          "simpson_minus_trapezoid": -1.3086545939239823e-11,
+          "positive_part_trapezoid": 6.390890422012953e-05,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 6.390890422012953e-05,
+          "fit_support_applicable": false,
+          "supported_intervals": null,
+          "total_intervals": 1024,
+          "supported_interval_contribution": null,
+          "continuation_or_boundary_contribution": null,
+          "supported_absolute_throughput": null,
+          "continuation_or_boundary_absolute_throughput": null
+        },
+        "ci_kinetic": {
+          "trapezoid": -1.6602069861651758e-06,
+          "simpson": -1.6602069904248533e-06,
+          "simpson_minus_trapezoid": -4.2596774462485675e-15,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -1.6602069861651758e-06,
+          "absolute_throughput_trapezoid": 1.6602069861651758e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -1.5651138556091594e-06,
+          "continuation_or_boundary_contribution": -9.509313055601634e-08,
+          "supported_absolute_throughput": 1.5651138556091594e-06,
+          "continuation_or_boundary_absolute_throughput": 9.509313055601634e-08
+        },
+        "ci_binding": {
+          "trapezoid": 1.6602069861651758e-06,
+          "simpson": 1.6602069904248533e-06,
+          "simpson_minus_trapezoid": 4.2596774462485675e-15,
+          "positive_part_trapezoid": 1.6602069861651758e-06,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 1.6602069861651758e-06,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": 1.5651138556091594e-06,
+          "continuation_or_boundary_contribution": 9.509313055601634e-08,
+          "supported_absolute_throughput": 1.5651138556091594e-06,
+          "continuation_or_boundary_absolute_throughput": 9.509313055601634e-08
+        },
+        "ci_total_gas": {
+          "trapezoid": 0.0,
+          "simpson": 0.0,
+          "simpson_minus_trapezoid": 0.0,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": 0.0,
+          "absolute_throughput_trapezoid": 0.0,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": 0.0,
+          "continuation_or_boundary_contribution": 0.0,
+          "supported_absolute_throughput": 0.0,
+          "continuation_or_boundary_absolute_throughput": 0.0
+        },
+        "ce_HI": {
+          "trapezoid": -0.00023772548181095644,
+          "simpson": -0.00023772548307976314,
+          "simpson_minus_trapezoid": -1.2688067014144516e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023772548181095644,
+          "absolute_throughput_trapezoid": 0.00023772548181095644,
+          "fit_support_applicable": true,
+          "supported_intervals": 1002,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -0.00023772530236978122,
+          "continuation_or_boundary_contribution": -1.7944117515865817e-10,
+          "supported_absolute_throughput": 0.00023772530236978122,
+          "continuation_or_boundary_absolute_throughput": 1.7944117515865817e-10
+        },
+        "ce_HeII": {
+          "trapezoid": -8.526529842890448e-17,
+          "simpson": -8.526529842935846e-17,
+          "simpson_minus_trapezoid": -4.539771250030482e-28,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -8.526529842890448e-17,
+          "absolute_throughput_trapezoid": 8.526529842890448e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 1002,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -8.526529842890448e-17,
+          "continuation_or_boundary_contribution": -1.791666105490984e-39,
+          "supported_absolute_throughput": 8.526529842890448e-17,
+          "continuation_or_boundary_absolute_throughput": 1.791666105490984e-39
+        },
+        "included_collision_kinetic": {
+          "trapezoid": -0.00023938568879720685,
+          "simpson": -0.00023938569007027328,
+          "simpson_minus_trapezoid": -1.27306642332993e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023938568879720685,
+          "absolute_throughput_trapezoid": 0.00023938568879720685,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -0.0002118916095286358,
+          "continuation_or_boundary_contribution": -2.7494079268571007e-05,
+          "supported_absolute_throughput": 0.0002118916095286358,
+          "continuation_or_boundary_absolute_throughput": 2.7494079268571007e-05
+        },
+        "included_collision_total_gas": {
+          "trapezoid": -0.00023772548181104168,
+          "simpson": -0.0002377254830798484,
+          "simpson_minus_trapezoid": -1.268806728519506e-12,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00023772548181104168,
+          "absolute_throughput_trapezoid": 0.00023772548181104168,
+          "fit_support_applicable": true,
+          "supported_intervals": 1002,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -0.0002377253023698665,
+          "continuation_or_boundary_contribution": -1.7944117515865817e-10,
+          "supported_absolute_throughput": 0.0002377253023698665,
+          "continuation_or_boundary_absolute_throughput": 1.7944117515865817e-10
+        }
+      },
+      "fixed_path_logT_forcing": {
+        "ci_energy_only": {
+          "trapezoid": -6.898295886182343e-07,
+          "simpson": -6.898295907196528e-07,
+          "simpson_minus_trapezoid": -2.101418438403297e-15,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -6.898295886182343e-07,
+          "absolute_throughput_trapezoid": 6.898295886182343e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -6.438404509476413e-07,
+          "continuation_or_boundary_contribution": -4.598913767059298e-08,
+          "supported_absolute_throughput": 6.438404509476413e-07,
+          "continuation_or_boundary_absolute_throughput": 4.598913767059298e-08
+        },
+        "ci_particle_only": {
+          "trapezoid": -7.208926619062785e-08,
+          "simpson": -7.208926637555823e-08,
+          "simpson_minus_trapezoid": -1.8493037403342644e-16,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.208926619062785e-08,
+          "absolute_throughput_trapezoid": 7.208926619062785e-08,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -6.795833007384081e-08,
+          "continuation_or_boundary_contribution": -4.1309361167870385e-09,
+          "supported_absolute_throughput": 6.795833007384081e-08,
+          "continuation_or_boundary_absolute_throughput": 4.1309361167870385e-09
+        },
+        "ci_full": {
+          "trapezoid": -7.619188548088622e-07,
+          "simpson": -7.61918857095211e-07,
+          "simpson_minus_trapezoid": -2.2863488124367235e-15,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -7.619188548088622e-07,
+          "absolute_throughput_trapezoid": 7.619188548088622e-07,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -7.117987810214822e-07,
+          "continuation_or_boundary_contribution": -5.012007378738002e-08,
+          "supported_absolute_throughput": 7.117987810214822e-07,
+          "continuation_or_boundary_absolute_throughput": 5.012007378738002e-08
+        },
+        "ce_HI": {
+          "trapezoid": -0.00010044395718751263,
+          "simpson": -0.00010044395780710116,
+          "simpson_minus_trapezoid": -6.195885276193136e-13,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010044395718751263,
+          "absolute_throughput_trapezoid": 0.00010044395718751263,
+          "fit_support_applicable": true,
+          "supported_intervals": 1002,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -0.00010044378967606139,
+          "continuation_or_boundary_contribution": -1.6751145125576995e-10,
+          "supported_absolute_throughput": 0.00010044378967606139,
+          "continuation_or_boundary_absolute_throughput": 1.6751145125576995e-10
+        },
+        "ce_HeII": {
+          "trapezoid": -3.455544318976199e-17,
+          "simpson": -3.455544318999135e-17,
+          "simpson_minus_trapezoid": -2.293613081930092e-28,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -3.455544318976199e-17,
+          "absolute_throughput_trapezoid": 3.455544318976199e-17,
+          "fit_support_applicable": true,
+          "supported_intervals": 1002,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -3.4555443189761994e-17,
+          "continuation_or_boundary_contribution": -1.618594259421841e-39,
+          "supported_absolute_throughput": 3.4555443189761994e-17,
+          "continuation_or_boundary_absolute_throughput": 1.618594259421841e-39
+        },
+        "included_collision_total": {
+          "trapezoid": -0.00010120587604235605,
+          "simpson": -0.00010120587666423093,
+          "simpson_minus_trapezoid": -6.218748796081239e-13,
+          "positive_part_trapezoid": 0.0,
+          "negative_part_trapezoid": -0.00010120587604235605,
+          "absolute_throughput_trapezoid": 0.00010120587604235605,
+          "fit_support_applicable": true,
+          "supported_intervals": 680,
+          "total_intervals": 1024,
+          "supported_interval_contribution": -8.762444523797262e-05,
+          "continuation_or_boundary_contribution": -1.3581430804383433e-05,
+          "supported_absolute_throughput": 8.762444523797262e-05,
+          "continuation_or_boundary_absolute_throughput": 1.3581430804383433e-05
+        }
+      },
+      "source_support": {
+        "CI_HI": {
+          "valid_nodes": 681,
+          "continuation_nodes": 344,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeI": {
+          "valid_nodes": 681,
+          "continuation_nodes": 344,
+          "coefficient_underflow_nodes": 0
+        },
+        "CI_HeII": {
+          "valid_nodes": 681,
+          "continuation_nodes": 344,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HI": {
+          "valid_nodes": 1003,
+          "continuation_nodes": 22,
+          "coefficient_underflow_nodes": 0
+        },
+        "CE_HeII": {
+          "valid_nodes": 1003,
+          "continuation_nodes": 22,
+          "coefficient_underflow_nodes": 0
+        }
+      },
+      "event_and_power_underflow": {
+        "ci_event": 0,
+        "ci_volume": 0,
+        "ci_power": 0,
+        "ce_power": 0
+      },
+      "conservation_max_scaled": {
+        "binding_gradient": 2.2016280662791082e-16,
+        "particle": 2.2197398636131033e-16,
+        "baryon": 1.1090444295485285e-16,
+        "isotope": 5.377813831808767e-17
+      },
+      "max_abs_fixed_path_forcing": {
+        "ci_energy_only": 1.995767100544639e-06,
+        "ci_particle_only": 2.1163939851565354e-07,
+        "ci_full": 2.2071057565228782e-06,
+        "ce_HI": 0.00027558731772616503,
+        "ce_HeII": 1.4086425724008323e-16,
+        "included_collision_total": 0.00027762439195870667
+      },
+      "unavailable": {
+        "CI_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CI_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_HeI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiI": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        },
+        "CE_LiIII": {
+          "available": false,
+          "coefficient": null,
+          "reason": "No coefficient in this source-bound H/He budget"
+        }
+      }
+    }
+  },
+  "primary_grid": "dense_1025",
+  "primary_support_partition_rule": "positive-weight trapezoid; both retained interval endpoints in HG97 range",
+  "energy_eV_per_baryon": {
+    "photo_primary": {
+      "trapezoid": 9.552858411512622,
+      "simpson": 9.552639468573442,
+      "simpson_minus_trapezoid": -0.00021894293917945618,
+      "positive_part_trapezoid": 9.552858411512622,
+      "negative_part_trapezoid": 0.0,
+      "absolute_throughput_trapezoid": 9.552858411512622,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "rr_kinetic": {
+      "trapezoid": -0.7895508223647759,
+      "simpson": -0.7895565519933853,
+      "simpson_minus_trapezoid": -5.72962860934112e-06,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.7895508223647759,
+      "absolute_throughput_trapezoid": 0.7895508223647759,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "dr_kinetic": {
+      "trapezoid": -1.5825553141282917e-17,
+      "simpson": -1.5825553141413988e-17,
+      "simpson_minus_trapezoid": -1.3107108829521772e-28,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -1.5825553141282917e-17,
+      "absolute_throughput_trapezoid": 1.5825553141282917e-17,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "expansion_work": {
+      "trapezoid": -4.875379924488769,
+      "simpson": -4.875391956718816,
+      "simpson_minus_trapezoid": -1.2032230046976622e-05,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -4.875379924488769,
+      "absolute_throughput_trapezoid": 4.875379924488769,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "compton_selected": {
+      "trapezoid": -2.172800172117947,
+      "simpson": -2.1728161158006554,
+      "simpson_minus_trapezoid": -1.5943682708297047e-05,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -2.172800172117947,
+      "absolute_throughput_trapezoid": 2.172800172117947,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "compton_uv": {
+      "trapezoid": 6.390890422012953e-05,
+      "simpson": 6.390889113358359e-05,
+      "simpson_minus_trapezoid": -1.3086545939239823e-11,
+      "positive_part_trapezoid": 6.390890422012953e-05,
+      "negative_part_trapezoid": 0.0,
+      "absolute_throughput_trapezoid": 6.390890422012953e-05,
+      "fit_support_applicable": false,
+      "supported_intervals": null,
+      "total_intervals": 1024,
+      "supported_interval_contribution": null,
+      "continuation_or_boundary_contribution": null,
+      "supported_absolute_throughput": null,
+      "continuation_or_boundary_absolute_throughput": null
+    },
+    "ci_kinetic": {
+      "trapezoid": -1.6602069861651758e-06,
+      "simpson": -1.6602069904248533e-06,
+      "simpson_minus_trapezoid": -4.2596774462485675e-15,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -1.6602069861651758e-06,
+      "absolute_throughput_trapezoid": 1.6602069861651758e-06,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -1.5651138556091594e-06,
+      "continuation_or_boundary_contribution": -9.509313055601634e-08,
+      "supported_absolute_throughput": 1.5651138556091594e-06,
+      "continuation_or_boundary_absolute_throughput": 9.509313055601634e-08
+    },
+    "ci_binding": {
+      "trapezoid": 1.6602069861651758e-06,
+      "simpson": 1.6602069904248533e-06,
+      "simpson_minus_trapezoid": 4.2596774462485675e-15,
+      "positive_part_trapezoid": 1.6602069861651758e-06,
+      "negative_part_trapezoid": 0.0,
+      "absolute_throughput_trapezoid": 1.6602069861651758e-06,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": 1.5651138556091594e-06,
+      "continuation_or_boundary_contribution": 9.509313055601634e-08,
+      "supported_absolute_throughput": 1.5651138556091594e-06,
+      "continuation_or_boundary_absolute_throughput": 9.509313055601634e-08
+    },
+    "ci_total_gas": {
+      "trapezoid": 0.0,
+      "simpson": 0.0,
+      "simpson_minus_trapezoid": 0.0,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": 0.0,
+      "absolute_throughput_trapezoid": 0.0,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": 0.0,
+      "continuation_or_boundary_contribution": 0.0,
+      "supported_absolute_throughput": 0.0,
+      "continuation_or_boundary_absolute_throughput": 0.0
+    },
+    "ce_HI": {
+      "trapezoid": -0.00023772548181095644,
+      "simpson": -0.00023772548307976314,
+      "simpson_minus_trapezoid": -1.2688067014144516e-12,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.00023772548181095644,
+      "absolute_throughput_trapezoid": 0.00023772548181095644,
+      "fit_support_applicable": true,
+      "supported_intervals": 1002,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -0.00023772530236978122,
+      "continuation_or_boundary_contribution": -1.7944117515865817e-10,
+      "supported_absolute_throughput": 0.00023772530236978122,
+      "continuation_or_boundary_absolute_throughput": 1.7944117515865817e-10
+    },
+    "ce_HeII": {
+      "trapezoid": -8.526529842890448e-17,
+      "simpson": -8.526529842935846e-17,
+      "simpson_minus_trapezoid": -4.539771250030482e-28,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -8.526529842890448e-17,
+      "absolute_throughput_trapezoid": 8.526529842890448e-17,
+      "fit_support_applicable": true,
+      "supported_intervals": 1002,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -8.526529842890448e-17,
+      "continuation_or_boundary_contribution": -1.791666105490984e-39,
+      "supported_absolute_throughput": 8.526529842890448e-17,
+      "continuation_or_boundary_absolute_throughput": 1.791666105490984e-39
+    },
+    "included_collision_kinetic": {
+      "trapezoid": -0.00023938568879720685,
+      "simpson": -0.00023938569007027328,
+      "simpson_minus_trapezoid": -1.27306642332993e-12,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.00023938568879720685,
+      "absolute_throughput_trapezoid": 0.00023938568879720685,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -0.0002118916095286358,
+      "continuation_or_boundary_contribution": -2.7494079268571007e-05,
+      "supported_absolute_throughput": 0.0002118916095286358,
+      "continuation_or_boundary_absolute_throughput": 2.7494079268571007e-05
+    },
+    "included_collision_total_gas": {
+      "trapezoid": -0.00023772548181104168,
+      "simpson": -0.0002377254830798484,
+      "simpson_minus_trapezoid": -1.268806728519506e-12,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.00023772548181104168,
+      "absolute_throughput_trapezoid": 0.00023772548181104168,
+      "fit_support_applicable": true,
+      "supported_intervals": 1002,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -0.0002377253023698665,
+      "continuation_or_boundary_contribution": -1.7944117515865817e-10,
+      "supported_absolute_throughput": 0.0002377253023698665,
+      "continuation_or_boundary_absolute_throughput": 1.7944117515865817e-10
+    }
+  },
+  "fixed_path_logT_forcing": {
+    "ci_energy_only": {
+      "trapezoid": -6.898295886182343e-07,
+      "simpson": -6.898295907196528e-07,
+      "simpson_minus_trapezoid": -2.101418438403297e-15,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -6.898295886182343e-07,
+      "absolute_throughput_trapezoid": 6.898295886182343e-07,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -6.438404509476413e-07,
+      "continuation_or_boundary_contribution": -4.598913767059298e-08,
+      "supported_absolute_throughput": 6.438404509476413e-07,
+      "continuation_or_boundary_absolute_throughput": 4.598913767059298e-08
+    },
+    "ci_particle_only": {
+      "trapezoid": -7.208926619062785e-08,
+      "simpson": -7.208926637555823e-08,
+      "simpson_minus_trapezoid": -1.8493037403342644e-16,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -7.208926619062785e-08,
+      "absolute_throughput_trapezoid": 7.208926619062785e-08,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -6.795833007384081e-08,
+      "continuation_or_boundary_contribution": -4.1309361167870385e-09,
+      "supported_absolute_throughput": 6.795833007384081e-08,
+      "continuation_or_boundary_absolute_throughput": 4.1309361167870385e-09
+    },
+    "ci_full": {
+      "trapezoid": -7.619188548088622e-07,
+      "simpson": -7.61918857095211e-07,
+      "simpson_minus_trapezoid": -2.2863488124367235e-15,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -7.619188548088622e-07,
+      "absolute_throughput_trapezoid": 7.619188548088622e-07,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -7.117987810214822e-07,
+      "continuation_or_boundary_contribution": -5.012007378738002e-08,
+      "supported_absolute_throughput": 7.117987810214822e-07,
+      "continuation_or_boundary_absolute_throughput": 5.012007378738002e-08
+    },
+    "ce_HI": {
+      "trapezoid": -0.00010044395718751263,
+      "simpson": -0.00010044395780710116,
+      "simpson_minus_trapezoid": -6.195885276193136e-13,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.00010044395718751263,
+      "absolute_throughput_trapezoid": 0.00010044395718751263,
+      "fit_support_applicable": true,
+      "supported_intervals": 1002,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -0.00010044378967606139,
+      "continuation_or_boundary_contribution": -1.6751145125576995e-10,
+      "supported_absolute_throughput": 0.00010044378967606139,
+      "continuation_or_boundary_absolute_throughput": 1.6751145125576995e-10
+    },
+    "ce_HeII": {
+      "trapezoid": -3.455544318976199e-17,
+      "simpson": -3.455544318999135e-17,
+      "simpson_minus_trapezoid": -2.293613081930092e-28,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -3.455544318976199e-17,
+      "absolute_throughput_trapezoid": 3.455544318976199e-17,
+      "fit_support_applicable": true,
+      "supported_intervals": 1002,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -3.4555443189761994e-17,
+      "continuation_or_boundary_contribution": -1.618594259421841e-39,
+      "supported_absolute_throughput": 3.4555443189761994e-17,
+      "continuation_or_boundary_absolute_throughput": 1.618594259421841e-39
+    },
+    "included_collision_total": {
+      "trapezoid": -0.00010120587604235605,
+      "simpson": -0.00010120587666423093,
+      "simpson_minus_trapezoid": -6.218748796081239e-13,
+      "positive_part_trapezoid": 0.0,
+      "negative_part_trapezoid": -0.00010120587604235605,
+      "absolute_throughput_trapezoid": 0.00010120587604235605,
+      "fit_support_applicable": true,
+      "supported_intervals": 680,
+      "total_intervals": 1024,
+      "supported_interval_contribution": -8.762444523797262e-05,
+      "continuation_or_boundary_contribution": -1.3581430804383433e-05,
+      "supported_absolute_throughput": 8.762444523797262e-05,
+      "continuation_or_boundary_absolute_throughput": 1.3581430804383433e-05
+    }
+  },
+  "grid_differences": {
+    "dense_1025_minus_dense_513": {
+      "energy_eV_per_baryon": {
+        "photo_primary": {
+          "trapezoid": -0.0006568288175365922,
+          "simpson": 0.0004938966629310926
+        },
+        "rr_kinetic": {
+          "trapezoid": -1.718888582802336e-05,
+          "simpson": -5.098131293790331e-07
+        },
+        "dr_kinetic": {
+          "trapezoid": -3.9321326488565317e-28,
+          "simpson": 6.073612672619587e-30
+        },
+        "expansion_work": {
+          "trapezoid": -3.609669014004169e-05,
+          "simpson": 1.9411467100383106e-08
+        },
+        "compton_selected": {
+          "trapezoid": -4.78310481266675e-05,
+          "simpson": 3.8280941083712605e-08
+        },
+        "compton_uv": {
+          "trapezoid": -3.925963780416694e-11,
+          "simpson": -1.3993355627885118e-13
+        },
+        "ci_kinetic": {
+          "trapezoid": -1.2779032974020413e-14,
+          "simpson": 1.6534083130403943e-18
+        },
+        "ci_binding": {
+          "trapezoid": 1.2779032974020413e-14,
+          "simpson": -1.6534083130403943e-18
+        },
+        "ci_total_gas": {
+          "trapezoid": 0.0,
+          "simpson": 0.0
+        },
+        "ce_HI": {
+          "trapezoid": -3.806420348188844e-12,
+          "simpson": 5.022566564039099e-16
+        },
+        "ce_HeII": {
+          "trapezoid": -1.361980678815721e-27,
+          "simpson": 3.1751651435145725e-29
+        },
+        "included_collision_kinetic": {
+          "trapezoid": -3.819199351304953e-12,
+          "simpson": 5.038829596626382e-16
+        },
+        "included_collision_total_gas": {
+          "trapezoid": -3.806420348188844e-12,
+          "simpson": 5.022566564039099e-16
+        }
+      },
+      "fixed_path_logT_forcing": {
+        "ci_energy_only": {
+          "trapezoid": -6.304255738726365e-15,
+          "simpson": 7.702705864093794e-19
+        },
+        "ci_particle_only": {
+          "trapezoid": -5.547911221002793e-16,
+          "simpson": 7.189192139820874e-20
+        },
+        "ci_full": {
+          "trapezoid": -6.8590469667057625e-15,
+          "simpson": 8.422683869259949e-19
+        },
+        "ce_HI": {
+          "trapezoid": -1.858765609962995e-12,
+          "simpson": 2.6325784000663655e-16
+        },
+        "ce_HeII": {
+          "trapezoid": -6.880654356515614e-28,
+          "simpson": 1.3071671718545047e-29
+        },
+        "included_collision_total": {
+          "trapezoid": -1.865624679481953e-12,
+          "simpson": 2.6408454416315674e-16
+        }
+      }
+    },
+    "dense_1025_minus_comparison_109": {
+      "energy_eV_per_baryon": {
+        "photo_primary": {
+          "trapezoid": -0.030785430251286883,
+          "simpson": -0.005324305699557996
+        },
+        "rr_kinetic": {
+          "trapezoid": -0.0004598735097275375,
+          "simpson": -7.789303758076738e-05
+        },
+        "dr_kinetic": {
+          "trapezoid": -1.1546384506396933e-26,
+          "simpson": 4.585962753816666e-28
+        },
+        "expansion_work": {
+          "trapezoid": -0.0010484194159161575,
+          "simpson": -5.2409155510524386e-05
+        },
+        "compton_selected": {
+          "trapezoid": -0.0013885911343827217,
+          "simpson": -7.225730709636835e-05
+        },
+        "compton_uv": {
+          "trapezoid": -1.1579289822312043e-09,
+          "simpson": -3.5221408716023042e-12
+        },
+        "ci_kinetic": {
+          "trapezoid": -3.7883099214970064e-13,
+          "simpson": 6.787676478789883e-14
+        },
+        "ci_binding": {
+          "trapezoid": 3.7883099214970064e-13,
+          "simpson": -6.787676478789883e-14
+        },
+        "ci_total_gas": {
+          "trapezoid": 0.0,
+          "simpson": 0.0
+        },
+        "ce_HI": {
+          "trapezoid": -1.1175661847220679e-10,
+          "simpson": -4.6930549263369745e-11
+        },
+        "ce_HeII": {
+          "trapezoid": -3.975770215462062e-26,
+          "simpson": 2.638641120351132e-27
+        },
+        "included_collision_kinetic": {
+          "trapezoid": -1.1213544939066462e-10,
+          "simpson": -4.686267248820569e-11
+        },
+        "included_collision_total_gas": {
+          "trapezoid": -1.1175661844510174e-10,
+          "simpson": -4.6930549263369745e-11
+        }
+      },
+      "fixed_path_logT_forcing": {
+        "ci_energy_only": {
+          "trapezoid": -1.8698397926190225e-13,
+          "simpson": 5.6521084178499535e-14
+        },
+        "ci_particle_only": {
+          "trapezoid": -1.6446705527670904e-14,
+          "simpson": 2.9593839737333596e-15
+        },
+        "ci_full": {
+          "trapezoid": -2.0343068480280804e-13,
+          "simpson": 5.948046843016558e-14
+        },
+        "ce_HI": {
+          "trapezoid": -5.4117004348358706e-11,
+          "simpson": -7.706027181923931e-11
+        },
+        "ce_HeII": {
+          "trapezoid": -2.015327606471407e-26,
+          "simpson": 1.0295127851199967e-27
+        },
+        "included_collision_total": {
+          "trapezoid": -5.432043503157333e-11,
+          "simpson": -7.700079137674953e-11
+        }
+      }
+    }
+  },
+  "shared_dense_state_max_abs_difference": 2.168404344971009e-19,
+  "elapsed_clock": "proper Myr since donor z20; cumulative clock is not reset at the restart",
+  "scope": "CI/CE remain omitted in the ODE; evaluated sources and forcing on the new Compton path are diagnostic, not actual exchange or solved response",
+  "unavailable": {
+    "CI_LiI": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CI_LiII": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CI_LiIII": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CE_HeI": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CE_LiI": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CE_LiII": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    },
+    "CE_LiIII": {
+      "available": false,
+      "coefficient": null,
+      "reason": "No coefficient in this source-bound H/He budget"
+    }
+  },
+  "source_application": {
+    "abundance_definition": "Y_i is nuclei or ions of native species i per baryon",
+    "isotope_extension": "One electronic coefficient for H1/D/T and one for He3/He4 at the same charge; isotope shifts are not added.",
+    "CI_energy_increment": "Use atomic.ionization_energy_J[upper] - atomic.ionization_energy_J[lower], not k_B times the HG97 rate threshold.",
+    "CI_energy_scope": "Kinetic energy is transferred to canonical ionization binding energy. CI itself has zero photon escape.",
+    "threshold_hybrid": "HG97 thresholds control rate shapes; the parent's energy ladder controls energy accounting. Their mismatch is reported per channel.",
+    "CE_energy_scope": "Positive optically thin line-cooling/escape power for the two included electronic channels.",
+    "extrapolation": "Explicitly requested analytic continuation is diagnostic and has no published accuracy claim outside the stated intervals.",
+    "unavailable": [
+      "CI_LiI",
+      "CI_LiII",
+      "CI_LiIII",
+      "CE_HeI",
+      "CE_LiI",
+      "CE_LiII",
+      "CE_LiIII"
+    ]
+  },
+  "continuation": "all five analytic fits evaluated with explicit allow_extrapolation=True; outside-range nodes have no published accuracy claim",
+  "support_scope": "classification uses retained endpoints only; intervals touching an unsupported endpoint are continuation/boundary; no continuum support guarantee",
+  "units": {
+    "energy": "eV per baryon",
+    "power": "W/m3",
+    "forcing": "delta lnT derivative per x",
+    "CI_dY_dt": "per baryon per second"
+  },
+  "new_ODE_integrations": 0,
+  "old_IVP_reruns": 0,
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "global_convergence": "NOT_RUN",
+  "REI_activation": false,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "numerical_threads": 1
+  },
+  "wall_seconds": 8.964572879995103,
+  "cpu_seconds": 8.799917346999997
+}

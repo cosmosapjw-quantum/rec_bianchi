@@ -1,0 +1,137 @@
+{
+  "status": "PASS_SCOPED_DRIVER_REVIEW",
+  "reviewer": "rei_dependency",
+  "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "source_sha256": {
+    "code/run_compton.py": "e81220564d303467c08b1162dcd9bea8a365c8d689c64b00aeaac7378e0511b9",
+    "code/compton_system.py": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+    "FROZEN_CONTRACT.md": "5d7d27ade2c3924bc2df5b6b376a94aff3a788e36a7cab651ebcce03c55fcb92"
+  },
+  "independence": {
+    "driver_author": "root",
+    "compton_runtime_author": "moment_implementation",
+    "reviewer_authored_old_collisional_provider": true,
+    "reviewer_authors_new_collision_postprocessor": true,
+    "new_collision_postprocessor_in_ODE_runtime": false,
+    "reviewer_changed_driver_or_runtime": false
+  },
+  "scope": [
+    "Static review of full driver against adopted contract and inherited APIs",
+    "Exact-source helper fault reproduction and identical red/green rerun",
+    "Read-only frozen runtime/source identity and old baseline/donor verification",
+    "Static current-state photon E0, exclusive branch ownership, source/work and clock review"
+  ],
+  "actual_helper_runs": [
+    {
+      "command": [
+        "python3",
+        "research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py"
+      ],
+      "cwd": "/workspace/scratch/4389c03f19a6/rec_bianchi",
+      "exit_code": 1,
+      "wall_seconds": 1.6940743290033424,
+      "numerical_threads": 1,
+      "scope": "AST-extracted actual helper bodies; synthetic fixtures only; no model import, ODE, or scientific postprocess",
+      "source_sha256": {
+        "research/rec_compton_coupled_20261022/code/run_compton.py": "0eff1c7ab96fcfc973d6920365b30b34b902217621591e23c2a4aaaced9071a4",
+        "research/rec_compton_coupled_20261022/code/compton_system.py": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+        "research/rec_compton_coupled_20261022/FROZEN_CONTRACT.md": "5d7d27ade2c3924bc2df5b6b376a94aff3a788e36a7cab651ebcce03c55fcb92",
+        "research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py": "a3265037e28d4b19517f45a55355b9ab502b9b5ecc05eb2264b971f79b747230"
+      },
+      "source_unchanged": true,
+      "new_ODE_integrations": 0
+    },
+    {
+      "command": [
+        "python3",
+        "research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py"
+      ],
+      "cwd": "/workspace/scratch/4389c03f19a6/rec_bianchi",
+      "exit_code": 0,
+      "wall_seconds": 0.8024725619980018,
+      "numerical_threads": 1,
+      "scope": "Identical six AST-extracted helper tests after four minimal root fixes; no model import, ODE, or scientific postprocess",
+      "source_sha256": {
+        "research/rec_compton_coupled_20261022/code/run_compton.py": "e81220564d303467c08b1162dcd9bea8a365c8d689c64b00aeaac7378e0511b9",
+        "research/rec_compton_coupled_20261022/code/compton_system.py": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+        "research/rec_compton_coupled_20261022/FROZEN_CONTRACT.md": "5d7d27ade2c3924bc2df5b6b376a94aff3a788e36a7cab651ebcce03c55fcb92",
+        "research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py": "a3265037e28d4b19517f45a55355b9ab502b9b5ecc05eb2264b971f79b747230"
+      },
+      "source_unchanged": true,
+      "new_ODE_integrations": 0
+    }
+  ],
+  "helper_test_count": 6,
+  "red_failures": 4,
+  "green_failures": 0,
+  "unchanged_test_sha256": "a3265037e28d4b19517f45a55355b9ab502b9b5ecc05eb2264b971f79b747230",
+  "resolved_findings": [
+    {
+      "id": "D1",
+      "finding": "Empty outputs map accepted for reuse",
+      "resolution": "Exactly five required NPZ outputs enforced"
+    },
+    {
+      "id": "D2",
+      "finding": "Partial inventory lacking dense1025 accepted",
+      "resolution": "Exact inventory plus 64 required true admission gates and nonempty identity enforced"
+    },
+    {
+      "id": "D3",
+      "finding": "Different initial clock/state accepted in refinement",
+      "resolution": "Initial vectors and each first saved state must be exactly equal"
+    },
+    {
+      "id": "D4",
+      "finding": "Campaign COMPLETE possible after final diagnostic overrun",
+      "resolution": "Cooperative deadline checked after output hashes and after final refinement/persistence"
+    }
+  ],
+  "verified_design": {
+    "retained_sets": [
+      "comparison_109",
+      "accepted",
+      "dense_513",
+      "dense_1025"
+    ],
+    "accepted_nodes_before_diagnostics": true,
+    "actual_hot_uses_current_raw4": true,
+    "exclusive_CMB_owners": true,
+    "external_UV_in_both": true,
+    "gas_source": "(Qabs-Qescape+QC+QUVC)/(nb H)",
+    "work": "3 kB T eta",
+    "gas_store": "1.5 kB T eta + I dot Y",
+    "opposite_baths_applied_dynamically": false,
+    "source_identity_preflight_binding": true,
+    "persistent_budget_includes_completed_failed_unfinished": true,
+    "exact_old_initial_state_and_donor_restart": true,
+    "cumulative_elapsed_and_tau_preserved": true,
+    "all_output_bytes_SHA_verified": true
+  },
+  "read_only_identity_probe": {
+    "exit_code": 0,
+    "source_file_count": 16,
+    "old_baselines": 4,
+    "donor_seeds": 2,
+    "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+    "functions": [
+      "source_identity",
+      "load_inputs"
+    ]
+  },
+  "unresolved_blockers": [],
+  "limitations": [
+    "No new ODE or scientific postprocessing performed in this driver review",
+    "Model Jacobian tests belong to independent runtime author receipt; not replayed here",
+    "Deadlines are cooperative and do not constitute an OS-level hard kill guarantee",
+    "Accepted arrays are available after solve_ivp returns; a raised RHS exception preserves a labelled last trial, not certified accepted nodes",
+    "Admission is for saved comparison/accepted/dense samples, not Newton trials or the continuum",
+    "A balanced source ledger does not supply missing spectral or radiation/Einstein closure"
+  ],
+  "new_ODE_integrations": 0,
+  "old_IVP_reruns": 0,
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "global_convergence": "NOT_RUN",
+  "REI_activation": false
+}

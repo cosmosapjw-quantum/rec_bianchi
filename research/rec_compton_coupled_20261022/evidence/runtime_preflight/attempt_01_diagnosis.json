@@ -1,0 +1,24 @@
+{
+  "attempt": 1,
+  "status": "FAILURE_PRESERVED",
+  "category": "test_fixture_domain_errors",
+  "runtime_equation_bug_found": false,
+  "tolerance_changed": false,
+  "findings": [
+    {
+      "test": "test_06",
+      "cause": "Planck equilibrium fixture selected negative x, outside unchanged Geometry x domain.",
+      "correction": "Use inherited valid x and test only the Compton CMB power at T=Tref; this T is below the atomic domain, and no atomic rate is evaluated. Full63 temperature-domain guard remains."
+    },
+    {
+      "test": "test_07",
+      "cause": "Deleting ionized inventory left tiny eta; central finite difference crossed eta=0.",
+      "correction": "Move each isotope inventory into its neutral state before the zero-electron derivative test."
+    },
+    {
+      "test": "test_07_zero_E0_followup",
+      "cause": "Unchanged Geometry.fields explicitly requires E0>0.",
+      "correction": "Test the algebraic source extension using a local analytic positive-H Einstein-field extension supplied by a test double, and separately confirm the full63 inherited geometry rejects E0=0. Do not claim full63 zero-E0 admission."
+    }
+  ]
+}

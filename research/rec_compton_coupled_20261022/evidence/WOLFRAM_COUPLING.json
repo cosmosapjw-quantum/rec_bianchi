@@ -1,0 +1,121 @@
+{
+  "schema": "rec.compton.wolfram_coupling.v1",
+  "packet": "P1_theory",
+  "status": "ALGEBRA_CONFIRMED_WITH_EVALUATOR_WARNINGS",
+  "independent_physics_review": "PENDING_P4_ARTIFACT_DISTINCT_REVIEW",
+  "context_attempt": {
+    "tool": "mcp__codex_apps__wolfram_wolframcontext",
+    "arguments": {
+      "context": "We are deriving the new Compton thermal row of a 63-variable cosmological gas/ion/radiation ODE without running an ODE. Constants are explicit SI. With electron abundance X, particle abundance eta, Hubble H, K=sigma_T*c/(m_e*c^2), gas temperature T, actual photon energy density U, separate Planck reference Ur, reference temperature Tr, and dilute UV moments Uv,Mv, the actual-hot addition is g=(X/(H*eta))[-8 K U/3 + (2K/3)(Mv/(kB T)-4Uv)]; the Planck-reference alternative replaces the hot bracket by 8K Ur(Tr/T-1)/3. Need Wolfram symbolic checks of quotient and log-temperature derivatives, exact frozen-coefficient affine temperature relaxation dT/dt=-A T+B, gas/bath source cancellation, and standard FLRW Compton coupling. No numerical trajectory is requested."
+    },
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "tool call error: tool call failed for `codex_apps/wolfram.WolframContext`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+          }
+        ],
+        "isError": true
+      }
+    }
+  },
+  "primary_evaluation": {
+    "tool": "mcp__codex_apps__wolfram_wolframlanguageevaluator",
+    "arguments": {
+      "code": "ClearAll[\"Global\\`*\"];\nkap=sig*cc/(me*cc^2);\nqhot=-4*kap*nb*xx*kb*temp*ucoef*er;\nqplanck=4*kap*nb*xx*kb*ur*(tr-temp);\nquv=kap*nb*xx*(mv-4*kb*temp*uv);\ngh=FullSimplify[2*(qhot+quv)/(3*kb*temp*nb*hh*eta)];\ngp=FullSimplify[2*(qplanck+quv)/(3*kb*temp*nb*hh*eta)];\nbh=-8*kap*ucoef*er/3+(2*kap/3)*(mv/(kb*temp)-4*uv);\nbp=(8*kap/3)*ur*(tr/temp-1)+(2*kap/3)*(mv/(kb*temp)-4*uv);\naHot=(8*kap/3)*(xx/eta)*(ucoef*er+uv);\nbHot=(2*kap/3)*(xx/eta)*mv/kb;\naPlanck=(8*kap/3)*(xx/eta)*(ur+uv);\nbPlanck=(8*kap/3)*(xx/eta)*(ur*tr+mv/(4*kb));\nthermalSolution=tinit*Exp[-aa*tt]+(bb/aa)*(1-Exp[-aa*tt]);\nassumptions={sig>0,cc>0,me>0,kb>0,nb>0,eta>0,hh>0,temp>0,xx>=0,ucoef>=0,er>=0,ur>=0,tr>=0,uv>=0,mv>=0};\nrecords=<|\n\"source_to_reduced_actual_hot\"->FullSimplify[gh-xx*bh/(hh*eta)],\n\"source_to_reduced_planck\"->FullSimplify[gp-xx*bp/(hh*eta)],\n\"hot_temperature_only_derivative\"->FullSimplify[temp*D[2*qhot/(3*kb*temp*nb*hh*eta),temp]],\n\"actual_plus_uv_logT_derivative\"->FullSimplify[temp*D[gh,temp]+2*kap*xx*mv/(3*hh*eta*kb*temp)],\n\"planck_plus_uv_logT_derivative\"->FullSimplify[temp*D[gp,temp]+(xx/(hh*eta))*(8*kap*ur*tr/(3*temp)+2*kap*mv/(3*kb*temp))],\n\"actual_abundance_scaled_derivative\"->FullSimplify[sj*(D[gh/.{xx->xx+qj*eps,eta->eta+wj*eps},eps]/.eps->0)-sj*bh*(qj*eta-xx*wj)/(hh*eta^2)],\n\"planck_abundance_scaled_derivative\"->FullSimplify[sj*(D[gp/.{xx->xx+qj*eps,eta->eta+wj*eps},eps]/.eps->0)-sj*bp*(qj*eta-xx*wj)/(hh*eta^2)],\n\"actual_geometry_direction_derivative\"->FullSimplify[(D[gh/.{hh->hh*Exp[hgrad*eps],er->er+egrad*eps},eps]/.eps->0)-(-gh*hgrad-8*kap*ucoef*xx*egrad/(3*hh*eta))],\n\"planck_geometry_direction_derivative\"->FullSimplify[(D[gp/.hh->hh*Exp[hgrad*eps],eps]/.eps->0)+gp*hgrad],\n\"tau_column_zero\"->FullSimplify[D[gh,tau]+D[gp,tau]],\n\"neutral_abundance_derivative_limit\"->FullSimplify[Limit[bh*(qj*eta-xx*wj)/(hh*eta^2),xx->0]-bh*qj/(hh*eta)],\n\"actual_affine_temperature_identity\"->FullSimplify[hh*temp*gh-(-aHot*temp+bHot)],\n\"planck_affine_temperature_identity\"->FullSimplify[hh*temp*gp-(-aPlanck*temp+bPlanck)],\n\"frozen_temperature_ode_residual\"->FullSimplify[D[thermalSolution,tt]+aa*thermalSolution-bb],\n\"frozen_temperature_initial_residual\"->FullSimplify[(thermalSolution/.tt->0)-tinit],\n\"zero_A_limit_residual\"->FullSimplify[Limit[thermalSolution,aa->0]-(tinit+bb*tt)],\n\"relaxation_weight_bounds\"->FullSimplify[0<=Exp[-aa*tt]<=1,Assumptions->{aa>=0,tt>=0}],\n\"actual_physical_coefficients_nonnegative\"->FullSimplify[aHot>=0&&bHot>=0,Assumptions->assumptions],\n\"planck_physical_coefficients_nonnegative\"->FullSimplify[aPlanck>=0&&bPlanck>=0,Assumptions->assumptions],\n\"gas_bath_local_ledger\"->FullSimplify[(qabs-qescape+qc+quvLedger)-qc-qabs-quvLedger+qescape],\n\"variable_particle_caloric_identity\"->FullSimplify[nb*((3*kb/2)*(eta*(-2*hh*temp+2*qkin/(3*kb*nb*eta)-temp*etadot/eta)+temp*etadot)+ionrate+3*hh*kb*temp*eta)-(qkin+nb*ionrate)],\n\"hydrogen_to_baryon_heat_capacity_ratio\"->FullSimplify[(xx/eta/.{xx->xeH*nH/nb,eta->(1+fHe+xeH)*nH/nb})-xeH/(1+fHe+xeH)],\n\"FLRW_Planck_temperature_coefficient\"->FullSimplify[(hh*temp*(gp/.{uv->0,mv->0,ur->arad*tr^4}))-(8*sig*arad*tr^4/(3*me*cc))*(xx/eta)*(tr-temp)],\n\"redshift_sign_and_adiabatic_conversion\"->FullSimplify[(-2*hh*temp+gamma*(tr-temp))/(-hh*(1+zz))-(2*temp/(1+zz)+gamma*(temp-tr)/(hh*(1+zz)))],\n\"Planck_equilibrium_zero\"->FullSimplify[qplanck/.temp->tr],\n\"branch_difference_identity\"->FullSimplify[(qplanck-qhot)-(-4*kap*nb*xx*kb*temp*(ur-ucoef*er)+4*kap*nb*xx*kb*ur*tr)]\n|>;\nExportString[<|\"residuals_and_predicates\"->records,\"all_checks_pass\"->And@@(TrueQ[#===0||#===True]&/@Values[records]),\"reduced_g_actual\"->ToString[gh,InputForm],\"reduced_g_planck\"->ToString[gp,InputForm],\"frozen_solution\"->ToString[thermalSolution,InputForm],\"assumptions\"->ToString[assumptions,InputForm]|>,\"RawJSON\"]",
+      "timeConstraint": 40
+    },
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Power::infy: -- Message text not found -- (1/0)\nInfinity::indet: -- Message text not found -- (0*Infinity)\nInfinity::indet: -- Message text not found -- (0*Infinity)\nGeneral::messages: Messages were generated which may indicate errors.\n\nOut[1]= \"{\\n\\t\\\"residuals_and_predicates\\\":{\\n\\t\\t\\\"source_to_reduced_actual_hot\\\":0,\\n\\t\\t\\\"source_to_reduced_planck\\\":0,\\n\\t\\t\\\"hot_temperature_only_derivative\\\":0,\\n\\t\\t\\\"actual_plus_uv_logT_derivative\\\":0,\\n\\t\\t\\\"planck_plus_uv_logT_derivative\\\":0,\\n\\t\\t\\\"actual_abundance_scaled_derivative\\\":0,\\n\\t\\t\\\"planck_abundance_scaled_derivative\\\":0,\\n\\t\\t\\\"actual_geometry_direction_derivative\\\":0,\\n\\t\\t\\\"planck_geometry_direction_derivative\\\":0,\\n\\t\\t\\\"tau_column_zero\\\":0,\\n\\t\\t\\\"neutral_abundance_derivative_limit\\\":0,\\n\\t\\t\\\"actual_affine_temperature_identity\\\":0,\\n\\t\\t\\\"planck_affine_temperature_identity\\\":0,\\n\\t\\t\\\"frozen_temperature_ode_residual\\\":0,\\n\\t\\t\\\"frozen_temperature_initial_residual\\\":0,\\n\\t\\t\\\"zero_A_limit_residual\\\":0,\\n\\t\\t\\\"relaxation_weight_bounds\\\":true,\\n\\t\\t\\\"actual_physical_coefficients_nonnegative\\\":true,\\n\\t\\t\\\"planck_physical_coefficients_nonnegative\\\":true,\\n\\t\\t\\\"gas_bath_local_ledger\\\":0,\\n\\t\\t\\\"variable_particle_caloric_identity\\\":0,\\n\\t\\t\\\"hydrogen_to_baryon_heat_capacity_ratio\\\":0,\\n\\t\\t\\\"FLRW_Planck_temperature_coefficient\\\":0,\\n\\t\\t\\\"redshift_sign_and_adiabatic_conversion\\\":0,\\n\\t\\t\\\"Planck_equilibrium_zero\\\":0,\\n\\t\\t\\\"branch_difference_identity\\\":0\\n\\t},\\n\\t\\\"all_checks_pass\\\":true,\\n\\t\\\"reduced_g_actual\\\":\\\"(2*sig*(mv - 4*kb*temp*(er*ucoef + uv))*xx)\\\\/(3*cc*eta*hh*kb*me*temp)\\\",\\n\\t\\\"reduced_g_planck\\\":\\\"(2*sig*(mv + 4*kb*tr*ur - 4*kb*temp*(ur + uv))*xx)\\\\/(3*cc*eta*hh*kb*me*temp)\\\",\\n\\t\\\"frozen_solution\\\":\\\"(bb*(1 - E^(-(aa*tt))))\\\\/aa + tinit\\\\/E^(aa*tt)\\\",\\n\\t\\\"assumptions\\\":\\\"{sig > 0, cc > 0, me > 0, kb > 0, nb > 0, eta > 0, hh > 0, temp > 0, xx >= 0, ucoef >= 0, er >= 0, ur >= 0, tr >= 0, uv >= 0, mv >= 0}\\\"\\n}\""
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    },
+    "parsed_return": {
+      "residuals_and_predicates": {
+        "source_to_reduced_actual_hot": 0,
+        "source_to_reduced_planck": 0,
+        "hot_temperature_only_derivative": 0,
+        "actual_plus_uv_logT_derivative": 0,
+        "planck_plus_uv_logT_derivative": 0,
+        "actual_abundance_scaled_derivative": 0,
+        "planck_abundance_scaled_derivative": 0,
+        "actual_geometry_direction_derivative": 0,
+        "planck_geometry_direction_derivative": 0,
+        "tau_column_zero": 0,
+        "neutral_abundance_derivative_limit": 0,
+        "actual_affine_temperature_identity": 0,
+        "planck_affine_temperature_identity": 0,
+        "frozen_temperature_ode_residual": 0,
+        "frozen_temperature_initial_residual": 0,
+        "zero_A_limit_residual": 0,
+        "relaxation_weight_bounds": true,
+        "actual_physical_coefficients_nonnegative": true,
+        "planck_physical_coefficients_nonnegative": true,
+        "gas_bath_local_ledger": 0,
+        "variable_particle_caloric_identity": 0,
+        "hydrogen_to_baryon_heat_capacity_ratio": 0,
+        "FLRW_Planck_temperature_coefficient": 0,
+        "redshift_sign_and_adiabatic_conversion": 0,
+        "Planck_equilibrium_zero": 0,
+        "branch_difference_identity": 0
+      },
+      "all_checks_pass": true,
+      "reduced_g_actual": "(2*sig*(mv - 4*kb*temp*(er*ucoef + uv))*xx)/(3*cc*eta*hh*kb*me*temp)",
+      "reduced_g_planck": "(2*sig*(mv + 4*kb*tr*ur - 4*kb*temp*(ur + uv))*xx)/(3*cc*eta*hh*kb*me*temp)",
+      "frozen_solution": "(bb*(1 - E^(-(aa*tt))))/aa + tinit/E^(aa*tt)",
+      "assumptions": "{sig > 0, cc > 0, me > 0, kb > 0, nb > 0, eta > 0, hh > 0, temp > 0, xx >= 0, ucoef >= 0, er >= 0, ur >= 0, tr >= 0, uv >= 0, mv >= 0}"
+    }
+  },
+  "bounded_diagnostic": {
+    "tool": "mcp__codex_apps__wolfram_wolframlanguageevaluator",
+    "arguments": {
+      "code": "ClearAll[\"Global\\`*\"];\nsol=tinit*Exp[-aa*tt]+(bb/aa)*(1-Exp[-aa*tt]);\nneutral=bb*(qj*eta-xx*wj)/(hh*eta^2);\nr1=Check[FullSimplify[Limit[sol,aa->0]-(tinit+bb*tt)],\"MESSAGE_IN_ZERO_A_LIMIT\"];\nr2=Check[FullSimplify[Normal[Series[sol,{aa,0,0}]]-(tinit+bb*tt)],\"MESSAGE_IN_ZERO_A_SERIES\"];\nr3=Check[FullSimplify[Limit[neutral,xx->0]-bb*qj/(hh*eta)],\"MESSAGE_IN_NEUTRAL_LIMIT\"];\nExportString[<|\"zero_A_limit\"->r1,\"zero_A_series\"->r2,\"neutral_limit\"->r3,\"series_is_entire_continuation_at_A_zero\"->True|>,\"RawJSON\"]",
+      "timeConstraint": 25
+    },
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Power::infy: -- Message text not found -- (1/0)\nInfinity::indet: -- Message text not found -- (0*Infinity)\nInfinity::indet: -- Message text not found -- (0*Infinity)\nGeneral::messages: Messages were generated which may indicate errors.\n\nOut[1]= \"{\\n\\t\\\"zero_A_limit\\\":0,\\n\\t\\\"zero_A_series\\\":0,\\n\\t\\\"neutral_limit\\\":0,\\n\\t\\\"series_is_entire_continuation_at_A_zero\\\":true\\n}\""
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    },
+    "parsed_return": {
+      "zero_A_limit": 0,
+      "zero_A_series": 0,
+      "neutral_limit": 0,
+      "series_is_entire_continuation_at_A_zero": true
+    }
+  },
+  "warning_assessment": {
+    "warning_free_execution": false,
+    "observed": [
+      "Power::infy",
+      "Infinity::indet",
+      "General::messages"
+    ],
+    "statement": "Both evaluator responses contain arithmetic warning messages. All explicitly returned algebraic residuals are zero and all returned coefficient/weight predicates are true. The bounded diagnostic also returns zero for the A→0 limit, its series constant term and the neutral limit; it does not isolate the internal origin of the messages. The thermal formula uses the separately defined continuous A=0 branch. The raw messages are retained and this receipt does not advertise a clean warning-free tool run.",
+    "manual_confirmation": "Direct quotient/chain-rule differentiation and substitution into dT/dt=-A*T+B reproduce the stated equations. CAS results are supporting algebra evidence, not independent physical validation or an ODE result."
+  },
+  "counts": {
+    "primary_returned_checks": 26,
+    "new_ODE_integrations": 0,
+    "old_ODE_reruns": 0,
+    "git_mutations": 0
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "runtime_files": {
+    "research/rec_compton_coupled_20261022/code/run_compton.py": "e81220564d303467c08b1162dcd9bea8a365c8d689c64b00aeaac7378e0511b9",
+    "research/rec_compton_coupled_20261022/code/compton_system.py": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+    "research/rec_compton_coupled_20261022/FROZEN_CONTRACT.md": "5d7d27ade2c3924bc2df5b6b376a94aff3a788e36a7cab651ebcce03c55fcb92",
+    "research/rec_thermal_moments_20261022/code/run_thermal.py": "4fcf25b95f03738e92190f38b6fe5469adb0daac289b0bb5ee52e8fc36c1a69b",
+    "research/rec_thermal_moments_20261022/code/thermal_system.py": "1ac1336a3e979ec485cec0e4092ca7d6e1ef04aa43b28f525a06231c49e34375",
+    "research/rec_thermal_moments_20261022/code/thermal_sources.py": "622bc85b21d819779d98ee2a7645f51deff9a91f7a423872dbe244f5378aa769",
+    "research/rec_thermal_moments_20261022/code/recombination_moments.py": "5eb740518d04dcbf123125f3d73a85fa10b48bb3bad6577cdf81459d71a390b0",
+    "research/rec_thermal_moments_20261022/data/mao2017_calc.dat": "bf7ad20e10ff7045fc83b4c4c4148132c291f315213c5fc7b00ae820c76aa58a",
+    "research/rec_thermal_moments_20261022/data/mao2017_pars.dat": "a3c97fdf8101da6d33cc838f7fd4e142bcf3740c37b48d89e76c47ae91575d12",
+    "research/rec_thermal_moments_20261022/data/mao2017_selected.json": "34b5fb8dab049744faa0c6f734ce59f1c72b931b3cf2db298c01156f86d17803",
+    "research/rec_thermal_moments_20261022/provenance/MAO_SOURCE_LOCK.json": "09257023bc18bc01133389aad3a9796e9dc2bfbc59c643ca9659e849776931b0",
+    "research/rec_thermal_moments_20261022/provenance/PARENT_SOURCE_LOCK.json": "24e4f25e03200ac5c8f265950c7cb58c460c490cda456701745702df8a1e41e4",
+    "research/rec_thermal_omitted_budget_20261022/code/postprocess_omitted.py": "b6f44f191978d449843a89da1fa2c0ebeb85b9b807883e96e8eeaea0a1a2ad8c",
+    "research/rec_thermal_omitted_budget_20261022/code/compton_budget.py": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567",
+    "research/rec_thermal_omitted_budget_20261022/code/collisional_budget.py": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252",
+    "research/rec_thermal_omitted_budget_20261022/data/HG97_COLLISIONAL_SOURCE.json": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5"
+  },
+  "cases": [
+    {
+      "label": "s03_m03_r03_actual_hot_nominal",
+      "receipt_sha256": "05060431b6b9dd234da1c96a0e7d844b7250c7db4c62496ba1fa642d7cb50fd8",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 125180,
+          "sha256": "402eaa84dc39c97e7d6d20fdb39958ae7c51ee38ae022c17d9725bf58f6a4986"
+        },
+        "trajectory.npz": {
+          "bytes": 156087,
+          "sha256": "9bdab526e3681ccee65466e5535f6a78c183e068b96d632acbfbfe6e03de6f7c"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 426247,
+          "sha256": "593db2ac4cb8b961841f257d8037d4c1d7ad3f79a28d7a601d4c48db8ba3e342"
+        },
+        "dense_513.npz": {
+          "bytes": 705529,
+          "sha256": "5fcd2581ab9baaf051d9e065f0b181d2c563b8c05db739a118e8d5781dca43a3"
+        },
+        "dense_1025.npz": {
+          "bytes": 1394954,
+          "sha256": "d8e169eb0d905d37bb9b4b408e7181afb878e4f9d0c7a84865f61049ba8d7cbf"
+        }
+      },
+      "baseline": {
+        "label": "s03_m03_r03_mao2017_nominal",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/trajectory.npz",
+        "bytes": 108065,
+        "sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/RESULT.json",
+        "receipt_sha256": "a36d74ab59fdd30fa4018acbab820f1d848f0793270178960498779996a95526"
+      }
+    },
+    {
+      "label": "s03_m03_r03_actual_hot_refined",
+      "receipt_sha256": "a2cd252d71d30b0e4a6e89a8477024a47411ca6699d4f19e8c2c15766daf44d9",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 177291,
+          "sha256": "de8e5533e1b5358d255dbea2515ed3932a3db783b1af441c2f5fbd6962e88ea0"
+        },
+        "trajectory.npz": {
+          "bytes": 156109,
+          "sha256": "9657db33d1d01570b9bd004c42f63382b5c795481d5d1c3bba927a03f533c25c"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 603131,
+          "sha256": "d07a9f8307327a7ce7ed59dc894c3405a3e3869957464406062c1de7ecfbf0e6"
+        },
+        "dense_513.npz": {
+          "bytes": 705649,
+          "sha256": "9ab634525de2ef4d6d820a66f974cc822c7807c5feda10514967c5565efe9f07"
+        },
+        "dense_1025.npz": {
+          "bytes": 1395109,
+          "sha256": "8ad6030a2c55d17ea85b66c14151377a8aef8588a12bc33b0df1c00e20c7f14e"
+        }
+      },
+      "baseline": {
+        "label": "s03_m03_r03_mao2017_refined",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/trajectory.npz",
+        "bytes": 107835,
+        "sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/RESULT.json",
+        "receipt_sha256": "d3d32d495f178198c06663373fe33b5cff750270e792a1db735d38ef9ad10e56"
+      }
+    },
+    {
+      "label": "s03_m03_r03_planck_reference_nominal",
+      "receipt_sha256": "f77bfc99ff6883edd6480ff528e985286eedec9445a610f61a870100f7fb6b3b",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 125335,
+          "sha256": "9d50d09150be932c2aedcf1079f2b1ae418961fc60c030d5b6ecd08df078f53c"
+        },
+        "trajectory.npz": {
+          "bytes": 156025,
+          "sha256": "a29470a1f9fb1d917f18f179cd85fc1c5592ee6ae2f142db9e3080917cc14459"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 426520,
+          "sha256": "9dcf88d05f646aafadcea156d16b81cbc76480340a7e5e6717ea33fc1649a818"
+        },
+        "dense_513.npz": {
+          "bytes": 705509,
+          "sha256": "95c43dc48f48a75ab3453867740ce22f7eede3766c0cdfc379ca5ea3e9fbbcef"
+        },
+        "dense_1025.npz": {
+          "bytes": 1395024,
+          "sha256": "1739104c58893aa5ce9d70cb4a9599321b42a1184f1fb4a7d6569aa253c15ef8"
+        }
+      },
+      "baseline": {
+        "label": "s03_m03_r03_mao2017_nominal",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/trajectory.npz",
+        "bytes": 108065,
+        "sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_nominal/RESULT.json",
+        "receipt_sha256": "a36d74ab59fdd30fa4018acbab820f1d848f0793270178960498779996a95526"
+      }
+    },
+    {
+      "label": "s03_m03_r03_planck_reference_refined",
+      "receipt_sha256": "3cba2128fe5f77132be71d650ca07d998d8661a20a3b1dfcb6d3ae38817c0c28",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 176334,
+          "sha256": "7f01e8c788f7782c6b58dc26b2f6c9efb54d6ed40b18a62bfca3acb50ef13b63"
+        },
+        "trajectory.npz": {
+          "bytes": 155856,
+          "sha256": "af8ae0192a55f4e6ae80c7c3e3719117a43768413e4b2144342a767b3081ea34"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 602310,
+          "sha256": "60691e427348d6e03021ff8fa30c6c9b5577389171310dff4ada694fcdadd29d"
+        },
+        "dense_513.npz": {
+          "bytes": 704788,
+          "sha256": "71342be7e7969c6c30cabcbded76923b3a8326647395b40d93e304d19a1e968e"
+        },
+        "dense_1025.npz": {
+          "bytes": 1393477,
+          "sha256": "dfe75e483a2802d29dcf042b937171181c4d9e7d2b4eee7490c7e72555de2402"
+        }
+      },
+      "baseline": {
+        "label": "s03_m03_r03_mao2017_refined",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/trajectory.npz",
+        "bytes": 107835,
+        "sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s03_m03_r03_mao2017_refined/RESULT.json",
+        "receipt_sha256": "d3d32d495f178198c06663373fe33b5cff750270e792a1db735d38ef9ad10e56"
+      }
+    },
+    {
+      "label": "s04_m04_r04_actual_hot_nominal",
+      "receipt_sha256": "bd4e513d46f1d7c16ec01c031d7e282de45a10260782a8d08b5bf6415509a195",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 123472,
+          "sha256": "3380b93ce2e33c80258883eedd3b380ab0b938691b68a91f89a0149453db9024"
+        },
+        "trajectory.npz": {
+          "bytes": 155690,
+          "sha256": "0c59d2840c8816116e8c734b3ecf8d3be8b27b878bc97bd42af013ef91e08ab7"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 423491,
+          "sha256": "cd7b14c2dd935cfbc9a5f43e1ced10d49ba1d7aaa3936f2b708522eb754ec731"
+        },
+        "dense_513.npz": {
+          "bytes": 703922,
+          "sha256": "bd357ac4499fa68f8a2beb4348a87c02d93492cffa0c12645502d5b2d3d772da"
+        },
+        "dense_1025.npz": {
+          "bytes": 1393430,
+          "sha256": "229defa823fa3bd29c94894bc5dcb8778744a1005179b26081fdc146dec21d6c"
+        }
+      },
+      "baseline": {
+        "label": "s04_m04_r04_mao2017_nominal",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/trajectory.npz",
+        "bytes": 107787,
+        "sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/RESULT.json",
+        "receipt_sha256": "6ed868b281b974f1201a3f30d5a11435bb18d5637f03a6c104fd1b5bce58e830"
+      }
+    },
+    {
+      "label": "s04_m04_r04_actual_hot_refined",
+      "receipt_sha256": "adcdd1ee05dd74391f4b73471ca8dfe48b723b7e083f37fa96a7ed9abe803ad3",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 175292,
+          "sha256": "8415ba4204f54e006c096cc6f8d7298f9c3c14c2bc1bc4e429cc7bd926d5a150"
+        },
+        "trajectory.npz": {
+          "bytes": 155652,
+          "sha256": "816865d130ecd1081990d39458eb0a898adf9fc98f95e17008f45913a9d60df8"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 600533,
+          "sha256": "c6137037e52a8b6377586d757c77f10d2cc63e4cd0c766488623ca9b9eac3c14"
+        },
+        "dense_513.npz": {
+          "bytes": 703628,
+          "sha256": "ac1f5a51c79b794467d158b1afc4dfe1c91fc5eae6778046ccd3c990d39a4b25"
+        },
+        "dense_1025.npz": {
+          "bytes": 1393077,
+          "sha256": "7efad9091511f4ea31016c38e2a784a5d5913d5dcef192e5e6e6ff7c2b385165"
+        }
+      },
+      "baseline": {
+        "label": "s04_m04_r04_mao2017_refined",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/trajectory.npz",
+        "bytes": 107319,
+        "sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/RESULT.json",
+        "receipt_sha256": "4349b6fd76fdd3e2bf96bdab563bb288cc554e891bcf9c1c06a66df4b6055c08"
+      }
+    },
+    {
+      "label": "s04_m04_r04_planck_reference_nominal",
+      "receipt_sha256": "1a5c0345c1ba461acea0201316415a4fa12be8302e4139a65606ea1011339567",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 123390,
+          "sha256": "ee9910896c9df1c2126c0a77d06840ad82210103e543a5b4489d81ba98c0fd2d"
+        },
+        "trajectory.npz": {
+          "bytes": 155607,
+          "sha256": "b4cb20e4023e1656d9e03ff657f42e6a787a9356ee4ad68c4d1f424c293b4785"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 423225,
+          "sha256": "d557dc4feddd8fc1044fea34bdc265b2b1495cd6d62fda9b6885bc3c77971afa"
+        },
+        "dense_513.npz": {
+          "bytes": 703964,
+          "sha256": "1a03bc4c1ba3e534df494e673c725e9d88bba1b73b692f760eb3ecc64591bf69"
+        },
+        "dense_1025.npz": {
+          "bytes": 1393619,
+          "sha256": "3353e9ad3b11015affac8e239611465b1280dcc97e380172eb623e1d59114fac"
+        }
+      },
+      "baseline": {
+        "label": "s04_m04_r04_mao2017_nominal",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/trajectory.npz",
+        "bytes": 107787,
+        "sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_nominal/RESULT.json",
+        "receipt_sha256": "6ed868b281b974f1201a3f30d5a11435bb18d5637f03a6c104fd1b5bce58e830"
+      }
+    },
+    {
+      "label": "s04_m04_r04_planck_reference_refined",
+      "receipt_sha256": "6ec10afea1b63c7b6ce7891075668ef9a4fb346af19153771483e8a2f6040c1e",
+      "output_bindings": {
+        "accepted_solver_nodes.npz": {
+          "bytes": 175123,
+          "sha256": "f3cdee256e126dbbbcfa0d66ff7488b82c2122f502ebb040b4ff36d677530847"
+        },
+        "trajectory.npz": {
+          "bytes": 155664,
+          "sha256": "75f5994264f9cab63e38e00343da62a783ef384f9ecabdc026478098e169a33c"
+        },
+        "accepted_diagnostics.npz": {
+          "bytes": 600467,
+          "sha256": "34369cdb916e3f82fcac0f2c743df32cd4c9e2c0e164ffeeeadc0460cf9cf3ad"
+        },
+        "dense_513.npz": {
+          "bytes": 704224,
+          "sha256": "e25bb08f52426d28e6bd9fa93214a2e483d9c3e662922a7aa79c2d26b7e6de91"
+        },
+        "dense_1025.npz": {
+          "bytes": 1394142,
+          "sha256": "2904dba978132dce54c5836b5c67a522d996c5627e0b4720739a595449bd2f53"
+        }
+      },
+      "baseline": {
+        "label": "s04_m04_r04_mao2017_refined",
+        "path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/trajectory.npz",
+        "bytes": 107319,
+        "sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+        "receipt_path": "research/rec_thermal_moments_20261022/results/thermal8/s04_m04_r04_mao2017_refined/RESULT.json",
+        "receipt_sha256": "4349b6fd76fdd3e2bf96bdab563bb288cc554e891bcf9c1c06a66df4b6055c08"
+      }
+    }
+  ],
+  "campaign_lock_sha256": "1ffa5aad2dd572a6184b4a020f542dfbdcaa25103b2ce6c6d10cce1ace725504",
+  "refinement_sha256": "6b1783775c9c79fb5fa7c6d054eb2beb72afd461cd4708d79a5f082eedaa7061"
+}

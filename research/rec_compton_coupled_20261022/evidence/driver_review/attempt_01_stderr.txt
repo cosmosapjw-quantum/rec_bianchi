@@ -1,0 +1,47 @@
+test_campaign_deadline_checked_after_refinement (__main__.DriverHelpers.test_campaign_deadline_checked_after_refinement) ... FAIL
+test_numeric_pair_retains_native63_and_grids (__main__.DriverHelpers.test_numeric_pair_retains_native63_and_grids) ... ok
+test_output_inventory_rejects_empty (__main__.DriverHelpers.test_output_inventory_rejects_empty) ... FAIL
+test_output_inventory_rejects_missing_dense (__main__.DriverHelpers.test_output_inventory_rejects_missing_dense) ... FAIL
+test_persistent_budget_includes_failed_and_unfinished (__main__.DriverHelpers.test_persistent_budget_includes_failed_and_unfinished) ... ok
+test_refinement_requires_exact_initial_state (__main__.DriverHelpers.test_refinement_requires_exact_initial_state) ... FAIL
+
+======================================================================
+FAIL: test_campaign_deadline_checked_after_refinement (__main__.DriverHelpers.test_campaign_deadline_checked_after_refinement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py", line 105, in test_campaign_deadline_checked_after_refinement
+    with self.assertRaises(TimeoutError, msg="Final diagnostic work crossed 1200 s; COMPLETE must not be returned"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: TimeoutError not raised : Final diagnostic work crossed 1200 s; COMPLETE must not be returned
+
+======================================================================
+FAIL: test_output_inventory_rejects_empty (__main__.DriverHelpers.test_output_inventory_rejects_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py", line 54, in test_output_inventory_rejects_empty
+    with self.assertRaises(ValueError, msg="An empty outputs map cannot certify the five mandatory retained NPZ files"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : An empty outputs map cannot certify the five mandatory retained NPZ files
+
+======================================================================
+FAIL: test_output_inventory_rejects_missing_dense (__main__.DriverHelpers.test_output_inventory_rejects_missing_dense)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py", line 63, in test_output_inventory_rejects_missing_dense
+    with self.assertRaises(ValueError, msg="A receipt omitting dense_1025.npz must not be reused"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : A receipt omitting dense_1025.npz must not be reused
+
+======================================================================
+FAIL: test_refinement_requires_exact_initial_state (__main__.DriverHelpers.test_refinement_requires_exact_initial_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/driver_review/test_driver_helpers.py", line 81, in test_refinement_requires_exact_initial_state
+    with self.assertRaises(ValueError, msg="Refinement comparison must reject different exact initial clock/state"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : Refinement comparison must reject different exact initial clock/state
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.793s
+
+FAILED (failures=4)

@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0.0",
+  "status": "COMPLETE_EXACT_TREE_DRAFT_PR",
+  "recorded_at_utc": "2026-10-22 14:40:43 UTC",
+  "repository": "cosmosapjw-quantum/rec_bianchi",
+  "local_final_commit": "3a5a853abb2eb0f67650288aa1cee82c576f9ffc",
+  "remote_final_commit": "04c0b10c1f1ec38d57c751369c553b638979e453",
+  "exact_root_tree": "712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7",
+  "stages": [
+    {
+      "stage": "A",
+      "local": "88f992f76b5b640b136e86ac5e1e7dd1b0439e18",
+      "tree": "afb1e166a39086b631f3acf99a679f1da3e2e5a8",
+      "remote": "8fc783f9f415b697d6fe8d328647610c90c41774",
+      "parent": "892aad5c3e9fb0b2abd021154b62a42c39277125",
+      "tree_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "afb1e166a39086b631f3acf99a679f1da3e2e5a8"
+        },
+        "isError": false
+      },
+      "commit_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "8fc783f9f415b697d6fe8d328647610c90c41774"
+        },
+        "isError": false
+      }
+    },
+    {
+      "stage": "B",
+      "local": "fad844ef82fc0a1b386c477c66c20fc15f6c78fc",
+      "tree": "c9b8e61afcfff3ea6023e813a05d04f37eb399e9",
+      "remote": "386c39e13ff336cbc6a9f18d9fbe4dee9923ccd7",
+      "parent": "8fc783f9f415b697d6fe8d328647610c90c41774",
+      "tree_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "c9b8e61afcfff3ea6023e813a05d04f37eb399e9"
+        },
+        "isError": false
+      },
+      "commit_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "386c39e13ff336cbc6a9f18d9fbe4dee9923ccd7"
+        },
+        "isError": false
+      }
+    },
+    {
+      "stage": "C",
+      "local": "b423ca17b7ad782b33b62f95b82141ab237091f3",
+      "tree": "022e31f6b7b0618fbd35c296850a8615ec9ce675",
+      "remote": "11897e09ea9368460ed074c0233afb924f39a7bf",
+      "parent": "386c39e13ff336cbc6a9f18d9fbe4dee9923ccd7",
+      "tree_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "022e31f6b7b0618fbd35c296850a8615ec9ce675"
+        },
+        "isError": false
+      },
+      "commit_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "11897e09ea9368460ed074c0233afb924f39a7bf"
+        },
+        "isError": false
+      }
+    },
+    {
+      "stage": "D",
+      "local": "3a5a853abb2eb0f67650288aa1cee82c576f9ffc",
+      "tree": "712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7",
+      "remote": "04c0b10c1f1ec38d57c751369c553b638979e453",
+      "parent": "11897e09ea9368460ed074c0233afb924f39a7bf",
+      "tree_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7"
+        },
+        "isError": false
+      },
+      "commit_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "sha": "04c0b10c1f1ec38d57c751369c553b638979e453"
+        },
+        "isError": false
+      },
+      "ref_ack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "success": true
+        },
+        "isError": false
+      }
+    }
+  ],
+  "draft_pr_acknowledgment": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/122",
+      "number": 122,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": true,
+      "body": "## Why\n\nThe retained thermal closure in PR #121 does not include Compton energy transfer\nor H/He collisional heating/cooling. A source budget is needed to choose the\nnext coupling work and keep source-domain limitations visible.\n\n## Changes and results\n\nThis stacked research unit postprocesses the eight immutable full 63-state thermal\ntrajectories at 109 saved nodes each: 872 states, zero new ODE integrations and\nzero old-IVP reruns. It adds actual-U hot-electron Compton, a separately owned\nisotropic Planck reference, inherited dilute UV Compton exchange, source-bound\nHG97 H/He CI and H I/He II CE, native availability masks and complete arrays.\n\nOn four primary paths, hot Compton removes 2.576–2.592 eV/baryon from z = 7.9637\nto 2, equivalent to 29.72–29.92% of the existing primary photoelectron heat.\nSupplied H I CE is about −0.00132 eV/baryon; CI moves about 2.05e−5 from kinetic\nto binding energy and adds an electron. UV Compton contributes about +6.23e−5.\nThe directly integrated log-temperature forcing is about −1.03; this is not\na solved temperature correction or a rigorous omission-error bound.\n\n## Validation\n\n- 6 focused Compton and 10 collisional test methods pass, including independent\n  cgs/SI conversions, Planck equilibrium, angular averaging, 9 actual 35-digit\n  Wolfram CI fixtures, native conservation, particle/energy ownership,\n  strict source domains, explicit continuation and absent-channel masks.\n- Independent raw-NPZ recomputation of all 872 states agrees to at most 1.493e−14\n  in power, 7.866e−14 in coefficients and 3.286e−15 in integrals.\n- 65 implementation/provenance checks pass; actual source/result/trajectory\n  hashes and all retained-grid arrays are saved. The first postprocess took\n  0.6769 s wall; no completed IVP or old test suite was repeated.\n- Three current PNG/PDF figures with exact plot data; actual PNG visual review,\n  independent physics and implementation reviews, and explicit authorship.\n\n## Scope and next step\n\nFull CMB recoil/induced closure remains conditional on a supplied spectrum;\nthe Planck reference is not inferred from the actual moments. He I CE/\nmetastable and Li CI/CE remain unsupported. Fit continuation, missing channels\nand underflow are distinct. 109/55/Simpson comparisons are retained-grid\ndiagnostics; RR-alternative sensitivity is not numerical uncertainty.\n\nThe next finite contract proposes 8 new full 63-state IVPs over two seeds, two\nCompton branches and their nominal/refined pairs, with explicit test-fluid\ngas/bath transfer accounting. Those future IVPs are NOT_RUN here.\n\nPhysical HOLD; production NOT_APPROVED; global convergence NOT_RUN;\nREI_activation=false; U5 CLOSED_HOLD_NOT_RESET. This PR is a draft.\n\n## Review entry points\n\nRead REPORT_KO.md, THEORY_KO.md, HANDOFF_KO.md, NEXT_UNIT_CONTRACT.md,\nresults/budget_v1/RESULT.json and evidence review receipts under\nresearch/rec_thermal_omitted_budget_20261022. Current figures are figures/v3;\nv1/v2 preserve documented correction artifacts.\n\nPublication and create-only backup are explicitly authorized. Remote commits\nmay have new headers, so exact Git root-tree equality and local/remote mapping\nare recorded. Original local history is retained in the final archive bundle.\n\n\n## Completed delivery\n\nFinal delivery head: `04c0b10c1f1ec38d57c751369c553b638979e453`; complete repository tree: `712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7`. This is byte-identical at every Git tree entry to local final commit `3a5a853abb2eb0f67650288aa1cee82c576f9ffc`. Original local A/B/C/D commits and the prior thermal chain are preserved in the archive Git bundle. Stage C science commit `b423ca17b7ad782b33b62f95b82141ab237091f3` maps to remote `11897e09ea9368460ed074c0233afb924f39a7bf` at exact tree `022e31f6b7b0618fbd35c296850a8615ec9ce675`; the subsequent commit changes delivery documentation only.\n\nThis draft PR is stacked on [PR #121](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/121). No merge was performed.\n\n`REC_THERMAL_OMITTED_BUDGET_20261022.zip` contains 889 ZIP entries (888 payloads plus manifest), including all 685 donor files, 106 prior thermal files and 95 files for this unit, a restore README and Git bundle. Size: **44,847,883 bytes**. SHA-256: `22922660598f5f808427b5776962db232c143892474c02864a22423d4157bad7`.\n\nFresh-directory restore audit: all **23 checks passed**, including payload/Git identities, saved-input and output bindings, current v3 figure files, bundle prerequisites, and import-only identities. No ODE, old IVP, postprocessor or test rerun was used for restoration.\n\nThe final archive, integrity sidecar and restore audit were uploaded create-only to the existing private Dropbox project folder; each returned a completed acknowledgment and then passed a full HTTP 200 download through EOF with byte count, SHA-256 and Dropbox content-hash equality. The prior thermal archive and this unit's Stage A/B backups also passed full readback. No public shared link was created.\n\nFinal delivery and upload receipts are external sidecars to avoid circular self-hashing. The committed `DELIVERY_STATUS.json` is explicitly the earlier post-Stage-C snapshot; this completed delivery record supersedes its pending final-archive line.\n",
+      "title": "REC omitted thermal budget: Compton priority from eight saved paths",
+      "base": "research/rec-thermal-moments-20261022",
+      "base_sha": "892aad5c3e9fb0b2abd021154b62a42c39277125",
+      "head": "research/rec-thermal-omitted-budget-20261022",
+      "head_sha": "04c0b10c1f1ec38d57c751369c553b638979e453",
+      "head_repo_id": 1322785483,
+      "head_repo_full_name": "cosmosapjw-quantum/rec_bianchi",
+      "merge_commit_sha": "8a2ed8bb8b955b9f07c8a2669848d2be614dedfb",
+      "user": {
+        "login": "cosmosapjw-quantum",
+        "name": "cosmosapjw-quantum",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/58155957?v=4",
+        "id": 58155957
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-22T06:55:42Z",
+      "updated_at": "2026-10-22T14:40:42Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 4,
+      "changed_files": 95,
+      "additions": 14777,
+      "deletions": 0,
+      "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/122",
+      "display_title": "REC omitted thermal budget: Compton priority from eight saved paths"
+    },
+    "isError": false
+  },
+  "source_science_unchanged_in_delivery_commit": true,
+  "original_local_history": "Preserved in REC_THERMAL_OMITTED_LOCAL_COMMITS_20261022.bundle inside final ZIP",
+  "archive": {
+    "filename": "REC_THERMAL_OMITTED_BUDGET_20261022.zip",
+    "bytes": 44847883,
+    "sha256": "22922660598f5f808427b5776962db232c143892474c02864a22423d4157bad7",
+    "payloads": 888,
+    "zip_entries": 889,
+    "restore_checks_passed": 23
+  },
+  "dropbox_receipt": {
+    "filename": "REC_THERMAL_OMITTED_PUBLICATION_DROPBOX_20261022.json",
+    "bytes": 15364,
+    "sha256": "21d801ebecde4141b95ad303200e610b8e42d383ccfefa8327f8328967b72c9f",
+    "status": "COMPLETE_FULL_READBACK_VERIFIED"
+  },
+  "stage_c_receipt": "REC_OMITTED_STAGE_C_GITHUB_20261022.json",
+  "merged": false,
+  "public_shared_links_created": false
+}

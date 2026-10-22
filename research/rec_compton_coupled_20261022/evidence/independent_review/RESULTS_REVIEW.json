@@ -1,0 +1,108 @@
+{
+  "schema": "rec.compton.independent.results_review.v1",
+  "reviewed_at_utc": "2026-10-22T15:24:36.647837+00:00",
+  "status": "PASS_SCOPED_NUMERICAL_AND_PHYSICS_REVIEW",
+  "reviewer": "compton_independent_review",
+  "scope": "Source-bound completed finite eight-IVP campaign and current-path analysis; figure and delivery reviews are separate records.",
+  "independence": "Reviewer authored no runtime, driver, analyzer, collision provider, theory or solver results. Reviewer wrote only independent checks and review evidence.",
+  "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "analysis_identity": "f824bdead1ce75b94f5102764184ea8dee2db71ecc06296dc7fa2ac9d71708c3",
+  "source_bindings": {
+    "evidence/independent_review/check_saved_results.py": "4eb93d9ce3b7191620290f1f4f1e4a7afefce741955b2aac7a24972bfa839e31",
+    "code/compton_system.py": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+    "code/run_compton.py": "e81220564d303467c08b1162dcd9bea8a365c8d689c64b00aeaac7378e0511b9",
+    "code/analyze_compton.py": "00b187504eaa9da8cbe43287339b4b71b276936dff9e7542b3f29d5405147ffc",
+    "code/analyze_collisions.py": "acd7a1ed448d282cc4b102ecfd6d2043611caa3dfa480913e105c073ba0969a1",
+    "results/compton8/CAMPAIGN_LOCK.json": "1ffa5aad2dd572a6184b4a020f542dfbdcaa25103b2ce6c6d10cce1ace725504",
+    "results/analysis_v1/RESULT.json": "ed78cc97e045077666b869d818e3b0ea550b73848bd58051d99bc515c094082e"
+  },
+  "input_bindings": {
+    "CAMPAIGN_LOCK.json": "1ffa5aad2dd572a6184b4a020f542dfbdcaa25103b2ce6c6d10cce1ace725504",
+    "REFINEMENT.json": "6b1783775c9c79fb5fa7c6d054eb2beb72afd461cd4708d79a5f082eedaa7061",
+    "analysis_RESULT.json": "ed78cc97e045077666b869d818e3b0ea550b73848bd58051d99bc515c094082e",
+    "analysis_SUMMARY.json": "c04267f78b3c328b7e786dd2bbe818c19583bf8585c127c92147ab090374e502"
+  },
+  "evidence": {
+    "evidence/independent_review/check_saved_results.py": "4eb93d9ce3b7191620290f1f4f1e4a7afefce741955b2aac7a24972bfa839e31",
+    "evidence/independent_review/saved_results_attempt_01_check_saved_results.py": "a1facc1bd4adcc1a6762c8aff68d3b77250bf13e82d0e405872638cab4973611",
+    "evidence/independent_review/saved_results_attempt_01_process.json": "2aadc3c25e23150bd2fca92d4308aeee1da9033d1294960c5bc5147a1d4ea151",
+    "evidence/independent_review/saved_results_attempt_01_stdout.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/independent_review/saved_results_attempt_01_stderr.txt": "ec5421be09bf29696a486fb1eccb1cd4f4e1bd4c450f1b78acdba910a7929636",
+    "evidence/independent_review/saved_results_reviewer_correction_01.json": "505b826974cce2c5a8a0d2f2fc683b623cd7de97cb4b31e2e69ff4f4fd77e519",
+    "evidence/independent_review/saved_results_attempt_02_process.json": "05f2466655b691d9ca846725e566f0aa1b46ad9aaf382dc5c773fdf3c69baca6",
+    "evidence/independent_review/saved_results_attempt_02_stdout.json": "924273c6a28716b04e0ef6548e871e643a1ef7db22454e5e6dc2afdf755e15b8",
+    "evidence/independent_review/saved_results_attempt_02_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preflight_receipt_sha256": "239c74c6ace76005ad79bb8d90a448b56a5a1758aeba3d3b6cde8fe0b6f02f64",
+  "analysis_preflight_receipt_sha256": "e6a43e5e9ce8da834c495ae6fcb28440809caa00e263839efb5fa13192b58595",
+  "confirmed": [
+    {
+      "id": "R01",
+      "claim": "Eight COMPLETE source-bound cases, required five files each, exact case/branch/tolerance identity and 64 true gates per case; unchanged runtime/source data."
+    },
+    {
+      "id": "R02",
+      "claim": "All 32 retained sets (16170 states) independently checked for scaling, physical native n/T zero, finite state, population/baryon/isotope bounds, T/tau, number monopoles, sampled angular positivity and signed tensor sum."
+    },
+    {
+      "id": "R03",
+      "claim": "Current actual E0 and independent Planck U/Tr, inherited UV moments, ne and eta independently reconstruct Compton powers. Gas thermal+binding store, expansion work and new source integrals reproduce retained first-law and backreaction diagnostics."
+    },
+    {
+      "id": "R04",
+      "claim": "Exact same-grid and initial-state old baseline pairing; nominal/refined tolerances matched without any old IVP run. Four finite refinement comparisons reconstructed from native arrays."
+    },
+    {
+      "id": "R05",
+      "claim": "All 24 collision grids use the new native states. Direct HG97 SI formula reconstruction, kinetic/binding cancellation, particle forcing, support/continuation/underflow masks and positive-weight interval partitions agree."
+    },
+    {
+      "id": "R06",
+      "claim": "Temperature, ionization and tau branch differences exceed observed refinement sums in both seeds. Signed six-vector maximum does not; stress-only comparison exceeds that sum only for seed04."
+    }
+  ],
+  "rejected": [
+    {
+      "claim": "Passed local transfer and first-law ledgers establish a dynamically closed radiation/matter/Einstein system.",
+      "basis": "Compton bath reactions are recorded but not inserted into the radiation energy hierarchy or Einstein source."
+    },
+    {
+      "claim": "Planck-reference difference is an actual-spectrum uncertainty bound or can stand in for missing recoil/induced moments.",
+      "basis": "The bath is separately specified; only finite branch sensitivity was evolved."
+    },
+    {
+      "claim": "Small included H/He collision diagnostics establish all atomic omissions are negligible.",
+      "basis": "Unsupported channels remain unavailable and part of the supplied CI evaluation is below published support."
+    },
+    {
+      "claim": "Observed nominal/refined comparisons are rigorous or global error bounds.",
+      "basis": "Only two tolerances on the frozen finite cases and retained grids were compared."
+    }
+  ],
+  "inconclusive_or_out_of_scope": [
+    "Actual recoil/induced spectral closure and dynamical radiation energy backreaction.",
+    "All absent collision channels and accuracy of analytic continuation outside the supplied fit range.",
+    "Continuum positivity or internal Newton-trial admission; checks cover retained samples.",
+    "Global convergence, production suitability and nuclear-network activation."
+  ],
+  "measurements": {
+    "retained_sets": 32,
+    "retained_states": 16170,
+    "max_independent_power_relative_error": 1.820972816949254e-15,
+    "max_independent_HG97_coefficient_relative_error": 7.865494115477097e-14,
+    "dense1025_energy_residual_min": 7.514842558026265e-06,
+    "dense1025_energy_residual_max": 7.5789676852132915e-06,
+    "dense513_to1025_integral_change_min": 3.621411304514344e-05,
+    "dense513_to1025_integral_change_max": 3.638111330054981e-05,
+    "charged_campaign_wall_seconds": 309.2018256930023,
+    "pilot_new_IVPs": 8,
+    "reviewer_new_ODE_runs": 0,
+    "old_suite_reruns": 0
+  },
+  "reviewer_correction": "Attempt01 stopped on a relative-only comparison of a near-zero normalized residual; observed absolute difference1.27e-16. Attempt02 uses absolute2e-14 for that receipt comparison. Physical dense energy gate remains3e-4. Both commands, sources, exit codes and outputs are retained; no scientific source or data changed.",
+  "blockers": [],
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "global_convergence": "NOT_RUN",
+  "REI_activation": false
+}
