@@ -17,6 +17,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter, SymmetricalLogLocator
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -216,6 +217,19 @@ def _signed_scale(ax, values, *, floor=1e-16, fraction=1e-5):
     peak = max((float(np.max(np.abs(v))) for v in values), default=0.)
     linear = max(floor, peak * fraction)
     ax.set_yscale("symlog", linthresh=linear, linscale=1.)
+    # Keep the signed transform and every plotted value unchanged. Labels
+    # inside the central decade collide at export size; retain its zero label
+    # and label logarithmic decades only beyond that region.
+    ax.yaxis.set_major_locator(SymmetricalLogLocator(base=10., linthresh=10*linear))
+    def signed_tick(value, position):
+        if value == 0:
+            return "0"
+        if abs(value) < 10*linear*(1-1e-12):
+            return ""
+        exponent = int(round(np.log10(abs(value))))
+        sign = "-" if value < 0 else ""
+        return rf"${sign}10^{{{exponent}}}$"
+    ax.yaxis.set_major_formatter(FuncFormatter(signed_tick))
     ax.axhline(0., color="#8a8a8a", lw=.65, zorder=0)
     ax.text(.02, .02, f"Signed symlog; linear below {linear:.1e}",
             transform=ax.transAxes, fontsize=7.4, color="#505050",
@@ -383,7 +397,9 @@ def _stress_figure(root, histories, differences):
         _signed_scale(ax, values, floor=1e-18)
         ax.set_ylabel("Signed difference (same normalization)")
         ax.set_title(title)
-    axes[1, 0].legend(fontsize=7.7, loc="best")
+    handles, labels = axes[1, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, fontsize=8, ncol=2, loc="upper center",
+               bbox_to_anchor=(.5, -.005))
     for ax in axes.flat:
         _axis_redshift(ax, h.x)
     fig.suptitle("THERM02 · signed sources and finite branch discrimination\n"

@@ -1,0 +1,609 @@
+{
+  "schema": "THERM02_INDEPENDENT_REVIEW_v1",
+  "date_UTC": "2026-10-22",
+  "reviewer": "/root/thermal02_review",
+  "reviewer_authored_scientific_unit": false,
+  "verdict": "PASS_SCOPED_THERM02_WITH_VISUAL_REPAIR",
+  "specification_verdict": "PASS_SCOPED",
+  "engineering_quality_verdict": "PASS_SCOPED_WITH_DISCLOSED_RUNTIME_LIMITS",
+  "unresolved_in_scope_findings": 0,
+  "target": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022",
+  "review_write_boundary": "/workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review",
+  "reviewer_execution_counts": {
+    "independent_retained_array_calculations": 1,
+    "scientific_unit_imports": 0,
+    "RHS_calls": 0,
+    "cosmological_IVPs": 0,
+    "old_suites": 0,
+    "source_edits": 0,
+    "external_publications": 0
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "criterion": "Exact retained input and execution source/config identities",
+      "status": "CONFIRMED",
+      "evidence": [
+        "INDEPENDENT_ARRAY_AUDIT.json:retained_input_files_verified",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases"
+      ],
+      "result": "70 retained inputs and all eight source/config/artifact bindings matched."
+    },
+    {
+      "id": "C02",
+      "criterion": "Six-row Mao hybrid uses retained number-rate owner, correct t/eV, natural logarithm and isotope charge map",
+      "status": "CONFIRMED",
+      "evidence": [
+        "code/coupled_thermal.py:115-192",
+        "provenance/SOURCE_REUSE_MEMO_KO.md:2",
+        "evidence/PRE_ODE_CHECKS.json"
+      ],
+      "result": "Static derivation/source mapping and identity-bound retained adapter evidence agree. Old 114-source-point suite not rerun."
+    },
+    {
+      "id": "C03",
+      "criterion": "Compton SI units, heat-capacity factors, signs and current radiation owners",
+      "status": "CONFIRMED",
+      "evidence": [
+        "code/coupled_thermal.py:61-99",
+        "code/coupled_thermal.py:229-259",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases/source"
+      ],
+      "result": "Independent direct-volume calculations at saved states agree to at most 1.70e-15 relative."
+    },
+    {
+      "id": "C04",
+      "criterion": "Separate gas/ion/bath/escape energy owners and instantaneous absolute-throughput normalization",
+      "status": "CONFIRMED",
+      "evidence": [
+        "THEORY.md:189-235",
+        "code/coupled_thermal.py:269-327",
+        "code/run.py:243-258",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases/ledger",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases/energy"
+      ],
+      "result": "No binding or DR energy double count; independently reconstructed signed/absolute ledgers and endpoint energy satisfy frozen acceptance."
+    },
+    {
+      "id": "C05",
+      "criterion": "Compact/full mapping, isotope equality and current-state feedback",
+      "status": "CONFIRMED",
+      "evidence": [
+        "code/coupled_thermal.py:195-267",
+        "vendor/therm01/code/thermal.py:25-36",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases",
+        "INDEPENDENT_ARRAY_AUDIT.json:comparisons"
+      ],
+      "result": "Explicit independent lift matches raw full63 storage; full63 comparison passes. Full63 is not an independent cooling source."
+    },
+    {
+      "id": "C06",
+      "criterion": "Finite state scopes, exact absent populations, and accepted BDF node preservation",
+      "status": "CONFIRMED",
+      "evidence": [
+        "code/run.py:166-233",
+        "code/run.py:314-373",
+        "data/*/solver_return.npz",
+        "INDEPENDENT_ARRAY_AUDIT.json:cases/finite_state_scopes"
+      ],
+      "result": "Saved193, accepted BDF, GL8 and GL16 state records checked; no continuum positivity claim."
+    },
+    {
+      "id": "C07",
+      "criterion": "Integrated-energy and GL8/GL16 gates and reported peaks",
+      "status": "CONFIRMED",
+      "evidence": [
+        "INDEPENDENT_ARRAY_AUDIT.json:cases/energy",
+        "data/*/RESULT.json"
+      ],
+      "result": "Worst independent residual 3.7671763360309084e-7 at z=11.91055121197655; frozen gate 3e-6; 87.4427455466 percent remaining margin."
+    },
+    {
+      "id": "C08",
+      "criterion": "Eight finite IVPs, cooperative budget and no old campaign dispatch",
+      "status": "CONFIRMED",
+      "evidence": [
+        "evidence/SCIENCE_EXECUTION.log",
+        "results/SCIENCE_SUMMARY.json",
+        "INDEPENDENT_ARRAY_AUDIT.json:cohort",
+        "code/run.py:261-436"
+      ],
+      "result": "Exactly eight completed new IVPs; recorded cumulative science 92.95149790799769 s. Timing and successful solve returns are execution receipts, not independently instrumented benchmarks."
+    },
+    {
+      "id": "C09",
+      "criterion": "Required refinement/full63 comparisons and limited branch resolution",
+      "status": "CONFIRMED",
+      "evidence": [
+        "INDEPENDENT_ARRAY_AUDIT.json:comparisons",
+        "INDEPENDENT_ARRAY_AUDIT.json:branch_resolution",
+        "code/analyze.py:182-242",
+        "results/PHYSICS_COMPARISONS.json"
+      ],
+      "result": "All finite comparison gates pass. Matter, neutrino stress and shear branch differences do not exceed both observed refinements."
+    },
+    {
+      "id": "C10",
+      "criterion": "Data-bound signed figures and final export readability",
+      "status": "CONFIRMED",
+      "evidence": [
+        "INDEPENDENT_ARRAY_AUDIT.json:CSV_bindings",
+        "results/PLOT_DATA_MANIFEST.json",
+        "evidence/PLOT_V1_MANIFEST.json",
+        "01_pdf_review.png",
+        "02_pdf_review.png",
+        "03_pdf_review.png"
+      ],
+      "result": "All 11 CSVs exactly matched raw float64 arrays; v1/final CSV hashes and scientific input bindings unchanged. Final PDFs visually pass after F1 repair."
+    },
+    {
+      "id": "C11",
+      "criterion": "Independent physical accuracy of full hybrid cooling and omitted spectral/backreaction terms",
+      "status": "INCONCLUSIVE",
+      "evidence": [
+        "FROZEN_CONTRACT.md:source ownership and completion obligations",
+        "provenance/SOURCE_REUSE_MEMO_KO.md",
+        "THEORY.md:277-296"
+      ],
+      "result": "Not established or claimed by this conditional test-fluid study; exact additional physical inputs and models remain necessary."
+    },
+    {
+      "id": "C12",
+      "criterion": "Claim that finite comparisons establish global convergence or production approval",
+      "status": "REJECTED",
+      "evidence": [
+        "FROZEN_CONTRACT.md:6",
+        "results/SCIENCE_SUMMARY.json:statuses",
+        "results/PHYSICS_COMPARISONS.json:interpretation_scope"
+      ],
+      "result": "Finite evidence does not establish either claim. Existing NOT_RUN and NOT_APPROVED statuses are correctly retained."
+    }
+  ],
+  "rejected_candidate_findings": [
+    {
+      "candidate": "Extra factor of c in Compton K",
+      "status": "REJECTED",
+      "evidence": "THOMSON already sigma_T*c; K=THOMSON/(m_e*c^2); independent SI volume reconstruction agrees."
+    },
+    {
+      "candidate": "Hot and Planck reference owners are silently combined",
+      "status": "REJECTED",
+      "evidence": "Mutually exclusive source branch; direct saved-state reconstruction and explicit diagnostic density owners."
+    },
+    {
+      "candidate": "Recombination binding or DR resonance energy is counted twice",
+      "status": "REJECTED",
+      "evidence": "Separate beta kinetic and binding_escape terms plus gas/ion first law and retained integrated ledger."
+    },
+    {
+      "candidate": "Accepted BDF nodes are merely t_eval samples",
+      "status": "REJECTED",
+      "evidence": "solve_ivp t_eval=None; 6710 separately persisted accepted nodes; independent raw identity comparison."
+    },
+    {
+      "candidate": "Signed source cancellation hides throughput in the energy denominator",
+      "status": "REJECTED",
+      "evidence": "Absolute value before quadrature accumulation; independently reconstructed GL8/GL16 throughput."
+    },
+    {
+      "candidate": "The matter, neutrino-stress or shear Planck-hot signal is numerically resolved by both refinements",
+      "status": "REJECTED",
+      "evidence": "Their signal maxima are below both measured nominal-tight maxima; analyzer correctly preserves this distinction."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "status": "CONFIRMED_RESOLVED",
+      "first_observer": "root; independently confirmed on preserved original figure 03 by reviewer",
+      "location": [
+        "original code/plot.py symlog tick labels",
+        "original matter-panel comparison legend",
+        "figures/v1/03_signed_stress_branch_changes.png"
+      ],
+      "evidence": "Original near-zero tick labels collide and legend overlaps threshold note. All three final PDF exports inspected after root cosmetic repair.",
+      "effect": "Figure readability; no numerical or scientific change.",
+      "minimal_correction": "Suppress crowded inner nonzero tick labels and move shared legend outside panels. Completed by root.",
+      "final_code_locations": [
+        "code/plot.py:216-237",
+        "code/plot.py:400-402"
+      ],
+      "final_plot_code_sha256": "39cb5db044b18211a58014e5cce94d4dc69188029aa4570b0e3090ef7d021f56",
+      "science_input_bindings_unchanged": true,
+      "all_11_CSV_hashes_unchanged": true
+    }
+  ],
+  "scientific_execution_source_hashes": {
+    "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+    "code/coupled_thermal.py": "599be84fabe9bdc904fdcda46e685f2fcaffa5985ba72dcabcd1fa5cb97a51db",
+    "code/checks.py": "a1ebe75e2f883885095117ce7cb2891b6792cacca6193fab2306d192d2d8fa95",
+    "code/run.py": "a7fd5f599b05dcec3f0c1b1a78a3de144f7d40ebf9a1db25a60b4c5b13402e4d",
+    "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d"
+  },
+  "postprocessing_hashes": {
+    "code/analyze.py": "e3a81d10c6475f24ef7b7d4f7d639a38f49db50e8f76629afc926e01679415eb",
+    "code/plot.py": "39cb5db044b18211a58014e5cce94d4dc69188029aa4570b0e3090ef7d021f56",
+    "results/PHYSICS_COMPARISONS.json": "b874ff99b4232b76c6b09509376f3c2475cdaffbd258867e8b1d33c3f78e2052",
+    "results/PLOT_DATA_MANIFEST.json": "9b78135fbe078edd08d6b82e4e795f71d7f242ef652f8376923aa6b04df27d6e"
+  },
+  "audit_source_hashes_before_cosmetic_plot_repair": {
+    "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+    "THEORY.md": "feac2382f942929cba1f6620052777d7fc1fdbefcda863e279e540d983370a3b",
+    "code/coupled_thermal.py": "599be84fabe9bdc904fdcda46e685f2fcaffa5985ba72dcabcd1fa5cb97a51db",
+    "code/checks.py": "a1ebe75e2f883885095117ce7cb2891b6792cacca6193fab2306d192d2d8fa95",
+    "code/run.py": "a7fd5f599b05dcec3f0c1b1a78a3de144f7d40ebf9a1db25a60b4c5b13402e4d",
+    "code/plot.py": "ca9e7c9dc38605e72aa06d7a86d2a881e2089bdb8e49f456349b2646e5903a7d",
+    "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d",
+    "evidence/PRE_ODE_CHECKS.json": "b1cbc6a17d093638aad766e23c62621c05091814986771efb6e15cdf147e5e65",
+    "evidence/RUNNER_STATIC_CHECKS.json": "ec0271023e4f5cdd54a85b43b6d78a3b8b3b1f87ac07f87ce7e47f255e43f1e2"
+  },
+  "independent_array_audit_sha256": "1dcaebfa188e2f2840e2815875d0b1ae4ba7d334696caf289823a174785e4dfb",
+  "numerical_evidence": {
+    "cohort": {
+      "ids": [
+        "t02_split_mao_off",
+        "t02_split_mao_hot",
+        "t02_split_mao_planck",
+        "t02_split_derivative_planck",
+        "t02_iso_mao_planck",
+        "t02_split_mao_hot_tight34",
+        "t02_split_mao_planck_tight34",
+        "t02_split_mao_planck_oracle63"
+      ],
+      "receipts": 8,
+      "accepted_BDF_nodes": 6710,
+      "summed_case_seconds": 92.83160151200718,
+      "reported_cumulative_seconds": 92.95149790799769,
+      "unique_completed": 8,
+      "new_this_invocation": 8,
+      "old_IVPs": 0
+    },
+    "required_comparisons": {
+      "t02_split_mao_hot_tight34": {
+        "max_relative_T": 1.3967462404859404e-07,
+        "max_charge_fraction_absolute": 9.966261971944279e-09,
+        "max_tau_absolute": 1.2703788232959132e-10,
+        "max_signed_normalized_absolute": 9.395680795887262e-10
+      },
+      "t02_split_mao_planck_tight34": {
+        "max_relative_T": 1.400760010547282e-07,
+        "max_charge_fraction_absolute": 9.962341285252307e-09,
+        "max_tau_absolute": 1.2703683894763063e-10,
+        "max_signed_normalized_absolute": 6.503560190385116e-10
+      },
+      "t02_split_mao_planck_oracle63": {
+        "max_relative_T": 3.4167474117271937e-09,
+        "max_charge_fraction_absolute": 1.8718200323064593e-09,
+        "max_tau_absolute": 1.0519807247533208e-11,
+        "max_signed_normalized_absolute": 1.4853293595074035e-10
+      }
+    },
+    "branch_resolution": {
+      "T_K": {
+        "signal_max_abs": 7.1947326866975345,
+        "hot_refinement_max_abs": 9.626210430724313e-05,
+        "planck_refinement_max_abs": 9.610888446331955e-05,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "electron_abundance": {
+        "signal_max_abs": 4.105572088630716e-06,
+        "hot_refinement_max_abs": 4.499493000409416e-09,
+        "planck_refinement_max_abs": 4.499891570475256e-09,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "tau": {
+        "signal_max_abs": 1.3418047112301323e-07,
+        "hot_refinement_max_abs": 1.2703788232959132e-10,
+        "planck_refinement_max_abs": 1.2703683894763063e-10,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "charge_fractions": {
+        "signal_max_abs": 6.363202900860898e-05,
+        "hot_refinement_max_abs": 9.966261971944279e-09,
+        "planck_refinement_max_abs": 9.962341285252307e-09,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Sigma_F": {
+        "signal_max_abs": 2.873094349237215e-10,
+        "hot_refinement_max_abs": 9.395680795887262e-10,
+        "planck_refinement_max_abs": 6.503560190385116e-10,
+        "exceeds_both_observed_refinements": false,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Pi_matter": {
+        "signal_max_abs": 7.026294998569663e-16,
+        "hot_refinement_max_abs": 9.397472763069542e-14,
+        "planck_refinement_max_abs": 9.39760286733024e-14,
+        "exceeds_both_observed_refinements": false,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Pi_radiation": {
+        "signal_max_abs": 5.36397422518705e-12,
+        "hot_refinement_max_abs": 6.028616733426417e-13,
+        "planck_refinement_max_abs": 6.028702249872772e-13,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Pi_total": {
+        "signal_max_abs": 5.363922373218151e-12,
+        "hot_refinement_max_abs": 6.867028647106199e-13,
+        "planck_refinement_max_abs": 6.867127309503895e-13,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Pi_gamma": {
+        "signal_max_abs": 5.364162510446829e-12,
+        "hot_refinement_max_abs": 3.539375959199856e-13,
+        "planck_refinement_max_abs": 3.5394256969745186e-13,
+        "exceeds_both_observed_refinements": true,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      },
+      "Pi_nu": {
+        "signal_max_abs": 6.316978597110598e-15,
+        "hot_refinement_max_abs": 2.4910695522410015e-13,
+        "planck_refinement_max_abs": 2.491104924336879e-13,
+        "exceeds_both_observed_refinements": false,
+        "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+      }
+    },
+    "energy_reconstruction": {
+      "t02_split_mao_off": {
+        "max_normalized_residual": 3.7671763360309084e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8744274554656364,
+        "max_GL_difference": 8.228783352789404e-12,
+        "max_absolute_GL_difference": 8.228783352789404e-12,
+        "residual_array_disagreement": 3.5249996905173487e-16,
+        "denominator_relative_disagreement": 3.76372347195105e-16
+      },
+      "t02_split_mao_hot": {
+        "max_normalized_residual": 3.7634987119505884e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745500429349804,
+        "max_GL_difference": 7.777924077851005e-12,
+        "max_absolute_GL_difference": 7.777924077851005e-12,
+        "residual_array_disagreement": 4.196313412755248e-16,
+        "denominator_relative_disagreement": 3.9403895112484675e-16
+      },
+      "t02_split_mao_planck": {
+        "max_normalized_residual": 3.7637139188684275e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745428693710524,
+        "max_GL_difference": 7.797474985403987e-12,
+        "max_absolute_GL_difference": 7.797474985403987e-12,
+        "residual_array_disagreement": 7.913014110679218e-16,
+        "denominator_relative_disagreement": 5.692657903421891e-16
+      },
+      "t02_split_derivative_planck": {
+        "max_normalized_residual": 3.7636956408304733e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745434786389843,
+        "max_GL_difference": 7.79022775657492e-12,
+        "max_absolute_GL_difference": 7.79022775657492e-12,
+        "residual_array_disagreement": 3.3250982440604965e-16,
+        "denominator_relative_disagreement": 5.095589911391207e-16
+      },
+      "t02_iso_mao_planck": {
+        "max_normalized_residual": 3.7487469438231e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.87504176853923,
+        "max_GL_difference": 8.90436462219903e-12,
+        "max_absolute_GL_difference": 8.90436462219903e-12,
+        "residual_array_disagreement": 4.863888149377437e-16,
+        "denominator_relative_disagreement": 4.4273737327142787e-16
+      },
+      "t02_split_mao_hot_tight34": {
+        "max_normalized_residual": 6.978993989874815e-09,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.9976736686700417,
+        "max_GL_difference": 1.5889396770046378e-12,
+        "max_absolute_GL_difference": 1.5889396770046378e-12,
+        "residual_array_disagreement": 4.114870103321456e-16,
+        "denominator_relative_disagreement": 4.1382189362231428e-16
+      },
+      "t02_split_mao_planck_tight34": {
+        "max_normalized_residual": 6.978529618765359e-09,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.9976738234604116,
+        "max_GL_difference": 1.5891707314077996e-12,
+        "max_absolute_GL_difference": 1.5891707314077996e-12,
+        "residual_array_disagreement": 3.8913185630224974e-16,
+        "denominator_relative_disagreement": 4.460480898246224e-16
+      },
+      "t02_split_mao_planck_oracle63": {
+        "max_normalized_residual": 3.7114123682343854e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8762862543921872,
+        "max_GL_difference": 8.993396643508444e-12,
+        "max_absolute_GL_difference": 8.993396643508444e-12,
+        "residual_array_disagreement": 4.0311901366731526e-16,
+        "denominator_relative_disagreement": 6.055551891125397e-16
+      }
+    },
+    "csv_bindings": {
+      "t02_split_mao_off": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_mao_hot": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_mao_planck": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_derivative_planck": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_iso_mao_planck": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_mao_hot_tight34": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_mao_planck_tight34": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "t02_split_mao_planck_oracle63": {
+        "rows": 193,
+        "columns": 119,
+        "exact_float64": true
+      },
+      "thermal_iso60": {
+        "rows": 193,
+        "columns": 85,
+        "exact_float64": true
+      },
+      "thermal_split60": {
+        "rows": 193,
+        "columns": 85,
+        "exact_float64": true
+      },
+      "signed_comparisons": {
+        "rows": 193,
+        "columns": 83,
+        "exact_float64": true
+      }
+    }
+  },
+  "final_figures": {
+    "figures/01_temperature_ionization_opacity.pdf": {
+      "bytes": 34746,
+      "sha256": "1522ee029bb2b5c2c1c99adab8dbd162ae81459e1a4d162ed9e9d6c56d4533a7"
+    },
+    "figures/01_temperature_ionization_opacity.png": {
+      "bytes": 450972,
+      "sha256": "6e7a61c0bbf72de79e80bd890eb17cccb1eb9a4cc0e7405c1f4c87092729aead"
+    },
+    "figures/02_signed_energy_transfer.pdf": {
+      "bytes": 37550,
+      "sha256": "d57c9605b70644c30a1c748db180f19a3147674d3784c87e7a9142f3842f52d3"
+    },
+    "figures/02_signed_energy_transfer.png": {
+      "bytes": 441103,
+      "sha256": "ae386bfbcafa476e2fd77096565ce5512613d98a11c7ff31774e534ed8861435"
+    },
+    "figures/03_signed_stress_branch_changes.pdf": {
+      "bytes": 33890,
+      "sha256": "b778a040d0fcbabc1f20e41bbe263fd84044a4dc5f6d79483761fdaf6dd1c87d"
+    },
+    "figures/03_signed_stress_branch_changes.png": {
+      "bytes": 576496,
+      "sha256": "60e16fa84cbb247085e8cc32e22a847c36b183e99f082524dd640d0148a8d5f3"
+    }
+  },
+  "visual_inspection": {
+    "final_PDF_rendered_and_viewed": [
+      "figures/01_temperature_ionization_opacity.pdf",
+      "figures/02_signed_energy_transfer.pdf",
+      "figures/03_signed_stress_branch_changes.pdf"
+    ],
+    "original_directly_viewed": [
+      "figures/v1/03_signed_stress_branch_changes.png"
+    ],
+    "remaining_visible_defects": [],
+    "numeric_audit_repeated_after_cosmetic_repair": false
+  },
+  "actual_commands": [
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/independent_array_audit.py > /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/INDEPENDENT_ARRAY_AUDIT.log",
+      "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022",
+      "exit_code": 0,
+      "kind": "one bounded independent retained-array calculation",
+      "elapsed_body_seconds": 2.316241782005818
+    },
+    {
+      "command": "pdftoppm -r 110 -f 1 -singlefile -png figures/01_temperature_ionization_opacity.pdf /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/01_pdf_review",
+      "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022",
+      "exit_code": 0,
+      "kind": "read-only PDF rendering; output image actually viewed"
+    },
+    {
+      "command": "pdftoppm -r 110 -f 1 -singlefile -png figures/02_signed_energy_transfer.pdf /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/02_pdf_review",
+      "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022",
+      "exit_code": 0,
+      "kind": "read-only PDF rendering; output image actually viewed"
+    },
+    {
+      "command": "pdftoppm -r 110 -f 1 -singlefile -png figures/03_signed_stress_branch_changes.pdf /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/03_pdf_review",
+      "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022",
+      "exit_code": 0,
+      "kind": "read-only PDF rendering; output image actually viewed"
+    },
+    {
+      "command": "git status --short --untracked-files=no -- research/rec_rei_thermal_compton_20261022",
+      "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi",
+      "exit_code": 128,
+      "kind": "read-only repository-status inspection",
+      "output": "fatal: not a git repository (or any of the parent directories): .git",
+      "classification": "environment limitation; exact file/config/Git blob bindings used instead of unavailable local Git diff"
+    }
+  ],
+  "source_inspection_commands": {
+    "tools": [
+      "rg",
+      "cat",
+      "nl with sed",
+      "wc",
+      "sha256sum"
+    ],
+    "all_completed_exit_codes": [
+      0
+    ],
+    "note": "Read-only inspection of the files named in the criteria; author checks.py/run.py/preflight were not rerun."
+  },
+  "unresolved_risks_and_limits": [
+    "Full hybrid-cooling physical accuracy is not established by matching source algebra and finite ledger checks.",
+    "Excluded Li resonances/final yields and other omitted atomic, nuclear and secondary channels retain exact input obligations.",
+    "Actual-grey spectral recoil/induced scattering and radiation-energy/Einstein backreaction are not solved; passive bath debits are bookkeeping.",
+    "No continuum positivity or global numerical error bound follows from retained finite states and three refinement/oracle comparisons.",
+    "Matter stress, neutrino stress and shear Planck-hot differences remain unresolved by the declared two-refinement criterion.",
+    "Budgets are cooperative; final JSON writing follows the elapsed-time sample. No hard real-time guarantee was tested.",
+    "An exception inside solve_ivp before return preserves last RHS trial but not inaccessible internal accepted history; all actual eight cases returned successfully.",
+    "Dense local RHS/Einstein/trace/tensor diagnostics were read from their explicit execution receipts and source; no reviewer dense RHS replay was performed.",
+    "Local Git metadata is absent; git status returned 128. Reviewed identity is tied to exact source/config/raw hashes and retained Git blob identities.",
+    "Concurrent PR124 cohort, public release and remote-backup byte verification are outside this review."
+  ],
+  "statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "deliverables": [
+    "REVIEW.md",
+    "REVIEW.json",
+    "independent_array_audit.py",
+    "INDEPENDENT_ARRAY_AUDIT.json",
+    "INDEPENDENT_ARRAY_AUDIT.log"
+  ],
+  "future_document_review": "If root supplies REPORT_KO.md, only bounded claim-consistency reading is pending; no science re-execution is authorized or needed."
+}

@@ -15,12 +15,36 @@ reference are different model choices. Bath debits are passive energy ledgers.
 ## Execution contract
 
 Exactly five nominal compact34, two tighter compact34, and one full63 oracle
-are planned, with 193 saved nodes from z20 to z2. No completed REC126, REI129,
-warm729, THERM01, PR121, or other old campaign is rerun. The PR122 proposed
-5–200 eV, 109-node restart cohort is not this cohort.
+are complete, with 193 saved nodes from z20 to z2. The eight new IVPs and
+all three frozen comparison gates passed. Cumulative science/diagnostic/storage
+time was 92.951497908 s in this sandbox. No completed REC126, REI129, warm729,
+THERM01, PR121, PR124 or other old campaign was rerun. PR124's completed
+5–200 eV, 109-node restart cohort is separate from this 5–60 eV cohort.
 
-Implementation and measured results will be committed after the physical
-checkpoint. `DAG.json` records the current stage and next unmet dependency.
+`REPORT_KO.md` develops the physics and measured results. `HANDOFF_KO.md`,
+`DAG.json`, and `NEXT_DAG.json` record the closed local scientific unit and
+the next source-bound obligations. `delivery/` records actual publication
+and backup receipts; their acknowledgement and byte-verification scopes
+are distinguished.
+
+## Measured results
+
+At z=2, the split-seed Mao/off, actual-hot and Planck-reference temperatures
+are 6573.376838, 5609.584328 and 5610.699960 K. Planck minus hot reaches
+7.194733 K over the saved trajectory. Temperature, electron abundance,
+ionic fractions, optical depth, photon/radiation/total signed stress exceed
+both observed branch refinement changes. Shear, matter and neutrino signed
+stress differences do not; the report preserves that distinction.
+
+The maximum normalized energy residual is 3.7671763e-7 against the frozen
+3e-6 limit. One independent retained-array audit reproduced the ledgers and
+finite comparisons without scientific imports, RHS calls or new ODEs.
+Its scoped review is `evidence/independent_review/REVIEW.md`.
+
+The three PNG/PDF figures in `figures/` are bound to raw data through eleven
+CSV files and `results/PLOT_DATA_MANIFEST.json`. Initial display defects
+were repaired and confirmed visually; original figures and code are retained.
+Completed science does not require another `--run` invocation.
 
 ## Scope and retained status
 

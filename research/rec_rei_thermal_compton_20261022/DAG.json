@@ -1,30 +1,30 @@
 {
   "unit": "THERM02_COMPTON",
-  "stage": "B_CODE_READY_PRE_ODE",
+  "stage": "C_SCIENCE_AND_REVIEW_DONE_DELIVERY_PENDING",
   "workflow": "1.0.0",
   "theory": {
-    "R1": "DONE",
-    "R2": "DONE",
-    "R3": "DONE",
-    "R4": "DONE",
-    "R5": "DONE",
-    "R6": "DONE_LOCAL_SYMBOLIC_FINITE",
-    "R7": "NOT_RUN",
-    "R8": "PENDING",
-    "R9": "CONTRACT_DONE_RESULTS_PENDING",
-    "R10": "CHECKPOINT"
+    "R1": "DONE_SCOPED",
+    "R2": "DONE_SCOPED",
+    "R3": "DONE_SCOPED",
+    "R4": "DONE_SCOPED",
+    "R5": "DONE_SCOPED",
+    "R6": "DONE_SCOPED",
+    "R7": "DONE_SCOPED",
+    "R8": "DONE_SCOPED",
+    "R9": "DONE_SCOPED",
+    "R10": "SCIENCE_CHECKPOINT_DELIVERY_PENDING"
   },
   "coding": {
-    "C1": "DONE",
-    "C2": "DONE",
-    "C3": "DONE",
-    "C4": "DONE",
-    "C5": "DONE",
-    "C6": "DONE",
-    "C7": "DONE_POINT_SCOPE",
-    "C8": "PENDING",
-    "C9": "SOURCE_REVIEW_DONE_RESULTS_PENDING",
-    "C10": "PENDING"
+    "C1": "DONE_SCOPED",
+    "C2": "DONE_SCOPED",
+    "C3": "DONE_SCOPED",
+    "C4": "DONE_SCOPED",
+    "C5": "DONE_SCOPED",
+    "C6": "DONE_SCOPED",
+    "C7": "DONE_SCOPED",
+    "C8": "DONE_SCOPED",
+    "C9": "DONE_SCOPED",
+    "C10": "DELIVERY_PENDING"
   },
   "nodes": [
     {
@@ -51,17 +51,22 @@
     },
     {
       "id": "eight_new_IVPs",
-      "state": "NOT_RUN",
+      "state": "DONE_8_OF_8",
       "depends_on": [
         "new_adapter_checks",
         "stage_B_backup"
-      ]
+      ],
+      "evidence": "results/SCIENCE_SUMMARY.json"
     },
     {
       "id": "figures_and_review",
-      "state": "PENDING",
+      "state": "DONE_SCOPED_VISUAL_REPAIR_RESOLVED",
       "depends_on": [
         "eight_new_IVPs"
+      ],
+      "evidence": [
+        "results/PLOT_DATA_MANIFEST.json",
+        "evidence/independent_review/REVIEW.md"
       ]
     },
     {
@@ -72,9 +77,9 @@
       ]
     }
   ],
-  "next": "Complete Stage B backup/publication receipts, then python code/run.py --run exactly once for the eight new frozen cases.",
+  "next": "Publish and back up completed science/raw/figures; then N1/N2 zero-ODE source-provider contract. No completed IVP reruns.",
   "old_ODE_reruns": 0,
-  "new_ODE_executed": 0,
+  "new_ODE_executed": 8,
   "new_ODE_planned": 8,
   "flags": {
     "Physical": "HOLD",
@@ -83,5 +88,15 @@
     "global_convergence": "NOT_RUN",
     "production": "NOT_APPROVED",
     "REI_activation": false
-  }
+  },
+  "completed_cohorts_separate": {
+    "REC119": 126,
+    "REI220": 129,
+    "warm": 729,
+    "THERM01_PR120": 8,
+    "PR121_restart_5_200eV": 8,
+    "PR124_Compton_restart_5_200eV": 8,
+    "THERM02_PR125_5_60eV": 8
+  },
+  "independent_review": "PASS_SCOPED_THERM02_WITH_VISUAL_REPAIR"
 }
