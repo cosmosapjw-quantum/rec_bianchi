@@ -1,0 +1,193 @@
+{
+  "schema": "rec.thermal.phys_math.pre_run_review.v1",
+  "created_utc": "2026-10-22T02:18:30.102555+00:00",
+  "reviewer": "thermal_physics independent theory/source agent",
+  "decision": "PASS_SCOPED_PRE_RUN",
+  "parent_commit": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+  "reviewer_ODE_integrations": 0,
+  "reviewer_old_IVP_reruns": 0,
+  "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+  "reviewed_sha256": {
+    "code/run_thermal.py": "4fcf25b95f03738e92190f38b6fe5469adb0daac289b0bb5ee52e8fc36c1a69b",
+    "code/thermal_system.py": "1ac1336a3e979ec485cec0e4092ca7d6e1ef04aa43b28f525a06231c49e34375",
+    "code/thermal_sources.py": "622bc85b21d819779d98ee2a7645f51deff9a91f7a423872dbe244f5378aa769",
+    "code/recombination_moments.py": "5eb740518d04dcbf123125f3d73a85fa10b48bb3bad6577cdf81459d71a390b0",
+    "data/mao2017_calc.dat": "bf7ad20e10ff7045fc83b4c4c4148132c291f315213c5fc7b00ae820c76aa58a",
+    "data/mao2017_pars.dat": "a3c97fdf8101da6d33cc838f7fd4e142bcf3740c37b48d89e76c47ae91575d12",
+    "data/mao2017_selected.json": "34b5fb8dab049744faa0c6f734ce59f1c72b931b3cf2db298c01156f86d17803",
+    "provenance/MAO_SOURCE_LOCK.json": "09257023bc18bc01133389aad3a9796e9dc2bfbc59c643ca9659e849776931b0",
+    "provenance/PARENT_SOURCE_LOCK.json": "24e4f25e03200ac5c8f265950c7cb58c460c490cda456701745702df8a1e41e4",
+    "FROZEN_CONTRACT.md": "9a3a55c5c4e4eefa405b1572387102633c1586aa169caae029d73a1920d4d7a6"
+  },
+  "independence": "Reviewer did not author runtime modules, runner or their tests; previously derived source moments and evaluated primary source mapping independently.",
+  "scope": [
+    "Full63 temperature and analytic Jacobian equations",
+    "Mao2017 eV/natural-log/recombined-electron-count mapping and explicit hybrid interpretation",
+    "Photo/binding/kinetic/core escape energy ownership",
+    "Exact saved donor restart and source/config identity",
+    "Finite saved-state admission gates and cooperative per-invocation case/campaign budget",
+    "Review of existing independent numerical receipts without ODE reruns"
+  ],
+  "donor_preflight": [
+    {
+      "case": "s00_m02_r02",
+      "status": "COMPLETE",
+      "all_parent_gates": true,
+      "receipt_matches_parent_commit": true,
+      "receipt_sha256": "bbd02246d92e86b7a751d9d97efc740e40a96deaac37843dd1ad8d9aacaf8f97",
+      "trajectory_sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89",
+      "trajectory_matches_parent_receipt": true,
+      "source_index": 84,
+      "saved_z": 7.963732801243163,
+      "x_start": 0.8513356902116996,
+      "scales_byte_equal": true,
+      "initial_n_T_exact_zero": true
+    },
+    {
+      "case": "s03_m03_r03",
+      "status": "COMPLETE",
+      "all_parent_gates": true,
+      "receipt_matches_parent_commit": true,
+      "receipt_sha256": "768dcc480bfb9b76b0e44948421a700d3c55707bf5a63cb90c589a8c1fadd5c7",
+      "trajectory_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "trajectory_matches_parent_receipt": true,
+      "source_index": 84,
+      "saved_z": 7.963732801243163,
+      "x_start": 0.8513356902116996,
+      "scales_byte_equal": true,
+      "initial_n_T_exact_zero": true
+    },
+    {
+      "case": "s04_m04_r04",
+      "status": "COMPLETE",
+      "all_parent_gates": true,
+      "receipt_matches_parent_commit": true,
+      "receipt_sha256": "a2c2ca0f918b6afc3e284486def880e9766cbe77fdd9253a88519b230dfb1bce",
+      "trajectory_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "trajectory_matches_parent_receipt": true,
+      "source_index": 84,
+      "saved_z": 7.963732801243163,
+      "x_start": 0.8513356902116996,
+      "scales_byte_equal": true,
+      "initial_n_T_exact_zero": true
+    },
+    {
+      "case": "s02_m04_r01",
+      "status": "COMPLETE",
+      "all_parent_gates": true,
+      "receipt_matches_parent_commit": true,
+      "receipt_sha256": "014ef60b978b07b4f96a9d0b830ac52dba8e9182d20ec9199b3c73597fa53b2a",
+      "trajectory_sha256": "4945632c45e2d5ed95b06767d223e46cdc9fc43d48f5c9abb8972c7ad3046d19",
+      "trajectory_matches_parent_receipt": true,
+      "source_index": 84,
+      "saved_z": 7.963732801243163,
+      "x_start": 0.8513356902116996,
+      "scales_byte_equal": true,
+      "initial_n_T_exact_zero": true
+    }
+  ],
+  "planned_integrations": {
+    "primary": [
+      "s00_m02_r02",
+      "s03_m03_r03",
+      "s04_m04_r04",
+      "s02_m04_r01"
+    ],
+    "refined": [
+      "s03_m03_r03",
+      "s04_m04_r04"
+    ],
+    "rate_derivative": [
+      "s03_m03_r03",
+      "s04_m04_r04"
+    ],
+    "total_distinct_new": 8,
+    "old_IVP_reruns": 0
+  },
+  "closed_findings": [
+    {
+      "id": "PM1",
+      "finding": "Unconditional n/T rejection made smooth full63 Newton and finite-difference trials invalid.",
+      "resolution": "Thermal source evaluator now allows smooth signed trial vectors; runner checks exact zero initial and saved n/T. No nuclear-energy meaning is assigned off the physical manifold."
+    },
+    {
+      "id": "PM2",
+      "finding": "Paired refinement and alternate closure case identities were not completely frozen.",
+      "resolution": "Contract and runner now identify s03_m03_r03 and s04_m04_r04 exactly."
+    },
+    {
+      "id": "PM3",
+      "finding": "Inherited prescribed-temperature diagnostics used placeholder tdx=0 after dynamic-T point override.",
+      "resolution": "ThermalSystem.diagnostics replaces required gas input, bath-minus-escape and core allocation with dynamic thermal quantities; separate diagnostics regression receipt is PASS_SCOPED."
+    },
+    {
+      "id": "PM4",
+      "finding": "Initial runner did not apply cooperative campaign deadline during dense energy diagnostics or retain inherited geometry gates.",
+      "resolution": "Reviewed runner adds deadline checks during saved/dense diagnostics and retains number-monopole, Einstein, tensor, finite-angular and trace-energy checks."
+    },
+    {
+      "id": "PM5",
+      "finding": "Donor RESULT configuration identity was absent from reuse criteria.",
+      "resolution": "Reviewed runner records and checks donor RESULT SHA as well as trajectory SHA. This review independently anchored all four donor receipts to the named git parent and checked exact isotope scales."
+    }
+  ],
+  "blocking_findings": [],
+  "verified_equations": {
+    "temperature": "dlnT/dx = -2 + [2 Qkin/(3 kB T nb) - (1+q).F]/[H eta]",
+    "source_energy": "Qabs - Qesc = Qkin + nb I.F",
+    "integrated_energy": "d[3 kB T eta/2 + I.Y]/dx = (Qabs-Qesc)/(nb H) - 3 kB T eta",
+    "rr_primary": "L_RR = kB T alpha_parent f_Mao2017 (hybrid)",
+    "rr_alternative": "L_RR = kB T [3 alpha_parent/2 + d alpha_parent/dlnT] (fit-implied moment)",
+    "dr": "L_DR = kB T^(-3/2) sum c_i E_i exp(-E_i/T), with E_i in kelvin and inherited unit conversion"
+  },
+  "implementation_map": {
+    "full63 logT RHS and analytic last row/column": "code/thermal_system.py",
+    "source moment and escape bookkeeping": "code/thermal_sources.py",
+    "analytic fitted moments and derivatives": "code/recombination_moments.py",
+    "saved-state and energy-integral admission, exact restart and reuse": "code/run_thermal.py"
+  },
+  "reviewed_test_receipts": {
+    "moments_tests.json": "b6ef00820c68517f46066e072d78913e82ea6b67e0bcffca74d5f2fc06a12217",
+    "thermal_system_tests.json": "21315d70fce8add889dc5a9aa026ebaba83acf59a1a99598858140c952b97ff9",
+    "diagnostics_regression.json": "a93526a1552dbfb5b30342bd8e1fc68b742ec51aa53356f6e5256d7356a1b54c"
+  },
+  "limitations": [
+    {
+      "id": "L1",
+      "level": "scope",
+      "statement": "Population and exact-zero n/T gates inspect stored t_eval states; coefficient evaluation additionally restricts temperatures at evaluated RHS/diagnostic points. This is not a proof of all hidden BDF accepted-state bounds. The n/T zero subspace is algebraically invariant for the selected zero-flux initial condition."
+    },
+    {
+      "id": "L2",
+      "level": "resource",
+      "statement": "The 1200s campaign allocation is enforced for the current invocation, with cooperative 240s per-case/deadline checks. Restarting the command resets its timer; any resumed campaign must use the remaining allocation rather than claim a fresh cumulative budget. Serialization may finish between cooperative checks."
+    },
+    {
+      "id": "L3",
+      "level": "physics",
+      "statement": "Source identity and finite energy residuals verify the selected equations, not missing-process adequacy, full cosmic thermal self-consistency, production readiness or global convergence."
+    },
+    {
+      "id": "L4",
+      "level": "closure",
+      "statement": "Mao-factor times unchanged donor alpha is a named hybrid; empirical rate differentiation defines a different conditional fit-implied moment. Their difference is not a total-error or confidence bound."
+    },
+    {
+      "id": "L5",
+      "level": "closure",
+      "statement": "Prompt escape of Li core energy and local thermalization of the primary electron are conditional closures. Multiple photoionization, excitation, transfer, nonthermal secondary, collisional and nuclear energy owners remain unresolved."
+    },
+    {
+      "id": "L6",
+      "level": "time",
+      "statement": "elapsed_Myr and tau retain donor z20 cumulative origins; only temperature evolution from the exact saved z~8 node is newly integrated."
+    }
+  ],
+  "disposition": {
+    "finite_fresh_8case_run": "ADMISSIBLE_UNDER_FROZEN_CONTRACT",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "REI_activation": false
+  }
+}

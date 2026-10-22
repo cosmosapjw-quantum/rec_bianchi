@@ -1,0 +1,256 @@
+{
+  "schema": "rec.thermal_moments.tests.v1",
+  "decision": "PASS_SCOPED",
+  "tests_run": 9,
+  "failures": [],
+  "errors": [],
+  "metrics": {
+    "finite_domain_grid": {
+      "temperature_nodes": 1001,
+      "domain_K": [
+        100.0,
+        1000000.0
+      ],
+      "minimum_RR_weighted_energy_factor": 0.39891541951607,
+      "maximum_DR_loss_J_m3_s": 3.274398817114653e-35,
+      "result": "PASS",
+      "scope": "finite grid, not interval proof or atomic accuracy"
+    },
+    "donor_source_manifest": {
+      "result": "PASS",
+      "action": "donor authoritative _verified_inputs invoked"
+    },
+    "invalid_temperature": {
+      "rejected_cases": 7,
+      "result": "PASS"
+    },
+    "analytic_log_derivatives": {
+      "temperature_nodes": 31,
+      "five_point_log_step": 0.0001,
+      "max_scaled_error": {
+        "drr_dlogT": 2.9688941104375756e-12,
+        "ddr_dlogT": 1.8898565014019996e-07,
+        "drr_loss_dlogT": 4.434179492264381e-12,
+        "ddr_loss_dlogT": 1.8898565064312099e-07
+      },
+      "scalar_checks": {
+        "drr_dlogT": 403,
+        "ddr_dlogT": 138,
+        "drr_loss_dlogT": 403,
+        "ddr_loss_dlogT": 138
+      },
+      "threshold": 2e-06,
+      "result": "PASS"
+    },
+    "number_rate_parity": {
+      "temperature_nodes": 129,
+      "arrays_compared": 258,
+      "comparison": "same dtype, np.array_equal and exact tobytes equality",
+      "result": "PASS"
+    },
+    "positive_power_kernel_quadrature": {
+      "kernel_count": 4,
+      "evaluations": 12,
+      "max_relative_error": 1.5956371764995475e-13,
+      "threshold": 1e-09,
+      "result": "PASS"
+    },
+    "signed_DR_and_invalid_moment": {
+      "signed_component_preserved": true,
+      "positive_rate_negative_loss_rejected": true,
+      "result": "PASS"
+    },
+    "single_resonance_reference": {
+      "scalar_checks": 8,
+      "energy_K": 17000.0,
+      "result": "PASS"
+    },
+    "DR_zero_classification": {
+      "present_but_underflowed_indices_at_100K": [
+        8,
+        11,
+        14,
+        15,
+        18,
+        19
+      ],
+      "structurally_absent_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12,
+        13,
+        16,
+        17,
+        20
+      ],
+      "result": "PASS"
+    }
+  },
+  "wall_s": 0.6638665030000084,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "inputs_and_code": [
+    {
+      "path": "rec_thermal_moments_20261022/code/test_recombination_moments.py",
+      "bytes": 11766,
+      "sha256": "d14c22ca636ee8fad929026ae0f691f5299f1741e2e03f3a9bc5b4c92906a746"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/code/recombination_moments.py",
+      "bytes": 7337,
+      "sha256": "5eb740518d04dcbf123125f3d73a85fa10b48bb3bad6577cdf81459d71a390b0"
+    },
+    {
+      "path": "rec_rei_hheli_sandbox_20261021/code/atomic_network.py",
+      "bytes": 15617,
+      "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+    },
+    {
+      "path": "rec_rei_hheli_sandbox_20261021/data/atomic_coefficients.json",
+      "bytes": 6086,
+      "sha256": "38397e6b560f463f09a5923eaa5902a24312e5246abc158694451c631cd4d6bc"
+    }
+  ],
+  "scientific_scope": "Algebra and implementation of pinned fit-derived Maxwellian moments. Independent atomic-energy-loss accuracy and cosmological convergence not established.",
+  "prior_runs": [
+    {
+      "schema": "rec.thermal_moments.tests.v1",
+      "decision": "PASS_SCOPED",
+      "tests_run": 9,
+      "failures": [],
+      "errors": [],
+      "metrics": {
+        "finite_domain_grid": {
+          "temperature_nodes": 1001,
+          "domain_K": [
+            100.0,
+            1000000.0
+          ],
+          "minimum_RR_weighted_energy_factor": 0.39891541951607,
+          "maximum_DR_loss_J_m3_s": 3.274398817114653e-35,
+          "result": "PASS",
+          "scope": "finite grid, not interval proof or atomic accuracy"
+        },
+        "donor_source_manifest": {
+          "result": "PASS",
+          "action": "donor authoritative _verified_inputs invoked"
+        },
+        "invalid_temperature": {
+          "rejected_cases": 7,
+          "result": "PASS"
+        },
+        "analytic_log_derivatives": {
+          "temperature_nodes": 31,
+          "five_point_log_step": 0.0001,
+          "max_scaled_error": {
+            "drr_dlogT": 2.9688941104375756e-12,
+            "ddr_dlogT": 1.8898565014019996e-07,
+            "drr_loss_dlogT": 4.434179492264381e-12,
+            "ddr_loss_dlogT": 1.8898565064312099e-07
+          },
+          "scalar_checks": {
+            "drr_dlogT": 403,
+            "ddr_dlogT": 138,
+            "drr_loss_dlogT": 403,
+            "ddr_loss_dlogT": 138
+          },
+          "threshold": 2e-06,
+          "result": "PASS"
+        },
+        "number_rate_parity": {
+          "temperature_nodes": 129,
+          "arrays_compared": 258,
+          "comparison": "bitwise np.array_equal",
+          "result": "PASS"
+        },
+        "positive_power_kernel_quadrature": {
+          "kernel_count": 4,
+          "evaluations": 12,
+          "max_relative_error": 1.5956371764995475e-13,
+          "threshold": 1e-09,
+          "result": "PASS"
+        },
+        "signed_DR_and_invalid_moment": {
+          "signed_component_preserved": true,
+          "positive_rate_negative_loss_rejected": true,
+          "result": "PASS"
+        },
+        "single_resonance_reference": {
+          "scalar_checks": 8,
+          "energy_K": 17000.0,
+          "result": "PASS"
+        },
+        "DR_zero_classification": {
+          "present_but_underflowed_indices_at_100K": [
+            8,
+            11,
+            14,
+            15,
+            18,
+            19
+          ],
+          "structurally_absent_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13,
+            16,
+            17,
+            20
+          ],
+          "result": "PASS"
+        }
+      },
+      "wall_s": 1.4909135990001232,
+      "environment": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+      },
+      "inputs_and_code": [
+        {
+          "path": "rec_thermal_moments_20261022/code/test_recombination_moments.py",
+          "bytes": 11392,
+          "sha256": "ddc853786ec21a97c0521547da70c7551b6c008839d593836b2c3b58ddb04860"
+        },
+        {
+          "path": "rec_thermal_moments_20261022/code/recombination_moments.py",
+          "bytes": 7337,
+          "sha256": "5eb740518d04dcbf123125f3d73a85fa10b48bb3bad6577cdf81459d71a390b0"
+        },
+        {
+          "path": "rec_rei_hheli_sandbox_20261021/code/atomic_network.py",
+          "bytes": 15617,
+          "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+        },
+        {
+          "path": "rec_rei_hheli_sandbox_20261021/data/atomic_coefficients.json",
+          "bytes": 6086,
+          "sha256": "38397e6b560f463f09a5923eaa5902a24312e5246abc158694451c631cd4d6bc"
+        }
+      ],
+      "scientific_scope": "Algebra and implementation of pinned fit-derived Maxwellian moments. Independent atomic-energy-loss accuracy and cosmological convergence not established."
+    }
+  ]
+}

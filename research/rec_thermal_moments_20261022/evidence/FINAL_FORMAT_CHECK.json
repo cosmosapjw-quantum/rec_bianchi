@@ -1,0 +1,10 @@
+{
+  "status": "PASS_SCOPED",
+  "check": "git -c core.whitespace=cr-at-eol diff --check",
+  "scope": "Changed final document/receipt files; CRLF of source-hashed CSV is treated as intentional line ending",
+  "prior_finding": {
+    "class": "FORMATTING",
+    "details": "Default whitespace check reported standard CSV CRLF and one trailing prose space; original CSV bytes were retained and the single prose whitespace was removed."
+  },
+  "scientific_data_or_gates_changed": false
+}

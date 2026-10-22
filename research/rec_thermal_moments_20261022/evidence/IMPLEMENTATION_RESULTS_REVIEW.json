@@ -1,0 +1,1923 @@
+{
+  "schema": "rec.thermal.implementation_results_review.v1",
+  "created_utc": "2026-10-22T02:24:21.719141+00:00",
+  "reviewer": "/root/moment_implementation",
+  "status": "PASS_WITH_EVIDENCE_LIMITATIONS",
+  "independence": {
+    "authored": [
+      "code/recombination_moments.py",
+      "code/test_recombination_moments.py",
+      "code/test_thermal_system.py",
+      "code/postprocess_saved.py"
+    ],
+    "did_not_author": [
+      "code/thermal_sources.py",
+      "code/thermal_system.py",
+      "code/run_thermal.py"
+    ],
+    "analysis_script_imported_or_used_as_authority": false,
+    "method": "Direct NPZ/JSON readback; donor AtomicNetwork/Geometry reused; Mao formula independently evaluated from raw pars.dat; authored moment dependency disclosed. No thermal runner/system/source import.",
+    "dense_integral_scope": "Reported scalar arithmetic and NPZ endpoint energy checked; original dense samples and interpolant were not persisted, so dense quadrature is not independently reproduced."
+  },
+  "review_new_integrations": 0,
+  "review_old_IVP_reruns": 0,
+  "failures": [],
+  "limitations": [
+    "All population, isotope, angular and trace-energy gates are finite checks on 109 saved t_eval samples per case, not assertions about every internal accepted BDF step or the continuous solution.",
+    "The 129-angle reconstructed positivity diagnostic is finite in angle; it is not an all-angle positivity theorem.",
+    "Dense 513/1025-node quadrature arrays and the BDF dense interpolant were not saved. Residual arithmetic and independent endpoint energies are checked, while dense integrals remain runner-reported.",
+    "Two nominal/refined comparisons establish agreement at these two restarts and saved nodes. They do not establish global convergence of the model or the four-case family.",
+    "Algebraic source conservation and identical rate ownership do not establish physical accuracy of the cooling fits, hybrid Mao closure, single-step lithium escape model, or omitted processes.",
+    "Initial geometry, isotope populations and accumulated optical depth are exact saved donor bytes at node84 (z about7.9637). Earlier z20-to-restart history remains the prescribed-temperature donor history.",
+    "Peak RSS or hard memory-limit telemetry was not persisted; resource claims are limited to declared thread settings, serial execution and reported counts/timing.",
+    "Reviewer authored the shared recombination-moment dependency and saved126 postprocessor. Review independence applies to coupled thermal sources/system, runner, raw-result readback and comparisons.",
+    "Initial independent operation ordering produced ten last-bit scalar-summary differences around 1e-16; every difference was preserved and then exactly reproduced using runner expression ordering and original Fortran NPZ layout. No gate tolerance changed."
+  ],
+  "cases": [
+    {
+      "label": "s00_m02_r02_mao2017_nominal",
+      "identities": {
+        "trajectory_sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de",
+        "trajectory_bytes": 94417,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "b4e5637847d34894cff9827dab412f92b4bd8f856cbb8e53b5648514386a41d1",
+        "started_sha256": "b61d674d1d66ca63004e058bec6c9f5c1beada60f8e0f3720ef7e174cb7e5495",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14177.029709642544,
+        "temperature_end_K": 10119.075675409322,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.2326283423892372e-15,
+        "max_baryon_error": 1.1102230246251565e-15,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903437325412,
+        "min_tau_increment": 0.00018472798520420552,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.3544702514854123e-16,
+        "max_tensor_sum_error": 5.319111937470851e-36,
+        "min_finite_angular_weight": 1.0,
+        "max_trace_energy_fraction": 2.187657566806383e-08,
+        "max_source_energy_residual": 2.8268446296847577e-16,
+        "max_saved_source_energy_residual": 2.553173927281097e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 8.798077702608619e-17,
+        "max_scaled_isotope_source_residual": 2.2003293205593496e-17,
+        "tau_end": 0.06937642232605984
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 1.1764663152632143e-15,
+        "D": 7.180580537495204e-16,
+        "T": 0.0,
+        "He3": 1.009769138085263e-15,
+        "He4": 9.063592530854355e-16,
+        "Li6": 6.269471956325465e-16,
+        "Li7": 1.2326283423892372e-15
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.2830539547424846e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 8.28280670125069e-17,
+        "photo_primary_W_m3": 1.7948828077570048e-16,
+        "rr_cooling_W_m3": 3.3714234556989206e-16,
+        "dr_cooling_W_m3": 6.7231962069927525e-15,
+        "core_escape_W_m3": 9.527202080739776e-20,
+        "binding_escape_W_m3": 4.7508597725659425e-17,
+        "total_escape_W_m3": 6.310882091670733e-17,
+        "kinetic_net_W_m3": 1.8141033231765334e-16,
+        "ion_source_W_m3": 1.5012193553751563e-16,
+        "gas_energy_J_per_baryon": 1.3208296633703505e-16,
+        "gas_energy_source_J_per_baryon_per_x": 4.082121533562443e-16,
+        "work_J_per_baryon_per_x": 1.9366749903271163e-16
+      },
+      "max_diagnostic_field_relative_difference": 6.7231962069927525e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 2.409418239079197e-16,
+        "bath_escape_relative_difference": 6.310882091670733e-17,
+        "trace_fraction_relative_difference": 7.562249459000789e-17
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557687121371398e-19,
+          "integrated_net_J_per_baryon": 5.551964579237479e-19,
+          "throughput_J_per_baryon": 1.1549720034981238e-17,
+          "residual_scaled": 4.954702033111351e-05,
+          "recomputed_residual_from_declared_integrals": 4.954702033111351e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557687121371398e-19,
+          "integrated_net_J_per_baryon": 5.556701212769614e-19,
+          "throughput_J_per_baryon": 1.1549923565948837e-17,
+          "residual_scaled": 8.536061699062032e-06,
+          "recomputed_residual_from_declared_integrals": 8.536061699062032e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.489369130535575e-19,
+          "independent_throughput_J_per_baryon": 1.1563892804253802e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557687121371398e-19,
+          "residual_scaled": 0.0005907871336431976,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.101008552211857e-05,
+      "reported_resources": {
+        "wall_seconds": 16.5131049470001,
+        "own_cpu_seconds": 16.101426745,
+        "nfev": 955,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 955,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    },
+    {
+      "label": "s02_m04_r01_mao2017_nominal",
+      "identities": {
+        "trajectory_sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8",
+        "trajectory_bytes": 107628,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "7f48be1dea97045126c4a4bdc337f617e6f56b4474be9bcf75f84bfc828bb3b2",
+        "started_sha256": "e54b582b4ccbbea2d27f8705596e4814d802908e3b7614e97e0ba406a1d14c0c",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "4945632c45e2d5ed95b06767d223e46cdc9fc43d48f5c9abb8972c7ad3046d19",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14177.00409648051,
+        "temperature_end_K": 10119.069057893546,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.1329490663567944e-15,
+        "max_baryon_error": 3.3306690738754696e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.0029034372425025,
+        "min_tau_increment": 0.00018472790762207036,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.337771755929334e-16,
+        "max_tensor_sum_error": 2.710505431213761e-20,
+        "min_finite_angular_weight": 0.7507133637046273,
+        "max_trace_energy_fraction": 2.1876557253838446e-08,
+        "max_source_energy_residual": 3.947658197262126e-16,
+        "max_saved_source_energy_residual": 2.8307400641975996e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 6.804661980531042e-17,
+        "max_scaled_isotope_source_residual": 1.7005205355015028e-17,
+        "tau_end": 0.06937611400452513
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 7.352914470395089e-16,
+        "D": 1.0770870806242805e-15,
+        "T": 0.0,
+        "He3": 7.853759962885379e-16,
+        "He4": 1.1329490663567944e-15,
+        "Li6": 6.269471956325465e-16,
+        "Li7": 1.0956696376793219e-15
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.283056272797034e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 1.6565602611596325e-16,
+        "photo_primary_W_m3": 3.589763287112138e-16,
+        "rr_cooling_W_m3": 3.3714264329389345e-16,
+        "dr_cooling_W_m3": 2.086639981906368e-15,
+        "core_escape_W_m3": 1.9511685114498972e-16,
+        "binding_escape_W_m3": 0.0,
+        "total_escape_W_m3": 0.0,
+        "kinetic_net_W_m3": 3.628204261642927e-16,
+        "ion_source_W_m3": 1.2615224658351834e-16,
+        "gas_energy_J_per_baryon": 1.320830071070421e-16,
+        "gas_energy_source_J_per_baryon_per_x": 6.123203374407539e-16,
+        "work_J_per_baryon_per_x": 1.936678489504534e-16
+      },
+      "max_diagnostic_field_relative_difference": 2.086639981906368e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 2.4094118937776783e-16,
+        "bath_escape_relative_difference": 0.0,
+        "trace_fraction_relative_difference": 7.562255824397517e-17
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557687396040008e-19,
+          "integrated_net_J_per_baryon": 5.551964923136066e-19,
+          "throughput_J_per_baryon": 1.154970174120432e-17,
+          "residual_scaled": 4.954649940030009e-05,
+          "recomputed_residual_from_declared_integrals": 4.954649940030009e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557687396040008e-19,
+          "integrated_net_J_per_baryon": 5.556701505170071e-19,
+          "throughput_J_per_baryon": 1.1549905272423875e-17,
+          "residual_scaled": 8.535921695310186e-06,
+          "recomputed_residual_from_declared_integrals": 8.535921695310186e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.48937014007588e-19,
+          "independent_throughput_J_per_baryon": 1.1563874312677223e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557687396040008e-19,
+          "residual_scaled": 0.0005907817234681718,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.100970460177305e-05,
+      "reported_resources": {
+        "wall_seconds": 4.309436515000016,
+        "own_cpu_seconds": 4.3049112439999995,
+        "nfev": 955,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 955,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    },
+    {
+      "label": "s03_m03_r03_mao2017_nominal",
+      "identities": {
+        "trajectory_sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+        "trajectory_bytes": 108065,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "a36d74ab59fdd30fa4018acbab820f1d848f0793270178960498779996a95526",
+        "started_sha256": "f60f8a2fd11f1c726e4f3e1a706408aca9d475180f58c77253b6e52f87c6c072",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14176.447240327188,
+        "temperature_end_K": 10118.948508588535,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.5707519925770758e-15,
+        "max_baryon_error": 4.440892098500626e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903435732488,
+        "min_tau_increment": 0.00018472709795432085,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 3.8876721204554006e-16,
+        "max_tensor_sum_error": 6.776263578034403e-21,
+        "min_finite_angular_weight": 0.8822534245622303,
+        "max_trace_energy_fraction": 2.1876364777911654e-08,
+        "max_source_energy_residual": 3.298824799559817e-16,
+        "max_saved_source_energy_residual": 2.23424866932316e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 8.744161512499451e-17,
+        "max_scaled_isotope_source_residual": 2.186045219192659e-17,
+        "tau_end": 0.06936920651893348
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 4.411748682237053e-16,
+        "D": 5.385435403121403e-16,
+        "T": 0.0,
+        "He3": 1.5707519925770758e-15,
+        "He4": 1.3595388796281533e-15,
+        "Li6": 1.044911992720911e-15,
+        "Li7": 6.847935235495762e-16
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.28310667172763e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 1.2424016497215057e-16,
+        "photo_primary_W_m3": 4.4871374191988425e-17,
+        "rr_cooling_W_m3": 1.6857472016544968e-16,
+        "dr_cooling_W_m3": 3.714708013732822e-15,
+        "core_escape_W_m3": 1.9511119795630179e-16,
+        "binding_escape_W_m3": 1.5836346366716384e-17,
+        "total_escape_W_m3": 1.5777351483620014e-17,
+        "kinetic_net_W_m3": 4.5351870242850745e-17,
+        "ion_source_W_m3": 8.224170298707109e-17,
+        "gas_energy_J_per_baryon": 0.0,
+        "gas_energy_source_J_per_baryon_per_x": 4.592764316799231e-16,
+        "work_J_per_baryon_per_x": 1.9367545683003192e-16
+      },
+      "max_diagnostic_field_relative_difference": 3.714708013732822e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 6.023166052391854e-17,
+        "bath_escape_relative_difference": 1.5777351483620014e-17,
+        "trace_fraction_relative_difference": 7.562322359775456e-17
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.55770470669259e-19,
+          "integrated_net_J_per_baryon": 5.551983814078197e-19,
+          "throughput_J_per_baryon": 1.1549315357838564e-17,
+          "residual_scaled": 4.9534474011133964e-05,
+          "recomputed_residual_from_declared_integrals": 4.9534474011133964e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.55770470669259e-19,
+          "integrated_net_J_per_baryon": 5.556719221287039e-19,
+          "throughput_J_per_baryon": 1.1549518895137213e-17,
+          "residual_scaled": 8.532696595405777e-06,
+          "recomputed_residual_from_declared_integrals": 8.532696595405777e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.48940425028287e-19,
+          "independent_throughput_J_per_baryon": 1.1563483395348569e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.55770470669259e-19,
+          "residual_scaled": 0.0005906564144606646,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.100090446914732e-05,
+      "reported_resources": {
+        "wall_seconds": 7.507839952999348,
+        "own_cpu_seconds": 7.481620493000001,
+        "nfev": 955,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 955,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    },
+    {
+      "label": "s03_m03_r03_mao2017_refined",
+      "identities": {
+        "trajectory_sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+        "trajectory_bytes": 107835,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "d3d32d495f178198c06663373fe33b5cff750270e792a1db735d38ef9ad10e56",
+        "started_sha256": "56212caae5150326af9f965c9ea80859a546cafe1d64e08e07a4d63cf40c7b80",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14176.447839355818,
+        "temperature_end_K": 10118.94877118533,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.6718591883534574e-15,
+        "max_baryon_error": 4.440892098500626e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903435735798,
+        "min_tau_increment": 0.00018472709870517856,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.3131956226501057e-16,
+        "max_tensor_sum_error": 6.776263578034403e-21,
+        "min_finite_angular_weight": 0.8822534250961986,
+        "max_trace_energy_fraction": 2.1876364786927407e-08,
+        "max_source_energy_residual": 2.6229517603426924e-16,
+        "max_saved_source_energy_residual": 3.2017854087683997e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 7.300807897347494e-17,
+        "max_scaled_isotope_source_residual": 1.8267263133794273e-17,
+        "tau_end": 0.06936920655335894
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 7.352914470395089e-16,
+        "D": 7.180580537495204e-16,
+        "T": 0.0,
+        "He3": 1.1219657089836256e-15,
+        "He4": 6.797694398140766e-16,
+        "Li6": 1.6718591883534574e-15,
+        "Li7": 9.587109329694067e-16
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.2831066175097017e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 1.6565355329620075e-16,
+        "photo_primary_W_m3": 8.974274838397685e-17,
+        "rr_cooling_W_m3": 1.685747027799102e-16,
+        "dr_cooling_W_m3": 5.4559683049903464e-15,
+        "core_escape_W_m3": 1.9511119795630179e-16,
+        "binding_escape_W_m3": 1.5836346366716384e-17,
+        "total_escape_W_m3": 1.5777351483620014e-17,
+        "kinetic_net_W_m3": 9.070374048570149e-17,
+        "ion_source_W_m3": 2.5479786961440748e-17,
+        "gas_energy_J_per_baryon": 0.0,
+        "gas_energy_source_J_per_baryon_per_x": 6.123685755732308e-16,
+        "work_J_per_baryon_per_x": 1.936754486456011e-16
+      },
+      "max_diagnostic_field_relative_difference": 5.4559683049903464e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 1.2046332104783707e-16,
+        "bath_escape_relative_difference": 1.5777351483620014e-17,
+        "trace_fraction_relative_difference": 7.562322356658849e-17
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557704798841069e-19,
+          "integrated_net_J_per_baryon": 5.551982482075596e-19,
+          "throughput_J_per_baryon": 1.1549314666408258e-17,
+          "residual_scaled": 4.9546808020715587e-05,
+          "recomputed_residual_from_declared_integrals": 4.9546808020715587e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557704798841069e-19,
+          "integrated_net_J_per_baryon": 5.556717869854922e-19,
+          "throughput_J_per_baryon": 1.1549518201517198e-17,
+          "residual_scaled": 8.545196162535436e-06,
+          "recomputed_residual_from_declared_integrals": 8.545196162535436e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.489402826951526e-19,
+          "independent_throughput_J_per_baryon": 1.15634826933504e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557704798841069e-19,
+          "residual_scaled": 0.0005906695560570217,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.1000738703578186e-05,
+      "reported_resources": {
+        "wall_seconds": 5.097194676000072,
+        "own_cpu_seconds": 5.096883749,
+        "nfev": 1395,
+        "njev": 18,
+        "nlu": 95,
+        "rhs_calls": 1395,
+        "jac_calls": 18,
+        "rtol": 2e-09,
+        "max_step": 0.0125
+      }
+    },
+    {
+      "label": "s03_m03_r03_rate_derivative_nominal",
+      "identities": {
+        "trajectory_sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+        "trajectory_bytes": 108005,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "50f126e62f1c3151ae80199b86e4724cc5fc097d12c2405736b2c58ef34b8078",
+        "started_sha256": "a806a9b465019206a93371538526b741323cafb521a8d79afd89385621c2e210",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14173.86582874357,
+        "temperature_end_K": 10117.088297850441,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.5065457518090677e-15,
+        "max_baryon_error": 3.3306690738754696e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.0029034124409835,
+        "min_tau_increment": 0.0001847270972370335,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.2351083597012817e-16,
+        "max_tensor_sum_error": 0.0,
+        "min_finite_angular_weight": 0.8822534245622246,
+        "max_trace_energy_fraction": 2.187630142415257e-08,
+        "max_source_energy_residual": 2.9585998350901536e-16,
+        "max_saved_source_energy_residual": 2.8873566998538643e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 7.853135773367278e-17,
+        "max_scaled_isotope_source_residual": 1.9640267806758567e-17,
+        "tau_end": 0.0693692036962686
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 4.411748682237053e-16,
+        "D": 5.385435403121403e-16,
+        "T": 0.0,
+        "He3": 8.975725671869006e-16,
+        "He4": 4.531796265427178e-16,
+        "Li6": 1.044911992720911e-15,
+        "Li7": 1.5065457518090677e-15
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.2833403571925157e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 8.282677664810038e-17,
+        "photo_primary_W_m3": 1.794854967679537e-16,
+        "rr_cooling_W_m3": 2.6255183532358053e-18,
+        "dr_cooling_W_m3": 5.485312816886261e-15,
+        "core_escape_W_m3": 1.9511119795630179e-16,
+        "binding_escape_W_m3": 9.89771647919774e-19,
+        "total_escape_W_m3": 9.860740627836792e-19,
+        "kinetic_net_W_m3": 1.8141298346591919e-16,
+        "ion_source_W_m3": 1.2676972297924061e-17,
+        "gas_energy_J_per_baryon": 1.3208800263490794e-16,
+        "gas_energy_source_J_per_baryon_per_x": 3.3170632615100283e-16,
+        "work_J_per_baryon_per_x": 1.937107323888921e-16
+      },
+      "max_diagnostic_field_relative_difference": 5.485312816886261e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 1.2046574740355605e-16,
+        "bath_escape_relative_difference": 9.860740627836792e-19,
+        "trace_fraction_relative_difference": 1.512468852051522e-16
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557051937474526e-19,
+          "integrated_net_J_per_baryon": 5.551331247211468e-19,
+          "throughput_J_per_baryon": 1.1550550306056879e-17,
+          "residual_scaled": 4.95274260660879e-05,
+          "recomputed_residual_from_declared_integrals": 4.95274260660879e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557051937474526e-19,
+          "integrated_net_J_per_baryon": 5.556066488355456e-19,
+          "throughput_J_per_baryon": 1.1550753841179966e-17,
+          "residual_scaled": 8.531470176059976e-06,
+          "recomputed_residual_from_declared_integrals": 8.531470176059976e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.488754101691933e-19,
+          "independent_throughput_J_per_baryon": 1.1564717788791671e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557051937474526e-19,
+          "residual_scaled": 0.0005905707085112451,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.0995083170299054e-05,
+      "reported_resources": {
+        "wall_seconds": 6.599831515000005,
+        "own_cpu_seconds": 6.584186989999992,
+        "nfev": 955,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 955,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    },
+    {
+      "label": "s04_m04_r04_mao2017_nominal",
+      "identities": {
+        "trajectory_sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+        "trajectory_bytes": 107787,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "6ed868b281b974f1201a3f30d5a11435bb18d5637f03a6c104fd1b5bce58e830",
+        "started_sha256": "18f5012491f294bdae77020c33b3895be3280ba1773116dabbca5172fa4058db",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14167.031370243054,
+        "temperature_end_K": 10116.846480782347,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.0956696376793219e-15,
+        "max_baryon_error": 5.551115123125783e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903409396989,
+        "min_tau_increment": 0.00018471112509300947,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.3108150029582804e-16,
+        "max_tensor_sum_error": 0.0,
+        "min_finite_angular_weight": 0.39028893157787825,
+        "max_trace_energy_fraction": 2.18725695090269e-08,
+        "max_source_energy_residual": 3.00502599886363e-16,
+        "max_saved_source_energy_residual": 2.7237339160632084e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 9.482272573602292e-17,
+        "max_scaled_isotope_source_residual": 2.3688875614672888e-17,
+        "tau_end": 0.06925336584920529
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 7.352914470395089e-16,
+        "D": 7.180580537495204e-16,
+        "T": 0.0,
+        "He3": 2.2439314179672514e-16,
+        "He4": 4.531796265427178e-16,
+        "Li6": 8.359295941767287e-16,
+        "Li7": 1.0956696376793219e-15
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.2839594661775987e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 4.968363168802434e-16,
+        "photo_primary_W_m3": 8.972039217067952e-17,
+        "rr_cooling_W_m3": 2.5294754052772e-16,
+        "dr_cooling_W_m3": 5.941130690351694e-17,
+        "core_escape_W_m3": 2.4377058760129878e-17,
+        "binding_escape_W_m3": 1.5838710299318723e-17,
+        "total_escape_W_m3": 1.57797014304411e-17,
+        "kinetic_net_W_m3": 9.068084360868681e-17,
+        "ion_source_W_m3": 1.611421324656563e-17,
+        "gas_energy_J_per_baryon": 0.0,
+        "gas_energy_source_J_per_baryon_per_x": 1.4307455303744433e-15,
+        "work_J_per_baryon_per_x": 1.938041888820158e-16
+      },
+      "max_diagnostic_field_relative_difference": 1.4307455303744433e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 1.2034150569223705e-16,
+        "bath_escape_relative_difference": 1.57797014304411e-17,
+        "trace_fraction_relative_difference": 1.5127269106844477e-16
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.55796648999146e-19,
+          "integrated_net_J_per_baryon": 5.552272038333706e-19,
+          "throughput_J_per_baryon": 1.154275308375555e-17,
+          "residual_scaled": 4.933356554051265e-05,
+          "recomputed_residual_from_declared_integrals": 4.933356554051265e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.55796648999146e-19,
+          "integrated_net_J_per_baryon": 5.556987794807823e-19,
+          "throughput_J_per_baryon": 1.1542956717463409e-17,
+          "residual_scaled": 8.478721765940832e-06,
+          "recomputed_residual_from_declared_integrals": 8.478721765940832e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.48994673967829e-19,
+          "independent_throughput_J_per_baryon": 1.1556845370918194e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.55796648999146e-19,
+          "residual_scaled": 0.0005885667596136196,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.0853973462300986e-05,
+      "reported_resources": {
+        "wall_seconds": 5.084440873000858,
+        "own_cpu_seconds": 5.070686363,
+        "nfev": 956,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 956,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    },
+    {
+      "label": "s04_m04_r04_mao2017_refined",
+      "identities": {
+        "trajectory_sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+        "trajectory_bytes": 107319,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "4349b6fd76fdd3e2bf96bdab563bb288cc554e891bcf9c1c06a66df4b6055c08",
+        "started_sha256": "c362a0fd6f67ce3a09a35a8e8946c7bfccf45441134228f4a65c0654f70b7cdc",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14167.031966208237,
+        "temperature_end_K": 10116.8467523213,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 1.3695870470991523e-15,
+        "max_baryon_error": 6.661338147750939e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903409400372,
+        "min_tau_increment": 0.0001847111252266248,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 5.03294811181523e-16,
+        "max_tensor_sum_error": 5.421010862427522e-20,
+        "min_finite_angular_weight": 0.3902889325569575,
+        "max_trace_energy_fraction": 2.1872569519427406e-08,
+        "max_source_energy_residual": 2.4119155147229927e-16,
+        "max_saved_source_energy_residual": 2.3690642300152097e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 7.999123784017576e-17,
+        "max_scaled_isotope_source_residual": 2.0027316677462738e-17,
+        "tau_end": 0.06925336588216141
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 7.352914470395089e-16,
+        "D": 8.975725671869006e-16,
+        "T": 0.0,
+        "He3": 3.365897126950877e-16,
+        "He4": 3.398847199070383e-16,
+        "Li6": 1.253894391265093e-15,
+        "Li7": 1.3695870470991523e-15
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.283959412165217e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 4.968363168802434e-16,
+        "photo_primary_W_m3": 8.972039217067952e-17,
+        "rr_cooling_W_m3": 8.431583814377772e-17,
+        "dr_cooling_W_m3": 1.4555746008613589e-15,
+        "core_escape_W_m3": 2.4377058760129878e-17,
+        "binding_escape_W_m3": 4.751613089795617e-17,
+        "total_escape_W_m3": 4.73391042913233e-17,
+        "kinetic_net_W_m3": 9.068084360868681e-17,
+        "ion_source_W_m3": 1.3974041867448528e-16,
+        "gas_energy_J_per_baryon": 1.320988822724142e-16,
+        "gas_energy_source_J_per_baryon_per_x": 1.4307455303744433e-15,
+        "work_J_per_baryon_per_x": 1.938041807286104e-16
+      },
+      "max_diagnostic_field_relative_difference": 1.4555746008613589e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 1.2034150569223705e-16,
+        "bath_escape_relative_difference": 4.73391042913233e-17,
+        "trace_fraction_relative_difference": 1.5127269099651392e-16
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557966585277329e-19,
+          "integrated_net_J_per_baryon": 5.5522707014533215e-19,
+          "throughput_J_per_baryon": 1.1542752392656842e-17,
+          "residual_scaled": 4.934597598776653e-05,
+          "recomputed_residual_from_declared_integrals": 4.934597598776653e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557966585277329e-19,
+          "integrated_net_J_per_baryon": 5.556986438770142e-19,
+          "throughput_J_per_baryon": 1.1542956024234822e-17,
+          "residual_scaled": 8.491295515022043e-06,
+          "recomputed_residual_from_declared_integrals": 8.491295515022043e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.489945309684349e-19,
+          "independent_throughput_J_per_baryon": 1.1556844669097169e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557966585277329e-19,
+          "residual_scaled": 0.000588579993420423,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.085380995058914e-05,
+      "reported_resources": {
+        "wall_seconds": 20.781217101999573,
+        "own_cpu_seconds": 20.399212362,
+        "nfev": 1394,
+        "njev": 18,
+        "nlu": 95,
+        "rhs_calls": 1394,
+        "jac_calls": 18,
+        "rtol": 2e-09,
+        "max_step": 0.0125
+      }
+    },
+    {
+      "label": "s04_m04_r04_rate_derivative_nominal",
+      "identities": {
+        "trajectory_sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+        "trajectory_bytes": 107731,
+        "trajectory_hash_matches": true,
+        "trajectory_bytes_match": true,
+        "result_sha256": "f07d46659090529847673bfb3acd6f00ba003f3af235b1ca2a20c2eef7984a61",
+        "started_sha256": "010030ed3fd6f437cbf5eeb94b6accc804db34a1e7bc17f72e56b88606b1af77",
+        "started_fields_equal": true,
+        "source_files_match": {
+          "code/run_thermal.py": true,
+          "code/thermal_system.py": true,
+          "code/thermal_sources.py": true,
+          "code/recombination_moments.py": true,
+          "data/mao2017_calc.dat": true,
+          "data/mao2017_pars.dat": true,
+          "data/mao2017_selected.json": true,
+          "provenance/MAO_SOURCE_LOCK.json": true,
+          "provenance/PARENT_SOURCE_LOCK.json": true
+        },
+        "source_identity_reconstructed": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+        "source_identity_matches": true,
+        "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+        "donor_hash_matches": true,
+        "donor_receipt_hash_matches": true
+      },
+      "exact_restart": {
+        "nearest_donor_index": 84,
+        "declared_index": 84,
+        "npz_index": 84,
+        "x_tail_byte_exact": true,
+        "first62_byte_exact": true,
+        "initial_state_byte_exact": true,
+        "first_saved_state_byte_exact": true,
+        "initial_hash_matches": true,
+        "initial_Y_byte_exact": true,
+        "scales_byte_exact": true
+      },
+      "actual_metrics": {
+        "samples": 109,
+        "temperature_min_K": 1081.3197799717439,
+        "temperature_max_K": 14164.45299919549,
+        "temperature_end_K": 10114.987175459044,
+        "min_scaled_population": 0.0,
+        "max_isotope_scaled_error": 5.478348188396609e-16,
+        "max_baryon_error": 4.440892098500626e-16,
+        "max_abs_n_T": 0.0,
+        "min_ne_m3": 6.002903386108919,
+        "min_tau_increment": 0.0001847111243692412,
+        "max_number_monopole_error": 0.0,
+        "max_einstein_constraint": 4.3742932910769346e-16,
+        "max_tensor_sum_error": 5.421010862427522e-20,
+        "min_finite_angular_weight": 0.39028893157801325,
+        "max_trace_energy_fraction": 2.1872506196872733e-08,
+        "max_source_energy_residual": 2.403481937804709e-16,
+        "max_saved_source_energy_residual": 2.9779057389197563e-16,
+        "max_abs_nuclear_decay_source": 0.0,
+        "max_scaled_baryon_source_residual": 8.992323884094038e-17,
+        "max_scaled_isotope_source_residual": 2.2494430285349583e-17,
+        "tau_end": 0.06925336303284148
+      },
+      "isotope_errors": {
+        "n": 0.0,
+        "H1": 4.411748682237053e-16,
+        "D": 5.385435403121403e-16,
+        "T": 0.0,
+        "He3": 3.365897126950877e-16,
+        "He4": 4.531796265427178e-16,
+        "Li6": 4.1796479708836436e-16,
+        "Li7": 5.478348188396609e-16
+      },
+      "independently_recomputed_gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true,
+        "integrated_energy": true
+      },
+      "diagnostic_field_relative_differences": {
+        "T_K": 1.2841931867394888e-16,
+        "H_s": 0.0,
+        "nb_m3": 0.0,
+        "ne_m3": 0.0,
+        "gas_particles_per_baryon": 0.0,
+        "elapsed_Myr": 0.0,
+        "tau_T": 0.0,
+        "photo_absorbed_W_m3": 4.968363168802434e-16,
+        "photo_primary_W_m3": 8.972039217067952e-17,
+        "rr_cooling_W_m3": 1.6808990840892295e-16,
+        "dr_cooling_W_m3": 6.450928332909259e-15,
+        "core_escape_W_m3": 6.0942646900324694e-18,
+        "binding_escape_W_m3": 2.5341936478909957e-16,
+        "total_escape_W_m3": 2.5247255826515926e-16,
+        "kinetic_net_W_m3": 9.068359363537518e-17,
+        "ion_source_W_m3": 2.578303643785995e-16,
+        "gas_energy_J_per_baryon": 0.0,
+        "gas_energy_source_J_per_baryon_per_x": 1.4307743208750883e-15,
+        "work_J_per_baryon_per_x": 1.9383946974156945e-16
+      },
+      "max_diagnostic_field_relative_difference": 6.450928332909259e-15,
+      "inherited_diagnostic_checks": {
+        "zero_external_bath": true,
+        "explicit_core_field": true,
+        "net_input_relative_difference": 1.5042990911426616e-16,
+        "bath_escape_relative_difference": 2.5247255826515926e-16,
+        "trace_fraction_relative_difference": 7.563656447118031e-17
+      },
+      "energy_integral_review": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557314038399211e-19,
+          "integrated_net_J_per_baryon": 5.551619788264375e-19,
+          "throughput_J_per_baryon": 1.154398682589933e-17,
+          "residual_scaled": 4.932654741133853e-05,
+          "recomputed_residual_from_declared_integrals": 4.932654741133853e-05,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557314038399211e-19,
+          "integrated_net_J_per_baryon": 5.556335379323957e-19,
+          "throughput_J_per_baryon": 1.1544190457393616e-17,
+          "residual_scaled": 8.477502851900732e-06,
+          "recomputed_residual_from_declared_integrals": 8.477502851900732e-06,
+          "residual_arithmetic_matches": true,
+          "endpoint_energy_relative_difference": 0.0,
+          "dense_integral_independently_reproduced": false
+        },
+        "saved109_coarse_check": {
+          "independent_net_J_per_baryon": 5.4892968974576e-19,
+          "independent_throughput_J_per_baryon": 1.155807856100363e-17,
+          "independent_endpoint_delta_J_per_baryon": 5.557314038399211e-19,
+          "residual_scaled": 0.0005884813862668997,
+          "evaluated_against_dense1025_threshold": false,
+          "scope": "A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples."
+        }
+      },
+      "energy_grid_delta_scaled": 4.084817447343269e-05,
+      "reported_resources": {
+        "wall_seconds": 6.038445551999757,
+        "own_cpu_seconds": 6.021135741000009,
+        "nfev": 956,
+        "njev": 17,
+        "nlu": 72,
+        "rhs_calls": 956,
+        "jac_calls": 17,
+        "rtol": 2e-08,
+        "max_step": 0.025
+      }
+    }
+  ],
+  "parent_source_lock": {
+    "files": 49,
+    "all_hashes_and_sizes_match": true
+  },
+  "campaign_receipt": {
+    "path": "results/thermal8/CAMPAIGN_1792635619741592155.json",
+    "sha256": "0015dc562072823817a9b52f409a93af104aaa4cfe5d72da1fcba6c626f7927a",
+    "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+    "new_integrations": 8,
+    "reused": 0,
+    "old_IVP_reruns": 0,
+    "wall_seconds": 71.97645228299916,
+    "results": [
+      {
+        "label": "s00_m02_r02_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s02_m04_r01_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_mao2017_refined",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_mao2017_refined",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_rate_derivative_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_rate_derivative_nominal",
+        "state": "new_complete"
+      }
+    ]
+  },
+  "nominal_refined_comparisons": [
+    {
+      "case": "s03_m03_r03",
+      "right": "mao2017_refined",
+      "sign_convention": "right minus Mao nominal",
+      "same_initial_state_byte_exact": true,
+      "max_abs_delta_logT": 4.1814042361920656e-07,
+      "max_abs_delta_T_K": 0.0025446735598961823,
+      "end_delta_T_K": 0.00026259679543727543,
+      "max_abs_delta_conditional_ionic_fraction": 3.4030569917575804e-08,
+      "conditional_fraction_differences": {
+        "H1": 3.312301544156071e-10,
+        "D": 3.312301544156071e-10,
+        "He3": 1.4360079014785754e-08,
+        "He4": 1.4360079014785754e-08,
+        "Li6": 3.4030569917575804e-08,
+        "Li7": 3.40305698065535e-08
+      },
+      "max_abs_delta_signed_stress": 2.5284846238244826e-13,
+      "max_abs_delta_signed_shear": 1.2663678734120554e-09,
+      "signed_observable_maxima": [
+        1.2663678734120554e-09,
+        1.1096036741341242e-14,
+        2.41752425641107e-13,
+        2.5284846238244826e-13,
+        1.4088558065398354e-13,
+        1.0086684159899169e-13
+      ],
+      "max_abs_delta_tau": 3.4425462480669466e-11,
+      "end_delta_tau": 3.4425462480669466e-11,
+      "frozen_gates": {
+        "logT": true,
+        "conditional_ionic_fraction": true,
+        "signed_stress": true,
+        "tau": true,
+        "signed_six_vector_additional_check": true
+      },
+      "signed_observable_order": [
+        "S_F",
+        "P_m",
+        "P_r",
+        "P_total",
+        "P_gamma",
+        "P_nu"
+      ],
+      "stress_columns": "1:6 (P_m,P_r,P_total,P_gamma,P_nu); S_F is separately column0",
+      "max_abs_delta_signed_six_vector": 1.2663678734120554e-09
+    },
+    {
+      "case": "s04_m04_r04",
+      "right": "mao2017_refined",
+      "sign_convention": "right minus Mao nominal",
+      "same_initial_state_byte_exact": true,
+      "max_abs_delta_logT": 4.181148884896402e-07,
+      "max_abs_delta_T_K": 0.002534727107558865,
+      "end_delta_T_K": 0.0002715389528020751,
+      "max_abs_delta_conditional_ionic_fraction": 3.392046243888558e-08,
+      "conditional_fraction_differences": {
+        "H1": 3.3144764710613117e-10,
+        "D": 3.3144762628944946e-10,
+        "He3": 1.442424413244936e-08,
+        "He4": 1.442424413244936e-08,
+        "Li6": 3.392046243888558e-08,
+        "Li7": 3.3920462327863277e-08
+      },
+      "max_abs_delta_signed_stress": 1.0257630248672323e-12,
+      "max_abs_delta_signed_shear": 4.989189679449613e-09,
+      "signed_observable_maxima": [
+        4.989189679449613e-09,
+        4.526524948358197e-14,
+        9.80497801006397e-13,
+        1.0257630248672323e-12,
+        5.761712721513712e-13,
+        4.0432652885502574e-13
+      ],
+      "max_abs_delta_tau": 3.2956123940941495e-11,
+      "end_delta_tau": 3.2956123940941495e-11,
+      "frozen_gates": {
+        "logT": true,
+        "conditional_ionic_fraction": true,
+        "signed_stress": true,
+        "tau": true,
+        "signed_six_vector_additional_check": true
+      },
+      "signed_observable_order": [
+        "S_F",
+        "P_m",
+        "P_r",
+        "P_total",
+        "P_gamma",
+        "P_nu"
+      ],
+      "stress_columns": "1:6 (P_m,P_r,P_total,P_gamma,P_nu); S_F is separately column0",
+      "max_abs_delta_signed_six_vector": 4.989189679449613e-09
+    }
+  ],
+  "mao_rate_derivative_comparisons": [
+    {
+      "case": "s03_m03_r03",
+      "right": "rate_derivative_nominal",
+      "sign_convention": "right minus Mao nominal",
+      "same_initial_state_byte_exact": true,
+      "max_abs_delta_logT": 0.00019340959731017904,
+      "max_abs_delta_T_K": 2.6412115825205547,
+      "end_delta_T_K": -1.8602107380938833,
+      "max_abs_delta_conditional_ionic_fraction": 1.4324944639709791e-05,
+      "conditional_fraction_differences": {
+        "H1": 3.16735336103411e-08,
+        "D": 3.167353361077478e-08,
+        "He3": 3.1525154784439735e-06,
+        "He4": 3.152515478554996e-06,
+        "Li6": 1.4324944639487747e-05,
+        "Li7": 1.4324944639709791e-05
+      },
+      "max_abs_delta_signed_stress": 5.6577342095152916e-14,
+      "max_abs_delta_signed_shear": 1.2785866115860856e-12,
+      "signed_observable_maxima": [
+        1.2785866115860856e-12,
+        1.1892342579450377e-18,
+        5.657529566355235e-14,
+        5.657480777257473e-14,
+        5.6577342095152916e-14,
+        9.391901319155682e-18
+      ],
+      "max_abs_delta_tau": 2.822664879609249e-09,
+      "end_delta_tau": -2.822664879609249e-09,
+      "scope": "Source/closure sensitivity; no probability or physical-accuracy interpretation.",
+      "signed_observable_order": [
+        "S_F",
+        "P_m",
+        "P_r",
+        "P_total",
+        "P_gamma",
+        "P_nu"
+      ],
+      "stress_columns": "1:6 (P_m,P_r,P_total,P_gamma,P_nu); S_F is separately column0",
+      "max_abs_delta_signed_six_vector": 1.2785866115860856e-12
+    },
+    {
+      "case": "s04_m04_r04",
+      "right": "rate_derivative_nominal",
+      "sign_convention": "right minus Mao nominal",
+      "same_initial_state_byte_exact": true,
+      "max_abs_delta_logT": 0.00019333900071671906,
+      "max_abs_delta_T_K": 2.6385333864800486,
+      "end_delta_T_K": -1.859305323303488,
+      "max_abs_delta_conditional_ionic_fraction": 1.4311670122890696e-05,
+      "conditional_fraction_differences": {
+        "H1": 3.164916963010675e-08,
+        "D": 3.164916972941967e-08,
+        "He3": 3.148380187667499e-06,
+        "He4": 3.148380187667499e-06,
+        "Li6": 1.4311670122779674e-05,
+        "Li7": 1.4311670122890696e-05
+      },
+      "max_abs_delta_signed_stress": 6.315065115801433e-13,
+      "max_abs_delta_signed_shear": 1.4565987305203976e-12,
+      "signed_observable_maxima": [
+        1.4565987305203976e-12,
+        1.2928263873942386e-17,
+        6.314918206407061e-13,
+        6.314881343533196e-13,
+        6.315065115801433e-13,
+        1.0516761073109393e-16
+      ],
+      "max_abs_delta_tau": 2.816363808832989e-09,
+      "end_delta_tau": -2.816363808832989e-09,
+      "scope": "Source/closure sensitivity; no probability or physical-accuracy interpretation.",
+      "signed_observable_order": [
+        "S_F",
+        "P_m",
+        "P_r",
+        "P_total",
+        "P_gamma",
+        "P_nu"
+      ],
+      "stress_columns": "1:6 (P_m,P_r,P_total,P_gamma,P_nu); S_F is separately column0",
+      "max_abs_delta_signed_six_vector": 1.4565987305203976e-12
+    }
+  ],
+  "resource_review": {
+    "sum_reported_case_resources": {
+      "wall_seconds": 71.93151113299973,
+      "own_cpu_seconds": 71.060063687,
+      "nfev": 8521,
+      "njev": 138,
+      "nlu": 622,
+      "rhs_calls": 8521,
+      "jac_calls": 138
+    },
+    "campaign_wall_seconds": 71.97645228299916,
+    "max_case_wall_seconds": 20.781217101999573,
+    "case_wall_limit_seconds": 240,
+    "campaign_wall_limit_seconds": 1200,
+    "runner_serial": true,
+    "runner_declares_one_BLAS_OMP_thread": true,
+    "all_reported_cases_below_wall_cap": true,
+    "campaign_below_wall_cap": true,
+    "measured_peak_memory_persisted": false,
+    "hard_per_case_memory_limit_recorded": false,
+    "scope": "Function evaluation and CPU/wall counts are runner-reported and cross-checked for internal consistency; no independent process telemetry was retained."
+  },
+  "tracked_files_unchanged_after_review": true,
+  "review_wall_seconds": 2.2675409029998264,
+  "review_script_sha256": "93dd2965db1ba1083e894c83f0f0669c73ab56da2e636f7dfd7fbe99eb5786ca",
+  "review_script_source": "from __future__ import annotations\nimport os\nfor thread_key in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):\n    os.environ[thread_key]='1'\nfrom pathlib import Path\nimport sys, json, math, hashlib, time\nfrom datetime import datetime, timezone\nimport numpy as np\nfrom numpy.polynomial.legendre import legvander\nfrom scipy.integrate import simpson\nREPO=Path('/workspace/scratch/4389c03f19a6/rec_bianchi')\nUNIT=REPO/'research/rec_thermal_moments_20261022'\nDONOR=REPO/'research/rec_rei_hheli_sandbox_20261021'\nOUT=UNIT/'evidence/IMPLEMENTATION_RESULTS_REVIEW.json'\nsys.path.insert(0,str(DONOR/'code'))\nsys.path.insert(0,str(UNIT/'code'))\nfrom atomic_network import AtomicNetwork\nfrom geometry import Geometry, KB, KAPPA_T, C\nfrom recombination_moments import RecombinationMoments\nEV=1.602176634e-19\nstarted=time.perf_counter()\ndef sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()\ndef plain(v):\n    if isinstance(v,np.ndarray): return v.tolist()\n    if isinstance(v,np.generic): return v.item()\n    if isinstance(v,Path): return str(v)\n    raise TypeError(type(v).__name__)\ndef same(a,b):\n    return a.dtype==b.dtype and a.shape==b.shape and a.tobytes()==b.tobytes()\ndef uv_at(x):\n    return .5*(1+math.tanh((7-(21*math.exp(-x)-1))/.8))\ndef collect(path):\n    with np.load(path,allow_pickle=False) as src: return {k:src[k].copy() for k in src.files}\ndef maximum_difference(a,b):\n    return float(np.max(abs(a-b)))\ndef relative_field_difference(a,b):\n    return float(np.max(abs(a-b))/max(float(np.max(abs(a))),float(np.max(abs(b))),1e-300))\n\nreview=dict(schema='rec.thermal.implementation_results_review.v1',created_utc=datetime.now(timezone.utc).isoformat(),\n    reviewer='/root/moment_implementation',status='IN_PROGRESS',\n    independence=dict(authored=['code/recombination_moments.py','code/test_recombination_moments.py','code/test_thermal_system.py','code/postprocess_saved.py'],\n        did_not_author=['code/thermal_sources.py','code/thermal_system.py','code/run_thermal.py'],\n        analysis_script_imported_or_used_as_authority=False,\n        method='Direct NPZ/JSON readback; donor AtomicNetwork/Geometry reused; Mao formula independently evaluated from raw pars.dat; authored moment dependency disclosed. No thermal runner/system/source import.',\n        dense_integral_scope='Reported scalar arithmetic and NPZ endpoint energy checked; original dense samples and interpolant were not persisted, so dense quadrature is not independently reproduced.'),\n    review_new_integrations=0,review_old_IVP_reruns=0,failures=[],limitations=[],cases=[])\nfailures=review['failures']\ndef check(name,ok,case=None,details=None):\n    if not bool(ok): failures.append(dict(check=name,case=case,details=details))\ntry:\n    parent_lock=json.loads((UNIT/'provenance/PARENT_SOURCE_LOCK.json').read_text())\n    parent_checks=[]\n    for f in parent_lock['files']:\n        p=REPO/f['path']; good=p.stat().st_size==f['bytes'] and sha(p)==f['sha256']\n        parent_checks.append(good);check('parent_locked_file',good,details=f['path'])\n    review['parent_source_lock']=dict(files=len(parent_checks),all_hashes_and_sizes_match=all(parent_checks))\n    campaigns=sorted((UNIT/'results/thermal8').glob('CAMPAIGN_*.json'))\n    check('exactly_one_campaign_receipt',len(campaigns)==1)\n    campaign=json.loads(campaigns[0].read_text())\n    review['campaign_receipt']=dict(path=str(campaigns[0].relative_to(UNIT)),sha256=sha(campaigns[0]),**campaign)\n    expected={(c,'mao2017',False) for c in ('s00_m02_r02','s03_m03_r03','s04_m04_r04','s02_m04_r01')}\n    expected|={(c,'mao2017',True) for c in ('s03_m03_r03','s04_m04_r04')}\n    expected|={(c,'rate_derivative',False) for c in ('s03_m03_r03','s04_m04_r04')}\n    pars=np.loadtxt(UNIT/'data/mao2017_pars.dat')\n    mao={(int(r[1]),int(r[1]-r[0]+1)):r[2:9] for r in pars if r[1]<=3}\n    atom=AtomicNetwork(uv_cutoff_eV=200.)\n    moments=RecombinationMoments(atom)\n    angular=legvander(np.linspace(-1,1,129),8)\n    weights=2*np.arange(9)+1\n    downward=np.zeros(21)\n    for i in atom.recombination_indices: downward[i]=atom.ionization_energy_J[i]-atom.ionization_energy_J[i-1]\n    labels=[]; records={}; data={}; observed=set(); tracked={}\n    for result_path in sorted((UNIT/'results/thermal8').glob('*/RESULT.json')):\n        rec=json.loads(result_path.read_text()); label=rec['label']; labels.append(label); records[label]=rec\n        case='_'.join(label.split('_')[:3]); observed.add((case,rec['rr_closure'],rec['refined']))\n        casepath=result_path.parent; path=casepath/'trajectory.npz'; s=collect(path);data[label]=s\n        donor_path=DONOR/rec['donor']; d=collect(donor_path)\n        donor_result_path=donor_path.parent/'RESULT.json'; dr=json.loads(donor_result_path.read_text())\n        started_rec=json.loads((casepath/'STARTED.json').read_text())\n        source_match={f:sha(UNIT/f)==h for f,h in rec['source_files'].items()}\n        identity=hashlib.sha256(json.dumps(rec['source_files'],sort_keys=True).encode()).hexdigest()\n        identities=dict(trajectory_sha256=sha(path),trajectory_bytes=path.stat().st_size,\n            trajectory_hash_matches=sha(path)==rec['trajectory_sha256'],trajectory_bytes_match=path.stat().st_size==rec['trajectory_bytes'],\n            result_sha256=sha(result_path),started_sha256=sha(casepath/'STARTED.json'),\n            started_fields_equal=all(rec[k]==v for k,v in started_rec.items()),\n            source_files_match=source_match,source_identity_reconstructed=identity,\n            source_identity_matches=identity==rec['source_identity']==campaign['source_identity'],\n            donor_sha256=sha(donor_path),donor_hash_matches=sha(donor_path)==rec['donor_sha256']==dr['outputs']['trajectory.npz']['sha256'],\n            donor_receipt_hash_matches=sha(donor_result_path)==rec['donor_receipt_sha256'])\n        for key in ('trajectory_hash_matches','trajectory_bytes_match','started_fields_equal','source_identity_matches','donor_hash_matches','donor_receipt_hash_matches'):\n            check(key,identities[key],label)\n        check('all_current_source_hashes',all(source_match.values()),label)\n        for p in (path,result_path,casepath/'STARTED.json',donor_path,donor_result_path):tracked[str(p)]=sha(p)\n        for f,h in rec['source_files'].items():tracked[str(UNIT/f)]=h\n        ix=int(np.argmin(abs(d['z']-8)))\n        expected_initial=np.r_[d['raw_state'][ix],math.log(100+11900*uv_at(float(d['x'][ix])))]\n        restart=dict(nearest_donor_index=ix,declared_index=rec['start_index'],npz_index=int(s['source_index']),\n            x_tail_byte_exact=same(s['x'],d['x'][ix:]),\n            first62_byte_exact=same(s['raw_state'][0,:62],d['raw_state'][ix]),\n            initial_state_byte_exact=same(s['initial_state'],expected_initial),\n            first_saved_state_byte_exact=same(s['raw_state'][0],expected_initial),\n            initial_hash_matches=hashlib.sha256(expected_initial.tobytes()).hexdigest()==rec['initial_state_sha256'],\n            initial_Y_byte_exact=same(s['initial_Y'],d['initial_Y']),scales_byte_exact=same(s['isotope_scales'],d['isotope_scales']))\n        check('restart_index',ix==rec['start_index']==int(s['source_index']),label)\n        for key,value in restart.items():\n            if key.endswith(('exact','matches')):check('restart_'+key,value,label)\n        x=s['x']; raw=s['raw_state']; Y=s['Y']; T=s['T_K']; names=list(s['diagnostic_names']); di={n:s['diagnostics'][:,i] for i,n in enumerate(names)}\n        ni=list(s['inherited_diagnostic_names']); ih={n:s['inherited_diagnostics'][:,i] for i,n in enumerate(ni)}\n        check('array_shapes',raw.shape==(109,63) and Y.shape==(109,21) and len(x)==rec['samples']==109,label)\n        check('Y_raw_scale_exact',same(Y,raw[:,40:61]*s['isotope_scales']),label)\n        check('exp_log_temperature_exact',same(T,np.exp(raw[:,62])),label)\n        check('z_x_exact',same(s['z'],21*np.exp(-x)-1),label)\n        config=dr['config']; geometry=Geometry(config['Sigma_F'],config['matter_A'],config['radiation_A'],config.get('backend','prepared'))\n        reconstructed=[]; constraints=[]; signed=[]; angular_minima=[]; trace=[]; decaymax=[]; baryon_source=[]; isotope_source=[]\n        for j,xx in enumerate(x):\n            yy=Y[j]; tt=float(T[j]); uv=uv_at(float(xx)); nb=geometry.baryon_number_density(float(xx)); f=geometry.fields(float(xx),raw[j,:40]); H=f['H']\n            n=atom.evaluate(yy,tt,uv,nb); co=moments.evaluate(tt); eta=float((1+atom.q)@yy);ne=nb*float(atom.q@yy)\n            if rec['rr_closure']=='mao2017':\n                rr_loss=np.zeros(21); tev=KB*tt/EV\n                for k in atom.recombination_indices:\n                    a0,b0,c0,a1,b1,a2,b2=mao[(int(atom.Z[k]),int(atom.q[k]))]\n                    mf=a0*tev**(-b0-c0*math.log(tev))*(1+a2*tev**(-b2))/(1+a1*tev**(-b1))\n                    rr_loss[k]=KB*tt*co['rr_m3_s'][k]*mf\n            else:rr_loss=co['rr_loss_J_m3_s']\n            rr=nb*ne*float(yy@rr_loss); lossdr=nb*ne*float(yy@co['dr_loss_J_m3_s']); primary=nb*uv*float(yy@atom._primary_W)\n            absorbed=nb*uv*float(yy@atom._absorbed_W); core=nb*uv*float(yy@atom._core_W)\n            binding=nb*ne*float(yy@(downward*(co['rr_m3_s']+co['dr_m3_s'])))\n            escape=core+binding+rr+lossdr; kin=primary-rr-lossdr; ion=nb*float(atom.ionization_energy_J@n['dY_dt'])\n            res=abs(absorbed-escape-kin-ion)/max(abs(absorbed)+abs(escape)+abs(kin)+abs(ion),1e-300)\n            eng=1.5*KB*tt*eta+float(atom.ionization_energy_J@yy)\n            reconstructed.append(dict(T_K=tt,H_s=H,nb_m3=nb,ne_m3=ne,gas_particles_per_baryon=eta,\n                elapsed_Myr=raw[j,0]/geometry.source.href/31557600e6,tau_T=raw[j,61],photo_absorbed_W_m3=absorbed,\n                photo_primary_W_m3=primary,rr_cooling_W_m3=rr,dr_cooling_W_m3=lossdr,core_escape_W_m3=core,\n                binding_escape_W_m3=binding,total_escape_W_m3=escape,kinetic_net_W_m3=kin,ion_source_W_m3=ion,\n                source_energy_residual=res,gas_energy_J_per_baryon=eng,\n                gas_energy_source_J_per_baryon_per_x=(absorbed-escape)/(nb*H),work_J_per_baryon_per_x=3*KB*tt*eta))\n            lhs=3*H*H; rhs=3*geometry.source.h0**2*(f['dust_energy_norm']+f['massive_energy_norm']+f['rad_energy_norm']+geometry.source.omega_lambda)+3*f['s']**2\n            constraints.append(abs(lhs-rhs)/lhs); signed.append(geometry.normalized(float(xx),raw[j,:40],f))\n            for start in (4,13,22,31):angular_minima.append(float(np.min(angular@(weights*raw[j,start:start+9]))/raw[j,start]))\n            trace.append((1.5*KB*tt*nb*eta+nb*float(atom.ionization_energy_J@yy)+n['uv_energy_density_J_m3'])/(3*H*H/KAPPA_T))\n            decaymax.append(float(np.max(abs(n['decay_rhs']))))\n            pieces=(n['photo_rhs'],n['rr_rhs'],n['dr_rhs'])\n            denom=max(sum(float(np.sum(abs(p))) for p in pieces),1e-300)\n            baryon_source.append(abs(float(atom.A@n['dY_dt']))/denom)\n            isotope_source.append(max(abs(float(np.sum(n['dY_dt'][list(ii)]))) for ii in atom.isotope_groups.values())/denom)\n        rdi={n:np.array([r[n] for r in reconstructed]) for n in names}; signed=np.array(signed)\n        diagnostic_differences={n:relative_field_difference(di[n],rdi[n]) for n in names if n!='source_energy_residual'}\n        maxdiag=max(diagnostic_differences.values())\n        check('independent_diagnostic_agreement',maxdiag<5e-12,label,diagnostic_differences)\n        check('signed_observables_reconstruction',same(signed,s['signed_observables']),label)\n        inherited_checks=dict(zero_external_bath=bool(np.all(ih['external_bath_W_m3']==0)),\n            explicit_core_field='core_escape_W_m3' in ih and 'unresolved_core_W_m3' not in ih,\n            net_input_relative_difference=relative_field_difference(ih['net_required_gas_input_W_m3'],rdi['kinetic_net_W_m3']+rdi['ion_source_W_m3']),\n            bath_escape_relative_difference=relative_field_difference(ih['bath_minus_escape_W_m3'],-rdi['total_escape_W_m3']),\n            trace_fraction_relative_difference=relative_field_difference(ih['trace_energy_fraction'],np.array(trace)))\n        check('dynamic_inherited_diagnostics',inherited_checks['zero_external_bath'] and inherited_checks['explicit_core_field'] and max(v for k,v in inherited_checks.items() if k.endswith('difference'))<5e-12,label)\n        iso={name:float(np.max(abs(Y[:,list(ii)].sum(axis=1)-s['initial_Y'][list(ii)].sum()))/s['isotope_scales'][ii[0]]) for name,ii in atom.isotope_groups.items()}\n        vals=dict(samples=len(x),temperature_min_K=float(T.min()),temperature_max_K=float(T.max()),temperature_end_K=float(T[-1]),\n            min_scaled_population=float(raw[:,40:61].min()),max_isotope_scaled_error=max(iso.values()),max_baryon_error=float(np.max(abs(Y@atom.A-1))),\n            max_abs_n_T=float(np.max(abs(Y[:,[0,5,6]]))),min_ne_m3=float(rdi['ne_m3'].min()),min_tau_increment=float(np.diff(raw[:,61]).min()),\n            max_number_monopole_error=float(max(np.max(abs(raw[:,13]-1)),np.max(abs(raw[:,31]-1)))),max_einstein_constraint=max(constraints),\n            max_tensor_sum_error=float(np.max(abs(signed[:,3]-signed[:,1]-signed[:,2]))),min_finite_angular_weight=min(angular_minima),\n            max_trace_energy_fraction=max(trace),max_source_energy_residual=max(rdi['source_energy_residual']),\n            max_saved_source_energy_residual=max(di['source_energy_residual']),max_abs_nuclear_decay_source=max(decaymax),\n            max_scaled_baryon_source_residual=max(baryon_source),max_scaled_isotope_source_residual=max(isotope_source),tau_end=float(raw[-1,61]))\n        gates=dict(endpoint=x[-1]==math.log(7),finite=np.isfinite(raw).all() and np.isfinite(s['diagnostics']).all(),\n            temperature_domain=np.all((T>=100)&(T<=1e6)),population_positivity=vals['min_scaled_population']>=-2e-8,\n            isotope_conservation=vals['max_isotope_scaled_error']<2e-7,baryon_conservation=vals['max_baryon_error']<2e-8,\n            zero_n_T=vals['max_abs_n_T']==0,ne_nonnegative=vals['min_ne_m3']>=0,monotone_tau=vals['min_tau_increment']>=-2e-10,\n            number_monopoles=vals['max_number_monopole_error']<2e-9,einstein_constraint=vals['max_einstein_constraint']<2e-13,\n            tensor_sum=vals['max_tensor_sum_error']<2e-16,finite_angular_positivity=vals['min_finite_angular_weight']>-2e-7,\n            trace_energy_small=vals['max_trace_energy_fraction']<1e-5,source_energy=vals['max_source_energy_residual']<5e-12,\n            source_unchanged=all(source_match.values()),donor_unchanged=identities['donor_hash_matches'] and identities['donor_receipt_hash_matches'])\n        de=float(rdi['gas_energy_J_per_baryon'][-1]-rdi['gas_energy_J_per_baryon'][0]); energy={}\n        for grid in ('513','1025'):\n            en=rec['energy_integrals'][grid]; residual=abs(en['delta_energy_J_per_baryon']-en['integrated_net_J_per_baryon'])/max(en['throughput_J_per_baryon'],1e-300)\n            energy[grid]=dict(**en,recomputed_residual_from_declared_integrals=residual,\n                residual_arithmetic_matches=residual==en['residual_scaled'],\n                endpoint_energy_relative_difference=abs(en['delta_energy_J_per_baryon']-de)/max(abs(de),1e-300),dense_integral_independently_reproduced=False)\n            check('dense_receipt_arithmetic_'+grid,energy[grid]['residual_arithmetic_matches'],label)\n            check('independent_endpoint_energy_'+grid,energy[grid]['endpoint_energy_relative_difference']<5e-12,label)\n        grid_delta=abs(rec['energy_integrals']['1025']['integrated_net_J_per_baryon']-rec['energy_integrals']['513']['integrated_net_J_per_baryon'])/rec['energy_integrals']['1025']['throughput_J_per_baryon']\n        check('energy_grid_delta_arithmetic',grid_delta==rec['energy_grid_delta_scaled'],label)\n        gates['integrated_energy']=energy['1025']['recomputed_residual_from_declared_integrals']<3e-4\n        for key,value in gates.items():\n            check('gate_'+key,value,label);check('declared_gate_matches_'+key,bool(value)==rec['gates'][key],label)\n        for key in ('temperature_min_K','temperature_max_K','temperature_end_K','min_scaled_population','max_baryon_error','min_finite_angular_weight','tau_end'):\n            check('declared_metric_'+key,vals[key]==rec[key],label,dict(recomputed=vals[key],declared=rec[key]))\n        for key in ('max_einstein_constraint','max_trace_energy_fraction'):\n            check('declared_metric_'+key,abs(vals[key]-rec[key])<5e-12*max(abs(vals[key]),abs(rec[key]),1e-300),label,dict(recomputed=vals[key],declared=rec[key]))\n        check('declared_isotope_errors',iso==rec['isotope_errors'],label)\n        check('status_complete',rec['status']=='COMPLETE' and all(rec['gates'].values()),label)\n        check('reported_solver_counts_consistent',rec['nfev']==rec['rhs_calls'] and rec['njev']==rec['jac_calls'],label)\n        coarse_net=float(simpson(rdi['gas_energy_source_J_per_baryon_per_x']-rdi['work_J_per_baryon_per_x'],x=x))\n        coarse_through=float(simpson((abs(rdi['photo_absorbed_W_m3'])+abs(rdi['total_escape_W_m3']))/(rdi['nb_m3']*rdi['H_s'])+abs(rdi['work_J_per_baryon_per_x']),x=x))\n        energy['saved109_coarse_check']=dict(independent_net_J_per_baryon=coarse_net,independent_throughput_J_per_baryon=coarse_through,\n            independent_endpoint_delta_J_per_baryon=de,residual_scaled=abs(de-coarse_net)/coarse_through,\n            evaluated_against_dense1025_threshold=False,scope='A separate coarse-grid diagnostic; cannot reconstruct unsaved dense BDF samples.')\n        row=dict(label=label,identities=identities,exact_restart=restart,actual_metrics=vals,isotope_errors=iso,\n            independently_recomputed_gates=gates,diagnostic_field_relative_differences=diagnostic_differences,\n            max_diagnostic_field_relative_difference=maxdiag,inherited_diagnostic_checks=inherited_checks,\n            energy_integral_review=energy,energy_grid_delta_scaled=grid_delta,\n            reported_resources={k:rec[k] for k in ('wall_seconds','own_cpu_seconds','nfev','njev','nlu','rhs_calls','jac_calls','rtol','max_step')})\n        review['cases'].append(row)\n    check('eight_unique_planned_configurations',observed==expected and len(labels)==8)\n    check('campaign_case_labels_match',set(labels)=={r['label'] for r in campaign['results']})\n    check('campaign_run_counts',campaign['new_integrations']==8 and campaign['reused']==0 and campaign['old_IVP_reruns']==0)\n    def comparisons(case,rightkind):\n        a=data[case+'_mao2017_nominal'];b=data[case+'_'+rightkind]\n        check('pair_same_x',same(a['x'],b['x']),case+'__'+rightkind)\n        check('pair_same_initial_state',same(a['initial_state'],b['initial_state']),case+'__'+rightkind)\n        fractions={}\n        for group,ii in atom.isotope_groups.items():\n            if group in ('n','T'):continue\n            aa=a['Y'][:,list(ii)];bb=b['Y'][:,list(ii)]; fa=aa/aa.sum(axis=1)[:,None];fb=bb/bb.sum(axis=1)[:,None]\n            fractions[group]=maximum_difference(fa,fb)\n        r=dict(case=case,right=rightkind,sign_convention='right minus Mao nominal',same_initial_state_byte_exact=same(a['initial_state'],b['initial_state']),\n            max_abs_delta_logT=maximum_difference(a['raw_state'][:,62],b['raw_state'][:,62]),\n            max_abs_delta_T_K=maximum_difference(a['T_K'],b['T_K']),end_delta_T_K=float(b['T_K'][-1]-a['T_K'][-1]),\n            max_abs_delta_conditional_ionic_fraction=max(fractions.values()),conditional_fraction_differences=fractions,\n            max_abs_delta_signed_stress=maximum_difference(a['signed_observables'][:,1:],b['signed_observables'][:,1:]),\n            max_abs_delta_signed_shear=maximum_difference(a['signed_observables'][:,0],b['signed_observables'][:,0]),\n            signed_observable_maxima=np.max(abs(b['signed_observables']-a['signed_observables']),axis=0),\n            max_abs_delta_tau=maximum_difference(a['raw_state'][:,61],b['raw_state'][:,61]),end_delta_tau=float(b['raw_state'][-1,61]-a['raw_state'][-1,61]))\n        if rightkind=='mao2017_refined':\n            r['frozen_gates']=dict(logT=r['max_abs_delta_logT']<3e-5,conditional_ionic_fraction=r['max_abs_delta_conditional_ionic_fraction']<3e-5,\n                signed_stress=r['max_abs_delta_signed_stress']<3e-7,tau=r['max_abs_delta_tau']<3e-7)\n            for k,v in r['frozen_gates'].items():check('refinement_'+k,v,case)\n        else:r['scope']='Source/closure sensitivity; no probability or physical-accuracy interpretation.'\n        return r\n    review['nominal_refined_comparisons']=[comparisons(c,'mao2017_refined') for c in ('s03_m03_r03','s04_m04_r04')]\n    review['mao_rate_derivative_comparisons']=[comparisons(c,'rate_derivative_nominal') for c in ('s03_m03_r03','s04_m04_r04')]\n    resource_keys=('wall_seconds','own_cpu_seconds','nfev','njev','nlu','rhs_calls','jac_calls')\n    review['resource_review']=dict(sum_reported_case_resources={k:sum(r[k] for r in records.values()) for k in resource_keys},\n        campaign_wall_seconds=campaign['wall_seconds'],max_case_wall_seconds=max(r['wall_seconds'] for r in records.values()),\n        case_wall_limit_seconds=240,campaign_wall_limit_seconds=1200,runner_serial=True,runner_declares_one_BLAS_OMP_thread=True,\n        all_reported_cases_below_wall_cap=all(r['wall_seconds']<240 for r in records.values()),campaign_below_wall_cap=campaign['wall_seconds']<1200,\n        measured_peak_memory_persisted=False,hard_per_case_memory_limit_recorded=False,\n        scope='Function evaluation and CPU/wall counts are runner-reported and cross-checked for internal consistency; no independent process telemetry was retained.')\n    check('resource_wall_caps',review['resource_review']['all_reported_cases_below_wall_cap'] and review['resource_review']['campaign_below_wall_cap'])\n    review['tracked_files_unchanged_after_review']=all(sha(p)==h for p,h in tracked.items())\n    check('tracked_files_unchanged_after_review',review['tracked_files_unchanged_after_review'])\n    review['limitations']=[\n        'All population, isotope, angular and trace-energy gates are finite checks on 109 saved t_eval samples per case, not assertions about every internal accepted BDF step or the continuous solution.',\n        'The 129-angle reconstructed positivity diagnostic is finite in angle; it is not an all-angle positivity theorem.',\n        'Dense 513/1025-node quadrature arrays and the BDF dense interpolant were not saved. Residual arithmetic and independent endpoint energies are checked, while dense integrals remain runner-reported.',\n        'Two nominal/refined comparisons establish agreement at these two restarts and saved nodes. They do not establish global convergence of the model or the four-case family.',\n        'Algebraic source conservation and identical rate ownership do not establish physical accuracy of the cooling fits, hybrid Mao closure, single-step lithium escape model, or omitted processes.',\n        'Initial geometry, isotope populations and accumulated optical depth are exact saved donor bytes at node84 (z about7.9637). Earlier z20-to-restart history remains the prescribed-temperature donor history.',\n        'Peak RSS or hard memory-limit telemetry was not persisted; resource claims are limited to declared thread settings, serial execution and reported counts/timing.',\n        'Reviewer authored the shared recombination-moment dependency and saved126 postprocessor. Review independence applies to coupled thermal sources/system, runner, raw-result readback and comparisons.'\n    ]\n    review['status']='PASS_WITH_EVIDENCE_LIMITATIONS' if not failures else 'FINDINGS_REQUIRE_REVIEW'\nexcept Exception as exc:\n    import traceback\n    review['status']='REVIEW_ERROR';review['error']=repr(exc);review['traceback']=traceback.format_exc()\nfinally:\n    review['review_wall_seconds']=time.perf_counter()-started\n    review['review_script_sha256']=sha(__file__)\n    review['review_script_source']=Path(__file__).read_text()\n    OUT.write_text(json.dumps(review,indent=2,allow_nan=False,default=plain)+'\\n')\n    print(json.dumps({k:review.get(k) for k in ('status','failures','nominal_refined_comparisons','mao_rate_derivative_comparisons','resource_review','review_wall_seconds')},indent=2,default=plain))\n",
+  "original_review_before_arithmetic_resolution": {
+    "status": "FINDINGS_REQUIRE_REVIEW",
+    "sha256": "85865642d1266a360c75ba6d75475ebb7160a72f9717362c3bab0d6e3b88273a",
+    "findings": [
+      {
+        "check": "declared_metric_max_baryon_error",
+        "case": "s02_m04_r01_mao2017_nominal",
+        "details": {
+          "recomputed": 3.3306690738754696e-16,
+          "declared": 4.440892098500626e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_baryon_error",
+        "case": "s03_m03_r03_mao2017_nominal",
+        "details": {
+          "recomputed": 4.440892098500626e-16,
+          "declared": 5.551115123125783e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_einstein_constraint",
+        "case": "s03_m03_r03_mao2017_nominal",
+        "details": {
+          "recomputed": 3.8876721204554006e-16,
+          "declared": 3.997893203888665e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_baryon_error",
+        "case": "s03_m03_r03_mao2017_refined",
+        "details": {
+          "recomputed": 4.440892098500626e-16,
+          "declared": 6.661338147750939e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_einstein_constraint",
+        "case": "s03_m03_r03_mao2017_refined",
+        "details": {
+          "recomputed": 4.3131956226501057e-16,
+          "declared": 4.0982528516109413e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_baryon_error",
+        "case": "s03_m03_r03_rate_derivative_nominal",
+        "details": {
+          "recomputed": 3.3306690738754696e-16,
+          "declared": 4.440892098500626e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_baryon_error",
+        "case": "s04_m04_r04_mao2017_nominal",
+        "details": {
+          "recomputed": 5.551115123125783e-16,
+          "declared": 6.661338147750939e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_einstein_constraint",
+        "case": "s04_m04_r04_mao2017_nominal",
+        "details": {
+          "recomputed": 4.3108150029582804e-16,
+          "declared": 4.3450115999128126e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_einstein_constraint",
+        "case": "s04_m04_r04_mao2017_refined",
+        "details": {
+          "recomputed": 5.03294811181523e-16,
+          "declared": 3.7747110838614224e-16
+        }
+      },
+      {
+        "check": "declared_metric_max_einstein_constraint",
+        "case": "s04_m04_r04_rate_derivative_nominal",
+        "details": {
+          "recomputed": 4.3742932910769346e-16,
+          "declared": 3.8274978422068564e-16
+        }
+      }
+    ]
+  },
+  "arithmetic_reproduction_review": {
+    "method": "Targeted same-expression and original NPZ-memory-order reproduction only; no ODE, no physical threshold adjustment.",
+    "script_sha256": "68a5a8502f81413f4e427c7b2002fe264d2b5335b09319ca03b542035aeaa858",
+    "script_source": "import os\nfor k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):os.environ[k]='1'\nfrom pathlib import Path\nimport sys,json,hashlib\nimport numpy as np\nR=Path('/workspace/scratch/4389c03f19a6/rec_bianchi')\nU=R/'research/rec_thermal_moments_20261022';D=R/'research/rec_rei_hheli_sandbox_20261021'\nsys.path.insert(0,str(D/'code'))\nfrom atomic_network import AtomicNetwork\nfrom geometry import Geometry\np=U/'evidence/IMPLEMENTATION_RESULTS_REVIEW.json'\na=json.loads(p.read_text()); original_sha=hashlib.sha256(p.read_bytes()).hexdigest()\natom=AtomicNetwork(); resolutions=[]\nfor finding in a['failures']:\n    label=finding['case'];case='_'.join(label.split('_')[:3])\n    record=json.loads((U/'results/thermal8'/label/'RESULT.json').read_text())\n    with np.load(U/'results/thermal8'/label/'trajectory.npz',allow_pickle=False) as z:\n        if finding['check']=='declared_metric_max_baryon_error':\n            Y=z['Y']; val=float(np.max(abs(Y@atom.A-1)))\n            detail=dict(stored_Y_C_contiguous=bool(Y.flags.c_contiguous),stored_Y_F_contiguous=bool(Y.flags.f_contiguous),\n                original_reviewer_C_copy_value=finding['details']['recomputed'],preserving_NPZ_layout_value=val,\n                explanatory_operation='Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.',\n                declared=record['max_baryon_error'],exact_reproduction=val==record['max_baryon_error'])\n        elif finding['check']=='declared_metric_max_einstein_constraint':\n            config=json.loads((D/'results/pilot_v2/cases'/case/'RESULT.json').read_text())['config']\n            g=Geometry(config['Sigma_F'],config['matter_A'],config['radiation_A'],config.get('backend','prepared'))\n            values=[]\n            for xx,raw in zip(z['x'],z['raw_state']):\n                f=g.fields(float(xx),raw[:40]);lhs=3*f['H']**2\n                rhs=3*g.source.h0**2*(f['dust_energy_norm']+f['massive_energy_norm']+f['rad_energy_norm']+g.source.omega_lambda)+3*f['s']**2\n                values.append(abs(lhs-rhs)/lhs)\n            val=max(values)\n            detail=dict(original_reviewer_multiplied_H_value=finding['details']['recomputed'],runner_exact_expression_value=val,\n                explanatory_operation='Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.',\n                declared=record['max_einstein_constraint'],exact_reproduction=val==record['max_einstein_constraint'])\n        else: detail=dict(exact_reproduction=False)\n    resolutions.append(dict(original_finding=finding,classification='FLOATING_POINT_EVALUATION_ORDER' if detail['exact_reproduction'] else 'UNRESOLVED',**detail))\na['original_review_before_arithmetic_resolution']=dict(status=a['status'],sha256=original_sha,findings=a['failures'])\na['arithmetic_reproduction_review']=dict(method='Targeted same-expression and original NPZ-memory-order reproduction only; no ODE, no physical threshold adjustment.',\n    script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),script_source=Path(__file__).read_text(),resolutions=resolutions)\na['failures']=[r['original_finding'] for r in resolutions if not r['exact_reproduction']]\na['status']='PASS_WITH_EVIDENCE_LIMITATIONS' if not a['failures'] else 'FINDINGS_REQUIRE_REVIEW'\na['limitations'].append('Initial independent operation ordering produced ten last-bit scalar-summary differences around 1e-16; every difference was preserved and then exactly reproduced using runner expression ordering and original Fortran NPZ layout. No gate tolerance changed.')\np.write_text(json.dumps(a,indent=2,allow_nan=False,default=lambda v:v.item())+'\\n')\nprint(json.dumps(dict(status=a['status'],resolutions=resolutions),indent=2,default=lambda v:v.item()))\n",
+    "resolutions": [
+      {
+        "original_finding": {
+          "check": "declared_metric_max_baryon_error",
+          "case": "s02_m04_r01_mao2017_nominal",
+          "details": {
+            "recomputed": 3.3306690738754696e-16,
+            "declared": 4.440892098500626e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "stored_Y_C_contiguous": false,
+        "stored_Y_F_contiguous": true,
+        "original_reviewer_C_copy_value": 3.3306690738754696e-16,
+        "preserving_NPZ_layout_value": 4.440892098500626e-16,
+        "explanatory_operation": "Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.",
+        "declared": 4.440892098500626e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_baryon_error",
+          "case": "s03_m03_r03_mao2017_nominal",
+          "details": {
+            "recomputed": 4.440892098500626e-16,
+            "declared": 5.551115123125783e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "stored_Y_C_contiguous": false,
+        "stored_Y_F_contiguous": true,
+        "original_reviewer_C_copy_value": 4.440892098500626e-16,
+        "preserving_NPZ_layout_value": 5.551115123125783e-16,
+        "explanatory_operation": "Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.",
+        "declared": 5.551115123125783e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_einstein_constraint",
+          "case": "s03_m03_r03_mao2017_nominal",
+          "details": {
+            "recomputed": 3.8876721204554006e-16,
+            "declared": 3.997893203888665e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "original_reviewer_multiplied_H_value": 3.8876721204554006e-16,
+        "runner_exact_expression_value": 3.997893203888665e-16,
+        "explanatory_operation": "Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.",
+        "declared": 3.997893203888665e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_baryon_error",
+          "case": "s03_m03_r03_mao2017_refined",
+          "details": {
+            "recomputed": 4.440892098500626e-16,
+            "declared": 6.661338147750939e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "stored_Y_C_contiguous": false,
+        "stored_Y_F_contiguous": true,
+        "original_reviewer_C_copy_value": 4.440892098500626e-16,
+        "preserving_NPZ_layout_value": 6.661338147750939e-16,
+        "explanatory_operation": "Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.",
+        "declared": 6.661338147750939e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_einstein_constraint",
+          "case": "s03_m03_r03_mao2017_refined",
+          "details": {
+            "recomputed": 4.3131956226501057e-16,
+            "declared": 4.0982528516109413e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "original_reviewer_multiplied_H_value": 4.3131956226501057e-16,
+        "runner_exact_expression_value": 4.0982528516109413e-16,
+        "explanatory_operation": "Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.",
+        "declared": 4.0982528516109413e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_baryon_error",
+          "case": "s03_m03_r03_rate_derivative_nominal",
+          "details": {
+            "recomputed": 3.3306690738754696e-16,
+            "declared": 4.440892098500626e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "stored_Y_C_contiguous": false,
+        "stored_Y_F_contiguous": true,
+        "original_reviewer_C_copy_value": 3.3306690738754696e-16,
+        "preserving_NPZ_layout_value": 4.440892098500626e-16,
+        "explanatory_operation": "Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.",
+        "declared": 4.440892098500626e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_baryon_error",
+          "case": "s04_m04_r04_mao2017_nominal",
+          "details": {
+            "recomputed": 5.551115123125783e-16,
+            "declared": 6.661338147750939e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "stored_Y_C_contiguous": false,
+        "stored_Y_F_contiguous": true,
+        "original_reviewer_C_copy_value": 5.551115123125783e-16,
+        "preserving_NPZ_layout_value": 6.661338147750939e-16,
+        "explanatory_operation": "Reviewer collect() made C-order .copy(); NPZ and runner Y use Fortran order. BLAS reduction order changes the last bit.",
+        "declared": 6.661338147750939e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_einstein_constraint",
+          "case": "s04_m04_r04_mao2017_nominal",
+          "details": {
+            "recomputed": 4.3108150029582804e-16,
+            "declared": 4.3450115999128126e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "original_reviewer_multiplied_H_value": 4.3108150029582804e-16,
+        "runner_exact_expression_value": 4.3450115999128126e-16,
+        "explanatory_operation": "Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.",
+        "declared": 4.3450115999128126e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_einstein_constraint",
+          "case": "s04_m04_r04_mao2017_refined",
+          "details": {
+            "recomputed": 5.03294811181523e-16,
+            "declared": 3.7747110838614224e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "original_reviewer_multiplied_H_value": 5.03294811181523e-16,
+        "runner_exact_expression_value": 3.7747110838614224e-16,
+        "explanatory_operation": "Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.",
+        "declared": 3.7747110838614224e-16,
+        "exact_reproduction": true
+      },
+      {
+        "original_finding": {
+          "check": "declared_metric_max_einstein_constraint",
+          "case": "s04_m04_r04_rate_derivative_nominal",
+          "details": {
+            "recomputed": 4.3742932910769346e-16,
+            "declared": 3.8274978422068564e-16
+          }
+        },
+        "classification": "FLOATING_POINT_EVALUATION_ORDER",
+        "original_reviewer_multiplied_H_value": 4.3742932910769346e-16,
+        "runner_exact_expression_value": 3.8274978422068564e-16,
+        "explanatory_operation": "Independent reviewer used 3*H*H; runner uses 3*H**2. Floating point association changes the last bit.",
+        "declared": 3.8274978422068564e-16,
+        "exact_reproduction": true
+      }
+    ]
+  },
+  "source_vs_refinement_resolution": [
+    {
+      "case": "s03_m03_r03",
+      "source_difference_over_refinement_difference": {
+        "max_abs_delta_logT": 462.54699709759205,
+        "max_abs_delta_T_K": 1037.9372915040274,
+        "max_abs_delta_conditional_ionic_fraction": 420.9434245269978,
+        "max_abs_delta_signed_stress": 0.22375988195481425,
+        "max_abs_delta_signed_shear": 0.0010096486482566148,
+        "max_abs_delta_tau": 81.99352096414762
+      },
+      "stress_scope": "Closure-induced stress-only difference is below the observed nominal/refined stress-only difference for this pair; a resolved thermal effect on signed stress is not established.",
+      "uncertainty_scope": "Ratios compare finite-run differences; the refinement difference is not a certified error bound."
+    },
+    {
+      "case": "s04_m04_r04",
+      "source_difference_over_refinement_difference": {
+        "max_abs_delta_logT": 462.40640082231727,
+        "max_abs_delta_T_K": 1040.9536311075146,
+        "max_abs_delta_conditional_ionic_fraction": 421.9184850052089,
+        "max_abs_delta_signed_stress": 0.6156456182088267,
+        "max_abs_delta_signed_shear": 0.0002919509628026577,
+        "max_abs_delta_tau": 85.45798085600144
+      },
+      "stress_scope": "Closure-induced stress-only difference is below the observed nominal/refined stress-only difference for this pair; a resolved thermal effect on signed stress is not established.",
+      "uncertainty_scope": "Ratios compare finite-run differences; the refinement difference is not a certified error bound."
+    }
+  ],
+  "summary": {
+    "cases": 8,
+    "saved_states": 872,
+    "all_declared_trajectory_hashes_and_sizes_verified": true,
+    "all_exact_stored_restarts_verified": true,
+    "all_frozen_gates_pass": true,
+    "max_independent_diagnostic_field_relative_difference": 6.7231962069927525e-15,
+    "max_source_energy_residual": 3.947658197262126e-16,
+    "max_isotope_scaled_error": 1.6718591883534574e-15,
+    "max_independent_baryon_error": 1.1102230246251565e-15,
+    "max_independent_einstein_constraint": 5.03294811181523e-16,
+    "min_scaled_population": 0.0,
+    "max_abs_n_T": 0.0,
+    "max_abs_nuclear_decay_source": 0.0,
+    "max_scaled_baryon_source_residual": 9.482272573602292e-17,
+    "max_scaled_isotope_source_residual": 2.3688875614672888e-17,
+    "min_angular_weight": 0.39028893157787825,
+    "max_trace_energy_fraction": 2.187657566806383e-08,
+    "temperature_min_K": 1081.3197799717439,
+    "temperature_max_K": 14177.029709642544,
+    "max_runner_reported_dense1025_energy_residual": 8.545196162535436e-06,
+    "max_runner_reported_513_to1025_net_grid_delta_scaled": 4.101008552211857e-05,
+    "max_independently_computed_saved109_energy_residual": 0.0005907871336431976,
+    "dense_samples_persisted": false,
+    "initial_scalar_roundoff_findings": 10,
+    "unresolved_findings": 0,
+    "tolerance_changes": 0
+  },
+  "review_writer_note": "The targeted roundoff resolution first encountered a JSON numpy-bool serialization error before any file write. Scalar serialization was corrected; original evidence remained intact. No numerical computation or tolerance changed."
+}

@@ -1,0 +1,622 @@
+{
+  "schema": "rec.thermal.phys_math.results_review.v1",
+  "created_utc": "2026-10-22T02:28:09.631271+00:00",
+  "reviewer": "thermal_physics independent theory/source agent",
+  "status": "PASS_SCOPED_WITH_EVIDENCE_LIMITATIONS",
+  "reviewer_new_integrations": 0,
+  "reviewer_old_IVP_reruns": 0,
+  "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+  "independence": "Reviewer did not author runtime modules, the runner, saved126 postprocessor, plotting/analysis code or numerical comparison reviewer. This review separately reconstructed thermal/escape/charge/energy algebra from stored arrays and recomputed saved126 quadratures.",
+  "reviewed_files_sha256": {
+    "THEORY_KO.md": "c5e3eb24fa6a2538404e4e25fa73251b325761d0917d845ff78230fe31908742",
+    "evidence/PHYS_MATH_PRE_RUN_REVIEW.json": "8a4b766617346207814764b68db5f37494f1305c77f049e58aa8680625d4194a",
+    "evidence/IMPLEMENTATION_RESULTS_REVIEW.json": "6afa4a9af09b7b73b3f9d2d68915adb8a001417c847f6743118d790716548782",
+    "results/analysis/SUMMARY.json": "a561429e4c93d2123c54828d9214f87d75b95cb8ae6fb4373ab53e83ebdac735",
+    "results/saved126/SUMMARY.json": "8a1cec2b57b467019c540c7e634093009c0e2f2f49d1cfca27b18574deabebb2",
+    "results/saved126/INPUTS.json": "9beb1e4dd5c1d6241472b7480e58f05895f2200671d5a8b09771d797e0daaef6",
+    "results/saved126/histories.npz": "7bbe8870ad3f2727c9ac1f28334765f3c3b1a0181d1d2b2b27cf45e791d7c043",
+    "results/thermal8/CAMPAIGN_1792635619741592155.json": "0015dc562072823817a9b52f409a93af104aaa4cfe5d72da1fcba6c626f7927a"
+  },
+  "campaign": {
+    "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+    "new_integrations": 8,
+    "reused": 0,
+    "old_IVP_reruns": 0,
+    "wall_seconds": 71.97645228299916,
+    "results": [
+      {
+        "label": "s00_m02_r02_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s02_m04_r01_mao2017_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_mao2017_refined",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_mao2017_refined",
+        "state": "new_complete"
+      },
+      {
+        "label": "s03_m03_r03_rate_derivative_nominal",
+        "state": "new_complete"
+      },
+      {
+        "label": "s04_m04_r04_rate_derivative_nominal",
+        "state": "new_complete"
+      }
+    ]
+  },
+  "independently_recomputed_new8": [
+    {
+      "label": "s00_m02_r02_mao2017_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de",
+      "trajectory_hash_matches": true,
+      "result_sha256": "b4e5637847d34894cff9827dab412f92b4bd8f856cbb8e53b5648514386a41d1",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.553173927281097e-16,
+      "max_energy_diagnostic_relative_difference": 4.059807684527961e-16,
+      "max_charge_relative_difference": 3.031843385380035e-16,
+      "kinetic_ledger_max_scaled_residual": 7.775406115181985e-17,
+      "escape_ledger_max_scaled_residual": 8.588590960834123e-17,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10119.075675409322,
+      "temperature_peak_saved_K": 14177.029709642544,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 997.285380256627,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.1567405773798961,
+      "min_recombination_loss_W_m3": 2.0361523244932396e-36,
+      "min_escape_W_m3": 7.7711755539546e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4688354601053297,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.954702033111351e-05,
+          "reported_residual": 4.954702033111351e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.536061699062032e-06,
+          "reported_residual": 8.536061699062032e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 16.5131049470001
+    },
+    {
+      "label": "s02_m04_r01_mao2017_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8",
+      "trajectory_hash_matches": true,
+      "result_sha256": "7f48be1dea97045126c4a4bdc337f617e6f56b4474be9bcf75f84bfc828bb3b2",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.8307400641975996e-16,
+      "max_energy_diagnostic_relative_difference": 2.999693534992145e-16,
+      "max_charge_relative_difference": 3.031843385482935e-16,
+      "kinetic_ledger_max_scaled_residual": 6.594794187411105e-17,
+      "escape_ledger_max_scaled_residual": 8.217943787279382e-17,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10119.069057893546,
+      "temperature_peak_saved_K": 14177.00409648051,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 997.2737948762389,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.1567411288415821,
+      "min_recombination_loss_W_m3": 2.0361519906193096e-36,
+      "min_escape_W_m3": 7.771178922662343e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4688356315399917,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.954649940030009e-05,
+          "reported_residual": 4.954649940030009e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.535921695310186e-06,
+          "reported_residual": 8.535921695310186e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 4.309436515000016
+    },
+    {
+      "label": "s03_m03_r03_mao2017_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "trajectory_hash_matches": true,
+      "result_sha256": "a36d74ab59fdd30fa4018acbab820f1d848f0793270178960498779996a95526",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.23424866932316e-16,
+      "max_energy_diagnostic_relative_difference": 2.7549547305774514e-16,
+      "max_charge_relative_difference": 4.034919350675473e-16,
+      "kinetic_ledger_max_scaled_residual": 7.316789322368752e-17,
+      "escape_ledger_max_scaled_residual": 1.2681574561987535e-16,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10118.948508588535,
+      "temperature_peak_saved_K": 14176.447240327188,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 997.0013907947651,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.1567511746541248,
+      "min_recombination_loss_W_m3": 2.0361459085011766e-36,
+      "min_escape_W_m3": 7.771240290041747e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4688464359995117,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.953447401116732e-05,
+          "reported_residual": 4.9534474011133964e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.532696595439127e-06,
+          "reported_residual": 8.532696595405777e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 7.507839952999348
+    },
+    {
+      "label": "s03_m03_r03_mao2017_refined",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+      "trajectory_hash_matches": true,
+      "result_sha256": "d3d32d495f178198c06663373fe33b5cff750270e792a1db735d38ef9ad10e56",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 3.2017854087683997e-16,
+      "max_energy_diagnostic_relative_difference": 2.840006875676477e-16,
+      "max_charge_relative_difference": 3.0875690775929363e-16,
+      "kinetic_ledger_max_scaled_residual": 8.935026724615884e-17,
+      "escape_ledger_max_scaled_residual": 1.369173710468777e-16,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10118.94877118533,
+      "temperature_peak_saved_K": 14176.447839355818,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 997.0013907933121,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.15675115277097762,
+      "min_recombination_loss_W_m3": 2.0361459217501728e-36,
+      "min_escape_W_m3": 7.77124015636192e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.468846493514064,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.9546808020682234e-05,
+          "reported_residual": 4.9546808020715587e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.545196162502085e-06,
+          "reported_residual": 8.545196162535436e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 5.097194676000072
+    },
+    {
+      "label": "s03_m03_r03_rate_derivative_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+      "trajectory_hash_matches": true,
+      "result_sha256": "50f126e62f1c3151ae80199b86e4724cc5fc097d12c2405736b2c58ef34b8078",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.8873566998538643e-16,
+      "max_energy_diagnostic_relative_difference": 2.940866633466881e-16,
+      "max_charge_relative_difference": 3.376149902712211e-16,
+      "kinetic_ledger_max_scaled_residual": 6.752643493945166e-17,
+      "escape_ledger_max_scaled_residual": 1.5023232002370587e-16,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10117.088297850441,
+      "temperature_peak_saved_K": 14173.86582874357,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 997.0013907947642,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.15690619278851514,
+      "min_recombination_loss_W_m3": 2.041995964094664e-36,
+      "min_escape_W_m3": 7.772781802210097e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4684390094997046,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.952742606612125e-05,
+          "reported_residual": 4.95274260660879e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.531470176093322e-06,
+          "reported_residual": 8.531470176059976e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 6.599831515000005
+    },
+    {
+      "label": "s04_m04_r04_mao2017_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "trajectory_hash_matches": true,
+      "result_sha256": "6ed868b281b974f1201a3f30d5a11435bb18d5637f03a6c104fd1b5bce58e830",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.7237339160632084e-16,
+      "max_energy_diagnostic_relative_difference": 2.7550434017068164e-16,
+      "max_charge_relative_difference": 3.796982790864815e-16,
+      "kinetic_ledger_max_scaled_residual": 8.610396621250628e-17,
+      "escape_ledger_max_scaled_residual": 8.346070320194477e-17,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10116.846480782347,
+      "temperature_peak_saved_K": 14167.031370243054,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 992.5366852765794,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.1569263442853278,
+      "min_recombination_loss_W_m3": 2.0360398428345352e-36,
+      "min_escape_W_m3": 7.772310551658661e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4690098282830557,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.9333565540546024e-05,
+          "reported_residual": 4.933356554051265e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.478721765974201e-06,
+          "reported_residual": 8.478721765940832e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 5.084440873000858
+    },
+    {
+      "label": "s04_m04_r04_mao2017_refined",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+      "trajectory_hash_matches": true,
+      "result_sha256": "4349b6fd76fdd3e2bf96bdab563bb288cc554e891bcf9c1c06a66df4b6055c08",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.3690642300152097e-16,
+      "max_energy_diagnostic_relative_difference": 4.097569469655654e-16,
+      "max_charge_relative_difference": 4.159431050654797e-16,
+      "kinetic_ledger_max_scaled_residual": 6.766670342049753e-17,
+      "escape_ledger_max_scaled_residual": 7.211632377341282e-17,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10116.8467523213,
+      "temperature_peak_saved_K": 14167.031966208237,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 992.53668527514,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.15692632165699816,
+      "min_recombination_loss_W_m3": 2.0360398565373933e-36,
+      "min_escape_W_m3": 7.77231041337883e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4690098877558153,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.934597598776653e-05,
+          "reported_residual": 4.934597598776653e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.491295515022043e-06,
+          "reported_residual": 8.491295515022043e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 20.781217101999573
+    },
+    {
+      "label": "s04_m04_r04_rate_derivative_nominal",
+      "status": "COMPLETE",
+      "all_reported_gates": true,
+      "trajectory_sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+      "trajectory_hash_matches": true,
+      "result_sha256": "f07d46659090529847673bfb3acd6f00ba003f3af235b1ca2a20c2eef7984a61",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "saved_samples": 109,
+      "shape": [
+        109,
+        63
+      ],
+      "finite_saved": true,
+      "exact_donor_initial62": true,
+      "exact_donor_grid": true,
+      "initial_n_T_exact_zero": true,
+      "saved_n_T_exact_zero": true,
+      "max_source_energy_residual": 2.9779057389197563e-16,
+      "max_energy_diagnostic_relative_difference": 2.866859322106559e-16,
+      "max_charge_relative_difference": 3.069637308208273e-16,
+      "kinetic_ledger_max_scaled_residual": 7.195769495103159e-17,
+      "escape_ledger_max_scaled_residual": 7.55899824732694e-17,
+      "temperature_min_K": 1081.3197799717439,
+      "temperature_end_K": 10114.987175459044,
+      "temperature_peak_saved_K": 14164.45299919549,
+      "temperature_peak_saved_z": 4.976223219489846,
+      "temperature_peak_saved_elapsed_Myr": 992.536685276579,
+      "temperature_peak_sample": 40,
+      "temperature_initial_K": 1081.3197799717439,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "endpoint_fractional_temperature_difference": -0.1570812869682069,
+      "min_recombination_loss_W_m3": 2.0418898755558274e-36,
+      "min_escape_W_m3": 7.773851922084296e-35,
+      "endpoint_energy_change_eV_per_baryon": 3.4686026000296866,
+      "energy_receipt_arithmetic": {
+        "513": {
+          "recomputed_residual": 4.932654741133853e-05,
+          "reported_residual": 4.932654741133853e-05,
+          "endpoint_delta_matches": true
+        },
+        "1025": {
+          "recomputed_residual": 8.477502851900732e-06,
+          "reported_residual": 8.477502851900732e-06,
+          "endpoint_delta_matches": true
+        }
+      },
+      "wall_seconds": 6.038445551999757
+    }
+  ],
+  "independently_recomputed_saved126": {
+    "shape": [
+      126,
+      193
+    ],
+    "main_count": 125,
+    "control_count": 1,
+    "Qext_definition_max_scaled_residual": 2.268279625865583e-16,
+    "main_integral_eV_per_baryon_range": [
+      -19.720704913309493,
+      -19.6551411692816
+    ],
+    "max_abs_193_minus97_eV_per_baryon": 0.00010152476897928864,
+    "representative_net_eV_per_baryon": -19.71689393923077,
+    "representative_positive_part_eV_per_baryon": 0.787977102046821,
+    "representative_negative_part_eV_per_baryon": -20.50487104127759,
+    "negative_saved_main_nodes": 12350,
+    "histories_sha256": "7bbe8870ad3f2727c9ac1f28334765f3c3b1a0181d1d2b2b27cf45e791d7c043",
+    "representative_integrals_eV_per_baryon": {
+      "Qrequired": 7.772840292655079,
+      "photo_primary": 28.314723804024815,
+      "rr_cooling": 0.8249895721389687,
+      "dr_cooling": 1.0276930645303675e-16,
+      "core_escape": 2.030591906786153e-09
+    }
+  },
+  "numerical_comparison_source": "Raw-NPZ independent recomputation is in evidence/IMPLEMENTATION_RESULTS_REVIEW.json; comparison summary below was cross-checked against that review, not treated as physical uncertainty.",
+  "finite_comparisons": [
+    {
+      "a": "s03_m03_r03_mao2017_nominal",
+      "b": "s03_m03_r03_mao2017_refined",
+      "kind": "refinement",
+      "max_abs": {
+        "lnT": 4.1814042361920656e-07,
+        "ionic": 3.403056947607022e-08,
+        "signed": 1.2663678734120554e-09,
+        "tau": 3.4425462480669466e-11
+      },
+      "final_T_difference_K": -0.00026259679543727543,
+      "final_tau_difference": -3.4425462480669466e-11,
+      "status": "PASS"
+    },
+    {
+      "a": "s03_m03_r03_mao2017_nominal",
+      "b": "s03_m03_r03_rate_derivative_nominal",
+      "kind": "source",
+      "max_abs": {
+        "lnT": 0.00019340959731017904,
+        "ionic": 1.4324944639862093e-05,
+        "signed": 1.2785866115860856e-12,
+        "tau": 2.822664879609249e-09
+      },
+      "final_T_difference_K": 1.8602107380938833,
+      "final_tau_difference": 2.822664879609249e-09,
+      "status": "SOURCE_SENSITIVITY"
+    },
+    {
+      "a": "s04_m04_r04_mao2017_nominal",
+      "b": "s04_m04_r04_mao2017_refined",
+      "kind": "refinement",
+      "max_abs": {
+        "lnT": 4.181148884896402e-07,
+        "ionic": 3.392046241565027e-08,
+        "signed": 4.989189679449613e-09,
+        "tau": 3.2956123940941495e-11
+      },
+      "final_T_difference_K": -0.0002715389528020751,
+      "final_tau_difference": -3.2956123940941495e-11,
+      "status": "PASS"
+    },
+    {
+      "a": "s04_m04_r04_mao2017_nominal",
+      "b": "s04_m04_r04_rate_derivative_nominal",
+      "kind": "source",
+      "max_abs": {
+        "lnT": 0.00019333900071671906,
+        "ionic": 1.431167012202439e-05,
+        "signed": 1.4565987305203976e-12,
+        "tau": 2.816363808832989e-09
+      },
+      "final_T_difference_K": 1.859305323303488,
+      "final_tau_difference": 2.816363808832989e-09,
+      "status": "SOURCE_SENSITIVITY"
+    }
+  ],
+  "physical_interpretation": {
+    "thermal_forcing": {
+      "definition": "Qext=Qrequired-Qprimary+QRR+QDR; integral dx/(nb H) along the old prescribed z20-to2 trajectory.",
+      "signed_meaning": "A negative cumulative value is a required net external thermal sink. It is not a negative particle density, negative gas energy, solver failure, or the heat removed on the new restart.",
+      "main_range_eV_per_baryon": [
+        -19.720704913309493,
+        -19.6551411692816
+      ],
+      "representative_identity_eV_per_baryon": "7.772840292655079 - 28.314723804024815 + 0.8249895721389687 + 1.0276930645303675e-16 = -19.71689393923077",
+      "coarsening": "The maximum 193-minus97 difference about1.01525e-4 eV/baryon is a finite stored-grid diagnostic, not a rigorous continuous quadrature error bound."
+    },
+    "new_temperature": {
+      "primary_end_range_K": [
+        10116.846480782347,
+        10119.075675409322
+      ],
+      "primary_saved_peak_range_K": [
+        14167.031370243054,
+        14177.029709642544
+      ],
+      "primary_saved_peak_z": 4.976223219489846,
+      "parent_prescribed_end_K": 11999.955652992518,
+      "interpretation": "The dynamic path first heats above the old final temperature and then cools. Its lower endpoint does not imply a uniformly cooler history. These are sampled maxima, not continuous extrema."
+    },
+    "source_sensitivity": {
+      "temperature_ions_tau": "Mao-vs-rate-derivative differences exceed the observed primary nominal/refined differences for lnT, ionic fractions and tau on the selected stored grids; this is a finite comparison, not a complete model-error bound.",
+      "geometry_stress": "No resolved source-dependent geometry or stress-response claim. Full six-observable vector includes shear S_F; compare stress-only columns separately. Source stress-only changes are smaller than the corresponding primary refinement stress-only changes.",
+      "stress_only_source_pair_maxima": [
+        5.657734e-14,
+        6.315065e-13
+      ],
+      "stress_only_refinement_pair_maxima": [
+        2.528485e-13,
+        1.025763e-12
+      ],
+      "statistical_status": "Not a confidence interval, stochastic uncertainty or missing-process bound."
+    },
+    "atomic_ownership": {
+      "photo_primary": "Immediate local thermalization is conditional.",
+      "li_core": "Prompt escaping radiation is conditional. Tiny integrated Li core energy does not prove small conditional Li charge-fraction errors from missing branches.",
+      "recombination": "RR/DR kinetic loss and recombination binding escape are separate positive totals on these sampled physical states.",
+      "nuclear": "n/T and inherited nuclear decay sources remain exactly zero on inspected states; no nuclear thermal ownership or REI activation is supplied."
+    },
+    "cosmological_scope": {
+      "restart": "Exact stored donor node84, z7.963732801243163. Earlier z20-to-restart path retains prescribed temperature.",
+      "clock": "elapsed_Myr and optical depth retain the donor z20 cumulative origin.",
+      "test_fluid": "Baryon thermal/binding energy is a test-fluid ledger. External UV and escaping photons are not added to the evolved photon hierarchy. Algebraic gas conservation does not certify a closed Einstein-matter-radiation energy system."
+    }
+  },
+  "energy_evidence": {
+    "max_stored_source_residual": 3.2017854087683997e-16,
+    "max_independent_stored_gas_energy_relative_difference": 4.097569469655654e-16,
+    "max_reported_dense1025_residual": 8.545196162535436e-06,
+    "max_reported_grid513_to1025_delta": 4.101008552211857e-05,
+    "independent_saved109_residual": 0.0005907871336431976,
+    "dense_arrays_persisted": false,
+    "interpretation": "Endpoint gas energy and dense receipt arithmetic were independently verified. Dense513/1025 quadrature cannot be reproduced from archived109 states without the missing interpolant/dense arrays. Coarse109 quadrature is a separate diagnostic and is not substituted for the dense1025 gate."
+  },
+  "unresolved_scientific_requirements": [
+    "Quantify omitted thermal processes on existing saved states using primary source coefficients before deciding whether another coupled closure is needed.",
+    "Supply event-consistent multiple-photoionization/secondary-energy channels if those are activated; total absorption coefficients alone are insufficient.",
+    "Assess full-history and thermal-stress backreaction separately; this finite restart family cannot establish either."
+  ],
+  "blocking_implementation_findings": [],
+  "tolerance_changes_by_reviewer": 0,
+  "scope_limitations": [
+    "Stored-state bounds and finite-angle positivity are not continuum theorems or guarantees for every hidden BDF step.",
+    "Only two paired refinements and two alternate-source restarts were performed.",
+    "No extra ODE, hidden budget reset, or old126 rerun was used for this review.",
+    "Numerical agreement does not establish physical completeness of the selected thermal network."
+  ],
+  "next_science_unit": {
+    "action": "Source-bound omitted thermal-process budget on existing saved8 states, then choose any revised closure under a new explicit contract.",
+    "new_ODE_authorized_by_this_review": false,
+    "reuse_existing_trajectories": true
+  },
+  "retained_holds": {
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "REI_activation": false
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "rec.saved126.thermal.postprocess.receipt.v1",
+  "status": "COMPLETE",
+  "parent_commit": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+  "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 code/postprocess_saved.py",
+  "source_files": [
+    {
+      "path": "rec_thermal_moments_20261022/code/postprocess_saved.py",
+      "bytes": 18045,
+      "sha256": "e05294a210a245e1dee35b9e47ec28b44afcd1fe32588fd83e33951bdec2b1ca"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/code/thermal_sources.py",
+      "bytes": 5939,
+      "sha256": "622bc85b21d819779d98ee2a7645f51deff9a91f7a423872dbe244f5378aa769"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/code/recombination_moments.py",
+      "bytes": 7337,
+      "sha256": "5eb740518d04dcbf123125f3d73a85fa10b48bb3bad6577cdf81459d71a390b0"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/data/mao2017_selected.json",
+      "bytes": 9729,
+      "sha256": "34b5fb8dab049744faa0c6f734ce59f1c72b931b3cf2db298c01156f86d17803"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/data/mao2017_calc.dat",
+      "bytes": 30600,
+      "sha256": "bf7ad20e10ff7045fc83b4c4c4148132c291f315213c5fc7b00ae820c76aa58a"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/data/mao2017_pars.dat",
+      "bytes": 22185,
+      "sha256": "a3c97fdf8101da6d33cc838f7fd4e142bcf3740c37b48d89e76c47ae91575d12"
+    },
+    {
+      "path": "rec_thermal_moments_20261022/provenance/MAO_SOURCE_LOCK.json",
+      "bytes": 850,
+      "sha256": "09257023bc18bc01133389aad3a9796e9dc2bfbc59c643ca9659e849776931b0"
+    },
+    {
+      "path": "rec_rei_hheli_sandbox_20261021/code/atomic_network.py",
+      "bytes": 15617,
+      "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+    },
+    {
+      "path": "rec_rei_hheli_sandbox_20261021/data/atomic_coefficients.json",
+      "bytes": 6086,
+      "sha256": "38397e6b560f463f09a5923eaa5902a24312e5246abc158694451c631cd4d6bc"
+    },
+    {
+      "path": "rec_rei_hheli_sandbox_20261021/data/atomic_model.json",
+      "bytes": 3085,
+      "sha256": "9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614"
+    }
+  ],
+  "source_unchanged_after": true,
+  "main_cases": 125,
+  "control_cases": 1,
+  "stored_nodes": 24318,
+  "new_IVPs": 0,
+  "old_IVP_reruns": 0,
+  "source_residual_max": 3.9985397771218174e-16,
+  "old_ledger_residual_max": 3.55794021691178e-16,
+  "raw_integrity": "126 trajectory byte sizes and SHA256 matched both RESULT and COMPLETE; RESULT SHA256 matched COMPLETE. Historical failed/recovered duplicate paths were not added as cases.",
+  "outputs": [
+    {
+      "path": "results/saved126/ENDPOINTS.csv",
+      "bytes": 60468,
+      "sha256": "cd4ddca5646cce3c33ccb168e6b1804e8007580ae2bad758ba7a6e8a79202f87"
+    },
+    {
+      "path": "results/saved126/INPUTS.json",
+      "bytes": 70819,
+      "sha256": "9beb1e4dd5c1d6241472b7480e58f05895f2200671d5a8b09771d797e0daaef6"
+    },
+    {
+      "path": "results/saved126/REPRESENTATIVE.csv",
+      "bytes": 91600,
+      "sha256": "bb71943359f7fef80a5a327b706a6909bd10801a915d00c3823e633af8c1d620"
+    },
+    {
+      "path": "results/saved126/SUMMARY.json",
+      "bytes": 4704,
+      "sha256": "8a1cec2b57b467019c540c7e634093009c0e2f2f49d1cfca27b18574deabebb2"
+    },
+    {
+      "path": "results/saved126/histories.npz",
+      "bytes": 2429657,
+      "sha256": "7bbe8870ad3f2727c9ac1f28334765f3c3b1a0181d1d2b2b27cf45e791d7c043"
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "wall_s": 4.000065412999902
+}

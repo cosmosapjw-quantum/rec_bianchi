@@ -1,0 +1,46 @@
+{
+  "status": "PASS_SCOPED_VISUAL_REVIEW",
+  "reviewer": "root, independent of analyze_and_plot author",
+  "created_utc": "2026-10-22T02:28:43.149335+00:00",
+  "method": "All five final PNG exports were directly opened with image viewing tools; final05 re-opened after signed-Qext and subthreshold-DR clarification.",
+  "inspected": [
+    {
+      "path": "figures/01_rr_source_factors.png",
+      "bytes": 321929,
+      "sha256": "efc21407a62c18e862c4255f45ae8b06a2cdde551b9a3b4c3ab1954c5bf7c3c5"
+    },
+    {
+      "path": "figures/02_dynamic_temperature.png",
+      "bytes": 271394,
+      "sha256": "de7090eced6570740f94d2c87abf73ca63dcb342ccc932918cfe3b0cfeeb897f"
+    },
+    {
+      "path": "figures/03_ionic_response.png",
+      "bytes": 483648,
+      "sha256": "672bdc1577404f8cbf1fa6e9742324db14a62f4a56e1afecbf0821c3e20918ae"
+    },
+    {
+      "path": "figures/04_source_and_refinement.png",
+      "bytes": 344148,
+      "sha256": "74ead52313bdbb88d26c3f1da6f29e941a1e698c7c8ddb7321cd67b02d090c6e"
+    },
+    {
+      "path": "figures/05_prescribed_bath_forcing.png",
+      "bytes": 230622,
+      "sha256": "8bec9ba2aad41b2666b6e5b46e45cb7e4d4ce20c1b06cb4b8d62c3611f803c0b"
+    }
+  ],
+  "checks": [
+    "titles/units/ticks readable and no clipped labels",
+    "elapsed time explicitly since donor z20; reference clock redshift mapping stated",
+    "temperature alternatives overlap visually but exact comparison figure resolves their small difference",
+    "ionic response includes LiIV largest transient; signed differences retain crossings",
+    "refinement and source sensitivity distinct; signed six-vector includes shear",
+    "source-factor table points and original bath temperature band marked",
+    "Qext retains negative cooling, DR below linear threshold is not called zero"
+  ],
+  "limits": [
+    "PNG exports directly inspected; PDFs generated from the same figure objects, not independently raster-reviewed",
+    "plot display is not a global-convergence or positivity proof"
+  ]
+}
