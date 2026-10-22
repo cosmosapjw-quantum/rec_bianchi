@@ -1,0 +1,39 @@
+{
+  "unit": "ANGULAR01",
+  "as_of": "2026-10-22",
+  "nodes": [
+    {
+      "id": "A",
+      "label": "Latest accessible inventory + pinned source + derivation + frozen acceptance",
+      "status": "LOCAL_COMPLETE",
+      "depends_on": []
+    },
+    {
+      "id": "B",
+      "label": "Sandbox kernel + 405 finite angular points + donor and covariance checks",
+      "status": "NOT_RUN",
+      "depends_on": [
+        "A"
+      ]
+    },
+    {
+      "id": "C",
+      "label": "Physical figures + independent review + final publish/backup/handoff",
+      "status": "NOT_RUN",
+      "depends_on": [
+        "B"
+      ]
+    }
+  ],
+  "completed_campaigns_reexecuted": 0,
+  "new_cosmological_ivps": 0,
+  "holds": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  }
+}
+
