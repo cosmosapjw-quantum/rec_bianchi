@@ -1,0 +1,46 @@
+{
+  "context": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/wolfram.WolframContext`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+      }
+    ],
+    "isError": true
+  },
+  "scalar_and_lrs": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"d2beta\" -> -(t/(E^(t/q)*q^3)), \"P2mean\" -> 0, \"P2variance\" -> 1/5, \"mean_thick\" -> t^(-1), \"P2escape_thick\" -> s/(5*t), \"small_s_mean_through_s2\" -> -1/10*(s^2*t)/E^t + (1 - Cosh[t] + Sinh[t])/t, \"s_positive_direction_domain\" -> Inequality[-1, Less, s, Less, 2]|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "general_tensor": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"shear_direction_mean\" -> 0, \"shear_direction_variance\" -> (4*(a^2 + a*b + b^2))/15, \"traceS2\" -> a^2 + (-a - b)^2 + b^2, \"variance_identity_residual\" -> 0, \"PSTF_escape_linear_diag\" -> {(2*a)/15, (2*b)/15, (-2*(a + b))/15}|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "request_scalar_and_lrs": {
+    "tool": "mcp__codex_apps__wolfram_wolframlanguageevaluator",
+    "arguments": {
+      "code": "Clear[q,t,mu,s,a,b]; f = q (1-Exp[-t/q])/t; p2 = (3 mu^2-1)/2; <|\"d2beta\" -> FullSimplify[D[f,{q,2}], Assumptions -> t>0 && q>0], \"P2mean\" -> Integrate[p2/2,{mu,-1,1}], \"P2variance\" -> Integrate[p2^2/2,{mu,-1,1}], \"mean_thick\" -> Integrate[(1+s p2)/2,{mu,-1,1}]/t, \"P2escape_thick\" -> FullSimplify[Integrate[p2 (1+s p2)/2,{mu,-1,1}]/t], \"small_s_mean_through_s2\" -> FullSimplify[Integrate[Normal[Series[f /. q->1+s p2,{s,0,2}]]/2,{mu,-1,1}], Assumptions -> t>0], \"s_positive_direction_domain\" -> Reduce[1+s>0 && 1-s/2>0,s,Reals]|>",
+      "timeConstraint": 20
+    }
+  },
+  "request_general_tensor": {
+    "tool": "mcp__codex_apps__wolfram_wolframlanguageevaluator",
+    "arguments": {
+      "code": "Clear[a,b,mu,phi]; nn={Sqrt[1-mu^2] Cos[phi],Sqrt[1-mu^2] Sin[phi],mu}; sm=DiagonalMatrix[{a,b,-a-b}]; sn=Expand[nn.sm.nn]; avg[expr_]:= FullSimplify[Integrate[expr,{phi,0,2 Pi},{mu,-1,1}]/(4 Pi), Assumptions->Element[{a,b},Reals]]; <|\"shear_direction_mean\"->avg[sn],\"shear_direction_variance\"->avg[sn^2],\"traceS2\"->Tr[sm.sm],\"variance_identity_residual\"->Simplify[avg[sn^2]-2 Tr[sm.sm]/15],\"PSTF_escape_linear_diag\"->Table[avg[(nn[[i]]^2-1/3) sn],{i,3}]|>",
+      "timeConstraint": 20
+    }
+  },
+  "scope": "Actual stateless tool responses; no ODE or cosmological RHS execution; constructor verification, not independent review."
+}

@@ -1,0 +1,52 @@
+{
+  "scope": "three affected boundary regressions only; before the 405-point study",
+  "checks": [
+    {
+      "name": "large_finite_t_retains_tensor",
+      "passed": true,
+      "scaled_tensor_error": 3.1155556357914184e-16,
+      "Q": [
+        [
+          -5.33333333333335e-310,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -2.66666666666667e-310,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          8e-310
+        ]
+      ]
+    },
+    {
+      "name": "nonzero_tiny_shear_not_exact_zero",
+      "passed": true,
+      "bound": {
+        "bound": null,
+        "log_bound": -925.3219058939734,
+        "representation": "UNDERFLOW_USE_LOG",
+        "qstar": 1.0,
+        "log_M": -1.0
+      }
+    },
+    {
+      "name": "complex_axis_rejected",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "elapsed_seconds": 0.001995783008169383,
+  "counts": {
+    "tensor_validations": 2,
+    "analytic_thick_calls": 1
+  },
+  "source_sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e",
+  "new_IVPs": 0,
+  "old_tests": 0,
+  "frozen_tolerances_changed": false
+}

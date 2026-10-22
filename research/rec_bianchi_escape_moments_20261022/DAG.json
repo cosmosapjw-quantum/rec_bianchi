@@ -1,0 +1,62 @@
+{
+  "unit": "ANGULAR01",
+  "as_of": "2026-10-22",
+  "nodes": [
+    {
+      "id": "A",
+      "label": "Latest accessible inventory + pinned source + derivation + frozen acceptance",
+      "status": "COMPLETE_POSTED_DUAL_BACKUP_ACK_SIZE",
+      "depends_on": []
+    },
+    {
+      "id": "B",
+      "label": "Sandbox kernel + 405 finite angular points + donor and covariance checks",
+      "status": "COMPLETE_POSTED_DUAL_BACKUP_ACK_SIZE",
+      "depends_on": [
+        "A"
+      ]
+    },
+    {
+      "id": "C",
+      "label": "Physical figures + independent review + final publish/backup/handoff",
+      "status": "COMPLETE_SCOPED_REVIEWED_HANDOFF_READY",
+      "depends_on": [
+        "B"
+      ],
+      "delivery": "Final publication/backup state is recorded after this commit in the final archive delivery receipts and PR127."
+    }
+  ],
+  "completed_campaigns_reexecuted": 0,
+  "new_cosmological_ivps": 0,
+  "holds": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "execution": {
+    "study_attempts": 1,
+    "parameter_rows": 405,
+    "accepted_rows": 405,
+    "standalone_checks": 89,
+    "donor_checks_within_standalone": 20,
+    "validator_saved_row_rechecks": 5,
+    "new_cosmological_IVPs": 0,
+    "old_IVPs": 0,
+    "quadratures_for_saved_validator_repair": 0,
+    "full_study_reruns": 0,
+    "standalone_reruns_after_study": 0
+  },
+  "scientific_deliverables_completed": 3,
+  "scientific_deliverables_total": 3,
+  "full_physical_closure_percent": null,
+  "independent_review": {
+    "status": "PASS_AFTER_TARGETED_REPAIRS",
+    "fresh_review_passes": 1,
+    "open_findings": 0,
+    "off_grid_points": 7,
+    "initial_invalid_axis_probe_points": 1
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "ANGULAR01_FINITE_STUDY_V1",
+  "unit": "ANGULAR01",
+  "attempt": "attempt_001",
+  "status": "FAIL",
+  "started_at_utc": "2026-10-22T22:52:07.756207+00:00",
+  "finished_at_utc": "2026-10-22T22:52:09.474949+00:00",
+  "grid_points_planned": 405,
+  "grid_points_completed": 405,
+  "grid_points_passed": 400,
+  "failed_grid_points": [
+    {
+      "index": 1,
+      "spectrum": "isotropic",
+      "t": 1.7782794100389228e-08,
+      "failed_checks": "thick_scalar_upper"
+    },
+    {
+      "index": 4,
+      "spectrum": "isotropic",
+      "t": 1e-07,
+      "failed_checks": "thick_scalar_upper"
+    },
+    {
+      "index": 5,
+      "spectrum": "isotropic",
+      "t": 1.7782794100389227e-07,
+      "failed_checks": "thick_scalar_upper"
+    },
+    {
+      "index": 14,
+      "spectrum": "isotropic",
+      "t": 3.1622776601683795e-05,
+      "failed_checks": "thick_scalar_upper"
+    },
+    {
+      "index": 16,
+      "spectrum": "isotropic",
+      "t": 0.0001,
+      "failed_checks": "thick_scalar_upper"
+    }
+  ],
+  "standalone_checks": 89,
+  "standalone_checks_passed": 89,
+  "failed_standalone_checks": [],
+  "new_donor_scalar_comparisons": 20,
+  "rotation_parameter_cases": 9,
+  "weak_shear_parameter_cases": 4,
+  "auto_thick_grid_points": 61,
+  "auto_quadrature_grid_points": 344,
+  "elapsed_seconds": 1.7181813220086042,
+  "peak_RSS_MiB": 32.49609375,
+  "memory_target_met": true,
+  "study_time_target_met": true,
+  "actual_call_counts": {
+    "donor_scalar_calls": 20,
+    "tensor_validations": 1855,
+    "general_quadrature_calls": 829,
+    "general_quadrature_nodes": 17186816,
+    "analytic_thick_calls": 62,
+    "lrs_quadrature_calls": 548,
+    "lrs_quadrature_nodes": 52864,
+    "lab_oracle_calls": 9,
+    "lab_oracle_nodes": 294912
+  },
+  "counts_by_phase": {
+    "standalone_function_checks": {
+      "donor_scalar_calls": 20,
+      "tensor_validations": 4,
+      "general_quadrature_calls": 1,
+      "general_quadrature_nodes": 8192,
+      "analytic_thick_calls": 1
+    },
+    "grid_quadratures_and_auto": {
+      "tensor_validations": 1816,
+      "general_quadrature_calls": 810,
+      "general_quadrature_nodes": 16588800,
+      "analytic_thick_calls": 61,
+      "lrs_quadrature_calls": 540,
+      "lrs_quadrature_nodes": 51840
+    },
+    "standalone_rotation": {
+      "tensor_validations": 27,
+      "general_quadrature_calls": 18,
+      "general_quadrature_nodes": 589824,
+      "lab_oracle_calls": 9,
+      "lab_oracle_nodes": 294912
+    },
+    "standalone_weak_shear": {
+      "tensor_validations": 8,
+      "lrs_quadrature_calls": 8,
+      "lrs_quadrature_nodes": 1024
+    }
+  },
+  "maxima": {
+    "two_level_B_normalized": 3.706925453614504e-15,
+    "two_level_Q_normalized": 8.74551428676363e-15,
+    "lrs_1d_2d_B_normalized": 2.168404344971009e-15,
+    "lrs_1d_2d_Q_normalized": 6.026472479737714e-15,
+    "auto_observed_B_normalized": 7.080418540979247e-10,
+    "auto_observed_Q_normalized": 4.77376883227185e-10
+  },
+  "last_case": {
+    "index": 404,
+    "spectrum": "triaxial_C",
+    "t": 1000.0,
+    "phase": "COMPLETED"
+  },
+  "exception": null,
+  "new_cosmological_IVPs": 0,
+  "old_IVPs": 0,
+  "old_test_suites": 0,
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REI_activation": false,
+  "Physical": "HOLD",
+  "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET",
+  "claims": {
+    "finite_comparisons": "OBSERVED_ONLY",
+    "thick_error": "ANALYTIC_TRUNCATION_BOUND",
+    "floating_error": "NOT_INTERVAL_CERTIFIED"
+  }
+}

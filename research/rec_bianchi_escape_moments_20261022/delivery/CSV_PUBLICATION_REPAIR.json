@@ -1,0 +1,44 @@
+{
+  "kind": "TARGETED_GIT_PUBLICATION_BYTE_REPAIR",
+  "initial_stage_C_commit": "3add6f5d9ef3bc635c13035a0d2c51de39667896",
+  "initial_stage_C_tree": "a9708c3ec9825c7074615bde5c3b7a3ad4bb552c",
+  "initial_readback": "66 of 69 local files exactly matched; three plotted CSVs normalized CRLF to LF",
+  "cause": "Stage B prepare_stage.py used Path.read_text() for inline Git tree content; text-mode universal-newline conversion changed only byte representation. Stage C initially reused those three Git blobs.",
+  "repair": "Upload only these three original byte streams as base64 Git blobs. No local CSV/science/code/figure mutation. Preserve original Stage B and intermediate Stage C commits.",
+  "records": [
+    {
+      "path": "results/attempt_001/plotted_data/branch_map.csv",
+      "remote_sha": "f044f48d81ab1a0244d6c99cd22f86a2ee531945",
+      "remote_bytes": 59573,
+      "expected_sha": "77c12cd47aa9e2816e1474b4f74eb8029c6467bf",
+      "expected_bytes": 59979,
+      "expected_sha256": "56e24e85fbaf5555a32f18abb857c558df2493223340a51735bea070e9dc239c",
+      "cause": "CRLF_TO_LF_TEXT_SERIALIZATION",
+      "numeric_content_changed": false
+    },
+    {
+      "path": "results/attempt_001/plotted_data/physical_bounds.csv",
+      "remote_sha": "041f3440395495b87fe8aaa4a564598455e23aa3",
+      "remote_bytes": 51196,
+      "expected_sha": "98bd4d7706abe8958bbe83b9049472f9ac017786",
+      "expected_bytes": 51602,
+      "expected_sha256": "309a3ea2be1de77a7b007fcf90c894643a4cc35488d027a83ee2902e2aefb8ea",
+      "cause": "CRLF_TO_LF_TEXT_SERIALIZATION",
+      "numeric_content_changed": false
+    },
+    {
+      "path": "results/attempt_001/plotted_data/surviving_tensor.csv",
+      "remote_sha": "60fee3ff787685f60c37eaee3be554b0c9867269",
+      "remote_bytes": 61687,
+      "expected_sha": "aaecfd42ea46e839683ee4661dde8254c4216358",
+      "expected_bytes": 62093,
+      "expected_sha256": "49e43308ddf78005b661bc8bd0a9bae203257741cebcedada554dba33be7396e",
+      "cause": "CRLF_TO_LF_TEXT_SERIALIZATION",
+      "numeric_content_changed": false
+    }
+  ],
+  "new_quadratures": 0,
+  "new_IVPs": 0,
+  "full_study_reruns": 0,
+  "verification_after_repair": "See post-publication FINAL_GIT_ACK.json"
+}

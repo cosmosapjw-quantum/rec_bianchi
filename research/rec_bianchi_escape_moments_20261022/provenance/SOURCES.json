@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "retrieved_utc": "2026-10-22",
+  "agent": "/root/recombination_sources",
+  "workflow": {
+    "skill": "physmath-research-loop",
+    "version": "1.3.0",
+    "selected_scope": "R2–R5 primary-source synthesis and constructive derivation only",
+    "no_new_ode": true,
+    "no_scientific_code_mutation": true,
+    "publication_owner": "/root"
+  },
+  "scope": {
+    "target": "Local angular Sobolev escape operator for supplied isotropic line emissivity in homogeneous non-tilted Bianchi geometry",
+    "excluded_history": "No rerun of REC126, REI129, warm729, THERM01, PR121, PR124, THERM02 or existing primordial suites",
+    "low_z_distinction": "THERM02 z20→2 5–60 eV conditional 21-population closure does not establish primordial recombination z~1100"
+  },
+  "search_coverage": {
+    "exa": {
+      "calls": 5,
+      "numResults": [
+        6,
+        6,
+        6,
+        4,
+        4
+      ],
+      "sources_reviewed": 26,
+      "definition": "sum of requested numResults, not unique independently verified primary sources"
+    },
+    "scispace": {
+      "calls": 1,
+      "returned_rows": 10,
+      "uniqueIds": [
+        "zw2yc93gbjwk",
+        "m4lhd2w4rqeh",
+        "o63iusg75f14",
+        "ccp4t3cohj",
+        "98dqikf59tx7",
+        "2zfau3hco8",
+        "xfwf784l6g",
+        "29v5fa12lw",
+        "4kz1ashu72",
+        "3sf5zbvwjy"
+      ],
+      "caution": "Several arXiv duplicate rows display 2022; primary arXiv submission/version dates override these index metadata."
+    },
+    "recent_window": "2025-10-22 through 2026-10-22",
+    "coverage_claim": "Bounded search of accessible indices and known primary sources; neither exhaustive literature proof nor priority/novelty claim.",
+    "latest_applicable_hit": "The 2026 Li–Zheng paper is finite-cloud line transport, not a calibrated primordial Bianchi recombination closure."
+  },
+  "sources": [
+    {
+      "id": "HYREC2_PAPER",
+      "title": "HYREC-2: a highly accurate sub-millisecond recombination code",
+      "authors": [
+        "Nanoom Lee",
+        "Yacine Ali-Haimoud"
+      ],
+      "url": "https://arxiv.org/abs/2007.14114",
+      "fulltext": "https://arxiv.org/pdf/2007.14114",
+      "doi": "10.1103/PhysRevD.102.083517",
+      "publication_year": 2020,
+      "primary_version": "v2, 2020-10-21",
+      "verified": "PRIMARY_FULLTEXT",
+      "locations": [
+        "Section II.C, Eqs. (3)–(8)",
+        "Section III.A, Eq. (10)",
+        "Section III.B, Eq. (11)",
+        "Section III.C"
+      ],
+      "reuse": "Reuse effective excited-state algebra and explicit Sobolev rate mapping under matched radiation assumptions.",
+      "boundary": "SWIFT correction Delta(Tr, parameters) is calibrated using isotropic FULL histories; it is not a Bianchi calibration. Net ground-transition rates can depend on time history.",
+      "web_refs": [
+        "turn18view0",
+        "turn22view0",
+        "turn22view1"
+      ]
+    },
+    {
+      "id": "HYREC2_CODE",
+      "title": "Official nanoomlee/HYREC-2",
+      "url": "https://github.com/nanoomlee/HYREC-2",
+      "pin": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+      "pin_date": "2023-09-14T00:19:08Z",
+      "verified": "GITHUB_BRANCH_AND_TREE_AND_PINNED_SOURCE_READ",
+      "units": "hydrogen.c/h: cgs plus eV; TM/TR in eV; nH cm^-3; H s^-1; output dxHIIdlna",
+      "files": [
+        {
+          "path": "hydrogen.c",
+          "blob_sha": "233f174bfb1758fa910866310340ae1bfad703db",
+          "size": 46627
+        },
+        {
+          "path": "hydrogen.h",
+          "blob_sha": "088b34a699efe5d6d3aefb158229e9fb83d9a586",
+          "size": 11868
+        },
+        {
+          "path": "README.md",
+          "blob_sha": "a9fcf1e6aab60fc12891fcd108bb833c93aae8cb",
+          "size": 1938
+        }
+      ],
+      "interfaces": [
+        "interpolate_rates",
+        "rec_HMLA_dxHIIdlna",
+        "rec_swift_hyrec_dxHIIdlna",
+        "populateTS_2photon",
+        "rec_dxHIIdlna"
+      ],
+      "locations": [
+        "hydrogen.c 333–424: effective rate interpolation and detailed balance",
+        "hydrogen.c 429–486: SWIFT RLya/(1+Delta)",
+        "hydrogen.c 490–543: EMLA interface and dx/dln a conversion",
+        "hydrogen.c 630–736: Ly-alpha, incoming distortion, diffusion and virtual bins"
+      ],
+      "reuse": "Prefer existing project donor binding; do not copy the whole RHS or globally substitute H.",
+      "license_status": "No LICENSE path in verified master tree and no explicit license in the inspected hydrogen.c/h headers; no new upstream code copied or redistributed by this task.",
+      "identity_level": "Git commit/blob identity, not a newly measured local raw-byte SHA256"
+    },
+    {
+      "id": "CS2009_SOBOLEV",
+      "title": "Time-dependent corrections to the Ly-alpha escape probability during cosmological hydrogen recombination",
+      "authors": [
+        "Jens Chluba",
+        "Rashid A. Sunyaev"
+      ],
+      "url": "https://arxiv.org/abs/0810.1045",
+      "fulltext": "https://arxiv.org/pdf/0810.1045",
+      "doi": "10.1051/0004-6361/200811100",
+      "publication_year": 2009,
+      "primary_version": "v2, 2009-03-30",
+      "verified": "PRIMARY_FULLTEXT",
+      "locations": [
+        "Section 3.2 assumptions",
+        "Eq. (35b): PS=(1-exp(-tauS))/tauS",
+        "Section 3.4: time-dependent transfer"
+      ],
+      "reuse": "Source formula for local complete-redistribution Sobolev escape and explicit limitations.",
+      "boundary": "PDF typesetting metadata includes 2018; that does not change the 2008 submission/2009 v2 and journal identity. Thick optical depth alone does not bound neglected time-dependent transfer.",
+      "web_refs": [
+        "turn20view2",
+        "turn21view0",
+        "turn21view4",
+        "turn22view2"
+      ]
+    },
+    {
+      "id": "HF2009_RT",
+      "title": "Lyman-alpha transfer in primordial hydrogen recombination",
+      "authors": [
+        "Christopher M. Hirata",
+        "John Forbes"
+      ],
+      "url": "https://arxiv.org/abs/0903.4925",
+      "fulltext": "https://arxiv.org/pdf/0903.4925",
+      "doi": "10.1103/PhysRevD.80.023001",
+      "publication_year": 2009,
+      "primary_version": "v2, 2009-06-30",
+      "verified": "PRIMARY_FULLTEXT",
+      "locations": [
+        "Introduction, p.2: four Sobolev assumptions",
+        "Time-dependent Ly-alpha transport equation and resonant scattering formulation"
+      ],
+      "reuse": "Define physical scope: profile equality, complete redistribution, isolated line, quasi-stationarity.",
+      "boundary": "A mean-escape tensor identity does not remove frequency diffusion, recoil, thermodynamic profile differences or history dependence.",
+      "web_refs": [
+        "turn18view2",
+        "turn20view1"
+      ]
+    },
+    {
+      "id": "COSMOREC_OFFICIAL",
+      "title": "CosmoRec author distribution page",
+      "url": "https://www.jb.man.ac.uk/~jchluba/Science/CosmoRec/CosmoRec.html",
+      "version": "2.0.3 beta; page update 2015-02-19",
+      "verified": "AUTHOR_PAGE_FULLTEXT",
+      "reuse": "Authoritative process inventory and effective-multilevel architecture; existing code/reference donor rather than rerun.",
+      "boundary": "Author-listed FLRW precision is not measured Bianchi accuracy; no new tarball downloaded or run. Atomic/radiation source binding still required."
+    },
+    {
+      "id": "RECFAST_OFFICIAL",
+      "title": "RECFAST author distribution page and Fortran source",
+      "url": "https://www.astro.ubc.ca/people/scott/recfast.html",
+      "code_url": "https://www.astro.ubc.ca/people/scott/recfast.for",
+      "version": "1.5.2, September 2012",
+      "verified": "AUTHOR_PAGE_AND_SOURCE_EXTRACT",
+      "reuse": "Modified three-level H/He model, separately evolved matter temperature and existing project FLRW reference; source docs fix xHe normalization and SI conventions.",
+      "boundary": "Fudge functions are near-standard-cosmology calibrations; historic C distribution is marked out of date and has separate Numerical Recipes dependency.",
+      "license_status": "Fortran source header grants use/copy/modify/distribute subject to preservation of copyright and disclaimer.",
+      "identity_level": "Retrieved textual representation; raw-byte source hash not measured."
+    },
+    {
+      "id": "LI_ZHENG_2026",
+      "title": "Analytical and fitting formulae for solutions to Lyman-alpha radiative transfer equations: the effects of geometry, recoil, and velocity gradients",
+      "authors": [
+        "Pengfei Li",
+        "Zheng Zheng"
+      ],
+      "url": "https://academic.oup.com/mnras/article/550/2/stag1223/8719312",
+      "doi": "10.1093/mnras/stag1223",
+      "published": "2026-06-26",
+      "accepted": "2026-06-19",
+      "corrected_typeset": "2026-07-13",
+      "verified": "PRIMARY_FULLTEXT",
+      "locations": [
+        "Abstract",
+        "Section 2.1, Eqs. (1)–(9)",
+        "Section 4"
+      ],
+      "reuse": "Boundary-aware comparison: finite clouds, steady transfer, geometry/recoil/velocity-gradient approximations.",
+      "boundary": "Finite slab/cylinder/sphere cloud with boundary escape, predominantly T=10 K simulations; not directly usable as a primordial cosmological recombination correction.",
+      "web_refs": [
+        "turn18view3"
+      ]
+    },
+    {
+      "id": "PMF2025_CONTEXT",
+      "title": "Primordial magnetic fields and modified recombination histories",
+      "authors": [
+        "Jonathan Schiff",
+        "Tejaswi Venumadhav"
+      ],
+      "url": "https://arxiv.org/abs/2506.16517",
+      "date": "2025-06-19",
+      "verified": "PRIMARY_ABSTRACT_ONLY",
+      "reuse": "None in selected local homogeneous unit.",
+      "boundary": "Spatial baryon clumping with PMF-induced MHD and nonlocal Ly-alpha transfer; distinct additional physics and outside the requested one-year freshness interval.",
+      "web_refs": [
+        "turn19academia19"
+      ]
+    },
+    {
+      "id": "PR114_DIRECTIONAL_DONOR",
+      "title": "Existing project directional spike transfer",
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/df95a074730ea0d13d609cf88d448f01f4a47ef1/src/full_bianchi_hyrec/trajectory/hyrec_spike_transfer.py",
+      "pin": "df95a074730ea0d13d609cf88d448f01f4a47ef1",
+      "verified": "DELEGATED_GITHUB_PINNED_SOURCE_AND_BLOB_READBACK from /root/latest_rec_rei; root-source agent additionally read local donor definitions",
+      "reuse": "Directional optical depth and zero/sign-change handling already exist; reuse as donor.",
+      "boundary": "Directional H/optical depth, spike jump, JVP and zero/sign events are existing results. Bounded prior-art search found no duplicate of the selected finite-tau moment unit; no novelty claim.",
+      "local_source": "donor/hyrec_spike_transfer.py",
+      "license_status": "MIT license preserved by inventory agent with project donor",
+      "git_blob_sha1": "ade2cc6d3da852f444289d7c6f2e9132c8ca7c90",
+      "sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+      "bytes": 4199,
+      "readback_identity_status": "PASS"
+    }
+  ],
+  "symbolic_checks": {
+    "context": {
+      "tool": "WolframContext",
+      "status": "ERROR",
+      "error": "Mcp error -32603: Internal error",
+      "retries": 0
+    },
+    "evaluations": [
+      {
+        "status": "PASS",
+        "timeConstraint_seconds": 20,
+        "results": [
+          "d2beta/dq2 = -t exp(-t/q)/q^3",
+          "<P2>=0",
+          "<P2^2>=1/5",
+          "<beta>thick=1/t",
+          "<P2 beta>thick=s/(5t)",
+          "small-s mean = (1-exp(-t))/t - s^2*t*exp(-t)/10 + O(s^3)",
+          "positive directional expansion domain -1<s<2"
+        ]
+      },
+      {
+        "status": "PASS",
+        "timeConstraint_seconds": 20,
+        "results": [
+          "<Snn>=0 for S=diag(a,b,-a-b)",
+          "<(Snn)^2>=4(a^2+ab+b^2)/15 = 2 tr(S^2)/15",
+          "PSTF moment diagonal = 2(a,b,-a-b)/15"
+        ]
+      }
+    ],
+    "interpretation": "CAS algebra/moment check of our constructed local-operator proof; no numerical cosmological integration and no independent scientific peer review."
+  },
+  "claim_status": {
+    "sobolev_formula": "ESTABLISHED_SOURCE",
+    "directional_redshift": "DERIVED_AND_EXISTING_PROJECT_DONOR",
+    "concavity_bound": "DIRECT_PROOF_PLUS_CAS",
+    "thick_scalar_tensor_error": "DIRECT_PROOF",
+    "quadratic_shear_expansion": "DIRECT_DERIVATION_PLUS_CAS",
+    "novelty": "NOT_CLAIMED",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "unit": "ANGULAR01",
+  "frozen_controller": {
+    "epsilon": 1e-08,
+    "log_gate": "tau0/qmax >= log1p(1/epsilon)",
+    "relative_scalar_bound": "r/(1-r)",
+    "tensor_frobenius_over_mean_bound": "sqrt(2/3)*r/(1-r)",
+    "r": "exp(-tau0/qmax)",
+    "quadrature_orders": [
+      64,
+      128
+    ],
+    "normalized_quadrature_difference_tolerance": 1e-08,
+    "floating_interval_certification": false
+  }
+}
