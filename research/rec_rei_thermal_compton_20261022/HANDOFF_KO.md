@@ -8,6 +8,14 @@ branch `research/rec-rei-thermal-compton-20261022`. PR120 위에 쌓은 독립 �
 최종 Git/backup identity는 `delivery/`의 실제 receipt와 PR 최신 반환을 읽는다.
 이 문서가 자신의 commit hash를 미리 지정하지는 않는다.
 
+과학 결과 commit은 `407a280aff51abefc10374cb6e21c4224140328c`다. Stage C의
+닫힌 ZIP은 28,138,141 bytes, 181 payload이며 SHA-256은
+`b4ebbc130c4626973f3b6ed1bef372a299678756bac708107dc92c7a3842d649`다.
+Dropbox whole-GET/전체 SHA-256/ZIP CRC/181 payload 검증 PASS,
+Drive upload ACK 및 metadata size 일치 PASS이다. Drive whole-byte는 NOT_RUN이다.
+이 ZIP 이후의 delivery receipt와 최종 DAG는 metadata commit으로 별도 게시한다.
+ZIP 내부 manifest에는 업로드 후 생성되는 자신의 provider ACK를 소급 삽입하지 않는다.
+
 `FROZEN_CONTRACT.md` SHA-256:
 `076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169`.
 Scientific kernel SHA-256:

@@ -2,7 +2,7 @@
   "schema": "therm02.next_source_provider_dag.v1",
   "unit": "THERM02_COMPTON",
   "snapshot_time_KST": "2026-10-23T02:48:52.775652+09:00",
-  "snapshot_scope": "Local science is completed. Final science publication, backup and handoff are pending at this document checkpoint; parent must attach actual delivery receipts before closing those nodes.",
+  "snapshot_scope": "Closed local scientific unit, published science commit and verified Stage C backup receipts. Final delivery-metadata publication is identifiable from the current PR HEAD; next physical input obligations remain open.",
   "workflow": "1.0.0",
   "approval_design": "v0.2",
   "current": {
@@ -22,9 +22,9 @@
     "finite_case_admission": "PASS_8_OF_8",
     "refinement_oracle_comparisons": "PASS_3_OF_3",
     "earlier_publication_checkpoints": "STAGE_A_AND_STAGE_B_RETAINED",
-    "final_science_publication": "PENDING",
-    "final_science_backups": "PENDING",
-    "final_handoff": "PENDING"
+    "final_science_publication": "DONE_STAGE_C",
+    "final_science_backups": "DONE_SCOPED",
+    "final_handoff": "DONE_SCOPED"
   },
   "nodes": [
     {
@@ -52,30 +52,41 @@
     },
     {
       "id": "FINAL_PUBLICATION",
-      "status": "PENDING",
+      "status": "DONE",
       "depends_on": [
         "FINAL_REVIEW_AND_FIGURES"
       ],
       "owner": "root",
-      "action": "Publish the exact final science snapshot and retain actual commit/PR receipt."
+      "action": "Publish the exact final science snapshot and retain actual commit/PR receipt.",
+      "evidence": [
+        "delivery/STAGE_C_GIT_ACK.json"
+      ]
     },
     {
       "id": "FINAL_DUAL_BACKUP",
-      "status": "PENDING",
+      "status": "DONE_SCOPED",
       "depends_on": [
         "FINAL_REVIEW_AND_FIGURES"
       ],
       "owner": "root",
-      "action": "Create a closed exact-payload archive and retain both provider completion receipts with byte/hash scope."
+      "action": "Create a closed exact-payload archive and retain both provider completion receipts with byte/hash scope.",
+      "evidence": [
+        "delivery/STAGE_C_BACKUP_ACK.json",
+        "delivery/STAGE_C_DROPBOX_BYTE_VERIFY.json"
+      ]
     },
     {
       "id": "FINAL_HANDOFF",
-      "status": "PENDING",
+      "status": "DONE_SCOPED",
       "depends_on": [
         "FINAL_PUBLICATION",
         "FINAL_DUAL_BACKUP"
       ],
-      "owner": "root"
+      "owner": "root",
+      "evidence": [
+        "HANDOFF_KO.md",
+        "DAG.json"
+      ]
     },
     {
       "id": "NEXT_PROVIDER_CONTRACT",
@@ -185,5 +196,6 @@
       "bytes": 7164,
       "sha256": "9cf27d529eb4c1e7bb26a0e08929c96e1a4f3381198837b7e60008a270024d1b"
     }
-  }
+  },
+  "delivery_update_UTC": "2026-10-22T18:03:13.922514+00:00"
 }
