@@ -76,7 +76,7 @@ R_{\mathrm{Ly}\alpha}=\frac{8\pi H}{3n_Hx_{1s}\lambda_\alpha^3}
 
 ## 4. 확정한 수학 계약
 
-전체 증명과 코드용 식은 DERIVATION_ANGULAR_ESCAPE.md에 있다. 여기서 \(\tau_0=C_S/H\), \(S=\sigma/H\), \(q(\boldsymbol n)=1+S_{ab}n^an^b>0\), \(\langle\cdot\rangle=(4\pi)^{-1}\int d\Omega\)다.
+전체 증명과 코드용 식은 ../THEORY.md에 있다. 여기서 \(\tau_0=C_S/H\), \(S=\sigma/H\), \(q(\boldsymbol n)=1+S_{ab}n^an^b>0\), \(\langle\cdot\rangle=(4\pi)^{-1}\int d\Omega\)다.
 
 \[
 b(q)=\frac{q}{\tau_0}\left(1-e^{-\tau_0/q}\right),\qquad

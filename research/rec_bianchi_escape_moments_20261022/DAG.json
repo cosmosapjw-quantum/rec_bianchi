@@ -5,13 +5,13 @@
     {
       "id": "A",
       "label": "Latest accessible inventory + pinned source + derivation + frozen acceptance",
-      "status": "LOCAL_COMPLETE",
+      "status": "COMPLETE_POSTED_DUAL_BACKUP_ACK_SIZE",
       "depends_on": []
     },
     {
       "id": "B",
       "label": "Sandbox kernel + 405 finite angular points + donor and covariance checks",
-      "status": "NOT_RUN",
+      "status": "COMPLETE_SCOPED_VALIDATOR_REPAIRED",
       "depends_on": [
         "A"
       ]
@@ -19,7 +19,7 @@
     {
       "id": "C",
       "label": "Physical figures + independent review + final publish/backup/handoff",
-      "status": "NOT_RUN",
+      "status": "INDEPENDENT_FIGURE_REVIEW_IN_PROGRESS",
       "depends_on": [
         "B"
       ]
@@ -34,6 +34,16 @@
     "global_convergence": "NOT_RUN",
     "production": "NOT_APPROVED",
     "REI_activation": false
+  },
+  "execution": {
+    "study_attempts": 1,
+    "parameter_rows": 405,
+    "accepted_rows": 405,
+    "standalone_checks": 89,
+    "donor_checks_within_standalone": 20,
+    "validator_saved_row_rechecks": 5,
+    "additional_quadratures_after_study": 0,
+    "new_cosmological_IVPs": 0,
+    "old_IVPs": 0
   }
 }
-

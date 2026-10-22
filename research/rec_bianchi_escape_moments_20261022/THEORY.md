@@ -171,7 +171,16 @@ B=\beta(\tau_0)-\frac{s^2\tau_0e^{-\tau_0}}{10}+O(s^3),
 \quad
 \langle P_2 b\rangle_{\rm thick}=\frac{s}{5\tau_0}.
 \]
-If the normalized angular escape density is \(p=b/B\) with \(\langle p\rangle=1\), its leading LRS Legendre amplitude is \(5\langle P_2p\rangle=s\). This normalization must not be confused with \(Q_{zz}=2s/(15\tau_0)\).
+For the thick approximation, the normalized angular escape density is exactly
+\(p_{\rm thick}=b_{\rm thick}/B_{\rm thick}=q\), so its LRS Legendre amplitude
+is \(5\langle P_2p_{\rm thick}\rangle=s\). At finite optical depth,
+\(p=b/B\) instead gives
+\[
+5\langle P_2p\rangle=
+\frac{1-(1+\tau_0)e^{-\tau_0}}{1-e^{-\tau_0}}s+O(s^2).
+\]
+These normalized amplitudes must not be confused with the unnormalized
+thick tensor component \(Q^{\rm thick}_{zz}=2s/(15\tau_0)\).
 
 ## E. Exact failure of the unweighted cancellation outside its source class
 
