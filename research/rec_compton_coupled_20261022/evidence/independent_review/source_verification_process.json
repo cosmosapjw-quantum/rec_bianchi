@@ -1,0 +1,31 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "-c",
+    "import sys\nsys.dont_write_bytecode=True\nfrom pathlib import Path\nimport hashlib,json\nu=Path.cwd()\nsys.path.insert(0,str(u/'code'))\nimport run_compton as r\nidentity,files=r.source_identity()\ninputs=r.load_inputs()\nauthor=json.loads((u/'evidence/COMPTON_SYSTEM_TESTS.json').read_text())\nerrors=[]\nfor path,expected in author['source_hashes_after'].items():\n    if r.digest(u.parent/path)!=expected: errors.append('author:'+path)\nfor name,expected in author['raw_output_sha256'].items():\n    if r.digest(u/'evidence/runtime_preflight'/name)!=expected: errors.append('author-output:'+name)\nif r.digest(u/'evidence/runtime_preflight/attempt_02_process.json')!=author['actual_process_receipt_sha256']: errors.append('author-process-receipt')\nhelpers=json.loads((u/'evidence/driver_review/attempt_02_process.json').read_text())\nfor path,expected in helpers['source_sha256'].items():\n    if r.digest(r.REPO/path)!=expected: errors.append('driver-helper:'+path)\nprovenance=json.loads((u/'provenance/COMPTON_SOURCES.json').read_text())\nfor row in provenance['immutable_owners']:\n    if r.digest(u/row['path'])!=row['sha256']: errors.append('theory-owner:'+row['path'])\nselected=['FROZEN_CONTRACT.md','THEORY_KO.md','code/compton_system.py','code/test_compton_system.py','code/run_compton.py','provenance/COMPTON_SOURCES.json','evidence/WOLFRAM_COUPLING.json','evidence/COMPTON_SYSTEM_TESTS.json','evidence/driver_review/attempt_01_process.json','evidence/driver_review/attempt_02_process.json','evidence/driver_review/test_driver_helpers.py','evidence/driver_review/attempt_01_stderr.txt','evidence/driver_review/attempt_02_stderr.txt']\nreport=dict(status='PASS_SCOPED' if not errors else 'FAIL',runtime_identity=identity,runtime_files=files,reviewed_files={name:r.digest(u/name) for name in selected},inputs=r.input_manifest(inputs),identity_mismatches=errors,initial_state_exact_nominal_refined=True,old_thermal_runtime_identity=r.THERMAL_ID,old_omitted_runtime_identity=r.OMITTED_ID,new_ODE_runs=0,old_full_suite_reruns=0)\nprint(json.dumps(report,indent=2))\nraise SystemExit(0 if not errors else 1)\n"
+  ],
+  "cwd": "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022",
+  "started_utc": "2026-10-22T15:02:17.840136+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1.7459953200013842,
+  "outputs": {
+    "stdout.json": {
+      "path": "evidence/independent_review/source_verification_stdout.json",
+      "sha256": "575d3731a8c67d5aa19ef543cdba7cc1f18c983356cf12bf793f1ca8acbe07f5",
+      "bytes": 8113
+    },
+    "stderr.txt": {
+      "path": "evidence/independent_review/source_verification_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "scope": "Read-only source/input identity and prior raw-output checks; no ODE or suite rerun",
+  "preceding_discovery_error": {
+    "command": "python -B heredoc with u=Path('.')",
+    "exit_code": 1,
+    "error": "FileNotFoundError: rec_compton_coupled_20261022/FROZEN_CONTRACT.md",
+    "cause": "Relative Path.parent did not refer to the real unit parent; corrected by Path.cwd() before the source check. No data or runtime mutation."
+  }
+}

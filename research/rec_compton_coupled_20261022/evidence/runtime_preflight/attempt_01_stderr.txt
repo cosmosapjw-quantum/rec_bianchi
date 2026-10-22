@@ -1,0 +1,60 @@
+test_01_inherited_blocks_scales_and_exclusive_labels (__main__.ComptonSystemTests.test_01_inherited_blocks_scales_and_exclusive_labels) ... ok
+test_02_independent_source_owners_and_live_monopole (__main__.ComptonSystemTests.test_02_independent_source_owners_and_live_monopole) ... ok
+test_03_added_row_all_63_columns (__main__.ComptonSystemTests.test_03_added_row_all_63_columns) ... ok
+test_04_full63_directional_products_and_temperature_columns (__main__.ComptonSystemTests.test_04_full63_directional_products_and_temperature_columns) ... ok
+test_05_compact_hubble_derivative_matches_owner (__main__.ComptonSystemTests.test_05_compact_hubble_derivative_matches_owner) ... ok
+test_06_equilibrium_hot_partial_and_flrw_limit (__main__.ComptonSystemTests.test_06_equilibrium_hot_partial_and_flrw_limit) ... ERROR
+test_07_neutral_zero_monopole_and_signed_trials (__main__.ComptonSystemTests.test_07_neutral_zero_monopole_and_signed_trials) ... ERROR
+test_08_combined_energy_binding_and_particle_ledger (__main__.ComptonSystemTests.test_08_combined_energy_binding_and_particle_ledger) ... ok
+test_09_UV_precomputation_and_frozen_source_temperature_oracle (__main__.ComptonSystemTests.test_09_UV_precomputation_and_frozen_source_temperature_oracle) ... ok
+
+======================================================================
+ERROR: test_06_equilibrium_hot_partial_and_flrw_limit (__main__.ComptonSystemTests.test_06_equilibrium_hot_partial_and_flrw_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/test_compton_system.py", line 255, in test_06_equilibrium_hot_partial_and_flrw_limit
+    eq = ref.compton_terms(xeq, y)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/compton_system.py", line 133, in compton_terms
+    s = self._compton_state(x, y)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/compton_system.py", line 64, in _compton_state
+    field = self.geometry.fields(x, y[:40])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/code/geometry.py", line 87, in fields
+    return self.model.fields(x, y)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/vendor/baseline/canonical_fv.py", line 228, in fields
+    base=super().fields(x,y)
+         ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_rei_hheli_sandbox_20261021/vendor/baseline/species_hierarchy.py", line 79, in fields
+    raise ValueError("invalid radiation or matter Einstein state")
+ValueError: invalid radiation or matter Einstein state
+
+======================================================================
+ERROR: test_07_neutral_zero_monopole_and_signed_trials (__main__.ComptonSystemTests.test_07_neutral_zero_monopole_and_signed_trials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/test_compton_system.py", line 296, in test_07_neutral_zero_monopole_and_signed_trials
+    n = float(fd_column(lambda v: s.compton_logT_rhs(x,v), neutral,j))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/test_compton_system.py", line 67, in fd_column
+    return (at(-2)-8*at(-1)+8*at(1)-at(2))/(12*h)
+            ^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/test_compton_system.py", line 64, in at
+    return np.asarray(fun(v))
+                      ^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/test_compton_system.py", line 296, in <lambda>
+    n = float(fd_column(lambda v: s.compton_logT_rhs(x,v), neutral,j))
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/compton_system.py", line 90, in compton_logT_rhs
+    s = self._compton_state(x, y)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/code/compton_system.py", line 71, in _compton_state
+    raise ValueError("positive finite T, particle count, H and a required")
+ValueError: positive finite T, particle count, H and a required
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.334s
+
+FAILED (errors=2)
