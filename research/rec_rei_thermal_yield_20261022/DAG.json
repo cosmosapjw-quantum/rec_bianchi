@@ -1,6 +1,6 @@
 {
   "unit": "THERM01",
-  "phase": "A_SOURCE_PHYSICS",
+  "phase": "B_IMPLEMENTATION_UNIT_CHECKS",
   "nodes": [
     {
       "id": "R1",
@@ -40,31 +40,31 @@
     },
     {
       "id": "R10",
-      "status": "CHECKPOINT_READY"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C1",
-      "status": "CONTRACT_FIXED"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C2",
-      "status": "CONTRACT_FIXED"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C3",
-      "status": "CONTRACT_FIXED"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C4",
-      "status": "CONTRACT_FIXED"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C5",
-      "status": "IN_PROGRESS"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C6",
-      "status": "NOT_RUN"
+      "status": "COMPLETE_SCOPED"
     },
     {
       "id": "C7",
@@ -93,5 +93,11 @@
     "production": "NOT_APPROVED",
     "REI_activation": false
   },
-  "next": "C5 implementation then C6 scoped new checks; checkpoint B before new IVPs"
+  "next": "C7 eight new thermal histories, C8 finite comparisons, C9 independent review",
+  "stages": {
+    "A": "PUBLISHED_BACKED",
+    "B": "PASS_SCOPED_CHECKPOINT_READY",
+    "C": "NOT_RUN",
+    "D": "NOT_RUN"
+  }
 }
