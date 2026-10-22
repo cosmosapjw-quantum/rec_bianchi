@@ -1,0 +1,145 @@
+{
+  "schema": "rec.compton.targeted_source_discovery.v1",
+  "captured_at_utc": "2026-10-22T14:57:26.241Z",
+  "preservation_scope": "Exact tool names/arguments, selected response metadata and explicit failures. Long paper text/abstracts are not redistributed.",
+  "calls": [
+    {
+      "tool": "mcp__codex_apps__exa_web_search_exa",
+      "arguments": {
+        "query": "Find the primary cosmological recombination paper by Seager Sasselov Scott that gives the matter temperature evolution equation with Compton coupling 8 sigma_T a_R T_gamma^4 divided by 3 m_e c, electron fraction over 1 plus helium abundance plus electron fraction, and adiabatic cooling.",
+        "objective": "Return original research papers or author-hosted arXiv manuscripts that explicitly state the nonrelativistic gas Compton temperature equation and its heat-capacity convention. Prefer the original RECFAST matter-temperature equation; exclude blogs and derivative tutorials. Need equation location and source version.",
+        "numResults": 4
+      },
+      "transport_status": "fulfilled",
+      "isError": false,
+      "selected_response_metadata": [
+        {
+          "title": "Seager, Sasselov, &amp; Scott, New Calculation of Recombination Epoch",
+          "url": "https://iopscience.iop.org/article/10.1086/312250/fulltext/995324.text.html"
+        },
+        {
+          "title": "[astro-ph/9909275] A New Calculation of the Recombination Epoch",
+          "url": "https://ar5iv.labs.arxiv.org/html/astro-ph/9909275"
+        },
+        {
+          "title": "Astrophysics",
+          "url": "https://arxiv.org/abs/astro-ph/9909275"
+        },
+        {
+          "title": "A New Calculation of the Recombination Epoch",
+          "url": "https://www.semanticscholar.org/paper/A-New-Calculation-of-the-Recombination-Epoch-Seager-Sasselov/034d814c921bfd3efcdaa3df9c2a32ad066cb048"
+        }
+      ]
+    },
+    {
+      "tool": "mcp__codex_apps__scispace_search_papers",
+      "arguments": {
+        "searchQuestion": "Which primary cosmological recombination calculations derive the gas matter-temperature evolution from nonrelativistic Compton scattering, including the factor 8 sigma_T a_R T_gamma^4/(3 m_e c) times the free-electron fraction divided by total particle abundance, and explain the equilibrium limit T_m=T_gamma?"
+      },
+      "transport_status": "fulfilled",
+      "isError": false,
+      "returned_paper_count": 10,
+      "selected_response_metadata": {
+        "unique_id": "5o5tqucv9npg",
+        "title": "Matter temperature after cosmological recombination",
+        "reported_year": 2022,
+        "authors_as_returned": [
+          "Scott Douglas",
+          "Moss, Adam"
+        ],
+        "doi": "10.48550/arxiv.0902.3438"
+      },
+      "resolution": "Selected arXiv paper was read directly. Official arXiv identifies 2009-04-21 v2; the repository-style 2022 discovery metadata is not used as the publication date."
+    },
+    {
+      "tool": "mcp__codex_apps__exa_web_fetch_exa",
+      "arguments": {
+        "urls": [
+          "https://iopscience.iop.org/article/10.1086/312250/fulltext/995324.text.html"
+        ],
+        "maxCharacters": 22000
+      },
+      "isError": false,
+      "selected_response_metadata": {
+        "title": "A New Calculation of the Recombination Epoch",
+        "received": "1999-04-03",
+        "accepted": "1999-07-23",
+        "published": "1999-08-23",
+        "section": "3. THE APPROXIMATE SET OF EQUATIONS",
+        "temperature_equation_number_in_publisher_prose": 5
+      },
+      "observation": "Primary publisher text confirms a simultaneous matter-temperature equation containing adiabatic and Compton terms. Its text extraction omits image-based equations; the exact coefficient was verified in Scott–Moss Eq (2), and the Exa result's ar5iv mathematical rendering."
+    },
+    {
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "arguments": {
+        "open": [
+          {
+            "ref_id": "https://arxiv.org/abs/astro-ph/9909275"
+          },
+          {
+            "ref_id": "https://arxiv.org/abs/0902.3438"
+          },
+          {
+            "ref_id": "https://arxiv.org/pdf/0902.3438"
+          }
+        ],
+        "response_length": "long"
+      },
+      "selected_response_metadata": [
+        {
+          "url": "https://arxiv.org/abs/astro-ph/9909275",
+          "reference_id": "turn33view0",
+          "version": "v2",
+          "revised": "1999-09-16",
+          "journal": "Astrophys.J.523:L1-L5,1999",
+          "doi": "10.1086/312250"
+        },
+        {
+          "url": "https://arxiv.org/abs/0902.3438",
+          "reference_id": "turn33view1",
+          "version": "v2",
+          "revised": "2009-04-21",
+          "doi": "10.1111/j.1365-2966.2009.14939.x"
+        },
+        {
+          "url": "https://arxiv.org/pdf/0902.3438",
+          "reference_id": "turn33view2",
+          "version_on_page": "arXiv:0902.3438v2 [astro-ph.CO] 21 Apr 2009",
+          "pages": 2,
+          "verified_equations": "(1) and (2), PDF page index0",
+          "title_on_pdf": "Matter temperature during cosmological recombination",
+          "mathematical_content": "(1+z) dTm/dz=(Tm-Tr)/(H tC)+2Tm; tC=3 me c/(8 sigmaT aR Tr^4)*(1+fHe+xe)/xe."
+        }
+      ]
+    },
+    {
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "arguments": {
+        "open": [
+          {
+            "ref_id": "https://arxiv.org/pdf/astro-ph/9909275v2"
+          }
+        ],
+        "response_length": "long"
+      },
+      "selected_response_metadata": {
+        "reference_id": "turn34view0",
+        "message": "Failed to fetch https://arxiv.org/pdf/astro-ph/9909275v2: DisabledError"
+      },
+      "status": "FETCH_FAILED",
+      "consequence": "No repeated attempt of the same disabled path. The successful primary publisher retrieval and separate Scott–Moss primary PDF supply the selected confirmation."
+    }
+  ],
+  "adopted_new_primary_sources": [
+    "SSS1999",
+    "SM2009"
+  ],
+  "inherited_primary_source_reused": "SS2000",
+  "not_claimed": [
+    "No full literature survey.",
+    "No adoption of unrelated recombination or tight-coupling switching algorithms.",
+    "No complete physical or spectral closure."
+  ],
+  "new_ODE_integrations": 0
+}

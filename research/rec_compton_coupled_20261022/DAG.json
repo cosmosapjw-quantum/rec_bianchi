@@ -1,0 +1,114 @@
+{
+  "schema": "rec.compton_coupled.dag.v1",
+  "unit": "REC_COMPTON_COUPLED_20261022",
+  "workflow_version": "1.0.0",
+  "approval_design": "0.2",
+  "science_status": "PREFLIGHT_IN_PROGRESS",
+  "parent_local_commit": "3a5a853abb2eb0f67650288aa1cee82c576f9ffc",
+  "parent_remote_commit": "04c0b10c1f1ec38d57c751369c553b638979e453",
+  "parent_tree": "712f2c0ba224fbb902ec8b38f1fa1f53b4c5b4b7",
+  "inputs": {
+    "thermal_runtime_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+    "omitted_runtime_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+    "new_planned_IVPs": 8,
+    "old_IVP_reruns": 0
+  },
+  "nodes": [
+    {
+      "id": "intake",
+      "dependencies": [],
+      "status": "COMPLETE",
+      "artifacts": [
+        "FROZEN_CONTRACT.md",
+        "provenance/REMOTE_INTAKE.json",
+        "provenance/PROJECT_PROTOCOL_INTAKE.json"
+      ]
+    },
+    {
+      "id": "theory",
+      "dependencies": [
+        "intake"
+      ],
+      "status": "AUTHOR_PACKET_COMPLETE",
+      "artifacts": [
+        "THEORY_KO.md",
+        "provenance/COMPTON_SOURCES.json",
+        "evidence/WOLFRAM_COUPLING.json"
+      ]
+    },
+    {
+      "id": "runtime_preflight",
+      "dependencies": [
+        "theory"
+      ],
+      "status": "IN_PROGRESS",
+      "artifacts": [
+        "code/compton_system.py",
+        "code/run_compton.py",
+        "evidence/COMPTON_SYSTEM_TESTS.json",
+        "evidence/driver_review"
+      ]
+    },
+    {
+      "id": "coupled8",
+      "dependencies": [
+        "runtime_preflight"
+      ],
+      "status": "NOT_RUN",
+      "artifacts": [
+        "results/compton8"
+      ]
+    },
+    {
+      "id": "analysis",
+      "dependencies": [
+        "coupled8"
+      ],
+      "status": "NOT_RUN",
+      "artifacts": [
+        "results/analysis_v1"
+      ]
+    },
+    {
+      "id": "independent_review",
+      "dependencies": [
+        "analysis"
+      ],
+      "status": "PREFLIGHT_REVIEW_IN_PROGRESS",
+      "artifacts": [
+        "evidence/independent_review"
+      ]
+    },
+    {
+      "id": "figures_report_handoff",
+      "dependencies": [
+        "analysis",
+        "independent_review"
+      ],
+      "status": "PENDING",
+      "artifacts": [
+        "figures",
+        "REPORT_KO.md",
+        "HANDOFF_KO.md"
+      ]
+    },
+    {
+      "id": "delivery",
+      "dependencies": [
+        "figures_report_handoff"
+      ],
+      "status": "PENDING",
+      "artifacts": [
+        "DELIVERY_STATUS.json"
+      ]
+    }
+  ],
+  "classification": {
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "REI_activation": false,
+    "U5": "CLOSED_HOLD_NOT_RESET",
+    "strong_no_go_submitted": false
+  }
+}

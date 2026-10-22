@@ -1,0 +1,229 @@
+{
+  "schema": "rec.compton.coupling_sources.v1",
+  "captured_at_utc": "2026-10-22T14:57:42.551Z",
+  "status": "SOURCE_AND_DERIVATION_PACKET_COMPLETE_PENDING_ARTIFACT_DISTINCT_REVIEW",
+  "unit": "rec_compton_coupled_20261022",
+  "parent_local_commit": "3a5a853abb2eb0f67650288aa1cee82c576f9ffc",
+  "parent_draft_PR": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/122",
+  "frozen_contract_sha256": "5d7d27ade2c3924bc2df5b6b376a94aff3a788e36a7cab651ebcce03c55fcb92",
+  "prior_omitted_runtime_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+  "inherited_thermal_runtime_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+  "primary_sources": [
+    {
+      "id": "SS2000",
+      "authors": [
+        "S. Y. Sazonov",
+        "R. A. Sunyaev"
+      ],
+      "year": 2000,
+      "title": "The profile of a narrow line after single scattering by Maxwellian electrons: relativistic corrections to the kernel of the integral kinetic equation",
+      "doi": "10.1086/317078",
+      "version": "astro-ph/9910280v3",
+      "version_date": "2000-09-14",
+      "url": "https://arxiv.org/abs/astro-ph/9910280v3",
+      "pdf_url": "https://arxiv.org/pdf/astro-ph/9910280v3",
+      "locations": [
+        "(18), printed pages7–8 / PDF indices6–7",
+        "(25), printed page13 / PDF index12",
+        "(6), printed page2 / PDF index1"
+      ],
+      "evidence_mode": "Prior verified primary-source derivation reused with the unchanged source record.",
+      "prior_pdf_bytes": 624758,
+      "prior_pdf_sha256": "ba510cf6f707a7aa52d8da6916aa7df250a103c738ead3a9f262431294d86902",
+      "paper_redistributed": false,
+      "adopted": "Leading thermal/recoil moments for nonrelativistic isotropic Maxwellian electrons and Thomson photons, including the distinction between actual angular energy monopole and missing spectral/induced moments.",
+      "not_adopted": "Relativistic corrections or a full new spectral scattering operator."
+    },
+    {
+      "id": "SSS1999",
+      "authors": [
+        "S. Seager",
+        "D. D. Sasselov",
+        "D. Scott"
+      ],
+      "year": 1999,
+      "title": "A New Calculation of the Recombination Epoch",
+      "journal": "ApJ523,L1–L5",
+      "doi": "10.1086/312250",
+      "version": "astro-ph/9909275v2",
+      "version_date": "1999-09-16",
+      "url": "https://arxiv.org/abs/astro-ph/9909275v2",
+      "publisher_url": "https://iopscience.iop.org/article/10.1086/312250/fulltext/995324.text.html",
+      "rendering_url": "https://ar5iv.labs.arxiv.org/html/astro-ph/9909275",
+      "location": "Section3, matter-temperature ODE; publisher prose calls it Eq(5).",
+      "evidence_mode": "New actual Exa search and publisher fetch; official arXiv version metadata read.",
+      "adopted": "Primary confirmation of simultaneous adiabatic and Compton matter-temperature coupling and hydrogen-normalized heat capacity.",
+      "not_adopted": "Its case-B rates, effective recombination model, T0=2.728K, cosmological parameters, or numerical switching prescription.",
+      "extraction_limit": "Publisher text extraction omits equation images; ar5iv equation numbering is inconsistent with publisher prose. Exact coefficient is independently read from SM2009 Eq(2). Direct versioned-PDF web fetch returned DisabledError.",
+      "paper_redistributed": false
+    },
+    {
+      "id": "SM2009",
+      "authors": [
+        "D. Scott",
+        "A. Moss"
+      ],
+      "year": 2009,
+      "title_as_arxiv_metadata": "Matter temperature after cosmological recombination",
+      "title_in_pdf": "Matter temperature during cosmological recombination",
+      "doi": "10.1111/j.1365-2966.2009.14939.x",
+      "version": "0902.3438v2",
+      "version_date": "2009-04-21",
+      "url": "https://arxiv.org/abs/0902.3438v2",
+      "pdf_url": "https://arxiv.org/pdf/0902.3438v2",
+      "locations": [
+        "Eq(1), PDF index0",
+        "Eq(2), PDF index0"
+      ],
+      "evidence_mode": "New actual SciSpace discovery followed by official arXiv metadata and direct primary PDF read.",
+      "equations": "(1+z)dTm/dz=(Tm-Tr)/(H tC)+2Tm; 1/tC=8 sigmaT aR Tr^4/(3 me c)*xe/(1+fHe+xe).",
+      "adopted": "Coefficient, sign under dz/dt=−(1+z)H, and total-particle heat-capacity convention.",
+      "not_adopted": "Early tight-coupling expansion/switching, their thermal history, neglected atomic cooling assumptions, or a Planck spectrum for the actual Bianchi photons.",
+      "metadata_resolution": "SciSpace's 2022 Repository metadata and PDF's later typesetting date are not used as the publication/revision year; official v2 history fixes 2009.",
+      "paper_redistributed": false
+    }
+  ],
+  "constants_owner": {
+    "path": "../rec_thermal_omitted_budget_20261022/code/compton_budget.py",
+    "sigma_T_m2": 6.6524587051e-29,
+    "m_e_kg": 9.1093837139e-31,
+    "c_m_s": 299792458,
+    "kB_J_K": 1.380649e-23,
+    "h_J_s": 6.62607015e-34,
+    "eV_J": 1.602176634e-19,
+    "a_R_definition": "8*pi^5*kB^4/(15*h^3*c^3)",
+    "K_C_definition": "sigmaT*c/(me*c^2)",
+    "K_C_SI_units": "m^3/(J s)",
+    "actual_U_owner": "rho_crit,J*Omega_gamma*Egamma0/a^4; retains inherited radiation normalization",
+    "reference_U_owner": "a_R*(2.7255K/a)^4; independently specified isotropic bath"
+  },
+  "native_coordinates": {
+    "size": 63,
+    "geometry_radiation": [
+      0,
+      39
+    ],
+    "isotope_ion_scaled": [
+      40,
+      60
+    ],
+    "tau": 61,
+    "logT": 62,
+    "photon_energy_monopole": 4,
+    "neutrino_energy_monopole": 22,
+    "population_map": "Y_j=scale_j*y_(40+j)",
+    "electron_abundance": "X=q·Y",
+    "particle_abundance": "eta=(1+q)·Y"
+  },
+  "source_owned_equations": {
+    "actual_hot": "Qh=−4 K_C nb X kB T U_actual",
+    "planck_reference": "Qp=4 K_C nb X kB Uref (Tref−T)",
+    "common_UV": "Qv=K_C nb X (Mv−4 kB T Uv)",
+    "exclusive_branch": true,
+    "number_source": "zero added Compton particle/charge source",
+    "added_logT": "g=X*B/(H*eta)",
+    "B_actual": "−8 K_C U_actual/3 +(2 K_C/3)*(Mv/(kB T)−4Uv)",
+    "B_planck": "8 K_C Uref*(Tref/T−1)/3 +(2 K_C/3)*(Mv/(kB T)−4Uv)",
+    "abundance_row": "scale_j*(B/H)*(q_j*eta−X*(1+q_j))/eta^2",
+    "geometry_row": "−g*dlnH/dy_k − actual_hot*delta_k4*(8 K_C/3)*X*Cgamma/(H eta)",
+    "temperature_row": "−X/(H eta)*[(2 K_C/3)Mv/(kB T)+planck_reference*(8 K_C/3)Uref*Tref/T]",
+    "tau_row": 0,
+    "jacobian_update": "rank≤1 at the same current state: e_62*r^T"
+  },
+  "frozen_coefficient_solution": {
+    "scope": "Compton-only subproblem at fixed composition and photon moments; algebraic reference, not the adopted full coupled solver.",
+    "A_C": "(8 K_C X/(3 eta))*(U_selected+Uv)",
+    "B_C": "(8 K_C X/(3 eta))*(planck_reference*Uref*Tref+Mv/(4kB))",
+    "solution": "Tnew=Tstar+(Told−Tstar)exp(−A_C*dt) when A_C>0",
+    "stable_form": "Tnew=Told+(B_C−A_C*Told)*dt*phi1(−A_C*dt), phi1(z)=expm1(z)/z, phi1(0)=1",
+    "zero_A_limit": "Told+B_C*dt; physical X=0 gives A_C=B_C=0",
+    "implementation_choice": "Existing BDF full63; no operator-splitting or instantaneous-equilibrium step adopted."
+  },
+  "energy_ownership": {
+    "gas": "Q0+QC+QUV+nb I·F",
+    "Compton_bath": "−QC",
+    "UV_bath": "−Qabs−QUV",
+    "escaping_radiation": "+Qescape",
+    "local_identity": "sum of the four stores is zero when inherited Q0+nb I·F=Qabs−Qescape",
+    "integrated_gas": "du_g/dx=(Qabs−Qescape+QC+QUV)/(nb H)−3kB T eta",
+    "test_fluid": true,
+    "bath_sources_applied_to_radiation": false,
+    "opacity_feedback": "Inherited electron-opacity coupling remains active; distinct from Compton energy backreaction.",
+    "public_diagnostic_field": "external_bath_W_m3 records explicitly modeled gas Compton input QC+QUV in this adapter; opposite bath transfer has separate fields."
+  },
+  "immutable_owners": [
+    {
+      "path": "../rec_thermal_omitted_budget_20261022/code/compton_budget.py",
+      "sha256": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567"
+    },
+    {
+      "path": "../rec_thermal_omitted_budget_20261022/provenance/SOURCES.json",
+      "sha256": "b9232d63d3afe002306d3292e9c6eae798fc16db277598fe383a3db77ccecf04"
+    },
+    {
+      "path": "../rec_thermal_omitted_budget_20261022/THEORY_KO.md",
+      "sha256": "e6c07f93646a62e6e843bfd0eda0a9fe4aa35e089e8301cd5807df824b936328"
+    },
+    {
+      "path": "../rec_thermal_moments_20261022/code/thermal_system.py",
+      "sha256": "1ac1336a3e979ec485cec0e4092ca7d6e1ef04aa43b28f525a06231c49e34375"
+    },
+    {
+      "path": "../rec_rei_hheli_sandbox_20261021/code/geometry.py",
+      "sha256": "b998b83f83da581cf51d08a734b34ecade5215f90ca1e72df43ce129c0fb38a0"
+    },
+    {
+      "path": "../rec_rei_hheli_sandbox_20261021/code/atomic_network.py",
+      "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+    },
+    {
+      "path": "../rec_rei_hheli_sandbox_20261021/data/atomic_model.json",
+      "sha256": "9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614"
+    }
+  ],
+  "runtime_equation_map": {
+    "path": "code/compton_system.py",
+    "frozen_sha256_reported_by_implementation_and_locally_hashed": "1035690890e2665769e1692e81d49d4209366291b1c8f2345f973818678f9ae9",
+    "source_terms": [
+      "_compton_state",
+      "compton_terms"
+    ],
+    "rhs": "compton_logT_rhs / rhs",
+    "jacobian": "compton_jacobian_row / jac",
+    "ledger": [
+      "sample",
+      "thermal_diagnostics",
+      "diagnostics"
+    ],
+    "review_scope": "Read-only equation-to-code mapping by theory author, not an artifact-distinct implementation review."
+  },
+  "related_context": {
+    "remote_intake": "provenance/REMOTE_INTAKE.json",
+    "REI219_head_reported_by_parent": "6a12f3865d9ea427c1391c41caed8bb7cb7ec00d",
+    "REI220_head": "8be7533cc97b3302bf42608699d6e8313ed6af8a",
+    "REC119_head": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+    "native_neutron_tritium": "Exact-zero inventory is the selected atomic-network initial/source closure, not a claim of zero physical nuclear production.",
+    "nuclear_network_adopted": false
+  },
+  "evidence": {
+    "frozen_plan": "evidence/theory/P1_RESEARCH_PLAN.json",
+    "source_discovery": "evidence/theory/SOURCE_DISCOVERY.json",
+    "actual_Wolfram": "evidence/WOLFRAM_COUPLING.json",
+    "Wolfram_status": "26 exact returned residuals/predicates zero/true, with retained Power::infy/Infinity::indet warnings; diagnostic limits/series zero; not warning-free",
+    "WolframContext_status": "Actual call returned internal error; evaluator calls executed.",
+    "independent_review": "PENDING_P4_ARTIFACT_DISTINCT_REVIEW"
+  },
+  "remaining_scope": [
+    "No reconstruction of the actual photon frequency spectrum.",
+    "No dynamic Compton energy backreaction on photon hierarchy/Einstein equations.",
+    "No new CI/CE/CX/free-free/nuclear rate activation.",
+    "Single gas temperature/instant energy redistribution remains an adopted closure.",
+    "Full coupled numerical validation and finite cohort results require their separate P2–P4 evidence.",
+    "Physical HOLD, production NOT_APPROVED, global convergence NOT_RUN, REI_activation=false remain."
+  ],
+  "P1_execution_counts": {
+    "new_ODE_integrations": 0,
+    "old_ODE_reruns": 0,
+    "git_mutations": 0
+  }
+}
