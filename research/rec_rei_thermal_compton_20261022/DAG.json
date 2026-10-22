@@ -1,0 +1,83 @@
+{
+  "unit": "THERM02_COMPTON",
+  "stage": "A_PHYSICS_FROZEN",
+  "workflow": "1.0.0",
+  "theory": {
+    "R1": "DONE",
+    "R2": "DONE",
+    "R3": "DONE",
+    "R4": "DONE",
+    "R5": "DONE",
+    "R6": "SYMBOLIC_DONE_FINITE_PENDING",
+    "R7": "NOT_RUN",
+    "R8": "PENDING",
+    "R9": "CONTRACT_DONE_RESULTS_PENDING",
+    "R10": "CHECKPOINT"
+  },
+  "coding": {
+    "C1": "DONE",
+    "C2": "DONE",
+    "C3": "DONE",
+    "C4": "DONE",
+    "C5": "IN_PROGRESS",
+    "C6": "PENDING",
+    "C7": "PENDING",
+    "C8": "PENDING",
+    "C9": "PENDING",
+    "C10": "PENDING"
+  },
+  "nodes": [
+    {
+      "id": "sources",
+      "state": "DONE",
+      "evidence": "provenance/SOURCE_REUSE_PROVENANCE.json"
+    },
+    {
+      "id": "derived_contract",
+      "state": "DONE",
+      "evidence": "FROZEN_CONTRACT.md"
+    },
+    {
+      "id": "new_adapter_checks",
+      "state": "IN_PROGRESS",
+      "depends_on": [
+        "sources",
+        "derived_contract"
+      ]
+    },
+    {
+      "id": "eight_new_IVPs",
+      "state": "NOT_RUN",
+      "depends_on": [
+        "new_adapter_checks",
+        "stage_B_backup"
+      ]
+    },
+    {
+      "id": "figures_and_review",
+      "state": "PENDING",
+      "depends_on": [
+        "eight_new_IVPs"
+      ]
+    },
+    {
+      "id": "final_backup_handoff",
+      "state": "PENDING",
+      "depends_on": [
+        "figures_and_review"
+      ]
+    }
+  ],
+  "next": "Finish current-state compact34 adapter and independent finite pre-ODE checks; preserve Stage B before eight new IVPs.",
+  "old_ODE_reruns": 0,
+  "new_ODE_executed": 0,
+  "new_ODE_planned": 8,
+  "flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  }
+}
