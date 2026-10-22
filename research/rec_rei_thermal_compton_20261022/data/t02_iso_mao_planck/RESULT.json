@@ -1,0 +1,554 @@
+{
+  "schema": "therm02.compact34.full63.current_compton.v1",
+  "id": "t02_iso_mao_planck",
+  "status": "PASS",
+  "identity": {
+    "schema": "therm02.compact34.full63.current_compton.v1",
+    "sources": {
+      "code/run.py": "a7fd5f599b05dcec3f0c1b1a78a3de144f7d40ebf9a1db25a60b4c5b13402e4d",
+      "code/coupled_thermal.py": "599be84fabe9bdc904fdcda46e685f2fcaffa5985ba72dcabcd1fa5cb97a51db",
+      "code/checks.py": "a1ebe75e2f883885095117ce7cb2891b6792cacca6193fab2306d192d2d8fa95",
+      "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+      "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d"
+    },
+    "config": {
+      "Sigma_F": 0.0,
+      "matter_A": 0.0,
+      "radiation_A": 0.0,
+      "T0_K": 1000.0,
+      "Emax_eV": 60.0,
+      "uv_multiplier": 1.0,
+      "rr_closure": "mao2017",
+      "cmb_branch": "planck_reference",
+      "id": "t02_iso_mao_planck",
+      "samples": 193,
+      "x_start": 0.0,
+      "x_end": 1.9459101490553132,
+      "method": "BDF",
+      "rtol": 2e-09,
+      "atol_divisor": 1,
+      "full63": false,
+      "max_step": 0.025,
+      "dense_output": true,
+      "t_eval": null
+    },
+    "sha256": "c9c7d9841c852da973fec53c7446ef1d92ea6ae81ec80d6ec3f734ea088d2077"
+  },
+  "started_UTC": "2026-10-22T17:33:43.859157+00:00",
+  "gates": {
+    "full_interval_193": true,
+    "all_sampled_physical_scopes": true,
+    "rhs_trial_temperature_domain": true,
+    "dense_integrated_energy": true,
+    "GL8_GL16_difference": true,
+    "GL8_GL16_absolute_throughput": true
+  },
+  "physical_scopes": {
+    "saved193": {
+      "scope": "saved193",
+      "status": "PASS",
+      "gates": {
+        "finite": true,
+        "increasing_x": true,
+        "minimum_isotope_fraction": true,
+        "isotope_inventory": true,
+        "baryon_error": true,
+        "nonnegative_electrons": true,
+        "temperature_domain": true,
+        "tau_nondecreasing": true,
+        "number_monopoles": true,
+        "einstein": true,
+        "signed_tensor_sum": true,
+        "trace_energy_fraction": true,
+        "zero_n_T": true,
+        "local_source_transfer": true
+      },
+      "metrics": {
+        "sample_count": 193,
+        "x_range": [
+          0.0,
+          1.9459101490553132
+        ],
+        "minimum_scaled_population": 0.0,
+        "isotope_errors": {
+          "n": 0.0,
+          "H1": 7.352914470395089e-16,
+          "D": 7.180580537495204e-16,
+          "T": 0.0,
+          "He3": 1.1219657089836256e-15,
+          "He4": 1.1329490663567944e-15,
+          "Li6": 6.269471956325465e-16,
+          "Li7": 6.847935235495762e-16
+        },
+        "maximum_baryon_error": 8.881784197001252e-16,
+        "minimum_ne_m3": 0.13361644576623144,
+        "T_range_K": [
+          424.47974433786936,
+          13022.665008201333
+        ],
+        "minimum_tau_increment": 3.8173063608874517e-07,
+        "maximum_number_monopole_error": 0.0,
+        "maximum_einstein_residual": 4.3544702514854123e-16,
+        "maximum_signed_tensor_sum_residual": 3.1746061653879034e-35,
+        "maximum_trace_energy_fraction": 1.873547596401806e-08,
+        "local_residual_peaks": {
+          "local_ledger_scaled": {
+            "value": 2.5557887165137877e-15,
+            "index": 105,
+            "x": 1.0641696127646245,
+            "z": 6.245298856517428
+          },
+          "local_transfer_scaled": {
+            "value": 9.788979419643677e-17,
+            "index": 111,
+            "x": 1.1249793049226031,
+            "z": 5.817842908852039
+          },
+          "atomic_source_scaled": {
+            "value": 3.292964834844684e-16,
+            "index": 59,
+            "x": 0.597961972886789,
+            "z": 10.54855666207539
+          },
+          "affine_direct_scaled": {
+            "value": 2.99366828990529e-16,
+            "index": 102,
+            "x": 1.033764766685635,
+            "z": 6.468974229476347
+          }
+        },
+        "baryon_peak": {
+          "value": 8.881784197001252e-16,
+          "index": 144,
+          "x": 1.459432611791485,
+          "z": 3.8797296850933565
+        },
+        "number_monopole_peak": {
+          "value": 0.0,
+          "index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "einstein_peak": {
+          "value": 4.3544702514854123e-16,
+          "index": 188,
+          "x": 1.9053703542833276,
+          "z": 2.1241182502072946
+        },
+        "tensor_sum_peak": {
+          "value": 3.1746061653879034e-35,
+          "index": 1,
+          "x": 0.010134948692996424,
+          "z": 19.78824097348606
+        }
+      }
+    },
+    "accepted_BDF_nodes": {
+      "scope": "accepted_BDF_nodes",
+      "status": "PASS",
+      "gates": {
+        "finite": true,
+        "increasing_x": true,
+        "minimum_isotope_fraction": true,
+        "isotope_inventory": true,
+        "baryon_error": true,
+        "nonnegative_electrons": true,
+        "temperature_domain": true,
+        "tau_nondecreasing": true,
+        "number_monopoles": true,
+        "einstein": true,
+        "signed_tensor_sum": true,
+        "trace_energy_fraction": true,
+        "zero_n_T": true,
+        "local_source_transfer": true
+      },
+      "metrics": {
+        "sample_count": 661,
+        "x_range": [
+          0.0,
+          1.9459101490553132
+        ],
+        "minimum_scaled_population": 0.0,
+        "isotope_errors": {
+          "n": 0.0,
+          "H1": 8.823497364474106e-16,
+          "D": 8.975725671869006e-16,
+          "T": 0.0,
+          "He3": 1.2341622798819883e-15,
+          "He4": 1.2462439729924738e-15,
+          "Li6": 8.359295941767287e-16,
+          "Li7": 8.217522282594915e-16
+        },
+        "maximum_baryon_error": 8.881784197001252e-16,
+        "minimum_ne_m3": 0.13352425199886764,
+        "T_range_K": [
+          424.45779900955216,
+          13030.239967952455
+        ],
+        "minimum_tau_increment": 1.6629054379364337e-11,
+        "maximum_number_monopole_error": 0.0,
+        "maximum_einstein_residual": 4.2232462468452854e-16,
+        "maximum_signed_tensor_sum_residual": 2.4008649718875045e-35,
+        "maximum_trace_energy_fraction": 1.873547596401806e-08,
+        "local_residual_peaks": {
+          "local_ledger_scaled": {
+            "value": 3.681429005230839e-15,
+            "index": 596,
+            "x": 1.232730597748791,
+            "z": 5.121406191441882
+          },
+          "local_transfer_scaled": {
+            "value": 1.3381161872493348e-16,
+            "index": 53,
+            "x": 0.3177765052776146,
+            "z": 14.283073861390848
+          },
+          "atomic_source_scaled": {
+            "value": 3.3996740857837784e-16,
+            "index": 93,
+            "x": 0.4578509065484889,
+            "z": 12.285477630416366
+          },
+          "affine_direct_scaled": {
+            "value": 3.5177646960143874e-16,
+            "index": 518,
+            "x": 0.993113131318421,
+            "z": 6.778856176801623
+          }
+        },
+        "baryon_peak": {
+          "value": 8.881784197001252e-16,
+          "index": 632,
+          "x": 1.4899745620858647,
+          "z": 3.732946161074964
+        },
+        "number_monopole_peak": {
+          "value": 0.0,
+          "index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "einstein_peak": {
+          "value": 4.2232462468452854e-16,
+          "index": 488,
+          "x": 0.9498829564615002,
+          "z": 7.122512124471333
+        },
+        "tensor_sum_peak": {
+          "value": 2.4008649718875045e-35,
+          "index": 5,
+          "x": 1.4480913501386052e-05,
+          "z": 19.999695903018278
+        }
+      }
+    },
+    "dense_GL8": {
+      "scope": "dense_GL8",
+      "status": "PASS",
+      "gates": {
+        "finite": true,
+        "increasing_x": true,
+        "minimum_isotope_fraction": true,
+        "isotope_inventory": true,
+        "baryon_error": true,
+        "nonnegative_electrons": true,
+        "temperature_domain": true,
+        "tau_nondecreasing": true,
+        "number_monopoles": true,
+        "einstein": true,
+        "signed_tensor_sum": true,
+        "trace_energy_fraction": true,
+        "zero_n_T": true,
+        "local_source_transfer": true
+      },
+      "metrics": {
+        "sample_count": 1536,
+        "x_range": [
+          0.00020123013349449773,
+          1.9457089189218186
+        ],
+        "minimum_scaled_population": 0.0,
+        "isotope_errors": {
+          "n": 0.0,
+          "H1": 7.352914470395089e-16,
+          "D": 7.180580537495204e-16,
+          "T": 0.0,
+          "He3": 1.1219657089836256e-15,
+          "He4": 1.1329490663567944e-15,
+          "Li6": 8.359295941767287e-16,
+          "Li7": 6.847935235495762e-16
+        },
+        "maximum_baryon_error": 8.881784197001252e-16,
+        "minimum_ne_m3": 0.1335207360119696,
+        "T_range_K": [
+          424.45386605885744,
+          13030.173322103736
+        ],
+        "minimum_tau_increment": 1.51542386825888e-08,
+        "maximum_number_monopole_error": 0.0,
+        "maximum_einstein_residual": 4.570387018042267e-16,
+        "maximum_signed_tensor_sum_residual": 3.362894187273229e-35,
+        "maximum_trace_energy_fraction": 1.872656217665843e-08,
+        "local_residual_peaks": {
+          "local_ledger_scaled": {
+            "value": 4.452628133755026e-15,
+            "index": 847,
+            "x": 1.0741033313241264,
+            "z": 6.17368239460344
+          },
+          "local_transfer_scaled": {
+            "value": 1.5524405068797432e-16,
+            "index": 424,
+            "x": 0.5373535108623051,
+            "z": 11.27014316889217
+          },
+          "atomic_source_scaled": {
+            "value": 3.5696395640345476e-16,
+            "index": 390,
+            "x": 0.49558209854733526,
+            "z": 11.79353978440478
+          },
+          "affine_direct_scaled": {
+            "value": 5.044997425377822e-16,
+            "index": 1293,
+            "x": 1.6394573359244269,
+            "z": 3.0757920740269658
+          }
+        },
+        "baryon_peak": {
+          "value": 8.881784197001252e-16,
+          "index": 1126,
+          "x": 1.4279973783030062,
+          "z": 4.035561601231225
+        },
+        "number_monopole_peak": {
+          "value": 0.0,
+          "index": 0,
+          "x": 0.00020123013349449773,
+          "z": 19.995774592350546
+        },
+        "einstein_peak": {
+          "value": 4.570387018042267e-16,
+          "index": 222,
+          "x": 0.28274817599441027,
+          "z": 14.82790088863226
+        },
+        "tensor_sum_peak": {
+          "value": 3.362894187273229e-35,
+          "index": 23,
+          "x": 0.030203615945494772,
+          "z": 19.375207065066327
+        }
+      }
+    },
+    "dense_GL16": {
+      "scope": "dense_GL16",
+      "status": "PASS",
+      "gates": {
+        "finite": true,
+        "increasing_x": true,
+        "minimum_isotope_fraction": true,
+        "isotope_inventory": true,
+        "baryon_error": true,
+        "nonnegative_electrons": true,
+        "temperature_domain": true,
+        "tau_nondecreasing": true,
+        "number_monopoles": true,
+        "einstein": true,
+        "signed_tensor_sum": true,
+        "trace_energy_fraction": true,
+        "zero_n_T": true,
+        "local_source_transfer": true
+      },
+      "metrics": {
+        "sample_count": 3072,
+        "x_range": [
+          5.371049002668091e-05,
+          1.9458564385652863
+        ],
+        "minimum_scaled_population": 0.0,
+        "isotope_errors": {
+          "n": 0.0,
+          "H1": 7.352914470395089e-16,
+          "D": 7.180580537495204e-16,
+          "T": 0.0,
+          "He3": 1.1219657089836256e-15,
+          "He4": 1.1329490663567944e-15,
+          "Li6": 8.359295941767287e-16,
+          "Li7": 6.847935235495762e-16
+        },
+        "maximum_baryon_error": 8.881784197001252e-16,
+        "minimum_ne_m3": 0.13351892397702733,
+        "T_range_K": [
+          424.4525179908093,
+          13030.256377704241
+        ],
+        "minimum_tau_increment": 4.044827974620212e-09,
+        "maximum_number_monopole_error": 0.0,
+        "maximum_einstein_residual": 4.2713276504085027e-16,
+        "maximum_signed_tensor_sum_residual": 3.8182995250584954e-35,
+        "maximum_trace_energy_fraction": 1.873309632889973e-08,
+        "local_residual_peaks": {
+          "local_ledger_scaled": {
+            "value": 5.501790467730875e-15,
+            "index": 1696,
+            "x": 1.0743582719476477,
+            "z": 6.171853764646752
+          },
+          "local_transfer_scaled": {
+            "value": 1.460896884112027e-16,
+            "index": 531,
+            "x": 0.33569278875480957,
+            "z": 14.011696275722468
+          },
+          "atomic_source_scaled": {
+            "value": 3.991949172405966e-16,
+            "index": 1696,
+            "x": 1.0743582719476477,
+            "z": 6.171853764646752
+          },
+          "affine_direct_scaled": {
+            "value": 4.492717609324462e-16,
+            "index": 428,
+            "x": 0.2724041328249759,
+            "z": 14.992475092600888
+          }
+        },
+        "baryon_peak": {
+          "value": 8.881784197001252e-16,
+          "index": 2252,
+          "x": 1.427788283826568,
+          "z": 4.036614619434115
+        },
+        "number_monopole_peak": {
+          "value": 0.0,
+          "index": 0,
+          "x": 5.371049002668091e-05,
+          "z": 19.998872109999475
+        },
+        "einstein_peak": {
+          "value": 4.2713276504085027e-16,
+          "index": 775,
+          "x": 0.49106353815412795,
+          "z": 11.85147896883497
+        },
+        "tensor_sum_peak": {
+          "value": 3.8182995250584954e-35,
+          "index": 172,
+          "x": 0.11024495373703308,
+          "z": 17.80790920927521
+        }
+      }
+    }
+  },
+  "adapter_checks": {
+    "path": "evidence/PRE_ODE_CHECKS.json",
+    "sha256": "b1cbc6a17d093638aad766e23c62621c05091814986771efb6e15cdf147e5e65",
+    "status": "PASS_REUSED",
+    "suites_reexecuted": 0
+  },
+  "statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "numerical_threads": 1
+  },
+  "resource_contract": {
+    "case_seconds": 180.0,
+    "total_seconds": 1200.0,
+    "enforcement": "cooperative; serialization is included"
+  },
+  "nfev": 2056,
+  "njev": 31,
+  "nlu": 144,
+  "accepted_nodes": 661,
+  "rhs_calls": 3242,
+  "solver_message": "The solver successfully reached the end of the integration interval.",
+  "solver_success": true,
+  "rhs_trial_T_range_K": [
+    424.4577928500118,
+    13030.239975369239
+  ],
+  "max_energy_residual": 3.748746946233392e-07,
+  "max_GL_difference": 8.90436462219903e-12,
+  "max_absolute_GL_difference": 8.90436462219903e-12,
+  "energy_residual_peak": {
+    "value": 3.748746946233392e-07,
+    "index": 48,
+    "x": 0.48647753726382836,
+    "z": 11.91055121197655
+  },
+  "GL_difference_peak": {
+    "value": 8.90436462219903e-12,
+    "index": 69,
+    "x": 0.6993114598167532,
+    "z": 9.435474149806252
+  },
+  "energy_gate_margin_fraction": 0.8750417684588869,
+  "final_T_K": 5610.732812500444,
+  "final_tau": 0.07174287066507727,
+  "T_range_K": [
+    424.47974433786936,
+    13022.665008201333
+  ],
+  "all_evaluated_T_range_K": [
+    424.4525179908093,
+    13030.256377704241
+  ],
+  "exchange_scale": {
+    "actual_density_peak": {
+      "value": 9.074836325033428e-07,
+      "index": 72,
+      "x": 0.7297163058957425,
+      "z": 9.122960208701825
+    },
+    "external_reference_peak": {
+      "value": 9.07483632503343e-07,
+      "index": 72,
+      "x": 0.7297163058957425,
+      "z": 9.122960208701825
+    },
+    "integral_GL16": [
+      4.1564397561894217e-07,
+      4.156439756189423e-07
+    ],
+    "integral_GL8": [
+      4.1564397561865873e-07,
+      4.15643975618659e-07
+    ],
+    "denominator_owners": [
+      "actual current photon density",
+      "external reference; zero if inactive"
+    ],
+    "backreaction_error_bound": "NOT_ESTABLISHED"
+  },
+  "scope": "finite saved193, accepted BDF nodes, GL8 and GL16 states; no continuum positivity claim",
+  "raw_sha256": "e32d8be1469bb124035ced1beaea172ad2aa23b27ee32da8ad2921521e86c9e6",
+  "solver_return_sha256": "c6e84e42f70eac62abda694d4ae8557e1cb60ce207e9404e85a2778f2a36565f",
+  "completed_UTC": "2026-10-22T17:33:53.096483+00:00",
+  "artifacts": {
+    "ATTEMPT.json": {
+      "bytes": 1372,
+      "sha256": "c7b9e98998fa10e49f9475a266561bd431405430e62b0f0cb1a110e40d3d194c"
+    },
+    "solver_return.npz": {
+      "bytes": 502182,
+      "sha256": "c6e84e42f70eac62abda694d4ae8557e1cb60ce207e9404e85a2778f2a36565f"
+    },
+    "trajectory.npz": {
+      "bytes": 1614215,
+      "sha256": "e32d8be1469bb124035ced1beaea172ad2aa23b27ee32da8ad2921521e86c9e6"
+    }
+  },
+  "wall_seconds": 9.24193980400014,
+  "cumulative_science_seconds": 52.27434921399981
+}

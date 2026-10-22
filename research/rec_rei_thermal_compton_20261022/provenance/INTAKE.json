@@ -1,0 +1,162 @@
+{
+  "workflow_version": "1.0.0",
+  "approval_version": "0.2",
+  "date_KST": "2026-10-22",
+  "original_goal": "Continue physics-first sandbox-executable thermal research with physical computational reduction and subsequent coding.",
+  "scope": "THERM02_COMPTON: new 5–60eV/193-node compact34 thermal histories; keep prior cohorts immutable.",
+  "starting_pr120": {
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/120",
+    "number": 120,
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": true,
+    "body": "## Result and scope\n\nThe recovered REC/REI pilot prescribed both temperature and UV, so it did not test a dynamical thermal-energy ledger. THERM01 adds thermal energy to the reusable PR220 compact invariant kernel and couples it to a source-bound ground-state ionic-yield model.\n\n**Complete: 6 nominal + 1 tight34 + 1 full63 oracle = 8 new IVPs**, each z20→2 with 193 saved epochs and 21 reconstructed populations. All finite gates and the bounded independent review pass. The current R1–R10/C1–C10 DAG is COMPLETE_SCOPED. This PR remains **draft and unmerged**.\n\nThis is a conditional atomic/thermal research unit. UV is still prescribed. It is not a complete nuclear reaction network, complete physical thermodynamic closure, or global convergence certification.\n\n## Physics and implementation\n\n- Reuses PR220's exact donor files and constant projection/lift: compact33→34 and full62→63 by adding w = epsilon_th/kB. The common-temperature, isotope-electronic-rate and reflection-even LRS assumptions retain the compact invariant subspace.\n- Evolves w' = -2w + (H_photo - C_rec)/(n_b kB H), with T = 2w/[3(sum Y + Ye)]. Ionic-potential energy and escaping recombination radiation enter a separate total-energy ledger without double-counting binding energy.\n- Recombination kinetic-energy coefficient beta = kB T² alpha'(T) + (3/2)kB T alpha follows the Maxwellian moment identity. Its application to fitted RR/DR alpha is explicitly a **source-fit derivative closure**; independent physical cooling accuracy remains UNMEASURED.\n- Selects a new, declared 5–60 eV smoothed-continuum source with a 5–40 eV control, E^-2.5 photon-number shape and separately normalized late Gamma_HI = 1e-12 s^-1. The UV envelope remains prescribed.\n- The direct Li I 1s-hole channel is closed below its ~64.39 eV edge. **Actual 50–60 eV resonant core excitation exists and is excluded from this continuum model.** SOURCE_SCOPE_CLARIFICATION.md supersedes the frozen contract's overbroad wording; the frozen execution-identity bytes are retained.\n- GL8/GL16 dense-output quadratures evaluate absorbed/escaped/adiabatic energy independently of saved endpoint energy. Baryons are an isotropic test fluid; massive collisionless matter and radiation signed stresses remain separately reported before the total.\n\nRR/DR and photoionization source identities, the current published 2026 Li source, Wolfram checks, units and finite gates are recorded in the unit. No unprovided Li branching ratios were invented. Full 60–200 eV correlated/final-state data and independent cooling witnesses remain input dependencies.\n\n## Finite results\n\n| Nominal case | Final T [K] | Optical depth tau | Max normalized energy residual |\n|---|---:|---:|---:|\n| iso60 | 6571.438612 | 0.0718002389 | 2.93562946e-6 |\n| split60 | 6571.354824 | 0.0717918637 | 2.58693522e-6 |\n| opposed60 | 6571.347785 | 0.0717916727 | 2.59849692e-6 |\n| split40 | 5917.452911 | 0.0680864530 | 2.60942318e-6 |\n| warm60 | 6579.461402 | 0.0718069243 | 7.97785862e-7 |\n| UV off | 204.081698 | 0.0000375797 | 1.87977325e-8 |\n\n**Near-gate limitation:** the largest energy residual is 2.935629461677083e-6 against the frozen 3e-6 limit: only **2.1457% headroom**. The independent reviewer reconstructed this near-gate ledger from stored dense states without a new ODE. This is not a broad/global convergence claim.\n\nRelative-T differences against split60 are 1.02123322e-6 (tight34) and 5.41920954e-8 (full63); population, tau and signed-observable comparisons also pass their frozen limits. No population clipping, temperature floor or renormalization was introduced.\n\nThe pre-science midpoint photon-quadrature failure and JSON serialization failure remain preserved. AMENDMENT_Q1 changed only integration within fixed bins to GL4 before any science IVP; source, coefficients and gates were unchanged. New science failures: 0.\n\n## Outputs and independent review\n\n[Full Korean results](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/RESULTS_KO.md), [source/physics contract](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/FROZEN_CONTRACT.md), [scope clarification](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/SOURCE_SCOPE_CLARIFICATION.md), [reuse analysis](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/COMPACT_REUSE.md), [independent review](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/evidence/INDEPENDENT_REVIEW.md).\n\nEight trajectory NPZ + eight solver-return NPZ, three PNG/PDF figure pairs and ten CSV sources are preserved. PNG figures were actually inspected; direct PDF-render inspection is NOT_RUN. Review status: PASS_SCOPED_THERM01_WITH_SOURCE_CLARIFICATION.\n\n## Checkpoints, recovery and backups\n\n- Stage A: d9a3a67b639d7ea820c46136d7a16537dcce6177.\n- Execution source / Stage B: f68f6e8391f115f36da2766bc8eb20724d1c673f.\n- Science / Stage C: d562d03415e37488cd4b5444488c77555260e0fb.\n- Exact payload recovery / R: b94314be1be12664f1dec8100d29bdb5f9135adf.\n- Final documentary HEAD / D: **7c4af579be508cccf203d3e2a3a5aa16a4b28e38**; all **160** unit Git blobs match local blob SHA and byte size. D changes documentation/receipts only; no source, raw, figure or scientific value changes.\n\nOn resumption the workspace payload was absent and the earlier remote Stage C ZIP was incomplete: 12,257,739 bytes versus the original local 12,583,886-byte receipt, with no central directory. Cause remains undetermined. All 147 expected payloads were restored exactly: 85 complete local members plus 62 from fixed science Git. Two missing CSV line endings were restored only after original SHA256/GitSHA equality; all ten CSVs now use byte-preserving Git blobs. The incomplete archive is retained as failure evidence, never admitted as a finalized backup.\n\n**Final recovered ZIP:** REC_REI_THERM01_FINAL_RECOVERED_20261022_5445e15edb1d.zip  \n**12,639,251 bytes; 157 payloads + one manifest.**  \nSHA256: `5445e15edb1d580af8b819e8d6a1b73fc2b9958d76bae92967c38ee0763bf0e0`.\n\n- Dropbox `id:BSpOijBcT10AAAAAAD_h4A`: upload complete; actual single full GET matches entire ZIP SHA256, CRC, manifest and all 157 payload hashes — **PASS**.\n- [Google Drive copy](https://drive.google.com/file/d/1vplg47vr0im-aTm0K6XLMYzvLEY5SJNs/view): upload and exact metadata size — **PASS**; whole-byte readback **NOT_RUN**.\n- Stage A/B retain their actual provider ACK/size receipts; no unperformed whole-byte check is implied.\n- The ZIP is a fixed pre-ACK payload snapshot. This final Git documentary supplement records the later upload/readback returns; the verified ZIP is not rewritten.\n\n[Final backup receipt](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/delivery/FINAL_PUBLICATION_BACKUP.json) · [actual readback receipt](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/delivery/FINAL_REMOTE_READBACK.json) · [DAG](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/DAG.json) · [next-thread handoff](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/NEXT_THREAD_HANDOFF_KO.md).\n\n## Cohorts and preserved decisions\n\nREC PR119 stays **125 main + 1 control = 126**, HEAD ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7. REI PR220 stays **127 main + 2 full62 oracle = 129**, HEAD 8be7533cc97b3302bf42608699d6e8313ed6af8a. The historical REI first failed raw remains **local-only in its original preservation scope**, not retroactively covered here.\n\nREC126/REI129/warm729/other completed old campaigns rerun here: **0**. Recovery IVPs: **0**. THERM01 is the separate eight-IVP cohort.\n\n**Physical HOLD; REC U5 HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET; global convergence NOT_RUN; production NOT_APPROVED; REI_activation=false.**\n\n## Next source-bound stage\n\nN1 READY_TO_SELECT: resolve excluded in-band Li resonances and 60–200 eV charge/level/energy data, and select an independent H/He partial recombination-cooling witness. N2/N3 INPUT_DEPENDENT: freeze exclusive channels, final charge/levels, electron counts, excitation, electron/photon energy and independent cooling criteria. N4/N5 NOT_RUN: only then implement the adapter, recheck compact invariance and predeclare a genuinely new small source-identity cohort. See [NEXT_SOURCE_INPUTS.md](https://github.com/cosmosapjw-quantum/rec_bianchi/tree/7c4af579be508cccf203d3e2a3a5aa16a4b28e38/research/rec_rei_thermal_yield_20261022/NEXT_SOURCE_INPUTS.md). No automatic replay of completed campaigns is queued.\n",
+    "title": "research: THERM01 scoped thermal ledger and ionic yields — 8 IVPs complete",
+    "base": "research/rec-rei-hheli-sandbox-20261021",
+    "base_sha": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+    "head": "research/rec-rei-thermal-yield-20261022",
+    "head_sha": "7c4af579be508cccf203d3e2a3a5aa16a4b28e38",
+    "head_repo_id": 1322785483,
+    "head_repo_full_name": "cosmosapjw-quantum/rec_bianchi",
+    "merge_commit_sha": "2ac37087568e25b7da281cfacedad5d5be0ad527",
+    "user": {
+      "login": "cosmosapjw-quantum",
+      "name": "cosmosapjw-quantum",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/58155957?v=4",
+      "id": 58155957
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-10-22T02:48:13Z",
+    "updated_at": "2026-10-22T06:56:37Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 5,
+    "changed_files": 160,
+    "additions": 26418,
+    "deletions": 0,
+    "display_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/120",
+    "display_title": "research: THERM01 scoped thermal ledger and ionic yields — 8 IVPs complete"
+  },
+  "recent_heads": {
+    "REC": [
+      {
+        "number": 123,
+        "head": "02f3286ee39d99444777ed029844b74bc00cb053",
+        "branch": "research/orchestration-sandbox-rec-20261022",
+        "title": "REC1: saved-history Compton cooling budget and C kernel",
+        "updated_at": "2026-10-22T07:01:09Z"
+      },
+      {
+        "number": 122,
+        "head": "04c0b10c1f1ec38d57c751369c553b638979e453",
+        "branch": "research/rec-thermal-omitted-budget-20261022",
+        "title": "REC omitted thermal budget: Compton priority from eight saved paths",
+        "updated_at": "2026-10-22T14:40:42Z"
+      },
+      {
+        "number": 121,
+        "head": "892aad5c3e9fb0b2abd021154b62a42c39277125",
+        "branch": "research/rec-thermal-moments-20261022",
+        "title": "REC thermal moments: retained energy closure and eight full63 restarts",
+        "updated_at": "2026-10-22T06:46:33Z"
+      },
+      {
+        "number": 120,
+        "head": "7c4af579be508cccf203d3e2a3a5aa16a4b28e38",
+        "branch": "research/rec-rei-thermal-yield-20261022",
+        "title": "research: THERM01 scoped thermal ledger and ionic yields — 8 IVPs complete",
+        "updated_at": "2026-10-22T06:56:37Z"
+      },
+      {
+        "number": 119,
+        "head": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+        "branch": "research/rec-rei-hheli-sandbox-20261021",
+        "title": "research: runnable H/He/Li LRS sandbox pilot (125 + opacity control)",
+        "updated_at": "2026-10-22T06:56:34Z"
+      },
+      {
+        "number": 118,
+        "head": "99f5f4fb57358a0347286f8299977125a2724774",
+        "branch": "research/rec-rei-tangent-20261021",
+        "title": "research: LRS matter–radiation seed tangents and cooperative NCP runner",
+        "updated_at": "2026-10-21T13:52:23Z"
+      }
+    ],
+    "REI": [
+      {
+        "number": 222,
+        "head": "074933f73743ed10ff98a10db49d1b72696ead4f",
+        "branch": "research/orchestration-sandbox-20261022",
+        "title": "Seven sandbox physics kernels, recovered results and next eight-node DAG",
+        "updated_at": "2026-10-22T07:18:51Z"
+      },
+      {
+        "number": 221,
+        "head": "2f9ebff30c7505e425179862819f212ddbd07542",
+        "branch": "research/rei-coupled-isotope-contract-20261022",
+        "title": "research: validate sandbox isotope kinetics after C1–C2",
+        "updated_at": "2026-10-22T07:41:00Z"
+      },
+      {
+        "number": 220,
+        "head": "8be7533cc97b3302bf42608699d6e8313ed6af8a",
+        "branch": "research/rei-hheli-compact-pilot-20261022",
+        "title": "ACCEL04 → PHYS04 → PILOT04: sandbox H–Li split-stress LRS sweep, z=20–2",
+        "updated_at": "2026-10-22T06:56:35Z"
+      },
+      {
+        "number": 219,
+        "head": "6a12f3865d9ea427c1391c41caed8bb7cb7ec00d",
+        "branch": "research/rei-isotope-quotient-pilot-20261022",
+        "title": "Research: scoped tritium DD and 18-family nuclear network",
+        "updated_at": "2026-10-22T03:23:57Z"
+      },
+      {
+        "number": 218,
+        "head": "4c8794e6e7c4ac553cc85fee728ef9ab6fe81fa8",
+        "branch": "research/rei-hheli-sandbox-pilot-20261021",
+        "title": "research: executable H/He/Li LRS sandbox pilot, z20 to z2",
+        "updated_at": "2026-10-21T15:56:20Z"
+      },
+      {
+        "number": 217,
+        "head": "de73c5d6c7bd3498571e9226298040d8259e1acf",
+        "branch": "research/rei-sigma-pi-sweep-analysis-20261021",
+        "title": "ACCEL03: portable split-stress sweep analysis and massive response",
+        "updated_at": "2026-10-21T13:57:30Z"
+      }
+    ]
+  },
+  "inaccessible_contexts": "Other conversation full transcripts UNAVAILABLE; bounded connected PR scan used, not an exhaustive conversation survey.",
+  "AGENTS_at_selected_PR120_paths": "NOT_FOUND at repository root/research/unit (GitHub404); no invented local execution policy",
+  "policy_resolution": [
+    {
+      "source": "User-supplied physmath-research-loop workflow1.0.0/approval0.2",
+      "decision": "Apply requested theory-to-coding continuation to a new finite unit; plugin1.3 default single-stage selector does not override this explicit user workflow."
+    },
+    {
+      "source": "skillquiver execute-durably",
+      "decision": "Keep session state outside repository; reuse the existing scientific DAG/provenance documents in repository per user task. No repetitive approvals; publication/backup already authorized."
+    },
+    {
+      "source": "Attached older protocols",
+      "decision": "Retain contract-first physical/code/figure checks; do not impose obsolete survivor-only formalization bans or repeat completed campaign checks."
+    }
+  ],
+  "preserved_flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "new_planned_IVPs": 8,
+  "old_cohort_reruns": 0,
+  "former_8_THERM01_reruns": 0
+}

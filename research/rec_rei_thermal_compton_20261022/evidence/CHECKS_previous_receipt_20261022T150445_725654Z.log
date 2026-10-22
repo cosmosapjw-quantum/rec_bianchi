@@ -1,0 +1,164 @@
+{
+  "unit": "THERM02",
+  "kind": "new-adapter PRE_ODE checks",
+  "time_utc": "2026-10-22T15:03:41.197986+00:00",
+  "command": "MPLCONFIGDIR=/tmp/therm02-mpl OPENBLAS_NUM_THREADS=1 python code/checks.py",
+  "code_input_sha256": {
+    "code/coupled_thermal.py": "2797de5573f3aa173e23f5af5b357d36907300549493008a043a1c608c8cdb75",
+    "code/checks.py": "88042d976ea8646f653e574d27bc4e57b2f0eb5e88dae811ffdd2e2d735b1058",
+    "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+    "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d"
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "cosmological_IVPs_executed": 0,
+  "old_suites_executed": 0,
+  "checks": [
+    {
+      "name": "check_source_identity",
+      "status": "PASS",
+      "evidence": {
+        "retained_files_verified": 70,
+        "selected_rows": 6,
+        "old_114_point_source_suite": "NOT_RUN; retained result reused",
+        "number_coefficient_source": "unchanged THERM01/REI PR220 donor"
+      },
+      "elapsed_s": 0.17841878900071606
+    },
+    {
+      "name": "check_mao_vectorization",
+      "status": "PASS",
+      "evidence": {
+        "temperatures_K": [
+          317.0,
+          1733.0,
+          13791.0,
+          280123.0
+        ],
+        "six_factor_max_relative": 0.0,
+        "six_derivative_max_relative": 0.0,
+        "isotope_moment_max_relative": 0.0,
+        "six_to_13_map": [
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          2,
+          3,
+          4,
+          5,
+          3,
+          4,
+          5
+        ],
+        "recombination_channels": 13,
+        "number_rate_method_identity": true
+      },
+      "elapsed_s": 0.033190827001817524
+    },
+    {
+      "name": "check_compton_units_and_limits",
+      "status": "PASS",
+      "evidence": {
+        "si_cgs_max_relative": 2.7012248691691586e-16,
+        "affine_volume_max_scaled": 0.0,
+        "heat_capacity_relative": 0.0,
+        "Q_hot_fixture_W_m3": -6.484551139738265e-31,
+        "Q_uv_fixture_W_m3": 1.2481105736422587e-38,
+        "zero_electron_exact": true,
+        "off_exact": true,
+        "planck_equilibrium": true
+      },
+      "elapsed_s": 0.0001331550010945648
+    },
+    {
+      "name": "check_planck_integrals",
+      "status": "PASS",
+      "evidence": {
+        "energy_integral": 6.493939402266828,
+        "recoil_induced_integral": 25.975757609067315,
+        "quadrature_absolute_errors": [
+          3.911889090025001e-13,
+          7.940618438408166e-13
+        ],
+        "A_RAD_J_m3_K4": 7.565733250280004e-16,
+        "independent_A_RAD": 7.565733250280006e-16,
+        "relative_radiation_constant": 2.606690188263696e-16,
+        "effective_recoil_over_kT_U": 4.000000000000001
+      },
+      "elapsed_s": 0.00042739200580399483
+    },
+    {
+      "name": "check_continuous_uv",
+      "status": "FAIL",
+      "error": "ValueError('Number of break points (67) must be less than subinterval limit (50)')",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 443, in run_checks\n    evidence = function()\n               ^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 191, in check_continuous_uv\n    v1, e1 = quad(lambda E: E**(p+1), float(edges[0]), float(edges[-1]),\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/integrate/_quadpack_py.py\", line 605, in quad\n    raise ValueError(msg)\nValueError: Number of break points (67) must be less than subinterval limit (50)\n",
+      "elapsed_s": 0.049990892002824694
+    },
+    {
+      "name": "check_frozen_subflow",
+      "status": "PASS",
+      "evidence": {
+        "fixture_count": 4,
+        "max_semigroup_relative": 1.648567121689569e-16,
+        "max_direct_relative": 1.648567121689569e-16,
+        "taylor_increment_relative": 1.5858031687970855e-09,
+        "use": "fixed x,Y,geometry algebra only; not coupled time splitting"
+      },
+      "elapsed_s": 0.0003185940004186705
+    },
+    {
+      "name": "check_compact_full_and_ledgers",
+      "status": "FAIL",
+      "error": "ValueError('initial state outside exact compact34 invariant')",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 443, in run_checks\n    evidence = function()\n               ^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 241, in check_compact_full_and_ledgers\n    small = CoupledThermalSystem(cfg)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/coupled_thermal.py\", line 215, in __init__\n    raise ValueError(\"initial state outside exact compact34 invariant\")\nValueError: initial state outside exact compact34 invariant\n",
+      "elapsed_s": 0.15448789799847873
+    },
+    {
+      "name": "check_current_state_feedback",
+      "status": "FAIL",
+      "error": "ValueError('initial state outside exact compact34 invariant')",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 443, in run_checks\n    evidence = function()\n               ^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 291, in check_current_state_feedback\n    hot = CoupledThermalSystem(dict(BASE_CONFIG, cmb_branch=\"actual_hot\"), full=True)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/coupled_thermal.py\", line 215, in __init__\n    raise ValueError(\"initial state outside exact compact34 invariant\")\nValueError: initial state outside exact compact34 invariant\n",
+      "elapsed_s": 0.2809480580035597
+    },
+    {
+      "name": "check_thermal_partial",
+      "status": "FAIL",
+      "error": "ValueError('initial state outside exact compact34 invariant')",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 443, in run_checks\n    evidence = function()\n               ^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 329, in check_thermal_partial\n    system = CoupledThermalSystem(dict(BASE_CONFIG, rr_closure=closure), full=True)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/coupled_thermal.py\", line 215, in __init__\n    raise ValueError(\"initial state outside exact compact34 invariant\")\nValueError: initial state outside exact compact34 invariant\n",
+      "elapsed_s": 0.21841022099397378
+    },
+    {
+      "name": "check_mutation_discrimination",
+      "status": "PASS",
+      "evidence": {
+        "expected_rejection": true,
+        "compton_relative_mutation_separations": {
+          "extra_c": 299792457.0000001,
+          "missing_c": 0.999999996664359,
+          "opposite_Q_sign": 2.0000000000000004,
+          "Kelvin_used_as_energy_eV": 11603.518121550083
+        },
+        "mao_temperature_unit_max_relative_separation": 0.9400393454994674,
+        "charge_off_by_one_rejected": true,
+        "interpretation": "test expectation discrimination, not mutated production runs"
+      },
+      "elapsed_s": 0.014416838996112347
+    },
+    {
+      "name": "check_error_guards",
+      "status": "FAIL",
+      "error": "ValueError('initial state outside exact compact34 invariant')",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 443, in run_checks\n    evidence = function()\n               ^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/checks.py\", line 386, in check_error_guards\n    system = CoupledThermalSystem(BASE_CONFIG)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_rei_thermal_compton_20261022/code/coupled_thermal.py\", line 215, in __init__\n    raise ValueError(\"initial state outside exact compact34 invariant\")\nValueError: initial state outside exact compact34 invariant\n",
+      "elapsed_s": 0.38571371800208
+    }
+  ],
+  "status": "FAIL",
+  "exit_code": 1,
+  "elapsed_s": 1.3496398979987134,
+  "log_path": "evidence/CHECKS_20261022T150341_197986Z.log",
+  "scope": "finite adapter checks only; trajectory acceptance and independent review pending"
+}

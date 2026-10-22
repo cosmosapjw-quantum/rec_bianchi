@@ -1,0 +1,136 @@
+{
+  "unit": "THERM02_COMPTON",
+  "stage": "D_SCIENCE_PUBLISHED_BACKED_UP_HANDOFF_CLOSED",
+  "workflow": "1.0.0",
+  "theory": {
+    "R1": "DONE_SCOPED",
+    "R2": "DONE_SCOPED",
+    "R3": "DONE_SCOPED",
+    "R4": "DONE_SCOPED",
+    "R5": "DONE_SCOPED",
+    "R6": "DONE_SCOPED",
+    "R7": "DONE_SCOPED",
+    "R8": "DONE_SCOPED",
+    "R9": "DONE_SCOPED",
+    "R10": "DONE_SCOPED"
+  },
+  "coding": {
+    "C1": "DONE_SCOPED",
+    "C2": "DONE_SCOPED",
+    "C3": "DONE_SCOPED",
+    "C4": "DONE_SCOPED",
+    "C5": "DONE_SCOPED",
+    "C6": "DONE_SCOPED",
+    "C7": "DONE_SCOPED",
+    "C8": "DONE_SCOPED",
+    "C9": "DONE_SCOPED",
+    "C10": "DONE_SCOPED"
+  },
+  "nodes": [
+    {
+      "id": "stage_A_checkpoint",
+      "state": "DONE_PUBLISHED_BOTH_BACKUP_ACK_SIZE",
+      "evidence": [
+        "delivery/STAGE_A_GIT_ACK.json",
+        "delivery/STAGE_A_BACKUP_ACK.json"
+      ]
+    },
+    {
+      "id": "sources",
+      "state": "DONE",
+      "evidence": "provenance/SOURCE_REUSE_PROVENANCE.json"
+    },
+    {
+      "id": "derived_contract",
+      "state": "DONE",
+      "evidence": "FROZEN_CONTRACT.md"
+    },
+    {
+      "id": "stage_B_backup",
+      "state": "DONE_PUBLISHED_BOTH_BACKUP_ACK_SIZE",
+      "evidence": [
+        "delivery/STAGE_B_GIT_ACK.json",
+        "delivery/STAGE_B_BACKUP_ACK.json"
+      ]
+    },
+    {
+      "id": "new_adapter_checks",
+      "state": "DONE",
+      "depends_on": [
+        "sources",
+        "derived_contract"
+      ],
+      "evidence": [
+        "evidence/PRE_ODE_CHECKS.json",
+        "evidence/RUNNER_STATIC_CHECKS.json"
+      ]
+    },
+    {
+      "id": "eight_new_IVPs",
+      "state": "DONE_8_OF_8",
+      "depends_on": [
+        "new_adapter_checks",
+        "stage_B_backup"
+      ],
+      "evidence": "results/SCIENCE_SUMMARY.json"
+    },
+    {
+      "id": "figures_and_review",
+      "state": "DONE_SCOPED_VISUAL_REPAIR_RESOLVED",
+      "depends_on": [
+        "eight_new_IVPs"
+      ],
+      "evidence": [
+        "results/PLOT_DATA_MANIFEST.json",
+        "evidence/independent_review/REVIEW.md"
+      ]
+    },
+    {
+      "id": "final_backup_handoff",
+      "state": "DONE_SCOPED",
+      "depends_on": [
+        "figures_and_review"
+      ],
+      "evidence": [
+        "delivery/STAGE_C_GIT_ACK.json",
+        "delivery/STAGE_C_BACKUP_ACK.json",
+        "delivery/STAGE_C_DROPBOX_BYTE_VERIFY.json",
+        "HANDOFF_KO.md"
+      ]
+    }
+  ],
+  "next": "N1/N2 zero-ODE source-provider contract; exact missing physical inputs remain open. Reuse all completed histories.",
+  "old_ODE_reruns": 0,
+  "new_ODE_executed": 8,
+  "new_ODE_planned": 8,
+  "flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "completed_cohorts_separate": {
+    "REC119": 126,
+    "REI220": 129,
+    "warm": 729,
+    "THERM01_PR120": 8,
+    "PR121_restart_5_200eV": 8,
+    "PR124_Compton_restart_5_200eV": 8,
+    "THERM02_PR125_5_60eV": 8
+  },
+  "independent_review": "PASS_SCOPED_THERM02_WITH_VISUAL_REPAIR",
+  "updated_UTC": "2026-10-22T18:03:13.922514+00:00",
+  "publication_science_commit": "407a280aff51abefc10374cb6e21c4224140328c",
+  "backup_scope": {
+    "Stage_A_B": "Both provider ACK+size PASS; whole-byte NOT_RUN",
+    "Stage_C_Dropbox": "Whole GET SHA256+ZIP CRC+all181 payload hashes PASS",
+    "Stage_C_Drive": "Upload ACK+metadata size PASS; whole-byte NOT_RUN"
+  },
+  "metadata_publication_receipt": {
+    "rule": "The D_* stage labels the local delivery-documentation phase. Actual metadata commit/ref ACK and final remote-tree comparison are recorded after publication.",
+    "receipt": "delivery/FINAL_GIT_ACK.json in the final deliverable and the final PR125 return",
+    "scientific_completion_evidence": "Stage C commit and backup receipts already completed; metadata status is not used to infer a scientific result."
+  }
+}

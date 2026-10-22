@@ -1,0 +1,309 @@
+{
+  "ODE_calls_for_plotting": 0,
+  "case_ids": [
+    "t02_split_mao_off",
+    "t02_split_mao_hot",
+    "t02_split_mao_planck",
+    "t02_split_derivative_planck",
+    "t02_iso_mao_planck",
+    "t02_split_mao_hot_tight34",
+    "t02_split_mao_planck_tight34",
+    "t02_split_mao_planck_oracle63"
+  ],
+  "comparison_definitions": {
+    "derivative_minus_mao_planck": {
+      "left": "t02_split_derivative_planck",
+      "relative_T_denominator": "t02_split_mao_planck",
+      "right": "t02_split_mao_planck"
+    },
+    "hot_minus_off": {
+      "left": "t02_split_mao_hot",
+      "relative_T_denominator": "t02_split_mao_off",
+      "right": "t02_split_mao_off"
+    },
+    "hot_tight_minus_nominal": {
+      "left": "t02_split_mao_hot_tight34",
+      "relative_T_denominator": "t02_split_mao_hot",
+      "right": "t02_split_mao_hot"
+    },
+    "iso_mao_planck_minus_prior_derivative_off": {
+      "left": "t02_iso_mao_planck",
+      "relative_T_denominator": "thermal_iso60",
+      "right": "thermal_iso60"
+    },
+    "iso_minus_split_planck": {
+      "left": "t02_iso_mao_planck",
+      "relative_T_denominator": "t02_split_mao_planck",
+      "right": "t02_split_mao_planck"
+    },
+    "mao_off_minus_prior_derivative_off": {
+      "left": "t02_split_mao_off",
+      "relative_T_denominator": "thermal_split60",
+      "right": "thermal_split60"
+    },
+    "planck_minus_hot": {
+      "left": "t02_split_mao_planck",
+      "relative_T_denominator": "t02_split_mao_hot",
+      "right": "t02_split_mao_hot"
+    },
+    "planck_oracle_minus_nominal": {
+      "left": "t02_split_mao_planck_oracle63",
+      "relative_T_denominator": "t02_split_mao_planck",
+      "right": "t02_split_mao_planck"
+    },
+    "planck_tight_minus_nominal": {
+      "left": "t02_split_mao_planck_tight34",
+      "relative_T_denominator": "t02_split_mao_planck",
+      "right": "t02_split_mao_planck"
+    }
+  },
+  "comparison_peaks_absolute": {
+    "derivative_minus_mao_planck": {
+      "Pi_gamma": 1.2717864820077293e-12,
+      "Pi_matter": 2.8959209433677274e-17,
+      "Pi_nu": 2.1684721076067892e-16,
+      "Pi_radiation": 1.2717462852121844e-12,
+      "Pi_total": 1.2717356871359484e-12,
+      "Sigma_F": 5.848811018838163e-13,
+      "electron_abundance": 1.2601836515413467e-06,
+      "relative_T": 0.0002908665035347317,
+      "tau_T": 3.2010198339205154e-08
+    },
+    "hot_minus_off": {
+      "Pi_gamma": 2.3354441257142974e-09,
+      "Pi_matter": 5.542168337620409e-14,
+      "Pi_nu": 4.1152520776385586e-13,
+      "Pi_radiation": 2.33537583813493e-09,
+      "Pi_total": 2.3353572070150628e-09,
+      "Sigma_F": 9.509717978362087e-10,
+      "electron_abundance": 0.002084466920005301,
+      "relative_T": 0.36817442293304814,
+      "tau_T": 5.74987426371909e-05
+    },
+    "hot_tight_minus_nominal": {
+      "Pi_gamma": 3.539375959199856e-13,
+      "Pi_matter": 9.397472763069542e-14,
+      "Pi_nu": 2.4910695522410015e-13,
+      "Pi_radiation": 6.028616733426417e-13,
+      "Pi_total": 6.867028647106199e-13,
+      "Sigma_F": 9.395680795887262e-10,
+      "electron_abundance": 4.499493000409416e-09,
+      "relative_T": 1.3967462404859404e-07,
+      "tau_T": 1.2703788232959132e-10
+    },
+    "iso_mao_planck_minus_prior_derivative_off": {
+      "Pi_gamma": 4.059211654836554e-24,
+      "Pi_matter": 0.0,
+      "Pi_nu": 2.8008892915136482e-24,
+      "Pi_radiation": 6.860100946350203e-24,
+      "Pi_total": 6.860100946350203e-24,
+      "Sigma_F": 5.297224882476597e-21,
+      "electron_abundance": 0.002079970990124358,
+      "relative_T": 0.3675421528769812,
+      "tau_T": 5.736821983559626e-05
+    },
+    "iso_minus_split_planck": {
+      "Pi_gamma": 0.00026400799417067105,
+      "Pi_matter": 0.00040862745503249254,
+      "Pi_nu": 0.00018216667904153566,
+      "Pi_radiation": 0.0004461746732122067,
+      "Pi_total": 0.0008548021282446992,
+      "Sigma_F": 0.14999999999999994,
+      "electron_abundance": 7.49467231012102e-05,
+      "relative_T": 0.00026873307924470325,
+      "tau_T": 8.347261282445895e-06
+    },
+    "mao_off_minus_prior_derivative_off": {
+      "Pi_gamma": 2.436561701371371e-12,
+      "Pi_matter": 7.66839676068394e-13,
+      "Pi_nu": 1.6917110954813887e-12,
+      "Pi_radiation": 4.1174149593287135e-12,
+      "Pi_total": 4.818679540130079e-12,
+      "Sigma_F": 3.6148941062741358e-09,
+      "electron_abundance": 9.138123818752675e-07,
+      "relative_T": 0.0003528922264276281,
+      "tau_T": 2.4272824111770674e-08
+    },
+    "planck_minus_hot": {
+      "Pi_gamma": 5.364162510446829e-12,
+      "Pi_matter": 7.026294998569663e-16,
+      "Pi_nu": 6.316978597110598e-15,
+      "Pi_radiation": 5.36397422518705e-12,
+      "Pi_total": 5.363922373218151e-12,
+      "Sigma_F": 2.873094349237215e-10,
+      "electron_abundance": 4.105572088630716e-06,
+      "relative_T": 0.0007831384147017718,
+      "tau_T": 1.3418047112301323e-07
+    },
+    "planck_oracle_minus_nominal": {
+      "Pi_gamma": 4.0983573956418495e-14,
+      "Pi_matter": 1.8333452160915198e-14,
+      "Pi_nu": 2.8289097952181874e-14,
+      "Pi_radiation": 6.927268546112753e-14,
+      "Pi_total": 8.682334365350819e-14,
+      "Sigma_F": 1.4853293595074035e-10,
+      "electron_abundance": 3.7763250859690345e-10,
+      "relative_T": 3.4167474117271937e-09,
+      "tau_T": 1.0519807247533208e-11
+    },
+    "planck_tight_minus_nominal": {
+      "Pi_gamma": 3.5394256969745186e-13,
+      "Pi_matter": 9.39760286733024e-14,
+      "Pi_nu": 2.491104924336879e-13,
+      "Pi_radiation": 6.028702249872772e-13,
+      "Pi_total": 6.867127309503895e-13,
+      "Sigma_F": 6.503560190385116e-10,
+      "electron_abundance": 4.499891570475256e-09,
+      "relative_T": 1.400760010547282e-07,
+      "tau_T": 1.2703683894763063e-10
+    }
+  },
+  "flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD",
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED"
+  },
+  "frozen_contract_sha256": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+  "inputs": {
+    "t02_iso_mao_planck": {
+      "path": "data/t02_iso_mao_planck/trajectory.npz",
+      "result_receipt_sha256": "528b4cf26378708907f0e25da82671fe86db6b5e09f4b2210c844b92026d8d7b",
+      "sha256": "e32d8be1469bb124035ced1beaea172ad2aa23b27ee32da8ad2921521e86c9e6"
+    },
+    "t02_split_derivative_planck": {
+      "path": "data/t02_split_derivative_planck/trajectory.npz",
+      "result_receipt_sha256": "0a66444ab75b11e63bd60d6b0b05dd341b800bbd74b3d01579c1fb9b495c194a",
+      "sha256": "6dd43e49a887b6b4ca7e130116ed37eec023cff7f19fbdc12999eeee579902bc"
+    },
+    "t02_split_mao_hot": {
+      "path": "data/t02_split_mao_hot/trajectory.npz",
+      "result_receipt_sha256": "aeda4a6652cb4db7ebae385f39daaba12a72ba9a4579f3721b469d59200c7923",
+      "sha256": "a9bd9a0d349ab7f85d04a65b1cf05c391ab342162885380dc5b4838d39bc0919"
+    },
+    "t02_split_mao_hot_tight34": {
+      "path": "data/t02_split_mao_hot_tight34/trajectory.npz",
+      "result_receipt_sha256": "2f708be41edadd24469e6a72cec27fc8f2596ac9271dd4e4b44fb766127ddf8e",
+      "sha256": "de4cc20b91bde784be1e3c705c2732f98d82af0c0834233e9095be35a8a70c37"
+    },
+    "t02_split_mao_off": {
+      "path": "data/t02_split_mao_off/trajectory.npz",
+      "result_receipt_sha256": "be263c3cb83fd31e9ead2114b10c5e858da7b6619eba2f5e1760b61af5def6a8",
+      "sha256": "b8725b52de867d37a30a4205805ddb9265716457a53e5704f8c8bd3c05a5de26"
+    },
+    "t02_split_mao_planck": {
+      "path": "data/t02_split_mao_planck/trajectory.npz",
+      "result_receipt_sha256": "f82710f7d55b8f65c0f41d558141627b23dc67886e6ec4e8dc4d5cb3dfa9ca37",
+      "sha256": "a5f2df6f3c771f97a06be3db852bbc22608f1e4ec2d006fc3d8f33cacd33a4bb"
+    },
+    "t02_split_mao_planck_oracle63": {
+      "path": "data/t02_split_mao_planck_oracle63/trajectory.npz",
+      "result_receipt_sha256": "0b35fca155f04a34048c4a26e7bac475784a57922503e8f6ea1c45a983a4b051",
+      "sha256": "2b5866b197ff082ead0beb7e2e01f017bdf49234dcb8ad356e384bb0b31372c6"
+    },
+    "t02_split_mao_planck_tight34": {
+      "path": "data/t02_split_mao_planck_tight34/trajectory.npz",
+      "result_receipt_sha256": "78e967bb1508d638db5759a3d26a870aa143366889b1b4be3621fd0aaf337d24",
+      "sha256": "a9013b5599fbf41cfef416cb1d48e41c036250e8bed628ac267ca0ab4c3a30fa"
+    },
+    "thermal_iso60": {
+      "path": "baseline/thermal_iso60/trajectory.npz",
+      "result_receipt_sha256": "5a041fdd577670437f8523c4b79b421c8e7204dcd9515760e641f62e5063ad5e",
+      "sha256": "7d1a268680abeb1ab791b6ace5b318a320e37557d869e4a67e465bc6fb97e1fb"
+    },
+    "thermal_split60": {
+      "path": "baseline/thermal_split60/trajectory.npz",
+      "result_receipt_sha256": "f6beb5618e048c6742fd3cfcebb28aff05d75d7dea364442edb874988e29428e",
+      "sha256": "4880ff6b7c9467a9bc2c73c6121a207072001dd60b267ceca249e64ca5b9f5e5"
+    }
+  },
+  "new_science_runs_for_plotting": 0,
+  "notes": [
+    "Read saved NPZs only; no physics module import, RHS evaluation or integration.",
+    "All case comparisons use exactly equal saved x and z grids; no interpolation.",
+    "CSV floating values have 17 significant digits for float64 round trips.",
+    "Signed curves retain signs. Log-only display masks exact zeros; CSVs retain them.",
+    "Energy signs are +absorption, -escape, -work, +CMB/reference, +UV Compton.",
+    "Actual-grey hot exchange and external Planck exchange are alternative owners.",
+    "Bath ledger debits do not implement photon or Einstein backreaction.",
+    "Observed numerical differences are finite comparisons, not global error bounds.",
+    "THERM01 copied baselines remain a separate completed cohort."
+  ],
+  "outputs": {
+    "figures/01_temperature_ionization_opacity.pdf": {
+      "bytes": 34746,
+      "sha256": "1522ee029bb2b5c2c1c99adab8dbd162ae81459e1a4d162ed9e9d6c56d4533a7"
+    },
+    "figures/01_temperature_ionization_opacity.png": {
+      "bytes": 450972,
+      "sha256": "6e7a61c0bbf72de79e80bd890eb17cccb1eb9a4cc0e7405c1f4c87092729aead"
+    },
+    "figures/02_signed_energy_transfer.pdf": {
+      "bytes": 37550,
+      "sha256": "d57c9605b70644c30a1c748db180f19a3147674d3784c87e7a9142f3842f52d3"
+    },
+    "figures/02_signed_energy_transfer.png": {
+      "bytes": 441103,
+      "sha256": "ae386bfbcafa476e2fd77096565ce5512613d98a11c7ff31774e534ed8861435"
+    },
+    "figures/03_signed_stress_branch_changes.pdf": {
+      "bytes": 33890,
+      "sha256": "b778a040d0fcbabc1f20e41bbe263fd84044a4dc5f6d79483761fdaf6dd1c87d"
+    },
+    "figures/03_signed_stress_branch_changes.png": {
+      "bytes": 576496,
+      "sha256": "60e16fa84cbb247085e8cc32e22a847c36b183e99f082524dd640d0148a8d5f3"
+    },
+    "results/PLOT_DATA_signed_comparisons.csv": {
+      "bytes": 367294,
+      "sha256": "860a2d8967e45a8115260dc901897e15f24dbced79a4e3cb8e6cfa09580d538f"
+    },
+    "results/PLOT_DATA_t02_iso_mao_planck.csv": {
+      "bytes": 442058,
+      "sha256": "7a3861010b64345c58d69a5dc59b30949d8f06d57c250ddc96a6cca45850bea9"
+    },
+    "results/PLOT_DATA_t02_split_derivative_planck.csv": {
+      "bytes": 443915,
+      "sha256": "2beedba2e9b9219abd22f12698141644cae4c3372bd13b9403c7335567b7ba31"
+    },
+    "results/PLOT_DATA_t02_split_mao_hot.csv": {
+      "bytes": 433165,
+      "sha256": "e7f2169fd6686ac91afb351fccbf3a6caf268b6e893586a47f8e5cdd27edf714"
+    },
+    "results/PLOT_DATA_t02_split_mao_hot_tight34.csv": {
+      "bytes": 433454,
+      "sha256": "b53ec148473028ef28acee6902df999fa8f0999855d6a17b0c8286047e4e35df"
+    },
+    "results/PLOT_DATA_t02_split_mao_off.csv": {
+      "bytes": 373280,
+      "sha256": "9848818c2fddf45cadaeb0ee9c88e96e657c747a99963ecb86951a37ea5dad79"
+    },
+    "results/PLOT_DATA_t02_split_mao_planck.csv": {
+      "bytes": 444558,
+      "sha256": "7e8ae6ea66e1f6e36ce2ca188bdbf446946f894d5f94ee914be6260c0f002203"
+    },
+    "results/PLOT_DATA_t02_split_mao_planck_oracle63.csv": {
+      "bytes": 444148,
+      "sha256": "09ea1ebf08013c7d3a95d81a74cbefb40fc612278a0c0b7997827a1dd21ace30"
+    },
+    "results/PLOT_DATA_t02_split_mao_planck_tight34.csv": {
+      "bytes": 444678,
+      "sha256": "64bc5d269f79bc626ebbf0e64579a3c3cd4e10ec1f56190bb3d30f2ae275a36c"
+    },
+    "results/PLOT_DATA_thermal_iso60.csv": {
+      "bytes": 299237,
+      "sha256": "38bfd7878668c12ea81f761277fd3e98e5cd0016867aac8cba123c9a81db6f06"
+    },
+    "results/PLOT_DATA_thermal_split60.csv": {
+      "bytes": 301334,
+      "sha256": "dd221522d4a5b1e422b59bbbfb995c8dc6c32bdaac7068888b09aabe1501cead"
+    }
+  },
+  "plot_code_sha256": "39cb5db044b18211a58014e5cce94d4dc69188029aa4570b0e3090ef7d021f56",
+  "retained_baseline_ids": [
+    "thermal_split60",
+    "thermal_iso60"
+  ],
+  "schema": "THERM02_DATA_ONLY_PLOTS_v1"
+}

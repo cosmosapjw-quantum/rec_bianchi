@@ -1,0 +1,2044 @@
+{
+  "schema": "therm02.data_only_physics_comparisons.v1",
+  "status": "COMPLETE_DATA_REDUCTION",
+  "created_UTC": "2026-10-22T17:35:24.999313+00:00",
+  "new_cosmological_IVPs": 0,
+  "old_suite_runs": 0,
+  "read_new_case_count": 8,
+  "read_retained_baseline_count": 2,
+  "energy_unit": {
+    "eV_J": 1.602176634e-19,
+    "source": "vendor/therm01/vendor/rei_pr220/vendor/rec_hheli/code/atomic_network.py",
+    "evaluation": "literal constant read via AST; module not imported"
+  },
+  "cases": {
+    "t02_split_mao_off": {
+      "id": "t02_split_mao_off",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "off",
+      "final_T_K": 6573.376837960062,
+      "final_tau": 0.0717918879659609,
+      "final_xe_per_baryon": 0.877378435209599,
+      "minimum_T_K": 425.42824020277095,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 15538.054502446577,
+      "maximum_T_z": 9.020882675404966,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 669,
+      "saved_node_count": 193,
+      "solver_nfev": 2056,
+      "wall_seconds": 13.759476482999162,
+      "final_signed_observables": {
+        "shear": 0.007799177615006059,
+        "matter": 2.454837174751739e-06,
+        "radiation": -6.157106740980916e-05,
+        "total": -5.911623023505743e-05,
+        "gamma": -3.5781103845092385e-05,
+        "nu": -2.578996356471678e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 55.300981335176516,
+        "escape": 32.64860854184123,
+        "adiabatic_work": 6.219110144872676,
+        "CMB_or_reference": 0.0,
+        "UV_Compton": 0.0
+      },
+      "gas_energy_change_eV_per_baryon": 16.433262701205734,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.433262648462613,
+      "endpoint_energy_residual_eV_per_baryon": 5.2743121869980314e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.7671763347214685e-07,
+        "signed_value": 3.7671763347214685e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8744274555092844,
+      "maximum_GL8_GL16_difference": 8.228925547075784e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 0.0,
+          "compton_over_HUref": 0.0
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 0.0,
+          "compton_over_HUref": 0.0
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 94.1687000218904,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 669,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_mao_hot": {
+      "id": "t02_split_mao_hot",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "actual_hot",
+      "final_T_K": 5609.584328164928,
+      "final_tau": 0.0717343892233237,
+      "final_xe_per_baryon": 0.8773671476901974,
+      "minimum_T_K": 424.3950766681805,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13018.38198944437,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 662,
+      "saved_node_count": 193,
+      "solver_nfev": 2059,
+      "wall_seconds": 11.564496049999434,
+      "final_signed_observables": {
+        "shear": 0.0077991769757041925,
+        "matter": 2.4548372181912807e-06,
+        "radiation": -6.157205635209037e-05,
+        "total": -5.9117219133899086e-05,
+        "gamma": -3.5782093192346734e-05,
+        "nu": -2.5789963159743628e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.92153225912415,
+        "escape": 40.86530819901101,
+        "adiabatic_work": 4.543598383135754,
+        "CMB_or_reference": -3.290991184115301,
+        "UV_Compton": 2.8850766952180767e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.221663386406387,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.22166334362904,
+      "endpoint_energy_residual_eV_per_baryon": 4.277734788615817e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.763498711091839e-07,
+        "signed_value": 3.763498711091839e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8745500429636054,
+      "maximum_GL8_GL16_difference": 7.777774654684659e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.089078277603313e-07,
+            "signed_value": 9.089078277603313e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.107970118943432e-07,
+            "signed_value": 9.107970118943432e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.163236435035549e-07,
+          "compton_over_HUref": 0.0
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.163236435036012e-07,
+          "compton_over_HUref": 0.0
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.62145887615317,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 662,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_mao_planck": {
+      "id": "t02_split_mao_planck",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "planck_reference",
+      "final_T_K": 5610.699959911152,
+      "final_tau": 0.07173452340379483,
+      "final_xe_per_baryon": 0.877367162560327,
+      "minimum_T_K": 424.4685150937729,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13023.084690772872,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 663,
+      "saved_node_count": 193,
+      "solver_nfev": 2061,
+      "wall_seconds": 9.245492581998406,
+      "final_signed_observables": {
+        "shear": 0.007799176689794621,
+        "matter": 2.45483721889391e-06,
+        "radiation": -6.157205416316226e-05,
+        "total": -5.911721694426835e-05,
+        "gamma": -3.5782091009735606e-05,
+        "nu": -2.578996315342665e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.90447840389787,
+        "escape": 40.850781434241384,
+        "adiabatic_work": 4.5458544037319335,
+        "CMB_or_reference": -3.2859630389326324,
+        "UV_Compton": 2.8848990338784838e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.221908417712818,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.22190837598226,
+      "endpoint_energy_residual_eV_per_baryon": 4.1730558564267994e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.763713920147921e-07,
+        "signed_value": 3.763713920147921e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8745428693284026,
+      "maximum_GL8_GL16_difference": 7.797474985403987e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.077129033210721e-07,
+            "signed_value": 9.077129033210721e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.073213526315083e-07,
+            "signed_value": 9.073213526315083e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.095943575217035e-07,
+            "signed_value": 9.095943575217035e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.092001179053814e-07,
+            "signed_value": 9.092001179053814e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.1570313056848486e-07,
+          "compton_over_HUref": 4.155938538221485e-07
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.157031305685353e-07,
+          "compton_over_HUref": 4.1559385382219887e-07
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.58710612979415,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 663,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_derivative_planck": {
+      "id": "t02_split_derivative_planck",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "rate_derivative",
+      "cmb_branch": "planck_reference",
+      "final_T_K": 5609.349741064568,
+      "final_tau": 0.07173449139359649,
+      "final_xe_per_baryon": 0.8773671445755953,
+      "minimum_T_K": 424.4685145679553,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13022.296729370522,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 663,
+      "saved_node_count": 193,
+      "solver_nfev": 2061,
+      "wall_seconds": 8.420761803005007,
+      "final_signed_observables": {
+        "shear": 0.007799176689469071,
+        "matter": 2.4548372189169876e-06,
+        "radiation": -6.157205474608486e-05,
+        "total": -5.911721752716787e-05,
+        "gamma": -3.5782091592873216e-05,
+        "nu": -2.578996315321164e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.91239805254219,
+        "escape": 40.86069011138917,
+        "adiabatic_work": 4.544806837945003,
+        "CMB_or_reference": -3.285318131498137,
+        "UV_Compton": 2.8850185205474166e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.221611863640735,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.221611821895085,
+      "endpoint_energy_residual_eV_per_baryon": 4.174565049197554e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.7636956441320965e-07,
+        "signed_value": 3.7636956441320965e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8745434785289301,
+      "maximum_GL8_GL16_difference": 7.790377189317889e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.0764540449189e-07,
+            "signed_value": 9.0764540449189e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.072538829186307e-07,
+            "signed_value": 9.072538829186307e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.095311009408136e-07,
+            "signed_value": 9.095311009408136e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.091368887414139e-07,
+            "signed_value": 9.091368887414139e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.156135776287285e-07,
+          "compton_over_HUref": 4.155043202270139e-07
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.1561357762877787e-07,
+          "compton_over_HUref": 4.1550432022706273e-07
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.60324198355968,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 663,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_iso_mao_planck": {
+      "id": "t02_iso_mao_planck",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "planck_reference",
+      "final_T_K": 5610.732812500444,
+      "final_tau": 0.07174287066507727,
+      "final_xe_per_baryon": 0.8773671629991259,
+      "minimum_T_K": 424.47974433786936,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13022.665008201333,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 661,
+      "saved_node_count": 193,
+      "solver_nfev": 2056,
+      "wall_seconds": 9.24193980400014,
+      "final_signed_observables": {
+        "shear": 2.4437110938689998e-21,
+        "matter": 0.0,
+        "radiation": -1.0961932907386629e-23,
+        "total": -1.0961932907386629e-23,
+        "gamma": -6.387895287336801e-24,
+        "nu": -4.5740376200498274e-24
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.90831141774703,
+        "escape": 40.85410517103587,
+        "adiabatic_work": 4.545880802626211,
+        "CMB_or_reference": -3.2864386960412904,
+        "UV_Compton": 2.8849627268915244e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.221915633327704,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.22191559767093,
+      "endpoint_energy_residual_eV_per_baryon": 3.565677531014444e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.748746946233392e-07,
+        "signed_value": 3.748746946233392e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8750417684588869,
+      "maximum_GL8_GL16_difference": 8.90436462219903e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.074836325033428e-07,
+            "signed_value": 9.074836325033428e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.07483632503343e-07,
+            "signed_value": 9.07483632503343e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.093727045949142e-07,
+            "signed_value": 9.093727045949142e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.093727045949146e-07,
+            "signed_value": 9.093727045949146e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.1564397561894217e-07,
+          "compton_over_HUref": 4.156439756189423e-07
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.1564397561865873e-07,
+          "compton_over_HUref": 4.15643975618659e-07
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.59476493707767,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 661,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_mao_hot_tight34": {
+      "id": "t02_split_mao_hot_tight34",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "actual_hot",
+      "final_T_K": 5609.584294137723,
+      "final_tau": 0.0717343891300306,
+      "final_xe_per_baryon": 0.8773671476897159,
+      "minimum_T_K": 424.39502326391795,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13018.38201643837,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 1364,
+      "saved_node_count": 193,
+      "solver_nfev": 3852,
+      "wall_seconds": 13.146116468997207,
+      "final_signed_observables": {
+        "shear": 0.007799176045231832,
+        "matter": 2.454837239213293e-06,
+        "radiation": -6.157205589315573e-05,
+        "total": -5.9117218653942435e-05,
+        "gamma": -3.578209292557809e-05,
+        "nu": -2.578996296757764e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.92153229803014,
+        "escape": 40.86530821007013,
+        "adiabatic_work": 4.543598376661301,
+        "CMB_or_reference": -3.2909911841198203,
+        "UV_Compton": 2.8850766963124212e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.221663378931318,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.221663377945852,
+      "endpoint_energy_residual_eV_per_baryon": 9.854659310803981e-10,
+      "energy_residual_peak": {
+        "max_absolute": 6.978994251157442e-09,
+        "signed_value": 6.978994251157442e-09,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.9976736685829475,
+      "maximum_GL8_GL16_difference": 1.5889396770046376e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.089078297201814e-07,
+            "signed_value": 9.089078297201814e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.107970145002049e-07,
+            "signed_value": 9.107970145002049e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 0.0,
+            "signed_value": 0.0,
+            "sample_index": 0,
+            "x": 0.0,
+            "z": 20.0
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.1632364340017615e-07,
+          "compton_over_HUref": 0.0
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.163236434001712e-07,
+          "compton_over_HUref": 0.0
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.62145891964836,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 1364,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_mao_planck_tight34": {
+      "id": "t02_split_mao_planck_tight34",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "planck_reference",
+      "final_T_K": 5610.6999344121905,
+      "final_tau": 0.07173452330450372,
+      "final_xe_per_baryon": 0.8773671625599765,
+      "minimum_T_K": 424.4684615248547,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13023.084717684256,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 1364,
+      "saved_node_count": 193,
+      "solver_nfev": 3852,
+      "wall_seconds": 18.544282746006502,
+      "final_signed_observables": {
+        "shear": 0.007799176047128411,
+        "matter": 2.4548372391120327e-06,
+        "radiation": -6.157205372131428e-05,
+        "total": -5.9117216482202244e-05,
+        "gamma": -3.578209075279283e-05,
+        "nu": -2.5789962968521448e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.90447844289193,
+        "escape": 40.850781444258125,
+        "adiabatic_work": 4.545854397489116,
+        "CMB_or_reference": -3.285963039005191,
+        "UV_Compton": 2.8848990349026184e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.22190841211178,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.22190841112985,
+      "endpoint_energy_residual_eV_per_baryon": 9.819309809699917e-10,
+      "energy_residual_peak": {
+        "max_absolute": 6.978529840509333e-09,
+        "signed_value": 6.978529840509333e-09,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.9976738233864969,
+      "maximum_GL8_GL16_difference": 1.5890082312051914e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.077129052811048e-07,
+            "signed_value": 9.077129052811048e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.073213545848724e-07,
+            "signed_value": 9.073213545848724e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.095943601271701e-07,
+            "signed_value": 9.095943601271701e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.092001205039018e-07,
+            "signed_value": 9.092001205039018e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.157031304768542e-07,
+          "compton_over_HUref": 4.1559385372711434e-07
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.157031304768493e-07,
+          "compton_over_HUref": 4.155938537271095e-07
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.58710617263469,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 1364,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    },
+    "t02_split_mao_planck_oracle63": {
+      "id": "t02_split_mao_planck_oracle63",
+      "cohort": "THERM02_NEW",
+      "rr_closure": "mao2017",
+      "cmb_branch": "planck_reference",
+      "final_T_K": 5610.699961077235,
+      "final_tau": 0.07173452339465441,
+      "final_xe_per_baryon": 0.8773671625603393,
+      "minimum_T_K": 424.46851422383855,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 13023.084693089275,
+      "maximum_T_z": 9.226077552875777,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": 664,
+      "saved_node_count": 193,
+      "solver_nfev": 2085,
+      "wall_seconds": 8.909035575001326,
+      "final_signed_observables": {
+        "shear": 0.007799176699298337,
+        "matter": 2.4548372184416005e-06,
+        "radiation": -6.157205417372007e-05,
+        "total": -5.911721695527847e-05,
+        "gamma": -3.578209101599596e-05,
+        "nu": -2.5789963157724115e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 64.90447840086786,
+        "escape": 40.85078143110065,
+        "adiabatic_work": 4.545854404081719,
+        "CMB_or_reference": -3.285963038869501,
+        "UV_Compton": 2.8848990337744275e-05
+      },
+      "gas_energy_change_eV_per_baryon": 16.22190841796881,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.221908375806326,
+      "endpoint_energy_residual_eV_per_baryon": 4.2162483282481844e-08,
+      "energy_residual_peak": {
+        "max_absolute": 3.711412368166933e-07,
+        "signed_value": 3.711412368166933e-07,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.8762862543944355,
+      "maximum_GL8_GL16_difference": 8.993396643508444e-12,
+      "exchange": {
+        "status": "MEASURED",
+        "owners": {
+          "compton_over_HUgamma": "current actual photon density",
+          "compton_over_HUref": "independent external Planck bath; zero when inactive"
+        },
+        "sampled_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.077129034883808e-07,
+            "signed_value": 9.077129034883808e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.073213527985338e-07,
+            "signed_value": 9.073213527985338e-07,
+            "sample_index": 72,
+            "x": 0.7297163058957425,
+            "z": 9.122960208701825
+          }
+        },
+        "saved_and_GL_peaks": {
+          "compton_over_HUgamma": {
+            "max_absolute": 9.095943577145107e-07,
+            "signed_value": 9.095943577145107e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          },
+          "compton_over_HUref": {
+            "max_absolute": 9.092001180978936e-07,
+            "signed_value": 9.092001180978936e-07,
+            "sample_index": 2874,
+            "x": 0.726075850318701,
+            "z": 9.159879556498478
+          }
+        },
+        "integrals_GL16": {
+          "compton_over_HUgamma": 4.157031305789224e-07,
+          "compton_over_HUref": 4.1559385383250615e-07
+        },
+        "integrals_GL8": {
+          "compton_over_HUgamma": 4.1570313057861093e-07,
+          "compton_over_HUref": 4.1559385383219476e-07
+        },
+        "denser_peak_scope": "193 saved nodes and persisted GL8/GL16 nodes; accepted solver nodes excluded",
+        "interpretation": "measured exchange scale, not a backreaction error bound"
+      },
+      "accepted_node_note": "actual BDF nodes persisted separately from saved193",
+      "final_absolute_throughput_eV_per_baryon": 113.58710612391008,
+      "physical_scope_counts": {
+        "saved193": 193,
+        "accepted_BDF_nodes": 664,
+        "dense_GL8": 1536,
+        "dense_GL16": 3072
+      }
+    }
+  },
+  "retained_baselines": {
+    "thermal_split60": {
+      "id": "thermal_split60",
+      "cohort": "THERM01_RETAINED",
+      "rr_closure": "rate_derivative",
+      "cmb_branch": "off",
+      "final_T_K": 6571.354823855486,
+      "final_tau": 0.07179186369313678,
+      "final_xe_per_baryon": 0.877378414385793,
+      "minimum_T_K": 425.4285663998751,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 15536.848172539652,
+      "maximum_T_z": 9.020882675404966,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": null,
+      "saved_node_count": 193,
+      "solver_nfev": 1456,
+      "wall_seconds": 2.1805494749996797,
+      "final_signed_observables": {
+        "shear": 0.007799179727608008,
+        "matter": 2.4548372308759506e-06,
+        "radiation": -6.157106667050043e-05,
+        "total": -5.911622943962448e-05,
+        "gamma": -3.578110361053343e-05,
+        "nu": -2.5789963059967003e-05
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 55.30813612120256,
+        "escape": 32.657868684480086,
+        "adiabatic_work": 6.217448718020116,
+        "CMB_or_reference": 0.0,
+        "UV_Compton": 0.0
+      },
+      "gas_energy_change_eV_per_baryon": 16.43281892265287,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.432818718702357,
+      "endpoint_energy_residual_eV_per_baryon": 2.0395051336663528e-07,
+      "energy_residual_peak": {
+        "max_absolute": 2.5869352191949236e-06,
+        "signed_value": 2.5869352191949236e-06,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.1376882602683588,
+      "maximum_GL8_GL16_difference": 4.203305328780177e-11,
+      "exchange": {
+        "status": "NOT_APPLICABLE_PRIOR_COMPTON_OFF",
+        "sampled_peaks": null,
+        "saved_and_GL_peaks": null,
+        "integrals_GL16": null,
+        "integrals_GL8": null
+      },
+      "accepted_node_note": "not separately persisted in THERM01 t_eval return"
+    },
+    "thermal_iso60": {
+      "id": "thermal_iso60",
+      "cohort": "THERM01_RETAINED",
+      "rr_closure": "rate_derivative",
+      "cmb_branch": "off",
+      "final_T_K": 6571.438612463221,
+      "final_tau": 0.07180023888491287,
+      "final_xe_per_baryon": 0.8773784152503404,
+      "minimum_T_K": 425.4409323250726,
+      "minimum_T_z": 12.309123087979486,
+      "maximum_T_K": 15537.119087361214,
+      "maximum_T_z": 9.020882675404966,
+      "minimum_sampled_scaled_population": 0.0,
+      "accepted_BDF_node_count": null,
+      "saved_node_count": 193,
+      "solver_nfev": 1430,
+      "wall_seconds": 2.1656724619997476,
+      "final_signed_observables": {
+        "shear": 2.0984933159198067e-21,
+        "matter": 0.0,
+        "radiation": -9.239003942471742e-24,
+        "total": -9.239003942471742e-24,
+        "gamma": -5.3804349100440266e-24,
+        "nu": -3.858569032427716e-24
+      },
+      "ledger_GL16_final_eV_per_baryon": {
+        "absorption": 55.310380689268,
+        "escape": 32.65986366081235,
+        "adiabatic_work": 6.217679991871512,
+        "CMB_or_reference": 0.0,
+        "UV_Compton": 0.0
+      },
+      "gas_energy_change_eV_per_baryon": 16.432837312124065,
+      "ledger_predicted_energy_change_eV_per_baryon": 16.43283703658414,
+      "endpoint_energy_residual_eV_per_baryon": 2.7553992509865566e-07,
+      "energy_residual_peak": {
+        "max_absolute": 2.935629461677083e-06,
+        "signed_value": 2.935629461677083e-06,
+        "sample_index": 48,
+        "x": 0.48647753726382836,
+        "z": 11.91055121197655
+      },
+      "energy_residual_gate": 3e-06,
+      "energy_gate_margin_fraction": 0.021456846107639094,
+      "maximum_GL8_GL16_difference": 5.848368027721285e-11,
+      "exchange": {
+        "status": "NOT_APPLICABLE_PRIOR_COMPTON_OFF",
+        "sampled_peaks": null,
+        "saved_and_GL_peaks": null,
+        "integrals_GL16": null,
+        "integrals_GL8": null
+      },
+      "accepted_node_note": "not separately persisted in THERM01 t_eval return"
+    }
+  },
+  "contrasts": {
+    "hot_minus_off": {
+      "left": "t02_split_mao_hot",
+      "right": "t02_split_mao_off",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.36817442293304814,
+      "maximum_absolute_T_K": 5058.151678006494,
+      "maximum_absolute_T_z": 7.349837742689681,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 0.032588384050631136,
+        "signed_value": -0.032588384050631136,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": -963.7925097951347,
+      "delta_final_tau": -5.74987426371909e-05,
+      "delta_final_xe_per_baryon": -1.1287519401603774e-05,
+      "maximum_absolute_tau": 5.74987426371909e-05,
+      "maximum_absolute_signed6": {
+        "shear": 9.509717978362087e-10,
+        "matter": 5.542168337620409e-14,
+        "radiation": 2.33537583813493e-09,
+        "total": 2.3353572070150628e-09,
+        "gamma": 2.3354441257142974e-09,
+        "nu": 4.1152520776385586e-13
+      },
+      "delta_final_signed6": {
+        "shear": -6.393018666533967e-10,
+        "matter": 4.34395417518176e-14,
+        "radiation": -9.88942281201794e-10,
+        "total": -9.888988416591952e-10,
+        "gamma": -9.893472543488248e-10,
+        "nu": 4.049731504188279e-13
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 5058.151678006494,
+          "signed_value": -5058.151678006494,
+          "sample_index": 91,
+          "x": 0.9222803310626746,
+          "z": 7.349837742689681
+        },
+        "relative_T": {
+          "max_absolute": 0.36817442293304814,
+          "signed_value": -0.36817442293304814,
+          "sample_index": 98,
+          "x": 0.9932249719136496,
+          "z": 6.777986233545006
+        },
+        "xe_per_baryon": {
+          "max_absolute": 0.002084466920005301,
+          "signed_value": -0.002084466920005301,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505
+        },
+        "tau_T": {
+          "max_absolute": 5.74987426371909e-05,
+          "signed_value": -5.74987426371909e-05,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 0.032588384050631136,
+          "signed_value": -0.032588384050631136,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 9.509717978362087e-10,
+          "signed_value": -9.509717978362087e-10,
+          "sample_index": 162,
+          "x": 1.6418616882654207,
+          "z": 3.066004205270186
+        },
+        "matter": {
+          "max_absolute": 5.542168337620409e-14,
+          "signed_value": 5.542168337620409e-14,
+          "sample_index": 153,
+          "x": 1.5506471500284529,
+          "z": 3.454323901578257
+        },
+        "radiation": {
+          "max_absolute": 2.33537583813493e-09,
+          "signed_value": -2.33537583813493e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "total": {
+          "max_absolute": 2.3353572070150628e-09,
+          "signed_value": -2.3353572070150628e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "gamma": {
+          "max_absolute": 2.3354441257142974e-09,
+          "signed_value": -2.3354441257142974e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "nu": {
+          "max_absolute": 4.1152520776385586e-13,
+          "signed_value": 4.1152520776385586e-13,
+          "sample_index": 185,
+          "x": 1.8749655082043384,
+          "z": 2.2205653849109637
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "planck_minus_off": {
+      "left": "t02_split_mao_planck",
+      "right": "t02_split_mao_off",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.36768671351784676,
+      "maximum_absolute_T_K": 5051.133653188521,
+      "maximum_absolute_T_z": 7.349837742689681,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 0.03252475202162253,
+        "signed_value": -0.03252475202162253,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": -962.6768780489101,
+      "delta_final_tau": -5.736456216606789e-05,
+      "delta_final_xe_per_baryon": -1.1272649272031643e-05,
+      "maximum_absolute_tau": 5.736456216606789e-05,
+      "maximum_absolute_signed6": {
+        "shear": 9.48792279117927e-10,
+        "matter": 5.5287015301986025e-14,
+        "radiation": 2.3300174350148438e-09,
+        "total": 2.3299988586336336e-09,
+        "gamma": 2.330085522016809e-09,
+        "nu": 4.1172433843349177e-13
+      },
+      "delta_final_signed6": {
+        "shear": -9.252114378452414e-10,
+        "matter": 4.414217125167457e-14,
+        "radiation": -9.867533530994333e-10,
+        "total": -9.86709210926064e-10,
+        "gamma": -9.87164643221673e-10,
+        "nu": 4.112901290159385e-13
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 5051.133653188521,
+          "signed_value": -5051.133653188521,
+          "sample_index": 91,
+          "x": 0.9222803310626746,
+          "z": 7.349837742689681
+        },
+        "relative_T": {
+          "max_absolute": 0.36768671351784676,
+          "signed_value": -0.36768671351784676,
+          "sample_index": 98,
+          "x": 0.9932249719136496,
+          "z": 6.777986233545006
+        },
+        "xe_per_baryon": {
+          "max_absolute": 0.0020803879024736682,
+          "signed_value": -0.0020803879024736682,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505
+        },
+        "tau_T": {
+          "max_absolute": 5.736456216606789e-05,
+          "signed_value": -5.736456216606789e-05,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 0.03252475202162253,
+          "signed_value": -0.03252475202162253,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 9.48792279117927e-10,
+          "signed_value": -9.48792279117927e-10,
+          "sample_index": 181,
+          "x": 1.8344257134323527,
+          "z": 2.3538090316620734
+        },
+        "matter": {
+          "max_absolute": 5.5287015301986025e-14,
+          "signed_value": 5.5287015301986025e-14,
+          "sample_index": 153,
+          "x": 1.5506471500284529,
+          "z": 3.454323901578257
+        },
+        "radiation": {
+          "max_absolute": 2.3300174350148438e-09,
+          "signed_value": -2.3300174350148438e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "total": {
+          "max_absolute": 2.3299988586336336e-09,
+          "signed_value": -2.3299988586336336e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "gamma": {
+          "max_absolute": 2.330085522016809e-09,
+          "signed_value": -2.330085522016809e-09,
+          "sample_index": 100,
+          "x": 1.0134948692996424,
+          "z": 6.621914374720398
+        },
+        "nu": {
+          "max_absolute": 4.1172433843349177e-13,
+          "signed_value": 4.1172433843349177e-13,
+          "sample_index": 189,
+          "x": 1.915505302976324,
+          "z": 2.09261538166547
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "planck_minus_hot": {
+      "left": "t02_split_mao_planck",
+      "right": "t02_split_mao_hot",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.0007825255888526542,
+      "maximum_absolute_T_K": 7.1947326866975345,
+      "maximum_absolute_T_z": 7.8733446425801965,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 6.363202900860898e-05,
+        "signed_value": 6.363202900860898e-05,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": 1.115631746224608,
+      "delta_final_tau": 1.3418047112301323e-07,
+      "delta_final_xe_per_baryon": 1.4870129572130963e-08,
+      "maximum_absolute_tau": 1.3418047112301323e-07,
+      "maximum_absolute_signed6": {
+        "shear": 2.873094349237215e-10,
+        "matter": 7.026294998569663e-16,
+        "radiation": 5.36397422518705e-12,
+        "total": 5.363922373218151e-12,
+        "gamma": 5.364162510446829e-12,
+        "nu": 6.316978597110598e-15
+      },
+      "delta_final_signed6": {
+        "shear": -2.859095711918447e-10,
+        "matter": 7.026294998569663e-16,
+        "radiation": 2.1889281023607793e-12,
+        "total": 2.1896307331311857e-12,
+        "gamma": 2.1826111271518005e-12,
+        "nu": 6.316978597110598e-15
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 7.1947326866975345,
+          "signed_value": 7.1947326866975345,
+          "sample_index": 85,
+          "x": 0.861470638904696,
+          "z": 7.8733446425801965
+        },
+        "relative_T": {
+          "max_absolute": 0.0007825255888526542,
+          "signed_value": 0.0007825255888526542,
+          "sample_index": 93,
+          "x": 0.9425502284486674,
+          "z": 7.182291200659934
+        },
+        "xe_per_baryon": {
+          "max_absolute": 4.105572088630716e-06,
+          "signed_value": 4.105572088630716e-06,
+          "sample_index": 70,
+          "x": 0.7094464085097496,
+          "z": 9.33024529994081
+        },
+        "tau_T": {
+          "max_absolute": 1.3418047112301323e-07,
+          "signed_value": 1.3418047112301323e-07,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 6.363202900860898e-05,
+          "signed_value": 6.363202900860898e-05,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 2.873094349237215e-10,
+          "signed_value": -2.873094349237215e-10,
+          "sample_index": 191,
+          "x": 1.935775200362317,
+          "z": 2.030559443694734
+        },
+        "matter": {
+          "max_absolute": 7.026294998569663e-16,
+          "signed_value": 7.026294998569663e-16,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "radiation": {
+          "max_absolute": 5.36397422518705e-12,
+          "signed_value": 5.36397422518705e-12,
+          "sample_index": 99,
+          "x": 1.003359920606646,
+          "z": 6.699554862447182
+        },
+        "total": {
+          "max_absolute": 5.363922373218151e-12,
+          "signed_value": 5.363922373218151e-12,
+          "sample_index": 99,
+          "x": 1.003359920606646,
+          "z": 6.699554862447182
+        },
+        "gamma": {
+          "max_absolute": 5.364162510446829e-12,
+          "signed_value": 5.364162510446829e-12,
+          "sample_index": 99,
+          "x": 1.003359920606646,
+          "z": 6.699554862447182
+        },
+        "nu": {
+          "max_absolute": 6.316978597110598e-15,
+          "signed_value": 6.316978597110598e-15,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        }
+      },
+      "evidence_kind": "MODEL_BRANCH_CHANGE_WITH_TWO_FINITE_REFINEMENTS",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "derivative_planck_minus_mao_planck": {
+      "left": "t02_split_derivative_planck",
+      "right": "t02_split_mao_planck",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.0002908665035347317,
+      "maximum_absolute_T_K": 2.376608213295185,
+      "maximum_absolute_T_z": 6.857216544332484,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 1.963290473738777e-05,
+        "signed_value": -1.963290473738777e-05,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": -1.3502188465845393,
+      "delta_final_tau": -3.2010198339205154e-08,
+      "delta_final_xe_per_baryon": -1.798473170389059e-08,
+      "maximum_absolute_tau": 3.2010198339205154e-08,
+      "maximum_absolute_signed6": {
+        "shear": 5.848811018838163e-13,
+        "matter": 2.8959209433677274e-17,
+        "radiation": 1.2717462852121844e-12,
+        "total": 1.2717356871359484e-12,
+        "gamma": 1.2717864820077293e-12,
+        "nu": 2.1684721076067892e-16
+      },
+      "delta_final_signed6": {
+        "shear": -3.2555035056613946e-13,
+        "matter": 2.3077412647943413e-17,
+        "radiation": -5.829225990794384e-13,
+        "total": -5.828995191256917e-13,
+        "gamma": -5.831376099227695e-13,
+        "nu": 2.150108433310316e-16
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 2.376608213295185,
+          "signed_value": -2.376608213295185,
+          "sample_index": 97,
+          "x": 0.9830900232206531,
+          "z": 6.857216544332484
+        },
+        "relative_T": {
+          "max_absolute": 0.0002908665035347317,
+          "signed_value": -0.0002908665035347317,
+          "sample_index": 113,
+          "x": 1.1452492023085958,
+          "z": 5.681037136251215
+        },
+        "xe_per_baryon": {
+          "max_absolute": 1.2601836515413467e-06,
+          "signed_value": -1.2601836515413467e-06,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505
+        },
+        "tau_T": {
+          "max_absolute": 3.2010198339205154e-08,
+          "signed_value": -3.2010198339205154e-08,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 1.963290473738777e-05,
+          "signed_value": -1.963290473738777e-05,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 5.848811018838163e-13,
+          "signed_value": -5.848811018838163e-13,
+          "sample_index": 174,
+          "x": 1.7634810725813777,
+          "z": 2.6003870916575442
+        },
+        "matter": {
+          "max_absolute": 2.8959209433677274e-17,
+          "signed_value": 2.8959209433677274e-17,
+          "sample_index": 156,
+          "x": 1.581051996107442,
+          "z": 3.3209290699247562
+        },
+        "radiation": {
+          "max_absolute": 1.2717462852121844e-12,
+          "signed_value": -1.2717462852121844e-12,
+          "sample_index": 104,
+          "x": 1.054034664071628,
+          "z": 6.319102957336517
+        },
+        "total": {
+          "max_absolute": 1.2717356871359484e-12,
+          "signed_value": -1.2717356871359484e-12,
+          "sample_index": 104,
+          "x": 1.054034664071628,
+          "z": 6.319102957336517
+        },
+        "gamma": {
+          "max_absolute": 1.2717864820077293e-12,
+          "signed_value": -1.2717864820077293e-12,
+          "sample_index": 104,
+          "x": 1.054034664071628,
+          "z": 6.319102957336517
+        },
+        "nu": {
+          "max_absolute": 2.1684721076067892e-16,
+          "signed_value": 2.1684721076067892e-16,
+          "sample_index": 186,
+          "x": 1.8851004568973349,
+          "z": 2.188089966304619
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "iso_planck_minus_split_planck": {
+      "left": "t02_iso_mao_planck",
+      "right": "t02_split_mao_planck",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.0002686608811788315,
+      "maximum_absolute_T_K": 1.139143378857625,
+      "maximum_absolute_T_z": 10.089743476876182,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 9.30335178672137e-05,
+        "signed_value": -9.30335178672137e-05,
+        "sample_index": 66,
+        "x": 0.6689066137377639,
+        "z": 9.757635956887734,
+        "component_index": 1,
+        "component_name": "H1I"
+      },
+      "delta_final_T_K": 0.03285258929190604,
+      "delta_final_tau": 8.347261282445895e-06,
+      "delta_final_xe_per_baryon": 4.387988861154213e-10,
+      "maximum_absolute_tau": 8.347261282445895e-06,
+      "maximum_absolute_signed6": {
+        "shear": 0.14999999999999994,
+        "matter": 0.00040862745503249254,
+        "radiation": 0.0004461746732122067,
+        "total": 0.0008548021282446992,
+        "gamma": 0.00026400799417067105,
+        "nu": 0.00018216667904153566
+      },
+      "delta_final_signed6": {
+        "shear": -0.007799176689794621,
+        "matter": -2.45483721889391e-06,
+        "radiation": 6.157205416316226e-05,
+        "total": 5.911721694426835e-05,
+        "gamma": 3.5782091009735606e-05,
+        "nu": 2.578996315342665e-05
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 1.139143378857625,
+          "signed_value": 1.139143378857625,
+          "sample_index": 63,
+          "x": 0.6385017676587746,
+          "z": 10.089743476876182
+        },
+        "relative_T": {
+          "max_absolute": 0.0002686608811788315,
+          "signed_value": 0.0002686608811788315,
+          "sample_index": 57,
+          "x": 0.5776920755007962,
+          "z": 10.785033302507019
+        },
+        "xe_per_baryon": {
+          "max_absolute": 7.49467231012102e-05,
+          "signed_value": 7.49467231012102e-05,
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734
+        },
+        "tau_T": {
+          "max_absolute": 8.347261282445895e-06,
+          "signed_value": 8.347261282445895e-06,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 9.30335178672137e-05,
+          "signed_value": -9.30335178672137e-05,
+          "sample_index": 66,
+          "x": 0.6689066137377639,
+          "z": 9.757635956887734,
+          "component_index": 1,
+          "component_name": "H1I"
+        },
+        "shear": {
+          "max_absolute": 0.14999999999999994,
+          "signed_value": -0.14999999999999994,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "matter": {
+          "max_absolute": 0.00040862745503249254,
+          "signed_value": -0.00040862745503249254,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "radiation": {
+          "max_absolute": 0.0004461746732122067,
+          "signed_value": -0.0004461746732122067,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "total": {
+          "max_absolute": 0.0008548021282446992,
+          "signed_value": -0.0008548021282446992,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "gamma": {
+          "max_absolute": 0.00026400799417067105,
+          "signed_value": -0.00026400799417067105,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "nu": {
+          "max_absolute": 0.00018216667904153566,
+          "signed_value": -0.00018216667904153566,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "mao_off_minus_old_split_derivative_off": {
+      "left": "t02_split_mao_off",
+      "right": "thermal_split60",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.00035276773743535267,
+      "maximum_absolute_T_K": 3.918520895900656,
+      "maximum_absolute_T_z": 5.681037136251215,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 1.4302923453057836e-05,
+        "signed_value": 1.4302923453057836e-05,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": 2.022014104576556,
+      "delta_final_tau": 2.4272824111770674e-08,
+      "delta_final_xe_per_baryon": 2.0823806012870705e-08,
+      "maximum_absolute_tau": 2.4272824111770674e-08,
+      "maximum_absolute_signed6": {
+        "shear": 3.6148941062741358e-09,
+        "matter": 7.66839676068394e-13,
+        "radiation": 4.1174149593287135e-12,
+        "total": 4.818679540130079e-12,
+        "gamma": 2.436561701371371e-12,
+        "nu": 1.6917110954813887e-12
+      },
+      "delta_final_signed6": {
+        "shear": -2.112601949280646e-09,
+        "matter": -5.612421165562386e-14,
+        "radiation": -7.39308733590377e-13,
+        "total": -7.954329469400667e-13,
+        "gamma": -2.345589542908366e-13,
+        "nu": -5.047497759114086e-13
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 3.918520895900656,
+          "signed_value": 3.918520895900656,
+          "sample_index": 113,
+          "x": 1.1452492023085958,
+          "z": 5.681037136251215
+        },
+        "relative_T": {
+          "max_absolute": 0.00035276773743535267,
+          "signed_value": 0.00035276773743535267,
+          "sample_index": 140,
+          "x": 1.4188928170194992,
+          "z": 4.081617521759484
+        },
+        "xe_per_baryon": {
+          "max_absolute": 9.138123818752675e-07,
+          "signed_value": 9.138123818752675e-07,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505
+        },
+        "tau_T": {
+          "max_absolute": 2.4272824111770674e-08,
+          "signed_value": 2.4272824111770674e-08,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 1.4302923453057836e-05,
+          "signed_value": 1.4302923453057836e-05,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 3.6148941062741358e-09,
+          "signed_value": 3.6148941062741358e-09,
+          "sample_index": 14,
+          "x": 0.14188928170194992,
+          "z": 17.22206379041019
+        },
+        "matter": {
+          "max_absolute": 7.66839676068394e-13,
+          "signed_value": -7.66839676068394e-13,
+          "sample_index": 45,
+          "x": 0.45607269118483906,
+          "z": 12.309123087979486
+        },
+        "radiation": {
+          "max_absolute": 4.1174149593287135e-12,
+          "signed_value": -4.1174149593287135e-12,
+          "sample_index": 64,
+          "x": 0.6486367163517711,
+          "z": 9.977917130068914
+        },
+        "total": {
+          "max_absolute": 4.818679540130079e-12,
+          "signed_value": -4.818679540130079e-12,
+          "sample_index": 62,
+          "x": 0.6283668189657783,
+          "z": 10.202708940666396
+        },
+        "gamma": {
+          "max_absolute": 2.436561701371371e-12,
+          "signed_value": -2.436561701371371e-12,
+          "sample_index": 63,
+          "x": 0.6385017676587746,
+          "z": 10.089743476876182
+        },
+        "nu": {
+          "max_absolute": 1.6917110954813887e-12,
+          "signed_value": -1.6917110954813887e-12,
+          "sample_index": 70,
+          "x": 0.7094464085097496,
+          "z": 9.33024529994081
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    },
+    "iso_planck_minus_old_iso_derivative_off": {
+      "left": "t02_iso_mao_planck",
+      "right": "thermal_iso60",
+      "subtraction": "left minus right",
+      "relative_T_denominator": "pointwise max(abs(T_left), abs(T_right))",
+      "maximum_relative_T": 0.3675421528769812,
+      "maximum_absolute_T_K": 5048.5063370444805,
+      "maximum_absolute_T_z": 7.349837742689681,
+      "maximum_scaled_charge_fraction_change": {
+        "max_absolute": 0.03251834422145683,
+        "signed_value": -0.03251834422145683,
+        "sample_index": 87,
+        "x": 0.8817405362906888,
+        "z": 7.695293492735505,
+        "component_index": 9,
+        "component_name": "He3III"
+      },
+      "delta_final_T_K": -960.7057999627768,
+      "delta_final_tau": -5.736821983559626e-05,
+      "delta_final_xe_per_baryon": -1.12522512145663e-05,
+      "maximum_absolute_tau": 5.736821983559626e-05,
+      "maximum_absolute_signed6": {
+        "shear": 5.297224882476597e-21,
+        "matter": 0.0,
+        "radiation": 6.860100946350203e-24,
+        "total": 6.860100946350203e-24,
+        "gamma": 4.059211654836554e-24,
+        "nu": 2.8008892915136482e-24
+      },
+      "delta_final_signed6": {
+        "shear": 3.4521777794919305e-22,
+        "matter": 0.0,
+        "radiation": -1.722928964914886e-24,
+        "total": -1.722928964914886e-24,
+        "gamma": -1.0074603772927745e-24,
+        "nu": -7.154685876221116e-25
+      },
+      "observable_peaks": {
+        "T_K": {
+          "max_absolute": 5048.5063370444805,
+          "signed_value": -5048.5063370444805,
+          "sample_index": 91,
+          "x": 0.9222803310626746,
+          "z": 7.349837742689681
+        },
+        "relative_T": {
+          "max_absolute": 0.3675421528769812,
+          "signed_value": -0.3675421528769812,
+          "sample_index": 98,
+          "x": 0.9932249719136496,
+          "z": 6.777986233545006
+        },
+        "xe_per_baryon": {
+          "max_absolute": 0.002079970990124358,
+          "signed_value": -0.002079970990124358,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505
+        },
+        "tau_T": {
+          "max_absolute": 5.736821983559626e-05,
+          "signed_value": -5.736821983559626e-05,
+          "sample_index": 192,
+          "x": 1.9459101490553132,
+          "z": 2.0000000000000004
+        },
+        "scaled_charge_fraction": {
+          "max_absolute": 0.03251834422145683,
+          "signed_value": -0.03251834422145683,
+          "sample_index": 87,
+          "x": 0.8817405362906888,
+          "z": 7.695293492735505,
+          "component_index": 9,
+          "component_name": "He3III"
+        },
+        "shear": {
+          "max_absolute": 5.297224882476597e-21,
+          "signed_value": -5.297224882476597e-21,
+          "sample_index": 13,
+          "x": 0.1317543330089535,
+          "z": 17.40768250121182
+        },
+        "matter": {
+          "max_absolute": 0.0,
+          "signed_value": 0.0,
+          "sample_index": 0,
+          "x": 0.0,
+          "z": 20.0
+        },
+        "radiation": {
+          "max_absolute": 6.860100946350203e-24,
+          "signed_value": 6.860100946350203e-24,
+          "sample_index": 28,
+          "x": 0.28377856340389984,
+          "z": 14.811600418179909
+        },
+        "total": {
+          "max_absolute": 6.860100946350203e-24,
+          "signed_value": 6.860100946350203e-24,
+          "sample_index": 28,
+          "x": 0.28377856340389984,
+          "z": 14.811600418179909
+        },
+        "gamma": {
+          "max_absolute": 4.059211654836554e-24,
+          "signed_value": 4.059211654836554e-24,
+          "sample_index": 28,
+          "x": 0.28377856340389984,
+          "z": 14.811600418179909
+        },
+        "nu": {
+          "max_absolute": 2.8008892915136482e-24,
+          "signed_value": 2.8008892915136482e-24,
+          "sample_index": 28,
+          "x": 0.28377856340389984,
+          "z": 14.811600418179909
+        }
+      },
+      "evidence_kind": "OBSERVED_MODEL_OR_SOURCE_CHANGE",
+      "physical_accuracy": "NOT_INFERRED",
+      "global_error_bound": "NOT_ESTABLISHED"
+    }
+  },
+  "planck_hot_finite_sensitivity": {
+    "label": "FINITE_OBSERVED_SENSITIVITY_NOT_GLOBAL_ERROR_BOUND",
+    "branch_comparison": "planck_reference minus actual_hot",
+    "criterion": "branch peak exceeds each observed nominal-tight peak separately",
+    "normalization": "absolute physical differences; relative_T additionally uses each pair's symmetric temperature denominator",
+    "observations": {
+      "T_K": {
+        "branch_peak_absolute": 7.1947326866975345,
+        "hot_nominal_tight_peak_absolute": 9.626210430724313e-05,
+        "planck_nominal_tight_peak_absolute": 9.610888446331955e-05,
+        "ratio_to_maximum_observed_refinement": 74741.07010723403,
+        "ratio_to_sum_observed_refinements": 37400.29997599357,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "relative_T": {
+        "branch_peak_absolute": 0.0007825255888526542,
+        "hot_nominal_tight_peak_absolute": 1.3967462404859404e-07,
+        "planck_nominal_tight_peak_absolute": 1.400760010547282e-07,
+        "ratio_to_maximum_observed_refinement": 5586.435813133462,
+        "ratio_to_sum_observed_refinements": 2797.225523852319,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "xe_per_baryon": {
+        "branch_peak_absolute": 4.105572088630716e-06,
+        "hot_nominal_tight_peak_absolute": 4.499493000409416e-09,
+        "planck_nominal_tight_peak_absolute": 4.499891570475256e-09,
+        "ratio_to_maximum_observed_refinement": 912.3713370269287,
+        "ratio_to_sum_observed_refinements": 456.20587233412596,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "tau_T": {
+        "branch_peak_absolute": 1.3418047112301323e-07,
+        "hot_nominal_tight_peak_absolute": 1.2703788232959132e-10,
+        "planck_nominal_tight_peak_absolute": 1.2703683894763063e-10,
+        "ratio_to_maximum_observed_refinement": 1056.2240857801057,
+        "ratio_to_sum_observed_refinements": 528.1142116322875,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "scaled_charge_fraction": {
+        "branch_peak_absolute": 6.363202900860898e-05,
+        "hot_nominal_tight_peak_absolute": 9.966261971944279e-09,
+        "planck_nominal_tight_peak_absolute": 9.962341285252307e-09,
+        "ratio_to_maximum_observed_refinement": 6384.7437672958595,
+        "ratio_to_sum_observed_refinements": 3192.999940205558,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "shear": {
+        "branch_peak_absolute": 2.873094349237215e-10,
+        "hot_nominal_tight_peak_absolute": 9.395680795887262e-10,
+        "planck_nominal_tight_peak_absolute": 6.503560190385116e-10,
+        "ratio_to_maximum_observed_refinement": 0.3057888418787965,
+        "ratio_to_sum_observed_refinements": 0.18070638414235524,
+        "exceeds_each_observed_refinement": false,
+        "exceeds_sum_observed_refinements": false,
+        "zero_refinement_denominator": false
+      },
+      "matter": {
+        "branch_peak_absolute": 7.026294998569663e-16,
+        "hot_nominal_tight_peak_absolute": 9.397472763069542e-14,
+        "planck_nominal_tight_peak_absolute": 9.39760286733024e-14,
+        "ratio_to_maximum_observed_refinement": 0.007476688574482995,
+        "ratio_to_sum_observed_refinements": 0.0037383701650048696,
+        "exceeds_each_observed_refinement": false,
+        "exceeds_sum_observed_refinements": false,
+        "zero_refinement_denominator": false
+      },
+      "radiation": {
+        "branch_peak_absolute": 5.36397422518705e-12,
+        "hot_nominal_tight_peak_absolute": 6.028616733426417e-13,
+        "planck_nominal_tight_peak_absolute": 6.028702249872772e-13,
+        "ratio_to_maximum_observed_refinement": 8.897394501943182,
+        "ratio_to_sum_observed_refinements": 4.448728803324178,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "total": {
+        "branch_peak_absolute": 5.363922373218151e-12,
+        "hot_nominal_tight_peak_absolute": 6.867028647106199e-13,
+        "planck_nominal_tight_peak_absolute": 6.867127309503895e-13,
+        "ratio_to_maximum_observed_refinement": 7.811013443415627,
+        "ratio_to_sum_observed_refinements": 3.905534777793575,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "gamma": {
+        "branch_peak_absolute": 5.364162510446829e-12,
+        "hot_nominal_tight_peak_absolute": 3.539375959199856e-13,
+        "planck_nominal_tight_peak_absolute": 3.5394256969745186e-13,
+        "ratio_to_maximum_observed_refinement": 15.155460150024016,
+        "ratio_to_sum_observed_refinements": 7.577783318406756,
+        "exceeds_each_observed_refinement": true,
+        "exceeds_sum_observed_refinements": true,
+        "zero_refinement_denominator": false
+      },
+      "nu": {
+        "branch_peak_absolute": 6.316978597110598e-15,
+        "hot_nominal_tight_peak_absolute": 2.4910695522410015e-13,
+        "planck_nominal_tight_peak_absolute": 2.491104924336879e-13,
+        "ratio_to_maximum_observed_refinement": 0.025358139415954748,
+        "ratio_to_sum_observed_refinements": 0.012679159725954757,
+        "exceeds_each_observed_refinement": false,
+        "exceeds_sum_observed_refinements": false,
+        "zero_refinement_denominator": false
+      }
+    }
+  },
+  "provenance": {
+    "data/t02_split_mao_off/trajectory.npz": {
+      "bytes": 1537519,
+      "sha256": "b8725b52de867d37a30a4205805ddb9265716457a53e5704f8c8bd3c05a5de26"
+    },
+    "data/t02_split_mao_off/RESULT.json": {
+      "bytes": 16809,
+      "sha256": "be263c3cb83fd31e9ead2114b10c5e858da7b6619eba2f5e1760b61af5def6a8"
+    },
+    "data/t02_split_mao_hot/trajectory.npz": {
+      "bytes": 1666087,
+      "sha256": "a9bd9a0d349ab7f85d04a65b1cf05c391ab342162885380dc5b4838d39bc0919"
+    },
+    "data/t02_split_mao_hot/RESULT.json": {
+      "bytes": 17032,
+      "sha256": "aeda4a6652cb4db7ebae385f39daaba12a72ba9a4579f3721b469d59200c7923"
+    },
+    "data/t02_split_mao_planck/trajectory.npz": {
+      "bytes": 1708019,
+      "sha256": "a5f2df6f3c771f97a06be3db852bbc22608f1e4ec2d006fc3d8f33cacd33a4bb"
+    },
+    "data/t02_split_mao_planck/RESULT.json": {
+      "bytes": 17124,
+      "sha256": "f82710f7d55b8f65c0f41d558141627b23dc67886e6ec4e8dc4d5cb3dfa9ca37"
+    },
+    "data/t02_split_derivative_planck/trajectory.npz": {
+      "bytes": 1707899,
+      "sha256": "6dd43e49a887b6b4ca7e130116ed37eec023cff7f19fbdc12999eeee579902bc"
+    },
+    "data/t02_split_derivative_planck/RESULT.json": {
+      "bytes": 17152,
+      "sha256": "0a66444ab75b11e63bd60d6b0b05dd341b800bbd74b3d01579c1fb9b495c194a"
+    },
+    "data/t02_iso_mao_planck/trajectory.npz": {
+      "bytes": 1614215,
+      "sha256": "e32d8be1469bb124035ced1beaea172ad2aa23b27ee32da8ad2921521e86c9e6"
+    },
+    "data/t02_iso_mao_planck/RESULT.json": {
+      "bytes": 17124,
+      "sha256": "528b4cf26378708907f0e25da82671fe86db6b5e09f4b2210c844b92026d8d7b"
+    },
+    "data/t02_split_mao_hot_tight34/trajectory.npz": {
+      "bytes": 1830549,
+      "sha256": "de4cc20b91bde784be1e3c705c2732f98d82af0c0834233e9095be35a8a70c37"
+    },
+    "data/t02_split_mao_hot_tight34/RESULT.json": {
+      "bytes": 17086,
+      "sha256": "2f708be41edadd24469e6a72cec27fc8f2596ac9271dd4e4b44fb766127ddf8e"
+    },
+    "data/t02_split_mao_planck_tight34/trajectory.npz": {
+      "bytes": 1872007,
+      "sha256": "a9013b5599fbf41cfef416cb1d48e41c036250e8bed628ac267ca0ab4c3a30fa"
+    },
+    "data/t02_split_mao_planck_tight34/RESULT.json": {
+      "bytes": 17184,
+      "sha256": "78e967bb1508d638db5759a3d26a870aa143366889b1b4be3621fd0aaf337d24"
+    },
+    "data/t02_split_mao_planck_oracle63/trajectory.npz": {
+      "bytes": 2515470,
+      "sha256": "2b5866b197ff082ead0beb7e2e01f017bdf49234dcb8ad356e384bb0b31372c6"
+    },
+    "data/t02_split_mao_planck_oracle63/RESULT.json": {
+      "bytes": 17163,
+      "sha256": "0b35fca155f04a34048c4a26e7bac475784a57922503e8f6ea1c45a983a4b051"
+    },
+    "baseline/thermal_split60/trajectory.npz": {
+      "bytes": 1244600,
+      "sha256": "4880ff6b7c9467a9bc2c73c6121a207072001dd60b267ceca249e64ca5b9f5e5"
+    },
+    "baseline/thermal_split60/RESULT.json": {
+      "bytes": 3417,
+      "sha256": "f6beb5618e048c6742fd3cfcebb28aff05d75d7dea364442edb874988e29428e"
+    },
+    "baseline/thermal_iso60/trajectory.npz": {
+      "bytes": 1187734,
+      "sha256": "7d1a268680abeb1ab791b6ace5b318a320e37557d869e4a67e465bc6fb97e1fb"
+    },
+    "baseline/thermal_iso60/RESULT.json": {
+      "bytes": 3409,
+      "sha256": "5a041fdd577670437f8523c4b79b421c8e7204dcd9515760e641f62e5063ad5e"
+    },
+    "code/analyze.py": {
+      "bytes": 23444,
+      "sha256": "e3a81d10c6475f24ef7b7d4f7d639a38f49db50e8f76629afc926e01679415eb"
+    },
+    "vendor/therm01/vendor/rei_pr220/vendor/rec_hheli/code/atomic_network.py": {
+      "bytes": 15617,
+      "sha256": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+    },
+    "FROZEN_CONTRACT.md": {
+      "bytes": 10753,
+      "sha256": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169"
+    },
+    "provenance/REUSED_FILES.json": {
+      "bytes": 19425,
+      "sha256": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d"
+    }
+  },
+  "interpretation_scope": [
+    "conditional 21population atomic/thermal test-fluid model",
+    "Mao-factor hybrid retains donor number rates",
+    "actual_hot and external Planck reference have different source owners",
+    "other closure/seed changes remain observed changes without two-sided refinement resolution claims",
+    "no independent physical cooling accuracy, nuclear completion, or global numerical error bound inferred"
+  ],
+  "statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "table": {
+    "path": "results/PHYSICS_TABLE.csv",
+    "bytes": 6962,
+    "sha256": "d833fd46e10e0305057a9bc795c0448335c3f6ba2347a4b68135c72a4f87a420",
+    "rows": 10,
+    "baseline_rows_explicitly_labelled": true
+  }
+}

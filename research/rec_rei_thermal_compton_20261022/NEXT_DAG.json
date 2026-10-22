@@ -1,0 +1,201 @@
+{
+  "schema": "therm02.next_source_provider_dag.v1",
+  "unit": "THERM02_COMPTON",
+  "snapshot_time_KST": "2026-10-23T02:48:52.775652+09:00",
+  "snapshot_scope": "Closed local scientific unit, published science commit and verified Stage C backup receipts. Final delivery-metadata publication is identifiable from the current PR HEAD; next physical input obligations remain open.",
+  "workflow": "1.0.0",
+  "approval_design": "v0.2",
+  "current": {
+    "local_science": "DONE",
+    "completed_unique_IVPs": 8,
+    "old_campaign_IVPs_rerun": 0,
+    "case_ids": [
+      "t02_split_mao_off",
+      "t02_split_mao_hot",
+      "t02_split_mao_planck",
+      "t02_split_derivative_planck",
+      "t02_iso_mao_planck",
+      "t02_split_mao_hot_tight34",
+      "t02_split_mao_planck_tight34",
+      "t02_split_mao_planck_oracle63"
+    ],
+    "finite_case_admission": "PASS_8_OF_8",
+    "refinement_oracle_comparisons": "PASS_3_OF_3",
+    "earlier_publication_checkpoints": "STAGE_A_AND_STAGE_B_RETAINED",
+    "final_science_publication": "DONE_STAGE_C",
+    "final_science_backups": "DONE_SCOPED",
+    "final_handoff": "DONE_SCOPED"
+  },
+  "nodes": [
+    {
+      "id": "THERM02_LOCAL_SCIENCE",
+      "status": "DONE",
+      "evidence": [
+        "results/SCIENCE_SUMMARY.json",
+        "results/VALIDATION_COMPARISONS.json",
+        "results/PHYSICS_COMPARISONS.json"
+      ]
+    },
+    {
+      "id": "FINAL_REVIEW_AND_FIGURES",
+      "status": "DONE_SCOPED",
+      "depends_on": [
+        "THERM02_LOCAL_SCIENCE"
+      ],
+      "owner": "root",
+      "action": "Completed; evidence retained without repeating scientific execution.",
+      "evidence": [
+        "evidence/independent_review/REVIEW.md",
+        "evidence/VISUAL_FINDINGS.json",
+        "results/PLOT_DATA_MANIFEST.json"
+      ]
+    },
+    {
+      "id": "FINAL_PUBLICATION",
+      "status": "DONE",
+      "depends_on": [
+        "FINAL_REVIEW_AND_FIGURES"
+      ],
+      "owner": "root",
+      "action": "Publish the exact final science snapshot and retain actual commit/PR receipt.",
+      "evidence": [
+        "delivery/STAGE_C_GIT_ACK.json"
+      ]
+    },
+    {
+      "id": "FINAL_DUAL_BACKUP",
+      "status": "DONE_SCOPED",
+      "depends_on": [
+        "FINAL_REVIEW_AND_FIGURES"
+      ],
+      "owner": "root",
+      "action": "Create a closed exact-payload archive and retain both provider completion receipts with byte/hash scope.",
+      "evidence": [
+        "delivery/STAGE_C_BACKUP_ACK.json",
+        "delivery/STAGE_C_DROPBOX_BYTE_VERIFY.json"
+      ]
+    },
+    {
+      "id": "FINAL_HANDOFF",
+      "status": "DONE_SCOPED",
+      "depends_on": [
+        "FINAL_PUBLICATION",
+        "FINAL_DUAL_BACKUP"
+      ],
+      "owner": "root",
+      "evidence": [
+        "HANDOFF_KO.md",
+        "DAG.json"
+      ]
+    },
+    {
+      "id": "NEXT_PROVIDER_CONTRACT",
+      "status": "NEXT_SOURCE_WORK_NO_ODE",
+      "depends_on": [
+        "FINAL_HANDOFF"
+      ],
+      "action": "Write source-bound Li final-yield and actual-spectrum/backreaction provider contracts while retaining unresolved exact inputs.",
+      "new_IVPs": 0,
+      "new_RHS_evaluations": 0,
+      "execution_approval": "NO_NEW_EXECUTION_PROPOSED_BY_THIS_DOCUMENT; existing session authorization is unchanged",
+      "production_approval": "NOT_APPROVED",
+      "open_input_obligations": [
+        "N1_LI_FINAL_YIELD",
+        "N2_ACTUAL_SPECTRAL_AND_BACKREACTION"
+      ],
+      "required_outputs": [
+        "Primary source/table/version and support map; exact missing-input list.",
+        "Input/output units, electron/ion count ownership and energy partition.",
+        "Explicit finite source-validation criteria without claiming unperformed checks.",
+        "Compatible state/coordinate mapping and separate gas/photon/Einstein ownership.",
+        "A separate proposed bounded execution contract if later calculation becomes warranted."
+      ]
+    },
+    {
+      "id": "N1_LI_FINAL_YIELD",
+      "status": "MISSING_EXACT_INPUT",
+      "required_inputs": [
+        "Energy-dependent final-charge and final-level cross sections on the selected support.",
+        "Electron kinetic-energy partition, residual ion excitation and escaping-photon energy with consistent thresholds.",
+        "Normalization, uncertainty and provenance for each supported final branch."
+      ],
+      "constraints": [
+        "The adopted 5–60 eV smoothed continuum excludes real Li resonances; direct 1s-hole closure does not remove them.",
+        "A 60–200 eV extension is a separately declared support change.",
+        "Signed/interfering Fano decomposition terms are not independent positive branching probabilities.",
+        "No author contact, invented final-yield table or implicit activation is authorized by this document."
+      ],
+      "closure_claim": "OPEN"
+    },
+    {
+      "id": "N2_ACTUAL_SPECTRAL_AND_BACKREACTION",
+      "status": "OPEN",
+      "required_inputs": [
+        "Actual photon spectral/occupation closure sufficient for recoil and induced scattering, with angular assumptions stated.",
+        "Source conservation and source ownership for gas, photon angular/spectral energy, cosmological/shear work and Einstein energy density.",
+        "Consistent radiation-energy and matter/radiation signed-stress evolution under the proposed collision operator."
+      ],
+      "constraints": [
+        "The actual_hot thermal component is retained evidence; an external Planck bath is not the missing actual spectrum.",
+        "Do not add an isolated photon monopole energy source and label the full spectral/angular system closed.",
+        "Passive bath integrals and measured exchange ratios are not dynamic backreaction or rigorous error bounds."
+      ],
+      "closure_claim": "OPEN"
+    }
+  ],
+  "concurrent_work": {
+    "REC_PR124": {
+      "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/124",
+      "pinned_HEAD": "e6ecef7624e39bee66b39e09d99fe355f76e2eae",
+      "source_scope": "Live PR body plus pinned FROZEN_CONTRACT.md and THEORY_KO.md read; remote raw/campaign not rerun or re-audited.",
+      "reported_completed_IVPs": 8,
+      "relation": "DISTINCT_COHORT; native full63 logT, 5–200 eV, z7.963732801243163 restart, 109 comparison nodes",
+      "comparison_policy": "NO_COHORT_MERGE_NO_EXECUTION_COUNT_SUM_NO_SPEEDUP_CLAIM",
+      "evidence": "provenance/CONCURRENT_PR124_INTAKE.md"
+    }
+  },
+  "do_not_rerun": [
+    "REC126 (125 main + 1 control)",
+    "REI129 (127 main + 2 oracle)",
+    "warm729",
+    "THERM01 eight",
+    "REC PR121 thermal eight",
+    "REC PR124 eight",
+    "THERM02 eight",
+    "Other completed calculations without changed dependencies"
+  ],
+  "retention_scope": {
+    "REI_first_failed_raw": "historically local-only; not retroactively backed up"
+  },
+  "flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "evidence_identity": {
+    "FROZEN_CONTRACT.md": {
+      "bytes": 10753,
+      "sha256": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169"
+    },
+    "results/SCIENCE_SUMMARY.json": {
+      "bytes": 5726,
+      "sha256": "3c3682c1793e58c70ac6ba6005d453e3b27ae3cd7649ecfd9338a463458769bc"
+    },
+    "results/VALIDATION_COMPARISONS.json": {
+      "bytes": 4099,
+      "sha256": "9b28b3c551fc835ba81fc131ccd6435c69009f33b6cb58d58c74ba1073500934"
+    },
+    "results/PHYSICS_COMPARISONS.json": {
+      "bytes": 75565,
+      "sha256": "b874ff99b4232b76c6b09509376f3c2475cdaffbd258867e8b1d33c3f78e2052"
+    },
+    "provenance/CONCURRENT_PR124_INTAKE.md": {
+      "bytes": 7164,
+      "sha256": "9cf27d529eb4c1e7bb26a0e08929c96e1a4f3381198837b7e60008a270024d1b"
+    }
+  },
+  "delivery_update_UTC": "2026-10-22T18:03:13.922514+00:00"
+}

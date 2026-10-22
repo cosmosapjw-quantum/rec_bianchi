@@ -1,0 +1,931 @@
+{
+  "kind": "one bounded independent retained-array audit",
+  "source_python_imports": 0,
+  "RHS_calls": 0,
+  "cosmological_IVPs": 0,
+  "old_suite_runs": 0,
+  "reviewer_calculation_count": 1,
+  "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python /workspace/scratch/a6dfe82cc85f/thermal02_work/independent_review/independent_array_audit.py",
+  "source_hashes": {
+    "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+    "THEORY.md": "feac2382f942929cba1f6620052777d7fc1fdbefcda863e279e540d983370a3b",
+    "code/coupled_thermal.py": "599be84fabe9bdc904fdcda46e685f2fcaffa5985ba72dcabcd1fa5cb97a51db",
+    "code/checks.py": "a1ebe75e2f883885095117ce7cb2891b6792cacca6193fab2306d192d2d8fa95",
+    "code/run.py": "a7fd5f599b05dcec3f0c1b1a78a3de144f7d40ebf9a1db25a60b4c5b13402e4d",
+    "code/plot.py": "ca9e7c9dc38605e72aa06d7a86d2a881e2089bdb8e49f456349b2646e5903a7d",
+    "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d",
+    "evidence/PRE_ODE_CHECKS.json": "b1cbc6a17d093638aad766e23c62621c05091814986771efb6e15cdf147e5e65",
+    "evidence/RUNNER_STATIC_CHECKS.json": "ec0271023e4f5cdd54a85b43b6d78a3b8b3b1f87ac07f87ce7e47f255e43f1e2"
+  },
+  "cases": {
+    "t02_split_mao_off": {
+      "raw_sha256": "b8725b52de867d37a30a4205805ddb9265716457a53e5704f8c8bd3c05a5de26",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 2.282703705167916e-16,
+      "energy_reconstruction_relative": 2.1025317481435767e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.9984014443252818e-15,
+          "isotope_max_scaled": 2.5132031881233213e-15,
+          "electron_abundance_min": 0.00015083909088750208,
+          "T_min_K": 425.42824020277095,
+          "T_max_K": 15538.054502446577,
+          "minimum_tau_increment": 3.814545660328575e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 669,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 2.220446049250313e-15,
+          "isotope_max_scaled": 2.5132031881233213e-15,
+          "electron_abundance_min": 0.00015083866017106152,
+          "T_min_K": 425.4012591160462,
+          "T_max_K": 15538.290358462984,
+          "minimum_tau_increment": 1.6561960945968792e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 2.220446049250313e-15,
+          "isotope_max_scaled": 2.5132031881233213e-15,
+          "electron_abundance_min": 0.00015083864519721156,
+          "T_min_K": 425.3993366681539,
+          "T_max_K": 15538.285924140948,
+          "minimum_tau_increment": 1.5143352073503612e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.9984014443252818e-15,
+          "isotope_max_scaled": 2.5132031881233213e-15,
+          "electron_abundance_min": 0.0001508386400351068,
+          "T_min_K": 425.39739001798443,
+          "T_max_K": 15538.296983276878,
+          "minimum_tau_increment": 4.041923398694189e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 4.53207965185243e-16,
+          "absolute_reconstruction_normalized": 4.53207965185243e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 0.0
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.618880211240814e-16,
+          "absolute_reconstruction_normalized": 2.618880211240814e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 0.0
+        }
+      },
+      "source": {
+        "U_actual_relative": 1.0403939141102872e-15,
+        "U_reference_relative": 0.0,
+        "Q_C_relative": 0.0,
+        "Q_UV_relative": 0.0,
+        "actual_ratio_relative": 0.0
+      },
+      "energy": {
+        "max_normalized_residual": 3.7671763360309084e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8744274554656364,
+        "max_GL_difference": 8.228783352789404e-12,
+        "max_absolute_GL_difference": 8.228783352789404e-12,
+        "residual_array_disagreement": 3.5249996905173487e-16,
+        "denominator_relative_disagreement": 3.76372347195105e-16
+      },
+      "reported_wall_seconds": 13.759476482999162
+    },
+    "t02_split_mao_hot": {
+      "raw_sha256": "a9bd9a0d349ab7f85d04a65b1cf05c391ab342162885380dc5b4838d39bc0919",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 3.244337014373711e-16,
+      "energy_reconstruction_relative": 3.315825228714542e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 6.661338147750939e-16,
+          "isotope_max_scaled": 8.975725671869006e-16,
+          "electron_abundance_min": 0.00015083900920612352,
+          "T_min_K": 424.3950766681805,
+          "T_max_K": 13018.38198944437,
+          "minimum_tau_increment": 3.8145409265586056e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 662,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 6.661338147750939e-16,
+          "isotope_max_scaled": 1.2566015940616607e-15,
+          "electron_abundance_min": 0.00015083858274195694,
+          "T_min_K": 424.3714919587037,
+          "T_max_K": 13025.947674173965,
+          "minimum_tau_increment": 1.656196027669074e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 7.771561172376096e-16,
+          "isotope_max_scaled": 1.0770870806242805e-15,
+          "electron_abundance_min": 0.00015083856651460726,
+          "T_min_K": 424.3699548241159,
+          "T_max_K": 13025.92696236498,
+          "minimum_tau_increment": 1.514333282465617e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 6.661338147750939e-16,
+          "isotope_max_scaled": 1.0770870806242805e-15,
+          "electron_abundance_min": 0.0001508385616743359,
+          "T_min_K": 424.36875718643535,
+          "T_max_K": 13026.014895596361,
+          "minimum_tau_increment": 4.0419182042002655e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 2.269585482583271e-16,
+          "absolute_reconstruction_normalized": 2.269585482583271e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 3.89549065865231e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.6393932582495576e-16,
+          "absolute_reconstruction_normalized": 2.6393932582495576e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 5.21703052448278e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 1.040393900221253e-15,
+        "U_reference_relative": 0.0,
+        "Q_C_relative": 1.1600044190556117e-15,
+        "Q_UV_relative": 1.6949998992248425e-16,
+        "actual_ratio_relative": 4.049100011604997e-16
+      },
+      "energy": {
+        "max_normalized_residual": 3.7634987119505884e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745500429349804,
+        "max_GL_difference": 7.777924077851005e-12,
+        "max_absolute_GL_difference": 7.777924077851005e-12,
+        "residual_array_disagreement": 4.196313412755248e-16,
+        "denominator_relative_disagreement": 3.9403895112484675e-16
+      },
+      "reported_wall_seconds": 11.564496049999434
+    },
+    "t02_split_mao_planck": {
+      "raw_sha256": "a5f2df6f3c771f97a06be3db852bbc22608f1e4ec2d006fc3d8f33cacd33a4bb",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 2.226929831468388e-16,
+      "energy_reconstruction_relative": 2.9177396143058336e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.044911992720911e-15,
+          "electron_abundance_min": 0.00015083901417012956,
+          "T_min_K": 424.4685150937729,
+          "T_max_K": 13023.084690772872,
+          "minimum_tau_increment": 3.8145412245151164e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 663,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.253894391265093e-15,
+          "electron_abundance_min": 0.00015083858744249217,
+          "T_min_K": 424.4446194778993,
+          "T_max_K": 13030.563493125359,
+          "minimum_tau_increment": 1.6561960309666923e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.0956696376793219e-15,
+          "electron_abundance_min": 0.00015083857129030557,
+          "T_min_K": 424.44304265359494,
+          "T_max_K": 13030.544294562009,
+          "minimum_tau_increment": 1.5143334048435818e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.0956696376793219e-15,
+          "electron_abundance_min": 0.000150838566429838,
+          "T_min_K": 424.44177535914565,
+          "T_max_K": 13030.620093444455,
+          "minimum_tau_increment": 4.0419185433251525e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 3.7423501282146856e-16,
+          "absolute_reconstruction_normalized": 3.7423501282146856e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 4.232760328363025e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 6.137095033575586e-16,
+          "absolute_reconstruction_normalized": 6.137095033575586e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 7.740581953481591e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 9.477547505344716e-16,
+        "U_reference_relative": 1.3872168467294044e-15,
+        "Q_C_relative": 1.3582391562205695e-15,
+        "Q_UV_relative": 0.0,
+        "actual_ratio_relative": 1.162494394587943e-15
+      },
+      "energy": {
+        "max_normalized_residual": 3.7637139188684275e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745428693710524,
+        "max_GL_difference": 7.797474985403987e-12,
+        "max_absolute_GL_difference": 7.797474985403987e-12,
+        "residual_array_disagreement": 7.913014110679218e-16,
+        "denominator_relative_disagreement": 5.692657903421891e-16
+      },
+      "reported_wall_seconds": 9.245492581998406
+    },
+    "t02_split_derivative_planck": {
+      "raw_sha256": "6dd43e49a887b6b4ca7e130116ed37eec023cff7f19fbdc12999eeee579902bc",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 2.4689294515616815e-16,
+      "energy_reconstruction_relative": 3.346591300653416e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.2462439729924738e-15,
+          "electron_abundance_min": 0.00015083901416881578,
+          "T_min_K": 424.4685145679553,
+          "T_max_K": 13022.296729370522,
+          "minimum_tau_increment": 3.8145412244128626e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 663,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.1102230246251565e-15,
+          "isotope_max_scaled": 1.4728337862638327e-15,
+          "electron_abundance_min": 0.00015083858744141112,
+          "T_min_K": 424.4446174250884,
+          "T_max_K": 13029.81279289667,
+          "minimum_tau_increment": 1.6561960309666797e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.2462439729924738e-15,
+          "electron_abundance_min": 0.00015083857128920307,
+          "T_min_K": 424.44304214313405,
+          "T_max_K": 13029.793017734104,
+          "minimum_tau_increment": 1.5143334046806127e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.2462439729924738e-15,
+          "electron_abundance_min": 0.0001508385664287563,
+          "T_min_K": 424.441774851709,
+          "T_max_K": 13029.874002533208,
+          "minimum_tau_increment": 4.0419185419631235e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 2.4945848144903897e-16,
+          "absolute_reconstruction_normalized": 2.4945848144903897e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 8.120933370173247e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.618880211240814e-16,
+          "absolute_reconstruction_normalized": 2.618880211240814e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 6.547445060438024e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 1.0403939002465682e-15,
+        "U_reference_relative": 1.3872168467294044e-15,
+        "Q_C_relative": 1.2454146478939136e-15,
+        "Q_UV_relative": 0.0,
+        "actual_ratio_relative": 1.1627746493365852e-15
+      },
+      "energy": {
+        "max_normalized_residual": 3.7636956408304733e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8745434786389843,
+        "max_GL_difference": 7.79022775657492e-12,
+        "max_absolute_GL_difference": 7.79022775657492e-12,
+        "residual_array_disagreement": 3.3250982440604965e-16,
+        "denominator_relative_disagreement": 5.095589911391207e-16
+      },
+      "reported_wall_seconds": 8.420761803005007
+    },
+    "t02_iso_mao_planck": {
+      "raw_sha256": "e32d8be1469bb124035ced1beaea172ad2aa23b27ee32da8ad2921521e86c9e6",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 1.621593757495729e-16,
+      "energy_reconstruction_relative": 2.9357040146168854e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.1329490663567944e-15,
+          "electron_abundance_min": 0.00015083882918246199,
+          "T_min_K": 424.47974433786936,
+          "T_max_K": 13022.665008201333,
+          "minimum_tau_increment": 3.8173063608874517e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 661,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.2462439729924738e-15,
+          "electron_abundance_min": 0.0001508390402943562,
+          "T_min_K": 424.45779900955216,
+          "T_max_K": 13030.239967952455,
+          "minimum_tau_increment": 1.6629054379364337e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.1329490663567944e-15,
+          "electron_abundance_min": 0.00015083840011191353,
+          "T_min_K": 424.45386605885744,
+          "T_max_K": 13030.173322103736,
+          "minimum_tau_increment": 1.51542386825888e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.1329490663567944e-15,
+          "electron_abundance_min": 0.0001508383961612877,
+          "T_min_K": 424.4525179908093,
+          "T_max_K": 13030.256377704241,
+          "minimum_tau_increment": 4.044827974620212e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 2.601075821160673e-16,
+          "absolute_reconstruction_normalized": 2.601075821160673e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 5.606019531596709e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.990906796015142e-16,
+          "absolute_reconstruction_normalized": 2.990906796015142e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 6.042703266437321e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 9.472357248153213e-16,
+        "U_reference_relative": 1.3872168467294044e-15,
+        "Q_C_relative": 1.6977807319801127e-15,
+        "Q_UV_relative": 0.0,
+        "actual_ratio_relative": 1.1623920425733057e-15
+      },
+      "energy": {
+        "max_normalized_residual": 3.7487469438231e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.87504176853923,
+        "max_GL_difference": 8.90436462219903e-12,
+        "max_absolute_GL_difference": 8.90436462219903e-12,
+        "residual_array_disagreement": 4.863888149377437e-16,
+        "denominator_relative_disagreement": 4.4273737327142787e-16
+      },
+      "reported_wall_seconds": 9.24193980400014
+    },
+    "t02_split_mao_hot_tight34": {
+      "raw_sha256": "de4cc20b91bde784be1e3c705c2732f98d82af0c0834233e9095be35a8a70c37",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 2.98324056154061e-16,
+      "energy_reconstruction_relative": 2.935756564877376e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.2212453270876722e-15,
+          "isotope_max_scaled": 1.4705828940790177e-15,
+          "electron_abundance_min": 0.00015083890862279195,
+          "T_min_K": 424.39502326391795,
+          "T_max_K": 13018.38201643837,
+          "minimum_tau_increment": 3.814520974127988e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 1364,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.3322676295501878e-15,
+          "isotope_max_scaled": 1.795145134373801e-15,
+          "electron_abundance_min": 0.00015083860975988067,
+          "T_min_K": 424.3688904644465,
+          "T_max_K": 13026.008481816441,
+          "minimum_tau_increment": 1.6561971559764281e-12,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.2212453270876722e-15,
+          "isotope_max_scaled": 1.6176411834869196e-15,
+          "electron_abundance_min": 0.0001508384872304711,
+          "T_min_K": 424.36990168823803,
+          "T_max_K": 13025.92698951959,
+          "minimum_tau_increment": 1.5143254313101137e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.3322676295501878e-15,
+          "isotope_max_scaled": 1.6176411834869196e-15,
+          "electron_abundance_min": 0.00015083848445148778,
+          "T_min_K": 424.3687040543444,
+          "T_max_K": 13026.014922846796,
+          "minimum_tau_increment": 4.041896128102534e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 3.60522093691207e-16,
+          "absolute_reconstruction_normalized": 3.60522093691207e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 3.8711792051837056e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.850627570177437e-16,
+          "absolute_reconstruction_normalized": 2.850627570177437e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 4.1928244155022664e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 1.0403939002329236e-15,
+        "U_reference_relative": 0.0,
+        "Q_C_relative": 1.0667352780658928e-15,
+        "Q_UV_relative": 3.4277017894466554e-16,
+        "actual_ratio_relative": 4.1857259085793987e-16
+      },
+      "energy": {
+        "max_normalized_residual": 6.978993989874815e-09,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.9976736686700417,
+        "max_GL_difference": 1.5889396770046378e-12,
+        "max_absolute_GL_difference": 1.5889396770046378e-12,
+        "residual_array_disagreement": 4.114870103321456e-16,
+        "denominator_relative_disagreement": 4.1382189362231428e-16
+      },
+      "reported_wall_seconds": 13.146116468997207
+    },
+    "t02_split_mao_planck_tight34": {
+      "raw_sha256": "a9013b5599fbf41cfef416cb1d48e41c036250e8bed628ac267ca0ab4c3a30fa",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 3.2433801688787147e-16,
+      "energy_reconstruction_relative": 2.9077841862851483e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.5707519925770758e-15,
+          "electron_abundance_min": 0.00015083891359128661,
+          "T_min_K": 424.4684615248547,
+          "T_max_K": 13023.084717684256,
+          "minimum_tau_increment": 3.8145212723400996e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 1364,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.1102230246251565e-15,
+          "isotope_max_scaled": 1.6994235995351916e-15,
+          "electron_abundance_min": 0.00015083861428954415,
+          "T_min_K": 424.4419010833896,
+          "T_max_K": 13030.611867102243,
+          "minimum_tau_increment": 1.6561971592740523e-12,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.5861286928995121e-15,
+          "electron_abundance_min": 0.00015083849201217572,
+          "T_min_K": 424.4429893542107,
+          "T_max_K": 13030.54432163268,
+          "minimum_tau_increment": 1.5143255522118696e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 8.881784197001252e-16,
+          "isotope_max_scaled": 1.5861286928995121e-15,
+          "electron_abundance_min": 0.00015083848921318752,
+          "T_min_K": 424.4417220636184,
+          "T_max_K": 13030.62012061077,
+          "minimum_tau_increment": 4.041896450801758e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 2.6608673360189896e-16,
+          "absolute_reconstruction_normalized": 2.6608673360189896e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 3.5080745127979596e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 3.461528414931521e-16,
+          "absolute_reconstruction_normalized": 3.461528414931521e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 5.111385652415612e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 1.0403939002657262e-15,
+        "U_reference_relative": 1.3872168467294044e-15,
+        "Q_C_relative": 1.5846123490136287e-15,
+        "Q_UV_relative": 1.2237579801180203e-16,
+        "actual_ratio_relative": 1.1624943998608105e-15
+      },
+      "energy": {
+        "max_normalized_residual": 6.978529618765359e-09,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.9976738234604116,
+        "max_GL_difference": 1.5891707314077996e-12,
+        "max_absolute_GL_difference": 1.5891707314077996e-12,
+        "residual_array_disagreement": 3.8913185630224974e-16,
+        "denominator_relative_disagreement": 4.460480898246224e-16
+      },
+      "reported_wall_seconds": 18.544282746006502
+    },
+    "t02_split_mao_planck_oracle63": {
+      "raw_sha256": "2b5866b197ff082ead0beb7e2e01f017bdf49234dcb8ad356e384bb0b31372c6",
+      "artifact_bindings": 3,
+      "T_reconstruction_relative": 1.3446045638007758e-16,
+      "energy_reconstruction_relative": 2.943264415073886e-16,
+      "finite_state_scopes": {
+        "saved193": {
+          "count": 193,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.1102230246251565e-15,
+          "isotope_max_scaled": 1.323524604671116e-15,
+          "electron_abundance_min": 0.00015083903783104428,
+          "T_min_K": 424.46851422383855,
+          "T_max_K": 13023.084693089275,
+          "minimum_tau_increment": 3.8145406856201176e-07,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "accepted_BDF_nodes": {
+          "count": 664,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.2212453270876722e-15,
+          "isotope_max_scaled": 1.4705828940790177e-15,
+          "electron_abundance_min": 0.00015083866155109814,
+          "T_min_K": 424.446550242111,
+          "T_max_K": 13030.615742256967,
+          "minimum_tau_increment": 1.9323083942489293e-11,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL8": {
+          "count": 1536,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.2212453270876722e-15,
+          "isotope_max_scaled": 1.323524604671116e-15,
+          "electron_abundance_min": 0.00015083858988194083,
+          "T_min_K": 424.4430417454835,
+          "T_max_K": 13030.544296852584,
+          "minimum_tau_increment": 1.5143335706733205e-08,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        },
+        "dense_GL16": {
+          "count": 3072,
+          "finite": true,
+          "minimum_scaled_population": 0.0,
+          "baryon_max_abs": 1.2212453270876722e-15,
+          "isotope_max_scaled": 1.323524604671116e-15,
+          "electron_abundance_min": 0.00015083858446576388,
+          "T_min_K": 424.4417743734809,
+          "T_max_K": 13030.620096022718,
+          "minimum_tau_increment": 4.041917855852884e-09,
+          "number_monopole_max_abs": 0.0,
+          "absent_n_tritium_exact_zero": true
+        }
+      },
+      "ledger": {
+        "GL8": {
+          "signed_reconstruction_normalized": 4.608311227641763e-16,
+          "absolute_reconstruction_normalized": 4.608311227641763e-16,
+          "nodes_max_abs": 0.0,
+          "exchange_integral_reconstruction_relative": 5.850554671113656e-16
+        },
+        "GL16": {
+          "signed_reconstruction_normalized": 2.860969175473946e-16,
+          "absolute_reconstruction_normalized": 2.860969175473946e-16,
+          "nodes_max_abs": 3.469446951953614e-18,
+          "exchange_integral_reconstruction_relative": 7.710888380566933e-16
+        }
+      },
+      "source": {
+        "U_actual_relative": 9.515016192737637e-16,
+        "U_reference_relative": 1.3872168467294044e-15,
+        "Q_C_relative": 1.47142575256464e-15,
+        "Q_UV_relative": 0.0,
+        "actual_ratio_relative": 1.1624943943460535e-15
+      },
+      "energy": {
+        "max_normalized_residual": 3.7114123682343854e-07,
+        "peak_index": 48,
+        "peak_z": 11.91055121197655,
+        "margin_fraction": 0.8762862543921872,
+        "max_GL_difference": 8.993396643508444e-12,
+        "max_absolute_GL_difference": 8.993396643508444e-12,
+        "residual_array_disagreement": 4.0311901366731526e-16,
+        "denominator_relative_disagreement": 6.055551891125397e-16
+      },
+      "reported_wall_seconds": 8.909035575001326
+    }
+  },
+  "comparisons": {
+    "t02_split_mao_hot_tight34": {
+      "max_relative_T": 1.3967462404859404e-07,
+      "max_charge_fraction_absolute": 9.966261971944279e-09,
+      "max_tau_absolute": 1.2703788232959132e-10,
+      "max_signed_normalized_absolute": 9.395680795887262e-10
+    },
+    "t02_split_mao_planck_tight34": {
+      "max_relative_T": 1.400760010547282e-07,
+      "max_charge_fraction_absolute": 9.962341285252307e-09,
+      "max_tau_absolute": 1.2703683894763063e-10,
+      "max_signed_normalized_absolute": 6.503560190385116e-10
+    },
+    "t02_split_mao_planck_oracle63": {
+      "max_relative_T": 3.4167474117271937e-09,
+      "max_charge_fraction_absolute": 1.8718200323064593e-09,
+      "max_tau_absolute": 1.0519807247533208e-11,
+      "max_signed_normalized_absolute": 1.4853293595074035e-10
+    }
+  },
+  "branch_resolution": {
+    "T_K": {
+      "signal_max_abs": 7.1947326866975345,
+      "hot_refinement_max_abs": 9.626210430724313e-05,
+      "planck_refinement_max_abs": 9.610888446331955e-05,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "electron_abundance": {
+      "signal_max_abs": 4.105572088630716e-06,
+      "hot_refinement_max_abs": 4.499493000409416e-09,
+      "planck_refinement_max_abs": 4.499891570475256e-09,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "tau": {
+      "signal_max_abs": 1.3418047112301323e-07,
+      "hot_refinement_max_abs": 1.2703788232959132e-10,
+      "planck_refinement_max_abs": 1.2703683894763063e-10,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "charge_fractions": {
+      "signal_max_abs": 6.363202900860898e-05,
+      "hot_refinement_max_abs": 9.966261971944279e-09,
+      "planck_refinement_max_abs": 9.962341285252307e-09,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Sigma_F": {
+      "signal_max_abs": 2.873094349237215e-10,
+      "hot_refinement_max_abs": 9.395680795887262e-10,
+      "planck_refinement_max_abs": 6.503560190385116e-10,
+      "exceeds_both_observed_refinements": false,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Pi_matter": {
+      "signal_max_abs": 7.026294998569663e-16,
+      "hot_refinement_max_abs": 9.397472763069542e-14,
+      "planck_refinement_max_abs": 9.39760286733024e-14,
+      "exceeds_both_observed_refinements": false,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Pi_radiation": {
+      "signal_max_abs": 5.36397422518705e-12,
+      "hot_refinement_max_abs": 6.028616733426417e-13,
+      "planck_refinement_max_abs": 6.028702249872772e-13,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Pi_total": {
+      "signal_max_abs": 5.363922373218151e-12,
+      "hot_refinement_max_abs": 6.867028647106199e-13,
+      "planck_refinement_max_abs": 6.867127309503895e-13,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Pi_gamma": {
+      "signal_max_abs": 5.364162510446829e-12,
+      "hot_refinement_max_abs": 3.539375959199856e-13,
+      "planck_refinement_max_abs": 3.5394256969745186e-13,
+      "exceeds_both_observed_refinements": true,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    },
+    "Pi_nu": {
+      "signal_max_abs": 6.316978597110598e-15,
+      "hot_refinement_max_abs": 2.4910695522410015e-13,
+      "planck_refinement_max_abs": 2.491104924336879e-13,
+      "exceeds_both_observed_refinements": false,
+      "interpretation": "finite supremum comparison only; not a pointwise or global error bound"
+    }
+  },
+  "CSV_bindings": {
+    "t02_split_mao_off": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_mao_hot": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_mao_planck": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_derivative_planck": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_iso_mao_planck": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_mao_hot_tight34": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_mao_planck_tight34": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "t02_split_mao_planck_oracle63": {
+      "rows": 193,
+      "columns": 119,
+      "exact_float64": true
+    },
+    "thermal_iso60": {
+      "rows": 193,
+      "columns": 85,
+      "exact_float64": true
+    },
+    "thermal_split60": {
+      "rows": 193,
+      "columns": 85,
+      "exact_float64": true
+    },
+    "signed_comparisons": {
+      "rows": 193,
+      "columns": 83,
+      "exact_float64": true
+    }
+  },
+  "retained_input_files_verified": 70,
+  "cohort": {
+    "ids": [
+      "t02_split_mao_off",
+      "t02_split_mao_hot",
+      "t02_split_mao_planck",
+      "t02_split_derivative_planck",
+      "t02_iso_mao_planck",
+      "t02_split_mao_hot_tight34",
+      "t02_split_mao_planck_tight34",
+      "t02_split_mao_planck_oracle63"
+    ],
+    "receipts": 8,
+    "accepted_BDF_nodes": 6710,
+    "summed_case_seconds": 92.83160151200718,
+    "reported_cumulative_seconds": 92.95149790799769,
+    "unique_completed": 8,
+    "new_this_invocation": 8,
+    "old_IVPs": 0
+  },
+  "elapsed_seconds": 2.316241782005818,
+  "failures": [],
+  "status": "PASS",
+  "exit_code": 0
+}
