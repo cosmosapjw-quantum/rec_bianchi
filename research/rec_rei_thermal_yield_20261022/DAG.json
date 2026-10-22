@@ -1,6 +1,6 @@
 {
   "unit": "THERM01",
-  "phase": "C_SCIENCE_REVIEW_COMPLETE",
+  "phase": "D_RECOVERED_PAYLOAD_FINAL_DELIVERY",
   "nodes": [
     {
       "id": "R1",
@@ -98,8 +98,8 @@
   "stages": {
     "A": "PUBLISHED_BACKED",
     "B": "PUBLISHED_BACKED",
-    "C": "PASS_SCOPED_CHECKPOINT_READY",
-    "D": "IN_PROGRESS"
+    "C": "SCIENCE_PUBLISHED_ALL_PAYLOADS_RECOVERED",
+    "D": "FINAL_BACKUP_PENDING"
   },
   "successful_new_IVPs": 8,
   "failed_science_attempts": 0,
@@ -165,5 +165,11 @@
         "N4"
       ]
     }
-  ]
+  ],
+  "delivery_recovery": {
+    "expected": 147,
+    "recovered_exact": 147,
+    "new_IVPs": 0,
+    "original_stageC_zip": "INCOMPLETE_NOT_ADMITTED"
+  }
 }

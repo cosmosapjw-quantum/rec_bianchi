@@ -273,3 +273,26 @@ REC126/REI129/warm729는 기본 재실행 대상으로 두지 않는다.
 moment·입자수·장부 식의 Wolfram 검산은 provenance/WOLFRAM_SYMBOLIC_CHECK.json에 있다.
 첫 symbolic call의 protected-symbol 경고와 이름을 교정한 clean return을 함께
 보존했다. 논문 사실, 유도, fit 가정, 수치 PASS의 근거를 서로 구분한다.
+
+
+## 전달 재개 후 복구 기록
+
+사용자 재개 요청 뒤 scratch가 비어 있음을 실제 확인했다. Stage C 원격 ZIP은
+12,257,739B였고 최초 로컬 기록12,583,886B와 달랐다. 완전한 local member85개
+뒤에 central directory 없이 끝나 정상 ZIP으로 채택하지 않았다. 원인 자체는
+특정하지 않았다. 다만85개 payload와 그 안의 rawNPZ16개·PNG/PDF6개가 모두
+원래 byte length·SHA256·Git blob SHA와 일치했다. 나머지62개를 고정
+science commit d562d03415e37488cd4b5444488c77555260e0fb에서 복원했고,
+총147개 기대 payload가 모두 원래 바이트로 확인됐다.
+
+누락CSV2개는 Git text 게시가 CRLF를LF로 정규화한 상태였으므로, 원래CRLF를
+복원한 후보가 기존SHA256·GitSHA와 정확히 일치할 때만 채택했다. CSV10개는
+이후base64blob으로 게시하여 원래 줄바꿈도 보존한다. 수치값·raw·방정식·그림은
+변경하지 않았으며 복구ODE실행은0이다. 새 최종archive는 완전히 닫아CRC검증한
+뒤 atomic rename으로 노출하고 실제 원격byte검사를 진행한다. 이는 원인 확정이
+아닌 전달 방어조치다. 최초ZIPwhole-byte복구PASS는 주장하지 않는다.
+
+상세 증거는 delivery/RECOVERY_RECEIPT.json과 delivery/recovery/에 있다.
+이 연구payload의 마지막원격ACK·전체byte결과는 별도최종delivery receipt와PR120의
+완료댓글을 따른다. 최종ZIP은 post-upload receipt가 생기기 전 고정된 payload
+snapshot이며, 나중Git문서commit이 업로드반환을 덧붙이는 구조다.
