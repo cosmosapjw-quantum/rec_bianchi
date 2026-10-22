@@ -1,0 +1,72 @@
+{
+  "contract": "FROZEN_CONTRACT.md",
+  "amendment": "AMENDMENT_Q1.md",
+  "source_roles": {
+    "REC_completion_anchor": "PR119 ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+    "REI_compact_source": "PR220 8be7533cc97b3302bf42608699d6e8313ed6af8a",
+    "immutable_donor_source_commit": "a949529872eb5ba0e20c7e206fe893e5d544e48c"
+  },
+  "donor_immutable_file_count": 57,
+  "source_coefficients": {
+    "photo_VF1996_unique_rows": 6,
+    "RR_unique_rows": 6,
+    "DR_unique_rows": 3
+  },
+  "source_field": {
+    "energy_min_eV": 5.0,
+    "main_Emax_eV": 60.0,
+    "control_Emax_eV": 40.0,
+    "number_power_index": -2.5,
+    "nominal_base_bins": 64,
+    "verification_base_bins": 128,
+    "split_at_atomic_thresholds": true,
+    "within_energy_bin_quadrature": "fixed Gauss-Legendre4; AMENDMENT_Q1 numerical repair",
+    "HI_late_rate_s": 1e-12,
+    "UV_envelope": "0.5*(1+tanh((7-z)/0.8))"
+  },
+  "conventions": [
+    "SI; Y=n/n_b; w=epsilon_th/kB; T=2*w/(3*eta)",
+    "rapid Maxwellian thermalization and low-density case-A prompt photon escape",
+    "isotope electronic equality; zero neutron/tritium inventories and actual decay flux",
+    "baryon test-fluid pi_b=0; separate nonbaryonic massive collisionless stress",
+    "photo events have adjacent charge gain1 and E=chi+electron kinetic deposition",
+    "RR/DR kinetic cooling is fitted-rate derivative closure; empirical cooling accuracy unmeasured",
+    "recombination escape includes binding plus captured kinetic energy once"
+  ],
+  "retained_processes": [
+    "photoelectric heating",
+    "RR/DR capture kinetic cooling",
+    "ionization-potential storage",
+    "prompt recombination escape",
+    "adiabatic work"
+  ],
+  "excluded_processes": [
+    "secondary ionization",
+    "collisional ionization/excitation",
+    "charge exchange",
+    "molecules",
+    "free-free",
+    "Compton energy exchange",
+    "excited-state kinetics",
+    "nuclear reactions/decay energy"
+  ],
+  "unresolved_input": "full 60\u2013200 eV correlated He/Li final-charge/excitation partitions; not imported",
+  "unchanged_statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "source_config_identities": {
+    "thermal_iso60": "2f0344e25547eba5dba6d701944fb410eaca25776061c8e55747a0ea2897dac7",
+    "thermal_opposed60": "5d2d5796cf8e1b9cca23ee3e1db3dfaccc3a6e449fcba000c23c9a27556fe3b5",
+    "thermal_split40": "c538422d0f6424be51328f9b3ca8ad3e7b0fed0a23862d242ecd335daae70cba",
+    "thermal_split60": "2ab8e4fed76d9645dad7279274ef8257a1ea1248e036e33e9541a0c2b468bf5b",
+    "thermal_split60_oracle63": "da24dbb7de67b298a1f3c09bc5e01f618f3daf405a76e925b3a2189c064dbdea",
+    "thermal_split60_tight34": "a9f5c59c6f267da6aa5c0e95df4e7e8716b9a81b88ca930eda9d009c9d00f58f",
+    "thermal_uv_off": "63fb5b56abf177a8ac3e28f6e3cc3f6fc3bfeb065a858f3ca2d3f01c59ef830a",
+    "thermal_warm60": "86fcbe1fbd36054537e0ba0353c44d5fca6dc10076b7aab69bec445f9b19d73e"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "therm01.dynamic34.full63.v1",
+  "id": "thermal_split40",
+  "status": "PASS",
+  "identity": {
+    "schema": "therm01.dynamic34.full63.v1",
+    "sources": {
+      "code/thermal.py": "72bee3c0dad1f2e3acbe05dadbcb5e8beef7ca79acdd33423f31ad21c8a6b2ed",
+      "code/run.py": "5052adb35fc555e95ee7c414d70d162d9e0da9ce9948057c31c209a2dfeb649e",
+      "FROZEN_CONTRACT.md": "114a93148b2b54ac1c41e90e2f0d776c66937b94db837abfea8947970b5ccc26",
+      "vendor/rei_pr220/code/compact_system.py": "3ebf56b5a8f1f392681365ec0769364329f293f944a0de4a5add441c8cbc1c49",
+      "vendor/rei_pr220/provenance/DONOR_IDENTITY.json": "e2b29fb5d7b7420afd5b45426b7ad596b67e0104556171ed1b8f7e4ea286de12"
+    },
+    "config": {
+      "Sigma_F": 0.15,
+      "matter_A": 0.6,
+      "radiation_A": 0.15,
+      "T0_K": 1000.0,
+      "Emax_eV": 40.0,
+      "uv_multiplier": 1.0,
+      "id": "thermal_split40",
+      "samples": 193,
+      "x_end": 1.9459101490553132,
+      "method": "BDF",
+      "rtol": 2e-08,
+      "atol_divisor": 1,
+      "full63": false,
+      "max_step": 0.025,
+      "dense_output": true
+    },
+    "sha256": "c538422d0f6424be51328f9b3ca8ad3e7b0fed0a23862d242ecd335daae70cba"
+  },
+  "gates": {
+    "full_interval_193": true,
+    "finite": true,
+    "minimum_isotope_fraction": true,
+    "isotope_inventory": true,
+    "baryon_error": true,
+    "nonnegative_electrons": true,
+    "temperature_domain": true,
+    "tau_nondecreasing": true,
+    "number_monopoles": true,
+    "einstein": true,
+    "signed_tensor_sum": true,
+    "trace_energy_fraction": true,
+    "zero_n_T": true,
+    "dense_integrated_energy": true,
+    "GL8_GL16_difference": true
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "numerical_threads": 1,
+    "requested_role": "native lower-tier mechanical executor",
+    "observed_model_identity": "not exposed by runtime"
+  },
+  "statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "raw_sha256": "94926203c03d085cc27d5261aa2aecc3900c9a1932fc4e2ee21979593c04b779",
+  "solver_return_sha256": "7cd6b6ecb94cb81c5e6bd075e75915d3da22a7a9808cc235f146ce6d852de9f2",
+  "nfev": 1155,
+  "njev": 30,
+  "nlu": 97,
+  "rhs_calls": 2271,
+  "min_scaled_population": 0.0,
+  "isotope_errors": {
+    "n": 0.0,
+    "H1": 5.882331576316072e-16,
+    "D": 7.180580537495204e-16,
+    "T": 0.0,
+    "He3": 7.853759962885379e-16,
+    "He4": 6.797694398140766e-16,
+    "Li6": 8.359295941767287e-16,
+    "Li7": 6.847935235495762e-16
+  },
+  "baryon_error": 4.440892098500626e-16,
+  "number_monopole_error": 0.0,
+  "tensor_sum_error": 5.421010862427522e-20,
+  "max_einstein_residual": 4.391978029935943e-16,
+  "max_trace_energy_fraction": 1.685685471258695e-08,
+  "T_range_K": [
+    423.32317629422334,
+    14148.463309428884
+  ],
+  "trial_T_range_K": [
+    423.30630279843473,
+    14149.575637960086
+  ],
+  "final_T_K": 5917.452910910412,
+  "final_tau": 0.06808645300563762,
+  "max_energy_residual": 2.609423178496947e-06,
+  "max_GL_difference": 1.8433032674329614e-10,
+  "solver_message": "The solver successfully reached the end of the integration interval.",
+  "wall_seconds": 5.548592295000162
+}

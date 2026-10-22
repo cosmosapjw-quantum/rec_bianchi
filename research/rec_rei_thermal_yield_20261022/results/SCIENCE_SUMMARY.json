@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "unique_new_IVPs": 8,
+  "case_ids": [
+    "thermal_iso60",
+    "thermal_split60",
+    "thermal_opposed60",
+    "thermal_split40",
+    "thermal_warm60",
+    "thermal_uv_off",
+    "thermal_split60_tight34",
+    "thermal_split60_oracle63"
+  ],
+  "case_receipts": [
+    "data/thermal_iso60/RESULT.json",
+    "data/thermal_split60/RESULT.json",
+    "data/thermal_opposed60/RESULT.json",
+    "data/thermal_split40/RESULT.json",
+    "data/thermal_warm60/RESULT.json",
+    "data/thermal_uv_off/RESULT.json",
+    "data/thermal_split60_tight34/RESULT.json",
+    "data/thermal_split60_oracle63/RESULT.json"
+  ],
+  "comparisons": {
+    "thermal_split60_tight34": {
+      "max_relative_T": 1.021233216366539e-06,
+      "max_charge_fraction_absolute": 6.167131980615304e-08,
+      "max_tau_absolute": 8.187292214632477e-10,
+      "max_signed_normalized_absolute": 3.837768339232106e-09,
+      "gates": {
+        "T": true,
+        "fractions": true,
+        "tau": true,
+        "signed": true
+      },
+      "status": "PASS"
+    },
+    "thermal_split60_oracle63": {
+      "max_relative_T": 5.419209535634432e-08,
+      "max_charge_fraction_absolute": 3.727779085416216e-08,
+      "max_tau_absolute": 5.966591110073693e-11,
+      "max_signed_normalized_absolute": 1.960961809599482e-09,
+      "gates": {
+        "T": true,
+        "fractions": true,
+        "tau": true,
+        "signed": true
+      },
+      "status": "PASS"
+    }
+  },
+  "total_execution_wall_seconds": 26.517743919000168,
+  "scope": "finite representative checks; global convergence NOT_RUN",
+  "physical": "HOLD",
+  "production": "NOT_APPROVED",
+  "REI_activation": false
+}

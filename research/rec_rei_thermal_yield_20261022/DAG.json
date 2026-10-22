@@ -1,0 +1,184 @@
+{
+  "unit": "THERM01",
+  "phase": "D_COMPLETE_SCOPED",
+  "nodes": [
+    {
+      "id": "R1",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R2",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R3",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R4",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R5",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R6",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R7",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R8",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R9",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "R10",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C1",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C2",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C3",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C4",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C5",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C6",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C7",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C8",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C9",
+      "status": "COMPLETE_SCOPED"
+    },
+    {
+      "id": "C10",
+      "status": "COMPLETE_SCOPED"
+    }
+  ],
+  "prospective_new_IVPs": 8,
+  "actual_new_IVPs": 8,
+  "old_cohort_reruns": 0,
+  "flags": {
+    "physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "closure": "CLOSED_HOLD_NOT_RESET"
+  },
+  "next": "N1 source resolution: in-band Li resonances / 60–200 eV final-state data; independent H/He partial cooling witness before new source adapter.",
+  "stages": {
+    "A": "PUBLISHED_BACKED",
+    "B": "PUBLISHED_BACKED",
+    "C": "PUBLISHED_RECOVERED_FINAL_BACKUP_VERIFIED",
+    "D": "COMPLETE_SCOPED"
+  },
+  "successful_new_IVPs": 8,
+  "failed_science_attempts": 0,
+  "independent_review": "PASS_SCOPED_THERM01_WITH_SOURCE_CLARIFICATION",
+  "cohorts": {
+    "REC_PR119": {
+      "historical_main": 125,
+      "historical_control": 1,
+      "historical_total": 126,
+      "rerun_here": 0
+    },
+    "REI_PR220": {
+      "historical_main": 127,
+      "historical_full62_oracle": 2,
+      "historical_total": 129,
+      "rerun_here": 0,
+      "first_failed_raw": "historical local-only; not in completed archive"
+    },
+    "warm729": {
+      "rerun_here": 0
+    },
+    "THERM01": {
+      "new_nominal": 6,
+      "new_tight34": 1,
+      "new_full63_oracle": 1,
+      "total_new": 8
+    }
+  },
+  "next_nodes": [
+    {
+      "id": "N1",
+      "status": "READY_TO_SELECT",
+      "depends_on": [
+        "C10"
+      ]
+    },
+    {
+      "id": "N2",
+      "status": "INPUT_DEPENDENT",
+      "depends_on": [
+        "N1"
+      ]
+    },
+    {
+      "id": "N3",
+      "status": "INPUT_DEPENDENT",
+      "depends_on": [
+        "N1"
+      ]
+    },
+    {
+      "id": "N4",
+      "status": "NOT_RUN",
+      "depends_on": [
+        "N2",
+        "N3"
+      ]
+    },
+    {
+      "id": "N5",
+      "status": "NOT_RUN",
+      "depends_on": [
+        "N4"
+      ]
+    }
+  ],
+  "delivery_recovery": {
+    "expected": 147,
+    "recovered_exact": 147,
+    "new_IVPs": 0,
+    "original_stageC_zip": "INCOMPLETE_NOT_ADMITTED"
+  },
+  "recovery_commit": "b94314be1be12664f1dec8100d29bdb5f9135adf",
+  "final_delivery": {
+    "receipt": "delivery/FINAL_PUBLICATION_BACKUP.json",
+    "archive_sha256": "5445e15edb1d580af8b819e8d6a1b73fc2b9958d76bae92967c38ee0763bf0e0",
+    "dropbox_whole_byte_readback": "PASS",
+    "dropbox_payload_SHA256": "PASS",
+    "google_drive": "UPLOAD_ACK_SIZE_PASS_WHOLE_BYTE_NOT_RUN",
+    "publication": "this final documentary commit; exact HEAD in PR120 completion comment"
+  }
+}
