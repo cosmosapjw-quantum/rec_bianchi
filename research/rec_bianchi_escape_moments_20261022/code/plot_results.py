@@ -21,6 +21,9 @@ import numpy as np
 
 
 UNIT = Path(__file__).resolve().parents[1]
+LABELS = {"isotropic": "Isotropic", "LRS_m0p8": "LRS s=-0.8", "LRS_m0p2": "LRS s=-0.2",
+          "LRS_p0p2": "LRS s=0.2", "LRS_p0p8": "LRS s=0.8", "LRS_p1p8": "LRS s=1.8",
+          "triaxial_A": "Triaxial A", "triaxial_B": "Triaxial B", "triaxial_C": "Triaxial C"}
 
 
 def digest(path):
@@ -39,9 +42,109 @@ def positive_plot(values):
     return np.where(values > 0.0, values, np.nan)
 
 
+def configure_plotting():
+    plt.rcParams.update({"font.size": 10, "axes.grid": True, "grid.alpha": 0.25,
+                         "axes.spines.top": False, "axes.spines.right": False,
+                         "figure.constrained_layout.use": True, "pdf.fonttype": 42})
+
+
+def branch_map_figure(branch_rows, names):
+    fig, ax = plt.subplots(figsize=(11.0, 5.1))
+    # Reserve lower space for the existing two-line footer without changing data.
+    fig.get_layout_engine().set(rect=(0.0, 0.12, 1.0, 0.88))
+    matrix = np.array([[int(r["auto_eligible"]) for r in branch_rows if r["spectrum"] == name] for name in names])
+    log_t = np.log10([float(r["t"]) for r in branch_rows if r["spectrum"] == names[0]])
+    edges = np.r_[log_t[0] - 0.125, 0.5 * (log_t[:-1] + log_t[1:]), log_t[-1] + 0.125]
+    cmap = ListedColormap(["#edf2f7", "#197a78"])
+    ax.pcolormesh(edges, np.arange(len(names) + 1) - 0.5, matrix,
+                  cmap=cmap, norm=BoundaryNorm([-0.5, 0.5, 1.5], cmap.N), shading="flat")
+    boundaries = [math.log10(next(float(r["threshold_t"]) for r in branch_rows if r["spectrum"] == name)) for name in names]
+    ax.plot(boundaries, np.arange(len(names)), "o", color="#e28522", markersize=5,
+             label=r"Analytic boundary $t=q_{\max}\log(1+1/\epsilon)$")
+    ax.set(yticks=np.arange(len(names)), yticklabels=[LABELS[name] for name in names],
+           xlabel=r"$\log_{10}(t)$", title=r"AUTO branch map, $\epsilon=10^{-8}$",
+           xlim=(log_t[0] - 0.125, log_t[-1] + 0.125), ylim=(-0.5, len(names) - 0.5))
+    ax.grid(False)
+    ax.legend(loc="upper left", fontsize=9)
+    fig.text(0.5, 0.005, "Light: finite quadrature branch  |  Teal: analytic thick truncation gate met\n405 fixed parameter points; no IVPs; finite differences do not certify quadrature error", ha="center", fontsize=9)
+    return fig
+
+
+def repair_branch_map(result_dir, attempt):
+    """Re-render only this figure from its saved CSV, retaining per-figure provenance."""
+    manifest_path = result_dir / "PLOT_MANIFEST.json"
+    manifest = json.loads(manifest_path.read_text())
+    original_renderer = manifest["renderer_sha256"]
+    backup = UNIT / "evidence" / "plot_layout_repair_001"
+    if digest(backup / "plot_results.py") != original_renderer:
+        raise RuntimeError("Original renderer must be preserved before layout repair")
+    if digest(backup / "PLOT_MANIFEST.json") != digest(manifest_path):
+        raise RuntimeError("Original plot manifest must be preserved before layout repair")
+    entries = {entry["path"]: entry for entry in manifest["files"]}
+    for entry in entries.values():
+        if digest(UNIT / entry["path"]) != entry["sha256"]:
+            raise RuntimeError("Existing plotted asset differs from its original manifest")
+    csv_path = result_dir / "plotted_data" / "branch_map.csv"
+    with csv_path.open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    for row in rows:
+        row["auto_eligible"] = row["auto_eligible"] == "True"
+    names = list(dict.fromkeys(row["spectrum"] for row in rows))
+    configure_plotting()
+    fig = branch_map_figure(rows, names)
+    changed = []
+    for suffix in ("png", "pdf"):
+        path = UNIT / "figures" / attempt / ("branch_map." + suffix)
+        if digest(backup / path.name) != digest(path):
+            raise RuntimeError("Original branch_map asset must be preserved before repair")
+        fig.savefig(path, dpi=170, metadata={"Creator": "ANGULAR01 saved-data renderer"})
+        changed.append(str(path.relative_to(UNIT)))
+    plt.close(fig)
+    renderer = digest(__file__)
+    updated = datetime.now(timezone.utc).isoformat()
+    manifest["initial_created_at_utc"] = manifest["created_at_utc"]
+    manifest["created_at_utc"] = updated
+    del manifest["renderer_sha256"]
+    manifest["renderer_identity_mode"] = "PER_FIGURE"
+    manifest["data_exporter_sha256"] = original_renderer
+    manifest["renderer_sha256_by_figure"] = {
+        "physical_bounds": original_renderer,
+        "surviving_tensor": original_renderer,
+        "branch_map": renderer}
+    for entry in manifest["files"]:
+        path = UNIT / entry["path"]
+        if path.suffix in (".png", ".pdf"):
+            entry["renderer_sha256"] = manifest["renderer_sha256_by_figure"][path.stem]
+        else:
+            entry["data_exporter_sha256"] = original_renderer
+        if entry["path"] in changed:
+            entry["bytes"] = path.stat().st_size
+            entry["sha256"] = digest(path)
+    manifest["layout_repair"] = {
+        "record": "evidence/plot_layout_repair_001/REPAIR_RESULT.json",
+        "changed_files": changed, "unchanged_figures": ["physical_bounds", "surviving_tensor"],
+        "source_csv_sha256": digest(csv_path), "new_quadratures": 0, "new_IVPs": 0}
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    record = {"status": "RENDERED_PENDING_VISUAL_REVIEW", "created_at_utc": updated,
+              "command": "python code/plot_results.py --attempt attempt_001 --branch-map-only",
+              "change": "Reserve bottom 12 percent for the existing footer; all plotted data and styling retained.",
+              "original_renderer_sha256": original_renderer, "repaired_renderer_sha256": renderer,
+              "source_grid_sha256": digest(result_dir / "grid.csv"),
+              "source_grid_unchanged": digest(result_dir / "grid.csv") == manifest["source_grid"]["sha256"],
+              "source_csv_sha256": digest(csv_path), "changed_files": changed,
+              "unchanged_assets": [p for p in entries if p not in changed],
+              "new_quadratures": 0, "new_IVPs": 0, "full_study_reruns": 0,
+              "final_plot_manifest_sha256": digest(manifest_path)}
+    (backup / "REPAIR_RESULT.json").write_text(json.dumps(record, indent=2) + "\n")
+    print(json.dumps({"status": record["status"], "figure_count_rendered": 1, "files_changed": changed,
+                      "source_rows": len(rows), "new_quadratures": 0, "new_IVPs": 0}))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--attempt", default="attempt_001")
+    parser.add_argument("--branch-map-only", action="store_true",
+                        help="Repair only the branch-map layout from its preserved CSV and manifest")
     args = parser.parse_args()
     result_dir = UNIT / "results" / args.attempt
     summary = json.loads((result_dir / "study_summary.json").read_text())
@@ -53,6 +156,9 @@ def main():
         and decision["accepted_grid_points"] == 405)
     if not accepted or summary["grid_points_completed"] != 405:
         raise RuntimeError("Final figures require completed 405-point measurements and their bound acceptance record")
+    if args.branch_map_only:
+        repair_branch_map(result_dir, args.attempt)
+        return
     with (result_dir / "grid.csv").open(newline="") as handle:
         raw = list(csv.DictReader(handle))
     names = list(dict.fromkeys(row["spectrum"] for row in raw))
@@ -89,14 +195,10 @@ def main():
     save_csv(scalar_csv, scalar_rows)
     save_csv(tensor_csv, tensor_rows)
     save_csv(branch_csv, branch_rows)
-    plt.rcParams.update({"font.size": 10, "axes.grid": True, "grid.alpha": 0.25,
-                         "axes.spines.top": False, "axes.spines.right": False,
-                         "figure.constrained_layout.use": True, "pdf.fonttype": 42})
+    configure_plotting()
     palette = plt.get_cmap("tab10")
     colors = {name: palette(i) for i, name in enumerate(names)}
-    labels = {"isotropic": "Isotropic", "LRS_m0p8": "LRS s=-0.8", "LRS_m0p2": "LRS s=-0.2",
-              "LRS_p0p2": "LRS s=0.2", "LRS_p0p8": "LRS s=0.8", "LRS_p1p8": "LRS s=1.8",
-              "triaxial_A": "Triaxial A", "triaxial_B": "Triaxial B", "triaxial_C": "Triaxial C"}
+    labels = LABELS
     created = []
 
     def save_figure(fig, name):
@@ -145,22 +247,7 @@ def main():
     fig.suptitle("Probability moments; no stress tensor or cosmological history is inferred")
     save_figure(fig, "surviving_tensor")
 
-    fig, ax = plt.subplots(figsize=(11.0, 5.1))
-    matrix = np.array([[int(r["auto_eligible"]) for r in branch_rows if r["spectrum"] == name] for name in names])
-    log_t = np.log10([float(r["t"]) for r in groups[names[0]]])
-    edges = np.r_[log_t[0] - 0.125, 0.5 * (log_t[:-1] + log_t[1:]), log_t[-1] + 0.125]
-    cmap = ListedColormap(["#edf2f7", "#197a78"])
-    ax.pcolormesh(edges, np.arange(len(names) + 1) - 0.5, matrix,
-                  cmap=cmap, norm=BoundaryNorm([-0.5, 0.5, 1.5], cmap.N), shading="flat")
-    boundaries = [math.log10(next(r["threshold_t"] for r in branch_rows if r["spectrum"] == name)) for name in names]
-    ax.plot(boundaries, np.arange(len(names)), "o", color="#e28522", markersize=5,
-             label=r"Analytic boundary $t=q_{\max}\log(1+1/\epsilon)$")
-    ax.set(yticks=np.arange(len(names)), yticklabels=[labels[name] for name in names],
-           xlabel=r"$\log_{10}(t)$", title=r"AUTO branch map, $\epsilon=10^{-8}$",
-           xlim=(log_t[0] - 0.125, log_t[-1] + 0.125), ylim=(-0.5, len(names) - 0.5))
-    ax.grid(False)
-    ax.legend(loc="upper left", fontsize=9)
-    fig.text(0.5, 0.005, "Light: finite quadrature branch  |  Teal: analytic thick truncation gate met\n405 fixed parameter points; no IVPs; finite differences do not certify quadrature error", ha="center", fontsize=9)
+    fig = branch_map_figure(branch_rows, names)
     save_figure(fig, "branch_map")
     files = [scalar_csv, tensor_csv, branch_csv, *created]
     manifest = {"unit": "ANGULAR01", "created_at_utc": datetime.now(timezone.utc).isoformat(),

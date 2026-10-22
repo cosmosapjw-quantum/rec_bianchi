@@ -1,0 +1,1029 @@
+{
+  "schema_version": 1,
+  "unit": "ANGULAR01",
+  "reviewer": "/root/angular01_review",
+  "status": "PASS_AFTER_TARGETED_REPAIRS",
+  "selected_stages": [
+    "R6",
+    "C9"
+  ],
+  "fresh_review_passes": 1,
+  "subreviewers_created": 0,
+  "skill_context_used": {
+    "name": "physmath-research-loop",
+    "version": "1.3.0",
+    "base_path": "/root/.codex/plugins/cache/created-by-me-remote/physmath-research-loop/1.3.0/skills/physmath-research-loop",
+    "actually_read": [
+      "SKILL.md",
+      "STAGE_SELECTION.md",
+      "references/SUBAGENT_MODE.md",
+      "references/POLICY_INTEGRATION.md",
+      "references/THEORY_LOOP.md",
+      "references/CODING_LOOP.md"
+    ],
+    "applied_boundary": "R6/C9 only: sign/units/tensors/limits/source assumptions and changed implementation; one fresh pass; no recursive review, old suite, new cosmological IVP or production-study rerun"
+  },
+  "stage_a_source_commit": "ac22ea90827e34b25aabe95d8c63618c915411ab",
+  "primary_sources_read": [
+    {
+      "url": "https://arxiv.org/pdf/2007.14114",
+      "location": "III.A Eq. (10)",
+      "web_ref": "turn27view0"
+    },
+    {
+      "url": "https://arxiv.org/pdf/0810.1045",
+      "location": "3.2.2 Eq. (35b)",
+      "web_ref": "turn26view1"
+    },
+    {
+      "url": "https://arxiv.org/pdf/0903.4925",
+      "location": "Introduction p.2 Sobolev assumptions",
+      "web_ref": "turn26view2"
+    }
+  ],
+  "donor_identity": {
+    "required_relation": "BYTE_IDENTITY",
+    "code_sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+    "license_sha256": "bfb425597830af905d9b52262dc5fc56e436de05796f6638a78258adaa0b8760",
+    "status": "PASS"
+  },
+  "findings": [
+    {
+      "id": "R01",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "THEORY.md normalized LRS amplitude",
+      "observation": "Original finite-depth p=b/B prose assigned thick-only amplitude s",
+      "correction": "p_thick=q explicitly; finite-depth coefficient supplied separately",
+      "targeted_readback": "PASS"
+    },
+    {
+      "id": "R02",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "escape_moments._thick",
+      "observation": "15*t overflows at t=1e308 and zeroes a representable nonzero tensor",
+      "normalized_error": 0.09977753031397177,
+      "correction": "Compute (2/15)*S/t",
+      "targeted_recheck": "PASS; normalized residual 3.0054303251241967e-16"
+    },
+    {
+      "id": "R03",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "escape_moments.jensen_gap_bound",
+      "observation": "Squared-norm underflow incorrectly labels a nonzero shear EXACT_ZERO_SHEAR",
+      "correction": "Check tensor zero directly and form a scaled log squared norm",
+      "targeted_recheck": "PASS; UNDERFLOW_USE_LOG with log_bound -925.3219058939734"
+    },
+    {
+      "id": "R04",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "escape_moments.lrs_moments axis validation",
+      "observation": "A complex ndarray axis is accepted by silently discarding its imaginary part",
+      "correction": "Reject np.iscomplexobj(axis) before conversion",
+      "targeted_recheck": "PASS; ValueError with no casting warning"
+    },
+    {
+      "id": "R05",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "run_study.py thick_scalar_upper validator",
+      "discovery": "First production run; root and reviewer independently read the same five saved failures",
+      "observation": "Thin isotropic equality compares two O(1/t) quantities whose representation error exceeds the fixed O(beta_iso) slack",
+      "correction": "Equivalent stable bound B+slack >= -expm1(-t/qmax)/t; no tolerance change; five saved rows only",
+      "targeted_recheck": "PASS; old FAIL/log/raw preserved; all five saved input/bound/slack records agree"
+    },
+    {
+      "id": "R06",
+      "severity": "FIX_SOON",
+      "status": "CLOSED_FIXED",
+      "object": "branch_map PNG/PDF footer layout",
+      "observation": "Actual PNG and rendered PDF show overlap between two footer lines and the x-axis log10(t) label",
+      "correction": "Reserve bottom layout margin for footer; rerender only branch_map from unchanged saved data",
+      "targeted_recheck": "PASS: repaired PNG and newly rendered PDF viewed; x-axis label and two footer lines are separate and fully visible"
+    }
+  ],
+  "original_boundary_probe": {
+    "tool_chunk_id": "57859c",
+    "exit_code": 0,
+    "wall_time_seconds": 0.441762915,
+    "extreme_finite_t": {
+      "t": 1e+308,
+      "S_diagonal": [
+        -0.4,
+        -0.2,
+        0.6
+      ],
+      "method": "analytic_thick",
+      "B": 1e-308,
+      "Q_diagonal": [
+        -0.0,
+        -0.0,
+        0.0
+      ],
+      "expected_Q_diagonal": [
+        -5.33333333333335e-310,
+        -2.66666666666667e-310,
+        8e-310
+      ],
+      "normalized_tensor_error": 0.09977753031397177,
+      "nodes": 0
+    },
+    "small_shear_jensen": [
+      {
+        "scale": 1e-161,
+        "bound": null,
+        "log_bound": -745.4400719213812,
+        "representation": "UNDERFLOW_USE_LOG"
+      },
+      {
+        "scale": 1e-200,
+        "bound": 0.0,
+        "log_bound": null,
+        "representation": "EXACT_ZERO_SHEAR"
+      }
+    ],
+    "complex_axis": {
+      "axis": [
+        "0",
+        "0",
+        "1+2j"
+      ],
+      "accepted": true,
+      "warning": "Casting complex values to real discards the imaginary part",
+      "nodes": 4
+    },
+    "counters": {
+      "tensor_validations": 4,
+      "analytic_thick_calls": 1,
+      "lrs_quadrature_calls": 1,
+      "lrs_quadrature_nodes": 4
+    }
+  },
+  "execution_budget": {
+    "maximum_review_quadrature_points": 12,
+    "spot_audit_hard_timeout_seconds": 30,
+    "completed_review_quadrature_points": 8,
+    "planned_additional_quadrature_points": 0,
+    "parameter_point_definition": "Distinct angular inputs; paired reference and tested-kernel calls are reported separately",
+    "independent_reference_quadrature_calls": 7,
+    "tested_kernel_quadrature_calls": 7,
+    "independent_reference_node_evaluations": 516096,
+    "tested_kernel_node_evaluations": 49156,
+    "production_study_reruns": 0,
+    "old_campaign_runs": 0,
+    "new_cosmological_ivps": 0
+  },
+  "protected_status": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "historical_REI_first_failed_raw": "LOCAL_ONLY"
+  },
+  "spot_audit": {
+    "scope": "Seven off-grid scalar/PSTF comparisons plus targeted rechecks of three observed defects",
+    "independence": "Fresh delegated implementation of full-sphere lab-frame rule; not an interval certificate",
+    "quadrature_points": 7,
+    "reference_nodes_per_point": 73728,
+    "reference_node_evaluations": 516096,
+    "budget_seconds": 30,
+    "budget_max_total_reviewer_quadrature_points": 12,
+    "prior_invalid_axis_probe_quadrature_points": 1,
+    "new_cosmological_ivps": 0,
+    "old_campaign_runs": 0,
+    "full_study_reruns": 0,
+    "elapsed_seconds": 1.2232319659960922,
+    "max_rss_kib": 56568,
+    "module_sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e",
+    "script_sha256": "cd49a62685d9bd4c1dc8e339f45e4ce636ff02843f9edabe6ba59686a20162c7",
+    "module_call_counters": {
+      "tensor_validations": 9,
+      "general_quadrature_calls": 6,
+      "general_quadrature_nodes": 49152,
+      "analytic_thick_calls": 2
+    },
+    "rows": [
+      {
+        "case": "isotropic_off_grid",
+        "t": 0.73,
+        "S": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.7097137122052022,
+        "reference_Q": [
+          [
+            -6.328271240363392e-15,
+            1.7472998599339714e-18,
+            2.2813599935181876e-19
+          ],
+          [
+            3.1627700896746808e-18,
+            -6.217248937900877e-15,
+            -1.32426262013978e-19
+          ],
+          [
+            4.853854475430539e-20,
+            6.84483759398513e-19,
+            5.2458037913538647e-14
+          ]
+        ],
+        "actual_B": 0.7097137122052023,
+        "actual_Q": [
+          [
+            2.7755575615628914e-16,
+            0,
+            0
+          ],
+          [
+            0,
+            2.498001805406602e-16,
+            0
+          ],
+          [
+            0,
+            0,
+            1.6653345369377348e-16
+          ]
+        ],
+        "relative_B_difference": 1.5643251715899685e-16,
+        "Q_F_difference_over_B": 7.482223281586173e-14,
+        "pass": true
+      },
+      {
+        "case": "weak_lrs_off_grid",
+        "t": 0.7,
+        "S": [
+          [
+            -0.00033393478781561996,
+            0.0002174876055160889,
+            -0.0004173958612942936
+          ],
+          [
+            0.00021748760551608886,
+            -0.00021516696404419536,
+            -0.0005466432447298554
+          ],
+          [
+            -0.0004173958612942936,
+            -0.0005466432447298553,
+            0.0005491017518598152
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.7191638169731923,
+        "reference_Q": [
+          [
+            -9.908020876053802e-06,
+            6.452971697240646e-06,
+            -1.2384354837535184e-05
+          ],
+          [
+            6.452971697242022e-06,
+            -6.384117047147919e-06,
+            -1.6219192713804423e-05
+          ],
+          [
+            -1.238435483753571e-05,
+            -1.6219192713805253e-05,
+            1.6292137924950323e-05
+          ]
+        ],
+        "actual_B": 0.7191638169731924,
+        "actual_Q": [
+          [
+            -9.908020870033018e-06,
+            6.452971697171631e-06,
+            -1.2384354837404294e-05
+          ],
+          [
+            6.452971697171631e-06,
+            -6.3841170434056226e-06,
+            -1.6219192713654755e-05
+          ],
+          [
+            -1.2384354837404294e-05,
+            -1.6219192713654755e-05,
+            1.6292137914049256e-05
+          ]
+        ],
+        "relative_B_difference": 1.5437693032136257e-16,
+        "Q_F_difference_over_B": 1.8086015765381426e-14,
+        "pass": true
+      },
+      {
+        "case": "large_lrs_off_grid",
+        "t": 0.37,
+        "S": [
+          [
+            -0.5777071829210225,
+            0.37625355754283374,
+            -0.7220948400391279
+          ],
+          [
+            0.3762535575428338,
+            -0.37223884779645805,
+            -0.9456928133826497
+          ],
+          [
+            -0.7220948400391279,
+            -0.9456928133826498,
+            0.9499460307174804
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.7243112657973692,
+        "reference_Q": [
+          [
+            -0.01648135272334439,
+            0.010734101597837518,
+            -0.020600574322468118
+          ],
+          [
+            0.010734101597837515,
+            -0.010619566329165747,
+            -0.02697957942374721
+          ],
+          [
+            -0.02060057432246812,
+            -0.026979579423747208,
+            0.02710091905251444
+          ]
+        ],
+        "actual_B": 0.7243112657973653,
+        "actual_Q": [
+          [
+            -0.016481352723340253,
+            0.010734101597837808,
+            -0.020600574322468805
+          ],
+          [
+            0.010734101597837808,
+            -0.010619566329162205,
+            -0.026979579423747485
+          ],
+          [
+            -0.0206005743224688,
+            -0.02697957942374749,
+            0.027100919052501563
+          ]
+        ],
+        "relative_B_difference": 5.364793797470935e-15,
+        "Q_F_difference_over_B": 1.936210356298584e-14,
+        "pass": true
+      },
+      {
+        "case": "near_boundary_triaxial",
+        "t": 0.127,
+        "S": [
+          [
+            -0.5033750201777678,
+            -0.25608159931900615,
+            -0.6122085186073655
+          ],
+          [
+            -0.25608159931900615,
+            0.22814562820193138,
+            -0.347748351294136
+          ],
+          [
+            -0.6122085186073655,
+            -0.347748351294136,
+            0.2752293919758364
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.9066624659969686,
+        "reference_Q": [
+          [
+            -0.011473573706169082,
+            -0.00811850403642784,
+            -0.013887916552024546
+          ],
+          [
+            -0.008118504036427837,
+            0.007358928928419939,
+            -0.006065423835605284
+          ],
+          [
+            -0.013887916552024551,
+            -0.0060654238356052876,
+            0.004114644777748477
+          ]
+        ],
+        "actual_B": 0.9066624659969675,
+        "actual_Q": [
+          [
+            -0.011473573706163018,
+            -0.00811850403642844,
+            -0.01388791655202509
+          ],
+          [
+            -0.00811850403642844,
+            0.007358928928429289,
+            -0.0060654238356053
+          ],
+          [
+            -0.01388791655202509,
+            -0.006065423835605299,
+            0.004114644777733843
+          ]
+        ],
+        "relative_B_difference": 1.2245163622212508e-15,
+        "Q_F_difference_over_B": 2.0327610594899012e-14,
+        "pass": true
+      },
+      {
+        "case": "below_auto_gate",
+        "t": 31.312025765990846,
+        "S": [
+          [
+            -0.5033750201777678,
+            -0.25608159931900615,
+            -0.6122085186073655
+          ],
+          [
+            -0.25608159931900615,
+            0.22814562820193138,
+            -0.347748351294136
+          ],
+          [
+            -0.6122085186073655,
+            -0.347748351294136,
+            0.2752293919758364
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.03193661140341033,
+        "reference_Q": [
+          [
+            -0.0021434789843329267,
+            -0.001090450473534766,
+            -0.002606915402997823
+          ],
+          [
+            -0.001090450473534766,
+            0.0009714931062802419,
+            -0.0014807871879832229
+          ],
+          [
+            -0.002606915402997823,
+            -0.0014807871879832233,
+            0.0011719858780528964
+          ]
+        ],
+        "actual_B": 0.03193661140341013,
+        "actual_Q": [
+          [
+            -0.0021434789843327766,
+            -0.00109045047353479,
+            -0.0026069154029978708
+          ],
+          [
+            -0.0010904504735347897,
+            0.0009714931062804898,
+            -0.0014807871879832495
+          ],
+          [
+            -0.0026069154029978708,
+            -0.0014807871879832495,
+            0.001171985878052306
+          ]
+        ],
+        "relative_B_difference": 6.300853921897976e-15,
+        "Q_F_difference_over_B": 2.076208725602453e-14,
+        "pass": true
+      },
+      {
+        "case": "above_auto_gate",
+        "t": 31.318288797447188,
+        "S": [
+          [
+            -0.5033750201777678,
+            -0.25608159931900615,
+            -0.6122085186073655
+          ],
+          [
+            -0.25608159931900615,
+            0.22814562820193138,
+            -0.347748351294136
+          ],
+          [
+            -0.6122085186073655,
+            -0.347748351294136,
+            0.2752293919758364
+          ]
+        ],
+        "method": "analytic_thick",
+        "reference_B": 0.031930224719903894,
+        "reference_Q": [
+          [
+            -0.002143050331422411,
+            -0.0010902324052370926,
+            -0.00260639407207639
+          ],
+          [
+            -0.0010902324052370926,
+            0.0009712988270767862,
+            -0.0014804910601895445
+          ],
+          [
+            -0.0026063940720763906,
+            -0.0014804910601895445,
+            0.0011717515043454842
+          ]
+        ],
+        "actual_B": 0.03193022474719346,
+        "actual_Q": [
+          [
+            -0.002143050336853223,
+            -0.0010902324026502148,
+            -0.0026063940788372732
+          ],
+          [
+            -0.0010902324026502148,
+            0.0009712988244769744,
+            -0.0014804910683050329
+          ],
+          [
+            -0.0026063940788372732,
+            -0.0014804910683050329,
+            0.0011717515123762482
+          ]
+        ],
+        "relative_B_difference": 8.546625236534993e-10,
+        "Q_F_difference_over_B": 5.751586131176496e-10,
+        "pass": true
+      },
+      {
+        "case": "thin_triaxial_off_grid",
+        "t": 2.5e-07,
+        "S": [
+          [
+            -0.24384807731950653,
+            0.06463402731283584,
+            -0.30205548705098906
+          ],
+          [
+            0.06463402731283586,
+            -0.06800945213089335,
+            -0.3223566048997257
+          ],
+          [
+            -0.302055487050989,
+            -0.3223566048997256,
+            0.3118575294503997
+          ]
+        ],
+        "method": "general_eigenbasis_2d",
+        "reference_B": 0.9999998657616387,
+        "reference_Q": [
+          [
+            -4.381059237612561e-09,
+            3.6405953964410523e-10,
+            -5.4036464255878724e-09
+          ],
+          [
+            3.6405953819537346e-10,
+            -4.676216636134711e-10,
+            -5.141359801383847e-09
+          ],
+          [
+            -5.403646424759696e-09,
+            -5.141359802068289e-09,
+            4.848683010649779e-09
+          ]
+        ],
+        "actual_B": 0.9999998657616389,
+        "actual_Q": [
+          [
+            -4.38104987297251e-09,
+            3.640595097904837e-10,
+            -5.403646151484235e-09
+          ],
+          [
+            3.6405950979048375e-10,
+            -4.676175246763875e-10,
+            -5.141359533096201e-09
+          ],
+          [
+            -5.403646151484235e-09,
+            -5.141359533096201e-09,
+            4.848667175604292e-09
+          ]
+        ],
+        "relative_B_difference": 2.220446347319392e-16,
+        "Q_F_difference_over_B": 1.8864566763855857e-14,
+        "pass": true
+      }
+    ],
+    "targeted_repairs": {
+      "thick_large_t": {
+        "normalized_tensor_difference": 3.0054303251241967e-16,
+        "Q": [
+          [
+            -5.33333333333335e-310,
+            0,
+            0
+          ],
+          [
+            0,
+            -2.66666666666667e-310,
+            0
+          ],
+          [
+            0,
+            0,
+            8e-310
+          ]
+        ],
+        "pass": true
+      },
+      "tiny_nonzero_shear_bound": {
+        "result": {
+          "bound": null,
+          "log_bound": -925.3219058939734,
+          "representation": "UNDERFLOW_USE_LOG",
+          "qstar": 1,
+          "log_M": -1
+        },
+        "pass": true
+      },
+      "complex_axis": {
+        "rejected": true,
+        "warnings": [],
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "saved_array_review": {
+    "scope": "Read-only saved array/metadata verification; no angular quadrature or IVP",
+    "original_summary_status": "FAIL",
+    "rows": 405,
+    "unique_parameter_pairs": 405,
+    "spectrum_counts": {
+      "LRS_m0p2": 45,
+      "LRS_m0p8": 45,
+      "LRS_p0p2": 45,
+      "LRS_p0p8": 45,
+      "LRS_p1p8": 45,
+      "isotropic": 45,
+      "triaxial_A": 45,
+      "triaxial_B": 45,
+      "triaxial_C": 45
+    },
+    "raw_failed_rows": [
+      {
+        "index": 1,
+        "spectrum": "isotropic",
+        "t": 1.7782794100389228e-08,
+        "failed_checks": "thick_scalar_upper"
+      },
+      {
+        "index": 4,
+        "spectrum": "isotropic",
+        "t": 1e-07,
+        "failed_checks": "thick_scalar_upper"
+      },
+      {
+        "index": 5,
+        "spectrum": "isotropic",
+        "t": 1.7782794100389227e-07,
+        "failed_checks": "thick_scalar_upper"
+      },
+      {
+        "index": 14,
+        "spectrum": "isotropic",
+        "t": 3.1622776601683795e-05,
+        "failed_checks": "thick_scalar_upper"
+      },
+      {
+        "index": 16,
+        "spectrum": "isotropic",
+        "t": 0.0001,
+        "failed_checks": "thick_scalar_upper"
+      }
+    ],
+    "raw_failed_count": 5,
+    "expected_indices_present": true,
+    "raw_check_flag_mismatches": [],
+    "saved_structural_violations": [],
+    "manifest_files_checked": 9,
+    "manifest_mismatches": [],
+    "standalone_checks": 89,
+    "standalone_passed": 89,
+    "new_donor_scalar_comparisons_in_saved_study": 20,
+    "donor_relative_max": 0.0,
+    "saved_rotation_parameter_cases": 9,
+    "rotation_B_max": 2.0816681711723635e-16,
+    "rotation_Q_max": 1.186644294997571e-16,
+    "independent_lab_B_max": 5.269040893161025e-16,
+    "independent_lab_Q_max": 8.61622756874271e-15,
+    "saved_weak_shear_parameter_cases": 4,
+    "weak_shear_Q_coefficient_error_max": 8.582068464034813e-09,
+    "saved_maxima": {
+      "two_level_B_normalized": 3.706925453614504e-15,
+      "two_level_Q_normalized": 8.74551428676363e-15,
+      "lrs_1d_2d_B_normalized": 2.168404344971009e-15,
+      "lrs_1d_2d_Q_normalized": 6.026472479737714e-15,
+      "auto_observed_B_normalized": 7.080418540979247e-10,
+      "auto_observed_Q_normalized": 4.77376883227185e-10
+    },
+    "maxima_match_summary": true,
+    "auto_thick_count": 61,
+    "auto_quadrature_count": 344,
+    "maximum_scalar_suppression": {
+      "spectrum": "LRS_p1p8",
+      "t": 1.0,
+      "scalar_suppression": 0.1952210196474612
+    },
+    "maximum_Q_F_over_B": {
+      "spectrum": "LRS_p1p8",
+      "t": 177.82794100389228,
+      "Q_F_over_B": 0.29393876913398775
+    },
+    "grid_sha256": "0800d306eb3d4a07f7b2143e6e451860fc416a32f491df424d635a49c949675f",
+    "original_summary_sha256": "358aaec055e89bd79dc0b1e68d350d91aadb169d615f6113323ab365aee079c6",
+    "original_files_manifest_sha256": "16e37dff3df18d6e8c9996e958c8411789b296cbd56cda7d3281ef8bd914894f",
+    "verified_original_five_failures": true,
+    "source_kernel_unchanged_since_spot": true,
+    "new_quadratures": 0,
+    "new_cosmological_ivps": 0,
+    "old_campaign_runs": 0,
+    "full_study_reruns": 0
+  },
+  "figure_review": {
+    "status": "PASS",
+    "actual_png_views": 3,
+    "actual_pdf_renders_and_views": 3,
+    "pdf_renderer": "pdftoppm -png -singlefile -r 120",
+    "pdf_render_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "physical_bounds": "PASS: legible labels, finite scalar suppression and floating-floor comparisons consistent with saved arrays",
+    "surviving_tensor": "PASS: legible labels, 7.5 Qzz/B normalization and signed asymptotes agree with theory",
+    "branch_map": "PASS_AFTER_LAYOUT_REPAIR; repaired PNG and PDF render both inspected",
+    "initial_branch_map_png_sha256": "bcd77857fc18e5e2e4a502aaffb79e11f45a21610ad290b158e0877018f95b00",
+    "initial_branch_map_pdf_sha256": "0a9e9e1eb7d7b2918e8d9707ed15f9c008b3a1b42c42cbcb08e5e2cdd4867743",
+    "new_quadratures": 0,
+    "new_IVPs": 0,
+    "targeted_repair_png_views": 1,
+    "targeted_repair_pdf_renders_and_views": 1,
+    "targeted_repair_pdf_render_exit_code": 0,
+    "final_branch_map_png_sha256": "a61d5c9d63c7672381a7049cd0b895beba1963e1f88268d0a5ed26bb944d6dd6",
+    "final_branch_map_pdf_sha256": "ccac9af318376b2deedb9d85aace9f0f4ef69266ab2d8d31ccbf32c6c970f190",
+    "final_plot_manifest_sha256": "7109feebaf0a938b4e5d2cee43fd6a2a781363d35e84baee6da38838739745a0",
+    "plot_manifest_files_checked": 9,
+    "plot_manifest_hash_failures": [],
+    "plotted_array_rows_per_csv": [
+      405,
+      405,
+      405
+    ],
+    "plotted_array_source_mismatches": [],
+    "source_grid_binding_matches": true,
+    "interpretation": "Scalar suppression, surviving probability quadrupole and finite-grid gate map agree with retained data. Floating residual floor does not contradict the analytic truncation bound.",
+    "final_assets": [
+      {
+        "path": "results/attempt_001/plotted_data/physical_bounds.csv",
+        "bytes": 51602,
+        "sha256": "309a3ea2be1de77a7b007fcf90c894643a4cc35488d027a83ee2902e2aefb8ea",
+        "data_exporter_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "results/attempt_001/plotted_data/surviving_tensor.csv",
+        "bytes": 62093,
+        "sha256": "49e43308ddf78005b661bc8bd0a9bae203257741cebcedada554dba33be7396e",
+        "data_exporter_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "results/attempt_001/plotted_data/branch_map.csv",
+        "bytes": 59979,
+        "sha256": "56e24e85fbaf5555a32f18abb857c558df2493223340a51735bea070e9dc239c",
+        "data_exporter_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "figures/attempt_001/physical_bounds.png",
+        "bytes": 213684,
+        "sha256": "82bd310142786822e9be7f0bab6be5d35c140e263a5da916f4ac9f88e03626fe",
+        "renderer_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "figures/attempt_001/physical_bounds.pdf",
+        "bytes": 24535,
+        "sha256": "f556c5c19e62412356d833b974128af7bb48e2c6c9be3cfafd624a7a84f597b1",
+        "renderer_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "figures/attempt_001/surviving_tensor.png",
+        "bytes": 140959,
+        "sha256": "cc7609db20c28839a758c04c76355bdaea86f91e121b97f3d5b88facbe58570a",
+        "renderer_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "figures/attempt_001/surviving_tensor.pdf",
+        "bytes": 24225,
+        "sha256": "7d1528d6bc9106974f133b6fe9ed098824b2fee47c8c0c72801c6f377b985c73",
+        "renderer_sha256": "c5a296cbb52615e0a4ea7cd27033a178417ad69d795114ce513340aea8910aee"
+      },
+      {
+        "path": "figures/attempt_001/branch_map.png",
+        "bytes": 73837,
+        "sha256": "a61d5c9d63c7672381a7049cd0b895beba1963e1f88268d0a5ed26bb944d6dd6",
+        "renderer_sha256": "4a229b7dbc0108a1013a55f583186f725be7d2279c4a892a769b41be8b397151"
+      },
+      {
+        "path": "figures/attempt_001/branch_map.pdf",
+        "bytes": 25057,
+        "sha256": "ccac9af318376b2deedb9d85aace9f0f4ef69266ab2d8d31ccbf32c6c970f190",
+        "renderer_sha256": "4a229b7dbc0108a1013a55f583186f725be7d2279c4a892a769b41be8b397151"
+      }
+    ]
+  },
+  "validator_repair_review": {
+    "status": "PASS",
+    "kind": "EXACT_ALGEBRA_PLUS_FIVE_SAVED_ROW_READBACK",
+    "original_status": "FAIL",
+    "final_local_decision": "PASS",
+    "accepted_grid_points": 405,
+    "algebra": "1/t-B <= exp(-u)/t + slack iff B+slack >= (1-exp(-u))/t, for t>0; -expm1(-u) evaluates numerator stably",
+    "tolerance_changed": false,
+    "source_grid_binding_matches": true,
+    "original_summary_binding_matches": true,
+    "kernel_binding_matches": true,
+    "repaired_validator_binding_matches": true,
+    "final_decision_sha256": "54b8a1348aad7563b726efaac05eeae6f747f3761355fe6fc732fea1615c957d",
+    "records": [
+      {
+        "index": 1,
+        "matches_saved_input": true,
+        "stable_bound_recomputed_from_saved_input": 0.9999999911086029,
+        "agrees_with_repair_record": true,
+        "frozen_slack_unchanged": true,
+        "passed": true
+      },
+      {
+        "index": 4,
+        "matches_saved_input": true,
+        "stable_bound_recomputed_from_saved_input": 0.9999999500000016,
+        "agrees_with_repair_record": true,
+        "frozen_slack_unchanged": true,
+        "passed": true
+      },
+      {
+        "index": 5,
+        "matches_saved_input": true,
+        "stable_bound_recomputed_from_saved_input": 0.9999999110860347,
+        "agrees_with_repair_record": true,
+        "frozen_slack_unchanged": true,
+        "passed": true
+      },
+      {
+        "index": 14,
+        "matches_saved_input": true,
+        "stable_bound_recomputed_from_saved_input": 0.9999841887783645,
+        "agrees_with_repair_record": true,
+        "frozen_slack_unchanged": true,
+        "passed": true
+      },
+      {
+        "index": 16,
+        "matches_saved_input": true,
+        "stable_bound_recomputed_from_saved_input": 0.9999500016666251,
+        "agrees_with_repair_record": true,
+        "frozen_slack_unchanged": true,
+        "passed": true
+      }
+    ],
+    "unchanged_400_passes_reused": true,
+    "new_quadratures": 0,
+    "new_IVPs": 0,
+    "full_study_reruns": 0
+  },
+  "supporting_skill_context": {
+    "pdf": "e2/pdf SKILL.md read in full; read-only pdftoppm rendering and image inspection"
+  },
+  "completed_at_utc": "2026-10-22T22:59:52.638003+00:00",
+  "result_validity": "PASS for the frozen local supplied-source operator and finite study",
+  "provenance_validity": "PASS for pinned donor, current kernel, preserved first study, targeted validator adjudication and plotted arrays",
+  "packaging_validity": "PASS for reviewed local scientific artifacts; external publication and backups are parent-owned",
+  "open_findings": 0,
+  "reviewed_final_file_identity": {
+    "THEORY.md": {
+      "sha256": "4850996a261e4cee3f8fa44516a94003954f21714a11157e7ad19b41d4a20931",
+      "bytes": 11558
+    },
+    "FROZEN_CONTRACT.md": {
+      "sha256": "ced4e9cdbb680780e554abe374fc9e980b088d76b743765b0286fe65e3c29c62",
+      "bytes": 6982
+    },
+    "code/escape_moments.py": {
+      "sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e",
+      "bytes": 13814
+    },
+    "code/run_study.py": {
+      "sha256": "1b686555452b9a061b99c8f7941a809fe3c08ddaec94483143acc22544654988",
+      "bytes": 26166
+    },
+    "code/plot_results.py": {
+      "sha256": "4a229b7dbc0108a1013a55f583186f725be7d2279c4a892a769b41be8b397151",
+      "bytes": 15494
+    },
+    "vendor/hyrec_spike_transfer.py": {
+      "sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+      "bytes": 4199
+    },
+    "vendor/LICENSE": {
+      "sha256": "bfb425597830af905d9b52262dc5fc56e436de05796f6638a78258adaa0b8760",
+      "bytes": 1075
+    },
+    "results/attempt_001/grid.csv": {
+      "sha256": "0800d306eb3d4a07f7b2143e6e451860fc416a32f491df424d635a49c949675f",
+      "bytes": 303187
+    },
+    "results/attempt_001/study_summary.json": {
+      "sha256": "358aaec055e89bd79dc0b1e68d350d91aadb169d615f6113323ab365aee079c6",
+      "bytes": 3492
+    },
+    "results/attempt_001/FINAL_DECISION.json": {
+      "sha256": "54b8a1348aad7563b726efaac05eeae6f747f3761355fe6fc732fea1615c957d",
+      "bytes": 3639
+    },
+    "results/attempt_001/PLOT_MANIFEST.json": {
+      "sha256": "7109feebaf0a938b4e5d2cee43fd6a2a781363d35e84baee6da38838739745a0",
+      "bytes": 4104
+    }
+  },
+  "execution_records": [
+    {
+      "purpose": "Original boundary defect probe",
+      "command_kind": "inline Python; exact observations and inputs in original_boundary_probe",
+      "exit_code": 0,
+      "tool_chunk_id": "57859c",
+      "wall_time_seconds": 0.441762915,
+      "new_angular_parameter_points": 1
+    },
+    {
+      "purpose": "Only independent numerical spot audit and targeted repair checks",
+      "command": "python evidence/independent_review/spot_audit.py",
+      "exit_code": 0,
+      "tool_chunk_id": "b800e2",
+      "elapsed_seconds": 1.2232319659960922,
+      "new_angular_parameter_points": 7
+    },
+    {
+      "purpose": "Saved 405-row verification and original file hashes",
+      "command_kind": "inline Python reading existing CSV/JSON only",
+      "exit_code": 0,
+      "tool_chunk_id": "dc7be7",
+      "wall_time_seconds": 0.378012836,
+      "new_angular_parameter_points": 0
+    },
+    {
+      "purpose": "Five saved validator repair records",
+      "command_kind": "inline Python arithmetic on exactly five previously saved rows",
+      "exit_code": 0,
+      "tool_chunk_id": "cf7a87",
+      "wall_time_seconds": 0.077496452,
+      "new_angular_parameter_points": 0
+    },
+    {
+      "purpose": "First visual PDF review",
+      "command_template": "pdftoppm -png -singlefile -r 120 SOURCE.pdf TEMP.png",
+      "exit_code": 0,
+      "pdf_count": 3,
+      "actual_images_viewed": 3
+    },
+    {
+      "purpose": "Targeted corrected branch-map PDF review",
+      "command_template": "pdftoppm -png -singlefile -r 120 figures/attempt_001/branch_map.pdf TEMP.png",
+      "exit_code": 0,
+      "tool_chunk_id": "8469bf",
+      "actual_images_viewed": 1
+    }
+  ],
+  "source_identity_note": "Initial inline defect probe did not capture a whole-file hash at execution; its relevant expressions are preserved in the pre-repair source snapshot. The final kernel and all later checks have recorded byte identities.",
+  "remaining_obligation": "No local R6/C9 blocker. Parent may package/publish the reviewed unit. Existing physical closure, global convergence and production obligations remain held; this review does not change them."
+}

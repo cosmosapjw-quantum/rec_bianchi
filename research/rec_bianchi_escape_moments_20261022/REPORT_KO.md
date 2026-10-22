@@ -3,6 +3,7 @@
 새 우주론 IVP=0, 기존 완료 계산 재실행=0.
 
 ## 1. 이번에 얻은 물리
+
 고정된 등방 선 방출원과 모든 방향의 양의 팽창률을 가정하면,
 유한 광학깊이의 평균 Sobolev 탈출확률은 같은 H와 선 계수를 가진
 등방 값보다 커지지 않는다. 충분히 두꺼운 선에서는 평균을 H/C_S로
@@ -24,6 +25,7 @@ unavailable이었고 Drive dossier 목록은 1000건 제한을 만났으므로 �
 provenance/GITHUB_SYNTHESIS_KO.md 및 BACKUP_SYNTHESIS_KO.md에 기록했다.
 
 이 종합으로 중복 후보를 제외했다.
+
 - REC primordial HyRec/RECFAST/HMLA/FULL q=0와 방향별 spike donor가 이미 있다.
 - REC119의126과 REI220의129는 별도 low-z cohort이며 합산하지 않는다.
 - REC125 THERM02의별도8IVP는 이미 끝났고 exact복구 및 최종187Gitblob 대조도 끝났다.
@@ -119,7 +121,8 @@ LRS는 별도의1D 64/128 적분과 대조했다. 독립 lab-frame 회전 oracle
 약한 shear4개와 scalar/input 검사를 별도로 기록했다.
 
 대표값은 원래 attempt001의 저장배열에서 읽었다.
-| S의선택 | t | B | 같은t의등방beta | 상대평균억제 | ||Q||F/B |
+
+| S의 선택 | t | B | 같은 t의 등방 beta | 상대 평균 억제 | Q의 Frobenius norm/B |
 |---|---:|---:|---:|---:|---:|
 | LRS s=1.8 |1|0.5087173388|0.6321205588|19.52210196%|0.1672853208|
 | triaxial(-.97,.27,.70) |1|0.5828811940|0.6321205588|7.78955282%|0.1059060786|
@@ -148,7 +151,8 @@ AUTO와reference 최대 관측차는 B7.08042e-10,Q4.77377e-10이다.
 원 attempt001의 exit1/FAIL은 그대로 보존했다. 얕은 등방5점에서
 (1/t−B)<=exp(-t)/t를 큰수끼리 비교해 반올림이 등호를 깨뜨렸다.
 물리식이나 수용기준을 완화하지 않고 동치인
-B>=-expm1(-t/qmax)/t로 검사표현을 고쳤다.
+B + slack >= -expm1(-t/qmax)/t로 검사 표현을 고쳤다.
+slack=2e-12 beta_iso의 동결값은 변경하지 않았다.
 실패한5개 저장행의 재판정5/5PASS를 기록했고 나머지400개 기존PASS를 재사용했다.
 전체405계산 또는 새quadrature를 반복하지 않는다.
 최종 판정과 원FAIL의 연결은 results/attempt_001/FINAL_DECISION.json에 기록했다.
@@ -159,7 +163,10 @@ B>=-expm1(-t/qmax)/t로 검사표현을 고쳤다.
 복소수LRS축의허용이다. 물리적 기준의 변경은 없다.
 이후7개 off-grid 독립 적분의 최대차는 B8.55e-10,Q5.75e-10으로 통과했다.
 이는 405생산grid와 별도이며 새로운 우주론IVP가 아니다.
-최종 저장배열·그림 검토 상태는 evidence/independent_review/REVIEW.md를 따른다.
+독립 검토의 최종 판정은 PASS_AFTER_TARGETED_REPAIRS이며 열린 지적은 0건이다.
+최종 PNG 3개와 실제 렌더한 PDF 3개를 확인했다. branch_map의 라벨 겹침은
+그 그림의 PNG/PDF만 저장 CSV로 다시 그려 해결했고, 이전 그림과 renderer도 보존했다.
+전체 기록은 evidence/independent_review/REVIEW.md와 REVIEW.json에 있다.
 
 ## 7. 다음 전체목표까지의 연결
 현재 unit의 A/B/C와 큰 목표의 의존성은 DAG.json/GLOBAL_DAG.json에 있다.
@@ -177,3 +184,26 @@ Physical HOLD; REC U5 HOLD_9_FAIL/HOLD_8_FAIL; CLOSED_HOLD_NOT_RESET;
 global convergence NOT_RUN; production NOT_APPROVED; REI_activation=false.
 REI 최초 실패raw의 historical local-only 보존범위는 유지한다.
 
+
+## 8. 단계별 게시·보존과 완성도
+
+| 단계 | 완성 범위 | Git checkpoint | 백업 판정 |
+|---|---|---|---|
+| A | 최신 접근 가능 조사, 원전, 유도, 실행 전 수용 기준 | ac22ea90827e34b25aabe95d8c63618c915411ab | Dropbox/Drive 업로드 ACK 및 size PASS |
+| B | kernel, 단 1회 405점 실행, 원 FAIL과 저장 5행 수리 | 503c90b96bf3090127dec6b0edf81c747d9d5193 | Dropbox/Drive 업로드 ACK 및 size PASS |
+| C | 그림 3종, 독립 검토 1회, 결과 보고서, DAG, handoff | 이 문서를 포함하는 최종 PR127 HEAD | 커밋 후 실제 영수증을 PR127와 완결 패키지에 기록 |
+
+A ZIP SHA256: eaf2f2abe6e26ae86c947a94f0260ccaf983bbdd4e15816d9627f76154b514a4.
+B ZIP SHA256: 35462c4aaa7e4043e57e778ad03ee0bb9da818fb8f665bce4aa7827027869085.
+A/B의 remote whole-byte readback은 NOT_RUN이다. 업로드 ACK/size를 전체-byte
+일치로 올리지 않는다. C의 최종 Git/백업 판정은 게시 이후 생성되는 영수증을 따른다.
+
+이번에 동결한 과학 산출물은 A/B/C 3단계 중 3단계를 완료했다. 이는 국소 연산자
+단위의 완성도이며, 전체 Bianchi 재결합의 물리적 폐쇄 비율이 아니다. 전체 목표는
+GLOBAL_DAG.json의 열린 source 및 coupling 의무로 표시하고 임의의 백분율을 붙이지 않는다.
+
+그림은 [평균 억제와 오차 상계](figures/attempt_001/physical_bounds.png),
+[남는 사중극](figures/attempt_001/surviving_tensor.png),
+[AUTO 허용 영역](figures/attempt_001/branch_map.png)에 있다.
+각 PDF와 그림에 실제 사용한 CSV 및 per-figure hash를 함께 제공한다.
+[HANDOFF_KO.md](HANDOFF_KO.md)는 다음 대화에 그대로 복사할 수 있다.
