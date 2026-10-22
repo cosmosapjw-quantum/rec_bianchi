@@ -1,0 +1,18 @@
+{
+  "schema": "rec.compton.independent.reviewer_correction.v1",
+  "classification": "reviewer-only floating-point comparator correction",
+  "failed_process": "saved_results_attempt_01_process.json",
+  "source_snapshot": "saved_results_attempt_01_check_saved_results.py",
+  "source_snapshot_sha256": "a1facc1bd4adcc1a6762c8aff68d3b77250bf13e82d0e405872638cab4973611",
+  "observed_case": "s03_m03_r03_actual_hot_nominal",
+  "retained_set": "accepted",
+  "independent_residual": 5.971353631425791e-09,
+  "reported_residual": 5.971353504295437e-09,
+  "absolute_difference": 1.2713035449023029e-16,
+  "relative_difference": 2.1290039467964842e-08,
+  "reason": "An already throughput-normalized residual close to zero amplifies an ordinary 1.27e-16 absolute roundoff difference under the former relative-only receipt comparison. Independently rebuilt endpoint energy and one-dimensional Simpson accumulation have a different floating-point reduction order from the stored vector calculation.",
+  "corrected_receipt_comparison": "absolute dimensionless residual difference < 2e-14",
+  "physical_acceptance_criterion_unchanged": "independently reconstructed dense_1025 residual < 3e-4",
+  "runtime_or_analysis_edits": false,
+  "new_ODE_runs": 0
+}

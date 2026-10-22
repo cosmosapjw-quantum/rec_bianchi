@@ -1,0 +1,100 @@
+{
+  "schema": "rec.compton.independent.figure_review.v1",
+  "reviewed_at_utc": "2026-10-22T15:24:36.647837+00:00",
+  "status": "PASS_SCOPED_VISUAL_AND_DATA_REVIEW",
+  "reviewer": "compton_independent_review",
+  "independence": "Reviewer authored neither plotter nor plotted results and performed no render.",
+  "figure_directory": "figures/v2",
+  "manifest_sha256": "5ec6dd33045f194c195cce04b38b3a08bcab0012c3191b783c7597a0719a066e",
+  "plotter_sha256": "1d80ee4c88fa78eb42f7f534c23101eaf72715f9a49ed09b14c316465ad6b039",
+  "figures": {
+    "01_temperature_response.png": {
+      "bytes": 280037,
+      "sha256": "86ea37d5c53e6650f98204928e8b110b95fb3be3c5502d4240f0a0e9f3445395",
+      "pixel_size": [
+        2458,
+        1586
+      ]
+    },
+    "01_temperature_response.pdf": {
+      "bytes": 27426,
+      "sha256": "28c6b406f7dc67d52eb702a337aa9db8be6f97ef689944f4ede8fca36c4a2f0b",
+      "pixel_size": null
+    },
+    "02_energy_transfers_and_audit.png": {
+      "bytes": 369464,
+      "sha256": "0cb8661f4bc787d6cbdb1f15e4eba1c5f758a0f33161f28c5fa6bb975871c11a",
+      "pixel_size": [
+        2686,
+        2438
+      ]
+    },
+    "02_energy_transfers_and_audit.pdf": {
+      "bytes": 24256,
+      "sha256": "8223af0d68ceef6b5a2a3a29077d6e895631380b7345cc66128f6910b7e30944",
+      "pixel_size": null
+    },
+    "03_branch_vs_refinement.png": {
+      "bytes": 246047,
+      "sha256": "b80607d0831710f16020519e2d3f18603943ec381d428c94bbe9aeefa93ee4cd",
+      "pixel_size": [
+        2472,
+        1694
+      ]
+    },
+    "03_branch_vs_refinement.pdf": {
+      "bytes": 21059,
+      "sha256": "d96f87c4af5d39c36de59a937e7ef15a2bc89ca80d5dba01e2c391b49932e167",
+      "pixel_size": null
+    }
+  },
+  "visual_method": "Opened all three actual v2 PNGs at original resolution with view_image; the author and root reviews were not substituted for this inspection.",
+  "findings": [
+    {
+      "file": "01_temperature_response.png",
+      "status": "confirmed",
+      "finding": "Readable seed/branch/old-baseline legends, temperature and percentage units, chronological redshift direction and identical comparison-grid scope; separate Planck-reference limitation explicit."
+    },
+    {
+      "file": "02_energy_transfers_and_audit.png",
+      "status": "confirmed",
+      "finding": "V2 modeled-energy symlog ticks are separated. Signs, units and numeric annotations readable. Omitted CI/CE is distinct from actual modeled transfer; supported/continuation partition is described. The narrow CI continuation hatch corresponds to a small contribution. Gas audit curves and separate Simpson endpoint markers are clearly labelled."
+    },
+    {
+      "file": "03_branch_vs_refinement.png",
+      "status": "confirmed",
+      "finding": "Branch/refinement/sum series and log axes are readable. Stress excludes shear explicitly; finite empirical comparison is distinguished from a global bound. Values agree with independently reviewed branch-resolution outcome."
+    }
+  ],
+  "data_check": {
+    "status": "PASS_FIGURE_DATA_BINDINGS",
+    "manifest_sha256": "5ec6dd33045f194c195cce04b38b3a08bcab0012c3191b783c7597a0719a066e",
+    "plotter_sha256": "1d80ee4c88fa78eb42f7f534c23101eaf72715f9a49ed09b14c316465ad6b039",
+    "input_files_checked": 34,
+    "output_files_checked": 13,
+    "npz_arrays_checked": 58,
+    "csv_rows_checked": {
+      "01_temperature_curves.csv": 218,
+      "02_energy_budget.csv": 28,
+      "02_gas_balance_curves.csv": 3076,
+      "02_gas_balance_endpoints.csv": 4,
+      "03_branch_vs_refinement.csv": 8
+    },
+    "max_absolute_independent_balance_roundoff": 7.478453891308218e-17,
+    "new_ODE_runs": 0,
+    "render_runs": 0,
+    "visual_check": "Actual v2 PNGs separately inspected at original resolution by this independent reviewer; no data or layout blocker observed."
+  },
+  "evidence": {
+    "evidence/independent_review/check_figure_data.py": "05d1b725215e6cbf3ed9f0f1e03bdca4cf0b4321c332d22c8811b998eefa4d14",
+    "evidence/independent_review/figure_data_attempt_01_process.json": "19835a4d7cb2c6c53cdf2d9d664c5e886bd533143a17a15a2979b815e029bb1f",
+    "evidence/independent_review/figure_data_attempt_01_stdout.json": "18d3f02d4e642ea5d8e26421433745e56b2b2132e632dc802611c40b0af6b4e7",
+    "evidence/independent_review/figure_data_attempt_01_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "limitations": [
+    "PDF bytes and output bindings checked; visual inspection was of corresponding PNG renders, not a separate PDF rasterization.",
+    "v1 remains the correction history and is not the approved final visual set.",
+    "No render rerun, ODE run or model evaluator was called by this review."
+  ],
+  "blockers": []
+}

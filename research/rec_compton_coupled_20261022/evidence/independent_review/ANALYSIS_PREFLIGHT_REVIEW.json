@@ -1,0 +1,144 @@
+{
+  "schema": "rec.compton.independent.analysis_preflight.v1",
+  "reviewed_at_utc": "2026-10-22T15:11:02.811345+00:00",
+  "status": "PASS_SCOPED_ANALYSIS_PREFLIGHT",
+  "reviewer": "compton_independent_review; authored neither reviewed analysis module nor their providers",
+  "reviewed_source_hashes": {
+    "code/analyze_compton.py": "00b187504eaa9da8cbe43287339b4b71b276936dff9e7542b3f29d5405147ffc",
+    "code/analyze_collisions.py": "acd7a1ed448d282cc4b102ecfd6d2043611caa3dfa480913e105c073ba0969a1",
+    "code/run_compton.py": "e81220564d303467c08b1162dcd9bea8a365c8d689c64b00aeaac7378e0511b9",
+    "../rec_thermal_omitted_budget_20261022/code/collisional_budget.py": "39aa8e56021dfd764af867803c654d7452e5f2aa0d104258bbcfecbe10b6d252",
+    "../rec_thermal_omitted_budget_20261022/code/compton_budget.py": "a4338f76e81f34b3af1c13340c9df40140471f6ce5512bb720efa6061082a567",
+    "../rec_thermal_omitted_budget_20261022/data/HG97_COLLISIONAL_SOURCE.json": "09e3079eccba39c0e8c905c7eb1ac2e3eff2770a2c3a536697fc36d8ccadf2c5",
+    "../rec_rei_hheli_sandbox_20261021/code/atomic_network.py": "baecce07aded483fa60006cc576feff67d068c0d70394f7095abacc6d47eaa80"
+  },
+  "runtime_identity": "c89f576e2c7f15a0a1d0d3f96ce72de516245cbb83b5d4fbaeede342a76e86ac",
+  "findings": [
+    {
+      "id": "A1",
+      "classification": "confirmed_bug_resolved",
+      "target": "analyze_compton.py refinement receipt binding",
+      "before": "A stale PASS refinement source and case binding was accepted.",
+      "evidence": "Six-test attempt01 includes stale-refinement acceptance; current code verifies runtime and exact freshly recomputed refinement_pairs equality.",
+      "status": "closed"
+    },
+    {
+      "id": "A2",
+      "classification": "confirmed_bug_resolved",
+      "target": "analyze_compton.py case and saved-array ownership",
+      "before": "Folder name alone assigned seed/branch/tolerance; another self-consistent case or wrong case_identity/array branch could be relabeled.",
+      "evidence": "Five ownership regressions failed on original source and pass unchanged on corrected source; matching valid-input control completes.",
+      "status": "closed"
+    }
+  ],
+  "checks": [
+    {
+      "id": "A3",
+      "status": "confirmed",
+      "claim": "Main analysis compares each new case to the identical seed/tolerance Mao baseline and writes branch differences in both tolerance levels."
+    },
+    {
+      "id": "A4",
+      "status": "confirmed",
+      "claim": "Energy integrands use signed source power/(nb H eV) on actual dense1025 states; expansion work is negative work/eV. Candidate bath difference is split into energy-density replacement and Planck recoil/induced reference correction."
+    },
+    {
+      "id": "A5",
+      "status": "confirmed",
+      "claim": "Resolution flags compare refined branch differences to the sum of observed same-branch refinement maxima; stress-only and shear-inclusive quantities remain distinct."
+    },
+    {
+      "id": "A6",
+      "status": "confirmed",
+      "claim": "Collision adapter checks loaded module paths, immutable provider hashes, saved ne=nb(q dot Y), eta=(1+q) dot Y, isotope scales, temperatures and nested dense grids."
+    },
+    {
+      "id": "A7",
+      "status": "confirmed",
+      "claim": "H/He CI transitions preserve isotope inventories; CI kinetic loss and binding gain cancel in total gas energy, while one new electron contributes the separate -particle/(H eta) temperature forcing."
+    },
+    {
+      "id": "A8",
+      "status": "confirmed",
+      "claim": "CE_HI targets native indices1,3,5 and CE_HeII indices8,11; powers use nb ne Y times source SI coefficient and optically thin escape signs. Unsupported Li/HeI CE entries remain unavailable."
+    },
+    {
+      "id": "A9",
+      "status": "confirmed",
+      "claim": "Both coefficient support and continuation/underflow masks remain separate. Trapezoid partitions use intervals whose two retained endpoints lie in source support; Simpson is stored separately."
+    },
+    {
+      "id": "A10",
+      "status": "inconclusive_until_results",
+      "claim": "Actual eight-case analyzed numbers, support fractions, figures and conclusions agree with saved output arrays.",
+      "next_action": "Independently recompute results from completed saved arrays and inspect the rendered figures."
+    }
+  ],
+  "regression_execution": {
+    "attempt01": {
+      "tests": 6,
+      "failures": 6,
+      "errors": 0,
+      "exit_code": 1
+    },
+    "attempt02": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "test_source_unchanged": true,
+    "valid_input_control": {
+      "exit_code": 0,
+      "status": "PASS_SCOPED_VALID_INPUT_CONTROL"
+    },
+    "new_ODE_integrations": 0,
+    "old_full_suite_reruns": 0
+  },
+  "evidence_files": [
+    {
+      "path": "evidence/independent_review/test_analysis_bindings.py",
+      "sha256": "951d42b060bc851dafd44fbd03be581efd6bb699437d1ecea5efa8eb7b3776c4"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_01_process.json",
+      "sha256": "82fecbba9b197e6a733925f4c188407fac5187b60343fce947d49d0a05fc51d3"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_01_stderr.txt",
+      "sha256": "dfd5abe295a7f9a58859c583da29dc33c5756275534fbcae0ea0484538efdbbd"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_01_analyze_compton.py",
+      "sha256": "bd38da7a2bc5e9b5c222c1fa3b0fcc05002ae897f7c507fdb183d2fcc88e7a25"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_02_process.json",
+      "sha256": "7cc18f6505ec4484a9b28dc1b21a0b74261d1eb8b1d728d25304c2e3012d94ed"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_02_stderr.txt",
+      "sha256": "d32a28168caf85722e76d74d634e0844abc0fbf3af62b51e87966708dccf9220"
+    },
+    {
+      "path": "evidence/independent_review/analysis_bindings_attempt_02_analyze_compton.py",
+      "sha256": "00b187504eaa9da8cbe43287339b4b71b276936dff9e7542b3f29d5405147ffc"
+    },
+    {
+      "path": "evidence/independent_review/analysis_valid_fixture_process.json",
+      "sha256": "6086316ceec81397c4036d8562ff492be9e36754b1ec6cce3ceb9dd7f4d625e8"
+    },
+    {
+      "path": "evidence/independent_review/analysis_valid_fixture_stdout.txt",
+      "sha256": "9a5bf5f7d096ddb71d982ebca1888a7dca6d7778285df059c8490db886b7203a"
+    }
+  ],
+  "blockers": [],
+  "limits": [
+    "Fixture evidence is input-contract evidence only; it is not a scientific trajectory or collision budget.",
+    "Collision coefficients are evaluated with explicit analytic continuation where the published fit domain does not apply.",
+    "CI/CE are diagnostic omitted sources on the new Compton paths; they are not terms dynamically applied in those IVPs.",
+    "No proof of continuum positivity, full radiation closure, global convergence or production validity is inferred."
+  ],
+  "results_review": "PENDING_ACTUAL_ANALYZED_OUTPUTS"
+}

@@ -1,5 +1,20 @@
 # REC Compton-coupled native full63 pilot
 
+**Completed finite pilot:** eight new coupled IVPs, four nominal/refined pairs,
+and all 64 admission gates per case passed. No previous IVP was replayed.
+For the refined actual-hot branch, the two gas temperatures at z=2 are
+8896.57 K and 8885.22 K, approximately 12.08% and 12.17% below the matching
+saved no-Compton baselines. The new paths transfer approximately
+−2.173 and −2.184 eV per baryon through the selected Compton term.
+
+Read [REPORT_KO.md](REPORT_KO.md) for the results and their finite scope,
+[REVIEW_INDEPENDENT_KO.md](REVIEW_INDEPENDENT_KO.md) for independent evidence,
+and [HANDOFF_KO.md](HANDOFF_KO.md) for continuation. Final report figures are
+in [figures/v2](figures/v2); the earlier render and its observed problems
+remain preserved. [NEXT_UNIT_CONTRACT.md](NEXT_UNIT_CONTRACT.md) proposes a
+zero-new-IVP diagnostic-equivalence and profiling unit; its implementation
+and benchmark have not been run.
+
 This unit follows the completed omitted-process budget in draft PR122.
 It asks how the previously large fixed-path Compton forcing changes the
 coupled gas temperature, charge state and opacity when the existing atomic
@@ -17,6 +32,9 @@ Both use the same inherited external UV moments. These branches are
 exclusive; their difference does not reconstruct the actual grey spectrum.
 
 ## Execution and retained evidence
+
+The commands below are the completed historical execution, not a request
+to replay it. Reuse the retained results and identity/restore evidence.
 
 Run from this directory with the pinned dependencies in requirements.txt.
 The driver admits only the source identity recorded in
@@ -40,6 +58,9 @@ Stage A binds the theory and sources. Stage B binds the implementation and
 actual preflight evidence. Stage C binds the new outcomes, independent
 reviews, plots and handoff. A stage snapshot does not assert completion of
 any later calculation or remote transfer; provider receipts establish that.
+The draft is [PR124](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/124),
+stacked on PR122. [DELIVERY_STATUS.json](DELIVERY_STATUS.json) records the
+completed A/B deliveries and names the external final-delivery receipts.
 
 ## Interpretation
 

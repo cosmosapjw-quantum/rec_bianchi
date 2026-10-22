@@ -1,0 +1,65 @@
+test_case_branch_specification_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_branch_specification_mismatch_rejected) ... FAIL
+test_case_label_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_label_mismatch_rejected) ... FAIL
+test_case_tolerance_specification_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_tolerance_specification_mismatch_rejected) ... FAIL
+test_saved_branch_mismatch_rejected (__main__.AnalyzerBindingChecks.test_saved_branch_mismatch_rejected) ... FAIL
+test_stale_refinement_identity_rejected (__main__.AnalyzerBindingChecks.test_stale_refinement_identity_rejected) ... FAIL
+test_unbound_case_identity_rejected (__main__.AnalyzerBindingChecks.test_unbound_case_identity_rejected) ... FAIL
+
+======================================================================
+FAIL: test_case_branch_specification_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_branch_specification_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 165, in test_case_branch_specification_mismatch_rejected
+    with self.assertRaises(ValueError, msg="A self-consistent receipt for another branch must not be relabeled"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : A self-consistent receipt for another branch must not be relabeled
+
+======================================================================
+FAIL: test_case_label_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_label_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 159, in test_case_label_mismatch_rejected
+    with self.assertRaises(ValueError, msg="The receipt label must match the folder's expected CASES entry"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : The receipt label must match the folder's expected CASES entry
+
+======================================================================
+FAIL: test_case_tolerance_specification_mismatch_rejected (__main__.AnalyzerBindingChecks.test_case_tolerance_specification_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 172, in test_case_tolerance_specification_mismatch_rejected
+    with self.assertRaises(ValueError, msg="A self-consistent refined case must not be reported as nominal"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : A self-consistent refined case must not be reported as nominal
+
+======================================================================
+FAIL: test_saved_branch_mismatch_rejected (__main__.AnalyzerBindingChecks.test_saved_branch_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 183, in test_saved_branch_mismatch_rejected
+    with self.assertRaises(ValueError, msg="Saved arrays must carry the selected branch, even when their bytes match the receipt"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : Saved arrays must carry the selected branch, even when their bytes match the receipt
+
+======================================================================
+FAIL: test_stale_refinement_identity_rejected (__main__.AnalyzerBindingChecks.test_stale_refinement_identity_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 154, in test_stale_refinement_identity_rejected
+    with self.assertRaises(ValueError, msg="PASS refinement must be bound to current cases and runtime"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : PASS refinement must be bound to current cases and runtime
+
+======================================================================
+FAIL: test_unbound_case_identity_rejected (__main__.AnalyzerBindingChecks.test_unbound_case_identity_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/4389c03f19a6/rec_bianchi/research/rec_compton_coupled_20261022/evidence/independent_review/test_analysis_bindings.py", line 177, in test_unbound_case_identity_rejected
+    with self.assertRaises(ValueError, msg="The case hash must match the expected current configuration"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised : The case hash must match the expected current configuration
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.898s
+
+FAILED (failures=6)
