@@ -1,0 +1,32 @@
+{
+  "cwd": "/workspace/scratch/4389c03f19a6/rec_bianchi",
+  "purpose": "Preserve actual ancillary discovery command/exit/decisive output/wall evidence, including reviewer schema typo.",
+  "records": [
+    {
+      "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\nimport numpy as np\nroot=Path('research/rec_saved_diagnostic_reuse_20261023/evidence/profile/attempt_001')\nlabel='s03_m03_r03_actual_hot_nominal'\np=root/label\nwith np.load(p/'PROFILED_OUTPUTS.npz') as a:\n for k in a.files: print(k, a[k].shape, a[k].dtype)\n print('DIAG_NAMES', a['gather__diagnostic_names'].tolist())\n print('ENERGY_NAMES',a['collision__energy_power_names'].tolist())\n print('FORCING_NAMES',a['collision__forcing_names'].tolist())\nfor fn in ['GATHER_PROFILE.json','COLLISION_PROFILE.json']:\n r=json.loads((p/fn).read_text()); print(fn, 'total_self',r['profiler_total_self_seconds'])\n for row in r['functions'][:15]: print(row)\nPY",
+      "exit_code": 1,
+      "wall_time_seconds": 0.410061446,
+      "output_decisive": "KeyError: 'collision__energy_power_names is not a file in the archive'",
+      "classification": "Reviewer schema-discovery typo, not a target defect or admission check."
+    },
+    {
+      "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\nimport numpy as np\np=Path('research/rec_saved_diagnostic_reuse_20261023/evidence/profile/attempt_001/s03_m03_r03_actual_hot_nominal')\nwith np.load(p/'PROFILED_OUTPUTS.npz') as a:\n print('PROCESS_NAMES',a['collision__process_names'].tolist())\n print('FORCING_NAMES',a['collision__forcing_names'].tolist())\nfor fn in ['GATHER_PROFILE.json','COLLISION_PROFILE.json']:\n r=json.loads((p/fn).read_text()); print(fn,'total_self',r['profiler_total_self_seconds'])\n for row in r['functions'][:15]: print(row)\nPY",
+      "exit_code": 0,
+      "wall_time_seconds": 0.660509477,
+      "output_decisive": "PROCESS_NAMES ['photo_primary', 'rr_kinetic', 'dr_kinetic', 'expansion_work', 'compton_selected', 'compton_uv', 'ci_kinetic', 'ci_binding', 'ci_total_gas', 'ce_HI', 'ce_HeII', 'included_collision_kinetic', 'included_collision_total_gas']\nFORCING_NAMES ['ci_energy_only', 'ci_particle_only', 'ci_full', 'ce_HI', 'ce_HeII', 'included_collision_total']\nGATHER_PROFILE.json total_self 0.5112399100000001",
+      "classification": "Corrected schema discovery, not a bug-fix red/green cycle."
+    },
+    {
+      "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\nfrom collections import defaultdict\ns=Path('research/rec_saved_diagnostic_reuse_20261023')\nagg=defaultdict(float)\nfor p in (s/'evidence/profile/attempt_001').glob('*/GATHER_PROFILE.json'):\n for r in json.loads(p.read_text())['functions']:\n  agg[(r['file'],r['name'])]+=r['self_seconds']\nfor (f,n),t in sorted(agg.items(),key=lambda v:-v[1])[:8]: print(f'{t:.9f}',f,n)\nPY",
+      "exit_code": 0,
+      "wall_time_seconds": 1.142397563,
+      "output_decisive": "0.602040305 research/rec_rei_hheli_sandbox_20261021/vendor/he31/prepared_moments.py moments\n0.546783581 research/rec_thermal_moments_20261022/code/recombination_moments.py evaluate\n0.439114120 research/rec_rei_hheli_sandbox_20261021/code/atomic_network.py rates"
+    },
+    {
+      "command": "python - <<'PY'\nfrom pathlib import Path\nimport numpy as np\nimport json\ns=Path('research/rec_saved_diagnostic_reuse_20261023')\nwith np.load(s/'figures/v2/PLOT_DATA.npz', allow_pickle=False) as a:\n print('PLOT',[(k,a[k].shape,a[k].tolist()) for k in a.files])\nr=json.loads((s/'evidence/independent_review/SAVED_ARRAY_CHECK.json').read_text())\nprint('GAS_LEDGER_CHECKS',[(v['label'],v['independent_gas_sum_unequal_points'],v['transfer_residual_max']) for v in r['cases']])\nfor p in sorted((s/'results').glob('*.csv')):\n print(p.name, p.read_text().splitlines()[:3])\nPY",
+      "exit_code": 0,
+      "wall_time_seconds": 9.203132917,
+      "output_decisive": "GAS_LEDGER_CHECKS [('s03_m03_r03_actual_hot_nominal', 61, 3.6136054714476575e-16), ('s03_m03_r03_actual_hot_refined', 60, 3.316033820106304e-16), ('s03_m03_r03_planck_reference_nominal', 62, 3.650024443551884e-16), ('s03_m03_r03_planck_reference_refined', 62, 3.5651959131486113e-16), ('s04_m04_r04_actual_hot_nominal', 61, 3.146574825614764e-16), ('s04_m04_r04_actual_hot_refined', 62, 3.165711822946129e-16), ('s04_m04_r04_planck_reference_nominal', 61, 3.8820046920465465e-16), ('s04_m04_r04_planck_reference_refined', 62, 3.5722772899036306e-16)]"
+    }
+  ]
+}

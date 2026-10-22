@@ -1,0 +1,393 @@
+{
+  "baseline_latency": [
+    {
+      "collision_median_ms_per_state": 0.7623245312515792,
+      "collision_ms_per_state": [
+        0.7623245312515792,
+        0.7253299687590697,
+        1.0481719687049917
+      ],
+      "gather_median_ms_per_state": 6.568347609345437,
+      "gather_ms_per_state": [
+        6.747008187517167,
+        6.568347609345437,
+        5.28920631256824
+      ],
+      "label": "s03_m03_r03_actual_hot_nominal"
+    },
+    {
+      "collision_median_ms_per_state": 0.5929279531073917,
+      "collision_ms_per_state": [
+        0.5929279531073917,
+        0.6821694531708999,
+        0.5637627656369659
+      ],
+      "gather_median_ms_per_state": 6.749256250031976,
+      "gather_ms_per_state": [
+        4.813102265643465,
+        18.312604953166556,
+        6.749256250031976
+      ],
+      "label": "s03_m03_r03_actual_hot_refined"
+    },
+    {
+      "collision_median_ms_per_state": 0.7999648594250175,
+      "collision_ms_per_state": [
+        0.8572342969728197,
+        0.7999648594250175,
+        0.6351854218564768
+      ],
+      "gather_median_ms_per_state": 5.537180453188739,
+      "gather_ms_per_state": [
+        5.872560531201998,
+        5.061540609403892,
+        5.537180453188739
+      ],
+      "label": "s03_m03_r03_planck_reference_nominal"
+    },
+    {
+      "collision_median_ms_per_state": 0.844092078182257,
+      "collision_ms_per_state": [
+        0.7828687655546673,
+        0.975240890625173,
+        0.844092078182257
+      ],
+      "gather_median_ms_per_state": 5.4253699844366565,
+      "gather_ms_per_state": [
+        5.4253699844366565,
+        5.186115781157241,
+        6.613092546899679
+      ],
+      "label": "s03_m03_r03_planck_reference_refined"
+    },
+    {
+      "collision_median_ms_per_state": 0.8535803124232189,
+      "collision_ms_per_state": [
+        0.8535803124232189,
+        0.7575691406600527,
+        0.8795438280913004
+      ],
+      "gather_median_ms_per_state": 5.8308287813133575,
+      "gather_ms_per_state": [
+        8.36193365626059,
+        5.8308287813133575,
+        5.322823625078854
+      ],
+      "label": "s04_m04_r04_actual_hot_nominal"
+    },
+    {
+      "collision_median_ms_per_state": 0.7331832812269568,
+      "collision_ms_per_state": [
+        0.7331832812269568,
+        0.6566529688143419,
+        0.7732135780997851
+      ],
+      "gather_median_ms_per_state": 6.33324054683726,
+      "gather_ms_per_state": [
+        6.745044859371774,
+        5.180190640658111,
+        6.33324054683726
+      ],
+      "label": "s04_m04_r04_actual_hot_refined"
+    },
+    {
+      "collision_median_ms_per_state": 1.0838139062343544,
+      "collision_ms_per_state": [
+        0.8250151873880895,
+        1.8817778282027575,
+        1.0838139062343544
+      ],
+      "gather_median_ms_per_state": 6.6937262031387945,
+      "gather_ms_per_state": [
+        5.646044828154118,
+        6.6937262031387945,
+        10.40290720311532
+      ],
+      "label": "s04_m04_r04_planck_reference_nominal"
+    },
+    {
+      "collision_median_ms_per_state": 8.532053296789854,
+      "collision_ms_per_state": [
+        27.637140453066422,
+        8.532053296789854,
+        0.8256161250983496
+      ],
+      "gather_median_ms_per_state": 20.92468739067499,
+      "gather_ms_per_state": [
+        20.92468739067499,
+        11.52945446870035,
+        24.372022562488382
+      ],
+      "label": "s04_m04_r04_planck_reference_refined"
+    }
+  ],
+  "candidate_implementation": false,
+  "cases": 8,
+  "disjoint_scope": "Geometry.fields, AtomicNetwork.evaluate and ThermalSources.evaluate are sibling cost regions on this gather path; ThermalSources receives the already evaluated network. Their inclusive times do not nest each other. Other is residual self time. Nested rows in FUNCTION_PROFILE.csv must not be summed.",
+  "disjoint_subtrees": [
+    {
+      "calls_per_state": 2.0,
+      "cumulative_seconds": 2.103795774,
+      "group": "Thermal sources",
+      "percent": 38.96143882259485
+    },
+    {
+      "calls_per_state": 7.0,
+      "cumulative_seconds": 1.3082472950000001,
+      "group": "Geometry fields",
+      "percent": 24.2282057882714
+    },
+    {
+      "calls_per_state": 3.0,
+      "cumulative_seconds": 1.0762961540000002,
+      "group": "Atomic network",
+      "percent": 19.93256535511281
+    },
+    {
+      "calls_per_state": "",
+      "cumulative_seconds": 0.9113478459999991,
+      "group": "Other",
+      "percent": 16.877790034020933
+    }
+  ],
+  "equal_collision_point_fields_per_case": 34,
+  "equal_gather_fields_per_case": 16,
+  "evidence": [
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_nominal/RESULT.json",
+      "sha256": "176e419eb019722e7a756f901257481e9bbe3b29e877c5b7cc5bed12349bc23a"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_nominal/GATHER_PROFILE.json",
+      "sha256": "df6f2a9d46934ca25ae5fd3a0496fa1c8c9a72e88c29d22b2ce4df783ae69557"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_nominal/COLLISION_PROFILE.json",
+      "sha256": "9c53020da16f9cee118589cd83793ac02786974ecb95583d994179cf8d557ea5"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_refined/RESULT.json",
+      "sha256": "5cdfc7b517b3e9161b8ca77610dce75388c581b20d4377b4a3f0b161f8c8e3c2"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_refined/GATHER_PROFILE.json",
+      "sha256": "514e3bc7fed922c519e9d6e93628f3265371a1d545572c501d27f8bd96d82bb4"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_actual_hot_refined/COLLISION_PROFILE.json",
+      "sha256": "7776c4f6bbc8c9fa5295105d2531ebbc9fb0bff7d2ab712ea49c78f3fb30bbb6"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_nominal/RESULT.json",
+      "sha256": "2ed114329c8e315aa57b10e05b509a77fc7644aa7288b42789b902f9e8a10b8f"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_nominal/GATHER_PROFILE.json",
+      "sha256": "fc4c7855fe97a3616cffdb27c064eff51161b297440963aed52d428f0a555bc2"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_nominal/COLLISION_PROFILE.json",
+      "sha256": "14ace13c5190a51d99043f5bdd8760a8d836bf3500b8f167dccb35f67e3a6d83"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_refined/RESULT.json",
+      "sha256": "382cac1cb4f2eed29520166f619f6a709c2c7399edc2b4bfa513825badadd608"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_refined/GATHER_PROFILE.json",
+      "sha256": "8ba38f0c5ba6404beb463d7804a82e13114d85973ad328762a29cc4094ebbaa4"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s03_m03_r03_planck_reference_refined/COLLISION_PROFILE.json",
+      "sha256": "8f1aef9bf36bc2a327b72a3243de4f0f964d79d035e1aa8dee2ec8acdec38ae0"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_nominal/RESULT.json",
+      "sha256": "f57d0a4416eb5cafe8254e251c48359cf5baa777be787824039da7e7a5da1fe4"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_nominal/GATHER_PROFILE.json",
+      "sha256": "abc541275f712733bf130e91b8320fc26f626ceee46abed8bb0ac624e6669a25"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_nominal/COLLISION_PROFILE.json",
+      "sha256": "26291aff9a422a9e1f88e59848c5b61f9f347fff069a6e6c5b20a9e0e1e41794"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_refined/RESULT.json",
+      "sha256": "b533608225e76331b427ad7a5c0685225384aed381f19d9e4f414fc092c336de"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_refined/GATHER_PROFILE.json",
+      "sha256": "6cb2a758d3510351701ab99ab0d387bafcc77c35ba2a911404ff1c5a70d4d323"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_actual_hot_refined/COLLISION_PROFILE.json",
+      "sha256": "9bcebbbe9eb74a8fc7ce92d563a10f3ea3564c3bf642699f41e7297bf6229b1d"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_nominal/RESULT.json",
+      "sha256": "55633243279ea3b71094e8472617f33ebf60a9910b96c16f790339acce708ca8"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_nominal/GATHER_PROFILE.json",
+      "sha256": "f0da0ad198be41705ffc037763add56943a20dd8d4fd60ebe6748fa044421792"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_nominal/COLLISION_PROFILE.json",
+      "sha256": "aaf9cec8e54c97c4d6c4523c216050e92fd07a24bee18e24d02f85c048d4e111"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_refined/RESULT.json",
+      "sha256": "7e6605932063edc441c723e83d99b4474e92be88a2226d488ad6b7d69ddc7d97"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_refined/GATHER_PROFILE.json",
+      "sha256": "e6e837bd9dcfb140896f9d9ad721380c0888bc1b34429890215b6e1cab763707"
+    },
+    {
+      "path": "evidence/profile/attempt_001/s04_m04_r04_planck_reference_refined/COLLISION_PROFILE.json",
+      "sha256": "9d2e4b620097ea8561765cb2183003bfda665c2b7098e938706de49e7ab4682d"
+    },
+    {
+      "path": "evidence/profile/attempt_001/CORPUS_MANIFEST.json",
+      "sha256": "9309fb6a383159ca2ff02327f0ad3338317839f364f906ba25f22076fd49fed2"
+    },
+    {
+      "path": "evidence/profile/attempt_001/INPUT_MANIFEST.json",
+      "sha256": "4a8551048ff36b641b16cc932c346c7921defa92c194770f151c6d7e2532407a"
+    },
+    {
+      "path": "evidence/profile/attempt_001/SUMMARY.json",
+      "sha256": "1779b87ba735d556b32f53b5f613e3918ad5ebf78b3f843b1a5074c552670dec"
+    },
+    {
+      "path": "evidence/profile/attempt_001/FINISHED.json",
+      "sha256": "c17518dc6d68d7c98b0d8d5a54fd9b629a098e5f9c6f7f8d208583e55b80485c"
+    },
+    {
+      "path": "evidence/timing_order_probe/RESULT.json",
+      "sha256": "cc6681b275a51f3f85bd82ff32131e65d073a6adff2393b3ad53a6329afdc3dd"
+    },
+    {
+      "path": "evidence/timing_order_probe/FINISHED.json",
+      "sha256": "7692fce729dc45899c27052388439f51bb539aeff3d30115ea98ec77eec9a0b4"
+    }
+  ],
+  "inherited_scientific_status": {
+    "REI_activation": false,
+    "U5": "CLOSED",
+    "global_convergence": "NOT_RUN",
+    "physical": "HOLD",
+    "production": "NOT_APPROVED"
+  },
+  "measured_call_counts": [
+    {
+      "cumulative_seconds": 1.3082472950000001,
+      "function": "Geometry.fields",
+      "measured_calls": 3584,
+      "measured_calls_per_state": 7.0,
+      "self_seconds": 0.023320926000000006,
+      "states": 512,
+      "static_expected_per_state": 7
+    },
+    {
+      "cumulative_seconds": 0.647574881,
+      "function": "PreparedCanonicalMoments.moments",
+      "measured_calls": 3584,
+      "measured_calls_per_state": 7.0,
+      "self_seconds": 0.602040305,
+      "states": 512,
+      "static_expected_per_state": 7
+    },
+    {
+      "cumulative_seconds": 1.0762961540000002,
+      "function": "AtomicNetwork.evaluate",
+      "measured_calls": 1536,
+      "measured_calls_per_state": 3.0,
+      "self_seconds": 0.31999394600000003,
+      "states": 512,
+      "static_expected_per_state": 3
+    },
+    {
+      "cumulative_seconds": 0.6487528340000001,
+      "function": "AtomicNetwork.rates",
+      "measured_calls": 1536,
+      "measured_calls_per_state": 3.0,
+      "self_seconds": 0.43911412000000005,
+      "states": 512,
+      "static_expected_per_state": 3
+    },
+    {
+      "cumulative_seconds": 2.103795774,
+      "function": "ThermalSources.evaluate",
+      "measured_calls": 1024,
+      "measured_calls_per_state": 2.0,
+      "self_seconds": 0.104530761,
+      "states": 512,
+      "static_expected_per_state": 2
+    },
+    {
+      "cumulative_seconds": 1.9651913770000002,
+      "function": "ThermalSources.coefficients",
+      "measured_calls": 1024,
+      "measured_calls_per_state": 2.0,
+      "self_seconds": 0.13501854600000002,
+      "states": 512,
+      "static_expected_per_state": 2
+    },
+    {
+      "cumulative_seconds": 0.9929594460000001,
+      "function": "RecombinationMoments.evaluate",
+      "measured_calls": 1024,
+      "measured_calls_per_state": 2.0,
+      "self_seconds": 0.546783581,
+      "states": 512,
+      "static_expected_per_state": 2
+    },
+    {
+      "cumulative_seconds": 0.9853313100000001,
+      "function": "ComptonFull63.compton_terms",
+      "measured_calls": 1536,
+      "measured_calls_per_state": 3.0,
+      "self_seconds": 0.040553026000000006,
+      "states": 512,
+      "static_expected_per_state": 3
+    },
+    {
+      "cumulative_seconds": 0.022004604,
+      "function": "Geometry.normalized",
+      "measured_calls": 1024,
+      "measured_calls_per_state": 2.0,
+      "self_seconds": 0.009710176000000001,
+      "states": 512,
+      "static_expected_per_state": 2
+    },
+    {
+      "cumulative_seconds": 0.137492775,
+      "function": "Legendre Vandermonde",
+      "measured_calls": 512,
+      "measured_calls_per_state": 1.0,
+      "self_seconds": 0.08514835200000001,
+      "states": 512,
+      "static_expected_per_state": 1
+    },
+    {
+      "cumulative_seconds": 0.8345907880000002,
+      "function": "Mao factor",
+      "measured_calls": 13312,
+      "measured_calls_per_state": 26.0,
+      "self_seconds": 0.436616188,
+      "states": 512,
+      "static_expected_per_state": 26
+    }
+  ],
+  "new_IVPs": 0,
+  "numerical_compute_wall_seconds_before_aggregation": 40.29807753400382,
+  "profiled_gather_total_self_seconds": 5.399687069,
+  "selected_stage": "C2",
+  "speedup_measured": false,
+  "states": 512,
+  "status": "COMPLETE_C2_MEASUREMENT_AGGREGATION",
+  "timing_caveat": "Same-state timings vary substantially and the order probe moves the large delay to nominal as well. No stable physical-branch/resolution latency ordering or system-level cause is established."
+}

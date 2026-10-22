@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "commands": [
+    {
+      "command": "python research/rec_saved_diagnostic_reuse_20261023/code/profile_saved_diagnostics.py",
+      "tool_session_id": 19578,
+      "exit_code": 0,
+      "decisive_output": "All eight case lines reported exact=true; FINISHED status PASS_C2_BASELINE_PROFILE",
+      "receipt": "evidence/profile/attempt_001/FINISHED.json"
+    },
+    {
+      "command": "python research/rec_saved_diagnostic_reuse_20261023/code/probe_timing_variation.py",
+      "tool_session_id": 19084,
+      "exit_code": 0,
+      "decisive_output": "PASS_TARGETED_ORDER_PROBE",
+      "receipt": "evidence/timing_order_probe/FINISHED.json"
+    },
+    {
+      "command": "python research/rec_saved_diagnostic_reuse_20261023/code/summarize_profile.py",
+      "tool_session_id": 38900,
+      "exit_code": 0,
+      "decisive_output": "COMPLETE_C2_AGGREGATION",
+      "receipt": "results/AGGREGATION_RECEIPT.json",
+      "environment_note": "Matplotlib used a writable temporary cache after its default cache path was unavailable; v2 explicitly chooses /tmp/rec_diagnostic_c2_mpl."
+    },
+    {
+      "command": "python research/rec_saved_diagnostic_reuse_20261023/code/render_latency_v2.py",
+      "tool_session_id": 42829,
+      "exit_code": 0,
+      "decisive_output": "RENDERED_V2; plot_data_unchanged=true",
+      "receipt": "figures/v2/FIGURE_MANIFEST.json"
+    }
+  ]
+}
