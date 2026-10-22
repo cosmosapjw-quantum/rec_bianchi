@@ -1,0 +1,148 @@
+{
+  "reviewer_task": "/root/compact_reuse",
+  "scope": "one bounded independent physics/code/results/figure review pass",
+  "independence": "prior PR220 reuse advisory; no THERM01 implementation, threshold-setting or IVP authorship",
+  "status": "PASS_SCOPED_THERM01_WITH_SOURCE_CLARIFICATION",
+  "pre_run_blockers": [],
+  "independent_photon_integral": {
+    "method": "separate scalar VF formula from pinned JSON plus scipy.integrate.quad",
+    "new_ODE_runs": 0,
+    "cutoffs_eV": [
+      40.0,
+      60.0
+    ],
+    "ions": [
+      "H I",
+      "He I",
+      "He II",
+      "Li I",
+      "Li II",
+      "Li III"
+    ],
+    "moments": [
+      "rate",
+      "absorbed",
+      "heat"
+    ],
+    "comparisons": 36,
+    "max_relative_error": 7.295998463231063e-13,
+    "worst": {
+      "ion": "He II",
+      "cutoff_eV": 60.0,
+      "moment": "heat",
+      "implementation_W_per_ion": 4.3523872393956254e-33,
+      "independent_W_per_ion": 4.35238723939245e-33
+    },
+    "status": "PASS_SCOPED_PHOTON_QUADRATURE"
+  },
+  "stage_C_review": {
+    "status": "PASS_SCOPED",
+    "new_unique_IVPs": 8,
+    "nominal_IVPs": 6,
+    "tight_compact34_validation_IVPs": 1,
+    "full63_oracle_IVPs": 1,
+    "epochs_per_IVP": 193,
+    "populations_per_epoch": 21,
+    "all_raw_hashes_match": true,
+    "all_source_config_identities_match": true,
+    "immutable_donor_files_verified": 57,
+    "all_case_gates_read_and_relevant_raw_metrics_recomputed": true,
+    "zero_n_T_and_zero_decay_flux_all_cases": true,
+    "accepted_T_range_K": [
+      204.08169762668066,
+      15939.454959576618
+    ],
+    "maximum_isotope_inventory_residual": 1.6718591883534574e-15,
+    "maximum_baryon_residual": 8.881784197001252e-16,
+    "minimum_scaled_population": 0.0,
+    "maximum_signed_tensor_sum_residual": 5.421010862427522e-20,
+    "energy_gate": {
+      "threshold": 3e-06,
+      "maximum": 2.935629461677083e-06,
+      "case": "thermal_iso60",
+      "at_z": 11.91055121197655,
+      "at_elapsed_Myr": 191.9237023352432,
+      "fraction_of_threshold": 0.9785431538923609,
+      "margin": 6.437053832291716e-08,
+      "scope": "finite gate passes with narrow margin; no robustness or global convergence certificate"
+    },
+    "maximum_GL8_GL16_normalized_difference": 1.8433032674329614e-10,
+    "independent_iso60_saved_dense_reduction": {
+      "ODE_runs": 0,
+      "method": "separate scalar photo adaptive quad and recombination moment expressions evaluated on saved dense states; GL8/16 aggregation",
+      "GL8_nodes": 1536,
+      "GL16_nodes": 3072,
+      "max_GL16_normalized_delta_to_saved_ledger": 4.214735965646654e-14,
+      "independent_GL16_energy_peak": 2.935629475906332e-06
+    },
+    "planned_comparisons_recomputed": {
+      "thermal_split60_tight34": {
+        "max_relative_T": 1.021233216366539e-06,
+        "max_charge_fraction_absolute": 6.167131980615304e-08,
+        "max_tau_absolute": 8.187292214632477e-10,
+        "max_signed_normalized_absolute": 3.837768339232106e-09,
+        "gates": {
+          "T": true,
+          "fractions": true,
+          "tau": true,
+          "signed": true
+        },
+        "status": "PASS"
+      },
+      "thermal_split60_oracle63": {
+        "max_relative_T": 5.419209535634432e-08,
+        "max_charge_fraction_absolute": 3.727779085416216e-08,
+        "max_tau_absolute": 5.966591110073693e-11,
+        "max_signed_normalized_absolute": 1.960961809599482e-09,
+        "gates": {
+          "T": true,
+          "fractions": true,
+          "tau": true,
+          "signed": true
+        },
+        "status": "PASS"
+      }
+    },
+    "figures": {
+      "PNG_viewed": [
+        "01_temperature_ionization.png",
+        "02_energy_ledger.png",
+        "03_signed_stress_validation.png"
+      ],
+      "PDF_direct_render_review": "NOT_RUN",
+      "bound_output_hashes_checked": 16,
+      "hash_mismatches": 0,
+      "history_CSV_files": 8,
+      "history_rows_each": 193,
+      "species_columns_each": 21,
+      "maximum_CSV_diagnostic_or_population_difference": 0.0,
+      "semantic_layout_status": "PASS_SCOPED; time/Myr and labeled redshift references, signed sums, declared log/symlog masks"
+    },
+    "source_scope_correction": {
+      "classification": "SOURCE_SCOPE_WORDING_DEFECT_CORRECTED_IN_REVIEW_NOTE",
+      "path": "evidence/SOURCE_SCOPE_CLARIFICATION_REVIEW.md",
+      "scientific_code_change": false,
+      "ODE_rerun_required": false,
+      "statement": "Retained direct Li I 1s-photoionization and direct-core-hole terms vanish below their edge; resonant core excitation is excluded, not physically absent."
+    },
+    "remaining_blockers": []
+  },
+  "old_cohort_reruns": 0,
+  "reviewer_new_IVPs": 0,
+  "unit_suite_reruns": 0,
+  "benchmark_runs": 0,
+  "locked_statuses": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "reviewed_scientific_files_sha256": {
+    "code/checks.py": "8d455d7b1ca9d3cf34b8dd1352a5e810589c0ec41ac6b17fdb6c6e14ce206a51",
+    "code/plot.py": "2f5ade712862beeca39b300469e192cbfb4a41d9a9514fd70817d7426d5fbf28",
+    "code/run.py": "5052adb35fc555e95ee7c414d70d162d9e0da9ce9948057c31c209a2dfeb649e",
+    "code/thermal.py": "72bee3c0dad1f2e3acbe05dadbcb5e8beef7ca79acdd33423f31ad21c8a6b2ed"
+  }
+}

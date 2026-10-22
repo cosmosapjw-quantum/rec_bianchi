@@ -88,3 +88,30 @@ links it and reports PASS: maximum64/128 moment relative discrepancy
 max frozen extended RHS parity2.9633e-16 and derivative discrepancy2.273e-7.
 The repair command was `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 MKL_NUM_THREADS=1 python code/checks.py`, exit0. No science IVPs have yet run.
+
+## Stage C execution observed
+
+Root authorized Stage C after completing the Stage B backup/publication. The
+one-command path above ran exactly8 new THERM01 histories and exited0. Every
+case passed all15 frozen trajectory/energy gates. Both planned tight34/full63
+comparison checks passed. Total science wall time26.517743919s; individual cases
+2.024069963–5.548592295s, within180s/case and1200s total. No old history,
+benchmark, additional convergence grid or optional IVP was run.
+
+Maximum integrated ledger normalized residual2.93562946168e-6 occurs for
+thermal_iso60, below but near the frozen3e-6 gate. Maximum normalized GL8/16
+cumulative difference1.84330326743e-10. Tight34 versus nominal max relativeT
+1.02123321637e-6; full63 versus nominal5.41920953563e-8. Full metrics and gate
+values remain in per-case RESULT.json files and results/VALIDATION_COMPARISONS.json.
+All trial evaluations retained the admitted rate domain:204.081697621–15940.124567K.
+
+Eight raw trajectory NPZs preserve193 epochs, explicit21 species, full63 lifts,
+energy terms and dense GL8/16 sampling states. Separate solver_return.npz files
+preserve the actual returned BDF grids before downstream checks. Source/config
+identities and raw SHA256 receipts permit cache verification without integration.
+Three actual PNG/PDF figure pairs and10 CSV sources were generated from cached
+raw outputs; all three PNGs were visually inspected. Figure source receipts and
+inspection notes are in results/FIGURE_SOURCES.json and evidence/FIGURE_INSPECTION.json.
+
+This is executor finite numerical PASS only. Independent scientific review and
+root admission are pending. Physical HOLD and all inherited claim locks remain.
