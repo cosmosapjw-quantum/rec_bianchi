@@ -1,0 +1,1171 @@
+{
+  "status": "PASS_SCOPED_NUMERICAL_COMPARISON",
+  "completed_new_configurations": 8,
+  "old_ivps_rerun": 0,
+  "analysis_ode_calls": 0,
+  "source_factor_maxima": [
+    {
+      "channel": "H II \u2192 H I",
+      "initial_Z": 1,
+      "initial_q": 1,
+      "max_abs_relative_100_1e6": 0.007095270283030697,
+      "at_T_K": 1000000.0,
+      "max_abs_relative_100_12000": 0.003695999271662531
+    },
+    {
+      "channel": "He II \u2192 He I",
+      "initial_Z": 2,
+      "initial_q": 1,
+      "max_abs_relative_100_1e6": 0.12862494522055168,
+      "at_T_K": 1000000.0,
+      "max_abs_relative_100_12000": 0.022649946172402347
+    },
+    {
+      "channel": "He III \u2192 He II",
+      "initial_Z": 2,
+      "initial_q": 2,
+      "max_abs_relative_100_1e6": 0.00592807773304016,
+      "at_T_K": 100.0,
+      "max_abs_relative_100_12000": 0.00592807773304016
+    },
+    {
+      "channel": "Li II \u2192 Li I",
+      "initial_Z": 3,
+      "initial_q": 1,
+      "max_abs_relative_100_1e6": 0.14310679342163746,
+      "at_T_K": 966050.8789898121,
+      "max_abs_relative_100_12000": 0.03467922244498278
+    },
+    {
+      "channel": "Li III \u2192 Li II",
+      "initial_Z": 3,
+      "initial_q": 2,
+      "max_abs_relative_100_1e6": 0.05258766076736521,
+      "at_T_K": 699841.9960022746,
+      "max_abs_relative_100_12000": 0.020702951123870994
+    },
+    {
+      "channel": "Li IV \u2192 Li III",
+      "initial_Z": 3,
+      "initial_q": 3,
+      "max_abs_relative_100_1e6": 0.012636221764051658,
+      "at_T_K": 100.0,
+      "max_abs_relative_100_12000": 0.012636221764051658
+    }
+  ],
+  "comparisons": [
+    {
+      "a": "s03_m03_r03_mao2017_nominal",
+      "b": "s03_m03_r03_mao2017_refined",
+      "kind": "refinement",
+      "max_abs": {
+        "lnT": 4.1814042361920656e-07,
+        "ionic": 3.403056947607022e-08,
+        "signed": 1.2663678734120554e-09,
+        "tau": 3.4425462480669466e-11
+      },
+      "peaks": {
+        "lnT": {
+          "sample": 2,
+          "redshift": 7.783867936702318,
+          "signed_difference": -4.1814042361920656e-07,
+          "channel": "lnT"
+        },
+        "ionic": {
+          "sample": 8,
+          "redshift": 7.265639956406764,
+          "signed_difference": -3.403056947607022e-08,
+          "channel": "Li7IV"
+        },
+        "signed": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": 1.2663678734120554e-09,
+          "channel": "S_F"
+        },
+        "tau": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": -3.4425462480669466e-11,
+          "channel": "tau"
+        }
+      },
+      "max_temperature_difference_K": 0.0025446735598961823,
+      "final_T_difference_K": -0.00026259679543727543,
+      "final_tau_difference": -3.4425462480669466e-11,
+      "signed_max_abs_by_channel": {
+        "S_F": 1.2663678734120554e-09,
+        "P_m_F": 1.1096036741341242e-14,
+        "P_r_F": 2.41752425641107e-13,
+        "P_total_F": 2.5284846238244826e-13,
+        "P_gamma_F": 1.4088558065398354e-13,
+        "P_nu_F": 1.0086684159899169e-13
+      },
+      "signed_endpoint_difference": {
+        "S_F": 1.2663678734120554e-09,
+        "P_m_F": -1.1096036741341242e-14,
+        "P_r_F": -2.41752425641107e-13,
+        "P_total_F": -2.5284846238244826e-13,
+        "P_gamma_F": -1.4088558065398354e-13,
+        "P_nu_F": -1.0086684159899169e-13
+      },
+      "final_ionic_difference": {
+        "n": 0.0,
+        "H1I": 4.6471459795600616e-14,
+        "H1II": -4.720571089993647e-14,
+        "DI": 4.647145877991486e-14,
+        "DII": -4.7391831547468344e-14,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 6.42472040348941e-17,
+        "He3II": 7.316351536317875e-12,
+        "He3III": -7.316899371136714e-12,
+        "He4I": 6.424720479655084e-17,
+        "He4II": 7.316351399787243e-12,
+        "He4III": -7.317264839971992e-12,
+        "Li6I": 1.3735872712093838e-19,
+        "Li6II": 1.3570881480482978e-13,
+        "Li6III": 1.613118415770659e-10,
+        "Li6IV": -1.614472621713225e-10,
+        "Li7I": 1.373587255558697e-19,
+        "Li7II": 1.3570881389895026e-13,
+        "Li7III": 1.6131184344954818e-10,
+        "Li7IV": -1.6144760590557164e-10
+      },
+      "a_sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "b_sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+      "limits": {
+        "lnT": 3e-05,
+        "ionic": 3e-05,
+        "signed": 3e-07,
+        "tau": 3e-07
+      },
+      "gates": {
+        "lnT": true,
+        "ionic": true,
+        "signed": true,
+        "tau": true
+      },
+      "status": "PASS"
+    },
+    {
+      "a": "s03_m03_r03_mao2017_nominal",
+      "b": "s03_m03_r03_rate_derivative_nominal",
+      "kind": "source",
+      "max_abs": {
+        "lnT": 0.00019340959731017904,
+        "ionic": 1.4324944639862093e-05,
+        "signed": 1.2785866115860856e-12,
+        "tau": 2.822664879609249e-09
+      },
+      "peaks": {
+        "lnT": {
+          "sample": 71,
+          "redshift": 3.3649441327985254,
+          "signed_difference": 0.00019340959731017904,
+          "channel": "lnT"
+        },
+        "ionic": {
+          "sample": 12,
+          "redshift": 6.937253933193771,
+          "signed_difference": 1.4324944639862093e-05,
+          "channel": "Li7IV"
+        },
+        "signed": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": 1.2785866115860856e-12,
+          "channel": "S_F"
+        },
+        "tau": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": 2.822664879609249e-09,
+          "channel": "tau"
+        }
+      },
+      "max_temperature_difference_K": 2.6412115825205547,
+      "final_T_difference_K": 1.8602107380938833,
+      "final_tau_difference": 2.822664879609249e-09,
+      "signed_max_abs_by_channel": {
+        "S_F": 1.2785866115860856e-12,
+        "P_m_F": 1.1892342579450377e-18,
+        "P_r_F": 5.657529566355235e-14,
+        "P_total_F": 5.657480777257473e-14,
+        "P_gamma_F": 5.6577342095152916e-14,
+        "P_nu_F": 9.391901319155682e-18
+      },
+      "signed_endpoint_difference": {
+        "S_F": 1.2785866115860856e-12,
+        "P_m_F": -3.2949581648192283e-19,
+        "P_r_F": 3.1018251660762386e-14,
+        "P_total_F": 3.101792640011064e-14,
+        "P_gamma_F": 3.1020362466866944e-14,
+        "P_nu_F": -2.1074179727686992e-18
+      },
+      "final_ionic_difference": {
+        "n": 0.0,
+        "H1I": -3.2914377561804793e-10,
+        "H1II": 3.2914395159500345e-10,
+        "DI": -3.291437756197648e-10,
+        "DII": 3.291439892212455e-10,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": -4.505987500477241e-13,
+        "He3II": -5.1523358780881784e-08,
+        "He3III": 5.1523808319068666e-08,
+        "He4I": -4.505987500483202e-13,
+        "He4II": -5.152335878099807e-08,
+        "He4III": 5.152380785899495e-08,
+        "Li6I": -8.923114490883774e-16,
+        "Li6II": -8.72692648902874e-10,
+        "Li6III": -1.0985867015438672e-06,
+        "Li6IV": 1.0994593951305729e-06,
+        "Li7I": -8.923114490871191e-16,
+        "Li7II": -8.72692648899224e-10,
+        "Li7III": -1.0985867015340739e-06,
+        "Li7IV": 1.099459396112155e-06
+      },
+      "a_sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "b_sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+      "status": "SOURCE_SENSITIVITY",
+      "interpretation": "Not a probability interval or complete model error."
+    },
+    {
+      "a": "s04_m04_r04_mao2017_nominal",
+      "b": "s04_m04_r04_mao2017_refined",
+      "kind": "refinement",
+      "max_abs": {
+        "lnT": 4.181148884896402e-07,
+        "ionic": 3.392046241565027e-08,
+        "signed": 4.989189679449613e-09,
+        "tau": 3.2956123940941495e-11
+      },
+      "peaks": {
+        "lnT": {
+          "sample": 2,
+          "redshift": 7.783867936702318,
+          "signed_difference": -4.181148884896402e-07,
+          "channel": "lnT"
+        },
+        "ionic": {
+          "sample": 8,
+          "redshift": 7.265639956406764,
+          "signed_difference": -3.392046241565027e-08,
+          "channel": "Li7IV"
+        },
+        "signed": {
+          "sample": 107,
+          "redshift": 2.030559443694734,
+          "signed_difference": 4.989189679449613e-09,
+          "channel": "S_F"
+        },
+        "tau": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": -3.2956123940941495e-11,
+          "channel": "tau"
+        }
+      },
+      "max_temperature_difference_K": 0.002534727107558865,
+      "final_T_difference_K": -0.0002715389528020751,
+      "final_tau_difference": -3.2956123940941495e-11,
+      "signed_max_abs_by_channel": {
+        "S_F": 4.989189679449613e-09,
+        "P_m_F": 4.526524948358197e-14,
+        "P_r_F": 9.80497801006397e-13,
+        "P_total_F": 1.0257630248672323e-12,
+        "P_gamma_F": 5.761712721513712e-13,
+        "P_nu_F": 4.0432652885502574e-13
+      },
+      "signed_endpoint_difference": {
+        "S_F": 4.9358928333465e-09,
+        "P_m_F": -4.526524948358197e-14,
+        "P_r_F": -9.80497801006397e-13,
+        "P_total_F": -1.0257630248672323e-12,
+        "P_gamma_F": -5.761712721513712e-13,
+        "P_nu_F": -4.0432652885502574e-13
+      },
+      "final_ionic_difference": {
+        "n": 0.0,
+        "H1I": 4.8008923626575e-14,
+        "H1II": -4.897041037283129e-14,
+        "DI": 4.8008925013692763e-14,
+        "DII": -4.9007462168404764e-14,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 6.42946050045671e-17,
+        "He3II": 7.470274932295834e-12,
+        "He3III": -7.47004769041298e-12,
+        "He4I": 6.429460447549669e-17,
+        "He4II": 7.470274866762447e-12,
+        "He4III": -7.470439553743431e-12,
+        "Li6I": 1.0715924812415099e-19,
+        "Li6II": 1.121140966120303e-13,
+        "Li6III": 1.5673948465849293e-10,
+        "Li6IV": -1.5685069431534323e-10,
+        "Li7I": 1.0715924520932308e-19,
+        "Li7II": 1.1211409139716433e-13,
+        "Li7III": 1.5673947709280764e-10,
+        "Li7IV": -1.568514087342116e-10
+      },
+      "a_sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "b_sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+      "limits": {
+        "lnT": 3e-05,
+        "ionic": 3e-05,
+        "signed": 3e-07,
+        "tau": 3e-07
+      },
+      "gates": {
+        "lnT": true,
+        "ionic": true,
+        "signed": true,
+        "tau": true
+      },
+      "status": "PASS"
+    },
+    {
+      "a": "s04_m04_r04_mao2017_nominal",
+      "b": "s04_m04_r04_rate_derivative_nominal",
+      "kind": "source",
+      "max_abs": {
+        "lnT": 0.00019333900071671906,
+        "ionic": 1.431167012202439e-05,
+        "signed": 1.4565987305203976e-12,
+        "tau": 2.816363808832989e-09
+      },
+      "peaks": {
+        "lnT": {
+          "sample": 71,
+          "redshift": 3.3649441327985254,
+          "signed_difference": 0.00019333900071671906,
+          "channel": "lnT"
+        },
+        "ionic": {
+          "sample": 12,
+          "redshift": 6.937253933193771,
+          "signed_difference": 1.431167012202439e-05,
+          "channel": "Li7IV"
+        },
+        "signed": {
+          "sample": 107,
+          "redshift": 2.030559443694734,
+          "signed_difference": -1.4565987305203976e-12,
+          "channel": "S_F"
+        },
+        "tau": {
+          "sample": 108,
+          "redshift": 2.0000000000000004,
+          "signed_difference": 2.816363808832989e-09,
+          "channel": "tau"
+        }
+      },
+      "max_temperature_difference_K": 2.6385333864800486,
+      "final_T_difference_K": 1.859305323303488,
+      "final_tau_difference": 2.816363808832989e-09,
+      "signed_max_abs_by_channel": {
+        "S_F": 1.4565987305203976e-12,
+        "P_m_F": 1.2928263873942386e-17,
+        "P_r_F": 6.314918206407061e-13,
+        "P_total_F": 6.314881343533196e-13,
+        "P_gamma_F": 6.315065115801433e-13,
+        "P_nu_F": 1.0516761073109393e-16
+      },
+      "signed_endpoint_difference": {
+        "S_F": -7.596354101302438e-13,
+        "P_m_F": -2.7431161996830516e-18,
+        "P_r_F": 3.1485241931000774e-13,
+        "P_total_F": 3.148497088045765e-13,
+        "P_gamma_F": 3.148829667062175e-13,
+        "P_nu_F": -3.0574501264091225e-17
+      },
+      "final_ionic_difference": {
+        "n": 0.0,
+        "H1I": -3.290968739278791e-10,
+        "H1II": 3.290967458841035e-10,
+        "DI": -3.2909687392678503e-10,
+        "DII": 3.290969564187249e-10,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": -4.505952933990209e-13,
+        "He3II": -5.151574375659538e-08,
+        "He3III": 5.15161946597675e-08,
+        "He4I": -4.5059529339993774e-13,
+        "He4II": -5.151574375667515e-08,
+        "He4III": 5.151619421467922e-08,
+        "Li6I": -8.924531588529674e-16,
+        "Li6II": -8.726845467460682e-10,
+        "Li6III": -1.098420650419048e-06,
+        "Li6IV": 1.0992933356268657e-06,
+        "Li7I": -8.92453158854649e-16,
+        "Li7II": -8.726845467514216e-10,
+        "Li7III": -1.0984206504304559e-06,
+        "Li7IV": 1.099293334641405e-06
+      },
+      "a_sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "b_sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+      "status": "SOURCE_SENSITIVITY",
+      "interpretation": "Not a probability interval or complete model error."
+    }
+  ],
+  "nominal_endpoints": [
+    {
+      "case_id": "s00_m02_r02",
+      "temperature_end_K": 10119.075675409322,
+      "temperature_peak_K": 14177.029709642544,
+      "temperature_peak_z": 4.976223219489846,
+      "temperature_peak_elapsed_Myr": 997.285380256627,
+      "parent_temperature_end_K": 11999.955652992518,
+      "tau_end": 0.06937642232605984,
+      "parent_tau_end": 0.06934076357187009,
+      "max_abs_parent_differences": {
+        "lnT": 1.1669616023940417,
+        "ionic": 0.12035014415764589,
+        "signed": 8.2055957555184825e-22,
+        "tau": 3.566991214876136e-05
+      },
+      "parent_ionic_peak": {
+        "channel": "Li6IV",
+        "redshift": 7.349837742689681,
+        "signed_difference": 0.12035014415764589
+      },
+      "signed_trajectory_max_abs": {
+        "S_F": 8.118304203021403e-21,
+        "P_m_F": 6.590741068048607e-20,
+        "P_r_F": 3.280426109342091e-23,
+        "P_total_F": 6.587623447750874e-20,
+        "P_gamma_F": 1.9298683308705707e-23,
+        "P_nu_F": 1.35055777847152e-23
+      },
+      "parent_signed_difference_max_abs": {
+        "S_F": 8.2055957555184825e-22,
+        "P_m_F": 0.0,
+        "P_r_F": 4.993475284792502e-25,
+        "P_total_F": 4.9934752847878e-25,
+        "P_gamma_F": 2.939503894264397e-25,
+        "P_nu_F": 2.0539713905281055e-25
+      },
+      "parent_signed_endpoint_difference": {
+        "S_F": -2.3329385303485536e-22,
+        "P_m_F": 0.0,
+        "P_r_F": 4.910468627827163e-25,
+        "P_total_F": 4.910468627827163e-25,
+        "P_gamma_F": 2.8902962146544645e-25,
+        "P_nu_F": 2.0201724131726694e-25
+      },
+      "final_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.4953814703601984e-06,
+        "H1II": 0.9999975046185307,
+        "DI": 2.495381470360197e-06,
+        "DII": 0.9999975046185302,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.8394186136907555e-09,
+        "He3II": 0.0004183807676197376,
+        "He3III": 0.9995816173929621,
+        "He4I": 1.839418613690755e-09,
+        "He4II": 0.0004183807676197377,
+        "He4III": 0.9995816173929621,
+        "Li6I": 2.2755268081863435e-12,
+        "Li6II": 3.5848705713222235e-06,
+        "Li6III": 0.009222097126699394,
+        "Li6IV": 0.9907743180004535,
+        "Li7I": 2.2755268081863422e-12,
+        "Li7II": 3.584870571322221e-06,
+        "Li7III": 0.00922209712669939,
+        "Li7IV": 0.9907743180004527
+      },
+      "final_parent_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.2067234603491995e-06,
+        "H1II": 0.9999977932765396,
+        "DI": 2.206723460349198e-06,
+        "DII": 0.999997793276539,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.4651097857487328e-09,
+        "He3II": 0.0003731343883933889,
+        "He3III": 0.9996268641464976,
+        "He4I": 1.4651097857487334e-09,
+        "He4II": 0.00037313438839338897,
+        "He4III": 0.9996268641464977,
+        "Li6I": 1.582193031655677e-12,
+        "Li6II": 2.8620715624094892e-06,
+        "Li6III": 0.008262602346034743,
+        "Li6IV": 0.9917345355808201,
+        "Li7I": 1.5821930316556764e-12,
+        "Li7II": 2.8620715624094897e-06,
+        "Li7III": 0.008262602346034745,
+        "Li7IV": 0.99173453558082
+      },
+      "final_signed": {
+        "S_F": 2.468308305758644e-21,
+        "P_m_F": 0.0,
+        "P_r_F": -1.6873642872180345e-23,
+        "P_total_F": -1.6873642872180345e-23,
+        "P_gamma_F": -9.801939943315116e-24,
+        "P_nu_F": -7.07170292886523e-24
+      }
+    },
+    {
+      "case_id": "s03_m03_r03",
+      "temperature_end_K": 10118.948508588535,
+      "temperature_peak_K": 14176.447240327188,
+      "temperature_peak_z": 4.976223219489846,
+      "temperature_peak_elapsed_Myr": 997.0013907947651,
+      "parent_temperature_end_K": 11999.955652992518,
+      "tau_end": 0.06936920651893348,
+      "parent_tau_end": 0.06933355498245734,
+      "max_abs_parent_differences": {
+        "lnT": 1.166897609564441,
+        "ionic": 0.12033673969959735,
+        "signed": 8.615556099423357e-10,
+        "tau": 3.5662697382504716e-05
+      },
+      "parent_ionic_peak": {
+        "channel": "Li7IV",
+        "redshift": 7.349837742689681,
+        "signed_difference": 0.12033673969959735
+      },
+      "signed_trajectory_max_abs": {
+        "S_F": 0.0420460109200706,
+        "P_m_F": 5.1519711191216804e-05,
+        "P_r_F": 6.624024911382743e-05,
+        "P_total_F": 4.960780400844805e-05,
+        "P_gamma_F": 3.883337878690181e-05,
+        "P_nu_F": 2.7411102973586413e-05
+      },
+      "parent_signed_difference_max_abs": {
+        "S_F": 4.549374401502382e-10,
+        "P_m_F": 1.620784161450537e-14,
+        "P_r_F": 8.615500054167031e-10,
+        "P_total_F": 8.61548410135179e-10,
+        "P_gamma_F": 8.615556099423357e-10,
+        "P_nu_F": 1.189364667137597e-13
+      },
+      "parent_signed_endpoint_difference": {
+        "S_F": -4.549374401502382e-10,
+        "P_m_F": -7.94535962765847e-15,
+        "P_r_F": 3.127949236566641e-10,
+        "P_total_F": 3.1278697829788347e-10,
+        "P_gamma_F": 3.1286888169132043e-10,
+        "P_nu_F": -7.395802788007395e-14
+      },
+      "final_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.495403967887673e-06,
+        "H1II": 0.999997504596032,
+        "DI": 2.4954039678876723e-06,
+        "DII": 0.9999975045960319,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.83944942110532e-09,
+        "He3II": 0.0004183842914835439,
+        "He3III": 0.9995816138690657,
+        "He4I": 1.8394494211053205e-09,
+        "He4II": 0.00041838429148354395,
+        "He4III": 0.9995816138690659,
+        "Li6I": 2.2755879167743754e-12,
+        "Li6II": 3.584930415672797e-06,
+        "Li6III": 0.009222172629971461,
+        "Li6IV": 0.9907742424373366,
+        "Li7I": 2.2755879167743754e-12,
+        "Li7II": 3.5849304156727984e-06,
+        "Li7III": 0.009222172629971466,
+        "Li7IV": 0.9907742424373369
+      },
+      "final_parent_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.2067234602978815e-06,
+        "H1II": 0.9999977932765394,
+        "DI": 2.206723460297883e-06,
+        "DII": 0.9999977932765393,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.4651097780744858e-09,
+        "He3II": 0.0003731343896652931,
+        "He3III": 0.9996268641452245,
+        "He4I": 1.4651097780744873e-09,
+        "He4II": 0.0003731343896652933,
+        "He4III": 0.999626864145225,
+        "Li6I": 1.582192803372703e-12,
+        "Li6II": 2.8620717275780743e-06,
+        "Li6III": 0.008262602572609551,
+        "Li6IV": 0.9917345353540793,
+        "Li7I": 1.5821928033727057e-12,
+        "Li7II": 2.8620717275780777e-06,
+        "Li7III": 0.00826260257260956,
+        "Li7IV": 0.9917345353540798
+      },
+      "final_signed": {
+        "S_F": 0.007829492040834087,
+        "P_m_F": 4.0991139235065546e-06,
+        "P_r_F": -4.297963627860253e-05,
+        "P_total_F": -3.888052235509597e-05,
+        "P_gamma_F": -2.507567852581893e-05,
+        "P_nu_F": -1.7903957752783597e-05
+      }
+    },
+    {
+      "case_id": "s04_m04_r04",
+      "temperature_end_K": 10116.846480782347,
+      "temperature_peak_K": 14167.031370243054,
+      "temperature_peak_z": 4.976223219489846,
+      "temperature_peak_elapsed_Myr": 992.5366852765794,
+      "parent_temperature_end_K": 11999.955652992518,
+      "tau_end": 0.06925336584920529,
+      "parent_tau_end": 0.06921783008231976,
+      "max_abs_parent_differences": {
+        "lnT": 1.165870368661987,
+        "ionic": 0.12012141797360193,
+        "signed": 1.0578107415720218e-08,
+        "tau": 3.554696604569918e-05
+      },
+      "parent_ionic_peak": {
+        "channel": "Li6IV",
+        "redshift": 7.349837742689681,
+        "signed_difference": 0.12012141797360193
+      },
+      "signed_trajectory_max_abs": {
+        "S_F": 0.17220040182504354,
+        "P_m_F": 2.719719134198069e-05,
+        "P_r_F": 0.0006561898912039066,
+        "P_total_F": 0.0006315460125180472,
+        "P_gamma_F": 0.0003860653743236458,
+        "P_nu_F": 0.00027012451688026076
+      },
+      "parent_signed_difference_max_abs": {
+        "S_F": 3.4291956982346328e-09,
+        "P_m_F": 1.695864348743529e-13,
+        "P_r_F": 1.0578053973226732e-08,
+        "P_total_F": 1.0578039152183034e-08,
+        "P_gamma_F": 1.0578107415720218e-08,
+        "P_nu_F": 1.2482267281420378e-12
+      },
+      "parent_signed_endpoint_difference": {
+        "S_F": -1.646216246653509e-09,
+        "P_m_F": -1.0830705428207198e-13,
+        "P_r_F": 3.6578391155849682e-09,
+        "P_total_F": 3.6577308085584265e-09,
+        "P_gamma_F": 3.658892673514885e-09,
+        "P_nu_F": -1.0535579570217224e-12
+      },
+      "final_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.495775912977166e-06,
+        "H1II": 0.9999975042240866,
+        "DI": 2.495775912977167e-06,
+        "DII": 0.9999975042240867,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.8399587882828923e-09,
+        "He3II": 0.0004184425511380843,
+        "He3III": 0.9995815556089033,
+        "He4I": 1.8399587882828917e-09,
+        "He4II": 0.0004184425511380843,
+        "He4III": 0.9995815556089029,
+        "Li6I": 2.27659835743681e-12,
+        "Li6II": 3.5859199002464637e-06,
+        "Li6III": 0.009223421072095122,
+        "Li6IV": 0.9907729930057276,
+        "Li7I": 2.2765983574368086e-12,
+        "Li7II": 3.58591990024646e-06,
+        "Li7III": 0.009223421072095114,
+        "Li7IV": 0.990772993005727
+      },
+      "final_parent_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.2067234641032664e-06,
+        "H1II": 0.9999977932765365,
+        "DI": 2.2067234641032673e-06,
+        "DII": 0.9999977932765366,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.4651098690541748e-09,
+        "He3II": 0.0003731344097996512,
+        "He3III": 0.9996268641250909,
+        "He4I": 1.4651098690541743e-09,
+        "He4II": 0.00037313440979965115,
+        "He4III": 0.9996268641250907,
+        "Li6I": 1.5821938262201457e-12,
+        "Li6II": 2.8620732954116147e-06,
+        "Li6III": 0.00826260643871301,
+        "Li6IV": 0.9917345314864099,
+        "Li7I": 1.5821938262201473e-12,
+        "Li7II": 2.862073295411616e-06,
+        "Li7III": 0.008262606438713016,
+        "Li7IV": 0.9917345314864101
+      },
+      "final_signed": {
+        "S_F": 0.03199489361524892,
+        "P_m_F": -1.7421795194174616e-06,
+        "P_r_F": -0.0003037676591303945,
+        "P_total_F": -0.00030550983864981195,
+        "P_gamma_F": -0.00017633668194550096,
+        "P_nu_F": -0.00012743097718489357
+      }
+    },
+    {
+      "case_id": "s02_m04_r01",
+      "temperature_end_K": 10119.069057893546,
+      "temperature_peak_K": 14177.00409648051,
+      "temperature_peak_z": 4.976223219489846,
+      "temperature_peak_elapsed_Myr": 997.2737948762389,
+      "parent_temperature_end_K": 11999.955652992518,
+      "tau_end": 0.06937611400452513,
+      "parent_tau_end": 0.06934045555190722,
+      "max_abs_parent_differences": {
+        "lnT": 1.1669589169724464,
+        "ionic": 0.12034957204770513,
+        "signed": 4.89633598835075e-09,
+        "tau": 3.566961281137315e-05
+      },
+      "parent_ionic_peak": {
+        "channel": "Li7IV",
+        "redshift": 7.349837742689681,
+        "signed_difference": 0.12034957204770513
+      },
+      "signed_trajectory_max_abs": {
+        "S_F": 0.008358451638907496,
+        "P_m_F": 0.00017536271923174687,
+        "P_r_F": 0.0003113993811762997,
+        "P_total_F": 0.00014038450927148194,
+        "P_gamma_F": 0.0001830740660189703,
+        "P_nu_F": 0.0001283253151573294
+      },
+      "parent_signed_difference_max_abs": {
+        "S_F": 1.594412694753966e-09,
+        "P_m_F": 1.1020722637429536e-13,
+        "P_r_F": 4.896309766975419e-09,
+        "P_total_F": 4.896300431561033e-09,
+        "P_gamma_F": 4.89633598835075e-09,
+        "P_nu_F": 6.563182479045124e-13
+      },
+      "parent_signed_endpoint_difference": {
+        "S_F": 1.348320589292934e-09,
+        "P_m_F": -8.788050175805376e-14,
+        "P_r_F": 1.7485348569165528e-09,
+        "P_total_F": 1.748446976421571e-09,
+        "P_gamma_F": 1.749186605245524e-09,
+        "P_nu_F": -6.517483154186952e-13
+      },
+      "final_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.495382641081071e-06,
+        "H1II": 0.9999975046173584,
+        "DI": 2.495382641081071e-06,
+        "DII": 0.9999975046173581,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.8394202169565105e-09,
+        "He3II": 0.00041838095101870307,
+        "He3III": 0.9995816172095616,
+        "He4I": 1.8394202169565116e-09,
+        "He4II": 0.00041838095101870334,
+        "He4III": 0.999581617209562,
+        "Li6I": 2.275529989701059e-12,
+        "Li6II": 3.584873687924331e-06,
+        "Li6III": 0.009222101060604612,
+        "Li6IV": 0.9907743140634324,
+        "Li7I": 2.27552998970106e-12,
+        "Li7II": 3.5848736879243346e-06,
+        "Li7III": 0.00922210106060462,
+        "Li7IV": 0.9907743140634329
+      },
+      "final_parent_scaled_ionic": {
+        "n": 0.0,
+        "H1I": 2.2067234599975016e-06,
+        "H1II": 0.9999977932765406,
+        "DI": 2.2067234599975008e-06,
+        "DII": 0.9999977932765404,
+        "TI": 0.0,
+        "TII": 0.0,
+        "He3I": 1.4651097676068111e-09,
+        "He3II": 0.00037313438847418675,
+        "He3III": 0.999626864146417,
+        "He4I": 1.4651097676068115e-09,
+        "He4II": 0.00037313438847418686,
+        "He4III": 0.9996268641464173,
+        "Li6I": 1.582192702398209e-12,
+        "Li6II": 2.8620715614805177e-06,
+        "Li6III": 0.008262602369163423,
+        "Li6IV": 0.991734535557693,
+        "Li7I": 1.5821927023982087e-12,
+        "Li7II": 2.8620715614805177e-06,
+        "Li7III": 0.008262602369163425,
+        "Li7IV": 0.9917345355576931
+      },
+      "final_signed": {
+        "S_F": 0.0015023921345713618,
+        "P_m_F": 1.8014753585765896e-05,
+        "P_r_F": -9.97419412337768e-05,
+        "P_total_F": -8.17271876480109e-05,
+        "P_gamma_F": -5.756451558940425e-05,
+        "P_nu_F": -4.217742564437254e-05
+      }
+    }
+  ],
+  "temperature_range_K": [
+    1081.3197799717439,
+    14177.029709642544
+  ],
+  "thermal_case_results": {
+    "s00_m02_r02_mao2017_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557687121371398e-19,
+          "integrated_net_J_per_baryon": 5.551964579237479e-19,
+          "throughput_J_per_baryon": 1.1549720034981238e-17,
+          "residual_scaled": 4.954702033111351e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557687121371398e-19,
+          "integrated_net_J_per_baryon": 5.556701212769614e-19,
+          "throughput_J_per_baryon": 1.1549923565948837e-17,
+          "residual_scaled": 8.536061699062032e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.101008552211857e-05
+    },
+    "s03_m03_r03_mao2017_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.55770470669259e-19,
+          "integrated_net_J_per_baryon": 5.551983814078197e-19,
+          "throughput_J_per_baryon": 1.1549315357838564e-17,
+          "residual_scaled": 4.9534474011133964e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.55770470669259e-19,
+          "integrated_net_J_per_baryon": 5.556719221287039e-19,
+          "throughput_J_per_baryon": 1.1549518895137213e-17,
+          "residual_scaled": 8.532696595405777e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.100090446914732e-05
+    },
+    "s04_m04_r04_mao2017_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.55796648999146e-19,
+          "integrated_net_J_per_baryon": 5.552272038333706e-19,
+          "throughput_J_per_baryon": 1.154275308375555e-17,
+          "residual_scaled": 4.933356554051265e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.55796648999146e-19,
+          "integrated_net_J_per_baryon": 5.556987794807823e-19,
+          "throughput_J_per_baryon": 1.1542956717463409e-17,
+          "residual_scaled": 8.478721765940832e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.0853973462300986e-05
+    },
+    "s02_m04_r01_mao2017_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557687396040008e-19,
+          "integrated_net_J_per_baryon": 5.551964923136066e-19,
+          "throughput_J_per_baryon": 1.154970174120432e-17,
+          "residual_scaled": 4.954649940030009e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557687396040008e-19,
+          "integrated_net_J_per_baryon": 5.556701505170071e-19,
+          "throughput_J_per_baryon": 1.1549905272423875e-17,
+          "residual_scaled": 8.535921695310186e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.100970460177305e-05
+    },
+    "s03_m03_r03_mao2017_refined": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557704798841069e-19,
+          "integrated_net_J_per_baryon": 5.551982482075596e-19,
+          "throughput_J_per_baryon": 1.1549314666408258e-17,
+          "residual_scaled": 4.9546808020715587e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557704798841069e-19,
+          "integrated_net_J_per_baryon": 5.556717869854922e-19,
+          "throughput_J_per_baryon": 1.1549518201517198e-17,
+          "residual_scaled": 8.545196162535436e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.1000738703578186e-05
+    },
+    "s03_m03_r03_rate_derivative_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557051937474526e-19,
+          "integrated_net_J_per_baryon": 5.551331247211468e-19,
+          "throughput_J_per_baryon": 1.1550550306056879e-17,
+          "residual_scaled": 4.95274260660879e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557051937474526e-19,
+          "integrated_net_J_per_baryon": 5.556066488355456e-19,
+          "throughput_J_per_baryon": 1.1550753841179966e-17,
+          "residual_scaled": 8.531470176059976e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.0995083170299054e-05
+    },
+    "s04_m04_r04_mao2017_refined": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557966585277329e-19,
+          "integrated_net_J_per_baryon": 5.5522707014533215e-19,
+          "throughput_J_per_baryon": 1.1542752392656842e-17,
+          "residual_scaled": 4.934597598776653e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557966585277329e-19,
+          "integrated_net_J_per_baryon": 5.556986438770142e-19,
+          "throughput_J_per_baryon": 1.1542956024234822e-17,
+          "residual_scaled": 8.491295515022043e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.085380995058914e-05
+    },
+    "s04_m04_r04_rate_derivative_nominal": {
+      "gates": {
+        "endpoint": true,
+        "finite": true,
+        "temperature_domain": true,
+        "population_positivity": true,
+        "isotope_conservation": true,
+        "baryon_conservation": true,
+        "zero_n_T": true,
+        "ne_nonnegative": true,
+        "monotone_tau": true,
+        "number_monopoles": true,
+        "einstein_constraint": true,
+        "tensor_sum": true,
+        "finite_angular_positivity": true,
+        "trace_energy_small": true,
+        "source_energy": true,
+        "integrated_energy": true,
+        "source_unchanged": true,
+        "donor_unchanged": true
+      },
+      "energy_integrals": {
+        "513": {
+          "delta_energy_J_per_baryon": 5.557314038399211e-19,
+          "integrated_net_J_per_baryon": 5.551619788264375e-19,
+          "throughput_J_per_baryon": 1.154398682589933e-17,
+          "residual_scaled": 4.932654741133853e-05
+        },
+        "1025": {
+          "delta_energy_J_per_baryon": 5.557314038399211e-19,
+          "integrated_net_J_per_baryon": 5.556335379323957e-19,
+          "throughput_J_per_baryon": 1.1544190457393616e-17,
+          "residual_scaled": 8.477502851900732e-06
+        }
+      },
+      "energy_grid_delta_scaled": 4.084817447343269e-05
+    }
+  },
+  "inputs": {
+    "s00_m02_r02_mao2017_nominal": {
+      "sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de",
+      "donor_sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "6a6dc8153d2935cba95d36996c93cffe4bc0762c7be16b06db855d1ec4179859"
+    },
+    "s03_m03_r03_mao2017_nominal": {
+      "sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s04_m04_r04_mao2017_nominal": {
+      "sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    },
+    "s02_m04_r01_mao2017_nominal": {
+      "sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8",
+      "donor_sha256": "4945632c45e2d5ed95b06767d223e46cdc9fc43d48f5c9abb8972c7ad3046d19",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "51947614561b2a3bef8ff5dccc6ff1d17e0b5557880a20a612fbfae93e4d10a8"
+    },
+    "s03_m03_r03_mao2017_refined": {
+      "sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s03_m03_r03_rate_derivative_nominal": {
+      "sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s04_m04_r04_mao2017_refined": {
+      "sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    },
+    "s04_m04_r04_rate_derivative_nominal": {
+      "sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    }
+  },
+  "saved126": {
+    "status": "PLOTTED_EXISTING_DIAGNOSTIC",
+    "source": "results/saved126/REPRESENTATIVE.csv",
+    "sha256": "bb71943359f7fef80a5a327b706a6909bd10801a915d00c3823e633af8c1d620",
+    "case": "s03_m03_r03"
+  },
+  "clock": "Elapsed proper time since donor z20, never cosmic age; common-redshift comparison on each Mao nominal clock.",
+  "fraction_policy": "Y_i / positive isotope inventory; zero n/T scale retained only as numerical coordinates; all21 states exported.",
+  "claim_ceiling": "Finite restart thermal test-fluid closure. Global convergence NOT_RUN; Physical HOLD; no complete thermal/radiation production admission."
+}

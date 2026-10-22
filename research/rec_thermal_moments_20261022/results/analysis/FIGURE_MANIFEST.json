@@ -1,0 +1,140 @@
+{
+  "figures": [
+    {
+      "stem": "01_rr_source_factors",
+      "source": "SOURCE_FACTORS.npz; SOURCE_FACTOR_MAXIMA.csv",
+      "caption": "Mao-factor hybrid versus derivative-implied kinetic loss at fixed parent number coefficients. Extrema are sampled on801 logarithmic temperature nodes. Differences are closure sensitivity, not confidence bounds.",
+      "outputs": {
+        "png": {
+          "sha256": "efc21407a62c18e862c4255f45ae8b06a2cdde551b9a3b4c3ab1954c5bf7c3c5",
+          "bytes": 321929
+        },
+        "pdf": {
+          "sha256": "c597bcbf7f7467016700c0fefa56f854602f7d376b40c59d8f09cc2e6eda9ea3",
+          "bytes": 34237
+        }
+      }
+    },
+    {
+      "stem": "02_dynamic_temperature",
+      "source": "THERMAL_PLOT_SOURCE.npz; THERMAL_HISTORIES.csv",
+      "caption": "Distinct new thermal restarts from exact donor node84; prescribed-bath and alternative-source curves sampled at the same redshift on each panel reference clock.",
+      "outputs": {
+        "png": {
+          "sha256": "de7090eced6570740f94d2c87abf73ca63dcb342ccc932918cfe3b0cfeeb897f",
+          "bytes": 271394
+        },
+        "pdf": {
+          "sha256": "210308e8c2cca57e7fb4a7c36538467e08c97c73cbfb984813c14da165265ef3",
+          "bytes": 28329
+        }
+      }
+    },
+    {
+      "stem": "03_ionic_response",
+      "source": "THERMAL_PLOT_SOURCE.npz; THERMAL_HISTORIES.csv",
+      "caption": "Signed conditional-ion differences are shown without clipping. Symlog linear bands are1e-10 for fractions and1e-7 for differences. Isotope-normalized fractions are not absolute abundances.",
+      "outputs": {
+        "png": {
+          "sha256": "672bdc1577404f8cbf1fa6e9742324db14a62f4a56e1afecbf0821c3e20918ae",
+          "bytes": 483648
+        },
+        "pdf": {
+          "sha256": "d95554322615a569e04e5dfac97729a7b3b1ad2cefa495a3222e654acd5db4b5",
+          "bytes": 50806
+        }
+      }
+    },
+    {
+      "stem": "04_source_and_refinement",
+      "source": "COMPARISON_PLOT_SOURCE.npz; SUMMARY.json",
+      "caption": "Nominal-minus-refined and Mao-minus-derivative differences are distinct. Only nominal/refined differences are subject to frozen gates. Exact zeros preserved in symlog linear band1e-12.",
+      "outputs": {
+        "png": {
+          "sha256": "74ead52313bdbb88d26c3f1da6f29e941a1e698c7c8ddb7321cd67b02d090c6e",
+          "bytes": 344148
+        },
+        "pdf": {
+          "sha256": "ac6d8065533b6b0fff7af977e66c372af7dbe74920ab09e09a0f72e2874bb96a",
+          "bytes": 43424
+        }
+      }
+    },
+    {
+      "stem": "05_prescribed_bath_forcing",
+      "source": "SAVED_BATH_PLOT_SOURCE.npz; ../saved126/REPRESENTATIVE.csv",
+      "caption": "Signed external bath power required to enforce the inherited temperature. Positive means input, negative means cooling/extraction. DR lies below the symlog linear threshold and is not identically zero. Source terms evaluated on unchanged donor data; no dynamical trajectory produced.",
+      "outputs": {
+        "png": {
+          "sha256": "8bec9ba2aad41b2666b6e5b46e45cb7e4d4ce20c1b06cb4b8d62c3611f803c0b",
+          "bytes": 230622
+        },
+        "pdf": {
+          "sha256": "e2a2e1a17202b262677c4003c5dd8ad12d3679b6ea06b7f7f740eb0733539f48",
+          "bytes": 22404
+        }
+      }
+    }
+  ],
+  "inputs": {
+    "s00_m02_r02_mao2017_nominal": {
+      "sha256": "83853612a97d40059efdf232fd4b922a934687ae5618a78b638dd58720cc82de",
+      "donor_sha256": "7dfd1ec7618a44588756d6a1dd01959a089ccb431d6b7623b0708480acffac89",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "6a6dc8153d2935cba95d36996c93cffe4bc0762c7be16b06db855d1ec4179859"
+    },
+    "s03_m03_r03_mao2017_nominal": {
+      "sha256": "9fe1bfe55a766192d5895b19dd06247c36a7df9bc8decae5ab93ce556df1df85",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s04_m04_r04_mao2017_nominal": {
+      "sha256": "ed1eb4aefef6f9938212e6b3f8ef3382926b269df4ad3205b76f97c7c2e63939",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    },
+    "s02_m04_r01_mao2017_nominal": {
+      "sha256": "3b7da75d22b6fb52ac80ca56aa6765d9a6a2dffbbf8fce7efe321e934005ded8",
+      "donor_sha256": "4945632c45e2d5ed95b06767d223e46cdc9fc43d48f5c9abb8972c7ad3046d19",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "51947614561b2a3bef8ff5dccc6ff1d17e0b5557880a20a612fbfae93e4d10a8"
+    },
+    "s03_m03_r03_mao2017_refined": {
+      "sha256": "1afaf289eaab4697d500df91a497daf99b37b35bf46f660c329f6ccd8ac6f7d9",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s03_m03_r03_rate_derivative_nominal": {
+      "sha256": "75ff7b8395ce89ff3e77f0d8931d0df010af729db9074953aae0ccc26092afa4",
+      "donor_sha256": "6a7effaae19989cb2aa3eecca25aea4a1934471a6888bc6405b81bcb71740664",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "24136147baee49cd3100fa4352dda149ff62743aed2024570f44d0a7727999f7"
+    },
+    "s04_m04_r04_mao2017_refined": {
+      "sha256": "5241be704ea9ce6d35b891c1bd98a385e3c14553e91103b2223f146f2ff6cb96",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    },
+    "s04_m04_r04_rate_derivative_nominal": {
+      "sha256": "9306dc58a2c5d9b6c6bcea693483dfd72b515c25a0208b5ede4c94a825b55216",
+      "donor_sha256": "a299f99dbb5275b6fd27332a5c49113f2642520024f9075fba7304b47510a186",
+      "source_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+      "initial_state_sha256": "5c0605263ac9a7ca3eefd5d4fddc355c553e1214e22a861c483f29e9e66545ef"
+    }
+  },
+  "code_sha256": "7b142222db2eb94ec4c77e084a1328101b7fa1cfa46e583ddc3f38946c3f3fa5",
+  "data_files": {
+    "SOURCE_FACTORS.npz": "1d06fdb1352c5c07054500d9d333cae1514a05313a6080b8db863868fa73a128",
+    "SOURCE_FACTOR_MAXIMA.csv": "61006396a1af202335bd8a7fabf3b71609cb768ab26401ee4af54ff9be52d071",
+    "THERMAL_HISTORIES.csv": "9694f2448d10d2329b46ffc6d4734aca1a8de2e2d2366a1767e8ee7702ae1fc0",
+    "THERMAL_PLOT_SOURCE.npz": "810f5c92c26bbf0499d0c5b87532ebe9a8c02b6d4c230324a0b0b479593dd096",
+    "COMPARISON_PLOT_SOURCE.npz": "ba15cd9be69d8e1b72a3271ab912b91ce1f021bf456297c02270101e8c6e68f8",
+    "SAVED_BATH_PLOT_SOURCE.npz": "baa716f792a0e30bae3118e27da7f08b7c339bd2e03ebd9eb49a9597374cb732",
+    "SUMMARY.json": "a561429e4c93d2123c54828d9214f87d75b95cb8ae6fb4373ab53e83ebdac735"
+  },
+  "manifest_scope": "Explicit analytical products; open execution logs and later visual review records are excluded."
+}

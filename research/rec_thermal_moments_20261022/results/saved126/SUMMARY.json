@@ -1,0 +1,102 @@
+{
+  "schema": "rec.saved126.thermal.budget.v1",
+  "status": "COMPLETE",
+  "parent_commit": "ad93fa1c71f8a2b2a0b19836be3c7b739b11b0c7",
+  "main_case_count": 125,
+  "opacity_control_count": 1,
+  "samples_per_case": 193,
+  "main_saved_nodes": 24125,
+  "total_saved_nodes": 24318,
+  "new_IVPs": 0,
+  "old_IVP_reruns": 0,
+  "precomputation": {
+    "temperature_nodes": 193,
+    "rate_matrix_preparations": 193,
+    "moment_nodes_per_closure": 193
+  },
+  "interpretation": "Qext=required thermal input minus primary photoelectron heating plus RR/DR kinetic cooling. Negative Qext is a required sink, not an invalid population.",
+  "quadrature": "Trapezoid on193 stored x nodes of Q/(nb H); eV per baryon. 193-minus97 coarsening difference is reported, not a continuous-time error certificate.",
+  "main": {
+    "Qext_min_W_m3": -1.6645118104726887e-31,
+    "Qext_max_W_m3": 9.685787508357849e-34,
+    "negative_saved_nodes": 12350,
+    "net_external_eV_per_baryon_range": [
+      -19.720704913309493,
+      -19.6551411692816
+    ],
+    "net_derivative_closure_eV_per_baryon_range": [
+      -19.718335554157797,
+      -19.652774526890607
+    ],
+    "max_absolute_trap193_minus97_eV_per_baryon": 0.00010152476897573592
+  },
+  "representative": {
+    "case_id": "s03_m03_r03",
+    "cohort": "main",
+    "Qext_min_W_m3": -1.6635791388804308e-31,
+    "Qext_max_W_m3": 9.408376409366003e-34,
+    "Qext_negative_saved_nodes": 99,
+    "source_residual_max": 2.341102787154733e-16,
+    "inherited_ledger_residual_max": 2.9638189723858017e-16,
+    "electron_reconstruction_rel_error": 3.442948674316389e-16,
+    "Qext_eV_per_baryon": -19.71689393923077,
+    "Qext_trap193_minus97_eV_per_baryon": -0.00010151318824469513,
+    "Qext_rate_derivative_eV_per_baryon": -19.71452473419644,
+    "Qext_rate_derivative_trap193_minus97_eV_per_baryon": -0.0001014793353100174,
+    "photo_primary_eV_per_baryon": 28.314723804024815,
+    "photo_primary_trap193_minus97_eV_per_baryon": 0.00011362936740866303,
+    "rr_cooling_eV_per_baryon": 0.8249895721389687,
+    "rr_cooling_trap193_minus97_eV_per_baryon": 1.2101231026462322e-05,
+    "dr_cooling_eV_per_baryon": 1.0276930645303677e-16,
+    "dr_cooling_trap193_minus97_eV_per_baryon": 1.8029922715107808e-21,
+    "core_escape_eV_per_baryon": 2.030591906786153e-09,
+    "core_escape_trap193_minus97_eV_per_baryon": 1.8689744758038572e-18,
+    "Qrequired_eV_per_baryon": 7.772840292655079,
+    "Qrequired_trap193_minus97_eV_per_baryon": 1.4948135174108756e-08,
+    "Qext_positive_part_eV_per_baryon": 0.787977102046821,
+    "Qext_negative_part_eV_per_baryon": -20.50487104127759
+  },
+  "opacity_control": {
+    "case_id": "control_s03_m03_r03_opacity_off",
+    "cohort": "opacity_control",
+    "Qext_min_W_m3": -1.6635791388786166e-31,
+    "Qext_max_W_m3": 9.408376409366003e-34,
+    "Qext_negative_saved_nodes": 99,
+    "source_residual_max": 2.5116767776820893e-16,
+    "inherited_ledger_residual_max": 3.32546932709988e-16,
+    "electron_reconstruction_rel_error": 3.61637396868701e-16,
+    "Qext_eV_per_baryon": -19.71689393671104,
+    "Qext_trap193_minus97_eV_per_baryon": -0.00010151318886997274,
+    "Qext_rate_derivative_eV_per_baryon": -19.71452473167755,
+    "Qext_rate_derivative_trap193_minus97_eV_per_baryon": -0.0001014793359317423,
+    "photo_primary_eV_per_baryon": 28.31472380120806,
+    "photo_primary_trap193_minus97_eV_per_baryon": 0.00011362936811210034,
+    "rr_cooling_eV_per_baryon": 0.8249895718416467,
+    "rr_cooling_trap193_minus97_eV_per_baryon": 1.210123101813565e-05,
+    "dr_cooling_eV_per_baryon": 1.0276930640363618e-16,
+    "dr_cooling_trap193_minus97_eV_per_baryon": 1.8029922604420762e-21,
+    "core_escape_eV_per_baryon": 2.030591906798649e-09,
+    "core_escape_trap193_minus97_eV_per_baryon": 1.8676286529472334e-18,
+    "Qrequired_eV_per_baryon": 7.772840292655375,
+    "Qrequired_trap193_minus97_eV_per_baryon": 1.4948226656485986e-08,
+    "Qext_positive_part_eV_per_baryon": 0.7879771035534883,
+    "Qext_negative_part_eV_per_baryon": -20.50487104026453
+  },
+  "gates": {
+    "trajectory_declared_hashes": true,
+    "complete_result_hashes": true,
+    "source_energy_residual_below5e12": true,
+    "old_diagnostic_ledger_agrees_below5e12": true,
+    "nuclear_flux_zero": true,
+    "finite": true
+  },
+  "source_residual_max": 3.9985397771218174e-16,
+  "old_ledger_residual_max": 3.55794021691178e-16,
+  "physical_scope": "Conditional prompt radiative escape, Maxwellian/common T, Mao-factor hybrid plus unchanged number rates. Original thermal history remains prescribed; no new dynamics.",
+  "retained_holds": {
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "REI_activation": false
+  }
+}
