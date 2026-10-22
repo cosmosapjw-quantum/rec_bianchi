@@ -1,6 +1,6 @@
 {
   "unit": "THERM02_COMPTON",
-  "stage": "A_PHYSICS_FROZEN",
+  "stage": "B_CODE_READY_PRE_ODE",
   "workflow": "1.0.0",
   "theory": {
     "R1": "DONE",
@@ -8,7 +8,7 @@
     "R3": "DONE",
     "R4": "DONE",
     "R5": "DONE",
-    "R6": "SYMBOLIC_DONE_FINITE_PENDING",
+    "R6": "DONE_LOCAL_SYMBOLIC_FINITE",
     "R7": "NOT_RUN",
     "R8": "PENDING",
     "R9": "CONTRACT_DONE_RESULTS_PENDING",
@@ -19,11 +19,11 @@
     "C2": "DONE",
     "C3": "DONE",
     "C4": "DONE",
-    "C5": "IN_PROGRESS",
-    "C6": "PENDING",
-    "C7": "PENDING",
+    "C5": "DONE",
+    "C6": "DONE",
+    "C7": "DONE_POINT_SCOPE",
     "C8": "PENDING",
-    "C9": "PENDING",
+    "C9": "SOURCE_REVIEW_DONE_RESULTS_PENDING",
     "C10": "PENDING"
   },
   "nodes": [
@@ -39,10 +39,14 @@
     },
     {
       "id": "new_adapter_checks",
-      "state": "IN_PROGRESS",
+      "state": "DONE",
       "depends_on": [
         "sources",
         "derived_contract"
+      ],
+      "evidence": [
+        "evidence/PRE_ODE_CHECKS.json",
+        "evidence/RUNNER_STATIC_CHECKS.json"
       ]
     },
     {
@@ -68,7 +72,7 @@
       ]
     }
   ],
-  "next": "Finish current-state compact34 adapter and independent finite pre-ODE checks; preserve Stage B before eight new IVPs.",
+  "next": "Complete Stage B backup/publication receipts, then python code/run.py --run exactly once for the eight new frozen cases.",
   "old_ODE_reruns": 0,
   "new_ODE_executed": 0,
   "new_ODE_planned": 8,

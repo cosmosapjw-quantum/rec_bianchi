@@ -1,0 +1,304 @@
+{
+  "unit": "THERM02",
+  "kind": "new-adapter PRE_ODE checks",
+  "time_utc": "2026-10-22T15:04:45.725654+00:00",
+  "command": "MPLCONFIGDIR=/tmp/therm02-mpl OPENBLAS_NUM_THREADS=1 python code/checks.py",
+  "code_input_sha256": {
+    "code/coupled_thermal.py": "599be84fabe9bdc904fdcda46e685f2fcaffa5985ba72dcabcd1fa5cb97a51db",
+    "code/checks.py": "a1ebe75e2f883885095117ce7cb2891b6792cacca6193fab2306d192d2d8fa95",
+    "FROZEN_CONTRACT.md": "076a97a621d2bdc55eb24859bd122792ac47c32d320458e7d97ff0836d2f4169",
+    "provenance/REUSED_FILES.json": "9e327157bfab4c4fa2809699a4b0e7c4fbf2582b4bd6ac186ab73804a5e96c1d"
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "cosmological_IVPs_executed": 0,
+  "old_suites_executed": 0,
+  "checks": [
+    {
+      "name": "check_source_identity",
+      "status": "PASS",
+      "evidence": {
+        "retained_files_verified": 70,
+        "selected_rows": 6,
+        "old_114_point_source_suite": "NOT_RUN; retained result reused",
+        "number_coefficient_source": "unchanged THERM01/REI PR220 donor"
+      },
+      "elapsed_s": 0.03636498499690788
+    },
+    {
+      "name": "check_mao_vectorization",
+      "status": "PASS",
+      "evidence": {
+        "temperatures_K": [
+          317.0,
+          1733.0,
+          13791.0,
+          280123.0
+        ],
+        "six_factor_max_relative": 0.0,
+        "six_derivative_max_relative": 0.0,
+        "isotope_moment_max_relative": 0.0,
+        "six_to_13_map": [
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          2,
+          3,
+          4,
+          5,
+          3,
+          4,
+          5
+        ],
+        "recombination_channels": 13,
+        "number_rate_method_identity": true
+      },
+      "elapsed_s": 0.01725949400133686
+    },
+    {
+      "name": "check_compton_units_and_limits",
+      "status": "PASS",
+      "evidence": {
+        "si_cgs_max_relative": 2.7012248691691586e-16,
+        "affine_volume_max_scaled": 0.0,
+        "heat_capacity_relative": 0.0,
+        "Q_hot_fixture_W_m3": -6.484551139738265e-31,
+        "Q_uv_fixture_W_m3": 1.2481105736422587e-38,
+        "zero_electron_exact": true,
+        "off_exact": true,
+        "planck_equilibrium": true
+      },
+      "elapsed_s": 0.0004020950000267476
+    },
+    {
+      "name": "check_planck_integrals",
+      "status": "PASS",
+      "evidence": {
+        "energy_integral": 6.493939402266828,
+        "recoil_induced_integral": 25.975757609067315,
+        "quadrature_absolute_errors": [
+          3.911889090025001e-13,
+          7.940618438408166e-13
+        ],
+        "A_RAD_J_m3_K4": 7.565733250280004e-16,
+        "independent_A_RAD": 7.565733250280006e-16,
+        "relative_radiation_constant": 2.606690188263696e-16,
+        "effective_recoil_over_kT_U": 4.000000000000001
+      },
+      "elapsed_s": 0.0002616769997985102
+    },
+    {
+      "name": "check_continuous_uv",
+      "status": "PASS",
+      "evidence": {
+        "nodes": 272,
+        "threshold_split_bins": 68,
+        "U_uv_base_J_m3": 1.1416599128906846e-16,
+        "M_uv_base_J2_m3": 3.1681648628575677e-34,
+        "independent_U_J_m3": 1.1416599128906848e-16,
+        "independent_M_J2_m3": 3.168164862857568e-34,
+        "max_relative": 2.159303572789725e-16,
+        "occupation_upper": 6.077255719410923e-20,
+        "dimensionless_quadrature_errors": [
+          7.063553089689587e-15,
+          1.2234432833302488e-13
+        ],
+        "spectrum_owner": "THERM01 actual GL4 scalar flux; same prescribed amplitude"
+      },
+      "elapsed_s": 0.01080830999853788
+    },
+    {
+      "name": "check_frozen_subflow",
+      "status": "PASS",
+      "evidence": {
+        "fixture_count": 4,
+        "max_semigroup_relative": 1.648567121689569e-16,
+        "max_direct_relative": 1.6485671216895687e-16,
+        "taylor_increment_relative": 1.5858031687970855e-09,
+        "use": "fixed x,Y,geometry algebra only; not coupled time splitting"
+      },
+      "elapsed_s": 0.0002608599970699288
+    },
+    {
+      "name": "check_compact_full_and_ledgers",
+      "status": "PASS",
+      "evidence": {
+        "physical_fixture_states": 3,
+        "branch_closure_pairs": 6,
+        "max_scaled_RHS_mapping": 4.4081336778725497e-16,
+        "max_local_ledger_scaled": 3.8342838735258373e-16,
+        "max_transfer_scaled": 1.9683235624186835e-17,
+        "max_atomic_source_scaled": 2.9416633164199166e-16,
+        "max_affine_direct_scaled": 1.7966697470981423e-16,
+        "max_number_rhs_relative": 0.0,
+        "geometry_evaluations_per_diagnostics": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "diagnostics_keys": [
+          "H_s",
+          "M_uv_J2_m3",
+          "T_K",
+          "T_ref_K",
+          "U_gamma_J_m3",
+          "U_ref_J_m3",
+          "U_uv_J_m3",
+          "absorbed_W_baryon",
+          "affine_direct_scaled",
+          "atomic_source_scaled",
+          "binding_escape_W_baryon",
+          "cmb_bath_W_baryon",
+          "compton_A",
+          "compton_B_K",
+          "compton_W_baryon",
+          "compton_over_HUgamma",
+          "compton_over_HUref",
+          "cooling_W_baryon",
+          "decay_max",
+          "dr_cooling_W_baryon",
+          "einstein_residual",
+          "elapsed_Myr",
+          "epsilon_ion_J",
+          "epsilon_th_J",
+          "epsilon_total_J",
+          "escaped_W_baryon",
+          "escaped_owner_W_baryon",
+          "eta",
+          "gas_source_W_baryon",
+          "heat_W_baryon",
+          "local_ledger_W_baryon",
+          "local_ledger_scaled",
+          "local_transfer_W_baryon",
+          "local_transfer_scaled",
+          "nb_m3",
+          "ne_m3",
+          "rr_cooling_W_baryon",
+          "signed_observables",
+          "tau_T",
+          "trace_energy_fraction",
+          "uv_bath_W_baryon",
+          "uv_compton_W_baryon",
+          "uv_scale",
+          "work_W_baryon"
+        ],
+        "exact_absent_n_T_decay": true
+      },
+      "elapsed_s": 0.9727404459990794
+    },
+    {
+      "name": "check_current_state_feedback",
+      "status": "PASS",
+      "evidence": {
+        "actual_hot_monopole_Q_ratio": 1.1000000000000003,
+        "reference_monopole_Q_difference": 0.0,
+        "old_ne_m3": 56.83236057967318,
+        "modified_ne_m3": 70.66522223959119,
+        "temperature_to_rates": true,
+        "ionic_to_photon_opacity": true,
+        "neutrino_direct_Thomson_absent": true
+      },
+      "elapsed_s": 0.10753119500441244
+    },
+    {
+      "name": "check_thermal_partial",
+      "status": "PASS",
+      "evidence": {
+        "max_scaled_partial_error": 6.3973315273617e-09,
+        "gate": 2e-07,
+        "fixtures": [
+          {
+            "closure": "mao2017",
+            "state": 0,
+            "T_K": 550.0,
+            "analytical": -5.530537054322388,
+            "finite_difference": -5.530537054325942,
+            "scaled_error": 6.425419127140438e-13
+          },
+          {
+            "closure": "mao2017",
+            "state": 1,
+            "T_K": 8100.0,
+            "analytical": -3.4678520006702893,
+            "finite_difference": -3.467852000312502,
+            "scaled_error": 1.0317254980451738e-10
+          },
+          {
+            "closure": "mao2017",
+            "state": 2,
+            "T_K": 31000.000000000007,
+            "analytical": -2.421618822968122,
+            "finite_difference": -2.421618819002977,
+            "scaled_error": 1.6373944006133863e-09
+          },
+          {
+            "closure": "rate_derivative",
+            "state": 0,
+            "T_K": 550.0,
+            "analytical": -5.53088448564791,
+            "finite_difference": -5.530884485666863,
+            "scaled_error": 3.4267284639846824e-12
+          },
+          {
+            "closure": "rate_derivative",
+            "state": 1,
+            "T_K": 8100.0,
+            "analytical": -3.4678986672293854,
+            "finite_difference": -3.4678986553856235,
+            "scaled_error": 3.4152560693552707e-09
+          },
+          {
+            "closure": "rate_derivative",
+            "state": 2,
+            "T_K": 31000.000000000007,
+            "analytical": -2.4215037261374426,
+            "finite_difference": -2.4215037416286047,
+            "scaled_error": 6.3973315273617e-09
+          }
+        ]
+      },
+      "elapsed_s": 0.16305737299990142
+    },
+    {
+      "name": "check_mutation_discrimination",
+      "status": "PASS",
+      "evidence": {
+        "expected_rejection": true,
+        "compton_relative_mutation_separations": {
+          "extra_c": 299792457.0000001,
+          "missing_c": 0.999999996664359,
+          "opposite_Q_sign": 2.0000000000000004,
+          "Kelvin_used_as_energy_eV": 11603.518121550083
+        },
+        "mao_temperature_unit_max_relative_separation": 0.9400393454994674,
+        "charge_off_by_one_rejected": true,
+        "interpretation": "test expectation discrimination, not mutated production runs"
+      },
+      "elapsed_s": 0.00791825600026641
+    },
+    {
+      "name": "check_error_guards",
+      "status": "PASS",
+      "evidence": {
+        "temperature_trials_rejected_K": [
+          99.9,
+          1000000.1
+        ],
+        "invalid_branch_and_closure_rejected": true
+      },
+      "elapsed_s": 0.053883203996520024
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_s": 1.3774621420016047,
+  "log_path": "evidence/CHECKS_20261022T150445_725654Z.log",
+  "scope": "finite adapter checks only; trajectory acceptance and independent review pending"
+}
