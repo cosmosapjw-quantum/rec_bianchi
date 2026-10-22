@@ -1,0 +1,74 @@
+{
+  "status": "PASS_SCOPED_PNG_VISUAL_AND_SCIENTIFIC_REVIEW",
+  "reviewer": "thermal_physics",
+  "reviewed_utc": "2026-10-22T03:47:06.563653+00:00",
+  "scope": "Direct visual inspection of the three actual figures/v3 PNGs, their captions and source interpretation; SHA256 and v2-byte comparisons. No ODE or runtime mutation.",
+  "source_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+  "source_result_sha256": "a66c115e7233d5744009994486962c301a1098847346c124e332b09ebbf5e1ac",
+  "physics_review_sha256": "e731db08ff36eae53658e2474604bc65da081fc3c687329fe7631a3a56a6917e",
+  "plotter_sha256": "97d7a7f4ad002a6f9966776706cdf25d9ee09319157d17228bedadfc067b52b3",
+  "figures": [
+    {
+      "path": "figures/v3/01_compton_energy_budget.png",
+      "bytes": 232529,
+      "sha256": "7f0b6641d795c5fab1123bb70e96be9ebb8f3b0ae7b9617ca57aa51364cc6c18",
+      "directly_viewed": true,
+      "matches_manifest": true,
+      "identical_to_v2_png": true,
+      "observations": [
+        "Complete title, axes, legends and bottom caption are visible.",
+        "Cumulative actual hot-electron losses and the separately labelled Planck-reference curve remain scientifically distinct.",
+        "Signed symlog budget bars distinguish gas gains, kinetic loss, internal CI binding storage and expansion work; the internal CI pair cancels.",
+        "The caption identifies the fixed-path calculation and does not claim a coupled temperature prediction."
+      ]
+    },
+    {
+      "path": "figures/v3/02_source_support_and_transfer.png",
+      "bytes": 408546,
+      "sha256": "7417cc4f00c23ddf7a1ba4db4da89df8a24906fffd52a93831466fb521d50ee2",
+      "directly_viewed": true,
+      "matches_manifest": true,
+      "identical_to_v2_png": false,
+      "observations": [
+        "The v3 PNG is complete, including all four panels, title, subtitle and bottom caption.",
+        "Published CI/CE support thresholds and the below-domain counts are visibly distinguished from analytic continuation.",
+        "The actual-hot versus Planck-reference comparison retains its separate-source interpretation.",
+        "Panel (c) plots labelled forcing magnitudes with an explicit display floor; its caption retains the signed-data and fixed-path qualifications.",
+        "Panel (d) retains signs of UV gain, CI kinetic loss, CI binding storage and CE loss."
+      ]
+    },
+    {
+      "path": "figures/v3/03_numerical_comparisons.png",
+      "bytes": 171342,
+      "sha256": "9bc9faec19c320af1ab2ab00658cca5edf8cea49d78aac0e78f8fca5677b0651",
+      "directly_viewed": true,
+      "matches_manifest": true,
+      "identical_to_v2_png": true,
+      "observations": [
+        "Complete title, axes, bar labels and bottom caption are visible.",
+        "Retained-grid quadrature differences, old nominal/refined changes and RR-source alternatives are separately labelled.",
+        "The caption does not promote retained-grid comparisons to continuum error bounds or source alternatives to numerical uncertainty."
+      ]
+    }
+  ],
+  "blocking_findings": [],
+  "minor_cosmetic_findings": [
+    {
+      "figure": "02_source_support_and_transfer.png",
+      "panels": [
+        "c",
+        "d"
+      ],
+      "finding": "Legends cross short curve segments. Labels and plotted trends remain readable.",
+      "required_correction": false
+    }
+  ],
+  "limitations": [
+    "The PDF files were not visually rendered in this scoped review; PNG inspection is not a PDF layout certification.",
+    "This audit reuses the separately recorded independent raw-NPZ physics review for numerical correctness; it is not another trajectory integration or quadrature convergence study.",
+    "No claim is made about temperature evolution after activating omitted processes, a reconstructed actual CMB spectrum, or full photon-energy backreaction."
+  ],
+  "reviewer_disclosure": "The reviewer authored this unit theory and provenance, but did not author the runtime modules or the plotter. The independent raw-input numerical comparison is recorded separately.",
+  "new_ODE_integrations": 0,
+  "old_ODE_reruns": 0
+}

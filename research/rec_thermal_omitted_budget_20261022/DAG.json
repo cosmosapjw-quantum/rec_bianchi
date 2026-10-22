@@ -1,0 +1,169 @@
+{
+  "schema": "rec.thermal_omitted_budget.dag.v1",
+  "unit": "REC_THERMAL_OMITTED_BUDGET_20261022",
+  "workflow_version": "1.0.0",
+  "approval_design": "0.2",
+  "science_status": "COMPLETE_SCOPED_FIXED_PATH_BUDGET",
+  "runtime_identity": "88edf8e7e5ccff94509e03ff2979b3b93e5e988641c5dbd4a5d64f4583bca02c",
+  "inputs": {
+    "old_thermal_local_commit": "cdf7e04518bde936206054c33413ab2b1fc300c5",
+    "old_thermal_tree": "503fa14793f385a1e235763818251c5d34987842",
+    "old_thermal_runtime_identity": "dfd2ca42b7fb768f3e31e5a7cc3ab64a4aa8b422ef0c5b79b8852043b197ff2e",
+    "completed_old_IVPs_reused": 134,
+    "new_input_trajectories_evaluated": 8,
+    "saved_nodes_per_trajectory": 109,
+    "new_ODE_integrations": 0,
+    "old_IVP_reruns": 0
+  },
+  "nodes": [
+    {
+      "id": "intake",
+      "dependencies": [],
+      "status": "COMPLETE",
+      "artifacts": [
+        "FROZEN_CONTRACT.md",
+        "provenance/REMOTE_INTAKE.json",
+        "provenance/SOURCES.json"
+      ]
+    },
+    {
+      "id": "derive",
+      "dependencies": [
+        "intake"
+      ],
+      "status": "COMPLETE",
+      "artifacts": [
+        "THEORY_KO.md",
+        "evidence/WOLFRAM_CHECK.json"
+      ]
+    },
+    {
+      "id": "compton",
+      "dependencies": [
+        "derive"
+      ],
+      "status": "COMPLETE",
+      "tests": 6,
+      "artifacts": [
+        "code/compton_budget.py",
+        "evidence/COMPTON_TESTS.json"
+      ]
+    },
+    {
+      "id": "collisional",
+      "dependencies": [
+        "derive"
+      ],
+      "status": "COMPLETE",
+      "tests": 10,
+      "artifacts": [
+        "code/collisional_budget.py",
+        "data/HG97_COLLISIONAL_SOURCE.json",
+        "evidence/COLLISIONAL_TESTS.json"
+      ]
+    },
+    {
+      "id": "postprocess",
+      "dependencies": [
+        "compton",
+        "collisional"
+      ],
+      "status": "COMPLETE_FIRST_ATTEMPT",
+      "saved_states": 872,
+      "wall_seconds": 0.6768658970013348,
+      "cpu_seconds": 0.6551065709999999,
+      "max_RSS_KiB": 67140,
+      "artifacts": [
+        "results/budget_v1/RESULT.json",
+        "results/budget_v1/INPUTS.json",
+        "results/budget_v1/SUMMARY.json"
+      ]
+    },
+    {
+      "id": "independent_physics",
+      "dependencies": [
+        "derive",
+        "postprocess"
+      ],
+      "status": "PASS",
+      "artifacts": [
+        "evidence/PHYSICS_REVIEW.json",
+        "evidence/independent_physics"
+      ]
+    },
+    {
+      "id": "implementation_review",
+      "dependencies": [
+        "postprocess"
+      ],
+      "status": "PASS",
+      "structural_checks": 65,
+      "artifacts": [
+        "evidence/IMPLEMENTATION_REVIEW.json"
+      ]
+    },
+    {
+      "id": "figures",
+      "dependencies": [
+        "postprocess"
+      ],
+      "status": "PASS_CURRENT_V3",
+      "artifacts": [
+        "figures/v3/FIGURE_MANIFEST.json",
+        "evidence/PHYSICS_FIGURE_AUDIT.json",
+        "evidence/FIGURE_CORRECTIONS.json"
+      ]
+    },
+    {
+      "id": "report_handoff",
+      "dependencies": [
+        "independent_physics",
+        "implementation_review",
+        "figures"
+      ],
+      "status": "COMPLETE",
+      "artifacts": [
+        "REPORT_KO.md",
+        "HANDOFF_KO.md",
+        "LOOP_EVIDENCE_KO.md",
+        "NEXT_UNIT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "delivery",
+      "dependencies": [
+        "report_handoff"
+      ],
+      "status": "SEE_DELIVERY_STATUS_AND_PROVIDER_RECEIPTS",
+      "note": "Provider responses are updated separately; this DAG does not imply a future upload already succeeded.",
+      "artifacts": [
+        "DELIVERY_STATUS.json"
+      ]
+    },
+    {
+      "id": "future_compton_full63",
+      "dependencies": [
+        "report_handoff"
+      ],
+      "status": "PROPOSED_NOT_RUN",
+      "max_future_distinct_IVPs": 8,
+      "artifacts": [
+        "NEXT_UNIT_CONTRACT.md"
+      ]
+    }
+  ],
+  "classification": {
+    "physical": "HOLD",
+    "production": "NOT_APPROVED",
+    "global_convergence": "NOT_RUN",
+    "U5": "CLOSED_HOLD_NOT_RESET",
+    "REI_activation": false,
+    "strong_no_go_submitted": false
+  },
+  "evidence_reuse": "Old exact-source and solved-IVP evidence is inherited by identity. Fresh checks target new providers, stored-grid integration and result interpretation.",
+  "stage_local_commits": {
+    "A": "88f992f76b5b640b136e86ac5e1e7dd1b0439e18",
+    "B": "fad844ef82fc0a1b386c477c66c20fc15f6c78fc",
+    "C": "Resolve from final release receipt to avoid self-reference."
+  }
+}
