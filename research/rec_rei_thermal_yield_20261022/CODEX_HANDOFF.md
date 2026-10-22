@@ -63,10 +63,29 @@ global convergence NOT_RUN; production NOT_APPROVED; REI_activation=false.
 
 ## Delivery interpretation
 
-Stages A/B freeze and implementation archives were uploaded to both configured
-backup providers. Stage C carries all raw/science/review outputs; final delivery
-receipts record the actual later ACKs and publication pins. Local payload/CRC
-verification and Git object SHA matches are distinct from remote ZIP whole-byte
-readback. For new archives the latter remains NOT_RUN unless a later explicit
-receipt demonstrates otherwise. Never inherit the historical REC recovery's
-whole-byte PASS as a claim about a new archive.
+Science publication: `d562d03415e37488cd4b5444488c77555260e0fb`.
+Recovery publication: `b94314be1be12664f1dec8100d29bdb5f9135adf`.
+The final documentary HEAD is the commit containing
+`delivery/FINAL_PUBLICATION_BACKUP.json`, pinned in the PR120 completion comment.
+All 20 current R1–R10/C1–C10 nodes are COMPLETE_SCOPED. N1 is READY_TO_SELECT;
+N2/N3 are INPUT_DEPENDENT; N4/N5 are NOT_RUN.
+
+Final archive: `REC_REI_THERM01_FINAL_RECOVERED_20261022_5445e15edb1d.zip`.
+Size: 12,639,251 bytes; 157 payload files plus one manifest.
+SHA256: `5445e15edb1d580af8b819e8d6a1b73fc2b9958d76bae92967c38ee0763bf0e0`.
+Dropbox file `id:BSpOijBcT10AAAAAAD_h4A`: actual single full GET matches whole-byte
+SHA256, ZIP CRC, manifest and all 157 payload SHA256 values.
+Google Drive file `1vplg47vr0im-aTm0K6XLMYzvLEY5SJNs`: successful upload and exact
+metadata size; whole-byte readback NOT_RUN. Stages A/B have their own preserved
+ACK/size receipts; do not promote them to a whole-byte readback claim.
+
+The archive is a fixed payload snapshot made before upload ACK. This receipt,
+final DAG and handoff updates form a documentary Git supplement. Do not rewrite
+the already verified ZIP to make an impossible self-containing publication receipt.
+
+Original Stage C remote ZIP was incomplete (12,257,739 bytes, no central directory).
+All 147 expected payloads were recovered exactly: 85 complete local members and
+62 from fixed science Git, with two CSV line endings restored only after original
+SHA256/GitSHA agreement. Recovery commit verified all 155 published unit blobs.
+The incomplete ZIP remains failure evidence; its cause is undetermined.
+Recovery ODE count is 0. Use the final recovered ZIP, not the incomplete object.

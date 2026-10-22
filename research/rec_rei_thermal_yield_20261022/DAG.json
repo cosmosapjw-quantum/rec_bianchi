@@ -1,6 +1,6 @@
 {
   "unit": "THERM01",
-  "phase": "D_RECOVERED_PAYLOAD_FINAL_DELIVERY",
+  "phase": "D_COMPLETE_SCOPED",
   "nodes": [
     {
       "id": "R1",
@@ -80,7 +80,7 @@
     },
     {
       "id": "C10",
-      "status": "DELIVERY_IN_PROGRESS"
+      "status": "COMPLETE_SCOPED"
     }
   ],
   "prospective_new_IVPs": 8,
@@ -98,8 +98,8 @@
   "stages": {
     "A": "PUBLISHED_BACKED",
     "B": "PUBLISHED_BACKED",
-    "C": "SCIENCE_PUBLISHED_ALL_PAYLOADS_RECOVERED",
-    "D": "FINAL_BACKUP_PENDING"
+    "C": "PUBLISHED_RECOVERED_FINAL_BACKUP_VERIFIED",
+    "D": "COMPLETE_SCOPED"
   },
   "successful_new_IVPs": 8,
   "failed_science_attempts": 0,
@@ -171,5 +171,14 @@
     "recovered_exact": 147,
     "new_IVPs": 0,
     "original_stageC_zip": "INCOMPLETE_NOT_ADMITTED"
+  },
+  "recovery_commit": "b94314be1be12664f1dec8100d29bdb5f9135adf",
+  "final_delivery": {
+    "receipt": "delivery/FINAL_PUBLICATION_BACKUP.json",
+    "archive_sha256": "5445e15edb1d580af8b819e8d6a1b73fc2b9958d76bae92967c38ee0763bf0e0",
+    "dropbox_whole_byte_readback": "PASS",
+    "dropbox_payload_SHA256": "PASS",
+    "google_drive": "UPLOAD_ACK_SIZE_PASS_WHOLE_BYTE_NOT_RUN",
+    "publication": "this final documentary commit; exact HEAD in PR120 completion comment"
   }
 }

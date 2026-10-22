@@ -296,3 +296,20 @@ science commit d562d03415e37488cd4b5444488c77555260e0fb에서 복원했고,
 이 연구payload의 마지막원격ACK·전체byte결과는 별도최종delivery receipt와PR120의
 완료댓글을 따른다. 최종ZIP은 post-upload receipt가 생기기 전 고정된 payload
 snapshot이며, 나중Git문서commit이 업로드반환을 덧붙이는 구조다.
+
+
+## 최종 전달 완료 — 실제 원격 검증
+
+새 최종 파일은 **REC_REI_THERM01_FINAL_RECOVERED_20261022_5445e15edb1d.zip**이다.
+크기 **12,639,251바이트**, **157 payload + manifest 1개**이며 SHA256은
+`5445e15edb1d580af8b819e8d6a1b73fc2b9958d76bae92967c38ee0763bf0e0`이다.
+Dropbox의 실제 전체 GET을 통해 전체 바이트·ZIP CRC·manifest·157 payload SHA256이
+모두 일치함을 확인했다. Google Drive는 업로드 성공과 같은 크기까지 확인했으며,
+그 사본의 whole-byte readback은 NOT_RUN이다.
+
+최종 ZIP은 업로드 ACK 이전의 고정 snapshot이다. 그 뒤 생긴 실제 반환과 최종
+DAG/handoff 갱신은 Git 문서 supplement인 delivery/FINAL_PUBLICATION_BACKUP.json과
+delivery/FINAL_REMOTE_READBACK.json으로 보존한다. 검증한 ZIP은 다시 쓰지 않는다.
+현재 R1–R10/C1–C10은 COMPLETE_SCOPED이며 다음 N1이 READY_TO_SELECT다.
+복구 중 새 IVP 0개, 과거 cohort 재실행 0개이며 기존 HOLD/NOT_RUN/NOT_APPROVED와
+REI_activation=false는 그대로다.
