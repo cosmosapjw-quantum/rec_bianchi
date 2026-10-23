@@ -1,0 +1,18 @@
+   for (b = 0; b < NVIRT; b++) {
+     if (Dtau[b] > 1e-30) {
+         one_minus_Pib = Dtau[b] > 1e-6 ? 1.- (1.-exp(-Dtau[b]))/Dtau[b] : Dtau[b]/2. - square(Dtau[b])/6.;
+         Dfeq  = -xr[0]*Tvr[0][b] - xr[1]*Tvr[1][b];
+         Dfeq -=  (b == 0       ?  xv[1]*Tvv[2][0]:
+                   b == NVIRT-1 ?  xv[NVIRT-2]*Tvv[1][NVIRT-1]:    
+                   xv[b+1]*Tvv[2][b] + xv[b-1]*Tvv[1][b]);        
+         Dfeq /= x1s*one_minus_Pib*Tvv[0][b];
+         one_minus_exptau = Dtau[b] > 1e-6 ? 1.-exp(-Dtau[b]) : Dtau[b] - square(Dtau[b])/2.;               
+                                
+         Dfminus_hist[b][iz] = Dfplus[b] + (Dfeq - Dfplus[b])*one_minus_exptau;
+     }
+     else Dfminus_hist[b][iz] = Dfplus[b];
+   }
+    
+   Dfminus_Ly_hist[0][iz] = xr[1]/3./x1s;    
+   Dfminus_Ly_hist[1][iz] = xr[0]/x1s*exp(-E32/TR); 
+   Dfminus_Ly_hist[2][iz] = xr[0]/x1s*exp(-E42/TR); 

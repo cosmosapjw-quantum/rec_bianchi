@@ -1,0 +1,213 @@
+{
+  "schema": "REC_HISTORY_INDEPENDENT_REVIEW_V1",
+  "reviewer": "/root/independent_review",
+  "review_passes": 1,
+  "status": "PASS_SCOPED",
+  "material_blockers_for_scoped_scientific_unit": [],
+  "unit_completion_recommendation": "COMPLETE_SCOPED_BOUNDARY",
+  "parent_REC_HISTORY": "PARTIAL",
+  "scientific_review_gates": {
+    "R6": "PASS_SCOPED",
+    "C9": "PASS_SCOPED"
+  },
+  "publication_and_final_backup": "ROOT_DELIVERY_PENDING_NOT_ATTESTED_BY_THIS_REVIEW",
+  "source_parent": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
+  "primary": {
+    "status": "PASS_SCOPED",
+    "checks_reported": 608,
+    "checks_read": 608,
+    "failure_records_read": 0,
+    "counts": {
+      "local_ray_controls": 54,
+      "scalar_interpolation_controls": 20,
+      "native_mapping_comparisons": 1,
+      "derivative_directions": 12,
+      "frozen_history_rhs_directions": 3,
+      "dense_rhs_solves": 8,
+      "analytic_history_queries": 48,
+      "invalid_owner_cases": 20,
+      "deliberate_mutations": 4,
+      "figures_from_saved_rows": 2
+    },
+    "identities_sha256": {
+      "FROZEN_CONTRACT.md": "dc0e109608edddf458489066be4a1bae83bd2d89134535f2a0303c4c5efbcf35",
+      "PREEXEC_ADDENDUM.md": "f522f5525dcf0f1abfe1c5987bb56c7fe350aa1af04213e5f2578b4b7ae9494f",
+      "vendor/hyrec_params.h": "46b4cb3f7a463ddbae966c02114e16f8e079615e4838f5dcbcb6cd1c5a67a83f",
+      "code/history_boundary.py": "f0858a0ef231c62cf29c8d03ca769d3e9f8539a7809f890be5f4e22aa5fa0600",
+      "code/run_history_checks.py": "608e1fb8e973387453775f170ca59109a9e5801bd2229939d7c3d09e86075f18",
+      "code/native_oracle_build.py": "15c451cbfaa2f695441440fbc8ef257bc2f1c8e1047f74d179c693df5fedadfd"
+    }
+  },
+  "independent_additional": {
+    "status": "PASS_SCOPED",
+    "cases": 3,
+    "checks": 14,
+    "failed": 0,
+    "case_cap_used": 3,
+    "authorized_maximum": 4,
+    "additional_dense_rhs_solves": 0,
+    "C_compilations": 0,
+    "old_replays": 0,
+    "new_IVP": 0,
+    "executed_by": "root central controller",
+    "authored_and_actual_output_reviewed_by": "/root/independent_review",
+    "script_sha256": "9ac7fe988ef39f627a3a425e89d736899e01f8b29cf3c99492f11c3f1972d57f"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "target": "incoming_history native query arithmetic",
+      "impact": "Equivalent log expressions amplify rounding by the interpolation slope",
+      "status": "CLOSED",
+      "evidence": [
+        "PREEXEC_ADDENDUM.md",
+        "code/history_boundary.py",
+        "native313:all_C_values"
+      ],
+      "actual_maximum_scaled_error": 0.0
+    },
+    {
+      "id": "F2",
+      "target": "interpolation_jvp at a knot",
+      "impact": "An unqualified right slope is incorrect for a left-directed tangent",
+      "status": "CLOSED",
+      "evidence": [
+        "NONSMOOTH_QUERY branch",
+        "invalid:nonsmooth_query_knot"
+      ]
+    },
+    {
+      "id": "F3",
+      "target": "boundary_jvp and line_ledger signed physical reference",
+      "impact": "Valid negative departures would be rejected without a reference",
+      "status": "CLOSED",
+      "evidence": [
+        "reference_occupation forwarding",
+        "extra001:signed_incoming_physical_reference"
+      ]
+    },
+    {
+      "id": "F4",
+      "target": "transformed depth and tangent finiteness",
+      "impact": "Finite tau/q inputs do not guarantee a representable ratio or tangent",
+      "status": "CLOSED",
+      "evidence": [
+        "TRANSFORMED_DEPTH_OVERFLOW guard",
+        "explicit tangent intermediate finiteness checks",
+        "invalid:optical_ratio_overflow"
+      ]
+    },
+    {
+      "id": "F5",
+      "target": "positive comparison witness rounding enclosure",
+      "impact": "The original 32eps reserve did not justify a 313-term dot-product lower bound",
+      "status": "CLOSED",
+      "evidence": [
+        "gamma_(2*n+4)",
+        "outward sumabs and lower bounds",
+        "frozen:positive_comparison_witness"
+      ],
+      "minimum_Mv_lower": 0.9999999997256701,
+      "scope": "represented binary64 native matrix and declared arithmetic assumptions only"
+    },
+    {
+      "id": "F6",
+      "target": "native oracle real-statement fragment identity metadata",
+      "impact": "Two noncontiguous original statements are not one contiguous source substring",
+      "status": "CLOSED_WITH_SUPPLEMENT",
+      "evidence": [
+        "original native_oracle/BUILD.json retained",
+        "extra001/SOURCE_STATEMENT_SUPPLEMENT.json"
+      ],
+      "individual_source_lines": [
+        453,
+        464
+      ],
+      "combined_fragment_contiguous": false,
+      "both_component_byte_identities": true
+    },
+    {
+      "id": "F7",
+      "target": "original boundary control PNG",
+      "impact": "Dense symlog tick labels overlap and automatic x limits include negative tau",
+      "status": "CLOSED_WITH_PRESERVED_REPAIR",
+      "evidence": [
+        "original primary PNG retained",
+        "results/figure_repair001/RENDER_RECEIPT.json",
+        "reviewer opened both original PNGs and corrected PNG"
+      ],
+      "new_scientific_cases": 0
+    },
+    {
+      "id": "F8",
+      "target": "primary live-session resource monitor",
+      "impact": "Host/sandbox PID mismatch caused zero live-session CPU/RSS telemetry",
+      "status": "DOCUMENTED_PRIMARY_LIMITATION_CORRECTED_FOR_LATER_ATTEMPTS",
+      "evidence": [
+        "provenance/RUNTIME_OBSERVATIONS.json",
+        "original primary receipt retained",
+        "host_child_session resolver",
+        "figure/review receipts live_session_monitor_available=true"
+      ],
+      "primary_live_aggregate_measurement": "NOT_OBSERVED",
+      "primary_surviving_enforcement": [
+        "wall timeout",
+        "per-process RLIMIT_AS",
+        "per-process RLIMIT_CPU",
+        "final inclusive getrusage"
+      ],
+      "later_live_monitor_observed": true
+    }
+  ],
+  "visual_review": {
+    "actual_images_opened": 3,
+    "final_boundary": "results/figure_repair001/history_boundary_controls.png",
+    "final_interpolation": "results/attempt001/history_interpolation_bounds.png",
+    "status": "PASS_VISUAL",
+    "initial_boundary_png_preserved": true
+  },
+  "resources": {
+    "cumulative_charged_CPU_seconds": 4.848191000000001,
+    "cumulative_execution_wall_seconds": 4.7365679680006,
+    "maximum_reported_per_process_peak_RSS_KiB": 105380,
+    "primary_live_aggregate_CPU_RSS": "NOT_OBSERVED_PID_NAMESPACE_LIMITATION",
+    "limits": {
+      "CPU_seconds": 60,
+      "execution_wall_seconds": 180,
+      "threads": 1,
+      "RSS_bytes": 1073741824
+    },
+    "budget_reset": false,
+    "old_science_or_failures_overwritten": false
+  },
+  "scope_holds": {
+    "actual_history_calibration": "INPUT_DEPENDENT_UNCALIBRATED",
+    "directional_Bianchi_history_provider": "NOT_IMPLEMENTED_IN_THIS_UNIT",
+    "full_thermodynamic_cosmological_Jacobian": "NOT_CLOSED",
+    "Physical": "HOLD",
+    "REC_U5": [
+      "HOLD_9_FAIL",
+      "HOLD_8_FAIL"
+    ],
+    "cumulative_gate": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "evidence_sha256": {
+    "/workspace/scratch/839f9c9f83a7/independent_review/REVIEW_REPORT.md": "9f680c6b7a048f23a0af4a54d2e3c9dc3cb1209d70e4472ad27b872f1e2a69bf",
+    "/workspace/scratch/839f9c9f83a7/independent_review/PRE_REVIEW.md": "d75b65e4f49ba976405fea941d8064251d7f1a6888d2c26fbcd479247dfd1706",
+    "/workspace/scratch/839f9c9f83a7/independent_review/run_tiny_review.py": "9ac7fe988ef39f627a3a425e89d736899e01f8b29cf3c99492f11c3f1972d57f",
+    "/workspace/scratch/839f9c9f83a7/independent_review/results/extra001/SUMMARY.json": "5f6679272e1a0a2fd1f261dac5f4174f4c2cd5c32b4c3b284d22a80ebe787439",
+    "/workspace/scratch/839f9c9f83a7/independent_review/results/extra001/checks.json": "816c0b20170e7c58cb9c6eb1170fee51939055c92f97f9a9859ff51ff3db6a58",
+    "/workspace/scratch/839f9c9f83a7/independent_review/results/extra001/cases.json": "ca10d277a6a415c64ee5405d8010eb088c6937435f90c907127e067ea3c62845",
+    "/workspace/scratch/839f9c9f83a7/independent_review/results/extra001/raw_arrays.npz": "468b6abbb0f65cde3af86da0cadfb95a97d27791c4def8e7a3e53a025197b027",
+    "/workspace/scratch/839f9c9f83a7/independent_review/results/extra001/SOURCE_STATEMENT_SUPPLEMENT.json": "1bb26afa27d2909633497e5f9c17fb0f92439a8a9426da6d6a4ac1dc934c2417",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/attempt001/SUMMARY.json": "1ea58aab923e14a6a3ef778d05517338b1eb3d7c5ec80c1338f58c034a9890c6",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/attempt001/checks.jsonl": "37c2089ac8618f5b10dec34a7117b764530de505d4ecefc4c1a4abb31d861748",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/attempt001/raw_cases.jsonl": "4825b8bfc99739a7c327674d2b2fa61dea5818a333cc062b5114332295bb06a1",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/attempt001/raw_arrays.npz": "932c86404e19386d466807fba0361f76b51a273efe43cf6c67c1ffd1f5105002",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/figure_repair001/history_boundary_controls.png": "79a7a32af43fe96d9914c52c8b5bdaf13efd6d91f92b11cfb6d0c7a32bf76d3f",
+    "/workspace/scratch/839f9c9f83a7/rec_bianchi/research/rec_history_boundary_20261023/results/attempt001/history_interpolation_bounds.png": "fdd2ca95e03be5bf713e9023f30a84d327985c78926250225d2664e8dbb1d021"
+  }
+}

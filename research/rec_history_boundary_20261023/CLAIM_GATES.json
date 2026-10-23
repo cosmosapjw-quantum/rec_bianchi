@@ -1,0 +1,115 @@
+{
+  "schema": "REC_HISTORY_CLAIM_GATES_V1",
+  "unit": "REC-HISTORY-01",
+  "unit_scientific_status": "COMPLETE_SCOPED_BOUNDARY",
+  "parent_REC_HISTORY": "PARTIAL",
+  "gates": [
+    {
+      "id": "H1_NATIVE_OWNER",
+      "status": "PASS_SCOPED",
+      "scope": "Exact native scalar interpolation owner and313incoming/314outgoing routing",
+      "evidence": [
+        "THEORY.md",
+        "results/attempt001/native_oracle/EXTRACTION.json",
+        "results/attempt001/checks.jsonl"
+      ]
+    },
+    {
+      "id": "H2_FINITE_BOUNDARY_LEDGER",
+      "status": "PASS_SCOPED",
+      "scope": "Local positive-q finite boundary with native normalization and exclusive signed number/energy event",
+      "evidence": [
+        "code/history_boundary.py",
+        "results/attempt001/raw_cases.jsonl",
+        "evidence/independent_review/results/extra001/checks.json"
+      ]
+    },
+    {
+      "id": "H3_HISTORY_DERIVATIVE",
+      "status": "PASS_SCOPED_FIXED_COEFFICIENTS",
+      "scope": "Fixed-grid/fixed-cell history differential and313-channel frozen source-to-outgoing response; thermodynamic coefficients held fixed",
+      "evidence": [
+        "THEORY.md",
+        "results/attempt001/checks.jsonl",
+        "evidence/independent_review/results/extra001/SUMMARY.json"
+      ]
+    },
+    {
+      "id": "H4_CONDITIONAL_ERROR_BOUND",
+      "status": "PASS_SCOPED_CONDITIONAL",
+      "scope": "C2 interpolation remainder+endpoint error, manufactured48queries, native represented-M positive comparison witness",
+      "evidence": [
+        "THEORY.md",
+        "results/attempt001/checks.jsonl",
+        "results/attempt001/raw_arrays.npz"
+      ]
+    },
+    {
+      "id": "H5_ACTUAL_HISTORY_CALIBRATION",
+      "status": "INPUT_DEPENDENT_UNCALIBRATED",
+      "scope": "Actual/finer history candidates exist; no admitted independent same-domain reference/curvature/endpoint uncertainty for selected queries",
+      "evidence": [
+        "provenance/HISTORY_INPUT_INVENTORY.json",
+        "NEXT_INPUT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "H6_BIANCHI_DIRECTIONAL_PROPAGATION",
+      "status": "OPEN_INPUT_CONTRACT",
+      "scope": "Retarded geodesic energy, direction and frame operator needed to combine local angular boundary with actual anisotropic history",
+      "evidence": [
+        "THEORY.md",
+        "NEXT_INPUT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "H7_FULL_THERMODYNAMIC_JACOBIAN",
+      "status": "NOT_CLOSED",
+      "scope": "Additional derivatives of M,B,O,P and departure basis; no full cosmological Jacobian claim",
+      "evidence": [
+        "REPORT_KO.md",
+        "NEXT_INPUT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "H8_INDEPENDENT_REVIEW",
+      "status": "PASS_SCOPED",
+      "scope": "One changed-source independent review;3additional cases14checks;materialblockers0",
+      "evidence": [
+        "evidence/independent_review/REVIEW.json",
+        "evidence/independent_review/FINAL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "H9_GLOBAL_COUPLED_HISTORY",
+      "status": "NOT_RUN",
+      "scope": "New coupled control requires selected source gates and separately authorized execution",
+      "evidence": [
+        "GLOBAL_DAG.json",
+        "NEXT_INPUT_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "H10_DELIVERY",
+      "status": "BLOCKED_GITHUB_WRITE_INTERRUPTED_TARGET_ABSENT",
+      "scope": "Science reviewed and dual archive ACKs confirmed; Git push/PR and central publication have not occurred.",
+      "evidence": [
+        "delivery/STAGE_B_ACK.json",
+        "delivery/PUBLICATION_STATE.json"
+      ]
+    }
+  ],
+  "admitted_downstream": "Finite boundary/event/source interface for REC-FIELD dependency contract with H5-H7 explicitly open",
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+  },
+  "new_strong_no_go": false,
+  "whole_project_completion_percentage": null,
+  "overall_delivery_status": "SCIENCE_COMPLETE_SCOPED_DELIVERY_BLOCKED_NOT_PUBLISHED"
+}

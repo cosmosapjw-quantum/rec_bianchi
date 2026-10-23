@@ -1,0 +1,52 @@
+void fplus_from_fminus(double Dfplus[NVIRT], double Dfplus_Ly[], double **Dfminus_hist, double *Dfminus_Ly_hist[], 
+                       double TR, double zstart, unsigned iz, double z, double Eb_tab[NVIRT]) {
+   unsigned b;
+   double ainv, lna_start, zp1;
+  
+   zp1 = 1.+z;
+   lna_start = -log(1.+zstart);
+
+   /*** Bins below Lyman alpha ***/
+   for (b = 0; b < NSUBLYA-1; b++) {
+      ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+      Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+ 
+   /*** highest bin below Ly-alpha: feedback from optically thick Ly-alpha ***/
+   b = NSUBLYA-1; 
+   ainv = zp1*E21/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[0], iz, -log(ainv));
+      
+   /*** incoming photon occupation number at Lyman alpha ***/ 
+   b = NSUBLYA;     /* next highest bin */
+   ainv = zp1*Eb_tab[b]/E21;
+   Dfplus_Ly[0] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b], iz, -log(ainv)); 
+   
+   /*** Bins between Lyman alpha and beta ***/   
+   for (b = NSUBLYA; b < NSUBLYB-1; b++) {
+     ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+     Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+   
+   /*** highest bin below Ly-beta: feedback from Ly-beta ***/
+   b = NSUBLYB-1; 
+   ainv = zp1*E31/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[1], iz, -log(ainv));
+   
+   /*** incoming photon occupation number at Lyman beta ***/ 
+   b = NSUBLYB;     /* next highest bin */
+   ainv = zp1*Eb_tab[b]/E31;
+   Dfplus_Ly[1] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b], iz, -log(ainv)); 
+  
+   /*** Bins between Lyman beta and gamma ***/   
+   for (b = NSUBLYB; b < NVIRT-1; b++) {
+     ainv = zp1*Eb_tab[b+1]/Eb_tab[b]; 
+     Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_hist[b+1], iz, -log(ainv));
+   }
+
+   /*** highest energy bin: feedback from Ly-gamma ***/
+   b = NVIRT-1;
+   ainv = zp1*E41/Eb_tab[b];
+   Dfplus[b] = interp_Dfnu(lna_start, DLNA, Dfminus_Ly_hist[2], iz, -log(ainv));
+             
+}

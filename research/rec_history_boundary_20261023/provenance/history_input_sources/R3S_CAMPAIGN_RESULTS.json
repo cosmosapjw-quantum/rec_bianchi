@@ -1,0 +1,100 @@
+{
+  "adjudication_receipt": "receipts/CAMPAIGN_ADJUDICATION_001.json",
+  "all_job_commands_exit_zero": true,
+  "all_owned_descendants_reaped": true,
+  "allocation_id": "REC_R3S_NCP_20261021_001",
+  "campaign_failure": {
+    "message": "CAMPAIGN_INCOMPLETE_OR_BLOCKED",
+    "type": "ValueError"
+  },
+  "campaign_status": "PASS_SCOPED_AFTER_ADJUDICATION",
+  "claim_ceiling": {
+    "REI_activation": false,
+    "global_convergence": "NOT_RUN",
+    "historical_cost_ledger": "CLOSED_HOLD_NOT_RESET",
+    "original_U5_h": "HOLD_9_FAIL",
+    "original_U5_h2": "HOLD_8_FAIL",
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "whole_production_speedup": "NOT_MEASURED"
+  },
+  "frozen_input_hashes": {
+    "checkpoint": {
+      "bytes": 43904,
+      "path": "/root/REC_R3S_NCP_20261021/source/research/rec_r3o_grid_frontiers_20261019/h4_start_002/python_h4_full_start.npz",
+      "sha256": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef"
+    },
+    "native_stream": {
+      "bytes": 15434249,
+      "path": "/root/REC_R3S_NCP_20261021/raw_r3r_25000/native_oracle_stdout.csv",
+      "sha256": "3f1ab809f7fec021aeccba45c5ab887a82872e66e108e15c4bcb6df14ebb803d"
+    },
+    "python_result": {
+      "bytes": 197179,
+      "path": "/root/REC_R3S_NCP_20261021/raw_r3r_25000/python_continuation.npz",
+      "sha256": "a83f0831c1fb82e2e7d28c85551587671f7aaa0fe3816ff7c4d01953f24c1216"
+    },
+    "source_archive": {
+      "bytes": 726954,
+      "path": "/root/REC_R3S_NCP_20261021/source/archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip",
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    "verification": {
+      "bytes": 7422,
+      "path": "/root/REC_R3S_NCP_20261021/raw_r3r_25000/verification.json",
+      "sha256": "b7b9247a9bf5a98884a85a8248cc9b7b30135782b76d2a98c76acb34f7037427"
+    }
+  },
+  "h4_pilot": {
+    "comparison": "separate matched 16-step pilot runs, same CPU affinity [62], frozen input, exact same-h parity and common-input-sample gates PASS",
+    "legacy_new_accepted_steps": 16,
+    "numpy_new_accepted_steps": 16,
+    "physical_validity": "HOLD",
+    "production_readiness": "NOT_APPROVED",
+    "worker_status": "SMOKE_ONLY"
+  },
+  "jobs_blocked_by_verifier_contract": 0,
+  "jobs_complete": 4,
+  "jobs_executed": 5,
+  "original_campaign_terminal_status": "HOLD",
+  "original_terminal_blocked_job_count": 1,
+  "original_terminal_sha256": "eaee72446c4f8b2e5ce8de52a8a508e88a3dfb34f3697b070db29af239006625",
+  "per_job_resource_caps_respected": true,
+  "rerun_performed": false,
+  "saved_stream_audit": {
+    "campaign_verifier_rejection": "runner requires literal PASS; producer emits PASS_SAVED_STREAM_AUDIT_ONLY; the producer process returned 0 and guardian passed",
+    "claim_scope": "entire warm-cache CSV audit including open, parsing, allocations, callbacks, and verdict; no solver",
+    "differential": {
+      "compared": "canonical verdict JSON, all maxima float.hex, guard labels",
+      "status": "PASS"
+    },
+    "differing_binary64_lanes": 0,
+    "lane_count": 25000,
+    "legacy_median_cpu_s": 0.19916720599999982,
+    "legacy_median_wall_s": 0.20171634698635899,
+    "median_paired_cpu_ratio": 1.3874592504453431,
+    "median_paired_wall_ratio": 1.3878444844734634,
+    "numpy_median_cpu_s": 0.1425699629999997,
+    "numpy_median_wall_s": 0.1442986589972861,
+    "producer_exit_code": 0,
+    "producer_status": "PASS_SAVED_STREAM_AUDIT_ONLY",
+    "solver_integrations": 0
+  },
+  "schema": "rec.r3s.ncp-campaign-results.v1",
+  "source": {
+    "commit": "52f884b7b27814f808b9b4f7fd5ac9a3c6283e32",
+    "tree": "eb2108cfea0cd33577afed425389cbbce2de1189"
+  },
+  "trace_tests": {
+    "trace_interleaved": {
+      "existing_contracts_revalidated": 1,
+      "new_integrations": 0,
+      "verdict": "PASS_SCOPED"
+    },
+    "trace_original": {
+      "existing_contracts_revalidated": 1,
+      "new_integrations": 0,
+      "verdict": "PASS_SCOPED"
+    }
+  }
+}

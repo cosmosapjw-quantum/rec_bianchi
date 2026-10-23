@@ -1,0 +1,61 @@
+{
+  "schema": "REC_HISTORY_PUBLICATION_STATE_V1",
+  "observed_utc": "2026-10-23T18:49:46Z",
+  "overall_status": "SCIENCE_COMPLETE_SCOPED_DELIVERY_BLOCKED_NOT_PUBLISHED",
+  "science_status": "PASS_SCOPED",
+  "independent_review": "PASS_SCOPED",
+  "parent_REC_HISTORY": "PARTIAL",
+  "REC": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "source_branch": "research/rec-line-native-owner-20261023",
+    "actual_source_head": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
+    "source_tree": "dfa61d68aacfd3d3adc7ac5a5603f10e67349e3e",
+    "target_branch": "research/rec-history-boundary-20261023",
+    "target_readback": "404_NOT_FOUND",
+    "new_commit": null,
+    "new_PR": null,
+    "expected_sha_for_first_target_update": "a7c46fd8338971e2cefa776f5dd7b25a46974990"
+  },
+  "central": {
+    "repository": "cosmosapjw-quantum/rei_bianchi",
+    "source_branch": "research/orchestration-sandbox-20261022",
+    "actual_source_head": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
+    "source_tree": "f4bb481007415b7ae2c07250c25c3cb1aa4481f6",
+    "target_branch": "research/rec-history-sync-20261023",
+    "target_readback": "404_NOT_FOUND",
+    "new_commit": null,
+    "new_PR": null,
+    "prepared_files": [
+      "research/orchestration_longterm_20261023/assembly/DAG.json",
+      "research/orchestration_longterm_20261023/assembly/REC_HISTORY_STATUS_UPDATE.json",
+      "research/orchestration_longterm_20261023/README.md"
+    ],
+    "actual_REC_publication_binding": null
+  },
+  "interrupted_operations": [
+    {
+      "workflow": "Load publication payload; createRECbranch; createbinaryblob",
+      "tool_result": "aborted by user",
+      "reported_wait_seconds": 755.6,
+      "which_mutation_started": "UNCONFIRMED_NO_RECEIPT",
+      "remote_target_after": "404_NOT_FOUND"
+    },
+    {
+      "workflow": "Standalone GitHub create_branch at pinned source commit",
+      "tool_result": "aborted by user",
+      "reported_wait_seconds": 10521.0,
+      "remote_target_after": "404_NOT_FOUND"
+    }
+  ],
+  "diagnosis": "Write calls did not return provider completion before interruption. Read-only GitHub calls work; both source heads unchanged and both target branches absent. No automatic-approval rejection reason was returned. No successful Git mutation or PR is asserted.",
+  "unchanged_science": {
+    "primary_checks_pass": 608,
+    "independent_extra_checks_pass": 14,
+    "new_IVP": 0,
+    "old_replays": 0,
+    "charged_CPU_seconds": 4.848191000000001,
+    "execution_wall_seconds": 4.7365679680006,
+    "external_delivery_waits_in_scientific_execution_budget": false
+  },
+  "resume": "Restore/inspect checkpoint; reread AGENTS, actualheads, parallelchanges andbackups. Reuse unchanged608+14 science/review. Publish reviewed tree onnewRECbranch with exactexpectedSHA; bind actualRECcommit/PR into central3fileproposal; publish centralwith freshlease. Preserve rawdata and all existingHOLDs. No oldcampaign or newIVP."
+}

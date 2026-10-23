@@ -1,0 +1,209 @@
+{
+  "schema": "REC_HISTORY_GLOBAL_PROGRESS_V1",
+  "as_of_utc": "2026-10-23",
+  "interpretation": "Statuses refer to named scientific obligations. No percentage for full physical closure is inferred from local tests or file counts.",
+  "nodes": [
+    {
+      "id": "HIST",
+      "order": 1,
+      "label": "REC119 126 and REI220 129 + warm729",
+      "status": "COMPLETED_PRIOR_REUSED",
+      "depends_on": [],
+      "new_execution": 0
+    },
+    {
+      "id": "PRIM",
+      "order": 1,
+      "label": "Native primordial HyRec/EMLA/FULL q=0 and directional-spike donor",
+      "status": "COMPLETED_SCOPED_PRIOR_REUSED",
+      "depends_on": [],
+      "hold": "REC_U5_HOLD_9_FAIL/HOLD_8_FAIL"
+    },
+    {
+      "id": "THERM",
+      "order": 2,
+      "label": "THERM02 current-state compact34 thermal/Compton unit",
+      "status": "COMPLETE_SCOPED",
+      "depends_on": [
+        "HIST"
+      ],
+      "cohort": "separate 8 IVPs, completed before ANGULAR01",
+      "source": "REC125 b28b387fecd6cc71fddb98e95f336eba5f8a647f"
+    },
+    {
+      "id": "ANGULAR",
+      "order": 2,
+      "label": "Local Bianchi finite-tau scalar/PSTF escape moments",
+      "status": "COMPLETE_SCOPED_REVIEWED",
+      "depends_on": [
+        "PRIM"
+      ],
+      "cohort": "405 finite angular parameter rows + separately counted checks; cosmological IVP0",
+      "source": "REC127 5185c396b7e07076565ca2f5044a5ccd193e6ee1",
+      "new_execution_this_unit": 0
+    },
+    {
+      "id": "LI_SOURCE",
+      "order": 3,
+      "label": "Li final charge/state/energy-resolved ionic yield",
+      "status": "MISSING_EXACT_INPUT",
+      "depends_on": [
+        "THERM"
+      ]
+    },
+    {
+      "id": "ANGTHERM_REI",
+      "order": 3,
+      "label": "REI221 ANGTHERM01 prescribed-background directional thermochemistry",
+      "status": "PRIOR_COMPLETE_SCOPED_REPORTED_EVIDENCE_REUSED",
+      "depends_on": [
+        "HIST"
+      ],
+      "source": "REI2216daf382ee698835e7a141378c232d1d97c1c5cf1",
+      "cohort": "ten completed trajectories plus charged interrupted attempt, not LINE02 execution",
+      "new_execution_this_unit": 0,
+      "remaining": "Li threshold angular-continuum error and actual-field/Einstein closure remain open."
+    },
+    {
+      "id": "FIELD_SOURCE",
+      "order": 3,
+      "label": "Actual-field spectral recoil/induced source and energy owners",
+      "status": "OPEN_SOURCE_CONTRACT",
+      "depends_on": [
+        "THERM"
+      ]
+    },
+    {
+      "id": "LINE_MAP",
+      "order": 3,
+      "label": "Source-owned resolved-line number/energy and escaped angular injection",
+      "status": "COMPLETE_SCOPED_DETACHED_EFFECTIVE_LINE",
+      "depends_on": [
+        "ANGULAR"
+      ],
+      "constraint": "No double counting with canonical HyRec compressed Tvv/feedback/diffusion sector",
+      "source": "REC128 research/rec_line_source_20261023",
+      "scope": "Detached effective coincident 2p line, exact local thick map, one saved native state plus supplied angular fixtures",
+      "cohort": "36 source states,27 map validation rows,243 plot samples; new IVP0"
+    },
+    {
+      "id": "LINE_NATIVE_OWNER",
+      "order": 4,
+      "label": "Exclusive direct Ly-alpha pair, frozen residual/JVP and ledger; retained diffusion owner",
+      "status": "COMPLETE_SCOPED_REVIEWED",
+      "depends_on": [
+        "LINE_MAP",
+        "PRIM"
+      ],
+      "next_step": "LINE_HISTORY_BOUNDARY",
+      "source": "research/rec_line_native_owner_20261023",
+      "cohort": "7 owner +12 JVP +9 angular; 202 total rank queries; IVP0",
+      "completion_scope": "Frozen single snapshot only, 194checks; no coupled history",
+      "review": "COMPLETE_SCOPED_ADMISSION_FROZEN_SOURCE_ADAPTER",
+      "material_blockers": 0,
+      "new_execution": {
+        "owner": 7,
+        "JVP": 12,
+        "angular": 9,
+        "rank_queries": 202,
+        "IVP": 0
+      },
+      "delivery_status": "FINAL_RECEIPT_RESOLVED",
+      "delivery_evidence": "provenance/DELIVERY_AUDIT.json",
+      "new_execution_this_unit": 0
+    },
+    {
+      "id": "DAUGHTER",
+      "order": 3,
+      "label": "Physical nuclear daughter and electron/neutrino/recoil/stopping inputs",
+      "status": "OPEN_SOURCE_CONTRACT",
+      "depends_on": [
+        "HIST"
+      ],
+      "source": "REI221 current6daf382ee698835e7a141378c232d1d97c1c5cf1; prior local-flow73c5e00c retained; source input gaps remain."
+    },
+    {
+      "id": "LINE_HISTORY_BOUNDARY",
+      "order": 5,
+      "label": "Consistent finite outgoing boundary and incoming/outgoing history owner",
+      "status": "PARTIAL",
+      "depends_on": [
+        "LINE_NATIVE_OWNER",
+        "ANGULAR"
+      ],
+      "next_step": "Admit exact-domain retained history/reference or justified curvature+endpoint uncertainty, and selected direction/frame/geodesic owner; see NEXT_INPUT_CONTRACT.md. Existing actual/finer histories are inventoried; no newIVP.",
+      "central_node_alias": "REC-HISTORY",
+      "subunits": [
+        {
+          "id": "REC-HISTORY-01",
+          "status": "COMPLETE_SCOPED_BOUNDARY",
+          "source": "research/rec_history_boundary_20261023",
+          "primary_checks": 608,
+          "independent_extra_cases": 3,
+          "independent_extra_checks": 14,
+          "review": "PASS_SCOPED",
+          "material_blockers": 0,
+          "new_IVP": 0,
+          "old_LINE02_reruns": 0,
+          "delivery_status": "BLOCKED_NOT_PUBLISHED"
+        }
+      ],
+      "remaining": {
+        "actual_history_calibration": "INPUT_DEPENDENT_UNCALIBRATED",
+        "directional_Bianchi_history": "OPEN_INPUT_CONTRACT",
+        "full_thermodynamic_Jacobian": "NOT_CLOSED"
+      }
+    },
+    {
+      "id": "COUPLED",
+      "order": 6,
+      "label": "Self-consistent anisotropic atomic/spectral/thermal/metric coupling",
+      "status": "NOT_RUN",
+      "depends_on": [
+        "LI_SOURCE",
+        "FIELD_SOURCE",
+        "LINE_HISTORY_BOUNDARY",
+        "DAUGHTER"
+      ]
+    },
+    {
+      "id": "GLOBAL",
+      "order": 7,
+      "label": "Global convergence and held physical acceptance",
+      "status": "NOT_RUN_HOLD",
+      "depends_on": [
+        "COUPLED"
+      ]
+    },
+    {
+      "id": "PRODUCTION",
+      "order": 8,
+      "label": "Production approval and REI activation",
+      "status": "NOT_APPROVED",
+      "depends_on": [
+        "GLOBAL"
+      ],
+      "REI_activation": false
+    }
+  ],
+  "local_progress": {
+    "A": "COMPLETE_SOURCE_THEORY_CONTRACT_AND_DUAL_BACKUP",
+    "B": "COMPLETE_FIRST_PRIMARY_608_CHECKS",
+    "C": "SCIENCE_REVIEW_COMPLETE_GITHUB_PUBLICATION_BLOCKED"
+  },
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+  },
+  "completion_statement": "Finite boundary science and independent review passed; parentREC-HISTORY PARTIAL. Required Git/central publication is not complete; see delivery/PUBLICATION_STATE.json.",
+  "source_dag": {
+    "parent_commit": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
+    "path": "research/rec_line_native_owner_20261023/GLOBAL_DAG.json",
+    "sha256": "4ce266e1f1eac2fbe2755b35b3757819eb3c0126e77f1bff9e5e6199431273ec"
+  }
+}
