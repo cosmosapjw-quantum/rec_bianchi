@@ -1,6 +1,6 @@
 {
   "schema": "LINE02_GLOBAL_PROGRESS_V1",
-  "as_of_utc": "2026-10-23T07:34:40.398244+00:00",
+  "as_of_utc": "2026-10-23T07:40:50.238102+00:00",
   "interpretation": "Statuses refer to named scientific obligations. No percentage for full physical closure is inferred from local tests or file counts.",
   "nodes": [
     {
@@ -89,15 +89,25 @@
     {
       "id": "LINE_NATIVE_OWNER",
       "order": 4,
-      "label": "Exclusive native Ly-alpha/feedback/diffusion residual and JVP ownership handoff",
-      "status": "PRIMARY_FINITE_PASS_INDEPENDENT_REVIEW_PENDING",
+      "label": "Exclusive direct Ly-alpha pair, frozen residual/JVP and ledger; retained diffusion owner",
+      "status": "COMPLETE_SCOPED_REVIEWED",
       "depends_on": [
         "LINE_MAP",
         "PRIM"
       ],
-      "next_step": "Finish same review, publish raw/figures, then select separate LINE_HISTORY_BOUNDARY leaf.",
+      "next_step": "LINE_HISTORY_BOUNDARY",
       "source": "research/rec_line_native_owner_20261023",
-      "cohort": "7 owner +12 JVP +9 angular; 202 total rank queries; IVP0"
+      "cohort": "7 owner +12 JVP +9 angular; 202 total rank queries; IVP0",
+      "completion_scope": "Frozen single snapshot only, 194checks; no coupled history",
+      "review": "COMPLETE_SCOPED_ADMISSION_FROZEN_SOURCE_ADAPTER",
+      "material_blockers": 0,
+      "new_execution": {
+        "owner": 7,
+        "JVP": 12,
+        "angular": 9,
+        "rank_queries": 202,
+        "IVP": 0
+      }
     },
     {
       "id": "DAUGHTER",
@@ -110,20 +120,31 @@
       "source": "REI221 current6daf382ee698835e7a141378c232d1d97c1c5cf1; prior local-flow73c5e00c retained; source input gaps remain."
     },
     {
-      "id": "COUPLED",
+      "id": "LINE_HISTORY_BOUNDARY",
       "order": 5,
+      "label": "Consistent finite outgoing boundary and incoming/outgoing history owner",
+      "status": "NOT_RUN_SELECTED_NEXT",
+      "depends_on": [
+        "LINE_NATIVE_OWNER",
+        "ANGULAR"
+      ],
+      "next_step": "Read actual native boundary storage/interpolation owner; freeze physical ledger and finite acceptance before code; no completed campaign replay."
+    },
+    {
+      "id": "COUPLED",
+      "order": 6,
       "label": "Self-consistent anisotropic atomic/spectral/thermal/metric coupling",
       "status": "NOT_RUN",
       "depends_on": [
         "LI_SOURCE",
         "FIELD_SOURCE",
-        "LINE_NATIVE_OWNER",
+        "LINE_HISTORY_BOUNDARY",
         "DAUGHTER"
       ]
     },
     {
       "id": "GLOBAL",
-      "order": 6,
+      "order": 7,
       "label": "Global convergence and held physical acceptance",
       "status": "NOT_RUN_HOLD",
       "depends_on": [
@@ -132,7 +153,7 @@
     },
     {
       "id": "PRODUCTION",
-      "order": 7,
+      "order": 8,
       "label": "Production approval and REI activation",
       "status": "NOT_APPROVED",
       "depends_on": [
@@ -142,9 +163,9 @@
     }
   ],
   "local_progress": {
-    "A": "COMPLETE_GIT_AND_DUAL_BACKUP_EXACT_26_PAYLOAD_RECOVERY",
-    "B": "PRIMARY_COMPLETE_PUBLICATION_IN_PROGRESS",
-    "C": "SAME_REVIEW_AND_DELIVERY_IN_PROGRESS"
+    "A": "COMPLETE_SOURCE_THEORY_CONTRACT_AND_DUAL_BACKUP",
+    "B": "COMPLETE_FIRST_PRIMARY_GIT_AND_DUAL_BACKUP",
+    "C": "COMPLETE_REVIEW_REPORT_HANDOFF_PACKAGE_FINAL_RECEIPT_FOLLOWS"
   },
   "protected": {
     "Physical": "HOLD",
@@ -155,5 +176,6 @@
     "REI_activation": false,
     "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
   },
-  "as_of_kst": "2026-10-23"
+  "as_of_kst": "2026-10-23",
+  "completion_statement": "Named LINE02 finite research obligations complete; whole-project percentage not defined; final provider/Git checks are in FINAL_DELIVERY_RECEIPT."
 }

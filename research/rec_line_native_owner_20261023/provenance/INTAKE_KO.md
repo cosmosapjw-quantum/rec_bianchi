@@ -32,3 +32,11 @@ nonlinear lift remains a documented alternative in THEORY section8. A modern con
 substitution is not admitted as source parity. The unmodified PR220compact33 kernel is
 not a replacement for native excited2p/radiation virtual313; it remains a downstream donor.
 
+
+## Final preservation qualification after the incident
+
+The earlier final-archive sentence describes the planned intake package. Actual
+availability is superseded by RECOVERY_SCOPE.md: two of thirteen discovery payloads
+were exact-restored, eleven are unavailable. Only actually retained owner-intake
+responses and current payloads are listed in the final archive manifest. Nothing
+is claimed preserved solely because an earlier identity record lists it.

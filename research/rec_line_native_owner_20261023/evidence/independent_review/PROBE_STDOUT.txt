@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "P1_signed_boundary_off_solution",
+      "real_component_error": 8.33983298694066e-15,
+      "virtual_component_error": 8.570360575459755e-15,
+      "backward": 5.099791958037935e-16,
+      "residual_jvp_error": 3.170200145336864e-16,
+      "solution_jvp_error": 4.774777559581859e-15,
+      "passed": true
+    },
+    {
+      "case": "P2_absorption_mixed_jvp",
+      "real_component_error": 1.680490550051676e-14,
+      "virtual_component_error": 1.708184365180355e-14,
+      "backward": 1.4916798937519385e-16,
+      "residual_jvp_error": 3.636703341719292e-15,
+      "solution_jvp_error": 4.133279312112923e-14,
+      "passed": true
+    },
+    {
+      "case": "P3_rotated_finite_bound",
+      "C_abs_error": 8.881784197001252e-16,
+      "D_fro_error": 2.892565178889611e-15,
+      "differences": {
+        "state_inf": 7.810631729450831e-24,
+        "flux_per_H_s": 1.4318391263911461e-21,
+        "tensor_J_m3_s": 1.3993245544554003e-25
+      },
+      "numerical_slack": {
+        "state_inf": 1.1321367718963264e-27,
+        "flux_per_H_s": 2.059246244310254e-19,
+        "tensor_J_m3_s": 8.418378072568944e-29
+      },
+      "passed": true
+    },
+    {
+      "case": "P4_underflow_log_retention",
+      "passed": true
+    }
+  ],
+  "elapsed_s": 0.11056711700803135
+}
