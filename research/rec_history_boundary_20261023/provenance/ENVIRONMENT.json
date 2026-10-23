@@ -1,0 +1,59 @@
+{
+  "status": "READY_FOR_PRIMARY",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": {
+      "import": "PASS",
+      "version": "2.3.5",
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py"
+    },
+    "scipy": {
+      "import": "PASS",
+      "version": "1.17.0",
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/__init__.py"
+    },
+    "mpmath": {
+      "import": "PASS",
+      "version": "1.3.0",
+      "file": "/tmp/rec_history_deps/mpmath/__init__.py"
+    },
+    "matplotlib": {
+      "import": "PASS",
+      "version": "3.10.8",
+      "file": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/__init__.py"
+    }
+  },
+  "oracle_precision_decimal_digits": 80,
+  "package_setup": [
+    {
+      "step": "initial_metadata_probe",
+      "result": "PackageNotFoundError: mpmath",
+      "science_executed": false
+    },
+    {
+      "step": "actual_import_probe",
+      "result": "ModuleNotFoundError: mpmath",
+      "science_executed": false
+    },
+    {
+      "step": "restricted_pip_install",
+      "result": "NETWORK_BLOCKED_BROWSER_PROXY_8889",
+      "science_executed": false
+    },
+    {
+      "step": "approved_local_pip_install",
+      "target": "/tmp/rec_history_deps",
+      "package": "mpmath==1.3.0",
+      "result": "PASS",
+      "system_package_modified": false
+    }
+  ],
+  "timing_tool": "code/run_bounded.py, /usr/bin/time unavailable",
+  "environment_reconnect": "selected environment briefly unavailable and restored before primary; no scientific attempt occurred during interruption",
+  "python_capability": "PYTHON_PASS",
+  "cpp_capability": "CPP_PASS inherited same-turn minimal compile/run probe",
+  "cpp_probe_is_scientific_validation": false,
+  "new_scientific_execution_count_before_primary": 0
+}

@@ -1,0 +1,17 @@
+{
+  "finding": "RESOURCE_MONITOR_NAMESPACE_MISMATCH",
+  "observed_after": "primary001",
+  "severity": "telemetry/enforcement-description limitation; no scientific failure",
+  "evidence": {
+    "sandbox_pid_example": 5,
+    "proc_self_host_pid_example": 62400,
+    "primary_live_session_rss_bytes": 0,
+    "primary_live_session_cpu_seconds": 0,
+    "primary_actual_charged_cpu_seconds": 3.1535100000000003,
+    "primary_actual_wall_seconds": 3.0765686070008087,
+    "primary_actual_child_peak_rss_KiB": 105380
+  },
+  "correction": "Original primary receipt and source snapshot preserved. Its live-session enforcement phrase is not substantiated for that attempt: /proc exposes host PID namespace. Wall timeout, per-process RLIMIT_CPU/RLIMIT_AS and final inclusive getrusage were active. All measured resources are within frozen caps. Subsequent controller resolves the unique direct child private session through the observed /proc parent PID. This change requires no scientific rerun.",
+  "scientific_reruns": 0,
+  "budget_reset": false
+}

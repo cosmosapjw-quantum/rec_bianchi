@@ -1,0 +1,22 @@
+double interp_Dfnu(double lna_start, double dlna, double *ytab, unsigned int iz, double lna){  
+   long ind;
+   double frac;
+
+   /* If iz = 0 or 1, radiation field at earlier times is still thermal. 
+      Also thermal if iz > 1 and lna < lna_start. */
+   if (iz == 0 || iz == 1 || lna < lna_start) return 0.;
+   
+   /* Check if in range */
+   if (lna >= lna_start + dlna*(iz-1)) {
+       fprintf(stderr, "Error in interp_Dfnu: lna-value out of range in interpolation routine\n"); 
+       fprintf(stderr, "The time-step used is probably too large\n");
+       exit(1);
+    }
+ 
+    /* If iz >= 2, do a linear interpolation so the spectrum is always positive */
+    ind  = (long) floor((lna-lna_start)/dlna);
+    frac = (lna-lna_start)/dlna - ind;
+    
+    return (1.-frac)*ytab[ind] + frac*ytab[ind+1];  
+
+}
