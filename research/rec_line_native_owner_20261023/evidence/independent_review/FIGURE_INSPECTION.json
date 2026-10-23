@@ -1,0 +1,93 @@
+{
+  "schema": "LINE02_ACTUAL_PNG_INSPECTION_V1",
+  "reviewer": "SAME_SINGLE_FRESH_NONCONSTRUCTOR_PASS",
+  "actual_view_tool": "tools.view_image",
+  "actual_png_files_opened": 3,
+  "inspected_utc": "2026-10-23T07:37:20.888459+00:00",
+  "figures": [
+    {
+      "name": "line02_source_partition",
+      "png": {
+        "path": "figures/line02_source_partition.png",
+        "bytes": 88228,
+        "sha256": "64cb0395ffd0cc15c1cfa2d43880045be84e97727790363db18aea76d4252f1c"
+      },
+      "pdf": {
+        "path": "figures/line02_source_partition.pdf",
+        "bytes": 18453,
+        "sha256": "43c231a3bc9f71cd36412c495b778d1c68d7006456d6f8481f2bf7260f2c8b54"
+      },
+      "source_data": [
+        {
+          "path": "results/attempt001/PREPARATION.json",
+          "bytes": 2156,
+          "sha256": "62f3ab38c774b207c8800f7c0a4c024d275d42db81101772b62a4baada67cc9a"
+        }
+      ],
+      "status": "INSPECTED_ACCEPTABLE",
+      "observed": "Five native diagonal contributions, highlighted direct Ly-alpha term and matched signed-departure magnitudes are readable. Log scales and rate units are visible; no cropped labels.",
+      "scope_note": "The positive plotted magnitudes apply to the saved state; they do not establish universally positive microscopic gross rates."
+    },
+    {
+      "name": "line02_affine_response",
+      "png": {
+        "path": "figures/line02_affine_response.png",
+        "bytes": 126846,
+        "sha256": "47bbb93da28d55966893595704083623791a189b66ab1e53d9e0957e849e2905"
+      },
+      "pdf": {
+        "path": "figures/line02_affine_response.pdf",
+        "bytes": 19690,
+        "sha256": "f1c0ee06b6f631645fb18659e15471189ddc155951b4cd093e76875cb1d98a23"
+      },
+      "source_data": [
+        {
+          "path": "results/attempt001/AFFINE_RESPONSE.csv",
+          "bytes": 26849,
+          "sha256": "e6b794d9b0e15ef806087cd7d787fe4a3b296909a32b91a924ccae2fef8d772b"
+        },
+        {
+          "path": "results/attempt001/OWNER_CASES.jsonl",
+          "bytes": 194984,
+          "sha256": "85bb6736b942b32683df995cac8988fc15ffdacb71b6117c9841a057d3fa0295"
+        }
+      ],
+      "status": "INSPECTED_ACCEPTABLE",
+      "observed": "Three identified r/r0 tracks over b/b0=.8 to 1.2; population response and signed event-rate panels are readable, with zero crossing visible and no clipping.",
+      "scope_note": "183 fixed-block algebraic plot samples, not trajectories; the source at b/b0=1 is small but is not asserted exactly zero."
+    },
+    {
+      "name": "line02_angular_ledger",
+      "png": {
+        "path": "figures/line02_angular_ledger.png",
+        "bytes": 147812,
+        "sha256": "5b65eea8c0c1342d5c69f191111c2bf55f761d1e976a342954c7e92b30ee6c8a"
+      },
+      "pdf": {
+        "path": "figures/line02_angular_ledger.pdf",
+        "bytes": 23316,
+        "sha256": "359af63da798448c465df310b7a3ef6e23b25f19c50cef34da5159e3e65c5f4a"
+      },
+      "source_data": [
+        {
+          "path": "results/attempt001/ANGULAR_LEDGER.csv",
+          "bytes": 1491,
+          "sha256": "79eedcc1ef6daaf44aeeb542fa618d306479256ea523a11da1953e1d418e615f"
+        },
+        {
+          "path": "results/attempt001/ANGULAR_CASES.jsonl",
+          "bytes": 207317,
+          "sha256": "6739a5dbed59c98a604bae67b19dee1e8276c0c8d801fb7d2bcd302b844b89bb"
+        }
+      ],
+      "status": "INSPECTED_ACCEPTABLE_WITH_NONBLOCKING_NOTE",
+      "observed": "Six synthetic-opacity C/D controls and three actual scalar-state energy/normalized tensor injections are visually separated. Direct bound-bound scope is explicit; axes and units readable.",
+      "scope_note": "Lower-right bars are diagonal tensor components normalized by scalar energy injection, not evolved stress; photon number is recorded in ANGULAR_LEDGER.csv and related to energy by the declared E21.",
+      "minor_layout_note": "The lower-left energy legend partly covers the upper portion of the rotated radiation bar. Its height and energy equality remain available from other bars and raw data; no scientific acceptance blocker."
+    }
+  ],
+  "PDF_raster_review": "NOT_RUN",
+  "new_plot_generation": 0,
+  "scientific_recomputations": 0,
+  "immutable_primary_edited": false
+}

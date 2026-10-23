@@ -1,0 +1,111 @@
+{
+  "schema": "LINE02_PRIMARY_SOURCE_RECEIPTS_V1",
+  "agent": "/root/line02_sources",
+  "selected_stages": [
+    "R2",
+    "R3"
+  ],
+  "skill_context_used": [
+    "physmath-research-loop1.3.0 SKILL.md",
+    "POLICY_INTEGRATION.md",
+    "THEORY_LOOP.md",
+    "../RESUME_SELECTION.md"
+  ],
+  "as_of_utc": "2026-10-23T03:46:13.061526+00:00",
+  "actual_tools": {
+    "exa_search": 1,
+    "scispace_search": 1,
+    "web_primary_and_excerpt_calls": 4,
+    "github_read": 3
+  },
+  "source_failures": [
+    {
+      "operation": "arXiv1011.3758v2 HTML open",
+      "status": "DisabledError",
+      "recovery": "PDF alternate URL succeeded"
+    },
+    {
+      "operation": "local API wrapper extraction",
+      "failed_attempts": 2,
+      "diagnosis": "connector decoded UTF8 terminal content, not base64 API JSON",
+      "repair": "read terminal content after actual envelope inspection",
+      "remote_retries": 0,
+      "scientific_executions": 0
+    }
+  ],
+  "upstream_current_pin": "09e8243d0e08edd3603a94dfbc445ae06cafe139",
+  "native_reuse_pin": "df95a074730ea0d13d609cf88d448f01f4a47ef1",
+  "new_IVPs": 0,
+  "native_runtime": 0,
+  "prior_campaign_replays": 0,
+  "write_scope": "line_native_owner_work/primary_sources/*",
+  "independent_review": false,
+  "archive_inventory": "NOT_NEEDED_NO_EXTRACTION",
+  "files": [
+    {
+      "path": "EXA_NATIVE_OWNER_DISCOVERY.json",
+      "bytes": 20989,
+      "sha256": "dc77c892fcab4bea9b58654e11d617ed0c161f8b3b1b1f00c5e7227ebd24f971"
+    },
+    {
+      "path": "HYREC_ORIGINAL_PDF_AND_HYREC2_FORMULAS.json",
+      "bytes": 29437,
+      "sha256": "a63146f1ebdc8f51070fafb6f2ea55bb7c240fce527be2a5e47aef1c55b7f05c"
+    },
+    {
+      "path": "ORIGINAL_HYREC_FORMULA_FIND.json",
+      "bytes": 22712,
+      "sha256": "07a190c0484bc77a0cba73031a7c33c26aee08ebce91f18b28d24e323f1e70c4"
+    },
+    {
+      "path": "ORIGINAL_HYREC_SCHUR_EXCERPT.json",
+      "bytes": 20999,
+      "sha256": "8d0b58fc57d4543a600d54e61e79d0afe7c78ec82330da661e958dbfd9e2b82f"
+    },
+    {
+      "path": "PRIMARY_PAPERS_OPEN.json",
+      "bytes": 30145,
+      "sha256": "9c59c8edfeb828191dbf09d08184e8657f538794cd613750552dd0cd525035bc"
+    },
+    {
+      "path": "SCISPACE_NATIVE_OWNER_DISCOVERY.json",
+      "bytes": 53476,
+      "sha256": "5ab10669a8e6a4fb0bca3c126f4cee2e3507671439fe049708414bb9e5b73351"
+    },
+    {
+      "path": "SOURCE_SYNTHESIS_KO.md",
+      "bytes": 8908,
+      "sha256": "4a3486246e6bb44024b0dda52a830ebf5a6ef86764780513d818a09f1e406a80"
+    },
+    {
+      "path": "UPSTREAM_CODE_IDENTITY.json",
+      "bytes": 1220,
+      "sha256": "ee67804285f94710dc69ddcbda54199cfcaae0fff30a46cb88e699a9c04b602d"
+    },
+    {
+      "path": "UPSTREAM_HYDROGEN_C_API.json",
+      "bytes": 96429,
+      "sha256": "48c1eebb3b0bcf647c3539f0033c581eae446da3db29b6eac37a099bd9e78469"
+    },
+    {
+      "path": "UPSTREAM_MASTER.json",
+      "bytes": 13303,
+      "sha256": "9368e8ef2a54e3e04d2847ab7e433d94be36a2cc68975d58261ef8ab8f487c52"
+    },
+    {
+      "path": "UPSTREAM_NATIVE2012_DIFF.patch",
+      "bytes": 78087,
+      "sha256": "db951a38dd79a104178ac27c240ade989ce36652d590b6a56ce81bb5d435b1ae"
+    },
+    {
+      "path": "UPSTREAM_TREE.json",
+      "bytes": 11905,
+      "sha256": "e317c96c1ccce77133c175bf55070226b2d862f4455c4eeee46c61193cae8a42"
+    },
+    {
+      "path": "UPSTREAM_hydrogen.c",
+      "bytes": 46627,
+      "sha256": "734800ccd69b41d60b519f200003ce27c3b7640f76a70353499424842ba19616"
+    }
+  ]
+}

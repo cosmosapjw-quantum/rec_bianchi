@@ -1,0 +1,162 @@
+{
+  "schema": "LINE02_RECOVERED_REVIEW_TOOL_RECEIPTS_V1",
+  "classification": "RECONSTRUCTED_FROM_ACTUAL_TOOL_TRANSCRIPT_NOT_ORIGINAL_RAW",
+  "new_scientific_runs": 0,
+  "new_probes": 0,
+  "historical_completed_probes": 6,
+  "old_full_raw_status": {
+    "PROBE_RAW.json": "LOST_NOT_RECREATED",
+    "STABLE_DRIVE_PROBE_RAW.json": "LOST_NOT_RECREATED"
+  },
+  "old_code_hashes": {
+    "before_stable_drive": {
+      "native_line_owner.py": null,
+      "run_line02.py": null
+    },
+    "after_stable_drive": {
+      "native_line_owner.py": null,
+      "run_line02.py": null
+    },
+    "reason": "Hashes were written inside lost raw files but not printed in retained tool outputs. Exact historical implementation byte binding is unavailable."
+  },
+  "historical_executions": [
+    {
+      "session_id": 73909,
+      "exit_code": 0,
+      "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 timeout 60s python evidence/independent_review/probe_line02.py > evidence/independent_review/PROBE_STDOUT.txt 2> evidence/independent_review/PROBE_STDERR.txt",
+      "exit_receipt_source": "Actual write_stdin result: chunk_id 9cf0d7, exit_code 0",
+      "stdout_read_receipt_source": "Actual exec_command result: chunk_id 2e2875, exit_code 0",
+      "stdout_file": "PROBE_STDOUT.txt",
+      "original_probe_script_size_observed": 9082
+    },
+    {
+      "session_id": 21796,
+      "exit_code": 0,
+      "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 timeout 60s python evidence/independent_review/probe_stable_drive.py > evidence/independent_review/STABLE_DRIVE_STDOUT.txt 2> evidence/independent_review/STABLE_DRIVE_STDERR.txt",
+      "exit_receipt_source": "Actual write_stdin result: chunk_id 25ade5, exit_code 0",
+      "stdout_read_receipt_source": "Actual exec_command result: chunk_id 67accb, exit_code 0",
+      "stdout_file": "STABLE_DRIVE_STDOUT.txt"
+    }
+  ],
+  "source_input_identity_readback": [
+    {
+      "path": "inputs/ORIGINAL_HYREC_TRAJECTORY_SNAPSHOT.csv",
+      "bytes": 141089,
+      "recovered_sha256": "3a95862b9cd4f924d63020f39fc537b371133af6160e88c3409d8c69fc0c34b7",
+      "expected_preincident_source_sha256": "3a95862b9cd4f924d63020f39fc537b371133af6160e88c3409d8c69fc0c34b7",
+      "matches": true
+    },
+    {
+      "path": "vendor/original_hyrec_physical_flux.py",
+      "bytes": 40747,
+      "recovered_sha256": "37e00dd8224ddd4d5cec7b2b78c689893996e499b944f38302c5dcc104b61e9f",
+      "expected_preincident_source_sha256": "37e00dd8224ddd4d5cec7b2b78c689893996e499b944f38302c5dcc104b61e9f",
+      "matches": true
+    },
+    {
+      "path": "vendor/original_hyrec_native.py",
+      "bytes": 22766,
+      "recovered_sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c",
+      "expected_preincident_source_sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c",
+      "matches": true
+    },
+    {
+      "path": "vendor/primitive_trajectory.py",
+      "bytes": 32202,
+      "recovered_sha256": "2e4d4c618493f9ba560444bb7cad7848cccf8012c15b08241cbefe797f15eec1",
+      "expected_preincident_source_sha256": "2e4d4c618493f9ba560444bb7cad7848cccf8012c15b08241cbefe797f15eec1",
+      "matches": true
+    },
+    {
+      "path": "vendor/hydrogen.c",
+      "bytes": 37471,
+      "recovered_sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "expected_preincident_source_sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "matches": true
+    },
+    {
+      "path": "vendor/hydrogen.h",
+      "bytes": 7837,
+      "recovered_sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "expected_preincident_source_sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "matches": true
+    },
+    {
+      "path": "vendor/hyrec_spike_transfer.py",
+      "bytes": 4199,
+      "recovered_sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+      "expected_preincident_source_sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9",
+      "matches": true
+    },
+    {
+      "path": "code/escape_moments.py",
+      "bytes": 13814,
+      "recovered_sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e",
+      "expected_preincident_source_sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e",
+      "matches": true
+    }
+  ],
+  "recovered_artifact_hashes": [
+    {
+      "path": "probe_line02.py",
+      "bytes": 9082,
+      "sha256": "c3e967d31dce3fa0763c6f5c6e42fe470369ad1519bf8ec329e25422f854c858",
+      "identity_claim": "CONTENT_RECONSTRUCTED_FROM_TRANSCRIPT; original SHA256 unavailable"
+    },
+    {
+      "path": "probe_stable_drive.py",
+      "bytes": 4437,
+      "sha256": "b5e1177a5cdb7f9aeb89f8e1ec68f77317777b5bfcfd8f75c71bcab92abb10e1",
+      "identity_claim": "CONTENT_RECONSTRUCTED_FROM_TRANSCRIPT; original SHA256 unavailable"
+    },
+    {
+      "path": "PROBE_STDOUT.txt",
+      "bytes": 1324,
+      "sha256": "90a5ccda6c5af9e04126c3fbc9b9af5135cc86a73926d39e20456268c3e1bbbe",
+      "identity_claim": "CONTENT_RECONSTRUCTED_FROM_TRANSCRIPT; original SHA256 unavailable"
+    },
+    {
+      "path": "STABLE_DRIVE_STDOUT.txt",
+      "bytes": 317,
+      "sha256": "3040ff13d81984616b4006c7f7aa287fbcb7aa5de5a929ce355a4c27103ad688",
+      "identity_claim": "CONTENT_RECONSTRUCTED_FROM_TRANSCRIPT; original SHA256 unavailable"
+    },
+    {
+      "path": "RECOVERED_P3_PARTIAL_OUTPUT.json",
+      "bytes": 1358,
+      "sha256": "5915718e2f04a823dc4a0a07cbab184a553737c5c89c3e8fa8b3ba0d0cd78b86",
+      "identity_claim": "CONTENT_RECONSTRUCTED_FROM_TRANSCRIPT; original SHA256 unavailable"
+    }
+  ],
+  "skill_context": {
+    "version": "physmath-research-loop 1.3.0",
+    "selected_stages": [
+      "R6",
+      "C9"
+    ],
+    "restore_source": "Parent-restored line_native_owner_work/skill_context",
+    "historical_skill_digests": "NOT_RETAINED_IN_TOOL_OUTPUT",
+    "files": [
+      {
+        "path": "skill_context_used/CODING_LOOP.md",
+        "bytes": 4459,
+        "restored_sha256": "bcd704c3898d6cbf692ea6aea01c2004334ff719c0f4069e13f8db7f243f7912"
+      },
+      {
+        "path": "skill_context_used/POLICY_INTEGRATION.md",
+        "bytes": 7992,
+        "restored_sha256": "4daafb5f47cfffdcd9a0dc101223519af3a560486ef653c12334f20cdda30963"
+      },
+      {
+        "path": "skill_context_used/SKILL.md",
+        "bytes": 7061,
+        "restored_sha256": "d1a11cfc999ea42ba60491f36869545f1ba28ce10d32b8477636f3b604448959"
+      },
+      {
+        "path": "skill_context_used/THEORY_LOOP.md",
+        "bytes": 4591,
+        "restored_sha256": "d3ac045d604a0c2ccba166d5eaccbc5114ad9b8bd141d30c273094353a9c72bf"
+      }
+    ]
+  }
+}

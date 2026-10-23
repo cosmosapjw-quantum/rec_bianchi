@@ -1,0 +1,25 @@
+{
+  "schema": "line02.primary_execution.v1",
+  "command": "timeout 180s env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 LINE02_COMMAND='timeout 180s env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 python code/run_line02.py' python code/run_line02.py",
+  "cwd": "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_native_owner_20261023",
+  "initial_tool_return": {
+    "chunk_id": "f12696",
+    "wall_time_seconds": 1.001007125,
+    "session_id": 44066,
+    "original_token_count": 98,
+    "output": "/root/.config/matplotlib is not a writable directory\nMatplotlib created a temporary cache directory at /tmp/matplotlib-1290yjaw because there was an issue with the default path (/root/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.\n"
+  },
+  "final_tool_return": {
+    "chunk_id": "d06f98",
+    "wall_time_seconds": 0.000022614,
+    "exit_code": 0,
+    "original_token_count": 781,
+    "output": "START: first new-code primary pass; no native history or IVP.\nPrepared original 313 blocks, one 3-RHS virtual band solve, one 2-RHS real solve.\nCompleted seven exclusive owner controls against full313 and Schur2 references.\nCompleted twelve residual and solved-state JVP directions with complex full algebra.\nCompleted nine angular source rows and six bound controls with twelve additional rank queries.\nPASS: bounded primary complete; PNG visual inspection remains.\n{\n  \"status\": \"PASS\",\n  \"counts\": {\n    \"owner_cases\": 7,\n    \"full_313_reference_solves\": 7,\n    \"direct_schur_2x2_solves\": 7,\n    \"jvp_directions\": 12,\n    \"complex_313_reference_solves\": 12,\n    \"angular_cases\": 9,\n    \"propagated_bound_cases\": 6,\n    \"additional_bound_rank_queries\": 12,\n    \"invalid_cases\": 12,\n    \"mutation_cases\": 2,\n    \"rank_plot_samples\": 183,\n    \"native_runtime_runs\": 0,\n    \"ivp_runs\": 0,\n    \"historical_campaign_replays\": 0\n  },\n  \"operator_counters\": {\n    \"preparation_banded_calls\": 1,\n    \"preparation_banded_rhs_columns\": 3,\n    \"preparation_real_solve_calls\": 1,\n    \"preparation_real_rhs_columns\": 2,\n    \"rank_one_solution_queries\": 202,\n    \"assembled_queries\": 7,\n    \"residual_queries\": 7,\n    \"residual_jvp_queries\": 12,\n    \"solution_jvp_queries\": 12,\n    \"angular_event_queries\": 9,\n    \"state_bound_queries\": 9\n  },\n  \"angular_counters\": {\n    \"tensor_validations\": 27,\n    \"analytic_thick_calls\": 3,\n    \"general_quadrature_calls\": 6,\n    \"general_quadrature_nodes\": 49152\n  },\n  \"checks\": 194,\n  \"elapsed_s\": 2.077208039998368,\n  \"r0_s_inv\": 1.0832181815556778,\n  \"b0_departure\": 1.966063256108117e-14,\n  \"native_tau\": 578353783.1996146,\n  \"gamma0\": 0.005045333040636401,\n  \"K_condition\": 24.509360369477253,\n  \"source_reference\": {\n    \"precision\": 70,\n    \"r_s_inv\": \"1.083218181555677793951293662137578004635099499049363379477122482271969\",\n    \"b_departure\": \"1.9660632561081168585643872385604118E-14\",\n    \"signed_loss_departure\": \"2.135162115662037351013234345212350917709936483725425904494917500860341E-14\",\n    \"signed_incoming_departure\": \"2.129675465104869175792405476183395591796943239805023084509213101837376E-14\",\n    \"net_per_H_s\": \"5.486650557168175220828869028955325912993243920402819985704399022965E-17\",\n    \"gross_scale\": \"4.264837580766906526805639821395746509506879723530448989004130602697717E-14\",\n    \"computed_float\": 5.486650557167991e-17,\n    \"absolute_error\": 1.8417336200692332e-30,\n    \"allowance\": 2.1324187903834533e-26\n  },\n  \"rotation_covariance_abs\": 8.972059582075359e-18,\n  \"max_rank_real_component_error\": 8.16418551131124e-15,\n  \"max_rank_virtual_component_error\": 7.716887860999565e-15,\n  \"max_backward\": 4.423318876663953e-16,\n  \"figures\": 3,\n  \"figure_review\": \"PENDING_ACTUAL_PNG_INSPECTION\",\n  \"protected_status\": {\n    \"Physical\": \"HOLD\",\n    \"REC_U5\": \"HOLD_9_FAIL/HOLD_8_FAIL\",\n    \"reset_status\": \"CLOSED_HOLD_NOT_RESET\",\n    \"global_convergence\": \"NOT_RUN\",\n    \"production\": \"NOT_APPROVED\",\n    \"REI_activation\": false,\n    \"historical_first_failed_REI_raw\": \"LOCAL_ONLY\"\n  },\n  \"prior_review_inherited_as_test\": false,\n  \"new_code_primary_only\": true\n}\n"
+  },
+  "actual_exit_code": 0,
+  "science_attempts": 1,
+  "repeat_runs": 0,
+  "matplotlib_warning": "Read-only default cache directory; Matplotlib used temporary /tmp cache. No scientific failure.",
+  "source_git_checkpoint": "92b604ab696481ecc26ff0c09543c4735c3da6bd"
+}
+

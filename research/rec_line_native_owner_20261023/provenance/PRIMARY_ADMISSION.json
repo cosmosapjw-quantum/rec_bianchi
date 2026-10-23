@@ -1,0 +1,559 @@
+{
+  "schema": "LINE02_PRIMARY_ADMISSION_V1",
+  "status": "COMPLETE_SCOPED_ADMISSION_FROZEN_SOURCE_ADAPTER",
+  "attempts": 1,
+  "primary_sha256": "708e89a3a2b7cda60b954f39da6e2a60753c3e73fe02eec3b54034fb178a30db",
+  "checks": 194,
+  "counts": {
+    "owner_cases": 7,
+    "full_313_reference_solves": 7,
+    "direct_schur_2x2_solves": 7,
+    "jvp_directions": 12,
+    "complex_313_reference_solves": 12,
+    "angular_cases": 9,
+    "propagated_bound_cases": 6,
+    "additional_bound_rank_queries": 12,
+    "invalid_cases": 12,
+    "mutation_cases": 2,
+    "rank_plot_samples": 183,
+    "native_runtime_runs": 0,
+    "ivp_runs": 0,
+    "historical_campaign_replays": 0
+  },
+  "operator_counters": {
+    "preparation_banded_calls": 1,
+    "preparation_banded_rhs_columns": 3,
+    "preparation_real_solve_calls": 1,
+    "preparation_real_rhs_columns": 2,
+    "rank_one_solution_queries": 202,
+    "assembled_queries": 7,
+    "residual_queries": 7,
+    "residual_jvp_queries": 12,
+    "solution_jvp_queries": 12,
+    "angular_event_queries": 9,
+    "state_bound_queries": 9
+  },
+  "angular_counters": {
+    "tensor_validations": 27,
+    "analytic_thick_calls": 3,
+    "general_quadrature_calls": 6,
+    "general_quadrature_nodes": 49152
+  },
+  "maxima": {
+    "rank_real": 8.16418551131124e-15,
+    "rank_virtual": 7.716887860999565e-15,
+    "backward": 4.423318876663953e-16,
+    "residual_jvp_scaled": 2.7217633666152512e-14,
+    "solution_jvp_scaled": 3.3032991548635334e-12
+  },
+  "native": {
+    "r0_s_inv": 1.0832181815556778,
+    "tau": 578353783.1996146,
+    "gamma0": 0.005045333040636401,
+    "K_condition": 24.509360369477253,
+    "saved_source_ledger": {
+      "per_H_rate_s_inv": 5.486650557167991e-17,
+      "upper_count_m3_s": -1.3726872952767989e-08,
+      "lower_count_m3_s": 1.3726872952767989e-08,
+      "photon_count_m3_s": 1.3726872952767989e-08,
+      "atomic_internal_J_m3_s": -2.242990553943301e-26,
+      "radiation_J_m3_s": 2.242990553943301e-26,
+      "kinetic_heat_J_m3_s": 0.0,
+      "electron_yield_m3_s": 0.0,
+      "ionic_yield_m3_s": 0.0,
+      "PSTF_injection_J_m3_s": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "odd_momentum_injection": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scope": "DIRECT_BOUND_BOUND_EVENT_ONLY"
+    },
+    "fresh_solved_baseline_ledger": {
+      "per_H_rate_s_inv": 5.4866505571478246e-17,
+      "upper_count_m3_s": -1.3726872952717536e-08,
+      "lower_count_m3_s": 1.3726872952717536e-08,
+      "photon_count_m3_s": 1.3726872952717536e-08,
+      "atomic_internal_J_m3_s": -2.242990553935057e-26,
+      "radiation_J_m3_s": 2.242990553935057e-26,
+      "kinetic_heat_J_m3_s": 0.0,
+      "electron_yield_m3_s": 0.0,
+      "ionic_yield_m3_s": 0.0,
+      "PSTF_injection_J_m3_s": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "odd_momentum_injection": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scope": "DIRECT_BOUND_BOUND_EVENT_ONLY"
+    },
+    "snapshot_backward": 3.066056354007571e-16,
+    "snapshot_vs_prepared_component_error": 9.453313387658615e-15
+  },
+  "angular_summary": [
+    {
+      "case": "native_iso",
+      "C": 1.0,
+      "D": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "log_delta": -578353783.1996146,
+      "bounds": {
+        "state_inf": {
+          "log": -578353826.0104712,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "flux_per_H_s": {
+          "log": -578353820.6463014,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "tensor_J_m3_s": {
+          "log": -578353842.4617496,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        }
+      },
+      "resolved_above_roundoff": {},
+      "differences": {}
+    },
+    {
+      "case": "native_tri",
+      "C": 1.0,
+      "D": [
+        [
+          -0.05333333333333334,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.013333333333333336,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.04
+        ]
+      ],
+      "log_delta": -444887525.5381651,
+      "bounds": {
+        "state_inf": {
+          "log": -444887568.34902173,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "flux_per_H_s": {
+          "log": -444887562.9848518,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "tensor_J_m3_s": {
+          "log": -444887584.79988,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        }
+      },
+      "resolved_above_roundoff": {},
+      "differences": {}
+    },
+    {
+      "case": "native_rotated",
+      "C": 1.0,
+      "D": [
+        [
+          -0.02130487966649844,
+          0.005053574214238333,
+          0.04136598028680486
+        ],
+        [
+          0.005053574214238333,
+          0.014396681181411504,
+          -0.014831905043105468
+        ],
+        [
+          0.04136598028680486,
+          -0.014831905043105468,
+          0.006908198485086935
+        ]
+      ],
+      "log_delta": -444887525.5381651,
+      "bounds": {
+        "state_inf": {
+          "log": -444887568.34902173,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "flux_per_H_s": {
+          "log": -444887562.9848518,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        },
+        "tensor_J_m3_s": {
+          "log": -444887584.79988,
+          "value": null,
+          "representation": "UNDERFLOW_USE_LOG"
+        }
+      },
+      "resolved_above_roundoff": {},
+      "differences": {}
+    },
+    {
+      "case": "synthetic_0.3_iso",
+      "C": 0.2591817793182822,
+      "D": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "log_delta": -0.3,
+      "bounds": {
+        "state_inf": {
+          "log": -52.56171741469127,
+          "value": 1.4884565702196825e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -47.19754749696815,
+          "value": 3.1795492959271782e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -52.9226180962264,
+          "value": 1.0375260099467329e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 1.4884565192177485e-23,
+        "flux_per_H_s": 3.1795492947933235e-21,
+        "tensor_J_m3_s": 0.0
+      }
+    },
+    {
+      "case": "synthetic_0.3_tri",
+      "C": 0.2578568457791881,
+      "D": [
+        [
+          -0.002309533415980147,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0007387033147199295,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0015708301012602177
+        ]
+      ],
+      "log_delta": -0.23076923076923075,
+      "bounds": {
+        "state_inf": {
+          "log": -52.263208626809465,
+          "value": 2.006212291195162e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -46.89903870908634,
+          "value": 4.285547194036417e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -52.54412817352557,
+          "value": 1.5148689981240476e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 1.498780499656557e-23,
+        "flux_per_H_s": 3.2016023715598764e-21,
+        "tensor_J_m3_s": 2.5260825142681895e-25
+      }
+    },
+    {
+      "case": "synthetic_2_iso",
+      "C": 0.8646647167633874,
+      "D": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "log_delta": -2.0,
+      "bounds": {
+        "state_inf": {
+          "log": -53.56941055841492,
+          "value": 5.433761791909457e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -48.2052406406918,
+          "value": 1.1607267437538877e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -55.82743064518222,
+          "value": 5.681394309703228e-25,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 5.433762267583714e-24,
+        "flux_per_H_s": 1.160726745788696e-21,
+        "tensor_J_m3_s": 0.0
+      }
+    },
+    {
+      "case": "synthetic_2_tri",
+      "C": 0.8550628367201416,
+      "D": [
+        [
+          -0.03352881027894757,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.009582029980744958,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.023946780298202613
+        ]
+      ],
+      "log_delta": -1.5384615384615383,
+      "bounds": {
+        "state_inf": {
+          "log": -53.01158193891624,
+          "value": 9.492103979424329e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -47.64741202119311,
+          "value": 2.0276448186991314e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -55.189620935420294,
+          "value": 1.0751081879151112e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 5.884627829353731e-24,
+        "flux_per_H_s": 1.2570380227115476e-21,
+        "tensor_J_m3_s": 8.290825748700778e-26
+      }
+    },
+    {
+      "case": "synthetic_30_iso",
+      "C": 0.9999999999999065,
+      "D": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "log_delta": -30.0,
+      "bounds": {
+        "state_inf": {
+          "log": -79.00679280282368,
+          "value": 4.872881529583333e-35,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -73.64262288510055,
+          "value": 1.040914954894293e-32,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -83.97285354350383,
+          "value": 3.3966678171495713e-37,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": false,
+        "flux_per_H_s": false,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 0.0,
+        "flux_per_H_s": 0.0,
+        "tensor_J_m3_s": 0.0
+      }
+    },
+    {
+      "case": "synthetic_30_tri",
+      "C": 0.9999999999908271,
+      "D": [
+        [
+          -0.05333333333059274,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.01333333333510217,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.03999999999549057
+        ]
+      ],
+      "log_delta": -23.076923076923077,
+      "bounds": {
+        "state_inf": {
+          "log": -72.08371587965183,
+          "value": 4.948116980155104e-32,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -66.71954596192872,
+          "value": 1.0569862886960385e-29,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -76.96979626392168,
+          "value": 3.73630403874545e-34,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "resolved_above_roundoff": {
+        "state_inf": false,
+        "flux_per_H_s": false,
+        "tensor_J_m3_s": true
+      },
+      "differences": {
+        "state_inf": 0.0,
+        "flux_per_H_s": 0.0,
+        "tensor_J_m3_s": 2.2583422833101172e-35
+      }
+    }
+  ],
+  "old_six_review_numerical_tests_admitted_for_new_code": false,
+  "primary_elapsed_s": 2.077208039998368,
+  "wall_clock_is_not_speedup_benchmark": true,
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "reset_status": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "historical_first_failed_REI_raw": "LOCAL_ONLY"
+  },
+  "independent_review": "evidence/independent_review/REVIEW_KO.md",
+  "review_material_blockers": 0,
+  "figures_actual_png_review": 3
+}

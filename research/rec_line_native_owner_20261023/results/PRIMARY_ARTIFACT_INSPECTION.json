@@ -1,0 +1,307 @@
+{
+  "schema": "line02.primary_artifact_inspection.v1",
+  "timestamp_utc": "2026-10-23T07:34:32.112405+00:00",
+  "kind": "POSTPROCESS_EXISTING_PRIMARY_RAW_NO_NEW_OPERATOR_QUERIES",
+  "actual_PNG_inspection": "PASS",
+  "figures": [
+    {
+      "path": "figures/line02_source_partition.png",
+      "bytes": 88228,
+      "sha256": "64cb0395ffd0cc15c1cfa2d43880045be84e97727790363db18aea76d4252f1c",
+      "actual_image_view": "PASS",
+      "readable_labels": true,
+      "no_clipped_data_or_labels": true,
+      "PDF_raster_review": "NOT_RUN"
+    },
+    {
+      "path": "figures/line02_affine_response.png",
+      "bytes": 126846,
+      "sha256": "47bbb93da28d55966893595704083623791a189b66ab1e53d9e0957e849e2905",
+      "actual_image_view": "PASS",
+      "readable_labels": true,
+      "no_clipped_data_or_labels": true,
+      "PDF_raster_review": "NOT_RUN"
+    },
+    {
+      "path": "figures/line02_angular_ledger.png",
+      "bytes": 147812,
+      "sha256": "5b65eea8c0c1342d5c69f191111c2bf55f761d1e976a342954c7e92b30ee6c8a",
+      "actual_image_view": "PASS",
+      "readable_labels": true,
+      "no_clipped_data_or_labels": true,
+      "PDF_raster_review": "NOT_RUN"
+    }
+  ],
+  "manifest_payload_identity": {
+    "status": "PASS",
+    "files": 18,
+    "manifest_sha256": "acdd0e0ab5c7cd94302744657a06eb7216834cc7c3194e104cee0f5d0808a0f3"
+  },
+  "max_residual_JVP_scaled": 2.7217633666152512e-14,
+  "max_solution_JVP_scaled": 3.3032991548635334e-12,
+  "max_residual_JVP_absolute": 1.550963648536927e-25,
+  "max_solution_JVP_absolute": 1.3866695599588098e-31,
+  "max_API_backward": 4.423318876663953e-16,
+  "min_owner_x2p": 1.9631866482567126e-14,
+  "min_owner_virtual_total_occupation": 4.106457877721425e-19,
+  "native_event": {
+    "per_H_s": 5.486650557167991e-17,
+    "photon_m3_s": 1.3726872952767989e-08,
+    "radiation_J_m3_s": 2.242990553943301e-26,
+    "isotropic_C": 1.0,
+    "triaxial_C": 1.0,
+    "triaxial_D": [
+      [
+        -0.05333333333333334,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.013333333333333336,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.04
+      ]
+    ],
+    "native_log_delta_iso": -578353783.1996146,
+    "native_log_delta_tri": -444887525.5381651,
+    "state_bound_underflow_representations": {
+      "state_inf": "UNDERFLOW_USE_LOG",
+      "flux_per_H_s": "UNDERFLOW_USE_LOG",
+      "tensor_J_m3_s": "UNDERFLOW_USE_LOG"
+    }
+  },
+  "bound_controls": [
+    {
+      "case": "synthetic_0.3_iso",
+      "C": 0.2591817793182822,
+      "gamma": 0.9999998977081381,
+      "differences": {
+        "state_inf": 1.4884565192177485e-23,
+        "flux_per_H_s": 3.1795492947933235e-21,
+        "tensor_J_m3_s": 0.0
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -52.56171741469127,
+          "value": 1.4884565702196825e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -47.19754749696815,
+          "value": 3.1795492959271782e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -52.9226180962264,
+          "value": 1.0375260099467329e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367718666567e-27,
+        "flux_per_H_s": 3.0907761267127058e-28,
+        "tensor_J_m3_s": 1.2635362110883928e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      }
+    },
+    {
+      "case": "synthetic_0.3_tri",
+      "C": 0.2578568457791881,
+      "gamma": 0.9999998977081381,
+      "differences": {
+        "state_inf": 1.498780499656557e-23,
+        "flux_per_H_s": 3.2016023715598764e-21,
+        "tensor_J_m3_s": 2.5260825142681895e-25
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -52.263208626809465,
+          "value": 2.006212291195162e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -46.89903870908634,
+          "value": 4.285547194036417e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -52.54412817352557,
+          "value": 1.5148689981240476e-23,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367718668346e-27,
+        "flux_per_H_s": 3.090776123578775e-28,
+        "tensor_J_m3_s": 1.2635362098072147e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      }
+    },
+    {
+      "case": "synthetic_2_iso",
+      "C": 0.8646647167633874,
+      "gamma": 0.9999993180546488,
+      "differences": {
+        "state_inf": 5.433762267583714e-24,
+        "flux_per_H_s": 1.160726745788696e-21,
+        "tensor_J_m3_s": 0.0
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -53.56941055841492,
+          "value": 5.433761791909457e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -48.2052406406918,
+          "value": 1.1607267437538877e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -55.82743064518222,
+          "value": 5.681394309703228e-25,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367719012012e-27,
+        "flux_per_H_s": 3.090774622025034e-28,
+        "tensor_J_m3_s": 1.263535595958962e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      }
+    },
+    {
+      "case": "synthetic_2_tri",
+      "C": 0.8550628367201416,
+      "gamma": 0.9999993180546488,
+      "differences": {
+        "state_inf": 5.884627829353731e-24,
+        "flux_per_H_s": 1.2570380227115476e-21,
+        "tensor_J_m3_s": 8.290825748700778e-26
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -53.01158193891624,
+          "value": 9.492103979424329e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -47.64741202119311,
+          "value": 2.0276448186991314e-21,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -55.189620935420294,
+          "value": 1.0751081879151112e-24,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367719019777e-27,
+        "flux_per_H_s": 3.0907746083383784e-28,
+        "tensor_J_m3_s": 1.2635355903637379e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": true,
+        "flux_per_H_s": true,
+        "tensor_J_m3_s": true
+      }
+    },
+    {
+      "case": "synthetic_30_iso",
+      "C": 0.9999999999999065,
+      "gamma": 0.9999897709173943,
+      "differences": {
+        "state_inf": 0.0,
+        "flux_per_H_s": 0.0,
+        "tensor_J_m3_s": 0.0
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -79.00679280282368,
+          "value": 4.872881529583333e-35,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -73.64262288510055,
+          "value": 1.040914954894293e-32,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -83.97285354350383,
+          "value": 3.3966678171495713e-37,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367727288815e-27,
+        "flux_per_H_s": 3.090745278902988e-28,
+        "tensor_J_m3_s": 1.2635236002349976e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": false,
+        "flux_per_H_s": false,
+        "tensor_J_m3_s": true
+      }
+    },
+    {
+      "case": "synthetic_30_tri",
+      "C": 0.9999999999908271,
+      "gamma": 0.9999897709173943,
+      "differences": {
+        "state_inf": 0.0,
+        "flux_per_H_s": 0.0,
+        "tensor_J_m3_s": 2.2583422833101172e-35
+      },
+      "bounds": {
+        "state_inf": {
+          "log": -72.08371587965183,
+          "value": 4.948116980155104e-32,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "flux_per_H_s": {
+          "log": -66.71954596192872,
+          "value": 1.0569862886960385e-29,
+          "representation": "FLOAT_APPROXIMATION"
+        },
+        "tensor_J_m3_s": {
+          "log": -76.96979626392168,
+          "value": 3.73630403874545e-34,
+          "representation": "FLOAT_APPROXIMATION"
+        }
+      },
+      "roundoff": {
+        "state_inf": 1.1321367727288815e-27,
+        "flux_per_H_s": 3.090745278902988e-28,
+        "tensor_J_m3_s": 1.2635236002349976e-37
+      },
+      "bound_above_roundoff": {
+        "state_inf": false,
+        "flux_per_H_s": false,
+        "tensor_J_m3_s": true
+      }
+    }
+  ],
+  "scientific_primary_status": "PASS",
+  "scientific_primary_runs": 1,
+  "new_tests": 0,
+  "review_scope": "constructor actual-image/readback inspection; independent review belongs to parent",
+  "remaining_scope": "frozen source only; outgoing history, stimulated overlap, thermal closure and production remain open"
+}

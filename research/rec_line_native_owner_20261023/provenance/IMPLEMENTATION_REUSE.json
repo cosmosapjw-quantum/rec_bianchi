@@ -1,0 +1,129 @@
+{
+  "schema": "line02.implementation_reuse.v2",
+  "recovery": {
+    "event": "previous local implementation absent at recovery read; cause unestablished",
+    "original_final_code_hash": "UNAVAILABLE_NOT_INVENTED",
+    "identity": "NEW_CODE_IDENTITY",
+    "old_review_raw": "NOT_RECOVERED_NOT_FABRICATED",
+    "old_review_summaries": "historical only; not tests of reconstructed code",
+    "scientific_primary": "NOT_RUN"
+  },
+  "implementation": [
+    {
+      "path": "code/native_line_owner.py",
+      "bytes": 17870,
+      "new_sha256": "96dbf48afa3a85e6a6d7f5a4affd03dec64f3647cbc6603fe7a55a51895d6197",
+      "old_expected_sha256": null,
+      "identity_status": "NEW_CONSTRUCTION_NOT_BYTE_RECOVERY"
+    },
+    {
+      "path": "code/run_line02.py",
+      "bytes": 32677,
+      "new_sha256": "630261cd84ed3b5e58c2a5fd2b4792edbcab603b8781fa5fa718cfe2a5bb9e53",
+      "old_expected_sha256": null,
+      "identity_status": "NEW_CONSTRUCTION_NOT_BYTE_RECOVERY"
+    }
+  ],
+  "static_validation": {
+    "command": "ast.parse and python py_compile on both reconstructed modules",
+    "exit_code": 0,
+    "scientific_evaluations": 0
+  },
+  "reused_original_ast": {
+    "source_module_sha256": "37e00dd8224ddd4d5cec7b2b78c689893996e499b944f38302c5dcc104b61e9f",
+    "selection_mode": "EXACT_ORIGINAL_AST_NODES_NOT_REWRITTEN_FUNCTIONS",
+    "selected_nodes": [
+      {
+        "name": "_readonly_array",
+        "source_line_start": 56,
+        "source_line_end": 64,
+        "source_segment_sha256": "3da6a41414613a2ac70d135b01a6982b62706234ff2d92bce006634fd2e24526"
+      },
+      {
+        "name": "OriginalHyRecTrajectorySnapshot",
+        "source_line_start": 268,
+        "source_line_end": 399,
+        "source_segment_sha256": "6930cab1aaeeb5e68736d6c8e84c3ff3a304b316c2b8737086da87402fc6c45a"
+      },
+      {
+        "name": "parse_original_hyrec_snapshot_csv",
+        "source_line_start": 402,
+        "source_line_end": 532,
+        "source_segment_sha256": "d80307a8db08d91373baf62731868c59fc9ef2a61b0ef6d09a3cc0f214fbfaeb"
+      },
+      {
+        "name": "dense_original_hyrec_matrix",
+        "source_line_start": 688,
+        "source_line_end": 699,
+        "source_segment_sha256": "70011898ae2ea0be014abbb01c8d32b935fcd5507576276dc61314c5c49d3192"
+      },
+      {
+        "name": "structured_schur_solution",
+        "source_line_start": 708,
+        "source_line_end": 717,
+        "source_segment_sha256": "c45e1b1085b6b79e954a8a3fb25456cb5eef29f2bad669a861856159df5c3669"
+      }
+    ],
+    "scientific_evaluations": 0,
+    "caution": "structured_schur_solution is an independent dense reference, do not invoke until frozen new-case execution scope."
+  },
+  "immutable_inputs": [
+    {
+      "path": "inputs/ORIGINAL_HYREC_TRAJECTORY_SNAPSHOT.csv",
+      "bytes": 141089,
+      "sha256": "3a95862b9cd4f924d63020f39fc537b371133af6160e88c3409d8c69fc0c34b7"
+    },
+    {
+      "path": "vendor/original_hyrec_physical_flux.py",
+      "bytes": 40747,
+      "sha256": "37e00dd8224ddd4d5cec7b2b78c689893996e499b944f38302c5dcc104b61e9f"
+    },
+    {
+      "path": "code/escape_moments.py",
+      "bytes": 13814,
+      "sha256": "f8a91ddad8833d4c0079025af81fb8df4b9423da3d87a8363093603922da0c2e"
+    },
+    {
+      "path": "vendor/hyrec_spike_transfer.py",
+      "bytes": 4199,
+      "sha256": "3d03c35299d529ecaac66f40f5fc78f14ec3099c057005762f112250ee19add9"
+    }
+  ],
+  "numerical_choices": {
+    "banded_virtual": "311 x 3 RHS once, source Tvr transposed",
+    "real_preparation": "2 x 2 with two RHS once",
+    "exclusive_owner": "only direct Trr[1,1] and paired sr[1] contribution",
+    "native_constant": "LYA_FACT=4.662899067555897e15 literally",
+    "eta_margin": "64 eps*(1+abs((r-r0)*a)), positive branch",
+    "solved_drive": "[(x0_p-b0)-(1-gamma0)*(b-b0)]/eta",
+    "angular_controls": "3 native auto + 6 synthetic forced quadrature",
+    "PSTF_projection": "64eps scalar-normalized projection, exact isotropic zero",
+    "bound_queries": "6 synthetic baselines + 6 finite, all same frozen host",
+    "bound_roundoff": "stable flux scale; gross cancellation scale separately recorded"
+  },
+  "execution_contract": {
+    "owner_cases": 7,
+    "jvp_directions": 12,
+    "angular_cases": 9,
+    "invalid_cases": 12,
+    "mutations": 2,
+    "rank_plot_samples": 183,
+    "additional_bound_rank_queries": 12,
+    "rank_queries_total": 202,
+    "primary_attempts_authorized": 1,
+    "thread_limit": 1,
+    "timeout_s": 180,
+    "native_runtime_runs": 0,
+    "ivp_runs": 0,
+    "historical_replays": 0
+  },
+  "scope": "frozen source affine derivative and direct bound-bound ledger; not global thermal or spectral closure",
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "reset": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  }
+}
