@@ -1,0 +1,13 @@
+--- attempt001/line_source.py
++++ resume001/line_source.py
+@@ -315,6 +315,10 @@
+         return 0.0, 0.0, 0
+     lower = -omega + min(z0, 0.0)
+     upper = min(0.0, -omega + max(z0, 0.0))
++    # Outward rounding preserves a bracket when |z0| is below an ulp of omega.
++    # The real-valued proof interval is unchanged; no residual tolerance is relaxed.
++    lower = math.nextafter(lower, -math.inf)
++    upper = min(0.0, math.nextafter(upper, math.inf))
+     def residual(u):
+         COUNTERS['log_root_function_evaluations'] += 1
+         return math.fsum((u, z0 * math.expm1(u), omega))

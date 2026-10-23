@@ -1,0 +1,47 @@
+{
+  "unit": "LINE01",
+  "stage": "C_SCIENCE_REVIEW_HANDOFF_COMPLETE_DELIVERY_RECEIPT_FOLLOWS",
+  "completed": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "R9",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9"
+  ],
+  "in_progress": [
+    "R10_C10_publication_and_complete_archive"
+  ],
+  "not_run": [],
+  "checkpoints": {
+    "A": "POSTED_DUAL_BACKUP_ACK_SIZE",
+    "B": "POSTED_DUAL_BACKUP_ACK_SIZE",
+    "C": "SCIENCE_REVIEW_PLOTS_HANDOFF_COMPLETE; final publication/backup in post-publication receipt"
+  },
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closure": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+  },
+  "completion_denominator": "Three LINE01 delivery checkpoints; not a percentage of total cosmological physics",
+  "metadata_correction": "delivery/STAGE_A_METADATA_CORRECTION.json",
+  "science_decision": "PASS_AFTER_TARGETED_ROUNDING_REPAIR",
+  "independent_review": "PASS_AFTER_TARGETED_REPAIR; one pass; six off-grid cases",
+  "final_receipt_policy": "Immutable tracked science precedes its own commit/provider receipts. Latest PR128 return and final archive receipt close R10/C10 without self-referential hashes."
+}

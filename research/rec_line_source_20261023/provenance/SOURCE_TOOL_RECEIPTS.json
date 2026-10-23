@@ -1,0 +1,192 @@
+{
+  "schema": "rec_bianchi.LINE01.source_tool_receipts.v1",
+  "task": "LINE01 R2/R3 primary-source construction",
+  "created_local_date": "2026-10-23",
+  "timezone": "Asia/Seoul",
+  "connector_calls": 6,
+  "connectors_used": {
+    "Exa": 2,
+    "SciSpace": 1,
+    "primary_web_reader": 3
+  },
+  "science_runs": 0,
+  "external_mutations": 0,
+  "primary_pages_retained": 5,
+  "calls": [
+    {
+      "id": "S01",
+      "connector": "Exa",
+      "operation": "web_search_exa",
+      "request": {
+        "kind": "exa",
+        "args": {
+          "numResults": 4,
+          "objective": "Locate primary NIST hydrogen Ly-alpha fine-structure line data: vacuum wavelength, Aki, level J and degeneracies. Prefer NIST ASD/Handbook; exclude tertiary summaries.",
+          "query": "Find the NIST hydrogen H I persistent spectral line table for the 1s 2S1/2 to 2p 2P1/2 and 2P3/2 Lyman alpha transitions, including wavelengths near 1215.67 Angstrom and transition probabilities Aki."
+        }
+      },
+      "receipt": "source_raw/EXA_SEARCH_NIST.json",
+      "outcome": "SUCCESS_PRIMARY_NIST_DISCOVERY",
+      "use": "Locate fine-J NIST row and detect whole-shell-average convention."
+    },
+    {
+      "id": "S02",
+      "connector": "SciSpace",
+      "operation": "search_papers",
+      "request": {
+        "kind": "scispace",
+        "args": {
+          "searchQuestion": "How is the cosmological Lyman-alpha Sobolev optical depth written when stimulated emission and upper/lower level populations are retained, and how does the net 2p to 1s rate depend on the incident photon occupation and escape probability?"
+        }
+      },
+      "receipt": "source_raw/SCISPACE_DISCOVERY.json",
+      "outcome": "SUCCESS_DISCOVERY_WITH_DUPLICATES_AND_METADATA_CAUTION",
+      "use": "Locate Sobolev/stimulated/feedback papers; formula and dates then checked against primary PDFs."
+    },
+    {
+      "id": "S03",
+      "connector": "primary_web_reader",
+      "operation": "open",
+      "request": {
+        "kind": "web",
+        "args": {
+          "open": [
+            {
+              "ref_id": "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable3.htm"
+            },
+            {
+              "ref_id": "https://arxiv.org/pdf/0810.1045"
+            },
+            {
+              "ref_id": "https://arxiv.org/pdf/0903.4925"
+            }
+          ],
+          "response_length": "long"
+        }
+      },
+      "receipt": "source_raw/PRIMARY_OPEN.json",
+      "outcome": "SUCCESS_NIST_AND_TWO_PRIMARY_PDFS",
+      "use": "Read exact atomic rows and paper equations."
+    },
+    {
+      "id": "S04",
+      "connector": "primary_web_reader",
+      "operation": "find_and_search",
+      "request": {
+        "find": [
+          {
+            "ref_id": "turn29view0",
+            "pattern": "1215"
+          },
+          {
+            "ref_id": "turn29view1",
+            "pattern": "stimulated"
+          },
+          {
+            "ref_id": "turn29view1",
+            "pattern": "35b"
+          },
+          {
+            "ref_id": "turn29view2",
+            "pattern": "Sobolev optical depth"
+          }
+        ],
+        "system1_search_query": [
+          {
+            "q": "site:physics.nist.gov H I ASD 1215.66824 6.2648"
+          }
+        ]
+      },
+      "receipt": "source_raw/PRIMARY_FORMULA_FIND.json",
+      "outcome": "FORMULA_FINDS_SUCCEEDED; ADDITIONAL_NIST_SEARCH_EMPTY",
+      "use": "Verify stimulated term and exact Sobolev equations; empty optional search not counted as evidence."
+    },
+    {
+      "id": "S05",
+      "connector": "Exa",
+      "operation": "web_fetch_exa",
+      "request": {
+        "urls": [
+          "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable3.htm",
+          "https://physics.nist.gov/Pubs/AtSpec/node18.html"
+        ],
+        "maxCharacters": 8000
+      },
+      "receipt": "source_raw/EXA_NIST_TABLES.json",
+      "outcome": "SUCCESS_TWO_PRIMARY_TABLE_TEXTS",
+      "use": "Recover clean tabular constants and the shell-weight footnote."
+    },
+    {
+      "id": "S06",
+      "connector": "primary_web_reader",
+      "operation": "open_and_click",
+      "request": {
+        "open": [
+          {
+            "ref_id": "https://physics.nist.gov/Pubs/AtSpec/node18.html"
+          }
+        ],
+        "click": [
+          {
+            "ref_id": "turn29view0",
+            "id": 4
+          },
+          {
+            "ref_id": "turn29view0",
+            "id": 5
+          }
+        ],
+        "response_length": "long"
+      },
+      "receipt": "source_raw/NIST_BIBLIOGRAPHY_AND_SHELL_TABLE.json",
+      "outcome": "SUCCESS_SHELL_CONVENTION_AND_NIST_BIBLIOGRAPHY",
+      "use": "Verify BM00/MK00a source ownership and g=2*n^2 shell convention."
+    }
+  ],
+  "artifact_integrity": {
+    "interpretation": "SHA256 values certify only the exact stored serialized tool-response files. They do not certify byte identity of original remote HTML or PDFs.",
+    "files": [
+      {
+        "path": "source_raw/EXA_NIST_TABLES.json",
+        "sha256": "76b2f51340979aba61840334a9cb0b23826ed3805a63e0060299bbcf07a44734",
+        "bytes": 6312
+      },
+      {
+        "path": "source_raw/EXA_SEARCH_NIST.json",
+        "sha256": "5a5b2d3e57399a6c16836bdb65480f5d9f535b1feaa39584a79669f89fc4f8c2",
+        "bytes": 13752
+      },
+      {
+        "path": "source_raw/NIST_BIBLIOGRAPHY_AND_SHELL_TABLE.json",
+        "sha256": "4aa3eb9ab00c173fcb0dfaf92404d1c7868889bf656415526435f8045e7bab71",
+        "bytes": 8603
+      },
+      {
+        "path": "source_raw/PRIMARY_FORMULA_FIND.json",
+        "sha256": "e30308279d838b8e2adf200b71d889eab4c9567f4d5db0a3ba7df4f5e0bff5b3",
+        "bytes": 22709
+      },
+      {
+        "path": "source_raw/PRIMARY_OPEN.json",
+        "sha256": "0d362e86e8a6e7a0a8f7e7fec0090d93908f0ab53502536eee82ba411f90c48e",
+        "bytes": 27389
+      },
+      {
+        "path": "source_raw/SCISPACE_DISCOVERY.json",
+        "sha256": "e9c6f22f7645ba07ee3e14e60fa9a1fab7c41d3189a93d63a080bb222ced06f8",
+        "bytes": 65155
+      }
+    ]
+  },
+  "source_fact_vs_derivation": "LINE_SOURCES.json formulas[].origin explicitly distinguishes source translation, source convention, inherited ANGULAR01 definition and direct derivation.",
+  "source_stop_reason": "Sufficient primary NIST constants, population convention, exact stimulated Sobolev equations and model-boundary sources obtained. No broad literature campaign launched.",
+  "preserved_flags": {
+    "Physical": "HOLD",
+    "REC_U5": "HOLD",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "historical_first_failure_raw": "LOCAL_ONLY"
+  }
+}
+

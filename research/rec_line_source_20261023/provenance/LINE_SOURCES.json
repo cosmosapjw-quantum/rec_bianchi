@@ -1,0 +1,361 @@
+{
+  "schema": "rec_bianchi.LINE01.source_lock.v1",
+  "created_local_date": "2026-10-23",
+  "timezone": "Asia/Seoul",
+  "status": "SOURCE_LOCK_READY_FOR_PARENT_THEORY_CONTRACT",
+  "scope": "One source-qualified unpolarized hydrogen Ly-alpha component in a declared isolated two-level Sobolev model. No full cosmological source, nuclear network, or thermodynamic closure is certified.",
+  "skill_context_used": [
+    "skill://plugins_6acdfbba921881919e0c17843706aef4/physmath-research-loop/SKILL.md",
+    "skill://plugins_6acdfbba921881919e0c17843706aef4/physmath-research-loop/references/POLICY_INTEGRATION.md",
+    "skill://plugins_6acdfbba921881919e0c17843706aef4/physmath-research-loop/references/THEORY_LOOP.md (R2 and R3)"
+  ],
+  "anchors": {
+    "inherited_unit": "ANGULAR01",
+    "rec_pr": 127,
+    "rec_head": "5185c396b7e07076565ca2f5044a5ccd193e6ee1",
+    "selection_file": "RESUME_SELECTION.md"
+  },
+  "sources": [
+    {
+      "id": "NIST_HI_PERSISTENT",
+      "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable3.htm",
+      "title": "Persistent Lines of Neutral Hydrogen (H I)",
+      "owner": "NIST Physical Measurement Laboratory",
+      "kind": "PRIMARY_INSTITUTIONAL_ATOMIC_DATA",
+      "access_date": "2026-10-23",
+      "web_refs": [
+        "turn29view0",
+        "turn30view0"
+      ],
+      "locator": "1215.66824 and 1215.67364 Angstrom rows; Aki heading is 10^8 s^-1",
+      "receipt_files": [
+        "source_raw/PRIMARY_OPEN.json",
+        "source_raw/EXA_NIST_TABLES.json"
+      ],
+      "facts": [
+        "Vacuum fine-component wavelengths, spontaneous emission coefficients, lower/upper J values and level energies."
+      ],
+      "limitations": [
+        "This is the currently accessible NIST Handbook table, not a fresh ASD dynamic query or a claim about the newest ASD release.",
+        "Numerical uncertainties are not supplied on this table. Tabulated digits are finite-precision data, not exact physical constants.",
+        "Tabulated line intensities are not population boundary conditions."
+      ]
+    },
+    {
+      "id": "NIST_HI_REFERENCES",
+      "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable7.htm",
+      "title": "References and Notes for Hydrogen",
+      "owner": "NIST Physical Measurement Laboratory",
+      "kind": "PRIMARY_INSTITUTIONAL_PROVENANCE",
+      "access_date": "2026-10-23",
+      "web_refs": [
+        "turn31view1",
+        "turn31view2"
+      ],
+      "locator": "BM00 and MK00a entries",
+      "receipt_files": [
+        "source_raw/NIST_BIBLIOGRAPHY_AND_SHELL_TABLE.json"
+      ],
+      "facts": [
+        "BM00: J. Baker and P. Mohr, unpublished calculations (2000).",
+        "MK00a: P. Mohr and S. Kotochigova, unpublished calculations (2000)."
+      ],
+      "limitations": [
+        "Underlying unpublished calculation files were not accessed. This lock uses NIST's published tabulation."
+      ]
+    },
+    {
+      "id": "NIST_HYDROGEN_SHELL_AVERAGE",
+      "url": "https://physics.nist.gov/Pubs/AtSpec/node18.html",
+      "title": "Atomic Spectroscopy: Atomic Lifetimes / Regularities and Scaling",
+      "owner": "NIST",
+      "kind": "PRIMARY_INSTITUTIONAL_CONVENTION",
+      "access_date": "2026-10-23",
+      "web_refs": [
+        "turn31view0"
+      ],
+      "locator": "Hydrogen spectral-series table and footnotes b,c",
+      "receipt_files": [
+        "source_raw/EXA_NIST_TABLES.json",
+        "source_raw/NIST_BIBLIOGRAPHY_AND_SHELL_TABLE.json"
+      ],
+      "facts": [
+        "The 1-2 row has lambda=1215.67 Angstrom, lower g=2, upper g=8, A=4.699e8 s^-1.",
+        "Here g=2 n^2 counts the whole principal shell, not only 2p."
+      ],
+      "reuse": "Convention countercheck only; do not import its g and A into an n_2p variable."
+    },
+    {
+      "id": "HIRATA_FORBES_2009",
+      "url": "https://arxiv.org/pdf/0903.4925",
+      "arxiv": "0903.4925v2",
+      "title": "Lyman-alpha transfer in primordial hydrogen recombination",
+      "authors": [
+        "Christopher M. Hirata",
+        "John Forbes"
+      ],
+      "primary_version_date": "2009-06-30",
+      "kind": "PRIMARY_RESEARCH_FORMULA",
+      "access_date": "2026-10-23",
+      "web_refs": [
+        "turn29view2",
+        "turn30view3"
+      ],
+      "locator": "Section II.B, equations (1)-(3)",
+      "receipt_files": [
+        "source_raw/PRIMARY_OPEN.json",
+        "source_raw/PRIMARY_FORMULA_FIND.json"
+      ],
+      "facts": [
+        "Stimulated-emission-preserving bound-bound population rate.",
+        "Sobolev escape probability and opacity difference g*x_l-x_u.",
+        "The incident f_plus is the blue-side photon occupation; it may contain feedback."
+      ],
+      "limitations": [
+        "Equations assume the stated Sobolev/line model; the paper itself studies corrections beyond that approximation.",
+        "The Bianchi directional substitution and tensor injection map below are direct derivations for this unit, not formulas quoted from this paper."
+      ]
+    },
+    {
+      "id": "CHLUBA_SUNYAEV_2009",
+      "url": "https://arxiv.org/pdf/0810.1045",
+      "arxiv": "0810.1045",
+      "doi": "10.1051/0004-6361/200811100",
+      "title": "Time-Dependent Corrections to the Ly-alpha Escape Probability During Cosmological Hydrogen Recombination",
+      "authors": [
+        "Jens Chluba",
+        "Rashid A. Sunyaev"
+      ],
+      "kind": "PRIMARY_RESEARCH_CONVENTION_AND_BOUNDARY",
+      "access_date": "2026-10-23",
+      "web_refs": [
+        "turn29view1",
+        "turn30view1",
+        "turn30view2"
+      ],
+      "locator": "Sections 2.2.3-2.2.4, 3.2.2; equation (35b)",
+      "receipt_files": [
+        "source_raw/PRIMARY_OPEN.json",
+        "source_raw/PRIMARY_FORMULA_FIND.json"
+      ],
+      "facts": [
+        "Occupation convention f_nu=c^2 I_nu/(2 h nu^3).",
+        "Standard Sobolev beta and its thick limit.",
+        "Real emission/absorption, resonant scattering and profile/time corrections must be distinguished."
+      ],
+      "limitations": [
+        "Several source terms there explicitly neglect stimulated emission for f<<1; use Hirata-Forbes equations (1)-(3) for the exact finite-f toy/source contract."
+      ]
+    }
+  ],
+  "atomic_components": [
+    {
+      "id": "H_LYA_J3HALF",
+      "lower": "1s 2S_1/2",
+      "upper": "2p 2P^o_3/2",
+      "lambda_vac_angstrom_decimal": "1215.66824",
+      "lambda_vac_m": 1.21566824e-07,
+      "A_ul_s_inv": 626480000,
+      "lower_energy_cm_inv": "0.0000",
+      "upper_energy_cm_inv": "82259.2850",
+      "g_l": 2,
+      "g_u": 4,
+      "g_ratio": 2,
+      "line_reference": "MK00a",
+      "A_reference": "BM00",
+      "source": "NIST_HI_PERSISTENT",
+      "uncertainty": "NOT_PROVIDED_ON_TABLE"
+    },
+    {
+      "id": "H_LYA_J1HALF",
+      "lower": "1s 2S_1/2",
+      "upper": "2p 2P^o_1/2",
+      "lambda_vac_angstrom_decimal": "1215.67364",
+      "lambda_vac_m": 1.21567364e-07,
+      "A_ul_s_inv": 626490000,
+      "lower_energy_cm_inv": "0.0000",
+      "upper_energy_cm_inv": "82258.9191",
+      "g_l": 2,
+      "g_u": 2,
+      "g_ratio": 1,
+      "line_reference": "MK00a",
+      "A_reference": "BM00",
+      "source": "NIST_HI_PERSISTENT",
+      "uncertainty": "NOT_PROVIDED_ON_TABLE"
+    }
+  ],
+  "recommended_contract": {
+    "component": "H_LYA_J1HALF",
+    "rationale": "A single explicit J component ties the tabulated A and vacuum wavelength to one unambiguous population. The J=1/2 choice avoids a rank-two atomic alignment degree of freedom within an unpolarized scalar-population contract.",
+    "classification": "SOURCE_BOUND_COUNTERMODEL_OR_ADAPTER_COMPONENT",
+    "no_claim": "This is not an isolated physical description of the complete cosmological Ly-alpha doublet, whose overlapping line transfer and feedback need a separate owner.",
+    "population": "n_l and n_u count all magnetic substates of the selected lower and upper J levels per physical volume in the matter rest frame. No per-m-substate population and no whole-n=2 shell population.",
+    "required_owned_inputs": [
+      "n_l [m^-3]",
+      "n_u [m^-3]",
+      "H [s^-1]",
+      "symmetric trace-free sigma_ab [s^-1]",
+      "f_plus at the line blue boundary, dimensionless and with provenance"
+    ],
+    "isotropy": "Factorization into scalar D times B,Q requires direction-independent blue-boundary f_plus, unpolarized populations and direction-independent rest-frame line emissivity.",
+    "coefficients_not_fitted": true
+  },
+  "collapsed_comparison": {
+    "fine_J1half": {
+      "g_ratio": 1,
+      "population": "n_2p1/2"
+    },
+    "fine_J3half": {
+      "g_ratio": 2,
+      "population": "n_2p3/2"
+    },
+    "collapsed_2p": {
+      "g_l": 2,
+      "g_u": 6,
+      "g_ratio": 3,
+      "population": "n_2p=n_2p1/2+n_2p3/2",
+      "conditions": [
+        "A common-frequency/common-A approximation must be explicitly chosen, or keep and sum the two component source rates.",
+        "A statistical sublevel split n_2p3/2=2*n_2p1/2 is an additional population closure, not implied by the NIST intensity column.",
+        "A single beta of a summed opacity does not in general equal the sum of two component escape rates; shared/overlapping line transfer needs its own derivation."
+      ]
+    },
+    "whole_n2_shell": {
+      "g_l": 2,
+      "g_u": 8,
+      "g_ratio": 4,
+      "population": "n_2=n_2s+n_2p",
+      "A_shell_s_inv": 469900000,
+      "source": "NIST_HYDROGEN_SHELL_AVERAGE",
+      "warning": "Do not mix with collapsed 2p g=3 or a selected fine J population."
+    },
+    "fine_split_angstrom_derived": "0.00540",
+    "fine_split_note": "Difference of the tabulated wavelengths; not an uncertainty estimate. A collapsed-frequency model discards this splitting.",
+    "derived_shell_relation": "Under statistical shell occupancy n_2p=(6/8)*n_2, (3/4)*A_2p approximately yields the shell-average A; this is a convention explanation, not a physical mixing rate."
+  },
+  "formulas": [
+    {
+      "id": "population_conversion",
+      "origin": "SOURCE_TRANSLATION",
+      "source": "HIRATA_FORBES_2009",
+      "equation": "n_i=n_H*x_i; g=g_u/g_l",
+      "units": "n_i,n_H: m^-3; x_i,g: dimensionless"
+    },
+    {
+      "id": "opacity_difference",
+      "origin": "SOURCE_TRANSLATION",
+      "source": "HIRATA_FORBES_2009",
+      "locator": "equation (3)",
+      "equation": "Delta=g*n_l-n_u",
+      "units": "m^-3",
+      "domain": "Delta>0 for the inherited positive-t escape kernel. Inversion is excluded."
+    },
+    {
+      "id": "line_occupation",
+      "origin": "SOURCE_CONVENTION",
+      "source": "CHLUBA_SUNYAEV_2009",
+      "equation": "f_nu=c^2*I_nu/(2*h*nu^3), h=2*pi*hbar",
+      "note": "Unpolarized occupation per photon state; f_plus is evaluated on the blue boundary, not a bolometric energy density."
+    },
+    {
+      "id": "sobolev_FLRW",
+      "origin": "SOURCE_TRANSLATION",
+      "source": "HIRATA_FORBES_2009",
+      "locator": "equations (2),(3)",
+      "equation": "tau=A_ul*lambda_vac^3*Delta/(8*pi*H); beta(tau)=(1-exp(-tau))/tau"
+    },
+    {
+      "id": "number_source",
+      "origin": "SOURCE_TRANSLATION",
+      "source": "HIRATA_FORBES_2009",
+      "locator": "equation (1), contribution u->l",
+      "equation": "D=n_u*(1+f_plus)-g*n_l*f_plus=n_u-Delta*f_plus; R=A_ul*beta*D",
+      "units": "D: m^-3; R: m^-3 s^-1",
+      "sign": "R>0 means net downward transition / net line-photon creation."
+    },
+    {
+      "id": "Bianchi_direction",
+      "origin": "DIRECT_DERIVATION_WITH_INHERITED_ANGULAR01",
+      "equation": "C_S=A_ul*lambda_vac^3*Delta/(8*pi); S_ab=sigma_ab/H; q(n)=1+S_ab*n_a*n_b; t=C_S/H; tau(n)=t/q(n)",
+      "units": "C_S,H,sigma: s^-1; S,q,t,tau: dimensionless",
+      "domain": "H>0, Delta>0, q(n)>0, nonrelativistic comoving line, local Sobolev approximation. Shear sign must agree with the parent geodesic redshift convention."
+    },
+    {
+      "id": "angle_moments",
+      "origin": "INHERITED_ANGULAR01_DEFINITION",
+      "equation": "B=<beta>; Q_ab=<[n_a*n_b-delta_ab/3]*beta>; R=A_ul*D*B",
+      "domain": "An isotropic D is required to factor it outside the angular average."
+    },
+    {
+      "id": "number_ledger",
+      "origin": "DIRECT_DERIVATION",
+      "equation": "(dn_u/dt)_line=-R; (dn_l/dt)_line=+R; (dn_gamma/dt)_line=+R",
+      "note": "Collision/source contributions only. Physical-volume dilution and boundary propagation terms must be added by their existing owners."
+    },
+    {
+      "id": "photon_energy",
+      "origin": "EXACT_KINEMATIC_DEFINITION_APPLIED_TO_TABULATED_LAMBDA",
+      "equation": "nu=c/lambda_vac; epsilon=h*nu=2*pi*hbar*c/lambda_vac",
+      "note": "Use the locked lambda for this unit's energy; do not independently round a second energy input."
+    },
+    {
+      "id": "energy_ledger",
+      "origin": "DIRECT_DERIVATION",
+      "equation": "(du_atom_internal/dt)_line=-epsilon*R; (du_gamma/dt)_line=+epsilon*R; (du_thermal/dt)_line=0",
+      "domain": "Recoil-free isolated bound-bound exchange. This is not an ionic-yield or gas-heating source."
+    },
+    {
+      "id": "radiation_tensor_injection",
+      "origin": "DIRECT_DERIVATION_WITH_INHERITED_ANGULAR01",
+      "equation": "S_pi_ab=epsilon*A_ul*D*Q_ab",
+      "units": "J m^-3 s^-1",
+      "note": "Effective escaped-radiation anisotropic-stress injection rate for the declared Sobolev source. It is not an instantaneous stored radiation tensor, not matter stress, and not a derivation of the full microscopic line collision tensor."
+    },
+    {
+      "id": "thermal_balance",
+      "origin": "DIRECT_ALGEBRAIC_CONSEQUENCE",
+      "equation": "f_plus=1/expm1(epsilon/(k_B*T)); n_u=g*n_l*exp(-epsilon/(k_B*T)) => D=0",
+      "domain": "T>0; use the same epsilon and population convention. This local cancellation does not prove global LTE or thermodynamic closure."
+    },
+    {
+      "id": "source_occupation",
+      "origin": "DIRECT_ALGEBRAIC_CONSEQUENCE",
+      "equation": "f_source=n_u/Delta; D=Delta*(f_source-f_plus)",
+      "domain": "Delta>0. The un-divided D remains the preferred definition near zero opacity."
+    }
+  ],
+  "finite_accuracy_policy": {
+    "source_data_uncertainty": "UNKNOWN_FROM_TABLE",
+    "numerical_acceptance_not_physical_accuracy": true,
+    "comment": "The inherited angular numeric tolerance can test integration/algebra at locked input values. It cannot establish 1e-8 physical atomic-data accuracy or accuracy of the isolated Sobolev model.",
+    "parent_to_freeze_before_execution": [
+      "Finite source cases and resource cap",
+      "Population/boundary provenance for any claimed physical trajectory",
+      "Specific numerical residual thresholds"
+    ],
+    "task_runs": "NO_SCIENCE_RUNS_EXECUTED"
+  },
+  "exclusions": [
+    "No reuse of shell-averaged g=8/A=4.699e8 in a 2p population.",
+    "No externally fitted full cosmological model.",
+    "No source-owned blue-boundary radiation synthesized from unrelated completed pilot populations.",
+    "No claim that two isolated fine-component rates constitute overlapping-doublet radiative transfer.",
+    "No recoil, polarization, redistribution correction, multi-photon correction or full ionic-yield closure."
+  ],
+  "discovery_cautions": [
+    "SciSpace results contain duplicate papers and a year inconsistent with the primary arXiv record. They were used for discovery only; primary PDFs own formula and date attribution.",
+    "One system1 NIST-specific search returned no matches; the direct NIST page and Exa retrieval succeeded."
+  ],
+  "protected_status": {
+    "Physical": "HOLD",
+    "REC_U5": [
+      "HOLD_9_FAIL",
+      "HOLD_8_FAIL"
+    ],
+    "historical_hold": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "REI_first_failure_raw": "LOCAL_ONLY"
+  }
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/run_line01.py", line 439, in run
+    maps = local_map_rows(handles['local_maps'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/run_line01.py", line 165, in local_map_rows
+    row = model.thick_local_step(**arguments)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/line_source.py", line 374, in thick_local_step
+    u, residual, iterations = solve_log_flow(z0, omega)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/line_source.py", line 323, in solve_log_flow
+    raise ValueError('Physical log-root bracket not representable')
+ValueError: Physical log-root bracket not representable

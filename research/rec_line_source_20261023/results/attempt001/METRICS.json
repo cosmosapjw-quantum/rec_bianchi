@@ -1,0 +1,45 @@
+{
+  "schema": "line01.production_result.v1",
+  "status": "FAIL",
+  "counts": {
+    "source_rows": 36,
+    "local_map_rows": 25
+  },
+  "model_counters": {
+    "source_rows": 36,
+    "log_root_function_evaluations": 280,
+    "log_root_solves": 31,
+    "local_map_outputs": 25
+  },
+  "inherited_angular_counters_for_new_rows_only": {
+    "tensor_validations": 123,
+    "general_quadrature_calls": 36,
+    "general_quadrature_nodes": 294912
+  },
+  "raw_row_counts": {
+    "sources": 36,
+    "local_maps": 25,
+    "direct_checks": 0,
+    "finite_references": 0,
+    "rejections": 0,
+    "plot_samples": 0
+  },
+  "acceptance_passed": 616,
+  "acceptance_failed": 0,
+  "exception": "Traceback (most recent call last):\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/run_line01.py\", line 439, in run\n    maps = local_map_rows(handles['local_maps'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/run_line01.py\", line 165, in local_map_rows\n    row = model.thick_local_step(**arguments)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/line_source.py\", line 374, in thick_local_step\n    u, residual, iterations = solve_log_flow(z0, omega)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a6dfe82cc85f/repos/rec_bianchi/research/rec_line_source_20261023/code/line_source.py\", line 323, in solve_log_flow\n    raise ValueError('Physical log-root bracket not representable')\nValueError: Physical log-root bracket not representable\n",
+  "elapsed_wall_s": 0.4132685609947657,
+  "old_campaign_reruns": 0,
+  "new_cosmological_IVP_calls": 0,
+  "new_local_IVP_calls": 0,
+  "native_runtime_calls": 0,
+  "Physical": "HOLD",
+  "REC_U5": [
+    "HOLD_9_FAIL",
+    "HOLD_8_FAIL"
+  ],
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REI_activation": false,
+  "numeric_accuracy_is_not_atomic_data_accuracy": true,
+  "finite_case_acceptance_is_not_global_convergence": true
+}
