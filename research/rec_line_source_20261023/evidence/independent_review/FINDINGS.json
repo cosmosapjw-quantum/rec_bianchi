@@ -1,0 +1,42 @@
+{
+  "schema": "LINE01_INDEPENDENT_REVIEW_FINDINGS_V1",
+  "reviewer": "/root/line01_review",
+  "review_pass_count": 1,
+  "status": "PASS_AFTER_TARGETED_REPAIR",
+  "math_review": "PASS_WITH_DECLARED_MODEL_ASSUMPTIONS",
+  "code_review": "PASS_AFTER_OUTWARD_ROUNDING_REPAIR",
+  "plot_review": "THREE_ACTUAL_PNGS_INSPECTED_PASS",
+  "offgrid_cases": 6,
+  "offgrid_case_status": "6_PASS_0_FAIL",
+  "new_offgrid_model_counts": {"source": 1, "local_map": 3, "input_rejection": 2},
+  "production_rows_rerun": 0,
+  "historical_campaign_reruns": 0,
+  "IVPs": 0,
+  "open_block_now": 0,
+  "open_fix_soon": 0,
+  "findings": [
+    {
+      "id": "F-01",
+      "classification": "BLOCK_NOW_CLOSED",
+      "origin": "Production attempt001 failure; reviewed independently within this pass",
+      "object": "code/line_source.py solve_log_flow floating endpoints",
+      "observed": "native omega1 has z0=-7.898205430874699e-17 and both real bracket endpoints round to -1; lower residual becomes positive",
+      "repair": "one-ULP outward nextafter on lower and upper, upper clamped to zero",
+      "physics_changed": false,
+      "tolerance_relaxed": false,
+      "closure_evidence": ["results/resume001/CODE_PATCH.diff", "results/resume001/FAILURE_DIAGNOSIS.json", "results/resume001/local_maps_new.jsonl", "results/resume001/ACCEPTANCE.json"],
+      "original_failure_preserved": true,
+      "status": "CLOSED"
+    },
+    {
+      "id": "F-02",
+      "classification": "REPRESENTATION_FIX_SOON_CLOSED",
+      "object": "THEORY.md original g1 selection residue and Wolfram relative link",
+      "repair": "Parent distinguishes original fine-card recommendation from final g3 effective card and links provenance/WOLFRAM_LINE01_RECEIPTS.json",
+      "science_rerun_required": false,
+      "status": "CLOSED"
+    }
+  ],
+  "evidence_files": ["REVIEW_SCOPE.md", "probe_line01.py", "PROBES_RAW.json", "SAVED_EVIDENCE_REVIEW.json", "REVIEW_KO.md"],
+  "protected": {"Physical": "HOLD", "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL", "closure": "CLOSED_HOLD_NOT_RESET", "global_convergence": "NOT_RUN", "production": "NOT_APPROVED", "REI_activation": false, "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"}
+}

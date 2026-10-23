@@ -1,0 +1,15 @@
+flowchart TD
+    HIST["REC126 · REI129 · warm729 재사용"] --> TH["THERM02 조건부 thermal 완료"]
+    PRIM["Pinned HyRec source 재사용"] --> ANG["ANGULAR01 B,Q 완료"]
+    ANG --> LINE["LINE01 detached line 완료"]
+    PRIM --> OWN["Native residual/JVP 소유권 열림"]
+    LINE --> OWN
+    TH --> LI["Li ionic yield 입력 미확정"]
+    TH --> FIELD["실제 spectral backreaction 열림"]
+    HIST --> DAU["Daughter · stopping 입력 열림"]
+    OWN --> COUP["Self-consistent 결합 NOT_RUN"]
+    LI --> COUP
+    FIELD --> COUP
+    DAU --> COUP
+    COUP --> GLOB["Global convergence NOT_RUN / HOLD"]
+    GLOB --> PROD["Production NOT_APPROVED · REI false"]
