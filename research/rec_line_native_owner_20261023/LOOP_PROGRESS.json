@@ -1,15 +1,15 @@
 {
   "unit": "LINE02",
-  "stage": "A_PREPARED",
+  "stage": "B_PRIMARY_COMPLETE",
   "R": {
     "R1": "COMPLETE_SCOPE",
     "R2": "COMPLETE_SOURCE_REUSE_DELTA",
     "R3": "COMPLETE_CONVENTIONS",
     "R4": "COMPLETE_AFFINE_AND_NONLINEAR_ALTERNATIVES",
     "R5": "COMPLETE_DERIVATION",
-    "R6": "PENDING_SINGLE_INDEPENDENT_REVIEW",
-    "R7": "CAS_COMPLETE_NUMERICAL_PENDING",
-    "R8": "PENDING_FINITE_ADMISSION",
+    "R6": "SAME_REVIEW_IN_PROGRESS_STATIC_PASS",
+    "R7": "CAS_AND_FIRST_PRIMARY_COMPLETE",
+    "R8": "FINITE_PRIMARY_PASS_REVIEW_PENDING",
     "R9": "COMPLETE_FROZEN_COMPUTATIONAL_CONTRACT",
     "R10": "PENDING_DELIVERY"
   },
@@ -18,11 +18,11 @@
     "C2": "COMPLETE",
     "C3": "COMPLETE",
     "C4": "COMPLETE",
-    "C5": "IN_PROGRESS",
-    "C6": "PENDING",
-    "C7": "PENDING",
-    "C8": "PENDING",
-    "C9": "PENDING",
+    "C5": "COMPLETE",
+    "C6": "COMPLETE_PRIMARY_194_CHECKS",
+    "C7": "COMPLETE_ONE_PREPARATION_202_RANK_QUERIES",
+    "C8": "COMPLETE_3_FIGURES_REVIEW_PENDING",
+    "C9": "SAME_REVIEW_IN_PROGRESS",
     "C10": "PENDING"
   },
   "new_IVP": 0,
@@ -35,5 +35,22 @@
     "production": "NOT_APPROVED",
     "REI_activation": false,
     "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
-  }
+  },
+  "counts": {
+    "owner_cases": 7,
+    "full_313_reference_solves": 7,
+    "direct_schur_2x2_solves": 7,
+    "jvp_directions": 12,
+    "complex_313_reference_solves": 12,
+    "angular_cases": 9,
+    "propagated_bound_cases": 6,
+    "additional_bound_rank_queries": 12,
+    "invalid_cases": 12,
+    "mutation_cases": 2,
+    "rank_plot_samples": 183,
+    "native_runtime_runs": 0,
+    "ivp_runs": 0,
+    "historical_campaign_replays": 0
+  },
+  "code_checkpoint": "92b604ab696481ecc26ff0c09543c4735c3da6bd"
 }

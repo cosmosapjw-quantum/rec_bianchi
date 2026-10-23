@@ -108,6 +108,25 @@ for the actual frozen state; do not assume it merely from a source comment.
 For all r*≥0, η=1−γ+r*a then stays positive. If this extra property is not
 established, retain the explicit η guard; the rank-one identity itself is unchanged.
 
+### 3.1 Stable solved event drive
+
+At a large synthetic r*, subtracting rounded x*_p and b* can lose the small
+net event drive. With D0=x0_p-b0, gamma0=r0*a and Delta_b=b*-b0, the same
+rank-one identity gives exactly
+
+    D* = x*_p-b* = [D0-(1-gamma0)*Delta_b]/eta,
+    h* = r* D*,
+    1-gamma_base = (1-gamma0)/eta_base.
+
+To prove the first identity, insert the stable alpha expression and collect
+D0(eta-a*Delta_r)/eta and Delta_b(a*r*-eta)/eta; their coefficients are
+1/eta and -(1-gamma0)/eta. This is a computational form of the same affine
+source, not a new approximation. Retain the direct rounded-state subtraction
+as a conditioning diagnostic, but use the rational drive for small flux and
+its tangent/bound comparisons. Arithmetic resolution and analytic truncation
+bounds are reported separately. The implementation was reconstructed after
+the scratch incident; current code and primary output have new identities.
+
 ## 4. Residual JVP and solved-state JVP
 
 For an arbitrary full state X and the original full matrix M, source s,
