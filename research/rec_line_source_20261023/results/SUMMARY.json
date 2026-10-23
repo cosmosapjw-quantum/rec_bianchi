@@ -1,0 +1,309 @@
+{
+  "schema": "line01.implementation_execution_summary.v1",
+  "completed_at_utc": "2026-10-23T02:54:13.597964+00:00",
+  "status": "PASS_AFTER_TARGETED_ROUNDING_REPAIR",
+  "original_attempt_status": "FAIL_RETAINED",
+  "original_raw_unchanged": true,
+  "counts": {
+    "source_rows": 36,
+    "local_map_rows": 27,
+    "direct_comparisons": 6,
+    "direct_full_sphere_nodes": 196608,
+    "finite_reference_roots": 2,
+    "finite_reference_integrand_evaluations": 315,
+    "finite_reference_travel_quadratures": 17,
+    "invalid_input_checks": 18,
+    "plot_map_outputs": 243,
+    "plot_tracks": 3
+  },
+  "acceptance": {
+    "passed": 704,
+    "failed": 0,
+    "reused_checks": 616,
+    "new_checks": 88
+  },
+  "attempt001": {
+    "completed_sources": 36,
+    "completed_local_maps": 25,
+    "failed_map_id": "local_native_omega1",
+    "elapsed_wall_s": 0.4132685609947657
+  },
+  "resume001": {
+    "new_counts": {
+      "local_map_rows": 2,
+      "direct_comparisons": 6,
+      "direct_full_sphere_nodes": 196608,
+      "finite_reference_roots": 2,
+      "finite_reference_integrand_evaluations": 315,
+      "finite_reference_travel_quadratures": 17,
+      "invalid_input_checks": 18,
+      "plot_map_outputs": 243,
+      "plot_tracks": 3
+    },
+    "elapsed_wall_s": 9.60194300400326,
+    "old_successful_source_and_map_rows_recomputed": 0
+  },
+  "targeted_repair": {
+    "defect": "real log-root bracket collapsed in binary64 when |z0|<ulp(omega)",
+    "z0": -7.898205430874699e-17,
+    "failed_omega": 1.0,
+    "fix": "one-ULP outward nextafter endpoints, upper clamped to0",
+    "physical_formula_or_tolerance_changed": false,
+    "pre_fix_bytes": "evidence/attempt001_code/",
+    "diff": "results/resume001/CODE_PATCH.diff"
+  },
+  "maximum_numerical_residuals": {
+    "W0_endpoint": {
+      "maximum_observed": 3.3394538519777195e-17,
+      "limit_at_that_case": 2.0928072364767993e-12,
+      "case": "local_f2_emission_omega1e-06"
+    },
+    "W0_packet": {
+      "maximum_observed": 4.414705766128612e-08,
+      "limit_at_that_case": 0.00013773427579327651,
+      "case": "local_f0.1_emission_omega8"
+    },
+    "log_root": {
+      "maximum_observed": 8.326672684688674e-16,
+      "limit_at_that_case": 4.75e-12,
+      "case": "local_f2_emission_omega8"
+    },
+    "phase_space_residual_over_gross": {
+      "maximum_observed": 6.520625042664246e-16,
+      "limit_at_that_case": 5e-13,
+      "case": "H_LYA_J1HALF_emission_t1_triaxial"
+    },
+    "crossing_residual_over_gross": {
+      "maximum_observed": 3.260312521332123e-16,
+      "limit_at_that_case": 5e-13,
+      "case": "H_LYA_J1HALF_emission_t1_triaxial"
+    },
+    "tensor_source_residual_over_gross": {
+      "maximum_observed": 4.027867833433597e-15,
+      "limit_at_that_case": 5e-13,
+      "case": "effective_emission_t0.1_rotated"
+    },
+    "angular_B_relative": {
+      "maximum_observed": 2.107616357264405e-15,
+      "limit_at_that_case": 5e-10,
+      "case": "effective_LTE_t1_isotropic"
+    },
+    "angular_Q_F_over_B": {
+      "maximum_observed": 7.36796058053693e-14,
+      "limit_at_that_case": 5e-10,
+      "case": "effective_LTE_t1_isotropic"
+    },
+    "finite_reference_bracket": {
+      "maximum_observed": 0.0,
+      "limit_at_that_case": 5e-13,
+      "case": "finite_isotropic_emission"
+    },
+    "finite_reference_root_residual": {
+      "maximum_observed": 5.551115123125783e-17,
+      "limit_at_that_case": 5e-13,
+      "case": "finite_isotropic_emission"
+    },
+    "LTE_absolute_over_gross": {
+      "maximum_observed": 0.0,
+      "limit_at_that_case": 1.4210854715202004e-14,
+      "case": "effective_LTE_t0.1_isotropic"
+    },
+    "pressure_trace": {
+      "maximum_observed": 1.1884895692740908e-15,
+      "limit_at_that_case": 1.4210854715202004e-14,
+      "case": "effective_emission_t1_isotropic"
+    },
+    "pstf_trace": {
+      "maximum_observed": 1.2486529199938883e-15,
+      "limit_at_that_case": 1.4210854715202004e-14,
+      "case": "effective_emission_t1_isotropic"
+    }
+  },
+  "native_source": {
+    "n_l_m3": 213927188.88977095,
+    "n_u_m3": 4.936450092318387e-06,
+    "N_m3": 213927188.8897759,
+    "f_plus": 7.672046131261377e-15,
+    "x": 2.307537493451498e-14,
+    "x_eq": 2.3016138393783423e-14,
+    "t": 578353937.1373901,
+    "B": 1.7290450289827392e-09,
+    "Q": [
+      [
+        -9.221573487907958e-11,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        2.3053933719771523e-11,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        6.916180115930743e-11
+      ]
+    ],
+    "net_R_m3_s": 1.3726869299191238e-08,
+    "gross_escaped_down_m3_s": 5.347251069088217e-06,
+    "gross_escaped_up_m3_s": 5.333524199789025e-06,
+    "du_radiation_J_m3_s": 2.2429899569436661e-26,
+    "du_internal_J_m3_s": -2.2429899569436661e-26,
+    "energy_PSTF_J_m3_s": [
+      [
+        -1.1962613103699573e-27,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        2.9906532759251044e-28,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        8.971959827774386e-28
+      ]
+    ],
+    "number_PSTF_m3_s": [
+      [
+        -7.320996959568672e-10,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.8302492398922972e-10,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        5.490747719676325e-10
+      ]
+    ]
+  },
+  "native_local_maps": [
+    {
+      "id": "local_native_omega0.1",
+      "omega": 0.1,
+      "delta_t_s": 0.09231752967155911,
+      "x0": 2.307537493451498e-14,
+      "x_eq": 2.3016138393783423e-14,
+      "x1": 2.306973783235235e-14,
+      "delta_n_gamma_m3": 1.2059294191365859e-09,
+      "delta_u_radiation_J_m3": 1.970505813780596e-27,
+      "path_depth_ratio": 444887643.9518387,
+      "log_delta": -444887643.9518387,
+      "delta_representation": "UNDERFLOW_USE_LOG"
+    },
+    {
+      "id": "local_native_omega1",
+      "omega": 1.0,
+      "delta_t_s": 0.923175296715591,
+      "x0": 2.307537493451498e-14,
+      "x_eq": 2.3016138393783423e-14,
+      "x1": 2.303793029928468e-14,
+      "delta_n_gamma_m3": 8.010425553821858e-09,
+      "delta_u_radiation_J_m3": 1.3089149227293898e-26,
+      "path_depth_ratio": 444887643.9518387,
+      "log_delta": -444887643.9518387,
+      "delta_representation": "UNDERFLOW_USE_LOG"
+    },
+    {
+      "id": "local_native_omega5",
+      "omega": 5.0,
+      "delta_t_s": 4.615876483577955,
+      "x0": 2.307537493451498e-14,
+      "x_eq": 2.3016138393783423e-14,
+      "x1": 2.301653752645528e-14,
+      "delta_n_gamma_m3": 1.2586921307772269e-08,
+      "delta_u_radiation_J_m3": 2.056720834650683e-26,
+      "path_depth_ratio": 444887643.9518387,
+      "log_delta": -444887643.9518387,
+      "delta_representation": "UNDERFLOW_USE_LOG"
+    }
+  ],
+  "figures": [
+    {
+      "track": "emission",
+      "sample_count": 81,
+      "caption": "Constructed emission; N=10⁹ m⁻³, f₊=0.1",
+      "data_csv": "results/resume001/plot_emission.csv",
+      "data_sha256": "fb67e9f01b95d02e0cb7a9b8ad41b256374e85a5155d1fd665beb91e149bbe21",
+      "png": "figures/line01_emission.png",
+      "png_sha256": "f4e1f1e216b48d8f2303c3e4d7d9d727217a61a804ddae26845ff4a9b7718745",
+      "png_bytes": 225798,
+      "pdf": "figures/line01_emission.pdf",
+      "pdf_sha256": "d582dee819565ac235109b20b55ecccefb5a08c282204ad58ae3da39200eb8bd",
+      "pdf_bytes": 31986,
+      "path_depth_ratio": 20.000000000000004,
+      "log_delta": -20.000000000000004,
+      "delta_representation": "FLOAT_NOT_INTERVAL"
+    },
+    {
+      "track": "absorption",
+      "sample_count": 81,
+      "caption": "Constructed absorption; N=10⁹ m⁻³, f₊=0.1",
+      "data_csv": "results/resume001/plot_absorption.csv",
+      "data_sha256": "c5c57bc84e4dc81d3f7c19f79e909bca8da1a811e1e6a8eda237495f65f01a30",
+      "png": "figures/line01_absorption.png",
+      "png_sha256": "bd9d37c6690134ff7d75aeff52295b04fdd06df8bfcd7c81ae1f721884fe2a52",
+      "png_bytes": 232830,
+      "pdf": "figures/line01_absorption.pdf",
+      "pdf_sha256": "94158383f1e2e52c4607449084a576b6a56b705bc7b7108c051fbd6812e22ceb",
+      "pdf_bytes": 31982,
+      "path_depth_ratio": 20.000000000000004,
+      "log_delta": -20.000000000000004,
+      "delta_representation": "FLOAT_NOT_INTERVAL"
+    },
+    {
+      "track": "native_saved_state",
+      "sample_count": 81,
+      "caption": "Saved HyRec z=1099.99865 state + supplied shear",
+      "data_csv": "results/resume001/plot_native_saved_state.csv",
+      "data_sha256": "3a9108e4ec4a6092c487149ad3b2fadf27101d311d7c8143b7213be65632b64f",
+      "png": "figures/line01_native_saved_state.png",
+      "png_sha256": "0a255dbc8871725bb9d7fa3a8668acf58a2e18e8cf90420f30ad6db51c9e249e",
+      "png_bytes": 247477,
+      "pdf": "figures/line01_native_saved_state.pdf",
+      "pdf_sha256": "1ce5e4851a4a727a85a99e34842db65ca56c0deb059732acfb89d158dff94f0b",
+      "pdf_bytes": 31596,
+      "path_depth_ratio": 444887643.9518387,
+      "log_delta": -444887643.9518387,
+      "delta_representation": "UNDERFLOW_USE_LOG"
+    }
+  ],
+  "constructor_visual_inspection": {
+    "status": "PASS",
+    "files": [
+      "figures/line01_emission.png",
+      "figures/line01_absorption.png",
+      "figures/line01_native_saved_state.png"
+    ],
+    "observations": [
+      "All 3 rendered PNG images were opened and visually inspected.",
+      "Axes, units, signs, legends and local-step captions are visible without overlap.",
+      "Emission and absorption populations approach equilibrium with oppositely signed photon packets.",
+      "Radiation and atomic internal energy packets are opposite; PSTF components have opposite signs and zero trace."
+    ],
+    "not_independent_review": true
+  },
+  "protected": {
+    "Physical": "HOLD",
+    "REC_U5": [
+      "HOLD_9_FAIL",
+      "HOLD_8_FAIL"
+    ],
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "cosmological_IVP_calls": 0,
+    "local_IVP_calls": 0,
+    "native_runtime_calls": 0,
+    "old_campaign_reruns": 0
+  },
+  "scope": "Detached frozen-source effective coincident-line model; native scalar state plus supplied shear, not a new cosmological history. Numerical errors do not certify atomic-data or collapsed-line model accuracy."
+}

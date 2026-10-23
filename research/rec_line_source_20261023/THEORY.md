@@ -618,7 +618,7 @@ formula evaluations, not old campaign repeats or cosmological IVPs.
 
 ## 11. Actual Wolfram evidence
 
-[WOLFRAM_LINE01_RECEIPTS.json](WOLFRAM_LINE01_RECEIPTS.json) contains the actual
+[WOLFRAM_LINE01_RECEIPTS.json](provenance/WOLFRAM_LINE01_RECEIPTS.json) contains the actual
 requests and full responses: one context query and two evaluator calls. The
 context query succeeded; generic searches returned no spontaneous-\(A\) or
 Bianchi-source formula authority. Its historical SpectralLineData examples
@@ -635,8 +635,9 @@ the raw messages are preserved rather than relabelled as a clean tool pass.
 A second targeted call returned zero algebraic residuals for balance,
 cross-multiplication, the implicit ODE and the Lambert-W derivative. It also
 evaluated two illustrative dimensionless endpoints at \(g=3,f_+=0.1\) and
-\(a t/d_0=1\). This \(g=3\) illustration is a generic mathematics example, not
-the selected \(g=1\) physical component.
+\(a t/d_0=1\). This \(g=3\) illustration is a generic dimensionless mathematics example.
+The final effective collapsed source also has g=3, but its measured/pinned
+state inputs and closure assumptions are fixed separately in FROZEN_CONTRACT.md.
 
 | \(x_0\) | \(x_{\rm eq}\) | \(x(t)\) | Branch parameter \(z_0\) |
 |---:|---:|---:|---:|
