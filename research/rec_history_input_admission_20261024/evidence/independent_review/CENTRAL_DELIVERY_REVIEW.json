@@ -1,0 +1,103 @@
+{
+  "schema": "rec.history.admission.central_delivery_review.v1",
+  "reviewer": "/root/admission_independent_review",
+  "review_relation": "DELIVERY_APPENDIX_TO_SAME_FINITE_REVIEW",
+  "scientific_review_reopened": false,
+  "original_FINAL_REVIEW_and_REVIEW_json": "PRESERVED_UNCHANGED",
+  "result": "PASS_SCOPED_DELIVERY",
+  "material_findings": 0,
+  "additional_scientific_probes": 0,
+  "numerical_reruns": 0,
+  "external_mutations": 0,
+  "central_reviewer_mutations": 0,
+  "identities": {
+    "prepared_central_base": "68420637a9ab54ada92afd786c5733bc0764b8c9",
+    "fixed_user_handoff": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
+    "before_DAG_blob_from_contract": "87deeb6c65497b8dd5cdf6dbef397293f7d0c492",
+    "before_DAG_sha256_observed": "10d1b731e594d2875025ef0a0d2068bd30a319adad93fc2478e34ec11d1b53df",
+    "prepared_after_DAG_sha256_observed": "690501be7475a57b8a9b568742c350a1310a26f09d19513ba3c9e57b9955c9ed",
+    "prepared_combined_diff_sha256_observed": "6972fa2badd7b1d0aceaf5b4b6b5ab2b68834990ae4eff33d5451c6078f32ea4",
+    "preservation_receipt_sha256_observed": "8142d8a815f841543f22b5960fd88a9da1163053e921a01d0367976dbac4fa57",
+    "live_remote_head_observed_by_appendix": false
+  },
+  "reviewed_allowed_central_paths": [
+    "research/orchestration_longterm_20261023/assembly/DAG.json",
+    "research/orchestration_longterm_20261023/assembly/returns/REC_HISTORY_ADM01_20261024.json"
+  ],
+  "direct_json_inspection": {
+    "returncode": 0,
+    "node_counts": [40, 40],
+    "integration_edge_counts": [17, 17],
+    "node_ids_and_order_equal": true,
+    "entire_integration_equal": true,
+    "top_level_except_nodes_equal": true,
+    "all_40_original_contracts_equal": true,
+    "changed_nodes": ["REC-LINE02", "REC-HISTORY"],
+    "selected_change_keys": ["plan_status", "observations"],
+    "other_38_complete_nodes_equal": true,
+    "all_authority_and_dependency_fields_preserved": true,
+    "HE_X1_observed_completion_preserved": true,
+    "standalone_authorities_and_historical_files_not_in_patch": true,
+    "science_executed": false
+  },
+  "actual_diff_inspection": {
+    "command": "diff -u before/research/orchestration_longterm_20261023/assembly/DAG.json after/research/orchestration_longterm_20261023/assembly/DAG.json",
+    "returncode": 1,
+    "meaning": "NORMAL_EXPECTED_DIFFERENCES",
+    "changed_regions": 2,
+    "matches_prepared_diff": true
+  },
+  "summary_files_reviewed": ["REPORT_KO.md", "CLAIM_GATES.json", "BUDGET_LEDGER.json"],
+  "summary_consistent_with_original_science_review": true,
+  "scientific_claims_preserved": {
+    "unit": "COMPLETE_SCOPED_INPUT_ADMISSION",
+    "h2_U5_coverage": "313_OF_313",
+    "other_three_coverage": "0_OF_313_EACH",
+    "face_causal_columns_U5": 10277,
+    "physical_domain": "PARAMETER_MISMATCH",
+    "physical_reference_admitted": false,
+    "endpoint_error": null,
+    "independent_reference_uncertainty": null,
+    "curvature_upper_bound": null,
+    "H5": "INPUT_DEPENDENT_UNCALIBRATED",
+    "parent_REC_HISTORY": "PARTIAL",
+    "all_prior_HOLD_states": "PRESERVED",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "parallel_HISTORY02": "OWNER_RESERVED_STAGE_A_OBSERVED_ONLY",
+    "strong_no_go": "NOT_CLAIMED"
+  },
+  "budget_consistency": {
+    "inclusive_cpu_seconds": 4.239657598,
+    "execution_wall_seconds": 4.371854306999012,
+    "max_RSS_KiB": 107564,
+    "cpu_wall_caps": [20, 60],
+    "threads": 1,
+    "four_recorded_entries_sum_correctly": true,
+    "prior_HISTORY01_allocation": "CLOSED_SEPARATE_NOT_RESET",
+    "this_appendix_accounting": "READ_ONLY_DELIVERY_METADATA_NOT_SCIENTIFIC_EXECUTION"
+  },
+  "prepared_publication_fields": {
+    "evidence_commit": null,
+    "evidence_pr": null,
+    "publication": "PENDING",
+    "classification": "ACCURATE_PREPARATION_STATE"
+  },
+  "publication_review_disposition": {
+    "status": "MAY_PROCEED_WITHIN_EXISTING_AUTHORIZATION",
+    "scope": "Isolated REC admission evidence and the two reviewed central paths only",
+    "next_mechanical_action": "Fill actual new REC commit/PR/publication state once and let root read back identities and path scope",
+    "new_scientific_review_required_for_id_substitution": false,
+    "merging_or_activation_admitted": false,
+    "external_publication_performed_by_reviewer": false
+  },
+  "skill_context_used": {
+    "package": "c38/physmath-research-loop",
+    "version": "1.3.0",
+    "unchanged_prior_read_context_reused": true,
+    "rules": ["selected_scope", "finite_review", "typed_identity", "separate_science_and_delivery", "concrete_preservation"],
+    "central_AGENTS_read": true
+  },
+  "findings": []
+}

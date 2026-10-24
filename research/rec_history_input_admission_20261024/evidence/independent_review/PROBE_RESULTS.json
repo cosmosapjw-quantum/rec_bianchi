@@ -1,0 +1,104 @@
+{
+  "probe_count": 3,
+  "probes": [
+    {
+      "probe": "P1_saved_evidence_and_interval_endpoints",
+      "passed": true,
+      "counts": {
+        "h2_u4": {
+          "AT_OR_AFTER_STRICT_ENDPOINT": 313
+        },
+        "h4_r3q_event": {
+          "AT_OR_AFTER_STRICT_ENDPOINT": 313
+        },
+        "h4_smoke": {
+          "AT_OR_AFTER_STRICT_ENDPOINT": 313
+        },
+        "h2_u5": {
+          "COVERED_RETAINED_CELL": 313
+        }
+      },
+      "intervals": [
+        {
+          "candidate": "h2_u4",
+          "eta_first": -7.440189112850124,
+          "eta_last_photon": -7.355076862850124,
+          "last_state_is_not_photon": true
+        },
+        {
+          "candidate": "h4_r3q_event",
+          "eta_first": -7.440189112850124,
+          "eta_last_photon": -7.407969562850124,
+          "last_state_is_not_photon": true
+        },
+        {
+          "candidate": "h4_smoke",
+          "eta_first": -7.440189112850124,
+          "eta_last_photon": -7.439700937850124,
+          "last_state_is_not_photon": true
+        },
+        {
+          "candidate": "h2_u5",
+          "eta_first": -7.440189112850124,
+          "eta_last_photon": -6.729915712850124,
+          "last_state_is_not_photon": true
+        }
+      ],
+      "all_error_bounds_null": true
+    },
+    {
+      "probe": "P2_three_selected_U5_cells",
+      "passed": true,
+      "face_causal_columns": 10277,
+      "selected_rows": [
+        {
+          "target": 0,
+          "source": 1,
+          "k": 9562,
+          "alpha": 0.13928804834176844,
+          "value": 9.051833573281517e-14,
+          "strict_past_margin": 0.03026685000000029
+        },
+        {
+          "target": 311,
+          "source": 140,
+          "k": 10273,
+          "alpha": 0.9987564481816662,
+          "value": 7.8774353830228e-15,
+          "strict_past_margin": 8.490000000094255e-05
+        },
+        {
+          "target": 139,
+          "source": 311,
+          "k": 10273,
+          "alpha": 0.9983371552189055,
+          "value": 7.905242742588798e-15,
+          "strict_past_margin": 8.490000000094255e-05
+        }
+      ]
+    },
+    {
+      "probe": "P3_actual_U5_event_T0",
+      "passed": true,
+      "input_iz": 53177,
+      "state_Tm_K": 2280.4085186856096,
+      "state_z": 836.1122428311476,
+      "recorded_delta": 0.0005000545426558922,
+      "inferred_T0_K": 2.7255,
+      "target_T0_K": 2.7279999999999998,
+      "nH0_from_this_probe": "NOT_IDENTIFIED",
+      "interpretation": "Actual U5 temperature mismatch established; full default parameter tuple is a distinct provenance obligation."
+    }
+  ],
+  "old_primary_replay": 0,
+  "new_IVP": 0,
+  "native_runtime": 0,
+  "full313_query_recomputation": 0,
+  "script_sha256": "26b9ad6fc8bf33a774bf72f5d425863f54e5dc0c38724a6e56ae38c0fddb3f35",
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  }
+}
