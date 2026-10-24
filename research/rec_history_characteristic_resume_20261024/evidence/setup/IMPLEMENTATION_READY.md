@@ -32,3 +32,7 @@ python code/run_bounded.py --cpu 4 --wall 15 figures001 python code/render_saved
 New total allocation 30CPU/90wall, primary16/45, review6/15, figure+repair8/30. Historical allocations/spend stay separate. Actual first primary outcome is unknown. First failure stops and returns to root, with no repair absent root decision. Parent REC-HISTORY PARTIAL, actual h4 ADM01 coverage0/313 and INPUT_DEPENDENT_UNCALIBRATED remain.
 
 Executor request: gpt-6.1-sol. Actual independently exposed runtime model metadata: unavailable; no lower-tier model observation is claimed from the requested label.
+
+## S1 final preexecution correction
+
+Fresh same-pass static review identified possible overflow of the returned source-time tangent after finite dd. The original C5 adapter is preserved under evidence/setup/pre_correction/. The authorized correction computes deta_s before the finite guard and includes it. AST/compile passes; numeric regression is reserved for independent review probe1. CASE_PLAN remains byte-identical. See PREEXECUTION_CORRECTION.json. Status: S1_FINAL_READY; primary still NOT_RUN.
