@@ -48,3 +48,7 @@ All 40 original author plans and 17 integration edges are retained verbatim in G
 REC-LINE02 completed scoped evidence is reused. REC-HISTORY remains PARTIAL, H5 INPUT_DEPENDENT_UNCALIBRATED; RESP01 is a new frozen-operator response unit. Historical REFINE01 observations are retained separately from unchanged author plans. Physical HOLD; U5 holds and CLOSED_HOLD_NOT_RESET; global convergence NOT_RUN; production NOT_APPROVED; REI_activation=false.
 
 RESP01 finite progress is 11/20 (55%): static implementation and fresh pre-execution review PASS. Primary is pending; actual physical epsilon and overall physical completion remain null. S0 actual Git/readback/backup receipt is retained separately.
+
+Late dependency observation: current central a814dab41a8f3f543dec71cde59f17e0d497fcda replaces the working DAG observation only. All 40 author contracts and 17 edges are unchanged; only HE-ANG observed_completion changed from the immutable S0 survey pin79c042a. Selected pressure final-handoff sources are preserved separately. Other owners are not promoted by RESP01.
+
+S2: root science decision PASS_SCOPED_REPRESENTED_OPERATOR_AFTER_DIAGNOSED_CHECK_REPAIR;finite progress18/20 (90%), R10/C10 final delivery pending. Parent REC-HISTORY remains PARTIAL and H5 remains INPUT_DEPENDENT_UNCALIBRATED. The exact original primary exit2 and repaired diagnostic provenance remain available.

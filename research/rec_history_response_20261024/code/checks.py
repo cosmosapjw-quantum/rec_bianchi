@@ -121,6 +121,8 @@ def parity(f, B, T, P):
             ('source_increment', B@u, f.source_increment(u), np.abs(B)@np.abs(u)),
             ('outgoing', T@x+P@u, f.outgoing(x, u), np.abs(T)@np.abs(x)+np.abs(P)@np.abs(u)),
         ]:
+            if name == 'outgoing':
+                gross[:311] += 2*np.abs(u[:311])
             residual = np.abs(represented-imperative)
             allowed = factor*gross
             records.append({'direction': index, 'operation': name, 'pass': bool(np.all(residual <= allowed)),

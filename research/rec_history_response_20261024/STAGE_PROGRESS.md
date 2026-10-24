@@ -1,6 +1,6 @@
 # RESP01 finite stage progress
 
-11/20 complete (55%) at S1 static freeze; R1-R6 and C1-C5 complete; R7 and C6 in progress. Physical goal completion remains null.
+18/20 complete (90%) at S2 readiness; R1-R9 and C1-C9 complete. R10/C10 remain actual final delivery obligations. Physical overall completion remains null.
 
 | Stage | Status | Checkpoint |
 |---|---|---|
@@ -10,19 +10,26 @@
 | R4 Complete response and certificate choice | COMPLETE_SCOPED | S0 |
 | R5 Constructive response and enclosure derivation | COMPLETE_SCOPED | S0 |
 | R6 Independent symbolic/theory review | COMPLETE_SCOPED | S1 |
-| R7 Single bounded original-target operator computation | IN_PROGRESS | S2 |
-| R8 Astra scoped scientific decision | PENDING | S2 |
-| R9 Reusable response and conditional allocation API | PENDING | S2 |
-| R10 Final research report and delivery | PENDING | S3 |
+| R7 Single bounded original-target operator computation | COMPLETE_SCOPED | S2 |
+| R8 Astra scoped scientific decision | COMPLETE_SCOPED | S2 |
+| R9 Reusable response and conditional allocation API | COMPLETE_SCOPED | S2 |
+| R10 Final research report and delivery | PENDING_DELIVERY | S3 |
 | C1 Frozen baseline and owned paths | COMPLETE_SCOPED | S0 |
 | C2 Native coefficient and query source map | COMPLETE_SCOPED | S0 |
 | C3 Interval algorithm and inverse residual design | COMPLETE_SCOPED | S0 |
 | C4 Limits, case plan and exact command | COMPLETE_SCOPED | S0 |
 | C5 Implementation | COMPLETE_SCOPED | S1 |
-| C6 Manufactured controls | IN_PROGRESS | S2 |
-| C7 Exact Fraction and unchanged-owner checks | PENDING | S2 |
-| C8 Raw outcomes, plots and resource ledger | PENDING | S2 |
-| C9 Fresh independent code/numerical review | PENDING | S2 |
-| C10 Final reproducible delivery and handoff | PENDING | S3 |
+| C6 Manufactured controls | COMPLETE_SCOPED | S2 |
+| C7 Exact Fraction and unchanged-owner checks | COMPLETE_SCOPED | S2 |
+| C8 Raw outcomes, plots and resource ledger | COMPLETE_SCOPED | S2 |
+| C9 Fresh independent code/numerical review | COMPLETE_SCOPED | S2 |
+| C10 Final reproducible delivery and handoff | PENDING_DELIVERY | S3 |
 
-S0 actual commit f05acda54e45e1be1a47fa4a43ca9b0951840a05, 26/26 readback PASS and Dropbox completed ACK retained. S1 provider state remains PENDING until actual ACK. Fresh pre-execution review PASS permits S1; root execution transition remains separate. No primary has been run.
+| Checkpoint | Finite completion at immutable snapshot | Actual Git/backup state |
+|---|---|---|
+| S0 | 9/20 | f05acda;26/26 readback PASS;Dropbox completed ACK |
+| S1 | 11/20 | 31d3d5b;49/49 readback PASS;Dropbox completed ACK |
+| S2 | 18/20 | Root science/review/PNG PASS;publication and backup pending |
+| S3 | planned20/20 | Final actual delivery pending |
+
+Original primary exit2 and raw failure remain preserved. Root admitted the represented-operator result after one saved-data criterion repair with no new solve. Scientific admission, publication and physical input admission are separate.

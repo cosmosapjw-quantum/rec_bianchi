@@ -1,7 +1,7 @@
 {
   "schema": "REC_HISTORY_RESP01_GLOBAL_PROGRESS_V1",
   "fixed_authority": "rei_bianchi@0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
-  "central_observation_pin": "79c042a15e7e29b894dadc32188e286dade73aad",
+  "central_observation_pin": "a814dab41a8f3f543dec71cde59f17e0d497fcda",
   "original_author_dag": {
     "integration": {
       "schema_version": 1,
@@ -4322,7 +4322,7 @@
             "science_tree": "d04f1bfb97d9c3a61835b3d0709825453f9b3a3f",
             "pull_request": 97,
             "pull_request_url": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/97",
-            "publication_head": "db91cbd3ac0f4db7908cd69c1f40e961f81051f9",
+            "publication_head": "e3b2f786c7597ffa65aa6439194e7cbcae6103e7",
             "scope": "Source-derived nonrelativistic infinite-proton-mass H1s first-Born exact-swapped PWBE continuous pointwise joint TDCS; closed relative-azimuth conditional law and direction moments, finite six-geometry verification",
             "source": {
               "primary": "Weigold et al FIAS-R-39 June1978 reportp18 Eqs19-20",
@@ -4346,14 +4346,11 @@
             "root_admission": "PASS_SCOPED_SCIENCE_PRESENTATION_OPEN",
             "stage_count": {
               "assessed": 20,
-              "complete": 17,
+              "complete": 19,
               "partial": [
                 "C8"
               ],
-              "pending": [
-                "R10",
-                "C10"
-              ],
+              "pending": [],
               "twenty_of_twenty": false
             },
             "C8": {
@@ -4413,9 +4410,19 @@
               "B1_drive_id": "1mkc6jKqa2trgI_5gjm1UV3DABSGTmrmu",
               "B1_dropbox_id": "id:BSpOijBcT10AAAAAAD_9Zg",
               "independent_remote_sha256_verified": false,
-              "B2": "PENDING_ACTUAL_EXACT_S_C",
-              "D_E_B3": "PENDING_ACTUAL_DELIVERY",
-              "future_private_context": "B2 private_context/CONTEXT_RAW.json; no public full context excerpt"
+              "B2": "ACTUAL_DUAL_UPLOAD_AND_INDEPENDENT_METADATA_SIZE_READBACK",
+              "D_E_B3": "PENDING_ACTUAL_B3_D_E_SUPPLEMENT",
+              "future_private_context": "B2 private_context/CONTEXT_RAW.json; no public full context excerpt",
+              "B2_receipt": "research/orchestration_longterm_20261023/assembly/returns/BASS_HE_HEANG_PWBE_SPIN_AZIMUTH_BACKUP_ACK_20261024.json",
+              "B2_archive": "HEANG_PWBE_SPIN_AZIMUTH_20261024_db91cbd3_cdba5c98.tar.gz",
+              "B2_bytes": 235069,
+              "B2_members": 83,
+              "B2_sha256_local_uploaded_bytes": "257d9c570d4ea66bb76b4645ced443215424f679f9976f8a9d1a0fb82e221e11",
+              "B2_drive_id": "1r5dabbTUT-rTVt4pSwQDs-36ET49PEg3",
+              "B2_dropbox_id": "id:BSpOijBcT10AAAAAAD_9bg",
+              "final_supplement_receipt_location": "https://github.com/cosmosapjw-quantum/BASS_HE/pull/97",
+              "B2_scope": "Exact Science S74/Central C3 and actualreceipts/privatecontext; D/E delivered by laterB3",
+              "private_context": "NOT_ADOPTED; actualB2private_context/CONTEXT_RAW.json18454bytes SHA36421a87bc4a41039613c85d6ee7ede4f561610dfaca9c4f724cf9b071ae2f74"
             },
             "evidence": [
               "research/he_ang_pwbe_spin_azimuth_20261024/THEORY_KO.md",
@@ -4438,7 +4445,22 @@
               "consumer admission and requiredsupport/uncertainty"
             ],
             "no_merge": true,
-            "no_activation": true
+            "no_activation": true,
+            "science_snapshot_stage_count": {
+              "assessed": 20,
+              "complete": 17,
+              "partial": [
+                "C8"
+              ],
+              "pending": [
+                "R10",
+                "C10"
+              ],
+              "twenty_of_twenty": false
+            },
+            "delivery_commit": "e3b2f786c7597ffa65aa6439194e7cbcae6103e7",
+            "delivery_tree": "f16961ffba179a4daa211ffea846d257448a9fb5",
+            "R10_C10": "COMPLETE_SCOPED_DELIVERY_METADATA; C8 remainsPARTIAL"
           }
         }
       },
@@ -6063,17 +6085,19 @@
     "REC-HISTORY": {
       "parent_status": "PARTIAL",
       "H5": "INPUT_DEPENDENT_UNCALIBRATED",
-      "RESP01": "STATIC_IMPLEMENTATION_AND_PREEXEC_REVIEW_PASS_PRIMARY_PENDING",
-      "actual_history_epsilon": null
+      "RESP01": "COMPLETE_SCOPED_RESPONSE",
+      "actual_history_epsilon": null,
+      "RESP01_science_decision": "PASS_SCOPED_REPRESENTED_OPERATOR_AFTER_DIAGNOSED_CHECK_REPAIR",
+      "RESP01_claim_source": "CLAIM_GATES.json"
     },
     "REC-LINE02": {
       "status": "COMPLETE_SCOPED_REUSED"
     }
   },
   "finite_unit_progress": {
-    "completed": 11,
+    "completed": 18,
     "total": 20,
-    "percent": 55
+    "percent": 90
   },
   "physical_completion_percent": null,
   "overall_goal_completion_percent": null,
@@ -6100,7 +6124,12 @@
   "delivery_observation": {
     "S0": "COMPLETED_ACK_AND_26_OF_26_GIT_READBACK_PASS",
     "S0_receipt": "delivery/S0_ACTUAL_RECEIPT.json",
-    "S1": "PREPARING_PROVIDER_PENDING",
-    "primary_executed": false
-  }
+    "S1": "COMPLETED_ACK_AND_49_OF_49_GIT_READBACK_PASS",
+    "primary_executed": true,
+    "S1_receipt": "delivery/S1_ACTUAL_RECEIPT.json",
+    "S2": "ROOT_READY_PROVIDER_PENDING"
+  },
+  "original_intake_snapshot_pin": "79c042a15e7e29b894dadc32188e286dade73aad",
+  "late_dependency_delta": "provenance/late_central/LATE_DELTA_COMPACT.json",
+  "current_source_note": "One root-observed late delta; all current owner observations retained verbatim; immutable S0 survey and historical PR225 REC observations retained separately"
 }

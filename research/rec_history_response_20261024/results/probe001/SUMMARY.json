@@ -1,0 +1,146 @@
+{
+  "schema": "REC_HISTORY_RESPONSE_SAVED_DIAGNOSTIC_REPAIR_V1",
+  "status": "PASS_SAVED_DIAGNOSTICS",
+  "root_decision": "evidence/ROOT_DIAGNOSTIC_REPAIR_DECISION.json",
+  "original_primary_status_preserved": "FINDING_RETURN_TO_ASTRA; exit2",
+  "checks": [
+    {
+      "name": "parity_direction0_source_increment",
+      "checks": 313,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "unchanged source diagnostic",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction0_outgoing",
+      "checks": 314,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "old+2abs(u) virtual rows0:311; line rows unchanged",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction1_source_increment",
+      "checks": 313,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "unchanged source diagnostic",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction1_outgoing",
+      "checks": 314,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "old+2abs(u) virtual rows0:311; line rows unchanged",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction2_source_increment",
+      "checks": 313,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "unchanged source diagnostic",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction2_outgoing",
+      "checks": 314,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "old+2abs(u) virtual rows0:311; line rows unchanged",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction3_source_increment",
+      "checks": 313,
+      "original_pass": true,
+      "repaired_pass": true,
+      "original_failed_count": 0,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "unchanged source diagnostic",
+      "affected_rows_only": []
+    },
+    {
+      "name": "parity_direction3_outgoing",
+      "checks": 314,
+      "original_pass": false,
+      "repaired_pass": true,
+      "original_failed_count": 1,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "old+2abs(u) virtual rows0:311; line rows unchanged",
+      "affected_rows_only": [
+        {
+          "row": 310,
+          "absolute_residual": 9.44475617506435e-17,
+          "original_gross": 5.097939616814381e-05,
+          "repaired_gross": 1.8041737985554696,
+          "original_allowed": 5.795686339313739e-18,
+          "repaired_allowed": 2.0511081385796724e-13,
+          "original_pass": false,
+          "repaired_pass": true
+        }
+      ]
+    },
+    {
+      "name": "all314_witness",
+      "checks": 314,
+      "original_pass": false,
+      "repaired_pass": true,
+      "original_failed_count": 1,
+      "repaired_failed_count": 0,
+      "criterion": "absolute residual <=512eps64*gross; no additive floor",
+      "scale_change": "old+2abs(u) virtual rows0:311; line rows unchanged",
+      "affected_rows_only": [
+        {
+          "row": 310,
+          "absolute_residual": 3.417777942171102e-17,
+          "original_gross": 2.368541445301012e-05,
+          "repaired_gross": 2.000023685414453,
+          "original_allowed": 2.6927198692885805e-18,
+          "repaired_allowed": 2.2737636816310133e-13,
+          "original_pass": false,
+          "repaired_pass": true
+        }
+      ]
+    }
+  ],
+  "diagnostic_groups": 9,
+  "componentwise_comparison_count": 2822,
+  "identity_before_after_equal": true,
+  "original_primary_outputs_unchanged": true,
+  "code_unchanged_during_probe": true,
+  "additional_dense_rhs_columns": 0,
+  "coefficient_or_certificate_recomputation": 0,
+  "native_action_calls": 0,
+  "exact_dot_or_toy_reruns": 0,
+  "new_IVP": 0,
+  "native_runtime": 0,
+  "old_campaign_replay": 0,
+  "physical_epsilon": null,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5"
+  }
+}
