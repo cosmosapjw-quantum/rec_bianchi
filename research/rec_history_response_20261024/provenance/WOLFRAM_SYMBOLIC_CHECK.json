@@ -1,0 +1,18 @@
+{
+  "schema": "REC_HISTORY_RESP01_SYMBOLIC_CHECK_V1",
+  "code": "Clear[m11,m12,m21,m22,b11,b12,b21,b22,t11,t12,t21,t22,p11,p12,p21,p22,u1,u2,g,h,e]; mm={{m11,m12},{m21,m22}}; bb={{b11,b12},{b21,b22}}; tt={{t11,t12},{t21,t22}}; pp={{p11,p12},{p21,p22}}; uu={u1,u2}; oo=tt.Inverse[mm].bb.uu+pp.uu; kk=tt.Inverse[mm].bb+pp; j=Table[D[oo[[i]],uu[[j]]],{i,2},{j,2}]; rr=g*h*(oo[[1]]-u1); <|\"JacobianResidual\"->Simplify[j-kk],\"EventRowResidual\"->Simplify[Table[D[rr,uu[[j]]],{j,2}]-g*h*(kk[[1]]-{1,0})],\"PairedEnergyResidual\"->Simplify[-e*rr+e*rr]|>",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"JacobianResidual\" -> {{0, 0}, {0, 0}}, \"EventRowResidual\" -> {0, 0}, \"PairedEnergyResidual\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "client_elapsed_ms": 7842,
+  "timeConstraint": 5,
+  "remote_CPU": null,
+  "meaning": "2x2 symbolic check of the general affine response derivative and the same-event energy identity; not the actual313x313numerical certificate."
+}
