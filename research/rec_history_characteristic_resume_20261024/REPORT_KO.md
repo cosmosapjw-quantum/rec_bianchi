@@ -232,7 +232,7 @@ STAGE_PROGRESS.md/.json은R1–R10,C1–C10의20단계를 개별 기록한다.
 | S1 | code+127case plan, 실행 전 | 49610577fb53940db120fa8b6d8ee4f29198d1a2 | id:BSpOijBcT10AAAAAAD_8Yw |
 | S2A | 최초 environment failure | 5864c8ed63e1e248735f51b2987a030d726a5358 | id:BSpOijBcT10AAAAAAD_8ZQ |
 | S2 | 원 primary raw+환경 보완 | ca73220a4ac2293c32fb8057fe26faf19227ef12 | id:BSpOijBcT10AAAAAAD_8Zg |
-| S3 | 최종 review+모든 그림+formal report | final receipt에서 실제 ID 확인 | final receipt에서 실제 ID 확인 |
+| S3 | 최종 review+모든 그림+formal report | 4224a7be162c70e1cef222afaa546af7b4e2cd8a / PR132 | Dropbox id:BSpOijBcT10AAAAAAD_9HA; Drive partial |
 
 REC는 draft PR132, branch research/rec-history-characteristic-resume-20261024다.
 S0/S1/S2A/S2의 changed-blob readback은 각각40/40,21/21,25/25,31/31PASS다.
@@ -274,3 +274,11 @@ time/frequency resolution의 관계를 확인하는 데 사용했다.
 변경된 R1/R2 입력을 확인해 재개한다. 동일 identity의02R 검증은 재실행하지 않고
 NEXT_INPUT_CONTRACT.md의 actual matched-domain uncertainty admission으로 이어간다.
 
+
+## Final publication companion — actual receipts
+
+REC S3 science: `4224a7be162c70e1cef222afaa546af7b4e2cd8a`, draft PR132, tree `a52c342c1400d6ab72d986882af36527ca614f69`, changed blobs83/83PASS.
+Central: `f0a92c2421ff186dabd20fac09378a97c195fd4f`, draft PR224, tree `c59fc20b55955f00924f28278c1d6f98c57066a5`, exactly2 changed files/readback2/2PASS from parent3fba7cd91f84b4687cf6356f87400056ca32e37e. Both PRs are open and unmerged. Central receipt: delivery/CENTRAL_GITHUB_RECEIPT.json.
+S3Dropbox metadata ACK: id:BSpOijBcT10AAAAAAD_9HA, rev65e8da9d9926f0af03d47,2187080bytes, archiveSHA25683198452157b9360b10d59c0df4ef1e1eccbfa5aaa52bf73ec6e886f8e482aae. Whole-byteGET NOT_RUN. Backup axis PARTIAL_DRIVE_UNKNOWN: Drive S0 UNKNOWN_ACK_NOT_RECEIVED; later NOT_ATTEMPTED_PROVIDER_STALLED.
+R10/C10 science/handoff COMPLETE_SCOPED; final delivery commit UNKNOWN_UNTIL_OUTER_RECEIPT. No self-hash or dual-provider completion is asserted. Correct global subset: LINE02→HISTORY,LINE02→FIELD,HISTORY/FIELD/LI→COUPLED. R9 is HISTORY leaf→parent PARTIAL; no HISTORY→FIELD edge is introduced.
+Repository CI importsmoke success, verify_repo --quick whitespace failure across26 paths,none under this new unit; pytest skipped. Full diagnostic evidence and compact classification are in delivery/S3_CI_CLASSIFICATION.json. Scoped science PASS and repository-wide CI status remain separate. No scope-broad whitespace change or workflow rerun.

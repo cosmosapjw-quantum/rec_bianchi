@@ -76,5 +76,14 @@ Drive S0는completedACK없이중단됨:UNKNOWN_ACK_NOT_RECEIVED.
 사용자의연구요청취소가아니다. remote존재/취소UNKNOWN,중복업로드금지.
 후속Drive는NOT_ATTEMPTED_PROVIDER_STALLED. Git+Dropbox의확인된
 stage별실제IDs와최종receipt를사용하며dual-provider완료로기록하지말것.
+
+## Final publication companion — actual receipts
+
+REC S3 science: `4224a7be162c70e1cef222afaa546af7b4e2cd8a`, draft PR132, tree `a52c342c1400d6ab72d986882af36527ca614f69`, changed blobs83/83PASS.
+Central: `f0a92c2421ff186dabd20fac09378a97c195fd4f`, draft PR224, tree `c59fc20b55955f00924f28278c1d6f98c57066a5`, exactly2 changed files/readback2/2PASS from parent3fba7cd91f84b4687cf6356f87400056ca32e37e. Both PRs are open and unmerged. Central receipt: delivery/CENTRAL_GITHUB_RECEIPT.json.
+S3Dropbox metadata ACK: id:BSpOijBcT10AAAAAAD_9HA, rev65e8da9d9926f0af03d47,2187080bytes, archiveSHA25683198452157b9360b10d59c0df4ef1e1eccbfa5aaa52bf73ec6e886f8e482aae. Whole-byteGET NOT_RUN. Backup axis PARTIAL_DRIVE_UNKNOWN: Drive S0 UNKNOWN_ACK_NOT_RECEIVED; later NOT_ATTEMPTED_PROVIDER_STALLED.
+R10/C10 science/handoff COMPLETE_SCOPED; final delivery commit UNKNOWN_UNTIL_OUTER_RECEIPT. No self-hash or dual-provider completion is asserted. Correct global subset: LINE02→HISTORY,LINE02→FIELD,HISTORY/FIELD/LI→COUPLED. R9 is HISTORY leaf→parent PARTIAL; no HISTORY→FIELD edge is introduced.
+Repository CI importsmoke success, verify_repo --quick whitespace failure across26 paths,none under this new unit; pytest skipped. Full diagnostic evidence and compact classification are in delivery/S3_CI_CLASSIFICATION.json. Scoped science PASS and repository-wide CI status remain separate. No scope-broad whitespace change or workflow rerun.
+
 ```
 
