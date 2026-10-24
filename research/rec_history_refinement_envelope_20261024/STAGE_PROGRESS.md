@@ -6,12 +6,12 @@ These ten theory stages and ten coding stages reference one primary comparison a
 
 | Checkpoint | Local observed state | Actual provider ACK status | Evidence |
 |---|---|---|---|
-| S0 | PREPARED_ARCHIVE_CRC_PASS | DROPBOX_COMPLETED_ACK; GIT_PUBLICATION_PENDING; DRIVE_NOT_ATTEMPTED | ../../delivery_artifacts/REFINE01_S0_LOCAL_RECEIPT.json; delivery/S0_DROPBOX_ACK.json |
-| S1 | FROZEN_cad930e24f6f_CRC_STABILITY_PASS | NO_COMPLETED_PROVIDER_ACK_RECEIPT_OBSERVED_IN_LOCAL_DELIVERY_RECORDS | ../../delivery_artifacts/S1_CAPSULE_IDENTITY.json; ../../delivery_artifacts/ (delivery owner records actual completed ACK) |
-| S2 | RAW_FIGURES_REVIEW_ROOT_DECISION_RETAINED_FREEZE_READY | PENDING_DELIVERY | Pending delivery artifact; Pending ACK evidence |
-| S3 | FINAL_DECISION_REPORT_HANDOFF_PENDING | PENDING_DELIVERY | Pending delivery artifact; Pending ACK evidence |
+| S0 | ORIGINAL_FROZEN_ARCHIVE_RETAINED_VERIFIED | GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; DRIVE_FINAL_S3_ONLY_NOT_ATTEMPTED | delivery/PUBLICATION_STATE.json; delivery/S0_DROPBOX_ACK.json |
+| S1 | ORIGINAL_FROZEN_ARCHIVE_RETAINED_VERIFIED | GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; DRIVE_FINAL_S3_ONLY_NOT_ATTEMPTED | delivery/PUBLICATION_STATE.json; delivery/S1_DROPBOX_ACK.json |
+| S2 | ORIGINAL_FROZEN_ARCHIVE_RETAINED_VERIFIED | GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; DRIVE_FINAL_S3_ONLY_NOT_ATTEMPTED | delivery/PUBLICATION_STATE.json; delivery/S2_DROPBOX_ACK.json |
+| S3 | ROOT_FINAL_REPORT_AND_HANDOFF_FILES_READY_NOT_YET_FROZEN | PENDING_S3_GIT_DROPBOX_AND_ONE_DRIVE_ATTEMPT | delivery/PUBLICATION_STATE.json |
 
-Actual completed provider ACKs are evidenced by retained receipts. Their absence from local records is not a statement of remote nonexistence.
+S0/S1/S2 have actual Git publication/readback and completed Dropbox acknowledgements. PR133 is open draft. The original S1 code and inputs are unchanged; its two packaging metadata additions were published in S2. S2 raw NPZ full bytes are in the exact acknowledged archive, with a Git location pointer.
 
 ## Theory and coding stages
 
@@ -26,7 +26,7 @@ Actual completed provider ACKs are evidenced by retained receipts. Their absence
 | R7 | Single actual retained-history comparison | EXECUTED_ONCE_ARITHMETIC_CHECKS_PASS | S2 | `results/primary001/SUMMARY.json`; `results/primary001/RAW_COMPARISON.npz`; `execution/primary001/RESOURCE_RECEIPT.json` |
 | R8 | Astra scientific decision | COMPLETE_ROOT_DECISION_SCOPED_STORED_ENVELOPE | S2 | `CLAIM_GATES.json` |
 | R9 | Reusable conditional theory and API | IMPLEMENTED_SCOPED_REFERENCE_UNAVAILABLE | S2 | `THEORY.md`; `code/envelope.py`; `results/primary001/SUMMARY.json` |
-| R10 | Final report handoff and delivery | PENDING_FINAL_REPORT_HANDOFF_AND_PROVIDER_ACK | S3 | `HANDOFF.md (pending final file)`; `../../delivery_artifacts/ (pending final receipt)` |
+| R10 | Final report handoff and delivery | REPORT_HANDOFF_READY_PENDING_S3_PROVIDER_ACK_AND_FINAL_HANDOFF | S3 | `REPORT_KO.md`; `NEXT_THREAD_HANDOFF_KO.md`; `delivery/PUBLICATION_STATE.json` |
 | C1 | Frozen baseline and implementation scope | EVIDENCE_RETAINED | S0 | `FROZEN_CONTRACT.md`; `inputs/CASE_PLAN.json` |
 | C2 | Source mapping and query API | IMPLEMENTED | S1 | `provenance/survey/rec_sources/SOURCE_GUARD_CLARIFICATION.md`; `code/envelope.py`; `code/analyze_pair.py` |
 | C3 | Exact decomposition and interval algorithm | IMPLEMENTED | S1 | `THEORY.md`; `code/envelope.py` |
@@ -36,10 +36,12 @@ Actual completed provider ACKs are evidenced by retained receipts. Their absence
 | C7 | Source masks direct/decomposed and Fraction checks | OBSERVED_ALL_PASS | S2 | `results/primary001/FRACTION_ORACLE.json`; `results/primary001/PER_CHANNEL.csv`; `evidence/report_facts.json` |
 | C8 | Raw results resource ledger and reproduction | RETAINED_AND_FIRST_PNGS_ACTUALLY_INSPECTED | S2 | `results/primary001/RAW_COMPARISON.npz`; `BUDGET_LEDGER.json`; `execution/primary001/COMMAND.json`; `execution/primary001/SOURCE_INPUT_SNAPSHOT.json`; `execution/figures001/RESOURCE_RECEIPT.json`; `results/figures/VISUAL_INSPECTION.json` |
 | C9 | Fresh independent code/numerical review | COMPLETE_SCOPED_INDEPENDENT_REVIEW_PASS | S2 | `evidence/independent_review/FINAL_REVIEW.md`; `evidence/independent_review/FINAL_REVIEW.json` |
-| C10 | Final reproducible delivery and handoff | PENDING_HANDOFF_AND_PROVIDER_ACK | S3 | `HANDOFF.md (pending final file)`; `../../delivery_artifacts/ (pending final receipt)` |
+| C10 | Final reproducible delivery and handoff | REPORT_HANDOFF_READY_PENDING_S3_PROVIDER_ACK_AND_FINAL_HANDOFF | S3 | `REPORT_KO.md`; `NEXT_THREAD_HANDOFF_KO.md`; `delivery/PUBLICATION_STATE.json` |
+
+**Workflow completion:18/20.** R10/C10 reference the completed report and handoff files while final S3 delivery acknowledgements and final handoff remain pending.
 
 ## Admission and pending delivery
 
-R6/C9 have the actual fresh independent review files; R8 has the actual root CLAIM_GATES.json decision. R10/C10 remain pending final handoff and completed delivery acknowledgements. Final physical-reference uncertainty/bounds, curvature, order and goal-percent remain null. Original-target coverage remains0/313, parentREC-HISTORY remainsPARTIAL, H5 remainsINPUT_DEPENDENT_UNCALIBRATED, and physical HOLD/productionNOT_APPROVED/REI_activation=false remain.
+R6/C9 have the actual fresh independent review files; R8 has the actual root CLAIM_GATES.json decision. R10/C10 have REPORT_KO.md, NEXT_THREAD_HANDOFF_KO.md and delivery/PUBLICATION_STATE.json as evidence; they remain pending final handoff and completed S3 delivery acknowledgements. Final physical-reference uncertainty/bounds, curvature, order and goal-percent remain null. Original-target coverage remains0/313, parentREC-HISTORY remainsPARTIAL, H5 remainsINPUT_DEPENDENT_UNCALIBRATED, and physical HOLD/productionNOT_APPROVED/REI_activation=false remain.
 
 Late central566f and current Library-delta intake are retained under provenance/survey/cross_repo with prior pinned files unchanged. Both first PNGs were actually viewed by executor and root, with root layout/readability PASS; no presentation repair was needed.

@@ -1,0 +1,69 @@
+{
+  "schema": "REC_HISTORY_REFINE01_DELIVERY_FIRST_FAILURES_AND_RECOVERY_V1",
+  "classification": "PACKAGING_TRANSPORT_AND_PROVIDER_STATUS_NOT_SCIENTIFIC_FAILURE",
+  "source": "Observed tool results and collaboration messages preserved in this conversation; missing timestamps are not inferred",
+  "scientific_execution": 0,
+  "events": [
+    {
+      "order": 1,
+      "action": "Read full 6,670,083-byte S0 prepared Git request via exec_command max_output_tokens45000",
+      "outcome": "Truncated output began with Warning; JSON.parse raised SyntaxError Unexpected token W",
+      "provider_mutation_reached": false
+    },
+    {
+      "order": 2,
+      "action": "Read compacted full S0 request with max_output_tokens180000",
+      "outcome": "Tool reported original token count1667521 and returned716766 characters beginning Warning; JSON.parse failed",
+      "provider_mutation_reached": false
+    },
+    {
+      "order": 3,
+      "action": "Read original S0 request in200000-byte chunks in a single long orchestration",
+      "outcome": "aborted by user after569.0s; no payload/branch/tree stored",
+      "remote_mutation_ACK_received": false,
+      "server_cancellation": "UNKNOWN"
+    },
+    {
+      "order": 4,
+      "action": "Recover with separately yielded6x40000-character batches",
+      "outcome": "163chunks/6520000characters stored; final read/join/mutation orchestration interrupted after419.6s; no payload/branch/tree stored; subsequent ref404 and PRempty",
+      "remote_mutation_ACK_received": false,
+      "server_cancellation": "UNKNOWN"
+    },
+    {
+      "order": 5,
+      "action": "Build and read <=300KB31-entry S0core projection",
+      "outcome": "Completed read/store before separate provider mutation",
+      "source_contract_input_identity_changed": false,
+      "full_bulk_bytes": "Original unchanged S0Dropbox archive with exact fileID/SHA pointer"
+    },
+    {
+      "order": 6,
+      "action": "Separate github_create_branch call for old proposed branch",
+      "outcome": "No ACK/operationID/cellID; root observed pending at2026-10-24T05:07:26Z; tool later returned aborted by user after8078.5s",
+      "started_at_utc": null,
+      "reported_elapsed_s": 8078.5,
+      "elapsed_is_wall_clock_verified": false,
+      "server_cancellation": "UNKNOWN",
+      "repeat_mutation": false
+    },
+    {
+      "order": 7,
+      "action": "Inspect workspace after interrupted call",
+      "outcome": "Previously created workspace artifacts absent; root independently confirmed scratch loss and current clock2026-10-24T07:22:38Z; cause not established",
+      "scientific_reexecution": false
+    },
+    {
+      "order": 8,
+      "action": "Recover original checkpoints",
+      "outcome": "Original S1/S2Dropbox archives restored with exact original archiveSHA/size/CRC and89/146payloadbyte/SHA/Gitblob matches; restored to separate readonly snapshots; working S2 restored without rerunning science",
+      "receipt": "S1_S2_SNAPSHOT_RESTORE_RECEIPT.json"
+    },
+    {
+      "order": 9,
+      "action": "Continue publication using root-owned Git calls and a separate delivery branch",
+      "outcome": "S0coretree/commit/31blobreadback and draftPR133 succeeded; S1actual13-entryprojection succeeded; S2bounded incremental requestfiles prepared locally",
+      "this_agent_provider_write_role": "DISABLED_LOCAL_ONLY"
+    }
+  ]
+}
