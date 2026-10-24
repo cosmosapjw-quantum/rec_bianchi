@@ -1,0 +1,249 @@
+{
+  "schema": "REC_NEXT_R1_BACKUP_LIBRARY_SURVEY_V1",
+  "as_of_utc": "2026-10-24T02:39:27Z",
+  "scope": "Read-only R1 backup/Library survey plus one authorized small HISTORY02 Stage A source recovery; no scientific execution or external writes",
+  "skill_context_used": {
+    "package": "c38/physmath-research-loop",
+    "version": "1.3.0",
+    "files": [
+      "SKILL.md",
+      "references/SUBAGENT_MODE.md",
+      "references/POLICY_INTEGRATION.md",
+      "references/THEORY_LOOP.md"
+    ],
+    "stages": [
+      "R1",
+      "R2 intake/reuse only"
+    ],
+    "companion_skills": [
+      "c7/library",
+      "c3/find-dropbox-content",
+      "c3/inspect-dropbox-file",
+      "c22/google-drive"
+    ],
+    "recursive_delegation": false
+  },
+  "status_to_preserve": [
+    "ADM01 PARTIAL_AFTER_WORKSPACE_RESET",
+    "Physical HOLD",
+    "REC_U5 HOLD_9_FAIL/HOLD_8_FAIL",
+    "CLOSED_HOLD_NOT_RESET",
+    "global_convergence NOT_RUN",
+    "production NOT_APPROVED",
+    "REI_activation=false",
+    "original primary detail rows unavailable; no reconstruction or rerun"
+  ],
+  "coverage": {
+    "dropbox": {
+      "folder": "/bianchi/rec_bianchi/20261016",
+      "direct_entries": 98,
+      "recursive_entries": 138,
+      "has_more": false,
+      "metadata_rechecks": [
+        "id:BSpOijBcT10AAAAAAD_6xg",
+        "id:BSpOijBcT10AAAAAAD_8LA",
+        "id:BSpOijBcT10AAAAAAD_6tw"
+      ],
+      "global_title_queries": [
+        "REC-HISTORY",
+        "REC_HISTORY02",
+        "REC-HISTORY-02",
+        "CHARACTERISTIC",
+        "WIEN"
+      ],
+      "limitation": "Characteristic title query capped at100; provider returned older rows even when a date cutoff was requested. Complete folder enumeration is the stronger bounded local result."
+    },
+    "drive": {
+      "folder_id": "1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k",
+      "folder_entries": 16,
+      "folder_top_k": 250,
+      "root_returned": 310,
+      "root_top_k": 500,
+      "queries": [
+        "REC_HISTORY_ADM01_FINAL_20261024_199d28152b5e",
+        "REC_HISTORY02",
+        "REC-HISTORY-02",
+        "history + modified after2026-10-23",
+        "recombination + modified after2026-10-23",
+        "characteristic + modified after2026-10-23",
+        "Wien + modified after2026-10-23"
+      ],
+      "final_zip_search_status": "NOT_FOUND_IN_THIS_SCOPE; previous interrupted/no-ACK state remains UNKNOWN; no retry",
+      "limitation": "No global exhaustive Drive byte/fulltext inventory; root list exposes no continuation interface."
+    },
+    "library": {
+      "recent_modified_after": "2026-10-23T00:00:00Z",
+      "recent_items": 115,
+      "next_cursor": null,
+      "generic_recent_text_documents_find": 18,
+      "selected_fulltext_reads": [
+        "REC_LINE02_FINAL_HANDOFF_KO.md",
+        "REC_LINE02_FINAL_DELIVERY_RECEIPT.json"
+      ],
+      "older_title_prefix_search": {
+        "modified_after": "2026-10-15T00:00:00Z",
+        "queries": [
+          "REC_HISTORY",
+          "REC_R3",
+          "REC_HYREC"
+        ],
+        "items": 50,
+        "next_cursor": null
+      },
+      "latest_exact_title_queries": [
+        "REC_HISTORY02",
+        "REC-HISTORY-02",
+        "CHARACTERISTIC",
+        "WIEN"
+      ],
+      "latest_exact_title_result_count": 0,
+      "supplied_attachments_read_via_library": false,
+      "limitation": "Metadata listing and targeted title/text search; not every historical file's full contents."
+    },
+    "other_surfaces": "GitHub/central and PersonalContext are parent-owned; this child did not claim to enumerate conversations or every repository."
+  },
+  "findings": {
+    "ADM01_backups": "Current final ZIP and outer receipt metadata exactly match prior IDs/revs/sizes. Reuse earlier final ZIP whole-byte SHA/CRC85/payload84/84 evidence; no large redownload.",
+    "new_matching_parameter_history_or_reference": "No genuinely new matching-parameter history, endpoint/reference uncertainty or justified curvature bound was located in the stated searched scope. Existing actual h2/h4 data remains acknowledged; scientific admission was not re-evaluated here.",
+    "history02": {
+      "archive": "history02_stage_a/REC_HISTORY02_STAGE_A_20261024.zip",
+      "bytes": 686043,
+      "sha256": "ca748e1e9e3ee1c9fe2c82418221f0230998b97223b38d91c558ae3924a077da",
+      "provider_id": "id:BSpOijBcT10AAAAAAD_6tw",
+      "rev": "65e88d1e896280af03d47",
+      "provider_modified": "2026-10-23T21:39:50Z",
+      "whole_byte_sha_size_content_hash": "PASS",
+      "crc_members": 15,
+      "payloads_verified": 14,
+      "source_state_timestamp": "2026-10-23T21:39:14.733816+00:00",
+      "completed_contract_stages": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "pending_stages": [
+        "R6",
+        "R7",
+        "R8",
+        "R9",
+        "R10",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "new_implementation_primary_results_in_archive": false,
+      "standalone_loop_file_in_archive": false,
+      "owner": "No HISTORY02 creator/active owner identity in recovered contract. REI-L0 is explicitly another thread's reserved paths/budget.",
+      "current_live_owner_status": "UNRESOLVED; absence of a later result does not establish inactivity or authorize takeover",
+      "construction": "Exact constant-shear Bianchi I retarded crossing and source direction; native departure=Wien offset; fixed-cell polynomial-history tangent and conditional propagation bound; no new cosmological history",
+      "domain": "eta=ln(a), metric(-+++), normal propagation n=p/|p|, b tracefree, a_i=1+b_i>0, Lambda>=0. General frame/curvature characteristic is interface only.",
+      "source_owners": [
+        {
+          "path": "provenance/axisymmetric_batched.py",
+          "git_blob": "96a4769d46635ee33fc1f408d6645680383f842f",
+          "sha256": "68ba14db113cd376683cdeabeea141aaa53ce311daffcc3677f94ac48a1c47bc"
+        },
+        {
+          "path": "provenance/axisymmetric_bianchi_i.py",
+          "git_blob": "eaabdc4fac25bab3f2f65e4f59ec360b76af8238",
+          "sha256": "5296880dbf2d1b00e2810c969e6a0406b46f10acff04c794e8f718aff5813955"
+        },
+        {
+          "path": "provenance/characteristic_angular.py",
+          "git_blob": "c6676ee112a892bb558ab8aab670481617201c7f",
+          "sha256": "1fa89cdf0b2d0568f395444dc8212d325926572057950e55a52f8a0a469dcc53"
+        },
+        {
+          "path": "inputs/h4_numpy16_python_continuation.npz",
+          "git_blob": "f3d1d58563ea24bc34c977efc67106e1936cd5cc",
+          "bytes": 119349,
+          "sha256": "b2489168155ad1a18a887a880eb0ca90376be5506c3c61d6bf06e9e70007c54c",
+          "shape_claim_from_contract": "virtual311x24, Lyman3x24, states17, steps16; h2.1225e-5"
+        }
+      ],
+      "snapshot_budget": {
+        "allocation_cpu_s": 60,
+        "allocation_wall_s": 180,
+        "threads": 1,
+        "memory_bytes": 1073741824,
+        "primary_cpu_wall": [
+          40,
+          90
+        ],
+        "review_cpu_wall": [
+          10,
+          30
+        ],
+        "repair_cpu_wall": [
+          10,
+          60
+        ],
+        "executions": [],
+        "recorded_local_spent_cpu": 0,
+        "recorded_local_spent_wall": 0,
+        "historical_cas": "WOLFRAM_SYMBOLIC.json records two algebraic identities giving {0,0}, request timeConstraint20s, actual CPU/wall not recorded",
+        "current_remaining": "UNKNOWN; do not infer current unused budget from snapshot"
+      },
+      "open_inputs": [
+        "actual same-domain time interpolation uncertainty",
+        "source-column/time-prefix admission for actual h4 use",
+        "angular supplier beyond declared synthetic degree<=2 representation",
+        "full thermodynamic Jacobian",
+        "general geometry/thermal uncertainty"
+      ],
+      "nonoverlap_implication": "A complementary certificate/uncertainty interface may be chosen by parent; retarded/Wien construction remains a separately owned unfinished unit."
+    },
+    "bass_b3a": {
+      "provider": "Google Drive",
+      "id": "18hTBCoLnlKcOd1AlM48BkF6dyga0n7Xj-BiONxMAMlU",
+      "modified": "2026-10-23T22:11:51.573Z",
+      "title": "BASS_B3A_20261024_PRE_REVIEW_RESEARCH_CAPSULE",
+      "read_level": "full extracted text",
+      "observed_claims": "Preparatory WL four-force reference reports21testgroups,12covariance cases,6rest-frame comparisons. Independent model review/native adapter/actual REC history coupling NOT_RUN.",
+      "role": "Frame and event energy/momentum ownership background only; not a new REC history or interpolation certificate",
+      "source_representation": "BASS_B3A_SOURCE_REPRESENTATION.json"
+    }
+  },
+  "runtime": {
+    "scientific_runs": 0,
+    "new_IVP": 0,
+    "old_campaign_replay": 0,
+    "remote_writes": 0,
+    "large_redownloads": 0,
+    "history02_GET": 1,
+    "HEAD": 0,
+    "download_hash_extract_io_cpu_s": 0.025487510000000005,
+    "download_hash_extract_io_wall_s": 0.3550922770082252,
+    "manifest_hash_io_cpu_s": 0.002990134000000002,
+    "manifest_hash_io_wall_s": 0.0029903340036980808,
+    "note": "I/O timing excludes provider connector waiting, source reading and writing this survey; no scientific budget charge inferred."
+  },
+  "evidence_files": [
+    "CURRENT_DROPBOX_IDENTITIES.json",
+    "DROPBOX_FOLDER_INVENTORY.json",
+    "DROPBOX_SEARCH_OBSERVATIONS.json",
+    "DRIVE_OBSERVED_INVENTORY.json",
+    "LIBRARY_SURVEY_METADATA.json",
+    "history02_stage_a/SOURCE_INTAKE_RECEIPT.json",
+    "history02_stage_a/PAYLOAD_VERIFICATION.json",
+    "history02_stage_a/extracted/MANIFEST_STAGE_A.json",
+    "history02_stage_a/extracted/rec_bianchi/research/rec_history_characteristic_20261024/FROZEN_CONTRACT.md",
+    "BASS_B3A_PRE_REVIEW_DRIVE_TEXT.txt"
+  ],
+  "unresolved_current_blockers": [
+    "HISTORY02 current live owner/reservation and post-Stage-A spend unresolved",
+    "No new same-domain uncertainty donor found within explicit survey scope",
+    "Drive final ADM01 ZIP interrupted/no-ACK remains unresolved (not located by current queries)",
+    "ADM01 original primary detail loss remains PARTIAL_AFTER_WORKSPACE_RESET"
+  ]
+}
+

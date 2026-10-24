@@ -1,0 +1,13 @@
+# C10 central delivery preservation review
+
+**GO_CENTRAL_DRAFT_PUBLICATION** for the prepared two-payload additive update on `research/rec-history-characteristic-observation-20261024`, based on central commit `3fba7cd91f84b4687cf6356f87400056ca32e37e`. Keep main and prior PR223 unmerged. This is the static delivery portion of the existing review pass; no additional science, probes or replay were executed.
+
+Read the actual CENTRAL_PATCH.diff, before_latest/DAG.json, after/DAG.json, after/returns/REC_HISTORY02R_20261024.json and PRESERVATION_CHECK.json. Independently parsed the before/after DAG payloads. Only the top-level nodes value changes. Both payloads contain 40 nodes in identical order; only REC-LINE02 and REC-HISTORY change, and each changes solely plan_status/observations. All other node fields, all other 38 nodes, integration, authority and top-level metadata compare equal. This retains the latest HE-ANG, CR_N5_ATOMIC_ISOTOPE_COVERAGE and HE-X1 entries as part of that exact comparison. The new return payload agrees with every shared field of the HISTORY02R observation.
+
+The local before payload's computed Git blob is `35698ce2c102b3ce09e33bdd110cd410b12245d2`, matching the independently reported remote blob. The resolved trailing newline difference was packaging-only; parsed content and scientific meaning were unchanged. The preservation receipt also records exact transfer of the prior ADM01 observation/execution and original HISTORY02 reservation. The diff retains those old observations and their distinct historical budget rather than replacing them with the new invocation's ledger.
+
+The added observation accurately records the already completed scoped review: 127 primary rows/776 comparisons, six independent rows/ten adapter entries, one review pass, local represented-direction ledger scope, conditional supplied-tube error map, REC-HISTORY PARTIAL and H5 INPUT_DEPENDENT_UNCALIBRATED. It preserves missing M2/reference uncertainty, 0/313 actual h4 coverage at the ADM01 face, all physical/production/global holds, and unknown later Stage A owner spending. No total physical completion percentage is invented.
+
+S3 evidence is pinned to `4224a7be162c70e1cef222afaa546af7b4e2cd8a`, PR132. Dropbox records metadata ACK, ID, revision and size separately from a whole-byte GET that remains NOT_RUN. Drive remains NOT_ATTEMPTED_PROVIDER_STALLED with prior S0 context UNKNOWN. These backup labels preserve the provider evidence limits. Root-reported Git readback confirmation is distinct from Dropbox whole-byte retrieval.
+
+Proceed with the expected-base, force=false additive draft publication. This review does not authorize merge, activation, original-owner takeover or any changes beyond the two prepared payloads.

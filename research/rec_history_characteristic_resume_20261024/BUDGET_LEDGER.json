@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "unit_id": "REC-HISTORY-02R",
+  "scope": "New invocation allocation only; historical ledgers retained separately",
+  "limits": {
+    "cpu_s": 30,
+    "execution_wall_s": 90,
+    "threads": 1,
+    "address_space_bytes": 1073741824
+  },
+  "allocations": {
+    "primary": {
+      "cpu_s": 16,
+      "execution_wall_s": 45
+    },
+    "independent_review": {
+      "cpu_s": 6,
+      "execution_wall_s": 15,
+      "max_probes": 6
+    },
+    "figures_and_one_diagnosed_repair": {
+      "cpu_s": 8,
+      "execution_wall_s": 30
+    }
+  },
+  "local_executions": [
+    {
+      "label": "primary001",
+      "phase": "primary",
+      "status": "FAILED_IMPORT_BEFORE_CASES",
+      "resource_receipt": "execution/primary001/RESOURCE_RECEIPT.json",
+      "stdout": "execution/primary001/stdout.txt",
+      "stderr": "execution/primary001/stderr.txt",
+      "cpu_s": 0.10280099999999999,
+      "execution_wall_s": 0.11516009300248697,
+      "peak_rss_kib": 24644,
+      "returncode": 1,
+      "first_exception": "ModuleNotFoundError: No module named 'mpmath'",
+      "numerical_cases_started": 0,
+      "scientific_summary": "NOT_CREATED_IMPORT_FAILED_BEFORE_MAIN"
+    },
+    {
+      "label": "primary002",
+      "phase": "primary",
+      "status": "PASS_SCOPED",
+      "resource_receipt": "execution/primary002/RESOURCE_RECEIPT.json",
+      "summary": "results/primary002/SUMMARY.json",
+      "cpu_s": 1.709545,
+      "execution_wall_s": 1.7201051980082411,
+      "peak_rss_kib": 29668,
+      "returncode": 0,
+      "rows_saved": 127,
+      "first_failure": null
+    },
+    {
+      "label": "figures001",
+      "phase": "figures_and_one_diagnosed_repair",
+      "status": "RENDERED_SAVED_ROWS_ONLY",
+      "resource_receipt": "execution/figures001/RESOURCE_RECEIPT.json",
+      "cpu_s": 1.799507,
+      "execution_wall_s": 1.8197947989974637,
+      "peak_rss_kib": 97252,
+      "returncode": 0,
+      "new_scientific_cases": 0
+    },
+    {
+      "label": "figures002",
+      "phase": "figures_and_one_diagnosed_repair",
+      "status": "TARGETED_PRESENTATION_REPAIR_RENDERED",
+      "resource_receipt": "execution/figures002/RESOURCE_RECEIPT.json",
+      "cpu_s": 1.661186,
+      "execution_wall_s": 1.6691097430011723,
+      "peak_rss_kib": 96568,
+      "returncode": 0,
+      "new_scientific_cases": 0
+    },
+    {
+      "label": "review001",
+      "phase": "independent_review",
+      "status": "PASS_SCOPED",
+      "resource_receipt": "execution/review001/RESOURCE_RECEIPT.json",
+      "cpu_s": 0.105953,
+      "execution_wall_s": 0.11565408200840466,
+      "peak_rss_kib": 26216,
+      "returncode": 0,
+      "probe_rows": 6,
+      "adapter_entry_calls": 10,
+      "review_passes": 1
+    }
+  ],
+  "new_local_spent": {
+    "cpu_s": 6.394983,
+    "execution_wall_s": 14.087619764017768,
+    "peak_rss_kib": 97252,
+    "includes_environment_setup": true
+  },
+  "external_symbolic": {
+    "new_calls": 1,
+    "requested_kernel_limit_s": 5,
+    "result": "two identities = 0",
+    "source": "provenance/WOLFRAM_NEW_SOURCE.wl",
+    "receipt": "provenance/WOLFRAM_NEW_RESULT.json",
+    "measured_cpu_s": null,
+    "measured_execution_wall_s": null,
+    "measured_peak_rss_kib": null
+  },
+  "historical_separate": {
+    "HISTORY01": {
+      "cpu_s": 4.848191,
+      "execution_wall_s": 4.736567968,
+      "replay": 0
+    },
+    "ADM01": {
+      "cpu_s": 5.928528894,
+      "execution_wall_s": 6.09275194699876,
+      "replay": 0,
+      "preservation": "PARTIAL_AFTER_WORKSPACE_RESET"
+    },
+    "original_HISTORY02_StageA": {
+      "historical_snapshot_utc": "2026-10-23T21:39:14.733816Z",
+      "allocated_cpu_s": 60,
+      "allocated_wall_s": 180,
+      "recorded_local_spent_cpu_s": 0,
+      "later_owner_spent": null,
+      "remaining_current": null,
+      "original_external_CAS_calls": 1,
+      "original_external_CAS_identities": 2,
+      "original_external_CAS_actual_cpu_s": null
+    }
+  },
+  "forbidden_execution_counts": {
+    "new_IVP": 0,
+    "native_recombination_runtime": 0,
+    "old_campaign_replay": 0,
+    "dense_frozen_RHS_replay": 0
+  },
+  "measurement": "Enforcing RLIMIT_CPU/AS and thread environment; one-child wall timeout; postexit inclusive getrusage. No live aggregate monitor claim.",
+  "environment_setup_separate": {
+    "classification": "NONSCIENTIFIC_ENVIRONMENT_REPAIR",
+    "receipt": "ENVIRONMENT_REPAIR.json",
+    "cpu_s": 1.015991,
+    "execution_wall_s": 8.647795849,
+    "charge_allocation": "figures_and_one_diagnosed_repair",
+    "remaining_allocation_cpu_s": 6.984009,
+    "remaining_allocation_wall_s": 21.352204151000002
+  },
+  "new_local_execution_spent": {
+    "cpu_s": 5.378992,
+    "execution_wall_s": 5.439823915017769
+  },
+  "primary_cumulative": {
+    "cpu_s": 1.812346,
+    "execution_wall_s": 1.835265291010728,
+    "remaining_cpu_s": 14.187654,
+    "remaining_wall_s": 43.16473470898927
+  },
+  "figures_repair_cumulative": {
+    "cpu_s": 4.4766840000000006,
+    "execution_wall_s": 12.136700390998636,
+    "remaining_cpu_s": 3.5233159999999994,
+    "remaining_wall_s": 17.863299609001366
+  },
+  "review_cumulative": {
+    "cpu_s": 0.105953,
+    "execution_wall_s": 0.11565408200840466,
+    "probe_rows": 6,
+    "adapter_entry_calls": 10,
+    "review_passes": 1
+  }
+}
