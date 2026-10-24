@@ -3,28 +3,30 @@
   "workflow_version": "1.0.0",
   "design_version": "0.2",
   "unit": "REC-HISTORY-THERMO01",
-  "as_of_utc": "2026-10-24T11:33:48.582716+00:00",
+  "as_of_utc": "2026-10-24T18:36:55.524286+00:00",
   "decision_owner": "root Astra",
   "mechanical_serializer": "next_rec_intake",
   "status": "IN_PROGRESS",
-  "checkpoint": "S0",
-  "completed": 9,
+  "checkpoint": "S1",
+  "completed": 11,
   "total": 20,
   "completed_stage_ids": [
-    "C1",
-    "C2",
-    "C3",
-    "C4",
     "R1",
     "R2",
     "R3",
     "R4",
-    "R5"
+    "R5",
+    "R6",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
   ],
   "scientific_execution": "NOT_RUN",
   "scientific_admission": "ROOT_PENDING",
-  "publication": "NOT_YET",
-  "backup": "NOT_YET",
+  "publication": "S1_NOT_YET; S0_PUBLISHED",
+  "backup": "S1_NOT_YET; S0_RECOVERED_ACKNOWLEDGED",
   "stages": [
     {
       "id": "R1",
@@ -47,11 +49,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "R2",
@@ -75,11 +82,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "R3",
@@ -102,11 +114,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "R4",
@@ -129,11 +146,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "R5",
@@ -157,20 +179,27 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "R6",
       "name": "독립 검증",
       "track": "research",
-      "status": "in_progress",
+      "status": "complete",
       "evidence": [
-        "FROZEN_CONTRACT.md",
-        "evidence/independent_review/PREEXEC_THEORY_REVIEW.md"
+        "evidence/independent_review/PREEXEC_THEORY_REVIEW.md",
+        "evidence/independent_review/PREEXEC_CODE_REVIEW.md",
+        "evidence/independent_review/RECOVERED_REVIEWED_CODE_IDENTITIES.json",
+        "evidence/execution/WORKSPACE_RECOVERY.json"
       ],
       "DAG_slot": {
         "owner": "REC",
@@ -180,15 +209,16 @@
         "kind": "local_observation_only"
       },
       "local_checkpoint": {
-        "name": "S0",
-        "status": "NOT_YET"
+        "name": "S1",
+        "status": "LOCAL_PREPARED"
       },
       "publication": {
         "git": "NOT_YET",
         "central": "NOT_YET"
       },
       "backup": "NOT_YET",
-      "remaining_obligation": "Independent preexecution review remains in progress."
+      "remaining_obligation": "S1 preparation complete; actual bounded primary and numerical-result review remain pending.",
+      "completion_scope": "Independent static preexecution review, reused for byte-identical recovered code; numerical-result review remains R7/C9."
     },
     {
       "id": "R7",
@@ -307,11 +337,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "C2",
@@ -334,11 +369,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "C3",
@@ -361,11 +401,16 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "C4",
@@ -374,7 +419,10 @@
       "status": "complete",
       "evidence": [
         "FROZEN_CONTRACT.md",
-        "BUDGET_LEDGER.json"
+        "BUDGET_LEDGER.json",
+        "evidence/execution/ENVIRONMENT_READONLY.json",
+        "environment/DEPENDENCY_SETUP.json",
+        "environment/OFFICIAL_WHEEL_TRANSFER.json"
       ],
       "DAG_slot": {
         "owner": "REC",
@@ -388,19 +436,34 @@
         "status": "LOCAL_PREPARED"
       },
       "publication": {
-        "git": "NOT_YET",
-        "central": "NOT_YET"
+        "git": "S0_PUBLISHED_AND_READBACK_29_OF_29",
+        "central": "NOT_YET",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
       },
-      "backup": "NOT_YET",
-      "remaining_obligation": "Root-authorized S0 obligation complete; actual publication and backup receipts pending."
+      "backup": {
+        "status": "S0_RECOVERED_ACK_AND_METADATA_SIZE_PASS",
+        "provider_id": "id:BSpOijBcT10AAAAAAD_9lg",
+        "receipt": "delivery/S0_RECOVERED_ACTUAL_RECEIPT.json"
+      },
+      "remaining_obligation": "S0 finite preparation preserved; full original 300-member archive was lost before upload and distinct recovered projection backup is acknowledged."
     },
     {
       "id": "C5",
       "name": "구현",
       "track": "coding",
-      "status": "in_progress",
+      "status": "complete",
       "evidence": [
-        "FROZEN_CONTRACT.md"
+        "IMPLEMENTATION_NOTES.md",
+        "evidence/execution/PREPARED_SOURCE_SNAPSHOT.json",
+        "evidence/execution/PREEXEC_STATIC.json",
+        "evidence/execution/WORKSPACE_RECOVERY.json",
+        "code/controls.py",
+        "code/figures.py",
+        "code/inputs.py",
+        "code/primary.py",
+        "code/run_bounded.py",
+        "code/scalar.py",
+        "code/source.py"
       ],
       "DAG_slot": {
         "owner": "REC",
@@ -410,15 +473,15 @@
         "kind": "local_observation_only"
       },
       "local_checkpoint": {
-        "name": "S0",
-        "status": "NOT_YET"
+        "name": "S1",
+        "status": "LOCAL_PREPARED"
       },
       "publication": {
         "git": "NOT_YET",
         "central": "NOT_YET"
       },
       "backup": "NOT_YET",
-      "remaining_obligation": "Implementation worker is preparing code; no execution claimed."
+      "remaining_obligation": "S1 preparation complete; actual bounded primary and numerical-result review remain pending."
     },
     {
       "id": "C6",
@@ -541,6 +604,7 @@
       "remaining_obligation": "Await preceding root-authorized stage and actual evidence."
     }
   ],
-  "root_decision": "PREEXEC_THEORY_ACCEPTED_SCIENCE_NOT_RUN",
-  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION"
+  "root_decision": "PREEXEC_THEORY_AND_STATIC_CODE_ACCEPTED_SCIENCE_NOT_RUN",
+  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
+  "RUN_READY": "NOT_ISSUED; root acts only after S1 receipts"
 }

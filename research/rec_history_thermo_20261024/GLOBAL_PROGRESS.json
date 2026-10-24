@@ -1,9 +1,9 @@
 {
   "schema": "REC_HISTORY_THERMO_GLOBAL_PROGRESS_V1",
   "unit": "REC-HISTORY-THERMO01",
-  "as_of_utc": "2026-10-24T11:33:48.582716+00:00",
+  "as_of_utc": "2026-10-24T18:36:55.524286+00:00",
   "finite_unit_stages": {
-    "completed": 9,
+    "completed": 11,
     "total": 20,
     "source": "STAGE_PROGRESS.json"
   },
@@ -15,7 +15,7 @@
     "other_owner_observations": "PRESERVED; see SURVEY_SYNTHESIS_KO.md and cross-repository intake"
   },
   "REC_H7": {
-    "current_unit": "LOCAL_SIX_PRIMITIVE_JACOBIAN_PREPARATION",
+    "current_unit": "LOCAL_SIX_PRIMITIVE_JACOBIAN_IMPLEMENTATION_PREPARED",
     "status": "IN_PROGRESS",
     "scientific_decision": "ROOT_PENDING",
     "full_coupled_system_jacobian": "OPEN"
@@ -41,9 +41,17 @@
     "REI_activation": false,
     "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
   },
-  "publication": "NOT_YET",
-  "backup": "NOT_YET",
-  "next_action": "Complete implementation and independent preexecution review; root issues RUN_READY before the bounded primary.",
-  "root_decision": "PREEXEC_THEORY_ACCEPTED_SCIENCE_NOT_RUN",
-  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION"
+  "publication": "S0_PUBLISHED; S1_NOT_YET",
+  "backup": "S0_RECOVERED_ACKNOWLEDGED; S1_NOT_YET",
+  "next_action": "Root publishes and backs up S1, then explicitly issues RUN_READY for the frozen primary.",
+  "root_decision": "PREEXEC_THEORY_AND_STATIC_CODE_ACCEPTED_SCIENCE_NOT_RUN",
+  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
+  "scientific_execution": "NOT_RUN",
+  "workspace_recovery": {
+    "exact_source_snapshot_files": 23,
+    "canonical_sha256": "adddf7381edfb7d670025c651cf813594107a260acce308702f33b1d415fad54",
+    "baseline_exact_source_payloads": 56,
+    "original_full_S0_archive": "LOST_BEFORE_UPLOAD",
+    "receipt": "evidence/execution/WORKSPACE_RECOVERY.json"
+  }
 }
