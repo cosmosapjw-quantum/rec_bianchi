@@ -1,0 +1,52 @@
+{
+  "unit": "REC-HISTORY-THERMO01",
+  "mode": "primary",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/e3bcbaac138c/rec_history_next_20261024/research/rec_history_thermo_20261024/code/primary.py"
+  ],
+  "cwd": "/workspace/scratch/e3bcbaac138c/rec_history_next_20261024/research/rec_history_thermo_20261024",
+  "authorization_path": "evidence/execution/RUN_READY.json",
+  "authorization_sha256": "1dbd4708920d849ac0e7ccb00c1642d4d8c357e9258531d3113c9700640723f9",
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "BLIS_NUM_THREADS": "1"
+  },
+  "thread_limit": 1,
+  "inclusive_cpu_cap_seconds": 40,
+  "execution_wall_cap_seconds": 120,
+  "address_space_bytes": 1073741824,
+  "child_cpu_limit_seconds": 39,
+  "parent_cpu_limit_seconds": 1,
+  "parent_pre_fork_hard_limit": 39,
+  "execution_wall_origin": "after authorization parsing, before input/code hashing and child launch",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "observed_model": null,
+  "automatic_retries": 0,
+  "providerIO_or_packaging_included": false,
+  "exit_code": 1,
+  "timed_out": false,
+  "execution_wall_seconds": 0.8086406200018246,
+  "inclusive_cpu_seconds": 0.7910299999999999,
+  "parent_rusage": {
+    "user_cpu_seconds": 0.019077,
+    "system_cpu_seconds": 0.019322,
+    "cpu_seconds": 0.038399,
+    "peak_rss_KiB": 11904,
+    "rss_scope": "getrusage/wait4 process-scope highwater, not live namespace aggregate"
+  },
+  "child_rusage": {
+    "user_cpu_seconds": 0.6818449999999999,
+    "system_cpu_seconds": 0.070786,
+    "cpu_seconds": 0.7526309999999999,
+    "peak_rss_KiB": 127968,
+    "rss_scope": "getrusage/wait4 process-scope highwater, not live namespace aggregate"
+  },
+  "hashes_unchanged": true,
+  "cap_compliance": true
+}

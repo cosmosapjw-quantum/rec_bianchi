@@ -1,0 +1,79 @@
+{
+  "schema": "REC_THERMO_FINAL_DELIVERY_REPORT_V1",
+  "unit": "REC-HISTORY-THERMO01",
+  "finite_stages": {
+    "complete": 20,
+    "total": 20
+  },
+  "scientific_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
+  "scientific_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
+  "scientific_snapshot_checkpoint": "S2 immutable18/20; final metadata records delivery closure only",
+  "S2_Git": {
+    "commit": "95d0b62daef5bc0b522c5b5a579b33bef15fc6f2",
+    "tree": "2cb78e13646ff145f455015ce99e7324c845ac80",
+    "draft_PR": 135,
+    "readback": "PASS_152_OF_152"
+  },
+  "S2_backup": {
+    "file_id": "id:BSpOijBcT10AAAAAAD_9ng",
+    "revision": "65e9aa99574930af03d47",
+    "bytes": 5842521,
+    "sha256": "f17aa795966c9af1805b9194db42dae99f6daa266205b0293ead3bff4f2090d1",
+    "whole_byte_CRC_and_all_payloads": "PASS_485_PAYLOADS"
+  },
+  "central": {
+    "repository": "cosmosapjw-quantum/rei_bianchi",
+    "branch": "research/orchestration-rec-history-thermo-20261024",
+    "actual_commit": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+    "actual_tree": "2bcd7b59ea749a53cf6a93b504240e82bf1444f3",
+    "parent": "9600a605f6380bc2262d0cfce5ff00290e594a5a",
+    "draft_PR": 227,
+    "PR_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/227",
+    "readback": "PASS",
+    "preservation": "PASS",
+    "preserved": {
+      "contracts": 40,
+      "edges": 17,
+      "authorities": 7,
+      "non_REC_nodes": 38,
+      "AGENTS_blob": "429a5a13ee75b1222bc50627f8d5973d01dd21c4",
+      "fixed_handoff_blob": "b7282c1d88dbb7622853c697d5787d43b12fe8ef"
+    },
+    "actual_receipt_path": "delivery/CENTRAL_ACTUAL_RECEIPT.json",
+    "preservation_receipt_path": "delivery/central/GUARDRAIL_VERIFICATION.json"
+  },
+  "CI_S2": {
+    "status": "FAILURE",
+    "run": 40123100446,
+    "job": 120958707398,
+    "failure_step": "verify_repo.py --quick",
+    "classification": "Whitespace/EOF diagnostics in inherited and exact preserved owned files; 261 owned-path diagnostics; pytest skipped.",
+    "scope": "Separate from A–F scoped scientific admission; no green CI claim, rerun or policy change.",
+    "receipt": "delivery/CI_S2_SUMMARY.json"
+  },
+  "S3_own_commit": "External final companion records actual S3 commit/tree/readback and final-head CI after publication; this file does not predict its own commit.",
+  "final_companion_own_ACK": "Recorded outside that immutable archive after upload; no recursive archive rebuild for its own acknowledgment.",
+  "original_full_S0_archive": "LOST_BEFORE_UPLOAD; recovered projection backup distinct",
+  "remaining_scientific_obligations": {
+    "H5_epsilon_reference_endpoint_curvature_absolute_history_bound": "OPEN/null",
+    "H6_actual_trace_and_Bianchi_transport_binding": "OPEN",
+    "full_coupled_H7": "OPEN",
+    "common_Js_Ks_operator_binding": "OPEN"
+  },
+  "physical": "HOLD",
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REI_activation": false,
+  "further_scientific_execution_authorized": false,
+  "CI_central": {
+    "head": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+    "run": 40123420615,
+    "job": 120959665670,
+    "status": "failure",
+    "failed_step": "cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+    "changes_in_this_projection": "Four documentation/observation paths only; no Rust changes",
+    "manual_reruns": 0,
+    "green_CI_claim": false,
+    "receipt": "delivery/CI_CENTRAL_OBSERVATION.json"
+  }
+}

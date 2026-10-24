@@ -1,0 +1,143 @@
+{
+  "schema": "REC_THERMO_CI_OBSERVATION_V1",
+  "head": "95d0b62daef5bc0b522c5b5a579b33bef15fc6f2",
+  "repo": "cosmosapjw-quantum/rec_bianchi",
+  "run": [
+    {
+      "id": 40123100446,
+      "name": "verify-durable-backup",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_number": 891,
+      "jobs_url": "https://api.github.com/repos/cosmosapjw-quantum/rec_bianchi/actions/runs/40123100446/jobs",
+      "logs_url": "https://api.github.com/repos/cosmosapjw-quantum/rec_bianchi/actions/runs/40123100446/logs",
+      "workflow_id": 326931153
+    }
+  ],
+  "job": [
+    {
+      "id": 120958707398,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 40123100446,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run python -m pip install --upgrade pip",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run python -m pip install -e '.[test]'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Record numerical runtime dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Smoke-import every package module from the committed tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run python scripts/verify_repo.py --quick",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Run pytest -q",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    }
+  ],
+  "log_excerpt": [
+    "2026-10-24T18:58:21.1167212Z research/rec_bianchi_escape_moments_20261022/FROZEN_CONTRACT.md:125: new blank line at EOF.",
+    "2026-10-24T18:58:21.1168612Z research/rec_bianchi_escape_moments_20261022/HANDOFF_KO.md:83: new blank line at EOF.",
+    "2026-10-24T18:58:21.1169185Z research/rec_bianchi_escape_moments_20261022/RUN_COMMANDS.md:45: new blank line at EOF.",
+    "2026-10-24T18:58:21.1169730Z research/rec_bianchi_escape_moments_20261022/THEORY.md:238: new blank line at EOF.",
+    "2026-10-24T18:58:21.1170348Z research/rec_bianchi_escape_moments_20261022/provenance/BACKUP_SYNTHESIS_KO.md:3: trailing whitespace.",
+    "2026-10-24T18:58:21.1171748Z research/rec_bianchi_escape_moments_20261022/provenance/BACKUP_SYNTHESIS_KO.md:4: trailing whitespace.",
+    "2026-10-24T18:58:21.1172738Z research/rec_bianchi_escape_moments_20261022/provenance/BACKUP_SYNTHESIS_KO.md:138: new blank line at EOF.",
+    "2026-10-24T18:58:21.1173441Z research/rec_bianchi_escape_moments_20261022/provenance/GITHUB_SYNTHESIS_KO.md:186: trailing whitespace.",
+    "2026-10-24T18:58:21.7398320Z research/rec_history_thermo_20261024/ARITHMETIC_ADDENDUM.md:59: new blank line at EOF.",
+    "2026-10-24T18:58:21.7398548Z research/rec_history_thermo_20261024/FROZEN_CONTRACT.md:137: new blank line at EOF.",
+    "2026-10-24T18:58:21.7398778Z research/rec_history_thermo_20261024/SURVEY_SYNTHESIS_KO.md:115: new blank line at EOF.",
+    "2026-10-24T18:58:21.7398974Z research/rec_history_thermo_20261024/THEORY.md:130: new blank line at EOF.",
+    "2026-10-24T18:58:21.7399339Z research/rec_history_thermo_20261024/provenance/fresh_intake/BASS_B3C/HANDOFF_NEXT_THREAD_KO.md:232: new blank line at EOF.",
+    "2026-10-24T18:58:21.7399711Z research/rec_history_thermo_20261024/provenance/fresh_intake/BASS_B3C_ADDENDUM.md:46: new blank line at EOF.",
+    "2026-10-24T18:58:21.7400111Z research/rec_history_thermo_20261024/provenance/fresh_intake/RECOVERY_AND_REFRESH_REPORT.md:54: new blank line at EOF.",
+    "2026-10-24T18:58:21.7400423Z research/rec_history_thermo_20261024/provenance/source_intake/CROSS_REPO_REPORT.md:62: new blank line at EOF.",
+    "2026-10-24T18:58:21.7400731Z research/rec_history_thermo_20261024/provenance/source_intake/REC_INTAKE_REPORT.md:77: new blank line at EOF.",
+    "2026-10-24T18:58:21.7400945Z research/rec_history_thermo_20261024/vendor/hydrogen.c:9: trailing whitespace.",
+    "2026-10-24T18:58:21.7401462Z research/rec_history_thermo_20261024/vendor/hydrogen.c:16: trailing whitespace.",
+    "2026-10-24T18:58:21.7401891Z research/rec_history_thermo_20261024/vendor/hydrogen.c:26: trailing whitespace.",
+    "2026-10-24T18:58:21.8219840Z   \"status\": \"FAIL\"",
+    "2026-10-24T18:58:21.8231746Z ##[error]Process completed with exit code 1."
+  ],
+  "log_bytes_observation": "Remote decoded log; only compact diagnostic excerpt retained in public artifact",
+  "ci_reruns_requested": 0,
+  "scientific_gate": "Independent A-F/scoped review unchanged; CI failure recorded separately",
+  "owned_path_diagnostic_count": 261,
+  "owned_path_examples": [
+    "research/rec_history_thermo_20261024/ARITHMETIC_ADDENDUM.md",
+    "research/rec_history_thermo_20261024/FROZEN_CONTRACT.md",
+    "research/rec_history_thermo_20261024/SURVEY_SYNTHESIS_KO.md",
+    "research/rec_history_thermo_20261024/THEORY.md",
+    "research/rec_history_thermo_20261024/provenance/fresh_intake/BASS_B3C/HANDOFF_NEXT_THREAD_KO.md",
+    "research/rec_history_thermo_20261024/provenance/fresh_intake/BASS_B3C_ADDENDUM.md",
+    "research/rec_history_thermo_20261024/provenance/fresh_intake/RECOVERY_AND_REFRESH_REPORT.md",
+    "research/rec_history_thermo_20261024/provenance/source_intake/CROSS_REPO_REPORT.md",
+    "research/rec_history_thermo_20261024/provenance/source_intake/REC_INTAKE_REPORT.md",
+    "research/rec_history_thermo_20261024/vendor/hydrogen.c",
+    "research/rec_history_thermo_20261024/vendor/hydrogen.h"
+  ],
+  "ci_classification": "verify_repo --quick reports whitespace/EOF in inherited files and exact preserved owned source/intake documents; pytest step skipped. Source snapshots are not reformatted after execution; no green CI claim."
+}

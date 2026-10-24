@@ -1,0 +1,178 @@
+{
+  "schema": "REC_HISTORY_THERMO01_CENTRAL_OBSERVATION_V1",
+  "unit": "REC-HISTORY-THERMO01",
+  "status": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
+  "science_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
+  "decision_owner": "root Astra",
+  "parent_REC_HISTORY": "PARTIAL",
+  "source_repository": "cosmosapjw-quantum/rec_bianchi",
+  "source_unit_path": "research/rec_history_thermo_20261024",
+  "target": {
+    "z": 1099.9986525171403,
+    "T0_K": 2.728,
+    "nH0_m3": 0.18745798773143102,
+    "primitive_axes": [
+      "xe",
+      "xHII",
+      "lnTR",
+      "lnTM",
+      "lnnH",
+      "lnH"
+    ],
+    "fixed": [
+      "incoming313 signed Wien departures",
+      "energy grid",
+      "source frame",
+      "geometry",
+      "characteristic query times"
+    ],
+    "ambient_columns_are_physical_cosmological_trajectories": false,
+    "physical_pure_H_restriction": "dxe=dxHII; sum columns0+1"
+  },
+  "scope": "Numerically checked local six-primitive coefficient/source/outgoing Jacobian of the stable native piecewise equations at the retained face; fixed313 incoming departures, energy grid, geometry, frame and query times",
+  "H7": {
+    "local_primitive_thermodynamic_block": "COMPLETE_SCOPED",
+    "full_coupled_history_retiming_geometry_thermal_ODE_Jacobian": "OPEN"
+  },
+  "H5": {
+    "status": "INPUT_DEPENDENT_UNCALIBRATED",
+    "physical_epsilon": null,
+    "reference_uncertainty": null,
+    "endpoint_uncertainty": null,
+    "validated_whole_cell_curvature": null,
+    "absolute_history_error_bound": null,
+    "actual_original_history_exists": true,
+    "actual_finer_candidates_exist": true
+  },
+  "H6": {
+    "actual_incident_trace_binding": "OPEN",
+    "geodesic_direction_frame_measure_owner": "OPEN"
+  },
+  "operator_binding": {
+    "scientific_J": "J_s from consistently stable piecewise source",
+    "same_operator_Js_Ks_binding": "OPEN",
+    "original_RESP01_K0_norm_certificate_transferred": false,
+    "same_as_original_RESP01_frozen_binary64_matrix": false,
+    "small_outgoing_gap_is_operator_norm_bound": false,
+    "contract": "research/rec_history_thermo_20261024/OPERATOR_BINDING_CLARIFICATION.md"
+  },
+  "verification": {
+    "A_groups": 21,
+    "A_max": 1.5551741193678365e-10,
+    "A_frozen_limit": 5e-09,
+    "B_max": 1.6263934969885847e-11,
+    "B_frozen_limit": 2e-08,
+    "C_primal_components": 313,
+    "C_tangent_components": 1878,
+    "C_max": 1.6778326936217204e-15,
+    "C_limit": "1024*eps64 componentwise gross",
+    "D_identity_groups": 9,
+    "D_restricted_seed_checks": 11,
+    "D_limit": "512*eps64 gross; separate complex comparison2e-8",
+    "E_directions": 2,
+    "E_recorded_steps": 6,
+    "E_passing_steps": 6,
+    "E_outgoing_max": 7.197124258333325e-09,
+    "E_frozen_limit": 2e-05,
+    "F_exact_manufactured_cases": 3,
+    "F_small_RHS": 6,
+    "F_toy_max": 1.816728585750256e-16,
+    "F_escape_60digit_depths": 14,
+    "F_refusal_controls": 27,
+    "all_A_to_F": "PASS",
+    "derivative_method_independence": "Dual forward derivative versus plain complex arithmetic; same source value equations shared",
+    "independent_physics_model": false,
+    "asymptotic_convergence_from_three_FD_steps": false
+  },
+  "review": {
+    "R6": "PASS_SCOPED_AFTER_PREEXEC_FIXES",
+    "C9": "PASS_SCOPED_AFTER_SAVED_DATA_LAYOUT_CORRECTION",
+    "same_independent_review_session": true,
+    "material_blockers": 0,
+    "actual_first_PNGs_viewed_by_root_and_reviewer": 2,
+    "actual_corrected_PNGs_viewed_by_root_and_reviewer": 2,
+    "original_primary_failure_preserved": true,
+    "primary_failure_classification": "NumPy boolean JSON serialization after13completedRHS",
+    "original_primary_rewritten_successful": false,
+    "first_figure_defect_preserved": "Long ylabel clipping and crowded symlog zero ticks",
+    "presentation_finding": "CLOSED; corrected figures002, symlog caption explicit",
+    "final_review": "evidence/independent_review/FINAL_REVIEW.md"
+  },
+  "actual_REC_publication": {
+    "commit": "95d0b62daef5bc0b522c5b5a579b33bef15fc6f2",
+    "tree": "2cb78e13646ff145f455015ce99e7324c845ac80",
+    "branch": "research/rec-history-thermo-20261024",
+    "pr": 135,
+    "pr_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/135",
+    "draft": true,
+    "path_blob_size_readback": {
+      "expected": 152,
+      "matched": 152,
+      "status": "PASS"
+    },
+    "merged": false
+  },
+  "actual_S2_backup": {
+    "provider": "Dropbox",
+    "id": "id:BSpOijBcT10AAAAAAD_9ng",
+    "revision": "65e9aa99574930af03d47",
+    "path_display": "/bianchi/rec_bianchi/20261016/REC_HISTORY_THERMO01_S2_20261024_f17aa795966c.zip",
+    "bytes": 5842521,
+    "sha256": "f17aa795966c9af1805b9194db42dae99f6daa266205b0293ead3bff4f2090d1",
+    "whole_byte_SHA256": "PASS",
+    "ZIP_CRC": "PASS",
+    "manifest_payloads": 485,
+    "all_payload_size_SHA256": "PASS"
+  },
+  "execution": {
+    "primary_processes": 1,
+    "continuation_processes": 1,
+    "figure_processes": 2,
+    "large_RHS_original": 13,
+    "large_RHS_continuation": 12,
+    "large_RHS_total": 25,
+    "completed13RHS_replay": 0,
+    "new_IVP": 0,
+    "native_runtime": 0,
+    "old_campaign_replay": 0,
+    "inclusive_CPU_seconds": 8.362847,
+    "execution_wall_seconds": 8.336637455999153,
+    "new_cap_CPU_seconds": 60,
+    "new_cap_wall_seconds": 180,
+    "threads": 1,
+    "peak_process_RSS_KiB": 142720,
+    "AS_limit_bytes": 1073741824,
+    "further_execution_authorized": false,
+    "budget": "BUDGET_LEDGER.json"
+  },
+  "inherited_holds": {
+    "physical": "HOLD",
+    "REC_U5": [
+      "HOLD_9_FAIL",
+      "HOLD_8_FAIL"
+    ],
+    "reset": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+  },
+  "finite_stage_snapshot": {
+    "completed": 18,
+    "total": 20,
+    "meaning": "Immutable S2 science snapshot; final Git/central delivery is tracked in later actual receipts"
+  },
+  "physical_completion_percent": null,
+  "overall_goal_completion_percent": null,
+  "central_projection": {
+    "state": "PREPARED_NOT_PUBLISHED",
+    "base_commit": "9600a605f6380bc2262d0cfce5ff00290e594a5a",
+    "base_tree": "bab98f1dff81e7d3c080468a28a3c5bf797c274c",
+    "proposed_branch": "research/orchestration-rec-history-thermo-20261024",
+    "branch_preflight": "Root observed404; no provider mutation by preparer",
+    "fixed_handoff_commit": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
+    "assembler_runs": 0,
+    "renderer_runs": 0,
+    "scientific_execution": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "code": "Clear[\"Global\\x60*\"]; mm={{a11,a12},{a21,a22}}; dm={{da11,da12},{da21,da22}}; ss={s1,s2}; ds={ds1,ds2}; tt={{t11,t12},{t21,t22}}; dt={{dt11,dt12},{dt21,dt22}}; pp={{p11,p12},{p21,p22}}; dp={{dp11,dp12},{dp21,dp22}}; uu={u1,u2}; xx=Inverse[mm].ss; dx=Inverse[mm].(ds-dm.xx); direct=D[(tt+v dt).Inverse[mm+v dm].(ss+v ds)+(pp+v dp).uu,v]/.v->0; imp=FullSimplify[direct-(dt.xx+tt.dx+dp.uu)]; p=1-(1-Exp[-t])/t; r=tm/tr; A=aa[Log[tr],r]; chain1=Simplify[tm D[A,tm]-r Derivative[0,1][aa][Log[tr],r]]; chain2=Simplify[tr D[A,tr]-(Derivative[1,0][aa][Log[tr],r]-r Derivative[0,1][aa][Log[tr],r])]; event=Simplify[(D[gg h Exp[v dh] (oo+v do-ui),v]/.v->0)-gg h(do+(oo-ui)dh)]; <|\"ImplicitDerivativeResidual\"->imp,\"EscapeDerivativeResidual\"->FullSimplify[D[p,t]-(1-(1+t)Exp[-t])/t^2],\"EscapeDerivativeSeries\"->Normal[Series[D[p,t],{t,0,6}]],\"LogTMChainResidual\"->chain1,\"LogTRChainResidual\"->chain2,\"EventProductResidual\"->event,\"PairedEnergyResidual\"->Expand[ee gg h (do+(oo-ui)dh)-ee gg h (do+(oo-ui)dh)]|>",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Symbol::undefined2: Warning: Global symbols \"A, A, A\" are undefined.\nGeneral::messages: Messages were generated which may indicate errors.\n\nOut[1]= <|\"ImplicitDerivativeResidual\" -> {0, 0}, \"EscapeDerivativeResidual\" -> 0, \"EscapeDerivativeSeries\" -> 1/2 - t/3 + t^2/8 - t^3/30 + t^4/144 - t^5/840 + t^6/5760, \"LogTMChainResidual\" -> 0, \"LogTRChainResidual\" -> 0, \"EventProductResidual\" -> 0, \"PairedEnergyResidual\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "classification": "symbolic identities of implicit derivative/escape/chain/event",
+  "actual_evaluator_calls": 1,
+  "remote_cpu_seconds": null,
+  "warning_preserved": true,
+  "local_scientific_runtime": false
+}

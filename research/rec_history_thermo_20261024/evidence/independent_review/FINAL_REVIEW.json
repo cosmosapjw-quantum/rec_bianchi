@@ -1,0 +1,87 @@
+{
+  "unit": "REC-HISTORY-THERMO01",
+  "reviewer_task": "/root/thermo_independent_review",
+  "requested_reviewer_tier": "Astra",
+  "requested_reasoning": "high",
+  "observed_runtime_model": null,
+  "same_reviewer_session": true,
+  "decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
+  "root_retains_final_admission_authority": true,
+  "material_blockers": 0,
+  "presentation_finding": "CLOSED",
+  "reviewer_scientific_evaluations": 0,
+  "reviewer_numerical_probes": 0,
+  "reviewer_linear_solves": 0,
+  "original_source_snapshot_files": 23,
+  "original_source_snapshot_canonical_sha256": "adddf7381edfb7d670025c651cf813594107a260acce308702f33b1d415fad54",
+  "recovered_source_byte_identity": "MATCH_REUSE_PRIOR_R6",
+  "original_primary_failure": {
+    "exit_code": 1,
+    "cause": "NumPy boolean JSON serialization after BACKWARD_RESIDUALS.npz was saved",
+    "large_RHS_completed": 13,
+    "preserved": true,
+    "rewritten_as_success": false
+  },
+  "continuation": {
+    "exit_code": 0,
+    "large_RHS_added": 12,
+    "base_tangent_complex_RHS_replayed": 0,
+    "small_numerical_RHS": 6,
+    "tolerance_changes": 0,
+    "original_raw_unchanged": true
+  },
+  "criteria": {
+    "A": {"pass": true, "max_normalized_error": 1.5551741193678365e-10, "threshold": 5e-9},
+    "B": {"pass": true, "max_normalized_error": 1.6263934969885847e-11, "threshold": 2e-8},
+    "C": {"pass": true, "primal_max": 7.22743791382896e-16, "tangent_max": 1.6778326936217204e-15, "zero_gross_exact": true, "threshold": "1024*eps64"},
+    "D": {"pass": true, "groups": 9, "restricted_seed_checks": 11, "roundoff_threshold": "512*eps64*gross"},
+    "E": {"pass": true, "directions": 2, "steps": 6, "all_steps_pass": true, "max_outgoing_error": 7.197124258333325e-9, "max_F_error": 7.726000750109759e-8, "max_R_gamma_error": 7.203078558642897e-9, "threshold": 2e-5},
+    "F": {"pass": true, "manufactured_cases": 3, "escape_depths": 14, "refusal_controls": 27}
+  },
+  "operator_binding": {
+    "accepted_local_map": "J_s = partial_theta Phi_s at fixed incoming313",
+    "full_same_map_differential": "delta_o = J_s delta_theta + K_s delta_u",
+    "old_RESP01_operator": "K_0 on frozen native binary64 arrays",
+    "K_0_certificate_transferred_to_K_s": false,
+    "quantitative_K_s_minus_K_0_bound_computed": false,
+    "small_output_gap_is_operator_norm_bound": false,
+    "mix_current_J_s_with_old_K_0_without_binding": "NOT_ADMITTED"
+  },
+  "actually_viewed_pngs": [
+    "results/figures001/six_axis_outgoing.png",
+    "results/figures001/ionization_number_energy.png",
+    "results/figures002/six_axis_outgoing.png",
+    "results/figures002/ionization_number_energy.png"
+  ],
+  "first_pngs_preserved": true,
+  "corrected_figures_accepted": true,
+  "figure_caption_requirement": "Identify symmetric logarithmic (symlog) ordinate scales and bracketed axis factors",
+  "further_render_requested": false,
+  "execution": {
+    "large_RHS_cumulative": 25,
+    "large_RHS_ceiling": 25,
+    "inclusive_CPU_seconds_all_four_invocations": 8.362847,
+    "execution_wall_seconds_all_four_invocations": 8.336637456,
+    "figure_CPU_seconds": 6.569571,
+    "figure_execution_wall_seconds": 6.551899933,
+    "largest_child_process_RSS_KiB": 142720,
+    "memory_scope": "Process highwater; not live aggregate",
+    "all_receipts_cap_compliant": true,
+    "all_receipts_hashes_unchanged": true,
+    "native_runtime": 0,
+    "new_IVP": 0,
+    "old_campaign_replay": 0
+  },
+  "claim_limits": {
+    "physical_epsilon": null,
+    "independent_history_endpoint_reference_uncertainty": null,
+    "validated_full_cell_curvature": null,
+    "absolute_history_bound": null,
+    "full_coupled_H7": "OPEN",
+    "physical_history_certification": false,
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "detailed_review": "evidence/independent_review/POSTRUN_C9_REVIEW.md"
+}

@@ -1,0 +1,144 @@
+{
+  "schema": "REC_HISTORY_THERMO_BUDGET_LEDGER_V1",
+  "unit": "REC-HISTORY-THERMO01",
+  "authority": "FROZEN_CONTRACT.md; ARITHMETIC_ADDENDUM.md",
+  "new_unit_cap": {
+    "inclusive_child_CPU_seconds": 60,
+    "execution_wall_seconds": 180,
+    "threads": 1,
+    "RLIMIT_AS_bytes": 1073741824
+  },
+  "allocations": {
+    "primary": {
+      "CPU_seconds": 40,
+      "wall_seconds": 120,
+      "large_RHS_ceiling": 25,
+      "scientific_processes": 1
+    },
+    "targeted_repair_reserved": {
+      "CPU_seconds": 10,
+      "wall_seconds": 30,
+      "authorized": false,
+      "preparation_authorized": true,
+      "action": "one continuation,12remainingRHS only",
+      "consumed_invocations": 1,
+      "additional_invocations_authorized": 0
+    },
+    "figures": {
+      "CPU_seconds": 10,
+      "wall_seconds": 30,
+      "processes": 2,
+      "authorized": false,
+      "process_exception": "evidence/ROOT_FIGURE_LAYOUT_DECISION.md",
+      "CPU_consumed": 6.569571,
+      "wall_consumed": 6.55189993300155,
+      "additional_invocations_authorized": 0
+    }
+  },
+  "planned_large_RHS": {
+    "base": 1,
+    "tangent": 6,
+    "complex_step": 6,
+    "mixed_finite_differences": 12,
+    "total": 25
+  },
+  "small_manufactured_systems": {
+    "RHS_ceiling": 16,
+    "dimension_ceiling": 3
+  },
+  "escape_high_precision_probe_values_ceiling": 16,
+  "new_consumption": {
+    "inclusive_child_CPU_seconds": 8.362847,
+    "execution_wall_seconds": 8.336637455999153,
+    "large_RHS_columns": 25,
+    "small_RHS_columns": 6,
+    "scientific_primary_processes": 1,
+    "figure_processes": 2,
+    "native_runtime": 0,
+    "new_IVP": 0,
+    "old_campaign_replay": 0,
+    "continuation_processes": 1,
+    "peak_process_RSS_KiB": 142720
+  },
+  "remaining_new_unit": {
+    "inclusive_child_CPU_seconds": 51.637153,
+    "execution_wall_seconds": 171.66336254400085,
+    "spending_authority": false
+  },
+  "inherited_observations_not_spending_authority": [
+    {
+      "unit": "RESP01",
+      "CPU_seconds": 6.076654,
+      "wall_seconds": 6.112102264
+    },
+    {
+      "unit": "REFINE01",
+      "CPU_seconds": 4.832465,
+      "wall_seconds": 4.895043831
+    },
+    {
+      "unit": "H01",
+      "CPU_seconds": 4.848191,
+      "wall_seconds": 4.736567968
+    }
+  ],
+  "older_costs": "UNKNOWN costs remain unknown; no reset or inferred zero",
+  "provider_IO_packaging_full_turn_elapsed": "SEPARATE from scientific execution budget",
+  "runs": [
+    {
+      "id": "primary001",
+      "status": "FAILED_SERIALIZATION_PRESERVED",
+      "exit_code": 1,
+      "inclusive_CPU_seconds": 0.7910299999999999,
+      "execution_wall_seconds": 0.8086406200018246,
+      "peak_rss_KiB": 127968,
+      "large_RHS": 13,
+      "small_RHS": 0,
+      "receipt": "evidence/execution/primary/EXECUTION_RECEIPT.json"
+    },
+    {
+      "id": "continuation001",
+      "status": "PASS_DIAGNOSTICS_AWAITING_ROOT_AND_C9",
+      "exit_code": 0,
+      "inclusive_CPU_seconds": 1.002246,
+      "execution_wall_seconds": 0.9760969029957778,
+      "peak_rss_KiB": 142720,
+      "large_RHS": 12,
+      "small_RHS": 6,
+      "receipt": "evidence/execution/continuation/EXECUTION_RECEIPT.json"
+    },
+    {
+      "id": "figures001",
+      "status": "PASS_FIRST_FIGURES_WITH_LAYOUT_FINDING",
+      "exit_code": 0,
+      "inclusive_CPU_seconds": 4.240177000000001,
+      "execution_wall_seconds": 4.219067001002259,
+      "peak_rss_KiB": 100824,
+      "large_RHS": 0,
+      "small_RHS": 0,
+      "receipt": "evidence/execution/figures/EXECUTION_RECEIPT.json"
+    },
+    {
+      "id": "figures002",
+      "status": "PASS_SAVED_DATA_LAYOUT_CORRECTION",
+      "exit_code": 0,
+      "inclusive_CPU_seconds": 2.3293939999999997,
+      "execution_wall_seconds": 2.3328329319992918,
+      "peak_rss_KiB": 89676,
+      "large_RHS": 0,
+      "small_RHS": 0,
+      "receipt": "evidence/execution/figures_layout/EXECUTION_RECEIPT.json"
+    }
+  ],
+  "status": "CLOSED_SCOPED_EXECUTION_NO_FURTHER_RUN_AUTHORIZED",
+  "environment_setup_costs": {
+    "classification": "separate preparation, not science child allowance",
+    "official_wheel_transfer_CPU_seconds": 0.04362,
+    "official_wheel_transfer_wall_seconds": 0.05823887899896363,
+    "pip_install_CPU_seconds": null,
+    "other_failed_metadata_and_pip_preparation_CPU_seconds": null,
+    "unknown_is_zero": false
+  },
+  "known_inherited_plus_new_CPU_seconds": 24.120157,
+  "known_lineage_is_global_project_total": false
+}
