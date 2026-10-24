@@ -6,6 +6,8 @@
 
 판정은 `PASS_SCOPED_STORED_HISTORY_ENVELOPE`, 자식 상태는 `COMPLETE_SCOPED_STORED_HISTORY_ENVELOPE`다. 한 차례 fresh 독립 검토에서 material open finding은0이다. 부모 REC-HISTORY는 PARTIAL, H5는 INPUT_DEPENDENT_UNCALIBRATED를 유지한다. 현재 실제 physical-reference uncertainty, endpoint uncertainty, curvature M2, absolute physical bound와 convergence order는 null이다.
 
+유한 범위의 이론 R1–R10과 코딩 C1–C10은20/20 완료했다. S0–S3의 Git 게시와 Dropbox 백업, 중앙 draft PR225 게시를 실제 응답으로 확인했다. 추가 Google Drive 전송은 완료 응답 없음/서버 상태 UNKNOWN으로 별도 유지한다. 이20/20은 이번 loop의 완료이며 전체 물리 목표의 완료율은null이다.
+
 가장 큰 저장 함수 차이는 helium branch 전환을 포함한 마지막 cell의 `lyman_out[0]`에서 약1.65e-15였다. 같은 채널의 저장 history 크기로 나누면 약29.2%이므로 작은 절대 occupation departure를 높은 물리 정확도로 해석하지 않는다. 전환 이전 continuation 구간의 최대 절대차는 약4.60e-17이다.
 
 ## 실제 입력과 정의역
@@ -124,6 +126,14 @@ S0/S1/S2 full archives는 Dropbox 완료 ACK를 받았다. 작업 공간 초기�
 Bulk survey·large literature dump·약21MiB RAW_COMPARISON.npz의 전체 bytes는 full-stage archive에 있다. Git에는 core source·CASE_PLAN·원 input blobs·CSV·SUMMARY·oracle·review·그림과 exact location pointer를 게시한다. 전체 ZIP과 Git projection의 범위를 구별한다. 원래 제안 branch의 생성 요청은 응답과 cancellation이 미확정이어서 독립된 delivery branch를 사용했다.
 
 중앙 draft PR225(https://github.com/cosmosapjw-quantum/rei_bianchi/pull/225)는 actual parent c40d287874f72519103e68267e659fc022eba188에서 commit47abc82646d0f92b12d4843abb770be9b3593a37로 게시했다. 두 REC observations와 companion만 추가했으며40contracts/plan_status/dependencies/authority·다른38nodes·HE-X1·최신HE-ANG·17edges를 보존했다. 실제 두 파일의 Git blob readback은2/2 일치했다. 중앙의 immutable observation은S2 science를 고정하며 최종S3·provider상태·마지막HEAD는 delivery/PUBLICATION_STATE.json과 외부 final companion receipt가 기준이다. Merge와 activation은 하지 않는다.
+
+### 최종 S3 백업의 실제 상태
+
+최종 full archive는 `REC_HISTORY_REFINE01_S3_20261024_5587c1d27101.zip`이다. 크기56,822,487 bytes, payload194개, SHA256 `5587c1d27101888814a10ff1014b55ef5bc7fc4cb9a5af9faa3ad1f5aa4b4cdd`이며 로컬 CRC·payload SHA/size·source 안정성은 PASS다. Dropbox는 완료 ACK와 크기/metadata 일치를 확인했다: `id:BSpOijBcT10AAAAAAD_9Xw`, revision `65e913a92e82d0af03d47`, server time2026-10-24T07:41:46Z. S3 whole-byte 재다운로드는 NOT_RUN이며, S1/S2 실제 복원 PASS와 구별한다.
+
+Google Drive에는 이 S3 이름으로 한 번 요청했다. 완료 응답이 없어 root가 로컬 대기를 종료했고, 이후 exact name+folder query 한 번에서는 일치 항목0개가 반환됐다. 서버의 생성 여부와 취소 여부는 UNKNOWN이다. 해당 요청을 재업로드하거나 Drive 백업 완료로 계산하지 않는다. Tool의 첫 yield에 표시된11초와 이후 실제 clock 관측 사이에 큰 차이가 있었으므로 예정했던 짧은 대기 상한이 실효적으로 적용됐다고 주장하지 않는다. 이 전달 지연은 과학 실행 wall budget에 포함시키지 않는다.
+
+S3 Git commit은 `a67044c411b4bef8d5762b4171c0c088fa34f161`, tree는 `37b8ebc95a2bbd7a8d4056534f08471fa1c3e03f`이며 실제 branch 갱신과145/145 core blob readback을 확인했다. 원 S3 snapshot은 동결 시점의18/20과 이후 게시 pending을 기록한다. 이후의 D1 publication state와 final companion은 이 snapshot을 수정하지 않고 최종 R10/C10 완료와 실제 마지막 Git identity를 보충한다. 단계별 전달은 Git와 Dropbox 근거로 판단하며 추가 Drive 전송의 미확정 상태를 계속 표시한다.
 
 ## 다음 의무와 근거
 

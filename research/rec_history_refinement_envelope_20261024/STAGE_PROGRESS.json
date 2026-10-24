@@ -35,10 +35,13 @@
       "Git_raw_NPZ_status": "RAW_NPZ_EXTERNAL_FULL_BYTES_IN_BACKUP"
     },
     "S3": {
-      "local_status": "ROOT_FINAL_REPORT_AND_HANDOFF_FILES_READY_NOT_YET_FROZEN",
-      "identity": null,
-      "provider_ack_status": "PENDING_S3_GIT_DROPBOX_AND_ONE_DRIVE_ATTEMPT",
-      "ack_evidence": "delivery/PUBLICATION_STATE.json"
+      "local_status": "ORIGINAL_IMMUTABLE_S3_ARCHIVE_RETAINED_18OF20_SNAPSHOT",
+      "identity": "delivery/PUBLICATION_STATE.json#checkpoints.S3",
+      "provider_ack_status": "GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; ADDITIONAL_DRIVE_EXPLICIT_UNKNOWN",
+      "ack_evidence": "delivery/S3_PROVIDER_COMPACT_RECEIPT.json; delivery/S3_GITHUB_COMPACT_RECEIPT.json; delivery/S3_DRIVE_STATUS.json",
+      "git_commit": "a67044c411b4bef8d5762b4171c0c088fa34f161",
+      "git_tree": "37b8ebc95a2bbd7a8d4056534f08471fa1c3e03f",
+      "dropbox_id": "id:BSpOijBcT10AAAAAAD_9Xw"
     }
   },
   "steps": [
@@ -157,15 +160,16 @@
     {
       "id": "R10",
       "name": "Final report handoff and delivery",
-      "status": "REPORT_HANDOFF_READY_PENDING_S3_PROVIDER_ACK_AND_FINAL_HANDOFF",
+      "status": "COMPLETE_FINAL_REPORT_HANDOFF_GIT_AND_DROPBOX_DELIVERY",
       "evidence": [
         "REPORT_KO.md",
         "NEXT_THREAD_HANDOFF_KO.md",
-        "delivery/PUBLICATION_STATE.json"
+        "delivery/PUBLICATION_STATE.json",
+        "delivery/S3_GITHUB_COMPACT_RECEIPT.json"
       ],
       "last_checkpoint": "S3",
       "checkpoint_reference": "checkpoints.S3",
-      "actual_ack_status": "PENDING_S3_GIT_DROPBOX_AND_ONE_DRIVE_ATTEMPT"
+      "actual_ack_status": "GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; ADDITIONAL_DRIVE_EXPLICIT_UNKNOWN"
     },
     {
       "id": "C1",
@@ -287,15 +291,16 @@
     {
       "id": "C10",
       "name": "Final reproducible delivery and handoff",
-      "status": "REPORT_HANDOFF_READY_PENDING_S3_PROVIDER_ACK_AND_FINAL_HANDOFF",
+      "status": "COMPLETE_FINAL_REPORT_HANDOFF_GIT_AND_DROPBOX_DELIVERY",
       "evidence": [
         "REPORT_KO.md",
         "NEXT_THREAD_HANDOFF_KO.md",
-        "delivery/PUBLICATION_STATE.json"
+        "delivery/PUBLICATION_STATE.json",
+        "delivery/S3_GITHUB_COMPACT_RECEIPT.json"
       ],
       "last_checkpoint": "S3",
       "checkpoint_reference": "checkpoints.S3",
-      "actual_ack_status": "PENDING_S3_GIT_DROPBOX_AND_ONE_DRIVE_ATTEMPT"
+      "actual_ack_status": "GIT_PUBLISHED_DRAFT_BRANCH_AND_DROPBOX_COMPLETED_ACK; ADDITIONAL_DRIVE_EXPLICIT_UNKNOWN"
     }
   ],
   "actual_history_comparisons": 1,
@@ -328,21 +333,19 @@
   "pending_decisions": {
     "fresh_review_file": false,
     "root_claim_gates_file": false,
-    "final_handoff": true,
-    "S2_S3_archives_and_ack": true,
+    "final_handoff": false,
+    "S2_S3_archives_and_ack": false,
     "S2_archives_and_ack": false,
-    "S3_archives_and_ack": true
+    "S3_archives_and_ack": false,
+    "additional_Drive_transport_unresolved": true
   },
-  "ack_note": "S0/S1/S2 actual Git ACK/readbacks and completed Dropbox ACKs are retained. Final S3 and central observations remain pending; no backup operation reruns science.",
+  "ack_note": "All S0/S1/S2/S3 Git publication/readbacks and completed Dropbox ACKs retained. Additional S3 Drive transport remains explicitly UNKNOWN. Original S3 snapshot18/20 is unchanged; this working D1 supplement records final20/20 without physical-goal promotion.",
   "root_child_status": "COMPLETE_SCOPED_STORED_HISTORY_ENVELOPE",
   "root_decision_evidence": "CLAIM_GATES.json",
   "workflow_completion": {
-    "completed": 18,
+    "completed": 20,
     "total": 20,
-    "remaining": [
-      "R10",
-      "C10"
-    ],
-    "reason": "Final report and handoff files exist; final S3 publication and backup acknowledgements remain pending."
+    "remaining": [],
+    "basis": "Actual S0-S3 Git plus Dropbox delivery, central draft observation publication, final report and handoff. Additional Drive remains UNKNOWN."
   }
 }

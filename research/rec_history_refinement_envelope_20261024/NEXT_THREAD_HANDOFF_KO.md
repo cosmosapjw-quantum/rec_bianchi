@@ -2,6 +2,8 @@
 
 physmath-research-loop built-in1.0.0/designv0.2 적용. REC-HISTORY-REFINE01=COMPLETE_SCOPED_STORED_HISTORY_ENVELOPE,독립 검토 PASS_SCOPED_STORED_HISTORY_ENVELOPE,material open0. Parent REC-HISTORY=PARTIAL,H5=INPUT_DEPENDENT_UNCALIBRATED.
 
+이번 유한 loop는 R1–R10/C1–C10 20/20 완료다. S0–S3 Git+Dropbox 및 중앙 draft publication 완료, 추가 Drive upload는 ACK 없음/서버 처리 UNKNOWN으로 기록한다. 전체 물리 목표 완료율은null이다. S3 동결본 안의18/20은 당시 상태이며 D1 및 final companion이 최종 전달을 보충한다.
+
 ## 실제 위치
 
 - repo cosmosapjw-quantum/rec_bianchi; path research/rec_history_refinement_envelope_20261024/.
@@ -9,7 +11,8 @@ physmath-research-loop built-in1.0.0/designv0.2 적용. REC-HISTORY-REFINE01=COM
 - source parent ae189694c15e09c6f96c44ef6b74b48afc2632ac.
 - S0 commit639e34b66e262c7cd5e910d2df96c57a1cf84ad1;S1 commit4841878fea42437d34465df389c3a8c52c89fbaf.
 - **S2 science commit** c166b146e32fedb9e4b76e98f5f058a27d3b5e57;tree390937082c796a2f2cdfd38538a2bb7235f82f88;109/109Gitprojectionreadback PASS.
-- 최종 S3/central/lastHEAD/provider IDs는 delivery/PUBLICATION_STATE.json과 final companion receipt가 기준이다.
+- **S3 delivery commit** a67044c411b4bef8d5762b4171c0c088fa34f161;tree37b8ebc95a2bbd7a8d4056534f08471fa1c3e03f;145/145coreblobreadback PASS.
+- 최종 D1 metadata/central/lastHEAD/provider IDs는 delivery/PUBLICATION_STATE.json과 final companion receipt가 기준이다. Git 문서가 자신의 commit SHA를 포함할 수 없으므로 마지막 D1 SHA는 외부 final companion에서 확인한다.
 - 고정 중앙 authority 0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17. Intake 종료566f242,복구 뒤fca9DAGbytes동일확인. 게시직전actualbase c40d287874f72519103e68267e659fc022eba188의HE-ANG sparse관측추가를보존했다.
 - 중앙actualbranch research/rec-history-refinement-observation-20261024;draftPR225;commit47abc82646d0f92b12d4843abb770be9b3593a37;DAG+companion2/2blobreadbackPASS. 기존40nodes/17edges·contract/plan_status·다른owner관측보존. 중앙snapshot은S2science를pin하며최종delivery상태는REC의receipt를읽는다.
 
@@ -39,6 +42,12 @@ Native iz>=2는committedprefix길이조건이며emissioncoordinate하한2가아�
 - S2Dropbox id:BSpOijBcT10AAAAAAD_9Qg,ZIP56330485B,SHA9aa8b0bef60a8c2cdbdd831739d48a27d5ca826383edf8110a38a83830400cc7.
 
 Workspace초기화뒤실제로S1/S2를복원했고89/146payload와CRC/size/SHA/Gitblob이원본과일치했다. Science재실행0. RawNPZ와bulk조사는fullstageZIP에있고Git에는exactlocationpointer가있다. Code·CSV·summary·oracle·review·그림은Git에도있다. S2뒤작성한설명문서는원과학근거로재구성했다. 원제안branch의무응답create요청/cancellation UNKNOWN과actualdeliverybranch를구분한다.
+
+## 최종 백업과 전달 보충
+
+S3 full archive는 `REC_HISTORY_REFINE01_S3_20261024_5587c1d27101.zip`,56,822,487 bytes,194payloads, SHA256 `5587c1d27101888814a10ff1014b55ef5bc7fc4cb9a5af9faa3ad1f5aa4b4cdd`이다. Dropbox 완료 ACK: `id:BSpOijBcT10AAAAAAD_9Xw`, revision `65e913a92e82d0af03d47`, server2026-10-24T07:41:46Z. 로컬 CRC/payload hash PASS, S3 whole-byte readback NOT_RUN. S1/S2의 실제 복원 PASS는 별도 근거다.
+
+Drive S3 upload1회는 완료 응답이 없었고 root가 local wait를 종료했다. Exact name+folder query1회0matches, remote creation/cancellation UNKNOWN, 재업로드0. Drive 완료를 주장하지 않는다. S3 immutable snapshot의18/20은 동결 당시 상태이며, 마지막 전달 완료와 Git identity는 D1 publication state 및 외부 final companion receipt에서 읽는다.
 
 ## 첫 행동과 다음 연구
 

@@ -6,7 +6,7 @@ Latest specified central pin: `c40d287874f72519103e68267e659fc022eba188`; exact 
 
 Original author `contract.status`, `plan_status` and existing observation status are distinct. Values and capitalization are copied verbatim. Missing fields remain explicitly absent/null and are not inferred to mean NOT_RUN. A scoped child observation may coexist with a PARTIAL parent. Only the named REC root overlay is added; other lanes are not promoted. New individual subunit observations are linked through `SURVEY_SYNTHESIS_KO.md` and `provenance/post_reset_central_intake/REPORT_c40d287_KO.md`; earlier `REPORT_KO.md` remains preserved.
 
-**Physical completion percent: null. Overall goal completion percent: null.** Finite REFINE01 progress remains **18/20**, R10/C10 HANDOFF_PREPARED_PUBLICATION_PENDING. Use20/20 only after actual final delivery closes those stages; that finite count is not a physical-goal fraction.
+**Physical completion percent: null. Overall goal completion percent: null.** Finite REFINE01 workflow is **20/20** after actual S0/S1/S2/S3 Git and Dropbox delivery, central draft observation publication, final report and handoff. The additional Drive upload remains explicitly UNKNOWN. This finite workflow count is not a physical-goal fraction.
 
 ## All40 nodes: original rows and separate overlay
 
@@ -114,7 +114,7 @@ Conditions, claim limits and pass actions below are copied verbatim. They are a 
 
 ## Delivery and retained physical limits
 
-Actual source branch is `research/rec-history-refinement-envelope-delivery-20261024`, draftPR133. Root reports S0/S1/S2 Git publication complete, S2 `c166b146e32fedb9e4b76e98f5f058a27d3b5e57` / tree `390937082c796a2f2cdfd38538a2bb7235f82f88`, with109/109readback PASS. S3 remains NOT_FROZEN and final handoff/publication is pending. Git contains core projection plus pointers; complete survey source text, large literature and raw NPZ remain in immutable full-stage ZIPs. Equal full-byte/full-text scope between Git and those ZIPs is not claimed.
+Actual source branch is `research/rec-history-refinement-envelope-delivery-20261024`, draftPR133. Root reports S0/S1/S2 Git publication complete, S2 `c166b146e32fedb9e4b76e98f5f058a27d3b5e57` / tree `390937082c796a2f2cdfd38538a2bb7235f82f88`, with109/109readback PASS. S3 is published at `a67044c411b4bef8d5762b4171c0c088fa34f161` / tree `37b8ebc95a2bbd7a8d4056534f08471fa1c3e03f`, with145/145readback PASS and Dropbox completed ACK. Final report and handoff close the finite workflow; additional Drive remains UNKNOWN. The original S3 archive retains its18/20 freeze-time snapshot, and this D1 supplement records20/20 after the actual S3 ACK. Git contains core projection plus pointers; complete survey source text, large literature and raw NPZ remain in immutable full-stage ZIPs. Equal full-byte/full-text scope between Git and those ZIPs is not claimed.
 
 Root scientific decision: `CLAIM_GATES.json`; fresh independent review: `evidence/independent_review/FINAL_REVIEW.md/json`; measured result: `results/primary001/SUMMARY.json`. ParentREC-HISTORY remainsPARTIAL, H5 INPUT_DEPENDENT_UNCALIBRATED, original-target coverage0/313, physical uncertainty/error fields null, productionNOT_APPROVED and REI_activation=false.
 
@@ -122,4 +122,4 @@ This document assembly changed no mathematical code, raw result, input, toleranc
 
 ## Final specified central delta
 
-The one fixed delta to c40 adds sparse TDCS54 detail under HE-ANG observed_completion; its full joint angular provider remains false. Original40contracts/17integrationedges are preserved, and REC H5 remains INPUT_DEPENDENT_UNCALIBRATED. Exact c40 DAG/commit metadata/delta/preservation/source findings and the earlier fca versions are retained under `provenance/post_reset_central_intake/`. Finite progress remains18/20 handoff/publication pending; physical and overall goal completion percentages remain null.
+The one fixed delta to c40 adds sparse TDCS54 detail under HE-ANG observed_completion; its full joint angular provider remains false. Original40contracts/17integrationedges are preserved, and REC H5 remains INPUT_DEPENDENT_UNCALIBRATED. Exact c40 DAG/commit metadata/delta/preservation/source findings and the earlier fca versions are retained under `provenance/post_reset_central_intake/`. Finite workflow progress is20/20 with actual primary delivery and handoff complete; additional Drive remains UNKNOWN, and physical and overall goal completion percentages remain null.

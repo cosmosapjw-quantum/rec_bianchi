@@ -11,7 +11,7 @@
     "base": "research/rec-history-characteristic-resume-20261024",
     "merged": false
   },
-  "observed_branch_head": "c166b146e32fedb9e4b76e98f5f058a27d3b5e57",
+  "observed_branch_head": "a67044c411b4bef8d5762b4171c0c088fa34f161",
   "publication_evidence": "Root reported actual provider ACKs/readbacks; raw provider responses are separately preserved when available.",
   "checkpoints": {
     "S0": {
@@ -57,7 +57,7 @@
       "status": "GIT_AND_DROPBOX_ACK_CONFIRMED"
     },
     "S3": {
-      "status": "DROPBOX_ACK_CONFIRMED_GIT_PENDING_DRIVE_EXPLICIT_UNKNOWN",
+      "status": "GIT_AND_DROPBOX_ACK_CONFIRMED_ADDITIONAL_DRIVE_UNRESOLVED",
       "archive": "REC_HISTORY_REFINE01_S3_20261024_5587c1d27101.zip",
       "archive_bytes": 56822487,
       "archive_sha256": "5587c1d27101888814a10ff1014b55ef5bc7fc4cb9a5af9faa3ad1f5aa4b4cdd",
@@ -73,7 +73,7 @@
         "archive_name": "REC_HISTORY_REFINE01_S3_20261024_5587c1d27101.zip",
         "rev": "65e913a92e82d0af03d47"
       },
-      "Git": "PENDING_S3_FINAL_PUBLICATION",
+      "Git": "PUBLISHED_ACTUAL_ACK_AND_READBACK_CONFIRMED",
       "Google_Drive": {
         "status": "NO_COMPLETED_ACK_OBSERVED",
         "upload_attempts": 1,
@@ -87,7 +87,14 @@
         "upload_retry": 0
       },
       "dual_provider_ACK": false,
-      "immutable_archive_workflow_snapshot": "18/20; final D1 status after actual S3 Git ACK"
+      "immutable_archive_workflow_snapshot": "18/20; final D1 status after actual S3 Git ACK",
+      "commit": "a67044c411b4bef8d5762b4171c0c088fa34f161",
+      "tree": "37b8ebc95a2bbd7a8d4056534f08471fa1c3e03f",
+      "parent": "c166b146e32fedb9e4b76e98f5f058a27d3b5e57",
+      "Git_projection_total_paths": 145,
+      "Git_readback_matched": 145,
+      "Git_tree_truncated": false,
+      "compact_Git_receipt": "delivery/S3_GITHUB_COMPACT_RECEIPT.json"
     }
   },
   "central": {
@@ -114,9 +121,11 @@
     "immutable_observation_workflow_snapshot": "18/20; final S3 receipt remains authoritative after delivery"
   },
   "workflow_completion": {
-    "complete_steps": 18,
+    "complete_steps": 20,
     "total_steps": 20,
-    "status": "PRESERVED_NO_AUTO_PROMOTION"
+    "status": "COMPLETE_FINITE_WORKFLOW",
+    "basis": "All S0/S1/S2/S3 Git and Dropbox actual delivery plus central draft observation publication and final handoff; additional Drive explicitly unresolved",
+    "physical_goal_completion_percent": null
   },
   "old_proposed_branch_request": {
     "branch": "research/rec-history-refinement-envelope-20261024",
@@ -124,5 +133,15 @@
     "mutation_tool": "github_create_branch"
   },
   "scientific_reexecution_for_delivery": 0,
-  "production_activation": false
+  "production_activation": false,
+  "observed_head_before_this_receipt": "a67044c411b4bef8d5762b4171c0c088fa34f161",
+  "self_commit": "REFER_TO_EXTERNAL_FINAL_COMPANION",
+  "D1": {
+    "role": "Post-S3 final state and packaging metadata supplement",
+    "observed_head_before_this_receipt": "a67044c411b4bef8d5762b4171c0c088fa34f161",
+    "self_commit": "REFER_TO_EXTERNAL_FINAL_COMPANION",
+    "immutable_S3_archive_workflow_snapshot": "18/20 preserved at original freeze; post-ACK working D1 status20/20",
+    "Drive": "NO_COMPLETED_ACK_OBSERVED_SERVER_CREATION_AND_CANCELLATION_UNKNOWN",
+    "Git_correction": "Forward deletion of two public raw commit-metadata files only; exact original source bytes remain in S3 archive"
+  }
 }
