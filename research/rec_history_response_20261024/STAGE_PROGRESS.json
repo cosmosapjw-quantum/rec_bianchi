@@ -1,9 +1,9 @@
 {
   "unit": "REC-HISTORY-RESP01",
   "scope": "10 theory + 10 coding stages; not independent repeated runs",
-  "completed": 9,
+  "completed": 11,
   "total": 20,
-  "percent": 45,
+  "percent": 55,
   "stages": [
     {
       "id": "R1",
@@ -14,7 +14,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R2",
@@ -25,7 +25,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R3",
@@ -36,7 +36,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R4",
@@ -47,7 +47,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R5",
@@ -58,14 +58,17 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R6",
       "name": "Independent symbolic/theory review",
-      "status": "IN_PROGRESS",
-      "checkpoint": "S2",
-      "evidence": [],
+      "status": "COMPLETE_SCOPED",
+      "checkpoint": "S1",
+      "evidence": [
+        "evidence/independent_review/PREEXEC_REVIEW.md",
+        "provenance/WOLFRAM_SYMBOLIC_CHECK.json"
+      ],
       "actual_git_backup_status": "PENDING_PROVIDER_ACK"
     },
     {
@@ -109,7 +112,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C2",
@@ -120,7 +123,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C3",
@@ -131,7 +134,7 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C4",
@@ -142,20 +145,24 @@
         "THEORY.md",
         "FROZEN_CONTRACT.md"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_26_OF_26_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C5",
       "name": "Implementation",
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE_SCOPED",
       "checkpoint": "S1",
-      "evidence": [],
+      "evidence": [
+        "evidence/implementation/STATIC_READINESS.json",
+        "evidence/implementation/CODE_INPUT_IDENTITY.json",
+        "evidence/independent_review/PREEXEC_REVIEW.md"
+      ],
       "actual_git_backup_status": "PENDING_PROVIDER_ACK"
     },
     {
       "id": "C6",
       "name": "Manufactured controls",
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "checkpoint": "S2",
       "evidence": [],
       "actual_git_backup_status": "PENDING_PROVIDER_ACK"
@@ -196,14 +203,17 @@
   "checkpoints": {
     "S0": {
       "scope": "source survey and R1-R5/C1-C4 contract",
-      "local_status": "PREPARING",
-      "git_status": "PENDING",
-      "backup_status": "PENDING",
-      "actual_receipt": null
+      "local_status": "IMMUTABLE_ARCHIVE_FROZEN_VERIFIED",
+      "git_status": "PUBLISHED_READBACK_26_OF_26_PASS",
+      "backup_status": "DROPBOX_COMPLETED_ACK",
+      "actual_receipt": "delivery/S0_ACTUAL_RECEIPT.json",
+      "git_commit": "f05acda54e45e1be1a47fa4a43ca9b0951840a05",
+      "git_tree": "3da903e6b7fcf3a3fb86b1c87396dcc0a1cac767",
+      "dropbox_id": "id:BSpOijBcT10AAAAAAD_9cw"
     },
     "S1": {
       "scope": "reviewed static implementation, frozen input/CASE_PLAN/command before primary",
-      "local_status": "PENDING",
+      "local_status": "STATIC_REVIEW_PASS_PREPARING_IMMUTABLE_ARCHIVE",
       "git_status": "PENDING",
       "backup_status": "PENDING",
       "actual_receipt": null

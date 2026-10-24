@@ -1,0 +1,52 @@
+{
+  "schema": "REC_HISTORY_RESPONSE_STATIC_READINESS_V1",
+  "status": "STATIC_FINAL_FIXED_READY_FOR_FRESH_REVIEW_AND_S1_FREEZE",
+  "primary_executed": false,
+  "scientific_tests_executed": false,
+  "code_modules_parse_compile_pass": 7,
+  "input_files_verified": 4,
+  "runtime_numeric_imports": 0,
+  "exact_primary_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_bounded.py",
+    "--cpu",
+    "35",
+    "--wall",
+    "60",
+    "primary001",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_primary.py",
+    "--output",
+    "results/primary001"
+  ],
+  "exact_figures_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_bounded.py",
+    "--cpu",
+    "5",
+    "--wall",
+    "15",
+    "figures001",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/render_results.py",
+    "--input",
+    "results/primary001",
+    "--output",
+    "results/figures001"
+  ],
+  "physical_epsilon": null,
+  "runtime_model_identifier": null,
+  "material_ambiguities_unresolved": [],
+  "remaining_gate": "Independent root review; S1 publication+backup ACK; explicit root transition",
+  "evidence": [
+    "inputs/CASE_PLAN.json",
+    "inputs/INPUT_IDENTITIES.json",
+    "inputs/ENVIRONMENT.json",
+    "evidence/implementation/STATIC_PARSE.json",
+    "evidence/implementation/CODE_INPUT_IDENTITY.json",
+    "evidence/implementation/FULL_CHANNEL_CHECK_FINDING.json"
+  ],
+  "runtime_inputs_required": 3,
+  "source_only_native_c_binding_retained": true,
+  "input_role_schema_check": "evidence/implementation/INPUT_ROLE_SCHEMA_CHECK.json"
+}
