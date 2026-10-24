@@ -1,0 +1,296 @@
+{
+  "capsule_source_closure": {
+    "checkpoint_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+    "files": 104,
+    "manifest_sha256": "b5c7c856f7517da4ebc8edae91d287333abf072eb9c8064aef202089bf58e7f2"
+  },
+  "checkpoint_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+  "claim": "bounded original HyRec q=0 h/2 U5 thermal start only",
+  "common_binary_sha256": "25cb1acbc6ef93a489445e4a06f55ab45eb1bc07a46d0f12a06fb2d6f2bb045f",
+  "common_build": {
+    "child_cpu_cap_s": 598,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-DR3I_SHARED",
+      "-I",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/source/scripts/c_harness/original_hyrec_r3i_h2_u5_thermal_harness.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/history.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/liboriginal_full_source.so"
+    ],
+    "cumulative_cpu_remaining_s": 597.791908,
+    "returncode": 0,
+    "stderr_sha256": "722b0c151ae8dd46c20aba75db637366111b693b17e592ee2e3fc19c2956fe1f",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.9745592529998248
+  },
+  "common_input_sample": {
+    "max_average_tolerance_ratio": 0.00020079802385063005,
+    "max_lyman_tolerance_ratio": 3.772245541753006e-06,
+    "max_rhs_scaled": 5.8813297236183315e-12,
+    "max_thermal_rhs_scaled": 1.7899926930407936e-10,
+    "max_virtual_tolerance_ratio": 3.7657309613471744e-06,
+    "sampled_evaluations": 185,
+    "status": "PASS"
+  },
+  "first_failure": {
+    "message": "INTEGRATED_PHOTON_PARITY:i=3162:tag=A:bin=8:ratio=2.4235253635704352",
+    "type": "ArithmeticError"
+  },
+  "forced_thermal_rhs_samples": [
+    {
+      "input_iz": 53177,
+      "original_c_rhs": -2280.408518685064,
+      "python_rhs": -2280.408518685064,
+      "scaled_ratio": 0.0
+    },
+    {
+      "input_iz": 53178,
+      "original_c_rhs": -2281.8526711832496,
+      "python_rhs": -2281.8526711832496,
+      "scaled_ratio": 0.0
+    }
+  ],
+  "harness_sha256": "4691cbc1cfbee85e758cc4037115e30a8fedf549b98b5afd3c0c8a45dbb34145",
+  "modified_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+  },
+  "native_binary_sha256": "c0f98ba1cf4091bc3e09140dcfb8183782a8b4e0358788f56da362c30e940ce7",
+  "native_build": {
+    "child_cpu_cap_s": 599,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/source/scripts/c_harness/original_hyrec_r3i_h2_u5_thermal_harness.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/history.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/native_u5_thermal"
+    ],
+    "cumulative_cpu_remaining_s": 598.736641,
+    "returncode": 0,
+    "stderr_sha256": "722b0c151ae8dd46c20aba75db637366111b693b17e592ee2e3fc19c2956fe1f",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 1.0752556629995524
+  },
+  "native_run": {
+    "child_cpu_cap_s": 481,
+    "command": [
+      "/root/REC_R3I_H2_U5_THERMAL_20261018_001/run_001/native_u5_thermal"
+    ],
+    "cumulative_cpu_remaining_s": 473.042643,
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "06d81cdd2ac840b926128cab60e3c99acc78f8794234c02f764bdeab1d626987",
+    "wall_s": 8.040333861000363
+  },
+  "new_average_forensic": {
+    "accepted_history_sha256": {
+      "c_lyman.npy": "3b3ba51fdb3ff155b44953c4c7e3d3d1dac0696b915f8ea4cef7b591a6537422",
+      "c_virtual.npy": "2432de0c36a3ac5a61cb1a8636ba940f04159fb31b991bca5e6867334be409d9",
+      "python_lyman.npy": "1b09b05a5ab2df3948ee5beae54beb60f03c098e3bcbedcf04380e31e33fb132",
+      "python_virtual.npy": "0a74638a5a6bdb27ee9952ec10617af41466c746ea9b2720ba776b34ffc09790"
+    },
+    "bin": 8,
+    "c_raw_average": 1.8832463107232585e-14,
+    "c_state": {
+      "Tm_K": 3727.367454579499,
+      "iz": 41614,
+      "post_saha": false,
+      "xH1s": 0.2726423218247015,
+      "xHII": 0.7273576781752985,
+      "xHeII": 0.0,
+      "xe": 0.7273576781752985,
+      "z": 1366.5929638323157
+    },
+    "decimal80_ieee_gate": {
+      "phi_error_bound_pass": true,
+      "propagated_bound": 9.197542005967524e-19,
+      "raw_plus_bound_limit": 1.1094497027118806e-18,
+      "source_reconstruction_pass": true,
+      "stable_remainder_absolute": "6.013306181713366576339844603E-28",
+      "status": "PASS"
+    },
+    "global_input_iz": 41614,
+    "j": 5168,
+    "original_gate": {
+      "absolute": 4.597318607312422e-19,
+      "ratio": 2.4235253635704352,
+      "status": "FAIL",
+      "tolerance": 1.8969550211512817e-19
+    },
+    "owners": [
+      {
+        "A64": 1.883200337537185e-14,
+        "A80": "1.8832233175448106322143206700682287063562455327378867104940673774163403126120087E-14",
+        "Q": 5.947615548172651e-09,
+        "bin": 8,
+        "history_shape": [
+          [
+            311,
+            5168
+          ],
+          [
+            3,
+            5168
+          ]
+        ],
+        "incoming": 1.4562246570711497e-14,
+        "interpolation_owner": "independent_Python_source_links",
+        "owner": "Python",
+        "phi64": 7.178938803420465e-07,
+        "phi80": "7.1793251768744921305017415943562564704745582420825360341107192283592169731E-7",
+        "phi_bound": 7.732125530030052e-11,
+        "raw": 1.8832003375371853e-14,
+        "raw_reconstruction_absolute": 3.1554436208840472e-30,
+        "recomputed_full_average": 1.8832003375371853e-14,
+        "source_reconstruction_absolute": 0.0,
+        "state": {
+          "Tm_K": 3727.367454579499,
+          "branch": "H_ONLY",
+          "iz": 41614,
+          "post_saha": false,
+          "xH1s": 0.27264232182470804,
+          "xHII": 0.727357678175292,
+          "xHeII": 0.0,
+          "xe": 0.727357678175292,
+          "z": 1366.5929638323157
+        },
+        "tau": 1.4358657226114429e-06
+      },
+      {
+        "A64": 1.883246310723258e-14,
+        "A80": "1.8832233175447504991525035364024653079102177712446707384235473162299586061990107E-14",
+        "Q": 5.947615548173046e-09,
+        "bin": 8,
+        "history_shape": [
+          [
+            311,
+            5168
+          ],
+          [
+            3,
+            5168
+          ]
+        ],
+        "incoming": 1.4562246570710714e-14,
+        "interpolation_owner": "original_C_fplus_from_fminus",
+        "owner": "C",
+        "phi64": 7.179711771776454e-07,
+        "phi80": "7.1793251768743195477039424156300607410290844339344169628207419388750354006E-7",
+        "phi_bound": 7.732125530030238e-11,
+        "raw": 1.8832463107232585e-14,
+        "raw_reconstruction_absolute": 3.1554436208840472e-30,
+        "recomputed_full_average": 1.8832463107232585e-14,
+        "source_reconstruction_absolute": 0.0,
+        "state": {
+          "Tm_K": 3727.367454579499,
+          "iz": 41614,
+          "post_saha": false,
+          "xH1s": 0.2726423218247015,
+          "xHII": 0.7273576781752985,
+          "xHeII": 0.0,
+          "xe": 0.7273576781752985,
+          "z": 1366.5929638323157
+        },
+        "tau": 1.4358657226114083e-06
+      }
+    ],
+    "python_raw_average": 1.8832003375371853e-14,
+    "python_state": {
+      "Tm_K": 3727.367454579499,
+      "branch": "H_ONLY",
+      "iz": 41614,
+      "post_saha": false,
+      "xH1s": 0.27264232182470804,
+      "xHII": 0.727357678175292,
+      "xHeII": 0.0,
+      "xe": 0.727357678175292,
+      "z": 1366.5929638323157
+    },
+    "source_identities": {
+      "checkpoint_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+      "common_binary_sha256": "25cb1acbc6ef93a489445e4a06f55ab45eb1bc07a46d0f12a06fb2d6f2bb045f",
+      "modified_source_sha256": {
+        "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+        "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+        "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+        "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+      },
+      "native_binary_sha256": "c0f98ba1cf4091bc3e09140dcfb8183782a8b4e0358788f56da362c30e940ce7",
+      "python_producer_sha256": "2bfd4e4d34aed3e4ba7559f15eb53c954f3c1b3e8a0f83fe640a3f1a55f98803",
+      "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27"
+    },
+    "status": "DIAGNOSTIC_COMPLETE"
+  },
+  "old_U5_gate": {
+    "failures": 9,
+    "source_receipt_sha256": "89fa0ba5869efab396efa4b1e318458cbd3ce22e5308c1b5adb3b3e033c4c9da",
+    "status": "HOLD_ORIGINAL_TOLERANCE_NOT_MET"
+  },
+  "partial_accepted_sha256": {
+    "python_accepted_partial.jsonl": "da2cb9ebfbac85bc6bad36ac626220a2ba0d31dfdd216659b6a348667f54dde5",
+    "python_partial_average_f64le.bin": "b8d6c7a72bd164de2b0e12071338ca9668736bfea59c533fa9bccb90132ef63a",
+    "python_partial_lyman_f64le.bin": "887221ddbde075204c82bb90917359707c7899f3e0da8d2e127144df12df3af4",
+    "python_partial_virtual_f64le.bin": "704842ff10f9bc19201ed2797431b736f5683b98fbcb6cd1c7e6a4c04399ed96"
+  },
+  "producer_sha256": "2bfd4e4d34aed3e4ba7559f15eb53c954f3c1b3e8a0f83fe640a3f1a55f98803",
+  "python_history_sha256": "7aeec545cfc028e870d51e07d1fe3f052bd770d1eb4537568f5faa889bf6752b",
+  "python_result": {
+    "event": {
+      "delta": 0.0005000545426558922,
+      "input_col": 16731,
+      "input_iz": 53177,
+      "thermal_seed_prev": -2295.028818021708,
+      "thermal_seed_prev2": -2295.1209635684745,
+      "type": "THERMAL_SWITCH"
+    },
+    "extra_accepted": 14727,
+    "full_evaluations": 14727,
+    "rt_stop_iz": 58389,
+    "status": "THERMAL_EVENT_TWO_STEPS_COMPLETE"
+  },
+  "resources": {
+    "address_limit_bytes": 2147483648,
+    "affinity": [
+      60
+    ],
+    "blas_threads": 1,
+    "children_cpu_s": 9.963429999999999,
+    "children_peak_rss_bytes": 169152512,
+    "cpu_limit_s": 600,
+    "cumulative_process_tree_cpu_s": 138.313592,
+    "parent_cpu_s": 128.350147,
+    "parent_peak_rss_bytes": 333840384,
+    "wall_limit_s": 900,
+    "wall_s": 138.46933091400024
+  },
+  "source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "FAIL"
+}

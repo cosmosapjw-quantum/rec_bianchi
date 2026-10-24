@@ -1,0 +1,99 @@
+{
+  "schema": "rec.history.admission.budget.v1",
+  "allocation": {
+    "cpu_seconds": 20,
+    "execution_wall_seconds": 60,
+    "numerical_threads": 1,
+    "address_space_bytes": 1073741824,
+    "primary_cpu_wall": [
+      8,
+      25
+    ],
+    "review_cpu_wall": [
+      4,
+      15
+    ],
+    "figure_and_targeted_repair_cpu_wall": [
+      8,
+      20
+    ]
+  },
+  "historical_entries_recovered": [
+    {
+      "id": "primary001",
+      "cpu_seconds": 0.5756332900000001,
+      "wall_seconds": 0.6167262339949957,
+      "peak_RSS_KiB": 107564,
+      "record_origin": "RECOVERED_FROM_PRE_RESET_TOOL_OUTPUT_AND_REVIEW",
+      "original_controller_file": "NOT_RECOVERED",
+      "new_execution": false
+    },
+    {
+      "id": "review001",
+      "cpu_seconds": 0.3538700779999999,
+      "wall_seconds": 0.36609879699972225,
+      "peak_RSS_KiB": 91420,
+      "record_origin": "RECOVERED_FROM_PRE_RESET_TOOL_OUTPUT_AND_REVIEW",
+      "original_controller_file": "NOT_RECOVERED",
+      "new_execution": false
+    },
+    {
+      "id": "figure001",
+      "cpu_seconds": 1.77093151,
+      "wall_seconds": 1.8197235480038216,
+      "peak_RSS_KiB": 83104,
+      "record_origin": "RECOVERED_FROM_PRE_RESET_TOOL_OUTPUT_AND_REVIEW",
+      "original_controller_file": "NOT_RECOVERED",
+      "new_execution": false
+    },
+    {
+      "id": "figure002",
+      "cpu_seconds": 1.53922272,
+      "wall_seconds": 1.5693057280004723,
+      "peak_RSS_KiB": 87756,
+      "record_origin": "RECOVERED_FROM_PRE_RESET_TOOL_OUTPUT_AND_REVIEW",
+      "original_controller_file": "NOT_RECOVERED",
+      "new_execution": false
+    }
+  ],
+  "current_entries": [
+    {
+      "id": "figure003",
+      "cpu_seconds": 1.688871296,
+      "wall_seconds": 1.7208976399997482,
+      "peak_RSS_KiB": 78800,
+      "record_origin": "CURRENT_ORIGINAL_CONTROLLER_FILE",
+      "receipt": "execution/figure003/RESOURCE_RECEIPT.json",
+      "new_scientific_cases": 0
+    }
+  ],
+  "spent": {
+    "inclusive_cpu_seconds": 5.928528894,
+    "execution_wall_seconds": 6.09275194699876,
+    "max_child_peak_rss_KiB": 107564
+  },
+  "remaining": {
+    "cpu_seconds": 14.071471106,
+    "execution_wall_seconds": 53.90724805300124
+  },
+  "within_caps": true,
+  "counts": {
+    "primary_invocations": 1,
+    "independent_review_passes": 1,
+    "independent_probes": 3,
+    "figure_renders": 3,
+    "scientific_recovery_reruns": 0,
+    "new_IVP": 0,
+    "native_runtime": 0,
+    "dense_solves": 0,
+    "old_campaign_replay": 0,
+    "old_boundary_replay": 0
+  },
+  "prior_HISTORY01": {
+    "cpu_seconds": 4.848191000000001,
+    "execution_wall_seconds": 4.7365679680006,
+    "status": "CLOSED_SEPARATE_NOT_RESET",
+    "source": "provenance/HISTORY01_BUDGET_LEDGER.json"
+  },
+  "accounting": "Scientific primary, independent finite probes and all figure renders. Transfer, metadata, source reading, reconstruction of documents and publication are separate I/O/mechanical work. Historical resource values are recorded observations, not new measurements; live aggregate monitor was not claimed."
+}

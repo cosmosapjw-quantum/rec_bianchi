@@ -1,0 +1,79 @@
+{
+  "schema": "REC_HISTORY_CUMULATIVE_BUDGET_V1",
+  "unit": "REC-HISTORY-01",
+  "allocation": {
+    "id": "REC-HISTORY-01-20261023",
+    "cpu_seconds_cap": 60,
+    "execution_wall_seconds_cap": 180,
+    "threads": 1,
+    "rss_bytes_cap": 1073741824,
+    "primary_timeout_seconds": 90,
+    "new_IVP_cap": 0,
+    "independent_extra_cases_cap": 4
+  },
+  "attempts": [
+    {
+      "label": "figure_repair001",
+      "returncode": 0,
+      "status": "PASS_RESOURCE",
+      "charged_cpu_seconds": 1.5319040000000002,
+      "wall_seconds": 1.500661846002913,
+      "child_peak_rss_KiB": 63644
+    },
+    {
+      "label": "primary001",
+      "returncode": 0,
+      "status": "PASS_RESOURCE",
+      "charged_cpu_seconds": 3.1535100000000003,
+      "wall_seconds": 3.0765686070008087,
+      "child_peak_rss_KiB": 105380
+    },
+    {
+      "label": "review001",
+      "returncode": 0,
+      "status": "PASS_RESOURCE",
+      "charged_cpu_seconds": 0.162777,
+      "wall_seconds": 0.15933751499687787,
+      "child_peak_rss_KiB": 35736
+    }
+  ],
+  "new_cumulative": {
+    "charged_cpu_seconds": 4.848191000000001,
+    "execution_wall_seconds": 4.7365679680006,
+    "maximum_reported_child_peak_rss_KiB": 105380,
+    "primary_scientific_attempts": 1,
+    "failed_scientific_attempts": 0,
+    "independent_review_cases": 3,
+    "independent_review_checks": 14,
+    "dense_rhs_solves": 8,
+    "plot_render_repairs": 1,
+    "new_scientific_cases_in_plot_repair": 0,
+    "old_LINE02_reruns": 0,
+    "old_campaign_replays": 0,
+    "new_IVP": 0,
+    "native_recombination_runtime": 0
+  },
+  "inherited": {
+    "LINE02": {
+      "source_pin": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
+      "primary_attempts": 1,
+      "primary_checks": 194,
+      "rank_queries": 202,
+      "primary_elapsed_seconds": 2.077208039998368,
+      "historical_review_probes_already_spent": 6,
+      "historical_six_probe_raw": "UNAVAILABLE_RETAINED_AS_REPORTED",
+      "new_execution": 0,
+      "final_receipt_sha256": "140ce4227c907c2f4ae9c21989f98b9a5e6992082fb0307c8ff9dbaa51a1a0ad"
+    },
+    "other_allocations": "Preserved at parent commit and fixed central authority. No numerical transfer, reset, or implied fresh allowance; REC-C3 recorded prior81.3665/600 seconds is historical, not revalidated current remainder."
+  },
+  "scope": "Charges are actual controller-inclusive execution costs for new finite checks and plotting. Read-only metadata/provenance/packaging is not counted as a scientific scenario. Cross-allocation totals with unknown historical CPU are not fabricated.",
+  "runtime_observation": "provenance/RUNTIME_OBSERVATIONS.json",
+  "closed": true,
+  "unused_allocation_is_not_automatic_authority_for_new_IVP": true,
+  "remaining": {
+    "cpu_seconds": 55.151809,
+    "execution_wall_seconds": 175.2634320319994,
+    "additional_review_cases_unused": 1
+  }
+}

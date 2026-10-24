@@ -1,0 +1,260 @@
+--- before_latest/research/orchestration_longterm_20261023/assembly/DAG.json
++++ after/research/orchestration_longterm_20261023/assembly/DAG.json
+@@ -2858,10 +2858,22 @@
+         "source_pin": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
+         "previous_pin": "a06dd8b876ba116aadde02a35a2cf8bb2daaa03a"
+       },
+-      "plan_status": "OWNER_DELIVERY_PENDING",
++      "plan_status": "COMPLETE_SCOPED",
+       "local_dependencies": [],
+       "external_dependencies": [],
+-      "conditional_dependencies": []
++      "conditional_dependencies": [],
++      "observations": {
++        "source_commit": "a7c46fd8338971e2cefa776f5dd7b25a46974990",
++        "primary_checks_reused": 194,
++        "rank_queries_reused": 202,
++        "historical_review_probes_reused": 6,
++        "rerun": false,
++        "original_final_receipt": {
++          "found": true,
++          "sha256": "140ce4227c907c2f4ae9c21989f98b9a5e6992082fb0307c8ff9dbaa51a1a0ad"
++        },
++        "contract_status": "SOURCE_OWNED_UNCHANGED"
++      }
+     },
+     {
+       "id": "REC-HISTORY",
+@@ -2893,12 +2905,113 @@
+         "fail_action": "Preserve source ownership failure; repair affected map only",
+         "review": "Independent changed-source review, science vs packaging separate"
+       },
+-      "plan_status": "PROPOSED",
++      "plan_status": "PARTIAL",
+       "local_dependencies": [
+         "REC-LINE02"
+       ],
+       "external_dependencies": [],
+-      "conditional_dependencies": []
++      "conditional_dependencies": [],
++      "observations": {
++        "HISTORY01": {
++          "status": "COMPLETE_SCOPED_BOUNDARY",
++          "source_commit": "93e1bdc8298db9a7c16f77d4bf64985a0c3f25aa",
++          "draft_pr": 130,
++          "primary_checks_reused": 608,
++          "independent_checks_reused": 14
++        },
++        "ADM01": {
++          "status": "COMPLETE_SCOPED_INPUT_ADMISSION",
++          "primary_checks": 386,
++          "independent_probes": 3,
++          "review": "PASS_SCOPED",
++          "material_blockers": 0,
++          "evidence_repository": "cosmosapjw-quantum/rec_bianchi",
++          "evidence_path": "research/rec_history_input_admission_20261024",
++          "evidence_commit": "5f9abb0a7e97ecfb19ad2f5b4a25d5fc3d2da527",
++          "evidence_pr": 131,
++          "publication": "PUBLISHED_DRAFT_READBACK_CONFIRMED",
++          "face_z": 1099.9986525171403,
++          "required_source_z": [
++            1100.092189396162,
++            1133.87330719964
++          ],
++          "query_count": 313,
++          "candidates": [
++            {
++              "id": "h2_u4",
++              "columns": 2006,
++              "covered": 0
++            },
++            {
++              "id": "h4_r3q_event",
++              "columns": 1519,
++              "covered": 0
++            },
++            {
++              "id": "h4_smoke",
++              "columns": 24,
++              "covered": 0
++            },
++            {
++              "id": "h2_u5",
++              "columns": 16733,
++              "covered": 313,
++              "face_causal_columns": 10277
++            }
++          ],
++          "coverage_meaning": "Retained-cell availability only; error calibration remains open",
++          "source_code": "MATCHED",
++          "energy_grid": "MATCHED",
++          "physical_domain": "PARAMETER_MISMATCH",
++          "target_T0_K": 2.728,
++          "candidate_T0_K": 2.7255,
++          "target_nH0_m3": 0.18745798773143102,
++          "candidate_nH0_m3": 0.18971712352134673,
++          "actual_U5_caller_capsule_binding": "CHECKED",
++          "independent_event_state_T0_reconstruction": "CHECKED",
++          "calibration": "INPUT_DEPENDENT_UNCALIBRATED",
++          "endpoint_error": null,
++          "independent_reference_uncertainty": null,
++          "curvature_upper_bound": null,
++          "evidence_preservation": {
++            "status": "PARTIAL_AFTER_WORKSPACE_RESET",
++            "primary_summary": "EXACT_SHA256_RECOVERY",
++            "primary_detail_rows": "NOT_RECOVERED",
++            "original_figures": "NOT_RECOVERED",
++            "review": "CONTEXT_TEXT_RECOVERY",
++            "no_scientific_rerun": true
++          }
++        },
++        "HISTORY02": {
++          "owner": "RESERVED",
++          "StageA": "OBSERVED_ONLY"
++        },
++        "preserved_limits": {
++          "PhysicalHOLD": true,
++          "U5": "HOLD_9_FAIL/HOLD_8_FAIL",
++          "campaign": "CLOSED_HOLD_NOT_RESET",
++          "global_convergence": "NOT_RUN",
++          "production": "NOT_APPROVED",
++          "REI_activation": false,
++          "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
++        },
++        "execution": {
++          "IVP": 0,
++          "native_runtime": 0,
++          "old_replay": 0,
++          "cpu_seconds": 5.928528894,
++          "wall_seconds": 6.09275194699876,
++          "cpu_cap_seconds": 20,
++          "wall_cap_seconds": 60,
++          "threads": 1,
++          "max_RSS_KiB": 107564,
++          "HISTORY01_allocation": "SEPARATE",
++          "pre_reset_subtotal": {
++            "cpu_seconds": 4.239657598,
++            "wall_seconds": 4.371854306999012
++          }
++        }
++      }
+     },
+     {
+       "id": "REC-C3",
+--- /dev/null
++++ after/research/orchestration_longterm_20261023/assembly/returns/REC_HISTORY_ADM01_20261024.json
+@@ -0,0 +1,114 @@
++{
++  "schema": 1,
++  "unit": "REC-HISTORY-ADM01",
++  "base_commit": "8b6e741ceb305cb0a6fde244ee002eb5926559fe",
++  "fixed_user_handoff": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
++  "status": "COMPLETE_SCOPED_INPUT_ADMISSION",
++  "primary_checks": 386,
++  "independent_probes": 3,
++  "review": "PASS_SCOPED",
++  "material_blockers": 0,
++  "evidence_repository": "cosmosapjw-quantum/rec_bianchi",
++  "evidence_path": "research/rec_history_input_admission_20261024",
++  "evidence_commit": "5f9abb0a7e97ecfb19ad2f5b4a25d5fc3d2da527",
++  "evidence_pr": 131,
++  "publication": "PUBLISHED_DRAFT_READBACK_CONFIRMED",
++  "face_z": 1099.9986525171403,
++  "required_source_z": [
++    1100.092189396162,
++    1133.87330719964
++  ],
++  "query_count": 313,
++  "candidates": [
++    {
++      "id": "h2_u4",
++      "columns": 2006,
++      "covered": 0
++    },
++    {
++      "id": "h4_r3q_event",
++      "columns": 1519,
++      "covered": 0
++    },
++    {
++      "id": "h4_smoke",
++      "columns": 24,
++      "covered": 0
++    },
++    {
++      "id": "h2_u5",
++      "columns": 16733,
++      "covered": 313,
++      "face_causal_columns": 10277
++    }
++  ],
++  "coverage_meaning": "Retained-cell availability only; error calibration remains open",
++  "source_code": "MATCHED",
++  "energy_grid": "MATCHED",
++  "physical_domain": "PARAMETER_MISMATCH",
++  "target_T0_K": 2.728,
++  "candidate_T0_K": 2.7255,
++  "target_nH0_m3": 0.18745798773143102,
++  "candidate_nH0_m3": 0.18971712352134673,
++  "actual_U5_caller_capsule_binding": "CHECKED",
++  "independent_event_state_T0_reconstruction": "CHECKED",
++  "calibration": "INPUT_DEPENDENT_UNCALIBRATED",
++  "endpoint_error": null,
++  "independent_reference_uncertainty": null,
++  "curvature_upper_bound": null,
++  "evidence_links": {
++    "report": "research/rec_history_input_admission_20261024/REPORT_KO.md",
++    "claim_gates": "research/rec_history_input_admission_20261024/CLAIM_GATES.json",
++    "budget": "research/rec_history_input_admission_20261024/BUDGET_LEDGER.json",
++    "independent_review": "research/rec_history_input_admission_20261024/evidence/independent_review/FINAL_REVIEW.md"
++  },
++  "parent_status": "PARTIAL",
++  "preserved_limits": {
++    "PhysicalHOLD": true,
++    "U5": "HOLD_9_FAIL/HOLD_8_FAIL",
++    "campaign": "CLOSED_HOLD_NOT_RESET",
++    "global_convergence": "NOT_RUN",
++    "production": "NOT_APPROVED",
++    "REI_activation": false,
++    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
++  },
++  "execution": {
++    "IVP": 0,
++    "native_runtime": 0,
++    "old_replay": 0,
++    "cpu_seconds": 5.928528894,
++    "wall_seconds": 6.09275194699876,
++    "cpu_cap_seconds": 20,
++    "wall_cap_seconds": 60,
++    "threads": 1,
++    "max_RSS_KiB": 107564,
++    "HISTORY01_allocation": "SEPARATE",
++    "pre_reset_subtotal": {
++      "cpu_seconds": 4.239657598,
++      "wall_seconds": 4.371854306999012
++    }
++  },
++  "preservation_checks": {
++    "node_count": true,
++    "node_order": true,
++    "integration_edges": true,
++    "entire_integration": true,
++    "top_level_except_nodes": true,
++    "other_38_nodes_exact": true,
++    "selected_only_wrapper_changes": true,
++    "all_original_contracts_authorities_dependencies": true,
++    "reviewed_REC_wrappers_exact": true,
++    "CR_N4_STOPPING_KERNEL_exact": true,
++    "HE-ANG_exact": true,
++    "HE-X1_exact": true
++  },
++  "evidence_preservation": {
++    "status": "PARTIAL_AFTER_WORKSPACE_RESET",
++    "primary_summary": "EXACT_SHA256_RECOVERY",
++    "primary_detail_rows": "NOT_RECOVERED",
++    "original_figures": "NOT_RECOVERED",
++    "review": "CONTEXT_TEXT_RECOVERY",
++    "no_scientific_rerun": true
++  },
++  "previous_preparation_base": "68420637a9ab54ada92afd786c5733bc0764b8c9"
++}
