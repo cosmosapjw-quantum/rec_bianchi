@@ -1,8 +1,8 @@
-# RESP01 finite stage progress
+# RESP01 current finite progress — 20/20 complete
 
-18/20 complete (90%) at S2 readiness; R1-R9 and C1-C9 complete. R10/C10 remain actual final delivery obligations. Physical overall completion remains null.
+R1-R10/C1-C10 are COMPLETE_SCOPED after actual S3 Git publication/readback and Dropbox completed ACK. D1 records these final facts; it is not a new scientific gate. Overall physical completion remains null.
 
-| Stage | Status | Checkpoint |
+| Stage | Current status | Actual checkpoint |
 |---|---|---|
 | R1 Source and original-target identity | COMPLETE_SCOPED | S0 |
 | R2 Repository, conversation, backup and literature intake | COMPLETE_SCOPED | S0 |
@@ -13,7 +13,7 @@
 | R7 Single bounded original-target operator computation | COMPLETE_SCOPED | S2 |
 | R8 Astra scoped scientific decision | COMPLETE_SCOPED | S2 |
 | R9 Reusable response and conditional allocation API | COMPLETE_SCOPED | S2 |
-| R10 Final research report and delivery | READY_AWAITING_S3_ACK | S3 |
+| R10 Final research report and delivery | COMPLETE_SCOPED | S3 |
 | C1 Frozen baseline and owned paths | COMPLETE_SCOPED | S0 |
 | C2 Native coefficient and query source map | COMPLETE_SCOPED | S0 |
 | C3 Interval algorithm and inverse residual design | COMPLETE_SCOPED | S0 |
@@ -23,15 +23,14 @@
 | C7 Exact Fraction and unchanged-owner checks | COMPLETE_SCOPED | S2 |
 | C8 Raw outcomes, plots and resource ledger | COMPLETE_SCOPED | S2 |
 | C9 Fresh independent code/numerical review | COMPLETE_SCOPED | S2 |
-| C10 Final reproducible delivery and handoff | READY_AWAITING_S3_ACK | S3 |
+| C10 Final reproducible delivery and handoff | COMPLETE_SCOPED | S3 |
 
-| Checkpoint | Finite completion at immutable snapshot | Actual Git/backup state |
+| Immutable checkpoint | As-of finite stages | Actual delivery |
 |---|---|---|
-| S0 | 9/20 | f05acda;26/26 readback PASS;Dropbox completed ACK |
-| S1 | 11/20 | 31d3d5b;49/49 readback PASS;Dropbox completed ACK |
-| S2 | 18/20 | 277572a;104/104 readback PASS;Dropbox completed ACK |
-| S3 | planned20/20 | Archive ready;actual S3 ACK pending |
+| S0 |9/20 |f05acda;26/26 readback PASS;Dropbox completed ACK |
+| S1 |11/20 |31d3d5b;49/49 readback PASS;Dropbox completed ACK |
+| S2 |18/20 |277572a;104/104 readback PASS;Dropbox completed ACK |
+| S3 |18/20,finalACKpending in immutable snapshot |136ca306;115/115 readback PASS;Dropbox completed ACK now actual |
+| D1 |20/20 current metadata |Publication/readback pending at preparation; finalexternalcompanion binds actualD1 |
 
-Original primary exit2 and raw failure remain preserved. Root admitted the represented-operator result after one saved-data criterion repair with no new solve. Scientific admission, publication and physical input admission are separate.
-
-Central actual publication54a65d4d84d3cb7a8dc05a2d69c6910690b30bff, draftPR226;exact3paths/readback/preservationPASS. R10/C10 await S3 actual ACK; immutableS2claim18/20 remains unchanged.
+The science CLAIM_GATES.json and GLOBAL_PROGRESS.json retain their immutable S2/S3 as-of18/20 scope. delivery/FINAL_PROGRESS_OVERLAY.json supplies current20/20 completion. Original primary exit2, saved-data repair and all source/raw evidence remain unchanged.

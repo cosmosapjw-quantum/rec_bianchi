@@ -1,3 +1,5 @@
+> **Current finite progress: 20/20 COMPLETE_SCOPED.** Read [FINAL_PROGRESS_OVERLAY.json](delivery/FINAL_PROGRESS_OVERLAY.json) for actual S3 delivery and final completion. GLOBAL_PROGRESS.json is the immutable S3 as-of18/20 author-plan/observation snapshot; its finite count is historical. The compact final overlay supersedes that delivery count only. The original40plans/17edges and physical overall completion=null remain unchanged.
+
 # Global author plans and current scope
 
 All 40 original author plans and 17 integration edges are retained verbatim in GLOBAL_PROGRESS.json. Contract status and plan status remain separate from observed progress. Overall physical completion is null.

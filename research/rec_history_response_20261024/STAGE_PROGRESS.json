@@ -1,9 +1,9 @@
 {
   "unit": "REC-HISTORY-RESP01",
   "scope": "10 theory + 10 coding stages; not independent repeated runs",
-  "completed": 18,
+  "completed": 20,
   "total": 20,
-  "percent": 90,
+  "percent": 100,
   "stages": [
     {
       "id": "R1",
@@ -113,14 +113,15 @@
     {
       "id": "R10",
       "name": "Final research report and delivery",
-      "status": "READY_AWAITING_S3_ACK",
+      "status": "COMPLETE_SCOPED",
       "checkpoint": "S3",
       "evidence": [
+        "delivery/S3_ACTUAL_RECEIPT.json",
+        "delivery/CENTRAL_ACTUAL_RECEIPT.json",
         "HANDOFF_KO.md",
-        "delivery/FINAL_DELIVERY_REPORT_KO.md",
-        "delivery/CENTRAL_ACTUAL_RECEIPT.json"
+        "delivery/FINAL_PROGRESS_OVERLAY.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "S3_GIT_PUBLISHED_115_OF_115_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C1",
@@ -233,14 +234,15 @@
     {
       "id": "C10",
       "name": "Final reproducible delivery and handoff",
-      "status": "READY_AWAITING_S3_ACK",
+      "status": "COMPLETE_SCOPED",
       "checkpoint": "S3",
       "evidence": [
+        "delivery/S3_ACTUAL_RECEIPT.json",
+        "delivery/CENTRAL_ACTUAL_RECEIPT.json",
         "HANDOFF_KO.md",
-        "delivery/FINAL_DELIVERY_REPORT_KO.md",
-        "delivery/CENTRAL_ACTUAL_RECEIPT.json"
+        "delivery/FINAL_PROGRESS_OVERLAY.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "S3_GIT_PUBLISHED_115_OF_115_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     }
   ],
   "checkpoints": {
@@ -276,11 +278,22 @@
     },
     "S3": {
       "scope": "final report, R10/C10 and actual delivery receipts",
-      "local_status": "ROOT_READY_R10_C10_AWAITING_ACTUAL_S3_ACK",
-      "git_status": "PENDING",
-      "backup_status": "PENDING",
-      "actual_receipt": null
+      "local_status": "IMMUTABLE_S3_ASOF_18_OF_20_ARCHIVE_FROZEN_VERIFIED",
+      "git_status": "PUBLISHED_READBACK_115_OF_115_PASS",
+      "backup_status": "DROPBOX_COMPLETED_ACK",
+      "actual_receipt": "delivery/S3_ACTUAL_RECEIPT.json",
+      "git_commit": "136ca3065eae427165788a4a6a6231e510ecd690",
+      "git_tree": "f96ed770fee3ae4f59902e830650ddb116d7e50e",
+      "dropbox_id": "id:BSpOijBcT10AAAAAAD_9eQ"
     }
   },
-  "central_actual_receipt": "delivery/CENTRAL_ACTUAL_RECEIPT.json"
+  "central_actual_receipt": "delivery/CENTRAL_ACTUAL_RECEIPT.json",
+  "final_completion_basis": "Root authorized R10/C10 COMPLETE_SCOPED after actual S3 Git+Dropbox ACK; D1 is final receipt projection, no new science",
+  "D1": {
+    "role": "FINAL_METADATA_RECEIPT_PROJECTION",
+    "git_status": "PREPARED_PENDING_ACTUAL_PUBLICATION",
+    "source_parent": "136ca3065eae427165788a4a6a6231e510ecd690",
+    "source_tree": "f96ed770fee3ae4f59902e830650ddb116d7e50e",
+    "does_not_change_science_claim": true
+  }
 }

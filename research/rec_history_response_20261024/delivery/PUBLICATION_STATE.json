@@ -30,10 +30,13 @@
       "draft_pr": 134
     },
     "S3": {
-      "git": "PENDING",
-      "backup": "PENDING",
-      "receipt": null,
-      "local": "READY_AWAITING_ACTUAL_ACK"
+      "git": "PUBLISHED_READBACK_115_OF_115_PASS",
+      "backup": "DROPBOX_COMPLETED_ACK",
+      "receipt": "delivery/S3_ACTUAL_RECEIPT.json",
+      "commit": "136ca3065eae427165788a4a6a6231e510ecd690",
+      "tree": "f96ed770fee3ae4f59902e830650ddb116d7e50e",
+      "draft_pr": 134,
+      "immutable_snapshot_as_of": "18/20 before actual final ACK; retained unchanged"
     }
   },
   "prior_drive_unknown": "Retained; no retry or new provider operation performed by packager",
@@ -43,5 +46,17 @@
     "status": "ACTUAL_3_OF_3_READBACK_PRESERVATION_PASS",
     "receipt": "delivery/CENTRAL_ACTUAL_RECEIPT.json"
   },
-  "final_D1_policy": "After S3 actual ACK only; receipt projection closes R10/C10 without changing immutableS2scienceCLAIM"
+  "final_D1_policy": "After S3 actual ACK only; receipt projection closes R10/C10 without changing immutableS2scienceCLAIM",
+  "finite_completion": {
+    "completed": 20,
+    "total": 20,
+    "basis": "ACTUAL_S3_GIT_AND_DROPBOX_ACK;ROOT_AUTHORIZED_R10_C10_COMPLETE",
+    "overlay": "delivery/FINAL_PROGRESS_OVERLAY.json"
+  },
+  "D1": {
+    "status": "PREPARED_PENDING_ACTUAL_PUBLICATION",
+    "role": "receipt_metadata_projection_not_science_gate",
+    "source_parent": "136ca3065eae427165788a4a6a6231e510ecd690",
+    "final_actual_binding": "external final companion after actualD1readback"
+  }
 }

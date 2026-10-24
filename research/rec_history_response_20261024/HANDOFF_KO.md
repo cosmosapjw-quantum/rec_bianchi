@@ -1,3 +1,5 @@
+> **현재 유한 연구·코딩 루프는20/20 COMPLETE_SCOPED다.** 실제 S3 commit136ca3065eae427165788a4a6a6231e510ecd690/treef96ed770fee3ae4f59902e830650ddb116d7e50e의115/115 readback과 Dropbox completed ACK 뒤 root가 R10/C10 완료를 승인했다. 현재 단계는 delivery/FINAL_PROGRESS_OVERLAY.json, 원 S2 science18/20과 S3 archive18/20은 당시 snapshot으로 읽는다. D1은 후속 receipt projection이며 최종 external companion이 실제 D1commit/readback을 고정한다. 전체 물리 완료율은 null이다.
+
 # REC-HISTORY-RESP01 재개용 handoff
 
 ## 현재 위치와 완료 범위
@@ -21,7 +23,7 @@ REC-HISTORY-RESP01은 원래 target의 전체313입력→314출력 frozen respon
 | S0 |9/20 | f05acda54e45e1be1a47fa4a43ca9b0951840a05;26/26PASS | Dropbox completed ACK;archive4480409B |
 | S1 |11/20 |31d3d5b34ae8281e5f958648051a8459a9a0b46b;49/49PASS |Dropbox completed ACK;archive259448B |
 | S2 |18/20 |277572a17b27c09246dbeaa707a1fa82f89cffcd;104/104PASS |Dropbox id:BSpOijBcT10AAAAAAD_9dg;7473354B |
-| S3 | final delivery 준비 | 실제 ACK 전에는 완료로 승격하지 않음 | 실제 ACK 전에는 pending |
+| S3 | archive당시18/20;actualACK뒤current20/20 |136ca3065eae427165788a4a6a6231e510ecd690;115/115PASS |Dropbox id:BSpOijBcT10AAAAAAD_9eQ;1242740B;completedACK |
 
 REC draft PR134는 <https://github.com/cosmosapjw-quantum/rec_bianchi/pull/134>다. S2 archive SHA256은a41da3e7df6b26bd6af756473bd8bdcdd96a915dfa2561b07fe2ca29c6f26c37이며178payloads/180members다. Bulk RAW_RESPONSE.npz/COEFFICIENTS.npz와 정확한 실행 source snapshots는 S2 archive에 보존되어 있다. `provenance/S2_RAW_ARCHIVE_LOCATORS.json`의 member/bytes/SHA256으로 복구한다. 과학을 다시 실행하여 복구하지 않는다.
 
@@ -33,7 +35,7 @@ REC draft PR134는 <https://github.com/cosmosapjw-quantum/rec_bianchi/pull/134>�
 
 현재 원문 intake 중앙 cutoff는 a814dab41a8f3f543dec71cde59f17e0d497fcda다. 원래40author contracts와17edges·fixed authority를 그대로 보존하고 REC 관측만 additive하게 전달한다. 기존 PR225 REC 관측의 immutable S2 18/20과 후속 final external20/20을 구별한다. 최신 HE-ANG19complete/C8partial, pressure finite completion과 stock NOT_RUN도 그대로 유지한다. 실제 중앙 게시 commit은54a65d4d84d3cb7a8dc05a2d69c6910690b30bff, tree6a73de4b93d286c5aa290e5baa1003b70b7f9e3e, draftPR226 <https://github.com/cosmosapjw-quantum/rei_bianchi/pull/226>다. 실제3paths/blob readback과 보존검증은 PASS이며 `delivery/CENTRAL_ACTUAL_RECEIPT.json`에 남아 있다.
 
-R10/C10은 S3 actual ACK 뒤 작은 D1 receipt projection으로20/20을 기록한다. S2 `CLAIM_GATES.json.stage_scope=18/20`은 당시 과학 checkpoint로 그대로 남고, final external companion이 실제 D1 commit/readback을 붙인다. 유한20/20은 전체 물리 완료율이 아니다. 전체 물리 완료율은 null이다.
+R10/C10은 실제 S3 ACK 뒤 root 승인으로 완료되었고 작은 D1 receipt projection이20/20을 기록한다. S2 `CLAIM_GATES.json.stage_scope=18/20`은 당시 과학 checkpoint로 그대로 남고, final external companion이 실제 D1 commit/readback을 붙인다. 유한20/20은 전체 물리 완료율이 아니다. 전체 물리 완료율은 null이다.
 
 같은 original source/frame/domain의 독립적 reference uncertainty 또는 정당한 endpoint/whole-cell curvature/stability bound가 공급되면 저장된 querywise response와 conditional box API로 전달한다. 실제 h2U4/h4U4A/U4B/h2U5 후보는 존재하며 다시 없다고 주장하지 않는다. Full angular incident trace와 thermodynamic coefficient/system Jacobian은 별도 열린 입력이다.
 
