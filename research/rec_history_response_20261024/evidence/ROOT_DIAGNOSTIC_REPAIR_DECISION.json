@@ -1,0 +1,57 @@
+{
+  "unit": "REC-HISTORY-RESP01",
+  "decision": "AUTHORIZE_ONE_SAVED_DATA_DIAGNOSTIC_REPAIR",
+  "owner": "root Astra",
+  "created_at_utc": "2026-10-24T09:39:09Z",
+  "primary_status_preserved": "FINDING_RETURN_TO_ASTRA; exit2; original files remain unchanged",
+  "finding": {
+    "rows": [
+      310
+    ],
+    "native_direction": 3,
+    "classification": "Diagnostic operation-tree gross scale omitted incoming intermediates cancelled by algebraic simplification",
+    "certificate_status": "PASS unchanged",
+    "selected_row_witness_status": "PASS unchanged"
+  },
+  "derivation": {
+    "native_expression": "u+(eq-u)*A",
+    "range": "0<=A<=1 on the frozen positive-optical-depth virtual rows",
+    "native_scale_bound": "abs(T)@abs(x)+(1+abs(A))*abs(u) <= abs(T)@abs(x)+2*abs(u)",
+    "repaired_parity_scale": "old_gross + 2*abs(u) on virtual rows0:311; line rows unchanged",
+    "repaired_witness_scale": "old_gross + 2*abs(saved_direction) on virtual rows0:311; line rows unchanged",
+    "criterion": "absolute residual <= 512*eps64*repaired_gross",
+    "criterion_role": "floating arithmetic comparison diagnostic; not a physical error allowance or the interval certificate",
+    "additive_floor": null
+  },
+  "allowed_operations": [
+    "Preserve pre-repair code and original diagnostics",
+    "Correct only parity/witness operation gross in code for future reproducibility",
+    "Read saved original residual/gross/direction vectors and reconstruct four predeclared elementary input directions in same environment",
+    "One bounded saved-data reclassification, no matrix product, no solve, no native source action",
+    "Generate two already-authorized figures from saved primary arrays only after repaired diagnostics pass"
+  ],
+  "forbidden_operations": [
+    "Another primary",
+    "Another dense RHS",
+    "Rerun exact dot probes or toys",
+    "Recompute interval certificate",
+    "New IVP",
+    "Native runtime",
+    "Old campaign replay",
+    "Modify primary evidence or input/source coefficients"
+  ],
+  "repair_budget": {
+    "cpu_seconds": 5,
+    "wall_seconds": 15,
+    "threads": 1,
+    "new_dense_rhs": 0
+  },
+  "repair_output": "results/probe001",
+  "remaining_total_before_repair": {
+    "cpu_seconds": 41.796656,
+    "wall_seconds": 86.77527718000056
+  },
+  "review_session": "evidence/independent_review; same current independent review",
+  "physical_epsilon": null,
+  "H5": "INPUT_DEPENDENT_UNCALIBRATED"
+}

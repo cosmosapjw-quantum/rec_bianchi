@@ -1,0 +1,68 @@
+{
+  "schema": "REC_HISTORY_RESP01_CHECKPOINT_PROGRESS_V1",
+  "stage_counts_are_as_of_immutable_snapshots": true,
+  "physical_overall_completion_percent": null,
+  "checkpoints": [
+    {
+      "checkpoint": "S0",
+      "as_of_complete": 9,
+      "total": 20,
+      "finite_percent": 45,
+      "scope": "source survey and R1-R5/C1-C4 contract",
+      "archive_sha256": "846105b02c6dbb54a92854a808208f2092fe0fca3e09d1003018f7d00e5f3f02",
+      "git_commit": "f05acda54e45e1be1a47fa4a43ca9b0951840a05",
+      "readback": "26/26 PASS",
+      "backup": "DROPBOX_COMPLETED_ACK",
+      "receipt": "delivery/S0_ACTUAL_RECEIPT.json"
+    },
+    {
+      "checkpoint": "S1",
+      "as_of_complete": 11,
+      "total": 20,
+      "finite_percent": 55,
+      "scope": "static code,input,CASE_PLAN,command and fresh preexecution review",
+      "archive_sha256": "dfa90ee70ef958356ece51b85dbe1f2dafef60f698c02fb6b9bd9ba346273d6d",
+      "git_commit": "31d3d5b34ae8281e5f958648051a8459a9a0b46b",
+      "readback": "49/49 PASS",
+      "backup": "DROPBOX_COMPLETED_ACK",
+      "receipt": "delivery/S1_ACTUAL_RECEIPT.json"
+    },
+    {
+      "checkpoint": "S2",
+      "planned_as_of_complete": 18,
+      "total": 20,
+      "finite_percent": 90,
+      "scope": "primary+review+PNG inspection+root scientific decision",
+      "science_status": "ROOT_SCOPED_PASS_REVIEW_AND_PNG_COMPLETE",
+      "git": "PENDING",
+      "backup": "DROPBOX_COMPLETED_ACK",
+      "receipt": "delivery/S2_ACTUAL_RECEIPT.json",
+      "as_of_complete": 18,
+      "git_commit": "277572a17b27c09246dbeaa707a1fa82f89cffcd",
+      "readback": "104/104 PASS",
+      "archive_sha256": "a41da3e7df6b26bd6af756473bd8bdcdd96a915dfa2561b07fe2ca29c6f26c37"
+    },
+    {
+      "checkpoint": "S3",
+      "planned_as_of_complete": 20,
+      "total": 20,
+      "finite_percent": 90,
+      "scope": "final report,R10/C10 and actual delivery receipts",
+      "science_status": "IMMUTABLE_S3_SNAPSHOT_ASOF_18_OF_20;CURRENT_FINAL20_BY_ACTUAL_ACK",
+      "git": "PENDING",
+      "backup": "DROPBOX_COMPLETED_ACK",
+      "receipt": "delivery/S3_ACTUAL_RECEIPT.json",
+      "as_of_complete": 18,
+      "git_commit": "136ca3065eae427165788a4a6a6231e510ecd690",
+      "readback": "115/115 PASS",
+      "archive_sha256": "dcbc1c445d70f07fcc110e9ddedad24e821aa11c00355171f1e5ff116bf24023"
+    }
+  ],
+  "historical_snapshot_rule": "Original S0 and S1 archives are not rewritten to replace their pending-at-snapshot metadata; actual later receipts are additive.",
+  "current_final_completion": {
+    "completed": 20,
+    "total": 20,
+    "overlay": "delivery/FINAL_PROGRESS_OVERLAY.json",
+    "R10_C10": "COMPLETE_SCOPED_AFTER_ACTUAL_S3_ACK"
+  }
+}

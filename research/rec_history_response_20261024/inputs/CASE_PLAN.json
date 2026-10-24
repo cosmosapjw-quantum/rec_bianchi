@@ -1,0 +1,250 @@
+{
+  "schema": "REC_HISTORY_RESPONSE_CASE_PLAN_V1",
+  "unit": "REC-HISTORY-RESP01",
+  "execution_state": "NOT_RUN_WAITING_ROOT_S1_TRANSITION",
+  "arithmetic_target": "exact real operator represented by saved M,B,T,P binary64 arrays",
+  "epsilon_physical": null,
+  "primary_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_bounded.py",
+    "--cpu",
+    "35",
+    "--wall",
+    "60",
+    "primary001",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_primary.py",
+    "--output",
+    "results/primary001"
+  ],
+  "figures_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_bounded.py",
+    "--cpu",
+    "5",
+    "--wall",
+    "15",
+    "figures001",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/render_results.py",
+    "--input",
+    "results/primary001",
+    "--output",
+    "results/figures001"
+  ],
+  "cwd": "/workspace/scratch/e3bcbaac138c/rec_history_followup_20261024/research/rec_history_response_20261024",
+  "resource_caps": {
+    "CPU_seconds": 45,
+    "execution_wall_seconds": 90,
+    "threads": 1,
+    "address_space_bytes": 1073741824
+  },
+  "allocation": {
+    "primary": [
+      35,
+      60
+    ],
+    "figures": [
+      5,
+      15
+    ],
+    "one_diagnosed_repair_or_independent_probe": [
+      5,
+      15
+    ]
+  },
+  "solve_plan": {
+    "combined_solve": "M [Vhat Z] = [B I]",
+    "combined_rhs_columns": 626,
+    "witness_rhs_columns": 1,
+    "total_dense_rhs_columns_maximum": 627,
+    "new_IVP": 0,
+    "native_runtime": 0,
+    "old_campaign_replay": 0,
+    "completed_science_reexecution": 0
+  },
+  "coefficient_dimensions": {
+    "M": [
+      313,
+      313
+    ],
+    "B": [
+      313,
+      313
+    ],
+    "T": [
+      314,
+      313
+    ],
+    "P": [
+      314,
+      313
+    ],
+    "response_K": [
+      314,
+      313
+    ]
+  },
+  "exact_dot_checks": {
+    "products": [
+      "ZM",
+      "MV",
+      "ABSZ_ABSR",
+      "TV"
+    ],
+    "maximum_probes_each": 32,
+    "predeclared_fixed_entry_rule": {
+      "rows": [
+        0,
+        1,
+        139,
+        140,
+        270,
+        271,
+        310,
+        "last_row"
+      ],
+      "columns": [
+        0,
+        311,
+        "last_column"
+      ],
+      "clamp": "clamp index to product shape; retain unique row,column pairs in order"
+    },
+    "dominant_entry_rule": "After fixed entries, fill until32 with descending max(abs(lower),abs(upper)); stable flattened index breaks ties",
+    "oracle": "Fraction.from_float point products and exact sum; preserve numerator and denominator"
+  },
+  "manufactured_exact_toys": [
+    [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        3,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    [
+      [
+        4,
+        -1,
+        0
+      ],
+      [
+        1,
+        3,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    [
+      [
+        5,
+        1,
+        0,
+        -1
+      ],
+      [
+        1,
+        4,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        1
+      ],
+      [
+        -1,
+        0,
+        1,
+        4
+      ]
+    ]
+  ],
+  "exact_toy_count": 4,
+  "toy_method": "Exact Fraction Gauss-Jordan inverse; convert to candidates; no additional floating solve",
+  "controls": [
+    "zero_add",
+    "identity_product",
+    "cancellation_dot_2pow53_plus1_minus2pow53",
+    "signed_interval_min_and_max",
+    "min_normal_half",
+    "min_subnormal_half",
+    "nonfinite",
+    "infinite",
+    "overflow",
+    "negative_epsilon",
+    "nonfinite_epsilon",
+    "epsilon_shape",
+    "unverified_inverse_rho_ge_1"
+  ],
+  "native_parity": {
+    "directions": [
+      "ones",
+      "alternating",
+      "sin(index+1)",
+      "cos((index+1)/7)"
+    ],
+    "maximum_directions": 4,
+    "source_scale": "abs(B)@abs(u)",
+    "outgoing_scale": "abs(T)@abs(x)+abs(P)@abs(u)",
+    "limit": "absolute difference <= 512*eps64*gross_scale",
+    "additive_floor": null
+  },
+  "witness": {
+    "selected_row": "argmax(sum(abs(Khat),axis=1)); first index on tie",
+    "direction": "-1 if Khat[selected,j]<0 else+1",
+    "independent_solve": "numpy.linalg.solve(M, frozen.source_increment(direction))",
+    "full_native_map": "frozen.outgoing(population_response,direction)",
+    "all314_comparison_scale": "abs(T)@abs(xw)+abs(P)@abs(direction)+abs(Khat)@abs(direction)",
+    "all314_limit": "512*eps64*gross_scale; no additive floor",
+    "selected_checks": [
+      "response inside signed interval sum",
+      "absolute response between certified row gain bounds"
+    ],
+    "sign_ambiguity": "record coefficient intervals crossing zero"
+  },
+  "outward_denominator": "nextafter(1-rho,-inf)",
+  "factor_semantics": "outward multiply3e6*LYA_FACT, thenH, and outward E21*EV_J; atomic energy interval exact negative of radiation",
+  "source_action_comparison_role": "gross-scale diagnostic separates H01 imperative arithmetic from frozen coefficient representation",
+  "transition_required": {
+    "path": "delivery/EXECUTION_TRANSITION.json",
+    "unit": "REC-HISTORY-RESP01",
+    "allowed_phases": [
+      "primary",
+      "figures"
+    ],
+    "S1_git_state": "READBACK_PASS",
+    "S1_dropbox_state": "COMPLETED_ACK"
+  },
+  "input_identity_manifest": "inputs/INPUT_IDENTITIES.json",
+  "environment_snapshot": "inputs/ENVIRONMENT.json",
+  "numerical_execution_before_S1": false,
+  "runtime_input_files": [
+    "inputs/target_native_snapshot.csv",
+    "inputs/PREPARED_BLOCKS.npz",
+    "vendor/history_boundary.py"
+  ],
+  "source_only_bindings": [
+    "vendor/hydrogen.c"
+  ],
+  "source_only_recovery": "inputs/INPUT_IDENTITIES.json fourth binding and S0 full archive locator; original bytes unchanged"
+}

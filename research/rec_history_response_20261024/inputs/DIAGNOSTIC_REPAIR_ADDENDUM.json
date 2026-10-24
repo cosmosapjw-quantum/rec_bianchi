@@ -1,0 +1,22 @@
+{
+  "unit": "REC-HISTORY-RESP01",
+  "addendum_to": "inputs/CASE_PLAN.json; unchanged immutable S1 plan",
+  "decision": "evidence/ROOT_DIAGNOSTIC_REPAIR_DECISION.json",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/run_bounded.py",
+    "--cpu",
+    "5",
+    "--wall",
+    "15",
+    "probe001",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "code/recheck_saved_diagnostics.py",
+    "--input",
+    "results/primary001",
+    "--output",
+    "results/probe001"
+  ],
+  "new_dense_rhs_columns": 0,
+  "physical_epsilon": null
+}
