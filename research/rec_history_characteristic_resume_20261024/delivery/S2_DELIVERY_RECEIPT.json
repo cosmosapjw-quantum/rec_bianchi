@@ -1,0 +1,101 @@
+{
+  "schema": "REC_HISTORY02R_STAGE_DELIVERY_V1",
+  "stage": "S2",
+  "immutable_capsule": {
+    "schema": "REC_HISTORY02R_CAPSULE_IDENTITY_V1",
+    "stage": "S2",
+    "archive": "/workspace/scratch/e3bcbaac138c/rec_next_work/delivery_artifacts/REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+    "name": "REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+    "bytes": 883922,
+    "sha256": "67ea8827bccfb10763398a31f9f03785b89f36ed7a842cf83396989b1ae2e554",
+    "md5": "a5476728d3271e96af898e095e7999d5",
+    "payload_count": 111,
+    "zip_members": 112,
+    "local_crc": "PASS",
+    "local_payload_sha_size": "PASS",
+    "snapshot": "/workspace/scratch/e3bcbaac138c/rec_next_work/delivery_artifacts/REC_HISTORY02R_S2_20261024_snapshot",
+    "dropbox_destination": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+    "drive_parent_folder_id": "1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k",
+    "publication_at_freeze": "PENDING",
+    "packaging_cpu_s": 0.08472729600000001,
+    "packaging_wall_s": 0.08480223899823613,
+    "scientific_execution": 0
+  },
+  "providers": {
+    "Dropbox": {
+      "schema": "REC_HISTORY02R_PROVIDER_ACK_V1",
+      "stage": "S2",
+      "provider": "Dropbox",
+      "status": "COMPLETED_ACK_AND_CURRENT_METADATA",
+      "upload_attempts": 1,
+      "async_polls": 1,
+      "archive": {
+        "name": "REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+        "bytes": 883922,
+        "sha256": "67ea8827bccfb10763398a31f9f03785b89f36ed7a842cf83396989b1ae2e554"
+      },
+      "completed_ack": {
+        "id": "id:BSpOijBcT10AAAAAAD_8Zg",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+        "size": 883922,
+        "modified_time": "2026-10-24T03:12:52Z"
+      },
+      "current_metadata": {
+        "id": "id:BSpOijBcT10AAAAAAD_8Zg",
+        "name": "REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+        "rev": "65e8d78e828eb0af03d47",
+        "size": 883922,
+        "client_modified": "2026-10-24T03:12:50Z",
+        "server_modified": "2026-10-24T03:12:52Z"
+      },
+      "size_match": true,
+      "id_match": true,
+      "remote_whole_byte_sha256": "NOT_RUN_BY_DESIGN",
+      "remote_crc_payload_readback": "NOT_RUN_BY_DESIGN",
+      "local_archive_crc": "PASS",
+      "local_payload_sha256": "PASS_111_OF_111",
+      "scientific_reexecution": 0
+    },
+    "GoogleDrive": {
+      "schema": "REC_HISTORY02R_PROVIDER_STATUS_V1",
+      "stage": "S2",
+      "provider": "Google Drive",
+      "status": "NOT_ATTEMPTED_PROVIDER_STALLED",
+      "upload_attempts": 0,
+      "archive": {
+        "name": "REC_HISTORY02R_S2_20261024_67ea8827bccf.zip",
+        "bytes": 883922,
+        "sha256": "67ea8827bccfb10763398a31f9f03785b89f36ed7a842cf83396989b1ae2e554"
+      },
+      "cause": "S0 upload did not return ACK; nominal45s timeout ineffective; root interrupted and observed platform aborted by user after601.9s. S0 remote existence remains UNKNOWN.",
+      "request_to_retry": false,
+      "next_step": "Wait for explicit provider recovery/latest-checkpoint delivery decision; do not duplicate S0.",
+      "scientific_reexecution": 0
+    }
+  },
+  "Git": {
+    "unit_id": "REC-HISTORY-02R",
+    "checkpoint": "S2_ORIGINAL_PRIMARY",
+    "status": "PUBLISHED_DRAFT_READBACK_CONFIRMED",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "branch": "research/rec-history-characteristic-resume-20261024",
+    "parent": "5864c8ed63e1e248735f51b2987a030d726a5358",
+    "commit": "ca73220a4ac2293c32fb8057fe26faf19227ef12",
+    "tree": "4cb7f962d16e68a738a3d72c780a4f61a9537c86",
+    "pr": 132,
+    "branch_readback": "ca73220a4ac2293c32fb8057fe26faf19227ef12",
+    "expected_blob_readback": {
+      "expected_changed": 31,
+      "observed_changed": 31,
+      "mismatches": []
+    },
+    "primary": "PASS_SCOPED",
+    "case_rows": 127,
+    "numerical_comparisons": 776,
+    "final_independent_review": "PENDING"
+  },
+  "archive_modified_after_freeze": false,
+  "dual_provider_ACK": false,
+  "scientific_execution": 0
+}

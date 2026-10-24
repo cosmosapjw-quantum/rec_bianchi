@@ -1,0 +1,247 @@
+{
+  "checked_head": "3fba7cd91f84b4687cf6356f87400056ca32e37e",
+  "tree": "2c3e73ed14ee0e8682b25cf5897cef47066e7e26",
+  "DAG_blob": "35698ce2c102b3ce09e33bdd110cd410b12245d2",
+  "AGENTS_blob": "429a5a13ee75b1222bc50627f8d5973d01dd21c4",
+  "policy_identity_unchanged": true,
+  "earlier_base": "8b6e741ceb305cb0a6fde244ee002eb5926559fe",
+  "changed_nodes": [
+    {
+      "id": "CR_N5_ATOMIC_ISOTOPE_COVERAGE",
+      "repository": "bass_cr",
+      "authority": "atomic/LONGTERM_CONTRACTS.json",
+      "authority_pointer": "/nodes/bass_cr/2",
+      "contract": {
+        "status": "OPEN",
+        "execution": "NOT_RUN",
+        "budget": {
+          "inherited_spend": null,
+          "remaining": null,
+          "currency": null,
+          "policy": "unknown is not zero; retain existing campaign receipt; no new heavy launch"
+        },
+        "publication": {
+          "kind": "separate additive draft",
+          "merge": false
+        },
+        "gate_transition": "OPEN -> DERIVED_SCOPED -> IMPLEMENTATION_VERIFIED -> NUMERICALLY_CHECKED_SCOPED -> CONSUMER_ADMITTED only with named consumer and valid source/domain/owner",
+        "no_replay": "completed identities reused, changes verify only affected obligations",
+        "id": "CR_N5_ATOMIC_ISOTOPE_COVERAGE",
+        "depends_on": [],
+        "equations": [
+          "r_a=n_i*n_j*k_a(T) or n_i*Gamma_a",
+          "S_charge*r defines Ne,all source",
+          "DeltaUbind=sum_i I_i*DeltaN_i"
+        ],
+        "domain": "n,H1,D,T,He3,He4,Li6,Li7 explicit charges; isotope source equivalence separately proved",
+        "input": [
+          "C23B HI/HeI/HeII fits with13.6/24.59/54.42eV thresholds",
+          "WU PHYS81/82/83 completion",
+          "CI/RR/DR/CX data"
+        ],
+        "output": [
+          "source-by-species/rate/energy-domain matrix and unique energy owners"
+        ],
+        "admission_gate": "missing rate=null; source isotope quotient qualified at target accuracy; own source thresholds never silently replaced",
+        "pr_boundary": "Supplier coverage PR; no coupled-science claims"
+      },
+      "plan_status": "PARTIAL",
+      "local_dependencies": [],
+      "external_dependencies": [],
+      "conditional_dependencies": [],
+      "observed_progress": {
+        "child": "C23E_D43_PHOTO_RR_SOURCE_BINDING",
+        "status": "COMPLETE_SCOPED",
+        "admission": "NUMERICALLY_CHECKED_SCOPED",
+        "science_commit": "8e4e06361d714939513a11f64a27f02822bde2fa",
+        "science_tree": "ab06b96102cbfebf387c97d355174c0730defaac",
+        "PR": "https://github.com/cosmosapjw-quantum/bass_cr/pull/100",
+        "scope": "Conditional D43K threshold-gated H-equality PI; conditional shared H/D RR kinetic moment; WU79 D43K CX; explicit thermal/fast electron pools; instantaneous source only",
+        "source_nodes_z": [
+          2.316,
+          2.479,
+          2.649
+        ],
+        "point_sources": 18,
+        "new_D_target_integrations": 3,
+        "new_narrow_band_orders": 9,
+        "checks": 104,
+        "delivery_only_checks": 29,
+        "independent_Astra_review": "PASS_SCOPED",
+        "results_path": "research/cr_c23e_d43_source_binding_20261024/RESULTS_KO.md",
+        "raw_path": "research/cr_c23e_d43_source_binding_20261024/runs/C23E_D43_SOURCE_BINDING_20261024T021612Z_v1/",
+        "budget": {
+          "new_child_cpu_s": 2.161932,
+          "new_child_wall_s": 2.1714153429929866,
+          "known_tracked_lineage_cpu_s": 15.493261114,
+          "scope": "lower bound, not total project spend",
+          "unmeasured_CAS_cpu_s": null,
+          "monetary_spend": null,
+          "remaining": null
+        },
+        "ODE": 0,
+        "completed_science_reruns": 0,
+        "benchmark": 0,
+        "parent_claim": "OPEN: full N5 rate coverage remains incomplete",
+        "open": [
+          "empirical isotope-resolved D cross sections",
+          "microscopic Milne-pair validity",
+          "full21 CI/RR/DR/CX rates",
+          "finite-mass isotope kinetics",
+          "physical stopping",
+          "cosmological consumer admission"
+        ],
+        "global_error_bound": null,
+        "global_completion_fraction": null,
+        "axes": {
+          "EXECUTION": "COMPLETE_SCOPED; fresh Astra review PASS_SCOPED",
+          "PUBLICATION": "science S published; additive Draft PR100; no merge",
+          "BACKUP": "PENDING_NEW_RELEASE; historical Drive UNKNOWN_NO_ACK unchanged",
+          "DAG": "C23E child COMPLETE_SCOPED; parent N5 PARTIAL/OPEN"
+        }
+      }
+    },
+    {
+      "id": "HE-ANG",
+      "repository": "cosmosapjw-quantum/BASS_HE",
+      "authority": "thermal/BASS_HE_LONGTERM_CONTRACTS.json",
+      "authority_pointer": "/nodes/1",
+      "contract": {
+        "id": "HE-ANG",
+        "title": "Source-qualified H1 angular provider",
+        "depends_on": [
+          "HE-X1"
+        ],
+        "status": "planned",
+        "entrypoints": [
+          "research/he38_h1_finite_mass_gain_20261023/NEXT_DAG.json",
+          "research/he38_h1_finite_mass_gain_20261023/components/finite_mass/h1_finite_mass/model.py"
+        ],
+        "inputs_domain": "DDCS inclusive electron count2 + ion recoil in consistent energy/frame; actual measured domain",
+        "equations_scope": "Integrate K_e,D_e and ion momentum/energy/STF from same differential law",
+        "claim_gates": [
+          "Labels/exchange/slow-electron support and lab/COM mapping admitted",
+          "No unmatched CCC total times Le-Cambier partition",
+          "Physical uncertainty and quadrature allocations must be calibrated; existing HE38 raw1e-8 gate is model-numerics only"
+        ],
+        "pass_action": "Replace uniform-angular law only in a new pinned source model; affected moment checks",
+        "budget": "Source admission first; no provider scan/newIVP until own bounded budget; do not rerun HE38129T",
+        "fail_action": "Preserve raw failure and source identity; repair only diagnosed affected dependency; no campaign reset",
+        "review": "Independent theory/implementation review on changed dependencies; packaging and science verdicts separate"
+      },
+      "plan_status": "SOURCE_INPUT_PENDING",
+      "local_dependencies": [
+        "HE-X1"
+      ],
+      "external_dependencies": [],
+      "conditional_dependencies": [],
+      "observed_completion": {
+        "status": "SOURCE_INPUT_PENDING",
+        "as_of": "2026-10-24",
+        "contract_subunit": {
+          "id": "HE-ANG-CONTRACT",
+          "status": "COMPLETE_SCOPED",
+          "science_commit": "896e5427100ad48d017deff2697b6f992ba029cd",
+          "publication_head": "0a11bf9e1f6ffcc696625de0caf1c581c27cf7f0",
+          "pull_request": 92,
+          "reused_without_replay": true
+        },
+        "source_intake_subunit": {
+          "id": "HE-ANG-SOURCE-HEX-INTAKE",
+          "status": "COMPLETE_SCOPED",
+          "science_commit": "15053fe4445a32e0544d644e864fe27780d08743",
+          "pull_request": 93,
+          "scope": "actual Hex v2.02 source/schema and full selected-file availability; exact represented-coefficient tail control; no physical angular provider"
+        },
+        "evidence": [
+          "research/he_ang_source_hex_20261024/RESULTS_KO.md",
+          "research/he_ang_source_hex_20261024/CLAIM_GATE.json",
+          "research/he_ang_source_hex_20261024/evidence/review/SCIENCE_REVIEW_FINAL.json",
+          "research/he_ang_source_hex_20261024/evidence/review/CODE_REVIEW_FINAL.json",
+          "research/he_ang_source_hex_20261024/evidence/execution/A2/04_catalogue.stdout.txt",
+          "research/he_ang_ddcs20_window_20261024/RESULTS_KO.md",
+          "research/he_ang_ddcs20_window_20261024/CLAIM_GATE.json",
+          "research/he_ang_ddcs20_window_20261024/evidence/review/C9_REVIEW.json"
+        ],
+        "physical_provider_admitted": false,
+        "empirical_angular_correction": false,
+        "selected_data": {
+          "compressed_sha256": "afa8d83ada688ecf91c40340da669e204885ec5c52d04fc55b48837b52135101",
+          "decoded_bytes": 69441007,
+          "tmat_rows": 948557,
+          "H1_tmat_rows": 86457,
+          "H1_Ei_extrema_Ry": [
+            1e-7,
+            0.9374
+          ],
+          "ionf_rows": 0,
+          "absence_scope": "this file only; never zero cross section"
+        },
+        "resources": {
+          "ledger": "research/he_ang_source_hex_20261024/evidence/execution/RESOURCE_LEDGER.json",
+          "cpu_s": 18.434312000000002,
+          "wall_s": 18.739398924000852,
+          "caps_cpu_wall_s": [
+            20,
+            60
+          ],
+          "failed_catalogues": 2,
+          "completed_catalogues": 1,
+          "nominal_per_child_cpu_overshoot_recorded": true,
+          "old_costs_and_UNKNOWN_NOT_ZERO_preserved": true
+        },
+        "next": {
+          "id": "HE-ANG-SOURCE-PAYLOAD",
+          "status": "INPUT_DEPENDENT",
+          "contract": "research/he_ang_source_hex_20261024/NEXT_SOURCE_CONTRACT.json",
+          "measured_marginal_status": "A measured one-electron DDCS finite-window marginal is available; source-qualified joint outgoing-electron law, full support/count-spin/frame conventions and finite-mass recoil correlations are still required."
+        },
+        "contract_status_interpretation": "Original planned author contract preserved unchanged; this observation records completed contract/intake subunits and the still-open physical provider gate.",
+        "backup_receipt": "assembly/returns/BASS_HE_HEANG_SOURCE_BACKUP_ACK_20261024.json",
+        "no_merge": true,
+        "no_activation": true,
+        "total_physical_goal_completion_percent": null,
+        "measured_window_subunit": {
+          "id": "HE-ANG-DDCS20-WINDOW",
+          "status": "COMPLETE_SCOPED",
+          "science_commit": "d8bae9f7e24ad3494e399f7ab46c4167a5623d48",
+          "pull_request": 94,
+          "source": {
+            "citation": "Childers et al., PRA69,022709(2004),TableIV",
+            "incident_energy_eV": 20,
+            "raw_cells_preserved": 40,
+            "primary_cells": 32,
+            "E_eV": [
+              3,
+              6
+            ],
+            "theta_deg": [
+              15,
+              120
+            ],
+            "primary_E2_excluded": true
+          },
+          "scope": "conditional detected-electron window moments under linear-mu axisymmetric interpolation and nominated deterministic sensitivity box; not CI or full-domain event provider",
+          "R6": "PASS",
+          "C9": "PASS_SCOPED",
+          "resources": {
+            "cpu_s": 1.9570049999999999,
+            "wall_s": 2.104758352987119,
+            "scientific_child_invocations": 3,
+            "repair_invocations_used": 0,
+            "allocation_cpu_wall_s": [
+              20,
+              60
+            ],
+            "prior_costs_and_unknowns_preserved_nontransferable": true
+          },
+          "backup_receipt": "assembly/returns/BASS_HE_HEANG_DDCS20_BACKUP_ACK_20261024.json"
+        }
+      }
+    }
+  ],
+  "effect_on_this_unit": "Contextual supplier progress; core02R source/input/math identities unchanged. Preserve these latest owner observations exactly. No matching REC target history uncertainty supplied.",
+  "selected_new_observation_branch": "research/rec-history-characteristic-observation-20261024",
+  "reason_for_new_branch": "Build on latest central base without resetting existing ADM01 draftPR223 or making a merge commit.",
+  "fixed_authority": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17"
+}

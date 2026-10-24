@@ -2,12 +2,12 @@
   "schema_version": 1,
   "workflow_version": "1.0.0",
   "unit_id": "REC-HISTORY-02R",
-  "current_checkpoint": "S1",
+  "current_checkpoint": "S3",
   "stage_rows": [
     {
       "stage_id": "R1",
       "title": "연구 위치·계약",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "FROZEN_CONTRACT; latest survey",
       "execution": "not required",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -23,7 +23,7 @@
     {
       "stage_id": "R2",
       "title": "근거·재사용",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "SURVEY_SYNTHESIS; copied source/inventories",
       "execution": "old replay0",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -39,7 +39,7 @@
     {
       "stage_id": "R3",
       "title": "주장·전제 정렬",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "THEORY scope, CLAIM_GATES",
       "execution": "not required",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -55,7 +55,7 @@
     {
       "stage_id": "R4",
       "title": "가설·표현 탐색",
-      "stage_status": "reused + selected",
+      "stage_status": "reused_complete_scoped",
       "science": "Stage A map; exact positive-rate subclass",
       "execution": "not required",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -71,7 +71,7 @@
     {
       "stage_id": "R5",
       "title": "구성적 유도",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "THEORY; original Stage A; new CAS identities0,0",
       "execution": "external CAS completed",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -87,54 +87,62 @@
     {
       "stage_id": "R6",
       "title": "독립 검증",
-      "stage_status": "in_progress",
-      "science": "same-pass CODE_PREPRIMARY_REVIEW GO_PRIMARY; guard correction readback closed; final raw/2PNG admission pending",
-      "execution": "review probes0",
-      "publication": "S0 precode published; S1 code pending; S3 final pending",
-      "backup": "S0 Dropbox ACK / Drive pending; S1/S3 pending",
+      "stage_status": "complete_scoped",
+      "science": "Same independent pass PASS_SCOPED; 6 probe rows / 10 adapter calls; guard finding closed; repaired PNGs accepted",
+      "execution": "review001 actual receipt",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "before scoped admission",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
         "FROZEN_CONTRACT.md",
-        "evidence/independent_review/CODE_PREPRIMARY_REVIEW.md"
+        "evidence/independent_review/CODE_PREPRIMARY_REVIEW.md",
+        "evidence/independent_review/FINAL_REVIEW.json",
+        "execution/review001/RESOURCE_RECEIPT.json"
       ]
     },
     {
       "stage_id": "R7",
       "title": "판별 검증",
-      "stage_status": "pending",
-      "science": "frozen127 finite controls",
-      "execution": "not_run",
-      "publication": "S2 pending",
-      "backup": "S2 pending",
+      "stage_status": "complete_scoped",
+      "science": "PASS_SCOPED primary127 rows/776 comparisons plus same-pass independent review; physical input obligations remain",
+      "execution": "primary002 plus preserved failed import primary001; review001",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "source→map→boundary",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
-        "FROZEN_CONTRACT.md"
+        "FROZEN_CONTRACT.md",
+        "results/primary002/SUMMARY.json",
+        "results/primary002/raw_rows.jsonl",
+        "evidence/independent_review/FINAL_REVIEW.json"
       ]
     },
     {
       "stage_id": "R8",
       "title": "결과 판정",
-      "stage_status": "pending",
-      "science": "actual primary+review required",
-      "execution": "not_run",
-      "publication": "S3 pending",
-      "backup": "S3 pending",
+      "stage_status": "complete_scoped",
+      "science": "PASS_SCOPED primary127 rows/776 comparisons plus same-pass independent review; physical input obligations remain",
+      "execution": "primary002 plus preserved failed import primary001; review001",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "leaf admission",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
-        "FROZEN_CONTRACT.md"
+        "FROZEN_CONTRACT.md",
+        "results/primary002/SUMMARY.json",
+        "results/primary002/raw_rows.jsonl",
+        "evidence/independent_review/FINAL_REVIEW.json"
       ]
     },
     {
       "stage_id": "R9",
       "title": "정식 결과·코딩 연결",
-      "stage_status": "in_progress",
-      "science": "THEORY construction and formula/API contract",
-      "execution": "not_run",
-      "publication": "S0 theory published; S1 code pending; S3 result pending",
-      "backup": "S0 Dropbox ACK / Drive pending; S1/S3 pending",
+      "stage_status": "complete_scoped",
+      "science": "Scoped construction and code/result map complete; parent history PARTIAL",
+      "execution": "Reuse primary002/review001; no duplicate run",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "HISTORY→FIELD bridge",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
@@ -144,11 +152,11 @@
     {
       "stage_id": "R10",
       "title": "종료·재개",
-      "stage_status": "pending",
-      "science": "next-input/handoff/provider receipt",
-      "execution": "not_run",
-      "publication": "S3/final pending",
-      "backup": "S3/final pending",
+      "stage_status": "scientific_handoff_ready",
+      "science": "Scoped result and reproducible handoff ready; final provider/publication receipts pending",
+      "execution": "No further numerical runs required",
+      "publication": "S3/final PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "downstream obligations",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
@@ -158,7 +166,7 @@
     {
       "stage_id": "C1",
       "title": "목표·baseline",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "exact H01 vendor and source parent",
       "execution": "old replay0",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -174,7 +182,7 @@
     {
       "stage_id": "C2",
       "title": "식–데이터–코드",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "THEORY + immutable inputs/copy receipts",
       "execution": "not_run",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -190,7 +198,7 @@
     {
       "stage_id": "C3",
       "title": "수치 설계",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "FROZEN_CONTRACT + precode review",
       "execution": "not_run",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -206,7 +214,7 @@
     {
       "stage_id": "C4",
       "title": "실행 DAG·자원",
-      "stage_status": "complete",
+      "stage_status": "complete_scoped",
       "science": "30CPU/90wall budget; noIVP",
       "execution": "not_run",
       "publication": "S0 dd60e597980e4ee0d60490012725bdeaa0e89233 / draft PR132; delivery/S0_GITHUB_RECEIPT.json",
@@ -222,11 +230,11 @@
     {
       "stage_id": "C5",
       "title": "구현",
-      "stage_status": "complete",
-      "science": "IMPLEMENTED_NOT_RUN; adapter SHA256 82d67ca3858dab586fd81457eb3b86d157e8bbe5fda55742a92c2402d7b75008",
-      "execution": "syntax only PASS; primary NOT_RUN",
-      "publication": "S1 publication pending freeze",
-      "backup": "S1 backups pending freeze",
+      "stage_status": "complete_scoped",
+      "science": "COMPLETE_SCOPED_CHARACTERISTIC_ADAPTER; adapter SHA25682d67ca3858dab586fd81457eb3b86d157e8bbe5fda55742a92c2402d7b75008",
+      "execution": "Validated in primary002/review001",
+      "publication": "S1 implementation published; S3 result PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "implementation",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
@@ -239,68 +247,79 @@
     {
       "stage_id": "C6",
       "title": "구현 검증",
-      "stage_status": "pending",
-      "science": "frozen domains/guards/defect controls",
-      "execution": "primary NOT_RUN",
-      "publication": "S2 pending",
-      "backup": "S2 pending",
+      "stage_status": "complete_scoped",
+      "science": "PASS_SCOPED primary127 rows/776 comparisons plus same-pass independent review; physical input obligations remain",
+      "execution": "primary002 plus preserved failed import primary001; review001",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "finite implementation checks",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
-        "FROZEN_CONTRACT.md"
+        "FROZEN_CONTRACT.md",
+        "results/primary002/SUMMARY.json",
+        "results/primary002/raw_rows.jsonl",
+        "evidence/independent_review/FINAL_REVIEW.json"
       ]
     },
     {
       "stage_id": "C7",
       "title": "과학 검증",
-      "stage_status": "pending",
-      "science": "independent values/JVP/ledger references",
-      "execution": "primary NOT_RUN",
-      "publication": "S2 pending",
-      "backup": "S2 pending",
+      "stage_status": "complete_scoped",
+      "science": "PASS_SCOPED primary127 rows/776 comparisons plus same-pass independent review; physical input obligations remain",
+      "execution": "primary002 plus preserved failed import primary001; review001",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "finite scientific checks",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
-        "FROZEN_CONTRACT.md"
+        "FROZEN_CONTRACT.md",
+        "results/primary002/SUMMARY.json",
+        "results/primary002/raw_rows.jsonl",
+        "evidence/independent_review/FINAL_REVIEW.json"
       ]
     },
     {
       "stage_id": "C8",
       "title": "수치·재현성",
-      "stage_status": "pending",
-      "science": "high precision + preserved original raw/resource receipt",
-      "execution": "primary NOT_RUN",
-      "publication": "S2/S3 pending",
-      "backup": "S2/S3 pending",
+      "stage_status": "complete_scoped",
+      "science": "PASS_SCOPED primary127 rows/776 comparisons plus same-pass independent review; physical input obligations remain",
+      "execution": "primary002 plus preserved failed import primary001; review001",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "finite accuracy/cost",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
-        "FROZEN_CONTRACT.md"
+        "FROZEN_CONTRACT.md",
+        "results/primary002/SUMMARY.json",
+        "results/primary002/raw_rows.jsonl",
+        "evidence/independent_review/FINAL_REVIEW.json"
       ]
     },
     {
       "stage_id": "C9",
       "title": "독립 검토",
-      "stage_status": "in_progress",
-      "science": "same-pass CODE_PREPRIMARY_REVIEW GO_PRIMARY; guard correction readback closed; final raw/2PNG admission pending",
-      "execution": "review probes0",
-      "publication": "S0 precode published; S1 code pending; S3 final pending",
-      "backup": "S0 Dropbox ACK / Drive pending; S1/S3 pending",
+      "stage_status": "complete_scoped",
+      "science": "Same independent pass PASS_SCOPED; 6 probe rows / 10 adapter calls; guard finding closed; repaired PNGs accepted",
+      "execution": "review001 actual receipt",
+      "publication": "S3 PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "leaf admission",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
         "FROZEN_CONTRACT.md",
-        "evidence/independent_review/CODE_PREPRIMARY_REVIEW.md"
+        "evidence/independent_review/CODE_PREPRIMARY_REVIEW.md",
+        "evidence/independent_review/FINAL_REVIEW.json",
+        "execution/review001/RESOURCE_RECEIPT.json"
       ]
     },
     {
       "stage_id": "C10",
       "title": "판정·인계",
-      "stage_status": "pending",
-      "science": "scoped result + code + next input contract",
-      "execution": "not_run",
-      "publication": "S3/final pending",
-      "backup": "S3/final pending",
+      "stage_status": "scientific_handoff_ready",
+      "science": "Scoped result and reproducible handoff ready; final provider/publication receipts pending",
+      "execution": "No further numerical runs required",
+      "publication": "S3/final PENDING_FREEZE",
+      "backup": "S3 Dropbox PENDING_FREEZE; Drive NOT_ATTEMPTED_PROVIDER_STALLED",
       "global_dag_order": "HISTORY parent staysPARTIAL",
       "evidence_refs": [
         "STAGE_PROGRESS.md",
@@ -325,9 +344,9 @@
     "publication": "PENDING_FREEZE",
     "backup": "PENDING_FREEZE"
   },
-  "primary": "NOT_RUN",
-  "scientific_runs": 0,
-  "final_admission": "PENDING",
+  "primary": "PASS_SCOPED_127_ROWS_776_COMPARISONS",
+  "scientific_runs": 1,
+  "final_admission": "COMPLETE_SCOPED_CHARACTERISTIC_ADAPTER",
   "preserved": {
     "Physical": "HOLD",
     "REC_U5": [
@@ -343,5 +362,15 @@
   },
   "parent_REC_HISTORY": "PARTIAL",
   "history_error_gate": "INPUT_DEPENDENT_UNCALIBRATED",
-  "total_physical_goal_completion_percent": null
+  "total_physical_goal_completion_percent": null,
+  "failed_pre_case_startups": 1,
+  "independent_review": "PASS_SCOPED_6_ROWS_10_ENTRY_CALLS_ONE_PASS",
+  "S3": {
+    "publication": "PENDING_FREEZE",
+    "backup": {
+      "Dropbox": "PENDING_FREEZE",
+      "Drive": "NOT_ATTEMPTED_PROVIDER_STALLED"
+    }
+  },
+  "scientific_execution_note": "One completed primary numerical suite; first startup failed before cases. Rendering and six-row independent probe invocation separately recorded in BUDGET_LEDGER."
 }

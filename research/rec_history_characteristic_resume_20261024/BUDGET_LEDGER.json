@@ -51,12 +51,47 @@
       "returncode": 0,
       "rows_saved": 127,
       "first_failure": null
+    },
+    {
+      "label": "figures001",
+      "phase": "figures_and_one_diagnosed_repair",
+      "status": "RENDERED_SAVED_ROWS_ONLY",
+      "resource_receipt": "execution/figures001/RESOURCE_RECEIPT.json",
+      "cpu_s": 1.799507,
+      "execution_wall_s": 1.8197947989974637,
+      "peak_rss_kib": 97252,
+      "returncode": 0,
+      "new_scientific_cases": 0
+    },
+    {
+      "label": "figures002",
+      "phase": "figures_and_one_diagnosed_repair",
+      "status": "TARGETED_PRESENTATION_REPAIR_RENDERED",
+      "resource_receipt": "execution/figures002/RESOURCE_RECEIPT.json",
+      "cpu_s": 1.661186,
+      "execution_wall_s": 1.6691097430011723,
+      "peak_rss_kib": 96568,
+      "returncode": 0,
+      "new_scientific_cases": 0
+    },
+    {
+      "label": "review001",
+      "phase": "independent_review",
+      "status": "PASS_SCOPED",
+      "resource_receipt": "execution/review001/RESOURCE_RECEIPT.json",
+      "cpu_s": 0.105953,
+      "execution_wall_s": 0.11565408200840466,
+      "peak_rss_kib": 26216,
+      "returncode": 0,
+      "probe_rows": 6,
+      "adapter_entry_calls": 10,
+      "review_passes": 1
     }
   ],
   "new_local_spent": {
-    "cpu_s": 2.8283370000000003,
-    "execution_wall_s": 10.483061140010728,
-    "peak_rss_kib": 29668,
+    "cpu_s": 6.394983,
+    "execution_wall_s": 14.087619764017768,
+    "peak_rss_kib": 97252,
     "includes_environment_setup": true
   },
   "external_symbolic": {
@@ -110,13 +145,26 @@
     "remaining_allocation_wall_s": 21.352204151000002
   },
   "new_local_execution_spent": {
-    "cpu_s": 1.812346,
-    "execution_wall_s": 1.835265291010728
+    "cpu_s": 5.378992,
+    "execution_wall_s": 5.439823915017769
   },
   "primary_cumulative": {
     "cpu_s": 1.812346,
     "execution_wall_s": 1.835265291010728,
     "remaining_cpu_s": 14.187654,
     "remaining_wall_s": 43.16473470898927
+  },
+  "figures_repair_cumulative": {
+    "cpu_s": 4.4766840000000006,
+    "execution_wall_s": 12.136700390998636,
+    "remaining_cpu_s": 3.5233159999999994,
+    "remaining_wall_s": 17.863299609001366
+  },
+  "review_cumulative": {
+    "cpu_s": 0.105953,
+    "execution_wall_s": 0.11565408200840466,
+    "probe_rows": 6,
+    "adapter_entry_calls": 10,
+    "review_passes": 1
   }
 }
