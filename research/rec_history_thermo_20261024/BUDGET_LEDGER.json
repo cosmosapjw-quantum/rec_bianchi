@@ -1,0 +1,77 @@
+{
+  "schema": "REC_HISTORY_THERMO_BUDGET_LEDGER_V1",
+  "unit": "REC-HISTORY-THERMO01",
+  "authority": "FROZEN_CONTRACT.md; ARITHMETIC_ADDENDUM.md",
+  "new_unit_cap": {
+    "inclusive_child_CPU_seconds": 60,
+    "execution_wall_seconds": 180,
+    "threads": 1,
+    "RLIMIT_AS_bytes": 1073741824
+  },
+  "allocations": {
+    "primary": {
+      "CPU_seconds": 40,
+      "wall_seconds": 120,
+      "large_RHS_ceiling": 25,
+      "scientific_processes": 1
+    },
+    "targeted_repair_reserved": {
+      "CPU_seconds": 10,
+      "wall_seconds": 30,
+      "authorized": false
+    },
+    "figures": {
+      "CPU_seconds": 10,
+      "wall_seconds": 30,
+      "processes": 1
+    }
+  },
+  "planned_large_RHS": {
+    "base": 1,
+    "tangent": 6,
+    "complex_step": 6,
+    "mixed_finite_differences": 12,
+    "total": 25
+  },
+  "small_manufactured_systems": {
+    "RHS_ceiling": 16,
+    "dimension_ceiling": 3
+  },
+  "escape_high_precision_probe_values_ceiling": 16,
+  "new_consumption": {
+    "inclusive_child_CPU_seconds": 0,
+    "execution_wall_seconds": 0,
+    "large_RHS_columns": 0,
+    "small_RHS_columns": 0,
+    "scientific_primary_processes": 0,
+    "figure_processes": 0,
+    "native_runtime": 0,
+    "new_IVP": 0,
+    "old_campaign_replay": 0
+  },
+  "remaining_new_unit": {
+    "inclusive_child_CPU_seconds": 60,
+    "execution_wall_seconds": 180
+  },
+  "inherited_observations_not_spending_authority": [
+    {
+      "unit": "RESP01",
+      "CPU_seconds": 6.076654,
+      "wall_seconds": 6.112102264
+    },
+    {
+      "unit": "REFINE01",
+      "CPU_seconds": 4.832465,
+      "wall_seconds": 4.895043831
+    },
+    {
+      "unit": "H01",
+      "CPU_seconds": 4.848191,
+      "wall_seconds": 4.736567968
+    }
+  ],
+  "older_costs": "UNKNOWN costs remain unknown; no reset or inferred zero",
+  "provider_IO_packaging_full_turn_elapsed": "SEPARATE from scientific execution budget",
+  "runs": [],
+  "status": "INITIAL_ZERO_CONSUMPTION"
+}

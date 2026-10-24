@@ -1,0 +1,45 @@
+{
+  "schema": "REC_THERMO_ORIGINAL_NATIVE_HISTORY_SOURCE_LEAD_V1",
+  "scientific_admission": "ROOT_PENDING",
+  "payload_loaded": false,
+  "payload_retrieved": false,
+  "same_target_source_evidence": {
+    "original_snapshot_path": "research/rec_line_native_owner_20261023/inputs/ORIGINAL_HYREC_TRAJECTORY_SNAPSHOT.csv",
+    "original_snapshot_z": 1099.9986525171403,
+    "original_snapshot_zstart": 1700.4825068138662,
+    "original_snapshot_iz": 5127,
+    "producer": "scripts/run_pr05b2_causal_history_stage.py",
+    "producer_execute_hyrec_lines": "240-260: stdin=(source / input.dat)",
+    "producer_parse_history_lines": "267-325: direct native outgoing raw arrays and eta=-log1p(zstart)+dlna*index",
+    "canonical_archive_SHA256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "input_fixture_source_path": "research/rec_r3s_ncp_campaign_20261021/ncp_execution_001/evidence/campaign_001/jobs/h4_legacy16/run/worker/source_extract/HyRec/input.dat",
+    "input_fixture_identity": {
+      "bytes": 44,
+      "git_blob": "118117b20382ad087f7942a9412a0ce325c0a738",
+      "sha256": "f8073ba70197378e156a6723e229ff47cc9f0d8be0121f1fce82aff6c64abcbc"
+    },
+    "input_fixture_text": "2.728\n.021976\n.13\n0\n.343\n-1 0\n.24\n3.04\n1.\n1.",
+    "canonical_fixture_parameters": {
+      "T0_K": 2.728,
+      "omega_b_h2": 0.021976,
+      "omega_m_h2": 0.13,
+      "YHe": 0.24,
+      "N_eff": 3.04,
+      "original_nH0_m3_owner": "history.c::rec_get_cosmoparam / nH0=11.223846333047*omega_bh2*(1-YHe)",
+      "original_nH0_m3_from_prior_ADM01": 0.18745798773143102
+    },
+    "retained_parity_ledger_row": "THREE_SNAPSHOT_CAUSAL_HISTORY_LEDGER.csv: target_z1100,snapshot_z1099.9986525171403,source_index5127,accepted_count_before5127,query_count313"
+  },
+  "retained_payload": {
+    "path": "data/pr05b2_source_history_v060.npz",
+    "git_blob": "de43b1a2642fa0aa049abbfd1b0a7d775d684b1b",
+    "bytes": 35239470,
+    "source_reported_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+    "provenance": "SOURCE_HISTORY_PROVENANCE.json",
+    "accepted_count": 7489,
+    "dlna": 8.49e-05,
+    "z_start": 1700.4825068138662,
+    "final_snapshot_z": 900.0168986313175
+  },
+  "claim_limit": "Source metadata and retained old parity row identify an original native same-h history lead. No new payload recovery, cosmology/prefix array admission, independent uncertainty or absolute history bound is claimed."
+}
