@@ -1,32 +1,55 @@
 {
   "schema": "REC_HISTORY_THERMO_PUBLICATION_STATE_V1",
   "unit": "REC-HISTORY-THERMO01",
-  "checkpoint": "S2",
-  "as_of_utc": "2026-10-24T18:56:21.378028+00:00",
-  "local_state": "SCIENTIFIC_CHECKPOINT_PREPARED",
+  "checkpoint": "S3",
+  "as_of_utc": "2026-10-24T19:04:09.098668+00:00",
+  "local_state": "FINAL_METADATA_AFTER_ACTUAL_DELIVERY",
   "scientific_execution": "ORIGINAL_FAILURE_PLUS_AUTHORIZED_CONTINUATION_PRESERVED",
   "scientific_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
   "git": {
-    "status": "S2_NOT_YET",
-    "base_commit": "afa237a784974b07d26cf68900b29283166a62ec",
-    "planned_branch": "research/rec-history-thermo-20261024",
-    "commit": null,
-    "tree": null,
-    "draft_PR": 135
+    "status": "S2_PUBLISHED_READBACK_PASS",
+    "commit": "95d0b62daef5bc0b522c5b5a579b33bef15fc6f2",
+    "tree": "2cb78e13646ff145f455015ce99e7324c845ac80",
+    "draft_PR": 135,
+    "matching_paths": 152,
+    "S3_metadata_commit": "EXTERNAL_FINAL_COMPANION_AFTER_PUBLICATION"
   },
   "backup": {
-    "status": "S2_NOT_YET",
-    "provider_id": null,
-    "revision": null,
-    "size": null,
-    "sha256": null
+    "status": "S2_REMOTE_WHOLE_BYTE_CRC_ALL485_PAYLOADS_PASS",
+    "provider_id": "id:BSpOijBcT10AAAAAAD_9ng",
+    "revision": "65e9aa99574930af03d47",
+    "size": 5842521,
+    "sha256": "f17aa795966c9af1805b9194db42dae99f6daa266205b0293ead3bff4f2090d1"
   },
   "central": {
-    "status": "NOT_YET",
-    "commit": null,
-    "tree": null
+    "repository": "cosmosapjw-quantum/rei_bianchi",
+    "branch": "research/orchestration-rec-history-thermo-20261024",
+    "actual_commit": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+    "actual_tree": "2bcd7b59ea749a53cf6a93b504240e82bf1444f3",
+    "parent": "9600a605f6380bc2262d0cfce5ff00290e594a5a",
+    "draft_PR": 227,
+    "PR_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/227",
+    "readback": "PASS",
+    "preservation": "PASS",
+    "preserved": {
+      "contracts": 40,
+      "edges": 17,
+      "authorities": 7,
+      "non_REC_nodes": 38,
+      "AGENTS_blob": "429a5a13ee75b1222bc50627f8d5973d01dd21c4",
+      "fixed_handoff_blob": "b7282c1d88dbb7622853c697d5787d43b12fe8ef"
+    },
+    "actual_receipt_path": "delivery/CENTRAL_ACTUAL_RECEIPT.json",
+    "preservation_receipt_path": "delivery/central/GUARDRAIL_VERIFICATION.json"
   },
-  "receipts": [],
+  "receipts": [
+    "delivery/S2_GIT_ACTUAL_RECEIPT.json",
+    "delivery/S2_REMOTE_BACKUP_VERIFICATION.json",
+    "delivery/CENTRAL_ACTUAL_RECEIPT.json",
+    "delivery/central/GUARDRAIL_VERIFICATION.json",
+    "delivery/CI_S2_SUMMARY.json",
+    "delivery/CI_CENTRAL_OBSERVATION.json"
+  ],
   "planned_checkpoints": [
     "S0",
     "S1",
@@ -34,7 +57,7 @@
   ],
   "claim_limits": "Local six-axis source derivative only; H5 epsilon/null and inherited holds remain.",
   "root_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
-  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
+  "scientific_result_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
   "RUN_READY": "EXECUTED; NO_FURTHER_RUN_AUTHORIZED",
   "prior_S0": {
     "schema": "REC_THERMO_S0_RECOVERED_ACTUAL_RECEIPT_V1",
@@ -85,8 +108,20 @@
   "original_full_S0_archive": "LOST_BEFORE_UPLOAD; not reconstructed",
   "S1_remote_verification": "delivery/S1_REMOTE_BACKUP_VERIFICATION.json",
   "stage_count": {
-    "complete": 18,
-    "total": 20,
-    "R10_C10": "ACTUAL_FINAL_DELIVERY_PENDING"
-  }
+    "complete": 20,
+    "total": 20
+  },
+  "CI_S2": "FAIL_WHITESPACE_EOF_OWNED_AND_INHERITED; PYTEST_SKIPPED",
+  "final_HEAD_CI": "OBSERVE_AFTER_S3; external companion",
+  "own_metadata_commit_and_companion_ACK": "External actual receipts; no recursive self-edit",
+  "final_delivery_report": "delivery/FINAL_DELIVERY_REPORT.json",
+  "CI_central": "FAIL_CARGO_FMT_CHECK; no Rust changes in central projection; no manual rerun",
+  "actual_checkpoints": [
+    "S0_RECOVERED",
+    "S1",
+    "S1F",
+    "S2",
+    "S3_METADATA"
+  ],
+  "S3_METADATA_scope": "Local final metadata prepared; own actual commit is recorded externally after publication, not predicted here."
 }

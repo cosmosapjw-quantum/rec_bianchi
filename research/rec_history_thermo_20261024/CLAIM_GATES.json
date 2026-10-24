@@ -9,8 +9,21 @@
     "z": 1099.9986525171403,
     "T0_K": 2.728,
     "nH0_m3": 0.18745798773143102,
-    "primitive_axes": ["xe", "xHII", "lnTR", "lnTM", "lnnH", "lnH"],
-    "fixed": ["incoming313 signed Wien departures", "energy grid", "source frame", "geometry", "characteristic query times"],
+    "primitive_axes": [
+      "xe",
+      "xHII",
+      "lnTR",
+      "lnTM",
+      "lnnH",
+      "lnH"
+    ],
+    "fixed": [
+      "incoming313 signed Wien departures",
+      "energy grid",
+      "source frame",
+      "geometry",
+      "characteristic query times"
+    ],
     "ambient_columns_are_physical_cosmological_trajectories": false,
     "physical_pure_H_restriction": "dxe=dxHII; sum columns0+1"
   },
@@ -26,9 +39,9 @@
   "verification": {
     "A_groups": 21,
     "A_max": 1.5551741193678365e-10,
-    "A_frozen_limit": 5e-9,
+    "A_frozen_limit": 5e-09,
     "B_max": 1.6263934969885847e-11,
-    "B_frozen_limit": 2e-8,
+    "B_frozen_limit": 2e-08,
     "C_primal_components": 313,
     "C_tangent_components": 1878,
     "C_max": 1.6778326936217204e-15,
@@ -39,8 +52,8 @@
     "E_directions": 2,
     "E_recorded_steps": 6,
     "E_passing_steps": 6,
-    "E_outgoing_max": 7.197124258333325e-9,
-    "E_frozen_limit": 2e-5,
+    "E_outgoing_max": 7.197124258333325e-09,
+    "E_frozen_limit": 2e-05,
     "F_exact_manufactured_cases": 3,
     "F_small_RHS": 6,
     "F_toy_max": 1.816728585750256e-16,
@@ -112,7 +125,10 @@
   },
   "inherited_holds": {
     "physical": "HOLD",
-    "REC_U5": ["HOLD_9_FAIL", "HOLD_8_FAIL"],
+    "REC_U5": [
+      "HOLD_9_FAIL",
+      "HOLD_8_FAIL"
+    ],
     "reset": "CLOSED_HOLD_NOT_RESET",
     "global_convergence": "NOT_RUN",
     "production": "NOT_APPROVED",
@@ -124,5 +140,14 @@
   "overall_goal_completion_percent": null,
   "finite_stage_count_science_snapshot": 18,
   "finite_stage_total": 20,
-  "R10_C10": "Actual S2 Git/backup and central delivery receipts pending at science snapshot"
+  "R10_C10": "COMPLETE_AFTER_ACTUAL_S2_AND_CENTRAL_RECEIPTS; science_snapshot_stage_count18 retained",
+  "final_delivery": {
+    "finite_stages": 20,
+    "total": 20,
+    "actual_S2_and_central": "PASS",
+    "receipt": "delivery/FINAL_DELIVERY_REPORT.json",
+    "S3_own_commit": "EXTERNAL_FINAL_COMPANION",
+    "CI_S2": "FAIL_WHITESPACE_EOF_PYTEST_SKIPPED",
+    "CI_is_scientific_A_to_F_gate": false
+  }
 }

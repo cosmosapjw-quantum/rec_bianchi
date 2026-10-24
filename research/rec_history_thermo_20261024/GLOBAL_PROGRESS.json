@@ -1,9 +1,9 @@
 {
   "schema": "REC_HISTORY_THERMO_GLOBAL_PROGRESS_V1",
   "unit": "REC-HISTORY-THERMO01",
-  "as_of_utc": "2026-10-24T18:56:21.378028+00:00",
+  "as_of_utc": "2026-10-24T19:04:09.098668+00:00",
   "finite_unit_stages": {
-    "completed": 18,
+    "completed": 20,
     "total": 20,
     "source": "STAGE_PROGRESS.json"
   },
@@ -11,8 +11,12 @@
     "fixed_handoff": "rei_bianchi@0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
     "original_contract_nodes": 40,
     "original_edges": 17,
-    "central_tree_modified": false,
-    "other_owner_observations": "PRESERVED; see SURVEY_SYNTHESIS_KO.md and cross-repository intake"
+    "central_tree_modified": true,
+    "other_owner_observations": "PRESERVED; see SURVEY_SYNTHESIS_KO.md and cross-repository intake",
+    "mode": "ADDITIVE_REC_OBSERVATIONS_ONLY; all40contracts/17edges/7authorities/other38nodes unchanged",
+    "fixed_handoff_unchanged": true,
+    "actual_central_commit": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+    "actual_central_tree": "2bcd7b59ea749a53cf6a93b504240e82bf1444f3"
   },
   "REC_H7": {
     "current_unit": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
@@ -42,11 +46,11 @@
     "REI_activation": false,
     "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
   },
-  "publication": "S2_AND_CENTRAL_NOT_YET",
-  "backup": "S2_NOT_YET; S1_REMOTE_WHOLE_BYTE_AND_ALL_PAYLOADS_PASS",
-  "next_action": "Root backs up S2 first, publishes and reads back its Git projection, then adds central observation while preserving existing contracts and edges.",
+  "publication": "ACTUAL_S2_AND_CENTRAL_COMPLETE; S3_OWN_ID_EXTERNAL_COMPANION",
+  "backup": "S2_REMOTE_WHOLE_BYTES_AND_ALL485_PAYLOADS_PASS",
+  "next_action": "Continue only after admitting the inputs and common-operator binding specified in NEXT_INPUT_CONTRACT; no new execution authority.",
   "root_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
-  "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
+  "scientific_result_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
   "scientific_execution": "ORIGINAL_FAILURE_PLUS_ONE_CONTINUATION_AND_TWO_SAVED_DATA_FIGURE_PROCESSES",
   "workspace_recovery": {
     "exact_source_snapshot_files": 23,
@@ -69,5 +73,31 @@
     "known_lineage_CPU_seconds": 24.120157,
     "known_lineage_is_global_project_total": false,
     "further_spending_authorized": false
-  }
+  },
+  "checkpoint": "S3",
+  "final_delivery": "delivery/FINAL_DELIVERY_REPORT.json",
+  "central_actual": {
+    "repository": "cosmosapjw-quantum/rei_bianchi",
+    "branch": "research/orchestration-rec-history-thermo-20261024",
+    "actual_commit": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+    "actual_tree": "2bcd7b59ea749a53cf6a93b504240e82bf1444f3",
+    "parent": "9600a605f6380bc2262d0cfce5ff00290e594a5a",
+    "draft_PR": 227,
+    "PR_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/227",
+    "readback": "PASS",
+    "preservation": "PASS",
+    "preserved": {
+      "contracts": 40,
+      "edges": 17,
+      "authorities": 7,
+      "non_REC_nodes": 38,
+      "AGENTS_blob": "429a5a13ee75b1222bc50627f8d5973d01dd21c4",
+      "fixed_handoff_blob": "b7282c1d88dbb7622853c697d5787d43b12fe8ef"
+    },
+    "actual_receipt_path": "delivery/CENTRAL_ACTUAL_RECEIPT.json",
+    "preservation_receipt_path": "delivery/central/GUARDRAIL_VERIFICATION.json"
+  },
+  "CI_S2": "FAILURE_QUICK_WHITESPACE_EOF_WITH_OWNED_AND_INHERITED_PATHS; PYTEST_SKIPPED",
+  "CI_central": "FAILURE_CARGO_FMT_CHECK; FOUR_DOC_PATHS_CHANGED_NO_RUST_CHANGES",
+  "final_HEAD_REC_CI": "OBSERVE_AFTER_S3_IN_EXTERNAL_COMPANION"
 }

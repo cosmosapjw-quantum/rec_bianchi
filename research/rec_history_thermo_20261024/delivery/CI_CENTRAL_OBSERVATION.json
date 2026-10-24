@@ -1,0 +1,79 @@
+{
+  "schema": "REC_THERMO_CENTRAL_CI_OBSERVATION_V1",
+  "repository": "cosmosapjw-quantum/rei_bianchi",
+  "head": "2cc58d209e149847e7d8545d26ef7bcc944229fa",
+  "run_id": 40123420615,
+  "run_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/actions/runs/40123420615",
+  "job_id": 120959665670,
+  "job": [
+    {
+      "id": 120959665670,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 40123420615,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 3
+        },
+        {
+          "name": "Run cargo test --manifest-path rust/rei_microphysics/Cargo.toml --workspace --locked",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "conclusion": "failure",
+  "failed_step": "cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+  "log_excerpt": [
+    "2026-10-24T19:02:26.6714542Z ##[group]Run cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+    "2026-10-24T19:02:26.6715292Z \u001b[36;1mcargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check\u001b[0m",
+    "2026-10-24T19:02:29.5642227Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/flrw_three_probe.rs:1:",
+    "2026-10-24T19:02:29.5687674Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/flrw_three_probe.rs:28:",
+    "2026-10-24T19:02:29.5763497Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/flrw_three_probe.rs:74:",
+    "2026-10-24T19:02:29.5766580Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/he_rct_probe.rs:1:",
+    "2026-10-24T19:02:29.5810543Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/he_rct_probe.rs:49:",
+    "2026-10-24T19:02:29.5827319Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/he_rct_probe.rs:70:",
+    "2026-10-24T19:02:29.6602407Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/../src/paired_runtime.rs:1:",
+    "2026-10-24T19:02:29.6611821Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/../src/paired_runtime.rs:11:",
+    "2026-10-24T19:02:29.6763110Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/../src/paired_runtime.rs:109:",
+    "2026-10-24T19:02:29.6868081Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/../src/paired_runtime.rs:176:",
+    "2026-10-24T19:02:29.6878733Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/../src/paired_runtime.rs:181:",
+    "2026-10-24T19:02:29.7022623Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/paired_history.rs:1:",
+    "2026-10-24T19:02:29.7030370Z Diff in /home/runner/work/rei_bianchi/rei_bianchi/rust/rei_microphysics/examples/paired_history.rs:41:"
+  ],
+  "projection_paths": "Only central DAG and three observation documents; no Rust changes",
+  "manual_reruns": 0,
+  "scientific_execution": 0,
+  "green_CI_claim": false
+}

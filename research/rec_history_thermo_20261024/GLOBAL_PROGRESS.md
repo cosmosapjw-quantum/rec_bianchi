@@ -7,3 +7,7 @@ H7 local six-axis source derivative is complete within its fixed incoming and fr
 The fixed central authority, original 40 contracts and 17 edges, other owners and prior REC observations remain preserved. Physical HOLD, REC_U5 HOLD_9_FAIL/HOLD_8_FAIL, CLOSED_HOLD_NOT_RESET, global convergence NOT_RUN, production NOT_APPROVED, REI activation false, and first failed REI raw HISTORICAL_LOCAL_ONLY remain.
 
 S1 whole remote archive and all 306 payloads passed verification. The original full S0 ZIP was lost before upload, with a distinct recovered-projection backup acknowledged. S2 backup and Git publication, followed by central additive observation, remain the next authorized delivery actions.
+
+## Final delivery metadata
+
+Finite unit20/20 complete after actual S2 and central receipts. The immutable S2 science snapshot remains18/20. Scientific claims and all open input/physical/operator obligations are unchanged. S2 CI is red for whitespace/EOF with pytest skipped, including owned preserved paths; no green CI claim. S3 own commit and final-head CI are recorded in the external final companion.
