@@ -1,0 +1,63 @@
+{
+  "schema": "rec.r3q.ncp_h4_independent_review.v1",
+  "status": "PASS_SCOPED_H4_FIRST_EVENT_PLUS_TWO",
+  "reviewer_role": "fresh Astra-tier research reviewer; read-only",
+  "evidence_basis": "saved source, allocations, terminal receipt, verification JSON, NPZ/CSV outputs; no solver or test rerun",
+  "source": {
+    "commit": "1ad0380110621446c42df9d995fd85db3a6c7e7a",
+    "tree": "efd65193713f19d0e60a0617182b3449c7091510",
+    "tracked_paths_checked": 3457,
+    "mismatches": 0,
+    "closure_files": 100,
+    "closure_sha256": "0332531f65a2851119f50806cdf7bc384b494b09759fcf5d497d6c1a7d032bcf"
+  },
+  "inputs": {
+    "source_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "checkpoint_sha256": "40dd109a4c4acfcc46087353840d2e694d0a14b928e7b622d5c2baaecf5b6fef",
+    "authorized_archive_member_change": "HyRec/hyrec_params.h DLNA=8.49e-5 to (8.49e-5/4.)"
+  },
+  "result": {
+    "event": "HELIUM_CUTOFF",
+    "event_iz": 74409,
+    "event_z": 1648.1096049064963,
+    "event_after_steps": 1509,
+    "following_steps": 2,
+    "following_branch": "H_ONLY",
+    "endpoint_iz": 74411,
+    "endpoint_z": 1648.0396016895968,
+    "extra_accepted": 1511,
+    "full_evaluations": 6044,
+    "post_saha_endpoint": true,
+    "native_event": {"relative_index": 1517, "steps": 1519, "type": 1},
+    "same_h_parity": "PASS",
+    "first_failure": null
+  },
+  "resources": {
+    "allocation_id": "REC_R3Q_NCP_EVENT_20261020T1141Z",
+    "cpu_s_limit": 600,
+    "wall_s_limit": 900,
+    "address_limit_bytes_per_process": 2147483648,
+    "runner_cpu_s": 30.196189,
+    "runner_wall_s": 30.345126653992338,
+    "host_affinity": [63],
+    "max_waited_child_rss_bytes_not_aggregate": 223346688,
+    "including_smoke_cpu_s": 35.134584184,
+    "including_smoke_wall_s": 35.44960037601413
+  },
+  "reviewed_sha256": {
+    "TERMINAL.json": "52df5f331437b1a7239ffed1b5a834aa41a487000cbf0ba060e5f65794f91f9b",
+    "verification.json": "415efed4559eb3a2c844e919135df89ec3b4d9ed095c5e2dd3fd07d963539cd4",
+    "python_continuation.npz": "7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9",
+    "native_oracle_stdout.csv": "1d930aaa7f6df07513cfae01dfe18b95e8c2123225be0d65c04e4f048e776a55",
+    "HOST_COORDINATION.json": "df76f603f906bac3ef5806d56cc84d683fd1411ff21c1a7f798d47a7e7b5b3db",
+    "SOURCE_TREE_MANIFEST.json": "30f37d7faf365cfcf1c2d184b4ddaae6f5fba4b709cac213147d1ce2a89883ec"
+  },
+  "claim_ceiling": {
+    "historical_budget": "CLOSED_HOLD_NOT_RESET",
+    "h_U5": "HOLD_9_FAIL",
+    "h2_U5": "HOLD_8_FAIL",
+    "h_h2_h4_convergence": "HOLD",
+    "full_h4": "NOT_RUN",
+    "REI_activation": false
+  }
+}

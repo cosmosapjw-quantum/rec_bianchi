@@ -1,0 +1,85 @@
+{
+  "schema": "REI_CURRENT_DAG_OVERLAY_V1",
+  "fixed_authority": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
+  "nodes": [
+    {
+      "id": "L0",
+      "status": "ADMITTED_SCOPED",
+      "evidence": "ADMISSION.json"
+    },
+    {
+      "id": "L1_SELECTED_HI",
+      "status": "INTAKE_THEORY_STATIC_PREPARATION",
+      "parent": "L1",
+      "numeric_execution": "NOT_AUTHORIZED_BY_SRC01_BUDGET",
+      "provider": "C23B elementalHI z2.479 finite PW19; explicit nonthermal"
+    },
+    {
+      "id": "L1",
+      "status": "NOT_YET_ADMITTED"
+    },
+    {
+      "id": "L2",
+      "status": "PHYSICAL_BETA_INPUT_DEPENDENCY"
+    },
+    {
+      "id": "L3",
+      "status": "CONDITIONAL_HE_TRANSPORT_INPUT_DEPENDENCY"
+    },
+    {
+      "id": "L4_ISOTROPIC_ZERO_NT",
+      "status": "WAIT_L1_GEOMETRY_NUMERICAL_HOOKS_AND_NEW_BUDGET"
+    },
+    {
+      "id": "L4_EXTENDED",
+      "status": "WAIT_SELECTED_L2_L3_AND_OWNER_ADMISSION"
+    },
+    {
+      "id": "L5",
+      "status": "WAIT_SELECTED_L4_OBSERVABLE_DOMAIN"
+    }
+  ],
+  "edges": [
+    [
+      "L0",
+      "L1_SELECTED_HI"
+    ],
+    [
+      "L1_SELECTED_HI",
+      "L1"
+    ],
+    [
+      "L0",
+      "L4_ISOTROPIC_ZERO_NT"
+    ],
+    [
+      "L1",
+      "L4_ISOTROPIC_ZERO_NT"
+    ],
+    [
+      "L2",
+      "L4_EXTENDED"
+    ],
+    [
+      "L3",
+      "L4_EXTENDED"
+    ],
+    [
+      "L4_ISOTROPIC_ZERO_NT",
+      "L5"
+    ],
+    [
+      "L4_EXTENDED",
+      "L5"
+    ]
+  ],
+  "conditional_dependencies": "Provider requirements follow selected channels. No automatic demand for every WU/REC/HE lane. Isotropic pi_b0 and zero-n/T selected variant distinct from extensions.",
+  "preserved": {
+    "ANGTHERM02": "read-only8d10231b…",
+    "C23E": "conditionalD43K",
+    "HE94": "DDCS20 partial window",
+    "PHYS85": "static preparation; reference NOT_VERIFIED",
+    "REI224": "parallel draft observation, not merged"
+  },
+  "whole_model_completion_percent": null
+}

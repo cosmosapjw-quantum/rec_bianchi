@@ -1,0 +1,99 @@
+{
+  "schema": "REI_L1_ROOT_SCOPED_ADMISSION_V1",
+  "decision": "ADMITTED_SCOPED_SUMMARY_CONSUMER",
+  "unit": "REI_L1_SELECTED_ELEMENTAL_HI_PW19_Z2_479",
+  "date_utc": "2026-10-24",
+  "authority": "/root, REI scientific controller after fresh native independent actual-source/raw review",
+  "fixed_authority": {
+    "commit": "0f9d9df825be1dac9ca9bdf73cdc2e8908bcba17",
+    "path": "research/orchestration_longterm_20261023/assembly/HANDOFF_rei_bianchi_KO.md",
+    "unchanged": true
+  },
+  "L0_prerequisite": {
+    "status": "ADMITTED_SCOPED_REUSED",
+    "science_commit": "566f242b843fe4428cedbb8f2ea319ad706ac605",
+    "closeout_commit": "98ca692b200227c51011bfbbe037daaccfc6f3eb"
+  },
+  "model": {
+    "species": "elemental ground-state HI",
+    "redshift": 2.479,
+    "threshold_eV": 13.6,
+    "photon_support_eV": [
+      13.6,
+      50000
+    ],
+    "frame": "bath-frame rest target",
+    "recoil": "zero approximation",
+    "normalization": "per-target proper second to per fixed Href once",
+    "closure": "declared isotropic scalar source",
+    "deposition": "NO_DEPOSITION_SELECTED_MODEL",
+    "physical_secondary_heat": null,
+    "global_error_bound": null
+  },
+  "admitted": [
+    "Faithful consumption of the pinned independently rounded A/B/P/K source summary",
+    "Six energy-owner source m*(0,B,-P,0,0,K) with explicit nonthermal energy",
+    "Matched local particle accounting m*(-A,A,A,0,-A), with separate nonthermal and thermal electron pools",
+    "Fixed-moment analytic polynomial JVP using exact dm=a*dX+X*da before final rounding",
+    "Exact represented r_B/r_E and expected energy sums m*r_E,dm*r_E, separate final-component rounding residuals",
+    "One actual focused finite fixture group, preserving source data/nulls and rejecting unsupported z"
+  ],
+  "source_sha256": "ee5fb4d009945da7d4f3233f5624870095090404d015524c3abe0de3955653f4",
+  "source_card_sha256": "1b4077f58752b2112ebdac1661d19c7942612adcf65fa5e98a41bb9bdb3707dd",
+  "source_measure_status": "INHERITED_C23B_SUMMARY_BINDING_WITH_EXPLICIT_REPRESENTED_DEFECTS",
+  "full_original_L1_physical_validation": "NOT_ESTABLISHED_BY_THIS_LOCAL_UNIT",
+  "raw_atom_payload_qualification": "NOT_RUN",
+  "source_consistency_tolerance": "NOT_EVALUATED_NO_FROZEN_CRITERION",
+  "L4_ready": false,
+  "native_independent_review": {
+    "task": "/root/source_review",
+    "verdict": "PASS_SCOPED",
+    "files": [
+      "review/L1_EXECUTION_REVIEW.md",
+      "review/L1_EXECUTION_REVIEW.json"
+    ],
+    "same_inherited_model_family": true,
+    "cross_family_validation": "NOT_RUN",
+    "reviewer_implemented_candidate": false
+  },
+  "execution": {
+    "children": 1,
+    "fixture_groups": 1,
+    "return_code": 0,
+    "cpu_s": 0.036647,
+    "wall_s": 0.03701553899736609,
+    "automatic_retries": 0,
+    "resource_gate": "PASS_CURRENT_PROSPECTIVE_CHILD_LIMIT",
+    "source_and_fixture_changes": 0
+  },
+  "findings": [],
+  "repair_count": 0,
+  "new_strong_no_go": false,
+  "not_admitted": [
+    "Fresh common-measure/raw-atom source reconstruction or physical global-error qualification",
+    "Physical stopping, deposition or automatic thermalization",
+    "Isotope-specific PI/RR, line/beta/Compton/finite-T/recoil extensions",
+    "Measured anisotropic angular distribution",
+    "Nonthermal state pressure or kinetic closure",
+    "Finite photon-stock depletion/replenishment, radiation transport",
+    "Einstein/cosmological trajectory or observational result"
+  ],
+  "budget_history": "BUDGET_CLOSEOUT.json; old FAIL, UNKNOWN_NOT_ZERO and NOT_FROZEN preserved",
+  "protected_reservation": {
+    "branch": "research/rei-coupled-isotope-contract-20261022",
+    "head": "8d10231b1f0f788164d5eadbe1bcee0b802cceca",
+    "mode": "READ_ONLY",
+    "new_runs_or_mutations": 0
+  },
+  "publication": {
+    "decision": "AUTHORIZE_ADDITIVE_ALLOWED_PATH_PUBLICATION_AFTER_FRESH_HEAD_AGENTS_AND_BACKUP",
+    "paths": [
+      "research/rei_source_pair_binding/hi_primary_20261024/**",
+      "research/rei_source_pair_binding/hi_pressure_next_20261024/**"
+    ],
+    "mode": "expected-SHA, non-force, no new PR, no merge",
+    "pressure_code_label": "STATIC_PREPARATION_ONLY_NO_NUMERICAL_ADMISSION"
+  },
+  "next_action": "Finish independent pressure static review and publish the closed current unit plus unexecuted next-unit preparation; new pressure child requires separately explicit budget approval",
+  "whole_model_completion_percent": null
+}
