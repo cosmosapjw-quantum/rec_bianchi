@@ -146,6 +146,8 @@ HE-X1 및 다른38nodes를 보존하는 REC-LINE02/REC-HISTORY wrapper observati
 준비·독립 검토했다. Whole assembler/renderer 재실행은0이다. 이 전달에는 원자료
 부분 복구 상태도 추가한다. Merge와 activation은 수행하지 않는다.
 
-최종 실제 commit·PR·provider ACK는 `delivery/PUBLICATION_STATE.json` 및
-companion receipt가 기준이다. StageA Dropbox는 실제 성공·whole-byte 복구를
-확인했다. StageA Drive 요청은 응답 없이 중단됐으며 성공으로 표시하지 않는다.
+REC evidence `5f9abb0a7e97ecfb19ad2f5b4a25d5fc3d2da527`는 draft PR131, 중앙 observation `44d0a6d8703f50bf3d7548812a1ab13d9b2c3877`는 draft PR223에 실제 게시됐고 readback을 마쳤다. 중앙은 최신 base `8b6e741ceb305cb0a6fde244ee002eb5926559fe`의 CR-N4·HE-ANG·HE-X1도 그대로 보존한다. 최종 실제 Git/provider 기록은 `delivery/PUBLICATION_STATE.json`과 companion receipt가 기준이다.
+
+최종 ZIP은613,327bytes, SHA256 `199d28152b5e6065bc6c11e685705e4a59e43b5101ed955be6216b5a13b611f4`다. Dropbox `id:BSpOijBcT10AAAAAAD_6xg`에서 completed ACK와 현재 metadata, 단일 GET의 whole-byte·CRC·payload84/84 검증을 마쳤다. 최종 Drive 요청은 응답 전에 중단됐고 ACK/ID를 받지 못했다. 마지막 이름+folder 검색도 비어 있었다. Drive 성공이나 이중 provider 백업 완료로 표시하지 않는다. StageA Drive의 별도 과거 중단 기록도 그대로 남긴다.
+
+이 ZIP은 provider ACK 전 봉인한 불변 묶음이다. 이후의 receipt-only Git commit과 provider IDs는 별도 companion receipt에 추가하며 원 ZIP을 바꾸지 않는다. 상세 원자료 보존 상태는 계속 `PARTIAL_AFTER_WORKSPACE_RESET`이다.

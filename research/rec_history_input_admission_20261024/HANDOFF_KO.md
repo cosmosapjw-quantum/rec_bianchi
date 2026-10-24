@@ -5,6 +5,15 @@
 실제 Git/provider IDs와 현재 전달 상태는 `delivery/PUBLICATION_STATE.json` 및
 최종 companion receipt를 읽는다. Merge·activation은 수행하지 않았다.
 
+## 실제 게시
+
+- REC evidence: `5f9abb0a7e97ecfb19ad2f5b4a25d5fc3d2da527`, [draft PR131](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/131). 72개 blob 및 SUMMARY readback 완료.
+- 중앙 observation: `44d0a6d8703f50bf3d7548812a1ab13d9b2c3877`, [draft PR223](https://github.com/cosmosapjw-quantum/rei_bianchi/pull/223). 실제 최신 base `8b6e741ceb305cb0a6fde244ee002eb5926559fe`의 HE-ANG/CR-N4/HE-X1을 보존했고 두 경로 readback 완료.
+- 두 PR은 draft이며 merge하지 않았다. Primary 상세 파일의 부분 복구 상태는 그대로다.
+- 최종 ZIP은 613,327 bytes, SHA256 `199d28152b5e6065bc6c11e685705e4a59e43b5101ed955be6216b5a13b611f4`다. Dropbox `id:BSpOijBcT10AAAAAAD_6xg`에서 ACK·metadata·whole-byte·CRC·payload84/84 확인을 마쳤다.
+- 최종 Drive 요청은 응답 전에 중단됐고 ACK/ID가 없다. 2026-10-24 01:03:25 UTC의 마지막 이름+folder 검색도 비어 있었다. 성공이나 이중 provider 백업 완료로 기록하지 않는다.
+- 이 ZIP은 게시 시점의 불변 묶음이다. 이후 provider ACK 및 delivery-only Git commit은 별도 companion receipt로 인계한다.
+
 ## 채택할 결과
 
 - HISTORY01은 `93e1bdc8298db9a7c16f77d4bf64985a0c3f25aa`, draft PR130에 게시돼 있다.
