@@ -1,0 +1,31 @@
+{
+  "status": "READY_ENV_REPAIRED",
+  "classification": "ENVIRONMENT_FAILURE_REPAIRED_NO_SCIENCE_CHANGE",
+  "versions": {
+    "interpreter": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy_version": "2.3.5",
+    "numpy_origin": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py",
+    "mpmath_version": "1.3.0",
+    "mpmath_origin": "/workspace/scratch/e3bcbaac138c/rec_next_work/research/rec_history_characteristic_resume_20261024/environment/deps/mpmath/__init__.py"
+  },
+  "target_dependency": "mpmath==1.3.0",
+  "location": "environment/deps",
+  "setup_receipts": [
+    "environment/DISCOVERY.json",
+    "environment/INSTALL_RECEIPT.json",
+    "environment/INSTALL_ESCALATED_RECEIPT.json",
+    "environment/IMPORT_SMOKE_RECEIPT.json"
+  ],
+  "non_scientific_setup_total_wall_seconds": 8.647795848999522,
+  "non_scientific_setup_total_child_cpu_seconds": 1.0159909999999999,
+  "first_failed_primary": "execution/primary001",
+  "primary_spent_cpu_seconds": 0.102801,
+  "primary_spent_wall_seconds": 0.11516009300248697,
+  "primary_remaining_cpu_seconds": 15.897199,
+  "primary_remaining_wall_seconds": 44.88483990699751,
+  "proposed_next_command_NOT_RUN": "PYTHONPATH=/workspace/scratch/e3bcbaac138c/rec_next_work/research/rec_history_characteristic_resume_20261024/environment/deps python code/run_bounded.py --cpu 15 --wall 44.8 primary002 python code/verify_primary.py --output results/primary002",
+  "next_command_requires_root_GO": true,
+  "adapter_reference_CASE_threshold_changes": false,
+  "scientific_cases": 0
+}

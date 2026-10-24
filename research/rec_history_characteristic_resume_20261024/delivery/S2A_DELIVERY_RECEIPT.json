@@ -1,0 +1,100 @@
+{
+  "schema": "REC_HISTORY02R_STAGE_DELIVERY_V1",
+  "stage": "S2A",
+  "immutable_capsule": {
+    "schema": "REC_HISTORY02R_CAPSULE_IDENTITY_V1",
+    "stage": "S2A",
+    "archive": "/workspace/scratch/e3bcbaac138c/rec_next_work/delivery_artifacts/REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+    "name": "REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+    "bytes": 617319,
+    "sha256": "7d63f9ab684e5bf5b82ea23da50f6c295fdda4cb22e3bb7eec2624ca9b5b96cc",
+    "md5": "c5cef5c5f1ddb094bcb2186cb8c34ff2",
+    "payload_count": 81,
+    "zip_members": 82,
+    "local_crc": "PASS",
+    "local_payload_sha_size": "PASS",
+    "snapshot": "/workspace/scratch/e3bcbaac138c/rec_next_work/delivery_artifacts/REC_HISTORY02R_S2A_20261024_snapshot",
+    "dropbox_destination": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+    "drive_parent_folder_id": "1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k",
+    "publication_at_freeze": "PENDING",
+    "packaging_cpu_s": 0.05022367999999999,
+    "packaging_wall_s": 0.05022030300460756,
+    "scientific_execution": 0
+  },
+  "providers": {
+    "Dropbox": {
+      "schema": "REC_HISTORY02R_PROVIDER_ACK_V1",
+      "stage": "S2A",
+      "provider": "Dropbox",
+      "status": "COMPLETED_ACK_AND_CURRENT_METADATA",
+      "upload_attempts": 1,
+      "async_polls": 1,
+      "archive": {
+        "name": "REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+        "bytes": 617319,
+        "sha256": "7d63f9ab684e5bf5b82ea23da50f6c295fdda4cb22e3bb7eec2624ca9b5b96cc"
+      },
+      "completed_ack": {
+        "id": "id:BSpOijBcT10AAAAAAD_8ZQ",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+        "size": 617319,
+        "modified_time": "2026-10-24T03:10:23Z"
+      },
+      "current_metadata": {
+        "id": "id:BSpOijBcT10AAAAAAD_8ZQ",
+        "name": "REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+        "path_display": "/bianchi/rec_bianchi/20261016/REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+        "rev": "65e8d7006855e0af03d47",
+        "size": 617319,
+        "client_modified": "2026-10-24T03:10:22Z",
+        "server_modified": "2026-10-24T03:10:23Z"
+      },
+      "size_match": true,
+      "id_match": true,
+      "remote_whole_byte_sha256": "NOT_RUN_BY_DESIGN",
+      "remote_crc_payload_readback": "NOT_RUN_BY_DESIGN",
+      "local_archive_crc": "PASS",
+      "local_payload_sha256": "PASS_81_OF_81",
+      "scientific_reexecution": 0
+    },
+    "GoogleDrive": {
+      "schema": "REC_HISTORY02R_PROVIDER_STATUS_V1",
+      "stage": "S2A",
+      "provider": "Google Drive",
+      "status": "NOT_ATTEMPTED_PROVIDER_STALLED",
+      "upload_attempts": 0,
+      "archive": {
+        "name": "REC_HISTORY02R_S2A_20261024_7d63f9ab684e.zip",
+        "bytes": 617319,
+        "sha256": "7d63f9ab684e5bf5b82ea23da50f6c295fdda4cb22e3bb7eec2624ca9b5b96cc"
+      },
+      "cause": "S0 upload did not return ACK; nominal45s timeout ineffective; root interrupted and observed platform aborted by user after601.9s. S0 remote existence remains UNKNOWN.",
+      "request_to_retry": false,
+      "next_step": "Wait for explicit provider recovery/latest-checkpoint delivery decision; do not duplicate S0.",
+      "scientific_reexecution": 0
+    }
+  },
+  "Git": {
+    "unit_id": "REC-HISTORY-02R",
+    "checkpoint": "S2A_FAILED_STARTUP",
+    "status": "PUBLISHED_DRAFT_READBACK_CONFIRMED",
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "branch": "research/rec-history-characteristic-resume-20261024",
+    "parent": "49610577fb53940db120fa8b6d8ee4f29198d1a2",
+    "commit": "5864c8ed63e1e248735f51b2987a030d726a5358",
+    "tree": "c90245e983e21b4b819b4fbcf1c4b4637e9faca7",
+    "pr": 132,
+    "branch_readback": "5864c8ed63e1e248735f51b2987a030d726a5358",
+    "expected_blob_readback": {
+      "expected_changed": 25,
+      "observed_changed": 25,
+      "mismatches": []
+    },
+    "execution": "FAILED_IMPORT_BEFORE_CASES",
+    "numerical_cases_started": 0,
+    "classification": "ENVIRONMENT_FAILURE"
+  },
+  "archive_modified_after_freeze": false,
+  "dual_provider_ACK": false,
+  "scientific_execution": 0
+}
