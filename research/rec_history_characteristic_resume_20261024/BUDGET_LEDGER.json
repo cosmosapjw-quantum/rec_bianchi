@@ -23,11 +23,27 @@
       "execution_wall_s": 30
     }
   },
-  "local_executions": [],
+  "local_executions": [
+    {
+      "label": "primary001",
+      "phase": "primary",
+      "status": "FAILED_IMPORT_BEFORE_CASES",
+      "resource_receipt": "execution/primary001/RESOURCE_RECEIPT.json",
+      "stdout": "execution/primary001/stdout.txt",
+      "stderr": "execution/primary001/stderr.txt",
+      "cpu_s": 0.10280099999999999,
+      "execution_wall_s": 0.11516009300248697,
+      "peak_rss_kib": 24644,
+      "returncode": 1,
+      "first_exception": "ModuleNotFoundError: No module named 'mpmath'",
+      "numerical_cases_started": 0,
+      "scientific_summary": "NOT_CREATED_IMPORT_FAILED_BEFORE_MAIN"
+    }
+  ],
   "new_local_spent": {
-    "cpu_s": 0,
-    "execution_wall_s": 0,
-    "peak_rss_kib": null
+    "cpu_s": 0.10280099999999999,
+    "execution_wall_s": 0.11516009300248697,
+    "peak_rss_kib": 24644
   },
   "external_symbolic": {
     "new_calls": 1,
