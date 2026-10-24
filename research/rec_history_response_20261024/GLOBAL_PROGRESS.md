@@ -52,3 +52,5 @@ RESP01 finite progress is 11/20 (55%): static implementation and fresh pre-execu
 Late dependency observation: current central a814dab41a8f3f543dec71cde59f17e0d497fcda replaces the working DAG observation only. All 40 author contracts and 17 edges are unchanged; only HE-ANG observed_completion changed from the immutable S0 survey pin79c042a. Selected pressure final-handoff sources are preserved separately. Other owners are not promoted by RESP01.
 
 S2: root science decision PASS_SCOPED_REPRESENTED_OPERATOR_AFTER_DIAGNOSED_CHECK_REPAIR;finite progress18/20 (90%), R10/C10 final delivery pending. Parent REC-HISTORY remains PARTIAL and H5 remains INPUT_DEPENDENT_UNCALIBRATED. The exact original primary exit2 and repaired diagnostic provenance remain available.
+
+Actual central draftPR226 commit54a65d4d84d3cb7a8dc05a2d69c6910690b30bff adds REC observations only;3/3 exactpaths/blob readback and original40contracts17edges/other38nodes preservationPASS. S3 actual ACK is pending; final20/20 has not yet been claimed.

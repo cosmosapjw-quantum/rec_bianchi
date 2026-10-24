@@ -82,7 +82,7 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R8",
@@ -95,7 +95,7 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R9",
@@ -108,14 +108,18 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "R10",
       "name": "Final research report and delivery",
-      "status": "PENDING_DELIVERY",
+      "status": "READY_AWAITING_S3_ACK",
       "checkpoint": "S3",
-      "evidence": [],
+      "evidence": [
+        "HANDOFF_KO.md",
+        "delivery/FINAL_DELIVERY_REPORT_KO.md",
+        "delivery/CENTRAL_ACTUAL_RECEIPT.json"
+      ],
       "actual_git_backup_status": "PENDING_PROVIDER_ACK"
     },
     {
@@ -185,7 +189,7 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C7",
@@ -198,7 +202,7 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C8",
@@ -211,7 +215,7 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C9",
@@ -224,14 +228,18 @@
         "evidence/independent_review/FINAL_REVIEW.md",
         "evidence/ROOT_VISUAL_REVIEW.json"
       ],
-      "actual_git_backup_status": "PENDING_PROVIDER_ACK"
+      "actual_git_backup_status": "GIT_PUBLISHED_104_OF_104_READBACK_PASS_AND_DROPBOX_COMPLETED_ACK"
     },
     {
       "id": "C10",
       "name": "Final reproducible delivery and handoff",
-      "status": "PENDING_DELIVERY",
+      "status": "READY_AWAITING_S3_ACK",
       "checkpoint": "S3",
-      "evidence": [],
+      "evidence": [
+        "HANDOFF_KO.md",
+        "delivery/FINAL_DELIVERY_REPORT_KO.md",
+        "delivery/CENTRAL_ACTUAL_RECEIPT.json"
+      ],
       "actual_git_backup_status": "PENDING_PROVIDER_ACK"
     }
   ],
@@ -258,17 +266,21 @@
     },
     "S2": {
       "scope": "raw primary, independent review, saved plots and scoped decision",
-      "local_status": "ROOT_SCIENCE_REVIEW_AND_PNG_PASS_READY_TO_FREEZE",
-      "git_status": "PENDING",
-      "backup_status": "PENDING",
-      "actual_receipt": null
+      "local_status": "IMMUTABLE_ARCHIVE_FROZEN_VERIFIED",
+      "git_status": "PUBLISHED_READBACK_104_OF_104_PASS",
+      "backup_status": "DROPBOX_COMPLETED_ACK",
+      "actual_receipt": "delivery/S2_ACTUAL_RECEIPT.json",
+      "git_commit": "277572a17b27c09246dbeaa707a1fa82f89cffcd",
+      "git_tree": "a97131287b60e5b9420b09cc78afe4e5db8eb3a9",
+      "dropbox_id": "id:BSpOijBcT10AAAAAAD_9dg"
     },
     "S3": {
       "scope": "final report, R10/C10 and actual delivery receipts",
-      "local_status": "PENDING",
+      "local_status": "ROOT_READY_R10_C10_AWAITING_ACTUAL_S3_ACK",
       "git_status": "PENDING",
       "backup_status": "PENDING",
       "actual_receipt": null
     }
-  }
+  },
+  "central_actual_receipt": "delivery/CENTRAL_ACTUAL_RECEIPT.json"
 }
