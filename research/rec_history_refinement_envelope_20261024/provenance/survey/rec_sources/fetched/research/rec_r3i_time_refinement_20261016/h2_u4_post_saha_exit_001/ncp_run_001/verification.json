@@ -1,0 +1,171 @@
+{
+  "capsule_source_closure": {
+    "checkpoint_sha256": "70274c9631b33e4ed1c4b8761608cd9ce22f82d96b0afbcb36c0e786e2c04c6d",
+    "files": 96,
+    "manifest_sha256": "837d72a7d1860d406e5f585dd00e33d07a2d6263dbd4c7de65c467b6729e55c0"
+  },
+  "checkpoint_sha256": "70274c9631b33e4ed1c4b8761608cd9ce22f82d96b0afbcb36c0e786e2c04c6d",
+  "claim": "bounded q=0 h/2 U4 post-Saha exit only",
+  "common_binary_sha256": "1c27f3f3befa47c8447108c592a0f3afbad26e050287dc10290ddb455c630ca0",
+  "common_build": {
+    "child_cpu_cap_s": 598,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-shared",
+      "-fPIC",
+      "-DR3I_SHARED",
+      "-I",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/source/scripts/c_harness/original_hyrec_r3i_h2_u4_exit_harness.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/liboriginal_full_source.so"
+    ],
+    "cumulative_cpu_remaining_s": 598.174325,
+    "returncode": 0,
+    "stderr_sha256": "43f5e6febf81257feacb320818f64d45e58de89f062d91a3f6697d109df009be",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 0.7310678949997964
+  },
+  "common_input_sample": {
+    "max_average_tolerance_ratio": 7.76663679687079e-05,
+    "max_lyman_tolerance_ratio": 2.7430557945808757e-06,
+    "max_rhs_scaled": 9.598155603640635e-13,
+    "max_virtual_tolerance_ratio": 9.652919098257528e-06,
+    "sampled_evaluations": 109,
+    "status": "PASS"
+  },
+  "event_neighborhood_sampling": {
+    "candidate_call_window": [
+      38386,
+      38452
+    ],
+    "limit_calls": 64,
+    "new_calls": 64,
+    "online_calls": 0,
+    "status": "PASS",
+    "total_calls": 64
+  },
+  "first_failure": null,
+  "harness_sha256": "3703ff800d30c667073a847b612fe23cd44b043ad8f2d7a2b027d68e7fdfcb7e",
+  "modified_source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "e83d8031975c0a64cdb45a2b8ba03a4a0a75c85fac5cf2437aadc915e25751bf"
+  },
+  "native_binary_sha256": "6f03d8d3374737ad814f534c069d24e534af2e2dc19088bd46997b6a8b9ac41c",
+  "native_build": {
+    "child_cpu_cap_s": 599,
+    "command": [
+      "gcc",
+      "-std=gnu99",
+      "-O2",
+      "-fno-fast-math",
+      "-I",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/source/scripts/c_harness/original_hyrec_r3i_h2_u4_exit_harness.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/history.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/hydrogen.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/helium.c",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/source_extract/HyRec/hyrectools.c",
+      "-lm",
+      "-o",
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/native_u4_exit"
+    ],
+    "cumulative_cpu_remaining_s": 598.856443,
+    "returncode": 0,
+    "stderr_sha256": "9e037653d8f0b9c6dda7e0f4cb54e8f38839895cf69093740a1e142d5d7a310d",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wall_s": 1.0763269729995955
+  },
+  "native_run": {
+    "child_cpu_cap_s": 579,
+    "command": [
+      "/root/REC_R3I_H2_U4_EXIT_20261018_001/run_001/native_u4_exit"
+    ],
+    "cumulative_cpu_remaining_s": 578.364642,
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "9d52f97596ecbcf59cfa952738f12ff6a76b06abfd84878421ffc423c44084d1",
+    "wall_s": 1.4263137689995347
+  },
+  "old_U5_gate": "HOLD",
+  "partial_accepted_sha256": {
+    "python_accepted_partial.jsonl": "4421bdd1f72a401791e4fbb8fbb8432bcc577225b30e9b5a4d43c375d3a4e1a0",
+    "python_partial_average_f64le.bin": "a132ddad8150e847ec667fa9b9cb886375424f386cbf5f56516412195c9d2e0f",
+    "python_partial_lyman_f64le.bin": "b4647e9bb6ecd42652eb7bf4a93b6220f12a61c3f6123625507f5f9f449c582c",
+    "python_partial_virtual_f64le.bin": "10f4a0f5145946c1f9c0a46dc5dab4065c00104c674a6e4944741e9434014bc5"
+  },
+  "producer_sha256": "46bc7d06fd7287f1936a62b09e060955bf4c538c8e0864db9ac410a7c352d616",
+  "python_history_sha256": "7ad1476c78d08218e42ac616dc43d03dd8eb232c44bfb66a8f20a237dcce6943",
+  "python_result": {
+    "event": {
+      "after_steps": 1243,
+      "iz": 38450,
+      "type": "HYDROGEN_POST_SAHA_OFF"
+    },
+    "extra_accepted": 1245,
+    "full_evaluations": 4974,
+    "rt_stop_iz": 58389,
+    "status": "EVENT_PLUS_TWO"
+  },
+  "resources": {
+    "address_limit_bytes": 2147483648,
+    "affinity": [
+      0
+    ],
+    "blas_threads": 1,
+    "children_cpu_s": 3.092908,
+    "children_peak_rss_bytes": 112721920,
+    "cpu_limit_s": 600,
+    "cumulative_process_tree_cpu_s": 24.770156000000004,
+    "parent_cpu_s": 21.677223,
+    "parent_peak_rss_bytes": 131813376,
+    "wall_limit_s": 900,
+    "wall_s": 24.916579430999263
+  },
+  "same_h_parity": {
+    "counts": {
+      "A": 387195,
+      "BASE": 1,
+      "EVENT": 1,
+      "HE": 36447,
+      "L": 3735,
+      "NODE": 1,
+      "PARAM": 1,
+      "STEP": 1245,
+      "V": 387195
+    },
+    "maxima": {
+      "Tm_K": 0.0,
+      "average": 0.010368808386171642,
+      "hydrogen_rhs": 1.4565681993872204e-11,
+      "lyman": 0.00021740012021340943,
+      "virtual": 0.0006471167209890056,
+      "xHII": 2.2437514751170334e-16,
+      "xHeII": 0.0,
+      "xe": 2.2437514751170334e-16
+    },
+    "native_event": {
+      "relative_index": 1243,
+      "steps": 1245,
+      "type": 2
+    },
+    "status": "PASS"
+  },
+  "source_sha256": {
+    "helium.c": "1db7a9845e1f5a3052153bf94c1b98bf908cf16715641cbd14c810e5df6a5ece",
+    "history.c": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+    "hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "hyrec_params.h": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+  },
+  "source_zip_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+  "status": "PASS_PENDING_INDEPENDENT_REVIEW"
+}

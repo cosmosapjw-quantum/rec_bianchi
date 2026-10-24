@@ -1,0 +1,16 @@
+{
+  "source": "ClearAll[c0,c1,f0,fm,f1,u,a,b,c,h,x]; e0=c0-f0; e1=c1-f1; dd=(f0+f1)/2-fm; left=Expand[(1-u)c0+u c1-((1-2u)f0+2u fm)-((1-u)e0+u e1+2u dd)]; right=Expand[(1-u)c0+u c1-((2-2u)fm+(2u-1)f1)-((1-u)e0+u e1+2(1-u)dd)]; p[t_]:=a+b t+c t^2; quadratic=Expand[(p[x]+p[x+h])/2-p[x+h/2]-(2c)h^2/8]; <|\"left_identity_residual\"->left,\"right_identity_residual\"->right,\"quadratic_detail_residual\"->quadratic|>",
+  "requested_time_constraint_seconds": 5,
+  "client_request_wall_seconds": 7.664,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"left_identity_residual\" -> 0, \"right_identity_residual\" -> 0, \"quadratic_detail_residual\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "local_cpu_measurement": null
+}
