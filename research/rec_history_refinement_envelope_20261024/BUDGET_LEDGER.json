@@ -21,14 +21,33 @@
       }
     }
   },
-  "local_executions": [],
+  "local_executions": [
+    {
+      "label": "primary001",
+      "phase": "primary",
+      "resource_receipt": "execution/primary001/RESOURCE_RECEIPT.json",
+      "cpu_seconds": 2.242494,
+      "execution_wall_seconds": 2.271521004004171,
+      "returncode": 0,
+      "status": "CHILD_EXIT_ZERO"
+    },
+    {
+      "label": "figures001",
+      "phase": "figures",
+      "resource_receipt": "execution/figures001/RESOURCE_RECEIPT.json",
+      "cpu_seconds": 2.589971,
+      "execution_wall_seconds": 2.6235228270088555,
+      "returncode": 0,
+      "status": "CHILD_EXIT_ZERO"
+    }
+  ],
   "spent": {
-    "cpu_seconds": 0.0,
-    "execution_wall_seconds": 0.0
+    "cpu_seconds": 4.832465,
+    "execution_wall_seconds": 4.895043831013027
   },
   "remaining": {
-    "cpu_seconds": 30.0,
-    "execution_wall_seconds": 90.0
+    "cpu_seconds": 25.167535,
+    "execution_wall_seconds": 85.10495616898697
   },
   "forbidden_execution_counts": {
     "new_IVP": 0,
@@ -43,5 +62,19 @@
     "local_cpu_seconds": null,
     "local_wall_seconds": null,
     "result": "ROOT_OWNED_SEPARATE"
+  },
+  "allocation_remaining": {
+    "primary": {
+      "cpu_seconds": 13.757506,
+      "wall_seconds": 42.72847899599583
+    },
+    "review": {
+      "cpu_seconds": 6.0,
+      "wall_seconds": 15.0
+    },
+    "figures": {
+      "cpu_seconds": 5.410029,
+      "wall_seconds": 27.376477172991144
+    }
   }
 }

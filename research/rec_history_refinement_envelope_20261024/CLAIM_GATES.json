@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-HISTORY-REFINE01",
+  "controller_role": "Astra scientific authority",
+  "decision": "PASS_SCOPED_STORED_HISTORY_ENVELOPE",
+  "child_status": "COMPLETE_SCOPED_STORED_HISTORY_ENVELOPE",
+  "scope": "Actual retained outgoing314-channel h2/h4 histories on 759 complete common early-time coarse cells, with exact represented-function decomposition and outward binary64 supremum enclosure under the stated arithmetic model.",
+  "claims": [
+    {
+      "id": "DECOMPOSITION",
+      "statement": "D=(1-u)E0+uE1+2min(u,1-u)delta on each nested2:1 coarse cell.",
+      "basis": ["derived", "implementation-verified", "numerically checked"],
+      "evidence": ["THEORY.md", "provenance/WOLFRAM_SYMBOLIC_CHECK.json", "results/primary001/FRACTION_ORACLE.json"],
+      "obligations": []
+    },
+    {
+      "id": "STORED_SUPREMUM",
+      "statement": "The exact real supremum of the stored piecewise-affine difference is the maximum magnitude at its three fine knots; outward arithmetic encloses this quantity in B_lower,B_upper.",
+      "basis": ["derived", "implementation-verified", "numerically checked"],
+      "evidence": ["THEORY.md", "code/envelope.py", "results/primary001/RAW_COMPARISON.npz", "results/primary001/FRACTION_ORACLE.json", "evidence/independent_review/FINAL_REVIEW.md"],
+      "obligations": ["IEEE binary64 round-to-nearest and gradual underflow, with nonfinite/overflow rejection, are the stated arithmetic assumptions."]
+    },
+    {
+      "id": "ACTUAL_CANDIDATE_MEASUREMENT",
+      "statement": "A single primary processed238326channel-cells. The largest stored discrepancy occurs in event-straddling cell758, lyman_out[0], at the closure endpoint u=1.",
+      "basis": ["numerically checked", "implementation-verified"],
+      "evidence": ["results/primary001/SUMMARY.json", "results/primary001/PER_CHANNEL.csv", "evidence/report_facts.json", "execution/primary001/RESOURCE_RECEIPT.json"],
+      "obligations": ["The endpoint is excluded from operational queries and is used as a one-sided supremum witness."]
+    },
+    {
+      "id": "CONDITIONAL_PHYSICAL_TRANSFER",
+      "statement": "If a same-domain fine-reference error is independently bounded by eps_ref_cell, the coarse physical error is at most B_upper+eps_ref_cell with outward addition.",
+      "basis": ["derived", "implementation-verified"],
+      "evidence": ["THEORY.md", "code/envelope.py", "results/primary001/SYNTHETIC_CONTROLS.json"],
+      "obligations": ["An actual same-source/frame/domain independent uncertainty provider is required before applying this conditional result to physical history admission."]
+    }
+  ],
+  "numerical_evidence": {
+    "primary_invocations": 1,
+    "channel_cells": 238326,
+    "witnesses": 714978,
+    "synthetic_controls_passed": 26,
+    "fraction_points_passed": 350,
+    "fraction_cell_enclosures_passed": 70,
+    "worst_midpoint_residual_over_tolerance": 0.015607467292599894,
+    "worst_oracle_residual_over_tolerance": 0.017121122007845685,
+    "largest_B": 1.6498272419025407e-15,
+    "largest_B_enclosure": [1.6498272419025405e-15, 1.649827241902541e-15],
+    "largest_B_channel": 311,
+    "largest_B_field": "lyman_out[0]",
+    "largest_B_cell": 758,
+    "largest_B_u": 1,
+    "largest_B_normalized_descriptive": 0.2919868991524095,
+    "normalization_meaning": "B divided by the maximum absolute stored history value of the same channel over the admitted representation; not a physical relative-error certificate."
+  },
+  "review": {
+    "status": "PASS_SCOPED_STORED_HISTORY_ENVELOPE",
+    "sessions": 1,
+    "material_open_findings": 0,
+    "pre_primary_narrow_repair": "Conditional scalar bounds were outward-rounded; two underflow controls were made explicit. Original code retained; primary reruns0.",
+    "additional_review_numerical_probes": 0,
+    "path": "evidence/independent_review/FINAL_REVIEW.md"
+  },
+  "visual_inspection": {
+    "controller_viewed_original_pngs": ["results/figures/channel_envelopes.png", "results/figures/time_event_envelopes.png"],
+    "result": "PASS_SCOPED_LEGIBLE_NO_MATERIAL_CLIPPING",
+    "presentation_repairs": 0
+  },
+  "actual_physical_admission": {
+    "fine_reference_uncertainty": null,
+    "endpoint_uncertainty": null,
+    "physical_curvature_M2": null,
+    "absolute_physical_bound": null,
+    "convergence_order": null,
+    "original_target_coverage": "0/313",
+    "original_target_parameter_match": false,
+    "source_pair_internal_parameter_match": true,
+    "H5": "INPUT_DEPENDENT_UNCALIBRATED",
+    "REC_HISTORY_parent": "PARTIAL",
+    "physical_goal_completion_percent": null
+  },
+  "retained_state": {
+    "physical": "HOLD",
+    "REC_U5": ["HOLD_9_FAIL", "HOLD_8_FAIL"],
+    "campaign": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY",
+    "new_IVP": 0,
+    "native_runtime": 0,
+    "dense_RHS": 0,
+    "old_campaign_replay": 0
+  },
+  "strong_no_go": "NOT_CLAIMED",
+  "publication_and_backup": "Tracked separately in delivery/PUBLICATION_STATE.json and the final companion receipt; scientific PASS does not imply provider acknowledgement."
+}

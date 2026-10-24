@@ -1,0 +1,50 @@
+{
+  "schema": "CR_N5_CE_CLAIM_GATE_V1",
+  "unit": "CR_N5_PROVIDER_RATE_SEMANTICS_AND_CE_ENVELOPE",
+  "consumer": "N5_C23D_HI_CE_FIRST_EVENT_FINITE_BAND_V1",
+  "status": "COMPLETE_SCOPED",
+  "gate": "NUMERICALLY_CHECKED_SCOPED_CONDITIONAL_DIAGNOSTIC",
+  "independent_C9": {
+    "verdict": "PASS_WITH_NONBLOCKING_FINDINGS",
+    "scoped_gate": "PASS",
+    "blocking_open": 0,
+    "resolved": 3,
+    "nonblocking_document_items": 2,
+    "clarifications": "POST_REVIEW_CLARIFICATIONS.md",
+    "review_sha256": "7d64da311782cd669f08addd599a7f142ac22e16e533f2a282893115d1c3a0e9"
+  },
+  "primary_run_id": "n5_ce_envelope_primary_20261024t031906828z_v1",
+  "rows": {
+    "hcrit": 18,
+    "thermal_target": 24,
+    "conditional_ce_first_event": 18,
+    "distinct_ce_envelopes": 6
+  },
+  "input_manifest_sha256": "37f8c70705e128368c36247379858a8f245bcb6819aab3d977a2c6b0c7dc3016",
+  "accepted": [
+    "thermal/tagged rate semantics and provider admission guards",
+    "finite W-PL H1 ground CE uniform path envelope",
+    "conditional CE first-event upper estimates using saved R80 MFPT means",
+    "selected provider21population8process coverage metadata"
+  ],
+  "actual_total_non_EE_probability": null,
+  "physical_error_certificate": null,
+  "global_error_bound": null,
+  "global_completion_percent": null,
+  "parents": {
+    "CR_N4_STOPPING_KERNEL": "PARTIAL_OPEN",
+    "CR_N5_ATOMIC_ISOTOPE_COVERAGE": "PARTIAL_OPEN"
+  },
+  "next_gates": {
+    "CR_N6_CONSERVATIVE_COUPLING": "OPEN_PREDECESSOR_GATED",
+    "CR_N7_NEW_PARCEL": "OPEN_PREDECESSOR_GATED"
+  },
+  "provider_gates": {
+    "PHYS84": "NUMERICAL_ADMISSION_WAIT",
+    "HE_ANG_FULL": "SOURCE_INPUT_PENDING"
+  },
+  "EXECUTION": "COMPLETE_SCOPED",
+  "PUBLICATION": "SCIENCE_R1_PASS;CENTRAL_M1_R1_PASS; final document receipt in terminal authority",
+  "BACKUP": "Library_R3_PASS;Dropbox_R3_PASS;Drive_UNKNOWN_NO_ACK_R3_NOT_RUN",
+  "DAG": "CHILD_COMPLETE_SCOPED;PARENT_PARTIAL"
+}

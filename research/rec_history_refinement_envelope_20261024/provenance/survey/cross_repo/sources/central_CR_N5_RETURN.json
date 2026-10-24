@@ -1,0 +1,231 @@
+{
+  "schema": "CR_N5_PROVIDER_RATE_SEMANTICS_AND_CE_ENVELOPE_RETURN_V1",
+  "draft": false,
+  "publishable": true,
+  "central_base": "5182d82c45454a4e8f19f2e5384a04a4ae35ed09",
+  "node": "CR_N5_ATOMIC_ISOTOPE_COVERAGE",
+  "child": "CR_N5_PROVIDER_RATE_SEMANTICS_AND_CE_ENVELOPE",
+  "status": "COMPLETE_SCOPED",
+  "admission": "NUMERICALLY_CHECKED_SCOPED_CONDITIONAL_DIAGNOSTIC",
+  "science_commit": "b8882d026887f375acf90768d4e3740eb03da226",
+  "science_tree": "ed234a26bb48c16d072c572e13298bd370f62a05",
+  "documents_commit": "b65befa5187d3e1e11574a98dcadd2032831de72",
+  "PR": "https://github.com/cosmosapjw-quantum/bass_cr/pull/101",
+  "run_id": "n5_ce_envelope_primary_20261024t031906828z_v1",
+  "results_path": "research/cr_n5_rate_semantics_20261024/REPORT_KO.md",
+  "raw_path": "research/cr_n5_rate_semantics_20261024/implementation/runs/n5_ce_envelope_primary_20261024t031906828z_v1",
+  "scope": "Provider rate semantics and PHYS83 ground-H CE first-event envelope along the reused C23D finite-band frozen-Maxwell EE path; no full N5 rate coverage or coupled stopping admission.",
+  "fixed_inputs": {
+    "T_K": 10000,
+    "thermal_ne_cm3": 0.14,
+    "prescribed_lnLambda": 20,
+    "clock": "proper seconds",
+    "box": "closed; no escape",
+    "initial_source_support_eV": {
+      "lower": 0,
+      "upper": 10,
+      "endpoints": "open; initial selection only"
+    },
+    "pulse_exposure_proper_s": 10000,
+    "exposure_meaning": "impulsive source population, not continuous photoionization chemistry integration",
+    "n_H_1s_cm3": 0.9,
+    "ground_state_assignment": "Additional explicitly declared closure assigning the C23D total neutral-H density to 1s.",
+    "n_H_2s_cm3": null,
+    "n_H_2p_cm3": null,
+    "mfpt_domain": "For each reused active mean, its q=chi*kBT to reflecting U=80*kBT domain; initial source upper limit is not a trajectory ceiling.",
+    "stationary_target": true,
+    "target_motion": "not admitted in this child"
+  },
+  "reuse": {
+    "C23D": {
+      "science_commit": "d04b2a56adb4a5d55b901420aa544332b41f6dbb",
+      "documents_commit": "4a0bbc0ed618ab6eae1b7b2714e366d803186b86",
+      "run_id": "c23d_source_ee_20261023T220714Z_v1",
+      "reused": "Stored source and finite-band EE MFPT means; no old science replay."
+    },
+    "C23E": {
+      "science_commit": "8e4e06361d714939513a11f64a27f02822bde2fa",
+      "PR": "https://github.com/cosmosapjw-quantum/bass_cr/pull/100",
+      "central_return": "research/orchestration_longterm_20261023/assembly/returns/CR_N5_C23E_D43_SOURCE_BINDING_20261024.json",
+      "reused": "Completed conditional D43K PI/RR/CX source-binding result; no repeated calculations."
+    },
+    "PHYS83": {
+      "science_commit": "6a2fc5aacb6182a916b9434c316e99e750e8273c",
+      "PR": "https://github.com/cosmosapjw-quantum/WU088_HH/pull/140",
+      "source_delta_eV": 10.20435,
+      "reused": "Source-native finite W-PL matched H I excitation model and saved thermal rates; no provider rate quadrature or moments rerun."
+    }
+  },
+  "provider_gates": {
+    "PHYS84": "NUMERICAL_ADMISSION_WAIT",
+    "HE_ANG_full_law": "SOURCE_INPUT_PENDING",
+    "HE_PR94_window": "Measured conditional DDCS window only; does not supply the full tagged law or admitted recoil."
+  },
+  "semantics": {
+    "thermal_rate_coefficient": "k(T)=<sigma*v> for the declared Maxwellian distribution; thermal target event hazard is n_e*k(T).",
+    "tagged_hazard": "h_CE(E)=n_H(1s)*sigma_CE(E)*v(E); different density owner and energy law from the thermal target hazard.",
+    "hazard_model": "n1s * 100 * sqrt(2*eV_J/m_e_kg) * [W_2s(E)+W_2p(E)] / sqrt(E), where W=E*sigma has units eV*cm^2.",
+    "maximization": "Positive W-PL union knots and clipped domain endpoints; any admissible positive interior stationary point is a minimum.",
+    "first_event_bound": "P_active <= 1-exp(-h_max*mean_tau_active); selected-population bound includes the active fraction.",
+    "missing_rates": "null, never replaced by zero",
+    "total_non_EE_event_bound": null,
+    "interpretation": "Conditional finite-band numerical first-CE-event diagnostic; not energy deposition, irreversible assimilation or a certified global stopping probability."
+  },
+  "measured_results": {
+    "h_CE_max_s_inv": 2.9189745001395196e-08,
+    "argmax_eV": 68.93866609716143,
+    "domain_eV": [
+      [
+        1.2925999893217768,
+        68.93866609716143
+      ],
+      [
+        2.5851999786435536,
+        68.93866609716143
+      ]
+    ],
+    "evaluation_allowance_s_inv": null,
+    "active_probability_bounds": [
+      0.007843769384825278,
+      0.008199218228681918
+    ],
+    "selected_probability_bounds": [
+      0.0033045492575117796,
+      0.005255800408144478
+    ],
+    "source_physical_error_bound": null,
+    "interpretation": "Conditional numerical upper estimates using saved means; no directed-rounding/physical certificate."
+  },
+  "checks": {
+    "independent_C9": "PASS_SCOPED",
+    "open_blocking_findings": 0,
+    "resolved_findings": 3,
+    "nonblocking_document_items": 2,
+    "unique_test_methods_evidence": 27,
+    "initial_test_result": "24PASS/1FAIL_RETAINED; changed dependency passed",
+    "input_manifest_files": 30,
+    "input_manifest_sha256": "37f8c70705e128368c36247379858a8f245bcb6819aab3d977a2c6b0c7dc3016",
+    "rows": {
+      "hcrit": 18,
+      "thermal_target": 24,
+      "conditional_ce_first_event": 18,
+      "distinct_ce_envelopes": 6
+    },
+    "independent_binary64_max_relative_error": 1.85266860375458e-16,
+    "tolerance": 5e-14,
+    "science_reexecution_after_C9_repairs": 0
+  },
+  "independent_Astra_review": "PASS_SCOPED; blocking0; 3 resolved findings; 2 nonblocking documentation clarifications preserved",
+  "budget": {
+    "new_child_cpu_s": 3.7160349999999998,
+    "new_child_wall_s": 3.908313898020424,
+    "new_coordinator_cpu_s": 0.02351698399999999,
+    "primary_science_worker_cpu_s": 0.323328,
+    "known_tracked_lineage_cpu_s": 19.209296114,
+    "separate_mechanical_packaging_check_cpu_s": 0.245824,
+    "total_project_spend": null,
+    "monetary_spend": null,
+    "remaining": null,
+    "scope": "Known bounded worker lineage only, inherited15.493261114 plus actual new tests/science/plots/review; no double counting nested process timers. Sum wall times is not overall wall-clock latency."
+  },
+  "actual_operation_counts": {
+    "new_algebraic_primary": 1,
+    "ODE": 0,
+    "source_quadratures": 0,
+    "provider_quadratures": 0,
+    "provider_rate_evaluations": 0,
+    "PHYS84_source_execution": 0,
+    "completed_science_reruns": 0,
+    "NCP": 0
+  },
+  "backup": {
+    "Library": {
+      "status": "R3_PASS",
+      "library_file_id": "libfile_75f896aca68081919bd4d3c425266373"
+    },
+    "Dropbox": {
+      "status": "R3_PASS",
+      "file_id": "id:BSpOijBcT10AAAAAAD_9Ig",
+      "path_display": "/BASS_DERIVATION_DOSSIERS_20260912/bass_cr/BASS_CR_N5_CE_DELIVERY_20261024T125315KST.zip"
+    },
+    "Drive": {
+      "attempts": 1,
+      "started_utc": "2026-10-24T03:55:36.238Z",
+      "elapsed_ms_without_ack": 168772,
+      "status": "UNKNOWN_NO_ACK",
+      "remote_file_id": null,
+      "acknowledgement": false,
+      "readback": "NOT_RUN",
+      "folder": "1V4ZQza59dWVC7apeRz9P1TL66eaVYyJy",
+      "name": "BASS_CR_N5_CE_DELIVERY_20261024T125315KST.zip",
+      "exact_name_folder_reconcile_count": 1,
+      "exact_query_result_count": 0,
+      "exact_query_receipt": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "results": []
+        },
+        "isError": false
+      },
+      "not_retransmitted": true,
+      "absence_proven": false
+    },
+    "canonical_zip": {
+      "name": "BASS_CR_N5_CE_DELIVERY_20261024T125315KST.zip",
+      "bytes": 1011118,
+      "sha256": "de3785957ff1ce063dce37efb0621b1789337d8fa21a894fb2cdd734f65740fa",
+      "manifest_payload_count": 168,
+      "zip_member_count": 169,
+      "manifest_sha256": "cff8336599f7f3e3781d18330ad9d4537a1a58dfdd6f330839d506240a7d901c",
+      "science_commit": "b8882d026887f375acf90768d4e3740eb03da226",
+      "central_M1": "5182d82c45454a4e8f19f2e5384a04a4ae35ed09"
+    },
+    "historical_unknowns": "Preserve prior C23D/N4/C23C Drive UNKNOWN_NO_ACK and the prior terminal JSON Drive NOT_ATTEMPTED.",
+    "three_provider_backup_complete": false
+  },
+  "parent_claim": "PARTIAL/OPEN: full CR_N5_ATOMIC_ISOTOPE_COVERAGE remains incomplete; N6/N7 predecessor gates remain unsatisfied.",
+  "open": [
+    "CI/RR/DR/CX species/charge/temperature/energy coverage",
+    "neutral elastic/inelastic beyond admitted ground-H CE",
+    "electron-ion competition and energy exchange",
+    "excited neutral target populations and superelastic channels",
+    "finite-mass target motion and isotope transfer validity",
+    "full HE-ANG event law and recoil",
+    "full conservative thermochemical and cosmological coupling"
+  ],
+  "global_error_bound": null,
+  "global_completion_fraction": null,
+  "global_completion_percent": null,
+  "axes": {
+    "EXECUTION": "COMPLETE_SCOPED; independent C9 PASS; primary1; ODE/quadrature/old-replay0",
+    "PUBLICATION": "Science b8882d026887f375acf90768d4e3740eb03da226 and Documents b65befa5187d3e1e11574a98dcadd2032831de72 R1 PASS; central receipt update in this commit",
+    "BACKUP": "Library R3 PASS; Dropbox R3 PASS; Drive UNKNOWN_NO_ACK/R3 NOT_RUN after one upload and one exact reconciliation; no retransmit; three-provider backup incomplete",
+    "DAG": "N5 scoped child complete; parent N5 PARTIAL/OPEN; full N4 stopping PARTIAL/OPEN; N6/N7 predecessor-gated"
+  },
+  "publication": {
+    "science": "R1_PASS",
+    "parent": "8e4e06361d714939513a11f64a27f02822bde2fa",
+    "branch": "research/cr-n5-rate-semantics-20261024",
+    "draft": true,
+    "expected_sha": "8e4e06361d714939513a11f64a27f02822bde2fa",
+    "force": false,
+    "documents": "R1_PASS",
+    "documents_commit": "b65befa5187d3e1e11574a98dcadd2032831de72",
+    "documents_tree": "1ca7914dacc7cc0a65eac67e4f6562f6985b9d2a",
+    "documents_expected_sha": "b8882d026887f375acf90768d4e3740eb03da226"
+  },
+  "delivery_receipts": {
+    "handoff_url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/b65befa5187d3e1e11574a98dcadd2032831de72/research/cr_n5_rate_semantics_20261024/delivery/HANDOFF_FINAL_KO.md",
+    "backup_receipt_url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/b65befa5187d3e1e11574a98dcadd2032831de72/research/cr_n5_rate_semantics_20261024/delivery/BACKUP_RECEIPTS.json",
+    "owner_freshness_url": "https://github.com/cosmosapjw-quantum/bass_cr/blob/b65befa5187d3e1e11574a98dcadd2032831de72/research/cr_n5_rate_semantics_20261024/delivery/OWNER_FRESHNESS_FINAL.json",
+    "owner_freshness_utc": "2026-10-24T04:00:22Z",
+    "WU_PR142_latest_delivery": "696eca5cf9f1fcbf722370833535f4144af0a54a",
+    "freshness_gate_effect": "PHYS84 remains WAIT; HE-ANG remains pending; PHYS85 reference unverified; newly admitted numerical provider0",
+    "science_and_backup_canonical_unchanged": true
+  }
+}

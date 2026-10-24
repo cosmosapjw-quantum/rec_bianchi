@@ -1,0 +1,215 @@
+{
+  "schema": "REC_HISTORY_REFINE01_CASE_PLAN_V1",
+  "unit_id": "REC-HISTORY-REFINE01",
+  "state": "FROZEN_BEFORE_NUMERICAL_ARRAY_READ",
+  "parent_commit": "ae189694c15e09c6f96c44ef6b74b48afc2632ac",
+  "parent_tree": "a783a3269d263f24bfac7f0ed3a9db63f7ff5b4d",
+  "inputs": {
+    "coarse": {
+      "path": "inputs/h2_continuation_python_continuation.npz",
+      "bytes": 3710522,
+      "sha256": "70274c9631b33e4ed1c4b8761608cd9ce22f82d96b0afbcb36c0e786e2c04c6d",
+      "git_blob": "be6e267cbe9bcfa309eec9b2dd458b0ceecbed44",
+      "original_path": "research/rec_r3i_time_refinement_20261016/h2_continuation_001/ncp_run_001/python_continuation.npz"
+    },
+    "fine": {
+      "path": "inputs/h4_event_python_continuation.npz",
+      "bytes": 7390437,
+      "sha256": "7d58202ba6a2141acfc172f85b211e476078d8b273bc2c0d22aaddda5887cda9",
+      "git_blob": "d91967045a484c5d164edf6c051e01dab57f7dbc",
+      "original_path": "research/rec_r3q_h4_continuation_20261020/ncp_event_001/python_continuation.npz"
+    }
+  },
+  "channels": {
+    "count": 314,
+    "fields": [
+      {
+        "name": "virtual_out",
+        "indices": [
+          0,
+          310
+        ],
+        "count": 311
+      },
+      {
+        "name": "lyman_out",
+        "indices": [
+          0,
+          2
+        ],
+        "count": 3
+      }
+    ],
+    "order": "virtual_out then lyman_out",
+    "excluded": [
+      "average_virtual"
+    ],
+    "dtype": "finite binary64",
+    "signed": true,
+    "units": "dimensionless occupation departure from same source Wien reference"
+  },
+  "grid": {
+    "coarse_step": 4.245e-05,
+    "fine_step": 2.1225e-05,
+    "ratio": 3,
+    "eta_origin_expression": "-log(8001)+36446*H",
+    "coarse_origin_index": 36446,
+    "fine_origin_index": 72892,
+    "cells": 759,
+    "cell_indices": [
+      0,
+      758
+    ],
+    "coarse_columns": [
+      0,
+      759
+    ],
+    "fine_columns": [
+      0,
+      1518
+    ],
+    "preserved_unused_coarse_columns": [
+      760
+    ],
+    "closure_x": [
+      0,
+      759
+    ],
+    "operational_x": "0<=x<759",
+    "alignment_owner": "integer nested coordinates",
+    "column_state_ownership": "g0+j input state"
+  },
+  "masks": {
+    "startup_origin": [
+      0,
+      7
+    ],
+    "post_startup": [
+      8,
+      758
+    ],
+    "continuation_before_event": [
+      8,
+      757
+    ],
+    "event_straddling": [
+      758,
+      758
+    ]
+  },
+  "source_binding": {
+    "T0_K": 2.7255,
+    "nH0_m3": 0.18971712352134673,
+    "original_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "frame": "scalar FLRW",
+    "producer_identity": "provenance/survey/rec_sources/PRODUCER_IDENTITY_BINDING.json",
+    "candidate_manifest": "provenance/survey/rec_sources/CANDIDATE_SOURCE_MANIFEST.json",
+    "input_physical_admission": "NOT_GRANTED"
+  },
+  "oracle": {
+    "channels": [
+      0,
+      1,
+      154,
+      310,
+      311,
+      312,
+      313
+    ],
+    "cells": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      8,
+      379,
+      756,
+      757,
+      758
+    ],
+    "u_rational": [
+      "0",
+      "1/4",
+      "1/2",
+      "3/4",
+      "1"
+    ],
+    "point_count": 350,
+    "cell_count": 70,
+    "implementation": "Fraction.from_float direct independent interpolation"
+  },
+  "acceptance": {
+    "channel_cells": 238326,
+    "witnesses_per_cell": 3,
+    "point_and_midpoint_tolerance": "64*eps64*max(abs(C0),abs(C1),abs(F0),abs(Fmid),abs(F1))+8*smallest_subnormal",
+    "normalization_scale_floor": null,
+    "finite_inputs_required": true,
+    "intervals": "nextafter outward after each add/subtract and multiply by0.5; reject overflow",
+    "oracle_point_agreement": true,
+    "oracle_exact_cell_bound_enclosed": true,
+    "all_midpoint_residuals_within_tolerance": true,
+    "measured_discrepancy_smallness_threshold": null
+  },
+  "synthetic_controls": [
+    "constant exact agreement",
+    "affine exact agreement",
+    "quadratic detail=fsecond*H^2/8",
+    "nonzero nodal with zero detail",
+    "midpoint cancellation",
+    "sign-changing difference",
+    "zero-scale normalization",
+    "interval and subnormal coverage",
+    "reject nonfinite",
+    "reject mismatched metadata",
+    "reject incomplete domain/prefix",
+    "reject operational x759"
+  ],
+  "outputs": [
+    "per-channel CSV by four masks",
+    "compressed raw NPZ E0,E1,delta,Dmid,decomposition_residual,B,B_lower,B_upper,mapping,masks",
+    "summary JSON with unavailable physical bounds",
+    "two PNG/PDF saved-data figures and figure script"
+  ],
+  "physical_fields": {
+    "eps_ref": null,
+    "endpoint_uncertainty": null,
+    "physical_M2": null,
+    "absolute_physical_bounds": null,
+    "convergence_order": null,
+    "original_target_coverage": "0/313",
+    "physical_goal_completion_percent": null
+  },
+  "limits": {
+    "cpu_seconds": 30,
+    "execution_wall_seconds": 90,
+    "threads": 1,
+    "address_space_bytes": 1073741824,
+    "allocations": {
+      "primary": {
+        "cpu_seconds": 16,
+        "wall_seconds": 45
+      },
+      "independent_review": {
+        "cpu_seconds": 6,
+        "wall_seconds": 15
+      },
+      "figures_and_one_diagnosed_repair": {
+        "cpu_seconds": 8,
+        "wall_seconds": 30
+      }
+    }
+  },
+  "execution_state": "NOT_RUN_AWAIT_S1_ROOT_CHECKPOINT",
+  "forbidden": [
+    "new IVP",
+    "native recombination runtime",
+    "dense RHS",
+    "old campaign replay",
+    "history regeneration"
+  ],
+  "proposed_commands_pending_S1": [
+    "python code/run_bounded.py --cpu 16 --wall 45 primary001 python code/analyze_pair.py --contract inputs/CASE_PLAN.json --out results/primary001",
+    "python code/run_bounded.py --cpu 8 --wall 30 figures001 python code/render_results.py --results results/primary001 --out results/figures"
+  ]
+}
