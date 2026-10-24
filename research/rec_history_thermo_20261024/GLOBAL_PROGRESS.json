@@ -1,9 +1,9 @@
 {
   "schema": "REC_HISTORY_THERMO_GLOBAL_PROGRESS_V1",
   "unit": "REC-HISTORY-THERMO01",
-  "as_of_utc": "2026-10-24T18:36:55.524286+00:00",
+  "as_of_utc": "2026-10-24T18:56:21.378028+00:00",
   "finite_unit_stages": {
-    "completed": 11,
+    "completed": 18,
     "total": 20,
     "source": "STAGE_PROGRESS.json"
   },
@@ -15,10 +15,11 @@
     "other_owner_observations": "PRESERVED; see SURVEY_SYNTHESIS_KO.md and cross-repository intake"
   },
   "REC_H7": {
-    "current_unit": "LOCAL_SIX_PRIMITIVE_JACOBIAN_IMPLEMENTATION_PREPARED",
-    "status": "IN_PROGRESS",
-    "scientific_decision": "ROOT_PENDING",
-    "full_coupled_system_jacobian": "OPEN"
+    "current_unit": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
+    "status": "COMPLETE_LOCAL_BLOCK",
+    "scientific_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
+    "full_coupled_system_jacobian": "OPEN",
+    "same_operator_Js_Ks_binding": "OPEN"
   },
   "REC_H5": {
     "status": "INPUT_DEPENDENT_UNCALIBRATED",
@@ -41,17 +42,32 @@
     "REI_activation": false,
     "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
   },
-  "publication": "S0_PUBLISHED; S1_NOT_YET",
-  "backup": "S0_RECOVERED_ACKNOWLEDGED; S1_NOT_YET",
-  "next_action": "Root publishes and backs up S1, then explicitly issues RUN_READY for the frozen primary.",
-  "root_decision": "PREEXEC_THEORY_AND_STATIC_CODE_ACCEPTED_SCIENCE_NOT_RUN",
+  "publication": "S2_AND_CENTRAL_NOT_YET",
+  "backup": "S2_NOT_YET; S1_REMOTE_WHOLE_BYTE_AND_ALL_PAYLOADS_PASS",
+  "next_action": "Root backs up S2 first, publishes and reads back its Git projection, then adds central observation while preserving existing contracts and edges.",
+  "root_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
   "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
-  "scientific_execution": "NOT_RUN",
+  "scientific_execution": "ORIGINAL_FAILURE_PLUS_ONE_CONTINUATION_AND_TWO_SAVED_DATA_FIGURE_PROCESSES",
   "workspace_recovery": {
     "exact_source_snapshot_files": 23,
     "canonical_sha256": "adddf7381edfb7d670025c651cf813594107a260acce308702f33b1d415fad54",
     "baseline_exact_source_payloads": 56,
     "original_full_S0_archive": "LOST_BEFORE_UPLOAD",
     "receipt": "evidence/execution/WORKSPACE_RECOVERY.json"
+  },
+  "scientific_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
+  "REC_H6": {
+    "status": "B3C_FIXED_BACKGROUND_SOURCE_DESIGN_REUSED_WITHIN_SCOPE; ACTUAL_INCIDENT_TRACE_OPEN",
+    "evidence": "provenance/LATE_DEPENDENCY_SYNTHESIS.md"
+  },
+  "actual_cost": {
+    "inclusive_CPU_seconds": 8.362847,
+    "execution_wall_seconds": 8.336637455999153,
+    "large_RHS": 25,
+    "small_RHS": 6,
+    "peak_process_RSS_KiB": 142720,
+    "known_lineage_CPU_seconds": 24.120157,
+    "known_lineage_is_global_project_total": false,
+    "further_spending_authorized": false
   }
 }

@@ -1,0 +1,62 @@
+{
+  "unit": "REC-HISTORY-THERMO01",
+  "status": "CONTINUATION_COMPLETE_AWAITING_ASTRA",
+  "original_primary_invocation": "Failed serialization, retained as failed; never rewritten as successful",
+  "criteria": {
+    "A_literal_reconstruction": true,
+    "B_complex": true,
+    "C_backward": true,
+    "D_identities": true,
+    "E_mixedFD": true,
+    "F_controls": true
+  },
+  "A_evidence": "results/primary001/LITERAL_PARITY.json",
+  "B_evidence": "results/primary001/COMPLEX_COMPARISON.json",
+  "primary_raw_hashes_unchanged": true,
+  "original_large_RHS": 13,
+  "continuation_large_RHS": 12,
+  "cumulative_large_RHS": 25,
+  "large_RHS_ceiling": 25,
+  "small_numerical_RHS": 6,
+  "escape_probes": 14,
+  "new_base_tangent_complex_solves": 0,
+  "restricted_seed_source_builds": 1,
+  "native_runtime": 0,
+  "new_IVP": 0,
+  "old_replay": 0,
+  "physical_epsilon": null,
+  "production": "NOT_APPROVED",
+  "requested_model": "gpt-6.1-sol",
+  "observed_model": null,
+  "diagnostic_counts_and_maxima": {
+    "A_block_count": 21,
+    "A_largest": {
+      "normalized_error": 1.5551741193678365e-10,
+      "block": "sv"
+    },
+    "B_largest_named_coefficient_or_output": {
+      "normalized_error": 1.6263934969885847e-11,
+      "section": "coefficients",
+      "block": "sr",
+      "axis": "lnTR"
+    },
+    "B_overall_max_including_state": 1.6263934969885847e-11,
+    "C_saved_primal_components": 313,
+    "C_saved_tangent_components": 1878,
+    "C_max_componentwise_residual": 1.6778326936217204e-15,
+    "D_identity_groups": 9,
+    "D_restricted_seed_checks": 11,
+    "D_restricted_max_absolute_error": 2.1316282072803006e-14,
+    "E_endpoint_RHS": 12,
+    "E_direction_count": 2,
+    "E_steps_recorded": 6,
+    "E_max_normalized_outgoing_error": 7.197124258333325e-09,
+    "F_manufactured_count": 3,
+    "F_small_RHS": 6,
+    "F_manufactured_max_normalized_error": 1.816728585750256e-16,
+    "F_escape_probe_count": 14,
+    "F_escape_max_derivative_absolute_error": 1.5543122344752192e-15,
+    "F_refusal_count": 27
+  },
+  "all_prescribed_checks_pass": true
+}

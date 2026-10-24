@@ -1,0 +1,57 @@
+{
+  "unit": "REC-HISTORY-THERMO01",
+  "mode": "continuation",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/e3bcbaac138c/rec_history_next_20261024/research/rec_history_thermo_20261024/repair/continuation.py"
+  ],
+  "cwd": "/workspace/scratch/e3bcbaac138c/rec_history_next_20261024/research/rec_history_thermo_20261024",
+  "authorization_path": "evidence/execution/CONTINUATION_RUN_READY.json",
+  "authorization_sha256": "862ac91124c1da2741c8a2932d195be8f18927c061952a29c80ac25222cb4915",
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "BLIS_NUM_THREADS": "1"
+  },
+  "PYTHONPATH": "/workspace/scratch/e3bcbaac138c/rec_history_next_20261024/research/rec_history_thermo_20261024/environment/deps",
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "inclusive_cpu_cap_seconds": 10,
+  "execution_wall_cap_seconds": 30,
+  "address_space_bytes": 1073741824,
+  "parent_cpu_limit_seconds": 1,
+  "parent_pre_fork_hard_limit": 9,
+  "child_cpu_limit_seconds": 9,
+  "execution_wall_origin": "after authorization parsing, before hashing/child launch",
+  "large_RHS_local_ceiling": 12,
+  "large_RHS_cumulative_ceiling": 25,
+  "prior_large_RHS": 13,
+  "small_RHS_ceiling": 16,
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "observed_model": null,
+  "automatic_retries": 0,
+  "providerIO_or_packaging_included": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "inclusive_cpu_seconds": 1.002246,
+  "execution_wall_seconds": 0.9760969029957778,
+  "parent_rusage": {
+    "user_cpu_seconds": 0.056643,
+    "system_cpu_seconds": 0.050048999999999996,
+    "cpu_seconds": 0.106692,
+    "peak_rss_KiB": 39872,
+    "rss_scope": "wait4/getrusage process-scope highwater; no live aggregate claim"
+  },
+  "child_rusage": {
+    "user_cpu_seconds": 0.839658,
+    "system_cpu_seconds": 0.055895999999999994,
+    "cpu_seconds": 0.895554,
+    "peak_rss_KiB": 142720,
+    "rss_scope": "wait4/getrusage process-scope highwater; no live aggregate claim"
+  },
+  "hashes_unchanged": true,
+  "cap_compliance": true
+}

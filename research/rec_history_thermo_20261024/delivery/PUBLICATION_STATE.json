@@ -1,25 +1,23 @@
 {
   "schema": "REC_HISTORY_THERMO_PUBLICATION_STATE_V1",
   "unit": "REC-HISTORY-THERMO01",
-  "checkpoint": "S1",
-  "as_of_utc": "2026-10-24T18:36:55.524286+00:00",
-  "local_state": "PREPARED",
-  "scientific_execution": "NOT_RUN",
-  "scientific_admission": "ROOT_PENDING",
+  "checkpoint": "S2",
+  "as_of_utc": "2026-10-24T18:56:21.378028+00:00",
+  "local_state": "SCIENTIFIC_CHECKPOINT_PREPARED",
+  "scientific_execution": "ORIGINAL_FAILURE_PLUS_AUTHORIZED_CONTINUATION_PRESERVED",
+  "scientific_admission": "COMPLETE_SCOPED_THERMODYNAMIC_BLOCK",
   "git": {
-    "status": "S1_NOT_YET",
-    "planned_repository": "cosmosapjw-quantum/rec_bianchi",
+    "status": "S2_NOT_YET",
+    "base_commit": "afa237a784974b07d26cf68900b29283166a62ec",
     "planned_branch": "research/rec-history-thermo-20261024",
-    "base_commit": "0e3f6ead3bc42122a91edeaabe64ab498db399aa",
     "commit": null,
     "tree": null,
     "draft_PR": 135
   },
   "backup": {
-    "status": "S1_NOT_YET",
+    "status": "S2_NOT_YET",
     "provider_id": null,
     "revision": null,
-    "path": null,
     "size": null,
     "sha256": null
   },
@@ -35,9 +33,9 @@
     "S2"
   ],
   "claim_limits": "Local six-axis source derivative only; H5 epsilon/null and inherited holds remain.",
-  "root_decision": "PREEXEC_THEORY_AND_STATIC_CODE_ACCEPTED_SCIENCE_NOT_RUN",
+  "root_decision": "PASS_SCOPED_LOCAL_PRIMITIVE_JACOBIAN_AFTER_SERIALIZATION_CONTINUATION",
   "scientific_result_admission": "PENDING_ACTUAL_EXECUTION_AND_ROOT_DECISION",
-  "RUN_READY": "NOT_ISSUED",
+  "RUN_READY": "EXECUTED; NO_FURTHER_RUN_AUTHORIZED",
   "prior_S0": {
     "schema": "REC_THERMO_S0_RECOVERED_ACTUAL_RECEIPT_V1",
     "checkpoint": "S0_RECOVERED",
@@ -84,5 +82,11 @@
     "original_full_S0_archive": "LOST_BEFORE_UPLOAD; replacement does not reproduce 300-member archive",
     "science": "NOT_RUN"
   },
-  "original_full_S0_archive": "LOST_BEFORE_UPLOAD; original bytes not restored and historical hash not reverified"
+  "original_full_S0_archive": "LOST_BEFORE_UPLOAD; not reconstructed",
+  "S1_remote_verification": "delivery/S1_REMOTE_BACKUP_VERIFICATION.json",
+  "stage_count": {
+    "complete": 18,
+    "total": 20,
+    "R10_C10": "ACTUAL_FINAL_DELIVERY_PENDING"
+  }
 }
