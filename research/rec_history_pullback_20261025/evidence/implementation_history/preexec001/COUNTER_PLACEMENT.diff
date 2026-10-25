@@ -1,0 +1,15 @@
+--- before/code/primary.py
++++ after/code/primary.py
+@@ -20,10 +20,11 @@
+   sparse=sparse_jvp(c,dy,xi);direct=counter.apply('EXPLICIT_P_ACTION_'+str(i),c['P'],dy)+c['ghat']*xi
+   sj=counter.apply('K_SPARSE_JVP_'+str(i),K,sparse)
+   dense=counter.apply('EXPLICIT_A_ACTION_'+str(i),op['A'],dy)+counter.apply('EXPLICIT_C_ACTION_'+str(i),op['C'],xi)
++  counter.charge('REUSED_NATIVE_HISTORY_JVP_'+str(i))
+   native_jvp=[]
+   for j,st in enumerate(c['stencils']):
+    dv=np.zeros(st['k']+2);dv[st['k']]=dy[2*j];dv[st['k']+1]=dy[2*j+1];native_jvp.append(native.interpolation_jvp(st,dv,xi[j]))
+-  counter.charge('REUSED_NATIVE_HISTORY_JVP_'+str(i));nj=np.array(native_jvp)
++  nj=np.array(native_jvp)
+   comparisons={'sparse_vs_explicit_history':metric(sparse,direct),'sparse_vs_native_JVP':metric(sparse,nj),'sparse_vs_explicit_outgoing':metric(sj,dense)}
+   for key,m in comparisons.items():m['pass']=m['normalized_error']<=2e-12
+   pairings=[]
