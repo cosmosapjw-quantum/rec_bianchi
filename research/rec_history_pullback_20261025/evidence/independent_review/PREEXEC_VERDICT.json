@@ -1,0 +1,121 @@
+{
+  "schema": "PB01_INDEPENDENT_PREEXEC_VERDICT_V1",
+  "reviewed_at_utc": "2026-10-25T07:39:26Z",
+  "reviewer_role": "continuing independent Astra reviewer; not implementer",
+  "verdict": "PASS_RUN_READY",
+  "scope": "static code readiness only; not root runtime authorization or numerical scientific PASS",
+  "historical_preinterruption_code_review": "NOT_RUN",
+  "current_actual_code_read": true,
+  "review_episode": "same continuing theory/code/results episode",
+  "blocking_findings_open": 0,
+  "findings": [
+    {
+      "id": "PB01-PREEXEC-001",
+      "status": "CLOSED",
+      "location": "code/primary.py derivative_checks native JVP loop",
+      "issue": "Existing action charge was recorded after the action",
+      "correction": "Moved the same charge before native_jvp allocation and scalar loop",
+      "mathematics_tolerance_total_count_changes": 0,
+      "original_primary_sha256": "82e5368ea09973ab001f2a6192535bc187818afbb1d1c798bfff69d27794d123",
+      "corrected_primary_sha256": "bc63fd1868710548f27381a6bbaea8d6b445357436a5fdc009e8997c03a66b26",
+      "original_preserved": "evidence/implementation_history/preexec001/primary.py",
+      "diff": "evidence/implementation_history/preexec001/COUNTER_PLACEMENT.diff"
+    }
+  ],
+  "fingerprints": {
+    "execution_manifest": {
+      "path": "inputs/EXECUTION_IDENTITIES.json",
+      "entries": 18,
+      "sha256": "34140f9a776162b13f19b39be0a1353952c1918a5d5fc250a0fdb3dd3c7dc0e0"
+    },
+    "primary": {
+      "path": "code/primary.py",
+      "bytes": 15075,
+      "sha256": "bc63fd1868710548f27381a6bbaea8d6b445357436a5fdc009e8997c03a66b26"
+    },
+    "theory": {
+      "path": "THEORY.md",
+      "sha256": "a556d2c61e20db01a5d94a2b5251471c42634c6b9ddd5c8041e110169563883a"
+    },
+    "contract": {
+      "path": "FROZEN_CONTRACT.md",
+      "sha256": "7e552d59c2b7c7cc103e8bb57bfbfd9b419ac8d9755bd23c1df73250217dc112"
+    }
+  },
+  "acceptance_static": {
+    "A": "READY_FOR_ACTUAL_INPUT_ADMISSION",
+    "B": "READY",
+    "C": "READY",
+    "D": "READY",
+    "E": "READY_FOR_CONDITIONAL_CHART_BOX",
+    "F": "READY",
+    "G": "READY",
+    "H": "SAVED_DATA_FIGURE_CODE_READY_ACTUAL_PNG_REVIEW_PENDING"
+  },
+  "numerical_acceptance": "NOT_RUN",
+  "actual_png_review": "NOT_RUN",
+  "reviewer_activity": {
+    "static_source_read": true,
+    "selected_metadata_hash_reads": true,
+    "numerical_array_readback": false,
+    "scientific_imports": 0,
+    "primary_runs": 0,
+    "test_runs": 0,
+    "figure_runs": 0,
+    "source_rebuilds": 0,
+    "linear_RHS": 0,
+    "solves": 0,
+    "inverses": 0,
+    "native_builds": 0,
+    "IVP": 0,
+    "old_campaign_replays": 0,
+    "full_host_cost": "NOT_MEASURED_NOT_ZERO_CLAIM"
+  },
+  "static_action_plan": {
+    "point_operator_actions": 97,
+    "point_cap": 256,
+    "event_row_actions": 200,
+    "event_cap": 512,
+    "named_interval_passes": 10,
+    "counts_observed_runtime": false,
+    "interval_count_definition": "named computation stages, not each elementary interval primitive"
+  },
+  "resource_plan": {
+    "total_cpu_seconds": 50,
+    "total_wall_seconds": 150,
+    "primary_cpu_seconds": 30,
+    "primary_wall_seconds": 90,
+    "figures_cpu_seconds": 10,
+    "figures_wall_seconds": 30,
+    "reserved_repair_cpu_seconds": 5,
+    "reserved_repair_wall_seconds": 15,
+    "reserved_review_cpu_seconds": 5,
+    "reserved_review_wall_seconds": 15,
+    "threads": 1,
+    "address_space_bytes": 1073741824,
+    "automatic_retry": false
+  },
+  "root_gates_remaining": [
+    "Actual S0R and S1 delivery ACKs",
+    "Root-created evidence/RUN_READY.json",
+    "Single primary and observed numerical acceptance",
+    "Separate figure authorization and same-reviewer/root actual PNG inspection"
+  ],
+  "physical_epsilon": null,
+  "physical_outgoing_bound": null,
+  "global_convergence": "NOT_RUN",
+  "production": "NOT_APPROVED",
+  "REI_activation": false,
+  "skill_context_used": {
+    "name": "physmath-research-loop",
+    "version": "parent-frozen built-in1.0.0 / approved v0.2",
+    "rules": [
+      "reuse existing valid evidence",
+      "preserve original error/source and exact correction",
+      "distinguish byte identity and scientific validity",
+      "single continuing independent review episode",
+      "no reviewer scientific execution or recursion"
+    ]
+  }
+}
+

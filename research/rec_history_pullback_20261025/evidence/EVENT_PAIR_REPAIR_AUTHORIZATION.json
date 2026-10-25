@@ -1,0 +1,41 @@
+{
+  "unit": "REC-HISTORY-PB01",
+  "failure": "PB01-EVENT-PAIR-001",
+  "classification": "IMPLEMENTATION_SHARED_EVENT_POINT_COUPLING",
+  "primary_status_preserved": "FAILED_FROZEN_CRITERION",
+  "primary_exit_code": 2,
+  "observed": "Stored KS01 and composed event coefficient rows/intervals are exact opposite pairs. Independently reduced finite event point scalars differ from exact opposite values by 1 ULP or 2 ULP in six original checked cases, with two additional explicit-tangent pair mismatches.",
+  "evidence": [
+    "results/primary001/SUMMARY.json",
+    "results/primary001/FINITE_CASES.json",
+    "diagnostics/event_sign001/DIAGNOSTIC.json",
+    "evidence/independent_review/PRIMARY_EVENT_RAW_READBACK.json"
+  ],
+  "scope": "Same Ly-alpha event radiation and atomic transfer, frozen source/units; no thermal heat or geometry convention changes.",
+  "mathematical_identity": "E_atomic=-E_radiation implies E_atomic v=-(E_radiation v). Canonical rounding evaluates the shared radiation scalar once and forms its atomic partner by exact binary64 unary negation.",
+  "repair": "Preserve all independent primary outputs as diagnostics. Apply coupled-sign canonicalization to saved radiation scalars only in a separate repair output. Reuse every unrelated accepted primary result without replay.",
+  "unchanged": [
+    "physical convention",
+    "all numerical tolerances",
+    "original immutable inputs",
+    "K_s certificate",
+    "query/pullback/adjoint/Taylor/box results",
+    "first primary exit and raw"
+  ],
+  "new_matvecs": 0,
+  "new_RHS": 0,
+  "solves": 0,
+  "inverses": 0,
+  "IVP": 0,
+  "native": 0,
+  "old_replay": 0,
+  "repair_allocation": {
+    "cpu_seconds": 5,
+    "wall_seconds": 15,
+    "threads": 1,
+    "max_address_space_bytes": 1073741824
+  },
+  "prior_pb_measured_cpu_seconds": 1.141527,
+  "prior_pb_measured_wall_seconds": 1.2368256480003768,
+  "independent_review": "Same reviewer read raw hexadecimal scalar mismatches and supports exact shared-event pairing; specific internal BLAS kernel not diagnosed."
+}
