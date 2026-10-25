@@ -5,8 +5,9 @@
 **동일한 안정화 source의 입사응답 \(K_s\), 그 represented-operator 구간 인증,
 원 history 실제 payload·causal prefix·313 query 결속을 완료했다.**
 독립 최종 판정은 `PASS_SCOPED_SAME_SOURCE_KS_AND_ACTUAL_HISTORY_ADMISSION`이다.
-이 문서는 과학 S2의18/20 snapshot이다. R10/C10의 실제 전달 완료는
-`delivery/PUBLICATION_STATE.json`과 최종 handoff가 기록한다.
+과학 S2는18/20의 불변 snapshot이다. 최종 companion의 실제 전달과 원격
+readback 뒤 final S3에서 R10/C10을 닫아 총20/20을 완료했다.
+`delivery/PUBLICATION_STATE.json`과 최종 handoff가 실제 영수증을 연결한다.
 
 기존 THERMO01의 \(J_s\)는 수치 검증된 314×6 국소 primitive derivative다.
 RESP01의 native \(K_0\) norm을 이 \(J_s\)에 옮겨 쓰지 않고, 같은 stable
@@ -220,3 +221,16 @@ Physical HOLD,REC_U5 HOLD_9_FAIL/HOLD_8_FAIL,CLOSED_HOLD_NOT_RESET,
 global_convergence NOT_RUN,production NOT_APPROVED,REI_activation=false,
 첫 실패 REI raw HISTORICAL_LOCAL_ONLY를 유지한다.
 
+## 10. 최종 실제 전달
+
+REC DraftPR136,scienceS2=309776ec263f10853a7ed4c404387c1474994e96.
+Central DraftPR228,commit256a152eff42fdd6daf317e7bf7ea0daffad728d,
+최종publicationbaseecbb3124b49e75d8a7e948705b3894307d628349.
+S0/S1/S2/final companion이 Dropbox와Drive에 실제 전달됐다.
+FullS2=54196274bytes,SHA2563a67f3e1e40d39f8833bf9481e483593929ab9fc2c38451dae8e9ed4a7042301,
+DropboxwholeSHA/CRC/206payloadPASS.
+Companion=412601bytes,SHA256bb8c05df25a72edf2866eeea62db531e115fc64617b46d6a4bf9fe88eeced7ca,
+DropboxwholeSHA/CRC/70payloadPASS.
+Companion업로드→실제ACK→단일finalREC S3순서로20/20을닫았다.
+Companion자체ACK나미래S3hash를넣기위한재귀archive/commit은없다.
+최종S3hash는이파일을담은PR136HEAD와최종채팅영수증에서확인한다.
