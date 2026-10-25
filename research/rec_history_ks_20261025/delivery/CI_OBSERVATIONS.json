@@ -1,0 +1,100 @@
+{
+  "science_S2": {
+    "run": 40154557260,
+    "attempt": 1,
+    "head": "309776ec263f10853a7ed4c404387c1474994e96",
+    "status": "failure",
+    "step": "python scripts/verify_repo.py --quick",
+    "pytest": "SKIPPED",
+    "reason": "repository-wide whitespace/EOF, including retained evidence and current unit files",
+    "own_warning_examples": [
+      "research/rec_history_ks_20261025/DATA_LOCATIONS.md:13: new blank line at EOF.",
+      "research/rec_history_ks_20261025/FROZEN_CONTRACT.md:168: new blank line at EOF.",
+      "research/rec_history_ks_20261025/LITERATURE_AND_CAS.md:27: new blank line at EOF.",
+      "research/rec_history_ks_20261025/NEXT_INPUT_CONTRACT.md:72: new blank line at EOF.",
+      "research/rec_history_ks_20261025/OPERATOR_BINDING_CLARIFICATION.md:35: new blank line at EOF.",
+      "research/rec_history_ks_20261025/REPORT_KO.md:222: new blank line at EOF.",
+      "research/rec_history_ks_20261025/STAGE_PROGRESS.md:51: new blank line at EOF.",
+      "research/rec_history_ks_20261025/SURVEY_SYNTHESIS.md:59: new blank line at EOF.",
+      "research/rec_history_ks_20261025/THEORY.md:87: new blank line at EOF.",
+      "research/rec_history_ks_20261025/code/certificate.py:38: new blank line at EOF.",
+      "research/rec_history_ks_20261025/code/interval.py:119: new blank line at EOF.",
+      "research/rec_history_ks_20261025/evidence/figure_layout/LAYOUT_DIFF.patch:13: trailing whitespace.",
+      "research/rec_history_ks_20261025/evidence/independent_review/FINAL_REVIEW.md:3: trailing whitespace.",
+      "research/rec_history_ks_20261025/evidence/independent_review/PREEXEC_CODE_REVIEW.md:68: new blank line at EOF.",
+      "research/rec_history_ks_20261025/evidence/independent_review/PREEXEC_REVIEW.md:90: new blank line at EOF.",
+      "research/rec_history_ks_20261025/evidence/preexec_before_fix/manufactured.py.diff:8: trailing whitespace.",
+      "research/rec_history_ks_20261025/evidence/preexec_before_fix/manufactured.py.diff:14: trailing whitespace."
+    ],
+    "other_examples": [
+      "2026-10-25T02:28:45.7648817Z research/rec_bianchi_escape_moments_20261022/FROZEN_CONTRACT.md:125: new blank line at EOF.",
+      "2026-10-25T02:28:45.7649556Z research/rec_bianchi_escape_moments_20261022/HANDOFF_KO.md:83: new blank line at EOF.",
+      "2026-10-25T02:28:45.7650155Z research/rec_bianchi_escape_moments_20261022/RUN_COMMANDS.md:45: new blank line at EOF.",
+      "2026-10-25T02:28:45.7650755Z research/rec_bianchi_escape_moments_20261022/THEORY.md:238: new blank line at EOF.",
+      "2026-10-25T02:28:45.7651388Z research/rec_bianchi_escape_moments_20261022/provenance/BACKUP_SYNTHESIS_KO.md:3: trailing whitespace."
+    ],
+    "rerun": 0,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/40154557260"
+  },
+  "central": {
+    "run": 40155257040,
+    "status": "completed",
+    "conclusion": "failure",
+    "attempt": 1,
+    "head": "256a152eff42fdd6daf317e7bf7ea0daffad728d",
+    "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/actions/runs/40155257040",
+    "jobs": [
+      {
+        "id": 121055184500,
+        "name": "verify",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 40155257040,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 3
+          },
+          {
+            "name": "Run cargo test --manifest-path rust/rei_microphysics/Cargo.toml --workspace --locked",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 4
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          }
+        ]
+      }
+    ],
+    "rerun": 0
+  },
+  "manual_reruns": 0,
+  "scientific_pass_overrides_CI": false,
+  "CI_green_claim": false,
+  "final_rec_S3": "not_created_at_companion_freeze; read actual final receipt"
+}
