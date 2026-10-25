@@ -1,0 +1,71 @@
+{
+  "schema": "REC_H5_INPUT_PRODUCER_CONTRACT_V1",
+  "unit": "REC-H5-DEFECT-BOUND01",
+  "implementation_unit": "H5_ACTUAL_SOURCE_BINDING_20261025",
+  "source_context": "inputs/SOURCE_CONTEXT.json",
+  "source_context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+  "actual_current_packet": "inputs/ACTUAL_BOUND_INPUTS.json",
+  "actual_query_count": 313,
+  "actual_bound_query_coverage": 0,
+  "physical_epsilon": null,
+  "packet_schema": "REC_H5_BOUND_INPUT_PACKET_V1",
+  "numeric_token": "finite decimal or fraction string; explicit binary64 source coordinates use hexadecimal strings",
+  "bound_scalar_shape": {
+    "upper": "NONNEGATIVE_FINITE_RATIONAL_TOKEN",
+    "proof_refs": ["ACTUAL_PROOF_ARTIFACT_ID"]
+  },
+  "state_enclosure_required_fields": {
+    "norm": {
+      "kind": "fixed_weighted_infinity",
+      "coordinates": [
+        {"name": "ACTUAL_STATE_COMPONENT", "unit": "EXPLICIT_UNIT", "scale": "POSITIVE_FIXED_RATIONAL_TOKEN"}
+      ]
+    },
+    "reconstruction": "continuous_piecewise_absolutely_continuous",
+    "bound_support": "whole_eta_domain_ess_sup",
+    "tube_definition": "uniform_open_scaled_radius_about_reconstruction",
+    "state_proof_refs": ["ACTUAL_DOMAIN_EXISTENCE_AND_CONTINUITY_PROOF_ID"],
+    "orientation": "integer +1 or -1",
+    "eta_origin": "RATIONAL_TOKEN",
+    "eta_domain": ["LOWER_RATIONAL_TOKEN", "UPPER_RATIONAL_TOKEN"],
+    "initial_error": "bound_scalar_shape; dimensionless scaled norm",
+    "defect": "bound_scalar_shape; scaled error per eta",
+    "stability_L": "bound_scalar_shape; inverse eta",
+    "tube_radius": "bound_scalar_shape; dimensionless scaled norm",
+    "model_discrepancy": "bound_scalar_shape; scaled error per eta"
+  },
+  "query_bounds_required_fields_per_actual_row": {
+    "incoming_index": "exact same integer as source_context",
+    "source_index": "exact same integer as source_context",
+    "cell": "exact same integer as source_context",
+    "curvature_support": "ess_sup_whole_cell",
+    "regularity": "C2 or AC_first_derivative_ess_bounded_second",
+    "K_left": "bound_scalar_shape; channel/scaled state",
+    "K_right": "bound_scalar_shape; channel/scaled state",
+    "reference_left": "bound_scalar_shape; absolute native channel",
+    "reference_right": "bound_scalar_shape; absolute native channel",
+    "endpoint_representation_left": "bound_scalar_shape; absolute native channel",
+    "endpoint_representation_right": "bound_scalar_shape; absolute native channel",
+    "curvature_M2": "bound_scalar_shape; absolute native channel per eta^2"
+  },
+  "proof_artifact_shape": {
+    "id": "ACTUAL_PROOF_ARTIFACT_ID",
+    "path": "PATH_RELATIVE_TO_PROOF_ROOT",
+    "sha256": "ACTUAL_SHA256"
+  },
+  "source_model_obligation": "Specify actual F including retarded history/state closure and actual native departure G; prove same-source same-clock continuous-domain bounds. Sampled residuals, grid differences and algebraic inverse defects do not supply these proofs.",
+  "bound_calculation": "Global constant envelopes in positive path length, endpoint K*E+bG+rep, pointwise interpolation remainder plus exact actual anchor representation radius",
+  "supported_exponent": "0 <= L * path_length <= 64; otherwise typed unsupported result",
+  "serialization": "exact internal rationals; outward 64-significant-digit decimal upper/lower tokens",
+  "consumer_success_status": "CONDITIONAL_BOUND_CANDIDATE_REVIEW_REQUIRED",
+  "physical_admission": "Separate independent content review and source/nonlinear/observable error allocation; consumer does not set physical_epsilon",
+  "pass_next_executable_action": "Freeze actual new proof packet and its budget, run code/consume_bounds.py, assess proof content, then feed admitted epsilon to stored same-source Ks intervals without rebuilding the prior solver",
+  "retained_state": {
+    "new_rhs": 0,
+    "new_ivp": 0,
+    "old_matrix_rebuild": 0,
+    "old_campaign_replay": 0,
+    "global_physical_completion": null,
+    "REI_activation": false
+  }
+}

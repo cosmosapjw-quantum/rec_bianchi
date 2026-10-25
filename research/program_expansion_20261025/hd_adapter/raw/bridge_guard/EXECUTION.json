@@ -1,0 +1,53 @@
+{
+  "schema": "REC_HD_BOUNDED_EXECUTION_V1",
+  "created_UTC": "2026-10-25T12:59:31.679045+00:00",
+  "source": {
+    "bytes": 2289,
+    "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb"
+  },
+  "WU_source_sha256": "60a502895266b6feb96964abc4b24db61c2faed2344db0f7d12f16bb47ed62af",
+  "freeze_sha256": "0d437a434127f17ab0fb47447af4d6766395c69b25eaacdee6513c0dd3e64b54",
+  "source_code": {
+    "test_hd_adapter.py": "416d45ac8fd9a325fc36bd4f1e8f3a78f62cc2923c1cb111ab4364441464cd59",
+    "run_bounded.py": "ef58131876ce8bd386e9066e1690d2e7b9a2cbdb1fa61b5c1040e65deab235e9",
+    "lamda_hd.py": "7a150f147eda6760b98324dd2d38e65d41c5e7f90feff932b1600799ee4c3d36"
+  },
+  "cpu_cap_seconds": 90,
+  "wall_cap_seconds": 600,
+  "address_space_limit_bytes": 1073741824,
+  "threads": 1,
+  "prior_measured_CPU_seconds": 0.252148,
+  "prior_wall_seconds": 0.2324033730001247,
+  "prior_receipts": {
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/attempt1/EXECUTION.json": "ad933ffc93ae4377abb723e8b42f1feaf65e1d8c1bf183242aa194c047f977e4",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/source_diagnostic/EXECUTION.json": "8504d7e36409298825ae2c90d4c2d920a1e97c166d74eb5c647e0092d68cac3f"
+  },
+  "commands": [
+    {
+      "name": "targeted_unittest",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "-v",
+        "test_hd_adapter.PinnedHDTests.test_failed_source_rows_remain_unqualified"
+      ],
+      "cwd": "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter",
+      "returncode": 0,
+      "timeout": false,
+      "cpu_seconds": 0.058085,
+      "wall_seconds": 0.06490763900001184,
+      "maxRSS_KiB_cumulative_child_upper_bound": 15232
+    }
+  ],
+  "old_compiler_fixture_runs": 0,
+  "IVP_runs": 0,
+  "native_runs": 0,
+  "status": "PASS_EXECUTED_TARGETED_UNIT_PENDING_INDEPENDENT_REVIEW",
+  "returncode": 0,
+  "sampled_process_tree_cpu_seconds": 0.11048999999999999,
+  "execution_wall_seconds": 0.06560416800130042,
+  "unmeasured_final_receipt_write_CPU": "UNKNOWN_NOT_ZERO",
+  "maxRSS_KiB": 15232,
+  "source_identity_unchanged": true
+}

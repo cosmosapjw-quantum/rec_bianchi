@@ -1,0 +1,59 @@
+{
+  "scope": "Mechanical assembly and Git object packaging only",
+  "new_scientific_execution": 0,
+  "new_tests": 0,
+  "immutable_REC_source_commit": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+  "frozen_central_snapshot": "3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8",
+  "limits_per_command": {
+    "CPU_seconds": 10,
+    "wall_seconds": 60,
+    "RSS_address_space_bytes": 1073741824,
+    "threads": 1
+  },
+  "runs": [
+    {
+      "label": "assembly",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/6104ad84b826/central_update_final/prepare_update.py",
+        "--rec-commit",
+        "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+        "--base-dag",
+        "/workspace/scratch/6104ad84b826/central_inputs_final/DAG.current.json",
+        "--central-base-commit",
+        "3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8",
+        "--central-base-tree",
+        "64726f96d940ddf8c4c3a0b19c13fc475f5513f7",
+        "--expected-dag-sha256",
+        "76901126b8b2d8f2cc16ed47c25d8e8a7982a57eb2a79da4da43f73e261011c7",
+        "--output-root",
+        "/workspace/scratch/6104ad84b826/central_update_final"
+      ],
+      "exit_code": 0,
+      "CPU_seconds": 0.142299,
+      "wall_seconds": 0.14277104099892313,
+      "cumulative_child_peak_RSS_KiB": 33708
+    },
+    {
+      "label": "packaging",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/6104ad84b826/central_update_final/prepare_text_entries.py",
+        "--input-root",
+        "/workspace/scratch/6104ad84b826/central_inputs_final",
+        "--output-root",
+        "/workspace/scratch/6104ad84b826/central_update_final",
+        "--expected-base-commit",
+        "3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8",
+        "--expected-base-tree",
+        "64726f96d940ddf8c4c3a0b19c13fc475f5513f7"
+      ],
+      "exit_code": 0,
+      "CPU_seconds": 0.11008999999999998,
+      "wall_seconds": 0.1106965159997344,
+      "cumulative_child_peak_RSS_KiB": 45284
+    }
+  ],
+  "unmeasured_setup_and_IO_cost": "UNKNOWN_NOT_ZERO",
+  "prepare_update_script_unchanged": true
+}

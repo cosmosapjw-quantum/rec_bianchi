@@ -1,0 +1,26 @@
+{
+  "schema": "REC_H5_REVIEW_FAILURE_V1",
+  "finding": "H5-R1",
+  "classification": "implementation-runtime serialization limit",
+  "code_path": "h5_input_binding/code/h5_bounds.py",
+  "observed_code_sha256": "07f72f074c75254ffd237aced364b20af37066a7b5e9aa0323b48f37f0402934",
+  "operation": "Compute exp_upper(Fraction(x)) and serialize the returned Fraction with str()",
+  "cases": [
+    {"x": "64", "result": "STRING_OK", "string_length": 7941},
+    {
+      "x": "127/2",
+      "result": "ValueError",
+      "message": "Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit"
+    },
+    {"x": "37/3", "result": "STRING_OK", "string_length": 4656}
+  ],
+  "limits": {"CPU_seconds": 20, "address_space_bytes": 1073741824, "threads": 1},
+  "observed_process_CPU_seconds": 0.027494,
+  "observed_probe_wall_seconds": 0.0034290660005353857,
+  "max_RSS_KiB": 9856,
+  "scientific_effect": "The conditional exp upper proof is valid. A supported positive exponent can produce a rational too large for the candidate output serialization, so this is an execution failure of that implementation path.",
+  "minimal_repair_request": "Keep exact interval direction by outward rounding nonnegative output bounds to a declared finite decimal grid, or reject the unsupported serialization domain explicitly. Preserve exact source b_repr and physical_epsilon=null.",
+  "physical_epsilon": null,
+  "old_campaign_replay": 0,
+  "closure": "See final independent review and H5 repair regression; this first failure is immutable."
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "REC_H5_TUBE_RADIUS_REVIEW_FINDING_V1",
+  "id": "H5-R3",
+  "severity": "P1",
+  "class": "scientific_input_semantics",
+  "origin": "root concrete source-code review; independently confirmed",
+  "status": "OPEN_PENDING_BOUNDED_REPAIR",
+  "before_code_sha256": "98502f114db8a97cb64030fb7516d63ec8099c4f080590b5e9c995ca03c20c06",
+  "observed_contract": "tube_radius shared upper-bound scalar shape; _scalar returns item[upper]; evaluator compares Emax < rho",
+  "counterexample": {
+    "certified_safe_radius": "1/10",
+    "supplied_radius_upper": "1",
+    "state_error_upper": "1/2",
+    "old_numeric_inequality": "1/2 < 1",
+    "required_inequality_not_implied": "1/2 < 1/10"
+  },
+  "required_correction": "Positive proof-referenced tube_radius.lower; reject upper-only; strict Emax < rho_lower; margin lower = rho_lower-Emax, with same-tube domain proof",
+  "preserved_physical_epsilon": null,
+  "physical_approval_affected": false,
+  "no_new_no_go": true
+}

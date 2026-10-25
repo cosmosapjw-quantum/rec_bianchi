@@ -1,0 +1,57 @@
+{
+  "schema": "REC_HD_BOUNDED_EXECUTION_V1",
+  "created_UTC": "2026-10-25T13:00:39.506901+00:00",
+  "source": {
+    "bytes": 2289,
+    "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb"
+  },
+  "WU_source_sha256": "60a502895266b6feb96964abc4b24db61c2faed2344db0f7d12f16bb47ed62af",
+  "freeze_sha256": "0d437a434127f17ab0fb47447af4d6766395c69b25eaacdee6513c0dd3e64b54",
+  "source_code": {
+    "test_hd_adapter.py": "96c8d5347bb350d68e535a6b04ba3e90d86bceaa389edcb519fcc351b0be007d",
+    "run_bounded.py": "ef58131876ce8bd386e9066e1690d2e7b9a2cbdb1fa61b5c1040e65deab235e9",
+    "lamda_hd.py": "ef10b34e1891755334083340b84ff1e298151df720c13f008b3762505813e275"
+  },
+  "cpu_cap_seconds": 90,
+  "wall_cap_seconds": 600,
+  "address_space_limit_bytes": 1073741824,
+  "threads": 1,
+  "prior_measured_CPU_seconds": 0.497036,
+  "prior_wall_seconds": 0.41482292900036555,
+  "prior_receipts": {
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/attempt1/EXECUTION.json": "ad933ffc93ae4377abb723e8b42f1feaf65e1d8c1bf183242aa194c047f977e4",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/bridge_guard/EXECUTION.json": "9a7bdc46a33e5215fdd93c64662309c5a85cd33fb95e55d7fcad2edb365c09b5",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/numerical_guard_repair/EXECUTION.json": "581fe24c28051f78f41bd6103f1a790d34826502286216e37678ca9235f8b879",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/source_diagnostic/EXECUTION.json": "8504d7e36409298825ae2c90d4c2d920a1e97c166d74eb5c647e0092d68cac3f"
+  },
+  "commands": [
+    {
+      "name": "targeted_unittest",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "-v",
+        "test_hd_adapter.PinnedHDTests.test_caller_decimal_context_does_not_change_rates",
+        "test_hd_adapter.PinnedHDTests.test_detailed_balance_decimal_independent",
+        "test_hd_adapter.PinnedHDTests.test_Kirchhoff"
+      ],
+      "cwd": "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter",
+      "returncode": 0,
+      "timeout": false,
+      "cpu_seconds": 0.072912,
+      "wall_seconds": 0.11534217499865917,
+      "maxRSS_KiB_cumulative_child_upper_bound": 15616
+    }
+  ],
+  "old_compiler_fixture_runs": 0,
+  "IVP_runs": 0,
+  "native_runs": 0,
+  "status": "PASS_EXECUTED_TARGETED_UNIT_PENDING_INDEPENDENT_REVIEW",
+  "returncode": 0,
+  "sampled_process_tree_cpu_seconds": 0.132015,
+  "execution_wall_seconds": 0.116171879999456,
+  "unmeasured_final_receipt_write_CPU": "UNKNOWN_NOT_ZERO",
+  "maxRSS_KiB": 15616,
+  "source_identity_unchanged": true
+}

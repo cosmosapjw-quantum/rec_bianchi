@@ -1,0 +1,148 @@
+{
+  "schema": "REC_HD_INDEPENDENT_REFERENCE_CHECK_V1",
+  "status": "PASS_IMPLEMENTATION_REFERENCE_CHECK",
+  "source_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+  "reviewed_code_sha256": "be075b84fd1d695950862f898d388a38fc398d83a2cd1a4f41f7d73164040640",
+  "WU_source_sha256": "60a502895266b6feb96964abc4b24db61c2faed2344db0f7d12f16bb47ed62af",
+  "review_script_sha256": "de66fad734e9e1572e317b728ce713672b1816973727f8634b6d399233753627",
+  "method": "literal header/row extraction; exact Fraction unit and frequency arithmetic; independent 80-digit Decimal exponent",
+  "checks": [
+    {
+      "id": "raw_roundtrip",
+      "pass": true
+    },
+    {
+      "id": "nine_literal_levels_exact_SI",
+      "pass": true
+    },
+    {
+      "id": "eight_literal_line_gaps_exact_rationals",
+      "pass": true
+    },
+    {
+      "id": "54_literal_collider_rates_exact_SI_and_independent_DB",
+      "pass": true,
+      "maximum_normalized_error": 2.0746076942048495e-15
+    },
+    {
+      "id": "24_Kirchhoff_checks_against_independent_Decimal_Planck",
+      "pass": true,
+      "maximum_normalized_error": 1.65605377761476e-15,
+      "scope": "catalog photon energy used consistently; not an energy-level/frequency compatibility certificate"
+    },
+    {
+      "id": "nine_domain_and_nonzero_underflow_refusals",
+      "pass": true
+    },
+    {
+      "id": "inversion_and_analytic_zero_distinct",
+      "pass": true
+    },
+    {
+      "id": "actual_WU_Species_mapping_9_states",
+      "pass": true
+    }
+  ],
+  "frequency_gaps": [
+    {
+      "line_id": 1,
+      "upper_J": 1,
+      "lower_J": 0,
+      "absolute_gap_Hz": "41205081/5000000",
+      "float_Hz": 8.2410162,
+      "frozen_35Hz_gate_pass": true
+    },
+    {
+      "line_id": 2,
+      "upper_J": 2,
+      "lower_J": 1,
+      "absolute_gap_Hz": "236919710081/250000",
+      "float_Hz": 947678.840324,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 3,
+      "upper_J": 3,
+      "lower_J": 2,
+      "absolute_gap_Hz": "2710796857291/2500000",
+      "float_Hz": 1084318.7429164,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 4,
+      "upper_J": 4,
+      "lower_J": 3,
+      "absolute_gap_Hz": "238137045457/5000000",
+      "float_Hz": 47627.4090914,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 5,
+      "upper_J": 5,
+      "lower_J": 4,
+      "absolute_gap_Hz": "1245461910729/1000000",
+      "float_Hz": 1245461.910729,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 6,
+      "upper_J": 6,
+      "lower_J": 5,
+      "absolute_gap_Hz": "4568931401893/2500000",
+      "float_Hz": 1827572.5607572,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 7,
+      "upper_J": 7,
+      "lower_J": 6,
+      "absolute_gap_Hz": "1764006812819/1250000",
+      "float_Hz": 1411205.4502552,
+      "frozen_35Hz_gate_pass": false
+    },
+    {
+      "line_id": 8,
+      "upper_J": 8,
+      "lower_J": 7,
+      "absolute_gap_Hz": "17162474057/2500000",
+      "float_Hz": 6864.9896228,
+      "frozen_35Hz_gate_pass": false
+    }
+  ],
+  "frozen_35Hz_gate": "FAIL_SOURCE_INTERNAL_ENERGY_FREQUENCY_MISMATCH",
+  "frequency_gate_passing_lines": [
+    1
+  ],
+  "frequency_gate_failing_lines": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "consistent_internal_energy_photon_binding_approved": false,
+  "maximum_independent_Planck_Kirchhoff_residual": 1.65605377761476e-15,
+  "maximum_normalized_DB_error": 2.0746076942048495e-15,
+  "DB_records": 54,
+  "controlled_scientific_replay": {
+    "old_compiler": 0,
+    "IVP": 0,
+    "RHS": 0,
+    "native": 0
+  },
+  "resource": {
+    "cpu_seconds": 0.056153999999999996,
+    "execution_wall_seconds": 0.02660267200189992,
+    "max_RSS_KiB": 14968
+  },
+  "command_argv": [
+    "research/program_expansion_20261025/review/check_hd_independently.py",
+    "/workspace/scratch/6104ad84b826/recovered_sources/lamda_hd_20261025.dat",
+    "research/program_expansion_20261025/hd_adapter/lamda_hd.py",
+    "/workspace/scratch/6104ad84b826/recovered_sources/WU_chem_ledger.py",
+    "research/program_expansion_20261025/review/HD_INDEPENDENT_REFERENCE.json"
+  ],
+  "claim_scope": "implementation correctness for the pinned HD source; physical input uncertainty remains unassigned"
+}

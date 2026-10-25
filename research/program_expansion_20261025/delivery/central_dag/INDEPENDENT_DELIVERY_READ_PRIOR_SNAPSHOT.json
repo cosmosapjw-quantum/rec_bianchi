@@ -1,0 +1,140 @@
+{
+  "schema": "REC_HD_H5_INDEPENDENT_DELIVERY_READ_V1",
+  "status": "PASS_LATEST_BASE_DELIVERY_SCOPE_AND_UNCHANGED_SCIENCE_OBSERVATION",
+  "reviewer": "/root/independent_review",
+  "scope": "One read-only delivery comparison after central parallel changes; preserve latest base and reuse unchanged scientific decision and report review",
+  "source_commit": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+  "source_tree": "70076d0e31ada7e442cd302c59a3c8b6f9a4e60b",
+  "central_base_commit": "ad9c0e29453fcb6d66637413b51bf42f08688cf1",
+  "central_base_tree": "03441d41dcc10cfdc82540543bbb6aed7fea4f78",
+  "baseline_DAG_sha256": "0565402991c3597946279330594a914e638f483dde48813dd8d15ea00c77c3c3",
+  "latest_AGENTS_sha256": "ab29a05cac922bd393dc04f7f280a0d4e1d7289ae6ea24291f48fd7cf7b2e8eb",
+  "previous_delivery_read": {
+    "path": "/workspace/scratch/6104ad84b826/central_update/INDEPENDENT_DELIVERY_READ.json",
+    "sha256": "cc742158dae96d4b84992d1bad05e9d6cfa03a8430d787d5382ef99bff1afe91",
+    "status": "PASS_DELIVERY_SCOPE_AND_CLAIM_BOUNDARIES",
+    "preserved": true
+  },
+  "mechanical_validation_receipt_sha256": "0d6f01edfad92db5800597e2f4b17d5512aa4d66602ac3cefa4a48104464a791",
+  "latest_base_preservation": {
+    "node_count_before_after": [
+      88,
+      88
+    ],
+    "changed_node_ids": [
+      "REC-H5-DEFECT-BOUND01",
+      "REC-HD-ADAPTER"
+    ],
+    "changed_wrapper_fields": {
+      "REC-H5-DEFECT-BOUND01": [
+        "budget_status",
+        "current_execution_observation",
+        "current_status",
+        "pass_next_action"
+      ],
+      "REC-HD-ADAPTER": [
+        "budget_status",
+        "current_execution_observation",
+        "current_status",
+        "pass_next_action"
+      ]
+    },
+    "other86_nodes_semantically_unchanged": true,
+    "all88_nested_contracts_semantically_unchanged": true,
+    "root_fields_semantically_unchanged": true,
+    "authorities_semantically_preserved": 15,
+    "integration_edges_semantically_preserved": 17,
+    "parallel_baseline_added_node_ids": [
+      "REI-GRID044-ENDPOINT-BINDING-01"
+    ],
+    "parallel_baseline_changed_node_ids": [
+      "HE-CLOSURE",
+      "HE-EXCHANGE",
+      "HE-EXP-CLOSURE",
+      "HE-EXP-PAIR",
+      "HE-RESERVOIR",
+      "REI-EXP-EVENT-CONSUMER",
+      "REI-EXP-OPACITY-CONSUMER",
+      "REI-EXP-SCENARIO"
+    ],
+    "parallel_non_target_changes_preserved": true,
+    "byte_span_and_graph_checks": "Reused latest VALIDATION_RECEIPT.json; no second graph or byte-span validation run"
+  },
+  "wrapper_comparison_to_previous_delivery": {
+    "REC-H5-DEFECT-BOUND01": {
+      "bytes_identical_to_previous_review": true,
+      "sha256": "546024c75b05f86afef8d6827c5a147d611c9612af9fbe9930ef94c8f4e38805"
+    },
+    "REC-HD-ADAPTER": {
+      "bytes_identical_to_previous_review": true,
+      "sha256": "0aa89e86d93e906fe198b7bdac16a2dfff5b84e919169d7d47c3b6e18d1a084b"
+    }
+  },
+  "observation_comparison": {
+    "only_changed_top_level_fields": [
+      "central_base_DAG_sha256",
+      "central_base_commit",
+      "central_base_tree"
+    ],
+    "HD_scientific_observation_identical": true,
+    "H5_scientific_observation_identical": true,
+    "source_result_and_review_identities_identical": true,
+    "budgets_and_scope_limits_identical": true,
+    "global_claim_boundaries_identical": true
+  },
+  "read_output_files": {
+    "research/orchestration_expansion_20261025/DAG.json": {
+      "bytes": 1558906,
+      "sha256": "197f1b0033a134080af4915ba36498f0336b8b759cf006e656f0da199c81b32c"
+    },
+    "research/orchestration_expansion_20261025/observations/REC_HD_H5_20261025.json": {
+      "bytes": 23369,
+      "sha256": "756a93fe99a13cd4dfc458e6bc7ffec74f1d88093ddb82243293bc446f9e16d1"
+    },
+    "research/orchestration_expansion_20261025/contracts/REC-HD-ADAPTER.json": {
+      "bytes": 27478,
+      "sha256": "0aa89e86d93e906fe198b7bdac16a2dfff5b84e919169d7d47c3b6e18d1a084b"
+    },
+    "research/orchestration_expansion_20261025/contracts/REC-H5-DEFECT-BOUND01.json": {
+      "bytes": 10615,
+      "sha256": "546024c75b05f86afef8d6827c5a147d611c9612af9fbe9930ef94c8f4e38805"
+    }
+  },
+  "committed_report_claim_review_reused": {
+    "path": "research/program_expansion_20261025/RESULT_HD_H5_KO.md",
+    "bytes": 12921,
+    "sha256": "c47092651337746e86478255785f04e42eaeb93170f36c44befab37afaa0ef78",
+    "working_copy_equals_science_S1": true,
+    "wording_assessment": "PASS: parser and conditional source-binding implementation are distinguished from physical qualification; unresolved obligations explicitly retained"
+  },
+  "claim_boundaries_reused_unchanged": {
+    "HD": "Literal ingestion implemented; original 35 Hz gate FAIL 7/8 and full-contract HOLD retained; DB/LTE algebra is not a source-frequency or physical precision approval; off-grid and collider mixing unsupported",
+    "H5": "313 queries/626 endpoints and existing 314x313 operator intervals are bound to source identity; actual continuous-bound coverage 0/313, physical epsilon/outgoing null; conditional proof/implementation not promoted to physical admission",
+    "H5_tube": "Positive guaranteed safe-radius lower and strict E_upper < rho_lower described; original direction finding and bounded closure retained",
+    "representation_term": "Stored binary64 interpolation difference only; not labelled as a physical defect or uncertainty",
+    "budget": "New 90/90 CPU-second units and shared 60-second review/integration cap remain explicit; historical budgets preserved and unused allowances not transferred",
+    "global": "global_physical_completion null; L4_ready false; production_approved false; REI_activation false; parent nodes not promoted",
+    "prior_evidence": "Original source failure and prior execution status retained; old physical campaigns not described as rerun"
+  },
+  "delivery_findings_open": 0,
+  "rec_science_files_modified": 0,
+  "original_independent_review_receipts_modified": 0,
+  "previous_delivery_files_modified": 0,
+  "physical_revalidation": 0,
+  "new_test_execution": 0,
+  "new_RHS": 0,
+  "new_IVP": 0,
+  "old_campaign_replay": 0,
+  "physical_approval_granted": false,
+  "budget": {
+    "bucket": "independent_review_and_integration",
+    "this_process_cpu_cap_seconds": 5,
+    "this_process_wall_cap_seconds": 30,
+    "memory_cap_bytes": 1073741824,
+    "threads": 1,
+    "known_process_CPU_seconds": 0.072588,
+    "inner_wall_seconds": 0.04710788699958357,
+    "max_RSS_KiB": 25652,
+    "unmeasured_cost": "UNKNOWN_NOT_ZERO: earlier read-only tool calls, model/tool time and final receipt write; original science-review and previous delivery costs remain in their original records"
+  }
+}

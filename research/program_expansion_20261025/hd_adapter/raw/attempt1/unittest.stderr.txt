@@ -1,0 +1,37 @@
+test_Einstein_relations (test_hd_adapter.PinnedHDTests.test_Einstein_relations) ... ok
+test_Kirchhoff (test_hd_adapter.PinnedHDTests.test_Kirchhoff) ... ok
+test_WU_canonical_schema_reuse (test_hd_adapter.PinnedHDTests.test_WU_canonical_schema_reuse) ... ok
+test_all_literal_tokens (test_hd_adapter.PinnedHDTests.test_all_literal_tokens) ... ok
+test_analytic_zero (test_hd_adapter.PinnedHDTests.test_analytic_zero) ... ok
+test_bad_radiative_inputs (test_hd_adapter.PinnedHDTests.test_bad_radiative_inputs) ... ok
+test_bad_source_rejected (test_hd_adapter.PinnedHDTests.test_bad_source_rejected) ... ok
+test_detailed_balance_decimal_independent (test_hd_adapter.PinnedHDTests.test_detailed_balance_decimal_independent) ... ok
+test_exact_SI_units_against_rationals (test_hd_adapter.PinnedHDTests.test_exact_SI_units_against_rationals) ... ok
+test_frequency_precision_against_rationals (test_hd_adapter.PinnedHDTests.test_frequency_precision_against_rationals) ... FAIL
+test_grammar_corruption_rejected (test_hd_adapter.PinnedHDTests.test_grammar_corruption_rejected) ... ok
+test_immutable (test_hd_adapter.PinnedHDTests.test_immutable) ... ok
+test_inversion_sign_preserved (test_hd_adapter.PinnedHDTests.test_inversion_sign_preserved) ... ok
+test_level_energy_reference (test_hd_adapter.PinnedHDTests.test_level_energy_reference) ... ok
+test_missing_pair_not_zero (test_hd_adapter.PinnedHDTests.test_missing_pair_not_zero) ... ok
+test_no_collider_mix (test_hd_adapter.PinnedHDTests.test_no_collider_mix) ... ok
+test_p_o_are_distinct (test_hd_adapter.PinnedHDTests.test_p_o_are_distinct) ... ok
+test_premature_EOF (test_hd_adapter.PinnedHDTests.test_premature_EOF) ... ok
+test_shape (test_hd_adapter.PinnedHDTests.test_shape) ... ok
+test_source_bytes (test_hd_adapter.PinnedHDTests.test_source_bytes) ... ok
+test_temperature_domain (test_hd_adapter.PinnedHDTests.test_temperature_domain) ... ok
+test_underflow_is_not_analytic_zero (test_hd_adapter.PinnedHDTests.test_underflow_is_not_analytic_zero) ... ok
+test_unknown_state_and_reference (test_hd_adapter.PinnedHDTests.test_unknown_state_and_reference) ... ok
+test_upward_reference (test_hd_adapter.PinnedHDTests.test_upward_reference) ... ok
+
+======================================================================
+FAIL: test_frequency_precision_against_rationals (test_hd_adapter.PinnedHDTests.test_frequency_precision_against_rationals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/test_hd_adapter.py", line 66, in test_frequency_precision_against_rationals
+    self.assertLessEqual(independent, 35)
+AssertionError: Fraction(236919710081, 250000) not less than or equal to 35
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.014s
+
+FAILED (failures=1)

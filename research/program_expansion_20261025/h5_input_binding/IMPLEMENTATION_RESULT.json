@@ -1,0 +1,236 @@
+{
+  "base_head": "5dd414982c5c9ada97dfdfcc0b77cf83af86d66e",
+  "budget": {
+    "frozen_cpu_seconds": 90,
+    "frozen_execution_wall_seconds": 600,
+    "max_child_RSS_KiB": 185520,
+    "measured_controlled_cpu_seconds": 0.8834559999999999,
+    "measured_controlled_wall_seconds": 1.0276184789945546,
+    "outside_measured_child_cost": "UNKNOWN_NOT_ZERO",
+    "prior_budget_borrow": false,
+    "prior_budget_reset": false,
+    "source_recovery_and_binding_IO_included_in_first_child": true,
+    "unused_budget_not_transferred": true
+  },
+  "controls": {
+    "additional_repair_regressions": 8,
+    "additional_tube_direction_regressions": 5,
+    "distinct_unittest_cases": 41,
+    "final_case_result": "Prior 36 controls PASS; minimum tube-direction repair ran 10 targeted controls PASS, including 5 new cases. Unchanged controls were not replayed.",
+    "initial_cases": 33,
+    "initial_test_replay_counted_as_new_evidence": false,
+    "latest_targeted_case_count": 10,
+    "latest_targeted_receipt": "evidence/execution/controls_tube_repair002/RECEIPT.json",
+    "manufactured_proof_values_are_actual_physical_inputs": false
+  },
+  "executions": [
+    {
+      "child_inclusive_cpu_seconds": 0.5829449999999999,
+      "child_max_RSS_KiB": 185520,
+      "child_wall_seconds": 0.61653319999823,
+      "cumulative_H5_cpu_seconds": 0.5829449999999999,
+      "cumulative_H5_wall_seconds": 0.61653319999823,
+      "known_cost_scope": "This child including its imports and I/O; model/tool/network and earlier read-only intake cost not measured and not zero",
+      "observed_runtime_model_identity": "NOT_OBSERVABLE",
+      "path": "evidence/execution/actual_binding001/RECEIPT.json",
+      "returncode": 0,
+      "stderr": "stderr.txt",
+      "stdout": "stdout.txt",
+      "timed_out": false,
+      "within_H5_cumulative_cap": true
+    },
+    {
+      "child_inclusive_cpu_seconds": 0.038279,
+      "child_max_RSS_KiB": 11648,
+      "child_wall_seconds": 0.06499023799915449,
+      "cumulative_H5_cpu_seconds": 0.8009289999999999,
+      "cumulative_H5_wall_seconds": 0.9119403039949248,
+      "known_cost_scope": "This child including its imports and I/O; model/tool/network and earlier read-only intake cost not measured and not zero",
+      "observed_runtime_model_identity": "NOT_OBSERVABLE",
+      "path": "evidence/execution/actual_consume_final001/RECEIPT.json",
+      "returncode": 0,
+      "stderr": "stderr.txt",
+      "stdout": "stdout.txt",
+      "timed_out": false,
+      "within_H5_cumulative_cap": true
+    },
+    {
+      "child_inclusive_cpu_seconds": 0.076932,
+      "child_max_RSS_KiB": 14972,
+      "child_wall_seconds": 0.11504776799847605,
+      "cumulative_H5_cpu_seconds": 0.6598769999999999,
+      "cumulative_H5_wall_seconds": 0.731580967996706,
+      "known_cost_scope": "This child including its imports and I/O; model/tool/network and earlier read-only intake cost not measured and not zero",
+      "observed_runtime_model_identity": "NOT_OBSERVABLE",
+      "path": "evidence/execution/controls001/RECEIPT.json",
+      "returncode": 0,
+      "stderr": "stderr.txt",
+      "stdout": "stdout.txt",
+      "timed_out": false,
+      "within_H5_cumulative_cap": true
+    },
+    {
+      "child_inclusive_cpu_seconds": 0.10277299999999999,
+      "child_max_RSS_KiB": 16204,
+      "child_wall_seconds": 0.11536909799906425,
+      "cumulative_H5_cpu_seconds": 0.7626499999999999,
+      "cumulative_H5_wall_seconds": 0.8469500659957703,
+      "known_cost_scope": "This child including its imports and I/O; model/tool/network and earlier read-only intake cost not measured and not zero",
+      "observed_runtime_model_identity": "NOT_OBSERVABLE",
+      "path": "evidence/execution/controls_repair001/RECEIPT.json",
+      "returncode": 0,
+      "stderr": "stderr.txt",
+      "stdout": "stdout.txt",
+      "timed_out": false,
+      "within_H5_cumulative_cap": true
+    },
+    {
+      "child_inclusive_cpu_seconds": 0.082527,
+      "child_max_RSS_KiB": 16000,
+      "child_wall_seconds": 0.11567817499962985,
+      "cumulative_H5_cpu_seconds": 0.8834559999999999,
+      "cumulative_H5_wall_seconds": 1.0276184789945546,
+      "known_cost_scope": "This child including its imports and I/O; model/tool/network and earlier read-only intake cost not measured and not zero",
+      "observed_runtime_model_identity": "NOT_OBSERVABLE",
+      "path": "evidence/execution/controls_tube_repair002/RECEIPT.json",
+      "returncode": 0,
+      "stderr": "stderr.txt",
+      "stdout": "stdout.txt",
+      "timed_out": false,
+      "within_H5_cumulative_cap": true
+    }
+  ],
+  "executor": "/root/h5_binding",
+  "global_physical_completion": null,
+  "identities": {
+    "BOUND_INPUT_CONTRACT.json": {
+      "bytes": 4597,
+      "sha256": "fa257842447137c7d22fac1ca85e2b0453cf061bb5b6b9108844244c9280c666"
+    },
+    "code/consume_bounds.py": {
+      "bytes": 1083,
+      "sha256": "d5952b4a200d2cc2b6ee3479347f7686cb4a627a0fa474be97f8ac0158c18939"
+    },
+    "code/h5_bounds.py": {
+      "bytes": 18016,
+      "sha256": "a797c75ad987cdaadd3c7ffc08888c3ae09ab4b02700c4b028291c938e4225b2"
+    },
+    "code/prepare_actual_binding.py": {
+      "bytes": 13359,
+      "sha256": "2d6973e45c942baf4d2ac08094422752d34dd7dc829fa88b12f2f8ebb0e4bac9"
+    },
+    "code/run_bounded.py": {
+      "bytes": 4433,
+      "sha256": "ae7eb761d332e50f3934f25770a41b6afd80c7f8f32a44d988448f56735732e3"
+    },
+    "inputs/ACTUAL_BOUND_INPUTS.json": {
+      "bytes": 1813,
+      "sha256": "5b79cd45398148ef938665fcdf17571c4fefa32ddf7d3a50526e8b925899b788"
+    },
+    "inputs/DERIVATION.md": {
+      "bytes": 10757,
+      "sha256": "e4dc39a4d142a5baea3458b8a68ca2d68ce7aed0a1537c6160401c646258169b"
+    },
+    "inputs/INDEPENDENT_THEORY_REVIEW.md": {
+      "bytes": 8877,
+      "sha256": "eac3aedd53359b97e19abf008efd58413a63c470ac0e4cf749fe3281fb02a5b1"
+    },
+    "inputs/SOURCE_CONTEXT.json": {
+      "bytes": 220122,
+      "sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8"
+    },
+    "results/ACTUAL_BOUND_CONSUMPTION_FINAL.json": {
+      "bytes": 894,
+      "sha256": "2cee66bd668663100936c466338748cbeed7fe9bd4d71f4d13251da300b73329"
+    },
+    "results/SOURCE_BINDING_SUMMARY.json": {
+      "bytes": 1151,
+      "sha256": "6d2e1117c3775b48916d7e57705777a40ccb6edac5e844331876d5dbaeea7fc9"
+    },
+    "tests/test_h5_bounds.py": {
+      "bytes": 16757,
+      "sha256": "320c5c8da6e692282b3190e2060a27dea86a9a68f5e63dfdba9f8b1435035e73"
+    }
+  },
+  "implementation_unit": "H5_ACTUAL_SOURCE_BINDING_20261025",
+  "independent_review": {
+    "canonical_receipt": "../review/INDEPENDENT_DECISION.json",
+    "metadata_before_correction": "evidence/repair001/ACTUAL_BOUND_CONSUMPTION_before.json",
+    "physical_bound_admission": false,
+    "receipt_sha256": "08649ed915d970812c342205ffe9862b4368b0fa4d152ea820de579a882db962",
+    "report": "../review/INDEPENDENT_REVIEW.md",
+    "reviewer": "/root/independent_review",
+    "serialization_failure_preserved": "evidence/repair001/h5_bounds_before.py",
+    "status": "PASS_SCOPED_IMPLEMENTATION_AND_ACTUAL_SOURCE_BINDING_TUBE_DIRECTION_CLOSED",
+    "tube_direction_closure": "../review/evidence/h5_tube_radius/CLOSURE.json",
+    "tube_direction_closure_sha256": "c062139dc7ea1f6b5644db1a8772b5f0a206f2bacf1ca10d68ff526818706306"
+  },
+  "local_result": "IMPLEMENTATION_VERIFIED_ACTUAL_SOURCE_BINDING_AND_FAIL_CLOSED_BOUND_CONSUMER",
+  "new_ivp": 0,
+  "new_native": 0,
+  "new_rhs": 0,
+  "next_action": "Produce source-matched continuous proof packet for F/G,e0,d,L,rho_lower,K,bG,M2, starting from the pinned native owner and primitive sources identified in README; freeze a new finite budget. Current actual source binding is complete, actual physical bound coverage remains 0/313. Review proof content before physical epsilon admission.",
+  "old_campaign_replay": 0,
+  "old_matrix_rebuild": 0,
+  "physical_epsilon": null,
+  "physical_input_connection": "PARTIAL_REQUIRED_CONTINUOUS_BOUND_ARTIFACTS_NOT_SUPPLIED",
+  "physical_outgoing_bound": null,
+  "retained_holds": [
+    "Physical HOLD",
+    "REC_U5 HOLD_9_FAIL/HOLD_8_FAIL",
+    "CLOSED_HOLD_NOT_RESET",
+    "global_convergence NOT_RUN",
+    "production NOT_APPROVED",
+    "REI_activation=false"
+  ],
+  "runtime_model_identity": "NOT_OBSERVABLE",
+  "schema": "REC_H5_BINDING_IMPLEMENTATION_RESULT_V1",
+  "source_binding": {
+    "Ks_interval_shape": [
+      314,
+      313
+    ],
+    "actual_distinct_endpoint_slots": 626,
+    "actual_queries": 313,
+    "actual_query_bound_input_coverage": 0,
+    "anchor_representation_nonzero_queries": 313,
+    "anchor_representation_radius_max_exact": "2125323597749/7573333069425850157122243222373270552576",
+    "anchor_representation_radius_max_float_for_display": 2.806325270875912e-28,
+    "conditional_theory": "PASS_DERIVED_SCOPED reused; representation anchor added explicitly",
+    "eta_cell_width_max_exact": "95588902091/1125899906842624",
+    "eta_cell_width_min_exact": "47794451045/562949953421312",
+    "new_ivp": 0,
+    "new_native": 0,
+    "new_rhs": 0,
+    "old_campaign_replay": 0,
+    "old_matrix_rebuild": 0,
+    "physical_H5_status": "INPUT_DEPENDENT_UNCALIBRATED",
+    "physical_epsilon": null,
+    "source_context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+    "source_history_recovered": {
+      "bytes": 35239470,
+      "member": "inputs/pr05b2_source_history_v060.npz",
+      "sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1"
+    },
+    "status": "PASS_ACTUAL_SOURCE_QUERY_ENDPOINT_OPERATOR_BINDING"
+  },
+  "tube_radius_direction_repair": {
+    "actual_input_packet_and_results_changed": false,
+    "bootstrap": "E_upper < rho_lower; equality and upper-only rejected",
+    "finding": "evidence/repair002/FINDING.json",
+    "independent_closure": "../review/evidence/h5_tube_radius/CLOSURE.json",
+    "original_code_and_contract": "evidence/repair002/",
+    "physical_admission": false,
+    "required_shape": "tube_radius: {lower: strictly positive rational token, proof_refs: [actual safe tube proof artifact IDs]}",
+    "tube_domain_proof": "Entire open tube of at least rho_lower about the identical reconstruction, in the identical fixed norm and eta domain"
+  },
+  "unit": "REC-H5-DEFECT-BOUND01",
+  "workflow": {
+    "C1_C9": "Implemented, bounded executed and independently reviewed; actual query/operator evidence read without earlier computation replay",
+    "R10_C10": "Ready for parent integration/publication/dual-backup; no standalone child publication claim",
+    "R1_R5": "Current source/contract recovered; original conditional derivation reused; actual representation-anchor connection derived",
+    "R6": "Original source-matched conditional proof review reused; new independent changed-code/source review performed",
+    "R7": "Prior 36 controls plus minimum tube-direction repair 10 targeted controls (5 new) PASS; actual source binding reused, actual physical bounds absent.",
+    "R8_R9": "Adopt implementation and actual source binding, keep physical input dependency; machine-readable producer contract supplied"
+  }
+}

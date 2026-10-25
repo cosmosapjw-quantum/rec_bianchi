@@ -1,0 +1,142 @@
+{
+  "schema": "REC_H5_INDEPENDENT_CHECK_V1",
+  "status": "PASS_SCOPED_IMPLEMENTATION_AND_ACTUAL_BINDING",
+  "reviewed_h5_code_sha256": "98502f114db8a97cb64030fb7516d63ec8099c4f080590b5e9c995ca03c20c06",
+  "reviewed_HD_final_code_sha256": "ef10b34e1891755334083340b84ff1e298151df720c13f008b3762505813e275",
+  "source_context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+  "original_history_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+  "selected_original_source_readbacks": [
+    {
+      "incoming_index": 0,
+      "source_index": 1,
+      "cell": 4770,
+      "actual_source_hex_fields_match": true,
+      "exact_representation_radius": "464129267/3786666534712925078561121611186635276288"
+    },
+    {
+      "incoming_index": 14,
+      "source_index": 15,
+      "cell": 4876,
+      "actual_source_hex_fields_match": true,
+      "exact_representation_radius": "2125323597749/7573333069425850157122243222373270552576"
+    },
+    {
+      "incoming_index": 156,
+      "source_index": 157,
+      "cell": 5122,
+      "actual_source_hex_fields_match": true,
+      "exact_representation_radius": "1028409467877/121173329110813602513955891557972328841216"
+    },
+    {
+      "incoming_index": 312,
+      "source_index": 271,
+      "cell": 5114,
+      "actual_source_hex_fields_match": true,
+      "exact_representation_radius": "480829567315/124081489009473128974290832955363664733405184"
+    }
+  ],
+  "actual_bound_input_coverage": "0/313",
+  "physical_epsilon": null,
+  "physical_outgoing_bound": null,
+  "sharp_quadratic_and_endpoint_controls": "PASS_EXACT",
+  "zero_L_Gronwall_control": "PASS_EXACT",
+  "exponential_controls": [
+    {
+      "x": "0",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "1e0",
+      "numeric_comparison_to_Decimal90": "PASS"
+    },
+    {
+      "x": "1/100000000000000000000",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "1000000000000000000010000000000000000000050000000000000000000167e-63",
+      "numeric_comparison_to_Decimal90": "PASS"
+    },
+    {
+      "x": "1",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "2718281828459045235360287471352662497757247093699959574966967628e-63",
+      "numeric_comparison_to_Decimal90": "PASS"
+    },
+    {
+      "x": "37/3",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "2271426091466567362785990065704237604867424539263837112190355013e-58",
+      "numeric_comparison_to_Decimal90": "PASS"
+    },
+    {
+      "x": "127/2",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "3781809085391289878985332664341635426545890379482873891506072074e-36",
+      "numeric_comparison_to_Decimal90": "PASS"
+    },
+    {
+      "x": "64",
+      "bound_positive": true,
+      "outward_serialization_containment": "PASS_EXACT",
+      "upper_decimal_token": "62351490808116168829092387089284697448313918462357999143885917e-34",
+      "numeric_comparison_to_Decimal90": "PASS"
+    }
+  ],
+  "exp_upper_theory_scope": "Positive Taylor sum plus geometric remainder; implementation comparisons do not replace that proof",
+  "HD_context_repair_closure": {
+    "precision_4_equals_80": true,
+    "selected_parameters": [
+      [
+        2,
+        1,
+        2,
+        100
+      ],
+      [
+        3,
+        1,
+        3,
+        50
+      ],
+      [
+        3,
+        8,
+        9,
+        50
+      ]
+    ],
+    "actual_rates": [
+      2.243580917662442e-17,
+      4.1367345321941075e-21,
+      8.151743896782085e-27
+    ],
+    "energy_bridge_pass_line": 1,
+    "energy_bridge_refused_lines": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "new_RHS": 0,
+  "new_IVP": 0,
+  "old_matrix_rebuild": 0,
+  "command_argv": [
+    "research/program_expansion_20261025/review/check_h5_independently.py",
+    "research/program_expansion_20261025/h5_input_binding",
+    "/workspace/scratch/6104ad84b826/recovered_sources/H5_SELECTED",
+    "research/program_expansion_20261025/hd_adapter/lamda_hd.py",
+    "/workspace/scratch/6104ad84b826/recovered_sources/lamda_hd_20261025.dat",
+    "research/program_expansion_20261025/review/H5_INDEPENDENT_CHECK.json"
+  ],
+  "resource": {
+    "process_cpu_seconds": 0.264632,
+    "execution_wall_seconds": 0.2416520179976942,
+    "max_RSS_KiB": 57916
+  }
+}

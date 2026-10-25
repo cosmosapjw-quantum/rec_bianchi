@@ -1,0 +1,88 @@
+{
+  "schema": "REC_HD_H5_GIT_PUBLICATION_OBJECTS_V1",
+  "repository": "cosmosapjw-quantum/rei_bianchi",
+  "base_commit": "3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8",
+  "base_tree_sha": "64726f96d940ddf8c4c3a0b19c13fc475f5513f7",
+  "REC_source_commit": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+  "tree_elements_file": "text_entries.json",
+  "tree_elements_shape": "Top-level4-element array: path/mode/type/content",
+  "text_entries_bytes": 1753938,
+  "text_entries_sha256": "8cedda429b8927fea8811eb17d09c697e2589c245ad5f2f0b1e50ec70edeb51e",
+  "expected_result_root_tree_sha": "3eed303fabd28abac16e605a3fc923a4d22d081d",
+  "expected_blobs": {
+    "research/orchestration_expansion_20261025/DAG.json": {
+      "bytes": 1583479,
+      "sha256": "bb05523325ee14659e326f315eb4d3948b918f0566f478fe27cd44640dccbb58",
+      "expected_git_blob_sha1": "8013a217450156f777bce44db18f830a1375107c",
+      "base_git_blob_sha1": "1479600a5282a29be86224844d16ec4cc3f928ac",
+      "change": "replace"
+    },
+    "research/orchestration_expansion_20261025/contracts/REC-H5-DEFECT-BOUND01.json": {
+      "bytes": 10615,
+      "sha256": "546024c75b05f86afef8d6827c5a147d611c9612af9fbe9930ef94c8f4e38805",
+      "expected_git_blob_sha1": "77f2194e5a14d273453d012d1efbd2a1b198edbd",
+      "base_git_blob_sha1": "510fefbcc8a3589a063f408d53de126b84d2b787",
+      "change": "replace"
+    },
+    "research/orchestration_expansion_20261025/contracts/REC-HD-ADAPTER.json": {
+      "bytes": 27478,
+      "sha256": "0aa89e86d93e906fe198b7bdac16a2dfff5b84e919169d7d47c3b6e18d1a084b",
+      "expected_git_blob_sha1": "5efc1a9a51bace56169e1777c264e579d47fc331",
+      "base_git_blob_sha1": "cdbd1b5e4ac3d5bbb7e4e44f5f1ec32ecbf0661d",
+      "change": "replace"
+    },
+    "research/orchestration_expansion_20261025/observations/REC_HD_H5_20261025.json": {
+      "bytes": 23369,
+      "sha256": "60ee5e2919c1a7fb1b37303bb153f44e61e4f4b8ab51b152c408c3345ef4a7d3",
+      "expected_git_blob_sha1": "ffbcb9f42dfd499cbd8e867c2b2c80d1119afb2a",
+      "base_git_blob_sha1": null,
+      "change": "create"
+    }
+  },
+  "predicted_trees": {
+    "research/orchestration_expansion_20261025/contracts": {
+      "base_sha": "45be76c49ab68f8fb1e2c7caba104bbda22d110c",
+      "expected_sha": "5248c5fa07570e7158b6cc202a12bb3bb4f05f94",
+      "base_entries": 87,
+      "result_entries": 87
+    },
+    "research/orchestration_expansion_20261025/observations": {
+      "base_sha": null,
+      "expected_sha": "f647190df75d4769d430b8809968c3f47162f9ec",
+      "base_entries": 0,
+      "result_entries": 1
+    },
+    "research/orchestration_expansion_20261025": {
+      "base_sha": "cdb68b5e1208e9e7ea8da02a73f2540b98fbd0c8",
+      "expected_sha": "b6f35cacd66dcdc53bbb0483ce12b1b46ad88ec7",
+      "base_entries": 20,
+      "result_entries": 21
+    },
+    "research": {
+      "base_sha": "6a8f0fe152b96a7bae53baff990844d05d42c634",
+      "expected_sha": "61163cb37844c544eaf77af1f8dfeaa236ea16df",
+      "base_entries": 51,
+      "result_entries": 51
+    },
+    "/": {
+      "base_sha": "64726f96d940ddf8c4c3a0b19c13fc475f5513f7",
+      "expected_sha": "3eed303fabd28abac16e605a3fc923a4d22d081d",
+      "base_entries": 23,
+      "result_entries": 23
+    }
+  },
+  "verification": {
+    "all_existing_ancestor_trees_reconstructed_to_exact_base_SHA": true,
+    "all4reviewed_outputs_byte_identical_to_validation_receipt": true,
+    "UTF8_JSON_roundtrip_matches_all4Git_blob_SHAs": true,
+    "only4declared_blob_paths_changed": true,
+    "new_scientific_execution": 0,
+    "Git_or_GitHub_mutations_performed": 0
+  },
+  "validation_receipt_sha256": "2ab73359d054caaeda983eb4ec2dfb446c7d93459b7be0788d0a509f7a426f33",
+  "base_recursive_tree_SHA256": "a866c11879b6be8be14d0a123ffb2584d1d1ffcc79a51f63ecde8e4a1e7552cb",
+  "base_AGENTS_SHA256": "ab29a05cac922bd393dc04f7f280a0d4e1d7289ae6ea24291f48fd7cf7b2e8eb",
+  "packaging_script_sha256": "39f62eabd87f24571549b24c68289e43d88d0cff4f197253b397eb9023e7c765",
+  "publication_strategy": "Fixed snapshot; dedicated new branch and PR; moving main is not followed recursively",
+  "root_publication_check": "Compare create_tree returned SHA to expected_result_root_tree_sha; create commit with the frozen base parent, publish to the owned branch using its expected SHA or create-only absence check, and open PR. Read current HEAD but preserve this frozen snapshot instead of repeatedly rebasing to moving main."
+}

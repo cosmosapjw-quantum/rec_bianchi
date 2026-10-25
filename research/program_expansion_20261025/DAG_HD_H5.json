@@ -1,0 +1,302 @@
+{
+  "schema": "REC_HD_H5_GLOBAL_DAG_SLICE_V1",
+  "central_base_repository": "cosmosapjw-quantum/rei_bianchi",
+  "central_base_sha": "3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8",
+  "central_canonical_path": "research/orchestration_expansion_20261025/DAG.json",
+  "global_node_count": 88,
+  "global_integration_edge_count": 17,
+  "global_authority_count": 15,
+  "changed_node_ids": [
+    "REC-HD-ADAPTER",
+    "REC-H5-DEFECT-BOUND01"
+  ],
+  "other_global_nodes_preserved": 86,
+  "parent_completion_not_inferred": true,
+  "nodes": [
+    {
+      "id": "REI-CHEM-LEDGER-01",
+      "lead_repo": "cosmosapjw-quantum/WU088_HH",
+      "current_status": "PASS_SCOPED",
+      "dependencies": [],
+      "conditional_dependencies": [],
+      "parent_containment": "REI-L1",
+      "historical_status": "PASS_SCOPED"
+    },
+    {
+      "id": "REC-HD-ADAPTER",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "IMPLEMENTATION_VERIFIED_SOURCE_FREQUENCY_GATE_HOLD",
+      "dependencies": [
+        {
+          "id": "REI-CHEM-LEDGER-01",
+          "type": "internal",
+          "lead_repo": "WU088_HH",
+          "condition": "Reuse independently admitted finite isotope/molecule interface and canonical species schema; do not rerun compiler fixtures.",
+          "source_file": "authority/molecular/REC_HD_ADAPTER_CONTRACT.json",
+          "source_field": "dependencies"
+        },
+        {
+          "id": "EXTERNAL-LAMDA-HD-20210607",
+          "type": "external",
+          "condition": "Pinned 2289-byte HD source fixture with specified SHA256; citation/redistribution decision recorded.",
+          "qualification": "SOURCE_DECLARED_EXTERNAL_REFERENCE; PROVIDER_STATUS_NOT_INFERRED",
+          "source_file": "authority/molecular/REC_HD_ADAPTER_CONTRACT.json",
+          "source_field": "dependencies"
+        }
+      ],
+      "conditional_dependencies": [],
+      "parent_containment": "REC-EXP-SPECTRAL",
+      "historical_status": "CONTRACT_PREPARED_IMPLEMENTATION_NOT_RUN",
+      "observation": {
+        "parser": "IMPLEMENTATION_VERIFIED_PINNED_LITERAL_INGESTION",
+        "full_contract": "HOLD_SOURCE_DISCREPANCY_UNQUALIFIED",
+        "source_gate_Hz": 35,
+        "source_gate_pass_lines": [
+          1
+        ],
+        "source_gate_fail_lines": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "temperatures_K": [
+          50,
+          100,
+          200
+        ],
+        "colliders_separate": [
+          2,
+          3
+        ],
+        "source_uncertainty": null,
+        "evidence": "hd_adapter/RESULT.json"
+      },
+      "next_work": "Resolve seven source level/frequency discrepancies under the original 35 Hz criterion; retain literal ingestion."
+    },
+    {
+      "id": "REC-EXP-SPECTRAL",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "SOURCE_INPUT_PENDING",
+      "dependencies": [
+        {
+          "type": "internal",
+          "id": "REC-EXP-SPECIES",
+          "source_file": "authority/thermal/rec_bianchi/research/program_expansion_20261025/TASK_ASSIGNMENT.json",
+          "source_field": "depends_on"
+        }
+      ],
+      "conditional_dependencies": [],
+      "parent_containment": null,
+      "historical_status": "SOURCE_INPUT_PENDING"
+    },
+    {
+      "id": "REC-HISTORY",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "PARTIAL; PB01/KS01/THERMO01 complete_scoped",
+      "dependencies": [
+        {
+          "type": "internal",
+          "id": "REC-LINE02",
+          "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+          "source_field": "depends_on"
+        }
+      ],
+      "conditional_dependencies": [],
+      "parent_containment": null,
+      "historical_status": "PARTIAL; PB01/KS01/THERMO01 complete_scoped"
+    },
+    {
+      "id": "REC-H5-DEFECT-BOUND01",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "PASS_DERIVED_IMPLEMENTATION_BOUND_INPUTS_PENDING",
+      "dependencies": [],
+      "conditional_dependencies": [],
+      "parent_containment": "REC-HISTORY",
+      "historical_status": "PASS_DERIVED_SCOPED",
+      "observation": {
+        "conditional_derivation": "PASS_DERIVED_SCOPED_REUSED_WITH_EXPLICIT_REPRESENTATION_ANCHOR",
+        "actual_source_binding": "PASS_313_QUERY_626_ENDPOINT_314X313_KS",
+        "conditional_implementation": "IMPLEMENTATION_VERIFIED",
+        "tube_condition": "E_upper < rho_lower; positive certified lower bound required",
+        "actual_physical_bound_coverage": 0,
+        "query_count": 313,
+        "physical_epsilon": null,
+        "physical_outgoing_bound": null,
+        "physical_H5_status": "INPUT_DEPENDENT_UNCALIBRATED",
+        "evidence": "h5_input_binding/IMPLEMENTATION_RESULT.json"
+      },
+      "next_work": "Supply same-source continuous defect/stability/certified tube lower/curvature proof packet; then consume it with a new bounded allocation."
+    },
+    {
+      "id": "REC-H6-TRACE",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "ACTUAL_INPUT_PENDING",
+      "dependencies": [],
+      "conditional_dependencies": [
+        {
+          "id": "REC-EXP-EXTERNAL",
+          "predicate": "selected_incident_trace_is_produced_by_this_new_external_source_task",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi/research/program_expansion_20261025/TASK_ASSIGNMENT.json",
+          "source_field": "conditional_dependencies"
+        }
+      ],
+      "parent_containment": "REC-HISTORY",
+      "historical_status": "ACTUAL_INPUT_PENDING"
+    },
+    {
+      "id": "REC-FIELD",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "PROPOSED_INPUT_DEPENDENT; PR124 pilot complete_reuse",
+      "dependencies": [],
+      "conditional_dependencies": [
+        {
+          "id": "REC-LINE02",
+          "predicate": "selected_spectral_channel_is_native_Lyalpha",
+          "scope": "selected-model prerequisite only",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        }
+      ],
+      "parent_containment": null,
+      "historical_status": "PROPOSED_INPUT_DEPENDENT; PR124 pilot complete_reuse"
+    },
+    {
+      "id": "REC-COUPLED",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "INPUT_DEPENDENT_NOT_SCHEDULED",
+      "dependencies": [],
+      "conditional_dependencies": [
+        {
+          "id": "REC-HISTORY",
+          "predicate": "selected_model_uses_retarded_radiation_history",
+          "scope": "selected-model prerequisite only",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        },
+        {
+          "id": "REC-LI",
+          "predicate": "selected_species_or_channels_include_Li",
+          "scope": "selected-model prerequisite only",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        },
+        {
+          "id": "REC-FIELD",
+          "predicate": "selected_model_evolves_spectral_radiation_or_gas_radiation_exchange",
+          "scope": "selected-model prerequisite only",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        }
+      ],
+      "parent_containment": null,
+      "historical_status": "INPUT_DEPENDENT_NOT_SCHEDULED"
+    },
+    {
+      "id": "REC-EXP-COUPLED",
+      "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+      "current_status": "GATED",
+      "dependencies": [
+        {
+          "type": "internal",
+          "id": "REC-COUPLED",
+          "source_file": "authority/thermal/rec_bianchi/research/program_expansion_20261025/TASK_ASSIGNMENT.json",
+          "source_field": "depends_on"
+        }
+      ],
+      "conditional_dependencies": [
+        {
+          "id": "REC-EXP-SPECTRAL",
+          "predicate": "selected_scenario_uses_new_spectral_channel",
+          "type": "internal",
+          "source_file": "authority/thermal/rec_bianchi/research/program_expansion_20261025/TASK_ASSIGNMENT.json",
+          "source_field": "conditional_dependencies"
+        }
+      ],
+      "parent_containment": null,
+      "historical_status": "GATED"
+    },
+    {
+      "id": "REI-L4",
+      "lead_repo": "cosmosapjw-quantum/rei_bianchi",
+      "current_status": "WAITING_SELECTED_PHYSICAL_BINDINGS",
+      "dependencies": [
+        {
+          "type": "internal",
+          "id": "REI-L0",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "dependencies"
+        },
+        {
+          "type": "internal",
+          "id": "REI-L1",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "dependencies"
+        },
+        {
+          "type": "external",
+          "source_reference": "external:BASS_GEOMETRY_FEEDBACK",
+          "qualification": "SOURCE_DECLARED_EXTERNAL_REFERENCE; PROVIDER_STATUS_NOT_INFERRED",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "dependencies"
+        },
+        {
+          "type": "external",
+          "source_reference": "external:VIGILODE_NUMERICAL_HOOKS",
+          "qualification": "SOURCE_DECLARED_EXTERNAL_REFERENCE; PROVIDER_STATUS_NOT_INFERRED",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "dependencies"
+        }
+      ],
+      "conditional_dependencies": [
+        {
+          "condition": "nonzero_n_or_T",
+          "dependency": "REI-L2",
+          "type": "internal",
+          "id": "REI-L2",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        },
+        {
+          "condition": "anisotropic_baryons",
+          "dependency": "REI-L3",
+          "type": "internal",
+          "id": "REI-L3",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        },
+        {
+          "condition": "ANGTHERM02_accuracy_claim",
+          "dependency": "external:ANGTHERM02_OWNER_ADMISSION",
+          "type": "external",
+          "qualification": "SOURCE_DECLARED_EXTERNAL_REFERENCE; PROVIDER_STATUS_NOT_INFERRED",
+          "source_file": "historical/baseline/rei/CONTRACTS.json",
+          "source_field": "conditional_dependencies"
+        }
+      ],
+      "parent_containment": null,
+      "historical_status": "WAITING_SELECTED_PHYSICAL_BINDINGS"
+    }
+  ],
+  "global_physical_completion": null,
+  "L4_ready": false,
+  "REI_activation": false,
+  "progress_interpretation": "Implementation/source-binding scope completed; no percentage inferred from test count or node count. Actual H5 physical bound inputs remain 0/313 and HD full source gate remains held.",
+  "science_snapshot_central_base_sha": "78f7ac5864d5817ceb79b48cb5e298cc30006510",
+  "central_published_commit": "e18b4349f2a2da3ef7caf5ec73c8787d03894620",
+  "central_PR": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/232",
+  "central_publication_status": "DRAFT_PR_PUBLISHED_READBACK_MATCHED",
+  "concurrent_changes_preserved": [
+    "HE owner returns",
+    "GRID044 endpoint binding and delivery",
+    "CR He4 RR and external-source owner returns"
+  ]
+}
