@@ -1,0 +1,16 @@
+{
+  "code": "ClearAll[a,b,h,yl,yr,dl,dr,xi,t,k11,k12,k21,k22,g1,g2,v1,v2,d1,d2,d3,d4,q1,q2]; Module[{u,lin,kk,pp,gg,dy,dq,v,checks}, u[t_] := (1-a-t xi/h)(yl+t dl)+(a+t xi/h)(yr+t dr); lin=(1-a)dl+a dr+(yr-yl)xi/h; kk={{k11,k12},{k21,k22}}; pp={{1-a,a,0,0},{0,0,1-b,b}}; gg=DiagonalMatrix[{g1,g2}]; dy={d1,d2,d3,d4}; dq={q1,q2}; v={v1,v2}; checks={FullSimplify[(D[u[t],t]/.t->0)==lin,h!=0],FullSimplify[u[t]-u[0]-t lin==t^2 xi(dr-dl)/h,h!=0],FullSimplify[v.(kk.(pp.dy+gg.dq))==(Transpose[pp].Transpose[kk].v).dy+(Transpose[gg].Transpose[kk].v).dq]}; <|\"checks\"->checks,\"linear\"->lin,\"exact_remainder\"->t^2 xi(dr-dl)/h|>]",
+  "time_constraint_seconds": 10,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"checks\" -> {True, True, True}, \"linear\" -> (1 - a)*dl + a*dr + (xi*(-yl + yr))/h, \"exact_remainder\" -> ((-dl + dr)*t^2*xi)/h|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "remote_cpu_seconds": null,
+  "scope": "Generic symbolic tangent,exact mixed remainder,and transpose identity;no user arrays/no native execution."
+}
