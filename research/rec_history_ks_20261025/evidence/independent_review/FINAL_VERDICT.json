@@ -1,0 +1,112 @@
+{
+  "schema": "REC_HISTORY_KS01_INDEPENDENT_FINAL_REVIEW_V1",
+  "reviewed_at_utc": "2026-10-25T02:20:48Z",
+  "reviewer": "/root/receipt_metadata",
+  "same_theory_code_postrun_reviewer": true,
+  "verdict": "PASS_SCOPED_SAME_SOURCE_KS_AND_ACTUAL_HISTORY_ADMISSION",
+  "criteria": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS",
+    "G": "PASS",
+    "H": "PASS_AFTER_PRESERVED_LAYOUT_CORRECTION"
+  },
+  "blocking_scientific_defects": [],
+  "closed_findings": [
+    "small_rhs_accounting",
+    "partial_result_preservation",
+    "unlabelled_zero_floor_figure_distortion"
+  ],
+  "input_manifest_files": 38,
+  "before_after_verified_identity_agree": true,
+  "retained_thermo_input_count": 23,
+  "code_fingerprint": {
+    "code/primary.py": "4f70551253935117da5dbbc18f52c4db56293d16bd51bb4c137ab4eed4c6ac33",
+    "tests/manufactured.py": "e8cf49487937466c6de4f79d930bdb44bd7f774ddb190ff59660e22c9a1c37ad",
+    "inputs/EXACT_IDENTITIES.json": "77522e3a93cf75dac9f364071c567a51b4d2b11e6abb769a66a64b2020a206e8"
+  },
+  "certificate": {
+    "scope": "exact real linear algebra on frozen binary64 coefficient matrices",
+    "rho": 3.458800151575591e-12,
+    "norm_lower": 1.17562722922718,
+    "norm_upper": 1.1756272292401908,
+    "relative_norm_width": 1.1067031540253658e-11,
+    "K_shape": [314, 313],
+    "contraction_claim": false,
+    "Js_interval_certified": false
+  },
+  "history": {
+    "status": "PASS_ACTUAL_PAYLOAD_IDENTITY_AND_CAUSAL_QUERY_ADMISSION",
+    "payload_bytes": 35239470,
+    "payload_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+    "prefix_count": 5127,
+    "query_count": 313,
+    "normalized_reconstruction_error": 3.219042386314642e-15,
+    "physical_epsilon": null,
+    "physical_absolute_history_bound": null,
+    "calibration_status": "INPUT_DEPENDENT_UNCALIBRATED"
+  },
+  "actual_execution": {
+    "primary_attempt_count": 1,
+    "large_rhs": 639,
+    "small_numeric_rhs": 5,
+    "small_fraction_rhs": 5,
+    "small_rhs_total": 10,
+    "primary_child_cpu_seconds": 3.58383,
+    "primary_child_wall_seconds": 3.6257994920015335,
+    "figure_child_invocations": 2,
+    "layout_corrections": 1,
+    "unit_child_cpu_subtotal_seconds": 7.530619,
+    "unit_child_wall_subtotal_seconds": 7.62001988699194,
+    "source_evaluations_in_figures": 0,
+    "scientific_repair_attempts": 0,
+    "new_ivp": 0,
+    "native_runtime": 0,
+    "old_campaign_replay": 0
+  },
+  "reviewer_activity": {
+    "new_scientific_executions": 0,
+    "source_imports": 0,
+    "new_solves": 0,
+    "implementation_changes": 0,
+    "saved_npz_json_readback": true,
+    "first_actual_pngs_viewed": 2,
+    "corrected_actual_pngs_viewed": 1,
+    "readback_measured_section_cpu_seconds": 0.518211486,
+    "readback_measured_section_wall_seconds": 0.06553812300262507,
+    "readback_is_full_turn_measurement": false
+  },
+  "accepted_figures": [
+    "results/figures001/row_gain_norm.png",
+    "results/figures002/joint_history_residuals.png"
+  ],
+  "first_figures_preserved": true,
+  "remaining_scope": {
+    "H5": "INPUT_DEPENDENT_UNCALIBRATED",
+    "H6": "OPEN",
+    "H7": "LOCAL_PAIR_ONLY_HISTORY_PULLBACK_RETIMING_GEOMETRY_THERMAL_ODE_OPEN",
+    "physical": "HOLD",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "closed_hold": "CLOSED_HOLD_NOT_RESET",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+  },
+  "publication_completion_assessed": false,
+  "new_execution_authorized_by_verdict": false,
+  "skill_context_used": {
+    "workflow": "parent-selected physmath-research-loop built-in 1.0.0 / approved v0.2",
+    "references": ["RESEARCH_POLICY.md", "EVIDENCE_AND_HANDOFF.md"],
+    "applied_rules": [
+      "reuse unchanged valid evidence",
+      "distinguish identity, admission and scientific validity",
+      "preserve original failures and figures",
+      "finite same-reviewer correction scope",
+      "no subdelegation or review-of-review"
+    ]
+  }
+}
