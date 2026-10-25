@@ -1,0 +1,121 @@
+{
+  "schema": "REC_HD_H5_INDEPENDENT_DECISION_V1",
+  "reviewer": "/root/independent_review",
+  "independent_of": [
+    "/root/hd_parser",
+    "/root/h5_binding"
+  ],
+  "decision": "ADOPT_SCOPED_IMPLEMENTATION_AND_SOURCE_BINDING",
+  "review_passes": 1,
+  "bounded_finding_closure_performed": true,
+  "implementation_blocking_findings_open": 0,
+  "HD": {
+    "parser": "PASS_IMPLEMENTATION_REVIEW",
+    "current_code_sha256": "ef10b34e1891755334083340b84ff1e298151df720c13f008b3762505813e275",
+    "original_full_contract": "HOLD_SOURCE_DISCREPANCY_UNQUALIFIED",
+    "fixed_35Hz_gate_passing_lines": [
+      1
+    ],
+    "fixed_35Hz_gate_failing_lines": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "source_data_modified": false,
+    "tolerance_modified": false,
+    "unresolved": "Original source resolution of seven level/frequency discrepancies and physical uncertainty",
+    "evidence": [
+      "HD_INDEPENDENT_REFERENCE.json",
+      "H5_INDEPENDENT_CHECK.json",
+      "../hd_adapter/RESULT.json"
+    ]
+  },
+  "H5": {
+    "source_binding": "PASS_ACTUAL_SOURCE_BINDING_REVIEW",
+    "conditional_evaluator": "PASS_CONDITIONAL_IMPLEMENTATION_REVIEW",
+    "current_code_sha256": "a797c75ad987cdaadd3c7ffc08888c3ae09ab4b02700c4b028291c938e4225b2",
+    "source_context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+    "actual_query_count": 313,
+    "distinct_endpoint_slots": 626,
+    "actual_continuous_bound_coverage": 0,
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "physical_H5_status": "INPUT_DEPENDENT_UNCALIBRATED",
+    "evidence": [
+      "H5_INDEPENDENT_CHECK.json",
+      "H5_SERIALIZATION_FIRST_FAILURE.json",
+      "../h5_input_binding/results/ACTUAL_BOUND_CONSUMPTION.json",
+      "evidence/h5_tube_radius/FIRST_FINDING.json",
+      "evidence/h5_tube_radius/ORIGINAL_REPRODUCTION.json",
+      "evidence/h5_tube_radius/CLOSURE.json"
+    ],
+    "tube_bootstrap_contract": "positive proof-referenced guaranteed safe tube_radius.lower; strict E_upper < rho_lower; upper-only rejected"
+  },
+  "findings": [
+    {
+      "id": "HD-R1",
+      "status": "CLOSED",
+      "class": "numerical implementation underflow classification"
+    },
+    {
+      "id": "HD-R2",
+      "status": "OPEN_SOURCE_OBLIGATION_WITH_ACCEPTED_FAIL_CLOSED_DISPOSITION",
+      "class": "source input discrepancy"
+    },
+    {
+      "id": "HD-R3",
+      "status": "CLOSED",
+      "class": "ambient Decimal precision dependence"
+    },
+    {
+      "id": "H5-R1",
+      "status": "CLOSED",
+      "class": "rational serialization implementation-runtime boundary"
+    },
+    {
+      "id": "H5-R2",
+      "status": "CLOSED",
+      "class": "input-key reporting mismatch"
+    },
+    {
+      "id": "H5-R3",
+      "status": "CLOSED_BOUNDED_REPAIR_VERIFIED",
+      "severity": "P1",
+      "class": "scientific_input_semantics",
+      "original_finding": "evidence/h5_tube_radius/FIRST_FINDING.json",
+      "origin": "root finding independently confirmed",
+      "before_code_sha256": "98502f114db8a97cb64030fb7516d63ec8099c4f080590b5e9c995ca03c20c06",
+      "after_code_sha256": "a797c75ad987cdaadd3c7ffc08888c3ae09ab4b02700c4b028291c938e4225b2",
+      "reproduction": "evidence/h5_tube_radius/ORIGINAL_REPRODUCTION.json",
+      "closure": "evidence/h5_tube_radius/CLOSURE.json",
+      "physical_approval_granted": false
+    }
+  ],
+  "known_measured_review_CPU_seconds": 0.412183,
+  "known_measured_inner_execution_wall_seconds": 0.27876952700171354,
+  "maximum_RSS_KiB": 57916,
+  "unmeasured_cost": "UNKNOWN_NOT_ZERO: earlier scalar reference probe, file/tool/network/model work and final receipt writes",
+  "new_IVP": 0,
+  "new_RHS": 0,
+  "new_native_run": 0,
+  "old_compiler_fixture_replay": 0,
+  "old_matrix_rebuild": 0,
+  "production_approved": false,
+  "REI_activation": false,
+  "global_physical_completion": null,
+  "new_strong_no_go": false,
+  "bounded_tube_finding_closure": {
+    "same_review_pass": 1,
+    "new_full_suite_runs": 0,
+    "original_reproductions": 1,
+    "independent_targeted_controls": 6,
+    "additional_known_cpu_seconds": 0.063903,
+    "additional_inner_wall_seconds": 0.007085771001584362,
+    "frozen_additional_cpu_cap_seconds": 10,
+    "frozen_additional_wall_cap_seconds": 60
+  }
+}

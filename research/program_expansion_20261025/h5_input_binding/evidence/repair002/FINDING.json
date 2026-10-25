@@ -1,0 +1,37 @@
+{
+  "actual_physical_coverage": 0,
+  "actual_query_count": 313,
+  "budget": "Use remaining H5 CPU90 s / wall600 s / 1 GiB / 1 thread only; no old budget reset.",
+  "counterexample": "safe radius 1/10, upper radius 1, Emax=1/2: the previous scalar inequality passes, although coverage of Emax by the safe tube does not follow.",
+  "found_by": "/root; independently confirmed /root/independent_review",
+  "id": "H5_TUBE_RADIUS_BOUND_DIRECTION_20261025",
+  "minimal_repair": "Require positive proof-referenced tube_radius.lower. Other error/growth/curvature inputs remain upper bounds. Enforce Emax < rho_lower and lower-bound the margin rho_lower-Emax. Reject upper-only input.",
+  "new_ivp": 0,
+  "new_rhs": 0,
+  "original_identities": {
+    "BOUND_INPUT_CONTRACT.json": {
+      "bytes": 4000,
+      "preserved_as": "BOUND_INPUT_CONTRACT_before.json",
+      "sha256": "f93b3cd4ae13381db2fb830e4a692140f420b676c0c5f9953609f681bc0596b3"
+    },
+    "IMPLEMENTATION_RESULT.json": {
+      "bytes": 8838,
+      "preserved_as": "IMPLEMENTATION_RESULT_before.json",
+      "sha256": "0b1c96d50e87cd0cbd824f3457ee83d5f70c43891e0896ffbf17bb9477f9b8a6"
+    },
+    "code/h5_bounds.py": {
+      "bytes": 16936,
+      "preserved_as": "h5_bounds_before.py",
+      "sha256": "98502f114db8a97cb64030fb7516d63ec8099c4f080590b5e9c995ca03c20c06"
+    },
+    "tests/test_h5_bounds.py": {
+      "bytes": 14847,
+      "preserved_as": "test_h5_bounds_before.py",
+      "sha256": "b0e77e767aad00ff56a6b4d39b7d44f1082399b3705cbabcf34fe3d083cc98d9"
+    }
+  },
+  "original_issue": "evaluate_candidate reads tube_radius.upper via _scalar and checks Emax < rho. An upper bound of a safe tube radius cannot justify the required tube inclusion.",
+  "physical_epsilon": null,
+  "proof_content_scope": "Domain proof must cover at least the certified lower radius about the identical reconstruction, in the identical fixed norm and eta domain; bytes and scalar inequalities are conditional and do not approve physical epsilon.",
+  "severity": "P1_SCIENTIFIC_INPUT_SEMANTICS"
+}

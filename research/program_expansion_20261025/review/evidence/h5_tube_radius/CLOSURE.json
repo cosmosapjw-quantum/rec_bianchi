@@ -1,0 +1,53 @@
+{
+  "schema": "REC_H5_TUBE_RADIUS_INDEPENDENT_CONTROL_V1",
+  "finding": "H5-R3",
+  "mode": "after",
+  "status": "PASS_BOUNDED_CLOSURE",
+  "code_sha256": "a797c75ad987cdaadd3c7ffc08888c3ae09ab4b02700c4b028291c938e4225b2",
+  "controls": [
+    {
+      "name": "upper_only_cannot_certify_safe_radius",
+      "status": "PASS_REFUSAL",
+      "reason": "TUBE_RADIUS_CERTIFIED_LOWER_REQUIRED"
+    },
+    {
+      "name": "strict_equality_not_inside_open_tube",
+      "status": "PASS_REFUSAL",
+      "reason": "TUBE_BOOTSTRAP_FAILED"
+    },
+    {
+      "name": "smaller_safe_radius_not_rescued_by_an_upper",
+      "status": "PASS_REFUSAL",
+      "reason": "TUBE_BOOTSTRAP_FAILED"
+    },
+    {
+      "name": "zero_safe_radius_refused",
+      "status": "PASS_REFUSAL",
+      "reason": "POSITIVE_TUBE_RADIUS_LOWER_REQUIRED"
+    },
+    {
+      "name": "unreferenced_safe_radius_refused",
+      "status": "PASS_REFUSAL",
+      "reason": "BOUND_PROOF_REFERENCE_MISSING:tube_radius"
+    },
+    {
+      "name": "certified_lower_radius_strictly_contains_error",
+      "status": "PASS_CONDITIONAL_ONLY",
+      "radius_lower": "3/4",
+      "state_error_upper": "1/2",
+      "tube_margin_lower": "1/4",
+      "physical_epsilon": null,
+      "physical_outgoing_bound": null
+    }
+  ],
+  "process_cpu_seconds": 0.029625,
+  "inner_wall_seconds": 0.0017776089989638422,
+  "maximum_RSS_KiB": 10880,
+  "cpu_cap_seconds": 5,
+  "wall_cap_seconds": 30,
+  "address_space_cap_bytes": 1073741824,
+  "threads": 1,
+  "new_IVP": 0,
+  "new_RHS": 0,
+  "full_suite_replays": 0
+}
