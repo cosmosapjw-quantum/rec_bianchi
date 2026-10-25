@@ -1,0 +1,45 @@
+{
+  "format": "Raw consecutive binary byte ranges; concatenate in ascending index order. Individual parts are not standalone ZIP files.",
+  "original_zip": {
+    "bytes": 275856297,
+    "name": "REC_HD_H5_FULL_SOURCE_20261025_683c3f2ac3cd.zip",
+    "sha256": "71d0f0a44e43b211bdfabd7ac99be71077e1578814947aca09af56c6acb2fb29",
+    "source_commit": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de"
+  },
+  "part_maximum_MiB": 90,
+  "part_maximum_bytes": 94371840,
+  "parts": [
+    {
+      "bytes": 94371840,
+      "index": 1,
+      "name": "REC_HD_H5_FULL_SOURCE_20261025_683c3f2ac3cd.zip.part001",
+      "offset_bytes": 0,
+      "sha256": "814f5983a6710433a8018d7279218bd7845f1ff87a30ae4ba12af68a764e394d"
+    },
+    {
+      "bytes": 94371840,
+      "index": 2,
+      "name": "REC_HD_H5_FULL_SOURCE_20261025_683c3f2ac3cd.zip.part002",
+      "offset_bytes": 94371840,
+      "sha256": "ae7aba3aeacd15d9f68cf3959c4290c9419fbc848afbab833c2a564708503c12"
+    },
+    {
+      "bytes": 87112617,
+      "index": 3,
+      "name": "REC_HD_H5_FULL_SOURCE_20261025_683c3f2ac3cd.zip.part003",
+      "offset_bytes": 188743680,
+      "sha256": "ac399d484161e77afb1beb644a12dcb364f2f87c95074cb3159e614f14e2bc76"
+    }
+  ],
+  "restore_command": "python3 restore_source_zip.py --output restored_source.zip",
+  "restore_script": {
+    "bytes": 5387,
+    "name": "restore_source_zip.py",
+    "runtime": "Python 3 standard library only",
+    "sha256": "b3c2b1ed6d5949c2e4f5a889498bdf8ad368f9954c2f24e0a04ecb6891e57180"
+  },
+  "schema": "REC_HD_H5_BINARY_ZIP_PARTS_V1",
+  "scientific_reexecution": false,
+  "source_zip_mutated": false,
+  "verify_without_reassembly_command": "python3 restore_source_zip.py --verify-only"
+}

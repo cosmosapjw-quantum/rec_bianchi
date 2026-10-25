@@ -7,6 +7,9 @@
 - repository: cosmosapjw-quantum/rec_bianchi
 - branch: research/program-expansion-20261025, draft PR138
 - 원 base: 5dd414982c5c9ada97dfdfcc0b77cf83af86d66e
+- 검토된 과학 구현 S1: 683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de
+- 중앙 DAG 게시: rei_bianchi e18b4349f2a2da3ef7caf5ec73c8787d03894620, draft PR232
+- 중앙 게시 parent: 3f287279c9ae4e8bcd4949a56b8c4cc0601b1eb8; 최종 88 nodes, 15 authorities, 17 integration edges
 - 원 owner PR137: ea89c97abeb7a663a813f00e9aadddaf0b32a6a9
 - 시작 문서: RESULT_HD_H5_KO.md, CLAIM_GATES_HD_H5.json, DAG_HD_H5.json, EXECUTION_FREEZE_HD_H5.json
 - 실제 review: review/INDEPENDENT_DECISION.json
@@ -86,3 +89,22 @@ Drive1eHZ_wuG_4J_mgDrBvtRGe2QBpx_kpCAw.
 전체물리완료율null,L4_ready=false,PhysicalHOLD,
 REC_U5HOLD_9_FAIL/HOLD_8_FAIL,globalconvergenceNOT_RUN,
 productionNOT_APPROVED,REI_activation=false를유지한다.
+
+## 실제 게시·백업과 다음 시작점
+
+과학 코드·결과·독립 검토는 S1에 고정되어 있다. 이 문서의 containing REC commit은 전달 메타데이터를 추가한다. 정확한 게시 parent, 예상/실제 tree와 expected-SHA 갱신 결과는 `delivery/PUBLICATION_RECEIPT.json`에 있다. REC PR138과 중앙 PR232는 draft이며 merge와 물리 activation은 별개다.
+
+게시 직전 중앙 HEAD 이동을 확인해 HE, GRID044 및 CR의 두 노드 반환을 모두 보존한 3f2872 snapshot에 다시 적용했다. 중앙의 변경 범위는 HD/H5 두 wrapper의 네 필드와 관측 파일이다. 다른 86개 노드, 88개 nested original contract, 15개 authority, 17개 연결 및 기존 예산은 보존됐다. S1 과학 보고서의 87-node 서술은 당시 snapshot에 대한 기록이며, 최종 전달의 현재 수치는 88이다.
+
+`delivery/BACKUP_RECEIPT.json`에는 S0와 S1의 실제 Dropbox/Drive object ID, 크기 readback과 로컬 SHA256이 있다.
+
+- 전체 S1 소스 ZIP: 6,177 tracked files, 275,856,297 bytes, SHA256 `71d0f0a44e43b211bdfabd7ac99be71077e1578814947aca09af56c6acb2fb29`.
+- 재개용 source/input ZIP: 70,113,767 bytes, SHA256 `ca97417f3a33efc0d3445f115ed7bc29909127c3475c7636846ab921ea2a656e`. 현재 단위 소스와 원 PB01 S2 archive를 포함한다.
+- 전체 ZIP은 Dropbox에 단일 파일로 저장했다. Drive 연결 도구의 100 MiB 한도 때문에 Drive에는 검증된 90 MiB 이하 세 조각으로 저장했다. `delivery/full_source_restore/PARTS_MANIFEST.json`과 같은 폴더의 `restore_source_zip.py`를 사용한다. 세 조각의 순차 스트림 SHA256이 원본과 같음을 실제 확인했다.
+- 최종 전달 동반 ZIP의 자체 저장 응답은 `delivery/COMPANION_BACKUP_RECEIPT.json`에 별도로 기록한다. ZIP 안에 자신의 ACK를 다시 넣는 반복 포장을 하지 않는다.
+
+새 업로드의 원격 검증 범위는 실제 완료 ACK와 정확한 크기 metadata readback이다. 새 원격 전체 파일의 SHA256 재다운로드 검증을 수행했다고 주장하지 않는다. 원 PB01 S2 자료의 직접 복구에는 실제 전체 SHA256 검증을 수행했다.
+
+확인한 S1 GitHub CI는 이전 branch-range 파일의 공백 검사에서 실패했고 이후 pytest는 SKIPPED였다. 현재 추가 과학 파일의 공백 진단은 0개다. `delivery/CI_OBSERVATION.json`에 실제 run/job과 관측을 남겼으며, 전체 CI PASS로 바꾸지 않는다.
+
+다음 작업은 HD의 일곱 원자료 불일치를 source별로 해결하는 단위와, H5의 동일 source·norm·clock·continuous state를 가진 물리 proof packet 생산 단위다. 먼저 새 실행 한도를 명시한다. 완료 계산을 재실행하거나 현재의 null을 작은 표현 오차로 대신 채우지 않는다.

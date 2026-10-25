@@ -20,7 +20,12 @@
       "RESULT_HD_H5_KO.md",
       "h5_input_binding/BOUND_INPUT_CONTRACT.json"
     ],
-    "R10": "HANDOFF_HD_H5_KO.md",
+    "R10": [
+      "HANDOFF_HD_H5_KO.md",
+      "delivery/BACKUP_RECEIPT.json",
+      "delivery/PUBLICATION_RECEIPT.json",
+      "delivery/COMPANION_BACKUP_RECEIPT.json"
+    ],
     "C1": "PREFLIGHT_HD_H5.json",
     "C2": [
       "hd_adapter/README.md",
@@ -49,16 +54,29 @@
       "h5_input_binding/IMPLEMENTATION_RESULT.json"
     ],
     "C9": "review/INDEPENDENT_DECISION.json",
-    "C10": "delivery/PUBLICATION_RECEIPT.json"
+    "C10": [
+      "delivery/PUBLICATION_RECEIPT.json",
+      "delivery/CI_OBSERVATION.json",
+      "delivery/BACKUP_RECEIPT.json",
+      "delivery/COMPANION_BACKUP_RECEIPT.json"
+    ]
   },
-  "implementation_stages_status": "R1-R9/C1-C9 completed or reusable within implementation/source-binding scope; R10/C10 close with actual publication/backup receipt. Original HD full physical gate HOLD and H5 actual bound input stage BLOCKED remain separate.",
+  "implementation_stages_status": "R1-R10/C1-C10 evidenced within the bounded implementation/source-binding scope, including actual S1 and central publication and final companion dual ACK. Original HD full source gate HOLD and H5 actual bound input stage BLOCKED remain separate.",
   "scientific_open_obligations": [
     "HD seven original frequency/level discrepancies and source uncertainty",
     "H5 source-matched continuous bound proof packet0/313"
   ],
-  "publication_status": "PREPARED_PENDING_ACTUAL_EXPECTED_SHA_PUSH",
-  "backup_status": "S0_ACTUAL_DUAL_ACK; final source artifacts pending",
+  "publication_status": "SCIENCE_S1_AND_CENTRAL_DAG_EXPECTED_SHA_READBACK_PASS; final containing REC commit is metadata closeout",
+  "backup_status": "S0, S1_FULL_SOURCE, S1_PORTABLE_INPUT_SOURCE, FINAL_COMPANION: BOTH_PROVIDERS_ACTUAL_ACK_AND_SIZE_READBACK",
   "global_physical_completion": null,
   "L4_ready": false,
-  "REI_activation": false
+  "REI_activation": false,
+  "science_snapshot_commit": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+  "central_observation_commit": "e18b4349f2a2da3ef7caf5ec73c8787d03894620",
+  "central_PR": "https://github.com/cosmosapjw-quantum/rei_bianchi/pull/232",
+  "central_latest_snapshot_nodes": 88,
+  "current_scope_conclusion": "Implementation, actual-source binding, independent scientific review and delivery are closed within stated limits. HD source resolution and actual H5 physical proof inputs remain open; no physical epsilon or global completion promotion.",
+  "R10_C10_delivery_status": "CLOSED_WITH_ACTUAL_PUBLICATION_AND_DUAL_BACKUP_ACK",
+  "delivery_complete": true,
+  "scientific_requested_bound_inputs_complete": false
 }
