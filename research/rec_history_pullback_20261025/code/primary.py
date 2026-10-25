@@ -6,6 +6,7 @@ import numpy as np
 from common import UNIT,save,paths,verify,Counter
 from chart import frac,upper,metric,gather,validate_shift,sparse_jvp,sparse_vjp,conditional_box,require_shapes
 from composition import compose
+from event_pair import canonicalize_shared_event
 import history_boundary as native
 import interval as iv
 EPS=np.finfo(float).eps
@@ -73,12 +74,15 @@ def finite_case(c,K,Kint,op,dy_req,xi_req,direction,t,out,counter,U):
  chart_contained=bool(np.all(np.abs(chartout)<=box['bound']));native_contained=bool(np.all(np.abs(nativeout)<=box['bound']))
  eventfinite=counter.apply('EVENT_CHART_FORWARD_'+tag,op['events'],df,event=True);eventtangent=counter.apply('EVENT_TANGENT_'+tag,op['events'],tf,event=True);eventrem=counter.apply('EVENT_REMAINDER_'+tag,op['events'],rf,event=True)
  eventdirect=counter.apply('EVENT_ENDPOINT_ACTION_'+tag,op['event_endpoint'],actualdy,event=True)+counter.apply('EVENT_QUERY_ACTION_'+tag,op['event_query'],actualxi,event=True)
+ event_independent={key:value.copy() for key,value in (('finite',eventfinite),('tangent',eventtangent),('remainder',eventrem),('explicit_tangent',eventdirect))}
+ eventfinite=canonicalize_shared_event(eventfinite);eventtangent=canonicalize_shared_event(eventtangent);eventrem=canonicalize_shared_event(eventrem);eventdirect=canonicalize_shared_event(eventdirect)
+ eventmetric_independent={key:metric(event_independent['tangent'][i],event_independent['explicit_tangent'][i]) for i,key in enumerate(('F','proper','number','radiation','atomic'))}
  eventmetric={key:metric(eventtangent[i],eventdirect[i]) for i,key in enumerate(('F','proper','number','radiation','atomic'))}
  # Atomic/radiation diagnostic actions use shared event arrays; retain signed zero.
  event_sign=bool(eventfinite[4]==-eventfinite[3] and eventtangent[4]==-eventtangent[3] and eventrem[4]==-eventrem[3])
  save(out/f'CASE_{tag}_BOX.json',box)
- np.savez(out/f'CASE_{tag}_OUTPUTS.npz',actual_endpoint_increment=actualdy,actual_query_shift=actualxi,actual_native_alpha=np.array(nativealphaprime),delta_alpha=np.array(list(map(float,ea))),chart_delta=df,tangent=tf,mixed_remainder=rf,arithmetic_bridge=bf,native_interpolation=nativeprime,native_delta=native_delta,bridge_corrected_residual=bridge_residual,connected_incoming=c['stored']+df,chart_outgoing_increment=chartout,native_outgoing_increment=nativeout,outgoing_tangent=tangentout,outgoing_remainder=remainderout,outgoing_bridge=bridgeout,observed_taylor_remainder=observed,arithmetic_floor=floorout,event_finite=eventfinite,event_tangent=eventtangent,event_remainder=eventrem,event_explicit_tangent=eventdirect)
- row={'direction':direction,'t':t,'exact_fraction_identity':'PASS','bridge_corrected_absolute_error':bridge_error,'bridge_normalization':normscale,'bridge_corrected_normalized_error':bridge_error/normscale,'bridge_pass':bridge_error/normscale<=5e-12,'outgoing_remainder_norm':rema,'arithmetic_floor':floor,'above100_floor':nonfloor,'max_exact_chart_remainder':float(max(map(abs,rem))),'chart_finite_box_contained':chart_contained,'native_numerical_probe_box_contained':native_contained,'event_explicit_tangent':eventmetric,'event_sign_pair':event_sign,'physical_epsilon':None,'physical_bound':None}
+ np.savez(out/f'CASE_{tag}_OUTPUTS.npz',actual_endpoint_increment=actualdy,actual_query_shift=actualxi,actual_native_alpha=np.array(nativealphaprime),delta_alpha=np.array(list(map(float,ea))),chart_delta=df,tangent=tf,mixed_remainder=rf,arithmetic_bridge=bf,native_interpolation=nativeprime,native_delta=native_delta,bridge_corrected_residual=bridge_residual,connected_incoming=c['stored']+df,chart_outgoing_increment=chartout,native_outgoing_increment=nativeout,outgoing_tangent=tangentout,outgoing_remainder=remainderout,outgoing_bridge=bridgeout,observed_taylor_remainder=observed,arithmetic_floor=floorout,event_finite=eventfinite,event_tangent=eventtangent,event_remainder=eventrem,event_explicit_tangent=eventdirect,event_independent_finite=event_independent['finite'],event_independent_tangent=event_independent['tangent'],event_independent_remainder=event_independent['remainder'],event_independent_explicit_tangent=event_independent['explicit_tangent'])
+ row={'direction':direction,'t':t,'exact_fraction_identity':'PASS','bridge_corrected_absolute_error':bridge_error,'bridge_normalization':normscale,'bridge_corrected_normalized_error':bridge_error/normscale,'bridge_pass':bridge_error/normscale<=5e-12,'outgoing_remainder_norm':rema,'arithmetic_floor':floor,'above100_floor':nonfloor,'max_exact_chart_remainder':float(max(map(abs,rem))),'chart_finite_box_contained':chart_contained,'native_numerical_probe_box_contained':native_contained,'event_explicit_tangent':eventmetric,'independent_event_explicit_tangent':eventmetric_independent,'shared_event_sign_assignments':4,'event_sign_pair':event_sign,'physical_epsilon':None,'physical_bound':None}
  row['pass']=row['bridge_pass'] and chart_contained and native_contained and event_sign and all(m['normalized_error']<=2e-12 for m in eventmetric.values())
  save(out/f'CASE_{tag}_SUMMARY.json',row);return row
 

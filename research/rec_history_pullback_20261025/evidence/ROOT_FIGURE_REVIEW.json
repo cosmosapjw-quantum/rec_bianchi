@@ -1,0 +1,35 @@
+{
+  "unit": "REC-HISTORY-PB01",
+  "reviewer": "root scientific controller",
+  "method": "Direct visual inspection of actual PNG images at original resolution",
+  "first_plot": {
+    "path": "results/figures001/cell_margins_query_gains.png",
+    "sha256": "29ca9952f64156f457e3cc5b08efa38f0916d0c20fecdc4f2d88a0f8b0f3b1d6",
+    "verdict": "PASS",
+    "source_margin_signs_visible": true,
+    "query_gain_and_relative_interval_width_labeled": true
+  },
+  "initial_second_plot": {
+    "path": "results/figures001/remainder_adjoint_consistency.png",
+    "sha256": "4a1b2a66675d8b5394263c2bbbc7403f951cffaecc385cc038fcf41b87661f51",
+    "verdict": "FAIL_PRESENTATION",
+    "finding": "Axes squeezed to narrow strips, titles/labels clipped and ticks overlapping; numerical data retained unchanged.",
+    "preserved": true
+  },
+  "corrected_second_plot": {
+    "path": "results/figures002/remainder_adjoint_consistency.png",
+    "sha256": "d3830223c271aaf503fbb8e9011c14639f0c83cf617d7e71741746c93663c9d7",
+    "verdict": "PASS",
+    "explicit_axes_and_four_fixed_t_ticks": true,
+    "symlog_thresholds_retained": [
+      1e-30,
+      1e-16
+    ],
+    "criterion_retained": 2e-12,
+    "zero_baseline_preserved": true,
+    "legends_readable": true
+  },
+  "numerical_or_source_rerun": 0,
+  "finding_status": "PB01-FIGURE-001 CLOSED",
+  "same_independent_reviewer": "receipt_metadata also inspected original and corrected actual PNGs; concordant verdict"
+}
