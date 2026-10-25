@@ -9,8 +9,10 @@
 **PASS_SCOPED_SCIENTIFIC_REVIEW_AFTER_TARGETED_SAVED_DATA_REPAIR**다.
 
 과학·구현 범위는 **COMPLETE_SCOPED_SOURCE_HISTORY_PULLBACK**이다.
-이 S2 준비 시점은 R1–R9/C1–C9의18/20이며, R10/C10의 실제 전달은
-PUBLICATION_STATE와 delivery receipts에서 이어서 기록한다.
+불변 S2 과학 snapshot은 R1–R9/C1–C9의 18/20이다. 중앙 실제 게시·보존 readback과
+companion 실제 이중 ACK를 확보했다. 이 단일 최종 REC S3 후보가 실제 게시되면
+R10/C10을 포함한 R1–R10+C1–C10=20/20 전달 마감이 성립한다. 게시 전에는 후보 상태다.
+PUBLICATION_STATE와 delivery receipts가 그 조건과 근거를 기록한다.
 부모 REC-HISTORY는 PARTIAL이고 Physical HOLD를 유지한다.
 
 첫 primary는1회, exit2 FAILED_FROZEN_CRITERION으로 보존했다. 같은 사건의
@@ -270,6 +272,51 @@ REI_activation=false; first failed REI raw HISTORICAL_LOCAL_ONLY.
 CI는 별도 publication readback에서 실제 run/attempt/실패 step을 기록한다.
 Scoped science PASS와 CI 상태는 서로 다른 근거다.
 
+## 실제 전달 현황 — 최종 S3 후보와 실제 게시 조건
+
+ScienceS2는 Git `f9051f10f02582d6b339d8738f1e9796953941d4`와 draft PR137에
+실제 게시됐다. Full raw archive는 69,336,495 bytes,
+SHA256 `b43ec958374bb8ba97073c46355dc26131a64261cd5004fa64e65c6565da00d1`이다.
+Dropbox `id:BSpOijBcT10AAAAAAD_-Dw` / rev `65ea5beccbee90af03d47`와
+Drive `1eHZ_wuG_4J_mgDrBvtRGe2QBpx_kpCAw`의 실제 ACK가 있다.
+다운로드한 전체 bytes/SHA, outer ZIP CRC, 712개 payload의 size/SHA/CRC가 PASS다.
+내부 이전 KS01 ZIP은 outer member identity만 확인했고 이전 과학을 재검증하지 않았다.
+근거는 `delivery/S2_RECEIPT.json`, `delivery/S2_REMOTE_READBACK.json`이다.
+원 S2 ZIP은 변경하지 않았다. 별도로 남은 incomplete PENDING prefix는 두 번째
+검증된 후보가 아니며, 원인은 미해결 상태로 `delivery/S2_PENDING_FILE_OBSERVATION.json`에 보존했다.
+
+중앙에는 captured base `b24a9daee54fc0860c4cf299c4ea5f2a977c0fd4`에서
+commit `219fe60a3f069dda26e109f6e0cd1fd339c83701`, tree
+`8188397a0e94faac70c4352b14cc807b3e384843`로 게시했다.
+[PR229](https://github.com/cosmosapjw-quantum/rei_bianchi/pull/229)는 open/draft다.
+이전 18개 REC observation field와 PB01 관측, 정확한 이전 6개 return을 포함한
+10개 경로의 실제 blob/size/mode 및 보호 subtree readback이 PASS다.
+`delivery/CENTRAL_RECEIPT.json`과 `delivery/central/ACTUAL_REMOTE_READBACK.json`이
+실제 게시 근거다. 원 40 contracts/17 edges/7 authorities, 다른 38개 node,
+plan status, AGENTS, 고정 handoff를 보존했고 assembler/renderer/merge/activation은 0이다.
+중앙 관측은 불변 scienceS2 18/20을 기록하며 최종 전달 20/20을 미리 주장하지 않는다.
+
+실제 CI는 두 저장소 모두 RED다. REC S2는 `verify_repo.py --quick`의 whitespace·EOF
+검사에서 실패했고 PB01 소유 evidence/vendor 11개 경로에 12개 진단이 포함된다.
+중앙은 `cargo fmt --check`에서 실패했고 이번 중앙 projection의 Rust source 변경은 0이다.
+수동 rerun은 하지 않았으며 frozen audit/vendor bytes를 CI 목적으로 수정하지 않았다.
+실제 run/attempt와 실패 step은 `evidence/ci/S2_CI_READBACK.json`,
+`evidence/ci/CENTRAL_CI_READBACK.json`에 있다. 과학 범위의 PASS와 CI 상태를 구분한다.
+
+Companion의 실제 이중 전달이 완료됐다. 파일은 421,395 bytes,
+SHA256 `e1c252ac62a97c86ab699e2b95111c8963a277c9a86620b6ce544376803d37fd`다.
+Dropbox `id:BSpOijBcT10AAAAAAD_-Ew` / rev `65ea60534a9cd0af03d47`와
+Drive `1HlxOZOEDLbfEbrtYwaau6pWtRqm11V-E`의 실제 ACK 및 metadata size가 PASS다.
+Local whole SHA/CRC/152 payload 검증은 PASS이며 원격 whole SHA는 측정하지 않았다.
+근거는 `delivery/FINAL_COMPANION_RECEIPT.json`이다.
+
+R10/C10의 최종 마감은 이 실제 ACK를 담은 단일 REC S3 후보의 **실제 게시**를 조건으로 한다.
+게시되면 R1–R10+C1–C10=20/20이다. 최종 S3 identity는 `CONTAINING_COMMIT`이며,
+실제 SHA는 게시 후 PR137 본문과 최종 chat에 기록한다. 게시 전인 현재는 후보다.
+S2와 companion의 포장 당시 18/20은 불변이다. Companion은 자신의 ACK나 미래 S3 SHA를
+포함하지 않으며, ACK를 넣으려고 archive나 중앙 commit을 재생성하지 않았다.
+Final S3 CI는 게시 후 별도 조회할 항목이며 지금 PASS/FAIL을 주장하지 않는다.
+
 ## 읽을 파일과 그림
 
 - THEORY.md / FROZEN_CONTRACT.md: 정의·유도·동결 기준.
@@ -277,7 +324,8 @@ Scoped science PASS와 CI 상태는 서로 다른 근거다.
 - evidence/independent_review/FINAL_REVIEW.md: 동일 reviewer의 최종 범위 검토.
 - BUDGET_LEDGER.json / STAGE_PROGRESS.md: 누적 비용과 단계별 전달.
 - NEXT_INPUT_CONTRACT.md / HANDOFF_FINAL_KO.md: 다음 실제 입력과 재개.
-- delivery/PUBLICATION_STATE.json / FINAL_COMPANION_RECEIPT.json: 실제 전달 closeout.
+- delivery/PUBLICATION_STATE.json / S2_RECEIPT.json / CENTRAL_RECEIPT.json: 현재 실제 전달 근거.
+- delivery/FINAL_COMPANION_RECEIPT.json: 실제 companion 이중 ACK와 로컬 검증, 원격 whole-SHA 미측정 범위를 기록한 최종 전달 근거.
 
 ![Actual source cell margins and query gains](results/figures001/cell_margins_query_gains.png)
 

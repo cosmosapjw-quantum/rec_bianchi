@@ -1,0 +1,129 @@
+{
+  "CI_status": "RED_ACTUAL_EXISTING_RUN_NO_MANUAL_RERUN",
+  "PR_run": {
+    "attempt": 1,
+    "conclusion": "failure",
+    "id": 40175675295,
+    "job_id": 121115698056,
+    "status": "completed"
+  },
+  "backup_status": "ACTUAL_S2_DUAL_PROVIDER_ACK_SEPARATE",
+  "binary_hash_policy_logged": "PASS",
+  "captured_phase": "scienceS2",
+  "cause": "verify_repo committed-feature-range whitespace and EOF diagnostics, including PB01-owned evidence/vendor paths",
+  "decoded_log_lines": 10565,
+  "failed_step": "python scripts/verify_repo.py --quick",
+  "full_raw_log_location": "private WORK/delivery/ci/S2_ACTUAL_JOB_LOG.json; decoded text and pre-compaction public summary preserved beside it",
+  "head": "f9051f10f02582d6b339d8738f1e9796953941d4",
+  "manual_reruns": 0,
+  "new_log_queries": 0,
+  "owned_examples": [
+    "research/rec_history_pullback_20261025/evidence/implementation_history/event_pair001/SHARED_EVENT_PAIRING.diff:28: trailing whitespace.",
+    "research/rec_history_pullback_20261025/evidence/implementation_history/event_pair001/SHARED_EVENT_PAIRING.diff:28: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_FAILURE_REVIEW.md:120: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_REPAIR_CLOSURE.md:59: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_REPAIR_VERDICT.json:50: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/FINAL_REVIEW.md:331: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/FINAL_VERDICT.json:218: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_CODE_REVIEW.md:248: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_INITIAL_FINDING.md:39: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_VERDICT.json:121: new blank line at EOF.",
+    "research/rec_history_pullback_20261025/figures/layout002/LAYOUT_DIFF.diff:10: trailing whitespace.",
+    "research/rec_history_pullback_20261025/vendor/interval.py:119: new blank line at EOF."
+  ],
+  "owned_scope_note": "Both inherited vendor interval.py and PB01 implementation/reviewer/layout evidence have warnings. The CI failure is not classified as exclusively historical. No whitespace/source cleanup or CI rerun performed here.",
+  "owned_warning_counts_by_kind": {
+    "new blank line at EOF": 10,
+    "trailing whitespace": 2
+  },
+  "owned_warning_lines": 12,
+  "owned_warning_paths": 11,
+  "owned_warnings": [
+    {
+      "line": 28,
+      "path": "research/rec_history_pullback_20261025/evidence/implementation_history/event_pair001/SHARED_EVENT_PAIRING.diff",
+      "warning": "trailing whitespace"
+    },
+    {
+      "line": 28,
+      "path": "research/rec_history_pullback_20261025/evidence/implementation_history/event_pair001/SHARED_EVENT_PAIRING.diff",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 120,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_FAILURE_REVIEW.md",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 59,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_REPAIR_CLOSURE.md",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 50,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/EVENT_REPAIR_VERDICT.json",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 331,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/FINAL_REVIEW.md",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 218,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/FINAL_VERDICT.json",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 248,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_CODE_REVIEW.md",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 39,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_INITIAL_FINDING.md",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 121,
+      "path": "research/rec_history_pullback_20261025/evidence/independent_review/PREEXEC_VERDICT.json",
+      "warning": "new blank line at EOF"
+    },
+    {
+      "line": 10,
+      "path": "research/rec_history_pullback_20261025/figures/layout002/LAYOUT_DIFF.diff",
+      "warning": "trailing whitespace"
+    },
+    {
+      "line": 119,
+      "path": "research/rec_history_pullback_20261025/vendor/interval.py",
+      "warning": "new blank line at EOF"
+    }
+  ],
+  "parse_method": "Decode structuredContent.content as actual log; strip runner timestamps/ANSI; json-decode committed_feature_range value; require decoded diagnostic rows to equal standalone log diagnostic rows. Serialized report JSON line is not a warning.",
+  "previous_summary_issue": "One1,621,771-character serialized JSON line was included as owned example; removed from public summary and not counted as an actual diagnostic row.",
+  "push_run": {
+    "attempt": 1,
+    "conclusion": "failure",
+    "id": 40175672328,
+    "job_id": 121115688704,
+    "status": "completed"
+  },
+  "pytest": "SKIPPED",
+  "schema": "REC_PB01_S2_COMPACT_ACTUAL_CI_READBACK_V1",
+  "scientific_execution": 0,
+  "scientific_status": "SCOPED_PASS_SEPARATE",
+  "source_log_identity": {
+    "bytes": 3597960,
+    "sha256": "7b4690bbf8701bfa7cd428cfc0cd6a922f93a4ed8003a95eeef1bea789f84fc9"
+  },
+  "step_exit_code": 1,
+  "trigger_head_and_checkout_head": "Recorded separately; this summary does not infer a source-integrity failure from PR checkout metadata.",
+  "unit": "REC-HISTORY-PB01",
+  "verify_reported_checkout_head": "9e1e36782513fd8786c57952122e949d5f7ddd94",
+  "warning_counts_by_kind": {
+    "new blank line at EOF": 88,
+    "trailing whitespace": 4991
+  },
+  "warning_lines": 5079
+}
