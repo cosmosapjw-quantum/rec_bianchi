@@ -1,0 +1,21 @@
+--- before_candidate_preservation/primary.py
++++ after_candidate_preservation/primary.py
+@@ -40,9 +40,16 @@
+     B[0,312]=3*ly*x*1.664786871919931;B[1,311]=3*ly*x
+     B[np.arange(311)+2,np.arange(311)]=stored['Tvv'][0]*x*(1-stored['p'])
+     np.savez(out/'REPRESENTED_COEFFICIENTS.npz',M=M,B=B,T=T,P=P)
+-    V=solve(M,B);Z=solve(M,np.eye(313));K=T@V+P
++    V=solve(M,B)
++    np.savez(out/'APPROXIMATE_V.npz',Vhat=V)
++    save(out/'RHS_USAGE.json',{'large_rhs':RHS,'large_rhs_cap':639,'phase':'V_CANDIDATE_PRESERVED'})
++    Z=solve(M,np.eye(313))
++    np.savez(out/'APPROXIMATE_Z.npz',Zhat=Z)
++    save(out/'RHS_USAGE.json',{'large_rhs':RHS,'large_rhs_cap':639,'phase':'Z_CANDIDATE_PRESERVED'})
++    K=T@V+P
++    np.savez(out/'APPROXIMATE_RESPONSE.npz',Vhat=V,Zhat=Z,Khat=K)
+     cert,a=certify(M,B,T,P,V,Z);save(out/'CERTIFICATE.json',cert)
+-    np.savez(out/'CERTIFICATE_ARRAYS.npz',**a);np.savez(out/'APPROXIMATE_RESPONSE.npz',Vhat=V,Zhat=Z,Khat=K)
++    np.savez(out/'CERTIFICATE_ARRAYS.npz',**a)
+     if cert['status']!='CERTIFIED_REPRESENTED_BINARY64_OPERATOR': raise ValueError(cert['status'])
+     sharp=(cert['norm_upper']-cert['norm_lower'])/max(cert['norm_upper'],1e-280)
+     residual=M@V-B;gross=np.abs(M)@np.abs(V)+np.abs(B);ratio=np.zeros_like(gross);np.divide(np.abs(residual),gross,out=ratio,where=gross!=0)

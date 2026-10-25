@@ -1,0 +1,59 @@
+--- before/tests/manufactured.py
++++ after/tests/manufactured.py
+@@ -3,6 +3,7 @@
+ import numpy as np
+ import interval as iv
+ from certificate import certify
++from common import save
+ 
+ def rational(a): return [[F(float(x)) for x in row] for row in a]
+ def matmul(a,b): return [[sum(x*y for x,y in zip(row,col)) for col in zip(*b)] for row in a]
+@@ -16,7 +17,7 @@
+                 factor=aug[i][k]; aug[i]=[x-factor*y for x,y in zip(aug[i],aug[k])]
+     return [row[n:] for row in aug]
+ 
+-def run():
++def run(out):
+     # Arithmetic assumptions exercised in this same bounded scientific child.
+     tiny=np.nextafter(0.,1.); half=np.finfo(float).tiny/2
+     assert tiny>0 and half>0 and half*1.==half and np.finfo(float).tiny*.5==half
+@@ -25,12 +26,21 @@
+     arithmetic={'round_to_nearest_ties_to_even':True,'gradual_underflow':True,'smallest_subnormal':float(tiny),'half_minimum_normal':float(half)}
+     cases=[(np.array([[3.,1.],[-2.,4.]]),np.array([[1.,-1.],[2.,3.]]),np.array([[3.,1.],[0.5,1.]]),np.array([[-1.,1.],[-1.,0.]])),
+            (np.array([[4.,1.,-1.],[2.,5.,1.],[1.,0.,3.]]),np.eye(3),np.array([[1.,-1.,.5],[1.,1.,-2.]]),np.array([[1e-15,-1.,2.],[.1,.2,.3]]))]
+-    reports=[]; count=0
+-    for M,B,T,P in cases:
+-        V=np.linalg.solve(M,B);Z=np.linalg.solve(M,np.eye(len(M)));count+=B.shape[1]+len(M)
++    reports=[]; count=0; numeric_count=0; fraction_count=0
++    def retain(phase):
++        save(out/'MANUFACTURED_PROGRESS.json',{'small_rhs_charged':count,'numeric_rhs_charged':numeric_count,'fraction_rhs_charged':fraction_count,'phase':phase,'completed_cases':reports})
++    retain('BEFORE_CASES')
++    for case_index,(M,B,T,P) in enumerate(cases):
++        n=len(M)
++        if count+n>12:raise RuntimeError('SMALL_RHS_CAP')
++        count+=n;numeric_count+=n;retain(f'BEFORE_NUMERIC_INVERSE_CASE_{case_index+1}')
++        Z=np.linalg.solve(M,np.eye(n));V=Z@B
+         cert,a=certify(M,B,T,P,V,Z)
+         assert cert['status']=='CERTIFIED_REPRESENTED_BINARY64_OPERATOR'
++        if count+B.shape[1]>12:raise RuntimeError('SMALL_RHS_CAP')
++        count+=B.shape[1];fraction_count+=B.shape[1];retain(f'BEFORE_FRACTION_ORACLE_CASE_{case_index+1}')
+         exact=matmul(rational(T),exact_solve(M,B));pp=rational(P)
++        save(out/f'MANUFACTURED_EXACT_CASE_{case_index+1}.json',{'exact_before_P':[[str(x) for x in row] for row in exact],'small_rhs_charged':count,'certificate':cert})
+         exact=[[x+y for x,y in zip(row,p)] for row,p in zip(exact,pp)]
+         for i,row in enumerate(exact):
+             for j,k in enumerate(row): assert F(float(a['Klo'][i,j]))<=k<=F(float(a['Khi'][i,j]))
+@@ -41,6 +51,8 @@
+         for i,row in enumerate(exact): assert sum(abs(x)*e for x,e in zip(row,eps))<=F(given['bound'][i])
+         assert max(zero['bound'])<=1e-300
+         reports.append({'dimension':len(M),'exact_K':[[str(x) for x in row] for row in exact],'exact_norm':str(norm),'certificate':cert,'zero_epsilon':zero,'manufactured_epsilon':given})
++        retain(f'COMPLETED_CASE_{case_index+1}')
++        save(out/f'MANUFACTURED_CASE_{case_index+1}.json',reports[-1])
+     M,B,T,P=cases[0]
+     fail,_=certify(M,B,T,P,np.zeros_like(B),np.zeros_like(M));assert fail['status']=='CERTIFICATE_FAILURE_RHO'
+     refused=[]
+@@ -48,4 +60,4 @@
+         try: fn()
+         except ValueError: refused.append(label)
+     assert len(refused)==2 and count<=12
+-    return {'status':'PASS','small_rhs':count,'cases':reports,'rho_failure':fail,'refused':refused,'physical_epsilon':None,'arithmetic':arithmetic}
++    return {'status':'PASS','small_rhs':count,'numeric_rhs':numeric_count,'fraction_rhs':fraction_count,'cases':reports,'rho_failure':fail,'refused':refused,'physical_epsilon':None,'arithmetic':arithmetic}

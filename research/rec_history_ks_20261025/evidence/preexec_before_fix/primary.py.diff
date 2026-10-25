@@ -1,0 +1,51 @@
+--- before/code/primary.py
++++ after/code/primary.py
+@@ -62,39 +62,43 @@
+     np.savez(out/'EVENT_RESPONSE.npz',number_hat=numhat,number_lo=number[0],number_hi=number[1],radiation_hat=radhat,radiation_lo=radiation[0],radiation_hi=radiation[1],atomic_hat=-radhat,atomic_lo=atomic[0],atomic_hi=atomic[1],F_hat=Fhat,F_lo=flo,F_hi=fhi,proper_hat=theta[5]*Fhat,proper_lo=proper[0],proper_hi=proper[1])
+     save(out/'CONDITIONAL_BOX.json',iv.box_weights((a['Klo'],a['Khi'])))
+     np.savez(out/'BOX_WEIGHTS.npz',weights=iv.abs_bounds((a['Klo'],a['Khi']))[1])
+-    def endpoint(shift,incoming):
++    def endpoint(shift,incoming,tag):
+         dd=dict(data);dd['incoming']=incoming
+         bb=source.build(source.parameters(theta,shift),dd,ownership=blocks['ownership']); vv,_=source.matrices(bb)
+         X=solve(vv['M'],vv['s'])
+         oo={k:split(v)[0] for k,v in source.outputs(bb,X,incoming).items()}
++        np.savez(out/f'ENDPOINT_{tag}.npz',X=X,theta=np.asarray(bb['theta']),incoming=incoming,M=vv['M'],s=vv['s'],T=vv['T'],P=vv['P'],**oo)
++        save(out/'RHS_USAGE.json',{'large_rhs':RHS,'large_rhs_cap':639,'last_completed_endpoint':tag})
+         return oo
+-    baseout=endpoint(np.zeros(6),u)
++    baseout=endpoint(np.zeros(6),u,'base')
+     np.savez(out/'BASE_SOLVED_OUTPUTS.npz',**baseout)
+     scale=max(float(np.max(np.abs(u))),1e-30);directions=[(-1.)**np.arange(313)*scale,np.sin(np.arange(313)+1.)*scale]
+     affine=[];mixed=[];raw={}
+     for i,d in enumerate(directions):
+-        plus=endpoint(np.zeros(6),u+d);minus=endpoint(np.zeros(6),u-d)
++        plus=endpoint(np.zeros(6),u+d,f'affine_{i+1}_plus');minus=endpoint(np.zeros(6),u-d,f'affine_{i+1}_minus')
+         metrics={}
+         for key,pred in [('outgoing',K@d),('F',Fhat@d),('R_gamma',numhat@d)]:
+             actual=(plus[key]-minus[key])/2; m=metric(actual,pred)
+             m['gross_roundoff']=float(2048*EPS*max(np.max(np.abs(plus[key])),np.max(np.abs(minus[key])),1e-280));m['pass']=m['normalized_error']<=2e-9;metrics[key]=m
+         affine.append({'direction':i+1,'metrics':metrics})
++        save(out/f'AFFINE_PAIR_{i+1}.json',affine[-1]);save(out/'AFFINE_CONTROLS.json',affine)
+         for sign,oo in [('plus',plus),('minus',minus)]:
+             for key,value in oo.items():raw[f'affine_{i}_{sign}_{key}']=value
+     vv=[np.array([.1,-.2,.3,-.1,.2,-.3]),np.array([.2,.2,-.1,.1,-.3,.2])]
+     for i,(v,d) in enumerate(zip(vv,directions)):
+         pred={'outgoing':js['d_outgoing']@v+K@d,'F':js['d_F']@v+Fhat@d,'R_gamma':js['d_R_gamma']@v+numhat@d}
+         for h in (1e-6,5e-7):
+-            plus=endpoint(h*v,u+h*d);minus=endpoint(-h*v,u-h*d)
++            plus=endpoint(h*v,u+h*d,f'joint_{i+1}_{h}_plus');minus=endpoint(-h*v,u-h*d,f'joint_{i+1}_{h}_minus')
+             metrics={key:metric((plus[key]-minus[key])/(2*h),pred[key]) for key in pred}
+             for m in metrics.values():m['pass']=m['normalized_error']<=2e-5
+             mixed.append({'direction':i+1,'h':h,'metrics':metrics,'pass':all(m['pass'] for m in metrics.values())})
++            save(out/f'JOINT_PAIR_{i+1}_{h}.json',mixed[-1]);save(out/'JOINT_LOCAL_CONTROLS.json',mixed)
+             for sign,oo in [('plus',plus),('minus',minus)]:
+                 for key,value in oo.items():raw[f'mixed_{i}_{h}_{sign}_{key}']=value
+     np.savez(out/'CONTROL_ENDPOINTS.npz',**raw)
+     save(out/'AFFINE_CONTROLS.json',affine);save(out/'JOINT_LOCAL_CONTROLS.json',mixed)
+     sys.path.insert(0,str(UNIT/'tests'));from manufactured import run as manufactured
+-    controls=manufactured();save(out/'MANUFACTURED_CONTROLS.json',controls)
++    controls=manufactured(out);save(out/'MANUFACTURED_CONTROLS.json',controls)
+     energy={'incoming_exact_opposites':bool(np.array_equal(radhat+(-radhat),np.zeros(313))),'stored_Js_exact_opposites':bool(np.array_equal(js['d_radiation_energy']+js['d_atomic_energy'],np.zeros(6)))}
+     summary={'certificate_sharpness':sharp,'certificate_sharpness_pass':sharp<=1e-6,'backward_pass':backward['pass'],'affine_pass':all(m['pass'] for row in affine for m in row['metrics'].values()),'joint_pass':all(any(row['pass'] for row in mixed if row['direction']==i) for i in (1,2)),'energy':energy,'history_pass':history['status']=='PASS','large_rhs':RHS,'small_rhs':controls['small_rhs'],'physical_epsilon':None,'whole_cell_curvature':None,'absolute_history_bound':None,'actual_model':None,'requested_model':'gpt-6.1-sol'}
+     summary['status']='PASS' if all([summary['certificate_sharpness_pass'],summary['backward_pass'],summary['affine_pass'],summary['joint_pass'],all(energy.values())]) else 'FAILED_FROZEN_CRITERION'
