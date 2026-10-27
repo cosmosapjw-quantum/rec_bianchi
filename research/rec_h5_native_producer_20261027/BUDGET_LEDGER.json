@@ -2,16 +2,55 @@
   "schema": "REC_H5_NATIVE_REFERENCE_BUDGET_V1",
   "unit_id": "REC-H5-NATIVE-REFERENCE01",
   "date_kst": "2026-10-27",
-  "status": "NEW_BOUNDED_UNIT",
-  "local_cpu_caps_s": {"theory_intake_symbolic":120,"implementation_execution":300,"independent_review":120,"packaging":60,"total":600},
-  "threads_per_process":1,
-  "memory_bytes_per_scientific_process":2147483648,
-  "scientific_execution_status":"NOT_RUN",
-  "packaging_preparation_known_cpu_s":0.339149,
-  "packaging_preparation_evidence":"delivery/helper_check/RESULT.json",
-  "remote_symbolic_cpu":"UNKNOWN_NOT_EXPOSED",
-  "intake_metadata_serialization_tails":"UNKNOWN_NOT_ZERO",
-  "original_budgets":"Preserve all old ledgers, failures, holds and cumulative debits. No reset or transfer.",
-  "primary_run_cap":"TO_BE_FROZEN_AT_C4_BEFORE_EXECUTION",
-  "new_IVP_or_old_science_replay":false
+  "status": "PRIMARY_AND_CONTROLS_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+  "local_cpu_caps_s": {
+    "theory_intake_symbolic": 120,
+    "implementation_execution": 300,
+    "independent_review": 120,
+    "packaging": 60,
+    "total": 600
+  },
+  "threads_per_process": 1,
+  "memory_bytes_per_scientific_process": 2147483648,
+  "scientific_execution_status": "ONE_PRIMARY_AND_ONE_CONTROLS_COMPLETED",
+  "packaging_preparation_known_cpu_s": 0.339149,
+  "packaging_preparation_evidence": "delivery/helper_check/RESULT.json",
+  "remote_symbolic_cpu": "UNKNOWN_NOT_EXPOSED",
+  "intake_metadata_serialization_tails": "UNKNOWN_NOT_ZERO",
+  "original_budgets": "Preserve all old ledgers, failures, holds and cumulative debits. No reset or transfer.",
+  "primary_run_cap": {
+    "primary_cpu_s": 90,
+    "primary_wall_s": 180,
+    "controls_cpu_s": 60,
+    "controls_wall_s": 120
+  },
+  "new_IVP_or_old_science_replay": false,
+  "controlled_scientific_cpu_s": 8.483007,
+  "controlled_runs": [
+    {
+      "run": "primary001",
+      "cpu_s": 8.352353,
+      "wall_s": 8.39756459199998,
+      "max_rss_kib": 91816,
+      "exit_code": 0
+    },
+    {
+      "run": "controls001",
+      "cpu_s": 0.130654,
+      "wall_s": 0.16986201699910453,
+      "max_rss_kib": 13696,
+      "exit_code": 0
+    }
+  ],
+  "primary_replays": 0,
+  "scientific_repairs": 0,
+  "read_only_descriptive_process_cpu_s": 0.124992,
+  "descriptive_block_cpu_s_included_in_process": 0.061849765000000015,
+  "independent_R6_exact_metadata_cpu_s": 0.012264343,
+  "independent_C9_status": "PENDING",
+  "packaging_measured_before_C8_stage_cpu_s": 0.6578517309999998,
+  "delivery_helper_syntax_preparation_cpu_s": 0.003913866,
+  "source_intake_serializer_cpu_s": 0.028181703,
+  "fresh_central_dag_metadata_cpu_s": 0.031284747,
+  "metadata_publication_serialization_startup_tails": "UNKNOWN_NOT_ZERO; not zeroed or counted twice"
 }
