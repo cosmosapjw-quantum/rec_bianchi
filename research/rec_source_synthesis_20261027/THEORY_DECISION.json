@@ -1,0 +1,61 @@
+{
+  "schema": "REC_SOURCE_SYNTHESIS_THEORY_ADMISSION_V1",
+  "stage": "R8",
+  "decision": "PASS_DERIVED_SCOPED_READY_FOR_CODING",
+  "claims": [
+    {
+      "id": "HD_JOINT_THERMAL",
+      "basis": [
+        "derived",
+        "independently reviewed",
+        "symbolically checked"
+      ],
+      "statement": "Fixed level and line columns imply exact paired radiative imbalance tanh(delta/2) and stable source-function deviation; prospective24-case diagnostic leaves original gap gate unchanged."
+    },
+    {
+      "id": "HISTORY_RETIMING",
+      "basis": [
+        "derived",
+        "independently reviewed",
+        "symbolically checked"
+      ],
+      "statement": "For the specified continuous piecewise-linear reconstruction, both directed finite-retiming remainders and chord remainders are exact weighted jump sums; absolute jump sums bound their magnitudes."
+    },
+    {
+      "id": "PHYSICAL_COMPOSITION",
+      "basis": [
+        "derived conditional"
+      ],
+      "statement": "An independently established physical value enclosure composes additively at the two retimed endpoints; required physical enclosure remains missing."
+    }
+  ],
+  "closed_findings": [
+    "TR-01 causal-final-cell fallback",
+    "TR-02 finite-partition qualification"
+  ],
+  "open_implementation": [
+    "24 actualHD values andhighprecisionreferences",
+    "313 exactnativegrid/source bindings",
+    "actualretiming/chordresults",
+    "code-independent review"
+  ],
+  "physical_obligations": {
+    "HD_original_35Hz_gate": "7/8_FAIL_PRESERVED",
+    "H5_physical_epsilon": null,
+    "H5_actual_coverage": "0/313",
+    "H6": "OPEN",
+    "H7": "OPEN"
+  },
+  "strong_no_go": {
+    "proposed": false,
+    "NG1_to_NG7": "No impossibility result admitted; unavailable input/source access is not an impossibility proof"
+  },
+  "dag": {
+    "working_completed": 32,
+    "total": 88,
+    "shared_authority_completed": 27,
+    "new_completed": 0,
+    "global_physical_completion": null
+  },
+  "next_executable_action": "Freeze exact input/formula/test/resource contract, implement only new diagnostics, retain historicalcode/results."
+}
