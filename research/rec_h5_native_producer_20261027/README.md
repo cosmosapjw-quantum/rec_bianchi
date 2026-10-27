@@ -1,5 +1,9 @@
 # REC-H5-NATIVE-REFERENCE01
 
+## Admitted result and final entry points
+
+Actual313 reference/representation producer: PASS_SCOPED at f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001. Read FINAL_REPORT_KO.md, HANDOFF_KO.md and delivery/FINAL_DELIVERY.json for current delivery state. The original R1 text below is the preserved initial contract. Shared canonical DAG28/88; physical H5 coverage0/313. Central additive return: 5cabe78f89f3ecd79d11faa29088bf30992a1017.
+
 Date: 2026-10-27 (Asia/Seoul). Active requested scope: a new complete theory R1–R10 and coding C1–C10 loop under the user-supplied PhysMath Research Loop 1.0.0. This unit continues the completed source-synthesis unit without replaying its science.
 
 ## R1 objective
