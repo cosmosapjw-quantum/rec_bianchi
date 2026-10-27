@@ -1,0 +1,56 @@
+{
+  "unit_id": "REC-H5-NATIVE-REFERENCE01",
+  "stage": "C4",
+  "authorization": "User explicitly authorized full theory+coding loop and backup/publication; root releases only these bounded runs after this stage is published.",
+  "worker": {
+    "requested_model": "gpt-6.1-sol",
+    "role": "delegated implementation and bounded execution",
+    "runtime_identity": "NOT_INDEPENDENTLY_OBSERVABLE"
+  },
+  "reviewer": {
+    "role": "independent Astra admission",
+    "existing_agent": "native_reference_review",
+    "no_primary_replay_default": true
+  },
+  "limits": {
+    "threads": 1,
+    "memory_bytes_per_child": 2147483648,
+    "implementation_execution_cpu_subtotal_cap_s": 300,
+    "local_unit_planned_cpu_cap_s": 600
+  },
+  "runs": [
+    {
+      "id": "primary001",
+      "cpu_cap_s": 90,
+      "wall_cap_s": 180,
+      "command": "python3.12 research/rec_h5_native_producer_20261027/code/run_bounded.py --mode primary --cpu-seconds 90 --wall-seconds 180 --memory-mib 2048 --output research/rec_h5_native_producer_20261027/results/primary001",
+      "release": "ROOT_AFTER_C4_PUBLICATION_AND_C5_PREFLIGHT"
+    },
+    {
+      "id": "controls001",
+      "cpu_cap_s": 60,
+      "wall_cap_s": 120,
+      "command": "python3.12 research/rec_h5_native_producer_20261027/code/run_bounded.py --mode controls --cpu-seconds 60 --wall-seconds 120 --memory-mib 2048 --output research/rec_h5_native_producer_20261027/results/controls001",
+      "release": "ROOT_AFTER_PRIMARY_AND_C6_PREFLIGHT"
+    }
+  ],
+  "dependency_order": [
+    "frozen theory/source contract",
+    "implementation preparation and C3 arithmetic clarifications",
+    "C4 actual publication",
+    "C5 latest-policy/head check then one primary",
+    "C6 latest-policy/head check then one focused control run",
+    "C7 science mapping and plotted evidence",
+    "C8 enclosure width/provenance/resource assessment",
+    "C9 separate review",
+    "C10 source ZIP, scoped central DAG return and handoff"
+  ],
+  "cost_basis": "313 rows, fixed finite critical sets, Decimal80 and independent140 elementary evaluations; no time integration/native solver/history replay.",
+  "repair_policy": "Preserve any failed run and return to root with concrete cause. No blind rerun or automatic precision/sweep expansion. One bounded targeted correction may be authorized within the existing cumulative subtotal.",
+  "old_scientific_replays": 0,
+  "foreign_budgets": "UNCHANGED",
+  "resource_caveats": {
+    "remote_CAS_cpu": "UNKNOWN_NOT_EXPOSED",
+    "unmeasured_metadata_and_serialization_tails": "UNKNOWN_NOT_ZERO"
+  }
+}
