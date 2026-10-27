@@ -4,7 +4,7 @@ Date: 2026-10-27 (Asia/Seoul). Active requested scope: a new complete theory R1â
 
 ## R1 objective
 
-Supply the source-matched native Wien-reference part of the missing H5 observable map on the actual 313 queries: explicit first/second derivatives, whole-cell reference-curvature envelopes, and the exact-reference versus represented-clock/temperature bridge. Bind these to original source constants, channel energies, the fixed T0/cosmology, and the existing native-real causal grid. Produce runnable, independently checked code, raw results, figures, source archive, per-stage Git/Dropbox/Drive receipts and a resumable handoff.
+Supply the source-matched native Wien-reference part of the missing H5 observable map on the actual 313 queries: explicit first/second derivatives, whole-cell reference-curvature envelopes, and the exact-reference versus represented-clock/temperature bridge. Bind these to original source constants, channel energies, the fixed T0/cosmology, and H5's immutable stored geometric cells with exact rational alpha. The predecessor's native-real grid remains a separate reused result and does not replace this clock. Produce runnable, independently checked code, raw results, figures, source archive, per-stage Git/Dropbox/Drive receipts and a resumable handoff.
 
 The native reference is w_E(eta)=exp[-E exp(eta)/(kBoltz_native T0)]. Native occupation departure is G_E(eta,f)=f-w_E(eta). The original code's kBoltz=8.617343e-5 eV/K is retained; replacing it with modern SI k_B would change the source. R3 will freeze the exact represented-constant and native temperature-operation conventions before execution.
 
