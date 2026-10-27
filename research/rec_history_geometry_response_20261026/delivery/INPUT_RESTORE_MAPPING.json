@@ -1,0 +1,72 @@
+{
+  "schema": "GEO01_PORTABLE_IMMUTABLE_INPUT_RESTORE_MAPPING_V1",
+  "full_S0": {
+    "filename": "REC_HISTORY_GEO01_S0_SOURCE_FREEZE_20261026.zip",
+    "bytes": 40941450,
+    "sha256": "9f705a5031cb440a5feeefe0b983065e21d7d8edc5950aac05c3366c1dfc9c1f",
+    "Dropbox_id": "id:BSpOijBcT10AAAAAAEBlzQ",
+    "Dropbox_path": "/bianchi/rec_bianchi/20261016/REC_HISTORY_GEO01_S0_20261026_9f705a5031cb.zip",
+    "Drive": "NO_ACK_EXACT_NAME_QUERY0"
+  },
+  "binary_inputs": [
+    {
+      "local_unit_path": "inputs/KS_EVENT_RESPONSE.npz",
+      "repo_path": "research/rec_history_geometry_response_20261026/inputs/KS_EVENT_RESPONSE.npz",
+      "S0_member": "research/rec_history_geometry_response_20261026/inputs/KS_EVENT_RESPONSE.npz",
+      "bytes": 41330,
+      "sha256": "af385f63f6e9523fc0b3ab43fe9eea85d2c2c4d441accefe49d96f427b88a70c",
+      "git_blob_sha1": "e6dfc46bbbbdc87b82db48f47d2643d39f0d8b2b",
+      "git_plan": "OMIT_BINARY_UPLOAD_RESTORE_FROM_FULL_S0",
+      "base_blob_presence": "NOT_PRESENT_CONTROLLER_OBSERVED",
+      "original_donor_path": "KS01/research/rec_history_ks_20261025/results/primary001/EVENT_RESPONSE.npz"
+    },
+    {
+      "local_unit_path": "inputs/KS_INTERVAL.npz",
+      "repo_path": "research/rec_history_geometry_response_20261026/inputs/KS_INTERVAL.npz",
+      "S0_member": "research/rec_history_geometry_response_20261026/inputs/KS_INTERVAL.npz",
+      "bytes": 5504094,
+      "sha256": "b8fcc82b91514b4b86848a727af2a3fe2c6990a07bc38a2205e0cf887799f64e",
+      "git_blob_sha1": "80a9a560eb2244444f7aa475bc72ba418d897cb7",
+      "git_plan": "OMIT_BINARY_UPLOAD_RESTORE_FROM_FULL_S0",
+      "base_blob_presence": "NOT_PRESENT_CONTROLLER_OBSERVED",
+      "original_donor_path": "KS01/research/rec_history_ks_20261025/results/primary001/CERTIFICATE_ARRAYS.npz"
+    },
+    {
+      "local_unit_path": "inputs/KS_POINT.npz",
+      "repo_path": "research/rec_history_geometry_response_20261026/inputs/KS_POINT.npz",
+      "S0_member": "research/rec_history_geometry_response_20261026/inputs/KS_POINT.npz",
+      "bytes": 2354502,
+      "sha256": "8288d0a6cd2ffb05dba49af2c63169325c395c247a8df15cad139865fa5480a1",
+      "git_blob_sha1": "ad3a3827ae597c5e51dc1b7e2c33fa2dac8182f4",
+      "git_plan": "OMIT_BINARY_UPLOAD_RESTORE_FROM_FULL_S0",
+      "base_blob_presence": "NOT_PRESENT_CONTROLLER_OBSERVED",
+      "original_donor_path": "KS01/research/rec_history_ks_20261025/results/primary001/APPROXIMATE_RESPONSE.npz"
+    },
+    {
+      "local_unit_path": "inputs/PB_NATIVE_CHART.npz",
+      "repo_path": "research/rec_history_geometry_response_20261026/inputs/PB_NATIVE_CHART.npz",
+      "S0_member": "research/rec_history_geometry_response_20261026/inputs/PB_NATIVE_CHART.npz",
+      "bytes": 1616644,
+      "sha256": "54b05204d1becf18837f0f9597ac6542c0d12329b186d54c27ce81b0e6999b80",
+      "git_blob_sha1": "20fceca2f7238743ba0b0144c193aa1c3af8270e",
+      "git_plan": "OMIT_BINARY_UPLOAD_RESTORE_FROM_FULL_S0",
+      "base_blob_presence": "NOT_PRESENT_CONTROLLER_OBSERVED",
+      "original_donor_path": "research/rec_history_pullback_20261025/results/primary001/NATIVE_CHART_CONSTANTS.npz"
+    },
+    {
+      "local_unit_path": "inputs/history.npz",
+      "repo_path": "research/rec_history_geometry_response_20261026/inputs/history.npz",
+      "S0_member": "research/rec_history_geometry_response_20261026/inputs/history.npz",
+      "bytes": 35239470,
+      "sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+      "git_blob_sha1": "de43b1a2642fa0aa049abbfd1b0a7d775d684b1b",
+      "git_plan": "REUSE_EXISTING_BASE_BLOB_NO_UPLOAD",
+      "base_blob_presence": "PRESENT_CONTROLLER_OBSERVED",
+      "original_donor_path": "KS01/inputs/pr05b2_source_history_v060.npz"
+    }
+  ],
+  "portable_restore_command": "python delivery/restore_inputs.py --s0 /path/to/REC_HISTORY_GEO01_S0_SOURCE_FREEZE_20261026.zip --unit-root .",
+  "scope": "Restores unchanged immutable represented inputs only; no regeneration or scientific replay",
+  "full_final_archive": "Must include all five NPZ bytes plus text/source/code/evidence; full S0 dependency is for checkpoint overlay/Git portability only",
+  "base": "4a8e541030ee2cbd02e26ba671083b705d309d49"
+}

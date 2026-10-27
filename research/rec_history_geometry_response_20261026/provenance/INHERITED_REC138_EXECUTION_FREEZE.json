@@ -1,0 +1,114 @@
+{
+  "schema": "REC_HD_H5_EXECUTION_FREEZE_V1",
+  "as_of_client_date": "2026-10-25",
+  "request_scope": [
+    "REC-HD-ADAPTER",
+    "REC-H5-DEFECT-BOUND01 actual-input binding"
+  ],
+  "authority": "Current user explicitly requests implementation, declares a new finite cap first, delegation, independent review, expected-SHA publication and dual backup; all publication and backup authorized.",
+  "base": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "branch": "research/program-expansion-20261025",
+    "expected_sha": "5dd414982c5c9ada97dfdfcc0b77cf83af86d66e",
+    "owner_branch": "research/rec-history-pullback-20261025",
+    "owner_sha": "ea89c97abeb7a663a813f00e9aadddaf0b32a6a9"
+  },
+  "source_pins": {
+    "central_contracts": "641a725ada4be27473069c2c35005a94c2ab0248",
+    "central_observed_head": "78f7ac5864d5817ceb79b48cb5e298cc30006510",
+    "WU_schema": "34dd7d1d018abff8a0a4ebd1d3f3579ac46d2fad",
+    "lamda_hd_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+    "lamda_hd_bytes": 2289,
+    "PB01_S2_sha256": "b43ec958374bb8ba97073c46355dc26131a64261cd5004fa64e65c6565da00d1",
+    "PB01_S2_bytes": 69336495
+  },
+  "budgets": {
+    "HD": {
+      "cpu_seconds": 90,
+      "execution_wall_seconds": 600
+    },
+    "H5": {
+      "cpu_seconds": 90,
+      "execution_wall_seconds": 600
+    },
+    "independent_review_and_integration": {
+      "cpu_seconds": 60,
+      "execution_wall_seconds": 600
+    },
+    "total_controlled_cpu_seconds": 240,
+    "process_max_RSS_bytes": 1073741824,
+    "threads_per_process": 1,
+    "included": "Primary targeted tests, changed-dependency repairs, diagnostic plotting and independent execution checks.",
+    "excluded": "Network/tool/model/source-recovery/archive I/O, automatic remote CI. Measured separately where available; otherwise UNKNOWN_NOT_ZERO.",
+    "historical_budget_borrow": false,
+    "historical_budget_reset": false
+  },
+  "scope_limits": {
+    "new_IVP": 0,
+    "new_native_runtime": 0,
+    "old_campaign_replay": 0,
+    "PB01_KS01_PRIMARY_replay": 0,
+    "new_RHS": 0,
+    "full_molecule_scan": 0,
+    "H5_physical_epsilon_requires_actual_bound_evidence": true
+  },
+  "HD_contract": {
+    "collision_temperatures_K": [
+      50,
+      100,
+      200
+    ],
+    "temperature_policy": "Exact source nodes only; off-grid, extrapolation and endpoint clamping unsupported",
+    "collider_ids": [
+      2,
+      3
+    ],
+    "mixing": false,
+    "level_gap_frequency_max_error_Hz": 35,
+    "DB_LTE_normalized_error_max": "128 * binary64 epsilon",
+    "missing_pairs": "MISSING_NOT_ZERO",
+    "vibrational_state": "UNRESOLVED_FILE_J_LABELS_ONLY",
+    "public_raw_fixture_redistribution": "Not added by this task; use original URL and immutable existing central source pointer",
+    "licence_status": "Citation instructions confirmed; redistribution licence unresolved"
+  },
+  "H5_contract": {
+    "source_history_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+    "source_history_bytes": 35239470,
+    "queries": 313,
+    "prefix": 5127,
+    "active_endpoint_slots": 626,
+    "source_z": 1099.9986525171403,
+    "T0_K": 2.728,
+    "nH0_per_m3": 0.18745798773143102,
+    "conditional_derivation": "PASS_DERIVED_SCOPED reused",
+    "physical_epsilon": null,
+    "physical_H5_status": "INPUT_DEPENDENT_UNCALIBRATED until actual same-source defect/tube/stability/curvature/reference inputs are bound",
+    "sampled_differences_as_continuous_bound": false
+  },
+  "execution_policy": {
+    "before_each_node": "Re-read current branch/HEAD, scoped AGENTS and parallel work. Preserve current dirty files and pre-existing evidence. Capture code/input identity before tests.",
+    "failure": "Keep first failure and exact criteria, classify and repair only affected scope within the same cumulative cap; stop on exhausted budget or absent physical input.",
+    "review": "Independent reviewer reads original sources and actual code/output once, then verifies bounded findings closure.",
+    "publish": "Expected-SHA non-force update only after independent decision; if head moves inspect and reconcile before any retry; retain draft/no merge.",
+    "backups": "Create-only new source ZIPs to existing approved Drive and Dropbox destinations; actual ACK and size recorded; no own-ACK archive recursion."
+  },
+  "inherited_state": {
+    "PB01": "COMPLETE_SCOPED_SOURCE_HISTORY_PULLBACK 20/20 reused",
+    "PB01_original_primary": "FAILED_FROZEN_CRITERION exit2 preserved",
+    "PB01_saved_pairing_repair": "8/8 PASS reused",
+    "PB01_patched_primary": "NOT_RUN",
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "historical_costs": "CLOSED_HOLD_NOT_RESET; UNKNOWN_NOT_ZERO where unmeasured",
+    "global_physical_completion": null,
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false
+  },
+  "roles": {
+    "HD_implementation": "/root/hd_parser",
+    "H5_implementation": "/root/h5_binding",
+    "independent_review": "/root/independent_review",
+    "integration_and_decision": "/root",
+    "observed_runtime_model_identity": "NOT_OBSERVABLE"
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "schema": "REC_HISTORY_GEO01_CONTROLLED_PROPAGATION_OBSERVATION_V1",
+  "unit": "REC-HISTORY-GEO01",
+  "parent_canonical_node": "REC-HISTORY",
+  "date_utc": "2026-10-26",
+  "canonical_base_commit": "a5db4bac9dafadae29685bbea3cec7f43ab990b2",
+  "REC_immutable_base": "4a8e541030ee2cbd02e26ba671083b705d309d49",
+  "REC_result_git_commit": null,
+  "REC_result_Git_state": "NOT_PUBLISHED_CREATEBRANCH_NO_ACK_ACTUAL_REF404",
+  "branch": "research/rec-history-geometry-response-20261026",
+  "owned_path": "research/rec_history_geometry_response_20261026/",
+  "root_decision": {
+    "unit": "REC-HISTORY-GEO01",
+    "decision": "PASS_SCOPED_CONTROLLED_PROPAGATION_PARTIAL",
+    "authority": "/root",
+    "date_utc": "2026-10-26",
+    "immutable_base_sha": "4a8e541030ee2cbd02e26ba671083b705d309d49",
+    "frozen_c5_manifest_sha256": "659fb166bcba92656a21673efaa632d3a337da576fc0d15a1d262a38aaea6fa5",
+    "independent_decision": "evidence/independent_review/FINAL_DECISION.json",
+    "independent_review_sha256": "a5a64e35a7a0af82a92ececcfc6c48c6787503d2158df6da9c2186282955fb80",
+    "primary": "results/primary001/SUMMARY.json",
+    "root_visual_inspection": {
+      "performed": true,
+      "files": [
+        "figures/figures001/geometry_coefficients.png",
+        "figures/figures001/verification_and_scalar_response.png"
+      ],
+      "finding": "Both actual PNGs viewed; readable signed coefficient plots, declared finite diagnostic/oracle distinction and scalar mean-only scope; no clipping requiring repair"
+    },
+    "admitted": [
+      "Original source313-query fixed-chart binding of controlled diagonal trace-free shear propagation",
+      "Analytic first-monopole zero, first quadrupole and second-monopole coefficients for two specified shears",
+      "One bounded primary with17528 ordinary and96 Decimal roots; eight independent reviewer roots",
+      "Five saved-Ks operator actions and one exact interval action on represented binary64 second-monopole vector",
+      "Frozen scalar mean closure number and energy second-response coefficients with direct incoming subtraction"
+    ],
+    "scientific_failures_this_unit": 0,
+    "scientific_repairs_this_unit": 0,
+    "additional_scientific_testing_required": false,
+    "finite_differences": "High-precision frozen controls PASS; ordinary directional second differences worsen at halfstep and remain diagnostic only",
+    "all_direction_positivity": "NOT_CERTIFIED; all sampled totals positive",
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "parent_REC_HISTORY": "PARTIAL",
+    "H5_continuous_bound_coverage": "0/313",
+    "H6_physical_trace": "OPEN",
+    "H7_total_coupled_derivative": "OPEN",
+    "protected_state": {
+      "Physical": "HOLD",
+      "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+      "historical_budgets": "CLOSED_HOLD_NOT_RESET",
+      "global_convergence": "NOT_RUN",
+      "production": "NOT_APPROVED",
+      "L4_ready": false,
+      "REI_activation": false,
+      "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY",
+      "global_physical_completion": null
+    },
+    "workflow": {
+      "closed_obligations": 18,
+      "total_obligations": 20,
+      "R10_C10": "CONTENT_AND_DELIVERY_IN_PROGRESS; closure requires actual external receipts"
+    },
+    "publication_authorization": "User already authorized expected-SHA non-force Git publication and Dropbox/Drive backup; root authorizes this exact scoped result after independent review",
+    "publication_state": "NOT_PUBLISHED_AT_DECISION; remote writes remain separately tracked",
+    "strong_no_go": {
+      "new_claim": false,
+      "NG1_NG7": "NOT_ACTIVATED; missing physical supplier is an open dependency, not an impossibility theorem"
+    }
+  },
+  "root_claim_gate": {
+    "schema": "REC_HISTORY_GEO01_CLAIM_GATE_V1",
+    "unit": "REC-HISTORY-GEO01",
+    "scientific_decision": "PASS_SCOPED_CONTROLLED_PROPAGATION_PARTIAL",
+    "actual_source": {
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "4a8e541030ee2cbd02e26ba671083b705d309d49",
+      "query_count": 313,
+      "endpoint_slots": 626,
+      "strict_prefix": 5127,
+      "z": 1099.9986525171403
+    },
+    "scope": {
+      "geometry": "Prescribed diagonal constant trace-free shear; v1=(1,-1/2,-1/2),v2=(1,-1,0)",
+      "held_fixed": [
+        "isotropic emitter history",
+        "interpolation cells/endpoints",
+        "target thermodynamic primitive",
+        "native scalar source coefficients"
+      ],
+      "measure": "target orthonormal dOmega/(4pi)",
+      "native_reference": "Wien exp(-E/(k_B T)); stored departure plus reference gives total occupation",
+      "collision_consumption": "angular mean only through saved scalar Ks",
+      "admitted_outputs": [
+        "first quadrupole",
+        "second monopole",
+        "frozen scalar mean second response",
+        "same-event number/energy second response"
+      ],
+      "interval": "Exact represented-K action on represented binary64 m2 only"
+    },
+    "verification": {
+      "primary": "PASS",
+      "independent": "PASS",
+      "root_visual": "PASS",
+      "ordinary_roots": 17528,
+      "primary_decimal_roots": 96,
+      "reviewer_roots": 8,
+      "operator_actions": 5,
+      "interval_actions": 1,
+      "new_RHS": 0,
+      "new_IVP": 0,
+      "old_replays": 0,
+      "scientific_failures": 0,
+      "scientific_repairs": 0
+    },
+    "remaining_obligations": {
+      "H5": {
+        "status": "OPEN",
+        "continuous_bound_coverage": "0/313",
+        "physical_epsilon": null,
+        "physical_outgoing_bound": null
+      },
+      "H6": {
+        "status": "OPEN_PHYSICAL_SUPPLIER",
+        "controlled_GEO01_partial": "COMPLETE_SCOPED",
+        "actual_source_matched_trace": false
+      },
+      "H7": {
+        "status": "OPEN_TOTAL_COUPLED",
+        "required": "actual DY,DQ,Dtheta,endpoint retiming and thermal-feedback owners with explicit closure"
+      },
+      "angular_collision": "OPEN_IF_CLAIMED",
+      "finite_shear_angular_convergence": "NOT_ESTABLISHED",
+      "all_direction_positivity": "NOT_CERTIFIED",
+      "new_libm_coefficient_interval": "NOT_ESTABLISHED"
+    },
+    "parent_REC_HISTORY": "PARTIAL",
+    "global_physical_completion": null,
+    "protected": {
+      "Physical": "HOLD",
+      "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+      "budgets": "CLOSED_HOLD_NOT_RESET",
+      "global_convergence": "NOT_RUN",
+      "production": "NOT_APPROVED",
+      "L4_ready": false,
+      "REI_activation": false,
+      "first_failed_REI_raw": "HISTORICAL_LOCAL_ONLY"
+    },
+    "external_delivery": "Read actual delivery receipts; no scientific PASS implies Git/Drive ACK",
+    "next_contract": "NEXT_INPUT_CONTRACT.md",
+    "strong_no_go": false
+  },
+  "independent_final_decision": {
+    "decision": "PASS_SCOPED_CONTROLLED_PROPAGATION_PARTIAL",
+    "utc": "2026-10-26T18:23:38.663363+00:00",
+    "review_sequence": "same persisted review sequence; explicit post-preexecution executor handover",
+    "reviewed_c5_manifest_sha256": "659fb166bcba92656a21673efaa632d3a337da576fc0d15a1d262a38aaea6fa5",
+    "current_executor": "/root/geo_review",
+    "actual_runtime_model": null,
+    "production_code_edits": 0,
+    "material_blockers_within_scope": 0,
+    "new_scientific_runs": {
+      "primary": 1,
+      "figures_saved_data_only": 1,
+      "independent_probe": 1,
+      "repair": 0
+    },
+    "independent_probe": {
+      "status": "PASS",
+      "roots_charged": 8,
+      "checks": 4,
+      "precision_digits": 90,
+      "max_first_normalized_error": 1.767175659167328e-11,
+      "max_second_normalized_error": 1.5648758129079072e-11,
+      "tolerance": 2e-07,
+      "scope": "Two off-grid configurations of represented controlled chart; finite numerical evidence"
+    },
+    "independent_probe_receipt": {
+      "returncode": 0,
+      "timed_out": false,
+      "execution_wall_seconds": 0.1152588989934884,
+      "child_inclusive_cpu_seconds": 0.08245499999999999,
+      "child_user_cpu_seconds": 0.069918,
+      "child_system_cpu_seconds": 0.012537,
+      "child_highwaterRSS_KiB": 22728,
+      "source_unchanged": true,
+      "actual_runtime_model": null,
+      "old_replays": 0,
+      "production_code_imports": 0
+    },
+    "all_source_bytes_unchanged": true,
+    "actual_figures_viewed": [
+      "geometry_coefficients.png",
+      "verification_and_scalar_response.png"
+    ],
+    "primary_child_cpu_seconds": 1.597416,
+    "figure_child_cpu_seconds": 3.28598,
+    "execution_child_cpu_seconds_total": 4.965851,
+    "execution_wall_seconds_total": 5.062341989003471,
+    "readback_audit_overhead": {
+      "cpu_seconds": 0.07570475100000007,
+      "wall_seconds": 0.07571414900303353,
+      "scope": "after imports; other overhead UNKNOWN_NOT_ZERO"
+    },
+    "accepted_claims": [
+      "Actual original313-query fixed-history propagation first quadrupole and second monopole for declared diagonal shear",
+      "Frozen scalar mean Ks propagation with represented-vector interval action",
+      "Single-event number/energy second response with direct incoming subtraction and opposite atomic/radiation entries"
+    ],
+    "unresolved": [
+      "H5 same-source continuous physical error certificate",
+      "H6 physical target-matched trace/geometry/measure/source closure",
+      "H7 actual total endpoint/source/thermodynamic derivative",
+      "Actual final publication and delivery receipts"
+    ],
+    "parent_REC_HISTORY": "PARTIAL",
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "global_physical_completion": null,
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "L4_ready": false,
+    "REI_activation": false,
+    "strong_no_go_claim": false,
+    "review_file_sha256": "a5a64e35a7a0af82a92ececcfc6c48c6787503d2158df6da9c2186282955fb80"
+  },
+  "actual_source": {
+    "queries": 313,
+    "history_prefix": 5127,
+    "z": 1099.9986525171403,
+    "T0_K": 2.728,
+    "nH0_m_minus3": 0.18745798773143102,
+    "history_SHA256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+    "input_identity": "research/rec_history_geometry_response_20261026/inputs/SOURCE_IDENTITIES.json"
+  },
+  "controlled_geometry": {
+    "shears": [
+      [
+        1,
+        -0.5,
+        -0.5
+      ],
+      [
+        1,
+        -1,
+        0
+      ]
+    ],
+    "angular_measure": "target orthonormal dOmega/(4pi)",
+    "source": "fixed original represented isotropic history, fixed interpolation cells",
+    "scalar_closure": "saved Ks consumes angular mean only",
+    "finite_h": 9.758192586050367e-06
+  },
+  "actual_result_summary": {
+    "H5_physical_epsilon": null,
+    "H6_physical_trace": "OPEN",
+    "H7_total_coupled": "OPEN",
+    "IVP": 0,
+    "analytic_shears": 2,
+    "composition": {
+      "atomic_energy_second": 2.8101462107517614e-27,
+      "direct_incoming_subtraction": true,
+      "energy_units": "J m^-3 s^-1 per lambda^2",
+      "event_coefficient_identity": "EXACT_BINARY64_SAVED_ROW",
+      "exact_interval_actions": 1,
+      "number_second": -1.7197807608184382e-09,
+      "number_units": "m^-3 s^-1 per lambda^2",
+      "operator_actions": 5,
+      "outgoing_units": "occupation per lambda^2",
+      "physical_epsilon": null,
+      "physical_outgoing_bound": null,
+      "radiation_atomic_exact_negative": true,
+      "radiation_energy_second": -2.8101462107517614e-27,
+      "status": "PASS"
+    },
+    "decimal": {
+      "bisection_iterations_per_root": 160,
+      "configurations": 24,
+      "derivative_checks": 48,
+      "max_first_normalized_error": 1.5505132806082325e-10,
+      "max_second_normalized_error": 1.400080738875983e-10,
+      "precision": 80,
+      "scalar_roots": 96,
+      "scope": "represented parameters; finite h and h/2 numerical evidence; no global remainder bound",
+      "status": "PASS",
+      "tolerance": 2e-07
+    },
+    "decimal_roots": 96,
+    "exact_sphere_monomials": 35,
+    "global_convergence": "NOT_RUN",
+    "guard_controls": 10,
+    "h": 9.758192586050367e-06,
+    "interval_actions": 1,
+    "new_RHS": 0,
+    "operator_actions": 5,
+    "ordinary_roots": 17528,
+    "parent_REC_HISTORY": "PARTIAL",
+    "physical_state": "HOLD",
+    "production": "NOT_APPROVED",
+    "runtime_model_observed": null,
+    "solves": 0,
+    "source_identity_pass": true,
+    "status": "PASS_CONTROLLED_PROPAGATION_PARTIAL"
+  },
+  "execution_budget": {
+    "three_process_CPU_seconds": 4.965851,
+    "three_process_execution_wall_seconds": 5.062341989003471,
+    "separate_measured_readback_subsets": {
+      "saved_result_readback_child": {
+        "receipt": "evidence/execution/readback/EXECUTION_RECEIPT.json",
+        "cpu_seconds": 0.154822,
+        "wall_seconds": 0.16780925799685065,
+        "new_scientific_actions": 0
+      },
+      "reviewer_after_import_readback_body": {
+        "cpu_seconds": 0.07570475100000007,
+        "wall_seconds": 0.07571414900303353,
+        "scope": "after imports; other overhead UNKNOWN_NOT_ZERO"
+      },
+      "aggregate_measured_GEO01_CPU_subset_seconds": 5.196377751,
+      "aggregate_measured_execution_and_readback_wall_subset_seconds": 5.305865396003355,
+      "interpretation": "Measured subset only; excludes runner cost and other unknown costs; no new available allowance"
+    },
+    "runner_costs_separate": {
+      "primary_CPU_seconds": 0.004274000000000007,
+      "figures_CPU_seconds": 0.0050700000000000085,
+      "measured_runner_CPU_subset_seconds": 0.009344000000000015,
+      "other_runner_or_interpreter_overhead": "UNKNOWN_NOT_ZERO"
+    },
+    "historical_budget_reset": false,
+    "unknown_cost_policy": "UNKNOWN_NOT_ZERO"
+  },
+  "provider_receipts": {
+    "S0": {
+      "schema": "GEO01_S0_PROVIDER_OBSERVATION_V1",
+      "observer": "controller /root tool results supplied to metadata agent",
+      "archive": {
+        "filename": "REC_HISTORY_GEO01_S0_SOURCE_FREEZE_20261026.zip",
+        "bytes": 40941450,
+        "sha256": "9f705a5031cb440a5feeefe0b983065e21d7d8edc5950aac05c3366c1dfc9c1f",
+        "rewrite_after_provider_ACK": false
+      },
+      "Dropbox": {
+        "status": "COMPLETED_ACK",
+        "id": "id:BSpOijBcT10AAAAAAEBlzQ",
+        "bytes": 40941450,
+        "time": "2026-10-26T18:13:33Z",
+        "path": "/bianchi/rec_bianchi/20261016/REC_HISTORY_GEO01_S0_20261026_9f705a5031cb.zip",
+        "whole_byte_remote_restore": "NOT_RUN"
+      },
+      "Drive": {
+        "status": "NO_ACK",
+        "attempt": "upload exceeded20-second client deadline",
+        "exact_folder_name_query_count": 0,
+        "query_time_approx_UTC": "2026-10-26T18:15Z",
+        "destination_parent": "1Xo_yT9v4WQfPvv-GJdYJ2O2CD5s6bJ1k",
+        "successful_upload_claim": false,
+        "absence_scope": "Exact folder/name query returned zero; no broad server-state conclusion"
+      },
+      "Git": {
+        "status": "NOT_PUBLISHED",
+        "createbranch_attempt": "20-second client deadline; NO_ACK",
+        "actual_ref_readback": "HTTP404",
+        "repository": "cosmosapjw-quantum/rec_bianchi",
+        "branch": "research/rec-history-geometry-response-20261026",
+        "base": "4a8e541030ee2cbd02e26ba671083b705d309d49"
+      },
+      "scientific_execution": 0,
+      "current_scientific_progress_independent_of_delivery": true
+    },
+    "S1": {
+      "schema": "GEO01_S1_PROVIDER_OBSERVATION_V1",
+      "observer": "Controller /root supplied actual tool observations to mechanical delivery agent",
+      "archive": {
+        "filename": "REC_HISTORY_GEO01_S1_CODE_PREEXEC_20261026.zip",
+        "bytes": 43377,
+        "sha256": "5a2ec5fc315f53c2a3de17b6f5543dfba54a0c02ec3bc327d6af1bdb5955c8d7",
+        "rewrite_after_ACK": false
+      },
+      "Dropbox": {
+        "status": "COMPLETED_ACK",
+        "id": "id:BSpOijBcT10AAAAAAEBlzg",
+        "bytes": 43377,
+        "time": "2026-10-26T18:24:01Z",
+        "whole_byte_remote_restore": "NOT_RUN"
+      },
+      "Drive": {
+        "status": "NO_ACK",
+        "attempt": "25-second client deadline",
+        "exact_name_query_count": 0,
+        "successful_upload_claim": false,
+        "absence_scope": "Exact-name query zero only; no broad server-state conclusion"
+      },
+      "Git": {
+        "status": "NOT_PUBLISHED",
+        "retry_createbranch": "40-second client deadline; NO_ACK",
+        "actual_ref_readback": "HTTP404",
+        "repository": "cosmosapjw-quantum/rec_bianchi",
+        "branch": "research/rec-history-geometry-response-20261026",
+        "base": "4a8e541030ee2cbd02e26ba671083b705d309d49"
+      },
+      "S1_archive_scope": "11/20 preexecution snapshot, unchanged after scientific execution",
+      "provider_work_separate_from_scientific_CPU": true
+    },
+    "S2": "FULL_ARCHIVE_PENDING_ROOT_TEXT_READY",
+    "final_Git": "NOT_PUBLISHED",
+    "final_Dropbox": "NOT_ATTEMPTED",
+    "final_Drive": "NOT_ACK"
+  },
+  "parent_status": "PARTIAL",
+  "workflow": {
+    "closed": 18,
+    "total": 20,
+    "R10_C10": "CONTENT_AND_ACTUAL_EXTERNAL_DELIVERY_PENDING"
+  },
+  "claim_boundary": "New declared propagation partial only; physical target-matched H6 trace, H5 continuous physical certificate and H7 total coupled derivative remain open",
+  "canonical_assembly_scope": "Wrapper observation only, no new canonical node, original nested contracts, claim gate, PR plan and runnable unchanged",
+  "strong_no_go": "NO_NEW_CLAIM; NG1_NG7_NOT_ACTIVATED"
+}

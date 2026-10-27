@@ -1,0 +1,234 @@
+{
+  "schema": "REC_HISTORY_GEO01_BUDGET_LEDGER_V1",
+  "unit": "REC-HISTORY-GEO01",
+  "snapshot_phase": "S2_ACTUAL_SCOPED_ADMISSION_18_OF_20",
+  "current_scientific_execution": "ONE_PRIMARY_PASS_ONE_SAVED_DATA_FIGURE_PASS_ONE_INDEPENDENT_PROBE_PASS",
+  "new_allocation": {
+    "cpu_seconds": 60,
+    "execution_wall_seconds": 180,
+    "threads": 1,
+    "address_space_bytes": 1073741824,
+    "allocations": {
+      "primary": {
+        "cpu_seconds": 40,
+        "wall_seconds": 120
+      },
+      "saved_data_figures": {
+        "cpu_seconds": 10,
+        "wall_seconds": 30
+      },
+      "independent_diagnostics": {
+        "cpu_seconds": 5,
+        "wall_seconds": 15
+      },
+      "diagnosed_repair_reserve": {
+        "cpu_seconds": 5,
+        "wall_seconds": 15,
+        "preauthorized": false
+      }
+    }
+  },
+  "new_observed_controlled_spend": {
+    "cpu_seconds": 4.965851,
+    "execution_wall_seconds": 5.062341989003471,
+    "children": 3,
+    "meaning": "Sum of three actual inclusive-child CPU and execution-wall receipts; runner/model/remote/packaging costs separate."
+  },
+  "execution_receipts": [
+    {
+      "path": "evidence/execution/primary001/EXECUTION_RECEIPT.json",
+      "child_highwaterRSS_KiB": 32256,
+      "child_inclusive_cpu_seconds": 1.597416,
+      "child_system_cpu_seconds": 0.03898,
+      "child_user_cpu_seconds": 1.558436,
+      "execution_wall_seconds": 1.6219346620055148,
+      "identity_unchanged": true,
+      "limits": {
+        "IVP": 0,
+        "address_space_bytes": 1073741824,
+        "automatic_retry": false,
+        "cpu_seconds": 40,
+        "decimal_roots_cap": 96,
+        "interval_action_cap": 1,
+        "matvec_cap": 5,
+        "new_RHS": 0,
+        "ordinary_roots_cap": 17528,
+        "solves": 0,
+        "threads": 1,
+        "wall_seconds": 120
+      },
+      "mode": "primary",
+      "observed_runtime_model": null,
+      "preserved_completed_prefix": true,
+      "remote_IO_cost": "SEPARATE_UNKNOWN_NOT_ZERO",
+      "returncode": 0,
+      "runner_cpu_seconds": 0.004274000000000007,
+      "timed_out": false
+    },
+    {
+      "path": "evidence/execution/figures001/EXECUTION_RECEIPT.json",
+      "child_highwaterRSS_KiB": 111236,
+      "child_inclusive_cpu_seconds": 3.28598,
+      "child_system_cpu_seconds": 0.115337,
+      "child_user_cpu_seconds": 3.170643,
+      "execution_wall_seconds": 3.325148428004468,
+      "identity_unchanged": true,
+      "limits": {
+        "IVP": 0,
+        "address_space_bytes": 1073741824,
+        "automatic_retry": false,
+        "cpu_seconds": 10,
+        "decimal_roots_cap": 0,
+        "interval_action_cap": 0,
+        "matvec_cap": 0,
+        "new_RHS": 0,
+        "ordinary_roots_cap": 0,
+        "solves": 0,
+        "threads": 1,
+        "wall_seconds": 30
+      },
+      "mode": "figures",
+      "observed_runtime_model": null,
+      "preserved_completed_prefix": true,
+      "remote_IO_cost": "SEPARATE_UNKNOWN_NOT_ZERO",
+      "returncode": 0,
+      "runner_cpu_seconds": 0.0050700000000000085,
+      "timed_out": false
+    },
+    {
+      "path": "evidence/independent_review/PROBE_EXECUTION_RECEIPT.json",
+      "returncode": 0,
+      "timed_out": false,
+      "execution_wall_seconds": 0.1152588989934884,
+      "child_inclusive_cpu_seconds": 0.08245499999999999,
+      "child_user_cpu_seconds": 0.069918,
+      "child_system_cpu_seconds": 0.012537,
+      "child_highwaterRSS_KiB": 22728,
+      "source_unchanged": true,
+      "actual_runtime_model": null,
+      "old_replays": 0,
+      "production_code_imports": 0
+    }
+  ],
+  "historical_budget_reset": false,
+  "historical_budget_transfer": false,
+  "unused_old_allowance_authorizes_run": false,
+  "inherited_lineages": [
+    {
+      "unit": "REC-HISTORY-PB01",
+      "state": "CLOSED_HOLD_NOT_RESET",
+      "source": "provenance/INHERITED_PB01_BUDGET_LEDGER.json",
+      "values_copied_without_recomputation": {
+        "controlled_CPU_seconds": 4.237821,
+        "controlled_execution_wall_seconds": 4.424445926001681,
+        "new_known_CPU_subset_seconds": 4.273074,
+        "inherited_known_CPU_seconds": 32.168987486,
+        "known_lineage_CPU_subset_seconds": 36.442061486
+      },
+      "interpretation": "Known measured subset only; not remaining budget."
+    },
+    {
+      "unit": "REC138-HD-H5",
+      "state": "CLOSED_HOLD_NOT_RESET",
+      "source": "provenance/INHERITED_REC138_EXECUTION_FREEZE.json",
+      "frozen_caps_copied": {
+        "HD_cpu_seconds": 90,
+        "H5_cpu_seconds": 90,
+        "review_integration_cpu_seconds": 60,
+        "each_wall_seconds": 600
+      },
+      "actual_spend": "NOT_RECOMPUTED_IN_THIS_UNIT",
+      "interpretation": "Historical separate allocation; no carryover."
+    },
+    {
+      "unit": "REC-HISTORY02",
+      "state": "CLOSED_HOLD_NOT_RESET",
+      "lost_unmeasured_execution_upper_charge": {
+        "CPU_seconds": 40,
+        "wall_seconds": 90
+      },
+      "actual_spend": "UNMEASURED_LOST; retain upper charge, do not assign zero",
+      "interpretation": "Historical separate upper charge; not a measured value or transferable budget"
+    },
+    {
+      "unit": "REC-JOINT01",
+      "state": "CLOSED_HOLD_NOT_RESET",
+      "actual_executed_scientific_runs": 0,
+      "interpretation": "Prepared but unexecuted; no old allowance transfer"
+    }
+  ],
+  "preserved_historical_outcomes": {
+    "PB01_original_primary": "exit2/FAILED_FROZEN_CRITERION",
+    "PB01_saved_vector_pairing_repair": "8/8PASS_REUSED",
+    "PB01_patched_full_primary": "NOT_RUN",
+    "HD_source_gate": "HOLD_SOURCE_DISCREPANCY_UNQUALIFIED; line1PASS lines2-8FAIL at original35Hz",
+    "H5_actual_continuous_bound_coverage": "0/313",
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "REC_U5": "HOLD_9_FAIL/HOLD_8_FAIL",
+    "global_convergence": "NOT_RUN",
+    "production": "NOT_APPROVED",
+    "REI_activation": false,
+    "HISTORY02_lost_execution": "UNMEASURED_LOST_40CPU_90WALL_UPPER_CHARGE_RETAINED",
+    "JOINT01_execution": 0,
+    "GEO01_scientific_failures": 0,
+    "GEO01_scientific_repairs": 0
+  },
+  "unknown_or_separate": [
+    "older campaign costs",
+    "remote I/O",
+    "model/tool processing",
+    "source recovery and metadata preparation",
+    "archive packaging I/O",
+    "external CAS and CI"
+  ],
+  "unknown_cost_policy": "UNKNOWN_NOT_ZERO",
+  "scientific_counters": {
+    "new_RHS": 0,
+    "new_IVP": 0,
+    "old_campaign_replay": 0,
+    "native_build_runtime": 0,
+    "new_scalar_roots": 17632,
+    "new_operator_actions": 5,
+    "ordinary_roots": 17528,
+    "primary_Decimal_roots": 96,
+    "independent_roots": 8,
+    "new_exact_interval_actions": 1,
+    "solves": 0,
+    "inverses": 0,
+    "repairs": 0
+  },
+  "preexecution_review": {
+    "decision": "PASS_SCOPED_RUN_READY_RECOMMENDED",
+    "receipt": "evidence/independent_review/PREEXEC_DECISION.json",
+    "root_RUN_READY": "evidence/RUN_READY.json",
+    "scientific_work_charged": 0
+  },
+  "separate_measured_readback_subsets": {
+    "saved_result_readback_child": {
+      "receipt": "evidence/execution/readback/EXECUTION_RECEIPT.json",
+      "cpu_seconds": 0.154822,
+      "wall_seconds": 0.16780925799685065,
+      "new_scientific_actions": 0
+    },
+    "reviewer_after_import_readback_body": {
+      "cpu_seconds": 0.07570475100000007,
+      "wall_seconds": 0.07571414900303353,
+      "scope": "after imports; other overhead UNKNOWN_NOT_ZERO"
+    },
+    "aggregate_measured_GEO01_CPU_subset_seconds": 5.196377751,
+    "aggregate_measured_execution_and_readback_wall_subset_seconds": 5.305865396003355,
+    "interpretation": "Measured subset only; excludes runner cost and other unknown costs; no new available allowance"
+  },
+  "runner_costs_separate": {
+    "primary_CPU_seconds": 0.004274000000000007,
+    "figures_CPU_seconds": 0.0050700000000000085,
+    "measured_runner_CPU_subset_seconds": 0.009344000000000015,
+    "other_runner_or_interpreter_overhead": "UNKNOWN_NOT_ZERO"
+  },
+  "result_decision": {
+    "root": "ROOT_DECISION.json",
+    "independent": "evidence/independent_review/FINAL_DECISION.json",
+    "decision": "PASS_SCOPED_CONTROLLED_PROPAGATION_PARTIAL"
+  }
+}
