@@ -16,7 +16,7 @@ This is a specified continuous reconstruction of the actual source samples and t
 
 Use only the original source ordering, prefix5127 and 313 query witnesses. The represented causal domain is [t_0,t_(prefix-1)); its right endpoint is excluded, as in native interpolation. Reject out-of-domain queries and invalid knot/slope/shape inputs. Retiming paths must remain inside this domain. There is no prehistory extension or extrapolation in the new module.
 
-The mathematical target is exact finite retiming and chord interpolation remainder for continuous piecewise-linear P, including derivative jumps at crossed knots. The wider lemma applies to continuous piecewise C2 functions with derivative of bounded variation. The constructed bounds concern P and its exact rational arithmetic, not the unknown physical history y. Actual physical epsilon remains null and proof-packet coverage stays0/313.
+The mathematical target is exact finite retiming and chord interpolation remainder for continuous piecewise-linear P, including derivative jumps at crossed knots. The wider lemma uses a finite piecewise-C2 partition and a derivative of bounded variation, so its derivative measure consists of the integrable smooth density and the finite jumps. The constructed bounds concern P and its exact rational arithmetic, not the unknown physical history y. Actual physical epsilon remains null and proof-packet coverage stays0/313.
 
 ## Admission boundary and units
 
