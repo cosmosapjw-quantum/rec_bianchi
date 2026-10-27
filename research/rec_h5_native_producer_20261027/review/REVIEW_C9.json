@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-NATIVE-REFERENCE01",
+  "review_stage": "C9",
+  "decision": "PASS",
+  "result": "pass_scoped",
+  "reviewer": "independent /root/native_reference_review; no implementation duty",
+  "requested_tier": "Astra",
+  "runtime_model_identity": "NOT_INDEPENDENTLY_OBSERVABLE",
+  "parent_reported_C8_head": "4d1ae9391ae0f40deb6dabbeb0edab8cc494ac9a",
+  "review_note": "review/INDEPENDENT_REVIEW_C9.md",
+  "scope": "Six reviewed implementation modules and immutable saved primary001/controls001 source-specific reference and representation outputs; no physical H5 admission",
+  "source_identities": {
+    "results/primary001/REFERENCE_PACKET.json": {
+      "sha256": "b093331bba137ec5949514fb24fb2b4927083fe9ffe58c17f7d61e9746aae9eb",
+      "bytes": 2936880
+    },
+    "results/primary001/POINT_REFERENCE140.jsonl": {
+      "sha256": "917e242922f746eff01b3ac3932f9ca24b8d68bee3cfa37a1759e7c56244be33",
+      "bytes": 1409555
+    },
+    "code/controls.py": {
+      "sha256": "1d734ccb8615ed94a048c0d70cfdc679953f030b5bd3cd31d6294335ea597a76",
+      "bytes": 7825
+    },
+    "code/interval80.py": {
+      "sha256": "9e9e86df600c2886076403aa39f7bcd20a9da2c7bda0abf88bfd0738fbd82bec",
+      "bytes": 5505
+    },
+    "code/native_reference.py": {
+      "sha256": "11cbe2c280951f4f397f262f40296bf9e55879609e43e2e8bc769bb7633bf566",
+      "bytes": 14175
+    },
+    "code/plot_results.py": {
+      "sha256": "9ff5ab28422893dff773cbf76a6aad5ad284f241adcad44ee3094a03ab7a030d",
+      "bytes": 2157
+    },
+    "code/point_reference140.py": {
+      "sha256": "188694cd0397ef006536dbee6b53b5a66ae124a74ffb2cd9e1d8909bce6af4be",
+      "bytes": 3163
+    },
+    "code/run_bounded.py": {
+      "sha256": "97eaa04b2eb7599eedcd5bb799e59a3bf136646c0354e33d2b3571ec88631e5c",
+      "bytes": 4139
+    },
+    "results/primary001/RUN_RECEIPT.json": {
+      "sha256": "49783141467c8128fcabdb5ed0e127af33047f59ac3bd387744e346e222eebc9",
+      "bytes": 2452
+    },
+    "results/controls001/RUN_RECEIPT.json": {
+      "sha256": "5672e89ebbaa1da4fe02ec87cd2884ac942014cd383a420eb172b27ba802634b",
+      "bytes": 2454
+    },
+    "results/controls001/CONTROLS.json": {
+      "sha256": "7e59df551c5ab75147f58a56da6bfa51612aef557c3711704dd272efe776b771",
+      "bytes": 12114
+    },
+    "FROZEN_CONTRACT.md": {
+      "sha256": "8c4f3ab92ec34da823cdb3822f505e39bdc20d1fb688476044edfb3fefe68dcc",
+      "bytes": 7424
+    },
+    "CODING_CONTRACT.md": {
+      "sha256": "7ff797e9444af92b25b143389b61c8d3e474409996d320c7b59eec3a07319a87",
+      "bytes": 5659
+    },
+    "theory/THEORY.md": {
+      "sha256": "f1b283d8e4c02841db3849851d11f3639a226819de0e67e242dc2010eb8f9237",
+      "bytes": 5891
+    },
+    "implementation/NUMERICAL_DESIGN.md": {
+      "sha256": "e90d39ff87f60c75e05a11cd37b95dc9b764e2b3fde5de783e6ec9fafa805139",
+      "bytes": 3639
+    },
+    "implementation/SCIENTIFIC_VALIDATION.md": {
+      "sha256": "aef379de9831a9b883a0b26bfca742da4b7b3253cd0556e3ec1159462e4da785",
+      "bytes": 4159
+    },
+    "implementation/REPRODUCIBILITY_C8.md": {
+      "sha256": "cbfca4223817b4f7709d81b3f46d4abdd7aea8945e41898bd85dd4bf5ad2c650",
+      "bytes": 3063
+    },
+    "results/primary001/SOURCE_BINDINGS.json": {
+      "sha256": "34c9d8ff8790850dd0f641037662850e5ae0f92ac721594dd364a173192db1c8",
+      "bytes": 338026
+    },
+    "results/primary001/SUMMARY.json": {
+      "sha256": "b92c0d3c60acd5849cfc1a0c89dfdc8ad964fa90eccd6c71e87abc2b4e673014",
+      "bytes": 663
+    },
+    "results/controls001/SUMMARY.json": {
+      "sha256": "e975d3ee389d34882e1c57d9e3cc77f58ae7095a0d9f98aac4852fb6082dd129",
+      "bytes": 178
+    }
+  },
+  "methods": [
+    "Manual equation-to-code and interval inclusion analysis",
+    "Original source binding review reused from closed R6",
+    "Raw primary packet and saved controls review",
+    "Primary official Decimal/libmpdec rounding contracts and installed sqrt source read",
+    "One bounded saved-artifact exact-rational audit without production imports or new transcendental evaluation"
+  ],
+  "targeted_audit": {
+    "script": "review/targeted_saved_artifact_audit.py",
+    "evidence": "review/TARGETED_SAVED_ARTIFACT_AUDIT.json",
+    "command": "python3.12 research/rec_h5_native_producer_20261027/review/targeted_saved_artifact_audit.py",
+    "exit_code": 0,
+    "status": "completed",
+    "checks": {
+      "code_receipt_matches": 6,
+      "preserved_rows": 313,
+      "ordered_finite_exact_rational_intervals": 11581,
+      "saved_point_containments": 10016,
+      "exact_radius_and_chord_invariants": 313,
+      "saved_controls_pass": 38,
+      "physical_null_scope": "PASS"
+    },
+    "limits": {
+      "cpu_seconds": 30,
+      "wall_seconds": 60,
+      "memory_bytes": 536870912,
+      "threads": 1
+    },
+    "cpu_seconds_before_evidence_serialization": 0.56085212,
+    "wall_seconds_before_evidence_serialization": 0.5678172960033407,
+    "max_rss_kib": 21868,
+    "unmeasured_tail": "startup/imports before timer and final evidence serialization are UNKNOWN_NOT_ZERO"
+  },
+  "checks": {
+    "native_exact_binary64_conversion": "pass_scoped",
+    "source_routing_and_preserved_h5_geometry": "pass_scoped",
+    "outward_basic_arithmetic": "pass_scoped",
+    "elementary_endpoint_identities_and_one_neighbor_enclosures": "pass_scoped",
+    "whole_cell_extrema_upper_lower_and_conservative_membership": "pass_scoped",
+    "nested_expm1_and_native_TR_split": "pass_scoped",
+    "direct_and_derived_anchor_composition": "pass_scoped",
+    "independent140_original_formula_separation": "pass_scoped",
+    "saved_primary_and_38_controls": "pass_scoped",
+    "serialization_and_code_receipts": "pass_scoped",
+    "frozen_resource_wrapper": "pass_scoped",
+    "physical_null_scope": "pass_scoped"
+  },
+  "findings": [],
+  "repairs_required": false,
+  "numerical_runs_requested": false,
+  "new_producer_runs": 0,
+  "new_control_runs": 0,
+  "old_science_replays": 0,
+  "rounding_dependencies": {
+    "trust_boundary": "Correct-rounding contracts of the installed Decimal/libmpdec implementation are trusted; not formal verification of backend",
+    "access_date": "2026-10-27",
+    "primary_urls": [
+      "https://docs.python.org/3.12/library/decimal.html#decimal.Decimal.exp",
+      "https://docs.python.org/3.12/library/decimal.html#decimal.Decimal.ln",
+      "https://www.bytereef.org/mpdecimal/doc/libmpdec/arithmetic.html#square-root"
+    ],
+    "live_documentation_versions": {
+      "python": "3.12.16",
+      "libmpdec": "4.0.1"
+    },
+    "recorded_executed_python": "3.12.14",
+    "review_environment_libmpdec": "4.0.0",
+    "installed_python_sqrt_supporting_source": {
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_pydecimal.py",
+      "sha256": "87a3372df4c4269adcdac5725e04675d306abcfa8d65e8dda59c1846e3d202ac",
+      "method": "Read Decimal.sqrt source and exact rounding explanation; not claimed as executed C backend"
+    }
+  },
+  "physical_admission": {
+    "reference_coverage": {
+      "computed": 313,
+      "total": 313
+    },
+    "physical_coverage": {
+      "computed": 0,
+      "total": 313
+    },
+    "physical_query_bounds": null,
+    "full_state_K": null,
+    "physical_M2": null,
+    "physical_defect": null,
+    "stability_L": null,
+    "positive_uniform_ode_tube": null,
+    "initial_error": null,
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4": false,
+    "REI_activation": false
+  },
+  "parent_provided_external_state": {
+    "central_head": "8af3e56dcaa27a8362b2bf74d6fb3c8edd859413",
+    "shared_progress": "28/88",
+    "REC_nodes": "unchanged",
+    "verification": "Parent-provided latest intake, no remote re-verification by reviewer"
+  },
+  "next_action": "Parent C10 delivery using this scoped admission; independent reviewer stops here",
+  "review_artifact_identities": {
+    "targeted_saved_artifact_audit.py": {
+      "sha256": "5ae4f4f5d91fc0bd71050d026dad8d6d586c7ad658b1ed98e17a2f346cedebb8",
+      "bytes": 5355
+    },
+    "TARGETED_SAVED_ARTIFACT_AUDIT.json": {
+      "sha256": "dbb56b92f8ffeb6b69d19e7c6cd9400482f07df365b5b876041100614d5c1726",
+      "bytes": 4323
+    },
+    "INDEPENDENT_REVIEW_C9.md": {
+      "sha256": "b7c40c44d623d3fffc7dcb5c3b01b4b87cb21f2aa345269ef92c550ef431b567",
+      "bytes": 11317
+    }
+  }
+}
