@@ -146,7 +146,7 @@ R9 게시 후 작업 공간이 비어 있는 현상이 관측됐다. 원인은 �
 | C7 | `d9539ad8c2bd` | 5359 | `e6f4855ea9e8` | 양쪽 실제 ACK·크기 확인 |
 | C8 | `47dc13af02b8` | 13822 | `e6f770917fbb` | 양쪽 실제 ACK·크기 확인 |
 | C9 | `3678ce2ea24e` | 16905 | `9bfd825a543a` | 양쪽 실제 ACK·크기 확인 |
-| C10 | 최종 receipt 참조 | 최종 receipt 참조 | 최종 receipt 참조 | 업로드 후 실제 ACK로 마감 |
+| C10 | `11dbbd351d63` | 2557153 | `07a30d2694b96` | 양쪽 실제 ACK·크기 확인 |
 
 Full SHA·provider ID·byte수는 delivery/stage_receipts/에 있다. 최종 전달 companion은 C10/source의 실제 수신과 마지막 게시 상태를 보존한다.
 
@@ -155,4 +155,10 @@ Full SHA·provider ID·byte수는 delivery/stage_receipts/에 있다. 최종 전
 [HANDOFF_KO.md](HANDOFF_KO.md)의 복사 가능한 인계를 사용한다. 완료 parser·54DB·24LTE·GEO roots/matvecs·새24diagnostics·1240/313 나머지를 자동 재실행하지 않는다.
 
 다음 물리 연구의 첫 후보는 원래HyRec F/G 연속 재구성·norm·eta도메인을 명시하고 실제313cells의 defect/stability/tube/curvature producer를 좁게 동결하는 것이다. 다른 후보는 같은 spectroscopic fit에서 나온 고정 고정밀E/nu deck을 직접 확보해35Hz bridge를 별도 대안으로 검사하는 것이다. LAMDA baseline은 유지한다. 두 경우 모두 새 단위 범위·실행한도를 먼저 명시하고 최신 AGENTS·HEAD·병렬 반환을 확인한다.
+
+## 최종 전달 수신 확인
+
+R1–R10/C1–C10 **20/20** 단계의 Git 게시와 Dropbox·Drive 실제 ACK가 모두 확인됐다. Source ZIP은39,996,332bytes,480members, SHA256 `b4d74d7beb8ca9fd1bda1dcdbc4997685c2436f80bf85f4ab7f14e2805376c61`다. Dropbox ID `id:BSpOijBcT10AAAAAAEDApQ`, Drive ID `1lXlbMSJsSDq3y_7mGNPm2OhDopSVJtZD`의 수신 완료 및 정확한 byte수를 확인했다. 로컬 모든 멤버 CRC·SHA와 고정4입력 검사는 통과했다. 원격 전체 ZIP을 다시 내려받아 SHA를 계산했다는 주장은 하지 않는다.
+
+포장 중 발견한 font cache1개를 제외하는 한 번의 표적 수정에서477개 공통 과학·입력·결과 payload가 byte동일했다. 원래 ZIP과 비용을 보존했고 두 포장CPU합4.826531초는 과학14.113983738초와 별도다. [delivery/FINAL_DELIVERY.json](delivery/FINAL_DELIVERY.json), [delivery/PUBLICATION_INDEX.json](delivery/PUBLICATION_INDEX.json)에 마지막 실제 수신과 단계별fullSHA·ID가 있다. 마지막 metadata companion 자신의 ACK는 그 immutable archive 밖의 전달 영수증에 둔다.
 

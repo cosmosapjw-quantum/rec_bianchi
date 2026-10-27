@@ -1,0 +1,78 @@
+{
+  "cost_accounting": "Original cost preserved above; final repack cost will be in external SOURCE_FINAL.packaging.receipt.json; both executions count. Metadata repair/check I/O and unmeasured tails UNKNOWN_NOT_ZERO.",
+  "created_utc": "2026-10-27T06:32:15.659087+00:00",
+  "observed_cache_member_count": 1,
+  "observed_cache_members": [
+    "rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/raw/primary001/mpl_config/fontlist-v390.json"
+  ],
+  "original_archive": {
+    "bytes": 39998668,
+    "path": "/workspace/scratch/6104ad84b826/deliverables/REC_SYNTHESIS_20261027_SOURCE.zip",
+    "retained_unchanged": true,
+    "sha256": "26d1fbfb2b60580801a5fd57ea31137f244ce7bcc1c7ee29c5cfa211ecb80317"
+  },
+  "original_packaging_cost_preserved": {
+    "cpu_s": 2.682564,
+    "max_rss_kib": 118284,
+    "wall_s": 2.683463698998821
+  },
+  "original_receipt": {
+    "content": {
+      "all_members_byte_identity": "PASS",
+      "all_members_crc_readback": "PASS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/delivery/prepare_portable_source.py",
+        "--source-head",
+        "11dbbd351d631738f3913b63ba89570fc46d00b8",
+        "--output",
+        "/workspace/scratch/6104ad84b826/deliverables/REC_SYNTHESIS_20261027_SOURCE.zip"
+      ],
+      "end_utc": "2026-10-27T06:30:52.684453+00:00",
+      "manifest_identity": {
+        "bytes": 104993,
+        "sha256": "88b2b703edf3e5436fdfcc06cfa2b35684bc7b0ee1092e07fac7c76b65349c48"
+      },
+      "member_count": 480,
+      "output": "/workspace/scratch/6104ad84b826/deliverables/REC_SYNTHESIS_20261027_SOURCE.zip",
+      "packaging_cpu_s": 2.682564,
+      "packaging_max_rss_kib": 118284,
+      "premeasurement_and_postmeasurement_io_cost": "UNKNOWN_NOT_ZERO",
+      "schema": "REC_PORTABLE_SOURCE_PACKAGING_V1",
+      "scientific_execution": false,
+      "size_cap_bytes": 99614720,
+      "source_head": "11dbbd351d631738f3913b63ba89570fc46d00b8",
+      "source_head_origin": "EXPLICIT_PARENT_ARGUMENT_NOT_LOCAL_HEAD",
+      "start_utc": "2026-10-27T06:30:50.001010+00:00",
+      "status": "PASS",
+      "uncompressed_bytes": 57568800,
+      "wall_s": 2.683463698998821,
+      "zip_bytes": 39998668,
+      "zip_sha256": "26d1fbfb2b60580801a5fd57ea31137f244ce7bcc1c7ee29c5cfa211ecb80317"
+    },
+    "path": "/workspace/scratch/6104ad84b826/deliverables/REC_SYNTHESIS_20261027_SOURCE.packaging.receipt.json",
+    "sha256": "1535fb42288b69afbec07dbbd7fbe2217070eb97c572dec660780fca4d8ef49f"
+  },
+  "original_validity": {
+    "all_members_byte_identity": "PASS",
+    "all_members_crc_readback": "PASS",
+    "four_immutable_scientific_input_locks": "PASS",
+    "issue": "One unnecessary Matplotlib font cache member included; original science/input/result bytes unaffected"
+  },
+  "repair": {
+    "added_excluded_directories": [
+      "mpl_config",
+      ".mplconfig",
+      ".mpl_config",
+      "font_cache"
+    ],
+    "added_excluded_file_prefix": "fontlist-v",
+    "authorized_repack_count": 1,
+    "git_or_cloud_execution": false,
+    "output": "/workspace/scratch/6104ad84b826/deliverables/REC_SYNTHESIS_20261027_SOURCE_FINAL.zip",
+    "scientific_execution": false,
+    "source_head": "11dbbd351d631738f3913b63ba89570fc46d00b8"
+  },
+  "schema": "REC_PORTABLE_PACKAGING_REPAIR_V1",
+  "scope": "Non-scientific packaging metadata/cache exclusion repair only"
+}

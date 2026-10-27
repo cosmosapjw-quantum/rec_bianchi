@@ -72,3 +72,11 @@ Source ZIP은 repo layout을 보존하고 privateLAMDA를 survey_literature/에 
 기존dirty/untracked자료를 보존하고 필요한 고정자료만 회수한다.
 archive 자체의 실제 ACK는 별도 delivery companion에 있으며 자기참조해시를 만들지 않는다.
 
+## 실제 최종 수신
+
+- R/C20/20단계 게시·이중백업 확인; sourceC10commit `11dbbd351d631738f3913b63ba89570fc46d00b8`.
+- 최종sourceZIP39,996,332bytes·480members, SHA256 `b4d74d7beb8ca9fd1bda1dcdbc4997685c2436f80bf85f4ab7f14e2805376c61`.
+- Dropbox `id:BSpOijBcT10AAAAAAEDApQ`; Drive `1lXlbMSJsSDq3y_7mGNPm2OhDopSVJtZD`: 양쪽 completed·byte수 일치.
+- 중앙ZIP SHA256 `4042d5eed82d1ad2ccbeec33e7dedb174aa77dadb4423e71f8a7654da108d9a7`; Dropbox `id:BSpOijBcT10AAAAAAEC-TQ`; Drive `1qxJO-pnUxQBP-u1mVETTtVWiC1q5hdcc`.
+- SourceZIP 자신의 실제 ACK는 별도 final companion/PUBLICATION_INDEX에 있다. SourceZIP에 이미 포함된 C10 pretransport 상태는 후속 실제 receipt로 종료됐다. 동결 과학 판정과 값은 변하지 않았다.
+

@@ -25,7 +25,8 @@ DEFAULT_OUTPUT=WORKSPACE/'deliverables/REC_SYNTHESIS_20261027_SOURCE.zip'
 MAX_ZIP_BYTES=95*1024*1024
 FIXED_TIMESTAMP=(2026,10,27,0,0,0)
 ARCHIVE_SUFFIXES=('.zip','.tar','.gz','.tgz','.bz2','.xz','.7z','.rar')
-EXCLUDED_DIRS={'.git','.cache','__pycache__','mplconfig','fontcache','.fontcache',
+EXCLUDED_DIRS={'.git','.cache','__pycache__','mplconfig','mpl_config','.mplconfig','.mpl_config',
+               'fontcache','.fontcache','font_cache',
                '.pytest_cache','.mypy_cache','.ruff_cache','.venv','venv','node_modules',
                '.aws','.ssh','.gnupg','.credentials','credentials','credential','secrets',
                'tempfixture','tempfixtures','tmp_fixture','temporary_fixture'}
@@ -62,6 +63,8 @@ def exclusion(path):
         return 'CACHE_TEMP_OR_CREDENTIAL_DIRECTORY'
     if path.name.lower() in EXCLUDED_FILES:
         return 'CREDENTIAL_FILE'
+    if path.name.lower().startswith('fontlist-v'):
+        return 'MATPLOTLIB_FONT_CACHE'
     if path.name.lower().endswith(ARCHIVE_SUFFIXES):
         return 'RECURSIVE_ARCHIVE'
     if path.suffix.lower() in ('.pyc','.pyo'):
