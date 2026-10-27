@@ -1,0 +1,42 @@
+{
+  "schema": "REC_R7_WOLFRAM_SYMBOLIC_CHECK_V1",
+  "tool": "Wolfram Language evaluator",
+  "code": "Module[{xe,xn,t,a,b,x,flux,source,kernel,hinge},\nflux=FullSimplify[(1-Exp[-(xe-xn)])/(1+Exp[-(xe-xn)])-Tanh[(xe-xn)/2],Assumptions->xe>0&&xn>0];\nsource=FullSimplify[(Exp[xn]-1)/(Exp[xe]-1)-1-(Exp[-(xe-xn)]-1)/(1-Exp[-xe]),Assumptions->xe>0&&xn>0];\nkernel=FullSimplify[Integrate[(t-a)(b-x)/(b-a),{t,a,x}]+Integrate[(x-a)(b-t)/(b-a),{t,x,b}]-(x-a)(b-x)/2,Assumptions->a<x<b];\nhinge={Abs[1/4]-Abs[-1/4]-(1/2)(-1),Abs[-1/4]-Abs[1/4]-(-1/2)(1),Abs[1/4]-Abs[0]-(1/4)(1),Abs[-1/4]-Abs[0]-(-1/4)(-1)};\n<|\"fluxIdentityResidual\"->flux,\"sourceIdentityResidual\"->source,\"PeanoKernelMassResidual\"->kernel,\"directAbsHingeRemainders\"->hinge,\"jumpSumRemainders\"->{1/2,1/2,0,0}|>]",
+  "actual_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"fluxIdentityResidual\" -> 0, \"sourceIdentityResidual\" -> 0, \"PeanoKernelMassResidual\" -> 0, \"directAbsHingeRemainders\" -> {1/2, 1/2, 0, 0}, \"jumpSumRemainders\" -> {1/2, 1/2, 0, 0}|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "caller_wall_s": 9.537,
+  "time_constraint_s": 20,
+  "cpu_s": "UNKNOWN_NOT_EXPOSED",
+  "conservative_planning_reserve_cpu_s": 20,
+  "reserve_is_measured_cpu": false,
+  "remote_memory": "NOT_EXPOSED",
+  "status": "PASS_SCOPED_SYMBOLIC_IDENTITIES_AND_FINITE_CONTROLS",
+  "checks": {
+    "flux_identity_residual": "0",
+    "source_identity_residual": "0",
+    "peano_mass_residual": "0",
+    "direct_hinge_remainders": [
+      "1/2",
+      "1/2",
+      "0",
+      "0"
+    ],
+    "independent_jump_sums": [
+      "1/2",
+      "1/2",
+      "0",
+      "0"
+    ]
+  },
+  "claim_scope": "Independent algebra/finite-control verification; no physical bound or implementation admission",
+  "new_ivp": 0,
+  "historical_replays": 0
+}
