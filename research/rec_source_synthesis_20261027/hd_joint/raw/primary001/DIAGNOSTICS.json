@@ -1,0 +1,1552 @@
+{
+  "schema": "REC_HD_JOINT_THERMAL_DIAGNOSTIC_V1",
+  "status": "PASS_SCOPED_NUMERICAL_DIAGNOSTIC",
+  "claim": "Fixed-column paired flux and source/Planck compatibility diagnostics; no empirical uncertainty or production qualification.",
+  "source": {
+    "path": "/workspace/scratch/6104ad84b826/survey_literature/lamda_hd_live.dat",
+    "url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+    "bytes": 2289,
+    "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+    "parser_path": "research/program_expansion_20261025/hd_adapter/lamda_hd.py",
+    "parser_sha256": "ef10b34e1891755334083340b84ff1e298151df720c13f008b3762505813e275",
+    "old_source_gate_evidence_path": "research/program_expansion_20261025/hd_adapter/raw/source_diagnostic/diagnostics.json",
+    "old_source_gate_evidence_sha256": "6c0b2328688b9db4ee2ed61a057643e05ae40a449ad5514a74a19ca3cf11ea22"
+  },
+  "units": {
+    "energy_wavenumber": "cm^-1",
+    "frequency": "GHz; exact conversion to Hz",
+    "temperature": "K",
+    "delta_I_D_ratio": "dimensionless"
+  },
+  "formulas": {
+    "delta": "h_SI*(100*c*(Etilde_u-Etilde_l)-10^9*nu_GHz)/(k_B*T), exact rational source arithmetic",
+    "I": "tanh(delta/2)",
+    "D": "expm1(-delta)/(-expm1(-x_E))",
+    "ratio": "1+D"
+  },
+  "reference": "80-digit Decimal independent positive b/(1-b), r/(1-b) fluxes and original exponential source ratio",
+  "relative_error_tolerance": 2.842170943040401e-14,
+  "rows": [
+    {
+      "line_id": 1,
+      "upper_level_id": 2,
+      "lower_level_id": 1,
+      "upper_J": 1,
+      "lower_J": 0,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "89.227931611",
+      "lower_energy_cm_inverse_literal": "0.000000000",
+      "frequency_GHz_literal": "2674.98609400",
+      "source_line_number": 20,
+      "upper_source_line_number": 9,
+      "lower_source_line_number": 8,
+      "signed_frequency_gap_Hz": -8.2410162,
+      "old_absolute_frequency_gap_Hz": "41205081/5000000",
+      "old_35_Hz_gate_passed": true,
+      "old_gate_classification": "PASS_CATALOG_ROUNDING_GATE",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-41205081",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-5460555144848643",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "24280336313786148696645909",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "177246455091184941",
+        "denominator": "69032450000000000"
+      },
+      "delta": -7.910127983069763e-12,
+      "x_E": 2.567581696588183,
+      "x_nu": 2.567581696596093,
+      "paired_flux_imbalance_I": -3.9550639915348806e-12,
+      "source_planck_deviation_D": 8.567428421665742e-12,
+      "source_planck_ratio": 1.0000000000085674,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.083096056089521962607242166819557895584522168482184043397491214325386985338974481",
+        "positive_down_flux": "0.083096056090179263045801228791702404673023494701807722220786738782462469814045969",
+        "paired_flux_imbalance_I": "-3.9550639915348817838567018320359729942550738868143074588652009489207799808664346E-12",
+        "source_planck_ratio": "1.0000000000085674284216657419766711924142110134730475121117336692989358193142169",
+        "source_planck_deviation_D": "8.5674284216657419766711924142110134730475121117336692989358193142169E-12"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.0115932027994631093291042693571015054511061062986259538662824551271316819465366E-16",
+        "source_planck_deviation_D": "1.3739234888874207139807619654264134704015501772752990800055419035003361933892135E-17",
+        "source_planck_ratio": "5.9385238333476751332832265130220672052541350748561461053072585078019829378090995E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 1,
+      "upper_level_id": 2,
+      "lower_level_id": 1,
+      "upper_J": 1,
+      "lower_J": 0,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "89.227931611",
+      "lower_energy_cm_inverse_literal": "0.000000000",
+      "frequency_GHz_literal": "2674.98609400",
+      "source_line_number": 20,
+      "upper_source_line_number": 9,
+      "lower_source_line_number": 8,
+      "signed_frequency_gap_Hz": -8.2410162,
+      "old_absolute_frequency_gap_Hz": "41205081/5000000",
+      "old_35_Hz_gate_passed": true,
+      "old_gate_classification": "PASS_CATALOG_ROUNDING_GATE",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-41205081",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-5460555144848643",
+        "denominator": "1380649000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "24280336313786148696645909",
+        "denominator": "18913000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "177246455091184941",
+        "denominator": "138064900000000000"
+      },
+      "delta": -3.955063991534881e-12,
+      "x_E": 1.2837908482940914,
+      "x_nu": 1.2837908482980465,
+      "paired_flux_imbalance_I": -1.9775319957674407e-12,
+      "source_planck_deviation_D": 5.470240070099096e-12,
+      "source_planck_ratio": 1.0000000000054703,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.38309774046338500817528866812918686954598682680453008630827785127544096526542980",
+        "positive_down_flux": "0.38309774046490018425383677414097527777499038951476890351156064871890207458088853",
+        "paired_flux_imbalance_I": "-1.9775319957674408919283586494194608910868433528926136476608474332082203038032348E-12",
+        "source_planck_ratio": "1.0000000000054702400700990974381318383773648455133476213752604713018128523495635",
+        "source_planck_deviation_D": "5.4702400700990974381318383773648455133476213752604713018128523495635E-12"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "9.6916467772767405299706517100340391180279444395531730319341782120647826177658327E-17",
+        "source_planck_deviation_D": "2.9997726624538449971775167335021863886212544202834598014990406752218461123238671E-16",
+        "source_planck_ratio": "5.0816833973589863198139747834857366256519204043385219473300211625104549167742952E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 1,
+      "upper_level_id": 2,
+      "lower_level_id": 1,
+      "upper_J": 1,
+      "lower_J": 0,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "89.227931611",
+      "lower_energy_cm_inverse_literal": "0.000000000",
+      "frequency_GHz_literal": "2674.98609400",
+      "source_line_number": 20,
+      "upper_source_line_number": 9,
+      "lower_source_line_number": 8,
+      "signed_frequency_gap_Hz": -8.2410162,
+      "old_absolute_frequency_gap_Hz": "41205081/5000000",
+      "old_35_Hz_gate_passed": true,
+      "old_gate_classification": "PASS_CATALOG_ROUNDING_GATE",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-41205081",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-5460555144848643",
+        "denominator": "2761298000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "24280336313786148696645909",
+        "denominator": "37826000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "177246455091184941",
+        "denominator": "276129800000000000"
+      },
+      "delta": -1.9775319957674407e-12,
+      "x_E": 0.6418954241470457,
+      "x_nu": 0.6418954241490232,
+      "paired_flux_imbalance_I": -9.887659978837204e-13,
+      "source_planck_deviation_D": 4.1745971013940654e-12,
+      "source_planck_ratio": 1.0000000000041747,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "1.1110136828712540413467907774526466124163046164594556264351145302938254876839448",
+        "positive_down_flux": "1.1110136828734511064524062755001818414287428632073824026841878867945025957197980",
+        "paired_flux_imbalance_I": "-9.8876599788372044596418029138491474478833497763765978112466626057612111502725080E-13",
+        "source_planck_ratio": "1.0000000000041745971013940661174822100133752362592018041966623927891755127911764",
+        "source_planck_deviation_D": "4.1745971013940661174822100133752362592018041966623927891755127911764E-12"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "9.6916468750425603870695887776236671590630323260415601692540254366718052388289409E-17",
+        "source_planck_deviation_D": "1.6103896873175242304865472787789340773666813064308770770752785219914885239127013E-16",
+        "source_planck_ratio": "6.3515801447240665849170607952901518307567657443170500554369808528074225856688540E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 2,
+      "upper_level_id": 3,
+      "lower_level_id": 2,
+      "upper_J": 2,
+      "lower_J": 1,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "267.069663831",
+      "lower_energy_cm_inverse_literal": "89.227931611",
+      "frequency_GHz_literal": "5331.56195140",
+      "source_line_number": 21,
+      "upper_source_line_number": 10,
+      "lower_source_line_number": 9,
+      "signed_frequency_gap_Hz": -947678.840324,
+      "old_absolute_frequency_gap_Hz": "236919710081/250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-236919710081",
+        "denominator": "250000"
+      },
+      "delta_exact": {
+        "numerator": "-31396932378287363643",
+        "denominator": "34516225000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "2419677891757590072090909",
+        "denominator": "472825000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3532730349904729071",
+        "denominator": "690324500000000000"
+      },
+      "delta": -9.096282220401381e-07,
+      "x_E": 5.117491443467647,
+      "x_nu": 5.1174923530958685,
+      "paired_flux_imbalance_I": -4.548141110200377e-07,
+      "source_planck_deviation_D": 9.151110964426567e-07,
+      "source_planck_ratio": 1.0000009151110965,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.0060271361939408197725658624882856149250046872176797654528094035160157297437946508",
+        "positive_down_flux": "0.0060271416763964933585437260204054071740142546231350186493983453366761031294206458",
+        "paired_flux_imbalance_I": "-4.5481411102003766001381606488995901007665241217267512111428728270401519787784332E-7",
+        "source_planck_ratio": "1.0000009151110964426566484668800646441592839675915973847574467683507655139766601",
+        "source_planck_deviation_D": "9.151110964426566484668800646441592839675915973847574467683507655139766601E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "7.4123822958791749035877577811352394410742417860370619352605959597661079540335218E-17",
+        "source_planck_deviation_D": "7.4794595414371811121934087867121985251034045009499760037440874369277547140349910E-17",
+        "source_planck_ratio": "1.2933085044425273755157186217784284552637004681681465058707977066092275123350686E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 2,
+      "upper_level_id": 3,
+      "lower_level_id": 2,
+      "upper_J": 2,
+      "lower_J": 1,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "267.069663831",
+      "lower_energy_cm_inverse_literal": "89.227931611",
+      "frequency_GHz_literal": "5331.56195140",
+      "source_line_number": 21,
+      "upper_source_line_number": 10,
+      "lower_source_line_number": 9,
+      "signed_frequency_gap_Hz": -947678.840324,
+      "old_absolute_frequency_gap_Hz": "236919710081/250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-236919710081",
+        "denominator": "250000"
+      },
+      "delta_exact": {
+        "numerator": "-31396932378287363643",
+        "denominator": "69032450000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "2419677891757590072090909",
+        "denominator": "945650000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3532730349904729071",
+        "denominator": "1380649000000000000"
+      },
+      "delta": -4.5481411102006903e-07,
+      "x_E": 2.5587457217338234,
+      "x_nu": 2.5587461765479342,
+      "paired_flux_imbalance_I": -2.274070555100306e-07,
+      "source_planck_deviation_D": 4.929710421883114e-07,
+      "source_planck_ratio": 1.0000004929710422,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.083895374678197873136965204447957081388959904190774456502583825581139916913284257",
+        "positive_down_flux": "0.083895412835006803224048641386766566260913373463266711582431334991097409396914025",
+        "paired_flux_imbalance_I": "-2.2740705551003059012830334986366449360707824906188565914465118037518996579438821E-7",
+        "source_planck_ratio": "1.0000004929710421883114402712514982889902638633054475804969754661242220785033536",
+        "source_planck_deviation_D": "4.929710421883114402712514982889902638633054475804969754661242220785033536E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "4.0970708394719629395414427358431677383849794112261028103909289296945966937843124E-17",
+        "source_planck_deviation_D": "1.2244206632250340677506350430433004097994825168851942947355782196645048137508854E-16",
+        "source_planck_ratio": "2.1377452503064356283331581145299023268740207367409776478045496658418760249620961E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 2,
+      "upper_level_id": 3,
+      "lower_level_id": 2,
+      "upper_J": 2,
+      "lower_J": 1,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "267.069663831",
+      "lower_energy_cm_inverse_literal": "89.227931611",
+      "frequency_GHz_literal": "5331.56195140",
+      "source_line_number": 21,
+      "upper_source_line_number": 10,
+      "lower_source_line_number": 9,
+      "signed_frequency_gap_Hz": -947678.840324,
+      "old_absolute_frequency_gap_Hz": "236919710081/250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-236919710081",
+        "denominator": "250000"
+      },
+      "delta_exact": {
+        "numerator": "-31396932378287363643",
+        "denominator": "138064900000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "2419677891757590072090909",
+        "denominator": "1891300000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3532730349904729071",
+        "denominator": "2761298000000000000"
+      },
+      "delta": -2.2740705551003452e-07,
+      "x_E": 1.2793728608669117,
+      "x_nu": 1.2793730882739671,
+      "paired_flux_imbalance_I": -1.1370352775501677e-07,
+      "source_planck_deviation_D": 3.150606468412347e-07,
+      "source_planck_ratio": 1.000000315060647,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.38544770607457935039614742938254775695977004958568546679303893234581119045904325",
+        "positive_down_flux": "0.38544779372811720842957675387258542805176794817948155298924109975996742537857220",
+        "paired_flux_imbalance_I": "-1.1370352775501676507932608972319834888356068220680065798504298354438715994538828E-7",
+        "source_planck_ratio": "1.0000003150606468412346828602256674471968642526553033637163387514213569722143716",
+        "source_planck_deviation_D": "3.150606468412346828602256674471968642526553033637163387514213569722143716E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.2682429752699259792922308128313953596057940591045746961366576317238551392850189E-17",
+        "source_planck_deviation_D": "1.1736240638916987890750658592331243627523564906385433124459086154781265434147579E-16",
+        "source_planck_ratio": "6.3661954443348271326146631183749338837485881712525750808234859045475677139192484E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 3,
+      "upper_level_id": 4,
+      "lower_level_id": 3,
+      "upper_J": 3,
+      "lower_J": 2,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "532.310801589",
+      "lower_energy_cm_inverse_literal": "267.069663831",
+      "frequency_GHz_literal": "7951.72818080",
+      "source_line_number": 22,
+      "upper_source_line_number": 11,
+      "lower_source_line_number": 10,
+      "signed_frequency_gap_Hz": 1084318.7429164,
+      "old_absolute_frequency_gap_Hz": "2710796857291/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "2710796857291",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "359238602776194099273",
+        "denominator": "345162250000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "36088161592112834687590401",
+        "denominator": "4728250000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "658608859246408539",
+        "denominator": "86290562500000000"
+      },
+      "delta": 1.0407818432525403e-06,
+      "x_E": 7.63245631938092,
+      "x_nu": 7.6324552785990765,
+      "paired_flux_imbalance_I": 5.203909216262232e-07,
+      "source_planck_deviation_D": -1.041285772716266e-06,
+      "source_planck_ratio": 0.9999989587142273,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.00048470471314665623982408077019666079885303996305154135234715585506980004386368123",
+        "positive_down_flux": "0.00048470420867505398034100929186963984006899660437841347610655749844298591086761018",
+        "paired_flux_imbalance_I": "5.2039092162622313303111131880814177723598475571822770778010285378401018771140596E-7",
+        "source_planck_ratio": "0.99999895871422728373412445680127451021956988628171294924321305242396215292188762",
+        "source_planck_deviation_D": "-0.00000104128577271626587554319872548978043011371828705075678694757603784707811238"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "1.9128473035647322804911213341631920791842104873382351999213850138094398504456228E-16",
+        "source_planck_deviation_D": "1.5146461880865391419024907090823107758265367911767225530005321563237984393100338E-16",
+        "source_planck_ratio": "1.9597704821065799851627336776342055578353276535515849727715316776760810426561247E-18"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 3,
+      "upper_level_id": 4,
+      "lower_level_id": 3,
+      "upper_J": 3,
+      "lower_J": 2,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "532.310801589",
+      "lower_energy_cm_inverse_literal": "267.069663831",
+      "frequency_GHz_literal": "7951.72818080",
+      "source_line_number": 22,
+      "upper_source_line_number": 11,
+      "lower_source_line_number": 10,
+      "signed_frequency_gap_Hz": 1084318.7429164,
+      "old_absolute_frequency_gap_Hz": "2710796857291/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "2710796857291",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "359238602776194099273",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "36088161592112834687590401",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "658608859246408539",
+        "denominator": "172581125000000000"
+      },
+      "delta": 5.203909216262701e-07,
+      "x_E": 3.81622815969046,
+      "x_nu": 3.8162276392995382,
+      "paired_flux_imbalance_I": 2.601954608131292e-07,
+      "source_planck_deviation_D": -5.321027210873514e-07,
+      "source_planck_ratio": 0.9999994678972789,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.022506050080893896176720237147672304706330147330732128771557631503044193019155669",
+        "positive_down_flux": "0.022506038368952799807529576391198946259177229646264671742614228346740324413015807",
+        "paired_flux_imbalance_I": "2.6019546081312918218481587336210162319150765740302674424860821261155686547148924E-7",
+        "source_planck_ratio": "0.99999946789727891264859574637016841820573022531976526779693625503739796390473260",
+        "source_planck_deviation_D": "-5.3210272108735140425362983158179426977468023473220306374496260203609526740E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.8570288055855088517722015779959804538507657190074416486511209804835460479075566E-17",
+        "source_planck_deviation_D": "1.9822154374911166577742010524447305626219005466576989743626386029265845915895542E-17",
+        "source_planck_ratio": "1.9579293420519145854799063935682316981608780133367161696836897730816725644577058E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 3,
+      "upper_level_id": 4,
+      "lower_level_id": 3,
+      "upper_J": 3,
+      "lower_J": 2,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "532.310801589",
+      "lower_energy_cm_inverse_literal": "267.069663831",
+      "frequency_GHz_literal": "7951.72818080",
+      "source_line_number": 22,
+      "upper_source_line_number": 11,
+      "lower_source_line_number": 10,
+      "signed_frequency_gap_Hz": 1084318.7429164,
+      "old_absolute_frequency_gap_Hz": "2710796857291/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "2710796857291",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "359238602776194099273",
+        "denominator": "1380649000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "36088161592112834687590401",
+        "denominator": "18913000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "658608859246408539",
+        "denominator": "345162250000000000"
+      },
+      "delta": 2.6019546081313507e-07,
+      "x_E": 1.90811407984523,
+      "x_nu": 1.9081138196497691,
+      "paired_flux_imbalance_I": 1.300977304065668e-07,
+      "source_planck_deviation_D": -3.0552275829495746e-07,
+      "source_planck_ratio": 0.9999996944772417,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.17420500317925117131785471485118093723862125030416035559125229601523475308311595",
+        "positive_down_flux": "0.17420495785190599012392821454743826322697622627181894318184224328401374464626457",
+        "paired_flux_imbalance_I": "1.3009773040656679305106546364941909685032423965468955289553324845428689183823502E-7",
+        "source_planck_ratio": "0.99999969447724170504252330630854056660480300803538606135521358846073477796915159",
+        "source_planck_deviation_D": "-3.0552275829495747669369145943339519699196461393864478641153926522203084841E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.9167747898496563710589830751203903957483124156699081982570204328342590176050010E-19",
+        "source_planck_deviation_D": "4.2958417896371442454814139182459067229617369088687395449428882249263388433562137E-17",
+        "source_planck_ratio": "1.9900396776279132307168397879205577640745751273900092699724102181220867244882818E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 4,
+      "upper_level_id": 5,
+      "lower_level_id": 4,
+      "upper_J": 4,
+      "lower_J": 3,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "883.163758456",
+      "lower_energy_cm_inverse_literal": "532.310801589",
+      "frequency_GHz_literal": "10518.30708120",
+      "source_line_number": 23,
+      "upper_source_line_number": 12,
+      "lower_source_line_number": 11,
+      "signed_frequency_gap_Hz": -47627.4090914,
+      "old_absolute_frequency_gap_Hz": "238137045457/5000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-238137045457",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-31558255370236416171",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "95472657895466291065254573",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3484752028963647309",
+        "denominator": "345162250000000000"
+      },
+      "delta": -4.571510263685617e-08,
+      "x_E": 10.095982434882492,
+      "x_nu": 10.095982480597595,
+      "paired_flux_imbalance_I": -2.285755131842808e-08,
+      "source_planck_deviation_D": 4.571698927567622e-08,
+      "source_planck_ratio": 1.0000000457169893,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.000041246626315387633171199938905606448127628023440566737830755436793579965430713859",
+        "positive_down_flux": "0.000041246628200981431703254849643016449077449527720776789739767404252951235087414376",
+        "paired_flux_imbalance_I": "-2.2857551318428080326675451624835660069208019698830239622447843878957397470703349E-8",
+        "source_planck_ratio": "1.0000000457169892756762248135368527135929560065992312131196056212642591775520248",
+        "source_planck_deviation_D": "4.57169892756762248135368527135929560065992312131196056212642591775520248E-8"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "4.6894026657651724126644682005410313840177818472580485451694161888378203268982814E-17",
+        "source_planck_deviation_D": "7.6899085039495180553347841854223477926824684075820911141303364703443105939181155E-17",
+        "source_planck_ratio": "2.9657073684004346637439495476994999723115303005511986011187443241089635839251588E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 4,
+      "upper_level_id": 5,
+      "lower_level_id": 4,
+      "upper_J": 4,
+      "lower_J": 3,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "883.163758456",
+      "lower_energy_cm_inverse_literal": "532.310801589",
+      "frequency_GHz_literal": "10518.30708120",
+      "source_line_number": 23,
+      "upper_source_line_number": 12,
+      "lower_source_line_number": 11,
+      "signed_frequency_gap_Hz": -47627.4090914,
+      "old_absolute_frequency_gap_Hz": "238137045457/5000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-238137045457",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-31558255370236416171",
+        "denominator": "1380649000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "95472657895466291065254573",
+        "denominator": "18913000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3484752028963647309",
+        "denominator": "690324500000000000"
+      },
+      "delta": -2.2857551318428085e-08,
+      "x_E": 5.047991217441246,
+      "x_nu": 5.047991240298797,
+      "paired_flux_imbalance_I": -1.142877565921404e-08,
+      "source_planck_deviation_D": 2.300529668706267e-08,
+      "source_planck_ratio": 1.0000000230052968,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.0064637327181313936134583760766454015944661936542629932589559818596085329803084819",
+        "positive_down_flux": "0.0064637328658764976152949991588948611748161449602136085103565464658626586579018987",
+        "paired_flux_imbalance_I": "-1.1428775659214041656129122573005237734705807913976969269094634964995314317588786E-8",
+        "source_planck_ratio": "1.0000000230052966870626690098332086350211052266632933133537224368746553637840609",
+        "source_planck_deviation_D": "2.30052966870626690098332086350211052266632933133537224368746553637840609E-8"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "8.3722886410991617357937284071533681000736522381804841346246680540932538710397989E-17",
+        "source_planck_deviation_D": "5.9195287760197022772121056288940768403282945747203439911396118426800793362454323E-17",
+        "source_planck_ratio": "9.1614904158189919503063423576516346200655529874250286092880829567842394403730702E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 4,
+      "upper_level_id": 5,
+      "lower_level_id": 4,
+      "upper_J": 4,
+      "lower_J": 3,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "883.163758456",
+      "lower_energy_cm_inverse_literal": "532.310801589",
+      "frequency_GHz_literal": "10518.30708120",
+      "source_line_number": 23,
+      "upper_source_line_number": 12,
+      "lower_source_line_number": 11,
+      "signed_frequency_gap_Hz": -47627.4090914,
+      "old_absolute_frequency_gap_Hz": "238137045457/5000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-238137045457",
+        "denominator": "5000000"
+      },
+      "delta_exact": {
+        "numerator": "-31558255370236416171",
+        "denominator": "2761298000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "95472657895466291065254573",
+        "denominator": "37826000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "3484752028963647309",
+        "denominator": "1380649000000000000"
+      },
+      "delta": -1.1428775659214042e-08,
+      "x_E": 2.523995608720623,
+      "x_nu": 2.5239956201493987,
+      "paired_flux_imbalance_I": -5.714387829607021e-09,
+      "source_planck_deviation_D": 1.2424456282616665e-08,
+      "source_planck_ratio": 1.0000000124244564,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.087120490393994089224865764567138925463402472816341091824749477819510328279241544",
+        "positive_down_flux": "0.087120491389674634948240970508182690488812656864049289817147057402135127572682038",
+        "paired_flux_imbalance_I": "-5.7143878296070210146634858815760813893288975206237770821434670711313592888306507E-9",
+        "source_planck_ratio": "1.0000000124244562826166635545795245424684381574611689054605110297909608220563107",
+        "source_planck_deviation_D": "1.24244562826166635545795245424684381574611689054605110297909608220563107E-8"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "2.8376905738048972095228580082019714592644754942665709611545427076179079259146117E-17",
+        "source_planck_deviation_D": "8.2427069051156789717365950837106674577233951256379171843578408869481353760221128E-17",
+        "source_planck_ratio": "7.0016564137401894376987994037855921022536024787107776640850978406381637967657947E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 5,
+      "upper_level_id": 6,
+      "lower_level_id": 5,
+      "upper_J": 5,
+      "lower_J": 4,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "1317.309260961",
+      "lower_energy_cm_inverse_literal": "883.163758456",
+      "frequency_GHz_literal": "13015.35348710",
+      "source_line_number": 24,
+      "upper_source_line_number": 13,
+      "lower_source_line_number": 12,
+      "signed_frequency_gap_Hz": 1245461.910729,
+      "old_absolute_frequency_gap_Hz": "1245461910729/1000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1245461910729",
+        "denominator": "1000000"
+      },
+      "delta_exact": {
+        "numerator": "165050359792867832787",
+        "denominator": "138064900000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "23627576297284851974901819",
+        "denominator": "1891300000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "17248129046514344013",
+        "denominator": "1380649000000000000"
+      },
+      "delta": 1.1954548896415224e-06,
+      "x_E": 12.492770209530404,
+      "x_nu": 12.492769014075513,
+      "paired_flux_imbalance_I": 5.9772744482069e-07,
+      "source_planck_deviation_D": -1.19545866247129e-06,
+      "source_planck_ratio": 0.9999988045413375,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.0000037537123023238931847452013670891914348279033916599474602140430219079428159579870",
+        "positive_down_flux": "0.0000037537078149328493014273100872152512361727960481690990101877417897162643917725110",
+        "paired_flux_imbalance_I": "5.9772744482069003959047618120863743888058930524996475858427930564255221190533329E-7",
+        "source_planck_ratio": "0.99999880454133752871000214430516005882636644151083251660419806649951673523964513",
+        "source_planck_deviation_D": "-0.00000119545866247128999785569483994117363355848916748339580193350048326476035487"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "1.6099416021698882020799144476961641005069488719289341072542627980049787313071593E-17",
+        "source_planck_deviation_D": "1.3668694446043511505897376161083070323491179291598881203650991207100030068310846E-17",
+        "source_planck_ratio": "3.4964698488202771919296028580781318801974678873486084260880201297969079703934364E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 5,
+      "upper_level_id": 6,
+      "lower_level_id": 5,
+      "upper_J": 5,
+      "lower_J": 4,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "1317.309260961",
+      "lower_energy_cm_inverse_literal": "883.163758456",
+      "frequency_GHz_literal": "13015.35348710",
+      "source_line_number": 24,
+      "upper_source_line_number": 13,
+      "lower_source_line_number": 12,
+      "signed_frequency_gap_Hz": 1245461.910729,
+      "old_absolute_frequency_gap_Hz": "1245461910729/1000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1245461910729",
+        "denominator": "1000000"
+      },
+      "delta_exact": {
+        "numerator": "165050359792867832787",
+        "denominator": "276129800000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "23627576297284851974901819",
+        "denominator": "3782600000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "17248129046514344013",
+        "denominator": "2761298000000000000"
+      },
+      "delta": 5.977274448207612e-07,
+      "x_E": 6.246385104765202,
+      "x_nu": 6.246384507037757,
+      "paired_flux_imbalance_I": 2.988637224103717e-07,
+      "source_planck_deviation_D": -5.988875780175513e-07,
+      "source_planck_ratio": 0.999999401112422,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.0019412072969540806028472366273934593887180843139976286800416890816942384627914682",
+        "positive_down_flux": "0.0019412061366415499024246050594147191333034963495791965938960554753967010894348488",
+        "paired_flux_imbalance_I": "2.9886372241037171416083589480159146682870694678366629137094626770806352855429477E-7",
+        "source_planck_ratio": "0.99999940111242198244866755355228034880458811619540811628172412546849674345393784",
+        "source_planck_deviation_D": "-5.9888757801755133244644771965119541188380459188371827587453150325654606216E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "2.6822351766909273092461326945633985778942707216923769179971573870406971813586775E-17",
+        "source_planck_deviation_D": "4.8025634646190585042309557974714045694630036003363760772828373180390536388124831E-17",
+        "source_planck_ratio": "4.3667991476921868198020556246622117559314361890241713301554785172354699530159327E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 5,
+      "upper_level_id": 6,
+      "lower_level_id": 5,
+      "upper_J": 5,
+      "lower_J": 4,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "1317.309260961",
+      "lower_energy_cm_inverse_literal": "883.163758456",
+      "frequency_GHz_literal": "13015.35348710",
+      "source_line_number": 24,
+      "upper_source_line_number": 13,
+      "lower_source_line_number": 12,
+      "signed_frequency_gap_Hz": 1245461.910729,
+      "old_absolute_frequency_gap_Hz": "1245461910729/1000000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1245461910729",
+        "denominator": "1000000"
+      },
+      "delta_exact": {
+        "numerator": "165050359792867832787",
+        "denominator": "552259600000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "23627576297284851974901819",
+        "denominator": "7565200000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "17248129046514344013",
+        "denominator": "5522596000000000000"
+      },
+      "delta": 2.988637224103806e-07,
+      "x_E": 3.123192552382601,
+      "x_nu": 3.1231922535188783,
+      "paired_flux_imbalance_I": 1.494318612051892e-07,
+      "source_planck_deviation_D": -3.12624279050891e-07,
+      "source_planck_ratio": 0.999999687375721,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.046043084612141337503223361809498074006874203232191614910416985891796580382982228",
+        "positive_down_flux": "0.046043070851535735335556457735329007131150044322515233963688678306443525780638703",
+        "paired_flux_imbalance_I": "1.4943186120518919387611767337251633508291724860935408493101303310490481923708381E-7",
+        "source_planck_ratio": "0.99999968737572094910896392846193439230539162614353748324262884203251277002456514",
+        "source_planck_deviation_D": "-3.1262427905089103607153806560769460837385646251675737115796748722997543486E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.7552793717051855374538724482241849705816750995821248296835260727852530714688961E-17",
+        "source_planck_deviation_D": "3.9923592576002253368183783398342263948065071404107455025593859740541793298610438E-17",
+        "source_planck_ratio": "3.1211227581102308954738811026084607706027722197858906789253812676838097699602898E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 6,
+      "upper_level_id": 7,
+      "lower_level_id": 6,
+      "upper_J": 6,
+      "lower_J": 5,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "1831.950752927",
+      "lower_energy_cm_inverse_literal": "1317.309260961",
+      "frequency_GHz_literal": "15428.56561410",
+      "source_line_number": 25,
+      "upper_source_line_number": 14,
+      "lower_source_line_number": 13,
+      "signed_frequency_gap_Hz": -1827572.5607572,
+      "old_absolute_frequency_gap_Hz": "4568931401893/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-4568931401893",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "-605481199589617215879",
+        "denominator": "345162250000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "70021058878959203645654577",
+        "denominator": "4728250000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "20446151614580885823",
+        "denominator": "1380649000000000000"
+      },
+      "delta": -1.754192990657632e-06,
+      "x_E": 14.809085576896146,
+      "x_nu": 14.809087331089136,
+      "paired_flux_imbalance_I": -8.770964953285911e-07,
+      "source_planck_deviation_D": 1.7541951787469943e-06,
+      "source_planck_ratio": 1.0000017541951787,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "3.7025015660077100346269507552055217554073820615629832213818200756602281013399881E-7",
+        "positive_down_flux": "3.7025080609157016836288733841384345889587951168664317875815570687588119810501517E-7",
+        "paired_flux_imbalance_I": "-8.7709649532859104764131973364333115844471638872292658798159722502123397093710476E-7",
+        "source_planck_ratio": "1.0000017541951787469943280084145310084856361030916963335030527926325235946794245",
+        "source_planck_deviation_D": "0.0000017541951787469943280084145310084856361030916963335030527926325235946794245"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "7.0309839168609166046297928375579981234683186349634217285529318653845099143901134E-17",
+        "source_planck_deviation_D": "2.5823056441757046562400137225760188153507232173831379911139083858257103645226819E-17",
+        "source_planck_ratio": "7.5513747113498124551836059056442744985859198209664792159703253062423551563719755E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 6,
+      "upper_level_id": 7,
+      "lower_level_id": 6,
+      "upper_J": 6,
+      "lower_J": 5,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "1831.950752927",
+      "lower_energy_cm_inverse_literal": "1317.309260961",
+      "frequency_GHz_literal": "15428.56561410",
+      "source_line_number": 25,
+      "upper_source_line_number": 14,
+      "lower_source_line_number": 13,
+      "signed_frequency_gap_Hz": -1827572.5607572,
+      "old_absolute_frequency_gap_Hz": "4568931401893/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-4568931401893",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "-605481199589617215879",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "70021058878959203645654577",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "20446151614580885823",
+        "denominator": "2761298000000000000"
+      },
+      "delta": -8.77096495328816e-07,
+      "x_E": 7.404542788448073,
+      "x_nu": 7.404543665544568,
+      "paired_flux_imbalance_I": -4.385482476643799e-07,
+      "source_planck_deviation_D": 8.776309028192178e-07,
+      "source_planck_ratio": 1.0000008776309028,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.00060885220854645267702017521730635299672188414710869124726992308674621893227659714",
+        "positive_down_flux": "0.00060885274256882516086461992053892378878316425268710125528462150285174611471360432",
+        "paired_flux_imbalance_I": "-4.3854824766437986742185562525918762500722988963635595966125186747403114583270627E-7",
+        "source_planck_ratio": "1.0000008776309028192178624499642713710850289696846628219213226047546818927403911",
+        "source_planck_deviation_D": "8.776309028192178624499642713710850289696846628219213226047546818927403911E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "4.5492992196517335429964343457917639456282149913752339190827697530899909841218246E-17",
+        "source_planck_deviation_D": "6.1073265735298075238297366238236435276454498590986757963784952276232741775749924E-17",
+        "source_planck_ratio": "2.0991733750786922896618646691091654240568465418648294312864406984678831407476919E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 6,
+      "upper_level_id": 7,
+      "lower_level_id": 6,
+      "upper_J": 6,
+      "lower_J": 5,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "1831.950752927",
+      "lower_energy_cm_inverse_literal": "1317.309260961",
+      "frequency_GHz_literal": "15428.56561410",
+      "source_line_number": 25,
+      "upper_source_line_number": 14,
+      "lower_source_line_number": 13,
+      "signed_frequency_gap_Hz": -1827572.5607572,
+      "old_absolute_frequency_gap_Hz": "4568931401893/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "-4568931401893",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "-605481199589617215879",
+        "denominator": "1380649000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "70021058878959203645654577",
+        "denominator": "18913000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "20446151614580885823",
+        "denominator": "5522596000000000000"
+      },
+      "delta": -4.38548247664408e-07,
+      "x_E": 3.7022713942240366,
+      "x_nu": 3.702271832772284,
+      "paired_flux_imbalance_I": -2.1927412383220048e-07,
+      "source_planck_deviation_D": 4.496398037044261e-07,
+      "source_planck_ratio": 1.0000004496398036,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.025291293529418757550824599218362182636207773543594717734802677863369343906630706",
+        "positive_down_flux": "0.025291304620873648112476336027974253548397096155198165405650065299199596857733045",
+        "paired_flux_imbalance_I": "-2.1927412383220047666107728547578652857094917746690779940627144081767708516593009E-7",
+        "source_planck_ratio": "1.0000004496398037044260555109022930589632467207070706603465085139940002548642210",
+        "source_planck_deviation_D": "4.496398037044260555109022930589632467207070706603465085139940002548642210E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "9.1099121592610074922064136862550907689028378577654245451933443437699617727846450E-18",
+        "source_planck_deviation_D": "5.0499624015529175193863288809083773257994779373127942603785497681384239212154359E-17",
+        "source_planck_ratio": "9.1969979259479429487146083280080738848929525408394738559389779975202289058697487E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 7,
+      "upper_level_id": 8,
+      "lower_level_id": 7,
+      "upper_J": 7,
+      "lower_J": 6,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "2423.883499771",
+      "lower_energy_cm_inverse_literal": "1831.950752927",
+      "frequency_GHz_literal": "17745.69590350",
+      "source_line_number": 26,
+      "upper_source_line_number": 15,
+      "lower_source_line_number": 14,
+      "signed_frequency_gap_Hz": 1411205.4502552,
+      "old_absolute_frequency_gap_Hz": "1764006812819/1250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1764006812819",
+        "denominator": "1250000"
+      },
+      "delta_exact": {
+        "numerator": "233768657736332265057",
+        "denominator": "172581125000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "40268573721885253417222809",
+        "denominator": "2364125000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "4703369036686345221",
+        "denominator": "276129800000000000"
+      },
+      "delta": 1.3545435964467856e-06,
+      "x_E": 17.033182983930736,
+      "x_nu": 17.03318162938714,
+      "paired_flux_imbalance_I": 6.772717982232893e-07,
+      "source_planck_deviation_D": -1.3545427332999731e-06,
+      "source_planck_ratio": 0.9999986454572667,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "4.0048220781951533896662699872547656272694054871658296046549206763223056888915519E-8",
+        "positive_down_flux": "4.0048166534927264605100345628265832258131145757748508629525018939840996292944410E-8",
+        "paired_flux_imbalance_I": "6.7727179822328925615733312188269722233910772127396220707918837908453281948966946E-7",
+        "source_planck_ratio": "0.99999864545726670002671073861158705620178086262758876941408984501052055241699942",
+        "source_planck_deviation_D": "-0.00000135454273329997328926138841294379821913737241123058591015498947944758300058"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "3.9909221478428500238080465621323083647622906774915135149787712063055663593946949E-18",
+        "source_planck_deviation_D": "1.1216255447208139163211605247427764381814134223138954402282680385535077555821336E-16",
+        "source_planck_ratio": "1.1729999729863965423200891953476939769949158847307155104565673447291823880401188E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 7,
+      "upper_level_id": 8,
+      "lower_level_id": 7,
+      "upper_J": 7,
+      "lower_J": 6,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "2423.883499771",
+      "lower_energy_cm_inverse_literal": "1831.950752927",
+      "frequency_GHz_literal": "17745.69590350",
+      "source_line_number": 26,
+      "upper_source_line_number": 15,
+      "lower_source_line_number": 14,
+      "signed_frequency_gap_Hz": 1411205.4502552,
+      "old_absolute_frequency_gap_Hz": "1764006812819/1250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1764006812819",
+        "denominator": "1250000"
+      },
+      "delta_exact": {
+        "numerator": "233768657736332265057",
+        "denominator": "345162250000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "40268573721885253417222809",
+        "denominator": "4728250000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "4703369036686345221",
+        "denominator": "552259600000000000"
+      },
+      "delta": 6.772717982233928e-07,
+      "x_E": 8.516591491965368,
+      "x_nu": 8.51659081469357,
+      "paired_flux_imbalance_I": 3.386358991116835e-07,
+      "source_planck_deviation_D": -6.77407131844899e-07,
+      "source_planck_ratio": 0.9999993225928682,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.00020016056787284442262765782462714360706923629204565507420274471149460618283497015",
+        "positive_down_flux": "0.00020016043230978259249535960384021677923247312041519529712233583315044465710545148",
+        "paired_flux_imbalance_I": "3.3863589911168346090392686679597525229847090116578024708686414081606656431725046E-7",
+        "source_planck_ratio": "0.99999932259286815510099952468662376034276118883580896810244835214912621524196581",
+        "source_planck_deviation_D": "-6.7740713184489900047531337623965723881116419103189755164785087378475803419E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "6.9277136703149651248943199620343729663780707197270940075955235840448712821819173E-17",
+        "source_planck_deviation_D": "7.2664875318658727975797190439852104128083464465753087902913848888941996384669354E-17",
+        "source_planck_ratio": "1.2168850424581338478708819922353502364772071121386750408930627451794500665699394E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 7,
+      "upper_level_id": 8,
+      "lower_level_id": 7,
+      "upper_J": 7,
+      "lower_J": 6,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "2423.883499771",
+      "lower_energy_cm_inverse_literal": "1831.950752927",
+      "frequency_GHz_literal": "17745.69590350",
+      "source_line_number": 26,
+      "upper_source_line_number": 15,
+      "lower_source_line_number": 14,
+      "signed_frequency_gap_Hz": 1411205.4502552,
+      "old_absolute_frequency_gap_Hz": "1764006812819/1250000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "1764006812819",
+        "denominator": "1250000"
+      },
+      "delta_exact": {
+        "numerator": "233768657736332265057",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "40268573721885253417222809",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "4703369036686345221",
+        "denominator": "1104519200000000000"
+      },
+      "delta": 3.386358991116964e-07,
+      "x_E": 4.258295745982684,
+      "x_nu": 4.258295407346785,
+      "paired_flux_imbalance_I": 1.6931794955584659e-07,
+      "source_planck_deviation_D": -3.4349505713233666e-07,
+      "source_planck_ratio": 0.9999996565049428,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.014349387830369393996751142553973358613689644525876660302785339716013520848184330",
+        "positive_down_flux": "0.014349382971152367109886742153973965492346898246807175617941600775166837602126397",
+        "paired_flux_imbalance_I": "1.6931794955584658455512097246477707621304979020719701080657623756598356102222470E-7",
+        "source_planck_ratio": "0.99999965650494286766337214603040573320039728174939801741070119766789115083101614",
+        "source_planck_deviation_D": "-3.4349505713233662785396959426679960271825060198258929880233210884916898386E-7"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "9.4282520744428413692512955031062634911397494825234010671150212001687662066300831E-18",
+        "source_planck_deviation_D": "8.5023934555475731271482243456998597033033258756349780716949937744379426525768896E-17",
+        "source_planck_ratio": "4.3343461158397320529010641286291063210984412721476115579199329398891874976898608E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 8,
+      "upper_level_id": 9,
+      "lower_level_id": 8,
+      "upper_J": 8,
+      "lower_J": 7,
+      "temperature_K": 50,
+      "upper_energy_cm_inverse_literal": "3089.576092837",
+      "lower_energy_cm_inverse_literal": "2423.883499771",
+      "frequency_GHz_literal": "19956.96186790",
+      "source_line_number": 27,
+      "upper_source_line_number": 16,
+      "lower_source_line_number": 15,
+      "signed_frequency_gap_Hz": 6864.9896228,
+      "old_absolute_frequency_gap_Hz": "17162474057/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "17162474057",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "2274395140984741971",
+        "denominator": "345162250000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "90572759837718038359380027",
+        "denominator": "4728250000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "26447245863516086637",
+        "denominator": "1380649000000000000"
+      },
+      "delta": 6.5893507791907774e-09,
+      "x_E": 19.155662208579926,
+      "x_nu": 19.155662201990577,
+      "paired_flux_imbalance_I": 3.2946753895953887e-09,
+      "source_planck_deviation_D": -6.589350789077888e-09,
+      "source_planck_ratio": 0.9999999934106492,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "4.7951435232856095929649930434160705414284947592192823205549450994605837339005055E-9",
+        "positive_down_flux": "4.7951434916887269855728225531473000982249054290951144846021114556710103939932376E-9",
+        "paired_flux_imbalance_I": "3.2946753895953887813203308498285626230487492677091191282928669199408787031774692E-9",
+        "source_planck_ratio": "0.99999999341064921092211181225451407520676271395821386010523146104934223663886483",
+        "source_planck_deviation_D": "-6.58935078907788818774548592479323728604178613989476853895065776336113517E-9"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "1.9259981440205155086350754967805054893409121396538671235408651892936042904772039E-17",
+        "source_planck_deviation_D": "5.8937852085268426503027537438387157012609681082018707686122693626554062076963451E-17",
+        "source_planck_ratio": "5.3667146408284273169926536887327471859666297347525017015638507985991600483034683E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 8,
+      "upper_level_id": 9,
+      "lower_level_id": 8,
+      "upper_J": 8,
+      "lower_J": 7,
+      "temperature_K": 100,
+      "upper_energy_cm_inverse_literal": "3089.576092837",
+      "lower_energy_cm_inverse_literal": "2423.883499771",
+      "frequency_GHz_literal": "19956.96186790",
+      "source_line_number": 27,
+      "upper_source_line_number": 16,
+      "lower_source_line_number": 15,
+      "signed_frequency_gap_Hz": 6864.9896228,
+      "old_absolute_frequency_gap_Hz": "17162474057/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "17162474057",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "2274395140984741971",
+        "denominator": "690324500000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "90572759837718038359380027",
+        "denominator": "9456500000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "26447245863516086637",
+        "denominator": "2761298000000000000"
+      },
+      "delta": 3.2946753895953887e-09,
+      "x_E": 9.577831104289963,
+      "x_nu": 9.577831100995288,
+      "paired_flux_imbalance_I": 1.6473376947976944e-09,
+      "source_planck_deviation_D": -3.294903546269587e-09,
+      "source_planck_ratio": 0.9999999967050964,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.000069251770140840034838463415416490661053676273552792857705100612427472100374553455",
+        "positive_down_flux": "0.000069251769912677932445380992997119740858620122855768094637006284413033987321264862",
+        "paired_flux_imbalance_I": "1.6473376947976943951305811132558813919533401537043045476822234400878141073118368E-9",
+        "source_planck_ratio": "0.99999999670509645373041285189864978738057729069493023371655649674290719277841687",
+        "source_planck_deviation_D": "-3.29490354626958714810135021261942270930506976628344350325709280722158313E-9"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "2.1973702920906536754138834328794827956451822603978105742727672077607545292103259E-17",
+        "source_planck_deviation_D": "9.6701481466575618461901965532992321663581014298678478794204572114488312685046125E-17",
+        "source_planck_ratio": "2.5934490528218404436676832058906342193059137682373056809676806199967219560936423E-17"
+      },
+      "numerical_reference_passed": true
+    },
+    {
+      "line_id": 8,
+      "upper_level_id": 9,
+      "lower_level_id": 8,
+      "upper_J": 8,
+      "lower_J": 7,
+      "temperature_K": 200,
+      "upper_energy_cm_inverse_literal": "3089.576092837",
+      "lower_energy_cm_inverse_literal": "2423.883499771",
+      "frequency_GHz_literal": "19956.96186790",
+      "source_line_number": 27,
+      "upper_source_line_number": 16,
+      "lower_source_line_number": 15,
+      "signed_frequency_gap_Hz": 6864.9896228,
+      "old_absolute_frequency_gap_Hz": "17162474057/2500000",
+      "old_35_Hz_gate_passed": false,
+      "old_gate_classification": "SOURCE_DISCREPANCY_UNQUALIFIED",
+      "signed_frequency_gap_Hz_exact": {
+        "numerator": "17162474057",
+        "denominator": "2500000"
+      },
+      "delta_exact": {
+        "numerator": "2274395140984741971",
+        "denominator": "1380649000000000000000000000"
+      },
+      "x_E_exact": {
+        "numerator": "90572759837718038359380027",
+        "denominator": "18913000000000000000000000"
+      },
+      "x_nu_exact": {
+        "numerator": "26447245863516086637",
+        "denominator": "5522596000000000000"
+      },
+      "delta": 1.6473376947976944e-09,
+      "x_E": 4.7889155521449815,
+      "x_nu": 4.788915550497644,
+      "paired_flux_imbalance_I": 8.236688473988472e-10,
+      "source_planck_deviation_D": -1.6611610060444348e-09,
+      "source_planck_ratio": 0.999999998338839,
+      "analytic_zero": false,
+      "decimal_reference": {
+        "precision_digits": 80,
+        "positive_up_flux": "0.0083913047589476088968364390672395169104109491571081845382979481594793722918356164",
+        "positive_down_flux": "0.0083913047451242962702725943552436317951631248586248229933721349697483797641558122",
+        "paired_flux_imbalance_I": "8.2366884739884719812409251767064070830494009454281794892629199830034684592400387E-10",
+        "source_planck_ratio": "0.99999999833883899395556524618251555802748218345162084781450997879634590786747303",
+        "source_planck_deviation_D": "-1.66116100604443475381748444197251781654837915218549002120365409213252697E-9"
+      },
+      "relative_errors": {
+        "paired_flux_imbalance_I": "2.2652133291081882171546121936218527445175892245645481840682938116009828120189299E-17",
+        "source_planck_deviation_D": "1.6681623585167005618153419592173282841419140239262518966054641262687995438494061E-18",
+        "source_planck_ratio": "1.9500870864042883719259056701812826013323151783513938026426320973343783704645538E-17"
+      },
+      "numerical_reference_passed": true
+    }
+  ],
+  "line_source_gates": [
+    {
+      "line_id": 1,
+      "upper_J": 1,
+      "lower_J": 0,
+      "absolute_gap_Hz": "8.241016200",
+      "gate_Hz": 35,
+      "passed": true
+    },
+    {
+      "line_id": 2,
+      "upper_J": 2,
+      "lower_J": 1,
+      "absolute_gap_Hz": "947678.840324000",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 3,
+      "upper_J": 3,
+      "lower_J": 2,
+      "absolute_gap_Hz": "1084318.742916400",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 4,
+      "upper_J": 4,
+      "lower_J": 3,
+      "absolute_gap_Hz": "47627.409091400",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 5,
+      "upper_J": 5,
+      "lower_J": 4,
+      "absolute_gap_Hz": "1245461.910729000",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 6,
+      "upper_J": 6,
+      "lower_J": 5,
+      "absolute_gap_Hz": "1827572.560757200",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 7,
+      "upper_J": 7,
+      "lower_J": 6,
+      "absolute_gap_Hz": "1411205.450255200",
+      "gate_Hz": 35,
+      "passed": false
+    },
+    {
+      "line_id": 8,
+      "upper_J": 8,
+      "lower_J": 7,
+      "absolute_gap_Hz": "6864.989622800",
+      "gate_Hz": 35,
+      "passed": false
+    }
+  ],
+  "controls": [
+    {
+      "name": "synthetic_exact_coherence_50",
+      "passed": true,
+      "details": "SYNTHETIC exact cm^-1 to GHz coherence; not a catalog line"
+    },
+    {
+      "name": "synthetic_exact_coherence_100",
+      "passed": true,
+      "details": "SYNTHETIC exact cm^-1 to GHz coherence; not a catalog line"
+    },
+    {
+      "name": "synthetic_exact_coherence_200",
+      "passed": true,
+      "details": "SYNTHETIC exact cm^-1 to GHz coherence; not a catalog line"
+    },
+    {
+      "name": "synthetic_opposite_sign_29.9",
+      "passed": true,
+      "details": "SYNTHETIC positive energies/frequency with signed mismatch"
+    },
+    {
+      "name": "synthetic_opposite_sign_30.1",
+      "passed": true,
+      "details": "SYNTHETIC positive energies/frequency with signed mismatch"
+    },
+    {
+      "name": "zero_gap",
+      "passed": true,
+      "details": "require nonnegative lower energy, positive level gap and frequency"
+    },
+    {
+      "name": "negative_gap",
+      "passed": true,
+      "details": "require nonnegative lower energy, positive level gap and frequency"
+    },
+    {
+      "name": "negative_lower_energy",
+      "passed": true,
+      "details": "require nonnegative lower energy, positive level gap and frequency"
+    },
+    {
+      "name": "zero_frequency",
+      "passed": true,
+      "details": "require nonnegative lower energy, positive level gap and frequency"
+    },
+    {
+      "name": "negative_frequency",
+      "passed": true,
+      "details": "require nonnegative lower energy, positive level gap and frequency"
+    },
+    {
+      "name": "nan_energy",
+      "passed": true,
+      "details": "upper energy: expected finite rational/decimal"
+    },
+    {
+      "name": "infinite_frequency",
+      "passed": true,
+      "details": "frequency: expected finite rational/decimal"
+    },
+    {
+      "name": "nan_temperature",
+      "passed": true,
+      "details": "temperature: expected finite rational/decimal"
+    },
+    {
+      "name": "zero_temperature",
+      "passed": true,
+      "details": "only original 50/100/200 K nodes are supported"
+    },
+    {
+      "name": "negative_temperature",
+      "passed": true,
+      "details": "only original 50/100/200 K nodes are supported"
+    },
+    {
+      "name": "unsupported_temperature",
+      "passed": true,
+      "details": "only original 50/100/200 K nodes are supported"
+    },
+    {
+      "name": "boolean_input",
+      "passed": true,
+      "details": "upper energy: boolean is unsupported"
+    },
+    {
+      "name": "binary64_exponent_overflow",
+      "passed": true,
+      "details": "binary64 diagnostic overflow/underflow"
+    },
+    {
+      "name": "collider_blocks_unchanged",
+      "passed": true,
+      "details": {
+        "before_sha256": "e265d7d10a5d0ae51ec9743c641505094689a302823dc003a1ebe816d1f1a6b8",
+        "after_sha256": "e265d7d10a5d0ae51ec9743c641505094689a302823dc003a1ebe816d1f1a6b8",
+        "collider_ids": [
+          2,
+          3
+        ],
+        "temperature_nodes_K": [
+          [
+            "50.0",
+            "100.0",
+            "200.0"
+          ],
+          [
+            "50.0",
+            "100.0",
+            "200.0"
+          ]
+        ],
+        "rate_values": 54
+      }
+    },
+    {
+      "name": "source_byte_roundtrip_unchanged",
+      "passed": true,
+      "details": "Original parser used only for literal ingestion. No collider interpolation or qualified production consumer called."
+    },
+    {
+      "name": "original_35_Hz_gate_preserved",
+      "passed": true,
+      "details": "Seven failing lines remain unqualified; diagnostics provide no source-gate promotion."
+    }
+  ],
+  "physical_source_gate": "FAIL_ORIGINAL_35_HZ_7_OF_8",
+  "production_approved": false,
+  "collider_mixing": false,
+  "temperature_extrapolation": false,
+  "new_IVPs": 0,
+  "historical_suites_executed": 0,
+  "physical_epsilon": null,
+  "physical_bound_coverage": "0/313"
+}

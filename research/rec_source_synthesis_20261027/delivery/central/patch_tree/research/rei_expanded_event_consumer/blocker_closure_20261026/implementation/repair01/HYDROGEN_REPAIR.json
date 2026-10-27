@@ -1,0 +1,122 @@
+{
+  "scope": "only_two_failed_hydrogen_finite_difference_checks",
+  "original_run01": {
+    "callback_sha256": "df5d289dac63d01200cbbffb30fb8c52e6760fc06748c3588c7f26c5d1e12e7e",
+    "checks_sha256": "8b2a87870e7b7c8d37fcd75422bb056671e0ba17c377df1178de877d9d5905e9",
+    "reused_passing_checks": 82,
+    "original_failed_checks": [
+      "full_native_hydrogen_electron_feedback_JVP",
+      "native_hydrogen_electron_feedback_electron_tangent"
+    ]
+  },
+  "old_h": 0.0001,
+  "new_h": 0.01,
+  "direction": [
+    0.0,
+    -1e-05,
+    1e-05,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_z": 2.479,
+  "native_analytic_Jv": [
+    0.0,
+    5.451197245657738e-23,
+    -5.451197245657738e-23,
+    6.297463827350259e-28,
+    -6.297463827350259e-28,
+    0.0,
+    0.0,
+    1.4969383316426744e-32,
+    1.3416173562987763e-27,
+    -1.3416323256820926e-27,
+    1.2274894319469936e-28,
+    1.1001262321649964e-23,
+    -1.1001385070593158e-23,
+    2.610863726339004e-46,
+    1.5956516878027663e-40,
+    3.4664001859553696e-36,
+    -3.4665597513852363e-36,
+    1.3054318631695025e-41,
+    7.978258439013834e-36,
+    1.733200092977686e-31,
+    -1.7332798756926192e-31
+  ],
+  "native_finite_difference_RR_DR_decay": [
+    0.0,
+    5.451197244910019e-23,
+    -5.451197244910019e-23,
+    6.297463830965673e-28,
+    -6.297463830965673e-28,
+    0.0,
+    0.0,
+    1.4969383311100997e-32,
+    1.341617356582189e-27,
+    -1.3416323265027468e-27,
+    1.2274894318783412e-28,
+    1.1001262323071171e-23,
+    -1.1001385072216176e-23,
+    2.6108637270621565e-46,
+    1.5956516880449407e-40,
+    3.466400186901028e-36,
+    -3.4665597510055374e-36,
+    1.305431863318598e-41,
+    7.978258439788508e-36,
+    1.7332000935352924e-31,
+    -1.7332798756225797e-31
+  ],
+  "native_ne_center_m3": 9.351290694292933,
+  "native_ne_plus_m3": 9.351291761225047,
+  "native_ne_minus_m3": 9.351289627360819,
+  "ne_analytic_tangent_m3": 0.00010669321142818112,
+  "ne_finite_difference_m3": 0.00010669321142131594,
+  "trial_H1I_margins": [
+    1.8353372310189326e-05,
+    1.8553372310189324e-05
+  ],
+  "trial_H1II_margins": [
+    0.7529483333969895,
+    0.7529481333969896
+  ],
+  "epsilon_machine": 2.220446049250313e-16,
+  "elementary_roundoff_relative_scale_old": 1.9461441079136462e-07,
+  "elementary_roundoff_relative_scale_new": 1.946144107913646e-09,
+  "reference_JVP_scale": 5.451197245657738e-23,
+  "tests": [
+    {
+      "name": "full_native_hydrogen_electron_feedback_JVP",
+      "old_residual": 4.712660174501273e-08,
+      "new_residual": 1.3716601921088232e-10,
+      "unchanged_limit": 2e-08,
+      "pass": true
+    },
+    {
+      "name": "native_hydrogen_electron_feedback_electron_tangent",
+      "old_residual": 5.667163219414058e-08,
+      "new_residual": 6.434506579011881e-11,
+      "unchanged_limit": 2e-08,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "combined_evidence_passing_count": 84,
+  "combined_evidence_total_count": 84,
+  "original_run01_rewritten": false,
+  "source_or_native_physics_changed": false
+}

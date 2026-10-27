@@ -1,0 +1,31 @@
+{
+  "schema": "REC_HISTORY_GEO01_CLAIM_GATE_V1",
+  "unit": "REC-HISTORY-GEO01",
+  "scientific_decision": "PASS_SCOPED_CONTROLLED_PROPAGATION_PARTIAL",
+  "actual_source": {"repository":"cosmosapjw-quantum/rec_bianchi","commit":"4a8e541030ee2cbd02e26ba671083b705d309d49","query_count":313,"endpoint_slots":626,"strict_prefix":5127,"z":1099.9986525171403},
+  "scope": {
+    "geometry": "Prescribed diagonal constant trace-free shear; v1=(1,-1/2,-1/2),v2=(1,-1,0)",
+    "held_fixed": ["isotropic emitter history", "interpolation cells/endpoints", "target thermodynamic primitive", "native scalar source coefficients"],
+    "measure": "target orthonormal dOmega/(4pi)",
+    "native_reference": "Wien exp(-E/(k_B T)); stored departure plus reference gives total occupation",
+    "collision_consumption": "angular mean only through saved scalar Ks",
+    "admitted_outputs": ["first quadrupole", "second monopole", "frozen scalar mean second response", "same-event number/energy second response"],
+    "interval": "Exact represented-K action on represented binary64 m2 only"
+  },
+  "verification": {"primary":"PASS","independent":"PASS","root_visual":"PASS","ordinary_roots":17528,"primary_decimal_roots":96,"reviewer_roots":8,"operator_actions":5,"interval_actions":1,"new_RHS":0,"new_IVP":0,"old_replays":0,"scientific_failures":0,"scientific_repairs":0},
+  "remaining_obligations": {
+    "H5": {"status":"OPEN","continuous_bound_coverage":"0/313","physical_epsilon":null,"physical_outgoing_bound":null},
+    "H6": {"status":"OPEN_PHYSICAL_SUPPLIER","controlled_GEO01_partial":"COMPLETE_SCOPED","actual_source_matched_trace":false},
+    "H7": {"status":"OPEN_TOTAL_COUPLED","required":"actual DY,DQ,Dtheta,endpoint retiming and thermal-feedback owners with explicit closure"},
+    "angular_collision": "OPEN_IF_CLAIMED",
+    "finite_shear_angular_convergence": "NOT_ESTABLISHED",
+    "all_direction_positivity": "NOT_CERTIFIED",
+    "new_libm_coefficient_interval": "NOT_ESTABLISHED"
+  },
+  "parent_REC_HISTORY": "PARTIAL",
+  "global_physical_completion": null,
+  "protected": {"Physical":"HOLD","REC_U5":"HOLD_9_FAIL/HOLD_8_FAIL","budgets":"CLOSED_HOLD_NOT_RESET","global_convergence":"NOT_RUN","production":"NOT_APPROVED","L4_ready":false,"REI_activation":false,"first_failed_REI_raw":"HISTORICAL_LOCAL_ONLY"},
+  "external_delivery": "Read actual delivery receipts; no scientific PASS implies Git/Drive ACK",
+  "next_contract": "NEXT_INPUT_CONTRACT.md",
+  "strong_no_go": false
+}

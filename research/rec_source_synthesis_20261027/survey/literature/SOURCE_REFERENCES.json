@@ -1,0 +1,184 @@
+[
+  {
+    "id": "LAMDA_HD",
+    "title": "LAMDA HD",
+    "url": "https://home.strw.leidenuniv.nl/~moldata/HD.html",
+    "type": "provider documentation",
+    "read_status": "READ",
+    "web_ref": "turn1view0",
+    "facts": [
+      "Provider identifies CDMS version 2 December 2011 and datafile date7June2021.",
+      "Collisions cover50–200K with separate ortho/para-H2 and include adjacent-J plusJ2→0.",
+      "Webpage v=1 label conflicts with inferred rotational-ladder state; keep original adapter vibration UNSPECIFIED."
+    ]
+  },
+  {
+    "id": "LAMDA_RAW",
+    "title": "LAMDA HD datafile",
+    "url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+    "type": "original numerical input",
+    "read_status": "READ_AND_DOWNLOADED",
+    "web_ref": "turn1view1",
+    "bytes": 2289,
+    "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+    "facts": [
+      "Byte identity equals original fixed source.",
+      "No source rows changed; no new numerical test executed."
+    ]
+  },
+  {
+    "id": "LAMDA_FORMAT",
+    "title": "LAMDA data format",
+    "url": "https://home.strw.leidenuniv.nl/~moldata/molformat.html",
+    "type": "provider documentation",
+    "read_status": "READ",
+    "web_ref": "turn1view2",
+    "facts": [
+      "Level energies cm^-1; A rates s^-1; collision rates cm^3/s.",
+      "Radiative frequency listed as optional information not used by the documented program.",
+      "Collider IDs2para-H2 and3ortho-H2 are distinct."
+    ]
+  },
+  {
+    "id": "CDMS_FORMAT",
+    "title": "Brief description of CDMS catalog entries",
+    "url": "https://cdms.astro.uni-koeln.de/classic/predictions/description.html",
+    "type": "provider documentation",
+    "read_status": "EXA_FETCH_READ; direct web timeout",
+    "facts": [
+      "Negative species tag denotes measured frequency and uncertainty.",
+      "Predicted uncertainties are model dependent; measured-frequency substitutions can be merged into the catalog.",
+      "This establishes a possible mechanism only; HD row-specific tags not recovered."
+    ]
+  },
+  {
+    "id": "CDMS_SPFIT",
+    "title": "Documentation for SPFIT and SPCAT",
+    "url": "https://cdms.astro.uni-koeln.de/classic/general",
+    "type": "provider documentation",
+    "read_status": "EXA_FETCH_READ",
+    "web_ref": "turn3search0",
+    "facts": [
+      "SPFIT fits transitions/term values; SPCAT predicts lines and optionally writes .egy.",
+      "Existing latest internal proof of default serialization insufficiency reused; not recomputed."
+    ]
+  },
+  {
+    "id": "CDMS_HD_INFO",
+    "title": "CDMS HD tag003501 entry",
+    "url": "https://cdms.astro.uni-koeln.de/cgi-bin/cdmsinfo?file=e003501.cat",
+    "type": "unversioned provider metadata",
+    "read_status": "CONFLICTING_EXTRACTOR_SNAPSHOTS; NO_LIVE_BYTES",
+    "web_ref": "turn9search9",
+    "facts": [
+      "Exa returns v2 Dec201120lines; web search indexes v3 Aug2026v0.",
+      "A metadata URL alone cannot pin a numerical source/version.",
+      "Physical uncertainties distinct from35Hz internal source consistency."
+    ]
+  },
+  {
+    "id": "CDMS_V2_ARCHIVE",
+    "title": "Official HD version2 archived source directory",
+    "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/",
+    "type": "provider directory index",
+    "read_status": "EXA_INDEX_READ; RAW_PAYLOAD_HTTP503",
+    "facts": [
+      "Index listsHD.fit,HD.int,HD.lin,HD.par,HD_bad.lin,HD_mrg.lin,c003501.cat,c003501.egy,c003501.lit,c003501i.cat.",
+      ".cat timestamp2019-02-25; mostotherfiles2011-12-07.",
+      "Seven small original payload retrievals returned503; bytes/hashes unknown."
+    ]
+  },
+  {
+    "id": "FLOWER_1999",
+    "title": "A quantum mechanical study of the rotational excitation of HD by H2",
+    "authors": "D. R. Flower",
+    "year": 1999,
+    "journal": "J.Phys.B32(7),1755–1767",
+    "doi": "10.1088/0953-4075/32/7/016",
+    "url": "https://durham-repository.worktribe.com/output/1616941/a-quantum-mechanical-study-of-the-rotational-excitation-of-hd-by-h2",
+    "type": "author institution bibliographic record",
+    "read_status": "PRIMARY_METADATA_ONLY; PAPER_FULLTEXT_NOT_OBTAINED",
+    "web_ref": "turn9search1",
+    "facts": [
+      "Distinguish thisH2paper fromFlower&Roueff1999MNRASrovibrational paper and Roueff&Flower1999atomicHpaper."
+    ]
+  },
+  {
+    "id": "NEUMAIER_1994",
+    "title": "Global, rigorous and realistic bounds for the solution of dissipative differential equations.Part I:Theory",
+    "authors": "Arnold Neumaier",
+    "year": 1994,
+    "journal": "Computing52,315–336",
+    "doi": "10.1007/BF02276880",
+    "url": "https://arnold-neumaier.at/ms/ode.pdf",
+    "type": "author-hosted primary preprint(March1993)",
+    "read_status": "FULL_PRIMARY_RELEVANT_SECTIONS_READ",
+    "web_ref": "turn5view0",
+    "locations": [
+      "§2matrix logarithmicnormformula",
+      "Theorem3.5scaledtubeexistence",
+      "Theorem4.1strictclosure",
+      "Proposition4.3intervalresidual/Jacobian construction",
+      "Corollary4.5equations27–30"
+    ],
+    "facts": [
+      "Weighted error bound from whole-domain residual and Jacobian/logarithmic-norm bounds.",
+      "Strict tube closure occurs over entire interval.",
+      "This supplies methodology; it does not supply REC actual physical constants."
+    ]
+  },
+  {
+    "id": "SODERLIND_1984",
+    "title": "On nonlinear difference and differential equations",
+    "authors": "Gustaf Söderlind",
+    "year": 1984,
+    "doi": "10.1007/BF01934923",
+    "url": "https://link.springer.com/article/10.1007/BF01934923",
+    "type": "primary paper publisher abstract",
+    "read_status": "ABSTRACT_ONLY",
+    "web_ref": "turn5view1",
+    "facts": [
+      "Nonlinear logarithmic norm/Dahlquist constant supports error propagation; not a numerical constant forREC."
+    ]
+  },
+  {
+    "id": "AKRIVIS_MAKRIDAKIS_NOCHETTO",
+    "title": "Optimal order a posteriori error estimates for a class of Runge–Kutta and Galerkin methods",
+    "authors": "G.Akrivis,C.Makridakis,R.H.Nochetto",
+    "url": "https://www.cse.uoi.gr/~akrivis/AMN2.pdf",
+    "type": "author-hosted primary paper",
+    "read_status": "INTRODUCTION_AND_RECONSTRUCTION_EQUATIONS_READ",
+    "locations": [
+      "§2.1equations2.4–2.10"
+    ],
+    "facts": [
+      "A continuous reconstruction defines a residual entering an error equation.",
+      "A nodal algebraic residual is not automatically the residual of a specified continuous reconstruction."
+    ]
+  },
+  {
+    "id": "H2SPECTRE_METADATA",
+    "title": "H2SPECTRE author code page",
+    "url": "https://www.fuw.edu.pl/~krp/codes.html",
+    "type": "author code documentation",
+    "read_status": "READ; CODE_NOT_DOWNLOADED_OR_RUN",
+    "facts": [
+      "Fortran code computes rovibrational levels and transition frequencies.",
+      "Associated level paperKomasaetal.PRA100032519(2019)."
+    ]
+  },
+  {
+    "id": "JOZWIAK_HD_DIPOLE",
+    "title": "Positions and intensities of hyperfine components of all rovibrational dipole lines in the HD molecule",
+    "authors": "H.Jóźwiak,H.Cybulski,P.Wcisło",
+    "year": 2020,
+    "doi": "10.1016/j.jqsrt.2020.107171",
+    "url": "https://hjozwiak-umk.github.io/hyperfine.html",
+    "type": "author research/data explanation",
+    "read_status": "AUTHOR_METADATA_READ",
+    "facts": [
+      "Dipole-line data distinguished from2021HDquadrupole dataset.",
+      "Absolute line positions and hyperfine shifts use different roles; no unresolved-centroid mapping assumed."
+    ]
+  }
+]

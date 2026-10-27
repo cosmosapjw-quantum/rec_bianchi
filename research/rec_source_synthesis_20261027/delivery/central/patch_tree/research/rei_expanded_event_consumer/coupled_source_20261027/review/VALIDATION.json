@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "unit": "REI-COUPLED-SOURCE-20261027",
+  "review_status": "PASS_SCOPED",
+  "scope": "Native PW19 HeII instantaneous pre-assimilation 25-coordinate source and JVP at saved z=2.479 snapshot",
+  "decision_authority": "Reviewer supports scoped admission; controller alone admits and publishes",
+  "requested_reviewer_role": "Astra",
+  "observed_model_identity": null,
+  "baseline_source_commit": "413729993919d21895e2196cc65f0c1c007e8614",
+  "local_git_HEAD_observed": false,
+  "reviewer_scientific_executions": 0,
+  "reviewer_test_replays": 0,
+  "reviewer_CPU_s": null,
+  "reviewer_cost_status": "UNKNOWN_NOT_ZERO",
+  "method": [
+    "Independent event-column and thermal-count derivation",
+    "Equation-to-code inspection of native component and augmented operator",
+    "Inspection of frozen-to-repaired checker diff and actual raw outcomes",
+    "Visual inspection and raw-data mapping of final PNG"
+  ],
+  "checks": [
+    {"id":"native_source_and_identity","result":"pass_scoped","evidence":"implementation/attempt01/stdout.json and implementation/PREEXEC_REPAIR_MANIFEST.json"},
+    {"id":"independent_event_energy_oracle","result":"pass_scoped","evidence":"implementation/check_coupled_photo_repair.py and implementation/attempt03/stdout.json"},
+    {"id":"thermal_nonthermal_partition","result":"pass_scoped","evidence":"theory/CONTRACT.md and implementation/attempt03/stdout.json#observations"},
+    {"id":"energy_number_baryon_invariants","result":"pass_scoped","evidence":"implementation/attempt01/stdout.json and implementation/attempt03/stdout.json"},
+    {"id":"normalization_density_clock_JVP","result":"pass_scoped","evidence":"implementation/attempt03/stdout.json"},
+    {"id":"positivity_boundary_domains","result":"pass_scoped","evidence":"implementation/check_coupled_photo_repair.py completed exit0; theory/CONTRACT.md"},
+    {"id":"symmetry_pressure_bound","result":"pass_scoped","evidence":"theory/CONTRACT.md#Optional isotropic pressure-source bound; implementation/attempt03/stdout.json"},
+    {"id":"plot_visual_and_raw_mapping","result":"pass_scoped","evidence":"delivery/native_coupled_source.png and delivery/RENDER_RECEIPT.json"},
+    {"id":"full_REC_COUPLED","result":"partial","evidence":"theory/GATE_INPUT_MAP.json"},
+    {"id":"strong_no_go_NG1_NG7","result":"not_applicable","reason":"No new impossibility or exclusion result is proposed"}
+  ],
+  "executions_reviewed": [
+    {"id":"attempt01","exit_code":1,"status":"failed","passed_named_checks":28,"classification":"False-FAIL exact floating-zero assertion","raw":"implementation/attempt01/stdout.json","receipt":"implementation/attempt01/RESOURCE_RECEIPT.json"},
+    {"id":"attempt02","exit_code":-9,"status":"failed","scientific_checks_observed":0,"classification":"Runner CPU monitor inconsistent with rusage and wall; underlying cause unknown","raw":"implementation/attempt02/stdout.json","receipt":"implementation/attempt02/RESOURCE_RECEIPT.json"},
+    {"id":"attempt03","exit_code":0,"status":"completed","new_named_checks":68,"reused_passed_checks":28,"child_CPU_s":0.131122,"wrapper_CPU_s":0.0021687700000000004,"wall_s":0.13452094000012949,"raw":"implementation/attempt03/stdout.json","receipt":"implementation/attempt03/RESOURCE_RECEIPT.json"}
+  ],
+  "criteria": {
+    "analytic_relative": 2e-14,
+    "finite_difference_relative": 2e-8,
+    "finite_difference_step": 0.01,
+    "scales": "Separate count and power scales; natural sum-of-operand scale for zero count cancellation; exact analytic logT row",
+    "max_new_analytic_residual": 3.009182361116041e-16,
+    "max_changed_direction_FD_residual": 7.00000026614723e-9,
+    "physical_uncertainty": null,
+    "tolerance_loosened": false
+  },
+  "observables": {
+    "electron_birth_m3_s": 2.484719529390961e-19,
+    "primary_power_W_m3": 7.949751527088791e-37,
+    "preassimilation_logT_source_s_inverse": 0.0,
+    "bad_allthermal_logT_source_s_inverse": -1.377035638582512e-20,
+    "isotropic_pressure_source_interval_Pa_s": [2.6499171756962638e-37,5.2998343513925276e-37],
+    "pressure_is_constitutive_stress_closure": false
+  },
+  "identities": {
+    "source_sha256": "457b3a2a64669776b6984f3ea56b7485f0d7f69e2d73f4a4b8a2535172bac4f0",
+    "checker_sha256": "b4884bc2e94a5e7018682022e1e6398f3074776940c0f63ae7247ccf9bfda086",
+    "successful_runner_sha256": "cc52de1c9e78560a9beafed4e2cf840632fe479e58f16590ced1285a145adc8b",
+    "attempt03_stdout_sha256": "c8901be9237badf5191b6663177d307bf4e9b9d1c536ed9c178cafb895165f71",
+    "final_png_sha256": "1952afc9172280e21d92b71e9e9804d3bec7a3656a044d790fa8869f39403677"
+  },
+  "findings": [
+    {"id":"F01","status":"closed","target":"Pre-run checker owner name and coordinate description","correction":"EVENT_OWNER and four added coordinates"},
+    {"id":"F02","status":"closed","target":"Mixed-unit checks and energy oracle","correction":"Separate count/power scaling and explicit cached Gamma/K/A oracle"},
+    {"id":"F03","status":"closed","target":"Exact floating count cancellation","correction":"Preserved signed residuals, unchanged 2e-14 natural-operand criterion"},
+    {"id":"F04","status":"closed_for_execution","target":"Runner CPU monitor","correction":"OS CPU/wall/memory limits, unchanged scientific checker; cause remains unknown"},
+    {"id":"F05","status":"closed","target":"First plot caption and annotations","correction":"Layout-only rerender; final PNG visually inspected"}
+  ],
+  "open_scope_obligations": [
+    "Qualified stopping/assimilation and full thermal electron coupling",
+    "Physical provider/model/isotope/interpolation uncertainty and observable error allocation",
+    "Original separate convergence and original owner admission",
+    "Full coupled history and signed matter/radiation stress",
+    "REI-L2 physical beta daughter and stopping inputs"
+  ],
+  "gates": {
+    "REC-COUPLED": "PARTIAL",
+    "REC-EXP-COUPLED": "GATED",
+    "original_completed": 32,
+    "original_total": 88,
+    "count_effect": 0,
+    "L4_ready": false,
+    "new_IVPs": 0,
+    "main_policy": "NO_MORE_IVPs"
+  },
+  "next_action": "Controller may admit this scoped source result and complete authorized canonical/publication/backup work; no further scientific check is requested by this review"
+}

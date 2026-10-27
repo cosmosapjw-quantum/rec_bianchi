@@ -1,0 +1,40 @@
+{
+  "unit": "REI-LUMINA-RESUME-20261026",
+  "decision": "PASS_SCOPED_SELECTED_SOURCE_NATIVE_MOMENTS_AND_LOCAL_JVP",
+  "root_admission": true,
+  "basis": "review/VALIDATION.json; actual frozen 72/72 native checks plus restored 13/13 Lumina adapter checks",
+  "original_node": "REC-EXP-EXTERNAL",
+  "canonical_status": "ADMITTED_SCOPED_SELECTED_INSTANTANEOUS_SOURCE",
+  "complete_original_gate": true,
+  "scope": "Selected PW19 exact z=2.479 isotropic instantaneous radiation model source, finite-band elemental HeII native rate/energy and SI event/state handoff. No temporal extrapolation.",
+  "previous_completed": 29,
+  "completed": 30,
+  "total": 88,
+  "newly_completed": 1,
+  "original_gate_changed": false,
+  "new_canonical_nodes": 0,
+  "dependencies_and_owner_reservations_preserved": true,
+  "physics_axes": {
+    "symmetry_gauge": "Bath-rest isotropic scalar rates are invariant under passive tetrad rotation; a different physical observer requires spectral transformation.",
+    "invariants": "He nuclei, charge and external-radiation+binding+primary energy; local residual and signed density JVP.",
+    "observables": "Source-qualified per-target rates and energy coefficients; no cosmological optical depth or isotope history inferred."
+  },
+  "not_admitted": [
+    "REC-EXP-SPECTRAL live consumer",
+    "REI-L4",
+    "all-selected physical pilot",
+    "thermal heat",
+    "new n/T source or nuclear-rate admission"
+  ],
+  "next_action": "Match source time/frame/species/normalization and band interfaces to selected H6/REC-FIELD callback; retain source high-energy tail. Compatible scenario/geometry required before evolving a history.",
+  "science_budget": {
+    "cumulative_known_planning_CPU_s": 10.272250865,
+    "active_original_cap_CPU_s": 10,
+    "last_temporary_cap_CPU_s": 12,
+    "temporary_increase_expired": true,
+    "unknown_costs": "UNKNOWN_NOT_ZERO",
+    "main_status": "NO_MORE_IVPs"
+  },
+  "requested_review_role": "Astra/high",
+  "observed_runtime_model": "UNEXPOSED"
+}

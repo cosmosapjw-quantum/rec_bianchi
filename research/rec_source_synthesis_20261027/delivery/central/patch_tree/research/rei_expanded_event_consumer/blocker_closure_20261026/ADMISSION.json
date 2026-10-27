@@ -1,0 +1,77 @@
+{
+  "unit": "REI-BLOCKER-CLOSURE-20261026",
+  "decision": "PASS_SCOPED_NATIVE_PW19_REC_CALLBACK_AND_TARGETED_FD_REPAIR",
+  "root_admission": true,
+  "previous_completed": 30,
+  "completed": 32,
+  "total": 88,
+  "incomplete": 56,
+  "newly_completed": 2,
+  "new_canonical_nodes": 0,
+  "original_gates_changed": false,
+  "admitted_original_nodes": [
+    {
+      "id": "REC-EXP-SPECTRAL",
+      "status": "ADMITTED_SCOPED_PW19_HEII_NATIVE_CONTINUUM",
+      "scope": "Actual REC119 native21 source/Jacobian consumption of admitted three-band PW19 HeII coefficients, existing conditional electronic isotope equality, SI/energy partners/band interfaces and exclusive non-Lyalpha ownership."
+    },
+    {
+      "id": "REC-FIELD",
+      "status": "ADMITTED_SCOPED_PW19_NATIVE_RESIDUAL_JVP_OPEN_RADIATION_RESERVOIR",
+      "scope": "One selected native continuum source residual/JVP at matched saved-donor snapshot with explicitly open photon energy reservoir; separate binding, primary nonthermal and unspecified thermal heat."
+    }
+  ],
+  "evidence": {
+    "independent_review": "review/VALIDATION.json",
+    "original_callback": "implementation/run01/CALLBACK.json",
+    "original_checks": "implementation/run01/CHECKS.json",
+    "targeted_repair": "implementation/repair01/HYDROGEN_REPAIR.json",
+    "repair_receipt": "implementation/repair01/RECEIPT.json"
+  },
+  "validation": {
+    "original_passed": 82,
+    "original_total": 84,
+    "original_failures_preserved": 2,
+    "targeted_repair_passed": 2,
+    "combined_satisfied_obligations": 84,
+    "all84_replayed": false,
+    "failure_classification": "NUMERICAL_VALIDATION_CONDITIONING_FAILURE",
+    "repair": "H-direction centered FD step1e-4→1e-2 only; original2e-8 tolerance unchanged; actual positive trials and zero analytic truncation for quadratic RHS"
+  },
+  "species_dependency": "Existing REC-EXP-SPECIES exact21 WU identity projection reused; native modelSHA9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614 matched;71 extensions remainUNADMITTED.",
+  "matched_state": {
+    "redshift": 2.479,
+    "temperature_K": 14919.863839279506,
+    "nb_m3": 10.669321142818111,
+    "reference_density_m3": 8.033643390985384,
+    "beta": 1.328080003500061,
+    "representation": "adjacent-convex-eta actual saved x/T, followed by baryon normalization",
+    "continuum_interpolation_error": null,
+    "history_status": "instantaneous counterfactual source pairing; no new trajectory"
+  },
+  "scenario_update": "Separate selected snapshot binding; no completion increment because prior frozen-scenario count membership is not explicit. Preserve historical GRID044 endpoint candidate.",
+  "scientific_axes": {
+    "symmetry_gauge": "Isotropic normal-tetrad photon source; passive rotations leave scalar rates invariant; no physical observer boost inferred.",
+    "invariants": "Baryons/isotope nuclei, charge-derived electrons and selected photon/binding/primary energy; projective density normalization and JVP.",
+    "observables": "Instantaneous native21 abundance response, selected electron source and energy powers; no tau/CMB or reconstructed PW19 history."
+  },
+  "not_admitted": [
+    "REC-H6-TRACE causal history",
+    "REC-HD-ADAPTER original35Hz gate",
+    "physical stopping/heat",
+    "V6 native full33/reduced30 client",
+    "REI-L4",
+    "final all-selected physical pilot"
+  ],
+  "budgets": {
+    "known_planning_CPU_s": 11.551892911,
+    "original_cap_CPU_s": 10,
+    "expired_temporary_cap_CPU_s": 13,
+    "restored_policy_cap_CPU_s": 10,
+    "unknown_costs": "UNKNOWN_NOT_ZERO",
+    "main_status": "NO_MORE_IVPs"
+  },
+  "requested_review_role": "Astra/high",
+  "observed_runtime_model": "UNEXPOSED",
+  "next_action": "Use source-qualified native21 callback and frozen snapshot as reusable inputs; independently obtain source-matched causal trace or physical stopping/geometry feedback under their original gates. No replay of completed83,13,72 or82passingchecks."
+}

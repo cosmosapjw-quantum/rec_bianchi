@@ -1,0 +1,168 @@
+{
+  "unit": "REI-LUMINA-RESUME-20261026",
+  "date_UTC": "2026-10-26",
+  "reviewer": "independent resume_review; no authorship of source contract, scientific implementation or execution",
+  "requested_runtime": "Astra/high",
+  "observed_runtime_model": "UNEXPOSED",
+  "decision": "PASS_SCOPED_SELECTED_SOURCE_NATIVE_MOMENTS_AND_LOCAL_JVP",
+  "reviewer_scientific_executions": 0,
+  "reviewer_test_reruns": 0,
+  "prior_recovery_decision": "review/RECOVERY_ADMISSION.json",
+  "axes": {
+    "physics_and_mathematics": "PASS_SCOPED: declared source measure, absorption weighting, support, species and energy map",
+    "implementation_and_numerics": "PASS_SCOPED: 72 actual checks, exit 0, original tolerances retained",
+    "canonical_gate": "REC-EXP-EXTERNAL original source-construction gate satisfied for selected instantaneous model branch; no downstream source-consumer or L4 closure"
+  },
+  "scientific_axes": {
+    "symmetry_gauge": "Isotropic exposure in bath-rest frame; passive tetrad rotation preserves scalar rates; physical observer change requires transformed spectrum. No geometry evolution.",
+    "invariants": "He nuclei, electric charge and external-radiation plus binding plus primary-electron energy conserved by local source map and JVP.",
+    "observable_projection": "Source-qualified per-target Gamma/K/A and same-Phi Lumina template defects; no cosmological trajectory or observer-ray observable inferred."
+  },
+  "source_scope": {
+    "provider": "Taira2025 PW19 v1.0.0",
+    "DOI": "10.5281/zenodo.15367103",
+    "z": 2.479,
+    "time_support": "one instantaneous exact redshift node, per proper second; no temporal interpolation",
+    "angular_support": "isotropic bath-rest-frame scalar exposure",
+    "finite_table_eV": [
+      0.010734900437064,
+      49973513.29317093
+    ],
+    "atomic_channel": "HeII ground-state Verner96 elemental row; no isotope mapping",
+    "native_atomic_domain_eV": [
+      54.42,
+      50000.0
+    ],
+    "comparison_band_eV": [
+      54.42,
+      2000.0
+    ],
+    "uncertainty": "Provider/model/interpolation error unknown null; measured quadrature/floating residuals separate"
+  },
+  "raw_results": {
+    "native_late": {
+      "Phi_cm2_s": 17646.543092223194,
+      "Psi_eV_cm2_s": 3511610.0187367667,
+      "Gamma_s": 7.130087589983349e-15,
+      "K_eV_s": 1.4237436299546702e-13,
+      "A_eV_s": 5.303937296423608e-13
+    },
+    "native_full_atomic": {
+      "Phi_cm2_s": 18513.713861250097,
+      "Psi_eV_cm2_s": 12800082.01763604,
+      "Gamma_s": 7.130091128981093e-15,
+      "K_eV_s": 1.4238389467477924e-13,
+      "A_eV_s": 5.304034539139303e-13
+    },
+    "effective_late_coefficients": {
+      "sigma_cm2": 4.040501050387352e-19,
+      "excess_eV": 19.968108553880963
+    },
+    "Lumina_signed_relative_template_defects": {
+      "delta_Gamma": 0.8166063833336544,
+      "delta_K": 0.2281677109691923,
+      "delta_abs": 0.6586509316425504
+    },
+    "first_partition_excluded_positive_tail": {
+      "Phi_cm2_s": 5589.450115965183,
+      "Psi_eV_cm2_s": 11480561.341841998,
+      "Gamma_s": 5.457350626581224e-17,
+      "K_eV_s": 1.1637109175352579e-14,
+      "A_eV_s": 1.460699938633808e-14
+    },
+    "above_50000_atomic_rate": null
+  },
+  "validation": {
+    "checks_run": 72,
+    "all_passed": true,
+    "exit_code": 0,
+    "max_GL8_GL16_relative": 3.9152729718070585e-16,
+    "max_GL16_analytic_relative": 1.9259654818231057e-16,
+    "max_JVP_relative": 1.6959314846213564e-12,
+    "JVP_tolerance": 2e-11,
+    "source_current_bytes_match_frozen_bindings": true,
+    "raw_outputs_match_receipt_hashes": true,
+    "scientific_claim_identity": "Residuals and invariants, not numerical-output byte equivalence",
+    "new_IVPs": 0,
+    "historical_suite_replays": 0
+  },
+  "resources": {
+    "child_CPU_s": 0.072446,
+    "wrapper_CPU_s": 0.036394878,
+    "tail_reserved_CPU_s": 0.03,
+    "debit_CPU_s": 0.138840878,
+    "reservation_CPU_s": 1.4,
+    "cumulative_planning_CPU_s": 10.272250865,
+    "temporary_cap_CPU_s": 12,
+    "baseline_cap_CPU_s": 10,
+    "restore_does_not_reset_debit": true,
+    "remote_symbolic_CPU_s": "UNKNOWN_NOT_ZERO"
+  },
+  "original_gate_decision": {
+    "id": "REC-EXP-EXTERNAL",
+    "authoritative_local_source": "../recovered_coupled_20261026/research/orchestration_expansion_20261025/task_assignments/rec_bianchi.json",
+    "local_pointer": "/source_assignment/tasks/3",
+    "original_source": "authority/thermal/rec_bianchi/research/program_expansion_20261025/TASK_ASSIGNMENT.json",
+    "original_pointer": "/tasks/3",
+    "original_gate": "No UVB extrapolation fromz<=15.1 to20; integrated heating not spectrum; source branch explicit",
+    "recommended_status": "ADMITTED_SCOPED_SELECTED_INSTANTANEOUS_SOURCE",
+    "recommended_complete": true,
+    "scope": "Selected PW19 z=2.479 instantaneous isotropic model-source construction and finite-band HeII source handoff",
+    "criteria": {
+      "actual_source_support": "Exact E table, z, angle/frame and instantaneous proper-time support pinned",
+      "uncertainty": "Separate provider/model/interpolation unknowns retained as null, explicitly allowed by original task",
+      "no_forbidden_extrapolation": "Exact z node only; z20 request actually rejected",
+      "spectrum_not_integrated_heating": "Actual S(E) used; number and energy measure derived",
+      "explicit_source_branch": "PW19-release model branch and native Verner owner declared",
+      "consumer_facing_contract": "cgs/SI coefficients, event/state ordering, frame, support, tail ledgers and local residual/JVP supplied",
+      "downstream_dependency": "REC-EXP-SPECTRAL is explicitly conditional on downstream qualification, not source construction"
+    },
+    "positive_next_action": "Bind selected source residual/JVP to H6/REC-FIELD through its existing species/state and band-interface contract.",
+    "fresh_current_HEAD_read": "intake/canonical_base/contracts/REC-EXP-EXTERNAL.json; /contract agrees with original recovered source assignment"
+  },
+  "canonical_recommendation": {
+    "previous_completed": 29,
+    "new_completed": 30,
+    "total": 88,
+    "delta_completed": 1,
+    "sole_closed_original_node": "REC-EXP-EXTERNAL",
+    "new_nodes_created": 0,
+    "gate_definitions_changed": false,
+    "REC_EXP_SPECTRAL_complete": false,
+    "REI_L4_ready": false,
+    "global_physical_completion": null,
+    "authority": "Root applies additive canonical observation; this review recommends exact original-gate closure"
+  },
+  "NG1_NG7": {
+    "strong_no_go": "NOT_PROPOSED_NOT_ADMITTED",
+    "assessment": {
+      "NG1": "No quantified impossibility claim is proposed; target is an exact source snapshot and finite-band operator comparison.",
+      "NG2": "Moment and conservation identities are derived and independently checked; no general exclusion proof is asserted.",
+      "NG3": "Positive native source and nonzero rates provide a nonempty construction; domain rejection is a stated support check, not a new theorem.",
+      "NG4": "Measured template mismatch comes from different absorption weightings; it is not promoted to universal impossibility.",
+      "NG5": "Actual native rates and tail ledgers enable the next consumer binding and distinguish template-model effects from quadrature error.",
+      "NG6": "Source provenance is established; new impossibility-theorem novelty was not investigated or claimed.",
+      "NG7": "Independent review covers stated source/model, equations, code, original gate and actual raw execution only."
+    }
+  },
+  "evidence": [
+    "theory/PW19_NATIVE_MOMENT_CONTRACT.md",
+    "theory/PW19_WOLFRAM_CHECK.json",
+    "intake/SOURCE_PROVENANCE.json",
+    "intake/provider/CONTRACT.json",
+    "implementation/native_pw19_moments.py",
+    "implementation/check_native_pw19.py",
+    "implementation/run01/MOMENTS.json",
+    "implementation/run01/CHECKS.json",
+    "implementation/run01/RECEIPT.json",
+    "implementation/run01/stdout.log",
+    "implementation/run01/stderr.log",
+    "intake/canonical_base/contracts/REC-EXP-EXTERNAL.json"
+  ],
+  "limits": [
+    "Quadrature agreement describes the declared log-log finite source representation; it is not a global physical uncertainty bound.",
+    "Template defects compare two local source weightings at equal incident exposure; z2.479 is outside the public Lumina HeIII history and no history comparison is claimed.",
+    "The residual is detached from the live REC-FIELD callback and does not close REC-EXP-SPECTRAL or L4.",
+    "Primary-electron energy remains distinct from heat; support beyond150eV is explicit and complete-source injection into that grid is rejected."
+  ]
+}

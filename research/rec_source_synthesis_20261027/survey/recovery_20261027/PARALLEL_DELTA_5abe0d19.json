@@ -1,0 +1,94 @@
+{
+  "schema": "PARALLEL_DEPENDENCY_DELTA_V1",
+  "date_kst": "2026-10-27",
+  "purpose": "Restore fixed central assembly inputs after runtime interruption; assess only new shared dependency",
+  "base": "12f6007a83a40d76f80574e41a5402676e81fc7a",
+  "head": "5abe0d19df95db730e3e33bae0373c81ba37ce89",
+  "latest_working_unchanged": "ee94bef85b56d879dc38f184856a5c613575e9e1",
+  "compare": {
+    "base": "12f6007a83a40d76f80574e41a5402676e81fc7a",
+    "head": "5abe0d19df95db730e3e33bae0373c81ba37ce89",
+    "status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "commit_count": 1,
+    "commits": [
+      {
+        "sha": "5abe0d19df95db730e3e33bae0373c81ba37ce89",
+        "message": "CR N5: connect scoped HeIII ground RR return; preserve 27/88"
+      }
+    ],
+    "changed_paths": [
+      "research/orchestration_expansion_20261025/DAG.json",
+      "research/orchestration_expansion_20261025/contracts/CR_N5_ATOMIC_ISOTOPE_COVERAGE.json",
+      "research/orchestration_expansion_20261025/node_plans/CR_N5_ATOMIC_ISOTOPE_COVERAGE.md",
+      "research/orchestration_expansion_20261025/returns/CR_HEIII_GROUND_RR_20261027.json",
+      "research/orchestration_expansion_20261025/status/CURRENT_STATUS.json"
+    ]
+  },
+  "shared_AGENTS_unchanged_gitblob": "429a5a13ee75b1222bc50627f8d5973d01dd21c4",
+  "working_AGENTS_unchanged_gitblob": "6464cd96b7023e3e91e30246bc93650d4e435a10",
+  "changed_nodes": [
+    "CR_N5_ATOMIC_ISOTOPE_COVERAGE"
+  ],
+  "changed_fields_in_only_node": [
+    "owner_return_heiii_20261027"
+  ],
+  "node_before": {
+    "owner_return_heiii_20261027": null
+  },
+  "node_after": {
+    "owner_return_heiii_20261027": {
+      "unit_id": "CR_HEIII_GROUND_RR_20261027",
+      "source_file": "returns/CR_HEIII_GROUND_RR_20261027.json",
+      "json_pointer": "",
+      "science_commit_S": "4e72c89b714431eb4c6ae07def777bbf72a5ae4c",
+      "documents_commit_D": "ec463db0c7e5c7fb5070796071c926caa4db6445"
+    }
+  },
+  "unchanged_nodes": 87,
+  "all88nested_contracts_unchanged": true,
+  "all_dependencies_unchanged": true,
+  "all15authorities_unchanged": true,
+  "all17edges_unchanged": true,
+  "HD_H5_BASS_nodes_unchanged": true,
+  "new_owner_return": {
+    "file": "CR_HEIII_GROUND_RR_20261027.json",
+    "gitblob": "8ecaa3d4823cabc4731b7d4c61ddff93c7f086dc",
+    "science_commit": "4e72c89b714431eb4c6ae07def777bbf72a5ae4c",
+    "documents_commit": "ec463db0c7e5c7fb5070796071c926caa4db6445",
+    "admission": "PASS_SCOPED_SOURCE_QUALIFIED_CONSUMER_AND_INTEGRATED_RETURN",
+    "scope": "Conditional elemental-He to He4, He4III + tagged fast electron -> He4II(1s) + spontaneous retained photon; exact saved PR106 H1+HeI chain plus one HeII hazard, same K1 competition. Native HeII PI I=54.42 eV and photon support <=50000 eV, Ekin>0; d=1; stationary heavy target/zero recoil, nonrelativistic scalar, frozen T=10000 K, n_HeIII=0.01 cm^-3, closed box/proper seconds. One N5 scoped child, not total RR or physical heating.",
+    "actual_nb_m3": null,
+    "actual_native25": null,
+    "instantaneous_rhs": null,
+    "original_DAG": {
+      "nodes": 88,
+      "integration_edges": 17,
+      "declared_deliverable_count": 27,
+      "literal_COMPLETE_prefix": 18,
+      "new_count_effect": 0
+    },
+    "preserved_parent_states": {
+      "N4": "PARTIAL_OPEN",
+      "N5": "PARTIAL_OPEN",
+      "N6": "PREDECESSOR_GATED",
+      "N7": "PREDECESSOR_GATED"
+    }
+  },
+  "count_reused": {
+    "central_completed": 27,
+    "working_completed": 32,
+    "total": 88,
+    "new_increment": 0
+  },
+  "physical_epsilon_source_added": false,
+  "HD_source_deck_added": false,
+  "L4_ready": false,
+  "global_physical_completion": null,
+  "finite_assembly_rule": "Use5abe shared base and preserve CR_N5 additive return plus priorBASS3wrapper updates; apply alreadyreviewed ee94working6wrapper and e18HD/H5observations without resetting original contracts/dependencies/foreignbudgets. Refresh only targetHEAD beforepublication.",
+  "scientific_runs": 0,
+  "old_science_replays": 0,
+  "prior_decisions": "REUSED_UNCHANGED",
+  "source_IO_cost": "UNKNOWN_NOT_ZERO"
+}
