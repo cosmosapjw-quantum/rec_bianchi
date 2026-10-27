@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-NATIVE-PATH01",
+  "stage": "R6",
+  "decision": "PASS_SCOPED",
+  "reviewer": "independent /root/native_reference_review; no production implementation",
+  "requested_tier": "Astra",
+  "observed_runtime_model_identity": "NOT_INDEPENDENTLY_OBSERVABLE",
+  "scope": "Finite native transition/call/slot theory, represented reconstruction, conditional implicit closure and retained physical hold",
+  "review_note": "theory/INDEPENDENT_REVIEW_R6.md",
+  "methods": [
+    "Original source branch and memory-shift comparison",
+    "Last-writer event induction",
+    "Independent hand Taylor expansion through h4",
+    "Endpoint substitution and slope/jump analysis",
+    "Product-rule implicit differentiation and induced-norm bounds",
+    "Output chain rule and conditional Gronwall premise review"
+  ],
+  "source_identities": {
+    "FROZEN_CONTRACT.md": {
+      "sha256": "1198a2205e135ea5b76039aa254f68d01f9b231cd803765f5d7b500261f9defa",
+      "bytes": 6314
+    },
+    "theory/CLAIMS.md": {
+      "sha256": "7ed130e079f3f40fc1e4ba20b8cf873b1c95d9d0f18a47dc6df0938132a35546",
+      "bytes": 2805
+    },
+    "theory/CONSTRUCTION.md": {
+      "sha256": "d8d4a218f164b8627b0829f64bc47245c6a4fda5e77908b2aa0c491d4a88e01d",
+      "bytes": 1790
+    },
+    "theory/THEORY.md": {
+      "sha256": "9ae03428ec5a2b7d6a936342178bea28386043d6ffa93497347f7f6ff1c393c4",
+      "bytes": 8933
+    },
+    "theory/SOURCE_REVIEW.md": {
+      "sha256": "ba5bf84c4da8c3657b495860d3353f17df439adee479db270dd9e8bed2e9b382",
+      "bytes": 16050
+    },
+    "inputs/original/HyRec_Oct2012.zip": {
+      "sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+      "bytes": 726954
+    },
+    "inputs/original/HyRec/history.c": {
+      "sha256": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+      "bytes": 30963
+    },
+    "inputs/original/HyRec/hydrogen.c": {
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "bytes": 37471
+    },
+    "inputs/original/HyRec/hyrectools.c": {
+      "sha256": "beb97b6cee3b80cf74d58264da7087301865881d266de1c17dd472a08665bb79",
+      "bytes": 6001
+    }
+  },
+  "findings": [
+    {
+      "id": "R6-F01",
+      "target": "THEORY.md equation4",
+      "impact": "Fixed query alpha did not define a variable path with claimed endpoint identities",
+      "minimum_fix": "Define alpha_j(t), Uhat_j(t), and separate alpha_j(q_j)",
+      "status": "closed",
+      "verification": "Read corrected lines and independently substituted a_j,b_j and differentiated"
+    },
+    {
+      "id": "R6-F02",
+      "target": "THEORY.md equation2 neutral-H recurrence residual",
+      "impact": "Logged ionized-H derivative needed sign conversion for neutral-H component",
+      "minimum_fix": "Explicit sigma=-1 for xH1s,+1 otherwise applied to current and previous2 derivatives",
+      "status": "closed",
+      "verification": "Read corrected sign convention and compared original get_rec_next2_HHe update"
+    }
+  ],
+  "checks": {
+    "native_n_nminus2_recurrence": "pass_scoped",
+    "branch_and_neutral_H_sign": "pass_scoped",
+    "initialization_memory_provenance": "pass_scoped",
+    "actual_call_and_last_slot_writer": "pass_scoped",
+    "Taylor_two_thirds_minus_seven_twentyfourths": "pass_scoped",
+    "represented_affine_path_and_clock_separation": "pass_scoped",
+    "implicit_first_second_derivative": "pass_scoped",
+    "uniform_induced_norm_bounds": "pass_scoped",
+    "output_chain_rule": "pass_scoped",
+    "conditional_Gronwall_physical_hold": "pass_scoped"
+  },
+  "executions": {
+    "scientific_checks": 0,
+    "CAS": 0,
+    "builds": 0,
+    "native_runs": 0,
+    "source_evaluations": 0,
+    "reason": "Direct source reading and elementary symbolic derivation sufficient; no numerical check needed",
+    "cpu_seconds": null,
+    "resource_note": "Read/hash and report-writing overhead unmeasured UNKNOWN_NOT_ZERO; prior/new budgets not reset"
+  },
+  "coding_handoff_notes": [
+    "Define exact eps64 convention in planned R9 coding contract",
+    "Preserve component sign and variable path corrections",
+    "Capture runtime order rather than imposing post-Saha operand order",
+    "Keep committed versus final-writer state and physical clock discrepancies distinct"
+  ],
+  "physical_admission": {
+    "physical_coverage": "0/313",
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "full_physical_F_norm_e0_defect_stability_tube_M2": "unprovided",
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4_ready": false,
+    "REI_activation": false
+  },
+  "next_action": "Parent freezes coding inputs/commands/criteria; lower-tier implements and performs only released bounded acquisition",
+  "no_further_theory_review_required_without_changed_dependency": true
+}

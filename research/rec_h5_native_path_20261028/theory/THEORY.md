@@ -48,7 +48,10 @@ check against each stored writer's outgoing values and the retained old data.
 ## 3. Discrete arithmetic and consistency
 
 Treat captured finite binary64 values as exact reals. For an actual integrated
-component define the represented recurrence residual
+component let sigma=-1 for neutral-H xH1s, whose logged native return is the
+ionized-H derivative, and sigma=+1 for the other integrated components. Define
+F_current and F_previous2 as sigma times their logged native derivative values;
+these are the signed derivatives of the component X. The represented residual is
 
   rho_n = X_out-X_in-h*(5*F_current/4-F_previous2/4).          (2)
 
@@ -80,12 +83,12 @@ For each original query j, keep its exact represented geometric endpoints
 be the newly captured committed row values at the corresponding radiation
 indices; keep writer-input endpoints as a separate U^W variant. Set
 
-  alpha=(q_j-a_j)/(b_j-a_j),
-  Uhat_j(q)=(1-alpha)*U_L+alpha*U_R,
+  alpha_j(t)=(t-a_j)/(b_j-a_j), alpha_j=alpha_j(q_j),
+  Uhat_j(t)=(1-alpha_j(t))*U_L+alpha_j(t)*U_R,
   slope_j=(U_R-U_L)/(b_j-a_j).                              (4)
 
 The identities Uhat(a)=U_L and Uhat(b)=U_R follow by substitution. Strict
-q in(a,b) implies0<alpha<1; consequently min(U_L,U_R)<=Uhat<=max(U_L,U_R)
+t in(a,b) implies0<alpha_j(t)<1; consequently min(U_L,U_R)<=Uhat<=max(U_L,U_R)
 componentwise. Positive endpoint fields remain positive along this declared
 affine segment. All operations in(4) are exact rational operations on source
 binary64 values and existing stored clock endpoints. A norm requires an
