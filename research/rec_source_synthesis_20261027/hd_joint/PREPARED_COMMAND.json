@@ -1,0 +1,68 @@
+{
+  "schema": "REC_HD_JOINT_PREPARED_COMMAND_V1",
+  "status": "PREPARED_ONLY_AWAIT_PARENT_C4_GO",
+  "command": [
+    "python",
+    "research/rec_source_synthesis_20261027/hd_joint/run_bounded.py",
+    "--attempt",
+    "primary001",
+    "--go",
+    "C4_GO"
+  ],
+  "cwd": "/workspace/scratch/6104ad84b826/rec_bianchi",
+  "requested_execution_identity": "lower-tier mechanical implementation executor",
+  "observed_runtime_identity": "UNKNOWN_NOT_EXPOSED",
+  "skill_context_used": [
+    "PhysMath Research Loop1.3.0 SKILL.md",
+    "references/CODING_LOOP.md selectedC5-C8",
+    "references/POLICY_INTEGRATION.md",
+    "parent frozen CODING_CONTRACT.md",
+    "parent THEORY.md",
+    "parent EXECUTION_FREEZE.json"
+  ],
+  "code_identities": [
+    {
+      "path": "decimal_reference.py",
+      "bytes": 1154,
+      "sha256": "0bb3b1f5c39671a97700d27ca1a1da062a0688318a83e58c8ffd4a03b7abe25c"
+    },
+    {
+      "path": "joint_diagnostic.py",
+      "bytes": 3383,
+      "sha256": "94a6230761c18a28fe984b4eb4c458adf797be2291c9d59995f7366653897815"
+    },
+    {
+      "path": "plot_saved.py",
+      "bytes": 2103,
+      "sha256": "4702598f65ed12d34e8b1f803582f5ad112a23d4d8bcfa768fa3cb1e9c76bfe6"
+    },
+    {
+      "path": "run_bounded.py",
+      "bytes": 6215,
+      "sha256": "b8693bac5f10048263b28d4cd1aff902acfbf7cbff27a1db05b9e43fa112e3b9"
+    },
+    {
+      "path": "run_diagnostic.py",
+      "bytes": 10733,
+      "sha256": "c7568099a29da34910f6dbbaceefb212f473430429202ed97308246adaa7facb"
+    },
+    {
+      "path": "targeted_controls.py",
+      "bytes": 2147,
+      "sha256": "ff7fb75491b8818bedf2b5c8e0a0ab3e0ba34a652e93f3a788a0745c4baa50cb"
+    }
+  ],
+  "limits": {
+    "hd_unit_cumulative_cpu_s": 360,
+    "primary_cpu_s": 60,
+    "primary_wall_s": 180,
+    "threads": 1,
+    "address_space_bytes": 2147483648
+  },
+  "scientific_executions": 0,
+  "tests_executed": 0,
+  "plots_executed": 0,
+  "preparation_metadata_io_cost": "UNKNOWN_NOT_ZERO",
+  "historical_tests_replayed": 0,
+  "next_action": "Parent reviews prepared code/command, completes C4 checkpoint, then explicitly sends C4 GO."
+}
