@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Prepare one parent-authored checkpoint; never commit, publish, or infer ACKs."""
 import argparse
+import fnmatch
 import hashlib
 import json
 from pathlib import Path
@@ -28,6 +29,7 @@ def main():
     parser.add_argument('stage', help='R1 through R10 or C1 through C10')
     parser.add_argument('paths', nargs='+', help='explicit repository-relative owned files/directories')
     parser.add_argument('--source-head', required=True, help='parent-maintained expected remote commit SHA')
+    parser.add_argument('--git-exclude', action='append', default=[], metavar='GLOB', help='omit matching repository-relative files only from Git entries; ZIP and exact-byte manifest remain complete')
     parser.add_argument('--repo', type=Path, default=Path(__file__).resolve().parents[3])
     parser.add_argument('--workspace', type=Path, default=Path('/workspace/scratch/6104ad84b826'))
     args = parser.parse_args()
@@ -76,13 +78,22 @@ def main():
         manifests.append({'path': rel, 'bytes': len(data), 'sha256': digest(data)})
     if not entries:
         parser.error('empty file table is not a checkpoint')
+    snapshot_entries = entries
+    git_exclusions = [{'path': entry['path'], 'matching_globs': [pattern for pattern in args.git_exclude if fnmatch.fnmatchcase(entry['path'], pattern)]} for entry in snapshot_entries if any(fnmatch.fnmatchcase(entry['path'], pattern) for pattern in args.git_exclude)]
+    excluded_paths = {row['path'] for row in git_exclusions}
+    entries = [entry for entry in snapshot_entries if entry['path'] not in excluded_paths]
+    if not entries:
+        parser.error('empty Git file table is not a checkpoint')
     manifest = {
         'schema': 'REC_SYNTHESIS_IMMUTABLE_STAGE_SNAPSHOT_V1',
         'stage': args.stage,
         'expected_source_head': args.source_head,
         'stage_record_path': stage_path.relative_to(repo).as_posix(),
         'stage_record_sha256': digest(stage_path.read_bytes()),
-        'file_count': len(entries),
+        'file_count': len(snapshot_entries),
+        'git_file_count': len(entries),
+        'git_exclusions': git_exclusions,
+        'git_exclusion_globs': args.git_exclude,
         'files': manifests,
         'omitted': omitted,
         'provider_status': 'PREPARED_ONLY_NO_ACK_INFERRED',
@@ -98,7 +109,7 @@ def main():
     manifest_path.write_bytes(encode_json(manifest))
     archive = zipdir / ('REC_SYNTHESIS_20261027_' + args.stage + '.zip')
     with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED) as z:
-        for entry in entries:
+        for entry in snapshot_entries:
             info = zipfile.ZipInfo(entry['path'], date_time=(2026, 10, 27, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
@@ -116,7 +127,7 @@ def main():
     report = {
         'stage': args.stage, 'payload': str(payload), 'manifest': str(manifest_path),
         'archive': str(archive), 'archive_bytes': archive.stat().st_size,
-        'archive_sha256': digest(archive.read_bytes()), 'files': len(entries),
+        'archive_sha256': digest(archive.read_bytes()), 'files': len(snapshot_entries), 'git_files': len(entries), 'git_exclusions': git_exclusions,
         'omitted_count': len(omitted), 'zip_crc_and_manifest_sha': 'PASS',
         'expected_source_head': args.source_head,
         'packaging_cpu_s': time.process_time() - start_cpu,

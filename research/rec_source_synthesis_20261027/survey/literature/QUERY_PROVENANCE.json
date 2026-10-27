@@ -1,0 +1,172 @@
+{
+  "survey_id": "REC-HD-H5-LITERATURE-20261027",
+  "date_user_timezone": "2026-10-27 Asia/Seoul",
+  "scope": "R2 primary-source survey and R4 derivation candidates only; no new scientific numerical execution",
+  "canonical_skill": {
+    "version": "1.0.0",
+    "selected_by": "user-supplied skill",
+    "read": "THEORY_LOOP.md, inherited RESEARCH_POLICY.md"
+  },
+  "latest_internal_evidence": {
+    "repository": "cosmosapjw-quantum/rei_bianchi",
+    "observed_sha": "ee94bef85b56d879dc38f184856a5c613575e9e1",
+    "supplied_by": "/root/repo_survey, immutable source recovery",
+    "files_read": [
+      "research/rei_expanded_event_consumer/blocker_closure_20261026/intake/HD_SOURCE_REPAIR_FINDING.md",
+      "research/rei_expanded_event_consumer/blocker_parallel_20261026/atomic/HD_SOURCE_RESOLUTION.md",
+      "research/rei_expanded_event_consumer/coupled_followup_20261026/atomic/HD_SUCCESSOR_PRECISION_GATE.md"
+    ],
+    "latest_joint_24_cases_in_these_files": "NOT_RUN; papers state source diagnosis/no scientific run",
+    "repo_global_absence_claim": false,
+    "git_blobs": {
+      "research/rei_expanded_event_consumer/blocker_closure_20261026/intake/HD_SOURCE_REPAIR_FINDING.md": "3f288a6729133c436e4050792eb4a8cdd20ed1f7",
+      "research/rei_expanded_event_consumer/blocker_parallel_20261026/atomic/HD_SOURCE_RESOLUTION.md": "a24b190280785f9e0bae6e237cec9ff21770981a",
+      "research/rei_expanded_event_consumer/coupled_followup_20261026/atomic/HD_SUCCESSOR_PRECISION_GATE.md": "5f56e5f1bac8435884ad7421ef3fa7ff03bcd476"
+    }
+  },
+  "requests": [
+    {
+      "provider": "Exa",
+      "kind": "search",
+      "query": "Find the official Leiden LAMDA molecular data page for hydrogen deuteride HD and the CDMS HD entry version 2 December 2011, including energy levels, rotational line frequency uncertainties, spectroscopic references and the Flower 1999 HD H2 collisional rates.",
+      "status": "RETURNED_PRIMARY_LINKS"
+    },
+    {
+      "provider": "SciSpace",
+      "kind": "search_papers",
+      "query": "Which primary spectroscopic measurements and molecular calculations determine the pure rotational transition frequencies and level energies of HD used in CDMS version 2 of December 2011, and how do their uncertainty estimates compare with Flower's 1999 HD-H2 rotational collisional-rate data?",
+      "status": "10_RESULTS; primary sources separately followed"
+    },
+    {
+      "provider": "web",
+      "kind": "open",
+      "urls": [
+        "https://home.strw.leidenuniv.nl/~moldata/HD.html",
+        "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+        "https://home.strw.leidenuniv.nl/~moldata/molformat.html"
+      ],
+      "status": "READ"
+    },
+    {
+      "provider": "Exa",
+      "kind": "fetch",
+      "urls": [
+        "https://cdms.astro.uni-koeln.de/cgi-bin/cdmsinfo?file=e003501.cat",
+        "https://cdms.astro.uni-koeln.de/classic/predictions/description.html"
+      ],
+      "status": "READ_CACHED; HD info v2 differs from web-indexed v3"
+    },
+    {
+      "provider": "Exa",
+      "kind": "search",
+      "query": "Find original mathematical papers on rigorous a posteriori bounds for nonlinear ordinary differential equations using the continuous defect or residual, logarithmic norms, and an error tube or bootstrap condition. Prefer equations for local residual propagation and higher derivatives needed to bound interpolation curvature.",
+      "status": "RETURNED_PRIMARY_LINKS"
+    },
+    {
+      "provider": "SciSpace",
+      "kind": "search_papers",
+      "query": "How do rigorous a posteriori error bounds for ordinary differential equations use continuous residuals, logarithmic norms, and an invariant error tube to certify nonlinear solution and interpolation errors?",
+      "status": "10_RESULTS; primary sources separately followed"
+    },
+    {
+      "provider": "web+Exa",
+      "kind": "open",
+      "urls": [
+        "https://arnold-neumaier.at/ms/ode.pdf",
+        "https://link.springer.com/article/10.1007/BF01934923",
+        "https://www.cse.uoi.gr/~akrivis/AMN2.pdf"
+      ],
+      "status": "FULL_PRIMARY_NEUMAIER_AND_AKRIVIS_READ; SODERLIND_ABSTRACT_ONLY"
+    },
+    {
+      "provider": "Exa+web",
+      "kind": "search",
+      "query": "Find author-hosted full text of Gustaf S\u00f6derlind 2006 The logarithmic norm. History and modern theory, especially the differential inequalities and perturbation/residual error estimate.",
+      "status": "AUTHOR_UNIVERSITY_AND_PUBLISHER_METADATA; fulltext not acquired"
+    },
+    {
+      "provider": "Exa",
+      "kind": "fetch",
+      "urls": [
+        "https://durham-repository.worktribe.com/output/1616941/a-quantum-mechanical-study-of-the-rotational-excitation-of-hd-by-h2"
+      ],
+      "status": "PRIMARY_BIBLIOGRAPHIC_RECORD_READ; original Flower fulltext not read"
+    },
+    {
+      "provider": "Exa",
+      "kind": "search",
+      "query": "Find the exact CDMS spectral catalog file for hydrogen deuteride HD tag 003501 version 2 December 2011 containing the line 2674986.094 MHz, and its energy level list or spectral-fit files.",
+      "status": "NEW_ARCHIVE_DIRECTORY_FOUND"
+    },
+    {
+      "provider": "Exa",
+      "kind": "fetch",
+      "urls": [
+        "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/"
+      ],
+      "status": "DIRECTORY_INDEX_READ; catalog/egy/fit actual payloads unavailable"
+    },
+    {
+      "provider": "direct_https",
+      "kind": "download",
+      "url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+      "status": "2289_BYTES_DOWNLOADED_SHA256_MATCH",
+      "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+      "local_file": "lamda_hd_live.dat"
+    },
+    {
+      "provider": "direct_https",
+      "kind": "download",
+      "url_prefix": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/",
+      "files": [
+        "c003501.cat",
+        "c003501.egy",
+        "HD.fit",
+        "HD.lin",
+        "c003501i.cat",
+        "HD.par",
+        "HD_mrg.lin"
+      ],
+      "status": "ALL_HTTP_503_NO_SOURCE_BYTES",
+      "receipt": "CDMS_ARCHIVE_DOWNLOAD_RECEIPT.json"
+    },
+    {
+      "provider": "Exa",
+      "kind": "fetch",
+      "urls": [
+        "https://www.fuw.edu.pl/~krp/codes.html",
+        "https://hjozwiak-umk.github.io/hyperfine.html"
+      ],
+      "status": "READ; H2SPECTRE/dipole successor metadata only, no code execution"
+    },
+    {
+      "provider": "web",
+      "kind": "open",
+      "urls": [
+        "https://doi.org/10.1088/0953-4075/32/7/016",
+        "https://www.mdpi.com/2218-2004/8/2/15"
+      ],
+      "status": "IOP redirect inaccessible; MDPI429; no repeat"
+    }
+  ],
+  "source_identity_cautions": [
+    "Unversioned CDMS info URL returns v2 via Exa cache and v3 via current web search; neither is a verified full numerical deck.",
+    "No 2011 CDMS raw fit/catalog/term file obtained despite archive-location discovery.",
+    "LAMDA original bytes fixed and unchanged; source gate remains historical 1/8 pass,7/8 fail.",
+    "Physical uncertainty is not an internally-consistent serialization tolerance.",
+    "Raw LAMDA source is local/private recovery input; integrate only URL/hash/derived facts into public Git unless existing source policy authorizes raw mirroring."
+  ],
+  "outputs": [
+    "SURVEY_FINDINGS_KO.md",
+    "DERIVATION_CANDIDATES.md",
+    "SOURCE_REFERENCES.json",
+    "QUERY_PROVENANCE.json"
+  ],
+  "new_scientific_execution": {
+    "count": 0,
+    "reason": "parent instructed no scientific computation before next freeze; source I/O and metadata only"
+  },
+  "new_canonical_completion": 0,
+  "authority_change": false,
+  "no_go_claim": false
+}

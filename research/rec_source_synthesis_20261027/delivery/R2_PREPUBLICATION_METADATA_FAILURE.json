@@ -1,0 +1,20 @@
+{
+  "schema": "REC_SYNTHESIS_R2_PREPUBLICATION_METADATA_FAILURE_V1",
+  "stage": "R2",
+  "classification": "PACKAGING_AND_PAYLOAD_READ_METADATA_ONLY",
+  "reported_by": "parent controller",
+  "observed_failure": "Initial publication payload read failed before any Git mutation; 106 parallel chunk calls had not all completed for the approximately 6.36 MB payload.",
+  "science_runs": 0,
+  "Git_mutations_before_failure": 0,
+  "cpu_s": "UNKNOWN_NOT_ZERO",
+  "wall_s": "UNKNOWN_NOT_ZERO",
+  "preserved_artifacts": [
+    "publication_payload/R2_PREPUBLICATION.json",
+    "publication_payload/R2_PREPUBLICATION.manifest.json",
+    "publication_payload/R2_PREPUBLICATION.prepared.json",
+    "deliverables/REC_SYNTHESIS_20261027_R2_PREPUBLICATION.zip"
+  ],
+  "targeted_repair": "Repeatable --git-exclude omits three immutable upstream central DAG copies only from Git entries. Complete selected file bytes and SHA manifest remain in the ZIP. Parent will read payload with chunk concurrency 8.",
+  "expected_source_head": "22fde058e6b7a8a431915cf6f8826b67b2e6f01d",
+  "scientific_claims_changed": false
+}
