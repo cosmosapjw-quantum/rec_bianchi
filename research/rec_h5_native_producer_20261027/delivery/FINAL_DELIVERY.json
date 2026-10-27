@@ -1,16 +1,21 @@
 {
   "schema": "REC_H5_NATIVE_REFERENCE01_FINAL_DELIVERY_V1",
   "unit_id": "REC-H5-NATIVE-REFERENCE01",
+  "status": "COMPLETE_CURRENT_NODE_ONLY",
+  "finalized_date_kst": "2026-10-28",
+  "timezone": "Asia/Seoul",
   "science_decision": "PASS_SCOPED",
   "science_commit": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
-  "central_commit": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
-  "science_loop": {
-    "theory_completed": 10,
-    "coding_completed": 10,
-    "total": 20
-  },
-  "transport_status": "C10_STAGE_PUBLICATION_PENDING_AT_THIS_IMMUTABLE_SNAPSHOT",
-  "actual_acknowledged_stage_count": 19,
+  "C10_publication_commit": "4d7d9963e547eb1afc1781abbc492c3368f10aa6",
+  "central_publication_commit": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
+  "latest_verified_shared_HEAD": "7de02b3e05705ead4eeb313c8487a21d4e6876a6",
+  "theory_completed": 10,
+  "coding_completed": 10,
+  "completed_stages": 20,
+  "total_stages": 20,
+  "actual_acknowledged_stage_count": 20,
+  "stage_index": "PUBLICATION_INDEX.json",
+  "all20_Git_and_dual_backup_actual_ack": true,
   "source_archive": {
     "schema": "REC_H5_NATIVE_REFERENCE01_SOURCE_BACKUP_RECEIPT_V1",
     "science_commit": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
@@ -51,38 +56,140 @@
     "checksum_scope": "Local source ZIP SHA256 and all-member CRC/SHA checked; provider byte-size readbacks are separate evidence.",
     "future_ACK": "Stored outside frozen source ZIP in companion"
   },
-  "central": {
-    "schema": "REC_H5_NATIVE_REFERENCE01_CENTRAL_PUBLICATION_V1",
-    "repository": "cosmosapjw-quantum/rei_bianchi",
-    "branch": "research/orchestration-sandbox-20261022",
-    "expected_parent": "8af3e56dcaa27a8362b2bf74d6fb3c8edd859413",
-    "commit": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
-    "tree": "e9b31a4e032c8ef6e49d7e13c70033ec3545745c",
-    "force": false,
-    "git_head_readback": "PASS",
-    "owner_return_readback": "PASS",
-    "DAG": {
-      "bytes": 1625735,
-      "git_blob_sha": "c0129d97c2561f49f540a6b320a418c88e4d6af4",
-      "sha256": "40025d822359b6d177cd0cbb4e58ab9511b6a2229226b72dd8fbda3c8bd79bf8",
-      "scope": "one added existing REC-H5 sibling pointer; all88contracts/17edges/foreign budgets preserved"
+  "C10_stage_receipt": {
+    "stage": "C10",
+    "preflight": {
+      "stage": "C10",
+      "owned": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
+      "shared": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
+      "agents_same_content": true,
+      "parallel": [
+        {
+          "number": 240,
+          "head": "ba68aa31127c54108ef2ccfc99ef130e98e5a7a6",
+          "branch": "research/rei-causal-prefix-consumer-20261027"
+        },
+        {
+          "number": 222,
+          "head": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
+          "branch": "research/orchestration-sandbox-20261022"
+        },
+        {
+          "number": 239,
+          "head": "c0e76fb13785dd6aab45e056ee54d2b318ca8f41",
+          "branch": "research/rei-cr-integrated-return-20261027"
+        }
+      ]
     },
-    "science_commit": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
+    "binary_blob_receipts": [],
+    "git": {
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "branch": "research/rec-h5-native-producer-20261027",
+      "expected_parent": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
+      "commit": "4d7d9963e547eb1afc1781abbc492c3368f10aa6",
+      "tree": "3094a3d73e078c1120b66d4b6eef936d8f1abee6",
+      "force": false,
+      "readback": "PASS"
+    },
+    "prepared": {
+      "stage": "C10",
+      "payload": "/workspace/scratch/6104ad84b826/publication_payload/rec_h5_native_20261027/C10.json",
+      "manifest": "/workspace/scratch/6104ad84b826/publication_payload/rec_h5_native_20261027/C10.manifest.json",
+      "archive": "/workspace/scratch/6104ad84b826/deliverables/rec_h5_native_20261027/REC_H5_NATIVE_20261027_C10.zip",
+      "archive_bytes": 68304,
+      "archive_sha256": "1d69a6b40bb19cd6d49555d068bf2de0dfcc46e4308393f9bb0253353bf61a46",
+      "files": 37,
+      "git_files": 37,
+      "git_exclusions": [],
+      "omitted_count": 0,
+      "zip_crc_and_manifest_sha": "PASS",
+      "expected_source_head": "f22d6548c7c5ed4e13e424dc3ec5c5ce5ea18001",
+      "packaging_cpu_s": 0.027597573,
+      "packaging_wall_s": 0.0276022020043456,
+      "packaging_max_rss_kib": 12672,
+      "unmeasured_process_startup_and_receipt_tail": "UNKNOWN_NOT_ZERO",
+      "science_execution": "NONE",
+      "provider_ack": "PENDING_ROOT_PUBLICATION",
+      "binary_manifest": "/workspace/scratch/6104ad84b826/publication_payload/rec_h5_native_20261027/C10.binary-manifest.json",
+      "binary_artifact_count": 0
+    },
+    "dropbox": {
+      "status": "completed",
+      "file_id": "id:BSpOijBcT10AAAAAAEDILQ",
+      "path_display": "/bianchi/rec_bianchi/20261016/REC_H5_NATIVE_20261027_C10_1d69a6b40bb1.zip",
+      "bytes": 68304
+    },
+    "drive": {
+      "status": "completed",
+      "file_id": "1728Zc9pgkmPcmTxHoVspy3A0T6Z3smHL",
+      "name": "REC_H5_NATIVE_20261027_C10_1d69a6b40bb1.zip",
+      "bytes": 68304
+    },
+    "actual_status": "BOTH_COMPLETED_AND_EXACT_BYTE_SIZE_READBACK",
     "counts": {
-      "completed": 28,
+      "working_completed": 33,
+      "working_snapshot": "PR240 inspected24615 externalB3h adoption",
+      "shared_completed": 28,
       "total": 88,
-      "increment": 0
-    },
-    "physical_coverage": "0/313",
-    "physical_epsilon": null
+      "new_canonical_completed": 0
+    }
   },
+  "central_return_preserved": "PASS_RETURN_AND_DAG_POINTER_PRESERVED",
   "canonical_DAG": {
     "shared_completed": 28,
     "total": 88,
     "this_unit_increment": 0,
     "latest_inspected_PR240_working_snapshot_completed": 33
   },
-  "final_receipt_rule": "The final companion overlays FINAL_DELIVERY.json and PUBLICATION_INDEX.json with the C10 actual receipt. The source ZIP remains unchanged.",
+  "PR": {
+    "repository": "cosmosapjw-quantum/rec_bianchi",
+    "number": 140,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/140",
+    "draft": true,
+    "base": "research/rec-source-synthesis-20261027",
+    "base_sha": "d6dbe39a4923439547c01695d9020ba39367ea90",
+    "head": "research/rec-h5-native-producer-20261027",
+    "head_sha_at_creation": "4d7d9963e547eb1afc1781abbc492c3368f10aa6",
+    "merged": false,
+    "actual_creation": "ACKNOWLEDGED",
+    "role": "Reviewable publication for completed current unit; no automatic merge."
+  },
+  "CI": {
+    "schema": "REC_H5_NATIVE_REFERENCE01_CI_OBSERVATION_V1",
+    "observed_commit": "4d7d9963e547eb1afc1781abbc492c3368f10aa6",
+    "PR": 140,
+    "workflow": "verify-durable-backup",
+    "run_id": 40530823832,
+    "job_id": 122282797031,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/40530823832/job/122282797031",
+    "status": "completed",
+    "conclusion": "failure",
+    "successful_steps": [
+      "package installation",
+      "runtime dispatch recording",
+      "smoke-import of all committed package modules"
+    ],
+    "failed_step": "python scripts/verify_repo.py --quick",
+    "pytest": "skipped",
+    "log_retrieval": {
+      "attempts": 1,
+      "result": "TOOL_ERROR_NO_LOG_CONTENT"
+    },
+    "underlying_cause": "NOT_ESTABLISHED_FROM_CURRENT_LOGS",
+    "preceding_unit": "PR139 recorded the same failed step, with underlying cause also unestablished; no causal equivalence claimed.",
+    "manual_reruns": 0,
+    "scientific_validation": "Separate bounded primary,38controls and independent C9 PASS_SCOPED. Repository-wide CI PASS is not claimed.",
+    "remote_CI_cpu": "UNKNOWN_NOT_EXPOSED",
+    "current_node_policy": "Record factual CI state and preserve current work; user requested current C10 only, no new repair/research loop."
+  },
   "physical_coverage": "0/313",
-  "physical_epsilon": null
+  "physical_epsilon": null,
+  "H6": "OPEN",
+  "H7": "OPEN",
+  "L4_ready": false,
+  "REI_activation": false,
+  "next_research_started": false,
+  "source_ZIP_repacked": false,
+  "receipt_companion": "Apply final companion over the source ZIP's repository-relative tree for post-snapshot C10/provider receipts. Companion own transport ACK is external to its immutable bytes.",
+  "C9_checkpoint_note": "ROOT_DECISION delivery_C10=PENDING describes the C9 science-admission snapshot. This final delivery record supplies the completed C10 evidence."
 }

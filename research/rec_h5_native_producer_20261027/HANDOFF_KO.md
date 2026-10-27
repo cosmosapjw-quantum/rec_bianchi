@@ -1,5 +1,18 @@
 # 다음 대화 스레드 handoff — REC-H5-NATIVE-REFERENCE01
 
+## C10 종료 확인 — 2026-10-28 KST
+
+**이론 R1–R10·코딩 C1–C10, 20/20 완료. 현재 노드만 종료했고 다음 연구 노드를 시작하지 않았다.** 20개 단계 모두 Git 및 두 provider의 실제 완료 응답과 크기 readback을 확인했다.
+
+C10 commit: 4d7d9963e547eb1afc1781abbc492c3368f10aa6. Draft PR: https://github.com/cosmosapjw-quantum/rec_bianchi/pull/140.
+소스 ZIP: 38,580,641 bytes, SHA256 `20693f8b6a77f1a5dd865e88e9fb463e865f157b9b8522d3324f1135d6610cd5`.
+Google Drive file: `1Epwv9u67UrgMz3OlvyADgp8PUiJJnt0e`; Dropbox file: `id:BSpOijBcT10AAAAAAEDIDw`.
+최신 확인 shared HEAD `7de02b3e05705ead4eeb313c8487a21d4e6876a6`에서도 우리 return/pointer가 보존됐고 canonical 집계는28/88이다.
+
+소스 ZIP을 풀고 final companion을 같은 상위 폴더에 겹쳐 풀면, 소스 snapshot 뒤에 생긴 실제 C10·백업·최종 영수증을 함께 복구할 수 있다. 소스 ZIP은 재포장하지 않았다. ROOT_DECISION의 C10 pending은 C9 승인 시점 기록이며 delivery/FINAL_DELIVERY.json이 현재 완료 상태를 제공한다.
+
+별도 repository-wide CI는 확인한 C10 commit에서 `verify_repo.py --quick` 실패, `pytest` skipped였다. 로그 조회 도구 오류로 이번 구체 원인은 미확정이며, repository CI PASS를 주장하지 않는다. 관측 사실은 delivery/CI_OBSERVATION.json에 보존했다. 과학 primary/controls/C9 결과는 위 고정 SHA의 별도 근거다.
+
 ## 먼저 읽을 자료
 Repository: cosmosapjw-quantum/rec_bianchi
 Branch: research/rec-h5-native-producer-20261027
