@@ -1,0 +1,61 @@
+{
+  "schema": "REC_SOURCE_SYNTHESIS_CODING_CONTRACT_V1",
+  "authority": "parent scientific contract; lower-tier implementation; fresh independent code review",
+  "document": "CODING_CONTRACT.md",
+  "document_sha256": "7dd2e930cad8bf919a9dbbf90a0426f76ea00eaf6eabf16f3d677b8726d1364e",
+  "theory_sha256": "6b1952f382164c760479f5c3b8bef09803bcddc86343433225f052840c6ea5f1",
+  "review_sha256": "431fe1e98557b6521154d6eb4e0728d3445d639adddf0941126e3daa8d776753",
+  "units": [
+    {
+      "id": "HD_JOINT_24",
+      "allowed_path": "hd_joint/",
+      "input_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+      "input_bytes": 2289,
+      "temperatures_K": [
+        50,
+        100,
+        200
+      ],
+      "lines": 8,
+      "diagnostic_cases": 24,
+      "relative_tolerance": 2.842170943040401e-14,
+      "reference": "independent Decimal80 positive fluxes and exponential source ratio",
+      "cpu_cap_s": 360,
+      "primary_cpu_cap_s": 60,
+      "primary_wall_cap_s": 180
+    },
+    {
+      "id": "HISTORY_REMAINDER",
+      "allowed_path": "history_remainder/",
+      "history_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+      "context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+      "queries": 313,
+      "prefix": 5127,
+      "arithmetic": "exact rational source-native real-arithmetic grid",
+      "acceptance": "exact signed identity and bound inclusion; causal endpoint exclusion",
+      "case_counts": "derive from admitted actual source; conditional expected1240 retimings,313chords,12rightskips",
+      "cpu_cap_s": 360,
+      "primary_cpu_cap_s": 120,
+      "primary_wall_cap_s": 240
+    }
+  ],
+  "processes": {
+    "threads": 1,
+    "memory_limit_bytes": 2147483648
+  },
+  "preserved": {
+    "old_gate_Hz": 35,
+    "old_HD_failures": 7,
+    "physical_epsilon": null,
+    "physical_coverage": "0/313",
+    "new_ivp": 0,
+    "old_suite_replay": 0,
+    "old_Ks_rebuild": 0
+  },
+  "dag": {
+    "working_completed": 32,
+    "total": 88,
+    "shared_authority_completed": 27,
+    "new_completed": 0
+  }
+}
