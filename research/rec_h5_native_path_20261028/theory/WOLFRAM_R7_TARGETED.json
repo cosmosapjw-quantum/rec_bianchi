@@ -1,0 +1,19 @@
+{
+  "schema": "REC_H5_NATIVE_PATH_R7_TARGETED_V1",
+  "failed_call": "WOLFRAM_R7.json",
+  "diagnosis": "Sum-based polynomial substituted0 produced0^0/Indeterminate; its reported zero Taylor coefficients are INVALID and not accepted. Other independent affine/matrix/sign residual results retained.",
+  "repair": "Replace only polynomial construction by explicit degree5 polynomial; no other symbolic checks repeated.",
+  "command": "Module[{t,h,a0,a1,a2,a3,a4,a5,p,f,r},p=a0+a1*t+a2*t^2/2+a3*t^3/6+a4*t^4/24+a5*t^5/120;f=D[p,t];r=Expand[(p/.t->h)-(p/.t->0)-h*(5*(f/.t->0)/4-(f/.t->(-2*h))/4)];<|\"explicit_polynomial_residual\"->r,\"cubic_coefficient\"->Coefficient[r,h,3],\"quartic_coefficient\"->Coefficient[r,h,4],\"cubic_formula_residual\"->Simplify[Coefficient[r,h,3]-2*a3/3],\"quartic_formula_residual\"->Simplify[Coefficient[r,h,4]+7*a4/24],\"constant_linear_exact\"->{Coefficient[r,h,1],Coefficient[r,h,2]}|>]",
+  "time_constraint_s": 20,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"explicit_polynomial_residual\" -> (2*a3$83906*h$83906^3)/3 - (7*a4$83906*h$83906^4)/24 + (7*a5$83906*h$83906^5)/40, \"cubic_coefficient\" -> (2*a3$83906)/3, \"quartic_coefficient\" -> (-7*a4$83906)/24, \"cubic_formula_residual\" -> 0, \"quartic_formula_residual\" -> 0, \"constant_linear_exact\" -> {0, 0}|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "remote_cpu": "UNKNOWN_NOT_EXPOSED"
+}
