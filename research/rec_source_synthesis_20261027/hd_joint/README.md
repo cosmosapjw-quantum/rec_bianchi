@@ -1,4 +1,4 @@
-# HD joint thermal diagnostic — prepared C5–C8 implementation
+# HD joint thermal diagnostic — observed C5–C8 implementation
 
 Scientific authority and acceptance belong to the parent under `../CODING_CONTRACT.md` (SHA256 `7dd2e930cad8bf919a9dbbf90a0426f76ea00eaf6eabf16f3d677b8726d1364e`). This subtree adds a callable diagnostic and one bounded source/reference/control/figure pass. It does not qualify a production line, change the source gate, mix colliders, extrapolate temperatures, or execute historical suites.
 
@@ -18,9 +18,9 @@ Scientific authority and acceptance belong to the parent under `../CODING_CONTRA
 | PNG/PDF from saved outputs | `plot_saved.py::plot_saved`, two signed diagnostic panels plus distinct old-gate panel |
 | Limits, command, raw output, code/input identity, cumulative debit | `run_bounded.py::main` |
 
-## Frozen command, pending parent C4 GO
+## Frozen command, executed after parent C4 GO
 
-Run exactly once after parent C4 GO, from `/workspace/scratch/6104ad84b826/rec_bianchi`:
+Executed once on 2026-10-27 UTC after parent C4 GO, from `/workspace/scratch/6104ad84b826/rec_bianchi`:
 
 ```bash
 python research/rec_source_synthesis_20261027/hd_joint/run_bounded.py --attempt primary001 --go C4_GO
@@ -34,8 +34,12 @@ The figure is generated only from `DIAGNOSTICS.json`. Its signed I/D panels use 
 
 ## Status and context
 
-**PREPARED_ONLY. SCIENTIFIC_EXECUTION_NOT_RUN. TESTS_NOT_RUN. PLOT_NOT_RUN.**
+**OBSERVED: PASS_SCOPED_NUMERICAL_DIAGNOSTIC.** The frozen `primary001` command exited 0 with 24/24 actual cases and 21/21 targeted controls passed. The saved PNG and PDF were generated; independent scientific/code/figure admission remains parent-owned. `PREPARED_COMMAND.json` is retained unchanged as the historical pre-execution freeze.
+
+`raw/primary001/SUMMARY.json`, `DIAGNOSTICS.json` and `TARGETED_CONTROLS.json` contain the actual outputs. Maximum relative errors against the independent 80-digit reference were I `3.011593202799463e-16`, D `2.999772662453845e-16` and ratio `9.196997925947943e-17`, below the unchanged `128*epsilon64 = 2.842170943040401e-14` criterion. Maximum absolute diagnostics were |I| `8.770964953285911e-7` and |D| `1.7541951787469943e-6`. The original 35 Hz gate still fails seven of eight lines. No production qualification changed.
+
+The single child used 4.286188 CPU s, 4.376630457 wall s and 82,148 KiB peak RSS. Including measured wrapper CPU, cumulative HD debit is 4.301855738 s and the measured remaining cap is 355.698144262 s. Final receipt serialization and preparation/source-read metadata costs are `UNKNOWN_NOT_ZERO`; they are not scientific child replays. `raw/primary001/EXECUTION.json` preserves the full observed resource receipt. Raw stderr is empty.
 
 The source input, parser and coding contract were checked by metadata SHA256 readback during preparation and matched the frozen identities. Requested executor role is lower-tier mechanical implementation; the runtime model identity is `UNKNOWN_NOT_EXPOSED`.
 
-Skill context used: PhysMath Research Loop 1.3.0 `SKILL.md`; `references/CODING_LOOP.md` selected C5–C8; `references/POLICY_INTEGRATION.md`; parent-selected delegation scope. No recursive delegation or review. One production verification and one fresh parent-controlled review remain authorized. Source/contract byte identity is exact; numerical diagnostics use the frozen `128*epsilon64` criterion. Historical scientific results, failed attempts and costs are reused without replay.
+Skill context used: PhysMath Research Loop 1.3.0 `SKILL.md`; `references/CODING_LOOP.md` selected C5–C8; `references/POLICY_INTEGRATION.md`; parent-selected delegation scope. No recursive delegation or review. The one production verification pass is complete; the single fresh parent-controlled review remains pending. Source/contract byte identity is exact; numerical diagnostics use the frozen `128*epsilon64` criterion. Historical scientific results, failed attempts and costs are reused without replay.

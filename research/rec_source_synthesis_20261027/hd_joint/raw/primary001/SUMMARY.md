@@ -1,0 +1,19 @@
+# HD joint thermal diagnostic
+
+{
+  "status": "PASS_SCOPED_NUMERICAL_DIAGNOSTIC",
+  "actual_cases": 24,
+  "controls": 21,
+  "controls_passed": 21,
+  "old_gate_failing_lines": 7,
+  "max_absolute_I": 8.770964953285911e-07,
+  "max_absolute_D": 1.7541951787469943e-06,
+  "max_relative_error_I": "3.0115932027994631093291042693571015054511061062986259538662824551271316819465366E-16",
+  "max_relative_error_D": "2.9997726624538449971775167335021863886212544202834598014990406752218461123238671E-16",
+  "max_relative_error_ratio": "9.1969979259479429487146083280080738848929525408394738559389779975202289058697487E-17",
+  "figure_PNG": "joint_thermal_diagnostics.png",
+  "figure_PDF": "joint_thermal_diagnostics.pdf",
+  "production_approved": false
+}
+
+I and D describe fixed-column thermal compatibility. They do not estimate physical source uncertainty. Seven original 35 Hz failures remain unqualified.

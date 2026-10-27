@@ -1,0 +1,101 @@
+{
+  "schema": "REC_HD_JOINT_PREEXEC_V1",
+  "start_utc": "2026-10-27T06:06:13.697949+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/run_diagnostic.py",
+    "--source",
+    "/workspace/scratch/6104ad84b826/survey_literature/lamda_hd_live.dat",
+    "--output",
+    "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/raw/primary001"
+  ],
+  "cwd": "/workspace/scratch/6104ad84b826/rec_bianchi",
+  "inputs_and_code": [
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/decimal_reference.py",
+      "bytes": 1154,
+      "sha256": "0bb3b1f5c39671a97700d27ca1a1da062a0688318a83e58c8ffd4a03b7abe25c"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/joint_diagnostic.py",
+      "bytes": 3383,
+      "sha256": "94a6230761c18a28fe984b4eb4c458adf797be2291c9d59995f7366653897815"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/plot_saved.py",
+      "bytes": 2103,
+      "sha256": "4702598f65ed12d34e8b1f803582f5ad112a23d4d8bcfa768fa3cb1e9c76bfe6"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/run_bounded.py",
+      "bytes": 6215,
+      "sha256": "b8693bac5f10048263b28d4cd1aff902acfbf7cbff27a1db05b9e43fa112e3b9"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/run_diagnostic.py",
+      "bytes": 10733,
+      "sha256": "c7568099a29da34910f6dbbaceefb212f473430429202ed97308246adaa7facb"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/hd_joint/targeted_controls.py",
+      "bytes": 2147,
+      "sha256": "ff7fb75491b8818bedf2b5c8e0a0ab3e0ba34a652e93f3a788a0745c4baa50cb"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/CODING_CONTRACT.md",
+      "bytes": 8546,
+      "sha256": "7dd2e930cad8bf919a9dbbf90a0426f76ea00eaf6eabf16f3d677b8726d1364e"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/THEORY.md",
+      "bytes": 8032,
+      "sha256": "6b1952f382164c760479f5c3b8bef09803bcddc86343433225f052840c6ea5f1"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_source_synthesis_20261027/EXECUTION_FREEZE.json",
+      "bytes": 2435,
+      "sha256": "08db86a00c1056b38dc83d337391871310527a0a2a78ed4d43dfa28103e803b1"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/survey_literature/lamda_hd_live.dat",
+      "bytes": 2289,
+      "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/lamda_hd.py",
+      "bytes": 24427,
+      "sha256": "ef10b34e1891755334083340b84ff1e298151df720c13f008b3762505813e275"
+    },
+    {
+      "path": "/workspace/scratch/6104ad84b826/rec_bianchi/research/program_expansion_20261025/hd_adapter/raw/source_diagnostic/diagnostics.json",
+      "bytes": 26091,
+      "sha256": "6c0b2328688b9db4ee2ed61a057643e05ae40a449ad5514a74a19ca3cf11ea22"
+    }
+  ],
+  "limits": {
+    "child_cpu_s": 60,
+    "child_wall_s": 180,
+    "address_space_bytes": 2147483648,
+    "threads": 1,
+    "unit_cumulative_cpu_cap_s": 360
+  },
+  "previous_debits": [],
+  "previous_debit_cpu_s": 0.0,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "BLIS_NUM_THREADS": "1"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "requested_execution_identity": "lower-tier mechanical implementation executor",
+  "observed_runtime_identity": "UNKNOWN_NOT_EXPOSED",
+  "authorization": "Parent C4 GO required externally; explicit --go C4_GO supplied",
+  "historical_budget_reset": false,
+  "new_IVP": false
+}
