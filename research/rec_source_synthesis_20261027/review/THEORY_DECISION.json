@@ -1,0 +1,108 @@
+{
+  "schema": "REC_SOURCE_SYNTHESIS_THEORY_REVIEW_V1",
+  "unit_id": "REC-SOURCE-SYNTHESIS-20261027",
+  "stage": "R6",
+  "decision": "PASS_AFTER_TARGETED_SCOPE_REPAIRS",
+  "core_formulas_1_through_7": "PASS_UNDER_STATED_REPAIRED_ASSUMPTIONS",
+  "ready_to_freeze_coding_contract": true,
+  "implementation_certified": false,
+  "review_passes": 1,
+  "targeted_repair_readbacks": 1,
+  "recursive_reviewers": 0,
+  "runtime_identity": {
+    "requested": "fresh independent Astra theory reviewer",
+    "observed": "UNKNOWN_NOT_EXPOSED",
+    "model_identity_independently_verified": false
+  },
+  "workflow_identity": {
+    "requested": "canonical physmath-research-loop 1.0.0, parent locked task",
+    "supplementary_skill_read": "discoverable and archived 1.3.0 instructions",
+    "locked_scope_overridden": false
+  },
+  "execution": {
+    "scientific_code_executed": false,
+    "controlled_scientific_process_cpu_s": 0,
+    "metadata_read_hash_and_io_cost": "UNKNOWN_NOT_ZERO",
+    "independent_rational_control_script": "NOT_RUN",
+    "symbolic_service": "NOT_RUN_BY_THIS_REVIEWER",
+    "new_ivp": false,
+    "native_execution": false,
+    "historical_test_replay": false,
+    "parent_science_files_modified_by_reviewer": false
+  },
+  "independent_methods": [
+    "direct positive upward and downward fluxes using r=exp(-x_E), b=exp(-x_nu)",
+    "independent source-function ratio by subtraction over a common denominator",
+    "explicit one-hinge cases for both finite-retiming directions and one-sided derivatives",
+    "explicit one-hinge chord calculation and finite signed-measure extension",
+    "native C source inspection without execution",
+    "actual original SOURCE_CONTEXT metadata and endpoint witnesses",
+    "physical error composition by e(q+d)-e(q) and the triangle inequality"
+  ],
+  "reviewed_input_sha256": {
+    "RESEARCH_CONTRACT.md": "95b5b6a810a70ed0537a0ecddd8c1257376614a105f34db90b2702990980d38d",
+    "EXECUTION_FREEZE.json": "08db86a00c1056b38dc83d337391871310527a0a2a78ed4d43dfa28103e803b1",
+    "CLAIMS_AND_ASSUMPTIONS.md": "2e430999587e8ccb56c69c32735d6d2b5607de6a28f137fbea3407d353d1420b",
+    "EXPLORATION_AND_SELECTION.md": "0550f9cf282921ba0e6f1e8b5d11909b1d49eb2e90d53a315ff20c44b8b40c41",
+    "THEORY.md": "6b1952f382164c760479f5c3b8bef09803bcddc86343433225f052840c6ea5f1",
+    "../program_expansion_20261025/h5_input_binding/inputs/SOURCE_CONTEXT.json": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+    "../rec_history_thermo_20261024/vendor/hydrogen.c": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b"
+  },
+  "findings": [
+    {
+      "id": "TR-01",
+      "object": "actual-source chord and adjacent-cell retiming selection",
+      "finding": "Twelve source queries lie in final legal cell 5125 and have no right-adjacent cell within prefix 5127.",
+      "impact": "An unconditional two-adjacent-cell chord would leave the represented causal domain.",
+      "minimal_repair": "Generic unavailable-adjacent-cell skip for retiming; use midpoint(q,current-cell endpoint) on the unavailable side for the chord.",
+      "status": "CLOSED",
+      "closure_evidence": "THEORY.md section 4 repaired rule read back; fallback right midpoint is strictly below excluded t_5126."
+    },
+    {
+      "id": "TR-02",
+      "object": "wider piecewise-C2/BV derivative measure decomposition",
+      "finding": "The density-plus-atoms representation needs the finite-partition qualification or a singular-continuous measure term in a wider BV class.",
+      "impact": "Potential overstatement of wider regularity scope; the actual finite piecewise-linear reconstruction is unaffected.",
+      "minimal_repair": "State a finite piecewise-C2 partition with BV derivative and finite one-sided limits.",
+      "status": "CLOSED",
+      "closure_evidence": "CLAIMS_AND_ASSUMPTIONS.md and THEORY.md section 2 explicitly state the finite-partition assumptions."
+    }
+  ],
+  "open_critical_findings": [],
+  "source_metadata_observation": {
+    "query_count": 313,
+    "prefix": 5127,
+    "cell_min": 4770,
+    "cell_max": 5125,
+    "final_cell_incoming_indices": [134,135,136,137,138,139,140,141,142,143,144,311],
+    "corresponding_source_indices": [135,136,137,138,139,311,141,142,143,144,145,140],
+    "final_cell_query_count": 12,
+    "exact_grid_query_witness_check": "PENDING_IMPLEMENTATION"
+  },
+  "conditional_expected_counts": {
+    "premise": "All original cell witnesses survive the exact native-real grid validation and all within-cell targets are valid.",
+    "within_cell_retimings": 626,
+    "left_crossings": 313,
+    "right_crossings": 301,
+    "unavailable_right_crossing_skips": 12,
+    "executed_retimings": 1240,
+    "chords": 313,
+    "actual_execution_observed": false,
+    "counts_are_acceptance_tolerances": false
+  },
+  "protected_admission": {
+    "HD_original_frequency_gate_Hz": 35,
+    "HD_original_failed_checks": 7,
+    "HD_new_diagnostic_cases_planned": 24,
+    "HD_temperature_nodes_K": [50,100,200],
+    "HD_para_ortho_mixing": false,
+    "HD_extrapolation": false,
+    "H5_physical_epsilon": null,
+    "H5_physical_bound_query_coverage": "0/313",
+    "H5_tube_rule": "E_upper < certified_positive_rho_lower",
+    "working_return_completed_nodes": "32/88",
+    "shared_authority_completed_nodes": "27/88",
+    "new_canonical_node_increment": 0,
+    "strong_no_go_claim": false
+  }
+}
