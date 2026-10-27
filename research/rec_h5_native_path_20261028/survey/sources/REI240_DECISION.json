@@ -1,0 +1,124 @@
+{
+  "schema": "REI_BASS_STORAGE_FINAL_SCIENTIFIC_DECISION_V1",
+  "numerical": "PASS_SCOPED_FINITE_BASS_ATOMIC_STORAGE_REPRESENTATION",
+  "theory": "R1_R10_COMPLETE",
+  "coding_content": "C1_C10_COMPLETE",
+  "runtime": {
+    "new_methods": 14,
+    "method_pass": 14,
+    "actual_controls": 10,
+    "control_pass": 10,
+    "science_executions": 1,
+    "science_reruns": 0,
+    "old_suite": 0,
+    "provider_solves": 0,
+    "IVP": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/survey_he_bass",
+    "decision": "PASS_SCOPED_FINITE_BASS_ATOMIC_STORAGE_REPRESENTATION",
+    "blocking_findings": 0,
+    "required_repairs": 0,
+    "reviewer_science_executions": 0
+  },
+  "source": {
+    "source_pin": "634c3046ffccc5d00f1ab7588b5834a6eb8053ad",
+    "sha256": "a0fa9b5237481e66f178f19eb1589607412d9d1188d7fb571e5df03b67fd93ac",
+    "git_blob": "a9ea559f123da6c8f1fe070139bc80145d4582fc",
+    "bytes": 3554206
+  },
+  "code": {
+    "source_commit": "ba68aa31127c54108ef2ccfc99ef130e98e5a7a6",
+    "files": {
+      "atomic_storage.py": "ee8afb928445e5c32abb2e1477fcfa1cd618f417",
+      "test_atomic_storage.py": "e36e0627c08ec066782856315bd7ce3e8f964021",
+      "run_once.py": "5a31dd0c0516355f099111ba087924bc683864bd"
+    }
+  },
+  "planning": {
+    "prior_known_and_reserved": "15.612490885",
+    "outer_CPU": "0.245",
+    "display_allowance": "0.002",
+    "preserved_process_tail": "0.05",
+    "preserved_CAS_reservation": "0.02",
+    "CAS_reported_expression_CPU": "0.00035099999999976816",
+    "charge_known_and_reserved": "0.317",
+    "cumulative_known_and_reserved": "15.929490885",
+    "approved_current_task_cap": "16",
+    "nominal_residual": "0.070509115",
+    "unknown_cost": "UNKNOWN_NOT_ZERO",
+    "no_further_local_science": true
+  },
+  "presentation": {
+    "schema": "REI_BASS_STORAGE_PRESENTATION_FAILURE_V1",
+    "operation": "persistent checkpoint ZIP process",
+    "last_completed_stage": "R3",
+    "next_stage_R4_archive_started": false,
+    "session_id": 15884,
+    "last_saved_process_CPU_s": "0.156976",
+    "outer": {
+      "wall_s": "522.134",
+      "user_s": "0.607",
+      "system_s": "0.336",
+      "exit": 155
+    },
+    "observed_outer_CPU_s": "0.943",
+    "reservation_CPU_s": "0.60",
+    "display_allowance_CPU_s": "0.002",
+    "retained_final_tail_CPU_s": "0.10",
+    "prior_known_and_reserved": "45.286767494",
+    "charged_known_and_reserved": "1.045",
+    "new_cumulative_known_and_reserved": "46.331767494",
+    "approved_absolute_cap": "46",
+    "decision": "HOLD_NO_FURTHER_LOCAL_PRESENTATION_RUNTIME",
+    "cause_observed": "Profiling timer expired; write_stdin later reported unknown process. The timer did not enforce the charged outer bound. No speculative runtime cause claimed.",
+    "raw_log": "/bin/bash: line 2:     5 Profiling timer expired /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -u -S -B ops/checkpoint_zip_server.py\n{\"wall_s\":522.134,\"user_s\":0.607,\"system_s\":0.336}\nouter_exit=155\n",
+    "old_science_and_firstZIP_replayed": 0,
+    "accounting": "Outer includes full closed process; do not add prior stage CPU again. No reset or transfer.",
+    "remaining_planning": "15.612490885 of explicit16; independentnewscience reservation0.35 unchanged",
+    "continued_actions": "Git expected-SHA publications and exact raw source backups using connectors; ZIP HOLD explicit",
+    "unknown_cost": "UNKNOWN_NOT_ZERO"
+  },
+  "overall": "HOLD_PRESENTATION_DELIVERY_NO_GLOBAL_OR_L4_PROMOTION",
+  "actual_recipient_nb": null,
+  "actual_native25": null,
+  "temperature_update": null,
+  "full_state_update": false,
+  "physical_radii": {
+    "eS": null,
+    "en": null,
+    "eE": null,
+    "geometry": null,
+    "temporal": null,
+    "total": null
+  },
+  "DAG": {
+    "working": 33,
+    "central": 28,
+    "total": 88,
+    "external_adoption_delta": 1,
+    "rei_science_increment": 0,
+    "ids": 88,
+    "edges": 17,
+    "L4_ready": false,
+    "global_physical_completion": null
+  },
+  "latest_central_HEAD": "5cabe78f89f3ecd79d11faa29088bf30992a1017",
+  "workflow_receipt": "C10 preimage; actual postcommit20-stage ACK list is delivery/WORKFLOW20_ACKS.json; final delivery metadata is separate from the science source snapshot.",
+  "inherited_causal": {
+    "checks": "3189/3189",
+    "interface_derivatives": 264,
+    "FD_results": 528,
+    "max_FD_relative_residual": "2.7094758927889796e-10",
+    "criterion": "2e-8",
+    "reruns": 0
+  },
+  "previous_approved_recovery": {
+    "cohort_tests": 20,
+    "affine_tests": 16,
+    "first_runtime_pass": 36,
+    "sourceZIP": "ea51d2965d6e67c8b85d45b0df19508db8c4795c644d630e03a8607fabfdce8c",
+    "closed_at": "e50a3f705204935f7801e5404b0eeca5d56061f8"
+  },
+  "unknown_cost": "UNKNOWN_NOT_ZERO"
+}
