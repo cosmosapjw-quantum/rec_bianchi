@@ -1,0 +1,129 @@
+{
+  "schema": "REI_CONDITIONAL_THERMAL_JOIN_ADMISSION_V1",
+  "unit": "REI-THERMAL-ASSIMILATION-20261027",
+  "date": "2026-10-27",
+  "root_authority": "/root",
+  "decision": "PASS_CONDITIONAL_NATIVE_COUPLED_LOCAL_SOURCE",
+  "scientific_scope": "25-row local source and frozen one-direction JVP with cached PW19 HeII background, manufactured nonthermal moments, prescribed constant-in-energy nu, native thermal-ne RR/DR kinetic cooling, selected Planck Compton, and actual unchanged HE caloric caller.",
+  "baseline_commit": "ee94bef85b56d879dc38f184856a5c613575e9e1",
+  "code_commit": "20b91606493fb7bad015c62fd62e2faa971faee0",
+  "code_sha256": "a84f318d66c11166db080f0f4db64b48f82ea5bc09abb87671c2ca44b162bbb6",
+  "checker_sha256": "5832cb8062a0c8e46f7ca892ae3260328fedd89bd4dc74303bbc41e2a508acdb",
+  "manifest_sha256": "8f55b02555bc2ef1797efa77f54ed7c185275a384985f01afd5b626dcb4544b2",
+  "raw_stdout_sha256": "3f6e942336cb18cf1422ce4736984fb5d7f7d85ca1af39aa0f126748a0c66d99",
+  "native_pins": {
+    "REC124": "e6ecef7624e39bee66b39e09d99fe355f76e2eae",
+    "HE": "ac6042a6b0610b09d0576538767ee0299389a5eb"
+  },
+  "normalization": {
+    "reference": "r=n_ref0*a^-3",
+    "baryon": "nb=beta*r",
+    "species": "Y=n/nb",
+    "reservoirs": "zeta=n_fast/nb; w=u/nb, J/baryon",
+    "logT": "ell=log(T/K)",
+    "density_like_row_range_inclusive": [
+      0,
+      23
+    ],
+    "logT_row": 24,
+    "eta_clock_all_rows": true,
+    "general_reference_value": "Fx=(S-x*Rr)/r",
+    "general_reference_direction": "dFx=(dS-Rr*dx-x*dRr)/r-Fx*dr/r",
+    "no_pressure_history_inference": true,
+    "reference_continuity": "dot(r)+3H*r=Rr",
+    "physical_continuity": "dot(n)+3H*n=S",
+    "fixed_comoving_reference_Rr": 0
+  },
+  "actual_background": {
+    "z": 2.479,
+    "T_K": 14919.863839279506,
+    "nb_m3": 10.669321142818111,
+    "r_m3": 8.033643390985384,
+    "beta": 1.328080003500061,
+    "H_s_inverse": 8.160348695705333e-18
+  },
+  "manufactured_fast_pool": {
+    "zeta": 0.2191163469802296,
+    "w_J_per_baryon": 7.010531745782858e-19,
+    "spectrum_reconstructed": false,
+    "source_matched_history": false
+  },
+  "conditional_rate": {
+    "nu_s_inverse": 8.160348695705333e-18,
+    "independent_of_H": true,
+    "law": "partial_t mu=-nu*mu, nu constant in energy",
+    "physical_provider_qualified": false,
+    "physical_nu_s_inverse": null,
+    "physical_uncertainty": null
+  },
+  "acceptance": {
+    "attempts": 1,
+    "repairs": 0,
+    "exit_code": 0,
+    "checks": 118,
+    "passed": 118,
+    "algebra_max": 3.3297273737548715e-16,
+    "algebra_limit": 2e-14,
+    "FD_max": 1.373105919989494e-10,
+    "FD_limit": 2e-8,
+    "FD_steps": [
+      0.0002,
+      0.0001
+    ],
+    "FD_directions": 1,
+    "FD_maps": [
+      "proper",
+      "physical_density",
+      "reference",
+      "eta"
+    ],
+    "same_predeclared_row_unit_scales": true,
+    "HE_logT_residual": 0
+  },
+  "independent_reviews": {
+    "C5": "review/C5_PREEXEC_IMPLEMENTATION_REVIEW.md",
+    "C9": "review/C9_VALIDATION.json",
+    "C9_sha256": "122749e2d50a49d76e6eb0442cc5abd063246ceecf390508d80f1e839c261189",
+    "visual": "review/C9_VISUAL_ADDENDUM.json",
+    "visual_sha256": "8a475c96cb8d0181580e67aad2e9bc7f51ef401d57db7916880e6be426379317",
+    "blocking_findings": 0,
+    "reviewer_did_not_implement_code": true,
+    "reviewer_theory_contribution_disclosed": true,
+    "root_viewed_PNG": true
+  },
+  "claims_not_admitted": {
+    "empirical_stopping_rate": false,
+    "full_state_Jacobian": false,
+    "source_matched_history": false,
+    "new_finite_absorption": false,
+    "global_model_error_radius": null,
+    "full_network": false,
+    "L4_ready": false,
+    "global_physical_completion": null,
+    "strong_no_go": false
+  },
+  "DAG": {
+    "original_total": 88,
+    "working_completed": 32,
+    "central_completed": 27,
+    "central_observed_commit": "12f6007a83a40d76f80574e41a5402676e81fc7a",
+    "count_delta": 0,
+    "REC_COUPLED": "CONSTRUCTIVE_PARTIAL_CONDITIONAL_NATIVE_THERMAL_JOIN",
+    "original_edges": 17
+  },
+  "reuse": {
+    "PR219_bootstrap": true,
+    "old83": true,
+    "GRID044_opacity": true,
+    "PR221_conditional": true,
+    "PR233_source": true,
+    "PR235_normalization": true,
+    "PR236_native_photo_JVP": true,
+    "old_suites_rerun": 0,
+    "new83_rerun": 0,
+    "NCP": 0,
+    "new_IVP": 0,
+    "spectral_quadrature": 0
+  },
+  "publication_authority": "delivery/FINAL_DELIVERY_RECEIPT.json; publishing/storage status is separate from scientific admission"
+}

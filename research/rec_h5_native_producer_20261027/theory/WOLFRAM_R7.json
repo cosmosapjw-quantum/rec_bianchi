@@ -1,0 +1,19 @@
+{
+  "stage": "R7",
+  "tool": "Wolfram Language evaluator",
+  "time_constraint_s": 20,
+  "remote_cpu_s": "UNKNOWN_NOT_EXPOSED",
+  "input": "Clear[x, eta, c, a, b, q, et, es, k, t, z, delta, yl, yr, uh, wa, wb, wq, wn, alpha, ff, ww, ffp, wwp];\nderivatives = FullSimplify[Table[D[Exp[-c Exp[eta]], {eta,n}], {n,1,3}] /. c -> x Exp[-eta], Assumptions -> x>0];\ncriticalPolynomial = Factor[Exp[x] D[(x^2-x) Exp[-x],x]];\ncriticalRoots = Solve[x^2-3x+1==0,x];\ncharacteristic = FullSimplify[es Exp[-Log[(1+z)es/et]]/(k t)-et/(k t(1+z)),Assumptions->{es>0,et>0,k>0,t>0,z>-1}];\nbridge = FullSimplify[Exp[-x Exp[delta]]-Exp[-x]-Exp[-x](Exp[-x(Exp[delta]-1)]-1),Assumptions->{x>0,Element[delta,Reals]}];\nanchor = Expand[(uh+wn)-((1-alpha)(yl+wa)+alpha(yr+wb))-((uh-((1-alpha)yl+alpha yr))-((1-alpha)wa+alpha wb-wq)-(wq-wn))];\nquadraticChord = Factor[((b-q)/(b-a) a^2+(q-a)/(b-a)b^2-q^2)-((q-a)(b-q))];\ndefect = Expand[(ffp-wwp)-(ff^2+eta-wwp)-(ffp-(ff^2+eta))];\n<|\"derivatives\"->derivatives,\"critical_polynomial\"->criticalPolynomial,\"critical_roots\"->criticalRoots,\"characteristic_residual\"->characteristic,\"bridge_residual\"->bridge,\"anchor_residual\"->anchor,\"quadratic_chord_residual\"->quadraticChord,\"toy_defect_residual\"->defect|>",
+  "actual_output": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Out[1]= <|\"derivatives\" -> {-(x/E^x), ((-1 + x)*x)/E^x, -((x*(1 + (-3 + x)*x))/E^x)}, \"critical_polynomial\" -> -1 + 3*x - x^2, \"critical_roots\" -> {{x -> (3 - Sqrt[5])/2}, {x -> (3 + Sqrt[5])/2}}, \"characteristic_residual\" -> 0, \"bridge_residual\" -> 0, \"anchor_residual\" -> 0, \"quadratic_chord_residual\" -> 0, \"toy_defect_residual\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "decision": "PASS_SCOPED",
+  "interpretation": "Three derivatives and both curvature roots agree. Exact characteristic, bridge, anchor, quadratic chord and smooth toy defect residuals are all zero. This supports the analytical identities; numerical interval implementation remains a C-loop obligation."
+}

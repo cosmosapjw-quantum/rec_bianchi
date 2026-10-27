@@ -1,0 +1,159 @@
+{
+  "id": "REC-COUPLED",
+  "lead_repo": "cosmosapjw-quantum/rec_bianchi",
+  "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+  "json_pointer": "/nodes/5",
+  "contract": {
+    "id": "REC-COUPLED",
+    "status": "INPUT_DEPENDENT_NOT_SCHEDULED",
+    "depends_on": [],
+    "equations_scope": "dY/dt=Nu R; C(Y,T)dT/dt=Q_th+work-(partial U_th/partial Y)dY/dt; matter/radiation tensor separate",
+    "inputs_domain": "Declared selected source subset and matchingIC",
+    "claim_gates": [
+      "Selected source gates,independent oracle,observable error allocation; U5holds retained"
+    ],
+    "pass_action": "Genuinely new bounded control then separate convergence",
+    "budget": "NewIVP NOT_AUTHORIZED",
+    "fail_action": "Preserve original failure; one diagnosed affected repair; return substantive scientific ambiguity to authority",
+    "review": "Independent changed-dependency review;source/science/runtime/CI/delivery separate",
+    "tests": "Same-source contract controls and affected derivative/conservation tests only; original tolerance preserved",
+    "historical_source_dependencies": [
+      "REC-HISTORY",
+      "REC-LI",
+      "REC-FIELD"
+    ],
+    "conditional_dependencies": [
+      {
+        "id": "REC-HISTORY",
+        "predicate": "selected_model_uses_retarded_radiation_history",
+        "scope": "selected-model prerequisite only"
+      },
+      {
+        "id": "REC-LI",
+        "predicate": "selected_species_or_channels_include_Li",
+        "scope": "selected-model prerequisite only"
+      },
+      {
+        "id": "REC-FIELD",
+        "predicate": "selected_model_evolves_spectral_radiation_or_gas_radiation_exchange",
+        "scope": "selected-model prerequisite only"
+      }
+    ],
+    "dependency_change": "2026-10-25 current readiness correction; original source contracts preserved in EVIDENCE_FILTERED"
+  },
+  "dependencies": [],
+  "conditional_dependencies": [
+    {
+      "id": "REC-HISTORY",
+      "predicate": "selected_model_uses_retarded_radiation_history",
+      "scope": "selected-model prerequisite only",
+      "type": "internal",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "source_field": "conditional_dependencies"
+    },
+    {
+      "id": "REC-LI",
+      "predicate": "selected_species_or_channels_include_Li",
+      "scope": "selected-model prerequisite only",
+      "type": "internal",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "source_field": "conditional_dependencies"
+    },
+    {
+      "id": "REC-FIELD",
+      "predicate": "selected_model_evolves_spectral_radiation_or_gas_radiation_exchange",
+      "scope": "selected-model prerequisite only",
+      "type": "internal",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "source_field": "conditional_dependencies"
+    }
+  ],
+  "external_prerequisites": [],
+  "current_status": "INPUT_DEPENDENT_NOT_SCHEDULED",
+  "claim_gate": [
+    "Selected source gates,independent oracle,observable error allocation; U5holds retained"
+  ],
+  "pass_next_action": "Genuinely new bounded control then separate convergence",
+  "budget_status": "NewIVP NOT_AUTHORIZED",
+  "change_class": [
+    "status_correction",
+    "dependency_change"
+  ],
+  "historical_contract_id": "REC-COUPLED",
+  "source_fields": {
+    "lead_repo": "source_group_repository",
+    "current_status": "status",
+    "claim_gate": "claim_gates",
+    "pass_next_action": "pass_action",
+    "budget_status": "budget"
+  },
+  "pr_plan": {
+    "inputs": {
+      "value": "Declared selected source subset and matchingIC",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/inputs_domain",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "equations": {
+      "value": "dY/dt=Nu R; C(Y,T)dT/dt=Q_th+work-(partial U_th/partial Y)dY/dt; matter/radiation tensor separate",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/equations_scope",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "units": {
+      "value": null,
+      "source_file": "historical/baseline/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": null,
+      "qualification": "NOT_DECLARED_SEPARATELY_IN_SOURCE"
+    },
+    "domain": {
+      "value": "Declared selected source subset and matchingIC",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/inputs_domain",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "outputs": {
+      "value": null,
+      "source_file": "historical/baseline/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": null,
+      "qualification": "NOT_DECLARED_SEPARATELY_IN_SOURCE"
+    },
+    "positive_acceptance": {
+      "value": [
+        "Selected source gates,independent oracle,observable error allocation; U5holds retained"
+      ],
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/claim_gates",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "failure_disposition": {
+      "value": "Preserve original failure; one diagnosed affected repair; return substantive scientific ambiguity to authority",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/fail_action",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "independent_review": {
+      "value": "Independent changed-dependency review;source/science/runtime/CI/delivery separate",
+      "source_file": "authority/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": "/nodes/5/review",
+      "qualification": "SOURCE_DECLARED"
+    },
+    "PR_boundary": {
+      "value": null,
+      "source_file": "historical/baseline/thermal/rec_bianchi_LONGTERM_CONTRACTS.json",
+      "json_pointer": null,
+      "qualification": "NOT_DECLARED_SEPARATELY_IN_SOURCE"
+    }
+  },
+  "runnable": false,
+  "missing_contract_fields": [
+    "units",
+    "outputs",
+    "PR_boundary"
+  ],
+  "execution_readiness_guard": {
+    "source_file": "authority/FINAL_ASSEMBLY_MISSING_FIELDS.json",
+    "scope": "Execution-readiness guard only; retain finite past admissions and source object unchanged",
+    "other_nodes_runnable_not_inferred": true
+  }
+}

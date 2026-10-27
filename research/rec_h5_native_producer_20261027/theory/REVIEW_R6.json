@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-NATIVE-REFERENCE01",
+  "review_stage": "R6",
+  "decision": "PASS",
+  "reviewer": "independently delegated theory reviewer /root/native_reference_review",
+  "requested_tier": "Astra",
+  "runtime_model_identity": "NOT_INDEPENDENTLY_OBSERVABLE",
+  "scope": "Analytical source-specific reference construction and immutable 313-query metadata; implementation/output admission pending",
+  "review_note": "theory/INDEPENDENT_REVIEW_R6.md",
+  "methods": [
+    "Direct chain-rule differentiation with x_prime=x",
+    "Polynomial stationary-point factorization and endpoint analysis",
+    "Exact-reference translation substitution",
+    "Independent expansion of direct absolute-interpolant difference",
+    "Native C and Python wrapper source reading",
+    "Exact-rational standard-library metadata verification over 313 rows"
+  ],
+  "source_identities": {
+    "research/rec_h5_native_producer_20261027/theory/CONSTRUCTION_CANDIDATES.md": {
+      "sha256": "dd7401ab7c189d7ce435047f99048ef5cc68b1db6f589a25d3ad255bc1603a9b",
+      "bytes": 16979
+    },
+    "research/program_expansion_20261025/h5_input_binding/inputs/SOURCE_CONTEXT.json": {
+      "sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+      "bytes": 220122
+    },
+    "research/program_expansion_20261025/h5_input_binding/inputs/ACTUAL_BOUND_INPUTS.json": {
+      "sha256": "5b79cd45398148ef938665fcdf17571c4fefa32ddf7d3a50526e8b925899b788",
+      "bytes": 1813
+    },
+    "research/program_expansion_20261025/h5_input_binding/inputs/DERIVATION.md": {
+      "sha256": "e4dc39a4d142a5baea3458b8a68ca2d68ce7aed0a1537c6160401c646258169b",
+      "bytes": 10757
+    },
+    "research/rec_history_thermo_20261024/vendor/hydrogen.c": {
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "bytes": 37471
+    },
+    "research/rec_history_thermo_20261024/vendor/hydrogen.h": {
+      "sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "bytes": 7837
+    },
+    "research/rec_history_thermo_20261024/vendor/original_hyrec_native.py": {
+      "sha256": "d7bc38346281951fdd5f2677e25f3b558333124a2319786b9b7afb0ab1f7a89c",
+      "bytes": 22766
+    },
+    "research/rec_history_thermo_20261024/vendor/full_2012_atomic_source.py": {
+      "sha256": "1af383a2c596220561ef1c3be6a1bb755a68ee49f2428ed78cbbaf82c5f59578",
+      "bytes": 14381
+    },
+    "research/rec_history_geometry_response_20261026/inputs/target_native_snapshot.csv": {
+      "sha256": "3a95862b9cd4f924d63020f39fc537b371133af6160e88c3409d8c69fc0c34b7",
+      "bytes": 141089
+    }
+  },
+  "checks": {
+    "derivative_signs": "pass_scoped",
+    "finite_extrema_and_singleton_endpoints": "pass_scoped",
+    "fixed_norm_reference_translation": "pass_scoped",
+    "characteristic_temperature_split": "pass_scoped",
+    "chord_anchor_composition": "pass_scoped",
+    "native_constant_and_degeneracy_mapping": "pass_scoped",
+    "exact_metadata": {
+      "result": "pass_scoped",
+      "count": 313,
+      "fields": [
+        "incoming_order",
+        "source_routing",
+        "strict_cell_containment",
+        "causal_endpoint_prefix",
+        "geometric_alpha",
+        "curvature_coefficient",
+        "anchor_representation_radius"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "editorial",
+      "status": "closed",
+      "target": "README.md R1 native-real causal grid phrase",
+      "evidence": "CONSTRUCTION_CANDIDATES.md section 6 uses SOURCE_CONTEXT stored geometric endpoint hex values",
+      "impact": "Ambiguous primary clock may imply different alpha and anchor",
+      "smallest_fix": "Identify primary cells as exact reals represented by stored endpoint hex values; reserve native-real-grid comparison for separately labelled output",
+      "analytical_candidate_revision_required": false,
+      "resolution": "FROZEN_CONTRACT.md Primary clock and source locks explicitly selects stored geometric endpoints/query and exact rational alpha; README R1 now matches and labels predecessor native-real grid separately."
+    }
+  ],
+  "execution": {
+    "kind": "read_only_exact_metadata_review",
+    "status": "completed",
+    "exit_code": 0,
+    "cpu_limit_seconds": 20,
+    "threads": 1,
+    "memory_limit_bytes": 536870912,
+    "exact_check_cpu_seconds": 0.012264342999999997,
+    "total_review_cpu_seconds": null,
+    "total_review_cpu_reason": "Read-only shell and serialization overhead not measured; check timing excludes subsequent source hashing",
+    "physical_science_runs": 0,
+    "old_primary_replays": 0
+  },
+  "implementation_obligations": [
+    "Verify outward conversions and elementary arithmetic",
+    "Verify documented correctly rounded exp/ln/sqrt outward-neighbor treatment",
+    "Conservative critical-point overlap inclusion",
+    "Independent high-precision point containment and analytic controls",
+    "Preserve physical fields null and separate scalar occupation K from full-state K"
+  ],
+  "physical_admission": {
+    "physical_coverage": 0,
+    "query_count": 313,
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "full_state_K": null,
+    "physical_M2": null,
+    "defect": null,
+    "stability": null,
+    "tube": null
+  },
+  "strong_no_go": "not_proposed",
+  "general_novelty": "not_claimed",
+  "parent_freeze": "R3 FROZEN_CONTRACT.md and corrected README read for targeted F01 closure; prior analytical PASS and candidate identity preserved. Numerical implementation admission remains pending C9.",
+  "targeted_closure": {
+    "finding": "F01",
+    "method": "Read only FROZEN_CONTRACT.md and changed README R1 clock wording; no analytical campaign or numerical replay",
+    "result": "pass_scoped",
+    "source_identities": {
+      "research/rec_h5_native_producer_20261027/FROZEN_CONTRACT.md": {
+        "sha256": "8c4f3ab92ec34da823cdb3822f505e39bdc20d1fb688476044edfb3fefe68dcc",
+        "bytes": 7424
+      },
+      "research/rec_h5_native_producer_20261027/README.md": {
+        "sha256": "d838d5cddfcbfc4464f873637cbe0a456f5e0d5aee8e9c521cdc8f2430d67423",
+        "bytes": 4206
+      }
+    },
+    "new_scientific_compute": 0,
+    "prior_checks_and_budget": "unchanged"
+  }
+}
