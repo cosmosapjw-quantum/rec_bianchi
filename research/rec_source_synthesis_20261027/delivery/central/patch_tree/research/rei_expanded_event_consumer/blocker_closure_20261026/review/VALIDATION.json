@@ -1,0 +1,177 @@
+{
+  "unit": "REI-BLOCKER-CLOSURE-20261026",
+  "date_UTC": "2026-10-26",
+  "reviewer": "independent resume_review; not contract/code author or scientific executor",
+  "requested_runtime": "Astra/high",
+  "observed_runtime_model": "UNEXPOSED",
+  "decision": "PASS_SCOPED_NATIVE_REC_SOURCE_CALLBACK_AND_MATCHED_FINITE_SNAPSHOT",
+  "reviewer_scientific_runs": 0,
+  "reviewer_test_replays": 0,
+  "actual_execution": {
+    "run01": "82/84 passed; two finite-difference checks failed at h=1e-4; exit1 preserved",
+    "repair01": "two affected checks only at h=.01; exit0; same2e-8 limits",
+    "combined_checks": 84,
+    "combined_passed": 84,
+    "historical_failure_rewritten": false,
+    "scientific_inputs_and_native_implementation_changed_in_repair": false,
+    "all_frozen_current_input_hashes_match": true,
+    "all_original_and_repair_output_hashes_match": true
+  },
+  "failure_and_repair": {
+    "class": "NUMERICAL_VALIDATION_CONDITIONING_FAILURE",
+    "cause": "Fixed hydrogen perturbation h*v=1e-9 against qY~.876 caused subtractive cancellation; exact nativeF is quadratic and ne linear, so centered directional truncation is zero.",
+    "old_h": 0.0001,
+    "new_h": 0.01,
+    "old_residuals": [
+      4.712660174501273e-08,
+      5.667163219414058e-08
+    ],
+    "new_residuals": [
+      1.3716601921088232e-10,
+      6.434506579011881e-11
+    ],
+    "unchanged_limit": 2e-08,
+    "trial_H1I_margins": [
+      1.8353372310189326e-05,
+      1.8553372310189324e-05
+    ],
+    "stopping_rule": "One diagnosed targeted repair completed. Closed finding; no broader replay or further gate expansion."
+  },
+  "snapshot": {
+    "source_z": 2.479,
+    "eta": 1.797777541553618,
+    "bracketing_indices": [
+      184,
+      185
+    ],
+    "theta": 0.7749797107939725,
+    "temperature_K": 14919.863839279506,
+    "nb_m3": 10.669321142818111,
+    "reference_density_m3": 8.033643390985384,
+    "beta_baryons_per_Href": 1.328080003500061,
+    "geometry": {
+      "H_s_inverse": 8.160348695705333e-18,
+      "b": 0.15519184187752785,
+      "db_deta": 0.016540456149778202,
+      "s_s_inverse": 1.349758897682138e-19
+    },
+    "donor_sha256": "ae20c278239787c020e45028a6d6804cb9f056b75076a1d5ab045c0a7389733b",
+    "representation": "adjacent_convex_eta_on_saved_x_and_T",
+    "continuum_interpolation_error": null
+  },
+  "physical_result": {
+    "full_native_Gamma_s": 7.130091128981093e-15,
+    "selected_photo_ledger": {
+      "events_m3_s": 2.4847195293909616e-19,
+      "binding_W_m3": 2.1664381991007258e-36,
+      "primary_W_m3": 7.949751527088793e-37,
+      "external_radiation_W_m3": -2.9614133518096047e-36,
+      "tangent_events_m3_s": 0.0,
+      "tangent_binding_W_m3": 0.0,
+      "tangent_primary_W_m3": 0.0,
+      "tangent_external_radiation_W_m3": 0.0
+    },
+    "native_electron_density_m3": 9.351290694292933,
+    "source": "PW19 exactz2.479; all three admitted bands54.42..50000eV; external prescribed isotropic bath",
+    "native_owner": "REC119 AtomicNetwork rates/evaluate unchanged; only prepared photo provider subclassed",
+    "state_qualification": "Actual saved GRID044 abundances/T in a declared convex finite interpolant, paired instantaneously/counterfactually with PW19; not re-evolved under that source",
+    "isotope_policy": "Explicit inherited ElementalElectronicEquality for He3/He4; distinct nucleus identities and inventories; no isotope-calibrated fit claimed"
+  },
+  "axes": {
+    "symmetry_gauge": "Bath-rest observer chosen equal to stationary normal tetrad; scalar exposure invariant under passive spatial rotations; boost requires transformed source. Proper-second callback; variable-H conversion requires quotient term.",
+    "invariants": "Selected photo event conserves isotope nuclei/baryon count and total charge including derived electrons. External radiation debit plus binding plus primary-electron reservoir balances. x\u2192Y normalization and \u03b2-dependent density map retain physical populations.",
+    "observables": "Actual source-bound native abundance/electron RHS and Jacobian/JVP and local SI energy sources at the finite snapshot. No new trajectory, tau/CMB observable or source-time derivative."
+  },
+  "original_gate_decisions": [
+    {
+      "id": "REC-EXP-SPECTRAL",
+      "recommended_status": "ADMITTED_SCOPED_PW19_HEII_NATIVE_CONTINUUM",
+      "complete": true,
+      "gate": "Units+detailed-balance where applicable+energy partner+band interfaces; native Lyalpha exclusive",
+      "evidence": "Actual native SI rates/evaluate and full Jacobian used; explicit open driven source, applicable DB scope stated, selected primary/binding/radiation partner, three bands/excluded tails; nativeLyalpha untouched",
+      "dependency_reuse": "REC-EXP-SPECIES IMPLEMENTATION_VERIFIED_SCOPED_SPECIES_PROJECTION, WU87933da5654bb2e4d93f7de4341df5e0fa0f8716; currentRECmodelSHA9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614 matches prior admitted input;21 labels and71 UNADMITTED extensions reused",
+      "pass_next": "Reuse this actual source residual/JVP in selected REC-FIELD/REC-COUPLED assembly"
+    },
+    {
+      "id": "REC-FIELD",
+      "recommended_status": "ADMITTED_SCOPED_PW19_NATIVE_RESIDUAL_JVP_OPEN_RADIATION_RESERVOIR",
+      "complete": true,
+      "gate": "Source/band ownership; particle/heat/binding/nuclear distinct; uncertainty separate from roundoff",
+      "evidence": "One selected photo owner supplies native electron/abundance response, distinct primary kinetic/binding/external debit with thermal heat unspecified; explicit provider/model/isotope/interpolation unknowns separated from numerical residuals",
+      "conditional_dependency": "REC-LINE02 applies only when selected_spectral_channel_is_native_Lyalpha; false for selectedHeII continuum",
+      "pass_next": "Selected REC-COUPLED source assembly with explicit source/geometry/thermal ownership under its original gate"
+    }
+  ],
+  "canonical_recommendation": {
+    "baseline": 30,
+    "completed": 32,
+    "total": 88,
+    "delta": 2,
+    "closed_original_nodes": [
+      "REC-EXP-SPECTRAL",
+      "REC-FIELD"
+    ],
+    "new_nodes": 0,
+    "gate_definitions_changed": false,
+    "scenario": "PASS_SCOPED_BINDING_UPDATED; canonical_count_effect0; prior node count membership not established",
+    "REC_HISTORY": "OPEN",
+    "REC_H6_TRACE": "OPEN",
+    "REC_HD_ADAPTER": "HOLD_ORIGINAL_SOURCE_FREQUENCY_MISMATCH",
+    "REI_L4_ready": false,
+    "V6": "OPEN_INPUT",
+    "global_physical_completion": null
+  },
+  "HD_assessment": "FreshREC138 unchanged; original35Hz frequency consistency1pass7fail, largest1827572.5607572Hz. LAMDA optional frequency convention narrows interpretation but does not turn original gate intoPASS; no precision-qualified successor adopted.",
+  "NG1_NG7": {
+    "strong_no_go": "NOT_PROPOSED_NOT_ADMITTED",
+    "NG1": "Specific constructive source callback, no universal impossibility claim",
+    "NG2": "Native source/JVP and projective identities derived; no exclusion proof asserted",
+    "NG3": "Actual positive source/snapshot establishes nonempty construction",
+    "NG4": "Observed FD cancellation is a local numerical mechanism corrected at fixed tolerance, not a no-go",
+    "NG5": "Actual owner callback with source and state binding enables selected coupled work",
+    "NG6": "No new impossibility-theorem novelty claimed or investigated",
+    "NG7": "Independent changed-code/raw-outcome/original-gate review matches finite claim"
+  },
+  "resources": {
+    "run01_debit_CPU_s": 0.587362154,
+    "repair01_debit_CPU_s": 0.18377291499999998,
+    "cumulative_planning_CPU_s": 11.551892911000001,
+    "temporary_cap_CPU_s": 13,
+    "baseline_cap_CPU_s": 10,
+    "preserve_debit_when_restoring": true,
+    "new_IVPs": 0,
+    "source_quadrature_replays": 0,
+    "old_suite_replays": 0,
+    "remote_symbolic_CPU": "UNKNOWN_NOT_ZERO"
+  },
+  "evidence": [
+    "theory/REC_NATIVE_CALLBACK_CONTRACT.md",
+    "theory/HYDROGEN_FD_REPAIR_CONTRACT.md",
+    "geometry/SNAPSHOT_READER_CONTRACT.json",
+    "geometry/SNAPSHOT_READER_ADDENDUM.md",
+    "implementation/pw19_rec_callback.py",
+    "implementation/matched_snapshot.py",
+    "implementation/check_pw19_rec_callback.py",
+    "implementation/check_hydrogen_fd_repair.py",
+    "implementation/run01/CALLBACK.json",
+    "implementation/run01/CHECKS.json",
+    "implementation/run01/RECEIPT.json",
+    "implementation/repair01/HYDROGEN_REPAIR.json",
+    "implementation/repair01/RECEIPT.json",
+    "../lumina_resume_20261026/intake/canonical_base/DAG.json",
+    "scenario/SCENARIO.json",
+    "scenario/SOURCE_ABSORBER_MATRIX.json",
+    "scenario/COVERAGE_DELTA.json",
+    "intake/canonical_base/contracts/REC-FIELD.json",
+    "intake/canonical_base/contracts/REC-EXP-SPECTRAL.json",
+    "intake/canonical_base/contracts/REI-EXP-SCENARIO.json"
+  ],
+  "limitations": [
+    "Primary kinetic energy remains a nonthermal reservoir; no finite stopping/secondary closure admitted.",
+    "Full source support exceeds150eV; original positive tail/unknown above50keV treatment retained.",
+    "Native RR/DR/decay equations are reused but selected photo energy ledger does not close every native thermal process.",
+    "Snapshot continuum interpolation uncertainty unknown; original donor state was evolved with its original source, not PW19.",
+    "REC-HISTORY/H6, V6, L4 feedback/refinement and HD precision-source gates remain separate."
+  ],
+  "scenario_supplemental_review": "review/SCENARIO_SUPPLEMENTAL_REVIEW.json"
+}

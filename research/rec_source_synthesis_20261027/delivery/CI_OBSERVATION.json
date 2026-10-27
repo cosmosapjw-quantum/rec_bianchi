@@ -1,0 +1,51 @@
+{
+  "schema": "REC_SOURCE_SYNTHESIS_CI_OBSERVATION_V1",
+  "observation_scope": "Existing automatic repository workflows on science/admission and central return commits; no manual rerun",
+  "rec": {
+    "commit": "3678ce2ea24e0c2c57d156bde99a1c1fa1bccc47",
+    "PR": 139,
+    "url": "https://github.com/cosmosapjw-quantum/rec_bianchi/actions/runs/40460487420/job/122043635034",
+    "job_id": 122043635034,
+    "conclusion": "failure",
+    "successful_steps": [
+      "editable package install",
+      "numerical runtime dispatch",
+      "smoke-import every package module"
+    ],
+    "failed_step": "python scripts/verify_repo.py --quick",
+    "pytest": "skipped",
+    "underlying_cause": "NOT_ESTABLISHED_FROM_CURRENT_LOGS",
+    "log_fetch_attempts": 2,
+    "log_fetch_result": "Transport closed on initial and one diagnostic retry; stopped unchanged request",
+    "annotations_endpoint": "Connector rejected endpoint as unsupported; no bypass",
+    "verifier_source_git_blob": "0415671ab0c8e2c822f1646344859c9a5667c7bb"
+  },
+  "central": {
+    "commit": "60b246beedf3536ecea0848aa74a23e4786eed58",
+    "PR": 238,
+    "url": "https://github.com/cosmosapjw-quantum/rei_bianchi/actions/runs/40460483699/job/122043623643",
+    "job_id": 122043623643,
+    "conclusion": "failure",
+    "failed_step": "cargo fmt --manifest-path rust/rei_microphysics/Cargo.toml --all -- --check",
+    "cargo_test": "skipped",
+    "logs_retrieved": true,
+    "observed_format_diff_paths": [
+      "rust/rei_microphysics/examples/flrw_three_probe.rs",
+      "rust/rei_microphysics/examples/he_rct_probe.rs",
+      "rust/rei_microphysics/src/paired_runtime.rs",
+      "rust/rei_microphysics/examples/paired_history.rs"
+    ],
+    "these_paths_changed_by_central_return": false,
+    "central_return_changed_files": 31
+  },
+  "PR_state": {
+    "rec_draft": true,
+    "central_draft": true,
+    "rec_mergeable_observed": true,
+    "central_mergeable_observed": true,
+    "merged": false
+  },
+  "scientific_validation": "Separate frozen primary and independent review passed; repository-wide CI PASS is not claimed.",
+  "future_status": "Read latest PR checks before a later merge; this record describes the observed commits, not future HEADs.",
+  "remote_CI_cpu": "UNKNOWN_NOT_EXPOSED"
+}

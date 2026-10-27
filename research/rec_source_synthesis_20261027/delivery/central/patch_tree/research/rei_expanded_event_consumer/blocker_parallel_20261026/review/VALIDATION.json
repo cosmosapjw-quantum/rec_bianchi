@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "decision": "PASS_SCOPED_PARALLEL_COMPONENTS_AND_TWO_CANONICAL_SPECIES_NODES",
+  "blocking_findings": [],
+  "reviewer": "Independent /root/review26; did not author candidate code/theory or execute scientific child",
+  "requested_reviewer_model": "gpt-6-astra/high",
+  "actual_runtime_model_identity": "UNEXPOSED",
+  "workflow": "physmath-research-loop1.0.0 R6/C9",
+  "canonical_decision": {
+    "baseline_head": "a5db4bac9dafadae29685bbea3cec7f43ab990b2",
+    "before": {
+      "complete": 27,
+      "total": 88
+    },
+    "after": {
+      "complete": 29,
+      "total": 88
+    },
+    "closed_existing_nodes": [
+      "HE-EXP-SPECIES",
+      "REC-EXP-SPECIES"
+    ],
+    "new_canonical_nodes": 0,
+    "other_component_increment": 0,
+    "physical_completion": null,
+    "L4_ready": false,
+    "meaning": "Count of completed declared canonical deliverables, not global physical completion."
+  },
+  "execution": {
+    "attempts": 1,
+    "checks_passed": 25,
+    "checks_total": 25,
+    "lane_checks": {
+      "beta": 8,
+      "species": 8,
+      "stopping": 9
+    },
+    "exit_code": 0,
+    "child_CPU_s": 0.051992,
+    "child_wall_s": 0.05464920999656897,
+    "wrapper_CPU_s": 0.039189227,
+    "tail_conservative_CPU_s": 0.01,
+    "new_planning_CPU_debit_s": 0.101181227,
+    "campaign_planning_after_execution_CPU_s": 9.791011564,
+    "cap_CPU_s": 10,
+    "IVPs": 0,
+    "source_atom_scans": 0,
+    "integrations": 0,
+    "reviewer_scientific_execution": 0
+  },
+  "identity_review": {
+    "bound_input_snapshots": 16,
+    "snapshot_mismatches": [],
+    "recorded_output_mismatches": [],
+    "current_source_delta": {
+      "file": "stopping/IMPLEMENTATION_CONTRACT.json",
+      "classification": "PACKAGING_REFERENCE_METADATA_DELTA",
+      "fields": {
+        "H1_measure": {
+          "executed": "../event_consumer_20261026/implementation/attempt01/SOURCE_PAYLOAD.json",
+          "current": "../../event_consumer_20261026/implementation/attempt01/SOURCE_PAYLOAD.json"
+        },
+        "endpoint": {
+          "executed": "../event_consumer_20261026/runtime_inputs/endpoint/ACTUAL_STATE_BINDING.json",
+          "current": "../../event_consumer_20261026/runtime_inputs/endpoint/ACTUAL_STATE_BINDING.json"
+        }
+      },
+      "executed_sha256": "3cdae34720b4229a0b62909ef3ed7393917dbe35955682b23582f0c3f62cae07",
+      "current_sha256": "a99f765a18929ed6c102b4ff0bc2a4bd7e39ed7b96eaf710bf5d33b249d7e91d",
+      "other_semantic_fields_identical": true,
+      "rerun_required": false
+    },
+    "executed_input_sha256": {
+      "implementation/beta_transfer.py": "c7e7627fc42a36062587361d82b75d659bebb455ea72572484bbf454bb926a54",
+      "implementation/run_bounded_tests.py": "f815dde4307f4e711699ad6af9b8dd263a3eedbbfce2108db91a66c65ffc4703",
+      "implementation/species_projection.py": "f94e9e92871751201fbe63afd888662ef4bc06d6dfe356671dbd3d3e10d7418c",
+      "implementation/stopping_components.py": "9c189cb887220dc8128e6d63af7caac38fd5ff40b863c7ca9eb08d4f58825244",
+      "implementation/test_beta_transfer.py": "33aeb6cbc199a50cb553d4bd049c521e5fcfb122f538b565e0667ab51eeeb250",
+      "implementation/test_combined.py": "d02ff73f6ed6fa593acf8955665fa1d417debeb9684828db8e9eb904c7693590",
+      "implementation/test_species_projection.py": "7a1fffa994253e90bebb889bb95e5d43c166312dd207a94f218f955e70c00380",
+      "implementation/test_stopping_components.py": "58f8542bd073cffaf4b29cfae74e9e19b2b653bd2339ff9fee58b98ae01b82b3",
+      "nuclear/CONTRACT.md": "1e9697af807d8e351216990a75d70b2959258b1e5f9feb3136c3b854a0184a3c",
+      "species/FROZEN_CONTRACT.md": "cf06edb386965c93ed481e6173b0dcd05afdd8c5748d2a6487c7379b178cd2ed",
+      "species/INPUT_MANIFEST.json": "8eee672a85efaeb2a0186a294ff512e346c04a919cc87b3698f18641e43b9b64",
+      "species/inputs/HE_SPECIES_REGISTRY.json": "377e35532ee3f313160a1e81ca41463f99d223900f56498c999b28a951642761",
+      "species/inputs/REC_ATOMIC_MODEL.json": "9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614",
+      "species/inputs/WU_R1_ADMISSION.json": "54a1710cc7a5455172c957dd2618d09568f44bd959e9be756a3ea960ac3d27b1",
+      "species/inputs/WU_SPECIES.json": "a18052f6db432192e1e0d4c75f8f2d49c71f3a5eb7cac206e7bc445fec2e8f80",
+      "stopping/IMPLEMENTATION_CONTRACT.json": "3cdae34720b4229a0b62909ef3ed7393917dbe35955682b23582f0c3f62cae07"
+    },
+    "reviewed_current_sha256": {
+      "intake/BEFORE_NODE_LEDGER.json": "d266e6d4548fdffa1004270b36ad085bd83c16d623f22b11a20b0619be1807d7",
+      "species/THEORY.md": "e8c2fc00f5aa01bd6e678963e9f5f826cd465886b55b8584a9e72f19d0c655c1",
+      "nuclear/R1_R10_RESEARCH.md": "32198e0456635d80ba44e6a77a640fad69235729228b8003d06220777c4eb637",
+      "nuclear/COMPONENT_DOMAIN_DERIVATIVE.md": "693037e19495b7197c706a9aab46b03dab464bfa2384b525f4db0b1e58deca0c",
+      "nuclear/TOOL_EVIDENCE.md": "5187e4b388b640617e3a734f3018f11713a4dae9989069eefc5b6b4993e0628f",
+      "stopping/DERIVATION.md": "be6da24a6c4efd6a415c899b0e3aba86552dfc88e43621fb5184403687336e3f",
+      "stopping/source_raw/nist_H_sdcs_T30.html": "799292dcfaf499453dff84db365958df161ce5068f48fd25653ce81be055c593",
+      "stopping/source_raw/nist_H_sdcs_T100_W0.html": "40b849569af91516ad635d4fae2e01b3d4d4433c6ef96b12d9d85dee163c3e10",
+      "angular/DERIVATION.md": "dd77f63c69c87e50ce18ca17697a0e07b637568e999c7d7eb0b7b1e305b3a397",
+      "angular/STRESS_BOUND_AND_COUPLING.md": "924fa9d06043da11334400ed88758cef3d685a9bf670a327b447976ba69702d5",
+      "angular/WOLFRAM_CHECK.json": "4dfdd794718939b86fc13b203f0dec2d4fd3b0467dce13ceeb1a52e42896fe3f",
+      "atomic/HD_SOURCE_RESOLUTION.md": "0c1e8eb931231b57f39564443de16949037e4e5e72bbf57d5b85bc95ceef1782",
+      "implementation/attempt01/TEST_RESULTS.json": "6f089e15e5d051548e528aec9cb529805bd7b788546de9dcf4f823384e9facf3",
+      "implementation/attempt01/RECEIPT.json": "df072431cf72f86a3d4c81d8065c7c3afed5969ac3a9c1661a6a313cf13cedb4",
+      "implementation/attempt01/SPECIES_PROJECTION.json": "357401713ef924888ebb8bd95d26ac1fa2d0a7e4d443e09a5ff236bebd42fecb",
+      "implementation/attempt01/STOPPING_COMPONENTS.json": "9e95c2112da56603cd822f2798e3d4a2e2c6f476581d74d727e9dcfe42c73a1d",
+      "implementation/beta_transfer.py": "c7e7627fc42a36062587361d82b75d659bebb455ea72572484bbf454bb926a54",
+      "implementation/run_bounded_tests.py": "f815dde4307f4e711699ad6af9b8dd263a3eedbbfce2108db91a66c65ffc4703",
+      "implementation/species_projection.py": "f94e9e92871751201fbe63afd888662ef4bc06d6dfe356671dbd3d3e10d7418c",
+      "implementation/stopping_components.py": "9c189cb887220dc8128e6d63af7caac38fd5ff40b863c7ca9eb08d4f58825244",
+      "implementation/test_beta_transfer.py": "33aeb6cbc199a50cb553d4bd049c521e5fcfb122f538b565e0667ab51eeeb250",
+      "implementation/test_combined.py": "d02ff73f6ed6fa593acf8955665fa1d417debeb9684828db8e9eb904c7693590",
+      "implementation/test_species_projection.py": "7a1fffa994253e90bebb889bb95e5d43c166312dd207a94f218f955e70c00380",
+      "implementation/test_stopping_components.py": "58f8542bd073cffaf4b29cfae74e9e19b2b653bd2339ff9fee58b98ae01b82b3",
+      "nuclear/CONTRACT.md": "1e9697af807d8e351216990a75d70b2959258b1e5f9feb3136c3b854a0184a3c",
+      "species/FROZEN_CONTRACT.md": "cf06edb386965c93ed481e6173b0dcd05afdd8c5748d2a6487c7379b178cd2ed",
+      "species/INPUT_MANIFEST.json": "8eee672a85efaeb2a0186a294ff512e346c04a919cc87b3698f18641e43b9b64",
+      "species/inputs/HE_SPECIES_REGISTRY.json": "377e35532ee3f313160a1e81ca41463f99d223900f56498c999b28a951642761",
+      "species/inputs/REC_ATOMIC_MODEL.json": "9cc399e9e33ece544109f442f50b00c463cde96e406965e796240eaabd49c614",
+      "species/inputs/WU_R1_ADMISSION.json": "54a1710cc7a5455172c957dd2618d09568f44bd959e9be756a3ea960ac3d27b1",
+      "species/inputs/WU_SPECIES.json": "a18052f6db432192e1e0d4c75f8f2d49c71f3a5eb7cac206e7bc445fec2e8f80",
+      "stopping/IMPLEMENTATION_CONTRACT.json": "a99f765a18929ed6c102b4ff0bc2a4bd7e39ed7b96eaf710bf5d33b249d7e91d"
+    }
+  },
+  "independent_output_inspection": {
+    "historical_rows_compared_to_WU_HE_REC": 21,
+    "unadmitted_extension_records_compared_verbatim": 71,
+    "source_record_or_projection_discrepancies": [],
+    "checks_read_from_actual_raw": 25,
+    "method": "Stdlib JSON/hash comparison and hand algebra; no import/execution of candidate or numerical kernel."
+  },
+  "lane_decisions": {
+    "species": "PASS canonical inventory/projection gates; exact isotopes/charges/pools, non-equivalent electronic states, explicit normalization restrictions, UNADMITTED extensions and pending full joint-law support. Numeric rates and physical state partition remain unadmitted.",
+    "beta": "PASS declared-input finite count transfer and analytic derivatives/domain. Physical source, continuum/bound branching, clock/distribution, Q/spectrum/recoil/stopping and full client remain open. Canonical increment0.",
+    "EE_BED": "PASS conditional Maxwell/log20 endpoint coefficients and native positive BED sharing/paired ledger. Full stopping, actual source contraction, thermal deposition, moving-target/recoil and old13.6ledger activation remain open. Canonical increment0.",
+    "angular_geometry": "PASS conditional E1 angular moments, sharp PSD stress bound and total-variation/propagator construction. Actual joint angular source, recoil error and geometry history/propagator remain open. Canonical increment0.",
+    "HD": "Original SOURCE_DISCREPANCY_UNQUALIFIED preserved. Seven-line exact representation failure remains; measured/fitted-source mixing is a hypothesis and successor CDMS source is not adopted. Canonical increment0."
+  },
+  "numerical_evidence": {
+    "four_EE_independent_high_precision_anchors": {
+      "max_relative": 1.5432100042289676e-14
+    },
+    "exact_EE_temperature_density_dilation": {
+      "max_relative": 2.220446049250313e-16,
+      "generator_scale": 2.332570750298759e-05
+    },
+    "Maxwell_zero_current": {
+      "max_scaled": 0.0
+    },
+    "ten_BED_independent_displayed_parameter_anchors": {
+      "max_relative": 7.771561172376096e-16
+    },
+    "ten_BED_native_rounded_transcription_anchors": {
+      "max_relative": 2.537388238854632e-05,
+      "accuracy_scope": "rounded native source consistency only"
+    },
+    "three_paired_number_charge_energy_ledgers": {
+      "max_energy_absolute_eV": 1.2434497875801753e-14
+    },
+    "binding_factor_support_and_parameter_negative_guards": {},
+    "warm_drift_and_absolute_density_discriminating_controls": {},
+    "native_threshold_zero_width_total_channel": {}
+  },
+  "independent_primary_reads": [
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/jres/105/4/j54luc2.pdf",
+      "confirmed": "4500\u00b18days tritium half-life; one standard uncertainty; NIST2000 tritiated-water evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2106.10375",
+      "confirmed": "2021v2 UCNtau mean lifetime877.75s and quoted stat/systematic uncertainty; no current-world-average assertion."
+    },
+    {
+      "url": "https://arxiv.org/pdf/hep-ph/9903554",
+      "confirmed": "AppendixA2 proton-rest antineutrino inverse-beta formula/1.806MeV threshold."
+    },
+    {
+      "source": "Saved NIST Eq3/4 images and actual T30 HTML",
+      "confirmed": "Native.955 normalization, df/dw coefficients, formula and printed table checked directly."
+    }
+  ],
+  "preserved_failures": [
+    "angular5s Wolfram timeout and successful reduced check",
+    "nuclear removable-limit symbolic warnings and regular-series check",
+    "stopping symbol warning",
+    "HD7line exact representation failures"
+  ],
+  "review_execution_notes": {
+    "first_metadata_assertion": "Stopped on post-run path-only contract delta before writing review; diagnosed and classified, no candidate science failure.",
+    "first_failed_metadata_CPU_s": "UNKNOWN_NOT_ZERO",
+    "targeted_metadata_diagnosis_CPU_s": 0.00332257,
+    "final_metadata_CPU_s": 0.007870814999999996,
+    "final_metadata_wall_s": 0.007872545000282116,
+    "final_review_write_tail": "UNKNOWN_NOT_ZERO; root accounting owns conservative reserve"
+  },
+  "stopping_rule": "Final scoped admission complete. No further scientific run or audit gate requested.",
+  "new_no_go_claim": false
+}
