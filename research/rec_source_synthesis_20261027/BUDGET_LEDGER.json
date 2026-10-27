@@ -1,0 +1,78 @@
+{
+  "schema": "REC_SOURCE_SYNTHESIS_BUDGET_LEDGER_V1",
+  "freeze_sha256": "08db86a00c1056b38dc83d337391871310527a0a2a78ed4d43dfa28103e803b1",
+  "limits_cpu_s": {
+    "theory_symbolic": 120,
+    "HD": 360,
+    "history": 360,
+    "review_integration": 180,
+    "total": 1020
+  },
+  "actual_local_controlled_debits": [
+    {
+      "unit": "HD",
+      "phase": "primary including controls and saved-output figure; measured wrapper",
+      "cpu_s": 4.301855738,
+      "receipt": "hd_joint/raw/primary001/EXECUTION.json"
+    },
+    {
+      "unit": "history",
+      "phase": "primary and measured supervisor",
+      "cpu_s": 6.109471,
+      "receipt": "history_remainder/evidence/primary001.receipt.json"
+    },
+    {
+      "unit": "history",
+      "phase": "saved-output plot and measured supervisor",
+      "cpu_s": 3.260151,
+      "receipt": "history_remainder/evidence/plot001.receipt.json"
+    },
+    {
+      "unit": "review_integration",
+      "phase": "one independent saved-result and delicate-value audit",
+      "cpu_s": 0.442506,
+      "receipt": "review/code_check/RESULT.json",
+      "wall_measurement": "0.3973309889988741 seconds after imports; CPU includes startup/imports to measurement"
+    }
+  ],
+  "measured_local_controlled_cpu_s": 14.113983738,
+  "theory_symbolic": {
+    "artifact": "evidence/WOLFRAM_R7.json",
+    "status": "COMPLETED_REUSED",
+    "caller_wall_s": 9.537,
+    "remote_cpu_s": "UNKNOWN_NOT_EXPOSED",
+    "remote_memory": "UNKNOWN_NOT_EXPOSED",
+    "planning_cpu_reservation_s": 20,
+    "reservation_is_measurement": false
+  },
+  "measured_local_remaining_by_unit_cpu_s": {
+    "HD": 355.698144262,
+    "history": 350.630378,
+    "review_integration": 179.557494
+  },
+  "remaining_allowance_is_new_unit_authorization": false,
+  "unmeasured_costs": "Preparation, source/network reads, review prose and final receipt serialization tails UNKNOWN_NOT_ZERO; no unbounded scientific child remains.",
+  "packaging_io_costs": {
+    "stage_packaging": "individual actual stage prepared/receipt records; separate from scientific debits",
+    "helper_targeted_metadata_check_cpu_s": 0.177543,
+    "R9_runtime_recovery_repackaging_cpu_s": 0.004295814000000009,
+    "other_unmeasured_io": "UNKNOWN_NOT_ZERO"
+  },
+  "historical_preservation": {
+    "old_REC_HD_cap_s": 90,
+    "old_REC_H5_cap_s": 90,
+    "old_REC_review_cap_s": 60,
+    "status": "CLOSED_HOLD_NOT_RESET; previous debits and failures preserved in original program_expansion_20261025 records",
+    "prior_GEO_science_CPU_known_s": 4.965851,
+    "new_GEO_science_replay": false,
+    "REI_budget_transfer": false,
+    "history_budget_reset": false,
+    "previous_primary_failures_erased": false
+  },
+  "new_IVP": 0,
+  "new_native": 0,
+  "new_RHS": 0,
+  "old_Ks_rebuild": 0,
+  "historical_scientific_replays": 0,
+  "scope": "This ledger accounts for this finite continuation; it does not certify a universal remote service CPU total."
+}
