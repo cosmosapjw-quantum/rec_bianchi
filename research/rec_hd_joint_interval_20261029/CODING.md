@@ -31,3 +31,9 @@ The root read the complete new implementation and targeted tests plus inherited 
 ## C7 — Actual-source scientific check
 
 The raw-source CLI verified the exact2289-byte donor SHA and all17 extracted literals. The nominal joint enclosure is empty at level2; the36-segment exact minimum is9137862803786/174896229, uniquely attained by segment(5,6), matching Wolfram. Root separately checked every stored primal witness bound and all8 energy-frequency residuals with Fraction directly from JSON; all residuals are exactly0 at that diagnostic minimum scale. Original row failures remain7/8. These checks establish the stated closed-enclosure calculation; molecular source authenticity beyond the LAMDA byte pin and physical admission remain unresolved.
+
+## C8 — Exactness, reproducibility and figure
+
+All acceptance comparisons are rational; no cancellation error or floating threshold enters the finite result. The boundary test rejects lambda_min-10^-9 and witnesses lambda_min exactly. Generic zero/infinite-radius and all-zero cases are covered. No continuum-domain or performance claim is made. JSON records both exact rational and60-digit display values. Root's17 tests plus actual-source command measured0.262409 child CPU seconds and0.266414 wall seconds; max observed child RSS13952KiB. The code-worker duplicate verification and unmeasured reviewer/control-plane resources are recorded separately, not silently summed into a complete cap claim.
+
+plot_certificate.py renders the saved36 exact segment ratios as a discrete triangular heatmap. The actual PNG was inspected: all valid cells, dimensionless log scale and the unique(5,6) maximum are visible; no interpolation, fitted spectroscopic correction or observational error band is implied. PNG is in the private stage archives; SVG and plot source are in Git. results/VISUAL_AUDIT.json records the actual inspection. This figure does not require a new scientific solve.
