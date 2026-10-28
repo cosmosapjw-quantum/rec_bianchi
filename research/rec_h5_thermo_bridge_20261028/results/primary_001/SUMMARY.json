@@ -1,0 +1,37 @@
+{
+  "schema": "REC_H5_THERMO_BRIDGE01_XE_SCOPED_V1",
+  "mode": "frozen-prefix real affine local extension",
+  "source_SHA256": "f94fc8df8b8c523177183a2e56c09adac2d93284f5439b9304ef4ae14229e0f6",
+  "code_SHA256": "ce47a2bc204c58c29cc0962aa78c2130e7381279953a78198d6de3fb693649ac",
+  "scope": "ambient xe column at fixed xHII plus common ln nH+ln H identity; not six independent columns",
+  "precision": 80,
+  "records": 132,
+  "max_abs_adjoint_vs_primal": "1.65E-75",
+  "max_abs_finite_xe_derivative_error": "1.237220E-71",
+  "max_abs_common_scaling_exact_identity_error": "1.55E-77",
+  "max_componentwise_tangent_backward": "9.5799078569338022064648392380236814642192163251815032736654270352495556939309500E-80",
+  "index131_PR135_dF_dxe": "-49.2760921201",
+  "index131_current_dF_dxe": "-49.27609212008112010897161301841842302035308669673178476701201251080535046421610",
+  "index131_agreement_abs": "1.887989102838698158157697965E-11",
+  "checks": {
+    "all_132_points_bound_to_source": true,
+    "source_immutable_SHA": true,
+    "parent_immutable_code_SHA": true,
+    "primal_vs_preexisting_adjoint": true,
+    "finite_xe_delta_matches_local_affine": true,
+    "density_H_finite_scaling_identity": true,
+    "tangent_residual": true,
+    "PR135_same_point_xe_column": true,
+    "adversarial_reversed_sign_detected": true
+  },
+  "verdict": "PASS_SCOPED_XE_AND_COMMON_SCALING",
+  "not_certified": [
+    "remaining xHII,lnTR,lnTM,lnnH,lnH separate columns",
+    "continuous tube Lipschitz bound",
+    "native binary64 derivative",
+    "full-P source coefficient JVP",
+    "H5 physical epsilon or e0",
+    "H6/H7 full dynamics"
+  ],
+  "no_new_native_or_old_history_calls": true
+}
