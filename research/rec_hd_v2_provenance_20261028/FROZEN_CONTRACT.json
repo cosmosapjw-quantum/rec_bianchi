@@ -1,0 +1,14 @@
+{
+ "unit":"REC_HD_PRIMARY_SPECTROSCOPY_RECONCILIATION_NEXT",
+ "execution_scope":"SOURCE_PROVENANCE_AND_CROSS_ENERGY_THERMAL_DIAGNOSTIC_ONLY",
+ "science_status_at_start":"PROPOSED_NOT_RUN; BUDGET_NOT_ALLOCATED",
+ "input":{"repository":"cosmosapjw-quantum/rei_bianchi","commit":"641a725ada4be27473069c2c35005a94c2ab0248","path":"research/orchestration_expansion_20261025/authority/molecular/lamda_hd_20261025.dat","bytes":2289,"sha256":"0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb"},
+ "authority":{"central_handoff":"4824eec8526185b6b866a5e7e0dabdc624b5543c","rec_HLI_head":"6ab99170dc741e9132cba69ee4706d6a886d29f9","existing_HD_35Hz_gate":"FAIL_7_OF_8_RETAINED","operator_owners":"PR148 and JOINT-TANGENT01 separately reserved"},
+ "hypothesis":"Source energy and line frequency literals are not mutually consistent at printed precision; quantify the cross-energy LTE Kirchhoff diagnostic without attributing upstream cause.",
+ "fixed_coordinate":"neutral 1H2H isotope, 9 source-labelled J=0..8, 8 adjacent radiative lines, unqualified vibrational assignment, no level source replacement",
+ "temperature_nodes_K":[50,100,200],"units":{"level":"cm^-1","frequency":"GHz","energy":"J","temperature":"K","diagnostic":"dimensionless"},
+ "acceptance":{"literal_source_hash":"EXACT","row_identity":"9_levels_and_8_adjacent_J_labels","original_35_Hz_gate":"DO_NOT_CHANGE_OR_PASS_FAILING_ROWS","cross_energy_thermal":"finite_actual24","independent_oracle_abs":"1e-65","no_energy_correction":true,"no_metastable_or_anion_provider_activation":true},
+ "new_finite_budget":{"CPU_seconds_cumulative":12,"execution_wall_seconds_cumulative":80,"RLIMIT_AS_bytes":536870912,"threads":1,"new_IVP":0,"native_C":0,"old_test_replay":0},
+ "review":{"primary_code_math":"targeted serial and alternative high precision oracle","new_blind_nonauthor":"REQUIRED_FOR_FULL_SCIENCE_ADMISSION; NOT_AVAILABLE_UNTIL_ACTUALLY_RUN"},
+ "stop_on":"missing original CDMS v2 raw catalog/term energies or LAMDA recipe for source-choice admission; no source replacement or full original adapter re-run"
+}
