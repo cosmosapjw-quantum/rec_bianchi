@@ -65,3 +65,14 @@ The original lambda=1 source calculation may stop at its first empty reachable i
 Reviewer /root/independent_hd_review read R3-R5 independently and checked exact path difference constraints with a separately coded Bellman-Ford negative-cycle test. All1152 discriminating cases agreed. The review identified one empty-maximum specification gap: the all-zero radii/defects case. The complete formula is lambda_min=max({0} union {|D_pq|/d_pq : d_pq>0}), with infinity if any d_pq=0 and D_pq!=0. Thus n=0 and all-zero finite systems both return0; a finite maximizing value is attained. This clarification preserves the original proof and physical claim. The independent method and actual targeted run are recorded in review/JOINT_THEORY_REVIEW.
 
 Complexity qualifier: O(n) and O(n²) count exact rational arithmetic operations, not bit complexity. Rational numerator/denominator growth depends on input bit length. The9-state fixed input is finite.
+
+## R7 — Independent exact symbolic evaluation
+
+The stateless Wolfram evaluator received the17 literal decimal integers as rational numbers, c exact, and the closed half-quanta. It enumerated all36 segments and returned
+
+    lambda_min = 9137862803786/174896229
+               = 52247.34035738414920312547...,
+    maximizing segment (p,q) = (5,6),
+    row enclosure = 174896229/5000000 Hz = 34.9792458 Hz.
+
+For this particular source the tight global scale equals the most restrictive single row. The all-pass/global-fail synthetic control distinguishes the general joint criterion from row checks. These are exact finite rational checks; the decimal is display only. Input code and raw Wolfram output are retained. The original lambda=1 result and original35Hz FAIL7/8 remain unchanged. The computed scale is not applied to any physical or source acceptance tolerance.
