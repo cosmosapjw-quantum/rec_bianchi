@@ -1,0 +1,102 @@
+{
+  "schema": "ELECTRON_FIELD01_C6_ACTUAL_RESULT_V1",
+  "verdict": "PASS_SCOPED_C6_BUILD_BIND_CONTRACT",
+  "attempt": "C6_attempt002",
+  "prior_failed_attempt": "C6_attempt001_PRESERVED",
+  "resource_diagnostic": "C6_resource_diagnostic001_PRESERVED",
+  "binding": {
+    "writers": 132,
+    "query_records": 313,
+    "endpoint_references": 626
+  },
+  "invalid_cases": 24,
+  "valid_controls": 2,
+  "new_native_kernel_calls": 2,
+  "table_initializations": 1,
+  "saved_baseline_numerics": {
+    "index": 0,
+    "call_id": 7792,
+    "slot": 4770,
+    "pass": true,
+    "parity_pass": true,
+    "residual_pass": true,
+    "max_normalized_residual": "1.0472340240534142807839862727286991576049820273253369910345580857977993838480879E-15",
+    "S_F": "298.12537060561359530656274151980624020676421357269538771936170537431638481511893",
+    "abs_FH_difference": "0E-51",
+    "parity_eps_units": "0E+42",
+    "FH_bitwise_equal": true,
+    "xr_bitwise_equal_count": 2,
+    "xv_bitwise_equal_count": 311
+  },
+  "valid_control_observations": [
+    {
+      "label": "saved_native_baseline",
+      "call_id": 7792,
+      "slot": 4770,
+      "FH": "-0x1.e0dee65e51f36p+0",
+      "events": 472,
+      "zero": 0,
+      "nonfinite": 0,
+      "overflow": 0,
+      "min_abs": "0x1.bcaf673fc76a9p-1",
+      "Schur": "0x1.06de0698c048ap+20",
+      "input_nonmutation": true,
+      "table_nonmutation": true
+    },
+    {
+      "label": "signed_negative_incoming",
+      "call_id": 7792,
+      "slot": 4770,
+      "FH": "-0x1.0bb5bdd6b0ce9p+4",
+      "events": 472,
+      "zero": 0,
+      "nonfinite": 0,
+      "overflow": 0,
+      "min_abs": "0x1.bcaf673fc76a9p-1",
+      "Schur": "0x1.06de0698c048ap+20",
+      "input_nonmutation": true,
+      "table_nonmutation": true
+    }
+  ],
+  "compiler": {
+    "path": "/usr/bin/gcc",
+    "version_firstline": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "warning_count": 9,
+    "warnings_scope": "original hydrogen routines:1sign-compare,1unused-parameter,7unchecked-fscanf; preserved",
+    "library_sha256": "9a1b1586faa55af1899746b51005e2c7309175e904a1f7bc15fa57801442b40b",
+    "generated_source_sha256": "ad8b5ce3ea7e54a470a0e6c2024e034b3479741b0804212398ffc063764acd0c"
+  },
+  "actual_cost": {
+    "retry_child_cpu_s": 0.9076759999999999,
+    "retry_wall_s": 0.9236254830029793,
+    "retry_max_RSS_KiB": 67788,
+    "prior_C6_paid_s": 0.068921,
+    "retry_CPU_cap_s": 9.931079,
+    "C6_all_charges_s": 0.9765969999999999,
+    "C6_allocation_remaining_s": 9.023403,
+    "total_known_scientific_cpu_s": 1.038867,
+    "total_remaining_cpu_s": 58.961133,
+    "actual_source_calls_total": 2
+  },
+  "proc_identity": {
+    "Popen_namespace_PID": 5,
+    "proc_PID": 393289,
+    "proc_starttime": 4130603,
+    "max_observed_family_cpu_s": 0.88,
+    "wait4_authoritative": true
+  },
+  "generator": {
+    "original_sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "generated_sha256": "ad8b5ce3ea7e54a470a0e6c2024e034b3479741b0804212398ffc063764acd0c",
+    "native_body_value_hooks": 3,
+    "observation_header_insertions": 1,
+    "removing_insertions_restores_original_bytes": true,
+    "original_bytes": 37471,
+    "generated_bytes": 37585,
+    "extra_native_solves": 0
+  },
+  "further_stage_execution": "C7_AND_C8_NOT_AUTHORIZED_NOT_RUN",
+  "remote_mutations": 0,
+  "physical_coverage": "0/313",
+  "canonical_delta": 0
+}

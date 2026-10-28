@@ -1,0 +1,63 @@
+{
+  "schema": "ELECTRON_FIELD01_C6_RESOURCE_OBSERVER_REPAIR_V1",
+  "authority": "Root Astra explicit minimal repair plus one C6 retry authorization",
+  "modified_code_files": [
+    {
+      "path": "code/run_stage.py",
+      "historical_C5": {
+        "path": "code/run_stage.py",
+        "bytes": 7928,
+        "sha256": "e614f560f67395ad3a64c51aa1ca1b68a3c01818e6ae6e107c1ae706b8ded291"
+      },
+      "repaired_bytes": 10338,
+      "repaired_sha256": "0ffa6c3e430d8b95b9c049ea538b2f2774abe5ed763f3aafeafd426df0fbe1ec"
+    }
+  ],
+  "historical_C5_manifest_modified": false,
+  "C6_attempt001_modified": false,
+  "diagnostic": {
+    "classification": "PID_NAMESPACE_AND_PROC_VISIBLE_PID_MISMATCH",
+    "worker_namespace_pid": 6,
+    "worker_proc_self_pid": 390949,
+    "explicit_namespace_path_process": "6 (caas-prefix-tra)",
+    "explicit_path_ppid": 1,
+    "wrong_process_raw_counter_delta": {
+      "utime": 0,
+      "stime": 0,
+      "cutime": 0,
+      "cstime": 0
+    },
+    "diagnostic_actual_wait4_cpu_s": 0.065527,
+    "short_child_wait4_included_not_added_again": {
+      "returncode": 0,
+      "user_s": 0.021908999999999998,
+      "system_s": 0.012395999999999999,
+      "cpu_s": 0.034304999999999995
+    },
+    "repair": "Seed /proc family membership from preexec /proc/self PID and validate starttime; keep wait4/killpg namespace PID. No baseline subtraction."
+  },
+  "prior_actual_cpu_preserved": {
+    "remote": 0.06227,
+    "C6_attempt001": 0.003394,
+    "diagnostic": 0.065527
+  },
+  "C6_already_paid_s": 0.068921,
+  "C6_allocation_remaining_s": 9.931079,
+  "total_remaining_s": 59.868809,
+  "scientific_equation_or_tolerance_changes": 0,
+  "cap_increases": 0,
+  "new_probes_allowed": 0,
+  "authorized_next_action": "Exactly one python3 code/run_stage.py C6 retry; no C7/C8 authorization",
+  "executed_retry": {
+    "command": "python3 code/run_stage.py C6",
+    "attempt": "C6_attempt002",
+    "pass": true,
+    "retry_count": 1,
+    "result_summary": "coding/C6_RESULT_SUMMARY.json",
+    "RESOURCE_RECEIPT": "execution/C6_attempt002/RESOURCE_RECEIPT.json",
+    "actual_child_cpu_s": 0.9076759999999999,
+    "known_total_scientific_cpu_s": 1.038867,
+    "known_native_calls": 2,
+    "further_C7_C8_runs": 0
+  }
+}
