@@ -4,7 +4,7 @@ Owner `rec_bianchi`, parent PR154 `2b86465fe641977aa8a584ed4fb66888fd300929`. Ex
 
 **C1 baseline:** frozen source 2289 bytes SHA256 `0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb`. Frozen 35 Hz 7/8 FAIL and PR154 exact joint interval scale are inherited, not retested or altered. Target new field-projection and local line-centre kernel only.
 
-**C2 source-to-code:** `parse_lamda_hd` maps source level energies/weights, radiative A and p/o H2 rates to `core`; the optional `FREQ(GHz)` and `E_u/k(K)` columns go only to `optional_line_metadata`. Source strict identity is separate from `core_sha256` semantic identity. Original private raw HD file remains excluded from public Git.
+**C2 source-to-code:** `parse_lamda_hd` maps source level energies/weights, radiative A and p/o H2 rates to `core`; the optional `FREQ(GHz)` and `E_u/k(K)` columns go only to `optional_line_metadata`. Source strict BYTE_IDENTITY is separate from `core_sha256`, which is selected-literal CONTENT_IDENTITY; numerical equivalence requires a separate comparison. Original private raw HD file remains excluded from public Git.
 
 **C3 algorithm:** exact Decimal token parser rejects NaN/Inf; source field parsing validates nine levels, eight radiative edges, both nine-row collision partner blocks and three temperature nodes. All ratios are exact `Fraction` from printed decimal literals. `nu_E=100c(w_u-w_l)`, `nu_P=1e9 FREQ`, `r=nu_P/nu_E`, `alpha_ratio=r^-3`, `S_ratio=r^3`, `j_peak_ratio=1`, `integrated_j_ratio=r`. No floating tolerance enters acceptance.
 
