@@ -1,0 +1,87 @@
+{
+  "schema": "REC_HD_INDEPENDENT_NONAUTHOR_REVIEW_V1",
+  "reviewer": "/root/independent_hd_review",
+  "relationship": "separate delegated reviewer; inherited task context; nonauthor, not blinded",
+  "source_repository": "cosmosapjw-quantum/rec_bianchi",
+  "source_head": "67d8baa092f18b7c1bbf8dfe9e255f8b43b45998",
+  "parents": {
+    "PR152": "f0ad60fdb1a460b304681fa76d47f4f2f14992b7",
+    "PR153": "67d8baa092f18b7c1bbf8dfe9e255f8b43b45998"
+  },
+  "date_kst": "2026-10-29",
+  "scope": "Conditional printed-literal rounding obstruction and exact finite marked graph; static code review plus newly designed small controls only",
+  "R6": {
+    "PR152": "PASS_SCOPED_COMBINATORIAL_PROOF",
+    "PR153": "PASS_SCOPED_EXACT_RATIONAL_REDERIVATION",
+    "physical_source": "UNRESOLVED_NO_NEW_BYTE_PROVENANCE"
+  },
+  "C9": {
+    "PR152": "PASS_SCOPED_STATIC_ALGORITHM_REVIEW_AND_SAVED_TOPOLOGY_INSPECTION",
+    "PR153": "CHANGES_REQUIRED"
+  },
+  "findings": [
+    {
+      "id": "REV-F1",
+      "severity": "medium",
+      "class": "implementation/reproducibility",
+      "file": "research/rec_hd_print_precision_20261029/precision_audit.py",
+      "symbol": "main output write",
+      "evidence": "HANDOFF_NEXT_THREAD_KO.md asks --output results/print_precision_certificate.json; results/ is absent in the committed tree and write_text does not create parents; fresh-directory control exits 1 with FileNotFoundError",
+      "impact": "Documented public clean-checkout reproduction stops before certificate/plot generation",
+      "minimum_fix": "Create output parent directories before write_text; add a fresh nested-output CLI regression or document/setup mkdir and test that full exact command",
+      "closure_criterion": "Current output code successfully creates certificate through a fresh nested path; output matches unchanged eight-literal values"
+    },
+    {
+      "id": "REV-F2",
+      "severity": "medium",
+      "class": "implementation/input_validation",
+      "file": "research/rec_hd_print_precision_20261029/precision_audit.py",
+      "symbol": "parse_spcat_line",
+      "evidence": "Fresh targeted controls accept frequency=Infinity and uncertainty=Infinity as valid SPCAT values",
+      "impact": "Hash-locked experimental ingest can serialize nonfinite source fields as apparently valid parsed records; historical authenticity is still correctly withheld",
+      "minimum_fix": "Explicit is_finite checks for numeric parsed fields (frequency, uncertainty, lower energy) before positivity/range checks; reject malformed/nonfinite headers with ValueError; add independent finite and nonfinite controls",
+      "closure_criterion": "Finite measured/predicted controls preserved; NaN,+/-Infinity in each numeric parsed field rejected"
+    },
+    {
+      "id": "REV-A1",
+      "severity": "advisory",
+      "class": "notation",
+      "file": "research/rec_hd_print_precision_20261029/THEORY.md",
+      "symbol": "section 3 a_J intervals",
+      "evidence": "a_J is defined exactly from printed literals, while interval language also refers to unknown unrounded source values",
+      "impact": "Ambiguous distinction between fixed printed diagnostic and hypothesized underlying source uncertainty",
+      "minimum_fix": "Use a_print=h*delta_print/(kBT) for the exact current cochain and a_star in h[delta_print-b,delta_print+b]/(kBT) for underlying rounded-source intervals; keep physical uncertainty unresolved",
+      "closure_criterion": "Exact-versus-underlying interval quantities distinguished without altering numbers or gates"
+    }
+  ],
+  "independent_evidence": [
+    "REVIEW_CHECKS.json",
+    "GRAPH_INSPECTION.json"
+  ],
+  "shared_interval_obligation": {
+    "rowwise_pass_is_necessary_not_sufficient": true,
+    "counterexample": "Three errors e0,e1,e2 in [-1,1], each desired increment=2 with zero photon uncertainty; both pair bounds pass, but e2-e0=4 impossible",
+    "current_claim_status": "PR153 already states this limitation, so no defect of its necessary-condition theorem",
+    "possible_next_step": "Only if root selects it: a joint bounded-difference feasibility certificate with interval propagation, not a source correction"
+  },
+  "verification_reuse": {
+    "old_campaigns_not_rerun": true,
+    "new_native_builds": 0,
+    "new_ivps": 0,
+    "new_stationarity_solves": 0,
+    "full_original_unit_tests": "NOT_RERUN_BY_INSTRUCTION",
+    "graph_source_literal_lock": "INHERITED_PRIVATE_DONOR_NOT_REINGESTED",
+    "original_figure": "NOT_INSPECTED_PUBLIC_GIT_OMITS_RESULTS"
+  },
+  "invariants": {
+    "canonical_dag": "28/88 (+0)",
+    "physical_dag": "0/313",
+    "H5_epsilon": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4_ready": false,
+    "REI_activation": false,
+    "production": "HOLD"
+  },
+  "conclusion": "R6 independent-review absence can close within the explicit conditional mathematical scope. PR153 C9 remains open until REV-F1/F2 corrected and tested. No full physical or original-CDMS source admission."
+}

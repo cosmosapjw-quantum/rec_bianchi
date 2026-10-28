@@ -1,0 +1,154 @@
+{
+  "unit": "REC_HD_SOURCE_ACQUISITION_20261029",
+  "date_kst": "2026-10-29",
+  "owner": "cosmosapjw-quantum/rec_bianchi",
+  "starting_pr": 153,
+  "starting_head": "67d8baa092f18b7c1bbf8dfe9e255f8b43b45998",
+  "result": "PARTIAL_LAMDA_RESTORED_CDMS_BYTES_BLOCKED",
+  "cdms2011_raw_bytes_acquired": false,
+  "cdms2011_authenticity_established": false,
+  "lamda_conversion_recipe_acquired": false,
+  "lamda_raw": {
+    "path": "hd.dat",
+    "url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+    "size": 2289,
+    "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+    "prior_identity_match": true,
+    "last_modified": "Mon, 07 Jun 2021 07:42:30 GMT"
+  },
+  "official_extracted_evidence": [
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/",
+      "basis": "Exa extracted official directory",
+      "finding": "HD.fit/.par/.lin/c003501.egy/c003501i.cat 2011-12-07 mtimes; c003501.cat 2019-02-25 mtime. Listing is metadata evidence, not original source byte acquisition."
+    },
+    {
+      "url": "https://home.strw.leidenuniv.nl/~moldata/HD.html",
+      "basis": "Exa extracted official page",
+      "finding": "Spectroscopy attributed to CDMS version 2 of December 2011; p-H2/o-H2 collision data to Flower 1999 with DeltaJ1 and J2-0. No conversion script is supplied by extraction."
+    }
+  ],
+  "attempts": [
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/",
+      "attempted_at": "2026-10-28T22:50:28.637591+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501.cat",
+      "attempted_at": "2026-10-28T22:50:34.356688+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501.egy",
+      "attempted_at": "2026-10-28T22:50:39.721217+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.par",
+      "attempted_at": "2026-10-28T22:50:44.636972+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.fit",
+      "attempted_at": "2026-10-28T22:50:49.858494+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.lin",
+      "attempted_at": "2026-10-28T22:50:55.602046+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501i.cat",
+      "attempted_at": "2026-10-28T22:51:00.341008+00:00",
+      "classification": "SERVICE_ERROR",
+      "error": "<HTTPError 503: 'Service Unavailable'>"
+    },
+    {
+      "url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+      "attempted_at": "2026-10-28T22:51:05.303596+00:00",
+      "status": 200,
+      "final_url": "https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat",
+      "headers": {
+        "date": "Wed, 28 Oct 2026 22:51:10 GMT",
+        "server": "envoy",
+        "strict-transport-security": "max-age=63072000; includeSubDomains",
+        "last-modified": "Mon, 07 Jun 2021 07:42:30 GMT",
+        "etag": "\"8f1-5c4282f08d068\"",
+        "accept-ranges": "bytes",
+        "content-length": "2289",
+        "x-frame-options": "SAMEORIGIN",
+        "x-envoy-upstream-service-time": "965",
+        "connection": "close"
+      },
+      "size": 2289,
+      "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+      "file": "/workspace/scratch/e0012d8fd22a/acquisition/hd.dat",
+      "classification": "HTTP_BYTES_ACQUIRED_HASH_MATCH_PREVIOUS_SOURCE",
+      "matches_prior_pr153_parent_source": true
+    },
+    {
+      "url": "https://home.strw.leidenuniv.nl/~moldata/HD.html",
+      "attempted_at": "2026-10-28T22:51:40.740245+00:00",
+      "classification": "EXECUTION_FAILED",
+      "error": "URLError(TimeoutError('timed out'))"
+    }
+  ],
+  "failures": [
+    {
+      "class": "environment/service",
+      "classification": "SERVICE_ERROR",
+      "scope": "7 current-turn CDMS HTTP probes",
+      "observed": "HTTP503 Service Unavailable",
+      "next_action": "Acquire the exact listed files in an environment with working official CDMS HTTP access, retaining headers and raw-byte SHA256."
+    },
+    {
+      "class": "environment/service",
+      "classification": "SERVICE_ERROR",
+      "scope": "Exa direct CDMS raw-file fetch 6 URLs",
+      "observed": "CRAWL_UNKNOWN_ERROR"
+    },
+    {
+      "class": "environment/service",
+      "classification": "SERVICE_ERROR",
+      "scope": "web open 3 CDMS source URLs",
+      "observed": "Internal Error / URL not accessible"
+    }
+  ],
+  "checks": {
+    "raw_lamda_prior_pin": "PASS",
+    "cdms_2011_raw_pin": "NOT_RUN_NO_BYTES",
+    "conversion_lineage": "UNRESOLVED",
+    "original_35Hz_gate": "FAIL7_OF8_PRESERVED",
+    "canonical_dag": "28/88_UNCHANGED",
+    "physical_coverage": "0/313_UNCHANGED",
+    "production": "HOLD",
+    "L4_ready": false,
+    "REI_activation": false
+  },
+  "source_adoption": {
+    "SciSpace": "Search executed successfully; returned literature is discovery metadata only; no unverified abstract used to authenticate 2011 files.",
+    "Exa": "Search and official page extraction executed successfully; direct raw-file fetch failed.",
+    "raw_bytes": "Only HTTP downloaded bytes saved as source. Exa extraction not assigned original source hash."
+  },
+  "next_minimum_action": [
+    "Retrieve exact CDMS v2 .egy/.par/.fit/.lin/c003501i.cat and current c003501.cat; capture each response URL/headers/SHA256/size.",
+    "Map quantum-number rows and measured/predicted flags by version; retain 2019-mtime ambiguity.",
+    "Locate actual LAMDA conversion recipe or demonstrate exact numerical mapping from pinned CDMS originals; do not replace source or relax 35Hz gate."
+  ],
+  "scope_protection": "No native/IVP, no stationarity rerun, no source edits, no Git mutation or external messaging.",
+  "lamda_conversion_lineage_status": {
+    "attribution": "CDMS2011v2 attribution from source header and official page is confirmed",
+    "generator_script": "NOT_FOUND",
+    "responsible_conversion_author": "NOT_IDENTIFIED",
+    "numeric_field_derivation": "NOT_VERIFIED_FROM_CDMS_ORIGINALS"
+  },
+  "official_alternate_archive_alias": "No exact alternate host archive URL returned in the bounded official-source Exa search; no guessed alternate URL fetched."
+}

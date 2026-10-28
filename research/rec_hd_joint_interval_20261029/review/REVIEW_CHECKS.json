@@ -1,0 +1,145 @@
+{
+  "reviewer": "/root/independent_hd_review",
+  "source_head": "67d8baa092f18b7c1bbf8dfe9e255f8b43b45998",
+  "independent_fraction_rederivation": {
+    "bound_exact": "174896229/5000000",
+    "bound_Hz": "34.9792458",
+    "rows": [
+      {
+        "J": 1,
+        "delta_exact_numerator": -41205081,
+        "delta_exact_denominator": 5000000,
+        "delta_decimal": "-8.2410162",
+        "row_necessary_pass": true
+      },
+      {
+        "J": 2,
+        "delta_exact_numerator": -236919710081,
+        "delta_exact_denominator": 250000,
+        "delta_decimal": "-947678.840324",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 3,
+        "delta_exact_numerator": 2710796857291,
+        "delta_exact_denominator": 2500000,
+        "delta_decimal": "1084318.7429164",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 4,
+        "delta_exact_numerator": -238137045457,
+        "delta_exact_denominator": 5000000,
+        "delta_decimal": "-47627.4090914",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 5,
+        "delta_exact_numerator": 1245461910729,
+        "delta_exact_denominator": 1000000,
+        "delta_decimal": "1245461.910729",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 6,
+        "delta_exact_numerator": -4568931401893,
+        "delta_exact_denominator": 2500000,
+        "delta_decimal": "-1827572.5607572",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 7,
+        "delta_exact_numerator": 1764006812819,
+        "delta_exact_denominator": 1250000,
+        "delta_decimal": "1411205.4502552",
+        "row_necessary_pass": false
+      },
+      {
+        "J": 8,
+        "delta_exact_numerator": 17162474057,
+        "delta_exact_denominator": 2500000,
+        "delta_decimal": "6864.9896228",
+        "row_necessary_pass": false
+      }
+    ],
+    "matches_published_deltas": true
+  },
+  "shared_interval_counterexample": {
+    "rowwise_pass": [
+      true,
+      true
+    ],
+    "e2_minus_e0_required": "4",
+    "box_maximum_span": "2",
+    "joint_feasible": false
+  },
+  "targeted_parser_controls": {
+    "finite_control": {
+      "outcome": "ACCEPTED",
+      "result": {
+        "frequency_literal": "2674986.0000",
+        "uncertainty_literal": "0.0300",
+        "frequency_unit": "MHz_assumed_requires_source_confirmation",
+        "uncertainty_unit": "MHz_assumed_requires_source_confirmation",
+        "dr": 2,
+        "elo_cm_minus_1": "0.0000",
+        "gup": 3,
+        "species_tag": 3501,
+        "measured_tag": false,
+        "qnfmt": 101,
+        "raw_quantum_numbers": "  1  0",
+        "source_version": "UNVERIFIED",
+        "lamda_mapping": "NOT_ATTEMPTED"
+      }
+    },
+    "infinite_frequency": {
+      "outcome": "ACCEPTED",
+      "result": {
+        "frequency_literal": "Infinity",
+        "uncertainty_literal": "0.0300",
+        "frequency_unit": "MHz_assumed_requires_source_confirmation",
+        "uncertainty_unit": "MHz_assumed_requires_source_confirmation",
+        "dr": 2,
+        "elo_cm_minus_1": "0.0000",
+        "gup": 3,
+        "species_tag": 3501,
+        "measured_tag": false,
+        "qnfmt": 101,
+        "raw_quantum_numbers": "  1  0",
+        "source_version": "UNVERIFIED",
+        "lamda_mapping": "NOT_ATTEMPTED"
+      }
+    },
+    "infinite_uncertainty": {
+      "outcome": "ACCEPTED",
+      "result": {
+        "frequency_literal": "2674986.0000",
+        "uncertainty_literal": "Infinity",
+        "frequency_unit": "MHz_assumed_requires_source_confirmation",
+        "uncertainty_unit": "MHz_assumed_requires_source_confirmation",
+        "dr": 2,
+        "elo_cm_minus_1": "0.0000",
+        "gup": 3,
+        "species_tag": 3501,
+        "measured_tag": false,
+        "qnfmt": 101,
+        "raw_quantum_numbers": "  1  0",
+        "source_version": "UNVERIFIED",
+        "lamda_mapping": "NOT_ATTEMPTED"
+      }
+    }
+  },
+  "clean_output_directory_control": {
+    "command": "python3 precision_audit.py --output <fresh>/results/certificate.json",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_print_precision_20261029/precision_audit.py\", line 132, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_print_precision_20261029/precision_audit.py\", line 129, in main\n    if a.output: a.output.write_text(payload,encoding='utf8')\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1047, in write_text\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/rec_review_z3x9t4rh/results/certificate.json'\n",
+    "file_created": false
+  },
+  "original_files_sha256": {
+    "research/rec_hd_print_precision_20261029/precision_audit.py": "a44d594ef8cc130a13862727723a9e716a56ba753c6dc316e10726be011136ae",
+    "research/rec_hd_print_precision_20261029/public_print_transcription.json": "80ea63c63d481048fcafc5f00b8ee37394baf20c9aac5ea503d7760c0082088f",
+    "research/rec_hd_print_precision_20261029/THEORY.md": "08537f2b0a42e766dce89efab9342d28808355741a0c6a730e91987845349398",
+    "research/rec_hd_cycle_space_20261029/THEORY.md": "8033eb8173ac9c68f74d97344c5050c231c5eb2b8786316fd17968cf9cb5a268"
+  }
+}
