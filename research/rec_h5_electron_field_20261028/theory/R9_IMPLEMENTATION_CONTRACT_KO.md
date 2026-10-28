@@ -22,7 +22,7 @@ C3에서 원 solver를 추가로 실행하지 않는 관측 방법을 확정한�
 
 ## 저장 데이터와 식의 결속
 
-LAST_WRITERS[slot]의 실제 call id와 CALLS/QSS_WRITES의 (id,slot)을 함께 맞춘다. CALLS의 dispatcher scalar hex가 출발점이며 QSS_WRITES의 coefficient temperature는 결과 provenance의 비교 대상이다. 선택한132개 writer의 completeness,phase,model,xe/xHII,fsR/meR,finite/domain을 확인한다.
+LAST_WRITERS[slot]의 실제 call id와 CALLS/QSS_WRITES의 (id,slot)을 함께 맞춘다. CALLS의 dispatcher scalar hex가 출발점이며 WRITES의 coefficient temperature는 결과 provenance의 비교 대상이다. 선택한132개 writer의 completeness,phase,model,xe/xHII,fsR/meR,finite/domain을 확인한다.
 
 원 native_path313 query와626 endpoint references는 reference map으로 보존한다. Geometric endpoints/query/exact alpha를 재계산하거나 rounding하지 않는다. 하나의 native writer가 여러 endpoint에 참조되는 것을 독립적인 새 scientific call로 세지 않는다.
 

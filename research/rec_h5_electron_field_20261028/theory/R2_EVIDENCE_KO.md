@@ -8,7 +8,7 @@
 
 hydrogen.c의 populateTS_2photon, solveTXeqB, solve_real_virt, FULL prelude와 scalar 식을 직접 읽었다. original read_rates/read_twog_params로 tables를 초기화한다. read_twog_params는 sub-Lyα A2s를 정규화한 뒤 feature switch를 적용하므로 raw table hash뿐 아니라 초기화 함수·매크로도 identity에 포함한다. original calloc의 초기0을 보존한다.
 
-capture002의 LAST_WRITERS, CALLS, QSS_WRITES를 함께 사용한다. 선택 slot132개는 메타데이터로 확인했고, 과학 입력 조립과132점 새 실행은 C단계에서 수행한다. native path313 query,626 endpoint references,89 geometric cells,132 unique native times를 그대로 연결한다. CALLS는 dispatcher temperature, QSS_WRITES는 coefficient temperature를 담으므로 서로 대체하지 않는다.
+capture002의 LAST_WRITERS, CALLS, QSS_WRITES를 함께 사용한다. 선택 slot132개는 메타데이터로 확인했고, 과학 입력 조립과132점 새 실행은 C단계에서 수행한다. native path313 query,626 endpoint references,89 geometric cells,132 unique native times를 그대로 연결한다. CALLS는 dispatcher temperature, WRITES는 coefficient temperature를 담으므로 서로 대체하지 않는다.
 
 ## 재사용 결과와 남은 의존성
 
