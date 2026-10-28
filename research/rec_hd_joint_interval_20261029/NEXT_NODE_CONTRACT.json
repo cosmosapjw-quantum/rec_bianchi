@@ -1,0 +1,10 @@
+{
+ "id":"REC_HD_PRIMARY_SPECTROSCOPY_RECONCILIATION_NEXT", "state":"INPUT_SERVICE_BLOCKED", "stage":"source acquisition before physical source choice",
+ "required_urls":["https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501.cat","https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501.egy","https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.par","https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.fit","https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/HD.lin","https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/c003501i.cat"],
+ "fixed_ancestor_LAMDA":{"bytes":2289,"sha256":"0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb"},
+ "acceptance":["retain actual HTTP response/source bytes,size,SHA,version,date and source field units","distinguish2019-mtime cat from authenticated2011 product","map each of8 LAMDA transitions by full quantum numbers rather than row order","retain catalog experiment/prediction TAG meaning and reported uncertainties","recover actual level and line conversion provenance; webpage attribution alone insufficient","source-choice changes prepared as an explicit proposal, affected original controls retained"],
+ "ready_local_preflight":"joint_interval.py --lamda private_inputs/hd.dat --output results/replay.json; this only reruns exact small source preflight when changed inputs justify it",
+ "blocked_next":"physical HD rate admission and existing H5/H6/H7 obligations remain open",
+ "no_change":["original35Hz7of8FAIL","unchanged native/IVP/stationarity campaigns","no v3 substitution","no mismatch-as-heat correction","no extra vibrational manifold from webpage prose"],
+ "failure_class":"input_service_error; current source access observed HTTP503, not a theorem about source existence or physical impossibility"
+}
