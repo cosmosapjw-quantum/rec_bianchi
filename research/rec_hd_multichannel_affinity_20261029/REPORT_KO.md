@@ -41,3 +41,7 @@
 Canonical `28/88 +0`; physical `0/313`; H5 epsilon null, H6/H7 OPEN, L4=false, REI activation=false, production HOLD. WU H-Li 26 ground+5 nuclear,102 formal requests ≠ active physics; 621 missing process cells stay null. Fresh R6/C9 native nonauthor reviewers `NOT_RUN_TOOL_NOT_EXPOSED`; source archive CDMS2011 version2 `.cat/.egy/.par` `NOT_ACQUIRED`. This new conditional math/coding output is completed, **not** the original HD energy-resolution gate.
 
 Next scientific operation: acquire original CDMS v2 catalog/term-energy/fit numeric files and source-to-LAMDA transformation procedure with immutable bytes, uncertainties and J-identity; only then propose an evidence-backed replacement, fixed 35Hz gate, and scoped thermal recheck. Avoid automatic new main merge, native IVP and rollback/replay of previous H5 or HD campaigns.
+
+## 최종 재현성 보완
+
+초기 SOURCE 패키지는 선행 PR150의 저장 Kirchhoff 결과를 Git 외부에 참조해 primary 실행에 별도 입력이 필요했다. 최종 제출 전에 이 실제 재현성 결손을 발견하고, 같은 이전 결과 JSON을 정확한 바이트로 `inputs/pr150_saved_K_RESULT.json`에 추가했다. SHA256 `7f5532ea47f861a9c311c6a4d54e2011afa690911c5042ffddcd32206ecd8b9d`. 이전 원본 전체 캠페인을 반복한 것이 아니라 새 9×9 solver만 한 번 재실행해 `results/RESULT.json`과 **바이트 동일**함을 검증했다. 상세 검증 `results/REPLAY_PROOF.json`. 최초 ZIP은 덮어쓰지 않고 기존 archive로 보존하며, 최종 복구용 별도 SOURCE ZIP을 create-only로 발행한다. 갱신 child CPU `9.96`초 (동일 60초 예산).
