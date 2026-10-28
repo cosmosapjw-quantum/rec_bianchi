@@ -31,3 +31,31 @@ The immutable printed coefficient alpha_print,j=h delta_j/(k_B T) is exact for i
 A. Independent row bounds retain PR153's necessary test but miss shared-level constraints. B. Exact interval reachability on this path gives an O(n) decision and constructive witness. C. A general LP solver handles arbitrary graphs but adds floating tolerance and an unnecessary dependency here. Use B for the primary checker and an independently implemented all-contiguous-segment criterion for verification. A general difference-constraint graph formulation proves sufficiency of the segment criterion and supplies dual obstruction certificates.
 
 A discriminating control is n=2, delta_1=delta_2=1Hz, r_0=r_1=r_2=1/2Hz, s_1=s_2=0. Both single-row bounds pass at equality, but delta_1+delta_2=2Hz exceeds r_0+r_2=1Hz; the joint enclosure is empty. Its minimum common scale is exactly 2. A control with deltas (1,-1) has a joint witness at scale1.
+
+## R5 — Constructive proof and tight scale
+
+**Reachable-interval lemma.** At scale lambda>=0 set I_0=[-lambda r_0,lambda r_0]. Given the exact reachable interval I_(j-1)=[l,u], set
+
+    I_j = [-lambda r_j,lambda r_j]
+          intersect [l-delta_j-lambda s_j, u-delta_j+lambda s_j].
+
+This follows by eliminating y_j from its closed interval and taking the Minkowski sum of intervals. It is exact, not an interval overestimate: the image of a connected interval under addition of another interval is the entire summed interval. Inductively I_j is exactly the set of reachable x_j. An empty I_j proves infeasibility. Otherwise choose x_n in I_n; backward choose
+
+    x_(j-1) in I_(j-1) intersect
+               [x_j+delta_j-lambda s_j, x_j+delta_j+lambda s_j].
+
+The intersection is nonempty by reachability. Set y_j=delta_j+x_j-x_(j-1); this constructs all equalities and bounds. Decision is O(n); storing intervals plus backward witness is O(n).
+
+**Independent segment criterion.** For p<q let D_pq=sum_(j=p+1)^q delta_j, S_pq=sum_(j=p+1)^q s_j. Joint feasibility is equivalent to all n(n+1)/2 inequalities
+
+    |D_pq| <= lambda(r_p+r_q+S_pq).
+
+Necessity follows by summing the equalities and bounding x_p,x_q and all y_j. For sufficiency introduce an auxiliary zero node z and encode x_j-x_z<=lambda r_j, x_z-x_j<=lambda r_j, x_j-x_(j-1)<=-delta_j+lambda s_j, x_(j-1)-x_j<=delta_j+lambda s_j. A finite system x_v-x_u<=w_uv is feasible iff its directed graph has no negative cycle: feasible potentials imply nonnegative cycle sums; conversely shortest-path distances from a super-source give potentials when no negative cycle exists. In the path plus z, each simple cycle either uses one path edge twice (weight 2lambda s_j>=0), one z spoke twice (2lambda r_j>=0), or uses two z spokes and the unique monotone path from p to q. The latter two orientations have weights lambda(r_p+r_q+S_pq) +/- D_pq. Every closed walk decomposes into simple cycles. The displayed segment inequalities therefore exclude every negative cycle, which proves sufficiency. No arbitrary cycle basis or floating tolerance is needed.
+
+**Tight common scale.** If every denominator d_pq=r_p+r_q+S_pq is positive, the minimum is
+
+    lambda_min = max_(p<q) |D_pq|/d_pq.
+
+For d_pq=0 and D_pq!=0 the minimum is infinite; zero/zero imposes no constraint. With n=0 the constraints are feasible and lambda_min=0. At a finite lambda_min all inequalities hold, hence reachability constructs a witness; below it a maximizing segment is a strict obstruction certificate. This is a scale of printing enclosures, not spectroscopic measurement uncertainty and not a revised gate.
+
+The original lambda=1 source calculation may stop at its first empty reachable interval. The independent segment method still checks all36 segments. The two methods share only exact source literals and the physical conversion factor; their algorithms are different.
