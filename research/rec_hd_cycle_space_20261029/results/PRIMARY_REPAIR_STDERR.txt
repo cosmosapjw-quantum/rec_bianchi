@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/mnt/data/rec_hd_cycle_space_20261029/code/cycle_space.py", line 149, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/mnt/data/rec_hd_cycle_space_20261029/code/cycle_space.py", line 147, in main
+    args.out.write_text(json.dumps(r,indent=2)+'\n')
+                        ~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/usr/lib/python3.13/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.13/json/encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.13/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type NegativeOne is not JSON serializable
