@@ -59,3 +59,9 @@ Necessity follows by summing the equalities and bounding x_p,x_q and all y_j. Fo
 For d_pq=0 and D_pq!=0 the minimum is infinite; zero/zero imposes no constraint. With n=0 the constraints are feasible and lambda_min=0. At a finite lambda_min all inequalities hold, hence reachability constructs a witness; below it a maximizing segment is a strict obstruction certificate. This is a scale of printing enclosures, not spectroscopic measurement uncertainty and not a revised gate.
 
 The original lambda=1 source calculation may stop at its first empty reachable interval. The independent segment method still checks all36 segments. The two methods share only exact source literals and the physical conversion factor; their algorithms are different.
+
+## R6 — Independent theory review and endpoint correction
+
+Reviewer /root/independent_hd_review read R3-R5 independently and checked exact path difference constraints with a separately coded Bellman-Ford negative-cycle test. All1152 discriminating cases agreed. The review identified one empty-maximum specification gap: the all-zero radii/defects case. The complete formula is lambda_min=max({0} union {|D_pq|/d_pq : d_pq>0}), with infinity if any d_pq=0 and D_pq!=0. Thus n=0 and all-zero finite systems both return0; a finite maximizing value is attained. This clarification preserves the original proof and physical claim. The independent method and actual targeted run are recorded in review/JOINT_THEORY_REVIEW.
+
+Complexity qualifier: O(n) and O(n²) count exact rational arithmetic operations, not bit complexity. Rational numerator/denominator growth depends on input bit length. The9-state fixed input is finite.

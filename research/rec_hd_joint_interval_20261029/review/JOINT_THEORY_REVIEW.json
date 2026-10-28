@@ -1,0 +1,103 @@
+{
+  "schema": "REC_HD_JOINT_INTERVAL_THEORY_REVIEW_V1",
+  "reviewer": "/root/independent_hd_review",
+  "relationship": "separate nonauthor delegated reviewer, task context inherited, not blinded",
+  "date_kst": "2026-10-29",
+  "source_path": "/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_joint_interval_20261029/THEORY.md",
+  "source_sha256": "01458440c0c01cd5b5a325ef07de914c044c8908e2d0a6906ca36fcbe1fcd945",
+  "review_scope": "THEORY.md R3-R5 definitions, recurrence/witness proof, segment necessity+sufficiency, tight scale/degenerate cases and endpoint scope",
+  "result": "PASS_SCOPED_WITH_MINOR_EDGE_CASE_CLARIFICATION",
+  "checks": [
+    {
+      "id": "TH1",
+      "statement": "Eliminating y gives x_j in I_previous-delta_j+[-lambda*s_j,+lambda*s_j], intersect the current symmetric box",
+      "result": "PASS_DERIVED",
+      "reason": "Signs follow directly from delta_j+x_j-x_previous=y_j; sums/projections of real closed intervals are exactly intervals"
+    },
+    {
+      "id": "TH2",
+      "statement": "Backward predecessor intersection is nonempty and resulting y_j satisfies bounds/equality",
+      "result": "PASS_DERIVED",
+      "reason": "Each selected x_j belongs to forward reachable I_j by induction; its definition guarantees some predecessor. Bounds use x_previous in [x_j+delta_j-lambda*s_j,x_j+delta_j+lambda*s_j]"
+    },
+    {
+      "id": "TH3",
+      "statement": "All segment inequalities are necessary",
+      "result": "PASS_DERIVED",
+      "reason": "Summing gives D_pq+x_q-x_p=sum y_j; triangle bound gives |D|<=lambda*(r_p+r_q+S)"
+    },
+    {
+      "id": "TH4",
+      "statement": "All segment inequalities are sufficient",
+      "result": "PASS_DERIVED",
+      "reason": "Difference-constraint graph is a bidirected path plus an auxiliary zero node. Every simple cycle either is a directed two-cycle with nonnegative 2lambda radius or contains exactly two zero spokes and one contiguous monotone path; weights are lambda*d +/-D. No negative simple cycle implies no negative closed walk; super-source shortest potentials give a solution"
+    },
+    {
+      "id": "TH5",
+      "statement": "Tight finite minimum is attained; any lower nonnegative scale has a segment obstruction",
+      "result": "PASS_DERIVED",
+      "reason": "Finite collection of closed linear inequalities in nonnegative lambda. The maximum positive-denominator ratio suffices; a maximizer violates below it. At lambda_min=0 there is no lower admissible nonnegative scale; the below-minimum statement is vacuous"
+    },
+    {
+      "id": "TH6",
+      "statement": "Zero denominator plus nonzero D forbids every finite scale",
+      "result": "PASS_DERIVED",
+      "reason": "Inequality requires |D|<=0 independently of lambda"
+    },
+    {
+      "id": "TH7",
+      "statement": "Closed rounding enclosure does not establish a specific tie-to-even printing policy",
+      "result": "PASS_SCOPED",
+      "reason": "THEORY R3 explicitly distinguishes enclosure sufficiency from exact endpoint printing rules"
+    },
+    {
+      "id": "TH8",
+      "statement": "Finite printed mismatch and underlying source interval use distinct alpha variables",
+      "result": "PASS_SCOPED",
+      "reason": "R3 uses alpha_print exact and alpha_true=0 only under compatible common-energy realization; T>0 and h ordinary-frequency dimensions are explicit"
+    },
+    {
+      "id": "TH9",
+      "statement": "Independent tiny exact negative-cycle controls agree with segment criterion",
+      "result": "PASS_SCOPED_NUMERIC_EXACT",
+      "evidence": "JOINT_THEORY_CONTROLS.json",
+      "cases": 1152
+    }
+  ],
+  "findings": [
+    {
+      "id": "JT-A1",
+      "severity": "minor_clarification",
+      "blocking": false,
+      "target": "R5 Tight common scale",
+      "evidence": "n=0 is explicit, but n>0 with every d=0,D=0 is not separately spelled out; the textual zero/zero rule implies lambda_min=0",
+      "minimum_fix": "State lambda_min=max({0} union {|D_pq|/d_pq:d_pq>0}) when no zero-denominator nonzero-defect segment exists; otherwise infinity",
+      "acceptance": "All-zero source with n>0 returns zero and has all-zero witness"
+    },
+    {
+      "id": "JT-A2",
+      "severity": "advisory",
+      "blocking": false,
+      "target": "R5 computational complexity",
+      "evidence": "Exact rational bit lengths can grow even though interval operations are linear in n",
+      "minimum_fix": "Describe O(n) interval arithmetic operations and O(n) stored intervals; exact bit complexity depends on literal/scale bit lengths",
+      "acceptance": "No performance claim beyond the fixed-source or arithmetic-operation model"
+    }
+  ],
+  "provenance_review": "R2 raw acquisition claims were not independently re-fetched in this math-only task; no attestation added",
+  "old_science_campaigns_rerun": false,
+  "new_IVPs": 0,
+  "new_native_builds": 0,
+  "new_stationary_solves": 0,
+  "physical_admission": false,
+  "novelty_or_strong_no_go_adoption": false,
+  "conclusion": "The source-application theorem is sound for finite nonnegative radii, real closed enclosures and lambda>=0. Advisory edge-case/complexity clarifications do not change current n8 source results. Independent C9 code review remains a separate later task.",
+  "execution_receipt": "JOINT_THEORY_EXECUTION.json",
+  "controls_source": "JOINT_THEORY_CONTROLS.py",
+  "resources": {
+    "cpu_s": null,
+    "wall_s": null,
+    "max_rss_kib": null,
+    "status": "UNMEASURED_UNKNOWN_NOT_ZERO"
+  }
+}
