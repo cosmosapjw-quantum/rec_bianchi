@@ -25,3 +25,9 @@ Let L_j=100 c w_j (Hz), F_j=10^9 nu_j (Hz), j=0,...,n for terms and j=1,...,n fo
 The physical printed-precision question fixes lambda=1. A computed lambda_min is a diagnostic distance from that enclosure; it is never applied to the original 35Hz acceptance gate. lambda is dimensionless. All radii are finite and nonnegative; quantization is derived from the exact decimal token, preserving trailing zeros. Closed endpoint sufficiency means sufficiency for the stated enclosure; exact tie-to-even printing would require its endpoint rule as an additional condition.
 
 The immutable printed coefficient alpha_print,j=h delta_j/(k_B T) is exact for its fixed literals. The underlying defect before enforcing common-energy equality has the enclosure alpha_print,j +/- h lambda(r_(j-1)+r_j+s_j)/(k_B T). These are different objects. Under a compatible common-energy realization, alpha_true,j=0. T>0 is required; no physical entropy-production interpretation follows from a failed enclosure.
+
+## R4 — Chosen constructive representation
+
+A. Independent row bounds retain PR153's necessary test but miss shared-level constraints. B. Exact interval reachability on this path gives an O(n) decision and constructive witness. C. A general LP solver handles arbitrary graphs but adds floating tolerance and an unnecessary dependency here. Use B for the primary checker and an independently implemented all-contiguous-segment criterion for verification. A general difference-constraint graph formulation proves sufficiency of the segment criterion and supplies dual obstruction certificates.
+
+A discriminating control is n=2, delta_1=delta_2=1Hz, r_0=r_1=r_2=1/2Hz, s_1=s_2=0. Both single-row bounds pass at equality, but delta_1+delta_2=2Hz exceeds r_0+r_2=1Hz; the joint enclosure is empty. Its minimum common scale is exactly 2. A control with deltas (1,-1) has a joint witness at scale1.
