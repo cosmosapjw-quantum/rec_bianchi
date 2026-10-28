@@ -27,3 +27,7 @@ joint_interval.py now implements exact decimal/rational validation, forward reac
 ## C6 — Fresh integrated verification
 
 The root read the complete new implementation and targeted tests plus inherited minimal diff, then ran the13 joint tests and4 repair regressions directly on the integrated files. Both commands exited0 (17/17 PASS); stdout/stderr and actual resources are in results/ROOT_TEST_EXECUTIONS.json. The expectations include independent exact Wolfram values and the demonstrable shared-level counterexample; the witness assertions check the defining constraints. No old full scientific suite or IVP/stationarity solver was rerun.
+
+## C7 — Actual-source scientific check
+
+The raw-source CLI verified the exact2289-byte donor SHA and all17 extracted literals. The nominal joint enclosure is empty at level2; the36-segment exact minimum is9137862803786/174896229, uniquely attained by segment(5,6), matching Wolfram. Root separately checked every stored primal witness bound and all8 energy-frequency residuals with Fraction directly from JSON; all residuals are exactly0 at that diagnostic minimum scale. Original row failures remain7/8. These checks establish the stated closed-enclosure calculation; molecular source authenticity beyond the LAMDA byte pin and physical admission remain unresolved.
