@@ -23,6 +23,8 @@ WAVENUMBER_CM_TO_M = Decimal(100)
 def half_quantum(token: str) -> Decimal:
     """Max error of round-to-nearest for the exact printed decimal literal."""
     d = Decimal(token)
+    if not d.is_finite():
+        raise ValueError('nonfinite printed decimal')
     return Decimal('0.5') * (Decimal(10) ** d.as_tuple().exponent)
 
 
@@ -40,6 +42,8 @@ def audit(levels: list[dict], lines: list[dict]) -> dict:
             wup, wlo = levels[j]['w_cm_minus_1'], levels[j-1]['w_cm_minus_1']
             fghz = line['nu_GHz']
             up,lo,nu = Decimal(wup),Decimal(wlo),Decimal(fghz)
+            if not all(v.is_finite() for v in (up,lo,nu)):
+                raise ValueError('nonfinite printed transition')
             if up <= lo or nu <= 0:
                 raise ValueError('invalid positive adjacent HD rotational transition')
             delta = WAVENUMBER_CM_TO_M*C_M_PER_S*(up-lo) - NU_GHZ_TO_HZ*nu
@@ -83,6 +87,8 @@ def parse_spcat_line(row: str) -> dict:
         qnfmt=int(row[51:55].strip())
     except (ValueError,ArithmeticError) as err:
         raise ValueError('malformed fixed-width SPCAT header') from err
+    if not all(v.is_finite() for v in (freq,uncertainty,elo)):
+        raise ValueError('nonfinite SPCAT header')
     if abs(tag)!=3501 or freq <= 0 or uncertainty < 0 or gup <= 0:
         raise ValueError('unexpected species tag or invalid SPCAT header')
     return {'frequency_literal':str(freq),'uncertainty_literal':str(uncertainty),
@@ -126,7 +132,9 @@ def main() -> None:
     elif a.expected_cdms_sha256:
         raise ValueError('CDMS hash given without original file')
     payload=json.dumps(result,indent=2,ensure_ascii=False)+'\n'
-    if a.output: a.output.write_text(payload,encoding='utf8')
+    if a.output:
+        a.output.parent.mkdir(parents=True,exist_ok=True)
+        a.output.write_text(payload,encoding='utf8')
     else: print(payload)
 
 if __name__=='__main__': main()

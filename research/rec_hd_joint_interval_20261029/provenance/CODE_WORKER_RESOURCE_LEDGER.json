@@ -1,0 +1,46 @@
+{
+  "measurement": "Python resource.RUSAGE_CHILDREN and monotonic, subprocess tests include their CLI children; maxrss cumulative maximum not additive",
+  "environment_initial_failure": {
+    "command": "/usr/bin/time -v ...",
+    "classification": "PACKAGE_MISSING",
+    "result": "/usr/bin/time absent; Python tests not started in that invocation"
+  },
+  "executions": [
+    {
+      "name": "JOINT",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/rec_hd_joint_interval_20261029/tests",
+        "-p",
+        "test_joint_interval.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "wall_s": 0.18202332399960142,
+      "child_cpu_s": 0.180924,
+      "max_rss_KiB_cumulative_children": 14848
+    },
+    {
+      "name": "REPAIR",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/rec_hd_print_precision_20261029/tests",
+        "-p",
+        "test_regression_repair.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "wall_s": 0.10524920899933932,
+      "child_cpu_s": 0.10472299999999998,
+      "max_rss_KiB_cumulative_children": 14848
+    }
+  ]
+}
