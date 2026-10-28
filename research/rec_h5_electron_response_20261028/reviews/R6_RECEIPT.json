@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-ELECTRON-RESPONSE01",
+  "stage": "R6",
+  "reviewer": "/root/incoming_theory_review",
+  "reviewed_at_utc": "2026-10-28T10:59:26.809049+00:00",
+  "verdict": "PASS_SCOPED",
+  "status": "CLOSED",
+  "independence": {
+    "separate_agent": true,
+    "independent_source_derivation_before_new_document_review": true,
+    "implementation_author": false,
+    "root_theory_or_contract_edited_by_reviewer": false,
+    "model_family_diversity": "NOT_OBSERVED_NOT_CLAIMED",
+    "CAS_or_serial_review_approval_credit": 0
+  },
+  "reviewed_files": {
+    "CONTRACT.md": {
+      "bytes": 7292,
+      "sha256": "4b77633b0b5001542cf52d0f904ea9bfaedfb8acf6b5010877d56db2d99408c1"
+    },
+    "THEORY.md": {
+      "bytes": 5879,
+      "sha256": "6608c8c4e5bed4988169fed65cb57eef2eb53460bf488d74f8252adbf225dcd1"
+    },
+    "reviews/R6_REVIEW.md": {
+      "bytes": 8321,
+      "sha256": "8ba3c62546ac752c1f428aa18e3fa2bffe4d959f16b411a5bdda27abba12c47c"
+    }
+  },
+  "source_archive_sha256": "3e841711a3817dadfb46445ea22bcd1cf9e46aeb52d5270aca86333bd77c6ff2",
+  "source_archive_full_hash_rechecked_by_reviewer": false,
+  "admitted_scope": [
+    "Fixed-P represented-coefficient exact-real affine model with explicitly reconstructed real G",
+    "Conditional J=G^T lambda, M^T lambda=q, with exact-real M invertible",
+    "Structured Schur/transpose formulas with invertible V and nonzero exact elimination pivots",
+    "Source-to-saved residual decomposition with independent numerical checks still required",
+    "Full-P differential as a future implementation contract on differentiable branch/cell"
+  ],
+  "findings": [
+    {
+      "id": "R6-F01",
+      "status": "RESOLVED",
+      "object": "Structured factorization assumptions",
+      "disposition": "Root added invertible V and nonzero exact pivots separately from abstract M invertibility; reviewer reread final documents."
+    },
+    {
+      "id": "R6-F02",
+      "status": "RESOLVED",
+      "object": "Saved native controls rank",
+      "disposition": "Root states three points, one incoming direction each, and no 313-column native validation; reviewer reread final THEORY."
+    }
+  ],
+  "open_blocking_findings": 0,
+  "checks": {
+    "source_G_support_and_lyman_orientation": "PASS_SCOPED",
+    "adjoint_and_shifted_transpose_bands": "PASS_SCOPED",
+    "residual_identity_signs": "PASS_SCOPED",
+    "roundoff_model_separation": "PASS_SCOPED",
+    "full_P_chain_rule": "PASS_SCOPED",
+    "controls_rank_and_evidence_scope": "PASS_SCOPED",
+    "numerical_results": "NOT_REVIEWED_IN_R6",
+    "implementation": "C9_REQUIRED"
+  },
+  "executions": {
+    "native_calls": 0,
+    "source_field_evaluations": 0,
+    "scientific_numerical_calculations": 0,
+    "compiler_invocations": 0,
+    "remote_mutations": 0,
+    "permitted_metadata_operations": [
+      "read-only JSON schema inspection",
+      "SHA-256 of reviewed local files"
+    ]
+  },
+  "physical_ceiling": {
+    "canonical": "28/88",
+    "canonical_increment": 0,
+    "physical_coverage": "0/313",
+    "QSS03_nonsingularity_inverse_gain": "SEPARATE_OPEN_PROVIDER",
+    "full_state_tangent": "NOT_SUPPLIED_BY_INCOMING_ONLY_UNIT",
+    "physical_tube": "NOT_ADMITTED"
+  },
+  "scientific_execution_evidence_adopted_from_controller": false,
+  "files_written_by_reviewer": [
+    "reviews/R6_REVIEW.md",
+    "reviews/R6_RECEIPT.json"
+  ]
+}

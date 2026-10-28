@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "independent_adjoint_residual": true,
+    "nonmutation": true,
+    "six_invalid_cases": true,
+    "known_solution_both_orientations": true,
+    "changed_adjoint_rejected": true,
+    "same_index_transpose_rejected": true,
+    "swapped_lyman_source_rejected": true
+  },
+  "invalid_cases": {
+    "foreign_source": {
+      "rejected": true,
+      "error": "foreign source archive"
+    },
+    "wrong_binding": {
+      "rejected": true,
+      "error": "call_id/slot binding mismatch"
+    },
+    "wrong_phase": {
+      "rejected": true,
+      "error": "fixed physical/units/temperature-origin labels differ"
+    },
+    "wrong_units": {
+      "rejected": true,
+      "error": "fixed physical/units/temperature-origin labels differ"
+    },
+    "wrong_shape": {
+      "rejected": true,
+      "error": "V[0]: expected length 311"
+    },
+    "nonfinite": {
+      "rejected": true,
+      "error": "hexadecimal prefix required"
+    }
+  },
+  "known_solution": [
+    {
+      "transpose": false,
+      "scaled_error": "2.40E-78",
+      "pass": true
+    },
+    {
+      "transpose": true,
+      "scaled_error": "9.5E-79",
+      "pass": true
+    }
+  ],
+  "wrong_transpose_residual": "0.36056698591833081660768074419508094019228537737395118791103757392974760580606175",
+  "changed_adjoint_residual": "0.0049751243781094527363184079601990049751243781094527363184079601990049751243781822",
+  "swapped_lyman_forcing_mismatch": "0.00081318228013598696560522606055766794567599017462204016345740159246110755934123341",
+  "new_native_calls": 0,
+  "pass": true
+}

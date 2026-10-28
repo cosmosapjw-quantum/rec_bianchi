@@ -1,0 +1,511 @@
+{
+  "schema": "REC_H5_ELECTRON_RESPONSE01_C9_RECEIPT_V1",
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-ELECTRON-RESPONSE01",
+  "stage": "C9",
+  "status": "complete",
+  "verdict": "PASS_SCOPED",
+  "created_UTC": "2026-10-28T11:08:31.304380+00:00",
+  "reviewer": {
+    "agent": "/root/response_c9_audit",
+    "nonauthor": true,
+    "separate_agent_context": true,
+    "requested_runtime_model": "UNSPECIFIED_IN_REVIEW_TASK",
+    "observed_runtime_model": "NOT_OBSERVED",
+    "different_model_family_identity_established": false,
+    "helper_agent": "/root/response_c9_audit/c9_metadata_audit",
+    "helper_scope": "Read-only hashes, original-member equality, JSON schema/bindings, finite serialization, count and resource arithmetic",
+    "R6_conclusion_used_as_substitute_for_direct_review": false,
+    "root_summary_used_as_substitute_for_direct_review": false
+  },
+  "scope": {
+    "points": 132,
+    "incoming_coordinates": 313,
+    "virtual_coordinates": 311,
+    "Lyman_coordinates": 2,
+    "conditions": "FULL/H_STEADY/He-neutral/xe=xHII/fsR=meR=1; fixed P and initialized tables; eta=ln(a); native cm3/s/eV units",
+    "models": [
+      "source-structured frozen represented-coefficient real model",
+      "native-prefix-lift frozen real coefficient model"
+    ],
+    "mathematical_target": "M^T lambda=q=(Beta/H,0); J=G^T lambda; finite-increment affine response at fixed coefficients",
+    "abstract_condition": "Exact-real M invertible",
+    "algorithm_additional_conditions": "Invertible V and nonzero exact pivots of the chosen tridiagonal elimination, plus nonzero Schur determinant",
+    "accepted_use": "Saved-point numerical incoming response and explicit comparison of two declared real coefficient models"
+  },
+  "methods": [
+    "Direct source-to-code tracing of original hydrogen.c and all three current Python files",
+    "Independent algebraic derivation of the saved discrepancy decomposition signs",
+    "Static review of shifted transpose bands and Cstored orientation against original-coordinate sparse assembly",
+    "Direct inspection of all six existing RESULT.json and resource receipts, cumulative ledger, model summary and raw response samples 0/66/131",
+    "Lightweight read-only hash/schema/binding/finite/count/resource arithmetic checks; no scientific module imports",
+    "Exact textual legend-change reversal hashes to original reviewed study.py",
+    "Direct wrapper diff against preserved original and validation of prospective PLOTS002 snapshot identities",
+    "Visual inspection of both final PLOTS002 PNG files"
+  ],
+  "reviewer_executions": {
+    "scientific_reexecution_status": "not_run",
+    "new_scientific_runs": 0,
+    "new_native_calls": 0,
+    "new_solver_calls": 0,
+    "native_source_reconstruction_runs": 0,
+    "readonly_metadata_checks_executed": true,
+    "CPU_of_metadata_model_and_tool_operations": "UNKNOWN_NOT_ZERO",
+    "numerical_evidence_status": "Inspected existing author execution artifacts, not independently rerun by C9"
+  },
+  "numerical_evidence": {
+    "C6": "execution/C6_attempt001/RESULT.json",
+    "C7": "execution/C7_attempt001/RESULT.json",
+    "C8_original": "execution/C8_attempt001/RESULT.json",
+    "C8_prefix": "execution/C8_NATIVE_attempt001/RESULT.json",
+    "prefix_source_parity": "execution/C8_NATIVE_attempt001/MODEL_SUMMARY.json",
+    "real_response_values": 41316,
+    "prefix_response_values": 41316,
+    "all_132_adjoint_solutions_reused_for_prefix": true,
+    "original_model_source_bridge": {
+      "result": "fail",
+      "pass_count": 2,
+      "fail_count": 7,
+      "retained": true,
+      "execution_exit_code": 2
+    },
+    "prefix_model_source_bridge": {
+      "result": "pass_scoped",
+      "pass_count": 9,
+      "fail_count": 0
+    },
+    "G_threshold_identical_both_models": "1.136868377216160297393798828125000000000E-13",
+    "original_scalar_bridge_pass_count": 9,
+    "prefix_scalar_bridge_pass_count": 9,
+    "prefix_source_parity_equal": 44133,
+    "prefix_source_parity_total": 44133,
+    "prefix_source_records": 141,
+    "precision_fixture_indices": [
+      0,
+      66,
+      131
+    ],
+    "independent_SciPy_fixture_indices": [
+      0,
+      66,
+      131
+    ],
+    "primal_directions": [
+      "Ly0",
+      "Ly1",
+      "alternating_virtual"
+    ],
+    "native_controls_direction_rank": "One incoming direction per representative point, three points; not 313 independent native column tests",
+    "independence_classification": {
+      "sparse_residual": "Independent multiplication and original-coordinate assembly inside author validation",
+      "SciPy": "Independent sparse-solver algorithm at three points inside author validation",
+      "Decimal80_120": "Precision comparison of the structured implementation",
+      "C9": "Separate nonauthor static and evidence review; no numerical reproduction"
+    },
+    "limitations": [
+      "Numerical backward residuals and precision comparisons are not interval forward-error or nonsingularity certificates",
+      "Source-output parity is observed only on stored records and does not establish unrecorded intermediate bits or cross-libm portability",
+      "J is a derivative of a declared frozen real coefficient model, not of the stepwise binary64 rounding map"
+    ]
+  },
+  "findings": [
+    {
+      "id": "C9-F01",
+      "classification": "provenance/reproducibility",
+      "severity": "nonblocking",
+      "status": "historical_limitation_retained; prospective_recording_corrected",
+      "target": "Original attempt001 execution receipts and code/run_bounded.py",
+      "observation": "Original five executions lack execution-time code hashes and dependency/libc snapshots",
+      "impact": "Later hashes cannot prove historical executed bytes; no demonstrated numerical inconsistency",
+      "resolution": "Current review snapshot explicitly marked nonretroactive; revised wrapper records prospective identities; actual PLOTS002 snapshot and receipt verified",
+      "evidence": [
+        "reviews/C9_CURRENT_ENVIRONMENT_SNAPSHOT.json",
+        "reviews/source_snapshots/run_bounded_before_C9.py",
+        "execution/PLOTS_attempt002/PRE_EXECUTION_SNAPSHOT.json",
+        "execution/PLOTS_attempt002/RESOURCE_RECEIPT.json"
+      ]
+    },
+    {
+      "id": "C9-F02",
+      "classification": "execution-wrapper",
+      "severity": "low",
+      "status": "closed_prospective_fix_verified_statically",
+      "target": "code/run_bounded.py CPU cap policy",
+      "observation": "Old ceil(remaining), hard cap+1 could overshoot a subsecond remaining total before post-run detection",
+      "impact": "No measured violation occurred in this unit",
+      "resolution": "floor(remaining)-1 reserve; cap<1 refusal; soft=hard; measured post-run ledger retained; original wrapper preserved",
+      "evidence": [
+        "code/run_bounded.py",
+        "reviews/source_snapshots/run_bounded_before_C9.py",
+        "execution/PLOTS_attempt002/RESOURCE_RECEIPT.json"
+      ]
+    }
+  ],
+  "unresolved_blocking_scientific_findings": 0,
+  "resource_review": {
+    "ledger": "execution/RESOURCE_LEDGER.json",
+    "runs": 6,
+    "all_receipts_equal_ledger_entries": true,
+    "known_child_CPU_s": 15.866848,
+    "remaining_CPU_s": 44.133152,
+    "CPU_cap_s": 60,
+    "max_child_wall_s": 4.200537989003351,
+    "max_reported_RSS_KiB": 227340,
+    "RLIMIT_AS_bytes": 536870912,
+    "single_thread_environment_requested": true,
+    "failed_original_C8_charged": true,
+    "both_plotting_attempts_charged": true,
+    "new_native_calls": 0,
+    "prior_unit_budget_transfer": false,
+    "parent_model_network_metadata_packaging_cost": "UNKNOWN_NOT_ZERO"
+  },
+  "scientific_ceiling": {
+    "physical": "0/313",
+    "canonical_completed": 28,
+    "canonical_total": 88,
+    "canonical_increment": 0,
+    "QSS03_coefficient_box_inverse_gain": "NOT_SUPPLIED",
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "full_state_coupled_tangent": "NOT_COMPUTED",
+    "physical_tube": "NOT_SUPPLIED",
+    "new_strong_no_go_claim": false,
+    "predecessor_C10": "REUSED_SEPARATE_WORK; no successor completion credit"
+  },
+  "final_code_sha256": {
+    "code/incoming_response.py": "ce47a2bc204c58c29cc0962aa78c2130e7381279953a78198d6de3fb693649ac",
+    "code/run_bounded.py": "77abedc96700e0c19807b26d1a3666ba5b6162883986936acbe6786f90af7e59",
+    "code/study.py": "d66e7ca2bfa558ba54c47940832c99443318cd64842e0635026ceb66d4c5389b"
+  },
+  "original_source_reference": {
+    "archive_sha256": "3e841711a3817dadfb46445ea22bcd1cf9e46aeb52d5270aca86333bd77c6ff2",
+    "archive_bytes": 16076171,
+    "native_source_archive_sha256": "94b454c75b51f7c7af38126510cec609f5d7cfb2eb69ca78a491def54b31791c",
+    "restored_original_members_match": true,
+    "predecessor_BUILD_RECEIPT_sha256": "787b347e6424aff8a7f293e89436a807175a8fd2dfdf9c666f8e2b341d126113",
+    "native_library_sha256": "9a1b1586faa55af1899746b51005e2c7309175e904a1f7bc15fa57801442b40b"
+  },
+  "report": {
+    "path": "reviews/C9_REVIEW.md",
+    "bytes": 19875,
+    "sha256": "85903a0d29a3649a4dce7e07a226be72db6af0b798f8283de79a0accfab71b51"
+  },
+  "review_time_artifacts": [
+    {
+      "path": "CONTRACT.md",
+      "bytes": 7292,
+      "sha256": "4b77633b0b5001542cf52d0f904ea9bfaedfb8acf6b5010877d56db2d99408c1"
+    },
+    {
+      "path": "INPUT_MANIFEST.json",
+      "bytes": 2718,
+      "sha256": "29aeae726dbec60220ef0b47379bff7c5cd26eba8f17887df6084920f48e54ed"
+    },
+    {
+      "path": "MODEL_COMPARISON_CONTRACT.md",
+      "bytes": 3715,
+      "sha256": "f6d2c83291af1449cdb90f0603ce31920812d98a3fecf8d5146b1aa95801c995"
+    },
+    {
+      "path": "THEORY.md",
+      "bytes": 5879,
+      "sha256": "6608c8c4e5bed4988169fed65cb57eef2eb53460bf488d74f8252adbf225dcd1"
+    },
+    {
+      "path": "code/incoming_response.py",
+      "bytes": 22861,
+      "sha256": "ce47a2bc204c58c29cc0962aa78c2130e7381279953a78198d6de3fb693649ac"
+    },
+    {
+      "path": "code/run_bounded.py",
+      "bytes": 5019,
+      "sha256": "77abedc96700e0c19807b26d1a3666ba5b6162883986936acbe6786f90af7e59"
+    },
+    {
+      "path": "code/study.py",
+      "bytes": 25068,
+      "sha256": "d66e7ca2bfa558ba54c47940832c99443318cd64842e0635026ceb66d4c5389b"
+    },
+    {
+      "path": "execution/C6_attempt001/RESOURCE_RECEIPT.json",
+      "bytes": 652,
+      "sha256": "6116f15a694b7fcc2da1200178d83d0c25ccf80bbb42cfd0c1c0c8e6d5f8d583"
+    },
+    {
+      "path": "execution/C6_attempt001/RESULT.json",
+      "bytes": 1554,
+      "sha256": "3916ec23e591eadda9276ddc20ee65fab8bf1d0a5c17d8f84940faeb7ccecd51"
+    },
+    {
+      "path": "execution/C6_attempt001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/C6_attempt001/stdout.txt",
+      "bytes": 53,
+      "sha256": "15bb610bb35b2d4468ec7d58b9f13359e0013d39d3fcb42b0186eda055f3dd26"
+    },
+    {
+      "path": "execution/C7_attempt001/RESOURCE_RECEIPT.json",
+      "bytes": 661,
+      "sha256": "00c55a79f099a5127671074a5ca613e0337772f0b16076b5e289097159f5523f"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_000_019.jsonl",
+      "bytes": 2607639,
+      "sha256": "db60839e167b244907b4357e05f723ca69f13c10aa6f9adbd372eab0053cce7e"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_020_039.jsonl",
+      "bytes": 2604592,
+      "sha256": "2c5962a3137c56c291c9fcf8d428340c9b8f488ca9b84b9fc5defc761e7f1cf1"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_040_059.jsonl",
+      "bytes": 2603868,
+      "sha256": "75c9c4b06bb1dbe0c5d121c3d893a72886c604cb446a5ea8b1332ae893ded057"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_060_079.jsonl",
+      "bytes": 2607613,
+      "sha256": "15f5c56c9be8e1498cd0301405441d1946c4bc004bbd68ea7585509ea5d47e00"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_080_099.jsonl",
+      "bytes": 2606031,
+      "sha256": "e995588e38d2e3c4ff80febbe8bf4cd1a16afe5d6060e6684e35571600b0080c"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_100_119.jsonl",
+      "bytes": 2603368,
+      "sha256": "aa0208cc5cd46b2393dbc85c3887b77532d2f953cb9918edb22b694c2dda665b"
+    },
+    {
+      "path": "execution/C7_attempt001/RESPONSE_120_131.jsonl",
+      "bytes": 1563431,
+      "sha256": "06ca5e27c92916c51f923abdfb0583e7e90b4185bcd6d0907a8076ec06f1c434"
+    },
+    {
+      "path": "execution/C7_attempt001/RESULT.json",
+      "bytes": 527,
+      "sha256": "0432cdcc8482eec865bc0e93630028d60df091fc0fcdf4ae90af60ce28e9ee2f"
+    },
+    {
+      "path": "execution/C7_attempt001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/C7_attempt001/stdout.txt",
+      "bytes": 53,
+      "sha256": "561ccd71781c9e791d4a0fe59b0646e042a32e34bd0cca67c37df265ecd4b0b7"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/MODEL_SUMMARY.json",
+      "bytes": 23809,
+      "sha256": "516eb9c2e7ffefd7a1d021f7d66a68854b87c7f7c26dc90593b50f10fb18936f"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_000_019.jsonl",
+      "bytes": 1104929,
+      "sha256": "4016d062e91a0511294334715ee2a449c67f8c1d26abe469eb7b180ee9ecb5b0"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_020_039.jsonl",
+      "bytes": 1104928,
+      "sha256": "c1ba8c18bf788d94196d3c3802934535586f9046fde1bca1db96d784ba7812a6"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_040_059.jsonl",
+      "bytes": 1104925,
+      "sha256": "b2ff3929da814b790d428bfa9ae7cc4a2339063c8d00954a44e4bade7fdddbbf"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_060_079.jsonl",
+      "bytes": 1104915,
+      "sha256": "4af01008631be1b831e63bfb13105310f7c1bf97ebab52cba35aa9204ce65b59"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_080_099.jsonl",
+      "bytes": 1104912,
+      "sha256": "5c59f8613fea22a3a32d89c6b6b139a21148c028b278ab2dec4ce8e4761699fa"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_100_119.jsonl",
+      "bytes": 1104933,
+      "sha256": "13eefc4f83a0474512befba8fc72d33d03e45aca52c510118919c92d0cfbc969"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/PREFIX_RESPONSE_120_131.jsonl",
+      "bytes": 662959,
+      "sha256": "98d6bfa676b9027368185304c362dd85714822526f026486a3e249950a3b5281"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/RESOURCE_RECEIPT.json",
+      "bytes": 670,
+      "sha256": "a02e51cbdd3ed9a5717445a3ededf78529221017957c7f79d6379eed6b6f5cd2"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/RESULT.json",
+      "bytes": 19331,
+      "sha256": "1e9776a3555741d2b2d2c635dde72a00e27114f0ec47e06ff51406deecb67ccb"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/C8_NATIVE_attempt001/stdout.txt",
+      "bytes": 60,
+      "sha256": "76f9ebd84ee8470a11f72e3923b692e8ee94b4817047f95cde0ef26da25df4d4"
+    },
+    {
+      "path": "execution/C8_attempt001/RESOURCE_RECEIPT.json",
+      "bytes": 652,
+      "sha256": "8312a729ce0edf749ed8a1936361ad9d05392324bd3bb226ddec5006ba32f62a"
+    },
+    {
+      "path": "execution/C8_attempt001/RESULT.json",
+      "bytes": 19325,
+      "sha256": "bf95fd289e8e71dd3885444de2a9e51e8a7c3057cb1db05a1d1359a3baa81410"
+    },
+    {
+      "path": "execution/C8_attempt001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/C8_attempt001/stdout.txt",
+      "bytes": 54,
+      "sha256": "6f0d3da6417f15bf7e2f0cd1f91fd46d10d336c949a1f7b8adbd3d000aaf2c71"
+    },
+    {
+      "path": "execution/PLOTS_attempt001/RESOURCE_RECEIPT.json",
+      "bytes": 682,
+      "sha256": "4157eba86a5cc9417ee01fb7a0034ed7df109bd9df6129d934bcb3d3c1647af1"
+    },
+    {
+      "path": "execution/PLOTS_attempt001/RESULT.json",
+      "bytes": 223,
+      "sha256": "4e42b498050dbc69e66d27e17d3622f60758d9f1bbb9b04a981a5b38e1824be7"
+    },
+    {
+      "path": "execution/PLOTS_attempt001/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/PLOTS_attempt001/stdout.txt",
+      "bytes": 56,
+      "sha256": "e5d3d9b6d65851863ffd4dcd764381fd4b24f984f469e69844135fc96ff0c828"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/PRE_EXECUTION_SNAPSHOT.json",
+      "bytes": 1211,
+      "sha256": "832b48d4046148060c771f2635aed68b8769bcb1d04c09b2eb76e252c5edf15e"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/RESOURCE_RECEIPT.json",
+      "bytes": 918,
+      "sha256": "ef8e4a41dc0b33e2e61daf2424015bad1cb09ea9210e24946d6b17b4b52b7448"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/RESULT.json",
+      "bytes": 223,
+      "sha256": "4e42b498050dbc69e66d27e17d3622f60758d9f1bbb9b04a981a5b38e1824be7"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/incoming_response.png",
+      "bytes": 201797,
+      "sha256": "6e6bad938f0012c06fa2e328b28c52c4e5398c712445b2a23d371ff65edad297"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/response_summary.csv",
+      "bytes": 62670,
+      "sha256": "4c19766fe0cf59dbdfbb6730d4bad6d55b083252562aac59be16f759777ba9b4"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/source_bridge_comparison.png",
+      "bytes": 113812,
+      "sha256": "c100ee2991c8b172c6a35518492e08eb4f5ab35d8a40ce1c3027ab53169dc191"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution/PLOTS_attempt002/stdout.txt",
+      "bytes": 56,
+      "sha256": "e5d3d9b6d65851863ffd4dcd764381fd4b24f984f469e69844135fc96ff0c828"
+    },
+    {
+      "path": "execution/RESOURCE_LEDGER.json",
+      "bytes": 5106,
+      "sha256": "ef7562cf8b3bef595b7dda403477d1608ac0ab66617d5689e4a99bba48ea5746"
+    },
+    {
+      "path": "inputs/SCIENTIFIC_ADMISSION.json",
+      "bytes": 7785,
+      "sha256": "de7b9ace1eb83e48e5d58d39deaffb50a22c7cda8bf93c969112dcfbc85a9c49"
+    },
+    {
+      "path": "inputs/execution/C7_attempt001/PRIMARY_000.jsonl",
+      "bytes": 4182851,
+      "sha256": "f6f46502327593986342c4078d69516ca8de09c0b39949d709811d1cccbc7b19"
+    },
+    {
+      "path": "inputs/execution/C7_attempt001/PRIMARY_001.jsonl",
+      "bytes": 4183281,
+      "sha256": "1b7003b351c8cbae80447d957761eaddd556623907db953b128e823b304316df"
+    },
+    {
+      "path": "inputs/execution/C7_attempt001/PRIMARY_002.jsonl",
+      "bytes": 4183454,
+      "sha256": "e7605d70bef0730dea2e0bdac926ebc9e3fd1cffa4f7ac22d12956322e6e1347"
+    },
+    {
+      "path": "inputs/execution/C7_attempt001/PRIMARY_003.jsonl",
+      "bytes": 597671,
+      "sha256": "095b353897e93b0f90baebba4abcb922ea4f049c7fe3a912570267722a05eb69"
+    },
+    {
+      "path": "inputs/execution/C8_VALIDATE_attempt001/NATIVE_CONTROLS_000.jsonl",
+      "bytes": 1129098,
+      "sha256": "4034a1b09af6ea4e88bcb5c45eae09bffc13b138555888bfd6388f029077aeba"
+    },
+    {
+      "path": "inputs/inputs/original/HyRec/hydrogen.c",
+      "bytes": 37471,
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b"
+    },
+    {
+      "path": "inputs/inputs/original/HyRec/hydrogen.h",
+      "bytes": 7837,
+      "sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba"
+    },
+    {
+      "path": "inputs/inputs/original/HyRec/hyrec_params.h",
+      "bytes": 3764,
+      "sha256": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2"
+    },
+    {
+      "path": "reviews/C9_CURRENT_ENVIRONMENT_SNAPSHOT.json",
+      "bytes": 993,
+      "sha256": "0c8203271ab9dd11f96a71e893a2a530be1cab2ccada4e531c08fe6fcbeded92"
+    },
+    {
+      "path": "reviews/source_snapshots/run_bounded_before_C9.py",
+      "bytes": 3502,
+      "sha256": "fca64342bba7b602e06ea960aad25127c5e7d05face67ce20bdff7ca61f54928"
+    }
+  ],
+  "only_files_written_by_reviewer": [
+    "reviews/C9_REVIEW.md",
+    "reviews/C9_RECEIPT.json"
+  ],
+  "next_required_scientific_execution": "NONE_FOR_THIS_SCOPED_C9_DECISION",
+  "publication_or_provider_acknowledgement_verified_by_C9": false
+}

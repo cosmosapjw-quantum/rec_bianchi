@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-ELECTRON-RESPONSE01",
+  "stage": "R6_ADDITIVE_PREFIX_MODEL",
+  "reviewer": "/root/incoming_theory_review",
+  "reviewed_at_utc": "2026-10-28T11:03:05.575232+00:00",
+  "verdict": "PASS_SCOPED",
+  "status": "CLOSED_MATHEMATICS_NEW_NUMERICAL_RESULT_REVIEW_PENDING",
+  "reviewed_files": {
+    "MODEL_COMPARISON_CONTRACT.md": {
+      "bytes": 3715,
+      "sha256": "f6d2c83291af1449cdb90f0603ce31920812d98a3fecf8d5146b1aa95801c995"
+    },
+    "code/incoming_response.py": {
+      "bytes": 22861,
+      "sha256": "ce47a2bc204c58c29cc0962aa78c2130e7381279953a78198d6de3fb693649ac"
+    },
+    "reviews/R6_REVIEW.md": {
+      "bytes": 8321,
+      "sha256": "8ba3c62546ac752c1f428aa18e3fa2bffe4d959f16b411a5bdda27abba12c47c"
+    },
+    "reviews/R6_RECEIPT.json": {
+      "bytes": 3400,
+      "sha256": "59ff2f038b9e98a2d80e79602482fabb822f88654b9d2011e233cabb2ad9356b"
+    },
+    "reviews/R6_PREFIX_REVIEW.md": {
+      "bytes": 6729,
+      "sha256": "bc11027abd1864d57ec1c34b2de51e6e6effe8b7a6257f0cc879573c7b4c71bd"
+    }
+  },
+  "reviewed_functions": {
+    "native_prefix_data": {
+      "bytes": 1025,
+      "sha256": "ea19ec5f6c6d0bb063039aaff47043b6ad6248326453f69c67a5374a1bb3ec34"
+    },
+    "prefix_coefficients": {
+      "bytes": 391,
+      "sha256": "45783c1536f6eb8e75b7d095333420cb3b9604e18ce773e0d4a2b696a1656bd6"
+    },
+    "reconstructed_source64": {
+      "bytes": 603,
+      "sha256": "18f967caae3b08e548fd50ded71495709506f65d9b3b1f7cd621e23fdfd10f35"
+    }
+  },
+  "independence": {
+    "separate_agent": true,
+    "implementation_author": false,
+    "root_contract_or_implementation_modified": false,
+    "model_family_diversity": "NOT_OBSERVED_NOT_CLAIMED"
+  },
+  "admitted_scope": [
+    "Additional exact-real G_prefix from explicitly reconstructed host binary64 prefixes",
+    "Static mapping of virtual and Lyman source prefixes to pinned native expression",
+    "Reuse of unchanged M/q adjoint and J_prefix-J_real identity"
+  ],
+  "checks": {
+    "virtual_prefix_grouping": "PASS_SCOPED",
+    "lyman_prefix_order_and_row_mapping": "PASS_SCOPED",
+    "native_source64_static_grouping": "PASS_SCOPED",
+    "exact_real_vs_floating_map_separation": "PASS_SCOPED",
+    "failed_original_model_preservation": "REQUIRED_AND_EXPLICIT_IN_CONTRACT",
+    "new_numerical_outputs": "NOT_REVIEWED",
+    "whole_implementation": "C9_REQUIRED"
+  },
+  "original_model_status": {
+    "original_source_bridge_controller_report": "2/9 PASS;7/9 FAIL at unchanged512eps64",
+    "failure_overwritten": false,
+    "original_R6_records_changed": false,
+    "adjoint_theorem": "REMAINS_CONDITIONALLY_VALID"
+  },
+  "scope_limits": [
+    "exp64 is current host math.exp output; correctly-rounded or original-libm identity not asserted",
+    "Output bitwise parity does not uniquely recover missing intermediary bits or prove portability",
+    "Saved controls rank one per three points",
+    "Exact nonsingularity and QSS03 inverse gain remain separate",
+    "Full thermodynamic derivative providers and physical tube not supplied"
+  ],
+  "open_blocking_findings": 0,
+  "executions": {
+    "numerical_module_imports": 0,
+    "native_calls": 0,
+    "source_reconstructions_executed": 0,
+    "adjoint_solves": 0,
+    "scientific_numerical_calculations": 0,
+    "remote_mutations": 0,
+    "metadata_only_reads_and_hashing": true
+  },
+  "new_files_written": [
+    "reviews/R6_PREFIX_REVIEW.md",
+    "reviews/R6_PREFIX_RECEIPT.json"
+  ]
+}

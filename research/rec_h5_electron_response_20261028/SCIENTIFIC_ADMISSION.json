@@ -1,0 +1,182 @@
+{
+  "schema": "REC_H5_ELECTRON_RESPONSE01_ADMISSION_V1",
+  "unit_id": "REC-H5-ELECTRON-RESPONSE01",
+  "workflow_version": "1.0.0",
+  "recorded_UTC": "2026-10-28T11:10:02.492947+00:00",
+  "verdict": "PASS_SCOPED_TWO_MODELS_WITH_ORIGINAL_BRIDGE_FAILURE_PRESERVED",
+  "scientific_review_status": "CLOSED",
+  "owner_repository": "cosmosapjw-quantum/rec_bianchi",
+  "branch": "research/rec-h5-electron-response-20261028",
+  "scientific_input_source_commit": "bc9fd57d41dcfc6aaa717bfd7f8e98846d10332e",
+  "publication_parent_commit": "6cf3a19790b46aee4662be7048b49d47b628f39e",
+  "admitted_scope": {
+    "component": "fixed-P incoming-radiation adjoint response of source-point electron field",
+    "point_model": "FULL/H_STEADY/He-neutral/xe=xHII/fsR=meR=1",
+    "primary_points": 132,
+    "incoming_virtual": 311,
+    "incoming_lyman": 2,
+    "coefficients_per_model": 41316,
+    "clock": "eta=ln(a)",
+    "native_units": "nH cm^-3; H s^-1; TM/TR eV",
+    "real_formula_model": "exact-real lift of saved coefficients with specified real Pi; native source bridge FAILED 7/9",
+    "prefix_model": "host-reconstructed binary64 coefficient prefixes lifted to a fixed-P exact-real affine model",
+    "native_rounding_map_derivative": false,
+    "unrecorded_native_intermediate_bit_identity": false,
+    "cross_libm_portability_certificate": false,
+    "ordinary_full_P_derivative": false
+  },
+  "actual_evidence": {
+    "all_132_adjoint_residual_max": "2.6227162888490522195698452970064307835111453417109382354975292446609302975318269E-79",
+    "adjoint_gate": "1e-60",
+    "real_G_bridge_pass": 2,
+    "real_G_bridge_fail": 7,
+    "prefix_G_bridge_pass": 9,
+    "G_bridge_gate": "512 eps64=1.136868377216160297393798828125e-13",
+    "source_entry_parity": {
+      "equal": 44133,
+      "total": 44133,
+      "records": 141,
+      "target": "binary64 reconstructed_source64 including final rounded products/sums; not exact-real affine output"
+    },
+    "prefix_FH_bridge_pass": 9,
+    "control_rank": "1 per representative point; 3 points; not 313 native columns",
+    "prefix_j1_min": "2061882971775383.9302619379423027121039481108481634312391843240865678225137320965",
+    "prefix_j1_max": "2193136787518651.7177132995587346629151609804788980139504043948774724815400866852",
+    "max_scaled_J_change_from_real": "1.1486118771814050959120204529606420215084613891363561278771600016109842228028169E-13",
+    "all_132_adjoint_reused_for_prefix": true,
+    "original_failed_C8_exit_code": 2
+  },
+  "reviews": {
+    "R6": {
+      "agent": "/root/incoming_theory_review",
+      "verdict": "PASS_SCOPED",
+      "nonauthor": true,
+      "receipt": "reviews/R6_RECEIPT.json"
+    },
+    "R6_prefix": {
+      "verdict": "PASS_SCOPED",
+      "receipt": "reviews/R6_PREFIX_RECEIPT.json"
+    },
+    "C9": {
+      "agent": "/root/response_c9_audit",
+      "verdict": "PASS_SCOPED",
+      "fresh_separate_context": true,
+      "nonauthor": true,
+      "receipt": "reviews/C9_RECEIPT.json"
+    },
+    "unresolved_scientific_blockers": 0,
+    "reviewer_new_scientific_executions": 0,
+    "runtime_model_family_diversity": "NOT_OBSERVED"
+  },
+  "retained_limitations": {
+    "C9_F01": "attempt001 execution-time code/environment snapshots absent; later snapshot is not retroactive; prospective snapshot first used for PLOTS002",
+    "C9_F02": "future-only conservative budget fix accepted; old wrapper retained; no exact subsecond CPU-governor certificate"
+  },
+  "locked_artifacts": {
+    "CONTRACT.md": {
+      "bytes": 7292,
+      "sha256": "4b77633b0b5001542cf52d0f904ea9bfaedfb8acf6b5010877d56db2d99408c1"
+    },
+    "THEORY.md": {
+      "bytes": 5879,
+      "sha256": "6608c8c4e5bed4988169fed65cb57eef2eb53460bf488d74f8252adbf225dcd1"
+    },
+    "MODEL_COMPARISON_CONTRACT.md": {
+      "bytes": 3715,
+      "sha256": "f6d2c83291af1449cdb90f0603ce31920812d98a3fecf8d5146b1aa95801c995"
+    },
+    "INPUT_MANIFEST.json": {
+      "bytes": 2718,
+      "sha256": "29aeae726dbec60220ef0b47379bff7c5cd26eba8f17887df6084920f48e54ed"
+    },
+    "code/incoming_response.py": {
+      "bytes": 22861,
+      "sha256": "ce47a2bc204c58c29cc0962aa78c2130e7381279953a78198d6de3fb693649ac"
+    },
+    "code/study.py": {
+      "bytes": 25068,
+      "sha256": "d66e7ca2bfa558ba54c47940832c99443318cd64842e0635026ceb66d4c5389b"
+    },
+    "code/run_bounded.py": {
+      "bytes": 5019,
+      "sha256": "77abedc96700e0c19807b26d1a3666ba5b6162883986936acbe6786f90af7e59"
+    },
+    "reviews/R6_RECEIPT.json": {
+      "bytes": 3400,
+      "sha256": "59ff2f038b9e98a2d80e79602482fabb822f88654b9d2011e233cabb2ad9356b"
+    },
+    "reviews/R6_PREFIX_RECEIPT.json": {
+      "bytes": 3490,
+      "sha256": "204042ecdc4306cd1413e1e6a020580be7eb566e295aa3b235f3f6691093368e"
+    },
+    "reviews/C9_RECEIPT.json": {
+      "bytes": 20308,
+      "sha256": "de6bc549b417d52df38b8835a4d995d3bf7ccf971f7e2c1b3964585c29f8da90"
+    },
+    "execution/RESOURCE_LEDGER.json": {
+      "bytes": 5106,
+      "sha256": "ef7562cf8b3bef595b7dda403477d1608ac0ab66617d5689e4a99bba48ea5746"
+    }
+  },
+  "resource": {
+    "known_child_CPU_s": 15.866848,
+    "CPU_cap_s": 60,
+    "remaining_known_CPU_s": 44.133152,
+    "child_wall_cap_s": 30,
+    "child_RLIMIT_AS_MiB": 512,
+    "single_thread_environment": true,
+    "new_native_calls": 0,
+    "old_budget_transfer_or_reset": false,
+    "other_costs": "parent/model/network/metadata/packaging UNKNOWN_NOT_ZERO"
+  },
+  "scientific_ceiling": {
+    "canonical_completed": 28,
+    "canonical_total": 88,
+    "canonical_increment": 0,
+    "separate_REI_working": "33/88; not added",
+    "reference": "313/313",
+    "physical": "0/313",
+    "physical_query": null,
+    "K": null,
+    "M2": null,
+    "defect": null,
+    "L": null,
+    "tube": null,
+    "e0": null,
+    "epsilon": null,
+    "outgoing": null,
+    "actual_full_state_coupled_F": null,
+    "total_xe_prime_whole_domain": null,
+    "model_error": null,
+    "whole_domain_defect": null,
+    "full_state_norm": null,
+    "positive_physical_tube": null,
+    "physical_curvature": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4": false,
+    "REI_activation": false
+  },
+  "not_admitted": [
+    "exact nonsingularity or interval inverse-gain certificate",
+    "full-P coefficient derivative provider",
+    "native floating-point rounding-map derivative",
+    "continuous-domain Lipschitz or monotonicity certificate",
+    "whole-history accuracy improvement from expm1",
+    "physical query, defect, e0, tube or canonical closure"
+  ],
+  "old_campaign_reruns": {
+    "producer": 0,
+    "reference": 0,
+    "native_full_history": 0,
+    "oldtests": 0,
+    "BGJET_audit": 0,
+    "QSS03_certificate": 0,
+    "thermal_residual": 0
+  },
+  "production_HyRec_modified": false,
+  "central_DAG_mutations": 0,
+  "main_merge": false,
+  "automatic_next_unit": "OFF_AFTER_THIS_SELECTED_UNIT",
+  "delivery_status": "SCIENTIFICALLY_CLOSED_PROVIDER_ACK_PENDING; final delivery is a separate receipt"
+}
