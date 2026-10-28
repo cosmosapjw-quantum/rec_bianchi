@@ -1,7 +1,7 @@
 # REC-H5-ELECTRON-RESPONSE01
 
 The fixed-P incoming-radiation response of the source-point electron field is
-computed at 132 saved writers, with 313 coefficients per point. Read
+computed at 132 saved writers, with 313 coefficients per point. The selected research unit is **20/20 COMPLETE_SCOPED_DELIVERY**. Read
 [REPORT_KO.md](REPORT_KO.md) for the scientific result and limitations.
 
 **Scoped outcome:** the adjoint and independent checks pass. The original
