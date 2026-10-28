@@ -1,0 +1,52 @@
+{
+  "status": "PROPOSED_NOT_RUN",
+  "budget_status": "NOT_ALLOCATED",
+  "new_execution_authorized": false,
+  "canonical_completion_delta": 0,
+  "physical_completion_delta": 0,
+  "implementation_route": "Astra freezes actual inputs/theory/tolerances -> lower-tier bounded implementation -> different Astra review -> root additive PR/backup",
+  "stop_policy": "Stop on changed owner reservation, missing immutable source, unit/state/clock ambiguity, failed frozen control or unallocated resource; do not auto-widen scope/tolerances/replay.",
+  "id": "REC_HD_PRIMARY_SPECTROSCOPY_RECONCILIATION_NEXT",
+  "repo": "rec_bianchi",
+  "parent_nodes": [
+    "REC-HD-ADAPTER",
+    "REC-H5-DEFECT-BOUND01"
+  ],
+  "base": "f5e049ecc20ee7b20c4fcf89003d5d12d86bdcfa",
+  "pr_title": "Reconcile HD line and level provenance without relaxing spectroscopy gates",
+  "problem": "Eight signed defects expose seven original35Hz failures; printed rounding is already infeasible at secondlevel.",
+  "next_action": "Retrieve exact CDMSv2 December2011 lineage and LAMDA2021-06-07 source notes for lines2\u20138; compare original lower/upper labels, frequencies, level-energy origins and uncertainty/version metadata against pinned2289bytes. Produce an explicit source-choice proposal only if evidence identifies the differing conventions/version.",
+  "dependencies": [
+    "REC-HD-ENERGY-DEFECT01 accepted raw",
+    "original CDMS/LAMDA numerical documents and provenance",
+    "owner approval of any later physical-source replacement"
+  ],
+  "inputs_units": {
+    "levels": "cm^-1",
+    "frequency": "GHz/Hz",
+    "uncertainties": "source-reported units; missing=null",
+    "state": "neutral1H2H,J0..8; v remainsunspecified"
+  },
+  "equations": [
+    "d_i=nu_i-100*c*(w_i-w_(i-1))",
+    "delta_i=h*d_i; coupledenergydefect=sum delta_i*R_i"
+  ],
+  "acceptance": [
+    "8line correspondence and provenance tracked",
+    "do not reuse35Hz as physicalmeasurementuncertainty",
+    "no fitting/correction solely toforceclosure",
+    "old literal bytes and allfailures preserved",
+    "if replacement justified, separate proposal with affectedcontrols before execution"
+  ],
+  "owner_reservations": [
+    "REC1488a976d76f0469f97e7437c46a3fc1def855536a6 ambientxe+nH/Hscale18/20R6/C9partial",
+    "JOINT-TANGENT01 full6+313 derivative reserved",
+    "PR147incomingresponse132points closed; no native/QSS/thermodefect replay"
+  ],
+  "energy_owner": "REC line emission/absorption references WU state energy; mismatch is diagnostic, not heat or compensatingQ",
+  "claim_gate": "HOLD_SOURCE_DISCREPANCY_UNQUALIFIED until qualified sourcechoice; no automatic optical correction",
+  "pass_next": "Only affected photon/level coupling checks after evidence-backed sourcechoice; no full oldadapter replay.",
+  "execution_authorization_note": "false denotes no execution frozen for this prospective node, not missing user authorization; coordinator freezes actual inputs and a fresh cumulative budget within the authorized goal.",
+  "science_anchor": "683c3f2ac3cdcc62ad6be9fe983ea39fcd74d1de",
+  "base_note": "PR147 publication base; science_anchor is the older HD-byte/diagnostic source anchor. REC148 is the separately reserved newer thermo lane, not a reason to substitute spectroscopy bytes."
+}
