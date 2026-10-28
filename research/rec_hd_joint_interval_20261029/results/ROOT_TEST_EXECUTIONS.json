@@ -1,0 +1,46 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "executions": [
+    {
+      "name": "JOINT",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/rec_hd_joint_interval_20261029/tests",
+        "-p",
+        "test_joint_interval.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "child_cpu_s": 0.102172,
+      "wall_s": 0.10313127100016573,
+      "max_rss_KiB_cumulative_children": 13952,
+      "stdout": "results/JOINT_TEST_STDOUT.txt",
+      "stderr": "results/JOINT_TEST_STDERR.txt"
+    },
+    {
+      "name": "REGRESSION",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/rec_hd_print_precision_20261029/tests",
+        "-p",
+        "test_regression_repair.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "child_cpu_s": 0.10477099999999999,
+      "wall_s": 0.10527577199991356,
+      "max_rss_KiB_cumulative_children": 13952,
+      "stdout": "results/REGRESSION_TEST_STDOUT.txt",
+      "stderr": "results/REGRESSION_TEST_STDERR.txt"
+    }
+  ],
+  "all_process_cost": "UNMEASURED_COMPONENTS_NOT_ZERO"
+}

@@ -23,3 +23,7 @@ New commands are single-worker, small Fraction checks and17 focused regressions,
 ## C5 — Implemented source path
 
 joint_interval.py now implements exact decimal/rational validation, forward reachable intervals, reverse primal witness construction, independently accumulated all-segment inequalities, and the exact minimum enclosure scale. It distinguishes raw2289/SHA verification from literal-fixture reuse. The inherited finite parser/output patch is minimal and recorded in the final diff. New tests cover joint-only obstructions, attained boundaries, impossible zero-radius data, empty/allzero cases, malformed identities and nonfinite values. The code worker executed17 focused tests; root integration verification follows in C6. No source values, rates or35Hz gate were changed.
+
+## C6 — Fresh integrated verification
+
+The root read the complete new implementation and targeted tests plus inherited minimal diff, then ran the13 joint tests and4 repair regressions directly on the integrated files. Both commands exited0 (17/17 PASS); stdout/stderr and actual resources are in results/ROOT_TEST_EXECUTIONS.json. The expectations include independent exact Wolfram values and the demonstrable shared-level counterexample; the witness assertions check the defining constraints. No old full scientific suite or IVP/stationarity solver was rerun.
