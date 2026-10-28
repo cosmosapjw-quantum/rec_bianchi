@@ -1,0 +1,24 @@
+{
+  "stage": "C4",
+  "name": "Execution DAG and resource allocation",
+  "status": "complete",
+  "evidence": [
+    "implementation/EXECUTION_PLAN.md",
+    "FROZEN_CONTRACT.md",
+    "BUDGET_LEDGER.json"
+  ],
+  "stage_completion_count": 14,
+  "stage_total": 20,
+  "canonical_dag_completed": 28,
+  "canonical_dag_total": 88,
+  "publication": "Actual ACK stored separately in delivery/stage_receipts/C4.json",
+  "commands": [
+    "python3.12 research/rec_h5_native_path_20261028/code/run_bounded.py --mode build001",
+    "python3.12 research/rec_h5_native_path_20261028/code/run_bounded.py --mode capture001",
+    "python3.12 research/rec_h5_native_path_20261028/code/run_bounded.py --mode analysis001",
+    "python3.12 research/rec_h5_native_path_20261028/code/run_bounded.py --mode controls001",
+    "python3.12 research/rec_h5_native_path_20261028/code/run_bounded.py --mode figures001"
+  ],
+  "compiler_design": "gcc -O3 -std=c11 -D_DEFAULT_SOURCE, warnings, observation macro/helper, five original C units, -lm; exact actual command in build receipt",
+  "run_authority": "C5 source completion and root RUN_READY needed"
+}

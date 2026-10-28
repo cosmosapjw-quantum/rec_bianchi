@@ -1,0 +1,102 @@
+{
+  "schema": "REC_H5_NATIVE_PATH_ROOT_DECISION_V1",
+  "unit_id": "REC-H5-NATIVE-PATH01",
+  "as_of_UTC": "2026-10-27 21:21:32 UTC",
+  "decision": "PASS_SCOPED",
+  "admitted_scope": [
+    "Actual original-HyRec committed thermodynamic path and ordered mutating-call/write chronology over the fixed7489-row retained history window",
+    "Exact represented affine paths on all313 unchanged H5 query cells, separate committed and final-writer-input views",
+    "Discrete arithmetic and memory-shift diagnostics, not a continuous physical ODE defect"
+  ],
+  "primary_results": {
+    "photon_values_bitwise_equal": 4680625,
+    "target_scalar_checks": 1257,
+    "target_difference_failures": 0,
+    "queries": 313,
+    "endpoint_references": 626,
+    "selected_times": 132,
+    "committed_rows": 7493,
+    "global_native_calls": 90645,
+    "detailed_calls": 10510,
+    "FULL_write_events": 10510,
+    "recurrence_records": 7859,
+    "integrated_recurrences": 6852,
+    "post_saha_records": 1007,
+    "initializers": 3,
+    "controls_passed": 18,
+    "controls_total": 18
+  },
+  "independent_review": {
+    "decision": "PASS_SCOPED",
+    "path": "review/INDEPENDENT_REVIEW_C9.json",
+    "sha256": "196cadd852e3456e3194cf358fe800c0ccede59f6a0498b8560f464d3a189457",
+    "audit_CPU_s": 0.508190199,
+    "open_blocking_scientific_findings": 0
+  },
+  "physical": {
+    "coverage": "0/313",
+    "physical_query_bounds": null,
+    "full_state_K": null,
+    "physical_M2": null,
+    "physical_defect": null,
+    "stability_L": null,
+    "positive_uniform_ode_tube": null,
+    "initial_error": null,
+    "physical_epsilon": null,
+    "physical_outgoing_bound": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4": false,
+    "REI_activation": false
+  },
+  "identity": {
+    "native_archive_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "source_context_sha256": "5ccd8955bc9ea7484ddc1fca1dcf8b5a0a789e07c36ce0af3e692b959f002fe8",
+    "history_npz_sha256": "d4f82542e13fed4ff0bb60b17865d8b9de5e090a2366108169c3da7a21fcb4b1",
+    "native_executable_sha256": "7b2dc9b25e18edcf92bc949e8a417a6f81c65f14a462c57d059ec6080dd51e56",
+    "exact_affine_packet_sha256": "c76b6794ed9ac028206da113f260e303cc821655a2a68b7e98a5309e5f280bf5"
+  },
+  "budget": {
+    "planned_local_CPU_s": 600,
+    "allocations": {
+      "intake_theory": 120,
+      "implementation": 300,
+      "independent_review": 120,
+      "packaging": 60
+    },
+    "six_recorded_bounded_run_CPU_s": 16.06107697,
+    "capture001_measured_CPU": "UNKNOWN_NOT_ZERO",
+    "capture001_reserved_allocation_CPU_s": 60,
+    "allocation_is_not_measurement": true,
+    "reset": false,
+    "transfer": false
+  },
+  "failures_preserved": [
+    "build001: unrelated proc-group CPU selected because PID domains differed; targeted handshake repair and build002 passed",
+    "capture001: ENOSPC during final native raw dump and receipt serialization; raw prefix and zero-byte receipt preserved",
+    "Rejected original-removal/RAM-replacement plan was never executed; approved alternative only added new RAM code/output and kept all originals",
+    "Pre-execution RAM figure receipt-path issue repaired without arithmetic change"
+  ],
+  "progress": {
+    "local_science_stages_completed": 19,
+    "total_loop_stages": 20,
+    "canonical_DAG_completed": 28,
+    "canonical_DAG_total": 88,
+    "canonical_delta": 0,
+    "C10": "DELIVERY_IN_PROGRESS"
+  },
+  "publication": {
+    "source_science_commit": null,
+    "last_confirmed_owned_HEAD": "a21a99cd676671421ff4437f926834ec5e65af07",
+    "shared_HEAD": "b99a9468abd53de77ddae36d93180e60072885bc",
+    "fully_published_and_dual_ACK_stages": 14,
+    "C5_Dropbox_verified": {
+      "file_id": "id:BSpOijBcT10AAAAAAEDIgg",
+      "bytes": 845048
+    },
+    "C5_Drive": "NO_MATCH_IN_EXACT_FOLDER_QUERY_AT21:13UTC; transfer response pending",
+    "C5_tree_recovered": "928524b9489e7a3961839377f969272e3ef69cfc",
+    "C5_commit": "DELEGATED_ATTEMPT_PENDING_ACTUAL_RESULT",
+    "claim": "Scientific admission does not imply publication, backup or physical epsilon approval"
+  }
+}

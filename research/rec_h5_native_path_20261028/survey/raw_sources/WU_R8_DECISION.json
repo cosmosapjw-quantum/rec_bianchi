@@ -1,0 +1,54 @@
+{
+  "schema": "WU_R8_R4_C4_DECISION_V1",
+  "decision": "IMPLEMENT_FIXED_CAUSAL_LAG_REFINEMENT",
+  "source_obligation": "R7 savednative9 endpoint conservative ratios~599/~1749 with samealreadycertifiedinput",
+  "candidates": [
+    {
+      "id": "A",
+      "choice": "Actualcolliderclockconsumer",
+      "status": "INPUT_PENDING",
+      "reason": "Selectedlatestownerchanges suppliednoHDclock/densitylaw"
+    },
+    {
+      "id": "B",
+      "choice": "Fourcertificate causal lagkernel + signed-d Volterratwopass",
+      "status": "SELECTED",
+      "reason": "Explicitlyreusesexistingfamilydata; reducesa documented estimator gapwithoutinventingphysicalinputs"
+    },
+    {
+      "id": "C",
+      "choice": "Direction-aware kernels/newcertificate",
+      "status": "DEFERRED",
+      "reason": "NewKcertificateoutsidefixedreuse scope"
+    }
+  ],
+  "theory_review": {
+    "decision": "PASS_SCOPED_CONDITIONAL_LAG_KERNEL_THEORY",
+    "source": "reviews/R6_THEORY_REVIEW.json",
+    "material_findings": 0
+  },
+  "architecture": {
+    "core": "src/volterra_feedback.py",
+    "primary": "verification/run_primary.py",
+    "reference": "verification/run_reference.py",
+    "host": ".github/workflows/wu-r8-checkpoint.yml",
+    "wrapper": "delivery/build_checkpoint.py",
+    "primary_stage": "S06",
+    "reference_stage": "S07",
+    "CAS_stage": "S05",
+    "archive_only_other_stages": true
+  },
+  "fixed_budget": {
+    "primary_runs": 1,
+    "primary_OS_CPU_s": 60,
+    "reference_runs": 1,
+    "reference_OS_CPU_s": 60,
+    "scientific_CAS_calls": 1,
+    "scientific_CAS_s": 30,
+    "metadata_transport": "separate11 bounded original-archive I/O calls; declarationpreserved"
+  },
+  "fail_policy": "Retainfirstactualfailure andsource/CPU; do notrerunbyattempt2; resolveconcretefindingsunderexplicitchanged-unitrepairifneeded",
+  "implementation_status": "Corepublished; referenceintegrationprepared; source-boundprimaryrunnerinpreparation; noactualscienceyet",
+  "strict_improvement": "PENDING_MEASURED_RESULT",
+  "physical_consumer_admitted": false
+}

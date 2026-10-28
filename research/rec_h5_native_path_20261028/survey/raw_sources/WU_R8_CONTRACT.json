@@ -1,0 +1,129 @@
+{
+  "schema": "WU_R8_CAUSAL_LAG_KERNEL_CONTRACT_V1",
+  "created_utc": "2026-10-27 15:04:20 UTC",
+  "workflow_version": "1.0.0",
+  "skill_authority": "Explicit supplied physmath-research-loop1.0.0 full theoryR1-R10/codingC1-C10; exact reference instructions reused from completed R7; installed cloud1.3 defaults do not replace requested scope.",
+  "unit_id": "WU_CAUSAL_LAG_KERNEL_R8",
+  "baseline_commit": "c1badb7de44131715a4998d76515506da5573707",
+  "baseline_tree": "4e50000727f5e4152719a53dc478023e3b4d77e0",
+  "objective": "Reduce the concrete conservativeness observed in saved R7 nonlinear feedback certificates by retaining certified lag-dependent mixing inside causal Volterra integrals, then implement fixed two-pass outward cell bounds.",
+  "changed_obligation": {
+    "native_source_changed": false,
+    "old_science_replay": 0,
+    "observed_native9_R7_endpoint_bound_to_reference_R_approx": 599,
+    "observed_native9_R7_endpoint_bound_to_reference_E_approx": 1749,
+    "mathematical_code_obligation": "R7 applies contraction only to initial residual; multiple existing R6 time-length certificates can also bound earlier forcing contributions without contracting current-cell forcing."
+  },
+  "candidate_decision": {
+    "A": "Actual collider-clock binding INPUT_PENDING: no newly read named HD consumer packet",
+    "B": "SELECTED: lag-dependent kernel and two outward Volterra refinements on saved cases",
+    "C": "Direction-aware certificates DEFERRED: would require new contraction work"
+  },
+  "conventions": {
+    "vectors": "columns",
+    "norm": "l1 on kerP; E=abs(eta); coarse l1=4E in unchanged HD invariant fixture",
+    "B": "[[a,b],[c,d]], a,b,c>=0, d real",
+    "forcing": "g>=0",
+    "clock": "exact saved conditional R7 clock; no inferred physical density",
+    "state": "R5 literal HD rotational labels v=UNSPECIFIED retained",
+    "missingness": "MISSING_NOT_ZERO"
+  },
+  "algorithm": {
+    "cells": 192,
+    "macroblocks": 3,
+    "cells_per_macroblock": 64,
+    "passes": 2,
+    "dyadic_bits": 128,
+    "native_certificate_steps": [
+      2,
+      8,
+      32,
+      64
+    ],
+    "two_state_certificate_steps": [
+      64
+    ],
+    "baseline": "Saved R7 whole_block_upper repeated64 per macroblock",
+    "kernel": "h[0]=1; h[n]=min(h[n-1],up(rho_j*h[n-m_j])) with exact same-family, uniform-all-starts and clock binding",
+    "whole_R": "h[n]*R0+delta*sum(j<n,h[n-j-1]*(a*U_R[j]+b*U_E[j]+g_r))+delta*(a*U_R[n]+b*U_E[n]+g_r)",
+    "endpoint_R": "h[n+1]*R0+delta*sum(j<=n,h[n-j]*(a*U_R[j]+b*U_E[j]+g_r))",
+    "coarse": "Exact exponential cell-integral bounds with signed d; do not replace damping by dplus in the Volterra kernel",
+    "descent": "U_next=min(U_previous,outward_cell_operator(U_previous)) componentwise",
+    "point_caps": "Only actual saved R7 query values and certificate.w_next_upper at exact matching clocks; no interpolation, no reference trajectory as cap",
+    "exponential_dependency": "Reuse immutable R7 exp_neg_enclosure on NEW delta input; no old case replay"
+  },
+  "evidence_reuse": {
+    "R6_primary": {
+      "path": "../provider_registry_molecular_r6_20261027/raw/PRIMARY_RESULTS.json",
+      "sha256": "1a3b55f7c14a64a10a651de2df7b7f7d2df24d0b9e809b729f32d73377c90e84"
+    },
+    "R7_primary": {
+      "path": "../provider_registry_molecular_r7_20261027/raw/PRIMARY_RESULTS.json",
+      "sha256": "6eaf3c0eed7968cf4023180e15373a180bb5b1bab2e56cd4a8547387ed337a15"
+    },
+    "R7_reference": {
+      "path": "../provider_registry_molecular_r7_20261027/raw/REFERENCE_RESULTS.json",
+      "sha256": "e403c7803c080fd4f26be71a93b782b02d874f80ef11c85a706bea71e2a743cd"
+    },
+    "R7_core": {
+      "path": "../provider_registry_molecular_r7_20261027/src/nonlinear_feedback.py",
+      "sha256": "002a66a30961b21e566a940462468c9ea8e1bc868d98549d3ea79d164c239957"
+    }
+  },
+  "acceptance": [
+    "General proof of lag-kernel composition and monotone causal upper refinement",
+    "Same-family R6 binding and valid cell/endpoint indices including d<0,d=0,d>0",
+    "Callable exact outward arithmetic with source/clock/state guards",
+    "One fixed primary and one independent Decimal/reference comparison using saved R7 trajectories",
+    "No new ODE solve; strict improvement reported only if actually obtained",
+    "Independent theory/code review closes material findings",
+    "Actual stage Git publication, backup receipts and copyable handoff"
+  ],
+  "execution": {
+    "primary_runs": 1,
+    "independent_reference_runs": 1,
+    "Wolfram_evaluator_calls": 1,
+    "CPU_primary_limit_s": 60,
+    "CPU_reference_limit_s": 60,
+    "Wolfram_time_limit_s": 30,
+    "old_R7_remaining": [
+      0,
+      0,
+      0
+    ],
+    "old_R6_remaining": [
+      0,
+      0,
+      0
+    ],
+    "old_PHYS91_remaining": [
+      0,
+      0,
+      0
+    ],
+    "global_remaining": null,
+    "full_historical_CPU": null,
+    "old_budget_reset_or_transfer": false,
+    "physical_IVP": 0,
+    "new_Q": 0,
+    "productive_repair": "Only observed concrete defect after changed-input diagnosis; retain first failure and actual cost; no blind rerun"
+  },
+  "publication": {
+    "repository": "cosmosapjw-quantum/WU088_HH",
+    "branch": "research/provider-registry-20261025",
+    "draft_PR": 150,
+    "force": false,
+    "main_merge": false,
+    "other_owner_mutations": false
+  },
+  "physical_admission": {
+    "actual_HD_consumer": false,
+    "native_reactive_array": false,
+    "clock_density_binding": false,
+    "HH_R10": "OFF",
+    "production": "NOT_ISSUED",
+    "L4_ready": false,
+    "central_completion_delta": 0,
+    "physical_completion_delta": 0
+  }
+}

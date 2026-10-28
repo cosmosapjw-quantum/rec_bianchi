@@ -1,0 +1,18 @@
+{
+  "schema": "REC_H5_NATIVE_PATH_R7_SYMBOLIC_V1",
+  "command": "ClearAll[t,h,a,y,M,s,v,U,A,B,UL,UR]; y[t_]:=Sum[a[k] t^k/Factorial[k],{k,0,5}]; residual=Expand[y[h]-y[0]-h(5 y'[0]/4-y'[-2h]/4)]; U[t_]:=(1-(t-A)/(B-A)) UL+(t-A)/(B-A) UR; M[t_]:={{2+t,-1},{-1,3+t^2}}; s[t_]:={1+t,t^2}; v[t_]:=Inverse[M[t]].s[t]; result=<|\"recurrence_h3\"->Coefficient[residual,h,3],\"recurrence_h4\"->Coefficient[residual,h,4],\"constant_linear_exact\"->{Coefficient[residual,h,1],Coefficient[residual,h,2]},\"affine_endpoints\"->Simplify[{U[A]-UL,U[B]-UR}],\"affine_slope\"->Simplify[D[U[t],t]-(UR-UL)/(B-A)],\"implicit_first\"->Simplify[D[v[t],t]-Inverse[M[t]].(D[s[t],t]-D[M[t],t].v[t])],\"implicit_second\"->Simplify[D[v[t],{t,2}]-Inverse[M[t]].(D[s[t],{t,2}]-D[M[t],{t,2}].v[t]-2 D[M[t],t].D[v[t],t])],\"matrix_determinant\"->Factor[Det[M[t]]],\"neutral_sign\"->Simplify[(1-(x+h(5 f/4-g/4)))-(1-x)+h(5 f/4-g/4)]|>; result",
+  "time_constraint_s": 20,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Symbol::undefined2: Warning: Global symbols \"M, U, A, B, UL, UR, U, A, B, A, UL, A, B, A, UR ... L, U, B, UR, U, UR, UL, B, A, M, M, M, M, M, M\" are undefined.\nPower::indet: Indeterminate expression 0^0 encountered.\nGeneral::messages: Messages were generated which may indicate errors.\n\nOut[1]= <|\"recurrence_h3\" -> 0, \"recurrence_h4\" -> 0, \"constant_linear_exact\" -> {0, 0}, \"affine_endpoints\" -> {0, 0}, \"affine_slope\" -> 0, \"implicit_first\" -> {0, 0}, \"implicit_second\" -> {0, 0}, \"matrix_determinant\" -> 5 + 3*t + 2*t^2 + t^3, \"neutral_sign\" -> 0|>"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "local_cpu": "NO_LOCAL_NUMERICAL_EXECUTION",
+  "remote_cpu": "UNKNOWN_NOT_EXPOSED",
+  "earlier_context_lookup": "tool internal error; no result asserted"
+}
