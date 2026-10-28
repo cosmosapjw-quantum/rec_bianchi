@@ -1,0 +1,66 @@
+{
+  "schema": "CENTRAL_NATIVE_PATH_BACKLINK_REVIEW_V1",
+  "verdict": "PASS_SCOPED",
+  "reviewer_task": "/root/central_return_locate",
+  "reviewer_role": "independent authority review of mechanical metadata patch",
+  "patch_authorship": false,
+  "runtime_model_identity": "NOT_OBSERVED",
+  "base_head": "7937ed4a842eb1ef6cec562a4224fb0add63d0d6",
+  "base_sha256": "5c389d46ab6394270df0bdf12f742d45a2881bfb2ec4227f61b137034ecbd37d",
+  "candidate_sha256": "be336cf3dfcea8f181ee85ec24e857452457f3db4565bec8f031f14027f2c2e5",
+  "candidate_git_blob": "8b13d4ae851db134dce776fb7d016b5ed11df5a1",
+  "candidate_bytes": 1640050,
+  "methods": [
+    "read prepared unified diff and implementation receipt",
+    "independently parse both complete DAGs rejecting duplicate JSON keys",
+    "recursive type/value/key diff without trusting implementation receipt flags",
+    "independent first-difference and exact insertion-removal byte check",
+    "check six backlink fields against source-bound central return"
+  ],
+  "actual_json_differences": [
+    [
+      "/nodes/71/owner_return_native_path01_20261028",
+      "added"
+    ]
+  ],
+  "exact_insertion_bytes": 561,
+  "all_prior_bytes_restored_by_insertion_removal": true,
+  "six_field_backlink": {
+    "count_increment": 0,
+    "return_commit": "df806909aee8f25efcfa4faeefca77a5271f546c",
+    "return_url": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/df806909aee8f25efcfa4faeefca77a5271f546c/research/orchestration_expansion_20261025/returns/REC_H5_NATIVE_PATH01_20261028.json",
+    "source_commit": "f4af3806d9af65645d513642a0a047e401877866",
+    "source_file": "returns/REC_H5_NATIVE_PATH01_20261028.json",
+    "source_repository": "cosmosapjw-quantum/rec_bianchi"
+  },
+  "nodes": 88,
+  "integration_edges": 17,
+  "scope_preserved": [
+    "all preexisting JSON values, including source contracts, authorities, statuses, counters and physical ceilings",
+    "parallel HE EXFOR11 and QUARTIC12 contents"
+  ],
+  "findings": [],
+  "open_blocking_findings": 0,
+  "executions": {
+    "metadata_comparison_invocations": 1,
+    "scientific_replays": 0,
+    "native_runs": 0,
+    "producer_runs": 0,
+    "reference_runs": 0,
+    "old_test_runs": 0,
+    "remote_mutations": 0,
+    "body_cpu_s": 0.10070934299999999
+  },
+  "publication_preconditions": [
+    "fresh current-head lease must still match candidate base immediately before update",
+    "expected_sha=7937ed4a842eb1ef6cec562a4224fb0add63d0d6 and force=false",
+    "successful update_ref ACK plus exact readback precede C10 delivery closeout"
+  ],
+  "C10_at_review": "19/20 PARTIAL_DELIVERY until actual acknowledged delivery; this is patch approval only",
+  "canonical": "28/88 delta0",
+  "physical_coverage": "0/313",
+  "H6": "OPEN",
+  "H7": "OPEN",
+  "L4_ready": false,
+  "REI_activation": false
+}
