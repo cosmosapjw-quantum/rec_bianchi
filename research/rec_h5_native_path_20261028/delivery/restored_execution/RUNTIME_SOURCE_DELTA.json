@@ -1,0 +1,153 @@
+{
+  "schema": "LOSSLESS_SOURCE_LINE_EDITS_V1",
+  "unit": "REC-H5-NATIVE-PATH01",
+  "base_commit": "c2935dda68f880e7aff916313706226bf3a3f58a",
+  "scope": "source restoration only; does not execute producer, tests or scientific calculations",
+  "line_indices": "zero-based end-exclusive; apply in reverse order",
+  "runtime_path_identity": "original absolute execution paths preserved in bytes; not silently relocated",
+  "files": [
+    {
+      "file": "analyze.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/analyze.py",
+      "base_sha256": "6d9500de732f2d201d035383239ccb1aebdb59001fe9554538bb6a2f897c4609",
+      "output_sha256": "cd81272b80ff793ce5b3fde0b065676bc0916323346537127632d9adc847b2fa",
+      "output_bytes": 15552,
+      "edits": [
+        {
+          "start_line": 7,
+          "end_line": 8,
+          "replacement": "from common import (UNIT,REPO,RESULTS_ROOT,EPS,PHYSICAL,check,dump,sha,verify_locks,read_jsonl,\n"
+        },
+        {
+          "start_line": 64,
+          "end_line": 65,
+          "replacement": "    locks=verify_locks();deps=locks['retained_dependencies'];capture=RESULTS_ROOT/'capture002/raw'\n"
+        }
+      ]
+    },
+    {
+      "file": "common.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/common.py",
+      "base_sha256": "b247520d5839327715e2b1c2c0f74b515de89368f62bb30d1cf5815e9a5c8a08",
+      "output_sha256": "fecb2f0977579a525b2d4fb1c535f7bfabcec5ca401f4f8211cea2d84ace49af",
+      "output_bytes": 4902,
+      "edits": [
+        {
+          "start_line": 7,
+          "end_line": 8,
+          "replacement": "UNIT=Path('/workspace/scratch/6104ad84b826/rec_bianchi/research/rec_h5_native_path_20261028')\nCODE_ROOT=Path('/dev/shm/rec_h5_native_path_20261028_runtime/code')\nRESULTS_ROOT=Path('/dev/shm/rec_h5_native_path_20261028_runtime/results')\n"
+        }
+      ]
+    },
+    {
+      "file": "controls.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/controls.py",
+      "base_sha256": "e385d716c3592400760c38119957770496799bac483424c30294a568151025c9",
+      "output_sha256": "e385d716c3592400760c38119957770496799bac483424c30294a568151025c9",
+      "output_bytes": 7903,
+      "edits": []
+    },
+    {
+      "file": "instrument.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/instrument.py",
+      "base_sha256": "d871580669b45d1b875286e55f59ba435b6ff44830321f76d841ddeb2a009dcd",
+      "output_sha256": "d871580669b45d1b875286e55f59ba435b6ff44830321f76d841ddeb2a009dcd",
+      "output_bytes": 9042,
+      "edits": []
+    },
+    {
+      "file": "plot_results.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/plot_results.py",
+      "base_sha256": "c28ae4e856ff6e76d86c7d48bf45d1adea8346456f6287ed06edd9cce8013423",
+      "output_sha256": "594cc916748941aa279ca4bcd6d1c886a46a6ac96d5fb68fca85b48533bc20c7",
+      "output_bytes": 8595,
+      "edits": [
+        {
+          "start_line": 31,
+          "end_line": 32,
+          "replacement": "    source=C.RESULTS_ROOT/'analysis001/PLOT_DATA.json'\n"
+        },
+        {
+          "start_line": 141,
+          "end_line": 142,
+          "replacement": "        receipt={'status':'RENDERED_SAVED_DATA_ONLY','input_path':str(source),\n"
+        }
+      ]
+    },
+    {
+      "file": "run_bounded.py",
+      "base_repo_path": "research/rec_h5_native_path_20261028/code/run_bounded.py",
+      "base_sha256": "7cd4620116f30abaf2f1485e1104df43795eab163bd07848a06875abafe523a1",
+      "output_sha256": "813dbf452071e1a7b482e8f0ec9914b35000835938216b552d0cc2e86e52fa1e",
+      "output_bytes": 11226,
+      "edits": [
+        {
+          "start_line": 13,
+          "end_line": 14,
+          "replacement": "from common import UNIT,REPO,CODE_ROOT,RESULTS_ROOT,check,dump,sha,verify_locks\n"
+        },
+        {
+          "start_line": 15,
+          "end_line": 16,
+          "replacement": "CAPS={'build001':(30,60),'build002':(30,60),'capture002':(60,120),'analysis001':(60,120),\n"
+        },
+        {
+          "start_line": 33,
+          "end_line": 34,
+          "replacement": "    if mode in ('build001','build002'):\n"
+        },
+        {
+          "start_line": 79,
+          "end_line": 79,
+          "replacement": "def send_proc_identity(pipe_fd):\n    # /proc exposes host IDs here, while os/Popen expose virtual IDs.\n    raw=Path('/proc/self/stat').read_text();tail=raw[raw.rfind(')')+2:].split()\n    identity={'virtual_pid':os.getpid(),'virtual_pgid':os.getpgrp(),\n              'proc_pid':int(raw.split(' ',1)[0]),'proc_pgid':int(tail[2])}\n    os.write(pipe_fd,json.dumps(identity,sort_keys=True).encode('ascii'))\n    os.close(pipe_fd)\n\ndef receive_proc_identity(pipe_fd,virtual_pid):\n    try:\n        with os.fdopen(pipe_fd,'rb') as channel:identity=json.loads(channel.read(4096))\n    except (OSError,ValueError,TypeError) as exc:\n        raise ValueError('PROC_IDENTITY_HANDSHAKE_INVALID') from exc\n    check(isinstance(identity,dict) and\n          all(type(identity.get(k)) is int and identity[k]>0 for k in\n              ('virtual_pid','virtual_pgid','proc_pid','proc_pgid')) and\n          identity['virtual_pid']==virtual_pid and identity['virtual_pgid']==virtual_pid and\n          identity['proc_pid']==identity['proc_pgid'],'PROC_IDENTITY_HANDSHAKE_INVALID')\n    return identity\n\n"
+        },
+        {
+          "start_line": 87,
+          "end_line": 88,
+          "replacement": "    output=RESULTS_ROOT/mode;output.mkdir(parents=True,exist_ok=False)\n"
+        },
+        {
+          "start_line": 89,
+          "end_line": 90,
+          "replacement": "    code_hashes={f.name:sha(f) for f in sorted(CODE_ROOT.glob('*')) if f.is_file()}\n"
+        },
+        {
+          "start_line": 95,
+          "end_line": 99,
+          "replacement": "    if mode in ('build001','build002') and (UNIT/'build/source').is_dir():actual_copied_inputs=copied_inputs(locks)\n    if mode=='capture002':\n        check((UNIT/'results/build002/SUMMARY.json').is_file(),'BUILD_DEPENDENCY_MISSING')\n        build_summary=json.loads((UNIT/'results/build002/SUMMARY.json').read_text())\n"
+        },
+        {
+          "start_line": 112,
+          "end_line": 114,
+          "replacement": "        dependency={'analysis001':'capture002','controls001':'analysis001','figures001':'analysis001'}.get(mode)\n        if dependency:check((RESULTS_ROOT/dependency/'SUMMARY.json').is_file() if dependency!='capture002' else (RESULTS_ROOT/'capture002/raw/CAPTURE_SUMMARY.json').is_file(),'MODE_DEPENDENCY_MISSING')\n"
+        },
+        {
+          "start_line": 118,
+          "end_line": 118,
+          "replacement": "        send_proc_identity(identity_write_fd)\n"
+        },
+        {
+          "start_line": 120,
+          "end_line": 121,
+          "replacement": "        identity_read_fd,identity_write_fd=os.pipe()\n        try:\n            proc=subprocess.Popen(command,cwd=cwd,env=env,stdin=stdin,stdout=out,stderr=err,\n                                  preexec_fn=limits,start_new_session=True,pass_fds=(identity_write_fd,))\n        finally:os.close(identity_write_fd)\n        try:process_identity=receive_proc_identity(identity_read_fd,proc.pid)\n        except Exception:\n            os.killpg(proc.pid,signal.SIGKILL);proc.wait();raise\n"
+        },
+        {
+          "start_line": 122,
+          "end_line": 123,
+          "replacement": "            elapsed=time.monotonic()-start;groupcpu=proc_group_cpu(process_identity['proc_pgid']);max_observed_cpu=max(max_observed_cpu,groupcpu)\n"
+        },
+        {
+          "start_line": 135,
+          "end_line": 136,
+          "replacement": "    if mode=='capture002' and exit_code==0:\n"
+        },
+        {
+          "start_line": 141,
+          "end_line": 141,
+          "replacement": "        'process_identity':process_identity,'watchdog_pgid_domain':'proc_stat_host',\n        'signal_wait_pid_domain':'os_popen_virtual',\n"
+        }
+      ]
+    }
+  ],
+  "local_reconstruction": "ALL_OUTPUT_BYTES_EQUAL_ARCHIVED_EXECUTED_RUNTIME"
+}

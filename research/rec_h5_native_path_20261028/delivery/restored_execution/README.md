@@ -1,0 +1,11 @@
+# Recovered exact execution source
+
+C10 transport only. Historical C5 code is published at c2935dda68f880e7aff916313706226bf3a3f58a. RUNTIME_SOURCE_DELTA.json is a lossless, line-indexed representation of the six actually executed runtime Python files. Base and output SHA256 values are checked. Apply edits in reverse order to splitlines(keepends=True); join without newline normalization. Reconstruction of all six files was checked against the uploaded immutable SOURCE, without importing or executing science code.
+
+The historical C5 runner is intentionally retained. The final original runner contains the recorded PID-domain handshake repair; the executed RAM runner additionally changes storage routing. These are different preserved objects, not substituted identities. Original native C/H/input files, failed build001/capture001 raw prefix and zero-byte receipt, successful capture002, primary, controls, plots and review remain in the complete source archive.
+
+Complete immutable SOURCE: 110654069 bytes, SHA256 94b454c75b51f7c7af38126510cec609f5d7cfb2eb69ca78a491def54b31791c. Dropbox id:BSpOijBcT10AAAAAAEDIoQ. Drive original byte stream is split into part001 (1p9s-AlcRrXfuWKlXQbYMWJkVwP6UptUW,67108864 bytes) and part002 (1M0O6K3Yhvpy988Dry8HWzuLYaHcE061Z,43545205 bytes). Concatenate in that order and verify the whole SHA. Do not unzip each part separately. Both upload ACKs and separate size readbacks succeeded. Source ZIP was never repackaged.
+
+Git contains historical source and the exact source delta, selected evidence and final delivery metadata; it is not a claim that every binary/raw archive member is expanded into the Git tree. The complete SOURCE is the recovery authority for all 332 members. Apply the original C10 companion (SHA256 0f631940446186ee8f3de044e378370227ce029f31734aae6bc118380c214a63,64863 bytes) using its repository/runtime mapping. Companion Drive1fcdyJxjDzGTGU6jxSXGVBaoYKmbdsFuP and Dropboxid:BSpOijBcT10AAAAAAEDIuA.
+
+No capture, primary, controls, figures, native IVP or old admission calculation is rerun by this restoration. Physical coverage0/313; physical bounds null; H6/H7OPEN,L4false,REIactivationfalse. Canonical28/88,delta0. C10 delivery is still being finalized.
