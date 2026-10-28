@@ -76,3 +76,9 @@ The stateless Wolfram evaluator received the17 literal decimal integers as ratio
     row enclosure = 174896229/5000000 Hz = 34.9792458 Hz.
 
 For this particular source the tight global scale equals the most restrictive single row. The all-pass/global-fail synthetic control distinguishes the general joint criterion from row checks. These are exact finite rational checks; the decimal is display only. Input code and raw Wolfram output are retained. The original lambda=1 result and original35Hz FAIL7/8 remain unchanged. The computed scale is not applied to any physical or source acceptance tolerance.
+
+## R8 — Decision and no-go scope
+
+Adopt the constructive joint enclosure theorem as derived, independently reviewed finite algebra, and the36-source-segment result as exact-symbolically checked. The original lambda1 joint source enclosure is infeasible. No spectroscopic field is selected or corrected by this result; CDMS raw access and conversion lineage remain the required source-choice evidence.
+
+NG1: finite variables, quantifiers, units, closed intervals are explicit in R3. NG2: constructive recurrence and graph proof are in R5. NG3: opposite-defect feasible witness and local-pass/global-fail examples make the test nonvacuous. NG4: an exact violated contiguous sum is the obstruction mechanism. NG5: the checker prevents acceptance of mutually inconsistent source rows. NG6: this is an application of standard interval/difference-constraint methods with a proof supplied here; no new literature-level impossibility theorem or novelty is claimed. NG7: the nonauthor proof review and1152 independent Bellman-Ford comparisons cover that finite mathematical scope. The result is not registered as a new strong-no-go research claim. Implementation verification is a separate C-stage obligation.
