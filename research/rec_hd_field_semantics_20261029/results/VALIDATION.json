@@ -1,0 +1,33 @@
+{
+  "schema": "REC_HD_FIELD_SEMANTICS_VALIDATION_V1",
+  "python_unittest": "16/16 PASS",
+  "original_hd_bytes": 2289,
+  "original_hd_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+  "core_sha256": "e53f95022be77144ce478876999c88e75b2c705e0b49016c3ae7b4e9138b1238",
+  "max_relative_opacity_change": "5.332463622370740788077683522e-7",
+  "max_upper_J": 2,
+  "independent_mpmath": "4 line direct kernels passed <1e-78",
+  "wolfram": "exact-rational J2 maximum agrees",
+  "figure": "PNG reopened after small-J label repair",
+  "native_subagent": "NOT_RUN",
+  "nonauthor_review": "NOT_RUN",
+  "physical_promotion": false,
+  "executed_commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m compileall -q field_semantics.py plot_field_semantics.py tests",
+    "python field_semantics.py --source source_private/hd.dat --output results/REPLAY.json",
+    "cmp results/FIELD_SEMANTICS.json results/REPLAY.json"
+  ],
+  "unit_test_exit_code": 0,
+  "unit_test_count": 16,
+  "unit_test_wall_s": 0.76,
+  "unit_test_user_cpu_s": 0.99,
+  "unit_test_system_cpu_s": 0.1,
+  "unit_test_max_rss_kib": 100100,
+  "replay_byte_identity": "PASS",
+  "replay_result_sha256": "6c8e124ad17ad81f252f2d00f2c353530019b35b91324cf24913cf1f9a1c4be6",
+  "compiler": "g++14.2.0 CPP_PASS probe only, no C++ scientific build",
+  "python_runtime": "3.13.5 PYTHON_PASS",
+  "cdms_v2_raw": "NOT_ACQUIRED",
+  "physical_rate_promotion": false
+}
