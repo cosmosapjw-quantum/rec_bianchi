@@ -1,0 +1,61 @@
+{
+  "stage": "C8_VALIDATE",
+  "charge_stage": "C8_VALIDATE",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/code/stage_worker.py",
+    "C8_VALIDATE",
+    "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C8_VALIDATE_attempt001"
+  ],
+  "cwd": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field",
+  "allocation_cpu_s": 20.0,
+  "stage_actual_cpu_already_paid_s": 0,
+  "stage_allocation_remaining_before_cpu_s": 20.0,
+  "remaining_total_before_cpu_s": 58.435639,
+  "clipped_family_cpu_cap_s": 20.0,
+  "RLIMIT_CPU_per_process_seconds": 20,
+  "RLIMIT_AS_bytes": 536870912,
+  "wall_cap_s": 30,
+  "single_thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "resource_scope": "Authoritative wait4 and killpg use Popen namespace PID. /proc family guard uses child-reported /proc/self PID with matching starttime; no subtraction of unrelated historical counters. Tick-resolution guard, not an exact mathematical aggregate CPU limiter.",
+  "parent_network_model_metadata_packaging_cost": "UNKNOWN_NOT_ZERO",
+  "directory": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C8_VALIDATE_attempt001",
+  "result": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C8_VALIDATE_attempt001/RESULT.json",
+  "returncode": 0,
+  "watchdog_reason": null,
+  "wall_s": 0.9011615139970672,
+  "actual_child_user_s": 0.814587,
+  "actual_child_system_s": 0.07434199999999999,
+  "actual_child_cpu_s": 0.888929,
+  "max_RSS_KiB": 75336,
+  "popen_namespace_pid": 5,
+  "proc_identity": {
+    "namespace_pid": 5,
+    "namespace_ppid": 2,
+    "proc_pid": 404301,
+    "proc_ppid": 404298,
+    "proc_starttime": 4173228,
+    "proc_self_stat": "404301 (python3) R 404298 404301 404301 0 -1 4194368 415 0 0 0 0 0 0 0 20 0 1 0 4173228 40632320 1806 18446744073709551615 4329472 32290168 140731200817664 0 0 0 0 0 2 0 0 0 17 0 0 0 0 0 0 23068672 32290168 1041362944 140731200819261 140731200819290 140731200819290 140731200823214 0\n"
+  },
+  "max_observed_family_cpu_s": 0.88,
+  "max_family_cpu_sample": [
+    {
+      "pid": 404301,
+      "ppid": 404298,
+      "starttime": 4173228,
+      "utime": 81,
+      "stime": 7,
+      "cutime": 0,
+      "cstime": 0
+    }
+  ],
+  "pass": true,
+  "native_kernel_calls_known": 9,
+  "unfinished_API_attempts_unknown": 0
+}

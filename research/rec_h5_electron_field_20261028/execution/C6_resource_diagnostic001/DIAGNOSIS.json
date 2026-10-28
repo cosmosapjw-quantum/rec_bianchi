@@ -1,0 +1,21 @@
+{
+  "classification": "PID_NAMESPACE_AND_PROC_VISIBLE_PID_MISMATCH",
+  "worker_namespace_pid": 6,
+  "worker_proc_self_pid": 390949,
+  "explicit_namespace_path_process": "6 (caas-prefix-tra)",
+  "explicit_path_ppid": 1,
+  "wrong_process_raw_counter_delta": {
+    "utime": 0,
+    "stime": 0,
+    "cutime": 0,
+    "cstime": 0
+  },
+  "diagnostic_actual_wait4_cpu_s": 0.065527,
+  "short_child_wait4_included_not_added_again": {
+    "returncode": 0,
+    "user_s": 0.021908999999999998,
+    "system_s": 0.012395999999999999,
+    "cpu_s": 0.034304999999999995
+  },
+  "repair": "Seed /proc family membership from preexec /proc/self PID and validate starttime; keep wait4/killpg namespace PID. No baseline subtraction."
+}

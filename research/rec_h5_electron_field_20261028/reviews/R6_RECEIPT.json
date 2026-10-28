@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-ELECTRON-FIELD01",
+  "stage": "R6",
+  "recorded_at_utc": "2026-10-28T09:28:42.500160+00:00",
+  "verdict": "pass_scoped",
+  "stage_content_status": "complete",
+  "basis": [
+    "derived"
+  ],
+  "scope": "Independent conditional real-algebra proof and source-dependency review of the frozen explicit-incoming FULL electron point field; no new numerical or implementation admission.",
+  "reviewer": {
+    "agent_task": "/root/electron_r6_independent",
+    "requested_role": "fresh nonauthor independent R6 theory reviewer",
+    "requested_runtime_model_id": "UNSPECIFIED_IN_REVIEW_TASK",
+    "observed_host_label": "GPT-6 Astra Pro (developer-provided label only)",
+    "observed_runtime_identity": "NOT_OBSERVED",
+    "different_model_family_identity_observed": false,
+    "fresh_separate_agent_context": true,
+    "non_author_of_reviewed_R2_R5_and_adapter": true,
+    "independence_method": "Original source derivation and Schur back-substitution completed before final root R5 was supplied; then compared to final R2-R5."
+  },
+  "method": [
+    "Read original hydrogen.c, history.c, hydrogen.h, hyrec_params.h, hyrectools.c/h and history.h.",
+    "Trace every incoming use in populateTS_2photon; construct M=[A B; C V] independently from storage indices.",
+    "Reverse-substitute native Schur formulas into both real and virtual block rows.",
+    "Check scalar source sign, eta clock, cgs/eV units, signed departures and dispatcher temperature prelude.",
+    "Check original hydrogen-only phase and instrumented H_STEADY label for conditional Fe=FH.",
+    "Compare final R5 and R2-R4 with independent derivation and frozen R1 numerical criteria.",
+    "Hash archive bytes and small source members; compare selected source files to corresponding ZIP members."
+  ],
+  "skill_applied": {
+    "name": "physmath-research-loop",
+    "version": "1.0.0",
+    "references": [
+      "RESEARCH_POLICY.md",
+      "THEORY_LOOP.md:R6",
+      "EVIDENCE_AND_HANDOFF.md",
+      "RUNTIME_AND_LEGACY.md"
+    ]
+  },
+  "inputs": [
+    {
+      "id": "R1_CONTRACT",
+      "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/CONTRACT.md",
+      "bytes": 7550,
+      "sha256": "adfe324c6805a04d95f3d9801e37aa3ac1722fd7525004c79f3b1c79480f8c4e",
+      "verification": "direct local byte hash; contents read"
+    },
+    {
+      "id": "R2_EVIDENCE",
+      "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/theory/R2_EVIDENCE_KO.md",
+      "bytes": 4087,
+      "sha256": "394467bff7422d62f8025ad9105f7881ba00f5f7f1b79a22d4eb4c817f7b42cb",
+      "verification": "direct local byte hash; contents read"
+    },
+    {
+      "id": "R3_CLAIMS",
+      "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/theory/R3_CLAIMS_KO.md",
+      "bytes": 4113,
+      "sha256": "ef4f8559674cce7abba00df75d220e36f0c6e14972d014809bc98e3238749955",
+      "verification": "direct local byte hash; contents read"
+    },
+    {
+      "id": "R4_CONSTRUCTION",
+      "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/theory/R4_CONSTRUCTION_KO.md",
+      "bytes": 2816,
+      "sha256": "3297e8705b5d6d3815450dedce9b3da8ea6c715c8a3fd120da133b20c2127a63",
+      "verification": "direct local byte hash; contents read"
+    },
+    {
+      "id": "R5_FINAL",
+      "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/theory/R5_DERIVATION_KO.md",
+      "bytes": 6935,
+      "sha256": "4888335166daf05e8fb9922cf81b815a3579cfd96fc9176ac95777f8c70d226f",
+      "verification": "direct local byte hash; contents read"
+    }
+  ],
+  "native_source_archive": {
+    "id": "NATIVE_SOURCE_94B454C75B51",
+    "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/inputs/native_source/REC_H5_NATIVE_PATH01_SOURCE_20261028_94b454c75b51.zip",
+    "bytes": 110654069,
+    "sha256": "94b454c75b51f7c7af38126510cec609f5d7cfb2eb69ca78a491def54b31791c",
+    "verification": "entire archive hash and size directly checked by reviewer; archive not modified"
+  },
+  "original_source_members": [
+    {
+      "id": "ORIGINAL_HYDROGEN_C",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/hydrogen.c",
+      "bytes": 37471,
+      "sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": true
+    },
+    {
+      "id": "ORIGINAL_HISTORY_C",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/history.c",
+      "bytes": 30963,
+      "sha256": "8ffe38f0431fcd1ae04b55f855f36e8643b1c5eb33a947f581f95d628611f976",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": true
+    },
+    {
+      "id": "ORIGINAL_HYDROGEN_H",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/hydrogen.h",
+      "bytes": 7837,
+      "sha256": "e89a3a447928cbe31dc273c11c4a8bc7f7a8e297be4a11270e453c101f96ccba",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": false
+    },
+    {
+      "id": "ORIGINAL_HYRECTOOLS_C",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/hyrectools.c",
+      "bytes": 6001,
+      "sha256": "beb97b6cee3b80cf74d58264da7087301865881d266de1c17dd472a08665bb79",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": false
+    },
+    {
+      "id": "ORIGINAL_HYRECTOOLS_H",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/hyrectools.h",
+      "bytes": 972,
+      "sha256": "537de0362b930d6059725ab51cfb1d0078398ad0a02eb02aae93bef9751d7be6",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": false
+    },
+    {
+      "id": "ORIGINAL_HYREC_PARAMS_H",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/hyrec_params.h",
+      "bytes": 3764,
+      "sha256": "cab1a5d92389ea7eec408e8a8419f59c717a227332bc2ae2b51e84488578e7e2",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": false
+    },
+    {
+      "id": "ORIGINAL_HISTORY_H",
+      "archive_member": "research/rec_h5_native_path_20261028/inputs/original/HyRec/history.h",
+      "bytes": 4184,
+      "sha256": "99c590758874ecbe80e83b218660863c6aa43786175f64d483267c78b209d710",
+      "contents_read": true,
+      "selected_copy_byte_identity_verified": true
+    }
+  ],
+  "auxiliary_input": {
+    "instrumented_history_path": "research_next_20261028/inputs/native_source/selected/research/rec_h5_native_path_20261028/build/source/history.c",
+    "bytes": 33716,
+    "sha256": "42243cbf6cd10833bd2810337670b4b5c948f27851d60ea9d4109d4dbf8b711d",
+    "scope": "H_STEADY label placement; direct local read/hash"
+  },
+  "author_proposal": {
+    "path": "research_next_20261028/survey/science/ELECTRON_FIELD01_R1_SCIENCE_CONTRACT_KO.md",
+    "role": "AUTHOR_PROPOSAL_NOT_REVIEW_OR_APPROVAL",
+    "contents_read": true,
+    "used_as_prior_approval": false
+  },
+  "r5_publication_commit": {
+    "value": "b2bc0f02734ec8218be9bb27320a77e8ab15a2be",
+    "provenance": "reported by parent; remote publication not independently assessed in this R6"
+  },
+  "checks": [
+    {
+      "id": "R6-SCALAR",
+      "domain": "math",
+      "result": "pass_scoped",
+      "scope": "FH equation, algebraic cancellation split, signs and units",
+      "evidence_refs": [
+        "R5_FINAL:section1",
+        "ORIGINAL_HYDROGEN_C:rec_HMLA_2photon_dxHIIdlna"
+      ]
+    },
+    {
+      "id": "R6-INCOMING",
+      "domain": "math",
+      "result": "pass_scoped",
+      "scope": "All incoming dependence is affine in the source; M is independent of incoming at fixed P and initialized tables",
+      "evidence_refs": [
+        "R5_FINAL:sections2,4",
+        "ORIGINAL_HYDROGEN_C:populateTS_2photon"
+      ]
+    },
+    {
+      "id": "R6-SCHUR",
+      "domain": "math",
+      "result": "pass_scoped",
+      "scope": "Block orientation and unique solution under nonzero native divisors and Schur determinant, proven by reverse substitution",
+      "evidence_refs": [
+        "R5_FINAL:section3",
+        "ORIGINAL_HYDROGEN_C:solveTXeqB,solve_real_virt"
+      ]
+    },
+    {
+      "id": "R6-BOUNDARY",
+      "domain": "math",
+      "result": "pass_scoped",
+      "scope": "Explicit incoming separates upstream history interpolation and downstream writes; point purity is constructible with local arrays and read-only initialized tables",
+      "evidence_refs": [
+        "R5_FINAL:section5",
+        "ORIGINAL_HYDROGEN_C:rec_HMLA_2photon_dxHIIdlna",
+        "ORIGINAL_HYRECTOOLS_C:create_1D_array"
+      ]
+    },
+    {
+      "id": "R6-PHASE",
+      "domain": "physics",
+      "result": "pass_scoped",
+      "scope": "He-neutral H_STEADY and xe=p imply Fe=FH under source branch convention; actual primary binding remains C-stage work",
+      "evidence_refs": [
+        "R5_FINAL:section6",
+        "ORIGINAL_HISTORY_C:rec_get_xe_next1_H,rec_build_history"
+      ]
+    },
+    {
+      "id": "R6-TOLERANCE-SCOPE",
+      "domain": "math",
+      "result": "pass_scoped",
+      "scope": "512 eps64 S_F and 4096 eps64 residual are predeclared numerical acceptance rules, not rigorous floating-point or physical bounds",
+      "evidence_refs": [
+        "R1_CONTRACT",
+        "R3_CLAIMS",
+        "R5_FINAL:sections3,6"
+      ]
+    }
+  ],
+  "findings": [],
+  "blocking_findings_count": 0,
+  "confirmed_observations": [
+    {
+      "id": "R6-O01",
+      "topic": "B/C orientation, Tvv band and calloc zeros",
+      "status": "confirmed_in_final_R5",
+      "evidence": "R5 section3"
+    },
+    {
+      "id": "R6-O02",
+      "topic": "A2s normalization and feature macros form part of table initialization",
+      "status": "confirmed_in_final_R5",
+      "evidence": "R5 section5"
+    },
+    {
+      "id": "R6-O03",
+      "topic": "Affine claim restricted to real algebra at fixed P",
+      "status": "confirmed_in_final_R5",
+      "evidence": "R5 section4"
+    },
+    {
+      "id": "R6-O04",
+      "topic": "H_STEADY denotes Tm closure, not FH=0",
+      "status": "confirmed_in_final_R5",
+      "evidence": "R5 section6"
+    }
+  ],
+  "remaining_obligations": [
+    {
+      "id": "C-OBS",
+      "status": "unresolved_implementation_detail",
+      "scope": "C3/C9: choose and verify a nonmutating observation of actual native pivots and Schur determinant without changed arithmetic; source-copy observer hook is a candidate, not an approved implementation"
+    },
+    {
+      "id": "C-BIND",
+      "status": "not_run_by_reviewer",
+      "scope": "C7/C9: actual 132 final-writer join, phase/xe=p, 626 endpoint mapping, input and dispatcher-to-coefficient provenance"
+    },
+    {
+      "id": "C-NUM",
+      "status": "not_run_by_reviewer",
+      "scope": "Report actual FH/xr/xv bitwise counts; run frozen FH and independent residual gates, finite/domain checks"
+    },
+    {
+      "id": "C-PURE",
+      "status": "not_run_by_reviewer",
+      "scope": "C8/C9: input/table/history nonmutation and meaningful units/rescale/phase/source/incoming controls"
+    }
+  ],
+  "numerical_execution_status": {
+    "primary_field": "not_run_by_reviewer",
+    "bitwise_counts": {
+      "FH": null,
+      "xr": null,
+      "xv": null
+    },
+    "FH_gate": "not_run_by_reviewer",
+    "block_residual_gate": "not_run_by_reviewer"
+  },
+  "executions_by_reviewer": {
+    "scientific": 0,
+    "native_replay": 0,
+    "native_full_history": 0,
+    "point_kernel_calls": 0,
+    "CAS": 0,
+    "source_edits": 0,
+    "metadata_operations": "read/hash/source comparison and review artifact writing only",
+    "metadata_resource_cost": "UNKNOWN_NOT_ZERO"
+  },
+  "strong_no_go": {
+    "status": "not_applicable",
+    "reason": "No new impossibility or exclusion theorem is claimed."
+  },
+  "scientific_ceiling": {
+    "canonical_accepted": 28,
+    "canonical_total": 88,
+    "canonical_increment": 0,
+    "physical_accepted": 0,
+    "physical_total": 313,
+    "physical_query": null,
+    "physical_K": null,
+    "physical_M2": null,
+    "physical_defect": null,
+    "physical_L": null,
+    "physical_tube": null,
+    "physical_e0": null,
+    "physical_epsilon": null,
+    "physical_outgoing": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4": false,
+    "REI_activation": false
+  },
+  "excluded_admission": [
+    "QSS03 coefficient-box nonsingularity/inverse gain",
+    "thermal unit fresh R6/C9",
+    "autonomous coupled radiation/full-state field",
+    "continuous whole-domain physical defect",
+    "initial/model error and positive physical tube",
+    "remote publication/backup ACK verification"
+  ],
+  "report": {
+    "path": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/reviews/R6_REVIEW_KO.md",
+    "bytes": 13772,
+    "sha256": "85a84d79452065578d292ded457f3324814f2879b27b83305473b3a1945fa425"
+  },
+  "resolution": "Final R5 matches independent source derivation; conditional proof is accepted within stated scope. All numerical and implementation obligations retain their actual pending status."
+}

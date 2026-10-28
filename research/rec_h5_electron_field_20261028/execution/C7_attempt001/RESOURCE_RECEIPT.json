@@ -1,0 +1,61 @@
+{
+  "stage": "C7",
+  "charge_stage": "C7",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/code/stage_worker.py",
+    "C7",
+    "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C7_attempt001"
+  ],
+  "cwd": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field",
+  "allocation_cpu_s": 20.0,
+  "stage_actual_cpu_already_paid_s": 0,
+  "stage_allocation_remaining_before_cpu_s": 20.0,
+  "remaining_total_before_cpu_s": 58.961133,
+  "clipped_family_cpu_cap_s": 20.0,
+  "RLIMIT_CPU_per_process_seconds": 20,
+  "RLIMIT_AS_bytes": 536870912,
+  "wall_cap_s": 30,
+  "single_thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "resource_scope": "Authoritative wait4 and killpg use Popen namespace PID. /proc family guard uses child-reported /proc/self PID with matching starttime; no subtraction of unrelated historical counters. Tick-resolution guard, not an exact mathematical aggregate CPU limiter.",
+  "parent_network_model_metadata_packaging_cost": "UNKNOWN_NOT_ZERO",
+  "directory": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C7_attempt001",
+  "result": "/workspace/scratch/6b0500b5ac99/research_next_20261028/electron_field/execution/C7_attempt001/RESULT.json",
+  "returncode": 0,
+  "watchdog_reason": null,
+  "wall_s": 0.5283391420016414,
+  "actual_child_user_s": 0.43660699999999997,
+  "actual_child_system_s": 0.088887,
+  "actual_child_cpu_s": 0.5254939999999999,
+  "max_RSS_KiB": 72656,
+  "popen_namespace_pid": 5,
+  "proc_identity": {
+    "namespace_pid": 5,
+    "namespace_ppid": 2,
+    "proc_pid": 400318,
+    "proc_ppid": 400315,
+    "proc_starttime": 4158417,
+    "proc_self_stat": "400318 (python3) R 400315 400318 400318 0 -1 4194368 415 0 0 0 0 0 0 0 20 0 1 0 4158417 40632320 1806 18446744073709551615 4329472 32290168 140723928063536 0 0 0 0 0 2 0 0 0 17 2 0 0 0 0 0 23068672 32290168 502575104 140723928072253 140723928072282 140723928072282 140723928076206 0\n"
+  },
+  "max_observed_family_cpu_s": 0.51,
+  "max_family_cpu_sample": [
+    {
+      "pid": 400318,
+      "ppid": 400315,
+      "starttime": 4158417,
+      "utime": 43,
+      "stime": 8,
+      "cutime": 0,
+      "cstime": 0
+    }
+  ],
+  "pass": true,
+  "native_kernel_calls_known": 132,
+  "unfinished_API_attempts_unknown": 0
+}

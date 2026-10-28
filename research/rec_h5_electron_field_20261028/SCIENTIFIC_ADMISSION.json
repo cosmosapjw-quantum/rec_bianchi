@@ -1,0 +1,205 @@
+{
+  "schema": "REC_H5_ELECTRON_FIELD01_SCIENTIFIC_ADMISSION_V1",
+  "workflow_version": "1.0.0",
+  "unit_id": "REC-H5-ELECTRON-FIELD01",
+  "verdict": "PASS_SCOPED",
+  "scientific_review_status": "CLOSED",
+  "admission_authority": "root Astra role after actual fresh nonauthor R6 and C9 review",
+  "owner_repository": "cosmosapjw-quantum/rec_bianchi",
+  "owner_PR": 146,
+  "reviewed_source_commit": "d8ccc75b6673da0543df0e299279d590d27cc6be",
+  "C8_delivery_ACK_commit": "b2a9da90f3ef0a714f8f12bb02210d8e95d2d2ab",
+  "admitted_scope": {
+    "component": "explicit signed incoming source-point electron field Fe=FH",
+    "model": "original HyRec FULL=3",
+    "phase": "H_STEADY",
+    "helium": "neutral",
+    "species_condition": "xe=xHII",
+    "fsR": 1,
+    "meR": 1,
+    "incoming_virtual": 311,
+    "incoming_lyman": 2,
+    "clock": "eta=ln(a)",
+    "native_units": "nH cm^-3; H s^-1; TM/TR eV",
+    "primary_points": 132,
+    "query_mapping": 313,
+    "endpoint_references": 626,
+    "geometric_query_and_exact_alpha": "PRESERVED",
+    "real_algebra": "At fixed point P and initialized tables, M X = S0 + G u and FH is affine in incoming u whenever the native V divisors and Schur determinant are nonzero.",
+    "binary64_affinity_certificate": false
+  },
+  "source_identity": {
+    "native_archive_bytes": 110654069,
+    "native_archive_sha256": "94b454c75b51f7c7af38126510cec609f5d7cfb2eb69ca78a491def54b31791c",
+    "immutable_input_files": 16,
+    "original_hydrogen_c_sha256": "421ad4678a9a2f00d54f72ebb841648f34a95a9892171c07af5f657a3b2a051b",
+    "locked_documents": {
+      "reviews/R6_RECEIPT.json": {
+        "bytes": 13060,
+        "sha256": "4f6a9c49052102ae26d07bc008739313be956dbaa44f9272a4b7b5760747de7b"
+      },
+      "reviews/C9_RECEIPT.json": {
+        "bytes": 68772,
+        "sha256": "04affa6926fafbb9d5c163fbc193ebb8f6323f1171936cb6ae32eb8fb4a4c1f9"
+      },
+      "inputs/SOURCE_MANIFEST.json": {
+        "bytes": 11606,
+        "sha256": "94b4601c8b5097579277c1b5703ac588c6e898670ab563429f163bd563a2b2ae"
+      },
+      "CONTRACT.md": {
+        "bytes": 7550,
+        "sha256": "adfe324c6805a04d95f3d9801e37aa3ac1722fd7525004c79f3b1c79480f8c4e"
+      }
+    },
+    "final_code_sha256": {
+      "code/electron_field.c": "3bc0d4561ce21e2cb15040313c1134c35210536dd3756ed04f23ae2dfdfcf56a",
+      "code/electron_field.h": "aecbb2a24f7a11a24e35219ab534dd03c4ecd9d4ebfab7e51e3aaa27e5493188",
+      "code/generate_observed.py": "a761a484fa5918ec22d3a057f9d4a113c9a96341cd485d9959eb11dc4e1da8eb",
+      "code/independent_validate.py": "2d9baaa39320c0183b2aebb549a213d3c98b6f2a42ab0ba226a578208a1b8ae4",
+      "code/observer.h": "b87ee1ec90bc315eebf0472b680d4f3a49814e8350638bcd8354f112e1674649",
+      "code/run_stage.py": "0ffa6c3e430d8b95b9c049ea538b2f2774abe5ed763f3aafeafd426df0fbe1ec",
+      "code/runtime.py": "141a7c4024680a68c9b4c894fedd171068e0c67645d80857fa7ecd8f8d0b77e7",
+      "code/stage_worker.py": "4365d9ec502557db06c1ca3c04a0b0416c016c3cdff442e2144f8239015bee8c"
+    },
+    "library_sha256": "9a1b1586faa55af1899746b51005e2c7309175e904a1f7bc15fa57801442b40b"
+  },
+  "actual_numerical_evidence": {
+    "authoritative_working_precision": 80,
+    "parity_rule": "abs(FH_new-FH_saved) <= 512*eps64*S_F; exact zero for zero scale",
+    "residual_rule": "max_k abs((M X-S)_k)/(sum_l abs(M_kl X_l)+abs(S_k)) <= 4096*eps64; exact zero for zero denominator",
+    "parity_pass": 132,
+    "residual_pass": 132,
+    "bitwise_FH": {
+      "equal": 132,
+      "total": 132
+    },
+    "bitwise_xr": {
+      "equal": 264,
+      "total": 264
+    },
+    "bitwise_xv": {
+      "equal": 41052,
+      "total": 41052
+    },
+    "max_FH_difference": 0,
+    "max_normalized_residual": "1.4989401807314334141864726397129907364020290746224123282844433828703052691264866e-15",
+    "residual_threshold": "9.094947017729282379150390625e-13",
+    "primary_divisor_events": 62304,
+    "events_per_point": 472,
+    "zero_nonfinite_overflow_divisors": 0,
+    "primary_input_nonmutation": "132/132",
+    "primary_table_nonmutation": "132/132",
+    "invalid_contract_cases_rejected_before_native": 24,
+    "saved_mutations_detected": [
+      "B_C_swap",
+      "band_swap",
+      "changed_solution"
+    ],
+    "precision_comparison_indices": [
+      0,
+      66,
+      131
+    ],
+    "precision_40_80": "same frozen gate verdict at all three; not an interval certificate",
+    "new_native_incoming_controls": 9,
+    "control_interpretation": "signed source algebra controls; no physical spectrum positivity admission"
+  },
+  "reviews": {
+    "R6": {
+      "verdict": "PASS_SCOPED",
+      "agent": "/root/electron_r6_independent",
+      "fresh_separate_context": true,
+      "nonauthor": true,
+      "requested_runtime_model": "UNSPECIFIED_IN_REVIEW_TASK",
+      "observed_runtime_model": "NOT_OBSERVED",
+      "receipt": "reviews/R6_RECEIPT.json"
+    },
+    "C9": {
+      "verdict": "PASS_SCOPED",
+      "status": "CLOSED",
+      "agent": "/root/electron_c9_independent",
+      "nonauthor": true,
+      "requested_runtime_model": "gpt-6-astra",
+      "observed_runtime_model": "NOT_OBSERVED",
+      "receipt": "reviews/C9_RECEIPT.json"
+    },
+    "different_model_family_identity_established": false,
+    "CAS_or_serial_review_approval_credit": 0,
+    "unresolved_blockers": 0
+  },
+  "resource": {
+    "known_local_child_CPU_s": 4.642406,
+    "prior_remote_Wolfram_reported_CPU_s": 0.06227,
+    "known_total_scientific_CPU_s": 4.704676,
+    "total_CPU_cap_s": 60,
+    "remaining_known_CPU_s": 55.295324,
+    "local_child_wall_cap_s": 30,
+    "local_child_RLIMIT_AS_MiB": 512,
+    "single_thread_environment": true,
+    "new_native_calls": 143,
+    "initial_native_call_cap": 146,
+    "unfinished_API_attempts": 0,
+    "preserved_failed_launch_CPU_s": 0.003394,
+    "preserved_observer_diagnostic_CPU_s": 0.065527,
+    "diagnostic_and_repair": "PID namespace versus proc-visible PID observer error; one targeted repair and one successful C6 retry; no numerical scope/tolerance change",
+    "unknown_parent_network_model_metadata_packaging_cost": "UNKNOWN_NOT_ZERO"
+  },
+  "scientific_ceiling": {
+    "canonical_completed": 28,
+    "canonical_total": 88,
+    "canonical_increment": 0,
+    "separate_REI_working": "33/88; not added",
+    "reference": "313/313",
+    "physical": "0/313",
+    "physical_query": null,
+    "K": null,
+    "M2": null,
+    "defect": null,
+    "L": null,
+    "tube": null,
+    "e0": null,
+    "epsilon": null,
+    "outgoing": null,
+    "actual_full_state_coupled_F": null,
+    "total_xe_prime_whole_domain": null,
+    "model_error": null,
+    "whole_domain_defect": null,
+    "full_state_norm": null,
+    "positive_physical_tube": null,
+    "physical_curvature": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4": false,
+    "REI_activation": false
+  },
+  "not_admitted": [
+    "whole-domain field or nonsingularity enclosure",
+    "QSS03 coefficient-box/inverse-gain certificate",
+    "forward-error or physical tube certificate",
+    "new physical query certification",
+    "new canonical DAG closure"
+  ],
+  "old_campaign_reruns": {
+    "producer": 0,
+    "reference": 0,
+    "native_full_history": 0,
+    "oldtests": 0,
+    "BGJET_audit": 0,
+    "QSS03_certificate": 0,
+    "thermal_residual": 0
+  },
+  "evidence_refs": [
+    "CONTRACT.md",
+    "theory/R5_DERIVATION_KO.md",
+    "reviews/R6_REVIEW_KO.md",
+    "reviews/C9_REVIEW_KO.md",
+    "coding/C6_RESULT_SUMMARY.json",
+    "coding/C7_PRIMARY_SUMMARY.json",
+    "coding/C8_VALIDATION_SUMMARY.json",
+    "execution/RESOURCE_LEDGER.json",
+    "survey/FINAL_FRESHNESS_KO.md"
+  ],
+  "delivery_status_at_admission": "C9 publication/backup and C10 source/central return/final ACK follow as separately recorded delivery actions",
+  "automatic_next_unit": "OFF_AFTER_THIS_SELECTED_UNIT",
+  "main_merge": false
+}
