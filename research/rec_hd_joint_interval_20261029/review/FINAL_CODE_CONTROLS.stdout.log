@@ -1,0 +1,254 @@
+{
+  "schema": "REC_HD_JOINT_INTERVAL_INDEPENDENT_C9_CONTROLS_V1",
+  "reviewer": "/root/independent_hd_review",
+  "status": "PASS_SCOPED",
+  "models": [
+    {
+      "model": "empty",
+      "minimum_kind": "FINITE",
+      "minimum": "0",
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": true
+        },
+        {
+          "scale": "1/101",
+          "feasible": true
+        },
+        {
+          "scale": "1",
+          "feasible": true
+        },
+        {
+          "scale": "3/2",
+          "feasible": true
+        }
+      ]
+    },
+    {
+      "model": "all_zero_n3",
+      "minimum_kind": "FINITE",
+      "minimum": "0",
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": true
+        },
+        {
+          "scale": "1/101",
+          "feasible": true
+        },
+        {
+          "scale": "1",
+          "feasible": true
+        },
+        {
+          "scale": "3/2",
+          "feasible": true
+        }
+      ]
+    },
+    {
+      "model": "zero_denominator_interior",
+      "minimum_kind": "INFINITE",
+      "minimum": null,
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": false
+        },
+        {
+          "scale": "1",
+          "feasible": false
+        },
+        {
+          "scale": "3/2",
+          "feasible": false
+        }
+      ]
+    },
+    {
+      "model": "three_edge_mixed",
+      "minimum_kind": "FINITE",
+      "minimum": "4/3",
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": false
+        },
+        {
+          "scale": "1",
+          "feasible": false
+        },
+        {
+          "scale": "401/303",
+          "feasible": false
+        },
+        {
+          "scale": "4/3",
+          "feasible": true
+        },
+        {
+          "scale": "407/303",
+          "feasible": true
+        },
+        {
+          "scale": "3/2",
+          "feasible": true
+        }
+      ]
+    },
+    {
+      "model": "four_edge_joint_constraint",
+      "minimum_kind": "FINITE",
+      "minimum": "2",
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": false
+        },
+        {
+          "scale": "1",
+          "feasible": false
+        },
+        {
+          "scale": "3/2",
+          "feasible": false
+        },
+        {
+          "scale": "201/101",
+          "feasible": false
+        },
+        {
+          "scale": "2",
+          "feasible": true
+        },
+        {
+          "scale": "203/101",
+          "feasible": true
+        }
+      ]
+    },
+    {
+      "model": "photon_width_only",
+      "minimum_kind": "FINITE",
+      "minimum": "2",
+      "decisions": [
+        {
+          "scale": "0",
+          "feasible": false
+        },
+        {
+          "scale": "1",
+          "feasible": false
+        },
+        {
+          "scale": "3/2",
+          "feasible": false
+        },
+        {
+          "scale": "201/101",
+          "feasible": false
+        },
+        {
+          "scale": "2",
+          "feasible": true
+        },
+        {
+          "scale": "203/101",
+          "feasible": true
+        }
+      ]
+    }
+  ],
+  "implementation_vs_Bellman_Ford_decisions": 29,
+  "raw_source_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+  "raw_source_bytes": 2289,
+  "raw_literal_match_count": 17,
+  "independent_source_minimum_scale": "9137862803786/174896229",
+  "maximizing_segment": [
+    5,
+    6
+  ],
+  "source_minimum_boundary": "feasible exactly; infeasible at minimum-1e-12",
+  "raw_and_fixture_flags_distinct": true,
+  "changed_raw_and_changed_fixture_with_raw": "REJECTED",
+  "SPCAT_nonfinite_rejections": 12,
+  "measured_tag_controls": "PRESERVED",
+  "old_missing_directory_regression": "CLOSED_FINITE_RESULTS_UNCHANGED",
+  "cli_results": [
+    {
+      "mode": "raw",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_joint_interval_20261029/joint_interval.py",
+        "--output",
+        "/tmp/rec_final_c9_7uc_8sq4/raw/nested/certificate.json",
+        "--lamda",
+        "/workspace/scratch/e0012d8fd22a/acquisition/hd.dat"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result_sha256": "5aa63c2cd3275c1bdb742ae9124efa3fdda006319144e694947e924ded50aca3",
+      "source_identity": {
+        "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+        "bytes": 2289,
+        "raw_verified_this_execution": true,
+        "input_mode": "PINNED_RAW_PLUS_FIXTURE"
+      },
+      "minimum": "9137862803786/174896229"
+    },
+    {
+      "mode": "fixture",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_joint_interval_20261029/joint_interval.py",
+        "--output",
+        "/tmp/rec_final_c9_7uc_8sq4/fixture/nested/certificate.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result_sha256": "4a9f2626c2e74e285325e0e753f1abd3a4733510d19ff2dce06407023bc58b79",
+      "source_identity": {
+        "sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+        "bytes": 2289,
+        "raw_verified_this_execution": false,
+        "input_mode": "EXTRACTED_LITERAL_FIXTURE_ONLY"
+      },
+      "minimum": "9137862803786/174896229"
+    },
+    {
+      "mode": "repaired_legacy_fresh_output",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/e0012d8fd22a/rec_bianchi/research/rec_hd_print_precision_20261029/precision_audit.py",
+        "--output",
+        "/tmp/rec_final_c9_7uc_8sq4/old/results/certificate.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "finite_results_match_ancestor": true,
+      "old_gate_fail_count": 7
+    }
+  ],
+  "resources": {
+    "wall_s": 0.13227825600006327,
+    "self_cpu_s": 0.013526999999999997,
+    "child_cpu_s": 0.117877,
+    "self_peak_rss_kib": 12800,
+    "child_peak_rss_kib": 12800,
+    "measurement_scope": "controls until immediately before receipt serialization; full child processes counted"
+  },
+  "input_identities": {
+    "research/rec_hd_joint_interval_20261029/joint_interval.py": "55d3a68c21a7ee6c534fdacacc6a84749b0061d4b4e0c4e8976a0cc9b1fcf7ef",
+    "research/rec_hd_joint_interval_20261029/tests/test_joint_interval.py": "abf47a2625680e7cfe55abbaed77af04eaaedc03f1a6b4b40e8722e1b02c205d",
+    "research/rec_hd_joint_interval_20261029/source_literals.json": "b0a3e677bf0767c2ca6471dfad7efa399fc1a1b3c83893f02717fbace05b602a",
+    "research/rec_hd_joint_interval_20261029/CODING_CONTRACT.json": "73edad3121e5de95400dbb81306127544f25c8fcf7041ca8a0fc80b73bc60890",
+    "research/rec_hd_print_precision_20261029/precision_audit.py": "177844f85c08dcefff153649b86838c3a4ef0472eae8d3818eb6d81a88cfcd38",
+    "research/rec_hd_print_precision_20261029/tests/test_regression_repair.py": "7ff6e5256c53f84c1a5b26f9e4425c590dd3315415f602ca1b4592f13ff30fd9"
+  },
+  "execution_source_sha256": "8e2135a01d2d37ba84c54da088aef46bc7ebb5c82d8bcb926af3c51cc7defd33",
+  "historical_stationary_native_IVP_runs": 0,
+  "provider_or_model_cost": "UNKNOWN_NOT_ZERO"
+}

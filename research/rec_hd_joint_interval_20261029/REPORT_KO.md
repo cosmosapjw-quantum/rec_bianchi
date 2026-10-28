@@ -62,8 +62,10 @@ REC의 최신30PR 메타데이터, 원격172branch refs(신규 자식 포함), �
 | C7 | 17/20 | 28/88 | [85412166](https://github.com/cosmosapjw-quantum/rec_bianchi/commit/85412166783d3a3579d20dd2760f013c893deff8) | Drive ACK / Dropbox completed |
 | C8 | 18/20 | 28/88 | [dbfb9825](https://github.com/cosmosapjw-quantum/rec_bianchi/commit/dbfb982597bc3a6d5cacb543ba7c5f3150eaa7a0) | Drive ACK / Dropbox completed |
 | C9 | 19/20 | 28/88 | [c5962e15](https://github.com/cosmosapjw-quantum/rec_bianchi/commit/c5962e15989d18325e0fe263120715a63783d3ed) | Drive ACK / Dropbox completed |
-| C10 | 20/20 | 28/88 | FINAL_DELIVERY_ACK.json | 실제 최종 ACK 참조 |
+| C10 | 20/20 | 28/88 | [acfccec8](https://github.com/cosmosapjw-quantum/rec_bianchi/commit/acfccec8fa40ac4f77db118ced10e57f2ed8951f) | Drive ACK / Dropbox completed |
 
 [이론](THEORY.md), [코딩 계약](CODING_CONTRACT.json), [실제 결과](results/JOINT_CERTIFICATE.json), [독립 검토](review/FINAL_CODE_REVIEW.json), [DAG 변경](DAG_DELTA.json), [복사 가능한 handoff](HANDOFF_NEXT_THREAD_KO.md)를 함께 사용한다.
 
 공식 원자료: https://home.strw.leidenuniv.nl/~moldata/datafiles/hd.dat ; https://home.strw.leidenuniv.nl/~moldata/HD.html ; https://cdms.astro.uni-koeln.de/classic/entries/archive/H2/vers.2/ .
+
+최종 SOURCE: `REC_HD_JOINT_INTERVAL01_C10_20261029.zip`, 259327 bytes, SHA256 `972e2e31683a3947ab582a687a63a4c048b12f4086a6ad41345effc1d547fcc2`. [Drive SOURCE](https://drive.google.com/file/d/1QFX2LBJH4zKW7ZKEKNXHbzjTtydV5rBP/view?usp=drivesdk). FINAL_DELIVERY_ACK.json은20단계 전체 ACK와 게시된4개 코드파일의 실제 Git blob 일치를 기록한다.
