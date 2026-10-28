@@ -109,11 +109,15 @@ does not use a fresh logarithm to redefine the previous context or alpha.
 
 ## 5. Algebraic closure differentiation
 
-The source forms a block linear system for2real and311virtual populations:
+The source forms a block linear system for2real and311virtual native departures
+from equilibrium with1s (the source comment states xi-xi[eq with1s]):
 
   M(eta)v(eta)=s(eta),                                     (5)
 
-where its coefficients depend on thermodynamic inputs and the causal incoming
+Here v is the solved departure vector, not an absolute population vector.
+Its virtual components satisfy xv_b=x1s*Dfnu_b and the native Lyalpha output
+is xr_2p/(3*x1s). Signed departures are allowed. The coefficients depend on
+thermodynamic inputs and the causal incoming
 radiation. On an interval where M,s are C2 and M is invertible, differentiate
 (5). Product rule and left multiplication by M^-1 give
 

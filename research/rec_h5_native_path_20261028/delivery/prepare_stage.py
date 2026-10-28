@@ -14,7 +14,7 @@ OWNED = 'research/rec_h5_native_path_20261028'
 NAMESPACE = 'rec_h5_native_path_20261028'
 GIT_BINARY_SUFFIXES = {'.zip', '.pdf', '.png', '.jpg', '.jpeg', '.npz', '.npy', '.gz', '.tar', '.xz', '.sqlite', '.db', '.h5', '.hdf5'}
 RAW_EXTERNAL_NAMES = {'lamda_hd_live.dat'}
-RUNTIME_CACHE_PARTS = {'__pycache__', 'mplconfig', 'mpl_config', '.mplconfig', '.mpl_config', 'fontcache', 'font_cache', '.fontcache'}
+RUNTIME_CACHE_PARTS = {'__pycache__', 'mplconfig', 'mpl_config', 'matplotlib_config', '.mplconfig', '.mpl_config', 'fontcache', 'font_cache', '.fontcache'}
 
 
 def digest(data):
@@ -89,8 +89,9 @@ def main():
         if oversized:
             reasons.append('over 2 MiB transferable text limit')
         if reasons:
-            artifact_git_exclusions.append({'path': rel, 'reason': '; '.join(reasons) + '; exact bytes retained in ZIP', 'matching_globs': [pattern for pattern in args.git_exclude if fnmatch.fnmatchcase(rel, pattern)]})
-            binary_artifacts.append({**identity, 'local_path': str(p.resolve()), 'mode': '100644', 'type': 'blob', 'git_blob_allowed': not raw_external, 'reason': '; '.join(reasons)})
+            matching_globs = [pattern for pattern in args.git_exclude if fnmatch.fnmatchcase(rel, pattern)]
+            artifact_git_exclusions.append({'path': rel, 'reason': '; '.join(reasons) + '; exact bytes retained in ZIP', 'matching_globs': matching_globs})
+            binary_artifacts.append({**identity, 'local_path': str(p.resolve()), 'mode': '100644', 'type': 'blob', 'git_blob_allowed': not raw_external and not matching_globs, 'matching_globs': matching_globs, 'reason': '; '.join(reasons)})
         else:
             entries.append({'path': rel, 'mode': '100644', 'type': 'blob', 'content': content})
     if not entries:

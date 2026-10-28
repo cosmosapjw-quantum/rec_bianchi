@@ -1,0 +1,287 @@
+--- canonical/history.c
++++ instrumented/history.c
+@@ -27,7 +27,8 @@
+ #include "hyrectools.h"
+ #include "helium.h"
+ #include "hydrogen.h"
+-#include "history.h" 
++#include "history.h"
++#include "capture_support.h" 
+ 
+ 
+ /*****************************************************************************
+@@ -279,6 +280,9 @@
+ 
+ void rec_get_xe_next1_He(REC_COSMOPARAMS *param, double z_in, double *xHeII, 
+                          double *dxHeIIdlna_prev, double *dxHeIIdlna_prev2, int *post_saha) {
++    double cap_x=*xHeII,cap_p=*dxHeIIdlna_prev,cap_p2=*dxHeIIdlna_prev2;
++    int cap_integrated=(*post_saha==0);
++
+ 
+     double H, xH1s, xH1s_p, xH1s_m, xHeIISaha, dxHeIISaha_dlna, DdxHeIIdlna_Dxe, dxHeIIdlna, z_out, Dxe;   
+     
+@@ -314,6 +318,8 @@
+     /* Update stored derivatives */
+     *dxHeIIdlna_prev2 = *dxHeIIdlna_prev;
+     *dxHeIIdlna_prev  = dxHeIIdlna;
++
++    cap_recur("xHeII",cap_global_in(),cap_x,*xHeII,dxHeIIdlna,cap_p,cap_p2,*dxHeIIdlna_prev,*dxHeIIdlna_prev2,1,cap_integrated,0);
+ }
+ 
+ /****************************************************************************************************
+@@ -345,12 +351,12 @@
+                           *rec_helium_dxHeIIdlna(xH1sSaha, xHeII_out, param->nH0, param->T0, param->fHe, H, z_out, param->fsR, param->meR); 
+                          /* (partial xHII)/(partial xHeII).dxHeII/dlna */
+      }
+-     dxH1sdlna_Saha = -rec_dxHIIdlna(MODEL, xHIISaha + xHeII_out, xHIISaha, nH, H, T, T, rate_table, twog_params, 
++     dxH1sdlna_Saha = -cap_dispatch("post_saha_base", MODEL, xHIISaha + xHeII_out, xHIISaha, nH, H, T, T, rate_table, twog_params, 
+                                      Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz_out-param->izH0, z_out, param->fsR, param->meR);
+      Dxe            = 0.01*xH1sSaha;
+-     DdxH1sdlna_DxH1s = (rec_dxHIIdlna(MODEL, xHIISaha+Dxe + xHeII_out, xHIISaha+Dxe, nH, H, T, T, rate_table, twog_params, 
++     DdxH1sdlna_DxH1s = (cap_dispatch("post_saha_plus", MODEL, xHIISaha+Dxe + xHeII_out, xHIISaha+Dxe, nH, H, T, T, rate_table, twog_params, 
+                                      Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz_out-param->izH0, z_out, param->fsR, param->meR)
+-                       -rec_dxHIIdlna(MODEL, xHIISaha-Dxe + xHeII_out, xHIISaha-Dxe, nH, H, T, T, rate_table, twog_params, 
++                       -cap_dispatch("post_saha_minus", MODEL, xHIISaha-Dxe + xHeII_out, xHIISaha-Dxe, nH, H, T, T, rate_table, twog_params, 
+                                      Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz_out-param->izH0, z_out, param->fsR, param->meR))/2./Dxe; 
+ 
+      xH1s = xH1sSaha + (dxH1sSaha_dlna - dxH1sdlna_Saha)/DdxH1sdlna_DxH1s;
+@@ -372,6 +378,9 @@
+ void get_rec_next2_HHe(REC_COSMOPARAMS *param, unsigned iz_in, double z_in, double Tm_in, double *xH1s, double *xHeII,
+                        HRATEEFF *rate_table, TWO_PHOTON_PARAMS *twog_params, double **Dfminus_hist, double *Dfminus_Ly_hist[], double **Dfnu_hist,
+                        double *dxHIIdlna_prev,  double *dxHeIIdlna_prev, double *dxHIIdlna_prev2, double *dxHeIIdlna_prev2, int *post_saha) {
++    double cap_hp=*dxHIIdlna_prev,cap_hp2=*dxHIIdlna_prev2,cap_hep=*dxHeIIdlna_prev,cap_hep2=*dxHeIIdlna_prev2;
++    int cap_integrated=(*post_saha==0);unsigned long cap_rhs_id;
++
+ 
+   double H, dxHeIIdlna, dxHIIdlna, TR, TM, nH, zout, ainv, xH1s_in, xHeII_in, xe_in;
+ 
+@@ -388,8 +397,9 @@
+       TR        = kBoltz*param->T0 * (ainv=1.+z_in);
+       TM        = kBoltz*Tm_in; 
+       nH        = 1e-6*param->nH0 * ainv*ainv*ainv;
+-      dxHIIdlna = rec_dxHIIdlna(MODEL, xe_in, (1.-xH1s_in), nH, H, TM, TR, rate_table, twog_params, 
++      dxHIIdlna = cap_dispatch("h_he_input", MODEL, xe_in, (1.-xH1s_in), nH, H, TM, TR, rate_table, twog_params, 
+                                 Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz_in-param->izH0, z_in, param->fsR, param->meR);
++       cap_rhs_id=cap_last_call();
+ 
+       /* If Hydrogen is still close to Saha equilibrium do a post-Saha expansion for Hydrogen */  
+       if(*post_saha == 1){
+@@ -407,6 +417,9 @@
+       *dxHeIIdlna_prev2 = *dxHeIIdlna_prev;
+       *dxHeIIdlna_prev  = dxHeIIdlna;    
+   
++
++    cap_recur("xHeII",iz_in,xHeII_in,*xHeII,dxHeIIdlna,cap_hep,cap_hep2,*dxHeIIdlna_prev,*dxHeIIdlna_prev2,1,1,0);
++    cap_recur("xH1s",iz_in,xH1s_in,*xH1s,dxHIIdlna,cap_hp,cap_hp2,*dxHIIdlna_prev,*dxHIIdlna_prev2,-1,cap_integrated,cap_rhs_id);
+ }
+ 
+ /*********************************************************************************************************
+@@ -418,6 +431,9 @@
+                        HRATEEFF *rate_table, unsigned iz, TWO_PHOTON_PARAMS *twog_params,
+ 		       double **Dfminus_hist, double *Dfminus_Ly_hist[], double **Dfnu_hist,
+                        double *dxedlna_prev, double *dxedlna_prev2, int *post_saha) {
++    double cap_p=*dxedlna_prev,cap_p2=*dxedlna_prev2;
++    int cap_integrated=(*post_saha==0);unsigned long cap_rhs_id;
++
+ 
+     double dxedlna, TR, nH, ainv, H, TM, zout;
+     int model;        
+@@ -430,8 +446,9 @@
+     /* Switch off radiative transfer calculation if needed (param->nzrt and izH0 are evaluated in rec_get_cosmoparam) */
+     model = (iz-param->izH0 < param->nzrt || MODEL != FULL) ? MODEL : EMLA2s2p;   
+ 
+-    dxedlna = rec_dxHIIdlna(model, xe_in, xe_in, nH, H, TM, TR, rate_table, twog_params, 
+-                            Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz-param->izH0, z_in, param->fsR, param->meR);    
++    dxedlna = cap_dispatch("h_steady_input", model, xe_in, xe_in, nH, H, TM, TR, rate_table, twog_params, 
++                            Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz-param->izH0, z_in, param->fsR, param->meR);
++    cap_rhs_id=cap_last_call();    
+       
+     /* If close to Saha equilibrium (with xHeII = 0), do a post-Saha expansion */
+     if (*post_saha == 1) {
+@@ -447,6 +464,8 @@
+     *dxedlna_prev2 = *dxedlna_prev;
+     *dxedlna_prev  = dxedlna;
+      
++
++    cap_recur("xe",iz,xe_in,*xe_out,dxedlna,cap_p,cap_p2,*dxedlna_prev,*dxedlna_prev2,1,cap_integrated,cap_rhs_id);
+ }
+ 
+ /**********************************************************************************************
+@@ -458,6 +477,9 @@
+ void rec_get_xe_next2_HTm(int func_select, REC_COSMOPARAMS *param, double z_in, double xe_in, double Tm_in, double *xe_out, double *Tm_out,
+                           HRATEEFF *rate_table, unsigned iz, TWO_PHOTON_PARAMS *twog_params, double **Dfminus_hist, double *Dfminus_Ly_hist[], 
+                           double **Dfnu_hist, double *dxedlna_prev, double *dTmdlna_prev, double *dxedlna_prev2, double *dTmdlna_prev2) {
++    double cap_p=*dxedlna_prev,cap_p2=*dxedlna_prev2,cap_tp=*dTmdlna_prev,cap_tp2=*dTmdlna_prev2;
++    unsigned long cap_rhs_id;
++
+ 
+     double dxedlna, dTmdlna, TR, nH, ainv, H, TM;
+     int model;    
+@@ -470,8 +492,9 @@
+     /* Switch off radiative transfer calculation if needed */
+     model = (iz-param->izH0 < param->nzrt || func_select != FULL) ? func_select : EMLA2s2p;   
+ 
+-    dxedlna = rec_dxHIIdlna(model, xe_in, xe_in, nH, H, TM, TR, rate_table, twog_params, 
+-                            Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz-param->izH0, z_in, param->fsR, param->meR);    
++    dxedlna = cap_dispatch("h_tm_input", model, xe_in, xe_in, nH, H, TM, TR, rate_table, twog_params, 
++                            Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, param->zH0, iz-param->izH0, z_in, param->fsR, param->meR);
++    cap_rhs_id=cap_last_call();    
+ 
+     dTmdlna = rec_dTmdlna(xe_in, Tm_in, TR/kBoltz, H, param->fHe, param->fsR, param->meR);
+                                           
+@@ -482,6 +505,9 @@
+     *dTmdlna_prev2 = *dTmdlna_prev;
+     *dxedlna_prev  = dxedlna;
+     *dTmdlna_prev  = dTmdlna;
++
++    cap_recur("xe",iz,xe_in,*xe_out,dxedlna,cap_p,cap_p2,*dxedlna_prev,*dxedlna_prev2,1,1,cap_rhs_id);
++    cap_recur("Tm_K",iz,Tm_in,*Tm_out,dTmdlna,cap_tp,cap_tp2,*dTmdlna_prev,*dTmdlna_prev2,1,1,cap_rhs_id);
+ }
+ 
+ /**************************************************************************************************** 
+@@ -498,6 +524,7 @@
+    double **Dfminus_hist;
+    int post_saha;
+   
++   cap_init(param->izH0,param->nz,param->nzrt,param->zH0,param->T0,param->nH0,param->fHe,param->obh2,param->omh2,param->okh2,param->odeh2,param->w0,param->wa,param->Y,param->Nnueff);
+    Dfminus_hist = create_2D_array(NVIRT, param->nzrt);
+   
+    /* Make sure the input spectrum is initialized at zero */
+@@ -511,7 +538,8 @@
+    for(iz=0; iz<param->nz && Delta_xe > 1e-8; iz++) {
+       z = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
+       xe_output[iz] = rec_xesaha_HeII_III(param->nH0, param->T0, param->fHe, z, &Delta_xe, param->fsR, param->meR);
+-      Tm_output[iz] = param->T0 * (1.+z); 
++      Tm_output[iz] = param->T0 * (1.+z);
++       cap_phase("HEIII_SAHA",iz);cap_node(iz,z,xe_output[iz],Tm_output[iz],0,0.,0.,0); 
+    }
+   
+    /******** He II -> I recombination. 
+@@ -523,17 +551,20 @@
+     ********/
+ 
+    dxHeIIdlna_prev2 = (xe_output[iz-2] - xe_output[iz-4])/2./DLNA;  
+-   dxHeIIdlna_prev  = (xe_output[iz-1] - xe_output[iz-3])/2./DLNA;    
++   dxHeIIdlna_prev  = (xe_output[iz-1] - xe_output[iz-3])/2./DLNA;
++   cap_seed("xHeII",iz,dxHeIIdlna_prev,dxHeIIdlna_prev2,xe_output[iz-1],xe_output[iz-2],xe_output[iz-3],xe_output[iz-4],0.,0.);    
+      
+    xHeII     = rec_saha_xHeII(param->nH0, param->T0, param->fHe, z, param->fsR, param->meR);  
+    post_saha = 1;                          /* Start with post-saha expansion */    
+ 
+    for(; iz < param->izH0+1; iz++) {
++        cap_phase("HE_ONLY",iz-1);
+         rec_get_xe_next1_He(param, z, &xHeII, &dxHeIIdlna_prev, &dxHeIIdlna_prev2, &post_saha);
+         z             = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
+         xH1s          = rec_saha_xH1s(xHeII, param->nH0, param->T0, z, param->fsR, param->meR);
+         xe_output[iz] = (1.-xH1s) + xHeII;
+-        Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);   
++        Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);
++        cap_node(iz,z,xe_output[iz],Tm_output[iz],1,xH1s,xHeII,0);   
+     }    
+ 
+ 
+@@ -545,14 +576,17 @@
+ 
+    dxHIIdlna_prev2 = (xe_output[iz-2] - xe_output[iz-4])/2./DLNA - dxHeIIdlna_prev2;
+    dxHIIdlna_prev  = (xe_output[iz-1] - xe_output[iz-3])/2./DLNA - dxHeIIdlna_prev;
++   cap_seed("xHII",iz,dxHIIdlna_prev,dxHIIdlna_prev2,xe_output[iz-1],xe_output[iz-2],xe_output[iz-3],xe_output[iz-4],dxHeIIdlna_prev,dxHeIIdlna_prev2);
+    post_saha       = 1; 
+ 
+    for(; iz<param->nz && xHeII > XHEII_MIN; iz++) {
++      cap_phase("H_HE",iz-1);
+       get_rec_next2_HHe(param, iz-1, z, Tm_output[iz-1], &xH1s, &xHeII, rate_table, twog_params, Dfminus_hist, Dfminus_Ly_hist, 
+                         Dfnu_hist, &dxHIIdlna_prev,  &dxHeIIdlna_prev, &dxHIIdlna_prev2, &dxHeIIdlna_prev2, &post_saha);
+       xe_output[iz] = (1.-xH1s) + xHeII;
+       z             = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
+-      Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);       
++      Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);
++      cap_node(iz,z,xe_output[iz],Tm_output[iz],1,xH1s,xHeII,0);       
+    }
+  
+ 
+@@ -561,10 +595,12 @@
+      ********/
+ 
+     for (; iz<param->nz && 1.-Tm_output[iz-1]/param->T0/(1.+z) < DLNT_MAX; iz++) {
++        cap_phase("H_STEADY",iz-1);
+         rec_get_xe_next1_H(param, z, xe_output[iz-1], Tm_output[iz-1], xe_output+iz, rate_table, iz-1, twog_params,
+ 		           Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, &dxHIIdlna_prev, &dxHIIdlna_prev2, &post_saha);
+         z             = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
+-        Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);  
++        Tm_output[iz] = rec_Tmss(xe_output[iz], param->T0*(1.+z), rec_HubbleConstant(param, z), param->fHe, param->fsR, param->meR);
++        cap_node(iz,z,xe_output[iz],Tm_output[iz],0,0.,0.,1);  
+     }
+ 
+     /******** Evolve xe and Tm simultaneously until the lower bounds of integration tables are reached.
+@@ -574,13 +610,16 @@
+ 
+     dTmdlna_prev2 = (Tm_output[iz-2] - Tm_output[iz-4])/2./DLNA;
+     dTmdlna_prev  = (Tm_output[iz-1] - Tm_output[iz-3])/2./DLNA;
++   cap_seed("Tm_K",iz,dTmdlna_prev,dTmdlna_prev2,Tm_output[iz-1],Tm_output[iz-2],Tm_output[iz-3],Tm_output[iz-4],0.,0.);
+ 
+     for(; iz<param->nz && kBoltz*param->T0*(1.+z)/param->fsR/param->fsR/param->meR > TR_MIN 
+                        && Tm_output[iz-1]/param->T0/(1.+z) > TM_TR_MIN; iz++) {
++         cap_phase("H_TM",iz-1);
+          rec_get_xe_next2_HTm(MODEL, param, z, xe_output[iz-1], Tm_output[iz-1], xe_output+iz, Tm_output+iz,
+                               rate_table, iz-1, twog_params, Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist, 
+                               &dxHIIdlna_prev, &dTmdlna_prev, &dxHIIdlna_prev2, &dTmdlna_prev2);
+          z = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
++         cap_node(iz,z,xe_output[iz],Tm_output[iz],0,0.,0.,1);
+     }
+ 
+     /***** For low redshifts (z < 20 or so) use Peeble's model (Tm is evolved with xe). 
+@@ -590,13 +629,16 @@
+      *****/
+          
+     for(; iz<param->nz; iz++) { 
++        cap_phase("LOW_PEEBLES",iz-1);
+         rec_get_xe_next2_HTm(PEEBLES, param, z, xe_output[iz-1], Tm_output[iz-1], xe_output+iz, Tm_output+iz,
+                               rate_table, iz-1, twog_params, Dfminus_hist, Dfminus_Ly_hist, Dfnu_hist,
+                               &dxHIIdlna_prev, &dTmdlna_prev, &dxHIIdlna_prev2, &dTmdlna_prev2);
+         z = (1.+ZSTART)*exp(-DLNA*iz) - 1.;
++         cap_node(iz,z,xe_output[iz],Tm_output[iz],0,0.,0.,1);
+     }
+   
+      /* Cleanup */
++     cap_final(Dfminus_hist,Dfminus_Ly_hist,Dfnu_hist,twog_params->Eb_tab);
+      free_2D_array(Dfminus_hist, NVIRT);
+ }
+ /******************************************************************************************************************************/
+--- canonical/hydrogen.c
++++ instrumented/hydrogen.c
+@@ -31,6 +31,7 @@
+ 
+ #include "hyrectools.h"
+ #include "hydrogen.h"
++#include "capture_support.h"
+ 
+ 
+ /***********************************************************************************************************
+@@ -796,7 +797,8 @@
+    Dfminus_Ly_hist[2][iz] = xr[0]/x1s*exp(-E42/TR); 
+    
+    /* Average radiation field in each bin */
+-   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;   
++   for (b = 0; b < NVIRT; b++) Dfnu_hist[b][iz] = xv[b]/x1s;
++   cap_full_write(iz,xr,xv,Dfminus_hist,Dfminus_Ly_hist,Dfnu_hist,Dfplus,Dfplus_Ly,TM,TR);   
+ 
+    for (i = 0; i < 2; i++) free(Trv[i]);
+    for (i = 0; i < 2; i++) free(Tvr[i]);
+--- canonical/hyrec.c
++++ instrumented/hyrec.c
+@@ -25,6 +25,7 @@
+ #include "hydrogen.h"
+ #include "history.h"
+ #include "hyrec_params.h"
++#include "capture_support.h"
+ 
+ 
+ 
+@@ -160,6 +161,7 @@
+     free_2D_array(rate_table.logAlpha_tab[0], NTM);
+     free_2D_array(rate_table.logAlpha_tab[1], NTM);
+     free(rate_table.logR2p2s_tab);
++    cap_finish();
+     free(xe_output);
+     free(Tm_output);
+     free_2D_array(Dfnu_hist, NVIRT);
