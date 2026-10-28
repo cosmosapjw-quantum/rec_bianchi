@@ -18,7 +18,7 @@ Does the mismatch between the nine printed HD level energies and eight printed p
 
 Ordinary frequency ν in Hz (not angular ω), c=299792458 m s^-1, h=6.62607015e-34 J s, k_B=1.380649e-23 J K^-1. For transition u>l, E_j=h c (100 w_j) with w_j in cm^-1; ν_E=(E_u-E_l)/h=100 c(w_u-w_l); ν_P=10^9 ν_print(GHz). Define δν=ν_E-ν_P. The original source has 9 rotational labels J=0..8, 8 radiative edges, 9 para-H2 and 9 ortho-H2 collisional edges. No vibrational quantum number is independently authenticated by the source. T>0 where LTE is invoked. Metric signature (-,+,+,+) has no role in the local rest-frame algebra.
 
-Define `P_core(file)` as the ordered tuple of molecule label/mass, level identities/energies/statistical weights, radiative upper/lower indices and A, collision partner identities/temperature nodes/transition indices/rates. Define `P_meta(file)` as printed ν and E_u/k display columns. A consumer is **core-only** only when its actual code depends on `P_core` and not on `P_meta`; other consumers may use either or both. The source file hash and the semantic core hash are separate typed identities.
+Define `P_core(file)` as the ordered tuple of molecule label/mass, level identities/energies/statistical weights, radiative upper/lower indices and A, collision partner identities/temperature nodes/transition indices/rates. Define `P_meta(file)` as printed ν and E_u/k display columns. A consumer is **core-only** only when its actual code depends on `P_core` and not on `P_meta`; other consumers may use either or both. The source file hash and the selected-field canonical **content** hash are separate typed identities; `core_sha256` does not prove numerical/semantic equivalence under alternate decimal formatting.
 
 For the line-centre diagnostic fix A_ul>0, n_l>0, n_u>=0, g_l,g_u>0, and a Gaussian Doppler velocity dispersion σ_v>0 in the local emitter frame. Let σ_ν=ν σ_v/c and φ_ν(ν)=1/(sqrt(2π)σ_ν) at its own centre. The comparison holds the same A, populations and σ_v across both frequency conventions. For absorption positivity in the LTE illustration, n_u/n_l=(g_u/g_l) exp[-(E_u-E_l)/(k_B T)].
 
@@ -28,7 +28,7 @@ For the line-centre diagnostic fix A_ul>0, n_l>0, n_u>=0, g_l,g_u>0, and a Gauss
 
 ## R5. Constructive derivation
 
-**Projection lemma (conditional).** For any two syntactically valid HD LAMDA inputs X,Y with `P_core(X)=P_core(Y)` and any consumer F=f∘P_core, F(X)=F(Y). This is immediate by function composition, and it says nothing about consumers that read ν or E_u/k. In particular a change in printed FREQ cannot be interpreted as a physical source correction, nor can it alter a proven core-only computation. The public core projection's SHA256 is a semantic/structural identity of selected fields, not the original file's byte identity.
+**Projection lemma (conditional).** For any two syntactically valid HD LAMDA inputs X,Y with `P_core(X)=P_core(Y)` and any consumer F=f∘P_core, F(X)=F(Y). This is immediate by function composition, and it says nothing about consumers that read ν or E_u/k. In particular a change in printed FREQ cannot be interpreted as a physical source correction, nor can it alter a proven core-only computation. The core projection's SHA256 is a canonical **CONTENT_IDENTITY** of selected literal fields, not the original file's byte identity or a general numerical/semantic equivalence certificate.
 
 **Einstein line-centre kernel.** For an explicitly selected ν>0, Einstein B_ul=A_ul c²/(2hν³), B_lu=(g_u/g_l)B_ul. At each convention's own centre, with φ_0=c/(sqrt(2π)νσ_v),
 
