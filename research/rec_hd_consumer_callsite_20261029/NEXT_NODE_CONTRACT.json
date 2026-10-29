@@ -1,0 +1,32 @@
+{
+  "forbidden": [
+    "automatic source correction",
+    "new physical heat term from discrepancy",
+    "2026 CDMS v3 as 2011 v2",
+    "rerun prior stationary/IVP/native",
+    "change H5 epsilon or central DAG without source admission"
+  ],
+  "independent_source_dependency": {
+    "id": "CDMS_V2_SOURCE_RECOVERY",
+    "physical_source_choice": "HOLD",
+    "requires": [
+      "authenticated Dec2011 .cat/.egy/.par/.fit/.lin raw bytes, SHA and size",
+      "2019 .cat versus 2011 .cat/i.cat source genealogy",
+      "quantum numbers, TAG experimental flag, uncertainty, LAMDA conversion recipe"
+    ],
+    "state": "SERVICE_INPUT_BLOCKED"
+  },
+  "next_primary": {
+    "acceptance": [
+      "exact repo commit+tree SHA and full file inventory",
+      "trace HD-specific input ingestion to source terms, photon energy and frame",
+      "run mutation on any newly confirmed consumer",
+      "preserve previous source and code SHA",
+      "do not activate default runtime"
+    ],
+    "goal": "Read actual full source trees including generated C/Rust, runtime adapters and complete call graph for REC/BASS/REI; expand selected-file matrix without claiming absence from uninspected paths",
+    "id": "REC_HD_NATIVE_CALLSITE_COMPLETENESS",
+    "state": "LOCAL_CHECKOUT_REQUIRED"
+  },
+  "schema": "REC_HD_CONSUMER_NEXT_NODE_V1"
+}

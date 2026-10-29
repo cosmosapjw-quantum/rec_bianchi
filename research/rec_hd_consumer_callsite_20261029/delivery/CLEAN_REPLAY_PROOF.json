@@ -1,0 +1,25 @@
+{
+  "schema": "REC_HD_CONSUMER_CLEAN_REPLAY_PROOF_V1",
+  "date_kst": "2026-10-29",
+  "source_archive": {
+    "name": "REC_HD_CONSUMER_CALLSITE01_SOURCE_20261029.zip",
+    "sha256": "4e144d1515caee77c2d628e9ea28cc1ab5ec1e9f6a0bb478fa37a1e1714cd183",
+    "Drive_remote_restored_full_sha_match": true
+  },
+  "fresh_isolated_extraction": true,
+  "commands": [
+    "python3 -m unittest discover -s <clean_extract>/research/rec_hd_consumer_callsite_20261029/tests -q with source/code env",
+    "python3 <clean_extract>/research/rec_hd_consumer_callsite_20261029/audit_consumer.py --source <clean_extract>/private_inputs/hd.dat --multichannel <clean_extract>/parent_code/multichannel.py --field-semantics <clean_extract>/parent_code/field_semantics.py --output <clean_extract>/replay.json",
+    "python3 -O -m unittest discover -s <clean_extract>/research/rec_hd_consumer_callsite_20261029/tests -q"
+  ],
+  "unittest": "23/23 PASS exit0",
+  "optimized_unittest": "23/23 PASS exit0",
+  "replay_result_sha256": "30c0d9b69bd9e3567544e0f9533190488275f2c0e3289930980d4f3d178badc0",
+  "original_result_sha256": "30c0d9b69bd9e3567544e0f9533190488275f2c0e3289930980d4f3d178badc0",
+  "byte_identity": "PASS",
+  "physical_promotion": false,
+  "canonical": "28/88",
+  "REC_physical": "0/313",
+  "nonauthor_R6_C9": "NOT_RUN",
+  "production": "HOLD"
+}

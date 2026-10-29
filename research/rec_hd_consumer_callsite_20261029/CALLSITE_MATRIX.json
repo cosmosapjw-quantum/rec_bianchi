@@ -1,0 +1,139 @@
+{
+  "schema": "REC_HD_CONSUMER_CALLSITE_MATRIX_V1",
+  "date_kst": "2026-10-29",
+  "scope": "Selected exact code files/functions only, not an exhaustive search of all archive, branches, generated C/Rust or external consumer implementations",
+  "pinned_refs": {
+    "REC": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+    "BASS": "9c6506e4e2087129a8b674ff10438e5db1a55c9d",
+    "REI": "ae3402713c4b6530ab2b27f008f5f5d5c6a999ed"
+  },
+  "entries": [
+    {
+      "owner": "REC",
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+      "path": "research/rec_hd_multichannel_affinity_20261029/code/multichannel.py",
+      "git_blob_sha": "029255494bf0a63b93bf8b2715327a8585afb5f3",
+      "function": "generate",
+      "line_range": "55-75",
+      "classification": "MIXED_PRINTED_PHOTON_LEVEL_ENERGY",
+      "evidence": "nu=e[nu_GHz]*1e9 by default; dE from w; source_consistent flag recomputes nu from dE; collision detailed balance uses dE",
+      "verification": "DIRECT_IMPORTED_AND_METAMORPHIC_TESTED",
+      "link": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/861b7f8b3e52d580437a1b4ad448d9669b0d2706/research/rec_hd_multichannel_affinity_20261029/code/multichannel.py"
+    },
+    {
+      "owner": "REC",
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+      "path": "research/rec_hd_field_semantics_20261029/field_semantics.py",
+      "git_blob_sha": "21517960f912efbd2dc9df8b94fd577e03ca2e27",
+      "function": "frequency_comparison",
+      "line_range": "101-150",
+      "classification": "DUAL_POLICY_DIAGNOSTIC",
+      "evidence": "Explicit exact nu_E vs nu_P ratios; core projection excludes optional metadata; not production",
+      "verification": "DIRECT_IMPORTED_AND_REUSED",
+      "link": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/861b7f8b3e52d580437a1b4ad448d9669b0d2706/research/rec_hd_field_semantics_20261029/field_semantics.py"
+    },
+    {
+      "owner": "REC",
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+      "path": "src/full_bianchi_hyrec/trajectory/hyrec_source_adapter.py",
+      "git_blob_sha": "00b9eceec888839a0d1cd7644e569a397d4f7279",
+      "function": "one_photon_paired_action / one_photon_planck_null_residual",
+      "line_range": "123-166",
+      "classification": "GENERIC_HYDROGEN_FREQUENCY_PARAMETER",
+      "evidence": "One-photon action takes occupation and A; null helper constructs both Boltzmann upper population and Planck occupation from same frequency_Hz, so cannot test independent HD level gap",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/861b7f8b3e52d580437a1b4ad448d9669b0d2706/src/full_bianchi_hyrec/trajectory/hyrec_source_adapter.py"
+    },
+    {
+      "owner": "REC",
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+      "path": "src/full_bianchi_hyrec/recoil/frequency_liouville.py",
+      "git_blob_sha": "95ad73d8095e5b5c19667661e1680a48bd6a5765",
+      "function": "ConservativeFrequencyLiouville.from_network",
+      "line_range": "93-145",
+      "classification": "LOCKED_HYDROGEN_LINE_FREQUENCY_GRID",
+      "evidence": "Frequency faces = line.nu_abs_Hz + faces*line.Doppler_width_Hz; changing grid requires recompile/remap; no HD LAMDA loader demonstrated",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/861b7f8b3e52d580437a1b4ad448d9669b0d2706/src/full_bianchi_hyrec/recoil/frequency_liouville.py"
+    },
+    {
+      "owner": "REC",
+      "repository": "cosmosapjw-quantum/rec_bianchi",
+      "commit": "861b7f8b3e52d580437a1b4ad448d9669b0d2706",
+      "path": "src/full_bianchi_hyrec/recoil/nonlinear_bose_runtime.py",
+      "git_blob_sha": "67c39313fdaf29100296ba1381293f2478107e09",
+      "function": "LineBoundaryConfig",
+      "line_range": "145-159",
+      "classification": "EXPLICIT_LINE_FREQUENCY_INPUT",
+      "evidence": "nu_abs_Hz and Doppler_width_Hz must be positive; source is original hydrogen Ly-alpha interface, not HD v2 catalog",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/rec_bianchi/blob/861b7f8b3e52d580437a1b4ad448d9669b0d2706/src/full_bianchi_hyrec/recoil/nonlinear_bose_runtime.py"
+    },
+    {
+      "owner": "BASS",
+      "repository": "cosmosapjw-quantum/bass",
+      "commit": "9c6506e4e2087129a8b674ff10438e5db1a55c9d",
+      "path": "bianchi/thermo/recombination.py",
+      "git_blob_sha": "de989015b29965e203c10bf258f12cf05195e530",
+      "function": "saha_xe / peebles_xe",
+      "line_range": "37-105",
+      "classification": "H_ATOMIC_NOT_HD",
+      "evidence": "Hydrogen atomic ionization E_ion, 2s-1s two-photon and Ly-alpha; no HD LAMDA frequency input in inspected functions",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/bass/blob/9c6506e4e2087129a8b674ff10438e5db1a55c9d/bianchi/thermo/recombination.py"
+    },
+    {
+      "owner": "BASS",
+      "repository": "cosmosapjw-quantum/bass",
+      "commit": "9c6506e4e2087129a8b674ff10438e5db1a55c9d",
+      "path": "bianchi/matter/collision_ladder.py",
+      "git_blob_sha": "a4e1a1109057c474fb203d1db83b49108139e4d2",
+      "function": "physical_frame / thomson_operator / collide",
+      "line_range": "42-118",
+      "classification": "THOMSON_BGK_NOT_HD",
+      "evidence": "Massless angular Boltzmann Thomson/BGK kernel; no molecular HD LAMDA input in inspected functions",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/bass/blob/9c6506e4e2087129a8b674ff10438e5db1a55c9d/bianchi/matter/collision_ladder.py"
+    },
+    {
+      "owner": "REI",
+      "repository": "cosmosapjw-quantum/rei_bianchi",
+      "commit": "ae3402713c4b6530ab2b27f008f5f5d5c6a999ed",
+      "path": "src/rei_bianchi/multigroup_hhe_transmission.py",
+      "git_blob_sha": "5b74a4036c8cb21a2cb772dd3d373c5f96d5a36c",
+      "function": "GROUPS / SPECIES / transmission",
+      "line_range": "1-78",
+      "classification": "H_HE_CONTINUUM_NOT_HD",
+      "evidence": "HI/HeI/HeII continuum photoionization groups 13.60–100 eV; not neutral HD rotational lines",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/ae3402713c4b6530ab2b27f008f5f5d5c6a999ed/src/rei_bianchi/multigroup_hhe_transmission.py"
+    },
+    {
+      "owner": "REI",
+      "repository": "cosmosapjw-quantum/rei_bianchi",
+      "commit": "ae3402713c4b6530ab2b27f008f5f5d5c6a999ed",
+      "path": "src/rei_bianchi/absorption_decomposition.py",
+      "git_blob_sha": "5f797469eaa67847fa3c5f3701a5b8416a55d98e",
+      "function": "atomic_kappa_arrays",
+      "line_range": "307-340",
+      "classification": "H_HE_CONTINUUM_NOT_HD",
+      "evidence": "Continuum absorption components evaluated on energy_eV grids; no HD rotational line ingestion evidenced",
+      "verification": "STATIC_SOURCE_INSPECTED_NO_HD_INPUT",
+      "link": "https://github.com/cosmosapjw-quantum/rei_bianchi/blob/ae3402713c4b6530ab2b27f008f5f5d5c6a999ed/src/rei_bianchi/absorption_decomposition.py"
+    }
+  ],
+  "confirmed_direct_HD_consumers": [
+    "REC PR151 generate",
+    "REC PR155 frequency_comparison"
+  ],
+  "not_demonstrated": "No direct HD LAMDA binding was established in the inspected REC production, BASS atomic/Thomson or REI H/He continuum functions. This is not a proof of absence elsewhere.",
+  "cross_repo_import": false,
+  "source_replacement": false,
+  "physical_promotion": false,
+  "canonical": "28/88 (+0)",
+  "REC_physical": "0/313 (+0)"
+}
