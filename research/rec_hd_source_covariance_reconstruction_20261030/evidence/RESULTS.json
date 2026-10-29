@@ -1,0 +1,94 @@
+{
+  "schema": "REC_HD_SOURCE_COVARIANCE_RECONSTRUCTION_V1",
+  "data_identity": {
+    "parent_source_archive_sha256": "2d781a67a312a7f124955d3ad9c83fe739fa8fb0925390b5139df7d954e92dd8",
+    "source_record": "PR164 data/LAB_INPUT.json",
+    "source_lab_input_sha256": "e568752432b1dc45e2b5ca37f8b767dad0ced0cea2c289fa29dc77ccdbf8da32",
+    "primary_sung_doi": "10.1016/j.jqsrt.2022.108412"
+  },
+  "measured_edges": 9,
+  "levels": 9,
+  "incidence_rank": 6,
+  "connected_components": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      5,
+      6,
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "measured_cycle_count": 3,
+  "cycle_residuals_nominal_MHz": [
+    "-3.921711314000",
+    "-17.890385768000",
+    "-60.258284058000"
+  ],
+  "conditional_calibration_model": {
+    "status": "COUNTERFACTUAL_SOURCE_NUISANCE_BASIS_NOT_EMPIRICALLY_FITTED",
+    "model": "Sung center corrections δ_j=u+v*x_j; x_j cm^-1; δ_j MHz",
+    "C_times_source_design": [
+      [
+        "-2.000000000000",
+        "-267.069330000000"
+      ],
+      [
+        "-2.000000000000",
+        "-443.081960000000"
+      ],
+      [
+        "-1.000000000000",
+        "-350.854010000000"
+      ]
+    ],
+    "projection_rank": 2,
+    "cycle_invariant_count": 1,
+    "left_null_normalized": [
+      "0.734680403332",
+      "-1.234680403332",
+      "1.000000000000"
+    ],
+    "calibration_invariant_nominal_cycle_MHz": "-41.050579792116",
+    "calibration_invariant_exact_rational_MHz": "-903177564029399/22001578750000",
+    "illustrative_exact_fit_first_two_u_MHz": "8.636692165045",
+    "illustrative_exact_fit_first_two_v_MHz_per_cm_inverse": "-0.079361773380",
+    "illustrative_remaining_third_nominal_MHz": "-41.050579792116",
+    "claim": "Nominal cycles cannot all vanish under only a shared u+v*x correction; this is NOT empirical exclusion of calibration or data."
+  },
+  "covariance": {
+    "actual_full_9x9": null,
+    "actual_cycle_3x3": null,
+    "model": "Cov(y)=Σ_fit+Σ_exp_systematic+BΩB^T+Σ_cross (not numerically identified)",
+    "cycle_propagation": "Cov(Cy)=C Cov(y) C^T",
+    "full_rank_gls_identity": "min_E (y-D E)^T V^-1 (y-D E)=(Cy)^T(CVC^T)^-1(Cy) if V positive-definite",
+    "statistical_sigma": null,
+    "chi_square": null,
+    "p_value": null,
+    "fit_reported_errors_not_total": true,
+    "Sung_Table7_scope": "Line-shape parameter correlations (width/shift/temperature), NOT established inter-line-center covariance"
+  },
+  "CDMS_2011_v2_source_status": "OFFICIAL_ARCHIVE_DISCOVERED_BYTES_NOT_ACQUIRED",
+  "protection": {
+    "original_35Hz": "FAIL7/8",
+    "canonical_DAG": "28/88",
+    "REC_physical_DAG": "0/313",
+    "REC_EXP_SPECTRAL": "PARTIAL",
+    "H5_epsilon": null,
+    "H6": "OPEN",
+    "H7": "OPEN",
+    "L4_ready": false,
+    "REI_activation": false,
+    "production": "HOLD",
+    "auto_next_node": false
+  },
+  "different_author_R6_C9": "NOT_RUN",
+  "native_subagent": "NOT_RUN"
+}
