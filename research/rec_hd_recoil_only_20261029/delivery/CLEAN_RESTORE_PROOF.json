@@ -1,0 +1,39 @@
+{
+  "schema": "REC_HD_RECOIL_CLEAN_RESTORE_PROOF_V1",
+  "date_kst": "2026-10-29",
+  "based_on_git_delivery_ack": "1f0f39f2705b9a0e898ae253b9081fdbb5182d09",
+  "source_archive": {
+    "sha256": "7eb22926eff6c2f3d662b79db3a0cc55a40b21eb06151e0b2e15fff9cdd48154",
+    "size_bytes": 682021,
+    "google_drive_id": "1kNvAvanbXju5WE3Z3aogjQhgk3ZcIhk0",
+    "remote_download_full_sha256": "MATCH"
+  },
+  "clean_restore": {
+    "destination": "independent clean directory",
+    "ZIP_CRC": "PASS",
+    "archive_members": 68,
+    "manifest_payload_rows": 67,
+    "manifest_bytes_and_sha": "67/67 MATCH",
+    "path_traversal_preflight": "PASS"
+  },
+  "restored_execution": {
+    "python -m unittest discover -s tests -v": "21/21 PASS exit0",
+    "python -O -m unittest discover -s tests -v": "21/21 PASS exit0",
+    "python -m compileall -q src tests": "PASS exit0",
+    "python src/recoil.py --transcript data/PR156_SELECTED_FREQUENCIES.json --output restored_RESULT.json": "PASS exit0",
+    "reproduced_RESULT_json_sha256": "aad02401257dcd05aff43eacbb47ea701a07f8cea571eb52b2f1f4f7c5f5bea7",
+    "byte_identical_to_archived_RESULT": true,
+    "g++ -std=c++20 -O2 -Wall -Wextra -pedantic src/recoil_crosscheck.cpp": "PASS exit0",
+    "restored_cpp_rows": "8/8 PASS exit0",
+    "restored_cpp_output_byte_identical": true
+  },
+  "source_qualification": "Public PR156 selected-field transcript only; neither original LAMDA nor CDMS 2011 v2 bytes were re-acquired",
+  "native_independent_R6_C9": "NOT_RUN",
+  "scientific_admission": "SCOPED_CONDITIONAL_RECOIL_ONLY",
+  "production": "HOLD",
+  "central_DAG": "28/88",
+  "REC_physical_DAG": "0/313",
+  "scoped": "18/20",
+  "original35Hz": "FAIL7/8",
+  "note": "Post-delivery append-only verification receipt. Immutable original SOURCE ZIP, all 20 stage ZIPs and prior Git commits unchanged."
+}
