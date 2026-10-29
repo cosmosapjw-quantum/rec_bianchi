@@ -1,0 +1,92 @@
+{
+  "schema": "REC_HD_SCOPED_GUARD_GRAPH_EVIDENCE_V1",
+  "parent_repo": "cosmosapjw-quantum/rec_bianchi",
+  "parent_pr": 158,
+  "parent_head": "ee78d209281c28ad7b8a9fe04a1634da80b7ad54",
+  "source_lamda_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+  "source_lamda_bytes": 2289,
+  "cdms_2011_v2_raw": "NOT_ACQUIRED",
+  "firewall_blob": "e170417a8a205e17d45ae50e5c0f14641d020387",
+  "owner_blob": "632a8a094e7eedd24a1ec3132fec20765d6e39da",
+  "actual_firewall_AST": {
+    "wrapper_order": {
+      "entry": "guarded_line_coefficients",
+      "required_call": "strict_bridge",
+      "consumer_call": "module.line_coefficients",
+      "order": "GUARD_PRECEDES_CONSUMER",
+      "guard_line": 114,
+      "consumer_line": 115,
+      "strength": "STATIC_ORDER_ONLY"
+    },
+    "strict_bridge_calls_source_validator": true,
+    "strict_bridge_calls_core": true,
+    "core_calls_owner_energy_gate": true,
+    "core_calls_owner_transition_qualification": true,
+    "guarded_research_entry_static_sequence": true,
+    "runtime_owner_private_source": "NOT_RUN",
+    "other_callers_covered": false
+  },
+  "graph_model": "HAND_INSPECTED_REPO_CODE_LINES_PLUS_PINNED_FIREWALL_AST; FINITE_TYPED_EVENT_GRAPH",
+  "unknown_dynamic_ffi_edges": "OPEN",
+  "exact_35hz_gate": "FAIL_7_OF_8",
+  "physical": "HOLD",
+  "production": "HOLD",
+  "canonical_DAG": "28/88 (+0)",
+  "REC_physical_DAG": "0/313 (+0)",
+  "event_graph": {
+    "adjacency": {
+      "research_direct_entry": [
+        "owner.line_coefficients"
+      ],
+      "research_thermal_entry": [
+        "owner.thermal_line"
+      ],
+      "owner.line_coefficients": [
+        "owner.einstein_B"
+      ],
+      "owner.thermal_line": [
+        "owner.einstein_B"
+      ],
+      "owner.einstein_B": [
+        "printed_nu_P_coefficient"
+      ],
+      "firewall_optin_entry": [
+        "firewall.source_identity_pass"
+      ],
+      "firewall.source_identity_pass": [
+        "firewall.owner_35Hz_gate_pass"
+      ],
+      "firewall.owner_35Hz_gate_pass": [
+        "owner.line_coefficients"
+      ],
+      "printed_nu_P_coefficient": []
+    },
+    "cuts": [
+      "firewall.owner_35Hz_gate_pass",
+      "firewall.source_identity_pass"
+    ],
+    "consumer": [
+      "printed_nu_P_coefficient"
+    ],
+    "optin_bypass_paths": [],
+    "direct_research_bypass_paths": [
+      [
+        "research_direct_entry",
+        "owner.line_coefficients",
+        "owner.einstein_B",
+        "printed_nu_P_coefficient"
+      ]
+    ],
+    "thermal_research_bypass_paths": [
+      [
+        "research_thermal_entry",
+        "owner.thermal_line",
+        "owner.einstein_B",
+        "printed_nu_P_coefficient"
+      ]
+    ],
+    "universal_runtime_coverage_claim": false
+  },
+  "local_owner_AST": "NOT_RUN_OWNER_FILE_NOT_IN_CONTAINER",
+  "plot_status": "GENERATED_SYNTHETIC_TOPOLOGY_NOT_NATIVE_TRACE"
+}
