@@ -47,7 +47,7 @@ DAG_DELTA.json, NEXT_NODE_CONTRACT.json을 읽고 현재 repo/branch identity를
 원본 source를 수정하지 않고 PR151의 메모리상 J2 nu_P만 +0.001GHz 바꾸면
 복사 edge 1개만 변하고 7개 복사/18개 충돌 edge는 불변이다.
 
-실제 검증: Python unittest 23/23 PASS, 6 source-node generate+ledger
+실제 검증: Python unittest 24/24 PASS, 6 source-node generate+ledger
 preflight PASS, compileall PASS, Decimal90/Fraction exact8 coefficients 일치,
 Wolfram exact symbolic local ledger/null check, figure 직접 확인·수정.
 초기 RED: analytic bath oracle의 불필요 exp(-x_E) 인자 및 matrix test의
@@ -84,3 +84,7 @@ Reproduction (owner private source restored separately; never publish raw HD on 
 실제 단계별 Git commit과 Drive/Dropbox ACK가 있는 경우만 BACKUP_COMPLETED를
 표기한다. 중앙28/88 및 REC0/313은 새로운 실제 물리 승인 없이는 유지한다.
 ```
+
+## PR156 post-C10 CI repair
+
+`plot_ledger.py`가 생성한 SVG에 801줄의 후행 공백이 있어 신규 PR CI에 기여했음을 확인하고, 원 SVG의 XML path token 동등성을 검증한 후 공백 제거 및 재생성 sanitizer를 추가했다. 수정 전 stage bundle은 보존하고 수정 후 SOURCE ZIP을 우선한다. Targeted 24/24 PASS, 원 repo-wide CI는 이전 CSV/SVG 후행 공백 때문에 여전히 FAIL이다. 최종 SHA·Git HEAD·ACK는 PR156의 마지막 커밋을 다시 읽어라.
