@@ -1,0 +1,12 @@
+{
+  "date_kst":"2026-10-30",
+  "actual_initial_commands":["python -m unittest discover -s tests -v","python -O -m unittest discover -s tests -v"],
+  "initial_normal":"FAILED: 6/8 PASS, 2/8 FAIL (decimal display-scale string expectations)",
+  "initial_python_optimized":"FAILED: 5/8 PASS, 3/8 FAIL (two display-scale expectations and one source mutation unexpectedly accepted)",
+  "observed_source_mutation_defect":"The initial implementation used bare assert to reject noncompatible source E[4]; python -O stripped assert, allowing tampered input to be treated as admissible.",
+  "repair":"Replace all production asserts with explicit ValueError require(); correct tests to compare Decimal values not display formatting strings.",
+  "post_repair_normal":"PASS 8/8",
+  "post_repair_python_O":"PASS 8/8",
+  "control_scope":"Local production code input guard; no original 35Hz source policy alteration.",
+  "provenance":"Manually transcribed exact initial console outcomes from current session, NOT a byte-captured original first log; post-repair logs retained in separate evidence/UNITTEST* files."
+}
