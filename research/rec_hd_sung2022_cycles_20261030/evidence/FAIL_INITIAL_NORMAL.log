@@ -1,0 +1,42 @@
+test_2021_Einstein_A_provenance (test_lab_cycles.PhysicalTests.test_2021_Einstein_A_provenance) ... ok
+test_bytes_deterministic (test_lab_cycles.PhysicalTests.test_bytes_deterministic) ... ok
+test_components (test_lab_cycles.PhysicalTests.test_components) ... ok
+test_cycle_independence (test_lab_cycles.PhysicalTests.test_cycle_independence) ... ok
+test_cycle_values_MHz (test_lab_cycles.PhysicalTests.test_cycle_values_MHz) ... ok
+test_final_production_hold (test_lab_cycles.PhysicalTests.test_final_production_hold) ... ok
+test_four_physical_photons (test_lab_cycles.PhysicalTests.test_four_physical_photons) ... ok
+test_graph_rank (test_lab_cycles.PhysicalTests.test_graph_rank) ... ok
+test_minimax_bound (test_lab_cycles.PhysicalTests.test_minimax_bound) ... FAIL
+test_minimax_witness (test_lab_cycles.PhysicalTests.test_minimax_witness) ... FAIL
+test_negative_R3_H2_shift (test_lab_cycles.PhysicalTests.test_negative_R3_H2_shift) ... ok
+test_new_four_original_lines (test_lab_cycles.PhysicalTests.test_new_four_original_lines) ... ok
+test_no_sigma_or_covariance (test_lab_cycles.PhysicalTests.test_no_sigma_or_covariance) ... ok
+test_primary_provenance (test_lab_cycles.PhysicalTests.test_primary_provenance) ... ok
+test_prior_five_measured_edges (test_lab_cycles.PhysicalTests.test_prior_five_measured_edges) ... ok
+test_reject_fabricated_raw_acquisition (test_lab_cycles.PhysicalTests.test_reject_fabricated_raw_acquisition) ... ok
+test_reject_source_gate_relaxation (test_lab_cycles.PhysicalTests.test_reject_source_gate_relaxation) ... ok
+test_reject_tampered_DOI (test_lab_cycles.PhysicalTests.test_reject_tampered_DOI) ... ok
+test_twelve_pressure_rows (test_lab_cycles.PhysicalTests.test_twelve_pressure_rows) ... ok
+
+======================================================================
+FAIL: test_minimax_bound (test_lab_cycles.PhysicalTests.test_minimax_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/REC_HD_SUNG2022_CYCLES_20261030/tests/test_lab_cycles.py", line 42, in test_minimax_bound
+    self.assertEqual(D(self.science['minimum_max_abs_lowJ_frequency_correction_MHz']),D('8.945192884'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('8.94519288400000000000000000000000000000000000000000[21 chars]001') != Decimal('8.945192884')
+
+======================================================================
+FAIL: test_minimax_witness (test_lab_cycles.PhysicalTests.test_minimax_witness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/REC_HD_SUNG2022_CYCLES_20261030/tests/test_lab_cycles.py", line 45, in test_minimax_witness
+    self.assertEqual(d[0]+d[1],D('-3.921711314'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('-3.9217113139999999999999999999999999999999999999999[22 chars]999') != Decimal('-3.921711314')
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.008s
+
+FAILED (failures=2)
