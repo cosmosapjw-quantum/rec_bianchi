@@ -24,4 +24,8 @@ fig.text(.50,.075,'Near zero: J1 +5.46e-6; J8 -4.55e-3',ha='center',fontsize=7.1
 out=HERE/'results'
 fig.savefig(out/'LOCAL_LEDGER.png',dpi=220)
 fig.savefig(out/'LOCAL_LEDGER.svg')
+# Matplotlib SVG path layout emits trailing blanks; sanitize text-only layout
+# so the repository-wide whitespace gate does not fail on this new artifact.
+svg=out/'LOCAL_LEDGER.svg'
+svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n',encoding='utf-8')
 plt.close(fig)
