@@ -1,0 +1,11 @@
+{
+ "phase":"C5 output persistence initial attempted run",
+ "result":"FAIL",
+ "failure_kind":"implementation",
+ "root_cause":"CSV writer inferred fieldnames from the first two 2022 combination records lacking photon observable fields; later 1984 records add those keys",
+ "exception":"ValueError: dict contains fields not in fieldnames",
+ "repair":"Compute a stable union of field names across all records before CSV serialization",
+ "physical_input_changed":false,
+ "source_identity_changed":false,
+ "old_35Hz_gate_changed":false
+}
