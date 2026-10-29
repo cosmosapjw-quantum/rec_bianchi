@@ -25,6 +25,13 @@ class MatrixContract(unittest.TestCase):
     def test_only_two_actual_hd_diagnostics(self):
         self.assertEqual(len(self.m['confirmed_direct_HD_consumers']),2)
         self.assertEqual(sum('DIRECT_IMPORTED' in e['verification'] for e in self.m['entries']),2)
+    def test_public_svg_whitespace_and_xml(self):
+        import xml.etree.ElementTree as ET
+        p=ROOT/'results/LOCAL_LEDGER.svg'
+        s=p.read_text(encoding='utf-8')
+        self.assertTrue(s.endswith('\n') and not s.endswith('\n\n'))
+        self.assertTrue(all(line==line.rstrip() for line in s.splitlines()))
+        self.assertTrue(ET.fromstring(s).tag.endswith('svg'))
 
 SOURCE=Path(os.getenv('REC_HD_SOURCE_PATH',str(ROOT/'parent/source_private/hd.dat')))
 @unittest.skipUnless(SOURCE.exists(),'private source unavailable')
