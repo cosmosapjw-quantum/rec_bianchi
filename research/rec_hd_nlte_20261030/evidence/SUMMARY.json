@@ -1,0 +1,128 @@
+{
+  "schema": "REC_HD_NONLTE_SUMMARY_V1",
+  "source_transcription_sha256": "d44406daf59616c982ca7a33bb3ee962138130588dfb74c7b801972c933da796",
+  "original_LAMDA_raw_acquired": false,
+  "source_original_historical_sha256": "0c99fe168235d6d6dac3063093bbbe8b4a2ea15cca53c7e2987763c801fdaefb",
+  "observed_source_numeric_shape": {
+    "levels": 9,
+    "radiative_lines": 8,
+    "collisional_pairs_per_partner": 9,
+    "collisional_numbers": 54
+  },
+  "temperatures_K": [
+    50,
+    100,
+    200
+  ],
+  "nH2_cm3": [
+    0,
+    1,
+    100,
+    10000,
+    1000000,
+    100000000,
+    10000000000
+  ],
+  "ortho_fractions": [
+    0,
+    0.5,
+    1
+  ],
+  "models": {
+    "J1_two_level": {
+      "rows": 63,
+      "frozen_source_gate": "PASS_J1_ONLY",
+      "source_ortho_para_equal": true
+    },
+    "full9": {
+      "rows": 63,
+      "source_gate": "FAIL_7_OF_8_NOT_PRODUCTION",
+      "negative_roundoff_qualifier": "very-small negative high-J floating stationary components under 1e-12 absolute at low T",
+      "valid_numeric": true
+    }
+  },
+  "J1": [
+    {
+      "T_K": 50,
+      "q10_cm3_s": 2.2e-11,
+      "n_half_cm3": 2010.8207082239935,
+      "at_nH2_1e4_cm3_power_W_per_HD": 1.5025730531305795e-29,
+      "high_density_limit_W_per_HD": 1.8047135542160116e-29,
+      "source_gap_Hz": "-8.241016200"
+    },
+    {
+      "T_K": 100,
+      "q10_cm3_s": 2.7e-11,
+      "n_half_cm3": 1100.821467401657,
+      "at_nH2_1e4_cm3_power_W_per_HD": 3.943492942136288e-29,
+      "high_density_limit_W_per_HD": 4.377601110861341e-29,
+      "source_gap_Hz": "-8.241016200"
+    },
+    {
+      "T_K": 200,
+      "q10_cm3_s": 3.9e-11,
+      "n_half_cm3": 541.0812640999816,
+      "at_nH2_1e4_cm3_power_W_per_HD": 5.602335505213778e-29,
+      "high_density_limit_W_per_HD": 5.905467382921104e-29,
+      "source_gap_Hz": "-8.241016200"
+    }
+  ],
+  "full9_samples": [
+    {
+      "T_K": 50,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0,
+      "total_mixed_source_power_W_per_HD": 1.6173739459132497e-29
+    },
+    {
+      "T_K": 50,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0.5,
+      "total_mixed_source_power_W_per_HD": 1.617688473976387e-29
+    },
+    {
+      "T_K": 50,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 1,
+      "total_mixed_source_power_W_per_HD": 1.6180022614341212e-29
+    },
+    {
+      "T_K": 100,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0,
+      "total_mixed_source_power_W_per_HD": 8.193724603698966e-29
+    },
+    {
+      "T_K": 100,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0.5,
+      "total_mixed_source_power_W_per_HD": 8.202441990303484e-29
+    },
+    {
+      "T_K": 100,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 1,
+      "total_mixed_source_power_W_per_HD": 8.211134935978692e-29
+    },
+    {
+      "T_K": 200,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0,
+      "total_mixed_source_power_W_per_HD": 3.3032097176203704e-28
+    },
+    {
+      "T_K": 200,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 0.5,
+      "total_mixed_source_power_W_per_HD": 3.3121360179543725e-28
+    },
+    {
+      "T_K": 200,
+      "nH2_cm3": 10000,
+      "ortho_fraction": 1,
+      "total_mixed_source_power_W_per_HD": 3.321033687682003e-28
+    }
+  ],
+  "principal_claim": "J1 only: source tabulated q10_para=q10_ortho at all 3 temperatures, hence conditional 2level cooling independent of H2 ortho fraction",
+  "important_nonclaim": "This does not authorize eight-line physical source, original LAMDA raw byte identity, CDMS v2 fit, molecular cosmological thermal history, heat injection or production default"
+}
