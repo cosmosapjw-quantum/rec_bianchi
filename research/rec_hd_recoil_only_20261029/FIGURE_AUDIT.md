@@ -1,0 +1,7 @@
+# Figure audit | RECOIL_BOUND.png
+
+**Object**: one synthetic source-field diagnostic, 2 panels, intended double column (~180 mm) not single-column reproduction. Left panel logarithmic magnitude compares absolute exact source-field mismatch, 2u recoil-only bound, 3u reference, and frozen 35 Hz criterion. Right panel signed source-field mismatch and ±2u recoil envelope (not confidence interval).
+
+**Direct visual read**: Labels, tick marks and plotted lines visibly distinguish series. The large blue source differences J2–7 sit far above the recoil scale; J8 still has more than 15× separation. At J1 the signed discrepancy and bound almost coincide, so an unwary reader might infer source agreement. Caption must clarify that J1 is already inside the separate 35 Hz print-only criterion, not a physical recoil match. Left legend overlays blank plot region without occluding J2–8 data. Both panels should be shown at double-column scale only. No original CDMS spectral data or observational error bars are shown.
+
+**Adversarial**: Model assumes free single-photon event in initial-state rest frame and M>=2u; no thermal Doppler broadening, environmental pressure shift, frame boost, stimulated kernel, spectroscopy covariance or physical heat. Darker colour / visually small envelope cannot support physical certainty beyond model. Minimal interpretation correction: caption explicitly states conditional recoil-only test. No physics modification required. Render content confirmed visually, no graphical PASS for production.
