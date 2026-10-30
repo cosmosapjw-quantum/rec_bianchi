@@ -1,0 +1,39 @@
+name: REC-HD 2026 original FITS source acquisition (research only)
+on:
+  push:
+    branches:
+      - research/rec-hd-neufeld2026-cmb15-source-locked-20261030
+    paths:
+      - .github/workflows/rec-hd-2026-source-original.yml
+  workflow_dispatch:
+jobs:
+  fetch-source:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Acquire checksum-locked original Neufeld v2 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p original
+          base=https://zenodo.org/api/records/21165907/files
+          curl --fail --location --retry 2 --max-time 120 "$base/hd_population_grids.fits/content" -o original/hd_population_grids.fits
+          curl --fail --location --retry 2 --max-time 120 "$base/hd_population_grids_altex.fits/content" -o original/hd_population_grids_altex.fits
+          curl --fail --location --retry 2 --max-time 120 "$base/hd_lamda.dat/content" -o original/hd_lamda.dat
+          curl --fail --location --retry 2 --max-time 120 "$base/hd_lamda_altex.dat/content" -o original/hd_lamda_altex.dat
+          printf '%s  %s\n' \
+            3fffb1591b0f96b254210ed54599667a original/hd_population_grids.fits \
+            012ff8819227cd9888f92a7aedafb3f2 original/hd_population_grids_altex.fits \
+            c45c4740011df579a973a7c336c5bc22 original/hd_lamda.dat \
+            1f0275f383786c890bfbb0c83bb4f74b original/hd_lamda_altex.dat | md5sum -c
+          (cd original && sha256sum *.fits *.dat > ORIGINAL_SHA256SUMS.txt)
+      - name: Preserve exact original bytes as research artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: neufeld2026-v2-original-md5-verified
+          path: original/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
