@@ -1,0 +1,5 @@
+# REC-HD CMB spectral balance (real-source-informed conditional research)
+
+The package restores source-visible 2021 LAMDA HD/Flower H2 rates from protected REC PR161 and published Sung R0–R3 measured centers from protected PR164. It computes a new 144-condition optically thin two-level CMB radiation/collision balance on the **only original 35-Hz PASS line**, together with 144 **unqualified 9-level diagnostics**, 1152 per-line records, and 16 frequency-redshift mappings from actual measured Sung line centers. Sources are pinned by source-transcription SHA; original LAMDA/CDMS raw bytes, Sung covariance and Neufeld 2026 binary data are not acquired.
+
+Run: `python src/hd_cmb_balance.py`; `python -m unittest discover -s tests -v`; `python -O -m unittest discover -s tests -v`; `python tests/independent_numpy_compare.py`; `python src/render_physics.py`. Read `RESEARCH_REPORT_KO.md` first. This is neither an observational dataset nor cosmic thermal evolution. Original parent/main and production remain untouched.
