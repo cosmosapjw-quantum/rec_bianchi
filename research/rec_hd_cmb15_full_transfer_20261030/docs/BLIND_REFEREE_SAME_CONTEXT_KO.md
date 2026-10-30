@@ -1,0 +1,14 @@
+# REC-HD CMB15 transfer: same-context adversarial review, bounded
+
+Status: SAME_CONTEXT_ONLY, NOT a distinct-author R6/C9 review.
+
+1. Is the J1 inversion a false numerical negative? Source-own 15-level M-matrix solution is nonnegative; separately assembled dense NumPy/SciPy generator agrees within measured max population difference. The signed J1 balance p1-3p0 is order 1e-3 at reference T4000,n1e4,z0, many orders above solver error. Both original source alternatives show inversion, and 5 prescribed ortho H2 fractions retain its sign. Finding: low-level inversion conditional on model, numerically supported.
+2. Does this establish a detected maser? NO. At HD column 1e20 cm-2 the center negative tau is only about -5.85e-4 in the reference warm case, so unsaturated amplification is tiny; model excludes velocity coherence, pump nonlocality, line overlap and saturation. 'Physical-model population inversion' is the maximum supported wording.
+3. Could it come only from high-J rate extrapolation? The original low-J truncated-source operator (J<=3) already inverts at the specified reference state while J<=2 does not. Not solely high-J extrapolation; however truncation is a diagnostic, not a new validated molecular dataset or a theorem for every collision model.
+4. Does homogeneous fixed-population slab solve full radiative transfer? It solves formal transfer for prescribed populations, not photon trapping self-consistently. All |tau0|>=0.1 rows are retained as formal diagnostic and excluded from self-consistent physical admission. Negative-tau gain remains very small within the chosen original column grid. CMB is the only external bath.
+5. Is signed absorption at z100 a new observed cosmological signal? NO. It is source-owned per-slab excess intensity given prescribed Tgas, densities, columns, CMB law, and a conditional FLRW observer brightness map. It is not a sky measurement or redshift-history IVP.
+6. Is numerical agreement circular? The second solver reconstructs CTMC generator separately and uses NumPy dense solve, compared with original bespoke M-matrix elimination. Adaptive SciPy quadrature checks Gauss-Hermite beta. Same authorship/context is explicitly not an independent referee.
+7. Does legacy CDMS2011 35 Hz fail disappear? NO; all source line frequencies and collision models are new isolated auxiliary; original owner/consumer and tolerance unchanged.
+8. Do quoted source observational posterior data support a fit here? NO; poster compressed originals not acquired byte-authentically. Public existence and MD5 only. No synthetic covariance, fabricated sigma, or sky likelihood in this unit.
+
+Decision: accept scoped source-authentic physical-model atlas 1/1; R6/C9 distinct-author NOT_RUN, production HOLD, original canonical/physical DAG unchanged. No new strong no-go admitted.
