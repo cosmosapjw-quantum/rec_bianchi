@@ -1,0 +1,10 @@
+# Blind referee, bounded self review
+
+1. **Model independence (BLOCK_ADMISSION)**: The source author's isobaric and isochoric posterior bestfits both used the same Francis measurements. The matched working likelihood reuses those fluxes. Neither nominal deviance preference nor paired fitted abundance ratios is independent evidence, formal model selection or a new D/H posterior.
+2. **True attenuation unresolved (BLOCK_DUST_CLAIM)**: H2 S1 and S2 throughputs contain beam coupling and dust. KP5 fixes a plausible wavelength shape but not true dust columns. R4/R5 extrapolate; R8 can differ even within anchor wavelengths. Censor assumption sigma=L/3 is conditional; 8 zero-rounded uncertainties were excluded. Published true MIRI cross-line covariance not acquired, not a blocker for this *scoped* calculation.
+3. **Source-selected posterior representation (PROVENANCE_SCOPE)**: Original isochoric gzip Zenodo v2 MD5 confirmed, physical bestfit subset and OPR values derived from the original source; the original full gzip binary is not included in this Git snapshot. The complete original H2/HD FITS are in separately generated full local ZIP, not a Git blob. On a network-enabled runner re-download original posterior and demand MD5 plus selected-field match before promoting source-replay claim.
+4. **Nondetection/boundary bias (INTERPRETATION)**: 7 source isochoric logn bestfits lie at 7, 9 bestfit xHD<1e-7. Source-conditioned HD excitation outliers largely occur in nondetections. Quote HD-17 stratified statistics and retain pressure/D/H unresolved.
+5. **Independent numeric science (PASS_SCOPED)**: Different interpolation implementation SciPy RGI vs original custom bilinear, 364/364 intensity matches max relative 4.1362e-15; original HD/H2 source temperatures checked, 27 normal + 27 -O, 19 byte replay.
+6. **Global authority (HOLD)**: Original REC physical DAG 0/313, canonical 28/88, 35Hz FAIL7/8 unchanged. GitHub CI historical verify_repo quick failure remains. No different-author R6/C9 or production authorization.
+
+Native subagents: NOT_RUN (host unavailable). This self audit is not a second independent author review.
