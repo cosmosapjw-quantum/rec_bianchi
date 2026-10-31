@@ -1,0 +1,188 @@
+{
+  "schema": "rec-rei-igm-priority-overlay.v1",
+  "as_of_utc": "2026-10-31T19:56:00Z",
+  "authority_class": "NONCANONICAL_PROCESS_OVERLAY",
+  "purpose": "Prioritize actual REI Bianchi IGM coupled histories; never replace the immutable central DAG or grant physical admission.",
+  "observed_sources": {
+    "rec_pr182_head": "59ec95b3c2a3d4a695f822c2dfe926a5cba7e5e3",
+    "rec_pr182_url": "https://github.com/cosmosapjw-quantum/rec_bianchi/pull/182",
+    "rei_canonical_20261028_commit": "08364a6ef6f4880c9c4fff87335d167fbff9b440",
+    "rei_canonical_20261028_blob": "83280906f45287b183fdbea4ede4d1fcfacc5770",
+    "rei_canonical_20261028_sha256": "cf0488d50b087884004c2b2395df32243b788c84e456ed8db132fe1d5142c8c8",
+    "rei_program_source_commit": "45154b5d661296ec4ae5d39bc1d1502c1d9761f3",
+    "rei_program_path": "docs/atomic_reionization_handoff_20261004_v1/GLOBAL_DAG.json",
+    "rei_next_eight_commit": "4824eec8526185b6b866a5e7e0dabdc624b5543c",
+    "rei_next_eight_path": "research/orchestration_sync_20261028/NEXT_READY_DAG.json",
+    "note": "The central snapshot is a dated immutable reference, not a claim of latest merged canonical status. GitHub main and October unmerged branches have distinct histories."
+  },
+  "unchanged_reported_counts": {
+    "canonical": {
+      "complete": 28,
+      "total": 88,
+      "delta": 0
+    },
+    "rei_working": {
+      "complete": 33,
+      "total": 88,
+      "delta": 0
+    },
+    "rec_physical_H5": {
+      "complete": 0,
+      "total": 313,
+      "delta": 0
+    },
+    "rei_physical_fast": {
+      "complete": 4,
+      "total": 7,
+      "delta": 0
+    }
+  },
+  "preserved_controls": {
+    "production": "HOLD",
+    "rei_activation": false,
+    "original_35hz": "FAIL7/8",
+    "no_merge": true,
+    "no_owner_source_switch": true,
+    "no_35hz_relaxation": true,
+    "auto_next_node": false,
+    "distinct_author_review": "NOT_RUN_FOR_REC_PR182",
+    "rei_no_more_ivps_at_inherited_budget": true,
+    "no_budget_reset": true
+  },
+  "primary_science": {
+    "owner": "rei_bianchi",
+    "program_target": "REI-F08",
+    "central_dependency_examples": [
+      "REC-HISTORY",
+      "REC-COUPLED"
+    ],
+    "first_falsifiable_product": "For one locked S0 source realization and matching initial/boundary data, compare FLRW versus selected Bianchi backgrounds along an accepted coupled interval, with x_HII(z), T(z), photon/energy/work ledger and declared uncertainty.",
+    "longer_term": "Complete source-qualified reionization history and geometry/cosmological perturbation or LoS observables only when relevant owner interfaces and numerical gates are actually established.",
+    "claim_limit": "No independent EoR prediction, no complete all-11 Bianchi result, no production or L4 activation."
+  },
+  "next_candidate_only": "REC_REI_HISTORY_CONSUMER_BINDING",
+  "nodes": [
+    {
+      "id": "REC_REI_HISTORY_CONSUMER_BINDING",
+      "owner": "rec_bianchi + rei_bianchi (read-only cross-owner contract)",
+      "lane": "DIRECT_IGM",
+      "priority": 0,
+      "status": "PROPOSED_NOT_RUN",
+      "requires": [],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "Pin one already-existing source-owned background/history packet with domain, clock, gauge, units, IC/BC, source refs, status and receiving REI code/observable; run an existing non-IVP consumer if separately authorized and supported.",
+      "completion_test": "Actual immutable packet plus named REI consumer and a concrete parity/ledger check, or explicit missing field. A prose mapping alone does not close this bridge.",
+      "consumer": "REI-F08",
+      "central_mapping": "REC-HISTORY",
+      "gate": "Evidence must distinguish a conditional saved history from a physically admitted REI input; no silent recombination splice."
+    },
+    {
+      "id": "REC_H5_PHYSICAL_ENCLOSURE",
+      "owner": "rec_bianchi",
+      "lane": "PHYSICAL_PROVIDER",
+      "priority": 1,
+      "status": "BLOCKED_PHYSICAL_BOUNDS",
+      "requires": [],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "Produce genuine source/trajectory-consistent physical epsilon, defect, stability, positive ODE tube and initial-error coverage for the intended H5 cells, then H6 incident trace and H7 history pullback as separately verified work.",
+      "completion_test": "Coverage must be calculated against all 313 physical obligations; reference rows or 10,016 containments alone are not physical acceptance.",
+      "consumer": "REC-COUPLED / physically admitted REI recombination adapter",
+      "central_mapping": "REC-HISTORY",
+      "gate": "No 0/313 promotion from a symbolic or source-conditional surrogate."
+    },
+    {
+      "id": "REI_FIRST_COUPLED_INTERVAL",
+      "owner": "rei_bianchi",
+      "lane": "DIRECT_IGM",
+      "priority": 2,
+      "status": "BLOCKED_AUTHORITY_AND_RESOURCE",
+      "requires": [],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "One accepted first canonical FLRW H/He thermal-chemistry interval with source/ownership, positivity, conservation, input and uncertainty controls.",
+      "completion_test": "A full accepted interval, not a microstep, frozen RHS, population table or source moment alone.",
+      "consumer": "REI-F08",
+      "central_mapping": "REI-F05",
+      "gate": "Respect inherited NO_MORE_IVPS, existing budget and independent REI authorization; the REC policy cannot authorize a new REI solve. REC history is not a universal hard precondition for an S0 H/He-only demonstration.",
+      "optional_input_from": [
+        "REC_REI_HISTORY_CONSUMER_BINDING"
+      ]
+    },
+    {
+      "id": "REI_F08_PAIRED_S0_HISTORY",
+      "owner": "rei_bianchi",
+      "lane": "DIRECT_IGM",
+      "priority": 3,
+      "status": "BLOCKED_COUPLED_HISTORY",
+      "requires": [
+        "REI_FIRST_COUPLED_INTERVAL"
+      ],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "With the same locked atomic realization, construct and compare FLRW and Bianchi history under matched inputs and record x_HII, T, photon/thermal/work deltas and error estimate.",
+      "completion_test": "An actual paired interval/history output with independently checked conservation and source provenance; no comparison of unrelated priors/providers.",
+      "consumer": "REI scientific observables",
+      "central_mapping": "REI-F08",
+      "gate": "No curve-only or re-used posterior is an independently validated physical prediction."
+    },
+    {
+      "id": "REI_OBSERVABLE_BRIDGE",
+      "owner": "rei_bianchi + BASS",
+      "lane": "DIRECT_IGM",
+      "priority": 4,
+      "status": "BLOCKED_PAIRED_HISTORY",
+      "requires": [
+        "REI_F08_PAIRED_S0_HISTORY"
+      ],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "Produce source-consistent tau/visibility and/or geometry-coupled q_a, Pi_ab, work and relevant LoS observables from the same accepted trajectories.",
+      "completion_test": "Exact source/clock/energy mapping and independent observable check, with no claimed all-type sweep unless executed.",
+      "consumer": "BASS angular transfer / observables",
+      "central_mapping": "REI-F08 downstream",
+      "gate": "Conditional stand-alone tau/UVB diagnostics stay conditional."
+    },
+    {
+      "id": "REC_HD_SPECTROSCOPY_AUX",
+      "owner": "rec_bianchi",
+      "lane": "AUXILIARY_SCIENCE",
+      "priority": 9,
+      "status": "EXPLORATORY_HOLD",
+      "requires": [],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "Retain original source-locked HD non-LTE/JWST outputs. Continue only with a named physical consumer, a source defect resolution or a genuinely discriminating bounded science question.",
+      "completion_test": "Scoped science may pass without canonical credit. Original 35 Hz fail stays visible; transfer requires an explicit source/reaction/energy operator and compatible units.",
+      "consumer": "NONE_ADMITTED_TO_REI_F08",
+      "central_mapping": "REC-HD-ADAPTER",
+      "gate": "The original HD 35 Hz gate blocks affected HD claims; it is not an unconditional global veto on an independent H/He S0 reionization lane."
+    },
+    {
+      "id": "REC_HYREC_SPLICE_OPTION",
+      "owner": "rec_bianchi",
+      "lane": "CONDITIONAL_DEPENDENCY",
+      "priority": 5,
+      "status": "BLOCKED_SOURCE_OWNER_SWAP",
+      "requires": [],
+      "canonical_credit": 0,
+      "science_exec": false,
+      "deliverable": "Preserve 2012 HyRec source lock and native/COM split-domain non-double-owner physics; build recombination-to-reionization adapter only for a scenario requiring that splice.",
+      "completion_test": "Replacement residual, JVP, conserved number-energy-four-force, restart and primitive/exterior-Schur/interface parity, then explicit REI consumer acceptance.",
+      "consumer": "REI recombination splice when included",
+      "central_mapping": "REC-HISTORY conditional upstream",
+      "gate": "August main v0.75 is not superseded by October HD side-science."
+    }
+  ],
+  "interpretation": {
+    "dependency_semantics": "Only requires[] is a hard dependency. A conditional owner is not silently a universal prerequisite.",
+    "no_canonical_mutation": true,
+    "newly_admitted_central_nodes": 0,
+    "newly_admitted_physical_cells": 0,
+    "auxiliary_nonblocking_for_s0": [
+      "REC_HD_SPECTROSCOPY_AUX"
+    ],
+    "selection_rule": "Select the next task on the shortest valid path to a physically interpretable paired REI history, not by row count, PR count or R/C stage count. Do not auto-execute."
+  }
+}
