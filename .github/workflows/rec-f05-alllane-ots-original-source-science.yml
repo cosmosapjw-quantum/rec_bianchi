@@ -1,0 +1,48 @@
+name: REC original F05 all-lane stage OTS event physics
+on:
+  push:
+    branches:
+      - research/rec-f05-alllane-original-event-energy-20261102
+  pull_request:
+    paths:
+      - 'research/rec_f05_alllane_ots_20261102/**'
+      - '.github/workflows/rec-f05-alllane-ots-original-source-science.yml'
+jobs:
+  original-source-physics-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f05_alllane_ots_20261102
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-free numeric cell checker
+        run: python -m pip install numpy==2.1.3
+      - name: Verify source-scoped 8 scientific and negative controls
+        run: |
+          python -m unittest discover -v -s research/rec_f05_alllane_ots_20261102/tests -p test_source_event_science.py
+          python -O -m unittest discover -v -s research/rec_f05_alllane_ots_20261102/tests -p test_source_event_science.py
+      - name: Independent all 184320 original event source rows
+        run: |
+          python research/rec_f05_alllane_ots_20261102/audit_source_events.py --results research/rec_f05_alllane_ots_20261102/results --audit "$RUNNER_TEMP/rec196-audit.json"
+          cmp "$RUNNER_TEMP/rec196-audit.json" research/rec_f05_alllane_ots_20261102/results/INDEPENDENT_AUDIT.json
+          python - "$RUNNER_TEMP/rec196-audit.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["original_source_rows"]==184320
+          assert d["source_cell_OTS_LEDGER"]=="ALL_ROWS_ZERO_ENCLOSURE_PASS"
+          assert d["source_cell_thermal_product_identity"]=="ALL_FINAL_ROWS_PASS"
+          assert d["rei_canonical_DAG"]=="28/88"
+          print("REC original source event scientific audit PASS")
+          PY
+      - name: Archive frozen publication evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec196-original-f05-event-science
+          if-no-files-found: error
+          path: research/rec_f05_alllane_ots_20261102/
