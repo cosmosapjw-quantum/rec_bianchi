@@ -1,0 +1,54 @@
+name: REC historical Rust original F05 material science
+on:
+  push:
+    branches:
+      - research/rec-f05-rust-native-source-physics-20261101
+  pull_request:
+    paths:
+      - 'rust/rec_microphysics/**'
+      - 'research/rec_f05_rust_native_20261101/**'
+      - '.github/workflows/rec-f05-rust-source-physics.yml'
+jobs:
+  original-source-rust-HHe-material:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            rust/rec_microphysics
+            research/rec_rei_f05_accepted_history_thomson_20261101
+            research/rec_rei_f05_native_thomson_medium_20261101
+            research/rec_f05_rust_native_20261101
+          sparse-checkout-cone-mode: true
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.99.0'
+          components: rustfmt
+      - name: Verify only changed Rust files format (inherited historical fmt FAIL stays recorded)
+        run: rustfmt --edition 2024 --check rust/rec_microphysics/src/rei_f05_material.rs rust/rec_microphysics/examples/rei_f05_source.rs rust/rec_microphysics/tests/rei_f05_material.rs
+      - name: Original historical Rust + new source physics tests
+        run: cargo test --offline --manifest-path rust/rec_microphysics/Cargo.toml --quiet
+      - name: Actually recompute all original 46080 material cells in Rust
+        run: |
+          cargo run --offline --quiet --manifest-path rust/rec_microphysics/Cargo.toml --example rei_f05_source -- "$GITHUB_WORKSPACE" "$RUNNER_TEMP/rec193-rust-science"
+          cmp "$RUNNER_TEMP/rec193-rust-science/RUST_SCIENCE_RESULT.json" research/rec_f05_rust_native_20261101/results/RUST_SCIENCE_RESULT.json
+          cmp "$RUNNER_TEMP/rec193-rust-science/RUST_ACCEPTED_F05_MATERIAL_46080.csv" research/rec_f05_rust_native_20261101/results/RUST_ACCEPTED_F05_MATERIAL_46080.csv
+          sha256sum research/rec_f05_rust_native_20261101/results/*
+      - name: Independently compare original Python-Decimal and Rust physical source rows; reject source tampering
+        run: |
+          python3 research/rec_f05_rust_native_20261101/verify_original_rust_parity.py --repo "$GITHUB_WORKSPACE" --rust-output "$RUNNER_TEMP/rec193-rust-science" --rust-binary "$GITHUB_WORKSPACE/rust/rec_microphysics/target/debug/examples/rei_f05_source" --report "$RUNNER_TEMP/rec193-cross-parity.json"
+          cmp "$RUNNER_TEMP/rec193-cross-parity.json" research/rec_f05_rust_native_20261101/results/rec193_RUST_PARITY_REPORT_20261101.json
+      - name: Preserve original source, Rust science and parity evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec193-original-F05-Rust-source-physics
+          if-no-files-found: error
+          path: |
+            research/rec_f05_rust_native_20261101/
+            rust/rec_microphysics/src/rei_f05_material.rs
+            rust/rec_microphysics/examples/rei_f05_source.rs
+            rust/rec_microphysics/tests/rei_f05_material.rs
+            research/rec_rei_f05_accepted_history_thomson_20261101/source_inputs/
+            research/rec_rei_f05_native_thomson_medium_20261101/source_inputs/
