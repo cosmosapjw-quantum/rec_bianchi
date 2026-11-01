@@ -23,6 +23,8 @@ BOUNDARY_REL = "research/rec_r3c_rei_bridge_20261015/REI_CONDITIONAL_BOUNDARY.js
 SOURCE_GIT_BLOB = "2b50008c744d9cb241d9985a4bf6ce8bcf83e09a"
 BOUNDARY_GIT_BLOB = "89cdfc766e2e613760d84274812f2b4432373354"
 NATIVE_C_STDOUT_SHA256 = "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400"
+NATIVE_C_GZIP_SHA256 = "cfd1a7293431e4410e7ec597acc793d6b56e2d1f4eb5cd13ed3f48aaef4e26fb"
+NATIVE_C_GZIP_REL = "research/rec_r3c_rei_bridge_20261015/HYREC_ORIGINAL_REI_MATCHED_STDOUT.gz"
 REI_AXBI_SCENARIO_SHA256 = "07aa11d2d3fd47d2ed95e9d9161f6205e4d9ba386c27ad43d2b298fcd86d1696"
 N_ROWS = 1581
 Z_MIN = 20
@@ -72,6 +74,41 @@ def read_original_history(source: bytes) -> list[dict[str, float]]:
             raise ValueError("original source history grid/nonphysical value")
     return rows[::-1]
 
+def verify_original_native_stdout(repo:Path, rows:list[dict[str,float]], tcmb0:float)->float:
+    """Original HyRec C prints z, x_e, T_m / [T_cmb0*(1+z)].
+
+    Do not interpret its third column as kelvins. Check all 8001 C rows and
+    actual x_e/T_K parity on every one of the 1581 retained REC source rows.
+    """
+    gz=(repo/NATIVE_C_GZIP_REL).read_bytes()
+    if hashlib.sha256(gz).hexdigest()!=NATIVE_C_GZIP_SHA256:
+        raise ValueError("original native HyRec C output gzip byte identity")
+    raw=gzip.decompress(gz)
+    if hashlib.sha256(raw).hexdigest()!=NATIVE_C_STDOUT_SHA256:
+        raise ValueError("original native HyRec C stdout byte identity")
+    allrows=raw.decode("ascii").splitlines()
+    if len(allrows)!=8001:
+        raise ValueError("original native full recombination stdout row count")
+    maximum=0.0
+    for i,line in enumerate(allrows):
+        values=line.split()
+        if len(values)!=3:
+            raise ValueError("native stdout three-column contract changed")
+        z,xe,temp_over_Tgamma=map(float,values)
+        if z!=float(8000-i) or not all(math.isfinite(x) for x in (xe,temp_over_Tgamma)):
+            raise ValueError("native stdout redshift/grid or finite value")
+        if Z_MIN<=z<=Z_MAX:
+            old=rows[int(z)-Z_MIN]
+            if xe!=old["xe_per_H"]:
+                raise ValueError("original native HyRec xe source slice mismatch")
+            Tk=temp_over_Tgamma*tcmb0*(1+z)
+            relative=abs(Tk/old["Tgas_K"]-1)
+            maximum=max(maximum,relative)
+            if relative>3e-13:
+                raise ValueError("native HyRec T_m/Tgamma to kelvin conversion mismatch")
+    return maximum
+
+
 def hubble(z:float) -> float:
     if z < 0.0 or not math.isfinite(z):
         raise ValueError("invalid homogeneous redshift")
@@ -119,6 +156,8 @@ def prepare(repo:Path):
     boundary=(repo/BOUNDARY_REL).read_bytes()
     info=assert_original_source_bytes(source,boundary)
     rows=read_original_history(source)
+    raw_temperature_parity=verify_original_native_stdout(
+        repo,rows,float(info["source_cosmology"]["T0_K"]))
     donor=info["hyrec_full_conditional_projection"]
     original=info["published_rei_approximate_initial"]
     root=rows[0]
@@ -159,7 +198,8 @@ def prepare(repo:Path):
                           tau_frozen=tau_frozen,trap=trap,
                           survival=survival,visibility=visibility,
                           opacity_parity_max_relative=max(parity),
-                          z20_nH_rei_m3=z20_nH)
+                          z20_nH_rei_m3=z20_nH,
+                          native_C_temperature_ratio_to_kelvin_max_relative=raw_temperature_parity)
 
 def run(repo:Path,out:Path) -> dict:
     info,rows,q=prepare(repo)
@@ -227,6 +267,10 @@ def run(repo:Path,out:Path) -> dict:
       "receiver_scope":"conditional REC-owned primordial Thomson screen above z20; NO_REI_NATIVE_IGM_F05_CONSUMER",
       "z20":rows[0],
       "source_rows":len(rows),"new_model_rows":len(rows),
+      "original_native_C_stdout_rows":8001,
+      "original_native_C_gzip_sha256":NATIVE_C_GZIP_SHA256,
+      "original_native_C_temperature_Tm_over_Tgamma_to_kelvin_max_relative":
+          q["native_C_temperature_ratio_to_kelvin_max_relative"],
       "source_Hubble_parameters":{"h":H,"Om":OMEGA_M,"Or":OMEGA_R,"OL":OMEGA_L},
       "c_m_s":C_M_S,"sigmaT_m2":SIGMA_T_M2,
       "opacity_parity_max_relative":q["opacity_parity_max_relative"],
