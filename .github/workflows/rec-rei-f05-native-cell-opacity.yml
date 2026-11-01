@@ -1,0 +1,44 @@
+name: REC original REI F05 native cell Thomson material
+on:
+  push:
+    branches:
+      - research/rec-rei-f05-native-cell-opacity-20261101
+  pull_request:
+    paths:
+      - 'research/rec_rei_f05_native_thomson_medium_20261101/**'
+      - '.github/workflows/rec-rei-f05-native-cell-opacity.yml'
+jobs:
+  native-HHe-Thomson-medium:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_rei_f05_tick161_thomson_capacity_20261101
+            research/rec_rei_f05_native_thomson_medium_20261101
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install minimal pinned numerical source parser
+        run: python3 -m pip install numpy==2.3.5
+      - name: Native source and physical medium normal tests
+        run: python3 -m unittest discover -s research/rec_rei_f05_native_thomson_medium_20261101/tests -v
+      - name: Native physical medium optimized negative tests
+        run: python3 -O -m unittest discover -s research/rec_rei_f05_native_thomson_medium_20261101/tests -v
+      - name: Exact original source 46080-cell physical science replay
+        run: |
+          python3 research/rec_rei_f05_native_thomson_medium_20261101/compute_medium.py --unit-root research/rec_rei_f05_native_thomson_medium_20261101 --out "$RUNNER_TEMP/rec191-medium"
+          cmp "$RUNNER_TEMP/rec191-medium/SCIENCE_RESULT.json" research/rec_rei_f05_native_thomson_medium_20261101/results/SCIENCE_RESULT.json
+          cmp "$RUNNER_TEMP/rec191-medium/SOURCE_NATIVE_THOMSON_MEDIUM_46080.csv.gz" research/rec_rei_f05_native_thomson_medium_20261101/results/SOURCE_NATIVE_THOMSON_MEDIUM_46080.csv.gz
+          sha256sum research/rec_rei_f05_native_thomson_medium_20261101/results/*
+      - name: Preserve original sources and physics
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec191-original-F05-native-Thomson-medium
+          if-no-files-found: error
+          path: |
+            research/rec_rei_f05_native_thomson_medium_20261101/
+            research/rec_rei_f05_tick161_thomson_capacity_20261101/source_inputs/
