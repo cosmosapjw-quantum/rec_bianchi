@@ -39,6 +39,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rec-rei-hyrec-primordial-screen-1581
-          path: source_science/
-          if-no-files-found: warn
+          path: |
+            source_science/
+            research/rec_r3c_rei_bridge_20261015/HYREC_FLRW_Z20_TO_1600.csv
+            research/rec_r3c_rei_bridge_20261015/HYREC_ORIGINAL_REI_MATCHED_STDOUT.gz
+            research/rec_r3c_rei_bridge_20261015/REI_CONDITIONAL_BOUNDARY.json
+            research/rec_r3c_rei_bridge_20261015/SOURCE_EXECUTION_RECEIPT.json
+            research/rec_rei_hyrec_primordial_screen_20261101/original_hyrec_screen.py
+            research/rec_rei_hyrec_primordial_screen_20261101/tests/test_original_hyrec_screen.py
+          if-no-files-found: error
           retention-days: 90
