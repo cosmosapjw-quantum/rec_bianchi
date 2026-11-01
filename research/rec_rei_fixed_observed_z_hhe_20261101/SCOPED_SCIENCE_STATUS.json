@@ -1,0 +1,67 @@
+{
+  "schema": "rec.rei.igm.fixed_observed_z.source_owned_v1",
+  "as_of": "2026-11-01",
+  "input": {
+    "repo": "cosmosapjw-quantum/rei_bianchi",
+    "pr": 319,
+    "head": "a51cf20df6afa5d98bd96be01a5e68c3cfe72785",
+    "source_csv_git_blob_sha1": "aaf60834dcc095025ad6261515fa5535d5b30894",
+    "source_rows": 11,
+    "source_is_synthetic_IC_Puchwein_UVB": true
+  },
+  "rec_parent": {
+    "pr": 184,
+    "head": "4d7749068b8d9fab12d1f61f1c2158688d7b94c5"
+  },
+  "physical_result": {
+    "directional_model_rows": 1155,
+    "multipole_model_rows": 55,
+    "prehistory_helium_bound_rows": 10,
+    "geodesic_control_rows": 5,
+    "K_z10": 0.12965184718094167,
+    "max_sample_abs_a2_at_qp01": 0.000040482457029967924,
+    "peak_sample_z": 8.004304192024048,
+    "a2_z10_reset": -5.850818097751005e-8,
+    "a2_z10_prehistory_He_bound": [
+      -0.00010137107082540285,
+      -0.000054097583542726565
+    ],
+    "source_original_tau_z10": 0.017389412137550013,
+    "assumptions": [
+      "COMOVING",
+      "NON_TILTED",
+      "FROZEN_REI319_HHE",
+      "REI319_H_BG",
+      "LRS_KINEMATIC_SHEAR_Q",
+      "LOCAL_OBSERVER_Z5P81",
+      "FIRST_VARIATION_Q_ZERO"
+    ]
+  },
+  "validation": {
+    "normal_python_tests": "14/14_PASS",
+    "python_optimized_tests": "14/14_PASS",
+    "compileall": "PASS",
+    "wolfram_P2_and_monopole": "PASS",
+    "exact_git_input_blob": "PASS",
+    "finite_geodesic_derivative_max_rel_error": 1.7315640644650812e-10,
+    "sparse_11_point_tau_bias": -0.0034462525229569385,
+    "sparse_tau_not_used_primary": true,
+    "Git_quick_replay_test": "NOT_RUN"
+  },
+  "gates": {
+    "central": "28/88",
+    "rec_physical": "0/313",
+    "rei_working": "33/88",
+    "rei_physical_fast": "4/7",
+    "accepted_canonical_delta": 0,
+    "first_rei_canonical_interval": "BLOCKED_TICK160_TO161",
+    "REI_native_full_history": "NOT_RUN",
+    "BASS_source_owner_import": false,
+    "production": "HOLD",
+    "no_merge": true,
+    "no_force_push": true,
+    "no_ivp": true,
+    "no_tolerance_relaxation": true,
+    "no_owner_switch": true
+  }
+}
