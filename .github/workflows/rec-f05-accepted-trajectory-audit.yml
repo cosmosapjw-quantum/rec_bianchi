@@ -1,0 +1,47 @@
+name: REC F05 source-accepted 4-epoch trajectory scientific audit
+on:
+  push:
+    branches:
+      - research/rec-f05-accepted-intermediate-trajectory-20261102
+  pull_request:
+    paths:
+      - 'research/rec_f05_accepted_trajectory_20261102/**'
+      - '.github/workflows/rec-f05-accepted-trajectory-audit.yml'
+jobs:
+  source-free-original-material-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f05_accepted_trajectory_20261102
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent array checker
+        run: python -m pip install numpy==2.1.3
+      - name: Verify accepted-source material and adverse tamper case
+        run: |
+          python -m unittest discover -v -s research/rec_f05_accepted_trajectory_20261102/tests -p test_source_free.py
+          python -O -m unittest discover -v -s research/rec_f05_accepted_trajectory_20261102/tests -p test_source_free.py
+      - name: Independently recalculate all 184320 actual accepted source rows
+        run: |
+          python research/rec_f05_accepted_trajectory_20261102/audit_energy.py --results research/rec_f05_accepted_trajectory_20261102/results --audit-out "$RUNNER_TEMP/rec195_original_audit.json"
+          python - "$RUNNER_TEMP/rec195_original_audit.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["cell_rows_checked"] == 184320
+          assert d["strict_thermal_cooling_rate_acceleration"] == "PASS_3_NONOVERLAPPING_BOUNDS"
+          assert d["strict_binding_discharge_rate_deceleration"] == "PASS_3_NONOVERLAPPING_BOUNDS"
+          assert d["REI_canonical_DAG"] == "28/88"
+          print("REC195 original source-science: 184320 material rows and source-free energy checks PASS")
+          PY
+      - name: Archive original source-scoped REC science, not REI production data
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec195-original-F05-accepted-material
+          if-no-files-found: error
+          path: research/rec_f05_accepted_trajectory_20261102/
