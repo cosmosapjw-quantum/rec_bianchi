@@ -42,7 +42,7 @@ For each original endpoint state with temperature `T` and exact source nucleus t
     dot U = (3/2) k_B (N_H+N_He+Ne) dot T
           + (3/2) k_B T dot Ne.                         [erg/s]
 
-The original thermal `thermal_rhs` supplies the **fixed-particle-number thermal-driving term** `Pheat-Cool-Pexpansion`. Hence the total derivative of the translational U includes the particle-number term. This is only a source-equation interpretation at the original event state, not an acceptance or integrated Euler theorem; inspect the original thermal_root for exact choice of primitive before claiming a full solver identity.
+The original `thermal_root` solves `ecoef*T - U0 - dt*(const + weight*thermal_rhs) = 0`, with `ecoef=(3/2)k_B*Npart`. **Thus `thermal_rhs=Pheat-Cool-Pexpansion` already denotes the full translational energy source `dot U` in this original solver.** The composition work `C=(3/2)k_B*T*dot Ne` belongs within the decomposition `dot U_T=thermal_rhs-C`; **adding C to thermal_rhs would double count** and is rejected by inspection of the original root equation. These are instantaneous source-equation identities, not a new integrated IVP error theorem.
 
 Every source field comes as [lower,upper]. For a signed linear coefficient c, use [c Flo,c Fhi] if c≥0 and [c Fhi,c Flo] otherwise. For sums, add interval endpoints. Nonlinear products must use four-corner interval arithmetic, not naive lower×lower for signed factors. Implemented f64 intervals inherit original model's source enclosure but aggregate roundoff is not claimed to be formal MPFR-outward proof.
 
