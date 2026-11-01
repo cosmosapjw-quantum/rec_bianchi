@@ -1,0 +1,8 @@
+# Reproduce and storage scope
+- Exact full code and 46,080-row source-derived CSV: source-inclusive archive `REC_REI_F05_TICK160_MATERIAL_SOURCE_FULL_20261101.zip`, 51,371,782 bytes, SHA256 `13b7e2f879d71d66d3a6b22d940f6c76a12ba398453985db3bcad19cc3d1b660`.
+- Archive has 34 entries, ZIP CRC PASS, SHA manifest 33/33 PASS, clean extracted replay tests 17/17 PASS. This GitHub PR is intentionally *thin*: it does **not** contain all 51MB of source inputs, ~8 MB of generated data or the full 11,747-byte Python source.
+- Exact source original PR321 GitHub Actions artifact id `13066329719`, SHA256 `b40a4fe081ab6d84ca5319548aeebf63988665940ef08804789392839aef6b9a`.
+- Exact original PR320 node states artifact id `13064333012`, SHA256 `48ad5c6f0922ad946a10a89ce17fefd2c7241ac956b6bac194892a42810312a7`.
+- Reproduction inside archive: `./REPRODUCE.sh` uses Python/numpy/pandas/matplotlib, checks exact ZIP, asserts identical lane source bytes and physically contained node states, produces deterministic gzip CSV plus 2 plots, runs 17/17 normal and -O tests. Original run's 160/131072 tick accepted/held failure remains intact.
+- Stage files `stages/R1.json` through `R10.json`, `stages/C1.json` through `C10.json` each have own separate Git SHA checkpoint and repeat REI 28/88 / REC H5 0/313; they are **receipts**, not newly accepted independent scientific experiments.
+- Any source archive obtained from GitHub Actions is potentially expiring. Do not call it a permanent independent backup. Full archive Drive/Dropbox remote byte readback remains **NOT_VERIFIED** until an actual provider response/readback.
