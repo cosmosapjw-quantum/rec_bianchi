@@ -1,0 +1,94 @@
+{
+  "schema": "rec.physmath.original_C_noUV_R_C_v1",
+  "date": "2026-11-01",
+  "project": "cosmosapjw-quantum/rec_bianchi",
+  "pr": 189,
+  "parent_pr": 188,
+  "parent_head": "c177bbc8a6e03b502cf910067c7cc02a2d179d89",
+  "theory_git_commit": "710bcd79bdcb50c00d5f43e9f2c0e9bf64c15ce0",
+  "science_unit": "ORIGINAL_HYREC_C_NO_ASTRO_UV_RESIDUAL_THOMSON_FLOOR_AND_F08_FAIL_CLOSED_CONSUMER",
+  "theory": {
+    "R1": {
+      "status": "DONE_SCOPED",
+      "evidence": "THEORY_AND_SCOPE.md source owner and noUV counterfactual"
+    },
+    "R2": {
+      "status": "DONE_SCOPED",
+      "evidence": "Original C stdout, HyRec 2011; Fleury-Pitrou-Uzan 2015; REI349 and BASS315"
+    },
+    "R3": {
+      "status": "DONE_SCOPED",
+      "evidence": "Same-source vs different-source accepted provenance separated"
+    },
+    "R4": {
+      "status": "DONE_SCOPED",
+      "evidence": "Explicit noUV optical null vs prohibited F08 S0 direct splice"
+    },
+    "R5": {
+      "status": "DONE_DERIVED",
+      "evidence": "Piecewise tau integral and exact z>=20 visibility scaling"
+    },
+    "R6": {
+      "status": "SELF_REVIEW_SCOPED",
+      "evidence": "SCIENTIFIC_RESULTS_KO.md non-equivalence, no low-z astrophys model, no confidence inflation"
+    },
+    "R7": {
+      "status": "SOURCE_NUMERICALLY_CHECKED",
+      "evidence": "1601 native-source visibility data, z20 rate parity 4.44e-16"
+    },
+    "R8": {
+      "status": "HOLD_FOR_REAL_IGM",
+      "evidence": "NoUV counterfactual not actual REI or observed CMB"
+    },
+    "R9": {
+      "status": "COMPUTATIONAL_FORM_READY",
+      "evidence": "THEORY_AND_SCOPE.md and native_C_noUV_floor.py"
+    },
+    "R10": {
+      "status": "GIT_THEORY_CHECKPOINT",
+      "evidence": "710bcd79bdcb50c00d5f43e9f2c0e9bf64c15ce0"
+    }
+  },
+  "coding": {
+    "C1": "ORIGINAL_C_SHA_AND_PARENT_HEAD_FROZEN",
+    "C2": "PARENT_NATIVE_C_8001_ROWS_REUSED",
+    "C3": "DISJOINT_Z0_20_AND_Z20_1600_QUADRATURE",
+    "C4": "REC_ONLY_ISOLATED_BRANCH_NO_REI_MUTATION",
+    "C5": "IMPLEMENTED_1601_ROW_PHYSICAL_NULL_DATA",
+    "C6": "LOCAL_15_NORMAL_15_OPTIMIZED_PASS",
+    "C7": "SOURCE_Z20_PARITY_F08_FAIL_CLOSED",
+    "C8": "SIMPSON_TRAPEZOID_COARSE_SAMPLE_COMPARISON_ONLY",
+    "C9": "SAME_AUTHOR_ADVERSARIAL_ONE_PASS_NO_DISTINCT_REFEREE",
+    "C10": "PENDING_REMOTE_CI_TWO_PROVIDER_BACKUP_READBACK"
+  },
+  "physics_results": {
+    "new_model_rows": 1601,
+    "new_native_C_executions": 0,
+    "new_rei_IVPs": 0,
+    "tau_noUV_0_20": 0.00003871290640411524,
+    "noUV_scatter_prob": 0.00003871215706918729,
+    "tau_noUV_0_1100": 1.124706769375157,
+    "source_C_physics_sha256": "6fa5cb83a45ed3599d824ff821b6c8df41dd6d0e78a46cf9b33fde91b933e400",
+    "new_gzip_sha256": "5ecdc520592f7d42cc336747d8ce9593546acc7b5d487a3a1329cdc41ec4be60",
+    "f08_source_pair_id": "0a2bec874a5aa1b12f882033a08497b913b44447148b50b6082093bb354868e8"
+  },
+  "progress": {
+    "rei_canonical": "28/88",
+    "rei_working": "33/88",
+    "rei_physical_fast": "4/7",
+    "rec_H5_physical": "0/313",
+    "canonical_delta": 0
+  },
+  "constraints": {
+    "production": "HOLD",
+    "merge": false,
+    "force_push": false,
+    "owner_swap": false,
+    "tolerance_change": false,
+    "rei_solver_mutation": false,
+    "auto_next": false
+  },
+  "drift_decision": "STOP_MORE_SOURCE_ONLY_PROXY_URGENCY_REAL_REI_F05_AND_MATCHED_F08",
+  "native_subagent": "NOT_RUN",
+  "distinct_author_referee": "NOT_RUN"
+}

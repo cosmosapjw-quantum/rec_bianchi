@@ -1,0 +1,52 @@
+name: REC REI original C noUV residual Thomson physical floor
+on:
+  push:
+    branches:
+      - research/rec-rei-native-hyrec-no-uv-thomson-floor-20261101
+  pull_request:
+    paths:
+      - 'research/rec_rei_native_hyrec_no_uv_floor_20261101/**'
+      - '.github/workflows/rec-rei-native-hyrec-no-uv-floor.yml'
+
+jobs:
+  original-C-null-science:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_r3c_rei_bridge_20261015
+            research/rec_rei_hyrec_primordial_screen_20261101
+            research/rec_rei_z20_local_thomson_consumer_20261101
+            research/rec_rei_native_hyrec_no_uv_floor_20261101
+          sparse-checkout-cone-mode: true
+
+      - name: Original HyRec C replay and primordial optical science
+        run: python3 -m unittest discover -s research/rec_rei_hyrec_primordial_screen_20261101/tests -v
+      - name: Previous z20 source-authentic Bianchi clock regressions
+        run: python3 -m unittest discover -s research/rec_rei_z20_local_thomson_consumer_20261101/tests -v
+      - name: New noUV optical null and F08 source inequivalence science
+        run: python3 -m unittest discover -s research/rec_rei_native_hyrec_no_uv_floor_20261101/tests -v
+      - name: Original and new regression with optimized Python
+        run: |
+          python3 -O -m unittest discover -s research/rec_rei_hyrec_primordial_screen_20261101/tests -v
+          python3 -O -m unittest discover -s research/rec_rei_z20_local_thomson_consumer_20261101/tests -v
+          python3 -O -m unittest discover -s research/rec_rei_native_hyrec_no_uv_floor_20261101/tests -v
+      - name: Recompute 1601 actual-source null rows and compare exact output
+        run: |
+          python3 research/rec_rei_native_hyrec_no_uv_floor_20261101/native_C_noUV_floor.py --repo . --out /tmp/rec-noUV-science
+          cmp /tmp/rec-noUV-science/ORIGINAL_NATIVE_C_NO_UV_THOMSON_0_TO_1600.csv.gz research/rec_rei_native_hyrec_no_uv_floor_20261101/results/ORIGINAL_NATIVE_C_NO_UV_THOMSON_0_TO_1600.csv.gz
+          cmp /tmp/rec-noUV-science/SCIENCE_STATUS.json research/rec_rei_native_hyrec_no_uv_floor_20261101/results/SCIENCE_STATUS.json
+      - name: Preserve source-inclusive original C scientific witness
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-rei-original-C-noUV-source-and-science
+          if-no-files-found: error
+          path: |
+            research/rec_r3c_rei_bridge_20261015/HYREC_ORIGINAL_REI_MATCHED_STDOUT.gz
+            research/rec_r3c_rei_bridge_20261015/HYREC_FLRW_Z20_TO_1600.csv
+            research/rec_r3c_rei_bridge_20261015/REI_CONDITIONAL_BOUNDARY.json
+            research/rec_rei_hyrec_primordial_screen_20261101/original_hyrec_screen.py
+            research/rec_rei_native_hyrec_no_uv_floor_20261101/
