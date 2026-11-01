@@ -1,0 +1,36 @@
+name: REC REI original F05 HHe Thomson scattering-capacity source physics
+on:
+  push:
+    branches:
+      - research/rec-rei-f05-tick161-thomson-capacity-20261101
+  pull_request:
+    paths:
+      - 'research/rec_rei_f05_tick161_thomson_capacity_20261101/**'
+      - '.github/workflows/rec-rei-f05-tick161-thomson-capacity.yml'
+jobs:
+  original-F05-electron-physics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_rei_f05_tick161_thomson_capacity_20261101
+          sparse-checkout-cone-mode: true
+      - name: Real source 46080 physical charge and prior rejection tests
+        run: python3 -m unittest discover -s research/rec_rei_f05_tick161_thomson_capacity_20261101/tests -v
+      - name: Repeat all original source tests with optimized interpreter
+        run: python3 -O -m unittest discover -s research/rec_rei_f05_tick161_thomson_capacity_20261101/tests -v
+      - name: Native material physics output reproducibility
+        run: |
+          python3 research/rec_rei_f05_tick161_thomson_capacity_20261101/capacity.py --unit-root research/rec_rei_f05_tick161_thomson_capacity_20261101 --out /tmp/rec-f05-thomson
+          cmp /tmp/rec-f05-thomson/SCIENCE_RESULT.json research/rec_rei_f05_tick161_thomson_capacity_20261101/results/SCIENCE_RESULT.json
+          sha256sum research/rec_rei_f05_tick161_thomson_capacity_20261101/results/SCIENCE_RESULT.json
+      - name: Preserve exact original source and physical result
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-rei-original-f05-thomson-capacity-physical-science
+          if-no-files-found: error
+          path: |
+            research/rec_rei_f05_tick161_thomson_capacity_20261101/
