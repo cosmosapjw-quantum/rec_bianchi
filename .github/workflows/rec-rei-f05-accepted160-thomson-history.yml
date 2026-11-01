@@ -1,0 +1,44 @@
+name: REC REI original F05 accepted 0-to-160 Thomson material
+on:
+  push:
+    branches:
+      - research/rec-rei-f05-accepted160-thomson-history-20261101
+  pull_request:
+    paths:
+      - 'research/rec_rei_f05_accepted_history_thomson_20261101/**'
+      - '.github/workflows/rec-rei-f05-accepted160-thomson-history.yml'
+jobs:
+  accepted-native-F05-Thomson:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_rei_f05_native_thomson_medium_20261101
+            research/rec_rei_f05_accepted_history_thomson_20261101
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pin original material source parser
+        run: python3 -m pip install numpy==2.3.5
+      - name: Original accepted 0-160 scientific tests
+        run: python3 -m unittest discover -s research/rec_rei_f05_accepted_history_thomson_20261101/tests -v
+      - name: Original accepted 0-160 optimized science
+        run: python3 -O -m unittest discover -s research/rec_rei_f05_accepted_history_thomson_20261101/tests -v
+      - name: Byte-exact accepted 46080 source history material
+        run: |
+          python3 research/rec_rei_f05_accepted_history_thomson_20261101/compute_accepted160.py --unit-root research/rec_rei_f05_accepted_history_thomson_20261101 --out "$RUNNER_TEMP/rec192-accepted"
+          cmp "$RUNNER_TEMP/rec192-accepted/SCIENCE_RESULT.json" research/rec_rei_f05_accepted_history_thomson_20261101/results/SCIENCE_RESULT.json
+          cmp "$RUNNER_TEMP/rec192-accepted/ORIGINAL_ACCEPTED_F05_THOMSON_CHANGE_46080.csv.gz" research/rec_rei_f05_accepted_history_thomson_20261101/results/ORIGINAL_ACCEPTED_F05_THOMSON_CHANGE_46080.csv.gz
+          sha256sum research/rec_rei_f05_accepted_history_thomson_20261101/results/*
+      - name: Preserve original F05 accepted source and code
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec192-source-original-accepted-F05-material
+          if-no-files-found: error
+          path: |
+            research/rec_rei_f05_accepted_history_thomson_20261101/
+            research/rec_rei_f05_native_thomson_medium_20261101/source_inputs/
