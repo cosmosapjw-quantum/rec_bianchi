@@ -35,6 +35,10 @@ class OriginalHyRecScreenTests(unittest.TestCase):
         self.assertAlmostEqual(self.source[0]["xe_per_H"],.000210349192936,delta=1e-15)
         self.assertAlmostEqual(self.source[0]["Tgas_K"],9.306042400380866,delta=1e-13)
         self.assertAlmostEqual(self.boundary["published_rei_approximate_initial"]["electron_fraction_per_H"],.0002,delta=1e-17)
+    def test_original_C_raw_temperature_is_a_ratio(self):
+        self.assertEqual(self.boundary["source_cosmology"]["T0_K"],2.7255)
+        self.assertLess(self.physics["native_C_temperature_ratio_to_kelvin_max_relative"],3e-13)
+        self.assertAlmostEqual(self.source[0]["Tgas_K"],9.306042400380866,delta=1e-13)
     def test_thomson_rate_source_parity(self):
         self.assertLess(self.physics["opacity_parity_max_relative"],2e-12)
         self.assertAlmostEqual(self.physics["kappa"][0],self.source[0]["dtaudlna"]/21,delta=1e-18)
