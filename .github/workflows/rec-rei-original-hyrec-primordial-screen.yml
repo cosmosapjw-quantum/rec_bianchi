@@ -1,0 +1,44 @@
+name: rec-rei-original-hyrec-primordial-screen
+on:
+  push:
+    branches:
+      - research/rec-rei-original-hyrec-thomson-screen-20261101
+    paths:
+      - 'research/rec_rei_hyrec_primordial_screen_20261101/original_hyrec_screen.py'
+      - 'research/rec_rei_hyrec_primordial_screen_20261101/tests/**'
+      - '.github/workflows/rec-rei-original-hyrec-primordial-screen.yml'
+  pull_request:
+    paths:
+      - 'research/rec_rei_hyrec_primordial_screen_20261101/**'
+      - '.github/workflows/rec-rei-original-hyrec-primordial-screen.yml'
+permissions:
+  contents: read
+jobs:
+  rec-owned-native-hyrec-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify source-owning script and scientific boundary
+        run: |
+          python -m py_compile research/rec_rei_hyrec_primordial_screen_20261101/original_hyrec_screen.py
+          python -m unittest discover -s research/rec_rei_hyrec_primordial_screen_20261101/tests -v
+          python -O -m unittest discover -s research/rec_rei_hyrec_primordial_screen_20261101/tests -v
+      - name: Compute ORIGINAL HyRec C output 1581-row physical visibility and REI-AXBI boundary parity
+        run: |
+          python research/rec_rei_hyrec_primordial_screen_20261101/original_hyrec_screen.py --repo . --out source_science
+          python -c "import json,hashlib;d=json.load(open('source_science/SCIENCE_STATUS.json'));assert d['new_model_rows']==1581 and not d['physical_completed_REI_first_F05'] and d['REI_canonical']=='28/88';print('SCOPE_AND_PHYSICS_PASS')"
+      - name: Retain full source-owned science or evidence of failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rec-rei-hyrec-primordial-screen-1581
+          path: source_science/
+          if-no-files-found: warn
+          retention-days: 90
