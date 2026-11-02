@@ -1,0 +1,48 @@
+name: REC original F08 S0 continuous Thomson ray visibility
+on:
+  push:
+    branches:
+      - research/rec-f08-s0-native-thomson-visibility-20261102
+  pull_request:
+    paths:
+      - "research/rec_f08_s0_thomson_visibility_20261102/**"
+      - ".github/workflows/rec-f08-s0-native-thomson-visibility.yml"
+jobs:
+  original-source-visibility:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f08_s0_thomson_visibility_20261102
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Source-authentic 128 native q, 640 native gas, and 9 regressions
+        run: |
+          python -m unittest discover -v -s research/rec_f08_s0_thomson_visibility_20261102/tests -p test_f08_source_visibility.py
+          python -O -m unittest discover -v -s research/rec_f08_s0_thomson_visibility_20261102/tests -p test_f08_source_visibility.py
+      - name: Fresh source-matched ray visibility and independent Gauss audit
+        run: |
+          python research/rec_f08_s0_thomson_visibility_20261102/compute_visibility.py --unit research/rec_f08_s0_thomson_visibility_20261102 --out "$RUNNER_TEMP/rec198"
+          python research/rec_f08_s0_thomson_visibility_20261102/audit_native_visibility.py --unit research/rec_f08_s0_thomson_visibility_20261102 --results "$RUNNER_TEMP/rec198" --audit "$RUNNER_TEMP/rec198_audit.json"
+          python - "$RUNNER_TEMP/rec198/SCIENCE_RESULT.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["physical_gas_trajectory_rows_from_donor"]==640
+          assert d["time_visibility_rows"]==644 and d["ray_visibility_rows"]==1536
+          assert d["REI_canonical_DAG"]=="28/88"
+          assert d["F05_original_26event_source_used"] is False
+          print("Native F08 S0 source Thomson visibility and owner scope PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rec198-native-F08-visibility
+          if-no-files-found: error
+          path: |
+            research/rec_f08_s0_thomson_visibility_20261102/results/
+            research/rec_f08_s0_thomson_visibility_20261102/SCIENTIFIC_REPORT_KO.md
+            research/rec_f08_s0_thomson_visibility_20261102/NEXT_THREAD_HANDOFF.txt
