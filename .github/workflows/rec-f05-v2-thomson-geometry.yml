@@ -1,0 +1,36 @@
+name: REC original F05 V2 Thomson geometry physics
+on:
+  push:
+    branches:
+      - research/rec-f05-v2-thomson-geometry-response-20261102
+  pull_request:
+    paths:
+      - 'research/rec_f05_v2_thomson_geometry_20261102/**'
+      - '.github/workflows/rec-f05-v2-thomson-geometry.yml'
+jobs:
+  original-source-free-geometry-science:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f05_v2_thomson_geometry_20261102
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently verify source-native 46080 original cells
+        run: |
+          python -m unittest discover -v -s research/rec_f05_v2_thomson_geometry_20261102/tests -p test_thomson_geometry.py
+          python -O -m unittest discover -v -s research/rec_f05_v2_thomson_geometry_20261102/tests -p test_thomson_geometry.py
+      - name: Check complete geometry/chemistry physical interval and published identity
+        run: |
+          python research/rec_f05_v2_thomson_geometry_20261102/audit_thomson_geometry.py --results research/rec_f05_v2_thomson_geometry_20261102/results --audit "$RUNNER_TEMP/rec197-audit.json"
+          cmp "$RUNNER_TEMP/rec197-audit.json" research/rec_f05_v2_thomson_geometry_20261102/results/INDEPENDENT_AUDIT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rec197-original-f05-conditional-collision-science
+          if-no-files-found: error
+          path: research/rec_f05_v2_thomson_geometry_20261102/
