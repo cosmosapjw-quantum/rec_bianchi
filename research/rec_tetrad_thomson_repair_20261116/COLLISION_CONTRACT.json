@@ -1,0 +1,52 @@
+{
+  "schema": "REC_F08_TETRAD_COLLISION_CONTRACT_V1",
+  "mission": "Support original rei_bianchi AXBI IGM abundance only through explicitly requested source-matched providers",
+  "node": "REC_F08_TETRAD_SINGLE_SCATTER_SOURCE",
+  "edge_to_central_abundance": "OPTIONAL_SECONDARY_NOT_A_REQUIRED_PREDECESSOR",
+  "source_owner": "rei_bianchi scenario owner; inherited F08 native data authority retained",
+  "operator_owner": "rec_bianchi",
+  "atomic_provider_owner": "WU088_HH",
+  "inputs": {
+    "q": {"shape": [128,3], "unit": "dimensionless", "meaning": "conserved unit Killing-ray label; not later tetrad direction"},
+    "H": {"shape": [3], "unit": "s^-1", "meaning": "scenario diagonal constant expansion rates; a_i(t)=exp(H_i*t)"},
+    "t": {"unit": "s", "meaning": "original proper time at native source step"},
+    "N_q": {"shape": [128], "unit": "photons/H or eV/H", "meaning": "positive equal-q-cell native photon number or energy mass; includes source birth Jacobian"},
+    "p": {"unit": "dimensionless", "meaning": "unchanged -expm1(-c*sigma_T*n_e*delta_t) from actual source"},
+    "source_measure": {"const": "q_midpoint_continuum", "reject": "discrete_beams"}
+  },
+  "mapping": {
+    "direction": "n=Aq/|Aq|; A=diag(exp(-H_i*t))",
+    "solid_angle": "J=det(A)/|Aq|^3=dOmega_n/dOmega_q",
+    "intensity": "I_n proportional to N_q/J",
+    "collision_mass": "m_i proportional to w_phys_i*N_q_i/J_i, normalized to the original channel total",
+    "moment_rule": "degree4 homogeneous Cartesian moments of n exactly match uniform sphere; positive constrained minimum correction"
+  },
+  "outputs": {
+    "projected": "same units as input channel; source itself remains unchanged",
+    "scattered_in": "p*K*m",
+    "delta": "p*(K*m-m)",
+    "Q": "I_theta-I_phi in instantaneous comoving tetrad, same channel units",
+    "U": "twice theta-phi coherency, same channel units"
+  },
+  "assumptions": ["metric signature (-,+,+,+)", "zero tilt", "unpolarized incoming radiation", "comoving stationary electrons", "elastic Thomson limit", "source-only single scattering", "constant diagonal H over inherited scenario"],
+  "gates": {
+    "input_sha_and_continuum_contract": "PASS",
+    "source_frame_and_no_J_double_count": "PASS_DERIVED_AND_TESTED",
+    "degree4_moments_and_positive_weights": "PASS_FOR_ALL_640_ORIGINAL_STAGES",
+    "analytic_l2_and_isotropic_and_shear": "PASS_9_PHYSICAL_TESTS",
+    "independent_full_native_data_calculation": "PASS_SCOPED",
+    "same_0p03_estimator_threshold": "PASS_SCOPED_NEW_PHYSICAL_TARGET",
+    "old_q_frame_fail": "RETAINED_NOT_OVERRIDDEN",
+    "continuum_convergence": "UNRESOLVED",
+    "coupled_polarized_transport": "NOT_IMPLEMENTED",
+    "central_owner_acceptance": "NOT_CLAIMED",
+    "central_abundance_DAG_delta": 0
+  },
+  "stop_condition": "Stop secondary polarization expansion after delivering this reviewed correction unless an actual same-source consumer is named",
+  "next_PR": {
+    "title": "Consume physical-tetrad Thomson source in named F08 photon receiver",
+    "requires": ["receiver path and scenario/source SHA", "receiver time/frame semantics", "actual observable and acceptance criterion"],
+    "must_preserve": ["original failed estimator and q-frame interpretation rejection", "no source/clock joining across F05 F08 AXBI", "no tolerance relaxation", "no abundance node promotion from local kernel tests"],
+    "not_automatic": true
+  }
+}

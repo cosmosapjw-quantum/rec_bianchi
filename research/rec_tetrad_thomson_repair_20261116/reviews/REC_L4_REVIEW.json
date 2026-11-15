@@ -1,0 +1,126 @@
+{
+  "schema": "INDEPENDENT_REC_L4_REVIEW_CHECK_V1",
+  "runtime": "PYTHON_PASS",
+  "independence": "Separate agent, fork_turns=none; reviewed supplied files, independent formulas and calculations; did not author producer or edit author files. Same local input data; not independent native source replay.",
+  "exact_coefficients": {
+    "a": "68083/61440",
+    "b": "-64517/47520",
+    "c": "2641/1485"
+  },
+  "hashes": {
+    "rec199/source_inputs/F08_ORIGINAL_SOURCE_Q128.csv": "a6bcc931865db54402eb44727afe13d74b4ea40cf6f1c3b08acda239678c2d92",
+    "rec199/source_inputs/ORIGINAL_NATIVE_F08_640STEP_128RAY_PHOTON_ANGLES.csv.gz": "70ea9b3b4ffbe6b0b25c15a17182c3170b0f96fdb5d42209f90bff27d0bbe2a1",
+    "thomson_l4.py": "7a7271c4b4d83cee6c25ef8556cd673f3065585cedb0a50bafc7237c36bf1676",
+    "run_native_l4.py": "6edfe871d5d66e8ee33cee4ddf9047f1aabc253491a0cb7f36c25bab5fe69ac8",
+    "test_l4.py": "6af39fbab3b0b677470bb99a1265e057b3555d3be7499e0dc52d2482b5e98423",
+    "results/RESULT.json": "f3e1bda7214914f9bc89f2075a7a1b066ae1cbbad7497a628552c7b7bf66069a",
+    "results/native_l4_moments.csv": "315b38e67f3bf482250deb777d2a2543174d790dab70e1018951a2f4aff4d836",
+    "results/native_l4_stokes.csv.gz": "c67416ecb425280f4e682386ba814e7032568f61838bbba10deb176d7b86935c"
+  },
+  "checked_native_stages": 640,
+  "checked_channel_moments": 1280,
+  "checked_stokes_angular_rows": 81920,
+  "max_all_monomial_degree_le4_abs_error": 5.551115123125783e-17,
+  "weights_minmax": [
+    0.006633966619318182,
+    0.008680802162247475
+  ],
+  "l6_weights_minmax": [
+    0.002303479714369034,
+    0.015235246930802075
+  ],
+  "l2_exactness_max_abs_error": 2.041772919356491e-18,
+  "max_independent_tensor_vs_output_abs": 1.3846217647742277e-16,
+  "max_independent_coherency_vs_saved_stokes_scaled_by_pN": 9.680004321400912e-18,
+  "max_projection_scaled_error": 6.651801247793461e-18,
+  "max_saved_elastic_ledger_relative": 3.3243568083612015e-16,
+  "max_source_probability_abs_error": 0.0,
+  "max_independent_trace_abs": 4.8157979800592476e-23,
+  "max_flrw_tensor_norm": 9.767546648842943e-17,
+  "models": {
+    "S0_BI_CHARACTERISTIC_photons_per_H": {
+      "count": 160,
+      "max_fit_relative": 1.846116747230215e-07,
+      "max_l6_relative": 2.1937431210177e-07
+    },
+    "S0_BI_CHARACTERISTIC_energy_eV_per_H": {
+      "count": 160,
+      "max_fit_relative": 4.405137030507918e-09,
+      "max_l6_relative": 7.474424918349623e-08
+    },
+    "S0_BI_ORIGINAL_HAT_photons_per_H": {
+      "count": 160,
+      "max_fit_relative": 0.001484637526104886,
+      "max_l6_relative": 0.025146173424862975
+    },
+    "S0_BI_ORIGINAL_HAT_energy_eV_per_H": {
+      "count": 160,
+      "max_fit_relative": 4.094098965576575e-06,
+      "max_l6_relative": 6.936086873259579e-05
+    },
+    "S0_FLRW_CHARACTERISTIC_photons_per_H": {
+      "count": 160,
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0
+    },
+    "S0_FLRW_CHARACTERISTIC_energy_eV_per_H": {
+      "count": 160,
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0
+    },
+    "S0_FLRW_ORIGINAL_HAT_photons_per_H": {
+      "count": 160,
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0
+    },
+    "S0_FLRW_ORIGINAL_HAT_energy_eV_per_H": {
+      "count": 160,
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0
+    }
+  },
+  "witness": {
+    "q4_norm": 2.8016217585849476e-09,
+    "fit_relative": 0.001484637526104886,
+    "l6_relative": 0.025146173424862975,
+    "q4": [
+      [
+        -1.0269223044748648e-09,
+        -1.1316294617057758e-17,
+        -7.888609052210118e-30
+      ],
+      [
+        -1.1316294617058152e-17,
+        2.2836631674089587e-09,
+        7.494178599599612e-30
+      ],
+      [
+        3.155443620884047e-30,
+        -3.549874073494553e-30,
+        -1.2567408629340936e-09
+      ]
+    ]
+  },
+  "negative_control": {
+    "field": "I=1+0.1 P4(z)",
+    "intensity_min": 0.9577728271484375,
+    "exact_continuum_quadrupole": 0.0,
+    "l4_quadrupole_norm": 0.0026104353322682692,
+    "l6_quadrupole_norm": 4.896358180796975e-16
+  },
+  "verdict": "Q_LABEL_NUMERICS_PASS_PHYSICAL_INTERPRETATION_REJECTED_SUPERSEDED_BY_TETRAD",
+  "continuum_angular_convergence": "UNRESOLVED",
+  "kernel_contract_negative_control": {
+    "accepted_antipodal_folded_grid": true,
+    "weighted_z_mean": 0.49900568181818195,
+    "impact": "Standalone weights_l4 checks even moments only; source-locked runner unaffected."
+  },
+  "physical_frame_discovery": {
+    "status": "SOURCE_CONFIRMED",
+    "q_semantics": "Fixed angular Killing labels, not event-time comoving tetrad direction",
+    "required_direction": "n=A q / |A q|, A=diag(exp(-H_i t))",
+    "solid_angle_jacobian": "J=det(A)/|A q|^3",
+    "mass_semantics": "Captured mass is per Killing-label angular cell; physical intensity sample is proportional to mass/J. Do not multiply captured masses by J again.",
+    "corrected_source_native_output": "INDEPENDENT_REVIEW_PASS_SCOPED_SEE_REC_TETRAD_REVIEW"
+  }
+}
