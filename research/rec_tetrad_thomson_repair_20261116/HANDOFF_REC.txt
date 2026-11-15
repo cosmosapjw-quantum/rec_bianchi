@@ -1,0 +1,9 @@
+$physmath-research-loop로 rec_bianchi의 기존 스레드를 이어가라.
+기준 PR199 research/rec-f08-native-thomson-polarization-20261115 HEAD c10e97ab3178c423cc7699684b33e1730d26437a을 최신 head와 대조하라.
+새 research/rec_tetrad_thomson_repair_20261116 package의 REPORT_KO.md, PR_CONTRACTS.json, thomson_tetrad.py, results_tetrad/RESULT.json, reviews/REC_TETRAD_REVIEW.json을 먼저 읽어라.
+중요한 실제 오류: q128은 보존되는 Killing-ray label이다. 순간 tetrad 방향 n=Aq/|Aq|와 Jacobian J=det(A)/|Aq|³를 사용하고, 원 source가 이미 J를 포함하므로 physical intensity=N_q/J로 변환한다. scenario 원문은 continuum angular measure를 명시한다. 교정 후 characteristic photon P/in peak5.67474e-6다.
+처음 수행한 q-label diagnostic에서 l2 quadrature는 quadrupole 적분에 필요한 l4 moment를 만족하지 않았다. 양의 degree4 weights로 실제640 source stages/81920 ray를 재계산했으며 원3% 비교 기준의 tick142 차이가4.15228%→0.148464%로 감소했다. 이 q-label diagnostic의 degree4–degree6 민감도2.51462%와 continuum convergence 미해결을 보존하라.
+최종 physical tetrad 결과의 l4–l6 최대 상대차는 fixed-hat photon2.22566e-5, characteristic4.07486e-7다.
+기존 FAIL을 수정된 결과와 별도로 보존하고 original photon/gas/source bytes와 probability/clock를 유지하라. 새 IVP는 없었으며 이 수정은 중앙 AXBI abundance 노드의 완료가 아니다.
+REC는 selected-source radiative rates/emissivity/opacity/electron–Thomson collision을 소유한다. 다음 central abundance 실험을 위한 실제 필요한 provider row를 우선하고, 이번 F08 polarization은 source-matched secondary receiver가 소비할 때만 확장하라. source/clock가 다른 F05/F08/AXBI를 합치지 마라.
+매 턴 원z20→4 abundance 목표 기여를 확인하고, 의미 없는 새 opacity/polarization atlas나 plot 재생성으로 다음 연구를 대체하지 마라.

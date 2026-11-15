@@ -1,0 +1,112 @@
+{
+  "schema": "INDEPENDENT_REC_TETRAD_REVIEW_V1",
+  "runtime": "PYTHON_PASS",
+  "verdict": "PASS_SCOPED_TETRAD_L4_ESTIMATOR",
+  "continuum_angular_convergence": "UNRESOLVED",
+  "checked_stages": 640,
+  "checked_channel_tensors": 1280,
+  "checked_angular_rows": 81920,
+  "source_measure_established_by_scenario": "ISOTROPIC_CONTINUUM_MEASURE; positive quadrature is a declared numerical approximation",
+  "jacobian_derivation": "For n=Aq/g, Dn[u]=(1-nnT)Au/g. The tangent-area determinant is det(A)/g^3. Native q-cell mass divided by J estimates intensity; no duplicate J.",
+  "max_errors": {
+    "tensor": 1.461933855494681e-16,
+    "stokes_scaled_pN": 1.420309276495129e-17,
+    "projection_scaled_N": 1.1849317499125926e-17,
+    "ledger_scaled_pN": 2.8686581771745693e-16,
+    "monomial_degree6": 1.5178830414797062e-15,
+    "monomial_degree4": 4.440892098500626e-16,
+    "isotropic_spin_scaled": 7.553296133026303e-16,
+    "isotropic_tensor": 0.0,
+    "pure_l2_exactness": 1.0044963721488748e-17,
+    "jacobian_tangent_area": 6.661338147750939e-16
+  },
+  "minimum_weights_all_stages": {
+    "degree4": 0.0066338297713963825,
+    "degree6": 0.002303330693794909
+  },
+  "maximum_constraint_matrix_condition": {
+    "degree4": 7.676982502228502,
+    "degree6": 43.33668606450915
+  },
+  "models": {
+    "S0_BI_CHARACTERISTIC_photons_per_H": {
+      "max_fit_relative": 2.3999491432068723e-08,
+      "max_l6_relative": 4.074856987645859e-07,
+      "peak_polarization_scattered_in": 5.6747376593716336e-06
+    },
+    "S0_BI_CHARACTERISTIC_energy_eV_per_H": {
+      "max_fit_relative": 2.8734008874722527e-08,
+      "max_l6_relative": 4.878803697515533e-07,
+      "peak_polarization_scattered_in": 7.42816881007709e-06
+    },
+    "S0_BI_ORIGINAL_HAT_photons_per_H": {
+      "max_fit_relative": 1.3141173963646905e-06,
+      "max_l6_relative": 2.22566123105022e-05,
+      "peak_polarization_scattered_in": 5.144026512257049e-06
+    },
+    "S0_BI_ORIGINAL_HAT_energy_eV_per_H": {
+      "max_fit_relative": 9.841350422302397e-07,
+      "max_l6_relative": 1.6668728614307354e-05,
+      "peak_polarization_scattered_in": 6.900165646388294e-06
+    },
+    "S0_FLRW_CHARACTERISTIC_photons_per_H": {
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0,
+      "peak_polarization_scattered_in": 3.022318455531985e-16
+    },
+    "S0_FLRW_CHARACTERISTIC_energy_eV_per_H": {
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0,
+      "peak_polarization_scattered_in": 3.2462704620201354e-16
+    },
+    "S0_FLRW_ORIGINAL_HAT_photons_per_H": {
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0,
+      "peak_polarization_scattered_in": 3.0331230695873623e-16
+    },
+    "S0_FLRW_ORIGINAL_HAT_energy_eV_per_H": {
+      "max_fit_relative": 0.0,
+      "max_l6_relative": 0.0,
+      "peak_polarization_scattered_in": 3.118583514355991e-16
+    }
+  },
+  "witness": {
+    "norm": 5.0227993169729944e-06,
+    "fit_relative": 8.490342626826626e-07,
+    "l6_relative": 1.4377249609172258e-05,
+    "tensor": [
+      [
+        -3.5510216923156865e-06,
+        -1.2457063022335126e-17,
+        2.4944665347302244e-24
+      ],
+      [
+        -1.2457063086756663e-17,
+        3.5522888837359106e-06,
+        -1.2507875590596761e-23
+      ],
+      [
+        2.478310663391298e-24,
+        -1.2524031461935688e-23,
+        -1.267191420224568e-09
+      ]
+    ]
+  },
+  "hashes": {
+    "thomson_tetrad.py": "2695f0d612617eb5289f5cc37ef9a6862a22313046124a72d21a70e5664799a5",
+    "run_native_tetrad.py": "0e17340a8da3ce2e30edb5928bc3d1b045de10f43d1291ec3ed2506676dcc491",
+    "results_tetrad/RESULT.json": "2a3c379ed150a89be63dc4848549e04eed640966c5cc4ac92bc8a3a4e3b6530d",
+    "results_tetrad/native_l4_moments.csv": "de7a24aeb5c0733f0fa6be559f314c99e53a5623ab4eef2e3b0c11dd323edcb5",
+    "results_tetrad/native_l4_stokes.csv.gz": "b49fec5764866ee4c432cf8dd74bd576fa5d40437e8075f3c41644f0a1f5bdd1",
+    "rec199/source_inputs/science_scenario_v1.json": "c83d2d43adda663707f99af2b45576eb4478cd94d3440a21fd21eaed32b5f2c1",
+    "source_continuous_s0.py": "0bc6d0f3c348f22997bf2fd2e6eaf6f6b07fa5f5eeb9f6cbaa7ce91dcb752cbc",
+    "source_spectral_support.py": "48c67965bdef22e2c1c9b8e62577345b55771f341cc878f8f85ce3a2d4f768cf",
+    "source_capture_native_angles.py": "4f23f2b6405bd20fb8bbb2d995bcbae80bb0d9626a561b39bb17c099c7043876"
+  },
+  "author_physical_tests_independently_rerun": {
+    "passed": 9,
+    "failed": 0,
+    "test_sha256": "a288f8791b11a3e4ffa06ce0991493817535d6c9841f40665a0186d4815a396c"
+  },
+  "provenance_update_review": "Reviewed scenario hash guard, continuum guard, and H loading from pinned scenario; reran full independent data check after this provenance binding update. Saved derived output hashes unchanged."
+}

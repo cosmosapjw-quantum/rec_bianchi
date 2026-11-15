@@ -1,0 +1,125 @@
+{
+  "schema": "REC_BOUNDED_RESEARCH_LOOP_LEDGER_V1",
+  "mission": "original REI AXBI IGM z20_to4 abundance; optional REC source-only correction",
+  "theory": [
+    {
+      "stage": 1,
+      "action": "Pin mission and owner",
+      "evidence": "PR_CONTRACTS.json",
+      "status": "COMPLETE_NO_ABUNDANCE_PROMOTION"
+    },
+    {
+      "stage": 2,
+      "action": "Read current original native source and latest REC199",
+      "evidence": "SOURCE_PROVENANCE.json",
+      "status": "COMPLETE"
+    },
+    {
+      "stage": 3,
+      "action": "Identify wrong-frame and degree4-integrand failures",
+      "evidence": "REPORT_KO.md",
+      "status": "COMPLETE"
+    },
+    {
+      "stage": 4,
+      "action": "Derive physical tetrad map and solid-angle Jacobian",
+      "evidence": "reviews/REC_TETRAD_REVIEW.md",
+      "status": "DERIVED"
+    },
+    {
+      "stage": 5,
+      "action": "Derive exact rational l4 q weights and constrained physical weights",
+      "evidence": "REPORT_KO.md",
+      "status": "DERIVED"
+    },
+    {
+      "stage": 6,
+      "action": "Check isotropic, analytic l2 and shear limits",
+      "evidence": "test_tetrad.py",
+      "status": "NUMERICALLY_CHECKED"
+    },
+    {
+      "stage": 7,
+      "action": "Compute actual saved source Stokes and moments",
+      "evidence": "results_tetrad/RESULT.json",
+      "status": "COMPLETE_640_STAGES"
+    },
+    {
+      "stage": 8,
+      "action": "Challenge source semantics with independent source read and SVD/coherency calculation",
+      "evidence": "reviews/REC_TETRAD_REVIEW.json",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "stage": 9,
+      "action": "Separate finite estimator agreement from angular convergence",
+      "evidence": "COLLISION_CONTRACT.json",
+      "status": "CONVERGENCE_UNRESOLVED"
+    },
+    {
+      "stage": 10,
+      "action": "Stop optional branch; hand off to named receiver",
+      "evidence": "HANDOFF_REC.txt",
+      "status": "DELIVERED_NO_AUTOMATIC_NEXT"
+    }
+  ],
+  "coding": [
+    {
+      "stage": 1,
+      "action": "Current Python execution probe",
+      "status": "PYTHON_PASS"
+    },
+    {
+      "stage": 2,
+      "action": "Byte-lock q, angles and scenario",
+      "status": "PASS"
+    },
+    {
+      "stage": 3,
+      "action": "Retain original FAIL and q-label calculation",
+      "status": "PRESERVED"
+    },
+    {
+      "stage": 4,
+      "action": "Implement positive fourth-moment physical quadrature",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "stage": 5,
+      "action": "Implement total-preserving physical collision projection",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "stage": 6,
+      "action": "Run nine physical unit/control tests",
+      "status": "PASS_9_OF_9"
+    },
+    {
+      "stage": 7,
+      "action": "Run original 81920 saved rows",
+      "status": "PASS_SCOPED_NO_NATIVE_IVP"
+    },
+    {
+      "stage": 8,
+      "action": "Independent full-data replay and independent author-test rerun",
+      "status": "PASS_SCOPED"
+    },
+    {
+      "stage": 9,
+      "action": "Portable package replay and reviewed-byte checks",
+      "status": "PASS"
+    },
+    {
+      "stage": 10,
+      "action": "Freeze reviewed public subset and contracts",
+      "status": "READY_FOR_ISOLATED_DRAFT_PUSH"
+    }
+  ],
+  "drift_watchdog": {
+    "actual_science": "wrong tetrad/measure interpretation found and corrected; actual source P/in changed",
+    "central_abundance_delta": 0,
+    "plot_outputs": 0,
+    "new_native_IVP_runs": 0,
+    "remaining_mandatory_central_action": "named main-scenario abundance execution owned by REI; not a new REC atlas"
+  }
+}
