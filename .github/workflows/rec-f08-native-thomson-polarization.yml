@@ -1,0 +1,53 @@
+name: REC F08 original-native photon Thomson polarization source
+on:
+  push:
+    branches:
+      - research/rec-f08-native-thomson-polarization-20261115
+  pull_request:
+    paths:
+      - "research/rec_f08_native_thomson_polarization_20261115/**"
+      - ".github/workflows/rec-f08-native-thomson-polarization.yml"
+jobs:
+  source-native-thomson-science:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f08_native_thomson_polarization_20261115
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install independent angular source scientific checker
+        run: python -m pip install numpy==2.4.2
+      - name: Verify physical source, 81,920 Stokes and preserved C9 angular FAIL
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
+        run: |
+          python -m unittest discover -v -s research/rec_f08_native_thomson_polarization_20261115/tests -p test_source_native_thomson.py
+          python -O -m unittest discover -v -s research/rec_f08_native_thomson_polarization_20261115/tests -p test_source_native_thomson.py
+      - name: Recompute from frozen original Rust source ray capture
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
+        run: |
+          python research/rec_f08_native_thomson_polarization_20261115/compute_native_scatter.py --unit research/rec_f08_native_thomson_polarization_20261115 --out "$RUNNER_TEMP/collision"
+          python research/rec_f08_native_thomson_polarization_20261115/audit_thomson_stokes.py --unit research/rec_f08_native_thomson_polarization_20261115 --results "$RUNNER_TEMP/collision" --audit "$RUNNER_TEMP/audit.json"
+          python research/rec_f08_native_thomson_polarization_20261115/angular_quadrupole_systematics.py --unit research/rec_f08_native_thomson_polarization_20261115 --out "$RUNNER_TEMP/angular"
+          python - "$RUNNER_TEMP/angular/SYSTEMATIC_RESULT.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["predeclared_three_percent_method_gate"]=="FAIL"
+          assert len(d["method_gate_failed_observations"])==1
+          assert d["method_gate_failed_observations"][0]["step"]==142
+          print("REC F08 source physics replay, original 3 percent gate FAILED AND PRESERVED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rec199-original-F08-thomson-polarization
+          if-no-files-found: error
+          path: research/rec_f08_native_thomson_polarization_20261115/results/
