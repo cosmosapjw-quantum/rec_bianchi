@@ -1,0 +1,41 @@
+name: REC F08 persistent polarized collision physics
+on:
+  push:
+    branches:
+      - research/rec-f08-polarized-paired-evolution-20261116
+  pull_request:
+    paths:
+      - "research/rec_f08_polarized_paired_evolution_20261116/**"
+      - ".github/workflows/rec-f08-polarized-paired-evolution.yml"
+jobs:
+  collision-transport-science:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/rec_f08_native_thomson_polarization_20261115
+            research/rec_tetrad_thomson_repair_20261116
+            research/rec_f08_polarized_paired_evolution_20261116
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install recorded numerical environment
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Exact collision, source transport, and conditional receiver tests
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
+        working-directory: research/rec_f08_polarized_paired_evolution_20261116
+        run: |
+          python -m unittest -v test_collision test_transport test_receiver
+          python -O -m unittest -v test_collision test_transport test_receiver
+          python analyze_tick142.py --out "$RUNNER_TEMP/tick142.json"
+      - name: Preserve scope of CI evidence
+        run: |
+          echo "Kernel/transport tests and original tick142 FAIL verified."
+          echo "Full original Rust source replay requires the source-complete research backup."
+          echo "Native coupled evolution results are recorded separately; production remains HOLD."
