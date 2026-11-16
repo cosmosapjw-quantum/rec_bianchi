@@ -4,6 +4,10 @@
 
 Start with [REPORT_KO.md](REPORT_KO.md), [THEORY.md](THEORY.md), [results/RESULT.json](results/RESULT.json), and [REVIEW.md](REVIEW.md). This package is a child of REC PR200, which supplies the physical-tetrad moment rule.
 
+Published as [REC draft PR201](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/201). The frozen science snapshot is `a0a0b4bf750fc52c771ed4fe8de62ffb5f884055`; later publication metadata is recorded in [PUBLICATION_RECEIPT.json](PUBLICATION_RECEIPT.json). The new source-full archive is `REC201_ORIGINAL_F08_PERSISTENT_POLARIZED_PAIRED_SOURCE_FULL_20261116.zip`, SHA256 `25627d3ce02e50ee1ad6b911f948ff43b8f199ed96d65383046a1eafa25733be` (33,468,777 bytes, 86 payloads plus the manifest). Full Dropbox readback was byte exact. The extracted package passed 30 normal and 30 optimized tests and reproduced the historical tick142 FAIL. This packaging check did not rerun the new 960-trial native campaign. The original source ZIP, all five raw histories and execution witnesses are included.
+
+Science-head GitHub CI passed. Generic `verify_repo.py --quick` failed on historical committed-range whitespace: 212 affected files, zero new-unit failure records. The original gate and existing files were not changed. Exact run IDs and classification evidence are in [results/CI_SCIENCE_HEAD_RECEIPT.json](results/CI_SCIENCE_HEAD_RECEIPT.json). Read live HEAD and its workflow results before resuming with [NEXT_THREAD_HANDOFF.txt](NEXT_THREAD_HANDOFF.txt).
+
 ## Files
 
 | File | Role |

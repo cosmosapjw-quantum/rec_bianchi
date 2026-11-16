@@ -118,6 +118,10 @@ BI degree4의 누적 endpoint optical depth는 `2.049303471198702e-7`이다. `ta
 
 ## 재현 및 산출물
 
+게시 결과는 [REC draft PR201](https://github.com/cosmosapjw-quantum/rec_bianchi/pull/201)에 있다. 과학 snapshot `a0a0b4bf750fc52c771ed4fe8de62ffb5f884055`의 GitHub science CI는 성공했고, generic 검증은 기존 feature-range whitespace 때문에 실패했다. 실제 CI 로그의 212개 해당 파일 중 이번 unit의 failure record는 0이다. 기존 파일이나 검증 정책은 바꾸지 않았다.
+
+원본 소스와 전체 원자료를 포함한 새 ZIP은 33,468,777 bytes, 86 payloads + manifest이며 SHA256은 `25627d3ce02e50ee1ad6b911f948ff43b8f199ed96d65383046a1eafa25733be`다. Dropbox 전체 readback이 byte exact였고, 추출 사본에서 30 normal + 30 optimized tests 및 기존 tick142 FAIL 재현을 확인했다. 새 960-trial 전체 cold replay는 재실행하지 않았다. 자세한 상태와 해시·CI 근거는 `PUBLICATION_RECEIPT.json`, 다음 재개 계약은 `NEXT_THREAD_HANDOFF.txt`에 있다.
+
 `README.md`에 원 source-full ZIP, 빌드, exact commands, 다섯 case, 결과 생성 명령을 적었다. `results/RESULT.json`은 실제 과학 결과·source identity·고정 gates·raw file hashes를 담고 `WITNESS.csv`는 일부 시간 단면이다. 전체 spectral Stokes history, native endpoint witness, 실패 로그, 원 source archive는 source-complete backup에 보존한다. raw array를 새 public science claim으로 승격하지 않는다.
 
 문헌과 직접 유도는 `THEORY.md`에서 구분한다. 기본 polarized collision·screen tensor와 observer convention은 Pitrou, *CQG* 26 (2009) 065006, [arXiv:0809.3036](https://arxiv.org/abs/0809.3036), Challinor, *PRD* 62 (2000) 043004, [astro-ph/9911481](https://arxiv.org/abs/astro-ph/9911481)을 확인했다. 이 파일에 제시한 finite-quadrature closed semigroup와 normalized native adapter 식은 이번 작업의 직접 유도다.
