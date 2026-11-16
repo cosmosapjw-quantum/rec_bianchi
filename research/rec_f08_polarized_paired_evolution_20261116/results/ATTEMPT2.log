@@ -1,0 +1,12 @@
+{"case": "S0_BI_thomson_l4_160", "step": 1, "P_over_I": 4.2254442990497364e-17, "ledger": 2.9279319941938465e-16, "parity": 2.6618186146545866e-14}
+Traceback (most recent call last):
+  File "/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/research/rec_f08_polarized_paired_evolution_20261116/run_evolution.py", line 219, in <module>
+    main()
+  File "/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/research/rec_f08_polarized_paired_evolution_20261116/run_evolution.py", line 215, in main
+    summary = run_case(a.binary, a.out, a.geometry, a.steps, a.degree, not a.control)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/research/rec_f08_polarized_paired_evolution_20261116/run_evolution.py", line 133, in run_case
+    require(parity < 256 * np.finfo(float).eps, "Stokes/native accepted-half transport parity")
+  File "/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/research/rec_f08_polarized_paired_evolution_20261116/run_evolution.py", line 33, in require
+    raise ValueError(why)
+ValueError: Stokes/native accepted-half transport parity

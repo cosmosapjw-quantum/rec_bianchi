@@ -1,0 +1,728 @@
+{
+  "schema": "REC_F08_POLARIZED_INDEPENDENT_RAW_REVIEW_V1",
+  "review_date": "2026-11-16",
+  "reviewer": {
+    "agent": "/root/thomson_theory",
+    "distinct_from_producer": true,
+    "producer_modules_imported": false,
+    "source_kind": "actual raw arrays, original native witness JSON, trajectory CSV",
+    "remote_device": "edd1b263-56a0-4391-8a2a-677dd00eabf5",
+    "remote_base": "/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/results",
+    "remote_mutations": false
+  },
+  "execution": {
+    "successful_process_pid": 3793372,
+    "status": "EXIT_0",
+    "environment": {
+      "numpy": "2.4.2",
+      "python": "3.12.3"
+    },
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 - < embedded independent audit source",
+    "audit_attempts": [
+      {
+        "attempt": 1,
+        "status": "REVIEW_IMPLEMENTATION_SERIALIZATION_FAILURE",
+        "process_pid": 3792953,
+        "detail": "numpy bool scalar in output checks was not JSON serializable; no source/data mutation; no complete scientific review claimed."
+      },
+      {
+        "attempt": 2,
+        "status": "EXIT_0",
+        "process_pid": 3793372,
+        "correction": "Convert every check result to Python bool before JSON serialization; no scientific thresholds or audit formulas changed."
+      }
+    ]
+  },
+  "scope": {
+    "raw_macro_stages": 960,
+    "raw_spectral_stokes_rows": 2088960,
+    "selected_native_witness_macro_steps": 10,
+    "independently_replayed_accepted_half_endpoints": 20,
+    "independent_postcollision_comparisons": 10,
+    "full_IVP_rerun": false,
+    "controls": [
+      "same original BI source with sigma_T=0",
+      "same original isotropic FLRW source"
+    ],
+    "algebra_relative_thresholds": {
+      "inventories_and_energy_groups": 2.842170943040401e-14,
+      "cones_and_native_parity": 5.684341886080802e-14
+    },
+    "physical_method_comparison_threshold": 0.03
+  },
+  "status": "SCOPED_RAW_ARRAY_REVIEW_PASS",
+  "failures": [],
+  "cases": [
+    {
+      "H_per_s": [
+        1.01e-14,
+        9.9e-15,
+        1e-14
+      ],
+      "all_arrays_finite": true,
+      "all_steps_reported_parity_zero": true,
+      "case": "S0_BI_native_control_160",
+      "checks": {
+        "N_E_raw_inventory": true,
+        "clock_exact": true,
+        "cumulative_certificate_not_claimed": true,
+        "finite_raw_arrays": true,
+        "fixedhat_fail_preserved": true,
+        "guard_joint_coherency_order": true,
+        "guard_scalar_domain": true,
+        "nonnegative_intensity": true,
+        "same_endpoint_tau": true,
+        "shape": true,
+        "stokes_cones": true,
+        "witness_group_conservation": true,
+        "witness_native_transport_parity": true
+      },
+      "dt_s": 625000000,
+      "electron_density_max_relative": 0,
+      "final_forbidden_support_fraction": 0.4199203797502066,
+      "final_observables_independent": {
+        "absolute_circular_fraction": 0,
+        "integrated_linear_fraction": 0,
+        "number_quadrupole_norm": 5.492237837968319e-06,
+        "peak_linear_fraction": 0
+      },
+      "final_peak_fraction_report_delta": 0,
+      "final_time_s": 100000000000,
+      "guard_joint_max_positive_defect_scaled": 0,
+      "guard_scalar_domain_failures": 0,
+      "max_positive_stokes_cone_defect_scaled": 0,
+      "maximum_raw_QUV_absolute": 0,
+      "photon_N_max_relative": 3.244260374333669e-16,
+      "photon_U_max_relative": 3.720565721658495e-16,
+      "raw_file_hashes": {
+        "RESULT.json": {
+          "bytes": 2714,
+          "sha256": "aa431c0b68ba8f3c309da65640fd492e697aa4486cf8fabc07bbabba3f0b21dd"
+        },
+        "native_stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native_witness_0001.json": {
+          "bytes": 28074,
+          "sha256": "612eacd5197b770c1258db05ad7ca9491b6b94be911a4d1ec0c5bb12650eb91d"
+        },
+        "native_witness_0160.json": {
+          "bytes": 64342,
+          "sha256": "cd7631ad22d95b0c556ca10ddaec867849e0252cf4614dc76ecdc08d62f815c0"
+        },
+        "stokes_history.npz": {
+          "bytes": 747898,
+          "sha256": "745207c2df9d3e7566c9ece964e3d208b1c3740e3e8d119f9aa2dc4bba8350d3"
+        },
+        "trajectory.csv": {
+          "bytes": 81910,
+          "sha256": "de1b7833819509dbac83b9e4beed95fd07e9125d2950417017fae2f1fd299c95"
+        }
+      },
+      "selected_witnesses": [
+        {
+          "collision_group_number_relative": 7.936611520668862e-16,
+          "independent_full_Mueller_QU_l2_absolute": 0,
+          "independent_full_Mueller_QU_l2_relative": null,
+          "independent_full_Mueller_poststep_max_abs": 0,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 1
+        },
+        {
+          "collision_group_number_relative": 8.481061531189031e-16,
+          "independent_full_Mueller_QU_l2_absolute": 0,
+          "independent_full_Mueller_QU_l2_relative": null,
+          "independent_full_Mueller_poststep_max_abs": 0,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 160
+        }
+      ],
+      "shapes": {
+        "guard_n": [
+          160,
+          128,
+          4
+        ],
+        "guard_u": [
+          160,
+          128,
+          4
+        ],
+        "stokes": [
+          160,
+          17,
+          128,
+          4
+        ]
+      },
+      "steps": 160,
+      "tau_max": 0,
+      "tau_max_absolute_error": 0,
+      "tau_total_independent": 0,
+      "three_term_Poisson_tail_upper": 0,
+      "support_recomputed_from_NPZ": {
+        "case": "S0_BI_native_control_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41992037975020663,
+        "difference_from_CSV": 5.551115123125783e-17
+      }
+    },
+    {
+      "H_per_s": [
+        1.01e-14,
+        9.9e-15,
+        1e-14
+      ],
+      "all_arrays_finite": true,
+      "all_steps_reported_parity_zero": true,
+      "case": "S0_BI_thomson_l4_160",
+      "checks": {
+        "N_E_raw_inventory": true,
+        "clock_exact": true,
+        "cumulative_certificate_not_claimed": true,
+        "finite_raw_arrays": true,
+        "fixedhat_fail_preserved": true,
+        "guard_joint_coherency_order": true,
+        "guard_scalar_domain": true,
+        "nonnegative_intensity": true,
+        "same_endpoint_tau": true,
+        "shape": true,
+        "stokes_cones": true,
+        "witness_group_conservation": true,
+        "witness_native_transport_parity": true
+      },
+      "dt_s": 625000000,
+      "electron_density_max_relative": 0,
+      "final_forbidden_support_fraction": 0.4199203797503485,
+      "final_observables_independent": {
+        "absolute_circular_fraction": 0,
+        "integrated_linear_fraction": 3.5884283591969985e-13,
+        "number_quadrupole_norm": 5.492237324233906e-06,
+        "peak_linear_fraction": 5.335899157888835e-13
+      },
+      "final_peak_fraction_report_delta": 0,
+      "final_time_s": 100000000000,
+      "guard_joint_max_positive_defect_scaled": 0,
+      "guard_scalar_domain_failures": 0,
+      "max_positive_stokes_cone_defect_scaled": 0,
+      "maximum_raw_QUV_absolute": 1.763351844132258e-14,
+      "photon_N_max_relative": 3.27979396821817e-16,
+      "photon_U_max_relative": 3.8076125248535353e-16,
+      "raw_file_hashes": {
+        "RESULT.json": {
+          "bytes": 2924,
+          "sha256": "6ede670f05d0ef4725fe68083befd26e5df7060107159df36c654642a7bcc952"
+        },
+        "native_stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native_witness_0001.json": {
+          "bytes": 28074,
+          "sha256": "612eacd5197b770c1258db05ad7ca9491b6b94be911a4d1ec0c5bb12650eb91d"
+        },
+        "native_witness_0160.json": {
+          "bytes": 64871,
+          "sha256": "3631c3121e7423cc65f4d694f45dc246b55929daa2f0b0ce72c30bed9eb6ae11"
+        },
+        "stokes_history.npz": {
+          "bytes": 3592068,
+          "sha256": "cede794971f317ae945de4a95fcffd8253548c68079475aee996dc8b3931628f"
+        },
+        "trajectory.csv": {
+          "bytes": 105681,
+          "sha256": "a50ca7fe6d6eb6e0901f6a13d453d565414ef9f7f7e4dddd39d4f2cea59d1af3"
+        }
+      },
+      "selected_witnesses": [
+        {
+          "collision_group_number_relative": 7.936611520668862e-16,
+          "independent_full_Mueller_QU_l2_absolute": 2.072317768789724e-27,
+          "independent_full_Mueller_QU_l2_relative": 6.038282963469815e-11,
+          "independent_full_Mueller_poststep_max_abs": 3.4997883393608187e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 1
+        },
+        {
+          "collision_group_number_relative": 6.540538615618881e-16,
+          "independent_full_Mueller_QU_l2_absolute": 9.26799943733662e-28,
+          "independent_full_Mueller_QU_l2_relative": 5.150638775836478e-15,
+          "independent_full_Mueller_poststep_max_abs": 1.404172411293401e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "last_step_persisted_QU_contribution_fraction": 0.987525228988001,
+          "reported_native_parity_relative": 0,
+          "step": 160
+        }
+      ],
+      "shapes": {
+        "guard_n": [
+          160,
+          128,
+          4
+        ],
+        "guard_u": [
+          160,
+          128,
+          4
+        ],
+        "stokes": [
+          160,
+          17,
+          128,
+          4
+        ]
+      },
+      "steps": 160,
+      "tau_max": 1.284107474846307e-09,
+      "tau_max_absolute_error": 0,
+      "tau_total_independent": 2.049303471198702e-07,
+      "three_term_Poisson_tail_upper": 1.1329069862733017e-37,
+      "support_recomputed_from_NPZ": {
+        "case": "S0_BI_thomson_l4_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.4199203797503487,
+        "difference_from_CSV": 1.6653345369377348e-16
+      }
+    },
+    {
+      "H_per_s": [
+        1.01e-14,
+        9.9e-15,
+        1e-14
+      ],
+      "all_arrays_finite": true,
+      "all_steps_reported_parity_zero": true,
+      "case": "S0_BI_thomson_l6_160",
+      "checks": {
+        "N_E_raw_inventory": true,
+        "clock_exact": true,
+        "cumulative_certificate_not_claimed": true,
+        "finite_raw_arrays": true,
+        "fixedhat_fail_preserved": true,
+        "guard_joint_coherency_order": true,
+        "guard_scalar_domain": true,
+        "nonnegative_intensity": true,
+        "same_endpoint_tau": true,
+        "shape": true,
+        "stokes_cones": true,
+        "witness_group_conservation": true,
+        "witness_native_transport_parity": true
+      },
+      "dt_s": 625000000,
+      "electron_density_max_relative": 0,
+      "final_forbidden_support_fraction": 0.4199203797503485,
+      "final_observables_independent": {
+        "absolute_circular_fraction": 0,
+        "integrated_linear_fraction": 3.5884286286698006e-13,
+        "number_quadrupole_norm": 5.4922373242339285e-06,
+        "peak_linear_fraction": 5.335922701949413e-13
+      },
+      "final_peak_fraction_report_delta": 0,
+      "final_time_s": 100000000000,
+      "guard_joint_max_positive_defect_scaled": 0,
+      "guard_scalar_domain_failures": 0,
+      "max_positive_stokes_cone_defect_scaled": 0,
+      "maximum_raw_QUV_absolute": 1.7633645545567625e-14,
+      "photon_N_max_relative": 3.154342398740618e-16,
+      "photon_U_max_relative": 3.8076125248535353e-16,
+      "raw_file_hashes": {
+        "RESULT.json": {
+          "bytes": 2922,
+          "sha256": "fe89f7cd8bb2d691b1e078903d633a03eb6c37cf1722b9499794d935dceae1bb"
+        },
+        "native_stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native_witness_0001.json": {
+          "bytes": 28074,
+          "sha256": "612eacd5197b770c1258db05ad7ca9491b6b94be911a4d1ec0c5bb12650eb91d"
+        },
+        "native_witness_0160.json": {
+          "bytes": 64747,
+          "sha256": "de2c52863fc31285b006dba8f65decb85e71ecfebd4912ecbd9e072829a29bfd"
+        },
+        "stokes_history.npz": {
+          "bytes": 3677033,
+          "sha256": "33ec0fb009cce98b3908e9b747f5f1b0ca9f486d2d68f22c8c2b8c983dd049a9"
+        },
+        "trajectory.csv": {
+          "bytes": 105722,
+          "sha256": "9db95a70f3c7584a1e09a3d76538332901cb7300824aa9a747fde349f000a3dc"
+        }
+      },
+      "selected_witnesses": [
+        {
+          "collision_group_number_relative": 7.936611520668862e-16,
+          "independent_full_Mueller_QU_l2_absolute": 2.3424670155483787e-27,
+          "independent_full_Mueller_QU_l2_relative": 6.825439074432971e-11,
+          "independent_full_Mueller_poststep_max_abs": 3.4843693442260545e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 1
+        },
+        {
+          "collision_group_number_relative": 7.038865186699659e-16,
+          "independent_full_Mueller_QU_l2_absolute": 1.785027923303404e-27,
+          "independent_full_Mueller_QU_l2_relative": 9.920193078185587e-15,
+          "independent_full_Mueller_poststep_max_abs": 1.8459345182171676e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "last_step_persisted_QU_contribution_fraction": 0.9875252305698321,
+          "reported_native_parity_relative": 0,
+          "step": 160
+        }
+      ],
+      "shapes": {
+        "guard_n": [
+          160,
+          128,
+          4
+        ],
+        "guard_u": [
+          160,
+          128,
+          4
+        ],
+        "stokes": [
+          160,
+          17,
+          128,
+          4
+        ]
+      },
+      "steps": 160,
+      "tau_max": 1.284107474846307e-09,
+      "tau_max_absolute_error": 0,
+      "tau_total_independent": 2.049303471198702e-07,
+      "three_term_Poisson_tail_upper": 1.1329069862733017e-37,
+      "support_recomputed_from_NPZ": {
+        "case": "S0_BI_thomson_l6_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41992037975034857,
+        "difference_from_CSV": 5.551115123125783e-17
+      }
+    },
+    {
+      "H_per_s": [
+        1.01e-14,
+        9.9e-15,
+        1e-14
+      ],
+      "all_arrays_finite": true,
+      "all_steps_reported_parity_zero": true,
+      "case": "S0_BI_thomson_l4_320",
+      "checks": {
+        "N_E_raw_inventory": true,
+        "clock_exact": true,
+        "cumulative_certificate_not_claimed": true,
+        "finite_raw_arrays": true,
+        "fixedhat_fail_preserved": true,
+        "guard_joint_coherency_order": true,
+        "guard_scalar_domain": true,
+        "nonnegative_intensity": true,
+        "same_endpoint_tau": true,
+        "shape": true,
+        "stokes_cones": true,
+        "witness_group_conservation": true,
+        "witness_native_transport_parity": true
+      },
+      "dt_s": 312500000,
+      "electron_density_max_relative": 0,
+      "final_forbidden_support_fraction": 0.41978913410031254,
+      "final_observables_independent": {
+        "absolute_circular_fraction": 0,
+        "integrated_linear_fraction": 3.574000518548488e-13,
+        "number_quadrupole_norm": 5.488286605932834e-06,
+        "peak_linear_fraction": 5.314446457628724e-13
+      },
+      "final_peak_fraction_report_delta": 0,
+      "final_time_s": 100000000000,
+      "guard_joint_max_positive_defect_scaled": 0,
+      "guard_scalar_domain_failures": 0,
+      "max_positive_stokes_cone_defect_scaled": 0,
+      "maximum_raw_QUV_absolute": 1.7567246059619045e-14,
+      "photon_N_max_relative": 4.2162699418252194e-16,
+      "photon_U_max_relative": 3.647362529448767e-16,
+      "raw_file_hashes": {
+        "RESULT.json": {
+          "bytes": 2918,
+          "sha256": "c0f98e4dadb5536a7e6faebe8ac26408d7b28ac2e01bc186d85148ed0d89408e"
+        },
+        "native_stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native_witness_0001.json": {
+          "bytes": 27885,
+          "sha256": "b9141f500b5f0f71b6660eae5e64733b5980fd2d35c6be72e22761cd6a15cb56"
+        },
+        "native_witness_0320.json": {
+          "bytes": 64879,
+          "sha256": "e0f1adfd7bc37876929d394a22c972bdac377923e8605e366c3bf54cc0035d52"
+        },
+        "stokes_history.npz": {
+          "bytes": 7261242,
+          "sha256": "09b024faad7a470a42697625c316c7f3ec3e2f33751d18504cce1e4db24deab0"
+        },
+        "trajectory.csv": {
+          "bytes": 210364,
+          "sha256": "ef2d1dcc90bb7b2e9daeff5cb263d69811b7563db35b11c75f4a77a704f96d7d"
+        }
+      },
+      "selected_witnesses": [
+        {
+          "collision_group_number_relative": 6.954626042474904e-16,
+          "independent_full_Mueller_QU_l2_absolute": 5.746921776826007e-28,
+          "independent_full_Mueller_QU_l2_relative": 6.685758266893468e-11,
+          "independent_full_Mueller_poststep_max_abs": 8.753939005873025e-29,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 1
+        },
+        {
+          "collision_group_number_relative": 7.710771748761923e-16,
+          "independent_full_Mueller_QU_l2_absolute": 6.635806793088764e-28,
+          "independent_full_Mueller_QU_l2_relative": 3.702167954654361e-15,
+          "independent_full_Mueller_poststep_max_abs": 1.0570736129961558e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "last_step_persisted_QU_contribution_fraction": 0.993743096453198,
+          "reported_native_parity_relative": 0,
+          "step": 320
+        }
+      ],
+      "shapes": {
+        "guard_n": [
+          320,
+          128,
+          4
+        ],
+        "guard_u": [
+          320,
+          128,
+          4
+        ],
+        "stokes": [
+          320,
+          17,
+          128,
+          4
+        ]
+      },
+      "steps": 320,
+      "tau_max": 6.420546547083979e-10,
+      "tau_max_absolute_error": 0,
+      "tau_total_independent": 2.04928739831335e-07,
+      "three_term_Poisson_tail_upper": 7.080709123607106e-39,
+      "support_recomputed_from_NPZ": {
+        "case": "S0_BI_thomson_l4_320",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41978913410031254,
+        "difference_from_CSV": 0
+      }
+    },
+    {
+      "H_per_s": [
+        1e-14,
+        1e-14,
+        1e-14
+      ],
+      "all_arrays_finite": true,
+      "all_steps_reported_parity_zero": true,
+      "case": "S0_FLRW_thomson_l4_160",
+      "checks": {
+        "N_E_raw_inventory": true,
+        "clock_exact": true,
+        "cumulative_certificate_not_claimed": true,
+        "finite_raw_arrays": true,
+        "fixedhat_fail_preserved": true,
+        "guard_joint_coherency_order": true,
+        "guard_scalar_domain": true,
+        "nonnegative_intensity": true,
+        "same_endpoint_tau": true,
+        "shape": true,
+        "stokes_cones": true,
+        "witness_group_conservation": true,
+        "witness_native_transport_parity": true
+      },
+      "dt_s": 625000000,
+      "electron_density_max_relative": 0,
+      "final_forbidden_support_fraction": 0.4199226855533565,
+      "final_observables_independent": {
+        "absolute_circular_fraction": 0,
+        "integrated_linear_fraction": 3.758492202008377e-23,
+        "number_quadrupole_norm": 6.42751878853843e-16,
+        "peak_linear_fraction": 7.374611003217392e-23
+      },
+      "final_peak_fraction_report_delta": 0,
+      "final_time_s": 100000000000,
+      "guard_joint_max_positive_defect_scaled": 0,
+      "guard_scalar_domain_failures": 0,
+      "max_positive_stokes_cone_defect_scaled": 0,
+      "maximum_raw_QUV_absolute": 4.062507069016843e-25,
+      "photon_N_max_relative": 3.1767480484784255e-16,
+      "photon_U_max_relative": 3.5856352830530004e-16,
+      "raw_file_hashes": {
+        "RESULT.json": {
+          "bytes": 2891,
+          "sha256": "77b3ae14a5dc8450993f8b6f7c893144ec5904b946e380d3ff46c75770857a3f"
+        },
+        "native_stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "native_witness_0001.json": {
+          "bytes": 28003,
+          "sha256": "c198c8a539579fc6891432b16392a4b1a2c79acf4c15dc65a3c181ea3df297d8"
+        },
+        "native_witness_0160.json": {
+          "bytes": 64806,
+          "sha256": "4fbb12c30f7bf5ec542eaf9f344041601c737d2017de309ddcb1a86698efb8b4"
+        },
+        "stokes_history.npz": {
+          "bytes": 5382965,
+          "sha256": "7a03fc20e6a47337365ff9c6cddf8f724986fb434683493a981c4331a57a19c3"
+        },
+        "trajectory.csv": {
+          "bytes": 102906,
+          "sha256": "28723dd00bfe00cac6bfed84db19247e5fa7b651150acf2c86b94e6168224bae"
+        }
+      },
+      "selected_witnesses": [
+        {
+          "collision_group_number_relative": 1.2698577848676436e-15,
+          "independent_full_Mueller_QU_l2_absolute": 1.2493951940366065e-27,
+          "independent_full_Mueller_QU_l2_relative": 0.03487705502475656,
+          "independent_full_Mueller_poststep_max_abs": 2.972183140805012e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 1
+        },
+        {
+          "collision_group_number_relative": 1.1308127112095228e-15,
+          "independent_full_Mueller_QU_l2_absolute": 8.84627707597516e-28,
+          "independent_full_Mueller_QU_l2_relative": 0.00019793503318206207,
+          "independent_full_Mueller_poststep_max_abs": 1.6213596525420213e-28,
+          "independent_native_halfstep_I_parity_relative": 0,
+          "reported_native_parity_relative": 0,
+          "step": 160
+        }
+      ],
+      "shapes": {
+        "guard_n": [
+          160,
+          128,
+          4
+        ],
+        "guard_u": [
+          160,
+          128,
+          4
+        ],
+        "stokes": [
+          160,
+          17,
+          128,
+          4
+        ]
+      },
+      "steps": 160,
+      "tau_max": 1.2841074754081039e-09,
+      "tau_max_absolute_error": 0,
+      "tau_total_independent": 2.0493034713682934e-07,
+      "three_term_Poisson_tail_upper": 1.1329069882558887e-37,
+      "support_recomputed_from_NPZ": {
+        "case": "S0_FLRW_thomson_l4_160",
+        "floor_eV": 13.686306847717237,
+        "forbidden_support_fraction_from_NPZ": 0.4199226855533565,
+        "difference_from_CSV": 0
+      }
+    }
+  ],
+  "comparisons": {
+    "angular_l4_vs_l6": {
+      "gas_xHII_xHeII_xHeIII_T_absolute_difference": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "physical_sky_QU_l2_relative": 2.008959200405911e-05,
+      "raw_spectral_QU_l2_relative": 4.453288116013549e-05,
+      "reference": "S0_BI_thomson_l4_160",
+      "threshold_0p03_pass": true
+    },
+    "temporal_160_vs_320": {
+      "gas_xHII_xHeII_xHeIII_T_absolute_difference": [
+        1.4761871852675412e-06,
+        4.6521780872055274e-10,
+        3.251987568120285e-11,
+        0.03633134275878547
+      ],
+      "physical_sky_QU_l2_relative": 0.004054309946397159,
+      "raw_spectral_QU_l2_relative": 0.0038994737733736335,
+      "reference": "S0_BI_thomson_l4_160",
+      "threshold_0p03_pass": true
+    }
+  },
+  "preserved_limits": {
+    "original_angular_gate": {
+      "model": "S0_BI_ORIGINAL_HAT",
+      "step": 142,
+      "observable": "PHOTON_NUMBER_QUADRUPOLE",
+      "relative_method_disagreement": 0.04152277708926094,
+      "threshold": 0.03,
+      "status": "FAIL_RETAINED"
+    },
+    "fixed_hat_support": "FAIL_RETAINED; raw native/control and collision histories have about 41.99% of final inventory below the characteristic support floor",
+    "angular_comparison_scope": "Same original q128 rays with degree4/degree6 physical quadrature estimators; not angular-resolution convergence",
+    "temporal_comparison_scope": "Same final proper time 1e11 s at 160/320 steps; one difference estimate does not establish asymptotic order or continuum convergence",
+    "closure": "CONDITIONAL_NONLINEAR_PER_PHYSICAL_ENERGY_NORMALIZED_COLLOCATION",
+    "interval": "Photon/guard point reinitialization discards interval widths; no cumulative coupled interval certificate",
+    "guard": "N and U moment coherencies and the necessary 10N-U PSD order passed; no energy-resolved polarized guard spectrum reconstructed",
+    "null_field": "FLRW is assessed by absolute numerical null amplitudes. The independent first-step QU relative difference 0.0348770550 is retained as a roundoff-null diagnostic, not recast as a passed 3% signal comparison.",
+    "owner_admission": "NOT_ASSERTED",
+    "canonical_DAG_delta": 0,
+    "production": "HOLD"
+  },
+  "independent_audit_python_source": "from pathlib import Path\nimport csv, hashlib, json, math, platform\nimport numpy as np\n\nBASE=Path('/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/results')\nCASES=['S0_BI_native_control_160','S0_BI_thomson_l4_160','S0_BI_thomson_l6_160','S0_BI_thomson_l4_320','S0_FLRW_thomson_l4_160']\nEPS=np.finfo(float).eps\nCC=29979245800.0\nSIGMA=6.6524587051e-25\n\ndef scalar_g(q,H,t):\n    result=[]\n    for ray in q:\n        x=0.0\n        for a in range(3):\n            qi=float(ray[a]);x+=(qi*qi)*math.exp((-2.0*float(H[a]))*float(t))\n        result.append(math.sqrt(x))\n    return np.asarray(result)\n\ndef geom(q,H,t):\n    A=np.exp(-H*t);g=np.linalg.norm(q*A,axis=1)\n    return q*A/g[:,None], np.prod(A)/g**3\n\ndef moment_weights(q,n,J,degree):\n    z=q[:,2]\n    b=(68083/61440-64517/47520*z*z+2641/1485*z**4)/128*J\n    b/=b.sum()\n    powers=[(a,b,degree-a-b) for a in range(degree+1) for b in range(degree-a+1)]\n    def oddfac(k):\n        x=1.0\n        for j in range(k,0,-2):x*=j\n        return x\n    X=np.array([np.prod(n**np.array(p),axis=1) for p in powers])\n    target=np.array([0.0 if any(k%2 for k in p) else math.prod(oddfac(k-1) for k in p)/oddfac(degree+1) for p in powers])\n    # Independent SVD solution of the published moment constraints.\n    w=b+X.T@np.linalg.lstsq(X@X.T,target-X@b,rcond=None)[0]\n    if w.min()<=0 or np.max(abs(X@w-target))>8e-15:\n        raise RuntimeError('independent physical quadrature failed')\n    return w\n\ndef screen_phase(q,H,t0,t1):\n    x,w=np.polynomial.legendre.leggauss(8)\n    ans=np.zeros(128);half=(t1-t0)/2;mid=(t1+t0)/2\n    for xx,ww in zip(x,w):\n        n,_=geom(q,H,mid+half*xx)\n        ans+=half*ww*n[:,2]*(H[0]-H[1])*n[:,0]*n[:,1]/(n[:,0]**2+n[:,1]**2)\n    return ans\n\ndef rotate(s,omega):\n    o=s.copy();c=np.cos(2*omega);v=np.sin(2*omega)\n    o[...,1]=c*s[...,1]+v*s[...,2]\n    o[...,2]=c*s[...,2]-v*s[...,1]\n    return o\n\ndef hat(e,en,k):\n    if e<en[0] or e>en[-1]:return 0.0\n    if e==en[k]:return 1.0\n    if k>0 and en[k-1]<e<en[k]:return (e-en[k-1])/(en[k]-en[k-1])\n    if k+1<len(en) and en[k]<e<en[k+1]:return (en[k+1]-e)/(en[k+1]-en[k])\n    return 0.0\n\ndef half_endpoint(s,gn,gu,q,H,en,audit):\n    t=float(audit['time_s']);dt=float(audit['dt_s']);g0=scalar_g(q,H,t-dt);g1=scalar_g(q,H,t)\n    r=g1/g0;om=screen_phase(q,H,t-dt,t)\n    old=rotate(s,om);out=np.zeros_like(old);newn=rotate(gn,om);newu=rotate(gu,om)*r[:,None]\n    # Full all-hat iteration, distinct from producer's bracketing shortcut.\n    for i in range(128):\n        for j in range(17):\n            e=en[j]*r[i]\n            if e<10:\n                newn[i]+=old[j,i];newu[i]+=e*old[j,i]\n            else:\n                for k in range(17):\n                    a=hat(e,en,k)\n                    if a:out[k,i]+=old[j,i]*a\n    vol=math.exp(-((float(H[0])+float(H[1]))+float(H[2]))*t)\n    jac=[vol/((float(g)*float(g))*float(g)) for g in g1]\n    norm=0.0\n    for j in jac:norm+=j\n    for i in range(128):out[12,i,0]+=float(audit['source_n'])*(jac[i]/norm)\n    for k,f in zip(audit['group_indices'],audit['point_factors']):out[k]*=f\n    return out,newn,newu\n\ndef independent_collision(s,gn,gu,q,H,t,tau,degree):\n    if tau==0:return s.copy(),gn.copy(),gu.copy()\n    n,J=geom(q,H,t);w=moment_weights(q,n,J,degree);A=w/J\n    ep=np.column_stack((-n[:,1],n[:,0],np.zeros(128)));ep/=np.linalg.norm(ep,axis=1)[:,None]\n    et=np.cross(ep,n);e=np.stack((et,ep),axis=-1)\n    jones=np.einsum('ika,jkb->ijab',e,e)\n    a,b,c,d=(jones[:,:,0,0],jones[:,:,0,1],jones[:,:,1,0],jones[:,:,1,1])\n    K=np.zeros((128,128,4,4))\n    K[:,:,0,0]=(a*a+b*b+c*c+d*d)/2\n    K[:,:,0,1]=(a*a-b*b+c*c-d*d)/2\n    K[:,:,0,2]=a*b+c*d\n    K[:,:,1,0]=(a*a+b*b-c*c-d*d)/2\n    K[:,:,1,1]=(a*a-b*b-c*c+d*d)/2\n    K[:,:,1,2]=a*b-c*d\n    K[:,:,2,0]=a*c+b*d\n    K[:,:,2,1]=a*c-b*d\n    K[:,:,2,2]=a*d+b*c\n    K[:,:,3,3]=a*d-b*c\n    K*=1.5*w[:,None,None,None]\n    raw=np.concatenate((s,gn[None],gu[None]),axis=0)\n    phys=raw*A[None,:,None]\n    term=phys.copy();gain=np.zeros_like(phys);coefficient=1.0\n    for k in range(1,4):\n        term=np.einsum('ijab,gjb->gia',K,term,optimize=True)\n        coefficient*=tau/k;gain+=coefficient*term\n    # All source tau are tiny; omitted Poisson tail is explicitly bounded below.\n    delta=(math.expm1(-tau)*phys+math.exp(-tau)*gain)/A[None,:,None]\n    totals=raw[...,0].sum(axis=1);r=np.divide(delta[...,0].sum(axis=1),totals,out=np.zeros_like(totals),where=totals>0)\n    out=raw+(delta-r[:,None,None]*raw)/(1+r[:,None,None])\n    return out[:-2],out[-2],out[-1]\n\ndef defect(s):\n    return np.linalg.norm(s[...,1:],axis=-1)-s[...,0]\n\ndef observer(s,gn,q,H,t):\n    n,J=geom(q,H,t);w=moment_weights(q,n,J,4)\n    all_s=np.concatenate((s,gn[None]),axis=0)\n    trial=all_s*(w/J)[None,:,None]\n    old=all_s[...,0].sum(axis=1);den=trial[...,0].sum(axis=1)\n    fac=np.divide(old,den,out=np.zeros_like(old),where=den>0)\n    sky=np.sum(trial*fac[:,None,None],axis=0)\n    N=float(sky[:,0].sum());P=np.hypot(sky[:,1],sky[:,2])\n    tensor=np.einsum('i,ia,ib->ab',sky[:,0],n,n)/N-np.eye(3)/3\n    return {'peak_linear_fraction':float(np.max(P/sky[:,0])),\n            'integrated_linear_fraction':float(P.sum()/N),\n            'absolute_circular_fraction':float(abs(sky[:,3]).sum()/N),\n            'number_quadrupole_norm':float(np.linalg.norm(tensor))},sky\n\nrecords=[];memory={};failures=[]\nfor name in CASES:\n    path=BASE/name;z=np.load(path/'stokes_history.npz',allow_pickle=False)\n    s=z['stokes'];gn=z['guard_n'];gu=z['guard_u'];q=z['q'];H=z['H'];en=z['nodes'];dt=float(z['dt'])\n    num=len(s);rows=list(csv.DictReader((path/'trajectory.csv').open()));reported=json.loads((path/'RESULT.json').read_text())\n    col=lambda key:np.array([float(x[key]) for x in rows])\n    times=col('time_s');physical_steps=np.arange(1,num+1,dtype=float)*dt\n    finite=all(np.isfinite(a).all() for a in (s,gn,gu,q,H,en))\n    N=s[...,0].sum(axis=(1,2))+gn[...,0].sum(axis=1)\n    U=(s[...,0]*en[None,:,None]).sum(axis=(1,2))+gu[...,0].sum(axis=1)\n    nerr=np.max(abs(N-col('N_photons_per_H'))/col('N_photons_per_H'))\n    uerr=np.max(abs(U-col('U_photons_eV_per_H'))/col('U_photons_eV_per_H'))\n    nh=1e-4*np.exp(-float(H.sum())*times)\n    ne=nh*(col('xHII')+.083*(col('xHeII')+2*col('xHeIII')))\n    sigma_on=0.0 if 'native_control' in name else 1.0\n    tau=sigma_on*CC*SIGMA*ne*dt\n    tau_error=np.max(abs(tau-col('tau')))\n    ne_error=np.max(abs(ne-col('n_e_cm3'))/ne)\n    pdef=max(float(np.max(defect(a))) for a in (s,gn,gu))\n    global_scale=max(float(np.max(a[...,0])) for a in (s,gn,gu))\n    joint=10*gn-gu;joint_def=float(np.max(defect(joint)))\n    joint_scale=max(float(np.max(joint[...,0])),np.finfo(float).tiny)\n    scalar_guard_bad=int(np.count_nonzero((gn[...,0]>0)&(gu[...,0]>=10*gn[...,0]))+np.count_nonzero((gn[...,0]==0)&(gu[...,0]!=0)))\n    obs,sky=observer(s[-1],gn[-1],q,H,times[-1])\n    witness_reviews=[]\n    degree=int(rows[-1]['degree'])\n    for k in (1,num):\n        witness=json.loads((path/f'native_witness_{k:04d}.json').read_text())\n        if k==1:\n            before=np.zeros((17,128,4));before[12,:,0]=.05/128\n            bn=np.zeros((128,4));bu=np.zeros((128,4))\n        else:before=s[k-2].copy();bn=gn[k-2].copy();bu=gu[k-2].copy()\n        pre,pn,pu=before,bn,bu\n        for a in witness['audits'][1:]:pre,pn,pu=half_endpoint(pre,pn,pu,q,H,en,a)\n        native=np.array(witness['photons']).reshape(128,17).T\n        pN=np.array(witness['lower_guard_n']);pU=np.array(witness['lower_guard_u'])\n        parity=max(float(abs(pre[...,0]-native).sum()),float(abs(pn[:,0]-pN).sum()),float(abs(pu[:,0]-pU).sum())/13.7)/float(witness['photon_N'])\n        before_groups=native.sum(axis=1);after_groups=s[k-1,...,0].sum(axis=1)\n        group_error=float(np.max(np.divide(abs(after_groups-before_groups),before_groups,out=np.zeros_like(before_groups),where=before_groups>0)))\n        # Match native authoritative I before independently evolving all Stokes.\n        pre[...,0]=native;pn[:,0]=pN;pu[:,0]=pU\n        predicted,prn,pru=independent_collision(pre,pn,pu,q,H,times[k-1],tau[k-1],degree)\n        qu_signal=float(np.linalg.norm(s[k-1,...,1:3]))\n        qu_error=float(np.linalg.norm(predicted[...,1:3]-s[k-1,...,1:3]))\n        absolute=float(np.max(abs(predicted-s[k-1])))\n        entry={'step':k,'independent_native_halfstep_I_parity_relative':parity,\n               'collision_group_number_relative':group_error,\n               'independent_full_Mueller_poststep_max_abs':absolute,\n               'independent_full_Mueller_QU_l2_absolute':qu_error,\n               'independent_full_Mueller_QU_l2_relative':qu_error/qu_signal if qu_signal>0 else None,\n               'reported_native_parity_relative':float(rows[k-1]['native_transport_parity_relative'])}\n        if k==num and qu_signal>0 and sigma_on and 'BI_' in name:\n            zero=before.copy();zn=bn.copy();zu=bu.copy()\n            zero[...,1:]=0;zn[...,1:]=0;zu[...,1:]=0\n            for a in witness['audits'][1:]:zero,zn,zu=half_endpoint(zero,zn,zu,q,H,en,a)\n            zero[...,0]=native;zn[:,0]=pN;zu[:,0]=pU\n            no_memory,_,_=independent_collision(zero,zn,zu,q,H,times[k-1],tau[k-1],degree)\n            entry['last_step_persisted_QU_contribution_fraction']=float(np.linalg.norm(predicted[...,1:3]-no_memory[...,1:3])/qu_signal)\n        witness_reviews.append(entry)\n    hashes={}\n    for f in sorted(path.iterdir()):\n        if f.is_file():hashes[f.name]={'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'bytes':f.stat().st_size}\n    checks={'finite_raw_arrays':finite,'shape':s.shape==(num,17,128,4) and gn.shape==(num,128,4) and gu.shape==(num,128,4),\n            'clock_exact':bool(np.array_equal(times,physical_steps) and np.all(col('dt_s')==dt)),\n            'same_endpoint_tau':bool(tau_error<32*EPS*max(float(np.max(tau)),1e-300)),\n            'N_E_raw_inventory':bool(nerr<=128*EPS and uerr<=128*EPS),\n            'nonnegative_intensity':min(float(np.min(a[...,0])) for a in (s,gn,gu))>=0,\n            'stokes_cones':pdef<=256*EPS*global_scale,\n            'guard_scalar_domain':scalar_guard_bad==0,\n            'guard_joint_coherency_order':joint_def<=256*EPS*joint_scale,\n            'witness_group_conservation':all(x['collision_group_number_relative']<=128*EPS for x in witness_reviews),\n            'witness_native_transport_parity':all(x['independent_native_halfstep_I_parity_relative']<=256*EPS for x in witness_reviews),\n            'cumulative_certificate_not_claimed':reported['cumulative_interval_certificate']=='NOT_CLAIMED_PHOTON_POINT_REINITIALIZATION',\n            'fixedhat_fail_preserved':reported['fixed_hat_support_status']=='FAIL_RETAINED'}\n    checks={label:bool(ok) for label,ok in checks.items()}\n    for label,ok in checks.items():\n        if not ok:failures.append(name+':'+label)\n    record={'case':name,'steps':num,'dt_s':dt,'final_time_s':float(times[-1]),'H_per_s':H.tolist(),\n            'shapes':{'stokes':list(s.shape),'guard_n':list(gn.shape),'guard_u':list(gu.shape)},\n            'all_arrays_finite':finite,'photon_N_max_relative':float(nerr),'photon_U_max_relative':float(uerr),\n            'electron_density_max_relative':float(ne_error),'tau_max_absolute_error':float(tau_error),\n            'tau_total_independent':float(np.sum(tau)),'tau_max':float(np.max(tau)),\n            'three_term_Poisson_tail_upper':float(math.exp(float(np.max(tau)))*float(np.max(tau))**4/24),\n            'max_positive_stokes_cone_defect_scaled':max(0,pdef)/global_scale,\n            'guard_joint_max_positive_defect_scaled':max(0,joint_def)/joint_scale,\n            'guard_scalar_domain_failures':scalar_guard_bad,\n            'maximum_raw_QUV_absolute':float(max(np.max(abs(a[...,1:])) for a in (s,gn,gu))),\n            'all_steps_reported_parity_zero':bool(np.all(col('native_transport_parity_relative')==0)),\n            'final_observables_independent':obs,\n            'final_peak_fraction_report_delta':float(obs['peak_linear_fraction']-reported['final']['physical_peak_linear_fraction']),\n            'final_forbidden_support_fraction':float(rows[-1]['forbidden_support_fraction']),\n            'selected_witnesses':witness_reviews,'checks':checks,'raw_file_hashes':hashes}\n    records.append(record);memory[name]={'stokes':s[-1].copy(),'sky':sky,'guard_n':gn[-1].copy(),'final_gas':np.array([float(rows[-1][k]) for k in ('xHII','xHeII','xHeIII','T_K')])}\n    print('CASE_REVIEW '+json.dumps(record,sort_keys=True,allow_nan=False),flush=True)\nref=memory['S0_BI_thomson_l4_160']\ncomp={}\nfor label,other in [('angular_l4_vs_l6','S0_BI_thomson_l6_160'),('temporal_160_vs_320','S0_BI_thomson_l4_320')]:\n    other=memory[other]\n    raw=ref['stokes'][...,1:3];test=other['stokes'][...,1:3]\n    sky0=ref['sky'][:,1:3];sky1=other['sky'][:,1:3]\n    comp[label]={'reference':'S0_BI_thomson_l4_160','raw_spectral_QU_l2_relative':float(np.linalg.norm(raw-test)/np.linalg.norm(raw)),\n                 'physical_sky_QU_l2_relative':float(np.linalg.norm(sky0-sky1)/np.linalg.norm(sky0)),\n                 'gas_xHII_xHeII_xHeIII_T_absolute_difference':abs(ref['final_gas']-other['final_gas']).tolist(),\n                 'threshold_0p03_pass':bool(np.linalg.norm(sky0-sky1)/np.linalg.norm(sky0)<=.03)}\nsummary={'status':'SCOPED_RAW_ARRAY_REVIEW_PASS' if not failures else 'REVIEW_FINDINGS',\n         'failures':failures,'comparisons':comp,'runtime':{'python':platform.python_version(),'numpy':np.__version__},\n         'independence':'Separate theory-review agent; no producer modules imported; raw arrays/CSV plus explicit Mueller Poisson evolution, full-hat native replay and GL8 screen integration.',\n         'owner_admission':'NOT_ASSERTED','canonical_DAG_delta':0}\nprint('FINAL_REVIEW '+json.dumps(summary,sort_keys=True,allow_nan=False),flush=True)\n",
+  "supplemental_support_audit": {
+    "values": [
+      {
+        "case": "S0_BI_native_control_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41992037975020663,
+        "difference_from_CSV": 5.551115123125783e-17
+      },
+      {
+        "case": "S0_BI_thomson_l4_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.4199203797503487,
+        "difference_from_CSV": 1.6653345369377348e-16
+      },
+      {
+        "case": "S0_BI_thomson_l4_320",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41978913410031254,
+        "difference_from_CSV": 0
+      },
+      {
+        "case": "S0_BI_thomson_l6_160",
+        "floor_eV": 13.686169985333072,
+        "forbidden_support_fraction_from_NPZ": 0.41992037975034857,
+        "difference_from_CSV": 5.551115123125783e-17
+      },
+      {
+        "case": "S0_FLRW_thomson_l4_160",
+        "floor_eV": 13.686306847717237,
+        "forbidden_support_fraction_from_NPZ": 0.4199226855533565,
+        "difference_from_CSV": 0
+      }
+    ],
+    "source": "from pathlib import Path\nimport numpy as np,csv,json,math\nbase=Path('/home/cosmosapjw/research_runs/rec_f08_polarized_paired_evolution_20261116/results')\nfor p in sorted(base.iterdir()):\n if not p.is_dir():continue\n z=np.load(p/'stokes_history.npz',allow_pickle=False);s=z['stokes'][-1];gn=z['guard_n'][-1]\n H=z['H'];en=z['nodes'];t=len(z['stokes'])*float(z['dt'])\n floor=13.7*math.exp(-float(H.max())*t)\n N=float(s[...,0].sum()+gn[:,0].sum())\n forbidden=float(s[en<floor,:,0].sum()+gn[:,0].sum())/N\n row=list(csv.DictReader((p/'trajectory.csv').open()))[-1]\n print(json.dumps({'case':p.name,'floor_eV':floor,'forbidden_support_fraction_from_NPZ':forbidden,'difference_from_CSV':forbidden-float(row['forbidden_support_fraction'])}))\n",
+    "process_pid": 3801622
+  }
+}
