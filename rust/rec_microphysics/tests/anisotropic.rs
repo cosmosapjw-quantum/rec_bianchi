@@ -147,3 +147,17 @@ fn contracting_or_invalid_directions_fail_closed() {
     let short = DirectionalSky { weights: &w[1..], temperature_k: &t, expansion_factor: &f };
     assert_eq!(short.validate(), Err(AnisotropyError::Shape));
 }
+
+#[test]
+fn thin_sobolev_escape_rate_factor_has_no_cancellation() {
+    let (dirs, w) = sphere(16, 32);
+    let f = rate_factors(&dirs);
+    let t = vec![3000.0; dirs.len()];
+    let sky = DirectionalSky { weights: &w, temperature_k: &t, expansion_factor: &f };
+    for tau0 in [1e-12, 1e-8, 1e-4, 0.5] {
+        let factor = escape_rate_factor(tau0, &sky).unwrap();
+        let expected = tau0 * sobolev_escape_average(tau0, &sky).unwrap();
+        assert!(factor > 0.0 && factor < tau0);
+        assert!(((factor - expected) / expected).abs() < 1e-14, "tau0={tau0}: {factor} vs {expected}");
+    }
+}

@@ -1,10 +1,10 @@
 //! Direction-resolved inputs of the one-temperature effective-atom source on a
 //! homogeneous anisotropic background (BASS R110 THEORY D8).
 //!
-//! The radiation field is supplied as positively weighted directions, each with
-//! its own Planck temperature T(e) (exact for free streaming from isotropic
-//! Planck data; bolometric effective otherwise), and the velocity-gradient
-//! factor f(e) = 1 + Sigma:ee of the expansion tensor K = H(I + Sigma).
+//! The radiation field is supplied as positively weighted directions in the
+//! baryon (atom) rest frame, each with its own Planck temperature T(e) (exact for
+//! free streaming from isotropic Planck data; bolometric effective otherwise),
+//! and the velocity-gradient factor f(e) = 1 + Sigma:ee of K = H(I + Sigma).
 //!
 //! * Lyman-alpha Sobolev escape: tau(e) = tau0 / f(e) and the direction average
 //!   P = <(1 - e^-tau)/tau> = <f>/tau0 - <e^-tau/tau>. For a trace-free Sigma
@@ -97,12 +97,16 @@ pub fn sobolev_escape_average(tau0: f64, sky: &DirectionalSky) -> Result<f64, An
     Ok(sum / sky.total_weight())
 }
 
-/// tau0 times the escape average, evaluated as <f> - tau0 <e^-tau/tau> to keep
-/// the exponentially small optically thick correction exact.
+/// tau0 times the escape average, evaluated as <f> - tau0 <e^-tau/tau> for
+/// tau0 >= 1 to keep the exponentially small optically thick correction exact,
+/// and as tau0 * sobolev_escape_average for tau0 < 1 to avoid thin-limit cancellation.
 pub fn escape_rate_factor(tau0: f64, sky: &DirectionalSky) -> Result<f64, AnisotropyError> {
     sky.validate()?;
     if !tau0.is_finite() || tau0 <= 0.0 {
         return Err(AnisotropyError::Domain);
+    }
+    if tau0 < 1.0 {
+        return Ok(tau0 * sobolev_escape_average(tau0, sky)?);
     }
     let total = sky.total_weight();
     let mut mean_f = 0.0;
