@@ -3,6 +3,7 @@ pub mod coverage;
 pub mod frame;
 pub mod he_singlet;
 pub mod ledger;
+pub mod matched_history;
 pub mod screen;
 
 pub mod hydrogen_peebles;
