@@ -26,6 +26,15 @@ fn quadrupole_sky(amplitude: f64) -> (Vec<f64>, Vec<f64>, Vec<f64>) {
 
 #[test]
 fn flrw_identity_holds_for_every_step_size() {
+    let iso_sky = DirectionalSky {
+        weights: &[1.0],
+        temperature_k: &[T_K],
+        expansion_factor: &[1.0],
+    };
+    assert_eq!(
+        isotropic_peebles_rate(T_K, N_H, H_S, 0.20).unwrap(),
+        anisotropic_peebles_rate(&iso_sky, N_H, H_S, 0.20, Some(T_K)).unwrap()
+    );
     let x_ref_prev = 0.20;
     let x_ref_next = 0.18;
     let r_ref = isotropic_peebles_rate(T_K, N_H, H_S, x_ref_next).unwrap();

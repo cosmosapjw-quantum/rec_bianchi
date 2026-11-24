@@ -64,7 +64,7 @@ pub fn isotropic_peebles_rate(
         temperature_k: &[temperature_k],
         expansion_factor: &[1.0],
     };
-    anisotropic_peebles_rate(&sky, n_h_m3, hubble_s, xp, None)
+    anisotropic_peebles_rate(&sky, n_h_m3, hubble_s, xp, Some(temperature_k))
 }
 
 /// Inputs of one matched step on [eta_n, eta_n+1].
