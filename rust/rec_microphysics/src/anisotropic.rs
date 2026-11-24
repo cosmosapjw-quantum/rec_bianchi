@@ -22,8 +22,8 @@
 //! These are pointwise source assemblies, not a recombination history.
 
 use crate::hydrogen_peebles::{
-    HYREC_E21_EV, HYREC_EI_EV, HYREC_KB_EV_K, HYREC_LAMBDA_2GAMMA_S, HYREC_LYA_PER_CM3,
-    HYREC_SAHA_PER_CM3_EV32, RetainedState, ShellRates, hyrec2_ppb_alpha_b_si,
+    hyrec2_ppb_alpha_b_si, RetainedState, ShellRates, HYREC_E21_EV, HYREC_EI_EV, HYREC_KB_EV_K,
+    HYREC_LAMBDA_2GAMMA_S, HYREC_LYA_PER_CM3, HYREC_SAHA_PER_CM3_EV32,
 };
 
 /// Einstein A of H 2p -> 1s [s^-1] (NIST), used only for the finite-depth
@@ -259,7 +259,24 @@ pub fn anisotropic_one_temperature_source(
     hubble_s: f64,
     state: RetainedState,
 ) -> Result<AnisotropicSource, AnisotropyError> {
+    let tm = compton_temperature_k(sky)?;
+    anisotropic_two_temperature_source(sky, n_h_m3, hubble_s, state, tm)
+}
+
+/// Pointwise two-temperature TLA closure. Matter temperature sets alpha_B;
+/// the directional radiation Planck closure independently sets photoionization
+/// and the Wien factor. This is not a frequency-resolved EMLA solver.
+pub fn anisotropic_two_temperature_source(
+    sky: &DirectionalSky,
+    n_h_m3: f64,
+    hubble_s: f64,
+    state: RetainedState,
+    tm: f64,
+) -> Result<AnisotropicSource, AnisotropyError> {
     sky.validate()?;
+    if !tm.is_finite() || tm <= 0. {
+        return Err(AnisotropyError::Domain);
+    }
     if !n_h_m3.is_finite() || n_h_m3 <= 0.0 || !hubble_s.is_finite() || hubble_s <= 0.0 {
         return Err(AnisotropyError::Domain);
     }
@@ -267,7 +284,6 @@ pub fn anisotropic_one_temperature_source(
     if x1 <= 0.0 {
         return Err(AnisotropyError::Domain);
     }
-    let tm = compton_temperature_k(sky)?;
     let alpha = hyrec2_ppb_alpha_b_si(tm).map_err(|_| AnisotropyError::Hydrogen)?;
     let beta_p = photoionization_average_s(sky)?;
     let b = wien_average_ln(HYREC_E21_EV, sky, true)?.exp();
@@ -285,4 +301,46 @@ pub fn anisotropic_one_temperature_source(
         sobolev_depth: tau0,
         rates,
     })
+}
+
+/// Matched differential hydrogen RHS on eta=ln(a/a_emit).
+/// Both supplied microscopic rates are per material proper second; reference
+/// is untilted FLRW. The caller must supply a reference hydrogen (not total
+/// electron) derivative and evaluate both states at matched eta.
+pub fn matched_hydrogen_rhs(
+    baseline_dxp_deta: f64,
+    anisotropic_proper_dxp_dt: f64,
+    hubble_s: f64,
+    gamma: f64,
+    reference_proper_dxp_dt: f64,
+    reference_hubble_s: f64,
+) -> Result<f64, AnisotropyError> {
+    if ![
+        baseline_dxp_deta,
+        anisotropic_proper_dxp_dt,
+        hubble_s,
+        gamma,
+        reference_proper_dxp_dt,
+        reference_hubble_s,
+    ]
+    .iter()
+    .all(|x| x.is_finite())
+        || hubble_s <= 0.
+        || reference_hubble_s <= 0.
+        || gamma < 1.
+    {
+        return Err(AnisotropyError::Domain);
+    }
+    let material_clock = gamma * hubble_s;
+    if !material_clock.is_finite() {
+        return Err(AnisotropyError::NonFinite);
+    }
+    let out = baseline_dxp_deta
+        + (anisotropic_proper_dxp_dt / material_clock
+            - reference_proper_dxp_dt / reference_hubble_s);
+    if out.is_finite() {
+        Ok(out)
+    } else {
+        Err(AnisotropyError::NonFinite)
+    }
 }
