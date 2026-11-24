@@ -72,6 +72,15 @@ constant reference in m⁻³ and set `x_e=n_e,rest/n_ref`; this specifies linear
 interpolation of the directional total density. The library exposes
 `RaySample::from_ion_densities`, `integrate` and `integrate_tangent`.
 
+## Pinning the crate from another repository
+
+Use the exact Git revision and the package selector `version = "=0.1.1"`
+together. This repository carries historical research snapshots that also
+declare packages named `rec_microphysics` at version 0.1.0. Cargo can select
+a snapshot when only the Git revision is supplied. The selected source path
+must end in `rust/rec_microphysics/src/lib.rs` and its public interface must
+include `rec_microphysics::thomson_history`.
+
 ## Validation and scope
 
 The frozen F08 oracle covers four histories with 160 accepted gas steps each
