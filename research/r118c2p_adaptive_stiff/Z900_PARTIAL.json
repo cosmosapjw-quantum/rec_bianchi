@@ -1,0 +1,106 @@
+{
+  "status": "PARTIAL_LOG_ONLY_OUTER_TIMEOUT",
+  "bath": "z900",
+  "kind": "actual",
+  "original_timeout_s": 220,
+  "original_exit": 124,
+  "scatter_duration": 10000,
+  "coupled_duration": 10,
+  "completed_scatter_rows": [
+    {
+      "steps": 1,
+      "status": "PASS_POSITIVE_CONSERVATIVE",
+      "response_l1_relative": 0.32894757313337686,
+      "energy_abs_error": 7.579298073795097e-14,
+      "net_energy": -3.7173767743240336e-13,
+      "seconds": 0.13702977198408917
+    },
+    {
+      "steps": 4,
+      "status": "PASS_POSITIVE_CONSERVATIVE",
+      "response_l1_relative": 0.024494461457397955,
+      "energy_abs_error": 4.607182841820724e-15,
+      "net_energy": -2.913375138526305e-13,
+      "seconds": 0.5125215309672058
+    },
+    {
+      "steps": 16,
+      "status": "PASS_POSITIVE_CONSERVATIVE",
+      "response_l1_relative": 0.00010642021762703675,
+      "energy_abs_error": 3.674658799057299e-17,
+      "net_energy": -2.9590795010646177e-13,
+      "seconds": 2.1458653199952096
+    },
+    {
+      "steps": 64,
+      "status": "PASS_POSITIVE_CONSERVATIVE",
+      "response_l1_relative": 8.503716699501012e-06,
+      "energy_abs_error": 2.9654925511754156e-18,
+      "net_energy": -2.959417312019e-13,
+      "seconds": 8.240490978991147
+    },
+    {
+      "steps": 128,
+      "status": "PASS_POSITIVE_CONSERVATIVE",
+      "response_l1_relative": 2.2319555511305555e-06,
+      "energy_abs_error": 7.782865093338547e-19,
+      "net_energy": -2.9594391840794187e-13,
+      "seconds": 16.678056224947795
+    }
+  ],
+  "completed_adaptive_rows": [
+    {
+      "target": 0.01,
+      "status": "COMPLETE",
+      "accepted": 15,
+      "attempts": 19,
+      "rejected": 4,
+      "max_N": 9.568701150868047e-22,
+      "max_E": 9.465236311831868e-22,
+      "max_local": 0.008412461189244791,
+      "state_l1_over_gross": 4.149179739421929e-07,
+      "delta_n2_abs": 1.07549576049626e-18,
+      "delta_n2_rel": 1.5858507006444042e-11,
+      "seconds": 29.941924527985975
+    },
+    {
+      "target": 0.003,
+      "status": "COMPLETE",
+      "accepted": 25,
+      "attempts": 29,
+      "rejected": 4,
+      "max_N": 1.5097784356863838e-21,
+      "max_E": 2.0701790559979912e-21,
+      "max_local": 0.002198785222685207,
+      "state_l1_over_gross": 1.0745007527865918e-07,
+      "delta_n2_abs": 1.0816239345267076e-18,
+      "delta_n2_rel": 1.5948868767380895e-11,
+      "seconds": 44.59782939899014
+    }
+  ],
+  "reference_log": {
+    "BDF": {
+      "nfev": 470,
+      "njev": 1,
+      "nlu": 43,
+      "seconds": 9.078293316008057,
+      "net_energy": -2.95944686607056e-13,
+      "number_defect": 5.534214237532747e-26
+    },
+    "Radau": {
+      "nfev": 2044,
+      "njev": 2,
+      "nlu": 86,
+      "seconds": 38.4599436110002,
+      "net_energy": -2.959446966944518e-13,
+      "number_defect": 1.4730892721257717e-26
+    }
+  },
+  "inputs_readback": {
+    "source_sha256": "cc08c7e74e5725daa25f01e997c3d2886d860a099a9a986353849e0d01e67b45",
+    "rates_sha256": "48cd597519606cdafd0ee6405b781d28467cd323278d16596055a8d0577a1d27",
+    "graph_sha256": "82adc9b2ddaec3f9418a2167d6fa83589debb25570ad6b700e1c0ce04b035f18",
+    "initial_state_sha256": "9234aaf7bbf75dd04e3bf6c986e23e8d64930cb17e7fedf53fb06bac62ede2ca"
+  },
+  "limitations": "full state vectors and reference L1 difference were not serialized before timeout; 1e-3 run unfinished"
+}
