@@ -1,0 +1,21 @@
+depleted initial nodes [0, 108, 217, 326, 434, 543, 652, 761, 869, 978, 1087, 1196, 1197, 1198, 1199, 1200]
+full local graph midpoint {'max_edge_rel': 1.933659903659464e-08, 'global_l1': 8.070065272924587e-10, 'cross_l1': 2.1881235539359447e-10, 'new_l1': 2.196491271246438e-10}
+reference 3e-10 194
+reference 3e-11 242
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/run_depleted_coupled.py", line 127, in <module>
+    v=step(s,k*a.duration/steps,a.duration/steps)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/run_depleted_coupled.py", line 100, in step
+    before=stage.clone();rr=coupled_step(StableReaction(n,stage),IncrementScatter(scatter,stage),stage,h)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2r_stable_extent/extent_map.py", line 106, in coupled_step
+    a=source_step(net,s,dt/2);v=sc.step(s,dt);b=source_step(net,s,dt/2)
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2r_stable_extent/extent_map.py", line 96, in source_step
+    d,r=extent(net,s,event,L(dt)/2)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2r_stable_extent/extent_map.py", line 40, in extent
+    if span>=cap:raise ExtentRejected("equilibrium not bracketed")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+extent_map.ExtentRejected: equilibrium not bracketed

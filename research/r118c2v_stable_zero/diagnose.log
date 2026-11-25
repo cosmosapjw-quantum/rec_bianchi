@@ -1,0 +1,19 @@
+depleted initial nodes [0, 108, 217, 326, 434, 543, 652, 761, 869, 978, 1087, 1196, 1197, 1198, 1199, 1200]
+full local graph midpoint {'max_edge_rel': 1.933659903659464e-08, 'global_l1': 8.070065272924587e-10, 'cross_l1': 2.1881235539359447e-10, 'new_l1': 2.196491271246438e-10}
+UNBRACKET {'event': (1197, 324, 1, np.longdouble('0.3324325125125143776'), 0), 'initial_F': '7.2581556558206618275e-09', 'gross': '7.2581556558206618073e-09', 'cap': '2.1833471022923845317e-08', 'span': '2.1833471022923845317e-08', 'g': '2.1002632740604218307e-26', 'rate': ('2.1002632740604218307e-26', '7.4653385901497771493e-28', '0.0', '7.4653385901497771493e-28'), 'nt': '1.3668426546543764243e-07', 'nc': '195536099349.20931678', 'n2': '2.1833471022923845317e-08', 'neutral': '216268134.703582978', 'nt_base': '0.0', 'nt_inc': '1.3668426546543764243e-07', 'nc_base': '195536099349.36782126', 'nc_inc': '-0.15850449034890050578'}
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/diagnose_depletion.py", line 116, in <module>
+    v=step(s,0.,a.duration)
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/diagnose_depletion.py", line 100, in step
+    before=stage.clone();rr=coupled_step(StableReaction(n,stage),IncrementScatter(scatter,stage),stage,h)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/extent_diagnostic.py", line 108, in coupled_step
+    a=source_step(net,s,dt/2);v=sc.step(s,dt);b=source_step(net,s,dt/2)
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/extent_diagnostic.py", line 98, in source_step
+    d,r=extent(net,s,event,L(dt)/2)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2v_stable_zero/extent_diagnostic.py", line 42, in extent
+    raise ExtentRejected("equilibrium not bracketed")
+extent_diagnostic.ExtentRejected: equilibrium not bracketed

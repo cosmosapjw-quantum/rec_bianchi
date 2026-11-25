@@ -1,0 +1,7 @@
+# R118-C2V REC research return
+
+Parent 4a603b28525f5a5d0a12acf5621ce88f149c52e7. Scoped actual z1100 graph (83178 edges), positive and depleted scattering at 1/4/16/64 subdivisions and reaction-scattering-redshift at 1/4/16 subdivisions, physical duration 1 s. New tests include sub-ulp increment and empty-donor endpoint. Two original-kernel full graph compiles at z1000 and z1200. Frozen original FULL incoming-face diagnostic uses historical snapshot identity, not an evolving distortion closure.
+
+Commands: from repo root, PYTHONPATH=src OPENBLAS_NUM_THREADS=1 python3 research/r118c2v_stable_zero/{run_actual,run_coupled,run_depleted_coupled,action_holdouts}.py with --raw /home/cosmosapjw/Downloads/rec_r118c2k_refined --compiled /home/cosmosapjw/Downloads/rec_r118c2f_compiled_final --rates archive/inputs/original_hyrec_oct2012/HyRec_Oct2012.zip --bath z1100 --kind pulse --clock physical --duration 1 --out NEW_JSON (each script separately). Native face: same environment, native_face.py. Holdout raw source/graph locations and byte identities in HOLDOUTS.json. Regression log and acceptance receipt record executed checks.
+
+The first depleted reaction bracket failed; diagnostics and corrected response preserved. Initial incoming-face check exposed a historical versus modern SI constant mismatch; retained original constants. Intermediate positive runs using stale post-reaction stock are not the final result. New results are research adapters, not production promotion. No dependency pins changed. No native subagent execution available.

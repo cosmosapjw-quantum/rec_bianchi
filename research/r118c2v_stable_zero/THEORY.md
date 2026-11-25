@@ -1,0 +1,9 @@
+# C2V stable zero-donor, reaction boundary and thermal holdouts
+
+Use N=N0+dN and solve the modified Patankar increment system with the stable edge net flux as RHS. Analytic donor-normalized gross rates have finite zero-stock limits. Zero preconditioner scales are numerical coordinates only, never physical floors. On the corrector retain predictor increments separately; on edges with an exactly zero old donor use the direct coefficient-times-stock identity. Positivity and opposite signed edge transfers hold in the tested graph. Neither an unconditional convergence theorem for vanishing stocks nor whole-history accuracy follows.
+
+Reaction extent: the initial depleted coupled trial failed at the donor-depletion endpoint of an equilibrium bracket. Diagnostic event (1197,324,+1) showed a spurious positive net ~2.10e-26 despite direct A=0, B~7.47e-28. Use A-B if |A-B| >= (A+B)/4 or gross=0; this difference is well conditioned (condition number <=4 for positive gross). Else use the increment-resolved flux. No clipping of rates, extent, or stock. Re-read the post-source atomic stock before scattering, rather than retaining a stale template. Preserve failed and intermediate runs.
+
+The top tracked energy equals the native FULL snapshot's last virtual face (12.74328 eV). Convert fplus+Planck to occupation flux using original HyRec constants and original snapshot H; compare isolated response to an independent affine exponential. Snapshot redshift differs from the HMLA graph bath, so this is a frozen boundary diagnostic, not a causal coupled FULL history. The coupled tests retain the C2U Planck boundary.
+
+Use independent full graphs at z1000 and 1200 as held-out kernels. Compare broad z900-1300 interpolation and the narrower intervals split by z1100 on the same three z1100 stock probes. Error in new-edge energy action is the selection observable, not just the K L1 norm. This establishes sampled improvement, not a uniform interpolation certificate.
