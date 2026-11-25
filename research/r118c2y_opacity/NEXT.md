@@ -1,0 +1,2 @@
+# C2Z
+Investigate positive coarse reductions with richer coarse support, constrained action matching and direct frequency-resolved transport; preserve exact energy-action cut identity as one constraint, not sole acceptance condition. Test convergence against actual fine action and full wing including real 2p. Distinguish nonlocal emissivity/extinction closure from exact frequency-coupled radiative transfer. No production promotion from these pilots.

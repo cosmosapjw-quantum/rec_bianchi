@@ -1,0 +1,43 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________________ test_positive_graph_and_bose _________________________
+
+    def test_positive_graph_and_bose():
+     e=np.array([1.,2.,3.],dtype=L)
+     d=np.array([1.,-2.,1.],dtype=L);A=np.outer(d,d)+np.outer([1.,-1.,0.],[1.,-1.,0.])
+     g,info=positive_graph(A,e)
+     assert np.min(g)>=0 and np.allclose(g,g.T)
+     assert abs(e@(np.diag(g.sum(axis=1))-g)@e-e@A@e)<1e-15
+     z=np.exp(-e/10);x=L('.7');fp=1/np.expm1(e/10);v=np.zeros(3,dtype=L)
+>    gam,em,net=pair_terms(g,z,fp,v,x)
+                ^^^^^^^^^^^^^^^^^^^^^^
+
+research/r118c2y_opacity/test_opacity.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+g = array([[-0. ,  0.6,  0. ],
+       [ 0.6, -0. ,  0.4],
+       [ 0. ,  0.4, -0. ]], dtype=float128)
+z = array([0.90483742, 0.81873075, 0.74081822], dtype=float128)
+fp = array([9.50833194, 4.51665557, 2.85829591], dtype=float128)
+v = array([0., 0., 0.], dtype=float128), x = np.longdouble('0.7')
+
+    def pair_terms(g,z,fp,v,x):
+        f=fp+v/x
+        if np.min(f)<0:raise ValueError('negative occupation')
+        # Off-diagonal emission and extinction of total f; departure v=x(f-fp).
+        # Frozen other-bin occupation yields exactly affine dependence on v_i.
+        a=f/z
+        gam=np.sum(g*((1+f)[None,:]/z[:,None]-a[None,:]),axis=1)
+        em=x*np.sum(g*((1+fp)[:,None]*a[None,:]-fp[:,None]*(1+f)[None,:]/z[:,None]),axis=1)
+        # Direct pair antisymmetry is the conservation oracle.
+        F=x*g*((1+f)[:,None]*a[None,:]-a[:,None]*(1+f)[None,:])
+        net=F.sum(axis=1)
+>       if np.min(gam)<0 or np.max(abs(em-gam*v-net))>1e-13*max(np.sum(abs(F)),np.sum(abs(em)),L('1e-4900')):raise ValueError('pair source/extinction')
+                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: pair source/extinction
+
+research/r118c2y_opacity/opacity.py:36: ValueError
+=========================== short test summary info ============================
+FAILED research/r118c2y_opacity/test_opacity.py::test_positive_graph_and_bose
+1 failed in 0.49s
