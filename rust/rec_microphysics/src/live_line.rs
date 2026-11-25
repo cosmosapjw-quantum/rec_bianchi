@@ -48,6 +48,20 @@ impl Hat {
         }
         Ok((f, df))
     }
+    /// Convex primitive with derivative ln(a(f)); zero at vacuum.
+    pub fn free_primitive(&self, f: f64) -> Result<f64, String> {
+        let a = self.inverse(f)?;
+        if a == 0. {
+            return Ok(0.);
+        }
+        Ok(f * a.ln()
+            + ksum(
+                self.w
+                    .iter()
+                    .zip(&self.z)
+                    .map(|(w, z)| w * (-a * z).ln_1p()),
+            ))
+    }
     pub fn inverse(&self, f: f64) -> Result<f64, String> {
         if !f.is_finite() || f < 0. {
             return Err("invalid occupation".into());

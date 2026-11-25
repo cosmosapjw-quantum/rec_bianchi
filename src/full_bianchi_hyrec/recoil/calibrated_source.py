@@ -114,7 +114,7 @@ def _block(nt,ns,mu,w,i,j,bath,levels,bounds):
     return out,raw,np.stack(direct,axis=1)
 
 def _job(arg):
-    i,j,bath,levels=arg;bounds=owner_cells()
+    i,j,bath,levels=arg[:4];retain=len(arg)==5 and arg[4];bounds=owner_cells()
     def batch(mu,nodes,I,J):
         nt,ns,w=nodes;parts=[_block(nt[None,:],ns[None,:],mu[q:q+8,None],w,I,J,bath,levels,bounds) for q in range(0,len(mu),8)]
         return {n:np.concatenate([v[0][n] for v in parts]) for n in levels},np.concatenate([v[1] for v in parts]),np.concatenate([v[2] for v in parts])
@@ -137,7 +137,7 @@ def _job(arg):
             for n in levels:Q[n][mask]=q[n] if core else q[n].transpose(0,2,1)
             raw[mask]=r if core else r[:,[0,2,1]];direct[mask]=v
     scale=8*np.pi*PCC.dnu/c**3*.75*(1+mu**2);raw*=scale[:,None];direct*=scale[:,None];err=0.;sym=0.
-    out={}
+    out={};angular_data={}
     for n in levels:
         q=Q[n]*scale[:,None,None]
         if i==j:
@@ -148,7 +148,11 @@ def _job(arg):
         err=max(err,float(np.max(abs(marg-raw)/np.maximum(raw[:,0,None],1e-300))))
         if np.min(q)<0 or not np.all(np.isfinite(q)):raise ValueError("nonpositive calibrated conductance")
         out[n]=np.einsum('a,aij->ij',w,q)
-    return i,j,out,w@direct,err,sym
+        if retain:angular_data[n]=q
+    result=(i,j,out,w@direct,err,sym)
+    if retain:
+        ix=np.argsort(mu);return result+( (mu[ix],w[ix],{n:v[ix] for n,v in angular_data.items()}), )
+    return result
 
 def compile_isotropic(bath,levels=(1,4),workers=4):
     """Source integration over actual scattering angle, scalar isotropic
