@@ -1,0 +1,22 @@
+F........                                                                [100%]
+=================================== FAILURES ===================================
+______________________ test_stiff_rejection_and_recovery _______________________
+
+    def test_stiff_rejection_and_recovery():
+        s=make()
+        r=advance(Decay(),NoScatter(),s,16.,16.,1e-4)
+        assert r['positivity_rejects']>0 and r['accepted']>0
+        assert r['end_s']==16. and 0<s.n2+s.d2<1
+>       assert abs(float(s.n2+s.d2)/math.exp(-16)-1)<.02
+E       AssertionError: assert 0.7935705597528828 < 0.02
+E        +  where 0.7935705597528828 = abs(((2.3230573125408195e-08 / 1.1253517471925912e-07) - 1))
+E        +    where 2.3230573125408195e-08 = float((np.longdouble('1.0') + np.longdouble('-0.9999999767694268746')))
+E        +      where np.longdouble('1.0') = State(nt=array([1.], dtype=float128), nc=array([1.], dtype=float128), n2=np.longdouble('1.0'), neutral=np.longdouble('...rray([0.99999998], dtype=float128), dc=array([0.99999998], dtype=float128), d2=np.longdouble('-0.9999999767694268746')).n2
+E        +      and   np.longdouble('-0.9999999767694268746') = State(nt=array([1.], dtype=float128), nc=array([1.], dtype=float128), n2=np.longdouble('1.0'), neutral=np.longdouble('...rray([0.99999998], dtype=float128), dc=array([0.99999998], dtype=float128), d2=np.longdouble('-0.9999999767694268746')).d2
+E        +    and   1.1253517471925912e-07 = <built-in function exp>(-16)
+E        +      where <built-in function exp> = math.exp
+
+research/r118c2m_adaptive_extent/test_adaptive.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED research/r118c2m_adaptive_extent/test_adaptive.py::test_stiff_rejection_and_recovery
+1 failed, 8 passed in 0.96s
