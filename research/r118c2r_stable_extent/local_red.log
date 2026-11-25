@@ -1,0 +1,24 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+_________________ test_event_local_rate_resolves_sub_ulp_trial _________________
+
+    def test_event_local_rate_resolves_sub_ulp_trial():
+        s=State(np.ones(1,dtype=L),np.ones(1,dtype=L),L(1),L(5),np.zeros(1,dtype=L),np.zeros(1,dtype=L))
+        event=(0,0,1,L(1),0);s.d2=L('1e-25')
+>       n=StableReaction(Net(),s);r=n.local_rates(s,event)
+                                    ^^^^^^^^^^^^^
+
+research/r118c2r_stable_extent/test_stable_extent.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <stable_extent.StableReaction object at 0x762933fa6000>
+k = 'local_rates'
+
+>   def __getattr__(self,k):return getattr(self.net,k)
+                                   ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'Net' object has no attribute 'local_rates'
+
+research/r118c2r_stable_extent/stable_extent.py:19: AttributeError
+=========================== short test summary info ============================
+FAILED research/r118c2r_stable_extent/test_stable_extent.py::test_event_local_rate_resolves_sub_ulp_trial
+1 failed, 1 passed in 0.46s
