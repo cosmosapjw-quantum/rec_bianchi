@@ -1,0 +1,18 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+______________________ test_second_order_and_equilibrium _______________________
+
+    def test_second_order_and_equilibrium():
+        exact=expm(np.array([[-2.,3.],[2.,-3.]]))@np.array([1.,.01]);err=[]
+        for n in (8,16,32,64):
+            s=state();sc=PatankarScatter(Scatter())
+            for _ in range(n):sc.step(s,1/n)
+            err.append(np.max(abs(np.asarray(s.nt+s.dt,float)-exact)))
+>       assert 3.7<err[-2]/err[-1]<4.3,err
+E       AssertionError: [np.float64(0.0001951966975274333), np.float64(0.00010253593102715897), np.float64(3.648718422144537e-05), np.float64(1.0994778093631474e-05)]
+E       assert 3.7 < (np.float64(3.648718422144537e-05) / np.float64(1.0994778093631474e-05))
+
+research/r118c2o_stiff_scatter/test_patankar.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED research/r118c2o_stiff_scatter/test_patankar.py::test_second_order_and_equilibrium
+1 failed, 1 passed in 0.50s
