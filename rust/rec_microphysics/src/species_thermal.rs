@@ -540,6 +540,17 @@ pub fn matched_step(
                 },
             ))
         };
+    let (d, iterations, r) = solve_matched_root(delta0, scales, active, to_state, residual)?;
+    finish(d, iterations, r)
+}
+
+fn solve_matched_root(
+    delta0: [f64; 4],
+    scales: [f64; 4],
+    active: [bool; 4],
+    to_state: impl Fn([f64; 4]) -> State,
+    residual: impl Fn([f64; 4]) -> Result<[f64; 4], Error>,
+) -> Result<([f64; 4], usize, [f64; 4]), Error> {
     // Predictor may lie outside simplex if the reference itself crossed a
     // boundary. Start from the new reference instead; never clip the state.
     let mut d = delta0;
@@ -548,7 +559,7 @@ pub fn matched_step(
     }
     let mut r = residual(d)?;
     if maxabs(r) == 0. {
-        return finish(d, 0, r);
+        return Ok((d, 0, r));
     }
     for iteration in 1..=40 {
         let mut jac = [[0.; 4]; 4];
@@ -606,7 +617,7 @@ pub fn matched_step(
         // reconstruction, not a fixed 1e-11 abundance threshold.
         let tol = 8. * f64::EPSILON * (1. + maxabs(d) + maxabs(delta0));
         if maxabs(correction) <= tol && old <= tol {
-            return finish(d, iteration, r);
+            return Ok((d, iteration, r));
         }
         let mut accepted = false;
         let mut lambda = 1.;
@@ -800,4 +811,184 @@ impl ReferenceHistory {
         }
         Ok(x)
     }
+}
+
+/// Alexander's two-stage, stiffly accurate L-stable SDIRK.
+pub const SDIRK_GAMMA: f64 = 1. - std::f64::consts::FRAC_1_SQRT_2;
+
+/// An accepted first stage, tied to the initial physical/reference state and
+/// full step. Carries the increment in difference coordinates rather than
+/// subtracting two reconstructed physical states (important near equilibrium).
+#[derive(Clone, Debug)]
+pub struct SdirkFirst {
+    prev: State,
+    ref_prev: State,
+    state: State,
+    h: f64,
+    fhe: f64,
+    mode: HeliumModel,
+    delta0: [f64; 4],
+    increment: [f64; 4],
+    heat: [f64; 3],
+    ref_w_rhs: f64,
+    iterations: usize,
+    residual: f64,
+}
+impl SdirkFirst {
+    pub fn state(&self) -> State {
+        self.state
+    }
+    pub fn iterations(&self) -> usize {
+        self.iterations
+    }
+    pub fn scaled_residual(&self) -> f64 {
+        self.residual
+    }
+}
+struct StageRoot {
+    state: State,
+    delta: [f64; 4],
+    increment: [f64; 4],
+    heat: [f64; 3],
+    ref_w_rhs: f64,
+    iterations: usize,
+    residual: f64,
+}
+fn implicit_difference_stage(
+    base: [f64; 4],
+    ref_y: State,
+    diag_h: f64,
+    fhe: f64,
+    actual: &Point,
+    reference: &Point,
+) -> Result<StageRoot, Error> {
+    ref_y.validate(fhe)?;
+    actual.helium.check(ref_y)?;
+    reference.helium.check(ref_y)?;
+    if !diag_h.is_finite()
+        || diag_h <= 0.
+        || base.iter().any(|x| !x.is_finite())
+        || std::mem::discriminant(&actual.helium) != std::mem::discriminant(&reference.helium)
+    {
+        return Err(Error::Domain);
+    }
+    let rn = ref_y.array();
+    let scales = std::array::from_fn(|i| {
+        rn[i]
+            .abs()
+            .max((rn[i] + base[i]).abs())
+            .max([1e-10, 1e-8, 1e-8, 1e-30][i])
+    });
+    let delta0 = std::array::from_fn(|i| base[i] / scales[i]);
+    let to_state =
+        |d: [f64; 4]| State::from_array(std::array::from_fn(|i| rn[i] + scales[i] * d[i]));
+    let rref = proper_rate(ref_y, fhe, reference)?
+        .array()
+        .map(|x| x / reference.clock_s());
+    let residual = |d: [f64; 4]| -> Result<[f64; 4], Error> {
+        let r = proper_rate(to_state(d), fhe, actual)?.array();
+        Ok(std::array::from_fn(|i| {
+            d[i] - delta0[i] - diag_h * (r[i] / actual.clock_s() - rref[i]) / scales[i]
+        }))
+    };
+    let (d, iterations, r) = solve_matched_root(
+        delta0,
+        scales,
+        actual.helium.active(fhe),
+        to_state,
+        residual,
+    )?;
+    let y = to_state(d);
+    let rate = proper_rate(y, fhe, actual)?;
+    let heat = [
+        rate.adiabatic_w_k_s,
+        rate.compton_w_k_s,
+        rate.external_w_k_s,
+    ]
+    .map(|v| v / actual.clock_s());
+    Ok(StageRoot {
+        state: y,
+        delta: std::array::from_fn(|i| scales[i] * d[i]),
+        increment: std::array::from_fn(|i| scales[i] * (d[i] - delta0[i])),
+        heat,
+        ref_w_rhs: rref[3],
+        iterations,
+        residual: maxabs(r),
+    })
+}
+/// SDIRK first stage at eta_n + gamma*h. Caller supplies actual and reference
+/// environment at that time; geometry/opacity iteration is not owned by REC.
+pub fn sdirk_first(
+    prev: State,
+    ref_prev: State,
+    ref_stage: State,
+    h: f64,
+    fhe: f64,
+    actual: &Point,
+    reference: &Point,
+) -> Result<SdirkFirst, Error> {
+    for y in [prev, ref_prev] {
+        y.validate(fhe)?;
+        actual.helium.check(y)?;
+        reference.helium.check(y)?;
+    }
+    let delta0 = std::array::from_fn(|i| prev.array()[i] - ref_prev.array()[i]);
+    let a = implicit_difference_stage(delta0, ref_stage, SDIRK_GAMMA * h, fhe, actual, reference)?;
+    Ok(SdirkFirst {
+        prev,
+        ref_prev,
+        state: a.state,
+        h,
+        fhe,
+        mode: actual.helium,
+        delta0,
+        increment: a.increment,
+        heat: a.heat,
+        ref_w_rhs: a.ref_w_rhs,
+        iterations: a.iterations,
+        residual: a.residual,
+    })
+}
+/// Stiffly accurate second stage at eta_n+h, with full-step weighted heat
+/// ledger. First-stage algebraic increment supplies the explicit tableau
+/// term, avoiding subtractive cancellation in the stiff rate difference.
+pub fn sdirk_second(
+    first: &SdirkFirst,
+    ref_next: State,
+    actual: &Point,
+    reference: &Point,
+) -> Result<(State, StepDiagnostics), Error> {
+    if std::mem::discriminant(&first.mode) != std::mem::discriminant(&actual.helium) {
+        return Err(Error::HeliumCoverage);
+    }
+    let g = SDIRK_GAMMA;
+    let base = std::array::from_fn(|i| first.delta0[i] + ((1. - g) / g) * first.increment[i]);
+    let b = implicit_difference_stage(base, ref_next, g * first.h, first.fhe, actual, reference)?;
+    let coeff = 1.5 * KB_J_K;
+    let h = first.h;
+    let heat: [f64; 3] =
+        std::array::from_fn(|i| coeff * h * ((1. - g) * first.heat[i] + g * b.heat[i]));
+    let corr = coeff
+        * (ref_next.w_k - first.ref_prev.w_k - h * ((1. - g) * first.ref_w_rhs + g * b.ref_w_rhs));
+    let y = b.state;
+    // b.delta retained internally for future stage/correction APIs.
+    if b.delta.iter().any(|x| !x.is_finite()) {
+        return Err(Error::Nonfinite);
+    }
+    Ok((
+        y,
+        StepDiagnostics {
+            iterations: first.iterations + b.iterations,
+            scaled_residual: first.residual.max(b.residual),
+            physical_adiabatic_j_per_h: heat[0],
+            physical_compton_j_per_h: heat[1],
+            physical_external_j_per_h: heat[2],
+            matched_thermal_correction_j_per_h: corr,
+            thermal_balance_defect_j_per_h: y.thermal_j_per_h()
+                - first.prev.thermal_j_per_h()
+                - heat.iter().sum::<f64>()
+                - corr,
+            binding_change_j_per_h: y.binding_j_per_h() - first.prev.binding_j_per_h(),
+        },
+    ))
 }
