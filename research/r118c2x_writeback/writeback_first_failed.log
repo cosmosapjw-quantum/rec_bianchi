@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2x_writeback/run_writeback.py", line 17, in <module>
+    c=WingCorrection(tab,np.load(G/'GRAPH128.npz'),neutral0)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2x_writeback/writeback.py", line 31, in __init__
+    g=LinearProject(co,E[ids]);self.windows.append((lo,hi,g,np.searchsorted(ids,i[mask]),np.searchsorted(ids,j[mask]),np.asarray(graph['K'][mask],dtype=L)))
+      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c2x_writeback/writeback.py", line 15, in __init__
+    if np.any(np.diff(self.coarse)<=0) or np.min(self.fine)<self.coarse[0] or np.max(self.fine)>self.coarse[-1]:raise ValueError('projection domain')
+                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: projection domain

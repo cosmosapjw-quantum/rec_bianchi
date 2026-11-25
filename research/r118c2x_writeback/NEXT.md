@@ -1,0 +1,2 @@
+# C2Y
+Derive and test optical-depth closure consistent with the new nonlocal projected graph; do not use the current large RHS shift as production prediction. Compare against native diagonal opacity and a single-owner full transfer operator retaining line-centre 2p. Perform independent spatial-frequency refinement, matched time grid with nonzero causal prehistory, and robust transfer of correction across the full wing. Preserve explicit heat and number balance.
