@@ -1,0 +1,1 @@
+C2W: 10 s actual HMLA stable-zero coupled evolution; exact full graph endpoints/midpoint compiled. Separate causal FULL accepted-history boundary diagnostic (no production FULL equivalence), and actual evolving stock probes. Preserve bounded results and failures.

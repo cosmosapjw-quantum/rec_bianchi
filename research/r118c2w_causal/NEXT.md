@@ -1,0 +1,2 @@
+# C2X handoff
+Keep the retarded source boundary on accepted histories only. Introduce explicit conservative ownership between native FULL real/virtual states and joined recoil stocks before any writeback; demonstrate causal restart and bounded two-way test. Broader temperature/stock interpolation remains a different question from the ten-second local anchor test. Use error-targeted longer intervals and preserve separate physical and numerical error budgets.
