@@ -1,0 +1,182 @@
+{
+  "status": "PASS_SCOPED_FROZEN_GRAPH_AND_SOURCE_STIFF_LANE",
+  "parent": "567ad5eb50804ba2a0ba3ef08d984b244c8d1476",
+  "cases": {
+    "z900_actual": {
+      "state_orders": [
+        1.6142918402172257,
+        1.8840419694944541,
+        1.9694731487238961,
+        1.9922649146889229,
+        1.99805966189997
+      ],
+      "last": {
+        "steps": 32,
+        "status": "PASS_SCOPED",
+        "delta_n2_rel": 5.1031792768382635e-14,
+        "delta_n2_abs": 3.460238673977097e-21,
+        "state_l1_over_gross": 2.801920562244311e-07,
+        "N": 1.2036266464300077e-21,
+        "E": 1.3279486939400078e-21,
+        "saturation": 0,
+        "max_root": 3.6673343180964334e-16,
+        "roundoff_fallbacks": 0,
+        "seconds": 8.792672973999288
+      },
+      "stiff": [
+        {
+          "duration": 10.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 1.1724868010180732e-18,
+          "E": 1.2541546323655799e-18,
+          "saturation": 0,
+          "max_root": 9.057913177516156e-15,
+          "roundoff_fallbacks": 0,
+          "delta_n2": -6.781822273952851e-08
+        },
+        {
+          "duration": 100.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 6.076494542045437e-16,
+          "E": 6.324750666944717e-16,
+          "saturation": 0,
+          "max_root": 9.057913177516156e-15,
+          "roundoff_fallbacks": 0,
+          "delta_n2": -6.781822273952851e-08
+        }
+      ],
+      "reference_max_diff": 2.179747576108525e-20
+    },
+    "z1100_pulse": {
+      "state_orders": [
+        1.5877012404533404,
+        1.872891936317786,
+        1.9661771001877568,
+        1.9914207014383618,
+        1.9978481827776884
+      ],
+      "last": {
+        "steps": 32,
+        "status": "PASS_SCOPED",
+        "delta_n2_rel": 3.29915309277735e-11,
+        "delta_n2_abs": 5.648620743890484e-17,
+        "state_l1_over_gross": 7.801108642381095e-10,
+        "N": 2.796305448949082e-20,
+        "E": 2.7948091403435194e-20,
+        "saturation": 0,
+        "max_root": 1.4285340781038585e-16,
+        "roundoff_fallbacks": 0,
+        "seconds": 8.86059848102741
+      },
+      "stiff": [
+        {
+          "duration": 10.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 1.468202728348799e-15,
+          "E": 1.4682214952826599e-15,
+          "saturation": 0,
+          "max_root": 4.9393467357246367e-17,
+          "roundoff_fallbacks": 0,
+          "delta_n2": -1.712352590271522e-06
+        },
+        {
+          "duration": 100.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 1.221485071453146e-16,
+          "E": 1.2194101195390732e-16,
+          "saturation": 0,
+          "max_root": 4.9393467357246367e-17,
+          "roundoff_fallbacks": 0,
+          "delta_n2": -1.712352590271522e-06
+        }
+      ],
+      "reference_max_diff": 5.999718826678809e-19
+    },
+    "z1300_actual": {
+      "state_orders": [
+        1.5273329515089848,
+        1.8491901640169313,
+        1.9596970177519222,
+        1.9897593604234103,
+        1.997436426314725
+      ],
+      "last": {
+        "steps": 32,
+        "status": "PASS_SCOPED",
+        "delta_n2_rel": 5.970111332039026e-14,
+        "delta_n2_abs": 4.1454611347431886e-19,
+        "state_l1_over_gross": 1.0510057484688045e-11,
+        "N": 2.861347025703232e-27,
+        "E": 4.008933309013173e-27,
+        "saturation": 0,
+        "max_root": 1.4064943819682813e-16,
+        "roundoff_fallbacks": 0,
+        "seconds": 8.588182974024676
+      },
+      "stiff": [
+        {
+          "duration": 10.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 3.450365337816628e-21,
+          "E": 2.1652079823594777e-20,
+          "saturation": 0,
+          "max_root": 8.030272681477675e-17,
+          "roundoff_fallbacks": 0,
+          "delta_n2": -6.944044949081073e-06
+        },
+        {
+          "duration": 100.0,
+          "status": "PASS_SCOPED_SOURCE_ONLY",
+          "N": 5.82181436558986e-21,
+          "E": 5.708380536381336e-21,
+          "saturation": 1,
+          "max_root": 1.2272833900698716e-17,
+          "roundoff_fallbacks": 5,
+          "delta_n2": -6.944044949081073e-06
+        }
+      ],
+      "reference_max_diff": 1.139274487328278e-17
+    }
+  },
+  "coupled_runs": 18,
+  "source_only_runs": 6,
+  "max_coupled_N": 2.796305448949082e-20,
+  "max_coupled_E": 2.7948091403435194e-20,
+  "max_source_N": 1.468202728348799e-15,
+  "max_source_E": 1.4682214952826599e-15,
+  "production_admission": "HOLD",
+  "limitations": "finite graph; near-equilibrium fallback is explicitly finite-precision heuristic; SSPRK2 scatter CFL remains; full Python suite not run this turn",
+  "files": {
+    "z1300_actual.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "green_final.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "stiff_failure_recheck.json": "81bc774d39f95d19570b720bf742240bd816e5ee4518df1d1b6230ae3a4e1d25",
+    "z1300_actual.log": "ff7d465101f3a51394c92bc31060a1c524fa088d714fc96ef7a87093906cb1b6",
+    "z1100_pulse.json": "4d7d515b09e3bf663b9fbda251c23c9a02541d0b977f2b46f21c14ed8d63a9dd",
+    "z1300_actual_v1.log": "9fbf40566fc7d23bb872d53274143cd5915a59a752f68281fd9e879ad6455e43",
+    "z1100_pulse.log": "ae2f2d86287fe9c2ed3a2ff713f0dece7e4f796af2ed2db61098225f5a46b82b",
+    "green_final.log": "c6761eb659e35e4b8c9ce4cc68d07b16c3d6e0aac235b1b50e0b8c9add4ccbaf",
+    "z900_actual.log": "cc1593745559167a1a45ad79a5a793653ba70f4717a400e792e80c14783afc1a",
+    "red.exit": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "z1100_pulse_v1.json": "c682ace07cb64a3872edd7055b4051c501d9d4b4f90498c906cfad1e1dcbbcc6",
+    "green.log": "4a6e9c36d8f59b5f37fea72c93e4df9fc194a7d55658ccade2f5975a987ec522",
+    "run_extent.py": "12ffa9761ba09c3bb0a6094ce04480a429cc2d6f491004d226cf8b5d2300d7f5",
+    "z900_actual.json": "b90e119ff692fd2a0cb1e071eabb22643940e464c651864ffdf1daa245de177e",
+    "README.md": "6b9304bf5e2370c81edd071a342978cdcd37baebf00dc9c3fa2953cb97d25aea",
+    "equilibrium_extent_v1.py": "0fc33c1e0b1c26b6117e6ae808c252e200f91196ff6b8ed8914dd1662b3a4963",
+    "equilibrium_extent.py": "e13ede94fbe41c94566e63a8255c1a2deca0607fc3173b532157ab1f9254a067",
+    "diagnose_stiff.py": "bdb706da50e6086254510b75f9a5205ad71fc340e3bc4026cbfc0736e9e0d4a3",
+    "test_extent.py": "e650ef74eaef738223a83f547220798e9f3874e559fd9091a0ce56c713091ac6",
+    "z1300_actual_v1.json": "a26c88b26a3891fb8391292dcb869cad499d272b3a7c95cedfdec4e863bf705a",
+    "green.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "red.log": "0a16fb5d0ab048ff9ebaa0c990127351b2c7f84da91acc2e273a044ee2e128f3",
+    "z1100_pulse.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "z900_actual_v1.json": "6e098aafbbfd564450bfe02b0c07d4a82ada58217e4d84309b799993e04afb6d",
+    "z1300_actual.json": "a565b3dc2a800ff0f0cecbfc78ea417a66eb339f12d90aeff637769dad244f8c",
+    "z900_actual_v1.log": "743c7d7aa83d0d6ec35a3ab51b19765986b85eb833935d2080f9b55c16db5578",
+    "verify_results.py": "a8e41f77cc1f72f88c57baafa39e7aeb581cb83d5de7cfe77207a0c09327ea19",
+    "THEORY.md": "4dac4f841c0e8af27de245e90dc4843d462320d2d1a9c063c993ba241af47f58",
+    "z1100_pulse_v1.log": "4cd31cecc05997326cc876e767d8fa03c2c6a11f0b59e08f8e3a73551a12278a",
+    "stiff_failure.json": "81bc774d39f95d19570b720bf742240bd816e5ee4518df1d1b6230ae3a4e1d25",
+    "z900_actual.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}
