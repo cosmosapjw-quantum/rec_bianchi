@@ -992,3 +992,62 @@ pub fn sdirk_second(
         },
     ))
 }
+
+/// Independent physical backward-Euler step: no reference state, reference
+/// increment, or matched thermal correction. Caller supplies actual geometry,
+/// density and radiation at the end of the step; eta uses normal H.
+pub fn standalone_step(
+    prev: State,
+    h: f64,
+    fhe: f64,
+    actual: &Point,
+) -> Result<(State, StepDiagnostics), Error> {
+    prev.validate(fhe)?;
+    actual.helium.check(prev)?;
+    if !h.is_finite() || h < 0. {
+        return Err(Error::Domain);
+    }
+    if h == 0. {
+        return Ok((prev, StepDiagnostics::default()));
+    }
+    let y0 = prev.array();
+    let scales = [y0[0].max(1e-10), y0[1].max(1e-8), y0[2].max(1e-8), y0[3]];
+    let to_state =
+        |d: [f64; 4]| State::from_array(std::array::from_fn(|i| y0[i] + scales[i] * d[i]));
+    let residual = |d: [f64; 4]| -> Result<[f64; 4], Error> {
+        let r = proper_rate(to_state(d), fhe, actual)?.array();
+        Ok(std::array::from_fn(|i| {
+            d[i] - h * r[i] / (actual.clock_s() * scales[i])
+        }))
+    };
+    let (d, iterations, r) = solve_matched_root(
+        [0.; 4],
+        scales,
+        actual.helium.active(fhe),
+        to_state,
+        residual,
+    )?;
+    let y = to_state(d);
+    let rate = proper_rate(y, fhe, actual)?;
+    let coeff = 1.5 * KB_J_K * h / actual.clock_s();
+    let ad = coeff * rate.adiabatic_w_k_s;
+    let cp = coeff * rate.compton_w_k_s;
+    let ext = coeff * rate.external_w_k_s;
+    Ok((
+        y,
+        StepDiagnostics {
+            iterations,
+            scaled_residual: maxabs(r),
+            physical_adiabatic_j_per_h: ad,
+            physical_compton_j_per_h: cp,
+            physical_external_j_per_h: ext,
+            matched_thermal_correction_j_per_h: 0.,
+            thermal_balance_defect_j_per_h: y.thermal_j_per_h()
+                - prev.thermal_j_per_h()
+                - ad
+                - cp
+                - ext,
+            binding_change_j_per_h: y.binding_j_per_h() - prev.binding_j_per_h(),
+        },
+    ))
+}

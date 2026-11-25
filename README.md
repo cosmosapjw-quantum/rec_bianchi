@@ -5,6 +5,16 @@ Bianchi–HyRec program: homogeneous all-11 Bianchi backgrounds, tetrad and 1+3
 formalism, finite tilt, nonlinear large shear, HYREC-grade atomic physics and
 angle/frequency-resolved Ly-alpha transfer.
 
+## Independent runtime lane (R118-C2F)
+
+REC_BIANCHI is being developed as an independent recombination/transport
+runtime. Existing HyRec source constants and primitive rate tables are
+permitted inputs; HyRec executables and recombination histories are validation
+references, not mandatory runtime dependencies. See
+[REC runtime ownership](docs/REC_RUNTIME_OWNERSHIP.md) and
+[bounded R118-C2F evidence](research/r118c2f_standalone/README.md).
+The full atomic/radiation owner swap below remains unresolved.
+
 ## Current state
 
 - Durable local stage: **PR-05C2C1B2B1E1B0 / v0.75**.
