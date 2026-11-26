@@ -1,0 +1,2 @@
+# C3E REC independent and triple obligations
+Independent: evolve both wings and the shared real-level source/loss using native FULL atomic residual and opacity; derive explicit blue-to-red redshift transfer, retain labels, compare original FULL and refined closure under causal prefix. Triple: match REC/BASS cosmology, drive actual geometry-dependent atomic/transport rates rather than only H scalar, validate full H+He source and epoch handoff. Preserve C3D conditional donor and do not overwrite production pins.
