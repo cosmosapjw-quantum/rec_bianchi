@@ -1,0 +1,16 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+_____________________________ test_invalid_inputs ______________________________
+
+    def test_invalid_inputs():
+     import pytest
+     from labelled import Owner
+     o=Owner(np.array([10.2,10.3]),np.array([2.,3.]),np.array([0]),np.array([1]),np.array([.2]))
+     q=LineOwner(o,(0.,.25,1.,0.),1.,3.,2.,4.,np.array([1.,2.],dtype=L))
+>    with pytest.raises(ValueError):q.affine(-1.,0.,True)
+E    Failed: DID NOT RAISE ValueError
+
+research/r118c3c_line_face/test_line.py:20: Failed
+=========================== short test summary info ============================
+FAILED research/r118c3c_line_face/test_line.py::test_invalid_inputs - Failed:...
+1 failed, 1 passed in 0.29s

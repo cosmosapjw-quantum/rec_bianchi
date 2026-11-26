@@ -19,7 +19,10 @@ class LineOwner:
         self.A1=o.matrix((1.,bath[1],bath[2],0.))-self.A0
         self._mat={}
         for qss in (False,True):self._mat[qss]=self._build(qss)
-    def qss(self,N):return (self.source+self.r@N)/self.gamma
+    def qss(self,N):
+        N=np.asarray(N,dtype=L)
+        if N.shape!=(self.n,) or not np.isfinite(N).all() or min(N)<0:raise ValueError('line stock domain')
+        return (self.source+self.r@N)/self.gamma
     def _build(self,qss):
         n=self.n;m=n+(not qss);size=m+10
         a=lil_matrix((size,size));z=lil_matrix((size,size));b=np.zeros(size,dtype=L)
@@ -42,6 +45,7 @@ class LineOwner:
         b[m+6]=self.source
         return a.tocsr(),z.tocsr(),b
     def affine(self,H,influx,qss):
+        if not np.isfinite(H) or not np.isfinite(influx) or H<0 or influx<0:raise ValueError('line boundary domain')
         a,z,b=self._mat[qss];m=self.n+(not qss);v=b.copy();j=L(H)*L(influx)
         v[self.o.top]+=j*self.o.tw;v[m+3]+=j;v[m+4]+=j*self.o.e.max()
         return a+float(H)*z,v

@@ -11,3 +11,12 @@ def test_pair_and_qss():
  assert abs(dx[:3].sum()+dx[3]+dx[10]-dx[6]-dx[9])<1e-13
  e=o.e
  assert abs(dx[:2]@e+q.line_e*dx[2]+dx[4]+dx[5]+dx[8]+dx[11]+q.line_e*(dx[10]-dx[9])-dx[7])<1e-12
+
+def test_invalid_inputs():
+ import pytest
+ from labelled import Owner
+ o=Owner(np.array([10.2,10.3]),np.array([2.,3.]),np.array([0]),np.array([1]),np.array([.2]))
+ q=LineOwner(o,(0.,.25,1.,0.),1.,3.,2.,4.,np.array([1.,2.],dtype=L))
+ with pytest.raises(ValueError):q.affine(-1.,0.,True)
+ with pytest.raises(ValueError):q.affine(0.,-1.,False)
+ with pytest.raises(ValueError):q.qss(np.array([-1.,2.]))
