@@ -1,0 +1,2 @@
+# R118-C3A REC return
+Run from repo root with PYTHONPATH=src and OPENBLAS_NUM_THREADS=1: test_refined.py (pytest), run.py, evolve.py, lumpability.py, verify.py. Actual source identity from C2W FULL and graph, C2X/Y/Z causal states. RESULTS.json includes fixed occupation action comparisons; EVOLUTION.json includes frozen blue-wing evolution at 1e5/1e6/1e7 seconds, LUMPABILITY.json independent symmetric reference and distinct-label defect. No production source/pin change. 29 focused Python tests.

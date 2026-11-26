@@ -1,0 +1,1 @@
+Use native wing nodes plus nested fine quantile knots. Positive pairwise monotone coupling of barycentric endpoints preserves exact dilute energy-action vector edge-by-edge. Compare all actual occupation probes, including C2Z fitted trajectory held out, in new registry and after projection to old nodes. Full fine-node limit identity; not new coupled FULL opacity.

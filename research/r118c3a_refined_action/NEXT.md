@@ -1,0 +1,2 @@
+# R118-C3B
+Use distinct fine-mode identity (do not lump equal-energy modes merely by energy). Build a frequency-resolved scattering and redshift owner with proper bin/line-face geometry and actual causal boundary before attempting refined FULL writeback; compare frozen labelled fine, reduced and native observables. Static positive reduction improves sampled redistribution but is not a dynamical closure theorem.
