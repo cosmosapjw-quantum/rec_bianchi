@@ -1,0 +1,33 @@
+{'case': 'zerofine', 'method': 'BDF', 'tol': 1e-11, 'x': 0.00020976673307195756, 'T': 9.302435547513022, 'nfev': 2587, 'clock_sha': '9ac2d7b480645de097f3c06447866935cf3d98d4dbfc393340b1e32f58847fd6'}
+{'case': 'zerofine', 'method': 'BDF', 'tol': 3e-13, 'x': 0.00020976673267900046, 'T': 9.302435546000849, 'nfev': 4661, 'clock_sha': '9ac2d7b480645de097f3c06447866935cf3d98d4dbfc393340b1e32f58847fd6'}
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3e_directional_line/clock_oracle.py", line 36, in <module>
+    q=solve_ivp(rhs,(-np.log(1601.),-np.log(21.)),np.log([x0,T0]),method=method,rtol=tol,atol=tol/20);assert q.success
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/ivp.py", line 657, in solve_ivp
+    message = solver.step()
+              ^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/base.py", line 201, in step
+    success, message = self._step_impl()
+                       ^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/radau.py", line 458, in _step_impl
+    converged, n_iter, Z, rate = solve_collocation_system(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/radau.py", line 103, in solve_collocation_system
+    F[i] = fun(t + ch[i], y + Z[i])
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/base.py", line 158, in fun
+    return self.fun_single(t, y)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/integrate/_ivp/base.py", line 24, in fun_wrapped
+    return np.asarray(fun(t, y), dtype=dtype)
+                      ^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3e_directional_line/clock_oracle.py", line 34, in rhs
+    return [s.hydrogen_rhs_ln_a(z=z,x_HII=x,x_e=x,Tm_K=T)/x,s.thermal_rhs_ln_a(z,x,T)/T]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/hmla_flrw.py", line 98, in hydrogen_rhs_ln_a
+    rates=self.table.evaluate(
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/primitive_rates.py", line 350, in evaluate
+    raise ValueError("Tm/Tr lies outside original-HyRec table")
+ValueError: Tm/Tr lies outside original-HyRec table
