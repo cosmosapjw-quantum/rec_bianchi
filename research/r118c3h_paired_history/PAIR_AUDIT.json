@@ -1,0 +1,89 @@
+{
+  "pairs": {
+    "linear256": {
+      "delta_x": -9.83013032085367e-10,
+      "delta_T": -2.105480234604329e-10,
+      "max_pair_res": 3.0292933315596e-17,
+      "max_pair_res_vs_individual": 2.4151835858388614e-21,
+      "max_individual_xres": 2.0723508087523712e-17
+    },
+    "linear512": {
+      "delta_x": -2.0747237261531382e-10,
+      "delta_T": -4.274625098332763e-11,
+      "max_pair_res": 2.7018549785403563e-17,
+      "max_pair_res_vs_individual": 1.3341924493590726e-21,
+      "max_individual_xres": 1.5289791730887375e-17
+    },
+    "linear1024": {
+      "delta_x": 1.865300691683558e-10,
+      "delta_T": 4.18367562815547e-11,
+      "max_pair_res": 2.6540441236388947e-17,
+      "max_pair_res_vs_individual": 7.003832044414699e-22,
+      "max_individual_xres": 1.4676116360601635e-17
+    },
+    "pchip256": {
+      "delta_x": -9.926980903962601e-10,
+      "delta_T": -2.1327650756575167e-10,
+      "max_pair_res": 3.434298818032699e-17,
+      "max_pair_res_vs_individual": 2.5497586100760494e-21,
+      "max_individual_xres": 2.3210396820662338e-17
+    },
+    "pchip512": {
+      "delta_x": -2.0909596276652564e-10,
+      "delta_T": -4.320099833421409e-11,
+      "max_pair_res": 2.779086212319531e-17,
+      "max_pair_res_vs_individual": 1.2799638736871774e-21,
+      "max_individual_xres": 1.6128354348669133e-17
+    },
+    "pchip1024": {
+      "delta_x": 1.8766604936715225e-10,
+      "delta_T": 4.18367562815547e-11,
+      "max_pair_res": 2.715652576667761e-17,
+      "max_pair_res_vs_individual": 6.685354516042674e-22,
+      "max_individual_xres": 1.5280474368467578e-17
+    }
+  },
+  "splits": [
+    {
+      "mode": "linear",
+      "coarse": 256,
+      "fine": 512,
+      "actual": -7.755406594700531e-10,
+      "quadrature_on_fine": -7.351213996150524e-10,
+      "evolved_path": -4.041915010295156e-11,
+      "decomposition_residual": -1.0975204914992771e-16,
+      "max_coincident_rhs_difference": 1.4939405927894e-06
+    },
+    {
+      "mode": "linear",
+      "coarse": 512,
+      "fine": 1024,
+      "actual": -3.940024417836696e-10,
+      "quadrature_on_fine": -3.826530128026562e-10,
+      "evolved_path": -1.134911844823761e-11,
+      "decomposition_residual": -3.1053277582468804e-16,
+      "max_coincident_rhs_difference": 2.9287733440686026e-06
+    },
+    {
+      "mode": "pchip",
+      "coarse": 256,
+      "fine": 512,
+      "actual": -7.836021276297345e-10,
+      "quadrature_on_fine": -7.362082502301636e-10,
+      "evolved_path": -4.7394254937704716e-11,
+      "decomposition_residual": 3.775381338214258e-16,
+      "max_coincident_rhs_difference": 1.7390476150236367e-06
+    },
+    {
+      "mode": "pchip",
+      "coarse": 512,
+      "fine": 1024,
+      "actual": -3.967620121336779e-10,
+      "quadrature_on_fine": -3.8195633537221313e-10,
+      "evolved_path": -1.4806003245941122e-11,
+      "decomposition_residual": 3.264844763699892e-16,
+      "max_coincident_rhs_difference": 2.8811570171871637e-06
+    }
+  ],
+  "scope": "a posteriori trapezoid quadrature vs evolved-path discrepancy on same accepted grids; not an error bound on exact physical delta"
+}
