@@ -1,0 +1,1 @@
+use adaptive/composite quadrature of the paired small RHS difference, retarded face-crossing event alignment and matched high-order integration; compare same accepted source and estimate error. Independent: add source-owned emitted/absorbed line pair with 1s/2p population and detailed balance, then compare against original native rate. No full H+He promotion.
