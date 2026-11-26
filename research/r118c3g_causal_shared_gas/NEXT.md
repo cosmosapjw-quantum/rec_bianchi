@@ -1,0 +1,3 @@
+# C10: bounded closeout
+R1–R10/C1–C9 remotely verified through receipt. Local accepted self-consistent H-only x,T and directional history executable; paired angular correction NOT converged, no directional donor or full H+He claim. Independent collisionless q-stock overlap with exterior ledger passes on actual accepted rays. Next: diagnose time-grid nonmonotonicity in paired delta via same-grid/paired residual subtraction, high-ray 256/512/1024 refinement and source interpolation error; then extend window only if paired difference exceeds numerical uncertainty. Independent: couple exterior q-stock to physically specified boundary flux/atomic source with separate reaction ownership, not virtual-bin substitution.
+No production files changed; active worktree retained.
