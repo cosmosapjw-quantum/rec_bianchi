@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3d_two_sided/run.py", line 65, in <module>
+    bath0=bath(0.);line=TwoWing(parts[0][-1],parts[1][-1],bath0,p0,cp,conductance,loss,base)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3d_two_sided/two_line.py", line 17, in __init__
+    cap=np.r_[red.rates(bath)[1],blue.rates(bath)[1]];self.cap=cap;self.r=self.k/cap;self.s=self.k/self.cp;self.gamma=self.loss+self.s.sum()
+              ^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3b_labelled_transport/labelled.py", line 16, in rates
+    if H<0 or T<=0 or scale<0 or inc<0:raise ValueError('bath domain')
+                                 ^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
