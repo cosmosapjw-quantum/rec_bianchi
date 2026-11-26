@@ -1,0 +1,19 @@
+"""Shared directional line cell with explicit external non-line source/sink.
+Use actual native frozen snapshots; reservoir source chosen from native row balance
+after removing native Ly-alpha contribution. No full-network dynamical promotion.
+"""
+import numpy as np
+from scipy.optimize import brentq
+A21=6.265e8
+def advance(p,n,X,C,w,k,fin,dt,pump,loss):
+ w=w/w.sum();n=np.asarray(n);bath=C*w*fin;inj=dt*(k@bath);scale=p+n.sum()+inj+dt*pump
+ if min(p,pump,loss)<0 or C<=0 or np.min(n)<0 or np.min(fin)<0 or scale<=0:raise ValueError('domain')
+ hi=min(.749999*X,scale)
+ def at(pp):
+  nn=(n+dt*(w*A21*pp+k*bath))/(1+dt*(A21*(3*X-4*pp)/C+k))
+  esc=dt*(k@nn);ext=dt*(pump-loss*pp)
+  return pp-p+np.sum(nn-n)+esc-inj-ext,nn,esc,ext
+ assert at(0)[0]<=0 and at(hi)[0]>=0
+ pp=brentq(lambda v:at(v*scale)[0]/scale,0,hi/scale,xtol=1e-15,rtol=1e-14)*scale
+ res,nn,esc,ext=at(pp);assert min(nn)>=0 and abs(res)<1e-12*scale
+ return pp,nn,esc,inj,ext,res
