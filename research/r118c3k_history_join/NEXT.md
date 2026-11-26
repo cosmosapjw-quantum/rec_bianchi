@@ -1,0 +1,1 @@
+construct a genuinely anisotropic causal prefix over the preceding domain rather than reset a single join value, extend matched pair and compare 256/512/1024, distinguish join consistency from truncation. Independent: derive source-owned escape rate and couple line stock under actual atom constraints.
