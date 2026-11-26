@@ -22,8 +22,8 @@ def main():
  results=[]
  for i,j in [(len(eta)-2,len(eta)-1),(0,len(eta)-1)]:
   a0,a1=np.exp(eta[[i,j]]);r0,r1=rr(eta[i]),rr(eta[j]);u=(eta[i]+eta[j])/2;z=np.expm1(-u);_,nh=m.cosmology(z);H=np.interp(u,ge,g['h'])*2.1842852410855023e-18;x=np.interp(u,rows[:,0],rows[:,1])
-  # native HMLA cosmology returns nH in cm^-3; check actual scale via method doc/usage.
-  tau=A21*nh*(1-x)/(LYA_FACT*H);p=-np.expm1(-tau)
+  # native HMLA cosmology returns nH in m^-3; convert to cm^-3.
+  tau=A21*nh*1e-6*(1-x)/(LYA_FACT*H);p=-np.expm1(-tau)
   fac=np.array([rr(t)/np.exp(t) for t in np.linspace(eta[i],eta[j],17)])
   assert np.all(np.diff(fac,axis=0)<0)
   f=1/np.expm1(E/(KB_NATIVE_EV_K*2.7255/a0))+out[i,:,:311]
