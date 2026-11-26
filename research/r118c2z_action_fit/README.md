@@ -1,0 +1,2 @@
+# C2Z return
+From repo root, PYTHONPATH=src OPENBLAS_NUM_THREADS=1 python3 scripts train.py, feasibility.py, run_fit.py, fit_audit.py, verify.py in this directory. Train/holdout source hashes, fit.npz numerical graphs, causal FULL three trajectories, per-state primal/dual diagnostics, 28 focused regression tests. First fit_audit call used old constructor signature and failed; log retained, fixed and reran. No production API change.
