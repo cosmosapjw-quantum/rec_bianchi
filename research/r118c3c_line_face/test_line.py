@@ -6,7 +6,7 @@ def test_pair_and_qss():
  b=(0.,.25,1.,0.);n=np.array([1.,2.],dtype=L)
  q=LineOwner(o,b,1.,3.,2.,4.,n)
  assert abs(q.qss(n)-1.)<1e-14
- a,v=q.affine(0.,0.,False);x=np.r_[n,1.];dx=a@x+v
+ a,v=q.affine(0.,0.,False);x=np.r_[n,1.,np.zeros(10)];dx=a@x+v
  assert abs(dx[2])<1e-14
  assert abs(dx[:3].sum()+dx[3]+dx[10]-dx[6]-dx[9])<1e-13
  e=o.e
