@@ -68,7 +68,7 @@ def donor():
     J.append(a/scale[j])
    Js.append(np.array(J).T)
   J=Js[-1];assert np.linalg.norm(J[3]-J[1]-J[2])<1e-9
-  rows.append(dict(snapshot=i,xe=float(C@q[:3]),opacity=float(kappa),energy_eV_H=float(q[3]+chi@q[:3]),rates_per_du=dict(zip(['xe','thermal_eV_H','binding_eV_H','gas_eV_H'],f0.tolist())),jacobian=J.tolist(),FD_refine=[float(np.linalg.norm(a-b)/np.linalg.norm(b)) for a,b in zip(Js[:-1],Js[1:])],native_charge_res_max=float(max(abs(v['charge_res']))),native_energy_res_max=float(max(abs(v['energy_res'])))))
+  rows.append(dict(snapshot=int(i),xe=float(C@q[:3]),opacity=float(kappa),energy_eV_H=float(q[3]+chi@q[:3]),rates_per_du=dict(zip(['xe','thermal_eV_H','binding_eV_H','gas_eV_H'],f0.tolist())),jacobian=J.tolist(),FD_refine=[float(np.linalg.norm(a-b)/np.linalg.norm(b)) for a,b in zip(Js[:-1],Js[1:])],native_charge_res_max=float(max(abs(v['charge_res']))),native_energy_res_max=float(max(abs(v['energy_res'])))))
  write('HHE_ENERGY_RESPONSE.json',dict(pinned_REI=rev,point_sha256=hashlib.sha256(raw).hexdigest(),history_sha256=hashlib.sha256(hraw).hexdigest(),binding_gradient=chi.tolist(),charge_gradient=C.tolist(),rows=rows,scope='actual prior native zero-photo point evaluations; energy/charge observable Jacobian independently reconstructed; no full primordial HHe evolution or radiation closure'))
  print(rows,flush=True)
 if __name__=='__main__':
