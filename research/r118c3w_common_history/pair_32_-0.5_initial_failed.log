@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_pair.py", line 147, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]),float(sys.argv[2]))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_pair.py", line 140, in run
+    _,g0=apply(a0,U[0]-U[1]);_,g1=apply(b0,U[1]);maxref=max(maxref,abs(xr-xl-h*(.5*(a0[0]+b0[0])+g0+g1)))
+                                  ^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_pair.py", line 89, in apply
+    a,b,g=o[2].apply(I);return a+b,g
+          ^^^^^^^^^^
+AttributeError: 'numpy.float64' object has no attribute 'apply'

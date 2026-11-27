@@ -1,0 +1,64 @@
+"""Common event-aligned baseline; same endpoint transfer and affine history as paired solver."""
+import sys,json,numpy as np
+from pathlib import Path
+from scipy.optimize import brentq
+D=Path(__file__).resolve().parent;P=D.parent/'r118c3v_event_comparator';sys.path.insert(0,str(P))
+from finite_event import Map,Context,p,JumpResponse
+def context(nt):
+ if nt!=128:return Context(nt)
+ from unittest.mock import patch
+ orig=np.load
+ def load(path,*a,**k):
+  path=Path(path)
+  if path.name in ['frozen_1110_128.npz','z1110_n128_0.npz']:path=D.parent/'r118c3u_weak_history'/path.name
+  return orig(path,*a,**k)
+ with patch.object(np,'load',load):return Context(nt)
+def run(nt,lam=0.):
+ c=context(nt);he=c.he;N=len(he)-1;nr=c.nr;m=Map(c,lam);shape=(N,1 if lam==0 else nr,314)
+ L=np.zeros(shape);M=L.copy();R=L.copy();zero=np.zeros((nr,313))
+ def owner(u,x,T):
+  s,H,Tr=c.snap(u,x,T,c.zero);a,w=m.state(u) if lam else (np.ones(nr),c.w)
+  rr,o,err=p.step(s,a,zero,w)
+  return rr.dxHII_dln_a,o,JumpResponse(s,a,w),H,Tr
+ def apply(o,I):
+  a,b,g=o[2].apply(I);return a+b,g
+ x,T=map(float,c.v[0,1:3]);rows=[[he[0],x,T,0.,0.]];maxroot=0.;maxmom=0.;minratio=np.inf;maxspread=0.
+ from numpy.polynomial.legendre import leggauss
+ for i,r in enumerate(he[1:],1):
+  l=he[i-1];h=r-l;mid=(l+r)/2
+  U=m.mom(i,l,r,L,M,R)
+  if lam:
+   z,w=leggauss(3)
+   for t,wt in zip(z,w):
+    f=(t+1)/2;u=l+h*f;R0=m.t(u)-(u-c.lr)
+    g=p._planck_difference(c.ef[None,:]/(p.KB_NATIVE_EV_K*c.model.tcmb0_K*np.exp(-u)),R0)
+    for k in range(3):U[k]+=wt/2*g*f**k
+  a=owner(l,x,T);H=np.interp(mid,c.ge,c.g['h'])*2.1842852410855023e-18;Tgamma=c.model.tcmb0_K*np.exp(-mid);scale=p.COMPTON_GAMMA_PER_T4_S_INV_K4*Tgamma**4/H
+  def trial(dx):
+   xm=x+dx/2;A=scale*xm/(1+xm+c.model.f_he);tt=T+h*(A*(Tgamma-T)-2*T)/(1+h*(2+A)/2)
+   b=owner(r,x+dx,tt);_,g0=apply(a,U[0]-U[1]);_,g1=apply(b,U[1]);F=.5*(a[0]+b[0])+g0+g1
+   return dx-h*F,tt,F,b
+  width=max(1e-4,4*abs(c.v[i,1]-c.v[i-1,1]));lo=max(-width,-.99*x);hi=min(width,.99*(1-x))
+  if trial(lo)[0]*trial(hi)[0]>0:raise ValueError(f'root bracket {i} {x} {lo} {hi} {trial(lo)[0]} {trial(hi)[0]}')
+  dx=brentq(lambda q:trial(q)[0],lo,hi,xtol=1e-19,rtol=1e-14);res,tt,F,b=trial(dx);maxroot=max(maxroot,abs(res))
+  O=[]
+  for k in [0,1]:
+   o0,_=apply(a,U[k]-U[k+1]);o1,_=apply(b,U[k+1]);o=a[1]/((k+1)*(k+2))+b[1]/(k+2)+o0+o1
+   if not lam:maxspread=max(maxspread,float(np.max(abs(o-o[0]))))
+   O.append(o if lam else o[:1])
+  L[i-1]=4*O[0]-6*O[1];R[i-1]=6*O[1]-2*O[0];M[i-1]=O[0]
+  maxmom=max(maxmom,float(np.max(abs((L[i-1]+R[i-1])/2-O[0]))))
+  x+=dx;T=tt;assert 0<x<1 and T>0
+  for t,o in [(l,L[i-1]),(mid,M[i-1]),(r,R[i-1])]:
+   tr=c.model.tcmb0_K*np.exp(-t);f=1/np.expm1(c.tab.energy_eV/(p.KB_NATIVE_EV_K*tr));ratio=float(np.min((f+o[:,:311])/f))
+   if ratio<minratio:
+    minratio=ratio
+    if ratio<=0:print('NEGATIVE_HISTORY',nt,lam,i,t,ratio,flush=True)
+  rows.append([r,x,T,F,res])
+  if i%256==0:print(nt,lam,i,x,flush=True)
+ rows=np.array(rows);print("BASE_DIAG",nt,maxroot,minratio,flush=True);assert maxroot<1e-15 and minratio>0
+ tag=f'base_{nt}' if not lam else f'direct_{nt}_{lam:g}'
+ np.savez_compressed(D/(tag+'.npz'),rows=rows,he=he,L=L,M=M,R=R)
+ j=dict(nt=nt,lambda_=lam,steps=N,final_x=x,final_T=T,initial_x=rows[0,1],old_final_x=float(c.v[-1,1]),baseline_difference=x-float(c.v[-1,1]),max_root=maxroot,max_affine_moment_abs=maxmom,min_full_virtual_ratio=minratio,max_ray_spread=maxspread,event_splits=m.events,scope='actual H-only gas/outgoing with common event-aligned endpoint affine projection')
+ (D/(tag+'.json')).write_text(json.dumps(j,indent=2)+'\n');print(j,flush=True)
+if __name__=='__main__':run(int(sys.argv[1]),float(sys.argv[2]) if len(sys.argv)>2 else 0.)

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_base.py", line 59, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]),float(sys.argv[2]) if len(sys.argv)>2 else 0.)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_base.py", line 36, in run
+    a=owner(l,x,T);_,H,Tgamma=c.snap(mid,x,T,c.zero);scale=p.COMPTON_GAMMA_PER_T4_S_INV_K4*Tgamma**4/H
+                              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3t_second_tangent/regular.py", line 26, in snap
+    return p.populate_original_full_atomic(so,z=zz,xHII=x,xe=x,Tm_K=T,incoming_virtual=inc[:311],incoming_lyman=inc[311:]),H,self.model.tcmb0_K*(1+zz)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/full_2012_atomic_source.py", line 244, in populate_original_full_atomic
+    raise ValueError("invalid physical xHII/xe/Tm input")
+ValueError: invalid physical xHII/xe/Tm input

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_base.py", line 62, in <module>
+    if __name__=='__main__':run(int(sys.argv[1]),float(sys.argv[2]) if len(sys.argv)>2 else 0.)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3w_common_history/common_base.py", line 41, in run
+    dx=brentq(lambda q:trial(q)[0],-1e-4,1e-4,xtol=1e-19,rtol=1e-14);res,tt,F,b=trial(dx);maxroot=max(maxroot,abs(res))
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/optimize/_zeros_py.py", line 846, in brentq
+    r = _zeros._brentq(f, a, b, xtol, rtol, maxiter, args, full_output, disp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: f(a) and f(b) must have different signs
