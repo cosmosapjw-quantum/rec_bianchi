@@ -2,7 +2,7 @@
   "cycle": "R118-C4C",
   "base": "fdd5ddaabb8cbbc08115d089d8ee21557e2142ff",
   "scope": "research/r118c4c_event_limiter",
-  "status": "SCOPED_PARTIAL",
+  "status": "SCOPED_EXECUTED",
   "execution": [
     {
       "tag": "donor",
@@ -352,5 +352,443 @@
   ],
   "native_subagent": "NOT_RUN",
   "production_regression": "NOT_RUN",
-  "next": "Propagate exact directional events and distinguish history representation errors; full HHe anisotropic owner and radiation energy ledger remain open."
+  "next": "Propagate exact directional events and distinguish history representation errors; full HHe anisotropic owner and radiation energy ledger remain open.",
+  "final_science": {
+    "isolation": {
+      "rows": [
+        {
+          "mode": "degree8",
+          "direct": [
+            {
+              "nt": 64,
+              "lam": 0.0,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816279110993,
+              "final_T": 2991.826485787569,
+              "initial_x": 0.15983183721435287,
+              "max_root": 1.5585406229479126e-19,
+              "min_full_ratio": 1.0000026024607427,
+              "limited_cells": 0,
+              "max_moment_relative": 9.628249517844642e-17,
+              "event_splits": 4681440,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            }
+          ],
+          "pairs": []
+        },
+        {
+          "mode": "degree8tight",
+          "direct": [
+            {
+              "nt": 64,
+              "lam": 0.0,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816279110993,
+              "final_T": 2991.826485787569,
+              "initial_x": 0.15983183721435287,
+              "max_root": 1.5585406229479126e-19,
+              "min_full_ratio": 1.0000026024607427,
+              "limited_cells": 0,
+              "max_moment_relative": 9.628249517844642e-17,
+              "event_splits": 4681440,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            },
+            {
+              "nt": 64,
+              "lam": -0.5,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816268205758,
+              "final_T": 2991.826485787543,
+              "initial_x": 0.15983183721435287,
+              "max_root": 2.710505431213761e-19,
+              "min_full_ratio": 1.0902050447610458e-09,
+              "limited_cells": 8,
+              "max_moment_relative": 7.947774292589124e-17,
+              "event_splits": 4681460,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            },
+            {
+              "nt": 64,
+              "lam": 0.5,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.1387181626813482,
+              "final_T": 2991.826485787543,
+              "initial_x": 0.15983183721435287,
+              "max_root": 2.168404344971009e-19,
+              "min_full_ratio": 6.736761186116319e-10,
+              "limited_cells": 8,
+              "max_moment_relative": 7.859527790692866e-17,
+              "event_splits": 4681466,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            }
+          ],
+          "pairs": [
+            {
+              "nt": 64,
+              "lam": -0.5,
+              "ref": 1,
+              "steps": 567,
+              "delta_x": -1.0905266069740439e-10,
+              "delta_T": -2.60853428056647e-11,
+              "direct_delta_x": -1.0905235048319639e-10,
+              "abs_disagreement": 3.102142079948276e-16,
+              "maxroot": 2.779326858178173e-22,
+              "max_reference_residual": 1.3972655497906938e-17,
+              "max_weak_moment_abs": 4.0389678347315804e-28,
+              "min_stored_virtual_ratio": 1.0898979496687389e-09,
+              "cells_checked": 5642784,
+              "limited": 8,
+              "event_splits": 9362920,
+              "mesh_sha256": "d7853a63528283fd92de231ed75c0545bdc99063a0be4b06668147ac078c6d4a",
+              "scope": "stable same quadratic owner, direct and paired share scalar mesh, fixed H H-only, no continuum"
+            },
+            {
+              "nt": 64,
+              "lam": 0.5,
+              "ref": 1,
+              "steps": 567,
+              "delta_x": -1.0976194943527828e-10,
+              "delta_T": -2.612638097681942e-11,
+              "direct_delta_x": -1.0976172748478064e-10,
+              "abs_disagreement": 2.219504976465663e-16,
+              "maxroot": 8.242869667492553e-20,
+              "max_reference_residual": 1.3972655497906938e-17,
+              "max_weak_moment_abs": 5.048709793414476e-28,
+              "min_stored_virtual_ratio": 6.731788460001553e-10,
+              "cells_checked": 5642784,
+              "limited": 8,
+              "event_splits": 9362932,
+              "mesh_sha256": "d7853a63528283fd92de231ed75c0545bdc99063a0be4b06668147ac078c6d4a",
+              "scope": "stable same quadratic owner, direct and paired share scalar mesh, fixed H H-only, no continuum"
+            }
+          ],
+          "even": -4.3762922026536534e-10,
+          "odd": -7.092887378738955e-13,
+          "cells": 11285568,
+          "min_positive": 6.731788460001553e-10,
+          "max_direct_error": 3.102142079948276e-16,
+          "mesh_changes": 0,
+          "max_mesh_shift": 0.0,
+          "limited": [
+            0,
+            8,
+            8
+          ],
+          "limit_events": {
+            "-0.5": {
+              "237": 4,
+              "238": 4
+            },
+            "0.5": {
+              "237": 2,
+              "238": 6
+            }
+          }
+        },
+        {
+          "mode": "aligned",
+          "direct": [
+            {
+              "nt": 64,
+              "lam": 0.0,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816278960777,
+              "final_T": 2991.826485787569,
+              "initial_x": 0.15983183721435287,
+              "max_root": 1.5585406229479126e-19,
+              "min_full_ratio": 1.0000026024607427,
+              "limited_cells": 0,
+              "max_moment_relative": 9.628249517844642e-17,
+              "event_splits": 4681376,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            },
+            {
+              "nt": 64,
+              "lam": -0.5,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816268055645,
+              "final_T": 2991.8264857875424,
+              "initial_x": 0.15983183721435287,
+              "max_root": 1.6263032587282567e-19,
+              "min_full_ratio": 2.3374788428075518e-09,
+              "limited_cells": 8,
+              "max_moment_relative": 7.933691352286259e-17,
+              "event_splits": 4681460,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            },
+            {
+              "nt": 64,
+              "lam": 0.5,
+              "refine": 1,
+              "steps": 567,
+              "final_x": 0.13871816267984846,
+              "final_T": 2991.8264857875424,
+              "initial_x": 0.15983183721435287,
+              "max_root": 1.7618285302889447e-19,
+              "min_full_ratio": 2.1786050827999557e-09,
+              "limited_cells": 8,
+              "max_moment_relative": 7.835212211617988e-17,
+              "event_splits": 4681466,
+              "scope": "three weak moments; quadratic native operator interpolation (endpoint+midpoint gas); certified positive full virtual history; fixed H; not continuum"
+            }
+          ],
+          "pairs": [
+            {
+              "nt": 64,
+              "lam": -0.5,
+              "ref": 1,
+              "steps": 567,
+              "delta_x": -1.0905129622177674e-10,
+              "delta_T": -2.6084649786559408e-11,
+              "direct_delta_x": -1.0905132352689861e-10,
+              "abs_disagreement": 2.7305121876107003e-17,
+              "maxroot": 2.1312308482428758e-20,
+              "max_reference_residual": 1.389811659854856e-17,
+              "max_weak_moment_abs": 4.0389678347315804e-28,
+              "min_stored_virtual_ratio": 2.3375044122531108e-09,
+              "cells_checked": 5642784,
+              "limited": 8,
+              "event_splits": 9362920,
+              "mesh_sha256": "699c8af1c51a2630782b1ea075b5f9696c1e6f17935d8f2918a8293a658b8417",
+              "scope": "stable same quadratic owner, direct and paired share scalar mesh, fixed H H-only, no continuum"
+            },
+            {
+              "nt": 64,
+              "lam": 0.5,
+              "ref": 1,
+              "steps": 567,
+              "delta_x": -1.0975917392031762e-10,
+              "delta_T": -2.612544840814399e-11,
+              "direct_delta_x": -1.0975931274970208e-10,
+              "abs_disagreement": 1.3882938445646383e-16,
+              "maxroot": 6.007175399458641e-19,
+              "max_reference_residual": 1.389811659854856e-17,
+              "max_weak_moment_abs": 5.048709793414476e-28,
+              "min_stored_virtual_ratio": 2.178651925532904e-09,
+              "cells_checked": 5642784,
+              "limited": 8,
+              "event_splits": 9362932,
+              "mesh_sha256": "699c8af1c51a2630782b1ea075b5f9696c1e6f17935d8f2918a8293a658b8417",
+              "scope": "stable same quadratic owner, direct and paired share scalar mesh, fixed H H-only, no continuum"
+            }
+          ],
+          "even": -4.376209402841887e-10,
+          "odd": -7.07877698540882e-13,
+          "cells": 11285568,
+          "min_positive": 2.178651925532904e-09,
+          "max_direct_error": 1.3882938445646383e-16,
+          "mesh_changes": 2,
+          "max_mesh_shift": 1.9904854653418624e-06,
+          "limited": [
+            0,
+            8,
+            8
+          ],
+          "limit_events": {
+            "-0.5": {
+              "237": 4,
+              "238": 4
+            },
+            "0.5": {
+              "237": 4,
+              "238": 4
+            }
+          }
+        }
+      ],
+      "scope": "only source-cell reconstruction degree and two receiving scalar-onset knots varied; no fully event-aligned continuum"
+    },
+    "donor": {
+      "pinned_REI": "6fc8823bd531b2d62bf43ab5c2269c2c8d748349",
+      "point_sha256": "27ca151991d8454a543182e52ca78e3bd02df2ff4a7f2bcb3fb5d6c8b9ddc5b0",
+      "history_sha256": "800553bae89e669ebf8ec8acdad67a56ded22c382664be0216dcb17b9e3bca41",
+      "binding_gradient": [
+        13.598434599702,
+        1.9989879616019746,
+        6.423225406605951
+      ],
+      "charge_gradient": [
+        1.0,
+        0.08130135170951498,
+        0.16260270341902996
+      ],
+      "rows": [
+        {
+          "snapshot": 0,
+          "xe": 0.00021014665671400957,
+          "opacity": 6.228447171929338e-05,
+          "energy_eV_H": 0.00415838117732878,
+          "rates_per_du": {
+            "xe": -2.383674778242121e-05,
+            "thermal_eV_H": -0.0025433993156536985,
+            "binding_eV_H": -0.00032414242788712284,
+            "gas_eV_H": -0.0028675417435408213
+          },
+          "jacobian": [
+            [
+              -0.22687237859151518,
+              -0.018445031035351007,
+              -0.08969903874513432,
+              0.011642495241761941
+            ],
+            [
+              0.2760690909083178,
+              0.022443157687325466,
+              0.044776917928687765,
+              -2.008669449878598
+            ],
+            [
+              -3.0851090699829595,
+              -0.35216315681706273,
+              -4.128261081804882,
+              0.15831971012244433
+            ],
+            [
+              -2.8090399790748997,
+              -0.3297199991274605,
+              -4.08348416387587,
+              -1.850349739756154
+            ]
+          ],
+          "FD_refine": [
+            6.292997822474315e-06,
+            1.5727519830539139e-06,
+            3.9315691254931445e-07
+          ],
+          "native_charge_res_max": 7.346839692639297e-40,
+          "native_energy_res_max": 1.870935297064537e-50
+        },
+        {
+          "snapshot": 4,
+          "xe": 0.00021028392591489374,
+          "opacity": 6.232471184971492e-05,
+          "energy_eV_H": 0.004161029783203124,
+          "rates_per_du": {
+            "xe": -2.3859613237144516e-05,
+            "thermal_eV_H": -0.002544761678934391,
+            "binding_eV_H": -0.00032446304779388765,
+            "gas_eV_H": -0.0028692247267282783
+          },
+          "jacobian": [
+            [
+              -0.22694177565662624,
+              -0.018450673110611507,
+              -0.08972399786683814,
+              0.01164742549944024
+            ],
+            [
+              0.27603537890583846,
+              0.022440415632478394,
+              0.044771340056322384,
+              -2.0086750104977753
+            ],
+            [
+              -3.086098826442305,
+              -0.352274619609726,
+              -4.1293964413191855,
+              0.15839148204006054
+            ],
+            [
+              -2.810063447536776,
+              -0.3298342039787655,
+              -4.084625101262971,
+              -1.8502835284577483
+            ]
+          ],
+          "FD_refine": [
+            6.287482498270275e-06,
+            1.571374121301853e-06,
+            3.928125083738811e-07
+          ],
+          "native_charge_res_max": 7.346839692639297e-40,
+          "native_energy_res_max": 1.870935297064537e-50
+        },
+        {
+          "snapshot": 8,
+          "xe": 0.00021045473395453718,
+          "opacity": 6.237489169463043e-05,
+          "energy_eV_H": 0.0041644503227435195,
+          "rates_per_du": {
+            "xe": -2.3886957949998536e-05,
+            "thermal_eV_H": -0.002546656169022443,
+            "binding_eV_H": -0.00032484984481095133,
+            "gas_eV_H": -0.0028715060138333947
+          },
+          "jacobian": [
+            [
+              -0.22701747719495968,
+              -0.018456827748032686,
+              -0.08975049121980044,
+              0.011652124089499168
+            ],
+            [
+              0.2759905177857422,
+              0.022436766816853748,
+              0.044763922233022335,
+              -2.0086819545117147
+            ],
+            [
+              -3.087199265231404,
+              -0.3523978961109293,
+              -4.130598416244809,
+              0.15846266549702606
+            ],
+            [
+              -2.8112087474456615,
+              -0.32996112929450927,
+              -4.085834494012112,
+              -1.850219289014672
+            ]
+          ],
+          "FD_refine": [
+            6.279217077061438e-06,
+            1.5693091551092804e-06,
+            3.9229634746957963e-07
+          ],
+          "native_charge_res_max": 7.346839692639297e-40,
+          "native_energy_res_max": 1.870935297064537e-50
+        }
+      ],
+      "scope": "actual prior native zero-photo point evaluations; energy/charge observable Jacobian independently reconstructed; no full primordial HHe evolution or radiation closure"
+    },
+    "degree8_repair": [
+      {
+        "kind": "direct",
+        "lam": 0.0,
+        "exit": 0,
+        "seconds": 37.78428703499958
+      },
+      {
+        "kind": "direct",
+        "lam": -0.5,
+        "exit": 0,
+        "seconds": 132.19732406898402
+      },
+      {
+        "kind": "direct",
+        "lam": 0.5,
+        "exit": 0,
+        "seconds": 131.32734870607965
+      },
+      {
+        "kind": "pair",
+        "lam": -0.5,
+        "exit": 0,
+        "seconds": 83.73047504306305
+      },
+      {
+        "kind": "pair",
+        "lam": 0.5,
+        "exit": 0,
+        "seconds": 81.0995610980317
+      }
+    ]
+  },
+  "original_failures_preserved": true
 }
