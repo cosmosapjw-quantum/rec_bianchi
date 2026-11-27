@@ -1,0 +1,1 @@
+Extend same-three-moment signed pair to 64/128 or common event-aligned union; propagate higher-order native operator in actual gas integration; verify positivity of final combined coefficients and real-line physical energy rates with owner.
