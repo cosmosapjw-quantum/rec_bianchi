@@ -4,7 +4,7 @@ import sys,json,numpy as np
 from scipy.optimize import brentq
 from numpy.polynomial.legendre import leggauss
 D=Path(__file__).resolve().parent;X=D.parent/'r118c3x_three_moments';W=D.parent/'r118c3w_common_history'
-sys.path.insert(0,str(X));sys.path.insert(0,str(W))
+sys.path.insert(0,str(D.parents[1]/"src"));sys.path.insert(0,str(X));sys.path.insert(0,str(W))
 from three_moments import Map,p,JumpResponse,context,reconstruct
 from common_pair import thermal_diff
 def write(name,o):
