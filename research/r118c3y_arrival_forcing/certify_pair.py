@@ -30,7 +30,7 @@ assert source.count("np.savez_compressed(D/f'pair_")==1
 source=source.replace("np.savez_compressed(D/f'pair_","np.savez_compressed(D/f'cert_pair_")
 source=source.replace("write(f'pair_","write(f'cert_pair_")
 lam=float(sys.argv[1]); cert=dict(min_stored_full_ratio=float('inf'),cells_checked=0,steps_checked=0)
-ns={'__file__':str(D/'arrival_pair.py'),'__name__':'certify_audit','cert':cert}
+ns={'__file__':str(D/'arrival_pair.py'),'__name__':'certify_audit','cert':cert,'legval':legval,'legder':legder,'legroots':legroots}
 exec(compile(source,str(D/'arrival_pair.py'),'exec'),ns)
 ns['pair'](32,lam)
 with np.load(D/f'pair_32_{lam:g}.npz') as a, np.load(D/f'cert_pair_32_{lam:g}.npz') as b:
