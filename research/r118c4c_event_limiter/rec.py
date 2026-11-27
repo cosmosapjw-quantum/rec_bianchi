@@ -7,8 +7,8 @@ from common_base import context
 from positive3 import reconstruct as orig_reconstruct
 def write(n,o):(D/n).write_text(json.dumps(o,indent=2)+'\n')
 def run(mode,kind,lam):
- assert mode in ['degree8','aligned']
- deg=8 if mode=='degree8' else 6
+ assert mode in ['degree8','degree8tight','aligned']
+ deg=8 if mode.startswith('degree8') else 6
  def ctx(nt):
   c=context(nt)
   if mode=='aligned':
@@ -18,7 +18,12 @@ def run(mode,kind,lam):
    assert len(set(sel))==2 and np.all(np.diff(he)>0) and max(np.diff(he))<min(c.lr)
    c.v=np.stack([np.interp(he,old,c.v[:,j]) for j in range(c.v.shape[1])],axis=1);c.he=he
   return c
- def recon(O,fr):return orig_reconstruct(O,fr,degree=deg)
+ def recon(O,fr):return reconstruct_checked(O,fr,degree=deg)
+ reconstruct_checked=orig_reconstruct
+ if mode=='degree8tight':
+  pp=P/'r118c3x_three_moments/positive3.py';z=pp.read_text();assert z.count('range(8)')==1 and z.count("method='highs'")==1
+  z=z.replace('range(8)','range(32)').replace("method='highs'","method='highs',options={'primal_feasibility_tolerance':1e-10,'dual_feasibility_tolerance':1e-10}")
+  ns0={};exec(compile(z,str(pp),'exec'),ns0);reconstruct_checked=ns0['reconstruct']
  s=(A/'rec.py').read_text()
  def rep(a,b):
   nonlocal s
@@ -32,7 +37,7 @@ def run(mode,kind,lam):
 def analysis():
  prev=json.loads((A/'FINAL_PAIR_SUMMARY.json').read_text());print('prior',prev,flush=True)
  rows=[]
- for mode in ['degree8','aligned']:
+ for mode in ['degree8','degree8tight','aligned']:
   direct=[json.loads((D/f'{mode}_q3_64_{lam:g}.json').read_text()) for lam in [0.,-.5,.5] if (D/f'{mode}_q3_64_{lam:g}.json').exists()]
   pairs=[json.loads((D/f'PAIR_{mode}_q3_64_{lam:g}.json').read_text()) for lam in [-.5,.5] if (D/f'PAIR_{mode}_q3_64_{lam:g}.json').exists()]
   row=dict(mode=mode,direct=direct,pairs=pairs)
