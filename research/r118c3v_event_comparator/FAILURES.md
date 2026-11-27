@@ -1,0 +1,1 @@
+Finite comparator is not identical to original scalar reference integrator; local residual decreases 1.803e-10 ->2.274e-11 ->2.856e-12. Paired lambda0 floor3.532e-15 measured only at nt32. nt64 amplitude dependence and nonmonotone finite refinement persist; nt128 .25 not run. Fixed scalar H clock diagnostic, no physical H(lambda), no full HHe donor.
