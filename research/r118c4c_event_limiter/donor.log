@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 76, in <module>
+    elif sys.argv[1]=='donor':donor()
+                              ^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 72, in donor
+    write('HHE_ENERGY_RESPONSE.json',dict(pinned_REI=rev,point_sha256=hashlib.sha256(raw).hexdigest(),history_sha256=hashlib.sha256(hraw).hexdigest(),binding_gradient=chi.tolist(),charge_gradient=C.tolist(),rows=rows,scope='actual prior native zero-photo point evaluations; energy/charge observable Jacobian independently reconstructed; no full primordial HHe evolution or radiation closure'))
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 8, in write
+    def write(n,o):(D/n).write_text(json.dumps(o,indent=2)+'\n')
+                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

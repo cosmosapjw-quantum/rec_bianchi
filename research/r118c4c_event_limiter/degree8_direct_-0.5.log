@@ -1,0 +1,20 @@
+{'nt': 64, 'lam': -0.5, 'step': 153, 'u': -7.009774517919193, 'reason': 'positive polynomial certificate failed 8 238 -5.05260661087803e-08', 'prior_steps': 152, 'scope': 'three moment reconstruction blocked; no clipping'}
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 77, in <module>
+    else:run(sys.argv[1],sys.argv[2],float(sys.argv[3]))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 31, in run
+    ns[kind](64,lam,1)
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4a_quadratic_pair/rec.py", line 30, in direct
+    ns=load_module();ns['run'](nt,lam,ref)
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3z_refined_retarded/quadratic_generated.py", line 78, in run
+    try:co,ls,mi=reconstruct(O,fr)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4c_event_limiter/rec.py", line 21, in recon
+    def recon(O,fr):return orig_reconstruct(O,fr,degree=deg)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3x_three_moments/positive3.py", line 28, in reconstruct
+    else:raise ValueError(f'positive polynomial certificate failed {i} {j} {m}')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: positive polynomial certificate failed 8 238 -5.05260661087803e-08
