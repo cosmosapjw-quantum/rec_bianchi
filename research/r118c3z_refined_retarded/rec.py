@@ -34,6 +34,7 @@ def source_pair(nt,lam=None):
   cert.update(nt=nt,lam=lam,scope='actual stored virtual full polynomial against conservative endpoint Planck floor')
   (D/f'FINAL_POS_{nt}_{lam:g}.json').write_text(json.dumps(cert,indent=2)+'\n');print(cert,flush=True)
 def quad(nt,lam):
+ sys.path.insert(0,str(D.parents[1]/'src'))
  # Surgical port of C3X direct integrator; exact higher moments against native operator.
  s=(X/'three_moments.py').read_text()
  def replace(a,b):
