@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3y_arrival_forcing/certify_pair.py", line 35, in <module>
+    ns['pair'](32,lam)
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3y_arrival_forcing/arrival_pair.py", line 38, in pair
+    f=(z+1)/2;g=geom(l+h*f)
+                ^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3y_arrival_forcing/arrival_pair.py", line 32, in geom
+    t=m.t(u);return p._planck_difference(c.ef[None,:]/(p.KB_NATIVE_EV_K*c.model.tcmb0_K*np.exp(-u)),t-(u-c.lr))
+                                         ^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'ef'
