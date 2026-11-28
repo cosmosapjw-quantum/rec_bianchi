@@ -1,0 +1,1 @@
+Implement and validate full branch-aware directional tangent (including event alignment and active LP) before a reverse adjoint. Distinguish central secants from classical derivatives; source H recombination radiation recycling and thermal balance.
