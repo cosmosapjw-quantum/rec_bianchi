@@ -110,4 +110,16 @@ def analyze():
  print(rows,flush=True)
 if __name__=='__main__':
  if sys.argv[1]=='analyze':analyze()
- else:run(sys.argv[1],float(sys.argv[2]) if len(sys.argv)>2 else 0.)
+ else:
+  mode=sys.argv[1];value=float(sys.argv[2]) if len(sys.argv)>2 else 0.
+  pre=D/'PRECOMPUTED_FD.json';admitted=False
+  if mode=='fd' and pre.is_file():
+   import inspect
+   for r in json.loads(pre.read_text()):
+    if r['h']!=value or r['exit']!=0:continue
+    tag=f'FD_{value:g}'
+    assert r['run_function_sha']==hashlib.sha256(inspect.getsource(run).encode()).hexdigest()
+    assert all(sha(D/(tag+'.'+e))==r[e+'_sha'] for e in ('json','npz'))
+    assert sha(D/f'fd_parallel_{value:g}.log')==r['log_sha']
+    print('REPLAY_ADMITTED actual parallel FD',r,flush=True);admitted=True;break
+  if not admitted:run(mode,value)
