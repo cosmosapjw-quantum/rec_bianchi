@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4j_signed_tangent/feedback.py", line 39, in <module>
+    for n,bins in [(128,512),(256,512),(256,1024),(256,2048),(512,2048)]:rows.append(run(n,bins))
+                                                                                     ^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4j_signed_tangent/feedback.py", line 34, in run
+    y0,e0=solve(y0,False);y1,e1=solve(y1,True);L=loss(y1[0]);N-=L
+          ^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4j_signed_tangent/feedback.py", line 33, in solve
+    yy=brentq(residual,1e-9,1-1e-9,xtol=1e-16,rtol=1e-14);ee=hsolve(yy);return np.array([yy,ee]),max(abs(residual(yy)),abs(ee-old[1]-dt*helium_rhs(cos,yy,ee,HH,red)))
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/optimize/_zeros_py.py", line 846, in brentq
+    r = _zeros._brentq(f, a, b, xtol, rtol, maxiter, args, full_output, disp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/.local/lib/python3.12/site-packages/scipy/optimize/_zeros_py.py", line 94, in f_raise
+    fx = f(x, *args)
+         ^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4j_signed_tangent/feedback.py", line 31, in residual
+    e=hsolve(y);x=1-y;xe=x+e;T=tm_steady_K(cos,xe,red,HH);dx=source.hydrogen_rhs_ln_a(z=red,x_HII=x,x_e=xe,Tm_K=T)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/hmla_flrw.py", line 98, in hydrogen_rhs_ln_a
+    rates=self.table.evaluate(
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/primitive_rates.py", line 350, in evaluate
+    raise ValueError("Tm/Tr lies outside original-HyRec table")
+ValueError: Tm/Tr lies outside original-HyRec table

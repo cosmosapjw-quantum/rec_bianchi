@@ -30,7 +30,11 @@ def run(n,bins):
    def residual(y):
     e=hsolve(y);x=1-y;xe=x+e;T=tm_steady_K(cos,xe,red,HH);dx=source.hydrogen_rhs_ln_a(z=red,x_HII=x,x_e=xe,Tm_K=T)
     return y-old[0]+dt*dx+(float(loss(y).sum()) if photons else 0.)
-   yy=brentq(residual,1e-9,1-1e-9,xtol=1e-16,rtol=1e-14);ee=hsolve(yy);return np.array([yy,ee]),max(abs(residual(yy)),abs(ee-old[1]-dt*helium_rhs(cos,yy,ee,HH,red)))
+   # Keep trial states inside the original HMLA temperature table; the
+   # near-neutral endpoint was not a physical bracket for this early window.
+   lo=1e-9;hi=min(.5,max(.05,2*old[0]+.01))
+   while residual(lo)*residual(hi)>0 and hi<.5:hi=min(.5,2*hi)
+   yy=brentq(residual,lo,hi,xtol=1e-16,rtol=1e-14);ee=hsolve(yy);return np.array([yy,ee]),max(abs(residual(yy)),abs(ee-old[1]-dt*helium_rhs(cos,yy,ee,HH,red)))
   y0,e0=solve(y0,False);y1,e1=solve(y1,True);L=loss(y1[0]);N-=L
   absorbed+=float(L.sum());heat+=float(L@np.maximum(q/np.exp(mid)-thr,0));abs_com+=float(L@q);maxres=max(maxres,e0,e1);minp=min(minp,*y0,*y1);Y0.append(y0.copy());Y1.append(y1.copy())
  Y0=np.array(Y0);Y1=np.array(Y1);diff=Y1-Y0;nd=float(N0.sum()-N.sum()-absorbed);ed=float(N0@q-N@q-abs_com);assert abs(nd)<1e-12 and abs(ed)<1e-14 and minp>0 and maxres<1e-9
