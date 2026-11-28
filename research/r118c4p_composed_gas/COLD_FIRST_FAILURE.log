@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4p_composed_gas/cold.py", line 30, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4p_composed_gas/cold.py", line 17, in main
+    s,_,_=c.snap(u,x,T,c.zero)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c3t_second_tangent/regular.py", line 26, in snap
+    return p.populate_original_full_atomic(so,z=zz,xHII=x,xe=x,Tm_K=T,incoming_virtual=inc[:311],incoming_lyman=inc[311:]),H,self.model.tcmb0_K*(1+zz)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/trajectory/full_2012_atomic_source.py", line 265, in populate_original_full_atomic
+    diff=populate_original_hyrec_diffusion(tab,Tm_K)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/src/full_bianchi_hyrec/recoil/original_hyrec_native.py", line 284, in populate_original_hyrec_diffusion
+    raise FloatingPointError("negative native diffusion rate")
+FloatingPointError: negative native diffusion rate
+cold_exit=1
