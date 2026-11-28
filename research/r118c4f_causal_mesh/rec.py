@@ -58,13 +58,13 @@ def helium():
  stage=np.array(h.stage);method=np.array(h.update_method);ii=np.flatnonzero(stage=='HeII_RECOMBINATION')
  rates=np.zeros((len(z),2));original=np.zeros(len(z));details=np.zeros((len(z),4))
  for i in ii:
-  zz=z[i];xhe=h.xHeII[i];xh=saha_xH1s(c,xhe,zz);HH=c.hubble_s(zz);tr=c.T0_K*(1+zz)/c.fsR**2/c.meR;nh=c.nH0_m3*(1+zz)**3;xe=xhe+1-xh;xhei=c.fHe-xhe
+  zz=z[i];xhe=h.xHeII[i];xh=saha_xH1s(c,xhe,zz);HH=c.hubble_s(zz);tr=c.T0_K*(1+zz)/c.fsR**2/c.meR;nh=c.nH0_m3*(1+zz)**3;xe=xhe+(1-xh);xhei=c.fHe-xhe
   s0=c.fsR**3*c.meR**3*2.414194e21*tr*math.sqrt(tr)/nh*4;s=s0*math.exp(-285325.0/tr);y2s=math.exp(46090.0/tr)/s0;y2p=3*math.exp(39101.0/tr)/s0
   etacinv=c.fsR**3*c.meR**3*9.15776e28*HH/nh/xh
   g=(1.976e6/(1-math.exp(-6989/tr))+6.03e6/math.expm1(19754/tr)+1.06e8/math.expm1(21539/tr)+2.18e6/math.expm1(28496/tr)+3.37e7/math.expm1(29224/tr)+1.04e6/math.expm1(32414/tr)+1.51e7/math.expm1(32781/tr))*c.fsR**5*c.meR
   tau=4.277e-14*nh/HH*xhei/(c.fsR*c.meR**2);tauc=g*tau/(4*math.pi**2)/etacinv;enh=math.sqrt(1+math.pi**2*tauc)+7.74*tauc/(1+70*tauc);pesc=enh/tau+(1-math.exp(-1.023e-7*tau))*(.964525*math.exp(2947/tr)-enh*math.exp(-6.14e13*c.fsR**2*c.meR/etacinv))/tau
   a=c.fsR**8*c.meR*50.94*y2s;b=c.fsR**5*c.meR*1.7989e9*y2p*pesc;f=(xhei*s-xhe*xe)/HH;rates[i]=[a*f,b*f];original[i]=helium_rhs(c,xh,xhe,HH,zz);details[i]=[tau,pesc,a,b]
- assert max(abs(rates.sum(1)-original))<=1e-12*max(abs(original))
+ print('rate_split_max_abs',float(max(abs(rates.sum(1)-original))),'source_max',float(max(abs(original))),flush=True);assert max(abs(rates.sum(1)-original))<=1e-12*max(abs(original))
  energy=KB_EV_K*np.array([285325-46090,285325-39101]);du=np.diff(u);net=-.5*(rates[:-1]+rates[1:])*du[:,None];hx=np.array(h.xHeII);db=-np.diff(hx)
  rows=[]
  for label,mask in [('all_HeII',(stage[:-1]=='HeII_RECOMBINATION')&(stage[1:]=='HeII_RECOMBINATION')),('predictor',(method[:-1]=='SOURCE_PREDICTOR')&(method[1:]=='SOURCE_PREDICTOR')),('post_Saha',(method[:-1]=='POST_SAHA')&(method[1:]=='POST_SAHA'))]:
