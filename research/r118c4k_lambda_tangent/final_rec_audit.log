@@ -1,0 +1,214 @@
+{
+  "rows": [
+    {
+      "method": "TANGENT",
+      "steps": 1773,
+      "terminal_tangent": [
+        7.70237265151016e-08,
+        5.607387701564403e-12
+      ],
+      "terminal_FD": [
+        4.187298655959163e-10,
+        3.700743415417188e-14
+      ],
+      "terminal_gap": [
+        7.660499664950567e-08,
+        5.570380267410231e-12
+      ],
+      "max_history_gap": [
+        9.19658928229357e-08,
+        5.588373344329092e-12
+      ],
+      "peak_FD": [
+        3.508746996653637e-08,
+        2.220446049250313e-13
+      ],
+      "history_peak_scaled_gap": [
+        2.6210465704892782,
+        25.16779611112771
+      ],
+      "final_history_relative_to_FD": 7.069751125544507e-08,
+      "final_history_FD_norm": 1.5768328727813996e-11,
+      "max_nominal_residual": 3.9841380520232172e-16,
+      "min_positive": 2.0680987635275603e-09,
+      "limited_cells": 10,
+      "same_limiter_keys": true,
+      "endpoint_fallback": [
+        {
+          "step": 1773,
+          "ray": 8,
+          "channel": 41,
+          "arrival": -7.000998903448411,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": -4.535234752098117e-06,
+          "inverse_residual": -1.1746246336707955e-15
+        },
+        {
+          "step": 1773,
+          "ray": 12,
+          "channel": 41,
+          "arrival": -7.000998903448411,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": -4.535234752098117e-06,
+          "inverse_residual": -1.1746246336707955e-15
+        },
+        {
+          "step": 1773,
+          "ray": 16,
+          "channel": 41,
+          "arrival": -7.000998903448411,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": -4.535234752098117e-06,
+          "inverse_residual": -1.1746246336707955e-15
+        },
+        {
+          "step": 1773,
+          "ray": 20,
+          "channel": 41,
+          "arrival": -7.000998903448411,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": -4.535234752098117e-06,
+          "inverse_residual": -1.1746246336707955e-15
+        },
+        {
+          "step": 1773,
+          "ray": 14,
+          "channel": 276,
+          "arrival": -7.000998903301066,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": 5.356087238002339e-06,
+          "inverse_residual": -3.0552817220641515e-16
+        },
+        {
+          "step": 1773,
+          "ray": 18,
+          "channel": 276,
+          "arrival": -7.000998903301066,
+          "receiver_right": -7.000998870128049,
+          "implicit_derivative": 5.356087238002339e-06,
+          "inverse_residual": -3.0552817220641515e-16
+        }
+      ],
+      "source_sha256": "b631d04e30a53aa970b4418d7efa66d6ac09544cae6d5a035e287b2548232f51"
+    },
+    {
+      "method": "DIRECT_FULL_TANGENT",
+      "steps": 1773,
+      "terminal_tangent": [
+        4.18893644003669e-10,
+        3.1707767763543036e-14
+      ],
+      "terminal_FD": [
+        4.187298655959163e-10,
+        3.700743415417188e-14
+      ],
+      "terminal_gap": [
+        1.6377840775271093e-13,
+        5.299666390628847e-15
+      ],
+      "max_history_gap": [
+        7.018988121194163e-12,
+        7.47113323720327e-14
+      ],
+      "peak_FD": [
+        3.508746996653637e-08,
+        2.220446049250313e-13
+      ],
+      "history_peak_scaled_gap": [
+        0.0002000425829473688,
+        0.33646992863103975
+      ],
+      "final_history_relative_to_FD": 1.953330168124772e-08,
+      "final_history_FD_norm": 1.5768328727813996e-11,
+      "max_nominal_residual": 3.9841380520232172e-16,
+      "min_positive": 2.0680987635275603e-09,
+      "limited_cells": 10,
+      "same_limiter_keys": true,
+      "endpoint_fallback": [],
+      "source_sha256": "d2e026c6ad0357eab9b999f1b50888bc79936825061e2d26b51c4384039d7fbf"
+    }
+  ],
+  "scope": "Both actual complete 1773-step calculations, compare against independently completed nonlinear lambda +/-0.003. The direct-map method uses finite geometry stencils, not analytic node-wise differentiation. Temperature FD terminal difference only 2 ULP; not a reliable high-precision thermal validation.",
+  "prefix_stencil_audit": {
+    "rows": [
+      {
+        "h": 0.003,
+        "FD_terminal": [
+          -6.591556004723979e-09,
+          -3.700743415417188e-14
+        ],
+        "tangent_terminal": [
+          6.649336534921092e-08,
+          3.887502748810653e-12
+        ],
+        "max_gap": [
+          7.30849213539349e-08,
+          3.935513329526591e-12
+        ],
+        "peak_FD": [
+          3.508746996653637e-08,
+          2.220446049250313e-13
+        ]
+      },
+      {
+        "h": 0.001,
+        "FD_terminal": [
+          -6.592698609253489e-09,
+          -1.1102230246251565e-13
+        ],
+        "tangent_terminal": [
+          6.649336534921092e-08,
+          3.887502748810653e-12
+        ],
+        "max_gap": [
+          7.308606395846441e-08,
+          4.009528197834935e-12
+        ],
+        "peak_FD": [
+          3.508734969237537e-08,
+          2.220446049250313e-13
+        ]
+      },
+      {
+        "h": 0.0003,
+        "FD_terminal": [
+          -6.5922730237607165e-09,
+          0.0
+        ],
+        "tangent_terminal": [
+          6.649336534921092e-08,
+          3.887502748810653e-12
+        ],
+        "max_gap": [
+          7.308563837297163e-08,
+          3.9111526012417215e-12
+        ],
+        "peak_FD": [
+          3.508707213661921e-08,
+          3.7007434154171886e-13
+        ]
+      }
+    ],
+    "scope": "Actual 256-step nonlinear prefix on full geometry grid; compare independent shrinking parameter stencils with completed tangent prefix."
+  },
+  "direct_prefix_audit": {
+    "steps": 256,
+    "direct_terminal": [
+      -6.592867718131564e-09,
+      -5.78572521039957e-14
+    ],
+    "FD_terminal": [
+      -6.5922730237607165e-09,
+      0.0
+    ],
+    "max_gap": [
+      2.4839786756278006e-11,
+      2.963112442230851e-13
+    ],
+    "analytic_nodewise_max_gap": [
+      7.308563837297163e-08,
+      3.9111526012417215e-12
+    ],
+    "scope": "Direct central secant of full discrete map at frozen history plus exact linear history tangent; actual nonlinear prefix comparison, not analytic moving-node tangent."
+  }
+}
