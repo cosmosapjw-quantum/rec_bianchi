@@ -1,0 +1,82 @@
+{
+  "prior_direction_gap": [
+    [
+      1.5649302377507153e-20,
+      8.407971406380476e-25
+    ],
+    [
+      1.5649302377507153e-20,
+      6.8767845007374395e-25
+    ]
+  ],
+  "prefix_duplicate_content_identity": true,
+  "accepted_cold_cases": 30,
+  "rejected_cold_cases": [
+    {
+      "step": 63,
+      "ratio": 0.25,
+      "error": "FloatingPointError: negative native diffusion rate"
+    },
+    {
+      "step": 918,
+      "ratio": 0.25,
+      "error": "FloatingPointError: negative native diffusion rate"
+    },
+    {
+      "step": 1773,
+      "ratio": 0.25,
+      "error": "FloatingPointError: negative native diffusion rate"
+    }
+  ],
+  "domain": [
+    {
+      "step": 63,
+      "min_accepted_ratio": 0.44000000000000006,
+      "accepted": 57
+    },
+    {
+      "step": 918,
+      "min_accepted_ratio": 0.44000000000000006,
+      "accepted": 57
+    },
+    {
+      "step": 1773,
+      "min_accepted_ratio": 0.45000000000000007,
+      "accepted": 56
+    }
+  ],
+  "max_cold_schur_shift": 0.3322650219329776,
+  "max_shift_state": {
+    "step": 1773,
+    "ratio": 0.5,
+    "incident": "represented_terminal_stock",
+    "T": 1495.9303307419073,
+    "Tr": 2991.8606614838145,
+    "frozen": -171.8587330903354,
+    "schur": -114.75608737070137,
+    "eigs": [
+      [
+        -114.68117623680155,
+        0.0
+      ],
+      [
+        -87590.08665479577,
+        0.0
+      ]
+    ]
+  },
+  "artifact_sha256": {
+    "COLD.json": "d3d6d3637499481fac66c8d2f79c031e9f8e96684053e9c86823fb95316c7d73",
+    "COLD.log": "ded3219747ce5c4403cddd8fad82d984023c754e3ecc6e336da716280043edf9",
+    "COLD_FIRST_FAILURE.log": "39cf4bf772f8d2d9fa70e0d84d33eea20cf7ab03e37bc719fea12957352f0b0b",
+    "COMPOSED.json": "acb83d0dd9ae1a04477b8aa519a6f7dcc952ec40d54f461e6eecec2e35a07945",
+    "COMPOSED.npz": "9e003e05622fcb2c8cc6795b2c9f88dcf6c0eeda6e42c19978c8df4c0787f924",
+    "HISTORY.log": "70acc9d823b15e4e9d625c57c3a64387fca9091e77a2e3cd495d1b1e13b9de5a",
+    "PREFIX.json": "aaa103fece95ca50814bb8c5122e7e22cb1cf98fc6ae7b631de927482fcbf517",
+    "SPLINE_AUDIT.json": "eea9aca1c8de512008e898be34d82c1696326fae003f0458979bc5a4a60cec88",
+    "cold.py": "64085b168ba1e427b26d0b7ee42ab34904789aa4bc4727c1cc92c88fe6f1f885",
+    "history.py": "8e1451b87e2d25b066db3165cfd1605c32f52f9809b34dc6f7f24f25ebdbb5d2",
+    "prepare.py": "4656a206077d73d5a936525e66bc505968c5d33ce9206b02be7be29915ebe970",
+    "thermal.py": "05b2d05242011d7afd406afc414c8c3473e16329fd9fb816cfbb9de6251b4181"
+  }
+}
