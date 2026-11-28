@@ -11,6 +11,21 @@ from moving import Moving
 g={'__file__':str(I/'active_limiter.py'),'__name__':'prior'};exec(compile((I/'active_limiter.py').read_text(),str(I/'active_limiter.py'),'exec'),g);Map,C,L,mass=g['Map'],g['C'],g['L'],g['mass']
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def write(n,o):(D/n).write_text(json.dumps(o,indent=2)+'\n')
+_WORK=None
+def stage_job(args):
+ # Forked local stage workers; history is communicated only through the
+ # already formed moment arrays. Preserve j-ordered sum in the main solve.
+ j,u,yy,wj,ang,dwj=args;owner,mm,mp,geoep=_WORK
+ f,o,jr=owner(u,yy,wj,j,*ang);gg=[];oo=[]
+ for k,ep in enumerate([1e-6,.01/3000]):
+  dv=np.eye(2)[k]*ep;p0=owner(u,yy+dv,wj,j,*ang);m0=owner(u,yy-dv,wj,j,*ang);gg.append((p0[0]-m0[0])/(2*ep));oo.append((p0[1]-m0[1])/(2*ep))
+ gp=owner(u,yy,wj,j,*mp.state(u));gm=owner(u,yy,wj,j,*mm.state(u))
+ df=(gp[0]-gm[0])/(2*geoep);do=(gp[1]-gm[1])/(2*geoep)
+ # Return contributions separately to preserve the original addition order.
+ terms=[]
+ for k in range(3):
+  a,b,g0=jr.apply(dwj[k]);terms.append((a+b,g0))
+ return f,o,gg,np.stack(oo,axis=-1),df,do,terms
 def run(mode,delta=0.):
  lam=-.5+(delta if mode!='tangent' else 0.);N=1773;c=context(128);ref=H/'goal_q3_128_-0.5.npz';z=np.load(ref);fullhe=z['he'];he=fullhe[:N+1];v=z['rows'][:N+1,1:3].copy();v[:,1]/=3000
  c.v=np.stack([np.interp(fullhe,c.he,c.v[:,j]) for j in range(c.v.shape[1])],axis=1);c.he=fullhe;nr=c.nr;m=Map(c,lam);gl,gw=leggauss(5)
@@ -26,6 +41,12 @@ def run(mode,delta=0.):
    aa,bb,gg=jr.apply(w[k]);outs.append(mass[k,j]*o+aa+bb)
    if k==0:ff=mass[0,j]*rr.dxHII_dln_a+gg
   return float(ff),np.array(outs),jr
+ pool=None
+ if mode=='tangent':
+  global _WORK
+  _WORK=(owner,mm,mp,geoep)
+  import concurrent.futures as cf,multiprocessing as mpctx
+  pool=cf.ProcessPoolExecutor(max_workers=3,mp_context=mpctx.get_context('fork'))
  def thermal(u,y):
   x,T=y;HH=np.interp(u,c.ge,c.g['h'])*2.1842852410855023e-18;Tr=c.model.tcmb0_K*np.exp(-u)/3000
   sc=p.COMPTON_GAMMA_PER_T4_S_INV_K4*(Tr*3000)**4/HH;b=sc*x/(1+x+c.model.f_he);bx=sc*(1+c.model.f_he)/(1+x+c.model.f_he)**2
@@ -49,17 +70,13 @@ def run(mode,delta=0.):
    y0,y1=v[i-1],v[i];assert np.array_equal(y,y0)
    O=np.zeros((3,nr,314));F=0.;Gs=[];Os=[];ops=[]
    dW=ww(dU);df=0.;do=np.zeros_like(O)
+   args=[]
    for j,u in enumerate([l,mid,r]):
-    c0=j/2;yy=(1-c0)*y0+c0*y1;f,o,jr=owner(u,yy,w[:,j],j,*ang[j]);F+=f;O+=o
-    gg=[];oo=[]
-    for k,ep in enumerate([1e-6,.01/3000]):
-     dv=np.eye(2)[k]*ep;p0=owner(u,yy+dv,w[:,j],j,*ang[j]);m0=owner(u,yy-dv,w[:,j],j,*ang[j]);gg.append((p0[0]-m0[0])/(2*ep));oo.append((p0[1]-m0[1])/(2*ep))
-    Gs.append(gg);Os.append(np.stack(oo,axis=-1))
-    # Geometry parameter enters native rate weights and affine response, at fixed gas and incoming moments.
-    gp=owner(u,yy,w[:,j],j,*mp.state(u));gm=owner(u,yy,w[:,j],j,*mm.state(u))
-    df+=(gp[0]-gm[0])/(2*geoep);do+=(gp[1]-gm[1])/(2*geoep)
-    for k in range(3):
-     a,b,g0=jr.apply(dW[k,j]);do[k]+=a+b
+    c0=j/2;yy=(1-c0)*y0+c0*y1;args.append((j,u,yy,w[:,j],ang[j],dW[:,j]))
+   for f,o,gg,oo,gdf,gdo,terms in pool.map(stage_job,args):
+    F+=f;O+=o;Gs.append(gg);Os.append(oo);df+=gdf;do+=gdo
+    for k,(ab,g0) in enumerate(terms):
+     do[k]+=ab
      if k==0:df+=g0
    Cj=np.array([0.,.5,1.]);Gs=np.array(Gs);th,thj=thermal(mid,(y0+y1)/2)
    G0=np.stack([(1-Cj)@Gs,thj/2]);G1=np.stack([Cj@Gs,thj/2]);dy1=np.linalg.solve(np.eye(2)-h*G1,(np.eye(2)+h*G0)@dy+np.array([h*df,0.]))
@@ -90,11 +107,17 @@ def run(mode,delta=0.):
    DA[i-1]=dc;dy=dy1;dys.append(dy.copy())
   y=yn;ys.append(y.copy())
   if i%128==0:print(mode,delta,i,'limited',len(lims),'x',y[0],flush=True)
+  if mode=='tangent' and (i%256==0 or i in (1772,1773)):
+   # Preserve finite-prefix evidence before advancing. Not a full restart checkpoint.
+   np.savez_compressed(D/'TANGENT_PREFIX.npz',u=he[:i+1],y=np.array(ys),dy=np.array(dys),last=A[i-1],last_tangent=DA[i-1],limits=np.array(lims))
+   write('TANGENT_PREFIX.json',dict(steps=i,terminal_gradient=dy.tolist(),resmax=resmax,min_positive=mi0,active=active,event_checks=event_checks,endpoint_fallback=moving.endpoint_fallback,scope='finite completed prefix; no full restart state'))
+ if pool is not None:pool.shutdown()
+
  tag='TANGENT' if mode=='tangent' else f'FD_{delta:g}'
  ys=np.array(ys);obj=dict(mode=mode,delta=delta,steps=N,lam=lam,resmax=resmax,min_positive=mi0,limited=len(lims),seconds=time.monotonic()-t0,source_sha=sha(ref),final=ys[-1].tolist(),max_baseline_gap=float(np.max(abs(ys-v))) if mode=='tangent' else None,scope='full signed weak-history owner at lambda=-0.5, first-order derivative in lambda including geometry, moving GL5 events and active LP; local geometry derivatives from actual spline stencils, not reverse adjoint')
  if mode=='tangent':
   ex=z['limits'];ex=ex[ex[:,0]<=N];assert np.array_equal(np.array(lims)[:,:3],ex[:,[0,2,3]])
-  obj.update(terminal_gradient=dy.tolist(),active=active,event_checks=event_checks,moving_events=events,min_event_boundary_distance=mindist,geometry_stencil=geoep)
+  obj.update(terminal_gradient=dy.tolist(),active=active,event_checks=event_checks,moving_events=events,min_event_boundary_distance=mindist,geometry_stencil=geoep,endpoint_fallback=moving.endpoint_fallback,stage_workers=3)
   # Save only selected actual final history and tangent; actual event source data for separate local replay.
   np.savez_compressed(D/'TANGENT.npz',u=he,y=ys,dy=np.array(dys),last=A[-1],last_tangent=DA[-1],limits=np.array(lims))
  else:np.savez_compressed(D/(tag+'.npz'),u=he,y=ys,last=A[-1],limits=np.array(lims))

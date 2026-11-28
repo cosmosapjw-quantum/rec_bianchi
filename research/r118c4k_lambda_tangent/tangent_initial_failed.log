@@ -1,0 +1,27 @@
+tangent 0.0 128 limited 0 x 0.15847909959028827
+tangent 0.0 256 limited 0 x 0.15809567697413346
+tangent 0.0 384 limited 0 x 0.1577122464902648
+tangent 0.0 512 limited 0 x 0.15714167654645253
+tangent 0.0 640 limited 0 x 0.15653950590864024
+tangent 0.0 768 limited 0 x 0.15560593978961534
+tangent 0.0 896 limited 0 x 0.15320546390215947
+tangent 0.0 1024 limited 10 x 0.15089734166075128
+tangent 0.0 1152 limited 10 x 0.14885627593201087
+tangent 0.0 1280 limited 10 x 0.14664882576147412
+tangent 0.0 1408 limited 10 x 0.14453231240848033
+tangent 0.0 1536 limited 10 x 0.1424819420893282
+tangent 0.0 1664 limited 10 x 0.1404763669780218
+Traceback (most recent call last):
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4k_lambda_tangent/rec.py", line 113, in <module>
+    else:
+         ^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4k_lambda_tangent/rec.py", line 36, in run
+    un,dU,ev,md=moving.integrate(i,l,r,A,DA);events+=ev;mindist=min(mindist,md)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4k_lambda_tangent/moving.py", line 34, in integrate
+    x=u+(q+1)*span/2;dx=du+(q+1)*dspan/2;t,dt=self.td(x,dx)
+                                              ^^^^^^^^^^^^^
+  File "/home/cosmosapjw/Downloads/htt_r109_original_rec/research/r118c4k_lambda_tangent/moving.py", line 15, in td
+    assert np.all(np.isfinite(t)) and np.all(np.isfinite(dt));return t,dt
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

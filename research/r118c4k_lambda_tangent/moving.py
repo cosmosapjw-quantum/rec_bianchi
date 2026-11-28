@@ -3,7 +3,7 @@ import numpy as np
 from numpy.polynomial.legendre import leggauss
 class Moving:
  def __init__(self,m,mm,mp,eps):
-  self.m=m;self.mm=mm;self.mp=mp;self.ep=eps
+  self.m=m;self.mm=mm;self.mp=mp;self.ep=eps;self.endpoint_fallback=[]
  def ev(self,fs,t):return np.stack([f(t[j]) for j,f in enumerate(fs)])
  def deriv(self,kind,t):
   return (self.ev(getattr(self.mp,kind),t)-self.ev(getattr(self.mm,kind),t))/(2*self.ep)
@@ -22,6 +22,19 @@ class Moving:
    t=m.t(u);j=np.searchsorted(he,t+2e-14,side='right')-1;before=j<0
    nk=he[np.clip(j+1,0,len(he)-1)];f,df=self.evald('f',nk,np.zeros_like(nk));cross,dcross=self.evald('g',f+m.lr,df)
    hit=active&np.isfinite(cross)&(cross<r);events+=int(hit.sum())
+   # A nominal hit can lie inside the receiving interval while the fixed
+   # inverse argument lies just outside one perturbed inverse-spline domain.
+   # Differentiate the causal arrival equation f(cross)=f(nk)+lr instead.
+   bad=hit&~np.isfinite(dcross)
+   for ray0 in np.flatnonzero(np.any(bad,axis=1)):
+    jj=np.flatnonzero(bad[ray0]);v=cross[ray0,jj]
+    dfl=(self.mp.f[ray0](v)-self.mm.f[ray0](v))/(2*self.ep)
+    dd=(df[ray0,jj]-dfl)/m.f[ray0](v,1)
+    assert np.isfinite(dd).all()
+    for a0,b0,d0 in zip(jj,v,dd):
+     self.endpoint_fallback.append(dict(step=i,ray=int(ray0),channel=int(a0),arrival=float(b0),receiver_right=float(r),implicit_derivative=float(d0),inverse_residual=float(m.f[ray0](b0)-f[ray0,a0]-m.lr[a0])))
+    dcross[ray0,jj]=dd
+   assert np.isfinite(dcross[hit]).all()
    q=active&np.isfinite(cross)
    if q.any():mindist=min(mindist,float(np.min(abs(cross[q]-r))))
    end=np.minimum(r,np.where(np.isfinite(cross),cross,r));end=np.where(active,end,u)
